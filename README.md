@@ -15,6 +15,10 @@ This project uses an AI Agent to:
 2. Analyze discrepancies (Surprise Index).
 3. Draft scripts for YouTube content.
 
+
 ## Disclaimer
 
 This content is for informational purposes only and does not constitute financial advice.
+
+---
+*Maintained by: hoin.insight*
