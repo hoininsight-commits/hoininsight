@@ -50,8 +50,25 @@ def run_output_checks(base_dir: Path) -> OutputCheckResult:
             }
         )
 
+    # Meta Topics Check (Soft)
+    ymd = __import__("datetime").datetime.utcnow().strftime("%Y/%m/%d")
+    meta_path = base_dir / "data" / "meta_topics" / ymd / "meta_topics.json"
+    meta_ok = meta_path.exists()
+    
+    if not meta_ok:
+        lines.append("[SKIP] meta_topics missing (soft)")
+        
+    per_dataset.append({
+        "dataset_id": "meta_topics",
+        "soft_fail": True,
+        "status": "OK" if meta_ok else "SKIPPED",
+        "curated_ok": meta_ok,
+        "anomalies_ok": True, # details not applicable
+        "topics_ok": True     # details not applicable
+    })
+
     # report required
-    report = base_dir / "data" / "reports" / __import__("datetime").datetime.utcnow().strftime("%Y/%m/%d") / "daily_brief.md"
+    report = base_dir / "data" / "reports" / ymd / "daily_brief.md"
     if not report.exists():
         ok = False
         lines.append("[FAIL] report missing")
