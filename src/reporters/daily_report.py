@@ -3,55 +3,64 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
+from typing import Any, Dict, List, Tuple
 
-import pandas as pd
 from src.registry.loader import load_datasets
 
-def _utc_date_parts() -> tuple[str, str, str]:
-    return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
-    )
+def _ymd() -> str:
+    return datetime.utcnow().strftime("%Y/%m/%d")
+
+def _read_json(p: Path) -> Any:
+    return json.loads(p.read_text(encoding="utf-8"))
+
+def _collect_all_topics(base_dir: Path) -> List[Dict[str, Any]]:
+    ymd = _ymd()
+    datasets = [ds for ds in load_datasets(base_dir / "registry" / "datasets.yml") if ds.enabled]
+    all_topics: List[Dict[str, Any]] = []
+    for ds in datasets:
+        tp = base_dir / "data" / "topics" / ymd / f"{ds.dataset_id}.json"
+        if tp.exists():
+            payload = _read_json(tp)
+            if isinstance(payload, list):
+                for t in payload:
+                    if isinstance(t, dict):
+                        t["_report_key"] = ds.report_key
+                        all_topics.append(t)
+    return all_topics
 
 def write_daily_brief(base_dir: Path) -> Path:
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "reports" / y / m / d
+    ymd = _ymd()
+    out_dir = base_dir / "data" / "reports" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "daily_brief.md"
 
-    reg = base_dir / "registry" / "datasets.yml"
-    datasets = [ds for ds in load_datasets(reg) if ds.enabled]
+    topics = _collect_all_topics(base_dir)
+    topics = [t for t in topics if isinstance(t.get("score", None), (int, float))]
+    topics.sort(key=lambda x: float(x.get("score", 0.0)), reverse=True)
+    top5 = topics[:5]
 
-    lines = [f"# Daily Brief ({y}-{m}-{d})", ""]
-
-    for ds in datasets:
-        lines.append(f"## {ds.report_key}")
-        curated = base_dir / ds.curated_path
-        if curated.exists():
-            df = pd.read_csv(curated)
-            last_row = df.iloc[-1].to_dict() if len(df) else {}
-            lines.append(f"- last_ts_utc: {last_row.get('ts_utc','')}")
-            lines.append(f"- last_value: {last_row.get('value','')}")
-            lines.append(f"- unit: {last_row.get('unit','')}")
-        else:
-            lines.append("- (no curated data)")
-        lines.append("")
-
-    lines.append("## Topics")
-    all_topics = []
-    for ds in datasets:
-        tp = base_dir / "data" / "topics" / y / m / d / f"{ds.dataset_id}.json"
-        if tp.exists():
-            all_topics.extend(json.loads(tp.read_text(encoding="utf-8")))
-    all_topics = sorted(all_topics, key=lambda x: int(x.get("score", 0)), reverse=True)
-
-    if not all_topics:
-        lines.append("- (no topics today)")
+    lines: List[str] = []
+    lines.append("# Daily Brief")
+    lines.append("")
+    lines.append("## TOP 5 Topics")
+    if len(top5) == 0:
+        lines.append("- (no topics)")
     else:
-        for t in all_topics:
-            lines.append(f"- [{t.get('dataset_id','')}] {t['title']} | score={t['score']}")
-            lines.append(f"  - {t['summary']}")
+        for i, t in enumerate(top5, 1):
+            lines.append(
+                f"{i}. **{t.get('_report_key','')}** | {t.get('title','')} | "
+                f"score={t.get('score')} | severity={t.get('severity')} | dataset={t.get('dataset_id')}"
+            )
+    lines.append("")
+    lines.append("## Per-dataset Topics")
+    if len(topics) == 0:
+        lines.append("- (no topics)")
+    else:
+        for t in topics:
+            lines.append(
+                f"- [{t.get('severity')}] {t.get('_report_key','')}: {t.get('title','')} "
+                f"(score={t.get('score')}, dataset={t.get('dataset_id')})"
+            )
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out_path

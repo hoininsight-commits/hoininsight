@@ -3,38 +3,53 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, Any, List
 
-def _utc_date_parts() -> tuple[str, str, str]:
-    return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
-    )
+def _utc_now() -> str:
+    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
-def select_topics(base_dir: Path, dataset_id: str, anomalies_path: Path) -> Path:
-    anomalies = json.loads(anomalies_path.read_text(encoding="utf-8")) if anomalies_path.exists() else []
-    topics = []
-    if anomalies:
-        a0 = anomalies[0]
-        topics.append(
-            {
-                "topic_id": f"topic_{dataset_id}_{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}",
-                "dataset_id": dataset_id,
-                "title": f"{dataset_id} 변동성 이상징후 발생",
-                "summary": "전일 대비 변화율이 임계치를 초과했습니다.",
-                "score": int(a0.get("severity", 50)),
-                "anomalies": anomalies,
-                "supporting_datasets": [dataset_id],
-                "why_bullets": [
-                    "전일 대비 변화율 급등은 리스크/심리 변화를 선행하는 경우가 많음",
-                    "단일 지표 이상징후가 다른 시장/자산으로 전이될 수 있음",
-                ],
-            }
-        )
+def _ymd() -> str:
+    return datetime.utcnow().strftime("%Y/%m/%d")
 
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "topics" / y / m / d
+def _read_json(p: Path) -> Dict[str, Any]:
+    return json.loads(p.read_text(encoding="utf-8"))
+
+def select_topics(base_dir: Path, dataset_id: str, report_key: str) -> Path:
+    """
+    Topic selector (topic_v1 output).
+    Reads anomalies json and emits topics.json for the dataset.
+    """
+    ymd = _ymd()
+    anomalies_path = base_dir / "data" / "features" / "anomalies" / ymd / f"{dataset_id}.json"
+    payload = _read_json(anomalies_path)
+
+    # Default score heuristic: abs(roc_1d) * 100
+    roc = None
+    if isinstance(payload, dict):
+        roc = payload.get("roc_1d")
+    if roc is None:
+        roc = 0.0
+
+    score = float(abs(float(roc)) * 100.0)
+    severity = "HIGH" if score >= 3.0 else ("MED" if score >= 1.0 else "LOW")
+
+    topic = {
+        "ts_utc": _utc_now(),
+        "dataset_id": dataset_id,
+        "topic_id": f"{dataset_id}::roc_1d",
+        "title": f"{report_key} 1D change spike" if severity != "LOW" else f"{report_key} daily move",
+        "score": score,
+        "severity": severity,
+        "evidence": {
+            "roc_1d": float(roc),
+            "anomalies_path": anomalies_path.as_posix(),
+        },
+        "rationale": "Topic generated from anomaly signal (roc_1d).",
+        "links": [],
+    }
+
+    out_dir = base_dir / "data" / "topics" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{dataset_id}.json"
-    out_path.write_text(json.dumps(topics, ensure_ascii=False, indent=2), encoding="utf-8")
+    out_path.write_text(json.dumps([topic], ensure_ascii=False, indent=2), encoding="utf-8")
     return out_path
