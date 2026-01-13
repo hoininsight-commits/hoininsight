@@ -36,16 +36,29 @@ def run_schema_checks(base_dir: Path) -> SchemaCheckResult:
         curated = base_dir / ds.curated_path
 
         if not curated.exists():
-            ok = False
-            lines.append(f"[MISS] curated({ds.dataset_id}): {curated.as_posix()}")
+            if ds.soft_fail:
+                lines.append(f"[SKIP] schema({ds.dataset_id}): missing curated file (soft_fail)")
+            else:
+                ok = False
+                lines.append(f"[MISS] curated({ds.dataset_id}): {curated.as_posix()}")
             continue
 
-        df = pd.read_csv(curated)
-        miss = _missing_cols(list(df.columns), list(required))
-        if miss:
-            ok = False
-            lines.append(f"[FAIL] schema({ds.dataset_id}): missing={miss}")
-        else:
-            lines.append(f"[OK] schema({ds.dataset_id}): {ds.schema_version}")
+        try:
+            df = pd.read_csv(curated)
+            miss = _missing_cols(list(df.columns), list(required))
+            if miss:
+                ok = False
+                lines.append(f"[FAIL] schema({ds.dataset_id}): missing={miss}")
+            else:
+                lines.append(f"[OK] schema({ds.dataset_id}): {ds.schema_version}")
+        except Exception as e:
+            # If file exists but is unreadable, that is a FAIL unless soft_fail? 
+            # Usually unreadable means corrupted. Let's treat as FAIL or soft fail depending on policy.
+            # Ideally if soft_fail is True, we shouldn't crash pipeline for this.
+            if ds.soft_fail:
+                lines.append(f"[SKIP] schema({ds.dataset_id}): error reading file: {e}")
+            else:
+                ok = False
+                lines.append(f"[FAIL] schema({ds.dataset_id}): error reading file: {e}")
 
     return SchemaCheckResult(ok=ok, lines=lines)
