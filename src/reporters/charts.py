@@ -7,6 +7,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import json
 import pandas as pd
+import matplotlib
+# Force headless backend before importing pyplot
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from src.registry.loader import load_datasets
