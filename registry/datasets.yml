@@ -78,3 +78,17 @@ datasets:
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "US10Y"
     curated_path: "data/curated/rates/us10y.csv"
+
+  - dataset_id: "risk_vix_index_stooq"
+    enabled: true
+    entity: "VIX"
+    unit: "INDEX"
+    source: "stooq.com"
+    metric_name: "close"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.stooq_vix:write_raw_vix"
+    normalizer: "src.normalizers.vix_curated:write_curated_vix_csv"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "VIX"
+    curated_path: "data/curated/risk/vix.csv"
