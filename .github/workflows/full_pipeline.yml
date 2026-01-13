@@ -5,25 +5,28 @@ on:
   schedule:
     - cron: "0 23 * * *"
 
+permissions:
+  contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run pipeline
+
+      - name: Run engine
         run: |
-          python -m src.pipeline.run_collect
-          python -m src.pipeline.run_normalize
-          python -m src.pipeline.run_anomaly
-          python -m src.pipeline.run_topic
-          python -m src.pipeline.run_report
+          python -m src.engine
+
       - name: Commit outputs
         run: |
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
-          git add data || true
-          git commit -m "chore: pipeline stub run" || echo "No changes"
+          git add data docs || true
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: engine daily run"
           git push
