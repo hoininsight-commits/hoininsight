@@ -8,6 +8,7 @@ from typing import Any, Dict, List
 from src.registry.loader import load_datasets
 from src.reporters.data_snapshot import write_data_snapshot
 from src.topics.persistence import count_appearances_7d
+from src.topics.fusion import write_meta_topics
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -38,6 +39,15 @@ def _collect_all_topics(base_dir: Path) -> List[Dict[str, Any]]:
 def write_daily_brief(base_dir: Path) -> Path:
     # Always emit snapshot alongside daily_brief (file-based dashboard)
     write_data_snapshot(base_dir)
+    
+    # Meta Topics
+    meta_path = write_meta_topics(base_dir)
+    meta_topics = []
+    if meta_path.exists():
+        try:
+            meta_topics = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
 
     ymd = _ymd()
     out_dir = base_dir / "data" / "reports" / ymd
@@ -65,6 +75,21 @@ def write_daily_brief(base_dir: Path) -> Path:
     lines: List[str] = []
     lines.append("# Daily Brief")
     lines.append("")
+
+    lines.append("## META TOPICS")
+    if len(meta_topics) == 0:
+        lines.append("- (no meta topics)")
+    else:
+        meta_topics.sort(key=lambda x: float(x.get("score", 0.0)), reverse=True)
+        top_meta = meta_topics[:3]
+        lines.append("")
+        lines.append("| rank | title | score | severity | evidence |")
+        lines.append("|---:|---|---:|---|---|")
+        for i, m in enumerate(top_meta, 1):
+             ev_str = ", ".join(m.get("evidence", []))
+             lines.append(f"| {i} | {m.get('title')} | {m.get('score'):.2f} | {m.get('severity')} | {ev_str} |")
+    lines.append("")
+
     lines.append("## TOP 5 Topics")
     if len(top5) == 0:
         lines.append("- (no topics)")
