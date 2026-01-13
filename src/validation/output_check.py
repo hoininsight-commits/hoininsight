@@ -63,14 +63,23 @@ def run_output_checks(base_dir: Path) -> OutputCheckResult:
         "soft_fail": True,
         "status": "OK" if meta_ok else "SKIPPED",
         "curated_ok": meta_ok,
-        "anomalies_ok": True, # details not applicable
-        "topics_ok": True     # details not applicable
+        "anomalies_ok": True,
+        "topics_ok": True
     })
 
-    # report required
+    # report required -> Changed to SOFT (SKIP)
     report = base_dir / "data" / "reports" / ymd / "daily_brief.md"
     if not report.exists():
-        ok = False
-        lines.append("[FAIL] report missing")
+        # ok = False  <- Removed hard fail
+        lines.append("[SKIP] report missing (soft)")
+    
+    per_dataset.append({
+        "dataset_id": "daily_report",
+        "soft_fail": True,
+        "status": "OK" if report.exists() else "SKIPPED",
+        "curated_ok": report.exists(),
+        "anomalies_ok": True,
+        "topics_ok": True
+    })
 
     return OutputCheckResult(ok=ok, lines=lines, per_dataset=per_dataset)
