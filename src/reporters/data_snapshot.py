@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 
 from src.registry.loader import load_datasets
+from src.reporters.charts import generate_curated_charts
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -165,6 +166,10 @@ def write_data_snapshot(base_dir: Path) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "data_snapshot.md"
 
+    # Generate charts first (best-effort)
+    _, chart_results = generate_curated_charts(base_dir, days=90)
+    chart_map = {r.dataset_id: r for r in chart_results}
+
     snaps, meta = build_snapshot(base_dir)
 
     # Sort by status today (OK first), then by report_key
@@ -180,13 +185,21 @@ def write_data_snapshot(base_dir: Path) -> Path:
     lines.append("")
     lines.append("## Per-dataset Status (Today)")
     lines.append("")
-    lines.append("| report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path |")
-    lines.append("|---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|")
+    lines.append("| report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |")
+    lines.append("|---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|")
     for s in snaps:
+        cr = chart_map.get(s.dataset_id)
+        if cr and cr.ok and cr.png_path:
+            chart_cell = f"[png]({cr.png_path})"
+        else:
+            chart_cell = "-"
         lines.append(
             f"| {s.report_key} | {s.dataset_id} | {s.status_today} | {s.rows} | {s.first_ts} | {s.last_ts} | "
-            f"{s.last_7d_rows} | {s.last_30d_rows} | {s.ok_7d} | {s.skipped_7d} | {s.fail_7d} | {s.curated_path} |"
+            f"{s.last_7d_rows} | {s.last_30d_rows} | {s.ok_7d} | {s.skipped_7d} | {s.fail_7d} | {s.curated_path} | {chart_cell} |"
         )
+    lines.append("")
+    lines.append("## Charts")
+    lines.append(f"- Directory: `data/reports/{ymd}/charts/`")
     lines.append("")
     lines.append("## Notes")
     lines.append("- rows/ts는 curated CSV 기준입니다.")
