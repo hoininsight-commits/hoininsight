@@ -43,7 +43,7 @@ datasets:
 
   - dataset_id: "metal_gold_xauusd_spot_gold_api"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "XAUUSD"
     unit: "USD"
     source: "gold-api.com"
@@ -58,7 +58,7 @@ datasets:
 
   - dataset_id: "metal_silver_xagusd_spot_gold_api"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "XAGUSD"
     unit: "USD"
     source: "gold-api.com"
@@ -73,7 +73,7 @@ datasets:
 
   - dataset_id: "rates_us10y_yield_ustreasury"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "US10Y"
     unit: "PCT"
     source: "treasury.gov"
@@ -88,7 +88,7 @@ datasets:
 
   - dataset_id: "risk_vix_index_stooq"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "VIX"
     unit: "INDEX"
     source: "stooq.com"
@@ -103,7 +103,7 @@ datasets:
 
   - dataset_id: "index_spx_sp500_stooq"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "SPX"
     unit: "INDEX"
     source: "stooq.com"
@@ -118,7 +118,7 @@ datasets:
 
   - dataset_id: "index_kospi_stooq"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "KOSPI"
     unit: "INDEX"
     source: "stooq.com"
