@@ -25,17 +25,10 @@ def write_daily_brief(base_dir: Path) -> Path:
 
     lines = [f"# Daily Brief ({y}-{m}-{d})", ""]
 
-    # dataset 섹션
     for ds in datasets:
         lines.append(f"## {ds.report_key}")
-        if ds.report_key == "BTCUSD":
-            curated = base_dir / "data" / "curated" / "crypto" / "btc_usd.csv"
-        elif ds.report_key == "USDKRW":
-            curated = base_dir / "data" / "curated" / "fx" / "usdkrw.csv"
-        else:
-            curated = None
-
-        if curated is not None and curated.exists():
+        curated = base_dir / ds.curated_path
+        if curated.exists():
             df = pd.read_csv(curated)
             last_row = df.iloc[-1].to_dict() if len(df) else {}
             lines.append(f"- last_ts_utc: {last_row.get('ts_utc','')}")
@@ -45,7 +38,6 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append("- (no curated data)")
         lines.append("")
 
-    # topics 합본(점수 내림차순)
     lines.append("## Topics")
     all_topics = []
     for ds in datasets:

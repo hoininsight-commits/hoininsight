@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   run:
@@ -23,6 +24,7 @@ jobs:
           python -m src.engine
 
       - name: Commit outputs
+        if: success()
         run: |
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
@@ -30,3 +32,11 @@ jobs:
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: engine daily run [skip ci]"
           git push
+
+      - name: Create issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          y=$(date -u +"%Y-%m-%d")
+          gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."

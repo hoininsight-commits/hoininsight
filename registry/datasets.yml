@@ -19,6 +19,7 @@ datasets:
     anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "BTCUSD"
+    curated_path: "data/curated/crypto/btc_usd.csv"
 
   - dataset_id: "fx_usdkrw_spot_open_er_api"
     enabled: true
@@ -30,3 +31,4 @@ datasets:
     anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "USDKRW"
+    curated_path: "data/curated/fx/usdkrw.csv"

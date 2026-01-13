@@ -19,9 +19,9 @@ class Dataset:
     anomaly: str
     topic: str
     report_key: str
+    curated_path: str
 
 def _load_callable(spec: str) -> Callable[..., Any]:
-    # "module.path:func"
     mod_path, func_name = spec.split(":")
     mod = importlib.import_module(mod_path)
     return getattr(mod, func_name)
@@ -42,6 +42,7 @@ def load_datasets(registry_path: Path) -> list[Dataset]:
             anomaly=it["anomaly"],
             topic=it["topic"],
             report_key=it["report_key"],
+            curated_path=it["curated_path"],
         )
         datasets.append(ds)
     return datasets

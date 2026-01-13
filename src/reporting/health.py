@@ -14,6 +14,7 @@ class Health:
     datasets_enabled: int
     checks_ok: bool
     check_lines: list[str]
+    per_dataset: list[dict]
 
 def _utc_ymd() -> tuple[str, str, str]:
     return (
@@ -22,7 +23,7 @@ def _utc_ymd() -> tuple[str, str, str]:
         datetime.utcnow().strftime("%d"),
     )
 
-def write_health(base_dir: Path, status: str, checks_ok: bool, check_lines: list[str]) -> Path:
+def write_health(base_dir: Path, status: str, checks_ok: bool, check_lines: list[str], per_dataset: list[dict]) -> Path:
     y, m, d = _utc_ymd()
     reg = base_dir / "registry" / "datasets.yml"
     datasets = [ds for ds in load_datasets(reg) if ds.enabled]
@@ -36,6 +37,7 @@ def write_health(base_dir: Path, status: str, checks_ok: bool, check_lines: list
         datasets_enabled=len(datasets),
         checks_ok=checks_ok,
         check_lines=check_lines,
+        per_dataset=per_dataset,
     ).__dict__
 
     out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

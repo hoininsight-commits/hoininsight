@@ -25,6 +25,7 @@ def main():
     details_lines = []
     check_lines = []
     checks_ok = False
+    per_dataset = []
 
     try:
         details_lines.append("engine: start")
@@ -43,6 +44,7 @@ def main():
         chk = run_output_checks(Path("."))
         check_lines = chk.lines
         checks_ok = chk.ok
+        per_dataset = chk.per_dataset
         details_lines.extend(["checks:"] + chk.lines)
         if not chk.ok:
             raise RuntimeError("output checks failed")
@@ -53,7 +55,7 @@ def main():
         details_lines.append(f"error: {repr(e)}")
 
     # write health.json regardless of success/fail
-    health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines)
+    health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines, per_dataset=per_dataset)
     details_lines.append(f"health: {health_path.as_posix()}")
 
     finished = _utc_now_stamp()
