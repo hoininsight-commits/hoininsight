@@ -7,6 +7,7 @@ from typing import Any, Dict, List
 
 from src.registry.loader import load_datasets
 from src.reporters.data_snapshot import write_data_snapshot
+from src.topics.persistence import count_appearances_7d
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -44,9 +45,22 @@ def write_daily_brief(base_dir: Path) -> Path:
     out_path = out_dir / "daily_brief.md"
 
     topics = _collect_all_topics(base_dir)
-    topics = [t for t in topics if isinstance(t.get("score", None), (int, float))]
-    topics.sort(key=lambda x: float(x.get("score", 0.0)), reverse=True)
-    top5 = topics[:5]
+
+    enriched: List[Dict[str, Any]] = []
+    for t in topics:
+        if not isinstance(t.get("score", None), (int, float)):
+            continue
+        dataset_id = str(t.get("_dataset_id", ""))
+        topic_id = str(t.get("topic_id", ""))
+        appearances_7d = count_appearances_7d(base_dir, dataset_id, topic_id)
+        final_score = float(t.get("score")) * (1.0 + 0.15 * float(appearances_7d))
+        t2 = dict(t)
+        t2["_appearances_7d"] = int(appearances_7d)
+        t2["_final_score"] = float(final_score)
+        enriched.append(t2)
+
+    enriched.sort(key=lambda x: float(x.get("_final_score", 0.0)), reverse=True)
+    top5 = enriched[:5]
 
     lines: List[str] = []
     lines.append("# Daily Brief")
@@ -56,38 +70,33 @@ def write_daily_brief(base_dir: Path) -> Path:
         lines.append("- (no topics)")
     else:
         lines.append("")
-        lines.append("| rank | report_key | title | score | severity | chart | topic | anomaly |")
-        lines.append("|---|---|---|---:|---|---|---|---|")
+        lines.append("| rank | report_key | title | score | appearances_7d | final_score | severity | chart | topics | anomalies | dataset_id |")
+        lines.append("|---:|---|---|---:|---:|---:|---|---|---|---|---|")
         for i, t in enumerate(top5, 1):
-            did = t.get("_dataset_id", "")
-            key = t.get("_report_key", "")
-            title = t.get("title", "")
-            score = t.get("score", 0)
-            sev = t.get("severity", "")
-            
-            # Paths
-            chart_rel = f"data/reports/{ymd}/charts/{did}.png"
-            topic_rel = f"data/topics/{ymd}/{did}.json"
-            anom_rel = f"data/features/anomalies/{ymd}/{did}.json"
+            dataset_id = str(t.get("_dataset_id", ""))
+            chart_rel = _exists_rel(base_dir, f"data/reports/{ymd}/charts/{dataset_id}.png")
+            topics_rel = _exists_rel(base_dir, f"data/topics/{ymd}/{dataset_id}.json")
+            anomalies_rel = _exists_rel(base_dir, f"data/features/anomalies/{ymd}/{dataset_id}.json")
 
-            # Check existence
-            c_link = f"[png]({chart_rel})" if _exists_rel(base_dir, chart_rel) != "-" else "-"
-            t_link = f"[json]({topic_rel})" if _exists_rel(base_dir, topic_rel) != "-" else "-"
-            a_link = f"[json]({anom_rel})" if _exists_rel(base_dir, anom_rel) != "-" else "-"
-            
+            chart_cell = f"[png]({chart_rel})" if chart_rel != "-" else "-"
+            topics_cell = f"[json]({topics_rel})" if topics_rel != "-" else "-"
+            anomalies_cell = f"[json]({anomalies_rel})" if anomalies_rel != "-" else "-"
+
             lines.append(
-                f"| {i} | **{key}** | {title} | {score} | {sev} | {c_link} | {t_link} | {a_link} |"
+                f"| {i} | {t.get('_report_key','')} | {t.get('title','')} | {t.get('score')} | "
+                f"{t.get('_appearances_7d')} | {t.get('_final_score')} | {t.get('severity')} | "
+                f"{chart_cell} | {topics_cell} | {anomalies_cell} | {dataset_id} |"
             )
 
     lines.append("")
     lines.append("## Per-dataset Topics")
-    if len(topics) == 0:
+    if len(enriched) == 0:
         lines.append("- (no topics)")
     else:
-        for t in topics:
+        for t in enriched:
             lines.append(
                 f"- [{t.get('severity')}] {t.get('_report_key','')}: {t.get('title','')} "
-                f"(score={t.get('score')}, dataset={t.get('_dataset_id','')})"
+                f"(score={t.get('score')}, final_score={t.get('_final_score')}, appearances_7d={t.get('_appearances_7d')}, dataset={t.get('dataset_id')})"
             )
 
     lines.append("")
