@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -30,17 +31,27 @@ def main():
 
     try:
         details_lines.append("engine: start")
+        print("engine: start", file=sys.stderr)
+        
         collect_main()
         details_lines.append("collect: ok")
+        print("collect: ok", file=sys.stderr)
+        
         normalize_main()
         details_lines.append("normalize: ok")
+        print("normalize: ok", file=sys.stderr)
+        
         anomaly_main()
         details_lines.append("anomaly: ok")
+        print("anomaly: ok", file=sys.stderr)
+        
         topic_main()
         details_lines.append("topic: ok")
+        print("topic: ok", file=sys.stderr)
 
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
+        print(f"report: ok | {report_path.as_posix()}", file=sys.stderr)
 
         chk = run_output_checks(Path("."))
         check_lines = chk.lines
@@ -48,17 +59,29 @@ def main():
         checks_ok = chk.ok
         details_lines.extend(["checks:"] + chk.lines)
         if not chk.ok:
+            # We print detailed validation errors to stderr
+            for line in chk.lines:
+                print(f"validation: {line}", file=sys.stderr)
             raise RuntimeError("output checks failed")
 
         sch = run_schema_checks(Path("."))
         details_lines.extend(["schema_checks:"] + sch.lines)
         if not sch.ok:
+            for line in sch.lines:
+                print(f"schema: {line}", file=sys.stderr)
             raise RuntimeError("schema checks failed")
 
         details_lines.append("engine: done")
+        print("engine: done", file=sys.stderr)
+        
     except Exception as e:
         status = "FAIL"
-        details_lines.append(f"error: {repr(e)}")
+        err_msg = f"error: {repr(e)}"
+        details_lines.append(err_msg)
+        # CRITICAL: Print error to stderr so it appears in CI logs
+        print(err_msg, file=sys.stderr)
+        import traceback
+        traceback.print_exc(file=sys.stderr)
 
     health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines, per_dataset=per_dataset)
     details_lines.append(f"health: {health_path.as_posix()}")
@@ -77,7 +100,7 @@ def main():
     append_observation_log(Path("docs") / "OBSERVATION_LOG.md", obs_line)
 
     if status != "SUCCESS":
-        raise SystemExit(1)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
