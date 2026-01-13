@@ -5,6 +5,8 @@ from datetime import datetime
 from pathlib import Path
 from urllib.request import urlopen, Request
 
+from src.utils.retry import with_retry
+
 URL = "https://open.er-api.com/v6/latest/USD"
 
 def _utc_date_parts() -> tuple[str, str, str]:
@@ -14,10 +16,13 @@ def _utc_date_parts() -> tuple[str, str, str]:
         datetime.utcnow().strftime("%d"),
     )
 
-def write_raw_usdkrw(base_dir: Path) -> Path:
+def _fetch_raw() -> str:
     req = Request(URL, headers={"User-Agent": "hoin-insight-bot"})
     with urlopen(req, timeout=30) as resp:
-        raw = resp.read().decode("utf-8")
+        return resp.read().decode("utf-8")
+
+def write_raw_usdkrw(base_dir: Path) -> Path:
+    raw = with_retry(_fetch_raw, attempts=3, base_sleep=1.0)
     j = json.loads(raw)
     krw = float(j["rates"]["KRW"])
     ts_utc = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")

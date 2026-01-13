@@ -9,6 +9,8 @@ from src.pipeline.run_normalize import main as normalize_main
 from src.pipeline.run_anomaly import main as anomaly_main
 from src.pipeline.run_topic import main as topic_main
 from src.validation.output_check import run_output_checks
+from src.reporters.daily_report import write_daily_brief
+from src.reporting.health import write_health
 
 def _utc_now_stamp() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -21,6 +23,8 @@ def main():
     started = _utc_now_stamp()
     status = "SUCCESS"
     details_lines = []
+    check_lines = []
+    checks_ok = False
 
     try:
         details_lines.append("engine: start")
@@ -33,13 +37,12 @@ def main():
         topic_main()
         details_lines.append("topic: ok")
 
-        # report (합본)
-        from src.reporters.daily_report import write_daily_brief
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
 
-        # output checks
         chk = run_output_checks(Path("."))
+        check_lines = chk.lines
+        checks_ok = chk.ok
         details_lines.extend(["checks:"] + chk.lines)
         if not chk.ok:
             raise RuntimeError("output checks failed")
@@ -48,6 +51,10 @@ def main():
     except Exception as e:
         status = "FAIL"
         details_lines.append(f"error: {repr(e)}")
+
+    # write health.json regardless of success/fail
+    health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines)
+    details_lines.append(f"health: {health_path.as_posix()}")
 
     finished = _utc_now_stamp()
     report_dir = _date_path_utc()

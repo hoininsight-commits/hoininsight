@@ -6,6 +6,8 @@ from datetime import datetime
 from pathlib import Path
 from urllib.request import urlopen, Request
 
+from src.utils.retry import with_retry
+
 URL = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=true"
 
 @dataclass
@@ -21,10 +23,13 @@ def _utc_date_parts() -> tuple[str, str, str]:
         datetime.utcnow().strftime("%d"),
     )
 
-def fetch_btc_quote() -> BTCQuote:
+def _fetch_raw() -> str:
     req = Request(URL, headers={"User-Agent": "hoin-insight-bot"})
     with urlopen(req, timeout=30) as resp:
-        raw = resp.read().decode("utf-8")
+        return resp.read().decode("utf-8")
+
+def fetch_btc_quote() -> BTCQuote:
+    raw = with_retry(_fetch_raw, attempts=3, base_sleep=1.0)
     j = json.loads(raw)
     price = float(j["bitcoin"]["usd"])
     last_updated_at = int(j["bitcoin"]["last_updated_at"])
