@@ -1,11 +1,8 @@
-from datetime import datetime
-from src.utils.paths import ensure_dirs, FEATURES_DIR
+from pathlib import Path
+from src.anomaly_detectors.roc_1d import detect_roc_1d
 
 def main():
-    ensure_dirs()
-    stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    out = FEATURES_DIR / f"_anomaly_stub_{stamp}.txt"
-    out.write_text("anomaly stub\n", encoding="utf-8")
+    detect_roc_1d(Path("."), threshold_pct=3.0)
 
 if __name__ == "__main__":
     main()

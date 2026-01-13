@@ -1,11 +1,13 @@
+from pathlib import Path
 from datetime import datetime
-from src.utils.paths import ensure_dirs, REPORTS_DIR
+from src.reporters.daily_report import write_daily_brief
 
 def main():
-    ensure_dirs()
-    stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    out = REPORTS_DIR / f"_report_stub_{stamp}.md"
-    out.write_text("# Daily Brief (stub)\n", encoding="utf-8")
+    y = datetime.utcnow().strftime("%Y")
+    m = datetime.utcnow().strftime("%m")
+    d = datetime.utcnow().strftime("%d")
+    topics_path = Path(".") / "data" / "topics" / y / m / d / "topics.json"
+    write_daily_brief(Path("."), topics_path)
 
 if __name__ == "__main__":
     main()

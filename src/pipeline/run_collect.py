@@ -1,11 +1,8 @@
-from datetime import datetime
-from src.utils.paths import ensure_dirs, RAW_DIR
+from pathlib import Path
+from src.collectors.coingecko_btc import write_raw_quote
 
 def main():
-    ensure_dirs()
-    stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    out = RAW_DIR / f"_collect_stub_{stamp}.txt"
-    out.write_text("collect stub\n", encoding="utf-8")
+    write_raw_quote(Path("."))
 
 if __name__ == "__main__":
     main()

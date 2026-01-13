@@ -1,11 +1,14 @@
+from pathlib import Path
 from datetime import datetime
-from src.utils.paths import ensure_dirs, TOPICS_DIR
+from src.topic_selectors.simple_topic import select_topics
 
 def main():
-    ensure_dirs()
-    stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    out = TOPICS_DIR / f"_topic_stub_{stamp}.txt"
-    out.write_text("topic stub\n", encoding="utf-8")
+    # anomalies 경로는 오늘 UTC 기준 폴더를 사용
+    y = datetime.utcnow().strftime("%Y")
+    m = datetime.utcnow().strftime("%m")
+    d = datetime.utcnow().strftime("%d")
+    anomalies_path = Path(".") / "data" / "features" / "anomalies" / y / m / d / "anomalies.json"
+    select_topics(Path("."), anomalies_path)
 
 if __name__ == "__main__":
     main()
