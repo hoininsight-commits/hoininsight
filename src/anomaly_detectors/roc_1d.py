@@ -23,26 +23,23 @@ def _utc_date_parts() -> tuple[str, str, str]:
         datetime.utcnow().strftime("%d"),
     )
 
-def detect_roc_1d(base_dir: Path, threshold_pct: float = 3.0) -> Path:
-    curated = base_dir / "data" / "curated" / "crypto" / "btc_usd.csv"
-    df = pd.read_csv(curated)
+def detect_roc_1d(base_dir: Path, dataset_id: str, curated_csv: Path, entity: str, threshold_pct: float = 3.0) -> Path:
+    df = pd.read_csv(curated_csv)
     df["ts_utc"] = pd.to_datetime(df["ts_utc"], utc=True, errors="coerce")
     df = df.dropna(subset=["ts_utc"]).sort_values("ts_utc")
 
-    if len(df) < 2:
-        events = []
-    else:
+    events = []
+    if len(df) >= 2:
         last = df.iloc[-1]
         prev = df.iloc[-2]
         roc = (float(last["value"]) - float(prev["value"])) / float(prev["value"]) * 100.0
-        events = []
         if abs(roc) >= threshold_pct:
             sev = min(100, int(abs(roc) * 10))
             events.append(
                 AnomalyEvent(
                     ts_utc=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    dataset_id="crypto_btc_usd_spot_coingecko",
-                    entity="BTCUSD",
+                    dataset_id=dataset_id,
+                    entity=entity,
                     anomaly_type="ROC_1D",
                     severity=sev,
                     evidence={
@@ -59,6 +56,6 @@ def detect_roc_1d(base_dir: Path, threshold_pct: float = 3.0) -> Path:
     y, m, d = _utc_date_parts()
     out_dir = base_dir / "data" / "features" / "anomalies" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "anomalies.json"
+    out_path = out_dir / f"{dataset_id}.json"
     out_path.write_text(json.dumps(events, ensure_ascii=False, indent=2), encoding="utf-8")
     return out_path

@@ -4,7 +4,11 @@ from datetime import datetime
 from pathlib import Path
 
 from src.reporting.run_log import RunResult, write_run_log, append_observation_log
-from src.registry.loader import load_datasets, get_callables
+from src.pipeline.run_collect import main as collect_main
+from src.pipeline.run_normalize import main as normalize_main
+from src.pipeline.run_anomaly import main as anomaly_main
+from src.pipeline.run_topic import main as topic_main
+from src.validation.output_check import run_output_checks
 
 def _utc_now_stamp() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -20,19 +24,26 @@ def main():
 
     try:
         details_lines.append("engine: start")
-        reg = Path("registry") / "datasets.yml"
-        datasets = [d for d in load_datasets(reg) if d.enabled]
-        details_lines.append(f"datasets: {len(datasets)}")
+        collect_main()
+        details_lines.append("collect: ok")
+        normalize_main()
+        details_lines.append("normalize: ok")
+        anomaly_main()
+        details_lines.append("anomaly: ok")
+        topic_main()
+        details_lines.append("topic: ok")
 
-        for ds in datasets:
-            details_lines.append(f"dataset: {ds.dataset_id}")
-            fns = get_callables(ds)
-            raw_path = fns["collector"](Path("."))
-            details_lines.append(f" collect: ok | {raw_path}")
-            curated_path = fns["normalizer"](Path("."))
-            details_lines.append(f" normalize: ok | {curated_path}")
+        # report (합본)
+        from src.reporters.daily_report import write_daily_brief
+        report_path = write_daily_brief(Path("."))
+        details_lines.append(f"report: ok | {report_path.as_posix()}")
 
-        # anomaly/topic/report는 파이프라인 스텝에서 일괄 수행(기존 구조 유지)
+        # output checks
+        chk = run_output_checks(Path("."))
+        details_lines.extend(["checks:"] + chk.lines)
+        if not chk.ok:
+            raise RuntimeError("output checks failed")
+
         details_lines.append("engine: done")
     except Exception as e:
         status = "FAIL"
