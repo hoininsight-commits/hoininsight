@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -31,8 +32,24 @@ def _fetch_raw() -> str:
 def fetch_btc_quote() -> BTCQuote:
     raw = with_retry(_fetch_raw, attempts=3, base_sleep=1.0)
     j = json.loads(raw)
-    price = float(j["bitcoin"]["usd"])
-    last_updated_at = int(j["bitcoin"]["last_updated_at"])
+    
+    if "bitcoin" not in j:
+        raise ValueError(f"CoinGecko response missing 'bitcoin' key: {raw}")
+    
+    btc_data = j["bitcoin"]
+    
+    if "usd" not in btc_data:
+        raise ValueError(f"CoinGecko response missing 'usd' price: {raw}")
+
+    price = float(btc_data["usd"])
+    
+    # Robustly handle last_updated_at
+    if "last_updated_at" in btc_data:
+        last_updated_at = int(btc_data["last_updated_at"])
+    else:
+        # Fallback to current system time if API doesn't provide it
+        last_updated_at = int(time.time())
+
     ts_utc = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
     return BTCQuote(ts_utc=ts_utc, price_usd=price, last_updated_at=last_updated_at)
 
