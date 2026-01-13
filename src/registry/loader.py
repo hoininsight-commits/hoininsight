@@ -1,19 +1,20 @@
 from __future__ import annotations
 
-import importlib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable
-
+from typing import List
 import yaml
 
 @dataclass
-class Dataset:
+class DatasetConfig:
     dataset_id: str
     enabled: bool
+    soft_fail: bool
     entity: str
     unit: str
     source: str
+    metric_name: str
+    schema_version: str
     collector: str
     normalizer: str
     anomaly: str
@@ -21,36 +22,26 @@ class Dataset:
     report_key: str
     curated_path: str
 
-def _load_callable(spec: str) -> Callable[..., Any]:
-    mod_path, func_name = spec.split(":")
-    mod = importlib.import_module(mod_path)
-    return getattr(mod, func_name)
-
-def load_datasets(registry_path: Path) -> list[Dataset]:
-    cfg = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
-    items = cfg.get("datasets", [])
-    datasets: list[Dataset] = []
-    for it in items:
-        ds = Dataset(
-            dataset_id=it["dataset_id"],
-            enabled=bool(it.get("enabled", True)),
-            entity=it["entity"],
-            unit=it["unit"],
-            source=it["source"],
-            collector=it["collector"],
-            normalizer=it["normalizer"],
-            anomaly=it["anomaly"],
-            topic=it["topic"],
-            report_key=it["report_key"],
-            curated_path=it["curated_path"],
+def load_datasets(path: Path) -> List[DatasetConfig]:
+    cfg = yaml.safe_load(path.read_text(encoding="utf-8"))
+    out: List[DatasetConfig] = []
+    for ds in cfg.get("datasets", []):
+        out.append(
+            DatasetConfig(
+                dataset_id=ds["dataset_id"],
+                enabled=bool(ds.get("enabled", True)),
+                soft_fail=bool(ds.get("soft_fail", False)),
+                entity=ds["entity"],
+                unit=ds["unit"],
+                source=ds["source"],
+                metric_name=ds["metric_name"],
+                schema_version=ds["schema_version"],
+                collector=ds["collector"],
+                normalizer=ds["normalizer"],
+                anomaly=ds["anomaly"],
+                topic=ds["topic"],
+                report_key=ds["report_key"],
+                curated_path=ds["curated_path"],
+            )
         )
-        datasets.append(ds)
-    return datasets
-
-def get_callables(ds: Dataset) -> dict[str, Callable[..., Any]]:
-    return {
-        "collector": _load_callable(ds.collector),
-        "normalizer": _load_callable(ds.normalizer),
-        "anomaly": _load_callable(ds.anomaly),
-        "topic": _load_callable(ds.topic),
-    }
+    return out
