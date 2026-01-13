@@ -5,8 +5,9 @@ def main():
     reg = Path("registry") / "datasets.yml"
     datasets = [d for d in load_datasets(reg) if d.enabled]
     for ds in datasets:
-        fns = get_callables(ds)
-        fns["normalizer"](Path("."))
+        # Pass the normalizer path string, not the whole config object
+        fn = get_callables(ds.normalizer)
+        fn(Path("."))
 
 if __name__ == "__main__":
     main()

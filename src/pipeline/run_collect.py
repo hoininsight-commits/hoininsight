@@ -5,8 +5,9 @@ def main():
     reg = Path("registry") / "datasets.yml"
     datasets = [d for d in load_datasets(reg) if d.enabled]
     for ds in datasets:
-        fns = get_callables(ds)
-        fns["collector"](Path("."))
+        # Pass the collector path string, not the whole config object
+        fn = get_callables(ds.collector)
+        fn(Path("."))
 
 if __name__ == "__main__":
     main()
