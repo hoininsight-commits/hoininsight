@@ -122,7 +122,10 @@ def build_snapshot(base_dir: Path, lookback_days: int = 30) -> Tuple[List[Datase
             else:
                 first_ts = ts.min().strftime("%Y-%m-%dT%H:%M:%SZ")
                 last_ts = ts.max().strftime("%Y-%m-%dT%H:%M:%SZ")
-                now = pd.Timestamp.utcnow().tz_localize("UTC")
+                
+                # Correctly calculate now in UTC
+                now = pd.Timestamp.now(tz="UTC")
+                
                 last_7d_rows = int((ts >= (now - pd.Timedelta(days=7))).sum())
                 last_30d_rows = int((ts >= (now - pd.Timedelta(days=30))).sum())
 

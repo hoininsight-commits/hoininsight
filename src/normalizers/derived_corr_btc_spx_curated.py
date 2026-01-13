@@ -19,6 +19,13 @@ def raw_path_for_today(base_dir: Path) -> Path:
 
 def write_curated_corr_btc_spx_30d(base_dir: Path) -> Path:
     rp = raw_path_for_today(base_dir)
+    
+    # Robust check: if raw file missing, we cannot normalize.
+    # We raise FileNotFoundError or similar so the pipeline harness 
+    # (wrapped in try/except) logs it, and output_check marks strictly/softly.
+    if not rp.exists():
+        raise FileNotFoundError(f"Missing raw file for BTC-SPX: {rp}")
+
     payload = json.loads(rp.read_text(encoding="utf-8"))
 
     derived_from = ",".join(payload["derived_from"])

@@ -19,6 +19,11 @@ def raw_path_for_today(base_dir: Path) -> Path:
 
 def write_curated_corr_usdkrw_us10y_30d(base_dir: Path) -> Path:
     rp = raw_path_for_today(base_dir)
+
+    # Robust check
+    if not rp.exists():
+        raise FileNotFoundError(f"Missing raw file for USDKRW-US10Y: {rp}")
+
     payload = json.loads(rp.read_text(encoding="utf-8"))
 
     derived_from = ",".join(payload["derived_from"])
