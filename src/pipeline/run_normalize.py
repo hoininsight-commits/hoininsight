@@ -6,6 +6,7 @@ def main():
     datasets = [d for d in load_datasets(reg) if d.enabled]
     for ds in datasets:
         # Pass the normalizer path string, not the whole config object
+        # Fixed: now passing ds.normalizer explicitly
         fn = get_callables(ds.normalizer)
         fn(Path("."))
 
