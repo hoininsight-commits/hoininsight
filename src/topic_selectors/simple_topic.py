@@ -13,7 +13,7 @@ def _utc_now() -> str:
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
 
-def _read_json(p: Path) -> Dict[str, Any]:
+def _read_json(p: Path) -> Any:
     return json.loads(p.read_text(encoding="utf-8"))
 
 def select_topics(base_dir: Path, dataset_id: str, report_key: str) -> Path:
@@ -26,7 +26,16 @@ def select_topics(base_dir: Path, dataset_id: str, report_key: str) -> Path:
     anomalies_path = base_dir / "data" / "features" / "anomalies" / ymd / f"{dataset_id}.json"
     payload = _read_json(anomalies_path)
 
-    roc = payload.get("roc_1d", 0.0)
+    # Robust handling: payload might be a dict or a list of dicts
+    data: Dict[str, Any] = {}
+    if isinstance(payload, list):
+        if len(payload) > 0 and isinstance(payload[-1], dict):
+            # If list, use the last item (assuming mostly recent)
+            data = payload[-1]
+    elif isinstance(payload, dict):
+        data = payload
+
+    roc = data.get("roc_1d", 0.0)
     try:
         roc = float(roc)
     except Exception:

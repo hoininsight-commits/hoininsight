@@ -58,10 +58,24 @@ def _collect_anomaly_days(base_dir: Path, dataset_id: str, days: int = 90, thr: 
     for i in range(days):
         d = datetime.utcnow().date() - __import__("datetime").timedelta(days=i)
         p = root / f"{d.year:04d}" / f"{d.month:02d}" / f"{d.day:02d}" / f"{dataset_id}.json"
+        
+        # Robustly handle missing file
+        if not p.exists():
+            continue
+            
         payload = _safe_read_json(p)
-        if isinstance(payload, dict) and "roc_1d" in payload:
+        
+        # Handle list or dict payload
+        data = {}
+        if isinstance(payload, list):
+            if len(payload) > 0 and isinstance(payload[-1], dict):
+                data = payload[-1]
+        elif isinstance(payload, dict):
+            data = payload
+            
+        if "roc_1d" in data:
             try:
-                roc = float(payload["roc_1d"])
+                roc = float(data["roc_1d"])
                 if abs(roc) >= thr:
                     out[f"{d.year:04d}-{d.month:02d}-{d.day:02d}"] = roc
             except Exception:
@@ -103,7 +117,9 @@ def generate_curated_charts(base_dir: Path, days: int = 90) -> Tuple[Path, List[
             results.append(ChartResult(ds.dataset_id, ds.report_key, "", False, "no_valid_ts_rows"))
             continue
 
-        cutoff = pd.Timestamp.utcnow().tz_localize("UTC") - pd.Timedelta(days=days)
+        # Correctly get current UTC time without double localization
+        # pd.Timestamp.now(tz="UTC") is correct.
+        cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=days)
         df90 = df[df["ts"] >= cutoff]
         if len(df90) == 0:
             df90 = df.tail(min(len(df), 200))
