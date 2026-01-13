@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any
+
+from src.topics.scoring import load_regime_signals, compute_regime_multiplier
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -18,19 +20,24 @@ def select_topics(base_dir: Path, dataset_id: str, report_key: str) -> Path:
     """
     Topic selector (topic_v1 output).
     Reads anomalies json and emits topics.json for the dataset.
+    Score v2: abs(roc_1d)*100 * regime_multiplier(VIX, US10Y).
     """
     ymd = _ymd()
     anomalies_path = base_dir / "data" / "features" / "anomalies" / ymd / f"{dataset_id}.json"
     payload = _read_json(anomalies_path)
 
-    # Default score heuristic: abs(roc_1d) * 100
-    roc = None
-    if isinstance(payload, dict):
-        roc = payload.get("roc_1d")
-    if roc is None:
+    roc = payload.get("roc_1d", 0.0)
+    try:
+        roc = float(roc)
+    except Exception:
         roc = 0.0
 
-    score = float(abs(float(roc)) * 100.0)
+    base_score = float(abs(roc) * 100.0)
+
+    regime = load_regime_signals(base_dir)
+    mult, mult_meta = compute_regime_multiplier(regime)
+    score = float(base_score * mult)
+
     severity = "HIGH" if score >= 3.0 else ("MED" if score >= 1.0 else "LOW")
 
     topic = {
@@ -42,9 +49,11 @@ def select_topics(base_dir: Path, dataset_id: str, report_key: str) -> Path:
         "severity": severity,
         "evidence": {
             "roc_1d": float(roc),
+            "base_score": base_score,
+            "regime": mult_meta,
             "anomalies_path": anomalies_path.as_posix(),
         },
-        "rationale": "Topic generated from anomaly signal (roc_1d).",
+        "rationale": "Topic generated from anomaly signal (roc_1d) with regime multiplier (VIX/US10Y).",
         "links": [],
     }
 
