@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 import yaml
+import importlib
 
 @dataclass
 class DatasetConfig:
@@ -45,3 +46,8 @@ def load_datasets(path: Path) -> List[DatasetConfig]:
             )
         )
     return out
+
+def get_callables(func_path: str):
+    mod_name, func_name = func_path.split(":")
+    mod = importlib.import_module(mod_name)
+    return getattr(mod, func_name)
