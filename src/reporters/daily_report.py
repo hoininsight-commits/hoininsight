@@ -3,9 +3,10 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 from src.registry.loader import load_datasets
+from src.reporters.data_snapshot import write_data_snapshot
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -29,6 +30,9 @@ def _collect_all_topics(base_dir: Path) -> List[Dict[str, Any]]:
     return all_topics
 
 def write_daily_brief(base_dir: Path) -> Path:
+    # Always emit snapshot alongside daily_brief (file-based dashboard)
+    write_data_snapshot(base_dir)
+
     ymd = _ymd()
     out_dir = base_dir / "data" / "reports" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -61,6 +65,11 @@ def write_daily_brief(base_dir: Path) -> Path:
                 f"- [{t.get('severity')}] {t.get('_report_key','')}: {t.get('title','')} "
                 f"(score={t.get('score')}, dataset={t.get('dataset_id')})"
             )
+
+    lines.append("")
+    lines.append("## Data Snapshot")
+    lines.append(f"- See: `data/reports/{ymd}/data_snapshot.md`")
+    lines.append("")
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out_path
