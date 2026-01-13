@@ -1,8 +1,12 @@
 from pathlib import Path
-from src.normalizers.btc_curated import write_curated_csv
+from src.registry.loader import load_datasets, get_callables
 
 def main():
-    write_curated_csv(Path("."))
+    reg = Path("registry") / "datasets.yml"
+    datasets = [d for d in load_datasets(reg) if d.enabled]
+    for ds in datasets:
+        fns = get_callables(ds)
+        fns["normalizer"](Path("."))
 
 if __name__ == "__main__":
     main()
