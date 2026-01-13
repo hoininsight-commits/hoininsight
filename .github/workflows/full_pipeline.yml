@@ -1,0 +1,29 @@
+name: full_pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 23 * * *"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run pipeline
+        run: |
+          python -m src.pipeline.run_collect
+          python -m src.pipeline.run_normalize
+          python -m src.pipeline.run_anomaly
+          python -m src.pipeline.run_topic
+          python -m src.pipeline.run_report
+      - name: Commit outputs
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          git add data || true
+          git commit -m "chore: pipeline stub run" || echo "No changes"
+          git push

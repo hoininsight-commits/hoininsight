@@ -1,0 +1,12 @@
+__pycache__/
+.venv/
+.DS_Store
+*.log
+
+data/raw/*
+data/curated/*
+data/features/*
+data/topics/*
+data/reports/*
+data/artifacts/*
+!data/**/.gitkeep

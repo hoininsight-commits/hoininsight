@@ -1,0 +1,11 @@
+version: "v1.3"
+policy:
+  additive_only: true
+  dedupe:
+    enabled: true
+    rule: "fingerprint(entity+ts+unit+source+metric_name)"
+  derived_metrics:
+    mark_is_derived: true
+    require_derived_from: true
+
+datasets: []
