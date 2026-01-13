@@ -36,3 +36,17 @@ datasets:
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "USDKRW"
     curated_path: "data/curated/fx/usdkrw.csv"
+
+  - dataset_id: "metal_gold_xauusd_spot_gold_api"
+    enabled: true
+    entity: "XAUUSD"
+    unit: "USD"
+    source: "gold-api.com"
+    metric_name: "spot_price"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.goldapi_xau:write_raw_xau_usd"
+    normalizer: "src.normalizers.xau_curated:write_curated_xau_csv"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "XAUUSD"
+    curated_path: "data/curated/metals/gold_usd.csv"
