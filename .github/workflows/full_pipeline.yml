@@ -170,6 +170,24 @@ jobs:
 
           echo "[VERIFY][INFO] Collector may skip if env vars missing (valid state)"
 
+      - name: Generate Insight Dashboard
+        run: |
+          python src/dashboard/dashboard_generator.py
+
+          # Verification (Inline)
+          if [ -f "dashboard/index.html" ]; then
+             echo "[VERIFY][OK] Dashboard generated"
+          else
+             echo "[VERIFY][FAIL] Dashboard generation failed"
+             # Warn only, do not fail pipeline for dashboard
+          fi
+      
+      - name: Upload Dashboard Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: insight-dashboard
+          path: dashboard/
+
       - name: Create issue on failure
         if: failure()
         env:
