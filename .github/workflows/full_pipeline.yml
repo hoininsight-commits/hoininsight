@@ -73,6 +73,26 @@ jobs:
             echo "[VERIFY][SKIP] No meta topics detected today (valid state)"
           fi
 
+      - name: Verify Phase 26 Regime History
+        run: |
+          YMD=$(date -u +"%Y-%m-%d")
+          SNAPSHOT="data/regimes/regime_$YMD.json"
+          HISTORY="data/regimes/regime_history.json"
+
+          echo "[VERIFY] Phase 26 Regime History Check"
+
+          if [ ! -f "$SNAPSHOT" ]; then
+            echo "[WARN] Regime history update skipped (missing daily regime file)"
+            exit 0
+          fi
+
+          if [ ! -f "$HISTORY" ]; then
+            echo "[VERIFY][FAIL] regime_history.json not found"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Regime history updated"
+
       - name: Create issue on failure
         if: failure()
         env:

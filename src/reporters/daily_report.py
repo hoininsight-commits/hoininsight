@@ -11,6 +11,7 @@ from src.topics.persistence import count_appearances_7d
 from src.topics.fusion import write_meta_topics
 from src.topics.momentum import compute_momentum_7d
 from src.reporters.regime_card import build_regime_card
+from src.topics.regime_history import update_regime_history
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -105,11 +106,24 @@ def write_daily_brief(base_dir: Path) -> Path:
 
     # [Phase 24] Regime Summary Card
     card = build_regime_card(base_dir, enriched)
+    
+    # [Phase 26] History & Persistence
+    persistence_info = update_regime_history(base_dir, card.structured_data)
+    
     lines.append("## REGIME SUMMARY")
     lines.append(card.regime_line)
     lines.append(card.drivers_line)
     meta_link_md = f"[json]({card.meta_link})" if card.meta_link != "-" else "-"
     lines.append(f"Meta topics: {meta_link_md}")
+    
+    # Persistence Message
+    if persistence_info.get("is_new_regime"):
+        lines.append("This is a newly formed regime, detected for the first time today.")
+    else:
+        days = persistence_info.get("persistence_days", 1)
+        start = persistence_info.get("started_at", "unknown")
+        lines.append(f"This regime has persisted for {days} consecutive days since {start}.")
+        
     lines.append("")
 
     lines.append("## META TOPICS")
