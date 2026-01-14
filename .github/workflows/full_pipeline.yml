@@ -132,6 +132,25 @@ jobs:
 
           echo "[VERIFY][OK] Narrative drift signals generated"
 
+      - name: Verify Phase 30 Insight Content
+        run: |
+          SCRIPT="data/content/insight_script_v1.md"
+          SHOTLIST="data/content/insight_shotlist_v1.md"
+
+          echo "[VERIFY] Phase 30 Insight Content Check"
+
+          if [ ! -f "$SCRIPT" ]; then
+            echo "[VERIFY][FAIL] insight_script_v1.md not found"
+            exit 1
+          fi
+
+          if [ ! -f "$SHOTLIST" ]; then
+            echo "[VERIFY][FAIL] insight_shotlist_v1.md not found"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Insight script and shotlist generated"
+
       - name: Create issue on failure
         if: failure()
         env:

@@ -15,6 +15,7 @@ from src.topics.regime_history import update_regime_history
 from src.strategies.regime_strategy_resolver import resolve_strategy_frameworks
 from src.reporters.regime_review_reporter import get_historical_context_lines
 from src.anomalies.narrative_drift_detector import detect_narrative_drift
+from src.reporters.content_generator import generate_insight_content
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -227,4 +228,9 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append(f"- {eid}: {typ}")
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    
+    # [Phase 30] Automated Insight Content
+    generate_insight_content(base_dir)
+    
     return out_path
+
