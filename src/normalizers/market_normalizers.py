@@ -1,9 +1,11 @@
 from __future__ import annotations
 
-import csv
 import json
+import pandas as pd
 from pathlib import Path
 from typing import Any, Dict, List
+
+from src.normalizers.common_timeseries import build_row
 
 def _read_jsonl(p: Path) -> List[Dict[str, Any]]:
     if not p.exists():
@@ -18,27 +20,16 @@ def _read_jsonl(p: Path) -> List[Dict[str, Any]]:
                     pass
     return out
 
-def _write_csv(p: Path, data: List[Dict[str, Any]], fields: List[str]):
-    p.parent.mkdir(parents=True, exist_ok=True)
-    with open(p, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(data)
-
-def _generic_normalize(raw_id: str, curated_path: str, entity: str, unit: str, metric: str, source: str):
+def _generic_normalize(dataset_id: str, curated_path: str, entity: str, unit: str, metric: str, source: str):
     """
     Reads raw jsonl (date, value/price/close/yield) and writes timestamps_v1 csv
     """
     # Find latest raw file
-    base_raw = Path("data/raw") / raw_id
+    base_raw = Path("data/raw") / dataset_id
     if not base_raw.exists():
-        print(f"[WARN] No raw data for {raw_id}")
+        print(f"[WARN] No raw data for {dataset_id}")
         return
 
-    # Just pick the last file for simplicity or iterate?
-    # For daily pipeline, we usually process 'today' or 'latest'.
-    # We'll iter all generic jsonl files and combine? 
-    # Or just grab the latest.
     files = sorted(base_raw.glob("*.jsonl"))
     if not files:
         print(f"[WARN] No .jsonl files in {base_raw}")
@@ -48,40 +39,53 @@ def _generic_normalize(raw_id: str, curated_path: str, entity: str, unit: str, m
     for f in files:
         items = _read_jsonl(f)
         for item in items:
-            # Map item to schema
-            # Schema: entity, timestamp, metric, value, unit, source
             val = item.get("close") or item.get("price") or item.get("yield") or 0.0
             
             # Timestamp: "YYYY-MM-DD" -> "YYYY-MM-DDT00:00:00Z" ? 
-            # Existing schema usually expects ISO. 
             d = item.get("date", "")
-            ts = f"{d}T00:00:00Z" if len(d) == 10 else d
+            # Ensure ISO format (T00:00:00Z) if just date
+            ts = f"{d}T00:00:00Z" if len(d) == 10 and "T" not in d else d
             
-            row = {
-                "entity": entity,
-                "timestamp": ts,
-                "metric": metric,
-                "value": val,
-                "unit": unit,
-                "source": source
-            }
+            if not ts:
+                continue
+
+            # source override from item if present (e.g. mock)
+            item_src = item.get("source", source)
+
+            row = build_row(
+                ts_utc=ts,
+                entity=entity,
+                value=float(val),
+                unit=unit,
+                source=item_src,
+                dataset_id=dataset_id,
+                metric_name=metric,
+                is_derived=False,
+                derived_from=""
+            )
             all_rows.append(row)
 
-    # Dedupe?
-    # Simple dedupe by timestamp + entity
-    unique_map = {}
-    for r in all_rows:
-        unique_map[r["timestamp"]] = r
-    
-    final_rows = sorted(unique_map.values(), key=lambda x: x["timestamp"])
-    
-    # Write
-    out = Path(curated_path)
-    fields = ["entity", "timestamp", "metric", "value", "unit", "source"]
-    _write_csv(out, final_rows, fields)
-    print(f"[OK] Normalized {raw_id} -> {curated_path}")
+    if not all_rows:
+        return
 
-# --- Entry Points ---
+    # Dedupe using fingerprint logic (relying on pandas)
+    df = pd.DataFrame(all_rows)
+    
+    out = Path(curated_path)
+    if out.exists():
+        try:
+            old_df = pd.read_csv(out)
+            df = pd.concat([old_df, df], ignore_index=True)
+        except:
+            pass
+            
+    # Dedupe by fingerprint, keep last
+    if "fingerprint" in df.columns:
+        df = df.drop_duplicates(subset=["fingerprint"], keep="last")
+    
+    out.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out, index=False)
+    print(f"[OK] Normalized {dataset_id} -> {curated_path}")
 
 # --- Entry Points ---
 
