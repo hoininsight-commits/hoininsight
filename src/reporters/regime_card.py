@@ -49,6 +49,7 @@ def build_regime_card(
                 ev = ",".join([str(x) for x in evidence])
             else:
                 ev = str(evidence)
+            # Meta Topic becomes the definitive Regime
             regime_line = f"Regime: {m.get('title','')} (severity={m.get('severity')}, score={m.get('score')}) | evidence={ev}"
         else:
             regime_line = "Regime: (no meta regime detected)"

@@ -45,6 +45,33 @@ jobs:
           name: daily-reports
           path: data/reports/
 
+      - name: Verify Phase 25 Meta Regime
+        run: |
+          YMD=$(date -u +"%Y/%m/%d")
+          REPORT="data/reports/$YMD/daily_brief.md"
+          META="data/meta_topics/$YMD/meta_topics.json"
+
+          echo "[VERIFY] Phase 25 Meta Regime Check"
+
+          if [ ! -f "$REPORT" ]; then
+            echo "[VERIFY][FAIL] daily_brief.md not found"
+            exit 1
+          fi
+
+          if [ -f "$META" ] && [ "$(jq length $META)" -gt 0 ]; then
+            if grep -q "Regime:" "$REPORT"; then
+              echo "[VERIFY][OK] Regime Summary exists"
+              echo "[VERIFY][OK] Meta Topic detected and used as Regime basis"
+              echo "----- REGIME SUMMARY -----"
+              sed -n '/## REGIME SUMMARY/,/## /p' "$REPORT" || true
+              echo "--------------------------"
+            else
+              echo "[VERIFY][FAIL] Regime Summary missing despite meta topics existing"
+              exit 1
+            fi
+          else
+            echo "[VERIFY][SKIP] No meta topics detected today (valid state)"
+          fi
 
       - name: Create issue on failure
         if: failure()

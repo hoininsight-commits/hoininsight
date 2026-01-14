@@ -55,7 +55,8 @@ def fuse_meta_topics(base_dir: Path) -> List[Dict[str, Any]]:
             "title": "Risk-Off Regime 강화",
             "severity": "HIGH",
             "score": score,
-            "evidence": sorted(list({t.get("_dataset_id") for t in used}))
+            "evidence": sorted(list({t.get("_dataset_id") for t in used})),
+            "generated_at": datetime.utcnow().isoformat()
         })
 
     # Rule 2: Rate & FX Shock
@@ -69,7 +70,8 @@ def fuse_meta_topics(base_dir: Path) -> List[Dict[str, Any]]:
             "title": "금리·환율 동시 충격",
             "severity": "MEDIUM",
             "score": score,
-            "evidence": sorted(list({t.get("_dataset_id") for t in used}))
+            "evidence": sorted(list({t.get("_dataset_id") for t in used})),
+            "generated_at": datetime.utcnow().isoformat()
         })
 
     return meta
