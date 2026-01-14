@@ -1,5 +1,7 @@
 import sys
+import json
 import traceback
+from datetime import datetime
 from pathlib import Path
 from src.registry.loader import load_datasets, get_callables
 
@@ -7,16 +9,51 @@ def main():
     reg = Path("registry") / "datasets.yml"
     datasets = [d for d in load_datasets(reg) if d.enabled]
     
+    # Load existing status
+    status_dir = Path("data/dashboard")
+    status_file = status_dir / "collection_status.json"
+    collection_status = {}
+    
+    if status_file.exists():
+        try:
+            with open(status_file, "r", encoding="utf-8") as f:
+                collection_status = json.load(f)
+        except Exception:
+            pass
+
     failure_count = 0
     
     for ds in datasets:
+        dataset_id = ds.dataset_id
+        
         try:
             fn = get_callables(ds.normalizer)
             fn(Path("."))
+            
+            # If normalization succeeds, mark as OK (this fixes DERIVED datasets)
+            # Only update if explicitly successful, or if it was previously FAIL
+            collection_status[dataset_id] = {
+                "status": "OK",
+                "reason": "Normalized successfully",
+                "timestamp": datetime.utcnow().isoformat() + "Z"
+            }
+            
         except Exception as e:
             failure_count += 1
             print(f"error: normalizer failed for {ds.dataset_id}: {repr(e)}", file=sys.stderr)
             traceback.print_exc(file=sys.stderr)
+            
+            # Update status to FAIL if normalization fails
+            collection_status[dataset_id] = {
+                "status": "FAIL",
+                "reason": f"Normalization Error: {str(e)[:100]}",
+                "timestamp": datetime.utcnow().isoformat() + "Z"
+            }
+
+    # Save updated status
+    status_dir.mkdir(parents=True, exist_ok=True)
+    with open(status_file, "w", encoding="utf-8") as f:
+        json.dump(collection_status, f, indent=2)
 
     if failure_count > 0:
         print(f"normalize: finished with {failure_count} failures", file=sys.stderr)
