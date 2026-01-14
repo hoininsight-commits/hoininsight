@@ -83,20 +83,22 @@ def _generic_normalize(raw_id: str, curated_path: str, entity: str, unit: str, m
 
 # --- Entry Points ---
 
-def normalize_nasdaq():
+# --- Entry Points ---
+
+def normalize_nasdaq(base_dir: Path):
     _generic_normalize("index_nasdaq_ndx_stooq", "data/curated/indices/nasdaq.csv", "NDX", "INDEX", "close", "stooq")
 
-def normalize_dxy():
+def normalize_dxy(base_dir: Path):
     _generic_normalize("fx_dxy_index_stooq", "data/curated/fx/dxy.csv", "DXY", "INDEX", "close", "stooq")
 
-def normalize_us02y():
+def normalize_us02y(base_dir: Path):
     _generic_normalize("rates_us02y_yield_ustreasury", "data/curated/rates/us02y.csv", "US02Y", "PCT", "yield", "treasury")
 
-def normalize_wti():
+def normalize_wti(base_dir: Path):
     _generic_normalize("comm_wti_crude_oil_stooq", "data/curated/commodities/wti.csv", "WTI", "USD", "close", "stooq")
 
-def normalize_platinum():
+def normalize_platinum(base_dir: Path):
     _generic_normalize("metal_platinum_xptusd_stooq", "data/curated/metals/platinum.csv", "XPTUSD", "USD", "close", "stooq")
 
-def normalize_eth():
+def normalize_eth(base_dir: Path):
     _generic_normalize("crypto_eth_usd_spot_coingecko", "data/curated/crypto/eth_usd.csv", "ETHUSD", "USD", "spot_price", "coingecko")
