@@ -1,82 +1,82 @@
 {
   "crypto_btc_usd_spot_coingecko": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:12.251991Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.052416Z"
   },
   "fx_usdkrw_spot_open_er_api": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:12.326414Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.054102Z"
   },
   "metal_gold_xauusd_spot_gold_api": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:12.769825Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.055753Z"
   },
   "metal_silver_xagusd_spot_gold_api": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:13.153693Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.057383Z"
   },
   "rates_us10y_yield_ustreasury": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:24.494088Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.059081Z"
   },
   "risk_vix_index_stooq": {
-    "status": "FAIL",
-    "reason": "Error: stooq vix CSV missing Close column",
-    "timestamp": "2026-01-14T23:30:25.128272Z"
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.060697Z"
   },
   "index_spx_sp500_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:28.219747Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.062306Z"
   },
   "index_kospi_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.535964Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.063922Z"
   },
   "derived_corr_btc_spx_30d": {
-    "status": "FAIL",
-    "reason": "Error: missing curated file: data/curated/crypto/btc_usd.csv",
-    "timestamp": "2026-01-14T23:30:29.537392Z"
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.065539Z"
   },
   "derived_corr_usdkrw_us10y_30d": {
-    "status": "FAIL",
-    "reason": "Error: missing curated file: data/curated/fx/usdkrw.csv",
-    "timestamp": "2026-01-14T23:30:29.538703Z"
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.067125Z"
   },
   "index_nasdaq_ndx_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.585732Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.069303Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.585882Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.070388Z"
   },
   "rates_us02y_yield_ustreasury": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.586017Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.071467Z"
   },
   "comm_wti_crude_oil_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.586152Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.072589Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.586283Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.073658Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
-    "reason": "Collected successfully",
-    "timestamp": "2026-01-14T23:30:29.641053Z"
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-14T23:44:58.074736Z"
   }
 }
