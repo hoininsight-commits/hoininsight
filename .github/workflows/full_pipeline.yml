@@ -151,6 +151,25 @@ jobs:
 
           echo "[VERIFY][OK] Insight script and shotlist generated"
 
+      - name: Verify Auto Collection Expansion
+        run: |
+          echo "[VERIFY] Auto Collection Expansion Check"
+
+          if [ ! -f "registry/datasets.yml" ]; then
+            echo "[VERIFY][FAIL] registry/datasets.yml not found"
+            exit 1
+          fi
+
+          # Check new axes
+          if grep -q "PRECIOUS_METALS" registry/datasets.yml && grep -q "CRYPTO" registry/datasets.yml; then
+            echo "[VERIFY][OK] New dataset axes registered"
+          else
+            echo "[VERIFY][FAIL] New dataset axes not found in registry"
+            exit 1
+          fi
+
+          echo "[VERIFY][INFO] Collector may skip if env vars missing (valid state)"
+
       - name: Create issue on failure
         if: failure()
         env:

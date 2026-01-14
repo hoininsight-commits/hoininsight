@@ -160,3 +160,100 @@ datasets:
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "USDKRWxUS10Y_CORR30D"
     curated_path: "data/curated/derived/corr_usdkrw_us10y_30d.csv"
+
+  - dataset_id: "index_nasdaq_ndx_stooq"
+    category: "GLOBAL_INDEX"
+    enabled: true
+    soft_fail: true
+    entity: "NDX"
+    unit: "INDEX"
+    source: "stooq"
+    metric_name: "close"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_nasdaq"
+    normalizer: "src.normalizers.market_normalizers:normalize_nasdaq"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "NASDAQ"
+    curated_path: "data/curated/indices/nasdaq.csv"
+
+  - dataset_id: "fx_dxy_index_stooq"
+    category: "FX_RATES"
+    enabled: true
+    soft_fail: true
+    entity: "DXY"
+    unit: "INDEX"
+    source: "stooq"
+    metric_name: "close"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_dxy"
+    normalizer: "src.normalizers.market_normalizers:normalize_dxy"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "DXY"
+    curated_path: "data/curated/fx/dxy.csv"
+
+  - dataset_id: "rates_us02y_yield_ustreasury"
+    category: "RATES_YIELD"
+    enabled: true
+    soft_fail: true
+    entity: "US02Y"
+    unit: "PCT"
+    source: "treasury.gov"
+    metric_name: "yield"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_us02y"
+    normalizer: "src.normalizers.market_normalizers:normalize_us02y"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "US02Y"
+    curated_path: "data/curated/rates/us02y.csv"
+
+  - dataset_id: "comm_wti_crude_oil_stooq"
+    category: "COMMODITIES"
+    enabled: true
+    soft_fail: true
+    entity: "WTI"
+    unit: "USD"
+    source: "stooq"
+    metric_name: "close"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_wti"
+    normalizer: "src.normalizers.market_normalizers:normalize_wti"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "WTI"
+    curated_path: "data/curated/commodities/wti.csv"
+
+  - dataset_id: "metal_platinum_xptusd_stooq"
+    category: "PRECIOUS_METALS"
+    enabled: true
+    soft_fail: true
+    entity: "XPTUSD"
+    unit: "USD"
+    source: "stooq"
+    metric_name: "close"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_platinum"
+    normalizer: "src.normalizers.market_normalizers:normalize_platinum"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "PLATINUM"
+    curated_path: "data/curated/metals/platinum.csv"
+
+  - dataset_id: "crypto_eth_usd_spot_coingecko"
+    category: "CRYPTO"
+    enabled: true
+    soft_fail: true
+    entity: "ETHUSD"
+    unit: "USD"
+    source: "coingecko"
+    metric_name: "spot_price"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.market_collectors:write_raw_eth"
+    normalizer: "src.normalizers.market_normalizers:normalize_eth"
+    anomaly: "src.anomaly_detectors.roc_1d:detect_roc_1d"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "ETHUSD"
+    curated_path: "data/curated/crypto/eth_usd.csv"
+
