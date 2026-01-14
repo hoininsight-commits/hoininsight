@@ -14,6 +14,7 @@ from src.reporters.regime_card import build_regime_card
 from src.topics.regime_history import update_regime_history
 from src.strategies.regime_strategy_resolver import resolve_strategy_frameworks
 from src.reporters.regime_review_reporter import get_historical_context_lines
+from src.anomalies.narrative_drift_detector import detect_narrative_drift
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -213,6 +214,17 @@ def write_daily_brief(base_dir: Path) -> Path:
     lines.append("## Data Snapshot")
     lines.append(f"- See: `data/reports/{ymd}/data_snapshot.md`")
     lines.append("")
+    
+    # [Phase 29] Narrative Drift Signals
+    drift_output = detect_narrative_drift(base_dir)
+    drifts = drift_output.get("drifts", [])
+    
+    if drifts:
+        lines.append("Narrative Drift Signals:")
+        for d in drifts:
+            typ = d.get("drift_type", "NONE")
+            eid = d.get("entity_id", "Unknown")
+            lines.append(f"- {eid}: {typ}")
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out_path

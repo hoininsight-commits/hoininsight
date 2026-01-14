@@ -119,6 +119,19 @@ jobs:
 
           echo "[VERIFY][OK] Regime retrospective summary exists"
 
+      - name: Verify Phase 29 Narrative Drift
+        run: |
+          DRIFT="data/narratives/narrative_drift_v1.json"
+
+          echo "[VERIFY] Phase 29 Narrative Drift Check"
+
+          if [ ! -f "$DRIFT" ]; then
+            echo "[VERIFY][FAIL] narrative_drift_v1.json not found"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Narrative drift signals generated"
+
       - name: Create issue on failure
         if: failure()
         env:
