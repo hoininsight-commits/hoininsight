@@ -57,7 +57,7 @@ def parse_registry(base_dir: Path) -> List[Dict]:
             datasets.append(current_ds)
         return datasets
 
-def check_collection_status(base_dir: Path, dataset: Dict, ymd: str) -> Dict:
+def check_collection_status(base_dir: Path, dataset: Dict, collection_status_data: Dict) -> Dict:
     ds_id = dataset.get("dataset_id")
     # Infer category
     category = dataset.get("category")
@@ -68,40 +68,23 @@ def check_collection_status(base_dir: Path, dataset: Dict, ymd: str) -> Dict:
             category = parts[2].upper() # data/curated/CATEGORY/...
         else:
             category = "UNCATEGORIZED"
-            
-    raw_path = base_dir / "data" / "raw" / ds_id / f"{ymd}.jsonl"
     
-    status = "FAIL"
-    reason = "File missing"
-    
-    if raw_path.exists():
-        # Check content for mock
-        try:
-            # Read first line
-            with open(raw_path, "r", encoding="utf-8") as f:
-                line = f.readline()
-                if line:
-                    item = json.loads(line)
-                    src = item.get("source", "").lower()
-                    if "mock" in src:
-                        status = "SKIP"
-                        reason = f"Mock data used ({src})"
-                    else:
-                        status = "OK"
-                        reason = "Collected"
-                else:
-                     status = "FAIL"
-                     reason = "Empty file"
-        except Exception as e:
-            status = "FAIL"
-            reason = f"Read error: {str(e)}"
+    # Read status from collection_status.json
+    if ds_id in collection_status_data:
+        status_info = collection_status_data[ds_id]
+        status = status_info.get("status", "FAIL")
+        reason = status_info.get("reason", "Unknown")
+    else:
+        # Fallback if no status recorded
+        status = "FAIL"
+        reason = "No collection status recorded"
     
     return {
         "dataset_id": ds_id,
         "category": category,
         "status": status,
         "reason": reason,
-        "last_updated": ymd
+        "last_updated": collection_status_data.get(ds_id, {}).get("timestamp", "")
     }
 
 def generate_dashboard(base_dir: Path):
@@ -109,6 +92,16 @@ def generate_dashboard(base_dir: Path):
     
     # 1. Parse Registry
     datasets = parse_registry(base_dir)
+    
+    # 1.5. Load collection status from JSON
+    collection_status_file = base_dir / "data" / "dashboard" / "collection_status.json"
+    collection_status_data = {}
+    if collection_status_file.exists():
+        try:
+            with open(collection_status_file, "r", encoding="utf-8") as f:
+                collection_status_data = json.load(f)
+        except Exception as e:
+            print(f"[WARN] Failed to load collection status: {e}")
     
     # 2. Check Status for each
     collection_health = {} # Category -> Stats
@@ -118,7 +111,7 @@ def generate_dashboard(base_dir: Path):
     total_fail = 0
     
     for ds in datasets:
-        info = check_collection_status(base_dir, ds, ymd)
+        info = check_collection_status(base_dir, ds, collection_status_data)
         cat = info["category"]
         
         if cat not in collection_health:
