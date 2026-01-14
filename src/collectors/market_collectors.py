@@ -118,20 +118,20 @@ def collect_eth_coingecko():
 
 # --- Entry Points matched to Registry ---
 
-def write_raw_nasdaq():
+def write_raw_nasdaq(base_dir: Path):
     _run_generic_collector("index_nasdaq_ndx_stooq", "collect_nasdaq_stooq", collect_nasdaq_stooq)
 
-def write_raw_dxy():
+def write_raw_dxy(base_dir: Path):
     _run_generic_collector("fx_dxy_index_stooq", "collect_dxy_stooq", collect_dxy_stooq)
 
-def write_raw_us02y():
+def write_raw_us02y(base_dir: Path):
     _run_generic_collector("rates_us02y_yield_ustreasury", "collect_us02y_treasury", collect_us02y_treasury)
 
-def write_raw_wti():
+def write_raw_wti(base_dir: Path):
     _run_generic_collector("comm_wti_crude_oil_stooq", "write_raw_wti", collect_wti_stooq)
 
-def write_raw_platinum():
+def write_raw_platinum(base_dir: Path):
     _run_generic_collector("metal_platinum_xptusd_stooq", "write_raw_platinum", collect_platinum_stooq)
 
-def write_raw_eth():
+def write_raw_eth(base_dir: Path):
     _run_generic_collector("crypto_eth_usd_spot_coingecko", "write_raw_eth", collect_eth_coingecko)
