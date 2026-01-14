@@ -12,6 +12,7 @@ from src.topics.fusion import write_meta_topics
 from src.topics.momentum import compute_momentum_7d
 from src.reporters.regime_card import build_regime_card
 from src.topics.regime_history import update_regime_history
+from src.strategies.regime_strategy_resolver import resolve_strategy_frameworks
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -123,6 +124,25 @@ def write_daily_brief(base_dir: Path) -> Path:
         days = persistence_info.get("persistence_days", 1)
         start = persistence_info.get("started_at", "unknown")
         lines.append(f"This regime has persisted for {days} consecutive days since {start}.")
+
+    # [Phase 27] Strategy Context
+    # Use basis_id if available (meta_topic_id) for better mapping, strictly falling back to regime string
+    regime_id_for_strat = card.structured_data.get("basis_id", "")
+    if not regime_id_for_strat:
+        # Fallback to regime title if ID not present (e.g. driver based)
+        regime_id_for_strat = card.structured_data.get("regime", "")
+        
+    p_days_val = persistence_info.get("persistence_days", 1)
+    
+    strat_info = resolve_strategy_frameworks(base_dir, regime_id_for_strat, p_days_val)
+    frameworks = strat_info.get("strategy_frameworks", [])
+    
+    if frameworks:
+        lines.append("")
+        lines.append(f"Under this regime (persisting for {p_days_val} days), the following strategic frameworks are relevant:")
+        for fw in frameworks:
+            fname = fw.get("name", "Unknown")
+            lines.append(f"- {fname}")
         
     lines.append("")
 

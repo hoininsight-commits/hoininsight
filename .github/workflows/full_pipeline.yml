@@ -93,6 +93,19 @@ jobs:
 
           echo "[VERIFY][OK] Regime history updated"
 
+      - name: Verify Phase 27 Regime Strategy Mapping
+        run: |
+          MAP="registry/regime_strategy_map.yml"
+
+          echo "[VERIFY] Phase 27 Regime-Strategy Mapping Check"
+
+          if [ ! -f "$MAP" ]; then
+            echo "[VERIFY][FAIL] regime_strategy_map.yml not found"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Regime-Strategy mapping file exists"
+
       - name: Create issue on failure
         if: failure()
         env:

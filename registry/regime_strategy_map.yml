@@ -1,0 +1,51 @@
+schema_version: regime_strategy_map_v1
+
+regimes:
+  AI_SUPPLY_CHAIN_ACCELERATION:
+    description: "AI 반도체 및 인프라 공급 병목 해소 국면"
+    allowed_strategies:
+      - name: "Supply Chain Expansion Monitoring"
+        focus:
+          - capex_trend
+          - lead_time_normalization
+          - inventory_cycle
+      - name: "Second-order Beneficiary Tracking"
+        focus:
+          - equipment
+          - materials
+          - outsourcing
+
+  AI_INFRA_CAPEX_EXPANSION:
+    description: "AI 인프라 투자 확장 국면"
+    allowed_strategies:
+      - name: "Capex Sustainability Observation"
+        focus:
+          - hyperscaler_spending
+          - order_backlog
+          - margin_pressure
+
+  RISK_OFF:
+    description: "위험 회피 및 안전 자산 선호 국면"
+    allowed_strategies:
+      - name: "Capital Preservation Tracking"
+        focus:
+          - liquidity_flows
+          - safe_haven_correlations
+          - volatility_clusters
+      - name: "Stress Testing Scenarios"
+        focus:
+          - max_drawdown_limits
+          - correlation_breakdown
+
+  RATE_FX_SHOCK:
+    description: "금리 및 환율 급변동 충격 국면"
+    allowed_strategies:
+      - name: "Macro Sensitivity Analysis"
+        focus:
+          - interest_rate_beta
+          - currency_exposure
+          - debt_duration
+      - name: "Hedge Effectiveness Monitoring"
+        focus:
+          - fx_correlation_shift
+          - yield_curve_impact
