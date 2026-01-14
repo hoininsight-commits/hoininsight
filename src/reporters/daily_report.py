@@ -13,6 +13,7 @@ from src.topics.momentum import compute_momentum_7d
 from src.reporters.regime_card import build_regime_card
 from src.topics.regime_history import update_regime_history
 from src.strategies.regime_strategy_resolver import resolve_strategy_frameworks
+from src.reporters.regime_review_reporter import get_historical_context_lines
 
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
@@ -145,6 +146,14 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append(f"- {fname}")
         
     lines.append("")
+
+    # [Phase 28] Historical Context
+    # current_regime string from persistence_info or card
+    curr_r = persistence_info.get("current_regime", "Unknown")
+    hist_lines = get_historical_context_lines(base_dir, curr_r)
+    if hist_lines:
+        lines.extend(hist_lines)
+        lines.append("")
 
     lines.append("## META TOPICS")
     if len(meta_topics) == 0:
