@@ -176,7 +176,7 @@ jobs:
 
           # Verification (Inline)
           if [ -f "dashboard/index.html" ]; then
-             echo "[VERIFY][OK] Dashboard generated"
+             echo "[VERIFY][OK] Data collection health dashboard generated"
           else
              echo "[VERIFY][FAIL] Dashboard generation failed"
              # Warn only, do not fail pipeline for dashboard
