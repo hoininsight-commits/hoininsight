@@ -149,75 +149,77 @@ def generate_dashboard(base_dir: Path):
     footer { margin-top: 40px; text-align: center; color: #aaa; font-size: 12px; }
     """
     
+    
     html = f"""
     <!DOCTYPE html>
-    <html>
+    <html lang="ko">
     <head>
-        <title>Hoin Insight Dashboard</title>
+        <meta charset="utf-8">
+        <title>Hoin Insight 자동화 대시보드</title>
         <style>{css}</style>
     </head>
     <body>
         <div class="container">
-            <h1>Hoin Insight Automation Dashboard</h1>
+            <h1>Hoin Insight 자동화 대시보드</h1>
             
             <div class="status-card">
                 <div>
-                    <strong>Latest Run Status:</strong> {status_data['status']}
+                    <strong>최근 실행 상태(Latest Run Status):</strong> {status_data['status']}
                 </div>
                 <div>
                     {ymd} (Run ID: {status_data['run_id']})
                 </div>
             </div>
             
-            <h2>Pipeline Health</h2>
+            <h2>파이프라인 상태 (Pipeline Health)</h2>
             <div class="grid">
                 <div class="metric">
                     <strong>{raw_files_count} / {datasets_count}</strong>
-                    <span>Raw Files Collected (Today)</span>
+                    <span>수집된 파일 (오늘)</span>
                 </div>
                 <div class="metric">
                     <strong>{curated_files_count}</strong>
-                    <span>Total Curated Files</span>
+                    <span>정제된 파일 (전체 누적)</span>
                 </div>
                 <div class="metric">
                     <strong>{topics_count}</strong>
-                    <span>Topics Generated</span>
+                    <span>생성된 토픽 (Topics)</span>
                 </div>
                 <div class="metric">
                     <strong>{meta_count}</strong>
-                    <span>Meta Topics</span>
+                    <span>메타 토픽 (Meta Topics)</span>
                 </div>
             </div>
             
-            <h2>Key Outputs</h2>
+            <h2>주요 산출물 (Key Outputs)</h2>
             <div class="grid">
                  <div class="metric">
-                    <span class="{'bool-true' if regime_exists else 'bool-false'}">{ "DETECTED" if regime_exists else "MISSING" }</span>
-                    <span>Regime Signal</span>
+                    <span class="{'bool-true' if regime_exists else 'bool-false'}">{ "감지됨 (DETECTED)" if regime_exists else "없음 (MISSING)" }</span>
+                    <span>시장 국면(Regime) 시그널</span>
                 </div>
                 <div class="metric">
                     <strong>{drift_count}</strong>
-                    <span>Drift Signals</span>
+                    <span>Narrative Drift 신호</span>
                 </div>
                 <div class="metric">
-                    <span class="{'bool-true' if script_exists else 'bool-false'}">{ "READY" if script_exists else "MISSING" }</span>
-                    <span>Insight Script</span>
+                    <span class="{'bool-true' if script_exists else 'bool-false'}">{ "준비됨 (READY)" if script_exists else "없음 (MISSING)" }</span>
+                    <span>인사이트 스크립트</span>
                 </div>
                 <div class="metric">
-                    <span class="{'bool-true' if shotlist_exists else 'bool-false'}">{ "READY" if shotlist_exists else "MISSING" }</span>
-                    <span>Shotlist</span>
+                    <span class="{'bool-true' if shotlist_exists else 'bool-false'}">{ "준비됨 (READY)" if shotlist_exists else "없음 (MISSING)" }</span>
+                    <span>영상 샷리스트</span>
                 </div>
             </div>
             
-            <h2>Data Links</h2>
+            <h2>데이터 링크 (Data Links)</h2>
             <ul>
-                <li><a href="../data/reports/{ymd.replace('-','/')}/daily_brief.md">Daily Brief (MD)</a></li>
-                <li><a href="../data/content/insight_script_v1.md">Insight Script</a></li>
-                <li><a href="../data/content/insight_shotlist_v1.md">Shotlist</a></li>
+                <li><a href="../data/reports/{ymd.replace('-','/')}/daily_brief.md">일일 브리핑 (Daily Brief MD)</a></li>
+                <li><a href="../data/content/insight_script_v1.md">인사이트 스크립트 (Insight Script)</a></li>
+                <li><a href="../data/content/insight_shotlist_v1.md">영상 샷리스트 (Shotlist)</a></li>
             </ul>
             
             <footer>
-                Generated at {datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")} | Hoin Insight Engine
+                생성 시각: {datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")} | Hoin Insight Engine
             </footer>
         </div>
     </body>
