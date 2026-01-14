@@ -1,0 +1,48 @@
+name: deploy_dashboard
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+
+      - name: Generate Dashboard
+        run: |
+          # Regenerate dashboard from committed data
+          python src/dashboard/dashboard_generator.py
+          
+          if [ -f "dashboard/index.html" ]; then
+             echo "Dashboard generated successfully."
+          else
+             echo "Dashboard generation failed."
+             exit 1
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dashboard
+          publish_branch: gh-pages
+          force_orphan: true
+
+      - name: Log Success
+        if: success()
+        run: echo "[VERIFY][OK] Dashboard deployed to GitHub Pages"
