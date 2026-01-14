@@ -1,0 +1,82 @@
+{
+  "crypto_btc_usd_spot_coingecko": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:57:59.481922Z"
+  },
+  "fx_usdkrw_spot_open_er_api": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:57:59.622515Z"
+  },
+  "metal_gold_xauusd_spot_gold_api": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:00.050124Z"
+  },
+  "metal_silver_xagusd_spot_gold_api": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:00.379386Z"
+  },
+  "rates_us10y_yield_ustreasury": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:08.606408Z"
+  },
+  "risk_vix_index_stooq": {
+    "status": "FAIL",
+    "reason": "Error: stooq vix CSV missing Close column",
+    "timestamp": "2026-01-14T07:58:09.334322Z"
+  },
+  "index_spx_sp500_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:12.684293Z"
+  },
+  "index_kospi_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.186338Z"
+  },
+  "derived_corr_btc_spx_30d": {
+    "status": "FAIL",
+    "reason": "Error: missing curated file: data/curated/crypto/btc_usd.csv",
+    "timestamp": "2026-01-14T07:58:14.187768Z"
+  },
+  "derived_corr_usdkrw_us10y_30d": {
+    "status": "FAIL",
+    "reason": "Error: missing curated file: data/curated/fx/usdkrw.csv",
+    "timestamp": "2026-01-14T07:58:14.189477Z"
+  },
+  "index_nasdaq_ndx_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.226988Z"
+  },
+  "fx_dxy_index_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.227130Z"
+  },
+  "rates_us02y_yield_ustreasury": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.227293Z"
+  },
+  "comm_wti_crude_oil_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.227432Z"
+  },
+  "metal_platinum_xptusd_stooq": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.227563Z"
+  },
+  "crypto_eth_usd_spot_coingecko": {
+    "status": "OK",
+    "reason": "Collected successfully",
+    "timestamp": "2026-01-14T07:58:14.271810Z"
+  }
+}
