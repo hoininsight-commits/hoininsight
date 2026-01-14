@@ -23,6 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
 
+      - name: Pull Latest Data
+        run: |
+          git pull origin main
+          
       - name: Generate Dashboard
         run: |
           # Regenerate dashboard from committed data
