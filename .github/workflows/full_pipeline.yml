@@ -432,6 +432,14 @@ jobs:
             echo "[VERIFY][FAIL] Applied Changes section missing"
             exit 1
           fi
+          
+          if grep -q "YouTube Inbox (Latest Videos)" "$DASH"; then
+            echo "[VERIFY][OK] YouTube Inbox rendered"
+          else
+            echo "[VERIFY][FAIL] YouTube Inbox section missing"
+            exit 1
+          fi
+
 
 
 

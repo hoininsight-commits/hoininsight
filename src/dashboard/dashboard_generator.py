@@ -600,8 +600,176 @@ def generate_dashboard(base_dir: Path):
     """
     
     
-    # [Phase 31-D] Narrative Approval Queue Section
-    queue_html = ""
+    # [Phase 31-E+] YouTube Inbox (Latest Videos)
+    # Displays latest collected videos and their pipeline status
+    inbox_html = """
+    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+        YouTube Inbox (Latest Videos)
+    </div>
+    """
+    
+    try:
+        # Scan for metadata in recent days? Or just today/yesterday?
+        # Inbox should probably show recent active items.
+        # Let's scan last 3 days of metadata.json
+        
+        inbox_items = []
+        # Reverse day scan
+        from datetime import timedelta
+        base_date = datetime.utcnow()
+        
+        # Check applied_summary for today to quick check APPLIED
+        applied_today_vids = []
+        applied_path = base_dir / "data/narratives/applied" / ymd.replace("-","/") / "applied_summary.json"
+        if applied_path.exists():
+             try:
+                 ad = json.loads(applied_path.read_text(encoding="utf-8"))
+                 applied_today_vids = [x.get('video_id') for x in ad.get('items', [])]
+             except: pass
+
+        for i in range(3): # Scan last 3 days
+            scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
+            meta_dir = base_dir / "data/narratives/metadata" / scan_ymd
+            if meta_dir.exists():
+                for m_file in meta_dir.glob("meta_*.json"):
+                    try:
+                        md = json.loads(m_file.read_text(encoding="utf-8"))
+                        vid = md.get("video_id")
+                        if not vid: continue
+                        
+                        # Determine Status
+                        status = "NEW"
+                        
+                        # Check PROPOSED
+                        prop_path = base_dir / "data/narratives/proposals" / scan_ymd / f"proposal_{vid}.md"
+                        has_prop = prop_path.exists()
+                        if has_prop:
+                            status = "PROPOSED"
+                            
+                        # Check APPROVED
+                        # We need to search approvals fairly broadly or just in likely places
+                        # For simplicity, check TODAY and Scan Date
+                        appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
+                        appr_path_2 = base_dir / "data/narratives/approvals" / ymd.replace("-","/") / f"approve_{vid}.yml"
+                        if appr_path_1.exists() or appr_path_2.exists():
+                            status = "APPROVED"
+                            
+                        # Check APPLIED
+                        if vid in applied_today_vids:
+                            status = "APPLIED"
+                        
+                        # Check SKIP (if title indicates no interesting content? Engine logic determines this usually)
+                        # For inbox, we just show what we have. 
+                        # If proposal exists but is empty? 
+                        # If narrative_analyzer skipped it, proposal might not exist.
+                        # So NEW -> No Proposal might mean Skipped by Analyzer (Low Confidence)?
+                        # Re-read narrative_analyzer.py: if no strong signals, it might not generate proposal file or generated empty one?
+                        # It generates proposal if "candidates" found.
+                        
+                        # Let's just use these states.
+                        
+                        # Needs Action?
+                        needs_action = status in ["NEW", "PROPOSED", "APPROVED"] # Approved but not Applied yet? 
+                        # If STATUS=APPROVED, we wait for Pipeline to Apply. Action is 'Wait' or 'Run Pipeline'.
+                        # But technically user action is done.
+                        # Let's say Needs Action = NEW or PROPOSED.
+                        needs_action = status in ["NEW", "PROPOSED"]
+                        
+                        item = {
+                            "video_id": vid,
+                            "title": md.get("title", "No Title"),
+                            "published_at": md.get("published_at", ""),
+                            "url": f"https://youtu.be/{vid}",
+                            "status": status,
+                            "needs_action": needs_action,
+                            "prop_path": prop_path
+                        }
+                        inbox_items.append(item)
+                    except: pass
+        
+        # Sort by published (desc) ideally, or just collection time
+        # Metadata doesn't strictly have collection time, uses published_at
+        inbox_items.sort(key=lambda x: x['published_at'], reverse=True)
+        
+        if inbox_items:
+            inbox_html += '<div class="inbox-list" style="display:flex; flex-direction:column; gap:10px;">'
+            for it in inbox_items:
+                vid = it["video_id"]
+                st = it["status"]
+                
+                # Badge Color
+                bg_col = "#e2e8f0"
+                txt_col = "#475569"
+                if st == "NEW": bg_col="#dbeafe"; txt_col="#1e40af"
+                elif st == "PROPOSED": bg_col="#ffedd5"; txt_col="#9a3412"
+                elif st == "APPROVED": bg_col="#dcfce7"; txt_col="#166534"
+                elif st == "APPLIED": bg_col="#f0fdf4"; txt_col="#15803d"; # Green outline?
+                
+                # Extract
+                extract_html = ""
+                if st == "PROPOSED" and it["prop_path"].exists():
+                     try:
+                         raw = it["prop_path"].read_text(encoding="utf-8")
+                         lines = [l for l in raw.splitlines() if l.strip().startswith("-")][:3]
+                         if lines:
+                             extract_html = "<div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>" + "<br>".join(lines) + "</div>"
+                     except: pass
+                
+                action_ui = ""
+                toggle_id = f"toggle-{vid}"
+                
+                # Action UI (Learning Needed Toggle)
+                # Only offer this if NOT Applied
+                if st != "APPLIED":
+                    action_ui = f"""
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('{vid}')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-{vid}" style="display:none; margin-top:10px;">
+                            {extract_html}
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-{vid}" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-{vid}"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-{vid}"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-{vid}" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('{vid}')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    """
+
+                inbox_html += f"""
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="{it['url']}" target="_blank" style="text-decoration:none; color:inherit;">{it['title']}</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:{bg_col}; color:{txt_col}; padding:2px 5px; border-radius:4px; white-space:nowrap;">{st}</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        {it['published_at'][:10]}
+                        { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
+                    </div>
+                    
+                    {action_ui}
+                </div>
+                """
+            inbox_html += "</div>"
+        else:
+             inbox_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>최근 수집된 영상이 없습니다.</div>"
+            
+    except Exception as e:
+        inbox_html += f"<div style='color:red; font-size:11px;'>Inbox Load Fail: {e}</div>"
+
+    sidebar_html += inbox_html
+
     try:
         # Load Queue
         q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
@@ -907,6 +1075,28 @@ def generate_dashboard(base_dir: Path):
             const bs = document.getElementById('chk-bs-' + videoId).checked;
             const note = document.getElementById('note-' + videoId).value;
             
+            copyYaml(videoId, dcm, adl, bs, note);
+        }}
+        
+        function toggleAction(videoId) {{
+            var box = document.getElementById('action-box-' + videoId);
+            if (box.style.display === "none") {{
+                box.style.display = "block";
+            }} else {{
+                box.style.display = "none";
+            }}
+        }}
+        
+        function generateInboxYaml(videoId) {{
+            const dcm = document.getElementById('ib-dcm-' + videoId).checked;
+            const adl = document.getElementById('ib-adl-' + videoId).checked;
+            const bs = document.getElementById('ib-bs-' + videoId).checked;
+            const note = document.getElementById('ib-note-' + videoId).value;
+            
+            copyYaml(videoId, dcm, adl, bs, note);
+        }}
+        
+        function copyYaml(videoId, dcm, adl, bs, note) {{
             const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
             const now = new Date().toISOString();
             
