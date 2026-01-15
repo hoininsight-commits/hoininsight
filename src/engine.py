@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import sys
+import time
+import os
+import json
+import traceback
 from datetime import datetime
 from pathlib import Path
 
@@ -23,6 +27,7 @@ def _date_path_utc() -> Path:
 
 def main(target_categories: list[str] = None):
     started = _utc_now_stamp()
+    start_time = time.time()
     status = "SUCCESS"
     details_lines = []
     check_lines = []
@@ -80,11 +85,40 @@ def main(target_categories: list[str] = None):
         details_lines.append(err_msg)
         # CRITICAL: Print error to stderr so it appears in CI logs
         print(err_msg, file=sys.stderr)
-        import traceback
         traceback.print_exc(file=sys.stderr)
 
     health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines, per_dataset=per_dataset)
     details_lines.append(f"health: {health_path.as_posix()}")
+
+    # --- Batch Timing Verification (Ops) ---
+    try:
+        runtime_path = Path("data/ops/workflow_runtime_v1.json")
+        if runtime_path.exists():
+            ops_data = json.loads(runtime_path.read_text(encoding="utf-8"))
+            # Detect workflow from env or assume standard based on category
+            current_workflow = os.environ.get("GITHUB_WORKFLOW", "unknown_workflow")
+            
+            # Check if we can map categories to known workflows for local testing
+            if current_workflow == "unknown_workflow":
+                if target_categories and "CRYPTO" in target_categories: current_workflow = "pipeline_crypto.yml"
+                elif target_categories and "FX_RATES" in target_categories: current_workflow = "pipeline_fx.yml"
+                elif target_categories and "US_MARKETS" in target_categories: current_workflow = "pipeline_us_markets.yml"
+                elif target_categories and "BACKFILL" in target_categories: current_workflow = "pipeline_backfill.yml"
+            
+            target_p95 = 300 # Default fallback
+            for wf in ops_data["workflows"]:
+                if wf["workflow"] == current_workflow or wf["workflow"] in current_workflow:
+                    target_p95 = wf["p95_duration_sec"]
+                    break
+            
+            actual_duration = round(time.time() - start_time, 2)
+            if actual_duration <= target_p95:
+                print(f"[VERIFY][OK] Workflow completed within expected duration ({target_p95}s)", file=sys.stdout)
+            else:
+                print(f"[VERIFY][WARN] Workflow exceeded expected duration (actual {actual_duration}s > p95 {target_p95}s)", file=sys.stdout)
+    except Exception as e:
+        print(f"[VERIFY][SKIP] Could not verify runtime: {e}", file=sys.stderr)
+    # ----------------------------------------
 
     finished = _utc_now_stamp()
     report_dir = _date_path_utc()

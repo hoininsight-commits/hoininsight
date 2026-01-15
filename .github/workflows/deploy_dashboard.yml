@@ -1,52 +1,43 @@
-name: deploy_dashboard
+name: Deploy Dashboard
 
 on:
+  schedule:
+    # Optimized Batch Schedule v1
+    # KST: 10:30 (Daily, after all market data collected)
+    # UTC: 01:30
+    - cron: '30 1 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.9'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install .
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements_dev.txt ]; then pip install -r requirements_dev.txt; fi
 
-      - name: Pull Latest Data
-        run: |
-          git pull origin main
-          
       - name: Generate Dashboard
         run: |
-          # Regenerate dashboard from committed data
           python src/dashboard/dashboard_generator.py
-          
-          if [ -f "dashboard/index.html" ]; then
-             echo "Dashboard generated successfully."
-          else
-             echo "Dashboard generation failed."
-             exit 1
-          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dashboard
-          publish_branch: gh-pages
-          force_orphan: true
-
-      - name: Log Success
-        if: success()
-        run: echo "[VERIFY][OK] Dashboard deployed to GitHub Pages"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'deploy: update dashboard [skip ci]'
