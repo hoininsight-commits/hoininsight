@@ -608,16 +608,26 @@ def generate_dashboard(base_dir: Path):
     </div>
     """
 
-    # [Phase 32] Load Priority Scores
+    # [Phase 33] Load Aging Scores (with fallback to Phase 32)
     priority_map = {}
     try:
-        prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
-        if prio_path.exists():
-            p_data = json.loads(prio_path.read_text(encoding="utf-8"))
-            if isinstance(p_data, dict) and "items" in p_data:
-                p_data = p_data["items"]
-            for item in p_data:
+        # Try Phase 33 first
+        aging_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores_with_aging.json"
+        if aging_path.exists():
+            a_data = json.loads(aging_path.read_text(encoding="utf-8"))
+            if isinstance(a_data, dict) and "items" in a_data:
+                a_data = a_data["items"]
+            for item in a_data:
                 priority_map[item.get("video_id")] = item
+        else:
+            # Fallback to Phase 32
+            prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
+            if prio_path.exists():
+                p_data = json.loads(prio_path.read_text(encoding="utf-8"))
+                if isinstance(p_data, dict) and "items" in p_data:
+                    p_data = p_data["items"]
+                for item in p_data:
+                    priority_map[item.get("video_id")] = item
     except: pass
 
     
@@ -772,17 +782,33 @@ def generate_dashboard(base_dir: Path):
                     </div>
     """
                 
-                # [Phase 32] Alignment Score Badge in Inbox
+                # [Phase 33] Aging Score Badge in Inbox
                 if vid in priority_map:
                     p_info = priority_map[vid]
                     a_score = p_info.get("alignment_score", 0)
-                    a_cls = "bg-green-100 text-green-800"
-                    if a_score < 40: a_cls = "bg-gray-200 text-gray-500" # Low alignment
+                    final_score = p_info.get("final_priority_score", a_score)
+                    age_days = p_info.get("age_days", 0)
+                    
+                    # Decay badge
+                    decay_badge = ""
+                    decay_cls = "bg-green-50 text-green-700"
+                    decay_label = "FRESH"
+                    if age_days >= 21:
+                        decay_cls = "bg-red-50 text-red-700"
+                        decay_label = "EXPIRED"
+                    elif age_days >= 7:
+                        decay_cls = "bg-orange-50 text-orange-700"
+                        decay_label = "STALE"
+                    
+                    decay_badge = f'<span style="font-size:8px; padding:1px 4px; border-radius:3px; background:{decay_cls.split()[0].replace("bg-","#")}; color:{decay_cls.split()[1].replace("text-","#")}; margin-left:3px;">{decay_label}</span>'
                     
                     inbox_html += f"""
                     <div style="margin-top:4px; font-size:10px;">
-                        <span class="conf-badge {a_cls}" style="font-size:9px; padding:2px 6px;">Align: {a_score}</span>
-                        <span style="color:#94a3b8; margin-left:5px;">#{p_info.get('priority_rank','-')}</span>
+                        <span style="color:#64748b;">Age: {age_days}d</span> {decay_badge}
+                    </div>
+                    <div style="margin-top:2px; font-size:10px;">
+                        <span style="font-weight:bold; color:#1e293b;">Final Priority: {final_score}</span>
+                        <span style="color:#94a3b8; margin-left:5px;">(Align: {a_score})</span>
                     </div>
                     """
                 else:
@@ -826,29 +852,46 @@ def generate_dashboard(base_dir: Path):
         if q_data:
             queue_html += '<div class="queue-list">'
             
-            # [Phase 32] Sort
+            # [Phase 33] Sort by final_priority_score
             final_queue_list = q_data
             if priority_map:
                 final_queue_list = list(priority_map.values())
-                final_queue_list.sort(key=lambda x: x.get("alignment_score", 0), reverse=True)
+                final_queue_list.sort(key=lambda x: x.get("final_priority_score", x.get("alignment_score", 0)), reverse=True)
             
             for item in final_queue_list:
                 vid = item.get("video_id")
                 status = item.get("status", "PENDING")
                 status_color = "#f59e0b" if status == "PENDING" else "#10b981"
                 
-                # Phase 32 props
-                score = item.get("alignment_score", "-")
-                rank = item.get("priority_rank", "-")
+                # Phase 33 props
+                alignment_score = item.get("alignment_score", 0)
+                final_score = item.get("final_priority_score", alignment_score)
+                age_days = item.get("age_days", 0)
+                decay_factor = item.get("decay_factor", 1.0)
+                rank = item.get("final_priority_rank", item.get("priority_rank", "-"))
                 breakdown = item.get("score_breakdown", "")
                 
-                score_badge_html = ""
-                if score != "-":
-                     s_val = float(score)
-                     color = "#166534" if s_val >= 40 else "#64748b" 
-                     bg = "#dcfce7" if s_val >= 40 else "#f1f5f9"
-                     warn = " <span style='color:red; font-weight:bold;'>LOW ALIGNMENT</span>" if s_val < 40 else ""
-                     score_badge_html = f"<div style='margin-top:8px; font-size:11px;'><span style='background:{bg}; color:{color}; padding:2px 5px; border-radius:4px; font-weight:bold;'>Score: {score}</span>{warn} <span style='color:#94a3b8; margin-left:5px;'>({breakdown})</span></div>"
+                # Decay badge
+                decay_label = "FRESH"
+                decay_color = "#16a34a"
+                if age_days >= 21:
+                    decay_label = "EXPIRED"
+                    decay_color = "#dc2626"
+                elif age_days >= 7:
+                    decay_label = "STALE"
+                    decay_color = "#ea580c"
+                
+                score_badge_html = f"""
+                <div style='margin-top:8px; font-size:11px;'>
+                    <div style='margin-bottom:4px;'>
+                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: {final_score}</span>
+                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: {alignment_score}</span>
+                    </div>
+                    <div style='font-size:10px; color:#64748b;'>
+                        Age: {age_days} days | Decay: {decay_factor} | <span style='color:{decay_color}; font-weight:bold;'>{decay_label}</span>
+                    </div>
+                </div>
+                """
 
                 # Load Content Hint
                 prop_path_str = item.get("proposal_path", "")

@@ -258,8 +258,35 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             lines.append("## PROPOSAL PRIORITY SNAPSHOT")
             lines.append("- Error loading priority data.")
+    
+    # [Phase 33] Proposal Aging Snapshot
+    aging_path = base_dir / "data" / "narratives" / "prioritized" / ymd / "proposal_scores_with_aging.json"
+    if aging_path.exists():
+        try:
+            aging_data = json.loads(aging_path.read_text(encoding="utf-8"))
+            if isinstance(aging_data, dict) and "items" in aging_data:
+                aging_items = aging_data["items"]
+            else:
+                aging_items = aging_data if isinstance(aging_data, list) else []
+            
+            top_aged = aging_items[:3]
+            
+            lines.append("")
+            lines.append("## PROPOSAL AGING SNAPSHOT")
+            if not top_aged:
+                lines.append("- No aged proposals today.")
+            else:
+                lines.append("| Rank | Video ID | Final Priority | Age (days) | Decay Factor | Status |")
+                lines.append("|---:|---|---:|---:|---:|---|")
+                for p in top_aged:
+                    lines.append(f"| {p.get('final_priority_rank')} | {p.get('video_id')} | **{p.get('final_priority_score')}** | {p.get('age_days')} | {p.get('decay_factor')} | {p.get('status')} |")
+                
+                lines.append("")
+                lines.append("Older proposals are deprioritized by decay (half-life: 7 days).")
+        except:
+            lines.append("## PROPOSAL AGING SNAPSHOT")
+            lines.append("- Error loading aging data.")
     lines.append("")
-    lines.append("## Data Snapshot")
     lines.append(f"- See: `data/reports/{ymd}/data_snapshot.md`")
     lines.append("")
     

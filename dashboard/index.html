@@ -432,6 +432,23 @@
                  <div class="status-check">✓</div>
              </div>
              </div>
+    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+        YouTube Inbox (Latest Videos)
+    </div>
+    <div style='font-size:12px; color:#94a3b8; padding:10px;'>최근 수집된 영상이 없습니다.</div>
+        <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+            Narrative Review Queue
+        </div>
+        
+            <div style='padding:20px 10px; text-align:center; background:#f8fafc; border:1px dashed #e2e8f0; border-radius:6px; margin:10px 0;'>
+                <div style='font-size:12px; color:#64748b; font-weight:bold;'>No proposals today — scoring logic active (Phase 32)</div>
+                <div style='font-size:10px; color:#94a3b8; margin-top:5px;'>Hoin Insight engine is active and monitoring.</div>
+            </div>
+            
+    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+        Applied Changes (Today)
+    </div>
+    <div style='font-size:12px; color:#94a3b8; padding:10px;'>오늘 적용된 변경 사항이 없습니다.</div>
                 
                 <div class="footer">
                     Hoin Engine 자동 생성<br>2026-01-15
@@ -483,6 +500,28 @@
             const bs = document.getElementById('chk-bs-' + videoId).checked;
             const note = document.getElementById('note-' + videoId).value;
             
+            copyYaml(videoId, dcm, adl, bs, note);
+        }
+        
+        function toggleAction(videoId) {
+            var box = document.getElementById('action-box-' + videoId);
+            if (box.style.display === "none") {
+                box.style.display = "block";
+            } else {
+                box.style.display = "none";
+            }
+        }
+        
+        function generateInboxYaml(videoId) {
+            const dcm = document.getElementById('ib-dcm-' + videoId).checked;
+            const adl = document.getElementById('ib-adl-' + videoId).checked;
+            const bs = document.getElementById('ib-bs-' + videoId).checked;
+            const note = document.getElementById('ib-note-' + videoId).value;
+            
+            copyYaml(videoId, dcm, adl, bs, note);
+        }
+        
+        function copyYaml(videoId, dcm, adl, bs, note) {
             const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
             const now = new Date().toISOString();
             

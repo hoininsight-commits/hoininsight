@@ -353,6 +353,10 @@ jobs:
         run: |
           python -m src.narratives.run_prioritization
 
+      - name: Apply Proposal Aging (Phase 33)
+        run: |
+          python -m src.narratives.proposal_aging
+
 
       - name: Apply Approved Proposals (Phase 31-C)
         run: |
@@ -500,6 +504,22 @@ jobs:
                 exit 1
              fi
           fi
+
+      - name: Verify Phase 33 Proposal Aging
+        run: |
+          echo "[VERIFY] Phase 33 Proposal Aging Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          OUT="data/narratives/prioritized/$YMD/proposal_scores_with_aging.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$OUT" ]; then
+            echo "[VERIFY][OK] Aging scores generated"
+            grep -q "phase33_v1" "$OUT" && echo "[VERIFY][OK] aging_version present" || (echo "[VERIFY][FAIL] aging_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No prioritized proposals today (valid state)"
+          fi
+          
+          grep -q "Final Priority" "$DASH" && echo "[VERIFY][OK] Final priority rendered in dashboard" || (echo "[VERIFY][FAIL] Final priority missing in dashboard"; exit 1)
 
 
 
