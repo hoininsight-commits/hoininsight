@@ -1,9 +1,9 @@
 [
   {
     "ts_utc": "2026-01-15T07:32:40Z",
-    "dataset_id": "rates_us02y_yield_ustreasury",
-    "topic_id": "rates_us02y_yield_ustreasury::roc_1d",
-    "title": "data/features/anomalies/2026/01/15/rates_us02y_yield_ustreasury.json daily move",
+    "dataset_id": "risk_vix_index_stooq",
+    "topic_id": "risk_vix_index_stooq::roc_1d",
+    "title": "data/features/anomalies/2026/01/15/risk_vix_index_stooq.json daily move",
     "score": 0.0,
     "severity": "LOW",
     "evidence": {
@@ -26,7 +26,7 @@
           }
         }
       },
-      "anomalies_path": "data/features/anomalies/2026/01/15/rates_us02y_yield_ustreasury.json"
+      "anomalies_path": "data/features/anomalies/2026/01/15/risk_vix_index_stooq.json"
     },
     "rationale": "Topic generated from anomaly signal (roc_1d) with regime multiplier (VIX/US10Y).",
     "links": []
