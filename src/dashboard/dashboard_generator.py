@@ -770,6 +770,8 @@ def generate_dashboard(base_dir: Path):
 
     sidebar_html += inbox_html
 
+    # [Phase 31-D] Narrative Approval Queue Section
+    queue_html = ""
     try:
         # Load Queue
         q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
