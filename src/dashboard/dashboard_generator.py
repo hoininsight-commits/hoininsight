@@ -528,4 +528,11 @@ def generate_dashboard(base_dir: Path):
     print(f"파이프라인 아키텍처 대시보드 생성 완료: {dash_dir}/index.html")
 
 if __name__ == "__main__":
-    generate_dashboard(Path("."))
+    try:
+        base_dir = Path(__file__).parent.parent.parent.resolve()
+        out_file = generate_dashboard(base_dir)
+        print(f"파이프라인 아키텍처 대시보드 생성 완료: {out_file.relative_to(base_dir)}")
+    except Exception:
+        print("[FATAL] Dashboard generation crashed!")
+        traceback.print_exc()
+        sys.exit(1)
