@@ -235,6 +235,29 @@ def write_daily_brief(base_dir: Path) -> Path:
                 f"App7d={t.get('_appearances_7d')}"
             )
 
+    # [Phase 32] Proposal Priority Snapshot
+    prio_path = base_dir / "data" / "narratives" / "prioritized" / ymd / "proposal_scores.json"
+    if prio_path.exists():
+        try:
+            p_items = json.loads(prio_path.read_text(encoding="utf-8"))
+            # Expecting already sorted by prioritization engine
+            top_p = p_items[:3]
+            
+            lines.append("")
+            lines.append("## PROPOSAL PRIORITY SNAPSHOT")
+            if not top_p:
+                lines.append("- No proposals scored today.")
+            else:
+                lines.append("| Rank | Video ID | Score | Why (Def/Evid/Reg/Imp) |")
+                lines.append("|---:|---|---:|---|")
+                for p in top_p:
+                    lines.append(f"| {p.get('priority_rank')} | {p.get('video_id')} | **{p.get('alignment_score')}** | {p.get('score_breakdown')} |")
+                
+                lines.append("")
+                lines.append(f"*See full prioritization list in `data/narratives/prioritized/{ymd}/proposal_scores.json`*")
+        except:
+            lines.append("## PROPOSAL PRIORITY SNAPSHOT")
+            lines.append("- Error loading priority data.")
     lines.append("")
     lines.append("## Data Snapshot")
     lines.append(f"- See: `data/reports/{ymd}/data_snapshot.md`")

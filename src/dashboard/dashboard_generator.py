@@ -607,6 +607,17 @@ def generate_dashboard(base_dir: Path):
         YouTube Inbox (Latest Videos)
     </div>
     """
+
+    # [Phase 32] Load Priority Scores
+    priority_map = {}
+    try:
+        prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
+        if prio_path.exists():
+            p_data = json.loads(prio_path.read_text(encoding="utf-8"))
+            for item in p_data:
+                priority_map[item.get("video_id")] = item
+    except: pass
+
     
     try:
         # Scan for metadata in recent days? Or just today/yesterday?
@@ -757,6 +768,23 @@ def generate_dashboard(base_dir: Path):
                         {it['published_at'][:10]}
                         { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
                     </div>
+    """
+                
+                # [Phase 32] Alignment Score Badge in Inbox
+                if vid in priority_map:
+                    p_info = priority_map[vid]
+                    a_score = p_info.get("alignment_score", 0)
+                    a_cls = "bg-green-100 text-green-800"
+                    if a_score < 40: a_cls = "bg-gray-200 text-gray-500" # Low alignment
+                    
+                    inbox_html += f"""
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span class="conf-badge {a_cls}" style="font-size:9px; padding:2px 6px;">Align: {a_score}</span>
+                        <span style="color:#94a3b8; margin-left:5px;">#{p_info.get('priority_rank','-')}</span>
+                    </div>
+                    """
+                
+                inbox_html += f"""
                     
                     {action_ui}
                 </div>
@@ -790,36 +818,51 @@ def generate_dashboard(base_dir: Path):
         if q_data:
             queue_html += '<div class="queue-list">'
             
-            for item in q_data:
+            # [Phase 32] Sort
+            final_queue_list = q_data
+            if priority_map:
+                final_queue_list = list(priority_map.values())
+                final_queue_list.sort(key=lambda x: x.get("alignment_score", 0), reverse=True)
+            
+            for item in final_queue_list:
                 vid = item.get("video_id")
-
                 status = item.get("status", "PENDING")
-                
-                # Skip if already approved for simplicity in this view? 
-                # User might want to see approved ones too, but let's focus on PENDING for action.
-                # Or show all with status badge.
-                
-                # Load Proposal Content Hint
-                prop_path = base_dir / item.get("proposal_path", "")
-                prop_excerpt = "제안 내용을 불러올 수 없습니다."
-                if prop_path.exists():
-                    # Extract "Proposed Additions" or just first few lines
-                    raw_txt = prop_path.read_text(encoding="utf-8")
-                    # Simple extraction: lines starting with '-'
-                    hints = [line for line in raw_txt.splitlines() if line.strip().startswith("-")][:5]
-                    prop_excerpt = "<br>".join(hints)
-                
-                # UI Card
                 status_color = "#f59e0b" if status == "PENDING" else "#10b981"
                 
+                # Phase 32 props
+                score = item.get("alignment_score", "-")
+                rank = item.get("priority_rank", "-")
+                breakdown = item.get("score_breakdown", "")
+                
+                score_badge_html = ""
+                if score != "-":
+                     s_val = float(score)
+                     color = "#166534" if s_val >= 40 else "#64748b" 
+                     bg = "#dcfce7" if s_val >= 40 else "#f1f5f9"
+                     warn = " <span style='color:red; font-weight:bold;'>LOW ALIGNMENT</span>" if s_val < 40 else ""
+                     score_badge_html = f"<div style='margin-top:8px; font-size:11px;'><span style='background:{bg}; color:{color}; padding:2px 5px; border-radius:4px; font-weight:bold;'>Score: {score}</span>{warn} <span style='color:#94a3b8; margin-left:5px;'>({breakdown})</span></div>"
+
+                # Load Content Hint
+                prop_path_str = item.get("proposal_path", "")
+                prop_excerpt = "제안 내용을 불러올 수 없습니다."
+                if prop_path_str:
+                    pp = base_dir / prop_path_str
+                    if pp.exists():
+                         try:
+                             hints = [l for l in pp.read_text(encoding="utf-8").splitlines() if l.strip().startswith("-")][:5]
+                             prop_excerpt = "<br>".join(hints)
+                         except: pass
+
                 queue_html += f"""
                 <div class="queue-card" id="card-{vid}">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: {vid}</span>
+                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: {vid} <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #{rank})</span></span>
                         <span style="font-size:10px; font-weight:bold; color:white; background:{status_color}; padding:2px 6px; border-radius:4px;">{status}</span>
                     </div>
                     
-                    <div class="prop-content">
+                    {score_badge_html}
+
+                    <div class="prop-content" style="margin-top:10px;">
                         <strong>Note (Extract):</strong><br>
                         <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
                     </div>
