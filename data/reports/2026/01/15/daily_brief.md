@@ -67,3 +67,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d
 Engine proposed 1 reconsideration(s) based on today's context.
 - Candidate: test_rejected_vid (Was REJECTED)
 - Reason: New Market Context: New Meta Topics detected (1)
+
+## REVIVAL OPS CONTEXT
+- Avg Freshness: 87.5%
+- SLA Breach Count: 2
+- ⚠️ Cognitive Loop Warning: 1 items repeating decisions
