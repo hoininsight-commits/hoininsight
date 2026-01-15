@@ -20,10 +20,27 @@ def main():
         
         try:
             fn = get_callables(ds.collector)
-            fn(Path("."))
-            # If no exception, assume success
+            out_path = fn(Path("."))
+            
+            # If no exception, assume success initially
             status = "OK"
             reason = "Collected successfully"
+
+            # Check for mock data in the output file
+            if isinstance(out_path, Path) and out_path.exists():
+                try:
+                    content = json.loads(out_path.read_text(encoding="utf-8"))
+                    src = content.get("source", "").lower()
+                    if "mock" in src:
+                        status = "SKIP"
+                        reason = f"Mock data used ({src})"
+                except Exception:
+                    # Not a JSON file or read error, ignore check
+                    pass
+            elif str(out_path).endswith(".json") or str(out_path).endswith(".jsonl"):
+                # Path object might be returned but we want robustness; 
+                # but if fn returned None, we can't check.
+                pass
         except Exception as e:
             failure_count += 1
             error_msg = str(e)

@@ -30,13 +30,20 @@ def main():
             fn = get_callables(ds.normalizer)
             fn(Path("."))
             
-            # If normalization succeeds, mark as OK (this fixes DERIVED datasets)
+            # If normalization succeeds, mark as OK (unless it was explicitly SKIP due to mock)
             # Only update if explicitly successful, or if it was previously FAIL
-            collection_status[dataset_id] = {
-                "status": "OK",
-                "reason": "Normalized successfully",
-                "timestamp": datetime.utcnow().isoformat() + "Z"
-            }
+            current_status = collection_status.get(dataset_id, {}).get("status", "FAIL")
+            
+            if current_status != "SKIP":
+                collection_status[dataset_id] = {
+                    "status": "OK",
+                    "reason": "Normalized successfully",
+                    "timestamp": datetime.utcnow().isoformat() + "Z"
+                }
+            else:
+                 # If it was SKIP, keep it SKIP but maybe update timestamp to show pipeline ran?
+                 # Let's update timestamp but keep status/reason from collector
+                 collection_status[dataset_id]["timestamp"] = datetime.utcnow().isoformat() + "Z"
             
         except Exception as e:
             failure_count += 1
