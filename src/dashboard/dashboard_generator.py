@@ -528,6 +528,7 @@ def generate_dashboard(base_dir: Path):
     
     (dash_dir / "index.html").write_text(html, encoding="utf-8")
     print(f"파이프라인 아키텍처 대시보드 생성 완료: {dash_dir}/index.html")
+    return dash_dir / "index.html"
 
 if __name__ == "__main__":
     try:
