@@ -1,11 +1,102 @@
 {
-  "ts_utc": "2026-01-15T22:54:16Z",
+  "ts_utc": "2026-01-15T22:55:55Z",
   "status": "SUCCESS",
   "checks_ok": true,
-  "checks": [],
+  "checks": [
+    "[SKIP] outputs(derived_corr_btc_spx_30d) missing",
+    "[SKIP] outputs(derived_corr_usdkrw_us10y_30d) missing"
+  ],
   "per_dataset": [
     {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_usdkrw_spot_open_er_api",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_gold_xauusd_spot_gold_api",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_silver_xagusd_spot_gold_api",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_us10y_yield_ustreasury",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_vix_index_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_spx_sp500_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "derived_corr_btc_spx_30d",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": false,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "derived_corr_usdkrw_us10y_30d",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": false,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
       "dataset_id": "index_nasdaq_ndx_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_dxy_index_stooq",
       "soft_fail": true,
       "status": "OK",
       "curated_ok": true,
@@ -30,6 +121,14 @@
     },
     {
       "dataset_id": "metal_platinum_xptusd_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
       "soft_fail": true,
       "status": "OK",
       "curated_ok": true,

@@ -1,22 +1,82 @@
 {
+  "crypto_btc_usd_spot_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.163699Z"
+  },
+  "fx_usdkrw_spot_open_er_api": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.167076Z"
+  },
+  "metal_gold_xauusd_spot_gold_api": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.170360Z"
+  },
+  "metal_silver_xagusd_spot_gold_api": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.173544Z"
+  },
+  "rates_us10y_yield_ustreasury": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.176689Z"
+  },
+  "risk_vix_index_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.179802Z"
+  },
+  "index_spx_sp500_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.182905Z"
+  },
+  "index_kospi_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.186021Z"
+  },
+  "derived_corr_btc_spx_30d": {
+    "status": "FAIL",
+    "reason": "Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/15/corr_btc_spx_30d.json",
+    "timestamp": "2026-01-15T22:55:53.187169Z"
+  },
+  "derived_corr_usdkrw_us10y_30d": {
+    "status": "FAIL",
+    "reason": "Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/15/corr_usdkrw_us10y_30d.json",
+    "timestamp": "2026-01-15T22:55:53.188433Z"
+  },
   "index_nasdaq_ndx_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T22:54:14.336544Z"
+    "timestamp": "2026-01-15T22:55:53.192660Z"
+  },
+  "fx_dxy_index_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.195206Z"
   },
   "rates_us02y_yield_ustreasury": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T22:54:14.339373Z"
+    "timestamp": "2026-01-15T22:55:53.197658Z"
   },
   "comm_wti_crude_oil_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T22:54:14.342046Z"
+    "timestamp": "2026-01-15T22:55:53.200077Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T22:54:14.344705Z"
+    "timestamp": "2026-01-15T22:55:53.202476Z"
+  },
+  "crypto_eth_usd_spot_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T22:55:53.204842Z"
   }
 }
