@@ -125,6 +125,12 @@ def write_daily_brief(base_dir: Path) -> Path:
     bd_str = ", ".join([f"{k}={v}" for k, v in bd.items()])
     lines.append(f"Confidence: {conf_level} (Core: {bd_str})")
     
+    # [Ops Upgrade v1.1] Content Status
+    from src.ops.content_gate import evaluate_content_gate
+    gate_status = evaluate_content_gate(base_dir)
+    c_mode = gate_status.get("content_mode", "UNKNOWN")
+    lines.append(f"Content Status: {c_mode}")
+    
     lines.append(card.drivers_line)
     meta_link_md = f"[json]({card.meta_link})" if card.meta_link != "-" else "-"
     lines.append(f"Meta topics: {meta_link_md}")

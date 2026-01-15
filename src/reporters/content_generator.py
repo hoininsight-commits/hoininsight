@@ -22,7 +22,32 @@ def _read_json(p: Path) -> Any:
     except Exception:
         return None
 
+from src.ops.content_gate import evaluate_content_gate
+
 def generate_insight_content(base_dir: Path) -> None:
+    # [Ops Upgrade v1.1] Content Gate Check
+    gate = evaluate_content_gate(base_dir)
+    allow = gate.get("allow_content", False)
+    mode = gate.get("content_mode", "SKIP")
+    reason = gate.get("reason", "Unknown")
+    
+    out_dir = base_dir / "data" / "content"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    
+    if not allow:
+        # Generate content_skipped.md
+        skipped_lines = []
+        skipped_lines.append("# Content Generation Skipped")
+        skipped_lines.append("")
+        skipped_lines.append(f"- **Mode**: {mode}")
+        skipped_lines.append(f"- **Reason**: {reason}")
+        skipped_lines.append("- **Timestamp**: " + datetime.utcnow().isoformat())
+        
+        (out_dir / "content_skipped.md").write_text("\n".join(skipped_lines), encoding="utf-8")
+        print(f"[INFO] Content generation SKIPPED. Mode={mode}")
+        return
+
+    # If allowed, proceed with generation...
     ymd = _ymd_slashed()
     ymd_dash = _ymd_dashed()
     
@@ -77,6 +102,13 @@ def generate_insight_content(base_dir: Path) -> None:
     script_lines.append(f"# Insight Script ({ymd_dash})")
     script_lines.append("")
     script_lines.append("## Opening (Context)")
+    
+    # [Ops Upgrade v1.1] Cautious Mode Warning
+    if mode == "CAUTIOUS":
+        script_lines.append("> [!WARNING] Cautious Mode")
+        script_lines.append("> ※ 일부 핵심 데이터가 제한된 상태에서 생성된 참고용 인사이트입니다.")
+        script_lines.append("")
+        
     script_lines.append(f"- 오늘 감지된 시장의 핵심 국면은 **{current_regime}**입니다.")
     script_lines.append("- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.")
     script_lines.append("")

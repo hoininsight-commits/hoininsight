@@ -151,6 +151,36 @@ jobs:
 
           echo "[VERIFY][OK] Insight script and shotlist generated"
 
+      - name: Verify Confidence-Based Content Control
+        run: |
+          echo "[VERIFY] Confidence-Based Content Control Check"
+
+          YMD=$(date -u +"%Y/%m/%d")
+          CONTENT_DIR="data/content/$YMD"
+          REPORT="data/reports/$YMD/daily_brief.md"
+
+          if grep -q "Confidence: LOW" "$REPORT"; then
+            if [ -f "$CONTENT_DIR/content_skipped.md" ]; then
+              echo "[VERIFY][OK] Content correctly skipped for LOW confidence"
+            else
+              # It's possible content generation hasn't run yet if we check too early? 
+              # No, this step is after engine run.
+              echo "[VERIFY][FAIL] Content not skipped despite LOW confidence"
+              exit 1
+            fi
+          elif grep -q "Confidence: MEDIUM" "$REPORT"; then
+             # Check for warning in script?
+             if grep -q "Cautious Mode" "$CONTENT_DIR/insight_script_v1.md"; then
+                echo "[VERIFY][OK] Cautious mode warning detected"
+             else
+                echo "[VERIFY][WARN] Cautious mode warning missing (logic check needed)"
+                # Don't fail for now, maybe explicit check later
+             fi
+             echo "[VERIFY][OK] Content generation allowed (CAUTIOUS)"
+          else
+            echo "[VERIFY][OK] Content generation allowed (NORMAL)"
+          fi
+
       - name: Verify Auto Collection Expansion
         run: |
           echo "[VERIFY] Auto Collection Expansion Check"

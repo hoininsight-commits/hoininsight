@@ -309,6 +309,16 @@ def generate_dashboard(base_dir: Path):
     conf_level = conf_res.get("regime_confidence", "LOW")
     core_bd = conf_res.get("core_breakdown", {})
     
+    # [Ops Upgrade v1.1] Content Status
+    from src.ops.content_gate import evaluate_content_gate
+    gate_res = evaluate_content_gate(base_dir)
+    content_mode = gate_res.get("content_mode", "UNKNOWN")
+    
+    content_cls = "bg-gray-200 text-gray-800"
+    if content_mode == "NORMAL": content_cls = "bg-green-100 text-green-800"
+    elif content_mode == "CAUTIOUS": content_cls = "bg-yellow-100 text-yellow-800"
+    elif content_mode == "SKIP": content_cls = "bg-gray-200 text-gray-500"
+    
     # Confidence Colors
     conf_cls = "bg-gray-200 text-gray-800"
     if conf_level == "HIGH": conf_cls = "bg-green-100 text-green-800"
@@ -353,9 +363,22 @@ def generate_dashboard(base_dir: Path):
                 </div>
                 
                 <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
+                
+                <!-- [Ops v1.1] Content Status Badge -->
+                {% set c_mode = content_mode if content_mode else 'UNKNOWN' %}
+                {% set c_cls = 'bg-gray-200 text-gray-800' %}
+                {% if c_mode == 'NORMAL' %}{% set c_cls = 'bg-blue-100 text-blue-800' %}
+                {% elif c_mode == 'CAUTIOUS' %}{% set c_cls = 'bg-yellow-100 text-yellow-800' %}
+                {% elif c_mode == 'SKIP' %}{% set c_cls = 'bg-gray-200 text-gray-600' %}
+                {% endif %}
+                <!-- Note: Simple f-string replacement for now since Jinja not strictly used -->
+                <!-- We need to calculate content_status before this f-string -->
             </div>
             
-            <div class="status-badge status-{status_data['status']}">{status_data['status']}</div>
+            <div style="display:flex; gap:10px;">
+                 <div class="conf-badge {content_cls}">Content: {content_mode}</div>
+                 <div class="status-badge status-{status_data['status']}">{status_data['status']}</div>
+            </div>
         </div>
         
         <div class="dashboard-container">
