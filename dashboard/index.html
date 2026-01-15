@@ -114,6 +114,11 @@
             .bg-green-100 { background-color: #dcfce7; } .text-green-800 { color: #166534; }
             .bg-yellow-100 { background-color: #fef9c3; } .text-yellow-800 { color: #854d0e; }
             .bg-red-100 { background-color: #fee2e2; } .text-red-800 { color: #991b1b; }
+            
+            /* Queue Card Styles */
+            .queue-list { display: flex; flex-direction: column; gap: 10px; }
+            .queue-card { background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+            .approval-form label { display: block; margin-bottom: 2px; cursor: pointer; }
         </style>
     </head>
     <body>
@@ -132,9 +137,6 @@
                 </div>
                 
                 <div class="conf-badge bg-green-100 text-green-800">Confidence: HIGH</div>
-                
-                <!-- [Ops v1.1] Content Status Badge -->
-                <!-- Logic handled in Python, displayed below -->
             </div>
             
             <div style="display:flex; gap:10px;">
@@ -142,7 +144,7 @@
                 <div class="conf-badge bg-green-100 text-green-800">NORMAL</div>
                 <div class="conf-badge bg-blue-100 text-blue-800">Narrative: INGESTION_OK</div>
                  <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">Preset: STANDARD</div>
-                 <div class="status-badge status-FAIL">실패 (Core)</div>
+                 <div class="status-badge status-PARTIAL">부분 성공</div>
             </div>
         </div>
         
@@ -473,6 +475,33 @@
           if (event.target == modal) {
             modal.style.display = "none";
           }
+        }
+
+        function generateYaml(videoId) {
+            const dcm = document.getElementById('chk-dcm-' + videoId).checked;
+            const adl = document.getElementById('chk-adl-' + videoId).checked;
+            const bs = document.getElementById('chk-bs-' + videoId).checked;
+            const note = document.getElementById('note-' + videoId).value;
+            
+            const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
+            const now = new Date().toISOString();
+            
+            const yaml = `approval_version: "approve_yml_v1"
+video_id: "${videoId}"
+approved_by: "USER_WEB_UI"
+approved_at: "${now}"
+apply:
+  data_collection_master: ${dcm}
+  anomaly_detection_logic: ${adl}
+  baseline_signals: ${bs}
+notes: "${note}"
+`;
+            
+            navigator.clipboard.writeText(yaml).then(function() {
+                alert('승인 코드가 복사되었습니다!\n\n1. Git 저장소로 이동\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\n3. 붙여넣기 후 커밋');
+            }, function(err) {
+                alert('복사 실패: ' + err);
+            });
         }
         </script>
     </body>

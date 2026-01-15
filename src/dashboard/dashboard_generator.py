@@ -599,6 +599,280 @@ def generate_dashboard(base_dir: Path):
     </html>
     """
     
+    
+    # [Phase 31-D] Narrative Approval Queue Section
+    queue_html = ""
+    try:
+        # Load Queue
+        q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
+        if q_path.exists():
+            q_data = json.loads(q_path.read_text(encoding="utf-8"))
+            
+            if q_data:
+                queue_html += """
+                <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+                    Narrative Review Queue
+                </div>
+                <div class="queue-list">
+                """
+                
+                for item in q_data:
+                    vid = item.get("video_id")
+                    status = item.get("status", "PENDING")
+                    
+                    # Skip if already approved for simplicity in this view? 
+                    # User might want to see approved ones too, but let's focus on PENDING for action.
+                    # Or show all with status badge.
+                    
+                    # Load Proposal Content Hint
+                    prop_path = base_dir / item.get("proposal_path", "")
+                    prop_excerpt = "제안 내용을 불러올 수 없습니다."
+                    if prop_path.exists():
+                        # Extract "Proposed Additions" or just first few lines
+                        raw_txt = prop_path.read_text(encoding="utf-8")
+                        # Simple extraction: lines starting with '-'
+                        hints = [line for line in raw_txt.splitlines() if line.strip().startswith("-")][:5]
+                        prop_excerpt = "<br>".join(hints)
+                    
+                    # UI Card
+                    status_color = "#f59e0b" if status == "PENDING" else "#10b981"
+                    
+                    queue_html += f"""
+                    <div class="queue-card" id="card-{vid}">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span style="font-weight:bold; font-size:13px; color:#334155;">ID: {vid}</span>
+                            <span style="font-size:10px; font-weight:bold; color:white; background:{status_color}; padding:2px 6px; border-radius:4px;">{status}</span>
+                        </div>
+                        
+                        <div class="prop-content">
+                            <strong>Note (Extract):</strong><br>
+                            <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
+                        </div>
+                        
+                        <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:{'block' if status=='PENDING' else 'none'};">
+                            <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
+                            <label><input type="checkbox" id="chk-dcm-{vid}" checked> Data Collection Master</label><br>
+                            <label><input type="checkbox" id="chk-adl-{vid}"> Anomaly Detection Logic</label><br>
+                            <label><input type="checkbox" id="chk-bs-{vid}"> Baseline Signals</label>
+                            
+                            <input type="text" id="note-{vid}" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
+                            
+                            <button onclick="generateYaml('{vid}')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
+                                📋 YAML 생성 (복사)
+                            </button>
+                        </div>
+                    </div>
+                    """
+                queue_html += "</div>"
+            else:
+                queue_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>대기 중인 제안이 없습니다.</div>"
+    except Exception as e:
+        queue_html = f"<div style='color:red; font-size:11px;'>Queue 로드 실패: {e}</div>"
+
+    # Inject Queue HTML into Sidebar (append to existing sidebar_html)
+    sidebar_html += queue_html
+
+    html = f"""
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Hoin Insight 파이프라인</title>
+        <style>{css}</style>
+        <style>
+            .core-health-box {{ display: flex; gap: 15px; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-right: 20px; }}
+            .core-item {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; }}
+            .core-label {{ font-weight: bold; color: #64748b; }}
+            .core-val {{ font-weight: bold; }}
+            .cv-OK {{ color: #166534; }}
+            .cv-FAIL {{ color: #dc2626; }}
+            .cv-SKIP {{ color: #9ca3af; }}
+            .cv-WARMUP {{ color: #ea580c; }}
+            .conf-badge {{ padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }}
+            .bg-green-100 {{ background-color: #dcfce7; }} .text-green-800 {{ color: #166534; }}
+            .bg-yellow-100 {{ background-color: #fef9c3; }} .text-yellow-800 {{ color: #854d0e; }}
+            .bg-red-100 {{ background-color: #fee2e2; }} .text-red-800 {{ color: #991b1b; }}
+            
+            /* Queue Card Styles */
+            .queue-list {{ display: flex; flex-direction: column; gap: 10px; }}
+            .queue-card {{ background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }}
+            .approval-form label {{ display: block; margin-bottom: 2px; cursor: pointer; }}
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            <div style="display:flex; align-items:center; gap:20px;">
+                <h1>Hoin Insight</h1>
+                
+                <!-- Core Health Widget -->
+                <div class="core-health-box">
+                    <span style="font-size:11px; font-weight:bold; color:#475569; margin-right:5px;">CORE:</span>
+                    <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-{core_bd.get('US10Y','FAIL')}">{core_bd.get('US10Y','-')}</span></div>
+                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
+                    <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-{core_bd.get('SPX','FAIL')}">{core_bd.get('SPX','-')}</span></div>
+                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
+                    <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-{core_bd.get('BTC','FAIL')}">{core_bd.get('BTC','-')}</span></div>
+                </div>
+                
+                <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
+            </div>
+            
+            <div style="display:flex; gap:10px;">
+                <!-- Narrative Badge -->
+                <div class="conf-badge {content_cls}">{content_mode}</div>
+                <div class="conf-badge {status_data['narrative_cls']}">Narrative: {status_data['narrative_label']}</div>
+                 <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
+                 <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-container">
+            <!-- MAIN FLOW -->
+            <div class="main-panel">
+                <div class="architecture-diagram">
+                    
+                    <!-- 1. Scheduler -->
+                    <div class="process-row">
+                        <div class="node-group-label">01. 스케줄 및 트리거</div>
+                        <div class="proc-node node-scheduler">
+                            <div class="proc-icon">⏰</div>
+                            <div class="proc-content">
+                                <div class="proc-title">자동 스케줄러 (축 분할)</div>
+                                <div class="proc-desc">암호화폐(4회), 환율, 시장지수, 백필</div>
+                            </div>
+                        </div>
+                        <div class="arrow-down"></div>
+                    </div>
+                    
+                    <!-- 2. Github Actions -->
+                    <div class="process-row">
+                        <div class="node-group-label">02. 오케스트레이션</div>
+                        <div class="proc-node node-github active-node">
+                            <div class="proc-icon">🏗️</div>
+                            <div class="proc-content">
+                                <div class="proc-title">GitHub Actions 파이프라인</div>
+                                <div class="proc-desc">Run ID: {status_data['run_id']}</div>
+                            </div>
+                        </div>
+                        <div class="arrow-down"></div>
+                    </div>
+
+                    <!-- 3. Data Intake -->
+                    <div class="process-row" style="gap:20px;">
+                        <div class="node-group-label">03. 데이터 수집</div>
+                        <div class="proc-node node-data">
+                            <div class="proc-icon">📥</div>
+                            <div class="proc-content">
+                                <div class="proc-title">데이터 수집 및 정규화</div>
+                                <div class="proc-desc">원본 수집 → 정제(Curated) CSV</div>
+                            </div>
+                        </div>
+                        <div class="arrow-down"></div>
+                    </div>
+
+                    <!-- 4. Engine Processing -->
+                    <div class="process-row" style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
+                        <div class="node-group-label">04. 엔진 코어</div>
+                        <div class="proc-node node-engine">
+                            <div class="proc-title">피처 빌더</div>
+                        </div>
+                        <div class="proc-node node-engine">
+                            <div class="proc-title">이상치 탐지</div>
+                            <div class="proc-desc">국면: { "감지됨" if regime_exists else "없음" }</div>
+                        </div>
+                        <div class="proc-node node-engine">
+                             <div class="proc-title">토픽 선정</div>
+                             <div class="proc-desc">토픽 {topics_count}개</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. Output -->
+                    <div class="process-row">
+                         <div style="position:absolute; left:50%; top:-60px; height:60px; width:2px; background:#cbd5e1; transform:translateX(-50%);"></div>
+                        <div class="node-group-label" style="top:-80px;">05. 배포 및 출력</div>
+                        <!-- Added ID and onclick handler for Modal -->
+                        <div class="proc-node node-output" onclick="openModal()">
+                            <div class="proc-icon">🚀</div>
+                            <div class="proc-content">
+                                <div class="proc-title">콘텐츠 생성</div>
+                                <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">{topic_title}</div>
+                                <div class="proc-sub" style="margin-top:6px;">{ "스크립트 생성 완료 (클릭하여 전체보기)" if script_exists else "대기중" }</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- RIGHT SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-title">
+                    데이터 수집 현황판
+                </div>
+                {sidebar_html}
+                
+                <div class="footer">
+                    Hoin Engine 자동 생성<br>{ymd}
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="scriptModal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">{topic_title}</div>
+            <div class="modal-body">
+{script_body}
+            </div>
+          </div>
+        </div>
+
+        <script>
+        var modal = document.getElementById("scriptModal");
+        function openModal() {{
+          modal.style.display = "block";
+        }}
+        function closeModal() {{
+          modal.style.display = "none";
+        }}
+        window.onclick = function(event) {{
+          if (event.target == modal) {{
+            modal.style.display = "none";
+          }}
+        }}
+
+        function generateYaml(videoId) {{
+            const dcm = document.getElementById('chk-dcm-' + videoId).checked;
+            const adl = document.getElementById('chk-adl-' + videoId).checked;
+            const bs = document.getElementById('chk-bs-' + videoId).checked;
+            const note = document.getElementById('note-' + videoId).value;
+            
+            const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
+            const now = new Date().toISOString();
+            
+            const yaml = `approval_version: "approve_yml_v1"
+video_id: "${{videoId}}"
+approved_by: "USER_WEB_UI"
+approved_at: "${{now}}"
+apply:
+  data_collection_master: ${{dcm}}
+  anomaly_detection_logic: ${{adl}}
+  baseline_signals: ${{bs}}
+notes: "${{note}}"
+`;
+            
+            navigator.clipboard.writeText(yaml).then(function() {{
+                alert('승인 코드가 복사되었습니다!\\n\\n1. Git 저장소로 이동\\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\\n3. 붙여넣기 후 커밋');
+            }}, function(err) {{
+                alert('복사 실패: ' + err);
+            }});
+        }}
+        </script>
+    </body>
+    </html>
+    """
+    
     (dash_dir / "index.html").write_text(html, encoding="utf-8")
     print(f"파이프라인 아키텍처 대시보드 생성 완료: {dash_dir}/index.html")
     return dash_dir / "index.html"
