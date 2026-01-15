@@ -1,11 +1,11 @@
-# Insight Shotlist (2026-01-14)
+# Insight Shotlist (2026-01-15)
 
 1. Opening
    - 화면: **(no meta regime detected)** 키워드 강조 타이틀
    - 자막: 오늘의 Market Regime: (no meta regime detected)
 
 2. Why Now
-   - 화면: Regime Persistence 타임라인 (1 days)
+   - 화면: Regime Persistence 타임라인 (2 days)
    - 화면: Narrative Drift 상태 아이콘
 
 3. What Changed

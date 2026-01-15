@@ -2,81 +2,81 @@
   "crypto_btc_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.052416Z"
+    "timestamp": "2026-01-15T00:19:17.970801Z"
   },
   "fx_usdkrw_spot_open_er_api": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.054102Z"
+    "timestamp": "2026-01-15T00:19:17.972411Z"
   },
   "metal_gold_xauusd_spot_gold_api": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.055753Z"
+    "timestamp": "2026-01-15T00:19:17.973983Z"
   },
   "metal_silver_xagusd_spot_gold_api": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.057383Z"
+    "timestamp": "2026-01-15T00:19:17.975555Z"
   },
   "rates_us10y_yield_ustreasury": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.059081Z"
+    "timestamp": "2026-01-15T00:19:17.977044Z"
   },
   "risk_vix_index_stooq": {
-    "status": "OK",
-    "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.060697Z"
+    "status": "SKIP",
+    "reason": "Mock data used (stooq_mock)",
+    "timestamp": "2026-01-15T00:19:17.978530Z"
   },
   "index_spx_sp500_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.062306Z"
+    "timestamp": "2026-01-15T00:19:17.980041Z"
   },
   "index_kospi_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.063922Z"
+    "timestamp": "2026-01-15T00:19:17.981518Z"
   },
   "derived_corr_btc_spx_30d": {
-    "status": "OK",
-    "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.065539Z"
+    "status": "SKIP",
+    "reason": "Mock data used (derived_mock)",
+    "timestamp": "2026-01-15T00:19:17.983028Z"
   },
   "derived_corr_usdkrw_us10y_30d": {
-    "status": "OK",
-    "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.067125Z"
+    "status": "SKIP",
+    "reason": "Mock data used (derived_mock)",
+    "timestamp": "2026-01-15T00:19:17.984530Z"
   },
   "index_nasdaq_ndx_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.069303Z"
+    "timestamp": "2026-01-15T00:19:17.986579Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.070388Z"
+    "timestamp": "2026-01-15T00:19:17.987594Z"
   },
   "rates_us02y_yield_ustreasury": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.071467Z"
+    "timestamp": "2026-01-15T00:19:17.988655Z"
   },
   "comm_wti_crude_oil_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.072589Z"
+    "timestamp": "2026-01-15T00:19:17.989673Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.073658Z"
+    "timestamp": "2026-01-15T00:19:17.990613Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-14T23:44:58.074736Z"
+    "timestamp": "2026-01-15T00:19:17.991612Z"
   }
 }
