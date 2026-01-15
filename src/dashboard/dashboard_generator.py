@@ -619,10 +619,10 @@ def generate_dashboard(base_dir: Path):
             
         if q_data:
             queue_html += '<div class="queue-list">'
+            
+            for item in q_data:
+                vid = item.get("video_id")
 
-                
-                for item in q_data:
-                    vid = item.get("video_id")
                     status = item.get("status", "PENDING")
                     
                     # Skip if already approved for simplicity in this view? 
