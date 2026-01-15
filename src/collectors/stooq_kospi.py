@@ -1,23 +1,19 @@
 from __future__ import annotations
 
+import csv
+import io
 import json
 from datetime import datetime
-from io import StringIO
 from pathlib import Path
 from urllib.request import Request, urlopen
 
 import pandas as pd
+import requests
 
 from src.utils.retry import retry
+from src.utils.target_date import get_target_parts
 
 CSV_URL = "https://stooq.com/q/d/l/?s=%5Ekospi&i=d"
-
-def _utc_date_parts() -> tuple[str, str, str]:
-    return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
-    )
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -34,13 +30,13 @@ def write_raw_kospi(base_dir: Path) -> Path:
     unit = "INDEX"
     ts_utc = _utc_now()
 
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "raw" / "stooq" / y / m / d
+    y, m, d = get_target_parts()
+    out_dir = base_dir / "data" / "raw" / "index_kospi_stooq" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "kospi.json"
 
     csv_text = _fetch_csv(CSV_URL)
-    df = pd.read_csv(StringIO(csv_text))
+    df = pd.read_csv(io.StringIO(csv_text))
 
     if "Close" not in df.columns:
         raise ValueError("stooq kospi CSV missing Close column")

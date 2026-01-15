@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import requests
 import json
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
 
 from src.utils.retry import with_retry
+from src.utils.target_date import get_target_parts
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
@@ -32,9 +34,9 @@ def write_raw_xag_usd(base_dir: Path) -> Path:
     unit = "USD"
 
     ts_utc = _utc_now()
-    y, m, d = _utc_date_parts()
+    y, m, d = get_target_parts()
 
-    out_dir = base_dir / "data" / "raw" / "gold_api" / y / m / d
+    out_dir = base_dir / "data" / "raw" / "metal_silver_xagusd_spot_gold_api" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "xag_usd.json"
 

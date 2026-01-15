@@ -5,9 +5,11 @@ import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+import requests
 from urllib.request import urlopen, Request
 
 from src.utils.retry import with_retry
+from src.utils.target_date import get_target_parts
 
 URL = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=true"
 
@@ -16,13 +18,6 @@ class BTCQuote:
     ts_utc: str
     price_usd: float
     last_updated_at: int
-
-def _utc_date_parts() -> tuple[str, str, str]:
-    return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
-    )
 
 def _fetch_raw() -> str:
     req = Request(URL, headers={"User-Agent": "hoin-insight-bot"})
@@ -54,8 +49,8 @@ def fetch_btc_quote() -> BTCQuote:
     return BTCQuote(ts_utc=ts_utc, price_usd=price, last_updated_at=last_updated_at)
 
 def write_raw_quote(base_dir: Path) -> Path:
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "raw" / "coingecko" / y / m / d
+    y, m, d = get_target_parts()
+    out_dir = base_dir / "data" / "raw" / "crypto_btc_usd_spot_coingecko" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     quote = fetch_btc_quote()
     out_path = out_dir / "btc_usd.json"

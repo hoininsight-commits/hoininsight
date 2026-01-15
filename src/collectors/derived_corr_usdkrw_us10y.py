@@ -5,13 +5,8 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
-
-def _utc_date_parts() -> tuple[str, str, str]:
-    return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
-    )
+import numpy as np
+from src.utils.target_date import get_target_parts
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -72,8 +67,8 @@ def write_raw_corr_usdkrw_us10y_30d(base_dir: Path) -> Path:
         source = "derived_mock"
         value = 0.3 # Mock correlation
 
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "raw" / "derived" / y / m / d
+    y, m, d = get_target_parts()
+    out_dir = base_dir / "data" / "raw" / "derived_corr_usdkrw_us10y_30d" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "corr_usdkrw_us10y_30d.json"
 

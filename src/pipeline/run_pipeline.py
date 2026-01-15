@@ -6,8 +6,14 @@ def main():
     parser = argparse.ArgumentParser(description="Hoin Insight Pipeline Runner")
     parser.add_argument("--only-axis", type=str, help="Run only specific axis (CRYPTO, FX_RATES, US_MARKETS, BACKFILL)")
     parser.add_argument("--only-category", type=str, help="Run only specific category name directly")
+    parser.add_argument("--target-date", type=str, help="Target date YYYY-MM-DD for backfill")
     
     args = parser.parse_args()
+    
+    if args.target_date:
+        import os
+        os.environ["HOIN_TARGET_DATE"] = args.target_date
+        print(f"[RUN] target_date={args.target_date}", file=sys.stderr)
     
     target_categories = None
     

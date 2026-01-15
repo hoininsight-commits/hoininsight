@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import csv
+import io
 import json
+import requests
 from datetime import datetime
 from io import StringIO
 from pathlib import Path
@@ -9,6 +12,7 @@ from urllib.request import Request, urlopen
 import pandas as pd
 
 from src.utils.retry import with_retry
+from src.utils.target_date import get_target_parts
 
 CSV_URL = "https://stooq.com/q/d/l/?s=%5Evix&i=d"
 
@@ -37,8 +41,8 @@ def write_raw_vix(base_dir: Path) -> Path:
     unit = "INDEX"
     ts_utc = _utc_now()
     
-    y, m, d = _utc_date_parts()
-    out_dir = base_dir / "data" / "raw" / "stooq" / y / m / d
+    y, m, d = get_target_parts()
+    out_dir = base_dir / "data" / "raw" / "risk_vix_index_stooq" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "vix.json"
 

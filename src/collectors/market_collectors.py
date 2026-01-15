@@ -8,9 +8,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from src.utils.target_date import get_target_ymd
+
 # Generic Helpers
 def _utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d")
+    # Updated to use the target date utility
+    return get_target_ymd()
+
+def _target_ymd() -> str:
+    return get_target_ymd()
 
 def _ensure_dir(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
