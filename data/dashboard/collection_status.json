@@ -1,7 +1,82 @@
 {
+  "crypto_btc_usd_spot_coingecko": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/coingecko/2026/01/15/btc_usd.json'",
+    "timestamp": "2026-01-15T05:33:02.198236Z"
+  },
+  "fx_usdkrw_spot_open_er_api": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/exchangerate/2026/01/15/usdkrw.json'",
+    "timestamp": "2026-01-15T05:33:02.199404Z"
+  },
+  "metal_gold_xauusd_spot_gold_api": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/gold_api/2026/01/15/xau_usd.json'",
+    "timestamp": "2026-01-15T05:33:02.200631Z"
+  },
+  "metal_silver_xagusd_spot_gold_api": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/gold_api/2026/01/15/xag_usd.json'",
+    "timestamp": "2026-01-15T05:33:02.201784Z"
+  },
+  "rates_us10y_yield_ustreasury": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/ustreasury/2026/01/15/us10y.json'",
+    "timestamp": "2026-01-15T05:33:02.202956Z"
+  },
+  "risk_vix_index_stooq": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/vix.json'",
+    "timestamp": "2026-01-15T05:33:02.204121Z"
+  },
+  "index_spx_sp500_stooq": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/spx.json'",
+    "timestamp": "2026-01-15T05:33:02.205273Z"
+  },
+  "index_kospi_stooq": {
+    "status": "FAIL",
+    "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/kospi.json'",
+    "timestamp": "2026-01-15T05:33:02.206425Z"
+  },
+  "derived_corr_btc_spx_30d": {
+    "status": "FAIL",
+    "reason": "Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/15/corr_btc_spx_30d.json",
+    "timestamp": "2026-01-15T05:33:02.207514Z"
+  },
+  "derived_corr_usdkrw_us10y_30d": {
+    "status": "FAIL",
+    "reason": "Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/15/corr_usdkrw_us10y_30d.json",
+    "timestamp": "2026-01-15T05:33:02.208629Z"
+  },
+  "index_nasdaq_ndx_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T05:33:02.212166Z"
+  },
+  "fx_dxy_index_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T05:33:02.213460Z"
+  },
+  "rates_us02y_yield_ustreasury": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T05:33:02.214687Z"
+  },
+  "comm_wti_crude_oil_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T05:33:02.215891Z"
+  },
+  "metal_platinum_xptusd_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-01-15T05:33:02.217100Z"
+  },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T04:56:14.769398Z"
+    "timestamp": "2026-01-15T05:33:02.218221Z"
   }
 }
