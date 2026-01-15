@@ -24,9 +24,14 @@ def _missing_cols(df_cols: List[str], required: List[str]) -> List[str]:
     s = set(df_cols)
     return [c for c in required if c not in s]
 
-def run_schema_checks(base_dir: Path) -> SchemaCheckResult:
+def run_schema_checks(base_dir: Path, target_categories: list[str] = None) -> SchemaCheckResult:
     reg = base_dir / "registry" / "datasets.yml"
-    datasets = [ds for ds in load_datasets(reg) if ds.enabled]
+    all_datasets = load_datasets(reg)
+    
+    if target_categories:
+        datasets = [ds for ds in all_datasets if ds.enabled and ds.category in target_categories]
+    else:
+        datasets = [ds for ds in all_datasets if ds.enabled]
 
     ok = True
     lines: list[str] = []

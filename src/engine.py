@@ -53,7 +53,7 @@ def main(target_categories: list[str] = None):
         details_lines.append(f"report: ok | {report_path.as_posix()}")
         print(f"report: ok | {report_path.as_posix()}", file=sys.stderr)
 
-        chk = run_output_checks(Path("."))
+        chk = run_output_checks(Path("."), target_categories)
         check_lines = chk.lines
         per_dataset = chk.per_dataset
         checks_ok = chk.ok
@@ -64,7 +64,7 @@ def main(target_categories: list[str] = None):
                 print(f"validation: {line}", file=sys.stderr)
             raise RuntimeError("output checks failed")
 
-        sch = run_schema_checks(Path("."))
+        sch = run_schema_checks(Path("."), target_categories)
         details_lines.extend(["schema_checks:"] + sch.lines)
         if not sch.ok:
             for line in sch.lines:

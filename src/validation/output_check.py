@@ -12,9 +12,14 @@ class OutputCheckResult:
     lines: list[str]
     per_dataset: list[dict]
 
-def run_output_checks(base_dir: Path) -> OutputCheckResult:
+def run_output_checks(base_dir: Path, target_categories: list[str] = None) -> OutputCheckResult:
     reg = base_dir / "registry" / "datasets.yml"
-    datasets = [ds for ds in load_datasets(reg) if ds.enabled]
+    all_datasets = load_datasets(reg)
+    
+    if target_categories:
+        datasets = [ds for ds in all_datasets if ds.enabled and ds.category in target_categories]
+    else:
+        datasets = [ds for ds in all_datasets if ds.enabled]
 
     ok = True
     lines: list[str] = []
