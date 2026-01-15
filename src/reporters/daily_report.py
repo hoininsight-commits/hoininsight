@@ -130,6 +130,15 @@ def write_daily_brief(base_dir: Path) -> Path:
     gate_status = evaluate_content_gate(base_dir)
     c_mode = gate_status.get("content_mode", "UNKNOWN")
     lines.append(f"Content Status: {c_mode}")
+
+    # [Ops Upgrade v1.2] Content Preset
+    if c_mode != "SKIP":
+        from src.ops.content_preset_selector import select_content_preset
+        # Resolve Regime (fallback to card data)
+        regime_title = card.structured_data.get("regime", "Unknown")
+        has_meta = len(meta_topics) > 0
+        preset_info = select_content_preset(regime_title, conf_level, has_meta)
+        lines.append(f"Content Preset: {preset_info.get('preset', 'UNKNOWN')}")
     
     lines.append(card.drivers_line)
     meta_link_md = f"[json]({card.meta_link})" if card.meta_link != "-" else "-"

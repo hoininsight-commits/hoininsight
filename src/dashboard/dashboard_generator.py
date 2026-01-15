@@ -318,6 +318,35 @@ def generate_dashboard(base_dir: Path):
     if content_mode == "NORMAL": content_cls = "bg-green-100 text-green-800"
     elif content_mode == "CAUTIOUS": content_cls = "bg-yellow-100 text-yellow-800"
     elif content_mode == "SKIP": content_cls = "bg-gray-200 text-gray-500"
+
+    # [Ops Upgrade v1.2] Content Preset
+    preset_label = "-"
+    preset_cls = "bg-gray-100 text-gray-400"
+    
+    if content_mode != "SKIP":
+        from src.ops.content_preset_selector import select_content_preset
+        
+        # Load Regime Name
+        regime_name = "Unknown"
+        rh_path = base_dir / "data" / "regimes" / "regime_history.json"
+        if rh_path.exists():
+            try:
+                rh_data = json.loads(rh_path.read_text(encoding="utf-8"))
+                if rh_data.get("history"):
+                    regime_name = rh_data["history"][-1].get("regime", "Unknown")
+            except: pass
+            
+        # Check Meta
+        has_meta = meta_count > 0
+        
+        # Select
+        p_res = select_content_preset(regime_name, conf_level, has_meta)
+        preset_label = p_res.get("preset", "STANDARD")
+        
+        # Colors
+        if preset_label == "BRIEF": preset_cls = "bg-blue-50 text-blue-600 border border-blue-200"
+        elif preset_label == "STANDARD": preset_cls = "bg-blue-100 text-blue-800 border border-blue-300"
+        elif preset_label == "DEEP": preset_cls = "bg-purple-100 text-purple-800 border border-purple-300"
     
     # Confidence Colors
     conf_cls = "bg-gray-200 text-gray-800"
@@ -365,18 +394,12 @@ def generate_dashboard(base_dir: Path):
                 <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
                 
                 <!-- [Ops v1.1] Content Status Badge -->
-                {% set c_mode = content_mode if content_mode else 'UNKNOWN' %}
-                {% set c_cls = 'bg-gray-200 text-gray-800' %}
-                {% if c_mode == 'NORMAL' %}{% set c_cls = 'bg-blue-100 text-blue-800' %}
-                {% elif c_mode == 'CAUTIOUS' %}{% set c_cls = 'bg-yellow-100 text-yellow-800' %}
-                {% elif c_mode == 'SKIP' %}{% set c_cls = 'bg-gray-200 text-gray-600' %}
-                {% endif %}
-                <!-- Note: Simple f-string replacement for now since Jinja not strictly used -->
-                <!-- We need to calculate content_status before this f-string -->
+                <!-- Logic handled in Python, displayed below -->
             </div>
             
             <div style="display:flex; gap:10px;">
                  <div class="conf-badge {content_cls}">Content: {content_mode}</div>
+                 <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
                  <div class="status-badge status-{status_data['status']}">{status_data['status']}</div>
             </div>
         </div>

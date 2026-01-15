@@ -184,6 +184,31 @@ jobs:
             echo "[VERIFY][OK] Content generation allowed (NORMAL)"
           fi
 
+      - name: Verify Content Preset Selection
+        run: |
+          echo "[VERIFY] Content Preset Selection Check"
+
+          YMD=$(date -u +"%Y/%m/%d")
+          REPORT="data/reports/$YMD/daily_brief.md"
+
+          if [ ! -f "$REPORT" ]; then
+            echo "[VERIFY][FAIL] daily_brief.md not found"
+            exit 1
+          fi
+
+          if grep -q "^Content Preset:" "$REPORT"; then
+            echo "[VERIFY][OK] Content preset emitted in report"
+          # Optional: handle SKIP case where preset might not be emitted?
+          # Ops v1.2 rule says "SKIP 시 프리셋 선택하지 않음". 
+          # My daily_report logic only appends line if != SKIP.
+          # So I should check: if Content Status != SKIP, then Preset must exist.
+          elif grep -q "Content Status: SKIP" "$REPORT"; then
+            echo "[VERIFY][OK] Content skipped, no preset required"
+          else
+            echo "[VERIFY][FAIL] Content preset line missing (and not skipped)"
+            exit 1
+          fi
+
       - name: Verify Auto Collection Expansion
         run: |
           echo "[VERIFY] Auto Collection Expansion Check"
