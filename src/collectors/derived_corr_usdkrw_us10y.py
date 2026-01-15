@@ -7,6 +7,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from src.utils.target_date import get_target_parts
+from src.utils.errors import WarmupError
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -48,8 +49,9 @@ def write_raw_corr_usdkrw_us10y_30d(base_dir: Path) -> Path:
         yld = yld.set_index("ts")[["value"]].rename(columns={"value": "us10y"})
 
         df = fx.join(yld, how="inner").dropna()
+        df = fx.join(yld, how="inner").dropna()
         if len(df) < 35:
-            raise ValueError("not enough overlapping history for 30D correlation")
+            raise WarmupError(f"insufficient history: {len(df)}/35 days overlapping")
 
         df["c_fx"] = df["usdkrw"].pct_change()
         df["c_y"] = df["us10y"].pct_change()
@@ -57,15 +59,15 @@ def write_raw_corr_usdkrw_us10y_30d(base_dir: Path) -> Path:
 
         corr = df["c_fx"].rolling(30).corr(df["c_y"]).dropna()
         if len(corr) == 0:
-            raise ValueError("rolling correlation produced no values")
+            raise WarmupError("rolling correlation produced no values")
 
         value = float(corr.iloc[-1])
         obs_ts = corr.index[-1].strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    except WarmupError:
+        raise
     except Exception as e:
-        print(f"[WARN] Derived USDKRW-US10Y calc failed: {e}. Using mock data.")
-        source = "derived_mock"
-        value = 0.3 # Mock correlation
+        raise RuntimeError(f"Derived USDKRW-US10Y calc failed: {e}")
 
     y, m, d = get_target_parts()
     out_dir = base_dir / "data" / "raw" / "derived_corr_usdkrw_us10y_30d" / y / m / d

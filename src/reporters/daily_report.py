@@ -116,6 +116,15 @@ def write_daily_brief(base_dir: Path) -> Path:
     
     lines.append("## REGIME SUMMARY")
     lines.append(card.regime_line)
+    
+    # [Ops Upgrade v1] Regime Confidence
+    from src.ops.regime_confidence import calculate_regime_confidence
+    conf_res = calculate_regime_confidence(base_dir / "data" / "dashboard" / "collection_status.json")
+    conf_level = conf_res.get("regime_confidence", "LOW")
+    bd = conf_res.get("core_breakdown", {})
+    bd_str = ", ".join([f"{k}={v}" for k, v in bd.items()])
+    lines.append(f"Confidence: {conf_level} (Core: {bd_str})")
+    
     lines.append(card.drivers_line)
     meta_link_md = f"[json]({card.meta_link})" if card.meta_link != "-" else "-"
     lines.append(f"Meta topics: {meta_link_md}")

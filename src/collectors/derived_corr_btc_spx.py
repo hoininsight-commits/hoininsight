@@ -6,6 +6,7 @@ import numpy as np
 from pathlib import Path
 from datetime import datetime
 from src.utils.target_date import get_target_parts
+from src.utils.errors import WarmupError
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -48,7 +49,8 @@ def write_raw_corr_btc_spx_30d(base_dir: Path) -> Path:
 
         df = btc.join(spx, how="inner").dropna()
         if len(df) < 35:
-            raise ValueError("not enough overlapping history for 30D correlation")
+            # WARMUP Requirement: 35 days history
+            raise WarmupError(f"insufficient history: {len(df)}/35 days overlapping")
 
         # daily returns (pct_change)
         df["r_btc"] = df["btc"].pct_change()
@@ -57,21 +59,22 @@ def write_raw_corr_btc_spx_30d(base_dir: Path) -> Path:
 
         corr = df["r_btc"].rolling(30).corr(df["r_spx"]).dropna()
         if len(corr) == 0:
-            raise ValueError("rolling correlation produced no values")
+            raise WarmupError("rolling correlation produced no values")
 
         value = float(corr.iloc[-1])
         obs_ts = corr.index[-1].strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    except WarmupError:
+        raise
     except Exception as e:
-        print(f"[WARN] Derived BTC-SPX calc failed: {e}. Using mock data.")
-        source = "derived_mock"
-        value = 0.5 # Mock correlation
+        # Standard error
+        raise RuntimeError(f"Derived BTC-SPX calc failed: {e}")
 
     y, m, d = get_target_parts()
     out_dir = base_dir / "data" / "raw" / "derived_corr_btc_spx_30d" / y / m / d
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "corr_btc_spx_30d.json"
-
+    
     payload = {
         "ts_utc": ts_utc,
         "source": source,

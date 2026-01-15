@@ -36,19 +36,17 @@ def main(target_categories: list[str] = None):
             fn = get_callables(ds.normalizer)
             fn(Path("."))
             
-            # If normalization succeeds, mark as OK (unless it was explicitly SKIP due to mock)
-            # Only update if explicitly successful, or if it was previously FAIL
+            # If normalization succeeds, mark as OK (unless it was explicitly SKIP/WARMUP)
             current_status = collection_status.get(dataset_id, {}).get("status", "FAIL")
             
-            if current_status != "SKIP":
+            if current_status not in ["SKIP", "WARMUP"]:
                 collection_status[dataset_id] = {
                     "status": "OK",
                     "reason": "Normalized successfully",
                     "timestamp": datetime.utcnow().isoformat() + "Z"
                 }
             else:
-                 # If it was SKIP, keep it SKIP but maybe update timestamp to show pipeline ran?
-                 # Let's update timestamp but keep status/reason from collector
+                 # If it was SKIP/WARMUP, keep it but update timestamp
                  collection_status[dataset_id]["timestamp"] = datetime.utcnow().isoformat() + "Z"
             
         except Exception as e:

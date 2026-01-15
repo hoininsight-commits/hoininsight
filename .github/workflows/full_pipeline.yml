@@ -170,6 +170,28 @@ jobs:
 
           echo "[VERIFY][INFO] Collector may skip if env vars missing (valid state)"
 
+      - name: Verify Core Dataset and Regime Confidence
+        run: |
+          echo "[VERIFY] Core Dataset + Regime Confidence Check"
+
+          # daily_brief에 Confidence 라인이 존재해야 함
+          YMD=$(date -u +"%Y/%m/%d")
+          REPORT="data/reports/$YMD/daily_brief.md"
+
+          if [ ! -f "$REPORT" ]; then
+            echo "[VERIFY][FAIL] daily_brief.md not found"
+            exit 1
+          fi
+
+          if grep -q "^Confidence:" "$REPORT"; then
+            echo "[VERIFY][OK] Regime confidence emitted in report"
+          else
+            echo "[VERIFY][FAIL] Confidence line missing in REGIME SUMMARY"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Core dataset confidence verification passed"
+
       - name: Generate Insight Dashboard
         run: |
           python src/dashboard/dashboard_generator.py
@@ -187,7 +209,7 @@ jobs:
         with:
           name: insight-dashboard
           path: dashboard/
-
+          
       - name: Create issue on failure
         if: failure()
         env:

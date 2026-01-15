@@ -1,172 +1,10 @@
-from __future__ import annotations
 
-import json
-import os
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List
-
-def _utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d")
-
-def _count_files(base_dir: Path, subpath: str, pattern: str = "*") -> int:
-    try:
-        p = base_dir / subpath
-        if not p.exists():
-            return 0
-        return len(list(p.glob(pattern)))
-    except:
-        return 0
-
-def parse_registry(base_dir: Path) -> List[Dict]:
-    try:
-        import yaml
-        with open(base_dir / "registry/datasets.yml", "r", encoding="utf-8") as f:
-            data = yaml.safe_load(f)
-            return data.get("datasets", [])
-    except ImportError:
-        datasets = []
-        current_ds = {}
-        content = (base_dir / "registry" / "datasets.yml").read_text(encoding="utf-8")
-        for line in content.splitlines():
-            line = line.strip()
-            if line.startswith("- dataset_id:"):
-                if current_ds:
-                    datasets.append(current_ds)
-                current_ds = {}
-                current_ds["dataset_id"] = line.split(":", 1)[1].strip().strip('"')
-            elif line.startswith("category:"):
-                current_ds["category"] = line.split(":", 1)[1].strip().strip('"')
-            elif line.startswith("curated_path:"):
-                current_ds["curated_path"] = line.split(":", 1)[1].strip().strip('"')
-        if current_ds:
-            datasets.append(current_ds)
-        return datasets
-
-def check_collection_status(base_dir: Path, dataset: Dict, collection_status_data: Dict) -> Dict:
-    ds_id = dataset.get("dataset_id")
-    category = dataset.get("category")
-    if not category:
-        cpath = dataset.get("curated_path", "")
-        parts = cpath.split("/")
-        if len(parts) >= 3:
-            category = parts[2].upper() 
-        else:
-            category = "UNCATEGORIZED"
-    
-    # Translate Categories to Korean for Display
-    cat_map = {
-        "CRYPTO": "가상자산",
-        "FX_RATES": "환율/금리",
-        "GLOBAL_INDEX": "글로벌 지수",
-        "RATES_YIELD": "국채 금리",
-        "COMMODITIES": "원자재",
-        "PRECIOUS_METALS": "귀금속",
-        "BACKFILL": "과거 데이터"
-    }
-    display_category = cat_map.get(category, category)
-
-    if ds_id in collection_status_data:
-        status_info = collection_status_data[ds_id]
-        status = status_info.get("status", "FAIL")
-        reason = status_info.get("reason", "알 수 없음")
-        timestamp = status_info.get("timestamp", "")
-    else:
-        status = "PENDING"
-        reason = "수집 대기 중"
-        timestamp = ""
-    
-    return {
-        "dataset_id": ds_id,
-        "category": display_category,
-        "status": status,
-        "reason": reason,
-        "last_updated": timestamp
-    }
-
-def generate_dashboard(base_dir: Path):
-    ymd = _utc_ymd()
-    datasets = parse_registry(base_dir)
-    
-    collection_status_file = base_dir / "data" / "dashboard" / "collection_status.json"
-    collection_status_data = {}
-    if collection_status_file.exists():
-        try:
-            with open(collection_status_file, "r", encoding="utf-8") as f:
-                collection_status_data = json.load(f)
-        except Exception as e:
-            print(f"[WARN] Failed to load collection status: {e}")
-    
-    collection_health = {} 
-    total_ok = 0
-    total_fail = 0
-    
-    for ds in datasets:
-        info = check_collection_status(base_dir, ds, collection_status_data)
-        cat = info["category"]
-        if cat not in collection_health:
-            collection_health[cat] = {"collected": 0, "failed": 0, "datasets": []}
-        
-        entry = collection_health[cat]
-        entry["datasets"].append(info)
-        if info["status"] == "OK":
-            entry["collected"] += 1
-            total_ok += 1
-        else:
-            entry["failed"] += 1
-            total_fail += 1
-
-    # Engine Outputs Check
-    topics_count = _count_files(base_dir, f"data/topics/{ymd.replace('-','/')}", "*.json")
-    meta_path = base_dir / "data" / "meta_topics" / ymd.replace("-","/") / "meta_topics.json"
-    meta_count = 0
-    if meta_path.exists():
-        try:
-            meta_count = len(json.loads(meta_path.read_text()))
-        except: pass
-            
-    regime_exists = (base_dir / "data" / "regimes" / f"regime_{ymd}.json").exists()
-    script_path = base_dir / "data" / "content" / "insight_script_v1.md"
-    script_exists = script_path.exists()
-    
-    topic_title = "대기중..."
-    script_body = ""
-    if script_exists:
-        try:
-            content = script_path.read_text(encoding="utf-8")
-            lines = content.splitlines()
-            body_lines = []
-            title_found = False
-            for line in lines:
-                line = line.strip()
-                if not line: continue
-                
-                if line.startswith("#") and not title_found:
-                    topic_title = line.lstrip("#").replace("[Insight]", "").replace("[인사이트]", "").strip()
-                    title_found = True
-                elif title_found:
-                    body_lines.append(line)
-            
-            script_body = "\n".join(body_lines)
-        except: pass
-    
-    # Status Translation
-    status_str = "SUCCESS" if total_fail == 0 else "PARTIAL" if total_ok > 0 else "FAIL"
-    status_map = {"SUCCESS": "성공", "PARTIAL": "부분 성공", "FAIL": "실패"}
-    display_status = status_map.get(status_str, status_str)
-
-    status_data = {
-        "run_date": ymd,
-        "run_id": os.environ.get("GITHUB_RUN_ID", "local"),
-        "status": display_status,
-        "raw_status": status_str
-    }
-    
-    dash_dir = base_dir / "dashboard"
-    dash_dir.mkdir(parents=True, exist_ok=True)
-    
-    # CSS
-    css = """
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Hoin Insight 파이프라인</title>
+        <style>
     body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #f4f7fa; color: #1e293b; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
     
     .top-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; height: 60px; box-sizing: border-box; }
@@ -262,79 +100,20 @@ def generate_dashboard(base_dir: Path):
     
     .modal-header { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
     .modal-body { font-size: 14px; line-height: 1.6; color: #334155; white-space: pre-wrap; }
-    """
-    
-    # Sidebar HTML
-    sidebar_html = ""
-    for cat in sorted(collection_health.keys()):
-        data = collection_health[cat]
-        fail_count = data["failed"]
-        # Pending count logic could be added here if needed
-        sidebar_html += f"""
-        <div class="cat-group">
-            <div class="cat-title">
-                <span>{cat}</span>
-                <span class="{ 'text-red-500' if fail_count > 0 else 'text-green-500' }">{data['collected']}/{len(data['datasets'])}</span>
-            </div>
-        """
-        for ds in data["datasets"]:
-             status = ds["status"]
-             if status == "FAIL":
-                 status_cls = "fail"
-                 check_mark = "✕"
-             elif status == "OK":
-                 status_cls = "ok"
-                 check_mark = "✓"
-             elif status == "WARMUP":
-                 status_cls = "warmup"
-                 check_mark = "WARMUP"
-             else:
-                 status_cls = "pending"
-                 check_mark = "-"
-             
-             sidebar_html += f"""
-             <div class="ds-item {status_cls}" title="{ds.get('reason','')}">
-                 <div class="ds-left">
-                     <div class="ds-icon"></div>
-                     <span class="ds-name">{ds['dataset_id']}</span>
-                 </div>
-                 <div class="status-check">{check_mark}</div>
-             </div>
-             """
-        sidebar_html += "</div>"
-
-    # [Ops Upgrade v1] Calculate Confidence
-    from src.ops.regime_confidence import calculate_regime_confidence
-    conf_res = calculate_regime_confidence(base_dir / "data" / "dashboard" / "collection_status.json")
-    conf_level = conf_res.get("regime_confidence", "LOW")
-    core_bd = conf_res.get("core_breakdown", {})
-    
-    # Confidence Colors
-    conf_cls = "bg-gray-200 text-gray-800"
-    if conf_level == "HIGH": conf_cls = "bg-green-100 text-green-800"
-    elif conf_level == "MEDIUM": conf_cls = "bg-yellow-100 text-yellow-800"
-    elif conf_level == "LOW": conf_cls = "bg-red-100 text-red-800"
-
-    html = f"""
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <title>Hoin Insight 파이프라인</title>
-        <style>{css}</style>
+    </style>
         <style>
-            .core-health-box {{ display: flex; gap: 15px; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-right: 20px; }}
-            .core-item {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; }}
-            .core-label {{ font-weight: bold; color: #64748b; }}
-            .core-val {{ font-weight: bold; }}
-            .cv-OK {{ color: #166534; }}
-            .cv-FAIL {{ color: #dc2626; }}
-            .cv-SKIP {{ color: #9ca3af; }}
-            .cv-WARMUP {{ color: #ea580c; }}
-            .conf-badge {{ padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }}
-            .bg-green-100 {{ background-color: #dcfce7; }} .text-green-800 {{ color: #166534; }}
-            .bg-yellow-100 {{ background-color: #fef9c3; }} .text-yellow-800 {{ color: #854d0e; }}
-            .bg-red-100 {{ background-color: #fee2e2; }} .text-red-800 {{ color: #991b1b; }}
+            .core-health-box { display: flex; gap: 15px; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-right: 20px; }
+            .core-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; }
+            .core-label { font-weight: bold; color: #64748b; }
+            .core-val { font-weight: bold; }
+            .cv-OK { color: #166534; }
+            .cv-FAIL { color: #dc2626; }
+            .cv-SKIP { color: #9ca3af; }
+            .cv-WARMUP { color: #ea580c; }
+            .conf-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }
+            .bg-green-100 { background-color: #dcfce7; } .text-green-800 { color: #166534; }
+            .bg-yellow-100 { background-color: #fef9c3; } .text-yellow-800 { color: #854d0e; }
+            .bg-red-100 { background-color: #fee2e2; } .text-red-800 { color: #991b1b; }
         </style>
     </head>
     <body>
@@ -345,17 +124,17 @@ def generate_dashboard(base_dir: Path):
                 <!-- Core Health Widget -->
                 <div class="core-health-box">
                     <span style="font-size:11px; font-weight:bold; color:#475569; margin-right:5px;">CORE:</span>
-                    <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-{core_bd.get('US10Y','FAIL')}">{core_bd.get('US10Y','-')}</span></div>
+                    <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-OK">OK</span></div>
                     <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-{core_bd.get('SPX','FAIL')}">{core_bd.get('SPX','-')}</span></div>
+                    <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-OK">OK</span></div>
                     <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-{core_bd.get('BTC','FAIL')}">{core_bd.get('BTC','-')}</span></div>
+                    <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-OK">OK</span></div>
                 </div>
                 
-                <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
+                <div class="conf-badge bg-green-100 text-green-800">Confidence: HIGH</div>
             </div>
             
-            <div class="status-badge status-{status_data['status']}">{status_data['status']}</div>
+            <div class="status-badge status-부분 성공">부분 성공</div>
         </div>
         
         <div class="dashboard-container">
@@ -383,7 +162,7 @@ def generate_dashboard(base_dir: Path):
                             <div class="proc-icon">🏗️</div>
                             <div class="proc-content">
                                 <div class="proc-title">GitHub Actions 파이프라인</div>
-                                <div class="proc-desc">Run ID: {status_data['run_id']}</div>
+                                <div class="proc-desc">Run ID: local</div>
                             </div>
                         </div>
                         <div class="arrow-down"></div>
@@ -410,11 +189,11 @@ def generate_dashboard(base_dir: Path):
                         </div>
                         <div class="proc-node node-engine">
                             <div class="proc-title">이상치 탐지</div>
-                            <div class="proc-desc">국면: { "감지됨" if regime_exists else "없음" }</div>
+                            <div class="proc-desc">국면: 감지됨</div>
                         </div>
                         <div class="proc-node node-engine">
                              <div class="proc-title">토픽 선정</div>
-                             <div class="proc-desc">토픽 {topics_count}개</div>
+                             <div class="proc-desc">토픽 16개</div>
                         </div>
                     </div>
                     
@@ -427,8 +206,8 @@ def generate_dashboard(base_dir: Path):
                             <div class="proc-icon">🚀</div>
                             <div class="proc-content">
                                 <div class="proc-title">콘텐츠 생성</div>
-                                <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">{topic_title}</div>
-                                <div class="proc-sub" style="margin-top:6px;">{ "스크립트 생성 완료 (클릭하여 전체보기)" if script_exists else "대기중" }</div>
+                                <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">Insight Script (2026-01-15)</div>
+                                <div class="proc-sub" style="margin-top:6px;">스크립트 생성 완료 (클릭하여 전체보기)</div>
                             </div>
                         </div>
                     </div>
@@ -441,10 +220,210 @@ def generate_dashboard(base_dir: Path):
                 <div class="sidebar-title">
                     데이터 수집 현황판
                 </div>
-                {sidebar_html}
+                
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>DERIVED</span>
+                <span class="text-red-500">0/2</span>
+            </div>
+        
+             <div class="ds-item warmup" title="insufficient history: 0/35 days overlapping">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">derived_corr_btc_spx_30d</span>
+                 </div>
+                 <div class="status-check">WARMUP</div>
+             </div>
+             
+             <div class="ds-item warmup" title="insufficient history: 0/35 days overlapping">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">derived_corr_usdkrw_us10y_30d</span>
+                 </div>
+                 <div class="status-check">WARMUP</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>FX</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">fx_usdkrw_spot_open_er_api</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>INDICES</span>
+                <span class="text-green-500">2/2</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">index_spx_sp500_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">index_kospi_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>METALS</span>
+                <span class="text-green-500">2/2</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>RATES</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">rates_us10y_yield_ustreasury</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>RISK</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">risk_vix_index_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>가상자산</span>
+                <span class="text-green-500">2/2</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">crypto_btc_usd_spot_coingecko</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">crypto_eth_usd_spot_coingecko</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>국채 금리</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">rates_us02y_yield_ustreasury</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>귀금속</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">metal_platinum_xptusd_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>글로벌 지수</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">index_nasdaq_ndx_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>원자재</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">comm_wti_crude_oil_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
+        <div class="cat-group">
+            <div class="cat-title">
+                <span>환율/금리</span>
+                <span class="text-green-500">1/1</span>
+            </div>
+        
+             <div class="ds-item ok" title="Normalized successfully">
+                 <div class="ds-left">
+                     <div class="ds-icon"></div>
+                     <span class="ds-name">fx_dxy_index_stooq</span>
+                 </div>
+                 <div class="status-check">✓</div>
+             </div>
+             </div>
                 
                 <div class="footer">
-                    Hoin Engine 자동 생성<br>{ymd}
+                    Hoin Engine 자동 생성<br>2026-01-15
                 </div>
             </div>
         </div>
@@ -453,33 +432,40 @@ def generate_dashboard(base_dir: Path):
         <div id="scriptModal" class="modal">
           <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">{topic_title}</div>
+            <div class="modal-header">Insight Script (2026-01-15)</div>
             <div class="modal-body">
-{script_body}
+## Opening (Context)
+- 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
+- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
+## Why Now
+- 이 국면은 현재 **2일째** 지속되고 있습니다.
+- 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
+## What Changed
+- 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
+- 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
+## What to Watch (Neutral)
+- 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
+* (특정 전략 프레임워크 없음)
+## Closing
+- 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
             </div>
           </div>
         </div>
 
         <script>
         var modal = document.getElementById("scriptModal");
-        function openModal() {{
+        function openModal() {
           modal.style.display = "block";
-        }}
-        function closeModal() {{
+        }
+        function closeModal() {
           modal.style.display = "none";
-        }}
-        window.onclick = function(event) {{
-          if (event.target == modal) {{
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
             modal.style.display = "none";
-          }}
-        }}
+          }
+        }
         </script>
     </body>
     </html>
-    """
     
-    (dash_dir / "index.html").write_text(html, encoding="utf-8")
-    print(f"파이프라인 아키텍처 대시보드 생성 완료: {dash_dir}/index.html")
-
-if __name__ == "__main__":
-    generate_dashboard(Path("."))

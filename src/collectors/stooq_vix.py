@@ -13,6 +13,7 @@ import pandas as pd
 
 from src.utils.retry import with_retry
 from src.utils.target_date import get_target_parts
+from src.utils.errors import SkipError
 
 CSV_URL = "https://stooq.com/q/d/l/?s=%5Evix&i=d"
 
@@ -59,16 +60,21 @@ def write_raw_vix(base_dir: Path) -> Path:
 
         df = df.dropna(subset=["Close"]).copy()
         if len(df) == 0:
-            raise ValueError("stooq vix CSV has no rows")
+            raise SkipError("stooq vix CSV has no rows (likely holiday or missing data)")
 
         last = df.iloc[-1]
         obs_date = str(last["Date"]) if "Date" in df.columns else ""
         close = float(last["Close"])
+    except SkipError:
+        raise
     except Exception as e:
-        print(f"[WARN] VIX fetch failed: {e}. Using mock data.")
-        source = "stooq_mock"
-        obs_date = datetime.utcnow().strftime("%Y-%m-%d")
-        close = 15.5 # Mock value
+        # If it's a network error or parsing error, we arguably should FAIL or SKIP.
+        # But per requirements: "source data missing" => SKIP/WARN.
+        # Let's re-raise as SkipError if it seems like a data availability issue, 
+        # or just fail if it's a hard error.
+        # For now, to meet "no mock" requirement, we simply interpret fetch failure as Skip/Fail.
+        # The user said "Soft-fail rules".
+        raise RuntimeError(f"VIX fetch failed: {e}") 
     
     payload = {
         "ts_utc": ts_utc,

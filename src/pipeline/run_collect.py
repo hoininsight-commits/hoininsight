@@ -4,6 +4,7 @@ import traceback
 from datetime import datetime
 from pathlib import Path
 from src.registry.loader import load_datasets, get_callables
+from src.utils.errors import WarmupError, SkipError
 
 def main(target_categories: list[str] = None):
     reg = Path("registry") / "datasets.yml"
@@ -32,7 +33,7 @@ def main(target_categories: list[str] = None):
             status = "OK"
             reason = "Collected successfully"
 
-            # Check for mock data in the output file
+            # Check for mock data in the output file (Legacy check, can be kept as backup)
             if isinstance(out_path, Path) and out_path.exists():
                 try:
                     content = json.loads(out_path.read_text(encoding="utf-8"))
@@ -47,11 +48,18 @@ def main(target_categories: list[str] = None):
                 # Path object might be returned but we want robustness; 
                 # but if fn returned None, we can't check.
                 pass
+                
+        except WarmupError as we:
+            status = "WARMUP"
+            reason = str(we)
+        except SkipError as se:
+            status = "SKIP"
+            reason = str(se)
         except Exception as e:
             failure_count += 1
             error_msg = str(e)
             
-            # Detect SKIP vs FAIL based on error message
+            # Detect SKIP vs FAIL based on error message (Legacy fallback)
             if "mock" in error_msg.lower() or "skip" in error_msg.lower():
                 status = "SKIP"
                 reason = f"Skipped: {error_msg[:100]}"
