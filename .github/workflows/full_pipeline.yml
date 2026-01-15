@@ -398,6 +398,9 @@ jobs:
         run: |
           python -m src.decision.final_decision_card
 
+      - name: Generate Dashboard (Phase 31-D Update)
+        run: |
+          python src/dashboard/dashboard_generator.py
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
