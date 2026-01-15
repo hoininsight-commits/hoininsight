@@ -55,10 +55,15 @@ Narrative Drift Signals:
 
 
 ## REJECTION LEDGER SNAPSHOT
-Last 90 days: REJECTED=0, DEFERRED=0, DUPLICATE=0
-- No recent entries
+Last 90 days: REJECTED=1, DEFERRED=0, DUPLICATE=0
+Newest: REJECTED on 2026-01-14 - Too speculative
 
 ## OPS HEALTH SNAPSHOT
 ⚠️ SLA BREACH DETECTED: 2 axes stale (>6h)
 Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d
 - System Freshness: 87.5%
+
+## REVIVAL PROPOSAL SNAPSHOT
+Engine proposed 1 reconsideration(s) based on today's context.
+- Candidate: test_rejected_vid (Was REJECTED)
+- Reason: New Market Context: New Meta Topics detected (1)
