@@ -42,8 +42,12 @@ Historical context:
 - [LOW] WTI: data/features/anomalies/2026/01/15/comm_wti_crude_oil_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] PLATINUM: data/features/anomalies/2026/01/15/metal_platinum_xptusd_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] ETHUSD: data/features/anomalies/2026/01/15/crypto_eth_usd_spot_coingecko.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
+## PROPOSAL PRIORITY SNAPSHOT
+- Error loading priority data.
 
-## Data Snapshot
+## PROPOSAL AGING SNAPSHOT
+- No aged proposals today.
+
 - See: `data/reports/2026/01/15/data_snapshot.md`
 
 Narrative Drift Signals:
