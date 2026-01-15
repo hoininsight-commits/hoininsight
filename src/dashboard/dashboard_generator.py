@@ -1151,16 +1151,86 @@ def generate_dashboard(base_dir: Path):
                 <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Architecture</h2>
                 <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">End-to-end pipeline from ingestion to approval-driven learning.</p>
                 
-                <div style="text-align: center; background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <a href="assets/architecture.svg" target="_blank" style="display: inline-block; text-decoration: none;">
-                        <img src="assets/architecture.png" alt="Hoin Insight Architecture Diagram" 
-                             style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"
-                             onerror="this.parentElement.innerHTML='<div style=\\'padding:40px; color:#94a3b8; font-size:14px;\\'>⚠ architecture.svg/png missing</div>'">
-                    </a>
-                    <div style="margin-top: 10px; font-size: 11px; color: #94a3b8;">
-                        <a href="assets/architecture.svg" target="_blank" style="color: #3b82f6; text-decoration: none;">View full diagram →</a>
+                <!-- 2-Column Grid: Diagram + Summary Card -->
+                <div style="display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start;">
+                    <!-- Left: Architecture Diagram -->
+                    <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <a href="assets/architecture.svg" target="_blank" style="display: inline-block; text-decoration: none; width: 100%;">
+                            <img src="assets/architecture.png" alt="Hoin Insight Architecture Diagram" 
+                                 style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"
+                                 onerror="this.parentElement.innerHTML='<div style=\\'padding:40px; color:#94a3b8; font-size:14px;\\'>⚠ architecture.svg/png missing</div>'">
+                        </a>
+                        <div style="margin-top: 10px; font-size: 11px; color: #94a3b8; text-align: center;">
+                            <a href="assets/architecture.svg" target="_blank" style="color: #3b82f6; text-decoration: none;">View full diagram →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Current State Summary Card -->
+                    <div class="architecture-summary-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); color: white;">
+                        <h3 style="font-size: 16px; font-weight: 700; margin: 0 0 20px 0; color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
+                            Current System State (Today)
+                        </h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <!-- Core Dataset Health -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CORE DATASETS</div>
+                                <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                                    {f'🟢 HEALTHY' if all(v == 'OK' for v in core_bd.values() if v != 'SKIP') else ('🟡 PARTIAL' if any(v == 'OK' for v in core_bd.values()) else '🔴 FAIL')}
+                                </div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
+                                    {', '.join([f"{k}:{v}" for k,v in core_bd.items() if v != 'SKIP'][:3])}
+                                </div>
+                            </div>
+                            
+                            <!-- Regime -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">REGIME</div>
+                                <div style="font-size: 14px; font-weight: 700;">
+                                    {regime_name if regime_name != "Unknown" else "N/A"}
+                                </div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
+                                    {'(Meta-driven)' if meta_count > 0 else '(Driver-based)'}
+                                </div>
+                            </div>
+                            
+                            <!-- Regime Confidence -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CONFIDENCE</div>
+                                <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                                    {f'🟢 {conf_level}' if conf_level == 'HIGH' else (f'🟡 {conf_level}' if conf_level == 'MEDIUM' else f'🔴 {conf_level}')}
+                                </div>
+                            </div>
+                            
+                            <!-- Content Preset -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CONTENT PRESET</div>
+                                <div style="font-size: 14px; font-weight: 700;">
+                                    {preset_label if preset_label != "-" else "N/A"}
+                                </div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
+                                    Mode: {content_mode}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px; color: rgba(255,255,255,0.6); text-align: center;">
+                            Last Updated: {ymd}
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Mobile Responsive: Stack vertically on small screens -->
+                <style>
+                    @media (max-width: 768px) {{
+                        .architecture-summary-card {{
+                            grid-column: 1 / -1;
+                        }}
+                        div[style*="grid-template-columns: 1fr 350px"] {{
+                            grid-template-columns: 1fr !important;
+                        }}
+                    }}
+                </style>
             </div>
         </div>
 
