@@ -13,7 +13,7 @@ policy:
 datasets:
   - dataset_id: "crypto_btc_usd_spot_coingecko"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "BTCUSD"
     unit: "USD"
     source: "coingecko"
@@ -28,7 +28,7 @@ datasets:
 
   - dataset_id: "fx_usdkrw_spot_open_er_api"
     enabled: true
-    soft_fail: false
+    soft_fail: true
     entity: "USDKRW"
     unit: "KRW"
     source: "open.er-api.com"
