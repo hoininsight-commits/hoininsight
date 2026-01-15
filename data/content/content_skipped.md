@@ -2,4 +2,4 @@
 
 - **Mode**: SKIP
 - **Reason**: Regime Confidence is LOW. Core Dataset status: {'US10Y': 'FAIL', 'SPX': 'FAIL', 'BTC': 'FAIL'}
-- **Timestamp**: 2026-01-15T05:43:29.653778
+- **Timestamp**: 2026-01-15T05:46:51.802405
