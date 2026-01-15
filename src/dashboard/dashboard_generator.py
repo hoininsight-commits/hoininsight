@@ -519,16 +519,6 @@ def generate_dashboard(base_dir: Path):
             except Exception as e:
                 print(f"[DEBUG] Phase 32 load failed: {e}")
 
-    # [DEBUG] Extreme Debugging for CI
-    if not priority_map:
-        print("[DEBUG] Priority Map is EMPTY. Dumping directory state:")
-        data_narratives = base_dir / "data/narratives"
-        if data_narratives.exists():
-            for root, dirs, files in os.walk(data_narratives):
-                for name in files:
-                    print(f"[DEBUG] Found: {os.path.join(root, name)}")
-        else:
-            print("[DEBUG] data/narratives does not exist!")
 
     # [Phase 35] Load Ledger Summary
     ledger_map = {}
