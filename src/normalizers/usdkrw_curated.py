@@ -15,13 +15,13 @@ def _utc_date_parts() -> tuple[str, str, str]:
 
 def write_curated_usdkrw_csv(base_dir: Path) -> Path:
     y, m, d = _utc_date_parts()
-    rp = base_dir / "data" / "raw" / "exchangerate" / y / m / d / "usdkrw.json"
+    rp = base_dir / "data" / "raw" / "fx_usdkrw_spot_open_yfinance" / y / m / d / "usdkrw.json"
     payload = json.loads(rp.read_text(encoding="utf-8"))
 
     row = build_row(
         ts_utc=payload["ts_utc"],
         entity=payload["entity"],
-        value=float(payload["price_krw_per_usd"]),
+        value=float(payload["close"]),
         unit=payload["unit"],
         source=payload["source"],
         dataset_id="fx_usdkrw_spot_open_er_api",

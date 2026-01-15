@@ -15,7 +15,7 @@ def _utc_date_parts() -> tuple[str, str, str]:
 
 def raw_path_for_today(base_dir: Path) -> Path:
     y, m, d = _utc_date_parts()
-    return base_dir / "data" / "raw" / "gold_api" / y / m / d / "xau_usd.json"
+    return base_dir / "data" / "raw" / "metal_gold_xauusd_spot_yfinance" / y / m / d / "xau_usd.json"
 
 def write_curated_xau_csv(base_dir: Path) -> Path:
     rp = raw_path_for_today(base_dir)
@@ -24,7 +24,7 @@ def write_curated_xau_csv(base_dir: Path) -> Path:
     row = build_row(
         ts_utc=payload["ts_utc"],
         entity=payload["entity"],
-        value=float(payload["price_usd_per_oz"]),
+        value=float(payload["close"]),
         unit=payload["unit"],
         source=payload["source"],
         dataset_id="metal_gold_xauusd_spot_gold_api",
