@@ -1,13 +1,9 @@
-# Core Dataset Policy
+# CORE DATASET POLICY (v2.0)
 
-## Policy Versions
-- **Core v1**: SPX, US10Y, BTC (Legacy)
-- **Core v2**: SPX, US10Y, BTC, USDKRW, GOLD (Current, Ops v1.6)
+STATUS: ACTIVE
+AUTO-MODIFICATION: FORBIDDEN
+CHANGE_POLICY: Policy change requires approval
 
-## Status Determination Rule
-- **SUCCESS**: All Core v2 datasets are `OK`.
-- **PARTIAL**: All Core v2 are `OK`, but Derived datasets have failures.
-- **FAIL**: Any Core v2 dataset is `FAIL`.
+---
 
-## Reference
-Defined in `src/ops/core_dataset.py`.
+Core dataset definitions placeholder.

@@ -1,0 +1,9 @@
+# DATA COLLECTION MASTER (v1.6)
+
+STATUS: ACTIVE
+AUTO-MODIFICATION: FORBIDDEN
+CHANGE_POLICY: Additive Only
+
+---
+
+Data collection axes placeholder.

@@ -1,5 +1,10 @@
-# HOIN ATLAS (v1.0 고정)
+# HOIN ATLAS (v1.0)
 
-- 본 파일은 사용자 제공 “HOIN ATLAS 최종 정의 v1.0”을 기준으로 운영하며,
-- 구조 변경 없이 누적(Additive)만 허용한다.
-- 실제 v1.0 원문은 별도 커밋에서 사용자 제공 문서 그대로 반영한다.
+STATUS: LOCKED
+ROLE: Human-facing constitutional definition of Hoin Insight
+AUTO-MODIFICATION: FORBIDDEN
+CHANGE_POLICY: Additive appendix only, manual approval required
+
+---
+
+Purpose and philosophy placeholder.

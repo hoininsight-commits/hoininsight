@@ -1,0 +1,9 @@
+# ANOMALY DETECTION LOGIC (v1.10)
+
+STATUS: LOCKED
+AUTO-MODIFICATION: FORBIDDEN
+CHANGE_POLICY: Additive Only
+
+---
+
+Anomaly detection logic placeholder.
