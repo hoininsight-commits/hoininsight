@@ -171,6 +171,15 @@ def generate_dashboard(base_dir: Path):
             revival_loops = json.loads(loop_path.read_text(encoding="utf-8"))
     except: pass
 
+    # [Phase 38] Load Final Decision Card
+    final_card = {}
+    try:
+        card_base = base_dir / "data/decision" / ymd.replace("-","/")
+        card_path = card_base / "final_decision_card.json"
+        if card_path.exists():
+            final_card = json.loads(card_path.read_text(encoding="utf-8"))
+    except: pass
+
     # Engine Outputs Check
     topics_count = _count_files(base_dir, f"data/topics/{ymd.replace('-','/')}", "*.json")
     meta_path = base_dir / "data" / "meta_topics" / ymd.replace("-","/") / "meta_topics.json"
@@ -466,179 +475,6 @@ def generate_dashboard(base_dir: Path):
     if conf_level == "HIGH": conf_cls = "bg-green-100 text-green-800"
     elif conf_level == "MEDIUM": conf_cls = "bg-yellow-100 text-yellow-800"
     elif conf_level == "LOW": conf_cls = "bg-red-100 text-red-800"
-
-    html = f"""
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <title>Hoin Insight 파이프라인</title>
-        <style>{css}</style>
-        <style>
-            .core-health-box {{ display: flex; gap: 15px; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-right: 20px; }}
-            .core-item {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; }}
-            .core-label {{ font-weight: bold; color: #64748b; }}
-            .core-val {{ font-weight: bold; }}
-            .cv-OK {{ color: #166534; }}
-            .cv-FAIL {{ color: #dc2626; }}
-            .cv-SKIP {{ color: #9ca3af; }}
-            .cv-WARMUP {{ color: #ea580c; }}
-            .conf-badge {{ padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }}
-            .bg-green-100 {{ background-color: #dcfce7; }} .text-green-800 {{ color: #166534; }}
-            .bg-yellow-100 {{ background-color: #fef9c3; }} .text-yellow-800 {{ color: #854d0e; }}
-            .bg-red-100 {{ background-color: #fee2e2; }} .text-red-800 {{ color: #991b1b; }}
-        </style>
-    </head>
-    <body>
-        <div class="top-bar">
-            <div style="display:flex; align-items:center; gap:20px;">
-                <h1>Hoin Insight</h1>
-                
-                <!-- Core Health Widget -->
-                <div class="core-health-box">
-                    <span style="font-size:11px; font-weight:bold; color:#475569; margin-right:5px;">CORE:</span>
-                    <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-{core_bd.get('US10Y','FAIL')}">{core_bd.get('US10Y','-')}</span></div>
-                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-{core_bd.get('SPX','FAIL')}">{core_bd.get('SPX','-')}</span></div>
-                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-{core_bd.get('BTC','FAIL')}">{core_bd.get('BTC','-')}</span></div>
-                </div>
-                
-                <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
-                
-                <!-- [Ops v1.1] Content Status Badge -->
-                <!-- Logic handled in Python, displayed below -->
-            </div>
-            
-            <div style="display:flex; gap:10px;">
-                <!-- Narrative Badge -->
-                <div class="conf-badge {content_cls}">{content_mode}</div>
-                <div class="conf-badge {status_data['narrative_cls']}">Narrative: {status_data['narrative_label']}</div>
-                 <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
-                 <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-container">
-            <!-- MAIN FLOW -->
-            <div class="main-panel">
-                <div class="architecture-diagram">
-                    
-                    <!-- 1. Scheduler -->
-                    <div class="process-row">
-                        <div class="node-group-label">01. 스케줄 및 트리거</div>
-                        <div class="proc-node node-scheduler">
-                            <div class="proc-icon">⏰</div>
-                            <div class="proc-content">
-                                <div class="proc-title">자동 스케줄러 (축 분할)</div>
-                                <div class="proc-desc">암호화폐(4회), 환율, 시장지수, 백필</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-                    
-                    <!-- 2. Github Actions -->
-                    <div class="process-row">
-                        <div class="node-group-label">02. 오케스트레이션</div>
-                        <div class="proc-node node-github active-node">
-                            <div class="proc-icon">🏗️</div>
-                            <div class="proc-content">
-                                <div class="proc-title">GitHub Actions 파이프라인</div>
-                                <div class="proc-desc">Run ID: {status_data['run_id']}</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-
-                    <!-- 3. Data Intake -->
-                    <div class="process-row" style="gap:20px;">
-                        <div class="node-group-label">03. 데이터 수집</div>
-                        <div class="proc-node node-data">
-                            <div class="proc-icon">📥</div>
-                            <div class="proc-content">
-                                <div class="proc-title">데이터 수집 및 정규화</div>
-                                <div class="proc-desc">원본 수집 → 정제(Curated) CSV</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-
-                    <!-- 4. Engine Processing -->
-                    <div class="process-row" style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
-                        <div class="node-group-label">04. 엔진 코어</div>
-                        <div class="proc-node node-engine">
-                            <div class="proc-title">피처 빌더</div>
-                        </div>
-                        <div class="proc-node node-engine">
-                            <div class="proc-title">이상치 탐지</div>
-                            <div class="proc-desc">국면: { "감지됨" if regime_exists else "없음" }</div>
-                        </div>
-                        <div class="proc-node node-engine">
-                             <div class="proc-title">토픽 선정</div>
-                             <div class="proc-desc">토픽 {topics_count}개</div>
-                        </div>
-                    </div>
-                    
-                    <!-- 5. Output -->
-                    <div class="process-row">
-                         <div style="position:absolute; left:50%; top:-60px; height:60px; width:2px; background:#cbd5e1; transform:translateX(-50%);"></div>
-                        <div class="node-group-label" style="top:-80px;">05. 배포 및 출력</div>
-                        <!-- Added ID and onclick handler for Modal -->
-                        <div class="proc-node node-output" onclick="openModal()">
-                            <div class="proc-icon">🚀</div>
-                            <div class="proc-content">
-                                <div class="proc-title">콘텐츠 생성</div>
-                                <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">{topic_title}</div>
-                                <div class="proc-sub" style="margin-top:6px;">{ "스크립트 생성 완료 (클릭하여 전체보기)" if script_exists else "대기중" }</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- RIGHT SIDEBAR -->
-            <div class="sidebar">
-                <div class="sidebar-title">
-                    데이터 수집 현황판
-                </div>
-                {sidebar_html}
-                
-                <div class="footer">
-                    Hoin Engine 자동 생성<br>{ymd}
-                </div>
-            </div>
-        </div>
-
-        <!-- The Modal -->
-        <div id="scriptModal" class="modal">
-          <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">{topic_title}</div>
-            <div class="modal-body">
-{script_body}
-            </div>
-          </div>
-        </div>
-
-        <script>
-        var modal = document.getElementById("scriptModal");
-        function openModal() {{
-          modal.style.display = "block";
-        }}
-        function closeModal() {{
-          modal.style.display = "none";
-        }}
-        window.onclick = function(event) {{
-          if (event.target == modal) {{
-            modal.style.display = "none";
-          }}
-        }}
-        </script>
-    </body>
-    </html>
-    """
-    
     
     # [Phase 31-E+] YouTube Inbox (Latest Videos)
     # Displays latest collected videos and their pipeline status
@@ -1312,7 +1148,85 @@ def generate_dashboard(base_dir: Path):
                 </style>
             </div>
         </div>
+    """
 
+    # [Phase 38] Final Decision Card UI
+    decision_card_html = ""
+    if final_card:
+        blocks = final_card.get("blocks", {})
+        reg = blocks.get("regime", {})
+        rev = blocks.get("revival", {})
+        ops = blocks.get("ops", {})
+        
+        # Color coding for status
+        reg_col = "#10b981" if reg.get("confidence") > 0.5 else "#f59e0b"
+        rev_col = "#3b82f6" if rev.get("has_revival") else "#64748b"
+        ops_col = "#10b981" if ops.get("system_freshness", 0) >= 85 and not ops.get("has_stale_warning") else "#ef4444"
+        
+        loop_warn_html = ""
+        if rev.get("loop_warning_count", 0) > 0:
+            loop_warn_html = f'<div style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:4px; font-size:11px; margin-top:5px; font-weight:bold;">⚠ LOOP_WARNING: {rev["loop_warning_count"]} items repeating</div>'
+
+        decision_card_html = (
+            "<div style=\"background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);\">\n"
+            "    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\">\n"
+            "        \n"
+            "        <!-- Regime Block -->\n"
+            "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"
+            "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">01. Regime Context</div>\n"
+            f"            <div style=\"font-size: 18px; font-weight: 700; color: {reg_col};\">{reg.get('current_regime')}</div>\n"
+            f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Confidence: {reg.get('confidence'):.1%} ({reg.get('basis_type')})</div>\n"
+            f"            <div style=\"font-size: 12px; color: #64748b; margin-top: 8px;\">Meta Topics: {reg.get('meta_topic_count')} detected</div>\n"
+            "        </div>\n\n"
+            "        <!-- Revival Block -->\n"
+            "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"
+            "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">02. Revival Context</div>\n"
+            f"            <div style=\"font-size: 18px; font-weight: 700; color: {rev_col};\">{rev.get('proposal_count')} Candidates</div>\n"
+            f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Primary Reason: {rev.get('primary_revival_reason')}</div>\n"
+            f"            {loop_warn_html}\n"
+            "        </div>\n\n"
+            "        <!-- Ops Block -->\n"
+            "        <div style=\"padding: 20px; min-height: 140px;\">\n"
+            "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">03. Ops Context</div>\n"
+            f"            <div style=\"font-size: 18px; font-weight: 700; color: {ops_col};\">{ops.get('system_freshness', 0)}% Freshness</div>\n"
+            f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">7D Success: {ops.get('7d_success_rate')}</div>\n"
+            f"            <div style=\"font-size: 12px; color: {ops_col}; margin-top: 8px; font-weight: bold;\">\n"
+            f"                { '⚠️ SLA BREACH DETECTED' if ops.get('has_stale_warning') else '✅ All Systems Nominal' }\n"
+            "            </div>\n"
+            "        </div>\n"
+            "    </div>\n"
+            "    \n"
+            "    <!-- Human Prompt Block -->\n"
+            "    <div style=\"background: white; border-top: 1px solid #e2e8f0; padding: 25px; text-align: center;\">\n"
+            f"        <div style=\"font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 10px;\">\n"
+            f"            {final_card.get('human_prompt')}\n"
+            "        </div>\n"
+            "        <div style=\"font-size: 12px; color: #94a3b8; font-style: italic;\">\n"
+            "            가치는 운영자가 판단하며, 엔진은 이를 위한 근거 데이터만을 제공합니다.\n"
+            "        </div>\n"
+            "    </div>\n"
+            "</div>"
+        )
+    else:
+        decision_card_html = """
+        <div style="background: white; padding: 40px; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8; font-size: 16px;">
+            Final Decision Card를 생성하기 위한 데이터가 충분하지 않습니다.
+        </div>
+        """
+
+    html += f"""
+        <!-- Final Decision Card Section (Phase 38) -->
+        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Final Decision Card (Human-in-the-loop)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">엔진의 결론이 아니라, 사람의 판단을 돕기 위한 마지막 설명서입니다.</p>
+                
+                {decision_card_html}
+            </div>
+        </div>
+    """
+
+    html += """
         <!-- Change Effectiveness Section (Phase 34) -->
         <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
             <div style="max-width: 1100px; margin: 0 auto;">

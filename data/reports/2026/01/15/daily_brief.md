@@ -72,3 +72,9 @@ Engine proposed 1 reconsideration(s) based on today's context.
 - Avg Freshness: 87.5%
 - SLA Breach Count: 2
 - ⚠️ Cognitive Loop Warning: 1 items repeating decisions
+
+## FINAL DECISION CARD SNAPSHOT
+- Regime: (no meta regime detected) (Conf: 0.0%)
+- Revival: 1 candidate(s)
+- Ops Health: 87.5% Freshness
+- Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?

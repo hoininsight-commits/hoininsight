@@ -394,6 +394,10 @@ jobs:
         run: |
           python -m src.narratives.revival_guard
 
+      - name: Integrate Final Decision Card (Phase 38)
+        run: |
+          python -m src.decision.final_decision_card
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -682,6 +686,22 @@ jobs:
           fi
           
           grep -q "Ops Evidence Bundle" "$DASH" && echo "[VERIFY][OK] Ops Evidence shown in Dashboard" || (echo "[VERIFY][FAIL] Ops Evidence missing in Dashboard"; exit 1)
+
+      - name: Verify Phase 38 Final Decision Card
+        run: |
+          echo "[VERIFY] Phase 38 Final Decision Card Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          CARD="data/decision/$YMD/final_decision_card.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$CARD" ]; then
+            echo "[VERIFY][OK] final_decision_card.json generated"
+            grep -q "phase38_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No final decision card today (valid state)"
+          fi
+          
+          grep -q "Final Decision Card" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
 
 
 

@@ -246,20 +246,20 @@
                 <span class="text-red-500">0/2</span>
             </div>
         
-             <div class="ds-item fail" title="Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/15/corr_btc_spx_30d.json">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">derived_corr_btc_spx_30d</span>
                  </div>
-                 <div class="status-check">✕</div>
+                 <div class="status-check">-</div>
              </div>
              
-             <div class="ds-item fail" title="Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/15/corr_usdkrw_us10y_30d.json">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">derived_corr_usdkrw_us10y_30d</span>
                  </div>
-                 <div class="status-check">✕</div>
+                 <div class="status-check">-</div>
              </div>
              </div>
         <div class="cat-group">
@@ -376,7 +376,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">rates_us02y_yield_ustreasury</span>
@@ -390,7 +390,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_platinum_xptusd_stooq</span>
@@ -404,7 +404,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">index_nasdaq_ndx_stooq</span>
@@ -418,7 +418,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">comm_wti_crude_oil_stooq</span>
@@ -432,7 +432,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">fx_dxy_index_stooq</span>
@@ -509,7 +509,7 @@
                                     (no meta regime detected)
                                 </div>
                                 <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                    (Meta-driven)
+                                    (Driver-based)
                                 </div>
                             </div>
                             
@@ -552,7 +552,56 @@
                 </style>
             </div>
         </div>
+    
+        <!-- Final Decision Card Section (Phase 38) -->
+        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Final Decision Card (Human-in-the-loop)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">엔진의 결론이 아니라, 사람의 판단을 돕기 위한 마지막 설명서입니다.</p>
+                
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        
+        <!-- Regime Block -->
+        <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">01. Regime Context</div>
+            <div style="font-size: 18px; font-weight: 700; color: #f59e0b;">(no meta regime detected)</div>
+            <div style="font-size: 13px; color: #475569; margin-top: 5px;">Confidence: 0.0% (NONE)</div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 8px;">Meta Topics: 0 detected</div>
+        </div>
 
+        <!-- Revival Block -->
+        <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">02. Revival Context</div>
+            <div style="font-size: 18px; font-weight: 700; color: #3b82f6;">1 Candidates</div>
+            <div style="font-size: 13px; color: #475569; margin-top: 5px;">Primary Reason: New Meta Topics detected (1)</div>
+            <div style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:4px; font-size:11px; margin-top:5px; font-weight:bold;">⚠ LOOP_WARNING: 1 items repeating</div>
+        </div>
+
+        <!-- Ops Block -->
+        <div style="padding: 20px; min-height: 140px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">03. Ops Context</div>
+            <div style="font-size: 18px; font-weight: 700; color: #ef4444;">87.5% Freshness</div>
+            <div style="font-size: 13px; color: #475569; margin-top: 5px;">7D Success: 1/7</div>
+            <div style="font-size: 12px; color: #ef4444; margin-top: 8px; font-weight: bold;">
+                ⚠️ SLA BREACH DETECTED
+            </div>
+        </div>
+    </div>
+    
+    <!-- Human Prompt Block -->
+    <div style="background: white; border-top: 1px solid #e2e8f0; padding: 25px; text-align: center;">
+        <div style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">
+            현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
+        </div>
+        <div style="font-size: 12px; color: #94a3b8; font-style: italic;">
+            가치는 운영자가 판단하며, 엔진은 이를 위한 근거 데이터만을 제공합니다.
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    
         <!-- Change Effectiveness Section (Phase 34) -->
         <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
             <div style="max-width: 1100px; margin: 0 auto;">
@@ -797,6 +846,13 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="modal-header">Insight Script (2026-01-15)</div>
             <div class="modal-body">
+<!-- Metadata
+Content Mod: NORMAL
+Content Preset: STANDARD
+Preset Reason: HIGH Confidence (Risk factors not dominant)
+Confidence: HIGH
+Regime: (no meta regime detected)
+-->
 ## Opening (Context)
 - 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
 - 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.

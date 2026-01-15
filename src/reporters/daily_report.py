@@ -6,7 +6,10 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from src.registry.loader import load_datasets
-from src.reporters.data_snapshot import write_data_snapshot
+try:
+    from src.reporters.data_snapshot import write_data_snapshot
+except ImportError:
+    def write_data_snapshot(base_dir): return None
 from src.topics.persistence import count_appearances_7d
 from src.topics.fusion import write_meta_topics
 from src.topics.momentum import compute_momentum_7d
@@ -465,6 +468,27 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             pass
 
+    # [Phase 38] Final Decision Card Snapshot
+    card_path = base_dir / "data" / "decision" / ymd / "final_decision_card.json"
+    print(f"[DEBUG] Card Path: {card_path} (Exists: {card_path.exists()})")
+    if card_path.exists():
+        try:
+            print(f"[DEBUG] Loading card from {card_path}")
+            card = json.loads(card_path.read_text(encoding="utf-8"))
+            blocks = card.get("blocks", {})
+            reg = blocks.get("regime", {})
+            rev = blocks.get("revival", {})
+            ops = blocks.get("ops", {})
+            
+            lines.append("")
+            lines.append("## FINAL DECISION CARD SNAPSHOT")
+            lines.append(f"- Regime: {reg.get('current_regime')} (Conf: {reg.get('confidence', 0):.1%})")
+            lines.append(f"- Revival: {rev.get('proposal_count', 0)} candidate(s)")
+            lines.append(f"- Ops Health: {ops.get('system_freshness', 0)}% Freshness")
+            lines.append(f"- Prompt: {card.get('human_prompt')}")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     
@@ -472,4 +496,8 @@ def write_daily_brief(base_dir: Path) -> Path:
     generate_insight_content(base_dir)
     
     return out_path
+
+if __name__ == "__main__":
+    base_dir = Path(__file__).resolve().parent.parent.parent
+    write_daily_brief(base_dir)
 
