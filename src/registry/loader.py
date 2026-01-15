@@ -9,6 +9,7 @@ import importlib
 @dataclass
 class DatasetConfig:
     dataset_id: str
+    category: str
     enabled: bool
     soft_fail: bool
     entity: str
@@ -30,6 +31,7 @@ def load_datasets(path: Path) -> List[DatasetConfig]:
         out.append(
             DatasetConfig(
                 dataset_id=ds["dataset_id"],
+                category=ds.get("category", "UNKNOWN"),
                 enabled=bool(ds.get("enabled", True)),
                 soft_fail=bool(ds.get("soft_fail", False)),
                 entity=ds["entity"],

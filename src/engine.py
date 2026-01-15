@@ -21,7 +21,7 @@ def _date_path_utc() -> Path:
     d = datetime.utcnow().strftime("%Y/%m/%d")
     return Path("data") / "reports" / d
 
-def main():
+def main(target_categories: list[str] = None):
     started = _utc_now_stamp()
     status = "SUCCESS"
     details_lines = []
@@ -33,11 +33,11 @@ def main():
         details_lines.append("engine: start")
         print("engine: start", file=sys.stderr)
         
-        collect_main()
+        collect_main(target_categories)
         details_lines.append("collect: ok")
         print("collect: ok", file=sys.stderr)
         
-        normalize_main()
+        normalize_main(target_categories)
         details_lines.append("normalize: ok")
         print("normalize: ok", file=sys.stderr)
         

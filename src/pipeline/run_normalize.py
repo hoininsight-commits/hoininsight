@@ -5,9 +5,15 @@ from datetime import datetime
 from pathlib import Path
 from src.registry.loader import load_datasets, get_callables
 
-def main():
+def main(target_categories: list[str] = None):
     reg = Path("registry") / "datasets.yml"
-    datasets = [d for d in load_datasets(reg) if d.enabled]
+    all_datasets = load_datasets(reg)
+    
+    if target_categories:
+        datasets = [d for d in all_datasets if d.enabled and d.category in target_categories]
+        print(f"normalize: running for categories={target_categories} (count={len(datasets)})", file=sys.stderr)
+    else:
+        datasets = [d for d in all_datasets if d.enabled]
     
     # Load existing status
     status_dir = Path("data/dashboard")
