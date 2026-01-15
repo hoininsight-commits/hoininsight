@@ -159,7 +159,8 @@ jobs:
           echo "[VERIFY] Confidence-Based Content Control Check"
 
           YMD=$(date -u +"%Y/%m/%d")
-          CONTENT_DIR="data/content/$YMD"
+          # Python script outputs to data/content/ directly (not date-partitioned)
+          CONTENT_DIR="data/content" 
           REPORT="data/reports/$YMD/daily_brief.md"
 
           if grep -q "Confidence: LOW" "$REPORT"; then
