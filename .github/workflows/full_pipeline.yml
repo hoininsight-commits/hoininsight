@@ -398,6 +398,10 @@ jobs:
         run: |
           python -m src.decision.final_decision_card
 
+      - name: Run Topic Candidate Gate (Phase 39)
+        run: |
+          python -m src.topics.topic_candidate_gate
+
       - name: Generate Dashboard (Phase 31-D Update)
         run: |
           python src/dashboard/dashboard_generator.py
@@ -709,6 +713,30 @@ jobs:
 
 
 
+      - name: Verify Phase 39 Topic Candidates
+        run: |
+          echo "[VERIFY] Phase 39 Topic Candidate Gate Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          CAND="data/topics/candidates/$YMD/topic_candidates.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$CAND" ]; then
+             echo "[VERIFY][OK] topic_candidates.json generated"
+             # Check internal structure
+             if grep -q "alive_count" "$CAND"; then
+                echo "[VERIFY][OK] Candidate metadata present"
+             fi
+          else
+             echo "[VERIFY][FAIL] topic_candidates.json missing"
+             exit 1
+          fi
+          
+          if grep -q "Topic Candidates (Not Selected)" "$DASH"; then
+             echo "[VERIFY][OK] Dashboard section rendered"
+          else
+             echo "[VERIFY][FAIL] Dashboard section missing"
+             exit 1
+          fi
 
       - name: Create issue on failure
         if: failure()

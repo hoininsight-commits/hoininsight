@@ -490,6 +490,20 @@ def write_daily_brief(base_dir: Path) -> Path:
             pass
 
 
+    # [Phase 39] Topic Candidate Snapshot
+    cand_path = base_dir / "data" / "topics" / "candidates" / ymd / "topic_candidates.json"
+    if cand_path.exists():
+        try:
+            c_data = json.loads(cand_path.read_text(encoding="utf-8"))
+            count_alive = c_data.get("alive_count", 0)
+            
+            lines.append("")
+            lines.append("## TOPIC CANDIDATE SNAPSHOT")
+            lines.append(f"Gate Filter Result: {count_alive} candidate(s) survived survival rules.")
+            lines.append("No automatic selection performed. See Dashboard for details.")
+        except:
+            pass
+
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     
     # [Phase 30] Automated Insight Content

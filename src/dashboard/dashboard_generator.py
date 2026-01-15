@@ -1441,6 +1441,64 @@ def generate_dashboard(base_dir: Path):
             </div>
         </div>
 
+        <!-- Topic Candidates (Phase 39) -->
+        <div style="background: #f1f5f9; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Topic Candidates (Not Selected)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Anomalies filtered by survival gates. No automatic selection performed.</p>
+    """
+    
+    # Load Candidates
+    candidate_html = ""
+    cand_path = base_dir / "data" / "topics" / "candidates" / ymd / "topic_candidates.json"
+    
+    if cand_path.exists():
+        try:
+            c_data = json.loads(cand_path.read_text(encoding="utf-8"))
+            alive = [c for c in c_data.get("candidates", []) if c["status"] == "CANDIDATE_ALIVE"]
+            others = [c for c in c_data.get("candidates", []) if c["status"] != "CANDIDATE_ALIVE"]
+            
+            if not alive and not others:
+                 candidate_html += "<div style='color:#64748b; font-size:13px;'>No candidates detected today.</div>"
+            
+            # Alive Section
+            if alive:
+                candidate_html += "<h3 style='font-size:14px; color:#0f172a; margin-bottom:10px;'>ALIVE (Passed 3/3 Gates)</h3>"
+                candidate_html += "<div style='display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:15px; margin-bottom:20px;'>"
+                for c in alive:
+                     candidate_html += f"""
+                     <div style="background:white; border:1px solid #22c55e; border-left:4px solid #22c55e; border-radius:6px; padding:15px;">
+                        <div style="font-weight:bold; font-size:14px; color:#15803d; margin-bottom:5px;">{c.get('dataset_id')}</div>
+                        <div style="font-size:11px; color:#475569; margin-bottom:8px;">{c.get('reason')}</div>
+                        <div style="font-size:10px; color:#94a3b8; background:#f0fdf4; padding:4px 8px; border-radius:4px; display:inline-block;">Multi-Axis Confirmed</div>
+                     </div>
+                     """
+                candidate_html += "</div>"
+            
+            # Others Section (Collapsed or simple list)
+            if others:
+                 candidate_html += f"<div style='margin-top:10px; font-size:12px; color:#64748b; cursor:pointer;' onclick=\"document.getElementById('hidden-cands').style.display = document.getElementById('hidden-cands').style.display === 'none' ? 'block' : 'none'\">▼ Show {len(others)} Buffered/Expired Candidates</div>"
+                 candidate_html += "<div id='hidden-cands' style='display:none; margin-top:10px; padding:10px; background:#e2e8f0; border-radius:6px;'>"
+                 for c in others:
+                     status_color = "#f59e0b" if c["status"] == "CANDIDATE_DEFERRED" else "#ef4444"
+                     candidate_html += f"""
+                     <div style="margin-bottom:8px; font-size:12px; color:#475569;">
+                        <span style="font-weight:bold; color:{status_color};">[{c['status'].replace('CANDIDATE_','')}]:</span> {c.get('dataset_id')} 
+                        <span style="color:#94a3b8;">- {c.get('reason')}</span>
+                     </div>
+                     """
+                 candidate_html += "</div>"
+                 
+        except Exception as e:
+            candidate_html += f"<div style='color:red; font-size:11px;'>Candidate Load Error: {e}</div>"
+    else:
+        candidate_html += "<div style='color:#64748b; font-size:13px;'>No candidate data generated today.</div>"
+
+    html += candidate_html
+    html += """
+            </div>
+        </div>
+
         <!-- Revival Candidates Section (Phase 37) -->
         <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
             <div style="max-width: 1100px; margin: 0 auto;">
