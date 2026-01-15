@@ -138,6 +138,7 @@ def generate_dashboard(base_dir: Path):
         else:
             entry["failed"] += 1
             total_fail += 1
+    print(f"[DEBUG] ymd: {ymd}")
 
     # [Phase 36-B] Load Ops Data
     freshness_summary = {}
@@ -485,26 +486,38 @@ def generate_dashboard(base_dir: Path):
     """
 
     # [Phase 33] Load Aging Scores (with fallback to Phase 32)
+    # [Phase 33] Load Aging Scores (with fallback to Phase 32)
     priority_map = {}
-    try:
-        # Try Phase 33 first
-        aging_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores_with_aging.json"
-        if aging_path.exists():
+    
+    # Attempt 1: Load Phase 33 (Aging)
+    aging_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores_with_aging.json"
+    if aging_path.exists():
+        try:
+            print(f"[DEBUG] Loading Phase 33: {aging_path}")
             a_data = json.loads(aging_path.read_text(encoding="utf-8"))
             if isinstance(a_data, dict) and "items" in a_data:
                 a_data = a_data["items"]
             for item in a_data:
                 priority_map[item.get("video_id")] = item
-        else:
-            # Fallback to Phase 32
-            prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
-            if prio_path.exists():
+            print(f"[DEBUG] Loaded {len(priority_map)} items from Phase 33")
+        except Exception as e:
+            print(f"[DEBUG] Phase 33 load failed: {e}")
+            priority_map = {} # Reset on failure
+
+    # Attempt 2: Fallback to Phase 32 (Prioritized) if map is still empty
+    if not priority_map:
+        prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
+        if prio_path.exists():
+            try:
+                print(f"[DEBUG] Loading Phase 32 (Fallback): {prio_path}")
                 p_data = json.loads(prio_path.read_text(encoding="utf-8"))
                 if isinstance(p_data, dict) and "items" in p_data:
                     p_data = p_data["items"]
                 for item in p_data:
                     priority_map[item.get("video_id")] = item
-    except: pass
+                print(f"[DEBUG] Loaded {len(priority_map)} items from Phase 32")
+            except Exception as e:
+                print(f"[DEBUG] Phase 32 load failed: {e}")
 
     # [Phase 35] Load Ledger Summary
     ledger_map = {}
@@ -764,6 +777,8 @@ def generate_dashboard(base_dir: Path):
         if q_path.exists():
             q_data = json.loads(q_path.read_text(encoding="utf-8"))
             
+        print(f"[DEBUG] q_data length: {len(q_data)}")
+        print(f"[DEBUG] priority_map length: {len(priority_map)}")
         if q_data or priority_map:
             queue_html += '<div class="queue-list">'
             
