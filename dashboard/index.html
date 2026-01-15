@@ -14,6 +14,14 @@
     .status-부분.성공, .status-PARTIAL { background: #fef9c3; color: #854d0e; }
     .status-실패, .status-FAIL { background: #fee2e2; color: #991b1b; }
     
+    /* [Phase 36-B] Ops Styles */
+    .ops-section { background: white; border-top: 2px solid #e2e8f0; padding: 40px; }
+    .ops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .ops-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; }
+    .ops-value { font-size: 24px; font-weight: 700; color: #1e293b; }
+    .ops-label { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
+    .sla-breach { color: #ef4444; font-weight: 700; }
+    
     /* Layout */
     .dashboard-container { display: grid; grid-template-columns: 1fr 380px; height: calc(100vh - 60px); }
     
@@ -592,79 +600,212 @@
             </div>
         </div>
 
+        <!-- [Phase 36-B] Infrastructure Health & Data Freshness -->
+        <div class="ops-section">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">Infrastructure Health & Data Freshness</h2>
+                
+                <div class="ops-grid">
+                    <!-- System Freshness Card -->
+                    <div class="ops-card">
+                        <div class="ops-value" style="color: #10b981;">87.5%</div>
+                        <div class="ops-label">Overall System Freshness</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Latest: crypto_btc_usd_spot_coingecko</div>
+                    </div>
+
+                    <!-- SLA Status Card -->
+                    <div class="ops-card" style="border-color: #fecaca; background: #fffafb;">
+                        <div class="ops-value sla-breach">
+                            2
+                        </div>
+                        <div class="ops-label">SLA Breaches (>6h)</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">
+                            derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Performance (Scoreboard) -->
+                    <div class="ops-card">
+                        <div class="ops-value">1 / 7</div>
+                        <div class="ops-label">7D Pipeline Success Rate</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Avg Duration: 5.2m</div>
+                    </div>
+                </div>
+
+                <!-- Ops History Table -->
+                <div style="margin-top: 30px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white;">
+                        <thead style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                            <tr>
+                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Date</th>
+                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Status</th>
+                                <th style="padding: 10px 15px; text-align: right; color: #64748b;">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-15</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#dcfce7; color:#166534;">
+                                        SUCCESS
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">5.2m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-14</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-13</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-12</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-11</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-10</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">2026-01-09</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background:#fee2e2; color:#991b1b;">
+                                        FAIL/MISSING
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">0m</td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <!-- The Modal -->
         <div id="scriptModal" class="modal">
           <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">{topic_title}</div>
+            <div class="modal-header">Insight Script (2026-01-15)</div>
             <div class="modal-body">
-{script_body}
+## Opening (Context)
+- 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
+- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
+## Why Now
+- 이 국면은 현재 **2일째** 지속되고 있습니다.
+- 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
+## What Changed
+- 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
+- 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
+## What to Watch (Neutral)
+- 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
+* (특정 전략 프레임워크 없음)
+## Closing
+- 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
             </div>
           </div>
         </div>
 
         <script>
         var modal = document.getElementById("scriptModal");
-        function openModal() {{
+        function openModal() {
           modal.style.display = "block";
-        }}
-        function closeModal() {{
+        }
+        function closeModal() {
           modal.style.display = "none";
-        }}
-        window.onclick = function(event) {{
-          if (event.target == modal) {{
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
             modal.style.display = "none";
-          }}
-        }}
+          }
+        }
 
-        function generateYaml(videoId) {{
+        function generateYaml(videoId) {
             const dcm = document.getElementById('chk-dcm-' + videoId).checked;
             const adl = document.getElementById('chk-adl-' + videoId).checked;
             const bs = document.getElementById('chk-bs-' + videoId).checked;
             const note = document.getElementById('note-' + videoId).value;
             
             copyYaml(videoId, dcm, adl, bs, note);
-        }}
+        }
         
-        function toggleAction(videoId) {{
+        function toggleAction(videoId) {
             var box = document.getElementById('action-box-' + videoId);
-            if (box.style.display === "none") {{
+            if (box.style.display === "none") {
                 box.style.display = "block";
-            }} else {{
+            } else {
                 box.style.display = "none";
-            }}
-        }}
+            }
+        }
         
-        function generateInboxYaml(videoId) {{
+        function generateInboxYaml(videoId) {
             const dcm = document.getElementById('ib-dcm-' + videoId).checked;
             const adl = document.getElementById('ib-adl-' + videoId).checked;
             const bs = document.getElementById('ib-bs-' + videoId).checked;
             const note = document.getElementById('ib-note-' + videoId).value;
             
             copyYaml(videoId, dcm, adl, bs, note);
-        }}
+        }
         
-        function copyYaml(videoId, dcm, adl, bs, note) {{
+        function copyYaml(videoId, dcm, adl, bs, note) {
             const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
             const now = new Date().toISOString();
             
             const yaml = `approval_version: "approve_yml_v1"
-video_id: "${{videoId}}"
+video_id: "${videoId}"
 approved_by: "USER_WEB_UI"
-approved_at: "${{now}}"
+approved_at: "${now}"
 apply:
-  data_collection_master: ${{dcm}}
-  anomaly_detection_logic: ${{adl}}
-  baseline_signals: ${{bs}}
-notes: "${{note}}"
+  data_collection_master: ${dcm}
+  anomaly_detection_logic: ${adl}
+  baseline_signals: ${bs}
+notes: "${note}"
 `;
             
-            navigator.clipboard.writeText(yaml).then(function() {{
+            navigator.clipboard.writeText(yaml).then(function() {
                 alert('승인 코드가 복사되었습니다!\n\n1. Git 저장소로 이동\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\n3. 붙여넣기 후 커밋');
-            }}, function(err) {{
+            }, function(err) {
                 alert('복사 실패: ' + err);
-            }});
-        }}
+            });
+        }
         </script>
     </body>
     </html>

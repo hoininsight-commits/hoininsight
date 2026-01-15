@@ -139,6 +139,19 @@ def generate_dashboard(base_dir: Path):
             entry["failed"] += 1
             total_fail += 1
 
+    # [Phase 36-B] Load Ops Data
+    freshness_summary = {}
+    ops_scoreboard = {}
+    try:
+        fresh_path = base_dir / "data/ops/freshness" / ymd.replace("-","/") / "freshness_summary.json"
+        if fresh_path.exists():
+            freshness_summary = json.loads(fresh_path.read_text(encoding="utf-8"))
+        
+        score_path = base_dir / "data/ops/scoreboard" / ymd.replace("-","/") / "ops_scoreboard.json"
+        if score_path.exists():
+            ops_scoreboard = json.loads(score_path.read_text(encoding="utf-8"))
+    except: pass
+
     # Engine Outputs Check
     topics_count = _count_files(base_dir, f"data/topics/{ymd.replace('-','/')}", "*.json")
     meta_path = base_dir / "data" / "meta_topics" / ymd.replace("-","/") / "meta_topics.json"
@@ -248,6 +261,14 @@ def generate_dashboard(base_dir: Path):
     .status-성공, .status-SUCCESS { background: #dcfce7; color: #166534; }
     .status-부분.성공, .status-PARTIAL { background: #fef9c3; color: #854d0e; }
     .status-실패, .status-FAIL { background: #fee2e2; color: #991b1b; }
+    
+    /* [Phase 36-B] Ops Styles */
+    .ops-section { background: white; border-top: 2px solid #e2e8f0; padding: 40px; }
+    .ops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .ops-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; }
+    .ops-value { font-size: 24px; font-weight: 700; color: #1e293b; }
+    .ops-label { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
+    .sla-breach { color: #ef4444; font-weight: 700; }
     
     /* Layout */
     .dashboard-container { display: grid; grid-template-columns: 1fr 380px; height: calc(100vh - 60px); }
@@ -808,6 +829,7 @@ def generate_dashboard(base_dir: Path):
                     <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
                         {it['published_at'][:10]}
                         { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
+                        { " <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ STALE DATA WARNING</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
                     </div>
     """
                 
@@ -1559,10 +1581,75 @@ def generate_dashboard(base_dir: Path):
             No archive data available
         </div>
         """
-    
     html += archive_html
-    html += """
+    html += f"""
                 </details>
+            </div>
+        </div>
+
+        <!-- [Phase 36-B] Infrastructure Health & Data Freshness -->
+        <div class="ops-section">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">Infrastructure Health & Data Freshness</h2>
+                
+                <div class="ops-grid">
+                    <!-- System Freshness Card -->
+                    <div class="ops-card">
+                        <div class="ops-value" style="color: #10b981;">{freshness_summary.get('overall_system_freshness_pct', 'N/A')}%</div>
+                        <div class="ops-label">Overall System Freshness</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Latest: {freshness_summary.get('latest_updated_axis', 'N/A')}</div>
+                    </div>
+
+                    <!-- SLA Status Card -->
+                    <div class="ops-card" style="{ 'border-color: #fecaca; background: #fffafb;' if freshness_summary.get('sla_breach_count', 0) > 0 else '' }">
+                        <div class="ops-value { 'sla-breach' if freshness_summary.get('sla_breach_count', 0) > 0 else '' }">
+                            {freshness_summary.get('sla_breach_count', 0)}
+                        </div>
+                        <div class="ops-label">SLA Breaches (>6h)</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">
+                            {', '.join(freshness_summary.get('sla_breach_axes', [])) or 'All systems nominal'}
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Performance (Scoreboard) -->
+                    <div class="ops-card">
+                        <div class="ops-value">{ops_scoreboard.get('success_count', 0)} / {len(ops_scoreboard.get('history', [])) if ops_scoreboard.get('history') else 0}</div>
+                        <div class="ops-label">7D Pipeline Success Rate</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Avg Duration: {ops_scoreboard.get('avg_duration_minutes', 'N/A')}m</div>
+                    </div>
+                </div>
+
+                <!-- Ops History Table -->
+                <div style="margin-top: 30px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white;">
+                        <thead style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                            <tr>
+                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Date</th>
+                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Status</th>
+                                <th style="padding: 10px 15px; text-align: right; color: #64748b;">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        """
+    
+    for h in ops_scoreboard.get('history', [])[:7]:
+        st_color = 'background:#dcfce7; color:#166534;' if h.get('status') == 'SUCCESS' else 'background:#fee2e2; color:#991b1b;'
+        html += f"""
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 10px 15px; color: #1e293b;">{h.get('date')}</td>
+                                <td style="padding: 10px 15px;">
+                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; {st_color}">
+                                        {h.get('status')}
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">{h.get('duration_minutes')}m</td>
+                            </tr>
+        """
+
+    html += f"""
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

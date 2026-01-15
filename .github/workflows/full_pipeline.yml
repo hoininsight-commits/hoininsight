@@ -378,6 +378,14 @@ jobs:
         run: |
           python -m src.narratives.auto_archiver
 
+      - name: Track Ops Freshness (Phase 36-B)
+        run: |
+          python -m src.ops.freshness_tracker
+
+      - name: Update Ops Scoreboard (Phase 36-B)
+        run: |
+          python -m src.ops.ops_scoreboard
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -594,6 +602,30 @@ jobs:
           fi
           
           grep -q "Archived Narratives" "$DASH" && echo "[VERIFY][OK] Archive section rendered" || (echo "[VERIFY][FAIL] Archive section missing"; exit 1)
+
+      - name: Verify Phase 36-B Ops Hardening
+        run: |
+          echo "[VERIFY] Phase 36-B Ops Hardening Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          FRESH="data/ops/freshness/$YMD/freshness_summary.json"
+          SCORE="data/ops/scoreboard/$YMD/ops_scoreboard.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$FRESH" ]; then
+            echo "[VERIFY][OK] freshness_summary.json generated"
+            grep -q "tracker_version" "$FRESH" && echo "[VERIFY][OK] tracker_version present" || (echo "[VERIFY][FAIL] tracker_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No freshness data (valid state)"
+          fi
+          
+          if [ -f "$SCORE" ]; then
+            echo "[VERIFY][OK] ops_scoreboard.json generated"
+            grep -q "scoreboard_version" "$SCORE" && echo "[VERIFY][OK] scoreboard_version present" || (echo "[VERIFY][FAIL] scoreboard_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No scoreboard data (valid state)"
+          fi
+          
+          grep -q "Infrastructure Health & Data Freshness" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
 
 
 

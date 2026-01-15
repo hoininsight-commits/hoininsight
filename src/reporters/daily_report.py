@@ -402,6 +402,26 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             pass
 
+    # [Phase 36-B] Ops Health Snapshot
+    fresh_path = base_dir / "data" / "ops" / "freshness" / ymd / "freshness_summary.json"
+    if fresh_path.exists():
+        try:
+            fd = json.loads(fresh_path.read_text(encoding="utf-8"))
+            overall = fd.get("overall_system_freshness_pct", 0)
+            breaches = fd.get("sla_breach_count", 0)
+            
+            lines.append("")
+            lines.append("## OPS HEALTH SNAPSHOT")
+            if breaches > 0:
+                lines.append(f"⚠️ SLA BREACH DETECTED: {breaches} axes stale (>6h)")
+                lines.append(f"Affected: {', '.join(fd.get('sla_breach_axes', [])) or 'Unknown'}")
+            else:
+                lines.append("✅ All systems nominal - Data freshness within SLA")
+                
+            lines.append(f"- System Freshness: {overall}%")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     
