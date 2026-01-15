@@ -345,6 +345,35 @@ jobs:
             echo "[VERIFY][SKIP] No proposals generated today"
           fi
       
+      - name: Build Proposal Queue (Phase 31-C)
+        run: |
+          python -m src.narratives.proposal_queue
+
+      - name: Apply Approved Proposals (Phase 31-C)
+        run: |
+          python -m src.narratives.approval_applier
+
+      - name: Verify Phase 31-C Approval Pipeline
+        run: |
+          echo "[VERIFY] Phase 31-C Approval Pipeline Check"
+
+          YMD=$(date -u +"%Y/%m/%d")
+          QUEUE="data/narratives/queue/$YMD/proposal_queue.json"
+          APPLIED="data/narratives/applied/$YMD/applied_log.json"
+
+          if [ ! -f "$QUEUE" ]; then
+            echo "[VERIFY][FAIL] proposal_queue.json not found"
+            exit 1
+          fi
+          echo "[VERIFY][OK] Proposal queue generated"
+
+          if [ -f "$APPLIED" ]; then
+            echo "[VERIFY][OK] Applied log generated"
+          else
+            echo "[VERIFY][OK] No approvals applied today (valid state)"
+          fi
+      
+
       - name: Create issue on failure
         if: failure()
         env:
