@@ -323,6 +323,37 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             pass
 
+    # [Phase 34] Change Effectiveness Snapshot
+    effectiveness_path = base_dir / "data" / "narratives" / "effectiveness" / ymd / "effectiveness.json"
+    if effectiveness_path.exists():
+        try:
+            eff_data = json.loads(effectiveness_path.read_text(encoding="utf-8"))
+            events = eff_data.get("events", [])
+            
+            if events:
+                # Get most recent event
+                latest = sorted(events, key=lambda x: x["applied_at"], reverse=True)[0]
+                metrics = latest.get("metrics", {})
+                
+                lines.append("")
+                lines.append("## CHANGE EFFECTIVENESS SNAPSHOT")
+                lines.append(f"Latest applied change: {latest['event_id']} (applied {latest['applied_at']})")
+                
+                # Extract key deltas
+                success_delta = metrics.get("pipeline_reliability", {}).get("delta")
+                topics_delta = metrics.get("topics_count_avg", {}).get("delta")
+                conf_delta = metrics.get("confidence_high_share", {}).get("delta")
+                flip_delta = metrics.get("regime_flip_count", {}).get("delta")
+                
+                lines.append(f"- Success Rate Δ: {success_delta:+.2f}" if success_delta is not None else "- Success Rate Δ: N/A")
+                lines.append(f"- Topics Count Δ: {topics_delta:+.1f}" if topics_delta is not None else "- Topics Count Δ: N/A")
+                lines.append(f"- Confidence HIGH Share Δ: {conf_delta:+.2%}" if conf_delta is not None else "- Confidence HIGH Share Δ: N/A")
+                lines.append(f"- Regime Flips Δ: {flip_delta:+d}" if flip_delta is not None else "- Regime Flips Δ: N/A")
+        except:
+            lines.append("")
+            lines.append("## CHANGE EFFECTIVENESS SNAPSHOT")
+            lines.append("- N/A")
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     

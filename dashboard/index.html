@@ -545,92 +545,93 @@
             </div>
         </div>
 
+        <!-- Change Effectiveness Section (Phase 34) -->
+        <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Change Effectiveness (Last 30 Days)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Quantitative impact of approved changes on pipeline metrics.</p>
+                
+    
+                <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+                    No applied events in lookback window
+                </div>
+                
+            </div>
+        </div>
+
         <!-- The Modal -->
         <div id="scriptModal" class="modal">
           <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">Insight Script (2026-01-15)</div>
+            <div class="modal-header">{topic_title}</div>
             <div class="modal-body">
-## Opening (Context)
-- 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
-- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
-## Why Now
-- 이 국면은 현재 **2일째** 지속되고 있습니다.
-- 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
-## What Changed
-- 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
-- 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
-## What to Watch (Neutral)
-- 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
-* (특정 전략 프레임워크 없음)
-## Closing
-- 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
+{script_body}
             </div>
           </div>
         </div>
 
         <script>
         var modal = document.getElementById("scriptModal");
-        function openModal() {
+        function openModal() {{
           modal.style.display = "block";
-        }
-        function closeModal() {
+        }}
+        function closeModal() {{
           modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-          if (event.target == modal) {
+        }}
+        window.onclick = function(event) {{
+          if (event.target == modal) {{
             modal.style.display = "none";
-          }
-        }
+          }}
+        }}
 
-        function generateYaml(videoId) {
+        function generateYaml(videoId) {{
             const dcm = document.getElementById('chk-dcm-' + videoId).checked;
             const adl = document.getElementById('chk-adl-' + videoId).checked;
             const bs = document.getElementById('chk-bs-' + videoId).checked;
             const note = document.getElementById('note-' + videoId).value;
             
             copyYaml(videoId, dcm, adl, bs, note);
-        }
+        }}
         
-        function toggleAction(videoId) {
+        function toggleAction(videoId) {{
             var box = document.getElementById('action-box-' + videoId);
-            if (box.style.display === "none") {
+            if (box.style.display === "none") {{
                 box.style.display = "block";
-            } else {
+            }} else {{
                 box.style.display = "none";
-            }
-        }
+            }}
+        }}
         
-        function generateInboxYaml(videoId) {
+        function generateInboxYaml(videoId) {{
             const dcm = document.getElementById('ib-dcm-' + videoId).checked;
             const adl = document.getElementById('ib-adl-' + videoId).checked;
             const bs = document.getElementById('ib-bs-' + videoId).checked;
             const note = document.getElementById('ib-note-' + videoId).value;
             
             copyYaml(videoId, dcm, adl, bs, note);
-        }
+        }}
         
-        function copyYaml(videoId, dcm, adl, bs, note) {
+        function copyYaml(videoId, dcm, adl, bs, note) {{
             const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
             const now = new Date().toISOString();
             
             const yaml = `approval_version: "approve_yml_v1"
-video_id: "${videoId}"
+video_id: "${{videoId}}"
 approved_by: "USER_WEB_UI"
-approved_at: "${now}"
+approved_at: "${{now}}"
 apply:
-  data_collection_master: ${dcm}
-  anomaly_detection_logic: ${adl}
-  baseline_signals: ${bs}
-notes: "${note}"
+  data_collection_master: ${{dcm}}
+  anomaly_detection_logic: ${{adl}}
+  baseline_signals: ${{bs}}
+notes: "${{note}}"
 `;
             
-            navigator.clipboard.writeText(yaml).then(function() {
+            navigator.clipboard.writeText(yaml).then(function() {{
                 alert('승인 코드가 복사되었습니다!\n\n1. Git 저장소로 이동\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\n3. 붙여넣기 후 커밋');
-            }, function(err) {
+            }}, function(err) {{
                 alert('복사 실패: ' + err);
-            });
-        }
+            }});
+        }}
         </script>
     </body>
     </html>

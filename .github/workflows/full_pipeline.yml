@@ -366,6 +366,10 @@ jobs:
         run: |
           python -m src.narratives.applied_summarizer
 
+      - name: Evaluate Change Effectiveness (Phase 34)
+        run: |
+          python -m src.narratives.effectiveness_evaluator
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -529,6 +533,20 @@ jobs:
           test -f dashboard/index.html && echo "[VERIFY][OK] dashboard generated" || (echo "[VERIFY][FAIL] dashboard missing"; exit 1)
           grep -q "Architecture" dashboard/index.html && echo "[VERIFY][OK] Architecture section rendered" || (echo "[VERIFY][FAIL] Architecture section missing"; exit 1)
           grep -q "assets/architecture" dashboard/index.html && echo "[VERIFY][OK] SVG/PNG linked in dashboard" || (echo "[VERIFY][FAIL] SVG/PNG link missing"; exit 1)
+
+      - name: Verify Phase 34 Change Effectiveness
+        run: |
+          echo "[VERIFY] Phase 34 Change Effectiveness Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          OUT="data/narratives/effectiveness/$YMD/effectiveness.json"
+          DASH="dashboard/index.html"
+          if [ -f "$OUT" ]; then
+            echo "[VERIFY][OK] effectiveness.json generated"
+            grep -q "phase34_v1" "$OUT" && echo "[VERIFY][OK] effectiveness_version present" || (echo "[VERIFY][FAIL] effectiveness_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No applied events available (valid state)"
+          fi
+          grep -q "Change Effectiveness" "$DASH" && echo "[VERIFY][OK] Effectiveness section rendered" || (echo "[VERIFY][FAIL] Effectiveness section missing"; exit 1)
 
 
 

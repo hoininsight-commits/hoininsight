@@ -1234,6 +1234,117 @@ def generate_dashboard(base_dir: Path):
             </div>
         </div>
 
+        <!-- Change Effectiveness Section (Phase 34) -->
+        <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Change Effectiveness (Last 30 Days)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Quantitative impact of approved changes on pipeline metrics.</p>
+                
+    """
+    
+    # Load effectiveness data
+    effectiveness_html = ""
+    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    effectiveness_path = base_dir / "data" / "narratives" / "effectiveness" / ymd / "effectiveness.json"
+    
+    if effectiveness_path.exists():
+        try:
+            eff_data = json.loads(effectiveness_path.read_text(encoding="utf-8"))
+            events = eff_data.get("events", [])
+            
+            if events:
+                # Show top 3 most recent events
+                top_events = sorted(events, key=lambda x: x["applied_at"], reverse=True)[:3]
+                
+                effectiveness_html += """
+                <div style="display: grid; gap: 20px;">
+                """
+                
+                for event in top_events:
+                    metrics = event.get("metrics", {})
+                    apply_scope = event.get("apply_scope", {})
+                    data_quality = event.get("data_quality", {})
+                    
+                    # Extract key deltas
+                    success_delta = metrics.get("pipeline_reliability", {}).get("delta")
+                    topics_delta = metrics.get("topics_count_avg", {}).get("delta")
+                    conf_delta = metrics.get("confidence_high_share", {}).get("delta")
+                    flip_delta = metrics.get("regime_flip_count", {}).get("delta")
+                    
+                    # Format deltas
+                    success_str = f"{success_delta:+.2f}" if success_delta is not None else "N/A"
+                    topics_str = f"{topics_delta:+.1f}" if topics_delta is not None else "N/A"
+                    conf_str = f"{conf_delta:+.2%}" if conf_delta is not None else "N/A"
+                    flip_str = f"{flip_delta:+d}" if flip_delta is not None else "N/A"
+                    
+                    # Scope summary
+                    scope_items = [k for k, v in apply_scope.items() if v]
+                    scope_str = ", ".join(scope_items) if scope_items else "N/A"
+                    
+                    effectiveness_html += f"""
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 700; color: #1e293b;">{event["event_id"]}</div>
+                                <div style="font-size: 12px; color: #64748b; margin-top: 3px;">Applied: {event["applied_at"]}</div>
+                            </div>
+                            <div style="font-size: 10px; color: #94a3b8; text-align: right;">
+                                Pre/Post: {data_quality["pre_days_used"]}d / {data_quality["post_days_used"]}d
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 11px; color: #64748b; margin-bottom: 12px;">
+                            <strong>Scope:</strong> {scope_str}
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Success Rate Δ</div>
+                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if success_delta and success_delta > 0 else ('#dc2626' if success_delta and success_delta < 0 else '#64748b')};">{success_str}</div>
+                            </div>
+                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Topics Δ</div>
+                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if topics_delta and topics_delta > 0 else ('#dc2626' if topics_delta and topics_delta < 0 else '#64748b')};">{topics_str}</div>
+                            </div>
+                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Conf HIGH Δ</div>
+                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if conf_delta and conf_delta > 0 else ('#dc2626' if conf_delta and conf_delta < 0 else '#64748b')};">{conf_str}</div>
+                            </div>
+                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Regime Flips Δ</div>
+                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if flip_delta and flip_delta < 0 else ('#dc2626' if flip_delta and flip_delta > 0 else '#64748b')};">{flip_str}</div>
+                            </div>
+                        </div>
+                    </div>
+                    """
+                
+                effectiveness_html += """
+                </div>
+                """
+            else:
+                effectiveness_html = """
+                <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+                    No applied events in lookback window
+                </div>
+                """
+        except Exception as e:
+            effectiveness_html = f"""
+            <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+                Error loading effectiveness data: {str(e)}
+            </div>
+            """
+    else:
+        effectiveness_html = """
+        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+            No applied events in lookback window
+        </div>
+        """
+    
+    html += effectiveness_html
+    html += """
+            </div>
+        </div>
+
         <!-- The Modal -->
         <div id="scriptModal" class="modal">
           <div class="modal-content">
