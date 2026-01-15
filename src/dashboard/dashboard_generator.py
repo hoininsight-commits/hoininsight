@@ -173,16 +173,66 @@ def generate_dashboard(base_dir: Path):
             script_body = "\n".join(body_lines)
         except: pass
     
-    # Status Translation
-    status_str = "SUCCESS" if total_fail == 0 else "PARTIAL" if total_ok > 0 else "FAIL"
-    status_map = {"SUCCESS": "성공", "PARTIAL": "부분 성공", "FAIL": "실패"}
-    display_status = status_map.get(status_str, status_str)
+    # [Standardized Status Logic - Run #53 Fix]
+    CORE_DATASETS = ["index_spx_sp500_stooq", "rates_us10y_yield_ustreasury", "crypto_btc_usd_spot_coingecko", "fx_usdkrw_spot_open_yfinance", "metal_gold_xauusd_spot_yfinance"]
+    
+    core_fails = 0
+    derived_fails = 0
+    
+    for cat, data in collection_health.items():
+        for ds in data["datasets"]:
+            did = ds["dataset_id"]
+            stat = ds["status"]
+            
+            # Check if Core
+            is_core = did in CORE_DATASETS or "usdkrw" in did or "xau" in did or "btc" in did or "us10y" in did or "spx" in did
+            
+            if stat != "OK" and stat != "WARMUP":
+                if is_core:
+                    core_fails += 1
+                else:
+                    derived_fails += 1
+
+    if core_fails > 0:
+        status_str = "FAIL"
+        display_status = "실패 (Core)"
+    elif derived_fails > 0 or total_fail > 0:
+        status_str = "PARTIAL"
+        display_status = "부분 성공"
+    else:
+        status_str = "SUCCESS"
+        display_status = "성공"
+
+    # Narrative Status Check (Phase 31-A)
+    narr_status_file = base_dir / "data" / "narratives" / "status" / ymd.replace("-","/") / "collection_status.json"
+    narr_label = "INGESTION_SKIP"
+    narr_cls = "bg-gray-200 text-gray-500"
+    
+    if narr_status_file.exists():
+        try:
+            ns = json.loads(narr_status_file.read_text(encoding="utf-8"))
+            detected = ns.get("videos_detected", 0)
+            trans_ok = ns.get("transcript_ok", 0)
+            
+            if detected > 0:
+                if trans_ok > 0:
+                    narr_label = "INGESTION_OK"
+                    narr_cls = "bg-blue-100 text-blue-800"
+                else:
+                    narr_label = "INGESTION_WARN"
+                    narr_cls = "bg-orange-100 text-orange-800"
+            else:
+                narr_label = "INGESTION_SKIP"
+        except:
+            narr_label = "ERR"
 
     status_data = {
         "run_date": ymd,
         "run_id": os.environ.get("GITHUB_RUN_ID", "local"),
         "status": display_status,
-        "raw_status": status_str
+        "raw_status": status_str,
+        "narrative_label": narr_label,
+        "narrative_cls": narr_cls
     }
     
     dash_dir = base_dir / "dashboard"
@@ -421,9 +471,11 @@ def generate_dashboard(base_dir: Path):
             </div>
             
             <div style="display:flex; gap:10px;">
-                 <div class="conf-badge {content_cls}">Content: {content_mode}</div>
+                <!-- Narrative Badge -->
+                <div class="conf-badge {content_cls}">{content_mode}</div>
+                <div class="conf-badge {status_data['narrative_cls']}">Narrative: {status_data['narrative_label']}</div>
                  <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
-                 <div class="status-badge status-{status_data['status']}">{status_data['status']}</div>
+                 <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
             </div>
         </div>
         

@@ -132,9 +132,18 @@
                 </div>
                 
                 <div class="conf-badge bg-green-100 text-green-800">Confidence: HIGH</div>
+                
+                <!-- [Ops v1.1] Content Status Badge -->
+                <!-- Logic handled in Python, displayed below -->
             </div>
             
-            <div class="status-badge status-부분 성공">부분 성공</div>
+            <div style="display:flex; gap:10px;">
+                <!-- Narrative Badge -->
+                <div class="conf-badge bg-green-100 text-green-800">NORMAL</div>
+                <div class="conf-badge bg-blue-100 text-blue-800">Narrative: INGESTION_OK</div>
+                 <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">Preset: STANDARD</div>
+                 <div class="status-badge status-FAIL">실패 (Core)</div>
+            </div>
         </div>
         
         <div class="dashboard-container">
@@ -193,7 +202,7 @@
                         </div>
                         <div class="proc-node node-engine">
                              <div class="proc-title">토픽 선정</div>
-                             <div class="proc-desc">토픽 16개</div>
+                             <div class="proc-desc">토픽 14개</div>
                         </div>
                     </div>
                     
@@ -227,20 +236,20 @@
                 <span class="text-red-500">0/2</span>
             </div>
         
-             <div class="ds-item warmup" title="insufficient history: 0/35 days overlapping">
+             <div class="ds-item fail" title="Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/15/corr_btc_spx_30d.json">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">derived_corr_btc_spx_30d</span>
                  </div>
-                 <div class="status-check">WARMUP</div>
+                 <div class="status-check">✕</div>
              </div>
              
-             <div class="ds-item warmup" title="insufficient history: 0/35 days overlapping">
+             <div class="ds-item fail" title="Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/15/corr_usdkrw_us10y_30d.json">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">derived_corr_usdkrw_us10y_30d</span>
                  </div>
-                 <div class="status-check">WARMUP</div>
+                 <div class="status-check">✕</div>
              </div>
              </div>
         <div class="cat-group">
@@ -249,7 +258,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">fx_usdkrw_spot_open_er_api</span>
@@ -263,7 +272,7 @@
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">index_spx_sp500_stooq</span>
@@ -271,7 +280,7 @@
                  <div class="status-check">✓</div>
              </div>
              
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">index_kospi_stooq</span>
@@ -285,7 +294,7 @@
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_gold_xauusd_spot_gold_api</span>
@@ -293,7 +302,7 @@
                  <div class="status-check">✓</div>
              </div>
              
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_silver_xagusd_spot_gold_api</span>
@@ -307,7 +316,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">rates_us10y_yield_ustreasury</span>
@@ -321,7 +330,7 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">risk_vix_index_stooq</span>
@@ -335,7 +344,7 @@
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">crypto_btc_usd_spot_coingecko</span>

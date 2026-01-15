@@ -29,11 +29,26 @@ def get_today_stats():
         transcript_ok = sum(1 for x in trans_dir.glob("*.txt"))
         transcript_skip = sum(1 for x in trans_dir.glob("*_SKIP.json"))
         
+    # Find latest video title if possible
+    latest_video = "None"
+    if videos_detected > 0:
+        try:
+            # Sort by date derived from folder structure? or creation time?
+            # Folders are date based.
+            all_videos = sorted(raw_dir.iterdir(), key=lambda p: p.stat().st_ctime, reverse=True)
+            if all_videos:
+                latest_dir = all_videos[0]
+                meta = json.loads((latest_dir / "metadata.json").read_text(encoding="utf-8"))
+                latest_video = meta.get("title", "Unknown")
+        except:
+            pass
+
     return {
         "date": f"{y}-{m}-{d}",
         "videos_detected": videos_detected,
         "transcript_ok": transcript_ok,
         "transcript_skip": transcript_skip,
+        "latest_video": latest_video,
         "errors": 0 # Placeholder for now, hard to track async logs
     }
 

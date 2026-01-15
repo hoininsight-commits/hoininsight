@@ -290,6 +290,42 @@ jobs:
           name: insight-dashboard
           path: dashboard/
           
+      - name: Verify Phase 31-A Status Integrity
+        run: |
+          echo "[VERIFY] Phase 31-A Status Integrity Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          STATUS="data/narratives/status/$YMD/collection_status.json"
+          
+           if [ ! -f "$STATUS" ]; then
+            echo "[VERIFY][FAIL] Status file missing"
+            exit 1
+          fi
+          
+          # Check fields using jq (detected, transcript_ok, latest_video)
+          # jq should be available in ubuntu-latest
+          detected=$(jq '.videos_detected' "$STATUS")
+          ok=$(jq '.transcript_ok' "$STATUS")
+          last=$(jq -r '.latest_video' "$STATUS")
+          
+          echo "Detected: $detected, OK: $ok, Latest: $last"
+          
+          if [ "$detected" == "null" ] || [ "$ok" == "null" ] || [ "$last" == "null" ]; then
+             echo "[VERIFY][FAIL] Missing fields in narrative status"
+             exit 1
+          fi
+          echo "[VERIFY][OK] Status integrity checks passed"
+          
+          # Check Dashboard Narrative Label
+          DASH="dashboard/index.html"
+          if grep -q "Narrative: INGESTION" "$DASH"; then
+             echo "[VERIFY][OK] Dashboard displays Narrative Ingestion status"
+          else
+             echo "[VERIFY][FAIL] Dashboard missing Narrative label"
+             # Don't fail pipeline strictly on dashboard HTML text check if logic is brittle
+             # But user requested verification log
+             exit 1
+          fi
+      
       - name: Create issue on failure
         if: failure()
         env:
