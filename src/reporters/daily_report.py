@@ -422,6 +422,25 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             pass
 
+    # [Phase 37] Revival Proposal Snapshot
+    revival_path = base_dir / "data" / "narratives" / "revival" / ymd / "revival_proposals.json"
+    if revival_path.exists():
+        try:
+            rv = json.loads(revival_path.read_text(encoding="utf-8"))
+            items = rv.get("items", [])
+            
+            if items:
+                lines.append("")
+                lines.append("## REVIVAL PROPOSAL SNAPSHOT")
+                lines.append(f"Engine proposed {len(items)} reconsideration(s) based on today's context.")
+                
+                # Show first revival item
+                first = items[0]
+                lines.append(f"- Candidate: {first.get('video_id')} (Was {first.get('original_decision')})")
+                lines.append(f"- Reason: {first.get('revival_reason')}")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     

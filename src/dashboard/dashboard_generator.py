@@ -152,6 +152,14 @@ def generate_dashboard(base_dir: Path):
             ops_scoreboard = json.loads(score_path.read_text(encoding="utf-8"))
     except: pass
 
+    # [Phase 37] Load Revival Data
+    revival_summary = {}
+    try:
+        revival_path = base_dir / "data/narratives/revival" / ymd.replace("-","/") / "revival_proposals.json"
+        if revival_path.exists():
+            revival_summary = json.loads(revival_path.read_text(encoding="utf-8"))
+    except: pass
+
     # Engine Outputs Check
     topics_count = _count_files(base_dir, f"data/topics/{ymd.replace('-','/')}", "*.json")
     meta_path = base_dir / "data" / "meta_topics" / ymd.replace("-","/") / "meta_topics.json"
@@ -1488,6 +1496,57 @@ def generate_dashboard(base_dir: Path):
         """
     
     html += ledger_html
+    html += """
+            </div>
+        </div>
+
+        <!-- Revival Candidates Section (Phase 37) -->
+        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Revival Candidates (Proposal Only)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Engine detected new market context for previously rejected or archived narratives.</p>
+                
+    """
+    
+    revival_html = ""
+    if revival_summary and revival_summary.get("items"):
+        condition_met = revival_summary.get("condition_met", "Market change detected")
+        revival_html += f"""
+        <div style="background: #ecfdf5; border: 1px solid #10b981; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+            <div style="font-size: 13px; font-weight: 700; color: #065f46;">Conditions Met: {condition_met}</div>
+            <div style="font-size: 11px; color: #047857; margin-top: 2px;">System Freshness: {freshness_summary.get('overall_system_freshness_pct', 'N/A')}% | Manual approval still required.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+        """
+        for item in revival_summary.get("items", []):
+            vid = item.get("video_id")
+            orig_dec = item.get("original_decision")
+            orig_date = item.get("original_decided_at", "")[:10]
+            rev_reason = item.get("revival_reason")
+            
+            revival_html += f"""
+            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                    <div style="font-size: 13px; font-weight: 600; color: #1e293b;">
+                        <a href="https://youtu.be/{vid}" target="_blank" style="color: inherit; text-decoration: none;">{vid}</a>
+                    </div>
+                    <span style="font-size: 9px; font-weight: bold; background: #e0e7ff; color: #3730a3; padding: 1px 4px; border-radius: 3px;">{orig_dec} @ {orig_date}</span>
+                </div>
+                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px; font-style: italic;">{rev_reason}</div>
+                <div style="border-top: 1px solid #f1f5f9; padding-top: 8px; margin-top: 8px;">
+                    <button onclick="window.open('https://youtu.be/{vid}', '_blank')" style="width: 100%; padding: 4px; font-size: 10px; background: #3b82f6; color: white; border: none; border-radius: 3px; cursor: pointer;">Review & Re-propose</button>
+                </div>
+            </div>
+            """
+        revival_html += "</div>"
+    else:
+        revival_html = """
+        <div style="background: #f8fafc; padding: 30px; border-radius: 8px; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8; font-size: 14px;">
+            No revival candidates proposed today.
+        </div>
+        """
+    
+    html += revival_html
     html += """
             </div>
         </div>

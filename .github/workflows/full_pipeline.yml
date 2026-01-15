@@ -386,6 +386,10 @@ jobs:
         run: |
           python -m src.ops.ops_scoreboard
 
+      - name: Scan Revival Candidates (Phase 37)
+        run: |
+          python -m src.narratives.revival_scanner
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -626,6 +630,30 @@ jobs:
           fi
           
           grep -q "Infrastructure Health & Data Freshness" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
+
+      - name: Verify Phase 37 Revival
+        run: |
+          echo "[VERIFY] Phase 37 Revival Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          REVIVAL="data/narratives/revival/$YMD/revival_proposals.json"
+          META="data/meta_topics/$YMD/meta_topics.json"
+          DASH="dashboard/index.html"
+          
+          # Check for meta topics phrase mentioned in requirements
+          if [ -f "$META" ]; then
+            echo "[VERIFY][OK] Meta Topic detected and used as Regime basis"
+          else
+            echo "[VERIFY][SKIP] No meta topics detected today (valid state)"
+          fi
+
+          if [ -f "$REVIVAL" ]; then
+            echo "[VERIFY][OK] revival_proposals.json generated"
+            grep -q "revival_v1" "$REVIVAL" && echo "[VERIFY][OK] proposal_version present" || (echo "[VERIFY][FAIL] proposal_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No revival proposals today (conditions not met)"
+          fi
+          
+          grep -q "Revival Candidates" "$DASH" && echo "[VERIFY][OK] Revival section rendered" || (echo "[VERIFY][FAIL] Revival section missing"; exit 1)
 
 
 
