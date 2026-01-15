@@ -53,3 +53,7 @@ Historical context:
 Narrative Drift Signals:
 - (no meta regime detected): ACCELERATION
 
+
+## REJECTION LEDGER SNAPSHOT
+Last 90 days: REJECTED=0, DEFERRED=0, DUPLICATE=0
+- No recent entries
