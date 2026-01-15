@@ -22,8 +22,14 @@ def main():
     # 1. Load Queue
     if not queue_path.exists():
         print(f"[Priority] No queue found at {queue_path}. Skipping.")
-        # Write empty list to satisfy verification
-        output_path.write_text("[]", encoding="utf-8")
+        # Write empty structure to satisfy verification and metadata reqs
+        final_output = {
+            "scoring_version": "phase32_v1",
+            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "inputs_hash": "empty_queue",
+            "items": []
+        }
+        output_path.write_text(json.dumps(final_output, indent=2), encoding="utf-8")
         return
         
     queue_items = json.loads(queue_path.read_text(encoding="utf-8"))
@@ -90,8 +96,21 @@ def main():
     for idx, item in enumerate(scored_items, 1):
         item["priority_rank"] = idx
         
+    # Calculate Input Hash
+    import hashlib
+    vid_list = sorted([item.get("video_id", "") for item in queue_items])
+    input_str = f"{regime_info['regime']}|{regime_info['confidence']}|{','.join(vid_list)}"
+    input_hash = hashlib.sha256(input_str.encode("utf-8")).hexdigest()
+
+    final_output = {
+        "scoring_version": "phase32_v1",
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "inputs_hash": input_hash,
+        "items": scored_items
+    }
+
     # 5. Save
-    output_path.write_text(json.dumps(scored_items, indent=2, ensure_ascii=False), encoding="utf-8")
+    output_path.write_text(json.dumps(final_output, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[Priority] Saved {len(scored_items)} scored proposals to {output_path}")
 
 if __name__ == "__main__":

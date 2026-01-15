@@ -614,6 +614,8 @@ def generate_dashboard(base_dir: Path):
         prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
         if prio_path.exists():
             p_data = json.loads(prio_path.read_text(encoding="utf-8"))
+            if isinstance(p_data, dict) and "items" in p_data:
+                p_data = p_data["items"]
             for item in p_data:
                 priority_map[item.get("video_id")] = item
     except: pass
@@ -783,6 +785,12 @@ def generate_dashboard(base_dir: Path):
                         <span style="color:#94a3b8; margin-left:5px;">#{p_info.get('priority_rank','-')}</span>
                     </div>
                     """
+                else:
+                    inbox_html += f"""
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    """
                 
                 inbox_html += f"""
                     
@@ -883,7 +891,12 @@ def generate_dashboard(base_dir: Path):
                 """
             queue_html += "</div>"
         else:
-            queue_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>대기 중인 제안이 없습니다.</div>"
+            queue_html += """
+            <div style='padding:20px 10px; text-align:center; background:#f8fafc; border:1px dashed #e2e8f0; border-radius:6px; margin:10px 0;'>
+                <div style='font-size:12px; color:#64748b; font-weight:bold;'>No proposals today — scoring logic active (Phase 32)</div>
+                <div style='font-size:10px; color:#94a3b8; margin-top:5px;'>Hoin Insight engine is active and monitoring.</div>
+            </div>
+            """
     except Exception as e:
         queue_html = f"<div style='color:red; font-size:11px;'>Queue 로드 실패: {e}</div>"
 

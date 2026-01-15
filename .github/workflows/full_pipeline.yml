@@ -475,6 +475,32 @@ jobs:
           # The dashboard generator logic was updated to use priority map.
           echo "[VERIFY][OK] Proposal priority logic integrated into dashboard"
 
+      - name: Verify Phase 32 Hardening
+        run: |
+          echo "[VERIFY] Phase 32 Hardening Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          OUT="data/narratives/prioritized/$YMD/proposal_scores.json"
+          DASH="dashboard/index.html"
+          
+          test -f "$OUT" && echo "[VERIFY][OK] proposal_scores.json exists" || (echo "[VERIFY][FAIL] proposal_scores.json missing"; exit 1)
+          
+          # Check Metadata
+          grep -q "phase32_v1" "$OUT" && echo "[VERIFY][OK] scoring_version present" || echo "[VERIFY][WARN] scoring_version not present"
+          
+          # Check Empty State Message (Conditionally)
+          VID_COUNT=$(grep -o "video_id" "$OUT" | wc -l)
+          
+          if [ "$VID_COUNT" -eq 0 ]; then
+             echo "[INFO] No proposals detected. Expecting Empty State Message."
+             grep -q "No proposals today — scoring logic active" "$DASH" && echo "[VERIFY][OK] Empty-state message rendered" || (echo "[VERIFY][FAIL] Empty-state message missing"; exit 1)
+          else
+             echo "[INFO] Proposals detected ($VID_COUNT). Skipping Empty State Message Check."
+             if grep -q "No proposals today — scoring logic active" "$DASH"; then
+                echo "[VERIFY][FAIL] Empty-state message rendered despite having proposals!"
+                exit 1
+             fi
+          fi
+
 
 
 
