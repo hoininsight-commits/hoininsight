@@ -36,7 +36,8 @@ jobs:
         run: |
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
-          git add data docs || true
+          # Force add data directories to safeguard against any lingering .gitignore issues
+          git add -f data/raw data/curated data/features data/topics data/reports || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: engine daily run [skip ci]"
           git push
