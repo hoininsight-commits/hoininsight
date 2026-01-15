@@ -57,3 +57,8 @@ Narrative Drift Signals:
 ## REJECTION LEDGER SNAPSHOT
 Last 90 days: REJECTED=0, DEFERRED=0, DUPLICATE=0
 - No recent entries
+
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 2 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d
+- System Freshness: 87.5%
