@@ -354,6 +354,31 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append("## CHANGE EFFECTIVENESS SNAPSHOT")
             lines.append("- N/A")
 
+    # [Phase 35] Rejection Ledger Snapshot
+    ledger_path = base_dir / "data" / "narratives" / "ledger_summary" / ymd / "ledger_summary.json"
+    if ledger_path.exists():
+        try:
+            ledger_data = json.loads(ledger_path.read_text(encoding="utf-8"))
+            counts = ledger_data.get("counts_by_decision", {})
+            recent_entries = ledger_data.get("recent_entries", [])
+            
+            lines.append("")
+            lines.append("## REJECTION LEDGER SNAPSHOT")
+            lines.append(f"Last 90 days: REJECTED={counts.get('REJECTED', 0)}, DEFERRED={counts.get('DEFERRED', 0)}, DUPLICATE={counts.get('DUPLICATE', 0)}")
+            
+            if recent_entries:
+                newest = recent_entries[0]
+                decision = newest.get("decision", "UNKNOWN")
+                decided_at = newest.get("decided_at", "")[:10]
+                reason = newest.get("reason", "No reason")[:80]  # Truncate
+                lines.append(f"Newest: {decision} on {decided_at} - {reason}")
+            else:
+                lines.append("- No recent entries")
+        except:
+            lines.append("")
+            lines.append("## REJECTION LEDGER SNAPSHOT")
+            lines.append("- N/A")
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     

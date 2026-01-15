@@ -630,6 +630,17 @@ def generate_dashboard(base_dir: Path):
                     priority_map[item.get("video_id")] = item
     except: pass
 
+    # [Phase 35] Load Ledger Summary
+    ledger_map = {}
+    ledger_summary = {}
+    try:
+        ledger_path = base_dir / "data/narratives/ledger_summary" / ymd.replace("-","/") / "ledger_summary.json"
+        if ledger_path.exists():
+            ledger_summary = json.loads(ledger_path.read_text(encoding="utf-8"))
+            for entry in ledger_summary.get("recent_entries", []):
+                ledger_map[entry.get("video_id")] = entry
+    except: pass
+
     
     try:
         # Scan for metadata in recent days? Or just today/yesterday?
@@ -698,6 +709,18 @@ def generate_dashboard(base_dir: Path):
                         # Let's say Needs Action = NEW or PROPOSED.
                         needs_action = status in ["NEW", "PROPOSED"]
                         
+                        # [Phase 35] Check Ledger Decision
+                        ledger_decision = None
+                        ledger_reason = None
+                        if vid in ledger_map:
+                            ledger_entry = ledger_map[vid]
+                            ledger_decision = ledger_entry.get("decision")
+                            ledger_reason = ledger_entry.get("reason", "")
+                            # Override status if decisioned
+                            if ledger_decision:
+                                status = ledger_decision
+                                needs_action = False  # No action needed if decisioned
+                        
                         item = {
                             "video_id": vid,
                             "title": md.get("title", "No Title"),
@@ -705,7 +728,9 @@ def generate_dashboard(base_dir: Path):
                             "url": f"https://youtu.be/{vid}",
                             "status": status,
                             "needs_action": needs_action,
-                            "prop_path": prop_path
+                            "prop_path": prop_path,
+                            "ledger_decision": ledger_decision,
+                            "ledger_reason": ledger_reason
                         }
                         inbox_items.append(item)
                     except: pass
@@ -727,6 +752,10 @@ def generate_dashboard(base_dir: Path):
                 elif st == "PROPOSED": bg_col="#ffedd5"; txt_col="#9a3412"
                 elif st == "APPROVED": bg_col="#dcfce7"; txt_col="#166534"
                 elif st == "APPLIED": bg_col="#f0fdf4"; txt_col="#15803d"; # Green outline?
+                # [Phase 35] Ledger Decision Colors
+                elif st == "REJECTED": bg_col="#fee2e2"; txt_col="#991b1b"
+                elif st == "DEFERRED": bg_col="#e0e7ff"; txt_col="#3730a3"
+                elif st == "DUPLICATE": bg_col="#fed7aa"; txt_col="#9a3412"
                 
                 # Extract
                 extract_html = ""
@@ -815,6 +844,15 @@ def generate_dashboard(base_dir: Path):
                     inbox_html += f"""
                     <div style="margin-top:4px; font-size:10px;">
                         <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    """
+                
+                # [Phase 35] Ledger Reason Display
+                if it.get("ledger_reason"):
+                    inbox_html += f"""
+                    <div style="margin-top:6px; padding:6px; background:#f8fafc; border-left:3px solid {bg_col}; border-radius:3px;">
+                        <div style="font-size:9px; font-weight:600; color:#64748b; margin-bottom:2px;">DECISION REASON:</div>
+                        <div style="font-size:10px; color:#334155;">{it['ledger_reason']}</div>
                     </div>
                     """
                 
@@ -1341,6 +1379,93 @@ def generate_dashboard(base_dir: Path):
         """
     
     html += effectiveness_html
+    html += """
+            </div>
+        </div>
+
+        <!-- Rejection Ledger Section (Phase 35) -->\n        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Rejection Ledger (Last 90 Days)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Track rejected, deferred, and duplicate proposals to prevent redundant analysis.</p>
+                
+    """
+    
+    # Load ledger summary (already loaded above)
+    ledger_html = ""
+    if ledger_summary and ledger_summary.get("total_entries", 0) > 0:
+        counts = ledger_summary.get("counts_by_decision", {})
+        recent = ledger_summary.get("recent_entries", [])[:20]
+        
+        # Summary counts
+        ledger_html += f"""
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
+            <div style="background: #fee2e2; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #991b1b;">{counts.get('REJECTED', 0)}</div>
+                <div style="font-size: 12px; color: #7f1d1d; margin-top: 3px;">REJECTED</div>
+            </div>
+            <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #3730a3;">{counts.get('DEFERRED', 0)}</div>
+                <div style="font-size: 12px; color: #312e81; margin-top: 3px;">DEFERRED</div>
+            </div>
+            <div style="background: #fed7aa; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #9a3412;">{counts.get('DUPLICATE', 0)}</div>
+                <div style="font-size: 12px; color: #7c2d12; margin-top: 3px;">DUPLICATE</div>
+            </div>
+        </div>
+        
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+            <div style="background: #f8fafc; padding: 10px 15px; border-bottom: 1px solid #e2e8f0;">
+                <div style="font-size: 12px; font-weight: 700; color: #475569;">Recent Decisions</div>
+            </div>
+            <div style="max-height: 400px; overflow-y: auto;">
+        """
+        
+        for entry in recent:
+            decision = entry.get("decision", "UNKNOWN")
+            video_id = entry.get("video_id", "")
+            decided_at = entry.get("decided_at", "")[:10]
+            reason = entry.get("reason", "No reason provided")
+            related = entry.get("related_video_id", "")
+            
+            # Decision badge color
+            dec_bg = "#e2e8f0"
+            dec_txt = "#475569"
+            if decision == "REJECTED": dec_bg = "#fee2e2"; dec_txt = "#991b1b"
+            elif decision == "DEFERRED": dec_bg = "#e0e7ff"; dec_txt = "#3730a3"
+            elif decision == "DUPLICATE": dec_bg = "#fed7aa"; dec_txt = "#9a3412"
+            
+            related_html = ""
+            if decision == "DUPLICATE" and related:
+                related_html = f'<div style="font-size: 10px; color: #64748b; margin-top: 3px;">→ Related: <a href="https://youtu.be/{related}" target="_blank" style="color: #3b82f6;">{related}</a></div>'
+            
+            ledger_html += f"""
+            <div style="padding: 12px 15px; border-bottom: 1px solid #f1f5f9;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 5px;">
+                    <div style="font-size: 12px; font-weight: 600; color: #1e293b;">
+                        <a href="https://youtu.be/{video_id}" target="_blank" style="color: inherit; text-decoration: none;">{video_id}</a>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span style="font-size: 10px; color: #94a3b8;">{decided_at}</span>
+                        <span style="font-size: 9px; font-weight: bold; background: {dec_bg}; color: {dec_txt}; padding: 2px 6px; border-radius: 3px;">{decision}</span>
+                    </div>
+                </div>
+                <div style="font-size: 11px; color: #64748b;">{reason}</div>
+                {related_html}
+            </div>
+            """
+        
+        ledger_html += """
+            </div>
+        </div>
+        """
+    else:
+        ledger_html = """
+        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+            No ledger entries in the last 90 days
+        </div>
+        """
+    
+    html += ledger_html
     html += """
             </div>
         </div>

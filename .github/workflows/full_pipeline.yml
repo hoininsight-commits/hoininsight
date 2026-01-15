@@ -370,6 +370,10 @@ jobs:
         run: |
           python -m src.narratives.effectiveness_evaluator
 
+      - name: Aggregate Rejection Ledger (Phase 35)
+        run: |
+          python -m src.narratives.ledger_aggregator
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -547,6 +551,20 @@ jobs:
             echo "[VERIFY][SKIP] No applied events available (valid state)"
           fi
           grep -q "Change Effectiveness" "$DASH" && echo "[VERIFY][OK] Effectiveness section rendered" || (echo "[VERIFY][FAIL] Effectiveness section missing"; exit 1)
+
+      - name: Verify Phase 35 Rejection Ledger
+        run: |
+          echo "[VERIFY] Phase 35 Rejection Ledger Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          OUT="data/narratives/ledger_summary/$YMD/ledger_summary.json"
+          DASH="dashboard/index.html"
+          if [ -f "$OUT" ]; then
+            echo "[VERIFY][OK] ledger_summary generated"
+            grep -q "lookback_days" "$OUT" && echo "[VERIFY][OK] lookback_days present" || (echo "[VERIFY][FAIL] lookback_days missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No ledger entries yet (valid state)"
+          fi
+          grep -q "Rejection Ledger" "$DASH" && echo "[VERIFY][OK] Ledger section rendered" || (echo "[VERIFY][FAIL] Ledger section missing"; exit 1)
 
 
 
