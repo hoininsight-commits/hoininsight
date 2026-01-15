@@ -521,6 +521,15 @@ jobs:
           
           grep -q "Final Priority" "$DASH" && echo "[VERIFY][OK] Final priority rendered in dashboard" || (echo "[VERIFY][FAIL] Final priority missing in dashboard"; exit 1)
 
+      - name: Verify Dashboard Architecture SVG
+        run: |
+          echo "[VERIFY] Dashboard Architecture SVG Check"
+          test -f dashboard/assets/architecture.svg && echo "[VERIFY][OK] architecture.svg present" || (echo "[VERIFY][FAIL] architecture.svg missing"; exit 1)
+          test -f dashboard/assets/architecture.png && echo "[VERIFY][OK] architecture.png present" || (echo "[VERIFY][FAIL] architecture.png missing"; exit 1)
+          test -f dashboard/index.html && echo "[VERIFY][OK] dashboard generated" || (echo "[VERIFY][FAIL] dashboard missing"; exit 1)
+          grep -q "Architecture" dashboard/index.html && echo "[VERIFY][OK] Architecture section rendered" || (echo "[VERIFY][FAIL] Architecture section missing"; exit 1)
+          grep -q "assets/architecture" dashboard/index.html && echo "[VERIFY][OK] SVG/PNG linked in dashboard" || (echo "[VERIFY][FAIL] SVG/PNG link missing"; exit 1)
+
 
 
 
