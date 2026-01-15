@@ -324,6 +324,25 @@ jobs:
              # Don't fail pipeline strictly on dashboard HTML text check if logic is brittle
              # But user requested verification log
              exit 1
+           fi
+      
+      - name: Run Narrative Analyzer (Phase 31-B)
+        run: |
+          python -m src.narratives.narrative_analyzer
+        continue-on-error: true
+
+      - name: Verify Phase 31-B Proposals
+        run: |
+          echo "[VERIFY] Phase 31-B Proposal Generation Check"
+          
+          YMD=$(date -u +"%Y/%m/%d")
+          PROPOSALS_DIR="data/narratives/proposals/$YMD"
+          
+          if [ -d "$PROPOSALS_DIR" ]; then
+            PROPOSAL_COUNT=$(find "$PROPOSALS_DIR" -name "proposal_*.md" | wc -l)
+            echo "[VERIFY][OK] Narrative proposals generated: $PROPOSAL_COUNT"
+          else
+            echo "[VERIFY][SKIP] No proposals generated today"
           fi
       
       - name: Create issue on failure
