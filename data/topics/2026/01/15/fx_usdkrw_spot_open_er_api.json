@@ -1,9 +1,9 @@
 [
   {
     "ts_utc": "2026-01-15T08:12:24Z",
-    "dataset_id": "comm_wti_crude_oil_stooq",
-    "topic_id": "comm_wti_crude_oil_stooq::roc_1d",
-    "title": "data/features/anomalies/2026/01/15/comm_wti_crude_oil_stooq.json daily move",
+    "dataset_id": "fx_usdkrw_spot_open_er_api",
+    "topic_id": "fx_usdkrw_spot_open_er_api::roc_1d",
+    "title": "data/features/anomalies/2026/01/15/fx_usdkrw_spot_open_er_api.json daily move",
     "score": 0.0,
     "severity": "LOW",
     "evidence": {
@@ -26,7 +26,7 @@
           }
         }
       },
-      "anomalies_path": "data/features/anomalies/2026/01/15/comm_wti_crude_oil_stooq.json"
+      "anomalies_path": "data/features/anomalies/2026/01/15/fx_usdkrw_spot_open_er_api.json"
     },
     "rationale": "Topic generated from anomaly signal (roc_1d) with regime multiplier (VIX/US10Y).",
     "links": []

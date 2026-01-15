@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-15T08:01:01Z
-- finished_utc: 2026-01-15T08:01:16Z
+- started_utc: 2026-01-15T08:12:12Z
+- finished_utc: 2026-01-15T08:12:26Z
 - status: SUCCESS
 
 ## details
@@ -14,16 +14,13 @@ anomaly: ok
 topic: ok
 report: ok | data/reports/2026/01/15/daily_brief.md
 checks:
-[SKIP] outputs(fx_usdkrw_spot_open_er_api) missing
-[SKIP] outputs(metal_gold_xauusd_spot_gold_api) missing
-[SKIP] outputs(metal_silver_xagusd_spot_gold_api) missing
 [SKIP] outputs(derived_corr_btc_spx_30d) missing
 [SKIP] outputs(derived_corr_usdkrw_us10y_30d) missing
 schema_checks:
 [OK] schema(crypto_btc_usd_spot_coingecko): timeseries_v1
-[SKIP] schema(fx_usdkrw_spot_open_er_api): missing curated file (soft_fail)
-[SKIP] schema(metal_gold_xauusd_spot_gold_api): missing curated file (soft_fail)
-[SKIP] schema(metal_silver_xagusd_spot_gold_api): missing curated file (soft_fail)
+[OK] schema(fx_usdkrw_spot_open_er_api): timeseries_v1
+[OK] schema(metal_gold_xauusd_spot_gold_api): timeseries_v1
+[OK] schema(metal_silver_xagusd_spot_gold_api): timeseries_v1
 [OK] schema(rates_us10y_yield_ustreasury): timeseries_v1
 [OK] schema(risk_vix_index_stooq): timeseries_v1
 [OK] schema(index_spx_sp500_stooq): timeseries_v1
