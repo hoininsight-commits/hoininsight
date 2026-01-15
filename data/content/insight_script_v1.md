@@ -1,4 +1,11 @@
 # Insight Script (2026-01-15)
+<!-- Metadata
+Content Mod: NORMAL
+Content Preset: STANDARD
+Preset Reason: HIGH Confidence (Risk factors not dominant)
+Confidence: HIGH
+Regime: (no meta regime detected)
+-->
 
 ## Opening (Context)
 - 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
