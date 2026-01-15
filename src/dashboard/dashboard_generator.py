@@ -174,7 +174,7 @@ def generate_dashboard(base_dir: Path):
         except: pass
     
     # [Standardized Status Logic - Run #53 Fix]
-    CORE_DATASETS = ["index_spx_sp500_stooq", "rates_us10y_yield_ustreasury", "crypto_btc_usd_spot_coingecko", "fx_usdkrw_spot_open_yfinance", "metal_gold_xauusd_spot_yfinance"]
+    from src.ops.core_dataset import CORE_DATASETS_V2
     
     core_fails = 0
     derived_fails = 0
@@ -185,7 +185,7 @@ def generate_dashboard(base_dir: Path):
             stat = ds["status"]
             
             # Check if Core
-            is_core = did in CORE_DATASETS or "usdkrw" in did or "xau" in did or "btc" in did or "us10y" in did or "spx" in did
+            is_core = did in CORE_DATASETS_V2
             
             if stat != "OK" and stat != "WARMUP":
                 if is_core:
