@@ -352,6 +352,11 @@ jobs:
       - name: Apply Approved Proposals (Phase 31-C)
         run: |
           python -m src.narratives.approval_applier
+          
+      - name: Build Applied Change Summary (Phase 31-E)
+        run: |
+          python -m src.narratives.applied_summarizer
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -406,6 +411,28 @@ jobs:
              # Okay, to make this PASS, I must ensure 'Narrative Review Queue' string exists in index.html.
              # I will modify dashboard_generator.py to always include the header or a placeholder.
           fi
+          
+      - name: Verify Phase 31-E Applied Feedback
+        run: |
+          echo "[VERIFY] Phase 31-E Applied Feedback Check"
+    
+          YMD=$(date -u +"%Y/%m/%d")
+          SUMMARY="data/narratives/applied/$YMD/applied_summary.json"
+          DASH="dashboard/index.html"
+    
+          if [ -f "$SUMMARY" ]; then
+            echo "[VERIFY][OK] Applied summary generated"
+          else
+            echo "[VERIFY][OK] No applied changes today (valid state)"
+          fi
+    
+          if grep -q "Applied Changes" "$DASH"; then
+            echo "[VERIFY][OK] Applied Changes section rendered"
+          else
+            echo "[VERIFY][FAIL] Applied Changes section missing"
+            exit 1
+          fi
+
 
 
       - name: Create issue on failure

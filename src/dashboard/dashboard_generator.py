@@ -674,9 +674,63 @@ def generate_dashboard(base_dir: Path):
     except Exception as e:
         queue_html = f"<div style='color:red; font-size:11px;'>Queue 로드 실패: {e}</div>"
 
-    # Inject Queue HTML into Sidebar (append to existing sidebar_html)
-    sidebar_html += queue_html
+    
+    # [Phase 31-E] Applied Changes Section
+    # Renders summary of today's applied changes based on applied_summary.json
+    applied_html = """
+    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+        Applied Changes (Today)
+    </div>
+    """
+    
+    try:
+        sum_path = base_dir / "data/narratives/applied" / ymd.replace("-","/") / "applied_summary.json"
+        has_items = False
+        
+        if sum_path.exists():
+            s_data = json.loads(sum_path.read_text(encoding="utf-8"))
+            items = s_data.get("items", [])
+            
+            if items:
+                has_items = True
+                applied_html += '<div class="applied-list" style="display:flex; flex-direction:column; gap:10px;">'
+                
+                for item in items:
+                    v_title = item.get("title", "Untitled")
+                    v_by = item.get("approved_by", "System")
+                    v_at = item.get("approved_at", "")
+                    
+                    # Shorten date
+                    if "T" in v_at: v_at = v_at.split("T")[0]
+                    
+                    scopes = item.get("applied_scopes", [])
+                    scope_badges = ""
+                    for sc in scopes:
+                        short_sc = sc.replace("_", " ").title().replace("Data Collection Master", "DCM").replace("Anomaly Detection Logic", "ADL").replace("Baseline Signals", "Base")
+                        scope_badges += f'<span style="font-size:9px; background:#e0f2fe; color:#0369a1; padding:2px 5px; border-radius:3px; margin-right:3px;">{short_sc}</span>'
+                    
+                    applied_html += f"""
+                    <div class="applied-card" style="background:white; border:1px solid #bbf7d0; border-left:4px solid #22c55e; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+                            <span style="font-size:12px; font-weight:bold; color:#15803d;">🟢 APPLIED</span>
+                            <span style="font-size:10px; color:#94a3b8;">{v_at}</span>
+                        </div>
+                        <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px;">{v_title}</div>
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">by {v_by}</div>
+                        <div>{scope_badges}</div>
+                    </div>
+                    """
+                applied_html += '</div>'
+        
+        if not has_items:
+             applied_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>오늘 적용된 변경 사항이 없습니다.</div>"
+             
+    except Exception as e:
+        applied_html += f"<div style='color:red; font-size:11px;'>Load Error: {e}</div>"
 
+    sidebar_html += queue_html
+    sidebar_html += applied_html
+    
     html = f"""
     <!DOCTYPE html>
     <html lang="ko">

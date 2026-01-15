@@ -250,6 +250,29 @@ def write_daily_brief(base_dir: Path) -> Path:
             typ = d.get("drift_type", "NONE")
             eid = d.get("entity_id", "Unknown")
             lines.append(f"- {eid}: {typ}")
+            
+    lines.append("")
+    
+    # [Phase 31-E] Applied Changes (Narrative-Driven)
+    applied_sum_path = base_dir / "data" / "narratives" / "applied" / ymd / "applied_summary.json"
+    if applied_sum_path.exists():
+        try:
+            as_data = json.loads(applied_sum_path.read_text(encoding="utf-8"))
+            as_items = as_data.get("items", [])
+            
+            if as_items:
+                lines.append("## APPLIED CHANGES (Narrative-Driven)")
+                lines.append(f"Narrative feedback loop active. {len(as_items)} approved proposal(s) applied.")
+                lines.append("")
+                
+                for it in as_items:
+                    vid = it.get('video_id', 'unknown')
+                    scopes = it.get('applied_scopes', [])
+                    scope_str = ", ".join(scopes)
+                    lines.append(f"- Approved narrative (video_id={vid}) resulted in additive update to {scope_str}.")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     
