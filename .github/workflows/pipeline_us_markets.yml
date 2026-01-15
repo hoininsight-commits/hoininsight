@@ -37,6 +37,7 @@ jobs:
           git add data docs || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: us_markets daily run [skip ci]"
+          git pull --rebase
           git push
           
       - name: Verify Schedule
