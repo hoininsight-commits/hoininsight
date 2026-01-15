@@ -764,7 +764,7 @@ def generate_dashboard(base_dir: Path):
         if q_path.exists():
             q_data = json.loads(q_path.read_text(encoding="utf-8"))
             
-        if q_data:
+        if q_data or priority_map:
             queue_html += '<div class="queue-list">'
             
             # [Phase 33] Sort by final_priority_score
