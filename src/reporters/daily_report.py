@@ -441,6 +441,30 @@ def write_daily_brief(base_dir: Path) -> Path:
         except:
             pass
 
+    # [Phase 37-B] Revival Ops Context
+    evidence_path = base_dir / "data" / "narratives" / "revival" / ymd / "revival_evidence.json"
+    loop_path = base_dir / "data" / "narratives" / "revival" / ymd / "revival_loop_flags.json"
+    if evidence_path.exists():
+        try:
+            ev = json.loads(evidence_path.read_text(encoding="utf-8"))
+            loops = {}
+            if loop_path.exists():
+                loops = json.loads(loop_path.read_text(encoding="utf-8"))
+            
+            ctx = ev.get("ops_context", {})
+            loop_vids = loops.get("loop_detected_vids", [])
+            
+            lines.append("")
+            lines.append("## REVIVAL OPS CONTEXT")
+            lines.append(f"- Avg Freshness: {ctx.get('overall_system_freshness_pct', 0)}%")
+            lines.append(f"- SLA Breach Count: {ctx.get('sla_breach_count', 0)}")
+            if loop_vids:
+                lines.append(f"- ⚠️ Cognitive Loop Warning: {len(loop_vids)} items repeating decisions")
+            else:
+                lines.append("- Cognitive Loop Guard: Nominal")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     

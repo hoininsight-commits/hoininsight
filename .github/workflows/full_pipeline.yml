@@ -390,6 +390,10 @@ jobs:
         run: |
           python -m src.narratives.revival_scanner
 
+      - name: Apply Revival Guardrails (Phase 37-B)
+        run: |
+          python -m src.narratives.revival_guard
+
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
@@ -654,6 +658,30 @@ jobs:
           fi
           
           grep -q "Revival Candidates" "$DASH" && echo "[VERIFY][OK] Revival section rendered" || (echo "[VERIFY][FAIL] Revival section missing"; exit 1)
+
+      - name: Verify Phase 37-B Revival Guardrails
+        run: |
+          echo "[VERIFY] Phase 37-B Revival Guardrails Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          EVIDENCE="data/narratives/revival/$YMD/revival_evidence.json"
+          LOOPS="data/narratives/revival/$YMD/revival_loop_flags.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$EVIDENCE" ]; then
+            echo "[VERIFY][OK] revival_evidence.json generated"
+            grep -q "item_evidence" "$EVIDENCE" && echo "[VERIFY][OK] item_evidence present" || (echo "[VERIFY][FAIL] item_evidence missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No revival evidence today (valid state)"
+          fi
+          
+          if [ -f "$LOOPS" ]; then
+            echo "[VERIFY][OK] revival_loop_flags.json generated"
+            grep -q "loop_detected_vids" "$LOOPS" && echo "[VERIFY][OK] loop_detected_vids present" || (echo "[VERIFY][FAIL] loop_detected_vids missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No loop flags today (valid state)"
+          fi
+          
+          grep -q "Ops Evidence Bundle" "$DASH" && echo "[VERIFY][OK] Ops Evidence shown in Dashboard" || (echo "[VERIFY][FAIL] Ops Evidence missing in Dashboard"; exit 1)
 
 
 

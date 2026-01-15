@@ -154,10 +154,21 @@ def generate_dashboard(base_dir: Path):
 
     # [Phase 37] Load Revival Data
     revival_summary = {}
+    revival_evidence = {}
+    revival_loops = {}
     try:
-        revival_path = base_dir / "data/narratives/revival" / ymd.replace("-","/") / "revival_proposals.json"
+        rev_base = base_dir / "data/narratives/revival" / ymd.replace("-","/")
+        revival_path = rev_base / "revival_proposals.json"
         if revival_path.exists():
             revival_summary = json.loads(revival_path.read_text(encoding="utf-8"))
+        
+        evidence_path = rev_base / "revival_evidence.json"
+        if evidence_path.exists():
+            revival_evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+            
+        loop_path = rev_base / "revival_loop_flags.json"
+        if loop_path.exists():
+            revival_loops = json.loads(loop_path.read_text(encoding="utf-8"))
     except: pass
 
     # Engine Outputs Check
@@ -1524,15 +1535,32 @@ def generate_dashboard(base_dir: Path):
             orig_date = item.get("original_decided_at", "")[:10]
             rev_reason = item.get("revival_reason")
             
+            # Phase 37-B: Loop Warning
+            loop_warning = ""
+            if vid in revival_loops.get("loop_detected_vids", []):
+                loop_warning = '<span style="font-size: 8px; font-weight: bold; background: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 2px; margin-left: 5px;">⚠ LOOP_WARNING</span>'
+            
+            # Phase 37-B: Evidence Box
+            item_ev = revival_evidence.get("item_evidence", {}).get(vid, {})
+            evidence_summary = item_ev.get("reason_summary", "Condition met (Ops verified)")
+            
             revival_html += f"""
             <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
                     <div style="font-size: 13px; font-weight: 600; color: #1e293b;">
                         <a href="https://youtu.be/{vid}" target="_blank" style="color: inherit; text-decoration: none;">{vid}</a>
+                        {loop_warning}
                     </div>
                     <span style="font-size: 9px; font-weight: bold; background: #e0e7ff; color: #3730a3; padding: 1px 4px; border-radius: 3px;">{orig_dec} @ {orig_date}</span>
                 </div>
                 <div style="font-size: 11px; color: #64748b; margin-bottom: 5px; font-style: italic;">{rev_reason}</div>
+                
+                <!-- [Phase 37-B] Ops Evidence Bundle -->
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 8px; margin-top: 10px; font-size: 10px; color: #475569;">
+                    <div style="font-weight: bold; margin-bottom: 3px; color: #1e293b;">📋 Ops Evidence Bundle</div>
+                    {evidence_summary}
+                </div>
+
                 <div style="border-top: 1px solid #f1f5f9; padding-top: 8px; margin-top: 8px;">
                     <button onclick="window.open('https://youtu.be/{vid}', '_blank')" style="width: 100%; padding: 4px; font-size: 10px; background: #3b82f6; color: white; border: none; border-radius: 3px; cursor: pointer;">Review & Re-propose</button>
                 </div>
