@@ -7,6 +7,10 @@ on:
     # UTC: 01:30
     - cron: '30 1 * * *'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["full_pipeline"]
+    types:
+      - completed
 
 permissions:
   contents: write
