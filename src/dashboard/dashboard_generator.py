@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import os
+import sys
+import traceback
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
@@ -529,7 +531,12 @@ def generate_dashboard(base_dir: Path):
 
 if __name__ == "__main__":
     try:
-        base_dir = Path(__file__).parent.parent.parent.resolve()
+        # Resolve project root (HoinInsight/)
+        base_dir = Path(__file__).resolve().parent.parent.parent
+        # Add project root to sys.path to allow 'from src.ops...' imports
+        if str(base_dir) not in sys.path:
+            sys.path.append(str(base_dir))
+            
         out_file = generate_dashboard(base_dir)
         print(f"파이프라인 아키텍처 대시보드 생성 완료: {out_file.relative_to(base_dir)}")
     except Exception:
