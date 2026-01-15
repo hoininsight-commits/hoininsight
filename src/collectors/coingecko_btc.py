@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 import json
-import time
 from dataclasses import dataclass
 from datetime import datetime
+import pandas as pd
 from pathlib import Path
-import requests
-from urllib.request import urlopen, Request
-
-from src.utils.retry import with_retry
+import yfinance as yf
+from src.utils.retry import retry
 from src.utils.target_date import get_target_parts
-
-URL = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=true"
 
 @dataclass
 class BTCQuote:
@@ -19,40 +15,50 @@ class BTCQuote:
     price_usd: float
     last_updated_at: int
 
-def _fetch_raw() -> str:
-    req = Request(URL, headers={"User-Agent": "hoin-insight-bot"})
-    with urlopen(req, timeout=30) as resp:
-        return resp.read().decode("utf-8")
-
+@retry(max_attempts=3, base_delay=1.0)
 def fetch_btc_quote() -> BTCQuote:
-    raw = with_retry(_fetch_raw, attempts=3, base_sleep=1.0)
-    j = json.loads(raw)
+    """
+    Fetches the latest BTC-USD data using yfinance.
+    Returns BTCQuote object for compatibility.
+    """
+    ticker = yf.Ticker("BTC-USD")
     
-    if "bitcoin" not in j:
-        raise ValueError(f"CoinGecko response missing 'bitcoin' key: {raw}")
+    # Use explicit dates + 1 day for inclusive 'today' in yfinance
+    end_date = datetime.utcnow() + pd.Timedelta(days=1)
+    # Crypto trades 24/7 so 3 days back is plenty
+    start_date = end_date - pd.Timedelta(days=3)
     
-    btc_data = j["bitcoin"]
+    hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))
     
-    if "usd" not in btc_data:
-        raise ValueError(f"CoinGecko response missing 'usd' price: {raw}")
-
-    price = float(btc_data["usd"])
+    if hist.empty:
+        raise ValueError("yfinance BTC-USD returned empty history")
     
-    # Robustly handle last_updated_at
-    if "last_updated_at" in btc_data:
-        last_updated_at = int(btc_data["last_updated_at"])
-    else:
-        # Fallback to current system time if API doesn't provide it
-        last_updated_at = int(time.time())
-
+    last_row = hist.iloc[-1]
+    
+    # Close price
+    price = float(last_row["Close"])
+    
+    # Timestamp handling
+    # yfinance index is tz-aware usually
+    ts_val = last_row.name
+    # Convert to unix timestamp for last_updated_at compatibility
+    last_updated_at = int(ts_val.timestamp())
+    
     ts_utc = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    
     return BTCQuote(ts_utc=ts_utc, price_usd=price, last_updated_at=last_updated_at)
 
 def write_raw_quote(base_dir: Path) -> Path:
     y, m, d = get_target_parts()
     out_dir = base_dir / "data" / "raw" / "crypto_btc_usd_spot_coingecko" / y / m / d
+    # Maintaining "coingecko" directory name for path compatibility
     out_dir.mkdir(parents=True, exist_ok=True)
-    quote = fetch_btc_quote()
+    
+    try:
+        quote = fetch_btc_quote()
+    except Exception as e:
+         raise ValueError(f"Failed to fetch BTC from yfinance: {e}")
+
     out_path = out_dir / "btc_usd.json"
     out_path.write_text(
         json.dumps(
@@ -60,7 +66,7 @@ def write_raw_quote(base_dir: Path) -> Path:
                 "ts_utc": quote.ts_utc,
                 "price_usd": quote.price_usd,
                 "last_updated_at": quote.last_updated_at,
-                "source": "coingecko",
+                "source": "yfinance", # Updated source name
                 "entity": "BTCUSD",
                 "unit": "USD",
             },

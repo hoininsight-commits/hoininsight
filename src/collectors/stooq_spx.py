@@ -20,9 +20,10 @@ def _fetch_spx_data() -> tuple[str, float]:
     ticker = yf.Ticker("^GSPC")
     
     # Use explicit dates to avoid yfinance internal period calculation errors
-    end_date = datetime.utcnow()
-    # Go back 7 days to cover weekends/holidays safely
-    start_date = end_date - pd.Timedelta(days=7)
+    # yfinance 'end' is exclusive, so we add 1 day to include today's potential data
+    end_date = datetime.utcnow() + pd.Timedelta(days=1)
+    # Go back 10 days to cover weekends/holidays safely
+    start_date = end_date - pd.Timedelta(days=10)
     
     hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))
     

@@ -18,9 +18,11 @@ def _fetch_vix_data() -> tuple[str, float]:
     Returns (obs_date, close_price).
     """
     ticker = yf.Ticker("^VIX")
-    
-    end_date = datetime.utcnow()
-    start_date = end_date - pd.Timedelta(days=7)
+    # Use explicit dates to avoid yfinance internal period calculation errors
+    # yfinance 'end' is exclusive, so we add 1 day to include today's potential data
+    end_date = datetime.utcnow() + pd.Timedelta(days=1)
+    # Go back 10 days to cover weekends/holidays safely
+    start_date = end_date - pd.Timedelta(days=10)
     
     hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))
     
