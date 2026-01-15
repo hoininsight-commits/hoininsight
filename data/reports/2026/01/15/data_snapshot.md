@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-15T07:40:51Z`
+- ts_utc: `2026-01-15T08:01:16Z`
 - ymd_utc: `2026/01/15`
 - enabled_datasets: `16`
 
@@ -8,16 +8,16 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 2 | 2026-01-15T07:32:29Z | 2026-01-15T07:40:39Z | 2 | 2 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/01/15/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 3 | 2026-01-15T07:32:29Z | 2026-01-15T08:01:02Z | 3 | 3 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/01/15/charts/crypto_btc_usd_spot_coingecko.png) |
 | DXY | fx_dxy_index_stooq | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/01/15/charts/fx_dxy_index_stooq.png) |
 | ETHUSD | crypto_eth_usd_spot_coingecko | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/15/charts/crypto_eth_usd_spot_coingecko.png) |
-| KOSPI | index_kospi_stooq | OK | 2 | 2026-01-15T07:32:40Z | 2026-01-15T07:40:49Z | 2 | 2 | 1 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/01/15/charts/index_kospi_stooq.png) |
+| KOSPI | index_kospi_stooq | OK | 3 | 2026-01-15T07:32:40Z | 2026-01-15T08:01:14Z | 3 | 3 | 1 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/01/15/charts/index_kospi_stooq.png) |
 | NASDAQ | index_nasdaq_ndx_stooq | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/01/15/charts/index_nasdaq_ndx_stooq.png) |
 | PLATINUM | metal_platinum_xptusd_stooq | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/metals/platinum.csv | [png](data/reports/2026/01/15/charts/metal_platinum_xptusd_stooq.png) |
-| SPX | index_spx_sp500_stooq | OK | 2 | 2026-01-15T07:32:39Z | 2026-01-15T07:40:49Z | 2 | 2 | 1 | 0 | 0 | data/curated/indices/spx.csv | [png](data/reports/2026/01/15/charts/index_spx_sp500_stooq.png) |
+| SPX | index_spx_sp500_stooq | OK | 3 | 2026-01-15T07:32:39Z | 2026-01-15T08:01:14Z | 3 | 3 | 1 | 0 | 0 | data/curated/indices/spx.csv | [png](data/reports/2026/01/15/charts/index_spx_sp500_stooq.png) |
 | US02Y | rates_us02y_yield_ustreasury | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/rates/us02y.csv | [png](data/reports/2026/01/15/charts/rates_us02y_yield_ustreasury.png) |
-| US10Y | rates_us10y_yield_ustreasury | OK | 2 | 2026-01-15T07:32:30Z | 2026-01-15T07:40:40Z | 2 | 2 | 1 | 0 | 0 | data/curated/rates/us10y.csv | [png](data/reports/2026/01/15/charts/rates_us10y_yield_ustreasury.png) |
-| VIX | risk_vix_index_stooq | OK | 2 | 2026-01-15T07:32:39Z | 2026-01-15T07:40:48Z | 2 | 2 | 1 | 0 | 0 | data/curated/risk/vix.csv | [png](data/reports/2026/01/15/charts/risk_vix_index_stooq.png) |
+| US10Y | rates_us10y_yield_ustreasury | OK | 3 | 2026-01-15T07:32:30Z | 2026-01-15T08:01:03Z | 3 | 3 | 1 | 0 | 0 | data/curated/rates/us10y.csv | [png](data/reports/2026/01/15/charts/rates_us10y_yield_ustreasury.png) |
+| VIX | risk_vix_index_stooq | OK | 3 | 2026-01-15T07:32:39Z | 2026-01-15T08:01:13Z | 3 | 3 | 1 | 0 | 0 | data/curated/risk/vix.csv | [png](data/reports/2026/01/15/charts/risk_vix_index_stooq.png) |
 | WTI | comm_wti_crude_oil_stooq | OK | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/commodities/wti.csv | [png](data/reports/2026/01/15/charts/comm_wti_crude_oil_stooq.png) |
 | BTCxSPX_CORR30D | derived_corr_btc_spx_30d | SKIPPED | 0 | - | - | 0 | 0 | 0 | 1 | 0 | data/curated/derived/corr_btc_spx_30d.csv | - |
 | USDKRW | fx_usdkrw_spot_open_er_api | SKIPPED | 0 | - | - | 0 | 0 | 0 | 1 | 0 | data/curated/fx/usdkrw.csv | - |
