@@ -1,53 +1,57 @@
 from __future__ import annotations
 
-import csv
-import io
 import json
-from datetime import datetime
 from pathlib import Path
-from urllib.request import Request, urlopen
-
+from datetime import datetime
 import pandas as pd
-import requests
-
+import yfinance as yf
 from src.utils.retry import retry
 from src.utils.target_date import get_target_parts
-
-CSV_URL = "https://stooq.com/q/d/l/?s=%5Ekospi&i=d"
 
 def _utc_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 @retry(max_attempts=3, base_delay=1.0)
-def _fetch_csv(url: str) -> str:
-    req = Request(url, headers={"User-Agent": "hoin-insight-bot"})
-    with urlopen(req, timeout=30) as resp:
-        return resp.read().decode("utf-8")
+def _fetch_kospi_data() -> tuple[str, float]:
+    """
+    Fetches the latest KOSPI data using yfinance (^KS11).
+    Returns (obs_date, close_price).
+    """
+    ticker = yf.Ticker("^KS11")
+    
+    end_date = datetime.utcnow()
+    start_date = end_date - pd.Timedelta(days=7)
+    
+    hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))
+    
+    if hist.empty:
+        raise ValueError("yfinance KOSPI (^KS11) returned empty history")
+    
+    last_row = hist.iloc[-1]
+    
+    date_val = last_row.name
+    obs_date = date_val.strftime("%Y-%m-%d")
+    
+    close_val = float(last_row["Close"])
+    
+    return obs_date, close_val
 
 def write_raw_kospi(base_dir: Path) -> Path:
-    source = "stooq.com"
+    source = "yfinance"
     entity = "KOSPI"
     unit = "INDEX"
     ts_utc = _utc_now()
 
     y, m, d = get_target_parts()
     out_dir = base_dir / "data" / "raw" / "index_kospi_stooq" / y / m / d
+    # Preserving directory name "stooq" for compatibility
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "kospi.json"
 
-    csv_text = _fetch_csv(CSV_URL)
-    df = pd.read_csv(io.StringIO(csv_text))
-
-    if "Close" not in df.columns:
-        raise ValueError("stooq kospi CSV missing Close column")
-
-    df = df.dropna(subset=["Close"]).copy()
-    if len(df) == 0:
-        raise ValueError("stooq kospi CSV has no rows")
-
-    last = df.iloc[-1]
-    obs_date = str(last["Date"]) if "Date" in df.columns else ""
-    close = float(last["Close"])
+    try:
+        obs_date, close = _fetch_kospi_data()
+    except Exception as e:
+        raise ValueError(f"Failed to fetch KOSPI from yfinance: {e}")
 
     payload = {
         "ts_utc": ts_utc,
