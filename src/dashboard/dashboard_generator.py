@@ -623,54 +623,54 @@ def generate_dashboard(base_dir: Path):
             for item in q_data:
                 vid = item.get("video_id")
 
-                    status = item.get("status", "PENDING")
-                    
-                    # Skip if already approved for simplicity in this view? 
-                    # User might want to see approved ones too, but let's focus on PENDING for action.
-                    # Or show all with status badge.
-                    
-                    # Load Proposal Content Hint
-                    prop_path = base_dir / item.get("proposal_path", "")
-                    prop_excerpt = "제안 내용을 불러올 수 없습니다."
-                    if prop_path.exists():
-                        # Extract "Proposed Additions" or just first few lines
-                        raw_txt = prop_path.read_text(encoding="utf-8")
-                        # Simple extraction: lines starting with '-'
-                        hints = [line for line in raw_txt.splitlines() if line.strip().startswith("-")][:5]
-                        prop_excerpt = "<br>".join(hints)
-                    
-                    # UI Card
-                    status_color = "#f59e0b" if status == "PENDING" else "#10b981"
-                    
-                    queue_html += f"""
-                    <div class="queue-card" id="card-{vid}">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span style="font-weight:bold; font-size:13px; color:#334155;">ID: {vid}</span>
-                            <span style="font-size:10px; font-weight:bold; color:white; background:{status_color}; padding:2px 6px; border-radius:4px;">{status}</span>
-                        </div>
-                        
-                        <div class="prop-content">
-                            <strong>Note (Extract):</strong><br>
-                            <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
-                        </div>
-                        
-                        <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:{'block' if status=='PENDING' else 'none'};">
-                            <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                            <label><input type="checkbox" id="chk-dcm-{vid}" checked> Data Collection Master</label><br>
-                            <label><input type="checkbox" id="chk-adl-{vid}"> Anomaly Detection Logic</label><br>
-                            <label><input type="checkbox" id="chk-bs-{vid}"> Baseline Signals</label>
-                            
-                            <input type="text" id="note-{vid}" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                            
-                            <button onclick="generateYaml('{vid}')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                                📋 YAML 생성 (복사)
-                            </button>
-                        </div>
+                status = item.get("status", "PENDING")
+                
+                # Skip if already approved for simplicity in this view? 
+                # User might want to see approved ones too, but let's focus on PENDING for action.
+                # Or show all with status badge.
+                
+                # Load Proposal Content Hint
+                prop_path = base_dir / item.get("proposal_path", "")
+                prop_excerpt = "제안 내용을 불러올 수 없습니다."
+                if prop_path.exists():
+                    # Extract "Proposed Additions" or just first few lines
+                    raw_txt = prop_path.read_text(encoding="utf-8")
+                    # Simple extraction: lines starting with '-'
+                    hints = [line for line in raw_txt.splitlines() if line.strip().startswith("-")][:5]
+                    prop_excerpt = "<br>".join(hints)
+                
+                # UI Card
+                status_color = "#f59e0b" if status == "PENDING" else "#10b981"
+                
+                queue_html += f"""
+                <div class="queue-card" id="card-{vid}">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: {vid}</span>
+                        <span style="font-size:10px; font-weight:bold; color:white; background:{status_color}; padding:2px 6px; border-radius:4px;">{status}</span>
                     </div>
-                    """
-                queue_html += "</div>"
-            else:
-                queue_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>대기 중인 제안이 없습니다.</div>"
+                    
+                    <div class="prop-content">
+                        <strong>Note (Extract):</strong><br>
+                        <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
+                    </div>
+                    
+                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:{'block' if status=='PENDING' else 'none'};">
+                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
+                        <label><input type="checkbox" id="chk-dcm-{vid}" checked> Data Collection Master</label><br>
+                        <label><input type="checkbox" id="chk-adl-{vid}"> Anomaly Detection Logic</label><br>
+                        <label><input type="checkbox" id="chk-bs-{vid}"> Baseline Signals</label>
+                        
+                        <input type="text" id="note-{vid}" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
+                        
+                        <button onclick="generateYaml('{vid}')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
+                            📋 YAML 생성 (복사)
+                        </button>
+                    </div>
+                </div>
+                """
+            queue_html += "</div>"
+        else:
+            queue_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>대기 중인 제안이 없습니다.</div>"
     except Exception as e:
         queue_html = f"<div style='color:red; font-size:11px;'>Queue 로드 실패: {e}</div>"
 
