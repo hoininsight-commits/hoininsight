@@ -252,6 +252,26 @@ jobs:
 
           echo "[VERIFY][OK] Core dataset confidence verification passed"
 
+      - name: Run Narrative Watcher (Phase 31-A)
+        run: |
+          python -m src.narratives.youtube_watcher
+          python -m src.narratives.transcript_ingestor
+          python -m src.narratives.narrative_status
+
+      - name: Verify Phase 31-A Narrative Ingestion
+        run: |
+          echo "[VERIFY] Phase 31-A Narrative Ingestion Check"
+
+          YMD=$(date -u +"%Y/%m/%d")
+          STATUS="data/narratives/status/$YMD/collection_status.json"
+
+          if [ ! -f "$STATUS" ]; then
+            echo "[VERIFY][FAIL] Narrative collection status not found"
+            exit 1
+          fi
+
+          echo "[VERIFY][OK] Narrative ingestion status recorded"
+
       - name: Generate Insight Dashboard
         run: |
           python src/dashboard/dashboard_generator.py

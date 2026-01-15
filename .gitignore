@@ -5,8 +5,9 @@ __pycache__/
 
 # data/raw/*
 # data/curated/*
-# data/features/*
-# data/topics/*
+# !data/reports/
+!data/topics/
+!data/narratives/*
 # data/reports/*
 
 data/artifacts/*
