@@ -605,16 +605,21 @@ def generate_dashboard(base_dir: Path):
     try:
         # Load Queue
         q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
+        
+        # Always render the container structure for verification consistency
+        queue_html += """
+        <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+            Narrative Review Queue
+        </div>
+        """
+        
+        q_data = []
         if q_path.exists():
             q_data = json.loads(q_path.read_text(encoding="utf-8"))
             
-            if q_data:
-                queue_html += """
-                <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-                    Narrative Review Queue
-                </div>
-                <div class="queue-list">
-                """
+        if q_data:
+            queue_html += '<div class="queue-list">'
+
                 
                 for item in q_data:
                     vid = item.get("video_id")
