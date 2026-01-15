@@ -2,81 +2,81 @@
   "crypto_btc_usd_spot_coingecko": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/coingecko/2026/01/15/btc_usd.json'",
-    "timestamp": "2026-01-15T05:35:19.906352Z"
+    "timestamp": "2026-01-15T05:43:28.575254Z"
   },
   "fx_usdkrw_spot_open_er_api": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/exchangerate/2026/01/15/usdkrw.json'",
-    "timestamp": "2026-01-15T05:35:19.907291Z"
+    "timestamp": "2026-01-15T05:43:28.576851Z"
   },
   "metal_gold_xauusd_spot_gold_api": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/gold_api/2026/01/15/xau_usd.json'",
-    "timestamp": "2026-01-15T05:35:19.908422Z"
+    "timestamp": "2026-01-15T05:43:28.578224Z"
   },
   "metal_silver_xagusd_spot_gold_api": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/gold_api/2026/01/15/xag_usd.json'",
-    "timestamp": "2026-01-15T05:35:19.909514Z"
+    "timestamp": "2026-01-15T05:43:28.579536Z"
   },
   "rates_us10y_yield_ustreasury": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/ustreasury/2026/01/15/us10y.json'",
-    "timestamp": "2026-01-15T05:35:19.910591Z"
+    "timestamp": "2026-01-15T05:43:28.580683Z"
   },
   "risk_vix_index_stooq": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/vix.json'",
-    "timestamp": "2026-01-15T05:35:19.911640Z"
+    "timestamp": "2026-01-15T05:43:28.581781Z"
   },
   "index_spx_sp500_stooq": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/spx.json'",
-    "timestamp": "2026-01-15T05:35:19.912766Z"
+    "timestamp": "2026-01-15T05:43:28.582982Z"
   },
   "index_kospi_stooq": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/stooq/2026/01/15/kospi.json'",
-    "timestamp": "2026-01-15T05:35:19.913881Z"
+    "timestamp": "2026-01-15T05:43:28.584175Z"
   },
   "derived_corr_btc_spx_30d": {
     "status": "FAIL",
     "reason": "Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/15/corr_btc_spx_30d.json",
-    "timestamp": "2026-01-15T05:35:19.914875Z"
+    "timestamp": "2026-01-15T05:43:28.585299Z"
   },
   "derived_corr_usdkrw_us10y_30d": {
     "status": "FAIL",
     "reason": "Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/15/corr_usdkrw_us10y_30d.json",
-    "timestamp": "2026-01-15T05:35:19.915831Z"
+    "timestamp": "2026-01-15T05:43:28.586387Z"
   },
   "index_nasdaq_ndx_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.919013Z"
+    "timestamp": "2026-01-15T05:43:28.590060Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.920267Z"
+    "timestamp": "2026-01-15T05:43:28.591404Z"
   },
   "rates_us02y_yield_ustreasury": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.921457Z"
+    "timestamp": "2026-01-15T05:43:28.592647Z"
   },
   "comm_wti_crude_oil_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.922642Z"
+    "timestamp": "2026-01-15T05:43:28.593850Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.923797Z"
+    "timestamp": "2026-01-15T05:43:28.595012Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-15T05:35:19.924931Z"
+    "timestamp": "2026-01-15T05:43:28.596145Z"
   }
 }
