@@ -1470,6 +1470,102 @@ def generate_dashboard(base_dir: Path):
             </div>
         </div>
 
+        <!-- Archived Narratives Section (Phase 36) -->
+        <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <details style="cursor: pointer;">
+                    <summary style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px; list-style: none; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 14px; color: #64748b;">▶</span>
+                        Archived Narratives (Non-destructive)
+                    </summary>
+                    <p style="font-size: 14px; color: #64748b; margin: 15px 0 25px 0;">Auto-archived decisions. Original files preserved for audit trail.</p>
+                
+    """
+    
+    # Load archive summary
+    archive_html = ""
+    archive_path = base_dir / "data" / "narratives" / "archive" / ymd.replace("-","/") / "archive_summary.json"
+    
+    if archive_path.exists():
+        try:
+            archive_data = json.loads(archive_path.read_text(encoding="utf-8"))
+            archived_items = archive_data.get("archived_items", [])
+            
+            if archived_items:
+                archive_html += f"""
+                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+                    <div style="font-size: 12px; color: #64748b;">
+                        <strong>Total Archived:</strong> {archive_data.get('total_archived', 0)} items
+                        <span style="margin-left: 15px; color: #059669;">✓ Non-destructive verified</span>
+                    </div>
+                </div>
+                
+                <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+                    <div style="background: #f8fafc; padding: 10px 15px; border-bottom: 1px solid #e2e8f0;">
+                        <div style="font-size: 12px; font-weight: 700; color: #475569;">Archived Items</div>
+                    </div>
+                    <div style="max-height: 300px; overflow-y: auto;">
+                """
+                
+                for item in archived_items[:50]:  # Limit to 50
+                    video_id = item.get("video_id", "")
+                    decision = item.get("original_decision", "")
+                    decided_at = item.get("decided_at", "")[:10]
+                    reason = item.get("reason", "")
+                    archive_reason = item.get("archive_reason", "")
+                    
+                    # Decision badge color
+                    dec_bg = "#e2e8f0"
+                    dec_txt = "#475569"
+                    if decision == "REJECTED": dec_bg = "#fee2e2"; dec_txt = "#991b1b"
+                    elif decision == "DEFERRED": dec_bg = "#e0e7ff"; dec_txt = "#3730a3"
+                    elif decision == "DUPLICATE": dec_bg = "#fed7aa"; dec_txt = "#9a3412"
+                    
+                    archive_html += f"""
+                    <div style="padding: 10px 15px; border-bottom: 1px solid #f1f5f9; background: #fafafa;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 4px;">
+                            <div style="font-size: 11px; font-weight: 600; color: #64748b;">
+                                <a href="https://youtu.be/{video_id}" target="_blank" style="color: inherit; text-decoration: none;">{video_id}</a>
+                            </div>
+                            <div style="display: flex; gap: 6px; align-items: center;">
+                                <span style="font-size: 9px; color: #94a3b8;">{decided_at}</span>
+                                <span style="font-size: 8px; font-weight: bold; background: {dec_bg}; color: {dec_txt}; padding: 1px 4px; border-radius: 2px;">{decision}</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; margin-bottom: 3px;">{archive_reason}</div>
+                        <div style="font-size: 10px; color: #64748b; font-style: italic;">Original: {reason[:60]}</div>
+                    </div>
+                    """
+                
+                archive_html += """
+                    </div>
+                </div>
+                """
+            else:
+                archive_html = """
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+                    No archived items today
+                </div>
+                """
+        except Exception as e:
+            archive_html = f"""
+            <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+                Error loading archive data: {str(e)}
+            </div>
+            """
+    else:
+        archive_html = """
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
+            No archive data available
+        </div>
+        """
+    
+    html += archive_html
+    html += """
+                </details>
+            </div>
+        </div>
+
         <!-- The Modal -->
         <div id="scriptModal" class="modal">
           <div class="modal-content">

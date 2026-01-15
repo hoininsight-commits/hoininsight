@@ -379,6 +379,29 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append("## REJECTION LEDGER SNAPSHOT")
             lines.append("- N/A")
 
+    # [Phase 36] Auto Archive Snapshot
+    archive_path = base_dir / "data" / "narratives" / "archive" / ymd / "archive_summary.json"
+    if archive_path.exists():
+        try:
+            archive_data = json.loads(archive_path.read_text(encoding="utf-8"))
+            total = archive_data.get("total_archived", 0)
+            
+            if total > 0:
+                lines.append("")
+                lines.append("## AUTO ARCHIVE SNAPSHOT")
+                lines.append(f"Total archived today: {total} items (non-destructive)")
+                
+                # Show first archived item
+                archived_items = archive_data.get("archived_items", [])
+                if archived_items:
+                    first = archived_items[0]
+                    video_id = first.get("video_id", "")
+                    decision = first.get("original_decision", "")
+                    archive_reason = first.get("archive_reason", "")
+                    lines.append(f"Example: {video_id} ({decision}) - {archive_reason}")
+        except:
+            pass
+
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     
