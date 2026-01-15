@@ -15,7 +15,7 @@ def _utc_date_parts() -> tuple[str, str, str]:
 
 def raw_path_for_today(base_dir: Path) -> Path:
     y, m, d = _utc_date_parts()
-    return base_dir / "data" / "raw" / "stooq" / y / m / d / "kospi.json"
+    return base_dir / "data" / "raw" / "index_kospi_stooq" / y / m / d / "kospi.json"
 
 def write_curated_kospi_csv(base_dir: Path) -> Path:
     rp = raw_path_for_today(base_dir)

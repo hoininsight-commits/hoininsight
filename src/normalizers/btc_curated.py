@@ -15,7 +15,7 @@ def _utc_date_parts() -> tuple[str, str, str]:
 
 def raw_path_for_today(base_dir: Path) -> Path:
     y, m, d = _utc_date_parts()
-    return base_dir / "data" / "raw" / "coingecko" / y / m / d / "btc_usd.json"
+    return base_dir / "data" / "raw" / "crypto_btc_usd_spot_coingecko" / y / m / d / "btc_usd.json"
 
 def write_curated_csv(base_dir: Path) -> Path:
     rp = raw_path_for_today(base_dir)
