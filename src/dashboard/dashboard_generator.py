@@ -2042,11 +2042,12 @@ def generate_dashboard(base_dir: Path):
 
 if __name__ == "__main__":
     import os
+    from pathlib import Path
     os.makedirs("data/dashboard", exist_ok=True)
     os.makedirs("dashboard", exist_ok=True)
     
     # Pass current directory as base_dir
-    base_dir = os.getcwd()
+    base_dir = Path(os.getcwd())
     html = generate_dashboard(base_dir)
     
     with open("dashboard/index.html", "w") as f:
