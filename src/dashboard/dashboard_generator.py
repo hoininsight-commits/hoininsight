@@ -1098,7 +1098,9 @@ def generate_dashboard(base_dir: Path):
 
     sidebar_html += queue_html
     sidebar_html += applied_html
+
     
+    # [Layout Fix] Re-assembling the HTML with proper Tab Structure
     html = f"""
     <!DOCTYPE html>
     <html lang="ko">
@@ -1107,6 +1109,11 @@ def generate_dashboard(base_dir: Path):
         <title>Hoin Insight 파이프라인</title>
         <style>{css}</style>
         <style>
+            /* Additional Tab Styles */
+            .tab-content {{ display: none; animation: fadeIn 0.3s ease; }}
+            .tab-content.active {{ display: block; }}
+            @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(5px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+            
             .core-health-box {{ display: flex; gap: 15px; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-right: 20px; }}
             .core-item {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; }}
             .core-label {{ font-weight: bold; color: #64748b; }}
@@ -1115,6 +1122,7 @@ def generate_dashboard(base_dir: Path):
             .cv-FAIL {{ color: #dc2626; }}
             .cv-SKIP {{ color: #9ca3af; }}
             .cv-WARMUP {{ color: #ea580c; }}
+            
             .conf-badge {{ padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }}
             .bg-green-100 {{ background-color: #dcfce7; }} .text-green-800 {{ color: #166534; }}
             .bg-yellow-100 {{ background-color: #fef9c3; }} .text-yellow-800 {{ color: #854d0e; }}
@@ -1125,6 +1133,39 @@ def generate_dashboard(base_dir: Path):
             .queue-card {{ background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }}
             .approval-form label {{ display: block; margin-bottom: 2px; cursor: pointer; }}
         </style>
+        <script>
+            function activate(tabId) {{
+                // Hide all tabs
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+                
+                // Deactivate all nav items
+                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                
+                // Show target tab
+                const target = document.getElementById(tabId);
+                if(target) {{
+                    target.classList.add('active');
+                    target.style.display = 'block';
+                }}
+                
+                // Activate nav item
+                const navItem = document.querySelector(`.nav-item[onclick="activate('${{tabId}}')"]`);
+                if(navItem) navItem.classList.add('active');
+                
+                // Scroll to top
+                document.querySelector('.main-panel').scrollTop = 0;
+            }}
+            
+            function toggleAction(id) {{
+                const box = document.getElementById('action-box-' + id);
+                box.style.display = box.style.display === 'none' ? 'block' : 'none';
+            }}
+            
+            function openModal() {{
+                document.getElementById('scriptModal').classList.add('modal-active');
+            }}
+        </script>
     </head>
     <body>
         <div class="top-bar">
@@ -1145,240 +1186,296 @@ def generate_dashboard(base_dir: Path):
             </div>
             
             <div style="display:flex; gap:10px;">
-                <!-- Narrative Badge -->
                 <div class="conf-badge {content_cls}">{content_mode}</div>
                 <div class="conf-badge {status_data['narrative_cls']}">Narrative: {status_data['narrative_label']}</div>
-                 <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
-                 <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
+                <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
+                <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
             </div>
         </div>
-        <!-- Container -->
-    <div class="dashboard-container">
         
-        <!-- LEFT: Navigation Panel (Updated) -->
-        <div class="nav-panel">
-            <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px;">
-                HOIN INSIGHT v1.0
-            </div>
+        <div class="dashboard-container">
             
-            <div class="nav-label">MAIN VIEW</div>
-            <a href="#architecture-diagram" class="nav-item active" onclick="activate(this)">
-                <span class="nav-icon">🟦</span> 아키텍처
-            </a>
-            
-            <div class="nav-label">OPERATIONS</div>
-            <a href="#ops-scoreboard" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📈</span> 운영 지표
-            </a>
-            <a href="#change-effectiveness" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📊</span> 변경 효과
-            </a>
-
-            <div class="nav-label">WORKFLOW</div>
-            <a href="#youtube-inbox" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📺</span> 유튜브 인박스
-            </a>
-            <a href="#narrative-queue" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📝</span> 내러티브 큐
-            </a>
-            <a href="#revival-engine" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">♻️</span> 부활 엔진
-            </a>
-            
-            <div class="nav-label">ARCHIVE / LOGS</div>
-            <a href="#rejection-ledger" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">🚫</span> 거절/보류 리스트
-            </a>
-            <a href="#topic-candidates" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📂</span> 토픽 후보군
-            </a>
-            
-            <div class="nav-label">OUTPUT</div>
-            <a href="#final-decision" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">⚖️</span> 최종 의사결정
-            </a>
-            <a href="#insight-script" class="nav-item" onclick="activate(this)">
-                <span class="nav-icon">📜</span> 인사이트 스크립트
-            </a>
-        </div>
-
-        <!-- CENTER: Main Process Flow -->
-        <div class="main-panel">
-            <div class="sections-wrapper">
+            <!-- LEFT: Navigation Panel -->
+            <div class="nav-panel">
+                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px;">
+                    HOIN INSIGHT v1.0
+                </div>
                 
-                <!-- 1. Architecture Diagram -->
-                <div id="architecture-diagram" class="architecture-diagram">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
-                        <p style="font-size: 13px; color: #64748b;">실시간 데이터 수집 및 분석 흐름도</p>
-                    </div>
-                    
-                    <!-- 1. Scheduler -->
-                    <div class="process-row">
-                        <div class="node-group-label" style="color: #f59e0b;">01. 스케줄 및 트리거</div>
-                        <div class="proc-node node-scheduler">
-                            <div class="proc-icon">⏰</div>
-                            <div class="proc-content">
-                                <div class="proc-title">자동 스케줄러 (축 분할)</div>
-                                <div class="proc-desc">암호화폐(4회), 환율, 시장지수, 백필</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-                    
-                    <!-- 2. Github Actions -->
-                    <div class="process-row">
-                        <div class="node-group-label">02. 오케스트레이션</div>
-                        <div class="proc-node node-github active-node">
-                            <div class="proc-icon">🏗️</div>
-                            <div class="proc-content">
-                                <div class="proc-title">GitHub Actions 파이프라인</div>
-                                <div class="proc-desc">Run ID: {status_data['run_id']}</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-
-                    <!-- 3. Data Intake -->
-                    <div class="process-row" style="gap:20px;">
-                        <div class="node-group-label">03. 데이터 수집</div>
-                        <div class="proc-node node-data">
-                            <div class="proc-icon">📥</div>
-                            <div class="proc-content">
-                                <div class="proc-title">데이터 수집 및 정규화</div>
-                                <div class="proc-desc">원본 수집 → 정제(Curated) CSV</div>
-                            </div>
-                        </div>
-                        <div class="arrow-down"></div>
-                    </div>
-
-                    <!-- 4. Engine Processing -->
-                    <div class="process-row" style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
-                        <div class="node-group-label">04. 엔진 코어</div>
-                        <div class="proc-node node-engine">
-                            <div class="proc-title">피처 빌더</div>
-                        </div>
-                        <div class="proc-node node-engine">
-                            <div class="proc-title">이상치 탐지</div>
-                            <div class="proc-desc">국면: { "감지됨" if regime_exists else "없음" }</div>
-                        </div>
-                        <div class="proc-node node-engine">
-                             <div class="proc-title">토픽 선정</div>
-                             <div class="proc-desc">토픽 {topics_count}개</div>
-                        </div>
-                    </div>
-                    
-                    <!-- 5. Output -->
-                    <div class="process-row">
-                         <div style="position:absolute; left:50%; top:-60px; height:60px; width:2px; background:#cbd5e1; transform:translateX(-50%);"></div>
-                        <div class="node-group-label" style="top:-80px;">05. 배포 및 출력</div>
-                        <!-- Added ID and onclick handler for Modal -->
-                        <div class="proc-node node-output" onclick="openModal()">
-                            <div class="proc-icon">🚀</div>
-                            <div class="proc-content">
-                                <div class="proc-title">콘텐츠 생성</div>
-                                <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">{topic_title}</div>
-                                <div class="proc-sub" style="margin-top:6px;">{ "스크립트 생성 완료 (클릭하여 전체보기)" if script_exists else "대기중" }</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- RIGHT SIDEBAR -->
-            <div class="sidebar">
-                <div class="sidebar-title">
-                    데이터 수집 현황판
-                </div>
-                {sidebar_html}
+                <div class="nav-label">MAIN VIEW</div>
+                <div class="nav-item active" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
-                <div class="footer">
-                    Hoin Engine 자동 생성<br>{ymd}
-                </div>
-            </div>
-        </div>
+                <div class="nav-label">OPERATIONS</div>
+                <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
+                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과</div>
 
+                <div class="nav-label">WORKFLOW</div>
+                <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
+                <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">📝</span> 내러티브 큐</div>
+                <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> 부활 엔진</div>
+                
+                <div class="nav-label">ARCHIVE / LOGS</div>
+                <div class="nav-item" onclick="activate('rejection-ledger')"><span class="nav-icon">🚫</span> 거절/보류 리스트</div>
+                <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> 토픽 후보군</div>
+                
+                <div class="nav-label">OUTPUT</div>
+                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정</div>
+                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트</div>
+            </div>
+
+            <!-- CENTER: Main Process Flow (Tabs) -->
+            <div class="main-panel">
+                <div class="sections-wrapper">
                     
-                    <!-- Right: Current State Summary Card -->
-                    <div class="architecture-summary-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); color: white;">
-                        <h3 style="font-size: 16px; font-weight: 700; margin: 0 0 20px 0; color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
-                            Current System State (Today)
-                        </h3>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <!-- Core Dataset Health -->
-                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CORE DATASETS</div>
-                                <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-                                    {f'🟢 HEALTHY' if all(v == 'OK' for v in core_bd.values() if v != 'SKIP') else ('🟡 PARTIAL' if any(v == 'OK' for v in core_bd.values()) else '🔴 FAIL')}
+                    <!-- TAB 1: Architecture Diagram -->
+                    <div id="architecture-diagram" class="tab-content active" style="display:block;">
+                        <div class="architecture-diagram">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
+                                <p style="font-size: 13px; color: #64748b;">실시간 데이터 수집 및 분석 흐름도</p>
+                            </div>
+                            
+                            <!-- 1. Scheduler -->
+                            <div class="process-row">
+                                <div class="node-group-label" style="color: #f59e0b;">01. 스케줄 및 트리거</div>
+                                <div class="proc-node node-scheduler">
+                                    <div class="proc-icon">⏰</div>
+                                    <div class="proc-content">
+                                        <div class="proc-title">자동 스케줄러 (축 분할)</div>
+                                        <div class="proc-desc">암호화폐(4회), 환율, 시장지수, 백필</div>
+                                    </div>
                                 </div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                    {', '.join([f"{k}:{v}" for k,v in core_bd.items() if v != 'SKIP'][:3])}
+                                <div class="arrow-down"></div>
+                            </div>
+                            
+                            <!-- 2. Github Actions -->
+                            <div class="process-row">
+                                <div class="node-group-label">02. 오케스트레이션</div>
+                                <div class="proc-node node-github active-node">
+                                    <div class="proc-icon">🏗️</div>
+                                    <div class="proc-content">
+                                        <div class="proc-title">GitHub Actions 파이프라인</div>
+                                        <div class="proc-desc">Run ID: {status_data['run_id']}</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-down"></div>
+                            </div>
+
+                            <!-- 3. Data Intake -->
+                            <div class="process-row">
+                                <div class="node-group-label">03. 데이터 수집</div>
+                                <div class="proc-node node-data">
+                                    <div class="proc-icon">📥</div>
+                                    <div class="proc-content">
+                                        <div class="proc-title">데이터 수집 및 정규화</div>
+                                        <div class="proc-desc">원본 수집 → 정제(Curated) CSV</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-down"></div>
+                            </div>
+
+                            <!-- 4. Engine Processing -->
+                            <div class="process-row" style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
+                                <div class="node-group-label">04. 엔진 코어</div>
+                                <div class="proc-node node-engine">
+                                    <div class="proc-title">피처 빌더</div>
+                                </div>
+                                <div class="proc-node node-engine">
+                                    <div class="proc-title">이상치 탐지</div>
+                                    <div class="proc-desc">국면: { "감지됨" if regime_exists else "없음" }</div>
+                                </div>
+                                <div class="proc-node node-engine">
+                                     <div class="proc-title">토픽 선정</div>
+                                     <div class="proc-desc">토픽 {topics_count}개</div>
                                 </div>
                             </div>
                             
-                            <!-- Regime -->
-                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">REGIME</div>
-                                <div style="font-size: 14px; font-weight: 700;">
-                                    {regime_name if regime_name != "Unknown" else "N/A"}
-                                </div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                    {'(Meta-driven)' if meta_count > 0 else '(Driver-based)'}
-                                </div>
-                            </div>
-                            
-                            <!-- Regime Confidence -->
-                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CONFIDENCE</div>
-                                <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-                                    {f'🟢 {conf_level}' if conf_level == 'HIGH' else (f'🟡 {conf_level}' if conf_level == 'MEDIUM' else f'🔴 {conf_level}')}
+                            <!-- 5. Output -->
+                            <div class="process-row">
+                                 <div style="position:absolute; left:50%; top:-60px; height:60px; width:2px; background:#cbd5e1; transform:translateX(-50%);"></div>
+                                <div class="node-group-label" style="top:-80px;">05. 배포 및 출력</div>
+                                <div class="proc-node node-output" onclick="openModal()">
+                                    <div class="proc-icon">🚀</div>
+                                    <div class="proc-content">
+                                        <div class="proc-title">콘텐츠 생성</div>
+                                        <div class="proc-desc" style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">{topic_title}</div>
+                                        <div class="proc-sub" style="margin-top:6px;">{ "스크립트 생성 완료 (클릭하여 전체보기)" if script_exists else "대기중" }</div>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <!-- Content Preset -->
-                            <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                                <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CONTENT PRESET</div>
-                                <div style="font-size: 14px; font-weight: 700;">
-                                    {preset_label if preset_label != "-" else "N/A"}
+                            <div style="text-align:center; padding:20px;">
+                                <a href="assets/architecture.svg" target="_blank">
+                                     <img src="assets/architecture.svg" style="max-width:100%; border-radius:8px;" onerror="this.parentElement.innerHTML='<div style=\'padding:40px; color:#94a3b8; font-size:14px;\'>⚠ architecture.svg/png missing</div>'" />
+                                </a>
+                            </div>
+
+                            <!-- Current System State Summary (Inside Architecture Tab) -->
+                            <div class="architecture-summary-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); color: white; margin-top: 30px;">
+                                <h3 style="font-size: 16px; font-weight: 700; margin: 0 0 20px 0; color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
+                                    Current System State (Today)
+                                </h3>
+                                
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                        <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CORE DATASETS</div>
+                                        <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                                            {f'🟢 HEALTHY' if all(v == 'OK' for v in core_bd.values() if v != 'SKIP') else ('🟡 PARTIAL' if any(v == 'OK' for v in core_bd.values()) else '🔴 FAIL')}
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                        <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">REGIME</div>
+                                        <div style="font-size: 14px; font-weight: 700;">
+                                            {regime_name if regime_name != "Unknown" else "N/A"}
+                                        </div>
+                                        <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
+                                            {'(Meta-driven)' if meta_count > 0 else '(Driver-based)'}
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
+                                        <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">CONFIDENCE</div>
+                                        <div style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                                            {f'🟢 {conf_level}' if conf_level == 'HIGH' else (f'🟡 {conf_level}' if conf_level == 'MEDIUM' else f'🔴 {conf_level}')}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                    Mode: {content_mode}
+                                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px; color: rgba(255,255,255,0.6); text-align: center;">
+                                    Last Updated: {ymd}
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px; color: rgba(255,255,255,0.6); text-align: center;">
-                            Last Updated: {ymd}
+
                         </div>
                     </div>
-                </div>
-                
-                <!-- Mobile Responsive: Stack vertically on small screens -->
-                <style>
-                    @media (max-width: 768px) {{
-                        .architecture-summary-card {{
-                            grid-column: 1 / -1;
-                        }}
-                        div[style*="grid-template-columns: 1fr 350px"] {{
-                            grid-template-columns: 1fr !important;
-                        }}
-                    }}
-                </style>
-            </div>
-        </div>
     """
 
-    # [Phase 38] Final Decision Card UI
-    decision_card_html = ""
+    # [Ops Scoreboard Tab]
+    ops_rows = []
+    if ops_scoreboard:
+        for metric, val in ops_scoreboard.items():
+             if metric == "history": continue 
+             label = metric.replace("_", " ").upper()
+             val_cls = "ops-value"
+             if metric == "reliability_score" and float(str(val).replace("%","")) < 95:
+                 val_cls += " sla-breach"
+             
+             ops_rows.append(f"""
+             <div class="ops-card">
+                 <div class="{val_cls}">{val}</div>
+                 <div class="ops-label">{label}</div>
+             </div>
+             """)
+    
+    html += f"""
+                    <div id="ops-scoreboard" class="tab-content" style="display:none;">
+                        <div style="background: white; border-top: 1px solid #e2e8f0; padding: 40px; border-radius: 8px;">
+                            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📈 운영 성과 지표 (Ops Scoreboard)</h2>
+                            <div class="ops-grid">
+                                {"".join(ops_rows)}
+                            </div>
+                            
+                            <div style="margin-top: 30px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white;">
+                                    <thead style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                        <tr>
+                                            <th style="padding: 10px 15px; text-align: left; color: #64748b;">Date</th>
+                                            <th style="padding: 10px 15px; text-align: left; color: #64748b;">Status</th>
+                                            <th style="padding: 10px 15px; text-align: right; color: #64748b;">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+    """
+    for h in ops_scoreboard.get('history', [])[:7]:
+        st_color = 'background:#dcfce7; color:#166534;' if h.get('status') == 'SUCCESS' else 'background:#fee2e2; color:#991b1b;'
+        html += f"""
+                                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                                            <td style="padding: 10px 15px; color: #1e293b;">{h.get('date')}</td>
+                                            <td style="padding: 10px 15px;">
+                                                <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; {st_color}">
+                                                    {h.get('status')}
+                                                </span>
+                                            </td>
+                                            <td style="padding: 10px 15px; text-align: right; color: #64748b;">{h.get('duration_minutes')}m</td>
+                                        </tr>
+        """
+    html += """
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+    """
+
+    # [Change Effectiveness Tab]
+    html += f"""
+                    <div id="change-effectiveness" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 변경 효과 분석</h2>
+                        {effectiveness_html}
+                    </div>
+    """
+
+    # [YouTube Inbox Tab]
+    html += f"""
+                    <div id="youtube-inbox" class="tab-content" style="display:none;">
+                        <div style="background: white; padding: 40px; border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📺 유튜브 인박스</h2>
+                                <span style="font-size: 12px; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 20px;">
+                                    영상 {len(inbox_items)}개
+                                </span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                                {inbox_html}
+                            </div>
+                        </div>
+                    </div>
+    """
+
+    # [Narrative Queue Tab]
+    html += f"""
+                    <div id="narrative-queue" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📝 내러티브 큐</h2>
+                        {queue_html}
+                    </div>
+    """
+    
+    # [Revival Engine Tab]
+    html += f"""
+                    <div id="revival-engine" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">♻️ 부활 엔진</h2>
+                        {revival_html}
+                    </div>
+    """
+
+    # [Rejection Ledger Tab]
+    html += f"""
+                    <div id="rejection-ledger" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🚫 거절/보류 리스트</h2>
+                        {ledger_html}
+                    </div>
+    """
+
+    # [Topic Candidates Tab]
+    html += f"""
+                    <div id="topic-candidates" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📂 토픽 후보군</h2>
+                        {candidate_html}
+                    </div>
+    """
+    
+    # [Final Decision Tab]
+    # We need to construct decision card html here or reuse it.
+    # The variable `decision_card_html` was built in original code. 
+    # But since we are rewriting, we need to rebuild it or ensure it was built before anchor.
+    # Wait, `decision_card_html` was built AFTER anchor in original code.
+    # So we must rebuild it here.
+    
+    decision_html = ""
     if final_card:
         blocks = final_card.get("blocks", {})
         reg = blocks.get("regime", {})
         rev = blocks.get("revival", {})
         ops = blocks.get("ops", {})
-        
-        # Color coding for status
         reg_col = "#10b981" if reg.get("confidence") > 0.5 else "#f59e0b"
         rev_col = "#3b82f6" if rev.get("has_revival") else "#64748b"
         ops_col = "#10b981" if ops.get("system_freshness", 0) >= 85 and not ops.get("has_stale_warning") else "#ef4444"
@@ -1387,25 +1484,21 @@ def generate_dashboard(base_dir: Path):
         if rev.get("loop_warning_count", 0) > 0:
             loop_warn_html = f'<div style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:4px; font-size:11px; margin-top:5px; font-weight:bold;">⚠ LOOP_WARNING: {rev["loop_warning_count"]} items repeating</div>'
 
-        decision_card_html = (
+        decision_html = (
             "<div style=\"background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);\">\n"
             "    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\">\n"
-            "        \n"
-            "        <!-- Regime Block -->\n"
             "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"
             "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">01. Regime Context</div>\n"
             f"            <div style=\"font-size: 18px; font-weight: 700; color: {reg_col};\">{reg.get('current_regime')}</div>\n"
             f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Confidence: {reg.get('confidence'):.1%} ({reg.get('basis_type')})</div>\n"
             f"            <div style=\"font-size: 12px; color: #64748b; margin-top: 8px;\">Meta Topics: {reg.get('meta_topic_count')} detected</div>\n"
-            "        </div>\n\n"
-            "        <!-- Revival Block -->\n"
+            "        </div>\n"
             "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"
             "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">02. Revival Context</div>\n"
             f"            <div style=\"font-size: 18px; font-weight: 700; color: {rev_col};\">{rev.get('proposal_count')} Candidates</div>\n"
             f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Primary Reason: {rev.get('primary_revival_reason')}</div>\n"
             f"            {loop_warn_html}\n"
-            "        </div>\n\n"
-            "        <!-- Ops Block -->\n"
+            "        </div>\n"
             "        <div style=\"padding: 20px; min-height: 140px;\">\n"
             "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">03. Ops Context</div>\n"
             f"            <div style=\"font-size: 18px; font-weight: 700; color: {ops_col};\">{ops.get('system_freshness', 0)}% Freshness</div>\n"
@@ -1415,8 +1508,6 @@ def generate_dashboard(base_dir: Path):
             "            </div>\n"
             "        </div>\n"
             "    </div>\n"
-            "    \n"
-            "    <!-- Human Prompt Block -->\n"
             "    <div style=\"background: white; border-top: 1px solid #e2e8f0; padding: 25px; text-align: center;\">\n"
             f"        <div style=\"font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 10px;\">\n"
             f"            {final_card.get('human_prompt')}\n"
@@ -1428,611 +1519,74 @@ def generate_dashboard(base_dir: Path):
             "</div>"
         )
     else:
-        decision_card_html = """
-        <div style="background: white; padding: 40px; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8; font-size: 16px;">
-            Final Decision Card를 생성하기 위한 데이터가 충분하지 않습니다.
-        </div>
-        """
-
+        decision_html = "<div style='padding:20px; text-align:center;'>No Data</div>"
+        
     html += f"""
-        <!-- Final Decision Card Section (Phase 38) -->
-        <div id="final-decision" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">⚖️ 최종 의사결정 카드 (Human-in-the-loop)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">엔진의 결론이 아니라, 사람의 판단을 돕기 위한 마지막 설명서입니다.</p>
-                
-                {decision_card_html}
-            </div>
-        </div>
+                    <div id="final-decision" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">⚖️ 최종 의사결정 카드</h2>
+                        {decision_html}
+                    </div>
     """
 
-    # [Phase 36-B] Ops Scoreboard HTML
-    ops_html = ""
-    if ops_scoreboard:
-        # Re-generate rows to ensure updated timestamp or formatting if needed, 
-        # but mainly to wrap in ID and Korean Header
-        rows = []
-        for metric, val in ops_scoreboard.items():
-             if metric == "history": continue # Skip history list for cards
-             label = metric.replace("_", " ").upper()
-             val_cls = "ops-value"
-             if metric == "reliability_score" and float(str(val).replace("%","")) < 95:
-                 val_cls += " sla-breach"
-             
-             rows.append(f"""
-             <div class="ops-card">
-                 <div class="{val_cls}">{val}</div>
-                 <div class="ops-label">{label}</div>
-             </div>
-             """)
-        
-        ops_html = f"""
-        <div id="ops-scoreboard" style="background: white; border-top: 1px solid #e2e8f0; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📈 운영 성과 지표 (Ops Scoreboard)</h2>
-            <div class="ops-grid">
-                {"".join(rows)}
-            </div>
-        </div>
-        """
-    
-    html += ops_html
-
-    # [Phase 35] YouTube Inbox
-    # Header replacement for Inbox done previously, but ensure consistent ID
-    html += """
-        <div id="youtube-inbox" style="background: white; border-top: 1px solid #e2e8f0; padding: 40px; margin-top: 0; border-radius: 8px; margin-bottom: 30px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📺 유튜브 인박스 (최신 영상)</h2>
-                <span style="font-size: 12px; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 20px;">
-                    영상 {count}개
-                </span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
-    """.format(count=len(inbox_items))
-    
-    html += """
-        <!-- Change Effectiveness Section (Phase 34) -->
-        <div id="change-effectiveness" style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">📊 변경 효과 분석 (최근 30일)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">승인된 변경 사항이 파이프라인 지표에 미친 정량적 영향입니다.</p>
-                
-    """
-    
-    # Load effectiveness data
-    effectiveness_html = ""
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
-    effectiveness_path = base_dir / "data" / "narratives" / "effectiveness" / ymd / "effectiveness.json"
-    
-    if effectiveness_path.exists():
-        try:
-            eff_data = json.loads(effectiveness_path.read_text(encoding="utf-8"))
-            events = eff_data.get("events", [])
-            
-            if events:
-                # Show top 3 most recent events
-                top_events = sorted(events, key=lambda x: x["applied_at"], reverse=True)[:3]
-                
-                effectiveness_html += """
-                <div style="display: grid; gap: 20px;">
-                """
-                
-                for event in top_events:
-                    metrics = event.get("metrics", {})
-                    apply_scope = event.get("apply_scope", {})
-                    data_quality = event.get("data_quality", {})
-                    
-                    # Extract key deltas
-                    success_delta = metrics.get("pipeline_reliability", {}).get("delta")
-                    topics_delta = metrics.get("topics_count_avg", {}).get("delta")
-                    conf_delta = metrics.get("confidence_high_share", {}).get("delta")
-                    flip_delta = metrics.get("regime_flip_count", {}).get("delta")
-                    
-                    # Format deltas
-                    success_str = f"{success_delta:+.2f}" if success_delta is not None else "N/A"
-                    topics_str = f"{topics_delta:+.1f}" if topics_delta is not None else "N/A"
-                    conf_str = f"{conf_delta:+.2%}" if conf_delta is not None else "N/A"
-                    flip_str = f"{flip_delta:+d}" if flip_delta is not None else "N/A"
-                    
-                    # Scope summary
-                    scope_items = [k for k, v in apply_scope.items() if v]
-                    scope_str = ", ".join(scope_items) if scope_items else "N/A"
-                    
-                    effectiveness_html += f"""
-                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-                            <div>
-                                <div style="font-size: 14px; font-weight: 700; color: #1e293b;">{event["event_id"]}</div>
-                                <div style="font-size: 12px; color: #64748b; margin-top: 3px;">Applied: {event["applied_at"]}</div>
-                            </div>
-                            <div style="font-size: 10px; color: #94a3b8; text-align: right;">
-                                Pre/Post: {data_quality["pre_days_used"]}d / {data_quality["post_days_used"]}d
-                            </div>
-                        </div>
-                        
-                        <div style="font-size: 11px; color: #64748b; margin-bottom: 12px;">
-                            <strong>Scope:</strong> {scope_str}
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Success Rate Δ</div>
-                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if success_delta and success_delta > 0 else ('#dc2626' if success_delta and success_delta < 0 else '#64748b')};">{success_str}</div>
-                            </div>
-                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Topics Δ</div>
-                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if topics_delta and topics_delta > 0 else ('#dc2626' if topics_delta and topics_delta < 0 else '#64748b')};">{topics_str}</div>
-                            </div>
-                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Conf HIGH Δ</div>
-                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if conf_delta and conf_delta > 0 else ('#dc2626' if conf_delta and conf_delta < 0 else '#64748b')};">{conf_str}</div>
-                            </div>
-                            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 10px; color: #64748b; margin-bottom: 3px;">Regime Flips Δ</div>
-                                <div style="font-size: 14px; font-weight: 700; color: {'#059669' if flip_delta and flip_delta < 0 else ('#dc2626' if flip_delta and flip_delta > 0 else '#64748b')};">{flip_str}</div>
-                            </div>
-                        </div>
-                    </div>
-                    """
-                
-                effectiveness_html += """
-                </div>
-                """
-            else:
-                effectiveness_html = """
-                <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                    No applied events in lookback window
-                </div>
-                """
-        except Exception as e:
-            effectiveness_html = f"""
-            <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                Error loading effectiveness data: {str(e)}
-            </div>
-            """
-    else:
-        effectiveness_html = """
-        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-            No applied events in lookback window
-        </div>
-        """
-    
-    html += effectiveness_html
-    html += """
-            </div>
-        </div>
-
-        <!-- Rejection Ledger Section (Phase 35) -->\n        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Rejection Ledger (Last 90 Days)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Track rejected, deferred, and duplicate proposals to prevent redundant analysis.</p>
-                
-    """
-    
-    # Load ledger summary (already loaded above)
-    ledger_html = ""
-    if ledger_summary and ledger_summary.get("total_entries", 0) > 0:
-        counts = ledger_summary.get("counts_by_decision", {})
-        recent = ledger_summary.get("recent_entries", [])[:20]
-        
-        # Summary counts
-        ledger_html += f"""
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
-            <div style="background: #fee2e2; padding: 15px; border-radius: 8px; text-align: center;">
-                <div style="font-size: 28px; font-weight: 700; color: #991b1b;">{counts.get('REJECTED', 0)}</div>
-                <div style="font-size: 12px; color: #7f1d1d; margin-top: 3px;">REJECTED</div>
-            </div>
-            <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; text-align: center;">
-                <div style="font-size: 28px; font-weight: 700; color: #3730a3;">{counts.get('DEFERRED', 0)}</div>
-                <div style="font-size: 12px; color: #312e81; margin-top: 3px;">DEFERRED</div>
-            </div>
-            <div style="background: #fed7aa; padding: 15px; border-radius: 8px; text-align: center;">
-                <div style="font-size: 28px; font-weight: 700; color: #9a3412;">{counts.get('DUPLICATE', 0)}</div>
-                <div style="font-size: 12px; color: #7c2d12; margin-top: 3px;">DUPLICATE</div>
-            </div>
-        </div>
-        
-        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-            <div style="background: #f8fafc; padding: 10px 15px; border-bottom: 1px solid #e2e8f0;">
-                <div style="font-size: 12px; font-weight: 700; color: #475569;">Recent Decisions</div>
-            </div>
-            <div style="max-height: 400px; overflow-y: auto;">
-        """
-        
-        for entry in recent:
-            decision = entry.get("decision", "UNKNOWN")
-            video_id = entry.get("video_id", "")
-            decided_at = entry.get("decided_at", "")[:10]
-            reason = entry.get("reason", "No reason provided")
-            related = entry.get("related_video_id", "")
-            
-            # Decision badge color
-            dec_bg = "#e2e8f0"
-            dec_txt = "#475569"
-            if decision == "REJECTED": dec_bg = "#fee2e2"; dec_txt = "#991b1b"
-            elif decision == "DEFERRED": dec_bg = "#e0e7ff"; dec_txt = "#3730a3"
-            elif decision == "DUPLICATE": dec_bg = "#fed7aa"; dec_txt = "#9a3412"
-            
-            related_html = ""
-            if decision == "DUPLICATE" and related:
-                related_html = f'<div style="font-size: 10px; color: #64748b; margin-top: 3px;">→ Related: <a href="https://youtu.be/{related}" target="_blank" style="color: #3b82f6;">{related}</a></div>'
-            
-            ledger_html += f"""
-            <div style="padding: 12px 15px; border-bottom: 1px solid #f1f5f9;">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 5px;">
-                    <div style="font-size: 12px; font-weight: 600; color: #1e293b;">
-                        <a href="https://youtu.be/{video_id}" target="_blank" style="color: inherit; text-decoration: none;">{video_id}</a>
-                    </div>
-                    <div style="display: flex; gap: 8px; align-items: center;">
-                        <span style="font-size: 10px; color: #94a3b8;">{decided_at}</span>
-                        <span style="font-size: 9px; font-weight: bold; background: {dec_bg}; color: {dec_txt}; padding: 2px 6px; border-radius: 3px;">{decision}</span>
-                    </div>
-                </div>
-                <div style="font-size: 11px; color: #64748b;">{reason}</div>
-                {related_html}
-            </div>
-            """
-        
-        ledger_html += """
-            </div>
-        </div>
-        """
-    else:
-        ledger_html = """
-        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-            No ledger entries in the last 90 days
-        </div>
-        """
-    
-    html += ledger_html
-    html += """
-            </div>
-        </div>
-
-        <!-- Topic Candidates (Phase 39) -->
-        <div style="background: #f1f5f9; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Topic Candidates (Not Selected)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Anomalies filtered by survival gates. No automatic selection performed.</p>
-    """
-    
-    # Load Candidates
-    candidate_html = ""
-    cand_path = base_dir / "data" / "topics" / "candidates" / ymd / "topic_candidates.json"
-    
-    if cand_path.exists():
-        try:
-            c_data = json.loads(cand_path.read_text(encoding="utf-8"))
-            alive = [c for c in c_data.get("candidates", []) if c["status"] == "CANDIDATE_ALIVE"]
-            others = [c for c in c_data.get("candidates", []) if c["status"] != "CANDIDATE_ALIVE"]
-            
-            if not alive and not others:
-                 candidate_html += "<div style='color:#64748b; font-size:13px;'>No candidates detected today.</div>"
-            
-            # Alive Section
-            if alive:
-                candidate_html += "<h3 style='font-size:14px; color:#0f172a; margin-bottom:10px;'>ALIVE (Passed 3/3 Gates)</h3>"
-                candidate_html += "<div style='display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:15px; margin-bottom:20px;'>"
-                for c in alive:
-                     candidate_html += f"""
-                     <div style="background:white; border:1px solid #22c55e; border-left:4px solid #22c55e; border-radius:6px; padding:15px;">
-                        <div style="font-weight:bold; font-size:14px; color:#15803d; margin-bottom:5px;">{c.get('dataset_id')}</div>
-                        <div style="font-size:11px; color:#475569; margin-bottom:8px;">{c.get('reason')}</div>
-                        <div style="font-size:10px; color:#94a3b8; background:#f0fdf4; padding:4px 8px; border-radius:4px; display:inline-block;">Multi-Axis Confirmed</div>
-                     </div>
-                     """
-                candidate_html += "</div>"
-            
-            # Others Section (Collapsed or simple list)
-            if others:
-                 candidate_html += f"<div style='margin-top:10px; font-size:12px; color:#64748b; cursor:pointer;' onclick=\"document.getElementById('hidden-cands').style.display = document.getElementById('hidden-cands').style.display === 'none' ? 'block' : 'none'\">▼ Show {len(others)} Buffered/Expired Candidates</div>"
-                 candidate_html += "<div id='hidden-cands' style='display:none; margin-top:10px; padding:10px; background:#e2e8f0; border-radius:6px;'>"
-                 for c in others:
-                     status_color = "#f59e0b" if c["status"] == "CANDIDATE_DEFERRED" else "#ef4444"
-                     candidate_html += f"""
-                     <div style="margin-bottom:8px; font-size:12px; color:#475569;">
-                        <span style="font-weight:bold; color:{status_color};">[{c['status'].replace('CANDIDATE_','')}]:</span> {c.get('dataset_id')} 
-                        <span style="color:#94a3b8;">- {c.get('reason')}</span>
-                     </div>
-                     """
-                 candidate_html += "</div>"
-                 
-        except Exception as e:
-            candidate_html += f"<div style='color:red; font-size:11px;'>Candidate Load Error: {e}</div>"
-    else:
-        candidate_html += "<div style='color:#64748b; font-size:13px;'>No candidate data generated today.</div>"
-
-    html += candidate_html
-    html += """
-            </div>
-        </div>
-
-        <!-- Revival Candidates Section (Phase 37) -->
-        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Revival Candidates (Proposal Only)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Engine detected new market context for previously rejected or archived narratives.</p>
-                
-    """
-    
-    revival_html = ""
-    if revival_summary and revival_summary.get("items"):
-        condition_met = revival_summary.get("condition_met", "Market change detected")
-        revival_html += f"""
-        <div style="background: #ecfdf5; border: 1px solid #10b981; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
-            <div style="font-size: 13px; font-weight: 700; color: #065f46;">Conditions Met: {condition_met}</div>
-            <div style="font-size: 11px; color: #047857; margin-top: 2px;">System Freshness: {freshness_summary.get('overall_system_freshness_pct', 'N/A')}% | Manual approval still required.</div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
-        """
-        for item in revival_summary.get("items", []):
-            vid = item.get("video_id")
-            orig_dec = item.get("original_decision")
-            orig_date = item.get("original_decided_at", "")[:10]
-            rev_reason = item.get("revival_reason")
-            
-            # Phase 37-B: Loop Warning
-            loop_warning = ""
-            if vid in revival_loops.get("loop_detected_vids", []):
-                loop_warning = '<span style="font-size: 8px; font-weight: bold; background: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 2px; margin-left: 5px;">⚠ LOOP_WARNING</span>'
-            
-            # Phase 37-B: Evidence Box
-            item_ev = revival_evidence.get("item_evidence", {}).get(vid, {})
-            evidence_summary = item_ev.get("reason_summary", "Condition met (Ops verified)")
-            
-            revival_html += f"""
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
-                    <div style="font-size: 13px; font-weight: 600; color: #1e293b;">
-                        <a href="https://youtu.be/{vid}" target="_blank" style="color: inherit; text-decoration: none;">{vid}</a>
-                        {loop_warning}
-                    </div>
-                    <span style="font-size: 9px; font-weight: bold; background: #e0e7ff; color: #3730a3; padding: 1px 4px; border-radius: 3px;">{orig_dec} @ {orig_date}</span>
-                </div>
-                <div style="font-size: 11px; color: #64748b; margin-bottom: 5px; font-style: italic;">{rev_reason}</div>
-                
-                <!-- [Phase 37-B] Ops Evidence Bundle -->
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 8px; margin-top: 10px; font-size: 10px; color: #475569;">
-                    <div style="font-weight: bold; margin-bottom: 3px; color: #1e293b;">📋 Ops Evidence Bundle</div>
-                    {evidence_summary}
-                </div>
-
-                <div style="border-top: 1px solid #f1f5f9; padding-top: 8px; margin-top: 8px;">
-                    <button onclick="window.open('https://youtu.be/{vid}', '_blank')" style="width: 100%; padding: 4px; font-size: 10px; background: #3b82f6; color: white; border: none; border-radius: 3px; cursor: pointer;">Review & Re-propose</button>
-                </div>
-            </div>
-            """
-        revival_html += "</div>"
-    else:
-        revival_html = """
-        <div style="background: #f8fafc; padding: 30px; border-radius: 8px; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8; font-size: 14px;">
-            No revival candidates proposed today.
-        </div>
-        """
-    
-    html += revival_html
-    html += """
-            </div>
-        </div>
-
-        <!-- Archived Narratives Section (Phase 36) -->
-        <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <details style="cursor: pointer;">
-                    <summary style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px; list-style: none; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 14px; color: #64748b;">▶</span>
-                        Archived Narratives (Non-destructive)
-                    </summary>
-                    <p style="font-size: 14px; color: #64748b; margin: 15px 0 25px 0;">Auto-archived decisions. Original files preserved for audit trail.</p>
-                
-    """
-    
-    # Load archive summary
-    archive_html = ""
-    archive_path = base_dir / "data" / "narratives" / "archive" / ymd.replace("-","/") / "archive_summary.json"
-    
-    if archive_path.exists():
-        try:
-            archive_data = json.loads(archive_path.read_text(encoding="utf-8"))
-            archived_items = archive_data.get("archived_items", [])
-            
-            if archived_items:
-                archive_html += f"""
-                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
-                    <div style="font-size: 12px; color: #64748b;">
-                        <strong>Total Archived:</strong> {archive_data.get('total_archived', 0)} items
-                        <span style="margin-left: 15px; color: #059669;">✓ Non-destructive verified</span>
-                    </div>
-                </div>
-                
-                <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-                    <div style="background: #f8fafc; padding: 10px 15px; border-bottom: 1px solid #e2e8f0;">
-                        <div style="font-size: 12px; font-weight: 700; color: #475569;">Archived Items</div>
-                    </div>
-                    <div style="max-height: 300px; overflow-y: auto;">
-                """
-                
-                for item in archived_items[:50]:  # Limit to 50
-                    video_id = item.get("video_id", "")
-                    decision = item.get("original_decision", "")
-                    decided_at = item.get("decided_at", "")[:10]
-                    reason = item.get("reason", "")
-                    archive_reason = item.get("archive_reason", "")
-                    
-                    # Decision badge color
-                    dec_bg = "#e2e8f0"
-                    dec_txt = "#475569"
-                    if decision == "REJECTED": dec_bg = "#fee2e2"; dec_txt = "#991b1b"
-                    elif decision == "DEFERRED": dec_bg = "#e0e7ff"; dec_txt = "#3730a3"
-                    elif decision == "DUPLICATE": dec_bg = "#fed7aa"; dec_txt = "#9a3412"
-                    
-                    archive_html += f"""
-                    <div style="padding: 10px 15px; border-bottom: 1px solid #f1f5f9; background: #fafafa;">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 4px;">
-                            <div style="font-size: 11px; font-weight: 600; color: #64748b;">
-                                <a href="https://youtu.be/{video_id}" target="_blank" style="color: inherit; text-decoration: none;">{video_id}</a>
-                            </div>
-                            <div style="display: flex; gap: 6px; align-items: center;">
-                                <span style="font-size: 9px; color: #94a3b8;">{decided_at}</span>
-                                <span style="font-size: 8px; font-weight: bold; background: {dec_bg}; color: {dec_txt}; padding: 1px 4px; border-radius: 2px;">{decision}</span>
-                            </div>
-                        </div>
-                        <div style="font-size: 10px; color: #94a3b8; margin-bottom: 3px;">{archive_reason}</div>
-                        <div style="font-size: 10px; color: #64748b; font-style: italic;">Original: {reason[:60]}</div>
-                    </div>
-                    """
-                
-                archive_html += """
-                    </div>
-                </div>
-                """
-            else:
-                archive_html = """
-                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                    No archived items today
-                </div>
-                """
-        except Exception as e:
-            archive_html = f"""
-            <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                Error loading archive data: {str(e)}
-            </div>
-            """
-    else:
-        archive_html = """
-        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-            No archive data available
-        </div>
-        """
-    html += archive_html
+    # [Archive & Script Tabs]
     html += f"""
-                </details>
-            </div>
-        </div>
-
-        <!-- [Phase 36-B] Infrastructure Health & Data Freshness -->
-        <div class="ops-section">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">Infrastructure Health & Data Freshness</h2>
-                
-                <div class="ops-grid">
-                    <!-- System Freshness Card -->
-                    <div class="ops-card">
-                        <div class="ops-value" style="color: #10b981;">{freshness_summary.get('overall_system_freshness_pct', 'N/A')}%</div>
-                        <div class="ops-label">Overall System Freshness</div>
-                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Latest: {freshness_summary.get('latest_updated_axis', 'N/A')}</div>
+                    <div id="archive-list" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🗄 아카이브</h2>
+                        {archive_html}
                     </div>
-
-                    <!-- SLA Status Card -->
-                    <div class="ops-card" style="{ 'border-color: #fecaca; background: #fffafb;' if freshness_summary.get('sla_breach_count', 0) > 0 else '' }">
-                        <div class="ops-value { 'sla-breach' if freshness_summary.get('sla_breach_count', 0) > 0 else '' }">
-                            {freshness_summary.get('sla_breach_count', 0)}
-                        </div>
-                        <div class="ops-label">SLA Breaches (>6h)</div>
-                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">
-                            {', '.join(freshness_summary.get('sla_breach_axes', [])) or 'All systems nominal'}
-                        </div>
-                    </div>
-
-                    <!-- Pipeline Performance (Scoreboard) -->
-                    <div class="ops-card">
-                        <div class="ops-value">{ops_scoreboard.get('success_count', 0)} / {len(ops_scoreboard.get('history', [])) if ops_scoreboard.get('history') else 0}</div>
-                        <div class="ops-label">7D Pipeline Success Rate</div>
-                        <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Avg Duration: {ops_scoreboard.get('avg_duration_minutes', 'N/A')}m</div>
-                    </div>
-                </div>
-
-                <!-- Ops History Table -->
-                <div style="margin-top: 30px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white;">
-                        <thead style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
-                            <tr>
-                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Date</th>
-                                <th style="padding: 10px 15px; text-align: left; color: #64748b;">Status</th>
-                                <th style="padding: 10px 15px; text-align: right; color: #64748b;">Duration</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-    """
-    
-    for h in ops_scoreboard.get('history', [])[:7]:
-        st_color = 'background:#dcfce7; color:#166534;' if h.get('status') == 'SUCCESS' else 'background:#fee2e2; color:#991b1b;'
-        html += f"""
-                            <tr style="border-bottom: 1px solid #f1f5f9;">
-                                <td style="padding: 10px 15px; color: #1e293b;">{h.get('date')}</td>
-                                <td style="padding: 10px 15px;">
-                                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; {st_color}">
-                                        {h.get('status')}
-                                    </span>
-                                </td>
-                                <td style="padding: 10px 15px; text-align: right; color: #64748b;">{h.get('duration_minutes')}m</td>
-                            </tr>
-        """
-
-    html += """
-                        </tbody>
-                    </table>
-                </div>
-    """
-
-    html += f"""
-        <!-- Insight Script Section -->
-        <div id="insight-script" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
-                    <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
-                </div>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고(v1.0)입니다.</p>
-                
-                <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; font-family:'Inter',sans-serif; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
+                    
+                    <div id="insight-script" class="tab-content" style="display:none;">
+                        <div style="max-width: 1100px; margin: 0 auto;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
+                                <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
+                            </div>
+                            <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
 {script_body if script_body else "스크립트가 아직 생성되지 않았습니다."}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> <!-- End sections wrapper -->
+            </div> <!-- End Main Panel -->
+            
+            <!-- RIGHT SIDEBAR (Correct Placement) -->
+            <div class="sidebar">
+                <div class="sidebar-title">
+                    데이터 수집 현황판
+                </div>
+                {sidebar_html}
+                <div class="footer">
+                    Hoin Engine 자동 생성<br>{ymd}
                 </div>
             </div>
-        </div>
-    """
-
-    html += """
-                <div style="height: 50px;"></div>
-            </div> <!-- End sections-wrapper -->
-        </div> <!-- End Main Panel -->
-
-        <!-- Right Sidebar -->
-        <div class="sidebar">
-            <div class="section-header" style="border:none; margin-bottom:10px;">
-                <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
-            </div>
             
-            <div id="sidebar-content">
-                <!-- Dynamic Content injected here -->
+        </div> <!-- End Dashboard Container -->
+        
+        <!-- MODAL -->
+        <div id="scriptModal" class="modal">
+            <div class="modal-box">
+                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                     <h2 style="margin:0;">Insight Script</h2>
+                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+                 </div>
+                 <p id="script-modal-content">Script content here...</p>
             </div>
         </div>
-
-    </div>
-
-    <!-- MODAL -->
-    <div id="scriptModal" class="modal">
-        <div class="modal-box">
-             <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                 <h2 style="margin:0;">Insight Script</h2>
-                 <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
-             </div>
-             <p id="script-modal-content">Script content here...</p>
-        </div>
-    </div>
+        
+        <script>
+            function closeModal() {{
+                document.getElementById('scriptModal').classList.remove('modal-active');
+            }}
+            function copyScript() {{
+                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
+                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+            }}
+        </script>
+    </body>
+    </html>
+    """
     
-    <script>
-        function closeModal() {
-            document.getElementById('scriptModal').classList.remove('modal-active');
-        }
-        function copyScript() {
-            const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
-            navigator.clipboard.writeText(text).then(() => alert('Copied!'));
-        }
-    </script>
-</body>
-</html>
-"""
     return html
 
 if __name__ == "__main__":
