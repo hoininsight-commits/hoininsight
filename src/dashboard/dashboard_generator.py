@@ -1298,8 +1298,12 @@ def generate_dashboard(base_dir: Path):
                 </div>
             </div>
         </div>
-                                 onerror="this.parentElement.innerHTML='<div style=\\'padding:40px; color:#94a3b8; font-size:14px;\\'>⚠ architecture.svg/png missing</div>'">
+                    <div style="text-align:center; padding:20px;">
+                        <a href="assets/architecture.svg" target="_blank">
+                             <img src="assets/architecture.svg" style="max-width:100%; border-radius:8px;" onerror="this.parentElement.innerHTML='<div style=\'padding:40px; color:#94a3b8; font-size:14px;\'>⚠ architecture.svg/png missing</div>'" />
                         </a>
+                    </div>
+                </div>
                         <div style="margin-top: 10px; font-size: 11px; color: #94a3b8; text-align: center;">
                             <a href="assets/architecture.svg" target="_blank" style="color: #3b82f6; text-decoration: none;">View full diagram →</a>
                         </div>
