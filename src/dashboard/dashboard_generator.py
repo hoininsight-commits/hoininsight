@@ -303,11 +303,23 @@ def generate_dashboard(base_dir: Path):
     .sla-breach { color: #ef4444; font-weight: 700; }
     
     /* Layout */
-    .dashboard-container { display: grid; grid-template-columns: 1fr 380px; height: calc(100vh - 60px); }
+    .dashboard-container { display: grid; grid-template-columns: 220px 1fr 340px; height: calc(100vh - 60px); }
     
-    /* LEFT: Main Process Flow */
-    .main-panel { padding: 40px; overflow-y: auto; background: #f8fafc; display: flex; justify-content: center; }
-    .architecture-diagram { display: flex; flex-direction: column; gap: 60px; max-width: 800px; width: 100%; position: relative; }
+    /* LEFT: Navigation Panel */
+    .nav-panel { background: white; border-right: 1px solid #e2e8f0; padding: 20px; display: flex; flex-direction: column; gap: 5px; }
+    .nav-category { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-top: 15px; margin-bottom: 5px; padding-left: 10px; }
+    .nav-item { 
+        padding: 10px 15px; border-radius: 6px; color: #475569; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: background 0.15s; 
+    }
+    .nav-item:hover { background: #f1f5f9; color: #1e293b; }
+    .nav-item.active { background: #eff6ff; color: #3b82f6; font-weight: 600; }
+    
+    /* CENTER: Main Process Flow */
+    .main-panel { padding: 40px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    /* Sections Container */
+    .sections-wrapper { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 40px; padding-bottom: 60px; }
+    
+    .architecture-diagram { display: flex; flex-direction: column; gap: 60px; width: 100%; position: relative; scroll-margin-top: 20px; }
     
     /* Process Rows */
     .process-row { display: flex; justify-content: space-between; gap: 40px; position: relative; }
@@ -999,15 +1011,36 @@ def generate_dashboard(base_dir: Path):
                  <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
             </div>
         </div>
+        <!-- Container -->
+    <div class="dashboard-container">
         
-        <div class="dashboard-container">
-            <!-- MAIN FLOW -->
-            <div class="main-panel">
-                <div class="architecture-diagram">
+        <!-- LEFT: Navigation Panel -->
+        <div class="nav-panel">
+            <div style="font-size: 12px; font-weight: 700; color: #1e293b; padding: 10px 15px;">DASHBOARD MENU</div>
+            
+            <div class="nav-category">VIEW</div>
+            <a href="#architecture-diagram" class="nav-item active">🟦 파이프라인 아키텍처</a>
+            <a href="#ops-scoreboard" class="nav-item">📈 운영 지표 (Ops)</a>
+            <a href="#youtube-inbox" class="nav-item">📺 유튜브 인박스</a>
+            <a href="#narrative-queue" class="nav-item">📝 내러티브 큐</a>
+            <a href="#revival-engine" class="nav-item">♻️ 부활 엔진</a>
+            <a href="#final-decision" class="nav-item">⚖️ 최종 의사결정</a>
+        </div>
+
+        <!-- CENTER: Main Process Flow -->
+        <div class="main-panel">
+            <div class="sections-wrapper">
+                
+                <!-- 1. Architecture Diagram -->
+                <div id="architecture-diagram" class="architecture-diagram">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
+                        <p style="font-size: 13px; color: #64748b;">실시간 데이터 수집 및 분석 흐름도</p>
+                    </div>
                     
                     <!-- 1. Scheduler -->
                     <div class="process-row">
-                        <div class="node-group-label">01. 스케줄 및 트리거</div>
+                        <div class="node-group-label" style="color: #f59e0b;">01. 스케줄 및 트리거</div>
                         <div class="proc-node node-scheduler">
                             <div class="proc-icon">⏰</div>
                             <div class="proc-content">
@@ -1090,20 +1123,6 @@ def generate_dashboard(base_dir: Path):
                 </div>
             </div>
         </div>
-
-        <!-- Architecture Section -->
-        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Architecture</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">End-to-end pipeline from ingestion to approval-driven learning.</p>
-                
-                <!-- 2-Column Grid: Diagram + Summary Card -->
-                <div style="display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start;">
-                    <!-- Left: Architecture Diagram -->
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <a href="assets/architecture.svg" target="_blank" style="display: inline-block; text-decoration: none; width: 100%;">
-                            <img src="assets/architecture.png" alt="Hoin Insight Architecture Diagram" 
-                                 style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"
                                  onerror="this.parentElement.innerHTML='<div style=\\'padding:40px; color:#94a3b8; font-size:14px;\\'>⚠ architecture.svg/png missing</div>'">
                         </a>
                         <div style="margin-top: 10px; font-size: 11px; color: #94a3b8; text-align: center;">
@@ -1247,9 +1266,9 @@ def generate_dashboard(base_dir: Path):
 
     html += f"""
         <!-- Final Decision Card Section (Phase 38) -->
-        <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+        <div id="final-decision" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
             <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Final Decision Card (Human-in-the-loop)</h2>
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">⚖️ 최종 의사결정 카드 (Human-in-the-loop)</h2>
                 <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">엔진의 결론이 아니라, 사람의 판단을 돕기 위한 마지막 설명서입니다.</p>
                 
                 {decision_card_html}
@@ -1257,12 +1276,56 @@ def generate_dashboard(base_dir: Path):
         </div>
     """
 
+    # [Phase 36-B] Ops Scoreboard HTML
+    ops_html = ""
+    if ops_scoreboard:
+        # Re-generate rows to ensure updated timestamp or formatting if needed, 
+        # but mainly to wrap in ID and Korean Header
+        rows = []
+        for metric, val in ops_scoreboard.items():
+             if metric == "history": continue # Skip history list for cards
+             label = metric.replace("_", " ").upper()
+             val_cls = "ops-value"
+             if metric == "reliability_score" and float(str(val).replace("%","")) < 95:
+                 val_cls += " sla-breach"
+             
+             rows.append(f"""
+             <div class="ops-card">
+                 <div class="{val_cls}">{val}</div>
+                 <div class="ops-label">{label}</div>
+             </div>
+             """)
+        
+        ops_html = f"""
+        <div id="ops-scoreboard" style="background: white; border-top: 1px solid #e2e8f0; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📈 운영 성과 지표 (Ops Scoreboard)</h2>
+            <div class="ops-grid">
+                {"".join(rows)}
+            </div>
+        </div>
+        """
+    
+    html += ops_html
+
+    # [Phase 35] YouTube Inbox
+    # Header replacement for Inbox done previously, but ensure consistent ID
+    html += """
+        <div id="youtube-inbox" style="background: white; border-top: 1px solid #e2e8f0; padding: 40px; margin-top: 0; border-radius: 8px; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📺 유튜브 인박스 (최신 영상)</h2>
+                <span style="font-size: 12px; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 20px;">
+                    영상 {count}개
+                </span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+    """.format(count=len(inbox_items))
+    
     html += """
         <!-- Change Effectiveness Section (Phase 34) -->
-        <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+        <div id="change-effectiveness" style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
             <div style="max-width: 1100px; margin: 0 auto;">
-                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Change Effectiveness (Last 30 Days)</h2>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Quantitative impact of approved changes on pipeline metrics.</p>
+                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">📊 변경 효과 분석 (최근 30일)</h2>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">승인된 변경 사항이 파이프라인 지표에 미친 정량적 영향입니다.</p>
                 
     """
     
@@ -1740,11 +1803,31 @@ def generate_dashboard(base_dir: Path):
                         </tbody>
                     </table>
                 </div>
+    html += f"""
+        <!-- Insight Script Section -->
+        <div id="insight-script" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
+                    <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
+                </div>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고입니다.</p>
+                
+                <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; font-family:'Inter',sans-serif; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
+{script_body if script_body else "스크립트가 아직 생성되지 않았습니다."}
+                </div>
             </div>
         </div>
+    """
 
-        <!-- The Modal -->
-        <div id="scriptModal" class="modal">
+    html += """
+                <div style="height: 50px;"></div>
+            </div> <!-- End sections-wrapper -->
+        </div> <!-- End main-panel -->
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="sidebar">
+    """
           <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="modal-header">{topic_title}</div>
@@ -1777,22 +1860,8 @@ def generate_dashboard(base_dir: Path):
             copyYaml(videoId, dcm, adl, bs, note);
         }}
         
-        function toggleAction(videoId) {{
+        function toggleAction(videoId) {
             var box = document.getElementById('action-box-' + videoId);
-            if (box.style.display === "none") {{
-                box.style.display = "block";
-            }} else {{
-                box.style.display = "none";
-            }}
-        }}
-        
-        function generateInboxYaml(videoId) {{
-            const dcm = document.getElementById('ib-dcm-' + videoId).checked;
-            const adl = document.getElementById('ib-adl-' + videoId).checked;
-            const bs = document.getElementById('ib-bs-' + videoId).checked;
-            const note = document.getElementById('ib-note-' + videoId).value;
-            
-            copyYaml(videoId, dcm, adl, bs, note);
         }}
         
         function copyYaml(videoId, dcm, adl, bs, note) {{
