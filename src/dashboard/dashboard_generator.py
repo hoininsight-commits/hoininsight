@@ -579,59 +579,43 @@ def generate_dashboard(base_dir: Path):
                                 status = "PROPOSED"
                                 
                             # Check APPROVED
-                            # We need to search approvals fairly broadly or just in likely places
-                            # For simplicity, check TODAY and Scan Date
                             appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
                             appr_path_2 = base_dir / "data/narratives/approvals" / ymd.replace("-","/") / f"approve_{vid}.yml"
                             if appr_path_1.exists() or appr_path_2.exists():
                                 status = "APPROVED"
+                                
+                            # Check APPLIED
+                            if vid in applied_today_vids:
+                                status = "APPLIED"
                             
-                        # Check APPLIED
-                        if vid in applied_today_vids:
-                            status = "APPLIED"
-                        
-                        # Check SKIP (if title indicates no interesting content? Engine logic determines this usually)
-                        # For inbox, we just show what we have. 
-                        # If proposal exists but is empty? 
-                        # If narrative_analyzer skipped it, proposal might not exist.
-                        # So NEW -> No Proposal might mean Skipped by Analyzer (Low Confidence)?
-                        # Re-read narrative_analyzer.py: if no strong signals, it might not generate proposal file or generated empty one?
-                        # It generates proposal if "candidates" found.
-                        
-                        # Let's just use these states.
-                        
-                        # Needs Action?
-                        needs_action = status in ["NEW", "PROPOSED", "APPROVED"] # Approved but not Applied yet? 
-                        # If STATUS=APPROVED, we wait for Pipeline to Apply. Action is 'Wait' or 'Run Pipeline'.
-                        # But technically user action is done.
-                        # Let's say Needs Action = NEW or PROPOSED.
-                        needs_action = status in ["NEW", "PROPOSED"]
-                        
-                        # [Phase 35] Check Ledger Decision
-                        ledger_decision = None
-                        ledger_reason = None
-                        if vid in ledger_map:
-                            ledger_entry = ledger_map[vid]
-                            ledger_decision = ledger_entry.get("decision")
-                            ledger_reason = ledger_entry.get("reason", "")
-                            # Override status if decisioned
-                            if ledger_decision:
-                                status = ledger_decision
-                                needs_action = False  # No action needed if decisioned
-                        
-                        item = {
-                            "video_id": vid,
-                            "title": md.get("title", "No Title"),
-                            "published_at": md.get("published_at", ""),
-                            "url": f"https://youtu.be/{vid}",
-                            "status": status,
-                            "needs_action": needs_action,
-                            "prop_path": prop_path,
-                            "ledger_decision": ledger_decision,
-                            "ledger_reason": ledger_reason
-                        }
-                        inbox_items.append(item)
-                    except: pass
+                            # [Phase 35] Check Ledger Decision
+                            ledger_decision = None
+                            ledger_reason = None
+                            if vid in ledger_map:
+                                ledger_entry = ledger_map[vid]
+                                ledger_decision = ledger_entry.get("decision")
+                                ledger_reason = ledger_entry.get("reason", "")
+                                # Override status if decisioned
+                                if ledger_decision:
+                                    status = ledger_decision
+                                    needs_action = False  # No action needed if decisioned
+                            
+                            # Needs Action?
+                            needs_action = status in ["NEW", "PROPOSED"]
+                            
+                            item = {
+                                "video_id": vid,
+                                "title": md.get("title", "No Title"),
+                                "published_at": md.get("published_at", ""),
+                                "url": f"https://youtu.be/{vid}",
+                                "status": status,
+                                "needs_action": needs_action,
+                                "prop_path": prop_path,
+                                "ledger_decision": ledger_decision,
+                                "ledger_reason": ledger_reason
+                            }
+                            inbox_items.append(item)
+                        except: pass
         
         # Sort by published (desc) ideally, or just collection time
         # Metadata doesn't strictly have collection time, uses published_at
