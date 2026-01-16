@@ -1979,6 +1979,7 @@ def generate_dashboard(base_dir: Path):
                     </table>
                 </div>
     """
+    """
     
     html += f"""
         <!-- Insight Script Section -->
@@ -1988,7 +1989,7 @@ def generate_dashboard(base_dir: Path):
                     <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
                     <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
                 </div>
-                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고입니다.</p>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고(v1.0)입니다.</p>
                 
                 <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; font-family:'Inter',sans-serif; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
 {script_body if script_body else "스크립트가 아직 생성되지 않았습니다."}
@@ -1998,128 +1999,62 @@ def generate_dashboard(base_dir: Path):
     """
 
     html += """
-                <div style="height: 50px;"></div>
-            </div> <!-- End sections-wrapper -->
-        </div> <!-- End main-panel -->
+        <div style="height: 50px;"></div>
+        </div> <!-- End sections-wrapper -->
+    </div> <!-- End Main Panel -->
 
-        <!-- RIGHT SIDEBAR -->
-        <div class="sidebar">
-    """
-          <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">{topic_title}</div>
-            <div class="modal-body">
-{script_body}
-            </div>
-          </div>
+    <!-- Right Sidebar -->
+    <div class="sidebar">
+        <div class="section-header" style="border:none; margin-bottom:10px;">
+            <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
         </div>
-
-        <script>
-        var modal = document.getElementById("scriptModal");
-        function openModal() {{
-          modal.style.display = "block";
-        }}
-        function closeModal() {{
-          modal.style.display = "none";
-        }}
-        window.onclick = function(event) {{
-          if (event.target == modal) {{
-            modal.style.display = "none";
-          }}
-        }}
-
-        function generateYaml(videoId) {{
-            const dcm = document.getElementById('chk-dcm-' + videoId).checked;
-            const adl = document.getElementById('chk-adl-' + videoId).checked;
-            const bs = document.getElementById('chk-bs-' + videoId).checked;
-            const note = document.getElementById('note-' + videoId).value;
-            
-            copyYaml(videoId, dcm, adl, bs, note);
-        }}
         
-        function toggleAction(videoId) {
-            var box = document.getElementById('action-box-' + videoId);
-        }}
-        
-        function copyYaml(videoId, dcm, adl, bs, note) {
-            // ... (copyYaml logic) ...
-            const yaml = `video_id: ${videoId}\n...`; // Simplified for brevity as it was already there
-            // The original function body is assumed to be preserved if I don't touch it. 
-            // But since I'm appending new JS, let's just add the new logic at the end.
-        }
+        <div id="sidebar-content">
+            <!-- Dynamic Content injected here -->
+        </div>
+    </div>
 
-        // Active State Logic
-        function activate(el) {
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            el.classList.add('active');
-        }
+</div>
 
-        // Scroll Spy
-        document.addEventListener('DOMContentLoaded', () => {
-             const sections = document.querySelectorAll('.sections-wrapper > div[id]');
-             const navItems = document.querySelectorAll('.nav-item');
-             
-             const options = { threshold: 0.3 };
-             const observer = new IntersectionObserver((entries) => {
-                 entries.forEach(entry => {
-                     if (entry.isIntersecting) {
-                         const id = entry.target.getAttribute('id');
-                         navItems.forEach(nav => {
-                             nav.classList.remove('active');
-                             if (nav.getAttribute('href') === '#' + id) {
-                                 nav.classList.add('active');
-                             }
-                         });
-                     }
-                 });
-             }, options);
-             
-             sections.forEach(section => observer.observe(section));
-        });
-        </script>
-    </body>
-    </html>
-    """{
-            const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
-            const now = new Date().toISOString();
-            
-            const yaml = `approval_version: "approve_yml_v1"
-video_id: "${{videoId}}"
-approved_by: "USER_WEB_UI"
-approved_at: "${{now}}"
-apply:
-  data_collection_master: ${{dcm}}
-  anomaly_detection_logic: ${{adl}}
-  baseline_signals: ${{bs}}
-notes: "${{note}}"
-`;
-            
-            navigator.clipboard.writeText(yaml).then(function() {{
-                alert('승인 코드가 복사되었습니다!\\n\\n1. Git 저장소로 이동\\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\\n3. 붙여넣기 후 커밋');
-            }}, function(err) {{
-                alert('복사 실패: ' + err);
-            }});
-        }}
-        </script>
-    </body>
-    </html>
-    """
-    
-    (dash_dir / "index.html").write_text(html, encoding="utf-8")
-    print(f"파이프라인 아키텍처 대시보드 생성 완료: {dash_dir}/index.html")
-    return dash_dir / "index.html"
+<!-- MODAL -->
+<div id="scriptModal" class="modal">
+    <div class="modal-box">
+         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+             <h2 style="margin:0;">Insight Script</h2>
+             <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+         </div>
+         <p id="script-modal-content">Script content here...</p>
+    </div>
+</div>
+
+<script>
+    function closeModal() {
+        document.getElementById('scriptModal').classList.remove('modal-active');
+    }
+    function copyScript() {
+        const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+    }
+</script>
+
+</body>
+</html>
+"""
+    return html
+
+def main():
+    # ... (existing main logic placeholder if needed) ...
+    pass
+
 
 if __name__ == "__main__":
-    try:
-        # Resolve project root (HoinInsight/)
-        base_dir = Path(__file__).resolve().parent.parent.parent
-        # Add project root to sys.path to allow 'from src.ops...' imports
-        if str(base_dir) not in sys.path:
-            sys.path.append(str(base_dir))
-            
-        out_file = generate_dashboard(base_dir)
-        print(f"파이프라인 아키텍처 대시보드 생성 완료: {out_file.relative_to(base_dir)}")
-    except Exception:
-        print("[FATAL] Dashboard generation crashed!")
-        traceback.print_exc()
-        sys.exit(1)
+    # Ensure directories exist
+    os.makedirs("data/dashboard", exist_ok=True)
+    os.makedirs("dashboard", exist_ok=True)
+    
+    html = generate_dashboard()
+    
+    with open("dashboard/index.html", "w") as f:
+        f.write(html)
+    
+    print("[Dashboard] Generated dashboard/index.html")
