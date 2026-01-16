@@ -42,9 +42,21 @@ Historical context:
 - [LOW] WTI: data/features/anomalies/2026/01/16/comm_wti_crude_oil_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] PLATINUM: data/features/anomalies/2026/01/16/metal_platinum_xptusd_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] ETHUSD: data/features/anomalies/2026/01/16/crypto_eth_usd_spot_coingecko.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
+## PROPOSAL PRIORITY SNAPSHOT
+- Error loading priority data.
 
 - See: `data/reports/2026/01/16/data_snapshot.md`
 
 Narrative Drift Signals:
 - (no meta regime detected): ACCELERATION
 
+
+## FINAL DECISION CARD SNAPSHOT
+- Regime: (no meta regime detected) (Conf: 0.0%)
+- Revival: 0 candidate(s)
+- Ops Health: 0% Freshness
+- Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 1 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.
