@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-16T04:55:27Z`
+- ts_utc: `2026-01-16T09:51:36Z`
 - ymd_utc: `2026/01/16`
 - enabled_datasets: `16`
 
@@ -8,10 +8,10 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
+| ETHUSD | crypto_eth_usd_spot_coingecko | OK | 2 | 2026-01-15T00:00:00Z | 2026-01-16T00:00:00Z | 2 | 2 | 2 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/16/charts/crypto_eth_usd_spot_coingecko.png) |
 | BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 40 | 2026-01-15T07:32:29Z | 2026-01-15T23:38:11Z | 40 | 40 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/01/16/charts/crypto_btc_usd_spot_coingecko.png) |
 | BTCxSPX_CORR30D | derived_corr_btc_spx_30d | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 1 | 0 | data/curated/derived/corr_btc_spx_30d.csv | - |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/01/16/charts/fx_dxy_index_stooq.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 2 | 2026-01-15T00:00:00Z | 2026-01-16T00:00:00Z | 2 | 2 | 1 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/16/charts/crypto_eth_usd_spot_coingecko.png) |
 | KOSPI | index_kospi_stooq | UNKNOWN | 40 | 2026-01-15T07:32:40Z | 2026-01-15T23:38:22Z | 40 | 40 | 1 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/01/16/charts/index_kospi_stooq.png) |
 | NASDAQ | index_nasdaq_ndx_stooq | UNKNOWN | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/01/16/charts/index_nasdaq_ndx_stooq.png) |
 | PLATINUM | metal_platinum_xptusd_stooq | UNKNOWN | 1 | 2026-01-15T00:00:00Z | 2026-01-15T00:00:00Z | 1 | 1 | 1 | 0 | 0 | data/curated/metals/platinum.csv | [png](data/reports/2026/01/16/charts/metal_platinum_xptusd_stooq.png) |
