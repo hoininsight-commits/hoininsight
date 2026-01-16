@@ -415,11 +415,21 @@ def generate_dashboard(base_dir: Path):
                  status_cls = "pending"
                  check_mark = "-"
              
+             # Timestamp Display
+             ts_html = ""
+             if ds.get("last_updated"):
+                 # Format: 2026-01-16T15:30:00Z -> 15:30
+                 try:
+                     short_ts = ds["last_updated"].split("T")[1][:5]
+                     ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({short_ts})</span>'
+                 except:
+                     ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
+
              sidebar_html += f"""
              <div class="ds-item {status_cls}" title="{ds.get('reason','')}">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">{ds['dataset_id']}</span>
+                     <span class="ds-name">{ds['dataset_id']} {ts_html}</span>
                  </div>
                  <div class="status-check">{check_mark}</div>
              </div>
