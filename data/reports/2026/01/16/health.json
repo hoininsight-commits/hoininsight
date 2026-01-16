@@ -1,0 +1,32 @@
+{
+  "ts_utc": "2026-01-16T04:55:28Z",
+  "status": "SUCCESS",
+  "checks_ok": true,
+  "checks": [],
+  "per_dataset": [
+    {
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "meta_topics",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "daily_report",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    }
+  ]
+}
