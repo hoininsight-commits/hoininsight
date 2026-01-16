@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hoin Insight 파이프라인</title>
+    <style>
+        /* RESET & BASE */
+        body {
+            font-family: 'Pretendard', 'Inter', system-ui, sans-serif;
+            background: #f4f7fa;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Force no body scroll */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
+        .top-bar {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            flex-shrink: 0;
+            z-index: 50;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            font-size: 24px;
+        }
+
+        /* LAYOUT CONTAINER */
+        .dashboard-container {
+            display: flex;
+            /* Flex layout instead of grid for better height control */
+            height: calc(100vh - 60px);
+            width: 100vw;
+        }
+
+        /* LEFT NAVIGATION */
+        .nav-panel {
+            width: 260px;
+            background: #0f172a;
+            color: #94a3b8;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #475569;
+            margin: 25px 0 10px 25px;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-item {
+            padding: 12px 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #94a3b8;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        .nav-item.active {
+            background: #1e293b;
+            color: #3b82f6;
+            border-left-color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            margin-right: 5px;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-panel {
+            flex: 1;
+            background: #f8fafc;
+            padding: 40px;
+            overflow-y: auto;
+            /* Scroll ONLY inside this panel */
+            position: relative;
+        }
+
+        /* RIGHT SIDEBAR */
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-left: 1px solid #e2e8f0;
+            padding: 25px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        /* COMPONENT: TABS (SPA Logic) */
+        .tab-content {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* COMPONENT: CARDS */
+        .ops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .ops-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .ops-card:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+        }
+
+        .ops-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+
+        .ops-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* DIAGRAM NODES */
+        .process-row {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .node-group-label {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            font-size: 12px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .proc-node {
+            flex: 1;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            min-height: 90px;
+        }
+
+        .proc-icon {
+            width: 45px;
+            height: 45px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .proc-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proc-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .proc-desc {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .arrow-down {
+            position: absolute;
+            left: 50%;
+            bottom: -50px;
+            height: 50px;
+            width: 2px;
+            background: #cbd5e1;
+            transform: translateX(-50%);
+        }
+
+        .arrow-down::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid #cbd5e1;
+        }
+
+        /* INBOX CARDS */
+        .inbox-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 15px;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #64748b;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .badge-new {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-action {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* SIDEBAR ITEMS */
+        .ds-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            background: #f8fafc;
+            margin-bottom: 6px;
+        }
+
+        .ds-item.ok {
+            border-left: 3px solid #22c55e;
+        }
+
+        .ds-name {
+            font-size: 13px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .cat-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #94a3b8;
+            margin: 20px 0 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            width: 80%;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 16px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Responsive Fixes */
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+    <script>
+        function openTab(tabId, el) {
+            // 1. Sidebar Active State
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            el.classList.add('active');
+
+            // 2. Tab Content Display
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+
+            // 3. Reset Scroll
+            document.querySelector('.main-panel').scrollTop = 0;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Open first tab by default
+            const firstNav = document.querySelector('.nav-item');
+            if (firstNav) openTab('architecture-diagram', firstNav);
+        });
+
+        function toggleAction(id) {
+            const box = document.getElementById('action-box-' + id);
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function openModal() { document.getElementById('scriptModal').classList.add('modal-active'); }
+        function closeModal() { document.getElementById('scriptModal').classList.remove('modal-active'); }
+
+        function copyScript() {
+            const text = document.getElementById('script_body').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="logo">
+            <span>⚡️</span> Hoin Insight <span
+                style="font-size:12px; color:#64748b; font-weight:500; margin-left:10px;">Automated Market
+                Intelligence</span>
+        </div>
+        <div style="display:flex; gap:15px; align-items:center;">
+            <div
+                style="font-size:12px; font-weight:bold; color:#15803d; background:#dcfce7; padding:5px 12px; border-radius:20px;">
+                SYSTEM OPERATIONAL</div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+
+        <!-- LEFT NAV -->
+        <div class="nav-panel">
+            <div class="nav-label">Main View</div>
+            <a href="#" class="nav-item active" onclick="openTab('architecture-diagram', this)">
+                <div class="nav-icon">🟦</div> 아키텍처
+            </a>
+
+            <div class="nav-label">Operations</div>
+            <a href="#" class="nav-item" onclick="openTab('ops-scoreboard', this)">
+                <div class="nav-icon">📈</div> 운영 지표
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('change-effectiveness', this)">
+                <div class="nav-icon">📊</div> 변경 효과
+            </a>
+
+            <div class="nav-label">Workflow</div>
+            <a href="#" class="nav-item" onclick="openTab('youtube-inbox', this)">
+                <div class="nav-icon">📺</div> 유튜브 인박스
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('narrative-queue', this)">
+                <div class="nav-icon">📝</div> 내러티브 큐
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('revival-engine', this)">
+                <div class="nav-icon">♻️</div> 부활 엔진
+            </a>
+
+            <div class="nav-label">Output</div>
+            <a href="#" class="nav-item" onclick="openTab('final-decision', this)">
+                <div class="nav-icon">⚖️</div> 최종 의사결정
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('insight-script', this)">
+                <div class="nav-icon">📜</div> 인사이트 스크립트
+            </a>
+        </div>
+
+        <!-- CENTER MAIN PANEL -->
+        <div class="main-panel">
+
+            <!-- TAB: ARCHITECTURE -->
+            <div id="architecture-diagram" class="tab-content active">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 28px; font-weight: 800; color: #1e293b; letter-spacing: -1px;">Hoin Insight
+                        Pipeline</h2>
+                    <p style="color:#64748b; font-size:16px;">End-to-end automated data collection and analysis flow</p>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">01. Schedule</div>
+                    <div class="proc-node" style="border-top:4px solid #f59e0b;">
+                        <div class="proc-icon">⏰</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Scheduler & Trigger</div>
+                            <div class="proc-desc">CRON: Crypto(4x), FX, Indices, Backfill</div>
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">02. Orchestration</div>
+                    <div class="proc-node" style="border-top:4px solid #6366f1;">
+                        <div class="proc-icon">🏗️</div>
+                        <div class="proc-content">
+                            <div class="proc-title">GitHub Actions Runner</div>
+                            <div class="proc-desc">Integration & Deployment Pipeline</div>
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">03. Data Intake</div>
+                    <div class="proc-node" style="border-top:4px solid #10b981;">
+                        <div class="proc-icon">📥</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Data Collection & Normalization</div>
+                            <div class="proc-desc">Raw Ingestion -> Curated CSV Generation</div>
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">04. Output</div>
+                    <div class="proc-node" style="border-top:4px solid #3b82f6; cursor:pointer;"
+                        onclick="openTab('insight-script', document.querySelector('.nav-panel a[href=\'#\']:nth-last-child(1)'))">
+                        <div class="proc-icon">🚀</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Content Generation</div>
+                            <div class="proc-desc">Click to view generated Insight Script</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: OPS SCOREBOARD -->
+            <div id="ops-scoreboard" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📈</span> 운영 성과 지표</div>
+                </div>
+                <div class="ops-grid">
+                    <div class="ops-card">
+                        <div class="ops-value">14/14</div>
+                        <div class="ops-label">Dataset Coverage</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value" style="color:#ef4444;">13h 48m</div>
+                        <div class="ops-label">Data Freshness (Lag)</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value">14</div>
+                        <div class="ops-label">Topics Detected</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value" style="color:#22c55e;">HIGH</div>
+                        <div class="ops-label">System Confidence</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: YOUTUBE INBOX -->
+            <div id="youtube-inbox" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📺</span> 유튜브 인박스 <span
+                            style="font-size:14px; color:#64748b; font-weight:500; margin-left:auto;">Latest:
+                            2026-01-16</span></div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:15px;">
+                    <!-- Sample Inbox Item 1 -->
+                    <div class="inbox-card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <a href="https://youtu.be/VhmYnEvRf70" target="_blank" class="video-title">2026년 가장 저평가 됐다는
+                                전기 관련주 4개</a>
+                            <span class="badge badge-action">PROPOSED</span>
+                        </div>
+                        <div class="video-meta">
+                            <span>2026-01-16</span>
+                            <span>•</span>
+                            <span>Priority: 40.0</span>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <button onclick="toggleAction('VhmYnEvRf70')"
+                                style="background:#eff6ff; color:#3b82f6; border:none; padding:8px 12px; border-radius:6px; font-weight:600; cursor:pointer; font-size:12px;">Review
+                                Action</button>
+                            <div id="action-box-VhmYnEvRf70"
+                                style="display:none; margin-top:10px; background:#f8fafc; padding:15px; border-radius:8px;">
+                                <div style="margin-bottom:10px; font-size:12px; font-weight:bold;">Approval Options:
+                                </div>
+                                <label style="display:block; margin-bottom:5px; font-size:13px;"><input type="checkbox"
+                                        checked> Data Collection Master</label>
+                                <label style="display:block; margin-bottom:5px; font-size:13px;"><input type="checkbox">
+                                    Anomaly Detection Logic</label>
+                                <button
+                                    style="margin-top:10px; background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer;">Generate
+                                    YAML Proposal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Inbox Item 2 -->
+                    <div class="inbox-card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <a href="https://youtu.be/7sVkFpGNnN8" target="_blank" class="video-title">미국에서 콕 찝어준 대한민국
+                                2026년 환율 전망</a>
+                            <span class="badge badge-new" style="background:#dcfce7; color:#166534;">APPROVED</span>
+                        </div>
+                        <div class="video-meta">
+                            <span>2026-01-16</span>
+                            <span>•</span>
+                            <span>Priority: 40.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: OUTPUT SCRIPT -->
+            <div id="insight-script" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📜</span> 인사이트 스크립트</div>
+                </div>
+                <div style="background:#1e293b; color:#cbd5e1; padding:30px; border-radius:12px; position:relative;">
+                    <button onclick="copyScript()"
+                        style="position:absolute; top:20px; right:20px; background:#3b82f6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold;">Copy</button>
+                    <pre id="script_body" style="font-family:'Menlo', monospace; line-height:1.7;">
+# [2026-01-17] 시장 긴급 점검: 복합적 신호의 해석
+
+## 1. 현황 요약
+현재 시장은 US10Y(국채금리), SPX(주식), BTC(암호화폐) 등 핵심 지표들이 엇갈린 신호를 보내고 있습니다.
+
+## 2. 주요 발견
+- **국채 금리**: 10년물 금리가 박스권 상단을 테스트하고 있습니다.
+- **주식 시장**: S&P 500은 신고가 경신 후 숨고르기 양상입니다.
+- **암호화폐**: 비트코인은 높은 변동성을 보이며 방향성을 탐색 중입니다.
+
+## 3. 대응 전략
+- **보수적 접근**: 당분간 현금 비중을 유지하며 관망하는 것이 좋습니다.
+- **기회 포착**: 조정 시 분할 매수 전략이 유효해 보입니다.
+
+(이 스크립트는 자동 생성된 예시입니다)
+</pre>
+                </div>
+            </div>
+
+            <!-- Other Tabs (Placeholders) -->
+            <div id="change-effectiveness" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📊</span> 변경 효과 분석</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">데이터 집계 중입니다...</div>
+            </div>
+            <div id="narrative-queue" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📝</span> 내러티브 큐</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">대기 중인 내러티브가 없습니다.</div>
+            </div>
+            <div id="revival-engine" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>♻️</span> 부활 엔진</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">부활 가능한 토픽 후보가 없습니다.</div>
+            </div>
+            <div id="final-decision" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>⚖️</span> 최종 의사결정</div>
+                </div>
+                <div class="ops-card" style="border-left:5px solid #22c55e;">
+                    <div style="font-size:24px; font-weight:800; color:#166534;">✅ GO (Approved)</div>
+                    <div style="margin-top:10px;">최종 스크립트 배포가 승인되었습니다.</div>
+                </div>
+            </div>
+
+        </div> <!-- End Main Panel -->
+
+        <!-- RIGHT SIDEBAR (STATUS) -->
+        <div class="sidebar">
+            <div class="section-header" style="border:none; margin-bottom:10px;">
+                <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
+            </div>
+
+            <div class="cat-title"><span>DERIVED</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">derived_corr_btc_spx</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">derived_corr_usdkrw</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>INDICES</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">spx_500</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">kospi_index</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>CRYPTO</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">btc_usd</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">eth_usd</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>RATES</span> <span style="color:#22c55e;">1/1</span></div>
+            <div class="ds-item ok"><span class="ds-name">us10y_yield</span> <span>✓</span></div>
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="scriptModal" class="modal">
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <h2 style="margin:0;">Insight Script</h2>
+                <button onclick="closeModal()"
+                    style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+            </div>
+            <p>Script content here...</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
