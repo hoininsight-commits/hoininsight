@@ -1978,6 +1978,8 @@ def generate_dashboard(base_dir: Path):
                         </tbody>
                     </table>
                 </div>
+    """
+    
     html += f"""
         <!-- Insight Script Section -->
         <div id="insight-script" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
