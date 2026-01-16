@@ -358,10 +358,71 @@ def generate_dashboard(base_dir: Path):
     
     .architecture-diagram { display: flex; flex-direction: column; gap: 60px; width: 100%; position: relative; scroll-margin-top: 40px; }
     
-    /* ... (rest of css) ... */
+    /* Process Rows */
+    .process-row { display: flex; justify-content: space-between; gap: 40px; position: relative; }
     
-    """ + css[css.find(".process-row"):css.find("/* Modal Styles */")] + """
+    .node-group-label { position: absolute; top: -25px; left: 0; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
     
+    .proc-node {
+        flex: 1; background: white; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 15px;
+        transition: transform 0.2s; position: relative; z-index: 10;
+        min-height: 80px; box-sizing: border-box;
+    }
+    .proc-node:hover { transform: translateY(-2px); border-color: #3b82f6; }
+    .proc-icon { width: 40px; height: 40px; border-radius: 8px; background: #eff6ff; color: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .proc-content { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; } 
+    .proc-title { font-weight: 600; font-size: 14px; color: #334155; }
+    .proc-desc { font-size: 12px; color: #64748b; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proc-sub { font-size: 11px; color: #94a3b8; margin-top: 1px; }
+
+    /* Node Output Specifics (Clickable) */
+    .node-output { cursor: pointer; border-top: 4px solid #3b82f6; }
+    .node-output:hover { background-color: #eff6ff; border-color: #2563eb; }
+
+    /* Connections Lines (CSS) */
+    .arrow-down { position: absolute; left: 50%; bottom: -60px; height: 60px; width: 2px; background: #cbd5e1; z-index: 0; transform: translateX(-50%); }
+    .arrow-down::after { content: ''; position: absolute; bottom: 0; left: -4px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #cbd5e1; }
+
+    /* Node Specifics */
+    .node-scheduler { border-top: 4px solid #f59e0b; }
+    .node-github { border-top: 4px solid #6366f1; }
+    .node-data { border-top: 4px solid #10b981; }
+    .node-engine { border-top: 4px solid #ec4899; }
+    
+    /* RIGHT: Sidebar Data Intake */
+    .sidebar { background: white; border-left: 1px solid #e2e8f0; padding: 30px; overflow-y: auto; }
+    .sidebar-title { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+    
+    .cat-group { margin-bottom: 25px; }
+    .cat-title { font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 10px; text-transform: uppercase; display: flex; justify-content: space-between; }
+    
+    .ds-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 6px; margin-bottom: 5px; background: #f8fafc; border: 1px solid transparent; }
+    .ds-item:hover { background: #f1f5f9; }
+    .ds-item.fail { background: #fef2f2; border-color: #fecaca; }
+    .ds-item.pending { background: #f8fafc; border-color: #e2e8f0; color: #94a3b8; }
+    .ds-item.warmup { background: #fff7ed; border-color: #ffedd5; color: #9a3412; }
+    
+    .ds-left { display: flex; align-items: center; gap: 8px; overflow: hidden; }
+    .ds-icon { width: 6px; height: 6px; border-radius: 50%; background: #cbd5e1; flex-shrink: 0; }
+    .ds-name { font-size: 13px; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    
+    .status-check { color: #166534; font-weight: bold; font-size: 14px; }
+    .fail .status-check { color: #dc2626; }
+    .pending .status-check { color: #94a3b8; font-size: 12px; }
+    .warmup .status-check { color: #9a3412; font-size: 10px; border: 1px solid #fdba74; padding: 1px 4px; border-radius: 4px; }
+    
+    .fail .ds-icon { background: #dc2626; }
+    .ok .ds-icon { background: #166534; }
+    .pending .ds-icon { background: #cbd5e1; }
+    .warmup .ds-icon { background: #f97316; }
+    
+    /* Footer */
+    .footer { font-size: 11px; color: #94a3b8; text-align: center; margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+    
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
+    .active-node { animation: pulse 2s infinite; border-color: #3b82f6; }
+
     /* Modal Styles */
     .modal {
         display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
@@ -376,26 +437,6 @@ def generate_dashboard(base_dir: Path):
     
     .modal-header { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
     .modal-body { font-size: 14px; line-height: 1.6; color: #334155; white-space: pre-wrap; }
-    """
-    
-    # ... (sidebar sidebar output logic from lines 405-514 is preserved or re-generated, but we focus on HTML structure here)
-    # Actually, replace_file_content replaces TEXT. I must match the context.
-    # The previous edit messed up the file slightly (inserted code blocks). I should be careful.
-    
-    # Let's target the HTML generation block lower down.
-    
-    # ... Skip sidebar generation code ...
-
-    html = f"""
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <title>Hoin Insight 파이프라인</title>
-        <style>{css}</style>
-        <!-- Font Awesome or similar (optional, using emojis for now) -->
-    </head>
-    <!-- ... body ... -->
     """
     
     # We will invoke replace twice. First for CSS/HTML top part.
