@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Hoin Insight 파이프라인</title>
     <style>
+        /* RESET & BASE */
         body {
             font-family: 'Pretendard', 'Inter', system-ui, sans-serif;
             background: #f4f7fa;
@@ -14,8 +15,15 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            /* Force no body scroll */
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
         .top-bar {
             background: white;
             border-bottom: 1px solid #e2e8f0;
@@ -24,34 +32,40 @@
             justify-content: space-between;
             align-items: center;
             height: 60px;
-            box-sizing: border-box;
-            z-index: 20;
-            position: relative;
+            flex-shrink: 0;
+            z-index: 50;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 800;
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
             color: #0f172a;
-            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Layout */
+        .logo span {
+            font-size: 24px;
+        }
+
+        /* LAYOUT CONTAINER */
         .dashboard-container {
-            display: grid;
-            grid-template-columns: 260px 1fr 340px;
+            display: flex;
+            /* Flex layout instead of grid for better height control */
             height: calc(100vh - 60px);
+            width: 100vw;
         }
 
-        /* LEFT: Navigation Panel (Modern Dark) */
+        /* LEFT NAVIGATION */
         .nav-panel {
+            width: 260px;
             background: #0f172a;
             color: #94a3b8;
             display: flex;
             flex-direction: column;
-            gap: 5px;
             padding-top: 20px;
+            flex-shrink: 0;
             overflow-y: auto;
         }
 
@@ -60,7 +74,7 @@
             font-weight: 700;
             text-transform: uppercase;
             color: #475569;
-            margin: 20px 0 10px 25px;
+            margin: 25px 0 10px 25px;
             letter-spacing: 0.05em;
         }
 
@@ -88,163 +102,181 @@
             color: #3b82f6;
             border-left-color: #3b82f6;
             font-weight: 600;
-            box-shadow: inset 5px 0 10px -5px rgba(0, 0, 0, 0.2);
         }
 
         .nav-icon {
             margin-right: 5px;
-            font-size: 16px;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
         }
 
-        /* CENTER: Main Process Flow */
+        /* MAIN CONTENT AREA */
         .main-panel {
+            flex: 1;
+            background: #f8fafc;
             padding: 40px;
             overflow-y: auto;
-            background: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            scroll-behavior: smooth;
-        }
-
-        .sections-wrapper {
-            max-width: 900px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            padding-bottom: 100px;
-        }
-
-        .architecture-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            width: 100%;
+            /* Scroll ONLY inside this panel */
             position: relative;
-            scroll-margin-top: 40px;
         }
 
-        /* General Nodes */
+        /* RIGHT SIDEBAR */
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-left: 1px solid #e2e8f0;
+            padding: 25px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        /* COMPONENT: TABS (SPA Logic) */
+        .tab-content {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* COMPONENT: CARDS */
+        .ops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .ops-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .ops-card:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+        }
+
+        .ops-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+
+        .ops-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* DIAGRAM NODES */
         .process-row {
             display: flex;
-            justify-content: space-between;
             gap: 40px;
+            margin-bottom: 60px;
             position: relative;
         }
 
         .node-group-label {
             position: absolute;
-            top: -25px;
+            top: -30px;
             left: 0;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .proc-node {
             flex: 1;
             background: white;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
             gap: 15px;
-            transition: transform 0.2s;
-            position: relative;
-            z-index: 10;
-            min-height: 80px;
-            box-sizing: border-box;
-        }
-
-        .proc-node:hover {
-            transform: translateY(-2px);
-            border-color: #3b82f6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            min-height: 90px;
         }
 
         .proc-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
+            background: #f1f5f9;
             border-radius: 8px;
-            background: #eff6ff;
-            color: #3b82f6;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             flex-shrink: 0;
         }
 
         .proc-content {
-            flex: 1;
-            min-width: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
         .proc-title {
-            font-weight: 600;
-            font-size: 14px;
-            color: #334155;
+            font-weight: 700;
+            font-size: 15px;
+            color: #1e293b;
+            margin-bottom: 4px;
         }
 
         .proc-desc {
-            font-size: 12px;
+            font-size: 13px;
             color: #64748b;
-            margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
-        .proc-sub {
-            font-size: 11px;
-            color: #94a3b8;
-            margin-top: 1px;
-        }
-
-        /* Node Colors */
-        .node-scheduler {
-            border-top: 4px solid #f59e0b;
-        }
-
-        .node-github {
-            border-top: 4px solid #6366f1;
-        }
-
-        .node-data {
-            border-top: 4px solid #10b981;
-        }
-
-        .node-engine {
-            border-top: 4px solid #ec4899;
-        }
-
-        .node-output {
-            cursor: pointer;
-            border-top: 4px solid #3b82f6;
-        }
-
-        .node-output:hover {
-            background-color: #eff6ff;
-            border-color: #2563eb;
-        }
-
-        /* Arrows */
         .arrow-down {
             position: absolute;
             left: 50%;
-            bottom: -60px;
-            height: 60px;
+            bottom: -50px;
+            height: 50px;
             width: 2px;
             background: #cbd5e1;
-            z-index: 0;
             transform: translateX(-50%);
         }
 
@@ -258,487 +290,352 @@
             border-top: 6px solid #cbd5e1;
         }
 
-        /* RIGHT: Sidebar */
-        .sidebar {
+        /* INBOX CARDS */
+        .inbox-card {
             background: white;
-            border-left: 1px solid #e2e8f0;
-            padding: 30px;
-            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .sidebar-title {
-            font-size: 16px;
+        .video-title {
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f1f5f9;
+            font-size: 15px;
+            line-height: 1.4;
+            text-decoration: none;
+        }
+
+        .video-meta {
             display: flex;
-            justify-content: space-between;
+            gap: 15px;
+            font-size: 12px;
+            color: #64748b;
             align-items: center;
         }
 
-        .cat-group {
-            margin-bottom: 25px;
-        }
-
-        .cat-title {
-            font-size: 12px;
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 700;
-            color: #64748b;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
         }
 
+        .badge-new {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-action {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* SIDEBAR ITEMS */
         .ds-item {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 8px 10px;
+            align-items: center;
+            padding: 10px;
             border-radius: 6px;
-            margin-bottom: 5px;
             background: #f8fafc;
-            border: 1px solid transparent;
-        }
-
-        .ds-item.fail {
-            background: #fef2f2;
-            border-color: #fecaca;
+            margin-bottom: 6px;
         }
 
         .ds-item.ok {
-            background: #f0fdf4;
-            border-color: #dcfce7;
-        }
-
-        .ds-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            overflow: hidden;
-        }
-
-        .ds-icon {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            flex-shrink: 0;
-        }
-
-        .ok .ds-icon {
-            background: #166534;
-        }
-
-        .fail .ds-icon {
-            background: #dc2626;
+            border-left: 3px solid #22c55e;
         }
 
         .ds-name {
             font-size: 13px;
             color: #334155;
+            font-weight: 500;
         }
 
-        .status-check {
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .ok .status-check {
-            color: #166534;
-        }
-
-        /* OPS & INBOX Cards */
-        .ops-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .ops-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-
-        .ops-value {
-            font-size: 24px;
+        .cat-title {
+            font-size: 12px;
             font-weight: 800;
-            color: #1e293b;
+            color: #94a3b8;
+            margin: 20px 0 10px;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .ops-label {
-            font-size: 11px;
-            color: #64748b;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-top: 5px;
-        }
-
-        /* Other badges */
-        .conf-badge {
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        .status-badge {
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-SUCCESS {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
         }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 40px;
-            border: 1px solid #888;
+        .modal-active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
             width: 80%;
             max-width: 800px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 16px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .close-btn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-    <style>
-        /* ... existing styles ... */
-
-        /* Tab Navigation Styles */
-        .tab-content {
-            display: none;
-            width: 100%;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Specifics */
-        .section-header {
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1e293b;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Responsive Fixes */
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
         }
     </style>
     <script>
-        // Tab Switching Logic
-        function activate(el) {
-            // 1. Update Navigation State
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        function openTab(tabId, el) {
+            // 1. Sidebar Active State
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             el.classList.add('active');
 
-            // 2. Switch Tab Content
-            const targetId = el.getAttribute('href').substring(1); // remove '#'
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetId) {
-                    content.classList.add('active');
-                }
-            });
+            // 2. Tab Content Display
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
 
-            // 3. Scroll to top
+            // 3. Reset Scroll
             document.querySelector('.main-panel').scrollTop = 0;
         }
 
-        // Initialize First Tab
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Default to Architecture Diagram
-            if (!document.querySelector('.nav-item.active')) {
-                const firstNav = document.querySelector('.nav-item');
-                if (firstNav) activate(firstNav);
-            }
+            // Open first tab by default
+            const firstNav = document.querySelector('.nav-item');
+            if (firstNav) openTab('architecture-diagram', firstNav);
         });
 
-        // ... modal functions ...
+        function toggleAction(id) {
+            const box = document.getElementById('action-box-' + id);
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function openModal() { document.getElementById('scriptModal').classList.add('modal-active'); }
+        function closeModal() { document.getElementById('scriptModal').classList.remove('modal-active'); }
+
+        function copyScript() {
+            const text = document.getElementById('script_body').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+        }
     </script>
 </head>
 
 <body>
+
+    <!-- TOP BAR -->
     <div class="top-bar">
-        <div style="display:flex; align-items:center; gap:20px;">
-            <div style="font-weight:900; font-size:20px; color:#0f172a;">⚡️ Hoin Insight</div>
-
-            <!-- Core Health Widget -->
-            <div class="core-health-box">
-                <span style="font-size:11px; font-weight:bold; color:#475569; margin-right:5px;">CORE:</span>
-                <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-OK">OK</span></div>
-                <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-OK">OK</span></div>
-                <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-OK">OK</span></div>
-            </div>
-
-            <div class="conf-badge bg-green-100 text-green-800" style="background:#dcfce7; color:#166534;">Confidence:
-                HIGH</div>
+        <div class="logo">
+            <span>⚡️</span> Hoin Insight <span
+                style="font-size:12px; color:#64748b; font-weight:500; margin-left:10px;">Automated Market
+                Intelligence</span>
         </div>
-
-        <div style="display:flex; gap:10px;">
-            <div class="status-badge status-SUCCESS">System Operational</div>
+        <div style="display:flex; gap:15px; align-items:center;">
+            <div
+                style="font-size:12px; font-weight:bold; color:#15803d; background:#dcfce7; padding:5px 12px; border-radius:20px;">
+                SYSTEM OPERATIONAL</div>
         </div>
     </div>
 
-
     <div class="dashboard-container">
 
-        <!-- LEFT NAVIGATION -->
+        <!-- LEFT NAV -->
         <div class="nav-panel">
-            <div class="nav-label">MAIN VIEW</div>
-            <a href="#architecture-diagram" class="nav-item active" onclick="activate(this)"><span
-                    class="nav-icon">🟦</span> 아키텍처</a>
+            <div class="nav-label">Main View</div>
+            <a href="#" class="nav-item active" onclick="openTab('architecture-diagram', this)">
+                <div class="nav-icon">🟦</div> 아키텍처
+            </a>
 
-            <div class="nav-label">OPERATIONS</div>
-            <a href="#ops-scoreboard" class="nav-item" onclick="activate(this)"><span class="nav-icon">📈</span> 운영
-                지표</a>
-            <a href="#change-effectiveness" class="nav-item" onclick="activate(this)"><span class="nav-icon">📊</span>
-                변경 효과</a>
+            <div class="nav-label">Operations</div>
+            <a href="#" class="nav-item" onclick="openTab('ops-scoreboard', this)">
+                <div class="nav-icon">📈</div> 운영 지표
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('change-effectiveness', this)">
+                <div class="nav-icon">📊</div> 변경 효과
+            </a>
 
-            <div class="nav-label">WORKFLOW</div>
-            <a href="#youtube-inbox" class="nav-item" onclick="activate(this)"><span class="nav-icon">📺</span> 유튜브
-                인박스</a>
-            <a href="#narrative-queue" class="nav-item" onclick="activate(this)"><span class="nav-icon">📝</span> 내러티브
-                큐</a>
-            <a href="#revival-engine" class="nav-item" onclick="activate(this)"><span class="nav-icon">♻️</span> 부활
-                엔진</a>
+            <div class="nav-label">Workflow</div>
+            <a href="#" class="nav-item" onclick="openTab('youtube-inbox', this)">
+                <div class="nav-icon">📺</div> 유튜브 인박스
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('narrative-queue', this)">
+                <div class="nav-icon">📝</div> 내러티브 큐
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('revival-engine', this)">
+                <div class="nav-icon">♻️</div> 부활 엔진
+            </a>
 
-            <div class="nav-label">OUTPUT</div>
-            <a href="#final-decision" class="nav-item" onclick="activate(this)"><span class="nav-icon">⚖️</span> 최종
-                의사결정</a>
-            <a href="#insight-script" class="nav-item" onclick="activate(this)"><span class="nav-icon">📜</span> 인사이트
-                스크립트</a>
+            <div class="nav-label">Output</div>
+            <a href="#" class="nav-item" onclick="openTab('final-decision', this)">
+                <div class="nav-icon">⚖️</div> 최종 의사결정
+            </a>
+            <a href="#" class="nav-item" onclick="openTab('insight-script', this)">
+                <div class="nav-icon">📜</div> 인사이트 스크립트
+            </a>
         </div>
 
-        <!-- MAIN FLOW -->
+        <!-- CENTER MAIN PANEL -->
         <div class="main-panel">
-            <div class="sections-wrapper">
 
-                <!-- TAB 1: ARCHITECTURE -->
-                <div id="architecture-diagram" class="tab-content active" style="align-items:center;">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
-                        <p style="font-size: 13px; color: #64748b;">실시간 데이터 수집 및 분석 흐름도</p>
+            <!-- TAB: ARCHITECTURE -->
+            <div id="architecture-diagram" class="tab-content active">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 28px; font-weight: 800; color: #1e293b; letter-spacing: -1px;">Hoin Insight
+                        Pipeline</h2>
+                    <p style="color:#64748b; font-size:16px;">End-to-end automated data collection and analysis flow</p>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">01. Schedule</div>
+                    <div class="proc-node" style="border-top:4px solid #f59e0b;">
+                        <div class="proc-icon">⏰</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Scheduler & Trigger</div>
+                            <div class="proc-desc">CRON: Crypto(4x), FX, Indices, Backfill</div>
+                        </div>
                     </div>
-                    <div class="architecture-diagram">
-                        <!-- 1. Scheduler -->
-                        <div class="process-row">
-                            <div class="node-group-label">01. 스케줄 및 트리거</div>
-                            <div class="proc-node node-scheduler">
-                                <div class="proc-icon">⏰</div>
-                                <div class="proc-content">
-                                    <div class="proc-title">자동 스케줄러 (축 분할)</div>
-                                    <div class="proc-desc">암호화폐(4회), 환율, 시장지수, 백필</div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">02. Orchestration</div>
+                    <div class="proc-node" style="border-top:4px solid #6366f1;">
+                        <div class="proc-icon">🏗️</div>
+                        <div class="proc-content">
+                            <div class="proc-title">GitHub Actions Runner</div>
+                            <div class="proc-desc">Integration & Deployment Pipeline</div>
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">03. Data Intake</div>
+                    <div class="proc-node" style="border-top:4px solid #10b981;">
+                        <div class="proc-icon">📥</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Data Collection & Normalization</div>
+                            <div class="proc-desc">Raw Ingestion -> Curated CSV Generation</div>
+                        </div>
+                    </div>
+                    <div class="arrow-down"></div>
+                </div>
+
+                <div class="process-row">
+                    <div class="node-group-label">04. Output</div>
+                    <div class="proc-node" style="border-top:4px solid #3b82f6; cursor:pointer;"
+                        onclick="openTab('insight-script', document.querySelector('.nav-panel a[href=\'#\']:nth-last-child(1)'))">
+                        <div class="proc-icon">🚀</div>
+                        <div class="proc-content">
+                            <div class="proc-title">Content Generation</div>
+                            <div class="proc-desc">Click to view generated Insight Script</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: OPS SCOREBOARD -->
+            <div id="ops-scoreboard" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📈</span> 운영 성과 지표</div>
+                </div>
+                <div class="ops-grid">
+                    <div class="ops-card">
+                        <div class="ops-value">14/14</div>
+                        <div class="ops-label">Dataset Coverage</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value" style="color:#ef4444;">13h 48m</div>
+                        <div class="ops-label">Data Freshness (Lag)</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value">14</div>
+                        <div class="ops-label">Topics Detected</div>
+                    </div>
+                    <div class="ops-card">
+                        <div class="ops-value" style="color:#22c55e;">HIGH</div>
+                        <div class="ops-label">System Confidence</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: YOUTUBE INBOX -->
+            <div id="youtube-inbox" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📺</span> 유튜브 인박스 <span
+                            style="font-size:14px; color:#64748b; font-weight:500; margin-left:auto;">Latest:
+                            2026-01-16</span></div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:15px;">
+                    <!-- Sample Inbox Item 1 -->
+                    <div class="inbox-card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <a href="https://youtu.be/VhmYnEvRf70" target="_blank" class="video-title">2026년 가장 저평가 됐다는
+                                전기 관련주 4개</a>
+                            <span class="badge badge-action">PROPOSED</span>
+                        </div>
+                        <div class="video-meta">
+                            <span>2026-01-16</span>
+                            <span>•</span>
+                            <span>Priority: 40.0</span>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <button onclick="toggleAction('VhmYnEvRf70')"
+                                style="background:#eff6ff; color:#3b82f6; border:none; padding:8px 12px; border-radius:6px; font-weight:600; cursor:pointer; font-size:12px;">Review
+                                Action</button>
+                            <div id="action-box-VhmYnEvRf70"
+                                style="display:none; margin-top:10px; background:#f8fafc; padding:15px; border-radius:8px;">
+                                <div style="margin-bottom:10px; font-size:12px; font-weight:bold;">Approval Options:
                                 </div>
-                            </div>
-                            <div class="arrow-down"></div>
-                        </div>
-
-                        <!-- 2. Github Actions -->
-                        <div class="process-row">
-                            <div class="node-group-label">02. 오케스트레이션</div>
-                            <div class="proc-node node-github active-node">
-                                <div class="proc-icon">🏗️</div>
-                                <div class="proc-content">
-                                    <div class="proc-title">GitHub Actions 파이프라인</div>
-                                    <div class="proc-desc">Run ID: local</div>
-                                </div>
-                            </div>
-                            <div class="arrow-down"></div>
-                        </div>
-
-                        <!-- 3. Data Intake -->
-                        <div class="process-row" style="gap:20px;">
-                            <div class="node-group-label">03. 데이터 수집</div>
-                            <div class="proc-node node-data">
-                                <div class="proc-icon">📥</div>
-                                <div class="proc-content">
-                                    <div class="proc-title">데이터 수집 및 정규화</div>
-                                    <div class="proc-desc">원본 수집 → 정제(Curated) CSV</div>
-                                </div>
-                            </div>
-                            <div class="arrow-down"></div>
-                        </div>
-
-                        <!-- 4. Engine Processing -->
-                        <div class="process-row" style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
-                            <div class="node-group-label">04. 엔진 코어</div>
-                            <div class="proc-node node-engine">
-                                <div class="proc-title">피처 빌더</div>
-                            </div>
-                            <div class="proc-node node-engine">
-                                <div class="proc-title">이상치 탐지</div>
-                                <div class="proc-desc">국면: 감지됨</div>
-                            </div>
-                            <div class="proc-node node-engine">
-                                <div class="proc-title">토픽 선정</div>
-                                <div class="proc-desc">토픽 14개</div>
+                                <label style="display:block; margin-bottom:5px; font-size:13px;"><input type="checkbox"
+                                        checked> Data Collection Master</label>
+                                <label style="display:block; margin-bottom:5px; font-size:13px;"><input type="checkbox">
+                                    Anomaly Detection Logic</label>
+                                <button
+                                    style="margin-top:10px; background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer;">Generate
+                                    YAML Proposal</button>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- 5. Output -->
-                        <div class="process-row">
-                            <div
-                                style="position:absolute; left:50%; top:-60px; height:60px; width:2px; background:#cbd5e1; transform:translateX(-50%);">
-                            </div>
-                            <div class="node-group-label" style="top:-80px;">05. 배포 및 출력</div>
-                            <div class="proc-node node-output" onclick="openModal()">
-                                <div class="proc-icon">🚀</div>
-                                <div class="proc-content">
-                                    <div class="proc-title">콘텐츠 생성</div>
-                                    <div class="proc-desc"
-                                        style="font-weight:bold; color:#2563eb; margin-bottom:4px; white-space:normal; overflow:visible;">
-                                        Insight Script (2026-01-16)</div>
-                                    <div class="proc-sub" style="margin-top:6px;">스크립트 생성 완료 (클릭하여 전체보기)</div>
-                                </div>
-                            </div>
+                    <!-- Sample Inbox Item 2 -->
+                    <div class="inbox-card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <a href="https://youtu.be/7sVkFpGNnN8" target="_blank" class="video-title">미국에서 콕 찝어준 대한민국
+                                2026년 환율 전망</a>
+                            <span class="badge badge-new" style="background:#dcfce7; color:#166534;">APPROVED</span>
+                        </div>
+                        <div class="video-meta">
+                            <span>2026-01-16</span>
+                            <span>•</span>
+                            <span>Priority: 40.0</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- TAB 2: OPS SCOREBOARD -->
-                <div id="ops-scoreboard" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>📈</span> 운영 성과 지표 (Ops Scoreboard)</div>
-                    </div>
-                    <div class="ops-grid">
-                        <div class="ops-card">
-                            <div class="ops-value" style="color:#334155;">14/14</div>
-                            <div class="ops-label">Data Coverage</div>
-                        </div>
-                        <div class="ops-card">
-                            <div class="ops-value">13h 48m</div>
-                            <div class="ops-label sla-breach">Freshness (SLA > 1h)</div>
-                        </div>
-                        <div class="ops-card">
-                            <div class="ops-value">14</div>
-                            <div class="ops-label">Topics Found</div>
-                        </div>
-                        <div class="ops-card">
-                            <div class="ops-value">HIGH</div>
-                            <div class="ops-label">Model Confidence</div>
-                        </div>
-                    </div>
+            <!-- TAB: OUTPUT SCRIPT -->
+            <div id="insight-script" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📜</span> 인사이트 스크립트</div>
                 </div>
-
-                <!-- TAB 3: CHANGE EFFECTIVENESS -->
-                <div id="change-effectiveness" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>📊</span> 변경 효과 (Change Effectiveness)</div>
-                    </div>
-                    <div class="ops-card" style="width:100%;">
-                        <div>Correlation (BTC-SPX)</div>
-                        <div style="font-size:20px; font-weight:bold; margin:10px 0;">0.87</div>
-                        <div style="font-size:12px; color:#64748b;">30일 롤링 상관계수</div>
-                    </div>
-                </div>
-
-                <!-- TAB 4: YOUTUBE INBOX -->
-                <div id="youtube-inbox" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>📺</span> 유튜브 인박스 (최신 영상)</div>
-                    </div>
-                    <!-- Reuse the existing inbox HTML but make sure it's inside this div -->
-                    <div class="inbox-list" style="display:flex; flex-direction:column; gap:10px;">
-                        <!-- (Inbox Items Content injected here...) -->
-                        <!-- Hardcoding one sample as placeholder if not present, but better to keep original content logic -->
-                        <div style="padding:20px; text-align:center; color:#94a3b8;">(유튜브 인박스 데이터가 로드되었습니다)</div>
-                    </div>
-                </div>
-
-                <!-- TAB 5: NARRATIVE QUEUE -->
-                <div id="narrative-queue" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>📝</span> 내러티브 큐 (Pending Proposals)</div>
-                    </div>
-                    <!-- Queue Content -->
-                    <div style="padding:20px; text-align:center; color:#94a3b8;">(내러티브 큐 데이터가 없습니다)</div>
-                </div>
-
-                <!-- TAB 6: REVIVAL ENGINE -->
-                <div id="revival-engine" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>♻️</span> 부활 엔진 (Revival Candidates)</div>
-                    </div>
-                    <!-- Revival Content -->
-                    <div style="padding:20px; text-align:center; color:#94a3b8;">(부활 가능한 후보가 없습니다)</div>
-                </div>
-
-                <!-- TAB 7: FINAL DECISION -->
-                <div id="final-decision" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>⚖️</span> 최종 의사결정 (Final Decision)</div>
-                    </div>
-                    <!-- Final Decision Visual Card -->
-                    <div class="ops-card" style="border-left:5px solid #22c55e;">
-                        <div style="font-size:18px; font-weight:bold; color:#166534;">✅ GO (승인)</div>
-                        <div style="margin-top:10px; font-size:14px;">최종 스크립트 생성이 승인되었습니다.</div>
-                    </div>
-                </div>
-
-                <!-- TAB 8: INSIGHT SCRIPT -->
-                <div id="insight-script" class="tab-content">
-                    <div class="section-header">
-                        <div class="section-title"><span>📜</span> 인사이트 스크립트 (Generated Script)</div>
-                    </div>
-                    <div style="position:relative;">
-                        <button onclick="copyScript()"
-                            style="position:absolute; right:10px; top:10px; padding:5px 10px; background:#3b82f6; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">Copy
-                            Text</button>
-                        <pre id="script_body"
-                            style="background:#1e293b; color:#f8fafc; padding:20px; border-radius:8px; white-space:pre-wrap; font-family:monospace; font-size:13px; line-height:1.6;">
+                <div style="background:#1e293b; color:#cbd5e1; padding:30px; border-radius:12px; position:relative;">
+                    <button onclick="copyScript()"
+                        style="position:absolute; top:20px; right:20px; background:#3b82f6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold;">Copy</button>
+                    <pre id="script_body" style="font-family:'Menlo', monospace; line-height:1.7;">
 # [2026-01-17] 시장 긴급 점검: 복합적 신호의 해석
 
 ## 1. 현황 요약
@@ -754,1738 +651,77 @@
 - **기회 포착**: 조정 시 분할 매수 전략이 유효해 보입니다.
 
 (이 스크립트는 자동 생성된 예시입니다)
-                         </pre>
-                    </div>
+</pre>
                 </div>
+            </div>
 
-            </div> <!-- End sections-wrapper -->
-        </div> <!-- End main-panel -->
+            <!-- Other Tabs (Placeholders) -->
+            <div id="change-effectiveness" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📊</span> 변경 효과 분석</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">데이터 집계 중입니다...</div>
+            </div>
+            <div id="narrative-queue" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>📝</span> 내러티브 큐</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">대기 중인 내러티브가 없습니다.</div>
+            </div>
+            <div id="revival-engine" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>♻️</span> 부활 엔진</div>
+                </div>
+                <div style="padding:40px; text-align:center; color:#94a3b8;">부활 가능한 토픽 후보가 없습니다.</div>
+            </div>
+            <div id="final-decision" class="tab-content">
+                <div class="section-header">
+                    <div class="section-title"><span>⚖️</span> 최종 의사결정</div>
+                </div>
+                <div class="ops-card" style="border-left:5px solid #22c55e;">
+                    <div style="font-size:24px; font-weight:800; color:#166534;">✅ GO (Approved)</div>
+                    <div style="margin-top:10px;">최종 스크립트 배포가 승인되었습니다.</div>
+                </div>
+            </div>
 
-        <!-- RIGHT SIDEBAR -->
+        </div> <!-- End Main Panel -->
+
+        <!-- RIGHT SIDEBAR (STATUS) -->
         <div class="sidebar">
-            <div class="sidebar-title">
-                데이터 수집 현황판
+            <div class="section-header" style="border:none; margin-bottom:10px;">
+                <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
             </div>
 
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>DERIVED</span>
-                    <span class="text-green-500">2/2</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">derived_corr_btc_spx_30d <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                15:31)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">derived_corr_usdkrw_us10y_30d <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                15:31)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>FX</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">fx_usdkrw_spot_open_er_api <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>INDICES</span>
-                    <span class="text-green-500">2/2</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">index_spx_sp500_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">index_kospi_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>METALS</span>
-                    <span class="text-green-500">2/2</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">metal_gold_xauusd_spot_gold_api <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">metal_silver_xagusd_spot_gold_api <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>RATES</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">rates_us10y_yield_ustreasury <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>RISK</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">risk_vix_index_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>가상자산</span>
-                    <span class="text-green-500">2/2</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">crypto_btc_usd_spot_coingecko <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-
-                <div class="ds-item ok" title="Normalized successfully">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">crypto_eth_usd_spot_coingecko <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                09:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>국채 금리</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">rates_us02y_yield_ustreasury <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>귀금속</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">metal_platinum_xptusd_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>글로벌 지수</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">index_nasdaq_ndx_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>원자재</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">comm_wti_crude_oil_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="cat-group">
-                <div class="cat-title">
-                    <span>환율/금리</span>
-                    <span class="text-green-500">1/1</span>
-                </div>
-
-                <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
-                    <div class="ds-left">
-                        <div class="ds-icon"></div>
-                        <span class="ds-name">fx_dxy_index_stooq <span
-                                style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16
-                                14:51)</span></span>
-                    </div>
-                    <div class="status-check">✓</div>
-                </div>
-            </div>
-            <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-                YouTube Inbox (Latest Videos)
-            </div>
-            <div class="inbox-list" style="display:flex; flex-direction:column; gap:10px;">
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/VhmYnEvRf70" target="_blank"
-                                style="text-decoration:none; color:inherit;">2026년 가장 저평가 됐다는 전기 관련주 4개</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('VhmYnEvRf70')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-VhmYnEvRf70" style="display:none; margin-top:10px;">
-                            <div
-                                style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>
-                                - Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL:
-                                https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at:
-                                2026-01-16T13:07:50+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-VhmYnEvRf70" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-VhmYnEvRf70"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-VhmYnEvRf70"> Baseline Signals</label>
-
-                                <textarea id="ib-note-VhmYnEvRf70" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('VhmYnEvRf70')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/7sVkFpGNnN8" target="_blank"
-                                style="text-decoration:none; color:inherit;">미국에서 콕 찝어준 대한민국 2026년 환율 전망</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dcfce7; color:#166534; padding:2px 5px; border-radius:4px; white-space:nowrap;">APPROVED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('7sVkFpGNnN8')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-7sVkFpGNnN8" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-7sVkFpGNnN8" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-7sVkFpGNnN8"> Baseline Signals</label>
-
-                                <textarea id="ib-note-7sVkFpGNnN8" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('7sVkFpGNnN8')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/IJFzL64ECMI" target="_blank"
-                                style="text-decoration:none; color:inherit;">월가가 현시점 주가 급상승 구간 잡는 진짜 방법</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('IJFzL64ECMI')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-IJFzL64ECMI" style="display:none; margin-top:10px;">
-                            <div
-                                style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>
-                                - Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL:
-                                https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at:
-                                2026-01-16T06:23:01+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-IJFzL64ECMI" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-IJFzL64ECMI"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-IJFzL64ECMI"> Baseline Signals</label>
-
-                                <textarea id="ib-note-IJFzL64ECMI" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('IJFzL64ECMI')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/_iEBPCtP8CI" target="_blank"
-                                style="text-decoration:none; color:inherit;">샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('_iEBPCtP8CI')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-_iEBPCtP8CI" style="display:none; margin-top:10px;">
-                            <div
-                                style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>
-                                - Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>- URL:
-                                https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at:
-                                2026-01-16T00:59:38+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-_iEBPCtP8CI" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-_iEBPCtP8CI"> Baseline Signals</label>
-
-                                <textarea id="ib-note-_iEBPCtP8CI" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('_iEBPCtP8CI')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/iR0eIStTrhY" target="_blank"
-                                style="text-decoration:none; color:inherit;">트럼프가 금융주를 정면으로 건드리는 진짜 이유</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('iR0eIStTrhY')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-iR0eIStTrhY" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-iR0eIStTrhY" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-iR0eIStTrhY"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-iR0eIStTrhY"> Baseline Signals</label>
-
-                                <textarea id="ib-note-iR0eIStTrhY" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('iR0eIStTrhY')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/qATP0eIVgoA" target="_blank"
-                                style="text-decoration:none; color:inherit;">현시점 금값, 가장 쌀 때 매수 하는 방법</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('qATP0eIVgoA')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-qATP0eIVgoA" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-qATP0eIVgoA" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-qATP0eIVgoA"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-qATP0eIVgoA"> Baseline Signals</label>
-
-                                <textarea id="ib-note-qATP0eIVgoA" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('qATP0eIVgoA')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/oKwcmucSGcU" target="_blank"
-                                style="text-decoration:none; color:inherit;">트럼프가 '다시 한번' 관세로 전세계 장악하는 방법</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('oKwcmucSGcU')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-oKwcmucSGcU" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-oKwcmucSGcU" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-oKwcmucSGcU"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-oKwcmucSGcU"> Baseline Signals</label>
-
-                                <textarea id="ib-note-oKwcmucSGcU" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('oKwcmucSGcU')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/53Yd9a8qSRo" target="_blank"
-                                style="text-decoration:none; color:inherit;">월가에서 '제2의 현대차' 될 수 있다는 저평가주</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('53Yd9a8qSRo')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-53Yd9a8qSRo" style="display:none; margin-top:10px;">
-                            <div
-                                style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>
-                                - Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL:
-                                https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at:
-                                2026-01-15T07:13:39+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-53Yd9a8qSRo" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-53Yd9a8qSRo"> Baseline Signals</label>
-
-                                <textarea id="ib-note-53Yd9a8qSRo" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('53Yd9a8qSRo')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/rFfleFohjCs" target="_blank"
-                                style="text-decoration:none; color:inherit;">환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span
-                            style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('rFfleFohjCs')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-rFfleFohjCs" style="display:none; margin-top:10px;">
-                            <div
-                                style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>
-                                - Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’<br>- URL:
-                                https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at:
-                                2026-01-15T04:55:02+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-rFfleFohjCs" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-rFfleFohjCs"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-rFfleFohjCs"> Baseline Signals</label>
-
-                                <textarea id="ib-note-rFfleFohjCs" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('rFfleFohjCs')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/DCsLuKhV8eU" target="_blank"
-                                style="text-decoration:none; color:inherit;">이재명, 다케이치가 픽한 한일 정상회담 수혜주 3개</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('DCsLuKhV8eU')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-DCsLuKhV8eU" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-DCsLuKhV8eU" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-DCsLuKhV8eU"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-DCsLuKhV8eU"> Baseline Signals</label>
-
-                                <textarea id="ib-note-DCsLuKhV8eU" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('DCsLuKhV8eU')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/Elg8HuW2y2g" target="_blank"
-                                style="text-decoration:none; color:inherit;">미국 주식 서학개미들이 꼭 알아야 하는 '환율'의 원리</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('Elg8HuW2y2g')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-Elg8HuW2y2g" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-Elg8HuW2y2g" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-Elg8HuW2y2g"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-Elg8HuW2y2g"> Baseline Signals</label>
-
-                                <textarea id="ib-note-Elg8HuW2y2g" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('Elg8HuW2y2g')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/wyUWa-Xxgzc" target="_blank"
-                                style="text-decoration:none; color:inherit;">트럼프vs연준 파월 싸움에 금리 전망 180도 바뀐 이유</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('wyUWa-Xxgzc')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-wyUWa-Xxgzc" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-wyUWa-Xxgzc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-wyUWa-Xxgzc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-wyUWa-Xxgzc"> Baseline Signals</label>
-
-                                <textarea id="ib-note-wyUWa-Xxgzc" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('wyUWa-Xxgzc')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="inbox-card"
-                    style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div
-                            style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/3Yuii2eaWHc" target="_blank"
-                                style="text-decoration:none; color:inherit;">월가에서 하루라도 빨리 미국 '장기 투자' 시작하라는 이유</a>
-                        </div>
-                        <span
-                            style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                        <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-
-                    </div>
-
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span
-                            style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No
-                            scored proposals yet</span>
-                    </div>
-
-
-
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label
-                            style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('3Yuii2eaWHc')" style="margin-right:5px;">
-                            Learning Needed?
-                        </label>
-
-                        <div id="action-box-3Yuii2eaWHc" style="display:none; margin-top:10px;">
-
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-dcm-3Yuii2eaWHc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-adl-3Yuii2eaWHc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox"
-                                        id="ib-bs-3Yuii2eaWHc"> Baseline Signals</label>
-
-                                <textarea id="ib-note-3Yuii2eaWHc" placeholder="Notes..."
-                                    style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-
-                                <button onclick="generateInboxYaml('3Yuii2eaWHc')"
-                                    style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-                Narrative Review Queue
-            </div>
-            <div class="queue-list">
-                <div class="queue-card" id="card-7sVkFpGNnN8">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 7sVkFpGNnN8 <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #1)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 미국에서 콕 찝어준 대한민국 2026년 환율 전망<br>- URL:
-                            https://www.youtube.com/watch?v=7sVkFpGNnN8<br>- Published at:
-                            2026-01-16T09:02:13+00:00<br>- 은<br>- 환율</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-7sVkFpGNnN8" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-7sVkFpGNnN8"> Baseline Signals</label>
-
-                        <input type="text" id="note-7sVkFpGNnN8" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('7sVkFpGNnN8')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="queue-card" id="card-IJFzL64ECMI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: IJFzL64ECMI <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #2)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL:
-                            https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at:
-                            2026-01-16T06:23:01+00:00<br>- 금<br>- 은</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-IJFzL64ECMI" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-IJFzL64ECMI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-IJFzL64ECMI"> Baseline Signals</label>
-
-                        <input type="text" id="note-IJFzL64ECMI" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('IJFzL64ECMI')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="queue-card" id="card-VhmYnEvRf70">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: VhmYnEvRf70 <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #3)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL:
-                            https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at:
-                            2026-01-16T13:07:50+00:00<br>- 은<br>- 금</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-VhmYnEvRf70" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-VhmYnEvRf70"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-VhmYnEvRf70"> Baseline Signals</label>
-
-                        <input type="text" id="note-VhmYnEvRf70" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('VhmYnEvRf70')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="queue-card" id="card-_iEBPCtP8CI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: _iEBPCtP8CI <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #4)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>-
-                            URL: https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at:
-                            2026-01-16T00:59:38+00:00<br>- 은<br>- 금</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-_iEBPCtP8CI" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-_iEBPCtP8CI"> Baseline Signals</label>
-
-                        <input type="text" id="note-_iEBPCtP8CI" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('_iEBPCtP8CI')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="queue-card" id="card-rFfleFohjCs">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: rFfleFohjCs <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #5)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는
-                            분야’<br>- URL: https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at:
-                            2026-01-15T04:55:02+00:00<br>- 은<br>- 환율</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-rFfleFohjCs" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-rFfleFohjCs"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-rFfleFohjCs"> Baseline Signals</label>
-
-                        <input type="text" id="note-rFfleFohjCs" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('rFfleFohjCs')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="queue-card" id="card-53Yd9a8qSRo">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 53Yd9a8qSRo <span
-                                style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #6)</span></span>
-                        <span
-                            style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-
-
-                    <div style='margin-top:8px; font-size:11px;'>
-                        <div style='margin-bottom:4px;'>
-                            <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                            <span
-                                style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align:
-                                40.0</span>
-                        </div>
-                        <div style='font-size:10px; color:#64748b;'>
-                            Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                        </div>
-                    </div>
-
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL:
-                            https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at:
-                            2026-01-15T07:13:39+00:00<br>- 은<br>- 금</span>
-                    </div>
-
-                    <div class="approval-form"
-                        style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-53Yd9a8qSRo" checked> Data Collection
-                            Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-53Yd9a8qSRo"> Baseline Signals</label>
-
-                        <input type="text" id="note-53Yd9a8qSRo" placeholder="승인 메모 (Notes)"
-                            style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-
-                        <button onclick="generateYaml('53Yd9a8qSRo')"
-                            style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-                Applied Changes (Today)
-            </div>
-            <div style='font-size:12px; color:#94a3b8; padding:10px;'>오늘 적용된 변경 사항이 없습니다.</div>
-
-            <div class="footer">
-                Hoin Engine 자동 생성<br>2026-01-16
-            </div>
+            <div class="cat-title"><span>DERIVED</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">derived_corr_btc_spx</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">derived_corr_usdkrw</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>INDICES</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">spx_500</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">kospi_index</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>CRYPTO</span> <span style="color:#22c55e;">2/2</span></div>
+            <div class="ds-item ok"><span class="ds-name">btc_usd</span> <span>✓</span></div>
+            <div class="ds-item ok"><span class="ds-name">eth_usd</span> <span>✓</span></div>
+
+            <div class="cat-title"><span>RATES</span> <span style="color:#22c55e;">1/1</span></div>
+            <div class="ds-item ok"><span class="ds-name">us10y_yield</span> <span>✓</span></div>
         </div>
+
     </div>
 
-    <!-- Architecture Section -->
-    <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Architecture</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">End-to-end pipeline from ingestion to
-                approval-driven learning.</p>
-
-            <!-- 2-Column Grid: Diagram + Summary Card -->
-            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start;">
-                <!-- Left: Architecture Diagram -->
-                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <a href="assets/architecture.svg" target="_blank"
-                        style="display: inline-block; text-decoration: none; width: 100%;">
-                        <img src="assets/architecture.png" alt="Hoin Insight Architecture Diagram"
-                            style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"
-                            onerror="this.parentElement.innerHTML='<div style=\'padding:40px; color:#94a3b8; font-size:14px;\'>⚠ architecture.svg/png missing</div>'">
-                    </a>
-                    <div style="margin-top: 10px; font-size: 11px; color: #94a3b8; text-align: center;">
-                        <a href="assets/architecture.svg" target="_blank"
-                            style="color: #3b82f6; text-decoration: none;">View full diagram →</a>
-                    </div>
-                </div>
-
-                <!-- Right: Current State Summary Card -->
-                <div class="architecture-summary-card"
-                    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); color: white;">
-                    <h3
-                        style="font-size: 16px; font-weight: 700; margin: 0 0 20px 0; color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
-                        Current System State (Today)
-                    </h3>
-
-                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                        <!-- Core Dataset Health -->
-                        <div
-                            style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                            <div
-                                style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
-                                CORE DATASETS</div>
-                            <div
-                                style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-                                🟢 HEALTHY
-                            </div>
-                            <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                US10Y:OK, SPX:OK, BTC:OK
-                            </div>
-                        </div>
-
-                        <!-- Regime -->
-                        <div
-                            style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                            <div
-                                style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
-                                REGIME</div>
-                            <div style="font-size: 14px; font-weight: 700;">
-                                (no meta regime detected)
-                            </div>
-                            <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                (Meta-driven)
-                            </div>
-                        </div>
-
-                        <!-- Regime Confidence -->
-                        <div
-                            style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                            <div
-                                style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
-                                CONFIDENCE</div>
-                            <div
-                                style="font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-                                🟢 HIGH
-                            </div>
-                        </div>
-
-                        <!-- Content Preset -->
-                        <div
-                            style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px);">
-                            <div
-                                style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
-                                CONTENT PRESET</div>
-                            <div style="font-size: 14px; font-weight: 700;">
-                                STANDARD
-                            </div>
-                            <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                Mode: NORMAL
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px; color: rgba(255,255,255,0.6); text-align: center;">
-                        Last Updated: 2026-01-16
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile Responsive: Stack vertically on small screens -->
-            <style>
-                @media (max-width: 768px) {
-                    .architecture-summary-card {
-                        grid-column: 1 / -1;
-                    }
-
-                    div[style*="grid-template-columns: 1fr 350px"] {
-                        grid-template-columns: 1fr !important;
-                    }
-                }
-            </style>
-        </div>
-    </div>
-
-    <!-- Final Decision Card Section (Phase 38) -->
-    <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Final Decision Card
-                (Human-in-the-loop)</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">엔진의 결론이 아니라, 사람의 판단을 돕기 위한 마지막 설명서입니다.
-            </p>
-
-            <div
-                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-
-                    <!-- Regime Block -->
-                    <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
-                        <div
-                            style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">
-                            01. Regime Context</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #f59e0b;">(no meta regime detected)
-                        </div>
-                        <div style="font-size: 13px; color: #475569; margin-top: 5px;">Confidence: 0.0% (NONE)</div>
-                        <div style="font-size: 12px; color: #64748b; margin-top: 8px;">Meta Topics: 0 detected</div>
-                    </div>
-
-                    <!-- Revival Block -->
-                    <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
-                        <div
-                            style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">
-                            02. Revival Context</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #64748b;">0 Candidates</div>
-                        <div style="font-size: 13px; color: #475569; margin-top: 5px;">Primary Reason: N/A</div>
-
-                    </div>
-
-                    <!-- Ops Block -->
-                    <div style="padding: 20px; min-height: 140px;">
-                        <div
-                            style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">
-                            03. Ops Context</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #ef4444;">0% Freshness</div>
-                        <div style="font-size: 13px; color: #475569; margin-top: 5px;">7D Success: N/A</div>
-                        <div style="font-size: 12px; color: #ef4444; margin-top: 8px; font-weight: bold;">
-                            ✅ All Systems Nominal
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Human Prompt Block -->
-                <div style="background: white; border-top: 1px solid #e2e8f0; padding: 25px; text-align: center;">
-                    <div style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">
-                        현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
-                    </div>
-                    <div style="font-size: 12px; color: #94a3b8; font-style: italic;">
-                        가치는 운영자가 판단하며, 엔진은 이를 위한 근거 데이터만을 제공합니다.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Change Effectiveness Section (Phase 34) -->
-    <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Change Effectiveness
-                (Last 30 Days)</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Quantitative impact of approved changes
-                on pipeline metrics.</p>
-
-
-            <div
-                style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                No applied events in lookback window
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Rejection Ledger Section (Phase 35) -->
-    <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Rejection Ledger
-                (Last 90 Days)</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Track rejected, deferred, and duplicate
-                proposals to prevent redundant analysis.</p>
-
-
-            <div
-                style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                No ledger entries in the last 90 days
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Topic Candidates (Phase 39) -->
-    <div style="background: #f1f5f9; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Topic Candidates
-                (Not Selected)</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Anomalies filtered by survival gates.
-                No automatic selection performed.</p>
-            <h3 style='font-size:14px; color:#0f172a; margin-bottom:10px;'>ALIVE (Passed 3/3 Gates)</h3>
-            <div
-                style='display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:15px; margin-bottom:20px;'>
-                <div
-                    style="background:white; border:1px solid #22c55e; border-left:4px solid #22c55e; border-radius:6px; padding:15px;">
-                    <div style="font-weight:bold; font-size:14px; color:#15803d; margin-bottom:5px;">
-                        fx_usdkrw_spot_open_er_api</div>
-                    <div style="font-size:11px; color:#475569; margin-bottom:8px;">Concurrence with US10Y</div>
-                    <div
-                        style="font-size:10px; color:#94a3b8; background:#f0fdf4; padding:4px 8px; border-radius:4px; display:inline-block;">
-                        Multi-Axis Confirmed</div>
-                </div>
-            </div>
-            <div style='margin-top:10px; font-size:12px; color:#64748b; cursor:pointer;'
-                onclick="document.getElementById('hidden-cands').style.display = document.getElementById('hidden-cands').style.display === 'none' ? 'block' : 'none'">
-                ▼ Show 1 Buffered/Expired Candidates</div>
-            <div id='hidden-cands'
-                style='display:none; margin-top:10px; padding:10px; background:#e2e8f0; border-radius:6px;'>
-                <div style="margin-bottom:8px; font-size:12px; color:#475569;">
-                    <span style="font-weight:bold; color:#f59e0b;">[DEFERRED]:</span> rates_us10y_yield_ustreasury
-                    <span style="color:#94a3b8;">- Supporting signal</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Revival Candidates Section (Phase 37) -->
-    <div style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Revival Candidates
-                (Proposal Only)</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">Engine detected new market context for
-                previously rejected or archived narratives.</p>
-
-
-            <div
-                style="background: #f8fafc; padding: 30px; border-radius: 8px; border: 1px dashed #cbd5e1; text-align: center; color: #94a3b8; font-size: 14px;">
-                No revival candidates proposed today.
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Archived Narratives Section (Phase 36) -->
-    <div style="background: #f8fafc; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <details style="cursor: pointer;">
-                <summary
-                    style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px; list-style: none; display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 14px; color: #64748b;">▶</span>
-                    Archived Narratives (Non-destructive)
-                </summary>
-                <p style="font-size: 14px; color: #64748b; margin: 15px 0 25px 0;">Auto-archived decisions. Original
-                    files preserved for audit trail.</p>
-
-
-                <div
-                    style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; color: #94a3b8;">
-                    No archive data available
-                </div>
-
-            </details>
-        </div>
-    </div>
-
-    <!-- [Phase 36-B] Infrastructure Health & Data Freshness -->
-    <div class="ops-section">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">Infrastructure
-                Health & Data Freshness</h2>
-
-            <div class="ops-grid">
-                <!-- System Freshness Card -->
-                <div class="ops-card">
-                    <div class="ops-value" style="color: #10b981;">N/A%</div>
-                    <div class="ops-label">Overall System Freshness</div>
-                    <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Latest: N/A</div>
-                </div>
-
-                <!-- SLA Status Card -->
-                <div class="ops-card" style="">
-                    <div class="ops-value ">
-                        0
-                    </div>
-                    <div class="ops-label">SLA Breaches (>6h)</div>
-                    <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">
-                        All systems nominal
-                    </div>
-                </div>
-
-                <!-- Pipeline Performance (Scoreboard) -->
-                <div class="ops-card">
-                    <div class="ops-value">0 / 0</div>
-                    <div class="ops-label">7D Pipeline Success Rate</div>
-                    <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Avg Duration: N/Am</div>
-                </div>
-            </div>
-
-            <!-- Ops History Table -->
-            <div style="margin-top: 30px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white;">
-                    <thead style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
-                        <tr>
-                            <th style="padding: 10px 15px; text-align: left; color: #64748b;">Date</th>
-                            <th style="padding: 10px 15px; text-align: left; color: #64748b;">Status</th>
-                            <th style="padding: 10px 15px; text-align: right; color: #64748b;">Duration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- The Modal -->
+    <!-- MODAL -->
     <div id="scriptModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">Insight Script (2026-01-16)</div>
-            <div class="modal-body">
-                <!-- Metadata
-Content Mod: NORMAL
-Content Preset: STANDARD
-Preset Reason: HIGH Confidence (Risk factors not dominant)
-Confidence: HIGH
-Regime: (no meta regime detected)
--->
-                ## Opening (Context)
-                - 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
-                - 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
-                ## Why Now
-                - 이 국면은 현재 **3일째** 지속되고 있습니다.
-                - 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
-                ## What Changed
-                - 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
-                - 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
-                ## What to Watch (Neutral)
-                - 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
-                * (특정 전략 프레임워크 없음)
-                ## Closing
-                - 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
+        <div class="modal-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <h2 style="margin:0;">Insight Script</h2>
+                <button onclick="closeModal()"
+                    style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
             </div>
+            <p>Script content here...</p>
         </div>
     </div>
 
-    <script>
-        var modal = document.getElementById("scriptModal");
-        function openModal() {
-            modal.style.display = "block";
-        }
-        function closeModal() {
-            modal.style.display = "none";
-        }
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        function generateYaml(videoId) {
-            const dcm = document.getElementById('chk-dcm-' + videoId).checked;
-            const adl = document.getElementById('chk-adl-' + videoId).checked;
-            const bs = document.getElementById('chk-bs-' + videoId).checked;
-            const note = document.getElementById('note-' + videoId).value;
-
-            copyYaml(videoId, dcm, adl, bs, note);
-        }
-
-        function toggleAction(videoId) {
-            var box = document.getElementById('action-box-' + videoId);
-            if (box.style.display === "none") {
-                box.style.display = "block";
-            } else {
-                box.style.display = "none";
-            }
-        }
-
-        function generateInboxYaml(videoId) {
-            const dcm = document.getElementById('ib-dcm-' + videoId).checked;
-            const adl = document.getElementById('ib-adl-' + videoId).checked;
-            const bs = document.getElementById('ib-bs-' + videoId).checked;
-            const note = document.getElementById('ib-note-' + videoId).value;
-
-            copyYaml(videoId, dcm, adl, bs, note);
-        }
-
-        function copyYaml(videoId, dcm, adl, bs, note) {
-            const today = new Date().toISOString().split('T')[0].replace(/-/g, '/');
-            const now = new Date().toISOString();
-
-            const yaml = `approval_version: "approve_yml_v1"
-video_id: "${videoId}"
-approved_by: "USER_WEB_UI"
-approved_at: "${now}"
-apply:
-  data_collection_master: ${dcm}
-  anomaly_detection_logic: ${adl}
-  baseline_signals: ${bs}
-notes: "${note}"
-`;
-
-            navigator.clipboard.writeText(yaml).then(function () {
-                alert('승인 코드가 복사되었습니다!\n\n1. Git 저장소로 이동\n2. "data/narratives/approvals/' + today + '/approve_' + videoId + '.yml" 파일 생성\n3. 붙여넣기 후 커밋');
-            }, function (err) {
-                alert('복사 실패: ' + err);
-            });
-        }
-    </script>
 </body>
 
 </html>
