@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-16T22:50:31Z
-- finished_utc: 2026-01-16T22:50:33Z
+- started_utc: 2026-01-16T22:52:20Z
+- finished_utc: 2026-01-16T22:52:22Z
 - status: SUCCESS
 
 ## details
@@ -15,7 +15,10 @@ topic: ok
 report: ok | data/reports/2026/01/16/daily_brief.md
 checks:
 schema_checks:
-[OK] schema(fx_dxy_index_stooq): timeseries_v1
+[OK] schema(index_nasdaq_ndx_stooq): timeseries_v1
+[OK] schema(rates_us02y_yield_ustreasury): timeseries_v1
+[OK] schema(comm_wti_crude_oil_stooq): timeseries_v1
+[OK] schema(metal_platinum_xptusd_stooq): timeseries_v1
 engine: done
 health: data/reports/2026/01/16/health.json
 ```
