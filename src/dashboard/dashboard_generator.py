@@ -96,6 +96,9 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
                      if (now - mtime).total_seconds() < 86400: # Modified within 24h
                          status = "OK"
                          reason = "데이터 파일 존재 (자동 복구됨)"
+                         # [Fix] Use file mtime as timestamp if missing
+                         if not timestamp:
+                             timestamp = mtime.isoformat()
         except Exception:
             pass
 
