@@ -1100,6 +1100,52 @@ def generate_dashboard(base_dir: Path):
     sidebar_html += applied_html
 
     
+    # [Phase 35] Evolution Proposals Logic
+    evolution_html = ""
+    evo_dir = base_dir / "data" / "evolution" / "proposals"
+    if evo_dir.exists():
+        for evo_file in evo_dir.glob("*.json"):
+            try:
+                # Handle list or single dict
+                content = json.loads(evo_file.read_text(encoding='utf-8'))
+                items = content if isinstance(content, list) else [content]
+                
+                for item in items:
+                    if item.get("status") != "PROPOSED": continue
+                    
+                    bg_color = "#f3e5f5" if item.get('category') == "LOGIC_UPDATE" else "#e3f2fd"
+                    border_color = "#9c27b0" if item.get('category') == "LOGIC_UPDATE" else "#2196f3"
+                    badge = "🧠 LOGIC" if item.get('category') == "LOGIC_UPDATE" else "📊 DATA"
+                    
+                    evolution_html += f"""
+                    <div class="card" style="border-left: 4px solid {border_color}; background: {bg_color}; margin-bottom: 15px; padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:{border_color}; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">{badge}</span>
+                            <small style="font-size:10px; color:#666;">{item.get('generated_at','')[:10]}</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            {item['content'].get('condition', '') or item['content'].get('add_line', '')} 
+                            <br>→ {item['content'].get('meaning', '')}
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "{str(item.get('evidence',{}).get('quote',''))[:60]}..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('{item['id']}')" style="flex:1; background:{border_color}; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('{item['id']}')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    """
+            except Exception as e:
+                print(f"Error loading evo file {evo_file}: {e}")
+
+    if not evolution_html:
+        evolution_html = "<div style='color:#999; text-align:center; padding:20px; font-size:12px;'>새로운 진화 제안이 없습니다.</div>"
+
     # [Layout Fix] Re-assembling the HTML with proper Tab Structure
 
     # [Restored Logic] Calculate missing variables for Dashboard
