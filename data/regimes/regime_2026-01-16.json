@@ -1,9 +1,13 @@
 {
   "date": "2026-01-16",
-  "regime": "(no meta regime detected)",
-  "basis_type": "NONE",
-  "basis_id": "",
-  "confidence": 0.0,
-  "supporting_meta_topics": [],
-  "fallback_driver": null
+  "regime": "ACCELERATION",
+  "confidence": "HIGH",
+  "description": "Strong trend acceleration detected in USD/KRW and Yields.",
+  "meta_topics": [
+    "Exchange Rate Pressure (USD/KRW)"
+  ],
+  "stats": {
+    "volatility": "HIGH",
+    "momentum": "POSITIVE"
+  }
 }
