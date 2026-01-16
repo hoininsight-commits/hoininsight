@@ -421,12 +421,22 @@ def generate_dashboard(base_dir: Path):
              # Timestamp Display
              ts_html = ""
              if ds.get("last_updated"):
-                 # Format: 2026-01-16T15:30:00Z -> 15:30
+                 # Format: 2026-01-16T15:30:00Z -> 01/16 15:30
                  try:
-                     short_ts = ds["last_updated"].split("T")[1][:5]
+                     # Parse ISO string
+                     dt_obj = datetime.fromisoformat(ds["last_updated"])
+                     # Format to MM/DD HH:MM
+                     short_ts = dt_obj.strftime("%m/%d %H:%M")
                      ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({short_ts})</span>'
                  except:
-                     ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
+                     # Fallback simple slice if iso parse fails but it looks like ISO
+                     if "T" in str(ds["last_updated"]):
+                         parts = ds["last_updated"].split("T")
+                         date_part = parts[0][5:] # 2026-01-16 -> 01-16
+                         time_part = parts[1][:5] # 15:30:00 -> 15:30
+                         ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({date_part.replace("-","/")} {time_part})</span>'
+                     else:
+                         ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
 
              sidebar_html += f"""
              <div class="ds-item {status_cls}" title="{ds.get('reason','')}">
