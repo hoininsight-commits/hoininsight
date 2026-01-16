@@ -553,30 +553,38 @@ def generate_dashboard(base_dir: Path):
 
         for i in range(3): # Scan last 3 days
             scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
-            meta_dir = base_dir / "data/narratives/metadata" / scan_ymd
-            if meta_dir.exists():
-                for m_file in meta_dir.glob("meta_*.json"):
-                    try:
-                        md = json.loads(m_file.read_text(encoding="utf-8"))
-                        vid = md.get("video_id")
-                        if not vid: continue
-                        
-                        # Determine Status
-                        status = "NEW"
-                        
-                        # Check PROPOSED
-                        prop_path = base_dir / "data/narratives/proposals" / scan_ymd / f"proposal_{vid}.md"
-                        has_prop = prop_path.exists()
-                        if has_prop:
-                            status = "PROPOSED"
+            # [Fix] Scan raw/youtube instead of metadata
+            # Structure: data/narratives/raw/youtube/YYYY/MM/DD/{VIDEO_ID}/metadata.json
+            raw_dir = base_dir / "data/narratives/raw/youtube" / scan_ymd
+            
+            if raw_dir.exists():
+                # raw_dir contains video_id folders
+                for vid_dir in raw_dir.iterdir():
+                    if not vid_dir.is_dir(): continue
+                    
+                    m_file = vid_dir / "metadata.json"
+                    if m_file.exists():
+                        try:
+                            md = json.loads(m_file.read_text(encoding="utf-8"))
+                            vid = md.get("video_id")
+                            if not vid: continue
                             
-                        # Check APPROVED
-                        # We need to search approvals fairly broadly or just in likely places
-                        # For simplicity, check TODAY and Scan Date
-                        appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
-                        appr_path_2 = base_dir / "data/narratives/approvals" / ymd.replace("-","/") / f"approve_{vid}.yml"
-                        if appr_path_1.exists() or appr_path_2.exists():
-                            status = "APPROVED"
+                            # Determine Status
+                            status = "NEW"
+                            
+                            # Check PROPOSED
+                            prop_path = base_dir / "data/narratives/proposals" / scan_ymd / f"proposal_{vid}.md"
+                            has_prop = prop_path.exists()
+                            if has_prop:
+                                status = "PROPOSED"
+                                
+                            # Check APPROVED
+                            # We need to search approvals fairly broadly or just in likely places
+                            # For simplicity, check TODAY and Scan Date
+                            appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
+                            appr_path_2 = base_dir / "data/narratives/approvals" / ymd.replace("-","/") / f"approve_{vid}.yml"
+                            if appr_path_1.exists() or appr_path_2.exists():
+                                status = "APPROVED"
                             
                         # Check APPLIED
                         if vid in applied_today_vids:
