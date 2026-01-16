@@ -1,0 +1,33 @@
+[
+    {
+        "id": "EVO-MOCK-001",
+        "generated_at": "2026-01-17T02:46:00Z",
+        "category": "LOGIC_UPDATE",
+        "status": "PROPOSED",
+        "content": {
+            "condition": "구리 가격 하락 + 금 가격 신고가 (Ratio 급등)",
+            "meaning": "강력한 경기 침체 신호 (Safe Haven Divergence)",
+            "type": "NEW_ANOMALY_LOGIC"
+        },
+        "evidence": {
+            "quote": "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다.",
+            "source": "금과 구리의 기이한 움직임 (YouTube)"
+        },
+        "action_required": "REVIEW_AND_MERGE"
+    },
+    {
+        "id": "EVO-MOCK-002",
+        "generated_at": "2026-01-17T02:48:00Z",
+        "category": "DATA_UPDATE",
+        "status": "PROPOSED",
+        "content": {
+            "target_file": "DATA_COLLECTION_MASTER.md",
+            "add_line": "| 원자재 | 우라늄 현물 | TradingEconomics | API | Free | CANDIDATE | 원전 재가동 및 AI 전력 수요 | 1일 | 수집데이터 |"
+        },
+        "evidence": {
+            "quote": "AI 전력 수요 폭증으로 우라늄 수급 불균형이 심화되고 있습니다.",
+            "source": "AI 전력망의 숨겨진 보석 (YouTube)"
+        },
+        "action_required": "REVIEW_AND_MERGE"
+    }
+]
