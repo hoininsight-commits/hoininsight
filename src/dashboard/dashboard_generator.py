@@ -1641,6 +1641,16 @@ def generate_dashboard(base_dir: Path):
                 <div class="sidebar-title">
                     데이터 수집 현황판
                 </div>
+                
+                <!-- [Phase 35] System Evolution Section -->
+                <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
+                    <h3 style="color:#6a1b9a; border-bottom: 2px solid #ce93d8; padding-bottom: 8px; font-size:14px; margin-top:0;">🚀 시스템 진화 제안</h3>
+                    <p style="font-size:11px; color:#666; margin-bottom:15px; line-height:1.4;">
+                        영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
+                    </p>
+                    {evolution_html}
+                </div>
+
                 {sidebar_html}
                 <div class="footer">
                     Hoin Engine 자동 생성<br>{ymd}
