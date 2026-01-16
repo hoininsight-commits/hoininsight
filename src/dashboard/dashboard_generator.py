@@ -2045,7 +2045,9 @@ if __name__ == "__main__":
     os.makedirs("data/dashboard", exist_ok=True)
     os.makedirs("dashboard", exist_ok=True)
     
-    html = generate_dashboard()
+    # Pass current directory as base_dir
+    base_dir = os.getcwd()
+    html = generate_dashboard(base_dir)
     
     with open("dashboard/index.html", "w") as f:
         f.write(html)
