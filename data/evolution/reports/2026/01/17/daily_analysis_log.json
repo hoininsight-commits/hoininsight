@@ -1,6 +1,6 @@
 {
   "date": "2026/01/17",
-  "total_analyzed": 2,
+  "total_analyzed": 3,
   "results": [
     {
       "summary": "이란 사태는 단순 이벤트가 아닌 '자본 경로의 강제 재고정(Capital Route Reconfiguration)' 시그널임.",
@@ -44,7 +44,48 @@
         }
       ],
       "source_file": "Iran_Crisis_MOCK_MODE.txt",
-      "analyzed_at": "2026-01-17T02:11:41.951288"
+      "analyzed_at": "2026-01-17T02:35:12.498833"
+    },
+    {
+      "summary": "미세 공정 한계 돌파(Hybrid Bonding)에 따른 계측 장비 필수화",
+      "data_usage": [
+        {
+          "axis": "Tech Cycle > Yield",
+          "usage": "Defect Rate correlation"
+        },
+        {
+          "axis": "Supply Chain > Equipment",
+          "usage": "Sole Vendor Validation"
+        }
+      ],
+      "anomaly_detected": {
+        "description": "Atomic Level Inspection Demand Surge",
+        "level": "L3 (Hybrid driven)"
+      },
+      "why_now_type": "Tech-driven",
+      "logic_gap_analysis": {
+        "new_data_needed": true,
+        "new_logic_needed": true,
+        "reason": "New dependency: Yield is now function of Atomic Flatness, not just optical resolution."
+      },
+      "learned_rule": "하이브리드 본딩 공정에서는 표면 거칠기(Roughness)가 수율의 핵심 변수이며, 이를 측정하는 원자현미경(AFM)은 선택이 아닌 필수다.",
+      "final_decision": "UPDATE_REQUIRED",
+      "proposals": [
+        {
+          "type": "LOGIC",
+          "category": "LOGIC_UPDATE",
+          "content": "IF Process == 'Hybrid Bonding' THEN Quality_Check MUST_INCLUDE 'Atomic Force Microscopy'",
+          "reason": "Optical inspection fails at sub-nanometer roughness levels required for Cu-Cu bonding."
+        },
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Tech Supply Chain | AFM Penetration Rate | Source: Company Reports | Unknown | Free | CANDIDATE | Found in: Park Systems Analysis |",
+          "reason": "Missing data on Atomic Force Microscopy adoption rate in advanced packaging lines."
+        }
+      ],
+      "source_file": "Park_Systems_MOCK_MODE.txt",
+      "analyzed_at": "2026-01-17T02:35:12.502725"
     },
     {
       "summary": "Analyzed 'bitcoin strategy' - Found 6 potential data gaps & 1 logic patterns.",
@@ -65,8 +106,8 @@
         {
           "type": "DATA",
           "category": "DATA_UPDATE",
-          "content": "| Uncategorized | 퀀텀 | Source: 퀀텀 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
-          "reason": "System blindspot: '퀀텀' detected in high-importance logic."
+          "content": "| Uncategorized | 우리는 | Source: 우리는 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
+          "reason": "System blindspot: '우리는' detected in high-importance logic."
         },
         {
           "type": "DATA",
@@ -77,8 +118,8 @@
         {
           "type": "DATA",
           "category": "DATA_UPDATE",
-          "content": "| Uncategorized | 관련 | Source: 관련 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
-          "reason": "System blindspot: '관련' detected in high-importance logic."
+          "content": "| Uncategorized | 컴퓨팅 | Source: 컴퓨팅 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
+          "reason": "System blindspot: '컴퓨팅' detected in high-importance logic."
         },
         {
           "type": "LOGIC",
@@ -88,7 +129,7 @@
         }
       ],
       "source_file": "bitcoin_strategy.txt",
-      "analyzed_at": "2026-01-17T02:11:41.959798"
+      "analyzed_at": "2026-01-17T02:35:12.511421"
     }
   ]
 }

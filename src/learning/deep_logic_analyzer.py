@@ -41,6 +41,8 @@ class DeepLogicAnalyzer:
                return self._mock_warren_buffett_case()
             elif "한화" in title or "인적 분할" in title:
                return self._mock_hanwha_case()
+            elif "파크" in title or "Park" in title or "반도체" in title:
+               return self._mock_park_systems_case()
             else:
                return self._mock_new_case_logic(title)
         else:
@@ -246,6 +248,42 @@ class DeepLogicAnalyzer:
                     "type": "DATA",
                     "category": "META_UPGRADE",
                     "content": "| 기업/지배구조 | 대주주 지분 변동 | Dart | Event | Free | CORE_CANDIDATE | 승계/재편 사전 징후 포착 |"
+                }
+            ]
+        }
+
+    def _mock_park_systems_case(self):
+         """Mock response for Park Systems (Atomic Microscopy) Logic"""
+         return {
+            "summary": "미세 공정 한계 돌파(Hybrid Bonding)에 따른 계측 장비 필수화",
+            "data_usage": [
+                {"axis": "Tech Cycle > Yield", "usage": "Defect Rate correlation"},
+                {"axis": "Supply Chain > Equipment", "usage": "Sole Vendor Validation"}
+            ],
+            "anomaly_detected": {
+                "description": "Atomic Level Inspection Demand Surge",
+                "level": "L3 (Hybrid driven)"
+            },
+            "why_now_type": "Tech-driven",
+            "logic_gap_analysis": {
+                "new_data_needed": True,
+                "new_logic_needed": True,
+                "reason": "New dependency: Yield is now function of Atomic Flatness, not just optical resolution."
+            },
+            "learned_rule": "하이브리드 본딩 공정에서는 표면 거칠기(Roughness)가 수율의 핵심 변수이며, 이를 측정하는 원자현미경(AFM)은 선택이 아닌 필수다.",
+            "final_decision": "UPDATE_REQUIRED",
+            "proposals": [
+                {
+                    "type": "LOGIC",
+                    "category": "LOGIC_UPDATE",
+                    "content": "IF Process == 'Hybrid Bonding' THEN Quality_Check MUST_INCLUDE 'Atomic Force Microscopy'",
+                    "reason": "Optical inspection fails at sub-nanometer roughness levels required for Cu-Cu bonding."
+                },
+                {
+                    "type": "DATA",
+                    "category": "DATA_UPDATE",
+                    "content": "| Tech Supply Chain | AFM Penetration Rate | Source: Company Reports | Unknown | Free | CANDIDATE | Found in: Park Systems Analysis |",
+                    "reason": "Missing data on Atomic Force Microscopy adoption rate in advanced packaging lines."
                 }
             ]
         }
