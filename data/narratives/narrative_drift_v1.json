@@ -237,6 +237,23 @@
           }
         }
       ]
+    },
+    {
+      "generated_at": "2026-01-17T15:38:44.286765",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "ACCELERATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "Rising",
+            "avg_score_change": "N/A",
+            "persistence_change": "4d in 7d window"
+          }
+        }
+      ]
     }
   ]
 }
