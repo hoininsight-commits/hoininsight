@@ -1339,6 +1339,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
                 <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> 데이터 수집 현황</div>
+                <div class="nav-item" onclick="activate('system-evolution')"><span class="nav-icon">🚀</span> 시스템 진화 제안</div>
                 <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
 
                 <div class="nav-label">WORKFLOW</div>
@@ -1573,6 +1574,23 @@ def generate_dashboard(base_dir: Path):
                     </div>
     """
 
+    # [System Evolution Tab (Moved from Sidebar)]
+    # Make evolution cards grid style
+    evo_grid_html = evolution_html.replace('margin-bottom: 15px;', '')
+    # Wrap multiple cards in grid container if simple concat
+    
+    html += f"""
+                    <div id="system-evolution" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">🚀 시스템 진화 제안</h2>
+                        <p style="font-size:14px; color:#666; margin-bottom:25px;">
+                            영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;">
+                            {evo_grid_html}
+                        </div>
+                    </div>
+    """
+
     # [YouTube Inbox Tab]
     html += f"""
                     <div id="youtube-inbox" class="tab-content" style="display:none;">
@@ -1709,22 +1727,7 @@ def generate_dashboard(base_dir: Path):
                 </div> <!-- End sections wrapper -->
             </div> <!-- End Main Panel -->
             
-            <!-- RIGHT SIDEBAR (Correct Placement) -->
-            <div class="sidebar">
-                
-                <!-- [Phase 35] System Evolution Section -->
-                <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
-                    <h3 style="color:#6a1b9a; border-bottom: 2px solid #ce93d8; padding-bottom: 8px; font-size:14px; margin-top:0;">🚀 시스템 진화 제안</h3>
-                    <p style="font-size:11px; color:#666; margin-bottom:15px; line-height:1.4;">
-                        영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
-                    </p>
-                    {evolution_html}
-                </div>
-
-                <div class="footer">
-                    Hoin Engine 자동 생성<br>{ymd}
-                </div>
-            </div>
+            <!-- RIGHT SIDEBAR REMOVED -->
             
         </div> <!-- End Dashboard Container -->
         
