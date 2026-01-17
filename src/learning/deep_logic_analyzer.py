@@ -32,12 +32,12 @@ class DeepLogicAnalyzer:
         print("[DeepLogicAnalyzer] Simulating Expert Reasoning Process...")
         
         # Check title to route to appropriate mock response
-        if "MOCK_MODE" in title: # Explicit mock trigger
+        if "MOCK_MODE" in title or "MOCK MODE" in title: # Explicit mock trigger
             if "트럼프" in title or "파월" in title:
                return self._mock_trump_powell_case()
             elif "모건" in title or "장기 투자" in title:
                return self._mock_morgan_case()
-            elif "워런 버핏" in title or "이란" in title:
+            elif "워런 버핏" in title or "이란" in title or "Iran" in title:
                return self._mock_warren_buffett_case()
             elif "한화" in title or "인적 분할" in title:
                return self._mock_hanwha_case()
@@ -178,33 +178,40 @@ class DeepLogicAnalyzer:
         }
 
     def _mock_warren_buffett_case(self):
-         """Mock response for Warren Buffett & Iran Case"""
+         """Mock response for Warren Buffett & Iran Case - Updated with User's Insight"""
          return {
-            "summary": "지정학적 공급 경로 붕괴(Path Collapse)에 따른 자본 경로 강제 고정",
+            "summary": "이란 사태는 단순 이벤트가 아닌 '자본 경로의 강제 재고정(Capital Route Reconfiguration)' 시그널임.",
             "data_usage": [
-                {"axis": "Commodities > Oil", "usage": "Price Spike"},
-                {"axis": "Equities > Energy", "usage": "Sector Rotation"}
+                {"axis": "Commodities > Oil", "usage": "Price Spike (L1 Effect)"},
+                {"axis": "Equities > Energy", "usage": "Sector Rotation (L2 Effect)"}
             ],
             "anomaly_detected": {
-                "description": "Structural Supply Path Collapse (Force Major)",
+                "description": "L3 STRUCTURAL ANOMALY: Energy Supply Path Collapse",
                 "level": "L3 (State-Driven)"
             },
-             "why_now_type": "Hybrid-driven (State + Political)",
+             "why_now_type": "Hybrid-driven (State + Political) - 공급 경로 붕괴 임계점",
             "logic_gap_analysis": {
                 "new_data_needed": True,
                 "new_logic_needed": True,
-                "reason": "System lacks 'Logistics/Military' axes to detect path collapse before price impact."
+                "reason": "단순 유가/뉴스 모니터링으로는 '경로 붕괴'와 '자본 재고정'의 구조적 변화를 감지할 수 없음. 군사/물류/LNG계약 데이터 필수."
             },
-            "learned_rule": "공급 경로의 물리적 붕괴(해협 봉쇄, 기지 철수)는 단순 가격 상승이 아니라 '대체 경로 독점처'로 자본을 강제로 이동시킨다.",
+            "learned_rule": "지정학 리스크가 물리적 경로(해협 봉쇄 등)를 위협할 때, 자본은 안전 자산이 아니라 '대체 공급 독점처(미국 에너지)'로 강제 이동한다.",
             "final_decision": "UPDATE_REQUIRED",
             "proposals": [
                 {
                     "type": "DATA", 
-                    "content": "| 운송/물류 | 해운 운임 지수 (BDI/Tanker) | Baltic Exchange | Index | Free | CANDIDATE | 공급망 병목 확인 |"
+                    "category": "DATA_UPDATE",
+                    "content": "| 에너지/물류 | LNG 장기 공급 계약 추이 | Cheniere/EIA | Trend | Free | CANDIDATE | 대체 경로 독점화 확인 |"
+                },
+                {
+                    "type": "DATA",
+                    "category": "DATA_UPDATE",
+                    "content": "| 운송/해운 | Tanker/BDI 운임 지수 | Bloomberg/Baltic | Index | Paid/Delayed | CANDIDATE | 공급망 물리적 병목 감지 |"
                 },
                 {
                     "type": "LOGIC",
-                    "content": "지정학적 경로 폐쇄 발생 시 → 대체 공급처(미국 에너지/LNG) 및 우회 경로(해운) 자산 비중 확대"
+                    "category": "LOGIC_UPDATE",
+                    "content": "IF [Physical Route Risk] AND [No Alternative Path] THEN [Capital Forced to US Energy Assets]"
                 }
             ]
         }

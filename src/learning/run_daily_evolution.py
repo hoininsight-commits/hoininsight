@@ -44,7 +44,7 @@ def run_daily_evolution(target_date: str = None):
         try:
             content = txt_file.read_text(encoding='utf-8')
             # Extract title properly or use filename
-            title = txt_file.stem.replace("_", " ").title()
+            title = txt_file.stem.replace("_", " ")
             
             # RUN ANALYSIS
             result = analyzer.analyze(content, title)
