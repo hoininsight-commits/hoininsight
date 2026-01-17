@@ -239,7 +239,7 @@
                 <div class="conf-badge bg-green-100 text-green-800">NORMAL</div>
                 <div class="conf-badge bg-gray-200 text-gray-500">Narrative: INGESTION_SKIP</div>
                 <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">Preset: STANDARD</div>
-                <div class="status-badge status-SUCCESS">성공</div>
+                <div class="status-badge status-PARTIAL">부분 성공</div>
             </div>
         </div>
         
@@ -247,12 +247,14 @@
             
             <!-- LEFT: Navigation Panel -->
             <div class="nav-panel">
-                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px;">
-                    HOIN INSIGHT v1.0
+                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+                    <span>HOIN INSIGHT v1.0</span>
+                    <span title="System Status: 부분 성공" style="font-size:10px; cursor:help;">🔴</span>
                 </div>
                 
                 <div class="nav-label">MAIN VIEW</div>
-                <div class="nav-item active" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
+                <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
+                <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
@@ -270,16 +272,103 @@
                 <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> 토픽 후보군</div>
                 
                 <div class="nav-label">OUTPUT</div>
-                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정</div>
-                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트</div>
+                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정 (Raw)</div>
+                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트 (Raw)</div>
             </div>
 
             <!-- CENTER: Main Process Flow (Tabs) -->
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
+                    <!-- TAB 0: Today's Insight (NEW HOME) -->
+                    <div id="today-insight" class="tab-content active" style="display:block;">
+                        <div style="max-width: 900px; margin: 0 auto;">
+                            <!-- Header -->
+                            <div style="text-align:center; margin-bottom:30px;">
+                                <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Today's Insight</div>
+                                <h1 style="font-size:28px; font-weight:800; color:#1e293b; margin:0;">
+                                    주제 선정 대기중
+                                </h1>
+                                <div style="margin-top:10px;">
+                                    <span style="font-size:11px; background:#f1f5f9; color:#475569; padding:4px 10px; border-radius:15px; font-weight:600;">2026-01-17</span>
+                                </div>
+                            </div>
+
+                            <!-- Error Alert (If System Failed) -->
+                            
+        <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:15px; margin-bottom:25px; display:flex; align-items:center; gap:15px;">
+            <div style="font-size:20px;">🔴</div>
+            <div>
+                <div style="font-weight:bold; color:#b91c1c; font-size:14px;">데이터 파이프라인 오류 감지</div>
+                <div style="font-size:12px; color:#ef4444;">
+                    일부 데이터 수집이 실패하여 분석 정확도가 떨어질 수 있습니다. 
+                    <a href="#" onclick="activate('data-status')" style="text-decoration:underline; color:#b91c1c;">데이터 현황 확인</a>
+                </div>
+            </div>
+        </div>
+        
+
+                            <!-- Main Content Grid -->
+                            <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:25px;">
+                                
+                                <!-- Left: Decision Logic -->
+                                <div>
+                                    <div class="card" style="height:100%;">
+                                        <h3 style="font-size:14px; font-weight:700; color:#334155; margin-bottom:15px; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
+                                            🎯 선정 이유 (Rationale)
+                                        </h3>
+                                        <div style="font-size:13px; line-height:1.6; color:#475569;">
+                                            아직 오늘의 주제가 선정되지 않았습니다.<br>잠시 후 다시 확인해주세요.
+                                        </div>
+                                        
+                                        <div style="margin-top:20px;">
+                                            <h4 style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">관련 데이터</h4>
+                                            <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                                                <span style="font-size:10px; color:#cbd5e1;">데이터 없음</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Script Preview -->
+                                <div>
+                                    <div class="card" style="height:100%; border-left:4px solid #3b82f6;">
+                                        <h3 style="font-size:14px; font-weight:700; color:#334155; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                                            <span>📜 스크립트 초안</span>
+                                            <button onclick="activate('insight-script')" style="font-size:10px; background:#eff6ff; color:#3b82f6; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">전체 보기 ➜</button>
+                                        </h3>
+                                        <div style="font-size:12px; line-height:1.7; color:#334155; white-space:pre-wrap; max-height:400px; overflow-y:auto; background:#fafafa; padding:15px; border-radius:6px; border:1px solid #f1f5f9;">
+<!-- Metadata
+Content Mod: NORMAL
+Content Preset: STANDARD
+Preset Reason: HIGH Confidence (Risk factors not dominant)
+Confidence: HIGH
+Regime: (no meta regime detected)
+-->
+## Opening (Context)
+- 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
+- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
+## Why Now
+- 이 국면은 현재 **3일째** 지속되고 있습니다.
+- 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
+## What Changed
+- 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
+- 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
+## What to Watch (Neutral)
+- 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
+* (특정 전략 프레임워크 없음)
+## Closing
+- 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <!-- TAB 1: Architecture Diagram -->
-                    <div id="architecture-diagram" class="tab-content active" style="display:block;">
+                    <div id="architecture-diagram" class="tab-content" style="display:none;">
                         <div class="architecture-diagram">
                             <div style="text-align: center; margin-bottom: 20px;">
                                 <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
@@ -432,23 +521,23 @@
         <div class="cat-group">
             <div class="cat-title">
                 <span>DERIVED</span>
-                <span class="text-green-500">2/2</span>
+                <span class="text-red-500">0/2</span>
             </div>
         
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">derived_corr_btc_spx_30d <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 17:19)</span></span>
+                     <span class="ds-name">derived_corr_btc_spx_30d </span>
                  </div>
-                 <div class="status-check">✓</div>
+                 <div class="status-check">-</div>
              </div>
              
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">derived_corr_usdkrw_us10y_30d <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 17:19)</span></span>
+                     <span class="ds-name">derived_corr_usdkrw_us10y_30d </span>
                  </div>
-                 <div class="status-check">✓</div>
+                 <div class="status-check">-</div>
              </div>
              </div>
         <div class="cat-group">

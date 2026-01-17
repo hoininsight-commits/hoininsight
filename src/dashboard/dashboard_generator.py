@@ -279,6 +279,40 @@ def generate_dashboard(base_dir: Path):
         "narrative_label": narr_label,
         "narrative_cls": narr_cls
     }
+
+    # [UI Logic] Prepare Data for Today's Insight (Safe variable generation)
+    topic_title = final_card.get('topic', '분석 결과 대기 중...')
+    rationale = final_card.get('decision_rationale', '아직 오늘의 주제가 선정되지 않았습니다.<br>잠시 후 다시 확인해주세요.')
+    
+    key_data_html = '<span style="font-size:10px; color:#cbd5e1;">데이터 없음</span>'
+    if final_card.get('key_data'):
+        # List comprehension outside f-string
+        spans = [f'<span style="font-size:10px; background:#f8fafc; border:1px solid #e2e8f0; padding:2px 8px; border-radius:4px; color:#64748b;">{k}</span>' for k in final_card.get('key_data', {}).keys()]
+        key_data_html = ''.join(spans)
+
+    script_preview = '스크립트 생성 대기 중...'
+    if script_body:
+        script_preview = script_body[:800] + '...' if len(script_body) > 800 else script_body
+
+    # System Status Logic
+    status_icon_char = '🟢' if status_str == 'SUCCESS' else '🔴'
+    
+    error_alert_html = ""
+    if status_str != 'SUCCESS':
+        # Use simple quotes to avoid backslash escaping issues in f-string
+        error_alert_html = """
+        <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:15px; margin-bottom:25px; display:flex; align-items:center; gap:15px;">
+            <div style="font-size:20px;">🔴</div>
+            <div>
+                <div style="font-weight:bold; color:#b91c1c; font-size:14px;">데이터 파이프라인 오류 감지</div>
+                <div style="font-size:12px; color:#ef4444;">
+                    일부 데이터 수집이 실패하여 분석 정확도가 떨어질 수 있습니다. 
+                    <a href="#" onclick="activate('data-status')" style="text-decoration:underline; color:#b91c1c;">데이터 현황 확인</a>
+                </div>
+            </div>
+        </div>
+        """
+
     
     dash_dir = base_dir / "dashboard"
     dash_dir.mkdir(parents=True, exist_ok=True)
