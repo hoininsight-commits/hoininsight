@@ -23,7 +23,7 @@
     .sla-breach { color: #ef4444; font-weight: 700; }
     
     /* Layout */
-    .dashboard-container { display: grid; grid-template-columns: 260px 1fr 300px; height: calc(100vh - 60px); overflow: hidden; }
+    .dashboard-container { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - 60px); overflow: hidden; }
     
     /* LEFT: Navigation Panel (Modern Dark) */
     .nav-panel { 
@@ -257,6 +257,7 @@
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
                 <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> 데이터 수집 현황</div>
+                <div class="nav-item" onclick="activate('system-evolution')"><span class="nav-icon">🚀</span> 시스템 진화 제안</div>
                 <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
 
                 <div class="nav-label">WORKFLOW</div>
@@ -550,10 +551,10 @@
                  <div class="status-check">✓</div>
              </div>
              
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">crypto_eth_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 15:49)</span></span>
+                     <span class="ds-name">crypto_eth_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 00:16)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -564,10 +565,10 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item ok" title="Normalized successfully">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">rates_us02y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 16:53)</span></span>
+                     <span class="ds-name">rates_us02y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 22:52)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -578,10 +579,10 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item ok" title="Normalized successfully">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_platinum_xptusd_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 16:53)</span></span>
+                     <span class="ds-name">metal_platinum_xptusd_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 22:52)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -592,10 +593,10 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item ok" title="Normalized successfully">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 16:53)</span></span>
+                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 22:52)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -606,10 +607,10 @@
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
+             <div class="ds-item ok" title="Normalized successfully">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 16:53)</span></span>
+                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/16 22:52)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -1054,6 +1055,82 @@
         <p style="font-size:12px;">변경 효과 분석을 위한 데이터가 충분하지 않습니다.</p>
     </div>
     
+                    </div>
+    
+                    <div id="system-evolution" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">🚀 시스템 진화 제안</h2>
+                        <p style="font-size:14px; color:#666; margin-bottom:25px;">
+                            영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;">
+                            
+                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
+                            <small style="font-size:10px; color:#666;">2026-01-17</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            구리 가격 하락 + 금 가격 신고가 (Ratio 급등) 
+                            <br>→ 강력한 경기 침체 신호 (Safe Haven Divergence)
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다...."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-MOCK-001')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-MOCK-001')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-17</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            | 원자재 | 우라늄 현물 | TradingEconomics | API | Free | CANDIDATE | 원전 재가동 및 AI 전력 수요 | 1일 | 수집데이터 | 
+                            <br>→ 
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "AI 전력 수요 폭증으로 우라늄 수급 불균형이 심화되고 있습니다...."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-MOCK-002')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-MOCK-002')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
+                            <small style="font-size:10px; color:#666;">2026-01-16</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한 
+                            <br>→ 이것은 강력한 경기 침체의 신호
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "만약 구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                        </div>
                     </div>
     
                     <div id="youtube-inbox" class="tab-content" style="display:none;">
@@ -1515,88 +1592,7 @@
                 </div> <!-- End sections wrapper -->
             </div> <!-- End Main Panel -->
             
-            <!-- RIGHT SIDEBAR (Correct Placement) -->
-            <div class="sidebar">
-                
-                <!-- [Phase 35] System Evolution Section -->
-                <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
-                    <h3 style="color:#6a1b9a; border-bottom: 2px solid #ce93d8; padding-bottom: 8px; font-size:14px; margin-top:0;">🚀 시스템 진화 제안</h3>
-                    <p style="font-size:11px; color:#666; margin-bottom:15px; line-height:1.4;">
-                        영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
-                    </p>
-                    
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
-                            <small style="font-size:10px; color:#666;">2026-01-17</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            구리 가격 하락 + 금 가격 신고가 (Ratio 급등) 
-                            <br>→ 강력한 경기 침체 신호 (Safe Haven Divergence)
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다...."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-MOCK-001')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-MOCK-001')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-17</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            | 원자재 | 우라늄 현물 | TradingEconomics | API | Free | CANDIDATE | 원전 재가동 및 AI 전력 수요 | 1일 | 수집데이터 | 
-                            <br>→ 
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "AI 전력 수요 폭증으로 우라늄 수급 불균형이 심화되고 있습니다...."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-MOCK-002')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-MOCK-002')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
-                            <small style="font-size:10px; color:#666;">2026-01-16</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한 
-                            <br>→ 이것은 강력한 경기 침체의 신호
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "만약 구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div class="footer">
-                    Hoin Engine 자동 생성<br>2026-01-17
-                </div>
-            </div>
+            <!-- RIGHT SIDEBAR REMOVED -->
             
         </div> <!-- End Dashboard Container -->
         

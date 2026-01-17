@@ -1329,12 +1329,14 @@ def generate_dashboard(base_dir: Path):
             
             <!-- LEFT: Navigation Panel -->
             <div class="nav-panel">
-                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px;">
-                    HOIN INSIGHT v1.0
+                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+                    <span>HOIN INSIGHT v1.0</span>
+                    <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
                 </div>
                 
                 <div class="nav-label">MAIN VIEW</div>
-                <div class="nav-item active" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
+                <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
+                <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
@@ -1352,16 +1354,72 @@ def generate_dashboard(base_dir: Path):
                 <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> 토픽 후보군</div>
                 
                 <div class="nav-label">OUTPUT</div>
-                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정</div>
-                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트</div>
+                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정 (Raw)</div>
+                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트 (Raw)</div>
             </div>
 
             <!-- CENTER: Main Process Flow (Tabs) -->
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
+                    <!-- TAB 0: Today's Insight (NEW HOME) -->
+                    <div id="today-insight" class="tab-content active" style="display:block;">
+                        <div style="max-width: 900px; margin: 0 auto;">
+                            <!-- Header -->
+                            <div style="text-align:center; margin-bottom:30px;">
+                                <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Today's Insight</div>
+                                <h1 style="font-size:28px; font-weight:800; color:#1e293b; margin:0;">
+                                    {topic_title}
+                                </h1>
+                                <div style="margin-top:10px;">
+                                    <span style="font-size:11px; background:#f1f5f9; color:#475569; padding:4px 10px; border-radius:15px; font-weight:600;">{ymd}</span>
+                                </div>
+                            </div>
+
+                            <!-- Error Alert (If System Failed) -->
+                            {error_alert_html}
+
+                            <!-- Main Content Grid -->
+                            <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:25px;">
+                                
+                                <!-- Left: Decision Logic -->
+                                <div>
+                                    <div class="card" style="height:100%;">
+                                        <h3 style="font-size:14px; font-weight:700; color:#334155; margin-bottom:15px; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
+                                            🎯 선정 이유 (Rationale)
+                                        </h3>
+                                        <div style="font-size:13px; line-height:1.6; color:#475569;">
+                                            {rationale}
+                                        </div>
+                                        
+                                        <div style="margin-top:20px;">
+                                            <h4 style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">관련 데이터</h4>
+                                            <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                                                {key_data_html}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Script Preview -->
+                                <div>
+                                    <div class="card" style="height:100%; border-left:4px solid #3b82f6;">
+                                        <h3 style="font-size:14px; font-weight:700; color:#334155; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                                            <span>📜 스크립트 초안</span>
+                                            <button onclick="activate('insight-script')" style="font-size:10px; background:#eff6ff; color:#3b82f6; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">전체 보기 ➜</button>
+                                        </h3>
+                                        <div style="font-size:12px; line-height:1.7; color:#334155; white-space:pre-wrap; max-height:400px; overflow-y:auto; background:#fafafa; padding:15px; border-radius:6px; border:1px solid #f1f5f9;">
+{script_preview}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <!-- TAB 1: Architecture Diagram -->
-                    <div id="architecture-diagram" class="tab-content active" style="display:block;">
+                    <div id="architecture-diagram" class="tab-content" style="display:none;">
                         <div class="architecture-diagram">
                             <div style="text-align: center; margin-bottom: 20px;">
                                 <h2 style="font-size: 20px; font-weight: 700; color: #1e293b;">Hoin Insight 파이프라인</h2>
