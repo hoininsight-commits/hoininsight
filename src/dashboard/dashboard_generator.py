@@ -303,7 +303,7 @@ def generate_dashboard(base_dir: Path):
     .sla-breach { color: #ef4444; font-weight: 700; }
     
     /* Layout */
-    .dashboard-container { display: grid; grid-template-columns: 260px 1fr 300px; height: calc(100vh - 60px); overflow: hidden; }
+    .dashboard-container { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - 60px); overflow: hidden; }
     
     /* LEFT: Navigation Panel (Modern Dark) */
     .nav-panel { 
