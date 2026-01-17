@@ -256,7 +256,8 @@
                 
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
-                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과</div>
+                <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> 데이터 수집 현황</div>
+                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
 
                 <div class="nav-label">WORKFLOW</div>
                 <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
@@ -331,11 +332,11 @@
                                 </div>
                                 <div class="proc-node node-engine">
                                     <div class="proc-title">이상치 탐지</div>
-                                    <div class="proc-desc">국면: 감지됨</div>
+                                    <div class="proc-desc">국면: 없음</div>
                                 </div>
                                 <div class="proc-node node-engine">
                                      <div class="proc-title">토픽 선정</div>
-                                     <div class="proc-desc">토픽 2개</div>
+                                     <div class="proc-desc">토픽 0개</div>
                                 </div>
                             </div>
                             
@@ -379,7 +380,7 @@
                                             (no meta regime detected)
                                         </div>
                                         <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 3px;">
-                                            (Meta-driven)
+                                            (Driver-based)
                                         </div>
                                     </div>
                                     
@@ -391,7 +392,7 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px; color: rgba(255,255,255,0.6); text-align: center;">
-                                    Last Updated: 2026-01-16
+                                    Last Updated: 2026-01-17
                                 </div>
                             </div>
 
@@ -422,1001 +423,11 @@
                         </div>
                     </div>
     
-                    <div id="change-effectiveness" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 변경 효과 분석</h2>
-                        
-    <div style="padding:40px; text-align:center; color:#94a3b8; background:white; border:1px solid #e2e8f0; border-radius:8px;">
-        <h3>데이터 누적 중...</h3>
-        <p style="font-size:12px;">변경 효과 분석을 위한 데이터가 충분하지 않습니다.</p>
-    </div>
-    
-                    </div>
-    
-                    <div id="youtube-inbox" class="tab-content" style="display:none;">
-                        <div style="background: white; padding: 40px; border-radius: 8px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📺 유튜브 인박스</h2>
-                                <span style="font-size: 12px; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 20px;">
-                                    영상 13개
-                                </span>
-                            </div>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                    <div id="data-status" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📡 데이터 수집 현황</h2>
+                        <div style="background:white; padding:30px; border-radius:8px; border:1px solid #e2e8f0;">
+                            <div class="status-grid-view" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
                                 
-    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-        YouTube Inbox (Latest Videos)
-    </div>
-    <div class="inbox-list" style="display:flex; flex-direction:column; gap:10px;">
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/VhmYnEvRf70" target="_blank" style="text-decoration:none; color:inherit;">2026년 가장 저평가 됐다는 전기 관련주 4개</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('VhmYnEvRf70')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-VhmYnEvRf70" style="display:none; margin-top:10px;">
-                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL: https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at: 2026-01-16T13:07:50+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-VhmYnEvRf70" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-VhmYnEvRf70"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-VhmYnEvRf70"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-VhmYnEvRf70" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('VhmYnEvRf70')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/7sVkFpGNnN8" target="_blank" style="text-decoration:none; color:inherit;">미국에서 콕 찝어준 대한민국 2026년 환율 전망</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dcfce7; color:#166534; padding:2px 5px; border-radius:4px; white-space:nowrap;">APPROVED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                        
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('7sVkFpGNnN8')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-7sVkFpGNnN8" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-7sVkFpGNnN8" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-7sVkFpGNnN8"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-7sVkFpGNnN8" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('7sVkFpGNnN8')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/IJFzL64ECMI" target="_blank" style="text-decoration:none; color:inherit;">월가가 현시점 주가 급상승 구간 잡는 진짜 방법</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('IJFzL64ECMI')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-IJFzL64ECMI" style="display:none; margin-top:10px;">
-                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL: https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at: 2026-01-16T06:23:01+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-IJFzL64ECMI" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-IJFzL64ECMI"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-IJFzL64ECMI"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-IJFzL64ECMI" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('IJFzL64ECMI')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/_iEBPCtP8CI" target="_blank" style="text-decoration:none; color:inherit;">샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-16
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('_iEBPCtP8CI')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-_iEBPCtP8CI" style="display:none; margin-top:10px;">
-                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>- URL: https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at: 2026-01-16T00:59:38+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-_iEBPCtP8CI" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-_iEBPCtP8CI"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-_iEBPCtP8CI" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('_iEBPCtP8CI')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/iR0eIStTrhY" target="_blank" style="text-decoration:none; color:inherit;">트럼프가 금융주를 정면으로 건드리는 진짜 이유</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('iR0eIStTrhY')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-iR0eIStTrhY" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-iR0eIStTrhY" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-iR0eIStTrhY"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-iR0eIStTrhY"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-iR0eIStTrhY" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('iR0eIStTrhY')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/qATP0eIVgoA" target="_blank" style="text-decoration:none; color:inherit;">현시점 금값, 가장 쌀 때 매수 하는 방법</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('qATP0eIVgoA')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-qATP0eIVgoA" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-qATP0eIVgoA" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-qATP0eIVgoA"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-qATP0eIVgoA"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-qATP0eIVgoA" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('qATP0eIVgoA')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/oKwcmucSGcU" target="_blank" style="text-decoration:none; color:inherit;">트럼프가 '다시 한번' 관세로 전세계 장악하는 방법</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('oKwcmucSGcU')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-oKwcmucSGcU" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-oKwcmucSGcU" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-oKwcmucSGcU"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-oKwcmucSGcU"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-oKwcmucSGcU" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('oKwcmucSGcU')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/53Yd9a8qSRo" target="_blank" style="text-decoration:none; color:inherit;">월가에서 '제2의 현대차' 될 수 있다는 저평가주</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('53Yd9a8qSRo')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-53Yd9a8qSRo" style="display:none; margin-top:10px;">
-                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL: https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at: 2026-01-15T07:13:39+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-53Yd9a8qSRo" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-53Yd9a8qSRo"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-53Yd9a8qSRo" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('53Yd9a8qSRo')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/rFfleFohjCs" target="_blank" style="text-decoration:none; color:inherit;">환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-15
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('rFfleFohjCs')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-rFfleFohjCs" style="display:none; margin-top:10px;">
-                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’<br>- URL: https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at: 2026-01-15T04:55:02+00:00</div>
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-rFfleFohjCs" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-rFfleFohjCs"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-rFfleFohjCs"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-rFfleFohjCs" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('rFfleFohjCs')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/DCsLuKhV8eU" target="_blank" style="text-decoration:none; color:inherit;">이재명, 다케이치가 픽한 한일 정상회담 수혜주 3개</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('DCsLuKhV8eU')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-DCsLuKhV8eU" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-DCsLuKhV8eU" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-DCsLuKhV8eU"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-DCsLuKhV8eU"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-DCsLuKhV8eU" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('DCsLuKhV8eU')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/Elg8HuW2y2g" target="_blank" style="text-decoration:none; color:inherit;">미국 주식 서학개미들이 꼭 알아야 하는 '환율'의 원리</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('Elg8HuW2y2g')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-Elg8HuW2y2g" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-Elg8HuW2y2g" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-Elg8HuW2y2g"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-Elg8HuW2y2g"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-Elg8HuW2y2g" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('Elg8HuW2y2g')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/wyUWa-Xxgzc" target="_blank" style="text-decoration:none; color:inherit;">트럼프vs연준 파월 싸움에 금리 전망 180도 바뀐 이유</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('wyUWa-Xxgzc')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-wyUWa-Xxgzc" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-wyUWa-Xxgzc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-wyUWa-Xxgzc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-wyUWa-Xxgzc"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-wyUWa-Xxgzc" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('wyUWa-Xxgzc')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/3Yuii2eaWHc" target="_blank" style="text-decoration:none; color:inherit;">월가에서 하루라도 빨리 미국 '장기 투자' 시작하라는 이유</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('3Yuii2eaWHc')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-3Yuii2eaWHc" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-3Yuii2eaWHc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-3Yuii2eaWHc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-3Yuii2eaWHc"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-3Yuii2eaWHc" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('3Yuii2eaWHc')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div id="narrative-queue" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📝 내러티브 큐</h2>
-                        
-        <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-            Narrative Review Queue
-        </div>
-        <div class="queue-list">
-                <div class="queue-card" id="card-7sVkFpGNnN8">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 7sVkFpGNnN8 <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #1)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 미국에서 콕 찝어준 대한민국 2026년 환율 전망<br>- URL: https://www.youtube.com/watch?v=7sVkFpGNnN8<br>- Published at: 2026-01-16T09:02:13+00:00<br>- **미국**<br>  - quote: "님들 미국에서 콕 집어 준 대한민국 2026년 환율 전망 뭔지 알고 있었어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-7sVkFpGNnN8" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-7sVkFpGNnN8"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-7sVkFpGNnN8" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('7sVkFpGNnN8')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-IJFzL64ECMI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: IJFzL64ECMI <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #2)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL: https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at: 2026-01-16T06:23:01+00:00<br>- **실적**<br>  - quote: "지금 대형 은행들이 실적을 발표하면서 본격적으로 실적 시즌이 시작됐어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-IJFzL64ECMI" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-IJFzL64ECMI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-IJFzL64ECMI"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-IJFzL64ECMI" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('IJFzL64ECMI')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-VhmYnEvRf70">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: VhmYnEvRf70 <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #3)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL: https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at: 2026-01-16T13:07:50+00:00<br>- **정부**<br>  - quote: "중국산이 들어가면 정부 지원을 못 받거든..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-VhmYnEvRf70" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-VhmYnEvRf70"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-VhmYnEvRf70"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-VhmYnEvRf70" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('VhmYnEvRf70')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-_iEBPCtP8CI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: _iEBPCtP8CI <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #4)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>- URL: https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at: 2026-01-16T00:59:38+00:00<br>- **AI**<br>  - quote: "님들 오픈 AI CEO인 샘올머니 엔비디아 CEO 젠슨 황을 손절하고 스타트업을 선택한 거 알고 있었어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-_iEBPCtP8CI" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-_iEBPCtP8CI"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-_iEBPCtP8CI" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('_iEBPCtP8CI')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-rFfleFohjCs">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: rFfleFohjCs <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #5)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’<br>- URL: https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at: 2026-01-15T04:55:02+00:00<br>- 은<br>- 환율</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-rFfleFohjCs" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-rFfleFohjCs"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-rFfleFohjCs"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-rFfleFohjCs" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('rFfleFohjCs')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-53Yd9a8qSRo">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 53Yd9a8qSRo <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #6)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL: https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at: 2026-01-15T07:13:39+00:00<br>- 은<br>- 금</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-53Yd9a8qSRo" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-53Yd9a8qSRo"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-53Yd9a8qSRo" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('53Yd9a8qSRo')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                </div>
-                    </div>
-    
-                    <div id="revival-engine" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">♻️ 부활 엔진</h2>
-                        <div style="padding:20px; text-align:center; color:#94a3b8;">No revival data.</div>
-                    </div>
-    
-                    <div id="rejection-ledger" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🚫 거절/보류 리스트</h2>
-                        <div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>
-                    </div>
-    
-                    <div id="topic-candidates" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📂 토픽 후보군</h2>
-                        <div style="background:white; padding:20px; border-radius:8px; border:1px solid #e2e8f0;">Found 2 candidates.</div>
-                    </div>
-    
-                    <div id="final-decision" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">⚖️ 최종 의사결정 카드</h2>
-                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
-            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">01. Regime Context</div>
-            <div style="font-size: 18px; font-weight: 700; color: #f59e0b;">(no meta regime detected)</div>
-            <div style="font-size: 13px; color: #475569; margin-top: 5px;">Confidence: 0.0% (NONE)</div>
-            <div style="font-size: 12px; color: #64748b; margin-top: 8px;">Meta Topics: 0 detected</div>
-        </div>
-        <div style="padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;">
-            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">02. Revival Context</div>
-            <div style="font-size: 18px; font-weight: 700; color: #64748b;">0 Candidates</div>
-            <div style="font-size: 13px; color: #475569; margin-top: 5px;">Primary Reason: N/A</div>
-            
-        </div>
-        <div style="padding: 20px; min-height: 140px;">
-            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;">03. Ops Context</div>
-            <div style="font-size: 18px; font-weight: 700; color: #ef4444;">0% Freshness</div>
-            <div style="font-size: 13px; color: #475569; margin-top: 5px;">7D Success: N/A</div>
-            <div style="font-size: 12px; color: #ef4444; margin-top: 8px; font-weight: bold;">
-                ✅ All Systems Nominal
-            </div>
-        </div>
-    </div>
-    <div style="background: white; border-top: 1px solid #e2e8f0; padding: 25px; text-align: center;">
-        <div style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">
-            현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
-        </div>
-        <div style="font-size: 12px; color: #94a3b8; font-style: italic;">
-            가치는 운영자가 판단하며, 엔진은 이를 위한 근거 데이터만을 제공합니다.
-        </div>
-    </div>
-</div>
-                    </div>
-    
-                    <div id="archive-list" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🗄 아카이브</h2>
-                        <div style="padding:20px; text-align:center; color:#94a3b8;">No archives found.</div>
-                    </div>
-                    
-                    <div id="insight-script" class="tab-content" style="display:none;">
-                        <div style="max-width: 1100px; margin: 0 auto;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
-                                <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
-                            </div>
-                            <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
-스크립트가 아직 생성되지 않았습니다.
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div> <!-- End sections wrapper -->
-            </div> <!-- End Main Panel -->
-            
-            <!-- RIGHT SIDEBAR (Correct Placement) -->
-            <div class="sidebar">
-                <div class="sidebar-title">
-                    데이터 수집 현황판
-                </div>
-                
-                <!-- [Phase 35] System Evolution Section -->
-                <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
-                    <h3 style="color:#6a1b9a; border-bottom: 2px solid #ce93d8; padding-bottom: 8px; font-size:14px; margin-top:0;">🚀 시스템 진화 제안</h3>
-                    <p style="font-size:11px; color:#666; margin-bottom:15px; line-height:1.4;">
-                        영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
-                    </p>
-                    
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
-                            <small style="font-size:10px; color:#666;">2026-01-17</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            구리 가격 하락 + 금 가격 신고가 (Ratio 급등) 
-                            <br>→ 강력한 경기 침체 신호 (Safe Haven Divergence)
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다...."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-MOCK-001')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-MOCK-001')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-17</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            | 원자재 | 우라늄 현물 | TradingEconomics | API | Free | CANDIDATE | 원전 재가동 및 AI 전력 수요 | 1일 | 수집데이터 | 
-                            <br>→ 
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "AI 전력 수요 폭증으로 우라늄 수급 불균형이 심화되고 있습니다...."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-MOCK-002')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-MOCK-002')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
-                            <small style="font-size:10px; color:#666;">2026-01-16</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한 
-                            <br>→ 이것은 강력한 경기 침체의 신호
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "만약 구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                
         <div class="cat-group">
             <div class="cat-title">
                 <span>DERIVED</span>
@@ -1635,11 +646,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -1682,11 +689,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -1729,11 +732,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -1776,11 +775,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -1952,11 +947,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -1999,11 +990,7 @@
                     </div>
     
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: 0d</span> <span style="font-size:8px; padding:1px 4px; border-radius:3px; background:#green-50; color:#green-700; margin-left:3px;">FRESH</span>
-                    </div>
-                    <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: 40.0</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: 40.0)</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
                     </div>
                     
                     
@@ -2031,411 +1018,583 @@
                     </div>
                     
                 </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/DCsLuKhV8eU" target="_blank" style="text-decoration:none; color:inherit;">이재명, 다케이치가 픽한 한일 정상회담 수혜주 3개</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('DCsLuKhV8eU')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-DCsLuKhV8eU" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-DCsLuKhV8eU" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-DCsLuKhV8eU"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-DCsLuKhV8eU"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-DCsLuKhV8eU" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('DCsLuKhV8eU')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/Elg8HuW2y2g" target="_blank" style="text-decoration:none; color:inherit;">미국 주식 서학개미들이 꼭 알아야 하는 '환율'의 원리</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('Elg8HuW2y2g')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-Elg8HuW2y2g" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-Elg8HuW2y2g" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-Elg8HuW2y2g"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-Elg8HuW2y2g"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-Elg8HuW2y2g" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('Elg8HuW2y2g')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/wyUWa-Xxgzc" target="_blank" style="text-decoration:none; color:inherit;">트럼프vs연준 파월 싸움에 금리 전망 180도 바뀐 이유</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('wyUWa-Xxgzc')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-wyUWa-Xxgzc" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-wyUWa-Xxgzc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-wyUWa-Xxgzc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-wyUWa-Xxgzc"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-wyUWa-Xxgzc" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('wyUWa-Xxgzc')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
-                            <a href="https://youtu.be/3Yuii2eaWHc" target="_blank" style="text-decoration:none; color:inherit;">월가에서 하루라도 빨리 미국 '장기 투자' 시작하라는 이유</a>
-                        </div>
-                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
-                    </div>
-                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
-                        2026-01-14
-                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
-                        
-                    </div>
-    
-                    <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
-                    </div>
-                    
-                    
-                    
-                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
-                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('3Yuii2eaWHc')" style="margin-right:5px;"> Learning Needed?
-                        </label>
-                        
-                        <div id="action-box-3Yuii2eaWHc" style="display:none; margin-top:10px;">
-                            
-                            <div class="approval-form" style="margin-top:10px;">
-                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-3Yuii2eaWHc" checked> Data Collection Master</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-3Yuii2eaWHc"> Anomaly Detection Logic</label>
-                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-3Yuii2eaWHc"> Baseline Signals</label>
-                                
-                                <textarea id="ib-note-3Yuii2eaWHc" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
-                                
-                                <button onclick="generateInboxYaml('3Yuii2eaWHc')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
-                                    Generate YAML
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
                 </div>
         <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
             Narrative Review Queue
         </div>
-        <div class="queue-list">
-                <div class="queue-card" id="card-7sVkFpGNnN8">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 7sVkFpGNnN8 <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #1)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 미국에서 콕 찝어준 대한민국 2026년 환율 전망<br>- URL: https://www.youtube.com/watch?v=7sVkFpGNnN8<br>- Published at: 2026-01-16T09:02:13+00:00<br>- **미국**<br>  - quote: "님들 미국에서 콕 집어 준 대한민국 2026년 환율 전망 뭔지 알고 있었어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-7sVkFpGNnN8" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-7sVkFpGNnN8"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-7sVkFpGNnN8" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('7sVkFpGNnN8')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-IJFzL64ECMI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: IJFzL64ECMI <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #2)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL: https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at: 2026-01-16T06:23:01+00:00<br>- **실적**<br>  - quote: "지금 대형 은행들이 실적을 발표하면서 본격적으로 실적 시즌이 시작됐어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-IJFzL64ECMI" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-IJFzL64ECMI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-IJFzL64ECMI"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-IJFzL64ECMI" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('IJFzL64ECMI')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-VhmYnEvRf70">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: VhmYnEvRf70 <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #3)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL: https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at: 2026-01-16T13:07:50+00:00<br>- **정부**<br>  - quote: "중국산이 들어가면 정부 지원을 못 받거든..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-VhmYnEvRf70" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-VhmYnEvRf70"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-VhmYnEvRf70"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-VhmYnEvRf70" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('VhmYnEvRf70')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-_iEBPCtP8CI">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: _iEBPCtP8CI <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #4)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>- URL: https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at: 2026-01-16T00:59:38+00:00<br>- **AI**<br>  - quote: "님들 오픈 AI CEO인 샘올머니 엔비디아 CEO 젠슨 황을 손절하고 스타트업을 선택한 거 알고 있었어..."</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-_iEBPCtP8CI" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-_iEBPCtP8CI"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-_iEBPCtP8CI" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('_iEBPCtP8CI')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-rFfleFohjCs">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: rFfleFohjCs <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #5)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’<br>- URL: https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at: 2026-01-15T04:55:02+00:00<br>- 은<br>- 환율</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-rFfleFohjCs" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-rFfleFohjCs"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-rFfleFohjCs"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-rFfleFohjCs" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('rFfleFohjCs')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="queue-card" id="card-53Yd9a8qSRo">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:bold; font-size:13px; color:#334155;">ID: 53Yd9a8qSRo <span style='font-size:10px; color:#64748b; font-weight:normal;'>(Rank #6)</span></span>
-                        <span style="font-size:10px; font-weight:bold; color:white; background:#f59e0b; padding:2px 6px; border-radius:4px;">PENDING</span>
-                    </div>
-                    
-                    
-                <div style='margin-top:8px; font-size:11px;'>
-                    <div style='margin-bottom:4px;'>
-                        <span style='font-weight:bold; color:#1e293b;'>Final Priority: 40.0</span>
-                        <span style='background:#f1f5f9; color:#64748b; padding:2px 5px; border-radius:4px; margin-left:5px; font-size:10px;'>Align: 40.0</span>
-                    </div>
-                    <div style='font-size:10px; color:#64748b;'>
-                        Age: 0 days | Decay: 1.0 | <span style='color:#16a34a; font-weight:bold;'>FRESH</span>
-                    </div>
-                </div>
-                
-
-                    <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
-                        <span style="color:#64748b; font-size:11px;">- Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL: https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at: 2026-01-15T07:13:39+00:00<br>- 은<br>- 금</span>
-                    </div>
-                    
-                    <div class="approval-form" style="margin-top:10px; border-top:1px solid #f1f5f9; padding-top:10px; display:block;">
-                        <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션 선택:</div>
-                        <label><input type="checkbox" id="chk-dcm-53Yd9a8qSRo" checked> Data Collection Master</label><br>
-                        <label><input type="checkbox" id="chk-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label><br>
-                        <label><input type="checkbox" id="chk-bs-53Yd9a8qSRo"> Baseline Signals</label>
-                        
-                        <input type="text" id="note-53Yd9a8qSRo" placeholder="승인 메모 (Notes)" style="width:100%; margin-top:8px; padding:4px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; box-sizing:border-box;">
-                        
-                        <button onclick="generateYaml('53Yd9a8qSRo')" style="width:100%; margin-top:8px; background:#3b82f6; color:white; border:none; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">
-                            📋 YAML 생성 (복사)
-                        </button>
-                    </div>
-                </div>
-                </div>
+        
+            <div style='padding:20px 10px; text-align:center; background:#f8fafc; border:1px dashed #e2e8f0; border-radius:6px; margin:10px 0;'>
+                <div style='font-size:12px; color:#64748b; font-weight:bold;'>No proposals today — scoring logic active (Phase 32)</div>
+                <div style='font-size:10px; color:#94a3b8; margin-top:5px;'>Hoin Insight engine is active and monitoring.</div>
+            </div>
+            
     <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
         Applied Changes (Today)
     </div>
     <div style='font-size:12px; color:#94a3b8; padding:10px;'>오늘 적용된 변경 사항이 없습니다.</div>
+                            </div>
+                        </div>
+                        <style>
+                            .status-card-grid-item {
+                                display: flex; justify-content: space-between; align-items: center;
+                                padding: 15px; border: 1px solid #e2e8f0; border-radius: 6px;
+                                background: #f8fafc;
+                            }
+                            .status-card-grid-item:hover {
+                                background: #f1f5f9; border-color: #cbd5e1;
+                            }
+                        </style>
+                    </div>
+    
+                    <div id="change-effectiveness" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 변경 효과 분석</h2>
+                        
+    <div style="padding:40px; text-align:center; color:#94a3b8; background:white; border:1px solid #e2e8f0; border-radius:8px;">
+        <h3>데이터 누적 중...</h3>
+        <p style="font-size:12px;">변경 효과 분석을 위한 데이터가 충분하지 않습니다.</p>
+    </div>
+    
+                    </div>
+    
+                    <div id="youtube-inbox" class="tab-content" style="display:none;">
+                        <div style="background: white; padding: 40px; border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📺 유튜브 인박스</h2>
+                                <span style="font-size: 12px; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 20px;">
+                                    영상 9개
+                                </span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                                
+    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+        YouTube Inbox (Latest Videos)
+    </div>
+    <div class="inbox-list" style="display:flex; flex-direction:column; gap:10px;">
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/VhmYnEvRf70" target="_blank" style="text-decoration:none; color:inherit;">2026년 가장 저평가 됐다는 전기 관련주 4개</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-16
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('VhmYnEvRf70')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-VhmYnEvRf70" style="display:none; margin-top:10px;">
+                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 2026년 가장 저평가 됐다는 전기 관련주 4개<br>- URL: https://www.youtube.com/watch?v=VhmYnEvRf70<br>- Published at: 2026-01-16T13:07:50+00:00</div>
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-VhmYnEvRf70" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-VhmYnEvRf70"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-VhmYnEvRf70"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-VhmYnEvRf70" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('VhmYnEvRf70')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/7sVkFpGNnN8" target="_blank" style="text-decoration:none; color:inherit;">미국에서 콕 찝어준 대한민국 2026년 환율 전망</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#dcfce7; color:#166534; padding:2px 5px; border-radius:4px; white-space:nowrap;">APPROVED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-16
+                        
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('7sVkFpGNnN8')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-7sVkFpGNnN8" style="display:none; margin-top:10px;">
+                            
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-7sVkFpGNnN8" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-7sVkFpGNnN8"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-7sVkFpGNnN8"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-7sVkFpGNnN8" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('7sVkFpGNnN8')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/IJFzL64ECMI" target="_blank" style="text-decoration:none; color:inherit;">월가가 현시점 주가 급상승 구간 잡는 진짜 방법</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-16
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('IJFzL64ECMI')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-IJFzL64ECMI" style="display:none; margin-top:10px;">
+                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 월가가 현시점 주가 급상승 구간 잡는 진짜 방법<br>- URL: https://www.youtube.com/watch?v=IJFzL64ECMI<br>- Published at: 2026-01-16T06:23:01+00:00</div>
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-IJFzL64ECMI" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-IJFzL64ECMI"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-IJFzL64ECMI"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-IJFzL64ECMI" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('IJFzL64ECMI')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/_iEBPCtP8CI" target="_blank" style="text-decoration:none; color:inherit;">샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-16
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('_iEBPCtP8CI')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-_iEBPCtP8CI" style="display:none; margin-top:10px;">
+                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 샘 올트먼이 엔비디아 손절하고 '14조 투자'한 기업 정체<br>- URL: https://www.youtube.com/watch?v=_iEBPCtP8CI<br>- Published at: 2026-01-16T00:59:38+00:00</div>
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-_iEBPCtP8CI" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-_iEBPCtP8CI"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-_iEBPCtP8CI"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-_iEBPCtP8CI" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('_iEBPCtP8CI')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/iR0eIStTrhY" target="_blank" style="text-decoration:none; color:inherit;">트럼프가 금융주를 정면으로 건드리는 진짜 이유</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-15
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('iR0eIStTrhY')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-iR0eIStTrhY" style="display:none; margin-top:10px;">
+                            
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-iR0eIStTrhY" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-iR0eIStTrhY"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-iR0eIStTrhY"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-iR0eIStTrhY" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('iR0eIStTrhY')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/qATP0eIVgoA" target="_blank" style="text-decoration:none; color:inherit;">현시점 금값, 가장 쌀 때 매수 하는 방법</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-15
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('qATP0eIVgoA')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-qATP0eIVgoA" style="display:none; margin-top:10px;">
+                            
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-qATP0eIVgoA" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-qATP0eIVgoA"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-qATP0eIVgoA"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-qATP0eIVgoA" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('qATP0eIVgoA')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/oKwcmucSGcU" target="_blank" style="text-decoration:none; color:inherit;">트럼프가 '다시 한번' 관세로 전세계 장악하는 방법</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#dbeafe; color:#1e40af; padding:2px 5px; border-radius:4px; white-space:nowrap;">NEW</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-15
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('oKwcmucSGcU')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-oKwcmucSGcU" style="display:none; margin-top:10px;">
+                            
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-oKwcmucSGcU" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-oKwcmucSGcU"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-oKwcmucSGcU"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-oKwcmucSGcU" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('oKwcmucSGcU')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/53Yd9a8qSRo" target="_blank" style="text-decoration:none; color:inherit;">월가에서 '제2의 현대차' 될 수 있다는 저평가주</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-15
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('53Yd9a8qSRo')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-53Yd9a8qSRo" style="display:none; margin-top:10px;">
+                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 월가에서 '제2의 현대차' 될 수 있다는 저평가주<br>- URL: https://www.youtube.com/watch?v=53Yd9a8qSRo<br>- Published at: 2026-01-15T07:13:39+00:00</div>
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-53Yd9a8qSRo" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-53Yd9a8qSRo"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-53Yd9a8qSRo"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-53Yd9a8qSRo" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('53Yd9a8qSRo')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="inbox-card" style="background:white; border:1px solid #cbd5e1; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="font-size:12px; font-weight:600; color:#334155; line-height:1.4; width:70%; word-break:break-all;">
+                            <a href="https://youtu.be/rFfleFohjCs" target="_blank" style="text-decoration:none; color:inherit;">환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’</a>
+                        </div>
+                        <span style="font-size:9px; font-weight:bold; background:#ffedd5; color:#9a3412; padding:2px 5px; border-radius:4px; white-space:nowrap;">PROPOSED</span>
+                    </div>
+                    <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
+                        2026-01-15
+                         <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>
+                        
+                    </div>
+    
+                    <div style="margin-top:4px; font-size:10px;">
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                    </div>
+                    
+                    
+                    
+                    <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
+                        <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
+                            <input type="checkbox" onchange="toggleAction('rFfleFohjCs')" style="margin-right:5px;"> Learning Needed?
+                        </label>
+                        
+                        <div id="action-box-rFfleFohjCs" style="display:none; margin-top:10px;">
+                            <div style='background:#f8fafc; padding:5px; font-size:10px; color:#64748b; border-radius:4px; margin-top:5px;'>- Video: 환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’<br>- URL: https://www.youtube.com/watch?v=rFfleFohjCs<br>- Published at: 2026-01-15T04:55:02+00:00</div>
+                            <div class="approval-form" style="margin-top:10px;">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:5px;">승인 옵션:</div>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-dcm-rFfleFohjCs" checked> Data Collection Master</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-adl-rFfleFohjCs"> Anomaly Detection Logic</label>
+                                <label style="display:block; font-size:11px;"><input type="checkbox" id="ib-bs-rFfleFohjCs"> Baseline Signals</label>
+                                
+                                <textarea id="ib-note-rFfleFohjCs" placeholder="Notes..." style="width:100%; margin-top:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px; height:40px;"></textarea>
+                                
+                                <button onclick="generateInboxYaml('rFfleFohjCs')" style="width:100%; margin-top:5px; background:#3b82f6; color:white; border:none; padding:4px; border-radius:4px; font-size:11px; cursor:pointer;">
+                                    Generate YAML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div id="narrative-queue" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📝 내러티브 큐</h2>
+                        
+        <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
+            Narrative Review Queue
+        </div>
+        
+            <div style='padding:20px 10px; text-align:center; background:#f8fafc; border:1px dashed #e2e8f0; border-radius:6px; margin:10px 0;'>
+                <div style='font-size:12px; color:#64748b; font-weight:bold;'>No proposals today — scoring logic active (Phase 32)</div>
+                <div style='font-size:10px; color:#94a3b8; margin-top:5px;'>Hoin Insight engine is active and monitoring.</div>
+            </div>
+            
+                    </div>
+    
+                    <div id="revival-engine" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">♻️ 부활 엔진</h2>
+                        <div style="padding:20px; text-align:center; color:#94a3b8;">No revival data.</div>
+                    </div>
+    
+                    <div id="rejection-ledger" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🚫 거절/보류 리스트</h2>
+                        <div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>
+                    </div>
+    
+                    <div id="topic-candidates" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📂 토픽 후보군</h2>
+                        <div style="padding:20px; text-align:center; color:#94a3b8;">No candidates found.</div>
+                    </div>
+    
+                    <div id="final-decision" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">⚖️ 최종 의사결정 카드</h2>
+                        <div style='padding:20px; text-align:center;'>No Data</div>
+                    </div>
+    
+                    <div id="archive-list" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🗄 아카이브</h2>
+                        <div style="padding:20px; text-align:center; color:#94a3b8;">No archives found.</div>
+                    </div>
+                    
+                    <div id="insight-script" class="tab-content" style="display:none;">
+                        <div style="max-width: 1100px; margin: 0 auto;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
+                                <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
+                            </div>
+                            <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
+스크립트가 아직 생성되지 않았습니다.
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> <!-- End sections wrapper -->
+            </div> <!-- End Main Panel -->
+            
+            <!-- RIGHT SIDEBAR (Correct Placement) -->
+            <div class="sidebar">
+                
+                <!-- [Phase 35] System Evolution Section -->
+                <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
+                    <h3 style="color:#6a1b9a; border-bottom: 2px solid #ce93d8; padding-bottom: 8px; font-size:14px; margin-top:0;">🚀 시스템 진화 제안</h3>
+                    <p style="font-size:11px; color:#666; margin-bottom:15px; line-height:1.4;">
+                        영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
+                    </p>
+                    
+                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
+                            <small style="font-size:10px; color:#666;">2026-01-17</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            구리 가격 하락 + 금 가격 신고가 (Ratio 급등) 
+                            <br>→ 강력한 경기 침체 신호 (Safe Haven Divergence)
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다...."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-MOCK-001')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-MOCK-001')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd; margin-bottom: 15px; padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-17</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            | 원자재 | 우라늄 현물 | TradingEconomics | API | Free | CANDIDATE | 원전 재가동 및 AI 전력 수요 | 1일 | 수집데이터 | 
+                            <br>→ 
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "AI 전력 수요 폭증으로 우라늄 수급 불균형이 심화되고 있습니다...."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-MOCK-002')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-MOCK-002')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5; margin-bottom: 15px; padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
+                            <small style="font-size:10px; color:#666;">2026-01-16</small>
+                        </div>
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한 
+                            <br>→ 이것은 강력한 경기 침체의 신호
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "만약 구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
                 <div class="footer">
-                    Hoin Engine 자동 생성<br>2026-01-16
+                    Hoin Engine 자동 생성<br>2026-01-17
                 </div>
             </div>
             
