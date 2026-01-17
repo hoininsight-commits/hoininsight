@@ -1338,7 +1338,8 @@ def generate_dashboard(base_dir: Path):
                 
                 <div class="nav-label">OPERATIONS</div>
                 <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
-                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과</div>
+                <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> 데이터 수집 현황</div>
+                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
 
                 <div class="nav-label">WORKFLOW</div>
                 <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
@@ -1538,6 +1539,32 @@ def generate_dashboard(base_dir: Path):
                     </div>
     """
 
+    # [Data Status Tab (Moved from Sidebar)]
+    # Convert sidebar list items to a grid layout for main view
+    data_status_grid = sidebar_html.replace('class="status-item"', 'class="status-card-grid-item"')
+    data_status_grid = data_status_grid.replace('font-size: 11px', 'font-size: 13px')
+    
+    html += f"""
+                    <div id="data-status" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📡 데이터 수집 현황</h2>
+                        <div style="background:white; padding:30px; border-radius:8px; border:1px solid #e2e8f0;">
+                            <div class="status-grid-view" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
+                                {data_status_grid}
+                            </div>
+                        </div>
+                        <style>
+                            .status-card-grid-item {{
+                                display: flex; justify-content: space-between; align-items: center;
+                                padding: 15px; border: 1px solid #e2e8f0; border-radius: 6px;
+                                background: #f8fafc;
+                            }}
+                            .status-card-grid-item:hover {{
+                                background: #f1f5f9; border-color: #cbd5e1;
+                            }}
+                        </style>
+                    </div>
+    """
+
     # [Change Effectiveness Tab]
     html += f"""
                     <div id="change-effectiveness" class="tab-content" style="display:none;">
@@ -1684,9 +1711,6 @@ def generate_dashboard(base_dir: Path):
             
             <!-- RIGHT SIDEBAR (Correct Placement) -->
             <div class="sidebar">
-                <div class="sidebar-title">
-                    데이터 수집 현황판
-                </div>
                 
                 <!-- [Phase 35] System Evolution Section -->
                 <div class="card" style="background: white; border: 1px solid #e0e0e0; margin-bottom: 20px;">
@@ -1697,7 +1721,6 @@ def generate_dashboard(base_dir: Path):
                     {evolution_html}
                 </div>
 
-                {sidebar_html}
                 <div class="footer">
                     Hoin Engine 자동 생성<br>{ymd}
                 </div>
