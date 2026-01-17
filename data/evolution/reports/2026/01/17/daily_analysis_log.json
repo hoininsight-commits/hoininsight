@@ -1,0 +1,50 @@
+{
+  "date": "2026/01/17",
+  "total_analyzed": 1,
+  "results": [
+    {
+      "summary": "Analyzed 'Bitcoin Strategy' - Found 6 potential data gaps & 1 logic patterns.",
+      "data_usage": [],
+      "anomaly_detected": {
+        "description": "Pattern-based Logic Discovery",
+        "level": "L2 (Heuristic)"
+      },
+      "why_now_type": "Data-driven",
+      "logic_gap_analysis": {
+        "new_data_needed": true,
+        "new_logic_needed": true,
+        "reason": "Extracted 1 explicit logic patterns."
+      },
+      "learned_rule": "따라서 우리는 퀀텀 컴퓨팅 관련 데이터를 추가해야 합니다",
+      "final_decision": "UPDATE_REQUIRED",
+      "proposals": [
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Uncategorized | USER_NEED | Source: USER_NEED | Unknown | Free | CANDIDATE | Found in: Bitcoin Strategy |",
+          "reason": "System blindspot: 'USER_NEED' detected in high-importance logic."
+        },
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Uncategorized | 우리는 | Source: 우리는 | Unknown | Free | CANDIDATE | Found in: Bitcoin Strategy |",
+          "reason": "System blindspot: '우리는' detected in high-importance logic."
+        },
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Uncategorized | 컴퓨팅 | Source: 컴퓨팅 | Unknown | Free | CANDIDATE | Found in: Bitcoin Strategy |",
+          "reason": "System blindspot: '컴퓨팅' detected in high-importance logic."
+        },
+        {
+          "type": "LOGIC",
+          "category": "LOGIC_UPDATE",
+          "content": "IF USER_NEED THEN 우리는 퀀텀 컴퓨팅 관련 데이터 (Type: ACTION_ADD_DATA)",
+          "reason": "New causal pattern detected: 따라서 우리는 퀀텀 컴퓨팅 관련 데이터를 추가해야 합니다..."
+        }
+      ],
+      "source_file": "bitcoin_strategy.txt",
+      "analyzed_at": "2026-01-17T01:54:04.127369"
+    }
+  ]
+}
