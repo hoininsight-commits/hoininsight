@@ -6,7 +6,14 @@ this version implements the LOGIC ARCHITECTURE but MOCKS the LLM call for demons
 
 import json
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List
+import hashlib
+from datetime import datetime
+
+try:
+    from src.learning.logic_evolver import LogicEvolver
+except ImportError:
+    pass
 
 class DeepLogicAnalyzer:
     def __init__(self, base_dir: Path):
@@ -25,17 +32,105 @@ class DeepLogicAnalyzer:
         print("[DeepLogicAnalyzer] Simulating Expert Reasoning Process...")
         
         # Check title to route to appropriate mock response
-        if "트럼프" in title or "파월" in title:
-           return self._mock_trump_powell_case()
-        elif "모건" in title or "장기 투자" in title:
-           return self._mock_morgan_case()
-        elif "워런 버핏" in title or "이란" in title:
-           return self._mock_warren_buffett_case()
-        elif "한화" in title or "인적 분할" in title:
-           return self._mock_hanwha_case()
+        if "MOCK_MODE" in title: # Explicit mock trigger
+            if "트럼프" in title or "파월" in title:
+               return self._mock_trump_powell_case()
+            elif "모건" in title or "장기 투자" in title:
+               return self._mock_morgan_case()
+            elif "워런 버핏" in title or "이란" in title:
+               return self._mock_warren_buffett_case()
+            elif "한화" in title or "인적 분할" in title:
+               return self._mock_hanwha_case()
+            else:
+               return self._mock_new_case_logic(title)
         else:
-           # Default fallback or new case logic
-           return self._mock_new_case_logic(title)
+            # REAL Analysis Mode
+            return self.analyze_heuristic(transcript, title)
+
+    def analyze_heuristic(self, transcript: str, title: str) -> Dict[str, Any]:
+        """
+        Perform actual heuristic analysis using LogicEvolver patterns + KnowledgeBase checks.
+        """
+        # Lazy load LogicEvolver to avoid circular imports if any
+        try:
+            evolver = LogicEvolver(self.base_dir)
+        except NameError:
+             from src.learning.logic_evolver import LogicEvolver
+             evolver = LogicEvolver(self.base_dir)
+
+        patterns = evolver.discover_logic_patterns(transcript, title)
+        
+        proposals = []
+        logic_gaps = []
+        data_gaps = []
+        
+        # 1. Analyze Patterns for Gaps
+        for p in patterns:
+            # Check Data Gaps (Unknown Nouns) in Condition/Implication
+            # detailed check would require NLP, here we use simple space splitting and check against KB headers
+            terms = p['condition'].split() + p['implication'].split()
+            for term in terms:
+                # Minimal cleaning
+                term = term.strip().replace("가", "").replace("이", "").replace("을", "").replace("를", "") 
+                if len(term) < 2: continue
+                
+                # Check if term exists in KnowledgeBase (very simple check for now)
+                # We assume KB has a 'contains' method or we scan raw text
+                # For this version, we'll scan the raw loaded text
+                if term not in self.data_master:
+                    data_gaps.append(term)
+            
+            # Use pattern as Logic Gap candidate
+            logic_gaps.append(p)
+
+        # 2. Formulate Proposals
+        # Deduplicate data gaps
+        data_gaps = list(set(data_gaps))
+        
+        # Limit proposals to top 3 to avoid spam
+        for gap_term in data_gaps[:3]:
+            # Guess category
+            cat = "| Uncategorized |"
+            if "가격" in gap_term or "지수" in gap_term: cat = "| Market Data |"
+            elif "정책" in gap_term: cat = "| Policy |"
+            
+            prop_content = f"{cat} {gap_term} | Source: {gap_term} | Unknown | Free | CANDIDATE | Found in: {title} |"
+            
+            proposals.append({
+                "type": "DATA",
+                "category": "DATA_UPDATE",
+                "content": prop_content,
+                "reason": f"System blindspot: '{gap_term}' detected in high-importance logic."
+            })
+            
+        for p in logic_gaps[:2]:
+            proposals.append({
+                "type": "LOGIC",
+                "category": "LOGIC_UPDATE",
+                "content": f"IF {p['condition']} THEN {p['implication']} (Type: {p['type']})",
+                "reason": f"New causal pattern detected: {p['original_sentence'][:50]}..."
+            })
+            
+        # 3. Construct Result
+        has_update = len(proposals) > 0
+        
+        return {
+            "summary": f"Analyzed '{title}' - Found {len(data_gaps)} potential data gaps & {len(logic_gaps)} logic patterns.",
+            "data_usage": [], # Can't accurately determine usage without full NLP yet
+            "anomaly_detected": {
+                "description": "Pattern-based Logic Discovery",
+                "level": "L2 (Heuristic)"
+            },
+            "why_now_type": "Data-driven",
+            "logic_gap_analysis": {
+                "new_data_needed": len(data_gaps) > 0,
+                "new_logic_needed": len(logic_gaps) > 0,
+                "reason": f"Extracted {len(patterns)} explicit logic patterns."
+            },
+            "learned_rule": logic_gaps[0]['original_sentence'] if logic_gaps else "No explicit rule found.",
+            "final_decision": "UPDATE_REQUIRED" if has_update else "LOG_ONLY",
+            "proposals": proposals
+        }
 
     def _mock_trump_powell_case(self):
         """Mock response for Trump vs Powell Case"""

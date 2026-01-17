@@ -1134,6 +1134,47 @@ def generate_dashboard(base_dir: Path):
     sidebar_html += applied_html
 
     
+    # [Start] Analysis Log Loader
+    analysis_log_html = ""
+    try:
+        log_path = base_dir / "data/evolution/reports" / ymd.replace("-","/") / "daily_analysis_log.json"
+        if log_path.exists():
+            log_data = json.loads(log_path.read_text(encoding='utf-8'))
+            results = log_data.get("results", [])
+            
+            if results:
+                analysis_log_html += '<div style="display:grid; gap:10px;">'
+                for res in results:
+                    title = res.get('source_file', 'Unknown Source')
+                    decision = res.get('final_decision', 'UNKNOWN')
+                    summary = res.get('summary', 'No summary')
+                    
+                    # Status Badge
+                    d_color = "#64748b" # Default Gray
+                    if decision == "UPDATE_REQUIRED": d_color = "#8b5cf6" # Purple
+                    elif decision == "LOG_ONLY": d_color = "#10b981" # Green
+                    
+                    analysis_log_html += f"""
+                    <div style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:15px; display:flex; flex-direction:column; gap:8px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:bold; color:#1e293b; font-size:13px;">📺 {title}</span>
+                            <span style="background:{d_color}; color:white; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:bold;">{decision}</span>
+                        </div>
+                        <div style="font-size:12px; color:#475569;">{summary}</div>
+                        <div style="font-size:11px; color:#94a3b8; background:#f8fafc; padding:6px; border-radius:4px;">
+                            <span style="font-weight:bold;">Learned Rule:</span> {res.get('learned_rule','-')}
+                        </div>
+                    </div>
+                    """
+                analysis_log_html += '</div>'
+            else:
+                analysis_log_html = "<div style='color:#94a3b8; font-size:12px;'>분석된 영상이 없습니다.</div>"
+        else:
+             analysis_log_html = "<div style='color:#94a3b8; font-size:12px; padding:20px; text-align:center; background:#f8fafc; border-radius:8px;'>데이터가 아직 생성되지 않았습니다. (Daily Scan Pending)</div>"
+    except Exception as e:
+        analysis_log_html = f"<div style='color:red; font-size:11px;'>Log Load Error: {e}</div>"
+    # [End] Analysis Log Loader
+
     # [Phase 35] Evolution Proposals Logic
     evolution_html = ""
     evo_dir = base_dir / "data" / "evolution" / "proposals"
@@ -1677,7 +1718,20 @@ def generate_dashboard(base_dir: Path):
                         <p style="font-size:14px; color:#666; margin-bottom:25px;">
                             영상을 분석하여 발견된 <b>새로운 로직</b>과 <b>데이터</b>입니다. 승인 시 지식 베이스가 업데이트됩니다.
                         </p>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;">
+
+                        <!-- Analysis Log Section (New) -->
+                        <div style="margin-bottom: 40px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #334155; margin-bottom: 15px; border-left: 4px solid #64748b; padding-left: 10px;">
+                                📋 금일 분석 로그 (수집된 영상 분석 결과)
+                            </h3>
+                            {analysis_log_html}
+                        </div>
+
+                        <!-- Proposals Section -->
+                        <h3 style="font-size: 16px; font-weight: 700; color: #334155; margin-bottom: 15px; border-left: 4px solid #8b5cf6; padding-left: 10px;">
+                            💡 진화 제안 (승인 대기중)
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
                             {evo_grid_html}
                         </div>
                     </div>
