@@ -348,6 +348,20 @@ jobs:
           python -m src.narratives.narrative_analyzer
         continue-on-error: true
 
+      - name: Generate Auto Collectors (Phase 31-B-EXT)
+        run: |
+          python -m src.collectors.auto_collector_generator
+        continue-on-error: true
+
+      - name: Notify Human for Approval (Phase 31-B-HUMAN)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -m src.evolution.human_loop_notifier
+        continue-on-error: true
+
       - name: Verify Phase 31-B Proposals
         run: |
           echo "[VERIFY] Phase 31-B Proposal Generation Check"

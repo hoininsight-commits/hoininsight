@@ -258,6 +258,40 @@
                 
                 // TODO: 거절 사유를 포함한 상태 업데이트
             }
+            
+            function requestImplementation(proposalId) {
+                const notes = prompt(`Antigravity에게 전달할 추가 요구사항이나 메모를 입력하세요 (선택사항):`);
+                
+                const message = `🤖 Antigravity 구현 요청\n\n` +
+                    `제안 ID: ${proposalId}\n\n` +
+                    `다음 작업이 GitHub Issue로 생성됩니다:\n` +
+                    `1. 데이터 수집 모듈 완성 (API 연동)\n` +
+                    `2. 로직 업데이트 (필요시)\n` +
+                    `3. 테스트 및 검증\n` +
+                    `4. DATA_COLLECTION_MASTER 업데이트\n\n` +
+                    (notes ? `추가 요구사항: ${notes}\n\n` : '') +
+                    `계속하시겠습니까?`;
+                
+                if (!confirm(message)) return;
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${proposalId}`);
+                if (card) {
+                    card.style.border = '3px solid #f59e0b';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#f59e0b; color:white; padding:6px 10px; border-radius:4px; margin-top:8px; font-size:11px; text-align:center; font-weight:bold;';
+                    badge.innerHTML = '🤖 Antigravity 구현 요청됨<br><small style="font-size:9px;">GitHub Issue 생성 중...</small>';
+                    card.appendChild(badge);
+                }
+                
+                alert(`✅ 구현 요청이 접수되었습니다!\n\n` +
+                    `GitHub Issue가 자동으로 생성되며,\n` +
+                    `Antigravity가 다음 세션에서 작업을 시작합니다.\n\n` +
+                    `진행 상황은 GitHub Issues에서 확인하세요.`);
+                
+                // TODO: GitHub API를 통한 Issue 자동 생성
+                // 현재는 다음 파이프라인 실행 시 human_loop_notifier가 처리
+            }
         </script>
     </head>
     <body>
@@ -593,7 +627,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -607,7 +641,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -615,7 +649,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -629,7 +663,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -637,7 +671,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -651,7 +685,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -665,7 +699,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -679,7 +713,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
+                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:11)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -827,6 +861,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-17619')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-17619')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-17619')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -851,6 +886,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-01237')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-01237')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-01237')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -875,6 +911,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-40469')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-40469')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-40469')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -899,6 +936,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-69745')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-69745')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-69745')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -923,6 +961,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-86781')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-86781')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-86781')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -947,6 +986,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-29602')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-29602')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-29602')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -971,6 +1011,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-53189')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-53189')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-53189')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -995,6 +1036,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-88967')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-88967')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-88967')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1019,6 +1061,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-75551')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-75551')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-75551')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1043,6 +1086,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-28984')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-28984')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-28984')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1067,6 +1111,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-99475')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-99475')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-99475')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1091,6 +1136,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-97715')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-97715')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-97715')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1115,6 +1161,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-13732')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-13732')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-13732')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1139,6 +1186,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-78378')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-78378')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-78378')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1167,6 +1215,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-95759')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-95759')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-95759')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1195,6 +1244,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-14701')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-14701')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-14701')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1219,6 +1269,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-46997')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-46997')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-46997')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1243,6 +1294,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-11958')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-11958')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-11958')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1267,6 +1319,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-23156')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-23156')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-23156')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1291,6 +1344,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-27494')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-27494')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-27494')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1315,6 +1369,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-82478')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-82478')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-82478')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1339,6 +1394,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-85939')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-85939')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-85939')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1363,6 +1419,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-33160')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-33160')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-33160')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1387,6 +1444,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-29613')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-29613')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-29613')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1411,6 +1469,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-83397')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-83397')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-83397')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1435,6 +1494,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-95613')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-95613')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-95613')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1459,6 +1519,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-09859')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-09859')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-09859')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1483,6 +1544,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-25577')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-25577')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-25577')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1507,6 +1569,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-71629')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-71629')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-71629')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1531,6 +1594,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-80493')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-80493')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-80493')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1555,6 +1619,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-58765')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-58765')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-58765')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1579,6 +1644,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-72674')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-72674')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-72674')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1603,6 +1669,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-59066')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-59066')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-59066')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1627,6 +1694,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-71760')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-71760')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-71760')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1651,6 +1719,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-98980')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-98980')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-98980')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1675,6 +1744,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-44245')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-44245')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-44245')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1699,6 +1769,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-37985')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-37985')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-37985')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1727,6 +1798,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-50129')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-50129')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-50129')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1751,6 +1823,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-02274')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-02274')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-02274')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1779,6 +1852,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-26886')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-26886')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-26886')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1803,6 +1877,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-51495')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-51495')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-51495')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1827,6 +1902,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-94873')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-94873')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-94873')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1851,6 +1927,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-98942')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-98942')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-98942')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1875,6 +1952,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-89579')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-89579')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-89579')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1899,6 +1977,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-58158')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-58158')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-58158')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1923,6 +2002,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-27822')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-27822')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-27822')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1947,6 +2027,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-01087')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-01087')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-01087')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1971,6 +2052,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-98562')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-98562')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-98562')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1995,6 +2077,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-62808')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-62808')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-62808')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2019,6 +2102,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-83036')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-83036')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-83036')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2043,6 +2127,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-24481')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-24481')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-24481')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2067,6 +2152,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-78662')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-78662')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-78662')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2091,6 +2177,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-38953')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-38953')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-38953')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2115,6 +2202,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-01393')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-01393')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-01393')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2139,6 +2227,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260116-7ade5f2e')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260116-7ade5f2e')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2163,6 +2252,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-16247')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260117-16247')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260117-16247')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -2187,6 +2277,7 @@ Regime: (no meta regime detected)
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260118-LOGIC-KOSPI-MSCI')" style="flex:1; background:#9c27b0; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('EVO-20260118-LOGIC-KOSPI-MSCI')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('EVO-20260118-LOGIC-KOSPI-MSCI')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>

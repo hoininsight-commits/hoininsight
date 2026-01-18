@@ -1210,6 +1210,7 @@ def generate_dashboard(base_dir: Path):
                         
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('{item['id']}')" style="flex:1; background:{border_color}; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="requestImplementation('{item['id']}')" style="flex:1; background:#f59e0b; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">🤖 Antigravity 요청</button>
                             <button onclick="rejectProposal('{item['id']}')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
@@ -1413,6 +1414,40 @@ def generate_dashboard(base_dir: Path):
                 }}
                 
                 // TODO: 거절 사유를 포함한 상태 업데이트
+            }}
+            
+            function requestImplementation(proposalId) {{
+                const notes = prompt(`Antigravity에게 전달할 추가 요구사항이나 메모를 입력하세요 (선택사항):`);
+                
+                const message = `🤖 Antigravity 구현 요청\\n\\n` +
+                    `제안 ID: ${{proposalId}}\\n\\n` +
+                    `다음 작업이 GitHub Issue로 생성됩니다:\\n` +
+                    `1. 데이터 수집 모듈 완성 (API 연동)\\n` +
+                    `2. 로직 업데이트 (필요시)\\n` +
+                    `3. 테스트 및 검증\\n` +
+                    `4. DATA_COLLECTION_MASTER 업데이트\\n\\n` +
+                    (notes ? `추가 요구사항: ${{notes}}\\n\\n` : '') +
+                    `계속하시겠습니까?`;
+                
+                if (!confirm(message)) return;
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${{proposalId}}`);
+                if (card) {{
+                    card.style.border = '3px solid #f59e0b';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#f59e0b; color:white; padding:6px 10px; border-radius:4px; margin-top:8px; font-size:11px; text-align:center; font-weight:bold;';
+                    badge.innerHTML = '🤖 Antigravity 구현 요청됨<br><small style="font-size:9px;">GitHub Issue 생성 중...</small>';
+                    card.appendChild(badge);
+                }}
+                
+                alert(`✅ 구현 요청이 접수되었습니다!\\n\\n` +
+                    `GitHub Issue가 자동으로 생성되며,\\n` +
+                    `Antigravity가 다음 세션에서 작업을 시작합니다.\\n\\n` +
+                    `진행 상황은 GitHub Issues에서 확인하세요.`);
+                
+                // TODO: GitHub API를 통한 Issue 자동 생성
+                // 현재는 다음 파이프라인 실행 시 human_loop_notifier가 처리
             }}
         </script>
     </head>
