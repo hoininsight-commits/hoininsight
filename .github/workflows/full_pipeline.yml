@@ -266,6 +266,15 @@ jobs:
           python -m src.narratives.transcript_ingestor
           python -m src.narratives.narrative_status
 
+      - name: Run Auto-Generated Collectors (Phase 31-A-EXT)
+        run: |
+          echo "[COLLECT] Running auto-generated data collectors..."
+          python -m src.collectors.auto_generated.collect_foreign_investor_flow || echo "[WARN] Foreign investor flow collection failed"
+          python -m src.collectors.auto_generated.collect_pension_fund_flow || echo "[WARN] Pension fund flow collection failed"
+          python -m src.collectors.auto_generated.collect_value_up_participants || echo "[WARN] Value-up participants collection failed"
+          echo "[COLLECT] Auto-generated collectors completed"
+        continue-on-error: true
+
       - name: Verify Phase 31-A Narrative Ingestion
         run: |
           echo "[VERIFY] Phase 31-A Narrative Ingestion Check"

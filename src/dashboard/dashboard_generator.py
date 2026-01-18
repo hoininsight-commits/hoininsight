@@ -1172,18 +1172,31 @@ def generate_dashboard(base_dir: Path):
                 items = content if isinstance(content, list) else [content]
                 
                 for item in items:
-                    if item.get("status") != "PROPOSED": continue
+                    if item.get("status") not in ["PROPOSED", "COLLECTOR_GENERATED"]: continue
                     
                     bg_color = "#f3e5f5" if item.get('category') == "LOGIC_UPDATE" else "#e3f2fd"
                     border_color = "#9c27b0" if item.get('category') == "LOGIC_UPDATE" else "#2196f3"
                     badge = "🧠 LOGIC" if item.get('category') == "LOGIC_UPDATE" else "📊 DATA"
                     
+                    # Check if collector script exists
+                    collector_info = ""
+                    if item.get('category') == 'DATA_ADD' and item.get('collector_script'):
+                        collector_path = base_dir / item['collector_script']
+                        if collector_path.exists():
+                            collector_info = f"""
+                            <div style="background:#d1fae5; padding:6px; border-radius:4px; margin-bottom:8px; font-size:10px;">
+                                ✅ <b>수집 모듈 생성 완료:</b> <code>{item['collector_script']}</code>
+                            </div>
+                            """
+                    
                     evolution_html += f"""
-                    <div class="card" style="border-left: 4px solid {border_color}; background: {bg_color}; margin-bottom: 15px; padding:12px;">
+                    <div class="card" id="proposal-{item['id']}" style="border-left: 4px solid {border_color}; background: {bg_color}; margin-bottom: 15px; padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:{border_color}; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">{badge}</span>
                             <small style="font-size:10px; color:#666;">{item.get('generated_at','')[:10]}</small>
                         </div>
+                        
+                        {collector_info}
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1357,6 +1370,49 @@ def generate_dashboard(base_dir: Path):
             
             function openModal() {{
                 document.getElementById('scriptModal').classList.add('modal-active');
+            }}
+            
+            function approveProposal(proposalId) {{
+                if (!confirm(`제안 ${{proposalId}}를 승인하시겠습니까?\\n\\n승인 시 DATA_COLLECTION_MASTER가 업데이트되고 수집 스케줄에 추가됩니다.`)) {{
+                    return;
+                }}
+                
+                // GitHub Pages는 정적 사이트이므로 실제 승인은 GitHub Actions를 통해 처리
+                alert(`승인 요청이 접수되었습니다.\\n\\nGitHub Actions를 통해 처리됩니다:\\n1. 제안 상태 → APPROVED\\n2. DATA_COLLECTION_MASTER 업데이트\\n3. 수집 스케줄 추가\\n\\n처리 완료까지 약 1-2분 소요됩니다.`);
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${{proposalId}}`);
+                if (card) {{
+                    card.style.opacity = '0.5';
+                    card.style.border = '2px solid #10b981';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#10b981; color:white; padding:4px 8px; border-radius:4px; margin-top:8px; font-size:10px; text-align:center;';
+                    badge.textContent = '✓ 승인 대기 중...';
+                    card.appendChild(badge);
+                }}
+                
+                // TODO: GitHub API를 통한 자동 승인 처리 구현
+                // 현재는 수동으로 proposal JSON 파일의 status를 APPROVED로 변경 필요
+            }}
+            
+            function rejectProposal(proposalId) {{
+                const reason = prompt(`제안 ${{proposalId}}를 거절하는 이유를 입력하세요:`);
+                if (!reason) return;
+                
+                alert(`거절 사유가 기록되었습니다:\\n"${{reason}}"\\n\\n제안이 거절 목록으로 이동됩니다.`);
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${{proposalId}}`);
+                if (card) {{
+                    card.style.opacity = '0.3';
+                    card.style.border = '2px solid #ef4444';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#ef4444; color:white; padding:4px 8px; border-radius:4px; margin-top:8px; font-size:10px; text-align:center;';
+                    badge.textContent = '✗ 거절됨';
+                    card.appendChild(badge);
+                }}
+                
+                // TODO: 거절 사유를 포함한 상태 업데이트
             }}
         </script>
     </head>

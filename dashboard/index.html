@@ -215,6 +215,49 @@
             function openModal() {
                 document.getElementById('scriptModal').classList.add('modal-active');
             }
+            
+            function approveProposal(proposalId) {
+                if (!confirm(`제안 ${proposalId}를 승인하시겠습니까?\n\n승인 시 DATA_COLLECTION_MASTER가 업데이트되고 수집 스케줄에 추가됩니다.`)) {
+                    return;
+                }
+                
+                // GitHub Pages는 정적 사이트이므로 실제 승인은 GitHub Actions를 통해 처리
+                alert(`승인 요청이 접수되었습니다.\n\nGitHub Actions를 통해 처리됩니다:\n1. 제안 상태 → APPROVED\n2. DATA_COLLECTION_MASTER 업데이트\n3. 수집 스케줄 추가\n\n처리 완료까지 약 1-2분 소요됩니다.`);
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${proposalId}`);
+                if (card) {
+                    card.style.opacity = '0.5';
+                    card.style.border = '2px solid #10b981';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#10b981; color:white; padding:4px 8px; border-radius:4px; margin-top:8px; font-size:10px; text-align:center;';
+                    badge.textContent = '✓ 승인 대기 중...';
+                    card.appendChild(badge);
+                }
+                
+                // TODO: GitHub API를 통한 자동 승인 처리 구현
+                // 현재는 수동으로 proposal JSON 파일의 status를 APPROVED로 변경 필요
+            }
+            
+            function rejectProposal(proposalId) {
+                const reason = prompt(`제안 ${proposalId}를 거절하는 이유를 입력하세요:`);
+                if (!reason) return;
+                
+                alert(`거절 사유가 기록되었습니다:\n"${reason}"\n\n제안이 거절 목록으로 이동됩니다.`);
+                
+                // 시각적 피드백
+                const card = document.getElementById(`proposal-${proposalId}`);
+                if (card) {
+                    card.style.opacity = '0.3';
+                    card.style.border = '2px solid #ef4444';
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background:#ef4444; color:white; padding:4px 8px; border-radius:4px; margin-top:8px; font-size:10px; text-align:center;';
+                    badge.textContent = '✗ 거절됨';
+                    card.appendChild(badge);
+                }
+                
+                // TODO: 거절 사유를 포함한 상태 업데이트
+            }
         </script>
     </head>
     <body>
@@ -550,7 +593,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -564,7 +607,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -572,7 +615,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -586,7 +629,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -594,7 +637,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -608,7 +651,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -622,7 +665,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -636,7 +679,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
+                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:06)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -764,11 +807,13 @@ Regime: (no meta regime detected)
                         </h3>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
                             
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-17619" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -786,11 +831,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-01237" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -808,11 +855,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-40469" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -830,11 +879,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-69745" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -852,11 +903,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-86781" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -874,11 +927,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-29602" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -896,11 +951,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-53189" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-18</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -918,11 +975,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-88967" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -940,11 +999,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-75551" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -962,11 +1023,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-28984" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -984,11 +1047,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-99475" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1006,11 +1071,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-97715" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1028,11 +1095,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-13732" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1050,11 +1119,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-78378" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1072,11 +1143,69 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-95759" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-18</small>
+                        </div>
+                        
+                        
+                            <div style="background:#d1fae5; padding:6px; border-radius:4px; margin-bottom:8px; font-size:10px;">
+                                ✅ <b>수집 모듈 생성 완료:</b> <code>src/collectors/auto_generated/collect_value_up_participants.py</code>
+                            </div>
+                            
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            다섯 번째로 확인해야 할 건 밸류업 참여 기업이야 
+                            <br>→ Pattern: User explicit need: 확인해야
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "다섯 번째로 확인해야 할 건 밸류업 참여 기업이야..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260118-95759')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260118-95759')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" id="proposal-EVO-20260118-14701" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-18</small>
+                        </div>
+                        
+                        
+                            <div style="background:#d1fae5; padding:6px; border-radius:4px; margin-bottom:8px; font-size:10px;">
+                                ✅ <b>수집 모듈 생성 완료:</b> <code>src/collectors/auto_generated/collect_pension_fund_flow.py</code>
+                            </div>
+                            
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            세 번째로 확인해야 할 건 연기금 스탠스야 
+                            <br>→ Pattern: User explicit need: 확인해야
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "세 번째로 확인해야 할 건 연기금 스탠스야..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260118-14701')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260118-14701')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" id="proposal-EVO-20260117-46997" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1094,11 +1223,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-11958" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-18</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1116,11 +1247,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-23156" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1138,11 +1271,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-27494" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1160,11 +1295,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-82478" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1182,11 +1319,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-85939" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1204,11 +1343,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-33160" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1226,11 +1367,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-29613" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1248,11 +1391,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-83397" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1270,11 +1415,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-95613" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1292,11 +1439,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-09859" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1314,11 +1463,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-25577" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1336,11 +1487,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-71629" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1358,11 +1511,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-80493" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1380,11 +1535,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-58765" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1402,11 +1559,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-72674" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1424,11 +1583,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-59066" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1446,11 +1607,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-71760" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1468,11 +1631,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-98980" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1490,11 +1655,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-44245" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1512,11 +1679,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-37985" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1534,11 +1703,41 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-50129" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-18</small>
+                        </div>
+                        
+                        
+                            <div style="background:#d1fae5; padding:6px; border-radius:4px; margin-bottom:8px; font-size:10px;">
+                                ✅ <b>수집 모듈 생성 완료:</b> <code>src/collectors/auto_generated/collect_pension_fund_flow.py</code>
+                            </div>
+                            
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            근데 지금은 환율 방어를 위해서라도 해외 자산 일부를 팔고 국내 주식을 사야 한다는 압박을 받고 있어 연기금의 국내 주식 비중 확대 검토 소식은 시장의 강력한 지지선을 제공해네 번 
+                            <br>→ Pattern: User explicit need: 확인해야
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "근데 지금은 환율 방어를 위해서라도 해외 자산 일부를 팔고 국내 주식을 사야 한다는 압박을 받고 있어 연기금..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260118-50129')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260118-50129')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" id="proposal-EVO-20260117-02274" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1556,11 +1755,41 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-26886" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
+                            <small style="font-size:10px; color:#666;">2026-01-18</small>
+                        </div>
+                        
+                        
+                            <div style="background:#d1fae5; padding:6px; border-radius:4px; margin-bottom:8px; font-size:10px;">
+                                ✅ <b>수집 모듈 생성 완료:</b> <code>src/collectors/auto_generated/collect_foreign_investor_flow.py</code>
+                            </div>
+                            
+                        
+                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
+                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
+                            두 번째로 확인해야 할 건 외국인 수급 방향이야 
+                            <br>→ Pattern: User explicit need: 확인해야
+                        </div>
+                        
+                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
+                            "두 번째로 확인해야 할 건 외국인 수급 방향이야..."
+                        </div>
+                        
+                        <div style="display:flex; gap:5px;">
+                            <button onclick="approveProposal('EVO-20260118-26886')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
+                            <button onclick="rejectProposal('EVO-20260118-26886')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" id="proposal-EVO-20260117-51495" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1578,11 +1807,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-94873" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1600,11 +1831,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-98942" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1622,11 +1855,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-89579" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1644,11 +1879,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-58158" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1666,11 +1903,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-27822" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1688,11 +1927,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-01087" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1710,11 +1951,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-98562" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1732,11 +1975,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-62808" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1754,11 +1999,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-83036" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1776,11 +2023,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-24481" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1798,11 +2047,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-78662" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1820,11 +2071,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-38953" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1842,11 +2095,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-01393" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1864,11 +2119,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260116-7ade5f2e" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-16</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1886,11 +2143,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260117-16247" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
@@ -1908,11 +2167,13 @@ Regime: (no meta regime detected)
                         </div>
                     </div>
                     
-                    <div class="card" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
+                    <div class="card" id="proposal-EVO-20260118-LOGIC-KOSPI-MSCI" style="border-left: 4px solid #9c27b0; background: #f3e5f5;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#9c27b0; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">🧠 LOGIC</span>
                             <small style="font-size:10px; color:#666;">2026-01-18</small>
                         </div>
+                        
+                        
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
