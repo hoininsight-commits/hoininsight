@@ -7,6 +7,12 @@ on:
     # UTC: 01:30
     - cron: '30 1 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dashboard/**'
+      - 'src/dashboard/**'
   workflow_run:
     workflows: ["full_pipeline"]
     types:
