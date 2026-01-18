@@ -746,6 +746,20 @@ jobs:
              exit 1
           fi
 
+      - name: Commit Intelligence Outputs
+        if: success()
+        run: |
+          # Force add all intelligence directories
+          git add data/narratives data/ops data/decision data/topics dashboard
+          
+          # Check for changes
+          if git diff --cached --quiet; then
+            echo "No intelligence changes to commit"
+          else
+            git commit -m "chore: save intelligence artifacts (narratives, ops, dashboard) [skip ci]"
+            git push
+          fi
+
       - name: Create issue on failure
         if: failure()
         env:
