@@ -961,7 +961,7 @@ def generate_dashboard(base_dir: Path):
     except Exception as e:
         inbox_html += f"<div style='color:red; font-size:11px;'>Inbox Load Fail: {e}</div>"
 
-    sidebar_html += inbox_html
+    # sidebar_html += inbox_html  <-- REMOVED (Duplicated in Inbox Tab)
 
     # [Phase 31-D] Narrative Approval Queue Section
     queue_html = ""
