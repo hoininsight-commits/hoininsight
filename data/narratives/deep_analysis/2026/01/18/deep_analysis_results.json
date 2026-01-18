@@ -1,46 +1,17 @@
 [
   {
-    "video_id": "MOCK_PARK_SYS_001",
-    "title": "2026년 반도체 슈퍼사이클: 제2의 SK하이닉스(파크시스템스)",
-    "published_at": "2026-01-18T10:00:00Z",
-    "surface_topics": [
-      "제2의 SK하이닉스",
-      "2026년 반도체 슈퍼사이클",
-      "파크시스템스 유망"
-    ],
-    "real_topic": "HBM 이후 공정 미세화 단계에서 '측정·검사 공정'이 병목 역할(Role)로 고정되는 국면",
-    "anomaly_level": "L3",
-    "anomaly_reason": "기술 보유(Existence)가 아니라 필수 인프라화(Structural Lock-in)를 의미함",
-    "why_now": {
-      "trigger_type": "Hybrid (State + Structural)",
-      "description": "공정 미세화(State)가 특정 장비를 강제 채택 구조(Structural Lock-in)로 만드는 시점"
-    },
-    "core_assumptions": [
-      "HBM 이후에도 반도체 투자 사이클은 멈추지 않는다",
-      "미세화는 '수율 관리'가 아니라 '표면 정밀도 관리' 단계로 진입한다",
-      "이 단계에서는 측정·검증 공정이 병목이 된다"
-    ],
-    "data_collection_needs": [
-      "공정별 필수 장비 의존도 데이터",
-      "하이브리드 본딩/유리기판 공정에서의 검사 실패율",
-      "측정·검증 장비의 대체 가능성 여부"
-    ],
-    "engine_conclusion": "이 영상은 주제를 만들지 않는다. 이미 형성된 구조적 이상징후(L3)를 '대중 언어'로 번역한 결과물이다.",
-    "summary": "제2의 SK하이닉스는 이야기다. 진짜 주제는 'HBM 이후, 공장이 멈추지 않기 위해 반드시 거쳐야 하는 역할이 무엇인가'다."
-  },
-  {
     "video_id": "dy8pbwjsdao",
     "title": "부자들이 개미 몰래 줍고있다는, '저평가 중소형주' 3개",
     "analysis_date": "2026-01-18",
     "surface_topics": [
-      "돈",
-      "투자",
-      "분석",
+      "시장",
       "매수",
-      "시장"
+      "경제",
+      "전망",
+      "수익"
     ],
-    "real_topic": "Unknown Structural Shift",
-    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "real_topic": "실적",
+    "real_topic_reasoning": "KB Keyword Match: '실적' (mentioned 5 times)",
     "anomaly_level": "L2",
     "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '구조' found",
     "why_now": {
@@ -50,6 +21,6 @@
     "core_assumptions": [],
     "evolution_proposals": [],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "Engine has detected a L2 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis."
   }
 ]

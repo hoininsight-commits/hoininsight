@@ -62,7 +62,7 @@ class DeepLogicAnalyzer:
             "core_assumptions": assumptions,
             "evolution_proposals": proposals, 
             "content_nature": "Leading Indicator" if anomaly_info['level'] == "L3" else "Lagging/Result",
-            "engine_conclusion": self._generate_conclusion(real_topic_info, anomaly_info, why_now_info)
+            "engine_conclusion": self._generate_conclusion(real_topic_info, anomaly_info, why_now_info, assumptions)
         }
         
         return result
@@ -78,7 +78,7 @@ class DeepLogicAnalyzer:
         """
         Find the most specific technical term defined in KnowledgeBase or high-frequency proper noun.
         """
-        # Check against Data Definitions (Data Master)
+        # 1. Try to match specific Data Definitions (Priority 1)
         data_defs = self.kb.get_data_definitions()
         best_match = None
         max_count = 0
@@ -96,9 +96,35 @@ class DeepLogicAnalyzer:
                 "topic": best_match,
                 "reasoning": f"Data Master Definition Match: '{best_match}' (mentioned {max_count} times)"
             }
+
+        # 2. Try to match KB Keywords (Priority 2)
+        keywords = self.kb.get_keywords_for_extraction()
+        for kw in keywords:
+            if kw in transcript:
+                count = transcript.count(kw)
+                if count > max_count:
+                    max_count = count
+                    best_match = kw
+        
+        if best_match:
+            return {
+                "topic": best_match,
+                "reasoning": f"KB Keyword Match: '{best_match}' (mentioned {max_count} times)"
+            }
             
-        # Fallback: Extract high-freq noun (simple heuristic)
-        # In a real agent, we'd use NLP. Here we assume the KB covers important topics.
+        # 3. Fallback: Extract high-freq proper noun or specific terms (Simple Heuristic for Korean)
+        # Look for English acronyms or 2+ chars Korean nouns
+        matches = re.findall(r'[A-Z]{2,}|[가-힣]{2,}(?=[ 조사으로 은는이가])', transcript)
+        if matches:
+            from collections import Counter
+            common = Counter(matches).most_common(1)
+            if common:
+                best_match = common[0][0]
+                return {
+                    "topic": best_match,
+                    "reasoning": f"Heuristic Extraction: High-frequency term '{best_match}'"
+                }
+
         return {
             "topic": "Unknown Structural Shift",
             "reasoning": "No direct match in Data Master. Requires semantic extraction."
@@ -189,8 +215,14 @@ class DeepLogicAnalyzer:
                 assumptions.append(s.strip())
         return assumptions[:3]
 
-    def _generate_conclusion(self, topic_info, anomaly_info, why_now_info) -> str:
-        return f"Engine has detected a {anomaly_info['level']} anomaly regarding '{topic_info['topic']}'. {why_now_info['description']}"
+    def _generate_conclusion(self, topic_info, anomaly_info, why_now_info, assumptions) -> str:
+        conclusion = f"엔진은 '{topic_info['topic']}'와(과) 관련하여 {anomaly_info['level']} 수준의 이상징후를 감지했습니다."
+        if assumptions:
+            conclusion += f" 핵심 가정: {assumptions[0]}"
+        else:
+            conclusion += f" {why_now_info['description']}"
+        
+        return conclusion
 
     def save_report(self, result: Dict[str, Any], output_dir: Path):
         """Save JSON and Markdown reports."""
