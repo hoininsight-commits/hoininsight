@@ -42,6 +42,14 @@ jobs:
           git commit -m "chore: engine daily run [skip ci]"
           git push
 
+      - name: Notify Telegram (Daily Summary)
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python -m src.reporting.telegram_daily_summary
+
       - name: Upload Daily Brief Artifact
         if: success()
         uses: actions/upload-artifact@v4
