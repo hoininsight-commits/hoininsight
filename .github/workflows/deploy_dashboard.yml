@@ -48,12 +48,12 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install .
           if [ -f requirements_dev.txt ]; then pip install -r requirements_dev.txt; fi
 
       - name: Generate Dashboard
         run: |
-          python src/dashboard/dashboard_generator.py
+          python -m src.dashboard.dashboard_generator
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
