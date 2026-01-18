@@ -42,6 +42,17 @@ Historical context:
 - [LOW] WTI: data/features/anomalies/2026/01/18/comm_wti_crude_oil_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] PLATINUM: data/features/anomalies/2026/01/18/metal_platinum_xptusd_stooq.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] ETHUSD: data/features/anomalies/2026/01/18/crypto_eth_usd_spot_coingecko.json daily move (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
+## PROPOSAL PRIORITY SNAPSHOT
+- Error loading priority data.
+
+## PROPOSAL AGING SNAPSHOT
+| Rank | Video ID | Final Priority | Age (days) | Decay Factor | Status |
+|---:|---|---:|---:|---:|---|
+| 1 | dy8pbwjsdao | **48.0** | 0 | 1.0 | PROPOSED |
+| 2 | jQOj74xqoYY | **45.74** | 1 | 0.906 | PROPOSED |
+| 3 | tJwBZZQaW5k | **45.74** | 1 | 0.906 | PROPOSED |
+
+Older proposals are deprioritized by decay (half-life: 7 days).
 
 - See: `data/reports/2026/01/18/data_snapshot.md`
 
