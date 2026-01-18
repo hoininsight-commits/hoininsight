@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "ts_utc": "2026-01-18T12:46:09Z",
+    "dataset_id": "inflation_pce_fred",
+    "entity": "PCE_USA",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": 1.63,
+      "percentile": 100.0,
+      "value": 21206.6,
+      "rolling_mean_20d": 20341.409999999996,
+      "reasoning": "Percentile 100.0% (Extreme)"
+    }
+  }
+]

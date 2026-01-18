@@ -13,6 +13,8 @@ def _load_series(base_dir: Path, path_suffix: str) -> pd.DataFrame:
              print(f"[Derived][ERR] Invalid schema in {path_suffix} (needs ts_utc, value)")
              return None
         df['ts_utc'] = pd.to_datetime(df['ts_utc'], utc=True)
+        # Deduplicate by timestamp, keeping last
+        df = df.drop_duplicates(subset=['ts_utc'], keep='last')
         return df.set_index('ts_utc').sort_index()
     except Exception as e:
         print(f"[Derived][ERR] Failed to load {path_suffix}: {e}")

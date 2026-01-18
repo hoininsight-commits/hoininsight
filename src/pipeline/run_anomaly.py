@@ -1,8 +1,19 @@
 import sys
 import traceback
+import importlib
 from pathlib import Path
 from src.registry.loader import load_datasets
-from src.anomaly_detectors.roc_1d import detect_roc_1d
+
+def _get_func_by_name(func_path_str: str):
+    """
+    Parses 'module.path:func_name' and returns the function object.
+    """
+    try:
+        mod_curr, func_name = func_path_str.split(":")
+        module = importlib.import_module(mod_curr)
+        return getattr(module, func_name)
+    except Exception as e:
+        raise ImportError(f"Could not load function '{func_path_str}': {e}")
 
 def main():
     reg = Path("registry") / "datasets.yml"
@@ -16,11 +27,28 @@ def main():
             
             # Check if file exists before processing
             if not curated.exists():
-                # If curated missing, we can't run anomaly. 
-                # This is expected if collection failed.
+                # Expected if collection failed
                 continue
 
-            detect_roc_1d(Path("."), dataset_id=ds.dataset_id, curated_csv=curated, entity=ds.entity, threshold_pct=3.0)
+            # Load Dynamic Anomaly Detector
+            detector_func_path = getattr(ds, 'anomaly', None)
+            
+            if not detector_func_path:
+                # Fallback to old default if not specified (though strict schema requires it)
+                print(f"[WARN] No anomaly function specified for {ds.dataset_id}, skipping.")
+                continue
+                
+            detector = _get_func_by_name(detector_func_path)
+            
+            # Detect
+            # detectors usually signature: (base_dir, dataset_id, curated_csv, entity)
+            detector(
+                base_dir=Path("."), 
+                dataset_id=ds.dataset_id, 
+                curated_csv=curated, 
+                entity=ds.entity
+            )
+            
         except Exception as e:
             failure_count += 1
             print(f"error: anomaly detection failed for {ds.dataset_id}: {repr(e)}", file=sys.stderr)

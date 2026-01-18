@@ -1,17 +1,1 @@
-[
-  {
-    "ts_utc": "2026-01-18T12:40:06Z",
-    "dataset_id": "risk_financial_stress_fred",
-    "entity": "FIN_STRESS_USA",
-    "anomaly_type": "ROC_1D",
-    "severity": 75,
-    "evidence": {
-      "threshold_pct": 3.0,
-      "roc_pct": -7.530971527928713,
-      "prev_ts": "2021-12-31 00:00:00+00:00",
-      "prev_value": -0.9202,
-      "last_ts": "2022-01-07 00:00:00+00:00",
-      "last_value": -0.8509
-    }
-  }
-]
+[]

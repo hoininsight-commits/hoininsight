@@ -1,14 +1,15 @@
 [
   {
-    "ts_utc": "2026-01-18T12:40:06Z",
+    "ts_utc": "2026-01-18T12:46:12Z",
     "dataset_id": "derived_gold_silver_ratio",
-    "topic_id": "derived_gold_silver_ratio::roc_1d",
-    "title": "data/features/anomalies/2026/01/18/derived_gold_silver_ratio.json daily move",
+    "topic_id": "derived_gold_silver_ratio::none",
+    "title": "data/features/anomalies/2026/01/18/derived_gold_silver_ratio.json (Normal)",
     "score": 0.0,
     "severity": "LOW",
     "evidence": {
-      "roc_1d": 0.0,
-      "base_score": 0.0,
+      "source_severity": 0,
+      "level": "NORMAL",
+      "details": {},
       "regime": {
         "vix_roc_1d": null,
         "us10y_roc_1d": null,
@@ -28,7 +29,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/18/derived_gold_silver_ratio.json"
     },
-    "rationale": "Topic generated from anomaly signal (roc_1d) with regime multiplier (VIX/US10Y).",
+    "rationale": "[NORMAL] {} (Regime x1.0)",
     "links": []
   }
 ]

@@ -2,136 +2,136 @@
   "crypto_btc_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:39:57.969127Z"
+    "timestamp": "2026-01-18T12:45:51.451345Z"
   },
   "rates_us10y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:39:59.612266Z"
+    "timestamp": "2026-01-18T12:45:53.038162Z"
   },
   "risk_vix_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:00.548341Z"
+    "timestamp": "2026-01-18T12:45:53.946613Z"
   },
   "index_spx_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:00.822983Z"
+    "timestamp": "2026-01-18T12:45:54.220684Z"
   },
   "index_kospi_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:00.832361Z"
+    "timestamp": "2026-01-18T12:45:54.227639Z"
   },
   "derived_corr_btc_spx_30d": {
     "status": "FAIL",
     "reason": "Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/18/corr_btc_spx_30d.json",
-    "timestamp": "2026-01-18T12:40:00.839969Z"
+    "timestamp": "2026-01-18T12:45:54.234909Z"
   },
   "derived_corr_usdkrw_us10y_30d": {
     "status": "FAIL",
     "reason": "Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/18/corr_usdkrw_us10y_30d.json",
-    "timestamp": "2026-01-18T12:40:00.844597Z"
+    "timestamp": "2026-01-18T12:45:54.239224Z"
   },
   "index_nasdaq_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:01.914034Z"
+    "timestamp": "2026-01-18T12:45:55.331743Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:01.924539Z"
+    "timestamp": "2026-01-18T12:45:55.340028Z"
   },
   "rates_us02y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:03.164759Z"
+    "timestamp": "2026-01-18T12:45:56.560282Z"
   },
   "comm_wti_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.199995Z"
+    "timestamp": "2026-01-18T12:45:57.567399Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.208311Z"
+    "timestamp": "2026-01-18T12:45:57.574835Z"
   },
   "metal_gold_paxg_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.214241Z"
+    "timestamp": "2026-01-18T12:45:57.581667Z"
   },
   "metal_silver_kag_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.226279Z"
+    "timestamp": "2026-01-18T12:45:57.592343Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.234193Z"
+    "timestamp": "2026-01-18T12:45:57.599304Z"
   },
   "rates_kor_base_rate_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.246180Z"
+    "timestamp": "2026-01-18T12:45:57.610201Z"
   },
   "inflation_kor_cpi_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.257087Z"
+    "timestamp": "2026-01-18T12:45:57.622104Z"
   },
   "fx_usdkrw_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.348358Z"
+    "timestamp": "2026-01-18T12:45:57.710049Z"
   },
   "rates_fed_funds_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.527724Z"
+    "timestamp": "2026-01-18T12:45:57.799509Z"
   },
   "inflation_cpi_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.631695Z"
+    "timestamp": "2026-01-18T12:45:57.908318Z"
   },
   "inflation_pce_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.722972Z"
+    "timestamp": "2026-01-18T12:45:57.999813Z"
   },
   "liquidity_m2_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.817950Z"
+    "timestamp": "2026-01-18T12:45:58.088208Z"
   },
   "employment_unrate_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:04.924917Z"
+    "timestamp": "2026-01-18T12:45:58.286177Z"
   },
   "credit_hy_spread_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:05.695537Z"
+    "timestamp": "2026-01-18T12:45:59.026894Z"
   },
   "risk_financial_stress_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:05.852487Z"
+    "timestamp": "2026-01-18T12:45:59.177364Z"
   },
   "derived_yield_curve_10y_2y": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:05.853451Z"
+    "timestamp": "2026-01-18T12:45:59.178551Z"
   },
   "derived_gold_silver_ratio": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T12:40:05.853505Z"
+    "timestamp": "2026-01-18T12:45:59.178599Z"
   }
 }
