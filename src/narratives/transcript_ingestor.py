@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import re
 from pathlib import Path
 from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
@@ -49,59 +50,87 @@ def ingest_transcript(meta_path: Path):
         logger.info(f"Processing: {vid_id} - {meta.get('title', 'No Title')}")
         
         try:
-            # Fetch List
-            # API seems to require instantiation in this version
-            api = YouTubeTranscriptApi()
-            transcript_list = api.list(vid_id)
+            # First attempt: youtube-transcript-api
+            transcript_list = YouTubeTranscriptApi().list(vid_id)
             
-            # Try to fetch manually created korean, then auto-generated korean, then english...
-            # The API's 'find_transcript' is useful
             try:
-                # 1. Manually created KO
                 transcript = transcript_list.find_manually_created_transcript(['ko'])
             except:
                 try:
-                    # 2. Generated KO
                     transcript = transcript_list.find_generated_transcript(['ko'])
                 except:
                     try:
-                        # 3. Any EN
                         transcript = transcript_list.find_transcript(['en', 'en-US'])
                     except:
-                        # 4. Fallback: Translation to Korean? Or just first available?
-                        # Let's take first available and fail if none
                         transcript = next(iter(transcript_list))
             
-            # Fetch actual text
-            # Transcript object has .fetch() method returning objects in v1.2.3
             data = transcript.fetch()
-            # data is a FetchedTranscript object which is iterable yielding FetchedTranscriptSnippet
-            # verify if data is list or object. 'data' comes from .fetch() which in _api.py returns FetchedTranscript.
-            # FetchedTranscript likely implements __iter__.
-            # Snippet has .text attribute.
             full_text = " ".join([entry.text for entry in data])
             
-            # Save
+        except Exception as api_err:
+            logger.warning(f"youtube-transcript-api failed for {vid_id}, trying yt-dlp fallback: {api_err}")
+            # Fallback: yt-dlp
+            try:
+                import subprocess
+                # Extract subtitles as text using yt-dlp
+                # --skip-download: don't download video
+                # --write-auto-subs: get auto-generated if manual missing
+                # --sub-lang: try ko then en
+                # --get-subs-only: self explanatory
+                
+                cmd = [
+                    "python3", "-m", "yt_dlp",
+                    "--skip-download",
+                    "--write-auto-subs",
+                    "--sub-lang", "ko,en.*",
+                    "--convert-subs", "vtt",
+                    "--output", f"{out_dir}/{vid_id}",
+                    f"https://www.youtube.com/watch?v={vid_id}"
+                ]
+                subprocess.run(cmd, check=True, capture_output=True)
+                
+                # yt-dlp saves as vid_id.ko.vtt or vid_id.en.vtt etc.
+                vtt_files = list(out_dir.glob(f"{vid_id}.*.vtt"))
+                if vtt_files:
+                    vtt_file = vtt_files[0]
+                    vtt_content = vtt_file.read_text(encoding="utf-8")
+                    
+                    # Very simple VTT to text conversion (removing timestamps and tags)
+                    import re
+                    # Remove WEBVTT header
+                    text = re.sub(r'^WEBVTT.*?\n', '', vtt_content, flags=re.DOTALL)
+                    # Remove timestamps
+                    text = re.sub(r'\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*?\n', '', text)
+                    # Remove HTML-like tags
+                    text = re.sub(r'<.*?>', '', text)
+                    # Clean up multiple spaces/newlines
+                    full_text = re.sub(r'\n+', ' ', text).strip()
+                    
+                    # Cleanup VTT file
+                    vtt_file.unlink()
+                else:
+                    raise Exception("No VTT files found after yt-dlp run")
+                    
+            except Exception as ytdlp_err:
+                logger.error(f"Both methods failed for {vid_id}. yt-dlp error: {ytdlp_err}")
+                # Do not create SKIP file for generic errors to allow retry
+                return
+
+        # Save success
+        if full_text:
             out_dir.mkdir(parents=True, exist_ok=True)
             out_txt.write_text(full_text, encoding="utf-8")
             logger.info(f"[SUCCESS] Saved transcript for {vid_id}")
-            
-        except (TranscriptsDisabled, NoTranscriptFound) as e:
-            # No captions available
-            logger.warning(f"No transcript for {vid_id}: {e}")
+        else:
+            # If we reached here without text, it's effectively a NoTranscriptFound
+            logger.warning(f"No transcript content extracted for {vid_id}")
             out_dir.mkdir(parents=True, exist_ok=True)
             skip_info = {
                 "video_id": vid_id,
-                "reason": "No transcript available",
-                "error": str(e),
+                "reason": "No transcript content found",
                 "timestamp": datetime.utcnow().isoformat()
             }
             out_skip.write_text(json.dumps(skip_info, ensure_ascii=False, indent=2), encoding="utf-8")
-            
-        except Exception as e:
-            logger.error(f"Error fetching transcript for {vid_id}: {e}")
-            # Do not create SKIP file for generic errors (network etc) to allow retry
-            # Unless it's persistent? For now, we allow retry next run.
             
     except Exception as e:
         logger.error(f"Failed to process {meta_path}: {e}")

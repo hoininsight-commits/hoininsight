@@ -12,8 +12,8 @@ def fetch_transcript(video_id, output_dir):
     Returns path to transcript file if successful, else None.
     """
     try:
-        # 1. Fetch Transcript (Try Ko, then En)
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        # First attempt: youtube-transcript-api
+        transcript_list = YouTubeTranscriptApi().list(video_id)
         
         transcript = None
         lang = 'unknown'
@@ -26,42 +26,71 @@ def fetch_transcript(video_id, output_dir):
                 transcript = transcript_list.find_transcript(['en'])
                 lang = 'en'
             except:
-                # If auto-generated exists
                 try:
                     transcript = transcript_list.find_generated_transcript(['ko', 'en'])
                     lang = transcript.language_code
                 except:
-                    print(f"[Transcript] No suitable transcript found for {video_id}")
-                    return None
+                    pass
 
-        # 2. Fetch actual data
-        transcript_data = transcript.fetch()
-        
-        # 3. Format as Text
-        formatter = TextFormatter()
-        text_formatted = formatter.format_transcript(transcript_data)
-        
-        # 4. Save
+        if transcript:
+            transcript_data = transcript.fetch()
+            formatter = TextFormatter()
+            text_formatted = formatter.format_transcript(transcript_data)
+        else:
+            raise Exception("No suitable transcript found via API")
+
+    except Exception as api_err:
+        print(f"[Transcript] API failed for {video_id}, trying yt-dlp: {api_err}")
+        try:
+            import subprocess
+            import re
+            
+            cmd = [
+                "python3", "-m", "yt_dlp",
+                "--skip-download",
+                "--write-auto-subs",
+                "--sub-lang", "ko,en.*",
+                "--convert-subs", "vtt",
+                "--output", f"{output_dir}/{video_id}",
+                f"https://www.youtube.com/watch?v={video_id}"
+            ]
+            subprocess.run(cmd, check=True, capture_output=True)
+            
+            vtt_files = list(Path(output_dir).glob(f"{video_id}.*.vtt"))
+            if vtt_files:
+                vtt_file = vtt_files[0]
+                vtt_content = vtt_file.read_text(encoding="utf-8")
+                lang = vtt_file.suffixes[0].replace('.', '')
+                
+                text = re.sub(r'^WEBVTT.*?\n', '', vtt_content, flags=re.DOTALL)
+                text = re.sub(r'\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*?\n', '', text)
+                text = re.sub(r'<.*?>', '', text)
+                text_formatted = re.sub(r'\n+', ' ', text).strip()
+                vtt_file.unlink()
+            else:
+                return None
+        except Exception as ytdlp_err:
+            print(f"[Transcript] Both methods failed: {ytdlp_err}")
+            return None
+
+    # Save
+    if text_formatted:
         out_path = Path(output_dir) / "transcript.txt"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(text_formatted, encoding='utf-8')
         
-        # Save metadata
         meta_path = Path(output_dir) / "transcript_meta.json"
         meta = {
             "video_id": video_id,
             "language": lang,
-            "is_generated": transcript.is_generated,
             "downloaded_at": str(os.path.getmtime(out_path))
         }
         meta_path.write_text(json.dumps(meta, indent=2), encoding='utf-8')
         
         print(f"[Transcript] Saved for {video_id} ({lang})")
         return str(out_path)
-
-    except Exception as e:
-        print(f"[Transcript] Error fetching {video_id}: {e}")
-        return None
+    
+    return None
 
 if __name__ == "__main__":
     # Test with a known video ID if run directly
