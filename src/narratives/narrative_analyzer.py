@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -21,10 +21,10 @@ from typing import Any, Dict, List, Optional
 from src.utils.knowledge_base import KnowledgeBase
 from src.learning.deep_logic_analyzer import DeepLogicAnalyzer
 
-def _ymd() -> str:
-    """Get current UTC date in YYYY/MM/DD format."""
-    return datetime.utcnow().strftime("%Y/%m/%d")
-
+def _get_utc_ymd(delta_days: int = 0) -> str:
+    """Get UTC date with delta."""
+    d = datetime.utcnow() - timedelta(days=delta_days)
+    return d.strftime("%Y/%m/%d")
 
 def load_transcript(transcript_path: Path) -> str:
     """Load transcript text from file."""
@@ -158,8 +158,6 @@ def analyze_transcript(transcript_path: Path, video_meta: Dict[str, Any], kb: Kn
     """
     transcript = load_transcript(transcript_path)
     
-    # Lazy Init KB if needed (but we pass it in)
-    
     if not transcript:
         return {
             "topic_candidates": [],
@@ -251,77 +249,81 @@ def generate_proposal_markdown(video_meta: Dict[str, Any], analysis: Dict[str, A
 
 def process_all_transcripts(base_dir: Path) -> int:
     """
-    Process all transcripts from today's collection.
+    Process all transcripts from recent collection.
     """
-    ymd = _ymd()
-    transcripts_dir = base_dir / "data" / "narratives" / "transcripts" / ymd.replace("/", "/")
-    
-    if not transcripts_dir.exists():
-        print(f"[Phase 31-B] No transcripts found for {ymd}")
-        return 0
-    
     # Initialize KnowledgeBase
     docs_dir = base_dir / "docs"
     kb = KnowledgeBase(docs_dir)
     kb.load()  # Parse MD files
     print(f"[Phase 31-B] Knowledge Base Loaded: {len(kb.get_data_definitions())} Data defs, {len(kb.get_anomaly_logic())} Logic patterns")
     
-    # Create output directories
-    analysis_dir = base_dir / "data" / "narratives" / "analysis" / ymd.replace("/", "/")
-    proposals_dir = base_dir / "data" / "narratives" / "proposals" / ymd.replace("/", "/")
-    deep_dir = base_dir / "data" / "narratives" / "deep_analysis" / ymd.replace("/", "/")
-    
-    analysis_dir.mkdir(parents=True, exist_ok=True)
-    proposals_dir.mkdir(parents=True, exist_ok=True)
-    deep_dir.mkdir(parents=True, exist_ok=True)
-    
     # Initialize Deep Analyzer
     deep_analyzer = DeepLogicAnalyzer(kb)
     
     proposal_count = 0
+    LOOKBACK = 3
     
-    for transcript_file in transcripts_dir.glob("*.txt"):
-        try:
-            video_id = transcript_file.stem
-            
-            raw_dir = base_dir / "data" / "narratives" / "raw" / "youtube"
-            video_meta = None
-            
-            for video_dir in raw_dir.rglob("*"):
-                if video_dir.is_dir():
-                    meta = load_video_metadata(video_dir)
-                    if meta and meta.get("video_id") == video_id:
-                        video_meta = meta
-                        break
-            
-            if not video_meta:
-                continue
-            
-            # Analyze
-            analysis = analyze_transcript(transcript_file, video_meta, kb)
-            
-            signal_json = generate_signal_json(video_meta, analysis)
-            signal_path = analysis_dir / f"video_{video_id}_signals.json"
-            signal_path.write_text(json.dumps(signal_json, ensure_ascii=False, indent=2), encoding="utf-8")
-            
-            proposal_md = generate_proposal_markdown(video_meta, analysis)
-            proposal_path = proposals_dir / f"proposal_{video_id}.md"
-            proposal_path.write_text(proposal_md, encoding="utf-8")
-            
-            # [NEW] Run Deep Logic Analysis & Save
-            deep_result = deep_analyzer.analyze(
-                video_id=video_id,
-                title=video_meta.get("title", "Unknown"),
-                transcript=load_transcript(transcript_file)
-            )
-            deep_analyzer.save_report(deep_result, deep_dir)
-            
-            proposal_count += 1
-            print(f"[Phase 31-B] Analyzed: {video_meta.get('title', video_id)}")
-            
-        except Exception as e:
-            print(f"[Phase 31-B] Error processing {transcript_file.name}: {e}")
+    for i in range(LOOKBACK + 1):
+        ymd = _get_utc_ymd(i)
+        transcripts_dir = base_dir / "data" / "narratives" / "transcripts" / ymd
+        
+        if not transcripts_dir.exists():
             continue
+            
+        # Create output directories per date
+        analysis_dir = base_dir / "data" / "narratives" / "analysis" / ymd
+        proposals_dir = base_dir / "data" / "narratives" / "proposals" / ymd
+        deep_dir = base_dir / "data" / "narratives" / "deep_analysis" / ymd
+        
+        analysis_dir.mkdir(parents=True, exist_ok=True)
+        proposals_dir.mkdir(parents=True, exist_ok=True)
+        deep_dir.mkdir(parents=True, exist_ok=True)
+        
+        for transcript_file in transcripts_dir.glob("*.txt"):
+            try:
+                # Skip if proposal already exists
+                video_id = transcript_file.stem
+                proposal_path = proposals_dir / f"proposal_{video_id}.md"
+                if proposal_path.exists():
+                    continue
+
+                raw_dir = base_dir / "data" / "narratives" / "raw" / "youtube"
+                video_meta = None
+                
+                for video_dir in raw_dir.rglob("*"):
+                    if video_dir.is_dir() and video_dir.name == video_id:
+                        video_meta = load_video_metadata(video_dir)
+                        if video_meta:
+                            break
+                
+                if not video_meta:
+                    continue
+                
+                # Analyze
+                analysis = analyze_transcript(transcript_file, video_meta, kb)
+                
+                signal_json = generate_signal_json(video_meta, analysis)
+                signal_path = analysis_dir / f"video_{video_id}_signals.json"
+                signal_path.write_text(json.dumps(signal_json, ensure_ascii=False, indent=2), encoding="utf-8")
+                
+                proposal_md = generate_proposal_markdown(video_meta, analysis)
+                proposal_path = proposals_dir / f"proposal_{video_id}.md"
+                proposal_path.write_text(proposal_md, encoding="utf-8")
+                
+                # [NEW] Run Deep Logic Analysis & Save
+                deep_result = deep_analyzer.analyze(
+                    video_id=video_id,
+                    title=video_meta.get("title", "Unknown"),
+                    transcript=load_transcript(transcript_file)
+                )
+                deep_analyzer.save_report(deep_result, deep_dir)
+                
+                proposal_count += 1
+                print(f"[Phase 31-B] Analyzed: {video_meta.get('title', video_id)}")
+                
+            except Exception as e:
+                print(f"[Phase 31-B] Error processing {transcript_file.name}: {e}")
+                continue
     
     return proposal_count
 

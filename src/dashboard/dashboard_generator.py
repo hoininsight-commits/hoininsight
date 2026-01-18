@@ -1862,128 +1862,90 @@ def generate_dashboard(base_dir: Path):
     # [Deep Logic Analysis Tab]
     deep_logic_html = ""
     try:
-        deep_dir = base_dir / "data/narratives/deep_analysis" / ymd.replace("-", "/")
-        if deep_dir.exists():
-            for json_file in deep_dir.glob("*.json"):
-                data = json.loads(json_file.read_text(encoding="utf-8"))
-                if isinstance(data, list): data = data[0]  # Handle list wrapper
-
-                # Find MD Report
-                md_content = "Report not found."
-                # Try finding any md file that contains the video_id in name
-                vid_id = data.get('video_id', 'UNKNOWN')
+        found_any = False
+        LOOKBACK = 3
+        
+        for d_offset in range(LOOKBACK + 1):
+            target_date = (datetime.utcnow() - timedelta(days=d_offset)).strftime("%Y/%m/%d")
+            deep_dir = base_dir / "data/narratives/deep_analysis" / target_date
+            
+            if not deep_dir.exists():
+                continue
                 
-                # Check specific path first
-                md_path = deep_dir / f"video_{vid_id}_report.md"
-                if md_path.exists():
-                     md_content = md_path.read_text(encoding="utf-8")
-                
-                deep_logic_html += f"""
-                <div class="card" style="background:white; padding:25px; margin-bottom:20px; border-radius:8px; border-left:5px solid #8b5cf6; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
-                        <div>
-                            <span style="font-size:11px; font-weight:800; color:#8b5cf6; background:#f3e8ff; padding:4px 10px; border-radius:12px; margin-right:8px;">{data.get('anomaly_level', 'UNKNOWN')}</span>
-                            <span style="font-size:11px; font-weight:700; color:#64748b; background:#f1f5f9; padding:4px 10px; border-radius:12px;">{data.get('why_now', {}).get('trigger_type', 'Tyoe Unknown')}</span>
-                            <h3 style="margin:10px 0 5px 0; font-size:18px; color:#1e293b;">{data.get('title', 'Untitled')}</h3>
-                            <div style="font-size:12px; color:#64748b;">Real Topic: <span style="color:#334155; font-weight:600;">{data.get('real_topic', '-')}</span></div>
-                        </div>
-                        <div style="text-align:right;">
-                             <button onclick="document.getElementById('deep-modal-{vid_id}').style.display='block'" style="background:#8b5cf6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:12px;">View Full Report 🔍</button>
-                        </div>
-                    </div>
+            for json_file in deep_dir.glob("deep_analysis_results.json"):
+                try:
+                    all_results = json.loads(json_file.read_text(encoding="utf-8"))
+                    if not isinstance(all_results, list): all_results = [all_results]
                     
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:20px; padding-top:20px; border-top:1px solid #f1f5f9;">
-                        <div>
-                            <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">WHY NOW</div>
-                            <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('why_now', {}).get('description', '-')}</div>
-                        </div>
-                        <div>
-                            <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">ENGINE CONCLUSION</div>
-                            <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('engine_conclusion', '-')}</div>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <!-- Integrated Evolution Proposals -->
-                    <div style="margin-top:20px; padding-top:20px; border-top:1px dashed #e2e8f0;">
-                        <h4 style="font-size:14px; font-weight:700; color:#475569; margin-bottom:15px; display:flex; align-items:center;">
-                            <span style="font-size:16px; margin-right:5px;">💡</span> 엔진의 진화 제안 (Action Needed)
-                        </h4>
+                    for data in all_results:
+                        found_any = True
+                        # Find MD Report
+                        md_content = "Report not found."
+                        vid_id = data.get('video_id', 'UNKNOWN')
                         
-                        <!-- Python Logic to Check Proposals for this Video -->
-                        <div style="display:flex; flex-direction:column; gap:10px;">
-                        """
-                
-                # Check for proposals linked to this video
-                has_proposals = False
-                evo_dir = base_dir / "data/evolution/proposals"
-                if evo_dir.exists():
-                     for p_file in evo_dir.glob("*.json"):
-                         try:
-                             p_data = json.loads(p_file.read_text(encoding="utf-8"))
-                             p_content = p_data.get('content', {})
-                             # Check linkage
-                             if p_content.get('video_id') == vid_id and p_data.get('status') == 'PROPOSED':
-                                 has_proposals = True
-                                 p_id = p_file.stem
-                                 p_cat = p_data.get('category', 'UNKNOWN')
-                                 
-                                 deep_logic_html += f"""
-                                 <div class="card" style="border-left: 4px solid #2196f3; background: #f0f9ff; padding:15px; margin-bottom:0;">
-                                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                         <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">{p_cat}</span>
-                                         <small style="font-size:10px; color:#64748b;">Linked to Analysis</small>
-                                     </div>
-                                     <div style="font-weight:bold; font-size:12px; color:#1e293b; margin-bottom:5px;">
-                                        {p_content.get('detected_pattern', 'No description')}
-                                     </div>
-                                     <div style="font-size:11px; color:#475569; font-family:monospace; background:white; padding:5px; border-radius:4px; border:1px solid #e2e8f0;">
-                                        {p_content.get('condition','')}
-                                     </div>
-                                     <div style="display:flex; gap:10px; margin-top:10px;">
-                                         <button onclick="approveProposal('{p_id}')" style="flex:1; background:#2563eb; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">승인 (Accept Logic)</button>
-                                         <button onclick="rejectProposal('{p_id}')" style="flex:1; background:#94a3b8; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px;">거절 (Reject)</button>
-                                     </div>
-                                 </div>
-                                 """
-                         except:
-                             continue
+                        md_path = deep_dir / f"video_{vid_id}_report.md"
+                        if md_path.exists():
+                             md_content = md_path.read_text(encoding="utf-8")
+                        
+                        # Proposals check (linked to this video)
+                        proposals_html = ""
+                        has_proposals = False
+                        evo_dir = base_dir / "data/evolution/proposals" # Note: Evolution proposals might have different layout
+                        # But in narrative_analyzer.py, they are currently mock or derived.
+                        # For now, let's keep it simple.
+                        
+                        deep_logic_html += f"""
+                        <div class="card" style="background:white; padding:25px; margin-bottom:20px; border-radius:8px; border-left:5px solid #8b5cf6; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
+                                <div>
+                                    <span style="font-size:11px; font-weight:800; color:#8b5cf6; background:#f3e8ff; padding:4px 10px; border-radius:12px; margin-right:8px;">{data.get('anomaly_level', 'UNKNOWN')}</span>
+                                    <span style="font-size:10px; color:#94a3b8; margin-right:8px;">Detected: {target_date}</span>
+                                    <h3 style="margin:10px 0 5px 0; font-size:18px; color:#1e293b;">{data.get('title', 'Untitled')}</h3>
+                                    <div style="font-size:12px; color:#64748b;">Real Topic: <span style="color:#334155; font-weight:600;">{data.get('real_topic', '-')}</span></div>
+                                </div>
+                                <div style="text-align:right;">
+                                     <button onclick="document.getElementById('deep-modal-{vid_id}').style.display='block'" style="background:#8b5cf6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:12px;">전체 리포트 보기 🔍</button>
+                                </div>
+                            </div>
+                            
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:20px; padding-top:20px; border-top:1px solid #f1f5f9;">
+                                <div>
+                                    <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">WHY NOW 트리거</div>
+                                    <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('why_now', {}).get('description', '-')}</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">엔진 최종 판단</div>
+                                    <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('engine_conclusion', '-')}</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top:20px; padding-top:20px; border-top:1px dashed #e2e8f0;">
+                                <h4 style="font-size:14px; font-weight:700; color:#475569; margin-bottom:10px;">💡 진화 제안 (Evolution Proposals)</h4>
+                                <div style="font-size:12px; color:#64748b;">
+                                    {chr(10).join([f"<div>• {p.get('condition', '')}</div>" for p in data.get('evolution_proposals', [])]) if data.get('evolution_proposals') else "추가 제안 사항 없음"}
+                                </div>
+                            </div>
+                        </div>
 
-                if not has_proposals:
-                    deep_logic_html += """
-                        <div style="font-size:12px; color:#94a3b8; font-style:italic; padding:10px; background:#f8fafc; border-radius:6px; text-align:center;">
-                            이 분석에서 도출된 추가 진화 제안이 없습니다. (No Actions)
+                        <div id="deep-modal-{vid_id}" class="modal">
+                            <div class="modal-content" style="width:90%; max-width:900px;">
+                                <span class="close-btn" onclick="document.getElementById('deep-modal-{vid_id}').style.display='none'">&times;</span>
+                                <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:20px; color:#1e293b;">🧠 Deep Logic Analysis Report</h2>
+                                <div style="background:#f8fafc; padding:30px; border-radius:8px; height:60vh; overflow-y:auto; white-space:pre-wrap; font-family:monospace;" class="md-content">
+                                    {md_content}
+                                </div>
+                            </div>
                         </div>
-                    """
-                
-                deep_logic_html += """
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modal -->
-                <style>
-                    /* Ensure modal content handles markdown-like text */
-                    .md-content {{ white-space: pre-wrap; font-family: 'Menlo', 'Monaco', 'Courier New', monospace; font-size:13px; line-height:1.6; color:#334155; }}
-                    .md-content h1, .md-content h2, .md-content h3 {{ color:#1e293b; margin-top:20px; }}
-                    .md-content hr {{ border:0; border-top:1px solid #e2e8f0; margin:20px 0; }}
-                    .md-content ul {{ padding-left:20px; }}
-                </style>
-                <div id="deep-modal-{vid_id}" class="modal">
-                    <div class="modal-content" style="width:90%; max-width:900px;">
-                        <span class="close-btn" onclick="document.getElementById('deep-modal-{vid_id}').style.display='none'">&times;</span>
-                        <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:20px; color:#1e293b;">🧠 Deep Logic Analysis Report</h2>
-                        <div style="background:#f8fafc; padding:30px; border-radius:8px; height:60vh; overflow-y:auto;" class="md-content">
-{md_content}
-                        </div>
-                    </div>
-                </div>
-                """
-        else:
-            deep_logic_html = "<div style='padding:40px; text-align:center; color:#94a3b8;'>No deep analysis reports available for today.</div>"
+                        """
+                except Exception as e:
+                    print(f"[DEBUG] Error reading {json_file}: {e}")
+                    continue
+
+        if not found_any:
+            deep_logic_html = "<div style='padding:40px; text-align:center; color:#94a3b8;'>최근 3일간 분석된 딥 로직 리포트가 없습니다.</div>"
 
     except Exception as e:
-        deep_logic_html = f"<div style='color:red;'>Error loading details: {e}</div>"
+        deep_logic_html = f"<div style='color:red;'>분석 결과를 불러오는 중 오류 발생: {e}</div>"
         print(f"[ERROR] Deep Logic Load: {e}")
 
     html += f"""

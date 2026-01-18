@@ -1,0 +1,144 @@
+[
+  {
+    "video_id": "53Yd9a8qSRo",
+    "title": "월가에서 '제2의 현대차' 될 수 있다는 저평가주",
+    "analysis_date": "2026-01-18",
+    "surface_topics": [
+      "투자",
+      "종목",
+      "분석",
+      "경제",
+      "시장"
+    ],
+    "real_topic": "Unknown Structural Shift",
+    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "anomaly_level": "L2",
+    "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '독점' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [],
+    "evolution_proposals": [],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "Engine has detected a L2 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+  },
+  {
+    "video_id": "qATP0eIVgoA",
+    "title": "현시점 금값, 가장 쌀 때 매수 하는 방법",
+    "analysis_date": "2026-01-18",
+    "surface_topics": [
+      "투자",
+      "종목",
+      "분석",
+      "경제",
+      "돈"
+    ],
+    "real_topic": "Unknown Structural Shift",
+    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "anomaly_level": "L1",
+    "anomaly_reasoning": "Mostly price/sentiment level signals.",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "금은 회사 실적 때문에 오르는 자산이 아니라 시장의 불안감과 금리 환경에 따라 크게 요동치는 자산이거든",
+      "달러가 너무 강해서 금이 눌릴 때 공포 때문에 사람들이 금까지 내답할 때이 세 가지 신호가 겹치는 구간을 기다렸다가 들어가는게 지난 수십년간 증명된 공식이야"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "Engine has detected a L1 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+  },
+  {
+    "video_id": "rFfleFohjCs",
+    "title": "환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’",
+    "analysis_date": "2026-01-18",
+    "surface_topics": [
+      "수익",
+      "투자",
+      "종목",
+      "분석",
+      "경제"
+    ],
+    "real_topic": "Unknown Structural Shift",
+    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '불가능' found, L2 Keyword '수급' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "대부분 정부 규제나 치열한 가격 경쟁 때문에 가격 전가가 불가능해",
+      "이걸 환차손이라고 하는데이 공포 때문에 한국 주식 비중 자체를 줄이려는 작은 매도가 쏟아질 수 있어"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "Engine has detected a L3 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+  },
+  {
+    "video_id": "oKwcmucSGcU",
+    "title": "트럼프가 '다시 한번' 관세로 전세계 장악하는 방법",
+    "analysis_date": "2026-01-18",
+    "surface_topics": [
+      "투자",
+      "종목",
+      "분석",
+      "경제",
+      "돈"
+    ],
+    "real_topic": "구리",
+    "real_topic_reasoning": "Data Master Definition Match: '구리' (mentioned 4 times)",
+    "anomaly_level": "L2",
+    "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '구조' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "세 번째는이 불확실성 때문에 전 세계 투자자들이 위험 자산에서 빠져나와 안전 자산으로 돈을 옮기고 있다는 거야",
+      "금이 오르는 건 불확실성 때문에 안전 자산 찾는 거라고 이해할 수 있어",
+      "구리가 오르는 건 관세 때문에 공급망 비용이 올라갈 거라는 기대가 반영된 거야"
+    ],
+    "evolution_proposals": [
+      {
+        "id": "EVO-20260118-53918",
+        "video_id": "oKwcmucSGcU",
+        "category": "DATA_ADD",
+        "detected_pattern": "User explicit need: 확인해야",
+        "condition": "가장 먼저 확인해야 할 건 시간의 흐름이야",
+        "status": "PROPOSED"
+      }
+    ],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "Engine has detected a L2 anomaly regarding '구리'. No explicit immediate trigger found, likely a trend analysis."
+  },
+  {
+    "video_id": "iR0eIStTrhY",
+    "title": "트럼프가 금융주를 정면으로 건드리는 진짜 이유",
+    "analysis_date": "2026-01-18",
+    "surface_topics": [
+      "종목",
+      "분석",
+      "경제",
+      "돈",
+      "주식"
+    ],
+    "real_topic": "Unknown Structural Shift",
+    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '강제' found, L3 Keyword '불가능' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "그리고 잡히지 않는 물가 잡기용 정치적쇼로 보고 있어 트럼프 행정부가 강하게 밀어붙였던 관세 정책이 결국 물가를 올려버렸고이 때문에 연준도 쉽게 금리를 못 내리고 버티는 중이지 금리가 높으면 유권자들은 대출이자 감느라 주건하고 이러면 11월 선거에서 표가 우수수 떨어질게 뻔하잖아",
+      "그럼 얼가는 지금 대체 뭐 때문에 안심하고 있는 걸까"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "Engine has detected a L3 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+  }
+]
