@@ -22,10 +22,10 @@ def generate_and_send_summary(base_dir: Path):
         # Build Message
         status_emoji = "✅" if data.get("status") == "SUCCESS" else "⚠️"
         lines = [
-            f"🤖 *HOIN ENGINE Daily Report* ({ymd})",
-            f"System Status: {status_emoji} *{data.get('status')}*",
+            f"🤖 *HOIN ENGINE 일일 리포트* ({ymd})",
+            f"시스템 상태: {status_emoji} *{data.get('status')}*",
             "",
-            "📊 *Data Collection Modules:*"
+            "📊 *데이터 수집 모듈 상태:*"
         ]
         
         # Format per-dataset status
@@ -41,7 +41,7 @@ def generate_and_send_summary(base_dir: Path):
             lines.append(f"{icon} {ds_id}: `{st}`")
             
         lines.append("")
-        lines.append("🔗 [View Dashboard](https://hoininsight-commits.github.io/HoinInsight/)")
+        lines.append("🔗 [대시보드 바로가기](https://hoininsight-commits.github.io/HoinInsight/)")
         
         message = "\n".join(lines)
         
