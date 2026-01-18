@@ -19,6 +19,7 @@ from typing import Any, Dict, List, Optional
 
 # [UPDATE] Use Dynamic Knowledge Base
 from src.utils.knowledge_base import KnowledgeBase
+from src.learning.deep_logic_analyzer import DeepLogicAnalyzer
 
 def _ymd() -> str:
     """Get current UTC date in YYYY/MM/DD format."""
@@ -268,8 +269,14 @@ def process_all_transcripts(base_dir: Path) -> int:
     # Create output directories
     analysis_dir = base_dir / "data" / "narratives" / "analysis" / ymd.replace("/", "/")
     proposals_dir = base_dir / "data" / "narratives" / "proposals" / ymd.replace("/", "/")
+    deep_dir = base_dir / "data" / "narratives" / "deep_analysis" / ymd.replace("/", "/")
+    
     analysis_dir.mkdir(parents=True, exist_ok=True)
     proposals_dir.mkdir(parents=True, exist_ok=True)
+    deep_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Initialize Deep Analyzer
+    deep_analyzer = DeepLogicAnalyzer(kb)
     
     proposal_count = 0
     
@@ -300,6 +307,14 @@ def process_all_transcripts(base_dir: Path) -> int:
             proposal_md = generate_proposal_markdown(video_meta, analysis)
             proposal_path = proposals_dir / f"proposal_{video_id}.md"
             proposal_path.write_text(proposal_md, encoding="utf-8")
+            
+            # [NEW] Run Deep Logic Analysis & Save
+            deep_result = deep_analyzer.analyze(
+                video_id=video_id,
+                title=video_meta.get("title", "Unknown"),
+                transcript=load_transcript(transcript_file)
+            )
+            deep_analyzer.save_report(deep_result, deep_dir)
             
             proposal_count += 1
             print(f"[Phase 31-B] Analyzed: {video_meta.get('title', video_id)}")

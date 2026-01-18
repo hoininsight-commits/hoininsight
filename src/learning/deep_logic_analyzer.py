@@ -1,362 +1,253 @@
-"""
-Phase 35: Deep Logic Analyzer (Simulated/Ready for Integration)
-Since we are in a protected environment without external API access,
-this version implements the LOGIC ARCHITECTURE but MOCKS the LLM call for demonstration.
-"""
 
 import json
-from pathlib import Path
-from typing import Dict, Any, List
-import hashlib
+import re
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-try:
-    from src.learning.logic_evolver import LogicEvolver
-except ImportError:
-    pass
+from src.utils.knowledge_base import KnowledgeBase
 
 class DeepLogicAnalyzer:
-    def __init__(self, base_dir: Path):
-        self.base_dir = base_dir
-        # Brain loading
-        self.data_master = (base_dir / "docs/DATA_COLLECTION_MASTER.md").read_text()
-        self.anomaly_logic = (base_dir / "docs/ANOMALY_DETECTION_LOGIC.md").read_text()
-
-    def analyze(self, transcript: str, title: str) -> Dict[str, Any]:
-        """
-        In a real scenario, this sends the prompt to Gemini.
-        Here, we mimic the expert reasoning demonstrated in the few-shot examples.
-        """
-        print(f"[DeepLogicAnalyzer] Analyzing transcript for: {title}")
-        print("[DeepLogicAnalyzer] Loading Context: DATA_COLLECTION_MASTER & ANOMALY_DETECTION_LOGIC...")
-        print("[DeepLogicAnalyzer] Simulating Expert Reasoning Process...")
+    """
+    Performs deep structural analysis on video transcripts (Phase 31-B Enhanced).
+    
+    Steps:
+    1. Surface Topic Removal
+    2. Engine-View Real Topic Redefinition
+    3. Anomaly Level Determination (L1-L3)
+    4. WHY_NOW Trigger Analysis
+    5. Core Assumptions Identification
+    6. Data Collection Needs (Evolution Proposal)
+    7. Difficulty vs Topic Filter
+    8. Content Nature Assessment (Leading vs Lagging)
+    9. Final Engine Summary
+    """
+    
+    def __init__(self, kb: KnowledgeBase):
+        self.kb = kb
+        self.surface_stopwords = [
+            "주식", "투자", "시장", "매수", "매도", "전망", "분석", "이슈", "뉴스", 
+            "종목", "추천", "대박", "수익", "리스크", "돈", "자산", "경제"
+        ]
         
-        # Check title to route to appropriate mock response
-        if "MOCK_MODE" in title or "MOCK MODE" in title: # Explicit mock trigger
-            if "트럼프" in title or "파월" in title:
-               return self._mock_trump_powell_case()
-            elif "모건" in title or "장기 투자" in title:
-               return self._mock_morgan_case()
-            elif "워런 버핏" in title or "이란" in title or "Iran" in title:
-               return self._mock_warren_buffett_case()
-            elif "한화" in title or "인적 분할" in title:
-               return self._mock_hanwha_case()
-            elif "파크" in title or "Park" in title or "반도체" in title:
-               return self._mock_park_systems_case()
-            else:
-               return self._mock_new_case_logic(title)
-        else:
-            # REAL Analysis Mode
-            return self.analyze_heuristic(transcript, title)
-
-    def analyze_heuristic(self, transcript: str, title: str) -> Dict[str, Any]:
-        """
-        Perform actual heuristic analysis using LogicEvolver patterns + KnowledgeBase checks.
-        """
-        # Lazy load LogicEvolver to avoid circular imports if any
-        try:
-            evolver = LogicEvolver(self.base_dir)
-        except NameError:
-             from src.learning.logic_evolver import LogicEvolver
-             evolver = LogicEvolver(self.base_dir)
-
-        patterns = evolver.discover_logic_patterns(transcript, title)
+    def analyze(self, video_id: str, title: str, transcript: str) -> Dict[str, Any]:
+        """Run the full deep analysis pipeline."""
         
-        proposals = []
-        logic_gaps = []
-        data_gaps = []
+        # 1. Surface Topic Removal & Real Topic Extraction
+        real_topic_info = self._extract_real_topic(transcript)
         
-        # 1. Analyze Patterns for Gaps
-        for p in patterns:
-            # Check Data Gaps (Unknown Nouns) in Condition/Implication
-            # detailed check would require NLP, here we use simple space splitting and check against KB headers
-            terms = p['condition'].split() + p['implication'].split()
-            for term in terms:
-                # Minimal cleaning
-                term = term.strip().replace("가", "").replace("이", "").replace("을", "").replace("를", "") 
-                if len(term) < 2: continue
+        # 2. Anomaly Level
+        anomaly_info = self._determine_anomaly_level(transcript, real_topic_info['topic'])
+        
+        # 3. Why Now
+        why_now_info = self._analyze_why_now(transcript)
+        
+        # 4. Evolution Proposals (Data Collection Needs)
+        proposals = self._generate_evolution_proposals(video_id, transcript, real_topic_info['topic'])
+        
+        # 5. Core Assumptions (Heuristic)
+        assumptions = self._extract_core_assumptions(transcript)
+        
+        # 6. Construct Final Report Data
+        result = {
+            "video_id": video_id,
+            "title": title,
+            "analysis_date": datetime.utcnow().strftime("%Y-%m-%d"),
+            "surface_topics": self._find_surface_topics(transcript),
+            "real_topic": real_topic_info['topic'],
+            "real_topic_reasoning": real_topic_info['reasoning'],
+            "anomaly_level": anomaly_info['level'],
+            "anomaly_reasoning": anomaly_info['reasoning'],
+            "why_now": why_now_info,
+            "core_assumptions": assumptions,
+            "evolution_proposals": proposals, 
+            "content_nature": "Leading Indicator" if anomaly_info['level'] == "L3" else "Lagging/Result",
+            "engine_conclusion": self._generate_conclusion(real_topic_info, anomaly_info, why_now_info)
+        }
+        
+        return result
+
+    def _find_surface_topics(self, transcript: str) -> List[str]:
+        found = []
+        for word in self.surface_stopwords:
+            if word in transcript:
+                found.append(word)
+        return list(set(found))[:5]
+
+    def _extract_real_topic(self, transcript: str) -> Dict[str, str]:
+        """
+        Find the most specific technical term defined in KnowledgeBase or high-frequency proper noun.
+        """
+        # Check against Data Definitions (Data Master)
+        data_defs = self.kb.get_data_definitions()
+        best_match = None
+        max_count = 0
+        
+        for d in data_defs:
+            name = d.get('name', '')
+            if name and name in transcript:
+                count = transcript.count(name)
+                if count > max_count:
+                    max_count = count
+                    best_match = name
+        
+        if best_match:
+            return {
+                "topic": best_match,
+                "reasoning": f"Data Master Definition Match: '{best_match}' (mentioned {max_count} times)"
+            }
+            
+        # Fallback: Extract high-freq noun (simple heuristic)
+        # In a real agent, we'd use NLP. Here we assume the KB covers important topics.
+        return {
+            "topic": "Unknown Structural Shift",
+            "reasoning": "No direct match in Data Master. Requires semantic extraction."
+        }
+
+    def _determine_anomaly_level(self, transcript: str, topic: str) -> Dict[str, str]:
+        """
+        L1: Price Change
+        L2: Supply/Demand Imbalance
+        L3: Structural/Pattern Change or Bottleneck
+        """
+        score = 0
+        reasoning_parts = []
+        
+        # L3 Keywords (Structural)
+        l3_keywords = ["구조", "병목", "패러다임", "독점", "강제", "필수", "불가능", "대체 불가", "기술 전환"]
+        for kw in l3_keywords:
+            if kw in transcript:
+                score += 3
+                reasoning_parts.append(f"L3 Keyword '{kw}' found")
                 
-                # Check if term exists in KnowledgeBase (very simple check for now)
-                # We assume KB has a 'contains' method or we scan raw text
-                # For this version, we'll scan the raw loaded text
-                if term not in self.data_master:
-                    data_gaps.append(term)
-            
-            # Use pattern as Logic Gap candidate
-            logic_gaps.append(p)
+        # L2 Keywords (Flow)
+        l2_keywords = ["수급", "재고", "부족", "과잉", "지연", "납품"]
+        for kw in l2_keywords:
+            if kw in transcript:
+                score += 2
+                reasoning_parts.append(f"L2 Keyword '{kw}' found")
 
-        # 2. Formulate Proposals
-        # Deduplicate data gaps
-        data_gaps = list(set(data_gaps))
+        if score >= 5: # Hybrid or Strong L3
+            return {"level": "L3", "reasoning": "High structural impact detected. " + ", ".join(reasoning_parts[:3])}
+        elif score >= 2:
+            return {"level": "L2", "reasoning": "Supply/Demand imbalance signals. " + ", ".join(reasoning_parts[:3])}
+        else:
+            return {"level": "L1", "reasoning": "Mostly price/sentiment level signals."}
+
+    def _analyze_why_now(self, transcript: str) -> Dict[str, str]:
+        triggers = []
+        trigger_keywords = ["발표", "공시", "출시", "양산", "계약", "통과", "승인", "시작"]
         
-        # Limit proposals to top 3 to avoid spam
-        for gap_term in data_gaps[:3]:
-            # Guess category
-            cat = "| Uncategorized |"
-            if "가격" in gap_term or "지수" in gap_term: cat = "| Market Data |"
-            elif "정책" in gap_term: cat = "| Policy |"
-            
-            prop_content = f"{cat} {gap_term} | Source: {gap_term} | Unknown | Free | CANDIDATE | Found in: {title} |"
-            
-            proposals.append({
-                "type": "DATA",
-                "category": "DATA_UPDATE",
-                "content": prop_content,
-                "reason": f"System blindspot: '{gap_term}' detected in high-importance logic."
-            })
-            
-        for p in logic_gaps[:2]:
-            proposals.append({
-                "type": "LOGIC",
-                "category": "LOGIC_UPDATE",
-                "content": f"IF {p['condition']} THEN {p['implication']} (Type: {p['type']})",
-                "reason": f"New causal pattern detected: {p['original_sentence'][:50]}..."
-            })
-            
-        # 3. Construct Result
-        has_update = len(proposals) > 0
+        sentences = re.split(r'[.!?]\s+', transcript)
+        for s in sentences:
+            for kw in trigger_keywords:
+                if kw in s and ("오늘" in s or "최근" in s or "이번" in s):
+                    triggers.append(s.strip())
+                    break
+                    
+        trigger_type = "Structural-driven" if triggers else "State-driven (Price/News)"
+        description = triggers[0] if triggers else "No explicit immediate trigger found, likely a trend analysis."
         
         return {
-            "summary": f"Analyzed '{title}' - Found {len(data_gaps)} potential data gaps & {len(logic_gaps)} logic patterns.",
-            "data_usage": [], # Can't accurately determine usage without full NLP yet
-            "anomaly_detected": {
-                "description": "Pattern-based Logic Discovery",
-                "level": "L2 (Heuristic)"
-            },
-            "why_now_type": "Data-driven",
-            "logic_gap_analysis": {
-                "new_data_needed": len(data_gaps) > 0,
-                "new_logic_needed": len(logic_gaps) > 0,
-                "reason": f"Extracted {len(patterns)} explicit logic patterns."
-            },
-            "learned_rule": logic_gaps[0]['original_sentence'] if logic_gaps else "No explicit rule found.",
-            "final_decision": "UPDATE_REQUIRED" if has_update else "LOG_ONLY",
-            "proposals": proposals
+            "trigger_type": trigger_type,
+            "description": description
         }
 
-    def _mock_trump_powell_case(self):
-        """Mock response for Trump vs Powell Case"""
-        return {
-            "summary": "미국 통화정책 신뢰 훼손(Independent Risk)에 따른 자본 이동",
-            "data_usage": [
-                {"axis": "Gov Policy", "usage": "Political Intervention (Fed Independence)"},
-                {"axis": "Rates > Spread", "usage": "Risk Premium Spike"},
-                {"axis": "Commodities > Gold", "usage": "System Hedge"}
-            ],
-             "anomaly_detected": {
-                "description": "Policy Rate vs Market Rate Decoupling (Trust Crisis)",
-                "level": "L3 (Hybrid driven)"
-            },
-            "why_now_type": "Hybrid-driven (Schedule + State)",
-            "logic_gap_analysis": {
-                "new_data_needed": False,
-                "new_logic_needed": False,
-                "reason": "Existing 'Policy Uncertainty' & 'Safe Haven Flow' logic covers this scenario."
-            },
-            "learned_rule": "정책 숫자가 변하지 않아도 정책 '독립성'이 의심받으면, 시장은 장기 프리미엄과 안전자산 이동으로 먼저 반응한다.",
-            "final_decision": "LOG_ONLY"
-        }
-
-    def _mock_morgan_case(self):
-         """Mock response for Morgan Stanley Capex Case"""
-         return {
-            "summary": "구조적 자본 상태 변화(State Shift)에 따른 장기 고정 자본 형성",
-            "data_usage": [
-                {"axis": "Global Supply Chain", "usage": "Decoupling context"},
-                {"axis": "Gov Policy", "usage": "State Capitalism (Capex Support)"}
-            ],
-            "anomaly_detected": {
-                "description": "Capex-Cycle Decoupling (No Recession Impact)",
-                "level": "L3 (Hybrid driven)"
-            },
-            "why_now_type": "State-driven",
-            "logic_gap_analysis": {
-                "new_data_needed": False,
-                "new_logic_needed": False,
-                "reason": "Can be explained by existing (C) Capex logic."
-            },
-            "learned_rule": "정부가 자본 비용을 직접 부담하면, 민간 투자는 경기 민감도를 잃고 장기 고정 자본화된다.",
-            "final_decision": "LOG_ONLY"
-        }
-
-    def _mock_warren_buffett_case(self):
-         """Mock response for Warren Buffett & Iran Case - Updated with User's Insight"""
-         return {
-            "summary": "이란 사태는 단순 이벤트가 아닌 '자본 경로의 강제 재고정(Capital Route Reconfiguration)' 시그널임.",
-            "data_usage": [
-                {"axis": "Commodities > Oil", "usage": "Price Spike (L1 Effect)"},
-                {"axis": "Equities > Energy", "usage": "Sector Rotation (L2 Effect)"}
-            ],
-            "anomaly_detected": {
-                "description": "L3 STRUCTURAL ANOMALY: Energy Supply Path Collapse",
-                "level": "L3 (State-Driven)"
-            },
-             "why_now_type": "Hybrid-driven (State + Political) - 공급 경로 붕괴 임계점",
-            "logic_gap_analysis": {
-                "new_data_needed": True,
-                "new_logic_needed": True,
-                "reason": "단순 유가/뉴스 모니터링으로는 '경로 붕괴'와 '자본 재고정'의 구조적 변화를 감지할 수 없음. 군사/물류/LNG계약 데이터 필수."
-            },
-            "learned_rule": "지정학 리스크가 물리적 경로(해협 봉쇄 등)를 위협할 때, 자본은 안전 자산이 아니라 '대체 공급 독점처(미국 에너지)'로 강제 이동한다.",
-            "final_decision": "UPDATE_REQUIRED",
-            "proposals": [
-                {
-                    "type": "DATA", 
-                    "category": "DATA_UPDATE",
-                    "content": "| 에너지/물류 | LNG 장기 공급 계약 추이 | Cheniere/EIA | Trend | Free | CANDIDATE | 대체 경로 독점화 확인 |"
-                },
-                {
-                    "type": "DATA",
-                    "category": "DATA_UPDATE",
-                    "content": "| 운송/해운 | Tanker/BDI 운임 지수 | Bloomberg/Baltic | Index | Paid/Delayed | CANDIDATE | 공급망 물리적 병목 감지 |"
-                },
-                {
-                    "type": "LOGIC",
-                    "category": "LOGIC_UPDATE",
-                    "content": "IF [Physical Route Risk] AND [No Alternative Path] THEN [Capital Forced to US Energy Assets]"
-                }
-            ]
-        }
+    def _generate_evolution_proposals(self, video_id: str, transcript: str, topic: str) -> List[Dict[str, Any]]:
+        """
+        If the topic is significant (L3) but data is missing, propose adding it.
+        """
+        proposals = []
         
-    def _mock_hanwha_case(self):
-        """Mock response for Hanwha Structural Event Case"""
-        return {
-            "summary": "구조적 할인 해소(Event-Driven Restructuring)에 따른 자본 재평가",
-            "data_usage": [
-                 {"axis": "Corp Action > Buyback", "usage": "Signaling"},
-                 {"axis": "Equities > Holding Co", "usage": "Discount Removal"}
-            ],
-             "anomaly_detected": {
-                "description": "Governance-driven Value Unlock",
-                "level": "L3 (Structural Event)"
-            },
-            "why_now_type": "State-driven (Internal Structuring)",
-            "logic_gap_analysis": {
-                "new_data_needed": True,
-                "new_logic_needed": False, # Logic exists (L3), but sensors are missing
-                "reason": "To detect this 'Pre-Event', we need Governance Data (Buyback/Stake Flow) which transforms Engine from Observer to Sensor."
-            },
-            "learned_rule": "구조적 이벤트(분할/승계)는 실적이 아니라 '자본/지배구조(자사주, 지분)'의 미세한 움직임으로 먼저 감지된다.",
-            "final_decision": "UPDATE_REQUIRED",
-             "proposals": [
-                {
-                    "type": "DATA", 
-                    "category": "META_UPGRADE", # Special Tag
-                    "content": "| 기업/지배구조 | 자사주 취득/소각 공시 | Dart/Exchange | Event | Free | CORE_CANDIDATE | 구조 이벤트 사전 감지 (Sensor Upgrade) |"
-                },
-                {
-                    "type": "DATA",
-                    "category": "META_UPGRADE",
-                    "content": "| 기업/지배구조 | 대주주 지분 변동 | Dart | Event | Free | CORE_CANDIDATE | 승계/재편 사전 징후 포착 |"
-                }
-            ]
-        }
+        # Heuristic: If we detected an L3 topic, but we don't have a specific dataset for 'Process Yield' or 'Bottleneck' related to it?
+        # For this version, we will check if specific "needs" are mentioned.
+        
+        need_keywords = ["데이터가 필요", "지표를 봐야", "확인해야", "추적해야"]
+        sentences = re.split(r'[.!?]\s+', transcript)
+        
+        for s in sentences:
+            for nk in need_keywords:
+                if nk in s:
+                    # Found a data need
+                    proposals.append({
+                        "id": f"EVO-{datetime.utcnow().strftime('%Y%m%d')}-{abs(hash(s)) % 100000:05d}",
+                        "video_id": video_id,
+                        "category": "DATA_ADD",
+                        "detected_pattern": f"User explicit need: {nk}",
+                        "condition": s.strip()[:100],
+                        "status": "PROPOSED"
+                    })
+                    break
+        return proposals
 
-    def _mock_park_systems_case(self):
-         """Mock response for Park Systems (Atomic Microscopy) Logic"""
-         return {
-            "summary": "반도체 공정 내 역할 재편(Role Reconfiguration): '선택 장비'에서 '필수 인프라'로의 구조적 전환",
-            "data_usage": [
-                {"axis": "Tech Cycle > Process", "usage": "Bottleneck Identification"},
-                {"axis": "Supply Chain > Equipment", "usage": "Structural Lock-in Check"}
-            ],
-            "anomaly_detected": {
-                "description": "Critical Process Bottleneck Shift (Inspection Layer)",
-                "level": "L3 (Structural Anomaly)"
-            },
-            "why_now_type": "Hybrid-driven (State + Structural) - 공정 미세화 임계점 도달",
-            "logic_gap_analysis": {
-                "new_data_needed": True,
-                "new_logic_needed": True,
-                "reason": "단순 수율 관리가 아닌, '공정이 멈추지 않기 위한 필수 조건'으로서의 검사 공정 병목 현상을 기존 로직이 커버하지 못함."
-            },
-            "learned_rule": "HBM 이후 공정 미세화 단계에서는 '누가 더 잘 만드는가'가 아니라, '누가 양산을 보장하는가(검사 통과)'가 핵심 경쟁력이 되며, 이 역할은 대체 불가능한 구조적 독점이 된다.",
-            "final_decision": "UPDATE_REQUIRED",
-            "proposals": [
-                {
-                    "type": "LOGIC",
-                    "category": "LOGIC_UPDATE",
-                    "content": "IF Process_Stage == 'Hybrid Bonding' OR 'Glass Substrate' THEN Inspection_Role MUST_BE 'Critical Bottleneck' (Gatekeeper)",
-                    "reason": "Inspection is no longer auxiliary; it is the primary gatekeeper for yield in atomic-level processes."
-                },
-                {
-                    "type": "DATA",
-                    "category": "DATA_UPDATE",
-                    "content": "| Tech Process | 공정별 필수 장비 의존도 맵 | Semi/Gartner | Map | Paid | CANDIDATE | 공정-역할-장비 매핑 데이터 보강 |",
-                    "reason": "Missing data on 'Process-Role-Equipment' mapping to identify structural bottlenecks."
-                },
-                {
-                    "type": "DATA",
-                    "category": "DATA_UPDATE",
-                    "content": "| Tech Process | 하이브리드 본딩 검사 실패율 추이 | Tech Insights | Trend | Paid | CANDIDATE | 병목 심화 수준 정량화 |",
-                    "reason": "Need to quantify the severity of the bottleneck at the inspection layer."
-                }
-            ]
-        }
+    def _extract_core_assumptions(self, transcript: str) -> List[str]:
+        # Heuristic: Look for "Because", "Therefore" structures (Korean: 때문에, 따라서)
+        assumptions = []
+        sentences = re.split(r'[.!?]\s+', transcript)
+        for s in sentences:
+            if "때문에" in s or "전제" in s:
+                assumptions.append(s.strip())
+        return assumptions[:3]
 
-    def _mock_new_case_logic(self, title):
-        """Mock for a new logic discovery case (Gold/Copper)"""
-        return {
-            "summary": "금/구리 괴리(Divergence)를 활용한 신규 침체 탐지 로직 제안",
-            "data_usage": [
-                 {"axis": "Commodities > Gold", "usage": "Safe Haven"},
-                 {"axis": "Commodities > Copper", "usage": "Industrial"}
-            ],
-             "anomaly_detected": {
-                "description": "Gold/Copper Ratio Breakout",
-                "level": "L3"
-            },
-            "why_now_type": "Hybrid-driven",
-            "logic_gap_analysis": {
-                "new_data_needed": False,
-                "new_logic_needed": True,
-                "reason": "Gold/Copper divergence logic is missing explicitly."
-            },
-            "learned_rule": "구리 가격 하락과 금 가격 신고가가 동시 발생(비율 급등)하면 강력한 침체 신호이다.",
-            "final_decision": "UPDATE_REQUIRED"
-        }
+    def _generate_conclusion(self, topic_info, anomaly_info, why_now_info) -> str:
+        return f"Engine has detected a {anomaly_info['level']} anomaly regarding '{topic_info['topic']}'. {why_now_info['description']}"
 
-def main():
-    base_dir = Path(__file__).parent.parent.parent
-    analyzer = DeepLogicAnalyzer(base_dir)
-    
-    # Test Case 1: Trump/Powell
-    print("\n--- TEST CASE 1: Trump vs Powell ---")
-    res1 = analyzer.analyze("...", "트럼프 대 파월 싸움")
-    print(json.dumps(res1, indent=2, ensure_ascii=False))
-    
-    if res1['final_decision'] == "LOG_ONLY":
-        print("✅ Effect: No System Change (Observation Log Created)")
+    def save_report(self, result: Dict[str, Any], output_dir: Path):
+        """Save JSON and Markdown reports."""
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # JSON
+        json_path = output_dir / "deep_analysis_results.json"
+        # Since we might process multiple videos, we should probably append or use video_id in filename
+        # But per user request structure, it seems they want one consolidated or per video?
+        # The user example used "deep_analysis_results.json" as a single file, but logic dictates per-video.
+        # I'll stick to a list in json if multiple.
+        
+        existing_data = []
+        if json_path.exists():
+            try:
+                existing_data = json.loads(json_path.read_text(encoding='utf-8'))
+                if not isinstance(existing_data, list): existing_data = [existing_data]
+            except:
+                pass
+        
+        existing_data.append(result)
+        # Deduplicate by video_id
+        existing_data = {v['video_id']: v for v in existing_data}.values()
+        
+        json_path.write_text(json.dumps(list(existing_data), ensure_ascii=False, indent=2), encoding='utf-8')
+        
+        # Markdown
+        md_path = output_dir / f"video_{result['video_id']}_report.md"
+        md_content = self._format_markdown(result)
+        md_path.write_text(md_content, encoding='utf-8')
+        
+    def _format_markdown(self, res: Dict[str, Any]) -> str:
+        return f"""
+# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
 
-    # Test Case 2: New Logic Discovery
-    print("\n--- TEST CASE 2: Unknown Logic ---")
-    res2 = analyzer.analyze("...", "금과 구리의 기이한 움직임")
-    print(json.dumps(res2, indent=2, ensure_ascii=False))
+## 1️⃣ 겉주제 제거 (Surface Topic 제거)
+영상의 표면 메시지 (Removed):
+{chr(10).join([f"* {t}" for t in res['surface_topics']])}
 
-    if res2['final_decision'] == "UPDATE_REQUIRED":
-         print("🚨 Effect: New Evolution Proposal Created (Needs Approval)")
+## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
+* **Real Topic**: {res['real_topic']}
+* **Reframed**: {res['real_topic_reasoning']}
 
-    # Test Case 3: Complex Evolution (Data + Logic)
-    print("\n--- TEST CASE 3: Warren Buffett & Iran ---")
-    res3 = analyzer.analyze("...", "워런 버핏과 이란 사태")
-    print(json.dumps(res3, indent=2, ensure_ascii=False))
-    
-    if res3['final_decision'] == "UPDATE_REQUIRED":
-         print("🚨 Effect: New Evolution Proposal Created (Needs Approval - MULTI ITEM)")
-         if "proposals" in res3:
-             for p in res3["proposals"]:
-                 print(f"   + [PROPOSAL] Type: {p['type']} -> {p['content'][:50]}...")
+## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
+* **Level**: {res['anomaly_level']}
+* **Reasoning**: {res['anomaly_reasoning']}
 
-    # Test Case 4: Meta-Evolution (Engine Upgrade)
-    print("\n--- TEST CASE 4: Hanwha Structure (Engine Upgrade) ---")
-    res4 = analyzer.analyze("...", "한화 인적 분할과 지배구조")
-    print(json.dumps(res4, indent=2, ensure_ascii=False))
+## 4️⃣ WHY_NOW 트리거 판정
+* **Type**: {res['why_now']['trigger_type']}
+* **Trigger**: {res['why_now']['description']}
 
-    if res4['final_decision'] == "UPDATE_REQUIRED":
-         print("🚨 Effect: META-UPGRADE Proposal Created (Needs Critical Approval)")
-         if "proposals" in res4:
-             for p in res4["proposals"]:
-                 print(f"   + [CORE UPGRADE] {p['content'][:60]}...")
+## 5️⃣ 핵심 가정 (Core Assumptions)
+{chr(10).join([f"* {a}" for a in res['core_assumptions']])}
 
-if __name__ == "__main__":
-    main()
+## 6️⃣ DATA_COLLECTION_MASTER 관점 (Evolution Proposals)
+{chr(10).join([f"* [PROPOSAL] {p['condition']}" for p in res['evolution_proposals']]) if res['evolution_proposals'] else "* (No new data collection needs identified)"}
+
+## 7️⃣ 엔진 최종 판정 요약
+> {res['engine_conclusion']}
+"""
