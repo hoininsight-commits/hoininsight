@@ -106,3 +106,11 @@ def normalize_platinum(base_dir: Path):
 
 def normalize_eth(base_dir: Path):
     _generic_normalize("crypto_eth_usd_spot_coingecko", "data/curated/crypto/eth_usd.csv", "ETHUSD", "USD", "spot_price", "coingecko")
+
+def normalize_gold_paxg(base_dir: Path):
+    # Proxy: PAXG -> XAUUSD
+    _generic_normalize("metal_gold_paxg_coingecko", "data/curated/metals/gold_usd.csv", "XAUUSD", "USD", "spot_price", "coingecko_paxg")
+
+def normalize_silver_kag(base_dir: Path):
+    # Proxy: KAG -> KAGUSD (Silver)
+    _generic_normalize("metal_silver_kag_coingecko", "data/curated/metals/silver_usd.csv", "XAGUSD", "USD", "spot_price", "coingecko_kag")

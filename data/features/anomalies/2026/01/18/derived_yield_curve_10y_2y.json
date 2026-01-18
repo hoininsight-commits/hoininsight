@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-01-18T12:40:06Z",
+    "dataset_id": "derived_yield_curve_10y_2y",
+    "entity": "SPREAD_10Y_2Y",
+    "anomaly_type": "ROC_1D",
+    "severity": 100,
+    "evidence": {
+      "threshold_pct": 3.0,
+      "roc_pct": -862.4999999999998,
+      "prev_ts": "2026-01-15 00:00:00+00:00",
+      "prev_value": -0.08,
+      "last_ts": "2026-01-15 00:00:00+00:00",
+      "last_value": 0.6099999999999999
+    }
+  }
+]

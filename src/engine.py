@@ -46,6 +46,13 @@ def main(target_categories: list[str] = None):
         details_lines.append("normalize: ok")
         print("normalize: ok", file=sys.stderr)
         
+        # --- Logic Layer ---
+        from src.pipeline.derived_metrics_engine import run_derived_metrics
+        run_derived_metrics(Path("."))
+        details_lines.append("derived: ok")
+        print("derived: ok", file=sys.stderr)
+        # -------------------
+        
         anomaly_main()
         details_lines.append("anomaly: ok")
         print("anomaly: ok", file=sys.stderr)

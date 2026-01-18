@@ -80,34 +80,60 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
     
     # [Emergency Reliability Fix]
     # If status is FAIL, but the data file for TODAY actually exists and is non-empty, override to OK.
-    # This handles cases where one run fails but previous run succeeded, or yfinance is flaky but data is saved.
     if status != "OK":
         try:
-            # Check curated path first (most important for dashboard)
             cpath_str = dataset.get("curated_path")
             if cpath_str:
                 cpath = base_dir / cpath_str
                 if cpath.exists() and cpath.stat().st_size > 0:
-                     # Check if it has today's date? Or just trust it exists?
-                     # CSVs grow, so just checking existence/modification time might be enough for now.
-                     # Let's check modification time -> if modified today UTC (rough check)
                      mtime = datetime.utcfromtimestamp(cpath.stat().st_mtime)
                      now = datetime.utcnow()
                      if (now - mtime).total_seconds() < 86400: # Modified within 24h
                          status = "OK"
                          reason = "데이터 파일 존재 (자동 복구됨)"
-                         # [Fix] Use file mtime as timestamp if missing
                          if not timestamp:
                              timestamp = mtime.isoformat()
         except Exception:
             pass
+
+    # [Feature] Extract Latest Value for Dashboard
+    latest_value = None
+    try:
+        cpath_str = dataset.get("curated_path")
+        if cpath_str:
+             cpath = base_dir / cpath_str
+             if cpath.exists():
+                 # Read last line of CSV carefully
+                 import pandas as pd
+                 # Read only last few lines for speed
+                 df = pd.read_csv(cpath) 
+                 if not df.empty and "value" in df.columns:
+                      latest_value = df.iloc[-1]["value"]
+                      # Format if float
+                      if isinstance(latest_value, float):
+                          # Check unit
+                          unit = dataset.get("unit", "")
+                          if unit == "KRW":
+                              latest_value = f"{latest_value:,.0f}"
+                          elif unit == "USD":
+                               latest_value = f"{latest_value:,.2f}"
+                          elif unit == "PCT":
+                               latest_value = f"{latest_value:.2f}%"
+                          elif unit == "INDEX":
+                               latest_value = f"{latest_value:,.2f}"
+                          else:
+                               latest_value = f"{latest_value:.2f}"
+    except Exception as e:
+        # print(f"val read err: {e}")
+        pass
 
     return {
         "dataset_id": ds_id,
         "category": display_category,
         "status": status,
         "reason": reason,
-        "last_updated": timestamp
+        "last_updated": timestamp,
+        "latest_value": latest_value
     }
 
 def generate_dashboard(base_dir: Path):
@@ -625,12 +651,18 @@ def generate_dashboard(base_dir: Path):
                      else:
                          ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
 
+             # Value Display
+             val_html = ""
+             if ds.get("latest_value"):
+                 val_html = f'<span style="font-size: 11px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">{ds["latest_value"]}</span>'
+
              sidebar_html += f"""
              <div class="ds-item {status_cls}" title="{ds.get('reason','')}">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
                      <span class="ds-name">{ds['dataset_id']} {ts_html}</span>
                  </div>
+                 {val_html}
                  <div class="status-check">{check_mark}</div>
              </div>
              """
@@ -1947,160 +1979,82 @@ def generate_dashboard(base_dir: Path):
 {script_body if script_body else "스크립트가 아직 생성되지 않았습니다."}
                             </div>
                         </div>
-                    </div>
     """
     
-    # [Deep Logic Analysis Tab]
-    deep_logic_html = ""
-    try:
-        found_any = False
-        LOOKBACK = 3
-        
-        for d_offset in range(LOOKBACK + 1):
-            target_date = (datetime.utcnow() - timedelta(days=d_offset)).strftime("%Y/%m/%d")
-            deep_dir = base_dir / "data/narratives/deep_analysis" / target_date
-            
-            if not deep_dir.exists():
-                continue
-                
-            for json_file in deep_dir.glob("deep_analysis_results.json"):
-                try:
-                    all_results = json.loads(json_file.read_text(encoding="utf-8"))
-                    if not isinstance(all_results, list): all_results = [all_results]
-                    
-                    for data in all_results:
-                        found_any = True
-                        # Find MD Report
-                        md_content = "Report not found."
-                        vid_id = data.get('video_id', 'UNKNOWN')
-                        
-                        md_path = deep_dir / f"video_{vid_id}_report.md"
-                        if md_path.exists():
-                             md_content = md_path.read_text(encoding="utf-8")
-                        
-                        # Proposals check (linked to this video)
-                        proposals_html = ""
-                        has_proposals = False
-                        evo_dir = base_dir / "data/evolution/proposals" # Note: Evolution proposals might have different layout
-                        # But in narrative_analyzer.py, they are currently mock or derived.
-                        # For now, let's keep it simple.
-                        
-                        deep_logic_html += f"""
-                        <div class="card" style="background:white; padding:25px; margin-bottom:20px; border-radius:8px; border-left:5px solid #8b5cf6; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
-                                <div>
-                                    <span style="font-size:11px; font-weight:800; color:#8b5cf6; background:#f3e8ff; padding:4px 10px; border-radius:12px; margin-right:8px;">{data.get('anomaly_level', 'UNKNOWN')}</span>
-                                    <span style="font-size:10px; color:#94a3b8; margin-right:8px;">Detected: {target_date}</span>
-                                    <h3 style="margin:10px 0 5px 0; font-size:18px; color:#1e293b;">{data.get('title', 'Untitled')}</h3>
-                                    <div style="font-size:12px; color:#64748b;">Real Topic: <span style="color:#334155; font-weight:600;">{data.get('real_topic', '-')}</span></div>
-                                </div>
-                                <div style="text-align:right;">
-                                     <button onclick="document.getElementById('deep-modal-{vid_id}').style.display='block'" style="background:#8b5cf6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:12px;">전체 리포트 보기 🔍</button>
-                                </div>
-                            </div>
-                            
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:20px; padding-top:20px; border-top:1px solid #f1f5f9;">
-                                <div>
-                                    <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">WHY NOW 트리거</div>
-                                    <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('why_now', {}).get('description', '-')}</div>
-                                </div>
-                                <div>
-                                    <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">엔진 최종 판단</div>
-                                    <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('engine_conclusion', '-')}</div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top:20px; padding-top:20px; border-top:1px dashed #e2e8f0;">
-                                <h4 style="font-size:14px; font-weight:700; color:#475569; margin-bottom:10px;">💡 진화 제안 (Evolution Proposals)</h4>
-                                <div style="font-size:12px; color:#64748b;">
-                                    {chr(10).join([f"<div>• {p.get('condition', '')}</div>" for p in data.get('evolution_proposals', [])]) if data.get('evolution_proposals') else "추가 제안 사항 없음"}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="deep-modal-{vid_id}" class="modal">
-                            <div class="modal-content" style="width:90%; max-width:900px;">
-                                <span class="close-btn" onclick="document.getElementById('deep-modal-{vid_id}').style.display='none'">&times;</span>
-                                <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:20px; color:#1e293b;">🧠 Deep Logic Analysis Report</h2>
-                                <div style="background:#f8fafc; padding:30px; border-radius:8px; height:60vh; overflow-y:auto; white-space:pre-wrap; font-family:monospace;" class="md-content">
-                                    {md_content}
-                                </div>
-                            </div>
-                        </div>
-                        """
-                except Exception as e:
-                    print(f"[DEBUG] Error reading {json_file}: {e}")
-                    continue
-
-        if not found_any:
-            deep_logic_html = "<div style='padding:40px; text-align:center; color:#94a3b8;'>최근 3일간 분석된 딥 로직 리포트가 없습니다.</div>"
-
-    except Exception as e:
-        deep_logic_html = f"<div style='color:red;'>분석 결과를 불러오는 중 오류 발생: {e}</div>"
-        print(f"[ERROR] Deep Logic Load: {e}")
-
     html += f"""
-                    <div id="deep-logic" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
-                        <div style="max-width:1000px;">
-                            {deep_logic_html}
-                        </div>
-                    </div>
-    """
-
-    # [Closing Tags & Scripts]
-    html += """
-                </div> <!-- End sections wrapper -->
-            </div> <!-- End Main Panel -->
-        </div> <!-- End Dashboard Container -->
-        
-        <!-- MODAL -->
-        <div id="scriptModal" class="modal">
-            <div class="modal-box">
-                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                     <h2 style="margin:0;">Insight Script</h2>
-                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
-                 </div>
-                 <p id="script-modal-content">Script content here...</p>
+        <!-- Insight Script Section -->
+        <div id="insight-script" style="background: white; border-top: 2px solid #e2e8f0; padding: 40px; margin-top: 0;">
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 인사이트 스크립트 (V1)</h2>
+                    <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
+                </div>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고(v1.0)입니다.</p>
+                
+                <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; font-family:'Inter',sans-serif; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
+{script_body if script_body else "스크립트가 아직 생성되지 않았습니다."}
+                </div>
             </div>
         </div>
-        
-        <script>
-            function closeModal() {
-                document.getElementById('scriptModal').classList.remove('modal-active');
-            }
-            function copyScript() {
-                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
-                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
-            }
-        </script>
-    </body>
-    </html>
     """
 
+    html += """
+        <div style="height: 50px;"></div>
+        </div> <!-- End sections-wrapper -->
+    </div> <!-- End Main Panel -->
+
+    <!-- Right Sidebar -->
+    <div class="sidebar">
+        <div class="section-header" style="border:none; margin-bottom:10px;">
+            <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
+        </div>
+        
+        <div id="sidebar-content">
+            <!-- Dynamic Content injected here -->
+        </div>
+    </div>
+
+</div>
+
+<!-- MODAL -->
+<div id="scriptModal" class="modal">
+    <div class="modal-box">
+         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+             <h2 style="margin:0;">Insight Script</h2>
+             <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+         </div>
+         <p id="script-modal-content">Script content here...</p>
+    </div>
+</div>
+
+<script>
+    function closeModal() {
+        document.getElementById('scriptModal').classList.remove('modal-active');
+    }
+    function copyScript() {
+        const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+    }
+</script>
+
+</body>
+</html>
+"""
     return html
 
+def main():
+    # ... (existing main logic placeholder if needed) ...
+    pass
+
+
 if __name__ == "__main__":
-    import os
-    import sys
-    from pathlib import Path
-    
-    # Pass current directory as base_dir
-    base_dir = Path(os.getcwd())
-    sys.path.append(str(base_dir))
-    
+    # Ensure directories exist
     os.makedirs("data/dashboard", exist_ok=True)
     os.makedirs("dashboard", exist_ok=True)
     
-    html = generate_dashboard(base_dir)
+    html = generate_dashboard(Path("."))
     
-    dash_dir = base_dir / "dashboard"
-    # Write to dashboard/index.html
-    with open(dash_dir / "index.html", "w", encoding="utf-8") as f:
-        f.write(html)
-
-    # [Fix] Also write to root index.html for main GitHub Pages output
-    with open(base_dir / "index.html", "w", encoding="utf-8") as f:
+    with open("dashboard/index.html", "w") as f:
         f.write(html)
     
     print("[Dashboard] Generated dashboard/index.html")

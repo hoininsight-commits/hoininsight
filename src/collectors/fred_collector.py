@@ -10,6 +10,11 @@ import pandas as pd
 import os
 import json
 
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 class FREDCollector:
     """FRED 데이터 통합 수집기"""
     
@@ -46,6 +51,14 @@ class FREDCollector:
         # 기타 거시지표
         'GDP': {'category': 'macro', 'name': 'gdp', 'desc': 'Real GDP'},
         'UMCSENT': {'category': 'macro', 'name': 'consumer_sentiment', 'desc': 'Consumer Sentiment'},
+
+        # 시장 데이터 (Market Data)
+        'VIXCLS': {'category': 'market', 'name': 'vix', 'desc': 'CBOE VIX'},
+        'SP500': {'category': 'market', 'name': 'sp500', 'desc': 'S&P 500 Index'},
+        'NASDAQ100': {'category': 'market', 'name': 'nasdaq100', 'desc': 'NASDAQ 100 Index'},
+        'DCOILWTICO': {'category': 'market', 'name': 'wti', 'desc': 'WTI Crude Oil Price'},
+        'GOLDAMGBD228NLBM': {'category': 'market', 'name': 'gold', 'desc': 'Gold Fixing Price'},
+        'SLVPRUSD': {'category': 'market', 'name': 'silver', 'desc': 'Silver Fixing Price'},
     }
     
     def __init__(self, api_key=None):
@@ -148,6 +161,77 @@ class FREDCollector:
         report_file = report_dir / "fred_collection_report.json"
         report_file.write_text(json.dumps(report, indent=2), encoding='utf-8')
         print(f"[FRED] Report saved: {report_file}")
+
+    def collect_single_for_pipeline(self, series_id, base_dir: Path):
+        """Pipeline용 단일 수집 및 경로 반환"""
+        self.base_dir = base_dir # Override base_dir
+        if self.collect_series(series_id, save_raw=True, save_curated=False):
+            info = self.SERIES_MAP.get(series_id, {})
+            category = info.get('category', 'other')
+            name = info.get('name', series_id.lower())
+            
+            # Construct path to the file that was just saved
+            raw_dir = self.base_dir / "data" / "raw" / "fred" / category
+            date_dir = raw_dir / datetime.now().strftime("%Y/%m/%d")
+            raw_file = date_dir / f"{name}.csv"
+            
+            if raw_file.exists():
+                return raw_file
+        return None
+
+# --- Pipeline Wrapper Functions ---
+
+def _run_fred_collector(series_id: str, base_dir: Path) -> Path:
+    collector = FREDCollector()
+    result_path = collector.collect_single_for_pipeline(series_id, base_dir)
+    if not result_path:
+        raise RuntimeError(f"Failed to collect FRED series: {series_id}")
+    return result_path
+
+def write_raw_fed_funds(base_dir: Path) -> Path:
+    return _run_fred_collector('FEDFUNDS', base_dir)
+
+def write_raw_cpi(base_dir: Path) -> Path:
+    return _run_fred_collector('CPIAUCSL', base_dir)
+
+def write_raw_pce(base_dir: Path) -> Path:
+    return _run_fred_collector('PCE', base_dir)
+
+def write_raw_m2(base_dir: Path) -> Path:
+    return _run_fred_collector('M2SL', base_dir)
+
+def write_raw_unrate(base_dir: Path) -> Path:
+    return _run_fred_collector('UNRATE', base_dir)
+
+def write_raw_hy_spread(base_dir: Path) -> Path:
+    return _run_fred_collector('BAMLH0A0HYM2', base_dir)
+
+def write_raw_financial_stress(base_dir: Path) -> Path:
+    return _run_fred_collector('STLFSI2', base_dir)
+
+def write_raw_vix(base_dir: Path) -> Path:
+    return _run_fred_collector('VIXCLS', base_dir)
+
+def write_raw_sp500(base_dir: Path) -> Path:
+    return _run_fred_collector('SP500', base_dir)
+
+def write_raw_nasdaq(base_dir: Path) -> Path:
+    return _run_fred_collector('NASDAQ100', base_dir)
+
+def write_raw_wti(base_dir: Path) -> Path:
+    return _run_fred_collector('DCOILWTICO', base_dir)
+
+def write_raw_gold(base_dir: Path) -> Path:
+    return _run_fred_collector('GOLDAMGBD228NLBM', base_dir)
+
+def write_raw_silver(base_dir: Path) -> Path:
+    return _run_fred_collector('SLVPRUSD', base_dir)
+
+def write_raw_us10y(base_dir: Path) -> Path:
+    return _run_fred_collector('DGS10', base_dir)
+
+def write_raw_us2y(base_dir: Path) -> Path:
+    return _run_fred_collector('DGS2', base_dir)
 
 def main():
     """메인 실행 함수"""

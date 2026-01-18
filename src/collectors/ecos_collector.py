@@ -11,56 +11,66 @@ import os
 import json
 import time
 
+
+from dotenv import load_dotenv
+
 class ECOSCollector:
     """한국은행 ECOS 데이터 수집기"""
     
     # 수집할 통계 시리즈 정의 (검증된 코드만 사용)
     SERIES_MAP = {
-        # 금리
+        # 금리 (Wall Street 관심 1순위)
         '722Y001/0101000': {
             'category': 'rates',
             'name': 'korea_base_rate',
             'desc': '한국 기준금리',
             'stat_code': '722Y001',
-            'item_code1': '0101000'
+            'item_code1': '0101000',
+            'freq': 'M'
         },
         
-        # 물가
+        # 물가 (인플레이션 추적)
         '901Y009/0': {
             'category': 'inflation', 
             'name': 'korea_cpi',
             'desc': '소비자물가지수',
             'stat_code': '901Y009',
-            'item_code1': '0'
+            'item_code1': '0',
+            'freq': 'M'
         },
         
-        # 통화량 (간단한 코드 사용)
-        '101Y002/BBHA00': {
-            'category': 'money_supply',
-            'name': 'korea_m1',
-            'desc': 'M1 통화량',
-            'stat_code': '101Y002',
-            'item_code1': 'BBHA00'
-        },
-        '101Y003/BBHA00': {
-            'category': 'money_supply',
-            'name': 'korea_m2',
-            'desc': 'M2 통화량',
-            'stat_code': '101Y003',
-            'item_code1': 'BBHA00'
-        },
+        # 통화량 (유동성 공급 확인)
+        # 평잔(BBGA00) vs 말잔(BBHA00). 보통 평잔을 많이 봄.
+        # '101Y002/BBGA00': {
+        #     'category': 'money_supply',
+        #     'name': 'korea_m1',
+        #     'desc': 'M1 통화량(평잔)',
+        #     'stat_code': '101Y002',
+        #     'item_code1': 'BBGA00',
+        #     'freq': 'M'
+        # },
+        # '101Y003/BBGA00': {
+        #     'category': 'money_supply',
+        #     'name': 'korea_m2',
+        #     'desc': 'M2 통화량(평잔)',
+        #     'stat_code': '101Y003',
+        #     'item_code1': 'BBGA00',
+        #     'freq': 'M'
+        # },
         
-        # 환율 (원/달러)
+        # 환율 (원/달러) - 일별 데이터
         '731Y001/0000001': {
             'category': 'fx',
             'name': 'korea_usdkrw',
             'desc': '원/달러 환율',
             'stat_code': '731Y001',
-            'item_code1': '0000001'
+            'item_code1': '0000001',
+            'freq': 'D'
         },
     }
     
     def __init__(self, api_key=None):
+        load_dotenv() # .env 파일 로드
         self.api_key = api_key or os.environ.get('ECOS_API_KEY')
         if not self.api_key:
             raise ValueError("ECOS API key not found. Set ECOS_API_KEY environment variable.")
@@ -75,20 +85,33 @@ class ECOSCollector:
     
     def collect_series(self, series_key, start_date=None, end_date=None):
         """단일 시리즈 수집"""
-        if start_date is None:
-            # 최근 5년 데이터 (월별 데이터는 YYYYMM 형식)
-            start_date = (datetime.now().replace(year=datetime.now().year - 5)).strftime('%Y%m')
-        if end_date is None:
-            end_date = datetime.now().strftime('%Y%m')
-        
         series_info = self.SERIES_MAP.get(series_key)
         if not series_info:
             print(f"[ECOS] ✗ Unknown series: {series_key}")
             return False
+            
+        freq = series_info.get('freq', 'M')
+        
+        if start_date is None:
+            # 최근 5년 데이터
+            now = datetime.now()
+            start_dt = now.replace(year=now.year - 5)
+            if freq == 'D':
+                start_date = start_dt.strftime('%Y%m%d')
+            else:
+                start_date = start_dt.strftime('%Y%m')
+                
+        if end_date is None:
+            now = datetime.now()
+            if freq == 'D':
+                end_date = now.strftime('%Y%m%d')
+            else:
+                end_date = now.strftime('%Y%m')
         
         try:
             # API 요청 URL 구성
-            url = f"{self.base_url}/{self.api_key}/json/kr/1/100000/{series_info['stat_code']}/M/{start_date}/{end_date}/{series_info['item_code1']}"
+            # URL: /KEY/json/kr/1/100000/STAT_CODE/FREQ/START/END/ITEM_CODE
+            url = f"{self.base_url}/{self.api_key}/json/kr/1/100000/{series_info['stat_code']}/{freq}/{start_date}/{end_date}/{series_info['item_code1']}"
             
             # 요청
             response = requests.get(url, timeout=30)
@@ -102,7 +125,11 @@ class ECOSCollector:
             
             # 데이터 확인
             if 'StatisticSearch' not in data:
-                print(f"[ECOS] ✗ {series_key}: No data in response")
+                # 에러 메시지 확인
+                if 'RESULT' in data:
+                     print(f"[ECOS] ✗ {series_key}: API Error {data['RESULT']['MESSAGE']}")
+                else:
+                     print(f"[ECOS] ✗ {series_key}: No data in response")
                 self.stats['failed'] += 1
                 return False
             
@@ -118,7 +145,7 @@ class ECOSCollector:
             # 필요한 컬럼만 추출
             if 'TIME' in df.columns and 'DATA_VALUE' in df.columns:
                 df_clean = pd.DataFrame({
-                    'date': pd.to_datetime(df['TIME'], format='%Y%m'),
+                    'date': pd.to_datetime(df['TIME'], format='%Y%m%d' if freq == 'D' else '%Y%m'),
                     'value': pd.to_numeric(df['DATA_VALUE'], errors='coerce')
                 })
             else:
@@ -147,13 +174,14 @@ class ECOSCollector:
             df_clean.to_csv(curated_file, index=False)
             
             latest_value = df_clean['value'].iloc[-1]
-            print(f"[ECOS] ✓ {series_key:10s} ({series_info['desc']:20s}): {len(df_clean):5d} records, latest: {latest_value:.2f}")
+            date_fmt = df_clean['date'].iloc[-1].strftime('%Y-%m-%d')
+            print(f"[ECOS] ✓ {series_key:15s} ({series_info['desc']:15s}): {len(df_clean):5d} rows, last {date_fmt}: {latest_value:,.2f}")
             
             self.stats['success'] += 1
             return True
             
         except Exception as e:
-            print(f"[ECOS] ✗ {series_key}: {str(e)[:50]}")
+            print(f"[ECOS] ✗ {series_key}: {str(e)[:100]}")
             self.stats['failed'] += 1
             return False
     
@@ -191,6 +219,62 @@ class ECOSCollector:
         report_file = report_dir / "ecos_collection_report.json"
         report_file.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
         print(f"[ECOS] Report saved: {report_file}")
+
+
+# --- Registry Entry Points ---
+
+def _get_latest_ecos_path(category: str, name: str) -> Path:
+    base_dir = Path(__file__).parent.parent.parent
+    raw_dir = base_dir / "data" / "raw" / "ecos" / category
+    
+    # Find latest date directory
+    if not raw_dir.exists():
+        return None
+        
+    # YYYY/MM/DD structure
+    years = sorted([p for p in raw_dir.iterdir() if p.is_dir() and p.name.isdigit()], key=lambda x: x.name, reverse=True)
+    if not years: return None
+    
+    months = sorted([p for p in years[0].iterdir() if p.is_dir() and p.name.isdigit()], key=lambda x: x.name, reverse=True)
+    if not months: return None
+    
+    days = sorted([p for p in months[0].iterdir() if p.is_dir() and p.name.isdigit()], key=lambda x: x.name, reverse=True)
+    if not days: return None
+    
+    target_file = days[0] / f"{name}.csv"
+    if target_file.exists():
+        return target_file
+    return None
+
+def write_raw_base_rate(base_dir: Path) -> Path:
+    """Collect Korea Base Rate"""
+    collector = ECOSCollector()
+    key = '722Y001/0101000'
+    success = collector.collect_series(key)
+    if not success:
+        print("[ECOS] Failed to collect Base Rate")
+        return None
+    return _get_latest_ecos_path('rates', 'korea_base_rate')
+
+def write_raw_cpi(base_dir: Path) -> Path:
+    """Collect Korea CPI"""
+    collector = ECOSCollector()
+    key = '901Y009/0'
+    success = collector.collect_series(key)
+    if not success:
+        print("[ECOS] Failed to collect CPI")
+        return None
+    return _get_latest_ecos_path('inflation', 'korea_cpi')
+
+def write_raw_usdkrw(base_dir: Path) -> Path:
+    """Collect USD/KRW Exchange Rate"""
+    collector = ECOSCollector()
+    key = '731Y001/0000001'
+    success = collector.collect_series(key)
+    if not success:
+        print("[ECOS] Failed to collect USD/KRW")
+        return None
+    return _get_latest_ecos_path('fx', 'korea_usdkrw')
 
 def main():
     """메인 실행 함수"""
