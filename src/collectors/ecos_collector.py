@@ -14,10 +14,10 @@ import time
 class ECOSCollector:
     """한국은행 ECOS 데이터 수집기"""
     
-    # 수집할 통계 시리즈 정의
+    # 수집할 통계 시리즈 정의 (검증된 코드만 사용)
     SERIES_MAP = {
         # 금리
-        '722Y001': {
+        '722Y001/0101000': {
             'category': 'rates',
             'name': 'korea_base_rate',
             'desc': '한국 기준금리',
@@ -26,48 +26,23 @@ class ECOSCollector:
         },
         
         # 물가
-        '901Y009': {
+        '901Y009/0': {
             'category': 'inflation', 
             'name': 'korea_cpi',
             'desc': '소비자물가지수',
             'stat_code': '901Y009',
             'item_code1': '0'
         },
-        '404Y014': {
-            'category': 'inflation',
-            'name': 'korea_ppi', 
-            'desc': '생산자물가지수',
-            'stat_code': '404Y014',
-            'item_code1': '*'
-        },
         
-        # 고용
-        '901Y044': {
-            'category': 'employment',
-            'name': 'korea_unemployment',
-            'desc': '실업률',
-            'stat_code': '901Y044',
-            'item_code1': 'A'
-        },
-        
-        # GDP
-        '200Y001': {
-            'category': 'macro',
-            'name': 'korea_gdp',
-            'desc': '국내총생산(GDP)',
-            'stat_code': '200Y001',
-            'item_code1': '10101'
-        },
-        
-        # 통화량
-        '101Y002': {
+        # 통화량 (간단한 코드 사용)
+        '101Y002/BBHA00': {
             'category': 'money_supply',
             'name': 'korea_m1',
             'desc': 'M1 통화량',
             'stat_code': '101Y002',
             'item_code1': 'BBHA00'
         },
-        '101Y003': {
+        '101Y003/BBHA00': {
             'category': 'money_supply',
             'name': 'korea_m2',
             'desc': 'M2 통화량',
@@ -75,29 +50,13 @@ class ECOSCollector:
             'item_code1': 'BBHA00'
         },
         
-        # 환율
-        '731Y001': {
+        # 환율 (원/달러)
+        '731Y001/0000001': {
             'category': 'fx',
             'name': 'korea_usdkrw',
             'desc': '원/달러 환율',
             'stat_code': '731Y001',
             'item_code1': '0000001'
-        },
-        
-        # 무역
-        '403Y003': {
-            'category': 'trade',
-            'name': 'korea_exports',
-            'desc': '수출액',
-            'stat_code': '403Y003',
-            'item_code1': 'A'
-        },
-        '403Y004': {
-            'category': 'trade',
-            'name': 'korea_imports',
-            'desc': '수입액',
-            'stat_code': '403Y004',
-            'item_code1': 'A'
         },
     }
     
