@@ -35,12 +35,12 @@ Historical context:
 - [HIGH] PCE_USA: data/features/anomalies/2026/01/18/inflation_pce_fred.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [HIGH] M2_USA: data/features/anomalies/2026/01/18/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [HIGH] YIELD_CURVE: data/features/anomalies/2026/01/18/derived_yield_curve_10y_2y.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
-- [MED] BTCUSD: data/features/anomalies/2026/01/18/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] US02Y: data/features/anomalies/2026/01/18/rates_us02y_fred.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] KOR_CPI: data/features/anomalies/2026/01/18/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/18/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/18/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/18/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
+- [LOW] BTCUSD: data/features/anomalies/2026/01/18/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] US10Y: data/features/anomalies/2026/01/18/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] VIX: data/features/anomalies/2026/01/18/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] SPX: data/features/anomalies/2026/01/18/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1

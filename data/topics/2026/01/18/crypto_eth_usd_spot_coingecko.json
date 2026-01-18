@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-18T09:39:37Z",
+    "ts_utc": "2026-01-18T14:31:11Z",
     "dataset_id": "crypto_eth_usd_spot_coingecko",
     "topic_id": "crypto_eth_usd_spot_coingecko::roc_1d",
     "title": "data/features/anomalies/2026/01/18/crypto_eth_usd_spot_coingecko.json (Normal)",
@@ -11,11 +11,11 @@
       "level": "NORMAL",
       "details": {
         "threshold_pct": 3.0,
-        "roc_pct": 32.9592,
+        "roc_pct": 32.8692,
         "prev_ts": "2026-01-18 00:00:00+00:00",
         "prev_value": 2500.0,
         "last_ts": "2026-01-18 00:00:00+00:00",
-        "last_value": 3323.98
+        "last_value": 3321.73
       },
       "regime": {
         "vix_roc_1d": null,
@@ -36,7 +36,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/18/crypto_eth_usd_spot_coingecko.json"
     },
-    "rationale": "[NORMAL] {'threshold_pct': 3.0, 'roc_pct': 32.9592, 'prev_ts': '2026-01-18 00:00:00+00:00', 'prev_value': 2500.0, 'last_ts': '2026-01-18 00:00:00+00:00', 'last_value': 3323.98} (Regime x1.0)",
+    "rationale": "[NORMAL] {'threshold_pct': 3.0, 'roc_pct': 32.8692, 'prev_ts': '2026-01-18 00:00:00+00:00', 'prev_value': 2500.0, 'last_ts': '2026-01-18 00:00:00+00:00', 'last_value': 3321.73} (Regime x1.0)",
     "links": []
   }
 ]
