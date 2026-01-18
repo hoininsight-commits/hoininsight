@@ -329,16 +329,28 @@ def generate_dashboard(base_dir: Path):
         status_icon_char = '🔴'
     
     error_alert_html = ""
-    if status_str != 'SUCCESS':
-        # Use simple quotes to avoid backslash escaping issues in f-string
+    if status_str == 'FAIL':
         error_alert_html = """
         <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:15px; margin-bottom:25px; display:flex; align-items:center; gap:15px;">
             <div style="font-size:20px;">🔴</div>
             <div>
-                <div style="font-weight:bold; color:#b91c1c; font-size:14px;">데이터 파이프라인 오류 감지</div>
+                <div style="font-weight:bold; color:#b91c1c; font-size:14px;">데이터 파이프라인 오류 감지 (Core Failure)</div>
                 <div style="font-size:12px; color:#ef4444;">
-                    일부 데이터 수집이 실패하여 분석 정확도가 떨어질 수 있습니다. 
+                    핵심 데이터(Core) 수집 실패가 감지되었습니다. 분석 신뢰도가 매우 낮을 수 있습니다.
                     <a href="#" onclick="activate('data-status')" style="text-decoration:underline; color:#b91c1c;">데이터 현황 확인</a>
+                </div>
+            </div>
+        </div>
+        """
+    elif status_str == 'PARTIAL':
+         error_alert_html = """
+        <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:15px; margin-bottom:25px; display:flex; align-items:center; gap:15px;">
+            <div style="font-size:20px;">⚠️</div>
+            <div>
+                <div style="font-weight:bold; color:#92400e; font-size:14px;">데이터 파이프라인 부분 경고</div>
+                <div style="font-size:12px; color:#b45309;">
+                    일부 보조 데이터(Derived/Ops) 수집이 지연되거나 누락되었습니다. (Core 데이터는 정상입니다)
+                    <a href="#" onclick="activate('data-status')" style="text-decoration:underline; color:#92400e;">데이터 현황 확인</a>
                 </div>
             </div>
         </div>
