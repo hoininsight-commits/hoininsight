@@ -1,5 +1,6 @@
 
 import json
+import os
 import re
 from datetime import datetime
 from pathlib import Path
@@ -225,16 +226,12 @@ class DeepLogicAnalyzer:
         return conclusion
 
     def save_report(self, result: Dict[str, Any], output_dir: Path):
-        """Save JSON and Markdown reports."""
+        """Save JSON and Markdown reports, and also save proposals to the evolution queue."""
         output_dir.mkdir(parents=True, exist_ok=True)
+        base_dir = Path(os.getcwd())
         
-        # JSON
+        # JSON (Consolidated per date)
         json_path = output_dir / "deep_analysis_results.json"
-        # Since we might process multiple videos, we should probably append or use video_id in filename
-        # But per user request structure, it seems they want one consolidated or per video?
-        # The user example used "deep_analysis_results.json" as a single file, but logic dictates per-video.
-        # I'll stick to a list in json if multiple.
-        
         existing_data = []
         if json_path.exists():
             try:
@@ -245,14 +242,39 @@ class DeepLogicAnalyzer:
         
         existing_data.append(result)
         # Deduplicate by video_id
-        existing_data = {v['video_id']: v for v in existing_data}.values()
+        existing_data_map = {v['video_id']: v for v in existing_data}
+        json_path.write_text(json.dumps(list(existing_data_map.values()), ensure_ascii=False, indent=2), encoding='utf-8')
         
-        json_path.write_text(json.dumps(list(existing_data), ensure_ascii=False, indent=2), encoding='utf-8')
-        
-        # Markdown
+        # Markdown (Per video)
         md_path = output_dir / f"video_{result['video_id']}_report.md"
         md_content = self._format_markdown(result)
         md_path.write_text(md_content, encoding='utf-8')
+
+        # [CRITICAL] Save individual proposals to data/evolution/proposals for dashboard visibility
+        evo_dir = base_dir / "data" / "evolution" / "proposals"
+        evo_dir.mkdir(parents=True, exist_ok=True)
+        
+        for p in result.get('evolution_proposals', []):
+            p_id = p['id']
+            evo_file = evo_dir / f"{p_id}.json"
+            
+            # Format to match dashboard's expectations
+            evo_data = {
+                "id": p_id,
+                "generated_at": datetime.utcnow().isoformat(),
+                "category": p.get('category', 'DATA_ADD'),
+                "status": "PROPOSED",
+                "content": {
+                    "condition": p.get('condition', ''),
+                    "meaning": f"Pattern: {p.get('detected_pattern', 'Unknown')}"
+                },
+                "evidence": {
+                    "quote": p.get('condition', ''),
+                    "source": result['title']
+                }
+            }
+            evo_file.write_text(json.dumps(evo_data, ensure_ascii=False, indent=2), encoding='utf-8')
+            print(f"[Evolution] Exported proposal {p_id} to collection queue.")
         
     def _format_markdown(self, res: Dict[str, Any]) -> str:
         return f"""

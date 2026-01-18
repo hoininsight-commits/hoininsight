@@ -4,10 +4,10 @@
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
 * 시장
-* 경제
+* 투자
 * 전망
+* 경제
 * 수익
-* 주식
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
 * **Real Topic**: ETF

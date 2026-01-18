@@ -5,10 +5,10 @@
     "analysis_date": "2026-01-18",
     "surface_topics": [
       "시장",
-      "매수",
-      "뉴스",
-      "경제",
-      "전망"
+      "투자",
+      "전망",
+      "자산",
+      "매수"
     ],
     "real_topic": "정부",
     "real_topic_reasoning": "KB Keyword Match: '정부' (mentioned 24 times)",
@@ -25,7 +25,7 @@
     ],
     "evolution_proposals": [
       {
-        "id": "EVO-20260118-38305",
+        "id": "EVO-20260118-11958",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -33,7 +33,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-30459",
+        "id": "EVO-20260118-26886",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -41,7 +41,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-80039",
+        "id": "EVO-20260118-14701",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -49,7 +49,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-51071",
+        "id": "EVO-20260118-50129",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -57,7 +57,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-24076",
+        "id": "EVO-20260118-95759",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -74,10 +74,10 @@
     "analysis_date": "2026-01-18",
     "surface_topics": [
       "시장",
-      "경제",
+      "투자",
       "전망",
-      "수익",
-      "주식"
+      "경제",
+      "수익"
     ],
     "real_topic": "ETF",
     "real_topic_reasoning": "KB Keyword Match: 'ETF' (mentioned 12 times)",
@@ -100,10 +100,10 @@
     "analysis_date": "2026-01-18",
     "surface_topics": [
       "시장",
-      "뉴스",
       "경제",
-      "분석",
-      "종목"
+      "뉴스",
+      "종목",
+      "분석"
     ],
     "real_topic": "실적",
     "real_topic_reasoning": "KB Keyword Match: '실적' (mentioned 3 times)",
@@ -116,7 +116,7 @@
     "core_assumptions": [],
     "evolution_proposals": [
       {
-        "id": "EVO-20260118-52343",
+        "id": "EVO-20260118-53189",
         "video_id": "tJwBZZQaW5k",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 데이터가 필요",
