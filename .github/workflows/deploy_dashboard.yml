@@ -28,6 +28,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Telegram Notification (Start)
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🚀 [Hoin Insight] 대시보드 배포를 시작합니다.
+            - 작업자: ${{ github.actor }}
+            - 브랜치: ${{ github.ref_name }}
+            
+            잠시만 기다려 주세요...
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -51,3 +63,17 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'deploy: update dashboard [skip ci]'
+
+      - name: Telegram Notification (Result)
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ✅ [Hoin Insight] 대시보드 배포 결과입니다.
+            - 상태: ${{ job.status }}
+            - 버전: v1.1.1
+            - 링크: https://hoininsight-commits.github.io/hoininsight/
+            
+            ${{ job.status == 'success' && '✨ 배포가 완료되었습니다. 새로고침하여 확인하세요!' || '❌ 배포 중 오류가 발생했습니다. 로그를 확인해 주세요.' }}
