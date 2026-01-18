@@ -44,48 +44,54 @@
         }
       ],
       "source_file": "Iran_Crisis_MOCK_MODE.txt",
-      "analyzed_at": "2026-01-17T02:35:12.498833"
+      "analyzed_at": "2026-01-17T02:42:07.451312"
     },
     {
-      "summary": "미세 공정 한계 돌파(Hybrid Bonding)에 따른 계측 장비 필수화",
+      "summary": "반도체 공정 내 역할 재편(Role Reconfiguration): '선택 장비'에서 '필수 인프라'로의 구조적 전환",
       "data_usage": [
         {
-          "axis": "Tech Cycle > Yield",
-          "usage": "Defect Rate correlation"
+          "axis": "Tech Cycle > Process",
+          "usage": "Bottleneck Identification"
         },
         {
           "axis": "Supply Chain > Equipment",
-          "usage": "Sole Vendor Validation"
+          "usage": "Structural Lock-in Check"
         }
       ],
       "anomaly_detected": {
-        "description": "Atomic Level Inspection Demand Surge",
-        "level": "L3 (Hybrid driven)"
+        "description": "Critical Process Bottleneck Shift (Inspection Layer)",
+        "level": "L3 (Structural Anomaly)"
       },
-      "why_now_type": "Tech-driven",
+      "why_now_type": "Hybrid-driven (State + Structural) - 공정 미세화 임계점 도달",
       "logic_gap_analysis": {
         "new_data_needed": true,
         "new_logic_needed": true,
-        "reason": "New dependency: Yield is now function of Atomic Flatness, not just optical resolution."
+        "reason": "단순 수율 관리가 아닌, '공정이 멈추지 않기 위한 필수 조건'으로서의 검사 공정 병목 현상을 기존 로직이 커버하지 못함."
       },
-      "learned_rule": "하이브리드 본딩 공정에서는 표면 거칠기(Roughness)가 수율의 핵심 변수이며, 이를 측정하는 원자현미경(AFM)은 선택이 아닌 필수다.",
+      "learned_rule": "HBM 이후 공정 미세화 단계에서는 '누가 더 잘 만드는가'가 아니라, '누가 양산을 보장하는가(검사 통과)'가 핵심 경쟁력이 되며, 이 역할은 대체 불가능한 구조적 독점이 된다.",
       "final_decision": "UPDATE_REQUIRED",
       "proposals": [
         {
           "type": "LOGIC",
           "category": "LOGIC_UPDATE",
-          "content": "IF Process == 'Hybrid Bonding' THEN Quality_Check MUST_INCLUDE 'Atomic Force Microscopy'",
-          "reason": "Optical inspection fails at sub-nanometer roughness levels required for Cu-Cu bonding."
+          "content": "IF Process_Stage == 'Hybrid Bonding' OR 'Glass Substrate' THEN Inspection_Role MUST_BE 'Critical Bottleneck' (Gatekeeper)",
+          "reason": "Inspection is no longer auxiliary; it is the primary gatekeeper for yield in atomic-level processes."
         },
         {
           "type": "DATA",
           "category": "DATA_UPDATE",
-          "content": "| Tech Supply Chain | AFM Penetration Rate | Source: Company Reports | Unknown | Free | CANDIDATE | Found in: Park Systems Analysis |",
-          "reason": "Missing data on Atomic Force Microscopy adoption rate in advanced packaging lines."
+          "content": "| Tech Process | 공정별 필수 장비 의존도 맵 | Semi/Gartner | Map | Paid | CANDIDATE | 공정-역할-장비 매핑 데이터 보강 |",
+          "reason": "Missing data on 'Process-Role-Equipment' mapping to identify structural bottlenecks."
+        },
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Tech Process | 하이브리드 본딩 검사 실패율 추이 | Tech Insights | Trend | Paid | CANDIDATE | 병목 심화 수준 정량화 |",
+          "reason": "Need to quantify the severity of the bottleneck at the inspection layer."
         }
       ],
       "source_file": "Park_Systems_MOCK_MODE.txt",
-      "analyzed_at": "2026-01-17T02:35:12.502725"
+      "analyzed_at": "2026-01-17T02:42:07.452890"
     },
     {
       "summary": "Analyzed 'bitcoin strategy' - Found 6 potential data gaps & 1 logic patterns.",
@@ -106,20 +112,20 @@
         {
           "type": "DATA",
           "category": "DATA_UPDATE",
-          "content": "| Uncategorized | 우리는 | Source: 우리는 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
-          "reason": "System blindspot: '우리는' detected in high-importance logic."
-        },
-        {
-          "type": "DATA",
-          "category": "DATA_UPDATE",
-          "content": "| Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
-          "reason": "System blindspot: '데터' detected in high-importance logic."
+          "content": "| Uncategorized | 관련 | Source: 관련 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
+          "reason": "System blindspot: '관련' detected in high-importance logic."
         },
         {
           "type": "DATA",
           "category": "DATA_UPDATE",
           "content": "| Uncategorized | 컴퓨팅 | Source: 컴퓨팅 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
           "reason": "System blindspot: '컴퓨팅' detected in high-importance logic."
+        },
+        {
+          "type": "DATA",
+          "category": "DATA_UPDATE",
+          "content": "| Uncategorized | USER_NEED | Source: USER_NEED | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
+          "reason": "System blindspot: 'USER_NEED' detected in high-importance logic."
         },
         {
           "type": "LOGIC",
@@ -129,7 +135,7 @@
         }
       ],
       "source_file": "bitcoin_strategy.txt",
-      "analyzed_at": "2026-01-17T02:35:12.511421"
+      "analyzed_at": "2026-01-17T02:42:07.457729"
     }
   ]
 }

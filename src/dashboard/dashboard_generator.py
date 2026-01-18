@@ -1870,36 +1870,6 @@ def generate_dashboard(base_dir: Path):
                             </div>
                         </div>
                     </div>
-                    
-                </div> <!-- End sections wrapper -->
-            </div> <!-- End Main Panel -->
-            
-            <!-- RIGHT SIDEBAR REMOVED -->
-            
-        </div> <!-- End Dashboard Container -->
-        
-        <!-- MODAL -->
-        <div id="scriptModal" class="modal">
-            <div class="modal-box">
-                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                     <h2 style="margin:0;">Insight Script</h2>
-                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
-                 </div>
-                 <p id="script-modal-content">Script content here...</p>
-            </div>
-        </div>
-        
-        <script>
-            function closeModal() {{
-                document.getElementById('scriptModal').classList.remove('modal-active');
-            }}
-            function copyScript() {{
-                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
-                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
-            }}
-        </script>
-    </body>
-    </html>
     """
     
     # [Deep Logic Analysis Tab]
@@ -1945,6 +1915,63 @@ def generate_dashboard(base_dir: Path):
                             <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('engine_conclusion', '-')}</div>
                         </div>
                     </div>
+                    </div>
+                    
+                    <!-- Integrated Evolution Proposals -->
+                    <div style="margin-top:20px; padding-top:20px; border-top:1px dashed #e2e8f0;">
+                        <h4 style="font-size:14px; font-weight:700; color:#475569; margin-bottom:15px; display:flex; align-items:center;">
+                            <span style="font-size:16px; margin-right:5px;">💡</span> 엔진의 진화 제안 (Action Needed)
+                        </h4>
+                        
+                        <!-- Python Logic to Check Proposals for this Video -->
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                        """
+                
+                # Check for proposals linked to this video
+                has_proposals = False
+                evo_dir = base_dir / "data/evolution/proposals"
+                if evo_dir.exists():
+                     for p_file in evo_dir.glob("*.json"):
+                         try:
+                             p_data = json.loads(p_file.read_text(encoding="utf-8"))
+                             p_content = p_data.get('content', {})
+                             # Check linkage
+                             if p_content.get('video_id') == vid_id and p_data.get('status') == 'PROPOSED':
+                                 has_proposals = True
+                                 p_id = p_file.stem
+                                 p_cat = p_data.get('category', 'UNKNOWN')
+                                 
+                                 deep_logic_html += f"""
+                                 <div class="card" style="border-left: 4px solid #2196f3; background: #f0f9ff; padding:15px; margin-bottom:0;">
+                                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                         <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">{p_cat}</span>
+                                         <small style="font-size:10px; color:#64748b;">Linked to Analysis</small>
+                                     </div>
+                                     <div style="font-weight:bold; font-size:12px; color:#1e293b; margin-bottom:5px;">
+                                        {p_content.get('detected_pattern', 'No description')}
+                                     </div>
+                                     <div style="font-size:11px; color:#475569; font-family:monospace; background:white; padding:5px; border-radius:4px; border:1px solid #e2e8f0;">
+                                        {p_content.get('condition','')}
+                                     </div>
+                                     <div style="display:flex; gap:10px; margin-top:10px;">
+                                         <button onclick="approveProposal('{p_id}')" style="flex:1; background:#2563eb; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">승인 (Accept Logic)</button>
+                                         <button onclick="rejectProposal('{p_id}')" style="flex:1; background:#94a3b8; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px;">거절 (Reject)</button>
+                                     </div>
+                                 </div>
+                                 """
+                         except:
+                             continue
+
+                if not has_proposals:
+                    deep_logic_html += """
+                        <div style="font-size:12px; color:#94a3b8; font-style:italic; padding:10px; background:#f8fafc; border-radius:6px; text-align:center;">
+                            이 분석에서 도출된 추가 진화 제안이 없습니다. (No Actions)
+                        </div>
+                    """
+                
+                deep_logic_html += """
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Modal -->
@@ -1979,6 +2006,36 @@ def generate_dashboard(base_dir: Path):
                             {deep_logic_html}
                         </div>
                     </div>
+    """
+
+    # [Closing Tags & Scripts]
+    html += """
+                </div> <!-- End sections wrapper -->
+            </div> <!-- End Main Panel -->
+        </div> <!-- End Dashboard Container -->
+        
+        <!-- MODAL -->
+        <div id="scriptModal" class="modal">
+            <div class="modal-box">
+                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                     <h2 style="margin:0;">Insight Script</h2>
+                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+                 </div>
+                 <p id="script-modal-content">Script content here...</p>
+            </div>
+        </div>
+        
+        <script>
+            function closeModal() {
+                document.getElementById('scriptModal').classList.remove('modal-active');
+            }
+            function copyScript() {
+                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
+                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+            }
+        </script>
+    </body>
+    </html>
     """
 
     return html

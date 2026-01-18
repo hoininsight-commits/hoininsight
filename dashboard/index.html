@@ -1026,8 +1026,8 @@ Regime: (no meta regime detected)
                         
                         <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
                         <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            | Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy | 
-                            <br>→ System blindspot: '데터' detected in high-importance logic.
+                            | Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE | 
+                            <br>→ 
                         </div>
                         
                         <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
@@ -2295,36 +2295,6 @@ Regime: (no meta regime detected)
                             </div>
                         </div>
                     </div>
-                    
-                </div> <!-- End sections wrapper -->
-            </div> <!-- End Main Panel -->
-            
-            <!-- RIGHT SIDEBAR REMOVED -->
-            
-        </div> <!-- End Dashboard Container -->
-        
-        <!-- MODAL -->
-        <div id="scriptModal" class="modal">
-            <div class="modal-box">
-                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                     <h2 style="margin:0;">Insight Script</h2>
-                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
-                 </div>
-                 <p id="script-modal-content">Script content here...</p>
-            </div>
-        </div>
-        
-        <script>
-            function closeModal() {
-                document.getElementById('scriptModal').classList.remove('modal-active');
-            }
-            function copyScript() {
-                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
-                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
-            }
-        </script>
-    </body>
-    </html>
     
                     <div id="deep-logic" class="tab-content" style="display:none;">
                         <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
@@ -2353,139 +2323,83 @@ Regime: (no meta regime detected)
                             <div style="font-size:13px; color:#334155; line-height:1.5;">이 영상은 주제를 만들지 않는다. 이미 형성된 구조적 이상징후(L3)를 '대중 언어'로 번역한 결과물이다.</div>
                         </div>
                     </div>
+                    </div>
+                    
+                    <!-- Integrated Evolution Proposals -->
+                    <div style="margin-top:20px; padding-top:20px; border-top:1px dashed #e2e8f0;">
+                        <h4 style="font-size:14px; font-weight:700; color:#475569; margin-bottom:15px; display:flex; align-items:center;">
+                            <span style="font-size:16px; margin-right:5px;">💡</span> 엔진의 진화 제안 (Action Needed)
+                        </h4>
+                        
+                        <!-- Python Logic to Check Proposals for this Video -->
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                        
+                                 <div class="card" style="border-left: 4px solid #2196f3; background: #f0f9ff; padding:15px; margin-bottom:0;">
+                                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                         <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">DATA_UPDATE</span>
+                                         <small style="font-size:10px; color:#64748b;">Linked to Analysis</small>
+                                     </div>
+                                     <div style="font-weight:bold; font-size:12px; color:#1e293b; margin-bottom:5px;">
+                                        System blindspot: '데터' detected in high-importance logic.
+                                     </div>
+                                     <div style="font-size:11px; color:#475569; font-family:monospace; background:white; padding:5px; border-radius:4px; border:1px solid #e2e8f0;">
+                                        | Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE |
+                                     </div>
+                                     <div style="display:flex; gap:10px; margin-top:10px;">
+                                         <button onclick="approveProposal('EVO-20260117-69745')" style="flex:1; background:#2563eb; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">승인 (Accept Logic)</button>
+                                         <button onclick="rejectProposal('EVO-20260117-69745')" style="flex:1; background:#94a3b8; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-size:11px;">거절 (Reject)</button>
+                                     </div>
+                                 </div>
+                                 
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Modal -->
                 <style>
                     /* Ensure modal content handles markdown-like text */
-                    .md-content { white-space: pre-wrap; font-family: 'Menlo', 'Monaco', 'Courier New', monospace; font-size:13px; line-height:1.6; color:#334155; }
-                    .md-content h1, .md-content h2, .md-content h3 { color:#1e293b; margin-top:20px; }
-                    .md-content hr { border:0; border-top:1px solid #e2e8f0; margin:20px 0; }
-                    .md-content ul { padding-left:20px; }
+                    .md-content {{ white-space: pre-wrap; font-family: 'Menlo', 'Monaco', 'Courier New', monospace; font-size:13px; line-height:1.6; color:#334155; }}
+                    .md-content h1, .md-content h2, .md-content h3 {{ color:#1e293b; margin-top:20px; }}
+                    .md-content hr {{ border:0; border-top:1px solid #e2e8f0; margin:20px 0; }}
+                    .md-content ul {{ padding-left:20px; }}
                 </style>
-                <div id="deep-modal-MOCK_PARK_SYS_001" class="modal">
+                <div id="deep-modal-{vid_id}" class="modal">
                     <div class="modal-content" style="width:90%; max-width:900px;">
-                        <span class="close-btn" onclick="document.getElementById('deep-modal-MOCK_PARK_SYS_001').style.display='none'">&times;</span>
+                        <span class="close-btn" onclick="document.getElementById('deep-modal-{vid_id}').style.display='none'">&times;</span>
                         <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:20px; color:#1e293b;">🧠 Deep Logic Analysis Report</h2>
                         <div style="background:#f8fafc; padding:30px; border-radius:8px; height:60vh; overflow-y:auto;" class="md-content">
-
-# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
-
-## 1️⃣ 겉주제 제거 (Surface Topic 제거)
-영상의 표면 메시지:
-* “제2의 SK하이닉스”
-* “2026년 반도체 슈퍼사이클”
-* “파크시스템스 유망”
-
-➡️ **이건 전부 결과 설명용 서사**다.
-➡️ 엔진 관점에서는 **주제가 아님**.
-
----
-
-## 2️⃣ 엔진 관점 ‘진짜 주제’ 재정의
-이 영상을 엔진 언어로 다시 쓰면 이렇게 바뀐다.
-
-> **“HBM 이후 공정 미세화 단계에서 ‘측정·검사 공정’이 병목 역할(Role)로 고정되는 국면”**
-
-또는 더 정확히:
-> **“하이브리드 본딩·유리기판 확산으로 ‘표면 정밀도 검증’이 양산의 선결 조건이 되는 구조 변화”**
-
-즉, 이 영상은 **종목 이야기**가 아니라 👉 **반도체 공정 역할 재편(Role Reconfiguration)** 을 말하고 있다.
-
----
-
-## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
-이 케이스는 명확하다.
-
-* ❌ L1 (단일 가격/뉴스 아님)
-* ❌ L2 (단기 교차 신호 아님)
-* ✅ **L3: Structural Anomaly**
-* ⚠️ L4는 “조건부 가능성”
-
-### 왜 L3인가?
-영상이 말하는 핵심은 전부 **구조 신호**다.
-
-* 기술이 “있다” ❌ → **공정 없이는 양산이 안 된다** ⭕
-* 연구실 ❌ → **24시간 도는 팹에 들어갔다** ⭕
-* 실적 호재 ❌ → **역할이 필수 공정으로 고정된다** ⭕
-
-➡️ 이건 가격이나 테마가 아니라 ➡️ **산업 구조에서 역할이 바뀌는 신호**다.
-
----
-
-## 4️⃣ WHY_NOW 트리거 판정
-이 주제는 **단일 트리거가 아니다**.
-
-### ① State-driven (핵심)
-* HBM → HBM4
-* Hybrid Bonding
-* Glass Substrate
-➡️ **미세화가 임계점에 도달** → 기존 광학 검사/기존 계측 방식이 한계 도달
-
-### ② Structural-driven
-* “있으면 좋은 장비” ❌ → “없으면 공정이 멈춤” ⭕
-➡️ **선택 장비 → 필수 인프라로 역할 전환**
-
-### ③ Hybrid (State + Structural)
-* 공정 진화(State)가 특정 장비를 **강제 채택 구조(Structural Lock-in)**로 만든다
-
-➡️ WHY_NOW = **공정 미세화가 ‘선택의 여지’를 없애는 시점**
-
----
-
-## 5️⃣ 핵심 가정 (Base Assumptions)
-이 영상은 다음 가정을 전제로 깔고 있다.
-
-1. **HBM 이후에도 반도체 투자 사이클은 멈추지 않는다**
-2. 미세화는 “수율 관리”가 아니라 “표면 정밀도 관리” 단계로 진입한다
-3. 이 단계에서는 설계/메모리가 아니라 **측정·검증 공정**이 병목이 된다
-
-➡️ 즉, **“누가 더 잘 만드는가”의 싸움이 아니라 “누가 검사 통과를 보장하는가”의 싸움**으로 국면 전환.
-
----
-
-## 6️⃣ DATA_COLLECTION_MASTER 관점 (Missing Data)
-
-### 이미 있는 축 (활용 가능)
-* AI 공급망 병목 해소 지표
-* 반도체 CAPEX 방향
-* TSMC/Intel 양산 공정 변화 언급
-
-### ❗ 부족하거나 해상도 낮은 데이터
-* **공정별 필수 장비 의존도 데이터**
-* **하이브리드 본딩/유리기판 공정에서의 검사 실패율**
-* **측정·검증 장비의 대체 가능성 여부**
-
-➡️ 이 영상은 **“DATA_COLLECTION_MASTER에 공정-역할 매핑 레이어가 더 필요하다”**는 신호이기도 하다.
-
----
-
-## 7️⃣ “어려움 ≠ 주제” 필터 통과 여부
-이 케이스는 통과한다.
-
-* 단순히 “좋아질 것 같다” ❌
-* 구조 변경 + 역할 고정 + 자본 선행 진입 ⭕
-
-➡️ **‘회사가 잘될 것’이 아니라 ‘이 역할이 사라질 수 없어진다’는 논리**다.
-
----
-
-## 8️⃣ 이 영상의 정체: 정답이 아니라 힌트
-이 영상은 **선행 데이터가 아니라 결과물**이다.
-
-* 이미 공정 테스트 통과, 글로벌 팹 채택, 역할 고정 신호가 나온 뒤에 만들어진 콘텐츠다.
-
-➡️ 엔진 관점 결론: **이 영상은 주제를 만들지 않는다. 이미 형성된 구조적 이상징후(L3)를 ‘대중 언어’로 번역한 결과물이다.**
-
----
-
-## 9️⃣ 엔진 최종 요약
-> **“제2의 SK하이닉스”는 이야기다. 진짜 주제는 ‘HBM 이후, 공장이 멈추지 않기 위해 반드시 거쳐야 하는 역할이 무엇인가’다.**
-
+{md_content}
                         </div>
                     </div>
                 </div>
                 
                         </div>
                     </div>
+    
+                </div> <!-- End sections wrapper -->
+            </div> <!-- End Main Panel -->
+        </div> <!-- End Dashboard Container -->
+        
+        <!-- MODAL -->
+        <div id="scriptModal" class="modal">
+            <div class="modal-box">
+                 <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                     <h2 style="margin:0;">Insight Script</h2>
+                     <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
+                 </div>
+                 <p id="script-modal-content">Script content here...</p>
+            </div>
+        </div>
+        
+        <script>
+            function closeModal() {
+                document.getElementById('scriptModal').classList.remove('modal-active');
+            }
+            function copyScript() {
+                const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
+                navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+            }
+        </script>
+    </body>
+    </html>
     

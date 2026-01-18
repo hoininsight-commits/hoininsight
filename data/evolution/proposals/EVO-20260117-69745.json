@@ -4,8 +4,10 @@
   "category": "DATA_UPDATE",
   "status": "PROPOSED",
   "content": {
-    "condition": "| Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE | Found in: bitcoin strategy |",
-    "meaning": "System blindspot: '데터' detected in high-importance logic."
+    "condition": "| Uncategorized | 데터 | Source: 데터 | Unknown | Free | CANDIDATE |",
+    "source_node": "Bitcoin Strategy",
+    "video_id": "MOCK_PARK_SYS_001",
+    "detected_pattern": "System blindspot: '데터' detected in high-importance logic."
   },
   "evidence": {
     "quote": "따라서 우리는 퀀텀 컴퓨팅 관련 데이터를 추가해야 합니다",
