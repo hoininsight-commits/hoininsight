@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-01-18T14:23:00+09:00",
+  "data_collection": {
+    "documented_ready": 59,
+    "documented_candidate": 20,
+    "documented_blocked": 1,
+    "implemented_collectors": 3,
+    "registered_datasets": 0,
+    "ready_items_sample": [
+      "미국 기준금리 (Fed Funds Rate)",
+      "한국 기준금리",
+      "ECB 기준금리",
+      "미국 국채금리 2Y",
+      "미국 국채금리 5Y",
+      "미국 국채금리 10Y",
+      "미국 국채금리 30Y",
+      "금리 스프레드 (10Y–2Y)",
+      "SOFR",
+      "LIBOR"
+    ],
+    "implemented_collectors_list": [
+      "collect_value_up_participants",
+      "collect_foreign_investor_flow",
+      "collect_pension_fund_flow"
+    ],
+    "registered_datasets_list": []
+  },
+  "anomaly_logic": {
+    "documented_patterns": {
+      "금리/통화": 3,
+      "FX": 4,
+      "Equity": 10,
+      "Credit": 8,
+      "Commodities": 10,
+      "Crypto": 4,
+      "교차신호": 7
+    },
+    "total_patterns": 46,
+    "detector_implemented": false,
+    "regime_analyzer_implemented": false,
+    "implementation_status": "NOT_IMPLEMENTED"
+  },
+  "baseline_signals": {
+    "baseline_categories": {
+      "금리": 3,
+      "물가": 0,
+      "FX": 0,
+      "주식": 0,
+      "신용": 0,
+      "원자재": 0,
+      "암호화폐": 0
+    },
+    "total_baselines": 3,
+    "collection_status": "Check DATA_COLLECTION_MASTER for implementation"
+  },
+  "registry_vs_actual": {
+    "error": "'list' object has no attribute 'keys'"
+  },
+  "summary": {
+    "data_implementation_rate": "5.1%",
+    "logic_implementation": "NOT_IMPLEMENTED",
+    "overall_status": "PARTIAL_IMPLEMENTATION",
+    "critical_gaps": [
+      "⚠️ Only 5.1% of documented READY items are implemented",
+      "⚠️ Anomaly detection logic not implemented",
+      "⚠️ Only 3 collectors implemented"
+    ]
+  }
+}
