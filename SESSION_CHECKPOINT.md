@@ -29,9 +29,10 @@
 - **지식 필터**: 유저를 공부시키지 않고, **'의사결정에 필요한 급소'**만 골라내는 문지기(Gatekeeper) 역할을 수행함.
 
 ## 📚 참조 문서 (Core Reference)
-- `prompts/video_analysis_master_prompt.md`: AI의 분석 헌법. 모든 분석은 이 지침에 따라야 함.
-- `data/inputs/chatgpt_context.txt`: 이전에 학습한 시스템의 상세 배경 지식 및 규칙이 저장되어 있음.
+- **`DOCS/PROJECT_CHRONICLE.md`**: 전반적인 프로젝트의 여정과 의사결정 역사가 기록된 최종 요약본. (필독)
+- `prompts/video_analysis_master_prompt.md`: AI의 분석 헌법. 
+- `data/inputs/chatgpt_context.txt`: 상세 배경 지식 및 규칙 백업.
 
 ---
 **[AI 동기화용 프롬프트]**
-"저장소 루트의 `SESSION_CHECKPOINT.md`와 `prompts/video_analysis_master_prompt.md`를 먼저 읽어줘. 내가 원하는 분석 스타일(GPT급 심층 분석, 엔진 우선 철학)을 완벽히 이해한 상태에서, 유저를 공부시키지 않고 핵심만 짚어주는 '문지기'로서 이어서 대화해줘."
+"저장소 루트의 `SESSION_CHECKPOINT.md`와 **`DOCS/PROJECT_CHRONICLE.md`**를 반드시 먼저 정독해줘. 우리가 그동안 나눴던 전반적인 이야기와 논리적 흐름, 그리고 내가 원하는 '문지기'로서의 분석 스타일을 완벽히 동기화한 상태에서 작업을 이어가줘."
