@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-01-18T05:30:16Z",
+    "ts_utc": "2026-01-18T05:45:07Z",
     "dataset_id": "crypto_eth_usd_spot_coingecko",
     "entity": "ETHUSD",
     "anomaly_type": "ROC_1D",
     "severity": 100,
     "evidence": {
       "threshold_pct": 3.0,
-      "roc_pct": 32.517199999999995,
+      "roc_pct": 32.53040000000001,
       "prev_ts": "2026-01-18 00:00:00+00:00",
       "prev_value": 2500.0,
       "last_ts": "2026-01-18 00:00:00+00:00",
-      "last_value": 3312.93
+      "last_value": 3313.26
     }
   }
 ]
