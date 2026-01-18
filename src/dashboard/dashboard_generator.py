@@ -1421,6 +1421,7 @@ def generate_dashboard(base_dir: Path):
 
                 <div class="nav-label">WORKFLOW</div>
                 <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
+                <div class="nav-item" onclick="activate('deep-logic')"><span class="nav-icon">🧠</span> 딥 로직 분석</div>
                 <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">📝</span> 내러티브 큐</div>
                 <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> 부활 엔진</div>
                 
@@ -1901,6 +1902,85 @@ def generate_dashboard(base_dir: Path):
     </html>
     """
     
+    # [Deep Logic Analysis Tab]
+    deep_logic_html = ""
+    try:
+        deep_dir = base_dir / "data/narratives/deep_analysis" / ymd.replace("-", "/")
+        if deep_dir.exists():
+            for json_file in deep_dir.glob("*.json"):
+                data = json.loads(json_file.read_text(encoding="utf-8"))
+                if isinstance(data, list): data = data[0]  # Handle list wrapper
+
+                # Find MD Report
+                md_content = "Report not found."
+                # Try finding any md file that contains the video_id in name
+                vid_id = data.get('video_id', 'UNKNOWN')
+                
+                # Check specific path first
+                md_path = deep_dir / f"video_{vid_id}_report.md"
+                if md_path.exists():
+                     md_content = md_path.read_text(encoding="utf-8")
+                
+                deep_logic_html += f"""
+                <div class="card" style="background:white; padding:25px; margin-bottom:20px; border-radius:8px; border-left:5px solid #8b5cf6; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
+                        <div>
+                            <span style="font-size:11px; font-weight:800; color:#8b5cf6; background:#f3e8ff; padding:4px 10px; border-radius:12px; margin-right:8px;">{data.get('anomaly_level', 'UNKNOWN')}</span>
+                            <span style="font-size:11px; font-weight:700; color:#64748b; background:#f1f5f9; padding:4px 10px; border-radius:12px;">{data.get('why_now', {}).get('trigger_type', 'Tyoe Unknown')}</span>
+                            <h3 style="margin:10px 0 5px 0; font-size:18px; color:#1e293b;">{data.get('title', 'Untitled')}</h3>
+                            <div style="font-size:12px; color:#64748b;">Real Topic: <span style="color:#334155; font-weight:600;">{data.get('real_topic', '-')}</span></div>
+                        </div>
+                        <div style="text-align:right;">
+                             <button onclick="document.getElementById('deep-modal-{vid_id}').style.display='block'" style="background:#8b5cf6; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:12px;">View Full Report 🔍</button>
+                        </div>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:20px; padding-top:20px; border-top:1px solid #f1f5f9;">
+                        <div>
+                            <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">WHY NOW</div>
+                            <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('why_now', {}).get('description', '-')}</div>
+                        </div>
+                        <div>
+                            <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:5px;">ENGINE CONCLUSION</div>
+                            <div style="font-size:13px; color:#334155; line-height:1.5;">{data.get('engine_conclusion', '-')}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal -->
+                <style>
+                    /* Ensure modal content handles markdown-like text */
+                    .md-content {{ white-space: pre-wrap; font-family: 'Menlo', 'Monaco', 'Courier New', monospace; font-size:13px; line-height:1.6; color:#334155; }}
+                    .md-content h1, .md-content h2, .md-content h3 {{ color:#1e293b; margin-top:20px; }}
+                    .md-content hr {{ border:0; border-top:1px solid #e2e8f0; margin:20px 0; }}
+                    .md-content ul {{ padding-left:20px; }}
+                </style>
+                <div id="deep-modal-{vid_id}" class="modal">
+                    <div class="modal-content" style="width:90%; max-width:900px;">
+                        <span class="close-btn" onclick="document.getElementById('deep-modal-{vid_id}').style.display='none'">&times;</span>
+                        <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:20px; color:#1e293b;">🧠 Deep Logic Analysis Report</h2>
+                        <div style="background:#f8fafc; padding:30px; border-radius:8px; height:60vh; overflow-y:auto;" class="md-content">
+{md_content}
+                        </div>
+                    </div>
+                </div>
+                """
+        else:
+            deep_logic_html = "<div style='padding:40px; text-align:center; color:#94a3b8;'>No deep analysis reports available for today.</div>"
+
+    except Exception as e:
+        deep_logic_html = f"<div style='color:red;'>Error loading details: {e}</div>"
+        print(f"[ERROR] Deep Logic Load: {e}")
+
+    html += f"""
+                    <div id="deep-logic" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
+                        <div style="max-width:1000px;">
+                            {deep_logic_html}
+                        </div>
+                    </div>
+    """
+
     return html
 
 if __name__ == "__main__":
