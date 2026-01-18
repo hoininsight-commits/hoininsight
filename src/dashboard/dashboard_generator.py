@@ -2055,7 +2055,13 @@ if __name__ == "__main__":
     
     html = generate_dashboard(base_dir)
     
-    with open("dashboard/index.html", "w") as f:
+    dash_dir = base_dir / "dashboard"
+    # Write to dashboard/index.html
+    with open(dash_dir / "index.html", "w", encoding="utf-8") as f:
+        f.write(html)
+
+    # [Fix] Also write to root index.html for main GitHub Pages output
+    with open(base_dir / "index.html", "w", encoding="utf-8") as f:
         f.write(html)
     
     print("[Dashboard] Generated dashboard/index.html")

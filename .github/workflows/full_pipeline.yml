@@ -749,8 +749,8 @@ jobs:
       - name: Commit Intelligence Outputs
         if: success()
         run: |
-          # Force add all intelligence directories
-          git add data/narratives data/ops data/decision data/topics dashboard
+          # Force add all intelligence directories and root index
+          git add data/narratives data/ops data/decision data/topics dashboard index.html
           
           # Check for changes
           if git diff --cached --quiet; then
