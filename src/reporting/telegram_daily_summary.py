@@ -41,7 +41,7 @@ def generate_and_send_summary(base_dir: Path):
             lines.append(f"{icon} {ds_id}: `{st}`")
             
         lines.append("")
-        lines.append("🔗 [대시보드 바로가기](https://hoininsight-commits.github.io/HoinInsight/)")
+        lines.append("🔗 [대시보드 바로가기](https://hoininsight-commits.github.io/hoininsight/)")
         
         message = "\n".join(lines)
         
