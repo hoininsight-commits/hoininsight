@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-18T14:34:50Z`
+- ts_utc: `2026-01-18T14:36:47Z`
 - ymd_utc: `2026/01/18`
 - enabled_datasets: `26`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 80 | 2026-01-15T07:32:29Z | 2026-01-18T14:34:30Z | 80 | 80 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/01/18/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 81 | 2026-01-15T07:32:29Z | 2026-01-18T14:36:26Z | 81 | 81 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/01/18/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | OK | 947 | 1947-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/01/18/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | OK | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 4 | 4 | 1 | 0 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/01/18/charts/fx_dxy_index_stooq.png) |
 | ETHUSD | crypto_eth_usd_spot_coingecko | OK | 5 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 5 | 5 | 1 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/18/charts/crypto_eth_usd_spot_coingecko.png) |
@@ -19,7 +19,7 @@
 | HY_SPREAD | credit_hy_spread_fred | OK | 7582 | 1996-12-31T00:00:00Z | 2026-01-15T00:00:00Z | 4 | 17 | 1 | 0 | 0 | data/curated/credit/hy_spread_usa.csv | [png](data/reports/2026/01/18/charts/credit_hy_spread_fred.png) |
 | KOR_CPI | inflation_kor_cpi_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/ecos/inflation/korea_cpi.csv | [png](data/reports/2026/01/18/charts/inflation_kor_cpi_ecos.png) |
 | KOR_RATE | rates_kor_base_rate_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/ecos/rates/korea_base_rate.csv | [png](data/reports/2026/01/18/charts/rates_kor_base_rate_ecos.png) |
-| KOSPI | index_kospi_stooq | OK | 80 | 2026-01-15T07:32:40Z | 2026-01-18T14:34:30Z | 80 | 80 | 1 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/01/18/charts/index_kospi_stooq.png) |
+| KOSPI | index_kospi_stooq | OK | 81 | 2026-01-15T07:32:40Z | 2026-01-18T14:36:26Z | 81 | 81 | 1 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/01/18/charts/index_kospi_stooq.png) |
 | M2_USA | liquidity_m2_fred | OK | 803 | 1959-01-01T00:00:00Z | 2025-11-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/liquidity/m2_usa.csv | [png](data/reports/2026/01/18/charts/liquidity_m2_fred.png) |
 | NASDAQ | index_nasdaq_fred | OK | 10095 | 1986-01-02T00:00:00Z | 2026-01-18T00:00:00Z | 9 | 22 | 1 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/01/18/charts/index_nasdaq_fred.png) |
 | PCE_USA | inflation_pce_fred | OK | 801 | 1959-01-01T00:00:00Z | 2025-09-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/pce_usa.csv | [png](data/reports/2026/01/18/charts/inflation_pce_fred.png) |
