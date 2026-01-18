@@ -1,7 +1,12 @@
 {
-  "crypto_eth_usd_spot_coingecko": {
+  "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-01-18T21:33:21.530190Z"
+    "timestamp": "2026-01-18T22:47:56.589690Z"
+  },
+  "fx_usdkrw_ecos": {
+    "status": "FAIL",
+    "reason": "Normalization Error: No module named 'dotenv'",
+    "timestamp": "2026-01-18T22:47:56.591304Z"
   }
 }
