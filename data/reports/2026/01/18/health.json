@@ -1,9 +1,113 @@
 {
-  "ts_utc": "2026-01-18T09:39:39Z",
+  "ts_utc": "2026-01-18T14:26:47Z",
   "status": "SUCCESS",
   "checks_ok": true,
   "checks": [],
   "per_dataset": [
+    {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_us10y_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_vix_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_spx_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_nasdaq_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_dxy_index_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_us02y_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "comm_wti_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_platinum_xptusd_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_gold_paxg_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_silver_kag_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_silver_kag_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
     {
       "dataset_id": "crypto_eth_usd_spot_coingecko",
       "soft_fail": true,

@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-18T09:39:36Z
-- finished_utc: 2026-01-18T09:39:39Z
+- started_utc: 2026-01-18T14:26:23Z
+- finished_utc: 2026-01-18T14:26:47Z
 - status: SUCCESS
 
 ## details
@@ -16,6 +16,19 @@ topic: ok
 report: ok | data/reports/2026/01/18/daily_brief.md
 checks:
 schema_checks:
+[OK] schema(crypto_btc_usd_spot_coingecko): timeseries_v1
+[OK] schema(rates_us10y_fred): timeseries_v1
+[OK] schema(risk_vix_fred): timeseries_v1
+[OK] schema(index_spx_fred): timeseries_v1
+[OK] schema(index_kospi_stooq): timeseries_v1
+[OK] schema(index_nasdaq_fred): timeseries_v1
+[OK] schema(fx_dxy_index_stooq): timeseries_v1
+[OK] schema(rates_us02y_fred): timeseries_v1
+[OK] schema(comm_wti_fred): timeseries_v1
+[OK] schema(metal_platinum_xptusd_stooq): timeseries_v1
+[OK] schema(metal_gold_paxg_coingecko): timeseries_v1
+[OK] schema(metal_silver_kag_coingecko): timeseries_v1
+[OK] schema(metal_silver_kag_coingecko): timeseries_v1
 [OK] schema(crypto_eth_usd_spot_coingecko): timeseries_v1
 [OK] schema(rates_kor_base_rate_ecos): timeseries_v1
 [OK] schema(inflation_kor_cpi_ecos): timeseries_v1
