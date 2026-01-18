@@ -1130,8 +1130,8 @@ def generate_dashboard(base_dir: Path):
     except Exception as e:
         applied_html += f"<div style='color:red; font-size:11px;'>Load Error: {e}</div>"
 
-    sidebar_html += queue_html
-    sidebar_html += applied_html
+    # sidebar_html += queue_html  <-- REMOVED (Duplicated in Narrative Queue Tab)
+    # sidebar_html += applied_html <-- REMOVED (Moved to Change Effectiveness Tab)
 
     
     # [Start] Analysis Log Loader
@@ -1704,6 +1704,7 @@ def generate_dashboard(base_dir: Path):
     html += f"""
                     <div id="change-effectiveness" class="tab-content" style="display:none;">
                         <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 변경 효과 분석</h2>
+                        {applied_html}
                         {effectiveness_html}
                     </div>
     """
