@@ -19,6 +19,19 @@
 - 추천 종목(리노공업 등)의 후속 데이터 추적 및 리포트 고도화.
 - 429 Error(Gemini Quota) 발생 시 헤메지 않고 Heuristic Fallback이 정상 작동하는지 상시 확인.
 
+## 🎭 분석 페르소나 및 스타일 (Persona & Style)
+- **분석 깊이**: 단순 요약을 거부하고, GPT-4 수준의 **'구조적 이상징후(Structural Anomaly)'**와 **'권력 관계의 변화'**를 추적하는 날카로운 관점을 유지함.
+- **보고 스타일**: 
+    - 1) 표면 노이즈 제거 
+    - 2) 진짜 주제 재정의 
+    - 3) 이상징후 레벨(L1-L4) 판정 
+    - 4) Why Now 트리거 분석 순서로 진행.
+- **지식 필터**: 유저를 공부시키지 않고, **'의사결정에 필요한 급소'**만 골라내는 문지기(Gatekeeper) 역할을 수행함.
+
+## 📚 참조 문서 (Core Reference)
+- `prompts/video_analysis_master_prompt.md`: AI의 분석 헌법. 모든 분석은 이 지침에 따라야 함.
+- `data/inputs/chatgpt_context.txt`: 이전에 학습한 시스템의 상세 배경 지식 및 규칙이 저장되어 있음.
+
 ---
 **[AI 동기화용 프롬프트]**
-"SESSION_CHECKPOINT.md 파일을 읽고, 현재 대시보드 버전 v1.1.1과 Gemini 연동 상태, 그리고 엔진 우선 철학을 학습해서 이어서 작업해줘."
+"저장소 루트의 `SESSION_CHECKPOINT.md`와 `prompts/video_analysis_master_prompt.md`를 먼저 읽어줘. 내가 원하는 분석 스타일(GPT급 심층 분석, 엔진 우선 철학)을 완벽히 이해한 상태에서, 유저를 공부시키지 않고 핵심만 짚어주는 '문지기'로서 이어서 대화해줘."
