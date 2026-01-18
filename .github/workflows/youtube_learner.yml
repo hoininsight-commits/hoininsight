@@ -1,0 +1,41 @@
+name: youtube_learner
+
+on:
+  schedule:
+    - cron: "0 */3 * * *" # Run every 3 hours
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+
+      - name: Run Narrative Watcher (Phase 31-A)
+        run: |
+          python -m src.narratives.youtube_watcher
+          python -m src.narratives.transcript_ingestor
+          python -m src.narratives.narrative_status
+
+      - name: Commit outputs
+        if: success()
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          # Force add data directories to safeguard against any lingering .gitignore issues
+          git add data/narratives/transcripts data/narratives/status || true
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: youtube learner update [skip ci]"
+          git push
