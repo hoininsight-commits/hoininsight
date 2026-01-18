@@ -321,7 +321,12 @@ def generate_dashboard(base_dir: Path):
         script_preview = script_body[:800] + '...' if len(script_body) > 800 else script_body
 
     # System Status Logic
-    status_icon_char = '🟢' if status_str == 'SUCCESS' else '🔴'
+    if status_str == 'SUCCESS':
+        status_icon_char = '🟢'
+    elif status_str == 'PARTIAL':
+        status_icon_char = '🟡'
+    else:
+        status_icon_char = '🔴'
     
     error_alert_html = ""
     if status_str != 'SUCCESS':

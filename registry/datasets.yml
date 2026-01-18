@@ -162,7 +162,7 @@ datasets:
     curated_path: "data/curated/indices/kospi.csv"
 
   - dataset_id: "derived_corr_btc_spx_30d"
-    enabled: true
+    enabled: false
     soft_fail: true
     entity: "BTC_SPX_CORR30D"
     unit: "CORR"
@@ -177,7 +177,7 @@ datasets:
     curated_path: "data/curated/derived/corr_btc_spx_30d.csv"
 
   - dataset_id: "derived_corr_usdkrw_us10y_30d"
-    enabled: true
+    enabled: false
     soft_fail: true
     entity: "USDKRW_US10Y_CORR30D"
     unit: "CORR"

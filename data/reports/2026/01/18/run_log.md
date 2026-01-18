@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-18T12:45:19Z
-- finished_utc: 2026-01-18T12:46:13Z
+- started_utc: 2026-01-18T12:48:51Z
+- finished_utc: 2026-01-18T12:49:40Z
 - status: SUCCESS
 
 ## details
@@ -15,16 +15,12 @@ anomaly: ok
 topic: ok
 report: ok | data/reports/2026/01/18/daily_brief.md
 checks:
-[SKIP] outputs(derived_corr_btc_spx_30d) missing
-[SKIP] outputs(derived_corr_usdkrw_us10y_30d) missing
 schema_checks:
 [OK] schema(crypto_btc_usd_spot_coingecko): timeseries_v1
 [OK] schema(rates_us10y_fred): timeseries_v1
 [OK] schema(risk_vix_fred): timeseries_v1
 [OK] schema(index_spx_fred): timeseries_v1
 [OK] schema(index_kospi_stooq): timeseries_v1
-[SKIP] schema(derived_corr_btc_spx_30d): missing curated file (soft_fail)
-[SKIP] schema(derived_corr_usdkrw_us10y_30d): missing curated file (soft_fail)
 [OK] schema(index_nasdaq_fred): timeseries_v1
 [OK] schema(fx_dxy_index_stooq): timeseries_v1
 [OK] schema(rates_us02y_fred): timeseries_v1
