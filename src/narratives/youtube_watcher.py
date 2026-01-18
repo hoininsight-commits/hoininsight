@@ -111,6 +111,7 @@ def run_watcher():
 
     sources = config.get("sources", [])
     new_count = 0
+    new_titles = []
 
     for src in sources:
         if not src.get("enabled", False):
@@ -151,8 +152,18 @@ def run_watcher():
                 meta_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
                 logger.info(f"[NEW] Detected: {vid['title']}")
                 new_count += 1
+                new_titles.append(vid["title"])
             except Exception as e:
                 logger.error(f"Failed to save metadata for {vid_id}: {e}")
+
+    # Export new titles for notifications
+    if new_titles:
+        try:
+            status_dir = Path("data/narratives/status")
+            status_dir.mkdir(parents=True, exist_ok=True)
+            (status_dir / "recent_new_titles.txt").write_text("\n".join(new_titles), encoding="utf-8")
+        except Exception as e:
+            logger.error(f"Failed to export new titles: {e}")
 
     logger.info(f"Watcher Complete. New Videos: {new_count}")
 

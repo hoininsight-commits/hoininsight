@@ -50,6 +50,19 @@ jobs:
           git commit -m "chore: youtube learner update [skip ci]"
           git push
 
+      - name: Prepare Notification Message
+        if: always()
+        id: prep_msg
+        run: |
+          if [ -f "data/narratives/status/recent_new_titles.txt" ]; then
+            TITLES=$(cat data/narratives/status/recent_new_titles.txt | sed 's/^/- /')
+            echo "NEW_TITLES<<EOF" >> $GITHUB_ENV
+            echo "$TITLES" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            echo "NEW_TITLES=없음" >> $GITHUB_ENV
+          fi
+
       - name: Telegram Notification (Result)
         if: always()
         uses: appleboy/telegram-action@master
@@ -57,6 +70,12 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ✅ [Hoin Insight] 유튜브 수집이 완료되었습니다.
-            - 상태: ${{ job.status }}
-            - 분석 결과: https://hoininsight-commits.github.io/hoininsight/
+            ✅ [Hoin Insight] 유튜브 수집 완료
+            
+            📅 날짜: $(date +'%Y-%m-%d %H:%M')
+            📊 상태: ${{ job.status }}
+            
+            🎬 신규 수집 영상:
+            ${{ env.NEW_TITLES }}
+            
+            🔗 분석 결과: https://hoininsight-commits.github.io/hoininsight/
