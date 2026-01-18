@@ -237,7 +237,7 @@
             
             <div style="display:flex; gap:10px;">
                 <div class="conf-badge bg-green-100 text-green-800">NORMAL</div>
-                <div class="conf-badge bg-gray-200 text-gray-500">Narrative: INGESTION_SKIP</div>
+                <div class="conf-badge bg-blue-100 text-blue-800">Narrative: INGESTION_OK</div>
                 <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">Preset: STANDARD</div>
                 <div class="status-badge status-PARTIAL">부분 성공</div>
             </div>
@@ -350,7 +350,7 @@ Regime: (no meta regime detected)
 - 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
 - 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
 ## Why Now
-- 이 국면은 현재 **4일째** 지속되고 있습니다.
+- 이 국면은 현재 **5일째** 지속되고 있습니다.
 - 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
 ## What Changed
 - 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
@@ -423,7 +423,7 @@ Regime: (no meta regime detected)
                                 </div>
                                 <div class="proc-node node-engine">
                                     <div class="proc-title">이상치 탐지</div>
-                                    <div class="proc-desc">국면: 없음</div>
+                                    <div class="proc-desc">국면: 감지됨</div>
                                 </div>
                                 <div class="proc-node node-engine">
                                      <div class="proc-title">토픽 선정</div>
@@ -525,20 +525,20 @@ Regime: (no meta regime detected)
                 <span class="text-red-500">0/2</span>
             </div>
         
-             <div class="ds-item fail" title="Normalization Error: Missing raw file for BTC-SPX: data/raw/derived/2026/01/17/corr_btc_spx_30d.json">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">derived_corr_btc_spx_30d <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">derived_corr_btc_spx_30d </span>
                  </div>
-                 <div class="status-check">✕</div>
+                 <div class="status-check">-</div>
              </div>
              
-             <div class="ds-item fail" title="Normalization Error: Missing raw file for USDKRW-US10Y: data/raw/derived/2026/01/17/corr_usdkrw_us10y_30d.json">
+             <div class="ds-item pending" title="수집 대기 중">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">derived_corr_usdkrw_us10y_30d <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">derived_corr_usdkrw_us10y_30d </span>
                  </div>
-                 <div class="status-check">✕</div>
+                 <div class="status-check">-</div>
              </div>
              </div>
         <div class="cat-group">
@@ -547,10 +547,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -561,18 +561,18 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
              
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -583,18 +583,18 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
              
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -605,10 +605,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">rates_us10y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -619,10 +619,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -633,10 +633,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">2/2</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -644,7 +644,7 @@ Regime: (no meta regime detected)
              <div class="ds-item ok" title="Normalized successfully">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">crypto_eth_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">crypto_eth_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 04:54)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -655,10 +655,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">rates_us02y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">rates_us02y_yield_ustreasury <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -669,10 +669,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_platinum_xptusd_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">metal_platinum_xptusd_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -683,10 +683,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -697,10 +697,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -711,10 +711,10 @@ Regime: (no meta regime detected)
                 <span class="text-green-500">1/1</span>
             </div>
         
-             <div class="ds-item ok" title="Normalized successfully">
+             <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">fx_dxy_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/17 22:52)</span></span>
+                     <span class="ds-name">fx_dxy_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/18 05:03)</span></span>
                  </div>
                  <div class="status-check">✓</div>
              </div>
@@ -1069,50 +1069,6 @@ Regime: (no meta regime detected)
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-78378')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
                             <button onclick="rejectProposal('EVO-20260117-78378')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-18</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            다섯 번째로 확인해야 할 건 밸류업 참여 기업이야 
-                            <br>→ Pattern: User explicit need: 확인해야
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "다섯 번째로 확인해야 할 건 밸류업 참여 기업이야..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260118-95759')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260118-95759')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-18</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            세 번째로 확인해야 할 건 연기금 스탠스야 
-                            <br>→ Pattern: User explicit need: 확인해야
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "세 번째로 확인해야 할 건 연기금 스탠스야..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260118-14701')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260118-14701')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
                     
@@ -1581,28 +1537,6 @@ Regime: (no meta regime detected)
                     <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-18</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            근데 지금은 환율 방어를 위해서라도 해외 자산 일부를 팔고 국내 주식을 사야 한다는 압박을 받고 있어 연기금의 국내 주식 비중 확대 검토 소식은 시장의 강력한 지지선을 제공해네 번 
-                            <br>→ Pattern: User explicit need: 확인해야
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "근데 지금은 환율 방어를 위해서라도 해외 자산 일부를 팔고 국내 주식을 사야 한다는 압박을 받고 있어 연기금..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260118-50129')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260118-50129')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
                             <small style="font-size:10px; color:#666;">2026-01-17</small>
                         </div>
                         
@@ -1619,28 +1553,6 @@ Regime: (no meta regime detected)
                         <div style="display:flex; gap:5px;">
                             <button onclick="approveProposal('EVO-20260117-02274')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
                             <button onclick="rejectProposal('EVO-20260117-02274')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card" style="border-left: 4px solid #2196f3; background: #e3f2fd;  padding:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <span class="badge" style="background:#2196f3; color:white; padding:2px 6px; border-radius:4px; font-size:10px;">📊 DATA</span>
-                            <small style="font-size:10px; color:#666;">2026-01-18</small>
-                        </div>
-                        
-                        <div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#333;">제안 내용:</div>
-                        <div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:4px; font-size:11px; font-family:monospace; margin-bottom:10px; border:1px solid rgba(0,0,0,0.1);">
-                            두 번째로 확인해야 할 건 외국인 수급 방향이야 
-                            <br>→ Pattern: User explicit need: 확인해야
-                        </div>
-                        
-                        <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;">
-                            "두 번째로 확인해야 할 건 외국인 수급 방향이야..."
-                        </div>
-                        
-                        <div style="display:flex; gap:5px;">
-                            <button onclick="approveProposal('EVO-20260118-26886')" style="flex:1; background:#2196f3; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">승인 (Merge)</button>
-                            <button onclick="rejectProposal('EVO-20260118-26886')" style="flex:1; background:#94a3b8; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">거절</button>
                         </div>
                     </div>
                     
