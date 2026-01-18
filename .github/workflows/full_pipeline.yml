@@ -482,14 +482,14 @@ jobs:
             echo "[VERIFY][OK] No applied changes today (valid state)"
           fi
     
-          if grep -q "Applied Changes" "$DASH"; then
+          if grep -q "변경 효과 분석" "$DASH"; then
             echo "[VERIFY][OK] Applied Changes section rendered"
           else
             echo "[VERIFY][FAIL] Applied Changes section missing"
             exit 1
           fi
           
-          if grep -q "YouTube Inbox (Latest Videos)" "$DASH"; then
+          if grep -q "유튜브 인박스" "$DASH"; then
             echo "[VERIFY][OK] YouTube Inbox rendered"
           else
             echo "[VERIFY][FAIL] YouTube Inbox section missing"
@@ -603,7 +603,7 @@ jobs:
           else
             echo "[VERIFY][SKIP] No ledger entries yet (valid state)"
           fi
-          grep -q "Rejection Ledger" "$DASH" && echo "[VERIFY][OK] Ledger section rendered" || (echo "[VERIFY][FAIL] Ledger section missing"; exit 1)
+          grep -q "🚫 거절.보류 리스트" "$DASH" && echo "[VERIFY][OK] Ledger section rendered" || (echo "[VERIFY][FAIL] Ledger section missing"; exit 1)
 
       - name: Verify Phase 36 Auto-Archive
         run: |
@@ -628,7 +628,7 @@ jobs:
             echo "[VERIFY][SKIP] No archive data (valid state - no items to archive)"
           fi
           
-          grep -q "Archived Narratives" "$DASH" && echo "[VERIFY][OK] Archive section rendered" || (echo "[VERIFY][FAIL] Archive section missing"; exit 1)
+          grep -q "🗄 아카이브" "$DASH" && echo "[VERIFY][OK] Archive section rendered" || (echo "[VERIFY][FAIL] Archive section missing"; exit 1)
 
       - name: Verify Phase 36-B Ops Hardening
         run: |
@@ -652,7 +652,7 @@ jobs:
             echo "[VERIFY][SKIP] No scoreboard data (valid state)"
           fi
           
-          grep -q "Infrastructure Health & Data Freshness" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
+          grep -q "운영 성과 지표" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
 
       - name: Verify Phase 37 Revival
         run: |
@@ -676,7 +676,7 @@ jobs:
             echo "[VERIFY][SKIP] No revival proposals today (conditions not met)"
           fi
           
-          grep -q "Revival Candidates" "$DASH" && echo "[VERIFY][OK] Revival section rendered" || (echo "[VERIFY][FAIL] Revival section missing"; exit 1)
+          grep -q "부활 엔진" "$DASH" && echo "[VERIFY][OK] Revival section rendered" || (echo "[VERIFY][FAIL] Revival section missing"; exit 1)
 
       - name: Verify Phase 37-B Revival Guardrails
         run: |
@@ -716,7 +716,7 @@ jobs:
             echo "[VERIFY][SKIP] No final decision card today (valid state)"
           fi
           
-          grep -q "Final Decision Card" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
+          grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
 
 
 
@@ -739,7 +739,7 @@ jobs:
              exit 1
           fi
           
-          if grep -q "Topic Candidates (Not Selected)" "$DASH"; then
+          if grep -q "📂 토픽 후보군" "$DASH"; then
              echo "[VERIFY][OK] Dashboard section rendered"
           else
              echo "[VERIFY][FAIL] Dashboard section missing"

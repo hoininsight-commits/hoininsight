@@ -689,11 +689,7 @@ def generate_dashboard(base_dir: Path):
     
     # [Phase 31-E+] YouTube Inbox (Latest Videos)
     # Displays latest collected videos and their pipeline status
-    inbox_html = """
-    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-        YouTube Inbox (Latest Videos)
-    </div>
-    """
+    inbox_html = ""
 
     # [Phase 33] Load Aging Scores (with fallback to Phase 32)
     # [Phase 33] Load Aging Scores (with fallback to Phase 32)
@@ -963,18 +959,12 @@ def generate_dashboard(base_dir: Path):
 
     # sidebar_html += inbox_html  <-- REMOVED (Duplicated in Inbox Tab)
 
-    # [Phase 31-D] Narrative Approval Queue Section
     queue_html = ""
     try:
         # Load Queue
         q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
         
         # Always render the container structure for verification consistency
-        queue_html += """
-        <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-            Narrative Review Queue
-        </div>
-        """
         
         q_data = []
         if q_path.exists():
@@ -1025,7 +1015,7 @@ def generate_dashboard(base_dir: Path):
                     </div>
                 </div>
                 """
-
+    
                 # Load Content Hint
                 prop_path_str = item.get("proposal_path", "")
                 prop_excerpt = "제안 내용을 불러올 수 없습니다."
@@ -1036,7 +1026,7 @@ def generate_dashboard(base_dir: Path):
                              hints = [l for l in pp.read_text(encoding="utf-8").splitlines() if l.strip().startswith("-")][:5]
                              prop_excerpt = "<br>".join(hints)
                          except: pass
-
+    
                 queue_html += f"""
                 <div class="queue-card" id="card-{vid}">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -1045,7 +1035,7 @@ def generate_dashboard(base_dir: Path):
                     </div>
                     
                     {score_badge_html}
-
+    
                     <div class="prop-content" style="margin-top:10px;">
                         <strong>Note (Extract):</strong><br>
                         <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
@@ -1079,11 +1069,7 @@ def generate_dashboard(base_dir: Path):
     
     # [Phase 31-E] Applied Changes Section
     # Renders summary of today's applied changes based on applied_summary.json
-    applied_html = """
-    <div class="sidebar-title" style="margin-top:40px; border-top:1px solid #e2e8f0; padding-top:20px;">
-        Applied Changes (Today)
-    </div>
-    """
+    applied_html = ""
     
     try:
         sum_path = base_dir / "data/narratives/applied" / ymd.replace("-","/") / "applied_summary.json"
