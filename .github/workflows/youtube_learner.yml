@@ -45,7 +45,7 @@ jobs:
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
           # Force add data directories to safeguard against any lingering .gitignore issues
-          git add data/narratives/transcripts data/narratives/status || true
+          git add data/narratives/transcripts data/narratives/status data/narratives/raw/youtube || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: youtube learner update [skip ci]"
           git push

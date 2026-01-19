@@ -773,7 +773,7 @@ jobs:
         if: success()
         run: |
           # Force add all intelligence directories and root index
-          git add data/narratives data/ops data/decision data/topics dashboard index.html
+          git add data/narratives data/ops data/decision data/topics data/evolution dashboard index.html
           
           # Check for changes
           if git diff --cached --quiet; then
