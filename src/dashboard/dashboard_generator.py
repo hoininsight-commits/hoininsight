@@ -1081,7 +1081,7 @@ def generate_dashboard(base_dir: Path):
         # Load Queue
         # [Phase 33] Enhanced Queue Sync: Scan last 3 days if empty
         q_data = []
-        for i in range(3):
+        for i in range(5):
             scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             q_p = base_dir / "data/narratives/queue" / scan_ymd / "proposal_queue.json"
             if q_p.exists():
@@ -1223,7 +1223,7 @@ def generate_dashboard(base_dir: Path):
         items = []
         seen_vids = set()
         
-        for i in range(3):
+        for i in range(5):
             try:
                 d = datetime.utcnow() - timedelta(days=i)
                 d_ymd = d.strftime("%Y/%m/%d")
