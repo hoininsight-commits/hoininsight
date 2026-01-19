@@ -2,13 +2,13 @@
   {
     "video_id": "dy8pbwjsdao",
     "title": "부자들이 개미 몰래 줍고있다는, '저평가 중소형주' 3개",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-19",
     "surface_topics": [
+      "매수",
       "시장",
-      "투자",
       "전망",
-      "경제",
-      "매수"
+      "수익",
+      "분석"
     ],
     "real_topic": "실적",
     "real_topic_reasoning": "KB Keyword Match: '실적' (mentioned 5 times)",
@@ -19,8 +19,88 @@
       "description": "No explicit immediate trigger found, likely a trend analysis."
     },
     "core_assumptions": [],
-    "evolution_proposals": [],
+    "evolution_proposals": [
+      {
+        "id": "EVO-LLM-20260119-36375",
+        "video_id": "dy8pbwjsdao",
+        "category": "DATA_ADD",
+        "detected_pattern": "LLM Engine Evolution Suggestion",
+        "condition": "Unknown Sensor",
+        "meaning": "No reason provided",
+        "status": "PROPOSED"
+      }
+    ],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.",
+    "llm_report": "# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis\n\n## 1️⃣ [Surface vs Deep] : The Core Misunderstanding\nThe retail crowd is attempting to identify \"undervalued small-cap stocks\" based on standard metrics (PER, recent dips) while missing the sectoral locking of compulsory CAPEX.\n\n*   **❌ Surface View (The Crowd)**: AI investment flows into chip makers (Nvidia) or innovative application developers (RXRX, SOFI). STRL is merely a cyclical construction firm being temporarily boosted by the data center trend.\n*   **✅ HOIN Deep View (The Logic)**: The structural shift is the non-linear demand for physical, energized land. AI CAPEX is mandatorily flowing into the foundational prerequisite layer—site preparation and initial power grid integration (STRL’s core function). This segment absorbs fixed capital before general construction even begins, creating an unavoidable bottleneck position.\n\n## 2️⃣ [Anomaly Detection] : Why Now?\nThe market is valuing STRL on historical construction sector multiples (33x PER), while the accelerating execution of utility and infrastructure backlogs proves it has shifted to a utility installation/site readiness multiple (future 22x PER estimate).\n\n*   **Trigger Event**: Massive, immediate demand for Data Centers and Fab construction execution has exposed the primary physical constraint: securing and energizing the land. STRL’s 3+ trillion KRW backlog reflects commitments that cannot be undone or easily outsourced.\n*   **State Shift**: The status has shifted from 'Conceptual AI Deployment' (Hype) to 'Mandatory Utility & Site CAPEX Allocation' (Reality). The capital is no longer theoretical; it is fixed in multi-year, non-transferable infrastructure contracts.\n\n## 3️⃣ [Critical Logic Chain]\n1.  Global AI deployment velocity is constrained not by computation (chips), but by accessible power/cooling infrastructure (Grid Bottleneck).\n2.  Major Data Center and Semiconductor CAPEX funds (Fixed Capital) must first target the providers capable of building land pads and integrating high-voltage electrical facilities (STRL’s role). This is the critical, unskippable path step.\n3.  This enforced flow ensures rising **Volume** (massive backlog), increasing **ASP** (pricing power due to scarcity of specialized land/power expertise), and superior **Relative Strength** (insulated from general construction slowdowns by technology/policy demand).\n\n## 4️⃣ [Data Verification Needs]\nWe require objective data validating the bottleneck, not just company-reported backlogs. The critical data point is the rate of new power infrastructure activation tied to enterprise construction projects.\n\n*   [PROPOSAL] **Utility Interconnection Queue Completion Index (UIQCI)**: Track the average time required for state/regional utility bodies (e.g., ERCOT, PJM territory) to approve and activate high-capacity power connections for industrial customers (Data Centers/Fabs).\n*   [PROPOSAL] **Land Readiness Cost Delta**: Analyze the cost variance between 'raw industrial land' and 'AI-ready, energized industrial land' over the last 18 months. This metric quantifies the increasing value capture by site preparation specialists.\n\n## 5️⃣ [Cold Conclusion]\nSTRL is miscategorized; it is a critical grid enabler trading at a cyclical contractor discount. Policy and technology CAPEX dictate its volume, minimizing standard construction risk. This sector provides the highest guarantee of immediate capital lock-in due to physical necessity.\n\n## 6️⃣ [Engine Evolution Suggestion]\nThe engine must move beyond tracking chip sales and focus on physical infrastructure bottlenecks.\n\n*   **Proposed Sensor**: **Grid Power Pre-Installation Index (GPPII)**\n*   **Reason**: The GPPII tracks CAPEX deployed into utility connection infrastructure (transformers, substations, high-tension lines) *before* the main structure is built. This captures capital that is fixed and non-recoverable, confirming mandatory flow into the physical bottleneck sector."
+  },
+  {
+    "video_id": "gemini_test_video",
+    "title": "Gemini Integration Test",
+    "analysis_date": "2026-01-19",
+    "surface_topics": [
+      "시장",
+      "투자"
+    ],
+    "real_topic": "경고",
+    "real_topic_reasoning": "KB Keyword Match: '경고' (mentioned 1 times)",
+    "anomaly_level": "L2",
+    "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '구조' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [],
+    "evolution_proposals": [
+      {
+        "id": "EVO-LLM-20260119-36375",
+        "video_id": "gemini_test_video",
+        "category": "DATA_ADD",
+        "detected_pattern": "LLM Engine Evolution Suggestion",
+        "condition": "Unknown Sensor",
+        "meaning": "No reason provided",
+        "status": "PROPOSED"
+      }
+    ],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "엔진은 '경고'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.",
+    "llm_report": "# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis\n\nThe input text confirms that major capital allocators (Morgan Stanley) are publicly flagging a generational structural shift and demanding an urgent re-evaluation of long-term asset strategy. This urgency is the signal. The vagueness of \"structural change\" is by design; the institutional shift is occurring in fixed, non-fungible assets invisible to momentum traders.\n\n## 1️⃣ [Surface vs Deep] : The Core Misunderstanding\nThe crowd focuses on equity fluctuations while ignoring the cost of physical infrastructure deployment mandated by policy.\n\n*   **❌ Surface View (The Crowd)**: The long-term investment path is \"vague\" and prone to market timing errors; short-term macroeconomic data (inflation, rate cuts) dictates strategy.\n*   **✅ HOIN Deep View (The Logic)**: The structural shift is the collision of geopolitical fragmentation (reshoring) and technological demand (AI/Electrification). This requires *non-discretionary* capital expenditure in fixed, physical infrastructure (power, cooling, fabrication). The urgency is driven by the reality that the supply chain for these bottleneck components is inelastic, locking in guaranteed returns for specific providers now.\n\n## 2️⃣ [Anomaly Detection] : Why Now?\nThe shift from aspirational policy targets (Hype) to realized balance sheet liabilities (Capex) has commenced, creating unavoidable demand.\n\n*   **Trigger Event**: Global policy frameworks (IRA, Chips Act, EU Mandates) are moving from authorization phases to budget execution, triggering multi-year, fixed contracts for foundational infrastructure components (e.g., power transformers, high-voltage switchgear).\n*   **State Shift**: From 'Dream' (Net Zero goals, AI potential) to 'Reality' (Utility CAPEX announcements, guaranteed Power Purchase Agreements/PPAs, multi-year backlogs for essential grid equipment). Capital is no longer theoretical; it is fixed in concrete and copper.\n\n## 3️⃣ [Critical Logic Chain]\n1. Policy mandates (Geopolitical fragmentation and Decarbonization) necessitate the construction of redundant energy and computation networks (Fabs and Data Centers).\n2. Building these networks requires fixed, large-scale electrical infrastructure (Grid modernization, HVDC, Substation upgrades) which demands specific, long-lead industrial equipment (bottleneck components).\n3. The volume demand is inelastic (dictated by sovereign policy and AI requirements) and supply is constrained (high barrier to entry, long manufacturing lead times). **Capital is locked into the few firms capable of supplying the physical layer.**\n\n## 4️⃣ [Data Verification Needs]\nWe must verify where the policy budget is actually being executed and where pricing power is consolidating due to constrained supply.\n\n*   **[PROPOSAL]** Utility Sector CAPEX Execution Rate (US and EU): Track the quarterly expenditure release against announced budgets for 2024/2025.\n*   **[PROPOSAL]** Industrial Equipment Book-to-Bill Ratio (HS Codes related to Power Transmission/Distribution, e.g., 8504, 8535): Monitoring backlogs and average selling price (ASP) increases for large power transformers.\n*   **[PROPOSAL]** AI Cluster Power Consumption Audit: Cross-reference announced data center construction schedules against local utility grid upgrade filings to identify future systemic power bottlenecks.\n\n## 5️⃣ [Cold Conclusion]\nThe generational structural shift is the policy-driven guarantee of fixed CAPEX cycles into physical infrastructure. Capital is flooding the base layers of the economy, guaranteeing inelastic volume and price strength for bottleneck providers. The optimal long-term strategy is fixed asset ownership in these scarce industrial roles.\n\n## 6️⃣ [Engine Evolution Suggestion]\nThe engine must move past tracking equity performance and focus on the physical chokepoints where capital is immovable.\n\n*   **Proposed Sensor**: **Grid Bottleneck Index (GBI)**\n*   **Reason**: The GBI tracks the combined increase in utility CAPEX execution, the ASP of essential high-voltage equipment, and the forward order backlogs of the top three global industrial providers. This proves capital is fixed, volume is guaranteed by policy, and relative strength is rising due to supply scarcity."
+  },
+  {
+    "video_id": "Iek--w00kr4",
+    "title": "젠슨황이 삼성, 하이닉스 다음으로 반드시 필요하다고 말한 ‘한국 종목’ 정체",
+    "analysis_date": "2026-01-19",
+    "surface_topics": [
+      "뉴스",
+      "시장",
+      "대박",
+      "수익",
+      "분석"
+    ],
+    "real_topic": "AI",
+    "real_topic_reasoning": "KB Keyword Match: 'AI' (mentioned 5 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '독점' found, L3 Keyword '필수' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "경쟁사들이 흉내도 못내는 기술 격차를 벌려 놨기 때문에 반도체 미세 공정이 심화될수록이 회사의 독주 체제는 더 단단해질 수밖에 없어"
+    ],
+    "evolution_proposals": [
+      {
+        "id": "EVO-LLM-20260119-36375",
+        "video_id": "Iek--w00kr4",
+        "category": "DATA_ADD",
+        "detected_pattern": "LLM Engine Evolution Suggestion",
+        "condition": "Unknown Sensor",
+        "meaning": "No reason provided",
+        "status": "PROPOSED"
+      }
+    ],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 'AI'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 경쟁사들이 흉내도 못내는 기술 격차를 벌려 놨기 때문에 반도체 미세 공정이 심화될수록이 회사의 독주 체제는 더 단단해질 수밖에 없어",
+    "llm_report": "# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis\n\n## 1️⃣ [Surface vs Deep] : The Core Misunderstanding\nThe retail focus fixates on the current high valuation (PER 30x) and generalized AI adoption, while ignoring the fixed infrastructure role this company now occupies in the high-value chain.\n\n*   **❌ Surface View (The Crowd)**: The stock (Leeno Industrial) is expensive, trading at a high PER based on future On-Device AI hype. Risk is volatile earnings (cyclical risk).\n*   **✅ HOIN Deep View (The Logic)**: This firm has established an **infrastructure choke point** (0.1mm inspection). The 40%+ operating margin proves that the product is non-substitutable and demand is inelastic, effectively granting pricing sovereignty regardless of standard economic cycles. Capital is being locked into Q4 factory expansion, confirming demand execution, not just expectation.\n\n## 2️⃣ [Anomaly Detection] : Why Now?\nThe inflection point is driven by the economics of failure in next-generation AI processing.\n\n*   **Trigger Event**: The rise in the cost and complexity of integrated AI chips (HBM + Logic). When a single chip failure costs \"tens of millions\" (KRW) and risks corporate reputation, inspection is no longer a cost center; it is mandatory insurance.\n*   **State Shift**: The sector has shifted from \"Volume-driven component supplier\" to \"Quality-enforcement infrastructure provider.\" This lock-in is enforced by extreme technical barriers (0.3mm standard vs. 0.1mm execution) required for miniaturization, accelerating the monopolistic structure.\n\n## 3️⃣ [Critical Logic Chain]\n1.  High-value AI chip integration requires mandatory, zero-defect quality validation to protect corporate trust and prevent massive unit losses.\n2.  Physical law dictates that successful validation requires ultra-fine pitch testing components (0.1mm), achievable only by a highly specialized, non-substitutable supplier.\n3.  The resultant technical monopoly grants the supplier absolute pricing power (40%+ margin), allowing them to mandate pricing regardless of input costs or customer leverage. This capital superiority directly funds massive capacity expansion (Q4 factory CAPEX), confirming fixed capital lock-in.\n\n## 4️⃣ [Data Verification Needs]\nWe need objective data points confirming the non-cyclical nature and capital execution.\n\n*   [PROPOSAL] **ASP/Pricing Power Index**: Track the Average Selling Price (ASP) of Leeno Industrial’s 0.1mm micro-pins/sockets (Pogo Pins) relative to the broader semiconductor test equipment ASP index. We expect a decoupling, confirming pricing sovereignty.\n*   [PROPOSAL] **CAPEX Execution Rate Audit**: Verify official public filings (DART/quarterly reports) detailing the budgeted vs. executed spending on the Q4 factory expansion and relocation. High execution confirms demand certainty, not just projection.\n*   [PROPOSAL] **R&D Consumable Demand Index**: Track the correlation between sales volumes of this firm vs. the R&D budgets of major clients (Samsung Foundry, SK Hynix, Nvidia). Confirmation of sales resilience during general production downturns validates the R&D-dependent business model.\n\n## 5️⃣ [Cold Conclusion]\nThe firm controls an irreplaceable physical bottleneck in the AI quality chain. High margins and technical scarcity confirm a structural monopoly, immunizing it from standard sector volatility. The Q4 CAPEX confirms capital is being aggressively fixed into this essential infrastructure role.\n\n## 6️⃣ [Engine Evolution Suggestion]\nThe current analysis confirms capital lock-in driven by R&D criticality rather than mass production volumes alone.\n\n*   **Proposed Sensor**: **IP/R&D Infrastructure Investment Tracker (IRIT)**\n*   **Reason**: This sensor tracks investment (and resulting sales) in highly specialized consumables and services essential for the *development phase* of bleeding-edge technologies (AI, HPC, Bio). This allows HOIN to identify firms that generate revenue *ahead* of the mass production cycle, ensuring detection of capital lock-in before the volume play begins."
   }
 ]
