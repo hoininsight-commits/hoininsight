@@ -1083,6 +1083,13 @@ def generate_dashboard(base_dir: Path):
             # [Phase 33] Sort by final_priority_score
             final_queue_list = q_data
             if priority_map:
+                # Merge proposal_path from q_data into priority_map items
+                path_map = {item.get("video_id"): item.get("proposal_path") for item in q_data}
+                
+                for vid, item in priority_map.items():
+                    if vid in path_map and path_map[vid]:
+                        item["proposal_path"] = path_map[vid]
+                        
                 final_queue_list = list(priority_map.values())
                 final_queue_list.sort(key=lambda x: x.get("final_priority_score", x.get("alignment_score", 0)), reverse=True)
             
@@ -1125,12 +1132,26 @@ def generate_dashboard(base_dir: Path):
                 prop_path_str = item.get("proposal_path", "")
                 prop_excerpt = "제안 내용을 불러올 수 없습니다."
                 if prop_path_str:
-                    pp = base_dir / prop_path_str
+                    # Handle cross-environment paths
+                    # If path contains 'data/', extract relative path from there
+                    if "data/" in prop_path_str:
+                        rel_part = prop_path_str.split("data/", 1)[1]
+                        pp = base_dir / "data" / rel_part
+                    else:
+                        pp = Path(prop_path_str)
+                    
                     if pp.exists():
                          try:
-                             hints = [l for l in pp.read_text(encoding="utf-8").splitlines() if l.strip().startswith("-")][:5]
+                             lines = pp.read_text(encoding="utf-8").splitlines()
+                             hints = [l for l in lines if l.strip().startswith("-")][:5]
+                             if not hints:
+                                 # Fallback: take any non-empty lines
+                                 hints = [l for l in lines if l.strip()][:3]
+                             
                              prop_excerpt = "<br>".join(hints)
                          except: pass
+                    else:
+                        pass # Path missing or cross-env mismatch
     
                 queue_html += f"""
                 <div class="queue-card" id="card-{vid}">
@@ -1172,17 +1193,18 @@ def generate_dashboard(base_dir: Path):
         queue_html = f"<div style='color:red; font-size:11px;'>Queue 로드 실패: {e}</div>"
 
     
-    # [Phase 31-E] Applied Changes Section
-    # Renders summary of today's applied changes based on applied_summary.json
+    # [Phase 31-E] Deep Analysis Results Section (Replaces Applied Changes)
+    # Renders summary of Deep Logic Analysis from deep_analysis_results.json
     applied_html = ""
     
     try:
-        sum_path = base_dir / "data/narratives/applied" / narrative_ymd.replace("-","/") / "applied_summary.json"
+        # data/narratives/deep_analysis/{ymd}/deep_analysis_results.json
+        sum_path = base_dir / "data/narratives/deep_analysis" / narrative_ymd.replace("-","/") / "deep_analysis_results.json"
         has_items = False
         
         if sum_path.exists():
-            s_data = json.loads(sum_path.read_text(encoding="utf-8"))
-            items = s_data.get("items", [])
+            items = json.loads(sum_path.read_text(encoding="utf-8"))
+            # Sort by anomaly level (HIGH -> LOW)? Or simply list them.
             
             if items:
                 has_items = True
@@ -1190,29 +1212,44 @@ def generate_dashboard(base_dir: Path):
                 
                 for item in items:
                     v_title = item.get("title", "Untitled")
-                    v_by = item.get("approved_by", "System")
-                    v_at = item.get("approved_at", "")
+                    v_topic = item.get("real_topic", "Unknown")
+                    v_anomaly = item.get("anomaly_level", "NORMAL")
+                    v_logic = item.get("logic_path", "Standard")
+                    v_reason = item.get("real_topic_reasoning", "")
                     
-                    # Shorten date
-                    if "T" in v_at: v_at = v_at.split("T")[0]
+                    # Color coding for Anomaly
+                    anom_bg = "#e0f2fe" # blue-50
+                    anom_col = "#0369a1" # blue-700
+                    if v_anomaly == "CRITICAL":
+                        anom_bg = "#fee2e2" # red-100
+                        anom_col = "#b91c1c" # red-700
+                    elif v_anomaly == "WARNING":
+                        anom_bg = "#ffedd5" # orange-100
+                        anom_col = "#c2410c" # orange-700
                     
-                    scopes = item.get("applied_scopes", [])
-                    scope_badges = ""
-                    for sc in scopes:
-                        short_sc = sc.replace("_", " ").title().replace("Data Collection Master", "DCM").replace("Anomaly Detection Logic", "ADL").replace("Baseline Signals", "Base")
-                        scope_badges += f'<span style="font-size:9px; background:#e0f2fe; color:#0369a1; padding:2px 5px; border-radius:3px; margin-right:3px;">{short_sc}</span>'
-                    
+                    # Logic Badge
+                    logic_html = ""
+                    if v_logic:
+                         logic_html = f'<span style="font-size:9px; background:#f1f5f9; color:#475569; padding:2px 5px; border-radius:3px; margin-right:3px;">{v_logic}</span>'
+
                     applied_html += f"""
-                    <div class="applied-card" style="background:white; border:1px solid #bbf7d0; border-left:4px solid #22c55e; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div class="applied-card" style="background:white; border:1px solid #cbd5e1; border-left:4px solid {anom_col}; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
                         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-                            <span style="font-size:12px; font-weight:bold; color:#15803d;">🟢 APPLIED</span>
-                            <span style="font-size:10px; color:#94a3b8;">{v_at}</span>
+                            <span style="font-size:12px; font-weight:bold; color:{anom_col};">{v_anomaly} ANOMALY</span>
+                            <span style="font-size:10px; color:#94a3b8;">Topic: {v_topic}</span>
                         </div>
-                        <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px;">{v_title}</div>
-                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">by {v_by}</div>
-                        <div>{scope_badges}</div>
+                        <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px; line-height:1.4;">
+                            {v_title}
+                        </div>
+                         <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:5px;">
+                            {logic_html}
+                        </div>
+                        <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:6px; border-radius:4px;">
+                            {v_reason}
+                        </div>
                     </div>
                     """
+                applied_html += "</div>"
                 applied_html += '</div>'
         
         if not has_items:
