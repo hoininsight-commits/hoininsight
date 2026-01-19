@@ -1292,9 +1292,9 @@ def generate_dashboard(base_dir: Path):
                 </div>
                 """
                 
-                # Inject JS Data
-                applied_html += f"<script>{report_data_js}</script>"
-                applied_html += "</div>"
+            # Inject JS Data
+            applied_html += f"<script>{report_data_js}</script>"
+            applied_html += "</div>"
         
         if not has_items:
              applied_html += "<div style='font-size:12px; color:#94a3b8; padding:20px; text-align:center;'>금일 분석된 딥 로직 데이터가 없습니다.</div>"
