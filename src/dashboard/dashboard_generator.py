@@ -1919,10 +1919,10 @@ def generate_dashboard(base_dir: Path):
                     </div>
     """
 
-    # [Change Effectiveness Tab]
+    # [Deep Logic Analysis Tab (Renamed from Change Effectiveness)]
     html += f"""
-                    <div id="change-effectiveness" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 변경 효과 분석</h2>
+                    <div id="deep-logic" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
                         {applied_html}
                         {effectiveness_html}
                     </div>
