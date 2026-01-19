@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from src.utils.knowledge_base import KnowledgeBase
+from src.llm.gemini_client import GeminiClient
 
 class DeepLogicAnalyzer:
     """
@@ -30,6 +31,11 @@ class DeepLogicAnalyzer:
             "주식", "투자", "시장", "매수", "매도", "전망", "분석", "이슈", "뉴스", 
             "종목", "추천", "대박", "수익", "리스크", "돈", "자산", "경제"
         ]
+        try:
+            self.llm = GeminiClient()
+        except:
+            self.llm = None
+            print("[DeepLogicAnalyzer] Warning: GeminiClient init failed. Falling back to heuristics.")
         
     def analyze(self, video_id: str, title: str, transcript: str) -> Dict[str, Any]:
         """Run the full deep analysis pipeline."""
@@ -50,6 +56,12 @@ class DeepLogicAnalyzer:
         assumptions = self._extract_core_assumptions(transcript)
         
         # 6. Construct Final Report Data
+        
+        # [NEW] Try LLM Analysis
+        llm_report = None
+        if self.llm:
+            llm_report = self._generate_llm_analysis(transcript, title)
+            
         result = {
             "video_id": video_id,
             "title": title,
@@ -63,7 +75,8 @@ class DeepLogicAnalyzer:
             "core_assumptions": assumptions,
             "evolution_proposals": proposals, 
             "content_nature": "Leading Indicator" if anomaly_info['level'] == "L3" else "Lagging/Result",
-            "engine_conclusion": self._generate_conclusion(real_topic_info, anomaly_info, why_now_info, assumptions)
+            "engine_conclusion": self._generate_conclusion(real_topic_info, anomaly_info, why_now_info, assumptions),
+            "llm_report": llm_report # Store full LLM content if available
         }
         
         return result
@@ -276,7 +289,78 @@ class DeepLogicAnalyzer:
             evo_file.write_text(json.dumps(evo_data, ensure_ascii=False, indent=2), encoding='utf-8')
             print(f"[Evolution] Exported proposal {p_id} to collection queue.")
         
+    def _generate_llm_analysis(self, transcript: str, title: str) -> Optional[str]:
+        """
+        Generates a deep analysis report using the Gemini LLM with the 'Deep Logic Persona'.
+        """
+        prompt = f"""
+        You are the 'HOIN Insight Engine', a cold, analytical, and data-driven market intelligence AI.
+        
+        Your Goal: Analyze the provided video transcript to extract "Structural Shifts" and "Capital Flows" that are invisible to the public eye.
+        
+        # Persona Guidelines
+        1. **Tone**: Cold, incisive, cynical but objective. No fluff. No polite conversational filler.
+        2. **Structure**: Use specific emojis for headers (1️⃣, 2️⃣, 3️⃣...).
+        3. **Contrast**: Always contrast "What the crowd sees (Surface)" vs "What the data/logic says (Deep)". Use `❌ Surface View` vs `✅ HOIN Deep View`.
+        4. **Focus**:
+           - **Money in Motion**: Where is the CAPEX actually going?
+           - **Policy Implementation**: Is it just talk, or is the budget actually executed?
+           - **Infrastructure Lock-in**: What cannot be replaced once installed?
+        
+        # [CRITICAL] Engine Evolution Point (The Guideline)
+        You must adhere to the following logic evolution philosophy:
+        > ❌ "New logic or complex math is NOT the goal."
+        > ✅ "The goal is sensors that see 'where capital is locked in' at the sector level."
+        
+        Your analysis must answer:
+        - "Is capital fixed in a specific 'Role/Sector' driven by Policy/Infrastructure?"
+        - "Do we see Volume + ASP + Relative Strength rising together?"
+        
+        # Input Data
+        - **Title**: {title}
+        - **Transcript**:
+        {transcript[:15000]} (truncated if too long)
+        
+        # Output Format (Markdown)
+        
+        # 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
+        
+        ## 1️⃣ [Surface vs Deep] : The Core Misunderstanding
+        > (One sentence summary of the crowd's delusion)
+        
+        * **❌ Surface View (The Crowd)**: (What everyone is talking about - stock prices, news keywords)
+        * **✅ HOIN Deep View (The Logic)**: (The underlying structural shift or supply chain bottleneck)
+        
+        ## 2️⃣ [Anomaly Detection] : Why Now?
+        * **Trigger Event**: (What specific contract/policy/data point triggered this?)
+        * **State Shift**: (From 'Hype' to 'Capex' or 'Dream' to 'Reality'?)
+        
+        ## 3️⃣ [Critical Logic Chain]
+        1. (Step 1 of the logic)
+        2. (Step 2)
+        3. (Conclusion)
+        
+        ## 4️⃣ [Data Verification Needs]
+        (What specific data do we need to prove this? Be specific about datasets.)
+        * [PROPOSAL] (e.g., Sector ETF Relative Strength, Export Data for HS Code XXXX, Gov Budget Execution Rate)
+        
+        ## 5️⃣ [Cold Conclusion]
+        (3 lines max. Definitive judgment.)
+        
+        ## 6️⃣ [Engine Evolution Suggestion]
+        (Based on the 'Engine Evolution Point', what specific sensor should we build?)
+        * **Proposed Sensor**: (e.g., "Sector CAPEX Tracker", "Grid Bottleneck Index")
+        * **Reason**: (Why this sensor proves the lock-in)
+        """
+        
+        return self.llm.generate_content(prompt)
+
     def _format_markdown(self, res: Dict[str, Any]) -> str:
+        # If LLM report exists, use it as the primary content
+        if res.get('llm_report'):
+            return res['llm_report']
+            
+        # Fallback to Heuristic Report
         return f"""
 # 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
 

@@ -7,6 +7,7 @@ import traceback
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
+from src.utils.markdown_parser import parse_markdown
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -58,6 +59,8 @@ def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
     
     # Fallback to current date
     return datetime.utcnow().strftime("%Y-%m-%d")
+
+
 
 def _count_files(base_dir: Path, subpath: str, pattern: str = "*") -> int:
     try:
@@ -1211,7 +1214,7 @@ def generate_dashboard(base_dir: Path):
                 applied_html += '<div class="applied-list" style="display:flex; flex-direction:column; gap:10px;">'
                 
                 # Prepare Report Data Injection
-                report_data_js = ""
+                report_data_js = "window.REPORT_DATA = window.REPORT_DATA || {};\n"
                 
                 for item in items:
                     v_title = item.get("title", "Untitled")
@@ -1227,9 +1230,9 @@ def generate_dashboard(base_dir: Path):
                         rep_path = base_dir / "data/narratives/deep_analysis" / narrative_ymd.replace("-","/") / f"video_{vid}_report.md"
                         if rep_path.exists():
                             raw_md = rep_path.read_text(encoding="utf-8")
-                            full_report_html = _parse_markdown(raw_md)
+                            full_report_html = parse_markdown(raw_md)
                             # Escape quotes for JS string
-                            full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ")
+                            full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ").replace("\\", "\\\\")
                     
                     report_data_js += f'window.REPORT_DATA["{vid}"] = "{full_report_html}";\n'
 
@@ -2158,12 +2161,49 @@ def generate_dashboard(base_dir: Path):
 </div>
 
 <script>
+    // Initialize global data container
+    window.REPORT_DATA = window.REPORT_DATA || {};
+
     function closeModal() {
         document.getElementById('scriptModal').classList.remove('modal-active');
     }
+    
     function copyScript() {
         const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
         navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+    }
+    
+    // [Deep Logic Report Viewer]
+    function showDeepLogicReport(vid) {
+        var modal = document.getElementById("reportModal");
+        var content = document.getElementById("reportContent");
+        
+        if (modal && content) {
+            if (window.REPORT_DATA[vid]) {
+                content.innerHTML = window.REPORT_DATA[vid];
+            } else {
+                content.innerHTML = "<div style='padding:20px; text-align:center; color:#94a3b8;'>리포트 데이터가 로드되지 않았습니다.</div>";
+            }
+            modal.style.display = "block";
+        }
+    }
+    
+    function closeReportModal() {
+        var modal = document.getElementById("reportModal");
+        if (modal) modal.style.display = "none";
+    }
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        var reportModal = document.getElementById("reportModal");
+        var scriptModal = document.getElementById("scriptModal");
+        
+        if (event.target == reportModal) {
+            reportModal.style.display = "none";
+        }
+        if (event.target == scriptModal) {
+            scriptModal.classList.remove('modal-active');
+        }
     }
 </script>
 
