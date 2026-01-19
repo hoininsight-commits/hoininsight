@@ -1253,7 +1253,7 @@ def generate_dashboard(base_dir: Path):
                 applied_html += '</div>'
         
         if not has_items:
-             applied_html += "<div style='font-size:12px; color:#94a3b8; padding:10px;'>오늘 적용된 변경 사항이 없습니다.</div>"
+             applied_html += "<div style='font-size:12px; color:#94a3b8; padding:20px; text-align:center;'>금일 분석된 딥 로직 데이터가 없습니다.</div>"
              
     except Exception as e:
         applied_html += f"<div style='color:red; font-size:11px;'>Load Error: {e}</div>"
@@ -1924,7 +1924,6 @@ def generate_dashboard(base_dir: Path):
                     <div id="deep-logic" class="tab-content" style="display:none;">
                         <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
                         {applied_html}
-                        {effectiveness_html}
                     </div>
     """
 
