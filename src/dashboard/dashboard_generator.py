@@ -1210,13 +1210,29 @@ def generate_dashboard(base_dir: Path):
                 has_items = True
                 applied_html += '<div class="applied-list" style="display:flex; flex-direction:column; gap:10px;">'
                 
+                # Prepare Report Data Injection
+                report_data_js = ""
+                
                 for item in items:
                     v_title = item.get("title", "Untitled")
                     v_topic = item.get("real_topic", "Unknown")
                     v_anomaly = item.get("anomaly_level", "NORMAL")
                     v_logic = item.get("logic_path", "Standard")
                     v_reason = item.get("real_topic_reasoning", "")
+                    vid = item.get("video_id", "")
                     
+                    # [Full Report Loader]
+                    full_report_html = "<p>리포트 파일이 없습니다.</p>"
+                    if vid:
+                        rep_path = base_dir / "data/narratives/deep_analysis" / narrative_ymd.replace("-","/") / f"video_{vid}_report.md"
+                        if rep_path.exists():
+                            raw_md = rep_path.read_text(encoding="utf-8")
+                            full_report_html = _parse_markdown(raw_md)
+                            # Escape quotes for JS string
+                            full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ")
+                    
+                    report_data_js += f'window.REPORT_DATA["{vid}"] = "{full_report_html}";\n'
+
                     # Color coding for Anomaly
                     anom_bg = "#e0f2fe" # blue-50
                     anom_col = "#0369a1" # blue-700
@@ -1241,16 +1257,21 @@ def generate_dashboard(base_dir: Path):
                         <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px; line-height:1.4;">
                             {v_title}
                         </div>
-                         <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:5px;">
+                         <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;">
                             {logic_html}
                         </div>
-                        <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:6px; border-radius:4px;">
+                        <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:6px; border-radius:4px; margin-bottom:10px;">
                             {v_reason}
                         </div>
+                        <button onclick="showDeepLogicReport('{vid}')" style="width:100%; padding:6px; background:white; border:1px solid #cbd5e1; border-radius:4px; font-size:11px; color:#475569; cursor:pointer;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='white'">
+                            📄 상세 분석 리포트 보기
+                        </button>
                     </div>
                     """
+                
+                # Inject JS Data
+                applied_html += f"<script>{report_data_js}</script>"
                 applied_html += "</div>"
-                applied_html += '</div>'
         
         if not has_items:
              applied_html += "<div style='font-size:12px; color:#94a3b8; padding:20px; text-align:center;'>금일 분석된 딥 로직 데이터가 없습니다.</div>"
@@ -2145,6 +2166,17 @@ def generate_dashboard(base_dir: Path):
         navigator.clipboard.writeText(text).then(() => alert('Copied!'));
     }
 </script>
+
+
+    <!-- Report Viewer Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReportModal()">&times;</span>
+            <div id="reportContent" class="report-view">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
