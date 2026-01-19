@@ -43,7 +43,7 @@ Historical context:
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/19/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/19/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/19/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
-- [LOW] BTCUSD: data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
+- [MED] BTCUSD: data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] US10Y: data/features/anomalies/2026/01/19/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/19/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] SPX: data/features/anomalies/2026/01/19/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
