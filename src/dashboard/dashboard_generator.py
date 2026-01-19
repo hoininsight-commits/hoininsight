@@ -1550,7 +1550,6 @@ def generate_dashboard(base_dir: Path):
     try:
         # List last 7 days of output
         archive_html += '<div class="archive-list" style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">'
-        from datetime import timedelta
         for i in range(1, 8):
             past_date = (datetime.utcnow() - timedelta(days=i)).strftime("%Y/%m/%d")
             p_script = base_dir / "data/output" / past_date / "insight_script.md"
