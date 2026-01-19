@@ -291,7 +291,7 @@ jobs:
 
       - name: Generate Insight Dashboard
         run: |
-          python src/dashboard/dashboard_generator.py
+          python -m src.dashboard.dashboard_generator
 
           # Verification (Inline)
           if [ -f "dashboard/index.html" ]; then
@@ -435,7 +435,7 @@ jobs:
 
       - name: Generate Dashboard (Phase 31-D Update)
         run: |
-          python src/dashboard/dashboard_generator.py
+          python -m src.dashboard.dashboard_generator
 
       - name: Verify Phase 31-C Approval Pipeline
         run: |
