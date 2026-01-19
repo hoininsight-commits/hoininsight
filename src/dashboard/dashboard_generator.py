@@ -4,12 +4,37 @@ import json
 import os
 import sys
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
+
+def _utc_to_kst_display(utc_timestamp_str: str) -> str:
+    """Convert UTC timestamp to KST display format (MM/DD HH:MM).
+    
+    Args:
+        utc_timestamp_str: UTC timestamp in ISO format (e.g., "2026-01-15T06:51:38.361804Z")
+    
+    Returns:
+        Formatted string in KST (e.g., "01/15 15:51")
+    """
+    if not utc_timestamp_str:
+        return ""
+    
+    try:
+        # Remove 'Z' suffix and parse
+        utc_str = utc_timestamp_str.replace('Z', '')
+        utc_dt = datetime.fromisoformat(utc_str)
+        
+        # Convert to KST (UTC+9)
+        kst_dt = utc_dt + timedelta(hours=9)
+        
+        # Format as MM/DD HH:MM
+        return kst_dt.strftime("%m/%d %H:%M")
+    except Exception:
+        return utc_timestamp_str  # Return original if parsing fails
 
 def _count_files(base_dir: Path, subpath: str, pattern: str = "*") -> int:
     try:
@@ -72,7 +97,9 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
         status_info = collection_status_data[ds_id]
         status = status_info.get("status", "FAIL")
         reason = status_info.get("reason", "알 수 없음")
-        timestamp = status_info.get("timestamp", "")
+        timestamp_utc = status_info.get("timestamp", "")
+        # Convert UTC to KST for display
+        timestamp = _utc_to_kst_display(timestamp_utc)
     else:
         status = "PENDING"
         reason = "수집 대기 중"
