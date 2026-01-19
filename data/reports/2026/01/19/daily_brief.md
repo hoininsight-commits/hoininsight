@@ -43,11 +43,11 @@ Historical context:
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/19/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/19/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/19/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
+- [MED] KOSPI: data/features/anomalies/2026/01/19/index_kospi_stooq.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] BTCUSD: data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] US10Y: data/features/anomalies/2026/01/19/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/19/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] SPX: data/features/anomalies/2026/01/19/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
-- [LOW] KOSPI: data/features/anomalies/2026/01/19/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] KOR_RATE: data/features/anomalies/2026/01/19/rates_kor_base_rate_ecos.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] UNRATE: data/features/anomalies/2026/01/19/employment_unrate_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] FIN_STRESS: data/features/anomalies/2026/01/19/risk_financial_stress_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
