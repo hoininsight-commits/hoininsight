@@ -1201,76 +1201,96 @@ def generate_dashboard(base_dir: Path):
     applied_html = ""
     
     try:
-        # data/narratives/deep_analysis/{ymd}/deep_analysis_results.json
-        sum_path = base_dir / "data/narratives/deep_analysis" / narrative_ymd.replace("-","/") / "deep_analysis_results.json"
+        # Loop back 3 days to gather all recent analysis
+        from datetime import datetime, timedelta
+        deep_base = base_dir / "data/narratives/deep_analysis"
+        items = []
+        seen_vids = set()
+        
+        for i in range(3):
+            try:
+                d = datetime.utcnow() - timedelta(days=i)
+                d_ymd = d.strftime("%Y/%m/%d")
+                sum_path = deep_base / d_ymd / "deep_analysis_results.json"
+                
+                if sum_path.exists():
+                    day_items = json.loads(sum_path.read_text(encoding="utf-8"))
+                    for item in day_items:
+                        vid = item.get("video_id")
+                        if vid and vid not in seen_vids:
+                            seen_vids.add(vid)
+                            # Store the folder date so we know where to find the markdown report
+                            item["folder_date"] = d_ymd
+                            items.append(item)
+            except Exception:
+                continue
+        
         has_items = False
         
-        if sum_path.exists():
-            items = json.loads(sum_path.read_text(encoding="utf-8"))
-            # Sort by anomaly level (HIGH -> LOW)? Or simply list them.
+        if items:
+            has_items = True
+            applied_html += '<div class="applied-list" style="display:flex; flex-direction:column; gap:10px;">'
             
-            if items:
-                has_items = True
-                applied_html += '<div class="applied-list" style="display:flex; flex-direction:column; gap:10px;">'
+            # Prepare Report Data Injection
+            report_data_js = "window.REPORT_DATA = window.REPORT_DATA || {};\n"
+            
+            for item in items:
+                v_title = item.get("title", "Untitled")
+                v_topic = item.get("real_topic", "Unknown")
+                v_anomaly = item.get("anomaly_level", "NORMAL")
+                v_logic = item.get("logic_path", "Standard")
+                v_reason = item.get("real_topic_reasoning", "")
+                vid = item.get("video_id", "")
+                # Use folder_date for path lookup, fallback to analysis_date
+                v_date = item.get("folder_date", item.get("analysis_date", "")).replace("-", "/") 
                 
-                # Prepare Report Data Injection
-                report_data_js = "window.REPORT_DATA = window.REPORT_DATA || {};\n"
+                # [Full Report Loader]
+                full_report_html = "<p>리포트 파일이 없습니다.</p>"
+                if vid and v_date:
+                    rep_path = deep_base / v_date / f"video_{vid}_report.md"
+                    if rep_path.exists():
+                        raw_md = rep_path.read_text(encoding="utf-8")
+                        full_report_html = parse_markdown(raw_md)
+                        # Escape quotes for JS string
+                        full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ").replace("\\", "\\\\")
                 
-                for item in items:
-                    v_title = item.get("title", "Untitled")
-                    v_topic = item.get("real_topic", "Unknown")
-                    v_anomaly = item.get("anomaly_level", "NORMAL")
-                    v_logic = item.get("logic_path", "Standard")
-                    v_reason = item.get("real_topic_reasoning", "")
-                    vid = item.get("video_id", "")
-                    
-                    # [Full Report Loader]
-                    full_report_html = "<p>리포트 파일이 없습니다.</p>"
-                    if vid:
-                        rep_path = base_dir / "data/narratives/deep_analysis" / narrative_ymd.replace("-","/") / f"video_{vid}_report.md"
-                        if rep_path.exists():
-                            raw_md = rep_path.read_text(encoding="utf-8")
-                            full_report_html = parse_markdown(raw_md)
-                            # Escape quotes for JS string
-                            full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ").replace("\\", "\\\\")
-                    
-                    report_data_js += f'window.REPORT_DATA["{vid}"] = "{full_report_html}";\n'
+                report_data_js += f'window.REPORT_DATA["{vid}"] = "{full_report_html}";\n'
 
-                    # Color coding for Anomaly
-                    anom_bg = "#e0f2fe" # blue-50
-                    anom_col = "#0369a1" # blue-700
-                    if v_anomaly == "CRITICAL":
-                        anom_bg = "#fee2e2" # red-100
-                        anom_col = "#b91c1c" # red-700
-                    elif v_anomaly == "WARNING":
-                        anom_bg = "#ffedd5" # orange-100
-                        anom_col = "#c2410c" # orange-700
-                    
-                    # Logic Badge
-                    logic_html = ""
-                    if v_logic:
-                         logic_html = f'<span style="font-size:9px; background:#f1f5f9; color:#475569; padding:2px 5px; border-radius:3px; margin-right:3px;">{v_logic}</span>'
+                # Color coding for Anomaly
+                anom_bg = "#e0f2fe" # blue-50
+                anom_col = "#0369a1" # blue-700
+                if v_anomaly == "CRITICAL":
+                    anom_bg = "#fee2e2" # red-100
+                    anom_col = "#b91c1c" # red-700
+                elif v_anomaly == "WARNING":
+                    anom_bg = "#ffedd5" # orange-100
+                    anom_col = "#c2410c" # orange-700
+                
+                # Logic Badge
+                logic_html = ""
+                if v_logic:
+                        logic_html = f'<span style="font-size:9px; background:#f1f5f9; color:#475569; padding:2px 5px; border-radius:3px; margin-right:3px;">{v_logic}</span>'
 
-                    applied_html += f"""
-                    <div class="applied-card" style="background:white; border:1px solid #cbd5e1; border-left:4px solid {anom_col}; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-                            <span style="font-size:12px; font-weight:bold; color:{anom_col};">{v_anomaly} ANOMALY</span>
-                            <span style="font-size:10px; color:#94a3b8;">Topic: {v_topic}</span>
-                        </div>
-                        <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px; line-height:1.4;">
-                            {v_title}
-                        </div>
-                         <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;">
-                            {logic_html}
-                        </div>
-                        <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:6px; border-radius:4px; margin-bottom:10px;">
-                            {v_reason}
-                        </div>
-                        <button onclick="showDeepLogicReport('{vid}')" style="width:100%; padding:6px; background:white; border:1px solid #cbd5e1; border-radius:4px; font-size:11px; color:#475569; cursor:pointer;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='white'">
-                            📄 상세 분석 리포트 보기
-                        </button>
+                applied_html += f"""
+                <div class="applied-card" style="background:white; border:1px solid #cbd5e1; border-left:4px solid {anom_col}; border-radius:6px; padding:10px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+                        <span style="font-size:12px; font-weight:bold; color:{anom_col};">{v_anomaly} ANOMALY</span>
+                        <span style="font-size:10px; color:#94a3b8;">Topic: {v_topic}</span>
                     </div>
-                    """
+                    <div style="font-size:12px; font-weight:600; color:#334155; margin-bottom:5px; line-height:1.4;">
+                        {v_title}
+                    </div>
+                        <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;">
+                        {logic_html}
+                    </div>
+                    <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:6px; border-radius:4px; margin-bottom:10px;">
+                        {v_reason}
+                    </div>
+                    <button onclick="showDeepLogicReport('{vid}')" style="width:100%; padding:6px; background:white; border:1px solid #cbd5e1; border-radius:4px; font-size:11px; color:#475569; cursor:pointer;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='white'">
+                        📄 상세 분석 리포트 보기
+                    </button>
+                </div>
+                """
                 
                 # Inject JS Data
                 applied_html += f"<script>{report_data_js}</script>"
