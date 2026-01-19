@@ -835,7 +835,7 @@ def generate_dashboard(base_dir: Path):
     ledger_map = {}
     ledger_summary = {}
     try:
-        ledger_path = base_dir / "data/narratives/ledger_summary" / ymd.replace("-","/") / "ledger_summary.json"
+        ledger_path = base_dir / "data/narratives/ledger_summary" / narrative_ymd.replace("-","/") / "ledger_summary.json"
         if ledger_path.exists():
             ledger_summary = json.loads(ledger_path.read_text(encoding="utf-8"))
             for entry in ledger_summary.get("recent_entries", []):
@@ -855,7 +855,7 @@ def generate_dashboard(base_dir: Path):
         
         # Check applied_summary for today to quick check APPLIED
         applied_today_vids = []
-        applied_path = base_dir / "data/narratives/applied" / ymd.replace("-","/") / "applied_summary.json"
+        applied_path = base_dir / "data/narratives/applied" / narrative_ymd.replace("-","/") / "applied_summary.json"
         if applied_path.exists():
              try:
                  ad = json.loads(applied_path.read_text(encoding="utf-8"))
@@ -891,7 +891,7 @@ def generate_dashboard(base_dir: Path):
                                 
                             # Check APPROVED
                             appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
-                            appr_path_2 = base_dir / "data/narratives/approvals" / ymd.replace("-","/") / f"approve_{vid}.yml"
+                            appr_path_2 = base_dir / "data/narratives/approvals" / narrative_ymd.replace("-","/") / f"approve_{vid}.yml"
                             if appr_path_1.exists() or appr_path_2.exists():
                                 status = "APPROVED"
                                 
@@ -1177,7 +1177,7 @@ def generate_dashboard(base_dir: Path):
     applied_html = ""
     
     try:
-        sum_path = base_dir / "data/narratives/applied" / ymd.replace("-","/") / "applied_summary.json"
+        sum_path = base_dir / "data/narratives/applied" / narrative_ymd.replace("-","/") / "applied_summary.json"
         has_items = False
         
         if sum_path.exists():
