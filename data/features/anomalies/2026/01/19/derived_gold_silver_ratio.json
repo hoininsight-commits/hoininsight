@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-19T23:30:49Z",
+    "ts_utc": "2026-01-19T23:39:02Z",
     "dataset_id": "derived_gold_silver_ratio",
     "entity": "GOLD_SILVER_RATIO",
     "anomaly_type": "Z_SCORE_MODEL_V1",
@@ -9,8 +9,8 @@
     "evidence": {
       "z_score": -4.19,
       "percentile": 50.0,
-      "value": 49.65864773208987,
-      "rolling_mean_20d": 51.90146076010111,
+      "value": 49.64296311996609,
+      "rolling_mean_20d": 51.90067652949492,
       "reasoning": "Z-Score -4.19 >= 2.0"
     }
   }
