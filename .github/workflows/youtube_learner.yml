@@ -33,11 +33,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
 
-      - name: Run Narrative Watcher (Phase 31-A)
+      - name: Run Narrative Analyze & Queue (Phase 31-B/C)
         run: |
           python -m src.narratives.youtube_watcher
           python -m src.narratives.transcript_ingestor
           python -m src.narratives.narrative_status
+          # [Added] Deep Logic Analysis & Proposal Generation
+          python -m src.narratives.narrative_analyzer
+          # [Added] Queue Indexing for Dashboard
+          python -m src.narratives.proposal_queue
+          # [Added] Update Dashboard HTML
+          python -m src.dashboard.dashboard_generator
 
       - name: Commit outputs
         if: success()
@@ -45,9 +51,12 @@ jobs:
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
           # Force add data directories to safeguard against any lingering .gitignore issues
-          git add data/narratives/transcripts data/narratives/status data/narratives/raw/youtube || true
+          # Updated to include analysis outputs (proposals, deep_analysis, queue) and dashboard
+          git add data/narratives/transcripts data/narratives/status data/narratives/raw/youtube
+          git add data/narratives/proposals data/narratives/analysis data/narratives/deep_analysis data/narratives/queue
+          git add dashboard/index.html || true
           git diff --cached --quiet && echo "No changes" && exit 0
-          git commit -m "chore: youtube learner update [skip ci]"
+          git commit -m "chore: youtube learner update (with analysis & dashboard) [skip ci]"
           git push
 
       - name: Prepare Notification Message
