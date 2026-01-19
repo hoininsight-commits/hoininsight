@@ -1,4 +1,4 @@
-from __future__ import annotations
+¢£¢£¢from __future__ import annotations
 
 import json
 import os
@@ -678,22 +678,27 @@ def generate_dashboard(base_dir: Path):
              # Timestamp Display
              ts_html = ""
              if ds.get("last_updated"):
-                 # Format: 2026-01-16T15:30:00Z -> 01/16 15:30
-                 try:
-                     # Parse ISO string
-                     dt_obj = datetime.fromisoformat(ds["last_updated"])
-                     # Format to MM/DD HH:MM
-                     short_ts = dt_obj.strftime("%m/%d %H:%M")
-                     ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({short_ts})</span>'
-                 except:
-                     # Fallback simple slice if iso parse fails but it looks like ISO
-                     if "T" in str(ds["last_updated"]):
-                         parts = ds["last_updated"].split("T")
-                         date_part = parts[0][5:] # 2026-01-16 -> 01-16
-                         time_part = parts[1][:5] # 15:30:00 -> 15:30
-                         ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({date_part.replace("-","/")} {time_part})</span>'
-                     else:
-                         ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
+                 # Check if already formatted (MM/DD HH:MM from KST conversion)
+                 if "/" in str(ds["last_updated"]) and ":" in str(ds["last_updated"]) and "T" not in str(ds["last_updated"]):
+                     # Already formatted by _utc_to_kst_display(), use as-is
+                     ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
+                 else:
+                     # Original ISO format, parse and format
+                     try:
+                         # Parse ISO string
+                         dt_obj = datetime.fromisoformat(ds["last_updated"].replace("Z", ""))
+                         # Format to MM/DD HH:MM
+                         short_ts = dt_obj.strftime("%m/%d %H:% M")
+                         ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({short_ts})</span>'
+                     except:
+                         # Fallback simple slice if iso parse fails but it looks like ISO
+                         if "T" in str(ds["last_updated"]):
+                             parts = ds["last_updated"].split("T")
+                             date_part = parts[0][5:] # 2026-01-16 -> 01-16
+                             time_part = parts[1][:5] # 15:30:00 -> 15:30
+                             ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({date_part.replace("-","/")} {time_part})</span>'
+                         else:
+                             ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({ds["last_updated"]})</span>'
 
              # Value Display
              val_html = ""
