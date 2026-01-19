@@ -853,7 +853,7 @@ def generate_dashboard(base_dir: Path):
         
         inbox_items = []
         # Reverse day scan
-        from datetime import timedelta
+
         base_date = datetime.utcnow()
         
         # Check applied_summary for today to quick check APPLIED
@@ -1202,7 +1202,7 @@ def generate_dashboard(base_dir: Path):
     
     try:
         # Loop back 3 days to gather all recent analysis
-        from datetime import datetime, timedelta
+
         deep_base = base_dir / "data/narratives/deep_analysis"
         items = []
         seen_vids = set()
