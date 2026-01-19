@@ -6,7 +6,7 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: BTCUSD:FLAT(0.00)[png](data/reports/2026/01/19/charts/crypto_btc_usd_spot_coingecko.png) | NASDAQ:FLAT(0.00)[png](data/reports/2026/01/19/charts/index_nasdaq_fred.png)
+Drivers: NASDAQ:FLAT(0.00)[png](data/reports/2026/01/19/charts/index_nasdaq_fred.png) | WTI:FLAT(0.00)[png](data/reports/2026/01/19/charts/comm_wti_fred.png)
 Meta topics: [json](data/meta_topics/2026/01/19/meta_topics.json)
 This regime has persisted for 6 consecutive days since 2026-01-14.
 
@@ -21,14 +21,13 @@ Historical context:
 
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
-| 1 | BTCUSD | data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/01/19/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json) |
-| 2 | NASDAQ | data/features/anomalies/2026/01/19/index_nasdaq_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/index_nasdaq_fred.png) | [json](data/topics/2026/01/19/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/01/19/index_nasdaq_fred.json) |
-| 3 | WTI | data/features/anomalies/2026/01/19/comm_wti_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/comm_wti_fred.png) | [json](data/topics/2026/01/19/comm_wti_fred.json) | [json](data/features/anomalies/2026/01/19/comm_wti_fred.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/01/19/inflation_cpi_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/inflation_cpi_fred.png) | [json](data/topics/2026/01/19/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/19/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/01/19/inflation_pce_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/inflation_pce_fred.png) | [json](data/topics/2026/01/19/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/19/inflation_pce_fred.json) |
+| 1 | NASDAQ | data/features/anomalies/2026/01/19/index_nasdaq_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/index_nasdaq_fred.png) | [json](data/topics/2026/01/19/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/01/19/index_nasdaq_fred.json) |
+| 2 | WTI | data/features/anomalies/2026/01/19/comm_wti_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/comm_wti_fred.png) | [json](data/topics/2026/01/19/comm_wti_fred.json) | [json](data/features/anomalies/2026/01/19/comm_wti_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/01/19/inflation_cpi_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/inflation_cpi_fred.png) | [json](data/topics/2026/01/19/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/19/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/01/19/inflation_pce_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/inflation_pce_fred.png) | [json](data/topics/2026/01/19/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/19/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/01/19/liquidity_m2_fred.json L2 Signal | 6.00 | 2 (x1.30) | 7.80 | FLAT (0.00) | **7.80** | HIGH | [png](data/reports/2026/01/19/charts/liquidity_m2_fred.png) | [json](data/topics/2026/01/19/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/01/19/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
-- [HIGH] BTCUSD: data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] NASDAQ: data/features/anomalies/2026/01/19/index_nasdaq_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] WTI: data/features/anomalies/2026/01/19/comm_wti_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] CPI_USA: data/features/anomalies/2026/01/19/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
@@ -45,6 +44,7 @@ Historical context:
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/19/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/19/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/19/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
+- [MED] BTCUSD: data/features/anomalies/2026/01/19/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] US10Y: data/features/anomalies/2026/01/19/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/19/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] SPX: data/features/anomalies/2026/01/19/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
