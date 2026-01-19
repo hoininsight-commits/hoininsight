@@ -1,4 +1,4 @@
-# Insight Script (2026-01-18)
+# Insight Script (2026-01-19)
 <!-- Metadata
 Content Mod: NORMAL
 Content Preset: STANDARD
@@ -12,8 +12,8 @@ Regime: (no meta regime detected)
 - 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
 
 ## Why Now
-- 이 국면은 현재 **5일째** 지속되고 있습니다.
-- 현재 Narrative 상태는 **ACCELERATION** 단계입니다.
+- 이 국면은 현재 **6일째** 지속되고 있습니다.
+- 현재 Narrative 상태는 **SATURATION** 단계입니다.
 
 ## What Changed
 - 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
