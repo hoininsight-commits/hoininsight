@@ -865,16 +865,25 @@ def generate_dashboard(base_dir: Path):
                  applied_today_vids = [x.get('video_id') for x in ad.get('items', [])]
              except: pass
 
-        for i in range(3): # Scan last 3 days
+        for i in range(5): # Scan last 5 days
             scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             # [Fix] Scan raw/youtube instead of metadata
             # Structure: data/narratives/raw/youtube/YYYY/MM/DD/{VIDEO_ID}/metadata.json
             raw_dir = base_dir / "data/narratives/raw/youtube" / scan_ymd
             
+            check_dirs = []
             if raw_dir.exists():
-                # raw_dir contains video_id folders
-                for vid_dir in raw_dir.iterdir():
-                    if not vid_dir.is_dir(): continue
+                check_dirs.extend([d for d in raw_dir.iterdir() if d.is_dir()])
+            
+            # [Critical Fix] Also check root raw/youtube for manual or recent non-partitioned videos
+            if i == 0:
+                root_raw = base_dir / "data/narratives/raw/youtube"
+                for d in root_raw.iterdir():
+                    if d.is_dir() and d.name not in ["2024", "2025", "2026"]:
+                        if d not in check_dirs:
+                            check_dirs.append(d)
+
+            for vid_dir in check_dirs:
                     
                     m_file = vid_dir / "metadata.json"
                     if m_file.exists():
@@ -1070,14 +1079,21 @@ def generate_dashboard(base_dir: Path):
     queue_html = ""
     try:
         # Load Queue
-        q_path = base_dir / "data/narratives/queue" / narrative_ymd.replace("-","/") / "proposal_queue.json"
-        
-        # Always render the container structure for verification consistency
-        
+        # [Phase 33] Enhanced Queue Sync: Scan last 3 days if empty
         q_data = []
-        if q_path.exists():
-            q_data = json.loads(q_path.read_text(encoding="utf-8"))
-            
+        for i in range(3):
+            scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
+            q_p = base_dir / "data/narratives/queue" / scan_ymd / "proposal_queue.json"
+            if q_p.exists():
+                try:
+                    day_q = json.loads(q_p.read_text(encoding="utf-8"))
+                    # Merge and deduplicate by video_id
+                    vids = [x.get('video_id') for x in q_data]
+                    for item in day_q:
+                        if item.get('video_id') not in vids:
+                            q_data.append(item)
+                except: pass
+        
         print(f"[DEBUG] q_data length: {len(q_data)}")
         print(f"[DEBUG] priority_map length: {len(priority_map)}")
         if q_data or priority_map:
@@ -1306,6 +1322,73 @@ def generate_dashboard(base_dir: Path):
     # sidebar_html += applied_html <-- REMOVED (Moved to Change Effectiveness Tab)
 
     
+    # [Phase 31-B Enhanced] Deep Logic Analysis Loader
+    deep_logic_html = ""
+    try:
+        # Load from recent 3 days
+        deep_results = []
+        for i in range(3):
+            d_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
+            d_json = base_dir / "data/narratives/deep_analysis" / d_ymd / "deep_analysis_results.json"
+            if d_json.exists():
+                try:
+                    day_data = json.loads(d_json.read_text(encoding="utf-8"))
+                    if isinstance(day_data, list): deep_results.extend(day_data)
+                    else: deep_results.append(day_data)
+                except: pass
+        
+        if deep_results:
+            # Sort by most recent
+            deep_results.sort(key=lambda x: x.get('analysis_date', ''), reverse=True)
+            
+            deep_logic_html += '<div style="display:grid; gap:20px;">'
+            for res in deep_results:
+                vid = res.get('video_id')
+                level = res.get('anomaly_level', 'L1')
+                nature = res.get('content_nature', 'Lagging')
+                
+                lv_col = "#64748b"
+                if level == "L3": lv_col = "#ef4444"
+                elif level == "L2": lv_col = "#f59e0b"
+                
+                deep_logic_html += f"""
+                <div style="background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
+                        <div style="width:70%;">
+                            <div style="font-size:11px; font-weight:700; color:#64748b; margin-bottom:5px;">REAL TOPIC</div>
+                            <div style="font-size:18px; font-weight:800; color:#1e293b;">{res.get('real_topic')}</div>
+                            <div style="font-size:12px; color:#475569; margin-top:4px;">{res.get('real_topic_reasoning')}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="background:{lv_col}; color:white; padding:4px 10px; border-radius:8px; font-size:12px; font-weight:900;">{level}</span>
+                            <div style="font-size:10px; color:#94a3b8; margin-top:5px; font-weight:bold;">{nature}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                        <div style="background:#f8fafc; padding:12px; border-radius:8px;">
+                            <div style="font-size:10px; font-weight:800; color:#64748b; margin-bottom:8px;">💡 WHY NOW (Trigger)</div>
+                            <div style="font-size:12px; font-weight:700; color:#334155;">{res.get('why_now', {}).get('trigger_type')}</div>
+                            <div style="font-size:11px; color:#475569; margin-top:4px; line-height:1.4;">{res.get('why_now', {}).get('description')}</div>
+                        </div>
+                        <div style="background:#f0f9ff; padding:12px; border-radius:8px;">
+                            <div style="font-size:10px; font-weight:800; color:#0369a1; margin-bottom:8px;">🎯 ENGINE CONCLUSION</div>
+                            <div style="font-size:12px; color:#0c4a6e; line-height:1.5;">{res.get('engine_conclusion')}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:15px; display:flex; justify-content:space-between; align-items:center;">
+                        <div style="font-size:11px; color:#94a3b8;">Video: {res.get('title')} ({vid})</div>
+                        <a href="https://youtu.be/{vid}" target="_blank" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold;">Watch Original ➜</a>
+                    </div>
+                </div>
+                """
+            deep_logic_html += '</div>'
+        else:
+            deep_logic_html = "<div style='padding:40px; text-align:center; color:#94a3b8; background:#f8fafc; border-radius:12px; border:2px dashed #e2e8f0;'>최근 분석된 딥 로직 결과가 없습니다. (Phase 31-B)</div>"
+    except Exception as e:
+        deep_logic_html = f"<div style='color:red;'>Deep Logic Load Fail: {e}</div>"
+    # [End] Deep Logic Analysis Loader
     # [Start] Analysis Log Loader
     analysis_log_html = ""
     try:
@@ -2014,6 +2097,20 @@ def generate_dashboard(base_dir: Path):
                             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
                                 {inbox_html}
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- [Phase 31-B] Deep Logic Analysis Tab -->
+                    <div id="deep-logic" class="tab-content" style="display:none;">
+                        <div style="max-width: 900px; margin: 0 auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">🧠 딥 로직 분석 (Real Topic Identification)</h2>
+                                <span style="font-size: 11px; background:#eff6ff; color:#3b82f6; padding:4px 10px; border-radius:15px; font-weight:700;">Logic Engine Active</span>
+                            </div>
+                            <p style="font-size:13px; color:#64748b; margin-bottom:25px; line-height:1.6;">
+                                영상의 표면적인 주제를 넘어, 엔진 관점의 <b>실질적 데이터 항목(Real Topic)</b>과 <b>구조적 변화 레벨(L1-L3)</b>을 분석한 결과입니다.
+                            </p>
+                            {deep_logic_html}
                         </div>
                     </div>
     """
