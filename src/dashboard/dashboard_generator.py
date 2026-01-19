@@ -1325,9 +1325,9 @@ def generate_dashboard(base_dir: Path):
     # [Phase 31-B Enhanced] Deep Logic Analysis Loader
     deep_logic_html = ""
     try:
-        # Load from recent 3 days
+        # Load from recent 5 days
         deep_results = []
-        for i in range(3):
+        for i in range(5):
             d_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             d_json = base_dir / "data/narratives/deep_analysis" / d_ymd / "deep_analysis_results.json"
             if d_json.exists():
