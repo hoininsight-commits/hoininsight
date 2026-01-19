@@ -688,7 +688,7 @@ def generate_dashboard(base_dir: Path):
                          # Parse ISO string
                          dt_obj = datetime.fromisoformat(ds["last_updated"].replace("Z", ""))
                          # Format to MM/DD HH:MM
-                         short_ts = dt_obj.strftime("%m/%d %H:% M")
+                         short_ts = dt_obj.strftime("%m/%d %H:%M")
                          ts_html = f'<span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">({short_ts})</span>'
                      except:
                          # Fallback simple slice if iso parse fails but it looks like ISO
