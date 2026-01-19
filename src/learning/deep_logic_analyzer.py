@@ -61,6 +61,9 @@ class DeepLogicAnalyzer:
         llm_report = None
         if self.llm:
             llm_report = self._generate_llm_analysis(transcript, title)
+            if llm_report:
+                llm_proposals = self._parse_llm_proposals(video_id, llm_report)
+                proposals.extend(llm_proposals)
             
         result = {
             "video_id": video_id,
@@ -220,6 +223,37 @@ class DeepLogicAnalyzer:
                     break
         return proposals
 
+    def _parse_llm_proposals(self, video_id: str, llm_report: str) -> List[Dict[str, Any]]:
+        """Extract proposals from LLM Markdown report (Section 6)."""
+        proposals = []
+        try:
+            # Regex to find Section 6
+            match = re.search(r"## 6️⃣.*?Engine Evolution Suggestion.*?(\n.*?)($|#)", llm_report, re.DOTALL | re.IGNORECASE)
+            if match:
+                content = match.group(1).strip()
+                # Parse lines like * **Proposed Sensor**: ...
+                sensor = "Unknown Sensor"
+                reason = "No reason provided"
+                
+                s_match = re.search(r"\* \*\*Proposed Sensor\*\*: (.*)", content)
+                if s_match: sensor = s_match.group(1).strip()
+                
+                r_match = re.search(r"\* \*\*Reason\*\*: (.*)", content)
+                if r_match: reason = r_match.group(1).strip()
+                
+                proposals.append({
+                    "id": f"EVO-LLM-{datetime.utcnow().strftime('%Y%m%d')}-{abs(hash(sensor)) % 100000:05d}",
+                    "video_id": video_id,
+                    "category": "DATA_ADD", # or LOGIC_UPDATE based on content
+                    "detected_pattern": "LLM Engine Evolution Suggestion",
+                    "condition": sensor, # Store sensor name as condition
+                    "meaning": reason,
+                    "status": "PROPOSED"
+                })
+        except Exception as e:
+            print(f"Error parsing LLM proposals: {e}")
+        return proposals
+
     def _extract_core_assumptions(self, transcript: str) -> List[str]:
         # Heuristic: Look for "Because", "Therefore" structures (Korean: 때문에, 따라서)
         assumptions = []
@@ -279,7 +313,7 @@ class DeepLogicAnalyzer:
                 "status": "PROPOSED",
                 "content": {
                     "condition": p.get('condition', ''),
-                    "meaning": f"Pattern: {p.get('detected_pattern', 'Unknown')}"
+                    "meaning": p.get('meaning', f"Pattern: {p.get('detected_pattern', 'Unknown')}")
                 },
                 "evidence": {
                     "quote": p.get('condition', ''),

@@ -64,6 +64,46 @@ def populate_mock_data():
     else:
         print("   [Skip] No API Key for Deep Logic")
 
+    # 1.5 Populate Evolution Proposals (Mocking the Parser Result)
+    print("1.5 Populating Evolution Proposals...")
+    evo_dir = base_dir / "data/evolution/proposals"
+    evo_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Mock Proposal 1 (Logic Update)
+    p1 = {
+        "id": "EVO-MOCK-20260119-00001",
+        "generated_at": datetime.utcnow().isoformat(),
+        "category": "LOGIC_UPDATE",
+        "status": "PROPOSED",
+        "content": {
+            "condition": "Supply Chain Bottleneck detected",
+            "meaning": "Transformer Lead Time > 36 months implies Structural L3 Anomaly"
+        },
+        "evidence": {
+            "quote": "변압기 리드타임이 36개월에서 48개월로 늘어남",
+            "source": title
+        }
+    }
+    
+    # Mock Proposal 2 (Data Add - The Engine Suggestion)
+    p2 = {
+        "id": "EVO-MOCK-20260119-00002",
+        "generated_at": datetime.utcnow().isoformat(),
+        "category": "DATA_ADD",
+        "status": "PROPOSED",
+        "content": {
+            "condition": "Sector CAPEX Tracker",
+            "meaning": "This sensor proves the lock-in by tracking utility major CAPEX execution rates vs plans."
+        },
+        "evidence": {
+            "quote": "New specific sensor needed for sector capex",
+            "source": title
+        }
+    }
+    
+    (evo_dir / "EVO-MOCK-001.json").write_text(json.dumps(p1, ensure_ascii=False, indent=2), encoding='utf-8')
+    (evo_dir / "EVO-MOCK-002.json").write_text(json.dumps(p2, ensure_ascii=False, indent=2), encoding='utf-8')
+
     # 2. Populate Youtube Inbox (Mock)
     print("2. Populating Youtube Inbox...")
     inbox_dir = base_dir / "data/narratives/inbox" / ymd_path
