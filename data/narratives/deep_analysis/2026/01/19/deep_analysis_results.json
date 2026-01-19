@@ -1,0 +1,36 @@
+[
+  {
+    "video_id": "mock_supercycle_01",
+    "title": "[긴급진단] 전력 인프라, 지금이 마지막 탑승 기회인가? (feat. 변압기 슈퍼사이클)",
+    "analysis_date": "2026-01-19",
+    "surface_topics": [
+      "전망",
+      "주식"
+    ],
+    "real_topic": "전력",
+    "real_topic_reasoning": "Heuristic Extraction: High-frequency term '전력'",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '병목' found, L3 Keyword '강제' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "주가가 많이 올랐다고 하지만, 실적 성장 속도가 더 빠르기 때문에 여전히 저평가 국면일 수 있습니다"
+    ],
+    "evolution_proposals": [
+      {
+        "id": "EVO-LLM-20260119-78095",
+        "video_id": "mock_supercycle_01",
+        "category": "DATA_ADD",
+        "detected_pattern": "LLM Engine Evolution Suggestion",
+        "condition": "**The Lead-Time/Order Book Fixation Ratio (LT/OFR)**",
+        "meaning": "This sensor directly measures the duration (T) capital is guaranteed to remain fixed. A 48-month lead time means the capital flow associated with that unit is temporally locked, making the revenue stream highly predictable and insulating the sector from short-term macro economic contraction risk. It proves policy execution is overriding macro uncertainty.",
+        "status": "PROPOSED"
+      }
+    ],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '전력'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 주가가 많이 올랐다고 하지만, 실적 성장 속도가 더 빠르기 때문에 여전히 저평가 국면일 수 있습니다",
+    "llm_report": "# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis\n\nThe analysis confirms the transition of the Power Infrastructure sector from a cyclical trade to a fixed capital infrastructure bottleneck. The primary mechanism is the collision between mandated CAPEX execution and rigid global supply capacity.\n\n## 1️⃣ [Surface vs Deep] : The Core Misunderstanding\n> The crowd is pricing a 'Supercycle' based on volume expectation; the data shows capital fixation based on temporal lock-in and mandated spend.\n\n* **❌ Surface View (The Crowd)**: Transformer stocks are rallying due to the ephemeral \"AI theme\" and general grid upgrade expectations. They believe this is a classic cyclical boom that will eventually decelerate as supply catches up.\n* **✅ HOIN Deep View (The Logic)**: US utility CAPEX (Duke, Exelon) tied to IRA subsidies translates into non-discretionary, mandatory budget execution. The 36-48 month lead time for high-voltage units is proof that revenue is fixed and secured for four fiscal years, irrespective of short-term economic volatility. This is infrastructure lock-in, not market hype.\n\n## 2️⃣ [Anomaly Detection] : Why Now?\n\n* **Trigger Event**: The confluence of utility CAPEX upward revisions (10-year maximums) and the immediate, physical constraint imposed by AI data center demand (Virginia power approval delays). This shifts power demand from theoretical load growth to an immediate, hard bottleneck for the next industrial revolution.\n* **State Shift**: The market state has transitioned from **'Policy Hype'** (IRA legislation announced) to **'Budget Execution Necessity'**. Capital expenditure is now fixed in steel and copper for the next 48 months, guaranteeing volume and providing extreme pricing power (ASP).\n\n## 3️⃣ [Critical Logic Chain]\n\n1. **Policy Mandate Fixation**: US utility CAPEX is being force-executed, driven by long-term IRA incentives and grid stability requirements. This funding is structural; failure to spend risks regulatory penalty or forfeiture of subsidies.\n2. **Inelastic Supply Collision**: Transformer lead times (up to 48 months) establish an undeniable supply constraint. This low elasticity guarantees pricing power for incumbents capable of quality high-voltage production. **Volume + ASP are structurally supported.**\n3. **AI Demand as Non-Negotiable Load**: The AI/Data Center industry's primary bottleneck has shifted from silicon supply to power grid capacity. Since computational infrastructure cannot be activated without power, CAPEX for grid expansion becomes the prerequisite spend, making the demand side mandatory and accelerated.\n\n## 4️⃣ [Data Verification Needs]\nWe need specialized sensors focused on capital commitment and supply chain rigidity, moving beyond standard financial reporting.\n\n* **[PROPOSAL] Utility CAPEX Execution Index (UCX)**: Track the quarterly percentage of stated CAPEX plans actually spent by the top 5 US utilities (Duke, Exelon, NextEra) specifically on transmission and distribution modernization (as opposed to generation).\n* **[PROPOSAL] Global Transformer Lead Time Index (GTTLI)**: Establish a real-time data feed tracking quoted lead times for high-voltage (HV, 230kV+) and ultra-high-voltage (UHV) power transformers from key global suppliers. The persistence of 36+ months confirms structural lock-in.\n* **[PROPOSAL] Grid Bottleneck Index (GBI)**: Monitor permit application approval rates and power allocation wait times in major data center aggregation zones (Virginia, Arizona, Texas). Declining approval rates confirm the grid's role as the primary choke point, forcing essential infrastructure spend.\n\n## 5️⃣ [Cold Conclusion]\n\nCapital is fixed for the next four years inside specific high-voltage component manufacturers. Rising Volume, maximized ASP leverage, and long-term locked-in Relative Strength are confirmed. This is not a cycle; it is policy-mandated infrastructure refitting where supply cannot meet necessary demand, forcing premium capture.\n\n## 6️⃣ [Engine Evolution Suggestion]\nThe Engine must prioritize tracking temporal fixed capital over simple financial ratios.\n\n* **Proposed Sensor**: **The Lead-Time/Order Book Fixation Ratio (LT/OFR)**\n* **Reason**: This sensor directly measures the duration (T) capital is guaranteed to remain fixed. A 48-month lead time means the capital flow associated with that unit is temporally locked, making the revenue stream highly predictable and insulating the sector from short-term macro economic contraction risk. It proves policy execution is overriding macro uncertainty."
+  }
+]
