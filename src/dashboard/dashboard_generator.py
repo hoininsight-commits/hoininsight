@@ -36,6 +36,29 @@ def _utc_to_kst_display(utc_timestamp_str: str) -> str:
     except Exception:
         return utc_timestamp_str  # Return original if parsing fails
 
+def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
+    """Find the latest date with narrative data, looking back up to max_days_back days.
+    
+    Args:
+        base_dir: Base directory of the project
+        max_days_back: Maximum number of days to look back (default: 7)
+    
+    Returns:
+        Date string in YYYY-MM-DD format, or current date if no data found
+    """
+    for days_ago in range(max_days_back + 1):
+        check_date = datetime.utcnow() - timedelta(days=days_ago)
+        ymd = check_date.strftime("%Y-%m-%d")
+        ymd_path = ymd.replace("-", "/")
+        
+        # Check if queue data exists for this date
+        queue_path = base_dir / "data/narratives/queue" / ymd_path / "proposal_queue.json"
+        if queue_path.exists():
+            return ymd
+    
+    # Fallback to current date
+    return datetime.utcnow().strftime("%Y-%m-%d")
+
 def _count_files(base_dir: Path, subpath: str, pattern: str = "*") -> int:
     try:
         p = base_dir / subpath
@@ -164,7 +187,8 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
     }
 
 def generate_dashboard(base_dir: Path):
-    ymd = _utc_ymd()
+    ymd = _utc_ymd()  # Current date for data collection status
+    narrative_ymd = _find_latest_narrative_date(base_dir)  # Latest date with narrative data
     datasets = parse_registry(base_dir)
     
     collection_status_file = base_dir / "data" / "dashboard" / "collection_status.json"
@@ -777,7 +801,7 @@ def generate_dashboard(base_dir: Path):
     priority_map = {}
     
     # Attempt 1: Load Phase 33 (Aging)
-    aging_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores_with_aging.json"
+    aging_path = base_dir / "data/narratives/prioritized" / narrative_ymd.replace("-","/") / "proposal_scores_with_aging.json"
     if aging_path.exists():
         try:
             print(f"[DEBUG] Loading Phase 33: {aging_path}")
@@ -793,7 +817,7 @@ def generate_dashboard(base_dir: Path):
 
     # Attempt 2: Fallback to Phase 32 (Prioritized) if map is still empty
     if not priority_map:
-        prio_path = base_dir / "data/narratives/prioritized" / ymd.replace("-","/") / "proposal_scores.json"
+        prio_path = base_dir / "data/narratives/prioritized" / narrative_ymd.replace("-","/") / "proposal_scores.json"
         if prio_path.exists():
             try:
                 print(f"[DEBUG] Loading Phase 32 (Fallback): {prio_path}")
@@ -1043,7 +1067,7 @@ def generate_dashboard(base_dir: Path):
     queue_html = ""
     try:
         # Load Queue
-        q_path = base_dir / "data/narratives/queue" / ymd.replace("-","/") / "proposal_queue.json"
+        q_path = base_dir / "data/narratives/queue" / narrative_ymd.replace("-","/") / "proposal_queue.json"
         
         # Always render the container structure for verification consistency
         
