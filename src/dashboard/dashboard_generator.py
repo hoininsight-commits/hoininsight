@@ -1094,7 +1094,7 @@ def generate_dashboard(base_dir: Path):
         # Load Queue
         # [Phase 33] Enhanced Queue Sync: Scan last 3 days if empty
         q_data = []
-        for i in range(5):
+        for i in range(10):
             scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             q_p = base_dir / "data/narratives/queue" / scan_ymd / "proposal_queue.json"
             if q_p.exists():
@@ -1236,7 +1236,7 @@ def generate_dashboard(base_dir: Path):
         items = []
         seen_vids = set()
         
-        for i in range(5):
+        for i in range(10):
             try:
                 d = datetime.utcnow() - timedelta(days=i)
                 d_ymd = d.strftime("%Y/%m/%d")
@@ -1338,9 +1338,9 @@ def generate_dashboard(base_dir: Path):
     # [Phase 31-B Enhanced] Deep Logic Analysis Loader
     deep_logic_html = ""
     try:
-        # Load from recent 5 days
+        # Load from recent 10 days
         deep_results = []
-        for i in range(5):
+        for i in range(10):
             d_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             d_json = base_dir / "data/narratives/deep_analysis" / d_ymd / "deep_analysis_results.json"
             if d_json.exists():
