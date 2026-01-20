@@ -2305,7 +2305,7 @@ def generate_dashboard(base_dir: Path):
 
 <script>
     // Initialize global data container
-    window.REPORT_DATA = window.REPORT_DATA || {};
+    {report_data_js}
 
     function closeModal() {
         document.getElementById('scriptModal').classList.remove('modal-active');
