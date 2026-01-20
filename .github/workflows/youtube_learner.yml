@@ -59,6 +59,7 @@ jobs:
           git add dashboard/index.html || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: youtube learner update (with analysis & dashboard) [skip ci]"
+          git pull --rebase
           git push
 
       - name: Prepare Notification Message
