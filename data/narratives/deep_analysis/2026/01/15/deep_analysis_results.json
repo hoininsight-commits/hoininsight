@@ -2,16 +2,16 @@
   {
     "video_id": "53Yd9a8qSRo",
     "title": "월가에서 '제2의 현대차' 될 수 있다는 저평가주",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "투자",
-      "종목",
+      "자산",
       "분석",
-      "경제",
-      "시장"
+      "시장",
+      "리스크",
+      "종목"
     ],
-    "real_topic": "Unknown Structural Shift",
-    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "real_topic": "AI",
+    "real_topic_reasoning": "KB Keyword Match: 'AI' (mentioned 3 times)",
     "anomaly_level": "L2",
     "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '독점' found",
     "why_now": {
@@ -21,21 +21,22 @@
     "core_assumptions": [],
     "evolution_proposals": [],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "Engine has detected a L2 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 'AI'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.",
+    "llm_report": null
   },
   {
     "video_id": "qATP0eIVgoA",
     "title": "현시점 금값, 가장 쌀 때 매수 하는 방법",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "투자",
-      "종목",
+      "자산",
+      "뉴스",
       "분석",
-      "경제",
-      "돈"
+      "시장",
+      "매수"
     ],
-    "real_topic": "Unknown Structural Shift",
-    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "real_topic": "금리",
+    "real_topic_reasoning": "KB Keyword Match: '금리' (mentioned 6 times)",
     "anomaly_level": "L1",
     "anomaly_reasoning": "Mostly price/sentiment level signals.",
     "why_now": {
@@ -48,21 +49,22 @@
     ],
     "evolution_proposals": [],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "Engine has detected a L1 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '금리'와(과) 관련하여 L1 수준의 이상징후를 감지했습니다. 핵심 가정: 금은 회사 실적 때문에 오르는 자산이 아니라 시장의 불안감과 금리 환경에 따라 크게 요동치는 자산이거든",
+    "llm_report": null
   },
   {
     "video_id": "rFfleFohjCs",
     "title": "환율 1500원 구간에서 ‘망하는 분야 vs 돈 몰리는 분야’",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "수익",
-      "투자",
-      "종목",
       "분석",
-      "경제"
+      "시장",
+      "수익",
+      "매도",
+      "리스크"
     ],
-    "real_topic": "Unknown Structural Shift",
-    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "real_topic": "구조",
+    "real_topic_reasoning": "KB Keyword Match: '구조' (mentioned 7 times)",
     "anomaly_level": "L3",
     "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '불가능' found, L2 Keyword '수급' found",
     "why_now": {
@@ -75,18 +77,19 @@
     ],
     "evolution_proposals": [],
     "content_nature": "Leading Indicator",
-    "engine_conclusion": "Engine has detected a L3 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '구조'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 대부분 정부 규제나 치열한 가격 경쟁 때문에 가격 전가가 불가능해",
+    "llm_report": null
   },
   {
     "video_id": "oKwcmucSGcU",
     "title": "트럼프가 '다시 한번' 관세로 전세계 장악하는 방법",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "투자",
-      "종목",
+      "자산",
+      "뉴스",
       "분석",
-      "경제",
-      "돈"
+      "시장",
+      "매수"
     ],
     "real_topic": "구리",
     "real_topic_reasoning": "Data Master Definition Match: '구리' (mentioned 4 times)",
@@ -103,7 +106,7 @@
     ],
     "evolution_proposals": [
       {
-        "id": "EVO-20260118-53918",
+        "id": "EVO-20260120-04022",
         "video_id": "oKwcmucSGcU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -112,21 +115,22 @@
       }
     ],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "Engine has detected a L2 anomaly regarding '구리'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '구리'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 핵심 가정: 세 번째는이 불확실성 때문에 전 세계 투자자들이 위험 자산에서 빠져나와 안전 자산으로 돈을 옮기고 있다는 거야",
+    "llm_report": null
   },
   {
     "video_id": "iR0eIStTrhY",
     "title": "트럼프가 금융주를 정면으로 건드리는 진짜 이유",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "종목",
+      "뉴스",
       "분석",
-      "경제",
-      "돈",
-      "주식"
+      "시장",
+      "매도",
+      "리스크"
     ],
-    "real_topic": "Unknown Structural Shift",
-    "real_topic_reasoning": "No direct match in Data Master. Requires semantic extraction.",
+    "real_topic": "금융",
+    "real_topic_reasoning": "KB Keyword Match: '금융' (mentioned 6 times)",
     "anomaly_level": "L3",
     "anomaly_reasoning": "High structural impact detected. L3 Keyword '강제' found, L3 Keyword '불가능' found",
     "why_now": {
@@ -139,6 +143,7 @@
     ],
     "evolution_proposals": [],
     "content_nature": "Leading Indicator",
-    "engine_conclusion": "Engine has detected a L3 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis."
+    "engine_conclusion": "엔진은 '금융'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 그리고 잡히지 않는 물가 잡기용 정치적쇼로 보고 있어 트럼프 행정부가 강하게 밀어붙였던 관세 정책이 결국 물가를 올려버렸고이 때문에 연준도 쉽게 금리를 못 내리고 버티는 중이지 금리가 높으면 유권자들은 대출이자 감느라 주건하고 이러면 11월 선거에서 표가 우수수 떨어질게 뻔하잖아",
+    "llm_report": null
   }
 ]

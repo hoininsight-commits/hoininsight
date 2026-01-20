@@ -3,15 +3,15 @@
 
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
-* 투자
-* 종목
+* 뉴스
 * 분석
-* 경제
-* 돈
+* 시장
+* 전망
+* 종목
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
-* **Real Topic**: Unknown Structural Shift
-* **Reframed**: No direct match in Data Master. Requires semantic extraction.
+* **Real Topic**: 실적
+* **Reframed**: KB Keyword Match: '실적' (mentioned 15 times)
 
 ## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
 * **Level**: L1
@@ -28,4 +28,4 @@
 * (No new data collection needs identified)
 
 ## 7️⃣ 엔진 최종 판정 요약
-> Engine has detected a L1 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis.
+> 엔진은 '실적'와(과) 관련하여 L1 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.

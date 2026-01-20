@@ -3,11 +3,11 @@
 
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
-* 시장
+* 추천
 * 자산
 * 뉴스
-* 추천
-* 대박
+* 분석
+* 시장
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
 * **Real Topic**: 구리

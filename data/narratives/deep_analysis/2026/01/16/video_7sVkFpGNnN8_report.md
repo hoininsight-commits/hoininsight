@@ -3,15 +3,15 @@
 
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
-* 투자
-* 종목
-* 경제
-* 돈
-* 이슈
+* 자산
+* 뉴스
+* 시장
+* 전망
+* 매도
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
-* **Real Topic**: Unknown Structural Shift
-* **Reframed**: No direct match in Data Master. Requires semantic extraction.
+* **Real Topic**: 미국
+* **Reframed**: KB Keyword Match: '미국' (mentioned 25 times)
 
 ## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
 * **Level**: L3
@@ -28,4 +28,4 @@
 * (No new data collection needs identified)
 
 ## 7️⃣ 엔진 최종 판정 요약
-> Engine has detected a L3 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis.
+> 엔진은 '미국'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 미국 입장에서는 자기네 땅에 공장 짓고 일자리 만들어 주기로 한 약속이 환율 때문에 틀어지는 걸 원치 않는 거야

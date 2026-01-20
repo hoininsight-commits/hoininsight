@@ -1,36 +1,28 @@
+
 # 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
 
-The input text confirms that major capital allocators (Morgan Stanley) are publicly flagging a generational structural shift and demanding an urgent re-evaluation of long-term asset strategy. This urgency is the signal. The vagueness of "structural change" is by design; the institutional shift is occurring in fixed, non-fungible assets invisible to momentum traders.
+## 1️⃣ 겉주제 제거 (Surface Topic 제거)
+영상의 표면 메시지 (Removed):
+* 투자
+* 시장
 
-## 1️⃣ [Surface vs Deep] : The Core Misunderstanding
-The crowd focuses on equity fluctuations while ignoring the cost of physical infrastructure deployment mandated by policy.
+## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
+* **Real Topic**: 경고
+* **Reframed**: KB Keyword Match: '경고' (mentioned 1 times)
 
-*   **❌ Surface View (The Crowd)**: The long-term investment path is "vague" and prone to market timing errors; short-term macroeconomic data (inflation, rate cuts) dictates strategy.
-*   **✅ HOIN Deep View (The Logic)**: The structural shift is the collision of geopolitical fragmentation (reshoring) and technological demand (AI/Electrification). This requires *non-discretionary* capital expenditure in fixed, physical infrastructure (power, cooling, fabrication). The urgency is driven by the reality that the supply chain for these bottleneck components is inelastic, locking in guaranteed returns for specific providers now.
+## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
+* **Level**: L2
+* **Reasoning**: Supply/Demand imbalance signals. L3 Keyword '구조' found
 
-## 2️⃣ [Anomaly Detection] : Why Now?
-The shift from aspirational policy targets (Hype) to realized balance sheet liabilities (Capex) has commenced, creating unavoidable demand.
+## 4️⃣ WHY_NOW 트리거 판정
+* **Type**: State-driven (Price/News)
+* **Trigger**: No explicit immediate trigger found, likely a trend analysis.
 
-*   **Trigger Event**: Global policy frameworks (IRA, Chips Act, EU Mandates) are moving from authorization phases to budget execution, triggering multi-year, fixed contracts for foundational infrastructure components (e.g., power transformers, high-voltage switchgear).
-*   **State Shift**: From 'Dream' (Net Zero goals, AI potential) to 'Reality' (Utility CAPEX announcements, guaranteed Power Purchase Agreements/PPAs, multi-year backlogs for essential grid equipment). Capital is no longer theoretical; it is fixed in concrete and copper.
+## 5️⃣ 핵심 가정 (Core Assumptions)
 
-## 3️⃣ [Critical Logic Chain]
-1. Policy mandates (Geopolitical fragmentation and Decarbonization) necessitate the construction of redundant energy and computation networks (Fabs and Data Centers).
-2. Building these networks requires fixed, large-scale electrical infrastructure (Grid modernization, HVDC, Substation upgrades) which demands specific, long-lead industrial equipment (bottleneck components).
-3. The volume demand is inelastic (dictated by sovereign policy and AI requirements) and supply is constrained (high barrier to entry, long manufacturing lead times). **Capital is locked into the few firms capable of supplying the physical layer.**
 
-## 4️⃣ [Data Verification Needs]
-We must verify where the policy budget is actually being executed and where pricing power is consolidating due to constrained supply.
+## 6️⃣ DATA_COLLECTION_MASTER 관점 (Evolution Proposals)
+* (No new data collection needs identified)
 
-*   **[PROPOSAL]** Utility Sector CAPEX Execution Rate (US and EU): Track the quarterly expenditure release against announced budgets for 2024/2025.
-*   **[PROPOSAL]** Industrial Equipment Book-to-Bill Ratio (HS Codes related to Power Transmission/Distribution, e.g., 8504, 8535): Monitoring backlogs and average selling price (ASP) increases for large power transformers.
-*   **[PROPOSAL]** AI Cluster Power Consumption Audit: Cross-reference announced data center construction schedules against local utility grid upgrade filings to identify future systemic power bottlenecks.
-
-## 5️⃣ [Cold Conclusion]
-The generational structural shift is the policy-driven guarantee of fixed CAPEX cycles into physical infrastructure. Capital is flooding the base layers of the economy, guaranteeing inelastic volume and price strength for bottleneck providers. The optimal long-term strategy is fixed asset ownership in these scarce industrial roles.
-
-## 6️⃣ [Engine Evolution Suggestion]
-The engine must move past tracking equity performance and focus on the physical chokepoints where capital is immovable.
-
-*   **Proposed Sensor**: **Grid Bottleneck Index (GBI)**
-*   **Reason**: The GBI tracks the combined increase in utility CAPEX execution, the ASP of essential high-voltage equipment, and the forward order backlogs of the top three global industrial providers. This proves capital is fixed, volume is guaranteed by policy, and relative strength is rising due to supply scarcity.
+## 7️⃣ 엔진 최종 판정 요약
+> 엔진은 '경고'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.

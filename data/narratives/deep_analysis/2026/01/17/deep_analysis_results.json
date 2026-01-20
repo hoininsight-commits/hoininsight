@@ -2,13 +2,13 @@
   {
     "video_id": "wJsg7L_JtEU",
     "title": "한국 정부가 '코스닥'은 버리고 '코스피'만 밀어주는 진짜 이유",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "시장",
-      "투자",
-      "전망",
       "자산",
-      "매수"
+      "뉴스",
+      "분석",
+      "시장",
+      "수익"
     ],
     "real_topic": "정부",
     "real_topic_reasoning": "KB Keyword Match: '정부' (mentioned 24 times)",
@@ -25,7 +25,7 @@
     ],
     "evolution_proposals": [
       {
-        "id": "EVO-20260118-11958",
+        "id": "EVO-20260120-68068",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -33,7 +33,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-26886",
+        "id": "EVO-20260120-23262",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -41,7 +41,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-14701",
+        "id": "EVO-20260120-09454",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -49,7 +49,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-50129",
+        "id": "EVO-20260120-66926",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -57,7 +57,7 @@
         "status": "PROPOSED"
       },
       {
-        "id": "EVO-20260118-95759",
+        "id": "EVO-20260120-83262",
         "video_id": "wJsg7L_JtEU",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 확인해야",
@@ -66,18 +66,19 @@
       }
     ],
     "content_nature": "Leading Indicator",
-    "engine_conclusion": "엔진은 '정부'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 구조 때문에 그렇게 보이는 거야"
+    "engine_conclusion": "엔진은 '정부'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 구조 때문에 그렇게 보이는 거야",
+    "llm_report": null
   },
   {
     "video_id": "jQOj74xqoYY",
     "title": "현시점, 한국인들이 가장 좋아한다는 ETF",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
+      "분석",
       "시장",
-      "투자",
+      "수익",
       "전망",
-      "경제",
-      "수익"
+      "리스크"
     ],
     "real_topic": "ETF",
     "real_topic_reasoning": "KB Keyword Match: 'ETF' (mentioned 12 times)",
@@ -92,18 +93,19 @@
     ],
     "evolution_proposals": [],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "엔진은 'ETF'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 핵심 가정: 지금 상황을 보면 전 세계 조선소는 이미 몇 년치 주문이 꽉 차 있고 전쟁 때문에 무기 제고도 바닥난 상태야"
+    "engine_conclusion": "엔진은 'ETF'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 핵심 가정: 지금 상황을 보면 전 세계 조선소는 이미 몇 년치 주문이 꽉 차 있고 전쟁 때문에 무기 제고도 바닥난 상태야",
+    "llm_report": null
   },
   {
     "video_id": "tJwBZZQaW5k",
     "title": "월가에서 지금 테슬라 하락을 '주가 폭등'기회로 보는 이유",
-    "analysis_date": "2026-01-18",
+    "analysis_date": "2026-01-20",
     "surface_topics": [
-      "시장",
-      "경제",
       "뉴스",
+      "분석",
+      "시장",
       "종목",
-      "분석"
+      "경제"
     ],
     "real_topic": "실적",
     "real_topic_reasoning": "KB Keyword Match: '실적' (mentioned 3 times)",
@@ -116,7 +118,7 @@
     "core_assumptions": [],
     "evolution_proposals": [
       {
-        "id": "EVO-20260118-53189",
+        "id": "EVO-20260120-78156",
         "video_id": "tJwBZZQaW5k",
         "category": "DATA_ADD",
         "detected_pattern": "User explicit need: 데이터가 필요",
@@ -125,6 +127,7 @@
       }
     ],
     "content_nature": "Lagging/Result",
-    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L1 수준의 이상징후를 감지했습니다. 이번에 테슬라가 오는 2월 14일부터 완전 자율 주행 소프트웨어 판매 방식을 시불에서 월 구독 방식으로 전환한다고 발표했어"
+    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L1 수준의 이상징후를 감지했습니다. 이번에 테슬라가 오는 2월 14일부터 완전 자율 주행 소프트웨어 판매 방식을 시불에서 월 구독 방식으로 전환한다고 발표했어",
+    "llm_report": null
   }
 ]

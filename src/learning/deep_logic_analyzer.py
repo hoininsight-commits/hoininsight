@@ -308,6 +308,7 @@ class DeepLogicAnalyzer:
             # Format to match dashboard's expectations
             evo_data = {
                 "id": p_id,
+                "video_id": p.get('video_id', ''),
                 "generated_at": datetime.utcnow().isoformat(),
                 "category": p.get('category', 'DATA_ADD'),
                 "status": "PROPOSED",

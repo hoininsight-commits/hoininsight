@@ -3,15 +3,15 @@
 
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
-* 투자
-* 종목
+* 자산
+* 뉴스
 * 분석
-* 경제
-* 돈
+* 시장
+* 매수
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
-* **Real Topic**: Unknown Structural Shift
-* **Reframed**: No direct match in Data Master. Requires semantic extraction.
+* **Real Topic**: 금리
+* **Reframed**: KB Keyword Match: '금리' (mentioned 6 times)
 
 ## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
 * **Level**: L1
@@ -29,4 +29,4 @@
 * (No new data collection needs identified)
 
 ## 7️⃣ 엔진 최종 판정 요약
-> Engine has detected a L1 anomaly regarding 'Unknown Structural Shift'. No explicit immediate trigger found, likely a trend analysis.
+> 엔진은 '금리'와(과) 관련하여 L1 수준의 이상징후를 감지했습니다. 핵심 가정: 금은 회사 실적 때문에 오르는 자산이 아니라 시장의 불안감과 금리 환경에 따라 크게 요동치는 자산이거든

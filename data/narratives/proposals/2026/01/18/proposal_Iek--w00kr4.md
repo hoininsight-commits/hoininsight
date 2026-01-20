@@ -18,8 +18,8 @@
   - quote: "이게 바로 시장이이 회사에 높은 프리미엄을 주는 진짜 이유야..."
 
 ## WHY NOW Signals
-- AI: 시점: 당장 AI 친들 HBM이 부족하니까 물건 좀 달라고 매달리는 거잖아
 - AI: 시점: 여의도 증권가에서도 최근 목표가를 8만 원으로 상향 조정하면서 온디바이스 AI 시대의 최대 수주로 지목했어
+- AI: 시점: 당장 AI 친들 HBM이 부족하니까 물건 좀 달라고 매달리는 거잖아
 
 ## Documentation Matches (Engine Logic)
 ### Data Collection Master Matches

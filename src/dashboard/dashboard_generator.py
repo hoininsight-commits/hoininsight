@@ -846,10 +846,22 @@ def generate_dashboard(base_dir: Path):
     except: pass
 
     
+    evo_map = {} # video_id -> list of evo proposals
     try:
-        # Scan for metadata in recent days? Or just today/yesterday?
-        # Inbox should probably show recent active items.
-        # Let's scan last 3 days of metadata.json
+        evo_dir = base_dir / "data/evolution/proposals"
+        if evo_dir.exists():
+            for p_file in evo_dir.glob("*.json"):
+                try:
+                    p_data = json.loads(p_file.read_text(encoding="utf-8"))
+                    vid = p_data.get("video_id")
+                    if vid:
+                        if vid not in evo_map: evo_map[vid] = []
+                        evo_map[vid].append(p_data)
+                except: continue
+    except: pass
+
+    try:
+        # Scan last 10 days of metadata
         
         inbox_items = []
         seen_vids = set()
@@ -947,7 +959,8 @@ def generate_dashboard(base_dir: Path):
                                     "prop_path": prop_path,
                                     "ledger_decision": ledger_decision,
                                     "ledger_reason": ledger_reason,
-                                    "has_deep": has_deep
+                                    "has_deep": has_deep,
+                                    "evo_count": len(evo_map.get(vid, []))
                                 }
                                 inbox_items.append(item)
                         except: pass
@@ -1026,8 +1039,12 @@ def generate_dashboard(base_dir: Path):
                         {it['published_at'][:10]}
                         { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
                         { " <span style='color:#3b82f6; font-weight:bold; margin-left:5px;'>✨ Analysis Done</span>" if it.get('has_deep') else "" }
+                        { f" <span style='color:#8b5cf6; font-weight:bold; margin-left:5px;'>🚀 Evolution Needed ({it['evo_count']})</span>" if it.get('evo_count', 0) > 0 else "" }
                         { " <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ STALE DATA WARNING</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
                     </div>
+                    <button onclick="showDeepLogicReport('{vid}')" style="width:100%; margin-top:10px; background:#f8fafc; border:1px solid #cbd5e1; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold; color:#475569;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='#f8fafc'">
+                        View Analysis & Action
+                    </button>
     """
                 
                 # [Phase 33] Aging Score Badge in Inbox
@@ -1280,8 +1297,37 @@ def generate_dashboard(base_dir: Path):
                     if rep_path.exists():
                         raw_md = rep_path.read_text(encoding="utf-8")
                         full_report_html = parse_markdown(raw_md)
-                        # Escape quotes for JS string
-                        full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ").replace("\\", "\\\\")
+                
+                # [Evolution UI Injection]
+                evo_ui = ""
+                if vid in evo_map:
+                    for evo in evo_map[vid]:
+                        evo_ui += f"""
+                        <div style="margin-top:20px; padding:15px; border:2px dashed #8b5cf6; border-radius:8px; background:#f5f3ff; color:#1e293b; text-align:left;">
+                            <h3 style="margin-top:0; color:#6d28d9; font-size:16px;">🚀 System Evolution Proposal ({evo['id']})</h3>
+                            <div style="font-size:13px; color:#4c1d95; margin-bottom:12px; line-height:1.5;">
+                                <strong style="color:#7c3aed;">[Category]</strong> {evo['category']}<br>
+                                <strong style="color:#7c3aed;">[Proposed Change]</strong> {evo['content']['condition']}<br>
+                                <strong style="color:#7c3aed;">[Logic/Meaning]</strong> {evo['content']['meaning']}
+                            </div>
+                            <!-- Approval UI -->
+                            <div class="approval-form" style="background:white; padding:12px; border-radius:6px; border:1px solid #ddd; box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);">
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:8px; color:#64748b;">승인 및 엔진 반영 옵션:</div>
+                                <div style="display:flex; gap:15px; margin-bottom:10px;">
+                                    <label style="display:flex; align-items:center; gap:5px; font-size:12px; cursor:pointer;"><input type="checkbox" id="popup-dcm-{evo['id']}" checked> Data Master</label>
+                                    <label style="display:flex; align-items:center; gap:5px; font-size:12px; cursor:pointer;"><input type="checkbox" id="popup-adl-{evo['id']}"> Anomaly Logic</label>
+                                </div>
+                                <textarea id="popup-note-{evo['id']}" placeholder="승인 관련 메모를 입력하세요..." style="width:100%; margin-top:5px; font-size:12px; height:50px; padding:8px; border:1px solid #e2e8f0; border-radius:4px; font-family:sans-serif;"></textarea>
+                                <button onclick="generatePopupYaml('{evo['id']}', '{vid}')" style="width:100%; margin-top:10px; background:#8b5cf6; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:13px; transition:background 0.2s;" onmouseover="this.style.background='#7c3aed'" onmouseout="this.style.background='#8b5cf6'">
+                                    승인 및 YAML 복사 (Apply to Engine)
+                                </button>
+                            </div>
+                        </div>
+                        """
+                full_report_html += evo_ui
+
+                # Escape quotes for JS string
+                full_report_html = full_report_html.replace('"', '&quot;').replace("'", "&#39;").replace("\n", " ").replace("\\", "\\\\")
                 
                 report_data_js += f'window.REPORT_DATA["{vid}"] = "{full_report_html}";\n'
 
@@ -2320,6 +2366,32 @@ def generate_dashboard(base_dir: Path):
     function closeReportModal() {
         var modal = document.getElementById("reportModal");
         if (modal) modal.style.display = "none";
+    }
+
+    function generatePopupYaml(evoId, vid) {
+        // Collect checked items
+        const dcm = document.getElementById('popup-dcm-' + evoId).checked;
+        const adl = document.getElementById('popup-adl-' + evoId).checked;
+        const note = document.getElementById('popup-note-' + evoId).value;
+        
+        let yaml = "## SYSTEM_EVOLUTION_APPROVAL\\n";
+        yaml += "id: " + evoId + "\\n";
+        yaml += "video_id: " + vid + "\\n";
+        yaml += "target:\\n";
+        if (dcm) yaml += "  - DATA_COLLECTION_MASTER\\n";
+        if (adl) yaml += "  - ANOMALY_DETECTION_LOGIC\\n";
+        yaml += "status: APPROVED\\n";
+        yaml += "note: |-\\n  " + note.replace(/\\n/g, "\\n  ") + "\\n";
+        yaml += "---";
+        
+        const el = document.createElement('textarea');
+        el.value = yaml;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        
+        alert("Approval YAML copied to clipboard!\\nPaste this into your ledger or commit message.");
     }
     
     // Close modals when clicking outside

@@ -3,11 +3,11 @@
 
 ## 1️⃣ 겉주제 제거 (Surface Topic 제거)
 영상의 표면 메시지 (Removed):
-* 투자
-* 종목
+* 자산
+* 뉴스
 * 분석
-* 경제
-* 돈
+* 시장
+* 매수
 
 ## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
 * **Real Topic**: 구리
@@ -30,4 +30,4 @@
 * [PROPOSAL] 가장 먼저 확인해야 할 건 시간의 흐름이야
 
 ## 7️⃣ 엔진 최종 판정 요약
-> Engine has detected a L2 anomaly regarding '구리'. No explicit immediate trigger found, likely a trend analysis.
+> 엔진은 '구리'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 핵심 가정: 세 번째는이 불확실성 때문에 전 세계 투자자들이 위험 자산에서 빠져나와 안전 자산으로 돈을 옮기고 있다는 거야
