@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-20T03:49:37Z`
+- ts_utc: `2026-01-20T05:01:41Z`
 - ymd_utc: `2026/01/20`
 - enabled_datasets: `26`
 
@@ -32,7 +32,7 @@
 | WTI | comm_wti_fred | OK | 10080 | 1986-01-02T00:00:00Z | 2026-01-18T00:00:00Z | 4 | 18 | 3 | 0 | 0 | data/curated/commodities/wti.csv | [png](data/reports/2026/01/20/charts/comm_wti_fred.png) |
 | YIELD_CURVE | derived_yield_curve_10y_2y | OK | 12402 | 1976-06-01T00:00:00Z | 2026-01-15T00:00:00Z | 2 | 17 | 3 | 0 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | [png](data/reports/2026/01/20/charts/derived_yield_curve_10y_2y.png) |
 | DXY | fx_dxy_index_stooq | SKIPPED | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 4 | 4 | 1 | 2 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/01/20/charts/fx_dxy_index_stooq.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | SKIPPED | 6 | 2026-01-15T00:00:00Z | 2026-01-19T00:00:00Z | 6 | 6 | 1 | 2 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/20/charts/crypto_eth_usd_spot_coingecko.png) |
+| ETHUSD | crypto_eth_usd_spot_coingecko | SKIPPED | 7 | 2026-01-15T00:00:00Z | 2026-01-20T00:00:00Z | 7 | 7 | 1 | 2 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/01/20/charts/crypto_eth_usd_spot_coingecko.png) |
 | PLATINUM | metal_platinum_xptusd_stooq | SKIPPED | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 4 | 4 | 1 | 2 | 0 | data/curated/metals/platinum.csv | [png](data/reports/2026/01/20/charts/metal_platinum_xptusd_stooq.png) |
 
 ## Charts
