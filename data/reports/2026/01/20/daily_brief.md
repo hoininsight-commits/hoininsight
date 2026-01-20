@@ -39,7 +39,6 @@ Historical context:
 - [HIGH] SILVER: data/features/anomalies/2026/01/20/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] SILVER: data/features/anomalies/2026/01/20/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] GS_RATIO: data/features/anomalies/2026/01/20/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
-- [HIGH] KOSPI: data/features/anomalies/2026/01/20/index_kospi_stooq.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] US02Y: data/features/anomalies/2026/01/20/rates_us02y_fred.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/01/20/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/20/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
@@ -48,6 +47,7 @@ Historical context:
 - [LOW] US10Y: data/features/anomalies/2026/01/20/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/20/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] SPX: data/features/anomalies/2026/01/20/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
+- [LOW] KOSPI: data/features/anomalies/2026/01/20/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] KOR_RATE: data/features/anomalies/2026/01/20/rates_kor_base_rate_ecos.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] UNRATE: data/features/anomalies/2026/01/20/employment_unrate_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] FIN_STRESS: data/features/anomalies/2026/01/20/risk_financial_stress_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
