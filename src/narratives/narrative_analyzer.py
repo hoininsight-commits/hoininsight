@@ -282,10 +282,12 @@ def process_all_transcripts(base_dir: Path) -> int:
         
         for transcript_file in transcripts_dir.glob("*.txt"):
             try:
-                # Skip if proposal already exists
+                # Skip only if BOTH proposal and deep report already exist
                 video_id = transcript_file.stem
                 proposal_path = proposals_dir / f"proposal_{video_id}.md"
-                if proposal_path.exists():
+                deep_report_path = deep_dir / f"video_{video_id}_report.md"
+                
+                if proposal_path.exists() and deep_report_path.exists():
                     continue
 
                 raw_dir = base_dir / "data" / "narratives" / "raw" / "youtube"
