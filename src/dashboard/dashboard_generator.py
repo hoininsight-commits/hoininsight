@@ -2274,7 +2274,7 @@ def generate_dashboard(base_dir: Path):
         </div>
     """
 
-    html += """
+    html += f"""
         <div style="height: 50px;"></div>
         </div> <!-- End sections-wrapper -->
     </div> <!-- End Main Panel -->
@@ -2307,36 +2307,36 @@ def generate_dashboard(base_dir: Path):
     // Initialize global data container
     {report_data_js}
 
-    function closeModal() {
+    function closeModal() {{
         document.getElementById('scriptModal').classList.remove('modal-active');
-    }
+    }}
     
-    function copyScript() {
+    function copyScript() {{
         const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
         navigator.clipboard.writeText(text).then(() => alert('Copied!'));
-    }
+    }}
     
     // [Deep Logic Report Viewer]
-    function showDeepLogicReport(vid) {
+    function showDeepLogicReport(vid) {{
         var modal = document.getElementById("reportModal");
         var content = document.getElementById("reportContent");
         
-        if (modal && content) {
-            if (window.REPORT_DATA[vid]) {
+        if (modal && content) {{
+            if (window.REPORT_DATA[vid]) {{
                 content.innerHTML = window.REPORT_DATA[vid];
-            } else {
+            }} else {{
                 content.innerHTML = "<div style='padding:20px; text-align:center; color:#94a3b8;'>리포트 데이터가 로드되지 않았습니다.</div>";
-            }
+            }}
             modal.style.display = "block";
-        }
-    }
+        }}
+    }}
     
-    function closeReportModal() {
+    function closeReportModal() {{
         var modal = document.getElementById("reportModal");
         if (modal) modal.style.display = "none";
-    }
+    }}
 
-    function generatePopupYaml(evoId, vid) {
+    function generatePopupYaml(evoId, vid) {{
         // Collect checked items
         const dcm = document.getElementById('popup-dcm-' + evoId).checked;
         const adl = document.getElementById('popup-adl-' + evoId).checked;
@@ -2360,20 +2360,20 @@ def generate_dashboard(base_dir: Path):
         document.body.removeChild(el);
         
         alert("Approval YAML copied to clipboard!\\nPaste this into your ledger or commit message.");
-    }
+    }}
     
     // Close modals when clicking outside
-    window.onclick = function(event) {
+    window.onclick = function(event) {{
         var reportModal = document.getElementById("reportModal");
         var scriptModal = document.getElementById("scriptModal");
         
-        if (event.target == reportModal) {
+        if (event.target == reportModal) {{
             reportModal.style.display = "none";
-        }
-        if (event.target == scriptModal) {
+        }}
+        if (event.target == scriptModal) {{
             scriptModal.classList.remove('modal-active');
-        }
-    }
+        }}
+    }}
 </script>
 
 
