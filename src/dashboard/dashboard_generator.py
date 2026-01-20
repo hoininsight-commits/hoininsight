@@ -1825,8 +1825,6 @@ def generate_dashboard(base_dir: Path):
 
                 <div class="nav-label">WORKFLOW</div>
                 <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
-                <div class="nav-item" onclick="activate('deep-logic')"><span class="nav-icon">🧠</span> 딥 로직 분석</div>
-                <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">📝</span> 내러티브 큐</div>
                 <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> 부활 엔진</div>
                 
                 <div class="nav-label">ARCHIVE / LOGS</div>
@@ -2104,13 +2102,6 @@ def generate_dashboard(base_dir: Path):
                     </div>
     """
 
-    # [Deep Logic Analysis Tab (Renamed from Change Effectiveness)]
-    html += f"""
-                    <div id="deep-logic" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🧠 딥 로직 분석 (Deep Logic Analysis)</h2>
-                        {applied_html}
-                    </div>
-    """
 
     # [System Evolution Tab (Moved from Sidebar)]
     # Make evolution cards grid style
@@ -2157,30 +2148,7 @@ def generate_dashboard(base_dir: Path):
                             </div>
                         </div>
                     </div>
-
-                    <!-- [Phase 31-B] Deep Logic Analysis Tab -->
-                    <div id="deep-logic" class="tab-content" style="display:none;">
-                        <div style="max-width: 900px; margin: 0 auto;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                                <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">🧠 딥 로직 분석 (Real Topic Identification)</h2>
-                                <span style="font-size: 11px; background:#eff6ff; color:#3b82f6; padding:4px 10px; border-radius:15px; font-weight:700;">Logic Engine Active</span>
-                            </div>
-                            <p style="font-size:13px; color:#64748b; margin-bottom:25px; line-height:1.6;">
-                                영상의 표면적인 주제를 넘어, 엔진 관점의 <b>실질적 데이터 항목(Real Topic)</b>과 <b>구조적 변화 레벨(L1-L3)</b>을 분석한 결과입니다.
-                            </p>
-                            {deep_logic_html}
-                        </div>
-                    </div>
     """
-
-    # [Narrative Queue Tab]
-    html += f"""
-                    <div id="narrative-queue" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📝 내러티브 큐</h2>
-                        {queue_html}
-                    </div>
-    """
-    
     # [Revival Engine Tab]
     html += f"""
                     <div id="revival-engine" class="tab-content" style="display:none;">
