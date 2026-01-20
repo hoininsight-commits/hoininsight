@@ -262,7 +262,7 @@ def process_all_transcripts(base_dir: Path) -> int:
     deep_analyzer = DeepLogicAnalyzer(kb)
     
     proposal_count = 0
-    LOOKBACK = 5
+    LOOKBACK = 10
     
     for i in range(LOOKBACK + 1):
         ymd = _get_utc_ymd(i)

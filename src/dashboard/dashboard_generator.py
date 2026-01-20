@@ -852,6 +852,7 @@ def generate_dashboard(base_dir: Path):
         # Let's scan last 3 days of metadata.json
         
         inbox_items = []
+        seen_vids = set()
         # Reverse day scan
 
         base_date = datetime.utcnow()
@@ -865,7 +866,7 @@ def generate_dashboard(base_dir: Path):
                  applied_today_vids = [x.get('video_id') for x in ad.get('items', [])]
              except: pass
 
-        for i in range(5): # Scan last 5 days
+        for i in range(10): # Scan last 10 days
             scan_ymd = (base_date - timedelta(days=i)).strftime("%Y/%m/%d")
             # [Fix] Scan raw/youtube instead of metadata
             # Structure: data/narratives/raw/youtube/YYYY/MM/DD/{VIDEO_ID}/metadata.json
@@ -892,52 +893,63 @@ def generate_dashboard(base_dir: Path):
                             vid = md.get("video_id")
                             if not vid: continue
                             
-                            # Determine Status
-                            status = "NEW"
-                            
-                            # Check PROPOSED
-                            prop_path = base_dir / "data/narratives/proposals" / scan_ymd / f"proposal_{vid}.md"
-                            has_prop = prop_path.exists()
-                            if has_prop:
-                                status = "PROPOSED"
+                            if vid not in seen_vids:
+                                seen_vids.add(vid)
+                                # Determine Status
+                                status = "NEW"
                                 
-                            # Check APPROVED
-                            appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
-                            appr_path_2 = base_dir / "data/narratives/approvals" / narrative_ymd.replace("-","/") / f"approve_{vid}.yml"
-                            if appr_path_1.exists() or appr_path_2.exists():
-                                status = "APPROVED"
+                                # Check PROPOSED
+                                prop_path = base_dir / "data/narratives/proposals" / scan_ymd / f"proposal_{vid}.md"
+                                has_prop = prop_path.exists()
+                                if has_prop:
+                                    status = "PROPOSED"
+                                    
+                                # Check APPROVED
+                                appr_path_1 = base_dir / "data/narratives/approvals" / scan_ymd / f"approve_{vid}.yml"
+                                appr_path_2 = base_dir / "data/narratives/approvals" / narrative_ymd.replace("-","/") / f"approve_{vid}.yml"
+                                if appr_path_1.exists() or appr_path_2.exists():
+                                    status = "APPROVED"
+                                    
+                                # Check APPLIED
+                                if vid in applied_today_vids:
+                                    status = "APPLIED"
                                 
-                            # Check APPLIED
-                            if vid in applied_today_vids:
-                                status = "APPLIED"
-                            
-                            # [Phase 35] Check Ledger Decision
-                            ledger_decision = None
-                            ledger_reason = None
-                            if vid in ledger_map:
-                                ledger_entry = ledger_map[vid]
-                                ledger_decision = ledger_entry.get("decision")
-                                ledger_reason = ledger_entry.get("reason", "")
-                                # Override status if decisioned
-                                if ledger_decision:
-                                    status = ledger_decision
-                                    needs_action = False  # No action needed if decisioned
-                            
-                            # Needs Action?
-                            needs_action = status in ["NEW", "PROPOSED"]
-                            
-                            item = {
-                                "video_id": vid,
-                                "title": md.get("title", "No Title"),
-                                "published_at": md.get("published_at", ""),
-                                "url": f"https://youtu.be/{vid}",
-                                "status": status,
-                                "needs_action": needs_action,
-                                "prop_path": prop_path,
-                                "ledger_decision": ledger_decision,
-                                "ledger_reason": ledger_reason
-                            }
-                            inbox_items.append(item)
+                                # [Phase 35] Ledger Decision Colors
+                                ledger_decision = None
+                                ledger_reason = None
+                                if vid in ledger_map:
+                                    ledger_entry = ledger_map[vid]
+                                    ledger_decision = ledger_entry.get("decision")
+                                    ledger_reason = ledger_entry.get("reason", "")
+                                    # Override status if decisioned
+                                    if ledger_decision:
+                                        status = ledger_decision
+                                        needs_action = False  # No action needed if decisioned
+                                
+                                # Needs Action?
+                                needs_action = status in ["NEW", "PROPOSED"]
+                                
+                                # [Sync Fix] Check if Deep Analysis exists
+                                has_deep = False
+                                for j in range(11):
+                                    d_y = (base_date - timedelta(days=j)).strftime("%Y/%m/%d")
+                                    if (base_dir / "data/narratives/deep_analysis" / d_y / f"video_{vid}_report.md").exists():
+                                        has_deep = True
+                                        break
+
+                                item = {
+                                    "video_id": vid,
+                                    "title": md.get("title", "No Title"),
+                                    "published_at": md.get("published_at", ""),
+                                    "url": f"https://youtu.be/{vid}",
+                                    "status": status,
+                                    "needs_action": needs_action,
+                                    "prop_path": prop_path,
+                                    "ledger_decision": ledger_decision,
+                                    "ledger_reason": ledger_reason,
+                                    "has_deep": has_deep
+                                }
+                                inbox_items.append(item)
                         except: pass
         
         # Sort by published (desc) ideally, or just collection time
@@ -1013,6 +1025,7 @@ def generate_dashboard(base_dir: Path):
                     <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
                         {it['published_at'][:10]}
                         { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
+                        { " <span style='color:#3b82f6; font-weight:bold; margin-left:5px;'>✨ Analysis Done</span>" if it.get('has_deep') else "" }
                         { " <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ STALE DATA WARNING</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
                     </div>
     """
