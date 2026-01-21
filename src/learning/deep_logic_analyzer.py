@@ -329,9 +329,9 @@ class DeepLogicAnalyzer:
         Generates a deep analysis report using Gemini with the Full Canonical Hoin Engine Context.
         """
         # 1. Load System Instruction
-        engine_root = Path("resources/hoin_engine/v1.11")
+        engine_root = Path("resources/hoin_engine/v1.11_CONSTITUTIONAL")
         
-        sys_instr_path = engine_root / "01_INSTRUCTION" / "GEMINI_SYSTEM_INSTRUCTION.md"
+        sys_instr_path = engine_root / "content" / "01_INSTRUCTION" / "GEMINI_SYSTEM_INSTRUCTION.md"
         if sys_instr_path.exists():
             system_instruction = sys_instr_path.read_text(encoding="utf-8")
         else:
