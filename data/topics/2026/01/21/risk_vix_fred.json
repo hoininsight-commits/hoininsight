@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-21T23:01:52Z",
+    "ts_utc": "2026-01-21T23:44:03Z",
     "dataset_id": "risk_vix_fred",
     "topic_id": "risk_vix_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/21/risk_vix_fred.json L2 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": 4.25,
-        "percentile": 87.3,
-        "value": 18.84,
-        "rolling_mean_20d": 16.008999673843384,
-        "reasoning": "Z-Score 4.25 >= 2.0"
+        "z_score": 3.43,
+        "percentile": 91.7,
+        "value": 20.09,
+        "rolling_mean_20d": 16.22049969100952,
+        "reasoning": "Z-Score 3.43 >= 2.0"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/21/risk_vix_fred.json"
     },
-    "rationale": "[L2] Z-Score 4.25 >= 2.0 (Regime x1.0)",
+    "rationale": "[L2] Z-Score 3.43 >= 2.0 (Regime x1.0)",
     "links": []
   }
 ]

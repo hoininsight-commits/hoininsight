@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-01-21T23:01:46Z",
+    "ts_utc": "2026-01-21T23:43:58Z",
     "dataset_id": "risk_vix_fred",
     "entity": "VIX",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": 4.25,
-      "percentile": 87.3,
-      "value": 18.84,
-      "rolling_mean_20d": 16.008999673843384,
-      "reasoning": "Z-Score 4.25 >= 2.0"
+      "z_score": 3.43,
+      "percentile": 91.7,
+      "value": 20.09,
+      "rolling_mean_20d": 16.22049969100952,
+      "reasoning": "Z-Score 3.43 >= 2.0"
     }
   }
 ]

@@ -1,11 +1,53 @@
 {
-  "ts_utc": "2026-01-21T23:01:56Z",
+  "ts_utc": "2026-01-21T23:44:08Z",
   "status": "SUCCESS",
   "checks_ok": true,
   "checks": [
-    "[SKIP] outputs(metal_platinum_xptusd_stooq) missing"
+    "[SKIP] outputs(fx_dxy_index_stooq) missing",
+    "[SKIP] outputs(metal_platinum_xptusd_stooq) missing",
+    "[SKIP] outputs(crypto_eth_usd_spot_coingecko) missing"
   ],
   "per_dataset": [
+    {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_us10y_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_vix_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_spx_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
     {
       "dataset_id": "index_nasdaq_fred",
       "soft_fail": true,
@@ -13,6 +55,14 @@
       "curated_ok": true,
       "anomalies_ok": true,
       "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_dxy_index_stooq",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
     },
     {
       "dataset_id": "rates_us02y_fred",
@@ -63,6 +113,14 @@
       "topics_ok": true
     },
     {
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
       "dataset_id": "rates_kor_base_rate_ecos",
       "soft_fail": true,
       "status": "OK",
@@ -71,7 +129,71 @@
       "topics_ok": true
     },
     {
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_usdkrw_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
       "dataset_id": "rates_fed_funds_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "inflation_cpi_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "inflation_pce_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "liquidity_m2_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "employment_unrate_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "credit_hy_spread_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_financial_stress_fred",
       "soft_fail": true,
       "status": "OK",
       "curated_ok": true,
