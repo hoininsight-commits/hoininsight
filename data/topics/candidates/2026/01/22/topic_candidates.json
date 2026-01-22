@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-01-22T02:25:11.054290",
+  "candidate_count": 16,
+  "alive_count": 16,
+  "candidates": [
+    {
+      "candidate_id": "cand_risk_vix_fred_20260122",
+      "dataset_id": "risk_vix_fred",
+      "created_at": "2026-01-22T02:25:11.054239",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [risk_vix_fred] and [inflation_kor_cpi_ecos, index_spx_fred, metal_gold_paxg_coingecko] simultaneously."
+    },
+    {
+      "candidate_id": "cand_inflation_kor_cpi_ecos_20260122",
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "created_at": "2026-01-22T02:25:11.054258",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [inflation_kor_cpi_ecos] and [risk_vix_fred, index_spx_fred, metal_gold_paxg_coingecko] simultaneously."
+    },
+    {
+      "candidate_id": "cand_index_spx_fred_20260122",
+      "dataset_id": "index_spx_fred",
+      "created_at": "2026-01-22T02:25:11.054261",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [index_spx_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, metal_gold_paxg_coingecko] simultaneously."
+    },
+    {
+      "candidate_id": "cand_metal_gold_paxg_coingecko_20260122",
+      "dataset_id": "metal_gold_paxg_coingecko",
+      "created_at": "2026-01-22T02:25:11.054263",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [metal_gold_paxg_coingecko] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_rates_us10y_fred_20260122",
+      "dataset_id": "rates_us10y_fred",
+      "created_at": "2026-01-22T02:25:11.054265",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [rates_us10y_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_struct_dart_disposal_20260122",
+      "dataset_id": "struct_dart_disposal",
+      "created_at": "2026-01-22T02:25:11.054268",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [struct_dart_disposal] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_index_kospi_stooq_20260122",
+      "dataset_id": "index_kospi_stooq",
+      "created_at": "2026-01-22T02:25:11.054270",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [index_kospi_stooq] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_derived_yield_curve_10y_2y_20260122",
+      "dataset_id": "derived_yield_curve_10y_2y",
+      "created_at": "2026-01-22T02:25:11.054272",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [derived_yield_curve_10y_2y] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_liquidity_m2_fred_20260122",
+      "dataset_id": "liquidity_m2_fred",
+      "created_at": "2026-01-22T02:25:11.054274",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [liquidity_m2_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_comm_wti_fred_20260122",
+      "dataset_id": "comm_wti_fred",
+      "created_at": "2026-01-22T02:25:11.054276",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [comm_wti_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_inflation_cpi_fred_20260122",
+      "dataset_id": "inflation_cpi_fred",
+      "created_at": "2026-01-22T02:25:11.054278",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [inflation_cpi_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_struct_dart_cb_bw_20260122",
+      "dataset_id": "struct_dart_cb_bw",
+      "created_at": "2026-01-22T02:25:11.054280",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [struct_dart_cb_bw] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_credit_hy_spread_fred_20260122",
+      "dataset_id": "credit_hy_spread_fred",
+      "created_at": "2026-01-22T02:25:11.054282",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [credit_hy_spread_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_fx_usdkrw_ecos_20260122",
+      "dataset_id": "fx_usdkrw_ecos",
+      "created_at": "2026-01-22T02:25:11.054284",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "inflation_pce_fred",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [fx_usdkrw_ecos] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_inflation_pce_fred_20260122",
+      "dataset_id": "inflation_pce_fred",
+      "created_at": "2026-01-22T02:25:11.054286",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "rates_fed_funds_fred"
+      ],
+      "reason": "Detected in [inflation_pce_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    },
+    {
+      "candidate_id": "cand_rates_fed_funds_fred_20260122",
+      "dataset_id": "rates_fed_funds_fred",
+      "created_at": "2026-01-22T02:25:11.054288",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": [
+        "risk_vix_fred",
+        "inflation_kor_cpi_ecos",
+        "index_spx_fred",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "struct_dart_disposal",
+        "index_kospi_stooq",
+        "derived_yield_curve_10y_2y",
+        "liquidity_m2_fred",
+        "comm_wti_fred",
+        "inflation_cpi_fred",
+        "struct_dart_cb_bw",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos",
+        "inflation_pce_fred"
+      ],
+      "reason": "Detected in [rates_fed_funds_fred] and [risk_vix_fred, inflation_kor_cpi_ecos, index_spx_fred] simultaneously."
+    }
+  ]
+}

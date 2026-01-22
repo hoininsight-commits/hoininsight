@@ -1,0 +1,27 @@
+{
+  "card_version": "phase38_v1",
+  "generated_at": "2026-01-22T02:25:22.909016+00:00Z",
+  "date": "2026-01-22",
+  "blocks": {
+    "regime": {
+      "current_regime": "(no meta regime detected)",
+      "confidence": 0.0,
+      "has_meta_topics": false,
+      "meta_topic_count": 0,
+      "basis_type": "NONE"
+    },
+    "revival": {
+      "proposal_count": 0,
+      "has_revival": false,
+      "loop_warning_count": 0,
+      "primary_revival_reason": "N/A"
+    },
+    "ops": {
+      "system_freshness": 0,
+      "sla_breach_count": 0,
+      "has_stale_warning": false,
+      "7d_success_rate": "N/A"
+    }
+  },
+  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
+}
