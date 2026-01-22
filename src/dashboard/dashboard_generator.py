@@ -1631,6 +1631,10 @@ def generate_dashboard(base_dir: Path):
     topic_list_html = ""
     top_topics = final_card.get("top_topics", [])
     
+    # [Sync Fix] Override Main Topic Title in the List with the AI-Generated Script Title
+    if top_topics and script_exists and topic_title and topic_title != "주제 선정 대기중":
+        top_topics[0]["title"] = topic_title
+    
     if not top_topics and final_card.get("topic"):
         # Fallback if no list but main topic exists
         top_topics = [{

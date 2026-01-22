@@ -1,6 +1,6 @@
 {
   "card_version": "phase38_v1",
-  "generated_at": "2026-01-22T03:52:15.580174+00:00Z",
+  "generated_at": "2026-01-22T03:56:19.502131+00:00Z",
   "date": "2026-01-22",
   "blocks": {
     "regime": {
@@ -23,8 +23,8 @@
       "7d_success_rate": "N/A"
     }
   },
-  "topic": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
-  "decision_rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
+  "topic": "기업 자산 매각(Disposal) 급증",
+  "decision_rationale": "신규 이상징후 포착됨",
   "key_data": {
     "struct_dart_disposal": "Primary",
     "struct_dart_cb_bw": "Secondary",
@@ -37,10 +37,10 @@
       "dataset_id": "struct_dart_disposal",
       "level": "L2",
       "score": 2.5,
-      "title": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
-      "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
+      "title": "기업 자산 매각(Disposal) 급증",
+      "rationale": "신규 이상징후 포착됨",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:40:19Z",
+        "ts_utc": "2026-01-22T03:47:56Z",
         "dataset_id": "struct_dart_disposal",
         "topic_id": "struct_dart_disposal::event_nonzero",
         "title": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
@@ -81,10 +81,10 @@
       "dataset_id": "struct_dart_cb_bw",
       "level": "L2",
       "score": 2.5,
-      "title": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal",
-      "rationale": "[L2] New Event Detected (Count=1) (Regime x1.0)",
+      "title": "전환사채(CB/BW) 발행 폭증",
+      "rationale": "신규 이상징후 포착됨",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:40:19Z",
+        "ts_utc": "2026-01-22T03:47:56Z",
         "dataset_id": "struct_dart_cb_bw",
         "topic_id": "struct_dart_cb_bw::event_nonzero",
         "title": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal",
@@ -125,10 +125,10 @@
       "dataset_id": "risk_vix_fred",
       "level": "L2",
       "score": 2,
-      "title": "data/features/anomalies/2026/01/22/risk_vix_fred.json L2 Signal",
-      "rationale": "[L2] Z-Score 3.43 >= 2.0 (Regime x1.0)",
+      "title": "공포지수(VIX) 이상 급등",
+      "rationale": "표준편차(Z-Score) 3.43 >= 2.0",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:40:19Z",
+        "ts_utc": "2026-01-22T03:47:56Z",
         "dataset_id": "risk_vix_fred",
         "topic_id": "risk_vix_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/22/risk_vix_fred.json L2 Signal",
@@ -171,10 +171,10 @@
       "dataset_id": "metal_gold_paxg_coingecko",
       "level": "L2",
       "score": 2,
-      "title": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal",
-      "rationale": "[L2] Z-Score 2.31 >= 2.0 (Regime x1.0)",
+      "title": "골드(Gold) 가격 이상 변동",
+      "rationale": "표준편차(Z-Score) 2.31 >= 2.0",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:40:19Z",
+        "ts_utc": "2026-01-22T03:47:56Z",
         "dataset_id": "metal_gold_paxg_coingecko",
         "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal",
@@ -186,8 +186,8 @@
           "details": {
             "z_score": 2.31,
             "percentile": 50.0,
-            "value": 4804.24,
-            "rolling_mean_20d": 4628.120421875,
+            "value": 4803.95,
+            "rolling_mean_20d": 4628.105921875,
             "reasoning": "Z-Score 2.31 >= 2.0"
           },
           "regime": {
@@ -217,10 +217,10 @@
       "dataset_id": "rates_us10y_fred",
       "level": "L2",
       "score": 2,
-      "title": "data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal",
-      "rationale": "[L2] Z-Score 4.25 >= 2.0 (Regime x1.0)",
+      "title": "미국 10년물 국채금리 급변",
+      "rationale": "표준편차(Z-Score) 4.25 >= 2.0",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:40:19Z",
+        "ts_utc": "2026-01-22T03:47:56Z",
         "dataset_id": "rates_us10y_fred",
         "topic_id": "rates_us10y_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal",

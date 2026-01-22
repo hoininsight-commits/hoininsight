@@ -8,6 +8,40 @@ import sys
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Any
+import re
+
+# Human-readable Title Mapping
+ID_TO_TITLE = {
+    "struct_dart_disposal": "기업 자산 매각(Disposal) 급증",
+    "struct_dart_cb_bw": "전환사채(CB/BW) 발행 폭증",
+    "risk_vix_fred": "공포지수(VIX) 이상 급등",
+    "metal_gold_paxg_coingecko": "골드(Gold) 가격 이상 변동",
+    "rates_us10y_fred": "미국 10년물 국채금리 급변",
+    "index_kospi_stooq": "코스피(KOSPI) 지수 충격",
+    "fx_usdkrw_ecos": "원달러 환율(USDKRW) 급변",
+    "credit_hy_spread_fred": "하이일드 스프레드(Credit Risk) 확대",
+    "inflation_kor_cpi_ecos": "한국 소비자물가(CPI) 쇼크",
+    "inflation_cpi_fred": "미국 소비자물가(CPI) 충격",
+    "rates_fed_funds_fred": "연준 기준금리(Fed Funds) 변동",
+    "comm_wti_fred": "국제유가(WTI) 급등락",
+    "liquidity_m2_fred": "시장 유동성(M2) 위축 감지",
+    "derived_yield_curve_10y_2y": "장단기 금리차(Yield Curve) 역전/해소"
+}
+
+def clean_rationale(text: str) -> str:
+    """Removes technical tags like [L2], (Count=5), (Regime x1.0)"""
+    if not text: return "특이사항 없음"
+    # Remove [XX]
+    text = re.sub(r"\[.*?\]", "", text)
+    # Remove (Regime x...)
+    text = re.sub(r"\(Regime.*?\)", "", text)
+    # Remove (Count=...)
+    text = re.sub(r"\(Count.*?\)", "", text)
+    # Clean whitespace
+    text = text.replace("New Event Detected", "신규 이상징후 포착됨")
+    text = text.replace("Z-Score", "표준편차(Z-Score)")
+    text = text.strip()
+    return text
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -112,8 +146,23 @@ def main():
                     lvl_val += 0.5
                 
                 # Extract Title/Rationale for display
-                t_title = t_obj.get("key_conception") or t_obj.get("topic") or t_obj.get("title") or "Topic Detected"
-                t_rationale = t_obj.get("why_now") or t_obj.get("rationale") or "No rationale."
+                raw_title = t_obj.get("key_conception") or t_obj.get("topic") or t_obj.get("title") or ""
+                
+                # Humanize Title
+                # 1. Check direct mapping
+                human_title = ID_TO_TITLE.get(ds_id)
+                # 2. If no mapping, try to clean up raw path if it looks like a path
+                if not human_title:
+                   if "/" in raw_title or "\\" in raw_title:
+                       # It's a file path, try to grab the basename without extension
+                       fname = Path(raw_title).name.replace(".json", "")
+                       # Try mapping again on fname
+                       human_title = ID_TO_TITLE.get(fname, f"감지된 토픽: {fname}")
+                   else:
+                       human_title = raw_title if raw_title else "알 수 없는 토픽"
+
+                t_title = human_title
+                t_rationale = clean_rationale(t_obj.get("why_now") or t_obj.get("rationale") or "상세 사유 없음.")
                 
                 scored_candidates.append({
                     "dataset_id": ds_id,
