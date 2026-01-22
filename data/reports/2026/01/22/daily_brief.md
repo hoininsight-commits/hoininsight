@@ -43,8 +43,8 @@ Historical context:
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/22/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/22/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [MED] SPX: data/features/anomalies/2026/01/22/index_spx_fred.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
-- [MED] KOSPI: data/features/anomalies/2026/01/22/index_kospi_stooq.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] BTCUSD: data/features/anomalies/2026/01/22/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
+- [LOW] KOSPI: data/features/anomalies/2026/01/22/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] NASDAQ: data/features/anomalies/2026/01/22/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] US02Y: data/features/anomalies/2026/01/22/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] SILVER: data/features/anomalies/2026/01/22/metal_silver_kag_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
@@ -59,3 +59,13 @@ Historical context:
 Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
+
+## FINAL DECISION CARD SNAPSHOT
+- Regime: (no meta regime detected) (Conf: 0.0%)
+- Revival: 0 candidate(s)
+- Ops Health: 0% Freshness
+- Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 16 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.
