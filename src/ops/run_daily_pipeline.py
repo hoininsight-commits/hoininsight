@@ -63,13 +63,13 @@ def run_engine():
     
     import subprocess
     
-    main_script = project_root / "main.py"
+    main_script = project_root / "src" / "engine.py"
     if not main_script.exists():
-        print(f"[Pipeline] ❌ Error: main.py not found at {main_script}")
+        print(f"[Pipeline] ❌ Error: engine.py not found at {main_script}")
         return False
         
     try:
-        # Run main.py
+        # Run src/engine.py
         # You might want to pass specific flags if your main.py supports them (e.g. --auto)
         result = subprocess.run(
             [sys.executable, str(main_script)],
