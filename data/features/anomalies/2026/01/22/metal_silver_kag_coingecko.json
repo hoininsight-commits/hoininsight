@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-01-22T03:54:09Z",
+    "ts_utc": "2026-01-22T03:58:03Z",
     "dataset_id": "metal_silver_kag_coingecko",
     "entity": "XAGUSD",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 30,
     "level": "L1",
     "evidence": {
-      "z_score": 1.52,
+      "z_score": 1.53,
       "percentile": 50.0,
-      "value": 92.91,
-      "rolling_mean_20d": 89.4583023071289,
-      "reasoning": "Z-Score 1.52 >= 1.5"
+      "value": 92.94,
+      "rolling_mean_20d": 89.45980230712891,
+      "reasoning": "Z-Score 1.53 >= 1.5"
     }
   }
 ]
