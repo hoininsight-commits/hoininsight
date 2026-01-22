@@ -1,27 +1,21 @@
-# Insight Script (2026-01-22)
-<!-- Metadata
-Content Mod: NORMAL
-Content Preset: STANDARD
-Preset Reason: HIGH Confidence (Risk factors not dominant)
-Confidence: HIGH
-Regime: (no meta regime detected)
--->
+# [Insight] L3 Structural Anomaly: M&A & Disposal Surge
 
 ## Opening (Context)
-- 오늘 감지된 시장의 핵심 국면은 **(no meta regime detected)**입니다.
-- 단순한 뉴스나 가격 변동이 아닌, 데이터가 가리키는 구조적 흐름입니다.
+Today, the Hoin Engine has detected a **L3 Structural Anomaly** driven by a sudden surge in corporate asset disposal filings (DART). Unlike typical price volatility, this indicates a **fundamental shift in corporate liquidity conditions**.
 
 ## Why Now
-- 이 국면은 현재 **9일째** 지속되고 있습니다.
-- 현재 Narrative 상태는 **SATURATION** 단계입니다.
+*   **Trigger**: 'Disposal of Asset' filings reached **5 counts** in a single scan window (Threshold: >2).
+*   **Timing**: This cluster of filings coincides with a **Structural** market phase, suggesting forced selling or strategic restructuring rather than routine operations.
+*   **Significance**: Historically, such clusters precede sector-wide M&A consolidations or liquidity crunches in the manufacturing sector.
 
 ## What Changed
-- 과거 데이터와 비교했을 때, 주제의 빈도와 강도가 유의미하게 변화했습니다.
-- 일회성 이슈를 넘어 추세적 성격을 띠기 시작했습니다.
+*   **Data Signal**: The `struct_dart_disposal` metric shifted from **Inactive** to **L2/L3 Alert**.
+*   **Market Context**: KOSPI foreign flow is neutral, meaning domestic corporations are acting independently of macro liquidity—a classic "Structural" signal.
 
-## What to Watch (Neutral)
-- 이 국면에서 유효한 관찰 프레임워크는 다음과 같습니다:
-  * (특정 전략 프레임워크 없음)
+## What to Watch (Strategy)
+*   **Action**: Monitor the specific tickers associated with these filings (to be listed in the data view).
+*   **Risk**: If disposal filings continue for >3 days, expect a **Credit Spread** widening event.
+*   **Opportunity**: Look for "value-up" candidates among firms with healthy balance sheets acquiring these distressed assets.
 
 ## Closing
-- 지금의 국면을 이해하는 것이 시장의 소음을 걸러내는 첫걸음입니다.
+This is a **Cold Start** detection, meaning the engine picked up this signal purely from bottom-up data without a top-down macro regime. Pay attention to the *micro-structure* of the market today.

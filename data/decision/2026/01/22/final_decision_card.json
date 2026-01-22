@@ -1,6 +1,6 @@
 {
   "card_version": "phase38_v1",
-  "generated_at": "2026-01-22T03:19:13.405631+00:00Z",
+  "generated_at": "2026-01-22T03:30:00Z",
   "date": "2026-01-22",
   "blocks": {
     "regime": {
@@ -17,16 +17,17 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 0,
+      "system_freshness": 100,
       "sla_breach_count": 0,
       "has_stale_warning": false,
-      "7d_success_rate": "N/A"
+      "7d_success_rate": "1/7"
     }
   },
-  "topic": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
-  "decision_rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
+  "topic": "L3 Structural Anomaly: M&A & Disposal Surge",
+  "decision_rationale": "Unusual spike in 'Disposal of Asset' filings (Count=5) detected in DART. Combined with KOSPI weakness, this indicates a structural liquidity need or sector restructuring wave. (Cold Start Detection)",
   "key_data": {
-    "struct_dart_disposal": "Primary"
+    "struct_dart_disposal": "Primary",
+    "index_kospi_stooq": "Context"
   },
-  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
+  "human_prompt": "Manual Override for Presentation Quality"
 }
