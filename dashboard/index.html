@@ -415,19 +415,19 @@
                                             <button onclick="activate('insight-script')" style="font-size:10px; background:#eff6ff; color:#3b82f6; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">전체 보기 ➜</button>
                                         </h3>
                                         <div style="font-size:12px; line-height:1.7; color:#334155; white-space:pre-wrap; max-height:400px; overflow-y:auto; background:#fafafa; padding:15px; border-radius:6px; border:1px solid #f1f5f9;">
-## Opening (Context)
-오늘 호인 엔진이 긴급하게 포착한 신호는 **L3 구조적 이상징후(Structural Anomaly)**입니다.
-단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했습니다.
-## Why Now (지금 터진 이유)
-*   **Trigger**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(Disposal)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
-*   **의미**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 없으니까요."**
+## 상황 요약 (Situation)
+오늘 호인 엔진이 긴급하게 포착한 신호는 **L2 단계의 구조적 이상징후**입니다.
+단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했다는 뜻입니다.
+## 지금 터진 이유 (Why Now)
+*   **신호 발생**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(자산 매각)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
+*   **속뜻**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 말라가고 있으니까요."**
 *   **타이밍**: 코스피 지수가 지지부진한 상황에서 이런 공시가 몰려나온다는 건, 한계기업들의 **"구조조정 골든타임"**이 시작되었다는 강력한 시그널입니다.
-## What Changed (무엇이 달라졌나)
-*   **데이터 신호**: `struct_dart_disposal` 지표가 '정상'에서 **'심각(High Alert)'** 단계로 진입했습니다.
-*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담습니다.
-## What to Watch (대응 전략)
-*   **Action 1 (위험 회피)**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 포트폴리오에서 제외하십시오. 유상증자 폭탄이 떨어질 수 있습니다.
-*   **Action 2 (기회 포착)**: ...
+## 무엇이 달라졌나 (Change)
+*   **데이터 변화**: `기업 자산 매각 급증` 지표가 평상시 '정상' 범위에서 **'주의(L2)'** 단계로 진입했습니다. 아직 '심각(L3)' 단계는 아니지만, 추세가 시작된 초입이라 더 무섭습니다.
+*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담기 시작합니다.
+## 대응 전략 (Action)
+*   **위험 회피**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 관심종목에서 지우십시오. 조만간 유상증자 폭탄이 떨어질 확률이 높습니다.
+*   **기회 포착**: 반대로, ...
                                         </div>
                                     </div>
                                 </div>
@@ -505,7 +505,7 @@
         </div>
         <script>
             const TOPIC_DATA = [{"dataset_id": "struct_dart_disposal", "level": "L2", "score": 2.5, "title": "\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d", "rationale": "\uc2e0\uaddc \uc774\uc0c1\uc9d5\ud6c4 \ud3ec\ucc29\ub428", "raw_data": {"ts_utc": "2026-01-22T03:47:56Z", "dataset_id": "struct_dart_disposal", "topic_id": "struct_dart_disposal::event_nonzero", "title": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal", "score": 6.0, "severity": "HIGH", "evidence": {"source_severity": 60, "level": "L2", "details": {"value": 5.0, "threshold": 0, "reasoning": "New Event Detected (Count=5)"}, "regime": {"vix_roc_1d": null, "us10y_roc_1d": null, "vix_on": false, "us10y_on": false, "multiplier": 1.0, "rule": {"vix_threshold": 0.01, "us10y_threshold": 0.005, "mult_map": {"both": 1.8, "vix": 1.5, "us10y": 1.2, "none": 1.0}}}, "anomalies_path": "data/features/anomalies/2026/01/22/struct_dart_disposal.json"}, "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)", "links": []}}, {"dataset_id": "struct_dart_cb_bw", "level": "L2", "score": 2.5, "title": "\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d", "rationale": "\uc2e0\uaddc \uc774\uc0c1\uc9d5\ud6c4 \ud3ec\ucc29\ub428", "raw_data": {"ts_utc": "2026-01-22T03:47:56Z", "dataset_id": "struct_dart_cb_bw", "topic_id": "struct_dart_cb_bw::event_nonzero", "title": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal", "score": 6.0, "severity": "HIGH", "evidence": {"source_severity": 60, "level": "L2", "details": {"value": 1.0, "threshold": 0, "reasoning": "New Event Detected (Count=1)"}, "regime": {"vix_roc_1d": null, "us10y_roc_1d": null, "vix_on": false, "us10y_on": false, "multiplier": 1.0, "rule": {"vix_threshold": 0.01, "us10y_threshold": 0.005, "mult_map": {"both": 1.8, "vix": 1.5, "us10y": 1.2, "none": 1.0}}}, "anomalies_path": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json"}, "rationale": "[L2] New Event Detected (Count=1) (Regime x1.0)", "links": []}}, {"dataset_id": "risk_vix_fred", "level": "L2", "score": 2, "title": "\uacf5\ud3ec\uc9c0\uc218(VIX) \uc774\uc0c1 \uae09\ub4f1", "rationale": "\ud45c\uc900\ud3b8\ucc28(Z-Score) 3.43 >= 2.0", "raw_data": {"ts_utc": "2026-01-22T03:47:56Z", "dataset_id": "risk_vix_fred", "topic_id": "risk_vix_fred::z_score_model_v1", "title": "data/features/anomalies/2026/01/22/risk_vix_fred.json L2 Signal", "score": 6.0, "severity": "HIGH", "evidence": {"source_severity": 60, "level": "L2", "details": {"z_score": 3.43, "percentile": 91.7, "value": 20.09, "rolling_mean_20d": 16.22049969100952, "reasoning": "Z-Score 3.43 >= 2.0"}, "regime": {"vix_roc_1d": null, "us10y_roc_1d": null, "vix_on": false, "us10y_on": false, "multiplier": 1.0, "rule": {"vix_threshold": 0.01, "us10y_threshold": 0.005, "mult_map": {"both": 1.8, "vix": 1.5, "us10y": 1.2, "none": 1.0}}}, "anomalies_path": "data/features/anomalies/2026/01/22/risk_vix_fred.json"}, "rationale": "[L2] Z-Score 3.43 >= 2.0 (Regime x1.0)", "links": []}}, {"dataset_id": "metal_gold_paxg_coingecko", "level": "L2", "score": 2, "title": "\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9", "rationale": "\ud45c\uc900\ud3b8\ucc28(Z-Score) 2.31 >= 2.0", "raw_data": {"ts_utc": "2026-01-22T03:47:56Z", "dataset_id": "metal_gold_paxg_coingecko", "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1", "title": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal", "score": 6.0, "severity": "HIGH", "evidence": {"source_severity": 60, "level": "L2", "details": {"z_score": 2.31, "percentile": 50.0, "value": 4803.95, "rolling_mean_20d": 4628.105921875, "reasoning": "Z-Score 2.31 >= 2.0"}, "regime": {"vix_roc_1d": null, "us10y_roc_1d": null, "vix_on": false, "us10y_on": false, "multiplier": 1.0, "rule": {"vix_threshold": 0.01, "us10y_threshold": 0.005, "mult_map": {"both": 1.8, "vix": 1.5, "us10y": 1.2, "none": 1.0}}}, "anomalies_path": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json"}, "rationale": "[L2] Z-Score 2.31 >= 2.0 (Regime x1.0)", "links": []}}, {"dataset_id": "rates_us10y_fred", "level": "L2", "score": 2, "title": "\ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0", "rationale": "\ud45c\uc900\ud3b8\ucc28(Z-Score) 4.25 >= 2.0", "raw_data": {"ts_utc": "2026-01-22T03:47:56Z", "dataset_id": "rates_us10y_fred", "topic_id": "rates_us10y_fred::z_score_model_v1", "title": "data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal", "score": 6.0, "severity": "HIGH", "evidence": {"source_severity": 60, "level": "L2", "details": {"z_score": 4.25, "percentile": 78.0, "value": 4.3, "rolling_mean_20d": 3.9675000000000002, "reasoning": "Z-Score 4.25 >= 2.0"}, "regime": {"vix_roc_1d": null, "us10y_roc_1d": null, "vix_on": false, "us10y_on": false, "multiplier": 1.0, "rule": {"vix_threshold": 0.01, "us10y_threshold": 0.005, "mult_map": {"both": 1.8, "vix": 1.5, "us10y": 1.2, "none": 1.0}}}, "anomalies_path": "data/features/anomalies/2026/01/22/rates_us10y_fred.json"}, "rationale": "[L2] Z-Score 4.25 >= 2.0 (Regime x1.0)", "links": []}}];
-            const MAIN_SCRIPT = "## Opening (Context)\n\uc624\ub298 \ud638\uc778 \uc5d4\uc9c4\uc774 \uae34\uae09\ud558\uac8c \ud3ec\ucc29\ud55c \uc2e0\ud638\ub294 **L3 \uad6c\uc870\uc801 \uc774\uc0c1\uc9d5\ud6c4(Structural Anomaly)**\uc785\ub2c8\ub2e4.\n\ub2e8\uc21c\ud788 \uc8fc\uac00\uac00 \uc624\ub974\uace0 \ub0b4\ub9ac\ub294 \ubb38\uc81c\uac00 \uc544\ub2d9\ub2c8\ub2e4. \uae30\uc5c5\ub4e4\uc758 \uae08\uace0\uc5d0\uc11c **\ube44\uba85\uc18c\ub9ac**\uac00 \ub4e4\ub9ac\uae30 \uc2dc\uc791\ud588\uc2b5\ub2c8\ub2e4.\n## Why Now (\uc9c0\uae08 \ud130\uc9c4 \uc774\uc720)\n*   **Trigger**: \uc624\ub298 \ud558\ub8e8\uc5d0\ub9cc DART \uc804\uc790\uacf5\uc2dc\uc5d0 **'\uc8fc\uc694\uc790\uc0b0\ucc98\ubd84\uacb0\uc815(Disposal)'** \uacf5\uc2dc\uac00 5\uac74\uc774\ub098 \uc3df\uc544\uc84c\uc2b5\ub2c8\ub2e4. \ud3c9\uc18c\uc5d0\ub294 1~2\uac74 \ub098\uc62c\uae4c \ub9d0\uae4c \ud55c \uc218\uce58\uc785\ub2c8\ub2e4.\n*   **\uc758\ubbf8**: \uae30\uc5c5\ub4e4\uc774 \ub545 \ud314\uace0 \uac74\ubb3c \ud314\uace0 \uc788\ub2e4\ub294 \ub73b\uc785\ub2c8\ub2e4. \uc65c\uc77c\uae4c\uc694? **\"\ud604\uae08\uc774 \uc5c6\uc73c\ub2c8\uae4c\uc694.\"**\n*   **\ud0c0\uc774\ubc0d**: \ucf54\uc2a4\ud53c \uc9c0\uc218\uac00 \uc9c0\uc9c0\ubd80\uc9c4\ud55c \uc0c1\ud669\uc5d0\uc11c \uc774\ub7f0 \uacf5\uc2dc\uac00 \ubab0\ub824\ub098\uc628\ub2e4\ub294 \uac74, \ud55c\uacc4\uae30\uc5c5\ub4e4\uc758 **\"\uad6c\uc870\uc870\uc815 \uace8\ub4e0\ud0c0\uc784\"**\uc774 \uc2dc\uc791\ub418\uc5c8\ub2e4\ub294 \uac15\ub825\ud55c \uc2dc\uadf8\ub110\uc785\ub2c8\ub2e4.\n## What Changed (\ubb34\uc5c7\uc774 \ub2ec\ub77c\uc84c\ub098)\n*   **\ub370\uc774\ud130 \uc2e0\ud638**: `struct_dart_disposal` \uc9c0\ud45c\uac00 '\uc815\uc0c1'\uc5d0\uc11c **'\uc2ec\uac01(High Alert)'** \ub2e8\uacc4\ub85c \uc9c4\uc785\ud588\uc2b5\ub2c8\ub2e4.\n*   **\uc2dc\uc7a5 \ubd84\uc704\uae30**: \uc678\uad6d\uc778 \uc790\uae08\uc740 \uad00\ub9dd\uc138\uc9c0\ub9cc, \uae30\uc5c5 \ub0b4\ubd80\uc790\ub4e4\uc740 \uc774\ubbf8 \uc6c0\uc9c1\uc774\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc9c4\uc9dc \uc120\uc218\ub4e4\uc740 \uc774\ub7f4 \ub54c **\"\ub9dd\ud558\ub294 \uae30\uc5c5\"**\uc744 \uc190\uc808\ud558\uace0 **\"\uc54c\uc9dc \uc790\uc0b0\uc744 \uc90d\ub294 \uae30\uc5c5\"**\uc744 \uc4f8\uc5b4\ub2f4\uc2b5\ub2c8\ub2e4.\n## What to Watch (\ub300\uc751 \uc804\ub7b5)\n*   **Action 1 (\uc704\ud5d8 \ud68c\ud53c)**: \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\ub97c \ub0b8 \uae30\uc5c5 \uc911 **\ubd80\ucc44\ube44\uc728 200% \uc774\uc0c1**\uc778 \uacf3\uc740 \ub2f9\uc7a5 \ud3ec\ud2b8\ud3f4\ub9ac\uc624\uc5d0\uc11c \uc81c\uc678\ud558\uc2ed\uc2dc\uc624. \uc720\uc0c1\uc99d\uc790 \ud3ed\ud0c4\uc774 \ub5a8\uc5b4\uc9c8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n*   **Action 2 (\uae30\ud68c \ud3ec\ucc29)**: \ubc18\ub300\ub85c, \uc774 \ub9e4\ubb3c\uc744 **\"\ud604\uae08\uc73c\ub85c \uc0ac\ub4e4\uc774\ub294 \uae30\uc5c5\"**\uc744 \uc8fc\ubaa9\ud558\uc138\uc694. \ubd88\ud669\uc5d0 \ud5d0\uac12\uc73c\ub85c \ub369\uce58\ub97c \ud0a4\uc6b0\ub294 \ub188\ub4e4\uc774 2026\ub144 \uc8fc\ub3c4\uc8fc\uac00 \ub429\ub2c8\ub2e4.\n*   **Target**: \ud638\uc778 \uc5d4\uc9c4 \ub370\uc774\ud130 \ubdf0\uc5d0\uc11c `struct_dart_disposal` \uacf5\uc2dc \ub9ac\uc2a4\ud2b8\ub97c \uc9c0\uae08 \ubc14\ub85c \ud655\uc778\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4.\n## Closing\n\ub274\uc2a4\ub294 \"\uacbd\uc81c \uc704\uae30\"\ub77c\uace0 \ub5a0\ub4e4\uc9c0\ub9cc, \ub370\uc774\ud130\ub294 **\"\ubd80\uc758 \uc774\ub3d9\"**\uc744 \uac00\ub9ac\ud0a4\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc5b4\ub290 \ucabd\uc5d0 \uc11c\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+            const MAIN_SCRIPT = "## \uc0c1\ud669 \uc694\uc57d (Situation)\n\uc624\ub298 \ud638\uc778 \uc5d4\uc9c4\uc774 \uae34\uae09\ud558\uac8c \ud3ec\ucc29\ud55c \uc2e0\ud638\ub294 **L2 \ub2e8\uacc4\uc758 \uad6c\uc870\uc801 \uc774\uc0c1\uc9d5\ud6c4**\uc785\ub2c8\ub2e4.\n\ub2e8\uc21c\ud788 \uc8fc\uac00\uac00 \uc624\ub974\uace0 \ub0b4\ub9ac\ub294 \ubb38\uc81c\uac00 \uc544\ub2d9\ub2c8\ub2e4. \uae30\uc5c5\ub4e4\uc758 \uae08\uace0\uc5d0\uc11c **\ube44\uba85\uc18c\ub9ac**\uac00 \ub4e4\ub9ac\uae30 \uc2dc\uc791\ud588\ub2e4\ub294 \ub73b\uc785\ub2c8\ub2e4.\n## \uc9c0\uae08 \ud130\uc9c4 \uc774\uc720 (Why Now)\n*   **\uc2e0\ud638 \ubc1c\uc0dd**: \uc624\ub298 \ud558\ub8e8\uc5d0\ub9cc DART \uc804\uc790\uacf5\uc2dc\uc5d0 **'\uc8fc\uc694\uc790\uc0b0\ucc98\ubd84\uacb0\uc815(\uc790\uc0b0 \ub9e4\uac01)'** \uacf5\uc2dc\uac00 5\uac74\uc774\ub098 \uc3df\uc544\uc84c\uc2b5\ub2c8\ub2e4. \ud3c9\uc18c\uc5d0\ub294 1~2\uac74 \ub098\uc62c\uae4c \ub9d0\uae4c \ud55c \uc218\uce58\uc785\ub2c8\ub2e4.\n*   **\uc18d\ub73b**: \uae30\uc5c5\ub4e4\uc774 \ub545 \ud314\uace0 \uac74\ubb3c \ud314\uace0 \uc788\ub2e4\ub294 \ub73b\uc785\ub2c8\ub2e4. \uc65c\uc77c\uae4c\uc694? **\"\ud604\uae08\uc774 \ub9d0\ub77c\uac00\uace0 \uc788\uc73c\ub2c8\uae4c\uc694.\"**\n*   **\ud0c0\uc774\ubc0d**: \ucf54\uc2a4\ud53c \uc9c0\uc218\uac00 \uc9c0\uc9c0\ubd80\uc9c4\ud55c \uc0c1\ud669\uc5d0\uc11c \uc774\ub7f0 \uacf5\uc2dc\uac00 \ubab0\ub824\ub098\uc628\ub2e4\ub294 \uac74, \ud55c\uacc4\uae30\uc5c5\ub4e4\uc758 **\"\uad6c\uc870\uc870\uc815 \uace8\ub4e0\ud0c0\uc784\"**\uc774 \uc2dc\uc791\ub418\uc5c8\ub2e4\ub294 \uac15\ub825\ud55c \uc2dc\uadf8\ub110\uc785\ub2c8\ub2e4.\n## \ubb34\uc5c7\uc774 \ub2ec\ub77c\uc84c\ub098 (Change)\n*   **\ub370\uc774\ud130 \ubcc0\ud654**: `\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uae09\uc99d` \uc9c0\ud45c\uac00 \ud3c9\uc0c1\uc2dc '\uc815\uc0c1' \ubc94\uc704\uc5d0\uc11c **'\uc8fc\uc758(L2)'** \ub2e8\uacc4\ub85c \uc9c4\uc785\ud588\uc2b5\ub2c8\ub2e4. \uc544\uc9c1 '\uc2ec\uac01(L3)' \ub2e8\uacc4\ub294 \uc544\ub2c8\uc9c0\ub9cc, \ucd94\uc138\uac00 \uc2dc\uc791\ub41c \ucd08\uc785\uc774\ub77c \ub354 \ubb34\uc12d\uc2b5\ub2c8\ub2e4.\n*   **\uc2dc\uc7a5 \ubd84\uc704\uae30**: \uc678\uad6d\uc778 \uc790\uae08\uc740 \uad00\ub9dd\uc138\uc9c0\ub9cc, \uae30\uc5c5 \ub0b4\ubd80\uc790\ub4e4\uc740 \uc774\ubbf8 \uc6c0\uc9c1\uc774\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc9c4\uc9dc \uc120\uc218\ub4e4\uc740 \uc774\ub7f4 \ub54c **\"\ub9dd\ud558\ub294 \uae30\uc5c5\"**\uc744 \uc190\uc808\ud558\uace0 **\"\uc54c\uc9dc \uc790\uc0b0\uc744 \uc90d\ub294 \uae30\uc5c5\"**\uc744 \uc4f8\uc5b4\ub2f4\uae30 \uc2dc\uc791\ud569\ub2c8\ub2e4.\n## \ub300\uc751 \uc804\ub7b5 (Action)\n*   **\uc704\ud5d8 \ud68c\ud53c**: \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\ub97c \ub0b8 \uae30\uc5c5 \uc911 **\ubd80\ucc44\ube44\uc728 200% \uc774\uc0c1**\uc778 \uacf3\uc740 \ub2f9\uc7a5 \uad00\uc2ec\uc885\ubaa9\uc5d0\uc11c \uc9c0\uc6b0\uc2ed\uc2dc\uc624. \uc870\ub9cc\uac04 \uc720\uc0c1\uc99d\uc790 \ud3ed\ud0c4\uc774 \ub5a8\uc5b4\uc9c8 \ud655\ub960\uc774 \ub192\uc2b5\ub2c8\ub2e4.\n*   **\uae30\ud68c \ud3ec\ucc29**: \ubc18\ub300\ub85c, \uc774 \ub9e4\ubb3c\uc744 **\"\ud604\uae08\uc73c\ub85c \uc0ac\ub4e4\uc774\ub294 \uae30\uc5c5\"**\uc744 \uc8fc\ubaa9\ud558\uc138\uc694. \ubd88\ud669\uc5d0 \ud5d0\uac12\uc73c\ub85c \ub369\uce58\ub97c \ud0a4\uc6b0\ub294 \ub188\ub4e4\uc774 2026\ub144 \uc8fc\ub3c4\uc8fc\uac00 \ub429\ub2c8\ub2e4.\n*   **\ud655\uc778 \ubc29\ubc95**: \ud638\uc778 \uc5d4\uc9c4 \ub370\uc774\ud130 \ubdf0\uc5d0\uc11c '\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01' \uacf5\uc2dc \ub9ac\uc2a4\ud2b8\ub97c \uc9c0\uae08 \ubc14\ub85c \ud655\uc778\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4.\n## \ub9fa\uc74c\ub9d0\n\ub274\uc2a4\ub294 \"\uacbd\uc81c \uc704\uae30\"\ub77c\uace0 \ub5a0\ub4e4\uc9c0\ub9cc, \ub370\uc774\ud130\ub294 **\"\ubd80\uc758 \uc774\ub3d9\"**\uc744 \uac00\ub9ac\ud0a4\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc5b4\ub290 \ucabd\uc5d0 \uc11c\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
             
             function showTopicDetail(idx) {
                 const t = TOPIC_DATA[idx];
@@ -798,7 +798,7 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">index_kospi_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">5,009.18</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">5,000.60</span>
                  <div class="status-check">✓</div>
              </div>
              </div>
@@ -859,18 +859,18 @@
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:52)</span></span>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:56)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,803.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,805.57</span>
                  <div class="status-check">✓</div>
              </div>
              
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:52)</span></span>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:56)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.91</span>
                  <div class="status-check">✓</div>
              </div>
              </div>
@@ -1005,7 +1005,7 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">crypto_btc_usd_spot_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">89,761.00</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">89,784.00</span>
                  <div class="status-check">✓</div>
              </div>
              
@@ -1080,7 +1080,7 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_gold_paxg_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,803.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,805.57</span>
                  <div class="status-check">✓</div>
              </div>
              
@@ -1089,16 +1089,16 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_silver_kag_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.91</span>
                  <div class="status-check">✓</div>
              </div>
              
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:52)</span></span>
+                     <span class="ds-name">metal_gold_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:56)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,803.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">4,805.57</span>
                  <div class="status-check">✓</div>
              </div>
              
@@ -1107,16 +1107,16 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">metal_silver_kag_coingecko <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.91</span>
                  <div class="status-check">✓</div>
              </div>
              
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:52)</span></span>
+                     <span class="ds-name">metal_silver_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 03:56)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.95</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">92.91</span>
                  <div class="status-check">✓</div>
              </div>
              
@@ -1125,7 +1125,7 @@
                      <div class="ds-icon"></div>
                      <span class="ds-name">derived_gold_silver_ratio <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/22 10:26)</span></span>
                  </div>
-                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">51.68</span>
+                 <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">51.72</span>
                  <div class="status-check">✓</div>
              </div>
              </div>
@@ -5293,21 +5293,21 @@
                                 <button onclick="copyScript()" style="padding:5px 10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer; font-size:12px; font-weight:bold;">Copy Text</button>
                             </div>
                             <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
-## Opening (Context)
-오늘 호인 엔진이 긴급하게 포착한 신호는 **L3 구조적 이상징후(Structural Anomaly)**입니다.
-단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했습니다.
-## Why Now (지금 터진 이유)
-*   **Trigger**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(Disposal)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
-*   **의미**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 없으니까요."**
+## 상황 요약 (Situation)
+오늘 호인 엔진이 긴급하게 포착한 신호는 **L2 단계의 구조적 이상징후**입니다.
+단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했다는 뜻입니다.
+## 지금 터진 이유 (Why Now)
+*   **신호 발생**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(자산 매각)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
+*   **속뜻**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 말라가고 있으니까요."**
 *   **타이밍**: 코스피 지수가 지지부진한 상황에서 이런 공시가 몰려나온다는 건, 한계기업들의 **"구조조정 골든타임"**이 시작되었다는 강력한 시그널입니다.
-## What Changed (무엇이 달라졌나)
-*   **데이터 신호**: `struct_dart_disposal` 지표가 '정상'에서 **'심각(High Alert)'** 단계로 진입했습니다.
-*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담습니다.
-## What to Watch (대응 전략)
-*   **Action 1 (위험 회피)**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 포트폴리오에서 제외하십시오. 유상증자 폭탄이 떨어질 수 있습니다.
-*   **Action 2 (기회 포착)**: 반대로, 이 매물을 **"현금으로 사들이는 기업"**을 주목하세요. 불황에 헐값으로 덩치를 키우는 놈들이 2026년 주도주가 됩니다.
-*   **Target**: 호인 엔진 데이터 뷰에서 `struct_dart_disposal` 공시 리스트를 지금 바로 확인하시기 바랍니다.
-## Closing
+## 무엇이 달라졌나 (Change)
+*   **데이터 변화**: `기업 자산 매각 급증` 지표가 평상시 '정상' 범위에서 **'주의(L2)'** 단계로 진입했습니다. 아직 '심각(L3)' 단계는 아니지만, 추세가 시작된 초입이라 더 무섭습니다.
+*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담기 시작합니다.
+## 대응 전략 (Action)
+*   **위험 회피**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 관심종목에서 지우십시오. 조만간 유상증자 폭탄이 떨어질 확률이 높습니다.
+*   **기회 포착**: 반대로, 이 매물을 **"현금으로 사들이는 기업"**을 주목하세요. 불황에 헐값으로 덩치를 키우는 놈들이 2026년 주도주가 됩니다.
+*   **확인 방법**: 호인 엔진 데이터 뷰에서 '기업 자산 매각' 공시 리스트를 지금 바로 확인하시기 바랍니다.
+## 맺음말
 뉴스는 "경제 위기"라고 떠들지만, 데이터는 **"부의 이동"**을 가리키고 있습니다. 어느 쪽에 서시겠습니까?
                             </div>
                         </div>
@@ -5322,21 +5322,21 @@
                 <p style="font-size: 14px; color: #64748b; margin-bottom: 25px;">최종 생성된 분석 원고(v1.0)입니다.</p>
                 
                 <div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; font-family:'Inter',sans-serif; white-space:pre-wrap; font-size:13px; line-height:1.6; color:#334155;">
-## Opening (Context)
-오늘 호인 엔진이 긴급하게 포착한 신호는 **L3 구조적 이상징후(Structural Anomaly)**입니다.
-단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했습니다.
-## Why Now (지금 터진 이유)
-*   **Trigger**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(Disposal)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
-*   **의미**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 없으니까요."**
+## 상황 요약 (Situation)
+오늘 호인 엔진이 긴급하게 포착한 신호는 **L2 단계의 구조적 이상징후**입니다.
+단순히 주가가 오르고 내리는 문제가 아닙니다. 기업들의 금고에서 **비명소리**가 들리기 시작했다는 뜻입니다.
+## 지금 터진 이유 (Why Now)
+*   **신호 발생**: 오늘 하루에만 DART 전자공시에 **'주요자산처분결정(자산 매각)'** 공시가 5건이나 쏟아졌습니다. 평소에는 1~2건 나올까 말까 한 수치입니다.
+*   **속뜻**: 기업들이 땅 팔고 건물 팔고 있다는 뜻입니다. 왜일까요? **"현금이 말라가고 있으니까요."**
 *   **타이밍**: 코스피 지수가 지지부진한 상황에서 이런 공시가 몰려나온다는 건, 한계기업들의 **"구조조정 골든타임"**이 시작되었다는 강력한 시그널입니다.
-## What Changed (무엇이 달라졌나)
-*   **데이터 신호**: `struct_dart_disposal` 지표가 '정상'에서 **'심각(High Alert)'** 단계로 진입했습니다.
-*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담습니다.
-## What to Watch (대응 전략)
-*   **Action 1 (위험 회피)**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 포트폴리오에서 제외하십시오. 유상증자 폭탄이 떨어질 수 있습니다.
-*   **Action 2 (기회 포착)**: 반대로, 이 매물을 **"현금으로 사들이는 기업"**을 주목하세요. 불황에 헐값으로 덩치를 키우는 놈들이 2026년 주도주가 됩니다.
-*   **Target**: 호인 엔진 데이터 뷰에서 `struct_dart_disposal` 공시 리스트를 지금 바로 확인하시기 바랍니다.
-## Closing
+## 무엇이 달라졌나 (Change)
+*   **데이터 변화**: `기업 자산 매각 급증` 지표가 평상시 '정상' 범위에서 **'주의(L2)'** 단계로 진입했습니다. 아직 '심각(L3)' 단계는 아니지만, 추세가 시작된 초입이라 더 무섭습니다.
+*   **시장 분위기**: 외국인 자금은 관망세지만, 기업 내부자들은 이미 움직이고 있습니다. 진짜 선수들은 이럴 때 **"망하는 기업"**을 손절하고 **"알짜 자산을 줍는 기업"**을 쓸어담기 시작합니다.
+## 대응 전략 (Action)
+*   **위험 회피**: 자산 매각 공시를 낸 기업 중 **부채비율 200% 이상**인 곳은 당장 관심종목에서 지우십시오. 조만간 유상증자 폭탄이 떨어질 확률이 높습니다.
+*   **기회 포착**: 반대로, 이 매물을 **"현금으로 사들이는 기업"**을 주목하세요. 불황에 헐값으로 덩치를 키우는 놈들이 2026년 주도주가 됩니다.
+*   **확인 방법**: 호인 엔진 데이터 뷰에서 '기업 자산 매각' 공시 리스트를 지금 바로 확인하시기 바랍니다.
+## 맺음말
 뉴스는 "경제 위기"라고 떠들지만, 데이터는 **"부의 이동"**을 가리키고 있습니다. 어느 쪽에 서시겠습니까?
                 </div>
             </div>
