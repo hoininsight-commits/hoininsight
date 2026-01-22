@@ -35,7 +35,6 @@ Historical context:
 - [HIGH] GOLD: data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] SILVER: data/features/anomalies/2026/01/22/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] SILVER: data/features/anomalies/2026/01/22/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
-- [HIGH] BTCUSD: data/features/anomalies/2026/01/22/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [HIGH] US10Y: data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] KOSPI: data/features/anomalies/2026/01/22/index_kospi_stooq.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
@@ -45,6 +44,7 @@ Historical context:
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/22/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/22/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [MED] YIELD_CURVE: data/features/anomalies/2026/01/22/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=4.73) | Mom: DOWN (slope=-0.75) -> x0.9 | App7d=5
+- [MED] BTCUSD: data/features/anomalies/2026/01/22/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=3.91) | Mom: DOWN (slope=-1.50) -> x0.9 | App7d=3
 - [MED] SPX: data/features/anomalies/2026/01/22/index_spx_fred.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/22/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] NASDAQ: data/features/anomalies/2026/01/22/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
