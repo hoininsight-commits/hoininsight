@@ -63,8 +63,8 @@ Narrative Drift Signals:
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
-- Ops Health: 100% Freshness
-- Prompt: Manual Override for Presentation Quality
+- Ops Health: 0% Freshness
+- Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## TOPIC CANDIDATE SNAPSHOT
 Gate Filter Result: 16 candidate(s) survived survival rules.
