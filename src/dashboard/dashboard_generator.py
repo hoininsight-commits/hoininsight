@@ -1670,7 +1670,7 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
             
-        if topic_list_html:
+        if list_items:
              # Wrap the items generated above in the Container
             items_html = list_items # renamed for clarity
             
