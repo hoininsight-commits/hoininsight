@@ -1,4 +1,4 @@
-# [Insight] L3 Structural Anomaly: M&A & Disposal Surge
+# [Insight] 구조조정 공시 5건 폭발! '망하는 기업 vs 줍줍할 기업' 리스트 공개
 
 ## Opening (Context)
 Today, the Hoin Engine has detected a **L3 Structural Anomaly** driven by a sudden surge in corporate asset disposal filings (DART). Unlike typical price volatility, this indicates a **fundamental shift in corporate liquidity conditions**.
