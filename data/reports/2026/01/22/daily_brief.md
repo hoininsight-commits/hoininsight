@@ -36,6 +36,7 @@ Historical context:
 - [HIGH] GOLD: data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] VIX: data/features/anomalies/2026/01/22/risk_vix_fred.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [HIGH] US10Y: data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
+- [HIGH] KOSPI: data/features/anomalies/2026/01/22/index_kospi_stooq.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal (base=6.00, final_m=6.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] KOR_CPI: data/features/anomalies/2026/01/22/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
@@ -46,7 +47,6 @@ Historical context:
 - [MED] SILVER: data/features/anomalies/2026/01/22/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=4.32) | Mom: DOWN (slope=-1.00) -> x0.9 | App7d=4
 - [MED] SPX: data/features/anomalies/2026/01/22/index_spx_fred.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] BTCUSD: data/features/anomalies/2026/01/22/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
-- [LOW] KOSPI: data/features/anomalies/2026/01/22/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] NASDAQ: data/features/anomalies/2026/01/22/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] US02Y: data/features/anomalies/2026/01/22/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] KOR_RATE: data/features/anomalies/2026/01/22/rates_kor_base_rate_ecos.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
