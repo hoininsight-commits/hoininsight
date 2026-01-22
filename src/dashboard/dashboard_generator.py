@@ -1670,29 +1670,53 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
             
-        topic_list_html = f"""
-        <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:20px; height:600px;">
-            <div style="overflow-y:auto; padding-right:10px;">
-                {list_items}
-            </div>
-            <div id="topic-detail-view" style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:25px; overflow-y:auto;">
-                <div style="color:#94a3b8; text-align:center; margin-top:50px;">
-                    좌측 리스트에서 토픽을 선택하세요.
+        if topic_list_html:
+             # Wrap the items generated above in the Container
+            items_html = list_items # renamed for clarity
+            
+            # Load all 5 scripts
+            scripts_content = []
+            for i in range(len(top_topics)):
+                s_body = ""
+                try:
+                    if i == 0:
+                        s_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
+                        if not s_path.exists(): s_path = base_dir / "data/content" / "insight_script_v1.md"
+                    else:
+                        s_path = base_dir / "data/output" / ymd.replace("-","/") / f"insight_script_{i+1}.md"
+                    
+                    if s_path.exists():
+                        s_body = s_path.read_text(encoding='utf-8')
+                except: pass
+                
+                if not s_body: s_body = "스크립트가 아직 생성되지 않았습니다."
+                scripts_content.append(s_body)
+
+            topic_list_html = f"""
+            <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:20px; height:600px;">
+                <div style="overflow-y:auto; padding-right:10px;">
+                    {items_html}
+                </div>
+                <div id="topic-detail-view" style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:25px; overflow-y:auto;">
+                    <div style="color:#94a3b8; text-align:center; margin-top:50px;">
+                        좌측 리스트에서 토픽을 선택하세요.
+                    </div>
                 </div>
             </div>
-        </div>
+            """
+            topic_list_html += f"""
         <script>
             const TOPIC_DATA = {json.dumps(top_topics)};
-            const MAIN_SCRIPT = {json.dumps(script_body if script_body else "스크립트 미생성")};
+            const ALL_SCRIPTS = {json.dumps(scripts_content)};
             
             function showTopicDetail(idx) {{
                 const t = TOPIC_DATA[idx];
-                const isMain = (idx === 0);
                 const view = document.getElementById('topic-detail-view');
+                const scriptContent = ALL_SCRIPTS[idx];
                 
                 let html = `
                     <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #{idx+1}</div>
+                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #{{idx+1}}</div>
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
                         <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
                     </div>
@@ -1701,22 +1725,12 @@ def generate_dashboard(base_dir: Path):
                     <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
                         ${{t.rationale}}
                     </div>
+                    
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📜 인사이트 스크립트</h3>
+                    <div style="background:#eff6ff; padding:20px; border-radius:6px; font-size:13px; line-height:1.7; color:#1e293b; white-space:pre-wrap; border:1px solid #bfdbfe;">
+                        ${{scriptContent}}
+                    </div>
                 `;
-                
-                if (isMain) {{
-                    html += `
-                        <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📜 인사이트 스크립트 (V1)</h3>
-                        <div style="background:#eff6ff; padding:20px; border-radius:6px; font-size:13px; line-height:1.7; color:#1e293b; white-space:pre-wrap; border:1px solid #bfdbfe;">
-                            ${{MAIN_SCRIPT}}
-                        </div>
-                    `;
-                }} else {{
-                    html += `
-                        <div style="background:#f1f5f9; padding:20px; text-align:center; border-radius:6px; color:#64748b; font-size:12px;">
-                            이 토픽에 대한 상세 스크립트는 생성되지 않았습니다.<br>(Only Top 1 Generated)
-                        </div>
-                    `;
-                }}
                 
                 view.innerHTML = html;
             }}
