@@ -1,6 +1,6 @@
 {
   "card_version": "phase38_v1",
-  "generated_at": "2026-01-22T02:25:22.909016+00:00Z",
+  "generated_at": "2026-01-22T03:19:13.405631+00:00Z",
   "date": "2026-01-22",
   "blocks": {
     "regime": {
@@ -22,6 +22,11 @@
       "has_stale_warning": false,
       "7d_success_rate": "N/A"
     }
+  },
+  "topic": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
+  "decision_rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
+  "key_data": {
+    "struct_dart_disposal": "Primary"
   },
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
 }
