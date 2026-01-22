@@ -608,3 +608,101 @@ datasets:
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "GS_RATIO"
     curated_path: "data/curated/derived/metals/gold_silver_ratio.csv"
+
+  # --- Structural Capital (v1.12 Add-on) ---
+  - dataset_id: "struct_dart_cb_bw"
+    category: "STRUCTURAL"
+    enabled: true
+    soft_fail: true
+    entity: "DART_CB_BW"
+    unit: "COUNT"
+    source: "dart"
+    metric_name: "filing_count"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.structural_capital_collector:collect_lockup_release"
+    normalizer: "src.normalizers.structural_normalizers:normalize_dart_cb_bw"
+    anomaly: "src.anomaly_detectors.cold_start_detector:detect_event_nonzero"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "M_AND_A_CB"
+    curated_path: "data/curated/structural/cb_bw.csv"
+
+  - dataset_id: "struct_dart_disposal"
+    category: "STRUCTURAL"
+    enabled: true
+    soft_fail: true
+    entity: "DART_DISPOSAL"
+    unit: "COUNT"
+    source: "dart"
+    metric_name: "filing_count"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.structural_capital_collector:collect_lockup_release"
+    normalizer: "src.normalizers.structural_normalizers:normalize_dart_disposal"
+    anomaly: "src.anomaly_detectors.cold_start_detector:detect_event_nonzero"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "M_AND_A_DISP"
+    curated_path: "data/curated/structural/disposal.csv"
+
+  - dataset_id: "struct_krx_foreigner_flow"
+    category: "STRUCTURAL"
+    enabled: true
+    soft_fail: true
+    entity: "KRX_FOREIG_TOP10"
+    unit: "KRW"
+    source: "pykrx"
+    metric_name: "net_buy_volume"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.structural_capital_collector:collect_block_deals_krx"
+    normalizer: "src.normalizers.structural_normalizers:normalize_krx_foreigner_flow"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "BLOCK_DEAL_PROXY"
+    curated_path: "data/curated/structural/foreigner_flow.csv"
+
+  # --- Real Estate (v1.12 Add-on) ---
+  - dataset_id: "real_estate_price_index"
+    category: "REAL_ESTATE"
+    enabled: true
+    soft_fail: true
+    entity: "KOR_RE_INDEX"
+    unit: "INDEX"
+    source: "hybrid"
+    metric_name: "price_index"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.real_estate_collector:run_collector"
+    normalizer: "src.normalizers.real_estate_normalizers:normalize_apt_price_index"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "RE_PRICE"
+    curated_path: "data/curated/real_estate/price_index.csv"
+
+  - dataset_id: "real_estate_volume"
+    category: "REAL_ESTATE"
+    enabled: true
+    soft_fail: true
+    entity: "KOR_RE_VOL"
+    unit: "COUNT"
+    source: "hybrid"
+    metric_name: "volume"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.real_estate_collector:run_collector"
+    normalizer: "src.normalizers.real_estate_normalizers:normalize_apt_transaction_volume"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "RE_VOL"
+    curated_path: "data/curated/real_estate/volume.csv"
+
+  - dataset_id: "real_estate_unsold"
+    category: "REAL_ESTATE"
+    enabled: true
+    soft_fail: true
+    entity: "KOR_RE_UNSOLD"
+    unit: "COUNT"
+    source: "hybrid"
+    metric_name: "unsold_inventory"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.real_estate_collector:run_collector"
+    normalizer: "src.normalizers.real_estate_normalizers:normalize_unsold_inventory"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "RE_UNSOLD"
+    curated_path: "data/curated/real_estate/unsold.csv"

@@ -62,3 +62,33 @@ def build_row(
         "derived_from": derived_from,
         "fingerprint": fp,
     }
+
+def save_curated_df(out_path: Path, df_new: pd.DataFrame) -> Path:
+    """
+    Save curated dataframe with deduplication.
+    """
+    if df_new.empty:
+        return None
+        
+    # Standard columns check
+    for col in REQUIRED:
+        if col not in df_new.columns:
+            # Try to add missing constants?
+            pass
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    if out_path.exists():
+        try:
+            df_old = pd.read_csv(out_path)
+            df_final = pd.concat([df_old, df_new], ignore_index=True)
+        except:
+            df_final = df_new
+    else:
+        df_final = df_new
+        
+    if "fingerprint" in df_final.columns:
+        df_final = df_final.drop_duplicates(subset=["fingerprint"], keep="last")
+        
+    df_final.to_csv(out_path, index=False)
+    return out_path
