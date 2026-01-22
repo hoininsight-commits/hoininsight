@@ -69,13 +69,16 @@ def run_engine():
         return False
         
     try:
-        # Run src/engine.py
-        # You might want to pass specific flags if your main.py supports them (e.g. --auto)
+        # Run src/engine.py with project root in PYTHONPATH
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(project_root)
+        
         result = subprocess.run(
             [sys.executable, str(main_script)],
             cwd=project_root,
             capture_output=True,
-            text=True
+            text=True,
+            env=env
         )
         
         # Print output for logs
