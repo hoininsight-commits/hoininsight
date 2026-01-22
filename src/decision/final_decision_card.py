@@ -28,20 +28,53 @@ ID_TO_TITLE = {
     "derived_yield_curve_10y_2y": "장단기 금리차(Yield Curve) 역전/해소"
 }
 
-def clean_rationale(text: str) -> str:
-    """Removes technical tags like [L2], (Count=5), (Regime x1.0)"""
+ID_TO_SUBJECT = {
+    "struct_dart_disposal": ("기업 자산 매각 공시", "건"),
+    "struct_dart_cb_bw": ("전환사채(CB/BW) 발행", "건"),
+    "risk_vix_fred": ("공포지수(VIX)", "배"),
+    "metal_gold_paxg_coingecko": ("골드 가격", "배"),
+    "rates_us10y_fred": ("미국 10년물 국채금리", "배"),
+    "index_kospi_stooq": ("코스피 지수", "배"),
+    "fx_usdkrw_ecos": ("원달러 환율", "배"),
+    "credit_hy_spread_fred": ("크레딧 스프레드", "배"),
+    "inflation_kor_cpi_ecos": ("한국 소비자물가", "배"),
+    "inflation_cpi_fred": ("미국 소비자물가", "배"),
+    "rates_fed_funds_fred": "연준 기준금리",
+    "comm_wti_fred": ("국제유가", "배"),
+    "liquidity_m2_fred": ("시장 유동성", "배"),
+    "derived_yield_curve_10y_2y": ("장단기 금리차", "배")
+}
+
+def humanize_rationale(ds_id: str, text: str) -> str:
+    """Generates a natural language explanation based on dataset and anomaly stats."""
     if not text: return "특이사항 없음"
-    # Remove [XX]
+    
+    subject_info = ID_TO_SUBJECT.get(ds_id, ("지표", "배"))
+    if isinstance(subject_info, tuple):
+        subject, unit = subject_info
+    else:
+        subject, unit = subject_info, "배"
+
+    # Pattern 1: Count (Events)
+    # e.g. New Event Detected (Count=5)
+    count_match = re.search(r"Count=(\d+)", text)
+    if count_match:
+        cnt = count_match.group(1)
+        return f"{subject}가 오늘 하루 {cnt}{unit} 발생하며 평소보다 급증했습니다."
+
+    # Pattern 2: Z-Score (Volatility)
+    # e.g. Z-Score 3.43 >= 2.0
+    z_match = re.search(r"Z-Score\s+([\d\.]+)", text)
+    if z_match:
+        z_val = z_match.group(1)
+        return f"{subject}가 평소 변동폭 대비 {z_val}배(표준편차) 이상 급격히 움직였습니다."
+
+    # Fallback: Clean up raw text if no pattern matches
     text = re.sub(r"\[.*?\]", "", text)
-    # Remove (Regime x...)
     text = re.sub(r"\(Regime.*?\)", "", text)
-    # Remove (Count=...)
-    text = re.sub(r"\(Count.*?\)", "", text)
-    # Clean whitespace
-    text = text.replace("New Event Detected", "신규 이상징후 포착됨")
-    text = text.replace("Z-Score", "표준편차(Z-Score)")
+    text = text.replace("New Event Detected", "신규 이상징후 포착")
     text = text.strip()
-    return text
+    return f"{subject}에서 {text}."
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -162,7 +195,9 @@ def main():
                        human_title = raw_title if raw_title else "알 수 없는 토픽"
 
                 t_title = human_title
-                t_rationale = clean_rationale(t_obj.get("why_now") or t_obj.get("rationale") or "상세 사유 없음.")
+                # Advanced Rationale using Dataset ID + Raw Text
+                raw_rationale = t_obj.get("why_now") or t_obj.get("rationale") or ""
+                t_rationale = humanize_rationale(ds_id, raw_rationale)
                 
                 scored_candidates.append({
                     "dataset_id": ds_id,
