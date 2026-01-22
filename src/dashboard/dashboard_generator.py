@@ -1588,19 +1588,26 @@ def generate_dashboard(base_dir: Path):
         candidate_html += '<div style="padding:20px; text-align:center; color:#94a3b8;">No candidates found.</div>'
 
     # Script Output
-    topic_title = "주제 선정 대기중"
+    topic_title = final_card.get("topic", "주제 선정 대기중")
     script_exists = False
     script_body = ""
     try:
+        # Check standard output path first
         out_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
+        
+        # Fallback to content directory (Manual/Agent generated)
+        if not out_path.exists():
+            out_path = base_dir / "data/content" / "insight_script_v1.md"
+
         if out_path.exists():
             script_exists = True
             script_body = out_path.read_text(encoding='utf-8')
-            # Extract title
-            for line in script_body.splitlines():
-                if line.startswith("# "):
-                    topic_title = line[2:].strip()
-                    break
+            # Only override title if it's the default and script has one
+            if topic_title == "주제 선정 대기중":
+                for line in script_body.splitlines():
+                    if line.startswith("# "):
+                        topic_title = line[2:].strip()
+                        break
             if not topic_title: topic_title = "스크립트 생성 완료"
     except: pass
 
