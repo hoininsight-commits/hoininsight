@@ -93,29 +93,27 @@ class TopicCandidateEngine:
         candidates = []
         raw_signals = self._get_active_anomalies_today()
         
-        # Group signals by Dataset ID to ensure uniqueness per axis
-        signals_by_axis = {}
+        # Signal aggregation with metadata
+        signals_by_id = {}
+        category_map = {d["dataset_id"]: d.get("category", "OTHER") for d in self.registry}
+        
+        signals_by_category = {}
         for sig in raw_signals:
             ds_id = sig.get("_dataset_id")
-            if ds_id:
-                signals_by_axis[ds_id] = sig
+            if not ds_id: continue
+            
+            category = category_map.get(ds_id, "OTHER")
+            sig["_category"] = category
+            signals_by_id[ds_id] = sig
+            
+            if category not in signals_by_category:
+                signals_by_category[category] = []
+            signals_by_category[category].append(ds_id)
 
         # --- GATE 1: Multi-Axis Confirmation ---
         # Requirement: At least 2 independent axes must have anomalies.
-        # Strict interpretation: If today's TOTAL active axes < 2, NO candidates can survive.
-        # Is this global or per-candidate?
-        # "Subject" usually means a specific topic. But here inputs are raw anomalies.
-        # We don't have "Topics" yet. We are selecting CANDIDATES.
-        # So "A Candidate" == "A Dataset with Anomaly" ?
-        # Or "A Candidate" == "The Set of Anomalies"?
-        # User prompt says: "This topic is... detected in [A] and [B]".
-        # This implies a candidate is formed formed by the intersection.
-        # BUT, to keep it simple and additive:
-        # We will treat EACH dataset with an anomaly as a "Potential Candidate".
-        # It survives ONLY IF there is at least ONE OTHER dataset with an anomaly today.
-        
-        active_axes = list(signals_by_axis.keys())
-        has_concurrency = len(active_axes) >= 2
+        active_axes = list(signals_by_id.keys())
+        has_global_concurrency = len(active_axes) >= 2
         
         # --- GATE 2: Temporal Density ---
         # Requirement: Recent N hours/days.
@@ -124,38 +122,48 @@ class TopicCandidateEngine:
         is_fresh = True # Default for daily batch
         
         # Processing Candidates
-        for ds_id, sig in signals_by_axis.items():
+        for ds_id, sig in signals_by_id.items():
             candidate = {
                 "candidate_id": f"cand_{ds_id}_{self.ymd_str.replace('/','')}",
                 "dataset_id": ds_id,
+                "category": sig.get("_category", "OTHER"),
                 "created_at": datetime.utcnow().isoformat(),
                 "status": "UNKNOWN",
                 "gates": {
                     "multi_axis": False,
-                    "temporal": True, # Assumed passed by daily batch scope
+                    "temporal": True,
                     "explainability": False
                 },
                 "supporting_evidence": []
             }
             
-            # Check Gate 1
-            if has_concurrency:
+            # Identify Supporting Evidence
+            # 1. Intra-category evidence (other anomalies in the same category)
+            my_cat = candidate["category"]
+            same_cat_others = [x for x in signals_by_category.get(my_cat, []) if x != ds_id]
+            
+            # 2. Inter-category evidence (Global correlation)
+            other_cats = [c for c in signals_by_category.keys() if c != my_cat]
+            
+            candidate["supporting_evidence"] = {
+                "intra_category": same_cat_others,
+                "inter_category_axes": other_cats
+            }
+            
+            # Check Gate 1: Multi-Axis (Now requires either same-category cluster OR global diversity)
+            if same_cat_others or len(other_cats) > 0:
                 candidate["gates"]["multi_axis"] = True
-                other_axes = [x for x in active_axes if x != ds_id]
-                candidate["supporting_evidence"] = other_axes
-            else:
-                candidate["gates"]["multi_axis"] = False
-                
+            
             # Check Gate 3: Explainability
-            # Construct sentence
             if candidate["gates"]["multi_axis"]:
-                # "This topic is maintained as a candidate because anomalies occurred simultaneously in [This] and [Others]."
-                others_str = ", ".join(other_axes[:3]) # Limit len
-                reason = f"Detected in [{ds_id}] and [{others_str}] simultaneously."
+                if same_cat_others:
+                    reason = f"Category Cluster: Detected in [{ds_id}] with corroborating signals in {same_cat_others}."
+                else:
+                    reason = f"Cross-Axis: Detected in [{ds_id}] during global market volatility in categories {other_cats}."
                 candidate["reason"] = reason
                 candidate["gates"]["explainability"] = True
             else:
-                candidate["reason"] = "Failed to establish correlation with other axes."
+                candidate["reason"] = "Isolated anomaly without cross-signal confirmation."
                 candidate["gates"]["explainability"] = False
                 
             # Final Status Determination

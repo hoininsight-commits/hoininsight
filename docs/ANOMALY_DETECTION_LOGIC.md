@@ -567,3 +567,42 @@ PS-L4 Capital Route Fixation
 자본이 고정되는 순간, 그 자체가 주제다.
 
 -----END ANOMALY_DETECTION_LOGIC_v1.11_FINAL-----
+
+# 🛡️ ANOMALY_DETECTION_LOGIC v1.12 (GPT-Patch)
+
+## 1. Temporal Validation Layer (시간적 사실 검증)
+- **원칙**: 엔진은 "오늘 발표된 ~"라는 표현을 쓰기 전, 실제 경제 캘린더상의 발표 시각(Timestamp)과 현재 시각의 일치 여부를 반드시 검증해야 한다.
+- **검증 규칙**:
+    - **Schedule-Match**: 지표 이상징후 발생 시각 ±6시간 내에 해당 지표의 실제 발표 일정이 있을 경우에만 "발표에 따른 반응"으로 정의.
+    - **Delay-Reaction**: 발표 후 6~24시간 지점은 "후행적 소화"로 정의.
+    - **Logic-Only**: 일정이 없는데 지표가 튄 경우 "기술적/심리적 오버슈팅"으로 정의하며 "발표"라는 단어 사용 금지.
+
+## 2. Statistical Normalization of Language (표현의 수치적 정규화)
+- **Z-Score 기반 형용사 매핑**:
+    - |Z| < 1.5: "우호적/부진한" (중립적 수준)
+    - 1.5 ≤ |Z| < 2.5: "유의미한 변화", "반등/조정"
+    - 2.5 ≤ |Z| < 3.5: "급락/급등", "이상 변동"
+    - |Z| ≥ 3.5: "충격", "폭발적", "역대급"
+- **Percentile 기반 중요도**:
+    - 99% 이상: "통계적 극단치(Extreme)", "1년 내 최대치" 명시 필수.
+
+## 3. Composite Confidence Score (복합 신뢰도 지수)
+- 주제 선정 시 **Confidence Score (0~100)** 산출 방식:
+    - (Anomaly Level weighted) + (Schedule Match ? +20 : 0) + (Multi-Axis Match ? +30 : 0)
+    - 80점 이상일 때만 "확정적 어조" 사용 가능.
+
+# 🛡️ ANOMALY_DETECTION_LOGIC v1.13 (Proof-First & Capital Route)
+
+## 1. Proof-First Reasoning Rule (입증 우선 원칙)
+- **원칙**: 모든 L4(주제 확정) 후보는 단순한 지표의 튐이 아니라, 자금의 실제 유입(Sector Flow)이나 정책의 실질 집행(Budget Execution) 데이터에 의해 '입증'되어야 한다.
+- **입증 트리거 (Proof Triggers)**:
+    - **Sector RS Verify**: 매크로 테마 선정 시, 관련 섹터 ETF의 상대강도(RS)가 시장 대비 2거래일 이상 우위일 경우에만 CONFIRMED.
+    - **CAPEX Velocity Verify**: 정책 테마 선정 시, 관련 산업군의 수주/계약 데이터 가속도(ΔΔ)가 양수여야 함.
+    - **Supply-Chain Bottleneck Verify**: 인프라 테마 선정 시, 가동률/전력여유율 등 물리적 한계 지표가 임계값(90%+)을 넘어야 함.
+
+## 2. Capital Route Fixation (자본의 경로 고정)
+- 엔진은 단순히 "수혜주"를 찾는 것이 아니라, 자본이 **"어쩔 수 없이 흘러가야만 하는 경로(Bottleneck)"**를 찾는 것을 최우선 목표로 한다.
+- **판단 기준**: (강력한 정책 의지) + (물리적 인프라 한계) + (섹터 RS 폭발) = **Route Fixation (L4+)**.
+
+## 3. "Extension Request" Logic (증설 요청 로직)
+- **원칙**: 엔진이 '내러티브'상으로는 완벽한 주제를 찾았으나, 이를 뒷받침할 '입증 데이터(Proof Data)'가 부족할 경우, 스스로 **"데이터 증설 제안(Data Evolution Proposal)"**을 생성하고 해당 주제의 신뢰도를 'PROPOSED'로 유지한다.

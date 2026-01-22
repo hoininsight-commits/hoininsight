@@ -1,6 +1,6 @@
 {
   "card_version": "phase38_v1",
-  "generated_at": "2026-01-22T04:05:10.613212+00:00Z",
+  "generated_at": "2026-01-22T05:38:38.979059+00:00Z",
   "date": "2026-01-22",
   "blocks": {
     "regime": {
@@ -23,112 +23,27 @@
       "7d_success_rate": "N/A"
     }
   },
-  "topic": "기업 자산 매각(Disposal) 급증",
-  "decision_rationale": "기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 급증했습니다.",
+  "topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)",
+  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)가 평소 변동폭 대비 3.43배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
-    "struct_dart_disposal": "Primary",
-    "struct_dart_cb_bw": "Secondary",
-    "risk_vix_fred": "Secondary",
-    "metal_gold_paxg_coingecko": "Secondary",
-    "rates_us10y_fred": "Secondary"
+    "risk_vix_fred": "Primary",
+    "rates_us10y_fred": "Secondary",
+    "inflation_cpi_fred": "Secondary",
+    "inflation_pce_fred": "Secondary",
+    "metal_gold_paxg_coingecko": "Secondary"
   },
   "top_topics": [
     {
-      "dataset_id": "struct_dart_disposal",
-      "level": "L2",
-      "score": 2.5,
-      "title": "기업 자산 매각(Disposal) 급증",
-      "rationale": "기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 급증했습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-22T03:58:06Z",
-        "dataset_id": "struct_dart_disposal",
-        "topic_id": "struct_dart_disposal::event_nonzero",
-        "title": "data/features/anomalies/2026/01/22/struct_dart_disposal.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "value": 5.0,
-            "threshold": 0,
-            "reasoning": "New Event Detected (Count=5)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/22/struct_dart_disposal.json"
-        },
-        "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
-        "links": []
-      }
-    },
-    {
-      "dataset_id": "struct_dart_cb_bw",
-      "level": "L2",
-      "score": 2.5,
-      "title": "전환사채(CB/BW) 발행 폭증",
-      "rationale": "전환사채(CB/BW) 발행가 오늘 하루 1건 발생하며 평소보다 급증했습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-22T03:58:06Z",
-        "dataset_id": "struct_dart_cb_bw",
-        "topic_id": "struct_dart_cb_bw::event_nonzero",
-        "title": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "value": 1.0,
-            "threshold": 0,
-            "reasoning": "New Event Detected (Count=1)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/22/struct_dart_cb_bw.json"
-        },
-        "rationale": "[L2] New Event Detected (Count=1) (Regime x1.0)",
-        "links": []
-      }
-    },
-    {
       "dataset_id": "risk_vix_fred",
       "level": "L2",
-      "score": 2,
-      "title": "공포지수(VIX) 이상 급등",
-      "rationale": "공포지수(VIX)가 평소 변동폭 대비 3.43배(표준편차) 이상 급격히 움직였습니다.",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)가 평소 변동폭 대비 3.43배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:58:06Z",
+        "ts_utc": "2026-01-22T04:13:42Z",
         "dataset_id": "risk_vix_fred",
         "topic_id": "risk_vix_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/22/risk_vix_fred.json L2 Signal",
@@ -165,62 +80,26 @@
         },
         "rationale": "[L2] Z-Score 3.43 >= 2.0 (Regime x1.0)",
         "links": []
-      }
-    },
-    {
-      "dataset_id": "metal_gold_paxg_coingecko",
-      "level": "L2",
-      "score": 2,
-      "title": "골드(Gold) 가격 이상 변동",
-      "rationale": "골드 가격가 평소 변동폭 대비 2.32배(표준편차) 이상 급격히 움직였습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-22T03:58:06Z",
-        "dataset_id": "metal_gold_paxg_coingecko",
-        "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
-        "title": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 2.32,
-            "percentile": 50.0,
-            "value": 4805.24,
-            "rolling_mean_20d": 4628.170421875,
-            "reasoning": "Z-Score 2.32 >= 2.0"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json"
-        },
-        "rationale": "[L2] Z-Score 2.32 >= 2.0 (Regime x1.0)",
-        "links": []
-      }
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
     },
     {
       "dataset_id": "rates_us10y_fred",
       "level": "L2",
-      "score": 2,
-      "title": "미국 10년물 국채금리 급변",
-      "rationale": "미국 10년물 국채금리가 평소 변동폭 대비 4.25배(표준편차) 이상 급격히 움직였습니다.",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (공포지수(VIX) 이상 급등, index_spx_fred 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 10년물 국채금리가 평소 변동폭 대비 4.25배(표준편차) 이상 폭발적인 충격을(를) 보였습니다. 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-22T03:58:06Z",
+        "ts_utc": "2026-01-22T04:13:42Z",
         "dataset_id": "rates_us10y_fred",
         "topic_id": "rates_us10y_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/22/rates_us10y_fred.json L2 Signal",
@@ -257,7 +136,182 @@
         },
         "rationale": "[L2] Z-Score 4.25 >= 2.0 (Regime x1.0)",
         "links": []
-      }
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "inflation_cpi_fred",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-22T04:13:42Z",
+        "dataset_id": "inflation_cpi_fred",
+        "topic_id": "inflation_cpi_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/22/inflation_cpi_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.72,
+            "percentile": 100.0,
+            "value": 326.03,
+            "rolling_mean_20d": 318.66265,
+            "reasoning": "Percentile 100.0% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/22/inflation_cpi_fred.json"
+        },
+        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "inflation_pce_fred",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-22T04:13:42Z",
+        "dataset_id": "inflation_pce_fred",
+        "topic_id": "inflation_pce_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/22/inflation_pce_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.63,
+            "percentile": 100.0,
+            "value": 21206.6,
+            "rolling_mean_20d": 20341.409999999996,
+            "reasoning": "Percentile 100.0% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/22/inflation_pce_fred.json"
+        },
+        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "metal_gold_paxg_coingecko",
+      "level": "L2",
+      "score": 85,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, OTHER 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.35배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-22T04:13:42Z",
+        "dataset_id": "metal_gold_paxg_coingecko",
+        "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 2.35,
+            "percentile": 50.0,
+            "value": 4808.2,
+            "rolling_mean_20d": 4628.318421875,
+            "reasoning": "Z-Score 2.35 >= 2.0"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/22/metal_gold_paxg_coingecko.json"
+        },
+        "rationale": "[L2] Z-Score 2.35 >= 2.0 (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
     }
   ],
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"

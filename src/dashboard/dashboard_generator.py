@@ -274,8 +274,15 @@ def generate_dashboard(base_dir: Path):
         except: pass
             
     regime_exists = (base_dir / "data" / "regimes" / f"regime_{ymd}.json").exists()
-    script_path = base_dir / "data" / "content" / "insight_script_v1.md"
+    
+    # [Fix] Point to the correct date-based insight script for the Main View
+    script_path = base_dir / "data" / "output" / ymd.replace("-","/") / "insight_script.md"
     script_exists = script_path.exists()
+    
+    # Fallback to older path if needed
+    if not script_exists:
+        script_path = base_dir / "data" / "content" / "insight_script_v1.md"
+        script_exists = script_path.exists()
     
     topic_title = "대기중..."
     script_body = ""
@@ -373,6 +380,16 @@ def generate_dashboard(base_dir: Path):
     script_preview = '스크립트 생성 대기 중...'
     if script_body:
         script_preview = script_body[:800] + '...' if len(script_body) > 800 else script_body
+
+    leader_stocks_html = ""
+    # Main topic is top_topics[0] if it exists in final_card
+    the_top_topics = final_card.get("top_topics", [])
+    if the_top_topics:
+        main_topic_meta = the_top_topics[0]
+        stocks = main_topic_meta.get("leader_stocks", [])
+        if stocks:
+            stock_spans = [f'<span style="font-size:11px; background:#f0fdf4; border:1px solid #bbf7d0; padding:4px 12px; border-radius:20px; color:#166534; font-weight:700;">{s}</span>' for s in stocks]
+            leader_stocks_html = '<div style="margin-top:20px;"><h4 style="font-size:12px; font-weight:700; color:#166534; margin-bottom:10px;">🚀 관련 테마 대장주</h4><div style="display:flex; flex-wrap:wrap; gap:8px;">' + ''.join(stock_spans) + '</div></div>'
 
     # System Status Logic
     if status_str == 'SUCCESS':
@@ -1718,13 +1735,23 @@ def generate_dashboard(base_dir: Path):
                     <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
                         <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #{{idx+1}}</div>
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
-                        <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
+                            <div style="font-size:11px; color:#64748b; font-weight:bold;">신뢰도: <span style="color:#10b981;">${{t.confidence || 0}}%</span></div>
+                        </div>
                     </div>
                     
                     <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">🎯 선정 이유 (Rationale)</h3>
                     <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
                         ${{t.rationale}}
                     </div>
+
+                    ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
+                    <h3 style="font-size:14px; color:#166534; margin-bottom:10px;">🚀 관련 테마 대장주</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+                        ${{t.leader_stocks.map(s => `<span style="font-size:11px; background:#f0fdf4; border:1px solid #bbf7d0; padding:4px 12px; border-radius:20px; color:#166534; font-weight:700;">${{s}}</span>`).join('')}}
+                    </div>
+                    ` : ''}}
                     
                     <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📜 인사이트 스크립트</h3>
                     <div style="background:#eff6ff; padding:20px; border-radius:6px; font-size:13px; line-height:1.7; color:#1e293b; white-space:pre-wrap; border:1px solid #bfdbfe;">
@@ -1984,6 +2011,7 @@ def generate_dashboard(base_dir: Path):
                                                 {key_data_html}
                                             </div>
                                         </div>
+                                        {leader_stocks_html}
                                     </div>
                                 </div>
 
