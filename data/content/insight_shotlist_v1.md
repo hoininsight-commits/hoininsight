@@ -1,4 +1,4 @@
-# Insight Shotlist (2026-01-21)
+# Insight Shotlist (2026-01-22)
 Preset: STANDARD
 
 1. Opening
@@ -6,7 +6,7 @@ Preset: STANDARD
    - 자막: 오늘의 Market Regime: (no meta regime detected)
 
 2. Why Now
-   - 화면: Persistence 타임라인 (8 days)
+   - 화면: Persistence 타임라인 (9 days)
    - 화면: Narrative Drift 상태 아이콘
 
 3. What Changed
