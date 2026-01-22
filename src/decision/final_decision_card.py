@@ -77,18 +77,14 @@ def main():
         "7d_success_rate": f"{ops_scoreboard.get('success_count', 0)}/7" if ops_scoreboard else "N/A"
     }
 
-    # 3. Topic Selection Logic (Cold Start Support)
+    # 3. Topic Selection Logic (Daily Top 5)
     selected_topic_title = None
     selected_rationale = None
     key_data = {}
+    top_topics = []
 
     if candidates:
-        # Sort candidates by priority (Conceptually, could iterate and load detail JSONs)
-        # For simplicity in this patch, we look for high priority keywords or fallback to first.
-        # Ideally, we should load each topic file to check anomaly_level.
-        
-        best_candidate = None
-        best_level_val = -1
+        scored_candidates = []
         
         for cand in candidates:
             ds_id = cand["dataset_id"]
@@ -101,11 +97,9 @@ def main():
                 if not isinstance(t_obj, dict): continue
 
                 # Determine level value
-                # Check top-level 'anomaly_level' OR evidence.level
                 lvl = t_obj.get("anomaly_level")
                 if not lvl and "evidence" in t_obj:
                     lvl = t_obj["evidence"].get("level")
-                
                 lvl = lvl or "L1"
                 
                 lvl_val = 1
@@ -113,27 +107,39 @@ def main():
                 elif lvl == "L3": lvl_val = 3
                 elif lvl == "L2": lvl_val = 2
                 
-                # Tie-breaker: Structural > Real Estate > Others
+                # Tie-breaker: Structural > Real Estate > Others directly in score
                 if "struct" in ds_id or "real_estate" in ds_id:
                     lvl_val += 0.5
                 
-                if lvl_val > best_level_val:
-                    best_level_val = lvl_val
-                    best_candidate = t_obj
-                    best_candidate["dataset_id"] = ds_id # ensure ID is carried over
+                # Extract Title/Rationale for display
+                t_title = t_obj.get("key_conception") or t_obj.get("topic") or t_obj.get("title") or "Topic Detected"
+                t_rationale = t_obj.get("why_now") or t_obj.get("rationale") or "No rationale."
+                
+                scored_candidates.append({
+                    "dataset_id": ds_id,
+                    "level": lvl,
+                    "score": lvl_val,
+                    "title": t_title,
+                    "rationale": t_rationale,
+                    "raw_data": t_obj
+                })
         
-        if best_candidate:
-            # Map fields safely
-            # Cold start topics might have 'title' instead of 'key_conception'
-            selected_topic_title = best_candidate.get("key_conception") or best_candidate.get("topic") or best_candidate.get("title") or "Topic Detected"
+        # Sort by Score Descending
+        scored_candidates.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Select Top 5
+        top_topics = scored_candidates[:5]
+        
+        # Set Main Topic
+        if top_topics:
+            best = top_topics[0]
+            selected_topic_title = best["title"]
+            selected_rationale = best["rationale"]
+            key_data[best["dataset_id"]] = "Primary"
             
-            # Map rationale
-            selected_rationale = best_candidate.get("why_now") or best_candidate.get("rationale") or "No rationale provided."
-            
-            # Populate key_data for dashboard badges
-            dataset_id = best_candidate.get("dataset_id", "")
-            if dataset_id:
-                key_data[dataset_id] = "Primary"
+            # Add secondary badges
+            for other in top_topics[1:]:
+                key_data[other["dataset_id"]] = "Secondary"
 
     # Fallback if no candidates but maybe Revival exists? 
     # (Existing logic didn't handle this, but adding minimal fallback)
@@ -151,9 +157,10 @@ def main():
             "revival": revival_block,
             "ops": ops_block
         },
-        "topic": selected_topic_title,               # Added for Dashboard
-        "decision_rationale": selected_rationale,    # Added for Dashboard
-        "key_data": key_data,                        # Added for Dashboard
+        "topic": selected_topic_title,               # Main Topic
+        "decision_rationale": selected_rationale,    # Main Rationale
+        "key_data": key_data,
+        "top_topics": top_topics,                    # Full Top 5 List
         "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
     }
 

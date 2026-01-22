@@ -1587,29 +1587,14 @@ def generate_dashboard(base_dir: Path):
     else:
         candidate_html += '<div style="padding:20px; text-align:center; color:#94a3b8;">No candidates found.</div>'
 
-    # Script Output
-    topic_title = final_card.get("topic", "주제 선정 대기중")
-    script_exists = False
-    script_body = ""
-    try:
-        # Check standard output path first
-        out_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
-        
-        # Fallback to content directory (Manual/Agent generated)
-        if not out_path.exists():
-            out_path = base_dir / "data/content" / "insight_script_v1.md"
-
-        if out_path.exists():
-            script_exists = True
-            script_body = out_path.read_text(encoding='utf-8')
-            # Only override title if it's the default and script has one
-            if topic_title == "주제 선정 대기중":
-                for line in script_body.splitlines():
-                    if line.startswith("# "):
-                        topic_title = line[2:].strip()
-                        break
-            if not topic_title: topic_title = "스크립트 생성 완료"
-    except: pass
+    # Script Output (Already loaded in step 1, just reusing variables)
+    # Ensure topic_title is synced if script loaded update
+    if script_body and topic_title == "주제 선정 대기중":
+         for line in script_body.splitlines():
+            if line.startswith("# "):
+                topic_title = line[2:].strip()
+                break
+    if script_body and not topic_title: topic_title = "스크립트 생성 완료"
 
     # 3. Archive HTML
     archive_html = ""
@@ -1641,6 +1626,103 @@ def generate_dashboard(base_dir: Path):
     # 6. Final Card (Ensure variable exists)
     if 'final_card' not in locals():
         final_card = {}
+
+    # 7. Topic List Tab Logic
+    topic_list_html = ""
+    top_topics = final_card.get("top_topics", [])
+    
+    if not top_topics and final_card.get("topic"):
+        # Fallback if no list but main topic exists
+        top_topics = [{
+            "title": final_card["topic"],
+            "rationale": final_card.get("decision_rationale"),
+            "level": "L3", # Default
+            "dataset_id": "unknown"
+        }]
+
+    if top_topics:
+        list_items = ""
+        for idx, t in enumerate(top_topics):
+            is_main = (idx == 0)
+            bg = "#f0f9ff" if is_main else "white"
+            border = "2px solid #3b82f6" if is_main else "1px solid #e2e8f0"
+            badge = '<span style="background:#3b82f6; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:5px;">MAIN</span>' if is_main else ""
+            
+            script_btn = ""
+            if is_main and script_exists:
+                script_btn = f'<button onclick="showTopicDetail({idx})" style="width:100%; margin-top:10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">스크립트 & 상세 보기 ➜</button>'
+            else:
+                 script_btn = f'<button onclick="showTopicDetail({idx})" style="width:100%; margin-top:10px; background:white; color:#64748b; border:1px solid #e2e8f0; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">상세 보기 ➜</button>'
+
+            list_items += f"""
+            <div class="topic-card" style="background:{bg}; border:{border}; padding:15px; border-radius:8px; margin-bottom:10px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-weight:bold; font-size:11px; color:#64748b;">#{idx+1} {t.get('dataset_id','')}</span>
+                    <span style="font-weight:bold; font-size:11px; color:#ef4444;">{t.get('level','L?')}</span>
+                </div>
+                <div style="font-size:14px; font-weight:bold; color:#1e293b; margin-bottom:5px;">{t.get('title')} {badge}</div>
+                <div style="font-size:12px; color:#475569; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{t.get('rationale')}</div>
+                {script_btn}
+            </div>
+            """
+            
+        topic_list_html = f"""
+        <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:20px; height:600px;">
+            <div style="overflow-y:auto; padding-right:10px;">
+                {list_items}
+            </div>
+            <div id="topic-detail-view" style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:25px; overflow-y:auto;">
+                <div style="color:#94a3b8; text-align:center; margin-top:50px;">
+                    좌측 리스트에서 토픽을 선택하세요.
+                </div>
+            </div>
+        </div>
+        <script>
+            const TOPIC_DATA = {json.dumps(top_topics)};
+            const MAIN_SCRIPT = {json.dumps(script_body if script_body else "스크립트 미생성")};
+            
+            function showTopicDetail(idx) {{
+                const t = TOPIC_DATA[idx];
+                const isMain = (idx === 0);
+                const view = document.getElementById('topic-detail-view');
+                
+                let html = `
+                    <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
+                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #{idx+1}</div>
+                        <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
+                        <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
+                    </div>
+                    
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">🎯 선정 이유 (Rationale)</h3>
+                    <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
+                        ${{t.rationale}}
+                    </div>
+                `;
+                
+                if (isMain) {{
+                    html += `
+                        <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📜 인사이트 스크립트 (V1)</h3>
+                        <div style="background:#eff6ff; padding:20px; border-radius:6px; font-size:13px; line-height:1.7; color:#1e293b; white-space:pre-wrap; border:1px solid #bfdbfe;">
+                            ${{MAIN_SCRIPT}}
+                        </div>
+                    `;
+                }} else {{
+                    html += `
+                        <div style="background:#f1f5f9; padding:20px; text-align:center; border-radius:6px; color:#64748b; font-size:12px;">
+                            이 토픽에 대한 상세 스크립트는 생성되지 않았습니다.<br>(Only Top 1 Generated)
+                        </div>
+                    `;
+                }}
+                
+                view.innerHTML = html;
+            }}
+            
+            // Auto open first if exists
+            if (TOPIC_DATA.length > 0) setTimeout(() => showTopicDetail(0), 500);
+        </script>
+        """
+    else:
+        topic_list_html = "<div style='padding:20px; text-align:center; color:#94a3b8;'>선정된 토픽이 없습니다.</div>"
 
     html = f"""
     <!DOCTYPE html>
@@ -1822,6 +1904,7 @@ def generate_dashboard(base_dir: Path):
                 
                 <div class="nav-label">MAIN VIEW</div>
                 <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
+                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📚</span> 금일 선정 토픽 (Top 5)</div>
                 <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
                 <div class="nav-label">OPERATIONS</div>
@@ -1901,6 +1984,15 @@ def generate_dashboard(base_dir: Path):
                             </div>
 
                         </div>
+                    </div>
+
+                    <!-- TAB 0-1: Topic List (NEW) -->
+                    <div id="topic-list" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📚 금일 선정 토픽 (Top 5)</h2>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:20px;">
+                            호인 엔진이 오늘 감지한 이상징후 중 우선순위가 높은 5가지 토픽입니다.
+                        </p>
+                        {topic_list_html}
                     </div>
 
                     <!-- TAB 1: Architecture Diagram -->
