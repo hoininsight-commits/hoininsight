@@ -18,32 +18,33 @@ class ScriptGenerator:
         driver = topic["narrative_driver"]
         trigger = topic["trigger_event"]
         metrics = topic["observed_metrics"]
+        risk = topic.get('risk_note', '시장 변동성 확대')
         
-        # Template Application
-        # 1. Hook
-        hook = f"님들 지금 {anchor} 때문에 난리 난 거 진짜 이유 알고 있어? 다들 {trigger} 보고 대단하다 하는데 진짜 중요한 건 따로 있어. 내가 딱 1분 만에 정리해 줄게."
+        # New Analytical Template
+        # 1. Status Summary
+        status = f"[시장 분석] 현재 {anchor} 현상이 포착되었으며, 이는 {trigger} 상황을 핵심 분기점으로 하고 있습니다."
         
-        # 2. Observation
+        # 2. Key Evidence
         metric_text = ", ".join(metrics)
-        obs = f"지금 데이터를 보면 {metric_text} 같은 숫자들이 찍히고 있어. 겉보기엔 그냥 이슈 같지만 이건 표면적인 이유일 뿐이야."
+        evidence = f"[데이터 증거] 주요 관측 지표인 {metric_text}의 움직임이 전형적인 흐름을 벗어나며 새로운 경제적 파급력을 시사하고 있습니다."
         
-        # 3. Driver
-        driver_sec = f"진짜 핵심은 '{driver}'야. 이게 무슨 뜻이냐면, 시장의 돈이 움직이는 규칙 자체가 바뀌었다는 소리야."
+        # 3. Core Driver Analysis
+        analysis = f"[핵심 동인 분석] 이번 현상의 기저에는 '{driver}'가 자리 잡고 있습니다. 이는 단순한 일시적 변동이 아닌, 시장의 유동성 흐름이나 정책적 기조가 새로운 국면에 진입했음을 의미합니다."
         
-        # 4. Implication
-        imp = f"월가는 이미 이 흐름을 보고 재평가에 들어갔어. 단순히 기대감이 아니라 실제로 숫자가 찍히는 곳으로 자본이 쏠리고 있다는 거지."
+        # 4. Outlook & Implications
+        outlook = f"[전망 및 시사점] 전문 투자 기관들은 이미 이러한 변화를 반영하여 자산 재배분 및 리스크 관리에 착수했습니다. 표면적인 가격 변동보다는 그 이면의 가치 사슬 변화가 장기적 수익성을 결정할 것입니다."
         
-        # 5. Risk
-        risk = f"물론 리스크는 있어. {topic.get('risk_note','반대 시나리오')}가 발생하면 조정이 올 수도 있어."
+        # 5. Risk Assessment & Conclusion
+        conclusion = f"[리스크 관리] 다만, {risk} 시나리오가 현실화될 경우 단기적 변동성이 커질 수 있으므로 신중한 모니터링이 필요합니다. 호인 엔진은 지속적으로 관련 데이터를 비교 분석하여 전략적 인사이트를 제공하겠습니다."
         
-        # 6. Close
-        close = "결국 우리가 봐야 할 건 돈의 흐름이 어디로 고정되느냐야. 경제사냥꾼 구독하고 진짜 부자 되자."
-        
-        full_script = f"""[00:00] {hook}
-[00:10] {obs}
-[00:30] {driver_sec}
-[01:10] {imp}
-[01:35] {risk}
-[01:50] {close}"""
+        full_script = f"""{status}
+
+{evidence}
+
+{analysis}
+
+{outlook}
+
+{conclusion}"""
         
         return full_script
