@@ -64,59 +64,163 @@ def _load_historical_cards(base_dir: Path) -> List[Dict]:
     return cards
 
 def _generate_archive_view(cards: List[Dict]) -> str:
-    """Generate HTML Table for Topic Archive"""
+    """Generate HTML Table for Topic Archive with Top 5 Detail Support"""
     if not cards:
         return '<div style="padding:40px; text-align:center; color:#94a3b8;">저장된 과거 데이터가 없습니다.</div>'
 
-    html = """
+    # Prepare Data for JS Modal
+    topic_details_map = {}
+    
+    table_rows = ""
+    
+    for card_idx, c in enumerate(cards):
+        date = c.get('_date', 'Unknown')
+        
+        # Determine Topic List (Top 5 or Single Fallback)
+        top_topics = c.get("top_topics", [])
+        if not top_topics:
+            # Fallback to single topic structure
+            single_topic = c.get('topic')
+            if not single_topic:
+                 # Check narrative fallback
+                 n_topics = c.get('narrative_topics', [])
+                 if n_topics:
+                     # Create a pseudo-topic dict from narrative
+                     top_topics = [{
+                         "title": n_topics[0].get('topic_anchor'),
+                         "level": "Narrative",
+                         "rationale": n_topics[0].get('core_narrative'),
+                         "evidence": {"details": {"value": "N/A", "reasoning": "Narrative Engine Output"}}
+                     }]
+            else:
+                # Create a pseudo-topic from the flat card
+                top_topics = [{
+                    "title": single_topic,
+                    "level": c.get('level', 'L2'),
+                    "rationale": c.get('decision_rationale', ''),
+                    "leader_stocks": c.get('leader_stocks', []),
+                    "evidence": c.get('raw_data', {}).get('evidence', {})
+                }]
+
+        # Generate Rows for this Date
+        for t_idx, topic in enumerate(top_topics):
+            # Unique ID for Modal
+            topic_uid = f"t_{card_idx}_{t_idx}"
+            
+            title = topic.get("title", "Untitled Topic")
+            level = topic.get("level", "L2")
+            rationale = topic.get("rationale", "No rationale provided.")
+            
+            # Formatting Evidence
+            evidence = topic.get("evidence", {})
+            evidence_html = ""
+            if isinstance(evidence, dict):
+                details = evidence.get("details", {})
+                if details:
+                    evidence_html += "<div style='background:#f8fafc; padding:10px; border-radius:6px; margin-top:10px; font-size:12px; border:1px solid #e2e8f0;'>"
+                    evidence_html += f"<strong>📊 Data Evidence</strong><br>"
+                    evidence_html += f"Value: {details.get('value', 'N/A')}<br>"
+                    evidence_html += f"Z-Score: {details.get('z_score', 'N/A')}<br>"
+                    evidence_html += f"Analyst Note: {details.get('reasoning', '')}"
+                    evidence_html += "</div>"
+            
+            # Formatting Leader Stocks
+            stocks = topic.get("leader_stocks", [])
+            stocks_html = ""
+            if stocks:
+                s_tags = "".join([f"<span style='background:#f0fdf4; color:#166534; padding:2px 6px; border-radius:4px; margin-right:4px; font-size:11px; font-weight:bold;'>{s}</span>" for s in stocks])
+                stocks_html = f"<div style='margin-top:10px;'><strong>🚀 Leader Stocks:</strong><br><div style='margin-top:4px;'>{s_tags}</div></div>"
+
+            # Construct Modal Content
+            modal_content = f"""
+                <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
+                    <div style="font-size:12px; color:#64748b; margin-bottom:4px;">{date} / Rank #{t_idx+1}</div>
+                    <h3 style="margin:0; font-size:18px; color:#1e293b;">{title}</h3>
+                </div>
+                <div style="font-size:14px; color:#334155; line-height:1.6;">
+                    <strong style="color:#0f172a;">💡 Rationale</strong>
+                    <p style="margin-top:4px; background:#fffbeb; padding:10px; border-radius:6px; border:1px solid #fcd34d;">{rationale}</p>
+                    {evidence_html}
+                    {stocks_html}
+                </div>
+            """
+            topic_details_map[topic_uid] = modal_content
+            
+            # Badge Style
+            type_badge = '<span style="background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px; font-size:11px;">구조적</span>'
+            if str(level).lower() == "narrative":
+                 type_badge = '<span style="background:#f3e8ff; color:#6b21a8; padding:2px 6px; border-radius:4px; font-size:11px;">내러티브</span>'
+            
+            # Row HTML
+            # Only show date on the first item of the day (rowspan logic is hard in flat loop, so just show empty or repeat)
+            # We'll just repeat date for clarity or make it lighter
+            date_display = f"<strong>{date}</strong>" if t_idx == 0 else f"<span style='color:#cbd5e1; font-size:11px;'>{date}</span>"
+            
+            table_rows += f"""
+            <tr style="border-bottom:1px solid #f1f5f9; cursor:pointer;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'" onclick="showTopicDetail('{topic_uid}')">
+                <td style="padding:12px; color:#334155;">{date_display}</td>
+                <td style="padding:12px;">
+                    <div style="font-weight:600; color:#1e293b; font-size:13px;">{title}</div>
+                    <div style="font-size:11px; color:#64748b; margin-top:2px;">Rank #{t_idx+1}</div>
+                </td>
+                <td style="padding:12px;">{type_badge}</td>
+                <td style="padding:12px; text-align:right;">
+                    <button style="border:1px solid #cbd5e1; background:white; color:#64748b; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">View</button>
+                </td>
+            </tr>
+            """
+
+    html = f"""
     <div id="topic-archive" class="tab-content" style="display:none; width:100%;">
         <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 일별 아카이브 (Daily Topic History)</h2>
         <div style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
             <table style="width:100%; border-collapse:collapse; font-size:13px;">
                 <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                     <tr>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:100px;">날짜</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600;">선정 토픽</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:80px;">유형</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:80px;">상태</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:90px;">날짜</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600;">선정 토픽 (Top 5)</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:70px;">유형</th>
+                        <th style="padding:12px; text-align:right; color:#64748b; font-weight:600; width:60px;">상세</th>
                     </tr>
                 </thead>
                 <tbody>
-    """
-    
-    for c in cards:
-        date = c.get('_date', 'Unknown')
-        topic = c.get('topic')
-        is_narrative = False
-        
-        # Check if it was a narrative fallback
-        if not topic:
-             n_topics = c.get('narrative_topics', [])
-             if n_topics:
-                 topic = n_topics[0].get('topic_anchor', 'Narrative Topic')
-                 is_narrative = True
-             else:
-                 topic = "분석 대기중 / 토픽 없음"
-        
-        type_badge = '<span style="background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px; font-size:11px;">구조적</span>'
-        if is_narrative:
-             type_badge = '<span style="background:#f3e8ff; color:#6b21a8; padding:2px 6px; border-radius:4px; font-size:11px;">내러티브</span>'
-        
-        # Clickable row? For now just static.
-        html += f"""
-        <tr style="border-bottom:1px solid #f1f5f9; hover:background:#f8fafc;">
-            <td style="padding:12px; color:#334155;">{date}</td>
-            <td style="padding:12px; color:#1e293b; font-weight:500;">{topic}</td>
-            <td style="padding:12px;">{type_badge}</td>
-            <td style="padding:12px; color:#166534;">완료</td>
-        </tr>
-        """
-        
-    html += """
+                    {table_rows}
                 </tbody>
             </table>
         </div>
     </div>
+    
+    <!-- Topic Detail Modal & Scripts -->
+    <div id="topicDetailModal" class="modal">
+        <div class="modal-content" style="max-width:600px;">
+            <span class="close-btn" onclick="closeTopicModal()">&times;</span>
+            <div id="topic-detail-content"></div>
+        </div>
+    </div>
+
+    <script>
+        window.TOPIC_DETAILS = {json.dumps(topic_details_map)};
+        
+        function showTopicDetail(uid) {{
+            var content = window.TOPIC_DETAILS[uid];
+            if(content) {{
+                document.getElementById('topic-detail-content').innerHTML = content;
+                document.getElementById('topicDetailModal').style.display = 'block';
+            }}
+        }}
+        
+        function closeTopicModal() {{
+            document.getElementById('topicDetailModal').style.display = 'none';
+        }}
+        
+        // Close on outside click
+        window.addEventListener('click', function(e) {{
+            var accModal = document.getElementById('topicDetailModal');
+            if (e.target == accModal) {{
+                accModal.style.display = 'none';
+            }}
+        }});
+    </script>
     """
     return html
 
