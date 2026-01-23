@@ -64,7 +64,7 @@ Narrative Drift Signals:
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
 - Ops Health: 0% Freshness
-- Structural Topic: **[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)**
+- Structural Topic: **[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)**
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## TOPIC CANDIDATE SNAPSHOT
