@@ -64,9 +64,9 @@ Narrative Drift Signals:
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
 - Ops Health: 0% Freshness
-- Structural Topic: **[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, market_sp500 동반)**
+- Structural Topic: **[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, 코스피(KOSPI) 지수 충격 동반)**
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 15 candidate(s) survived survival rules.
+Gate Filter Result: 16 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.

@@ -495,7 +495,9 @@ def write_daily_brief(base_dir: Path) -> Path:
             elif n_topics:
                  lines.append(f"- Structural Topic: None (Found {len(n_topics)} Narrative Topics)")
                  for i, nt in enumerate(n_topics[:3], 1):
-                     lines.append(f"  {i}. [Narrative] {nt.get('topic_anchor')}: {nt.get('narrative_driver')}")
+                     lines.append(f"  {i}. **{nt.get('topic_anchor')}**")
+                     lines.append(f"     - Driver: {nt.get('narrative_driver')}")
+                     lines.append(f"     - Risk: {nt.get('risk_note', 'N/A')}")
             else:
                  lines.append(f"- Topic: Pending")
 

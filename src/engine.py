@@ -76,13 +76,23 @@ def main(target_categories: list[str] = None):
             for f in anomalies_dir.glob("*.json"):
                 try: 
                     payload = json.loads(f.read_text(encoding="utf-8"))
+                    dataset_id = payload.get("dataset_id", f.stem) if isinstance(payload, dict) else f.stem
+                    
                     if isinstance(payload, list):
+                        for item in payload:
+                             if isinstance(item, dict) and "dataset_id" not in item:
+                                 item["dataset_id"] = dataset_id
                         snapshots.extend(payload)
                     elif isinstance(payload, dict):
                         if "anomalies" in payload and isinstance(payload["anomalies"], list):
-                            snapshots.extend(payload["anomalies"])
+                             for item in payload["anomalies"]:
+                                 if isinstance(item, dict) and "dataset_id" not in item:
+                                     item["dataset_id"] = dataset_id
+                             snapshots.extend(payload["anomalies"])
                         else:
-                            snapshots.append(payload)
+                             if "dataset_id" not in payload:
+                                 payload["dataset_id"] = dataset_id
+                             snapshots.append(payload)
                 except: pass
         
         narrative_topics = narrative_engine.run(snapshots)

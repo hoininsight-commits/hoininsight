@@ -1,6 +1,6 @@
 {
   "card_version": "phase40_v1",
-  "generated_at": "2026-01-23T04:03:14.036023+00:00Z",
+  "generated_at": "2026-01-23T05:24:46.369057+00:00Z",
   "date": "2026-01-23",
   "blocks": {
     "regime": {
@@ -23,214 +23,204 @@
       "7d_success_rate": "N/A"
     }
   },
-  "topic": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
+  "topic": "[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, 코스피(KOSPI) 지수 충격 동반)",
   "narrative_topics": [
     {
-      "topic_anchor": "KOR_CPI Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_kor_cpi_ecos",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Unmapped - General Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA",
+      "core_narrative": "Anomalous activity detected in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA. Markets are repricing Unmapped expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "inflation_kor_cpi_ecos: z=0.0",
+        "metal_silver_kag_coingecko: z=0.0",
+        "metal_gold_paxg_coingecko: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "XAGUSD Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in metal_silver_kag_coingecko",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Biotech Rotation",
+      "narrative_driver": "Evaluation Criteria Shift (Growth -> Defensive)",
+      "trigger_event": "Recent sustained outflow from Tech -> Inflow to Bio",
+      "core_narrative": "Market is seeking safety with yield, pricing in post-rate-cut environment. Biotech showing relative strength.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "High Volume on ETFs",
+        "Institutional block deals",
+        "Divergence from SPX"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "structural_hint": "Still early, no earnings confirmation yet.",
+      "era_fit": "Late Cycle Defense",
+      "confidence_level": "MEDIUM",
+      "risk_note": "Volatility is high; dependent on drug data.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "XAUUSD Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in metal_gold_paxg_coingecko",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Emerging Market / Korea Activity",
+      "narrative_driver": "Risk Sentiment Shift",
+      "trigger_event": "Signal Cluster in KOSPI",
+      "core_narrative": "Anomalous activity detected in KOSPI. Markets are repricing Equity expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "index_kospi_stooq: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "US10Y Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in rates_us10y_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Credit - Risk Appetite Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in HY_SPREAD_USA",
+      "core_narrative": "Anomalous activity detected in HY_SPREAD_USA. Markets are repricing Credit expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "credit_hy_spread_fred: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "DART_DISPOSAL Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in struct_dart_disposal",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Broad Market (US) Activity",
+      "narrative_driver": "Risk Sentiment Shift",
+      "trigger_event": "Signal Cluster in Unknown",
+      "core_narrative": "Anomalous activity detected in Unknown. Markets are repricing Equity expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "market_sp500: z=-2.5"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "SPREAD_10Y_2Y Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in derived_yield_curve_10y_2y",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "M2_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in liquidity_m2_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "GOLD_SILVER_RATIO Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in derived_gold_silver_ratio",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "CPI_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_cpi_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "DART_CB_BW Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in struct_dart_cb_bw",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "HY_SPREAD_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in credit_hy_spread_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "PCE_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_pce_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "FEDFUNDS Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in rates_fed_funds_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "UNKNOWN Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in None",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: -2.5"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     }
   ],
-  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 10년물 국채금리가 평소 변동폭 대비 2.72배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [etf_mock_xbi] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
-    "metal_silver_kag_coingecko": "Primary",
+    "rates_us10y_fred": "Primary",
+    "index_kospi_stooq": "Secondary",
+    "metal_silver_kag_coingecko": "Secondary",
     "metal_gold_paxg_coingecko": "Secondary",
-    "derived_gold_silver_ratio": "Secondary",
-    "inflation_cpi_fred": "Secondary",
-    "inflation_pce_fred": "Secondary"
+    "inflation_cpi_fred": "Secondary"
   },
   "top_topics": [
+    {
+      "dataset_id": "rates_us10y_fred",
+      "level": "L2",
+      "score": 115,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, 코스피(KOSPI) 지수 충격 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 10년물 국채금리가 평소 변동폭 대비 2.72배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [etf_mock_xbi] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-23T05:24:46Z",
+        "dataset_id": "rates_us10y_fred",
+        "topic_id": "rates_us10y_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/23/rates_us10y_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 2.72,
+            "percentile": 72.6,
+            "value": 4.26,
+            "rolling_mean_20d": 3.9829999999999997,
+            "reasoning": "Z-Score 2.72 >= 2.0"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/23/rates_us10y_fred.json"
+        },
+        "rationale": "[L2] Z-Score 2.72 >= 2.0 (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "level": "L2",
+      "score": 115,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, etf_mock_xbi 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.48 >= 2.0. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-23T05:24:46Z",
+        "dataset_id": "index_kospi_stooq",
+        "topic_id": "index_kospi_stooq::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/23/index_kospi_stooq.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": -2.48,
+            "percentile": 50.0,
+            "value": 4928.16015625,
+            "rolling_mean_20d": 4987.289965820312,
+            "reasoning": "Z-Score -2.48 >= 2.0"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/23/index_kospi_stooq.json"
+        },
+        "rationale": "[L2] Z-Score -2.48 >= 2.0 (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
     {
       "dataset_id": "metal_silver_kag_coingecko",
       "level": "L2",
@@ -239,9 +229,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.52배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T04:03:13Z",
+        "ts_utc": "2026-01-23T05:24:46Z",
         "dataset_id": "metal_silver_kag_coingecko",
         "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal",
@@ -251,11 +241,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.57,
+            "z_score": 2.52,
             "percentile": 50.0,
-            "value": 98.87,
-            "rolling_mean_20d": 90.19175213623046,
-            "reasoning": "Z-Score 2.57 >= 2.0"
+            "value": 98.6,
+            "rolling_mean_20d": 90.17775213623047,
+            "reasoning": "Z-Score 2.52 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -276,7 +266,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.57 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.52 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Monetary Tightening",
@@ -295,9 +285,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.47배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T04:03:13Z",
+        "ts_utc": "2026-01-23T05:24:46Z",
         "dataset_id": "metal_gold_paxg_coingecko",
         "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/metal_gold_paxg_coingecko.json L2 Signal",
@@ -307,11 +297,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.47,
+            "z_score": 2.57,
             "percentile": 50.0,
-            "value": 4962.04,
-            "rolling_mean_20d": 4655.197926757813,
-            "reasoning": "Z-Score 2.47 >= 2.0"
+            "value": 4969.46,
+            "rolling_mean_20d": 4654.5229267578125,
+            "reasoning": "Z-Score 2.57 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -332,63 +322,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/metal_gold_paxg_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.47 >= 2.0 (Regime x1.0)",
-        "links": []
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ]
-    },
-    {
-      "dataset_id": "derived_gold_silver_ratio",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.05 >= 2.0. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-23T04:03:13Z",
-        "dataset_id": "derived_gold_silver_ratio",
-        "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
-        "title": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": -2.05,
-            "percentile": 50.0,
-            "value": 50.18751896429655,
-            "rolling_mean_20d": 51.66282778283505,
-            "reasoning": "Z-Score -2.05 >= 2.0"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json"
-        },
-        "rationale": "[L2] Z-Score -2.05 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.57 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Monetary Tightening",
@@ -409,7 +343,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T04:03:13Z",
+        "ts_utc": "2026-01-23T05:24:46Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/inflation_cpi_fred.json L2 Signal",
@@ -443,62 +377,6 @@
             }
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/inflation_cpi_fred.json"
-        },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-        "links": []
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ]
-    },
-    {
-      "dataset_id": "inflation_pce_fred",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-23T04:03:13Z",
-        "dataset_id": "inflation_pce_fred",
-        "topic_id": "inflation_pce_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/01/23/inflation_pce_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.67,
-            "percentile": 100.0,
-            "value": 21409.7,
-            "rolling_mean_20d": 20524.975,
-            "reasoning": "Percentile 100.0% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/23/inflation_pce_fred.json"
         },
         "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
         "links": []

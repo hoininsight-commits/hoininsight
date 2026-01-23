@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-23T05:21:59Z
-- finished_utc: 2026-01-23T05:22:30Z
+- started_utc: 2026-01-23T05:24:28Z
+- finished_utc: 2026-01-23T05:24:49Z
 - status: SUCCESS
 
 ## details
@@ -12,7 +12,7 @@ collect: ok
 normalize: ok
 derived: ok
 anomaly: ok
-narrative: 15 topics generated
+narrative: 5 topics generated
 topic: ok
 gate: ok
 decision: ok

@@ -1,213 +1,77 @@
 {
   "topics": [
     {
-      "topic_anchor": "DART_DISPOSAL Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in struct_dart_disposal",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Unmapped - General Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA",
+      "core_narrative": "Anomalous activity detected in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA. Markets are repricing Unmapped expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "inflation_kor_cpi_ecos: z=0.0",
+        "metal_silver_kag_coingecko: z=0.0",
+        "metal_gold_paxg_coingecko: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "KOR_CPI Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_kor_cpi_ecos",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Biotech Rotation",
+      "narrative_driver": "Evaluation Criteria Shift (Growth -> Defensive)",
+      "trigger_event": "Recent sustained outflow from Tech -> Inflow to Bio",
+      "core_narrative": "Market is seeking safety with yield, pricing in post-rate-cut environment. Biotech showing relative strength.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "High Volume on ETFs",
+        "Institutional block deals",
+        "Divergence from SPX"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "structural_hint": "Still early, no earnings confirmation yet.",
+      "era_fit": "Late Cycle Defense",
+      "confidence_level": "MEDIUM",
+      "risk_note": "Volatility is high; dependent on drug data.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "FEDFUNDS Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in rates_fed_funds_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Emerging Market / Korea Activity",
+      "narrative_driver": "Risk Sentiment Shift",
+      "trigger_event": "Signal Cluster in KOSPI",
+      "core_narrative": "Anomalous activity detected in KOSPI. Markets are repricing Equity expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "index_kospi_stooq: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "KOSPI Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in index_kospi_stooq",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Credit - Risk Appetite Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in HY_SPREAD_USA",
+      "core_narrative": "Anomalous activity detected in HY_SPREAD_USA. Markets are repricing Credit expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "credit_hy_spread_fred: z=0.0"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "XAUUSD Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in metal_gold_paxg_coingecko",
-      "core_narrative": "Sharp short-term deviation observed.",
+      "topic_anchor": "Equity - Broad Market (US) Activity",
+      "narrative_driver": "Risk Sentiment Shift",
+      "trigger_event": "Signal Cluster in Unknown",
+      "core_narrative": "Anomalous activity detected in Unknown. Markets are repricing Equity expectations.",
       "intent_signals": [
-        "Z-Score: N/A"
+        "market_sp500: z=-2.5"
       ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
       "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "US10Y Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in rates_us10y_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "XAGUSD Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in metal_silver_kag_coingecko",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "SPREAD_10Y_2Y Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in derived_yield_curve_10y_2y",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "DART_CB_BW Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in struct_dart_cb_bw",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "HY_SPREAD_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in credit_hy_spread_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "GOLD_SILVER_RATIO Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in derived_gold_silver_ratio",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "CPI_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_cpi_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "PCE_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in inflation_pce_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "M2_USA Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in liquidity_m2_fred",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: N/A"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "UNKNOWN Movement",
-      "narrative_driver": "Volatility Spike",
-      "trigger_event": "Anomaly detected in None",
-      "core_narrative": "Sharp short-term deviation observed.",
-      "intent_signals": [
-        "Z-Score: -2.5"
-      ],
-      "structural_hint": "Requires further monitoring.",
-      "era_fit": "Idiosyncratic",
-      "confidence_level": "LOW",
-      "risk_note": "May be noise.",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     }
   ]
