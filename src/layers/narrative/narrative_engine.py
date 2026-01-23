@@ -87,51 +87,51 @@ class NarrativeEngine:
         # Check for specific "Mock" scenarios first (Logic Injection)
         if "Biotech" in key:
             return self._generate_bio_mock(key, items)
-
+        
         # 2. Generic Construction
         primary_item = items[0]
         meta = primary_item.get('_narrative_meta', {})
-        sector = meta.get('sector', 'Unknown')
+        sector = meta.get('sector', '미분류')
         
         # Determine "Driver" string
-        driver = "Structural Volatility"
-        if sector == "Rates":
-            driver = "Monetary Policy Repricing"
-        elif sector == "Commodity":
-            driver = "Supply/Demand Shock"
-        elif sector == "Equity":
-            driver = "Risk Sentiment Shift"
+        driver = "구조적 변동성 (Structural Volatility)"
+        if "Rates" in sector or "금리" in sector:
+            driver = "통화 정책 재평가 (Monetary Policy Repricing)"
+        elif "Commodity" in sector or "원자재" in sector:
+            driver = "수급 충격 (Supply/Demand Shock)"
+        elif "Equity" in sector or "주식" in sector:
+            driver = "위험 심리 변화 (Risk Sentiment Shift)"
             
         # Determine "Core Narrative"
         # Just listing the anomalies in a readable way
         entities = set(item.get('entity', 'Unknown') for item in items)
         joined_entities = ", ".join(entities)
-        core_narrative = f"Anomalous activity detected in {joined_entities}. Markets are repricing {sector} expectations."
+        core_narrative = f"[{joined_entities}] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [{sector}] 관련 기대를 재평가하고 있습니다."
 
         return NarrativeTopic(
-            topic_anchor=f"{key} Activity",
+            topic_anchor=f"{key} 관련 이상 움직임",
             narrative_driver=driver,
-            trigger_event=f"Signal Cluster in {joined_entities}",
+            trigger_event=f"[{joined_entities}] 신호 군집 발생",
             core_narrative=core_narrative,
             intent_signals=[f"{item.get('dataset_id')}: z={item.get('z_score', 0):.1f}" for item in items[:3]],
-            structural_hint="Watch for flow-through impacts.",
-            era_fit="Regime Uncertainty",
+            structural_hint="파급 효과에 대한 모니터링이 필요합니다.",
+            era_fit="레짐 불확실성 (Regime Uncertainty)",
             confidence_level=ConfidenceLevel.LOW,
-            risk_note="Correlation does not imply causation; monitor for persistence."
+            risk_note="상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다."
         )
 
     def _generate_bio_mock(self, key: str, items: List[Dict[str, Any]]) -> NarrativeTopic:
         # Mock logic as requested in spec
         return NarrativeTopic(
-            topic_anchor=f"{key} Rotation",
-            narrative_driver="Evaluation Criteria Shift (Growth -> Defensive)",
-            trigger_event="Recent sustained outflow from Tech -> Inflow to Bio",
-            core_narrative="Market is seeking safety with yield, pricing in post-rate-cut environment. Biotech showing relative strength.",
-            intent_signals=["High Volume on ETFs", "Institutional block deals", "Divergence from SPX"],
-            structural_hint="Still early, no earnings confirmation yet.",
-            era_fit="Late Cycle Defense",
+            topic_anchor=f"{key} 섹터 로테이션",
+            narrative_driver="평가 기준 이동 (성장 -> 방어)",
+            trigger_event="기술주 자금 유출 -> 바이오 섹터 유입",
+            core_narrative="시장은 금리 인하 이후 환경을 반영하며 안전마진과 수익성을 동시에 추구하고 있습니다. 바이오 섹터가 상대적 강세를 보입니다.",
+            intent_signals=["ETF 대량 거래량", "기관 블록딜 포착", "S&P500 대비 다이버전스"],
+            structural_hint="아직 초기 단계이며, 실적 확인이 필요합니다.",
+            era_fit="경기 후반 방어 (Late Cycle Defense)",
             confidence_level=ConfidenceLevel.MEDIUM,
-            risk_note="Volatility is high; dependent on drug data."
+            risk_note="변동성이 높으며, 개별 임상 결과에 의존적일 수 있습니다."
         )
 
     def _save_results(self, topics: List[NarrativeTopic]):

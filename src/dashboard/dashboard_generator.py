@@ -37,6 +37,89 @@ def _utc_to_kst_display(utc_timestamp_str: str) -> str:
     except Exception:
         return utc_timestamp_str  # Return original if parsing fails
 
+
+def _load_historical_cards(base_dir: Path) -> List[Dict]:
+    """Load all historical final_decision_card.json files"""
+    cards = []
+    decision_dir = base_dir / "data" / "decision"
+    if not decision_dir.exists():
+        return []
+    
+    # Recursive search
+    for card_file in decision_dir.glob("**/*/final_decision_card.json"):
+        try:
+            data = json.loads(card_file.read_text(encoding="utf-8"))
+            # Extract date from path or card content
+            # Path format: data/decision/YYYY/MM/DD/final_decision_card.json
+            parts = card_file.parts
+            if len(parts) >= 5:
+                # Approximate date extraction from path
+                ymd = f"{parts[-4]}-{parts[-3]}-{parts[-2]}"
+                data['_date'] = ymd
+            cards.append(data)
+        except: pass
+    
+    # Sort by date desc
+    cards.sort(key=lambda x: x.get('_date', ''), reverse=True)
+    return cards
+
+def _generate_archive_view(cards: List[Dict]) -> str:
+    """Generate HTML Table for Topic Archive"""
+    if not cards:
+        return '<div style="padding:40px; text-align:center; color:#94a3b8;">저장된 과거 데이터가 없습니다.</div>'
+
+    html = """
+    <div id="archive-section" class="section-content" style="display:none; width:100%;">
+        <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 토픽 리스트 (Topic Archive)</h2>
+        <div style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
+            <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                    <tr>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:100px;">날짜</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600;">선정 토픽</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:80px;">유형</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:80px;">상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+    """
+    
+    for c in cards:
+        date = c.get('_date', 'Unknown')
+        topic = c.get('topic')
+        is_narrative = False
+        
+        # Check if it was a narrative fallback
+        if not topic:
+             n_topics = c.get('narrative_topics', [])
+             if n_topics:
+                 topic = n_topics[0].get('topic_anchor', 'Narrative Topic')
+                 is_narrative = True
+             else:
+                 topic = "분석 대기중 / 토픽 없음"
+        
+        type_badge = '<span style="background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px; font-size:11px;">구조적</span>'
+        if is_narrative:
+             type_badge = '<span style="background:#f3e8ff; color:#6b21a8; padding:2px 6px; border-radius:4px; font-size:11px;">내러티브</span>'
+        
+        # Clickable row? For now just static.
+        html += f"""
+        <tr style="border-bottom:1px solid #f1f5f9; hover:background:#f8fafc;">
+            <td style="padding:12px; color:#334155;">{date}</td>
+            <td style="padding:12px; color:#1e293b; font-weight:500;">{topic}</td>
+            <td style="padding:12px;">{type_badge}</td>
+            <td style="padding:12px; color:#166534;">완료</td>
+        </tr>
+        """
+        
+    html += """
+                </tbody>
+            </table>
+        </div>
+    </div>
+    """
+    return html
+
 def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
     """Find the latest date with narrative data, looking back up to max_days_back days.
     
@@ -1651,6 +1734,14 @@ def generate_dashboard(base_dir: Path):
     # 4. Revival HTML
     revival_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No revival data.</div>'
     
+    # [NEW] Topic Archive HTML
+    try:
+        historical_cards = _load_historical_cards(base_dir)
+        topic_archive_view_html = _generate_archive_view(historical_cards)
+    except Exception as e:
+        topic_archive_view_html = f"<div style='padding:20px; color:red;'>Archive Load Error: {e}</div>"
+
+    
     # 5. Ledger HTML
     ledger_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>'
     
@@ -1963,7 +2054,8 @@ def generate_dashboard(base_dir: Path):
                 
                 <div class="nav-label">MAIN VIEW</div>
                 <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
-                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📚</span> 금일 선정 토픽 (Top 5)</div>
+                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📊</span> 금일 선정 토픽 (Top 5)</div>
+                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📚</span> 토픽 리스트 (History)</div>
                 <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
                 <div class="nav-label">OPERATIONS</div>
@@ -2048,12 +2140,15 @@ def generate_dashboard(base_dir: Path):
 
                     <!-- TAB 0-1: Topic List (NEW) -->
                     <div id="topic-list" class="tab-content" style="display:none;">
-                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📚 금일 선정 토픽 (Top 5)</h2>
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 금일 선정 토픽 (Top 5)</h2>
                         <p style="font-size:13px; color:#64748b; margin-bottom:20px;">
                             호인 엔진이 오늘 감지한 이상징후 중 우선순위가 높은 5가지 토픽입니다.
                         </p>
                         {topic_list_html}
                     </div>
+
+                    <!-- TAB 0-2: Topic Archive (History) -->
+                    {topic_archive_view_html}
 
                     <!-- TAB 1: Architecture Diagram -->
                     <div id="architecture-diagram" class="tab-content" style="display:none;">

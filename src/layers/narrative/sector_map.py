@@ -9,49 +9,49 @@ class SectorMap:
     # Static mapping for known assets in the Hoin ecosystem
     _ASSET_MAP = {
         # Equities
-        "sp500": {"sector": "Equity", "theme": "Broad Market (US)"},
-        "nasdaq100": {"sector": "Equity", "theme": "Tech / Growth"},
-        "kospi": {"sector": "Equity", "theme": "Emerging Market / Korea"},
+        "sp500": {"sector": "주식 (Equity)", "theme": "미국 시장 (Broad Market)"},
+        "nasdaq100": {"sector": "주식 (Equity)", "theme": "기술/성장주 (Tech/Growth)"},
+        "kospi": {"sector": "주식 (Equity)", "theme": "이머징/한국 (Emerging/Korea)"},
         
         # Volatility
-        "vix": {"sector": "Volatility", "theme": "Risk Sentiment"},
+        "vix": {"sector": "변동성 (Volatility)", "theme": "위험 심리 (Risk Sentiment)"},
         
         # Rates
-        "us_10y_yield": {"sector": "Rates", "theme": "Long Duration"},
-        "us10y": {"sector": "Rates", "theme": "Long Duration"},
-        "us_2y_yield": {"sector": "Rates", "theme": "Monetary Policy Proxy"},
-        "fedfunds": {"sector": "Rates", "theme": "Central Bank Policy"},
-        "fed_funds_rate": {"sector": "Rates", "theme": "Central Bank Policy"},
+        "us_10y_yield": {"sector": "금리 (Rates)", "theme": "장기 금리 (Long Duration)"},
+        "us10y": {"sector": "금리 (Rates)", "theme": "장기 금리 (Long Duration)"},
+        "us_2y_yield": {"sector": "금리 (Rates)", "theme": "통화 정책 대리 (Monetary Policy Proxy)"},
+        "fedfunds": {"sector": "금리 (Rates)", "theme": "중앙은행 정책 (Central Bank Policy)"},
+        "fed_funds_rate": {"sector": "금리 (Rates)", "theme": "중앙은행 정책 (Central Bank Policy)"},
         
         # Credit
-        "hy_spread": {"sector": "Credit", "theme": "Risk Appetite"},
-        "financial_stress": {"sector": "Credit", "theme": "Systemic Risk"},
-        "dart_cb": {"sector": "Credit", "theme": "Corporate Issuance (Korea)"},
+        "hy_spread": {"sector": "크레딧 (Credit)", "theme": "위험 선호 (Risk Appetite)"},
+        "financial_stress": {"sector": "크레딧 (Credit)", "theme": "시스템 리스크 (Systemic Risk)"},
+        "dart_cb": {"sector": "크레딧 (Credit)", "theme": "기업 자금조달 (Korea)"},
         
         # Commodities
-        "gold_usd": {"sector": "Commodity", "theme": "Safe Haven / Inflation Hedge"},
-        "xauusd": {"sector": "Commodity", "theme": "Safe Haven / Inflation Hedge"},
-        "silver_usd": {"sector": "Commodity", "theme": "Industrial / Precious"},
-        "xagusd": {"sector": "Commodity", "theme": "Industrial / Precious"},
-        "wti": {"sector": "Commodity", "theme": "Energy"},
-        "gold_silver_ratio": {"sector": "Commodity", "theme": "Risk/Inflation Signal"},
+        "gold_usd": {"sector": "원자재 (Commodity)", "theme": "안전 자산 / 인플레 헷지"},
+        "xauusd": {"sector": "원자재 (Commodity)", "theme": "안전 자산 / 인플레 헷지"},
+        "silver_usd": {"sector": "원자재 (Commodity)", "theme": "산업재 / 귀금속"},
+        "xagusd": {"sector": "원자재 (Commodity)", "theme": "산업재 / 귀금속"},
+        "wti": {"sector": "원자재 (Commodity)", "theme": "에너지 (Energy)"},
+        "gold_silver_ratio": {"sector": "원자재 (Commodity)", "theme": "경기/인플레 시그널"},
         
         # Crypto
-        "btc_usd": {"sector": "Crypto", "theme": "Digital Gold / Risk"},
+        "btc_usd": {"sector": "크립토 (Crypto)", "theme": "디지털 골드 / 위험 자산"},
         
         # FX
-        "usdkrw": {"sector": "FX", "theme": "Export Competitiveness"},
-        "dxy": {"sector": "FX", "theme": "USD Strength"},
+        "usdkrw": {"sector": "환율 (FX)", "theme": "수출 경쟁력 / 원화 가치"},
+        "dxy": {"sector": "환율 (FX)", "theme": "달러 강세 (USD Strength)"},
         
         # Macro / Inflation
-        "cpi": {"sector": "Macro", "theme": "Inflation"},
-        "pce": {"sector": "Macro", "theme": "Inflation"},
-        "m2": {"sector": "Macro", "theme": "Liquidity"},
+        "cpi": {"sector": "매크로 (Macro)", "theme": "인플레이션 (Inflation)"},
+        "pce": {"sector": "매크로 (Macro)", "theme": "분기 인플레이션 (PCE)"},
+        "m2": {"sector": "매크로 (Macro)", "theme": "유동성 (Liquidity)"},
         
         # Mock / Future Assets (for testing Narrative Logic)
-        "xbi": {"sector": "Equity", "theme": "Biotech"},
-        "xlv": {"sector": "Equity", "theme": "Healthcare"},
-        "ibb": {"sector": "Equity", "theme": "Biotech"},
+        "xbi": {"sector": "주식 (Equity)", "theme": "바이오 (Biotech)"},
+        "xlv": {"sector": "주식 (Equity)", "theme": "헬스케어 (Healthcare)"},
+        "ibb": {"sector": "주식 (Equity)", "theme": "바이오 (Biotech)"},
     }
 
     @classmethod
@@ -71,7 +71,7 @@ class SectorMap:
                 return info
                 
         # 3. Fallback
-        return {"sector": "Unmapped", "theme": "General"}
+        return {"sector": "미분류 (Unmapped)", "theme": "일반 (General)"}
 
     @classmethod
     def get_sector(cls, asset_id: str) -> str:

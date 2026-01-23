@@ -42,10 +42,10 @@ Historical context:
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/23/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] YIELD_CURVE: data/features/anomalies/2026/01/23/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] GS_RATIO: data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L1 Signal (base=3.00, final_m=3.91) | Mom: DOWN (slope=-1.50) -> x0.9 | App7d=3
-- [MED] KOSPI: data/features/anomalies/2026/01/23/index_kospi_stooq.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] BTCUSD: data/features/anomalies/2026/01/23/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/23/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] SPX: data/features/anomalies/2026/01/23/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
+- [LOW] KOSPI: data/features/anomalies/2026/01/23/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] NASDAQ: data/features/anomalies/2026/01/23/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] US02Y: data/features/anomalies/2026/01/23/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] WTI: data/features/anomalies/2026/01/23/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
@@ -64,9 +64,9 @@ Narrative Drift Signals:
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
 - Ops Health: 0% Freshness
-- Structural Topic: **[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (코스피(KOSPI) 지수 충격, etf_mock_xbi 동반)**
+- Structural Topic: **[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)**
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 16 candidate(s) survived survival rules.
+Gate Filter Result: 15 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.

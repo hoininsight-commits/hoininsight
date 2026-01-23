@@ -1,190 +1,189 @@
 {
   "topics": [
     {
-      "topic_anchor": "Unmapped - General Activity",
-      "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in SPREAD_10Y_2Y, DART_DISPOSAL",
-      "core_narrative": "Anomalous activity detected in SPREAD_10Y_2Y, DART_DISPOSAL. Markets are repricing Unmapped expectations.",
+      "topic_anchor": "매크로 (Macro) - 인플레이션 (Inflation) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[KOR_CPI, CPI_USA] 신호 군집 발생",
+      "core_narrative": "[KOR_CPI, CPI_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "inflation_kor_cpi_ecos: z=0.0",
+        "inflation_cpi_fred: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "원자재 (Commodity) - 산업재 / 귀금속 관련 이상 움직임",
+      "narrative_driver": "수급 충격 (Supply/Demand Shock)",
+      "trigger_event": "[XAGUSD] 신호 군집 발생",
+      "core_narrative": "[XAGUSD] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "metal_silver_kag_coingecko: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "원자재 (Commodity) - 안전 자산 / 인플레 헷지 관련 이상 움직임",
+      "narrative_driver": "수급 충격 (Supply/Demand Shock)",
+      "trigger_event": "[XAUUSD] 신호 군집 발생",
+      "core_narrative": "[XAUUSD] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "metal_gold_paxg_coingecko: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "금리 (Rates) - 장기 금리 (Long Duration) 관련 이상 움직임",
+      "narrative_driver": "통화 정책 재평가 (Monetary Policy Repricing)",
+      "trigger_event": "[US10Y] 신호 군집 발생",
+      "core_narrative": "[US10Y] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [금리 (Rates)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "rates_us10y_fred: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "주식 (Equity) - 바이오 (Biotech) 섹터 로테이션",
+      "narrative_driver": "평가 기준 이동 (성장 -> 방어)",
+      "trigger_event": "기술주 자금 유출 -> 바이오 섹터 유입",
+      "core_narrative": "시장은 금리 인하 이후 환경을 반영하며 안전마진과 수익성을 동시에 추구하고 있습니다. 바이오 섹터가 상대적 강세를 보입니다.",
+      "intent_signals": [
+        "ETF 대량 거래량",
+        "기관 블록딜 포착",
+        "S&P500 대비 다이버전스"
+      ],
+      "structural_hint": "아직 초기 단계이며, 실적 확인이 필요합니다.",
+      "era_fit": "경기 후반 방어 (Late Cycle Defense)",
+      "confidence_level": "MEDIUM",
+      "risk_note": "변동성이 높으며, 개별 임상 결과에 의존적일 수 있습니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "미분류 (Unmapped) - 일반 (General) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[SPREAD_10Y_2Y, DART_DISPOSAL] 신호 군집 발생",
+      "core_narrative": "[SPREAD_10Y_2Y, DART_DISPOSAL] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [미분류 (Unmapped)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
         "struct_dart_disposal: z=0.0",
         "derived_yield_curve_10y_2y: z=0.0"
       ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
       "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "Macro - Inflation Activity",
-      "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in KOR_CPI, PCE_USA, CPI_USA",
-      "core_narrative": "Anomalous activity detected in KOR_CPI, PCE_USA, CPI_USA. Markets are repricing Macro expectations.",
-      "intent_signals": [
-        "inflation_kor_cpi_ecos: z=0.0",
-        "inflation_cpi_fred: z=0.0",
-        "inflation_pce_fred: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Rates - Central Bank Policy Activity",
-      "narrative_driver": "Monetary Policy Repricing",
-      "trigger_event": "Signal Cluster in FEDFUNDS",
-      "core_narrative": "Anomalous activity detected in FEDFUNDS. Markets are repricing Rates expectations.",
-      "intent_signals": [
-        "rates_fed_funds_fred: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Equity - Emerging Market / Korea Activity",
-      "narrative_driver": "Risk Sentiment Shift",
-      "trigger_event": "Signal Cluster in KOSPI",
-      "core_narrative": "Anomalous activity detected in KOSPI. Markets are repricing Equity expectations.",
-      "intent_signals": [
-        "index_kospi_stooq: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Commodity - Safe Haven / Inflation Hedge Activity",
-      "narrative_driver": "Supply/Demand Shock",
-      "trigger_event": "Signal Cluster in XAUUSD",
-      "core_narrative": "Anomalous activity detected in XAUUSD. Markets are repricing Commodity expectations.",
-      "intent_signals": [
-        "metal_gold_paxg_coingecko: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Rates - Long Duration Activity",
-      "narrative_driver": "Monetary Policy Repricing",
-      "trigger_event": "Signal Cluster in US10Y",
-      "core_narrative": "Anomalous activity detected in US10Y. Markets are repricing Rates expectations.",
-      "intent_signals": [
-        "rates_us10y_fred: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Equity - Biotech Rotation",
-      "narrative_driver": "Evaluation Criteria Shift (Growth -> Defensive)",
-      "trigger_event": "Recent sustained outflow from Tech -> Inflow to Bio",
-      "core_narrative": "Market is seeking safety with yield, pricing in post-rate-cut environment. Biotech showing relative strength.",
-      "intent_signals": [
-        "High Volume on ETFs",
-        "Institutional block deals",
-        "Divergence from SPX"
-      ],
-      "structural_hint": "Still early, no earnings confirmation yet.",
-      "era_fit": "Late Cycle Defense",
-      "confidence_level": "MEDIUM",
-      "risk_note": "Volatility is high; dependent on drug data.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Commodity - Industrial / Precious Activity",
-      "narrative_driver": "Supply/Demand Shock",
-      "trigger_event": "Signal Cluster in XAGUSD",
-      "core_narrative": "Anomalous activity detected in XAGUSD. Markets are repricing Commodity expectations.",
-      "intent_signals": [
-        "metal_silver_kag_coingecko: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Credit - Corporate Issuance (Korea) Activity",
-      "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in DART_CB_BW",
-      "core_narrative": "Anomalous activity detected in DART_CB_BW. Markets are repricing Credit expectations.",
-      "intent_signals": [
-        "struct_dart_cb_bw: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Credit - Risk Appetite Activity",
-      "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in HY_SPREAD_USA",
-      "core_narrative": "Anomalous activity detected in HY_SPREAD_USA. Markets are repricing Credit expectations.",
-      "intent_signals": [
-        "credit_hy_spread_fred: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Commodity - Risk/Inflation Signal Activity",
-      "narrative_driver": "Supply/Demand Shock",
-      "trigger_event": "Signal Cluster in GOLD_SILVER_RATIO",
-      "core_narrative": "Anomalous activity detected in GOLD_SILVER_RATIO. Markets are repricing Commodity expectations.",
-      "intent_signals": [
-        "derived_gold_silver_ratio: z=0.0"
-      ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
-      "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "Macro - Liquidity Activity",
-      "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in M2_USA",
-      "core_narrative": "Anomalous activity detected in M2_USA. Markets are repricing Macro expectations.",
+      "topic_anchor": "매크로 (Macro) - 유동성 (Liquidity) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[M2_USA] 신호 군집 발생",
+      "core_narrative": "[M2_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
         "liquidity_m2_fred: z=0.0"
       ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
       "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "Equity - Broad Market (US) Activity",
-      "narrative_driver": "Risk Sentiment Shift",
-      "trigger_event": "Signal Cluster in Unknown",
-      "core_narrative": "Anomalous activity detected in Unknown. Markets are repricing Equity expectations.",
+      "topic_anchor": "원자재 (Commodity) - 경기/인플레 시그널 관련 이상 움직임",
+      "narrative_driver": "수급 충격 (Supply/Demand Shock)",
+      "trigger_event": "[GOLD_SILVER_RATIO] 신호 군집 발생",
+      "core_narrative": "[GOLD_SILVER_RATIO] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "derived_gold_silver_ratio: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "크레딧 (Credit) - 기업 자금조달 (Korea) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[DART_CB_BW] 신호 군집 발생",
+      "core_narrative": "[DART_CB_BW] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [크레딧 (Credit)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "struct_dart_cb_bw: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "크레딧 (Credit) - 위험 선호 (Risk Appetite) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[HY_SPREAD_USA] 신호 군집 발생",
+      "core_narrative": "[HY_SPREAD_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [크레딧 (Credit)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "credit_hy_spread_fred: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "매크로 (Macro) - 분기 인플레이션 (PCE) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[PCE_USA] 신호 군집 발생",
+      "core_narrative": "[PCE_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "inflation_pce_fred: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "금리 (Rates) - 중앙은행 정책 (Central Bank Policy) 관련 이상 움직임",
+      "narrative_driver": "통화 정책 재평가 (Monetary Policy Repricing)",
+      "trigger_event": "[FEDFUNDS] 신호 군집 발생",
+      "core_narrative": "[FEDFUNDS] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [금리 (Rates)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "rates_fed_funds_fred: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "주식 (Equity) - 미국 시장 (Broad Market) 관련 이상 움직임",
+      "narrative_driver": "위험 심리 변화 (Risk Sentiment Shift)",
+      "trigger_event": "[Unknown] 신호 군집 발생",
+      "core_narrative": "[Unknown] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [주식 (Equity)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
         "market_sp500: z=-2.5"
       ],
-      "structural_hint": "Watch for flow-through impacts.",
-      "era_fit": "Regime Uncertainty",
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
       "confidence_level": "LOW",
-      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     }
   ]
