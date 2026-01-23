@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 from datetime import datetime
 import pandas as pd
-import yfinance as yf
 from src.utils.retry import retry
 from src.utils.target_date import get_target_parts
 
@@ -14,50 +13,37 @@ def _utc_now() -> str:
 @retry(max_attempts=3, base_delay=1.0)
 def _fetch_kospi_data() -> tuple[str, float]:
     """
-    Fetches the latest KOSPI data using yfinance (^KS11).
+    Fetches the latest KOSPI data using Stooq CSV (^KOSPI).
     Returns (obs_date, close_price).
     """
     try:
-        ticker = yf.Ticker("^KS11")
-        # Use explicit dates to avoid yfinance internal period calculation errors
-        # yfinance 'end' is exclusive, so we add 1 day to include today's potential data
-        end_date = datetime.utcnow() + pd.Timedelta(days=1)
-        # Go back 10 days to cover weekends/holidays safely
-        start_date = end_date - pd.Timedelta(days=10)
+        url = "https://stooq.com/q/d/l/?s=^kospi&i=d"
+        # Stooq returns a CSV file
+        df = pd.read_csv(url)
         
-        hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))
+        if df.empty:
+            raise ValueError("Stooq returned empty CSV for ^KOSPI")
+            
+        # Stooq CSV columns: Date,Open,High,Low,Close,Volume
+        # Ensure Date is parsed
+        if "Date" not in df.columns or "Close" not in df.columns:
+             raise ValueError(f"Stooq CSV missing required columns. Cols: {df.columns}")
+
+        df["Date"] = pd.to_datetime(df["Date"])
+        df = df.sort_values("Date")
         
-        if hist.empty:
-            raise ValueError("yfinance KOSPI (^KS11) returned empty history")
+        last_row = df.iloc[-1]
         
-        last_row = hist.iloc[-1]
-        
-        date_val = last_row.name
-        obs_date = date_val.strftime("%Y-%m-%d")
-        
+        obs_date = last_row["Date"].strftime("%Y-%m-%d")
         close_val = float(last_row["Close"])
+        
         return obs_date, close_val
+        
     except Exception as e:
-        # Fallback to Stooq generic CSV (sometimes cleaner)
-        # KOSPI symbol on Stooq is ^KOSPI
-        try:
-            url = "https://stooq.com/q/d/l/?s=^kospi&i=d"
-            df = pd.read_csv(url)
-            if df.empty:
-                 raise ValueError("Stooq returned empty csv")
-            # Stooq CSV columns: Date,Open,High,Low,Close,Volume
-            # Sort by Date just in case
-            df["Date"] = pd.to_datetime(df["Date"])
-            df = df.sort_values("Date")
-            last_row = df.iloc[-1]
-            obs_date = last_row["Date"].strftime("%Y-%m-%d")
-            close_val = float(last_row["Close"])
-            return obs_date, close_val
-        except Exception as e2:
-            raise ValueError(f"Primary(yfinance) failed: {e}. Fallback(stooq) failed: {e2}")
+        raise ValueError(f"Failed to fetch KOSPI from Stooq: {e}")
 
 def write_raw_kospi(base_dir: Path) -> Path:
-    source = "yfinance"
+    source = "stooq.com"
     entity = "KOSPI"
     unit = "INDEX"
     ts_utc = _utc_now()
@@ -71,7 +57,7 @@ def write_raw_kospi(base_dir: Path) -> Path:
     try:
         obs_date, close = _fetch_kospi_data()
     except Exception as e:
-        raise ValueError(f"Failed to fetch KOSPI from yfinance: {e}")
+        raise ValueError(f"Failed to fetch KOSPI from Stooq: {e}")
 
     payload = {
         "ts_utc": ts_utc,
