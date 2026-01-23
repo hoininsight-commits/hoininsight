@@ -51,6 +51,9 @@ class CandidateDetector:
                         "trigger_event": f"KOSPI {val:.1f}pt 기록 (역사적 고점 부근)",
                         "observed_metrics": [f"KOSPI: {val:.1f}"],
                         "driver_candidates": ["글로벌 유동성 공급", "국내 기업 이익 성장"],
+                        "public_misconception": "단순히 지수가 높아서 위험하다는 공포심",
+                        "money_flow": "외국인 투자자의 우량 대형주 중심 패시브 자금 유입",
+                        "comparison_baseline": "과거 10년 평균 코스피 지수 2300pt 대비 2배 이상 상승",
                         "scores": {"hook_score": 10, "number_score": 9, "why_now_score": 10},
                         "confidence": "HIGH"
                     })
@@ -79,6 +82,9 @@ class CandidateDetector:
                     "trigger_event": f"US 10Y Yield {val}% 돌파 및 유지",
                     "observed_metrics": [f"Yield: {val}%"],
                     "driver_candidates": ["인플레이션 우려 재점화", "연준 통화긴축 장기화"],
+                    "public_misconception": "금리 상승이 무조건 주식 시장의 폭락으로 이어진다는 고정관념",
+                    "money_flow": "신규 발행 국채로의 안전자산 선호 자금 및 초단기 MMF 자금 이동",
+                    "comparison_baseline": "연준의 중립 금리 추정치 2.5% 대비 현저히 높은 수준",
                     "scores": {"hook_score": 8, "number_score": 9, "why_now_score": 8},
                     "confidence": "HIGH"
                 })
@@ -107,6 +113,9 @@ class CandidateDetector:
                         "trigger_event": f"USD/KRW {val:.2f}원 기록",
                         "observed_metrics": [f"FX Rate: {val:.2f}"],
                         "driver_candidates": ["달러 강세 (DXY 상승)", "내수 경기 둔화 우려"],
+                        "public_misconception": "환율 상승이 무조건 수출 기업의 이익 증가로만 이어진다는 낙관론",
+                        "money_flow": "국내 거주자의 외화 예금 증가 및 수입 결제 대금을 위한 강력한 달러 수요 발생",
+                        "comparison_baseline": "지난 5년 실질실효환율 평균 대비 15% 이상 고평가된 달러 가치",
                         "scores": {"hook_score": 9, "number_score": 8, "why_now_score": 9},
                         "confidence": "HIGH"
                     })

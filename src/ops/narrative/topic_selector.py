@@ -38,6 +38,9 @@ class TopicSelector:
                 "core_narrative": f"{p['topic_anchor']} 현상이 {p['trigger_event']}로 인해 주목받고 있습니다. 핵심 동인은 {p.get('driver_candidates',[''])[0]}입니다.",
                 "observed_metrics": p["observed_metrics"],
                 "leader_stocks": p.get("driver_candidates", []),
+                "public_misconception": p.get("public_misconception", "확인된 대중적 오해 없음"),
+                "money_flow": p.get("money_flow", "특이 자금 흐름 미검출"),
+                "comparison_baseline": p.get("comparison_baseline", "기준치 데이터 부족"),
                 "intent_signals": [], # To be filled if real signal exists
                 "structural_hint": "단기적 관심 확대 중",
                 "era_fit": "N/A",
