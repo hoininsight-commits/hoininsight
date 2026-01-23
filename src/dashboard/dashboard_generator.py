@@ -157,7 +157,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             date_display = f"<strong>{date}</strong>" if t_idx == 0 else f"<span style='color:#cbd5e1; font-size:11px;'>{date}</span>"
             
             table_rows += f"""
-            <tr style="border-bottom:1px solid #f1f5f9; cursor:pointer;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'" onclick="showTopicDetail('{topic_uid}')">
+            <tr style="border-bottom:1px solid #f1f5f9; cursor:pointer;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'" onclick="showArchiveDetail('{topic_uid}')">
                 <td style="padding:12px; color:#334155;">{date_display}</td>
                 <td style="padding:12px;">
                     <div style="font-weight:600; color:#1e293b; font-size:13px;">{title}</div>
@@ -201,7 +201,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
     <script>
         window.TOPIC_DETAILS = {json.dumps(topic_details_map)};
         
-        function showTopicDetail(uid) {{
+        function showArchiveDetail(uid) {{
             var content = window.TOPIC_DETAILS[uid];
             if(content) {{
                 document.getElementById('topic-detail-content').innerHTML = content;
