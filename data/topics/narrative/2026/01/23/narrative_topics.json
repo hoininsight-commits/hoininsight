@@ -1,6 +1,22 @@
 {
   "topics": [
     {
+      "topic_anchor": "미분류 (Unmapped) - 일반 (General) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[BTCUSD, SPREAD_10Y_2Y, DART_DISPOSAL] 신호 군집 발생",
+      "core_narrative": "[BTCUSD, SPREAD_10Y_2Y, DART_DISPOSAL] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [미분류 (Unmapped)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "struct_dart_disposal: z=0.0",
+        "crypto_btc_usd_spot_coingecko: z=0.0",
+        "derived_yield_curve_10y_2y: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
       "topic_anchor": "매크로 (Macro) - 인플레이션 (Inflation) 관련 이상 움직임",
       "narrative_driver": "구조적 변동성 (Structural Volatility)",
       "trigger_event": "[KOR_CPI, CPI_USA] 신호 군집 발생",
@@ -16,12 +32,12 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "원자재 (Commodity) - 산업재 / 귀금속 관련 이상 움직임",
-      "narrative_driver": "수급 충격 (Supply/Demand Shock)",
-      "trigger_event": "[XAGUSD] 신호 군집 발생",
-      "core_narrative": "[XAGUSD] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "topic_anchor": "금리 (Rates) - 중앙은행 정책 (Central Bank Policy) 관련 이상 움직임",
+      "narrative_driver": "통화 정책 재평가 (Monetary Policy Repricing)",
+      "trigger_event": "[FEDFUNDS] 신호 군집 발생",
+      "core_narrative": "[FEDFUNDS] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [금리 (Rates)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
-        "metal_silver_kag_coingecko: z=0.0"
+        "rates_fed_funds_fred: z=0.0"
       ],
       "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
       "era_fit": "레짐 불확실성 (Regime Uncertainty)",
@@ -74,42 +90,12 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "미분류 (Unmapped) - 일반 (General) 관련 이상 움직임",
-      "narrative_driver": "구조적 변동성 (Structural Volatility)",
-      "trigger_event": "[SPREAD_10Y_2Y, BTCUSD, DART_DISPOSAL] 신호 군집 발생",
-      "core_narrative": "[SPREAD_10Y_2Y, BTCUSD, DART_DISPOSAL] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [미분류 (Unmapped)] 관련 기대를 재평가하고 있습니다.",
-      "intent_signals": [
-        "crypto_btc_usd_spot_coingecko: z=0.0",
-        "struct_dart_disposal: z=0.0",
-        "derived_yield_curve_10y_2y: z=0.0"
-      ],
-      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
-      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
-      "confidence_level": "LOW",
-      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "매크로 (Macro) - 유동성 (Liquidity) 관련 이상 움직임",
-      "narrative_driver": "구조적 변동성 (Structural Volatility)",
-      "trigger_event": "[M2_USA] 신호 군집 발생",
-      "core_narrative": "[M2_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
-      "intent_signals": [
-        "liquidity_m2_fred: z=0.0"
-      ],
-      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
-      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
-      "confidence_level": "LOW",
-      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
-      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
-    },
-    {
-      "topic_anchor": "원자재 (Commodity) - 경기/인플레 시그널 관련 이상 움직임",
+      "topic_anchor": "원자재 (Commodity) - 산업재 / 귀금속 관련 이상 움직임",
       "narrative_driver": "수급 충격 (Supply/Demand Shock)",
-      "trigger_event": "[GOLD_SILVER_RATIO] 신호 군집 발생",
-      "core_narrative": "[GOLD_SILVER_RATIO] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "trigger_event": "[XAGUSD] 신호 군집 발생",
+      "core_narrative": "[XAGUSD] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
-        "derived_gold_silver_ratio: z=0.0"
+        "metal_silver_kag_coingecko: z=0.0"
       ],
       "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
       "era_fit": "레짐 불확실성 (Regime Uncertainty)",
@@ -146,6 +132,20 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
+      "topic_anchor": "원자재 (Commodity) - 경기/인플레 시그널 관련 이상 움직임",
+      "narrative_driver": "수급 충격 (Supply/Demand Shock)",
+      "trigger_event": "[GOLD_SILVER_RATIO] 신호 군집 발생",
+      "core_narrative": "[GOLD_SILVER_RATIO] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [원자재 (Commodity)] 관련 기대를 재평가하고 있습니다.",
+      "intent_signals": [
+        "derived_gold_silver_ratio: z=0.0"
+      ],
+      "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
+      "era_fit": "레짐 불확실성 (Regime Uncertainty)",
+      "confidence_level": "LOW",
+      "risk_note": "상관관계가 인과관계를 의미하지 않습니다. 지속성 확인이 필요합니다.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
       "topic_anchor": "매크로 (Macro) - 분기 인플레이션 (PCE) 관련 이상 움직임",
       "narrative_driver": "구조적 변동성 (Structural Volatility)",
       "trigger_event": "[PCE_USA] 신호 군집 발생",
@@ -160,12 +160,12 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "금리 (Rates) - 중앙은행 정책 (Central Bank Policy) 관련 이상 움직임",
-      "narrative_driver": "통화 정책 재평가 (Monetary Policy Repricing)",
-      "trigger_event": "[FEDFUNDS] 신호 군집 발생",
-      "core_narrative": "[FEDFUNDS] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [금리 (Rates)] 관련 기대를 재평가하고 있습니다.",
+      "topic_anchor": "매크로 (Macro) - 유동성 (Liquidity) 관련 이상 움직임",
+      "narrative_driver": "구조적 변동성 (Structural Volatility)",
+      "trigger_event": "[M2_USA] 신호 군집 발생",
+      "core_narrative": "[M2_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
-        "rates_fed_funds_fred: z=0.0"
+        "liquidity_m2_fred: z=0.0"
       ],
       "structural_hint": "파급 효과에 대한 모니터링이 필요합니다.",
       "era_fit": "레짐 불확실성 (Regime Uncertainty)",
