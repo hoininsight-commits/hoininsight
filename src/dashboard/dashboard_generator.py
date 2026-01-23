@@ -69,7 +69,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
         return '<div style="padding:40px; text-align:center; color:#94a3b8;">저장된 과거 데이터가 없습니다.</div>'
 
     html = """
-    <div id="archive-section" class="section-content" style="display:none; width:100%;">
+    <div id="topic-archive" class="tab-content" style="display:none; width:100%;">
         <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 토픽 리스트 (Topic Archive)</h2>
         <div style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
             <table style="width:100%; border-collapse:collapse; font-size:13px;">
