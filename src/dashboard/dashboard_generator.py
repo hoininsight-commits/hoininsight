@@ -1940,9 +1940,34 @@ def generate_dashboard(base_dir: Path):
                 const view = document.getElementById('topic-detail-view');
                 const scriptContent = ALL_SCRIPTS[idx];
                 
+                // [Feature] Extract Evidence Data
+                let evidenceHtml = '';
+                if (t.raw_data && t.raw_data.evidence && t.raw_data.evidence.details) {{
+                    const d = t.raw_data.evidence.details;
+                    const val = d.value !== undefined ? d.value : '-';
+                    const z = d.z_score !== undefined ? d.z_score : '-';
+                    const pct = d.percentile !== undefined ? d.percentile + '%' : '-';
+                    const mean = d.rolling_mean_20d !== undefined ? parseFloat(d.rolling_mean_20d).toFixed(2) : '-';
+                    
+                    evidenceHtml = `
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 데이터 증거 (Data Evidence)</h3>
+                    <div style="background:#f0f9ff; padding:15px; border-radius:6px; border:1px solid #bae6fd; margin-bottom:20px;">
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:12px;">
+                            <div><span style="color:#64748b;">현재값 (Value):</span> <span style="font-weight:bold; color:#0f172a;">${{val}}</span></div>
+                            <div><span style="color:#64748b;">Z-Score:</span> <span style="font-weight:bold; color:#0369a1;">${{z}}</span></div>
+                            <div><span style="color:#64748b;">평균 (20d Mean):</span> <span style="font-weight:bold; color:#334155;">${{mean}}</span></div>
+                            <div><span style="color:#64748b;">Percentile:</span> <span style="font-weight:bold; color:#334155;">${{pct}}</span></div>
+                        </div>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid #e0f2fe; font-size:11px; color:#0c4a6e;">
+                            <b>Signal Logic:</b> ${{d.reasoning || 'N/A'}}
+                        </div>
+                    </div>
+                    `;
+                }}
+
                 let html = `
                     <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #{{idx+1}}</div>
+                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${idx+1}</div>
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
                         <div style="display:flex; gap:10px; align-items:center;">
                             <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
@@ -1954,6 +1979,8 @@ def generate_dashboard(base_dir: Path):
                     <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
                         ${{t.rationale}}
                     </div>
+
+                    ${{evidenceHtml}}
 
                     ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
                     <h3 style="font-size:14px; color:#166534; margin-bottom:10px;">🚀 관련 테마 대장주</h3>
