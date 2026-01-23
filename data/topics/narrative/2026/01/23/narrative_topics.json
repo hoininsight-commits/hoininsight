@@ -3,8 +3,8 @@
     {
       "topic_anchor": "미분류 (Unmapped) - 일반 (General) 관련 이상 움직임",
       "narrative_driver": "구조적 변동성 (Structural Volatility)",
-      "trigger_event": "[SPREAD_10Y_2Y, DART_DISPOSAL] 신호 군집 발생",
-      "core_narrative": "[SPREAD_10Y_2Y, DART_DISPOSAL] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [미분류 (Unmapped)] 관련 기대를 재평가하고 있습니다.",
+      "trigger_event": "[DART_DISPOSAL, SPREAD_10Y_2Y] 신호 군집 발생",
+      "core_narrative": "[DART_DISPOSAL, SPREAD_10Y_2Y] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [미분류 (Unmapped)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
         "struct_dart_disposal: z=0.0",
         "derived_yield_curve_10y_2y: z=0.0"
@@ -18,8 +18,8 @@
     {
       "topic_anchor": "매크로 (Macro) - 인플레이션 (Inflation) 관련 이상 움직임",
       "narrative_driver": "구조적 변동성 (Structural Volatility)",
-      "trigger_event": "[CPI_USA, KOR_CPI] 신호 군집 발생",
-      "core_narrative": "[CPI_USA, KOR_CPI] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
+      "trigger_event": "[KOR_CPI, CPI_USA] 신호 군집 발생",
+      "core_narrative": "[KOR_CPI, CPI_USA] 등에서 이상 징후가 감지되었습니다. 시장은 현재 [매크로 (Macro)] 관련 기대를 재평가하고 있습니다.",
       "intent_signals": [
         "inflation_kor_cpi_ecos: z=0.0",
         "inflation_cpi_fred: z=0.0"
