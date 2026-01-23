@@ -70,7 +70,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
 
     html = """
     <div id="topic-archive" class="tab-content" style="display:none; width:100%;">
-        <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 토픽 리스트 (Topic Archive)</h2>
+        <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 일별 아카이브 (Daily Topic History)</h2>
         <div style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
             <table style="width:100%; border-collapse:collapse; font-size:13px;">
                 <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
@@ -2055,7 +2055,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="nav-label">MAIN VIEW</div>
                 <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
                 <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📊</span> 금일 선정 토픽 (Top 5)</div>
-                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📚</span> 토픽 리스트 (History)</div>
+                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 일별 아카이브 (Daily History)</div>
                 <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
                 
                 <div class="nav-label">OPERATIONS</div>
