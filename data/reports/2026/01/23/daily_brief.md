@@ -35,14 +35,13 @@ Historical context:
 - [HIGH] SILVER: data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] SILVER: data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] US10Y: data/features/anomalies/2026/01/23/rates_us10y_fred.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
+- [HIGH] GS_RATIO: data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/23/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/23/struct_dart_disposal.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/01/23/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/23/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/23/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] YIELD_CURVE: data/features/anomalies/2026/01/23/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
-- [MED] BTCUSD: data/features/anomalies/2026/01/23/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.32) | Mom: DOWN (slope=-1.00) -> x0.9 | App7d=4
-- [MED] GS_RATIO: data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L1 Signal (base=3.00, final_m=3.91) | Mom: DOWN (slope=-1.50) -> x0.9 | App7d=3
 - [LOW] BTCUSD: data/features/anomalies/2026/01/23/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/23/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] SPX: data/features/anomalies/2026/01/23/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -65,7 +64,7 @@ Narrative Drift Signals:
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
 - Ops Health: 0% Freshness
-- Structural Topic: **[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)**
+- Structural Topic: **[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)**
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## TOPIC CANDIDATE SNAPSHOT
