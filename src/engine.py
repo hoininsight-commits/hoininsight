@@ -13,6 +13,7 @@ from src.pipeline.run_collect import main as collect_main
 from src.pipeline.run_normalize import main as normalize_main
 from src.pipeline.run_anomaly import main as anomaly_main
 from src.pipeline.run_topic import main as topic_main
+from src.topics.topic_candidate_gate import main as gate_main # [Fixed] Add Gate
 from src.validation.output_check import run_output_checks
 from src.reporters.daily_report import write_daily_brief
 from src.reporting.health import write_health
@@ -60,6 +61,16 @@ def main(target_categories: list[str] = None):
         topic_main()
         details_lines.append("topic: ok")
         print("topic: ok", file=sys.stderr)
+        
+        gate_main() # [Fixed] Run Gate
+        details_lines.append("gate: ok")
+        print("gate: ok", file=sys.stderr)
+        
+        # [Fixed] Ensure Final Decision Card is generated
+        from src.decision.final_decision_card import main as decision_main
+        decision_main()
+        details_lines.append("decision: ok")
+        print("decision: ok", file=sys.stderr)
 
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
