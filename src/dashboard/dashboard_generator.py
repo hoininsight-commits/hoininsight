@@ -2897,19 +2897,8 @@ def generate_dashboard(base_dir: Path):
         <div style="height: 50px;"></div>
         </div> <!-- End sections-wrapper -->
     </div> <!-- End Main Panel -->
-
-    <!-- Right Sidebar -->
-    <div class="sidebar">
-        <div class="section-header" style="border:none; margin-bottom:10px;">
-            <div style="font-size:14px; font-weight:800; color:#475569; text-transform:uppercase;">Data Status</div>
-        </div>
-        
-        <div id="sidebar-content">
-            <!-- Dynamic Content injected here -->
-        </div>
-    </div>
-
 </div>
+
 
 <!-- MODAL -->
 <div id="scriptModal" class="modal">
