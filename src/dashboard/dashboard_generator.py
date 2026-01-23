@@ -1958,7 +1958,9 @@ def generate_dashboard(base_dir: Path):
             "confidence": 70 if nt.get("confidence_level") == "MEDIUM" else (90 if nt.get("confidence_level") == "HIGH" else 50),
             "is_narrative": True,
             "topic_id": nt.get("topic_id"),
-            "observed_metrics": nt.get("observed_metrics", [])
+            "observed_metrics": nt.get("observed_metrics", []),
+            "leader_stocks": nt.get("leader_stocks", []),
+            "trigger_event": nt.get("trigger_event", "")
         }
         top_topics.append(mapped_t)
         all_scripts_map[f"narrative_{idx}"] = nt.get("script_kr", "스크립트가 없습니다.")
@@ -2087,14 +2089,29 @@ def generate_dashboard(base_dir: Path):
                         </div>
                     </div>
                     `;
+                }} else if (t.is_narrative && t.observed_metrics) {{
+                    evidenceHtml = `
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 데이터 증거 (Data Evidence)</h3>
+                    <div style="background:#f5f3ff; padding:15px; border-radius:6px; border:1px solid #ddd6fe; margin-bottom:20px;">
+                        <div style="font-size:12px; color:#334155;">
+                            ${{t.observed_metrics.map(m => `• <span style="font-weight:bold;">${{m}}</span>`).join('<br>')}}
+                        </div>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid #ede9fe; font-size:11px; color:#6b21a8;">
+                            <b>Trigger Event:</b> ${{t.trigger_event || 'N/A'}}
+                        </div>
+                    </div>
+                    `;
                 }}
+
+                const levelColor = t.is_narrative ? "#7c3aed" : "#ef4444";
+                const levelLabel = t.is_narrative ? "Narrative Insight" : (t.level || 'L?') + " Anomaly";
 
                 let html = `
                     <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${idx+1}</div>
+                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${{idx+1}}</div>
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
                         <div style="display:flex; gap:10px; align-items:center;">
-                            <div style="font-size:11px; color:#fff; background:#ef4444; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{t.level || 'L?'}} Anomaly</div>
+                            <div style="font-size:11px; color:#fff; background:${{levelColor}}; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{levelLabel}}</div>
                             <div style="font-size:11px; color:#64748b; font-weight:bold;">신뢰도: <span style="color:#10b981;">${{t.confidence || 0}}%</span></div>
                         </div>
                     </div>
