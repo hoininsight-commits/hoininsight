@@ -106,6 +106,13 @@ def main(target_categories: list[str] = None):
         gate_main() # [Fixed] Run Gate
         details_lines.append("gate: ok")
         print("gate: ok", file=sys.stderr)
+
+        # [Phase 40] Content Topic Gate (New)
+        from pipeline.run_topic_gate import main as content_gate_main
+        content_gate_date = datetime.utcnow().strftime("%Y-%m-%d")
+        content_gate_main(content_gate_date)
+        details_lines.append("content_gate: ok")
+        print("content_gate: ok", file=sys.stderr)
         
         # [Fixed] Ensure Final Decision Card is generated
         from src.decision.final_decision_card import main as decision_main

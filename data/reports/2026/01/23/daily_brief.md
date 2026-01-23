@@ -34,6 +34,7 @@ Historical context:
 - [HIGH] GOLD: data/features/anomalies/2026/01/23/metal_gold_paxg_coingecko.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] SILVER: data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] SILVER: data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
+- [HIGH] BTCUSD: data/features/anomalies/2026/01/23/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] US10Y: data/features/anomalies/2026/01/23/rates_us10y_fred.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [HIGH] GS_RATIO: data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=8.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/23/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
@@ -42,7 +43,6 @@ Historical context:
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/23/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/23/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] YIELD_CURVE: data/features/anomalies/2026/01/23/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
-- [LOW] BTCUSD: data/features/anomalies/2026/01/23/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/23/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] SPX: data/features/anomalies/2026/01/23/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] KOSPI: data/features/anomalies/2026/01/23/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
@@ -64,9 +64,23 @@ Narrative Drift Signals:
 - Regime: (no meta regime detected) (Conf: 0.0%)
 - Revival: 0 candidate(s)
 - Ops Health: 0% Freshness
-- Structural Topic: **[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)**
+- Structural Topic: **[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, crypto_btc_usd_spot_coingecko 동반)**
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
+## Content Topic (Topic Decision Gate)
+
+- **Title:** 실적은 좋은데 주가는 왜 빠졌나
+- **Question:** 왜 실적이 좋았는데도 주가가 하락했나?
+- **Why people confused:** 좋은 실적=상승이라는 상식과, 실제 주가 하락이 충돌한다.
+- **Key reasons:**
+  - 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.
+  - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
+- **Numbers:** (none)
+- **Risk:** 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
+- **Confidence:** LOW
+- **Handoff to Structural:** False
+- **Handoff reason:** 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 15 candidate(s) survived survival rules.
+Gate Filter Result: 16 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
