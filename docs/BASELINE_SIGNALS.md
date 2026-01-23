@@ -273,4 +273,37 @@ AI·기술 산업 내에서
 📌 본 문서는 **Hoin Engine의 판단 헌법**이며  
 📌 모든 주제 선정 로직의 최상위 기준이다.
 
+
+---
+
+## 5. ENGINE LAYERS (Event → Narrative → Structural)
+
+### Layer A — Event Detection (Daily)
+*   **목적**: 오늘 "이상하게 튄 것"을 감지
+*   **출력**: candidates.json
+*   **금지**: 확정/레벨/WHY_NOW 판단
+
+### Layer B — Narrative Topic (Short-term)
+*   **목적**: 후보를 "영상으로 말할 수 있는 주제"로 승격
+*   **출력**: narrative_topics.json
+*   **유효기간**: 3~7일
+
+### Layer C — Structural Topic (Long-term)
+*   **목적**: 기존 HOIN ENGINE 확정 (L3/L4)
+*   **출력**: topics.json (기존 유지)
+
+---
+
+## 6. TEMPORAL RULES (Event vs State vs Structural)
+
+### 1-Day Event (감지)
+*   권한: 사실(Fact) 전달만 가능. "추세" 단정 금지.
+
+### Short-term Narrative (3~7일)
+*   권한: "최근 흐름", "단기적 관심".
+*   금지: "구조적 변화", "L3/L4 레벨", "장기 투자 권고".
+
+### Structural State (1개월 이상)
+*   권한: "구조적 변화", "WHY NOW 확정".
+
 -----END BASELINE_SIGNALS_v1.11_FINAL-----

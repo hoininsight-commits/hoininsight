@@ -1,0 +1,34 @@
+schema_version: "v1.0"
+layer: "SIGNAL_DETECTION"
+type: "CANDIDATE"
+fields:
+  candidate_id:
+    type: string
+    description: "Unique ID (e.g., sector_bio_divergence)"
+  date:
+    type: date
+    format: "YYYY-MM-DD"
+  category_pool:
+    type: string
+    enum: ["SectorDivergence", "IndexRegime", "BigContract", "Policy", "Earnings", "Flow"]
+  topic_anchor:
+    type: string
+    description: "The observed phenomenon (e.g., 'Bio Sector Drawdown')"
+  trigger_event:
+    type: string
+    description: "Specific event triggering detection"
+  observed_metrics:
+    type: list
+    items: string
+    description: "Quantifiable metrics (e.g., 'Rel. Return -5%', 'Breadth 15%')"
+  driver_candidates:
+    type: list
+    items: string
+    description: "Potential reasons (e.g., 'Rate Hiking', 'Policy Shift')"
+  scores:
+    hook_score: int (0-10)
+    number_score: int (0-10)
+    why_now_score: int (0-10)
+  confidence:
+    type: string
+    enum: ["LOW", "MEDIUM", "HIGH"]

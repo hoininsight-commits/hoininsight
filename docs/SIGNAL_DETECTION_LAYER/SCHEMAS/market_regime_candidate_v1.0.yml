@@ -1,0 +1,34 @@
+schema_version: "v1.0"
+layer: "SIGNAL_DETECTION"
+type: "CANDIDATE"
+fields:
+  candidate_id:
+    type: string
+    description: "Unique ID (e.g., regime_kospi_5000)"
+  date:
+    type: date
+    format: "YYYY-MM-DD"
+  category_pool:
+    type: string
+    enum: ["IndexRegime"]
+  topic_anchor:
+    type: string
+    description: "The observed regime change (e.g., 'KOSPI 5000 Break')"
+  trigger_event:
+    type: string
+    description: "Specific level/event triggering detection"
+  observed_metrics:
+    type: list
+    items: string
+    description: "Quantifiable metrics (e.g., 'KOSPI 5012.3', 'EPS Consensus +15%')"
+  driver_candidates:
+    type: list
+    items: string
+    description: "Potential reasons (e.g., 'Structural Growth', 'Liquidity Influx')"
+  scores:
+    hook_score: int (0-10)
+    number_score: int (0-10)
+    why_now_score: int (0-10)
+  confidence:
+    type: string
+    enum: ["LOW", "MEDIUM", "HIGH"]
