@@ -1,0 +1,64 @@
+{
+  "date": "2026-01-23",
+  "market": "MIXED",
+  "candidates": [
+    {
+      "candidate_id": "regime_kospi_high",
+      "category_pool": "IndexRegime",
+      "topic_anchor": "코스피 4990 돌파: 새로운 시대",
+      "trigger_event": "KOSPI 4990.1pt 기록 (역사적 고점 부근)",
+      "observed_metrics": [
+        "KOSPI: 4990.1"
+      ],
+      "driver_candidates": [
+        "글로벌 유동성 공급",
+        "국내 기업 이익 성장"
+      ],
+      "scores": {
+        "hook_score": 10,
+        "number_score": 9,
+        "why_now_score": 10
+      },
+      "confidence": "HIGH"
+    },
+    {
+      "candidate_id": "macro_us10y_high",
+      "category_pool": "Policy",
+      "topic_anchor": "미 국채 10년물 4.26%: 긴장의 연속",
+      "trigger_event": "US 10Y Yield 4.26% 돌파 및 유지",
+      "observed_metrics": [
+        "Yield: 4.26%"
+      ],
+      "driver_candidates": [
+        "인플레이션 우려 재점화",
+        "연준 통화긴축 장기화"
+      ],
+      "scores": {
+        "hook_score": 8,
+        "number_score": 9,
+        "why_now_score": 8
+      },
+      "confidence": "HIGH"
+    },
+    {
+      "candidate_id": "sector_bio_divergence",
+      "category_pool": "SectorDivergence",
+      "topic_anchor": "반도체 섹터와 바이오의 이더리움화",
+      "trigger_event": "전통 섹터 자금의 성장주 이동",
+      "observed_metrics": [
+        "Semiconductor +5%",
+        "Bio -2%"
+      ],
+      "driver_candidates": [
+        "AI 인프라 투자 집중",
+        "금리 부담에 따른 중소형주 기피"
+      ],
+      "scores": {
+        "hook_score": 8,
+        "number_score": 7,
+        "why_now_score": 7
+      },
+      "confidence": "MEDIUM"
+    }
+  ]
+}

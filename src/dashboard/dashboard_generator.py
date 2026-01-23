@@ -1767,11 +1767,65 @@ def generate_dashboard(base_dir: Path):
     if not evolution_html:
         evolution_html = "<div style='color:#999; text-align:center; padding:20px; font-size:12px;'>새로운 진화 제안이 없습니다.</div>"
 
+    # [Narrative Layer] Load Narrative Topics
+    narrative_cards_html = ""
+    narrative_data_js = "window.NARRATIVE_DATA = {};"
+    
+    narr_topics_path = base_dir / "data/output" / ymd.replace("-","/") / "narrative_topics.json"
+    if narr_topics_path.exists():
+        try:
+            nt_data = json.loads(narr_topics_path.read_text(encoding='utf-8'))
+            topics = nt_data.get("topics", [])
+            
+            if topics:
+                for t in topics:
+                    tid = t['topic_id']
+                    # Escape for JS
+                    t_json = json.dumps(t, ensure_ascii=False)
+                    narrative_data_js += f"window.NARRATIVE_DATA['{tid}'] = {t_json};\n"
+                    
+                    script_prev = t.get('script_kr', '').replace('\n', ' ')[:100] + "..."
+                    
+                    narrative_cards_html += f"""
+                    <div style="background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); transition:transform 0.2s; cursor:pointer;" 
+                         onmouseover="this.style.transform='translateY(-2px)'" 
+                         onmouseout="this.style.transform='translateY(0)'"
+                         onclick="openNarrativeModal('{tid}')">
+                         
+                         <div style="background:#5b21b6; padding:15px; color:white;">
+                            <div style="font-size:10px; font-weight:bold; opacity:0.8; margin-bottom:5px;">OPEN CANDIDATE</div>
+                            <h3 style="margin:0; font-size:16px; line-height:1.4;">{t['topic_anchor']}</h3>
+                         </div>
+                         <div style="padding:20px;">
+                            <div style="margin-bottom:10px;">
+                                <div style="font-size:11px; font-weight:bold; color:#64748b;">DRIVER</div>
+                                <div style="font-size:13px; color:#1e293b; font-weight:600;">{t['narrative_driver']}</div>
+                            </div>
+                            <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:8px; border-radius:4px; margin-top:10px; border:1px solid #e2e8f0;">
+                                "{script_prev}"
+                            </div>
+                            <div style="margin-top:15px; text-align:right;">
+                                <span style="font-size:11px; color:#7c3aed; font-weight:bold;">Tap to View Details ➜</span>
+                            </div>
+                         </div>
+                    </div>
+                    """
+            else:
+                 narrative_cards_html = "<div style='grid-column:1/-1; text-align:center; padding:40px; color:#94a3b8;'>생성된 내러티브 토픽이 없습니다.</div>"
+        except Exception as e:
+            narrative_cards_html = f"<div style='color:red;'>Narrative Load Error: {e}</div>"
+    else:
+        narrative_cards_html = "<div style='grid-column:1/-1; text-align:center; padding:40px; color:#94a3b8; background:#f9fafb; border-radius:8px;'>아직 Narrative Engine이 실행되지 않았습니다.</div>"
+
+    # Inject JS Data into head or body
+
+
     # [Layout Fix] Re-assembling the HTML with proper Tab Structure
 
     # [Restored Logic] Calculate missing variables for Dashboard
     
     # 1. Change Effectiveness
+
     effectiveness_html = """
     <div style="padding:40px; text-align:center; color:#94a3b8; background:white; border:1px solid #e2e8f0; border-radius:8px;">
         <h3>데이터 누적 중...</h3>
@@ -1857,8 +1911,60 @@ def generate_dashboard(base_dir: Path):
     topic_list_html = ""
     top_topics = final_card.get("top_topics", [])
     
+    # [Narrative Layer Integration] Load Narrative Topics
+    narrative_data = {}
+    try:
+        narrative_path = base_dir / "data/output" / ymd.replace("-","/") / "narrative_topics.json"
+        print(f"[DEBUG] Checking narrative path: {narrative_path}")
+        if narrative_path.exists():
+            print(f"[DEBUG] Narrative file found!")
+            narrative_data = json.loads(narrative_path.read_text(encoding="utf-8"))
+        else:
+            print(f"[DEBUG] Narrative file NOT found at {narrative_path}")
+    except Exception as e: 
+        print(f"[DEBUG] Error loading narrative topics: {e}")
+    
+    narrative_topics_list = narrative_data.get("topics", [])
+    print(f"[DEBUG] Found {len(narrative_topics_list)} narrative topics.")
+    
+    # Merge or separate? For MVP, let's append them but mark them.
+    # We want to keep structural topics first if any.
+    
+    # Prepare scripts map
+    all_scripts_map = {}
+    
+    # 1. Load Structural Scripts
+    for i in range(len(top_topics)):
+        s_body = ""
+        try:
+            if i == 0:
+                s_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
+                if not s_path.exists(): s_path = base_dir / "data/content" / "insight_script_v1.md"
+            else:
+                s_path = base_dir / "data/output" / ymd.replace("-","/") / f"insight_script_{i+1}.md"
+            
+            if s_path.exists():
+                s_body = s_path.read_text(encoding='utf-8')
+        except: pass
+        all_scripts_map[f"structural_{i}"] = s_body or "스크립트 생성 대기 중..."
+
+    # 2. Add Narrative Topics to the display list
+    for idx, nt in enumerate(narrative_topics_list):
+        # Map narrative topic to the structure expected by the UI
+        mapped_t = {
+            "title": nt.get("topic_anchor"),
+            "rationale": nt.get("core_narrative"),
+            "level": "Narrative",
+            "confidence": 70 if nt.get("confidence_level") == "MEDIUM" else (90 if nt.get("confidence_level") == "HIGH" else 50),
+            "is_narrative": True,
+            "topic_id": nt.get("topic_id"),
+            "observed_metrics": nt.get("observed_metrics", [])
+        }
+        top_topics.append(mapped_t)
+        all_scripts_map[f"narrative_{idx}"] = nt.get("script_kr", "스크립트가 없습니다.")
+
     # [Sync Fix] Override Main Topic Title in the List with the AI-Generated Script Title
-    if top_topics and script_exists and topic_title and topic_title != "주제 선정 대기중":
+    if top_topics and not top_topics[0].get("is_narrative") and script_exists and topic_title and topic_title != "주제 선정 대기중":
         top_topics[0]["title"] = topic_title
     
     if not top_topics and final_card.get("topic"):
@@ -1874,13 +1980,25 @@ def generate_dashboard(base_dir: Path):
         list_items = ""
         for idx, t in enumerate(top_topics):
             is_main = (idx == 0)
-            bg = "#f0f9ff" if is_main else "white"
-            border = "2px solid #3b82f6" if is_main else "1px solid #e2e8f0"
-            badge = '<span style="background:#3b82f6; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:5px;">MAIN</span>' if is_main else ""
+            is_narrative = t.get("is_narrative", False)
+            bg = "#f0f9ff" if is_main and not is_narrative else ("#f5f3ff" if is_narrative else "white")
+            border = "2px solid #3b82f6" if is_main and not is_narrative else ("1px solid #7c3aed" if is_narrative else "1px solid #e2e8f0")
             
+            badge = ""
+            if is_main and not is_narrative:
+                badge = '<span style="background:#3b82f6; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:5px;">MAIN</span>'
+            if is_narrative:
+                badge = '<span style="background:#7c3aed; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:5px;">NARRATIVE</span>'
+            
+            level_display = t.get('level', 'L?')
+            level_color = "#ef4444" if not is_narrative else "#7c3aed"
+
             script_btn = ""
-            if is_main and script_exists:
-                script_btn = f'<button onclick="showTopicDetail({idx})" style="width:100%; margin-top:10px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">스크립트 & 상세 보기 ➜</button>'
+            if (is_main or is_narrative) and (script_exists or is_narrative):
+                btn_bg = "#eff6ff" if not is_narrative else "#f5f3ff"
+                btn_color = "#3b82f6" if not is_narrative else "#7c3aed"
+                btn_border = "#bfdbfe" if not is_narrative else "#ddd6fe"
+                script_btn = f'<button onclick="showTopicDetail({idx})" style="width:100%; margin-top:10px; background:{btn_bg}; color:{btn_color}; border:1px solid {btn_border}; padding:6px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:bold;">스크립트 & 상세 보기 ➜</button>'
             else:
                  script_btn = f'<button onclick="showTopicDetail({idx})" style="width:100%; margin-top:10px; background:white; color:#64748b; border:1px solid #e2e8f0; padding:6px; border-radius:4px; cursor:pointer; font-size:11px;">상세 보기 ➜</button>'
 
@@ -1888,7 +2006,7 @@ def generate_dashboard(base_dir: Path):
             <div class="topic-card" style="background:{bg}; border:{border}; padding:15px; border-radius:8px; margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
                     <span style="font-weight:bold; font-size:11px; color:#64748b;">#{idx+1} {t.get('dataset_id','')}</span>
-                    <span style="font-weight:bold; font-size:11px; color:#ef4444;">{t.get('level','L?')}</span>
+                    <span style="font-weight:bold; font-size:11px; color:{level_color};">{level_display}</span>
                 </div>
                 <div style="font-size:14px; font-weight:bold; color:#1e293b; margin-bottom:5px;">{t.get('title')} {badge}</div>
                 <div style="font-size:12px; color:#475569; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{t.get('rationale')}</div>
@@ -1900,23 +2018,29 @@ def generate_dashboard(base_dir: Path):
              # Wrap the items generated above in the Container
             items_html = list_items # renamed for clarity
             
-            # Load all 5 scripts
+            # Load scripts in order of top_topics
             scripts_content = []
-            for i in range(len(top_topics)):
-                s_body = ""
-                try:
-                    if i == 0:
-                        s_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
-                        if not s_path.exists(): s_path = base_dir / "data/content" / "insight_script_v1.md"
-                    else:
-                        s_path = base_dir / "data/output" / ymd.replace("-","/") / f"insight_script_{i+1}.md"
-                    
-                    if s_path.exists():
-                        s_body = s_path.read_text(encoding='utf-8')
-                except: pass
+            for i, t in enumerate(top_topics):
+                if t.get("is_narrative"):
+                    # Find which narrative index it was
+                    # (In our simple append loop, we can just track it)
+                    pass
                 
-                if not s_body: s_body = "스크립트가 아직 생성되지 않았습니다."
-                scripts_content.append(s_body)
+                # Actually, let's just use a simpler way: 
+                # Since we appended narrative topics, the order in top_topics matches the order we want.
+                # But we need to distinguish where to get the script.
+                
+            # Refined scripts_content generation
+            scripts_content = []
+            structural_count = 0
+            narrative_count = 0
+            for t in top_topics:
+                if t.get("is_narrative"):
+                    scripts_content.append(all_scripts_map.get(f"narrative_{narrative_count}", ""))
+                    narrative_count += 1
+                else:
+                    scripts_content.append(all_scripts_map.get(f"structural_{structural_count}", ""))
+                    structural_count += 1
 
             topic_list_html = f"""
             <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:20px; height:600px;">
@@ -2196,6 +2320,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
 
                 <div class="nav-label">WORKFLOW</div>
+                <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">🎬</span> 내러티브 큐 (Hunter)</div>
                 <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
                 <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> 부활 엔진</div>
                 
@@ -2276,6 +2401,115 @@ def generate_dashboard(base_dir: Path):
                             호인 엔진이 오늘 감지한 이상징후 중 우선순위가 높은 5가지 토픽입니다.
                         </p>
                         {topic_list_html}
+                    </div>
+
+                    <!-- TAB: Narrative Queue (NEW) -->
+                    <div id="narrative-queue" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">🎬 내러티브 큐 (Narrative Queue)</h2>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:25px;">
+                            Economic Hunter 스타일의 연출을 위한 단기 내러티브 토픽 및 스크립트 대기열입니다.
+                            각 카드를 클릭하여 <strong>전체 스크립트 및 연출 가이드</strong>를 확인하세요.
+                        </p>
+                        
+                        <!-- Topic Cards Grid -->
+                        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:20px;">
+                            {narrative_cards_html} 
+                        </div>
+
+                        <!-- Narrative Detail Modal -->
+                        <div id="narrativeDetailModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+                            <div style="background:white; width:90%; max-width:800px; height:85%; border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+                                
+                                <!-- Header -->
+                                <div style="padding:20px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; background:#f8fafc;">
+                                    <div>
+                                        <div style="font-size:11px; font-weight:bold; color:#64748b; margin-bottom:5px;">NARRATIVE TOPIC DETAIL</div>
+                                        <h2 id="modal-title" style="margin:0; font-size:20px; color:#1e293b;">-</h2>
+                                    </div>
+                                    <button onclick="closeNarrativeModal()" style="background:none; border:none; font-size:24px; color:#94a3b8; cursor:pointer;">&times;</button>
+                                </div>
+
+                                <!-- Body -->
+                                <div style="flex:1; overflow-y:auto; padding:25px;">
+                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom:25px;">
+                                        <!-- Info Column -->
+                                        <div>
+                                            <div style="margin-bottom:15px;">
+                                                <div style="font-size:11px; font-weight:bold; color:#64748b; margin-bottom:5px;">CORE NARRATIVE</div>
+                                                <div id="modal-core" style="font-size:13px; color:#334155; line-height:1.5; font-weight:600;">-</div>
+                                            </div>
+                                            <div style="margin-bottom:15px;">
+                                                <div style="font-size:11px; font-weight:bold; color:#64748b; margin-bottom:5px;">OBSERVED METRICS (EVIDENCE)</div>
+                                                <div id="modal-metrics" style="display:flex; flex-wrap:wrap; gap:5px;">-</div>
+                                            </div>
+                                            <div style="margin-bottom:15px;">
+                                                <div style="font-size:11px; font-weight:bold; color:#64748b; margin-bottom:5px;">TRIGGER & DRIVER</div>
+                                                <div style="background:#f1f5f9; padding:10px; border-radius:6px; font-size:12px;">
+                                                    <div style="margin-bottom:5px;"><span style="color:#64748b;">Trigger:</span> <span id="modal-trigger" style="font-weight:bold;">-</span></div>
+                                                    <div><span style="color:#64748b;">Driver:</span> <span id="modal-driver" style="font-weight:bold; color:#7c3aed;">-</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Script Column -->
+                                        <div style="display:flex; flex-direction:column;">
+                                            <div style="font-size:11px; font-weight:bold; color:#64748b; margin-bottom:5px; display:flex; justify-content:space-between;">
+                                                <span>GENERATED SCRIPT (Human-readable)</span>
+                                                <span style="color:#3b82f6; cursor:pointer;" onclick="copyScript()">Copy</span>
+                                            </div>
+                                            <textarea id="modal-script" style="flex:1; width:100%; border:1px solid #cbd5e1; border-radius:6px; padding:15px; font-size:13px; line-height:1.6; color:#334155; resize:none; font-family:sans-serif; background:#fafafa;" readonly></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div style="padding:15px 25px; border-top:1px solid #e2e8f0; background:#f8fafc; display:flex; justify-content:flex-end; gap:10px;">
+                                    <button onclick="approveTopic()" style="background:#16a34a; color:white; border:none; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">✅ 승인 (영상 제작)</button>
+                                    <button onclick="rejectTopic()" style="background:#dc2626; color:white; border:none; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">❌ 거절 (Archive)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function openNarrativeModal(topicId) {{
+                                const t = window.NARRATIVE_DATA[topicId];
+                                if(!t) return;
+
+                                document.getElementById('modal-title').textContent = t.topic_anchor;
+                                document.getElementById('modal-core').textContent = t.core_narrative;
+                                document.getElementById('modal-trigger').textContent = t.trigger_event;
+                                document.getElementById('modal-driver').textContent = t.narrative_driver;
+                                document.getElementById('modal-script').value = t.script_kr;
+                                
+                                const mDiv = document.getElementById('modal-metrics');
+                                mDiv.innerHTML = t.observed_metrics.map(m => `<span style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:bold;">` + m + `</span>`).join('');
+
+                                document.getElementById('narrativeDetailModal').style.display = 'flex';
+                            }}
+
+                            function closeNarrativeModal() {{
+                                document.getElementById('narrativeDetailModal').style.display = 'none';
+                            }}
+                            
+                            function copyScript() {{
+                                const copyText = document.getElementById("modal-script");
+                                copyText.select();
+                                document.execCommand("copy");
+                                alert("스크립트가 복사되었습니다.");
+                            }}
+
+                            function approveTopic() {{
+                                alert("승인되었습니다! (Simulated)");
+                                closeNarrativeModal();
+                            }}
+                            
+                            function rejectTopic() {{
+                                if(confirm("이 토픽을 거절하시겠습니까?")) {{
+                                    alert("거절되었습니다. (Simulated)");
+                                    closeNarrativeModal();
+                                }}
+                            }}
+                        </script>
                     </div>
 
                     <!-- TAB 0-2: Topic Archive (History) -->

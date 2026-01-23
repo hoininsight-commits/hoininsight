@@ -1,6 +1,6 @@
 {
   "card_version": "phase40_v1",
-  "generated_at": "2026-01-23T06:41:53.860844+00:00Z",
+  "generated_at": "2026-01-23T08:10:23.599757+00:00Z",
   "date": "2026-01-23",
   "blocks": {
     "regime": {
@@ -212,13 +212,13 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     }
   ],
-  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.54배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
     "metal_silver_kag_coingecko": "Primary",
     "metal_gold_paxg_coingecko": "Secondary",
     "rates_us10y_fred": "Secondary",
-    "inflation_cpi_fred": "Secondary",
-    "inflation_pce_fred": "Secondary"
+    "derived_gold_silver_ratio": "Secondary",
+    "inflation_cpi_fred": "Secondary"
   },
   "top_topics": [
     {
@@ -229,9 +229,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.54배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T06:41:53Z",
+        "ts_utc": "2026-01-23T08:10:23Z",
         "dataset_id": "metal_silver_kag_coingecko",
         "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json L2 Signal",
@@ -241,11 +241,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.54,
+            "z_score": 2.57,
             "percentile": 50.0,
-            "value": 98.7,
-            "rolling_mean_20d": 90.18275213623046,
-            "reasoning": "Z-Score 2.54 >= 2.0"
+            "value": 98.87,
+            "rolling_mean_20d": 90.19125213623047,
+            "reasoning": "Z-Score 2.57 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -266,7 +266,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/metal_silver_kag_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.54 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.57 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Monetary Tightening",
@@ -285,9 +285,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.56배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.5배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T06:41:53Z",
+        "ts_utc": "2026-01-23T08:10:23Z",
         "dataset_id": "metal_gold_paxg_coingecko",
         "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/metal_gold_paxg_coingecko.json L2 Signal",
@@ -297,11 +297,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.56,
+            "z_score": 2.5,
             "percentile": 50.0,
-            "value": 4966.63,
-            "rolling_mean_20d": 4654.381426757813,
-            "reasoning": "Z-Score 2.56 >= 2.0"
+            "value": 4954.71,
+            "rolling_mean_20d": 4653.785426757813,
+            "reasoning": "Z-Score 2.50 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -322,7 +322,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/metal_gold_paxg_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.56 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.50 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Monetary Tightening",
@@ -343,7 +343,7 @@
       "title": "[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, market_sp500 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 10년물 국채금리가 평소 변동폭 대비 2.72배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [etf_mock_xbi] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T06:41:53Z",
+        "ts_utc": "2026-01-23T08:10:23Z",
         "dataset_id": "rates_us10y_fred",
         "topic_id": "rates_us10y_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/rates_us10y_fred.json L2 Signal",
@@ -390,6 +390,62 @@
       ]
     },
     {
+      "dataset_id": "derived_gold_silver_ratio",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.10 >= 2.0. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-01-23T08:10:23Z",
+        "dataset_id": "derived_gold_silver_ratio",
+        "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
+        "title": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": -2.1,
+            "percentile": 50.0,
+            "value": 50.113381207646405,
+            "rolling_mean_20d": 51.64857933691777,
+            "reasoning": "Z-Score -2.10 >= 2.0"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json"
+        },
+        "rationale": "[L2] Z-Score -2.10 >= 2.0 (Regime x1.0)",
+        "links": []
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
       "dataset_id": "inflation_cpi_fred",
       "level": "L2",
       "score": 100,
@@ -399,7 +455,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-23T06:41:53Z",
+        "ts_utc": "2026-01-23T08:10:23Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/23/inflation_cpi_fred.json L2 Signal",
@@ -433,62 +489,6 @@
             }
           },
           "anomalies_path": "data/features/anomalies/2026/01/23/inflation_cpi_fred.json"
-        },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-        "links": []
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ]
-    },
-    {
-      "dataset_id": "inflation_pce_fred",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-01-23T06:41:53Z",
-        "dataset_id": "inflation_pce_fred",
-        "topic_id": "inflation_pce_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/01/23/inflation_pce_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.67,
-            "percentile": 100.0,
-            "value": 21409.7,
-            "rolling_mean_20d": 20524.975,
-            "reasoning": "Percentile 100.0% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/01/23/inflation_pce_fred.json"
         },
         "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
         "links": []

@@ -52,7 +52,24 @@ def run_collection():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1: DATA COLLECTION COMPLETED\n")
 
 
-def run_engine():
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1: DATA COLLECTION COMPLETED\n")
+
+
+def run_narrative_engine():
+    """Run the Narrative Engine (Phase 1.5)."""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
+    try:
+        from src.ops.run_narrative_engine import main as narrative_main
+        narrative_main()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.5: NARRATIVE ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Critical Error running Narrative Engine: {e}")
+        traceback.print_exc()
+        return False
+
+
+def run_structural_engine():
     """Run the main Hoin Engine (Selection -> Insight)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2: ENGINE EXECUTION STARTED")
     
@@ -105,7 +122,11 @@ def main():
     run_collection()
     
     # Step 2: Run Engine
-    success = run_engine()
+    # 2.1 Narrative Engine (NEW)
+    run_narrative_engine()
+    
+    # 2.2 Structural Engine (Legacy)
+    success = run_structural_engine()
     
     # Step 3: Generate Dashboard
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")

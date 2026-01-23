@@ -12,7 +12,7 @@ except ImportError:
     print("  playwright install chromium")
     sys.exit(1)
 
-TARGET_URL = "https://chatgpt.com/share/696a506b-15bc-8010-9100-70122e1df948"
+TARGET_URL = "https://chatgpt.com/share/6972f0fc-e4b4-8010-8b5b-05dd0082a4ff"
 OUTPUT_FILE = "data/inputs/chatgpt_context.txt"
 
 async def scrape_chatgpt():
