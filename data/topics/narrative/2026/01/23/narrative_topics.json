@@ -3,12 +3,83 @@
     {
       "topic_anchor": "Unmapped - General Activity",
       "narrative_driver": "Structural Volatility",
-      "trigger_event": "Signal Cluster in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA",
-      "core_narrative": "Anomalous activity detected in SPREAD_10Y_2Y, GOLD_SILVER_RATIO, DART_CB_BW, FEDFUNDS, PCE_USA, XAGUSD, KOR_CPI, DART_DISPOSAL, M2_USA, XAUUSD, US10Y, CPI_USA. Markets are repricing Unmapped expectations.",
+      "trigger_event": "Signal Cluster in SPREAD_10Y_2Y, DART_DISPOSAL",
+      "core_narrative": "Anomalous activity detected in SPREAD_10Y_2Y, DART_DISPOSAL. Markets are repricing Unmapped expectations.",
+      "intent_signals": [
+        "struct_dart_disposal: z=0.0",
+        "derived_yield_curve_10y_2y: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Macro - Inflation Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in KOR_CPI, PCE_USA, CPI_USA",
+      "core_narrative": "Anomalous activity detected in KOR_CPI, PCE_USA, CPI_USA. Markets are repricing Macro expectations.",
       "intent_signals": [
         "inflation_kor_cpi_ecos: z=0.0",
-        "metal_silver_kag_coingecko: z=0.0",
+        "inflation_cpi_fred: z=0.0",
+        "inflation_pce_fred: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Rates - Central Bank Policy Activity",
+      "narrative_driver": "Monetary Policy Repricing",
+      "trigger_event": "Signal Cluster in FEDFUNDS",
+      "core_narrative": "Anomalous activity detected in FEDFUNDS. Markets are repricing Rates expectations.",
+      "intent_signals": [
+        "rates_fed_funds_fred: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Equity - Emerging Market / Korea Activity",
+      "narrative_driver": "Risk Sentiment Shift",
+      "trigger_event": "Signal Cluster in KOSPI",
+      "core_narrative": "Anomalous activity detected in KOSPI. Markets are repricing Equity expectations.",
+      "intent_signals": [
+        "index_kospi_stooq: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Commodity - Safe Haven / Inflation Hedge Activity",
+      "narrative_driver": "Supply/Demand Shock",
+      "trigger_event": "Signal Cluster in XAUUSD",
+      "core_narrative": "Anomalous activity detected in XAUUSD. Markets are repricing Commodity expectations.",
+      "intent_signals": [
         "metal_gold_paxg_coingecko: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Rates - Long Duration Activity",
+      "narrative_driver": "Monetary Policy Repricing",
+      "trigger_event": "Signal Cluster in US10Y",
+      "core_narrative": "Anomalous activity detected in US10Y. Markets are repricing Rates expectations.",
+      "intent_signals": [
+        "rates_us10y_fred: z=0.0"
       ],
       "structural_hint": "Watch for flow-through impacts.",
       "era_fit": "Regime Uncertainty",
@@ -33,12 +104,26 @@
       "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
     },
     {
-      "topic_anchor": "Equity - Emerging Market / Korea Activity",
-      "narrative_driver": "Risk Sentiment Shift",
-      "trigger_event": "Signal Cluster in KOSPI",
-      "core_narrative": "Anomalous activity detected in KOSPI. Markets are repricing Equity expectations.",
+      "topic_anchor": "Commodity - Industrial / Precious Activity",
+      "narrative_driver": "Supply/Demand Shock",
+      "trigger_event": "Signal Cluster in XAGUSD",
+      "core_narrative": "Anomalous activity detected in XAGUSD. Markets are repricing Commodity expectations.",
       "intent_signals": [
-        "index_kospi_stooq: z=0.0"
+        "metal_silver_kag_coingecko: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Credit - Corporate Issuance (Korea) Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in DART_CB_BW",
+      "core_narrative": "Anomalous activity detected in DART_CB_BW. Markets are repricing Credit expectations.",
+      "intent_signals": [
+        "struct_dart_cb_bw: z=0.0"
       ],
       "structural_hint": "Watch for flow-through impacts.",
       "era_fit": "Regime Uncertainty",
@@ -53,6 +138,34 @@
       "core_narrative": "Anomalous activity detected in HY_SPREAD_USA. Markets are repricing Credit expectations.",
       "intent_signals": [
         "credit_hy_spread_fred: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Commodity - Risk/Inflation Signal Activity",
+      "narrative_driver": "Supply/Demand Shock",
+      "trigger_event": "Signal Cluster in GOLD_SILVER_RATIO",
+      "core_narrative": "Anomalous activity detected in GOLD_SILVER_RATIO. Markets are repricing Commodity expectations.",
+      "intent_signals": [
+        "derived_gold_silver_ratio: z=0.0"
+      ],
+      "structural_hint": "Watch for flow-through impacts.",
+      "era_fit": "Regime Uncertainty",
+      "confidence_level": "LOW",
+      "risk_note": "Correlation does not imply causation; monitor for persistence.",
+      "disclaimer": "This is a NARRATIVE TOPIC (Short-term Story). NOT A STRUCTURAL TOPIC."
+    },
+    {
+      "topic_anchor": "Macro - Liquidity Activity",
+      "narrative_driver": "Structural Volatility",
+      "trigger_event": "Signal Cluster in M2_USA",
+      "core_narrative": "Anomalous activity detected in M2_USA. Markets are repricing Macro expectations.",
+      "intent_signals": [
+        "liquidity_m2_fred: z=0.0"
       ],
       "structural_hint": "Watch for flow-through impacts.",
       "era_fit": "Regime Uncertainty",
