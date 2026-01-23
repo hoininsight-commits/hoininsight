@@ -22,8 +22,8 @@ class CandidateDetector:
         # 2. Policy/Macro (Real Data: US 10Y Yield)
         candidates.extend(self._detect_macro_event(target_date_str))
         
-        # 3. Sector Divergence (Keep mock for now, but mark as proxy)
-        candidates.extend(self._detect_sector_divergence(target_date_str))
+        # 3. FX (Real Data: USD/KRW)
+        candidates.extend(self._detect_fx_event(target_date_str))
         
         return {
             "date": target_date_str,
@@ -87,18 +87,34 @@ class CandidateDetector:
                 
         return candidates
 
-    def _detect_sector_divergence(self, date_str):
-        # Keep one mock for variety in MVP
-        return [{
-            "candidate_id": "sector_bio_divergence",
-            "category_pool": "SectorDivergence",
-            "topic_anchor": "반도체 섹터와 바이오의 이더리움화",
-            "trigger_event": "전통 섹터 자금의 성장주 이동",
-            "observed_metrics": ["Semiconductor +5%", "Bio -2%"],
-            "driver_candidates": ["AI 인프라 투자 집중", "금리 부담에 따른 중소형주 기피"],
-            "scores": {"hook_score": 8, "number_score": 7, "why_now_score": 7},
-            "confidence": "MEDIUM"
-        }]
+    def _detect_fx_event(self, date_str):
+        candidates = []
+        # Logical Path: data/raw/fx_usdkrw_spot_open_er_api/2026/01/23/usdkrw.json
+        y, m, d = date_str.split('-')
+        fx_path = self.base_dir / "data" / "raw" / "fx_usdkrw_spot_open_er_api" / y / m / d / "usdkrw.json"
+        
+        if fx_path.exists():
+            try:
+                with open(fx_path, 'r') as f:
+                    data = json.load(f)
+                val = data.get('rate', 0)
+                
+                if val > 1400:
+                    candidates.append({
+                        "candidate_id": "fx_usdkrw_high",
+                        "category_pool": "Policy",
+                        "topic_anchor": f"환율 {int(val)}원 돌파: 수출 경고등",
+                        "trigger_event": f"USD/KRW {val:.2f}원 기록",
+                        "observed_metrics": [f"FX Rate: {val:.2f}"],
+                        "driver_candidates": ["달러 강세 (DXY 상승)", "내수 경기 둔화 우려"],
+                        "scores": {"hook_score": 9, "number_score": 8, "why_now_score": 9},
+                        "confidence": "HIGH"
+                    })
+            except Exception as e:
+                print(f"Error reading FX data: {e}")
+                
+        return candidates
+
 
 
 if __name__ == "__main__":

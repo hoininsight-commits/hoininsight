@@ -39,26 +39,6 @@
         "why_now_score": 8
       },
       "confidence": "HIGH"
-    },
-    {
-      "candidate_id": "sector_bio_divergence",
-      "category_pool": "SectorDivergence",
-      "topic_anchor": "반도체 섹터와 바이오의 이더리움화",
-      "trigger_event": "전통 섹터 자금의 성장주 이동",
-      "observed_metrics": [
-        "Semiconductor +5%",
-        "Bio -2%"
-      ],
-      "driver_candidates": [
-        "AI 인프라 투자 집중",
-        "금리 부담에 따른 중소형주 기피"
-      ],
-      "scores": {
-        "hook_score": 8,
-        "number_score": 7,
-        "why_now_score": 7
-      },
-      "confidence": "MEDIUM"
     }
   ]
 }
