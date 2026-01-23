@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-23T06:09:10Z",
+    "ts_utc": "2026-01-23T06:13:13Z",
     "dataset_id": "derived_gold_silver_ratio",
     "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json L1 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 30,
       "level": "L1",
       "details": {
-        "z_score": -1.84,
+        "z_score": -1.86,
         "percentile": 50.0,
-        "value": 50.36298247391348,
-        "rolling_mean_20d": 51.661059400231125,
-        "reasoning": "Z-Score -1.84 >= 1.5"
+        "value": 50.34261979536014,
+        "rolling_mean_20d": 51.66004126630346,
+        "reasoning": "Z-Score -1.86 >= 1.5"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/23/derived_gold_silver_ratio.json"
     },
-    "rationale": "[L1] Z-Score -1.84 >= 1.5 (Regime x1.0)",
+    "rationale": "[L1] Z-Score -1.86 >= 1.5 (Regime x1.0)",
     "links": []
   }
 ]
