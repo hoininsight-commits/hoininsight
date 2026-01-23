@@ -485,6 +485,20 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append(f"- Regime: {reg.get('current_regime')} (Conf: {reg.get('confidence', 0):.1%})")
             lines.append(f"- Revival: {rev.get('proposal_count', 0)} candidate(s)")
             lines.append(f"- Ops Health: {ops.get('system_freshness', 0)}% Freshness")
+            
+            # [Phase 40] Show generated topics
+            m_topic = card.get("topic")
+            n_topics = card.get("narrative_topics", [])
+            
+            if m_topic:
+                 lines.append(f"- Structural Topic: **{m_topic}**")
+            elif n_topics:
+                 lines.append(f"- Structural Topic: None (Found {len(n_topics)} Narrative Topics)")
+                 for i, nt in enumerate(n_topics[:3], 1):
+                     lines.append(f"  {i}. [Narrative] {nt.get('topic_anchor')}: {nt.get('narrative_driver')}")
+            else:
+                 lines.append(f"- Topic: Pending")
+
             lines.append(f"- Prompt: {card.get('human_prompt')}")
         except:
             pass

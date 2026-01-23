@@ -107,6 +107,22 @@ def main():
     # Step 2: Run Engine
     success = run_engine()
     
+    # Step 3: Generate Dashboard
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")
+    try:
+        from src.dashboard.dashboard_generator import generate_dashboard
+        html = generate_dashboard(project_root)
+        
+        # Write to dashboard/index.html
+        dash_out = project_root / "dashboard" / "index.html"
+        dash_out.parent.mkdir(parents=True, exist_ok=True)
+        dash_out.write_text(html, encoding="utf-8")
+        
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3: DASHBOARD GENERATION COMPLETED ({dash_out})")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Dashboard generation failed: {e}")
+        traceback.print_exc()
+
     if success:
         print("\n=== PIPELINE SUCCESS ===")
         sys.exit(0)

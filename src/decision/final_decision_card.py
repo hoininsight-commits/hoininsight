@@ -384,9 +384,29 @@ def main():
         selected_topic_title = "Narrative Revival"
         selected_rationale = "Past narratives have resurfaced based on recent signals."
 
+    # [Phase 40] Load Narrative Topics
+    narrative_dir = base_dir / "data/topics/narrative" / ymd_path
+    narrative_path = narrative_dir / "narrative_topics.json"
+    narrative_topics = []
+    if narrative_path.exists():
+        try:
+             ndata = json.loads(narrative_path.read_text(encoding="utf-8"))
+             narrative_topics = ndata.get("topics", [])
+        except: pass
+
+    # Refined Topic Logic: Structural > Narrative > None
+    # If no structural topic is selected, but narrative topics exist, we explicitly state that.
+    
+    if not selected_topic_title and narrative_topics:
+        # We DO NOT promote Narrative to 'topic' field (Structural).
+        # We leave 'topic' as None or explicit "Waiting for Structural Confirmation"
+        # But we can update the rationale.
+        selected_topic_title = None # Explicitly None for Structural
+        selected_rationale = f"구조적(Structural) 토픽은 발견되지 않았으나, {len(narrative_topics)}개의 내러티브(Narrative) 후보가 감지되었습니다."
+
     # 4. Construct Final Card
     card = {
-        "card_version": "phase38_v1",
+        "card_version": "phase40_v1",
         "generated_at": now_utc.isoformat() + "Z",
         "date": ymd_dash,
         "blocks": {
@@ -394,7 +414,8 @@ def main():
             "revival": revival_block,
             "ops": ops_block
         },
-        "topic": selected_topic_title,               # Main Topic
+        "topic": selected_topic_title,               # Main Structural Topic
+        "narrative_topics": narrative_topics,        # [New] Narrative Topics
         "decision_rationale": selected_rationale,    # Main Rationale
         "key_data": key_data,
         "top_topics": top_topics,                    # Full Top 5 List

@@ -368,9 +368,23 @@ def generate_dashboard(base_dir: Path):
     }
 
     # [UI Logic] Prepare Data for Today's Insight (Safe variable generation)
-    topic_title = final_card.get('topic', '분석 결과 대기 중...')
-    rationale = final_card.get('decision_rationale', '아직 오늘의 주제가 선정되지 않았습니다.<br>잠시 후 다시 확인해주세요.')
+    topic_title = final_card.get('topic')
     
+    # Check for Narrative Topics if Structural is missing
+    narrative_topics = final_card.get('narrative_topics', [])
+    
+    if not topic_title:
+        if narrative_topics:
+            topic_title = f"Narrative Candidates Found ({len(narrative_topics)})"
+            # Use the first narrative topic as the rationale preview
+            top_nt = narrative_topics[0]
+            rationale = f"<b>[Narrative] {top_nt.get('topic_anchor')}</b><br>{top_nt.get('core_narrative')}<br><br>(Structural Topic은 감지되지 않았습니다)"
+        else:
+            topic_title = '분석 결과 대기 중...'
+            rationale = final_card.get('decision_rationale', '아직 오늘의 주제가 선정되지 않았습니다.<br>잠시 후 다시 확인해주세요.')
+    else:
+        rationale = final_card.get('decision_rationale', 'Rationale loading...')
+
     key_data_html = '<span style="font-size:10px; color:#cbd5e1;">데이터 없음</span>'
     if final_card.get('key_data'):
         # List comprehension outside f-string

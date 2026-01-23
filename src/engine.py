@@ -57,6 +57,37 @@ def main(target_categories: list[str] = None):
         anomaly_main()
         details_lines.append("anomaly: ok")
         print("anomaly: ok", file=sys.stderr)
+
+        # [Phase 40] Narrative Layer (New)
+        from src.layers.narrative.narrative_engine import NarrativeEngine
+        narrative_engine = NarrativeEngine(Path("."))
+        # Collect anomalies for the engine (simply by reloading them or passing if refactored)
+        # For now, the engine loads what it needs.
+        # But wait, NarrativeEngine.run takes list of snapshots. 
+        # We should load anomalies from disk or modify NarrativeEngine to load them.
+        # Let's quickly check NarrativeEngine implementation again... 
+        # It takes `anomaly_snapshots` as input.
+        # We need to collect them.
+        
+        # Helper to collect today's anomalies
+        anomalies_dir = Path("data/features/anomalies") / datetime.now().strftime("%Y/%m/%d")
+        snapshots = []
+        if anomalies_dir.exists():
+            for f in anomalies_dir.glob("*.json"):
+                try: 
+                    payload = json.loads(f.read_text(encoding="utf-8"))
+                    if isinstance(payload, list):
+                        snapshots.extend(payload)
+                    elif isinstance(payload, dict):
+                        if "anomalies" in payload and isinstance(payload["anomalies"], list):
+                            snapshots.extend(payload["anomalies"])
+                        else:
+                            snapshots.append(payload)
+                except: pass
+        
+        narrative_topics = narrative_engine.run(snapshots)
+        details_lines.append(f"narrative: {len(narrative_topics)} topics generated")
+        print(f"narrative: {len(narrative_topics)} topics generated", file=sys.stderr)
         
         topic_main()
         details_lines.append("topic: ok")
