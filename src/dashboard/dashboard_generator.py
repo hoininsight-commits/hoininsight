@@ -1900,6 +1900,61 @@ def generate_dashboard(base_dir: Path):
         topic_archive_view_html = f"<div style='padding:20px; color:red;'>Archive Load Error: {e}</div>"
 
     
+    # [NEW] Topic Gate HTML
+    topic_gate_html = ""
+    try:
+        tg_base = base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
+        tg_path = tg_base / "topic_gate_output.json"
+        if tg_path.exists():
+            tg_data = json.loads(tg_path.read_text(encoding="utf-8"))
+            title = tg_data.get("title", "No Title")
+            question = tg_data.get("question", "")
+            conf = tg_data.get("confidence", "N/A")
+            handoff = tg_data.get("handoff_to_structural", False)
+            
+            # Badge style
+            conf_color = "#10b981" if conf == "HIGH" else "#f59e0b" if conf == "MEDIUM" else "#ef4444"
+            handoff_badge = '<span style="background:#dcfce7; color:#166534; padding:2px 6px; border-radius:4px; font-size:11px;">Handoff OK</span>' if handoff else '<span style="background:#f1f5f9; color:#64748b; padding:2px 6px; border-radius:4px; font-size:11px;">Gate Only</span>'
+            
+            reasons_html = "".join([f"<li>{r}</li>" for r in tg_data.get("key_reasons", [])])
+            numbers_html = "".join([f"<div style='font-size:13px; color:#1e3a8a; font-weight:600;'>{n.get('label')}: {n.get('value')} {n.get('unit')}</div>" for n in tg_data.get("numbers", [])])
+
+            topic_gate_html = f"""
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:12px; padding:25px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <div style="font-size:12px; font-weight:700; color:#64748b; text-transform:uppercase;">이벤트 기반 트레이딩 토픽 (Topic Gate)</div>
+                    <div style="display:flex; gap:8px;">
+                        <span style="background:{conf_color}; color:white; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">{conf} CONFIDENCE</span>
+                        {handoff_badge}
+                    </div>
+                </div>
+                <h3 style="margin:0; font-size:20px; color:#1e293b; font-weight:700;">{title}</h3>
+                <p style="color:#475569; font-size:15px; margin-top:10px; line-height:1.6; font-style:italic;">"{question}"</p>
+                
+                <div style="margin-top:20px; background:#f8fafc; border-radius:8px; padding:15px; border:1px solid #f1f5f9;">
+                    <h4 style="margin:0 0 10px 0; font-size:13px; color:#334155; font-weight:700;">💡 분석 요약</h4>
+                    <ul style="margin:0; padding-left:20px; font-size:13px; color:#475569;">
+                        {reasons_html}
+                    </ul>
+                </div>
+                
+                <div style="margin-top:20px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div style="background:#fffbeb; padding:12px; border-radius:8px; border:1px solid #fef3c7;">
+                        <span style="font-size:11px; font-weight:bold; color:#92400e; display:block; margin-bottom:4px;">⚠️ 리스크 포인트</span>
+                        <span style="font-size:13px; color:#78350f;">{tg_data.get("risk_one", "N/A")}</span>
+                    </div>
+                    <div style="background:#eff6ff; padding:12px; border-radius:8px; border:1px solid #dbeafe;">
+                        <span style="font-size:11px; font-weight:bold; color:#1e40af; display:block; margin-bottom:4px;">📊 수치 증거 (Evidence)</span>
+                        {numbers_html}
+                    </div>
+                </div>
+            </div>
+            """
+        else:
+            topic_gate_html = '<div style="padding:40px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #e2e8f0;">오늘의 이벤트 기반 토픽이 아직 생성되지 않았습니다.</div>'
+    except Exception as e:
+        topic_gate_html = f'<div style="padding:20px; color:red; background:#fee2e2; border-radius:8px;">Topic Gate Load Error: {e}</div>'
+
     # 5. Ledger HTML
     ledger_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>'
     
@@ -2326,6 +2381,7 @@ def generate_dashboard(base_dir: Path):
                 
                 <div class="nav-label">MAIN VIEW</div>
                 <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
+                <div class="nav-item" onclick="activate('topic-gate')"><span class="nav-icon">🔥</span> Topic Gate (이벤트 기반)</div>
                 <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📊</span> 금일 선정 토픽 (Top 5)</div>
                 <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 일별 아카이브 (Daily History)</div>
                 <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
@@ -2798,6 +2854,14 @@ def generate_dashboard(base_dir: Path):
                     <div id="rejection-ledger" class="tab-content" style="display:none;">
                         <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🚫 거절/보류 리스트</h2>
                         {ledger_html}
+                    </div>
+    """
+
+    # [Topic Gate Tab]
+    html += f"""
+                    <div id="topic-gate" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">🔥 Topic Gate (이벤트 기반 토픽)</h2>
+                        {topic_gate_html}
                     </div>
     """
 
