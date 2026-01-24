@@ -446,10 +446,19 @@ def generate_dashboard(base_dir: Path):
     # [Phase 38] Load Final Decision Card
     final_card = {}
     try:
-        card_base = base_dir / "data/decision" / ymd.replace("-","/")
+        card_base = base_dir / "data" / "decision" / ymd.replace("-","/")
         card_path = card_base / "final_decision_card.json"
         if card_path.exists():
             final_card = json.loads(card_path.read_text(encoding="utf-8"))
+    except: pass
+
+    # [Phase 40] Load Topic Gate Output
+    gate_data = {}
+    try:
+        gate_base = base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
+        gate_path = gate_base / "topic_gate_output.json"
+        if gate_path.exists():
+            gate_data = json.loads(gate_path.read_text(encoding="utf-8"))
     except: pass
 
     # Engine Outputs Check
@@ -464,7 +473,8 @@ def generate_dashboard(base_dir: Path):
     regime_exists = (base_dir / "data" / "regimes" / f"regime_{ymd}.json").exists()
     
     # [Fix] Point to the correct date-based insight script for the Main View
-    script_path = base_dir / "data" / "output" / ymd.replace("-","/") / "insight_script.md"
+    # Standard reports directory for daily brief/scripts
+    script_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "daily_brief.md"
     script_exists = script_path.exists()
     
     # Fallback to older path if needed
@@ -1779,7 +1789,7 @@ def generate_dashboard(base_dir: Path):
     narrative_cards_html = ""
     narrative_data_js = "window.NARRATIVE_DATA = {};"
     
-    narr_topics_path = base_dir / "data/output" / ymd.replace("-","/") / "narrative_topics.json"
+    narr_topics_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "narrative_topics.json"
     if narr_topics_path.exists():
         try:
             nt_data = json.loads(narr_topics_path.read_text(encoding='utf-8'))
@@ -1883,7 +1893,7 @@ def generate_dashboard(base_dir: Path):
         archive_html += '<div class="archive-list" style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">'
         for i in range(1, 8):
             past_date = (datetime.utcnow() - timedelta(days=i)).strftime("%Y/%m/%d")
-            p_script = base_dir / "data/output" / past_date / "insight_script.md"
+            p_script = base_dir / "data" / "reports" / past_date / "daily_brief.md"
             if p_script.exists():
                 archive_html += f'<div style="padding:15px; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between;">'
                 archive_html += f'<span style="font-weight:bold; color:#334155;">{past_date} Report</span>'
@@ -2101,7 +2111,7 @@ def generate_dashboard(base_dir: Path):
     # [Narrative Layer Integration] Load Narrative Topics
     narrative_data = {}
     try:
-        narrative_path = base_dir / "data/output" / ymd.replace("-","/") / "narrative_topics.json"
+        narrative_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "narrative_topics.json"
         print(f"[DEBUG] Checking narrative path: {narrative_path}")
         if narrative_path.exists():
             print(f"[DEBUG] Narrative file found!")
@@ -2125,10 +2135,10 @@ def generate_dashboard(base_dir: Path):
         s_body = ""
         try:
             if i == 0:
-                s_path = base_dir / "data/output" / ymd.replace("-","/") / "insight_script.md"
-                if not s_path.exists(): s_path = base_dir / "data/content" / "insight_script_v1.md"
+                s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "daily_brief.md"
+                if not s_path.exists(): s_path = base_dir / "data" / "content" / "insight_script_v1.md"
             else:
-                s_path = base_dir / "data/output" / ymd.replace("-","/") / f"insight_script_{i+1}.md"
+                s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"insight_script_{i+1}.md"
             
             if s_path.exists():
                 s_body = s_path.read_text(encoding='utf-8')
@@ -2156,6 +2166,52 @@ def generate_dashboard(base_dir: Path):
     speak_topics = []
     watch_topics = []
     consolidated_anchors = []
+    
+    # 1. Structural Topics from Final Card
+    all_struct = final_card.get("top_topics", [])
+    for t in all_struct:
+        # Map into the internal speaker-friendly format
+        t_mapped = dict(t)
+        t_mapped["speak_eligibility_trace"] = {
+            "triggers": [t.get("rationale", "Structural deviation detected")],
+            "summary": "VALIDATED BY ANCHOR ENGINE"
+        }
+        # Anchors for evidence
+        t_mapped["anchors"] = {"structural": [{"sensor_id": t.get("dataset_id"), "title": t.get("title")}]}
+        
+        if t.get("proof_status") == "VALIDATED" and t.get("confidence", 0) >= 80:
+            speak_topics.append(t_mapped)
+        else:
+            watch_topics.append(t_mapped)
+
+    # 2. Gate Topic (if any)
+    if gate_data:
+        gate_eligibility = gate_data.get("speak_eligibility", {})
+        gate_topic = {
+            "title": gate_data.get("title"),
+            "topic_id": gate_data.get("topic_id"),
+            "dataset_id": "topic_gate",
+            "rationale": gate_data.get("why_people_confused"),
+            "speak_eligibility_trace": gate_eligibility,
+            "anchors": {"event": [{"sensor_id": "topic_gate", "title": gate_data.get("title")}]}
+        }
+        if gate_eligibility.get("eligible"):
+            speak_topics.append(gate_topic)
+        else:
+            # If not eligible but has shift, put in watch
+            if gate_eligibility.get("summary") or gate_eligibility.get("trace", {}).get("NARRATIVE_SHIFT", {}).get("triggered"):
+                 watch_topics.append(gate_topic)
+
+    # 3. Evidence Collection
+    for t in speak_topics + watch_topics:
+        ans = t.get("anchors", {})
+        for atype, alist in ans.items():
+            for a in alist:
+                # Add topic reference to anchor
+                a_with_topic = dict(a)
+                a_with_topic["_topic_title"] = t.get("title")
+                a_with_topic["_type"] = atype
+                consolidated_anchors.append(a_with_topic)
     
     # [Phase 18] Generate HTML for Refactored Panels
     
