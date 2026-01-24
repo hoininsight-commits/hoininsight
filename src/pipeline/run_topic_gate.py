@@ -61,9 +61,12 @@ def assert_gate_output_clean(payload: dict):
 
     check_recursive(payload)
 
+from src.events.gate_event_loader import load_gate_events
+
 def main(as_of_date: str):
     snapshot = load_daily_snapshot(as_of_date)
-    events = load_optional_events(as_of_date)
+    # Use new robust loader
+    events = load_gate_events(Path("."), as_of_date)
 
     gen = CandidateGenerator()
     ranker = Ranker()
@@ -71,10 +74,16 @@ def main(as_of_date: str):
     builder = OutputBuilder()
     handoff = HandoffDecider()
 
+    # 1) Generate candidates (using events)
     candidates = gen.generate(as_of_date=as_of_date, snapshot=snapshot, events=events)
-    ranked = ranker.rank(candidates)
+    
+    # 2) Attach numbers (using events for evidence)
+    numbered_candidates = [validator.attach_numbers(c, snapshot, events) for c in candidates]
+    
+    # 3) Rank (uses hook_score + number_score + trust_score)
+    events_index = {e.event_id: e for e in events}
+    ranked = ranker.rank(numbered_candidates, events_index=events_index)
     top1 = ranker.pick_top1(ranked)
-    top1 = validator.attach_numbers(top1, snapshot)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=ranked)
     output = handoff.decide(output, top1=top1, snapshot=snapshot)

@@ -15,7 +15,7 @@ class CandidateGenerator:
     - numbers는 여기서 억지로 만들지 않아도 됨(validator에서 붙임).
     """
 
-    def generate(self, as_of_date: str, snapshot: Dict[str, Any], events: List[Dict[str, Any]] | None = None) -> List[Candidate]:
+    def generate(self, as_of_date: str, snapshot: Dict[str, Any], events: List[Any] | None = None) -> List[Candidate]:
         events = events or []
         candidates: List[Candidate] = []
 
@@ -32,8 +32,7 @@ class CandidateGenerator:
             ))
 
         # 2) Index up but sector down (가능하면)
-        # Checking for SPX (Index) and some sector proxy or negative sentiment
-        if self._has(snapshot, ["index_spx"]): # Simplified check for now
+        if self._has(snapshot, ["index_spx"]):
             candidates.append(Candidate(
                 candidate_id=_new_id("cand"),
                 as_of_date=as_of_date,
@@ -44,15 +43,36 @@ class CandidateGenerator:
                 rank_features=RankFeatures(0,0,0,0,0),
             ))
 
-        # 3) Policy/event inverse (events 있으면)
-        if events:
+        # 3) Event-based candidates (events 연동)
+        for e in events:
+            # e can be a dict (from older code) or GateEvent object
+            e_id = getattr(e, "event_id", e.get("event_id") if isinstance(e, dict) else "unknown")
+            e_type = getattr(e, "event_type", e.get("event_type") if isinstance(e, dict) else "other")
+            e_title = getattr(e, "title", e.get("title") if isinstance(e, dict) else "Untitled Event")
+
+            q = f"왜 {e_title} (이벤트)가 발생했는데 시장 반응은 기대와 다르게 움직였나?"
+            category = "other"
+            
+            if e_type == "earnings":
+                q = f"왜 이번 {e_title} 실적 발표가 향후 분기 가이던스와 충돌하고 있나?"
+                category = "earnings"
+            elif e_type in ["policy", "regulation"]:
+                q = f"왜 {e_title} 규제가 당장의 시장 지배력보다 장기 공급망 재편에 더 결정적인가?"
+                category = "policy"
+            elif e_type == "flow":
+                q = f"왜 {e_title} (자금 흐름) 유입이 가격 상승으로 이어지지 못하고 '출구 전략'으로 보이나?"
+                category = "flows"
+            elif e_type == "geopolitics":
+                 q = f"왜 {e_title} 리스크에도 불구하고 시장의 공포 지수는 오히려 하락하고 있나?"
+                 category = "geopolitics"
+
             candidates.append(Candidate(
-                candidate_id=_new_id("cand"),
+                candidate_id=_new_id("cand_ev"),
                 as_of_date=as_of_date,
-                question="왜 정책/이벤트 발표 이후 시장 반응이 기대와 반대로 움직였나?",
-                category="policy",
-                hook_signals=["policy_announced_market_inverse"],
-                evidence_refs=["events:policy_or_event"],
+                question=q,
+                category=category,
+                hook_signals=[f"event_trigger_{e_type}"],
+                evidence_refs=[f"events:{e_type}:{e_id}"],
                 rank_features=RankFeatures(0,0,0,0,0),
             ))
 

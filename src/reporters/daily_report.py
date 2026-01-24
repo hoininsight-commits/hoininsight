@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
@@ -55,6 +56,51 @@ def render_gate_section(as_of_date: str) -> str:
     lines.append(f"- Confidence: {g.get('confidence','LOW')}")
     lines.append(f"- Handoff to Structural: {g.get('handoff_to_structural', False)}")
     lines.append(f"- Handoff reason: {g.get('handoff_reason','')}")
+    return "\n".join(lines)
+
+def _load_bridge_output(as_of_date: str) -> List[Dict[str, Any]]:
+    # Convention established for 8-4
+    p = Path("data") / "topics" / "bridge" / as_of_date.replace("-", "/") / "observation_candidates.json"
+    if not p.exists():
+        return []
+    return json.loads(p.read_text(encoding="utf-8"))
+
+def render_bridge_section(as_of_date: str) -> str:
+    candidates = _load_bridge_output(as_of_date)
+    # Also load gate output to get titles if needed
+    gate_data = _load_gate_output(as_of_date) or {}
+    
+    lines = []
+    lines.append("\n## GATE → STRUCTURAL LINK (Optional)\n")
+    
+    if not candidates:
+        lines.append("- (no bridge output)")
+        return "\n".join(lines)
+
+    for c in candidates:
+        t_id = c.get("topic_id", "unknown")
+        # Try to find title in gate output if matches
+        title = gate_data.get("title", "Unknown Topic") if gate_data.get("topic_id") == t_id else "Topic " + t_id
+        
+        lines.append(f"### Topic: {title}")
+        lines.append(f"- Topic ID: {t_id}")
+        lines.append(f"- Eligibility: **{c.get('eligibility', 'UNKNOWN')}**")
+        lines.append(f"- Rule Path: {c.get('rule_path', 'NONE')}")
+        
+        axes = c.get("matched_axes", [])
+        if axes:
+            lines.append(f"- Matched Axes: {', '.join(axes)}")
+        
+        ev_sum = c.get("evidence_summary", "")
+        if ev_sum:
+            lines.append(f"- Evidence Summary: {ev_sum}")
+            
+        if c.get("eligibility") == "NOT_ELIGIBLE":
+            reasons = c.get("eligibility_reason_codes", [])
+            lines.append(f"- Failure Reasons: `{', '.join(reasons)}`")
+        
+        lines.append("") # Spacer
+        
     return "\n".join(lines)
 
 def _read_json(p: Path) -> Any:
@@ -545,6 +591,10 @@ def write_daily_brief(base_dir: Path) -> Path:
 
     # [Phase 40] Topic Decision Gate Section
     lines.append(render_gate_section(ymd.replace("/", "-")))
+
+    # [Phase 8-4] Gate -> Structural Link (Optional)
+    if os.environ.get("ENABLE_BRIDGE_REPORTING") == "ON":
+        lines.append(render_bridge_section(ymd.replace("/", "-")))
 
     # [Phase 39] Topic Candidate Snapshot
     cand_path = base_dir / "data" / "topics" / "candidates" / ymd / "topic_candidates.json"

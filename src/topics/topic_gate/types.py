@@ -17,7 +17,8 @@ class RankFeatures:
     number_score: float
     timeliness_score: float
     explainability_score: float
-    final_score: float
+    evidence_quality_score: float = 0.0 # Added for event triggers
+    final_score: float = 0.0
 
 @dataclass
 class Candidate:
@@ -29,7 +30,8 @@ class Candidate:
     evidence_refs: List[str] = field(default_factory=list)
     numbers: List[NumberItem] = field(default_factory=list)
     confidence: Confidence = "LOW"
-    rank_features: RankFeatures = field(default_factory=lambda: RankFeatures(0,0,0,0,0))
+    requires_confirmation: bool = False # Added for source trust filtering
+    rank_features: RankFeatures = field(default_factory=lambda: RankFeatures(0,0,0,0,0,0))
 
 @dataclass
 class GateOutput:
