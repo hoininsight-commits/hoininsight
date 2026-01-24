@@ -1,0 +1,82 @@
+{
+  "schema_version": "topic_gate_candidate_v1",
+  "as_of_date": "2026-01-24",
+  "candidates": [
+    {
+      "candidate_id": "cand_b091feaea6",
+      "as_of_date": "2026-01-24",
+      "question": "왜 실적이 좋았는데도 주가가 하락했나?",
+      "category": "earnings",
+      "hook_signals": [
+        "earnings_up_price_down"
+      ],
+      "evidence_refs": [
+        "snapshot:earnings",
+        "snapshot:price"
+      ],
+      "numbers": [
+        {
+          "label": "S&P500 변화율",
+          "value": 0.5,
+          "unit": "%"
+        },
+        {
+          "label": "미국 10년물 금리 변화",
+          "value": 5.0,
+          "unit": "bp"
+        }
+      ],
+      "confidence": "MEDIUM",
+      "rank_features": {
+        "hook_score": 2.0,
+        "number_score": 0.0,
+        "timeliness_score": 1.0,
+        "explainability_score": 1.5,
+        "final_score": 4.5
+      }
+    },
+    {
+      "candidate_id": "cand_c40fb5d372",
+      "as_of_date": "2026-01-24",
+      "question": "왜 지수는 오르는데 특정 섹터만 하락하나?",
+      "category": "rotation",
+      "hook_signals": [
+        "index_up_sector_down"
+      ],
+      "evidence_refs": [
+        "snapshot:index",
+        "snapshot:sectors"
+      ],
+      "numbers": [],
+      "confidence": "LOW",
+      "rank_features": {
+        "hook_score": 1.5,
+        "number_score": 0.0,
+        "timeliness_score": 1.0,
+        "explainability_score": 1.5,
+        "final_score": 4.0
+      }
+    },
+    {
+      "candidate_id": "cand_cf31f3d1ce",
+      "as_of_date": "2026-01-24",
+      "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가?",
+      "category": "other",
+      "hook_signals": [
+        "other"
+      ],
+      "evidence_refs": [
+        "snapshot:generic"
+      ],
+      "numbers": [],
+      "confidence": "LOW",
+      "rank_features": {
+        "hook_score": 1.0,
+        "number_score": 0.0,
+        "timeliness_score": 1.0,
+        "explainability_score": 1.0,
+        "final_score": 3.0
+      }
+    }
+  ]
+}
