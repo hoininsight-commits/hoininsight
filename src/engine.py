@@ -13,7 +13,7 @@ from src.pipeline.run_collect import main as collect_main
 from src.pipeline.run_normalize import main as normalize_main
 from src.pipeline.run_anomaly import main as anomaly_main
 from src.pipeline.run_topic import main as topic_main
-from pipeline.run_topic_gate import main as gate_pipeline_main # [Phase 50] Strict Topic Gate
+from src.pipeline.run_topic_gate import main as gate_pipeline_main # [Phase 50] Strict Topic Gate
 from src.reporters.data_snapshot import write_data_snapshot
 from src.validation.output_check import run_output_checks
 from src.reporters.daily_report import write_daily_brief
