@@ -2253,9 +2253,22 @@ def generate_dashboard(base_dir: Path):
         ]
         return "\n\n".join(outline)
     
+    # [Deduplication] Identify topics consumed by Synthesis
+    consumed_ids = set()
+    if synth_topic:
+        ct = synth_topic.get("content_topic", {})
+        comps = ct.get("components", {})
+        structs = comps.get("structural", [])
+        for s in structs:
+            if s.get("dataset_id"):
+                consumed_ids.add(s.get("dataset_id"))
+    
     # 1. Structural Topics from Final Card
     all_struct = final_card.get("top_topics", [])
     for idx, t in enumerate(all_struct):
+        # Deduplicate if already shown in synthesis
+        if t.get("dataset_id") in consumed_ids:
+            continue
         # Ensure ID
         tid = t.get("topic_id") or f"struct_{idx}_{ymd}"
         t["topic_id"] = tid
