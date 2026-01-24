@@ -1,33 +1,17 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-01-24",
-  "topic_id": "gate_520c8fc695",
-  "title": "실적은 좋은데 주가는 왜 빠졌나",
-  "question": "왜 실적이 좋았는데도 주가가 하락했나?",
-  "why_people_confused": "좋은 실적=상승이라는 상식과, 실제 주가 하락이 충돌한다.",
+  "topic_id": "anchor_1769219983",
+  "title": "[Unknown] Hybrid-driven",
+  "question": "왜 지금 Unknown 현상이 (Hybrid-driven) 형태로 나타났는가?",
+  "why_people_confused": "데이터 축: metal_gold_paxg_coingecko, rates_us10y_fred, metal_silver_kag_coingecko, derived_gold_silver_ratio",
   "key_reasons": [
-    "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.",
-    "자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다."
+    "Baseline Match: metal_gold_paxg_coingecko: Volatility Surge (Z=2.42), rates_us10y_fred: Volatility Surge (Z=2.20), metal_silver_kag_coingecko: Volatility Surge (Z=2.81), derived_gold_silver_ratio: Volatility Surge (Z=2.90)",
+    "Proof: Statistical Deviation > 2.0 Sigma"
   ],
-  "numbers": [
-    {
-      "label": "S&P500 변화율",
-      "value": 0.5,
-      "unit": "%"
-    },
-    {
-      "label": "미국 10년물 금리 변화",
-      "value": 5.0,
-      "unit": "bp"
-    }
-  ],
-  "risk_one": "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.",
+  "numbers": [],
+  "risk_one": "Gap Detection: Insufficient Evidence for L4",
   "confidence": "MEDIUM",
   "handoff_to_structural": false,
-  "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
-  "source_candidates": [
-    "cand_b091feaea6",
-    "cand_c40fb5d372",
-    "cand_cf31f3d1ce"
-  ]
+  "handoff_reason": "Insufficient Evidence for L4"
 }

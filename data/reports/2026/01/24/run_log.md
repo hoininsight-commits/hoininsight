@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-24T01:44:30Z
-- finished_utc: 2026-01-24T01:45:29Z
+- started_utc: 2026-01-24T01:58:55Z
+- finished_utc: 2026-01-24T01:59:49Z
 - status: SUCCESS
 
 ## details
@@ -12,10 +12,8 @@ collect: ok
 normalize: ok
 derived: ok
 anomaly: ok
-narrative: 11 topics generated
-topic: ok
-gate: ok
-content_gate: ok
+anchor_engine: ok
+content_gate: ok (via Anchor)
 decision: ok
 report: ok | data/reports/2026/01/24/daily_brief.md
 checks:
