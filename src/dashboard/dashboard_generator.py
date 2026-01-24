@@ -2312,7 +2312,7 @@ def generate_dashboard(base_dir: Path):
                 "title": t.get("title"), 
                 "_topic_title": t.get("title"),
                 "_type": "structural",
-                "timestamp": "Consumed by Synth"
+                "rationale": t.get("rationale", "")[:100] + "..." if len(t.get("rationale", "")) > 100 else t.get("rationale", "")
             }
             consolidated_anchors.append(c_anchor)
             continue
@@ -2385,6 +2385,8 @@ def generate_dashboard(base_dir: Path):
                     a_with_topic = dict(a)
                     a_with_topic["_topic_title"] = t.get("title")
                     a_with_topic["_type"] = atype
+                    # Add rationale for display
+                    a_with_topic["rationale"] = t.get("rationale", "")
                     consolidated_anchors.append(a_with_topic)
              continue
 
@@ -2395,6 +2397,7 @@ def generate_dashboard(base_dir: Path):
                 a_with_topic = dict(a)
                 a_with_topic["_topic_title"] = t.get("title")
                 a_with_topic["_type"] = atype
+                a_with_topic["rationale"] = t.get("rationale", "")
                 consolidated_anchors.append(a_with_topic)
 
     # [Deduplication] Remove Synth-matching topics from speak/watch lists
@@ -2521,9 +2524,9 @@ def generate_dashboard(base_dir: Path):
             for it in items:
                 rows += f"""
                 <tr style="border-bottom:1px solid #f1f5f9;">
-                    <td style="padding:10px; font-weight:600; color:#1e293b;">{it.get('sensor_id')}</td>
-                    <td style="padding:10px; font-size:12px; color:#64748b;">{it.get('_topic_title')}</td>
-                    <td style="padding:10px; text-align:right; font-size:11px; color:#94a3b8;">{it.get('timestamp','-')}</td>
+                    <td style="padding:10px; font-weight:600; color:#1e293b; width:20%;">{it.get('sensor_id')}</td>
+                    <td style="padding:10px; font-size:12px; color:#64748b; width:40%;">{it.get('_topic_title')}</td>
+                    <td style="padding:10px; font-size:11px; color:#64748b; width:40%;">{it.get('rationale','-')}</td>
                 </tr>
                 """
             
@@ -2947,7 +2950,7 @@ def generate_dashboard(base_dir: Path):
 
                     <!-- NEW TAB: EVIDENCE TODAY -->
                     <div id="evidence-today" class="tab-content" style="display:none;">
-                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px;">📊 오늘 근거 (Consolidated Evidence)</h2>
+                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px;">[참고: 오늘 발화 토픽의 근거 데이터]</h2>
                         
                         {evidence_today_html}
                     </div>
