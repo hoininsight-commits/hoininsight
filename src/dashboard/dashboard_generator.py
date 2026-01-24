@@ -1906,13 +1906,49 @@ def generate_dashboard(base_dir: Path):
         tg_base = base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
         tg_path = tg_base / "topic_gate_output.json"
         
+        # [Step 10-2] Trust Score Resolution Logic
+        event_trust_map = {}
+        try:
+            ev_path = base_dir / "data" / "events" / ymd.replace("-", "/") / "events.json"
+            if ev_path.exists():
+                ev_data = json.loads(ev_path.read_text(encoding="utf-8"))
+                for ev in ev_data.get("events", []):
+                    event_trust_map[ev["event_id"]] = ev.get("trust_score", 0.5)
+        except: pass
+
+        cand_event_map = {}
+        try:
+            tc_path = tg_base / "topic_gate_candidates.json"
+            if tc_path.exists():
+                tc_data = json.loads(tc_path.read_text(encoding="utf-8"))
+                for cand in tc_data.get("candidates", []):
+                    # Extract event_id from ref like 'events:policy:ev_abc123'
+                    ev_ids = []
+                    for ref in cand.get("evidence_refs", []):
+                        parts = ref.split(":")
+                        if len(parts) == 3: ev_ids.append(parts[2])
+                    cand_event_map[cand["candidate_id"]] = ev_ids
+        except: pass
+
         if tg_path.exists():
             tg_data = json.loads(tg_path.read_text(encoding="utf-8"))
             title = tg_data.get("title", "No Title")
             question = tg_data.get("question", "")
-            conf = tg_data.get("confidence", "N/A")
+            raw_conf = tg_data.get("confidence", "N/A")
             handoff = tg_data.get("handoff_to_structural", False)
             
+            # [Step 10-2] Reframe Policy
+            max_trust = 0.0
+            for c_id in tg_data.get("source_candidates", []):
+                for e_id in cand_event_map.get(c_id, []):
+                    max_trust = max(max_trust, event_trust_map.get(e_id, 0.0))
+            
+            is_watchlist = False
+            conf = raw_conf
+            if raw_conf == "LOW" and len(tg_data.get("numbers", [])) >= 1 and max_trust >= 0.7:
+                conf = "WATCHLIST_CANDIDATE"
+                is_watchlist = True
+
             # Logic for 5 Mandatory Blocks
             # 1) Market Expectation
             expectation = tg_data.get("why_people_confused", "INSUFFICIENT DATA")
@@ -1927,10 +1963,22 @@ def generate_dashboard(base_dir: Path):
             
             # 3) Divergence / Why mismatch
             reasons_tags = "".join([f"<span style='background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:600;'>#{r[:15]}...</span>" for r in tg_data.get("key_reasons", [])])
+            
+            watchlist_supplement_html = ""
+            if is_watchlist:
+                watchlist_supplement_html = f"""
+                <div style="margin-top:15px; background:#eef2ff; border:1px solid #c7d2fe; border-radius:8px; padding:12px;">
+                    <div style="font-size:11px; font-weight:800; color:#4338ca; text-transform:uppercase; margin-bottom:6px;">⭐ Watchlist Supplement</div>
+                    <div style="font-size:12px; color:#3730a3; margin-bottom:4px;"><strong>Missing for ELIGIBLE:</strong> Multi-source structural correlation (Current Trust: {max_trust:.1f})</div>
+                    <div style="font-size:12px; color:#3730a3;"><strong>Next Action:</strong> {tg_data.get("risk_one", "Next major data check")}</div>
+                </div>
+                """
+
             divergence_html = f"""
             <div style="margin-top:10px;">
                 <div style="font-size:14px; color:#1e293b; font-weight:600; line-height:1.4;">{tg_data.get("why_people_confused", "INSUFFICIENT DATA")}</div>
                 <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">{reasons_tags}</div>
+                {watchlist_supplement_html}
             </div>
             """
 
@@ -1948,11 +1996,11 @@ def generate_dashboard(base_dir: Path):
                 evidence_rows = '<tr><td colspan="3" style="padding:10px; text-align:center; color:#94a3b8;">INSUFFICIENT DATA</td></tr>'
 
             # 5) Forward Watchlist
-            watchlist = [tg_data.get("risk_one", "INSUFFICIENT DATA"), "Next Major Data Release Check", "Liquidity Shift Confirmation"]
-            watchlist_html = "".join([f"<div style='display:flex; align-items:start; gap:8px; margin-bottom:6px;'><span style='color:#3b82f6;'>•</span><span style='font-size:12px; color:#475569;'>{w}</span></div>" for w in watchlist])
+            watchlist_items = [tg_data.get("risk_one", "INSUFFICIENT DATA"), "Next Major Data Release Check", "Liquidity Shift Confirmation"]
+            watchlist_html = "".join([f"<div style='display:flex; align-items:start; gap:8px; margin-bottom:6px;'><span style='color:#3b82f6;'>•</span><span style='font-size:12px; color:#475569;'>{w}</span></div>" for w in watchlist_items])
 
             # Final Card Assembly
-            conf_color = "#10b981" if conf == "HIGH" else "#f59e0b" if conf == "MEDIUM" else "#ef4444"
+            conf_color = "#4f46e5" if is_watchlist else ("#10b981" if conf == "HIGH" else "#f59e0b" if conf == "MEDIUM" else "#ef4444")
             handoff_badge = '<span style="background:#dcfce7; color:#166534; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">Handoff OK</span>' if handoff else '<span style="background:#f1f5f9; color:#64748b; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">Gate Only</span>'
 
             topic_gate_html = f"""
@@ -1964,7 +2012,7 @@ def generate_dashboard(base_dir: Path):
                         <h3 style="margin:0; font-size:22px; color:#1e293b; font-weight:800; letter-spacing:-0.02em;">{title}</h3>
                     </div>
                     <div style="display:flex; flex-direction:column; align-items:end; gap:6px;">
-                        <span style="background:{conf_color}; color:white; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:800;">{conf} CONFIDENCE</span>
+                        <span style="background:{conf_color}; color:white; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:800;">{conf.replace("_", " ")}</span>
                         {handoff_badge}
                     </div>
                 </div>
