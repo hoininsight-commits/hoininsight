@@ -1,9 +1,7 @@
-from __future__ import annotations
 import csv
 import json
 import os
 import requests
-import xmltodict
 from pathlib import Path
 from typing import Any, List, Dict
 from datetime import datetime, timedelta
@@ -83,8 +81,13 @@ def collect_apt_transaction_price(lawd_cd: str = "11680", deal_ym: str = None):
         resp = requests.get(url, params=params, headers=headers)
         
         # Public Portal usually returns XML
-        data_dict = xmltodict.parse(resp.content)
-        
+        try:
+            import xmltodict
+            data_dict = xmltodict.parse(resp.content)
+        except ImportError:
+            print("[ERROR] 'xmltodict' library not found. Cannot parse XML response.")
+            raise # Re-raise to trigger fallback
+            
         # Valid response check
         header = data_dict.get("response", {}).get("header", {})
         if header.get("resultCode") != "00":
@@ -167,7 +170,7 @@ def collect_unsold_inventory():
 
 # --- Entry Point ---
 
-def run_collector():
+def run_collector(base_dir: Path):
     print(">>> Starting Real Estate Collector (Hybrid)...")
     # Try Real, Fallback to Mock if fail
     collect_apt_transaction_price("11680") # Gangnam

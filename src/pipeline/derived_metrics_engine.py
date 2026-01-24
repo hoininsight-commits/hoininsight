@@ -78,5 +78,15 @@ def _save_derived(base_dir, df, subpath, entity, unit):
     exposure.to_csv(out_path, index=False)
     print(f"[Derived] Generated {out_path} ({len(exposure)} rows)")
 
+def run_derived_metrics_wrapper(base_dir: Path) -> Path:
+    """
+    Wrapper for registry compatibility (called by run_collect.py).
+    Triggers the full derived metrics generation logic.
+    Returns a representative path (or directory) to indicate success.
+    """
+    run_derived_metrics(base_dir)
+    # Return a path that definitely exists after run
+    return base_dir / "data/curated/derived/rates/yield_curve_10y_2y.csv"
+
 if __name__ == "__main__":
     run_derived_metrics(Path("."))

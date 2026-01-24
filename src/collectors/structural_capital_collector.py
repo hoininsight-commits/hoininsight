@@ -1,13 +1,11 @@
-from __future__ import annotations
 import csv
 import json
 import os
 import requests
-import xmltodict
 from pathlib import Path
 from typing import Any, List, Dict
 from datetime import datetime, timedelta
-from pykrx import stock  # Requires: pip install pykrx
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 # Load Env
@@ -89,7 +87,7 @@ def collect_keyword_filings(keyword: str, days: int = 3) -> List[Dict]:
     return all_filings
 
 
-def collect_lockup_release():
+def collect_lockup_release(base_dir: Path = None):
     print(">>> [Real] Fetching Lock-up/Mezzanine Filings from DART...")
     # Keywords: '전환사채', '신주인수권', '보호예수' (Note: '보호예수' is often inside text, but sometimes in title '특수관계인...')
     # Finding 'Protected' release is hard via title alone.
@@ -104,14 +102,19 @@ def collect_lockup_release():
     _save_csv("disposal_filings", disposal_data, "disposal.csv")
 
 
-def collect_block_deals_krx():
+def collect_block_deals_krx(base_dir: Path = None):
     print(">>> [Real] Fetching Block Deals (Market Data) via PyKRX...")
     try:
         # Use T-1 (Yesterday) as today's data might not be ready in the morning
         target_date = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
         
         # We will collect "Foreigner Net Buy Top 10" as a proxy for Capital Flow.
-        df = stock.get_market_net_purchases_of_equities_by_ticker(target_date, target_date, "FOREIGNER")
+        try:
+            from pykrx import stock
+            df = stock.get_market_net_purchases_of_equities_by_ticker(target_date, target_date, "FOREIGNER")
+        except ImportError:
+            print("[ERROR] 'pykrx' library not found. Skipping KRX block deal collection.")
+            return
         
         if df.empty:
             print(f"[WARN] No PyKRX data for {target_date}")
