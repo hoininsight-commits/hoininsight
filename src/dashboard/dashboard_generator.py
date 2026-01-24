@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import json
 import os
-import sys
-import traceback
+import logging
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
@@ -2103,7 +2103,7 @@ def generate_dashboard(base_dir: Path):
         else:
             topic_gate_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:16px; border:1px dashed #cbd5e1;">오늘의 이벤트 기반 토픽이 아직 생성되지 않았습니다.</div>'
     except Exception as e:
-        topic_gate_html = f'<div style="padding:20px; color:red; background:#fee2e2; border-radius:8px;">Topic Gate UI Error: {e}</div>'
+        topic_gate_html = f'<div style="padding:20px; color:red; background:#fee2f2; border-radius:8px;">Topic Gate UI Error: {e}</div>'
 
     # 5. Ledger HTML
     ledger_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>'
@@ -2115,7 +2115,11 @@ def generate_dashboard(base_dir: Path):
     # 7. Topic List Tab Logic
     topic_list_html = ""
     top_topics = final_card.get("top_topics", [])
+    topic_details = {} # Global map for modals
     
+    consumed_ids = set()
+    synth_id = f"synth_{ymd}"
+
     # [Phase 42] Render Synthesized Topic Section (Top Priority)
     synth_html = ""
     ct = synth_topic.get("content_topic", {})
@@ -2124,8 +2128,37 @@ def generate_dashboard(base_dir: Path):
         s_status = ct.get("status", "WATCH")
         s_why = ct.get("why_now", "")
         s_comps = ct.get("components", {})
-        s_ev_count = len(s_comps.get("structural", []))
         
+        # Populate Consumed IDs
+        structs = s_comps.get("structural", [])
+        for s in structs:
+             if s.get("dataset_id"):
+                 consumed_ids.add(s.get("dataset_id"))
+        
+        s_ev_count = len(structs)
+        
+        # Register Synth Details for Modals
+        # Construct Script (7-step outline)
+        s_outline = [
+            f"# [합성] {s_title}",
+            "## 1. Hook (Why Now)",
+            f"{s_why}",
+            "## 2. Event Context",
+            f"Question: {s_comps.get('event',{}).get('question','N/A')}",
+            "## 3. Structural Evidence",
+            f"Mapped Signals: {s_ev_count}",
+            "\n".join([f"- {s.get('title','')} ({s.get('score',0)})" for s in structs])
+        ]
+        topic_details[synth_id] = {
+            "script_text": "\n\n".join(s_outline),
+            "evidence_trace": {
+                "summary": f"Synthesized from {s_ev_count} structural signals + Event Gate",
+                "components": s_comps
+            },
+            "anchors": [],
+            "metadata": {"type": "synthesized"}
+        }
+
         status_color = "#10b981" if s_status == "READY" else "#f59e0b"
         
         synth_html = f"""
@@ -2142,9 +2175,15 @@ def generate_dashboard(base_dir: Path):
                 <strong>Why Now:</strong> {s_why}
             </div>
             
-            <div style="margin-top: 15px; font-size: 13px; color: #64748b; display: flex; gap: 20px;">
-                <span>✅ Structural Evidence: <strong>{s_ev_count} signals</strong> mapped</span>
-                <span>🔥 Event Relevance: <strong>{'YES' if s_comps.get('event', {}).get('eligible') else 'NO'}</strong></span>
+            <div style="margin-top: 15px; display: flex; justify-content:space-between; align-items:center;">
+                <div style="font-size: 13px; color: #64748b; display: flex; gap: 20px;">
+                    <span>✅ Structural Evidence: <strong>{s_ev_count} signals</strong> mapped</span>
+                    <span>🔥 Event Relevance: <strong>{'YES' if s_comps.get('event', {}).get('eligible') else 'NO'}</strong></span>
+                </div>
+                <div style="display:flex; gap:10px;">
+                     <button onclick="showTopicScript('{synth_id}')" style="background:#3b82f6; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:12px;">📄 스크립트 보기</button>
+                     <button onclick="showDeepLogicReport('{synth_id}')" style="background:white; color:#3b82f6; border:1px solid #3b82f6; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:12px;">📊 근거 보기</button>
+                </div>
             </div>
         </div>
         """
@@ -2207,7 +2246,6 @@ def generate_dashboard(base_dir: Path):
     speak_topics = []
     watch_topics = []
     consolidated_anchors = []
-    topic_details = {}  # Global map for modals
 
     def _get_or_gen_script(t, idx, is_structural=True):
         """Load specific script or generate minimal 7-step outline."""
@@ -2256,6 +2294,10 @@ def generate_dashboard(base_dir: Path):
     # 1. Structural Topics from Final Card
     all_struct = final_card.get("top_topics", [])
     for idx, t in enumerate(all_struct):
+        # [Deduplication] Hide if consumed by Synthesis
+        if t.get("dataset_id") in consumed_ids:
+            continue
+            
         # Ensure ID
         tid = t.get("topic_id") or f"struct_{idx}_{ymd}"
         t["topic_id"] = tid
@@ -2282,6 +2324,8 @@ def generate_dashboard(base_dir: Path):
         else:
             watch_topics.append(t_mapped)
 
+    # 2. Event-Triggered Topics (Topic Gate)
+    if gate_data:
         # Ensure ID
         tid = gate_data.get("topic_id") or f"gate_{ymd}"
         gate_data["topic_id"] = tid
@@ -2324,24 +2368,70 @@ def generate_dashboard(base_dir: Path):
     
     # [Phase 18] Generate HTML for Refactored Panels
     
-    # 1. SPEAK TODAY
-    speak_topics_html = ""
-    if speak_topics:
-        for idx, t in enumerate(speak_topics):
+    # [Grouping] Post-process Watch Topics (Deduplicate by Theme)
+    grouped_watch = {}
+    for t in watch_topics:
+        title = t.get("title", "")
+        # Extract [Theme]
+        theme_match = re.search(r"^\[(.*?)\]", title)
+        group_key = theme_match.group(1) if theme_match else title
+        
+        if group_key not in grouped_watch:
+            grouped_watch[group_key] = []
+        grouped_watch[group_key].append(t)
+    
+    final_watch_topics = []
+    for key, items in grouped_watch.items():
+        # Sort by score desc
+        items.sort(key=lambda x: x.get("score", 0), reverse=True)
+        representative = items[0]
+        count = len(items)
+        
+        if count > 1:
+            # Mark as group leader
+            representative["is_group_leader"] = True
+            representative["group_count"] = count
+            representative["group_key"] = key
+        
+        final_watch_topics.append(representative)
+        
+    watch_topics = final_watch_topics
+    
+    def _render_cards(topics: List[Dict], card_type: str) -> str:
+        if not topics:
+            if card_type == "speak":
+                return '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 발화 가능한 대상이 없습니다. (No speakable topics today)</div>'
+            elif card_type == "watch":
+                return '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 관찰 중인 대상이 없습니다.</div>'
+        
+        cards_html = ""
+        for idx, t in enumerate(topics):
             trace = t.get("speak_eligibility_trace", {})
-            reasons = trace.get("triggers", [])
+            reasons = trace.get("triggers", []) if card_type == "speak" else trace.get("shift_metadata", {}).get("reasons", ["Observation ongoing"])
             anchors_sum = t.get("anchors", {})
-            
+            dataset_id = t.get('dataset_id', '')
+            border_color = "#3b82f6" if card_type == "speak" else "#f59e0b"
+
             # Formatting anchors
             ans_html = ""
             for atype, alist in anchors_sum.items():
                 tags = "".join([f"<span style='background:#f1f5f9; color:#475569; padding:2px 8px; border-radius:4px; font-size:10px; margin-right:4px;'>{a['sensor_id']}</span>" for a in alist])
                 ans_html += f"<div style='margin-top:5px;'><span style='font-size:11px; font-weight:bold; color:#64748b;'>{atype.upper()}:</span> {tags}</div>"
 
-            speak_topics_html += f"""
-            <div class="card" style="margin-bottom:20px; border-left:4px solid #3b82f6;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">TOPIC #{idx+1} | {t.get('dataset_id','')}</div>
-                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b;">{t.get('title')}</h3>
+            # [Grouping] Badge
+            group_badge = ""
+            if t.get("is_group_leader"):
+                count = t.get("group_count", 1)
+                group_badge = f'<span style="background:#e0e7ff; color:#4338ca; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:bold; margin-left:8px;">+{count-1} More (Collapsed)</span>'
+
+            cards_html += f"""
+            <div class="card" style="margin-bottom:20px; border-left:4px solid {border_color};">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px; font-family:monospace;">
+                    TOPIC #{idx+1} | {dataset_id} {group_badge}
+                </div>
+                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b; line-height:1.4;">
+                    {t.get('title')}
+                </h3>
                 
                 <div style="background:#f0f9ff; padding:12px; border-radius:6px; font-size:13px; margin-bottom:15px;">
                     <strong>🎯 Triggered Conditions:</strong>
@@ -2359,38 +2449,13 @@ def generate_dashboard(base_dir: Path):
                 </div>
             </div>
             """
-    else:
-        speak_topics_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 발화 가능한 대상이 없습니다. (No speakable topics today)</div>'
+        return cards_html
 
-    # 2. WATCH TODAY
-    watch_topics_html = ""
-    if watch_topics:
-        for idx, t in enumerate(watch_topics):
-            trace = t.get("speak_eligibility_trace", {})
-            shift_meta = trace.get("shift_metadata", {})
-            reasons = shift_meta.get("reasons", ["Narrative shift detected, awaiting anchor confirmation"])
-            
-            # derive what to watch next (missing anchors)
-            missing = trace.get("missing_anchors", ["Awaiting Anchor Confirmation"])
-            
-            watch_topics_html += f"""
-            <div class="card" style="margin-bottom:20px; border-left:4px solid #f59e0b;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">WATCHING #{idx+1}</div>
-                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b;">{t.get('title')}</h3>
-                
-                <div style="margin-bottom:15px;">
-                    <span style="font-size:11px; font-weight:bold; color:#b45309; text-transform:uppercase;">Reason:</span>
-                    <div style="font-size:13px; color:#475569; margin-top:4px;">{", ".join(reasons)}</div>
-                </div>
-                
-                <div style="background:#fffbeb; padding:12px; border-radius:6px; border:1px solid #fef3c7;">
-                    <div style="font-size:12px; font-weight:bold; color:#b45309; margin-bottom:5px;">🔭 What to watch next:</div>
-                    <div style="font-size:13px; color:#92400e;">{" / ".join(missing)}</div>
-                </div>
-            </div>
-            """
-    else:
-        watch_topics_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 관찰 중인 대상이 없습니다.</div>'
+    speak_topics_html = _render_cards(speak_topics, "speak")
+    watch_topics_html = _render_cards(watch_topics, "watch")
+
+
+
 
     # 3. EVIDENCE TODAY
     evidence_today_html = ""
