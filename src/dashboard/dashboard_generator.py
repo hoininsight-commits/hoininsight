@@ -2312,7 +2312,7 @@ def generate_dashboard(base_dir: Path):
                 "title": t.get("title"), 
                 "_topic_title": t.get("title"),
                 "_type": "structural",
-                "rationale": t.get("rationale", "")[:100] + "..." if len(t.get("rationale", "")) > 100 else t.get("rationale", "")
+                "rationale": f"Level: <b>{t.get('level', 'N/A')}</b> | Z-score: <b>{t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')}</b>"
             }
             consolidated_anchors.append(c_anchor)
             continue
@@ -2385,8 +2385,10 @@ def generate_dashboard(base_dir: Path):
                     a_with_topic = dict(a)
                     a_with_topic["_topic_title"] = t.get("title")
                     a_with_topic["_type"] = atype
-                    # Add rationale for display
-                    a_with_topic["rationale"] = t.get("rationale", "")
+                    # [Requirement] Data Only (No narrative)
+                    _lvl = t.get('level', 'N/A')
+                    _z = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
+                    a_with_topic["rationale"] = f"Level: <b>{_lvl}</b> | Z-score: <b>{_z}</b>"
                     consolidated_anchors.append(a_with_topic)
              continue
 
@@ -2397,7 +2399,10 @@ def generate_dashboard(base_dir: Path):
                 a_with_topic = dict(a)
                 a_with_topic["_topic_title"] = t.get("title")
                 a_with_topic["_type"] = atype
-                a_with_topic["rationale"] = t.get("rationale", "")
+                # [Requirement] Data Only
+                _lvl = t.get('level', 'N/A')
+                _z = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
+                a_with_topic["rationale"] = f"Level: <b>{_lvl}</b> | Z-score: <b>{_z}</b>"
                 consolidated_anchors.append(a_with_topic)
 
     # [Deduplication] Remove Synth-matching topics from speak/watch lists
@@ -2524,9 +2529,9 @@ def generate_dashboard(base_dir: Path):
             for it in items:
                 rows += f"""
                 <tr style="border-bottom:1px solid #f1f5f9;">
-                    <td style="padding:10px; font-weight:600; color:#1e293b; width:20%;">{it.get('sensor_id')}</td>
-                    <td style="padding:10px; font-size:12px; color:#64748b; width:40%;">{it.get('_topic_title')}</td>
-                    <td style="padding:10px; font-size:11px; color:#64748b; width:40%;">{it.get('rationale','-')}</td>
+                    <td style="padding:10px; font-weight:600; color:#1e293b; width:25%; font-family:monospace;">{it.get('sensor_id')}</td>
+                    <td style="padding:10px; font-size:12px; color:#64748b; width:45%;">{it.get('_topic_title')}</td>
+                    <td style="padding:10px; font-size:12px; color:#3b82f6; width:30%; font-family:monospace;">{it.get('rationale','-')}</td>
                 </tr>
                 """
             
