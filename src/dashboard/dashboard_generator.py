@@ -2376,6 +2376,18 @@ def generate_dashboard(base_dir: Path):
 
     # 3. Evidence Collection
     for t in speak_topics + watch_topics:
+        # [Deduplication] Skip if Title matches Synth Topic exactly
+        if s_title and t.get("title") == s_title:
+             # Ensure its evidence is captured though!
+             ans = t.get("anchors", {})
+             for atype, alist in ans.items():
+                for a in alist:
+                    a_with_topic = dict(a)
+                    a_with_topic["_topic_title"] = t.get("title")
+                    a_with_topic["_type"] = atype
+                    consolidated_anchors.append(a_with_topic)
+             continue
+
         ans = t.get("anchors", {})
         for atype, alist in ans.items():
             for a in alist:
@@ -2384,6 +2396,11 @@ def generate_dashboard(base_dir: Path):
                 a_with_topic["_topic_title"] = t.get("title")
                 a_with_topic["_type"] = atype
                 consolidated_anchors.append(a_with_topic)
+
+    # [Deduplication] Remove Synth-matching topics from speak/watch lists
+    if s_title:
+        speak_topics = [t for t in speak_topics if t.get("title") != s_title]
+        watch_topics = [t for t in watch_topics if t.get("title") != s_title]
     
     # [Phase 18] Generate HTML for Refactored Panels
     
