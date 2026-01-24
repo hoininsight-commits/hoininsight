@@ -1,0 +1,93 @@
+name: youtube_learner
+
+on:
+  schedule:
+    - cron: "0 */3 * * *" # Run every 3 hours
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Telegram Notification (Start)
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🎥 [Hoin Insight] 유튜브 수집기(Youtube Learner) 작동을 시작합니다.
+            - 수집 주기: 3시간
+            - 대상: 등록된 유튜브 채널 및 키워드
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+
+      - name: Run Narrative Analyze & Queue (Phase 31-B/C)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -m src.narratives.youtube_watcher
+          python -m src.narratives.transcript_ingestor
+          python -m src.narratives.narrative_status
+          # [Added] Deep Logic Analysis & Proposal Generation
+          python -m src.narratives.narrative_analyzer
+          # [Added] Queue Indexing for Dashboard
+          python -m src.narratives.proposal_queue
+          # [Added] Update Dashboard HTML
+          python -m src.dashboard.dashboard_generator
+
+      - name: Commit outputs
+        if: success()
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          # Force add data directories to safeguard against any lingering .gitignore issues
+          # Updated to include analysis outputs (proposals, deep_analysis, queue) and dashboard
+          git add data/narratives/transcripts data/narratives/status data/narratives/raw/youtube
+          git add data/narratives/proposals data/narratives/analysis data/narratives/deep_analysis data/narratives/queue
+          git add dashboard/index.html || true
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: youtube learner update (with analysis & dashboard) [skip ci]"
+          git pull --rebase
+          git push
+
+      - name: Prepare Notification Message
+        if: always()
+        id: prep_msg
+        run: |
+          if [ -f "data/narratives/status/recent_new_titles.txt" ]; then
+            TITLES=$(cat data/narratives/status/recent_new_titles.txt | sed 's/^/- /')
+            echo "NEW_TITLES<<EOF" >> $GITHUB_ENV
+            echo "$TITLES" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            echo "NEW_TITLES=없음" >> $GITHUB_ENV
+          fi
+
+      - name: Telegram Notification (Result)
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            ✅ [Hoin Insight] 유튜브 수집 완료
+            
+            📅 날짜: $(date +'%Y-%m-%d %H:%M')
+            📊 상태: ${{ job.status }}
+            
+            🎬 신규 수집 영상:
+            ${{ env.NEW_TITLES }}
+            
+            🔗 분석 결과: https://hoininsight-commits.github.io/hoininsight/
