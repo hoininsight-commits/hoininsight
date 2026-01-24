@@ -113,6 +113,25 @@ def run_structural_engine():
     except Exception as e:
         print(f"[Pipeline] ❌ Critical Error running Engine: {e}")
         traceback.print_exc()
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Critical Error running Engine: {e}")
+        traceback.print_exc()
+        return False
+
+def run_topic_synthesis():
+    """Run Topic Synthesis Layer (Phase 2.5)."""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2.5: TOPIC SYNTHESIS STARTED")
+    try:
+        from src.synthesis.topic_synthesizer import TopicSynthesizer
+        synth = TopicSynthesizer(project_root)
+        res = synth.run()
+        print(f"[Pipeline] Synthesized Topic: {res.get('content_topic', {}).get('title', 'None')}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 2.5: TOPIC SYNTHESIS COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Critical Error running Topic Synthesis: {e}")
+        traceback.print_exc()
         return False
 
 def main():
@@ -126,7 +145,12 @@ def main():
     run_narrative_engine()
     
     # 2.2 Structural Engine (Legacy)
+    # 2.2 Structural Engine (Legacy)
     success = run_structural_engine()
+
+    # 2.3 Topic Synthesis (NEW)
+    # Merges Event Gate and Structural Output
+    run_topic_synthesis()
     
     # Step 3: Generate Dashboard
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")

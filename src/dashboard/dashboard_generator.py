@@ -472,6 +472,14 @@ def generate_dashboard(base_dir: Path):
             
     regime_exists = (base_dir / "data" / "regimes" / f"regime_{ymd}.json").exists()
     
+    # [Phase 42] Load Synthesized Topic (Content Topic)
+    synth_topic = {}
+    try:
+        synth_path = base_dir / "data" / "topics" / "synthesized" / ymd.replace("-","/") / "synth_topic_v1.json"
+        if synth_path.exists():
+            synth_topic = json.loads(synth_path.read_text(encoding="utf-8"))
+    except: pass
+    
     # [Fix] Point to the correct date-based insight script for the Main View
     # Standard reports directory for daily brief/scripts
     script_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "daily_brief.md"
@@ -2108,6 +2116,39 @@ def generate_dashboard(base_dir: Path):
     topic_list_html = ""
     top_topics = final_card.get("top_topics", [])
     
+    # [Phase 42] Render Synthesized Topic Section (Top Priority)
+    synth_html = ""
+    ct = synth_topic.get("content_topic", {})
+    if ct:
+        s_title = ct.get("title", "Unknown")
+        s_status = ct.get("status", "WATCH")
+        s_why = ct.get("why_now", "")
+        s_comps = ct.get("components", {})
+        s_ev_count = len(s_comps.get("structural", []))
+        
+        status_color = "#10b981" if s_status == "READY" else "#f59e0b"
+        
+        synth_html = f"""
+        <!-- Synthesized Topic Card -->
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <div style="font-size: 12px; font-weight: 800; color: #3b82f6; text-transform: uppercase; margin-bottom: 10px; display:flex; align-items:center; gap:8px;">
+                <span>🧠 오늘의 합성 토픽 (Content Topic)</span>
+                <span style="background:{status_color}; color:white; padding:2px 8px; border-radius:4px; font-size:11px;">{s_status}</span>
+            </div>
+            
+            <h2 style="font-size: 24px; font-weight: 800; color: #1e293b; margin: 0 0 15px 0;">{s_title}</h2>
+            
+            <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 8px; font-size: 14px; color: #334155; line-height: 1.6; border: 1px solid #e2e8f0;">
+                <strong>Why Now:</strong> {s_why}
+            </div>
+            
+            <div style="margin-top: 15px; font-size: 13px; color: #64748b; display: flex; gap: 20px;">
+                <span>✅ Structural Evidence: <strong>{s_ev_count} signals</strong> mapped</span>
+                <span>🔥 Event Relevance: <strong>{'YES' if s_comps.get('event', {}).get('eligible') else 'NO'}</strong></span>
+            </div>
+        </div>
+        """
+
     # [Narrative Layer Integration] Load Narrative Topics
     narrative_data = {}
     try:
@@ -2768,6 +2809,8 @@ def generate_dashboard(base_dir: Path):
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
+                    {synth_html}
+
                     <!-- NEW TAB: SPEAK TODAY -->
                     <div id="speak-today" class="tab-content active" style="display:block;">
                         <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
