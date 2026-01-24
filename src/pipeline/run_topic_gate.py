@@ -105,7 +105,34 @@ def main(as_of_date: str):
     d.mkdir(parents=True, exist_ok=True)
     (d / "topic_gate_candidates.json").write_text(json.dumps(candidates_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     (d / "topic_gate_output.json").write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (d / "topic_gate_output.json").write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OK] Topic Gate saved: {d}")
+
+    # 4) Generate Script (v1.0)
+    from src.topics.topic_gate.script_generator import ScriptGenerator
+    from src.topics.topic_gate.run_script_quality_gate import run as run_quality_gate
+
+    # Initialize generator with project root
+    project_root = Path(__file__).parent.parent.parent
+    script_gen = ScriptGenerator(project_root)
+    
+    # Generate script content
+    script_content = script_gen.generate_script(as_of_date)
+    
+    if script_content:
+        # Determine Topic ID (safe fallback)
+        topic_id = output.get("topic_id", f"gate_{as_of_date.replace('-','')}")
+        
+        # Save Script File
+        script_file = d / f"script_v1_{topic_id}.md"
+        script_file.write_text(script_content, encoding="utf-8")
+        print(f"[OK] Script generated: {script_file}")
+        
+        # 5) Run Quality Gate
+        q_result = run_quality_gate(script_file, topic_id)
+        print(f"[OK] Quality Gate measured: {q_result.get('quality_status')} ({script_file}.quality.json)")
+    else:
+        print(f"[WARN] Script generation returned empty for {as_of_date}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

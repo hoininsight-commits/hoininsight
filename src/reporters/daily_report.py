@@ -596,6 +596,16 @@ def write_daily_brief(base_dir: Path) -> Path:
     if os.environ.get("ENABLE_BRIDGE_REPORTING") == "ON":
         lines.append(render_bridge_section(ymd.replace("/", "-")))
 
+    # [Phase 10-6] Decision Dashboard (Optional)
+    if os.environ.get("ENABLE_DECISION_DASHBOARD") == "ON":
+        try:
+            from src.reporters.decision_dashboard import DecisionDashboard
+            dd = DecisionDashboard(base_dir)
+            dd_data = dd.build_dashboard_data(ymd.replace("/", "-"))
+            lines.append(dd.render_markdown(dd_data))
+        except Exception as e:
+            lines.append(f"\n## DECISION DASHBOARD (Error)\nFailed to render: {e}")
+
     # [Phase 39] Topic Candidate Snapshot
     cand_path = base_dir / "data" / "topics" / "candidates" / ymd / "topic_candidates.json"
     if cand_path.exists():
