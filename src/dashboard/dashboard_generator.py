@@ -2496,19 +2496,7 @@ def generate_dashboard(base_dir: Path):
     # 3. EVIDENCE TODAY
     evidence_today_html = ""
     
-    # [Requirement] Top: Synthesized Content Topic Summary
-    if ct:
-        evidence_today_html += f"""
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:20px; margin-bottom:30px;">
-            <div style="font-size:11px; font-weight:800; color:#3b82f6; text-transform:uppercase; margin-bottom:10px;">🧠 Synthesized Content Topic</div>
-            <h3 style="margin:0 0 10px 0; font-size:16px; color:#1e293b;">{s_title}</h3>
-            <div style="font-size:13px; color:#475569; margin-bottom:15px; line-height:1.5;">{s_why}</div>
-            <div style="font-size:11px; color:#64748b; background:white; padding:10px; border-radius:4px; border:1px solid #e2e8f0;">
-                <strong>Consolidated Signals:</strong> {s_ev_count} sources
-            </div>
-        </div>
-        """
-
+    # [Requirement] Evidence screen structure: 1. STRUCTURAL, 2. EVENT
     if consolidated_anchors:
         # Group by type
         grouped = {}
@@ -2517,7 +2505,18 @@ def generate_dashboard(base_dir: Path):
             if atype not in grouped: grouped[atype] = []
             grouped[atype].append(a)
             
-        for atype, items in grouped.items():
+        # Explicit Order Logic
+        ordered_keys = []
+        if "structural" in grouped: ordered_keys.append("structural")
+        if "event" in grouped: ordered_keys.append("event")
+        
+        # Add remaining keys
+        for k in sorted(grouped.keys()):
+            if k not in ordered_keys:
+                ordered_keys.append(k)
+            
+        for atype in ordered_keys:
+            items = grouped[atype]
             rows = ""
             for it in items:
                 rows += f"""
@@ -2539,8 +2538,7 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
     else:
-        if not ct:
-             evidence_today_html += '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">수집된 근거(Anchors) 데이터가 없습니다.</div>'
+         evidence_today_html += '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">수집된 근거(Anchors) 데이터가 없습니다.</div>'
     
     # 7. Topic List Tab Logic
     if top_topics:
