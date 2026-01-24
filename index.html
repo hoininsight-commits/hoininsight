@@ -1079,8 +1079,18 @@
                 `;
 
                                 // --- ENGINE 2: ANCHOR ---
-                                let a_topic = FINAL_CARD?.anchor_topic || "(No Anchor Logic)";
-                                let a_reason = FINAL_CARD?.anchor_rationale || "-";
+                                let a_topic = FINAL_CARD?.anchor_topic;
+                                let a_reason = FINAL_CARD?.anchor_rationale;
+
+                                // Fallback: If Anchor is Unknown/Null but we have candidates, show the best candidate
+                                if ((!a_topic || a_topic.includes('[Unknown]')) && FINAL_CARD?.narrative_topics?.length > 0) {
+                                    const fallback = FINAL_CARD.narrative_topics[0];
+                                    a_topic = `[Candidate] ${fallback.topic_anchor}`; // Label as Candidate
+                                    a_reason = `<strong>(Fallback due to Low Confidence Anchor)</strong><br>${fallback.core_narrative}`;
+                                }
+
+                                a_topic = a_topic || "(No Anchor Logic)";
+                                a_reason = a_reason || "-";
 
                                 html += `
                     <div style="background:#fff9c4; border:1px solid #fff59d; border-radius:8px; padding:20px; margin-bottom:20px;">
