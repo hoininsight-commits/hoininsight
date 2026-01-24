@@ -2159,14 +2159,23 @@ def generate_dashboard(base_dir: Path):
             "metadata": {"type": "synthesized"}
         }
 
-        status_color = "#10b981" if s_status == "READY" else "#f59e0b"
+        # [Logic Change] Check if Synth Topic is Primary Speakable
+        # Criteria: READY status + Struct Count >= 3 (User Rule)
+        is_synth_primary = (s_status == "READY" and s_ev_count >= 3)
         
+        status_color = "#10b981" if is_synth_primary else "#f59e0b"
+        card_bg = "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)" if is_synth_primary else "linear-gradient(135deg, #ffffff 0%, #fffbeb 100%)"
+        border_col = "#bfdbfe" if is_synth_primary else "#fcd34d"
+        
+        header_text = "🗣️ 오늘의 핵심 발화 (Synthesized Speakable)" if is_synth_primary else "🔬 오늘의 합성 관찰 (Synthesized Watch)"
+        type_badge = '<span style="background:#4f46e5; color:white; padding:2px 8px; border-radius:4px; font-size:10px; margin-left:8px;">STATE_TRANSITION</span>' if is_synth_primary else ""
+
         synth_html = f"""
         <!-- Synthesized Topic Card -->
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-            <div style="font-size: 12px; font-weight: 800; color: #3b82f6; text-transform: uppercase; margin-bottom: 10px; display:flex; align-items:center; gap:8px;">
-                <span>🧠 오늘의 합성 토픽 (Content Topic)</span>
-                <span style="background:{status_color}; color:white; padding:2px 8px; border-radius:4px; font-size:11px;">{s_status}</span>
+        <div style="background: {card_bg}; border: 1px solid {border_col}; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <div style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 10px; display:flex; align-items:center;">
+                <span>{header_text}</span>
+                {type_badge}
             </div>
             
             <h2 style="font-size: 24px; font-weight: 800; color: #1e293b; margin: 0 0 15px 0;">{s_title}</h2>
