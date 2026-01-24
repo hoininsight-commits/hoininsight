@@ -21,7 +21,7 @@ def load_optional_events(as_of_date: str) -> list[dict]:
         return []
     return json.loads(p.read_text(encoding="utf-8"))
 
-def gate_output_dir(as_of_date: str) -> Path:
+def out_dir(as_of_date: str) -> Path:
     return Path("data") / "topics" / "gate" / as_of_date.replace("-", "/")
 
 def to_plain(obj):
@@ -32,6 +32,34 @@ def to_plain(obj):
     if isinstance(obj, dict):
         return {k: to_plain(v) for k, v in obj.items()}
     return obj
+
+def assert_gate_output_clean(payload: dict):
+    """Guardrail enforcement (no mixing with Structural Engine)"""
+    import re
+    forbidden_terms = [
+        "L2", "L3", "L4", "level", "anomaly_level",
+        "z_score", "zscore", "sigma", "stddev",
+        "leaders", "theme_leaders", "related_stocks",
+        "Insight Script"
+    ]
+    
+    # Check all values in the payload recursively
+    def check_recursive(data):
+        if isinstance(data, str):
+            for term in forbidden_terms:
+                if re.search(r'\b' + re.escape(term) + r'\b', data, re.IGNORECASE):
+                    raise ValueError(f"Guardrail Violation: Forbidden term '{term}' found in Gate output.")
+        elif isinstance(data, dict):
+            for k, v in data.items():
+                for term in forbidden_terms:
+                    if term.lower() in k.lower():
+                        raise ValueError(f"Guardrail Violation: Forbidden key '{k}' (contains '{term}') found in Gate output.")
+                check_recursive(v)
+        elif isinstance(data, list):
+            for item in data:
+                check_recursive(item)
+
+    check_recursive(payload)
 
 def main(as_of_date: str):
     snapshot = load_daily_snapshot(as_of_date)
@@ -46,14 +74,10 @@ def main(as_of_date: str):
     candidates = gen.generate(as_of_date=as_of_date, snapshot=snapshot, events=events)
     ranked = ranker.rank(candidates)
     top1 = ranker.pick_top1(ranked)
-
     top1 = validator.attach_numbers(top1, snapshot)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=ranked)
     output = handoff.decide(output, top1=top1, snapshot=snapshot)
-
-    out_dir = gate_output_dir(as_of_date)
-    out_dir.mkdir(parents=True, exist_ok=True)
 
     candidates_payload = {
         "schema_version": "topic_gate_candidate_v1",
@@ -65,10 +89,14 @@ def main(as_of_date: str):
         **to_plain(output),
     }
 
-    (out_dir / "topic_gate_candidates.json").write_text(json.dumps(candidates_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    (out_dir / "topic_gate_output.json").write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Guardrail enforcement (no mixing)
+    assert_gate_output_clean(output_payload)
 
-    print(f"[OK] Topic Gate saved: {out_dir}")
+    d = out_dir(as_of_date)
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "topic_gate_candidates.json").write_text(json.dumps(candidates_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (d / "topic_gate_output.json").write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[OK] Topic Gate saved: {d}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
