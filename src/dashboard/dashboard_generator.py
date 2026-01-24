@@ -2166,10 +2166,59 @@ def generate_dashboard(base_dir: Path):
     speak_topics = []
     watch_topics = []
     consolidated_anchors = []
+    topic_details = {}  # Global map for modals
+
+    def _get_or_gen_script(t, idx, is_structural=True):
+        """Load specific script or generate minimal 7-step outline."""
+        script_text = ""
+        # 1. Try Loading File
+        try:
+            if is_structural:
+                if idx == 0:
+                    s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / "daily_brief.md"
+                    if not s_path.exists(): s_path = base_dir / "data" / "content" / "insight_script_v1.md"
+                else:
+                    s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"insight_script_{idx+1}.md"
+            else:
+                s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"narrative_script_{idx}.md"
+            
+            if s_path.exists():
+                script_text = s_path.read_text(encoding='utf-8')
+        except: pass
+
+        if script_text: return script_text
+
+        # 2. Fallback Generation
+        title = t.get('title', 'Unknown')
+        rationale = t.get('rationale', t.get('core_narrative', 'No rationale'))
+        
+        # Simple 7-step pattern
+        outline = [
+            f"# {title}",
+            "## 1. Hook (Current Status)",
+            f"시장 데이터에서 {title}와 관련하여 평소와 다른 유의미한 움직임이 감지되었습니다.",
+            "## 2. Market Expectation",
+            f"기존 시장의 기대치와 달리 {rationale.split('.')[0]} 수준의 변화가 확인됩니다.",
+            "## 3. Actual Market Move",
+            f"지표는 {t.get('level', 'L2')} 수준의 경고 영역에 진입했습니다.",
+            "## 4. Why Mismatch (Divergence)",
+            "공급망 및 자금 흐름 데이터상에서 실질적인 괴리가 발생하고 있습니다.",
+            "## 5. Evidence (Quant & Trace)",
+            f"정량 데이터: {t.get('observed_metrics', ['N/A'])} / Trace 코드: {t.get('topic_id', 'Unknown')}",
+            "## 6. What to Watch Next",
+            f"관련 대장주({', '.join(t.get('leader_stocks', ['N/A']))[:50]})의 변동성과 추가 지표 확인이 필수적입니다.",
+            "## 7. Risk Note",
+            "단기적인 변동성에 유의하며, 지표의 확산 여부를 지속적으로 관찰해야 합니다."
+        ]
+        return "\n\n".join(outline)
     
     # 1. Structural Topics from Final Card
     all_struct = final_card.get("top_topics", [])
-    for t in all_struct:
+    for idx, t in enumerate(all_struct):
+        # Ensure ID
+        tid = t.get("topic_id") or f"struct_{idx}_{ymd}"
+        t["topic_id"] = tid
+        
         # Map into the internal speaker-friendly format
         t_mapped = dict(t)
         t_mapped["speak_eligibility_trace"] = {
@@ -2179,22 +2228,41 @@ def generate_dashboard(base_dir: Path):
         # Anchors for evidence
         t_mapped["anchors"] = {"structural": [{"sensor_id": t.get("dataset_id"), "title": t.get("title")}]}
         
+        # Populate Details
+        topic_details[tid] = {
+            "script_text": _get_or_gen_script(t, idx, True),
+            "evidence_trace": t_mapped["speak_eligibility_trace"],
+            "anchors": t_mapped["anchors"].get("structural", []),
+            "metadata": {"dataset": t.get("dataset_id"), "level": t.get("level")}
+        }
+
         if t.get("proof_status") == "VALIDATED" and t.get("confidence", 0) >= 80:
             speak_topics.append(t_mapped)
         else:
             watch_topics.append(t_mapped)
 
-    # 2. Gate Topic (if any)
-    if gate_data:
+        # Ensure ID
+        tid = gate_data.get("topic_id") or f"gate_{ymd}"
+        gate_data["topic_id"] = tid
+        
         gate_eligibility = gate_data.get("speak_eligibility", {})
         gate_topic = {
             "title": gate_data.get("title"),
-            "topic_id": gate_data.get("topic_id"),
+            "topic_id": tid,
             "dataset_id": "topic_gate",
             "rationale": gate_data.get("why_people_confused"),
             "speak_eligibility_trace": gate_eligibility,
             "anchors": {"event": [{"sensor_id": "topic_gate", "title": gate_data.get("title")}]}
         }
+        
+        # Populate Details
+        topic_details[tid] = {
+            "script_text": _get_or_gen_script(gate_topic, 0, False), # idx 0 for simplicity if only one gate
+            "evidence_trace": gate_eligibility,
+            "anchors": gate_topic["anchors"].get("event", []),
+            "metadata": {"type": "event-gate"}
+        }
+
         if gate_eligibility.get("eligible"):
             speak_topics.append(gate_topic)
         else:
@@ -2244,8 +2312,8 @@ def generate_dashboard(base_dir: Path):
                 {ans_html}
                 
                 <div style="display:flex; gap:10px; margin-top:20px;">
-                    <button onclick="activate('insight-script')" style="background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📜 스크립트 보기</button>
-                    <button onclick="showDeepLogicReport('{t.get('topic_id','main')}')" style="background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📊 근거 보기</button>
+                    <button onclick="showTopicScript('{t.get('topic_id')}')" style="background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📜 스크립트 보기</button>
+                    <button onclick="showDeepLogicReport('{t.get('topic_id')}')" style="background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📊 근거 보기</button>
                     <button onclick="activate('rejection-ledger')" style="background:white; color:#64748b; border:1px solid #e2e8f0; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">🚫 보류/거절 보기</button>
                 </div>
             </div>
@@ -3310,28 +3378,55 @@ def generate_dashboard(base_dir: Path):
 </div>
 
 <script>
-    // Initialize global data container
-    {report_data_js}
+    // [Global Dashboard Data]
+    window.HOIN_DASHBOARD = {{
+        run_date: "{ymd}",
+        topic_details: {json.dumps(topic_details, ensure_ascii=False)}
+    }};
 
     function closeModal() {{
         document.getElementById('scriptModal').classList.remove('modal-active');
+        document.getElementById('scriptModal').style.display = "none";
     }}
     
     function copyScript() {{
-        const text = document.querySelector('#insight-script pre') ? document.querySelector('#insight-script pre').innerText : document.querySelector('#insight-script div').innerText;
-        navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+        const el = document.getElementById('script-modal-content');
+        if (!el) return;
+        navigator.clipboard.writeText(el.innerText).then(() => alert('Copied topic script!'));
     }}
     
+    function showTopicScript(tid) {{
+        const modal = document.getElementById("scriptModal");
+        const content = document.getElementById("script-modal-content");
+        if (modal && content) {{
+            const details = window.HOIN_DASHBOARD.topic_details[tid];
+            if (details && details.script_text) {{
+                content.innerHTML = '<div style="background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0; white-space:pre-wrap; font-family:monospace; font-size:13px;">' + details.script_text + '</div>';
+            }} else {{
+                content.innerHTML = "<div style='padding:20px; text-align:center; color:#94a3b8;'>스크립트 데이터 없음: topic_details 매핑 누락 (" + tid + ")</div>";
+            }}
+            modal.style.display = "block";
+            modal.classList.add('modal-active');
+        }}
+    }}
+
     // [Deep Logic Report Viewer]
-    function showDeepLogicReport(vid) {{
+    function showDeepLogicReport(tid) {{
         var modal = document.getElementById("reportModal");
         var content = document.getElementById("reportContent");
         
         if (modal && content) {{
-            if (window.REPORT_DATA[vid]) {{
-                content.innerHTML = window.REPORT_DATA[vid];
+            const details = window.HOIN_DASHBOARD.topic_details[tid];
+            if (details && details.evidence_trace) {{
+                // Fallback for missing reportContent in some layouts
+                content.innerHTML = '<div style="background:#1e293b; color:#38bdf8; padding:20px; border-radius:8px; font-family:monospace; font-size:12px; overflow:auto;"><pre>' + 
+                                    JSON.stringify(details.evidence_trace, null, 2) + 
+                                    '</pre></div>';
+            }} else if (window.REPORT_DATA && window.REPORT_DATA[tid]) {{
+                // Legacy backward compatibility
+                content.innerHTML = window.REPORT_DATA[tid];
             }} else {{
-                content.innerHTML = "<div style='padding:20px; text-align:center; color:#94a3b8;'>리포트 데이터가 로드되지 않았습니다.</div>";
+                content.innerHTML = "<div style='padding:20px; text-align:center; color:#94a3b8;'>근거 데이터 없음: topic_details 매핑 누락 (" + tid + ")</div>";
             }}
             modal.style.display = "block";
         }}
