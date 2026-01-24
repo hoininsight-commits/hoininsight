@@ -1,15 +1,10 @@
 {
   "meta": {
-<<<<<<< Updated upstream
-    "ts_utc": "2026-01-24T04:52:23Z",
-=======
-    "ts_utc": "2026-01-24T05:00:41Z",
->>>>>>> Stashed changes
+    "ts_utc": "2026-01-24T09:41:02Z",
     "ymd_utc": "2026/01/24",
     "enabled_datasets": 32,
     "lookback_days": 30,
     "health_dirs_7d": [
-<<<<<<< Updated upstream
       "data/reports/2026/01/24",
       "data/reports/2026/01/23",
       "data/reports/2026/01/22",
@@ -17,20 +12,10 @@
       "data/reports/2026/01/20",
       "data/reports/2026/01/19",
       "data/reports/2026/01/18"
-=======
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/24",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/23",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/22",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/21",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/20",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/19",
-      "/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/18"
->>>>>>> Stashed changes
     ]
   },
   "datasets": [
     {
-<<<<<<< Updated upstream
       "dataset_id": "struct_krx_foreigner_flow",
       "report_key": "BLOCK_DEAL_PROXY",
       "curated_path": "data/curated/structural/foreigner_flow.csv",
@@ -45,30 +30,18 @@
       "status_today": "UNKNOWN"
     },
     {
-=======
->>>>>>> Stashed changes
       "dataset_id": "crypto_btc_usd_spot_coingecko",
       "report_key": "BTCUSD",
       "curated_path": "data/curated/crypto/btc_usd.csv",
-      "rows": 181,
+      "rows": 185,
       "first_ts": "2026-01-15T07:32:29Z",
-<<<<<<< Updated upstream
       "last_ts": "2026-01-24T04:51:33Z",
-      "last_7d_rows": 133,
-      "last_30d_rows": 181,
+      "last_7d_rows": 134,
+      "last_30d_rows": 182,
       "ok_7d": 6,
       "skipped_7d": 0,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "last_ts": "2026-01-24T04:49:09Z",
-      "last_7d_rows": 133,
-      "last_30d_rows": 181,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "inflation_cpi_fred",
@@ -79,353 +52,10 @@
       "last_ts": "2025-12-01T00:00:00Z",
       "last_7d_rows": 0,
       "last_30d_rows": 0,
-<<<<<<< Updated upstream
       "ok_7d": 6,
       "skipped_7d": 0,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "rates_fed_funds_fred",
-      "report_key": "FED_FUNDS",
-      "curated_path": "data/curated/rates/fed_funds.csv",
-      "rows": 858,
-      "first_ts": "1954-07-01T00:00:00Z",
-      "last_ts": "2025-12-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "risk_financial_stress_fred",
-      "report_key": "FIN_STRESS",
-      "curated_path": "data/curated/risk/financial_stress_usa.csv",
-      "rows": 1463,
-      "first_ts": "1993-12-31T00:00:00Z",
-      "last_ts": "2022-01-07T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "metal_gold_paxg_coingecko",
-      "report_key": "GOLD",
-      "curated_path": "data/curated/metals/gold_usd.csv",
-      "rows": 82,
-      "first_ts": "2026-01-15T08:10:58Z",
-      "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 36,
-      "last_30d_rows": 82,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "derived_gold_silver_ratio",
-      "report_key": "GS_RATIO",
-      "curated_path": "data/curated/derived/metals/gold_silver_ratio.csv",
-      "rows": 72,
-      "first_ts": "2026-01-15T08:10:58Z",
-      "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 32,
-      "last_30d_rows": 72,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "credit_hy_spread_fred",
-      "report_key": "HY_SPREAD",
-      "curated_path": "data/curated/credit/hy_spread_usa.csv",
-      "rows": 7587,
-      "first_ts": "1996-12-31T00:00:00Z",
-      "last_ts": "2026-01-22T00:00:00Z",
-      "last_7d_rows": 4,
-      "last_30d_rows": 19,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "inflation_kor_cpi_ecos",
-      "report_key": "KOR_CPI",
-      "curated_path": "data/curated/ecos/inflation/korea_cpi.csv",
-      "rows": 61,
-      "first_ts": "2021-01-01T00:00:00Z",
-      "last_ts": "2025-12-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "rates_kor_base_rate_ecos",
-      "report_key": "KOR_RATE",
-      "curated_path": "data/curated/ecos/rates/korea_base_rate.csv",
-      "rows": 61,
-      "first_ts": "2021-01-01T00:00:00Z",
-      "last_ts": "2025-12-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "index_kospi_stooq",
-      "report_key": "KOSPI",
-      "curated_path": "data/curated/indices/kospi.csv",
-      "rows": 180,
-      "first_ts": "2026-01-15T07:32:40Z",
-      "last_ts": "2026-01-24T04:49:16Z",
-      "last_7d_rows": 132,
-      "last_30d_rows": 180,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "liquidity_m2_fred",
-      "report_key": "M2_USA",
-      "curated_path": "data/curated/liquidity/m2_usa.csv",
-      "rows": 803,
-      "first_ts": "1959-01-01T00:00:00Z",
-      "last_ts": "2025-11-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "struct_dart_cb_bw",
-      "report_key": "M_AND_A_CB",
-      "curated_path": "data/curated/structural/cb_bw.csv",
-      "rows": 1,
-      "first_ts": "2026-01-22T18:00:00Z",
-      "last_ts": "2026-01-22T18:00:00Z",
-      "last_7d_rows": 1,
-      "last_30d_rows": 1,
-      "ok_7d": 3,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "struct_dart_disposal",
-      "report_key": "M_AND_A_DISP",
-      "curated_path": "data/curated/structural/disposal.csv",
-      "rows": 2,
-      "first_ts": "2026-01-22T18:00:00Z",
-      "last_ts": "2026-01-24T18:00:00Z",
-      "last_7d_rows": 2,
-      "last_30d_rows": 2,
-      "ok_7d": 3,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "index_nasdaq_fred",
-      "report_key": "NASDAQ",
-      "curated_path": "data/curated/indices/nasdaq.csv",
-      "rows": 10099,
-      "first_ts": "1986-01-02T00:00:00Z",
-      "last_ts": "2026-01-23T00:00:00Z",
-      "last_7d_rows": 5,
-      "last_30d_rows": 23,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "inflation_pce_fred",
-      "report_key": "PCE_USA",
-      "curated_path": "data/curated/inflation/pce_usa.csv",
-      "rows": 803,
-      "first_ts": "1959-01-01T00:00:00Z",
-      "last_ts": "2025-11-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "metal_silver_kag_coingecko",
-      "report_key": "SILVER",
-      "curated_path": "data/curated/metals/silver_usd.csv",
-      "rows": 82,
-      "first_ts": "2026-01-15T08:10:58Z",
-      "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 36,
-      "last_30d_rows": 82,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "metal_silver_kag_coingecko",
-      "report_key": "SILVER",
-      "curated_path": "data/curated/metals/silver_usd.csv",
-      "rows": 82,
-      "first_ts": "2026-01-15T08:10:58Z",
-      "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 36,
-      "last_30d_rows": 82,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "index_spx_fred",
-      "report_key": "SPX",
-      "curated_path": "data/curated/indices/spx.csv",
-      "rows": 2596,
-      "first_ts": "2016-01-19T00:00:00Z",
-      "last_ts": "2026-01-23T00:00:00Z",
-      "last_7d_rows": 33,
-      "last_30d_rows": 96,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "employment_unrate_fred",
-      "report_key": "UNRATE",
-      "curated_path": "data/curated/employment/unrate_usa.csv",
-      "rows": 935,
-      "first_ts": "1948-01-01T00:00:00Z",
-      "last_ts": "2025-12-01T00:00:00Z",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "rates_us02y_fred",
-      "report_key": "US02Y",
-      "curated_path": "data/curated/rates/us02y.csv",
-      "rows": 12410,
-      "first_ts": "1976-06-01T00:00:00Z",
-      "last_ts": "2026-01-22T00:00:00Z",
-      "last_7d_rows": 4,
-      "last_30d_rows": 22,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "rates_us10y_fred",
-      "report_key": "US10Y",
-      "curated_path": "data/curated/rates/us10y.csv",
-      "rows": 16075,
-      "first_ts": "1962-01-02T00:00:00Z",
-      "last_ts": "2026-01-22T00:00:00Z",
-      "last_7d_rows": 32,
-      "last_30d_rows": 95,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "fx_usdkrw_ecos",
-      "report_key": "USDKRW_ECOS",
-      "curated_path": "data/curated/ecos/fx/usdkrw.csv",
-      "rows": 1236,
-      "first_ts": "2021-01-18T00:00:00Z",
-      "last_ts": "2026-01-23T00:00:00Z",
-      "last_7d_rows": 5,
-      "last_30d_rows": 20,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "risk_vix_fred",
-      "report_key": "VIX",
-      "curated_path": "data/curated/risk/vix.csv",
-      "rows": 9184,
-      "first_ts": "1990-01-02T00:00:00Z",
-      "last_ts": "2026-01-22T00:00:00Z",
-      "last_7d_rows": 33,
-      "last_30d_rows": 96,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "comm_wti_fred",
-      "report_key": "WTI",
-      "curated_path": "data/curated/commodities/wti.csv",
-      "rows": 10085,
-      "first_ts": "1986-01-02T00:00:00Z",
-      "last_ts": "2026-01-20T00:00:00Z",
-      "last_7d_rows": 2,
-      "last_30d_rows": 20,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "derived_yield_curve_10y_2y",
-      "report_key": "YIELD_CURVE",
-      "curated_path": "data/curated/derived/rates/yield_curve_10y_2y.csv",
-      "rows": 12406,
-      "first_ts": "1976-06-01T00:00:00Z",
-      "last_ts": "2026-01-22T00:00:00Z",
-      "last_7d_rows": 3,
-      "last_30d_rows": 18,
-      "ok_7d": 7,
-      "skipped_7d": 0,
-      "fail_7d": 0,
-      "status_today": "OK"
-    },
-    {
-      "dataset_id": "struct_krx_foreigner_flow",
-      "report_key": "BLOCK_DEAL_PROXY",
-      "curated_path": "data/curated/structural/foreigner_flow.csv",
-      "rows": 0,
-      "first_ts": "-",
-      "last_ts": "-",
-      "last_7d_rows": 0,
-      "last_30d_rows": 0,
-      "ok_7d": 0,
-      "skipped_7d": 3,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "fx_dxy_index_stooq",
@@ -437,15 +67,9 @@
       "last_7d_rows": 1,
       "last_30d_rows": 4,
       "ok_7d": 1,
-<<<<<<< Updated upstream
       "skipped_7d": 5,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "skipped_7d": 6,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "crypto_eth_usd_spot_coingecko",
@@ -457,7 +81,6 @@
       "last_7d_rows": 8,
       "last_30d_rows": 11,
       "ok_7d": 1,
-<<<<<<< Updated upstream
       "skipped_7d": 5,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
@@ -494,11 +117,11 @@
       "dataset_id": "metal_gold_paxg_coingecko",
       "report_key": "GOLD",
       "curated_path": "data/curated/metals/gold_usd.csv",
-      "rows": 82,
+      "rows": 86,
       "first_ts": "2026-01-15T08:10:58Z",
       "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 36,
-      "last_30d_rows": 82,
+      "last_7d_rows": 37,
+      "last_30d_rows": 83,
       "ok_7d": 6,
       "skipped_7d": 0,
       "fail_7d": 0,
@@ -508,11 +131,11 @@
       "dataset_id": "derived_gold_silver_ratio",
       "report_key": "GS_RATIO",
       "curated_path": "data/curated/derived/metals/gold_silver_ratio.csv",
-      "rows": 72,
+      "rows": 76,
       "first_ts": "2026-01-15T08:10:58Z",
       "last_ts": "2026-01-24T00:00:00Z",
-      "last_7d_rows": 32,
-      "last_30d_rows": 72,
+      "last_7d_rows": 33,
+      "last_30d_rows": 73,
       "ok_7d": 6,
       "skipped_7d": 0,
       "fail_7d": 0,
@@ -564,11 +187,11 @@
       "dataset_id": "index_kospi_stooq",
       "report_key": "KOSPI",
       "curated_path": "data/curated/indices/kospi.csv",
-      "rows": 180,
+      "rows": 184,
       "first_ts": "2026-01-15T07:32:40Z",
       "last_ts": "2026-01-24T04:51:36Z",
-      "last_7d_rows": 132,
-      "last_30d_rows": 180,
+      "last_7d_rows": 133,
+      "last_30d_rows": 181,
       "ok_7d": 6,
       "skipped_7d": 0,
       "fail_7d": 0,
@@ -643,11 +266,6 @@
       "skipped_7d": 0,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "skipped_7d": 6,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "metal_platinum_xptusd_stooq",
@@ -659,15 +277,9 @@
       "last_7d_rows": 1,
       "last_30d_rows": 4,
       "ok_7d": 1,
-<<<<<<< Updated upstream
       "skipped_7d": 5,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "skipped_7d": 6,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "real_estate_price_index",
@@ -679,15 +291,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-<<<<<<< Updated upstream
       "skipped_7d": 2,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "skipped_7d": 3,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "real_estate_unsold",
@@ -699,15 +305,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-<<<<<<< Updated upstream
       "skipped_7d": 2,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
-=======
-      "skipped_7d": 3,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
->>>>>>> Stashed changes
     },
     {
       "dataset_id": "real_estate_volume",
@@ -719,7 +319,6 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-<<<<<<< Updated upstream
       "skipped_7d": 2,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
@@ -1077,12 +676,4 @@
       "reason": "ok"
     }
   }
-=======
-      "skipped_7d": 3,
-      "fail_7d": 0,
-      "status_today": "SKIPPED"
-    }
-  ],
-  "chart_map": {}
->>>>>>> Stashed changes
 }

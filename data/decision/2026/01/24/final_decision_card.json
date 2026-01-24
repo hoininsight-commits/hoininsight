@@ -1,6 +1,6 @@
 {
   "card_version": "phase50_dual_v1",
-  "generated_at": "2026-01-24T04:50:19.282779+00:00Z",
+  "generated_at": "2026-01-24T09:40:56.324019+00:00Z",
   "date": "2026-01-24",
   "blocks": {
     "regime": {
@@ -189,9 +189,8 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "metal_silver_kag_coingecko",
-        "metal_gold_paxg_coingecko",
         "rates_us10y_fred",
+        "metal_silver_kag_coingecko",
         "derived_gold_silver_ratio"
       ],
       "step6_gap": "Insufficient Evidence for L4",
