@@ -1,0 +1,105 @@
+id: topic_gate_candidate_v1
+type: object
+required:
+  - schema_version
+  - as_of_date
+  - candidates
+properties:
+  schema_version:
+    type: string
+    enum: ["topic_gate_candidate_v1"]
+  as_of_date:
+    type: string
+    description: "YYYY-MM-DD"
+  candidates:
+    type: array
+    minItems: 3
+    items:
+      type: object
+      required:
+        - candidate_id
+        - as_of_date
+        - question
+        - category
+        - hook_signals
+        - evidence_refs
+        - numbers
+        - confidence
+        - rank_features
+      properties:
+        candidate_id:
+          type: string
+        as_of_date:
+          type: string
+          description: "YYYY-MM-DD"
+        question:
+          type: string
+          description: "질문형 문장. 예: 왜 실적이 좋은데 주가가 떨어졌나?"
+        category:
+          type: string
+          enum:
+            - earnings
+            - guidance
+            - rotation
+            - policy
+            - geopolitics
+            - flows
+            - valuation
+            - macro
+            - other
+        hook_signals:
+          type: array
+          description: "인지부조화/콘텐츠 훅 타입"
+          items:
+            type: string
+            enum:
+              - earnings_up_price_down
+              - earnings_down_price_up
+              - index_up_sector_down
+              - index_down_sector_up
+              - good_news_price_down
+              - bad_news_price_up
+              - policy_announced_market_inverse
+              - narrative_shift
+              - other
+        evidence_refs:
+          type: array
+          description: "사용한 입력 키(스냅샷/이벤트/지표 키). 토픽-증거 연결용."
+          items:
+            type: string
+        numbers:
+          type: array
+          description: "설명에 쓰는 숫자 0~3개. (Gate는 Z-score/L레벨 금지)"
+          maxItems: 3
+          items:
+            type: object
+            required: [label, value, unit]
+            properties:
+              label: { type: string }
+              value:
+                oneOf:
+                  - { type: number }
+                  - { type: string }
+              unit: { type: string }
+        confidence:
+          type: string
+          description: "정확도가 아니라 '말할 가치' 기반"
+          enum: ["LOW", "MEDIUM", "HIGH"]
+        rank_features:
+          type: object
+          required:
+            - hook_score
+            - number_score
+            - timeliness_score
+            - explainability_score
+            - final_score
+          properties:
+            hook_score: { type: number }
+            number_score: { type: number }
+            timeliness_score: { type: number }
+            explainability_score: { type: number }
+            final_score: { type: number }
+
+# NOTE (GUARDRAIL):
+# - 이 스키마에는 level(L2/L3/L4), z_score, anomaly_logic, theme_leaders(대장주) 필드가 존재하면 안 된다.
+# - Structural 엔진 출력과 섞지 않는다.
