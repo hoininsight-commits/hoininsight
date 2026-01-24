@@ -46,24 +46,34 @@ class AnchorEngine:
     def run_analysis(self, snapshot_data: List[Dict[str, Any]]) -> List[AnchorResult]:
         results = []
         
-        # Group by potential clusters (simplified for now: check each item against others)
-        # In a real engine, we'd form clusters. Here we iterate items and look for combinatorics.
-        
-        # For demonstration of the 6-step Logic, we process the 'primary' candidate found by heuristics first,
-        # then apply the rigor.
-        
-        # Actually, Step 1 says "Identify combination". Single axis is ignored.
-        # So we need to find pairs/groups.
-        
-        # 1. Naive Clustering (e.g. Rate + Equity, or Same Sector)
+        # 1. Strict Clustering (Ideal Anchor)
         clusters = self._form_clusters(snapshot_data)
         
         for cluster in clusters:
             res = self._execute_6_steps(cluster)
             if res:
                 results.append(res)
-                
+        
+        # 2. Fallback (Always-On Rule)
+        if not results and snapshot_data:
+            # Pick highest Z item
+            top_item = max(snapshot_data, key=lambda x: abs(self._get_z(x)))
+            results.append(self._create_fallback_result(top_item))
+            
         return results
+
+    def _create_fallback_result(self, item: Dict[str, Any]) -> AnchorResult:
+        z = self._get_z(item)
+        return AnchorResult(
+            data_axis=[item.get("dataset_id", "unknown")],
+            baseline_match=[f"{item.get('dataset_id')}: Single Axis Surge (Z={z:.2f})"],
+            anomaly_logic="Unknown (Single Axis)",
+            why_now_type="Hybrid-driven",
+            level="L2",
+            level_proof=f"Statistical Deviation Z={z:.2f} (No Cluster)",
+            gap_detection="Insufficient Evidence for L3/L4",
+            missing_data_request=["Need Correlated Asset Movement", "Need News/Event Confirmation"]
+        )
 
     def _get_z(self, item: Dict[str, Any]) -> float:
         z = item.get("z_score")

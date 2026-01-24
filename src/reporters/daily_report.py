@@ -518,23 +518,26 @@ def write_daily_brief(base_dir: Path) -> Path:
             lines.append("")
             lines.append("## FINAL DECISION CARD SNAPSHOT")
             lines.append(f"- Regime: {reg.get('current_regime')} (Conf: {reg.get('confidence', 0):.1%})")
-            lines.append(f"- Revival: {rev.get('proposal_count', 0)} candidate(s)")
-            lines.append(f"- Ops Health: {ops.get('system_freshness', 0)}% Freshness")
             
-            # [Phase 40] Show generated topics
-            m_topic = card.get("topic")
-            n_topics = card.get("narrative_topics", [])
+            # [Phase 50] Dual Engine Display
+            s_topic = card.get("structural_topic")
+            a_topic = card.get("anchor_topic")
             
-            if m_topic:
-                 lines.append(f"- Structural Topic: **{m_topic}**")
-            elif n_topics:
-                 lines.append(f"- Structural Topic: None (Found {len(n_topics)} Narrative Topics)")
-                 for i, nt in enumerate(n_topics[:3], 1):
-                     lines.append(f"  {i}. **{nt.get('topic_anchor')}**")
-                     lines.append(f"     - Driver: {nt.get('narrative_driver')}")
-                     lines.append(f"     - Risk: {nt.get('risk_note', 'N/A')}")
+            lines.append("")
+            lines.append("## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)")
+            if s_topic:
+                lines.append(f"- **Topic:** {s_topic}")
+                lines.append(f"- **Rationale:** {card.get('structural_rationale', '')}")
             else:
-                 lines.append(f"- Topic: Pending")
+                lines.append("- (No structural anomaly detected)")
+                
+            lines.append("")
+            lines.append("## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)")
+            if a_topic:
+                lines.append(f"- **Topic:** {a_topic}")
+                lines.append(f"- **Rationale:** {card.get('anchor_rationale', '')}")
+            else:
+                lines.append("- (No anchor logic matched)")
 
             lines.append(f"- Prompt: {card.get('human_prompt')}")
         except:

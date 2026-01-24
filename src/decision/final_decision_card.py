@@ -254,6 +254,12 @@ def main():
     # 3. Topic Selection Logic (Daily Top 5)
     selected_topic_title = None
     selected_rationale = None
+    # [Phase 50] distinct variables
+    structural_topic_title = None
+    structural_rationale = None
+    anchor_topic_title = None
+    anchor_rationale = None
+    
     key_data = {}
     top_topics = []
 
@@ -273,6 +279,10 @@ def main():
                 selected_topic_title = f"[{logic}] {why}"
                 selected_rationale = f"Anchor Logic: {proof} (Gap Status: {gap})"
                 
+                # [Phase 50] Capture separate Anchor vars
+                anchor_topic_title = selected_topic_title
+                anchor_rationale = selected_rationale
+                
                 # Add strict 6-step details to card
                 key_data["ANCHOR"] = {
                     "step1_axis": anchor_data.get("data_axis"),
@@ -283,7 +293,7 @@ def main():
         except Exception as e:
             print(f"[Decision] Failed to load Anchor Result: {e}")
 
-    if candidates and not selected_topic_title:
+    if candidates:
         scored_candidates = []
         
         for cand in candidates:
@@ -398,6 +408,10 @@ def main():
             best = top_topics[0]
             selected_topic_title = best["title"]
             selected_rationale = best["rationale"]
+            # [Phase 50] Capture for Dual Display
+            structural_topic_title = best["title"]
+            structural_rationale = best["rationale"]
+            
             key_data[best["dataset_id"]] = "Primary"
             
             # Add secondary badges
@@ -431,8 +445,9 @@ def main():
         selected_rationale = f"구조적(Structural) 토픽은 발견되지 않았으나, {len(narrative_topics)}개의 내러티브(Narrative) 후보가 감지되었습니다."
 
     # 4. Construct Final Card
+    # 4. Construct Final Card
     card = {
-        "card_version": "phase40_v1",
+        "card_version": "phase50_dual_v1",
         "generated_at": now_utc.isoformat() + "Z",
         "date": ymd_dash,
         "blocks": {
@@ -440,9 +455,13 @@ def main():
             "revival": revival_block,
             "ops": ops_block
         },
-        "topic": selected_topic_title,               # Main Structural Topic
-        "narrative_topics": narrative_topics,        # [New] Narrative Topics
-        "decision_rationale": selected_rationale,    # Main Rationale
+        "topic": structural_topic_title or anchor_topic_title,  # Legacy fallback
+        "structural_topic": structural_topic_title,  # [New] Engine 1
+        "anchor_topic": anchor_topic_title,          # [New] Engine 2
+        "structural_rationale": structural_rationale,
+        "anchor_rationale": anchor_rationale,
+        "narrative_topics": narrative_topics,        
+        "decision_rationale": structural_rationale,  # Legacy rationale
         "key_data": key_data,
         "top_topics": top_topics,                    # Full Top 5 List
         "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"

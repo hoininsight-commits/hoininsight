@@ -1,10 +1,10 @@
 {
-  "card_version": "phase40_v1",
-  "generated_at": "2026-01-24T01:45:28.120511+00:00Z",
+  "card_version": "phase50_dual_v1",
+  "generated_at": "2026-01-24T02:09:25.790035+00:00Z",
   "date": "2026-01-24",
   "blocks": {
     "regime": {
-      "current_regime": "Unknown",
+      "current_regime": "(no meta regime detected)",
       "confidence": 0.0,
       "has_meta_topics": false,
       "meta_topic_count": 0,
@@ -24,6 +24,10 @@
     }
   },
   "topic": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
+  "structural_topic": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
+  "anchor_topic": "[Unknown] Hybrid-driven",
+  "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.8배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [
     {
       "topic_anchor": "매크로 (Macro) - 인플레이션 (Inflation) 관련 이상 움직임",
@@ -183,6 +187,18 @@
   ],
   "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.8배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
+    "ANCHOR": {
+      "step1_axis": [
+        "metal_silver_kag_coingecko",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "derived_gold_silver_ratio"
+      ],
+      "step6_gap": "Insufficient Evidence for L4",
+      "request": [
+        "Need Volume/Flow Data to verify Capital Fixation"
+      ]
+    },
     "metal_silver_kag_coingecko": "Primary",
     "metal_gold_paxg_coingecko": "Secondary",
     "derived_gold_silver_ratio": "Secondary",
