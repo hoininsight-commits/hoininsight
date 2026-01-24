@@ -257,7 +257,33 @@ def main():
     key_data = {}
     top_topics = []
 
-    if candidates:
+    # [Phase 50] Check for Anchor Result first (Economy Hunter Logic)
+    anchor_path = base_dir / "data/topics/anchor" / ymd_path / "anchor_result.json"
+    if anchor_path.exists():
+        try:
+            anchor_data = load_json(anchor_path)
+            if anchor_data:
+                # Convert Anchor format to Card format
+                # AnchorResult(anomaly_logic, why_now_type, level, level_proof, gap_detection...)
+                logic = anchor_data.get("anomaly_logic", "Unknown")
+                why = anchor_data.get("why_now_type", "Unknown")
+                proof = anchor_data.get("level_proof", "")
+                gap = anchor_data.get("gap_detection", "")
+                
+                selected_topic_title = f"[{logic}] {why}"
+                selected_rationale = f"Anchor Logic: {proof} (Gap Status: {gap})"
+                
+                # Add strict 6-step details to card
+                key_data["ANCHOR"] = {
+                    "step1_axis": anchor_data.get("data_axis"),
+                    "step6_gap": gap,
+                    "request": anchor_data.get("missing_data_request")
+                }
+                print(f"[Decision] Anchor Result loaded: {selected_topic_title}")
+        except Exception as e:
+            print(f"[Decision] Failed to load Anchor Result: {e}")
+
+    if candidates and not selected_topic_title:
         scored_candidates = []
         
         for cand in candidates:
