@@ -1900,11 +1900,12 @@ def generate_dashboard(base_dir: Path):
         topic_archive_view_html = f"<div style='padding:20px; color:red;'>Archive Load Error: {e}</div>"
 
     
-    # [NEW] Topic Gate HTML
+    # [NEW] Topic Gate Explanation Card v1.0
     topic_gate_html = ""
     try:
         tg_base = base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
         tg_path = tg_base / "topic_gate_output.json"
+        
         if tg_path.exists():
             tg_data = json.loads(tg_path.read_text(encoding="utf-8"))
             title = tg_data.get("title", "No Title")
@@ -1912,48 +1913,123 @@ def generate_dashboard(base_dir: Path):
             conf = tg_data.get("confidence", "N/A")
             handoff = tg_data.get("handoff_to_structural", False)
             
-            # Badge style
-            conf_color = "#10b981" if conf == "HIGH" else "#f59e0b" if conf == "MEDIUM" else "#ef4444"
-            handoff_badge = '<span style="background:#dcfce7; color:#166534; padding:2px 6px; border-radius:4px; font-size:11px;">Handoff OK</span>' if handoff else '<span style="background:#f1f5f9; color:#64748b; padding:2px 6px; border-radius:4px; font-size:11px;">Gate Only</span>'
+            # Logic for 5 Mandatory Blocks
+            # 1) Market Expectation
+            expectation = tg_data.get("why_people_confused", "INSUFFICIENT DATA")
             
-            reasons_html = "".join([f"<li>{r}</li>" for r in tg_data.get("key_reasons", [])])
-            numbers_html = "".join([f"<div style='font-size:13px; color:#1e3a8a; font-weight:600;'>{n.get('label')}: {n.get('value')} {n.get('unit')}</div>" for n in tg_data.get("numbers", [])])
+            # 2) Actual Market Move (Min 2 items) - Placeholder as per spec
+            market_move_html = """
+            <div style="display:flex; gap:10px; margin-top:8px;">
+                <span style="background:#fef2f2; color:#b91c1c; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">INSUFFICIENT DATA</span>
+                <span style="background:#fef2f2; color:#b91c1c; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">INSUFFICIENT DATA</span>
+            </div>
+            """
+            
+            # 3) Divergence / Why mismatch
+            reasons_tags = "".join([f"<span style='background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:600;'>#{r[:15]}...</span>" for r in tg_data.get("key_reasons", [])])
+            divergence_html = f"""
+            <div style="margin-top:10px;">
+                <div style="font-size:14px; color:#1e293b; font-weight:600; line-height:1.4;">{tg_data.get("why_people_confused", "INSUFFICIENT DATA")}</div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">{reasons_tags}</div>
+            </div>
+            """
+
+            # 4) Evidence Comparison (Expected vs Actual)
+            evidence_rows = ""
+            for n in tg_data.get("numbers", []):
+                evidence_rows += f"""
+                <tr style="border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:8px 0; color:#64748b;">{n.get('label')}</td>
+                    <td style="padding:8px 0; text-align:center; color:#94a3b8;">N/A</td>
+                    <td style="padding:8px 0; text-align:right; color:#1e3a8a; font-weight:700;">{n.get('value')} {n.get('unit')}</td>
+                </tr>
+                """
+            if not evidence_rows:
+                evidence_rows = '<tr><td colspan="3" style="padding:10px; text-align:center; color:#94a3b8;">INSUFFICIENT DATA</td></tr>'
+
+            # 5) Forward Watchlist
+            watchlist = [tg_data.get("risk_one", "INSUFFICIENT DATA"), "Next Major Data Release Check", "Liquidity Shift Confirmation"]
+            watchlist_html = "".join([f"<div style='display:flex; align-items:start; gap:8px; margin-bottom:6px;'><span style='color:#3b82f6;'>•</span><span style='font-size:12px; color:#475569;'>{w}</span></div>" for w in watchlist])
+
+            # Final Card Assembly
+            conf_color = "#10b981" if conf == "HIGH" else "#f59e0b" if conf == "MEDIUM" else "#ef4444"
+            handoff_badge = '<span style="background:#dcfce7; color:#166534; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">Handoff OK</span>' if handoff else '<span style="background:#f1f5f9; color:#64748b; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">Gate Only</span>'
 
             topic_gate_html = f"""
-            <div style="background:white; border:1px solid #e2e8f0; border-radius:12px; padding:25px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                    <div style="font-size:12px; font-weight:700; color:#64748b; text-transform:uppercase;">이벤트 기반 트레이딩 토픽 (Topic Gate)</div>
-                    <div style="display:flex; gap:8px;">
-                        <span style="background:{conf_color}; color:white; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">{conf} CONFIDENCE</span>
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);">
+                <!-- Header -->
+                <div style="background:#f8fafc; padding:20px 25px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <div style="font-size:11px; font-weight:800; color:#6366f1; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">EVENT-TRIGGERED ANALYSIS</div>
+                        <h3 style="margin:0; font-size:22px; color:#1e293b; font-weight:800; letter-spacing:-0.02em;">{title}</h3>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:end; gap:6px;">
+                        <span style="background:{conf_color}; color:white; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:800;">{conf} CONFIDENCE</span>
                         {handoff_badge}
                     </div>
                 </div>
-                <h3 style="margin:0; font-size:20px; color:#1e293b; font-weight:700;">{title}</h3>
-                <p style="color:#475569; font-size:15px; margin-top:10px; line-height:1.6; font-style:italic;">"{question}"</p>
-                
-                <div style="margin-top:20px; background:#f8fafc; border-radius:8px; padding:15px; border:1px solid #f1f5f9;">
-                    <h4 style="margin:0 0 10px 0; font-size:13px; color:#334155; font-weight:700;">💡 분석 요약</h4>
-                    <ul style="margin:0; padding-left:20px; font-size:13px; color:#475569;">
-                        {reasons_html}
-                    </ul>
-                </div>
-                
-                <div style="margin-top:20px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                    <div style="background:#fffbeb; padding:12px; border-radius:8px; border:1px solid #fef3c7;">
-                        <span style="font-size:11px; font-weight:bold; color:#92400e; display:block; margin-bottom:4px;">⚠️ 리스크 포인트</span>
-                        <span style="font-size:13px; color:#78350f;">{tg_data.get("risk_one", "N/A")}</span>
+
+                <div style="padding:25px; display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
+                    <!-- Left Column: Narrative -->
+                    <div style="display:flex; flex-direction:column; gap:25px;">
+                        <section>
+                            <h4 style="margin:0; font-size:12px; color:#64748b; text-transform:uppercase; font-weight:700; display:flex; align-items:center; gap:6px;">
+                                💭 1. Market Expectation
+                            </h4>
+                            <div style="margin-top:8px; font-size:14px; color:#475569; line-height:1.6; border-left:3px solid #e2e8f0; padding-left:12px;">{expectation}</div>
+                        </section>
+
+                        <section>
+                            <h4 style="margin:0; font-size:12px; color:#64748b; text-transform:uppercase; font-weight:700;">
+                                📉 2. Actual Market Move
+                            </h4>
+                            {market_move_html}
+                        </section>
+
+                        <section>
+                            <h4 style="margin:0; font-size:12px; color:#64748b; text-transform:uppercase; font-weight:700;">
+                                ⚡ 3. Divergence / Why Mismatch
+                            </h4>
+                            {divergence_html}
+                        </section>
                     </div>
-                    <div style="background:#eff6ff; padding:12px; border-radius:8px; border:1px solid #dbeafe;">
-                        <span style="font-size:11px; font-weight:bold; color:#1e40af; display:block; margin-bottom:4px;">📊 수치 증거 (Evidence)</span>
-                        {numbers_html}
+
+                    <!-- Right Column: Data & Watchlist -->
+                    <div style="background:#f8fafc; border-radius:12px; padding:20px; border:1px solid #f1f5f9; display:flex; flex-direction:column; gap:25px;">
+                        <section>
+                            <h4 style="margin:0; font-size:12px; color:#64748b; text-transform:uppercase; font-weight:700; margin-bottom:12px;">
+                                📊 4. Evidence Comparison
+                            </h4>
+                            <table style="width:100%; font-size:13px; border-collapse:collapse;">
+                                <thead style="color:#94a3b8; font-size:11px;">
+                                    <tr>
+                                        <th style="padding:4px 0; text-align:left;">Metric</th>
+                                        <th style="padding:4px 0; text-align:center;">Expected</th>
+                                        <th style="padding:4px 0; text-align:right;">Actual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {evidence_rows}
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section>
+                            <h4 style="margin:0; font-size:12px; color:#64748b; text-transform:uppercase; font-weight:700; margin-bottom:12px;">
+                                🔭 5. Forward Watchlist
+                            </h4>
+                            <div style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:12px;">
+                                {watchlist_html}
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
             """
         else:
-            topic_gate_html = '<div style="padding:40px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #e2e8f0;">오늘의 이벤트 기반 토픽이 아직 생성되지 않았습니다.</div>'
+            topic_gate_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:16px; border:1px dashed #cbd5e1;">오늘의 이벤트 기반 토픽이 아직 생성되지 않았습니다.</div>'
     except Exception as e:
-        topic_gate_html = f'<div style="padding:20px; color:red; background:#fee2e2; border-radius:8px;">Topic Gate Load Error: {e}</div>'
+        topic_gate_html = f'<div style="padding:20px; color:red; background:#fee2e2; border-radius:8px;">Topic Gate UI Error: {e}</div>'
 
     # 5. Ledger HTML
     ledger_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>'
