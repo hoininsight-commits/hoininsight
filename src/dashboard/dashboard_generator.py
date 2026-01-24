@@ -2305,6 +2305,16 @@ def generate_dashboard(base_dir: Path):
     for idx, t in enumerate(all_struct):
         # [Deduplication] Hide if consumed by Synthesis
         if t.get("dataset_id") in consumed_ids:
+            # [Fix] Even if hidden from Speak/Watch, its evidence must be in Evidence Tab
+            # Manually add to consolidated_anchors
+            c_anchor = {
+                "sensor_id": t.get("dataset_id"), 
+                "title": t.get("title"), 
+                "_topic_title": t.get("title"),
+                "_type": "structural",
+                "timestamp": "Consumed by Synth"
+            }
+            consolidated_anchors.append(c_anchor)
             continue
             
         # Ensure ID
