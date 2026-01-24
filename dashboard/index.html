@@ -4178,12 +4178,15 @@ No automatic selection performed. See Dashboard for details.
 
 <!-- MODAL -->
 <div id="scriptModal" class="modal">
-    <div class="modal-box">
+    <div class="modal-content" style="max-width:800px;">
          <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
              <h2 style="margin:0;">Insight Script</h2>
              <button onclick="closeModal()" style="border:none; background:none; font-size:20px; cursor:pointer;">✕</button>
          </div>
          <p id="script-modal-content">Script content here...</p>
+         <div style="text-align:right; margin-top:20px;">
+             <button onclick="copyScript()" style="padding:8px 16px; background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; border-radius:6px; cursor:pointer; font-weight:bold;">Copy Text</button>
+         </div>
     </div>
 </div>
 
