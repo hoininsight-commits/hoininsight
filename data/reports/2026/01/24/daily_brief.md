@@ -82,9 +82,10 @@ Narrative Drift Signals:
   - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
   - 정책은 즉시 실적이 아니라 '기대 경로'를 바꿔 반응이 지연/왜곡될 수 있다.
 - Numbers:
+  - US 10Y Rate: Active 
   - Lower bound: 5.25 %
 - Risk: 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
-- Confidence: LOW
+- Confidence: MEDIUM
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
