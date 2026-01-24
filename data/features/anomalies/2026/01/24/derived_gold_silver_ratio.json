@@ -1,6 +1,10 @@
 [
   {
+<<<<<<< Updated upstream
     "ts_utc": "2026-01-24T04:52:12Z",
+=======
+    "ts_utc": "2026-01-24T04:50:18Z",
+>>>>>>> Stashed changes
     "dataset_id": "derived_gold_silver_ratio",
     "entity": "GOLD_SILVER_RATIO",
     "anomaly_type": "Z_SCORE_MODEL_V1",
@@ -9,8 +13,13 @@
     "evidence": {
       "z_score": -2.67,
       "percentile": 50.0,
+<<<<<<< Updated upstream
       "value": 48.83318743312907,
       "rolling_mean_20d": 51.468068469932916,
+=======
+      "value": 48.829199494212624,
+      "rolling_mean_20d": 51.46786907298709,
+>>>>>>> Stashed changes
       "reasoning": "Z-Score -2.67 >= 2.0"
     }
   }

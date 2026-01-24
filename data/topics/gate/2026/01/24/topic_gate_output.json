@@ -1,7 +1,11 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-01-24",
+<<<<<<< Updated upstream
   "topic_id": "gate_80aafd1ba3",
+=======
+  "topic_id": "gate_b52adbf934",
+>>>>>>> Stashed changes
   "title": "오늘 시장의 핵심 혼란 포인트",
   "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
   "why_people_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
@@ -15,8 +19,14 @@
   "handoff_to_structural": false,
   "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
   "source_candidates": [
+<<<<<<< Updated upstream
     "cand_caa27ecce1",
     "cand_0adf73a6e0",
     "cand_fa39f2c4f1"
+=======
+    "cand_518b242110",
+    "cand_048183da5a",
+    "cand_042523dd05"
+>>>>>>> Stashed changes
   ]
 }

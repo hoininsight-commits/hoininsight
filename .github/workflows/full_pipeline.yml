@@ -27,6 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
 
+      - name: Set AS_OF_DATE
+        run: |
+          echo "AS_OF_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Run Content Topic Gate
+        run: |
+          python -m src.pipeline.run_topic_gate --as-of-date "${AS_OF_DATE}"
+
       - name: Run engine
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -439,9 +447,6 @@ jobs:
         run: |
           python -m src.topics.topic_candidate_gate
 
-      - name: Run Topic Decision Gate (Content)
-        run: |
-          python -m pipeline.run_topic_gate --as-of-date $(date -u +"%Y-%m-%d")
 
       - name: Generate Dashboard (Phase 31-D Update)
         run: |
