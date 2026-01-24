@@ -2925,10 +2925,10 @@ def generate_dashboard(base_dir: Path):
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
-                    {synth_html}
-
                     <!-- NEW TAB: SPEAK TODAY -->
                     <div id="speak-today" class="tab-content active" style="display:block;">
+                        {synth_html}
+
                         <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
                             <span style="background:#3b82f6; color:white; padding:4px 12px; border-radius:8px; font-size:14px;">SPEAKABLE</span>
                             오늘 발화 가능 토픽
