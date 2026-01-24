@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from src.utils.knowledge_base import KnowledgeBase
 from src.llm.gemini_client import GeminiClient
+from src.utils.i18n_ko import I18N_KO
 
 class DeepLogicAnalyzer:
     """
@@ -392,30 +393,30 @@ Follow the [OUTPUT FORMAT] defined in the System Instruction.
             
         # Fallback to Heuristic Report
         return f"""
-# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
+# 🕵️‍♀️ {I18N_KO['DEEP_LOGIC_ANALYSIS']}
 
-## 1️⃣ 겉주제 제거 (Surface Topic 제거)
+## {I18N_KO['SURFACE_TOPIC_REMOVAL']}
 영상의 표면 메시지 (Removed):
 {chr(10).join([f"* {t}" for t in res['surface_topics']])}
 
-## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
-* **Real Topic**: {res['real_topic']}
-* **Reframed**: {res['real_topic_reasoning']}
+## {I18N_KO['ENGINE_VIEW_REAL_TOPIC']}
+* **{I18N_KO['REAL_TOPIC'] if 'REAL_TOPIC' in I18N_KO else '진짜 주제'}**: {res['real_topic']}
+* **{I18N_KO['REFRAMED']}**: {res['real_topic_reasoning']}
 
-## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
+## {I18N_KO['ANOMALY_LEVEL_DETERMINATION']}
 * **Level**: {res['anomaly_level']}
 * **Reasoning**: {res['anomaly_reasoning']}
 
-## 4️⃣ WHY_NOW 트리거 판정
+## {I18N_KO['WHY_NOW_TRIGGER_ANALYSIS']}
 * **Type**: {res['why_now']['trigger_type']}
-* **Trigger**: {res['why_now']['description']}
+* **{I18N_KO['TRIGGER_EVENT'] if 'TRIGGER_EVENT' in I18N_KO else '트리거'}**: {res['why_now']['description']}
 
-## 5️⃣ 핵심 가정 (Core Assumptions)
+## {I18N_KO['CORE_ASSUMPTIONS']}
 {chr(10).join([f"* {a}" for a in res['core_assumptions']])}
 
-## 6️⃣ DATA_COLLECTION_MASTER 관점 (Evolution Proposals)
-{chr(10).join([f"* [PROPOSAL] {p['condition']}" for p in res['evolution_proposals']]) if res['evolution_proposals'] else "* (No new data collection needs identified)"}
+## {I18N_KO['DATA_COLLECTION_MASTER_VIEW']}
+{chr(10).join([f"* [PROPOSAL] {p['condition']}" for p in res['evolution_proposals']]) if res['evolution_proposals'] else f"* ({I18N_KO['NO_DATA']})"}
 
-## 7️⃣ 엔진 최종 판정 요약
+## {I18N_KO['ENGINE_FINAL_CONCLUSION']}
 > {res['engine_conclusion']}
 """

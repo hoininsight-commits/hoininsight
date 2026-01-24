@@ -34,6 +34,31 @@ class Candidate:
     rank_features: RankFeatures = field(default_factory=lambda: RankFeatures(0,0,0,0,0,0))
 
 @dataclass
+class DecisionEvidence:
+    key: str
+    value: Any
+    expected_baseline: Optional[Any] = None
+    source: str = "N/A"
+    timestamp: str = ""
+    confidence: float = 1.0
+
+@dataclass
+class DecisionTrace:
+    trigger_name: str
+    triggered: bool
+    reasons: List[str] = field(default_factory=list)
+    evidence: List[DecisionEvidence] = field(default_factory=list)
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class SpeakEligibility:
+    eligible: bool = False
+    triggers: List[str] = field(default_factory=list)
+    summary: str = ""
+    trace: Dict[str, DecisionTrace] = field(default_factory=dict)
+    anchors: List[Dict[str, Any]] = field(default_factory=list)
+
+@dataclass
 class GateOutput:
     as_of_date: str
     topic_id: str
@@ -47,3 +72,4 @@ class GateOutput:
     handoff_to_structural: bool
     handoff_reason: str
     source_candidates: List[str]
+    speak_eligibility: SpeakEligibility = field(default_factory=SpeakEligibility)

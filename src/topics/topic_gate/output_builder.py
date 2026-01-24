@@ -1,14 +1,28 @@
 from __future__ import annotations
 from typing import List
 import uuid
-from .types import Candidate, GateOutput, NumberItem
+from .types import Candidate, GateOutput, NumberItem, SpeakEligibility
+from .speak_eligibility import SpeakEligibilityCheck
 
 class OutputBuilder:
-    def build(self, as_of_date: str, top1: Candidate, ranked: List[Candidate]) -> GateOutput:
+    def build(self, as_of_date: str, top1: Candidate, ranked: List[Candidate], events: List[Any] = None) -> GateOutput:
         title = self._make_title(top1)
         why_confused = self._why_confused(top1)
         reasons = self._reasons(top1)
         risk = self._risk_one(top1)
+
+        # Step 10-4: Speak Eligibility Check (Hardened)
+        checker = SpeakEligibilityCheck()
+        # Pass raw event dicts for artifact validation (G2)
+        event_dicts = [e.__dict__ if hasattr(e, "__dict__") else e for e in (events or [])]
+        
+        # Merge top1 data with generated text for keyword analysis
+        eval_data = top1.__dict__.copy() if hasattr(top1, "__dict__") else top1.copy()
+        eval_data.update({
+            "why_people_confused": why_confused,
+            "key_reasons": reasons
+        })
+        speak_elig = checker.evaluate(eval_data, evidence_pool=event_dicts)
 
         return GateOutput(
             as_of_date=as_of_date,
@@ -23,6 +37,7 @@ class OutputBuilder:
             handoff_to_structural=False,
             handoff_reason="",
             source_candidates=[c.candidate_id for c in ranked[:5]],
+            speak_eligibility=speak_elig
         )
 
     def _make_title(self, c: Candidate) -> str:

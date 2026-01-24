@@ -85,7 +85,7 @@ def main(as_of_date: str):
     ranked = ranker.rank(numbered_candidates, events_index=events_index)
     top1 = ranker.pick_top1(ranked)
 
-    output = builder.build(as_of_date=as_of_date, top1=top1, ranked=ranked)
+    output = builder.build(as_of_date=as_of_date, top1=top1, ranked=ranked, events=events)
     output = handoff.decide(output, top1=top1, snapshot=snapshot)
 
     candidates_payload = {

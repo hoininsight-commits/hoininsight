@@ -1,9 +1,12 @@
+```python
 from __future__ import annotations
 
 import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+from src.utils.i18n_ko import I18N_KO
 
 def _ymd_iso() -> str:
     return datetime.utcnow().isoformat()
@@ -138,17 +141,17 @@ def generate_insight_content(base_dir: Path) -> None:
             lines.append(f"Content Preset: {preset}")
             lines.append(f"-->")
             lines.append("")
-            
-            lines.append("## 1. Opening (Situation)")
+           
+            lines.append(f"## 1. {I18N_KO['SIGNAL_LOGIC']}")
             lines.append(f"- **{t_title}** 현상이 감지되었습니다.")
             lines.append(f"- 이는 **{current_regime}** 국면 하에서 발생한 중요한 시그널입니다.")
             lines.append("")
             
-            lines.append("## 2. Why Important (Rationale)")
+            lines.append(f"## 2. {I18N_KO['RATIONALE']}")
             lines.append(f"- {t_rationale}")
             lines.append("")
             
-            lines.append("## 3. Data Evidence")
+            lines.append(f"## 3. {I18N_KO['DATA_EVIDENCE']}")
             lines.append(f"- 주요 지표: `{t_id}`")
             if "evidence" in topic:
                 ev = topic["evidence"]

@@ -1,7 +1,7 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-01-24",
-  "topic_id": "gate_0573e61db5",
+  "topic_id": "gate_5806796395",
   "title": "정책/이벤트 발표 이후 시장 반응이 왜 반대였나",
   "question": "왜 FOMC Maintains Interest Rates 규제가 당장의 시장 지배력보다 장기 공급망 재편에 더 결정적인가?",
   "why_people_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
@@ -27,25 +27,24 @@
   "handoff_to_structural": false,
   "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
   "source_candidates": [
-    "cand_ev_9ef6a7ae80",
-    "cand_ev_3b608f81a1",
-    "cand_ev_954921db7d",
-    "cand_ev_0e8d7f2474",
-    "cand_ev_86410bbe98"
+    "cand_ev_7f47cda3e4",
+    "cand_ev_41ed142425",
+    "cand_ev_8774b4fdd5",
+    "cand_ev_d636e3d3d7",
+    "cand_ev_cc276f7b5d"
   ],
   "speak_eligibility": {
     "eligible": false,
     "triggers": [],
-    "summary": "Narrative shift detected, awaiting anchor confirmation",
+    "summary": "No state transition detected. Topic remains GATE_ONLY.",
     "trace": {
       "EXPECTATION_COLLAPSE": {
         "trigger_name": "EXPECTATION_COLLAPSE",
         "triggered": false,
         "reasons": [
-          "REJECTED (G2): Keywords detected, but NO explicit guidance/consensus revision artifact found."
+          "No expectation collapse keywords detected in topic metadata."
         ],
-        "evidence": [],
-        "metadata": {}
+        "evidence": []
       },
       "LIQUIDITY_DIRECTION_LOCKIN": {
         "trigger_name": "LIQUIDITY_DIRECTION_LOCKIN",
@@ -53,8 +52,7 @@
         "reasons": [
           "No liquidity commitment keywords detected."
         ],
-        "evidence": [],
-        "metadata": {}
+        "evidence": []
       },
       "NARRATIVE_CONVERGENCE": {
         "trigger_name": "NARRATIVE_CONVERGENCE",
@@ -62,45 +60,8 @@
         "reasons": [
           "No narrative convergence indicators found."
         ],
-        "evidence": [],
-        "metadata": {}
-      },
-      "NARRATIVE_SHIFT": {
-        "trigger_name": "NARRATIVE_SHIFT",
-        "triggered": true,
-        "reasons": [
-          "Narrative shift detected (Driver/Value-Chain/Language)."
-        ],
-        "evidence": [],
-        "metadata": {
-          "detected_driver_change": false,
-          "detected_value_chain_shift": false,
-          "detected_language_shift": true,
-          "evidence_sources": [
-            {
-              "publisher": "Yahoo Finance",
-              "url": "https://finance.yahoo.com/news/nvda-earnings"
-            },
-            {
-              "publisher": "Federal Reserve",
-              "url": "https://www.federalreserve.gov/newsevents/pressreleases"
-            },
-            {
-              "publisher": "ETF.com",
-              "url": "https://www.etf.com/news/tech-inflows"
-            },
-            {
-              "publisher": "DART",
-              "url": "https://dart.fss.or.kr/dsaf001/main.do"
-            },
-            {
-              "publisher": "Reuters",
-              "url": "https://www.reuters.com/technology/apple-buyback"
-            }
-          ]
-        }
+        "evidence": []
       }
-    },
-    "anchors": []
+    }
   }
 }

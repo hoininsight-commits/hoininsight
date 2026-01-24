@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
 from src.utils.markdown_parser import parse_markdown
+from src.utils.i18n_ko import I18N_KO
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -118,8 +119,8 @@ def _generate_archive_view(cards: List[Dict]) -> str:
                 details = evidence.get("details", {})
                 if details:
                     evidence_html += "<div style='background:#f8fafc; padding:10px; border-radius:6px; margin-top:10px; font-size:12px; border:1px solid #e2e8f0;'>"
-                    evidence_html += f"<strong>📊 Data Evidence</strong><br>"
-                    evidence_html += f"Value: {details.get('value', 'N/A')}<br>"
+                    evidence_html += f"<strong>📊 {I18N_KO['DATA_EVIDENCE']}</strong><br>"
+                    evidence_html += f"{I18N_KO['VALUE']}: {details.get('value', 'N/A')}<br>"
                     evidence_html += f"Z-Score: {details.get('z_score', 'N/A')}<br>"
                     evidence_html += f"Analyst Note: {details.get('reasoning', '')}"
                     evidence_html += "</div>"
@@ -129,7 +130,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             stocks_html = ""
             if stocks:
                 s_tags = "".join([f"<span style='background:#f0fdf4; color:#166534; padding:2px 6px; border-radius:4px; margin-right:4px; font-size:11px; font-weight:bold;'>{s}</span>" for s in stocks])
-                stocks_html = f"<div style='margin-top:10px;'><strong>🚀 Leader Stocks:</strong><br><div style='margin-top:4px;'>{s_tags}</div></div>"
+                stocks_html = f"<div style='margin-top:10px;'><strong>🚀 {I18N_KO['LEADER_STOCKS']}:</strong><br><div style='margin-top:4px;'>{s_tags}</div></div>"
 
             # Construct Modal Content
             modal_content = f"""
@@ -138,7 +139,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
                     <h3 style="margin:0; font-size:18px; color:#1e293b;">{title}</h3>
                 </div>
                 <div style="font-size:14px; color:#334155; line-height:1.6;">
-                    <strong style="color:#0f172a;">💡 Rationale</strong>
+                    <strong style="color:#0f172a;">💡 {I18N_KO['RATIONALE']}</strong>
                     <p style="margin-top:4px; background:#fffbeb; padding:10px; border-radius:6px; border:1px solid #fcd34d;">{rationale}</p>
                     {evidence_html}
                     {stocks_html}
@@ -165,7 +166,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
                 </td>
                 <td style="padding:12px;">{type_badge}</td>
                 <td style="padding:12px; text-align:right;">
-                    <button style="border:1px solid #cbd5e1; background:white; color:#64748b; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">View</button>
+                    <button style="border:1px solid #cbd5e1; background:white; color:#64748b; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">{I18N_KO['VIEW']}</button>
                 </td>
             </tr>
             """
@@ -177,10 +178,10 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             <table style="width:100%; border-collapse:collapse; font-size:13px;">
                 <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                     <tr>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:90px;">날짜</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:90px;">{I18N_KO['DATE']}</th>
                         <th style="padding:12px; text-align:left; color:#64748b; font-weight:600;">선정 토픽 (Top 5)</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:70px;">유형</th>
-                        <th style="padding:12px; text-align:right; color:#64748b; font-weight:600; width:60px;">상세</th>
+                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:70px;">{I18N_KO['TYPE']}</th>
+                        <th style="padding:12px; text-align:right; color:#64748b; font-weight:600; width:60px;">{I18N_KO['DETAIL']}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -786,6 +787,13 @@ def generate_dashboard(base_dir: Path):
     
     .modal-header { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
     .modal-body { font-size: 14px; line-height: 1.6; color: #334155; white-space: pre-wrap; }
+    
+    .stat-counter { background: white; border: 1px solid #e2e8f0; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; color: #475569; display: flex; align-items: center; gap: 6px; }
+    
+    .advanced-toggle { margin-top: auto; padding: 15px 25px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: #475569; font-size: 12px; font-weight: 700; border-top: 1px solid #1e293b; background: #0f172a; }
+    .advanced-toggle:hover { color: #f1f5f9; background: #1e293b; }
+    .advanced-content { display: none; background: #0b1120; }
+    .advanced-content.open { display: block; }
     """
     
     # We will invoke replace twice. First for CSS/HTML top part.
@@ -1154,10 +1162,10 @@ def generate_dashboard(base_dir: Path):
                                     # Override status if decisioned
                                     if ledger_decision:
                                         status = ledger_decision
-                                        needs_action = False  # No action needed if decisioned
+                                        needs_action = False  # I18N_KO["NO_ACTION_NEEDED_IF_DECISIONED"]
                                 
                                 # Needs Action?
-                                needs_action = status in ["NEW", "PROPOSED"]
+                                needs_action = status in [I18N_KO["NEW"], I18N_KO["PROPOSED"]]
                                 
                                 # [Sync Fix] Check if Deep Analysis exists
                                 has_deep = False
@@ -1224,7 +1232,7 @@ def generate_dashboard(base_dir: Path):
                     action_ui = f"""
                     <div style="margin-top:8px; border-top:1px solid #f1f5f9; padding-top:8px;">
                         <label style="font-size:11px; cursor:pointer; color:#3b82f6; font-weight:600; display:flex; align-items:center;">
-                            <input type="checkbox" onchange="toggleAction('{vid}')" style="margin-right:5px;"> Learning Needed?
+                            <input type="checkbox" onchange="toggleAction('{vid}')" style="margin-right:5px;"> {I18N_KO['LEARNING_NEEDED']}?
                         </label>
                         
                         <div id="action-box-{vid}" style="display:none; margin-top:10px;">
@@ -1256,12 +1264,12 @@ def generate_dashboard(base_dir: Path):
                     <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
                         {it['published_at'][:10]}
                         { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
-                        { " <span style='color:#3b82f6; font-weight:bold; margin-left:5px;'>✨ Analysis Done</span>" if it.get('has_deep') else "" }
-                        { f" <span style='color:#8b5cf6; font-weight:bold; margin-left:5px;'>🚀 Evolution Needed ({it['evo_count']})</span>" if it.get('evo_count', 0) > 0 else "" }
-                        { " <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ STALE DATA WARNING</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
+                        { f" <span style='color:#3b82f6; font-weight:bold; margin-left:5px;'>✨ {I18N_KO['ANALYSIS_DONE']}</span>" if it.get('has_deep') else "" }
+                        { f" <span style='color:#8b5cf6; font-weight:bold; margin-left:5px;'>🚀 {I18N_KO['EVOLUTION_NEEDED']} ({it['evo_count']})</span>" if it.get('evo_count', 0) > 0 else "" }
+                        { f" <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ {I18N_KO['STALE_DATA_WARNING']}</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
                     </div>
                     <button onclick="showDeepLogicReport('{vid}')" style="width:100%; margin-top:10px; background:#f8fafc; border:1px solid #cbd5e1; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold; color:#475569;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='#f8fafc'">
-                        View Analysis & Action
+                        {I18N_KO['VIEW_ANALYSIS_ACTION']}
                     </button>
     """
                 
@@ -1793,9 +1801,9 @@ def generate_dashboard(base_dir: Path):
                          onclick="openNarrativeModal('{tid}')">
                          
                          <div style="background:#5b21b6; padding:15px; color:white;">
-                            <div style="font-size:10px; font-weight:bold; opacity:0.8; margin-bottom:5px;">OPEN CANDIDATE</div>
-                            <h3 style="margin:0; font-size:16px; line-height:1.4;">{t['topic_anchor']}</h3>
-                         </div>
+                        <div style="font-size:10px; font-weight:bold; opacity:0.8; margin-bottom:5px;">OPEN CANDIDATE</div>
+                        <h3 style="margin:0; font-size:16px; line-height:1.4;">{t['topic_anchor']}</h3>
+                     </div>
                          <div style="padding:20px;">
                             <div style="margin-bottom:10px;">
                                 <div style="font-size:11px; font-weight:bold; color:#64748b;">DRIVER</div>
@@ -2144,19 +2152,116 @@ def generate_dashboard(base_dir: Path):
         top_topics.append(mapped_t)
         all_scripts_map[f"narrative_{idx}"] = nt.get("script_kr", "스크립트가 없습니다.")
 
-    # [Sync Fix] Override Main Topic Title in the List with the AI-Generated Script Title
-    if top_topics and not top_topics[0].get("is_narrative") and script_exists and topic_title and topic_title != "주제 선정 대기중":
-        top_topics[0]["title"] = topic_title
+    # [Phase 18] Prepare Refactored Data (SPEAK, WATCH, EVIDENCE)
+    speak_topics = []
+    watch_topics = []
+    consolidated_anchors = []
     
-    if not top_topics and final_card.get("topic"):
-        # Fallback if no list but main topic exists
-        top_topics = [{
-            "title": final_card["topic"],
-            "rationale": final_card.get("decision_rationale"),
-            "level": "L3", # Default
-            "dataset_id": "unknown"
-        }]
+    # [Phase 18] Generate HTML for Refactored Panels
+    
+    # 1. SPEAK TODAY
+    speak_topics_html = ""
+    if speak_topics:
+        for idx, t in enumerate(speak_topics):
+            trace = t.get("speak_eligibility_trace", {})
+            reasons = trace.get("triggers", [])
+            anchors_sum = t.get("anchors", {})
+            
+            # Formatting anchors
+            ans_html = ""
+            for atype, alist in anchors_sum.items():
+                tags = "".join([f"<span style='background:#f1f5f9; color:#475569; padding:2px 8px; border-radius:4px; font-size:10px; margin-right:4px;'>{a['sensor_id']}</span>" for a in alist])
+                ans_html += f"<div style='margin-top:5px;'><span style='font-size:11px; font-weight:bold; color:#64748b;'>{atype.upper()}:</span> {tags}</div>"
 
+            speak_topics_html += f"""
+            <div class="card" style="margin-bottom:20px; border-left:4px solid #3b82f6;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">TOPIC #{idx+1} | {t.get('dataset_id','')}</div>
+                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b;">{t.get('title')}</h3>
+                
+                <div style="background:#f0f9ff; padding:12px; border-radius:6px; font-size:13px; margin-bottom:15px;">
+                    <strong>🎯 Triggered Conditions:</strong>
+                    <ul style="margin:5px 0 0 20px; padding:0;">
+                        {"".join([f"<li>{r}</li>" for r in reasons])}
+                    </ul>
+                </div>
+                
+                {ans_html}
+                
+                <div style="display:flex; gap:10px; margin-top:20px;">
+                    <button onclick="activate('insight-script')" style="background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📜 스크립트 보기</button>
+                    <button onclick="showDeepLogicReport('{t.get('topic_id','main')}')" style="background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📊 근거 보기</button>
+                    <button onclick="activate('rejection-ledger')" style="background:white; color:#64748b; border:1px solid #e2e8f0; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">🚫 보류/거절 보기</button>
+                </div>
+            </div>
+            """
+    else:
+        speak_topics_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 발화 가능한 대상이 없습니다. (No speakable topics today)</div>'
+
+    # 2. WATCH TODAY
+    watch_topics_html = ""
+    if watch_topics:
+        for idx, t in enumerate(watch_topics):
+            trace = t.get("speak_eligibility_trace", {})
+            shift_meta = trace.get("shift_metadata", {})
+            reasons = shift_meta.get("reasons", ["Narrative shift detected, awaiting anchor confirmation"])
+            
+            # derive what to watch next (missing anchors)
+            missing = trace.get("missing_anchors", ["Awaiting Anchor Confirmation"])
+            
+            watch_topics_html += f"""
+            <div class="card" style="margin-bottom:20px; border-left:4px solid #f59e0b;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">WATCHING #{idx+1}</div>
+                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b;">{t.get('title')}</h3>
+                
+                <div style="margin-bottom:15px;">
+                    <span style="font-size:11px; font-weight:bold; color:#b45309; text-transform:uppercase;">Reason:</span>
+                    <div style="font-size:13px; color:#475569; margin-top:4px;">{", ".join(reasons)}</div>
+                </div>
+                
+                <div style="background:#fffbeb; padding:12px; border-radius:6px; border:1px solid #fef3c7;">
+                    <div style="font-size:12px; font-weight:bold; color:#b45309; margin-bottom:5px;">🔭 What to watch next:</div>
+                    <div style="font-size:13px; color:#92400e;">{" / ".join(missing)}</div>
+                </div>
+            </div>
+            """
+    else:
+        watch_topics_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 관찰 중인 대상이 없습니다.</div>'
+
+    # 3. EVIDENCE TODAY
+    evidence_today_html = ""
+    if consolidated_anchors:
+        # Group by type
+        grouped = {}
+        for a in consolidated_anchors:
+            atype = a.get("_type", "other")
+            if atype not in grouped: grouped[atype] = []
+            grouped[atype].append(a)
+            
+        for atype, items in grouped.items():
+            rows = ""
+            for it in items:
+                rows += f"""
+                <tr style="border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:10px; font-weight:600; color:#1e293b;">{it.get('sensor_id')}</td>
+                    <td style="padding:10px; font-size:12px; color:#64748b;">{it.get('_topic_title')}</td>
+                    <td style="padding:10px; text-align:right; font-size:11px; color:#94a3b8;">{it.get('timestamp','-')}</td>
+                </tr>
+                """
+            
+            evidence_today_html += f"""
+            <div class="card" style="margin-bottom:25px; padding:0; overflow:hidden;">
+                <div style="background:#f8fafc; padding:12px 20px; border-bottom:1px solid #e2e8f0; font-weight:800; font-size:12px; color:#475569; text-transform:uppercase;">
+                    {atype.replace("_"," ")}
+                </div>
+                <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                    {rows}
+                </table>
+            </div>
+            """
+    else:
+        evidence_today_html = '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">수집된 근거(Anchors) 데이터가 없습니다.</div>'
+    
+    # 7. Topic List Tab Logic
     if top_topics:
         list_items = ""
         for idx, t in enumerate(top_topics):
@@ -2201,21 +2306,10 @@ def generate_dashboard(base_dir: Path):
             
             # Load scripts in order of top_topics
             scripts_content = []
-            for i, t in enumerate(top_topics):
-                if t.get("is_narrative"):
-                    # Find which narrative index it was
-                    # (In our simple append loop, we can just track it)
-                    pass
-                
-                # Actually, let's just use a simpler way: 
-                # Since we appended narrative topics, the order in top_topics matches the order we want.
-                # But we need to distinguish where to get the script.
-                
-            # Refined scripts_content generation
-            scripts_content = []
             structural_count = 0
             narrative_count = 0
             for t in top_topics:
+                # Refined scripts_content generation
                 if t.get("is_narrative"):
                     scripts_content.append(all_scripts_map.get(f"narrative_{narrative_count}", ""))
                     narrative_count += 1
@@ -2255,28 +2349,28 @@ def generate_dashboard(base_dir: Path):
                     const mean = d.rolling_mean_20d !== undefined ? parseFloat(d.rolling_mean_20d).toFixed(2) : '-';
                     
                     evidenceHtml = `
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 데이터 증거 (Data Evidence)</h3>
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 {I18N_KO['DATA_EVIDENCE']}</h3>
                     <div style="background:#f0f9ff; padding:15px; border-radius:6px; border:1px solid #bae6fd; margin-bottom:20px;">
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:12px;">
-                            <div><span style="color:#64748b;">현재값 (Value):</span> <span style="font-weight:bold; color:#0f172a;">${{val}}</span></div>
+                            <div><span style="color:#64748b;">현재값 ({I18N_KO['VALUE']}):</span> <span style="font-weight:bold; color:#0f172a;">${{val}}</span></div>
                             <div><span style="color:#64748b;">Z-Score:</span> <span style="font-weight:bold; color:#0369a1;">${{z}}</span></div>
                             <div><span style="color:#64748b;">평균 (20d Mean):</span> <span style="font-weight:bold; color:#334155;">${{mean}}</span></div>
                             <div><span style="color:#64748b;">Percentile:</span> <span style="font-weight:bold; color:#334155;">${{pct}}</span></div>
                         </div>
                         <div style="margin-top:10px; padding-top:10px; border-top:1px solid #e0f2fe; font-size:11px; color:#0c4a6e;">
-                            <b>Signal Logic:</b> ${{d.reasoning || 'N/A'}}
+                            <b>{I18N_KO['SIGNAL_LOGIC']}:</b> ${{d.reasoning || 'N/A'}}
                         </div>
                     </div>
                     `;
                 }} else if (t.is_narrative && t.observed_metrics) {{
                     evidenceHtml = `
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 데이터 증거 (Data Evidence)</h3>
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 {I18N_KO['DATA_EVIDENCE']}</h3>
                     <div style="background:#f5f3ff; padding:15px; border-radius:6px; border:1px solid #ddd6fe; margin-bottom:20px;">
                         <div style="font-size:12px; color:#334155;">
                             ${{t.observed_metrics.map(m => `• <span style="font-weight:bold;">${{m}}</span>`).join('<br>')}}
                         </div>
                         <div style="margin-top:10px; padding-top:10px; border-top:1px solid #ede9fe; font-size:11px; color:#6b21a8;">
-                            <b>Trigger Event:</b> ${{t.trigger_event || 'N/A'}}
+                            <b>{I18N_KO['TRIGGER_EVENT']}:</b> ${{t.trigger_event || 'N/A'}}
                         </div>
                     </div>
                     `;
@@ -2291,11 +2385,11 @@ def generate_dashboard(base_dir: Path):
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
                         <div style="display:flex; gap:10px; align-items:center;">
                             <div style="font-size:11px; color:#fff; background:${{levelColor}}; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{levelLabel}}</div>
-                            <div style="font-size:11px; color:#64748b; font-weight:bold;">신뢰도: <span style="color:#10b981;">${{t.confidence || 0}}%</span></div>
+                            <div style="font-size:11px; color:#64748b; font-weight:bold;">{I18N_KO['CONFIDENCE']}: <span style="color:#10b981;">${{t.confidence || 0}}%</span></div>
                         </div>
                     </div>
                     
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">🎯 선정 이유 (Rationale)</h3>
+                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">🎯 {I18N_KO['RATIONALE']}</h3>
                     <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
                         ${{t.rationale}}
                     </div>
@@ -2303,7 +2397,7 @@ def generate_dashboard(base_dir: Path):
                     ${{evidenceHtml}}
 
                     ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
-                    <h3 style="font-size:14px; color:#166534; margin-bottom:10px;">🚀 관련 테마 대장주</h3>
+                    <h3 style="font-size:14px; color:#166534; margin-bottom:10px;">🚀 {I18N_KO['LEADER_STOCKS']}</h3>
                     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
                         ${{t.leader_stocks.map(s => `<span style="font-size:11px; background:#f0fdf4; border:1px solid #bbf7d0; padding:4px 12px; border-radius:20px; color:#166534; font-weight:700;">${{s}}</span>`).join('')}}
                     </div>
@@ -2379,6 +2473,18 @@ def generate_dashboard(base_dir: Path):
                 
                 // Scroll to top
                 document.querySelector('.main-panel').scrollTop = 0;
+            }}
+
+            function toggleAdvanced() {{
+                const menu = document.getElementById('advanced-menu');
+                const arrow = document.getElementById('adv-arrow');
+                if (menu.classList.contains('open')) {{
+                    menu.classList.remove('open');
+                    arrow.textContent = '▼';
+                }} else {{
+                    menu.classList.add('open');
+                    arrow.textContent = '▲';
+                }}
             }}
             
             function toggleAction(id) {{
@@ -2473,23 +2579,21 @@ def generate_dashboard(base_dir: Path):
             <div style="display:flex; align-items:center; gap:20px;">
                 <h1>Hoin Insight</h1>
                 
-                <!-- Core Health Widget -->
-                <div class="core-health-box">
-                    <span style="font-size:11px; font-weight:bold; color:#475569; margin-right:5px;">CORE:</span>
-                    <div class="core-item"><span class="core-label">US10Y</span><span class="core-val cv-{core_bd.get('US10Y','FAIL')}">{core_bd.get('US10Y','-')}</span></div>
-                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">SPX</span><span class="core-val cv-{core_bd.get('SPX','FAIL')}">{core_bd.get('SPX','-')}</span></div>
-                    <div style="width:1px; height:20px; background:#e2e8f0;"></div>
-                    <div class="core-item"><span class="core-label">BTC</span><span class="core-val cv-{core_bd.get('BTC','FAIL')}">{core_bd.get('BTC','-')}</span></div>
+                <div style="display:flex; gap:10px; align-items:center; margin-left:10px;">
+                    <div class="stat-counter" title="Latest Run Date">📅 {status_data['run_date']}</div>
+                    <div class="stat-counter" style="background:#ecfdf5; color:#059669; border:1px solid #10b981;">
+                        SPEAK: <strong>{len(speak_topics)}</strong>
+                    </div>
+                    <div class="stat-counter" style="background:#fff7ed; color:#d97706; border:1px solid #f59e0b;">
+                        WATCH: <strong>{len(watch_topics)}</strong>
+                    </div>
+                    <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
                 </div>
-                
-                <div class="conf-badge {conf_cls}">Confidence: {conf_level}</div>
             </div>
             
-            <div style="display:flex; gap:10px;">
-                <div class="conf-badge {content_cls}">{content_mode}</div>
-                <div class="conf-badge {status_data['narrative_cls']}">Narrative: {status_data['narrative_label']}</div>
-                <div class="conf-badge {preset_cls}" title="Content Depth Preset">Preset: {preset_label}</div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <div class="conf-badge bg-green-100 text-green-800">{I18N_KO['NORMAL']}</div>
+                <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">{I18N_KO['PRESET']}: {I18N_KO['STANDARD']}</div>
                 <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
             </div>
         </div>
@@ -2499,43 +2603,76 @@ def generate_dashboard(base_dir: Path):
             <!-- LEFT: Navigation Panel -->
             <div class="nav-panel">
                 <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
-                    <span>HOIN INSIGHT v1.1.1</span>
+                    <span>HOIN INSIGHT v2.0</span>
                     <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
                 </div>
                 
-                <div class="nav-label">MAIN VIEW</div>
-                <div class="nav-item active" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 오늘의 인사이트</div>
-                <div class="nav-item" onclick="activate('topic-gate')"><span class="nav-icon">🔥</span> Topic Gate (이벤트 기반)</div>
-                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">📊</span> 금일 선정 토픽 (Top 5)</div>
-                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 일별 아카이브 (Daily History)</div>
-                <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> 아키텍처</div>
+                <div class="nav-label">PRODUCTION FLOW</div>
+                <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 오늘 발화 가능 (SPEAK)</div>
+                <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 오늘 관찰 (WATCH)</div>
+                <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 오늘 근거 (EVIDENCE)</div>
+                <div class="nav-item" onclick="activate('topic-gate')"><span class="nav-icon">🔥</span> 토픽 게이트</div>
+                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 아카이브</div>
                 
-                <div class="nav-label">OPERATIONS</div>
-                <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> 운영 지표</div>
-                <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> 데이터 수집 현황</div>
-                <div class="nav-item" onclick="activate('system-evolution')"><span class="nav-icon">🚀</span> 시스템 진화 제안</div>
-                <div class="nav-item" onclick="activate('change-effectiveness')"><span class="nav-icon">📊</span> 변경 효과 분석</div>
-
-                <div class="nav-label">WORKFLOW</div>
-                <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">🎬</span> 내러티브 큐 (Hunter)</div>
-                <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> 유튜브 인박스</div>
-                <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> 부활 엔진</div>
+                <div class="advanced-toggle" onclick="toggleAdvanced()">
+                    <span>ADVANCED TOOLS</span>
+                    <span id="adv-arrow">▼</span>
+                </div>
                 
-                <div class="nav-label">ARCHIVE / LOGS</div>
-                <div class="nav-item" onclick="activate('rejection-ledger')"><span class="nav-icon">🚫</span> 거절/보류 리스트</div>
-                <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> 토픽 후보군</div>
-                
-                <div class="nav-label">OUTPUT</div>
-                <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> 최종 의사결정 (Raw)</div>
-                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 인사이트 스크립트 (Raw)</div>
+                <div id="advanced-menu" class="advanced-content">
+                    <div class="nav-label">ENGINE & OPS</div>
+                    <div class="nav-item" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 기존 인사이트 뷰</div>
+                    <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> {I18N_KO['ARCHITECTURE']}</div>
+                    <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> {I18N_KO['OPS_SCOREBOARD']}</div>
+                    <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> {I18N_KO['DATA_STATUS']}</div>
+                    <div class="nav-item" onclick="activate('system-evolution')"><span class="nav-icon">🚀</span> {I18N_KO['SYSTEM_EVOLUTION']}</div>
+                    
+                    <div class="nav-label">WORKFLOW</div>
+                    <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">🎬</span> {I18N_KO['NARRATIVE_QUEUE']}</div>
+                    <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> {I18N_KO['YOUTUBE_INBOX']}</div>
+                    <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> {I18N_KO['REVIVAL_ENGINE']}</div>
+                    
+                    <div class="nav-label">LOGS & RAW</div>
+                    <div class="nav-item" onclick="activate('rejection-ledger')"><span class="nav-icon">🚫</span> {I18N_KO['REJECTION_LIST']}</div>
+                    <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> {I18N_KO['TOPIC_CANDIDATES']}</div>
+                    <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> {I18N_KO['FINAL_DECISION_RAW']}</div>
+                    <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> {I18N_KO['INSIGHT_SCRIPT_RAW']}</div>
+                </div>
             </div>
 
             <!-- CENTER: Main Process Flow (Tabs) -->
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
-                    <!-- TAB 0: Today's Insight (NEW HOME) -->
-                    <div id="today-insight" class="tab-content active" style="display:block;">
+                    <!-- NEW TAB: SPEAK TODAY -->
+                    <div id="speak-today" class="tab-content active" style="display:block;">
+                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
+                            <span style="background:#3b82f6; color:white; padding:4px 12px; border-radius:8px; font-size:14px;">SPEAKABLE</span>
+                            오늘 발화 가능 토픽
+                        </h2>
+                        
+                        {speak_topics_html}
+                    </div>
+
+                    <!-- NEW TAB: WATCH TODAY -->
+                    <div id="watch-today" class="tab-content" style="display:none;">
+                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
+                            <span style="background:#f59e0b; color:white; padding:4px 12px; border-radius:8px; font-size:14px;">WATCHING</span>
+                            오늘 관찰 토픽
+                        </h2>
+                        
+                        {watch_topics_html}
+                    </div>
+
+                    <!-- NEW TAB: EVIDENCE TODAY -->
+                    <div id="evidence-today" class="tab-content" style="display:none;">
+                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px;">📊 오늘 근거 (Consolidated Evidence)</h2>
+                        
+                        {evidence_today_html}
+                    </div>
+
+                    <!-- TAB 0: Today's Insight (LEGACY HOME) -->
+                    <div id="today-insight" class="tab-content" style="display:none;">
                         <div style="max-width: 900px; margin: 0 auto;">
                             <!-- Header -->
                             <div style="text-align:center; margin-bottom:30px;">
