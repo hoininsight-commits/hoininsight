@@ -7,10 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import json
 import pandas as pd
-import matplotlib
-# Force headless backend before importing pyplot
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+# matplotlib imported lazily
 
 from src.registry.loader import load_datasets
 
@@ -98,6 +95,14 @@ def generate_curated_charts(base_dir: Path, days: int = 90) -> Tuple[Path, List[
     datasets = [ds for ds in load_datasets(reg_path) if ds.enabled]
 
     results: List[ChartResult] = []
+
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        print("[Charts] Matplotlib not found, skipping charts.", file=sys.stderr)
+        return out_dir, []
 
     for ds in datasets:
         curated = base_dir / ds.curated_path

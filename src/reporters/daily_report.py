@@ -58,6 +58,41 @@ def render_topic_gate_section(as_of_date: str) -> str:
 def _ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
 
+def _load_topic_gate_output(as_of_date: str):
+    p = Path("data") / "topics" / "gate" / as_of_date.replace("-", "/") / "topic_gate_output.json"
+    if not p.exists():
+        return None
+    return json.loads(p.read_text(encoding="utf-8"))
+
+def render_topic_gate_section(as_of_date: str) -> str:
+    data = _load_topic_gate_output(as_of_date)
+    if not data:
+        return "\n## Content Topic (Topic Decision Gate)\n- (no gate output)\n"
+
+    lines = []
+    lines.append("\n## Content Topic (Topic Decision Gate)\n")
+    lines.append(f"- **Title:** {data.get('title','')}")
+    lines.append(f"- **Question:** {data.get('question','')}")
+    lines.append(f"- **Why people confused:** {data.get('why_people_confused','')}")
+    lines.append("- **Key reasons:**")
+    for r in data.get("key_reasons", [])[:3]:
+        lines.append(f"  - {r}")
+
+    nums = data.get("numbers", [])[:3]
+    if nums:
+        lines.append("- **Numbers:**")
+        for n in nums:
+            lines.append(f"  - {n.get('label')}: {n.get('value')} {n.get('unit')}")
+    else:
+        lines.append("- **Numbers:** (none)")
+
+    lines.append(f"- **Risk:** {data.get('risk_one','')}")
+    lines.append(f"- **Confidence:** {data.get('confidence','LOW')}")
+    lines.append(f"- **Handoff to Structural:** {data.get('handoff_to_structural', False)}")
+    lines.append(f"- **Handoff reason:** {data.get('handoff_reason','')}")
+
+    return "\n".join(lines)
+
 def _read_json(p: Path) -> Any:
     return json.loads(p.read_text(encoding="utf-8"))
 

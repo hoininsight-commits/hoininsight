@@ -13,7 +13,8 @@ from src.pipeline.run_collect import main as collect_main
 from src.pipeline.run_normalize import main as normalize_main
 from src.pipeline.run_anomaly import main as anomaly_main
 from src.pipeline.run_topic import main as topic_main
-from src.topics.topic_candidate_gate import main as gate_main # [Fixed] Add Gate
+from pipeline.run_topic_gate import main as gate_pipeline_main # [Phase 50] Strict Topic Gate
+from src.reporters.data_snapshot import write_data_snapshot
 from src.validation.output_check import run_output_checks
 from src.reporters.daily_report import write_daily_brief
 from src.reporting.health import write_health
@@ -112,51 +113,26 @@ def main(target_categories: list[str] = None):
 
         details_lines.append("anchor_engine: ok")
         print("anchor_engine: ok", file=sys.stderr)
-        
-        # Legacy/Fallback Gate (Optional: Keep running for comparison or disable?)
-        # User wants "Economy Hunter" logic. Let's make sure the report picks up the Anchor Result.
-        # Ideally, we should unify this into `final_decision_card`.
-        
-        # For now, let's keep the pipeline running as is, BUT ensure `write_daily_brief` reads the Anchor Result?
-        # Or better: `run_topic_gate` (which generates the candidates) should now USE Anchor Logic?
-        # Actually, Anchor Engine REPLACES the naive candidate generation.
-        
-        # Let's override the `content_gate_output.json` with Anchor Result converted to Schema?
-        # This is the fastest way to pipe it into specific report sections without rewriting the report writer.
-        
-        if anchor_results:
-            # Convert AnchorResult -> TopicGateOutput Schema (topic_gate_output_v1)
-            # This allows the existing Report Writer to render it.
-            
-            best = anchor_results[0]
-            gate_out_path = Path("data/topics/gate") / datetime.now().strftime("%Y/%m/%d") / "topic_gate_output.json"
-            gate_out_path.parent.mkdir(parents=True, exist_ok=True)
-            
-            # Map fields
-            mapped_output = {
-                "schema_version": "topic_gate_output_v1",
-                "as_of_date": datetime.now().strftime("%Y-%m-%d"),
-                "topic_id": f"anchor_{int(time.time())}",
-                "title": f"[{best.anomaly_logic}] {best.why_now_type}",
-                "question": f"왜 지금 {best.anomaly_logic} 현상이 ({best.why_now_type}) 형태로 나타났는가?",
-                "why_people_confused": f"데이터 축: {', '.join(best.data_axis)}",
-                "key_reasons": [
-                    f"Baseline Match: {', '.join(best.baseline_match)}",
-                    f"Proof: {best.level_proof}"
-                ],
-                "numbers": [],
-                "risk_one": f"Gap Detection: {best.gap_detection}",
-                "confidence": "HIGH" if best.level == "L4" else "MEDIUM",
-                "handoff_to_structural": True if best.level == "L4" else False,
-                "handoff_reason": best.gap_detection
-            }
-            
-            with open(gate_out_path, "w", encoding="utf-8") as f:
-                json.dump(mapped_output, f, indent=2, ensure_ascii=False)
-            print("[Anchor] Injected Anchor Result into Topic Gate Output path.", file=sys.stdout)
 
-        details_lines.append("content_gate: ok (via Anchor)")
-        print("content_gate: ok", file=sys.stderr)
+        # [Phase 50] Strict Topic Decision Gate (Engine 2)
+        # 1. Ensure Data Snapshot (JSON) exists
+        from src.reporters.data_snapshot import write_data_snapshot
+        try:
+            snapshot_path = write_data_snapshot(Path("."))
+            details_lines.append(f"snapshot: ok ({snapshot_path})")
+            print("snapshot: ok", file=sys.stderr)
+        except Exception as e:
+             print(f"snapshot: warn ({e})", file=sys.stderr)
+
+        # 2. Run Gate Pipeline (Content Hook Logic)
+        try:
+            gate_pipeline_main(datetime.now().strftime("%Y-%m-%d"))
+            details_lines.append("topic_gate: ok")
+            print("topic_gate: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"topic_gate: fail ({e})", file=sys.stderr)
+
+        
         
         # [Fixed] Ensure Final Decision Card is generated
         from src.decision.final_decision_card import main as decision_main

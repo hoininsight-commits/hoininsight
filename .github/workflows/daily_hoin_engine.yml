@@ -36,6 +36,15 @@ jobs:
       run: |
         python src/ops/run_daily_pipeline.py
 
+    - name: Run Topic Decision Gate (Engine 2)
+      env:
+        # Re-use same envs if needed (though gate mostly uses local JSONs)
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
+      run: |
+        # Engine 2: Topic Decision Gate
+        # Reads daily_snapshot.json -> writes topic_gate_output.json
+        python -m pipeline.run_topic_gate
+
     - name: Commit and Push Results
       run: |
         git config --global user.name "Hoin Engine Bot"

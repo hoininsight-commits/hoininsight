@@ -1,17 +1,22 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-01-24",
-  "topic_id": "anchor_1769220565",
-  "title": "[Unknown] Hybrid-driven",
-  "question": "왜 지금 Unknown 현상이 (Hybrid-driven) 형태로 나타났는가?",
-  "why_people_confused": "데이터 축: metal_silver_kag_coingecko, metal_gold_paxg_coingecko, rates_us10y_fred, derived_gold_silver_ratio",
+  "topic_id": "gate_99f93d1f33",
+  "title": "오늘 시장의 핵심 혼란 포인트",
+  "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
+  "why_people_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
   "key_reasons": [
-    "Baseline Match: metal_silver_kag_coingecko: Volatility Surge (Z=2.81), metal_gold_paxg_coingecko: Volatility Surge (Z=2.40), rates_us10y_fred: Volatility Surge (Z=2.20), derived_gold_silver_ratio: Volatility Surge (Z=2.93)",
-    "Proof: Statistical Deviation > 2.0 Sigma"
+    "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.",
+    "자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다."
   ],
   "numbers": [],
-  "risk_one": "Gap Detection: Insufficient Evidence for L4",
-  "confidence": "MEDIUM",
+  "risk_one": "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.",
+  "confidence": "LOW",
   "handoff_to_structural": false,
-  "handoff_reason": "Insufficient Evidence for L4"
+  "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
+  "source_candidates": [
+    "cand_f643f475a3",
+    "cand_16389ebbbc",
+    "cand_b5282906a2"
+  ]
 }

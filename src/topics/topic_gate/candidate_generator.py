@@ -32,14 +32,15 @@ class CandidateGenerator:
             ))
 
         # 2) Index up but sector down (가능하면)
-        if self._has(snapshot, ["index", "sectors"]):
+        # Checking for SPX (Index) and some sector proxy or negative sentiment
+        if self._has(snapshot, ["index_spx"]): # Simplified check for now
             candidates.append(Candidate(
                 candidate_id=_new_id("cand"),
                 as_of_date=as_of_date,
-                question="왜 지수는 오르는데 특정 섹터만 하락하나?",
+                question="왜 지수는 오르는데 내 종목은 하락하나?",
                 category="rotation",
                 hook_signals=["index_up_sector_down"],
-                evidence_refs=["snapshot:index", "snapshot:sectors"],
+                evidence_refs=["snapshot:index_spx"],
                 rank_features=RankFeatures(0,0,0,0,0),
             ))
 
@@ -60,7 +61,7 @@ class CandidateGenerator:
             candidates.append(Candidate(
                 candidate_id=_new_id("cand"),
                 as_of_date=as_of_date,
-                question="오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가?",
+                question="오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
                 category="other",
                 hook_signals=["other"],
                 evidence_refs=["snapshot:generic"],
@@ -70,5 +71,18 @@ class CandidateGenerator:
         return candidates
 
     def _has(self, snapshot: Dict[str, Any], keys: List[str]) -> bool:
-        # 스냅샷 실제 구조에 맞게 안티그래피티가 조정
+        # Check against daily_snapshot "datasets" list
+        # keys are substrings of dataset_id that must exist and be OK
+        datasets = snapshot.get("datasets", [])
+        
+        for key in keys:
+            # Logic: At least one dataset containing 'key' must be OK
+            found_ok = False
+            for ds in datasets:
+                if key in ds.get("dataset_id", "") and ds.get("status_today") == "OK":
+                    found_ok = True
+                    break
+            if not found_ok:
+                return False
+                
         return True

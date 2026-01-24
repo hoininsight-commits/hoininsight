@@ -211,4 +211,16 @@ def write_data_snapshot(base_dir: Path) -> Path:
     lines.append("")
 
     out_path.write_text("\n".join(lines), encoding="utf-8")
+    
+    # [Phase 50] Also write JSON for Topic Gate Input
+    import dataclasses
+    json_path = out_dir / "daily_snapshot.json"
+    snapshot_payload = {
+        "meta": meta,
+        "datasets": [dataclasses.asdict(s) for s in snaps],
+        "chart_map": {k: dataclasses.asdict(v) for k, v in chart_map.items() if v.ok}
+    }
+    json_path.write_text(json.dumps(snapshot_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    
     return out_path
+
