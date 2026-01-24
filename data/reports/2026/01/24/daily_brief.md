@@ -62,18 +62,23 @@ Narrative Drift Signals:
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: (no meta regime detected) (Conf: 0.0%)
-- Revival: 0 candidate(s)
-- Ops Health: 0% Freshness
-- Structural Topic: **[Unknown] Hybrid-driven**
+
+## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
+- **Topic:** [Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)
+- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.8배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+
+## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
+- **Topic:** [Unknown] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
 
 - **Title:** [Unknown] Hybrid-driven
 - **Question:** 왜 지금 Unknown 현상이 (Hybrid-driven) 형태로 나타났는가?
-- **Why people confused:** 데이터 축: metal_gold_paxg_coingecko, rates_us10y_fred, metal_silver_kag_coingecko, derived_gold_silver_ratio
+- **Why people confused:** 데이터 축: metal_silver_kag_coingecko, metal_gold_paxg_coingecko, rates_us10y_fred, derived_gold_silver_ratio
 - **Key reasons:**
-  - Baseline Match: metal_gold_paxg_coingecko: Volatility Surge (Z=2.42), rates_us10y_fred: Volatility Surge (Z=2.20), metal_silver_kag_coingecko: Volatility Surge (Z=2.81), derived_gold_silver_ratio: Volatility Surge (Z=2.90)
+  - Baseline Match: metal_silver_kag_coingecko: Volatility Surge (Z=2.81), metal_gold_paxg_coingecko: Volatility Surge (Z=2.40), rates_us10y_fred: Volatility Surge (Z=2.20), derived_gold_silver_ratio: Volatility Surge (Z=2.93)
   - Proof: Statistical Deviation > 2.0 Sigma
 - **Numbers:** (none)
 - **Risk:** Gap Detection: Insufficient Evidence for L4

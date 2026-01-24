@@ -1,12 +1,12 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-01-24",
-  "topic_id": "anchor_1769219983",
+  "topic_id": "anchor_1769220565",
   "title": "[Unknown] Hybrid-driven",
   "question": "왜 지금 Unknown 현상이 (Hybrid-driven) 형태로 나타났는가?",
-  "why_people_confused": "데이터 축: metal_gold_paxg_coingecko, rates_us10y_fred, metal_silver_kag_coingecko, derived_gold_silver_ratio",
+  "why_people_confused": "데이터 축: metal_silver_kag_coingecko, metal_gold_paxg_coingecko, rates_us10y_fred, derived_gold_silver_ratio",
   "key_reasons": [
-    "Baseline Match: metal_gold_paxg_coingecko: Volatility Surge (Z=2.42), rates_us10y_fred: Volatility Surge (Z=2.20), metal_silver_kag_coingecko: Volatility Surge (Z=2.81), derived_gold_silver_ratio: Volatility Surge (Z=2.90)",
+    "Baseline Match: metal_silver_kag_coingecko: Volatility Surge (Z=2.81), metal_gold_paxg_coingecko: Volatility Surge (Z=2.40), rates_us10y_fred: Volatility Surge (Z=2.20), derived_gold_silver_ratio: Volatility Surge (Z=2.93)",
     "Proof: Statistical Deviation > 2.0 Sigma"
   ],
   "numbers": [],
