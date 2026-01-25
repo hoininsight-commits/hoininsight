@@ -33,6 +33,20 @@ jobs:
         run: |
           echo "AS_OF_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
 
+      - name: Run Data Collection
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+        run: |
+          echo "[PIPELINE] ========== PHASE 1: DATA COLLECTION =========="
+          python -m src.collectors.market_collectors || echo "[WARN] Market collectors failed"
+          python -m src.collectors.fred_collector || echo "[WARN] FRED collector failed"
+          python -m src.collectors.ecos_collector || echo "[WARN] ECOS collector failed"
+          python -m src.collectors.coingecko_collector || echo "[WARN] CoinGecko collector failed"
+          python -m src.collectors.policy_collector || echo "[WARN] Policy collector failed"
+          echo "[PIPELINE] Data collection completed"
+
       - name: Run Content Topic Gate
         run: |
           python -m src.pipeline.run_topic_gate --as-of-date "${AS_OF_DATE}"
