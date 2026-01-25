@@ -1172,3 +1172,44 @@ def test_impact_window_logic(mock_env):
     # 5. Fallback
     assert cards["f1"]["impact_window"] == "MID"
     assert "누적 확인 구간(Inferred)" in cards["f1"]["impact_hint"]
+
+def test_view_separation(mock_env):
+    """Verify Step 19: Prospective vs Accountability Separation"""
+    # 1. Mock a card with Outcome
+    base_dir, gate_dir = mock_env
+    dash = DecisionDashboard(base_dir)
+    
+    # Needs a card with outcome. We can assume build_dashboard_data works.
+    # We construct data manually for render_markdown test.
+    data = {"cards": [{
+        "topic_id": "sep1", "title": "Separation Test", "status": "READY",
+        "impact_window": "IMMEDIATE", "impact_hint": "Hint",
+        "outcome": "CONFIRMED",
+        "selection_rationale": ["Reason 1"],
+        "eligibility_badge": "🟢 SPEAKABLE",
+        "eligibility_reason": "Pass",
+        "evidence_count": 5 # Required field
+    }]}
+    
+    md = dash.render_markdown(data)
+    
+    # Check Order
+    # 1. Prospective elements
+    assert "⏱ IMPACT WINDOW" in md
+    
+    # 2. Separator
+    assert "--- 🛡️ ACCOUNTABILITY CHECK ---" in md
+    
+    # 3. Accountability elements AFTER separator
+    # Split by separator
+    parts = md.split("--- 🛡️ ACCOUNTABILITY CHECK ---")
+    assert len(parts) == 2
+    prospective_part = parts[0]
+    accountability_part = parts[1]
+    
+    # Verify Prospective items are NOT in Accountability part
+    assert "IMPACT WINDOW" in prospective_part
+    assert "OUTCOME" not in prospective_part
+    
+    # Verify Accountability items are in Accountability part
+    assert "**🧪 OUTCOME**: CONFIRMED" in accountability_part

@@ -492,13 +492,6 @@ class DecisionDashboard:
             lines.append(f"\n**⏱ IMPACT WINDOW**: {imp_win}")
             lines.append(f"> {imp_hint}")
             
-        # Step 18: Post-Mortem Outcome
-        outcome = c.get('outcome')
-        if outcome and outcome != "UNRESOLVED":
-            lines.append(f"\n**🧪 OUTCOME**: {outcome}")
-        elif outcome == "UNRESOLVED":
-            lines.append(f"\n_🧪 OUTCOME: {outcome}_") # Greyed out/Italic
-            
         badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
         reason = c.get('eligibility_reason', 'Criteria not met')
         lines.append(f"\n**{badge}**: {reason}")
@@ -552,6 +545,15 @@ class DecisionDashboard:
         else:
             lines.append("\n**🔍 EVIDENCE REFERENCES**")
             lines.append("- No verifiable evidence available.")
+            
+        # Step 19: Accountability View (Separated)
+        outcome = c.get('outcome')
+        if outcome:
+            lines.append(f"\n--- 🛡️ ACCOUNTABILITY CHECK ---")
+            if outcome != "UNRESOLVED":
+                lines.append(f"**🧪 OUTCOME**: {outcome}")
+            else:
+                lines.append(f"_🧪 OUTCOME: {outcome}_")
             
         lines.append("---")
         return "\n".join(lines)
