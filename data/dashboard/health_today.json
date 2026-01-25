@@ -1,0 +1,18 @@
+{
+  "run_date": "2026-01-25",
+  "checked_at": "2026-01-25T17:44:41.468799",
+  "status": "FAIL",
+  "metrics": {
+    "events_count": 0,
+    "anomalies_count": 0,
+    "topics_count": {
+      "READY": 0,
+      "HOLD": 0,
+      "DROP": 0
+    }
+  },
+  "missing_files": [
+    "data/reports/2026/01/25/daily_lock.json"
+  ],
+  "schema_errors": []
+}
