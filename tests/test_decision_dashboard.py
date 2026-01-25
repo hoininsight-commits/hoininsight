@@ -707,3 +707,69 @@ def test_promotion_requirements(mock_env):
     data = dash.build_dashboard_data("2026-01-24")
     md = dash.render_markdown(data)
     assert "Official figures exist, but attribution to specific beneficiaries" in md
+
+def test_sanity_and_drift_monitor(mock_env):
+    """Verify Step 9: System Sanity & Drift Monitor"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene: 4 topics, 1 READY, 3 HOLD. 3 FACT-DRIVEN (75% > 70% threshold)
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "r1", "title": "Ready One", "total_score": 90, "is_fact_driven": True,
+                "numbers": [{"label":"A","value":"1"}, {"label":"B","value":"2"}]
+            },
+            {
+                "topic_id": "h1", "title": "Hold One", "total_score": 50, "is_fact_driven": True,
+                "numbers": [{"label":"C","value":"3"}] # Will trigger EVIDENCE_TOO_THIN
+            },
+            {
+                "topic_id": "h2", "title": "Hold Two", "total_score": 40, "is_fact_driven": True,
+                "numbers": [] # Will trigger EVIDENCE_TOO_THIN
+            },
+            {
+                "topic_id": "h3", "title": "Anomaly Hold", "total_score": 30, "is_fact_driven": False,
+                "numbers": [{"label":"D","value":"4"}] # TITLE_MISMATCH check
+            }
+        ]
+    }), encoding="utf-8")
+    
+    # r1: READY
+    (gate_dir / "script_v1_r1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    # others: HOLD
+    for tid in ["h1", "h2", "h3"]:
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({
+            "quality_status": "HOLD", "failure_codes": ["WEAK_EVIDENCE"]
+        }), encoding="utf-8")
+
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    # 1. System Status Panel
+    assert "🏥 SYSTEM STATUS (Today)" in md
+    assert "**Topics Generated**: 4" in md
+    assert "**READY / HOLD / DROP**: 1 / 3 / 0" in md
+    assert "**FACT-DRIVEN / ANOMALY-DRIVEN**: 3 / 1" in md
+    
+    # 2. FACT OVERDOMINANCE Warning (3/4 = 75% > 70%)
+    assert "⚠️ FACT OVERDOMINANCE" in md
+    assert "시스템이 리포트 기반의 팩트에 과하게 치중해 있습니다" in md
+    
+    # 3. EVIDENCE THINNING Warning (h1, h2 have flags based on evidence count < 2)
+    # build_dashboard_data computes flags.
+    assert "⚠️ EVIDENCE THINNING" in md
+    
+    # 4. SPEAK DROUGHT (Currently READY=1, so shouldn't trigger)
+    assert "⚠️ SPEAK DROUGHT" not in md
+    
+    # Trigger SPEAK DROUGHT
+    (gate_dir / "script_v1_r1.md.quality.json").write_text(json.dumps({
+        "quality_status": "HOLD", "failure_codes": ["WEAK_EVIDENCE"]
+    }), encoding="utf-8")
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "⚠️ SPEAK DROUGHT" in md
+    assert "충분한 후보가 생성되었으나 내레이션 기준을 통과하지 못했습니다" in md

@@ -178,7 +178,11 @@ class DecisionDashboard:
             "cards": [asdict(c) for c in cards],
             "no_speak_analysis": no_speak_reason,
             "flag_summary": flag_tally,
-            "has_fact_driven_candidate": any(c.is_fact_driven for c in cards if c.status != 'READY')
+            "has_fact_driven_candidate": any(c.is_fact_driven for c in cards if c.status != 'READY'),
+            "anomaly_driven_count": len([c for c in cards if not c.is_fact_driven]),
+            "fact_driven_count": len([c for c in cards if c.is_fact_driven]),
+            "total_topics": len(cards),
+            "candidates_count": len([c for c in cards if c.status != 'DROP'])
         }
 
     def render_markdown(self, data: Dict[str, Any]) -> str:
@@ -191,6 +195,10 @@ class DecisionDashboard:
         drop_topics = [c for c in cards if c['status'] == 'DROP']
         
         lines.append("\n## DECISION DASHBOARD (Beta)\n")
+        
+        # Step 9: System Sanity & Drift Monitor
+        self._render_sanity_panel(data, lines)
+        self._render_drift_warnings(data, lines)
         
         # SCRIPT QUALITY Counters
         s = data.get("summary", {})
@@ -819,6 +827,61 @@ class DecisionDashboard:
         lines.append(f"- [ ] Contract / order / disclosure-level evidence")
         lines.append(f"- [ ] Capital signal (ownership, buyback, investment)")
         lines.append(f"- [ ] Structural advantage vs competitors")
+
+    def _render_sanity_panel(self, data: Dict[str, Any], lines: List[str]):
+        """Renders the SYSTEM STATUS panel at the top."""
+        lines.append("### 🏥 SYSTEM STATUS (Today)")
+        lines.append(f"- **Topics Generated**: {data.get('total_topics', 0)}")
+        s = data.get("summary", {})
+        lines.append(f"- **READY / HOLD / DROP**: {s.get('READY', 0)} / {s.get('HOLD', 0)} / {s.get('DROP', 0)}")
+        lines.append(f"- **FACT-DRIVEN / ANOMALY-DRIVEN**: {data.get('fact_driven_count', 0)} / {data.get('anomaly_driven_count', 0)}")
+        lines.append("")
+
+    def _render_drift_warnings(self, data: Dict[str, Any], lines: List[str]):
+        """Renders Drift Warning Indicators (Operational Safety)."""
+        warnings = []
+        flags = data.get("flag_summary", {})
+        s = data.get("summary", {})
+        
+        # 1. TITLE-TO-EVIDENCE DRIFT
+        if flags.get("TITLE_MISMATCH", 0) >= 2:
+            warnings.append({
+                "badge": "⚠️ TITLE-TO-EVIDENCE DRIFT",
+                "explanation": "토픽 제목과 기반 데이터 간의 거리가 멀어지고 있으니, 엔진의 제목 추출 로직 점검이 권장됩니다."
+            })
+            
+        # 2. EVIDENCE THINNING
+        thin_count = flags.get("PLACEHOLDER_EVIDENCE", 0) + flags.get("EVIDENCE_TOO_THIN", 0)
+        if thin_count >= 2:
+            warnings.append({
+                "badge": "⚠️ EVIDENCE THINNING",
+                "explanation": "기반 데이터의 수치 정보가 평소보다 부족하게 수집되고 있으니, 데이터 소스 안정성을 확인하시기 바랍니다."
+            })
+            
+        # 3. SPEAK DROUGHT
+        if s.get("READY", 0) == 0 and data.get("candidates_count", 0) >= 3:
+            warnings.append({
+                "badge": "⚠️ SPEAK DROUGHT",
+                "explanation": "충분한 후보가 생성되었으나 내레이션 기준을 통과하지 못했습니다. 품질 기준을 재검토하거나 데이터 소스를 확장할 시점입니다."
+            })
+            
+        # 4. FACT OVERDOMINANCE
+        total = data.get("total_topics", 0)
+        if total > 0 and (data.get("fact_driven_count", 0) / total) > 0.7:
+            warnings.append({
+                "badge": "⚠️ FACT OVERDOMINANCE",
+                "explanation": "시스템이 리포트 기반의 팩트에 과하게 치중해 있습니다. 실시간 시그널(Anomaly) 탐지 엔진의 작동 여부를 점검해 보시기 바랍니다."
+            })
+            
+        if warnings:
+            lines.append("#### 🚨 DRIFT MONITOR")
+            for w in warnings:
+                lines.append(f"**{w['badge']}**")
+                lines.append(f"> {w['explanation']}")
+            lines.append("")
+        else:
+            lines.append("✅ **SYSTEM HEALTH**: All clear (Operational margins normal)")
+            lines.append("")
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """
