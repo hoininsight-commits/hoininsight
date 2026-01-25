@@ -644,3 +644,66 @@ def test_narration_ceiling_reason(mock_env):
     data = dash.build_dashboard_data("2026-01-24")
     md = dash.render_markdown(data)
     assert "**Ceiling**: 공식 수치는 존재하나 수혜 귀속 불명확" in md
+
+def test_promotion_requirements(mock_env):
+    """Verify Step 8: Promotion to Level 3 requirements block"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene: 1 Level 1 (Anomaly), 1 Level 3 (Ready)
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "l1", "title": "Macro Topic", "total_score": 90,
+                "key_reasons": ["Fed speak"],
+                "numbers": [{"label":"CPI","value":"2%"}]
+            },
+            {
+                "topic_id": "l3", "title": "Stock Topic", "total_score": 95,
+                "key_reasons": ["Company event"],
+                "numbers": [
+                    {"label":"Revenue","value":"10B"}, 
+                    {"label":"Profit","value":"2B"}, 
+                    {"label":"Contract","value":"Yes"}
+                ]
+            }
+        ]
+    }), encoding="utf-8")
+    
+    for tid in ["l1", "l3"]:
+        (gate_dir / f"script_v1_{tid}.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2\n- **Ev**: 3", encoding="utf-8")
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({
+            "quality_status": "READY", "failure_codes": []
+        }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    # Check Level 1 block
+    assert "PROMOTION TO LEVEL 3 REQUIRES" in md
+    assert "[ ] Structural advantage vs competitors" in md
+    
+    # Check Level 3 (Should NOT have the block)
+    # Since LEVEL 3 Topic is "Stock Topic", let's look for its specific section
+    parts = md.split("### ✅ Stock Topic")
+    if len(parts) > 1:
+        card_content = parts[1].split("---")[0]
+        assert "PROMOTION TO LEVEL 3 REQUIRES" not in card_content
+        
+    # Check FACT-DRIVEN attribution note
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f1", "title": "Fact Macro", "total_score": 90,
+                "is_fact_driven": True,
+                "numbers": [{"label":"GDP","value":"3%"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "Official figures exist, but attribution to specific beneficiaries" in md

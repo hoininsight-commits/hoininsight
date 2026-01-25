@@ -343,6 +343,10 @@ class DecisionDashboard:
             lines.append(f"**{n_badge}**: {n_helper}")
             if ceiling:
                 lines.append(f"**Ceiling**: {ceiling}")
+            
+            # Step 8: Promotion Requirements
+            self._render_promotion_requirements(c.get('narration_level', 1), c.get('is_fact_driven', False), lines)
+            
             lines.append(f"- **Reason**: {reason}")
             if bridge_mk:
                  lines.append(f"- **Note**: {bridge_mk}")
@@ -374,6 +378,9 @@ class DecisionDashboard:
         ceiling = c.get('narration_ceiling')
         if ceiling:
             lines.append(f"**Ceiling**: {ceiling}")
+        
+        # Step 8: Promotion Requirements
+        self._render_promotion_requirements(c.get('narration_level', 1), c.get('is_fact_driven', False), lines)
         
         # Tags Line
         tags = c.get('tags', [])
@@ -797,6 +804,21 @@ class DecisionDashboard:
             return "특정 기업의 구조적 우위 증거 부족"
             
         return None
+
+    def _render_promotion_requirements(self, level: int, is_fact: bool, lines: List[str]):
+        """Renders the Promotion to Level 3 Requirements block (Display Only)."""
+        if level >= 3:
+            return
+            
+        lines.append(f"\n**PROMOTION TO LEVEL 3 REQUIRES**:")
+        
+        if is_fact:
+            lines.append(f"NOTE: \"Official figures exist, but attribution to specific beneficiaries is not yet verified.\"")
+            
+        lines.append(f"- [ ] Company-level earnings or guidance confirmation")
+        lines.append(f"- [ ] Contract / order / disclosure-level evidence")
+        lines.append(f"- [ ] Capital signal (ownership, buyback, investment)")
+        lines.append(f"- [ ] Structural advantage vs competitors")
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """
