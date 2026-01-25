@@ -1,10 +1,10 @@
 {
   "run_date": "2026-01-25",
-  "checked_at": "2026-01-25T14:57:35.623812",
-  "status": "FAIL",
+  "checked_at": "2026-01-25T15:09:28.305239",
+  "status": "SUCCESS",
   "metrics": {
     "events_count": 0,
-    "anomalies_count": 0,
+    "anomalies_count": 24,
     "gate_candidates_count": 0,
     "scripts_md_count": 0,
     "script_quality_json_count": 0,
@@ -14,9 +14,7 @@
       "DROP": 0
     }
   },
-  "decision_dashboard_exists": false,
-  "missing_files": [
-    "daily_lock.json"
-  ],
-  "schema_errors": []
+  "decision_dashboard_exists": true,
+  "errors": [],
+  "missing_files": []
 }
