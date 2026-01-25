@@ -139,9 +139,9 @@ def test_dashboard_normalization(mock_env):
     assert "👀 WATCHLIST — NOT YET" in md
     assert "🗑️ ARCHIVE — DROP" in md
     
-    # 2. 3-5 Rule
-    assert "🎯 RECOMMENDED FOR TODAY" in md
-    assert "Additional READY (Optional)" in md
+    # 2. 3-5 Rule (Modified to lanes)
+    assert "### 📡 A) ANOMALY-DRIVEN (Signal First)" in md
+    assert "### 📑 B) FACT-DRIVEN (Fact First)" in md
     assert "Ready 1" in md # Primary
     assert "Ready 6" in md # Secondary
     
@@ -377,3 +377,59 @@ def test_fact_driven_why_now_hints(mock_env):
     data = dash.build_dashboard_data("2026-01-24")
     md = dash.render_markdown(data)
     assert "> **WHY NOW**: (explanatory context insufficient)" in md
+
+def test_fact_vs_anomaly_lanes(mock_env):
+    """Verify Step 4: Visual separation into Anomaly and Fact lanes"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene: 1 Anomaly Ready, 1 Fact Ready
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "a1", "title": "Anomaly Signal", "total_score": 90, 
+                "numbers": [{"label":"A","value":"1"}]
+            },
+            {
+                "topic_id": "f1", "title": "Fact Signal", "total_score": 85, 
+                "is_fact_driven": True, "numbers": [{"label":"B","value":"2"}]
+            }
+        ]
+    }), encoding="utf-8")
+    
+    for tid in ["a1", "f1"]:
+        (gate_dir / f"script_v1_{tid}.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2", encoding="utf-8")
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({
+            "quality_status": "READY", "failure_codes": []
+        }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    # Verify lanes exist
+    assert "### 📡 A) ANOMALY-DRIVEN (Signal First)" in md
+    assert "### 📑 B) FACT-DRIVEN (Fact First)" in md
+    
+    # Verify topic placement
+    # The anomaly lane header is before the fact lane header
+    parts = md.split("### 📑 B) FACT-DRIVEN (Fact First)")
+    assert "Anomaly Signal" in parts[0]
+    assert "Fact Signal" in parts[1]
+    
+    # Verify Placeholder for empty lane
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "a2", "title": "Only Anomaly", "total_score": 90, 
+                "numbers": [{"label":"A","value":"1"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_a2.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+    (gate_dir / "script_v1_a2.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "_No FACT-DRIVEN topics today_" in md

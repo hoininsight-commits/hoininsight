@@ -188,30 +188,42 @@ class DecisionDashboard:
         if not ready_topics:
             self._render_no_speak_panel(lines, data)
         
-        # --- SECTION 1: TODAY - SPEAKABLE (READY) ---
+        # --- SECTION 1: TODAY - SPEAKABLE TOPICS ({len(ready_topics)}) ---
         lines.append(f"\n## 🎬 TODAY — SPEAKABLE TOPICS ({len(ready_topics)})")
         lines.append("※ 시스템은 선택하지 않습니다. 아래는 오늘 설명 가능한 후보 요약입니다.")
         
         if not ready_topics:
             lines.append("- (No topics ready for broadcast today)")
         else:
-            # Top 3-5 Rule
-            # High Priority: Top 5
-            primary = ready_topics[:5]
-            secondary = ready_topics[5:]
+            # Split Lanes
+            anomaly_lane = [c for c in ready_topics if not c.get('is_fact_driven')]
+            fact_lane = [c for c in ready_topics if c.get('is_fact_driven')]
             
-            lines.append("**🎯 RECOMMENDED FOR TODAY**")
-            for c in primary:
-                lines.append(self._render_ready_card(c))
-                
-            if secondary:
-                lines.append("\n**Additional READY (Optional)**")
-                for c in secondary:
-                    # Minimal render for secondary
-                    tags_str = ""
-                    if c.get('tags'):
-                        tags_str = " " + " ".join(c['tags'])
-                    lines.append(f"- {c['title']} (Evidence: {c['evidence_count']}){tags_str}")
+            # A) ANOMALY-DRIVEN (Signal First)
+            lines.append(f"\n### 📡 A) ANOMALY-DRIVEN (Signal First)")
+            if not anomaly_lane:
+                lines.append("_No ANOMALY-DRIVEN signals today_")
+            else:
+                for c in anomaly_lane[:5]: 
+                    lines.append(self._render_ready_card(c))
+                if len(anomaly_lane) > 5:
+                    lines.append("\n**Additional Anomaly Signals (Optional)**")
+                    for c in anomaly_lane[5:]:
+                        tags_str = " " + " ".join(c['tags']) if c.get('tags') else ""
+                        lines.append(f"- {c['title']} (Evidence: {c['evidence_count']}){tags_str}")
+            
+            # B) FACT-DRIVEN (Fact First)
+            lines.append(f"\n### 📑 B) FACT-DRIVEN (Fact First)")
+            if not fact_lane:
+                lines.append("_No FACT-DRIVEN topics today_")
+            else:
+                for c in fact_lane[:5]:
+                    lines.append(self._render_ready_card(c))
+                if len(fact_lane) > 5:
+                    lines.append("\n**Additional Fact Topics (Optional)**")
+                    for c in fact_lane[5:]:
+                        tags_str = " " + " ".join(c['tags']) if c.get('tags') else ""
+                        lines.append(f"- {c['title']} (Evidence: {c['evidence_count']}){tags_str}")
         
         # --- ALMOST CANDIDATES ---
         self._render_almost_candidates(cards, lines)
