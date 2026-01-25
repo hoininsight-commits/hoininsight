@@ -10,6 +10,7 @@ import yaml
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
+from src.utils.guards import check_learning_enabled
 
 
 def load_ledger_entries(base_dir: Path, lookback_days: int = 90) -> List[Dict[str, Any]]:
@@ -104,6 +105,7 @@ def aggregate_ledger(base_dir: Path, lookback_days: int = 90) -> Dict[str, Any]:
 
 def main():
     """Main entry point for ledger aggregation."""
+    check_learning_enabled()
     base_dir = Path(__file__).parent.parent.parent
     
     # Configuration

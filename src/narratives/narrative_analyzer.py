@@ -21,6 +21,7 @@ from typing import Any, Dict, List, Optional
 # [UPDATE] Use Dynamic Knowledge Base
 from src.utils.knowledge_base import KnowledgeBase
 from src.learning.deep_logic_analyzer import DeepLogicAnalyzer
+from src.utils.guards import check_learning_enabled
 
 def _get_utc_ymd(delta_days: int = 0) -> str:
     """Get UTC date with delta."""
@@ -252,6 +253,7 @@ def process_all_transcripts(base_dir: Path) -> int:
     """
     Process all transcripts from recent collection.
     """
+    check_learning_enabled()
     # Initialize KnowledgeBase
     docs_dir = base_dir / "docs"
     kb = KnowledgeBase(docs_dir)

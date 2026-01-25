@@ -1,0 +1,111 @@
+name: learning_pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 23 * * *" # Runs 30 mins after full_pipeline daily run
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  ENABLE_LEARNING: true
+
+jobs:
+  run-learning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Narrative Watcher (Phase 31-A)
+        run: |
+          python -m src.narratives.youtube_watcher
+          python -m src.narratives.transcript_ingestor
+          python -m src.narratives.narrative_status
+
+      - name: Run Auto-Generated Collectors (Phase 31-A-EXT)
+        run: |
+          python -m src.collectors.auto_generated.collect_foreign_investor_flow || echo "[WARN] Foreign investor flow collection failed"
+          python -m src.collectors.auto_generated.collect_pension_fund_flow || echo "[WARN] Pension fund flow collection failed"
+          python -m src.collectors.auto_generated.collect_value_up_participants || echo "[WARN] Value-up participants collection failed"
+        continue-on-error: true
+
+      - name: Run Narrative Analyzer (Phase 31-B)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -m src.narratives.narrative_analyzer
+        continue-on-error: true
+
+      - name: Generate Auto Collectors (Phase 31-B-EXT)
+        run: |
+          python -m src.collectors.auto_collector_generator
+        continue-on-error: true
+
+      - name: Notify Human for Approval (Phase 31-B-HUMAN)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -m src.evolution.human_loop_notifier
+        continue-on-error: true
+
+      - name: Build Proposal Queue (Phase 31-C)
+        run: |
+          python -m src.narratives.proposal_queue
+
+      - name: Run Proposal Prioritization (Phase 32)
+        run: |
+          python -m src.narratives.run_prioritization
+
+      - name: Apply Proposal Aging (Phase 33)
+        run: |
+          python -m src.narratives.proposal_aging
+
+      - name: Apply Approved Proposals (Phase 31-C)
+        run: |
+          python -m src.narratives.approval_applier
+          
+      - name: Build Applied Change Summary (Phase 31-E)
+        run: |
+          python -m src.narratives.applied_summarizer
+
+      - name: Evaluate Change Effectiveness (Phase 34)
+        run: |
+          python -m src.narratives.effectiveness_evaluator
+
+      - name: Aggregate Rejection Ledger (Phase 35)
+        run: |
+          python -m src.narratives.ledger_aggregator
+
+      - name: Auto-Archive Narratives (Phase 36)
+        run: |
+          python -m src.narratives.auto_archiver
+
+      - name: Scan Revival Candidates (Phase 37)
+        run: |
+          python -m src.narratives.revival_scanner
+
+      - name: Apply Revival Guardrails (Phase 37-B)
+        run: |
+          python -m src.narratives.revival_guard
+
+      - name: Commit Learning Outputs
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          git add data/narratives/ data/collectors/auto_generated/ docs/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: narrative learning update [skip ci]"
+          git push

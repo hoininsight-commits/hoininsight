@@ -13,6 +13,8 @@ from urllib.request import Request, urlopen
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("YouTubeWatcher")
 
+from src.utils.guards import check_learning_enabled
+
 REGISTRY_PATH = Path("registry/narrative_sources.yml")
 DATA_DIR = Path("data/narratives/raw/youtube")
 
@@ -99,6 +101,7 @@ def parse_feed_entries(xml_content: str):
     return entries
 
 def run_watcher():
+    check_learning_enabled()
     if not REGISTRY_PATH.exists():
         logger.warning(f"Registry not found at {REGISTRY_PATH}")
         return

@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
+from src.utils.guards import check_learning_enabled
 
 
 def should_archive_ledger_entry(entry: Dict[str, Any], today: datetime) -> tuple[bool, str]:
@@ -97,6 +98,7 @@ def verify_non_destructive(base_dir: Path, archived_items: List[Dict[str, Any]])
 
 def main():
     """Main entry point for auto-archive."""
+    check_learning_enabled()
     base_dir = Path(__file__).parent.parent.parent
     
     # Build archive summary

@@ -12,6 +12,9 @@ permissions:
   contents: write
   issues: write
 
+env:
+  ENABLE_LEARNING: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -64,8 +67,8 @@ jobs:
         run: |
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
-          # Force add data directories to safeguard against any lingering .gitignore issues
-          git add -f data/raw data/curated data/features data/topics data/reports || true
+          # Force add production data and dashboard
+          git add -f data/raw data/curated data/features data/topics data/reports data/ops data/decision dashboard index.html || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: engine daily run [skip ci]"
           git push
@@ -288,155 +291,6 @@ jobs:
 
           echo "[VERIFY][OK] Core dataset confidence verification passed"
 
-      - name: Run Narrative Watcher (Phase 31-A)
-        run: |
-          python -m src.narratives.youtube_watcher
-          python -m src.narratives.transcript_ingestor
-          python -m src.narratives.narrative_status
-
-      - name: Run Auto-Generated Collectors (Phase 31-A-EXT)
-        run: |
-          echo "[COLLECT] Running auto-generated data collectors..."
-          python -m src.collectors.auto_generated.collect_foreign_investor_flow || echo "[WARN] Foreign investor flow collection failed"
-          python -m src.collectors.auto_generated.collect_pension_fund_flow || echo "[WARN] Pension fund flow collection failed"
-          python -m src.collectors.auto_generated.collect_value_up_participants || echo "[WARN] Value-up participants collection failed"
-          echo "[COLLECT] Auto-generated collectors completed"
-        continue-on-error: true
-
-      - name: Verify Phase 31-A Narrative Ingestion
-        run: |
-          echo "[VERIFY] Phase 31-A Narrative Ingestion Check"
-
-          YMD=$(date -u +"%Y/%m/%d")
-          STATUS="data/narratives/status/$YMD/collection_status.json"
-
-          if [ ! -f "$STATUS" ]; then
-            echo "[VERIFY][FAIL] Narrative collection status not found"
-            exit 1
-          fi
-
-          echo "[VERIFY][OK] Narrative ingestion status recorded"
-
-      - name: Generate Insight Dashboard
-        run: |
-          python -m src.dashboard.dashboard_generator
-
-          # Verification (Inline)
-          if [ -f "dashboard/index.html" ]; then
-             echo "[VERIFY][OK] Data collection health dashboard generated"
-          else
-             echo "[VERIFY][FAIL] Dashboard generation failed"
-             # Warn only, do not fail pipeline for dashboard
-          fi
-      
-      - name: Upload Dashboard Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: insight-dashboard
-          path: dashboard/
-          
-      - name: Verify Phase 31-A Status Integrity
-        run: |
-          echo "[VERIFY] Phase 31-A Status Integrity Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          STATUS="data/narratives/status/$YMD/collection_status.json"
-          
-           if [ ! -f "$STATUS" ]; then
-            echo "[VERIFY][FAIL] Status file missing"
-            exit 1
-          fi
-          
-          # Check fields using jq (detected, transcript_ok, latest_video)
-          # jq should be available in ubuntu-latest
-          detected=$(jq '.videos_detected' "$STATUS")
-          ok=$(jq '.transcript_ok' "$STATUS")
-          last=$(jq -r '.latest_video' "$STATUS")
-          
-          echo "Detected: $detected, OK: $ok, Latest: $last"
-          
-          if [ "$detected" == "null" ] || [ "$ok" == "null" ] || [ "$last" == "null" ]; then
-             echo "[VERIFY][FAIL] Missing fields in narrative status"
-             exit 1
-          fi
-          echo "[VERIFY][OK] Status integrity checks passed"
-          
-          # Check Dashboard Narrative Label
-          DASH="dashboard/index.html"
-          if grep -q "Narrative" "$DASH" || grep -q "narrative" "$DASH"; then
-             echo "[VERIFY][OK] Dashboard contains narrative-related content"
-          else
-             echo "[VERIFY][WARN] Dashboard may be missing narrative label (non-critical)"
-             # Don't fail pipeline - dashboard text checks are brittle
-          fi
-      
-      - name: Run Narrative Analyzer (Phase 31-B)
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python -m src.narratives.narrative_analyzer
-        continue-on-error: true
-
-      - name: Generate Auto Collectors (Phase 31-B-EXT)
-        run: |
-          python -m src.collectors.auto_collector_generator
-        continue-on-error: true
-
-      - name: Notify Human for Approval (Phase 31-B-HUMAN)
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python -m src.evolution.human_loop_notifier
-        continue-on-error: true
-
-      - name: Verify Phase 31-B Proposals
-        run: |
-          echo "[VERIFY] Phase 31-B Proposal Generation Check"
-          
-          YMD=$(date -u +"%Y/%m/%d")
-          PROPOSALS_DIR="data/narratives/proposals/$YMD"
-          
-          if [ -d "$PROPOSALS_DIR" ]; then
-            PROPOSAL_COUNT=$(find "$PROPOSALS_DIR" -name "proposal_*.md" | wc -l)
-            echo "[VERIFY][OK] Narrative proposals generated: $PROPOSAL_COUNT"
-          else
-            echo "[VERIFY][SKIP] No proposals generated today"
-          fi
-      
-      - name: Build Proposal Queue (Phase 31-C)
-        run: |
-          python -m src.narratives.proposal_queue
-
-      - name: Run Proposal Prioritization (Phase 32)
-        run: |
-          python -m src.narratives.run_prioritization
-
-      - name: Apply Proposal Aging (Phase 33)
-        run: |
-          python -m src.narratives.proposal_aging
-
-
-      - name: Apply Approved Proposals (Phase 31-C)
-        run: |
-          python -m src.narratives.approval_applier
-          
-      - name: Build Applied Change Summary (Phase 31-E)
-        run: |
-          python -m src.narratives.applied_summarizer
-
-      - name: Evaluate Change Effectiveness (Phase 34)
-        run: |
-          python -m src.narratives.effectiveness_evaluator
-
-      - name: Aggregate Rejection Ledger (Phase 35)
-        run: |
-          python -m src.narratives.ledger_aggregator
-
-      - name: Auto-Archive Narratives (Phase 36)
-        run: |
-          python -m src.narratives.auto_archiver
-
       - name: Track Ops Freshness (Phase 36-B)
         run: |
           python -m src.ops.freshness_tracker
@@ -444,14 +298,6 @@ jobs:
       - name: Update Ops Scoreboard (Phase 36-B)
         run: |
           python -m src.ops.ops_scoreboard
-
-      - name: Scan Revival Candidates (Phase 37)
-        run: |
-          python -m src.narratives.revival_scanner
-
-      - name: Apply Revival Guardrails (Phase 37-B)
-        run: |
-          python -m src.narratives.revival_guard
 
       - name: Integrate Final Decision Card (Phase 38)
         run: |
@@ -461,226 +307,9 @@ jobs:
         run: |
           python -m src.topics.topic_candidate_gate
 
-
       - name: Generate Dashboard (Phase 31-D Update)
         run: |
           python -m src.dashboard.dashboard_generator
-
-      - name: Verify Phase 31-C Approval Pipeline
-        run: |
-          echo "[VERIFY] Phase 31-C Approval Pipeline Check"
-
-          YMD=$(date -u +"%Y/%m/%d")
-          QUEUE="data/narratives/queue/$YMD/proposal_queue.json"
-          APPLIED="data/narratives/applied/$YMD/applied_log.json"
-
-          if [ ! -f "$QUEUE" ]; then
-            echo "[VERIFY][FAIL] proposal_queue.json not found"
-            exit 1
-          fi
-          echo "[VERIFY][OK] Proposal queue generated"
-
-          if [ -f "$APPLIED" ]; then
-            echo "[VERIFY][OK] Applied log generated"
-          else
-            echo "[VERIFY][OK] No approvals applied today (valid state)"
-          fi
-      
-      - name: Verify Phase 31-D Dashboard Queue
-        run: |
-          echo "[VERIFY] Phase 31-D Dashboard Queue Check"
-          test -f dashboard/index.html && echo "[VERIFY][OK] Dashboard generated" || (echo "[VERIFY][FAIL] Dashboard missing"; exit 1)
-          # Note: The queue section only renders if there are pending items. 
-          # For stricter verification, we might need a mock run, but for now we check file existence.
-          # To verify Queue Rendering specifically, we would need mock data which runs in the pipeline.
-          # However, the user request says: grep -q "Narrative Review Queue".
-          # Since normally the queue is empty, this grep might fail if we don't mock it.
-          # But let's add the step as requested, acknowledging it might fail if queue is empty.
-          # Wait, if I add it and it fails, the pipeline fails.
-          # I should probably just check index.html exists, OR ensure the code which generates it is present?
-          # The USER REQUEST explicitly asked for: grep -q "Narrative Review Queue"
-          # This implies I MUST ensure it's there. So I should probably ensure the 'dashboard_generator' logic puts it there OR I should inject mock data during the test?
-          # Or maybe the user assumes I have mock data? I deleted it.
-          # Let's add the step but maybe allow it to pass or skip if not found?
-          # User said: "grep -q ... || exit 1". So it MUST be there.
-          # This means I need to make sure the generator renders it even if empty? Or simple: 
-          # I will Modify dashboard_generator to ALWAYS render the container even if empty, OR the user expects me to verify with mock data.
-          # Let's satisfy the request by adding the step. If it fails, I will fix.
-          # Actually, I'll modify dashboard_generator to render the section header even if empty, to satisfy this grep.
-          
-          if grep -q "Narrative Review Queue" dashboard/index.html; then
-             echo "[VERIFY][OK] Narrative Review Queue rendered"
-          else
-             echo "[VERIFY][WARN] Narrative Review Queue not found (likely empty queue)"
-             # For now, do NOT exit 1 because production run might have empty queue.
-             # User requested "exit 1", but that would break the pipeline on normal days.
-             # I will stick to user request strictly? 
-             # "Verify Phase 31-D Dashboard Queue... exit 1"
-             # Okay, to make this PASS, I must ensure 'Narrative Review Queue' string exists in index.html.
-             # I will modify dashboard_generator.py to always include the header or a placeholder.
-          fi
-          
-      - name: Verify Phase 31-E Applied Feedback
-        run: |
-          echo "[VERIFY] Phase 31-E Applied Feedback Check"
-    
-          YMD=$(date -u +"%Y/%m/%d")
-          SUMMARY="data/narratives/applied/$YMD/applied_summary.json"
-          DASH="dashboard/index.html"
-    
-          if [ -f "$SUMMARY" ]; then
-            echo "[VERIFY][OK] Applied summary generated"
-          else
-            echo "[VERIFY][OK] No applied changes today (valid state)"
-          fi
-    
-          if grep -q "변경 효과 분석" "$DASH"; then
-            echo "[VERIFY][OK] Applied Changes section rendered"
-          else
-            echo "[VERIFY][FAIL] Applied Changes section missing"
-            exit 1
-          fi
-          
-          if grep -q "유튜브 인박스" "$DASH"; then
-            echo "[VERIFY][OK] YouTube Inbox rendered"
-          else
-            echo "[VERIFY][FAIL] YouTube Inbox section missing"
-            exit 1
-          fi
-
-      - name: Verify Phase 32 Proposal Scoring
-        run: |
-          echo "[VERIFY] Phase 32 Proposal Scoring Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          PRIO_JSON="data/narratives/prioritized/$YMD/proposal_scores.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$PRIO_JSON" ]; then
-             echo "[VERIFY][OK] Proposal alignment scores generated"
-             
-             # Check JSON structure
-             if grep -q "alignment_score" "$PRIO_JSON"; then
-                 echo "[VERIFY][OK] Score field exists in output"
-             else
-                 # If empty list [] it might be valid if no proposals
-                 if [ "$(cat $PRIO_JSON)" == "[]" ]; then
-                    echo "[VERIFY][OK] Score file empty (no proposals) - valid"
-                 else
-                    echo "[VERIFY][WARN] Score field missing in non-empty file?"
-                 fi
-             fi
-          else
-             echo "[VERIFY][FAIL] proposal_scores.json not found"
-             exit 1
-          fi
-          
-          # Check Dashboard Rendering (We can't strictly enforce existence if no proposals, but check if we looked for it)
-          # The dashboard generator logic was updated to use priority map.
-          echo "[VERIFY][OK] Proposal priority logic integrated into dashboard"
-
-      - name: Verify Phase 32 Hardening
-        run: |
-          echo "[VERIFY] Phase 32 Hardening Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          OUT="data/narratives/prioritized/$YMD/proposal_scores.json"
-          DASH="dashboard/index.html"
-          
-          test -f "$OUT" && echo "[VERIFY][OK] proposal_scores.json exists" || (echo "[VERIFY][FAIL] proposal_scores.json missing"; exit 1)
-          
-          # Check Metadata
-          grep -q "phase32_v1" "$OUT" && echo "[VERIFY][OK] scoring_version present" || echo "[VERIFY][WARN] scoring_version not present"
-          
-          # Check Empty State Message (Conditionally)
-          VID_COUNT=$(grep -o "video_id" "$OUT" | wc -l)
-          
-          if [ "$VID_COUNT" -eq 0 ]; then
-             echo "[INFO] No proposals detected. Expecting Empty State Message."
-             grep -q "No proposals today — scoring logic active" "$DASH" && echo "[VERIFY][OK] Empty-state message rendered" || (echo "[VERIFY][FAIL] Empty-state message missing"; exit 1)
-          else
-             echo "[INFO] Proposals detected ($VID_COUNT). Skipping Empty State Message Check."
-             if grep -q "No proposals today — scoring logic active" "$DASH"; then
-                echo "[VERIFY][FAIL] Empty-state message rendered despite having proposals!"
-                exit 1
-             fi
-          fi
-
-      - name: Verify Phase 33 Proposal Aging
-        run: |
-          echo "[VERIFY] Phase 33 Proposal Aging Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          OUT="data/narratives/prioritized/$YMD/proposal_scores_with_aging.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$OUT" ]; then
-            echo "[VERIFY][OK] Aging scores generated"
-            grep -q "phase33_v1" "$OUT" && echo "[VERIFY][OK] aging_version present" || (echo "[VERIFY][FAIL] aging_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No prioritized proposals today (valid state)"
-          fi
-          
-          grep -q "Final Priority" "$DASH" && echo "[VERIFY][OK] Final priority rendered in dashboard" || (echo "[VERIFY][FAIL] Final priority missing in dashboard"; exit 1)
-
-      - name: Verify Dashboard Architecture SVG
-        run: |
-          echo "[VERIFY] Dashboard Architecture SVG Check"
-          test -f dashboard/assets/architecture.svg && echo "[VERIFY][OK] architecture.svg present" || (echo "[VERIFY][FAIL] architecture.svg missing"; exit 1)
-          test -f dashboard/assets/architecture.png && echo "[VERIFY][OK] architecture.png present" || (echo "[VERIFY][FAIL] architecture.png missing"; exit 1)
-          test -f dashboard/index.html && echo "[VERIFY][OK] dashboard generated" || (echo "[VERIFY][FAIL] dashboard missing"; exit 1)
-          grep -q "Architecture" dashboard/index.html && echo "[VERIFY][OK] Architecture section rendered" || (echo "[VERIFY][FAIL] Architecture section missing"; exit 1)
-          grep -q "assets/architecture" dashboard/index.html && echo "[VERIFY][OK] SVG/PNG linked in dashboard" || (echo "[VERIFY][FAIL] SVG/PNG link missing"; exit 1)
-
-      - name: Verify Phase 34 Change Effectiveness
-        run: |
-          echo "[VERIFY] Phase 34 Change Effectiveness Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          OUT="data/narratives/effectiveness/$YMD/effectiveness.json"
-          DASH="dashboard/index.html"
-          if [ -f "$OUT" ]; then
-            echo "[VERIFY][OK] effectiveness.json generated"
-            grep -q "phase34_v1" "$OUT" && echo "[VERIFY][OK] effectiveness_version present" || (echo "[VERIFY][FAIL] effectiveness_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No applied events available (valid state)"
-          fi
-          grep -q "Change Effectiveness" "$DASH" && echo "[VERIFY][OK] Effectiveness section rendered" || (echo "[VERIFY][FAIL] Effectiveness section missing"; ) # exit 1 temporary disabled
-
-      - name: Verify Phase 35 Rejection Ledger
-        run: |
-          echo "[VERIFY] Phase 35 Rejection Ledger Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          OUT="data/narratives/ledger_summary/$YMD/ledger_summary.json"
-          DASH="dashboard/index.html"
-          if [ -f "$OUT" ]; then
-            echo "[VERIFY][OK] ledger_summary generated"
-            grep -q "lookback_days" "$OUT" && echo "[VERIFY][OK] lookback_days present" || (echo "[VERIFY][FAIL] lookback_days missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No ledger entries yet (valid state)"
-          fi
-          grep -q "🚫 거절.보류 리스트" "$DASH" && echo "[VERIFY][OK] Ledger section rendered" || (echo "[VERIFY][FAIL] Ledger section missing"; exit 1)
-
-      - name: Verify Phase 36 Auto-Archive
-        run: |
-          echo "[VERIFY] Phase 36 Auto-Archive Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          OUT="data/narratives/archive/$YMD/archive_summary.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$OUT" ]; then
-            echo "[VERIFY][OK] archive_summary.json generated"
-            grep -q "archive_version" "$OUT" && echo "[VERIFY][OK] archive_version present" || (echo "[VERIFY][FAIL] archive_version missing"; exit 1)
-            grep -q "non_destructive" "$OUT" && echo "[VERIFY][OK] non_destructive flag present" || (echo "[VERIFY][FAIL] non_destructive flag missing"; exit 1)
-            
-            # Verify original files still exist (non-destructive check)
-            ARCHIVED_COUNT=$(grep -o "original_ledger_file" "$OUT" | wc -l)
-            if [ "$ARCHIVED_COUNT" -gt 0 ]; then
-              echo "[VERIFY][INFO] $ARCHIVED_COUNT items archived, verifying non-destructive..."
-              # This is a basic check - the auto_archiver.py does the real verification
-              echo "[VERIFY][OK] Non-destructive archive verified by engine"
-            fi
-          else
-            echo "[VERIFY][SKIP] No archive data (valid state - no items to archive)"
-          fi
-          
-          grep -q "🗄 아카이브" "$DASH" && echo "[VERIFY][OK] Archive section rendered" || (echo "[VERIFY][FAIL] Archive section missing"; exit 1)
 
       - name: Verify Phase 36-B Ops Hardening
         run: |
@@ -706,54 +335,6 @@ jobs:
           
           grep -q "운영 성과 지표" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
 
-      - name: Verify Phase 37 Revival
-        run: |
-          echo "[VERIFY] Phase 37 Revival Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          REVIVAL="data/narratives/revival/$YMD/revival_proposals.json"
-          META="data/meta_topics/$YMD/meta_topics.json"
-          DASH="dashboard/index.html"
-          
-          # Check for meta topics phrase mentioned in requirements
-          if [ -f "$META" ]; then
-            echo "[VERIFY][OK] Meta Topic detected and used as Regime basis"
-          else
-            echo "[VERIFY][SKIP] No meta topics detected today (valid state)"
-          fi
-
-          if [ -f "$REVIVAL" ]; then
-            echo "[VERIFY][OK] revival_proposals.json generated"
-            grep -q "revival_v1" "$REVIVAL" && echo "[VERIFY][OK] proposal_version present" || (echo "[VERIFY][FAIL] proposal_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No revival proposals today (conditions not met)"
-          fi
-          
-          grep -q "부활 엔진" "$DASH" && echo "[VERIFY][OK] Revival section rendered" || (echo "[VERIFY][FAIL] Revival section missing"; exit 1)
-
-      - name: Verify Phase 37-B Revival Guardrails
-        run: |
-          echo "[VERIFY] Phase 37-B Revival Guardrails Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          EVIDENCE="data/narratives/revival/$YMD/revival_evidence.json"
-          LOOPS="data/narratives/revival/$YMD/revival_loop_flags.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$EVIDENCE" ]; then
-            echo "[VERIFY][OK] revival_evidence.json generated"
-            grep -q "item_evidence" "$EVIDENCE" && echo "[VERIFY][OK] item_evidence present" || (echo "[VERIFY][FAIL] item_evidence missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No revival evidence today (valid state)"
-          fi
-          
-          if [ -f "$LOOPS" ]; then
-            echo "[VERIFY][OK] revival_loop_flags.json generated"
-            grep -q "loop_detected_vids" "$LOOPS" && echo "[VERIFY][OK] loop_detected_vids present" || (echo "[VERIFY][FAIL] loop_detected_vids missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No loop flags today (valid state)"
-          fi
-          
-          grep -q "Ops Evidence Bundle" "$DASH" && echo "[VERIFY][OK] Ops Evidence shown in Dashboard" || (echo "[VERIFY][FAIL] Ops Evidence missing in Dashboard"; exit 1)
-
       - name: Verify Phase 38 Final Decision Card
         run: |
           echo "[VERIFY] Phase 38 Final Decision Card Check"
@@ -769,9 +350,6 @@ jobs:
           fi
           
           grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
-
-
-
 
       - name: Verify Phase 39 Topic Candidates
         run: |
@@ -796,20 +374,6 @@ jobs:
           else
              echo "[VERIFY][FAIL] Dashboard section missing"
              exit 1
-          fi
-
-      - name: Commit Intelligence Outputs
-        if: success()
-        run: |
-          # Force add all intelligence directories and root index
-          git add data/narratives data/ops data/decision data/topics data/evolution dashboard index.html
-          
-          # Check for changes
-          if git diff --cached --quiet; then
-            echo "No intelligence changes to commit"
-          else
-            git commit -m "chore: save intelligence artifacts (narratives, ops, dashboard) [skip ci]"
-            git push
           fi
 
       - name: Create issue on failure

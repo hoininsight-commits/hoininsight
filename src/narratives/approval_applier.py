@@ -9,6 +9,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional
+from src.utils.guards import check_learning_enabled
 
 # Constants
 TARGET_FILES = {
@@ -127,6 +128,7 @@ def apply_approval(base_dir: Path, item: Dict, log: Dict):
         pass
 
 def main():
+    check_learning_enabled()
     base_dir = Path(__file__).parent.parent.parent
     
     print("[Applier] Starting Approval Application...")

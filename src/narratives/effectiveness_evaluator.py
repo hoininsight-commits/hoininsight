@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
+from src.utils.guards import check_learning_enabled
 
 
 def load_applied_events(base_dir: Path, lookback_days: int = 30) -> List[Dict[str, Any]]:
@@ -273,6 +274,7 @@ def evaluate_event_effectiveness(base_dir: Path, event: Dict[str, Any], window_d
 
 def main():
     """Main entry point for effectiveness evaluation."""
+    check_learning_enabled()
     base_dir = Path(__file__).parent.parent.parent
     
     # Configuration

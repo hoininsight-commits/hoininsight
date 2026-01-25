@@ -3,11 +3,13 @@ import os
 from datetime import datetime
 from pathlib import Path
 from src.narratives.proposal_scorer import ProposalScorer
+from src.utils.guards import check_learning_enabled
 
 def _get_utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y/%m/%d")
 
 def main():
+    check_learning_enabled()
     base_dir = Path(os.getcwd())
     ymd = _get_utc_ymd()
     

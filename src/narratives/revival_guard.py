@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Any
+from src.utils.guards import check_learning_enabled
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -40,6 +41,7 @@ def detect_loops(base_dir: Path, video_id: str) -> bool:
     return ledger_entries_count >= 2
 
 def main():
+    check_learning_enabled()
     base_dir = Path(__file__).resolve().parent.parent.parent
     now_utc = datetime.now(timezone.utc)
     ymd_path = now_utc.strftime("%Y/%m/%d")

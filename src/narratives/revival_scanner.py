@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Any
+from src.utils.guards import check_learning_enabled
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -105,6 +106,7 @@ def scan_revival_candidates(base_dir: Path, ymd_path: str) -> List[Dict[str, Any
     return candidates
 
 def main():
+    check_learning_enabled()
     base_dir = Path(__file__).resolve().parent.parent.parent
     now_utc = datetime.now(timezone.utc)
     ymd_path = now_utc.strftime("%Y/%m/%d")

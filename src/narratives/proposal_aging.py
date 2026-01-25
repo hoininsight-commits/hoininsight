@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
+from src.utils.guards import check_learning_enabled
 
 HALF_LIFE_DAYS = 7
 
@@ -53,6 +54,7 @@ def determine_status(base_dir: Path, video_id: str, ymd: str) -> str:
     return "PROPOSED"
 
 def apply_aging(base_dir: Path):
+    check_learning_enabled()
     ymd = _get_utc_ymd()
     
     # Input: Phase 32 output

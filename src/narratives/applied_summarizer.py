@@ -8,6 +8,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
+from src.utils.guards import check_learning_enabled
 
 # Configurations
 APPLIED_BASE = Path("data/narratives/applied")
@@ -76,6 +77,7 @@ def get_proposal_title(video_id: str) -> str:
         return f"Video {video_id}"
 
 def generate_summary():
+    check_learning_enabled()
     base_dir = Path(__file__).resolve().parent.parent.parent
     global APPLIED_BASE, APPROVAL_BASE, PROPOSAL_BASE
     

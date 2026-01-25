@@ -10,6 +10,8 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, No
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("TranscriptIngestor")
 
+from src.utils.guards import check_learning_enabled
+
 RAW_BASE = Path("data/narratives/raw/youtube")
 TRANSCRIPT_BASE = Path("data/narratives/transcripts")
 STATUS_BASE = Path("data/narratives/status")
@@ -136,6 +138,7 @@ def ingest_transcript(meta_path: Path):
         logger.error(f"Failed to process {meta_path}: {e}")
 
 def run_ingestor():
+    check_learning_enabled()
     targets = _get_target_videos()
     logger.info(f"Found {len(targets)} videos to check.")
     
