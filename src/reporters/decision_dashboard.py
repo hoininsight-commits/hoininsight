@@ -19,6 +19,7 @@ class DecisionCard:
     why_today: str = None
     bridge_eligible: bool = False
     is_fact_driven: bool = False
+    fact_why_now: str = None
 
 class DecisionDashboard:
     """
@@ -138,7 +139,8 @@ class DecisionDashboard:
                 tags=tags,
                 why_today=why_today,
                 bridge_eligible=t.get("handoff_to_structural", False),
-                is_fact_driven=self._check_fact_driven(t)
+                is_fact_driven=self._check_fact_driven(t),
+                fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None
             ))
             
         # 3. Sort (Presentation Only)
@@ -316,8 +318,12 @@ class DecisionDashboard:
     def _render_ready_card(self, c: Dict) -> str:
         """Renders the detailed READY card with Speak Pack."""
         lines = []
-        title_suffix = " (FACT-DRIVEN (Rule v1))" if c.get('is_fact_driven') else ""
+        is_fact = c.get('is_fact_driven')
+        title_suffix = " (FACT-DRIVEN (Rule v1))" if is_fact else ""
         lines.append(f"\n### ✅ {c['title']}{title_suffix}") 
+        
+        if is_fact and c.get('fact_why_now'):
+            lines.append(f"> **WHY NOW**: {c['fact_why_now']}")
         
         # Tags Line
         tags = c.get('tags', [])
@@ -608,6 +614,40 @@ class DecisionDashboard:
              # Or just use the reason directly
              return f"{ol.replace('왜 지금: ', '')}"
         return "지금 설명 가능한 조건 충족"
+
+    def _get_fact_why_now_hint(self, topic: Dict) -> str:
+        """Generates template-based 'WHY NOW' hint for FACT-DRIVEN topics."""
+        # Predefined Templates
+        templates = {
+            "FACT_GOV_PLAN": "주요 기관 및 정부의 공식 집행 계획 발표",
+            "FACT_CORP_DISCLOSURE": "기업의 공식 공시 및 실적 데이터 확인",
+            "FACT_MACRO_DATA": "핵심 거시 지표의 임계치 돌파 및 수치화",
+            "FACT_INVEST_FLOW": "대규모 자금 흐름 및 투자 집행 데이터 포착",
+            "MARKET_SIZE": "주요 리서치 기관이 시장 규모를 재산정",
+            "OPERATIONAL_START": "실제 운영 개시로 검증 단계 진입",
+            "REGULATORY_MILESTONE": "규제 환경 변화 및 법적 마일스톤 달성"
+        }
+        
+        # 1. Match by Tags
+        tags = topic.get("tags", [])
+        for tag in tags:
+            if tag in templates:
+                return templates[tag]
+        
+        # 2. Match by Category (metadata)
+        category = topic.get("metadata", {}).get("fact_category")
+        if category in templates:
+            return templates[category]
+            
+        # 3. Match by Event Type
+        event_type = topic.get("event_type", "").upper()
+        if event_type in templates:
+            return templates[event_type]
+            
+        return "(explanatory context insufficient)"
+
+            
+        return "(explanatory context insufficient)"
 
     def _check_fact_driven(self, topic: Dict) -> bool:
         """Checks if a topic matches FACT-DRIVEN rules via metadata or tags."""

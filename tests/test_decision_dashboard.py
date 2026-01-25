@@ -331,3 +331,49 @@ def test_fact_driven_labels(mock_env):
     
     assert "🚫 WHY NO SPEAK (Today)" in md
     assert "FACT 기준은 충족했으나 구조 신호 부족" in md
+
+def test_fact_driven_why_now_hints(mock_env):
+    """Verify Step 3: WHY-NOW sub-line templates"""
+    base_dir, gate_dir = mock_env
+    
+    # 1. Market Size Template match
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f1", "title": "Market Forecast", "total_score": 90, 
+                "tags": ["FACT_GOV_PLAN", "MARKET_SIZE"], 
+                "numbers": [{"label":"A","value":"1"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f1.md").write_text("### 5)\n- **Ev1**: 1\n- **Ev2**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_f1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    # Check for both label and hint
+    assert "Market Forecast (FACT-DRIVEN (Rule v1))" in md
+    assert "> **WHY NOW**: 주요 기관 및 정부의 공식 집행 계획 발표" in md # Tags take priority
+    
+    # 2. Fallback case
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f2", "title": "Random Fact", "total_score": 90, 
+                "is_fact_driven": True,
+                "numbers": [{"label":"A","value":"1"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f2.md").write_text("### 5)\n- **Ev1**: 1\n- **Ev2**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_f2.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "> **WHY NOW**: (explanatory context insufficient)" in md
