@@ -63,8 +63,10 @@ class DashboardManifest:
         self.manifest_path.write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"Manifest generated: {self.manifest_path} for {ymd}")
 
+
 if __name__ == "__main__":
     import sys
-    base = Path("/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight")
+    # Use current working directory instead of hardcoded path for GitHub Actions compatibility
+    base = Path.cwd()
     ymd = sys.argv[1] if len(sys.argv) > 1 else None
     DashboardManifest(base).generate(ymd)

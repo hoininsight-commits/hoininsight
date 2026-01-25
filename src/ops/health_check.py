@@ -67,13 +67,15 @@ class HealthCheck:
         self.health_path.write_text(json.dumps(health_data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"Health report generated: {self.health_path}")
 
+
 if __name__ == "__main__":
     import sys
-    base = Path("/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight")
+    # Use current working directory instead of hardcoded path for GitHub Actions compatibility
+    base = Path.cwd()
     # Try to find latest run date if not provided
     ymd = sys.argv[1] if len(sys.argv) > 1 else None
     if not ymd:
-        from dashboard_manifest import DashboardManifest
+        from src.ops.dashboard_manifest import DashboardManifest
         ymd = DashboardManifest(base).find_latest_run()
         
     if ymd:
