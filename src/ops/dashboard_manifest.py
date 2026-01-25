@@ -41,7 +41,7 @@ class DashboardManifest:
         # Verify required files and log missing
         required = {
             "report_md": "daily_brief.md",
-            "decision_md": "decision_dashboard.md",
+            "decision_md": "daily_brief.md", # Render daily brief as the main decision dashboard
             "daily_lock_json": "daily_lock.json"
         }
         
