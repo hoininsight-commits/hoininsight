@@ -1094,3 +1094,81 @@ def test_portfolio_balance_logic(mock_env):
     md = dash.render_markdown(data)
     
     assert "- Assessment: Concentrated — Single-theme risk" in md
+
+def test_impact_window_logic(mock_env):
+    """Verify Step 17: Time-to-Impact Tag Priority Rules"""
+    base_dir, gate_dir = mock_env
+    dash = DecisionDashboard(base_dir)
+    
+    # Scene: 5 READY Topics covering all priority cases
+    ranked = [
+        # 1. IMMEDIATE (Explicit Date)
+        {
+            "topic_id": "i1", "title": "Immediate Topic", "total_score": 90, 
+            "risk_one": "D-Day confirmed", # Trigger
+            "numbers": [{"label":"A","value":"1"}]
+        },
+        # 2. NEAR (Time-Sensitive Tag)
+        {
+            "topic_id": "n1", "title": "Near Topic", "total_score": 90,
+            "risk_one": "Short term alert", # Triggers TIME-SENSITIVE
+            "numbers": [{"label":"A","value":"1"}]
+        },
+        # 3. MID (Trending Now)
+        {
+            "topic_id": "m1", "title": "Mid Topic", "total_score": 96, # High score -> TRENDING NOW
+            "numbers": [{"label":"A","value":"1"}]
+        },
+        # 4. LONG (Structural)
+        {
+            "topic_id": "l1", "title": "Long Topic", "total_score": 90,
+            "handoff_to_structural": True, # Triggers STRUCTURAL
+            "numbers": [{"label":"A","value":"1"}]
+        },
+        # 5. Fallback (Mid Inferred)
+        {
+            "topic_id": "f1", "title": "Fallback Topic", "total_score": 80,
+            "numbers": [{"label":"A","value":"1"}]
+        }
+    ]
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": ranked}), encoding="utf-8")
+    
+    for t in ranked:
+        tid = t["topic_id"]
+        (gate_dir / f"script_v1_{tid}.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({"quality_status": "READY", "failure_codes": []}), encoding="utf-8")
+        
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    cards = {c["topic_id"]: c for c in data["cards"]}
+    
+    # Checks
+    # 1. IMMEDIATE
+    assert cards["i1"]["impact_window"] == "IMMEDIATE"
+    assert "이슈 반영이 이미 시작됨" in cards["i1"]["impact_hint"]
+    
+    # Debugging
+    if "⏱ IMPACT WINDOW: IMMEDIATE" not in md:
+        print("\nMARKDOWN START\n")
+        print(md)
+        print("\nMARKDOWN END\n")
+        
+    assert "### ✅ Immediate Topic" in md
+    assert "**⏱ IMPACT WINDOW**: IMMEDIATE" in md
+    
+    # 2. NEAR
+    assert cards["n1"]["impact_window"] == "NEAR"
+    assert "단기 뉴스/이벤트 연동" in cards["n1"]["impact_hint"]
+    
+    # 3. MID (Trending)
+    assert cards["m1"]["impact_window"] == "MID"
+    assert "누적 확인 구간" in cards["m1"]["impact_hint"]
+    
+    # 4. LONG
+    assert cards["l1"]["impact_window"] == "LONG"
+    assert "구조적 변화 관점" in cards["l1"]["impact_hint"]
+    
+    # 5. Fallback
+    assert cards["f1"]["impact_window"] == "MID"
+    assert "누적 확인 구간(Inferred)" in cards["f1"]["impact_hint"]

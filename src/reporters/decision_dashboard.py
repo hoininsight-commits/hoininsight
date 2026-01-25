@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Tuple
 import yaml
 from dataclasses import dataclass, asdict
 
@@ -29,6 +29,8 @@ class DecisionCard:
     judgment_notes: List[str] = None
     selection_rationale: List[str] = None
     contrast_rationale: Dict[str, Any] = None
+    impact_window: str = None
+    impact_hint: str = None
 
 class DecisionDashboard:
     """
@@ -134,6 +136,12 @@ class DecisionDashboard:
                 # Recommender Hints
                 tags = self._compute_recommender_tags(t, flags)
                 why_today = self._compute_why_today(t, speak_pack)
+                
+                # Step 17: Time-to-Impact Tag
+                impact_win, impact_hint = self._determine_impact_window(t, tags)
+            else:
+                impact_win = None
+                impact_hint = None
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
             ceiling_reason = self._get_ceiling_reason(depth_info["narration_level"], self._check_fact_driven(t))
@@ -172,6 +180,8 @@ class DecisionDashboard:
                     "judgment_notes": self._build_judgment_notes({**t, "status": status, "evidence_count": evidence_cnt, "narration_level": depth_info["narration_level"], "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None, "is_fact_driven": self._check_fact_driven(t), "flags": flags, "narration_ceiling": ceiling_reason}),
                     "narration_ceiling": ceiling_reason
                 }) if status == "READY" else None,
+                impact_window=impact_win,
+                impact_hint=impact_hint,
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -432,6 +442,13 @@ class DecisionDashboard:
                 
         if is_fact and c.get('fact_why_now'):
             lines.append(f"> **WHY NOW**: {c['fact_why_now']}")
+            
+        # Step 17: Impact Window
+        imp_win = c.get('impact_window')
+        if imp_win:
+            imp_hint = c.get('impact_hint', '')
+            lines.append(f"\n**⏱ IMPACT WINDOW**: {imp_win}")
+            lines.append(f"> {imp_hint}")
             
         badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
         reason = c.get('eligibility_reason', 'Criteria not met')
@@ -1175,4 +1192,34 @@ class DecisionDashboard:
         lock_path = gate_dir / "daily_lock.json"
         lock_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
         return lock_path
+
+    def _determine_impact_window(self, topic: Dict[str, Any], tags: List[str]) -> Tuple[str, str]:
+        """Determines Time-to-Impact Window (Step 17)."""
+        tags = tags or []
+        risk_one = topic.get("risk_one", "")
+        reasons = topic.get("key_reasons", [])
+        combined_text = (risk_one + " " + " ".join(reasons)).lower()
+        
+        # 1. Explicit Schedule -> IMMEDIATE
+        # Regex-like keywords
+        schedule_keywords = ["d-day", "today", "tomorrow", "scheduled", "timeline", "확정", "발표일"]
+        if any(k in combined_text for k in schedule_keywords):
+            return "IMMEDIATE", "이슈 반영이 이미 시작됨"
+            
+        # 2. TIME-SENSITIVE -> NEAR
+        if any("TIME-SENSITIVE" in t for t in tags):
+            # Also check if it's actually immediate if risk says so, but priority rule says TIME-SENSITIVE -> NEAR
+            # unless caught by #1. Strict priority.
+            return "NEAR", "단기 뉴스/이벤트 연동"
+            
+        # 3. TRENDING NOW -> MID
+        if any("TRENDING NOW" in t for t in tags):
+             return "MID", "누적 확인 구간"
+             
+        # 4. STRUCTURAL -> LONG
+        if any("STRUCTURAL" in t for t in tags):
+             return "LONG", "구조적 변화 관점"
+             
+        # 5. Fallback -> MID
+        return "MID", "누적 확인 구간(Inferred)"
 
