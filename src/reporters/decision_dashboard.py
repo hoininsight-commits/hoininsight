@@ -20,6 +20,8 @@ class DecisionCard:
     bridge_eligible: bool = False
     is_fact_driven: bool = False
     fact_why_now: str = None
+    eligibility_badge: str = None
+    eligibility_reason: str = None
 
 class DecisionDashboard:
     """
@@ -140,7 +142,8 @@ class DecisionDashboard:
                 why_today=why_today,
                 bridge_eligible=t.get("handoff_to_structural", False),
                 is_fact_driven=self._check_fact_driven(t),
-                fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None
+                fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
+                **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False))
             ))
             
         # 3. Sort (Presentation Only)
@@ -307,8 +310,12 @@ class DecisionDashboard:
         lines.append("")
         
         for c in top_3:
-            badge = "🟡" if c['status'] == 'HOLD' else "🔴"
+            status_icon = "🟡" if c['status'] == 'HOLD' else "🔴"
             status_text = "HOLD" if c['status'] == 'HOLD' else "DROP"
+            
+            # Eligibility Badge
+            elig_badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
+            eligibility_reason = c.get('eligibility_reason', 'Criteria not met')
             
             # Normalized Reason
             reason = self._get_hold_reason(c) if c['status'] == 'HOLD' else c['reason']
@@ -317,7 +324,8 @@ class DecisionDashboard:
             # Bridge
             bridge_mk = "🌉 Bridge Capable" if c.get('bridge_eligible') else ""
             
-            lines.append(f"### {badge} {c['title']} ({status_text})")
+            lines.append(f"### {status_icon} {c['title']} ({status_text})")
+            lines.append(f"**{elig_badge}**: {eligibility_reason}")
             lines.append(f"- **Reason**: {reason}")
             if bridge_mk:
                  lines.append(f"- **Note**: {bridge_mk}")
@@ -336,6 +344,10 @@ class DecisionDashboard:
         
         if is_fact and c.get('fact_why_now'):
             lines.append(f"> **WHY NOW**: {c['fact_why_now']}")
+            
+        badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
+        reason = c.get('eligibility_reason', 'Criteria not met')
+        lines.append(f"\n**{badge}**: {reason}")
         
         # Tags Line
         tags = c.get('tags', [])
@@ -658,9 +670,6 @@ class DecisionDashboard:
             
         return "(explanatory context insufficient)"
 
-            
-        return "(explanatory context insufficient)"
-
     def _check_fact_driven(self, topic: Dict) -> bool:
         """Checks if a topic matches FACT-DRIVEN rules via metadata or tags."""
         if topic.get("is_fact_driven") or topic.get("metadata", {}).get("is_fact_driven"):
@@ -672,6 +681,38 @@ class DecisionDashboard:
             return True
             
         return False
+
+    def _get_eligibility_info(self, status: str, is_fact: bool, flags: List[str], bridge_eligible: bool) -> Dict[str, str]:
+        """Maps topic status and flags to a human-readable eligibility badge and reason."""
+        is_speakable = False
+        if status == "READY":
+            is_speakable = True
+        elif is_fact and not flags:
+            # Fact-driven topics without sanity flags are also speakable
+            is_speakable = True
+            
+        badge = "🎙️ SPEAKABLE" if is_speakable else "⏸️ NOT SPEAKABLE"
+        
+        # Reason mapping
+        if is_speakable:
+            if is_fact:
+                reason = "FACT COMPLETE + timing window open"
+            else:
+                reason = "Evidence sufficient for narration"
+        else:
+            if bridge_eligible:
+                reason = "Structure signal missing"
+            elif not flags and status == "HOLD":
+                reason = "Signal clarity insufficient"
+            elif "EVIDENCE_TOO_THIN" in flags or "WEAK_EVIDENCE" in flags:
+                reason = "Evidence insufficient for narration"
+            else:
+                reason = "Quality below threshold for narration"
+                
+        return {
+            "eligibility_badge": badge,
+            "eligibility_reason": reason
+        }
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """

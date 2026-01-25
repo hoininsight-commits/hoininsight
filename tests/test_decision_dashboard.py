@@ -433,3 +433,56 @@ def test_fact_vs_anomaly_lanes(mock_env):
     data = dash.build_dashboard_data("2026-01-24")
     md = dash.render_markdown(data)
     assert "_No FACT-DRIVEN topics today_" in md
+
+def test_speak_eligibility_badges(mock_env):
+    """Verify Step 5: SPEAKABLE / NOT SPEAKABLE badges and reasons"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene: 1 READY (Anomaly), 1 HOLD (Bridge), 1 DROP
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "r1", "title": "Ready One", "total_score": 90, 
+                "numbers": [{"label":"A","value":"1"}]
+            },
+            {
+                "topic_id": "h1", "title": "Hold Bridge", "total_score": 50, 
+                "handoff_to_structural": True, "numbers": []
+            },
+            {
+                "topic_id": "d1", "title": "Drop One", "total_score": 10
+            }
+        ]
+    }), encoding="utf-8")
+    
+    # r1: READY
+    (gate_dir / "script_v1_r1.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_r1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    # h1: HOLD
+    (gate_dir / "script_v1_h1.md").write_text("", encoding="utf-8")
+    (gate_dir / "script_v1_h1.md.quality.json").write_text(json.dumps({
+        "quality_status": "HOLD", "failure_codes": ["WEAK_EVIDENCE"]
+    }), encoding="utf-8")
+    
+    # d1: DROP
+    (gate_dir / "script_v1_d1.md").write_text("", encoding="utf-8")
+    (gate_dir / "script_v1_d1.md.quality.json").write_text(json.dumps({
+        "quality_status": "DROP", "failure_codes": ["FAIL_HOOK"]
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    # Check r1
+    assert "🎙️ SPEAKABLE" in md
+    assert "Evidence sufficient for narration" in md
+    
+    # Check h1 (Almost candidates section)
+    assert "⏸️ NOT SPEAKABLE" in md # It will appear in Almost Candidates or Section summaries
+    # Actually, in render_markdown, cards are partitioned.
+    # We should verify the content of partitioned sections.
+    assert "Structure signal missing" in md
