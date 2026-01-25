@@ -840,3 +840,65 @@ def test_judgment_consistency_checks(mock_env):
     assert "LEVEL 3 assigned" in md
     assert "Speakable status conflicts" in md
     assert "JUDGMENT WARNINGS TODAY" in md
+
+def test_selection_rationale_triggers(mock_env):
+    """Verify Step 14: Selection Rationale composition rules"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene: 1 Anomaly Ready, 1 Fact Ready, 1 Hold topic
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "r1", "title": "Anomaly Ready", "total_score": 90, 
+                "is_fact_driven": False, "numbers": [{"label":"A","value":"1"}, {"label":"B","value":"2"}]
+            },
+            {
+                "topic_id": "r2", "title": "Fact Ready", "total_score": 85, 
+                "is_fact_driven": True, "tags": ["FACT_GOV_PLAN"],
+                "numbers": [
+                    {"label":"Revenue","value":"10B"}, 
+                    {"label":"Order","value":"High"},
+                    {"label":"Margin","value":"20%"}
+                ] 
+            },
+            {
+                "topic_id": "h1", "title": "Hold Topic", "total_score": 50, "is_fact_driven": False
+            }
+        ]
+    }), encoding="utf-8")
+    
+    for tid in ["r1", "r2"]:
+        (gate_dir / f"script_v1_{tid}.md").write_text("### 5)\n- **E1**: 1\n- **E2**: 2\n- **E3**: 3", encoding="utf-8")
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({
+            "quality_status": "READY", "failure_codes": []
+        }), encoding="utf-8")
+        
+    (gate_dir / "script_v1_h1.md.quality.json").write_text(json.dumps({
+        "quality_status": "HOLD", "failure_codes": ["WEAK_EVIDENCE"]
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    cards = {c["topic_id"]: c for c in data["cards"]}
+    
+    # 1. Rationale existence
+    assert cards["r1"]["selection_rationale"] is not None
+    assert cards["r2"]["selection_rationale"] is not None
+    assert cards["h1"]["selection_rationale"] is None
+    
+    # 2. Anomaly vs Fact Primary Driver
+    assert "이상징후가 팩트/뉴스보다 선행" in cards["r1"]["selection_rationale"][0]
+    assert "공식 팩트 기반 토픽이나 구조 신호와 결합" in cards["r2"]["selection_rationale"][0]
+    
+    # 3. Level representation (r2 should be Level 3 based on 'Revenue' keyword)
+    assert "개별 종목 언급 가능" in cards["r2"]["selection_rationale"][3]
+    
+    # 4. Constraint block (r1 should have Narration Ceiling because it lacks sector markers)
+    assert any("Constraint:" in line for line in cards["r1"]["selection_rationale"])
+    
+    # 5. Markdown rendering
+    assert "🧭 **SELECTION RATIONALE**" in md
+    assert "### ✅ Anomaly Ready" in md
+    assert "- Primary: 구조적 이상징후" in md

@@ -27,6 +27,7 @@ class DecisionCard:
     narration_helper: str = None
     narration_ceiling: str = None
     judgment_notes: List[str] = None
+    selection_rationale: List[str] = None
 
 class DecisionDashboard:
     """
@@ -162,6 +163,14 @@ class DecisionDashboard:
                     "flags": flags,
                     "narration_ceiling": ceiling_reason
                 }),
+                selection_rationale=self._build_selection_rationale({
+                    **t,
+                    "status": status,
+                    "is_fact_driven": self._check_fact_driven(t),
+                    "narration_level": depth_info["narration_level"],
+                    "judgment_notes": self._build_judgment_notes({**t, "status": status, "evidence_count": evidence_cnt, "narration_level": depth_info["narration_level"], "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None, "is_fact_driven": self._check_fact_driven(t), "flags": flags, "narration_ceiling": ceiling_reason}),
+                    "narration_ceiling": ceiling_reason
+                }) if status == "READY" else None,
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -394,6 +403,13 @@ class DecisionDashboard:
         title_suffix = " (FACT-DRIVEN (Rule v1))" if is_fact else ""
         lines.append(f"\n### ✅ {c['title']}{title_suffix}") 
         
+        # Step 14: Selection Rationale
+        rationale = c.get('selection_rationale')
+        if rationale:
+            lines.append(f"\n🧭 **SELECTION RATIONALE**")
+            for r in rationale:
+                lines.append(f"- {r}")
+                
         if is_fact and c.get('fact_why_now'):
             lines.append(f"> **WHY NOW**: {c['fact_why_now']}")
             
@@ -880,6 +896,46 @@ class DecisionDashboard:
                 notes.append("Speakable status conflicts with elevated narrative risk.")
                 
         return notes if notes else None
+
+    def _build_selection_rationale(self, t: Dict) -> List[str]:
+        """Explains why a READY topic was selected (Step 14)."""
+        rationale = []
+        
+        # 1. PRIMARY DRIVER
+        if t.get("is_fact_driven"):
+            rationale.append("Primary: 공식 팩트 기반 토픽이나 구조 신호와 결합")
+        else:
+            rationale.append("Primary: 구조적 이상징후가 팩트/뉴스보다 선행")
+            
+        # 2. TIMING (Heuristic based on existing fields)
+        why_now = t.get("why_today", "").lower()
+        r1 = t.get("risk_one", "").lower()
+        if "deadline" in why_now or "event" in why_now or "today" in why_now or "short" in r1:
+            rationale.append("Timing: 일정 기반 이벤트와 시점 일치")
+        else:
+            rationale.append("Timing: 누적 신호가 임계치 도달")
+            
+        # 3. RELATIVE SELECTION
+        rationale.append("Relative: 동종 토픽 대비 근거 밀도 우위")
+        
+        # 4. NARRATION RANGE
+        lvl = t.get("narration_level", 1)
+        if lvl == 3:
+            rationale.append("Narration: 개별 종목 언급 가능 (추천 아님)")
+        elif lvl == 2:
+            rationale.append("Narration: 섹터 단위까지 설명 가능")
+        else:
+            rationale.append("Narration: 매크로 수준 설명에 적합")
+            
+        # 5. CONSTRAINT (optional)
+        ceiling = t.get("narration_ceiling")
+        j_notes = t.get("judgment_notes", [])
+        if ceiling or j_notes:
+            constraint_text = ceiling if ceiling else (j_notes[0] if j_notes else "")
+            if constraint_text:
+                rationale.append(f"Constraint: {constraint_text}")
+                
+        return rationale
 
     def _render_sanity_panel(self, data: Dict[str, Any], lines: List[str]):
         """Renders the SYSTEM STATUS panel at the top."""
