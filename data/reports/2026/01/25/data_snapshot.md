@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-25T13:59:59Z`
+- ts_utc: `2026-01-25T14:08:43Z`
 - ymd_utc: `2026/01/25`
 - enabled_datasets: `32`
 
@@ -9,7 +9,7 @@
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | SKIPPED | 0 | - | - | 0 | 0 | 0 | 4 | 0 | data/curated/structural/foreigner_flow.csv | - |
-| BTCUSD | crypto_btc_usd_spot_coingecko | SKIPPED | 189 | 2026-01-15T07:32:29Z | 2026-01-25T13:59:36Z | 112 | 189 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
+| BTCUSD | crypto_btc_usd_spot_coingecko | SKIPPED | 190 | 2026-01-15T07:32:29Z | 2026-01-25T14:08:11Z | 113 | 190 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
 | CPI_USA | inflation_cpi_fred | SKIPPED | 947 | 1947-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/inflation/cpi_usa.csv | - |
 | DXY | fx_dxy_index_stooq | SKIPPED | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 4 | 0 | 7 | 0 | data/curated/fx/dxy.csv | - |
 | ETHUSD | crypto_eth_usd_spot_coingecko | SKIPPED | 11 | 2026-01-15T00:00:00Z | 2026-01-24T00:00:00Z | 6 | 11 | 0 | 7 | 0 | data/curated/crypto/eth_usd.csv | - |
@@ -20,7 +20,7 @@
 | HY_SPREAD | credit_hy_spread_fred | SKIPPED | 7587 | 1996-12-31T00:00:00Z | 2026-01-22T00:00:00Z | 4 | 18 | 6 | 1 | 0 | data/curated/credit/hy_spread_usa.csv | - |
 | KOR_CPI | inflation_kor_cpi_ecos | SKIPPED | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/inflation/korea_cpi.csv | - |
 | KOR_RATE | rates_kor_base_rate_ecos | SKIPPED | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/rates/korea_base_rate.csv | - |
-| KOSPI | index_kospi_stooq | SKIPPED | 188 | 2026-01-15T07:32:40Z | 2026-01-25T13:59:36Z | 111 | 188 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
+| KOSPI | index_kospi_stooq | SKIPPED | 189 | 2026-01-15T07:32:40Z | 2026-01-25T14:08:14Z | 112 | 189 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
 | M2_USA | liquidity_m2_fred | SKIPPED | 803 | 1959-01-01T00:00:00Z | 2025-11-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/liquidity/m2_usa.csv | - |
 | M_AND_A_CB | struct_dart_cb_bw | SKIPPED | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 1 | 1 | 3 | 1 | 0 | data/curated/structural/cb_bw.csv | - |
 | M_AND_A_DISP | struct_dart_disposal | SKIPPED | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 2 | 2 | 3 | 1 | 0 | data/curated/structural/disposal.csv | - |
