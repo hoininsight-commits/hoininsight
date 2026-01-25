@@ -1,48 +1,75 @@
 import json
 from pathlib import Path
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Optional
 import yaml
 from dataclasses import dataclass, asdict
 from src.ops.post_mortem_tracker import PostMortemTracker
+from src.ops.topic_memory import TopicMemory
 
 @dataclass
 class DecisionCard:
+    """
+    Final Output Card for Dashboard.
+    Step 9: Speakable Candidate.
+    Step 16: Portfolio Balance Metadata.
+    Step 17: Time-to-Impact Metadata.
+    Step 20: Topic Memory.
+    """
     topic_id: str
     title: str
-    status: str
-    reason: str
-    evidence_count: int
-    raw_score: float
-    flags: List[str]
-    speak_pack: Dict[str, Any] = None
-    evidence_refs: List[Dict[str, Any]] = None
+    status: str # READY, HOLD, DROP
+    
+    # Original Data Preservation
+    reason: str = None
+    evidence_count: int = 0
+    raw_score: float = 0.0 # Was total_score in my previous edit? No, code uses raw_score
+    
+    # Core Data
+    speak_pack: Optional[Dict[str, Any]] = None # Only for READY
+    evidence_refs: List[Dict[str, str]] = None
+    
+    # Metadata
     tags: List[str] = None
     why_today: str = None
+    flags: List[str] = None
+    
+    # Eligibility & Bridge
     bridge_eligible: bool = False
     is_fact_driven: bool = False
     fact_why_now: str = None
     eligibility_badge: str = None
     eligibility_reason: str = None
+    
+    # Narration Logic
     narration_level: int = 1
     narration_badge: str = None
     narration_helper: str = None
     narration_ceiling: str = None
+    
+    # Judgment & Rationale
     judgment_notes: List[str] = None
     selection_rationale: List[str] = None
     contrast_rationale: Dict[str, Any] = None
     impact_window: str = None
     impact_hint: str = None
     
+    # Topic Memory
+    memory_status: str = "NEW_TOPIC" # NEW_TOPIC, REVISIT, REGIME_UPDATE
+    memory_meta: Dict[str, Any] = None
+    
     # Post-Mortem
     outcome: str = None
 
 class DecisionDashboard:
     """
-    Renders human-readable Decision Dashboard from read-only outputs.
+    Reporter for the Topic Gate.
+    Generates daily operational dashboard.
     """
+    
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.tracker = PostMortemTracker(base_dir)
+        self.memory = TopicMemory(base_dir)
         self.reason_map = self._load_reason_map()
         
     def _load_reason_map(self) -> Dict:
@@ -95,6 +122,10 @@ class DecisionDashboard:
         next_day_str = (t_dt + timedelta(days=1)).strftime("%Y-%m-%d")
         future_end_str = (t_dt + timedelta(days=90)).strftime("%Y-%m-%d")
         history = self.tracker.load_history(next_day_str, future_end_str)
+        
+        # Load Memory (Step 20) - 90 days lookback from today
+        # We need past READY topics to detect revisits.
+        mem_index = self.memory.load_memory(ymd, lookback_days=90)
         
         # Aggregate stats for today's panel (Past performance up to target_date)
         pm_stats = self.tracker.get_aggregate_stats(ymd, lookback_days=90)
@@ -161,8 +192,12 @@ class DecisionDashboard:
                 
             # Step 18: Post-Mortem Evaluation
             outcome = None
+            # Step 20: Topic Memory
+            mem_res = {"type": "NEW_TOPIC", "meta": None}
+            
             if status == "READY":
                 outcome = self.tracker.evaluate_topic(t, ymd, history)
+                mem_res = self.memory.classify_topic(t, mem_index, current_date=ymd)
 
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
@@ -205,6 +240,8 @@ class DecisionDashboard:
                 impact_window=impact_win,
                 impact_hint=impact_hint,
                 outcome=outcome,
+                memory_status=mem_res["type"],
+                memory_meta=mem_res["meta"],
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -473,6 +510,23 @@ class DecisionDashboard:
             for r in rationale:
                 lines.append(f"- {r}")
                 
+        # Step 20: Topic Memory Badge (Prospective)
+        mem = c.get('memory_status', "NEW_TOPIC")
+        meta = c.get('memory_meta')
+        if mem == "REVISIT":
+            last_date = meta.get('last_date', 'Unknown')
+            lines.append(f"\n🧠 **TOPIC MEMORY**: REVISIT (Last: {last_date})")
+            lines.append("> ⚠️ **NOTE**: 이 토픽은 이미 다뤄진 바 있음 — 반복 내레이션 주의")
+        elif mem == "REGIME_UPDATE":
+            last_date = meta.get('last_date', 'Unknown')
+            lines.append(f"\n🧠 **TOPIC MEMORY**: REGIME UPDATE (Last: {last_date})")
+        # NEW_TOPIC is implicit/hidden or explicit? 
+        # Requirement: "Brain TOPIC MEMORY: NEW / REVISIT / REGIME UPDATE"
+        # "Render badge... On READY topic cards only"
+        # So we render for NEW too? "NEW"
+        elif mem == "NEW_TOPIC":
+             lines.append(f"\n🧠 **TOPIC MEMORY**: NEW")
+
         # Step 15: Contrast Rationale
         contrast = c.get('contrast_rationale')
         if contrast:
