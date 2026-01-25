@@ -18,6 +18,7 @@ class DecisionCard:
     tags: List[str] = None
     why_today: str = None
     bridge_eligible: bool = False
+    is_fact_driven: bool = False
 
 class DecisionDashboard:
     """
@@ -136,7 +137,8 @@ class DecisionDashboard:
                 evidence_refs=evidence_refs,
                 tags=tags,
                 why_today=why_today,
-                bridge_eligible=t.get("handoff_to_structural", False)
+                bridge_eligible=t.get("handoff_to_structural", False),
+                is_fact_driven=self._check_fact_driven(t)
             ))
             
         # 3. Sort (Presentation Only)
@@ -161,7 +163,8 @@ class DecisionDashboard:
             "summary": status_counts,
             "cards": [asdict(c) for c in cards],
             "no_speak_analysis": no_speak_reason,
-            "flag_summary": flag_tally
+            "flag_summary": flag_tally,
+            "has_fact_driven_candidate": any(c.is_fact_driven for c in cards if c.status != 'READY')
         }
 
     def render_markdown(self, data: Dict[str, Any]) -> str:
@@ -271,6 +274,9 @@ class DecisionDashboard:
         for k, v in reasons.items():
             lines.append(f"- {k}: {v}건")
             
+        if data.get("has_fact_driven_candidate"):
+            lines.append("- **FACT 기준은 충족했으나 구조 신호 부족**")
+            
         lines.append("")
 
     def _render_almost_candidates(self, cards: List[Dict], lines: List[str]):
@@ -310,7 +316,8 @@ class DecisionDashboard:
     def _render_ready_card(self, c: Dict) -> str:
         """Renders the detailed READY card with Speak Pack."""
         lines = []
-        lines.append(f"\n### ✅ {c['title']}") 
+        title_suffix = " (FACT-DRIVEN (Rule v1))" if c.get('is_fact_driven') else ""
+        lines.append(f"\n### ✅ {c['title']}{title_suffix}") 
         
         # Tags Line
         tags = c.get('tags', [])
@@ -601,6 +608,18 @@ class DecisionDashboard:
              # Or just use the reason directly
              return f"{ol.replace('왜 지금: ', '')}"
         return "지금 설명 가능한 조건 충족"
+
+    def _check_fact_driven(self, topic: Dict) -> bool:
+        """Checks if a topic matches FACT-DRIVEN rules via metadata or tags."""
+        if topic.get("is_fact_driven") or topic.get("metadata", {}).get("is_fact_driven"):
+            return True
+        
+        # Check tags for FACT_ prefix
+        tags = topic.get("tags", [])
+        if any(isinstance(tag, str) and tag.startswith("FACT_") for tag in tags):
+            return True
+            
+        return False
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """

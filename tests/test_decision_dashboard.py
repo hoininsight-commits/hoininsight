@@ -287,3 +287,47 @@ def test_dashboard_hardening(mock_env):
     
     # 3. Script Quality Counters
     assert "**SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=1" in md
+
+def test_fact_driven_labels(mock_env):
+    """Verify FACT-DRIVEN labels and Why No Speak supplemental line"""
+    base_dir, gate_dir = mock_env
+    
+    # Scene 1: READY topic with FACT_DRIVEN tag
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f1", "title": "Fact Ready", "total_score": 90, 
+                "tags": ["FACT_GOV_PLAN"], "numbers": [{"label":"A","value":"1"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f1.md").write_text("### 5)\n- **Ev1**: 1\n- **Ev2**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_f1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "Fact Ready (FACT-DRIVEN (Rule v1))" in md
+    
+    # Scene 2: 0 READY, but 1 HOLD topic with FACT metadata
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f2", "title": "Fact Hold", "total_score": 50, 
+                "is_fact_driven": True, "numbers": []
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f2.md").write_text("", encoding="utf-8")
+    (gate_dir / "script_v1_f2.md.quality.json").write_text(json.dumps({
+        "quality_status": "HOLD", "failure_codes": ["WEAK_EVIDENCE"]
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "🚫 WHY NO SPEAK (Today)" in md
+    assert "FACT 기준은 충족했으나 구조 신호 부족" in md
