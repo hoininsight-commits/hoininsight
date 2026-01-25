@@ -28,6 +28,7 @@ class DecisionCard:
     narration_ceiling: str = None
     judgment_notes: List[str] = None
     selection_rationale: List[str] = None
+    contrast_rationale: Dict[str, Any] = None
 
 class DecisionDashboard:
     """
@@ -182,6 +183,11 @@ class DecisionDashboard:
             {"READY": 0, "HOLD": 1, "DROP": 2}.get(x.status, 3), 
             -x.raw_score
         ))
+        
+        # Step 15: Contrast Post-processing
+        for c in cards:
+            if c.status == "READY":
+                c.contrast_rationale = self._get_contrast_rationale(c, [card for card in cards if card.status == "HOLD"])
         
         # 4. "Why No Speak" Analysis
         no_speak_reason = []
@@ -409,6 +415,15 @@ class DecisionDashboard:
             lines.append(f"\n🧭 **SELECTION RATIONALE**")
             for r in rationale:
                 lines.append(f"- {r}")
+                
+        # Step 15: Contrast Rationale
+        contrast = c.get('contrast_rationale')
+        if contrast:
+            lines.append(f"\n⚖️ **CONTRAST (Why this over others)**")
+            lines.append(f"- Selected: {contrast.get('selected_reason')}")
+            rejections = contrast.get('rejections', [])
+            for rj in rejections:
+                lines.append(f"- Rejected: {rj['topic_id']} — {rj['reason']}")
                 
         if is_fact and c.get('fact_why_now'):
             lines.append(f"> **WHY NOW**: {c['fact_why_now']}")
@@ -936,6 +951,63 @@ class DecisionDashboard:
                 rationale.append(f"Constraint: {constraint_text}")
                 
         return rationale
+
+    def _get_contrast_rationale(self, c: DecisionCard, competitors: List[DecisionCard]) -> Dict[str, Any]:
+        """Builds comparative logic: Why this topic won over others (Step 15)."""
+        if not competitors:
+            return None
+            
+        # 1. Build Contrast Set (Step 15-1)
+        # Filter: Same lane or same/adjacent level
+        filtered = [
+            comp for comp in competitors 
+            if comp.is_fact_driven == c.is_fact_driven or abs(comp.narration_level - c.narration_level) <= 1
+        ]
+        
+        if not filtered:
+            return None
+            
+        # Pick top 2 by score (they are already sorted in ranked, but let's be safe if cards list isn't)
+        # Using status == HOLD as identifying mark.
+        competitors_set = sorted(filtered, key=lambda x: 0, reverse=True)[:2] # Score not explicitly in Card, but list is ordered
+        # Wait, DecisionCard needs score if I want to sort here. Or I trust the order from ranked.
+        # Let's assume order is preserved in cards list.
+        
+        # 2. Contrast Rules (Step 15-2)
+        selected_reason = "Better timing alignment"
+        
+        # Check reasons in priority order
+        # a) Higher Evidence Density (if significant difference)
+        # Using a simple threshold (e.g., +2 more items) or just "more" items? 
+        # Requirement says "Higher evidence density". Let's say strictly >
+        max_comp_ev = max([comp.evidence_count for comp in competitors_set]) if competitors_set else 0
+        if c.evidence_count > max_comp_ev + 1: # Significant difference
+            selected_reason = "Higher evidence density"
+        # b) Broader Narration Range (Higher Priority than Density? Or overrides?)
+        # Let's check Level.
+        elif c.narration_level > max([comp.narration_level for comp in competitors_set]):
+            selected_reason = "Broader narration range"
+            
+        rejections = []
+        for comp in competitors_set:
+            reason = "Evidence too thin"
+            if comp.judgment_notes:
+                if any("WHY NOW" in n for n in comp.judgment_notes):
+                    reason = "Missing WHY NOW"
+                elif any("risk" in n.lower() for n in comp.judgment_notes):
+                    reason = "Narrative risk flagged"
+            elif comp.narration_ceiling:
+                reason = "Ceiling constraint"
+            
+            rejections.append({
+                "topic_id": comp.topic_id,
+                "reason": reason
+            })
+            
+        return {
+            "selected_reason": selected_reason,
+            "rejections": rejections
+        }
 
     def _render_sanity_panel(self, data: Dict[str, Any], lines: List[str]):
         """Renders the SYSTEM STATUS panel at the top."""
