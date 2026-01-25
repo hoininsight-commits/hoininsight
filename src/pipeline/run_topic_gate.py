@@ -120,8 +120,9 @@ def main(as_of_date: str):
     script_content = script_gen.generate_script(as_of_date)
     
     if script_content:
-        # Determine Topic ID (safe fallback)
-        topic_id = output.get("topic_id", f"gate_{as_of_date.replace('-','')}")
+        # Determine Topic ID (safe fallback for dataclass)
+        # GateOutput is a dataclass, use attribute access instead of .get()
+        topic_id = getattr(output, 'topic_id', f"gate_{as_of_date.replace('-','')}")
         
         # Save Script File
         script_file = d / f"script_v1_{topic_id}.md"
@@ -130,6 +131,7 @@ def main(as_of_date: str):
         
         # 5) Run Quality Gate
         q_result = run_quality_gate(script_file, topic_id)
+        # q_result is a dict, so .get() is correct here
         print(f"[OK] Quality Gate measured: {q_result.get('quality_status')} ({script_file}.quality.json)")
     else:
         print(f"[WARN] Script generation returned empty for {as_of_date}")
