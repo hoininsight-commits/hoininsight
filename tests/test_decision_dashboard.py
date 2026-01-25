@@ -994,3 +994,103 @@ def test_contrast_rationale_density(mock_env):
     
     # Check rationale
     assert cards["r1"]["contrast_rationale"]["selected_reason"] == "Higher evidence density"
+
+def test_portfolio_balance_logic(mock_env):
+    """Verify Step 16: Portfolio Balance Rules & Rendering"""
+    base_dir, gate_dir = mock_env
+    
+    dash = DecisionDashboard(base_dir)
+    
+    # --- Scenario 1: Empty READY ---
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": []}), encoding="utf-8")
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "📊 **PORTFOLIO BALANCE (Today)**" not in md # Should only show if READY > 0
+    
+    # --- Scenario 2: Balanced Portfolio ---
+    # Ready 1: Fact, L1, Time-Sensitive
+    # Ready 2: Anomaly, L2, Structural
+    # Rules: Fact=50% (<=60%), L3=0 (<=2), Timing=2 (>=2) -> Balanced
+    
+    ranked = [
+        {
+            "topic_id": "r1", "title": "Fact Balanced", "total_score": 90, 
+            "is_fact_driven": True, 
+            "risk_one": "Short term opportunity", # Triggers TIME-SENSITIVE
+            "numbers": [{"label":"A","value":"1"}]
+        },
+        {
+            "topic_id": "r2", "title": "Anomaly Balanced", "total_score": 85,
+            "is_fact_driven": False, "handoff_to_structural": True, 
+            "key_reasons": ["Sector demand anomaly"], # Triggers L2 'sector' check
+            "numbers": [{"label":"Sector","value":"High"}, {"label":"Demand","value":"Low"}]
+        }
+    ]
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": ranked}), encoding="utf-8")
+    
+    for tid in ["r1", "r2"]:
+        (gate_dir / f"script_v1_{tid}.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+        (gate_dir / f"script_v1_{tid}.md.quality.json").write_text(json.dumps({"quality_status": "READY", "failure_codes": []}), encoding="utf-8")
+        
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "📊 **PORTFOLIO BALANCE (Today)**" in md
+    assert "- Composition: FACT 1 / ANOMALY 1" in md
+    assert "L1 1" in md and "L2 1" in md
+    assert "STRUCTURAL SIGNAL" in md and "TIME-SENSITIVE" in md
+    assert "- Assessment: Balanced" in md
+    
+    # --- Scenario 3: Concentrated (FACT-heavy) ---
+    # 3 Topics, 3 Fact (100% > 60%)
+    ranked_conc = []
+    for i in range(3):
+        ranked_conc.append({
+            "topic_id": f"cf{i}", "title": f"Fact {i}", "total_score": 90, "is_fact_driven": True, "tags": ["TIME-SENSITIVE"], "numbers": [{"label":"A","value":"1"}]
+        })
+        (gate_dir / f"script_v1_cf{i}.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+        (gate_dir / f"script_v1_cf{i}.md.quality.json").write_text(json.dumps({"quality_status": "READY", "failure_codes": []}), encoding="utf-8")
+        
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": ranked_conc}), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "- Assessment: Concentrated — FACT-heavy" in md
+    
+    # --- Scenario 4: Concentrated (Stock-heavy) ---
+    # 3 Topics, 3 L3 (> 2)
+    ranked_stock = []
+    for i in range(3):
+        ranked_stock.append({
+            "topic_id": f"cs{i}", "title": f"Stock {i}", "total_score": 90, 
+            "key_reasons": ["Company news"], 
+            "numbers": [{"label":"Revenue","value":"1"}, {"label":"Profit","value":"2"}, {"label":"Contract","value":"3"}]
+        })
+        (gate_dir / f"script_v1_cs{i}.md").write_text("### 5)\n- **E1**\n- **E2**\n- **E3**", encoding="utf-8")
+        (gate_dir / f"script_v1_cs{i}.md.quality.json").write_text(json.dumps({"quality_status": "READY", "failure_codes": []}), encoding="utf-8")
+
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": ranked_stock}), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "- Assessment: Concentrated — Stock-heavy" in md
+    
+    # --- Scenario 5: Concentrated (Single-theme) ---
+    # 2 Topics, both TIME-SENSITIVE (Timing < 2)
+    ranked_time = []
+    for i in range(2):
+        ranked_time.append({
+            "topic_id": f"ct{i}", "title": f"Time {i}", "total_score": 90, 
+            "tags": ["TIME-SENSITIVE"], "numbers": [{"label":"A","value":"1"}]
+        })
+        (gate_dir / f"script_v1_ct{i}.md").write_text("### 5)\n- **Ev1**", encoding="utf-8")
+        (gate_dir / f"script_v1_ct{i}.md.quality.json").write_text(json.dumps({"quality_status": "READY", "failure_codes": []}), encoding="utf-8")
+        
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({"ranked": ranked_time}), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    assert "- Assessment: Concentrated — Single-theme risk" in md

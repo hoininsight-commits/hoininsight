@@ -240,6 +240,11 @@ class DecisionDashboard:
             self._render_no_speak_panel(lines, data)
         
         # --- SECTION 1: TODAY - SPEAKABLE TOPICS ({len(ready_topics)}) ---
+        if ready_topics:
+            snapshot = self._build_portfolio_snapshot(cards)
+            assessment = self._assess_portfolio_balance(snapshot)
+            self._render_portfolio_balance(lines, snapshot, assessment)
+            
         lines.append(f"\n## 🎬 TODAY — SPEAKABLE TOPICS ({len(ready_topics)})")
         lines.append("※ 시스템은 선택하지 않습니다. 아래는 오늘 설명 가능한 후보 요약입니다.")
         
@@ -1071,6 +1076,93 @@ class DecisionDashboard:
             lines.append("✅ **SYSTEM HEALTH**: All clear (Operational margins normal)")
             lines.append("")
 
+    def _render_portfolio_balance(self, lines: List[str], snapshot: Dict[str, Any], assessment: Dict[str, Any]):
+        """Renders the PORTFOLIO BALANCE block (Step 16)."""
+        lines.append(f"📊 **PORTFOLIO BALANCE (Today)**")
+        
+        # Composition
+        comp = []
+        if snapshot['fact_count'] > 0: comp.append(f"FACT {snapshot['fact_count']}")
+        if snapshot['anomaly_count'] > 0: comp.append(f"ANOMALY {snapshot['anomaly_count']}")
+        lines.append(f"- Composition: {' / '.join(comp)}")
+        
+        # Depth
+        depth = []
+        for l in [1, 2, 3]:
+            cnt = snapshot['level_counts'].get(l, 0)
+            if cnt > 0: depth.append(f"L{l} {cnt}")
+        lines.append(f"- Depth: {' · '.join(depth)}")
+        
+        # Timing
+        timing = snapshot.get('timing_tags', [])
+        lines.append(f"- Timing: {' · '.join(timing) if timing else '(None)'}")
+        
+        # Assessment
+        status = assessment.get("status", "Unknown")
+        reason = assessment.get("reason", "")
+        lines.append(f"- Assessment: {status} — {reason}")
+        lines.append("")
+
+    def _build_portfolio_snapshot(self, cards: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Aggregates portfolio stats from READY topics (Step 16-1)."""
+        # cards are dicts when coming from render_markdown(data)
+        ready_cards = [c for c in cards if c.get('status') == 'READY']
+        
+        # Lane
+        fact_cnt = len([c for c in ready_cards if c.get('is_fact_driven')])
+        anomaly_cnt = len(ready_cards) - fact_cnt
+        
+        # Level
+        lvl_counts = {1: 0, 2: 0, 3: 0}
+        for c in ready_cards:
+            l = c.get('narration_level', 1)
+            lvl_counts[l] = lvl_counts.get(l, 0) + 1
+            
+        # Timing Tags
+        # Filter for specific timing tags: TIME-SENSITIVE, STRUCTURAL, TRENDING NOW
+        target_tags = ["TIME-SENSITIVE", "STRUCTURAL SIGNAL", "TRENDING NOW"] 
+
+        found_tags = set()
+        for c in ready_cards:
+            tags = c.get('tags') or []
+            for t in tags:
+                for target in target_tags:
+                    if target in t:
+                        found_tags.add(target)
+                        
+        return {
+            "total_ready": len(ready_cards),
+            "fact_count": fact_cnt,
+            "anomaly_count": anomaly_cnt,
+            "level_counts": lvl_counts,
+            "timing_tags": sorted(list(found_tags))
+        }
+
+    def _assess_portfolio_balance(self, snapshot: Dict[str, Any]) -> Dict[str, str]:
+        """Applies balance rules (Step 16-2)."""
+        total = snapshot["total_ready"]
+        if total == 0:
+            return {"status": "Empty", "reason": "No READY topics"}
+            
+        # 1. Fact Ratio <= 60%
+        fact_ratio = snapshot["fact_count"] / total
+        if fact_ratio > 0.6:
+            return {"status": "Concentrated", "reason": "FACT-heavy"}
+            
+        # 2. L3 <= 2
+        if snapshot["level_counts"][3] > 2:
+            return {"status": "Concentrated", "reason": "Stock-heavy"}
+            
+        # 3. Timing Diversity >= 2
+        # Constraint: "At least 2 different Timing tags present"
+        # Interpreted as: across the portfolio, we cover at least 2 distinct timing angles.
+        if len(snapshot["timing_tags"]) < 2:
+            # Reason: Single-theme risk? 
+            # Prompt says "Single-theme risk".
+            return {"status": "Concentrated", "reason": "Single-theme risk"}
+            
+        return {"status": "Balanced", "reason": "Portfolio mix optimal"}
+
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """
         Saves the dashboard data to daily_lock.json for immutable reference.
@@ -1083,3 +1175,4 @@ class DecisionDashboard:
         lock_path = gate_dir / "daily_lock.json"
         lock_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
         return lock_path
+
