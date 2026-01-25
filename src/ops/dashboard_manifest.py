@@ -40,7 +40,7 @@ class DashboardManifest:
         
         # Verify required files and log missing
         required = {
-            "report_md": "daily_report.md",
+            "report_md": "daily_brief.md",
             "decision_md": "decision_dashboard.md",
             "daily_lock_json": "daily_lock.json"
         }

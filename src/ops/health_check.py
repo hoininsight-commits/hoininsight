@@ -14,7 +14,11 @@ class HealthCheck:
     def run(self, ymd: str):
         year, month, day = ymd.split("-")
         report_dir = self.base_dir / "data" / "reports" / year / month / day
-        lock_file = report_dir / "daily_lock.json"
+        events_dir = self.base_dir / "data" / "events" / year / month / day
+        anomalies_dir = self.base_dir / "data" / "features" / "anomalies" / year / month / day
+        topics_dir = self.base_dir / "data" / "topics" / year / month / day
+        candidates_file = self.base_dir / "data" / "topics" / "candidates" / year / month / day / "topic_candidates.json"
+        contents_dir = self.base_dir / "data" / "content"
         
         health_data = {
             "run_date": ymd,
@@ -29,40 +33,53 @@ class HealthCheck:
                 "topics_count": {"READY": 0, "HOLD": 0, "DROP": 0}
             },
             "decision_dashboard_exists": False,
-            "missing_files": [],
-            "schema_errors": []
+            "errors": [],
+            "missing_files": []
         }
         
-        # 1. Check Decision Dashboard
-        if (report_dir / "decision_dashboard.md").exists():
+        # 1. Check Decision Dashboard (and Daily Brief)
+        if (report_dir / "daily_brief.md").exists():
             health_data["decision_dashboard_exists"] = True
-
-        # 2. Check Lock File and Metrics
-        if lock_file.exists():
-            try:
-                data = json.loads(lock_file.read_text(encoding="utf-8"))
-                cards = data.get("cards", [])
-                summary = data.get("summary", {})
-                
-                health_data["metrics"]["topics_count"] = summary
-                # Gate candidates are those in ranked list
-                health_data["metrics"]["gate_candidates_count"] = len(cards)
-                health_data["status"] = "SUCCESS" if summary.get("READY", 0) > 0 else "PARTIAL"
-                
-                # Best-effort counts
-                health_data["metrics"]["anomalies_count"] = len(cards) # Simplified
-            except Exception as e:
-                health_data["status"] = "FAIL"
-                health_data["schema_errors"].append(str(e))
         else:
-            health_data["status"] = "FAIL"
-            health_data["missing_files"].append("daily_lock.json")
+            health_data["errors"].append("daily_brief.md missing")
 
-        # 3. File Counts (Scripts)
-        topics_dir = self.base_dir / "data" / "topics" / year / month / day
-        if topics_dir.exists():
-            health_data["metrics"]["scripts_md_count"] = len(list(topics_dir.glob("script_v*md")))
-            health_data["metrics"]["script_quality_json_count"] = len(list(topics_dir.glob("*.quality.json")))
+        # 2. Real Artifact Counts (Read-Only)
+        try:
+            # Events
+            if events_dir.exists():
+                health_data["metrics"]["events_count"] = len(list(events_dir.glob("*.json")))
+            
+            # Anomalies
+            if anomalies_dir.exists():
+                health_data["metrics"]["anomalies_count"] = len(list(anomalies_dir.glob("*.json")))
+            
+            # Gate Candidates (from JSON)
+            if candidates_file.exists():
+                try:
+                    c_data = json.loads(candidates_file.read_text(encoding="utf-8"))
+                    health_data["metrics"]["gate_candidates_count"] = len(c_data.get("candidates", []))
+                except Exception as e:
+                    health_data["errors"].append(f"Error parsing candidates: {e}")
+
+            # Scripts (MD and Quality)
+            if contents_dir.exists():
+                health_data["metrics"]["scripts_md_count"] = len(list(contents_dir.glob("script_v1_*.md")))
+                health_data["metrics"]["script_quality_json_count"] = len(list(contents_dir.glob("*.quality.json")))
+            
+            # Topics Summary (from daily_lock.json if exists)
+            lock_file = report_dir / "daily_lock.json"
+            if lock_file.exists():
+                try:
+                    data = json.loads(lock_file.read_text(encoding="utf-8"))
+                    health_data["metrics"]["topics_count"] = data.get("summary", {"READY": 0, "HOLD": 0, "DROP": 0})
+                except Exception as e:
+                    health_data["errors"].append(f"Error parsing lock_file: {e}")
+
+            health_data["status"] = "SUCCESS" if not health_data["errors"] else "PARTIAL"
+            
+        except Exception as e:
+            health_data["status"] = "FAIL"
+            health_data["errors"].append(f"General health check error: {e}")
             
         self.health_path.write_text(json.dumps(health_data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"Health report generated: {self.health_path}")

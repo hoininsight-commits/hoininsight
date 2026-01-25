@@ -301,6 +301,11 @@ jobs:
         run: |
           python -m src.dashboard.dashboard_generator
 
+      - name: Generate Dashboard Manifest & Health (Step 26)
+        run: |
+          python -m src.ops.dashboard_manifest
+          python -m src.ops.health_check
+
       - name: Verify Phase 39 Topic Candidates
         run: |
           echo "[VERIFY] Phase 39 Topic Candidate Gate Check"
