@@ -1,6 +1,6 @@
 {
   "meta": {
-    "ts_utc": "2026-01-25T13:55:59Z",
+    "ts_utc": "2026-01-25T13:59:59Z",
     "ymd_utc": "2026/01/25",
     "enabled_datasets": 32,
     "lookback_days": 30,
@@ -25,23 +25,23 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 0,
-      "skipped_7d": 3,
+      "skipped_7d": 4,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "crypto_btc_usd_spot_coingecko",
       "report_key": "BTCUSD",
       "curated_path": "data/curated/crypto/btc_usd.csv",
-      "rows": 188,
+      "rows": 189,
       "first_ts": "2026-01-15T07:32:29Z",
-      "last_ts": "2026-01-25T13:55:35Z",
-      "last_7d_rows": 111,
-      "last_30d_rows": 188,
+      "last_ts": "2026-01-25T13:59:36Z",
+      "last_7d_rows": 112,
+      "last_30d_rows": 189,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "inflation_cpi_fred",
@@ -53,9 +53,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "fx_dxy_index_stooq",
@@ -67,9 +67,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 4,
       "ok_7d": 0,
-      "skipped_7d": 6,
+      "skipped_7d": 7,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "crypto_eth_usd_spot_coingecko",
@@ -81,9 +81,9 @@
       "last_7d_rows": 6,
       "last_30d_rows": 11,
       "ok_7d": 0,
-      "skipped_7d": 6,
+      "skipped_7d": 7,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "rates_fed_funds_fred",
@@ -95,9 +95,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "risk_financial_stress_fred",
@@ -109,9 +109,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "metal_gold_paxg_coingecko",
@@ -123,9 +123,9 @@
       "last_7d_rows": 7,
       "last_30d_rows": 83,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "derived_gold_silver_ratio",
@@ -137,9 +137,9 @@
       "last_7d_rows": 7,
       "last_30d_rows": 73,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "credit_hy_spread_fred",
@@ -151,9 +151,9 @@
       "last_7d_rows": 4,
       "last_30d_rows": 18,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "inflation_kor_cpi_ecos",
@@ -165,9 +165,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "rates_kor_base_rate_ecos",
@@ -179,23 +179,23 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "index_kospi_stooq",
       "report_key": "KOSPI",
       "curated_path": "data/curated/indices/kospi.csv",
-      "rows": 187,
+      "rows": 188,
       "first_ts": "2026-01-15T07:32:40Z",
-      "last_ts": "2026-01-25T13:55:35Z",
-      "last_7d_rows": 110,
-      "last_30d_rows": 187,
+      "last_ts": "2026-01-25T13:59:36Z",
+      "last_7d_rows": 111,
+      "last_30d_rows": 188,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "liquidity_m2_fred",
@@ -207,9 +207,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "struct_dart_cb_bw",
@@ -221,9 +221,9 @@
       "last_7d_rows": 1,
       "last_30d_rows": 1,
       "ok_7d": 3,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "struct_dart_disposal",
@@ -235,9 +235,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 3,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "index_nasdaq_fred",
@@ -249,9 +249,9 @@
       "last_7d_rows": 4,
       "last_30d_rows": 22,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "inflation_pce_fred",
@@ -263,9 +263,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "metal_platinum_xptusd_stooq",
@@ -277,9 +277,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 4,
       "ok_7d": 0,
-      "skipped_7d": 6,
+      "skipped_7d": 7,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "real_estate_price_index",
@@ -291,9 +291,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-      "skipped_7d": 3,
+      "skipped_7d": 4,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "real_estate_unsold",
@@ -305,9 +305,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-      "skipped_7d": 3,
+      "skipped_7d": 4,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "real_estate_volume",
@@ -319,9 +319,9 @@
       "last_7d_rows": 2,
       "last_30d_rows": 2,
       "ok_7d": 0,
-      "skipped_7d": 3,
+      "skipped_7d": 4,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "metal_silver_kag_coingecko",
@@ -333,9 +333,9 @@
       "last_7d_rows": 7,
       "last_30d_rows": 83,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "metal_silver_kag_coingecko",
@@ -347,9 +347,9 @@
       "last_7d_rows": 7,
       "last_30d_rows": 83,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "index_spx_fred",
@@ -361,9 +361,9 @@
       "last_7d_rows": 4,
       "last_30d_rows": 95,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "employment_unrate_fred",
@@ -375,9 +375,9 @@
       "last_7d_rows": 0,
       "last_30d_rows": 0,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "rates_us02y_fred",
@@ -389,9 +389,9 @@
       "last_7d_rows": 3,
       "last_30d_rows": 21,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "rates_us10y_fred",
@@ -403,9 +403,9 @@
       "last_7d_rows": 3,
       "last_30d_rows": 94,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "fx_usdkrw_ecos",
@@ -417,9 +417,9 @@
       "last_7d_rows": 5,
       "last_30d_rows": 19,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "risk_vix_fred",
@@ -431,9 +431,9 @@
       "last_7d_rows": 4,
       "last_30d_rows": 95,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "comm_wti_fred",
@@ -445,9 +445,9 @@
       "last_7d_rows": 1,
       "last_30d_rows": 19,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     },
     {
       "dataset_id": "derived_yield_curve_10y_2y",
@@ -459,9 +459,9 @@
       "last_7d_rows": 3,
       "last_30d_rows": 17,
       "ok_7d": 6,
-      "skipped_7d": 0,
+      "skipped_7d": 1,
       "fail_7d": 0,
-      "status_today": "UNKNOWN"
+      "status_today": "SKIPPED"
     }
   ],
   "chart_map": {}
