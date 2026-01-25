@@ -556,3 +556,91 @@ def test_narration_depth_classification(mock_env):
     md = dash.render_markdown(data)
     assert "🎤 LEVEL 3" in md
     assert "Stock names can be mentioned" in md
+
+def test_narration_ceiling_reason(mock_env):
+    """Verify Step 7: Narration Ceiling Reason rendering and logic"""
+    base_dir, gate_dir = mock_env
+    
+    # 1. Level 1 - Check Ceiling
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "m1", "title": "Macro Signal", "total_score": 90,
+                "key_reasons": ["Fed pivot"],
+                "numbers": [{"label":"CPI","value":"2%"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_m1.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+    (gate_dir / "script_v1_m1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "**Ceiling**: 산업 또는 기업 연결 신호 없음" in md
+    
+    # 2. Level 2 - Check Ceiling
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "s1", "title": "Semi Sector", "total_score": 90,
+                "key_reasons": ["Semiconductor sector growth"],
+                "numbers": [
+                    {"label":"Global Units","value":"100M"}, 
+                    {"label":"Demand Index","value":"High"}
+                ]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_s1.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_s1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "**Ceiling**: 특정 기업의 구조적 우위 증거 부족" in md
+    
+    # 3. Level 3 - No Ceiling
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "c1", "title": "NVDA News", "total_score": 95,
+                "key_reasons": ["NVDA profit jump"],
+                "numbers": [
+                    {"label":"Revenue","value":"10B"}, 
+                    {"label":"Profit","value":"2B"}, 
+                    {"label":"Orders","value":"High"}
+                ]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_c1.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2\n- **Ev**: 3", encoding="utf-8")
+    (gate_dir / "script_v1_c1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "**Ceiling**" not in md
+    
+    # 4. FACT-DRIVEN + Level 1/2
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "f1", "title": "Fact Macro", "total_score": 90,
+                "is_fact_driven": True,
+                "numbers": [{"label":"GDP","value":"3%"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_f1.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+    (gate_dir / "script_v1_f1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "**Ceiling**: 공식 수치는 존재하나 수혜 귀속 불명확" in md

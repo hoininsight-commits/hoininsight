@@ -25,6 +25,7 @@ class DecisionCard:
     narration_level: int = 1
     narration_badge: str = None
     narration_helper: str = None
+    narration_ceiling: str = None
 
 class DecisionDashboard:
     """
@@ -131,6 +132,9 @@ class DecisionDashboard:
                 tags = self._compute_recommender_tags(t, flags)
                 why_today = self._compute_why_today(t, speak_pack)
 
+            depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
+            ceiling_reason = self._get_ceiling_reason(depth_info["narration_level"], self._check_fact_driven(t))
+            
             cards.append(DecisionCard(
                 topic_id=tid,
                 title=t.get("title", "Untitled"),
@@ -146,8 +150,9 @@ class DecisionDashboard:
                 bridge_eligible=t.get("handoff_to_structural", False),
                 is_fact_driven=self._check_fact_driven(t),
                 fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
+                narration_ceiling=ceiling_reason,
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
-                **self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
+                **depth_info
             ))
             
         # 3. Sort (Presentation Only)
@@ -324,6 +329,7 @@ class DecisionDashboard:
             # Narration Depth Badge
             n_badge = c.get('narration_badge', '🎤 LEVEL 1')
             n_helper = c.get('narration_helper', 'Macro explanation only')
+            ceiling = c.get('narration_ceiling')
             
             # Normalized Reason
             reason = self._get_hold_reason(c) if c['status'] == 'HOLD' else c['reason']
@@ -335,6 +341,8 @@ class DecisionDashboard:
             lines.append(f"### {status_icon} {c['title']} ({status_text})")
             lines.append(f"**{elig_badge}**: {eligibility_reason}")
             lines.append(f"**{n_badge}**: {n_helper}")
+            if ceiling:
+                lines.append(f"**Ceiling**: {ceiling}")
             lines.append(f"- **Reason**: {reason}")
             if bridge_mk:
                  lines.append(f"- **Note**: {bridge_mk}")
@@ -362,6 +370,10 @@ class DecisionDashboard:
         n_badge = c.get('narration_badge', '🎤 LEVEL 1')
         n_helper = c.get('narration_helper', 'Macro explanation only')
         lines.append(f"**{n_badge}**: {n_helper}")
+        
+        ceiling = c.get('narration_ceiling')
+        if ceiling:
+            lines.append(f"**Ceiling**: {ceiling}")
         
         # Tags Line
         tags = c.get('tags', [])
@@ -770,6 +782,21 @@ class DecisionDashboard:
             "narration_badge": "🎤 LEVEL 1",
             "narration_helper": "Macro explanation only"
         }
+
+    def _get_ceiling_reason(self, level: int, is_fact: bool) -> str:
+        """Determines the reason why narration level is limited to 1 or 2."""
+        if level == 3:
+            return None
+            
+        if is_fact and level in [1, 2]:
+            return "공식 수치는 존재하나 수혜 귀속 불명확"
+            
+        if level == 1:
+            return "산업 또는 기업 연결 신호 없음"
+        if level == 2:
+            return "특정 기업의 구조적 우위 증거 부족"
+            
+        return None
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
         """
