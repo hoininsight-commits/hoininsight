@@ -53,10 +53,14 @@ class DashboardManifest:
             else:
                 missing.append(filename)
 
+        # Flattened Manifest Structure (Step 28-3)
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
-            "paths": paths,
+            "report_md": paths.get("report_md"),
+            "decision_md": paths.get("decision_md"), 
+            "daily_lock": paths.get("daily_lock_json"),
+            "health_json": f"data/dashboard/health_today.json",
             "missing": missing
         }
         

@@ -741,9 +741,12 @@
                 // 1. Health Panel
                 fetchHealth(manifest.run_date);
 
-                // 2. Decision Dashboard MD
-                if (manifest.paths && manifest.paths.decision_md) {
-                    fetchDecisionMD(manifest.paths.decision_md);
+                // 2. Decision Dashboard MD (Flattened Key Support)
+                // Priority: decision_md -> report_md -> dashboard_md
+                const targetMD = manifest.decision_md || manifest.report_md || manifest.dashboard_md;
+
+                if (targetMD) {
+                    fetchDecisionMD(targetMD);
                 } else {
                     document.getElementById('js-decision-md-render').innerHTML = `
                         <div style="background:#fff7ed; border:1px solid #f59e0b; padding:20px; border-radius:8px; color:#9a3412;">
@@ -754,8 +757,8 @@
                 }
 
                 // 3. Load Lock Data (for counts etc)
-                if (manifest.paths && manifest.paths.daily_lock_json) {
-                    fetchLockData(manifest.paths.daily_lock_json);
+                if (manifest.daily_lock) {
+                    fetchLockData(manifest.daily_lock);
                 }
 
             } catch (e) {
