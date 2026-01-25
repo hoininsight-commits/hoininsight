@@ -5,6 +5,7 @@ import yaml
 from dataclasses import dataclass, asdict
 from src.ops.post_mortem_tracker import PostMortemTracker
 from src.ops.topic_memory import TopicMemory
+from src.ops.narrative_saturation import NarrativeSaturation
 
 @dataclass
 class DecisionCard:
@@ -14,6 +15,7 @@ class DecisionCard:
     Step 16: Portfolio Balance Metadata.
     Step 17: Time-to-Impact Metadata.
     Step 20: Topic Memory.
+    Step 21: Narrative Saturation.
     """
     topic_id: str
     title: str
@@ -57,6 +59,11 @@ class DecisionCard:
     memory_status: str = "NEW_TOPIC" # NEW_TOPIC, REVISIT, REGIME_UPDATE
     memory_meta: Dict[str, Any] = None
     
+    # Narrative Saturation
+    saturation_level: str = "NORMAL"
+    saturation_count: int = 0
+    saturation_axis: str = None
+    
     # Post-Mortem
     outcome: str = None
 
@@ -70,6 +77,7 @@ class DecisionDashboard:
         self.base_dir = base_dir
         self.tracker = PostMortemTracker(base_dir)
         self.memory = TopicMemory(base_dir)
+        self.saturation = NarrativeSaturation(base_dir)
         self.reason_map = self._load_reason_map()
         
     def _load_reason_map(self) -> Dict:
@@ -124,14 +132,17 @@ class DecisionDashboard:
         history = self.tracker.load_history(next_day_str, future_end_str)
         
         # Load Memory (Step 20) - 90 days lookback from today
-        # We need past READY topics to detect revisits.
         mem_index = self.memory.load_memory(ymd, lookback_days=90)
+        
+        # Load Saturation History (Step 21) - 14 days lookback
+        sat_index = self.saturation.load_history(ymd, days=14)
         
         # Aggregate stats for today's panel (Past performance up to target_date)
         pm_stats = self.tracker.get_aggregate_stats(ymd, lookback_days=90)
         
         cards = []
         status_counts = {"READY": 0, "HOLD": 0, "DROP": 0}
+        sat_summary = {"NORMAL": 0, "DENSE": 0, "SATURATED": 0}
         failure_tally = {}
         flag_tally = {}
         
@@ -194,10 +205,17 @@ class DecisionDashboard:
             outcome = None
             # Step 20: Topic Memory
             mem_res = {"type": "NEW_TOPIC", "meta": None}
+            # Step 21: Narrative Saturation
+            sat_res = {"level": "NORMAL", "count": 0, "axis": None}
             
             if status == "READY":
                 outcome = self.tracker.evaluate_topic(t, ymd, history)
                 mem_res = self.memory.classify_topic(t, mem_index, current_date=ymd)
+                sat_res = self.saturation.compute_saturation(t, sat_index)
+                
+                # Update Saturation Summary
+                lvl = sat_res["level"]
+                sat_summary[lvl] = sat_summary.get(lvl, 0) + 1
 
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
@@ -242,6 +260,9 @@ class DecisionDashboard:
                 outcome=outcome,
                 memory_status=mem_res["type"],
                 memory_meta=mem_res["meta"],
+                saturation_level=sat_res["level"],
+                saturation_count=sat_res["count"],
+                saturation_axis=sat_res["axis"],
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -299,6 +320,18 @@ class DecisionDashboard:
         lines.append(f"- **UNRESOLVED**: {u}")
         lines.append("")
 
+    def _render_saturation_summary(self, lines: List[str], stats: Dict[str, int]):
+        """Renders Step 21 Saturation Summary."""
+        n = stats.get("NORMAL", 0)
+        d = stats.get("DENSE", 0)
+        s = stats.get("SATURATED", 0)
+        
+        lines.append("### 🧯 NARRATIVE SATURATION SUMMARY (Last 14 Days)")
+        lines.append(f"- **NORMAL (0-2)**: {n}")
+        lines.append(f"- **DENSE (3-4)**: {d}")
+        lines.append(f"- **SATURATED (5+)**: {s}")
+        lines.append("")
+
     def render_markdown(self, data: Dict[str, Any]) -> str:
         lines = []
         
@@ -306,6 +339,11 @@ class DecisionDashboard:
         pm_stats = data.get("post_mortem_summary")
         if pm_stats:
              self._render_post_mortem_panel(lines, pm_stats)
+             
+        # Step 21: Saturation Panel
+        sat_stats = data.get("saturation_summary")
+        if sat_stats:
+            self._render_saturation_summary(lines, sat_stats)
         
         cards = data.get("cards", [])
         
@@ -526,6 +564,19 @@ class DecisionDashboard:
         # So we render for NEW too? "NEW"
         elif mem == "NEW_TOPIC":
              lines.append(f"\n🧠 **TOPIC MEMORY**: NEW")
+
+        # Step 21: Narrative Saturation Badge (Prospective)
+        sat_lvl = c.get('saturation_level', 'NORMAL')
+        sat_cnt = c.get('saturation_count', 0)
+        if sat_lvl != "NORMAL": # Display only if significant? Or always?
+            # "Render Saturation Warning... For READY topics only"
+            # "NARRATIVE SATURATION: NORMAL / DENSE / SATURATED"
+            # Let's show always for visibility?
+            pass
+            
+        lines.append(f"\n🧯 **NARRATIVE SATURATION**: {sat_lvl} ({sat_cnt} recent)")
+        if sat_lvl == "SATURATED":
+            lines.append("> 🧯 **WARNING**: 이미 시장에서 충분히 소비된 서사 — 반복 주의")
 
         # Step 15: Contrast Rationale
         contrast = c.get('contrast_rationale')
