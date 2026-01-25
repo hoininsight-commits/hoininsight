@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 from typing import Dict, List, Any, Tuple, Optional
 import yaml
@@ -345,7 +346,11 @@ class DecisionDashboard:
         lines.append(f"- **SATURATED (5+)**: {s}")
         lines.append("")
 
-    def render_markdown(self, data: Dict[str, Any]) -> str:
+    def render_markdown(self, data: Dict[str, Any], force_final_view: bool = False) -> str:
+        # Step 23: Final Human View Toggle
+        if force_final_view or os.environ.get("ENABLE_FINAL_VIEW") == "ON":
+            return self._render_final_view(data)
+
         lines = []
         
         # Step 18: Aggregate Panel
@@ -702,6 +707,114 @@ class DecisionDashboard:
                 lines.append(f"_🧪 OUTCOME: {outcome}_")
             
         lines.append("---")
+        return "\n".join(lines)
+
+    def _render_final_view(self, data: Dict[str, Any]) -> str:
+        """Step 23: Final Human View - Decision Focused."""
+        cards = data.get("cards", [])
+        sorted_cards = self._sort_for_final_view(cards)
+        
+        lines = []
+        # Header
+        # Assume today's date from first card? or data? 
+        # But data doesn't have top level date. 
+        # We'll use generic header or try to extract.
+        lines.append("# 🎙️ DAILY EDITORIAL DECISION (FINAL VIEW)")
+        lines.append("\n_System diagnostics hidden. Showing prioritized decision metrics only._\n")
+        
+        # Top 5
+        top_5 = sorted_cards[:5]
+        rest = sorted_cards[5:]
+        
+        for c in top_5:
+            lines.append(self._render_final_card(c))
+            
+        if rest:
+            lines.append("\n### 👇 More Candidates")
+            lines.append(f"<details><summary>Show {len(rest)} more...</summary>\n")
+            for c in rest:
+                lines.append(self._render_final_card(c))
+            lines.append("\n</details>")
+            
+        return "\n".join(lines)
+
+    def _sort_for_final_view(self, cards: List[Dict]) -> List[Dict]:
+        """
+        Sorts for editorial priority:
+        1. Speakable + (Permitted | NULL)
+        2. Speakable + Discouraged
+        3. Not Speakable
+        
+        Secondary: Level (Desc), Impact (Asc)
+        """
+        def sort_key(c):
+             # Group Logic
+             status = c.get('status', 'DROP')
+             perm = c.get('renarration_status') 
+             
+             # Group 1: READY + (Permitted or None(New))
+             # Group 2: READY + Discouraged
+             # Group 3: Not READY
+             
+             if status == "READY":
+                 if perm == "DISCOURAGED":
+                     group = 2
+                 else:
+                     group = 1
+             else:
+                 group = 3
+                 
+             # Level (Desc) -> use negative
+             level = -c.get('narration_level', 0)
+             
+             # Impact (Asc) -> IMMEDIATE(0) < NEAR(1) < MID(2) < LONG(3)
+             imp_map = {"IMMEDIATE": 0, "NEAR": 1, "MID": 2, "LONG": 3}
+             impact = imp_map.get(c.get('impact_window', 'LONG'), 4)
+             
+             return (group, level, impact)
+             
+        return sorted(cards, key=sort_key)
+
+    def _render_final_card(self, c: Dict) -> str:
+        """Minimalist card for Final View."""
+        lines = []
+        is_ready = c.get('status') == "READY"
+        icon = "✅" if is_ready else "⏸️"
+        
+        title = c.get('title')
+        lines.append(f"### {icon} {title}")
+        
+        # Badges Row
+        badges = []
+        if is_ready:
+            badges.append("🎙️ SPEAKABLE")
+            badges.append(c.get('narration_badge', '🎤 L1'))
+            perm = c.get('renarration_status')
+            if perm:
+                badges.append(f"🔁 {perm}")
+        else:
+            badges.append(c.get('eligibility_badge', 'NOT SPEAKABLE'))
+            
+        lines.append(" | ".join(badges))
+        
+        # Content
+        if c.get('why_today'):
+            lines.append(f"> **WHY**: {c['why_today']}")
+            
+        # Rationale (First point only)
+        rats = c.get('selection_rationale')
+        if rats and len(rats) > 0:
+            lines.append(f"- 🧭 {rats[0]} (and {len(rats)-1} more..)" if len(rats)>1 else f"- 🧭 {rats[0]}")
+            
+        # Speak Pack (Collapsed)
+        sp = c.get('speak_pack')
+        if sp:
+            lines.append("<details><summary>🎙️ Speak Pack (Script)</summary>")
+            lines.append(f"- One-Liner: {sp.get('one_liner')}")
+            lines.append(f"- Risk: {sp.get('risk_note')}")
+            lines.append("</details>")
+            
+        lines.append("\n---")
         return "\n".join(lines)
 
     def _get_hold_reason(self, c: Dict) -> str:
