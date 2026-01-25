@@ -2122,6 +2122,12 @@ def generate_dashboard(base_dir: Path):
 
     # [Phase 42] Render Synthesized Topic Section (Top Priority)
     synth_html = ""
+    s_title = ""
+    s_status = "WATCH"
+    s_why = ""
+    s_comps = {}
+    s_ev_count = 0
+    
     ct = synth_topic.get("content_topic", {})
     if ct:
         s_title = ct.get("title", "Unknown")
