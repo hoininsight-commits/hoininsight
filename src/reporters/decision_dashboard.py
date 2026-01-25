@@ -64,6 +64,10 @@ class DecisionCard:
     saturation_count: int = 0
     saturation_axis: str = None
     
+    # Re-Narration Permission (Step 22)
+    renarration_status: str = None # PERMITTED, DISCOURAGED, or None (if NEW)
+    renarration_reason: str = None
+    
     # Post-Mortem
     outcome: str = None
 
@@ -216,6 +220,13 @@ class DecisionDashboard:
                 # Update Saturation Summary
                 lvl = sat_res["level"]
                 sat_summary[lvl] = sat_summary.get(lvl, 0) + 1
+                
+                # Step 22: Re-Narration Permission
+                perm_status, perm_reason = self._determine_renarration_permission(
+                    mem_res["type"], impact_win, outcome
+                )
+            else:
+                 perm_status, perm_reason = None, None
 
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
@@ -263,6 +274,8 @@ class DecisionDashboard:
                 saturation_level=sat_res["level"],
                 saturation_count=sat_res["count"],
                 saturation_axis=sat_res["axis"],
+                renarration_status=perm_status,
+                renarration_reason=perm_reason,
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -534,6 +547,27 @@ class DecisionDashboard:
                     lines.append(f"- {n}")
             lines.append("")
 
+    def _determine_renarration_permission(self, memory_status: str, impact_window: str, outcome: str) -> Tuple[Optional[str], Optional[str]]:
+        """
+        Step 22: Determines if re-narration is PERMITTED or DISCOURAGED.
+        Only applies if topic is NOT NEW.
+        """
+        if memory_status == "NEW_TOPIC":
+            return None, None
+            
+        # Rules for PERMITTED
+        if memory_status == "REGIME_UPDATE":
+            return "PERMITTED", "국면 변화가 감지되어 재설명 가능"
+            
+        if impact_window in ["IMMEDIATE", "NEAR"]:
+            return "PERMITTED", "시급한 영향력으로 인해 재설명 필요"
+            
+        if outcome == "FAILED":
+            return "PERMITTED", "이전 예측 실패로 인한 사후 분석 필요"
+            
+        # Default DISCOURAGED
+        return "DISCOURAGED", "최근 반복 소비된 서사로 신규 정보 없음"
+
     def _render_ready_card(self, c: Dict) -> str:
         """Renders the detailed READY card with Speak Pack."""
         lines = []
@@ -578,6 +612,13 @@ class DecisionDashboard:
         if sat_lvl == "SATURATED":
             lines.append("> 🧯 **WARNING**: 이미 시장에서 충분히 소비된 서사 — 반복 주의")
 
+        # Step 22: Re-Narration Permission Block
+        ren_status = c.get('renarration_status')
+        if ren_status:
+            lines.append(f"\n🔁 **RE-NARRATION**")
+            lines.append(f"- **Status**: {ren_status}")
+            lines.append(f"- **Reason**: {c.get('renarration_reason')}")
+            
         # Step 15: Contrast Rationale
         contrast = c.get('contrast_rationale')
         if contrast:
