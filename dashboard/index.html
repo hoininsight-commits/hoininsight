@@ -717,50 +717,68 @@
 
         async function initDashboard() {
             try {
-                const resp = await fetch('data/dashboard/latest_run.json');
+                const resp = await fetch('data/ops/latest_run.json');
                 if (!resp.ok) throw new Error("Manifest not found");
                 const manifest = await resp.json();
 
-                document.getElementById('js-run-date').textContent = "📅 " + manifest.date;
+                document.getElementById('js-run-date').textContent = "📅 " + manifest.run_date;
 
                 // 1. Health Panel
-                fetchHealth(manifest.date);
+                fetchHealth(manifest.run_date);
 
                 // 2. Decision Dashboard MD
-                fetchDecisionMD(manifest.paths.decision_dashboard_md);
+                if (manifest.paths && manifest.paths.decision_md) {
+                    fetchDecisionMD(manifest.paths.decision_md);
+                } else {
+                    document.getElementById('js-decision-md-render').innerHTML = `
+                        <div style="background:#fff7ed; border:1px solid #f59e0b; padding:20px; border-radius:8px; color:#9a3412;">
+                            <strong>⚠️ DECISION MD MISSING</strong><br>
+                            오늘 의사결정 대시보드 리포트가 생성되지 않았거나 경로가 잘못되었습니다.
+                        </div>
+                    `;
+                }
 
                 // 3. Load Lock Data (for counts etc)
-                fetchLockData(manifest.paths.daily_lock_json);
+                if (manifest.paths && manifest.paths.daily_lock_json) {
+                    fetchLockData(manifest.paths.daily_lock_json);
+                }
 
             } catch (e) {
                 console.error(e);
                 document.getElementById('js-run-date').textContent = "📅 NO RUN DATA";
+                document.getElementById('js-decision-md-render').innerHTML = `
+                    <div style="padding:40px; text-align:center; color:#94a3b8;">
+                        데이터를 불러올 수 없습니다. <code>data/ops/latest_run.json</code> 존재 여부를 확인하세요.
+                    </div>
+                `;
             }
-        }
-
-        function sanitizePath(path) {
-            if (!path) return path;
-            return path.trim().replace(/\)$/, '');
         }
 
         async function fetchHealth(date) {
             try {
-                const resp = await fetch('data/dashboard/health_today.json');
+                const resp = await fetch('data/ops/health_today.json');
                 const health = await resp.json();
                 const container = document.getElementById('js-health-container');
 
                 const statusColor = health.status === 'SUCCESS' ? '#10b981' : (health.status === 'PARTIAL' ? '#f59e0b' : '#ef4444');
 
                 container.innerHTML = `
-                        <div style="background:#f8fafc; border-left:4px solid ${statusColor}; padding:15px; border-radius:8px; margin-bottom:20px; font-size:12px;">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:20px;">
+                        <div style="background:#f8fafc; border-left:4px solid ${statusColor}; padding:15px; border-radius:8px; font-size:12px;">
                             <div style="font-weight:bold; margin-bottom:5px;">DATA COLLECTION HEALTH: <span style="color:${statusColor}">${health.status}</span></div>
-                            <div style="display:flex; gap:20px; color:#64748b;">
+                            <div style="display:flex; flex-wrap:wrap; gap:15px; color:#64748b;">
                                 <span>Events: <strong>${health.metrics.events_count || 0}</strong></span>
                                 <span>Anomalies: <strong>${health.metrics.anomalies_count || 0}</strong></span>
-                                <span>Topics: <strong>READY=${health.metrics.topics_count.READY || 0}</strong></span>
+                                <span>READY: <strong>${health.metrics.topics_count.READY || 0}</strong></span>
                             </div>
                         </div>
-                    `;
+                        <div style="background:#f1f5f9; padding:15px; border-radius:8px; font-size:12px; color:#475569;">
+                            <div style="font-weight:bold; margin-bottom:5px;">SYSTEM STATUS</div>
+                            <div>Checked: ${new Date(health.checked_at).toLocaleTimeString()}</div>
+                            <div style="margin-top:2px;">Markdown: ${health.decision_dashboard_exists ? '✅' : '❌'}</div>
+                        </div>
+                    </div>
+                `;
             } catch (e) { /* ignore fallback */ }
         }
 

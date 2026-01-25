@@ -26,6 +26,7 @@ class DecisionCard:
     narration_badge: str = None
     narration_helper: str = None
     narration_ceiling: str = None
+    judgment_notes: List[str] = None
 
 class DecisionDashboard:
     """
@@ -151,6 +152,16 @@ class DecisionDashboard:
                 is_fact_driven=self._check_fact_driven(t),
                 fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
                 narration_ceiling=ceiling_reason,
+                judgment_notes=self._build_judgment_notes({
+                    **t, 
+                    "status": status, 
+                    "evidence_count": evidence_cnt,
+                    "narration_level": depth_info["narration_level"],
+                    "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
+                    "is_fact_driven": self._check_fact_driven(t),
+                    "flags": flags,
+                    "narration_ceiling": ceiling_reason
+                }),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -182,7 +193,12 @@ class DecisionDashboard:
             "anomaly_driven_count": len([c for c in cards if not c.is_fact_driven]),
             "fact_driven_count": len([c for c in cards if c.is_fact_driven]),
             "total_topics": len(cards),
-            "candidates_count": len([c for c in cards if c.status != 'DROP'])
+            "candidates_count": len([c for c in cards if c.status != 'DROP']),
+            "judgment_summary": {
+                "weak_timing": len([c for c in cards if c.judgment_notes and any("WHY NOW" in n for n in c.judgment_notes)]),
+                "shallow_evidence": len([c for c in cards if c.judgment_notes and any("LEVEL 3" in n for n in c.judgment_notes)]),
+                "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
+            }
         }
 
     def render_markdown(self, data: Dict[str, Any]) -> str:
@@ -362,6 +378,13 @@ class DecisionDashboard:
             # Context stats
             ev_cnt = c.get('evidence_count', 0)
             lines.append(f"- **Evidence**: {ev_cnt} items")
+            
+            # Judgment Notes
+            notes = c.get('judgment_notes')
+            if notes:
+                lines.append(f"\n⚠️ **JUDGMENT NOTES**")
+                for n in notes:
+                    lines.append(f"- {n}")
             lines.append("")
 
     def _render_ready_card(self, c: Dict) -> str:
@@ -400,6 +423,13 @@ class DecisionDashboard:
             lines.append(f"**오늘 찍는 이유**: {why}")
             
         lines.append(f"**판단 요약**: 지금 설명 가능한 최소 조건 충족 (증거 {c['evidence_count']}건)")
+        
+        # Judgment Notes
+        notes = c.get('judgment_notes')
+        if notes:
+            lines.append(f"\n⚠️ **JUDGMENT NOTES**")
+            for n in notes:
+                lines.append(f"- {n}")
         
         sp = c.get('speak_pack')
         if sp:
@@ -828,6 +858,29 @@ class DecisionDashboard:
         lines.append(f"- [ ] Capital signal (ownership, buyback, investment)")
         lines.append(f"- [ ] Structural advantage vs competitors")
 
+    def _build_judgment_notes(self, t: Dict) -> List[str]:
+        """Surfaces narrative risks based on internal inconsistencies (Step 13)."""
+        notes = []
+        
+        # A) FACT ↔ WHY NOW Consistency
+        if t.get("is_fact_driven"):
+            why_now = t.get("fact_why_now", "")
+            if "(explanatory context insufficient)" in why_now:
+                notes.append("WHY NOW explanation is too generic for a FACT-based topic.")
+                
+        # B) LEVEL ↔ Evidence Depth Mismatch
+        if t.get("narration_level") == 3 and t.get("evidence_count", 0) < 3:
+            notes.append("LEVEL 3 assigned, but evidence depth is shallow.")
+            
+        # C) Speakable ↔ Risk Tension
+        is_ready = t.get("status") == "READY"
+        flags = t.get("flags", [])
+        if is_ready:
+            if len(flags) >= 2 or t.get("narration_ceiling") is not None:
+                notes.append("Speakable status conflicts with elevated narrative risk.")
+                
+        return notes if notes else None
+
     def _render_sanity_panel(self, data: Dict[str, Any], lines: List[str]):
         """Renders the SYSTEM STATUS panel at the top."""
         lines.append("### 🏥 SYSTEM STATUS (Today)")
@@ -835,6 +888,13 @@ class DecisionDashboard:
         s = data.get("summary", {})
         lines.append(f"- **READY / HOLD / DROP**: {s.get('READY', 0)} / {s.get('HOLD', 0)} / {s.get('DROP', 0)}")
         lines.append(f"- **FACT-DRIVEN / ANOMALY-DRIVEN**: {data.get('fact_driven_count', 0)} / {data.get('anomaly_driven_count', 0)}")
+        
+        js = data.get("judgment_summary", {})
+        if any(v > 0 for v in js.values()):
+            lines.append("\n**JUDGMENT WARNINGS TODAY**")
+            lines.append(f"- Weak Timing: {js.get('weak_timing', 0)}")
+            lines.append(f"- Shallow Evidence: {js.get('shallow_evidence', 0)}")
+            lines.append(f"- Narrative Risk: {js.get('narrative_risk', 0)}")
         lines.append("")
 
     def _render_drift_warnings(self, data: Dict[str, Any], lines: List[str]):

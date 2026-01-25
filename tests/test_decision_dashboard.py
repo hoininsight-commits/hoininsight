@@ -773,3 +773,70 @@ def test_sanity_and_drift_monitor(mock_env):
     md = dash.render_markdown(data)
     assert "⚠️ SPEAK DROUGHT" in md
     assert "충분한 후보가 생성되었으나 내레이션 기준을 통과하지 못했습니다" in md
+
+def test_judgment_consistency_checks(mock_env):
+    """Verify Step 13: Judgment Note triggers"""
+    base_dir, gate_dir = mock_env
+    
+    # 1. Trigger WEAK_TIMING (Fact-driven but summary hint fails)
+    # 2. Trigger SHALLOW_EVIDENCE (Level 3 but < 3 evidence)
+    # 3. Trigger NARRATIVE_RISK (READY but has ceiling)
+    
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "j1", "title": "Weak Timing Fact", "total_score": 90, 
+                "is_fact_driven": True, "numbers": [{"label":"A","value":"1"}]
+            },
+            {
+                "topic_id": "j2", "title": "Shallow Level 3", "total_score": 95, 
+                "key_reasons": ["Company profit"], "numbers": [{"label":"Revenue","value":"10B"}] 
+            },
+            {
+                "topic_id": "j3", "title": "Risk Tension", "total_score": 85,
+                "numbers": [{"label":"A","value":"1"}, {"label":"B","value":"2"}]
+            }
+        ]
+    }), encoding="utf-8")
+    
+    # j1: No templates match -> explanatory context insufficient
+    (gate_dir / "script_v1_j1.md").write_text("### 5)\n- **E1**: 1", encoding="utf-8")
+    (gate_dir / "script_v1_j1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    # j2: Key reasons "Company" + Specific Label "Revenue" -> Narration Level 3
+    # But only 2 evidence points in script string
+    (gate_dir / "script_v1_j2.md").write_text("### 5)\n- **E1**: 1\n- **E2**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_j2.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    # j3: READY but will have ceiling because it lacks sector/company markers in why_now/labels
+    (gate_dir / "script_v1_j3.md").write_text("### 5)\n- **E1**: 1\n- **E2**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_j3.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    
+    cards = {c["topic_id"]: c for c in data["cards"]}
+    
+    # Assertions
+    assert any("WHY NOW explanation is too generic" in n for n in cards["j1"]["judgment_notes"])
+    assert any("LEVEL 3 assigned, but evidence depth is shallow" in n for n in cards["j2"]["judgment_notes"])
+    assert any("Speakable status conflicts with elevated narrative risk" in n for n in cards["j3"]["judgment_notes"])
+    
+    # Summary
+    assert data["judgment_summary"]["weak_timing"] == 1
+    assert data["judgment_summary"]["shallow_evidence"] == 1
+    assert data["judgment_summary"]["narrative_risk"] == 2
+    
+    # Markdown rendering
+    assert "⚠️ **JUDGMENT NOTES**" in md
+    assert "WHY NOW explanation is too generic" in md
+    assert "LEVEL 3 assigned" in md
+    assert "Speakable status conflicts" in md
+    assert "JUDGMENT WARNINGS TODAY" in md
