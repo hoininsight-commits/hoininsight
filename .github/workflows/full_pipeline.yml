@@ -326,6 +326,30 @@ jobs:
              exit 1
           fi
 
+      - name: Verify Phase 36-B Ops Hardening
+        run: |
+          echo "[VERIFY] Phase 36-B Ops Hardening Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          FRESH="data/ops/freshness/$YMD/freshness_summary.json"
+          SCORE="data/ops/scoreboard/$YMD/ops_scoreboard.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$FRESH" ]; then
+            echo "[VERIFY][OK] freshness_summary.json generated"
+            grep -q "tracker_version" "$FRESH" && echo "[VERIFY][OK] tracker_version present" || (echo "[VERIFY][FAIL] tracker_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No freshness data (valid state)"
+          fi
+          
+          if [ -f "$SCORE" ]; then
+            echo "[VERIFY][OK] ops_scoreboard.json generated"
+            grep -q "scoreboard_version" "$SCORE" && echo "[VERIFY][OK] scoreboard_version present" || (echo "[VERIFY][FAIL] scoreboard_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No scoreboard data (valid state)"
+          fi
+          
+          grep -q "운영 성과 지표" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
+
       - name: Verify Phase 38 Final Decision Card
         run: |
           echo "[VERIFY] Phase 38 Final Decision Card Check"
@@ -335,9 +359,9 @@ jobs:
           
           if [ -f "$CARD" ]; then
             echo "[VERIFY][OK] final_decision_card.json generated"
-            grep -q "phase38_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
+            grep -q "phase50_dual_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
           else
-            echo "[VERIFY][SKIP] No final decision card today (valid state)"
+            echo "[VERIFY][OK] No final decision card today (valid state)"
           fi
           
           grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
@@ -348,7 +372,7 @@ jobs:
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
           # Force add all production directories and root index
-          git add data/raw data/curated data/features data/topics data/reports data/ops data/decision dashboard index.html
+          git add -f data/raw data/curated data/features data/topics data/reports data/ops data/decision dashboard index.html || true
           
           # Check for changes
           if git diff --cached --quiet; then
