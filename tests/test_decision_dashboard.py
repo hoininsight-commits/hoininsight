@@ -482,7 +482,77 @@ def test_speak_eligibility_badges(mock_env):
     assert "Evidence sufficient for narration" in md
     
     # Check h1 (Almost candidates section)
-    assert "⏸️ NOT SPEAKABLE" in md # It will appear in Almost Candidates or Section summaries
-    # Actually, in render_markdown, cards are partitioned.
-    # We should verify the content of partitioned sections.
+    assert "⏸️ NOT SPEAKABLE" in md 
     assert "Structure signal missing" in md
+
+def test_narration_depth_classification(mock_env):
+    """Verify Step 6: Narration Level structural classification"""
+    base_dir, gate_dir = mock_env
+    
+    # 1. Level 1 - Macro Only
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "m1", "title": "Fed Rate Hint", "total_score": 90, 
+                "key_reasons": ["Rate cut expectations increased"],
+                "numbers": [{"label":"CPI","value":"2.1%"}]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_m1.md").write_text("### 5)\n- **Ev**: 1", encoding="utf-8")
+    (gate_dir / "script_v1_m1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    dash = DecisionDashboard(base_dir)
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "🎤 LEVEL 1" in md
+    assert "Macro explanation only" in md
+    
+    # 2. Level 2 - Sector Translatable (Industry reference + Sector metrics)
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "s1", "title": "Semi Slump", "total_score": 90, 
+                "key_reasons": ["Semiconductor sector oversupply"],
+                "numbers": [
+                    {"label":"Global Units","value":"100M"},
+                    {"label":"Demand Index","value":"low"}
+                ]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_s1.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2", encoding="utf-8")
+    (gate_dir / "script_v1_s1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "🎤 LEVEL 2" in md
+    assert "Sector-level discussion possible" in md
+    
+    # 3. Level 3 - Stock Mentionable (Company info + Multi-layer evidence)
+    (gate_dir / "topic_gate_output.json").write_text(json.dumps({
+        "ranked": [
+            {
+                "topic_id": "c1", "title": "NVDA Earnings", "total_score": 95, 
+                "key_reasons": ["NVDA profit beat"],
+                "numbers": [
+                    {"label":"Revenue","value":"$10B"},
+                    {"label":"Profit","value":"$2B"},
+                    {"label":"Guidance","value":"High"}
+                ]
+            }
+        ]
+    }), encoding="utf-8")
+    (gate_dir / "script_v1_c1.md").write_text("### 5)\n- **Ev**: 1\n- **Ev**: 2\n- **Ev**: 3", encoding="utf-8")
+    (gate_dir / "script_v1_c1.md.quality.json").write_text(json.dumps({
+        "quality_status": "READY", "failure_codes": []
+    }), encoding="utf-8")
+    
+    data = dash.build_dashboard_data("2026-01-24")
+    md = dash.render_markdown(data)
+    assert "🎤 LEVEL 3" in md
+    assert "Stock names can be mentioned" in md

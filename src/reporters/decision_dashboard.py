@@ -22,6 +22,9 @@ class DecisionCard:
     fact_why_now: str = None
     eligibility_badge: str = None
     eligibility_reason: str = None
+    narration_level: int = 1
+    narration_badge: str = None
+    narration_helper: str = None
 
 class DecisionDashboard:
     """
@@ -143,7 +146,8 @@ class DecisionDashboard:
                 bridge_eligible=t.get("handoff_to_structural", False),
                 is_fact_driven=self._check_fact_driven(t),
                 fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
-                **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False))
+                **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
+                **self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
             ))
             
         # 3. Sort (Presentation Only)
@@ -317,6 +321,10 @@ class DecisionDashboard:
             elig_badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
             eligibility_reason = c.get('eligibility_reason', 'Criteria not met')
             
+            # Narration Depth Badge
+            n_badge = c.get('narration_badge', '🎤 LEVEL 1')
+            n_helper = c.get('narration_helper', 'Macro explanation only')
+            
             # Normalized Reason
             reason = self._get_hold_reason(c) if c['status'] == 'HOLD' else c['reason']
             reason = reason.replace("아직 말하지 않는 이유: ", "") # Simplify for bullet
@@ -326,6 +334,7 @@ class DecisionDashboard:
             
             lines.append(f"### {status_icon} {c['title']} ({status_text})")
             lines.append(f"**{elig_badge}**: {eligibility_reason}")
+            lines.append(f"**{n_badge}**: {n_helper}")
             lines.append(f"- **Reason**: {reason}")
             if bridge_mk:
                  lines.append(f"- **Note**: {bridge_mk}")
@@ -348,6 +357,11 @@ class DecisionDashboard:
         badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
         reason = c.get('eligibility_reason', 'Criteria not met')
         lines.append(f"\n**{badge}**: {reason}")
+        
+        # Narration Depth Badge
+        n_badge = c.get('narration_badge', '🎤 LEVEL 1')
+        n_helper = c.get('narration_helper', 'Macro explanation only')
+        lines.append(f"**{n_badge}**: {n_helper}")
         
         # Tags Line
         tags = c.get('tags', [])
@@ -712,6 +726,49 @@ class DecisionDashboard:
         return {
             "eligibility_badge": badge,
             "eligibility_reason": reason
+        }
+
+    def _calculate_narration_depth(self, topic: Dict, status: str, is_fact: bool, bridge_eligible: bool) -> Dict[str, Any]:
+        """Assigns Narration Depth Level based on structural context."""
+        why_now = (self._get_fact_why_now_hint(topic) if is_fact else topic.get("key_reasons", [""])[0]).lower()
+        title = topic.get("title", "").lower()
+        ev_labels = " ".join([n.get("label", "") for n in topic.get("numbers", [])]).lower()
+        
+        # LEVEL 3 logic (2 of 3)
+        # 1) Evidence references specific info (proxy: title/labels look like specific data)
+        # 2) WHY NOW ties to company event (proxy: 'company', 'corp', 'contract' in why now)
+        # 3) FACT-DRIVEN + Bridge eligible OR READY with multi-layer evidence
+        cond1 = any(x in ev_labels or x in title for x in ["revenue", "order", "contract", "dominance", "market share"])
+        cond2 = any(x in why_now for x in ["company", "corp", "firm", "capability"])
+        cond3 = (is_fact and bridge_eligible) or (status == "READY" and len(topic.get("numbers", [])) >= 3)
+        
+        score_v3 = sum([cond1, cond2, cond3])
+        if score_v3 >= 2:
+            return {
+                "narration_level": 3,
+                "narration_badge": "🎤 LEVEL 3",
+                "narration_helper": "Stock names can be mentioned"
+            }
+            
+        # LEVEL 2 logic (ALL apply)
+        # 1) WHY NOW references industry/sector
+        # 2) Evidence includes sector metrics (proxy: high level but sector-ish)
+        # 3) Value flow without naming company
+        is_sector_why = any(x in why_now for x in ["sector", "industry", "market size", "segments"])
+        is_sector_ev = any(x in ev_labels for x in ["units", "output", "demand", "supply"])
+        
+        if is_sector_why and is_sector_ev:
+            return {
+                "narration_level": 2,
+                "narration_badge": "🎤 LEVEL 2",
+                "narration_helper": "Sector-level discussion possible"
+            }
+            
+        # LEVEL 1 - Default
+        return {
+            "narration_level": 1,
+            "narration_badge": "🎤 LEVEL 1",
+            "narration_helper": "Macro explanation only"
         }
 
     def save_snapshot(self, ymd: str, data: Dict[str, Any]) -> Path:
