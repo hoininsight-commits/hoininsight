@@ -59,6 +59,10 @@ def main(target_categories: list[str] = None):
         details_lines.append("anomaly: ok")
         print("anomaly: ok", file=sys.stderr)
 
+        topic_main()
+        details_lines.append("topic: ok")
+        print("topic: ok", file=sys.stderr)
+
         # [Phase 50] Anchor Engine (Economy Hunter Logic) - Strict 6-Step Enforcement
         from src.topics.anchor_engine.logic_core import AnchorEngine
         
