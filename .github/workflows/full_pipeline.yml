@@ -27,8 +27,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-                  python -m pip install --upgrade pip
-                            pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
                             
           
 
@@ -62,16 +62,6 @@ jobs:
         run: |
           python -m src.engine
 
-      - name: Commit outputs
-        if: success()
-        run: |
-          git config user.name "hoin-bot"
-          git config user.email "hoin-bot@users.noreply.github.com"
-          # Force add production data and dashboard
-          git add -f data/raw data/curated data/features data/topics data/reports data/ops data/decision dashboard index.html || true
-          git diff --cached --quiet && echo "No changes" && exit 0
-          git commit -m "chore: engine daily run [skip ci]"
-          git push
 
       - name: Notify Telegram (Daily Summary)
         if: always()
@@ -299,57 +289,17 @@ jobs:
         run: |
           python -m src.ops.ops_scoreboard
 
-      - name: Integrate Final Decision Card (Phase 38)
-        run: |
-          python -m src.decision.final_decision_card
-
       - name: Run Topic Candidate Gate (Phase 39)
         run: |
           python -m src.topics.topic_candidate_gate
 
-      - name: Generate Dashboard (Phase 31-D Update)
+      - name: Integrate Final Decision Card (Phase 38)
+        run: |
+          python -m src.decision.final_decision_card
+
+      - name: Generate Dashboard (Update)
         run: |
           python -m src.dashboard.dashboard_generator
-
-      - name: Verify Phase 36-B Ops Hardening
-        run: |
-          echo "[VERIFY] Phase 36-B Ops Hardening Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          FRESH="data/ops/freshness/$YMD/freshness_summary.json"
-          SCORE="data/ops/scoreboard/$YMD/ops_scoreboard.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$FRESH" ]; then
-            echo "[VERIFY][OK] freshness_summary.json generated"
-            grep -q "tracker_version" "$FRESH" && echo "[VERIFY][OK] tracker_version present" || (echo "[VERIFY][FAIL] tracker_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No freshness data (valid state)"
-          fi
-          
-          if [ -f "$SCORE" ]; then
-            echo "[VERIFY][OK] ops_scoreboard.json generated"
-            grep -q "scoreboard_version" "$SCORE" && echo "[VERIFY][OK] scoreboard_version present" || (echo "[VERIFY][FAIL] scoreboard_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No scoreboard data (valid state)"
-          fi
-          
-          grep -q "운영 성과 지표" "$DASH" && echo "[VERIFY][OK] Ops section rendered" || (echo "[VERIFY][FAIL] Ops section missing"; exit 1)
-
-      - name: Verify Phase 38 Final Decision Card
-        run: |
-          echo "[VERIFY] Phase 38 Final Decision Card Check"
-          YMD=$(date -u +"%Y/%m/%d")
-          CARD="data/decision/$YMD/final_decision_card.json"
-          DASH="dashboard/index.html"
-          
-          if [ -f "$CARD" ]; then
-            echo "[VERIFY][OK] final_decision_card.json generated"
-            grep -q "phase38_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
-          else
-            echo "[VERIFY][SKIP] No final decision card today (valid state)"
-          fi
-          
-          grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
 
       - name: Verify Phase 39 Topic Candidates
         run: |
@@ -374,6 +324,38 @@ jobs:
           else
              echo "[VERIFY][FAIL] Dashboard section missing"
              exit 1
+          fi
+
+      - name: Verify Phase 38 Final Decision Card
+        run: |
+          echo "[VERIFY] Phase 38 Final Decision Card Check"
+          YMD=$(date -u +"%Y/%m/%d")
+          CARD="data/decision/$YMD/final_decision_card.json"
+          DASH="dashboard/index.html"
+          
+          if [ -f "$CARD" ]; then
+            echo "[VERIFY][OK] final_decision_card.json generated"
+            grep -q "phase38_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
+          else
+            echo "[VERIFY][SKIP] No final decision card today (valid state)"
+          fi
+          
+          grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
+
+      - name: Commit Intelligence Outputs
+        if: success()
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          # Force add all production directories and root index
+          git add data/raw data/curated data/features data/topics data/reports data/ops data/decision dashboard index.html
+          
+          # Check for changes
+          if git diff --cached --quiet; then
+            echo "No intelligence changes to commit"
+          else
+            git commit -m "chore: save intelligence artifacts [skip ci]"
+            git push
           fi
 
       - name: Create issue on failure
