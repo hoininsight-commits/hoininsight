@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Dict, List, Any, Tuple
 import yaml
 from dataclasses import dataclass, asdict
+from src.ops.post_mortem_tracker import PostMortemTracker
 
 @dataclass
 class DecisionCard:
@@ -31,6 +32,9 @@ class DecisionCard:
     contrast_rationale: Dict[str, Any] = None
     impact_window: str = None
     impact_hint: str = None
+    
+    # Post-Mortem
+    outcome: str = None
 
 class DecisionDashboard:
     """
@@ -38,6 +42,7 @@ class DecisionDashboard:
     """
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
+        self.tracker = PostMortemTracker(base_dir)
         self.reason_map = self._load_reason_map()
         
     def _load_reason_map(self) -> Dict:
@@ -82,6 +87,17 @@ class DecisionDashboard:
                         topics = [data]
             except Exception as e:
                 print(f"[Dashboard] Error parsing gate_out: {e}")
+        
+        # Post-Mortem History Loading (Step 18)
+        from datetime import datetime, timedelta
+        t_dt = datetime.strptime(ymd, "%Y-%m-%d")
+        # Load [target_date + 1, target_date + 90]
+        next_day_str = (t_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+        future_end_str = (t_dt + timedelta(days=90)).strftime("%Y-%m-%d")
+        history = self.tracker.load_history(next_day_str, future_end_str)
+        
+        # Aggregate stats for today's panel (Past performance up to target_date)
+        pm_stats = self.tracker.get_aggregate_stats(ymd, lookback_days=90)
         
         cards = []
         status_counts = {"READY": 0, "HOLD": 0, "DROP": 0}
@@ -142,6 +158,12 @@ class DecisionDashboard:
             else:
                 impact_win = None
                 impact_hint = None
+                
+            # Step 18: Post-Mortem Evaluation
+            outcome = None
+            if status == "READY":
+                outcome = self.tracker.evaluate_topic(t, ymd, history)
+
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
             ceiling_reason = self._get_ceiling_reason(depth_info["narration_level"], self._check_fact_driven(t))
@@ -182,6 +204,7 @@ class DecisionDashboard:
                 }) if status == "READY" else None,
                 impact_window=impact_win,
                 impact_hint=impact_hint,
+                outcome=outcome,
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -223,11 +246,30 @@ class DecisionDashboard:
                 "weak_timing": len([c for c in cards if c.judgment_notes and any("WHY NOW" in n for n in c.judgment_notes)]),
                 "shallow_evidence": len([c for c in cards if c.judgment_notes and any("LEVEL 3" in n for n in c.judgment_notes)]),
                 "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
-            }
+            },
+            "post_mortem_summary": pm_stats
         }
+
+    def _render_post_mortem_panel(self, lines: List[str], stats: Dict[str, int]):
+        """Renders Step 18 Aggregate Accountability Panel."""
+        c = stats.get("CONFIRMED", 0)
+        f = stats.get("FAILED", 0)
+        u = stats.get("UNRESOLVED", 0)
+        
+        lines.append("### 🧪 POST-MORTEM SUMMARY (Last 90 Days)")
+        lines.append(f"- **CONFIRMED**: {c}")
+        lines.append(f"- **FAILED**: {f}")
+        lines.append(f"- **UNRESOLVED**: {u}")
+        lines.append("")
 
     def render_markdown(self, data: Dict[str, Any]) -> str:
         lines = []
+        
+        # Step 18: Aggregate Panel
+        pm_stats = data.get("post_mortem_summary")
+        if pm_stats:
+             self._render_post_mortem_panel(lines, pm_stats)
+        
         cards = data.get("cards", [])
         
         # Partition Topics
@@ -449,6 +491,13 @@ class DecisionDashboard:
             imp_hint = c.get('impact_hint', '')
             lines.append(f"\n**⏱ IMPACT WINDOW**: {imp_win}")
             lines.append(f"> {imp_hint}")
+            
+        # Step 18: Post-Mortem Outcome
+        outcome = c.get('outcome')
+        if outcome and outcome != "UNRESOLVED":
+            lines.append(f"\n**🧪 OUTCOME**: {outcome}")
+        elif outcome == "UNRESOLVED":
+            lines.append(f"\n_🧪 OUTCOME: {outcome}_") # Greyed out/Italic
             
         badge = c.get('eligibility_badge', '⏸️ NOT SPEAKABLE')
         reason = c.get('eligibility_reason', 'Criteria not met')
