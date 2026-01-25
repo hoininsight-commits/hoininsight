@@ -7,7 +7,8 @@ class DashboardManifest:
     """Generates a manifest file to point the dashboard to the latest run."""
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
-        self.manifest_path = base_dir / "data" / "ops" / "latest_run.json"
+        # [Step 25-2] Standardize to data/dashboard/ for GitHub Pages deployment
+        self.manifest_path = base_dir / "data" / "dashboard" / "latest_run.json"
         self.manifest_path.parent.mkdir(parents=True, exist_ok=True)
 
     def find_latest_run(self) -> str:

@@ -1,9 +1,10 @@
 {
-  "date": "2026-01-25",
-  "refreshed_at": "2026-01-25T17:44:41.398781",
-  "paths": {
-    "daily_report_md": "data/reports/2026/01/25/daily_report.md",
-    "decision_dashboard_md": "data/reports/2026/01/25/decision_dashboard.md",
-    "daily_lock_json": "data/reports/2026/01/25/daily_lock.json"
-  }
+  "run_date": "2026-01-24",
+  "run_ts": "2026-01-25T22:25:49.719392",
+  "paths": {},
+  "missing": [
+    "daily_report.md",
+    "decision_dashboard.md",
+    "daily_lock.json"
+  ]
 }

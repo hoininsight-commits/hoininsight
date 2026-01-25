@@ -1,18 +1,22 @@
 {
-  "run_date": "2026-01-25",
-  "checked_at": "2026-01-25T17:44:41.468799",
+  "run_date": "2026-01-24",
+  "checked_at": "2026-01-25T22:25:50.788650",
   "status": "FAIL",
   "metrics": {
     "events_count": 0,
     "anomalies_count": 0,
+    "gate_candidates_count": 0,
+    "scripts_md_count": 0,
+    "script_quality_json_count": 0,
     "topics_count": {
       "READY": 0,
       "HOLD": 0,
       "DROP": 0
     }
   },
+  "decision_dashboard_exists": false,
   "missing_files": [
-    "data/reports/2026/01/25/daily_lock.json"
+    "daily_lock.json"
   ],
   "schema_errors": []
 }

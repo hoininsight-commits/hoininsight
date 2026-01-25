@@ -55,6 +55,30 @@ jobs:
         run: |
           python -m src.dashboard.dashboard_generator
 
+      - name: Generate Ops Metadata
+        run: |
+          python -m src.ops.dashboard_manifest
+          python -m src.ops.health_check
+
+      - name: Verify Dashboard Outputs
+        run: |
+          if [ ! -f "data/dashboard/latest_run.json" ]; then
+            echo "❌ [OPS][FAIL] latest_run.json missing; run pipeline first."
+            exit 1
+          fi
+          if [ ! -f "data/dashboard/health_today.json" ]; then
+            echo "❌ [OPS][FAIL] health_today.json missing; health check failed."
+            exit 1
+          fi
+          echo "✅ Dashboard outputs verified"
+
+      - name: Copy Data to Dashboard Directory
+        run: |
+          mkdir -p dashboard/data
+          cp -r data/dashboard dashboard/data/
+          cp -r data/reports dashboard/data/ || echo "No reports directory found"
+          echo "✅ Data copied to dashboard directory for GitHub Pages"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

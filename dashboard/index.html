@@ -715,10 +715,25 @@
             if (navItem) navItem.classList.add('active');
         }
 
+        // [Step 25-1] Determine base path for GitHub Pages compatibility
+        function getBasePath() {
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            // For GitHub Pages project sites: /<repo-name>/...
+            // For root or local: /
+            // Detect if we're in a subdirectory (GitHub Pages project site)
+            if (parts.length > 0 && parts[0] !== 'dashboard') {
+                return '/' + parts[0];
+            }
+            return '';
+        }
+
+        const BASE = getBasePath();
+
         async function initDashboard() {
             try {
-                const resp = await fetch('data/ops/latest_run.json');
-                if (!resp.ok) throw new Error("Manifest not found");
+                const manifestUrl = `${BASE}/data/dashboard/latest_run.json`;
+                const resp = await fetch(manifestUrl);
+                if (!resp.ok) throw new Error(`Manifest not found at ${manifestUrl}`);
                 const manifest = await resp.json();
 
                 document.getElementById('js-run-date').textContent = "📅 " + manifest.run_date;
@@ -748,7 +763,8 @@
                 document.getElementById('js-run-date').textContent = "📅 NO RUN DATA";
                 document.getElementById('js-decision-md-render').innerHTML = `
                     <div style="padding:40px; text-align:center; color:#94a3b8;">
-                        데이터를 불러올 수 없습니다. <code>data/ops/latest_run.json</code> 존재 여부를 확인하세요.
+                        데이터를 불러올 수 없습니다. <code>${BASE}/data/dashboard/latest_run.json</code> 존재 여부를 확인하세요.<br>
+                        <small style="color:#cbd5e1;">Attempted URL: ${BASE}/data/dashboard/latest_run.json</small>
                     </div>
                 `;
             }
@@ -756,7 +772,9 @@
 
         async function fetchHealth(date) {
             try {
-                const resp = await fetch('data/ops/health_today.json');
+                const healthUrl = `${BASE}/data/dashboard/health_today.json`;
+                const resp = await fetch(healthUrl);
+                if (!resp.ok) throw new Error(`Health data not found at ${healthUrl}`);
                 const health = await resp.json();
                 const container = document.getElementById('js-health-container');
 
@@ -782,26 +800,40 @@
             } catch (e) { /* ignore fallback */ }
         }
 
+        function sanitizePath(path) {
+            // Ensure path starts with BASE for absolute resolution
+            if (!path) return path;
+            // If path already starts with BASE, return as-is
+            if (path.startsWith(BASE + '/')) return path;
+            // If path starts with /, prepend BASE
+            if (path.startsWith('/')) return BASE + path;
+            // Otherwise, prepend BASE/
+            return `${BASE}/${path}`;
+        }
+
         async function fetchDecisionMD(path) {
             const renderArea = document.getElementById('js-decision-md-render');
             try {
-                const resp = await fetch(sanitizePath(path));
-                if (!resp.ok) throw new Error("MD not found");
+                const fullPath = sanitizePath(path);
+                const resp = await fetch(fullPath);
+                if (!resp.ok) throw new Error(`MD not found at ${fullPath}`);
                 const md = await resp.text();
                 renderArea.innerHTML = simpleMdToHtml(md);
             } catch (e) {
-                renderArea.innerHTML = `<div style="color:#ef4444; padding:20px;">[ERROR] Decision Dashboard markdown file could not be loaded. Path: ${path}</div>`;
+                renderArea.innerHTML = `<div style="color:#ef4444; padding:20px;">[ERROR] Decision Dashboard markdown file could not be loaded. Path: ${path}<br><small>Attempted: ${sanitizePath(path)}</small></div>`;
             }
         }
 
         async function fetchLockData(path) {
             try {
-                const resp = await fetch(sanitizePath(path));
+                const fullPath = sanitizePath(path);
+                const resp = await fetch(fullPath);
+                if (!resp.ok) throw new Error(`Lock data not found at ${fullPath}`);
                 const data = await resp.json();
                 if (data.summary) {
                     document.getElementById('js-speak-count').innerHTML = `SPEAK: <strong>${data.summary.READY || 0}</strong>`;
                 }
-            } catch (e) { }
+            } catch (e) { /* ignore fallback */ }
         }
 
         function simpleMdToHtml(md) {

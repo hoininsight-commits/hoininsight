@@ -7,7 +7,8 @@ class HealthCheck:
     """Generates a health summary for the daily run."""
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
-        self.health_path = base_dir / "data" / "ops" / "health_today.json"
+        # [Step 25-2] Standardize to data/dashboard/ for GitHub Pages deployment
+        self.health_path = base_dir / "data" / "dashboard" / "health_today.json"
         self.health_path.parent.mkdir(parents=True, exist_ok=True)
 
     def run(self, ymd: str):
