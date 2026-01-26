@@ -1,6 +1,6 @@
 {
   "run_date": "2026-01-26",
-  "checked_at": "2026-01-26T03:17:11.132010",
+  "checked_at": "2026-01-26T04:12:36.414410",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
@@ -15,6 +15,7 @@
     }
   },
   "decision_dashboard_exists": true,
+  "event_coverage_path": "data/dashboard/event_coverage_today.json",
   "errors": [
     "events_dir missing: FETCH_FAILED",
     "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/01/26"
