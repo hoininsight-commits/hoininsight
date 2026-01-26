@@ -3,6 +3,33 @@
 - **FAILED**: 0
 - **UNRESOLVED**: 1
 
+## 🧾 OPERATOR CONTROL CENTER
+> **Quick Links**: [Topic Console](data/ops/topic_console_today.md) | [Quality Review](data/ops/topic_quality_review_today.md) | [Speakability](data/ops/topic_speakability_today.md) | [Speak Bundle](data/ops/bundles/speak_bundle.md)
+
+### 📟 TOPIC CONSOLE SNAPSHOT
+- **지수 상승 속 섹터 하락의 이유**
+  ⚪ SPEAK | SCRIPT⛔ | BUNDLE⛔
+
+---
+
+## 📢 EDITORIAL SPEAKABILITY
+- **SPEAKABLE_NOW**: 0
+- **NOT_SPEAKABLE_YET**: 1
+
+👉 [Open Speakability Report (Markdown)](data/ops/topic_speakability_today.md)
+---
+
+## 🧪 TOPIC QUALITY REVIEW
+**SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
+
+**Top Quality Candidates:**
+- **지수 상승 속 섹터 하락의 이유**
+  [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
+  *💡 Hint: Standard Observation*
+
+👉 [Open full Quality Review (Markdown)](data/ops/topic_quality_review_today.md)
+---
+
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
 **SUMMARY**: 🛡️ AUTO=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT=3
 
