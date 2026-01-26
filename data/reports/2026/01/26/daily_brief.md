@@ -36,13 +36,13 @@ Historical context:
 - [HIGH] M2_USA: data/features/anomalies/2026/01/26/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] HY_SPREAD: data/features/anomalies/2026/01/26/credit_hy_spread_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] US10Y: data/features/anomalies/2026/01/26/rates_us10y_fred.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
-- [HIGH] BTCUSD: data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] GS_RATIO: data/features/anomalies/2026/01/26/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/26/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/26/struct_dart_disposal.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] KOSPI: data/features/anomalies/2026/01/26/index_kospi_stooq.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/01/26/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/26/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
+- [MED] BTCUSD: data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.32) | Mom: DOWN (slope=-1.00) -> x0.9 | App7d=4
 - [MED] NASDAQ: data/features/anomalies/2026/01/26/index_nasdaq_fred.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/26/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] SPX: data/features/anomalies/2026/01/26/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -70,7 +70,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - **Topic:** [Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, crypto_btc_usd_spot_coingecko 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.36 >= 2.0. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.18 >= 2.0. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Monetary Tightening] Capital-driven
