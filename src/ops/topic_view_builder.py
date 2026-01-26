@@ -101,6 +101,7 @@ class TopicViewBuilder:
                 "impact": item.get("impact") or "N/A",
                 "why_now": item.get("why_now") or item.get("why_now_hint") or "(missing)",
                 "evidence_count": len(item.get("evidence_refs", [])) if "evidence_refs" in item else 0,
+                "structural_frame": item.get("structural_frame"),
                 "links": item.get("links", {})
             })
         return normalized

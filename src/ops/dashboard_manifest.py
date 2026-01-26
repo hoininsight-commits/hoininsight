@@ -106,6 +106,8 @@ class DashboardManifest:
             "topic_console_md": topic_console_md_path,
             "topic_console_json": topic_console_json_path,
             "topic_quality_log": "data/ops/topic_quality_log.jsonl",
+            "human_pref_signature_30d": "data/ops/human_pref_signature_30d.json",
+            "human_pref_overlay_today": "data/ops/human_pref_overlay_today.json",
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

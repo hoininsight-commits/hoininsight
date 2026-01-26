@@ -178,6 +178,18 @@ class DecisionDashboard:
             calibration_summary = calibrator.get_todays_summary(ymd)
         except: pass
 
+        # [NEW] Step 57: Load Human Preference Overlay
+        pref_signature = {}
+        pref_overlay = {}
+        sig_path = self.base_dir / "data" / "ops" / "human_pref_signature_30d.json"
+        if sig_path.exists():
+            try: pref_signature = json.loads(sig_path.read_text(encoding="utf-8"))
+            except: pass
+        ov_path = self.base_dir / "data" / "ops" / "human_pref_overlay_today.json"
+        if ov_path.exists():
+            try: pref_overlay = json.loads(ov_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -396,7 +408,9 @@ class DecisionDashboard:
             "quality_review": quality_review,
             "speakability": speakability,
             "topic_console": console,
-            "calibration_summary": calibration_summary
+            "calibration_summary": calibration_summary,
+            "pref_signature": pref_signature,
+            "pref_overlay": pref_overlay
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -504,6 +518,38 @@ class DecisionDashboard:
             lines.append("⚠️ **TOPIC CONSOLE SNAPSHOT**: (No topic_console generated)")
             lines.append("")
             return
+
+    def _render_human_preference_panel(self, lines: List[str], signature: Dict[str, Any], overlay: Dict[str, Any]):
+        """Renders Step 57 Human Preference Overlay Summary."""
+        lines.append("## 🧠 HUMAN PREFERENCE OVERLAY (Last 30d)")
+        
+        if not signature or signature.get("status") == "INSUFFICIENT_HISTORY":
+            lines.append("> **Status**: ⚠️ INSUFFICIENT HISTORY (Need 20+ quality labels)")
+            lines.append("")
+            lines.append("---")
+            lines.append("")
+            return
+
+        lines.append(f"> **Status**: Success (Sample size: {signature.get('sample_size', 0)})")
+        lines.append("")
+        
+        summ = overlay.get("summary", {})
+        lines.append(f"- **Likely Strong**: {summ.get('HUMAN_LIKELY_STRONG', 0)}")
+        lines.append(f"- **Uncertain**: {summ.get('HUMAN_UNCERTAIN', 0)}")
+        lines.append(f"- **Likely Weak**: {summ.get('HUMAN_LIKELY_WEAK', 0)}")
+        
+        top_traits = signature.get("traits", {})
+        # Flatten and sort top 5
+        trait_list = []
+        for attr, vals in top_traits.items():
+            for val, prop in vals.items():
+                trait_list.append((f"{attr}:{val}", prop))
+        trait_list.sort(key=lambda x: x[1], reverse=True)
+        
+        lines.append(f"- **Top STRONG traits**: {', '.join([t[0] for t in trait_list[:5]])}")
+        lines.append("")
+        lines.append("---")
+        lines.append("")
 
         lines.append("### 📟 TOPIC CONSOLE SNAPSHOT")
         # Show top 3 topics
@@ -723,6 +769,9 @@ class DecisionDashboard:
 
         # [NEW] Step 53: TOPIC QUALITY REVIEW
         self._render_quality_review_panel(lines, data.get("quality_review", {}))
+
+        # [NEW] Step 57: HUMAN PREFERENCE OVERLAY
+        self._render_human_preference_panel(lines, data.get("pref_signature", {}), data.get("pref_overlay", {}))
 
         # [Step 52] TODAY TOPIC VIEW (Top Section)
         self._render_topic_view_panel(lines, data.get("topic_view", {}), data.get("speakability", {}))
@@ -1141,6 +1190,14 @@ class DecisionDashboard:
         
         # Step 40: READY Action Bar
         self._render_ready_action_bar(lines, tid, c['title'])
+
+        # [NEW] Step 57: Human Preference Badge
+        overlay = data.get("pref_overlay", {}).get("overlays", {}).get(tid)
+        if overlay:
+            bucket = overlay["overlay_bucket"]
+            badge = "STRONG" if "STRONG" in bucket else ("WEAK" if "WEAK" in bucket else "?")
+            matched = ", ".join(overlay.get("matched_traits", []))
+            lines.append(f"\n🧠 **HUMAN**: {badge} (Matches: {matched})")
         
         # Step 14: Selection Rationale
         rationale = c.get('selection_rationale')
@@ -1384,6 +1441,13 @@ class DecisionDashboard:
         lines.append(f"[ STRONG ](#log_quality_{tid}_STRONG) | "
                      f"[ BORDERLINE ](#log_quality_{tid}_BORDERLINE) | "
                      f"[ WEAK ](#log_quality_{tid}_WEAK)")
+        
+        # [NEW] Step 57: Human Preference Badge (Final View)
+        overlay = data.get("pref_overlay", {}).get("overlays", {}).get(tid)
+        if overlay:
+            bucket = overlay["overlay_bucket"]
+            badge = "STRONG" if "STRONG" in bucket else ("WEAK" if "WEAK" in bucket else "?")
+            lines.append(f"🧠 **HUMAN**: {badge}")
         lines.append("")
         
         lines.append("\n---")
