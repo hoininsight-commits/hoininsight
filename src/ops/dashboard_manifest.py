@@ -80,6 +80,8 @@ class DashboardManifest:
         narrative_hypotheses_path = "data/ops/narrative_hypotheses.json"
         topic_view_md_path = "data/ops/topic_view_today.md"
         topic_view_json_path = "data/ops/topic_view_today.json"
+        topic_quality_review_md_path = "data/ops/topic_quality_review_today.md"
+        topic_quality_review_json_path = "data/ops/topic_quality_review_today.json"
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
@@ -93,6 +95,8 @@ class DashboardManifest:
             "narrative_hypotheses_json": narrative_hypotheses_path,
             "topic_view_md": topic_view_md_path,
             "topic_view_json": topic_view_json_path,
+            "topic_quality_review_md": topic_quality_review_md_path,
+            "topic_quality_review_json": topic_quality_review_json_path,
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

@@ -186,12 +186,19 @@ def main(target_categories: list[str] = None):
         except Exception as e:
             print(f"topic_view: error ({e})", file=sys.stderr)
 
-        # [NEW] Generate Decision Dashboard Markdown
-        from src.reporters.decision_dashboard import DecisionDashboard
-        try:
-            dd = DecisionDashboard(Path("."))
             # Step 43/44 are now deeply integrated into build_dashboard_data
             dd_data = dd.build_dashboard_data(run_ymd)
+            
+            # [NEW] Step 53: Topic Quality Review Execution
+            try:
+                from src.ops.topic_quality_review import TopicQualityReview
+                tqr = TopicQualityReview(Path("."))
+                # We review the cards produced by DecisionDashboard
+                tqr.run(run_ymd, dd_data.get("cards", []))
+                details_lines.append("topic_quality_review: ok")
+                print("topic_quality_review: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"topic_quality_review: run error ({e})", file=sys.stderr)
             
             # Write auto_approved_today.json specifically if not already saved by dd
             # Actually, let's make sure AutoApprovalGate runs and saves.

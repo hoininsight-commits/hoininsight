@@ -146,6 +146,14 @@ class DecisionDashboard:
                 topic_view = json.loads(tv_path.read_text(encoding="utf-8"))
             except: pass
 
+        # [NEW] Step 53: Load Topic Quality Review
+        quality_review = {}
+        qr_path = self.base_dir / "data" / "ops" / "topic_quality_review_today.json"
+        if qr_path.exists():
+            try:
+                quality_review = json.loads(qr_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -360,7 +368,8 @@ class DecisionDashboard:
             "fact_anchors": fact_anchors,
             "topic_seeds": topic_seeds,
             "narrative_hypotheses": narrative_hypotheses,
-            "topic_view": topic_view
+            "topic_view": topic_view,
+            "quality_review": quality_review
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -454,6 +463,45 @@ class DecisionDashboard:
             lines.append(f"| {h.get('hypothesis_text')} | {seed_sum} | {frames_str} | {h.get('supporting_fact_count')} | {h.get('confidence_level')} |")
         lines.append("")
 
+    def _render_quality_review_panel(self, lines: List[str], review: Dict[str, Any]):
+        """Renders Step 53 Topic Quality Review Section."""
+        if not review or not review.get("topics"):
+            lines.append("🧪 **TOPIC QUALITY REVIEW**: (No topics to review today)")
+            lines.append("")
+            return
+            
+        lines.append("## 🧪 TOPIC QUALITY REVIEW")
+        c = review.get("counts", {})
+        fa = c.get("fact_anchor", {})
+        te = c.get("timing_edge", {})
+        nf = c.get("narration_fit", {})
+        
+        lines.append(f"**SNAPSHOT**: 🧱 ANCHOR(S={fa.get('STRONG',0)}|M={fa.get('MEDIUM',0)}|W={fa.get('WEAK',0)}) | "
+                     f"⏳ TIMING(E={te.get('EARLY',0)}|O={te.get('ON_TIME',0)}|L={te.get('LATE',0)}) | "
+                     f"🎤 FIT(G={nf.get('GOOD',0)}|F={nf.get('FAIR',0)}|P={nf.get('POOR',0)})")
+        lines.append("")
+        
+        # List Top N (default 10) topics with compact cards
+        lines.append("**Top Quality Candidates:**")
+        for t in review.get("topics", [])[:10]:
+            # Compact Card: [Anchor] [Frame] [Timing] [Fit] [Linkability] + Flags
+            badges = [
+                f"🧱 {t['fact_anchor']}",
+                f"🧠 GOOD", # Frame Clarity is GOOD (Implicit)
+                f"⏳ {t['timing_edge']}",
+                f"🎤 {t['narration_fit']}",
+                f"🔗 {t['stock_linkability']}"
+            ]
+            flag_str = f" | 🚩 {','.join(t['flags'])}" if t['flags'] else ""
+            lines.append(f"- **{t['title']}**")
+            lines.append(f"  [{' | '.join(badges)}]{flag_str}")
+            lines.append(f"  *💡 Hint: {t['hint']}*")
+            
+        lines.append("")
+        lines.append(f"👉 [Open full Quality Review (Markdown)](data/ops/topic_quality_review_today.md)")
+        lines.append("---")
+        lines.append("")
+
     def _render_topic_view_panel(self, lines: List[str], view: Dict[str, Any]):
         """Renders Step 52 Topic View Section (Read-Only)."""
         if not view:
@@ -529,6 +577,9 @@ class DecisionDashboard:
         sat_stats = data.get("saturation_summary")
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
+
+        # [NEW] Step 53: TOPIC QUALITY REVIEW
+        self._render_quality_review_panel(lines, data.get("quality_review", {}))
 
         # [Step 52] TODAY TOPIC VIEW (Top Section)
         self._render_topic_view_panel(lines, data.get("topic_view", {}))
