@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
+from src.ops.event_input_truth import diagnose
 
 class HealthCheck:
     """Generates a health summary for the daily run."""
@@ -50,10 +51,16 @@ class HealthCheck:
                 count = len(list(events_dir.glob("*.json")))
                 health_data["metrics"]["events_count"] = count
                 if count == 0:
-                    health_data["errors"].append(f"events_count is 0 in {events_dir}")
+                    diag = diagnose(ymd, self.base_dir)
+                    health_data["input_root_cause_code"] = diag.get("root_cause_code")
+                    health_data["input_details"] = diag.get("details")
+                    health_data["errors"].append(f"events_count is 0: {diag.get('root_cause_code')}")
             else:
+                diag = diagnose(ymd, self.base_dir)
+                health_data["input_root_cause_code"] = diag.get("root_cause_code")
+                health_data["input_details"] = diag.get("details")
                 health_data["missing_files"].append(str(events_dir))
-                health_data["errors"].append(f"events_dir missing: {events_dir}")
+                health_data["errors"].append(f"events_dir missing: {diag.get('root_cause_code')}")
             
             # Anomalies
             if anomalies_dir.exists():
