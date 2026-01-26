@@ -1,5 +1,5 @@
 {
-  "run_ts": "2026-01-26T11:47:16Z",
+  "run_ts": "2026-01-26T12:06:25Z",
   "topics": [
     {
       "topic_type": "FACT_FIRST",
@@ -38,6 +38,65 @@
       "structural_frames": []
     }
   ],
-  "topic_seeds": [],
-  "narrative_hypotheses": []
+  "topic_seeds": [
+    {
+      "seed_id": "seed_bdb46d5c",
+      "structural_frames": [],
+      "supporting_facts": [
+        "unknown"
+      ],
+      "seed_summary": "Identified  alignment across multiple factual anchors.",
+      "first_seen": "2026-01-26",
+      "status": "SHADOW_ONLY"
+    },
+    {
+      "seed_id": "seed_7691438c",
+      "structural_frames": [],
+      "supporting_facts": [
+        "unknown"
+      ],
+      "seed_summary": "Identified  alignment across multiple factual anchors.",
+      "first_seen": "2026-01-26",
+      "status": "SHADOW_ONLY"
+    },
+    {
+      "seed_id": "seed_8312c08d",
+      "structural_frames": [],
+      "supporting_facts": [
+        "unknown"
+      ],
+      "seed_summary": "Identified  alignment across multiple factual anchors.",
+      "first_seen": "2026-01-26",
+      "status": "SHADOW_ONLY"
+    }
+  ],
+  "narrative_hypotheses": [
+    {
+      "hypothesis_id": "hypo_b286a967",
+      "seed_id": "seed_bdb46d5c",
+      "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
+      "structural_frames": [],
+      "supporting_fact_count": 1,
+      "confidence_level": "LOW",
+      "status": "PRE-NARRATIVE"
+    },
+    {
+      "hypothesis_id": "hypo_90476643",
+      "seed_id": "seed_7691438c",
+      "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
+      "structural_frames": [],
+      "supporting_fact_count": 1,
+      "confidence_level": "LOW",
+      "status": "PRE-NARRATIVE"
+    },
+    {
+      "hypothesis_id": "hypo_67c6627d",
+      "seed_id": "seed_8312c08d",
+      "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
+      "structural_frames": [],
+      "supporting_fact_count": 1,
+      "confidence_level": "LOW",
+      "status": "PRE-NARRATIVE"
+    }
+  ]
 }

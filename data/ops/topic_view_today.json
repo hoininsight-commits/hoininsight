@@ -1,0 +1,47 @@
+{
+  "run_date": "2026-01-26",
+  "sections": {
+    "auto_approved": [],
+    "ready": [],
+    "shadow": [],
+    "fact_first_shadow": [
+      {
+        "topic_id": "unknown",
+        "title": "Nvidia confirms new AI chip delivery schedule for H2 2026",
+        "lane": "FACT_FIRST",
+        "level": 0,
+        "impact": "N/A",
+        "why_now": "Harvested fact from TechNews RSS",
+        "evidence_count": 0,
+        "links": {}
+      },
+      {
+        "topic_id": "unknown",
+        "title": "Goldman Sachs reports 15% increase in institutional crypto flow",
+        "lane": "FACT_FIRST",
+        "level": 0,
+        "impact": "N/A",
+        "why_now": "Harvested fact from FinanceDaily RSS",
+        "evidence_count": 0,
+        "links": {}
+      },
+      {
+        "topic_id": "unknown",
+        "title": "ECB policy document: Focus shifts to long-term inflation stability over short-term cuts",
+        "lane": "FACT_FIRST",
+        "level": 0,
+        "impact": "N/A",
+        "why_now": "Harvested fact from ECB Official",
+        "evidence_count": 0,
+        "links": {}
+      }
+    ]
+  },
+  "counts": {
+    "auto_approved": 0,
+    "ready": 0,
+    "shadow": 0,
+    "fact_first_shadow": 3
+  },
+  "missing_inputs": []
+}
