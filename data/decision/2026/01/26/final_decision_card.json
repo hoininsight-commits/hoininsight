@@ -1,6 +1,6 @@
 {
   "card_version": "phase50_dual_v1",
-  "generated_at": "2026-01-26T08:35:40.897854+00:00Z",
+  "generated_at": "2026-01-26T08:40:22.078567+00:00Z",
   "date": "2026-01-26",
   "blocks": {
     "regime": {
@@ -60,7 +60,7 @@
       "title": "[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.09배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-26T08:35:37Z",
+        "ts_utc": "2026-01-26T08:40:17Z",
         "dataset_id": "metal_gold_paxg_coingecko",
         "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json L2 Signal",
@@ -72,8 +72,8 @@
           "details": {
             "z_score": 2.09,
             "percentile": 50.0,
-            "value": 5119.41,
-            "rolling_mean_20d": 4725.639441406251,
+            "value": 5119.5,
+            "rolling_mean_20d": 4725.64394140625,
             "reasoning": "Z-Score 2.09 >= 2.0"
           },
           "regime": {
@@ -114,9 +114,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.54배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.53배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-26T08:35:37Z",
+        "ts_utc": "2026-01-26T08:40:17Z",
         "dataset_id": "metal_silver_kag_coingecko",
         "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal",
@@ -126,11 +126,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.54,
+            "z_score": 2.53,
             "percentile": 50.0,
-            "value": 109.44,
-            "rolling_mean_20d": 92.85310162353515,
-            "reasoning": "Z-Score 2.54 >= 2.0"
+            "value": 109.34,
+            "rolling_mean_20d": 92.84810162353516,
+            "reasoning": "Z-Score 2.53 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -151,7 +151,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.54 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.53 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Risk-Off Wave",
@@ -170,9 +170,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.76 >= 2.0. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.74 >= 2.0. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-26T08:35:37Z",
+        "ts_utc": "2026-01-26T08:40:17Z",
         "dataset_id": "derived_gold_silver_ratio",
         "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/26/derived_gold_silver_ratio.json L2 Signal",
@@ -182,11 +182,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": -2.76,
+            "z_score": -2.74,
             "percentile": 50.0,
-            "value": 46.77823464912281,
-            "rolling_mean_20d": 51.019047503419586,
-            "reasoning": "Z-Score -2.76 >= 2.0"
+            "value": 46.82184013169928,
+            "rolling_mean_20d": 51.021227777548404,
+            "reasoning": "Z-Score -2.74 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -207,7 +207,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/26/derived_gold_silver_ratio.json"
         },
-        "rationale": "[L2] Z-Score -2.76 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score -2.74 >= 2.0 (Regime x1.0)",
         "links": []
       },
       "logic_block": "Risk-Off Wave",
@@ -228,7 +228,7 @@
       "title": "[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-26T08:35:37Z",
+        "ts_utc": "2026-01-26T08:40:17Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/26/inflation_cpi_fred.json L2 Signal",
@@ -284,7 +284,7 @@
       "title": "[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-26T08:35:37Z",
+        "ts_utc": "2026-01-26T08:40:17Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/26/inflation_pce_fred.json L2 Signal",
