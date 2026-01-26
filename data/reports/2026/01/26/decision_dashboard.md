@@ -6,12 +6,6 @@
 ## 🧾 OPERATOR CONTROL CENTER
 > **Quick Links**: [Topic Console](data/ops/topic_console_today.md) | [Quality Review](data/ops/topic_quality_review_today.md) | [Speakability](data/ops/topic_speakability_today.md) | [Speak Bundle](data/ops/bundles/speak_bundle.md)
 
-### 📟 TOPIC CONSOLE SNAPSHOT
-- **지수 상승 속 섹터 하락의 이유**
-  ⚪ SPEAK | SCRIPT⛔ | BUNDLE⛔
-
----
-
 ## 🛡️ TOPIC QUALITY CALIBRATION (Today)
 > **Status**: Calibration active
 
@@ -38,6 +32,11 @@
   *💡 Hint: Standard Observation*
 
 👉 [Open full Quality Review (Markdown)](data/ops/topic_quality_review_today.md)
+---
+
+## 🧠 HUMAN PREFERENCE OVERLAY (Last 30d)
+> **Status**: ⚠️ INSUFFICIENT HISTORY (Need 20+ quality labels)
+
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
