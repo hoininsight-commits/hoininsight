@@ -2286,23 +2286,20 @@ def generate_dashboard(base_dir: Path):
         title = t.get('title', 'Unknown')
         rationale = t.get('rationale', t.get('core_narrative', 'No rationale'))
         
-        # Simple 7-step pattern
+        # [Step 59] 5-step humanized structure
         outline = [
             f"# {title}",
-            "## 1. Hook (Current Status)",
-            f"시장 데이터에서 {title}와 관련하여 평소와 다른 유의미한 움직임이 감지되었습니다.",
-            "## 2. Market Expectation",
-            f"기존 시장의 기대치와 달리 {rationale.split('.')[0]} 수준의 변화가 확인됩니다.",
-            "## 3. Actual Market Move",
-            f"지표는 {t.get('level', 'L2')} 수준의 경고 영역에 진입했습니다.",
-            "## 4. Why Mismatch (Divergence)",
-            "공급망 및 자금 흐름 데이터상에서 실질적인 괴리가 발생하고 있습니다.",
-            "## 5. Evidence (Quant & Trace)",
-            f"정량 데이터: {t.get('observed_metrics', ['N/A'])} / Trace 코드: {t.get('topic_id', 'Unknown')}",
-            "## 6. What to Watch Next",
-            f"관련 대장주({', '.join(t.get('leader_stocks', ['N/A']))[:50]})의 변동성과 추가 지표 확인이 필수적입니다.",
-            "## 7. Risk Note",
-            "단기적인 변동성에 유의하며, 지표의 확산 여부를 지속적으로 관찰해야 합니다."
+            "### 1. 오프닝",
+            f"오늘 우리 시장에서 주목해야 할 가장 핵심적인 변화는 '{title}'입니다.",
+            "### 2. 핵심 주장",
+            f"{rationale.split('.')[0]}. 이 움직임은 단순한 변동이 아닌 구조적인 신호로 판단됩니다.",
+            "### 3. 근거 데이터",
+            f"- 실질 지표 변동: {t.get('level', 'L2')} 등급 경고 감지",
+            f"- 데이터 증거: {t.get('observed_metrics', ['N/A'])} 기준 도달",
+            "### 4. 다음에 봐야 할 포인트",
+            f"관련 섹터({', '.join(t.get('leader_stocks', ['N/A']))[:50]})의 수급 변화와 차기 지표 발표를 주시해야 합니다.",
+            "### 5. 리스크 한 줄",
+            "단기 과매수/과매도 구간일 수 있으므로 지표의 연속성을 확인하는 것이 안전합니다."
         ]
         return "\n\n".join(outline)
     
@@ -2460,49 +2457,95 @@ def generate_dashboard(base_dir: Path):
             reasons = trace.get("triggers", []) if card_type == "speak" else trace.get("shift_metadata", {}).get("reasons", ["Observation ongoing"])
             anchors_sum = t.get("anchors", {})
             dataset_id = t.get('dataset_id', '')
-            border_color = "#3b82f6" if card_type == "speak" else "#f59e0b"
+            
+            # [Step 59] Human-First Labels
+            status_text = "✅ 지금 써도 됨"
+            status_color = "#16a34a"
+            if card_type == "watch":
+                status_text = "👀 더 지켜보기"
+                status_color = "#f59e0b"
+            elif t.get("status") == "DROP":
+                status_text = "⛔ 오늘은 아님"
+                status_color = "#dc2626"
 
-            # Formatting anchors
-            ans_html = ""
-            for atype, alist in anchors_sum.items():
-                tags = "".join([f"<span style='background:#f1f5f9; color:#475569; padding:2px 8px; border-radius:4px; font-size:10px; margin-right:4px;'>{a['sensor_id']}</span>" for a in alist])
-                ans_html += f"<div style='margin-top:5px;'><span style='font-size:11px; font-weight:bold; color:#64748b;'>{atype.upper()}:</span> {tags}</div>"
-
-            # [Grouping] Badge
-            group_badge = ""
-            if t.get("is_group_leader"):
-                count = t.get("group_count", 1)
-                group_badge = f'<span style="background:#e0e7ff; color:#4338ca; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:bold; margin-left:8px;">+{count-1} More (Collapsed)</span>'
+            # [Step 59] Evidence Snapshot
+            z_score = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
+            percentile = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('percentile', 'N/A')
+            
+            # [Step 59] Stocks
+            stocks = t.get("leader_stocks", [])
+            stocks_html = ""
+            if stocks:
+                s_tags = "".join([f"<span style='background:#f0fdf4; color:#166534; padding:2px 8px; border-radius:12px; margin-right:6px; font-size:11px; font-weight:bold;'>{s}</span>" for s in stocks])
+                stocks_html = f"<div style='margin-top:12px;'><strong>🏷️ 관련 섹터/종목:</strong> {s_tags}</div>"
 
             cards_html += f"""
-            <div class="card" style="margin-bottom:20px; border-left:4px solid {border_color};">
-                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px; font-family:monospace;">
-                    TOPIC #{idx+1} | {dataset_id} {group_badge}
+            <div class="card" style="margin-bottom:25px; border-left:6px solid {status_color}; padding:25px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                    <div style="font-size:11px; color:#94a3b8; font-family:monospace;">
+                        #{idx+1} | {dataset_id}
+                    </div>
+                    <div style="background:{status_color}; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
+                        {status_text}
+                    </div>
                 </div>
-                <h3 style="margin:0 0 10px 0; font-size:18px; color:#1e293b; line-height:1.4;">
+                
+                <h3 style="margin:0 0 10px 0; font-size:20px; color:#1e293b; line-height:1.4; font-weight:800;">
                     {t.get('title')}
                 </h3>
                 
-                <div style="background:#f0f9ff; padding:12px; border-radius:6px; font-size:13px; margin-bottom:15px;">
-                    <strong>🎯 Triggered Conditions:</strong>
-                    <ul style="margin:5px 0 0 20px; padding:0;">
-                        {"".join([f"<li>{r}</li>" for r in reasons])}
-                    </ul>
+                <p style="font-size:14px; color:#475569; margin-bottom:15px; line-height:1.6;">
+                    {t.get('rationale') or t.get('selection_rationale') or '왜 중요한지에 대한 요약이 없습니다.'}
+                </p>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:20px;">
+                    <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
+                        <strong style="display:block; font-size:11px; color:#64748b; margin-bottom:8px; text-transform:uppercase;">🚨 WHY NOW (타이밍 트리거)</strong>
+                        <ul style="margin:0; padding:0 0 0 18px; font-size:13px; color:#334155;">
+                            {"".join([f"<li style='margin-bottom:4px;'>{r}</li>" for r in reasons])}
+                        </ul>
+                    </div>
+                    <div style="background:#f8fafc; padding:15px; border-radius:8px; border-top:3px solid #3b82f6;">
+                        <strong style="display:block; font-size:11px; color:#64748b; margin-bottom:8px; text-transform:uppercase;">📊 EVIDENCE SNAPSHOT (핵심 근거)</strong>
+                        <div style="display:flex; gap:15px;">
+                            <div>
+                                <div style="font-size:10px; color:#94a3b8;">변동 강도</div>
+                                <div style="font-size:16px; font-weight:bold; color:#1e293b;">{z_score} <small style="font-size:10px; color:#64748b;">(z)</small></div>
+                            </div>
+                            <div>
+                                <div style="font-size:10px; color:#94a3b8;">상위 %</div>
+                                <div style="font-size:16px; font-weight:bold; color:#1e293b;">{percentile}%</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                {ans_html}
+                {stocks_html}
                 
-                <div style="display:flex; gap:10px; margin-top:20px;">
-                    <button onclick="showTopicScript('{t.get('topic_id')}')" style="background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📜 스크립트 보기</button>
-                    <button onclick="showDeepLogicReport('{t.get('topic_id')}')" style="background:#eff6ff; color:#3b82f6; border:1px solid #bfdbfe; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">📊 근거 보기</button>
-                    <button onclick="activate('rejection-ledger')" style="background:white; color:#64748b; border:1px solid #e2e8f0; padding:8px 15px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:12px;">🚫 보류/거절 보기</button>
+                <div style="display:flex; gap:12px; margin-top:25px; padding-top:20px; border-top:1px solid #f1f5f9;">
+                    <button onclick="showTopicScript('{t.get('topic_id')}')" style="background:#0f172a; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px;">
+                        <span>📜 스크립트 미리보기</span>
+                    </button>
+                    <button onclick="activate('topic-list'); showTopicDetail({idx})" style="background:white; color:#1e293b; border:1px solid #cbd5e1; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px;">
+                        💡 상세 근거 보기
+                    </button>
+                    <button onclick="activate('watch-today')" style="background:white; color:#64748b; border:1px solid #e2e8f0; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px;">
+                        🔭 관찰 목록 확인
+                    </button>
                 </div>
             </div>
             """
         return cards_html
 
+    # [Step 59] Content Prep
+    playable_count = len(speak_topics)
+    total_count = len(speak_topics) + len(watch_topics)
+
     speak_topics_html = _render_cards(speak_topics, "speak")
     watch_topics_html = _render_cards(watch_topics, "watch")
+    
+    # [Step 59] Dashboard Template Header Update
+    # I will replace the speak-today tab content structure directly in the large template string later.
 
 
 
@@ -2632,73 +2675,65 @@ def generate_dashboard(base_dir: Path):
                 const view = document.getElementById('topic-detail-view');
                 const scriptContent = ALL_SCRIPTS[idx];
                 
-                // [Feature] Extract Evidence Data
-                let evidenceHtml = '';
-                if (t.raw_data && t.raw_data.evidence && t.raw_data.evidence.details) {{
-                    const d = t.raw_data.evidence.details;
-                    const val = d.value !== undefined ? d.value : '-';
-                    const z = d.z_score !== undefined ? d.z_score : '-';
-                    const pct = d.percentile !== undefined ? d.percentile + '%' : '-';
-                    const mean = d.rolling_mean_20d !== undefined ? parseFloat(d.rolling_mean_20d).toFixed(2) : '-';
-                    
-                    evidenceHtml = `
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 {I18N_KO['DATA_EVIDENCE']}</h3>
-                    <div style="background:#f0f9ff; padding:15px; border-radius:6px; border:1px solid #bae6fd; margin-bottom:20px;">
-                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:12px;">
-                            <div><span style="color:#64748b;">현재값 ({I18N_KO['VALUE']}):</span> <span style="font-weight:bold; color:#0f172a;">${{val}}</span></div>
-                            <div><span style="color:#64748b;">Z-Score:</span> <span style="font-weight:bold; color:#0369a1;">${{z}}</span></div>
-                            <div><span style="color:#64748b;">평균 (20d Mean):</span> <span style="font-weight:bold; color:#334155;">${{mean}}</span></div>
-                            <div><span style="color:#64748b;">Percentile:</span> <span style="font-weight:bold; color:#334155;">${{pct}}</span></div>
-                        </div>
-                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid #e0f2fe; font-size:11px; color:#0c4a6e;">
-                            <b>{I18N_KO['SIGNAL_LOGIC']}:</b> ${{d.reasoning || 'N/A'}}
-                        </div>
-                    </div>
-                    `;
-                }} else if (t.is_narrative && t.observed_metrics) {{
-                    evidenceHtml = `
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📊 {I18N_KO['DATA_EVIDENCE']}</h3>
-                    <div style="background:#f5f3ff; padding:15px; border-radius:6px; border:1px solid #ddd6fe; margin-bottom:20px;">
-                        <div style="font-size:12px; color:#334155;">
-                            ${{t.observed_metrics.map(m => `• <span style="font-weight:bold;">${{m}}</span>`).join('<br>')}}
-                        </div>
-                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid #ede9fe; font-size:11px; color:#6b21a8;">
-                            <b>{I18N_KO['TRIGGER_EVENT']}:</b> ${{t.trigger_event || 'N/A'}}
-                        </div>
-                    </div>
-                    `;
-                }}
+                // [Step 59] Human-First rationale mapping
+                const fact = t.raw_data?.evidence?.details?.reasoning || '데이터 포인트 감지';
+                const structure = t.logic_block || '시장 구조의 변화';
+                const hypothesis = t.rationale || t.title;
+                const risk = t.risk_note || '뉴스 및 추가 지표의 확산 여부 확인 필요';
 
-                const levelColor = t.is_narrative ? "#7c3aed" : "#ef4444";
-                const levelLabel = t.is_narrative ? "Narrative Insight" : (t.level || 'L?') + " Anomaly";
+                const levelColor = t.is_narrative ? "#7c3aed" : "#1e40af";
+                const typeLabel = t.is_narrative ? "내러티브 분석" : "구조적 변화";
 
                 let html = `
-                    <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${{idx+1}}</div>
-                        <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
-                        <div style="display:flex; gap:10px; align-items:center;">
-                            <div style="font-size:11px; color:#fff; background:${{levelColor}}; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{levelLabel}}</div>
-                            <div style="font-size:11px; color:#64748b; font-weight:bold;">{I18N_KO['CONFIDENCE']}: <span style="color:#10b981;">${{t.confidence || 0}}%</span></div>
+                    <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:25px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                             <span style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${{idx+1}} DETAIL</span>
+                             <span style="background:${{levelColor}}; color:white; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:bold;">${{typeLabel}}</span>
                         </div>
+                        <h2 style="margin:0; font-size:24px; color:#1e293b; font-weight:900; line-height:1.3;">${{t.title}}</h2>
                     </div>
                     
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">🎯 {I18N_KO['RATIONALE']}</h3>
-                    <div style="background:#f8fafc; padding:15px; border-radius:6px; font-size:13px; line-height:1.6; color:#334155; margin-bottom:20px;">
-                        ${{t.rationale}}
+                    <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:30px;">
+                        <div style="border-left:4px solid #cbd5e1; padding-left:15px;">
+                            <div style="font-size:11px; font-weight:bold; color:#94a3b8; margin-bottom:4px;">1. 이 토픽이 포착된 팩트</div>
+                            <div style="font-size:14px; color:#334155;">${{fact}}</div>
+                        </div>
+                        
+                        <div style="border-left:4px solid #3b82f6; padding-left:15px;">
+                            <div style="font-size:11px; font-weight:bold; color:#3b82f6; margin-bottom:4px;">2. 그 팩트가 연결된 구조적 변화</div>
+                            <div style="font-size:14px; font-weight:bold; color:#1e293b;">${{structure}}</div>
+                        </div>
+                        
+                        <div style="border-left:4px solid #10b981; padding-left:15px;">
+                            <div style="font-size:11px; font-weight:bold; color:#10b981; margin-bottom:4px;">3. 그래서 만들어진 내러티브 가설</div>
+                            <div style="font-size:14px; color:#334155; line-height:1.6;">${{hypothesis}}</div>
+                        </div>
+                        
+                        <div style="border-left:4px solid #f59e0b; padding-left:15px;">
+                            <div style="font-size:11px; font-weight:bold; color:#f59e0b; margin-bottom:4px;">4. 아직 부족한 점 (리스크 / 미확인 요소)</div>
+                            <div style="font-size:14px; color:#64748b; font-style:italic;">${{risk}}</div>
+                        </div>
                     </div>
 
-                    ${{evidenceHtml}}
-
                     ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
-                    <h3 style="font-size:14px; color:#166534; margin-bottom:10px;">🚀 {I18N_KO['LEADER_STOCKS']}</h3>
-                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
-                        ${{t.leader_stocks.map(s => `<span style="font-size:11px; background:#f0fdf4; border:1px solid #bbf7d0; padding:4px 12px; border-radius:20px; color:#166534; font-weight:700;">${{s}}</span>`).join('')}}
+                    <div style="margin-bottom:30px;">
+                        <h3 style="font-size:14px; color:#166534; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                            <span>🚀 대장주 및 관련 섹터</span>
+                        </h3>
+                        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                            ${{t.leader_stocks.map(s => `<span style="font-size:12px; background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 14px; border-radius:20px; color:#166534; font-weight:700;">${{s}}</span>`).join('')}}
+                        </div>
                     </div>
                     ` : ''}}
                     
-                    <h3 style="font-size:14px; color:#334155; margin-bottom:10px;">📜 인사이트 스크립트</h3>
-                    <div style="background:#eff6ff; padding:20px; border-radius:6px; font-size:13px; line-height:1.7; color:#1e293b; white-space:pre-wrap; border:1px solid #bfdbfe;">
-                        ${{scriptContent}}
+                    <div style="background:#0f172a; padding:30px; border-radius:12px; color:#f8fafc;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid #1e293b; padding-bottom:10px;">
+                            <h3 style="font-size:15px; font-weight:bold; margin:0;">📜 SCRIPT PREVIEW</h3>
+                            <span style="font-size:11px; color:#94a3b8;">Human-readable draft</span>
+                        </div>
+                        <div style="font-size:14px; line-height:1.8; white-space:pre-wrap; font-family:serif;">
+                            ${{scriptContent}}
+                        </div>
                     </div>
                 `;
                 
@@ -2900,13 +2935,13 @@ def generate_dashboard(base_dir: Path):
                     <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
                 </div>
                 
-                <div class="nav-label">PRODUCTION FLOW</div>
-                <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 오늘 발화 가능 (SPEAK)</div>
-                <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 오늘 관찰 (WATCH)</div>
-                <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 오늘 근거 (EVIDENCE)</div>
-                <div class="nav-item" onclick="activate('event-coverage')"><span class="nav-icon">📊</span> 이벤트 커버리지 (COVERAGE)</div>
-                <div class="nav-item" onclick="activate('topic-gate')"><span class="nav-icon">🔥</span> 토픽 게이트</div>
-                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 아카이브</div>
+                <div class="nav-label">CONTROL CENTER</div>
+                <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 1️⃣ TODAY</div>
+                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">💡</span> 2️⃣ WHY THIS TOPIC</div>
+                <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 3️⃣ EVIDENCE</div>
+                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 4️⃣ SCRIPT PREVIEW</div>
+                <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 5️⃣ WATCHLIST</div>
+                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 6️⃣ ARCHIVE</div>
                 
                 <div class="advanced-toggle" onclick="toggleAdvanced()">
                     <span>ADVANCED TOOLS</span>
@@ -2938,24 +2973,47 @@ def generate_dashboard(base_dir: Path):
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
-                    <!-- NEW TAB: SPEAK TODAY -->
+                    <!-- NEW TAB: TODAY SCREEN (Step 59) -->
                     <div id="speak-today" class="tab-content active" style="display:block;">
+                        <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                            <div>
+                                <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b; display:flex; align-items:center; gap:12px;">
+                                    📌 TODAY — ENGINE SELECTED TOPICS
+                                </h2>
+                                <div style="margin-top:8px; display:flex; gap:15px; align-items:center;">
+                                    <span style="font-size:13px; color:#64748b; font-weight:bold;">📅 {ymd}</span>
+                                    <span style="width:1px; height:12px; background:#cbd5e1;"></span>
+                                    <span style="font-size:13px; color:#334155;">오늘 발견된 토픽: <strong>{total_count}</strong>개</span>
+                                    <span style="width:1px; height:12px; background:#cbd5e1;"></span>
+                                    <span style="font-size:13px; color:#16a34a; font-weight:bold;">🎬 영상화 가능: {playable_count}개</span>
+                                </div>
+                            </div>
+                        </div>
+
                         {synth_html}
 
-                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
-                            <span style="background:#3b82f6; color:white; padding:4px 12px; border-radius:8px; font-size:14px;">SPEAKABLE</span>
-                            오늘 발화 가능 토픽
-                        </h2>
+                        <div style="margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size:16px; font-weight:800; color:#475569;">🚀 지금 바로 다룰 수 있는 주제</h3>
+                        </div>
                         
                         {speak_topics_html}
                     </div>
 
-                    <!-- NEW TAB: WATCH TODAY -->
+                    <!-- NEW TAB: WATCHLIST SCREEN (Step 59) -->
                     <div id="watch-today" class="tab-content" style="display:none;">
-                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
-                            <span style="background:#f59e0b; color:white; padding:4px 12px; border-radius:8px; font-size:14px;">WATCHING</span>
-                            오늘 관찰 토픽
-                        </h2>
+                        <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                            <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b; display:flex; align-items:center; gap:12px;">
+                                🔭 WATCHLIST — 잠재적 토픽 목록
+                            </h2>
+                            <p style="margin-top:10px; font-size:14px; color:#64748b; line-height:1.6;">
+                                엔진이 감지했지만 아직 '발화' 단계에 도달하지 않은 주제들입니다. 
+                                <strong>추가 증거</strong>나 <strong>시장 반응</strong>이 확인되면 TODAY로 전환됩니다.
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom:15px;">
+                            <h3 style="font-size:16px; font-weight:800; color:#475569;">👀 지속 관찰이 필요한 주제들</h3>
+                        </div>
                         
                         {watch_topics_html}
                     </div>

@@ -609,8 +609,8 @@ class DecisionDashboard:
 
         lines.append("## 📢 EDITORIAL SPEAKABILITY")
         c = speakability.get("counts", {})
-        lines.append(f"- **SPEAKABLE_NOW**: {c.get('SPEAKABLE_NOW', 0)}")
-        lines.append(f"- **NOT_SPEAKABLE_YET**: {c.get('NOT_SPEAKABLE_YET', 0)}")
+        lines.append(f"- **READY (지금 써도 됨)**: {c.get('SPEAKABLE_NOW', 0)}")
+        lines.append(f"- **HOLD (더 지껴보기)**: {c.get('NOT_SPEAKABLE_YET', 0)}")
         lines.append("")
         lines.append(f"👉 [Open Speakability Report (Markdown)](data/ops/topic_speakability_today.md)")
         lines.append("---")
@@ -684,7 +684,7 @@ class DecisionDashboard:
             
         lines.append("## 🧭 TODAY TOPIC VIEW (READ-ONLY)")
         c = view.get("counts", {})
-        lines.append(f"**SUMMARY**: 🛡️ AUTO={c.get('auto_approved',0)} | 🟢 READY={c.get('ready',0)} | 🌗 SHADOW={c.get('shadow',0)} | 🏹 FACT={c.get('fact_first_shadow',0)}")
+        lines.append(f"**SUMMARY**: 🛡️ Engine Pick={c.get('auto_approved',0)} | 🟢 READY={c.get('ready',0)} | 🔭 Watchlist={c.get('shadow',0)} | 🏹 Early Signal={c.get('fact_first_shadow',0)}")
         lines.append("")
         
         # Display top 3 of AA or READY as priority highlights
