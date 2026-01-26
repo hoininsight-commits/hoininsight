@@ -57,6 +57,13 @@ class TopicConsoleBuilder:
                         all_topics.append(t)
                         seen.add(tid)
 
+        # [NEW] Step 58: Load Calibration Review
+        year, month, day = ymd.split("-")
+        report_path = self.base_dir / "data" / "ops" / "calibration" / year / month / day / "calibration_review_today.json"
+        cal_report = self._load_json(report_path)
+        cal_map = {t["topic_id"]: t for t in cal_report.get("topic_details", [])}
+        mismatch_ids = {m["topic_id"] for m in cal_report.get("mismatch_cases", [])}
+
         console_topics = []
         for t in all_topics:
             topic_id = t.get("topic_id", "unknown")
@@ -65,16 +72,13 @@ class TopicConsoleBuilder:
             # Strict Join Logic
             q = quality_map.get(topic_id, {})
             s = speak_map.get(topic_id, {})
+            cal = cal_map.get(topic_id, {})
             
             # Seek script for this topic
             script_md_path = None
             found_script = False
             for script_p in scripts:
                 # Script filenames are usually script_v1_gate_{short_hash}.md
-                # We check content for topic_id or title if metadata is inside? 
-                # Actually, the name contains the hash of the topic.
-                # If we don't have the hash, we might need to check if the short_hash is in topic object.
-                # For Step 55, let's look for the topic_id in the script content as a fallback.
                 try:
                     content = script_p.read_text(encoding="utf-8")
                     if topic_id in content:
@@ -96,6 +100,13 @@ class TopicConsoleBuilder:
                 "selection_rationale": t.get("selection_rationale") or t.get("rationale"),
                 "fact_anchors": t.get("fact_anchors") or q.get("fact_anchors") or [],
                 "evidence_refs": t.get("evidence_refs") or [],
+                
+                # [NEW] Step 58: Calibration & Overlay
+                "human_label_today": cal.get("label"),
+                "overlay_bucket_today": cal.get("overlay"),
+                "mismatch_flag": topic_id in mismatch_ids,
+                "calibration_review_link": str(report_path.with_suffix(".md").relative_to(self.base_dir)) if cal_report else None,
+
                 "script_assets": {
                     "script_md_path": script_md_path,
                     "speak_bundle_md_path": str(bundle_path.with_suffix(".md").relative_to(self.base_dir)) if bundle_ref else None,
@@ -141,6 +152,8 @@ class TopicConsoleBuilder:
             badges.append(f"LANE:{t['lane']}")
             badges.append(f"STATUS:{t['status']}")
             badges.append(f"SPEAK:{t['speakability']}")
+            if t.get('human_label_today'): badges.append(f"HUMAN:{t['human_label_today']}")
+            if t.get('mismatch_flag'): badges.append("⚠️MISMATCH")
             if t['auto_approved']: badges.append("AUTO_APPROVED✅")
             
             lines.append(f"## {t['title']} ({t['topic_id']})")

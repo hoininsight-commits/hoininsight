@@ -190,6 +190,14 @@ class DecisionDashboard:
             try: pref_overlay = json.loads(ov_path.read_text(encoding="utf-8"))
             except: pass
 
+        # [NEW] Step 58: Load Calibration Review
+        calibration_review = {}
+        y, m, d = ymd.split("-")
+        cr_path = self.base_dir / "data" / "ops" / "calibration" / y / m / d / "calibration_review_today.json"
+        if cr_path.exists():
+            try: calibration_review = json.loads(cr_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -410,7 +418,8 @@ class DecisionDashboard:
             "topic_console": console,
             "calibration_summary": calibration_summary,
             "pref_signature": pref_signature,
-            "pref_overlay": pref_overlay
+            "pref_overlay": pref_overlay,
+            "calibration_review": calibration_review
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -547,6 +556,33 @@ class DecisionDashboard:
         trait_list.sort(key=lambda x: x[1], reverse=True)
         
         lines.append(f"- **Top STRONG traits**: {', '.join([t[0] for t in trait_list[:5]])}")
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+
+    def _render_calibration_review_panel(self, lines: List[str], report: Dict[str, Any]):
+        """Renders Step 58 Calibration Review Summary."""
+        lines.append("## 🧪 CALIBRATION REVIEW (Human vs Engine)")
+        
+        if not report:
+            lines.append("> **Status**: ⚠️ REPORT NOT GENERATED")
+            lines.append("")
+            lines.append("---")
+            lines.append("")
+            return
+
+        lc = report.get("label_counts", {})
+        oc = report.get("overlay_counts", {})
+        mc = len(report.get("mismatch_cases", []))
+        
+        lines.append(f"- **Labels**: STRONG:{lc.get('STRONG',0)} | BORDERLINE:{lc.get('BORDERLINE',0)} | WEAK:{lc.get('WEAK',0)}")
+        lines.append(f"- **Overlays**: LIKELY_STRONG:{oc.get('HUMAN_LIKELY_STRONG',0)} | LIKELY_WEAK:{oc.get('HUMAN_LIKELY_WEAK',0)}")
+        lines.append(f"- **Mismatches**: ⚠️ {mc} cases detected")
+        
+        # Link to full report
+        y, m, d = report["run_date"].split("-")
+        rel_path = f"data/ops/calibration/{y}/{m}/{d}/calibration_review_today.md"
+        lines.append(f"- 👉 [Open Full Calibration Review]({rel_path})")
         lines.append("")
         lines.append("---")
         lines.append("")
@@ -756,6 +792,14 @@ class DecisionDashboard:
 
         # [NEW] Step 55: TOPIC CONSOLE Snapshot & Navigation
         self._render_console_snapshot_panel(lines, data.get("topic_console", {}))
+        
+        # [NEW] Step 58: Operator Control Center Link Enrichment
+        cr = data.get("calibration_review", {})
+        if cr:
+            y, m, d = cr["run_date"].split("-")
+            cr_path = f"data/ops/calibration/{y}/{m}/{d}/calibration_review_today.md"
+            lines.append(f"> 🛠️ [OPERATOR CONTROL] | [Topic Console Today](data/ops/topic_console_today.md) | [Calibration Review]({cr_path})")
+            lines.append("")
 
         # [NEW] Step 56: Calibration Summary
         eligible_count = 0
@@ -772,6 +816,9 @@ class DecisionDashboard:
 
         # [NEW] Step 57: HUMAN PREFERENCE OVERLAY
         self._render_human_preference_panel(lines, data.get("pref_signature", {}), data.get("pref_overlay", {}))
+
+        # [NEW] Step 58: CALIBRATION REVIEW
+        self._render_calibration_review_panel(lines, data.get("calibration_review", {}))
 
         # [Step 52] TODAY TOPIC VIEW (Top Section)
         self._render_topic_view_panel(lines, data.get("topic_view", {}), data.get("speakability", {}))

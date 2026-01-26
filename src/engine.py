@@ -180,9 +180,31 @@ def main(target_categories: list[str] = None):
         try:
             from src.ops.topic_view_builder import TopicViewBuilder
             tvb = TopicViewBuilder(Path("."))
-            tvb.build_view(run_ymd)
+            topic_view_today = tvb.build_view(run_ymd)
             details_lines.append("topic_view: ok")
             print("topic_view: ok", file=sys.stderr)
+            
+            # [NEW] Step 57: Human Preference Overlay
+            try:
+                from src.ops.human_preference_overlay import HumanPreferenceOverlay
+                hpo = HumanPreferenceOverlay(Path("."))
+                hpo.build_signature()
+                hpo.evaluate_today(topic_view_today)
+                details_lines.append("human_pref_overlay: ok")
+                print("human_pref_overlay: ok", file=sys.stderr)
+            except Exception as e_hpo:
+                print(f"human_pref_overlay: error ({e_hpo})", file=sys.stderr)
+
+            # [NEW] Step 58: Calibration Explainability Report
+            try:
+                from src.ops.calibration_explainability_report import CalibrationExplainabilityReport
+                cer = CalibrationExplainabilityReport(Path("."))
+                cer.run(run_ymd)
+                details_lines.append("calibration_report: ok")
+                print("calibration_report: ok", file=sys.stderr)
+            except Exception as e_cer:
+                print(f"calibration_report: error ({e_cer})", file=sys.stderr)
+
         except Exception as e:
             print(f"topic_view: error ({e})", file=sys.stderr)
 
