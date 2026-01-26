@@ -3,6 +3,24 @@
 - **FAILED**: 0
 - **UNRESOLVED**: 1
 
+## 🧭 TODAY TOPIC VIEW (READ-ONLY)
+**SUMMARY**: 🛡️ AUTO=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT=3
+
+👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
+---
+
+
+#### 🤖 AUTO-APPROVED TOPICS
+- _No topics met strict auto-approval conditions today._
+
+#### 🔥 AUTO-PICK PRIORITY (Top 3–5)
+- _Insufficient data for auto-prioritization._
+
+#### 📌 PICK → OUTCOME (Last 30d)
+- Picked: 1 | ✅ Confirmed: 0 | ❌ Failed: 0 | ⏳ Unresolved: 0 | ? Missing: 1
+
+**Recent Picks**
+- [2026-01-26] Global Crypto Regulations — ? MISSING
 
 ## DECISION DASHBOARD (Beta)
 
@@ -15,6 +33,45 @@
 
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
+### 🧱 FACT ANCHORS COLLECTED TODAY
+- **Count**: 3
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1
+- **Samples (Top 3)**:
+  - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
+  - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
+  - [POLICY] ECB policy document: Focus shifts to long-term inflation stability over short-term cuts (ECB Official)
+
+
+### 🌱 TOPIC SEEDS (STRUCTURAL)
+> **Topic Seeds — Pre-topics awaiting maturation**
+
+| Summary | Structural Frames | Facts | First Seen |
+|---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-26 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-26 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-26 |
+
+
+### 🧩 NARRATIVE HYPOTHESES (PRE-SPEAK)
+> **Factual Narrative Hypotheses — Neutral structural explanations**
+
+| Hypothesis | Linked Seed | Frames | Facts | Confidence |
+|---|---|---|---|---|
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+
+
+## 🏹 FACT-FIRST SHADOW TOPICS
+> **Early Fact Capture — Not anomaly-confirmed**
+
+| Fact Anchor | Structural Reason | Confidence |
+|---|---|---|
+| Nvidia confirms new AI chip delivery schedule for H2 2026 | Structural implication: 'Nvidia confirms new AI chip delivery schedule for H2 2026' suggests a shift in TECH dynamics. | LOW |
+| Goldman Sachs reports 15% increase in institutional crypto flow | Structural implication: 'Goldman Sachs reports 15% increase in institutional crypto flow' suggests a shift in FLOW dynamics. | LOW |
+| ECB policy document: Focus shifts to long-term inflation stability over short-term cuts | Structural implication: 'ECB policy document: Focus shifts to long-term inflation stability over short-term cuts' suggests a shift in POLICY dynamics. | LOW |
+
+
 ## 🚫 WHY NO SPEAK (Today)
 > **오늘은 영상화 가능한 토픽이 없습니다.** 아래 사유로 인해 보류되었습니다.
 
@@ -26,6 +83,9 @@
 ## 🎬 TODAY — SPEAKABLE TOPICS (0)
 ※ 시스템은 선택하지 않습니다. 아래는 오늘 설명 가능한 후보 요약입니다.
 - (No topics ready for broadcast today)
+
+#### 🏛️ OPERATOR DECISIONS (TODAY)
+- **PICKED_FOR_CONTENT**: 1
 
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
