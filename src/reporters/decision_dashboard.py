@@ -375,6 +375,15 @@ class DecisionDashboard:
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
         
+        # Step 41: Correlation Panel (NEW)
+        corr_path = self.base_dir / "data" / "ops" / "pick_outcome_30d.json"
+        if corr_path.exists():
+            try:
+                corr_data = json.loads(corr_path.read_text(encoding="utf-8"))
+                self._render_correlation_panel(lines, corr_data)
+            except:
+                pass
+
         cards = data.get("cards", [])
         
         # Partition Topics
@@ -1722,3 +1731,26 @@ class DecisionDashboard:
         """Step 40: Placeholder for SHADOW action bar."""
         lines.append(f"    > **ACTION**: [ Defer ] [ Reject ]")
 
+    def _render_correlation_panel(self, lines: List[str], data: Dict[str, Any]):
+        """Step 41: Correlation Summary Scoreboard."""
+        summary = data.get("summary", {})
+        lines.append("\n#### 📌 PICK → OUTCOME (Last 30d)")
+        lines.append(f"- Picked: {summary.get('picked', 0)} | ✅ Confirmed: {summary.get('confirmed', 0)} | ❌ Failed: {summary.get('failed', 0)} | ⏳ Unresolved: {summary.get('unresolved', 0)} | ? Missing: {summary.get('missing', 0)}")
+        
+        rows = data.get("rows", [])
+        if not rows:
+            lines.append("- _No human picks in last 30d._")
+        else:
+            lines.append("\n**Recent Picks**")
+            for r in rows[:10]: # Last 10
+                outcome = r.get("outcome", "MISSING")
+                icon = "⏳"
+                if outcome == "CONFIRMED": icon = "✅"
+                elif outcome == "FAILED": icon = "❌"
+                elif outcome == "MISSING": icon = "?"
+                
+                lines.append(f"- [{r['pick_date']}] {r['topic_title']} — {icon} {outcome}")
+        
+        errors = data.get("errors", [])
+        if errors:
+            lines.append(f"\n> ⚠️ Correlation warnings: {len(errors)}")

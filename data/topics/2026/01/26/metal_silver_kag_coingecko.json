@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-26T06:50:39Z",
+    "ts_utc": "2026-01-26T07:39:12Z",
     "dataset_id": "metal_silver_kag_coingecko",
     "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal",
@@ -12,8 +12,8 @@
       "details": {
         "z_score": 2.43,
         "percentile": 50.0,
-        "value": 108.29,
-        "rolling_mean_20d": 92.79560162353516,
+        "value": 108.22,
+        "rolling_mean_20d": 92.79210162353516,
         "reasoning": "Z-Score 2.43 >= 2.0"
       },
       "regime": {

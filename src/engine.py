@@ -130,6 +130,16 @@ def main(target_categories: list[str] = None):
         except Exception as e:
              print(f"snapshot: warn ({e})", file=sys.stderr)
 
+        # [NEW] Step 41: Run Pick-Outcome Correlator (Accountability)
+        from src.ops.pick_outcome_correlator import PickOutcomeCorrelator
+        try:
+            correlator = PickOutcomeCorrelator(Path("."))
+            correlator.run(run_ymd)
+            details_lines.append("pick_correlator: ok")
+            print("pick_correlator: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"pick_correlator: fail ({e})", file=sys.stderr)
+
         # 2. Run Gate Pipeline (Content Hook Logic)
         try:
             gate_pipeline_main(run_ymd)
