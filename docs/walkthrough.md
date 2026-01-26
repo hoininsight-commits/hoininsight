@@ -94,11 +94,25 @@ We introduced an aging and decay monitoring system for shadow candidates to prev
 - **Governance Hints**: Visual rules properly applied (warnings for stale topics, fading for expired ones).
 - **Tests**: `tests/test_shadow_aging.py` passed.
 
+## Step 37: Signal Watchlist (Input Monitoring)
+
+We transformed the Shadow Pool into an explicit Signal Watchlist, making it clear to the operator what specific data triggers the engine is waiting for.
+
+### Key Deliverables
+- **Watchlist Builder**: `src/ops/signal_watchlist.py` uses a fixed `WATCH_SIGNAL_ENUM` (e.g., `EARNINGS_RELEASE`, `ONCHAIN_CONFIRMATION`) to monitor shadow candidates.
+- **Global Monitoring Panel**: A new dashboard section, `GLOBAL SIGNAL WATCHLIST`, aggregates all pending signals across the shadow pool, providing high-level operational awareness.
+- **Signal-Specific Blocks**: Each shadow candidate card now includes a `SIGNAL WATCHLIST` block that details exactly which signals are missing and when the next recheck is scheduled.
+
+### Verification Evidence
+- **Enum Determinism**: All watch signals are mapped from a strict enum based on deterministic rules and source hints.
+- **Aging Preservation**: Shadow aging and decay status are correctly maintained alongside the new watchlist metadata.
+- **Tests**: `tests/test_signal_watchlist.py` passed with 4/4 assertions.
+
 ### [WORK CONFIRMATION]
-Step 36-1 — Aging enum defined
-Step 36-2 — Aging calculator implemented
-Step 36-3 — Shadow integration complete
-Step 36-4 — Dashboard rendering added
-Step 36-5 — Summary panel added
-Step 36-6 — Tests passing
+Step 37-1 — Watch signal enum defined
+Step 37-2 — Watchlist builder implemented
+Step 37-3 — Shadow integration complete
+Step 37-4 — Dashboard watchlist rendered
+Step 37-5 — Global panel added
+Step 37-6 — Tests passing
 Push — DONE (main)

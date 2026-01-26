@@ -47,6 +47,23 @@ class ShadowCandidateBuilder:
                 summary[state] += 1
         return summary
 
+    def _build_global_signal_watchlist(self, shadow_pool: List[Dict[str, Any]]) -> Dict[str, int]:
+        """Step 37: Aggregates watch signals for global awareness."""
+        summary = {
+            "NUMERIC_EVIDENCE_APPEAR": 0,
+            "SUPPORTING_ANOMALY_DETECTED": 0,
+            "POLICY_EVENT_TRIGGERED": 0,
+            "EARNINGS_RELEASE": 0,
+            "ONCHAIN_CONFIRMATION": 0,
+            "MACRO_THRESHOLD_CROSSED": 0
+        }
+        for c in shadow_pool:
+            signals = c.get("watch_signals", [])
+            for s in signals:
+                if s in summary:
+                    summary[s] += 1
+        return summary
+
     def _determine_impact_window(self, topic: Dict[str, Any], tags: List[str]) -> str:
         tags = tags or []
         risk_one = topic.get("risk_one", "")
@@ -132,8 +149,11 @@ class ShadowCandidateBuilder:
             # Load trigger map logic
             from src.ops.trigger_map import TriggerMapBuilder
             from src.ops.shadow_aging import ShadowAgingCalculator
+            from src.ops.signal_watchlist import SignalWatchlistBuilder
+            
             trigger_builder = TriggerMapBuilder()
             aging_calc = ShadowAgingCalculator()
+            watchlist_builder = SignalWatchlistBuilder()
             
             # Find first_seen_date (Lookback history)
             first_seen_date = self._find_first_seen_date(tid, ymd)
@@ -147,6 +167,16 @@ class ShadowCandidateBuilder:
             trigger_map = trigger_builder.build_trigger_map(shadow_context)
             aging_meta = aging_calc.calculate_aging(first_seen_date, ymd)
 
+            # Prepare candidate for watchlist builder
+            shadow_cand_data = {
+                "topic_id": tid,
+                "lane": shadow_context["lane"],
+                "impact_window": impact_window,
+                "trigger_map": trigger_map,
+                "aging": aging_meta
+            }
+            watchlist_data = watchlist_builder.build_watchlist(shadow_cand_data)
+
             shadow_pool.append({
                 "topic_id": tid,
                 "title": t.get("title", "Untitled"),
@@ -156,14 +186,16 @@ class ShadowCandidateBuilder:
                 "impact_window": impact_window,
                 "trigger_map": trigger_map,
                 "aging": aging_meta,
-                "first_seen_date": first_seen_date
+                "first_seen_date": first_seen_date,
+                "watch_signals": watchlist_data.get("watch_signals", [])
             })
 
         result = {
             "run_date": ymd,
             "count": len(shadow_pool),
             "candidates": shadow_pool,
-            "aging_summary": self._build_aging_summary(shadow_pool)
+            "aging_summary": self._build_aging_summary(shadow_pool),
+            "global_watchlist": self._build_global_signal_watchlist(shadow_pool)
         }
 
         output_path = self.base_dir / "data" / "ops" / "shadow_candidates.json"

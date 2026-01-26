@@ -443,8 +443,9 @@ class DecisionDashboard:
         # --- SHADOW CANDIDATES (Step 34) ---
         if len(ready_topics) < 3:
             shadow_data = data.get("shadow_pool", {"count": 0, "candidates": []})
-            # Step 36: Summary Panel
+            # Step 36 & 37: Summary Panels
             self._render_shadow_aging_summary(lines, shadow_data.get("aging_summary", {}))
+            self._render_global_signal_watchlist(lines, shadow_data.get("global_watchlist", {}))
             self._render_shadow_candidates(lines, shadow_data)
         
         # --- SECTION 2: WATCHLIST - NOT YET (HOLD) ---
@@ -606,7 +607,24 @@ class DecisionDashboard:
                 elif state == "DECAYING": state_icon = " ⚠️ [Consider drop]"
                 elif state == "EXPIRED": state_icon = " 🧊 [Likely obsolete]"
                 lines.append(f"    - **Shadow Age**: {state}{state_icon} ({days} days)")
+            
+            # Step 37: Signal Watchlist Rendering
+            signals = c.get("watch_signals", [])
+            if signals:
+                lines.append("\n    > **SIGNAL WATCHLIST (Input Monitoring)**")
+                lines.append("    - ⏳ Waiting for:")
+                for s in signals:
+                    lines.append(f"      - {s}")
+                lines.append(f"    - Recheck: {c.get('impact_window', 'MID')}")
             lines.append("")
+
+    def _render_global_signal_watchlist(self, lines: List[str], g_watchlist: Dict[str, int]):
+        """Renders Step 37 Global Signal Watchlist Panel."""
+        if not g_watchlist or not any(g_watchlist.values()): return
+        lines.append("\n#### 🔭 GLOBAL SIGNAL WATCHLIST (Waiting For)")
+        for signal, count in g_watchlist.items():
+            if count > 0:
+                lines.append(f"- **{signal}**: {count} topics")
 
     def _render_shadow_aging_summary(self, lines: List[str], summary: Dict[str, int]):
         """Renders Step 36 Shadow Aging Summary Panel."""
