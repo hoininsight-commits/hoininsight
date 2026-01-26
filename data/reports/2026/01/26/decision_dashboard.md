@@ -44,6 +44,9 @@
 - **Evidence**: 1 items
 
 
+#### 📨 SIGNAL ARRIVAL TODAY
+- **NUMERIC_EVIDENCE_APPEAR**: Arrived (0 shadows matched)
+
 ### 🔘 SHADOW CANDIDATES (Preparation Pool)
 > **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.
 _Shadow pool empty — no promotable topics detected._
