@@ -2,7 +2,7 @@
   "run_date": "2026-01-26",
   "topics": [
     {
-      "topic_id": "gate_1ecd85b838",
+      "topic_id": "gate_bfbed21bfc",
       "title": "지수 상승 속 섹터 하락의 이유",
       "lane": "ANOMALY",
       "status": "READY",
@@ -11,6 +11,10 @@
       "selection_rationale": null,
       "fact_anchors": [],
       "evidence_refs": [],
+      "human_label_today": null,
+      "overlay_bucket_today": null,
+      "mismatch_flag": false,
+      "calibration_review_link": "data/ops/calibration/2026/01/26/calibration_review_today.md",
       "script_assets": {
         "script_md_path": null,
         "speak_bundle_md_path": null,

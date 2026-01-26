@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-26T13:28:27Z
-- finished_utc: 2026-01-26T13:29:00Z
+- started_utc: 2026-01-26T13:40:55Z
+- finished_utc: 2026-01-26T13:41:29Z
 - status: SUCCESS
 
 ## details
@@ -20,12 +20,13 @@ snapshot: ok (data/reports/2026/01/26/data_snapshot.md)
 pick_correlator: ok
 topic_gate: ok
 topic_view: ok
+human_pref_overlay: ok
+calibration_report: ok
 topic_quality_review: ok
 speakability_gate: ok
 speak_bundle: ok
 script_skeletons: ok
 topic_console: ok
-decision_dashboard: ok | data/reports/2026/01/26/decision_dashboard.md
 decision: ok
 report: ok | data/reports/2026/01/26/daily_brief.md
 checks:

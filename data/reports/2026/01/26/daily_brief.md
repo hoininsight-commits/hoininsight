@@ -6,7 +6,7 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: GOLD:FLAT(0.00)[png](data/reports/2026/01/26/charts/metal_gold_paxg_coingecko.png) | SILVER:FLAT(0.00)[png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png)
+Drivers: SILVER:FLAT(0.00)[png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png) | SILVER:FLAT(0.00)[png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png)
 Meta topics: [json](data/meta_topics/2026/01/26/meta_topics.json)
 This regime has persisted for 12 consecutive days since 2026-01-14.
 
@@ -21,14 +21,13 @@ Historical context:
 
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
-| 1 | GOLD | data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/metal_gold_paxg_coingecko.png) | [json](data/topics/2026/01/26/metal_gold_paxg_coingecko.json) | [json](data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json) |
+| 1 | SILVER | data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/01/26/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json) |
 | 2 | SILVER | data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/01/26/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json) |
-| 3 | SILVER | data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/01/26/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/01/26/inflation_cpi_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/inflation_cpi_fred.png) | [json](data/topics/2026/01/26/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/26/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/01/26/inflation_pce_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/inflation_pce_fred.png) | [json](data/topics/2026/01/26/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/26/inflation_pce_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/01/26/inflation_cpi_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/inflation_cpi_fred.png) | [json](data/topics/2026/01/26/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/26/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/01/26/inflation_pce_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/inflation_pce_fred.png) | [json](data/topics/2026/01/26/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/26/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/01/26/liquidity_m2_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/26/charts/liquidity_m2_fred.png) | [json](data/topics/2026/01/26/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/01/26/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
-- [HIGH] GOLD: data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] SILVER: data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] SILVER: data/features/anomalies/2026/01/26/metal_silver_kag_coingecko.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] CPI_USA: data/features/anomalies/2026/01/26/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -41,6 +40,7 @@ Historical context:
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/26/struct_dart_disposal.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] KOR_CPI: data/features/anomalies/2026/01/26/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/26/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
+- [MED] GOLD: data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] NASDAQ: data/features/anomalies/2026/01/26/index_nasdaq_fred.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] BTCUSD: data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/26/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -69,8 +69,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.01배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Topic:** [Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.57배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown] Hybrid-driven
