@@ -1074,47 +1074,6 @@ class DecisionDashboard:
         lines.append("---")
         return "\n".join(lines)
 
-    def _render_topic_view_panel(self, lines: List[str], topic_view_data: Dict[str, Any]):
-        """Renders Step 52 Today Topic View Panel."""
-        lines.append("\n#### 👁️ TODAY TOPIC VIEW")
-        
-        if not topic_view_data:
-            lines.append("- _No topic view data available._")
-            return
-            
-        # Overall Summary
-        lines.append(f"- **Total Topics**: {topic_view_data.get('total_topics', 0)}")
-        lines.append(f"- **New Topics**: {topic_view_data.get('new_topics', 0)}")
-        lines.append(f"- **Revisit Topics**: {topic_view_data.get('revisit_topics', 0)}")
-        lines.append(f"- **Regime Update Topics**: {topic_view_data.get('regime_update_topics', 0)}")
-        
-        # Status Breakdown
-        lines.append("\n##### Status Breakdown")
-        status_breakdown = topic_view_data.get('status_breakdown', {})
-        if status_breakdown:
-            for status, count in status_breakdown.items():
-                lines.append(f"- **{status}**: {count}")
-        else:
-            lines.append("- _No status breakdown available._")
-            
-        # Top 3 New Topics
-        lines.append("\n##### Top 3 New Topics")
-        top_new = topic_view_data.get('top_new_topics', [])
-        if top_new:
-            for i, topic in enumerate(top_new[:3]):
-                lines.append(f"- {i+1}. {topic.get('title', 'Untitled')} (ID: {topic.get('topic_id', 'N/A')})")
-        else:
-            lines.append("- _No top new topics available._")
-            
-        # Top 3 Revisit Topics
-        lines.append("\n##### Top 3 Revisit Topics")
-        top_revisit = topic_view_data.get('top_revisit_topics', [])
-        if top_revisit:
-            for i, topic in enumerate(top_revisit[:3]):
-                lines.append(f"- {i+1}. {topic.get('title', 'Untitled')} (ID: {topic.get('topic_id', 'N/A')})")
-        else:
-            lines.append("- _No top revisit topics available._")
-
     def _render_final_view(self, data: Dict[str, Any]) -> str:
         """Step 23: Final Human View - Decision Focused."""
         cards = data.get("cards", [])

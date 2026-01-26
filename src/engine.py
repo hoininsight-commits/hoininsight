@@ -304,6 +304,15 @@ def main(target_categories: list[str] = None):
         print(f"[VERIFY][SKIP] Could not verify runtime: {e}", file=sys.stderr)
     # ----------------------------------------
 
+    # [Step 52] Topic View Panel (Read-only consolidation)
+    try:
+        from src.ops.topic_view_builder import TopicViewBuilder
+        tvb = TopicViewBuilder(Path("."))
+        tvb.build_view()
+        details_lines.append("topic_view: ok")
+    except Exception as e:
+        details_lines.append(f"topic_view: error ({e})")
+
     finished = _utc_now_stamp()
     report_dir = _date_path_standardized()
     result = RunResult(

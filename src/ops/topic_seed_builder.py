@@ -36,7 +36,11 @@ class TopicSeedBuilder:
             base_fact = fact_pool.pop(0)
             base_frames = {f["frame"] for f in base_fact.get("structural_frames", [])}
             base_entities = set(base_fact.get("entities", []))
-            base_date = datetime.strptime(base_fact.get("published_at"), "%Y-%m-%d")
+            base_date_raw = base_fact.get("published_at") or datetime.now().strftime("%Y-%m-%d")
+            try:
+                base_date = datetime.strptime(base_date_raw, "%Y-%m-%d")
+            except:
+                base_date = datetime.now()
             
             cluster_members = [base_fact]
             remaining_pool = []
@@ -44,7 +48,11 @@ class TopicSeedBuilder:
             for f in fact_pool:
                 f_frames = {fr["frame"] for fr in f.get("structural_frames", [])}
                 f_entities = set(f.get("entities", []))
-                f_date = datetime.strptime(f.get("published_at"), "%Y-%m-%d")
+                f_date_raw = f.get("published_at") or datetime.now().strftime("%Y-%m-%d")
+                try:
+                    f_date = datetime.strptime(f_date_raw, "%Y-%m-%d")
+                except:
+                    f_date = datetime.now()
                 
                 # Clustering Rules:
                 # 1. Share at least one frame
@@ -82,8 +90,18 @@ class TopicSeedBuilder:
         fact_ids = [m["fact_id"] for m in members]
         
         # Determine first_seen
-        dates = [datetime.strptime(m["published_at"], "%Y-%m-%d") for m in members]
-        first_seen = min(dates).strftime("%Y-%m-%d")
+        parsed_dates = []
+        for m in members:
+            d_raw = m.get("published_at")
+            if d_raw:
+                try:
+                    parsed_dates.append(datetime.strptime(d_raw, "%Y-%m-%d"))
+                except: pass
+        
+        if not parsed_dates:
+            first_seen = datetime.now().strftime("%Y-%m-%d")
+        else:
+            first_seen = min(parsed_dates).strftime("%Y-%m-%d")
         
         # Generate Seed Summary (Neutral)
         # One-sentence neutral structural description
