@@ -443,8 +443,9 @@ class DecisionDashboard:
         # --- SHADOW CANDIDATES (Step 34) ---
         if len(ready_topics) < 3:
             shadow_data = data.get("shadow_pool", {"count": 0, "candidates": []})
-            # Step 36, 37, 38: Summary Panels
+            # Step 36, 37, 38, 39: Summary Panels
             self._render_shadow_aging_summary(lines, shadow_data.get("aging_summary", {}))
+            self._render_readiness_summary(lines, shadow_data.get("readiness_summary", {}))
             self._render_signal_arrival_panel(lines, shadow_data.get("signal_arrival", {}), shadow_data.get("candidates", []))
             self._render_global_signal_watchlist(lines, shadow_data.get("global_watchlist", {}))
             self._render_shadow_candidates(lines, shadow_data)
@@ -620,7 +621,40 @@ class DecisionDashboard:
                     lines.append(f"    - ✅ Arrived: {s}")
                 for s in unmatched:
                     lines.append(f"    - ⏳ Still waiting: {s}")
+            
+            # Step 39: Promotion Readiness Rendering
+            rd = c.get("readiness", {})
+            if rd:
+                bucket = rd.get("readiness_bucket")
+                matched = rd.get("matched_count", 0)
+                required = rd.get("required_count", 0)
+                
+                bucket_icon = "⚪"
+                if bucket == "READY_TO_PROMOTE": bucket_icon = "✅"
+                elif bucket == "NEARLY_READY": bucket_icon = "🟡"
+                elif bucket == "FAR": bucket_icon = "💤"
+                
+                lines.append(f"\n    > **PROMOTION READINESS**")
+                lines.append(f"    - **Bucket**: {bucket_icon} {bucket}")
+                lines.append(f"    - **Progress**: {matched} / {required} signals")
+                
+                missing = rd.get("missing_signals", [])
+                if missing:
+                    lines.append(f"    - **Missing**: {', '.join(missing)}")
+                
+                hint = rd.get("operator_hint")
+                if hint:
+                    lines.append(f"    - *{hint}*")
             lines.append("")
+
+    def _render_readiness_summary(self, lines: List[str], summary: Dict[str, int]):
+        """Renders Step 39 Promotion Readiness Summary Panel."""
+        if not summary or not any(summary.values()): return
+        lines.append("\n#### 📊 PROMOTION READINESS SUMMARY")
+        lines.append(f"- **READY_TO_PROMOTE**: {summary.get('READY_TO_PROMOTE', 0)} ✅")
+        lines.append(f"- **NEARLY_READY**: {summary.get('NEARLY_READY', 0)} 🟡")
+        lines.append(f"- **IN_PROGRESS**: {summary.get('IN_PROGRESS', 0)} ⚪")
+        lines.append(f"- **FAR**: {summary.get('FAR', 0)} 💤")
 
     def _render_signal_arrival_panel(self, lines: List[str], arrival_data: Dict[str, Any], candidates: List[Dict]):
         """Renders Step 38 Global Signal Arrival Panel."""

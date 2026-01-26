@@ -64,6 +64,20 @@ class ShadowCandidateBuilder:
                     summary[s] += 1
         return summary
 
+    def _build_readiness_summary(self, shadow_pool: List[Dict[str, Any]]) -> Dict[str, int]:
+        """Step 39: Aggregates readiness buckets for global scoreboard."""
+        summary = {
+            "READY_TO_PROMOTE": 0,
+            "NEARLY_READY": 0,
+            "IN_PROGRESS": 0,
+            "FAR": 0
+        }
+        for c in shadow_pool:
+            bucket = c.get("readiness", {}).get("readiness_bucket")
+            if bucket in summary:
+                summary[bucket] += 1
+        return summary
+
     def _determine_impact_window(self, topic: Dict[str, Any], tags: List[str]) -> str:
         tags = tags or []
         risk_one = topic.get("risk_one", "")
@@ -192,9 +206,22 @@ class ShadowCandidateBuilder:
 
         # Step 38: Signal Arrival Matching
         from src.ops.signal_arrival_matcher import SignalArrivalMatcher
+        from src.ops.promotion_readiness import PromotionReadinessCalculator
+        
         matcher = SignalArrivalMatcher(self.base_dir)
         arrival_data = matcher.detect_arrivals(ymd)
         shadow_pool = matcher.match_to_shadows(shadow_pool, arrival_data["arrived_signals"])
+        
+        # Step 39: Promotion Readiness
+        readiness_calc = PromotionReadinessCalculator()
+        for c in shadow_pool:
+            required = c.get("watch_signals", [])
+            matched = c.get("signal_status", {}).get("matched_signals", [])
+            readiness_data = readiness_calc.calculate_readiness(required, matched)
+            readiness_data["operator_hint"] = readiness_calc.get_operator_hint(
+                readiness_data["readiness_bucket"], readiness_data["missing_signals"]
+            )
+            c["readiness"] = readiness_data
 
         result = {
             "run_date": ymd,
@@ -202,7 +229,8 @@ class ShadowCandidateBuilder:
             "candidates": shadow_pool,
             "aging_summary": self._build_aging_summary(shadow_pool),
             "global_watchlist": self._build_global_signal_watchlist(shadow_pool),
-            "signal_arrival": arrival_data
+            "signal_arrival": arrival_data,
+            "readiness_summary": self._build_readiness_summary(shadow_pool)
         }
 
         output_path = self.base_dir / "data" / "ops" / "shadow_candidates.json"
