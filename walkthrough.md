@@ -204,26 +204,27 @@ We implemented a "Conditional Auto-Approval" gate to streamline operations by au
 - **UI Logic**: Dashboard correctly renders reason chips and the locked state for auto-approved candidates.
 - **Tests**: 5/5 tests passed.
 
-## Step 45: Speak Pack Export Bundle
+## Step 46: Production Format Router
 
-We implemented the "Speak Pack Export Bundle" to provide a production-ready package for all auto-approved topics. This streamlines the handover from intelligence to content production.
+We implemented the "Production Format Router" to automatically determine the most effective content format for each intelligence topic, optimizing the handover to production.
 
 ### Key Deliverables
-- **Bundle Exporter**: `src/ops/speak_bundle_exporter.py` automatically aggregates one-liners, numeric evidence, and references into standardized JSON and Markdown formats.
-- **Production-Ready Artifacts**: Generates daily `speak_bundle.json` for technical automation and `speak_bundle.md` for human-friendly copy/pasting.
-- **Asset Integrity Checks**: Every bundle includes a `missing_assets` report to flag any missing metadata (one-liners or evidence) without blocking the technical export.
-- **Dashboard Linking**: Added a direct 📦 **SPEAK BUNDLE** link to the Decision Dashboard for immediate access to the daily production package.
+- **Format Router**: `src/ops/production_format_router.py` uses deterministic rules based on narration level, impact, and evidence density to assign `SHORT_ONLY`, `LONG_ONLY`, or `BOTH` formats.
+- **Enriched Bundles**: Every speak bundle now include specific production instructions, detailing the recommended format and the underlying rationale.
+- **Visual Badges**: The Decision Dashboard now displays immediate format indicators (🎬 SHORT, 🎥 LONG, 🎬+🎥 BOTH) for all auto-approved topics.
+- **Priority Logic**: The router enforces a strict hierarchy (LONG > BOTH > SHORT) when multiple criteria are met, ensuring high-value topics get the depth they deserve.
 
 ### Verification Evidence
-- **Bundle Accuracy**: Verified that only `auto-approved` topics are exported and all metadata fields are correctly mapped via `tests/test_speak_bundle_exporter.py`.
-- **Formatting**: Confirmed that Markdown bundles are cleanly formatted and handle edge cases like missing numeric evidence gracefully.
-- **Asset Flagging**: Successfully verified that missing Speak Pack components are identified in the export report.
-- **Tests**: 3/3 tests passed.
+- **Routing Accuracy**: Verified that each format condition set (Impact, Evidence, Level) maps correctly and that priority overrides work as intended via `tests/test_production_format_router.py`.
+- **Integrity**: Confirmed that the router does not mutate existing topic content and that bundle exports remain valid with the additional metadata.
+- **UI Rendering**: Dashboard badges correctly reflect the router's deterministic output based on topic priority scores.
+- **Tests**: 6/6 tests passed.
 
 ### [WORK CONFIRMATION]
-Step 45-1 — Bundle inputs defined (auto_approved only)
-Step 45-2 — Bundle outputs generated (json+md)
-Step 45-3 — OPS wiring added
-Step 45-4 — Manifest + dashboard linking done
-Step 45-5 — Tests passing
+Step 46-1 — Format enum defined
+Step 46-2 — Routing rules implemented
+Step 46-3 — Router integrated with bundle
+Step 46-4 — Bundle md updated
+Step 46-5 — Dashboard badges rendered
+Step 46-6 — Tests passing
 Push — DONE (main)
