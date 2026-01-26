@@ -375,6 +375,17 @@ class DecisionDashboard:
         sat_stats = data.get("saturation_summary")
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
+
+        # Step 44: Auto-Approval Panel (NEW)
+        aa_path = self.base_dir / "data" / "ops" / "auto_approved_today.json"
+        auto_approved_ids = []
+        if aa_path.exists():
+            try:
+                aa_data = json.loads(aa_path.read_text(encoding="utf-8"))
+                self._render_auto_approved_panel(lines, aa_data)
+                auto_approved_ids = [a["topic_id"] for a in aa_data.get("auto_approved", [])]
+            except:
+                pass
         
         # Step 43: Auto-Priority Panel (NEW)
         ap_path = self.base_dir / "data" / "ops" / "auto_priority_today.json"
@@ -442,7 +453,7 @@ class DecisionDashboard:
                 lines.append("_No ANOMALY-DRIVEN signals today_")
             else:
                 for c in anomaly_lane[:5]: 
-                    lines.append(self._render_ready_card(c, decisions_map))
+                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids))
                 if len(anomaly_lane) > 5:
                     lines.append("\n**Additional Anomaly Signals (Optional)**")
                     for c in anomaly_lane[5:]:
@@ -455,7 +466,7 @@ class DecisionDashboard:
                 lines.append("_No FACT-DRIVEN topics today_")
             else:
                 for c in fact_lane[:5]:
-                    lines.append(self._render_ready_card(c, decisions_map))
+                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids))
                 if len(fact_lane) > 5:
                     lines.append("\n**Additional Fact Topics (Optional)**")
                     for c in fact_lane[5:]:
@@ -741,13 +752,17 @@ class DecisionDashboard:
         # Default DISCOURAGED
         return "DISCOURAGED", "최근 반복 소비된 서사로 신규 정보 없음"
 
-    def _render_ready_card(self, c: Dict, decisions_map: Dict[str, Dict]) -> str:
+    def _render_ready_card(self, c: Dict, decisions_map: Dict[str, Dict], auto_approved_ids: List[str] = None) -> str:
         """Renders the detailed READY card with Speak Pack."""
         tid = c.get('topic_id')
         lines = []
         is_fact = c.get('is_fact_driven')
         title_suffix = " (FACT-DRIVEN (Rule v1))" if is_fact else ""
-        lines.append(f"\n### ✅ {c['title']}{title_suffix} {self._get_operator_badge(tid, decisions_map)}") 
+        
+        is_auto = auto_approved_ids and tid in auto_approved_ids
+        aa_badge = " | 🤖 **AUTO-APPROVED** 🔒" if is_auto else ""
+        
+        lines.append(f"\n### ✅ {c['title']}{title_suffix} {self._get_operator_badge(tid, decisions_map)}{aa_badge}") 
         
         # Step 40: READY Action Bar
         self._render_ready_action_bar(lines, tid, c['title'])
@@ -1792,3 +1807,18 @@ class DecisionDashboard:
         from src.ops.auto_prioritizer import AutoPrioritizer
         prioritizer = AutoPrioritizer(self.base_dir)
         return prioritizer.run(ymd, ready_candidates, shadow_pool.get("candidates", []))
+
+    def _render_auto_approved_panel(self, lines: List[str], data: Dict[str, Any]):
+        """Step 44: Daily Auto-Approval Summary Panel."""
+        approved = data.get("auto_approved", [])
+        lines.append("\n#### 🤖 AUTO-APPROVED TOPICS")
+        
+        if not approved:
+            lines.append("- _No topics met strict auto-approval conditions today._")
+            return
+            
+        for a in approved:
+            reasons = ", ".join([f"`{r}`" for r in a.get("approval_reason", [])])
+            lines.append(f"- **{a['title']}** (🟢 **AUTO-APPROVED** 🔒 | Score: {a['priority_score']})")
+            if reasons:
+                lines.append(f"   - *Reasons*: {reasons}")
