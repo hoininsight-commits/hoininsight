@@ -115,11 +115,13 @@ class DecisionDashboard:
 
         # [Step 47.5] Load FACT-FIRST Shadow Pool
         fact_first_shadows = []
+        topic_seeds = []
         ff_path = self.base_dir / "data" / "topics" / "shadow_pool" / ymd.replace("-", "/") / "fact_first.json"
         if ff_path.exists():
             try:
                 ff_data = json.loads(ff_path.read_text(encoding="utf-8"))
                 fact_first_shadows = ff_data.get("topics", [])
+                topic_seeds = ff_data.get("topic_seeds", [])
             except Exception as e:
                 print(f"[Dashboard] Error parsing fact_first shadows: {e}")
 
@@ -344,7 +346,8 @@ class DecisionDashboard:
             "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool()),
             "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md",
             "fact_first_shadows": fact_first_shadows,
-            "fact_anchors": fact_anchors
+            "fact_anchors": fact_anchors,
+            "topic_seeds": topic_seeds
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -399,6 +402,23 @@ class DecisionDashboard:
         for fact_text, frame_obj in samples:
             lines.append(f"  - `{fact_text}` → **{frame_obj['frame']}**")
             lines.append(f"    - *{frame_obj['reason']}*")
+        lines.append("")
+
+    def _render_topic_seeds_panel(self, lines: List[str], seeds: List[Dict[str, Any]]):
+        """Renders Step 50 Topic Seeds Panel (Read-only)."""
+        if not seeds:
+            return
+            
+        lines.append("\n### 🌱 TOPIC SEEDS (STRUCTURAL)")
+        lines.append("> **Topic Seeds — Pre-topics awaiting maturation**")
+        lines.append("")
+        lines.append("| Summary | Structural Frames | Facts | First Seen |")
+        lines.append("|---|---|---|---|")
+        
+        for s in seeds:
+            frames_str = ", ".join(s.get("structural_frames", []))
+            fact_cnt = len(s.get("supporting_facts", []))
+            lines.append(f"| {s.get('seed_summary')} | {frames_str} | {fact_cnt} | {s.get('first_seen')} |")
         lines.append("")
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
@@ -509,6 +529,9 @@ class DecisionDashboard:
 
         # [Step 49] STRUCTURAL FRAMES (FROM FACTS)
         self._render_structural_frames_panel(lines, data.get("fact_first_shadows", []))
+
+        # [Step 50] TOPIC SEEDS (STRUCTURAL)
+        self._render_topic_seeds_panel(lines, data.get("topic_seeds", []))
 
         # [Step 47.5] FACT-FIRST SHADOW TOPICS
         ff_shadows = data.get("fact_first_shadows", [])

@@ -75,7 +75,10 @@ class DashboardManifest:
         if fa_file.exists():
             fact_anchors_path = str(fa_file.relative_to(self.base_dir))
 
-        # Flattened Manifest Structure (Step 28-3)
+        # [Step 50] Index Topic Seeds
+        # Note: Ingress saves seeds inside fact_first.json for the dashboard
+        # but also saves a global copy to data/ops/topic_seeds.json
+        topic_seeds_path = "data/ops/topic_seeds.json"
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
@@ -85,6 +88,7 @@ class DashboardManifest:
             "script_md": script_path,
             "fact_first_shadow_json": fact_first_path,
             "fact_anchors_json": fact_anchors_path,
+            "topic_seeds_json": topic_seeds_path,
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

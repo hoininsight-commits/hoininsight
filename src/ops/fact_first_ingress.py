@@ -153,17 +153,27 @@ class FactFirstIngress:
         return final
 
     def _save_output(self, topics: List[Dict[str, Any]], ymd_path: str):
+        # [Step 50] Build Topic Seeds before saving
+        try:
+            from src.ops.topic_seed_builder import TopicSeedBuilder
+            builder = TopicSeedBuilder(self.base_dir)
+            seeds = builder.build_seeds(topics)
+        except Exception as e:
+            print(f"[FactFirst] SeedBuilder error: {e}")
+            seeds = []
+
         out_dir = self.output_root / ymd_path
         out_dir.mkdir(parents=True, exist_ok=True)
         out_file = out_dir / "fact_first.json"
         
         payload = {
             "run_ts": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "topics": topics
+            "topics": topics,
+            "topic_seeds": seeds
         }
         
         out_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
-        print(f"[FactFirst] Saved {len(topics)} shadow topics to {out_file}")
+        print(f"[FactFirst] Saved {len(topics)} shadow topics and {len(seeds)} seeds to {out_file}")
 
 if __name__ == "__main__":
     # Test run
