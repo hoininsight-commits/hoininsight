@@ -63,6 +63,8 @@ class DashboardManifest:
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",
+            "speak_bundle_md": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.md",
+            "speak_bundle_json": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.json",
             "missing": missing
         }
         

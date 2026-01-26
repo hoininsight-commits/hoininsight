@@ -321,7 +321,8 @@ class DecisionDashboard:
             },
             "shadow_pool": self._load_shadow_pool(),
             "post_mortem_summary": pm_stats,
-            "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool())
+            "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool()),
+            "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md"
         }
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
@@ -1813,6 +1814,10 @@ class DecisionDashboard:
         approved = data.get("auto_approved", [])
         lines.append("\n#### 🤖 AUTO-APPROVED TOPICS")
         
+        bundle_md = data.get("bundle_md")
+        if bundle_md:
+            lines.append(f"> 📦 **SPEAK BUNDLE**: [{Path(bundle_md).name}](file:///{self.base_dir / bundle_md})")
+
         if not approved:
             lines.append("- _No topics met strict auto-approval conditions today._")
             return

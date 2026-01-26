@@ -171,8 +171,18 @@ def main(target_categories: list[str] = None):
             op_decisions = op_log.get_latest_decisions_map(run_ymd)
             
             aa_gate = AutoApprovalGate(Path("."))
-            aa_gate.run(run_ymd, ready_topics, ap_data, op_decisions)
+            aa_data = aa_gate.run(run_ymd, ready_topics, ap_data, op_decisions)
             
+            # [NEW] Step 45: Run Speak Bundle Exporter
+            from src.ops.speak_bundle_exporter import SpeakBundleExporter
+            try:
+                exporter = SpeakBundleExporter(Path("."))
+                exporter.run(run_ymd, dd_data.get("cards", []), aa_data)
+                details_lines.append("speak_bundle: ok")
+                print("speak_bundle: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"speak_bundle: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()

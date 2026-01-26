@@ -204,11 +204,26 @@ We implemented a "Conditional Auto-Approval" gate to streamline operations by au
 - **UI Logic**: Dashboard correctly renders reason chips and the locked state for auto-approved candidates.
 - **Tests**: 5/5 tests passed.
 
+## Step 45: Speak Pack Export Bundle
+
+We implemented the "Speak Pack Export Bundle" to provide a production-ready package for all auto-approved topics. This streamlines the handover from intelligence to content production.
+
+### Key Deliverables
+- **Bundle Exporter**: `src/ops/speak_bundle_exporter.py` automatically aggregates one-liners, numeric evidence, and references into standardized JSON and Markdown formats.
+- **Production-Ready Artifacts**: Generates daily `speak_bundle.json` for technical automation and `speak_bundle.md` for human-friendly copy/pasting.
+- **Asset Integrity Checks**: Every bundle includes a `missing_assets` report to flag any missing metadata (one-liners or evidence) without blocking the technical export.
+- **Dashboard Linking**: Added a direct 📦 **SPEAK BUNDLE** link to the Decision Dashboard for immediate access to the daily production package.
+
+### Verification Evidence
+- **Bundle Accuracy**: Verified that only `auto-approved` topics are exported and all metadata fields are correctly mapped via `tests/test_speak_bundle_exporter.py`.
+- **Formatting**: Confirmed that Markdown bundles are cleanly formatted and handle edge cases like missing numeric evidence gracefully.
+- **Asset Flagging**: Successfully verified that missing Speak Pack components are identified in the export report.
+- **Tests**: 3/3 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 44-1 — Eligibility rules enforced
-Step 44-2 — Auto-approved JSON generated
-Step 44-3 — Dashboard section rendered
-Step 44-4 — Human override wired
-Step 44-5 — OPS wiring added
-Step 44-6 — Tests passing
+Step 45-1 — Bundle inputs defined (auto_approved only)
+Step 45-2 — Bundle outputs generated (json+md)
+Step 45-3 — OPS wiring added
+Step 45-4 — Manifest + dashboard linking done
+Step 45-5 — Tests passing
 Push — DONE (main)
