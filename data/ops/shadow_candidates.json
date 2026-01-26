@@ -15,5 +15,15 @@
     "EARNINGS_RELEASE": 0,
     "ONCHAIN_CONFIRMATION": 0,
     "MACRO_THRESHOLD_CROSSED": 0
+  },
+  "signal_arrival": {
+    "arrived_signals": [
+      "NUMERIC_EVIDENCE_APPEAR"
+    ],
+    "signal_sources": {
+      "NUMERIC_EVIDENCE_APPEAR": [
+        "data/reports/2026/01/26/daily_snapshot.json"
+      ]
+    }
   }
 }

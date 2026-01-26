@@ -190,12 +190,19 @@ class ShadowCandidateBuilder:
                 "watch_signals": watchlist_data.get("watch_signals", [])
             })
 
+        # Step 38: Signal Arrival Matching
+        from src.ops.signal_arrival_matcher import SignalArrivalMatcher
+        matcher = SignalArrivalMatcher(self.base_dir)
+        arrival_data = matcher.detect_arrivals(ymd)
+        shadow_pool = matcher.match_to_shadows(shadow_pool, arrival_data["arrived_signals"])
+
         result = {
             "run_date": ymd,
             "count": len(shadow_pool),
             "candidates": shadow_pool,
             "aging_summary": self._build_aging_summary(shadow_pool),
-            "global_watchlist": self._build_global_signal_watchlist(shadow_pool)
+            "global_watchlist": self._build_global_signal_watchlist(shadow_pool),
+            "signal_arrival": arrival_data
         }
 
         output_path = self.base_dir / "data" / "ops" / "shadow_candidates.json"

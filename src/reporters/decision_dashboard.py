@@ -443,8 +443,9 @@ class DecisionDashboard:
         # --- SHADOW CANDIDATES (Step 34) ---
         if len(ready_topics) < 3:
             shadow_data = data.get("shadow_pool", {"count": 0, "candidates": []})
-            # Step 36 & 37: Summary Panels
+            # Step 36, 37, 38: Summary Panels
             self._render_shadow_aging_summary(lines, shadow_data.get("aging_summary", {}))
+            self._render_signal_arrival_panel(lines, shadow_data.get("signal_arrival", {}), shadow_data.get("candidates", []))
             self._render_global_signal_watchlist(lines, shadow_data.get("global_watchlist", {}))
             self._render_shadow_candidates(lines, shadow_data)
         
@@ -608,15 +609,32 @@ class DecisionDashboard:
                 elif state == "EXPIRED": state_icon = " 🧊 [Likely obsolete]"
                 lines.append(f"    - **Shadow Age**: {state}{state_icon} ({days} days)")
             
-            # Step 37: Signal Watchlist Rendering
-            signals = c.get("watch_signals", [])
-            if signals:
-                lines.append("\n    > **SIGNAL WATCHLIST (Input Monitoring)**")
-                lines.append("    - ⏳ Waiting for:")
-                for s in signals:
-                    lines.append(f"      - {s}")
-                lines.append(f"    - Recheck: {c.get('impact_window', 'MID')}")
+            # Step 38: Signal Status Rendering
+            s_status = c.get("signal_status", {})
+            matched = s_status.get("matched_signals", [])
+            unmatched = s_status.get("unmatched_signals", [])
+            
+            if matched or unmatched:
+                lines.append("\n    > **SIGNAL STATUS**")
+                for s in matched:
+                    lines.append(f"    - ✅ Arrived: {s}")
+                for s in unmatched:
+                    lines.append(f"    - ⏳ Still waiting: {s}")
             lines.append("")
+
+    def _render_signal_arrival_panel(self, lines: List[str], arrival_data: Dict[str, Any], candidates: List[Dict]):
+        """Renders Step 38 Global Signal Arrival Panel."""
+        arrived = arrival_data.get("arrived_signals", [])
+        lines.append("\n#### 📨 SIGNAL ARRIVAL TODAY")
+        
+        if not arrived:
+            lines.append("- _No monitored signals arrived today._")
+            return
+            
+        for s in arrived:
+            # Count how many shadows matched
+            match_cnt = sum(1 for c in candidates if s in c.get("signal_status", {}).get("matched_signals", []))
+            lines.append(f"- **{s}**: Arrived ({match_cnt} shadows matched)")
 
     def _render_global_signal_watchlist(self, lines: List[str], g_watchlist: Dict[str, int]):
         """Renders Step 37 Global Signal Watchlist Panel."""

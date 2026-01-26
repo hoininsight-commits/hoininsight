@@ -108,11 +108,27 @@ We transformed the Shadow Pool into an explicit Signal Watchlist, making it clea
 - **Aging Preservation**: Shadow aging and decay status are correctly maintained alongside the new watchlist metadata.
 - **Tests**: `tests/test_signal_watchlist.py` passed with 4/4 assertions.
 
+## Step 38: Signal Arrival ↔ Shadow Matching
+
+We connected the shadow monitoring watchlist with the actual pipeline outputs, allowing the system to automatically detect when a "waiting-for" signal has actually arrived.
+
+### Key Deliverables
+- **Signal Arrival Matcher**: `src/ops/signal_arrival_matcher.py` scans today's artifacts (e.g., `events.json`, `daily_snapshot.json`) to detect signal arrivals (e.g., `EARNINGS_RELEASE`, `NUMERIC_EVIDENCE_APPEAR`).
+- **Matching Intelligence**: The shadow builder now automatically compares watchlists against arrived signals, attaching clear match status to each candidate.
+- **Signal Status UI**: Shadow cards now feature a `SIGNAL STATUS` block with icons (✅ Arrived / ⏳ Still waiting).
+- **Global Arrival Panel**: A new `SIGNAL ARRIVAL TODAY` panel provides a high-level summary of which monitored signals were satisfied today.
+
+### Verification Evidence
+- **Source Integrity**: Arrivals are triggered only by explicit artifact presence or content (e.g., searching for "earnings" in events).
+- **Matching Determinism**: Verified that shadow candidates correctly reflect their specific match status via `tests/test_signal_arrival_matcher.py`.
+- **No Promotion**: Confirmed that signal arrival does NOT auto-promote topics to READY, maintaining human-in-the-loop control.
+- **Tests**: 3/3 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 37-1 — Watch signal enum defined
-Step 37-2 — Watchlist builder implemented
-Step 37-3 — Shadow integration complete
-Step 37-4 — Dashboard watchlist rendered
-Step 37-5 — Global panel added
-Step 37-6 — Tests passing
+Step 38-1 — Arrival sources mapped
+Step 38-2 — Arrival detection implemented
+Step 38-3 — Shadow matching complete
+Step 38-4 — Dashboard status rendered
+Step 38-5 — Global panel added
+Step 38-6 — Tests passing
 Push — DONE (main)
