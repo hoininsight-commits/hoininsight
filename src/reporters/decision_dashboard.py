@@ -154,6 +154,14 @@ class DecisionDashboard:
                 quality_review = json.loads(qr_path.read_text(encoding="utf-8"))
             except: pass
 
+        # [NEW] Step 54: Load Editorial Speakability
+        speakability = {}
+        es_path = self.base_dir / "data" / "ops" / "topic_speakability_today.json"
+        if es_path.exists():
+            try:
+                speakability = json.loads(es_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -369,7 +377,8 @@ class DecisionDashboard:
             "topic_seeds": topic_seeds,
             "narrative_hypotheses": narrative_hypotheses,
             "topic_view": topic_view,
-            "quality_review": quality_review
+            "quality_review": quality_review,
+            "speakability": speakability
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -463,6 +472,22 @@ class DecisionDashboard:
             lines.append(f"| {h.get('hypothesis_text')} | {seed_sum} | {frames_str} | {h.get('supporting_fact_count')} | {h.get('confidence_level')} |")
         lines.append("")
 
+    def _render_speakability_summary_panel(self, lines: List[str], speakability: Dict[str, Any]):
+        """Renders Step 54 Editorial Speakability Summary Panel."""
+        if not speakability:
+            lines.append("📢 **EDITORIAL SPEAKABILITY**: (data pending)")
+            lines.append("")
+            return
+
+        lines.append("## 📢 EDITORIAL SPEAKABILITY")
+        c = speakability.get("counts", {})
+        lines.append(f"- **SPEAKABLE_NOW**: {c.get('SPEAKABLE_NOW', 0)}")
+        lines.append(f"- **NOT_SPEAKABLE_YET**: {c.get('NOT_SPEAKABLE_YET', 0)}")
+        lines.append("")
+        lines.append(f"👉 [Open Speakability Report (Markdown)](data/ops/topic_speakability_today.md)")
+        lines.append("---")
+        lines.append("")
+
     def _render_quality_review_panel(self, lines: List[str], review: Dict[str, Any]):
         """Renders Step 53 Topic Quality Review Section."""
         if not review or not review.get("topics"):
@@ -502,7 +527,7 @@ class DecisionDashboard:
         lines.append("---")
         lines.append("")
 
-    def _render_topic_view_panel(self, lines: List[str], view: Dict[str, Any]):
+    def _render_topic_view_panel(self, lines: List[str], view: Dict[str, Any], speakability: Dict[str, Any]):
         """Renders Step 52 Topic View Section (Read-Only)."""
         if not view:
             lines.append("🧭 **TODAY TOPIC VIEW**: (data pending generation)")
@@ -517,10 +542,32 @@ class DecisionDashboard:
         # Display top 3 of AA or READY as priority highlights
         highlights = view.get("sections", {}).get("auto_approved", []) + view.get("sections", {}).get("ready", [])
         if highlights:
+            # Map speakability for easy lookup
+            s_map = {v["topic_id"]: v for v in speakability.get("verdicts", [])}
+            
             lines.append("**Key Insights Identified:**")
             for h in highlights[:5]:
-                lines.append(f"- {h['title']} (Lane: {h['lane']} | Level: {h['level']})")
-            lines.append("")
+                tid = h.get("topic_id")
+                s_info = s_map.get(tid, {})
+                s_verdict = s_info.get("speakability", "NOT_SPEAKABLE_YET")
+                s_badge = "🟢 SPEAKABLE NOW" if s_verdict == "SPEAKABLE_NOW" else "⚪ NOT SPEAKABLE YET"
+                
+                lines.append(f"### {h['title']} (ID: {tid})")
+                lines.append(f"> **Verdict**: {s_badge}")
+                lines.append(f"- **Tags**: Lane={h['lane']} | Level={h['level']}")
+                
+                # Collapsed Reasons
+                lines.append("<details>")
+                lines.append("<summary>WHY THIS IS / IS NOT SPEAKABLE</summary>")
+                lines.append("")
+                reasons = s_info.get("blocking_reasons", [])
+                if not reasons and s_verdict == "SPEAKABLE_NOW":
+                    lines.append("- All conditions met.")
+                else:
+                    for r in reasons:
+                        lines.append(f"- {r}")
+                lines.append("</details>")
+                lines.append("")
             
         lines.append(f"👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)")
         lines.append("---")
@@ -578,11 +625,14 @@ class DecisionDashboard:
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
 
+        # [NEW] Step 54: EDITORIAL SPEAKABILITY Summary
+        self._render_speakability_summary_panel(lines, data.get("speakability", {}))
+
         # [NEW] Step 53: TOPIC QUALITY REVIEW
         self._render_quality_review_panel(lines, data.get("quality_review", {}))
 
         # [Step 52] TODAY TOPIC VIEW (Top Section)
-        self._render_topic_view_panel(lines, data.get("topic_view", {}))
+        self._render_topic_view_panel(lines, data.get("topic_view", {}), data.get("speakability", {}))
 
         # Step 44: Auto-Approval Panel (NEW)
         aa_path = self.base_dir / "data" / "ops" / "auto_approved_today.json"

@@ -186,6 +186,10 @@ def main(target_categories: list[str] = None):
         except Exception as e:
             print(f"topic_view: error ({e})", file=sys.stderr)
 
+        # [NEW] Generate Decision Dashboard Markdown
+        from src.reporters.decision_dashboard import DecisionDashboard
+        try:
+            dd = DecisionDashboard(Path("."))
             # Step 43/44 are now deeply integrated into build_dashboard_data
             dd_data = dd.build_dashboard_data(run_ymd)
             
@@ -193,12 +197,23 @@ def main(target_categories: list[str] = None):
             try:
                 from src.ops.topic_quality_review import TopicQualityReview
                 tqr = TopicQualityReview(Path("."))
-                # We review the cards produced by DecisionDashboard
-                tqr.run(run_ymd, dd_data.get("cards", []))
+                qr_res = tqr.run(run_ymd, dd_data.get("cards", []))
+                dd_data["quality_review"] = qr_res
                 details_lines.append("topic_quality_review: ok")
                 print("topic_quality_review: ok", file=sys.stderr)
             except Exception as e:
                 print(f"topic_quality_review: run error ({e})", file=sys.stderr)
+
+            # [NEW] Step 54: Editorial Speakability Gate Execution
+            try:
+                from src.ops.editorial_speakability_gate import EditorialSpeakabilityGate
+                esg = EditorialSpeakabilityGate(Path("."))
+                es_res = esg.run(run_ymd)
+                dd_data["speakability"] = es_res
+                details_lines.append("speakability_gate: ok")
+                print("speakability_gate: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"speakability_gate: run error ({e})", file=sys.stderr)
             
             # Write auto_approved_today.json specifically if not already saved by dd
             # Actually, let's make sure AutoApprovalGate runs and saves.
@@ -336,6 +351,15 @@ def main(target_categories: list[str] = None):
 
     obs_line = f"- {finished} | engine_run | status={status} | run_log={log_path.as_posix()}\n"
     append_observation_log(Path("docs") / "OBSERVATION_LOG.md", obs_line)
+
+    # [Step 54] Final: Update Dashboard Manifest
+    try:
+        from src.ops.dashboard_manifest import DashboardManifest
+        manifest = DashboardManifest(Path("."))
+        manifest.generate(run_ymd)
+        print(f"Manifest updated for {run_ymd}", file=sys.stderr)
+    except Exception as e:
+        print(f"Manifest update error: {e}", file=sys.stderr)
 
     if status != "SUCCESS":
         sys.exit(1)
