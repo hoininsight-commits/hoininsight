@@ -124,11 +124,27 @@ We connected the shadow monitoring watchlist with the actual pipeline outputs, a
 - **No Promotion**: Confirmed that signal arrival does NOT auto-promote topics to READY, maintaining human-in-the-loop control.
 - **Tests**: 3/3 tests passed.
 
+## Step 39: Promotion Readiness Scoreboard
+
+We transformed the Shadow Pool into a deterministic "Promotion Readiness Scoreboard," allowing operators to see at a glance how close each promising topic is to being narratable.
+
+### Key Deliverables
+- **Readiness Calculator**: `src/ops/promotion_readiness.py` maps candidates to readiness buckets (`READY_TO_PROMOTE`, `NEARLY_READY`, etc.) based on the signal gap.
+- **Progress Visibility**: Each shadow card now displays its specific progress (e.g., `2 / 3 signals`) and explicitly lists what is still missing.
+- **Global Scoreboard**: A new dashboard summary panel aggregates the entire pool by readiness state, highlighting immediately actionable opportunities.
+- **Operator Hints**: Added deterministic action hints (e.g., "Watch for {signal}" or "Re-run pipeline") to guide human decision-making without auto-promotion.
+
+### Verification Evidence
+- **Deterministic Buckets**: Verified bucket transitions (0 missing → READY, 1 missing → NEARLY, etc.) via `tests/test_promotion_readiness.py`.
+- **UI Affirmation**: `READY_TO_PROMOTE` candidates are clearly highlighted with a ✅ icon to signal promotion potential to the operator.
+- **Safety**: Confirmed that no automatic state changes occur in the core Gate/Bridge/Ranker logic.
+- **Tests**: 3/3 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 38-1 — Arrival sources mapped
-Step 38-2 — Arrival detection implemented
-Step 38-3 — Shadow matching complete
-Step 38-4 — Dashboard status rendered
-Step 38-5 — Global panel added
-Step 38-6 — Tests passing
+Step 39-1 — Readiness enum defined
+Step 39-2 — Readiness calculator implemented
+Step 39-3 — Shadow integration complete
+Step 39-4 — Dashboard scoreboard rendered
+Step 39-5 — Operator hint rules applied
+Step 39-6 — Tests passing
 Push — DONE (main)
