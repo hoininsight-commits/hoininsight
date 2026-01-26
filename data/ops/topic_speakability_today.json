@@ -1,0 +1,24 @@
+{
+  "run_date": "2026-01-26",
+  "counts": {
+    "SPEAKABLE_NOW": 0,
+    "NOT_SPEAKABLE_YET": 1
+  },
+  "verdicts": [
+    {
+      "topic_id": "gate_3e4f060489",
+      "title": "지수 상승 속 섹터 하락의 이유",
+      "speakability": "NOT_SPEAKABLE_YET",
+      "blocking_reasons": [
+        "INSUFFICIENT_ANCHOR_STRENGTH",
+        "LOW_NARRATIVE_FIT"
+      ],
+      "decision_basis": {
+        "anchor": "WEAK",
+        "timing": "ON_TIME",
+        "fit": "POOR",
+        "risk": "CLEAR"
+      }
+    }
+  ]
+}
