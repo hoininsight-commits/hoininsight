@@ -369,6 +369,38 @@ class DecisionDashboard:
             lines.append(f"  - [{f.get('fact_type')}] {f.get('fact_text')} ({f.get('source')})")
         lines.append("")
 
+    def _render_structural_frames_panel(self, lines: List[str], shadows: List[Dict[str, Any]]):
+        """Renders Step 49 Structural Frames Panel (Read-only)."""
+        # Aggregate frames from shadows (FactFirstIngress output)
+        frame_counts = {}
+        samples = [] # List of (fact, frame_obj)
+        
+        for s in shadows:
+            frames = s.get("structural_frames", [])
+            for f in frames:
+                f_name = f.get("frame", "UNKNOWN")
+                frame_counts[f_name] = frame_counts.get(f_name, 0) + 1
+                if len(samples) < 3:
+                     samples.append((s.get("fact_anchor"), f))
+                     
+        if not frame_counts:
+            return
+            
+        lines.append("\n### 🧠 STRUCTURAL FRAMES (FROM FACTS)")
+        lines.append("> **Factual Context — Not scored or approved**")
+        lines.append("")
+        
+        # Breakdown
+        breakdown = ", ".join([f"{k}: {v}" for k, v in frame_counts.items()])
+        lines.append(f"- **Frame Counts Today**: {breakdown}")
+        
+        # Samples
+        lines.append("- **Sample Mappings (Top 3)**:")
+        for fact_text, frame_obj in samples:
+            lines.append(f"  - `{fact_text}` → **{frame_obj['frame']}**")
+            lines.append(f"    - *{frame_obj['reason']}*")
+        lines.append("")
+
     def _load_shadow_pool(self) -> Dict[str, Any]:
         """Loads Step 34 Shadow Candidate Pool."""
         p = self.base_dir / "data" / "ops" / "shadow_candidates.json"
@@ -474,6 +506,9 @@ class DecisionDashboard:
 
         # [Step 48] FACT ANCHORS COLLECTED TODAY
         self._render_fact_anchors_panel(lines, data.get("fact_anchors", []))
+
+        # [Step 49] STRUCTURAL FRAMES (FROM FACTS)
+        self._render_structural_frames_panel(lines, data.get("fact_first_shadows", []))
 
         # [Step 47.5] FACT-FIRST SHADOW TOPICS
         ff_shadows = data.get("fact_first_shadows", [])

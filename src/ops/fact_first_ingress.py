@@ -67,6 +67,14 @@ class FactFirstIngress:
                     if cand: candidates.append(cand)
             except Exception: pass
         
+        # [Step 49] Enrich with Structural Narrative Frames
+        try:
+            from src.ops.structural_narrative_mapper import StructuralNarrativeMapper
+            mapper = StructuralNarrativeMapper(self.base_dir)
+            candidates = mapper.enrich_facts(candidates)
+        except Exception as e:
+            print(f"[FactFirst] Mapper error: {e}")
+
         # filter to unique topics if needed (not strictly required by mission but good practice)
         final_topics = self._finalize_shadows(candidates)
         
