@@ -158,9 +158,15 @@ class FactFirstIngress:
             from src.ops.topic_seed_builder import TopicSeedBuilder
             builder = TopicSeedBuilder(self.base_dir)
             seeds = builder.build_seeds(topics)
+            
+            # [Step 51] Build Narrative Hypotheses
+            from src.ops.narrative_hypothesis_builder import NarrativeHypothesisBuilder
+            hyp_builder = NarrativeHypothesisBuilder(self.base_dir)
+            hypotheses = hyp_builder.build_hypotheses(seeds)
         except Exception as e:
-            print(f"[FactFirst] SeedBuilder error: {e}")
+            print(f"[FactFirst] Seed/Hypo error: {e}")
             seeds = []
+            hypotheses = []
 
         out_dir = self.output_root / ymd_path
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -169,7 +175,8 @@ class FactFirstIngress:
         payload = {
             "run_ts": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "topics": topics,
-            "topic_seeds": seeds
+            "topic_seeds": seeds,
+            "narrative_hypotheses": hypotheses
         }
         
         out_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")

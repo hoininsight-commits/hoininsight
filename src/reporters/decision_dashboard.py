@@ -116,12 +116,14 @@ class DecisionDashboard:
         # [Step 47.5] Load FACT-FIRST Shadow Pool
         fact_first_shadows = []
         topic_seeds = []
+        narrative_hypotheses = []
         ff_path = self.base_dir / "data" / "topics" / "shadow_pool" / ymd.replace("-", "/") / "fact_first.json"
         if ff_path.exists():
             try:
                 ff_data = json.loads(ff_path.read_text(encoding="utf-8"))
                 fact_first_shadows = ff_data.get("topics", [])
                 topic_seeds = ff_data.get("topic_seeds", [])
+                narrative_hypotheses = ff_data.get("narrative_hypotheses", [])
             except Exception as e:
                 print(f"[Dashboard] Error parsing fact_first shadows: {e}")
 
@@ -347,7 +349,8 @@ class DecisionDashboard:
             "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md",
             "fact_first_shadows": fact_first_shadows,
             "fact_anchors": fact_anchors,
-            "topic_seeds": topic_seeds
+            "topic_seeds": topic_seeds,
+            "narrative_hypotheses": narrative_hypotheses
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -419,6 +422,26 @@ class DecisionDashboard:
             frames_str = ", ".join(s.get("structural_frames", []))
             fact_cnt = len(s.get("supporting_facts", []))
             lines.append(f"| {s.get('seed_summary')} | {frames_str} | {fact_cnt} | {s.get('first_seen')} |")
+        lines.append("")
+
+    def _render_narrative_hypotheses_panel(self, lines: List[str], hypos: List[Dict[str, Any]], seeds: List[Dict[str, Any]]):
+        """Renders Step 51 Narrative Hypotheses Panel (Read-only)."""
+        if not hypos:
+            return
+            
+        seed_map = {s["seed_id"]: s for s in seeds}
+        
+        lines.append("\n### 🧩 NARRATIVE HYPOTHESES (PRE-SPEAK)")
+        lines.append("> **Factual Narrative Hypotheses — Neutral structural explanations**")
+        lines.append("")
+        lines.append("| Hypothesis | Linked Seed | Frames | Facts | Confidence |")
+        lines.append("|---|---|---|---|---|")
+        
+        for h in hypos:
+            seed = seed_map.get(h.get("seed_id"), {})
+            frames_str = ", ".join(h.get("structural_frames", []))
+            seed_sum = seed.get("seed_summary", "Unknown Seed")
+            lines.append(f"| {h.get('hypothesis_text')} | {seed_sum} | {frames_str} | {h.get('supporting_fact_count')} | {h.get('confidence_level')} |")
         lines.append("")
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
@@ -532,6 +555,9 @@ class DecisionDashboard:
 
         # [Step 50] TOPIC SEEDS (STRUCTURAL)
         self._render_topic_seeds_panel(lines, data.get("topic_seeds", []))
+
+        # [Step 51] NARRATIVE HYPOTHESES (PRE-SPEAK)
+        self._render_narrative_hypotheses_panel(lines, data.get("narrative_hypotheses", []), data.get("topic_seeds", []))
 
         # [Step 47.5] FACT-FIRST SHADOW TOPICS
         ff_shadows = data.get("fact_first_shadows", [])
