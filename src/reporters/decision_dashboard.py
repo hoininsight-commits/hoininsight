@@ -320,7 +320,8 @@ class DecisionDashboard:
                 "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
             },
             "shadow_pool": self._load_shadow_pool(),
-            "post_mortem_summary": pm_stats
+            "post_mortem_summary": pm_stats,
+            "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool())
         }
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
@@ -375,6 +376,15 @@ class DecisionDashboard:
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
         
+        # Step 43: Auto-Priority Panel (NEW)
+        ap_path = self.base_dir / "data" / "ops" / "auto_priority_today.json"
+        if ap_path.exists():
+            try:
+                ap_data = json.loads(ap_path.read_text(encoding="utf-8"))
+                self._render_auto_priority_panel(lines, ap_data)
+            except:
+                pass
+
         # Step 41: Correlation Panel (NEW)
         corr_path = self.base_dir / "data" / "ops" / "pick_outcome_30d.json"
         if corr_path.exists():
@@ -1754,3 +1764,31 @@ class DecisionDashboard:
         errors = data.get("errors", [])
         if errors:
             lines.append(f"\n> ⚠️ Correlation warnings: {len(errors)}")
+
+    def _render_auto_priority_panel(self, lines: List[str], data: Dict[str, Any]):
+        """Step 43: Daily Auto-Priority Summary Panel."""
+        top_candidates = data.get("top_candidates", [])
+        lines.append("\n#### 🔥 AUTO-PICK PRIORITY (Top 3–5)")
+        
+        if not top_candidates or len(top_candidates) < 3:
+            lines.append("- _Insufficient data for auto-prioritization._")
+            return
+            
+        for i, c in enumerate(top_candidates, 1):
+            score = c.get("priority_score", 0)
+            
+            badge = "⚪ LOW"
+            if score >= 8: badge = "🔴 CRITICAL"
+            elif score >= 5: badge = "🟠 HIGH"
+            elif score >= 3: badge = "🟢 MODERATE"
+            
+            factors = ", ".join(c.get("reason_factors", []))
+            lines.append(f"{i}. **{c['title']}** ({badge} | Score: {score})")
+            if factors:
+                lines.append(f"   - *Factors*: {factors}")
+
+    def _generate_auto_priority(self, ymd: str, ready_candidates: List[Dict], shadow_pool: Dict[str, Any]) -> Dict[str, Any]:
+        """Runs the auto prioritizer and returns the result."""
+        from src.ops.auto_prioritizer import AutoPrioritizer
+        prioritizer = AutoPrioritizer(self.base_dir)
+        return prioritizer.run(ymd, ready_candidates, shadow_pool.get("candidates", []))

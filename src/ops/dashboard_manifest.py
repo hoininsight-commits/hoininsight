@@ -61,6 +61,7 @@ class DashboardManifest:
             "decision_md": paths.get("decision_md"), 
             "daily_lock": paths.get("daily_lock"),
             "health_json": f"data/dashboard/health_today.json",
+            "auto_priority_json": "data/ops/auto_priority_today.json",
             "missing": missing
         }
         
