@@ -37,34 +37,58 @@ class HealthCheck:
             "missing_files": []
         }
         
-        # 1. Check Decision Dashboard (and Daily Brief)
-        if (report_dir / "daily_brief.md").exists():
+        # 1. Check Decision Dashboard
+        if (report_dir / "decision_dashboard.md").exists():
             health_data["decision_dashboard_exists"] = True
         else:
-            health_data["errors"].append("daily_brief.md missing")
+            health_data["errors"].append("decision_dashboard.md missing")
 
         # 2. Real Artifact Counts (Read-Only)
         try:
             # Events
             if events_dir.exists():
-                health_data["metrics"]["events_count"] = len(list(events_dir.glob("*.json")))
+                count = len(list(events_dir.glob("*.json")))
+                health_data["metrics"]["events_count"] = count
+                if count == 0:
+                    health_data["errors"].append(f"events_count is 0 in {events_dir}")
+            else:
+                health_data["missing_files"].append(str(events_dir))
+                health_data["errors"].append(f"events_dir missing: {events_dir}")
             
             # Anomalies
             if anomalies_dir.exists():
-                health_data["metrics"]["anomalies_count"] = len(list(anomalies_dir.glob("*.json")))
+                count = len(list(anomalies_dir.glob("*.json")))
+                health_data["metrics"]["anomalies_count"] = count
+                if count == 0:
+                    health_data["errors"].append(f"anomalies_count is 0 in {anomalies_dir}")
+            else:
+                health_data["missing_files"].append(str(anomalies_dir))
+                health_data["errors"].append(f"anomalies_dir missing: {anomalies_dir}")
             
             # Gate Candidates (from JSON)
             if candidates_file.exists():
                 try:
                     c_data = json.loads(candidates_file.read_text(encoding="utf-8"))
-                    health_data["metrics"]["gate_candidates_count"] = len(c_data.get("candidates", []))
+                    count = len(c_data.get("candidates", []))
+                    health_data["metrics"]["gate_candidates_count"] = count
+                    if count == 0:
+                        health_data["errors"].append(f"gate_candidates_count is 0 in {candidates_file}")
                 except Exception as e:
                     health_data["errors"].append(f"Error parsing candidates: {e}")
+            else:
+                health_data["missing_files"].append(str(candidates_file))
+                health_data["errors"].append(f"candidates_file missing: {candidates_file}")
 
             # Scripts (MD and Quality)
-            if contents_dir.exists():
-                health_data["metrics"]["scripts_md_count"] = len(list(contents_dir.glob("script_v1_*.md")))
-                health_data["metrics"]["script_quality_json_count"] = len(list(contents_dir.glob("*.quality.json")))
+            # Scripts are stored by date path too now?
+            # src/engine.py: gate_pipeline_main(run_ymd)
+            # and DecisionDashboard uses gate_dir = self.base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
+            gate_dir = self.base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
+            if gate_dir.exists():
+                health_data["metrics"]["scripts_md_count"] = len(list(gate_dir.glob("script_v1_*.md")))
+                health_data["metrics"]["script_quality_json_count"] = len(list(gate_dir.glob("*.quality.json")))
+            else:
+                health_data["errors"].append(f"gate_dir missing: {gate_dir}")
             
             # Topics Summary (from daily_lock.json if exists)
             lock_file = report_dir / "daily_lock.json"
@@ -74,6 +98,8 @@ class HealthCheck:
                     health_data["metrics"]["topics_count"] = data.get("summary", {"READY": 0, "HOLD": 0, "DROP": 0})
                 except Exception as e:
                     health_data["errors"].append(f"Error parsing lock_file: {e}")
+            else:
+                health_data["errors"].append(f"daily_lock.json missing in {report_dir}")
 
             health_data["status"] = "SUCCESS" if not health_data["errors"] else "PARTIAL"
             

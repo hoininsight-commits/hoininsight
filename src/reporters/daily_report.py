@@ -21,8 +21,10 @@ from src.reporters.regime_review_reporter import get_historical_context_lines
 from src.anomalies.narrative_drift_detector import detect_narrative_drift
 from src.reporters.content_generator import generate_insight_content
 
+from src.utils.target_date import get_target_ymd
+
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return get_target_ymd().replace("-", "/")
 
 def _load_gate_output(as_of_date: str):
     p = Path("data") / "topics" / "gate" / as_of_date.replace("-", "/") / "topic_gate_output.json"

@@ -11,8 +11,10 @@ import pandas as pd
 from src.registry.loader import load_datasets
 from src.reporters.charts import generate_curated_charts
 
+from src.utils.target_date import get_target_ymd
+
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return get_target_ymd().replace("-", "/")
 
 def _ts_now() -> str:
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -40,12 +42,18 @@ def _safe_read_json(p: Path) -> Optional[Any]:
 def _find_report_dirs(base_dir: Path, days: int) -> List[Path]:
     """
     Find up to N days of report directories under data/reports/YYYY/MM/DD
-    (UTC date folders).
     """
+    from src.utils.target_date import get_target_ymd
     reports_root = base_dir / "data" / "reports"
     out: List[Path] = []
+    
+    # Standardized way to find previous days
+    from datetime import datetime, timedelta
+    target_ymd = get_target_ymd()
+    base_dt = datetime.strptime(target_ymd, "%Y-%m-%d")
+    
     for i in range(days):
-        d = datetime.utcnow().date() - timedelta(days=i)
+        d = base_dt - timedelta(days=i)
         p = reports_root / f"{d.year:04d}" / f"{d.month:02d}" / f"{d.day:02d}"
         if p.exists():
             out.append(p)

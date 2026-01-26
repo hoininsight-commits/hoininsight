@@ -6,21 +6,23 @@ def get_target_ymd() -> str:
     Returns the target date (YYYY-MM-DD) string.
     Priority:
     1. HOIN_TARGET_DATE env var
-    2. UTC Today
+    2. KST Today (UTC+9)
     """
     target = os.environ.get("HOIN_TARGET_DATE")
     if target:
         return target
-    return datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    # KST is UTC+9
+    now_kst = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
+    return now_kst.strftime("%Y-%m-%d")
 
 def get_target_parts():
     """
-    Returns (year, month, day) strings.
+    Returns (year, month, day) strings in KST.
     """
     ymd = get_target_ymd()
     parts = ymd.split("-")
     if len(parts) == 3:
         return parts[0], parts[1], parts[2]
-    # Fallback if malformed
-    now = datetime.datetime.utcnow()
-    return now.strftime("%Y"), now.strftime("%m"), now.strftime("%d")
+    # Fallback if malformed (using KST)
+    now_kst = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
+    return now_kst.strftime("%Y"), now_kst.strftime("%m"), now_kst.strftime("%d")

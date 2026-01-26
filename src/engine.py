@@ -9,23 +9,15 @@ from datetime import datetime
 from pathlib import Path
 
 from src.reporting.run_log import RunResult, write_run_log, append_observation_log
-from src.pipeline.run_collect import main as collect_main
-from src.pipeline.run_normalize import main as normalize_main
-from src.pipeline.run_anomaly import main as anomaly_main
-from src.pipeline.run_topic import main as topic_main
-from src.pipeline.run_topic_gate import main as gate_pipeline_main # [Phase 50] Strict Topic Gate
-from src.reporters.data_snapshot import write_data_snapshot
-from src.validation.output_check import run_output_checks
-from src.reporters.daily_report import write_daily_brief
-from src.reporting.health import write_health
-from src.validation.schema_check import run_schema_checks
+from src.utils.target_date import get_target_ymd, get_target_parts
 
 def _utc_now_stamp() -> str:
+    # Use standardized YMD but append actual UTC time for high-res logs
     return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
-def _date_path_utc() -> Path:
-    d = datetime.utcnow().strftime("%Y/%m/%d")
-    return Path("data") / "reports" / d
+def _date_path_standardized() -> Path:
+    y, m, d = get_target_parts()
+    return Path("data") / "reports" / y / m / d
 
 def main(target_categories: list[str] = None):
     started = _utc_now_stamp()
@@ -121,6 +113,7 @@ def main(target_categories: list[str] = None):
         # [Phase 50] Strict Topic Decision Gate (Engine 2)
         # 1. Ensure Data Snapshot (JSON) exists
         from src.reporters.data_snapshot import write_data_snapshot
+        run_ymd = get_target_ymd()
         try:
             snapshot_path = write_data_snapshot(Path("."))
             details_lines.append(f"snapshot: ok ({snapshot_path})")
@@ -130,14 +123,30 @@ def main(target_categories: list[str] = None):
 
         # 2. Run Gate Pipeline (Content Hook Logic)
         try:
-            gate_pipeline_main(datetime.now().strftime("%Y-%m-%d"))
+            gate_pipeline_main(run_ymd)
             details_lines.append("topic_gate: ok")
             print("topic_gate: ok", file=sys.stderr)
         except Exception as e:
             print(f"topic_gate: fail ({e})", file=sys.stderr)
 
-        
-        
+        # [NEW] Generate Decision Dashboard Markdown
+        from src.reporters.decision_dashboard import DecisionDashboard
+        try:
+            dd = DecisionDashboard(Path("."))
+            dd_data = dd.build_dashboard_data(run_ymd)
+            dd_md = dd.render_markdown(dd_data)
+            
+            y, m, d = get_target_parts()
+            dd_path = Path("data/reports") / y / m / d / "decision_dashboard.md"
+            dd_path.parent.mkdir(parents=True, exist_ok=True)
+            dd_path.write_text(dd_md, encoding="utf-8")
+            
+            details_lines.append(f"decision_dashboard: ok | {dd_path.as_posix()}")
+            print(f"decision_dashboard: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"decision_dashboard: fail ({e})", file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
+
         # [Fixed] Ensure Final Decision Card is generated
         from src.decision.final_decision_card import main as decision_main
         decision_main()
@@ -211,7 +220,7 @@ def main(target_categories: list[str] = None):
     # ----------------------------------------
 
     finished = _utc_now_stamp()
-    report_dir = _date_path_utc()
+    report_dir = _date_path_standardized()
     result = RunResult(
         started_utc=started,
         finished_utc=finished,

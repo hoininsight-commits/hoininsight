@@ -41,7 +41,7 @@ class DashboardManifest:
         # Verify required files and log missing
         required = {
             "report_md": "daily_brief.md",
-            "decision_md": "daily_brief.md", # Render daily brief as the main decision dashboard
+            "decision_md": "decision_dashboard.md", # Point to the new decision dashboard
             "daily_lock_json": "daily_lock.json"
         }
         
@@ -59,7 +59,7 @@ class DashboardManifest:
             "run_ts": datetime.now().isoformat(),
             "report_md": paths.get("report_md"),
             "decision_md": paths.get("decision_md"), 
-            "daily_lock": paths.get("daily_lock_json"),
+            "daily_lock": paths.get("daily_lock"),
             "health_json": f"data/dashboard/health_today.json",
             "missing": missing
         }

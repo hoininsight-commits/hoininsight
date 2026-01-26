@@ -6,7 +6,8 @@ from pathlib import Path
 from typing import List
 
 def write_health(base_dir: Path, status: str, checks_ok: bool, check_lines: List[str], per_dataset: List[dict]) -> Path:
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    from src.utils.target_date import get_target_ymd
+    ymd = get_target_ymd().replace("-", "/")
     out_dir = base_dir / "data" / "reports" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "health.json"
