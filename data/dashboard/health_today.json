@@ -1,20 +1,28 @@
 {
   "run_date": "2026-01-25",
-  "checked_at": "2026-01-26T01:07:31.416196",
-  "status": "SUCCESS",
+  "checked_at": "2026-01-26T02:09:21.078261",
+  "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
     "anomalies_count": 24,
     "gate_candidates_count": 0,
-    "scripts_md_count": 0,
-    "script_quality_json_count": 0,
+    "scripts_md_count": 8,
+    "script_quality_json_count": 8,
     "topics_count": {
       "READY": 0,
       "HOLD": 0,
       "DROP": 0
     }
   },
-  "decision_dashboard_exists": true,
-  "errors": [],
-  "missing_files": []
+  "decision_dashboard_exists": false,
+  "errors": [
+    "decision_dashboard.md missing",
+    "events_dir missing: /home/runner/work/hoininsight/hoininsight/data/events/2026/01/25",
+    "candidates_file missing: /home/runner/work/hoininsight/hoininsight/data/topics/candidates/2026/01/25/topic_candidates.json",
+    "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/01/25"
+  ],
+  "missing_files": [
+    "/home/runner/work/hoininsight/hoininsight/data/events/2026/01/25",
+    "/home/runner/work/hoininsight/hoininsight/data/topics/candidates/2026/01/25/topic_candidates.json"
+  ]
 }
