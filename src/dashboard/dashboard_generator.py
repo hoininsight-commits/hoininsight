@@ -223,6 +223,42 @@ def parse_registry(base_dir: Path) -> List[Dict]:
             datasets.append(current_ds)
         return datasets
 
+def _get_op_input_status(base_dir: Path, ymd: str) -> str:
+    """Read operator fact input status and render compact HTML."""
+    input_path = base_dir / "data" / "ops" / "fact_first_input_today.json"
+    if not input_path.exists():
+        return ""
+    
+    try:
+        data = json.loads(input_path.read_text(encoding="utf-8"))
+        count = data.get("count", 0)
+        counts = data.get("counts_by_type", {})
+        errors = data.get("errors", [])
+        
+        # Color logic
+        bg_color = "#f0fdf4" if not errors else "#fef2f2"
+        border_color = "#bbf7d0" if not errors else "#fecaca"
+        icon = "🏹" if not errors else "⚠️"
+        
+        error_html = ""
+        if errors:
+            e_msg = errors[0].get('message', 'Unknown Error')
+            error_html = f"<div style='font-size:11px; color:#dc2626; margin-top:2px;'>❌ Error: {e_msg}</div>"
+            
+        html = f"""
+        <div style="background:{bg_color}; border:1px solid {border_color}; border-radius:8px; padding:8px 15px; margin-left:15px; font-size:12px; display:flex; flex-direction:column; justify-content:center;">
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span style="font-weight:bold; color:#166534;">{icon} FACT SEED</span>
+                <span style="font-weight:bold; color:#1e293b;">{count} 건</span>
+                <span style="color:#64748b; font-size:11px;">(F:{counts.get('FLOW',0)} P:{counts.get('POLICY',0)} S:{counts.get('STRUCTURE',0)})</span>
+            </div>
+            {error_html}
+        </div>
+        """
+        return html
+    except Exception:
+        return ""
+
 def check_collection_status(base_dir: Path, dataset: Dict, collection_status_data: Dict) -> Dict:
     ds_id = dataset.get("dataset_id")
     category = dataset.get("category")
@@ -2590,12 +2626,33 @@ def generate_dashboard(base_dir: Path):
     else:
         topic_list_html = "<div style='padding:20px; text-align:center; color:#94a3b8;'>선정된 토픽이 없습니다.</div>"
 
+    # [Step 60] Fact-First Input Status
+    fact_input_status_html = _get_op_input_status(base_dir, ymd)
+
     html = f"""
     <!DOCTYPE html>
     <html lang="ko">
     <head>
-        <meta charset="utf-8">
-        <title>Hoin Insight 파이프라인</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hoin Insight Dashboard (v2.0)</title>
+        <style>
+            :root {{
+                --sidebar-width: 260px;
+                --header-height: 60px;
+                --bg-color: #f1f5f9;
+                --text-primary: #1e293b;
+                --card-bg: #ffffff;
+            }}
+            body {{
+                margin: 0;
+                font-family: 'Inter', 'Pretendard', sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-primary);
+                display: flex;
+                height: 100vh;
+                overflow: hidden;
+            }}
         <style>{css}</style>
         <style>
             /* Additional Tab Styles */
@@ -2758,6 +2815,7 @@ def generate_dashboard(base_dir: Path):
                     <div class="stat-counter" style="background:#fff7ed; color:#d97706; border:1px solid #f59e0b;">
                         SEC B: <strong>{len(section_b_topics)}</strong>
                     </div>
+                    {fact_input_status_html}
                     <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
                 </div>
             </div>

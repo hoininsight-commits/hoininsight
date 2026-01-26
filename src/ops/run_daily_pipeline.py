@@ -16,14 +16,31 @@ sys.path.append(str(project_root))
 
 from src.collectors.ecos_collector import ECOSCollector
 from src.collectors.fred_collector import FREDCollector
-# Import other collectors as needed or rely on main.py to handle some?
-# Actually, main.py usually does "Selection + Insight". Collection is often separate.
-# But for a robust daily pipeline, we should ensure collection happens first.
+from src.ops.fact_first_input_loader import load_fact_first_input
 
 def run_collection():
     """Run all data collectors."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1: DATA COLLECTION STARTED")
     
+    # 0. Fact-First Input Loader (Operator Seed)
+    try:
+        print("[Pipeline] Running Fact-First Input Loader...")
+        # Use KST date for consistency with loader logic
+        # For simplicity in this env, we assume system time or standardizing to KST
+        # The loader expects YYYY-MM-DD string.
+        # Ensure we pass the correct date string.
+        from src.utils.date_utils import get_kst_ymd
+        kst_ymd = get_kst_ymd()
+    except ImportError:
+        # Fallback if date_utils not present
+        kst_ymd = datetime.now().strftime("%Y-%m-%d")
+        
+    try:
+        res = load_fact_first_input(project_root, kst_ymd)
+        print(f"[Pipeline] Loaded {res['count']} operator facts.")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Fact Loader failed (Soft-Fail): {e}")
+
     # 1. ECOS (Bank of Korea)
     try:
         print("[Pipeline] Running ECOS Collector...")

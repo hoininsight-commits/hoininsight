@@ -31,7 +31,6 @@ class FactFirstIngress:
         candidates = []
         
         # 1. Load from Policy
-        policy_dir = raw_dir / "policy" / ymd_path
         if policy_dir.exists():
             for f in policy_dir.glob("*.json"):
                 try:
@@ -41,6 +40,18 @@ class FactFirstIngress:
                         cand = self._process_policy_item(item)
                         if cand: candidates.append(cand)
                 except Exception: continue
+
+        # [Step 60] Load from Operator Input (Fact-First Seed)
+        op_input_file = self.base_dir / "data" / "ops" / "fact_first_input_today.json"
+        if op_input_file.exists():
+            try:
+                op_data = json.loads(op_input_file.read_text(encoding="utf-8"))
+                for fact in op_data.get("facts", []):
+                    cand = self._process_operator_fact(fact)
+                    if cand: candidates.append(cand)
+                print(f"[FactIngress] Loaded {len(op_data.get('facts', []))} operator facts.")
+            except Exception as e:
+                print(f"[FactIngress] Operator input load error: {e}")
 
         # 2. Load from Flows (Institutional)
         flow_dir = raw_dir / "structural_capital" / ymd_path
@@ -140,6 +151,29 @@ class FactFirstIngress:
             "why_now_hint": f"Harvested fact from {fact.get('source')}",
             "confidence": "LOW", # Harvested facts start as LOW
             "source_refs": [f"fact:{fact.get('fact_id')}"]
+        }
+
+    def _process_operator_fact(self, fact: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Convert operator fact to candidate seed.
+        Schema: fact, subject, object, type, source, confidence
+        """
+        anchor = fact.get("fact")
+        if not anchor: return None
+        
+        # Structure logic: TYPE + Subject -> Object
+        st_reason = f"[{fact.get('type')}] {fact.get('subject')} -> {fact.get('object')} shift detected."
+        
+        return {
+            "topic_type": "FACT_FIRST",
+            "status": "SHADOW",
+            "fact_anchor": anchor,
+            "structural_reason": st_reason,
+            "why_now_hint": f"Operator Seed: {fact.get('source')}",
+            "confidence": fact.get("confidence", "MEDIUM"), 
+            "source_refs": [f"op:{fact.get('fact_id')}"],
+            # Pass through extra metadata if needed
+            "metadata": fact
         }
 
     def _finalize_shadows(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
