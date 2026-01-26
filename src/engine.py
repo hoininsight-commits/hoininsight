@@ -60,6 +60,16 @@ def main(target_categories: list[str] = None):
         details_lines.append("anomaly: ok")
         print("anomaly: ok", file=sys.stderr)
 
+        # [Step 48] Fact Evidence Harvester (Passive Collection)
+        try:
+            from src.collectors.fact_evidence_harvester import FactEvidenceHarvester
+            feh = FactEvidenceHarvester(Path("."))
+            feh.harvest()
+            details_lines.append("fact_harvester: ok")
+            print("fact_harvester: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"fact_harvester: error ({e})", file=sys.stderr)
+
         # [Step 47.5] Fact-First Ingress (Early Topic Capture)
         try:
             from src.ops.fact_first_ingress import FactFirstIngress

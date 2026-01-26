@@ -69,19 +69,22 @@ class DashboardManifest:
         if ff_file.exists():
             fact_first_path = str(ff_file.relative_to(self.base_dir))
 
+        # [Step 48] Index Fact Anchors
+        fact_anchors_path = None
+        fa_file = self.base_dir / "data" / "facts" / f"fact_anchors_{ymd.replace('-', '')}.json"
+        if fa_file.exists():
+            fact_anchors_path = str(fa_file.relative_to(self.base_dir))
+
         # Flattened Manifest Structure (Step 28-3)
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
             "report_md": paths.get("report_md"),
             "decision_md": paths.get("decision_md"), 
-<<<<<<< HEAD
-            "daily_lock": paths.get("daily_lock"),
-=======
             "daily_lock": paths.get("daily_lock_json"),
             "script_md": script_path,
             "fact_first_shadow_json": fact_first_path,
->>>>>>> 16108e5e ([EXECUTE STEP 47.5] Implemented FACT-FIRST topic ingress layer)
+            "fact_anchors_json": fact_anchors_path,
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

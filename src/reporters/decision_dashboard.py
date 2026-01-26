@@ -123,6 +123,16 @@ class DecisionDashboard:
             except Exception as e:
                 print(f"[Dashboard] Error parsing fact_first shadows: {e}")
 
+        # [Step 48] Load Fact Anchors
+        fact_anchors = []
+        fa_path = self.base_dir / "data" / "facts" / f"fact_anchors_{ymd.replace('-', '')}.json"
+        if fa_path.exists():
+            try:
+                fa_data = json.loads(fa_path.read_text(encoding="utf-8"))
+                fact_anchors = fa_data
+            except Exception as e:
+                print(f"[Dashboard] Error parsing fact anchors: {e}")
+
         topics = []
         if gate_out.exists():
             try:
@@ -329,16 +339,35 @@ class DecisionDashboard:
                 "shallow_evidence": len([c for c in cards if c.judgment_notes and any("LEVEL 3" in n for n in c.judgment_notes)]),
                 "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
             },
-<<<<<<< HEAD
             "shadow_pool": self._load_shadow_pool(),
             "post_mortem_summary": pm_stats,
             "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool()),
-            "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md"
-=======
-            "post_mortem_summary": pm_stats,
-            "fact_first_shadows": fact_first_shadows
->>>>>>> 16108e5e ([EXECUTE STEP 47.5] Implemented FACT-FIRST topic ingress layer)
+            "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md",
+            "fact_first_shadows": fact_first_shadows,
+            "fact_anchors": fact_anchors
         }
+
+    def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
+        """Renders Step 48 Fact Anchors Panel."""
+        if not facts:
+            return
+            
+        lines.append("\n### 🧱 FACT ANCHORS COLLECTED TODAY")
+        lines.append(f"- **Count**: {len(facts)}")
+        
+        # Breakdown
+        types = {}
+        for f in facts:
+            t = f.get("fact_type", "OTHER")
+            types[t] = types.get(t, 0) + 1
+        breakdown = ", ".join([f"{k}: {v}" for k, v in types.items()])
+        lines.append(f"- **Type Breakdown**: {breakdown}")
+        
+        # Sample (Top 3)
+        lines.append("- **Samples (Top 3)**:")
+        for f in facts[:3]:
+            lines.append(f"  - [{f.get('fact_type')}] {f.get('fact_text')} ({f.get('source')})")
+        lines.append("")
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
         """Loads Step 34 Shadow Candidate Pool."""
@@ -442,6 +471,9 @@ class DecisionDashboard:
         # SCRIPT QUALITY Counters
         s = data.get("summary", {})
         lines.append(f"**SCRIPT QUALITY**: 🟢 READY={s.get('READY',0)} | 🟡 HOLD={s.get('HOLD',0)} | 🔴 DROP={s.get('DROP',0)}")
+
+        # [Step 48] FACT ANCHORS COLLECTED TODAY
+        self._render_fact_anchors_panel(lines, data.get("fact_anchors", []))
 
         # [Step 47.5] FACT-FIRST SHADOW TOPICS
         ff_shadows = data.get("fact_first_shadows", [])

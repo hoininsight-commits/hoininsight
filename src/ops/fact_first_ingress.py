@@ -57,6 +57,16 @@ class FactFirstIngress:
         # 3. Load from News/RSS (via Youtube or news collectors if available)
         # Note: placeholder for specialized news collectors if they exist in raw
         
+        # [Step 48] 4. Load from Harvested Fact Anchors
+        fact_file = self.base_dir / "data" / "facts" / f"fact_anchors_{ymd_path.replace('/', '')}.json"
+        if fact_file.exists():
+            try:
+                facts_data = json.loads(fact_file.read_text(encoding="utf-8"))
+                for fact in facts_data:
+                    cand = self._process_harvested_fact(fact)
+                    if cand: candidates.append(cand)
+            except Exception: pass
+        
         # filter to unique topics if needed (not strictly required by mission but good practice)
         final_topics = self._finalize_shadows(candidates)
         
@@ -103,6 +113,25 @@ class FactFirstIngress:
             "why_now_hint": f"Raw data ingestion trigger for {metric}",
             "confidence": "LOW",
             "source_refs": [f"raw:{metric}"]
+        }
+
+    def _process_harvested_fact(self, fact: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        metric = fact.get("fact_id")
+        text = fact.get("fact_text")
+        if not text: return None
+        
+        # Rule check: At least one factual anchor exists
+        # One-sentence structural implication (Mocking for mission)
+        st_reason = f"Structural implication: '{text}' suggests a shift in {fact.get('fact_type')} dynamics."
+        
+        return {
+            "topic_type": "FACT_FIRST",
+            "status": "SHADOW",
+            "fact_anchor": text,
+            "structural_reason": st_reason,
+            "why_now_hint": f"Harvested fact from {fact.get('source')}",
+            "confidence": "LOW", # Harvested facts start as LOW
+            "source_refs": [f"fact:{fact.get('fact_id')}"]
         }
 
     def _finalize_shadows(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
