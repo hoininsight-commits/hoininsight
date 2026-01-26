@@ -66,11 +66,11 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - System Freshness: 93.0%
 
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - **Topic:** [Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, crypto_btc_usd_spot_coingecko 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.78 >= 2.0. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.36 >= 2.0. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Monetary Tightening] Capital-driven
