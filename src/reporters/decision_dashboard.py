@@ -363,6 +363,7 @@ class DecisionDashboard:
             return self._render_final_view(data)
 
         lines = []
+        as_of_date = data.get("as_of_date", datetime.utcnow().strftime("%Y-%m-%d"))
         
         # Step 18: Aggregate Panel
         pm_stats = data.get("post_mortem_summary")
@@ -380,6 +381,11 @@ class DecisionDashboard:
         ready_topics = [c for c in cards if c['status'] == 'READY']
         hold_topics = [c for c in cards if c['status'] == 'HOLD']
         drop_topics = [c for c in cards if c['status'] == 'DROP']
+        
+        # Load Operator Decisions (Step 40)
+        from src.ops.operator_decision_log import OperatorDecisionLog
+        op_log = OperatorDecisionLog(self.base_dir)
+        decisions_map = op_log.get_latest_decisions_map(as_of_date)
         
         lines.append("\n## DECISION DASHBOARD (Beta)\n")
         
@@ -417,7 +423,7 @@ class DecisionDashboard:
                 lines.append("_No ANOMALY-DRIVEN signals today_")
             else:
                 for c in anomaly_lane[:5]: 
-                    lines.append(self._render_ready_card(c))
+                    lines.append(self._render_ready_card(c, decisions_map))
                 if len(anomaly_lane) > 5:
                     lines.append("\n**Additional Anomaly Signals (Optional)**")
                     for c in anomaly_lane[5:]:
@@ -430,13 +436,16 @@ class DecisionDashboard:
                 lines.append("_No FACT-DRIVEN topics today_")
             else:
                 for c in fact_lane[:5]:
-                    lines.append(self._render_ready_card(c))
+                    lines.append(self._render_ready_card(c, decisions_map))
                 if len(fact_lane) > 5:
                     lines.append("\n**Additional Fact Topics (Optional)**")
                     for c in fact_lane[5:]:
                         tags_str = " " + " ".join(c['tags']) if c.get('tags') else ""
                         lines.append(f"- {c['title']} (Evidence: {c['evidence_count']}){tags_str}")
         
+        # --- OPERATOR SUMMARY (Step 40) ---
+        self._render_operator_summary(lines, decisions_map)
+
         # --- ALMOST CANDIDATES ---
         self._render_almost_candidates(cards, lines)
         
@@ -448,7 +457,7 @@ class DecisionDashboard:
             self._render_readiness_summary(lines, shadow_data.get("readiness_summary", {}))
             self._render_signal_arrival_panel(lines, shadow_data.get("signal_arrival", {}), shadow_data.get("candidates", []))
             self._render_global_signal_watchlist(lines, shadow_data.get("global_watchlist", {}))
-            self._render_shadow_candidates(lines, shadow_data)
+            self._render_shadow_candidates(lines, shadow_data, decisions_map)
         
         # --- SECTION 2: WATCHLIST - NOT YET (HOLD) ---
         lines.append(f"\n## 👀 WATCHLIST — NOT YET ({len(hold_topics)})")
@@ -573,7 +582,7 @@ class DecisionDashboard:
                     lines.append(f"- {n}")
             lines.append("")
 
-    def _render_shadow_candidates(self, lines: List[str], shadow_data: Dict[str, Any]):
+    def _render_shadow_candidates(self, lines: List[str], shadow_data: Dict[str, Any], decisions_map: Dict[str, Dict]):
         """Renders Step 34 Shadow Candidates Pool (Grey tone, non-actionable)."""
         lines.append("\n### 🔘 SHADOW CANDIDATES (Preparation Pool)")
         lines.append("> **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.")
@@ -584,8 +593,13 @@ class DecisionDashboard:
             return
 
         for c in candidates:
+            tid = c.get("topic_id")
             # Grey tone style using blockquote or simple text
-            lines.append(f"#### ◽ {c['title']} (Impact: {c['impact_window']})")
+            lines.append(f"#### ◽ {c['title']} {self._get_operator_badge(tid, decisions_map)} (Impact: {c['impact_window']})")
+            
+            # Step 40: SHADOW Action Bar
+            self._render_shadow_action_bar(lines, tid, c['title'])
+            
             lines.append(f"- **Lane**: {c['lane']}")
             lines.append(f"- **Why not speak**: {c['why_not_speak']}")
             
@@ -708,12 +722,16 @@ class DecisionDashboard:
         # Default DISCOURAGED
         return "DISCOURAGED", "최근 반복 소비된 서사로 신규 정보 없음"
 
-    def _render_ready_card(self, c: Dict) -> str:
+    def _render_ready_card(self, c: Dict, decisions_map: Dict[str, Dict]) -> str:
         """Renders the detailed READY card with Speak Pack."""
+        tid = c.get('topic_id')
         lines = []
         is_fact = c.get('is_fact_driven')
         title_suffix = " (FACT-DRIVEN (Rule v1))" if is_fact else ""
-        lines.append(f"\n### ✅ {c['title']}{title_suffix}") 
+        lines.append(f"\n### ✅ {c['title']}{title_suffix} {self._get_operator_badge(tid, decisions_map)}") 
+        
+        # Step 40: READY Action Bar
+        self._render_ready_action_bar(lines, tid, c['title'])
         
         # Step 14: Selection Rationale
         rationale = c.get('selection_rationale')
@@ -1667,4 +1685,40 @@ class DecisionDashboard:
              
         # 5. Fallback -> MID
         return "MID", "누적 확인 구간(Inferred)"
+
+    def _get_operator_badge(self, topic_id: str, decisions_map: Dict[str, Dict]) -> str:
+        """Step 40: Returns visual feedback badge if decision exists."""
+        d = decisions_map.get(topic_id)
+        if not d: return ""
+        action = d.get("operator_action", "")
+        return f"| 🧭 **OPERATOR: {action.replace('_', ' ')}**"
+
+    def _render_operator_summary(self, lines: List[str], decisions_map: Dict[str, Dict]):
+        """Step 40: Daily Operator Summary Panel."""
+        from src.ops.operator_decision_log import OPERATOR_ACTION_ENUM
+        counts = {
+            OPERATOR_ACTION_ENUM.PICKED_FOR_CONTENT: 0,
+            OPERATOR_ACTION_ENUM.SKIPPED_TODAY: 0,
+            OPERATOR_ACTION_ENUM.DEFERRED: 0,
+            OPERATOR_ACTION_ENUM.REJECTED: 0
+        }
+        for d in decisions_map.values():
+            action = d.get("operator_action")
+            if action in counts:
+                counts[action] += 1
+        
+        if not any(counts.values()): return
+        
+        lines.append("\n#### 🏛️ OPERATOR DECISIONS (TODAY)")
+        for action, count in counts.items():
+            if count > 0:
+                lines.append(f"- **{action}**: {count}")
+
+    def _render_ready_action_bar(self, lines: List[str], topic_id: str, title: str):
+        """Step 40: Placeholder for READY action bar."""
+        lines.append(f"> **ACTION**: [ Pick ] [ Skip Today ] [ Defer ] [ Reject ]")
+
+    def _render_shadow_action_bar(self, lines: List[str], topic_id: str, title: str):
+        """Step 40: Placeholder for SHADOW action bar."""
+        lines.append(f"    > **ACTION**: [ Defer ] [ Reject ]")
 
