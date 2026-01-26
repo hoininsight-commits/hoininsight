@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Tuple, Optional
 import yaml
@@ -517,7 +518,7 @@ class DecisionDashboard:
             return self._render_final_view(data)
 
         lines = []
-        as_of_date = data.get("as_of_date", datetime.utcnow().strftime("%Y-%m-%d"))
+        as_of_date = data.get("as_of_date", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
         
         # Step 18: Aggregate Panel
         pm_stats = data.get("post_mortem_summary")
