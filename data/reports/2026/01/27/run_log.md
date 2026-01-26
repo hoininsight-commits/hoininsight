@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-26T14:59:43Z
-- finished_utc: 2026-01-26T15:00:13Z
+- started_utc: 2026-01-26T15:13:39Z
+- finished_utc: 2026-01-26T15:14:08Z
 - status: SUCCESS
 
 ## details
@@ -13,7 +13,6 @@ normalize: ok
 derived: ok
 anomaly: ok
 fact_harvester: ok
-fact_first_ingress: ok
 topic: ok
 anchor_engine: ok
 snapshot: ok (data/reports/2026/01/27/data_snapshot.md)
