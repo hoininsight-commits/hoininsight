@@ -162,6 +162,14 @@ class DecisionDashboard:
                 speakability = json.loads(es_path.read_text(encoding="utf-8"))
             except: pass
 
+        # [NEW] Step 55: Load Topic Console
+        console = {}
+        tc_path = self.base_dir / "data" / "ops" / "topic_console_today.json"
+        if tc_path.exists():
+            try:
+                console = json.loads(tc_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -378,7 +386,8 @@ class DecisionDashboard:
             "narrative_hypotheses": narrative_hypotheses,
             "topic_view": topic_view,
             "quality_review": quality_review,
-            "speakability": speakability
+            "speakability": speakability,
+            "topic_console": console
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -470,6 +479,34 @@ class DecisionDashboard:
             frames_str = ", ".join(h.get("structural_frames", []))
             seed_sum = seed.get("seed_summary", "Unknown Seed")
             lines.append(f"| {h.get('hypothesis_text')} | {seed_sum} | {frames_str} | {h.get('supporting_fact_count')} | {h.get('confidence_level')} |")
+        lines.append("")
+
+    def _render_console_snapshot_panel(self, lines: List[str], console: Dict[str, Any]):
+        """Renders Step 55 Topic Console Summary & Navigation."""
+        lines.append("## 🧾 OPERATOR CONTROL CENTER")
+        lines.append("> **Quick Links**: "
+                     "[Topic Console](data/ops/topic_console_today.md) | "
+                     "[Quality Review](data/ops/topic_quality_review_today.md) | "
+                     "[Speakability](data/ops/topic_speakability_today.md) | "
+                     "[Speak Bundle](data/ops/bundles/speak_bundle.md)") # Path might need dynamic year/month/day if strict
+        lines.append("")
+
+        if not console or not console.get("topics"):
+            lines.append("⚠️ **TOPIC CONSOLE SNAPSHOT**: (No topic_console generated)")
+            lines.append("")
+            return
+
+        lines.append("### 📟 TOPIC CONSOLE SNAPSHOT")
+        # Show top 3 topics
+        for t in console.get("topics", [])[:3]:
+            speak_icon = "🟢" if t["speakability"] == "SPEAKABLE_NOW" else "⚪"
+            script_icon = "✅" if t["script_assets"].get("script_md_path") else "⛔"
+            bundle_icon = "✅" if t["script_assets"].get("speak_bundle_md_path") else "⛔"
+            
+            lines.append(f"- **{t['title']}**")
+            lines.append(f"  {speak_icon} SPEAK | SCRIPT{script_icon} | BUNDLE{bundle_icon}")
+        lines.append("")
+        lines.append("---")
         lines.append("")
 
     def _render_speakability_summary_panel(self, lines: List[str], speakability: Dict[str, Any]):
@@ -624,6 +661,9 @@ class DecisionDashboard:
         sat_stats = data.get("saturation_summary")
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
+
+        # [NEW] Step 55: TOPIC CONSOLE Snapshot & Navigation
+        self._render_console_snapshot_panel(lines, data.get("topic_console", {}))
 
         # [NEW] Step 54: EDITORIAL SPEAKABILITY Summary
         self._render_speakability_summary_panel(lines, data.get("speakability", {}))

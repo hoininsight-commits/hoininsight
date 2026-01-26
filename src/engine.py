@@ -254,6 +254,17 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"speak_bundle: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 55: Topic Console Builder Execution
+            try:
+                from src.ops.topic_console_builder import TopicConsoleBuilder
+                tcb = TopicConsoleBuilder(Path("."))
+                tc_res = tcb.run(run_ymd)
+                dd_data["topic_console"] = tc_res
+                details_lines.append("topic_console: ok")
+                print("topic_console: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"topic_console: run error ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
