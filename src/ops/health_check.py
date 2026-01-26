@@ -34,6 +34,7 @@ class HealthCheck:
                 "topics_count": {"READY": 0, "HOLD": 0, "DROP": 0}
             },
             "decision_dashboard_exists": False,
+            "event_coverage_path": "data/dashboard/event_coverage_today.json",
             "errors": [],
             "missing_files": []
         }

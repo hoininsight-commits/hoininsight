@@ -2904,6 +2904,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 오늘 발화 가능 (SPEAK)</div>
                 <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 오늘 관찰 (WATCH)</div>
                 <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 오늘 근거 (EVIDENCE)</div>
+                <div class="nav-item" onclick="activate('event-coverage')"><span class="nav-icon">📊</span> 이벤트 커버리지 (COVERAGE)</div>
                 <div class="nav-item" onclick="activate('topic-gate')"><span class="nav-icon">🔥</span> 토픽 게이트</div>
                 <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 아카이브</div>
                 
@@ -3025,11 +3026,25 @@ def generate_dashboard(base_dir: Path):
 
                     <!-- TAB 0-1: Topic List (NEW) -->
                     <div id="topic-list" class="tab-content" style="display:none;">
+                        <!-- Global Health Box (Restored) -->
+                        <div id="js-health-container" style="margin-bottom:20px;"></div>
+                        
                         <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 25px;">📊 금일 선정 토픽 (Top 5)</h2>
                         <p style="font-size:13px; color:#64748b; margin-bottom:20px;">
                             호인 엔진이 오늘 감지한 이상징후 중 우선순위가 높은 5가지 토픽입니다.
                         </p>
                         {topic_list_html}
+                    </div>
+
+                    <!-- TAB: EVENT COVERAGE (NEW Step 33) -->
+                    <div id="event-coverage" class="tab-content" style="display:none;">
+                        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">📊 EVENT INPUT COVERAGE</h2>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:25px;">
+                            오늘의 이벤트 수집 커버리지 및 마지막 수집 정보를 확인합니다.
+                        </p>
+                        <div id="js-coverage-container">
+                            <div style="padding:40px; text-align:center; color:#94a3b8;">데이터 로딩 중...</div>
+                        </div>
                     </div>
 
                     <!-- TAB: Narrative Queue (NEW) -->
@@ -3636,6 +3651,94 @@ def generate_dashboard(base_dir: Path):
         
         alert("Approval YAML copied to clipboard!\\nPaste this into your ledger or commit message.");
     }}
+    
+    // [Dynamic Health & Coverage Fetch]
+    async function fetchHealth() {{
+        const container = document.getElementById('js-health-container');
+        if (!container) return;
+        try {{
+            const resp = await fetch('data/dashboard/health_today.json');
+            if (!resp.ok) throw new Error('Not found');
+            const data = await resp.json();
+            
+            if (data.status === 'PARTIAL' && data.metrics && data.metrics.events_count === 0) {{
+                const root = data.input_root_cause_code || 'UNKNOWN';
+                container.innerHTML = `
+                <div style="background:#fff7ed; border:1px solid #fed7aa; padding:15px; border-radius:8px; margin-bottom:20px; display:flex; align-items:center; gap:12px;">
+                    <div style="font-size:24px;">🚨</div>
+                    <div style="font-weight:bold; color:#c2410c; font-size:14px;">
+                        오늘은 이벤트 입력이 0건이라 토픽 생성이 불가능합니다. (ROOT: ${{root}})
+                    </div>
+                </div>`;
+            }}
+        }} catch (e) {{ console.log('Health data not found or error:', e); }}
+    }}
+
+    async function fetchCoverage() {{
+        const container = document.getElementById('js-coverage-container');
+        if (!container) return;
+        try {{
+            const resp = await fetch('data/dashboard/event_coverage_today.json');
+            if (!resp.ok) throw new Error('Not found');
+            const data = await resp.json();
+            
+            let familiesHtml = '<div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-bottom:20px;">';
+            for (const [fam, info] of Object.entries(data.by_gate_family)) {{
+                const count = info.events;
+                const bg = count > 0 ? '#dcfce7' : '#f1f5f9';
+                const col = count > 0 ? '#166534' : '#64748b';
+                familiesHtml += `
+                    <div style="background:${{bg}}; padding:15px; border-radius:8px; text-align:center; border:1px solid ${{count > 0 ? '#bbf7d0' : '#e2e8f0'}};">
+                        <div style="font-size:11px; font-weight:bold; color:${{col}};">${{fam}}</div>
+                        <div style="font-size:20px; font-weight:bold; color:${{col}};">${{count}}</div>
+                    </div>`;
+            }}
+            familiesHtml += '</div>';
+
+            let sourcesHtml = `
+                <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                    <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                        <tr>
+                            <th style="padding:10px; text-align:left;">SOURCE_ID</th>
+                            <th style="padding:10px; text-align:center;">TODAY</th>
+                            <th style="padding:10px; text-align:center;">LAST_SEEN</th>
+                            <th style="padding:10px; text-align:left;">HINT</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+            
+            data.by_source.forEach(s => {{
+                const isStale = s.last_seen_date ? (new Date(data.run_date) - new Date(s.last_seen_date)) > 7*24*60*60*1000 : false;
+                const rowCol = isStale ? '#991b1b' : '#1e293b';
+                const rowBg = isStale ? '#fef2f2' : 'transparent';
+                
+                sourcesHtml += `
+                    <tr style="border-bottom:1px solid #f1f5f9; background:${{rowBg}};">
+                        <td style="padding:10px; font-weight:600; color:${{rowCol}};">${{s.source_id}}</td>
+                        <td style="padding:10px; text-align:center;">${{s.events_today}}</td>
+                        <td style="padding:10px; text-align:center; color:${{isStale ? '#dc2626' : '#64748b'}};">${{s.last_seen_date || 'Never'}}</td>
+                        <td style="padding:10px; color:#64748b;">${{s.root_hint}}</td>
+                    </tr>`;
+            }});
+            sourcesHtml += '</tbody></table>';
+
+            let hintHtml = '';
+            if (data.global_flags.includes('NO_EVENTS_ALL')) {{
+                hintHtml = '<div style="background:#fee2e2; color:#991b1b; padding:12px; border-radius:6px; margin-top:15px; font-weight:bold;">💡 입력 이벤트 0건 — 소스 스톨 / 경로 / 스케줄 문제 가능성</div>';
+            }} else if (data.global_flags.some(f => f.endsWith('_EMPTY'))) {{
+                hintHtml = '<div style="background:#fff7ed; color:#9a3412; padding:12px; border-radius:6px; margin-top:15px; font-weight:bold;">💡 특정 이벤트 패밀리 비어있음 — last_seen 확인 필요</div>';
+            }}
+
+            container.innerHTML = familiesHtml + sourcesHtml + hintHtml;
+        }} catch (e) {{
+            container.innerHTML = '<div style="padding:40px; text-align:center; color:#94a3b8;">커버리지 데이터 없음</div>';
+        }}
+    }}
+
+    window.addEventListener('DOMContentLoaded', () => {{
+        fetchHealth();
+        fetchCoverage();
+    }});
     
     // Close modals when clicking outside
     window.onclick = function(event) {{

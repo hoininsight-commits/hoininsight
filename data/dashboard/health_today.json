@@ -1,6 +1,6 @@
 {
   "run_date": "2026-01-26",
-  "checked_at": "2026-01-26T03:16:35.335453",
+  "checked_at": "2026-01-26T13:11:56.991814",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
@@ -15,17 +15,18 @@
     }
   },
   "decision_dashboard_exists": true,
+  "event_coverage_path": "data/dashboard/event_coverage_today.json",
   "errors": [
     "events_dir missing: FETCH_FAILED",
-    "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/01/26"
+    "daily_lock.json missing in /Users/jihopa/.gemini/antigravity/scratch/HoinInsight/data/reports/2026/01/26"
   ],
   "missing_files": [
-    "/home/runner/work/hoininsight/hoininsight/data/events/2026/01/26"
+    "/Users/jihopa/.gemini/antigravity/scratch/HoinInsight/data/events/2026/01/26"
   ],
   "input_root_cause_code": "FETCH_FAILED",
   "input_details": {
     "missing_paths": [
-      "/home/runner/work/hoininsight/hoininsight/data/events/2026/01/26/events.json"
+      "/Users/jihopa/.gemini/antigravity/scratch/HoinInsight/data/events/2026/01/26/events.json"
     ],
     "exceptions": []
   }

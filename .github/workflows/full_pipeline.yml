@@ -301,10 +301,11 @@ jobs:
         run: |
           python -m src.dashboard.dashboard_generator
 
-      - name: Generate Dashboard Manifest & Health (Step 26)
+      - name: Generate Dashboard Manifest & Health (Step 26 & 33)
         run: |
           python -m src.ops.dashboard_manifest
           python -m src.ops.health_check
+          python -m src.ops.event_coverage
 
       - name: Verify Phase 39 Topic Candidates
         run: |
