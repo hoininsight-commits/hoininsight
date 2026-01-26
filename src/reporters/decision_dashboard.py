@@ -113,6 +113,16 @@ class DecisionDashboard:
             except:
                 pass
 
+        # [Step 47.5] Load FACT-FIRST Shadow Pool
+        fact_first_shadows = []
+        ff_path = self.base_dir / "data" / "topics" / "shadow_pool" / ymd.replace("-", "/") / "fact_first.json"
+        if ff_path.exists():
+            try:
+                ff_data = json.loads(ff_path.read_text(encoding="utf-8"))
+                fact_first_shadows = ff_data.get("topics", [])
+            except Exception as e:
+                print(f"[Dashboard] Error parsing fact_first shadows: {e}")
+
         topics = []
         if gate_out.exists():
             try:
@@ -319,10 +329,15 @@ class DecisionDashboard:
                 "shallow_evidence": len([c for c in cards if c.judgment_notes and any("LEVEL 3" in n for n in c.judgment_notes)]),
                 "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
             },
+<<<<<<< HEAD
             "shadow_pool": self._load_shadow_pool(),
             "post_mortem_summary": pm_stats,
             "auto_priority": self._generate_auto_priority(ymd, [asdict(c) for c in cards if c.status == 'READY'], self._load_shadow_pool()),
             "bundle_md": f"data/ops/bundles/{ymd.replace('-', '/')}/speak_bundle.md"
+=======
+            "post_mortem_summary": pm_stats,
+            "fact_first_shadows": fact_first_shadows
+>>>>>>> 16108e5e ([EXECUTE STEP 47.5] Implemented FACT-FIRST topic ingress layer)
         }
 
     def _load_shadow_pool(self) -> Dict[str, Any]:
@@ -427,6 +442,18 @@ class DecisionDashboard:
         # SCRIPT QUALITY Counters
         s = data.get("summary", {})
         lines.append(f"**SCRIPT QUALITY**: 🟢 READY={s.get('READY',0)} | 🟡 HOLD={s.get('HOLD',0)} | 🔴 DROP={s.get('DROP',0)}")
+
+        # [Step 47.5] FACT-FIRST SHADOW TOPICS
+        ff_shadows = data.get("fact_first_shadows", [])
+        if ff_shadows:
+            lines.append("\n## 🏹 FACT-FIRST SHADOW TOPICS")
+            lines.append("> **Early Fact Capture — Not anomaly-confirmed**")
+            lines.append("")
+            lines.append("| Fact Anchor | Structural Reason | Confidence |")
+            lines.append("|---|---|---|")
+            for ff in ff_shadows:
+                lines.append(f"| {ff['fact_anchor']} | {ff['structural_reason']} | {ff['confidence']} |")
+            lines.append("")
         
         # WHY NO SPEAK Panel (if needed)
         if not ready_topics:

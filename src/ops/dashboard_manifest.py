@@ -53,13 +53,35 @@ class DashboardManifest:
             else:
                 missing.append(filename)
 
+        # [Step 48] Index Script Skeleton
+        script_path = None
+        gate_dir = self.base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
+        if gate_dir.exists():
+            scripts = list(gate_dir.glob("script_v1_*.md"))
+            if scripts:
+                # Pick the latest or just the first one if multiple
+                script_file = sorted(scripts, key=os.path.getmtime, reverse=True)[0]
+                script_path = str(script_file.relative_to(self.base_dir))
+
+        # [Step 47.5] Index Fact-First Shadows
+        fact_first_path = None
+        ff_file = self.base_dir / "data" / "topics" / "shadow_pool" / ymd.replace("-", "/") / "fact_first.json"
+        if ff_file.exists():
+            fact_first_path = str(ff_file.relative_to(self.base_dir))
+
         # Flattened Manifest Structure (Step 28-3)
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
             "report_md": paths.get("report_md"),
             "decision_md": paths.get("decision_md"), 
+<<<<<<< HEAD
             "daily_lock": paths.get("daily_lock"),
+=======
+            "daily_lock": paths.get("daily_lock_json"),
+            "script_md": script_path,
+            "fact_first_shadow_json": fact_first_path,
+>>>>>>> 16108e5e ([EXECUTE STEP 47.5] Implemented FACT-FIRST topic ingress layer)
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

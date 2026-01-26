@@ -60,6 +60,17 @@ def main(target_categories: list[str] = None):
         details_lines.append("anomaly: ok")
         print("anomaly: ok", file=sys.stderr)
 
+        # [Step 47.5] Fact-First Ingress (Early Topic Capture)
+        try:
+            from src.ops.fact_first_ingress import FactFirstIngress
+            ffi = FactFirstIngress(Path("."))
+            # Use current date or detected target if available
+            ffi.run_ingress()
+            details_lines.append("fact_first_ingress: ok")
+            print("fact_first_ingress: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"fact_first_ingress: error ({e})", file=sys.stderr)
+
         topic_main()
         details_lines.append("topic: ok")
         print("topic: ok", file=sys.stderr)
