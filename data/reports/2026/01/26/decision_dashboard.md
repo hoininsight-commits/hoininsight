@@ -12,6 +12,16 @@
 
 ---
 
+## 🛡️ TOPIC QUALITY CALIBRATION (Today)
+> **Status**: Calibration active
+
+- **STRONG**: 0
+- **BORDERLINE**: 0
+- **WEAK**: 0
+- **Unreviewed**: 3
+
+---
+
 ## 📢 EDITORIAL SPEAKABILITY
 - **SPEAKABLE_NOW**: 0
 - **NOT_SPEAKABLE_YET**: 1
