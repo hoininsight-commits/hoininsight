@@ -140,11 +140,27 @@ We transformed the Shadow Pool into a deterministic "Promotion Readiness Scorebo
 - **Safety**: Confirmed that no automatic state changes occur in the core Gate/Bridge/Ranker logic.
 - **Tests**: 3/3 tests passed.
 
+## Step 40: Operator Decision Loop Closure
+
+We implemented an append-only editorial logging system to capture human actions (Pick, Skip, Defer, Reject) directly into the operational pipeline, closing the feedback loop between the engine's suggestions and the operator's final choices.
+
+### Key Deliverables
+- **Decision Log**: `src/ops/operator_decision_log.py` provides a daily append-only persistent record of human editorial choices in `data/ops/operator_decisions/YYYY-MM-DD.json`.
+- **Editorial Summary**: A new dashboard panel, `OPERATOR DECISIONS (TODAY)`, provides high-level accountability for daily editorial throughput.
+- **Action Capture UI**: Dashboard candidate cards (READY and SHADOW) now feature explicit action bars and status badges (🧭 OPERATOR: ...) to reflect captured decisions.
+- **Auditability**: Every decision is logged with a UTC timestamp and an optional context note, ensuring full traceability for post-mortem reviews.
+
+### Verification Evidence
+- **Append-Only Integrity**: Verified that multiple decisions for the same topic are appended correctly, with the latest choice reflected on the dashboard.
+- **State Protection**: Confirmed that logging human decisions never alters the underlying engine state (READY/HOLD/DROP) or topic rankings.
+- **UI Affirmation**: Successfully verified badge rendering for recorded decisions in the Decision Dashboard.
+- **Tests**: 3/3 tests passed in `tests/test_operator_decision_log.py`.
+
 ### [WORK CONFIRMATION]
-Step 39-1 — Readiness enum defined
-Step 39-2 — Readiness calculator implemented
-Step 39-3 — Shadow integration complete
-Step 39-4 — Dashboard scoreboard rendered
-Step 39-5 — Operator hint rules applied
-Step 39-6 — Tests passing
+Step 40-1 — Operator action enum defined
+Step 40-2 — Decision log schema implemented
+Step 40-3 — Dashboard action capture added
+Step 40-4 — Visual feedback rendered
+Step 40-5 — Daily operator summary panel added
+Step 40-6 — Tests passing
 Push — DONE (main)
