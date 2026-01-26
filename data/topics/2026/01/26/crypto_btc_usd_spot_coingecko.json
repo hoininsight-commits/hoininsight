@@ -1,20 +1,20 @@
 [
   {
-    "ts_utc": "2026-01-26T03:16:31Z",
+    "ts_utc": "2026-01-26T04:13:29Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
-    "title": "data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json L2 Signal",
-    "score": 6.0,
-    "severity": "HIGH",
+    "title": "data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
     "evidence": {
-      "source_severity": 60,
-      "level": "L2",
+      "source_severity": 30,
+      "level": "L1",
       "details": {
-        "z_score": -2.15,
+        "z_score": -1.95,
         "percentile": 50.0,
-        "value": 87482.0,
-        "rolling_mean_20d": 89032.85,
-        "reasoning": "Z-Score -2.15 >= 2.0"
+        "value": 87352.0,
+        "rolling_mean_20d": 88929.45,
+        "reasoning": "Z-Score -1.95 >= 1.5"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/26/crypto_btc_usd_spot_coingecko.json"
     },
-    "rationale": "[L2] Z-Score -2.15 >= 2.0 (Regime x1.0)",
+    "rationale": "[L1] Z-Score -1.95 >= 1.5 (Regime x1.0)",
     "links": []
   }
 ]

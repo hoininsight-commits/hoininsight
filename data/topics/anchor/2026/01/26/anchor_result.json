@@ -1,19 +1,15 @@
 {
   "data_axis": [
     "index_kospi_stooq",
-    "metal_gold_paxg_coingecko",
     "rates_us10y_fred",
     "metal_silver_kag_coingecko",
-    "crypto_btc_usd_spot_coingecko",
     "derived_gold_silver_ratio"
   ],
   "baseline_match": [
-    "index_kospi_stooq: Volatility Surge (Z=2.36)",
-    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.03)",
+    "index_kospi_stooq: Volatility Surge (Z=2.18)",
     "rates_us10y_fred: Volatility Surge (Z=2.20)",
-    "metal_silver_kag_coingecko: Volatility Surge (Z=2.52)",
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.15)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=2.77)"
+    "metal_silver_kag_coingecko: Volatility Surge (Z=2.43)",
+    "derived_gold_silver_ratio: Volatility Surge (Z=2.65)"
   ],
   "anomaly_logic": "Monetary Tightening",
   "why_now_type": "Capital-driven",
