@@ -156,11 +156,27 @@ We implemented an append-only editorial logging system to capture human actions 
 - **UI Affirmation**: Successfully verified badge rendering for recorded decisions in the Decision Dashboard.
 - **Tests**: 3/3 tests passed in `tests/test_operator_decision_log.py`.
 
+## Step 41: Pick ↔ Outcome Correlation View
+
+We introduced a "Pick → Outcome" correlation system to provide transparency and accountability for human editorial decisions. This view connects operator picks with the eventual engine-determined outcomes (CONFIRMED/FAILED).
+
+### Key Deliverables
+- **Correlation Engine**: `src/ops/pick_outcome_correlator.py` performs a strict join between operator logs and retrospective post-mortem data over a rolling 30-day window.
+- **Scoreboard Dashboard**: A new dashboard panel, `📌 PICK → OUTCOME (Last 30d)`, summarizes collective human picking performance and lists recent results.
+- **Performance Summary**: Automatically aggregates counts for Picked, Confirmed, Failed, Unresolved, and Missing outcomes.
+- **Join Integrity**: Implented strict `topic_id` matching with title-based fallback to ensure data accuracy across disparate lookback logs.
+
+### Verification Evidence
+- **Strict Join Logic**: Verified ID-first matching and normalized title fallback via `tests/test_pick_outcome_correlator.py`.
+- **Summary Accuracy**: Confirmed that outcome counts correctly reflect the underlying history records.
+- **UI Rendering**: Dashboard successfully renders the correlation panel even when historical records for a specific day are unresolved or missing.
+- **Tests**: 3/3 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 40-1 — Operator action enum defined
-Step 40-2 — Decision log schema implemented
-Step 40-3 — Dashboard action capture added
-Step 40-4 — Visual feedback rendered
-Step 40-5 — Daily operator summary panel added
-Step 40-6 — Tests passing
+Step 41-1 — Correlation row schema implemented
+Step 41-2 — Strict join rules applied
+Step 41-3 — Correlator builder writes pick_outcome_30d.json
+Step 41-4 — Dashboard panel rendered + row list
+Step 41-5 — Pipeline OPS wiring added
+Step 41-6 — Tests passing
 Push — DONE (main)
