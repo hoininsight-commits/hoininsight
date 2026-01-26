@@ -11,19 +11,20 @@ I18N_KO = {
     "INGESTION_SKIP": "수집 건너뜀",
     "ERR": "오류",
     "VIEW": "보기",
-    "RANK": "순위",
+    "VIEW": "상세 보기",
+    "RANK": "우선순위",
     "VALUE": "값",
     "STATUS": "상태",
-    "DATE": "날짜",
-    "TYPE": "유형",
-    "DETAIL": "상세",
+    "DATE": "발생 일자",
+    "TYPE": "분류",
+    "DETAIL": "상세 내용",
     
-    # Navigation
-    "MAIN_VIEW": "TODAY",
-    "TODAYS_INSIGHT": "오늘의 주요 내용",
-    "TOPIC_GATE": "WHY THIS TOPIC",
-    "SELECTED_TOPICS": "금일 선정 토픽",
-    "DAILY_ARCHIVE": "ARCHIVE",
+    # Navigation (Step 60 Fixed)
+    "MAIN_VIEW": "오늘 선정 토픽",
+    "TODAYS_INSIGHT": "오늘의 주요 맥락",
+    "TOPIC_GATE": "토픽 리포트",
+    "SELECTED_TOPICS": "오늘의 주요 토픽",
+    "DAILY_ARCHIVE": "토픽 리스트",
     "ARCHITECTURE": "시스템 구조",
     "OPERATIONS": "운영실",
     "OPS_SCOREBOARD": "운영 지표",
@@ -41,14 +42,23 @@ I18N_KO = {
     "FINAL_DECISION_RAW": "최종 결정 데이터 (Raw)",
     "INSIGHT_SCRIPT_RAW": "스크립트 데이터 (Raw)",
     
-    # Section Headers (Dashboard)
+    # Sections (Step 60)
+    "SECTION_A_TITLE": "🔴 지금 선점해야 할 토픽 (이야기 중심)",
+    "SECTION_B_TITLE": "🔵 이미 시장이 반응한 토픽 (시장 지표 중심)",
+    "RATIONALE_OPERATOR": "이 토픽의 맥락",
+    "WHY_NOW_OPERATOR": "왜 지금인가",
+    "IMPORTANCE_LEVEL": "중요도",
+    "STATUS_READY": "바로 사용 가능",
+    "STATUS_WATCH": "관찰중",
+    
+    # Existing Keys for Compatibility
     "RATIONALE": "선정 이유",
-    "DATA_EVIDENCE": "데이터 증거",
-    "LEADER_STOCKS": "관련 테마 대장주",
-    "SCRIPT_DRAFT": "스크립트 초안",
-    "RELATED_DATA": "관련 데이터",
-    "SIGNAL_LOGIC": "신그널 로직",
-    "TRIGGER_EVENT": "트리거 발생",
+    "DATA_EVIDENCE": "근거 데이터",
+    "LEADER_STOCKS": "관련 테마 및 종목",
+    "SCRIPT_DRAFT": "영상 스크립트 초안",
+    "RELATED_DATA": "관련 지표",
+    "SIGNAL_LOGIC": "감지 로직",
+    "TRIGGER_EVENT": "발생 트리거",
     
     # Deep Logic Analyzer Headers
     "DEEP_LOGIC_ANALYSIS": "심층 로직 분석",
@@ -87,4 +97,9 @@ I18N_KO = {
     "LIQUIDITY_SHIFT_CONFIRM": "유동성 이동 확인",
     "INSUFFICIENT_DATA": "데이터 부족",
     "REAL_TOPIC": "진짜 주제",
+    
+    # Importance Mapping
+    "LEVEL_HIGH": "높음",
+    "LEVEL_MEDIUM": "보통",
+    "LEVEL_LOW": "낮음",
 }

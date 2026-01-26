@@ -65,139 +65,72 @@ def _load_historical_cards(base_dir: Path) -> List[Dict]:
     return cards
 
 def _generate_archive_view(cards: List[Dict]) -> str:
-    """Generate HTML Table for Topic Archive with Top 5 Detail Support"""
+    """Generate HTML Table for Topic Archive (Operator-First Structure)"""
     if not cards:
         return '<div style="padding:40px; text-align:center; color:#94a3b8;">저장된 과거 데이터가 없습니다.</div>'
 
-    # Prepare Data for JS Modal
-    topic_details_map = {}
-    
     table_rows = ""
     
     for card_idx, c in enumerate(cards):
         date = c.get('_date', 'Unknown')
-        
-        # Determine Topic List (Top 5 or Single Fallback)
         top_topics = c.get("top_topics", [])
+        
+        # Fallback for old single-topic cards
         if not top_topics:
-            # Fallback to single topic structure
             single_topic = c.get('topic')
-            if not single_topic:
-                 # Check narrative fallback
-                 n_topics = c.get('narrative_topics', [])
-                 if n_topics:
-                     # Create a pseudo-topic dict from narrative
-                     top_topics = [{
-                         "title": n_topics[0].get('topic_anchor'),
-                         "level": "Narrative",
-                         "rationale": n_topics[0].get('core_narrative'),
-                         "evidence": {"details": {"value": "N/A", "reasoning": "Narrative Engine Output"}}
-                     }]
+            if single_topic:
+                top_topics = [c] # The card itself is the topic
             else:
-                # Create a pseudo-topic from the flat card
-                top_topics = [{
-                    "title": single_topic,
-                    "level": c.get('level', 'L2'),
-                    "rationale": c.get('decision_rationale', ''),
-                    "leader_stocks": c.get('leader_stocks', []),
-                    "evidence": c.get('raw_data', {}).get('evidence', {})
-                }]
+                n_topics = c.get('narrative_topics', [])
+                if n_topics:
+                    top_topics = [{"title": n_topics[0].get('topic_anchor'), "level": "Narrative"}]
 
-        # Generate Rows for this Date
         for t_idx, topic in enumerate(top_topics):
-            # Unique ID for Modal
-            topic_uid = f"t_{card_idx}_{t_idx}"
+            title = topic.get("title", topic.get("topic", "Untitled Topic"))
+            level = str(topic.get("level", "L2"))
             
-            title = topic.get("title", "Untitled Topic")
-            level = topic.get("level", "L2")
-            rationale = topic.get("rationale", "No rationale provided.")
+            # Type Logic (Operator First: 경사 스타일 / 이상징후)
+            is_anomaly = topic.get("dataset_id") == "topic_gate" or level.lower() == "narrative"
+            type_label = "이상징후" if is_anomaly else "경사 스타일"
+            type_bg = "#f3e8ff" if is_anomaly else "#dbeafe"
+            type_color = "#6b21a8" if is_anomaly else "#1e40af"
             
-            # Formatting Evidence
-            evidence = topic.get("evidence", {})
-            evidence_html = ""
-            if isinstance(evidence, dict):
-                details = evidence.get("details", {})
-                if details:
-                    evidence_html += "<div style='background:#f8fafc; padding:10px; border-radius:6px; margin-top:10px; font-size:12px; border:1px solid #e2e8f0;'>"
-                    evidence_html += f"<strong>📊 {I18N_KO['DATA_EVIDENCE']}</strong><br>"
-                    evidence_html += f"{I18N_KO['VALUE']}: {details.get('value', 'N/A')}<br>"
-                    evidence_html += f"Z-Score: {details.get('z_score', 'N/A')}<br>"
-                    evidence_html += f"Analyst Note: {details.get('reasoning', '')}"
-                    evidence_html += "</div>"
-            
-            # Formatting Leader Stocks
-            stocks = topic.get("leader_stocks", [])
-            stocks_html = ""
-            if stocks:
-                s_tags = "".join([f"<span style='background:#f0fdf4; color:#166534; padding:2px 6px; border-radius:4px; margin-right:4px; font-size:11px; font-weight:bold;'>{s}</span>" for s in stocks])
-                stocks_html = f"<div style='margin-top:10px;'><strong>🚀 {I18N_KO['LEADER_STOCKS']}:</strong><br><div style='margin-top:4px;'>{s_tags}</div></div>"
-
-            # Construct Modal Content
-            modal_content = f"""
-                <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                    <div style="font-size:12px; color:#64748b; margin-bottom:4px;">{date} / Rank #{t_idx+1}</div>
-                    <h3 style="margin:0; font-size:18px; color:#1e293b;">{title}</h3>
-                </div>
-                <div style="font-size:14px; color:#334155; line-height:1.6;">
-                    <strong style="color:#0f172a;">💡 {I18N_KO['RATIONALE']}</strong>
-                    <p style="margin-top:4px; background:#fffbeb; padding:10px; border-radius:6px; border:1px solid #fcd34d;">{rationale}</p>
-                    {evidence_html}
-                    {stocks_html}
-                </div>
-            """
-            topic_details_map[topic_uid] = modal_content
-            
-            # Badge Style
-            type_badge = '<span style="background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px; font-size:11px;">구조적</span>'
-            if str(level).lower() == "narrative":
-                 type_badge = '<span style="background:#f3e8ff; color:#6b21a8; padding:2px 6px; border-radius:4px; font-size:11px;">내러티브</span>'
-            
-            # Row HTML
-            # Only show date on the first item of the day (rowspan logic is hard in flat loop, so just show empty or repeat)
-            # We'll just repeat date for clarity or make it lighter
-            date_display = f"<strong>{date}</strong>" if t_idx == 0 else f"<span style='color:#cbd5e1; font-size:11px;'>{date}</span>"
+            # Importance Logic
+            importance = "보통"
+            if "l3" in level.lower(): importance = "높음"
+            elif "l1" in level.lower(): importance = "낮음"
             
             table_rows += f"""
-            <tr style="border-bottom:1px solid #f1f5f9; cursor:pointer;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'" onclick="showArchiveDetail('{topic_uid}')">
-                <td style="padding:12px; color:#334155;">{date_display}</td>
-                <td style="padding:12px;">
-                    <div style="font-weight:600; color:#1e293b; font-size:13px;">{title}</div>
-                    <div style="font-size:11px; color:#64748b; margin-top:2px;">Rank #{t_idx+1}</div>
+            <tr style="border-bottom:1px solid #f1f5f9;">
+                <td style="padding:15px; color:#64748b; font-size:12px;">{date}</td>
+                <td style="padding:15px; font-weight:700; color:#1e293b;">{title}</td>
+                <td style="padding:15px;">
+                    <span style="background:{type_bg}; color:{type_color}; padding:4px 8px; border-radius:4px; font-size:11px; font-weight:bold;">{type_label}</span>
                 </td>
-                <td style="padding:12px;">{type_badge}</td>
-                <td style="padding:12px; text-align:right;">
-                    <button style="border:1px solid #cbd5e1; background:white; color:#64748b; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">{I18N_KO['VIEW']}</button>
+                <td style="padding:15px;">
+                    <span style="color:#475569; font-size:12px; font-weight:600;">{importance}</span>
                 </td>
             </tr>
             """
 
     html = f"""
-    <div id="topic-archive" class="tab-content" style="display:none; width:100%;">
-        <h2 style="font-size:18px; font-weight:700; color:#334155; margin-bottom:20px;">📅 일별 아카이브 (Daily Topic History)</h2>
-        <div style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
-            <table style="width:100%; border-collapse:collapse; font-size:13px;">
-                <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
-                    <tr>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:90px;">{I18N_KO['DATE']}</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600;">선정 토픽 (Top 5)</th>
-                        <th style="padding:12px; text-align:left; color:#64748b; font-weight:600; width:70px;">{I18N_KO['TYPE']}</th>
-                        <th style="padding:12px; text-align:right; color:#64748b; font-weight:600; width:60px;">{I18N_KO['DETAIL']}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {table_rows}
-                </tbody>
-            </table>
-        </div>
+    <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+        <table style="width:100%; border-collapse:collapse; font-size:14px;">
+            <thead style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                <tr>
+                    <th style="padding:15px; text-align:left; color:#64748b; font-weight:800; width:120px;">날짜</th>
+                    <th style="padding:15px; text-align:left; color:#64748b; font-weight:800;">주제</th>
+                    <th style="padding:15px; text-align:left; color:#64748b; font-weight:800; width:100px;">유형</th>
+                    <th style="padding:15px; text-align:left; color:#64748b; font-weight:800; width:80px;">중요도</th>
+                </tr>
+            </thead>
+            <tbody>
+                {table_rows}
+            </tbody>
+        </table>
     </div>
-    
-    <!-- Topic Detail Modal & Scripts -->
-    <div id="topicDetailModal" class="modal">
-        <div class="modal-content" style="max-width:600px;">
-            <span class="close-btn" onclick="closeTopicModal()">&times;</span>
-            <div id="topic-detail-content"></div>
-        </div>
-    </div>
+    """
+    return html
 
     <script>
         window.TOPIC_DETAILS = {json.dumps(topic_details_map)};
@@ -2257,15 +2190,14 @@ def generate_dashboard(base_dir: Path):
         top_topics.append(mapped_t)
         all_scripts_map[f"narrative_{idx}"] = nt.get("script_kr", "스크립트가 없습니다.")
 
-    # [Phase 18] Prepare Refactored Data (SPEAK, WATCH, EVIDENCE)
-    speak_topics = []
-    watch_topics = []
+    # [Step 60] Operator-First Topic Collection & Split
+    section_a_topics = [] # 지금 선점해야 할 토픽 (경사 스타일)
+    section_b_topics = [] # 이미 시장이 반응한 토픽 (이상징후)
     consolidated_anchors = []
 
     def _get_or_gen_script(t, idx, is_structural=True):
-        """Load specific script or generate minimal 7-step outline."""
+        """Load specific script or generate operator-friendly outline."""
         script_text = ""
-        # 1. Try Loading File
         try:
             if is_structural:
                 if idx == 0:
@@ -2273,8 +2205,10 @@ def generate_dashboard(base_dir: Path):
                     if not s_path.exists(): s_path = base_dir / "data" / "content" / "insight_script_v1.md"
                 else:
                     s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"insight_script_{idx+1}.md"
-            else:
-                s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"narrative_script_{idx}.md"
+            else: # Narrative or Event-Gate
+                s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"narrative_script_{idx}.md" # Assuming narrative scripts are indexed
+                if not s_path.exists(): # Fallback for event-gate if no specific script
+                    s_path = base_dir / "data" / "reports" / ymd.replace("-","/") / f"event_gate_script.md" # Placeholder for event gate
             
             if s_path.exists():
                 script_text = s_path.read_text(encoding='utf-8')
@@ -2282,197 +2216,108 @@ def generate_dashboard(base_dir: Path):
 
         if script_text: return script_text
 
-        # 2. Fallback Generation
+        # Operator-First Fallback (Step 60 Specification)
         title = t.get('title', 'Unknown')
-        rationale = t.get('rationale', t.get('core_narrative', 'No rationale'))
+        rationale = t.get('rationale') or t.get('selection_rationale') or '왜 중요한지에 대한 요약이 없습니다.'
         
-        # [Step 59] 5-step humanized structure
         outline = [
             f"# {title}",
-            "### 1. 오프닝",
-            f"오늘 우리 시장에서 주목해야 할 가장 핵심적인 변화는 '{title}'입니다.",
-            "### 2. 핵심 주장",
-            f"{rationale.split('.')[0]}. 이 움직임은 단순한 변동이 아닌 구조적인 신호로 판단됩니다.",
-            "### 3. 근거 데이터",
-            f"- 실질 지표 변동: {t.get('level', 'L2')} 등급 경고 감지",
-            f"- 데이터 증거: {t.get('observed_metrics', ['N/A'])} 기준 도달",
-            "### 4. 다음에 봐야 할 포인트",
-            f"관련 섹터({', '.join(t.get('leader_stocks', ['N/A']))[:50]})의 수급 변화와 차기 지표 발표를 주시해야 합니다.",
-            "### 5. 리스크 한 줄",
-            "단기 과매수/과매도 구간일 수 있으므로 지표의 연속성을 확인하는 것이 안전합니다."
+            "### [영상용 서술 스크립트]",
+            f"오늘 우리 시장에서 기획자가 주목해야 할 변화는 '{title}'입니다. {rationale}",
+            "이 현상은 단순한 가격 변동을 넘어 시장의 구조적인 판도가 바뀌고 있음을 시사합니다.",
+            "### [선정 근거 요약]",
+            f"- 실질 지표 변동: {t.get('level', 'L2')} 등급 신호 감지",
+            f"- 데이터 증거: {t.get('observed_metrics', ['N/A'])} 기준치 초과",
+            "### [중요도 설명]",
+            "이 이슈는 향후 1~2주간 시장의 메인 테마로 작동할 가능성이 매우 높으며, 관련 종목군에 대한 수급 집중이 예상됩니다."
         ]
         return "\n\n".join(outline)
-    
-    # 1. Structural Topics from Final Card
+
+    # 1. Collect Section A (Structural / Fact-First)
     all_struct = final_card.get("top_topics", [])
     for idx, t in enumerate(all_struct):
-        # [Deduplication] Hide if consumed by Synthesis
-        if t.get("dataset_id") in consumed_ids:
-            # [Fix] Even if hidden from Speak/Watch, its evidence must be in Evidence Tab
-            # Manually add to consolidated_anchors
-            c_anchor = {
-                "sensor_id": t.get("dataset_id"), 
-                "title": t.get("title"), 
-                "_topic_title": t.get("title"),
-                "_type": "structural",
-                "rationale": f"Level: <b>{t.get('level', 'N/A')}</b> | Z-score: <b>{t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')}</b>"
-            }
-            consolidated_anchors.append(c_anchor)
-            continue
-            
-        # Ensure ID
+        if t.get("dataset_id") in consumed_ids: continue
+        
         tid = t.get("topic_id") or f"struct_{idx}_{ymd}"
         t["topic_id"] = tid
+        t["section"] = "A"
         
-        # Map into the internal speaker-friendly format
-        t_mapped = dict(t)
-        t_mapped["speak_eligibility_trace"] = {
-            "triggers": [t.get("rationale", "Structural deviation detected")],
-            "summary": "VALIDATED BY ANCHOR ENGINE"
-        }
-        # Anchors for evidence
-        t_mapped["anchors"] = {"structural": [{"sensor_id": t.get("dataset_id"), "title": t.get("title")}]}
+        # Status Label
+        if t.get("proof_status") == "VALIDATED" and t.get("confidence", 0) >= 80:
+            t["operator_status"] = "READY"
+        else:
+            t["operator_status"] = "WATCH"
+            
+        # Importance
+        lvl = t.get("level", "L2")
+        t["importance"] = "LEVEL_HIGH" if lvl == "L3" else ("LEVEL_MEDIUM" if lvl == "L2" else "LEVEL_LOW")
         
-        # Populate Details
+        # Detail Setup (Fixed Structure Goal)
         topic_details[tid] = {
             "script_text": _get_or_gen_script(t, idx, True),
-            "evidence_trace": t_mapped["speak_eligibility_trace"],
-            "anchors": t_mapped["anchors"].get("structural", []),
-            "metadata": {"dataset": t.get("dataset_id"), "level": t.get("level")}
+            "rationale": t.get("rationale") or t.get("selection_rationale") or "상세 설명이 없습니다.",
+            "importance_desc": "시장의 판도를 결정짓는 핵심 구조 변화로 판단됩니다.",
+            "evidence_data": f"등급: {lvl} | Z-Score: {t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')}",
+            "metadata": t # Raw data preservation
         }
-
-        if t.get("proof_status") == "VALIDATED" and t.get("confidence", 0) >= 80:
-            speak_topics.append(t_mapped)
-        else:
-            watch_topics.append(t_mapped)
-
-    # 2. Event-Triggered Topics (Topic Gate)
-    if gate_data:
-        # Ensure ID
-        tid = gate_data.get("topic_id") or f"gate_{ymd}"
-        gate_data["topic_id"] = tid
+        section_a_topics.append(t)
         
+        # Evidence Tab Prep
+        consolidated_anchors.append({
+            "sensor_id": t.get("dataset_id"), 
+            "title": t.get("title"), 
+            "_topic_title": t.get("title"),
+            "_type": "structural",
+            "rationale": f"Level: {lvl}"
+        })
+
+    # 2. Collect Section B (Anomaly / Data-Driven)
+    if gate_data:
+        tid = gate_data.get("topic_id") or f"gate_{ymd}"
         gate_eligibility = gate_data.get("speak_eligibility", {})
-        gate_topic = {
+        
+        t_gate = {
             "title": gate_data.get("title"),
             "topic_id": tid,
             "dataset_id": "topic_gate",
-            "rationale": gate_data.get("why_people_confused"),
-            "speak_eligibility_trace": gate_eligibility,
-            "anchors": {"event": [{"sensor_id": "topic_gate", "title": gate_data.get("title")}]}
+            "section": "B",
+            "rationale": gate_data.get("why_people_confused") or "시장 이상 반응 감지",
+            "operator_status": "READY" if gate_eligibility.get("eligible") else "WATCH",
+            "importance": "LEVEL_MEDIUM",
+            "raw_data": {"evidence": {"details": {"z_score": "N/A", "percentile": "N/A"}}},
+            "speak_eligibility_trace": gate_eligibility
         }
         
-        # Populate Details
         topic_details[tid] = {
-            "script_text": _get_or_gen_script(gate_topic, 0, False), # idx 0 for simplicity if only one gate
-            "evidence_trace": gate_eligibility,
-            "anchors": gate_topic["anchors"].get("event", []),
-            "metadata": {"type": "event-gate"}
+            "script_text": _get_or_gen_script(t_gate, 0, False), # Pass False for is_structural for event-gate
+            "rationale": t_gate["rationale"],
+            "importance_desc": "시장 참여자들의 행동 변화나 데이터상의 특이점이 발견되었습니다.",
+            "evidence_data": "실시간 데이터 기반 임계치 도달",
+            "metadata": gate_data
         }
-
-        if gate_eligibility.get("eligible"):
-            speak_topics.append(gate_topic)
-        else:
-            # If not eligible but has shift, put in watch
-            if gate_eligibility.get("summary") or gate_eligibility.get("trace", {}).get("NARRATIVE_SHIFT", {}).get("triggered"):
-                 watch_topics.append(gate_topic)
-
-    # 3. Evidence Collection
-    for t in speak_topics + watch_topics:
-        # [Deduplication] Skip if Title matches Synth Topic exactly
-        if s_title and t.get("title") == s_title:
-             # Ensure its evidence is captured though!
-             ans = t.get("anchors", {})
-             for atype, alist in ans.items():
-                for a in alist:
-                    a_with_topic = dict(a)
-                    a_with_topic["_topic_title"] = t.get("title")
-                    a_with_topic["_type"] = atype
-                    # [Requirement] Data Only (No narrative)
-                    _lvl = t.get('level', 'N/A')
-                    _z = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
-                    a_with_topic["rationale"] = f"Level: <b>{_lvl}</b> | Z-score: <b>{_z}</b>"
-                    consolidated_anchors.append(a_with_topic)
-             continue
-
-        ans = t.get("anchors", {})
-        for atype, alist in ans.items():
-            for a in alist:
-                # Add topic reference to anchor
-                a_with_topic = dict(a)
-                a_with_topic["_topic_title"] = t.get("title")
-                a_with_topic["_type"] = atype
-                # [Requirement] Data Only
-                _lvl = t.get('level', 'N/A')
-                _z = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
-                a_with_topic["rationale"] = f"Level: <b>{_lvl}</b> | Z-score: <b>{_z}</b>"
-                consolidated_anchors.append(a_with_topic)
-
-    # [Deduplication] Remove Synth-matching topics from speak/watch lists
-    if s_title:
-        speak_topics = [t for t in speak_topics if t.get("title") != s_title]
-        watch_topics = [t for t in watch_topics if t.get("title") != s_title]
-    
-    # [Phase 18] Generate HTML for Refactored Panels
-    
-    # [Grouping] Post-process Watch Topics (Deduplicate by Theme)
-    grouped_watch = {}
-    for t in watch_topics:
-        title = t.get("title", "")
-        # Extract [Theme]
-        theme_match = re.search(r"^\[(.*?)\]", title)
-        group_key = theme_match.group(1) if theme_match else title
+        section_b_topics.append(t_gate)
         
-        if group_key not in grouped_watch:
-            grouped_watch[group_key] = []
-        grouped_watch[group_key].append(t)
-    
-    final_watch_topics = []
-    for key, items in grouped_watch.items():
-        # Sort by score desc
-        items.sort(key=lambda x: x.get("score", 0), reverse=True)
-        representative = items[0]
-        count = len(items)
-        
-        if count > 1:
-            # Mark as group leader
-            representative["is_group_leader"] = True
-            representative["group_count"] = count
-            representative["group_key"] = key
-        
-        final_watch_topics.append(representative)
-        
-    watch_topics = final_watch_topics
-    
-    def _render_cards(topics: List[Dict], card_type: str) -> str:
+        # Evidence Tab Prep
+        consolidated_anchors.append({
+            "sensor_id": "topic_gate", 
+            "title": t_gate["title"], 
+            "_topic_title": t_gate["title"],
+            "_type": "event",
+            "rationale": "Event-based confusion/hype"
+        })
+
+    def _render_operator_cards(topics: List[Dict], section_type: str) -> str:
         if not topics:
-            if card_type == "speak":
-                return '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 발화 가능한 대상이 없습니다. (No speakable topics today)</div>'
-            elif card_type == "watch":
-                return '<div style="padding:60px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1;">오늘 관찰 중인 대상이 없습니다.</div>'
+            return '<div style="padding:40px; text-align:center; color:#94a3b8; background:white; border-radius:12px; border:1px dashed #cbd5e1; margin-bottom:30px;">선정된 토픽이 없습니다.</div>'
         
         cards_html = ""
         for idx, t in enumerate(topics):
-            trace = t.get("speak_eligibility_trace", {})
-            reasons = trace.get("triggers", []) if card_type == "speak" else trace.get("shift_metadata", {}).get("reasons", ["Observation ongoing"])
-            anchors_sum = t.get("anchors", {})
-            dataset_id = t.get('dataset_id', '')
+            status = t.get("operator_status", "WATCH")
+            status_text = "✅ 지금 써도 됨" if status == "READY" else "👀 더 지켜보기"
+            status_color = "#16a34a" if status == "READY" else "#f59e0b"
+            importance_text = I18N_KO.get(t.get("importance", "LEVEL_MEDIUM"), "보통")
             
-            # [Step 59] Human-First Labels
-            status_text = "✅ 지금 써도 됨"
-            status_color = "#16a34a"
-            if card_type == "watch":
-                status_text = "👀 더 지켜보기"
-                status_color = "#f59e0b"
-            elif t.get("status") == "DROP":
-                status_text = "⛔ 오늘은 아님"
-                status_color = "#dc2626"
-
-            # [Step 59] Evidence Snapshot
-            z_score = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('z_score', 'N/A')
-            percentile = t.get('raw_data', {}).get('evidence', {}).get('details', {}).get('percentile', 'N/A')
-            
-            # [Step 59] Stocks
+            # Stocks
             stocks = t.get("leader_stocks", [])
             stocks_html = ""
             if stocks:
@@ -2537,12 +2382,8 @@ def generate_dashboard(base_dir: Path):
             """
         return cards_html
 
-    # [Step 59] Content Prep
-    playable_count = len(speak_topics)
-    total_count = len(speak_topics) + len(watch_topics)
-
-    speak_topics_html = _render_cards(speak_topics, "speak")
-    watch_topics_html = _render_cards(watch_topics, "watch")
+    section_a_html = _render_operator_cards(section_a_topics, "A")
+    section_b_html = _render_operator_cards(section_b_topics, "B")
     
     # [Step 59] Dashboard Template Header Update
     # I will replace the speak-today tab content structure directly in the large template string later.
@@ -2667,73 +2508,81 @@ def generate_dashboard(base_dir: Path):
             """
             topic_list_html += f"""
         <script>
-            const TOPIC_DATA = {json.dumps(top_topics)};
-            const ALL_SCRIPTS = {json.dumps(scripts_content)};
+            const TOPIC_DETAILS = {json.dumps(topic_details)};
             
-            function showTopicDetail(idx) {{
-                const t = TOPIC_DATA[idx];
-                const view = document.getElementById('topic-detail-view');
-                const scriptContent = ALL_SCRIPTS[idx];
-                
-                // [Step 59] Human-First rationale mapping
-                const fact = t.raw_data?.evidence?.details?.reasoning || '데이터 포인트 감지';
-                const structure = t.logic_block || '시장 구조의 변화';
-                const hypothesis = t.rationale || t.title;
-                const risk = t.risk_note || '뉴스 및 추가 지표의 확산 여부 확인 필요';
+            function showTopicDetail(topicId) {{
+                const d = TOPIC_DETAILS[topicId];
+                if (!d) return;
 
-                const levelColor = t.is_narrative ? "#7c3aed" : "#1e40af";
-                const typeLabel = t.is_narrative ? "내러티브 분석" : "구조적 변화";
+                const view = document.getElementById('topic-detail-view');
+                const t = d.metadata;
+                
+                const statusColor = t.operator_status === "READY" ? "#16a34a" : "#f59e0b";
+                const levelLabel = t.level || "DATA";
 
                 let html = `
-                    <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:25px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                             <span style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${{idx+1}} DETAIL</span>
-                             <span style="background:${{levelColor}}; color:white; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:bold;">${{typeLabel}}</span>
+                    <!-- 1. 주제 (Title) -->
+                    <div style="border-bottom:1px solid #e2e8f0; padding-bottom:20px; margin-bottom:30px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                             <span style="font-size:11px; font-weight:800; color:#64748b; letter-spacing:1px;">TOPIC DETAIL VIEW</span>
+                             <span style="background:${{statusColor}}; color:white; padding:4px 12px; border-radius:6px; font-size:11px; font-weight:bold;">${{t.operator_status}} (${{levelLabel}})</span>
                         </div>
-                        <h2 style="margin:0; font-size:24px; color:#1e293b; font-weight:900; line-height:1.3;">${{t.title}}</h2>
+                        <h2 style="margin:0; font-size:28px; color:#0f172a; font-weight:900; line-height:1.2;">${{t.title}}</h2>
                     </div>
                     
-                    <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:30px;">
-                        <div style="border-left:4px solid #cbd5e1; padding-left:15px;">
-                            <div style="font-size:11px; font-weight:bold; color:#94a3b8; margin-bottom:4px;">1. 이 토픽이 포착된 팩트</div>
-                            <div style="font-size:14px; color:#334155;">${{fact}}</div>
-                        </div>
+                    <div style="display:flex; flex-direction:column; gap:35px;">
                         
-                        <div style="border-left:4px solid #3b82f6; padding-left:15px;">
-                            <div style="font-size:11px; font-weight:bold; color:#3b82f6; margin-bottom:4px;">2. 그 팩트가 연결된 구조적 변화</div>
-                            <div style="font-size:14px; font-weight:bold; color:#1e293b;">${{structure}}</div>
+                        <!-- 2. 경사 스타일 상세 스크립트 (Script) -->
+                        <div style="background:#f1f5f9; padding:30px; border-radius:12px; border:1px solid #e2e8f0;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #cbd5e1; padding-bottom:10px;">
+                                <h3 style="font-size:15px; font-weight:900; color:#334155; margin:0;">📜 스크립트 초안 (영상/발화용)</h3>
+                                <button onclick="navigator.clipboard.writeText(TOPIC_DETAILS['${{topicId}}'].script_text); alert('복사되었습니다.')" style="background:white; border:1px solid #cbd5e1; padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold;">복사하기</button>
+                            </div>
+                            <div style="font-size:15px; line-height:1.8; color:#1e293b; white-space:pre-wrap; font-family: 'Pretendard', sans-serif;">
+                                ${{d.script_text}}
+                            </div>
                         </div>
-                        
-                        <div style="border-left:4px solid #10b981; padding-left:15px;">
-                            <div style="font-size:11px; font-weight:bold; color:#10b981; margin-bottom:4px;">3. 그래서 만들어진 내러티브 가설</div>
-                            <div style="font-size:14px; color:#334155; line-height:1.6;">${{hypothesis}}</div>
-                        </div>
-                        
-                        <div style="border-left:4px solid #f59e0b; padding-left:15px;">
-                            <div style="font-size:11px; font-weight:bold; color:#f59e0b; margin-bottom:4px;">4. 아직 부족한 점 (리스크 / 미확인 요소)</div>
-                            <div style="font-size:14px; color:#64748b; font-style:italic;">${{risk}}</div>
-                        </div>
-                    </div>
 
-                    ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
-                    <div style="margin-bottom:30px;">
-                        <h3 style="font-size:14px; color:#166534; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
-                            <span>🚀 대장주 및 관련 섹터</span>
-                        </h3>
-                        <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                            ${{t.leader_stocks.map(s => `<span style="font-size:12px; background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 14px; border-radius:20px; color:#166534; font-weight:700;">${{s}}</span>`).join('')}}
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
+                            <!-- 3. 선정 근거 요약 -->
+                            <div style="border-left:5px solid #0f172a; padding-left:20px;">
+                                <h4 style="font-size:13px; color:#64748b; margin:0 0 10px 0; font-weight:800;">💡 선정 근거 요약</h4>
+                                <div style="font-size:15px; color:#1e293b; line-height:1.6; font-weight:600;">${{d.rationale}}</div>
+                            </div>
+
+                            <!-- 4. 중요도 설명 -->
+                            <div style="border-left:5px solid #2563eb; padding-left:20px;">
+                                <h4 style="font-size:13px; color:#64748b; margin:0 0 10px 0; font-weight:800;">🚀 중요도 및 파급력</h4>
+                                <div style="font-size:15px; color:#1e293b; line-height:1.6;">${{d.importance_desc}}</div>
+                            </div>
                         </div>
-                    </div>
-                    ` : ''}}
-                    
-                    <div style="background:#0f172a; padding:30px; border-radius:12px; color:#f8fafc;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid #1e293b; padding-bottom:10px;">
-                            <h3 style="font-size:15px; font-weight:bold; margin:0;">📜 SCRIPT PREVIEW</h3>
-                            <span style="font-size:11px; color:#94a3b8;">Human-readable draft</span>
+
+                        <!-- 5. 근거 데이터 -->
+                        <div style="padding:25px; border-radius:12px; background:white; border:1px solid #e2e8f0; border-top:5px solid #0f172a;">
+                            <h4 style="font-size:13px; color:#64748b; margin:0 0 15px 0; font-weight:800;">📊 근거 데이터 (Engine Evidence)</h4>
+                            <div style="background:#f8fafc; padding:15px; border-radius:8px; font-family:monospace; font-size:13px; color:#0f172a;">
+                                ${{d.evidence_data}}
+                            </div>
                         </div>
-                        <div style="font-size:14px; line-height:1.8; white-space:pre-wrap; font-family:serif;">
-                            ${{scriptContent}}
+
+                        <!-- 6. 이상징후 보조 설명 -->
+                        ${{t.section === 'B' ? `
+                        <div style="padding:25px; border-radius:12px; background:#fff7ed; border:1px solid #fed7aa;">
+                            <h4 style="font-size:13px; color:#c2410c; margin:0 0 10px 0; font-weight:800;">⚠️ 이상징후 보조 정보</h4>
+                            <div style="font-size:14px; color:#7c2d12; line-height:1.6;">
+                                본 토픽은 데이터 임계치 돌파로 인한 '이상징후' 섹션에 해당합니다. 시장의 극단적인 반응이나 수급 쏠림이 동반되었을 가능성이 큽니다.
+                            </div>
                         </div>
+                        ` : ''}}
+
+                        ${{t.leader_stocks && t.leader_stocks.length > 0 ? `
+                        <div style="margin-top:20px;">
+                            <h4 style="font-size:13px; color:#166534; margin:0 0 12px 0; font-weight:800;">🏷️ 관련 종목 및 테마</h4>
+                            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                                ${{t.leader_stocks.map(s => `<span style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:bold;">${{s}}</span>`).join('')}}
+                            </div>
+                        </div>
+                        ` : ''}}
                     </div>
                 `;
                 
@@ -2741,7 +2590,10 @@ def generate_dashboard(base_dir: Path):
             }}
             
             // Auto open first if exists
-            if (TOPIC_DATA.length > 0) setTimeout(() => showTopicDetail(0), 500);
+            window.onload = function() {{
+                const firstId = Object.keys(TOPIC_DETAILS)[0];
+                if (firstId) showTopicDetail(firstId);
+            }}
         </script>
         """
     else:
@@ -2935,99 +2787,51 @@ def generate_dashboard(base_dir: Path):
                     <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
                 </div>
                 
-                <div class="nav-label">CONTROL CENTER</div>
-                <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 1️⃣ TODAY</div>
-                <div class="nav-item" onclick="activate('topic-list')"><span class="nav-icon">💡</span> 2️⃣ WHY THIS TOPIC</div>
-                <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 3️⃣ EVIDENCE</div>
-                <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> 4️⃣ SCRIPT PREVIEW</div>
-                <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 5️⃣ WATCHLIST</div>
-                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> 6️⃣ ARCHIVE</div>
-                
-                <div class="advanced-toggle" onclick="toggleAdvanced()">
-                    <span>ADVANCED TOOLS</span>
-                    <span id="adv-arrow">▼</span>
-                </div>
-                
-                <div id="advanced-menu" class="advanced-content">
-                    <div class="nav-label">ENGINE & OPS</div>
-                    <div class="nav-item" onclick="activate('today-insight')"><span class="nav-icon">⭐</span> 기존 인사이트 뷰</div>
-                    <div class="nav-item" onclick="activate('architecture-diagram')"><span class="nav-icon">🟦</span> {I18N_KO['ARCHITECTURE']}</div>
-                    <div class="nav-item" onclick="activate('ops-scoreboard')"><span class="nav-icon">📈</span> {I18N_KO['OPS_SCOREBOARD']}</div>
-                    <div class="nav-item" onclick="activate('data-status')"><span class="nav-icon">📡</span> {I18N_KO['DATA_STATUS']}</div>
-                    <div class="nav-item" onclick="activate('system-evolution')"><span class="nav-icon">🚀</span> {I18N_KO['SYSTEM_EVOLUTION']}</div>
-                    
-                    <div class="nav-label">WORKFLOW</div>
-                    <div class="nav-item" onclick="activate('narrative-queue')"><span class="nav-icon">🎬</span> {I18N_KO['NARRATIVE_QUEUE']}</div>
-                    <div class="nav-item" onclick="activate('youtube-inbox')"><span class="nav-icon">📺</span> {I18N_KO['YOUTUBE_INBOX']}</div>
-                    <div class="nav-item" onclick="activate('revival-engine')"><span class="nav-icon">♻️</span> {I18N_KO['REVIVAL_ENGINE']}</div>
-                    
-                    <div class="nav-label">LOGS & RAW</div>
-                    <div class="nav-item" onclick="activate('rejection-ledger')"><span class="nav-icon">🚫</span> {I18N_KO['REJECTION_LIST']}</div>
-                    <div class="nav-item" onclick="activate('topic-candidates')"><span class="nav-icon">📂</span> {I18N_KO['TOPIC_CANDIDATES']}</div>
-                    <div class="nav-item" onclick="activate('final-decision')"><span class="nav-icon">⚖️</span> {I18N_KO['FINAL_DECISION_RAW']}</div>
-                    <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> {I18N_KO['INSIGHT_SCRIPT_RAW']}</div>
-                </div>
+                <div class="nav-label">OPERATOR MENU</div>
+                <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">📌</span> {I18N_KO['MAIN_VIEW']}</div>
+                <div class="nav-item" onclick="activate('topic-archive')"><span class="nav-icon">📅</span> {I18N_KO['DAILY_ARCHIVE']}</div>
             </div>
 
             <!-- CENTER: Main Process Flow (Tabs) -->
             <div class="main-panel">
                 <div class="sections-wrapper">
                     
-                    <!-- NEW TAB: TODAY SCREEN (Step 59) -->
+                    <!-- NEW TAB: 오늘 선정 토픽 (Step 60 Unified) -->
                     <div id="speak-today" class="tab-content active" style="display:block;">
-                        <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
-                            <div>
-                                <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b; display:flex; align-items:center; gap:12px;">
-                                    📌 TODAY — ENGINE SELECTED TOPICS
-                                </h2>
-                                <div style="margin-top:8px; display:flex; gap:15px; align-items:center;">
-                                    <span style="font-size:13px; color:#64748b; font-weight:bold;">📅 {ymd}</span>
-                                    <span style="width:1px; height:12px; background:#cbd5e1;"></span>
-                                    <span style="font-size:13px; color:#334155;">오늘 발견된 토픽: <strong>{total_count}</strong>개</span>
-                                    <span style="width:1px; height:12px; background:#cbd5e1;"></span>
-                                    <span style="font-size:13px; color:#16a34a; font-weight:bold;">🎬 영상화 가능: {playable_count}개</span>
-                                </div>
+                        <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                            <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b; display:flex; align-items:center; gap:12px;">
+                                📌 {I18N_KO['MAIN_VIEW']}
+                            </h2>
+                            <div style="margin-top:10px; display:flex; gap:15px; align-items:center;">
+                                <span style="font-size:13px; color:#64748b; font-weight:bold;">📅 {ymd}</span>
+                                <span style="width:1px; height:12px; background:#cbd5e1;"></span>
+                                <span style="font-size:13px; color:#334155;">오늘 총 <strong>{len(section_a_topics) + len(section_b_topics)}</strong>개의 토픽이 감지되었습니다.</span>
                             </div>
                         </div>
 
-                        {synth_html}
-
-                        <div style="margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
-                            <h3 style="font-size:16px; font-weight:800; color:#475569;">🚀 지금 바로 다룰 수 있는 주제</h3>
+                        <div style="margin-bottom:30px;">
+                            <h3 style="font-size:18px; font-weight:900; color:#dc2626; margin-bottom:20px; border-bottom:2px solid #fee2e2; padding-bottom:10px;">
+                                {I18N_KO['SECTION_A_TITLE']}
+                            </h3>
+                            {section_a_html}
                         </div>
-                        
-                        {speak_topics_html}
+
+                        <div style="margin-bottom:30px;">
+                            <h3 style="font-size:18px; font-weight:900; color:#2563eb; margin-bottom:20px; border-bottom:2px solid #dbeafe; padding-bottom:10px;">
+                                {I18N_KO['SECTION_B_TITLE']}
+                            </h3>
+                            {section_b_html}
+                        </div>
                     </div>
 
-                    <!-- NEW TAB: WATCHLIST SCREEN (Step 59) -->
-                    <div id="watch-today" class="tab-content" style="display:none;">
-                        <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
-                            <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b; display:flex; align-items:center; gap:12px;">
-                                🔭 WATCHLIST — 잠재적 토픽 목록
-                            </h2>
-                            <p style="margin-top:10px; font-size:14px; color:#64748b; line-height:1.6;">
-                                엔진이 감지했지만 아직 '발화' 단계에 도달하지 않은 주제들입니다. 
-                                <strong>추가 증거</strong>나 <strong>시장 반응</strong>이 확인되면 TODAY로 전환됩니다.
-                            </p>
+                    <!-- TAB: 토픽 리스트 (History) -->
+                    <div id="topic-archive" class="tab-content" style="display:none;">
+                         <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.05);">
+                            <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b;">📅 {I18N_KO['DAILY_ARCHIVE']}</h2>
+                            <p style="margin-top:10px; font-size:14px; color:#64748b;">과거에 선정된 주요 토픽들을 날짜순으로 열람할 수 있습니다.</p>
                         </div>
-                        
-                        <div style="margin-bottom:15px;">
-                            <h3 style="font-size:16px; font-weight:800; color:#475569;">👀 지속 관찰이 필요한 주제들</h3>
-                        </div>
-                        
-                        {watch_topics_html}
+                        {topic_archive_view_html}
                     </div>
-
-                    <!-- NEW TAB: EVIDENCE TODAY -->
-                    <div id="evidence-today" class="tab-content" style="display:none;">
-                        <h2 style="font-size:22px; font-weight:800; color:#1e293b; margin-bottom:25px;">[참고: 오늘 발화 토픽의 근거 데이터]</h2>
-                        
-                        {evidence_today_html}
-                    </div>
-
-                    <!-- TAB 0: Today's Insight (LEGACY HOME) -->
-                    <div id="today-insight" class="tab-content" style="display:none;">
-                        <div style="max-width: 900px; margin: 0 auto;">
                             <!-- Header -->
                             <div style="text-align:center; margin-bottom:30px;">
                                 <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Today's Insight</div>
