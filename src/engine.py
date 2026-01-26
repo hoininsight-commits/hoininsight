@@ -177,9 +177,24 @@ def main(target_categories: list[str] = None):
             from src.ops.speak_bundle_exporter import SpeakBundleExporter
             try:
                 exporter = SpeakBundleExporter(Path("."))
-                exporter.run(run_ymd, dd_data.get("cards", []), aa_data)
+                export_res = exporter.run(run_ymd, dd_data.get("cards", []), aa_data)
                 details_lines.append("speak_bundle: ok")
                 print("speak_bundle: ok", file=sys.stderr)
+                
+                # [NEW] Step 47: Run Script Skeleton Generator
+                from src.ops.script_skeleton_generator import ScriptSkeletonGenerator
+                try:
+                    # Load the generated bundle json to get the accurate topics list
+                    bundle_json_path = Path(".") / export_res["json_path"]
+                    if bundle_json_path.exists():
+                        bundle_content = json.loads(bundle_json_path.read_text(encoding="utf-8"))
+                        sk_gen = ScriptSkeletonGenerator(Path("."))
+                        sk_gen.run(run_ymd, bundle_content)
+                        details_lines.append("script_skeletons: ok")
+                        print("script_skeletons: ok", file=sys.stderr)
+                except Exception as e_sk:
+                    print(f"script_skeletons: fail ({e_sk})", file=sys.stderr)
+                    
             except Exception as e:
                 print(f"speak_bundle: fail ({e})", file=sys.stderr)
 

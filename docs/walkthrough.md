@@ -220,11 +220,28 @@ We implemented the "Production Format Router" to automatically determine the mos
 - **UI Rendering**: Dashboard badges correctly reflect the router's deterministic output based on topic priority scores.
 - **Tests**: 6/6 tests passed.
 
+## Step 47: Script Skeleton Generator (Structure-Only)
+
+We implemented the "Script Skeleton Generator" to provide a structured starting point for scriptwriting. This tool maps auto-approved topics to either `SHORT` or `LONG` script templates, ensuring that intelligence data is reformatted for production without human intervention.
+
+### Key Deliverables
+- **Skeleton Generator**: `src/ops/script_skeleton_generator.py` converts Speak Pack metadata (one-liners, numbers, refs) into standardized Markdown templates.
+- **Strict Formatting**: Enforces a non-hype, structure-only format that highlights core evidence and CTA while maintaining a consistent structure for each format type.
+- **Evidence Integrity**: Correctly flags missing numeric evidence or references with standardized placeholders (e.g., `(no numeric evidence)`), maintaining data transparency for editors.
+- **Dashboard Visibility**: Added a status indicator and availability breakdown (`short: n, long: n`) to the Decision Dashboard.
+
+### Verification Evidence
+- **Template Logic**: Verified that `SHORT_ONLY` topics produce only short skeletons, and `BOTH` topics produce both, with correct field mapping via `tests/test_script_skeleton_generator.py`.
+- **Fallback Handling**: Confirmed that missing numbers or evidence refs trigger the correct "no evidence" strings as specified in the mission.
+- **Pipeline Integration**: The generator is fully wired into the daily production bundle workflow.
+- **Tests**: 3/3 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 46-1 — Format enum defined
-Step 46-2 — Routing rules implemented
-Step 46-3 — Router integrated with bundle
-Step 46-4 — Bundle md updated
-Step 46-5 — Dashboard badges rendered
-Step 46-6 — Tests passing
+Step 47-1 — Skeleton enum + mapping defined
+Step 47-2 — Output paths + index implemented
+Step 47-3 — SHORT skeleton template generated
+Step 47-4 — LONG skeleton template generated
+Step 47-5 — OPS wiring added
+Step 47-6 — Manifest + dashboard linking done
+Step 47-7 — Tests passing
 Push — DONE (main)

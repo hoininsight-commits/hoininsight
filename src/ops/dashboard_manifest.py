@@ -65,6 +65,7 @@ class DashboardManifest:
             "auto_approved_json": "data/ops/auto_approved_today.json",
             "speak_bundle_md": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.md",
             "speak_bundle_json": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.json",
+            "skeleton_index_json": f"data/ops/bundles/{year}/{month}/{day}/skeletons/skeleton_index.json",
             "missing": missing
         }
         

@@ -1817,6 +1817,17 @@ class DecisionDashboard:
         bundle_md = data.get("bundle_md")
         if bundle_md:
             lines.append(f"> 📦 **SPEAK BUNDLE**: [{Path(bundle_md).name}](file:///{self.base_dir / bundle_md})")
+            
+            # Step 47: Skeleton Status
+            sk_idx_path = self.base_dir / bundle_md.replace("speak_bundle.md", "skeletons/skeleton_index.json")
+            if sk_idx_path.exists():
+                try:
+                    sk_idx = json.loads(sk_idx_path.read_text(encoding="utf-8"))
+                    lines.append(f"> 🧱 **SCRIPT SKELETONS**: available (short: {sk_idx.get('count_short', 0)}, long: {sk_idx.get('count_long', 0)})")
+                except:
+                    lines.append(f"> 🧱 **SCRIPT SKELETONS**: available (index error)")
+            else:
+                lines.append(f"> 🧱 **SCRIPT SKELETONS**: not generated")
 
         if not approved:
             lines.append("- _No topics met strict auto-approval conditions today._")
