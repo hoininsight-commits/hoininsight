@@ -75,9 +75,11 @@ class DashboardManifest:
         if fa_file.exists():
             fact_anchors_path = str(fa_file.relative_to(self.base_dir))
 
-        # [Step 50-51] Index Topic Seeds and Hypotheses
+        # [Step 50-51-52] Index Topic Seeds, Hypotheses, and View
         topic_seeds_path = "data/ops/topic_seeds.json"
         narrative_hypotheses_path = "data/ops/narrative_hypotheses.json"
+        topic_view_md_path = "data/ops/topic_view_today.md"
+        topic_view_json_path = "data/ops/topic_view_today.json"
         manifest_data = {
             "run_date": ymd,
             "run_ts": datetime.now().isoformat(),
@@ -89,6 +91,8 @@ class DashboardManifest:
             "fact_anchors_json": fact_anchors_path,
             "topic_seeds_json": topic_seeds_path,
             "narrative_hypotheses_json": narrative_hypotheses_path,
+            "topic_view_md": topic_view_md_path,
+            "topic_view_json": topic_view_json_path,
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

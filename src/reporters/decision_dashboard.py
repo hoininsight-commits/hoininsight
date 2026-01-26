@@ -137,6 +137,14 @@ class DecisionDashboard:
             except Exception as e:
                 print(f"[Dashboard] Error parsing fact anchors: {e}")
 
+        # [Step 52] Load Topic View (Consolidated)
+        topic_view = {}
+        tv_path = self.base_dir / "data" / "ops" / "topic_view_today.json"
+        if tv_path.exists():
+            try:
+                topic_view = json.loads(tv_path.read_text(encoding="utf-8"))
+            except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -350,7 +358,8 @@ class DecisionDashboard:
             "fact_first_shadows": fact_first_shadows,
             "fact_anchors": fact_anchors,
             "topic_seeds": topic_seeds,
-            "narrative_hypotheses": narrative_hypotheses
+            "narrative_hypotheses": narrative_hypotheses,
+            "topic_view": topic_view
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -444,6 +453,30 @@ class DecisionDashboard:
             lines.append(f"| {h.get('hypothesis_text')} | {seed_sum} | {frames_str} | {h.get('supporting_fact_count')} | {h.get('confidence_level')} |")
         lines.append("")
 
+    def _render_topic_view_panel(self, lines: List[str], view: Dict[str, Any]):
+        """Renders Step 52 Topic View Section (Read-Only)."""
+        if not view:
+            lines.append("🧭 **TODAY TOPIC VIEW**: (data pending generation)")
+            lines.append("")
+            return
+            
+        lines.append("## 🧭 TODAY TOPIC VIEW (READ-ONLY)")
+        c = view.get("counts", {})
+        lines.append(f"**SUMMARY**: 🛡️ AUTO={c.get('auto_approved',0)} | 🟢 READY={c.get('ready',0)} | 🌗 SHADOW={c.get('shadow',0)} | 🏹 FACT={c.get('fact_first_shadow',0)}")
+        lines.append("")
+        
+        # Display top 3 of AA or READY as priority highlights
+        highlights = view.get("sections", {}).get("auto_approved", []) + view.get("sections", {}).get("ready", [])
+        if highlights:
+            lines.append("**Key Insights Identified:**")
+            for h in highlights[:5]:
+                lines.append(f"- {h['title']} (Lane: {h['lane']} | Level: {h['level']})")
+            lines.append("")
+            
+        lines.append(f"👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)")
+        lines.append("---")
+        lines.append("")
+
     def _load_shadow_pool(self) -> Dict[str, Any]:
         """Loads Step 34 Shadow Candidate Pool."""
         p = self.base_dir / "data" / "ops" / "shadow_candidates.json"
@@ -495,6 +528,9 @@ class DecisionDashboard:
         sat_stats = data.get("saturation_summary")
         if sat_stats:
             self._render_saturation_summary(lines, sat_stats)
+
+        # [Step 52] TODAY TOPIC VIEW (Top Section)
+        self._render_topic_view_panel(lines, data.get("topic_view", {}))
 
         # Step 44: Auto-Approval Panel (NEW)
         aa_path = self.base_dir / "data" / "ops" / "auto_approved_today.json"
@@ -1035,10 +1071,49 @@ class DecisionDashboard:
             if outcome != "UNRESOLVED":
                 lines.append(f"**🧪 OUTCOME**: {outcome}")
             else:
-                lines.append(f"_🧪 OUTCOME: {outcome}_")
-            
         lines.append("---")
         return "\n".join(lines)
+
+    def _render_topic_view_panel(self, lines: List[str], topic_view_data: Dict[str, Any]):
+        """Renders Step 52 Today Topic View Panel."""
+        lines.append("\n#### 👁️ TODAY TOPIC VIEW")
+        
+        if not topic_view_data:
+            lines.append("- _No topic view data available._")
+            return
+            
+        # Overall Summary
+        lines.append(f"- **Total Topics**: {topic_view_data.get('total_topics', 0)}")
+        lines.append(f"- **New Topics**: {topic_view_data.get('new_topics', 0)}")
+        lines.append(f"- **Revisit Topics**: {topic_view_data.get('revisit_topics', 0)}")
+        lines.append(f"- **Regime Update Topics**: {topic_view_data.get('regime_update_topics', 0)}")
+        
+        # Status Breakdown
+        lines.append("\n##### Status Breakdown")
+        status_breakdown = topic_view_data.get('status_breakdown', {})
+        if status_breakdown:
+            for status, count in status_breakdown.items():
+                lines.append(f"- **{status}**: {count}")
+        else:
+            lines.append("- _No status breakdown available._")
+            
+        # Top 3 New Topics
+        lines.append("\n##### Top 3 New Topics")
+        top_new = topic_view_data.get('top_new_topics', [])
+        if top_new:
+            for i, topic in enumerate(top_new[:3]):
+                lines.append(f"- {i+1}. {topic.get('title', 'Untitled')} (ID: {topic.get('topic_id', 'N/A')})")
+        else:
+            lines.append("- _No top new topics available._")
+            
+        # Top 3 Revisit Topics
+        lines.append("\n##### Top 3 Revisit Topics")
+        top_revisit = topic_view_data.get('top_revisit_topics', [])
+        if top_revisit:
+            for i, topic in enumerate(top_revisit[:3]):
+                lines.append(f"- {i+1}. {topic.get('title', 'Untitled')} (ID: {topic.get('topic_id', 'N/A')})")
+        else:
+            lines.append("- _No top revisit topics available._")
 
     def _render_final_view(self, data: Dict[str, Any]) -> str:
         """Step 23: Final Human View - Decision Focused."""
