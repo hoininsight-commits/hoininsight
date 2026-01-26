@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-26T09:04:39Z",
+    "ts_utc": "2026-01-26T11:33:28Z",
     "dataset_id": "metal_gold_paxg_coingecko",
     "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/26/metal_gold_paxg_coingecko.json L2 Signal",
@@ -12,8 +12,8 @@
       "details": {
         "z_score": 2.05,
         "percentile": 50.0,
-        "value": 5110.08,
-        "rolling_mean_20d": 4725.17294140625,
+        "value": 5108.47,
+        "rolling_mean_20d": 4725.09244140625,
         "reasoning": "Z-Score 2.05 >= 2.0"
       },
       "regime": {
