@@ -105,6 +105,7 @@ class DashboardManifest:
             "topic_speakability_json": topic_speakability_json_path,
             "topic_console_md": topic_console_md_path,
             "topic_console_json": topic_console_json_path,
+            "topic_quality_log": "data/ops/topic_quality_log.jsonl",
             "health_json": f"data/dashboard/health_today.json",
             "auto_priority_json": "data/ops/auto_priority_today.json",
             "auto_approved_json": "data/ops/auto_approved_today.json",

@@ -170,6 +170,14 @@ class DecisionDashboard:
                 console = json.loads(tc_path.read_text(encoding="utf-8"))
             except: pass
 
+        # [NEW] Step 56: Load Calibration Summary
+        calibration_summary = {"STRONG": 0, "BORDERLINE": 0, "WEAK": 0}
+        from src.ops.topic_quality_calibrator import TopicQualityCalibrator
+        calibrator = TopicQualityCalibrator(self.base_dir)
+        try:
+            calibration_summary = calibrator.get_todays_summary(ymd)
+        except: pass
+
         topics = []
         if gate_out.exists():
             try:
@@ -387,7 +395,8 @@ class DecisionDashboard:
             "topic_view": topic_view,
             "quality_review": quality_review,
             "speakability": speakability,
-            "topic_console": console
+            "topic_console": console,
+            "calibration_summary": calibration_summary
         }
 
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
@@ -525,6 +534,26 @@ class DecisionDashboard:
         lines.append("---")
         lines.append("")
 
+    def _render_calibration_summary_panel(self, lines: List[str], summary: Dict[str, int], total_eligible: int):
+        """Renders Step 56 Topic Quality Calibration Summary."""
+        lines.append("## 🛡️ TOPIC QUALITY CALIBRATION (Today)")
+        lines.append(f"> **Status**: Calibration active")
+        lines.append("")
+        
+        strong = summary.get("STRONG", 0)
+        borderline = summary.get("BORDERLINE", 0)
+        weak = summary.get("WEAK", 0)
+        reviewed = strong + borderline + weak
+        unreviewed = max(0, total_eligible - reviewed)
+        
+        lines.append(f"- **STRONG**: {strong}")
+        lines.append(f"- **BORDERLINE**: {borderline}")
+        lines.append(f"- **WEAK**: {weak}")
+        lines.append(f"- **Unreviewed**: {unreviewed}")
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+
     def _render_quality_review_panel(self, lines: List[str], review: Dict[str, Any]):
         """Renders Step 53 Topic Quality Review Section."""
         if not review or not review.get("topics"):
@@ -604,6 +633,13 @@ class DecisionDashboard:
                     for r in reasons:
                         lines.append(f"- {r}")
                 lines.append("</details>")
+                
+                # [NEW] Step 56: Quality Calibration Buttons
+                lines.append("")
+                lines.append("🧠 **QUALITY CALIBRATION**")
+                # Using local file links for 'logging' simulation in markdown
+                # In a real environment, these would be handled by a listener or separate process.
+                lines.append(f"[ STRONG ](#) | [ BORDERLINE ](#) | [ WEAK ](#)")
                 lines.append("")
             
         lines.append(f"👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)")
@@ -664,6 +700,13 @@ class DecisionDashboard:
 
         # [NEW] Step 55: TOPIC CONSOLE Snapshot & Navigation
         self._render_console_snapshot_panel(lines, data.get("topic_console", {}))
+
+        # [NEW] Step 56: Calibration Summary
+        eligible_count = 0
+        if "topic_view" in data and "sections" in data["topic_view"]:
+            sections = data["topic_view"]["sections"]
+            eligible_count = sum(len(s) for s in sections.values())
+        self._render_calibration_summary_panel(lines, data.get("calibration_summary", {}), eligible_count)
 
         # [NEW] Step 54: EDITORIAL SPEAKABILITY Summary
         self._render_speakability_summary_panel(lines, data.get("speakability", {}))
@@ -1324,6 +1367,12 @@ class DecisionDashboard:
             lines.append(f"- Risk: {sp.get('risk_note')}")
             lines.append("</details>")
             
+        # [Step 56] Quality Calibration Buttons
+        lines.append("")
+        lines.append("🧠 **QUALITY CALIBRATION**")
+        lines.append(f"[ STRONG ](#) | [ BORDERLINE ](#) | [ WEAK ](#)")
+        lines.append("")
+        
         lines.append("\n---")
         return "\n".join(lines)
 
