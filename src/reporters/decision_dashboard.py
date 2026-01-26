@@ -443,6 +443,8 @@ class DecisionDashboard:
         # --- SHADOW CANDIDATES (Step 34) ---
         if len(ready_topics) < 3:
             shadow_data = data.get("shadow_pool", {"count": 0, "candidates": []})
+            # Step 36: Summary Panel
+            self._render_shadow_aging_summary(lines, shadow_data.get("aging_summary", {}))
             self._render_shadow_candidates(lines, shadow_data)
         
         # --- SECTION 2: WATCHLIST - NOT YET (HOLD) ---
@@ -593,7 +595,27 @@ class DecisionDashboard:
                 lines.append(f"    - **Missing**: {missing}")
                 lines.append(f"    - **Expected From**: {sources}")
                 lines.append(f"    - **Recheck**: {tm.get('earliest_recheck', 'AFTER_7D')}")
+            
+            # Step 36: Shadow Age Rendering
+            aging = c.get("aging", {})
+            if aging:
+                state = aging.get("aging_state")
+                days = aging.get("days_in_shadow", 0)
+                state_icon = ""
+                if state == "STALE": state_icon = " ⚠️"
+                elif state == "DECAYING": state_icon = " ⚠️ [Consider drop]"
+                elif state == "EXPIRED": state_icon = " 🧊 [Likely obsolete]"
+                lines.append(f"    - **Shadow Age**: {state}{state_icon} ({days} days)")
             lines.append("")
+
+    def _render_shadow_aging_summary(self, lines: List[str], summary: Dict[str, int]):
+        """Renders Step 36 Shadow Aging Summary Panel."""
+        if not any(summary.values()): return
+        lines.append("\n#### 🧊 SHADOW AGING SUMMARY")
+        lines.append(f"- **FRESH**: {summary.get('FRESH', 0)}")
+        lines.append(f"- **STALE**: {summary.get('STALE', 0)} ⚠️")
+        lines.append(f"- **DECAYING**: {summary.get('DECAYING', 0)} ⚠️")
+        lines.append(f"- **EXPIRED**: {summary.get('EXPIRED', 0)} 🧊")
 
     def _determine_renarration_permission(self, memory_status: str, impact_window: str, outcome: str) -> Tuple[Optional[str], Optional[str]]:
         """

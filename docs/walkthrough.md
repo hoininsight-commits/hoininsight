@@ -65,10 +65,40 @@ We implemented a "Shadow Candidate Pool" to provide continuity and preparation f
 - **Visuals**: Section uses grey tones (◽ 🔘) and explicit "NOT FOR NARRATION YET" labels.
 - **Tests**: `tests/test_shadow_candidate_builder.py` passes 3/3.
 
+## Step 35: Shadow → Trigger Map (Promotion Readiness)
+
+We enhanced the Shadow Candidate Pool by mapping each candidate to specific actionable triggers, transforming the pool into a promotion-readiness map.
+
+### Key Deliverables
+- **Trigger Map Builder**: `src/ops/trigger_map.py` defines a `TRIGGER_ENUM` (e.g., `NUMERIC_EVIDENCE_APPEAR`, `SUPPORTING_ANOMALY_DETECTED`) and maps failure codes to these triggers.
+- **Actionable Hints**: Each shadow candidate now lists what logic is missing, where the evidence is expected from (e.g., earnings release), and when it will be re-checked (e.g., `WINDOW_OPEN`).
+- **Dashboard Extended**: The "SHADOW CANDIDATES" section now includes a "PROMOTION READINESS" block for each candidate, aiding operator look-ahead.
+
+### Verification Evidence
+- **Deterministic Mapping**: Failure codes like `LOW_EVIDENCE` consistently map to `NUMERIC_EVIDENCE_APPEAR`.
+- **UI Consistency**: Grey-toned rendering maintained with explicit "Still NOT for narration" labels.
+- **Tests**: `tests/test_trigger_map.py` passes 4/4.
+
+## Step 36: Shadow Aging & Decay Guard
+
+We introduced an aging and decay monitoring system for shadow candidates to prevent "silent rotting" and maintain operational hygiene.
+
+### Key Deliverables
+- **Aging Calculator**: `src/ops/shadow_aging.py` classifies candidates into `FRESH`, `STALE`, `DECAYING`, or `EXPIRED` based on first-seen duration.
+- **Lookback Integration**: `ShadowCandidateBuilder` now scans 60 days of history to determine the `first_seen_date` for each shadow topic.
+- **Aging Summary Panel**: A high-level overview of the shadow pool's "health" (FRESH vs. EXPIRED) displayed at the top of the shadow section.
+- **Enhanced Cards**: Shadow cards now explicitly display their age and a governance hint (e.g., ⚠️ `DECAYING`, 🧊 `EXPIRED`).
+
+### Verification Evidence
+- **Deterministic Buckets**: Verified correct classification boundaries (7d, 21d, 45d) via `tests/test_shadow_aging.py`.
+- **Governance Hints**: Visual rules properly applied (warnings for stale topics, fading for expired ones).
+- **Tests**: `tests/test_shadow_aging.py` passed.
+
 ### [WORK CONFIRMATION]
-Step 34-1 — Eligibility rules defined
-Step 34-2 — Shadow builder implemented
-Step 34-3 — Dashboard section rendered
-Step 34-4 — Visual constraints enforced
-Step 34-5 — Tests passing
+Step 36-1 — Aging enum defined
+Step 36-2 — Aging calculator implemented
+Step 36-3 — Shadow integration complete
+Step 36-4 — Dashboard rendering added
+Step 36-5 — Summary panel added
+Step 36-6 — Tests passing
 Push — DONE (main)

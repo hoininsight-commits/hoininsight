@@ -2,12 +2,50 @@ import json
 import os
 import re
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, List, Any, Tuple
 
 class ShadowCandidateBuilder:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
+
+    def _find_first_seen_date(self, topic_id: str, current_ymd: str, lookback_days: int = 60) -> str:
+        """
+        Looks back in history to find the first date this topic_id appeared as a candidate.
+        Returns first_seen_date. Defaults to current_ymd if not found in history.
+        """
+        curr_dt = datetime.strptime(current_ymd, "%Y-%m-%d")
+        first_seen = current_ymd
+        
+        # Lookback from yesterday
+        for i in range(1, lookback_days + 1):
+            target_dt = curr_dt - timedelta(days=i)
+            target_ymd = target_dt.strftime("%Y-%m-%d")
+            
+            gate_dir = self.base_dir / "data" / "topics" / "gate" / target_ymd.replace("-", "/")
+            hist_file = gate_dir / "topic_gate_candidates.json"
+            
+            if hist_file.exists():
+                try:
+                    h_data = json.loads(hist_file.read_text(encoding="utf-8"))
+                    h_candidates = h_data.get("candidates", [])
+                    if any(c.get("topic_id") == topic_id for c in h_candidates):
+                        first_seen = target_ymd
+                    else:
+                        # If not found yesterday, but found earlier, it might be a gap.
+                        # But rule says "first seen", so we continue searching back.
+                        pass
+                except:
+                    pass
+        return first_seen
+
+    def _build_aging_summary(self, shadow_pool: List[Dict[str, Any]]) -> Dict[str, int]:
+        summary = {"FRESH": 0, "STALE": 0, "DECAYING": 0, "EXPIRED": 0}
+        for c in shadow_pool:
+            state = c.get("aging", {}).get("aging_state")
+            if state in summary:
+                summary[state] += 1
+        return summary
 
     def _determine_impact_window(self, topic: Dict[str, Any], tags: List[str]) -> str:
         tags = tags or []
@@ -93,8 +131,13 @@ class ShadowCandidateBuilder:
 
             # Load trigger map logic
             from src.ops.trigger_map import TriggerMapBuilder
+            from src.ops.shadow_aging import ShadowAgingCalculator
             trigger_builder = TriggerMapBuilder()
+            aging_calc = ShadowAgingCalculator()
             
+            # Find first_seen_date (Lookback history)
+            first_seen_date = self._find_first_seen_date(tid, ymd)
+
             # Prepare context for trigger map
             shadow_context = {
                 "lane": "FACT" if is_fact else "ANOMALY",
@@ -102,6 +145,7 @@ class ShadowCandidateBuilder:
                 "failure_codes": failure_codes
             }
             trigger_map = trigger_builder.build_trigger_map(shadow_context)
+            aging_meta = aging_calc.calculate_aging(first_seen_date, ymd)
 
             shadow_pool.append({
                 "topic_id": tid,
@@ -110,13 +154,16 @@ class ShadowCandidateBuilder:
                 "quality_status": quality_status,
                 "why_not_speak": q_data.get("reason", "Quality standards not met"),
                 "impact_window": impact_window,
-                "trigger_map": trigger_map
+                "trigger_map": trigger_map,
+                "aging": aging_meta,
+                "first_seen_date": first_seen_date
             })
 
         result = {
             "run_date": ymd,
             "count": len(shadow_pool),
-            "candidates": shadow_pool
+            "candidates": shadow_pool,
+            "aging_summary": self._build_aging_summary(shadow_pool)
         }
 
         output_path = self.base_dir / "data" / "ops" / "shadow_candidates.json"
