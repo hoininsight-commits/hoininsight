@@ -319,8 +319,19 @@ class DecisionDashboard:
                 "shallow_evidence": len([c for c in cards if c.judgment_notes and any("LEVEL 3" in n for n in c.judgment_notes)]),
                 "narrative_risk": len([c for c in cards if c.judgment_notes and any("narrative risk" in n for n in c.judgment_notes)])
             },
+            "shadow_pool": self._load_shadow_pool(),
             "post_mortem_summary": pm_stats
         }
+
+    def _load_shadow_pool(self) -> Dict[str, Any]:
+        """Loads Step 34 Shadow Candidate Pool."""
+        p = self.base_dir / "data" / "ops" / "shadow_candidates.json"
+        if p.exists():
+            try:
+                return json.loads(p.read_text(encoding="utf-8"))
+            except:
+                pass
+        return {"count": 0, "candidates": []}
 
     def _render_post_mortem_panel(self, lines: List[str], stats: Dict[str, int]):
         """Renders Step 18 Aggregate Accountability Panel."""
@@ -428,6 +439,11 @@ class DecisionDashboard:
         
         # --- ALMOST CANDIDATES ---
         self._render_almost_candidates(cards, lines)
+        
+        # --- SHADOW CANDIDATES (Step 34) ---
+        if len(ready_topics) < 3:
+            shadow_data = data.get("shadow_pool", {"count": 0, "candidates": []})
+            self._render_shadow_candidates(lines, shadow_data)
         
         # --- SECTION 2: WATCHLIST - NOT YET (HOLD) ---
         lines.append(f"\n## 👀 WATCHLIST — NOT YET ({len(hold_topics)})")
@@ -550,6 +566,26 @@ class DecisionDashboard:
                 lines.append(f"\n⚠️ **JUDGMENT NOTES**")
                 for n in notes:
                     lines.append(f"- {n}")
+            lines.append("")
+
+    def _render_shadow_candidates(self, lines: List[str], shadow_data: Dict[str, Any]):
+        """Renders Step 34 Shadow Candidates Pool (Grey tone, non-actionable)."""
+        lines.append("\n### 🔘 SHADOW CANDIDATES (Preparation Pool)")
+        lines.append("> **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.")
+        
+        candidates = shadow_data.get("candidates", [])
+        if not candidates:
+            lines.append("_Shadow pool empty — no promotable topics detected._")
+            return
+
+        for c in candidates:
+            # Grey tone style using blockquote or simple text
+            lines.append(f"#### ◽ {c['title']} (Impact: {c['impact_window']})")
+            lines.append(f"- **Lane**: {c['lane']}")
+            lines.append(f"- **Why not speak**: {c['why_not_speak']}")
+            lines.append("- **Promotion Triggers**:")
+            for trigger in c.get('promotion_triggers', []):
+                lines.append(f"  - {trigger}")
             lines.append("")
 
     def _determine_renarration_permission(self, memory_status: str, impact_window: str, outcome: str) -> Tuple[Optional[str], Optional[str]]:
