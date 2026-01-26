@@ -44,6 +44,10 @@
 - **Evidence**: 1 items
 
 
+### 🔘 SHADOW CANDIDATES (Preparation Pool)
+> **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.
+_Shadow pool empty — no promotable topics detected._
+
 ## 👀 WATCHLIST — NOT YET (1)
 | Status | Title | Why not speak yet? |
 |---|---|---|
