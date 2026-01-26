@@ -48,12 +48,12 @@ Split the GitHub Actions workflows to isolate production and learning responsibi
 ## Operations Verification Report (Step 29)
 
 ### Live Dashboard Verification
-- **Run ID**: PENDING (Pipeline Latency / User Action Required)
-- **Artifact Verification**:
-    - **Local**: SUCCESS. Manifest generator correctly flattens structure (`report_md` at root).
-    - **Live (Repo)**: FAIL (Stale Data). Artifacts (`run_ts`) have not updated to reflect the latest run.
-- **Cause Classification**: **CASE A** (Pipeline not executed or failed to commit).
-- **Resolution**:
-    - The code fixes in Step 28 are verified locally.
-    - One successful run of `full_pipeline.yml` is required to refresh the live dashboard.
-    - No further code changes are needed; only execution.
+- **Run ID**: [21342903106](https://github.com/hoininsight-commits/HoinInsight/actions/runs/21342903106)
+- **Status**: **SUCCESS** ✅
+- **Verification Details**:
+    - **Run Date**: 2026-01-26 (Verified on Live Dashboard)
+    - **Health Panel**: Non-zero counts (24 Anomalies detected)
+    - **JSON Artifacts**: 
+        - [latest_run.json](https://hoininsight-commits.github.io/hoininsight/data/dashboard/latest_run.json) - 200 OK
+        - [health_today.json](https://hoininsight-commits.github.io/hoininsight/data/dashboard/health_today.json) - 200 OK
+- **Conclusion**: The pipeline is now correctly committing intelligence outputs to the `data/dashboard/` directory, and the GitHub Pages dashboard is successfully rendering the flattened JSON structure.
