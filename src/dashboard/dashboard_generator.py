@@ -226,12 +226,20 @@ def parse_registry(base_dir: Path) -> List[Dict]:
 def _get_op_input_status(base_dir: Path, ymd: str) -> str:
     """Read operator fact input status and render compact HTML."""
     input_path = base_dir / "data" / "ops" / "fact_first_input_today.json"
-    if not input_path.exists():
+    seed_path = base_dir / "data" / "facts" / "fact_first" / f"{ymd}.json"
+    
+    # Try seed_path first for Step 60
+    target_path = seed_path if seed_path.exists() else input_path
+    if not target_path.exists():
         return ""
     
     try:
-        data = json.loads(input_path.read_text(encoding="utf-8"))
-        count = data.get("count", 0)
+        data = json.loads(target_path.read_text(encoding="utf-8"))
+        # Support both schemas
+        seeds = data.get("seeds", [])
+        facts = data.get("facts", [])
+        items = seeds + facts
+        count = len(items) if items else data.get("count", 0)
         counts = data.get("counts_by_type", {})
         errors = data.get("errors", [])
         
