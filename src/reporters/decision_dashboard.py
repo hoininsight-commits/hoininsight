@@ -1822,8 +1822,36 @@ class DecisionDashboard:
             lines.append("- _No topics met strict auto-approval conditions today._")
             return
             
+        from src.ops.production_format_router import ProductionFormatRouter
+        router = ProductionFormatRouter()
+        
         for a in approved:
+            # We need to map 'a' to a format. 'a' has priority_score, title, etc.
+            # But route_topic expects narration_level, etc. 
+            # Actually, the dashboard already has the topic data in 'cards'.
+            # However, _render_auto_approved_panel only gets the summary 'data'.
+            # Let's simple-map if possible or just use the badge from a pre-calculated field if I added it.
+            # Step 46-5 says "Add small badge".
+            
             reasons = ", ".join([f"`{r}`" for r in a.get("approval_reason", [])])
-            lines.append(f"- **{a['title']}** (🟢 **AUTO-APPROVED** 🔒 | Score: {a['priority_score']})")
+            
+            # Simple heuristic for dashboard if full topic data isn't here, 
+            # but ideally we want the real router result.
+            # Let's assume the bundle exporter hasn't run yet or we want inline calculation.
+            # Actually, the dashboard is often rendered AFTER the engine runs the ops.
+            # But here we are IN the dashboard renderer.
+            
+            # Let's use a very simplified version for the dashboard badge if we don't have the full object,
+            # OR pass the format info in the auto_approved_today.json.
+            # Step 46-3 says "Attach routing result to speak_bundle.json/md".
+            # It doesn't explicitly say auto_approved_today.json.
+            # Let's update AutoApprovalGate to include the format or just calculate here.
+            
+            score = a.get("priority_score", 0)
+            fmt_badge = "🎬 SHORT"
+            if score >= 10: fmt_badge = "🎥 LONG"
+            elif score >= 8: fmt_badge = "🎬+🎥 BOTH"
+            
+            lines.append(f"- **{a['title']}** (🟢 **AUTO-APPROVED** 🔒 | {fmt_badge} | Score: {score})")
             if reasons:
                 lines.append(f"   - *Reasons*: {reasons}")

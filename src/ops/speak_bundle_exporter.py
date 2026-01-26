@@ -19,6 +19,9 @@ class SpeakBundleExporter:
         approved_ids_map = {a["topic_id"]: a for a in auto_approved_data.get("auto_approved", [])}
         bundle_topics = []
         
+        from src.ops.production_format_router import ProductionFormatRouter
+        router = ProductionFormatRouter()
+
         # Filter cards that are auto-approved
         for c in cards:
             tid = c.get("topic_id")
@@ -55,6 +58,12 @@ class SpeakBundleExporter:
                     "auto_approval_reason": aa_info.get("approval_reason", []),
                     "missing_assets": self._check_missing_assets(c)
                 }
+
+                # Step 46: Format Routing
+                routing = router.route_topic(topic_entry)
+                topic_entry["production_format"] = routing["format"]
+                topic_entry["routing_reasons"] = routing["routing_reason"]
+
                 bundle_topics.append(topic_entry)
 
         # 1. Output directory
@@ -109,6 +118,15 @@ class SpeakBundleExporter:
             lines.append(f"## {t['title']}")
             lines.append(f"- **Impact**: {t['impact_tag']} | **Level**: {t['narration_level']}")
             
+            # Step 46: Production Format Segment
+            fmt = t.get("production_format", "SHORT_ONLY")
+            fmt_icon = "🎬" if "SHORT" in fmt else "🎥"
+            if fmt == "BOTH": fmt_icon = "🎬+🎥"
+            
+            lines.append(f"### {fmt_icon} PRODUCTION FORMAT: **{fmt}**")
+            reasons = t.get("routing_reasons", [])
+            lines.append("- **Routing Reasons**: " + ", ".join([f"`{r}`" for r in reasons]))
+
             sp = t["speak_pack"]
             lines.append(f"\n### 🎙️ SPEAK PACK")
             lines.append(f"> **One-Liner**: {sp['one_liner']}")
