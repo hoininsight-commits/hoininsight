@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "metal_silver_kag_coingecko",
     "metal_gold_paxg_coingecko",
     "rates_us10y_fred",
+    "metal_silver_kag_coingecko",
     "derived_gold_silver_ratio"
   ],
   "baseline_match": [
-    "metal_silver_kag_coingecko: Volatility Surge (Z=2.43)",
-    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.08)",
+    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.07)",
     "rates_us10y_fred: Volatility Surge (Z=2.20)",
+    "metal_silver_kag_coingecko: Volatility Surge (Z=2.43)",
     "derived_gold_silver_ratio: Volatility Surge (Z=2.57)"
   ],
   "anomaly_logic": "Unknown",
