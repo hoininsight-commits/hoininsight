@@ -87,7 +87,7 @@ class TopicSeedBuilder:
                 all_frames.add(f["frame"])
         
         # Aggregate fact IDs
-        fact_ids = [m["fact_id"] for m in members]
+        fact_ids = [m.get("fact_id", "unknown") for m in members]
         
         # Determine first_seen
         parsed_dates = []

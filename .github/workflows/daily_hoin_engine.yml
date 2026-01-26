@@ -23,9 +23,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install -r requirements.txt-upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txtr requirements.txt; fi
-        pip install -r requirements.txtandas requests fredapi python-dotenv openai google-generativeai
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pandas requests fredapi python-dotenv openai google-generativeai
 
     - name: Run Daily Pipeline (Collection & Selection)
       env:

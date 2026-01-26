@@ -41,6 +41,9 @@ def main(target_categories: list[str] = None):
         details_lines.append("engine: start")
         print("engine: start", file=sys.stderr)
         
+        from src.utils.target_date import get_target_ymd
+        run_ymd = get_target_ymd()
+
         collect_main(target_categories)
         details_lines.append("collect: ok")
         print("collect: ok", file=sys.stderr)
@@ -173,6 +176,16 @@ def main(target_categories: list[str] = None):
         # These will be executed inside DecisionDashboard.build_dashboard_data
         # to ensure they have access to the fully ranked topics and shadow pool.
         
+        # [Step 52] Topic View Panel (Read-only consolidation)
+        try:
+            from src.ops.topic_view_builder import TopicViewBuilder
+            tvb = TopicViewBuilder(Path("."))
+            tvb.build_view(run_ymd)
+            details_lines.append("topic_view: ok")
+            print("topic_view: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"topic_view: error ({e})", file=sys.stderr)
+
         # [NEW] Generate Decision Dashboard Markdown
         from src.reporters.decision_dashboard import DecisionDashboard
         try:
@@ -303,15 +316,6 @@ def main(target_categories: list[str] = None):
     except Exception as e:
         print(f"[VERIFY][SKIP] Could not verify runtime: {e}", file=sys.stderr)
     # ----------------------------------------
-
-    # [Step 52] Topic View Panel (Read-only consolidation)
-    try:
-        from src.ops.topic_view_builder import TopicViewBuilder
-        tvb = TopicViewBuilder(Path("."))
-        tvb.build_view()
-        details_lines.append("topic_view: ok")
-    except Exception as e:
-        details_lines.append(f"topic_view: error ({e})")
 
     finished = _utc_now_stamp()
     report_dir = _date_path_standardized()

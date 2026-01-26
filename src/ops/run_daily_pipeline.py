@@ -52,9 +52,6 @@ def run_collection():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1: DATA COLLECTION COMPLETED\n")
 
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1: DATA COLLECTION COMPLETED\n")
-
-
 def run_narrative_engine():
     """Run the Narrative Engine (Phase 1.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
@@ -144,7 +141,6 @@ def main():
     # 2.1 Narrative Engine (NEW)
     run_narrative_engine()
     
-    # 2.2 Structural Engine (Legacy)
     # 2.2 Structural Engine (Legacy)
     success = run_structural_engine()
 

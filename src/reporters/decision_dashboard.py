@@ -1087,6 +1087,9 @@ class DecisionDashboard:
         lines.append("# 🎙️ DAILY EDITORIAL DECISION (FINAL VIEW)")
         lines.append("\n_System diagnostics hidden. Showing prioritized decision metrics only._\n")
         
+        # [Step 52] TODAY TOPIC VIEW
+        self._render_topic_view_panel(lines, data.get("topic_view", {}))
+        
         # Top 5
         top_5 = sorted_cards[:5]
         rest = sorted_cards[5:]
