@@ -2,8 +2,26 @@
     <!DOCTYPE html>
     <html lang="ko">
     <head>
-        <meta charset="utf-8">
-        <title>Hoin Insight 파이프라인</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hoin Insight Dashboard (v2.0)</title>
+        <style>
+            :root {
+                --sidebar-width: 260px;
+                --header-height: 60px;
+                --bg-color: #f1f5f9;
+                --text-primary: #1e293b;
+                --card-bg: #ffffff;
+            }
+            body {
+                margin: 0;
+                font-family: 'Inter', 'Pretendard', sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-primary);
+                display: flex;
+                height: 100vh;
+                overflow: hidden;
+            }
         <style>
     body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #f4f7fa; color: #1e293b; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
     
@@ -326,6 +344,7 @@
                     <div class="stat-counter" style="background:#fff7ed; color:#d97706; border:1px solid #f59e0b;">
                         SEC B: <strong>1</strong>
                     </div>
+                    
                     <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
                 </div>
             </div>
@@ -964,7 +983,7 @@ Historical context:
                                     <div class="proc-icon">🏗️</div>
                                     <div class="proc-content">
                                         <div class="proc-title">GitHub Actions 파이프라인</div>
-                                        <div class="proc-desc">Run ID: 21362347760</div>
+                                        <div class="proc-desc">Run ID: 21362768040</div>
                                     </div>
                                 </div>
                                 <div class="arrow-down"></div>
@@ -1250,7 +1269,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">fx_usdkrw_spot_open_er_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">1,469</span>
                  <div class="status-check">✓</div>
@@ -1265,7 +1284,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">index_spx_sp500_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">6,915.61</span>
                  <div class="status-check">✓</div>
@@ -1346,7 +1365,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">metal_gold_xauusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">5,111.17</span>
                  <div class="status-check">✓</div>
@@ -1355,7 +1374,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">metal_silver_xagusd_spot_gold_api <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">110.74</span>
                  <div class="status-check">✓</div>
@@ -1418,7 +1437,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">risk_vix_index_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">16.09</span>
                  <div class="status-check">✓</div>
@@ -1583,7 +1602,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_gold_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">metal_gold_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">5,111.17</span>
                  <div class="status-check">✓</div>
@@ -1601,7 +1620,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">metal_silver_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">metal_silver_fred <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">110.74</span>
                  <div class="status-check">✓</div>
@@ -1625,7 +1644,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">index_nasdaq_ndx_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">25,605.47</span>
                  <div class="status-check">✓</div>
@@ -1649,7 +1668,7 @@ Historical context:
              <div class="ds-item ok" title="데이터 파일 존재 (자동 복구됨)">
                  <div class="ds-left">
                      <div class="ds-icon"></div>
-                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:00)</span></span>
+                     <span class="ds-name">comm_wti_crude_oil_stooq <span style="font-size: 10px; color: #94a3b8; margin-left: 6px;">(01/26 15:13)</span></span>
                  </div>
                  <span style="font-size: 13px; font-weight:bold; color: #334155; margin-left: auto; margin-right: 8px;">60.30</span>
                  <div class="status-check">✓</div>
