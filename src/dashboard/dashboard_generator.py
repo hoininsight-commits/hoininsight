@@ -129,8 +129,14 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             </tbody>
         </table>
     </div>
-    """
-    return html
+    
+    <!-- Topic Detail Modal & Scripts -->
+    <div id="topicDetailModal" class="modal">
+        <div class="modal-content" style="max-width:600px;">
+            <span class="close-btn" onclick="closeTopicModal()">&times;</span>
+            <div id="topic-detail-content"></div>
+        </div>
+    </div>
 
     <script>
         window.TOPIC_DETAILS = {json.dumps(topic_details_map)};
@@ -2316,7 +2322,8 @@ def generate_dashboard(base_dir: Path):
             status_text = "✅ 지금 써도 됨" if status == "READY" else "👀 더 지켜보기"
             status_color = "#16a34a" if status == "READY" else "#f59e0b"
             importance_text = I18N_KO.get(t.get("importance", "LEVEL_MEDIUM"), "보통")
-            
+            dataset_id = t.get('dataset_id', '')
+
             # Stocks
             stocks = t.get("leader_stocks", [])
             stocks_html = ""
@@ -2324,58 +2331,42 @@ def generate_dashboard(base_dir: Path):
                 s_tags = "".join([f"<span style='background:#f0fdf4; color:#166534; padding:2px 8px; border-radius:12px; margin-right:6px; font-size:11px; font-weight:bold;'>{s}</span>" for s in stocks])
                 stocks_html = f"<div style='margin-top:12px;'><strong>🏷️ 관련 섹터/종목:</strong> {s_tags}</div>"
 
+            if section_type == "A":
+                summary_para = f"<p style='font-size:15px; color:#1e293b; font-weight:700; line-height:1.6;'>{t.get('rationale') or '스토리 요약 중...'}</p>"
+                why_now_label = "💡 왜 지금인가 (맥락)"
+                why_now_content = "시장의 판도를 결정짓는 구조적 변화가 발생했습니다."
+            else:
+                summary_para = f"<p style='font-size:14px; color:#475569; line-height:1.6;'>{t.get('rationale') or '시장 상황 분석 중...'}</p>"
+                why_now_label = "📊 왜 지금인가 (데이터)"
+                why_now_content = f"지표상 특이점 도달 (등급: {t.get('level', 'N/A')})."
+
             cards_html += f"""
-            <div class="card" style="margin-bottom:25px; border-left:6px solid {status_color}; padding:25px;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-                    <div style="font-size:11px; color:#94a3b8; font-family:monospace;">
-                        #{idx+1} | {dataset_id}
-                    </div>
-                    <div style="background:{status_color}; color:white; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
-                        {status_text}
+            <div class="card" style="margin-bottom:25px; border-left:8px solid {status_color}; padding:30px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="background:{status_color}; color:white; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:bold;">{status_text}</span>
+                        <span style="font-size:12px; color:#64748b; font-weight:bold;">중요도: {importance_text}</span>
                     </div>
                 </div>
                 
-                <h3 style="margin:0 0 10px 0; font-size:20px; color:#1e293b; line-height:1.4; font-weight:800;">
+                <h3 style="margin:0 0 12px 0; font-size:22px; color:#1e293b; line-height:1.4; font-weight:900;">
                     {t.get('title')}
                 </h3>
                 
-                <p style="font-size:14px; color:#475569; margin-bottom:15px; line-height:1.6;">
-                    {t.get('rationale') or t.get('selection_rationale') or '왜 중요한지에 대한 요약이 없습니다.'}
-                </p>
+                {summary_para}
 
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:20px;">
-                    <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
-                        <strong style="display:block; font-size:11px; color:#64748b; margin-bottom:8px; text-transform:uppercase;">🚨 WHY NOW (타이밍 트리거)</strong>
-                        <ul style="margin:0; padding:0 0 0 18px; font-size:13px; color:#334155;">
-                            {"".join([f"<li style='margin-bottom:4px;'>{r}</li>" for r in reasons])}
-                        </ul>
-                    </div>
-                    <div style="background:#f8fafc; padding:15px; border-radius:8px; border-top:3px solid #3b82f6;">
-                        <strong style="display:block; font-size:11px; color:#64748b; margin-bottom:8px; text-transform:uppercase;">📊 EVIDENCE SNAPSHOT (핵심 근거)</strong>
-                        <div style="display:flex; gap:15px;">
-                            <div>
-                                <div style="font-size:10px; color:#94a3b8;">변동 강도</div>
-                                <div style="font-size:16px; font-weight:bold; color:#1e293b;">{z_score} <small style="font-size:10px; color:#64748b;">(z)</small></div>
-                            </div>
-                            <div>
-                                <div style="font-size:10px; color:#94a3b8;">상위 %</div>
-                                <div style="font-size:16px; font-weight:bold; color:#1e293b;">{percentile}%</div>
-                            </div>
-                        </div>
+                <div style="background:#f8fafc; padding:20px; border-radius:10px; border:1px solid #e2e8f0; margin:20px 0;">
+                    <strong style="display:block; font-size:11px; color:#3b82f6; margin-bottom:8px; text-transform:uppercase;">{why_now_label}</strong>
+                    <div style="font-size:13.5px; color:#334155; line-height:1.6;">
+                        {why_now_content}
                     </div>
                 </div>
                 
                 {stocks_html}
                 
                 <div style="display:flex; gap:12px; margin-top:25px; padding-top:20px; border-top:1px solid #f1f5f9;">
-                    <button onclick="showTopicScript('{t.get('topic_id')}')" style="background:#0f172a; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:8px;">
-                        <span>📜 스크립트 미리보기</span>
-                    </button>
-                    <button onclick="activate('topic-list'); showTopicDetail({idx})" style="background:white; color:#1e293b; border:1px solid #cbd5e1; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px;">
-                        💡 상세 근거 보기
-                    </button>
-                    <button onclick="activate('watch-today')" style="background:white; color:#64748b; border:1px solid #e2e8f0; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px;">
-                        🔭 관찰 목록 확인
+                    <button onclick="activate('topic-list'); showTopicDetail('{t.get('topic_id')}')" style="background:#0f172a; color:white; border:none; padding:12px 24px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px;">
+                        상세 보기
                     </button>
                 </div>
             </div>
@@ -2762,10 +2753,10 @@ def generate_dashboard(base_dir: Path):
                 <div style="display:flex; gap:10px; align-items:center; margin-left:10px;">
                     <div class="stat-counter" title="Latest Run Date">📅 {status_data['run_date']}</div>
                     <div class="stat-counter" style="background:#ecfdf5; color:#059669; border:1px solid #10b981;">
-                        SPEAK: <strong>{len(speak_topics)}</strong>
+                        SEC A: <strong>{len(section_a_topics)}</strong>
                     </div>
                     <div class="stat-counter" style="background:#fff7ed; color:#d97706; border:1px solid #f59e0b;">
-                        WATCH: <strong>{len(watch_topics)}</strong>
+                        SEC B: <strong>{len(section_b_topics)}</strong>
                     </div>
                     <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
                 </div>
