@@ -789,7 +789,7 @@
                     const hints = {
                         'SOURCE_REGISTRY_MISSING': 'Registry file missing. Check registry/datasets.yml.',
                         'SOURCE_REGISTRY_EMPTY': 'No sources configured. Check registry.',
-                        'FETCH_FAILED': 'Fetcher failed or pipeline didn't run. Check workflow logs.',
+                        'FETCH_FAILED': 'Fetcher failed or pipeline didn't run.Check workflow logs.',
                         'PARSE_FAILED': 'Failed to parse events JSON. Check for corruption.',
                         'OUTPUT_PATH_MISSING': 'Events output missing for this date.',
                         'OUTPUT_EMPTY_VALID': 'No events today (valid state).',
@@ -814,14 +814,28 @@
                                 <span>READY: <strong>${health.metrics.topics_count.READY || 0}</strong></span>
                             </div>
                             ${inputStatusHtml}
-                        </div>
-                        <div style="background:#f1f5f9; padding:15px; border-radius:8px; font-size:12px; color:#475569;">
-                            <div style="font-weight:bold; margin-bottom:5px;">SYSTEM STATUS</div>
-                            <div>Checked: ${new Date(health.checked_at).toLocaleTimeString()}</div>
-                            <div style="margin-top:2px;">Markdown: ${health.decision_dashboard_exists ? '✅' : '❌'}</div>
+                            <div id="js-operator-closure" style="margin-top:10px;"></div>
                         </div>
                     </div>
                 `;
+
+                // [Step 32-5] Operator Closure logic
+                const closureEl = document.getElementById('js-operator-closure');
+                const ready = health.metrics.topics_count.READY || 0;
+                const events = health.metrics.events_count || 0;
+                if (ready === 0) {
+                    let msg = "";
+                    if (events === 0) {
+                        msg = `오늘은 이벤트 입력이 0건이라 토픽 생성이 불가능합니다. (ROOT: ${health.input_root_cause_code || 'OUTPUT_PATH_MISSING'})`;
+                    } else {
+                        msg = `이벤트는 있었으나 증거/신뢰/반복 조건을 충족하지 못했습니다. (ROOT: QUALITY/ELIGIBILITY)`;
+                    }
+                    closureEl.innerHTML = `
+                        <div style="padding:10px; background:#fff7ed; border:1px solid #f59e0b; border-radius:6px; font-size:12px; font-weight:700; color:#9a3412;">
+                            🚨 ${msg}
+                        </div>
+                    `;
+                }
             } catch (e) { /* ignore fallback */ }
         }
 

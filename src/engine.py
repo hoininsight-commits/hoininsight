@@ -10,6 +10,15 @@ from pathlib import Path
 
 from src.reporting.run_log import RunResult, write_run_log, append_observation_log
 from src.utils.target_date import get_target_ymd, get_target_parts
+from src.pipeline.run_collect import main as collect_main
+from src.pipeline.run_normalize import main as normalize_main
+from src.pipeline.run_anomaly import main as anomaly_main
+from src.pipeline.run_topic import main as topic_main
+from src.pipeline.run_topic_gate import main as gate_pipeline_main
+from src.reporters.daily_report import write_daily_brief
+from src.reporting.health import write_health
+from src.validation.output_check import run_output_checks
+from src.validation.schema_check import run_schema_checks
 
 def _utc_now_stamp() -> str:
     # Use standardized YMD but append actual UTC time for high-res logs
