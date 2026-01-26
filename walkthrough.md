@@ -37,10 +37,38 @@ We verified the end-to-end pipeline in GitHub Actions (Run ID: 21345027092).
 - **Input Status**: `FETCH_FAILED` (Correctly diagnosed due to active registry but missing output)
 - **Operator Closure**: The dashboard correctly displays: `🚨 오늘은 이벤트 입력이 0건이라 토픽 생성이 불가능합니다. (ROOT: FETCH_FAILED)`
 
+## Step 33: Event Coverage & Last-Seen Monitor
+
+We implemented an event coverage monitoring system to make "event input missing" fully diagnosable.
+
+### Key Deliverables
+- **Coverage Builder**: `src/ops/event_coverage.py` scans artifacts and computes source freshness.
+- **Pipeline Integration**: Automatically runs after health check in `full_pipeline.yml`.
+- **Dashboard Panel**: New "EVENT COVERAGE" tab with dynamic loading and operator hints.
+
+### Verification Evidence
+- **Global Flags**: `NO_EVENTS_ALL` correctly triggered when today's events are zero.
+- **Last Seen**: Correctly identifies `2026-01-24` as the last valid date for all registered sources.
+- **Operator Hint**: Dashboard displays: `💡 입력 이벤트 0건 — 소스 스톨 / 경로 / 스케줄 문제 가능성`
+
+## Step 34: Shadow Candidate Pool (Continuity Layer)
+
+We implemented a "Shadow Candidate Pool" to provide continuity and preparation for topics that are structurally promising but not yet speakable.
+
+### Key Deliverables
+- **Shadow Builder**: `src/ops/shadow_candidate_builder.py` identifies eligible topics (HOLD/DROP, Fact-driven or Structural, Non-immediate).
+- **Preparation Pool**: Topics are stored with explicit "Promotion Triggers" (e.g., additional evidence or signal confirmation).
+- **Conditional Rendering**: The dashboard renders this section only when `READY < 3`, ensuring the operator always has a look-ahead even when today's output is low.
+
+### Verification Evidence
+- **Eligibility**: Topics rejected for critical reasons (TITLE_MISMATCH) or purely placeholder evidence are correctly excluded.
+- **Visuals**: Section uses grey tones (◽ 🔘) and explicit "NOT FOR NARRATION YET" labels.
+- **Tests**: `tests/test_shadow_candidate_builder.py` passes 3/3.
+
 ### [WORK CONFIRMATION]
-Step 32-1 — full_pipeline run triggered and completed
-Step 32-2 — artifacts exist + committed
-Step 32-3 — root cause fields validated
-Step 32-4 — live dashboard rendering verified
-Step 32-5 — operator closure sentence displayed
-Step 32-6 — Push — DONE (main, 2af9d774)
+Step 34-1 — Eligibility rules defined
+Step 34-2 — Shadow builder implemented
+Step 34-3 — Dashboard section rendered
+Step 34-4 — Visual constraints enforced
+Step 34-5 — Tests passing
+Push — DONE (main)
