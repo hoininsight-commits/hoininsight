@@ -384,7 +384,8 @@ jobs:
             echo "No intelligence changes to commit"
           else
             git commit -m "chore: save intelligence artifacts [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
 
       - name: Create issue on failure
