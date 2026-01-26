@@ -583,9 +583,16 @@ class DecisionDashboard:
             lines.append(f"#### ◽ {c['title']} (Impact: {c['impact_window']})")
             lines.append(f"- **Lane**: {c['lane']}")
             lines.append(f"- **Why not speak**: {c['why_not_speak']}")
-            lines.append("- **Promotion Triggers**:")
-            for trigger in c.get('promotion_triggers', []):
-                lines.append(f"  - {trigger}")
+            
+            # Step 35: Trigger Map Rendering
+            tm = c.get("trigger_map", {})
+            if tm:
+                lines.append("\n    > **PROMOTION READINESS (Still NOT for narration)**")
+                missing = ", ".join(tm.get("missing_triggers", []))
+                sources = ", ".join(tm.get("source_hint", []))
+                lines.append(f"    - **Missing**: {missing}")
+                lines.append(f"    - **Expected From**: {sources}")
+                lines.append(f"    - **Recheck**: {tm.get('earliest_recheck', 'AFTER_7D')}")
             lines.append("")
 
     def _determine_renarration_permission(self, memory_status: str, impact_window: str, outcome: str) -> Tuple[Optional[str], Optional[str]]:

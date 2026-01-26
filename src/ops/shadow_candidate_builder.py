@@ -91,28 +91,26 @@ class ShadowCandidateBuilder:
             if failure_codes == ["PLACEHOLDER_EVIDENCE"]:
                 continue
 
-            # Build candidate object
-            promotion_triggers = []
-            if impact_window != "IMMEDIATE":
-                promotion_triggers.append("issue timing window opens")
-            if is_fact:
-                promotion_triggers.append("additional numeric evidence appears")
-            if is_structural:
-                promotion_triggers.append("supporting anomaly signal confirmed")
+            # Load trigger map logic
+            from src.ops.trigger_map import TriggerMapBuilder
+            trigger_builder = TriggerMapBuilder()
             
-            # Default triggers
-            if not promotion_triggers:
-                promotion_triggers.append("script quality improvement")
-                promotion_triggers.append("evidence gathering complete")
+            # Prepare context for trigger map
+            shadow_context = {
+                "lane": "FACT" if is_fact else "ANOMALY",
+                "impact_window": impact_window,
+                "failure_codes": failure_codes
+            }
+            trigger_map = trigger_builder.build_trigger_map(shadow_context)
 
             shadow_pool.append({
                 "topic_id": tid,
                 "title": t.get("title", "Untitled"),
-                "lane": "FACT" if is_fact else "ANOMALY",
+                "lane": shadow_context["lane"],
                 "quality_status": quality_status,
                 "why_not_speak": q_data.get("reason", "Quality standards not met"),
-                "promotion_triggers": promotion_triggers,
-                "impact_window": impact_window
+                "impact_window": impact_window,
+                "trigger_map": trigger_map
             })
 
         result = {
