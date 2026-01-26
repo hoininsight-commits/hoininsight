@@ -1071,7 +1071,7 @@ class DecisionDashboard:
             if outcome != "UNRESOLVED":
                 lines.append(f"**🧪 OUTCOME**: {outcome}")
             else:
-        lines.append("---")
+                lines.append(f"_🧪 OUTCOME: {outcome}_")
         return "\n".join(lines)
 
     def _render_final_view(self, data: Dict[str, Any]) -> str:
