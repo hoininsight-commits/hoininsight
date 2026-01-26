@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-26T04:50:46Z
-- finished_utc: 2026-01-26T04:51:19Z
+- started_utc: 2026-01-26T06:50:11Z
+- finished_utc: 2026-01-26T06:50:40Z
 - status: SUCCESS
 
 ## details
@@ -16,7 +16,6 @@ topic: ok
 anchor_engine: ok
 snapshot: ok (data/reports/2026/01/26/data_snapshot.md)
 topic_gate: ok
-decision_dashboard: ok | data/reports/2026/01/26/decision_dashboard.md
 decision: ok
 report: ok | data/reports/2026/01/26/daily_brief.md
 checks:
