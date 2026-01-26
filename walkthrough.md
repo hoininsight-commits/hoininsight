@@ -172,11 +172,27 @@ We introduced a "Pick → Outcome" correlation system to provide transparency an
 - **UI Rendering**: Dashboard successfully renders the correlation panel even when historical records for a specific day are unresolved or missing.
 - **Tests**: 3/3 tests passed.
 
+## Step 43: Auto Prioritization Layer (Pre-pick Engine)
+
+We implemented an "Auto Prioritization" layer to minimize human picking effort. The engine now automatically scores and ranks the top 3–5 most critical topics, allowing operators to focus on approval rather than complex discovery.
+
+### Key Deliverables
+- **Prioritization Logic**: `src/ops/auto_prioritizer.py` applies deterministic, weight-based scoring (+3 for time-sensitivity, +2 for level 3, etc.) to all ready and nearly-ready topics.
+- **Top Section UI**: A new dashboard block, `🔥 AUTO-PICK PRIORITY (Top 3–5)`, surfaces the highest-value candidates with color-coded criticalness badges (🔴 CRITICAL, 🟠 HIGH, etc.).
+- **Smart Fill**: If the "READY" pool is insufficient, the engine automatically draws from `NEARLY_READY` and `READY_TO_PROMOTE` shadow buckets to maintain a healthy recommendation volume.
+- **Pipeline Integration**: The prioritizer is wired into the core engine pipeline and manifest, generating `data/ops/auto_priority_today.json` during every run.
+
+### Verification Evidence
+- **Scoring Accuracy**: Verified that weighted factors (impact, level, fact-driven) correctly sum and penalties (saturation, ceilings) are applied via `tests/test_auto_prioritizer.py`.
+- **Tie-Breaking**: Confirmed stable alphabetical title sorting when topic scores are identical.
+- **UI Logic**: Dashboard correctly renders the prioritization panel only when sufficient candidates are available, otherwise showing a data-insufficiency hint.
+- **Tests**: 4/4 tests passed.
+
 ### [WORK CONFIRMATION]
-Step 41-1 — Correlation row schema implemented
-Step 41-2 — Strict join rules applied
-Step 41-3 — Correlator builder writes pick_outcome_30d.json
-Step 41-4 — Dashboard panel rendered + row list
-Step 41-5 — Pipeline OPS wiring added
-Step 41-6 — Tests passing
+Step 43-1 — Priority weights defined
+Step 43-2 — Candidate pool applied
+Step 43-3 — JSON output generated
+Step 43-4 — Dashboard section rendered
+Step 43-5 — OPS wiring added
+Step 43-6 — Tests passing
 Push — DONE (main)
