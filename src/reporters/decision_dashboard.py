@@ -637,9 +637,19 @@ class DecisionDashboard:
                 # [NEW] Step 56: Quality Calibration Buttons
                 lines.append("")
                 lines.append("🧠 **QUALITY CALIBRATION**")
-                # Using local file links for 'logging' simulation in markdown
-                # In a real environment, these would be handled by a listener or separate process.
-                lines.append(f"[ STRONG ](#) | [ BORDERLINE ](#) | [ WEAK ](#)")
+                
+                # Eligibility Check for Buttons: READY, AUTO-APPROVED (implicitly in highlights), 
+                # or FACT-FIRST (if we map them)
+                # For simplicity, we show them for all "Highlights" which are READY or AUTO-APPROVED.
+                
+                # Verdict Link Construction:
+                # [ VERDICT ] -> data/ops/topic_quality_log.jsonl?action=log&topic_id=...&verdict=...
+                # Since this is a static MD, we use a placeholder link with query params that an external 
+                # (hypothetical) watcher could pick up, or just standard markers.
+                
+                lines.append(f"[ STRONG ](#log_quality_{tid}_STRONG) | "
+                             f"[ BORDERLINE ](#log_quality_{tid}_BORDERLINE) | "
+                             f"[ WEAK ](#log_quality_{tid}_WEAK)")
                 lines.append("")
             
         lines.append(f"👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)")
@@ -1370,7 +1380,10 @@ class DecisionDashboard:
         # [Step 56] Quality Calibration Buttons
         lines.append("")
         lines.append("🧠 **QUALITY CALIBRATION**")
-        lines.append(f"[ STRONG ](#) | [ BORDERLINE ](#) | [ WEAK ](#)")
+        tid = c.get('topic_id')
+        lines.append(f"[ STRONG ](#log_quality_{tid}_STRONG) | "
+                     f"[ BORDERLINE ](#log_quality_{tid}_BORDERLINE) | "
+                     f"[ WEAK ](#log_quality_{tid}_WEAK)")
         lines.append("")
         
         lines.append("\n---")

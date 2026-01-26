@@ -12,6 +12,8 @@ class TopicQualityCalibrator:
     WITHOUT affecting engine logic.
     """
 
+    QUALITY_VERDICTS = ["STRONG", "BORDERLINE", "WEAK"]
+
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.log_file = base_dir / "data" / "ops" / "topic_quality_log.jsonl"
@@ -23,8 +25,8 @@ class TopicQualityCalibrator:
         Appends a quality verdict to the log.
         VERDICT_ENUM: [STRONG, BORDERLINE, WEAK]
         """
-        if verdict not in ["STRONG", "BORDERLINE", "WEAK"]:
-            raise ValueError(f"Invalid quality verdict: {verdict}")
+        if verdict not in self.QUALITY_VERDICTS:
+            raise ValueError(f"Invalid quality verdict: {verdict}. Must be one of {self.QUALITY_VERDICTS}")
 
         record = {
             "run_date": ymd,
