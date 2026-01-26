@@ -108,6 +108,18 @@ class HealthCheck:
             else:
                 health_data["errors"].append(f"daily_lock.json missing in {report_dir}")
 
+            # Check READY count for closure signal (Step 32-3)
+            ready_count = health_data["metrics"]["topics_count"].get("READY", 0)
+            events_count = health_data["metrics"]["events_count"]
+            if ready_count == 0:
+                if events_count > 0:
+                    health_data["ready_root_cause_code"] = "QUALITY_ELIGIBILITY"
+                    health_data["ready_details"] = "Events present but none reached READY state (failed scoring or filters)."
+                    health_data["errors"].append("topics_count.READY is 0: QUALITY_ELIGIBILITY")
+                else:
+                    # Already handled by input_root_cause_code
+                    pass
+
             health_data["status"] = "SUCCESS" if not health_data["errors"] else "PARTIAL"
             
         except Exception as e:
