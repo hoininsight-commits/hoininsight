@@ -217,6 +217,7 @@
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
             <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+            <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
             <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
@@ -387,6 +388,79 @@
         
             </tbody>
         </table>
+    </div>
+    
+            </div>
+            <div id="tab-decision" class="hidden">
+                
+    <div class="decision-container">
+        <div class="today-header">
+            <div class="today-summary">⚖️ 최종 의사결정 (Final Decision Card)</div>
+        </div>
+        
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+            <div style="font-size: 14px; color: #64748b; margin-bottom: 15px; font-weight: 600;">시스템 종합 판정</div>
+            <div style="font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 10px;">
+                N/A 리스크 관리 모드
+            </div>
+            <div style="font-size: 15px; color: #475569; line-height: 1.6;">
+                정성적 근거 취합 중...
+            </div>
+        </div>
+
+        <div class="card-grid">
+    
+        <div class="topic-card" onclick="openEngineDetail('engine_topic_0')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, crypto_btc_usd_spot_coingecko 동반)</div>
+            <div class="card-meta">
+                <span class="meta-item importance">보통 (L2)</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 4.14배(표준편차) 이상 폭발적인 충격을(를) 보였습니다. 특히 동일 ...</span>
+            </div>
+        </div>
+        
+        <div class="topic-card" onclick="openEngineDetail('engine_topic_1')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</div>
+            <div class="card-meta">
+                <span class="meta-item importance">보통 (L2)</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflati...</span>
+            </div>
+        </div>
+        
+        <div class="topic-card" onclick="openEngineDetail('engine_topic_2')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</div>
+            <div class="card-meta">
+                <span class="meta-item importance">보통 (L2)</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor...</span>
+            </div>
+        </div>
+        
+        <div class="topic-card" onclick="openEngineDetail('engine_topic_3')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)</div>
+            <div class="card-meta">
+                <span class="meta-item importance">보통 (L2)</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동...</span>
+            </div>
+        </div>
+        
+        <div class="topic-card" onclick="openEngineDetail('engine_topic_4')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">[Risk-Off Wave] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, INFLATION 동반)</div>
+            <div class="card-meta">
+                <span class="meta-item importance">보통 (L2)</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 전환사채(CB/BW) 발행가 오늘 하루 1건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특...</span>
+            </div>
+        </div>
+        
+        </div>
     </div>
     
             </div>
@@ -693,6 +767,7 @@
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
                 document.getElementById('tab-candidates').classList.add('hidden');
+                document.getElementById('tab-decision').classList.add('hidden');
                 document.getElementById('tab-ops').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
