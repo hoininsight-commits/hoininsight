@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-27T11:29:19Z
-- finished_utc: 2026-01-27T11:29:56Z
+- started_utc: 2026-01-27T11:39:16Z
+- finished_utc: 2026-01-27T11:39:51Z
 - status: SUCCESS
 
 ## details
@@ -32,8 +32,9 @@ structural_seeder: ok
 issuesignal_builder: ok
 video_selector: ok
 top1_compressor: ok
-economic_hunter_narrator: ok
 whynow_trigger: ok
+topic_lock: ok (lock=False)
+economic_hunter_narrator: ok (Standard)
 decision: ok
 report: ok | data/reports/2026/01/27/daily_brief.md
 checks:
