@@ -297,6 +297,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"structural_seeder: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 64: IssueSignal Builder Execution
+            try:
+                from src.ops.issue_signal_builder import IssueSignalBuilder
+                builder = IssueSignalBuilder(Path("."))
+                builder.run()
+                details_lines.append("issuesignal_builder: ok")
+                print("issuesignal_builder: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"issuesignal_builder: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()

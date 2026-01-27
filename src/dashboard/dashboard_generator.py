@@ -282,24 +282,22 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]]) 
     
     cards_html = ""
     
-    # 1. Process HOIN Signal Topics (Green)
+    # 1. Process HOIN IssueSignal Topics (Green)
     for s in signals:
-        title = s.get('signal_title_kr', 'Untitled Signal')
-        importance = s.get('confidence', 'MEDIUM') # HIGH/MEDIUM/LOW
+        title = s.get('title', 'Untitled Signal')
+        importance = s.get('importance_level', '보통')
+        card_type = s.get('structure_card_type', '이슈시그널')
+        summary = s.get('one_line_summary', '')
         
-        # Map importance to KR
-        imp_kr = "보통"
-        if importance == "HIGH": imp_kr = "높음"
-        elif importance == "LOW": imp_kr = "낮음"
-        
-        summary = f"[{s.get('signal_type', '-')}] {s.get('compressed_sector', '-')}"
+        # Generate ID
+        uid = s.get('topic_id', 'unknown_signal')
         
         card_html = f"""
-        <div class="topic-card" onclick="openSignalDetail('{s.get('signal_id')}')">
-            <div class="card-badge signal">이슈시그널</div>
+        <div class="topic-card" onclick="openSignalDetail('{uid}')">
+            <div class="card-badge signal">{card_type}</div>
             <div class="card-title">{title}</div>
             <div class="card-meta">
-                <span class="meta-item importance">{imp_kr}</span>
+                <span class="meta-item importance">{importance}</span>
                 <span class="meta-divider">|</span>
                 <span class="meta-item">{summary}</span>
             </div>
@@ -514,13 +512,33 @@ def generate_dashboard(base_dir: Path):
             final_card = json.loads(card_path.read_text(encoding="utf-8"))
     except: pass
     
-    # [B] HOIN Signal Topics
+    # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
     try:
-        signal_path = base_dir / "data" / "ops" / "hoin_signal_today.json"
-        if signal_path.exists():
+        # Load the Processed IssueSignal Cards (Step 64), NOT the raw hoin_signal (Step 61)
+        signal_path = base_dir / "data" / "ops" / "issuesignal_today.json"
+        
+        # Fallback to hoin_signal if issuesignal not found (for safety during transition)
+        if not signal_path.exists():
+            signal_path = base_dir / "data" / "ops" / "hoin_signal_today.json"
+            if signal_path.exists():
+                raw_data = json.loads(signal_path.read_text(encoding="utf-8"))
+                # minimal adapter for raw signal
+                signals = [] 
+                for r in raw_data.get("signals", []):
+                    signals.append({
+                        "topic_id": r.get('signal_id'),
+                        "title": r.get('signal_title_kr'),
+                        "importance_level": "보통",
+                        "structure_card_type": "이슈시그널",
+                        "one_line_summary": r.get('compressed_sector', ''),
+                        "script_natural": "상세 스크립트 없음",
+                        "rationale_natural": "Raw Signal Fallback",
+                        "evidence_refs": {}
+                    })
+        else:
             signal_data = json.loads(signal_path.read_text(encoding="utf-8"))
-            signals = signal_data.get("signals", [])
+            signals = signal_data.get("cards", [])
     except: pass
     
     # [C] Historical Archive
@@ -535,39 +553,37 @@ def generate_dashboard(base_dir: Path):
     details_map = {}
     
     # (1) Signals
+    # (1) Signals
     for s in signals:
-        sid = s.get('signal_id')
+        sid = s.get('topic_id')
         
-        # Build Table Rows for Evidence
-        rec_data = s.get('recommended_data', []) # Placeholder if exists, else generic
-        # Signals usually don't have list of data yet in this schema, using sector/type as evidence
+        evidence = s.get('evidence_refs', {})
+        drivers = ", ".join(evidence.get('structural_drivers', []))
+        risk = evidence.get('risk_factor', '-')
         
         details_map[sid] = f"""
         <div class="detail-header">
-            <span class="detail-badge signal">이슈시그널</span>
-            <h2>{s.get('signal_title_kr', '제목 없음')}</h2>
+            <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
+            <h2>{s.get('title', '제목 없음')}</h2>
         </div>
         <div class="detail-section">
-            <h3>📜 요약 스크립트</h3>
+            <h3>📜 상세 스크립트</h3>
             <p class="script-text">
-                {s.get('compressed_sector', '요약 정보가 없습니다.')}
-                <br><br>
-                본 이슈는 <strong>{s.get('signal_type')}</strong> 유형으로 감지되었습니다.
+                {s.get('script_natural', 'No Content').replace(chr(10), '<br>')}
             </p>
         </div>
         <div class="detail-section">
-            <h3>🎯 선정 이유 (Why Now)</h3>
+            <h3>🎯 선정 근거</h3>
             <p>
-                시장 구조적 분석 결과, <strong>{s.get('confidence')}</strong> 수준의 선점 필요성이 감지되었습니다.
-                엔진의 정량적 점수와 별개로, 산업/정책적 맥락에서 시급성이 인정되는 토픽입니다.
+                {s.get('rationale_natural', '-')}
             </p>
         </div>
         <div class="detail-section">
             <h3>📊 근거 데이터</h3>
             <ul class="data-list">
-                <li><strong>유형:</strong> {s.get('signal_type')}</li>
-                <li><strong>섹터:</strong> {s.get('compressed_sector')}</li>
-                <li><strong>신뢰도:</strong> {s.get('confidence')}</li>
+                <li><strong>Drivers:</strong> {drivers}</li>
+                <li><strong>Risk Factor:</strong> {risk}</li>
+                <li><strong>Source IDs:</strong> {len(evidence.get('source_ids', []))} refs</li>
             </ul>
         </div>
         """

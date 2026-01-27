@@ -118,6 +118,8 @@ class DashboardManifest:
             "skeleton_index_json": f"data/ops/bundles/{year}/{month}/{day}/skeletons/skeleton_index.json",
             "structural_topic_seeds_json": "data/ops/structural_topic_seeds_today.json",
             "structural_topic_seeds_md": "data/ops/structural_topic_seeds_today.md",
+            "issuesignal_today_json": "data/ops/issuesignal_today.json",
+            "issuesignal_today_md": "data/ops/issuesignal_today.md",
             "missing": missing
         }
         
