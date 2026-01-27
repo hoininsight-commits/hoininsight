@@ -66,6 +66,7 @@ def _load_historical_cards(base_dir: Path) -> List[Dict]:
 
 def _generate_archive_view(cards: List[Dict]) -> str:
     """Generate HTML Table for Topic Archive (Operator-First Structure)"""
+    topic_details_map = {}
     if not cards:
         return '<div style="padding:40px; text-align:center; color:#94a3b8;">저장된 과거 데이터가 없습니다.</div>'
 
@@ -113,8 +114,6 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             </tr>
             """
 
-    # [Fix] topic_details_map was not defined, causing NameError
-    topic_details_map = {}
     html = f"""
     <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
         <table style="width:100%; border-collapse:collapse; font-size:14px;">
@@ -2938,24 +2937,16 @@ def generate_dashboard(base_dir: Path):
                         </div>
 
                         <div style="margin-bottom:30px;">
-                            <h3 style="font-size:18px; font-weight:900; color:#2563eb; margin-bottom:20px; border-bottom:2px solid #dbeafe; padding-bottom:10px;">
                                 {I18N_KO['SECTION_B_TITLE']}
                             </h3>
                             {section_b_html}
                         </div>
-                    </div>
 
-                    <!-- TAB: 토픽 리스트 (History) -->
-                    <div id="topic-archive" class="tab-content" style="display:none;">
-                         <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; padding:30px; margin-bottom:30px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.05);">
-                            <h2 style="margin:0; font-size:24px; font-weight:900; color:#1e293b;">📅 {I18N_KO['DAILY_ARCHIVE']}</h2>
-                            <p style="margin-top:10px; font-size:14px; color:#64748b;">과거에 선정된 주요 토픽들을 날짜순으로 열람할 수 있습니다.</p>
-                        </div>
-                        {topic_archive_view_html}
-                    </div>
+                        <!-- [Step 61-g-FIX] Move Main Detail here (Rationale/Script Preview) -->
+                        <div style="margin-top:60px; padding-top:40px; border-top:1px dashed #cbd5e1;">
                             <!-- Header -->
                             <div style="text-align:center; margin-bottom:30px;">
-                                <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Today's Insight</div>
+                                <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Today's Strategic Insight</div>
                                 <h1 style="font-size:28px; font-weight:800; color:#1e293b; margin:0;">
                                     {topic_title}
                                 </h1>
@@ -3003,9 +2994,9 @@ def generate_dashboard(base_dir: Path):
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
 
                     <!-- TAB 0-1: Topic List (NEW) -->
                     <div id="topic-list" class="tab-content" style="display:none;">
@@ -3140,7 +3131,13 @@ def generate_dashboard(base_dir: Path):
                     </div>
 
                     <!-- TAB 0-2: Topic Archive (History) -->
-                    {topic_archive_view_html}
+                    <div id="topic-archive" class="tab-content" style="display:none;">
+                         <div style="padding:10px 0;">
+                            <h2 style="margin:20px 0 10px 0; font-size:24px; font-weight:900; color:#1e293b;">📅 {I18N_KO['DAILY_ARCHIVE']}</h2>
+                            <p style="margin-bottom:30px; font-size:14px; color:#64748b;">과거에 선정된 주요 토픽들을 날짜순으로 열람할 수 있습니다.</p>
+                            {topic_archive_view_html}
+                        </div>
+                    </div>
 
                     <!-- TAB 1: Architecture Diagram -->
                     <div id="architecture-diagram" class="tab-content" style="display:none;">
