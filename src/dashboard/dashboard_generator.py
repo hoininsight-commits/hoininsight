@@ -25,6 +25,8 @@ from src.ops.entity_state_classifier import EntityStateClassifier
 from src.ops.structural_memory_engine import StructuralMemoryEngine
 from src.ops.snapshot_comparison_engine import SnapshotComparisonEngine
 from src.ops.structural_pattern_detector import StructuralPatternDetector
+from src.ops.pattern_memory_engine import PatternMemoryEngine
+from src.ops.narrative_compressor import NarrativeCompressor
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -873,11 +875,50 @@ def generate_dashboard(base_dir: Path):
     memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
     
     # [NEW] Structural Pattern Detection (Step 86)
+    detected_patterns = []
     try:
         pattern_detector = StructuralPatternDetector(base_dir)
         pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
+        
+        # Load detected patterns for next steps
+        import json
+        pattern_snapshot = json.loads(pattern_snapshot_path.read_text(encoding="utf-8"))
+        detected_patterns = pattern_snapshot.get("active_patterns", [])
     except Exception as e:
         print(f"[PatternDetector] Error: {e}")
+
+    # [NEW] Pattern Memory & Replay (Step 88)
+    replay_blocks = []
+    try:
+        memory_engine = PatternMemoryEngine(base_dir)
+        for pattern in detected_patterns:
+            # Save pattern to memory
+            pattern_id = pattern.get("pattern_type", "UNKNOWN")
+            memory_engine.save_pattern(
+                pattern_id=pattern_id,
+                pattern_data=pattern,
+                context={"date": today_json.get("date", ymd), "trigger": today_json.get("top_signal", {}).get("trigger", "")}
+            )
+            
+            # Replay similar patterns
+            replay_block = memory_engine.replay(pattern)
+            replay_blocks.append(replay_block)
+    except Exception as e:
+        print(f"[PatternMemory] Error: {e}")
+
+    # [NEW] Narrative Compression (Step 87)
+    compressed_narratives = []
+    try:
+        for i, pattern in enumerate(detected_patterns):
+            replay_block = replay_blocks[i] if i < len(replay_blocks) else {}
+            context = {
+                "intensity": today_json.get("top_signal", {}).get("intensity", "FLASH"),
+                "why_now": today_json.get("top_signal", {}).get("trigger", "")
+            }
+            narrative = NarrativeCompressor.compress(pattern, replay_block, context)
+            compressed_narratives.append(narrative)
+    except Exception as e:
+        print(f"[NarrativeCompressor] Error: {e}")
 
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
