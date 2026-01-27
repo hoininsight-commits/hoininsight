@@ -43,8 +43,8 @@ I18N_KO = {
     "INSIGHT_SCRIPT_RAW": "스크립트 데이터 (Raw)",
     
     # Sections (Step 60)
-    "SECTION_A_TITLE": "🔴 지금 선점해야 할 토픽 (이야기 중심)",
-    "SECTION_B_TITLE": "🔵 이미 시장이 반응한 토픽 (시장 지표 중심)",
+    "SECTION_A_TITLE": "🔴 지금 선점해야 할 토픽 (이슈시그널)",
+    "SECTION_B_TITLE": "🔵 엔진 선정 토픽 (호인엔진)",
     "RATIONALE_OPERATOR": "이 토픽의 맥락",
     "WHY_NOW_OPERATOR": "왜 지금인가",
     "IMPORTANCE_LEVEL": "중요도",
