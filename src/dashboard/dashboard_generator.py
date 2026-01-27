@@ -113,6 +113,8 @@ def _generate_archive_view(cards: List[Dict]) -> str:
             </tr>
             """
 
+    # [Fix] topic_details_map was not defined, causing NameError
+    topic_details_map = {}
     html = f"""
     <div style="background:white; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
         <table style="width:100%; border-collapse:collapse; font-size:14px;">
@@ -286,29 +288,29 @@ def _generate_signal_panel(signals: List[Dict[str, Any]]) -> str:
         """
     
     html = f"""
-    <div style="margin:30px 0; background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+    <div style="margin:30px 0; background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
         <div style="background:#fefce8; padding:15px 25px; border-bottom:1px solid #fef08a; display:flex; align-items:center; gap:12px;">
             <span style="font-size:22px;">🟡</span>
             <h3 style="margin:0; font-size:16px; color:#854d0e; font-weight:800;">HOIN SIGNAL (구조적 선점 이슈)</h3>
             <span style="font-size:11px; color:#a16207; margin-left:auto; background:white; padding:2px 8px; border-radius:20px; border:1px solid #fef08a;">v1.0 Parallel Layer</span>
         </div>
-        <div style="padding:20px 25px;">
+        <div style="padding:20px 25px; overflow-x: auto;">
             <p style="margin:0 0 20px 0; font-size:13px; color:#64748b; line-height:1.6;">
                 엔진의 개별 점수와 무관하게 <strong style="color:#854d0e;">정책·자본·산업 구조 분석</strong>을 통해 
                 "선점"이 필요한 이슈를 판정한 결과입니다. (상태값 없음, 관찰 전용)
             </p>
-            <table style="width:100%; border-collapse:collapse; text-align:left;">
+            <table style="width:100%; border-collapse:collapse; text-align:left; min-width: 800px; table-layout: fixed;">
                 <thead>
                     <tr style="background:#f8fafc; color:#64748b; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">
-                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">ID</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0; width: 150px;">ID</th>
                         <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Signal Topic</th>
-                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Type</th>
-                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Sector</th>
-                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Conf</th>
-                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">System Status</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0; width: 100px;">Type</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0; width: 120px;">Sector</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0; width: 80px;">Conf</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0; width: 100px;">System Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="word-break: break-word;">
                     {rows}
                 </tbody>
             </table>
