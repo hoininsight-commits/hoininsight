@@ -201,6 +201,69 @@
         }
         .list-action-btn:hover { background: #f1f5f9; color: #1e293b; }
         
+        /* Entity Pool */
+        .entity-pool-container { margin-top: 40px; border-top: 2px dashed #e2e8f0; padding-top: 30px; }
+        .entity-section-header { font-size: 16px; color: #1e293b; margin-bottom: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        
+        .entity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .entity-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+        .entity-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        
+        .entity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-direction: column-reverse; gap: 8px; }
+        
+        .entity-name {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.3px;
+        }
+        
+        .entity-role {
+            font-size: 10px; font-weight: 800; padding: 3px 6px; border-radius: 4px; text-transform: uppercase;
+        }
+        .role-beneficiary { background: #dcfce7; color: #166534; }
+        .role-victim { background: #fee2e2; color: #991b1b; }
+        .role-hedge { background: #fef9c3; color: #854d0e; }
+        .role-bottleneck { background: #e0f2fe; color: #075985; }
+        .role-default { background: #f1f5f9; color: #475569; }
+        
+        .entity-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .constraint-tag {
+            font-size: 10px; font-weight: 600; color: #64748b;
+            background: #f8fafc; border: 1px solid #e2e8f0; padding: 2px 6px; border-radius: 4px;
+        }
+        
+        .entity-logic {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .entity-disclaimer {
+            font-size: 11px;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 20px;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
 
             * { box-sizing: border-box; }
             body {
@@ -416,6 +479,58 @@
             <div class="empty-icon">☕️</div>
             <h3>오늘은 구조적으로 확정된 이슈 시그널이 없습니다.</h3>
             <p>Scanning for potential triggers...</p>
+        </div>
+        
+                
+        <div class="entity-pool-container">
+            <h3 class="entity-section-header">
+                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Structural Entities)
+            </h3>
+            <div class="entity-grid">
+                
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Sector Leader A</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">NARRATIVE</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Sector Leader A은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Infrastructure B</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">NARRATIVE</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Infrastructure B은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Hedge ETF C</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">CAPITAL</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Hedge ETF C은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
+            </div>
         </div>
         
                 
