@@ -20,6 +20,7 @@ from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 from src.dashboard.topic_card_renderer import TopicCardRenderer
+from src.ops.entity_mapping_layer import EntityMappingLayer
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -830,6 +831,9 @@ def generate_dashboard(base_dir: Path):
     if today_json and today_json.get("date"):
         history_json = [h for h in history_json if h.get("date") != today_json.get("date")]
         
+    # [NEW] Entity Mapping logic moved down
+    # entity_pool moved after final_card load
+        
     top1_card_html = TopicCardRenderer.render_top1_card(today_json)
     snapshot_list_html = TopicCardRenderer.render_snapshot_list(history_json)
     topic_card_css = TopicCardRenderer.get_css()
@@ -843,6 +847,10 @@ def generate_dashboard(base_dir: Path):
         if card_path.exists():
             final_card = json.loads(card_path.read_text(encoding="utf-8"))
     except: pass
+
+    # [NEW] Entity Mapping (Moved here)
+    entity_pool = EntityMappingLayer.map_target_entities(today_json, final_card)
+    entity_pool_html = TopicCardRenderer.render_entity_pool(entity_pool)
     
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
@@ -1358,6 +1366,7 @@ def generate_dashboard(base_dir: Path):
         <div class="main-content">
             <div id="tab-today">
                 {top1_card_html}
+                {entity_pool_html}
                 {snapshot_list_html}
                 <div class="today-header">
                     <div class="today-date">Detailed Engine Output</div>

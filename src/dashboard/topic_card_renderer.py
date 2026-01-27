@@ -133,6 +133,63 @@ class TopicCardRenderer:
         """
 
     @staticmethod
+    def render_entity_pool(entities: List[Dict[str, Any]]) -> str:
+        """
+        Renders the grid of Tradeable Entities (EntityMappingLayer output).
+        """
+        if not entities:
+            return "" # Or render a placeholder if strictness allows
+            
+        cards_html = ""
+        for e in entities:
+            name = e.get("name", "Unknown")
+            role = e.get("role", "STRUCTURAL EXECUTOR").replace("STRUCTURAL ", "")
+            constraints = e.get("constraints", [])
+            logic = e.get("logic_summary", "")
+            
+            # Badge Colors based on Role
+            role_class = "role-default"
+            if "BENEFICIARY" in role: role_class = "role-beneficiary"
+            elif "VICTIM" in role: role_class = "role-victim"
+            elif "HEDGE" in role: role_class = "role-hedge"
+            elif "BOTTLENECK" in role: role_class = "role-bottleneck"
+            
+            # Constraint Tags
+            tags_html = ""
+            for t in constraints:
+                tag_label = t.replace("_LOCKED", "")
+                tags_html += f'<span class="constraint-tag">{tag_label}</span>'
+                
+            cards_html += f"""
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role {role_class}">{role}</span>
+                    <div class="entity-name">{name}</div>
+                </div>
+                <div class="entity-tags">
+                   {tags_html}
+                </div>
+                <div class="entity-logic">
+                    {logic}
+                </div>
+            </div>
+            """
+            
+        return f"""
+        <div class="entity-pool-container">
+            <h3 class="entity-section-header">
+                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Structural Entities)
+            </h3>
+            <div class="entity-grid">
+                {cards_html}
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
+            </div>
+        </div>
+        """
+
+    @staticmethod
     def _render_empty_state() -> str:
         return """
         <div class="empty-state-card">
@@ -327,5 +384,68 @@ class TopicCardRenderer:
             cursor: pointer;
         }
         .list-action-btn:hover { background: #f1f5f9; color: #1e293b; }
+        
+        /* Entity Pool */
+        .entity-pool-container { margin-top: 40px; border-top: 2px dashed #e2e8f0; padding-top: 30px; }
+        .entity-section-header { font-size: 16px; color: #1e293b; margin-bottom: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        
+        .entity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .entity-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+        .entity-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        
+        .entity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-direction: column-reverse; gap: 8px; }
+        
+        .entity-name {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.3px;
+        }
+        
+        .entity-role {
+            font-size: 10px; font-weight: 800; padding: 3px 6px; border-radius: 4px; text-transform: uppercase;
+        }
+        .role-beneficiary { background: #dcfce7; color: #166534; }
+        .role-victim { background: #fee2e2; color: #991b1b; }
+        .role-hedge { background: #fef9c3; color: #854d0e; }
+        .role-bottleneck { background: #e0f2fe; color: #075985; }
+        .role-default { background: #f1f5f9; color: #475569; }
+        
+        .entity-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .constraint-tag {
+            font-size: 10px; font-weight: 600; color: #64748b;
+            background: #f8fafc; border: 1px solid #e2e8f0; padding: 2px 6px; border-radius: 4px;
+        }
+        
+        .entity-logic {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .entity-disclaimer {
+            font-size: 11px;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 20px;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+        }
         """
 
