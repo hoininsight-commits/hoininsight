@@ -49,6 +49,99 @@ def _utc_to_kst_display(utc_timestamp_str: str) -> str:
         return utc_timestamp_str  # Return original if parsing fails
 
 
+    return html
+
+
+def _load_youtube_videos(base_dir: Path) -> List[Dict]:
+    """Load latest videos from status.json or metadata.json"""
+    # Try finding metadata in known locations
+    # 1. data/youtube/metadata.json (Phase 31)
+    paths = [
+        base_dir / "data" / "youtube" / "metadata.json",
+        base_dir / "data" / "inputs" / "youtube" / "metadata.json"
+    ]
+    
+    videos = []
+    
+    for p in paths:
+        if p.exists():
+            try:
+                data = json.loads(p.read_text(encoding="utf-8"))
+                # data might be list of videos or dict
+                if isinstance(data, list):
+                    videos.extend(data)
+                elif isinstance(data, dict) and "videos" in data:
+                    videos.extend(data["videos"])
+            except: pass
+            
+    # Also load status.json for status info
+    status_map = {}
+    status_paths = [
+        base_dir / "data" / "youtube" / "status.json",
+        base_dir / "data" / "inputs" / "youtube" / "status.json"
+    ]
+    for p in status_paths:
+        if p.exists():
+            try:
+               s_data = json.loads(p.read_text(encoding="utf-8"))
+               # Assuming format {video_id: status}
+               status_map.update(s_data)
+            except: pass
+            
+    # Enrich videos with status
+    for v in videos:
+        vid = v.get("video_id") or v.get("id")
+        if vid:
+            v["status"] = status_map.get(vid, "NEW")
+            
+    # Sort by date desc
+    videos.sort(key=lambda x: x.get("published_at", ""), reverse=True)
+    return videos
+
+def _generate_youtube_view(videos: List[Dict]) -> str:
+    """Generate HTML Table for YouTube Inbox"""
+    if not videos:
+        return '<div class="empty-state">YouTube 데이터가 없습니다. (data/youtube/metadata.json 확인 필요)</div>'
+        
+    rows = ""
+    for v in videos:
+        title = v.get("title", "No Title")
+        date_str = _utc_to_kst_display(v.get("published_at", ""))
+        url = f"https://www.youtube.com/watch?v={v.get('video_id')}"
+        status = v.get("status", "NEW").upper()
+        
+        badge_class = "status-new"
+        if status == "PROPOSED": badge_class = "status-proposed"
+        elif status == "APPROVED": badge_class = "status-approved"
+        elif status == "APPLIED": badge_class = "status-applied"
+        
+        rows += f"""
+        <tr>
+            <td>{date_str}</td>
+            <td>
+                <div style="font-weight:600; margin-bottom:4px;">{title}</div>
+                <a href="{url}" target="_blank" style="font-size:12px; color:#2563eb; text-decoration:none;">Watch Video &rarr;</a>
+            </td>
+            <td><span class="status-badge {{badge_class}}">{{status}}</span></td>
+        </tr>
+        """
+        
+    return f"""
+    <table class="youtube-table">
+        <thead>
+            <tr>
+                <th style="width:120px;">Date</th>
+                <th>Title</th>
+                <th style="width:100px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{rows}}
+        </tbody>
+    </table>
+    """
+
+
 def _load_historical_cards(base_dir: Path) -> List[Dict]:
     """Load all historical final_decision_card.json files"""
     cards = []
@@ -1295,8 +1388,19 @@ def generate_dashboard(base_dir: Path):
     </html>
     """
     
-    (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
-    print(f"[Dashboard] Generated dashboard/index.html with simplified UI (Step 62)")
+    # [NEW] YouTube Inbox View
+    youtube_videos = _load_youtube_videos(base_dir)
+    youtube_view_html = _generate_youtube_view(youtube_videos)
+
+    (base_dir / "dashboard" / "index.html").write_text(html.format(
+        today_view_html=today_view_html,
+        candidate_view_html=candidate_view_html,
+        decision_view_html=decision_view_html,
+        ops_view_html=ops_view_html,
+        youtube_view_html=youtube_view_html, # Added
+        archive_view_html=archive_view_html
+    ), encoding="utf-8")
+    print(f"[Dashboard] Generated dashboard/index.html with YouTube Inbox (Restored)")
     return html
 
 

@@ -36,6 +36,7 @@ jobs:
       - name: Run Narrative Analyze & Queue (Phase 31-B/C)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ENABLE_LEARNING: "true"
         run: |
           python -m src.narratives.youtube_watcher
           python -m src.narratives.transcript_ingestor
