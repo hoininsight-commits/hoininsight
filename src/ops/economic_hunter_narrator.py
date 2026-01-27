@@ -153,6 +153,28 @@ class EconomicHunterNarrator:
             # Always append intensity block to action
             action += intensity_block
 
+        # [NEW] Step 78: Video Rhythm Selection & Injection
+        rhythm_data = top1.get("video_rhythm", {})
+        r_profile = rhythm_data.get("rhythm_profile")
+        r_style = rhythm_data.get("narrative_style", "N/A")
+        
+        rhythm_block = ""
+        if r_profile:
+            rhythm_block = f"\n\n[🎬 VIDEO RHYTHM]\n- **Intensity Level:** {i_level if i_level else 'N/A'}\n- **Rhythm Profile:** {r_profile}\n- **Narrative Style:** {r_style}"
+            
+            # Sentence Tempo & Tone Adaptation
+            if r_profile == "SHOCK_DRIVE":
+                # Ensure punchy sentences
+                hook = hook.split('?')[0] + "! 당장 확인하십시오!"
+                tension = "상황은 급박합니다. 여유 부릴 틈이 없습니다. 구조적 결론만 말씀드리겠습니다."
+                action = f"주저하지 마십시오. {action}"
+            elif r_profile == "DEEP_TRACE":
+                tension = "이 구조가 형성된 과정을 추적해보면, 과거의 실수가 반복되고 있음을 알 수 있습니다. 단순한 일회성 사건이 아닙니다. " + tension
+                action += "\n\n(참고: 이 분석은 장기적인 구조적 흐름을 반영하고 있습니다.)"
+            
+            # Always append rhythm block to action (after intensity block)
+            action += rhythm_block
+
         # 4. Construct Output Object
         narrative = {
             "topic_id": original_card.get('topic_id'),
@@ -173,7 +195,8 @@ class EconomicHunterNarrator:
                 "anchor": anchor_text,
                 "id": trigger_type
             },
-            "video_intensity": intensity
+            "video_intensity": intensity,
+            "video_rhythm": rhythm_data
         }
         
         # 5. Output JSON & MD

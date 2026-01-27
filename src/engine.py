@@ -458,6 +458,19 @@ def main(target_categories: list[str] = None):
                 except Exception as e:
                     print(f"video_intensity: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 78: Economic Hunter Video Rhythm Decision
+            if topic_lock:
+                try:
+                    from src.ops.economic_hunter_video_rhythm import EconomicHunterVideoRhythmLayer
+                    rhythm_layer = EconomicHunterVideoRhythmLayer(Path("."))
+                    rhythm_res = rhythm_layer.assign_rhythm()
+                    details_lines.append(f"video_rhythm: ok ({rhythm_res.get('rhythm_profile', 'REJECTED')})")
+                    print(f"video_rhythm: ok ({rhythm_res.get('rhythm_profile', 'REJECTED')})", file=sys.stderr)
+                    if rhythm_res.get("status") == "rejected":
+                         topic_lock = False
+                except Exception as e:
+                    print(f"video_rhythm: fail ({e})", file=sys.stderr)
+
             # [NEW] Step 67: Narrator Selection & Execution
             if topic_lock:
                 try:
