@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-27T14:54:46Z",
+    "ts_utc": "2026-01-27T15:02:29Z",
     "dataset_id": "credit_hy_spread_fred",
     "topic_id": "credit_hy_spread_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/27/credit_hy_spread_fred.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/01/27/credit_hy_spread_fred.json"
     },
     "rationale": "[L1] Percentile 5.8% (Watch) (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]

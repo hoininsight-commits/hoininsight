@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-01-27
+# 🧭 TODAY TOPIC VIEW - 2026-01-28
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=0
 
@@ -16,4 +16,4 @@ No FACT-FIRST shadow topics today.
 
 ## ⚠️ DATA STATUS
 Following inputs were missing during generation:
-- shadow_pool/2026/01/27/fact_first.json
+- shadow_pool/2026/01/28/fact_first.json
