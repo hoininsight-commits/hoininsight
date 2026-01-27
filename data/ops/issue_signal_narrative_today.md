@@ -1,4 +1,4 @@
-# 🏹 경제 사냥꾼의 구조적 해부 (Top-1) [Updated]
+# 🏹 경제 사냥꾼의 구조적 해부 (Top-1)
 
 ## 1. The Hook (시선 강탈)
 님들, 'Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.' 이슈가 단순한 뉴스가 아니라는 거 알고 있었어?

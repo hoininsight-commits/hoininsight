@@ -29,7 +29,10 @@
           ],
           "risk_factor": "실제 숫자(매출/이익)로 증명되기까지 시차 존재."
         }
-      }
+      },
+      "topic_lock": false,
+      "topic_format": "STANDARD_REPORT",
+      "reject_info": "No lock conditions met despite having WHY_NOW"
     }
   ],
   "errors": []

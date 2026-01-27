@@ -69,8 +69,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (미국 10년물 국채금리 급변, crypto_btc_usd_spot_coingecko 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 4.22배(표준편차) 이상 폭발적인 충격을(를) 보였습니다. 특히 동일 섹터인 [rates_us10y_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Topic:** [Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.91배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Risk Off] Structural-driven
@@ -93,5 +93,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 14 candidate(s) survived survival rules.
+Gate Filter Result: 15 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
