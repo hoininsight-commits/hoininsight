@@ -277,8 +277,9 @@ def _get_op_input_status(base_dir: Path, ymd: str) -> str:
     except Exception:
         return ""
 
-def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]]) -> str:
-    """Step 62: Generate simplified card view for Today's Topics"""
+def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], video_candidates: set = None) -> str:
+    """Step 62: Simplified card view for Today's Topics (Updated Step 65 for Video Badge)"""
+    if video_candidates is None: video_candidates = set()
     
     cards_html = ""
     
@@ -292,9 +293,17 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]]) 
         # Generate ID
         uid = s.get('topic_id', 'unknown_signal')
         
+        # Video Badge Logic
+        video_badge = ""
+        if uid in video_candidates:
+            video_badge = '<span class="card-badge video" style="background:#fecaca; color:#dc2626; margin-left:4px;">🎥 영상후보</span>'
+
         card_html = f"""
         <div class="topic-card" onclick="openSignalDetail('{uid}')">
-            <div class="card-badge signal">{card_type}</div>
+            <div class="card-badges">
+                <div class="card-badge signal">{card_type}</div>
+                {video_badge}
+            </div>
             <div class="card-title">{title}</div>
             <div class="card-meta">
                 <span class="meta-item importance">{importance}</span>
@@ -541,11 +550,24 @@ def generate_dashboard(base_dir: Path):
             signals = signal_data.get("cards", [])
     except: pass
     
-    # [C] Historical Archive
+    # [C] Check Video Candidates (Step 65)
+    video_candidates = set()
+    video_reasons = {}
+    try:
+        vid_path = base_dir / "data" / "ops" / "video_candidates_today.json"
+        if vid_path.exists():
+            v_data = json.loads(vid_path.read_text(encoding="utf-8"))
+            for vc in v_data.get("candidates", []):
+                tid = vc.get("topic_id")
+                video_candidates.add(tid)
+                video_reasons[tid] = vc.get("why_video_natural", "")
+    except: pass
+
+    # [D] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
     # 2. Generate View HTML
-    today_view_html = _generate_today_topic_view(final_card, signals)
+    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates)
     archive_view_html = _generate_simple_archive_view(historical_cards)
 
     # 3. Build Details Map (JSON for JS)
@@ -561,11 +583,24 @@ def generate_dashboard(base_dir: Path):
         drivers = ", ".join(evidence.get('structural_drivers', []))
         risk = evidence.get('risk_factor', '-')
         
+        # Video Reason Injection
+        video_section = ""
+        if sid in video_reasons:
+            video_section = f"""
+            <div class="detail-section" style="background:#fff1f2; border:1px solid #fecaca;">
+                <h3 style="color:#e11d48;">🎥 영상 제작 선정 이유</h3>
+                <p>
+                    {video_reasons[sid]}
+                </p>
+            </div>
+            """
+
         details_map[sid] = f"""
         <div class="detail-header">
             <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
             <h2>{s.get('title', '제목 없음')}</h2>
         </div>
+        {video_section}
         <div class="detail-section">
             <h3>📜 상세 스크립트</h3>
             <p class="script-text">

@@ -120,6 +120,8 @@ class DashboardManifest:
             "structural_topic_seeds_md": "data/ops/structural_topic_seeds_today.md",
             "issuesignal_today_json": "data/ops/issuesignal_today.json",
             "issuesignal_today_md": "data/ops/issuesignal_today.md",
+            "video_candidates_json": "data/ops/video_candidates_today.json",
+            "video_candidates_md": "data/ops/video_candidates_today.md",
             "missing": missing
         }
         

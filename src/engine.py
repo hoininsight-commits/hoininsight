@@ -307,6 +307,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"issuesignal_builder: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 65: Video Candidate Selection Execution
+            try:
+                from src.ops.video_candidate_selector import VideoCandidateSelector
+                selector = VideoCandidateSelector(Path("."))
+                selector.run()
+                details_lines.append("video_selector: ok")
+                print("video_selector: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"video_selector: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
