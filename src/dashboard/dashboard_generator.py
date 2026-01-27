@@ -22,6 +22,8 @@ from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 from src.dashboard.topic_card_renderer import TopicCardRenderer
 from src.ops.entity_mapping_layer import EntityMappingLayer
 from src.ops.entity_state_classifier import EntityStateClassifier
+from src.ops.structural_memory_engine import StructuralMemoryEngine
+from src.ops.snapshot_comparison_engine import SnapshotComparisonEngine
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -857,6 +859,18 @@ def generate_dashboard(base_dir: Path):
     classified_entities = EntityStateClassifier.classify_entities(entity_pool, today_json)
     entity_state_html = TopicCardRenderer.render_entity_state_panel(classified_entities)
     
+    # [NEW] Structural Memory Engine (Step 85)
+    memory_engine = StructuralMemoryEngine(base_dir)
+    snapshot_path = memory_engine.save_snapshot(today_json.get("date", ymd), today_json, classified_entities)
+    
+    # [NEW] Comparison Engine
+    comparison_engine = SnapshotComparisonEngine(memory_engine)
+    # Re-load the just saved snapshot to ensure format consistency
+    today_snap = memory_engine.load_snapshot(today_json.get("date", ymd))
+    comparison_result = comparison_engine.compare(today_json.get("date", ymd), today_snap)
+    
+    memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
+    
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
     try:
@@ -1377,6 +1391,9 @@ def generate_dashboard(base_dir: Path):
                 <div class="today-header">
                     <div class="today-date">Detailed Engine Output</div>
                 </div>
+                {memory_delta_html}
+                {top1_card_html}
+                {entity_pool_html}
                 {today_view_html}
             </div>
             <div id="tab-candidates" class="hidden">

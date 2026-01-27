@@ -528,7 +528,90 @@ class TopicCardRenderer:
         .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
         .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
         
+        .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
+        .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
+        
         .state-justification { font-size: 12px; color: #475569; line-height: 1.5; }
         .just-line { margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #e2e8f0; }
+        
+        /* Memory Delta Panel */
+        .memory-delta-container { 
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; 
+            padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .delta-status-group { display: flex; align-items: center; gap: 12px; }
+        .delta-icon { font-size: 24px; }
+        .delta-text { display: flex; flex-direction: column; }
+        .delta-title { font-size: 14px; font-weight: 800; color: #1e293b; }
+        .delta-sub { font-size: 11px; color: #64748b; }
+        
+        .delta-badges { display: flex; gap: 8px; }
+        .delta-badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; color: #fff; }
+        .badge-intensified { background: #dc2626; }
+        .badge-eased { background: #10b981; }
+        .badge-sustained { background: #64748b; }
+        .badge-new { background: #3b82f6; }
+        .badge-recurring { background: #7c3aed; }
+        """
+
+    @staticmethod
+    def render_memory_delta_panel(comparison: Dict[str, Any]) -> str:
+        """
+        Step 85: Renders the Structural Memory Delta (Comparison Result).
+        """
+        if not comparison:
+            return "" # Or a default "No Memory" state
+            
+        status = comparison.get("delta_status", "NEW_TOPIC")
+        intensity_delta = comparison.get("intensity_delta", "UNCHANGED")
+        d1_date = comparison.get("d1_date", "Unknown")
+        
+        # Icon & Badge Logic
+        icon = "🆕"
+        status_text = "New Structural Topic"
+        status_sub = "This structure has not been observed recently."
+        badge_html = '<div class="delta-badge badge-new">NEW TOPIC</div>'
+        
+        if status == "RECURRING":
+            icon = "🔁"
+            status_text = "Recurring Structure" 
+            status_sub = f"Identical logic block observed yesterday ({d1_date})."
+            badge_html = '<div class="delta-badge badge-recurring">RECURRING</div>'
+            
+            if intensity_delta == "INTENSIFIED":
+                 badge_html += '<div class="delta-badge badge-intensified">🔺 INTENSIFIED</div>'
+            elif intensity_delta == "EASED":
+                 badge_html += '<div class="delta-badge badge-eased">🔻 EASED</div>'
+            else:
+                 badge_html += '<div class="delta-badge badge-sustained">⏸ SUSTAINED</div>'
+        
+        # Entity Shifts
+        shifts = comparison.get("entity_shifts", [])
+        shift_html = ""
+        if shifts:
+            shift_list = []
+            for s in shifts[:2]: # Show max 2 shifts
+                if s.get("type") == "NEW_ENTITY":
+                    shift_list.append(f"Adding {s['name']}")
+                else:
+                    shift_list.append(f"{s['name']}: {s['from']}→{s['to']}")
+            if shift_list:
+                shift_html = f'<div class="delta-sub" style="color:#f59e0b; margin-top:2px;">Target Shift: {", ".join(shift_list)}</div>'
+
+        return f"""
+        <div class="memory-delta-container">
+            <div class="delta-status-group">
+                <div class="delta-icon">{icon}</div>
+                <div class="delta-text">
+                    <div class="delta-title">{status_text}</div>
+                    <div class="delta-sub">{status_sub}</div>
+                    {shift_html}
+                </div>
+            </div>
+            <div class="delta-badges">
+                {badge_html}
+            </div>
+        </div>
         """
 
