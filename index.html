@@ -217,6 +217,7 @@
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
             <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+            <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
         
@@ -382,6 +383,85 @@
                 <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260127</code></td>
                 <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
                 <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'OTHER', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'CREDIT'].</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+            </div>
+            <div id="tab-ops" class="hidden">
+                
+    <div class="ops-container">
+        <div class="today-header">
+            <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
+        </div>
+        
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
+                <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
+                <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
+                <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
+            </div>
+        </div>
+
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>상태</th>
+                    <th>소요시간 (분)</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>2026-01-27</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-26</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>6.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-25</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>7.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-24</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-23</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>6.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-22</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>7.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-21</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
             </tr>
         
             </tbody>
@@ -613,6 +693,7 @@
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
                 document.getElementById('tab-candidates').classList.add('hidden');
+                document.getElementById('tab-ops').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');
