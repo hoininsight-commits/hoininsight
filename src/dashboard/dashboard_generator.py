@@ -593,14 +593,21 @@ def generate_dashboard(base_dir: Path):
                 video_reasons[tid] = vc.get("why_video_natural", "")
     except: pass
     
-    # [D] Structural Top-1 (Step 66)
+    # [D] Structural Top-1 (Step 66) & Narrative (Step 67)
     top1_data = None
+    narrative_data = None
     try:
         top1_path = base_dir / "data" / "ops" / "structural_top1_today.json"
         if top1_path.exists():
              t1 = json.loads(top1_path.read_text(encoding="utf-8"))
              if t1.get("top1_topics"):
                  top1_data = t1["top1_topics"][0]
+                 
+        # Load Narrative (Step 67)
+        narrative_path = base_dir / "data" / "ops" / "issue_signal_narrative_today.json"
+        if narrative_path.exists():
+            nd = json.loads(narrative_path.read_text(encoding="utf-8"))
+            narrative_data = nd.get("narrative")
     except: pass
 
     # [E] Historical Archive
@@ -637,37 +644,80 @@ def generate_dashboard(base_dir: Path):
             
         # Top-1 Badge in Modal
         top1_badge = ""
+        is_top1 = False
         if top1_data and top1_data.get('original_card', {}).get('topic_id') == sid:
+            is_top1 = True
             top1_badge = '<span class="detail-badge" style="background:#a855f7; color:white; margin-right:5px;">🟣 Global TOP-1</span>'
 
-        details_map[sid] = f"""
-        <div class="detail-header">
-            {top1_badge}
-            <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
-            <h2>{s.get('title', '제목 없음')}</h2>
-        </div>
-        {video_section}
-        <div class="detail-section">
-            <h3>📜 상세 스크립트</h3>
-            <p class="script-text">
-                {s.get('script_natural', 'No Content').replace(chr(10), '<br>')}
-            </p>
-        </div>
-        <div class="detail-section">
-            <h3>🎯 선정 근거</h3>
-            <p>
-                {s.get('rationale_natural', '-')}
-            </p>
-        </div>
-        <div class="detail-section">
-            <h3>📊 근거 데이터</h3>
-            <ul class="data-list">
-                <li><strong>Drivers:</strong> {drivers}</li>
-                <li><strong>Risk Factor:</strong> {risk}</li>
-                <li><strong>Source IDs:</strong> {len(evidence.get('source_ids', []))} refs</li>
-            </ul>
-        </div>
-        """
+        # Narrative Injection (Step 67)
+        if is_top1 and narrative_data:
+            # Override content with Narrative
+            n = narrative_data
+            drivers_list = ", ".join(n.get('key_drivers', []))
+            
+            details_map[sid] = f"""
+            <div class="detail-header">
+                {top1_badge}
+                <span class="detail-badge signal">이슈시그널</span>
+                <h2>{n.get('title', '제목 없음')}</h2>
+            </div>
+            {video_section}
+            <div class="detail-section">
+                <h3>💡 한 줄 요약 (Opening Hook)</h3>
+                <p class="script-text" style="font-weight:bold; color:#6b21a8;">
+                    {n.get('opening_hook', '')}
+                </p>
+            </div>
+            <div class="detail-section">
+                <h3>📖 구조적 이야기 (Core Story)</h3>
+                <p class="script-text">
+                    {n.get('core_story', '').replace(chr(10), '<br>')}
+                </p>
+            </div>
+            <div class="detail-section">
+                <h3>⚡ 왜 지금인가 (Why Now)</h3>
+                <p>
+                    {n.get('why_now', '')}
+                </p>
+            </div>
+            <div class="detail-section">
+                <h3>📊 핵심 근거 (Key Drivers)</h3>
+                <ul class="data-list">
+                    <li><strong>Drivers:</strong> {drivers_list}</li>
+                    <li><strong>Risk:</strong> {n.get('risk_note', '')}</li>
+                </ul>
+            </div>
+            """
+        else:
+            # Standard IssueSignal Detail
+            details_map[sid] = f"""
+            <div class="detail-header">
+                {top1_badge}
+                <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
+                <h2>{s.get('title', '제목 없음')}</h2>
+            </div>
+            {video_section}
+            <div class="detail-section">
+                <h3>📜 상세 스크립트</h3>
+                <p class="script-text">
+                    {s.get('script_natural', 'No Content').replace(chr(10), '<br>')}
+                </p>
+            </div>
+            <div class="detail-section">
+                <h3>🎯 선정 근거</h3>
+                <p>
+                    {s.get('rationale_natural', '-')}
+                </p>
+            </div>
+            <div class="detail-section">
+                <h3>📊 근거 데이터</h3>
+                <ul class="data-list">
+                    <li><strong>Drivers:</strong> {drivers}</li>
+                    <li><strong>Risk Factor:</strong> {risk}</li>
+                    <li><strong>Source IDs:</strong> {len(evidence.get('source_ids', []))} refs</li>
+                </ul>
+            </div>
+            """
 
     # (2) Engine Topics
     if final_card:

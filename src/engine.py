@@ -327,6 +327,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"top1_compressor: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 67: Issue Signal Narrative Builder Execution
+            try:
+                from src.ops.issue_signal_narrative_builder import IssueSignalNarrativeBuilder
+                builder = IssueSignalNarrativeBuilder(Path("."))
+                builder.run()
+                details_lines.append("narrative_builder: ok")
+                print("narrative_builder: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"narrative_builder: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
