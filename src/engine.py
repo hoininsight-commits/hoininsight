@@ -484,6 +484,17 @@ def main(target_categories: list[str] = None):
                 except Exception as e:
                     print(f"title_thumbnail_intensity: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 79-Snapshot: Economic Hunter Top-1 Snapshot Generation
+            if topic_lock:
+                try:
+                    from src.ops.economic_hunter_snapshot_generator import EconomicHunterSnapshotGenerator
+                    snapshot_gen = EconomicHunterSnapshotGenerator(Path("."))
+                    snapshot_gen.generate_snapshot()
+                    details_lines.append("top1_snapshot: ok")
+                    print("top1_snapshot: ok", file=sys.stderr)
+                except Exception as e:
+                    print(f"top1_snapshot: fail ({e})", file=sys.stderr)
+
             # [NEW] Step 67: Narrator Selection & Execution
             if topic_lock:
                 try:
