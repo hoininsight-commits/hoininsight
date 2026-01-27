@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-27T01:01:30Z",
+    "ts_utc": "2026-01-27T11:29:53Z",
     "dataset_id": "index_kospi_stooq",
     "topic_id": "index_kospi_stooq::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/27/index_kospi_stooq.json L2 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": 4.14,
+        "z_score": 4.22,
         "percentile": 50.0,
-        "value": 4964.95,
-        "rolling_mean_20d": 4950.5335000000005,
-        "reasoning": "Z-Score 4.14 >= 2.0"
+        "value": 5084.85,
+        "rolling_mean_20d": 4957.2964999999995,
+        "reasoning": "Z-Score 4.22 >= 2.0"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/27/index_kospi_stooq.json"
     },
-    "rationale": "[L2] Z-Score 4.14 >= 2.0 (Regime x1.0)",
+    "rationale": "[L2] Z-Score 4.22 >= 2.0 (Regime x1.0)",
     "links": []
   }
 ]

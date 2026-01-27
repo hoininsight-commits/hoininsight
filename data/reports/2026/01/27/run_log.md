@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-27T01:00:58Z
-- finished_utc: 2026-01-27T01:01:31Z
+- started_utc: 2026-01-27T11:29:19Z
+- finished_utc: 2026-01-27T11:29:56Z
 - status: SUCCESS
 
 ## details
@@ -14,6 +14,8 @@ derived: ok
 anomaly: ok
 fact_harvester: ok
 topic: ok
+whynow_escalation: ok
+pre_structural_layer: ok
 anchor_engine: ok
 snapshot: ok (data/reports/2026/01/27/data_snapshot.md)
 pick_correlator: ok
@@ -26,6 +28,12 @@ speakability_gate: ok
 speak_bundle: ok
 script_skeletons: ok
 topic_console: ok
+structural_seeder: ok
+issuesignal_builder: ok
+video_selector: ok
+top1_compressor: ok
+economic_hunter_narrator: ok
+whynow_trigger: ok
 decision: ok
 report: ok | data/reports/2026/01/27/daily_brief.md
 checks:

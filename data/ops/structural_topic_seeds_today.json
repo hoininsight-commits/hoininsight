@@ -1,0 +1,29 @@
+{
+  "run_date": "2026-01-27",
+  "count": 1,
+  "seeds": [
+    {
+      "run_date": "2026-01-27",
+      "topic_seed_id": "STRUCT_20260127_signal_f",
+      "seed_type": "STRUCTURAL_REDEFINITION",
+      "structure_summary": "[Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.] 구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간.",
+      "why_now": "기존 PER/PBR 프레임에서 벗어나는 트리거가 발생했습니다.",
+      "market_misunderstanding": "단순 호재가 아닌 밸류에이션 리레이팅(Re-rating) 시그널입니다.",
+      "structural_driver": [
+        "INDUSTRY",
+        "POLICY"
+      ],
+      "risk_side": "실제 숫자(매출/이익)로 증명되기까지 시차 존재.",
+      "status": "STRUCTURAL_ONLY",
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "signal_fact_signal_test"
+        }
+      ],
+      "created_at": "2026-01-27"
+    }
+  ],
+  "errors": []
+}
