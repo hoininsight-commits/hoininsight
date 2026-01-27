@@ -1106,6 +1106,7 @@ def generate_dashboard(base_dir: Path):
     
     (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
     print(f"[Dashboard] Generated dashboard/index.html with simplified UI (Step 62)")
+    return html
 
 
 if __name__ == "__main__":
