@@ -110,20 +110,12 @@ def main(target_categories: list[str] = None):
                     except:
                         pass
             
-            if candidate_topics:
-                enriched_topics = ps_layer.analyze_topics(candidate_topics)
-                
-                # [NEW] Step 75: WHY_NOW_ESCALATION_LAYER
-                try:
-                    from src.ops.whynow_escalation_layer import WhyNowEscalationLayer
-                    esc_layer = WhyNowEscalationLayer(Path("."))
-                    enriched_topics = esc_layer.evaluate_signals(enriched_topics)
-                    details_lines.append("whynow_escalation: ok")
-                    print("whynow_escalation: ok", file=sys.stderr)
-                except Exception as e_esc:
-                    print(f"whynow_escalation: fail ({e_esc})", file=sys.stderr)
-                
-                pre_structural_signals = [t for t in enriched_topics if t.get("is_pre_structural")]
+                if candidate_topics:
+                    enriched_topics = ps_layer.analyze_topics(candidate_topics)
+                    
+                    # [MOVED] Step 75: WHY_NOW_ESCALATION_LAYER moved down to follow Step 72
+                    
+                    pre_structural_signals = [t for t in enriched_topics if t.get("is_pre_structural")]
                 
                 # Update topic files with signal info
                 for et in enriched_topics:
@@ -418,6 +410,28 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                  print(f"whynow_trigger: fail ({e})", file=sys.stderr)
 
+            # [REORDERED] Step 75: WHY_NOW_ESCALATION_LAYER Execution
+            # Now runs after 72 and before 76 as per Step 77 requirement 6
+            try:
+                # We need to reload the top1 data after whynow_trigger might have changed it,
+                # but whynow_trigger_layer.py usually writes to issue_signal_narrative_today.json.
+                # whynow_escalation_layer.py evaluate_signals expects a list of topics.
+                # For engine reordering, we can run it on the current Top-1.
+                from src.ops.whynow_escalation_layer import WhyNowEscalationLayer
+                esc_layer = WhyNowEscalationLayer(Path("."))
+                
+                # Load current Top-1 to escalate
+                top1_path = Path("data/ops/structural_top1_today.json")
+                if top1_path.exists():
+                    t1_data = json.loads(top1_path.read_text(encoding='utf-8'))
+                    if t1_data.get("top1_topics"):
+                        t1_data["top1_topics"] = esc_layer.evaluate_signals(t1_data["top1_topics"])
+                        top1_path.write_text(json.dumps(t1_data, indent=2, ensure_ascii=False), encoding='utf-8')
+                        details_lines.append("whynow_escalation: ok")
+                        print("whynow_escalation: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"whynow_escalation: fail ({e})", file=sys.stderr)
+
             # [NEW] Step 76: Economic Hunter Topic Lock Layer
             topic_lock = False
             try:
@@ -429,6 +443,20 @@ def main(target_categories: list[str] = None):
                 print(f"topic_lock: ok (lock={topic_lock})", file=sys.stderr)
             except Exception as e:
                 print(f"topic_lock: fail ({e})", file=sys.stderr)
+
+            # [NEW] Step 77: Economic Hunter Video Intensity Decision
+            if topic_lock:
+                try:
+                    from src.ops.economic_hunter_video_intensity import EconomicHunterVideoIntensityLayer
+                    intensity_layer = EconomicHunterVideoIntensityLayer(Path("."))
+                    intensity_res = intensity_layer.decide_intensity()
+                    details_lines.append(f"video_intensity: ok ({intensity_res.get('level', 'REJECTED')})")
+                    print(f"video_intensity: ok ({intensity_res.get('level', 'REJECTED')})", file=sys.stderr)
+                    # If intensity decision triggered a reject, disable lock
+                    if intensity_res.get("status") == "rejected":
+                        topic_lock = False
+                except Exception as e:
+                    print(f"video_intensity: fail ({e})", file=sys.stderr)
 
             # [NEW] Step 67: Narrator Selection & Execution
             if topic_lock:

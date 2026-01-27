@@ -133,6 +133,26 @@ class EconomicHunterNarrator:
             elif trigger_type == 2: tension += why_now_block
             elif trigger_type == 3: hunt_text += why_now_block
 
+        # [NEW] Step 77: Video Intensity Adaptation & Injection
+        intensity = top1.get("video_intensity", {})
+        i_level = intensity.get("level")
+        i_reason = intensity.get("reason", "N/A")
+        
+        intensity_block = ""
+        if i_level:
+            intensity_block = f"\n\n[🎥 VIDEO INTENSITY]\n- **Level:** {i_level}\n- **Reason:** {i_reason}"
+            
+            # Narrative Balance Adaptation
+            if i_level == "FLASH":
+                hook = hook.upper() + " !! (URGENT ALERT)"
+                hook = f"🚨 [긴급 FLASH] " + hook
+                action = "⚠️ 지금 당장 대응이 필요합니다. " + action
+            elif i_level == "DEEP_HUNT":
+                hunt_text += "\n\n🔍 [Deep Analysis Expansion]\n이 구조는 단기 충격에 그치지 않고 시장의 근본적인 문법을 바꿀 가능성이 큽니다. 과거의 유사 사례를 통해 본 구조적 지속 가능성은 매우 높습니다."
+            
+            # Always append intensity block to action
+            action += intensity_block
+
         # 4. Construct Output Object
         narrative = {
             "topic_id": original_card.get('topic_id'),
@@ -152,7 +172,8 @@ class EconomicHunterNarrator:
                 "type": trigger_name,
                 "anchor": anchor_text,
                 "id": trigger_type
-            }
+            },
+            "video_intensity": intensity
         }
         
         # 5. Output JSON & MD
