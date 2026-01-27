@@ -112,6 +112,17 @@ def main(target_categories: list[str] = None):
             
             if candidate_topics:
                 enriched_topics = ps_layer.analyze_topics(candidate_topics)
+                
+                # [NEW] Step 75: WHY_NOW_ESCALATION_LAYER
+                try:
+                    from src.ops.whynow_escalation_layer import WhyNowEscalationLayer
+                    esc_layer = WhyNowEscalationLayer(Path("."))
+                    enriched_topics = esc_layer.evaluate_signals(enriched_topics)
+                    details_lines.append("whynow_escalation: ok")
+                    print("whynow_escalation: ok", file=sys.stderr)
+                except Exception as e_esc:
+                    print(f"whynow_escalation: fail ({e_esc})", file=sys.stderr)
+                
                 pre_structural_signals = [t for t in enriched_topics if t.get("is_pre_structural")]
                 
                 # Update topic files with signal info

@@ -64,10 +64,14 @@ class EconomicHunterNarrator:
             trigger_type, trigger_name, anchor_text = 0, "Unknown", ""
             is_rejected, rejection_reason = False, ""
         
-        if is_rejected:
+        if is_rejected and original_card.get("escalation_status") != "ESC_WHY_NOW":
             self.logger.warning(f"Topic Rejected by WhyNow Layer: {rejection_reason}")
             self._write_rejected_result(title, rejection_reason)
             return
+        
+        if original_card.get("escalation_status") == "ESC_WHY_NOW":
+             self.logger.info(f"Topic Escalated: Bypassing standard WhyNow rejection.")
+             is_rejected = False # Ensure we proceed
 
         # 3. Generate Narrative (4-Step Structure)
         
@@ -105,14 +109,29 @@ class EconomicHunterNarrator:
         )
         
         # [NEW] Inject [⚡ WHY NOW] Binding
-        why_now_block = f"\n\n[⚡ WHY NOW: {trigger_name}]\n이 이슈가 지금 중요한 이유는 '{anchor_text}' 때문입니다. 시점이 명확한 트리거입니다."
-        
-        if trigger_type == 1: # Catalyst -> Action
-             action += why_now_block
-        elif trigger_type == 2: # Mechanism -> Tension
-             tension += why_now_block
-        elif trigger_type == 3: # Divergence -> Hunt
-             hunt_text += why_now_block
+        esc_info = original_card.get("escalation_info")
+        self.logger.info(f"Escalation Status: {original_card.get('escalation_status')}")
+        if original_card.get("escalation_status") == "ESC_WHY_NOW" and esc_info:
+            trigger_name = esc_info.get("trigger_name", "Escalated Trigger")
+            reason = esc_info.get("reason", "N/A")
+            timeline = esc_info.get("timeline", [])
+            timeline_str = " -> ".join(timeline[-3:]) if timeline else "N/A"
+            self.logger.info(f"Escalating: {trigger_name} (Reason: {reason})")
+            
+            why_now_block = f"\n\n[⚡ WHY NOW – Escalated]\n- **Trigger:** {trigger_name}\n- **Escalation Reason:** {reason}\n- **Timeline:** {timeline_str}\n\n이 이슈는 Pre-Structural 단계에서 포착된 후, 시스템 조건 충족으로 인해 자동으로 WHY NOW로 승격되었습니다."
+            
+            # Inject based on trigger mapping logic in Step 75
+            t_id = esc_info.get("trigger_id")
+            if t_id == 1: action += why_now_block
+            elif t_id == 2: tension += why_now_block
+            else: hunt_text += why_now_block
+        else:
+            # Fallback to direct detection or existing trigger
+            self.logger.info(f"Using standard/fallback trigger: {trigger_name}")
+            why_now_block = f"\n\n[⚡ WHY NOW: {trigger_name}]\n이 이슈가 지금 중요한 이유는 '{anchor_text}' 때문입니다. 시점이 명확한 트리거입니다."
+            if trigger_type == 1: action += why_now_block
+            elif trigger_type == 2: tension += why_now_block
+            elif trigger_type == 3: hunt_text += why_now_block
 
         # 4. Construct Output Object
         narrative = {

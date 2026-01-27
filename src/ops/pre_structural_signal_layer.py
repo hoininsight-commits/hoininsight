@@ -18,7 +18,9 @@ class PreStructuralSignal:
     unresolved_question: str # What the market does NOT know yet
     expected_market_behavior: str  # risk_off, rotation, speculation, freeze
     escalation_path: Dict[str, str]  # condition_to_upgrade_to_WHY_NOW, condition_to_invalidate
-    rationale: str
+    narrative_pressure_score: int = 0  # 0-100 score
+    related_entities: List[str] = field(default_factory=list) # Countries, companies, industries
+    rationale: str = ""
     is_valid: bool = False
 
 class PreStructuralSignalLayer:
@@ -102,6 +104,8 @@ These are NOT continuous states. They MUST have a temporal or structural anchor.
     "condition_to_upgrade_to_WHY_NOW": "string",
     "condition_to_invalidate": "string"
   }},
+  "narrative_pressure_score": 0-100,
+  "related_entities": ["list", "of", "entities"],
   "rationale": "KOREAN summary of why this is a pre-structural signal"
 }}
 """
@@ -122,6 +126,8 @@ These are NOT continuous states. They MUST have a temporal or structural anchor.
                 unresolved_question=data.get("unresolved_question", "Unknown"),
                 expected_market_behavior=data.get("expected_market_behavior", "speculation"),
                 escalation_path=data.get("escalation_path", {}),
+                narrative_pressure_score=data.get("narrative_pressure_score", 0),
+                related_entities=data.get("related_entities", []),
                 rationale=data.get("rationale", ""),
                 is_valid=True
             )
