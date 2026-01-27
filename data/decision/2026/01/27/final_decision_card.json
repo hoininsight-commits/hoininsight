@@ -1,6 +1,6 @@
 {
   "card_version": "phase50_dual_v1",
-  "generated_at": "2026-01-27T15:02:35.014709+00:00Z",
+  "generated_at": "2026-01-27T15:11:24.412186+00:00Z",
   "date": "2026-01-27",
   "blocks": {
     "regime": {
@@ -59,7 +59,7 @@
       "title": "[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-27T15:02:29Z",
+        "ts_utc": "2026-01-27T15:11:18Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/27/inflation_cpi_fred.json L2 Signal",
@@ -115,7 +115,7 @@
       "title": "[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-27T15:02:29Z",
+        "ts_utc": "2026-01-27T15:11:18Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/27/inflation_pce_fred.json L2 Signal",
@@ -171,7 +171,7 @@
       "title": "[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_cb_bw] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-27T15:02:29Z",
+        "ts_utc": "2026-01-27T15:11:18Z",
         "dataset_id": "struct_dart_disposal",
         "topic_id": "struct_dart_disposal::event_nonzero",
         "title": "data/features/anomalies/2026/01/27/struct_dart_disposal.json L2 Signal",
@@ -224,7 +224,7 @@
       "title": "[Risk-Off Wave] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, OTHER 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 전환사채(CB/BW) 발행가 오늘 하루 1건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_disposal] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-27T15:02:29Z",
+        "ts_utc": "2026-01-27T15:11:18Z",
         "dataset_id": "struct_dart_cb_bw",
         "topic_id": "struct_dart_cb_bw::event_nonzero",
         "title": "data/features/anomalies/2026/01/27/struct_dart_cb_bw.json L2 Signal",
@@ -277,7 +277,7 @@
       "title": "[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, OTHER 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.43 >= 2.0. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-27T15:02:29Z",
+        "ts_utc": "2026-01-27T15:11:18Z",
         "dataset_id": "derived_gold_silver_ratio",
         "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/27/derived_gold_silver_ratio.json L2 Signal",

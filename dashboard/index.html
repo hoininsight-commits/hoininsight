@@ -296,8 +296,31 @@
         .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
         .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
         
+        .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
+        .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
+        
         .state-justification { font-size: 12px; color: #475569; line-height: 1.5; }
         .just-line { margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #e2e8f0; }
+        
+        /* Memory Delta Panel */
+        .memory-delta-container { 
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; 
+            padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .delta-status-group { display: flex; align-items: center; gap: 12px; }
+        .delta-icon { font-size: 24px; }
+        .delta-text { display: flex; flex-direction: column; }
+        .delta-title { font-size: 14px; font-weight: 800; color: #1e293b; }
+        .delta-sub { font-size: 11px; color: #64748b; }
+        
+        .delta-badges { display: flex; gap: 8px; }
+        .delta-badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; color: #fff; }
+        .badge-intensified { background: #dc2626; }
+        .badge-eased { background: #10b981; }
+        .badge-sustained { background: #64748b; }
+        .badge-new { background: #3b82f6; }
+        .badge-recurring { background: #7c3aed; }
         
 
             * { box-sizing: border-box; }
@@ -618,6 +641,80 @@
                 <div class="today-header">
                     <div class="today-date">Detailed Engine Output</div>
                 </div>
+                
+        <div class="memory-delta-container">
+            <div class="delta-status-group">
+                <div class="delta-icon">🆕</div>
+                <div class="delta-text">
+                    <div class="delta-title">New Structural Topic</div>
+                    <div class="delta-sub">This structure has not been observed recently.</div>
+                    
+                </div>
+            </div>
+            <div class="delta-badges">
+                <div class="delta-badge badge-new">NEW TOPIC</div>
+            </div>
+        </div>
+        
+                
+        <div class="empty-state-card">
+            <div class="empty-icon">☕️</div>
+            <h3>오늘은 구조적으로 확정된 이슈 시그널이 없습니다.</h3>
+            <p>Scanning for potential triggers...</p>
+        </div>
+        
+                
+        <div class="entity-pool-container">
+            <h3 class="entity-section-header">
+                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Structural Entities)
+            </h3>
+            <div class="entity-grid">
+                
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Sector Leader A</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">NARRATIVE</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Sector Leader A은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Infrastructure B</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">NARRATIVE</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Infrastructure B은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            <div class="entity-card">
+                <div class="entity-header">
+                    <span class="entity-role role-default">EXECUTOR</span>
+                    <div class="entity-name">Hedge ETF C</div>
+                </div>
+                <div class="entity-tags">
+                   <span class="constraint-tag">CAPITAL</span>
+                </div>
+                <div class="entity-logic">
+                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Hedge ETF C은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
+                </div>
+            </div>
+            
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
+            </div>
+        </div>
+        
                 
     <div class="today-container">
         <div class="today-header">
