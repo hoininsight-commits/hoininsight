@@ -422,6 +422,20 @@ class DecisionDashboard:
             "calibration_review": calibration_review
         }
 
+    def _render_hoin_signal_panel(self, lines: List[str], data: Dict[str, Any]):
+        """Renders Step 61-g HOIN Signal Panel."""
+        signals = data.get("signals", [])
+        if not signals:
+            return
+            
+        lines.append("\n### 🟡 HOIN SIGNAL (구조적 선점 이슈)")
+        lines.append("엔진의 개별 점수와 무관하게 구조적으로 피할 수 없는 흐름을 선점 판정한 결과입니다.")
+        lines.append("| Signal ID | Title (KR) | Type | Sector | Confidence |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- |")
+        for s in signals:
+            lines.append(f"| {s['signal_id']} | {s['signal_title_kr']} | {s['signal_type']} | {s['compressed_sector']} | {s['confidence']} |")
+        lines.append("\n> [!NOTE]\n> 해당 리스트는 엔진의 READY/DROP 판정에 영향을 주지 않는 병렬 모니터링 레이어입니다.")
+
     def _render_fact_anchors_panel(self, lines: List[str], facts: List[Dict[str, Any]]):
         """Renders Step 48 Fact Anchors Panel."""
         if not facts:

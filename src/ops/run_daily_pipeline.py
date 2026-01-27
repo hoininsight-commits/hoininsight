@@ -148,6 +148,22 @@ def run_topic_synthesis():
         traceback.print_exc()
         return False
 
+def run_hoin_signal():
+    """Step 61-g: HOIN Signal Judgement (Parallel Layer)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2.6: HOIN SIGNAL JUDGEMENT STARTED")
+    try:
+        from src.ops.hoin_signal_judger import HoinSignalJudger
+        judger = HoinSignalJudger(project_root)
+        target_date = os.environ.get("HOIN_TARGET_DATE")
+        ymd = target_date if target_date else datetime.now().strftime("%Y-%m-%d")
+        res = judger.run_judgement(ymd)
+        print(f"[Pipeline] Signal Judgement Complete. Found {len(res)} signals.")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 2.6: HOIN SIGNAL JUDGEMENT COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Error running HOIN Signal: {e}")
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -164,6 +180,9 @@ def main():
     # 2.3 Topic Synthesis (NEW)
     # Merges Event Gate and Structural Output
     run_topic_synthesis()
+
+    # 2.4 HOIN Signal (NEW)
+    run_hoin_signal()
     
     # Step 3: Generate Dashboard
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")

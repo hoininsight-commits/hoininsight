@@ -1,0 +1,47 @@
+{
+  "card_version": "phase50_dual_v1",
+  "generated_at": "2026-01-27T00:05:50.993357+00:00Z",
+  "date": "2026-01-27",
+  "blocks": {
+    "regime": {
+      "current_regime": "(no meta regime detected)",
+      "confidence": 0.0,
+      "has_meta_topics": false,
+      "meta_topic_count": 0,
+      "basis_type": "NONE"
+    },
+    "revival": {
+      "proposal_count": 0,
+      "has_revival": false,
+      "loop_warning_count": 0,
+      "primary_revival_reason": "N/A"
+    },
+    "ops": {
+      "system_freshness": 0,
+      "sla_breach_count": 0,
+      "has_stale_warning": false,
+      "7d_success_rate": "N/A"
+    }
+  },
+  "topic": "[Unknown] Hybrid-driven",
+  "structural_topic": null,
+  "anchor_topic": "[Unknown] Hybrid-driven",
+  "structural_rationale": null,
+  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
+  "narrative_topics": [],
+  "decision_rationale": null,
+  "key_data": {
+    "ANCHOR": {
+      "step1_axis": [
+        "crypto_btc_usd_spot_coingecko",
+        "derived_gold_silver_ratio"
+      ],
+      "step6_gap": "Insufficient Evidence for L4",
+      "request": [
+        "Need Volume/Flow Data to verify Capital Fixation"
+      ]
+    }
+  },
+  "top_topics": [],
+  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
+}

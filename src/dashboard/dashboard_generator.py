@@ -267,6 +267,56 @@ def _get_op_input_status(base_dir: Path, ymd: str) -> str:
     except Exception:
         return ""
 
+def _generate_signal_panel(signals: List[Dict[str, Any]]) -> str:
+    """Step 61-g: HOIN Signal HTML Panel"""
+    if not signals:
+        return ""
+    
+    rows = ""
+    for s in signals:
+        rows += f"""
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding:10px; font-size:12px; font-family:monospace; color:#64748b;">{s['signal_id']}</td>
+            <td style="padding:10px; font-size:13px; font-weight:600; color:#1e293b;">{s['signal_title_kr']}</td>
+            <td style="padding:10px;"><span style="background:#fef9c3; color:#854d0e; padding:4px 10px; border-radius:10px; font-size:11px; font-weight:bold;">{s['signal_type']}</span></td>
+            <td style="padding:10px; font-size:12px; color:#475569;">{s['compressed_sector']}</td>
+            <td style="padding:10px;"><span style="background:#ecfdf5; color:#065f46; padding:4px 10px; border-radius:10px; font-size:11px; font-weight:bold;">{s['confidence']}</span></td>
+            <td style="padding:10px;"><span style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; padding:4px 8px; border-radius:6px; font-size:10px; font-weight:bold;">엔진 검증 대기</span></td>
+        </tr>
+        """
+    
+    html = f"""
+    <div style="margin:30px 0; background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+        <div style="background:#fefce8; padding:15px 25px; border-bottom:1px solid #fef08a; display:flex; align-items:center; gap:12px;">
+            <span style="font-size:22px;">🟡</span>
+            <h3 style="margin:0; font-size:16px; color:#854d0e; font-weight:800;">HOIN SIGNAL (구조적 선점 이슈)</h3>
+            <span style="font-size:11px; color:#a16207; margin-left:auto; background:white; padding:2px 8px; border-radius:20px; border:1px solid #fef08a;">v1.0 Parallel Layer</span>
+        </div>
+        <div style="padding:20px 25px;">
+            <p style="margin:0 0 20px 0; font-size:13px; color:#64748b; line-height:1.6;">
+                엔진의 개별 점수와 무관하게 <strong style="color:#854d0e;">정책·자본·산업 구조 분석</strong>을 통해 
+                "선점"이 필요한 이슈를 판정한 결과입니다. (상태값 없음, 관찰 전용)
+            </p>
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+                <thead>
+                    <tr style="background:#f8fafc; color:#64748b; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">ID</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Signal Topic</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Type</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Sector</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">Conf</th>
+                        <th style="padding:12px 10px; border-bottom:2px solid #e2e8f0;">System Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    """
+    return html
+
 def check_collection_status(base_dir: Path, dataset: Dict, collection_status_data: Dict) -> Dict:
     ds_id = dataset.get("dataset_id")
     category = dataset.get("category")
@@ -443,6 +493,16 @@ def generate_dashboard(base_dir: Path):
         if gate_path.exists():
             gate_data = json.loads(gate_path.read_text(encoding="utf-8"))
     except: pass
+
+    # [Step 61-g] Load HOIN Signal Data
+    signals = []
+    try:
+        signal_path = base_dir / "data" / "ops" / "hoin_signal_today.json"
+        if signal_path.exists():
+            signal_data = json.loads(signal_path.read_text(encoding="utf-8"))
+            signals = signal_data.get("signals", [])
+    except: pass
+    signal_panel_html = _generate_signal_panel(signals)
 
     # Engine Outputs Check
     topics_count = _count_files(base_dir, f"data/topics/{ymd.replace('-','/')}", "*.json")
@@ -2865,6 +2925,8 @@ def generate_dashboard(base_dir: Path):
                                 <span style="font-size:13px; color:#334155;">오늘 총 <strong>{len(section_a_topics) + len(section_b_topics)}</strong>개의 토픽이 감지되었습니다.</span>
                             </div>
                         </div>
+
+                        {signal_panel_html}
 
                         <div style="margin-bottom:30px;">
                             <h3 style="font-size:18px; font-weight:900; color:#dc2626; margin-bottom:20px; border-bottom:2px solid #fee2e2; padding-bottom:10px;">

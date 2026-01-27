@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-01-27",
+  "count": 0,
+  "counts_by_type": {
+    "FLOW": 0,
+    "POLICY": 0,
+    "STRUCTURE": 0
+  },
+  "facts": [],
+  "errors": [
+    {
+      "message": "Root must be a list or dict with 'facts' list"
+    }
+  ]
+}
