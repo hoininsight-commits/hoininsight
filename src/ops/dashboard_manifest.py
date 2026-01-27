@@ -116,6 +116,8 @@ class DashboardManifest:
             "speak_bundle_md": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.md",
             "speak_bundle_json": f"data/ops/bundles/{year}/{month}/{day}/speak_bundle.json",
             "skeleton_index_json": f"data/ops/bundles/{year}/{month}/{day}/skeletons/skeleton_index.json",
+            "structural_topic_seeds_json": "data/ops/structural_topic_seeds_today.json",
+            "structural_topic_seeds_md": "data/ops/structural_topic_seeds_today.md",
             "missing": missing
         }
         

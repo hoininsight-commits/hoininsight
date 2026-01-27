@@ -150,21 +150,6 @@ class StructuralTopicSeeder:
         md_content = self._generate_markdown(output_seeds)
         out_md_path.write_text(md_content, encoding='utf-8')
         
-        # 5. Update Manifest (latest_run.json)
-        try:
-            manifest_path = self.base_dir / "data/ops/latest_run.json"
-            if manifest_path.exists():
-                manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-            else:
-                manifest = {}
-            
-            manifest["structural_topic_seeds_json"] = str(out_json_path.relative_to(self.base_dir))
-            manifest["structural_topic_seeds_md"] = str(out_md_path.relative_to(self.base_dir))
-            
-            manifest_path.write_text(json.dumps(manifest, indent=2), encoding='utf-8')
-        except Exception as e:
-            self.logger.error(f"Failed to update manifest: {e}")
-        
         self.logger.info(f"Generated {len(output_seeds)} structural seeds.")
         
     def _generate_markdown(self, seeds: List[Dict]) -> str:
