@@ -67,10 +67,25 @@ class ScriptSkeletonGenerator:
         refs = t.get("evidence_refs", [])
         refs_lines = "\n".join([f"- {r.get('publisher', 'Unknown')} — {r.get('url', '#')}" for r in refs]) if refs else "No verifiable evidence available"
         
+        ps_signal = t.get("pre_structural_signal")
+        ps_label = "[🟠 PRE-STRUCTURAL SIGNAL]"
+        
+        one_liner = sp.get('one_liner', 'N/A')
+        nums_header = "## NUMBERS (max 3)"
+        
+        if ps_signal:
+            sig_type = ps_signal.get("signal_type")
+            if sig_type in ["Deadline", "Verbal"]:
+                # Inject into ONE-LINER (Tension)
+                one_liner = f"{ps_label} {one_liner}"
+            elif sig_type in ["Capital", "Dependency"]:
+                # Inject into NUMBERS (Hunt)
+                nums_header = f"## NUMBERS (max 3) {ps_label}"
+        
         lines = [
             f"# TITLE\n{t.get('title')}\n",
-            f"## ONE-LINER\n{sp.get('one_liner', 'N/A')}\n",
-            f"## NUMBERS (max 3)\n{nums_lines}\n",
+            f"## ONE-LINER\n{one_liner}\n",
+            f"{nums_header}\n{nums_lines}\n",
             f"## WHY NOW (from impact_tag + speak_pack context)",
             f"- Impact: {t.get('impact_tag', 'N/A')}",
             f"- Note: (Ref: Risk Note/Watch Next) {sp.get('risk_note', 'None')}\n",
@@ -91,12 +106,27 @@ class ScriptSkeletonGenerator:
         wn = sp.get("watch_next", [])
         wn_lines = "\n".join([f"- {w}" for w in wn]) if wn else "- No specific follow-up provided"
         
+        ps_signal = t.get("pre_structural_signal")
+        ps_label = "[🟠 PRE-STRUCTURAL SIGNAL]"
+        
+        opening_hook = f"- Hook: {sp.get('one_liner', 'N/A')}"
+        facts_header = "## FACTS / SIGNALS (no new claims)"
+        
+        if ps_signal:
+            sig_type = ps_signal.get("signal_type")
+            if sig_type in ["Deadline", "Verbal"]:
+                # Inject into OPENING (Tension)
+                opening_hook = f"- Hook: {ps_label} {sp.get('one_liner', 'N/A')}"
+            elif sig_type in ["Capital", "Dependency"]:
+                # Inject into FACTS / SIGNALS (Hunt)
+                facts_header = f"## FACTS / SIGNALS (no new claims) {ps_label}"
+        
         lines = [
             f"# TITLE\n{t.get('title')}\n",
             f"## OPENING (2 lines, structure-only)",
-            f"- Hook: {sp.get('one_liner', 'N/A')}",
+            opening_hook,
             f"- Frame: \"오늘은 근거(수치/출처) 기준으로만 정리합니다.\"\n",
-            f"## FACTS / SIGNALS (no new claims)",
+            f"{facts_header}",
             f"### Numbers",
             f"{nums_lines}\n",
             f"### Evidence",

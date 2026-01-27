@@ -15,8 +15,13 @@ class AnchorResult:
     level_proof: str
     gap_detection: str
     missing_data_request: List[str] = field(default_factory=list)
+    pre_structural_context: Optional[Dict[str, Any]] = None # [Step 74 Addition]
     
     def to_markdown(self) -> str:
+        ps_line = ""
+        if self.pre_structural_context:
+            ps_line = f"\n### 7. [🟠 PRE-STRUCTURAL SIGNAL]\n- {self.pre_structural_context.get('rationale', 'Early Narrative Tension detected.')}\n"
+        
         return f"""
 ### 1. DATA AXIS
 - {', '.join(self.data_axis)}
@@ -37,20 +42,28 @@ class AnchorResult:
 ### 6. GAP DETECTION
 - Status: **{self.gap_detection}**
 - Request: {', '.join(self.missing_data_request) if self.missing_data_request else 'None'}
+{ps_line}
 """
 
 class AnchorEngine:
     def __init__(self, base_dir):
         self.base_dir = base_dir
 
-    def run_analysis(self, snapshot_data: List[Dict[str, Any]]) -> List[AnchorResult]:
+    def run_analysis(self, snapshot_data: List[Dict[str, Any]], pre_structural_signals: List[Dict[str, Any]] = None) -> List[AnchorResult]:
         results = []
         
         # 1. Strict Clustering (Ideal Anchor)
         clusters = self._form_clusters(snapshot_data)
         
+        # Map pre-structural signals to dataset_ids for easy matching
+        ps_map = {}
+        if pre_structural_signals:
+            for s in pre_structural_signals:
+                if s.get("dataset_id"):
+                    ps_map[s["dataset_id"]] = s.get("pre_structural_signal")
+        
         for cluster in clusters:
-            res = self._execute_6_steps(cluster)
+            res = self._execute_6_steps(cluster, ps_map)
             if res:
                 results.append(res)
         
@@ -98,7 +111,7 @@ class AnchorEngine:
         
         return clusters
 
-    def _execute_6_steps(self, cluster: List[Dict[str, Any]]) -> Optional[AnchorResult]:
+    def _execute_6_steps(self, cluster: List[Dict[str, Any]], ps_map: Dict[str, Any] = None) -> Optional[AnchorResult]:
         # STEP 1: DATA AXIS IDENTIFICATION
         axes = [d.get("dataset_id", "unknown") for d in cluster]
         if len(axes) < 2:
@@ -140,6 +153,17 @@ class AnchorEngine:
             trigger_type = "Capital-driven"
         elif logic_found == "Risk Off":
             trigger_type = "Structural-driven" # Sentiment/Structure
+
+        # [STEP 74] Pre-Structural Signal Override
+        ps_context = None
+        for item in cluster:
+            ds_id = item.get("dataset_id")
+            if ps_map and ds_id in ps_map:
+                ps_context = ps_map[ds_id]
+                # Allow proceeding even if trigger_type is Hybrid/Default
+                if trigger_type == "Hybrid-driven":
+                    trigger_type = "Pre-Structural (Step 74)"
+                break
             
         # STEP 5: LEVEL JUDGMENT
         # L2: Data only. L3: News/Event match. L4: Captial Fixation (Volume).
@@ -170,5 +194,6 @@ class AnchorEngine:
             level=level,
             level_proof=proof,
             gap_detection=gap_status,
-            missing_data_request=request
+            missing_data_request=request,
+            pre_structural_context=ps_context
         )

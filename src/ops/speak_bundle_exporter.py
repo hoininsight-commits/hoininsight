@@ -56,7 +56,8 @@ class SpeakBundleExporter:
                     "evidence_refs": refs,
                     "quality_status": "READY", # Context implies these are READY
                     "auto_approval_reason": aa_info.get("approval_reason", []),
-                    "missing_assets": self._check_missing_assets(c)
+                    "missing_assets": self._check_missing_assets(c),
+                    "pre_structural_signal": c.get("pre_structural_signal")
                 }
 
                 # Step 46: Format Routing

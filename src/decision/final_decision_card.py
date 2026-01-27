@@ -287,7 +287,8 @@ def main():
                 key_data["ANCHOR"] = {
                     "step1_axis": anchor_data.get("data_axis"),
                     "step6_gap": gap,
-                    "request": anchor_data.get("missing_data_request")
+                    "request": anchor_data.get("missing_data_request"),
+                    "pre_structural": anchor_data.get("pre_structural_context")
                 }
                 print(f"[Decision] Anchor Result loaded: {selected_topic_title}")
         except Exception as e:

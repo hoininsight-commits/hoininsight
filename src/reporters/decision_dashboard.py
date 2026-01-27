@@ -72,6 +72,9 @@ class DecisionCard:
     
     # Post-Mortem
     outcome: str = None
+    
+    # [Step 74] Pre-Structural Signal
+    pre_structural_signal: Optional[Dict[str, Any]] = None
 
 class DecisionDashboard:
     """
@@ -362,6 +365,7 @@ class DecisionDashboard:
                 saturation_axis=sat_res["axis"],
                 renarration_status=perm_status,
                 renarration_reason=perm_reason,
+                pre_structural_signal=t.get("pre_structural_signal"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
