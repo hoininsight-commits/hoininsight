@@ -1,6 +1,6 @@
 {
   "meta": {
-    "ts_utc": "2026-01-27T00:05:54Z",
+    "ts_utc": "2026-01-27T00:07:40Z",
     "ymd_utc": "2026/01/27",
     "enabled_datasets": 32,
     "lookback_days": 30,
@@ -19,11 +19,11 @@
       "dataset_id": "crypto_btc_usd_spot_coingecko",
       "report_key": "BTCUSD",
       "curated_path": "data/curated/crypto/btc_usd.csv",
-      "rows": 228,
+      "rows": 229,
       "first_ts": "2026-01-15T07:32:29Z",
-      "last_ts": "2026-01-27T00:05:35Z",
-      "last_7d_rows": 108,
-      "last_30d_rows": 227,
+      "last_ts": "2026-01-27T00:07:05Z",
+      "last_7d_rows": 109,
+      "last_30d_rows": 228,
       "ok_7d": 6,
       "skipped_7d": 1,
       "fail_7d": 0,
@@ -145,11 +145,11 @@
       "dataset_id": "index_kospi_stooq",
       "report_key": "KOSPI",
       "curated_path": "data/curated/indices/kospi.csv",
-      "rows": 227,
+      "rows": 228,
       "first_ts": "2026-01-15T07:32:40Z",
-      "last_ts": "2026-01-27T00:05:35Z",
-      "last_7d_rows": 107,
-      "last_30d_rows": 226,
+      "last_ts": "2026-01-27T00:07:11Z",
+      "last_7d_rows": 108,
+      "last_30d_rows": 227,
       "ok_7d": 6,
       "skipped_7d": 1,
       "fail_7d": 0,
@@ -464,216 +464,5 @@
       "status_today": "SKIPPED"
     }
   ],
-  "chart_map": {
-    "crypto_btc_usd_spot_coingecko": {
-      "dataset_id": "crypto_btc_usd_spot_coingecko",
-      "report_key": "BTCUSD",
-      "png_path": "data/reports/2026/01/27/charts/crypto_btc_usd_spot_coingecko.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "rates_us10y_fred": {
-      "dataset_id": "rates_us10y_fred",
-      "report_key": "US10Y",
-      "png_path": "data/reports/2026/01/27/charts/rates_us10y_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "risk_vix_fred": {
-      "dataset_id": "risk_vix_fred",
-      "report_key": "VIX",
-      "png_path": "data/reports/2026/01/27/charts/risk_vix_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "index_spx_fred": {
-      "dataset_id": "index_spx_fred",
-      "report_key": "SPX",
-      "png_path": "data/reports/2026/01/27/charts/index_spx_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "index_kospi_stooq": {
-      "dataset_id": "index_kospi_stooq",
-      "report_key": "KOSPI",
-      "png_path": "data/reports/2026/01/27/charts/index_kospi_stooq.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "index_nasdaq_fred": {
-      "dataset_id": "index_nasdaq_fred",
-      "report_key": "NASDAQ",
-      "png_path": "data/reports/2026/01/27/charts/index_nasdaq_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "fx_dxy_index_stooq": {
-      "dataset_id": "fx_dxy_index_stooq",
-      "report_key": "DXY",
-      "png_path": "data/reports/2026/01/27/charts/fx_dxy_index_stooq.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "rates_us02y_fred": {
-      "dataset_id": "rates_us02y_fred",
-      "report_key": "US02Y",
-      "png_path": "data/reports/2026/01/27/charts/rates_us02y_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "comm_wti_fred": {
-      "dataset_id": "comm_wti_fred",
-      "report_key": "WTI",
-      "png_path": "data/reports/2026/01/27/charts/comm_wti_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "metal_platinum_xptusd_stooq": {
-      "dataset_id": "metal_platinum_xptusd_stooq",
-      "report_key": "PLATINUM",
-      "png_path": "data/reports/2026/01/27/charts/metal_platinum_xptusd_stooq.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "metal_gold_paxg_coingecko": {
-      "dataset_id": "metal_gold_paxg_coingecko",
-      "report_key": "GOLD",
-      "png_path": "data/reports/2026/01/27/charts/metal_gold_paxg_coingecko.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "metal_silver_kag_coingecko": {
-      "dataset_id": "metal_silver_kag_coingecko",
-      "report_key": "SILVER",
-      "png_path": "data/reports/2026/01/27/charts/metal_silver_kag_coingecko.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "crypto_eth_usd_spot_coingecko": {
-      "dataset_id": "crypto_eth_usd_spot_coingecko",
-      "report_key": "ETHUSD",
-      "png_path": "data/reports/2026/01/27/charts/crypto_eth_usd_spot_coingecko.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "rates_kor_base_rate_ecos": {
-      "dataset_id": "rates_kor_base_rate_ecos",
-      "report_key": "KOR_RATE",
-      "png_path": "data/reports/2026/01/27/charts/rates_kor_base_rate_ecos.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "inflation_kor_cpi_ecos": {
-      "dataset_id": "inflation_kor_cpi_ecos",
-      "report_key": "KOR_CPI",
-      "png_path": "data/reports/2026/01/27/charts/inflation_kor_cpi_ecos.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "fx_usdkrw_ecos": {
-      "dataset_id": "fx_usdkrw_ecos",
-      "report_key": "USDKRW_ECOS",
-      "png_path": "data/reports/2026/01/27/charts/fx_usdkrw_ecos.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "rates_fed_funds_fred": {
-      "dataset_id": "rates_fed_funds_fred",
-      "report_key": "FED_FUNDS",
-      "png_path": "data/reports/2026/01/27/charts/rates_fed_funds_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "inflation_cpi_fred": {
-      "dataset_id": "inflation_cpi_fred",
-      "report_key": "CPI_USA",
-      "png_path": "data/reports/2026/01/27/charts/inflation_cpi_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "inflation_pce_fred": {
-      "dataset_id": "inflation_pce_fred",
-      "report_key": "PCE_USA",
-      "png_path": "data/reports/2026/01/27/charts/inflation_pce_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "liquidity_m2_fred": {
-      "dataset_id": "liquidity_m2_fred",
-      "report_key": "M2_USA",
-      "png_path": "data/reports/2026/01/27/charts/liquidity_m2_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "employment_unrate_fred": {
-      "dataset_id": "employment_unrate_fred",
-      "report_key": "UNRATE",
-      "png_path": "data/reports/2026/01/27/charts/employment_unrate_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "credit_hy_spread_fred": {
-      "dataset_id": "credit_hy_spread_fred",
-      "report_key": "HY_SPREAD",
-      "png_path": "data/reports/2026/01/27/charts/credit_hy_spread_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "risk_financial_stress_fred": {
-      "dataset_id": "risk_financial_stress_fred",
-      "report_key": "FIN_STRESS",
-      "png_path": "data/reports/2026/01/27/charts/risk_financial_stress_fred.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "derived_yield_curve_10y_2y": {
-      "dataset_id": "derived_yield_curve_10y_2y",
-      "report_key": "YIELD_CURVE",
-      "png_path": "data/reports/2026/01/27/charts/derived_yield_curve_10y_2y.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "derived_gold_silver_ratio": {
-      "dataset_id": "derived_gold_silver_ratio",
-      "report_key": "GS_RATIO",
-      "png_path": "data/reports/2026/01/27/charts/derived_gold_silver_ratio.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "struct_dart_cb_bw": {
-      "dataset_id": "struct_dart_cb_bw",
-      "report_key": "M_AND_A_CB",
-      "png_path": "data/reports/2026/01/27/charts/struct_dart_cb_bw.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "struct_dart_disposal": {
-      "dataset_id": "struct_dart_disposal",
-      "report_key": "M_AND_A_DISP",
-      "png_path": "data/reports/2026/01/27/charts/struct_dart_disposal.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "real_estate_price_index": {
-      "dataset_id": "real_estate_price_index",
-      "report_key": "RE_PRICE",
-      "png_path": "data/reports/2026/01/27/charts/real_estate_price_index.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "real_estate_volume": {
-      "dataset_id": "real_estate_volume",
-      "report_key": "RE_VOL",
-      "png_path": "data/reports/2026/01/27/charts/real_estate_volume.png",
-      "ok": true,
-      "reason": "ok"
-    },
-    "real_estate_unsold": {
-      "dataset_id": "real_estate_unsold",
-      "report_key": "RE_UNSOLD",
-      "png_path": "data/reports/2026/01/27/charts/real_estate_unsold.png",
-      "ok": true,
-      "reason": "ok"
-    }
-  }
+  "chart_map": {}
 }
