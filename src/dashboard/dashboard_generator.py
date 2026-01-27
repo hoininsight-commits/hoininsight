@@ -24,6 +24,7 @@ from src.ops.entity_mapping_layer import EntityMappingLayer
 from src.ops.entity_state_classifier import EntityStateClassifier
 from src.ops.structural_memory_engine import StructuralMemoryEngine
 from src.ops.snapshot_comparison_engine import SnapshotComparisonEngine
+from src.ops.structural_pattern_detector import StructuralPatternDetector
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -871,6 +872,13 @@ def generate_dashboard(base_dir: Path):
     
     memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
     
+    # [NEW] Structural Pattern Detection (Step 86)
+    try:
+        pattern_detector = StructuralPatternDetector(base_dir)
+        pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
+    except Exception as e:
+        print(f"[PatternDetector] Error: {e}")
+
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
     try:
