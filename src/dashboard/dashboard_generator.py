@@ -406,6 +406,46 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
     </div>
     """
 
+def _generate_candidate_view(candidates_data: Dict[str, Any]) -> str:
+    """Generates Phase 39 Topic Candidate Gate View"""
+    candidates = candidates_data.get("candidates", [])
+    if not candidates:
+        return '<div class="empty-state">진행 중인 토픽 후보군이 없습니다.</div>'
+        
+    html = f"""
+    <div class="candidate-container">
+        <div class="today-header">
+            <div class="today-summary">📂 토픽 후보군 <strong>{len(candidates)}개</strong></div>
+        </div>
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th width="150">ID</th>
+                    <th width="100">분류</th>
+                    <th>상세 이유</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    for c in candidates:
+        cid = c.get("candidate_id", "N/A")
+        cat = c.get("category", "N/A")
+        reason = c.get("reason", "N/A")
+        html += f"""
+            <tr>
+                <td><code style="font-size:11px;">{cid}</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">{cat}</span></td>
+                <td style="font-size:13px; color:#334155;">{reason}</td>
+            </tr>
+        """
+    html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    return html
+
+
 def _generate_simple_archive_view(cards: List[Dict]) -> str:
     """Step 62: Generate simplified list for Topic Archive"""
     if not cards:
@@ -615,11 +655,23 @@ def generate_dashboard(base_dir: Path):
             nd = json.loads(narrative_path.read_text(encoding="utf-8"))
             narrative_data = nd.get("narrative")
     except: pass
+    
+    # [F] Topic Candidates (Phase 39)
+    candidates_data = {}
+    try:
+        y, m, d = ymd.split("-")
+        cand_path = base_dir / "data" / "topics" / "candidates" / y / m / d / "topic_candidates.json"
+        if cand_path.exists():
+            candidates_data = json.loads(cand_path.read_text(encoding="utf-8"))
+    except: pass
 
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
     today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, top1_data)
+    
+    # [G] Generate Candidate View HTML
+    candidate_view_html = _generate_candidate_view(candidates_data)
     
     # [Strict Filter Check]
     # If no signals and no top1, show specific empty state
@@ -1032,12 +1084,16 @@ def generate_dashboard(base_dir: Path):
         <div class="sidebar">
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
+            <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
         
         <div class="main-content">
             <div id="tab-today">
                 {today_view_html}
+            </div>
+            <div id="tab-candidates" class="hidden">
+                {candidate_view_html}
             </div>
             <div id="tab-archive" class="hidden">
                 <div class="today-header">
@@ -1071,6 +1127,7 @@ def generate_dashboard(base_dir: Path):
                 
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
+                document.getElementById('tab-candidates').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');

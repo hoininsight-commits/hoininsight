@@ -26,7 +26,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txtr requirements.txt; fi
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
 
       - name: Run Pipeline (All Axes)
         env:
@@ -37,41 +37,35 @@ jobs:
 
       - name: Verify Backfill Status
         run: |
-          python -c "
-import json
-from pathlib import Path
-
-target_date = '${{ inputs.date }}'
-print(f'[VERIFY][OK] Backfill completed for target_date={target_date}')
-
-try:
-    with open('data/dashboard/collection_status.json', 'r') as f:
-        status_data = json.load(f)
-    
-    # Count statuses
-    ok = 0
-    skip = 0
-    fail = 0
-    warn = 0
-    total = 0
-    
-    # Also read registry to get true total? 
-    # For now, just count keys in status file as collection_status should contain entries for attempted sets
-    # But strictly, we should compare with registry. But user instruction implies verifying result.
-    
-    for k, v in status_data.items():
-        s = v.get('status', 'FAIL')
-        if s == 'OK': ok += 1
-        elif s == 'SKIP': skip += 1
-        elif s == 'FAIL': fail += 1
-        elif s == 'WARN': warn += 1
-        total += 1
-        
-    print(f'[VERIFY][INFO] datasets_total={total} ok={ok} skip={skip} fail={fail}')
-
-except Exception as e:
-    print(f'[VERIFY][WARN] Failed to verify status: {e}')
-"
+          python3 - <<EOF
+          import json
+          from pathlib import Path
+          
+          target_date = '${{ inputs.date }}'
+          print(f'[VERIFY][OK] Backfill completed for target_date={target_date}')
+          
+          try:
+              status_path = Path('data/dashboard/collection_status.json')
+              if not status_path.exists():
+                  print(f'[VERIFY][FAIL] status file missing: {status_path}')
+              else:
+                  with open(status_path, 'r') as f:
+                      status_data = json.load(f)
+                  
+                  # Count statuses
+                  stats = {'OK': 0, 'SKIP': 0, 'FAIL': 0, 'WARN': 0}
+                  total = 0
+                  
+                  for k, v in status_data.items():
+                      s = v.get('status', 'FAIL')
+                      if s in stats: stats[s] += 1
+                      total += 1
+                      
+                  print(f"[VERIFY][INFO] datasets_total={total} ok={stats['OK']} skip={stats['SKIP']} fail={stats['FAIL']}")
+          
+          except Exception as e:
+              print(f'[VERIFY][WARN] Failed to verify status: {e}')
+          EOF
 
       - name: Commit outputs
         run: |
