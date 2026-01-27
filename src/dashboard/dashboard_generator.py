@@ -284,35 +284,39 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
     
     cards_html = ""
     
-    # 0. Structural Top-1 Section (Purple)
+    # 0. Structural Top-1 Section (Purple) - THE ONLY THING ABOVE FOLD
     if top1_data:
         t1 = top1_data
         orig = t1.get('original_card', {})
-        uid = orig.get('topic_id', 'unknown_top1')
-        title = t1.get('title', 'Untitled')
-        summary = t1.get('one_line_summary', '')
         
-        # Override UID mapped details later if needed, but original card ID should work if it's in signals too.
-        # But Top-1 might be displayed separately even if it's in signals list?
-        # Yes, it duplicates visual but that's fine for emphasis.
-        
-        card_html = f"""
-        <div class="topic-card top1" onclick="openSignalDetail('{uid}')" style="border:2px solid #a855f7; background:#faf5ff;">
-            <div class="card-badges">
-                <div class="card-badge" style="background:#a855f7; color:white;">🟣 구조 재정의 TOP 1</div>
+        # Strict Validation for Top-1
+        if orig.get("structure_type") in ["STRUCTURAL_DAMAGE", "STRUCTURAL_REDEFINITION"]:
+            uid = orig.get('topic_id', 'unknown_top1')
+            title = t1.get('title', 'Untitled')
+            
+            # Format Title Korean (Step 69)
+            f = IssueSignalFormatter.format_card(orig)
+            title = f.get('title_display', title)
+            
+            summary = t1.get('one_line_summary', '')
+            
+            card_html = f"""
+            <div class="topic-card top1" onclick="openSignalDetail('{uid}')" style="border:2px solid #a855f7; background:#faf5ff; margin-bottom:20px;">
+                <div class="card-badges">
+                    <div class="card-badge" style="background:#a855f7; color:white;">🟣 오늘의 구조적 핵심 이슈 (HOIN Signal)</div>
+                </div>
+                <div class="card-title" style="color:#6b21a8; font-size:1.2em;">{title}</div>
+                <div class="card-meta">
+                    <span class="meta-item importance">Global Priority</span>
+                    <span class="meta-divider">|</span>
+                    <span class="meta-item" style="color:#7e22ce;">{summary}</span>
+                </div>
+                <div style="margin-top:8px; font-size:12px; color:#9333ea; font-weight:bold;">
+                     ⚡ Why Now: {t1.get('why_now', '')}
+                </div>
             </div>
-            <div class="card-title" style="color:#6b21a8;">{title}</div>
-            <div class="card-meta">
-                <span class="meta-item importance">Global Priority</span>
-                <span class="meta-divider">|</span>
-                <span class="meta-item" style="color:#7e22ce;">{summary}</span>
-            </div>
-            <div style="margin-top:8px; font-size:12px; color:#9333ea; font-weight:bold;">
-                 ⚡ Why Now: {t1.get('why_now', '')}
-            </div>
-        </div>
-        """
-        cards_html += card_html
+            """
+            cards_html += card_html
     
     # 1. Process HOIN IssueSignal Topics (Green)
     for s in signals:
@@ -561,30 +565,25 @@ def generate_dashboard(base_dir: Path):
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
     try:
-        # Load the Processed IssueSignal Cards (Step 64), NOT the raw hoin_signal (Step 61)
+        # Load the Processed IssueSignal Cards (Step 64) ONLY
         signal_path = base_dir / "data" / "ops" / "issuesignal_today.json"
         
-        # Fallback to hoin_signal if issuesignal not found (for safety during transition)
-        if not signal_path.exists():
-            signal_path = base_dir / "data" / "ops" / "hoin_signal_today.json"
-            if signal_path.exists():
-                raw_data = json.loads(signal_path.read_text(encoding="utf-8"))
-                # minimal adapter for raw signal
-                signals = [] 
-                for r in raw_data.get("signals", []):
-                    signals.append({
-                        "topic_id": r.get('signal_id'),
-                        "title": r.get('signal_title_kr'),
-                        "importance_level": "보통",
-                        "structure_card_type": "이슈시그널",
-                        "one_line_summary": r.get('compressed_sector', ''),
-                        "script_natural": "상세 스크립트 없음",
-                        "rationale_natural": "Raw Signal Fallback",
-                        "evidence_refs": {}
-                    })
-        else:
+        if signal_path.exists():
             signal_data = json.loads(signal_path.read_text(encoding="utf-8"))
-            signals = signal_data.get("cards", [])
+            raw_cards = signal_data.get("cards", [])
+            
+            # Strict Filtering (Step 69)
+            for c in raw_cards:
+                # 1. Structure Check
+                if c.get("structure_type") not in ["STRUCTURAL_DAMAGE", "STRUCTURAL_REDEFINITION"]:
+                    continue
+                
+                # 2. Source Check (No tests)
+                s_ids = c.get("evidence_refs", {}).get("source_ids", [])
+                if not s_ids or any(x in ["test", "mock", "sample"] for x in s_ids):
+                    continue
+                    
+                signals.append(c)
     except: pass
     
     # [C] Check Video Candidates (Step 65)
@@ -620,8 +619,18 @@ def generate_dashboard(base_dir: Path):
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
-    # 2. Generate View HTML
     today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, top1_data)
+    
+    # [Strict Filter Check]
+    # If no signals and no top1, show specific empty state
+    if not signals and not top1_data:
+        today_view_html = """
+        <div class="empty-state" style="padding:40px; text-align:center; color:#64748b;">
+            <div style="font-size:48px; margin-bottom:10px;">📭</div>
+            <h3>오늘 생성된 이슈시그널 토픽이 없습니다.</h3>
+            <p>HOIN Engine이 유의미한 구조적 변화를 감지하지 못했습니다.</p>
+        </div>
+        """
     archive_view_html = _generate_simple_archive_view(historical_cards)
 
     # 3. Build Details Map (JSON for JS)
