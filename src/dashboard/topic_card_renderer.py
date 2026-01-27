@@ -133,6 +133,54 @@ class TopicCardRenderer:
         """
 
     @staticmethod
+    def render_entity_state_panel(entities: List[Dict[str, Any]]) -> str:
+        """
+        Step 84: Renders the 'Decision Surface' (State Classification).
+        """
+        if not entities:
+            return ""
+
+        cards_html = ""
+        for e in entities:
+            name = e.get("name", "Unknown")
+            role = e.get("role", "EXECUTOR").replace("STRUCTURAL ", "")
+            state = e.get("state", "OBSERVE")
+            justification = e.get("state_justification", [])
+            
+            # State Colors
+            state_class = f"state-{state.lower()}"
+            
+            # Justification Lines
+            just_html = "".join([f'<div class="just-line">{line}</div>' for line in justification])
+            
+            cards_html += f"""
+            <div class="state-card {state_class}">
+                <div class="state-header">
+                    <div class="state-badge">{state}</div>
+                    <div class="state-entity-name">{name}</div>
+                    <div class="state-role">{role}</div>
+                </div>
+                <div class="state-justification">
+                    {just_html}
+                </div>
+            </div>
+            """
+            
+        return f"""
+        <div class="state-panel-container">
+            <h3 class="entity-section-header">
+                🧭 현재 인식해야 할 구조적 상태 (Decision Surface)
+            </h3>
+            <div class="state-grid">
+                {cards_html}
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 상태는 행동 지시가 아닙니다. 구조적 상황을 인식하기 위한 판단 보조 정보입니다.
+            </div>
+        </div>
+        """
+
+    @staticmethod
     def render_entity_pool(entities: List[Dict[str, Any]]) -> str:
         """
         Renders the grid of Tradeable Entities (EntityMappingLayer output).
@@ -447,5 +495,40 @@ class TopicCardRenderer:
             padding: 10px;
             border-radius: 8px;
         }
+        
+        /* State Panel */
+        .state-panel-container { margin-top: 30px; border-top: 2px dashed #e2e8f0; padding-top: 30px; }
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .state-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            border-left: 4px solid #cbd5e1; /* Default Gray */
+        }
+        .state-observe { border-left-color: #94a3b8; }
+        .state-track { border-left-color: #3b82f6; background: #eff6ff; }
+        .state-pressure { border-left-color: #f97316; background: #fff7ed; }
+        .state-resolution { border-left-color: #a855f7; background: #faf5ff; }
+        
+        .state-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .state-badge {
+            font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; color: #fff; background: #94a3b8;
+        }
+        .state-observe .state-badge { background: #94a3b8; }
+        .state-track .state-badge { background: #3b82f6; }
+        .state-pressure .state-badge { background: #f97316; }
+        .state-resolution .state-badge { background: #a855f7; }
+        
+        .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
+        .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
+        
+        .state-justification { font-size: 12px; color: #475569; line-height: 1.5; }
+        .just-line { margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #e2e8f0; }
         """
 

@@ -21,6 +21,7 @@ from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 from src.dashboard.topic_card_renderer import TopicCardRenderer
 from src.ops.entity_mapping_layer import EntityMappingLayer
+from src.ops.entity_state_classifier import EntityStateClassifier
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -852,6 +853,10 @@ def generate_dashboard(base_dir: Path):
     entity_pool = EntityMappingLayer.map_target_entities(today_json, final_card)
     entity_pool_html = TopicCardRenderer.render_entity_pool(entity_pool)
     
+    # [NEW] Entity State Classification (Step 84)
+    classified_entities = EntityStateClassifier.classify_entities(entity_pool, today_json)
+    entity_state_html = TopicCardRenderer.render_entity_state_panel(classified_entities)
+    
     # [B] HOIN IssueSignal Topics (Step 64)
     signals = []
     try:
@@ -1367,6 +1372,7 @@ def generate_dashboard(base_dir: Path):
             <div id="tab-today">
                 {top1_card_html}
                 {entity_pool_html}
+                {entity_state_html}
                 {snapshot_list_html}
                 <div class="today-header">
                     <div class="today-date">Detailed Engine Output</div>
