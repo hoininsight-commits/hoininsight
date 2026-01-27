@@ -445,6 +445,59 @@ def _generate_candidate_view(candidates_data: Dict[str, Any]) -> str:
     """
     return html
 
+def _generate_ops_view(scoreboard_data: Dict[str, Any]) -> str:
+    """Generates Phase 36-B Ops Scoreboard View"""
+    if not scoreboard_data:
+        return '<div class="empty-state">운영 지표 데이터가 없습니다.</div>'
+        
+    history = scoreboard_data.get("history", [])
+    html = f"""
+    <div class="ops-container">
+        <div class="today-header">
+            <div class="today-summary">⚙️ 운영 성과 지표 (최근 {scoreboard_data.get('lookback_days', 7)}일)</div>
+        </div>
+        
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
+                <div style="font-size:24px; font-weight:800; color:#22c55e;">{scoreboard_data.get('success_count', 0)}</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
+                <div style="font-size:24px; font-weight:800; color:#ef4444;">{scoreboard_data.get('fail_count', 0)}</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
+                <div style="font-size:24px; font-weight:800; color:#3b82f6;">{scoreboard_data.get('avg_duration_minutes', 0)}분</div>
+            </div>
+        </div>
+
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>상태</th>
+                    <th>소요시간 (분)</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    for h in history:
+        status_color = "#22c55e" if h.get("status") == "SUCCESS" else "#ef4444"
+        html += f"""
+            <tr>
+                <td>{h.get('date')}</td>
+                <td><span style="color:{status_color}; font-weight:bold;">{h.get('status')}</span></td>
+                <td>{h.get('duration_minutes', 0)}</td>
+            </tr>
+        """
+    html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    return html
+
 
 def _generate_simple_archive_view(cards: List[Dict]) -> str:
     """Step 62: Generate simplified list for Topic Archive"""
@@ -665,6 +718,15 @@ def generate_dashboard(base_dir: Path):
             candidates_data = json.loads(cand_path.read_text(encoding="utf-8"))
     except: pass
 
+    # [H] Ops Scoreboard (Phase 36-B)
+    scoreboard_data = {}
+    try:
+        y, m, d = ymd.split("-")
+        score_path = base_dir / "data" / "ops" / "scoreboard" / y / m / d / "ops_scoreboard.json"
+        if score_path.exists():
+            scoreboard_data = json.loads(score_path.read_text(encoding="utf-8"))
+    except: pass
+
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
@@ -672,6 +734,9 @@ def generate_dashboard(base_dir: Path):
     
     # [G] Generate Candidate View HTML
     candidate_view_html = _generate_candidate_view(candidates_data)
+    
+    # [I] Generate Ops View HTML
+    ops_view_html = _generate_ops_view(scoreboard_data)
     
     # [Strict Filter Check]
     # If no signals and no top1, show specific empty state
@@ -1085,6 +1150,7 @@ def generate_dashboard(base_dir: Path):
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
             <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+            <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
         
@@ -1094,6 +1160,9 @@ def generate_dashboard(base_dir: Path):
             </div>
             <div id="tab-candidates" class="hidden">
                 {candidate_view_html}
+            </div>
+            <div id="tab-ops" class="hidden">
+                {ops_view_html}
             </div>
             <div id="tab-archive" class="hidden">
                 <div class="today-header">
@@ -1128,6 +1197,7 @@ def generate_dashboard(base_dir: Path):
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
                 document.getElementById('tab-candidates').classList.add('hidden');
+                document.getElementById('tab-ops').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');
