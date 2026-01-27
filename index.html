@@ -216,6 +216,7 @@
         <div class="sidebar">
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
+            <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
         
@@ -228,6 +229,111 @@
             <p>HOIN Engine이 유의미한 구조적 변화를 감지하지 못했습니다.</p>
         </div>
         
+            </div>
+            <div id="tab-candidates" class="hidden">
+                
+    <div class="candidate-container">
+        <div class="today-header">
+            <div class="today-summary">📂 토픽 후보군 <strong>14개</strong></div>
+        </div>
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th width="150">ID</th>
+                    <th width="100">분류</th>
+                    <th>상세 이유</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td><code style="font-size:11px;">cand_struct_dart_disposal_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_inflation_kor_cpi_ecos_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_cpi_fred', 'inflation_pce_fred'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_rates_fed_funds_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [rates_fed_funds_fred] during global market volatility in categories ['STRUCTURAL', 'INFLATION', 'OTHER', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'CREDIT', 'LIQUIDITY'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_index_kospi_stooq_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['rates_us10y_fred', 'crypto_btc_usd_spot_coingecko'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_rates_us10y_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['index_kospi_stooq', 'crypto_btc_usd_spot_coingecko'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_metal_silver_kag_coingecko_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">PRECIOUS_METALS</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [metal_silver_kag_coingecko] with corroborating signals in ['derived_gold_silver_ratio'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_index_nasdaq_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">GLOBAL_INDEX</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [index_nasdaq_fred] during global market volatility in categories ['STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'OTHER', 'PRECIOUS_METALS', 'CREDIT', 'LIQUIDITY'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_crypto_btc_usd_spot_coingecko_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [crypto_btc_usd_spot_coingecko] with corroborating signals in ['index_kospi_stooq', 'rates_us10y_fred'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_credit_hy_spread_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">CREDIT</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [credit_hy_spread_fred] during global market volatility in categories ['STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'OTHER', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'LIQUIDITY'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_derived_gold_silver_ratio_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">PRECIOUS_METALS</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [derived_gold_silver_ratio] with corroborating signals in ['metal_silver_kag_coingecko'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_inflation_cpi_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_cpi_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_pce_fred'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_inflation_pce_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_pce_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260127</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'OTHER', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'CREDIT'].</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
             </div>
             <div id="tab-archive" class="hidden">
                 <div class="today-header">
@@ -452,6 +558,7 @@
                 
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
+                document.getElementById('tab-candidates').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');
