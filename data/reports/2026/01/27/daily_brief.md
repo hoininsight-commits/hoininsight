@@ -37,13 +37,13 @@ Historical context:
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/27/struct_dart_disposal.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] GS_RATIO: data/features/anomalies/2026/01/27/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] NASDAQ: data/features/anomalies/2026/01/27/index_nasdaq_fred.json L2 Signal (base=6.00, final_m=8.58) | Mom: UP (slope=3.00) -> x1.1 | App7d=2
-- [HIGH] KOSPI: data/features/anomalies/2026/01/27/index_kospi_stooq.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/01/27/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/27/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/27/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] US10Y: data/features/anomalies/2026/01/27/rates_us10y_fred.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] GOLD: data/features/anomalies/2026/01/27/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] SPX: data/features/anomalies/2026/01/27/index_spx_fred.json L1 Signal (base=3.00, final_m=3.91) | Mom: DOWN (slope=-1.50) -> x0.9 | App7d=3
+- [MED] KOSPI: data/features/anomalies/2026/01/27/index_kospi_stooq.json L1 Signal (base=3.00, final_m=3.51) | Mom: DOWN (slope=-3.00) -> x0.9 | App7d=2
 - [LOW] BTCUSD: data/features/anomalies/2026/01/27/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] VIX: data/features/anomalies/2026/01/27/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] US02Y: data/features/anomalies/2026/01/27/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -69,11 +69,11 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.31배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Topic:** [Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.34배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Risk Off] Structural-driven
+- **Topic:** [Unknown] Hybrid-driven
 - **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
