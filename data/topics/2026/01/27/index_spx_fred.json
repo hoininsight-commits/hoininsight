@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-27T11:39:48Z",
+    "ts_utc": "2026-01-27T11:50:04Z",
     "dataset_id": "index_spx_fred",
     "topic_id": "index_spx_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/27/index_spx_fred.json L1 Signal",
@@ -36,6 +36,7 @@
       "anomalies_path": "data/features/anomalies/2026/01/27/index_spx_fred.json"
     },
     "rationale": "[L1] Percentile 91.7% (Watch) (Regime x1.0)",
-    "links": []
+    "links": [],
+    "is_pre_structural": false
   }
 ]

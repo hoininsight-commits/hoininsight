@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-27T11:39:48Z",
+    "ts_utc": "2026-01-27T11:50:04Z",
     "dataset_id": "struct_dart_disposal",
     "topic_id": "struct_dart_disposal::event_nonzero",
     "title": "data/features/anomalies/2026/01/27/struct_dart_disposal.json L2 Signal",
@@ -34,6 +34,7 @@
       "anomalies_path": "data/features/anomalies/2026/01/27/struct_dart_disposal.json"
     },
     "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
-    "links": []
+    "links": [],
+    "is_pre_structural": false
   }
 ]
