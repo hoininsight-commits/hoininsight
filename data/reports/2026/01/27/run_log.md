@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-27T13:43:38Z
-- finished_utc: 2026-01-27T13:44:15Z
+- started_utc: 2026-01-27T14:01:21Z
+- finished_utc: 2026-01-27T14:01:57Z
 - status: SUCCESS
 
 ## details
@@ -80,4 +80,5 @@ schema_checks:
 [OK] schema(real_estate_unsold): timeseries_v1
 engine: done
 health: data/reports/2026/01/27/health.json
+dashboard_projection: skipped (no snapshot)
 ```
