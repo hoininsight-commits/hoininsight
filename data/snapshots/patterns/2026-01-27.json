@@ -1,0 +1,29 @@
+{
+  "date": "2026-01-27",
+  "meta": {
+    "generated_at": "2026-01-27T15:21:48.031661Z",
+    "engine_version": "v1.0"
+  },
+  "active_patterns": [
+    {
+      "pattern_type": "SYSTEM_TRUST_STRESS",
+      "confidence": "MEDIUM",
+      "narrative": "중앙은행의 통제력이나 시스템 신뢰에 대한 의구심이 확산되고 있습니다.",
+      "signals": [
+        "Central Bank Narrative",
+        "Safe Haven Interest"
+      ]
+    },
+    {
+      "pattern_type": "REAL_RATE_TENSION",
+      "confidence": "MEDIUM",
+      "narrative": "실질 금리와 인플레이션 경로의 불확실성이 자산 가치 평가를 압박하고 있습니다.",
+      "signals": [
+        "Sticky Inflation",
+        "Rate Volatility"
+      ]
+    }
+  ],
+  "pattern_count": 2,
+  "pattern_hash": "03fefd28e67374c5f4716cecd4848db6c9d32be9cab149f94fd1a842cc5ff913"
+}
