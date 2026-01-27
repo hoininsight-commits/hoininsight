@@ -264,6 +264,41 @@
             border-radius: 8px;
         }
         
+        /* State Panel */
+        .state-panel-container { margin-top: 30px; border-top: 2px dashed #e2e8f0; padding-top: 30px; }
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .state-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            border-left: 4px solid #cbd5e1; /* Default Gray */
+        }
+        .state-observe { border-left-color: #94a3b8; }
+        .state-track { border-left-color: #3b82f6; background: #eff6ff; }
+        .state-pressure { border-left-color: #f97316; background: #fff7ed; }
+        .state-resolution { border-left-color: #a855f7; background: #faf5ff; }
+        
+        .state-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .state-badge {
+            font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; color: #fff; background: #94a3b8;
+        }
+        .state-observe .state-badge { background: #94a3b8; }
+        .state-track .state-badge { background: #3b82f6; }
+        .state-pressure .state-badge { background: #f97316; }
+        .state-resolution .state-badge { background: #a855f7; }
+        
+        .state-entity-name { font-weight: 800; font-size: 15px; color: #1e293b; }
+        .state-role { font-size: 10px; color: #64748b; margin-left: auto; text-transform: uppercase; }
+        
+        .state-justification { font-size: 12px; color: #475569; line-height: 1.5; }
+        .just-line { margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #e2e8f0; }
+        
 
             * { box-sizing: border-box; }
             body {
@@ -530,6 +565,52 @@
             </div>
             <div class="entity-disclaimer">
                 ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
+            </div>
+        </div>
+        
+                
+        <div class="state-panel-container">
+            <h3 class="entity-section-header">
+                🧭 현재 인식해야 할 구조적 상태 (Decision Surface)
+            </h3>
+            <div class="state-grid">
+                
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Sector Leader A</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Infrastructure B</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Hedge ETF C</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 상태는 행동 지시가 아닙니다. 구조적 상황을 인식하기 위한 판단 보조 정보입니다.
             </div>
         </div>
         
