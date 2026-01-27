@@ -18,6 +18,7 @@ if __name__ == "__main__":
 
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
+from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -315,10 +316,14 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
     
     # 1. Process HOIN IssueSignal Topics (Green)
     for s in signals:
-        title = s.get('title', 'Untitled Signal')
+        # Step 68: Format Card for Display
+        f = IssueSignalFormatter.format_card(s)
+        
+        title = f.get('title_display')
         importance = s.get('importance_level', '보통')
         card_type = s.get('structure_card_type', '이슈시그널')
         summary = s.get('one_line_summary', '')
+        badge = f.get('badge_display', '')
         
         # Generate ID
         uid = s.get('topic_id', 'unknown_signal')
@@ -334,7 +339,9 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
                 <div class="card-badge signal">{card_type}</div>
                 {video_badge}
             </div>
-            <div class="card-title">{title}</div>
+            <div class="card-title">
+                {title} {badge}
+            </div>
             <div class="card-meta">
                 <span class="meta-item importance">{importance}</span>
                 <span class="meta-divider">|</span>
@@ -649,7 +656,6 @@ def generate_dashboard(base_dir: Path):
             is_top1 = True
             top1_badge = '<span class="detail-badge" style="background:#a855f7; color:white; margin-right:5px;">🟣 Global TOP-1</span>'
 
-        # Narrative Injection (Step 67)
         if is_top1 and narrative_data:
             # Override content with Narrative
             n = narrative_data
@@ -689,34 +695,19 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
         else:
-            # Standard IssueSignal Detail
+            # Standard IssueSignal Detail (Updated Step 68)
+            f = IssueSignalFormatter.format_card(s)
+            script_html = f.get('script_sections', '')
+            title_display = f.get('title_display')
+            
             details_map[sid] = f"""
             <div class="detail-header">
                 {top1_badge}
                 <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
-                <h2>{s.get('title', '제목 없음')}</h2>
+                <h2>{title_display}</h2>
             </div>
             {video_section}
-            <div class="detail-section">
-                <h3>📜 상세 스크립트</h3>
-                <p class="script-text">
-                    {s.get('script_natural', 'No Content').replace(chr(10), '<br>')}
-                </p>
-            </div>
-            <div class="detail-section">
-                <h3>🎯 선정 근거</h3>
-                <p>
-                    {s.get('rationale_natural', '-')}
-                </p>
-            </div>
-            <div class="detail-section">
-                <h3>📊 근거 데이터</h3>
-                <ul class="data-list">
-                    <li><strong>Drivers:</strong> {drivers}</li>
-                    <li><strong>Risk Factor:</strong> {risk}</li>
-                    <li><strong>Source IDs:</strong> {len(evidence.get('source_ids', []))} refs</li>
-                </ul>
-            </div>
+            {script_html}
             """
 
     # (2) Engine Topics
