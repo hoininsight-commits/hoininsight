@@ -577,6 +577,22 @@ def main(target_categories: list[str] = None):
     health_path = write_health(Path("."), status=status, checks_ok=checks_ok, check_lines=check_lines, per_dataset=per_dataset)
     details_lines.append(f"health: {health_path.as_posix()}")
 
+    # [NEW] Step 81: Snapshot -> Dashboard Projection (Final Visual Layer)
+    try:
+        from src.ops.snapshot_to_dashboard_projector import SnapshotToDashboardProjector
+        projector = SnapshotToDashboardProjector(Path("."))
+        dashboard_json = projector.project()
+        if dashboard_json:
+            details_lines.append(f"dashboard_projection: ok | {dashboard_json.name}")
+            print(f"dashboard_projection: ok | {dashboard_json.name}", file=sys.stderr)
+        else:
+             details_lines.append("dashboard_projection: skipped (no snapshot)")
+             print("dashboard_projection: skipped", file=sys.stderr)
+    except Exception as e:
+        # Non-blocking failure
+        print(f"dashboard_projection: fail ({e})", file=sys.stderr)
+        details_lines.append(f"dashboard_projection: fail ({e})")
+
     # --- Batch Timing Verification (Ops) ---
     try:
         runtime_path = Path("data/ops/workflow_runtime_v1.json")
