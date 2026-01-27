@@ -445,6 +445,62 @@ def _generate_candidate_view(candidates_data: Dict[str, Any]) -> str:
     """
     return html
 
+def _generate_decision_view(final_card: Dict[str, Any]) -> str:
+    """Generates Phase 38 Final Decision Card View"""
+    if not final_card:
+        return '<div class="empty-state">오늘의 최종 의사결정 데이터가 없습니다.</div>'
+        
+    topics = final_card.get('top_topics', [])
+    if not topics and final_card.get('topic'):
+        topics = [final_card]
+        
+    html = f"""
+    <div class="decision-container">
+        <div class="today-header">
+            <div class="today-summary">⚖️ 최종 의사결정 (Final Decision Card)</div>
+        </div>
+        
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+            <div style="font-size: 14px; color: #64748b; margin-bottom: 15px; font-weight: 600;">시스템 종합 판정</div>
+            <div style="font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 10px;">
+                {final_card.get('overall_regime', 'N/A')} 리스크 관리 모드
+            </div>
+            <div style="font-size: 15px; color: #475569; line-height: 1.6;">
+                {final_card.get('overall_rationale', '정성적 근거 취합 중...')}
+            </div>
+        </div>
+
+        <div class="card-grid">
+    """
+    
+    for idx, t in enumerate(topics):
+        title = t.get('title', t.get('topic', 'Untitled Engine Topic'))
+        level = str(t.get('level', 'L2')).upper()
+        imp_kr = "보통"
+        if "L3" in level: imp_kr = "높음"
+        elif "L1" in level: imp_kr = "낮음"
+        
+        summary = t.get('rationale', 'No rationale provided.')[:100] + "..."
+        uid = f"engine_topic_{idx}"
+        
+        html += f"""
+        <div class="topic-card" onclick="openEngineDetail('{uid}')" style="border-left: 4px solid #3b82f6;">
+            <div class="card-badge engine" style="background:#dbeafe; color:#1d4ed8;">호인엔진</div>
+            <div class="card-title">{title}</div>
+            <div class="card-meta">
+                <span class="meta-item importance">{imp_kr} ({level})</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item">{summary}</span>
+            </div>
+        </div>
+        """
+        
+    html += """
+        </div>
+    </div>
+    """
+    return html
+
 def _generate_ops_view(scoreboard_data: Dict[str, Any]) -> str:
     """Generates Phase 36-B Ops Scoreboard View"""
     if not scoreboard_data:
@@ -737,6 +793,9 @@ def generate_dashboard(base_dir: Path):
     
     # [I] Generate Ops View HTML
     ops_view_html = _generate_ops_view(scoreboard_data)
+
+    # [J] Generate Decision View HTML
+    decision_view_html = _generate_decision_view(final_card)
     
     # [Strict Filter Check]
     # If no signals and no top1, show specific empty state
@@ -1150,6 +1209,7 @@ def generate_dashboard(base_dir: Path):
             <div class="logo">🔴 HOIN Insight</div>
             <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
             <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+            <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
             <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
             <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
         </div>
@@ -1160,6 +1220,9 @@ def generate_dashboard(base_dir: Path):
             </div>
             <div id="tab-candidates" class="hidden">
                 {candidate_view_html}
+            </div>
+            <div id="tab-decision" class="hidden">
+                {decision_view_html}
             </div>
             <div id="tab-ops" class="hidden">
                 {ops_view_html}
@@ -1197,6 +1260,7 @@ def generate_dashboard(base_dir: Path):
                 // Update Content
                 document.getElementById('tab-today').classList.add('hidden');
                 document.getElementById('tab-candidates').classList.add('hidden');
+                document.getElementById('tab-decision').classList.add('hidden');
                 document.getElementById('tab-ops').classList.add('hidden');
                 document.getElementById('tab-archive').classList.add('hidden');
                 
