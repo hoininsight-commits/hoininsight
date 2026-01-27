@@ -668,39 +668,47 @@ def generate_dashboard(base_dir: Path):
         if is_top1 and narrative_data:
             # Override content with Narrative
             n = narrative_data
-            drivers_list = ", ".join(n.get('key_drivers', []))
+            sections = n.get('sections', {})
             
+            # Step 71: Economic Hunter 4-Step Structure
             details_map[sid] = f"""
             <div class="detail-header">
                 {top1_badge}
-                <span class="detail-badge signal">이슈시그널</span>
+                <span class="detail-badge signal">{n.get('narrative_type', 'ECONOMIC_HUNTER')}</span>
                 <h2>{n.get('title', '제목 없음')}</h2>
             </div>
             {video_section}
-            <div class="detail-section">
-                <h3>💡 한 줄 요약 (Opening Hook)</h3>
-                <p class="script-text" style="font-weight:bold; color:#6b21a8;">
-                    {n.get('opening_hook', '')}
+            
+            <!-- Step 1: The Hook -->
+            <div class="detail-section" style="border-left: 4px solid #a855f7; background-color: #faf5ff;">
+                <h3 style="color: #6b21a8;">1. The Hook (시선 강탈)</h3>
+                <p class="script-text" style="font-weight:bold; font-size: 1.1em;">
+                    {sections.get('hook', n.get('opening_hook', ''))}
                 </p>
             </div>
+
+            <!-- Step 2: Core Tension -->
             <div class="detail-section">
-                <h3>📖 구조적 이야기 (Core Story)</h3>
+                <h3>2. Core Tension (구조적 역학)</h3>
                 <p class="script-text">
-                    {n.get('core_story', '').replace(chr(10), '<br>')}
+                    {sections.get('tension', n.get('core_story', '')).replace(chr(10), '<br>')}
                 </p>
             </div>
+
+            <!-- Step 3: The Hunt -->
             <div class="detail-section">
-                <h3>⚡ 왜 지금인가 (Why Now)</h3>
-                <p>
-                    {n.get('why_now', '')}
+                <h3>3. The Hunt (결정적 증거)</h3>
+                <p class="script-text" style="white-space: pre-wrap; background: #f8fafc; padding: 10px; border-radius: 6px;">
+                    {sections.get('hunt', '')}
                 </p>
             </div>
-            <div class="detail-section">
-                <h3>📊 핵심 근거 (Key Drivers)</h3>
-                <ul class="data-list">
-                    <li><strong>Drivers:</strong> {drivers_list}</li>
-                    <li><strong>Risk:</strong> {n.get('risk_note', '')}</li>
-                </ul>
+
+            <!-- Step 4: Action -->
+            <div class="detail-section" style="border: 2px solid #22c55e; background-color: #f0fdf4;">
+                <h3 style="color: #15803d;">4. Action (행동 지침)</h3>
+                <p class="script-text" style="font-weight:bold; color: #166534;">
+                    {sections.get('action', n.get('why_now', ''))}
+                </p>
             </div>
             """
         else:

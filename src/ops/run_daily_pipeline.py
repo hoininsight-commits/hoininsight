@@ -127,10 +127,6 @@ def run_structural_engine():
     except Exception as e:
         print(f"[Pipeline] ❌ Critical Error running Engine: {e}")
         traceback.print_exc()
-        return True
-    except Exception as e:
-        print(f"[Pipeline] ❌ Critical Error running Engine: {e}")
-        traceback.print_exc()
         return False
 
 def run_topic_synthesis():

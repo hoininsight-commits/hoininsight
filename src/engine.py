@@ -327,15 +327,25 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"top1_compressor: fail ({e})", file=sys.stderr)
 
-            # [NEW] Step 67: Issue Signal Narrative Builder Execution
+            # [NEW] Step 67: Economic Hunter Narrative Layer Execution
             try:
-                from src.ops.issue_signal_narrative_builder import IssueSignalNarrativeBuilder
-                builder = IssueSignalNarrativeBuilder(Path("."))
-                builder.run()
-                details_lines.append("narrative_builder: ok")
-                print("narrative_builder: ok", file=sys.stderr)
+                from src.ops.economic_hunter_narrator import EconomicHunterNarrator
+                narrator = EconomicHunterNarrator(Path("."))
+                narrator.run()
+                details_lines.append("economic_hunter_narrator: ok")
+                print("economic_hunter_narrator: ok", file=sys.stderr)
             except Exception as e:
-                print(f"narrative_builder: fail ({e})", file=sys.stderr)
+                print(f"economic_hunter_narrator: fail ({e})", file=sys.stderr)
+
+            # [NEW] Step 72: WHY_NOW Trigger Layer Execution (Additive)
+            try:
+                from src.ops.whynow_trigger_layer import WhyNowTriggerLayer
+                whynow = WhyNowTriggerLayer(Path("."))
+                whynow.run()
+                details_lines.append("whynow_trigger: ok")
+                print("whynow_trigger: ok", file=sys.stderr)
+            except Exception as e:
+                 print(f"whynow_trigger: fail ({e})", file=sys.stderr)
 
             dd_md = dd.render_markdown(dd_data)
             
