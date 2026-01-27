@@ -1082,7 +1082,11 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
 
-    # 4. Construct Final HTML
+    # [NEW] YouTube Inbox View
+    youtube_videos = _load_youtube_videos(base_dir)
+    youtube_view_html = _generate_youtube_view(youtube_videos)
+
+    # Use f-string for interpolation (CSS braces must be double escaped {{ }})
     html = f"""
     <!DOCTYPE html>
     <html lang="ko">
@@ -1392,14 +1396,7 @@ def generate_dashboard(base_dir: Path):
     youtube_videos = _load_youtube_videos(base_dir)
     youtube_view_html = _generate_youtube_view(youtube_videos)
 
-    (base_dir / "dashboard" / "index.html").write_text(html.format(
-        today_view_html=today_view_html,
-        candidate_view_html=candidate_view_html,
-        decision_view_html=decision_view_html,
-        ops_view_html=ops_view_html,
-        youtube_view_html=youtube_view_html, # Added
-        archive_view_html=archive_view_html
-    ), encoding="utf-8")
+    (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
     print(f"[Dashboard] Generated dashboard/index.html with YouTube Inbox (Restored)")
     return html
 
