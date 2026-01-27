@@ -63,6 +63,7 @@ class EconomicHunterSnapshotGenerator:
         snapshot_content = f"""[ECONOMIC_HUNTER_TOP1_SNAPSHOT]
 DATE: {ymd}
 PIPELINE_VERSION: {self.engine_version}
+TITLE: {topic.get('title', 'Economic Hunter Analysis')}
 
 [1. WHY NOW — 시간 강제성]
 - Trigger Type: {topic.get('whynow_trigger', {}).get('type', 'N/A')}
@@ -76,6 +77,7 @@ PIPELINE_VERSION: {self.engine_version}
 
 [3. WHAT IS BREAKING — 섹터가 아닌 ‘행위’]
 - 깨지고 있는 것: {original_card.get('structure_type', 'N/A')} 기반 의사결정 체계
+- Escalation Count: {len(topic.get('escalation_info', {}).get('timeline', []))}
 - 연쇄적으로 막히는 흐름: {unresolved}
 - 시장이 아직 숫자로 못 본 이유: {pre_structural.get('escalation_path', {}).get('condition_to_upgrade_to_WHY_NOW', 'N/A')}
 

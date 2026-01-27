@@ -76,6 +76,10 @@ class SnapshotToDashboardProjector:
         date_match = re.search(r"DATE:\s*(\d{4}-\d{2}-\d{2})", content)
         data['date'] = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
 
+        # Extract Title
+        title_match = re.search(r"TITLE:\s*(.*)", content)
+        data['title'] = title_match.group(1).strip() if title_match else "Economic Hunter Signal"
+
         # 1. WHY NOW
         why_now_section = re.search(r"\[1\. WHY NOW.*?\](.*?)(?=\[2\.|\[ECONOMIC_HUNTER_TOP1_SNAPSHOT\]|\Z)", content, re.DOTALL)
         if why_now_section:
@@ -93,14 +97,17 @@ class SnapshotToDashboardProjector:
         if breaking_section:
              text = breaking_section.group(1)
              breaking_match = re.search(r"- 깨지고 있는 것:\s*(.*)", text)
-             data['title'] = breaking_match.group(1).strip() if breaking_match else "Economic Hunter Signal"
+             data['pressure_type'] = breaking_match.group(1).split('기반')[0].strip() if breaking_match else "Structural"
+             
+             count_match = re.search(r"- Escalation Count:\s*(\d+)", text)
+             data['escalation_count'] = int(count_match.group(1)) if count_match else 0
 
         # 5. MENTIONABLE ASSETS (Sectors)
         assets_section = re.search(r"\[5\. MENTIONABLE ASSETS.*?\](.*?)(?=\[6\.|\[ECONOMIC_HUNTER_TOP1_SNAPSHOT\]|\Z)", content, re.DOTALL)
         sectors = []
         if assets_section:
             text = assets_section.group(1)
-            # Find lines like "- Asset X: ..." or just extract meaningful keywords if structured
+            # Find lines like "- Asset \d: ..." or just extract meaningful keywords if structured
             # Simple extraction: Look for "Asset 1: ID", "Asset 2: Market Proxy" logic
             # Let's extract values after "Asset \d:"
             asset_matches = re.findall(r"- Asset \d:\s*(.*)", text)
@@ -108,6 +115,7 @@ class SnapshotToDashboardProjector:
                 if m.upper() != "N/A":
                     sectors.append(m.split('(')[0].strip()) # Clean up potential parens
         data['sectors'] = sectors
+        data['scope_hint'] = "Multi-Sector Potential" if len(sectors) > 1 else "Single-Sector"
 
         # 6. SYSTEM DECISION
         decision_section = re.search(r"\[6\. SYSTEM DECISION.*?\](.*?)(?=\Z|\[)", content, re.DOTALL)
@@ -136,13 +144,25 @@ class SnapshotToDashboardProjector:
         return {
             "date": parsed.get('date', datetime.now().strftime("%Y-%m-%d")),
             "top_signal": {
-                "title": parsed.get('title', "Economic Hunter Signal"),
+                "title": parsed.get('title', "Economic Hunter Signal"), # Wait, 'title' was mapped from '깨지고 있는 것' before? No, Step 81 parsing was vague.
+                # Actually, Step 79 uses original_card.get('structure_type') for "깨지고 있는 것".
+                # The "Title" requirement is "declarative and interpretive". 
+                # Step 79 doesn't explicitly have a "Title" line in the Snapshot MD.
+                # It has "Title" in the INPUT topic. I should add Title to Snapshot MD or fetch it differently.
+                # Let's check Step 79 code again. It generates MD but doesn't write 'title'.
+                # Recommendation: Add Title to MD in Step 79.
+                "title": parsed.get('title', "Critical Structural Shift"), 
                 "why_now": parsed.get('why_now_summary', "Opportunity detected."),
                 "trigger": parsed.get('trigger', "Mechanism Activation"),
                 "intensity": parsed.get('intensity', "STRIKE"),
                 "rhythm": parsed.get('rhythm', "STRUCTURE_FLOW"),
                 "sectors": parsed.get('sectors', []),
-                "status": parsed.get('status', "WATCH")
+                "status": parsed.get('status', "WATCH"),
+                
+                # New Fields for UI
+                "pressure_type": parsed.get('pressure_type', "Structural"),
+                "escalation_count": parsed.get('escalation_count', 0),
+                "scope_hint": parsed.get('scope_hint', "Single-Sector")
             }
         }
 
@@ -152,10 +172,13 @@ class SnapshotToDashboardProjector:
             self.dashboard_dir.mkdir(parents=True, exist_ok=True)
             
         output_file = self.dashboard_dir / "today.json"
-        
-        # Atomic write pattern not strictly necessary for this scale, but good practice.
-        # Direct write is fine here.
         output_file.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        self.logger.info(f"Dashboard Projection saved to: {output_file}")
+        
+        # [NEW] Save History
+        date_str = data.get("date", datetime.now().strftime("%Y-%m-%d"))
+        history_file = self.dashboard_dir / f"{date_str}.json"
+        history_file.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        
+        self.logger.info(f"Dashboard Projection saved to: {output_file} and {history_file}")
         
         return output_file

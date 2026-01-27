@@ -19,6 +19,7 @@ if __name__ == "__main__":
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
+from src.dashboard.topic_card_renderer import TopicCardRenderer
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -47,6 +48,34 @@ def _utc_to_kst_display(utc_timestamp_str: str) -> str:
         return kst_dt.strftime("%m/%d %H:%M")
     except Exception:
         return utc_timestamp_str  # Return original if parsing fails
+
+def _load_dashboard_json(base_dir: Path) -> dict:
+    path = base_dir / "data/dashboard/today.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except:
+        return {}
+
+def _load_dashboard_history(base_dir: Path) -> List[Dict[str, Any]]:
+    dashboard_dir = base_dir / "data" / "dashboard"
+    if not dashboard_dir.exists():
+        return []
+    
+    history = []
+    # Load all YYYY-MM-DD.json files
+    for f in dashboard_dir.glob("*.json"):
+        if f.name == "today.json": continue
+        if not re.match(r"\d{4}-\d{2}-\d{2}\.json", f.name): continue
+        
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            history.append(data)
+        except: pass
+        
+    return history
+
 
 
     return html
@@ -794,6 +823,17 @@ def generate_dashboard(base_dir: Path):
     ymd = _utc_ymd()
     
     # 1. Load Data (Minimal Loading for UI)
+    today_json = _load_dashboard_json(base_dir) # [NEW]
+    history_json = _load_dashboard_history(base_dir) # [NEW]
+    
+    # Filter out today from history to avoid duplication
+    if today_json and today_json.get("date"):
+        history_json = [h for h in history_json if h.get("date") != today_json.get("date")]
+        
+    top1_card_html = TopicCardRenderer.render_top1_card(today_json)
+    snapshot_list_html = TopicCardRenderer.render_snapshot_list(history_json)
+    topic_card_css = TopicCardRenderer.get_css()
+    
     
     # [A] HOIN Engine Topics (Final Decision)
     final_card = {}
@@ -1104,6 +1144,10 @@ def generate_dashboard(base_dir: Path):
                 --card-bg: #ffffff;
                 --border-color: #e2e8f0;
             }}
+            
+            /* [NEW] Topic Card CSS */
+            {topic_card_css}
+
             * {{ box-sizing: border-box; }}
             body {{
                 margin: 0;
@@ -1313,6 +1357,11 @@ def generate_dashboard(base_dir: Path):
         
         <div class="main-content">
             <div id="tab-today">
+                {top1_card_html}
+                {snapshot_list_html}
+                <div class="today-header">
+                    <div class="today-date">Detailed Engine Output</div>
+                </div>
                 {today_view_html}
             </div>
             <div id="tab-candidates" class="hidden">
