@@ -287,6 +287,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"topic_console: run error ({e})", file=sys.stderr)
 
+            # [NEW] Step 63: Structural Topic Seeds Execution
+            try:
+                from src.ops.structural_seeder import StructuralTopicSeeder
+                seeder = StructuralTopicSeeder(Path("."))
+                seeder.run()
+                details_lines.append("structural_seeder: ok")
+                print("structural_seeder: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"structural_seeder: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
