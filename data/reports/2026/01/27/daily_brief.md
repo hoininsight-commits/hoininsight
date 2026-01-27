@@ -70,7 +70,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - **Topic:** [Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)
-- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.35배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.34배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown] Hybrid-driven
@@ -93,5 +93,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 15 candidate(s) survived survival rules.
+Gate Filter Result: 14 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
