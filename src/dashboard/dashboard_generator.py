@@ -7,6 +7,15 @@ import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
+
+import sys
+# [Fix] Ensure project root is in sys.path for direct execution imports
+if __name__ == "__main__":
+    # src/dashboard/dashboard_generator.py -> root is ../../
+    root_path = Path(__file__).resolve().parent.parent.parent
+    if str(root_path) not in sys.path:
+        sys.path.insert(0, str(root_path))
+
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 
