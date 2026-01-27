@@ -24,14 +24,13 @@ Historical context:
 | 1 | CPI_USA | data/features/anomalies/2026/01/27/inflation_cpi_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/27/charts/inflation_cpi_fred.png) | [json](data/topics/2026/01/27/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/27/inflation_cpi_fred.json) |
 | 2 | PCE_USA | data/features/anomalies/2026/01/27/inflation_pce_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/27/charts/inflation_pce_fred.png) | [json](data/topics/2026/01/27/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/27/inflation_pce_fred.json) |
 | 3 | M2_USA | data/features/anomalies/2026/01/27/liquidity_m2_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | [png](data/reports/2026/01/27/charts/liquidity_m2_fred.png) | [json](data/topics/2026/01/27/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/01/27/liquidity_m2_fred.json) |
-| 4 | BTCUSD | data/features/anomalies/2026/01/27/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 4 (x1.60) | 9.60 | UP (1.00) | **10.56** | HIGH | [png](data/reports/2026/01/27/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/01/27/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/01/27/crypto_btc_usd_spot_coingecko.json) |
-| 5 | M_AND_A_CB | data/features/anomalies/2026/01/27/struct_dart_cb_bw.json L2 Signal | 6.00 | 5 (x1.75) | 10.50 | FLAT (0.00) | **10.50** | HIGH | [png](data/reports/2026/01/27/charts/struct_dart_cb_bw.png) | [json](data/topics/2026/01/27/struct_dart_cb_bw.json) | [json](data/features/anomalies/2026/01/27/struct_dart_cb_bw.json) |
+| 4 | M_AND_A_CB | data/features/anomalies/2026/01/27/struct_dart_cb_bw.json L2 Signal | 6.00 | 5 (x1.75) | 10.50 | FLAT (0.00) | **10.50** | HIGH | [png](data/reports/2026/01/27/charts/struct_dart_cb_bw.png) | [json](data/topics/2026/01/27/struct_dart_cb_bw.json) | [json](data/features/anomalies/2026/01/27/struct_dart_cb_bw.json) |
+| 5 | M_AND_A_DISP | data/features/anomalies/2026/01/27/struct_dart_disposal.json L2 Signal | 6.00 | 5 (x1.75) | 10.50 | FLAT (0.00) | **10.50** | HIGH | [png](data/reports/2026/01/27/charts/struct_dart_disposal.png) | [json](data/topics/2026/01/27/struct_dart_disposal.json) | [json](data/features/anomalies/2026/01/27/struct_dart_disposal.json) |
 
 ## Per-dataset Topics
 - [HIGH] CPI_USA: data/features/anomalies/2026/01/27/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] PCE_USA: data/features/anomalies/2026/01/27/inflation_pce_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] M2_USA: data/features/anomalies/2026/01/27/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
-- [HIGH] BTCUSD: data/features/anomalies/2026/01/27/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=10.56) | Mom: UP (slope=1.00) -> x1.1 | App7d=4
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/27/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/27/struct_dart_disposal.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [HIGH] GS_RATIO: data/features/anomalies/2026/01/27/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -42,6 +41,7 @@ Historical context:
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/27/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] US10Y: data/features/anomalies/2026/01/27/rates_us10y_fred.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] GOLD: data/features/anomalies/2026/01/27/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
+- [MED] BTCUSD: data/features/anomalies/2026/01/27/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] NASDAQ: data/features/anomalies/2026/01/27/index_nasdaq_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] VIX: data/features/anomalies/2026/01/27/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] SPX: data/features/anomalies/2026/01/27/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -67,8 +67,8 @@ Narrative Drift Signals:
 - (No structural anomaly detected)
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=-2.43 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
