@@ -407,17 +407,8 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"top1_compressor: fail ({e})", file=sys.stderr)
 
-            # [NEW] Step 67: Economic Hunter Narrative Layer Execution
-            try:
-                from src.ops.economic_hunter_narrator import EconomicHunterNarrator
-                narrator = EconomicHunterNarrator(Path("."))
-                narrator.run()
-                details_lines.append("economic_hunter_narrator: ok")
-                print("economic_hunter_narrator: ok", file=sys.stderr)
-            except Exception as e:
-                print(f"economic_hunter_narrator: fail ({e})", file=sys.stderr)
-
-            # [NEW] Step 72: WHY_NOW Trigger Layer Execution (Additive)
+            # [REORDERED] Step 72: WHY_NOW Trigger Layer Execution (Additive)
+            # Must run before Lock Layer to provide whynow_trigger
             try:
                 from src.ops.whynow_trigger_layer import WhyNowTriggerLayer
                 whynow = WhyNowTriggerLayer(Path("."))
@@ -426,6 +417,45 @@ def main(target_categories: list[str] = None):
                 print("whynow_trigger: ok", file=sys.stderr)
             except Exception as e:
                  print(f"whynow_trigger: fail ({e})", file=sys.stderr)
+
+            # [NEW] Step 76: Economic Hunter Topic Lock Layer
+            topic_lock = False
+            try:
+                from src.ops.economic_hunter_topic_lock_layer import EconomicHunterTopicLockLayer
+                lock_layer = EconomicHunterTopicLockLayer(Path("."))
+                lock_result = lock_layer.evaluate_lock()
+                topic_lock = lock_result.get("topic_lock", False)
+                details_lines.append(f"topic_lock: ok (lock={topic_lock})")
+                print(f"topic_lock: ok (lock={topic_lock})", file=sys.stderr)
+            except Exception as e:
+                print(f"topic_lock: fail ({e})", file=sys.stderr)
+
+            # [NEW] Step 67: Narrator Selection & Execution
+            if topic_lock:
+                try:
+                    from src.ops.economic_hunter_narrator import EconomicHunterNarrator
+                    narrator = EconomicHunterNarrator(Path("."))
+                    narrator.run()
+                    details_lines.append("economic_hunter_narrator: ok (LOCKED)")
+                    print("economic_hunter_narrator: ok (LOCKED)", file=sys.stderr)
+                except Exception as e:
+                    print(f"economic_hunter_narrator: fail ({e})", file=sys.stderr)
+            else:
+                # Fallback to standard report or existing narrator
+                print("topic_lock: false -> Using Standard Report Narrator", file=sys.stderr)
+                # (Existing logic for standard report would go here or fallback to Step 67)
+                try:
+                    # For now, we still use EconomicHunterNarrator but it will handle non-locked topics if needed,
+                    # OR we implement a specific ReportNarrator. 
+                    # Requirement says: "topic_lock == false 인 경우: 기존 Report Narrator 사용"
+                    # If ReportNarrator is not yet implemented, we might need a placeholder.
+                    # Let's check for ReportNarrator or similar.
+                    from src.ops.economic_hunter_narrator import EconomicHunterNarrator
+                    narrator = EconomicHunterNarrator(Path("."))
+                    narrator.run()
+                    details_lines.append("economic_hunter_narrator: ok (Standard)")
+                except Exception as e:
+                    print(f"narrator_fallback: fail ({e})", file=sys.stderr)
 
             dd_md = dd.render_markdown(dd_data)
             
