@@ -317,6 +317,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"video_selector: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 66: Structural Top-1 Compressor Execution
+            try:
+                from src.ops.structural_top1_compressor import StructuralTop1Compressor
+                compressor = StructuralTop1Compressor(Path("."))
+                compressor.run()
+                details_lines.append("top1_compressor: ok")
+                print("top1_compressor: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"top1_compressor: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()

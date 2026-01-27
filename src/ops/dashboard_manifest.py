@@ -122,6 +122,8 @@ class DashboardManifest:
             "issuesignal_today_md": "data/ops/issuesignal_today.md",
             "video_candidates_json": "data/ops/video_candidates_today.json",
             "video_candidates_md": "data/ops/video_candidates_today.md",
+            "structural_top1_json": "data/ops/structural_top1_today.json",
+            "structural_top1_md": "data/ops/structural_top1_today.md",
             "missing": missing
         }
         

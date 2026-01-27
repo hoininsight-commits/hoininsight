@@ -277,11 +277,41 @@ def _get_op_input_status(base_dir: Path, ymd: str) -> str:
     except Exception:
         return ""
 
-def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], video_candidates: set = None) -> str:
-    """Step 62: Simplified card view for Today's Topics (Updated Step 65 for Video Badge)"""
+def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], video_candidates: set = None, top1_data: Dict = None) -> str:
+    """Step 66: Simplified card view for Today's Topics (Updated for Top-1 Purple)"""
     if video_candidates is None: video_candidates = set()
     
     cards_html = ""
+    
+    # 0. Structural Top-1 Section (Purple)
+    if top1_data:
+        t1 = top1_data
+        orig = t1.get('original_card', {})
+        uid = orig.get('topic_id', 'unknown_top1')
+        title = t1.get('title', 'Untitled')
+        summary = t1.get('one_line_summary', '')
+        
+        # Override UID mapped details later if needed, but original card ID should work if it's in signals too.
+        # But Top-1 might be displayed separately even if it's in signals list?
+        # Yes, it duplicates visual but that's fine for emphasis.
+        
+        card_html = f"""
+        <div class="topic-card top1" onclick="openSignalDetail('{uid}')" style="border:2px solid #a855f7; background:#faf5ff;">
+            <div class="card-badges">
+                <div class="card-badge" style="background:#a855f7; color:white;">🟣 구조 재정의 TOP 1</div>
+            </div>
+            <div class="card-title" style="color:#6b21a8;">{title}</div>
+            <div class="card-meta">
+                <span class="meta-item importance">Global Priority</span>
+                <span class="meta-divider">|</span>
+                <span class="meta-item" style="color:#7e22ce;">{summary}</span>
+            </div>
+            <div style="margin-top:8px; font-size:12px; color:#9333ea; font-weight:bold;">
+                 ⚡ Why Now: {t1.get('why_now', '')}
+            </div>
+        </div>
+        """
+        cards_html += card_html
     
     # 1. Process HOIN IssueSignal Topics (Green)
     for s in signals:
@@ -562,12 +592,22 @@ def generate_dashboard(base_dir: Path):
                 video_candidates.add(tid)
                 video_reasons[tid] = vc.get("why_video_natural", "")
     except: pass
+    
+    # [D] Structural Top-1 (Step 66)
+    top1_data = None
+    try:
+        top1_path = base_dir / "data" / "ops" / "structural_top1_today.json"
+        if top1_path.exists():
+             t1 = json.loads(top1_path.read_text(encoding="utf-8"))
+             if t1.get("top1_topics"):
+                 top1_data = t1["top1_topics"][0]
+    except: pass
 
-    # [D] Historical Archive
+    # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
     # 2. Generate View HTML
-    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates)
+    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, top1_data)
     archive_view_html = _generate_simple_archive_view(historical_cards)
 
     # 3. Build Details Map (JSON for JS)
@@ -594,9 +634,15 @@ def generate_dashboard(base_dir: Path):
                 </p>
             </div>
             """
+            
+        # Top-1 Badge in Modal
+        top1_badge = ""
+        if top1_data and top1_data.get('original_card', {}).get('topic_id') == sid:
+            top1_badge = '<span class="detail-badge" style="background:#a855f7; color:white; margin-right:5px;">🟣 Global TOP-1</span>'
 
         details_map[sid] = f"""
         <div class="detail-header">
+            {top1_badge}
             <span class="detail-badge signal">{s.get('structure_card_type', '이슈시그널')}</span>
             <h2>{s.get('title', '제목 없음')}</h2>
         </div>
