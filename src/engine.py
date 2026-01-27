@@ -471,6 +471,19 @@ def main(target_categories: list[str] = None):
                 except Exception as e:
                     print(f"video_rhythm: fail ({e})", file=sys.stderr)
 
+            # [NEW] Step 79: Economic Hunter Title & Thumbnail Intensity Decision
+            if topic_lock:
+                try:
+                    from src.ops.economic_hunter_title_thumbnail_intensity import EconomicHunterTitleThumbnailIntensityLayer
+                    t_intensity_layer = EconomicHunterTitleThumbnailIntensityLayer(Path("."))
+                    t_intensity_res = t_intensity_layer.assign_intensity()
+                    details_lines.append(f"title_thumbnail_intensity: ok ({t_intensity_res.get('title_intensity', 'REJECTED')})")
+                    print(f"title_thumbnail_intensity: ok ({t_intensity_res.get('title_intensity', 'REJECTED')})", file=sys.stderr)
+                    if t_intensity_res.get("status") == "rejected":
+                         topic_lock = False
+                except Exception as e:
+                    print(f"title_thumbnail_intensity: fail ({e})", file=sys.stderr)
+
             # [NEW] Step 67: Narrator Selection & Execution
             if topic_lock:
                 try:

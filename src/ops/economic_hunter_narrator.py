@@ -175,6 +175,27 @@ class EconomicHunterNarrator:
             # Always append rhythm block to action (after intensity block)
             action += rhythm_block
 
+        # [NEW] Step 79: Title & Thumbnail Intensity Injection
+        ti_data = top1.get("title_thumbnail_intensity", {})
+        ti_level = ti_data.get("title_intensity")
+        ti_rules = ti_data.get("rules_summary", "N/A")
+        
+        ti_block = ""
+        if ti_level:
+            ti_block = f"\n\n[🧲 TITLE & THUMBNAIL INTENSITY]\n- **Video Intensity:** {i_level if i_level else 'N/A'}\n- **Rhythm Profile:** {r_profile if r_profile else 'N/A'}\n- **Title Intensity:** {ti_level}\n- **Title Rule Applied:** TRUE"
+            
+            # Title & Thumbnail Logic Adaptation (Simulation in Action block for context)
+            if ti_level == "TITLE_INTENSITY_FLASH":
+                action += "\n\n(Title Rule: 12자 내외, '지금'/'오늘'/'터졌다' 등 긴급어 포함)"
+                action += "\n(Thumbnail Rule: 단어 3~5개, 감정 단성 중심)"
+            elif ti_level == "TITLE_INTENSITY_STRIKE":
+                action += "\n\n(Title Rule: 15~18자, 원인->결과 구조)"
+            elif ti_level == "TITLE_INTENSITY_DEEP":
+                action += "\n\n(Title Rule: 18~25자, 질문/설명형, 학술적 톤)"
+            
+            # Always append title intensity block to action
+            action += ti_block
+
         # 4. Construct Output Object
         narrative = {
             "topic_id": original_card.get('topic_id'),
@@ -196,7 +217,8 @@ class EconomicHunterNarrator:
                 "id": trigger_type
             },
             "video_intensity": intensity,
-            "video_rhythm": rhythm_data
+            "video_rhythm": rhythm_data,
+            "title_thumbnail_intensity": ti_data
         }
         
         # 5. Output JSON & MD
