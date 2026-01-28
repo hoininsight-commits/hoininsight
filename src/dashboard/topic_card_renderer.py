@@ -73,6 +73,16 @@ class TopicCardRenderer:
             <div class="top1-header-label">🟣 오늘의 구조적 핵심 이슈 (Top-1)</div>
             
             <div class="top1-body">
+                <!-- [STEP 91] Judgment Status Line (Korenan natural language with arrows) -->
+                <div class="judgment-status-line" style="font-size: 14px; font-weight: bold; color: #7e22ce; margin-bottom: 5px;">
+                    [Judgment Status] {data.get('judgment_stack', {}).get('state_label', 'NEW')}
+                </div>
+                
+                <!-- [STEP 92] Narrative Drift Label (Muted) -->
+                <div class="narrative-drift-label" style="font-size: 11px; color: #94a3b8; margin-bottom: 20px;">
+                    {data.get('narrative_drift', {}).get('label', 'Narrative Stable (Recurring Structure)')}
+                </div>
+
                 <h1 class="top1-title" style="margin-bottom: 20px;">{title}</h1>
 
                 <!-- [STEP 90-A] Human Interpretation Block (Judgment First) -->

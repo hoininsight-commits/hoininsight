@@ -1,22 +1,23 @@
 {
-  "topic_id": "STRUCT_20260127_signal_f",
-  "date": "2026-01-27",
+  "topic_id": "topo_semi_2026",
+  "date": "2026-01-28",
   "rank": 1,
   "title": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
   "summary": [
-    "구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간."
+    "Major shift in global semiconductor regulations. Immediate structural impact."
   ],
   "why_now": {
     "type": "Mechanism Activation",
     "anchor": "Pattern Match",
     "evidence": [
-      "signal_fact_signal_test"
+      "src_001",
+      "src_002"
     ]
   },
   "badges": {
     "intensity": "STRIKE",
     "rhythm": "STRUCTURE_FLOW",
-    "scope": "SINGLE",
+    "scope": "MULTI",
     "lock": true,
     "rejected": false
   },
@@ -28,14 +29,17 @@
   "human_interpretation": "왜 지금 이 토픽인가\n- 특정 구조적 기제가 활성화되었습니다.\n- 오늘 이 토픽은 시스템의 구조적 흐름과 동기화된 상태로 확인됩니다.",
   "judgment_stack": {
     "first_detected": "2026-01-27",
-    "days_active": 1,
-    "recurrence": false,
-    "judgment_state": "NEW",
-    "last_state_change": "2026-01-27"
+    "days_active": 2,
+    "recurrence": true,
+    "judgment_state": "ESCALATING",
+    "state_label": "↗ Escalating 2일차",
+    "last_state_change": "2026-01-28"
   },
   "narrative_drift": {
     "detected": false,
-    "label": "Narrative Stable (New Topic)"
+    "from": "Supply Bottleneck",
+    "to": "Supply Bottleneck",
+    "label": "Narrative Stable (Recurring Structure)"
   },
   "interpretation_axis": "Supply Bottleneck"
 }

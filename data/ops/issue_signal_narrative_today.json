@@ -1,4 +1,21 @@
 {
   "run_date": "2026-01-28",
-  "narrative": null
+  "narrative": {
+    "whynow_trigger": {
+      "type": "Mechanism Activation",
+      "anchor": "Pattern Match"
+    },
+    "video_intensity": {
+      "level": "STRIKE"
+    },
+    "video_rhythm": {
+      "rhythm_profile": "STRUCTURE_FLOW"
+    },
+    "sections": {
+      "hook": "Hook text",
+      "tension": "Tension text",
+      "hunt": "Hunt text",
+      "action": "Action text"
+    }
+  }
 }

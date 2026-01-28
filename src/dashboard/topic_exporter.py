@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any
 from src.ops.human_interpretation_layer import HumanInterpretationLayer
+from src.ops.judgment_continuity_engine import JudgmentContinuityEngine # Step 91-92
 
 class TopicExporter:
     """
@@ -103,6 +104,13 @@ class TopicExporter:
             "source_refs": [str(top1_path.relative_to(self.base_dir))]
         }
         topic_card["human_interpretation"] = HumanInterpretationLayer.interpret(topic_card) # Step 89
+        
+        # Step 91-92: Judgment Continuity & Narrative Drift
+        continuity_engine = JudgmentContinuityEngine(self.base_dir)
+        continuity_data = continuity_engine.analyze_continuity(topic_card)
+        topic_card["judgment_stack"] = continuity_data.get("judgment_stack", {})
+        topic_card["narrative_drift"] = continuity_data.get("narrative_drift", {})
+        topic_card["interpretation_axis"] = continuity_data.get("interpretation_axis", "Structural Constraint")
 
         # Save Item
         item_filename = f"{ymd}__top1.json"
