@@ -32,8 +32,13 @@
     "days_active": 2,
     "recurrence": true,
     "judgment_state": "ESCALATING",
-    "state_label": "↗ Escalating 2일차",
-    "last_state_change": "2026-01-28"
+    "state_label": "반복 관찰 중 / 오늘 더 강해졌습니다 (2일째)",
+    "last_state_change": "2026-01-28",
+    "memory_summary": [
+      "이 판단은 최근 며칠 동안 반복해서 등장하며 세력이 강해지고 있습니다.",
+      "어제보다 오늘 시장의 구조적 반응이 더 또렷해졌습니다.",
+      "판단의 무게중심이 한층 더 실리고 있습니다."
+    ]
   },
   "narrative_drift": {
     "detected": false,

@@ -3,6 +3,7 @@ import logging
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
+from src.utils.human_language_rewriter import HumanLanguageRewriter
 
 class JudgmentContinuityEngine:
     """
@@ -103,9 +104,43 @@ class JudgmentContinuityEngine:
             "days_active": days_active,
             "recurrence": True,
             "judgment_state": state,
-            "state_label": f"{state_labels.get(state, state)} {days_active}일차",
-            "last_state_change": today_date
+            "state_label": HumanLanguageRewriter.rewrite_status(state, days_active),
+            "last_state_change": today_date,
+            "memory_summary": self._generate_memory_summary(state, days_active)
         }
+
+    def _generate_memory_summary(self, state: str, days: int) -> List[str]:
+        """
+        Step 93: Generates 2-3 short human-readable sentences for the Memory View.
+        """
+        if days == 1:
+            return ["오늘 처음 포착된 새로운 구조적 흐름입니다.", "기존 데이터와의 연결 고리를 분석 중입니다."]
+        
+        sentences = []
+        if state == "ESCALATING":
+            sentences = [
+                "이 판단은 최근 며칠 동안 반복해서 등장하며 세력이 강해지고 있습니다.",
+                "어제보다 오늘 시장의 구조적 반응이 더 또렷해졌습니다.",
+                "판단의 무게중심이 한층 더 실리고 있습니다."
+            ]
+        elif state == "SUSTAINED":
+            sentences = [
+                "최근 계속 관찰되고 있는 안정적인 흐름입니다.",
+                "강해지지는 않았지만 꺾였다는 신호도 발견되지 않았습니다.",
+                "아직 기존 판단의 유효성 안에 머물러 있습니다."
+            ]
+        elif state == "DEGRADING":
+            sentences = [
+                "오랫동안 유지되던 흐름에서 조금씩 힘이 빠지고 있습니다.",
+                "구조적 압력이 정점을 지나 분산되는 신호가 포착되었습니다.",
+                "기존 판단의 수정을 준비해야 하는 국면입니다."
+            ]
+        else:
+            sentences = [
+                "최근 며칠 동안 비슷한 구조가 반복해서 관찰되고 있습니다.",
+                "판단의 일관성이 유지되고 있는 구간입니다."
+            ]
+        return sentences
 
     def _classify_axis(self, topic: Dict[str, Any]) -> str:
         """

@@ -15,12 +15,6 @@ if __name__ == "__main__":
     root_path = Path(__file__).resolve().parent.parent.parent
     if str(root_path) not in sys.path:
         sys.path.insert(0, str(root_path))
-# [x] Analyze `src/dashboard/dashboard_generator.py` for section sequence and scanning banner CSS <!-- id: 0 -->
-# [x] Create Implementation Plan <!-- id: 1 -->
-# [/] Implement Layout Reordering & Banner- [x] STEP 90-A: Layout Fix <!-- id: 0 -->
-#     - [x] Reorder Top-1 Card: Title -> Interpretation -> Divider -> Badges <!-- id: 1 -->
-#     - [x] Remove redundant bottom "핵심 토픽" block (Option A) <!-- id: 2 -->
-#     - [x] Maintain Decision/Entity layers below Top-1 <!-- id: 3 -->
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
@@ -1078,7 +1072,12 @@ def generate_dashboard(base_dir: Path):
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
-    top1_card_html = TopicCardRenderer.render_top1_card(top1_data)
+    # --- Modifications for Step 85 ---
+    top1_card_html = TopicCardRenderer.render_top1_card(top1_data) # Use top1_data for the top card
+    
+    # [NEW] Judgment Memory View (Step 93)
+    judgment_memory_html = TopicCardRenderer.render_judgment_memory_view(top1_data)
+    
     today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, None) # Pass None to hide bottom duplicate
     
     # [G] Generate Candidate View HTML
@@ -1590,6 +1589,7 @@ def generate_dashboard(base_dir: Path):
         <div class="main-content">
             <div id="tab-today">
                 {top1_card_html}
+                {judgment_memory_html}
                 {entity_state_html}
                 {entity_pool_html}
                 {memory_delta_html}

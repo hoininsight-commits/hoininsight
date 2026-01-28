@@ -73,9 +73,9 @@ class TopicCardRenderer:
             <div class="top1-header-label">🟣 오늘의 구조적 핵심 이슈 (Top-1)</div>
             
             <div class="top1-body">
-                <!-- [STEP 91] Judgment Status Line (Korenan natural language with arrows) -->
-                <div class="judgment-status-line" style="font-size: 14px; font-weight: bold; color: #7e22ce; margin-bottom: 5px;">
-                    [Judgment Status] {data.get('judgment_stack', {}).get('state_label', 'NEW')}
+                <!-- [STEP 93] Rewritten Judgment Status Line (Human Language) -->
+                <div class="judgment-status-line" style="font-size: 15px; font-weight: bold; color: #7e22ce; margin-bottom: 8px;">
+                    판단 상태: {data.get('judgment_stack', {}).get('state_label', '새로운 흐름 포착')}
                 </div>
                 
                 <!-- [STEP 92] Narrative Drift Label (Muted) -->
@@ -665,3 +665,28 @@ class TopicCardRenderer:
         </div>
         """
 
+
+    @staticmethod
+    def render_judgment_memory_view(data: Dict[str, Any]) -> str:
+        """
+        Step 93: Judgment Memory View.
+        Summarizes multi-day continuity in short, natural sentences.
+        """
+        stack = data.get("judgment_stack", {})
+        summary = stack.get("memory_summary", [])
+        if not summary or not isinstance(summary, list):
+            return ""
+
+        sentences_html = "".join([f'<div style="margin-bottom: 8px; font-size: 14.5px; color: #334155; line-height: 1.6;">🧠 {s}</div>' for s in summary])
+
+        return f"""
+        <div class="judgment-memory-container" style="margin-top: 10px; margin-bottom: 30px; padding: 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+            <div style="font-size: 11px; font-weight: bold; color: #64748b; margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase;">Judgment Memory</div>
+            <div class="memory-sentences">
+                {sentences_html}
+            </div>
+            <div style="margin-top: 15px; font-size: 11px; color: #94a3b8; font-style: italic;">
+                * 이 요약은 최근 7일간의 구조적 판단 누적치를 기반으로 생성되었습니다.
+            </div>
+        </div>
+        """
