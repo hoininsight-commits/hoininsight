@@ -1,9 +1,7 @@
 name: learning_pipeline
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "30 23 * * *" # Runs 30 mins after full_pipeline daily run
+  workflow_dispatch:  # Manual trigger only during development
 
 permissions:
   contents: write
