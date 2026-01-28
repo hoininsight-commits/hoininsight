@@ -73,6 +73,9 @@ class TopicCardRenderer:
             <div class="top1-header-label">🟣 오늘의 구조적 핵심 이슈 (Top-1)</div>
             
             <div class="top1-body">
+                <!-- [STEP 95] Decision Snapshot Block (10-second Summary) -->
+                {TopicCardRenderer.render_decision_snapshot(data)}
+                
                 <!-- [STEP 93] Rewritten Judgment Status Line (Human Language) -->
                 <div class="judgment-status-line" style="font-size: 15px; font-weight: bold; color: #7e22ce; margin-bottom: 8px;">
                     판단 상태: {data.get('judgment_stack', {}).get('state_label', '새로운 흐름 포착')}
@@ -687,6 +690,48 @@ class TopicCardRenderer:
             </div>
             <div style="margin-top: 15px; font-size: 11px; color: #94a3b8; font-style: italic;">
                 * 이 요약은 최근 7일간의 구조적 판단 누적치를 기반으로 생성되었습니다.
+            </div>
+        </div>
+        """
+
+# --- Task Progress Markers ---
+# - [x] Update `src/dashboard/topic_exporter.py` <!-- id: 3 -->
+#    - [x] Inject `decision_snapshot` into Top-1 JSON <!-- id: 4 -->
+# - [x] Update `src/dashboard/topic_card_renderer.py` <!-- id: 5 -->
+#    - [x] Render `Decision Snapshot` block at the top of Top-1 <!-- id: 6 -->
+# - [ ] Create verification report `report_step95_decision_snapshot.md` <!-- id: 7 -->
+# - [ ] Push changes to GitHub <!-- id: 8 -->
+# --- End Task Progress Markers ---
+
+    @staticmethod
+    def render_decision_snapshot(data: Dict[str, Any]) -> str:
+        """
+        Step 95: Decision Speed Layer.
+        Renders the 10-second summary block at the very top of Top-1.
+        """
+        snapshot = data.get("decision_snapshot", {})
+        summary = snapshot.get("summary")
+        if not summary:
+            return ""
+
+        why_today = snapshot.get("why_today", "")
+        caution = snapshot.get("caution", "")
+
+        return f"""
+        <div class="decision-snapshot-block" style="background: #f3e8ff; border: 1px solid #d8b4fe; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: start; gap: 10px;">
+                <div style="font-size: 18px;">⚡</div>
+                <div style="flex: 1;">
+                    <div style="font-size: 15px; font-weight: bold; color: #6b21a8; margin-bottom: 6px; line-height: 1.4;">
+                        "{summary}"
+                    </div>
+                    <div style="font-size: 13.5px; color: #581c87; margin-bottom: 4px; line-height: 1.5;">
+                        • {why_today}
+                    </div>
+                    <div style="font-size: 13px; color: #7e22ce; opacity: 0.8; line-height: 1.5;">
+                        • {caution}
+                    </div>
+                </div>
             </div>
         </div>
         """

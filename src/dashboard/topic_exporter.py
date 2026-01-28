@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import List, Dict, Any
 from src.ops.human_interpretation_layer import HumanInterpretationLayer
 from src.ops.judgment_continuity_engine import JudgmentContinuityEngine # Step 91-92
+from src.ops.decision_snapshot_engine import DecisionSnapshotEngine # Step 95
 
 class TopicExporter:
     """
@@ -111,6 +112,9 @@ class TopicExporter:
         topic_card["judgment_stack"] = continuity_data.get("judgment_stack", {})
         topic_card["narrative_drift"] = continuity_data.get("narrative_drift", {})
         topic_card["interpretation_axis"] = continuity_data.get("interpretation_axis", "Structural Constraint")
+
+        # Step 95: Decision Speed Layer (10-second Snapshot)
+        topic_card["decision_snapshot"] = DecisionSnapshotEngine.generate(topic_card)
 
         # Save Item
         item_filename = f"{ymd}__top1.json"
