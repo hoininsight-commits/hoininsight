@@ -11,7 +11,7 @@ on:
     branches:
       - main
     paths:
-      - 'dashboard/**'
+      - 'docs/**'
       - 'src/dashboard/**'
   workflow_run:
     workflows: ["full_pipeline"]
@@ -53,6 +53,7 @@ jobs:
 
       - name: Generate Dashboard
         run: |
+          python -m src.dashboard.topic_exporter
           python -m src.dashboard.dashboard_generator
 
       - name: Generate Ops Metadata
@@ -72,21 +73,28 @@ jobs:
           fi
           echo "✅ Dashboard outputs verified"
 
-      - name: Copy Data to Dashboard Directory
+      - name: Copy Data to Docs Directory
         run: |
-          mkdir -p dashboard/data
-          cp -r data/dashboard dashboard/data/
-          cp -r data/reports dashboard/data/ || echo "No reports directory found"
-          echo "✅ Data copied to dashboard directory for GitHub Pages"
+          mkdir -p docs/data
+          cp -r data/dashboard docs/data/ || echo "No dashboard data found"
+          cp -r data/reports docs/data/ || echo "No reports directory found"
+          # Also copy assets if they exist in dashboard/
+          if [ -d "dashboard/assets" ]; then
+            cp -r dashboard/assets docs/
+          fi
+          echo "✅ Data and assets copied to docs directory"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dashboard
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'deploy: update dashboard [skip ci]'
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "deploy: update dashboard in docs/ [skip ci]"
+            git push origin main
+          fi
 
       - name: Telegram Notification (Result)
         if: always()

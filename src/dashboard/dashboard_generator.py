@@ -306,7 +306,7 @@ def _generate_archive_view(cards: List[Dict]) -> str:
 
 def _get_static_top1(base_dir: Path, target_ymd: str) -> Optional[Dict]:
     """Step 85: Load Top-1 data from static JSON."""
-    index_path = base_dir / "docs/dashboard/topics/index.json"
+    index_path = base_dir / "docs/topics/index.json"
     if not index_path.exists():
         return None
     
@@ -324,7 +324,7 @@ def _get_static_top1(base_dir: Path, target_ymd: str) -> Optional[Dict]:
             item_path = index[0]["path"]
             
         if item_path:
-            full_path = base_dir / "docs/dashboard" / item_path
+            full_path = base_dir / "docs" / item_path
             if full_path.exists():
                 return json.loads(full_path.read_text(encoding='utf-8'))
     except Exception as e:
@@ -1675,8 +1675,8 @@ def generate_dashboard(base_dir: Path):
     youtube_videos = _load_youtube_videos(base_dir)
     youtube_view_html = _generate_youtube_view(youtube_videos)
 
-    (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
-    print(f"[Dashboard] Generated dashboard/index.html with YouTube Inbox (Restored)")
+    (base_dir / "docs" / "index.html").write_text(html, encoding="utf-8")
+    print(f"[Dashboard] Generated docs/index.html with YouTube Inbox (Restored)")
     return html
 
 

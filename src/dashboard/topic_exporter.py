@@ -14,7 +14,7 @@ class TopicExporter:
         self.base_dir = base_dir
         self.logger = logging.getLogger("TopicExporter")
         self.ymd = datetime.utcnow().strftime("%Y-%m-%d")
-        self.export_root = base_dir / "docs/dashboard/topics"
+        self.export_root = base_dir / "docs/topics"
         self.export_items = self.export_root / "items"
         
         self.export_items.mkdir(parents=True, exist_ok=True)
