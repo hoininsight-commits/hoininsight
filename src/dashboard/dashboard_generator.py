@@ -1410,6 +1410,7 @@ def generate_dashboard(base_dir: Path):
                 margin-bottom: 15px;
                 line-height: 1.4;
                 color: #1e293b;
+                word-break: keep-all;
             }}
             
             .card-meta {{
@@ -1498,16 +1499,87 @@ def generate_dashboard(base_dir: Path):
             
             /* Utility */
             .hidden {{ display: none; }}
+
+            /* [NEW] Responsive Design */
+            @media (max-width: 1024px) {{
+                .sidebar {{ width: 220px; }}
+                .main-content {{ padding: 30px; }}
+            }}
+
+            @media (max-width: 768px) {{
+                body {{
+                    flex-direction: column;
+                    height: auto;
+                    overflow: auto;
+                }}
+                .sidebar {{
+                    width: 100%;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                    padding: 15px 20px;
+                    flex-direction: column;
+                    gap: 10px;
+                }}
+                .logo {{ 
+                    margin-bottom: 10px; 
+                    justify-content: center;
+                }}
+                .menu-container {{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    justify-content: center;
+                }}
+                .menu-item {{
+                    flex: 1 1 auto;
+                    margin-bottom: 0;
+                    padding: 8px 10px;
+                    font-size: 11px;
+                    text-align: center;
+                    white-space: nowrap;
+                }}
+                .main-content {{
+                    padding: 15px;
+                    overflow-y: visible;
+                }}
+                .today-summary {{ font-size: 20px; }}
+                
+                .card-grid {{
+                    grid-template-columns: 1fr;
+                }}
+                
+                /* Top-1 Mobile */
+                .topic-card-top1 {{
+                    padding: 16px;
+                    margin-bottom: 24px;
+                }}
+                .top1-title {{ font-size: 20px; }}
+                
+                /* Fix for narrow columns */
+                .empty-state-card h3 {{
+                    word-break: keep-all;
+                    font-size: 18px;
+                    margin: 0 10px;
+                }}
+                
+                .modal-content {{
+                    width: 95%;
+                    padding: 20px;
+                }}
+            }}
         </style>
     </head>
     <body>
         <div class="sidebar">
             <div class="logo">🔴 HOIN Insight</div>
-            <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
-            <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
-            <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
-            <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
-            <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
+            <div class="menu-container">
+                <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
+                <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+                <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
+                <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
+                <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
+            </div>
         </div>
         
         <div class="main-content">
@@ -1520,8 +1592,6 @@ def generate_dashboard(base_dir: Path):
                     <div class="today-date">Detailed Engine Output</div>
                 </div>
                 {memory_delta_html}
-                {top1_card_html}
-                {entity_pool_html}
                 {today_view_html}
             </div>
             <div id="tab-candidates" class="hidden">

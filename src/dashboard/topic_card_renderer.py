@@ -311,6 +311,7 @@ class TopicCardRenderer:
             margin: 0 0 20px 0;
             line-height: 1.3;
             letter-spacing: -0.5px;
+            word-break: keep-all;
         }
         
         .top1-context {
@@ -381,6 +382,7 @@ class TopicCardRenderer:
             background: #f8fafc;
             border-radius: 12px;
             border: 2px dashed #e2e8f0;
+            word-break: keep-all;
         }
         .empty-icon { font-size: 40px; margin-bottom: 20px; }
         
