@@ -146,13 +146,19 @@
         
         .empty-state-card {
             text-align: center;
-            padding: 60px 20px;
+            padding: 12px 20px;
             background: #f8fafc;
-            border-radius: 12px;
-            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e1;
             word-break: keep-all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .empty-icon { font-size: 40px; margin-bottom: 20px; }
+        .empty-icon-small { font-size: 18px; }
+        .empty-text { font-size: 13px; color: #64748b; font-weight: 500; }
         
         /* Snapshot List */
         .snapshot-list-container { margin-top: 30px; }
@@ -608,9 +614,54 @@
             <div id="tab-today">
                 
         <div class="empty-state-card">
-            <div class="empty-icon">☕️</div>
-            <h3>오늘은 구조적으로 확정된 이슈 시그널이 없습니다.</h3>
-            <p>Scanning for potential triggers...</p>
+            <span class="empty-icon-small">☕️</span>
+            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>Scanning for potential triggers...</strong></span>
+        </div>
+        
+                
+        <div class="state-panel-container">
+            <h3 class="entity-section-header">
+                🧭 현재 인식해야 할 구조적 상태 (Decision Surface)
+            </h3>
+            <div class="state-grid">
+                
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Sector Leader A</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Infrastructure B</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            <div class="state-card state-observe">
+                <div class="state-header">
+                    <div class="state-badge">OBSERVE</div>
+                    <div class="state-entity-name">Hedge ETF C</div>
+                    <div class="state-role">EXECUTOR</div>
+                </div>
+                <div class="state-justification">
+                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
+                </div>
+            </div>
+            
+            </div>
+            <div class="entity-disclaimer">
+                ⚠️ 이 상태는 행동 지시가 아닙니다. 구조적 상황을 인식하기 위한 판단 보조 정보입니다.
+            </div>
         </div>
         
                 
@@ -666,56 +717,6 @@
         </div>
         
                 
-        <div class="state-panel-container">
-            <h3 class="entity-section-header">
-                🧭 현재 인식해야 할 구조적 상태 (Decision Surface)
-            </h3>
-            <div class="state-grid">
-                
-            <div class="state-card state-observe">
-                <div class="state-header">
-                    <div class="state-badge">OBSERVE</div>
-                    <div class="state-entity-name">Sector Leader A</div>
-                    <div class="state-role">EXECUTOR</div>
-                </div>
-                <div class="state-justification">
-                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
-                </div>
-            </div>
-            
-            <div class="state-card state-observe">
-                <div class="state-header">
-                    <div class="state-badge">OBSERVE</div>
-                    <div class="state-entity-name">Infrastructure B</div>
-                    <div class="state-role">EXECUTOR</div>
-                </div>
-                <div class="state-justification">
-                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
-                </div>
-            </div>
-            
-            <div class="state-card state-observe">
-                <div class="state-header">
-                    <div class="state-badge">OBSERVE</div>
-                    <div class="state-entity-name">Hedge ETF C</div>
-                    <div class="state-role">EXECUTOR</div>
-                </div>
-                <div class="state-justification">
-                    <div class="just-line">1. 초기 구조적 노출 단계입니다.</div><div class="just-line">2. 아직 임계치 미만입니다.</div><div class="just-line">3. 모니터링이 필요합니다.</div>
-                </div>
-            </div>
-            
-            </div>
-            <div class="entity-disclaimer">
-                ⚠️ 이 상태는 행동 지시가 아닙니다. 구조적 상황을 인식하기 위한 판단 보조 정보입니다.
-            </div>
-        </div>
-        
-                
-                <div class="today-header">
-                    <div class="today-date">Detailed Engine Output</div>
-                </div>
-                
         <div class="memory-delta-container">
             <div class="delta-status-group">
                 <div class="delta-icon">🔁</div>
@@ -730,6 +731,7 @@
             </div>
         </div>
         
+                
                 
     <div class="today-container">
         <div class="today-header">

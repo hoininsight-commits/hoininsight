@@ -15,7 +15,12 @@ if __name__ == "__main__":
     root_path = Path(__file__).resolve().parent.parent.parent
     if str(root_path) not in sys.path:
         sys.path.insert(0, str(root_path))
-
+# [x] Analyze `src/dashboard/dashboard_generator.py` for section sequence and scanning banner CSS <!-- id: 0 -->
+# [x] Create Implementation Plan <!-- id: 1 -->
+# [/] Implement Layout Reordering & Banner Shrinkage <!-- id: 2 -->
+#     [x] Move Top-1 Card to the very top <!-- id: 3 -->
+#     [x] Shrink "Scanning" banner to a thin status bar <!-- id: 4 -->
+#     [x] Reorder Entity/Decision/Snapshot sections <!-- id: 5 -->
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
@@ -1585,13 +1590,10 @@ def generate_dashboard(base_dir: Path):
         <div class="main-content">
             <div id="tab-today">
                 {top1_card_html}
-                {entity_pool_html}
                 {entity_state_html}
-                {snapshot_list_html}
-                <div class="today-header">
-                    <div class="today-date">Detailed Engine Output</div>
-                </div>
+                {entity_pool_html}
                 {memory_delta_html}
+                {snapshot_list_html}
                 {today_view_html}
             </div>
             <div id="tab-candidates" class="hidden">

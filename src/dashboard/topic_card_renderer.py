@@ -241,9 +241,8 @@ class TopicCardRenderer:
     def _render_empty_state() -> str:
         return """
         <div class="empty-state-card">
-            <div class="empty-icon">☕️</div>
-            <h3>오늘은 구조적으로 확정된 이슈 시그널이 없습니다.</h3>
-            <p>Scanning for potential triggers...</p>
+            <span class="empty-icon-small">☕️</span>
+            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>Scanning for potential triggers...</strong></span>
         </div>
         """
 
@@ -378,13 +377,19 @@ class TopicCardRenderer:
         
         .empty-state-card {
             text-align: center;
-            padding: 60px 20px;
+            padding: 12px 20px;
             background: #f8fafc;
-            border-radius: 12px;
-            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e1;
             word-break: keep-all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .empty-icon { font-size: 40px; margin-bottom: 20px; }
+        .empty-icon-small { font-size: 18px; }
+        .empty-text { font-size: 13px; color: #64748b; font-weight: 500; }
         
         /* Snapshot List */
         .snapshot-list-container { margin-top: 30px; }
