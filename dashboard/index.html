@@ -79,6 +79,7 @@
             margin: 0 0 20px 0;
             line-height: 1.3;
             letter-spacing: -0.5px;
+            word-break: keep-all;
         }
         
         .top1-context {
@@ -149,6 +150,7 @@
             background: #f8fafc;
             border-radius: 12px;
             border: 2px dashed #e2e8f0;
+            word-break: keep-all;
         }
         .empty-icon { font-size: 40px; margin-bottom: 20px; }
         
@@ -430,6 +432,7 @@
                 margin-bottom: 15px;
                 line-height: 1.4;
                 color: #1e293b;
+                word-break: keep-all;
             }
             
             .card-meta {
@@ -518,16 +521,87 @@
             
             /* Utility */
             .hidden { display: none; }
+
+            /* [NEW] Responsive Design */
+            @media (max-width: 1024px) {
+                .sidebar { width: 220px; }
+                .main-content { padding: 30px; }
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    flex-direction: column;
+                    height: auto;
+                    overflow: auto;
+                }
+                .sidebar {
+                    width: 100%;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                    padding: 15px 20px;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .logo { 
+                    margin-bottom: 10px; 
+                    justify-content: center;
+                }
+                .menu-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    justify-content: center;
+                }
+                .menu-item {
+                    flex: 1 1 auto;
+                    margin-bottom: 0;
+                    padding: 8px 10px;
+                    font-size: 11px;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+                .main-content {
+                    padding: 15px;
+                    overflow-y: visible;
+                }
+                .today-summary { font-size: 20px; }
+                
+                .card-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                /* Top-1 Mobile */
+                .topic-card-top1 {
+                    padding: 16px;
+                    margin-bottom: 24px;
+                }
+                .top1-title { font-size: 20px; }
+                
+                /* Fix for narrow columns */
+                .empty-state-card h3 {
+                    word-break: keep-all;
+                    font-size: 18px;
+                    margin: 0 10px;
+                }
+                
+                .modal-content {
+                    width: 95%;
+                    padding: 20px;
+                }
+            }
         </style>
     </head>
     <body>
         <div class="sidebar">
             <div class="logo">🔴 HOIN Insight</div>
-            <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
-            <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
-            <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
-            <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
-            <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
+            <div class="menu-container">
+                <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
+                <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
+                <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
+                <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
+                <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
+            </div>
         </div>
         
         <div class="main-content">
@@ -657,71 +731,35 @@
         </div>
         
                 
-        <div class="empty-state-card">
-            <div class="empty-icon">☕️</div>
-            <h3>오늘은 구조적으로 확정된 이슈 시그널이 없습니다.</h3>
-            <p>Scanning for potential triggers...</p>
-        </div>
-        
-                
-        <div class="entity-pool-container">
-            <h3 class="entity-section-header">
-                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Structural Entities)
-            </h3>
-            <div class="entity-grid">
-                
-            <div class="entity-card">
-                <div class="entity-header">
-                    <span class="entity-role role-default">EXECUTOR</span>
-                    <div class="entity-name">Sector Leader A</div>
-                </div>
-                <div class="entity-tags">
-                   <span class="constraint-tag">NARRATIVE</span>
-                </div>
-                <div class="entity-logic">
-                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Sector Leader A은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
-                </div>
-            </div>
-            
-            <div class="entity-card">
-                <div class="entity-header">
-                    <span class="entity-role role-default">EXECUTOR</span>
-                    <div class="entity-name">Infrastructure B</div>
-                </div>
-                <div class="entity-tags">
-                   <span class="constraint-tag">NARRATIVE</span>
-                </div>
-                <div class="entity-logic">
-                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Infrastructure B은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
-                </div>
-            </div>
-            
-            <div class="entity-card">
-                <div class="entity-header">
-                    <span class="entity-role role-default">EXECUTOR</span>
-                    <div class="entity-name">Hedge ETF C</div>
-                </div>
-                <div class="entity-tags">
-                   <span class="constraint-tag">CAPITAL</span>
-                </div>
-                <div class="entity-logic">
-                    1. 이 토픽은 새로운 트렌드의 실행을 요구하는 구조입니다. 2. Hedge ETF C은(는) 이 트렌드를 현실화할 수 있는 실행 주체입니다. 3. 이미 시장 담론(Narrative)에 진입하여 수급의 1차 기착지가 되었습니다. 4. 이 대상을 제외하고는 이 토픽의 현재 진행형을 설명할 수 없습니다.
-                </div>
-            </div>
-            
-            </div>
-            <div class="entity-disclaimer">
-                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
-            </div>
-        </div>
-        
-                
     <div class="today-container">
         <div class="today-header">
             <div class="today-date">01/28</div>
             <div class="today-summary">오늘의 핵심 토픽 <strong>1개</strong></div>
         </div>
         <div class="card-grid">
+            
+            <div class="topic-card top1" onclick="openSignalDetail('STRUCT_20260127_signal_f')" style="border:2px solid #a855f7; background:#faf5ff; margin-bottom:20px; position:relative;">
+                <div class="card-badges">
+                    <div class="card-badge" style="background:#a855f7; color:white;">🟣 오늘의 TOP-1 핵심 (HOIN Signal)</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">STRIKE</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">STRUCTURE_FLOW</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">SINGLE</div>
+                    <div class="card-badge" style="background:#7e22ce; color:white;">🔒 LOCKED</div>
+                </div>
+                <div class="card-title" style="color:#6b21a8; font-size:1.3em; margin-top:10px;">Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.</div>
+                <div class="card-meta" style="margin-top:8px;">
+                    <div style="font-size:14px; color:#4b5563; line-height:1.5;">구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간.</div>
+                </div>
+                <div style="margin-top:12px; padding:10px; background:rgba(168, 85, 247, 0.05); border-radius:6px; border-left:4px solid #a855f7;">
+                    <div style="font-size:12px; color:#9333ea; font-weight:bold; margin-bottom:4px;">⚡ WHY NOW</div>
+                    <div style="font-size:13px; color:#1e293b;">[Mechanism Activation] Detected Pattern</div>
+                    <div style="font-size:11px; color:#7e22ce; margin-top:4px;">📍 Evidence: signal_fact_signal_test</div>
+                </div>
+                
+                <div style="margin-top:10px; text-align:right;">
+                    <a href="topics/items/2026-01-27__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none;">[원문 JSON 보기]</a>
+                </div>
+            </div>
             
         <div class="topic-card" onclick="openSignalDetail('STRUCT_20260128_signal_f')">
             <div class="card-badges">
