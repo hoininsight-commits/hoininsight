@@ -11,26 +11,50 @@ class TopicCardRenderer:
     def render_top1_card(data: Dict[str, Any]) -> str:
         """
         Renders the dominant Top-1 Topic Card.
+        Supports both Step 66 (Engine Object) and Step 85 (Static JSON) schemas.
         """
-        if not data or not data.get('top_signal'):
+        if not data:
             return TopicCardRenderer._render_empty_state()
 
-        signal = data['top_signal']
+        # Step 85 Schema detection
+        is_static = "badges" in data and "topic_id" in data
         
-        # Data Extraction
-        title = signal.get('title', 'Unknown Signal')
-        why_now = signal.get('why_now', '')
-        trigger_type = signal.get('trigger', 'Unknown')
-        intensity = signal.get('intensity', 'N/A')
-        rhythm = signal.get('rhythm', 'N/A')
-        pressure_type = signal.get('pressure_type', 'Structural')
-        esc_count = signal.get('escalation_count', 0)
-        scope_hint = signal.get('scope_hint', 'Single-Sector')
-        date = data.get('date', 'Today')
+        if is_static:
+            signal = data
+            title = signal.get('title', 'Unknown Topic')
+            # Handle summary as list
+            summary_list = signal.get('summary', [])
+            summary_text = "<br> ".join(summary_list)
+            
+            wn = signal.get('why_now', {})
+            why_now_text = f"[{wn.get('type', 'N/A')}] {wn.get('anchor', '')}"
+            trigger_type = wn.get('type', 'Structural')
+            
+            badges = signal.get('badges', {})
+            intensity = badges.get('intensity', 'FLASH')
+            rhythm = badges.get('rhythm', 'N/A')
+            pressure_type = "Structural"
+            esc_count = 0 # Static JSON doesn't track escalation in same way yet
+            scope_hint = badges.get('scope', 'Global')
+            date = signal.get('date', 'Today')
+        else:
+            # Step 66 Schema
+            if not data.get('top_signal'):
+                return TopicCardRenderer._render_empty_state()
+            signal = data['top_signal']
+            title = signal.get('title', 'Unknown Signal')
+            why_now_text = signal.get('why_now', '')
+            trigger_type = signal.get('trigger', 'Unknown')
+            intensity = signal.get('intensity', 'N/A')
+            rhythm = signal.get('rhythm', 'N/A')
+            pressure_type = signal.get('pressure_type', 'Structural')
+            esc_count = signal.get('escalation_count', 0)
+            scope_hint = signal.get('scope_hint', 'Single-Sector')
+            date = data.get('date', 'Today')
         
         # Badge Logic
         whynow_badge_cls = "badge-whynow-default"
-        if "Escalated" in why_now or esc_count > 0: whynow_badge_cls = "badge-whynow-escalated"
+        if "Escalated" in why_now_text or esc_count > 0: whynow_badge_cls = "badge-whynow-escalated"
         elif "SmartMoney" in trigger_type: whynow_badge_cls = "badge-whynow-smartmoney"
         
         # Intensity Visuals
@@ -60,7 +84,7 @@ class TopicCardRenderer:
                 <div class="top1-context">
                     <div class="context-item">
                         <span class="context-label">WHY_NOW</span>
-                        <span class="context-text">{why_now}</span>
+                        <span class="context-text">{why_now_text}</span>
                     </div>
                     <div class="context-item">
                         <span class="context-label">RHYTHM</span>
@@ -71,6 +95,7 @@ class TopicCardRenderer:
                 <div class="top1-footer">
                     {esc_html}
                     <button class="action-btn" onclick="openSignalDetail('top1_current')">🔍 분석 원문 보기</button>
+                    <a href="topics/items/{date}__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none; margin-left: 10px;">[원문 JSON 보기]</a>
                 </div>
             </div>
         </div>

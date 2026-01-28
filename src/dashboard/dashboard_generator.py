@@ -915,7 +915,6 @@ def generate_dashboard(base_dir: Path):
     # [NEW] Entity Mapping logic moved down
     # entity_pool moved after final_card load
         
-    top1_card_html = TopicCardRenderer.render_top1_card(today_json)
     snapshot_list_html = TopicCardRenderer.render_snapshot_list(history_json)
     topic_card_css = TopicCardRenderer.get_css()
     
@@ -1079,7 +1078,8 @@ def generate_dashboard(base_dir: Path):
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
-    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, top1_data)
+    top1_card_html = TopicCardRenderer.render_top1_card(top1_data)
+    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, None) # Pass None to hide bottom duplicate
     
     # [G] Generate Candidate View HTML
     candidate_view_html = _generate_candidate_view(candidates_data)
