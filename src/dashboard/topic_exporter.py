@@ -3,6 +3,7 @@ import logging
 from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any
+from src.ops.human_interpretation_layer import HumanInterpretationLayer
 
 class TopicExporter:
     """
@@ -101,6 +102,7 @@ class TopicExporter:
             "body_md": self._generate_body_md(narrative_data),
             "source_refs": [str(top1_path.relative_to(self.base_dir))]
         }
+        topic_card["human_interpretation"] = HumanInterpretationLayer.interpret(topic_card) # Step 89
 
         # Save Item
         item_filename = f"{ymd}__top1.json"

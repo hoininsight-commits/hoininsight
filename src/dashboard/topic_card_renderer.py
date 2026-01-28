@@ -19,6 +19,7 @@ class TopicCardRenderer:
         # Step 85 Schema detection
         is_static = "badges" in data and "topic_id" in data
         
+        human_interpretation = "" # Initialize
         if is_static:
             signal = data
             title = signal.get('title', 'Unknown Topic')
@@ -80,6 +81,11 @@ class TopicCardRenderer:
                 </div>
                 
                 <h1 class="top1-title">{title}</h1>
+
+                <div class="top1-interpretation" style="margin: 15px 0; padding: 15px; background: #ffffff; border: 1px solid #e9d5ff; border-radius: 8px; border-left: 5px solid #a855f7;">
+                    <div style="font-size: 13px; color: #7e22ce; font-weight: bold; margin-bottom: 8px;">💡 어째서 지금 이 토픽인가</div>
+                    <div style="font-size: 14px; color: #1e293b; line-height: 1.6; white-space: pre-line;">{data.get('human_interpretation', '엔진이 구조적 유효성을 분석 중입니다.')}</div>
+                </div>
                 
                 <div class="top1-context">
                     <div class="context-item">
