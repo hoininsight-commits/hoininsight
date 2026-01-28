@@ -17,10 +17,10 @@ if __name__ == "__main__":
         sys.path.insert(0, str(root_path))
 # [x] Analyze `src/dashboard/dashboard_generator.py` for section sequence and scanning banner CSS <!-- id: 0 -->
 # [x] Create Implementation Plan <!-- id: 1 -->
-# [/] Implement Layout Reordering & Banner Shrinkage <!-- id: 2 -->
-#     [x] Move Top-1 Card to the very top <!-- id: 3 -->
-#     [x] Shrink "Scanning" banner to a thin status bar <!-- id: 4 -->
-#     [x] Reorder Entity/Decision/Snapshot sections <!-- id: 5 -->
+# [/] Implement Layout Reordering & Banner- [x] STEP 90-A: Layout Fix <!-- id: 0 -->
+#     - [x] Reorder Top-1 Card: Title -> Interpretation -> Divider -> Badges <!-- id: 1 -->
+#     - [x] Remove redundant bottom "핵심 토픽" block (Option A) <!-- id: 2 -->
+#     - [x] Maintain Decision/Entity layers below Top-1 <!-- id: 3 -->
 from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
@@ -1594,7 +1594,6 @@ def generate_dashboard(base_dir: Path):
                 {entity_pool_html}
                 {memory_delta_html}
                 {snapshot_list_html}
-                {today_view_html}
             </div>
             <div id="tab-candidates" class="hidden">
                 {candidate_view_html}

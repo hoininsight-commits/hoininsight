@@ -73,28 +73,30 @@ class TopicCardRenderer:
             <div class="top1-header-label">🟣 오늘의 구조적 핵심 이슈 (Top-1)</div>
             
             <div class="top1-body">
-                <div class="top1-meta-row">
-                    <span class="badge-whynow {whynow_badge_cls}">{trigger_type}</span>
-                    <span class="badge-pressure">{pressure_type}</span>
-                    <span class="badge-scope">{scope_hint}</span>
-                    <span class="meta-date">{date}</span>
-                </div>
-                
-                <h1 class="top1-title">{title}</h1>
+                <h1 class="top1-title" style="margin-bottom: 20px;">{title}</h1>
 
-                <div class="top1-interpretation" style="margin: 15px 0; padding: 15px; background: #ffffff; border: 1px solid #e9d5ff; border-radius: 8px; border-left: 5px solid #a855f7;">
-                    <div style="font-size: 13px; color: #7e22ce; font-weight: bold; margin-bottom: 8px;">💡 어째서 지금 이 토픽인가</div>
-                    <div style="font-size: 14px; color: #1e293b; line-height: 1.6; white-space: pre-line;">{data.get('human_interpretation', '엔진이 구조적 유효성을 분석 중입니다.')}</div>
+                <!-- [STEP 90-A] Human Interpretation Block (Judgment First) -->
+                <div class="top1-interpretation" style="margin: 0 0 20px 0; padding: 0; background: transparent;">
+                    <div style="font-size: 15px; color: #1e293b; line-height: 1.8; white-space: pre-line; font-weight: 500;">
+                        {data.get('human_interpretation', '엔진이 구조적 유효성을 분석 중입니다.').replace('왜 지금 이 토픽인가', '').strip()}
+                    </div>
+                </div>
+
+                <div style="height: 1px; background: #e2e8f0; margin-bottom: 20px;"></div>
+
+                <!-- [STEP 90-A] Cognitive Badges (Evidence Layer) -->
+                <div class="top1-meta-row" style="margin-bottom: 20px;">
+                    <span class="badge-whynow {whynow_badge_cls}" style="font-size: 11px;">WHY NOW: {trigger_type}</span>
+                    <span class="badge-pressure" style="font-size: 11px;">PRESSURE: {pressure_type}</span>
+                    <span class="badge-scope" style="font-size: 11px;">SCOPE: {scope_hint}</span>
+                    <span class="badge-intensity" style="font-size: 11px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">INTENSITY: {intensity} {intensity_icon}</span>
+                    <span class="meta-date">{date}</span>
                 </div>
                 
                 <div class="top1-context">
                     <div class="context-item">
-                        <span class="context-label">WHY_NOW</span>
-                        <span class="context-text">{why_now_text}</span>
-                    </div>
-                    <div class="context-item">
-                        <span class="context-label">RHYTHM</span>
-                        <span class="context-text"><strong>{intensity} {intensity_icon}</strong> // {rhythm}</span>
+                        <span class="context-label">STRUCTURAL_RHYTHM</span>
+                        <span class="context-text">{rhythm}</span>
                     </div>
                 </div>
                 
