@@ -304,6 +304,33 @@ def _generate_archive_view(cards: List[Dict]) -> str:
     """
     return html
 
+def _get_static_top1(base_dir: Path, target_ymd: str) -> Optional[Dict]:
+    """Step 85: Load Top-1 data from static JSON."""
+    index_path = base_dir / "docs/dashboard/topics/index.json"
+    if not index_path.exists():
+        return None
+    
+    try:
+        index = json.loads(index_path.read_text(encoding='utf-8'))
+        item_path = None
+        # Priority 1: Exact date
+        for entry in index:
+            if entry["date"] == target_ymd:
+                item_path = entry["path"]
+                break
+        
+        # Priority 2: Latest if not today
+        if not item_path and index:
+            item_path = index[0]["path"]
+            
+        if item_path:
+            full_path = base_dir / "docs/dashboard" / item_path
+            if full_path.exists():
+                return json.loads(full_path.read_text(encoding='utf-8'))
+    except Exception as e:
+        print(f"Error loading static top1: {e}", file=sys.stderr)
+    return None
+
 def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
     """Find the latest date with narrative data, looking back up to max_days_back days.
     
@@ -413,20 +440,63 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
     
     cards_html = ""
     
-    # 0. Structural Top-1 Section (Purple) - THE ONLY THING ABOVE FOLD
+    # 0. Structural Top-1 Section (Purple)
     if top1_data:
         t1 = top1_data
-        orig = t1.get('original_card', {})
         
-        # Strict Validation for Top-1
-        if orig.get("structure_type") in ["STRUCTURAL_DAMAGE", "STRUCTURAL_REDEFINITION"]:
-            uid = orig.get('topic_id', 'unknown_top1')
+        # Detect Schema: Step 85 Static JSON vs Step 66 Engine Object
+        is_static = "badges" in t1 and isinstance(t1.get("why_now"), dict)
+        
+        if is_static:
+            uid = t1.get('topic_id', 'unknown_top1')
             title = t1.get('title', 'Untitled')
+            summary = "<br> ".join(t1.get('summary', []))
             
-            # Format Title Korean (Step 69)
-            f = IssueSignalFormatter.format_card(orig)
-            title = f.get('title_display', title)
+            wn = t1.get('why_now', {})
+            wn_display = f"[{wn.get('type')}] {wn.get('anchor')}"
+            evidence = ", ".join(wn.get('evidence', []))
             
+            b = t1.get('badges', {})
+            intensity = b.get('intensity', 'N/A')
+            rhythm = b.get('rhythm', 'N/A')
+            scope = b.get('scope', 'N/A')
+            lock_icon = "🔒" if b.get('lock') else ""
+            
+            # Entities summary
+            entities_html = ""
+            if t1.get('entities'):
+                e_list = [e.get('name') for e in t1['entities'][:3]]
+                entities_html = f"<div class='card-entities' style='font-size:11px; color:#6b7280; margin-top:5px;'>🎯 Entities: {', '.join(e_list)}</div>"
+
+            card_html = f"""
+            <div class="topic-card top1" onclick="openSignalDetail('{uid}')" style="border:2px solid #a855f7; background:#faf5ff; margin-bottom:20px; position:relative;">
+                <div class="card-badges">
+                    <div class="card-badge" style="background:#a855f7; color:white;">🟣 오늘의 TOP-1 핵심 (HOIN Signal)</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">{intensity}</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">{rhythm}</div>
+                    <div class="card-badge" style="background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe;">{scope}</div>
+                    <div class="card-badge" style="background:#7e22ce; color:white;">{lock_icon} LOCKED</div>
+                </div>
+                <div class="card-title" style="color:#6b21a8; font-size:1.3em; margin-top:10px;">{title}</div>
+                <div class="card-meta" style="margin-top:8px;">
+                    <div style="font-size:14px; color:#4b5563; line-height:1.5;">{summary}</div>
+                </div>
+                <div style="margin-top:12px; padding:10px; background:rgba(168, 85, 247, 0.05); border-radius:6px; border-left:4px solid #a855f7;">
+                    <div style="font-size:12px; color:#9333ea; font-weight:bold; margin-bottom:4px;">⚡ WHY NOW</div>
+                    <div style="font-size:13px; color:#1e293b;">{wn_display}</div>
+                    <div style="font-size:11px; color:#7e22ce; margin-top:4px;">📍 Evidence: {evidence}</div>
+                </div>
+                {entities_html}
+                <div style="margin-top:10px; text-align:right;">
+                    <a href="topics/items/{t1.get('date')}__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none;">[원문 JSON 보기]</a>
+                </div>
+            </div>
+            """
+            cards_html += card_html
+        else:
+            # Fallback to Step 66 logic
+            uid = t1.get('topic_id', 'unknown_top1')
+            title = t1.get('title', 'Untitled')
             summary = t1.get('one_line_summary', '')
             
             card_html = f"""
@@ -968,11 +1038,20 @@ def generate_dashboard(base_dir: Path):
                  top1_data = t1["top1_topics"][0]
                  
         # Load Narrative (Step 67)
-        narrative_path = base_dir / "data" / "ops" / "issue_signal_narrative_today.json"
+        narrative_path = base_dir / "data/ops/issue_signal_narrative_today.json"
         if narrative_path.exists():
             nd = json.loads(narrative_path.read_text(encoding="utf-8"))
             narrative_data = nd.get("narrative")
-    except: pass
+            
+        # [Step 85] Override Top-1 with Static JSON if available
+        static_top1 = _get_static_top1(base_dir, ymd)
+        if static_top1:
+            top1_data = static_top1
+            import sys # Added for sys.stderr
+            print(f"[Step 85] Using static Top-1 from {static_top1.get('date')}", file=sys.stderr)
+    except Exception as e:
+        import sys # Added for sys.stderr
+        print(f"Error loading top1/narrative: {e}", file=sys.stderr)
     
     # [F] Topic Candidates (Phase 39)
     candidates_data = {}

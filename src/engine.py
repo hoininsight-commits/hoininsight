@@ -519,8 +519,18 @@ def main(target_categories: list[str] = None):
                     narrator = EconomicHunterNarrator(Path("."))
                     narrator.run()
                     details_lines.append("economic_hunter_narrator: ok (Standard)")
-                except Exception as e:
+            except Exception as e:
                     print(f"narrator_fallback: fail ({e})", file=sys.stderr)
+
+            # [NEW] Step 85: Topic Exporter (Dashboard Surface)
+            try:
+                from src.dashboard.topic_exporter import TopicExporter
+                exporter = TopicExporter(Path("."))
+                exporter.run(run_ymd)
+                details_lines.append("topic_exporter: ok")
+                print("topic_exporter: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"topic_exporter: fail ({e})", file=sys.stderr)
 
             dd_md = dd.render_markdown(dd_data)
             
