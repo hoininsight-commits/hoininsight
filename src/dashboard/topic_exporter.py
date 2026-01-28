@@ -6,6 +6,7 @@ from typing import List, Dict, Any
 from src.ops.human_interpretation_layer import HumanInterpretationLayer
 from src.ops.judgment_continuity_engine import JudgmentContinuityEngine # Step 91-92
 from src.ops.decision_snapshot_engine import DecisionSnapshotEngine # Step 95
+from src.ops.action_posture_engine import ActionPostureEngine # Step 96
 
 class TopicExporter:
     """
@@ -115,6 +116,9 @@ class TopicExporter:
 
         # Step 95: Decision Speed Layer (10-second Snapshot)
         topic_card["decision_snapshot"] = DecisionSnapshotEngine.generate(topic_card)
+
+        # Step 96: Action Posture Layer
+        topic_card["action_posture"] = ActionPostureEngine.determine(topic_card)
 
         # Save Item
         item_filename = f"{ymd}__top1.json"

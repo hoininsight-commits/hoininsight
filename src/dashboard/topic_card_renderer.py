@@ -75,6 +75,9 @@ class TopicCardRenderer:
             <div class="top1-body">
                 <!-- [STEP 95] Decision Snapshot Block (10-second Summary) -->
                 {TopicCardRenderer.render_decision_snapshot(data)}
+
+                <!-- [STEP 96] Action Posture Layer -->
+                {TopicCardRenderer.render_action_posture(data)}
                 
                 <!-- [STEP 93] Rewritten Judgment Status Line (Human Language) -->
                 <div class="judgment-status-line" style="font-size: 15px; font-weight: bold; color: #7e22ce; margin-bottom: 8px;">
@@ -732,6 +735,33 @@ class TopicCardRenderer:
                         • {caution}
                     </div>
                 </div>
+            </div>
+        </div>
+        """
+
+    @staticmethod
+    def render_action_posture(data: Dict[str, Any]) -> str:
+        """
+        Step 96: Action Posture Layer.
+        Renders the daily operator stance (OBSERVE, MONITOR, PREPARE, STAND_BY).
+        """
+        posture_data = data.get("action_posture", {})
+        headline = posture_data.get("headline")
+        description = posture_data.get("description", "")
+        
+        if not headline:
+            return ""
+
+        return f"""
+        <div class="action-posture-block" style="background: #f8fafc; border-left: 4px solid #94a3b8; padding: 12px 16px; margin-bottom: 20px;">
+            <div style="font-size: 14px; font-weight: bold; color: #475569; margin-bottom: 6px;">
+                {headline}
+            </div>
+            <div style="font-size: 13.5px; color: #64748b; line-height: 1.5; margin-bottom: 8px; white-space: pre-line;">
+                {description}
+            </div>
+            <div style="font-size: 11px; color: #cbd5e1; font-style: italic;">
+                * 본 정보는 투자 조언이나 행동 지시가 아니며, 구조적 상황 인식을 돕기 위한 판단 보조 정보입니다.
             </div>
         </div>
         """
