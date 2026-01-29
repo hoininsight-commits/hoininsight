@@ -10,6 +10,7 @@ In addition to the V1 fields (`topic_id`, `title`, `status`, etc.), V2 adds:
 - **forced_capex**: Data points regarding committed capital.
 - **bottleneck**: Description of the structural bottleneck identified.
 - **proof_packs**: A list of `ProofPack` objects, mapped to the `tickers` list.
+- **trigger_quote**: An object containing verified quote proof for the entire signal.
 
 ## 3. ProofPack Object
 ```json
@@ -40,5 +41,18 @@ In addition to the V1 fields (`topic_id`, `title`, `status`, etc.), V2 adds:
 }
 ```
 
-## 4. Backward Compatibility
+## 4. TriggerQuote Object
+```json
+{
+  "excerpt": "Effective immediately, all exports... are suspended.",
+  "source_kind": "GOV",
+  "source_ref": "https://www.whitehouse.gov/briefing-room/",
+  "source_date": "2026-01-29",
+  "fact_type": "POLICY_EXCERPT",
+  "verification_status": "PASS",
+  "reason_code": "PASS"
+}
+```
+
+## 5. Backward Compatibility
 Systems reading V1 cards will find all original fields in their expected locations. V2 fields are new top-level keys or nested objects that V1 readers can safely ignore.
