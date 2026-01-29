@@ -1,10 +1,41 @@
 {
   "date": "2026-01-27",
-  "top_signal": {
-    "title": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
-    "trigger": "Mechanism Activation",
-    "intensity": "FLASH",
-    "rhythm": "STRUCTURE_FLOW"
+  "meta": {
+    "generated_at": "2026-01-29T14:26:15.681327Z",
+    "version": "v1.0"
   },
-  "entities": []
+  "top_signal": {
+    "title": "중앙은행 신뢰 위기와 금리 경로",
+    "trigger": "",
+    "intensity": "DEEP_HUNT",
+    "rhythm": "",
+    "pressure_type": ""
+  },
+  "entities": [
+    {
+      "name": "Sector Leader A",
+      "role": "STRUCTURAL VICTIM",
+      "state": "PRESSURE",
+      "constraints": [
+        "NARRATIVE_LOCKED"
+      ]
+    },
+    {
+      "name": "Infrastructure B",
+      "role": "STRUCTURAL VICTIM",
+      "state": "PRESSURE",
+      "constraints": [
+        "NARRATIVE_LOCKED"
+      ]
+    },
+    {
+      "name": "Hedge ETF C",
+      "role": "STRUCTURAL VICTIM",
+      "state": "PRESSURE",
+      "constraints": [
+        "CAPITAL_LOCKED"
+      ]
+    }
+  ],
+  "memory_hash": "a26ee71d943946531fb8936551a011ba5a50ed197362fa14266bb74d00d1bea2"
 }
