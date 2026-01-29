@@ -1,0 +1,257 @@
+{
+  "date": "2026-01-29",
+  "engine_status": "SUCCESS",
+  "counts": {
+    "TRUST_LOCKED": 5,
+    "TRIGGER": 0,
+    "PRE_TRIGGER": 0,
+    "HOLD": 0,
+    "REJECT": 0,
+    "SILENT_DROP": 0
+  },
+  "top_cards": [
+    {
+      "topic_id": "TEST-LOCKED-001",
+      "title": "Verification Success",
+      "status": "TRUST_LOCKED",
+      "one_liner": "Dashboard logic verified with simulated data.",
+      "trigger_type": "STRUCTURAL",
+      "actor": "BOT",
+      "must_item": "LOGIC",
+      "tickers": [
+        {
+          "ticker": "TEST",
+          "role": "OWNER"
+        }
+      ],
+      "kill_switch": "If tests fail.",
+      "reason": "-",
+      "signature": null
+    }
+  ],
+  "watchlist": [],
+  "hold_queue": [],
+  "reject_logs": [],
+  "timeline": [
+    {
+      "date": "2026-01-16",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-17",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-18",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-19",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-20",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-21",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-22",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-23",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-24",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-25",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-26",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-27",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-28",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-29",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    }
+  ],
+  "hoin_evidence": [
+    {
+      "title": "[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
+      "summary": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.62배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-01-29",
+      "source_file": "data/decision/2026/01/29/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
+      "summary": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.25배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-01-29",
+      "source_file": "data/decision/2026/01/29/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)",
+      "summary": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.43 >= 2.0. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-01-29",
+      "source_file": "data/decision/2026/01/29/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+      "summary": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-01-29",
+      "source_file": "data/decision/2026/01/29/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+      "summary": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-01-29",
+      "source_file": "data/decision/2026/01/29/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "Snapshot: Sector Leader A",
+      "summary": "OBSERVE",
+      "date": "2026-01-29",
+      "source_file": "data/snapshots/memory/2026-01-29.json",
+      "bullets": [
+        "Score: 0",
+        "Trend: -"
+      ],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "Snapshot: Infrastructure B",
+      "summary": "OBSERVE",
+      "date": "2026-01-29",
+      "source_file": "data/snapshots/memory/2026-01-29.json",
+      "bullets": [
+        "Score: 0",
+        "Trend: -"
+      ],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "Snapshot: Hedge ETF C",
+      "summary": "OBSERVE",
+      "date": "2026-01-29",
+      "source_file": "data/snapshots/memory/2026-01-29.json",
+      "bullets": [
+        "Score: 0",
+        "Trend: -"
+      ],
+      "tickers": [],
+      "topic_key": null
+    }
+  ],
+  "link_view": [
+    {
+      "issue_card": {
+        "topic_id": "TEST-LOCKED-001",
+        "title": "Verification Success",
+        "status": "TRUST_LOCKED",
+        "one_liner": "Dashboard logic verified with simulated data.",
+        "trigger_type": "STRUCTURAL",
+        "actor": "BOT",
+        "must_item": "LOGIC",
+        "tickers": [
+          {
+            "ticker": "TEST",
+            "role": "OWNER"
+          }
+        ],
+        "kill_switch": "If tests fail.",
+        "reason": "-",
+        "signature": null
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    }
+  ]
+}
