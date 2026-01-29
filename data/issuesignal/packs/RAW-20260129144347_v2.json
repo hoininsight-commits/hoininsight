@@ -1,0 +1,49 @@
+{
+  "topic_id": "RAW-20260129144347",
+  "title": "Export Control Impact",
+  "status": "TRUST_LOCKED",
+  "one_liner": "Export controls freeze chip supply chain.",
+  "trigger_type": "GOV_ACTION",
+  "actor": "GOV",
+  "must_item": "EUV_STEPPER",
+  "tickers": [
+    {
+      "ticker": "ASML",
+      "role": "OWNER",
+      "revenue_focus": 0.95
+    }
+  ],
+  "kill_switch": "Any structural change to export control decree.",
+  "reason": "-",
+  "signature": "a2ce7fb4ef8805f2",
+  "authority_sentence": "Export controls freeze chip supply chain.",
+  "forced_capex": "-",
+  "bottleneck": "-",
+  "proof_packs": [
+    {
+      "ticker": "ASML",
+      "company_name": "ASML",
+      "bottleneck_role": "Verified Bottleneck Owner",
+      "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
+      "hard_facts": [
+        {
+          "fact_type": "CONTRACT",
+          "fact_claim": "Signed delivery agreement with Intel.",
+          "source_kind": "OFFICIAL_PRESS",
+          "source_ref": "press_asml_001.pdf",
+          "source_date": "-",
+          "independence_key": "asml_intel_deal"
+        },
+        {
+          "fact_type": "CAPEX",
+          "fact_claim": "Samsung 2026 Capex allocated to EUV.",
+          "source_kind": "EARNINGS_CALL",
+          "source_ref": "samsung_q4_call.json",
+          "source_date": "-",
+          "independence_key": "samsung_earnings"
+        }
+      ],
+      "proof_status": "PROOF_OK"
+    }
+  ]
+}

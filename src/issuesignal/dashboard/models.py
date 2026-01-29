@@ -14,6 +14,11 @@ class DecisionCard:
     kill_switch: str = "-"
     reason: str = "-"
     signature: Optional[str] = None
+    # IS-30 Additions
+    authority_sentence: str = "-"
+    forced_capex: str = "-"
+    bottleneck: str = "-"
+    proof_packs: List['ProofPack'] = field(default_factory=list)
 
 @dataclass
 class RejectLog:
@@ -21,6 +26,24 @@ class RejectLog:
     topic_id: str
     reason_code: str
     fact_text: str = "-"
+
+@dataclass
+class HardFact:
+    fact_type: str # CONTRACT, REGULATION, etc.
+    fact_claim: str
+    source_kind: str # GOV, FILING, etc.
+    source_ref: str
+    source_date: str = "-"
+    independence_key: str = "-"
+
+@dataclass
+class ProofPack:
+    ticker: str
+    company_name: str
+    bottleneck_role: str
+    why_irreplaceable_now: str
+    hard_facts: List[HardFact] = field(default_factory=list)
+    proof_status: str = "PROOF_FAIL" # PROOF_OK, PROOF_FAIL
 
 @dataclass
 class HoinEvidenceItem:

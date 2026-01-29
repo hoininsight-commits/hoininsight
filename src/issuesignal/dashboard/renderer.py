@@ -122,6 +122,7 @@ class DashboardRenderer:
                 <option value="REJECT">REJECT</option>
             </select>
             <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Linked Evidence Only</label>
+            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Proof Only</label>
         </div>
         {self._render_link_view(summary.link_view)}
     </div>
@@ -142,15 +143,18 @@ class DashboardRenderer:
         function filterLinkView() {{
             const status = document.getElementById('statusFilter').value;
             const evOnly = document.getElementById('evOnly').checked;
+            const proofOnly = document.getElementById('proofOnly').checked;
             const rows = document.querySelectorAll('.link-row');
             
             rows.forEach(row => {{
                 const rStatus = row.getAttribute('data-status');
                 const hasEv = row.getAttribute('data-has-ev') === 'true';
+                const hasProof = row.getAttribute('data-has-proof') === 'true';
                 let visible = true;
                 
                 if (status !== 'ALL' && rStatus !== status) visible = false;
                 if (evOnly && !hasEv) visible = false;
+                if (proofOnly && !hasProof) visible = false;
                 
                 row.style.display = visible ? 'table-row' : 'none';
                 if (!visible) {{
@@ -271,9 +275,10 @@ class DashboardRenderer:
             c = r.issue_card
             status_class = "status-matched" if r.link_status == "MATCHED" else "status-no-ev"
             has_ev = 'true' if r.linked_evidence else 'false'
+            has_proof = 'true' if any(p.proof_status == "PROOF_OK" for p in c.proof_packs) else 'false'
             
             html_rows.append(f"""
-            <tr class="link-row" id="row-{idx}" data-status="{c.status}" data-has-ev="{has_ev}">
+            <tr class="link-row" id="row-{idx}" data-status="{c.status}" data-has-ev="{has_ev}" data-has-proof="{has_proof}">
                 <td><span class="badge-status {status_class}">{r.link_status}</span></td>
                 <td><b>{c.title}</b><br><small>{c.topic_id}</small></td>
                 <td>{c.status}</td>
@@ -311,19 +316,54 @@ class DashboardRenderer:
         """
 
     def _render_drawer_content(self, row: UnifiedLinkRow) -> str:
-        if not row.linked_evidence:
-            return f"<div style='color:var(--text-sub)'>NO_HOIN_EVIDENCE matched for this card ({row.issue_card.topic_id}).</div>"
-        
         items = []
-        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald);'>MATCH REASON: {row.match_reason}</div>")
-        for ev in row.linked_evidence:
-            bullets = "".join([f"<li>{b}</li>" for b in ev.bullets])
-            items.append(f"""
-            <div class="evidence-item">
-                <div style="font-weight:bold; font-size:1em;">{ev.title}</div>
-                <div style="font-size:0.85em; color:var(--text-sub); margin:5px 0;">{ev.summary}</div>
-                <ul style="font-size:0.8em; margin:8px 0;">{bullets}</ul>
-                <div style="font-size:0.7em; color:var(--blue);">REF: {ev.source_file}</div>
-            </div>
-            """)
+        c = row.issue_card
+        
+        # 1. Hoin Evidence Section
+        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div>")
+        if not row.linked_evidence:
+            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card ({c.topic_id}).</div>")
+        else:
+            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); font-size:0.85em;'>MATCH REASON: {row.match_reason}</div>")
+            for ev in row.linked_evidence:
+                bullets = "".join([f"<li>{b}</li>" for b in ev.bullets])
+                items.append(f"""
+                <div class="evidence-item" style="margin-bottom:10px;">
+                    <div style="font-weight:bold; font-size:0.95em;">{ev.title}</div>
+                    <div style="font-size:0.85em; color:var(--text-sub); margin:5px 0;">{ev.summary}</div>
+                    <ul style="font-size:0.8em; margin:8px 0; padding-left:20px;">{bullets}</ul>
+                    <div style="font-size:0.7em; color:var(--blue);">REF: {ev.source_file}</div>
+                </div>
+                """)
+
+        # 2. Proof Pack Section (IS-30)
+        items.append(f"<div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>")
+        if not c.proof_packs:
+            items.append(f"<div style='color:var(--text-sub)'>No atomic proof packs generated.</div>")
+        else:
+            for p in c.proof_packs:
+                f_items = []
+                for f in p.hard_facts:
+                    f_items.append(f"""
+                    <li style="margin-bottom:8px;">
+                        <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">{f.fact_type}</span>
+                        <span style="font-size:0.85em;">{f.fact_claim}</span>
+                        <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
+                            SOURCE: <b>{f.source_kind}</b> ({f.source_date}) | REF: <code>{f.source_ref}</code>
+                        </div>
+                    </li>
+                    """)
+                
+                p_status_class = "status-matched" if p.proof_status == "PROOF_OK" else "status-no-ev"
+                items.append(f"""
+                <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="font-weight:bold; font-size:1em;">{p.ticker}: {p.company_name}</div>
+                        <span class="badge-status {p_status_class}">{p.proof_status}</span>
+                    </div>
+                    <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"{p.why_irreplaceable_now}"</div>
+                    <ul style="margin:0; padding-left:15px; color:#374151;">{''.join(f_items)}</ul>
+                </div>
+                """)
+        
         return "".join(items)

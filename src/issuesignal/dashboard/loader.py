@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict, Any
-from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow
+from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow, ProofPack, HardFact
 from datetime import datetime, timedelta
 
 class DashboardLoader:
@@ -66,7 +66,7 @@ class DashboardLoader:
     def _load_recent_cards(self) -> List[DecisionCard]:
         cards = []
         # Look in data/decision/final_decision_cards/
-        card_dir = self.base_dir / "data" / "decision" / "final_decision_cards"
+        card_dir = self.base_dir / "data" / "issuesignal" / "packs"
         if card_dir.exists():
             for f in card_dir.glob("*.json"):
                 try:
@@ -82,7 +82,18 @@ class DashboardLoader:
                             must_item=data.get("must_item", "-"),
                             tickers=data.get("tickers", []),
                             kill_switch=data.get("kill_switch", "-"),
-                            signature=data.get("signature")
+                            signature=data.get("signature"),
+                            authority_sentence=data.get("authority_sentence", "-"),
+                            forced_capex=data.get("forced_capex", "-"),
+                            bottleneck=data.get("bottleneck", "-"),
+                            proof_packs=[ProofPack(
+                                ticker=p.get("ticker", ""),
+                                company_name=p.get("company_name", ""),
+                                bottleneck_role=p.get("bottleneck_role", ""),
+                                why_irreplaceable_now=p.get("why_irreplaceable_now", ""),
+                                proof_status=p.get("proof_status", "PROOF_FAIL"),
+                                hard_facts=[HardFact(**f) for f in p.get("hard_facts", [])]
+                            ) for p in data.get("proof_packs", [])]
                         ))
                 except: continue
         return cards

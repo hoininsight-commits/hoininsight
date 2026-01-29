@@ -12,6 +12,8 @@ from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
+from src.issuesignal.proof_pack import ProofPackEngine
+from src.issuesignal.dashboard.models import DecisionCard, ProofPack
 from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
 def main():
@@ -113,9 +115,64 @@ def main():
 
         print(f"TRUST_LOCKED (Signature: {signature})")
 
-        # 8. Content Generation
+        # 8. Proof Pack Enforcement (IS-30)
+        # Convert dict to model first for the engine
+        decision_card_model = DecisionCard(
+            topic_id=issue_id,
+            title="Export Control Impact",
+            status=trust_state,
+            one_liner=pack_data["one_liner"],
+            trigger_type="GOV_ACTION",
+            actor=pack_data["actor"],
+            must_item=pack_data["must_item"],
+            tickers=pack_data["tickers"],
+            kill_switch=final_card["kill_switch"],
+            signature=signature,
+            authority_sentence=pack_data.get("one_liner", "-")
+        )
+        
+        # Simulated artifacts for proof
+        mock_artifacts = [
+            {
+                "tickers": ["ASML"],
+                "hard_facts": [
+                    {
+                        "fact_type": "CONTRACT",
+                        "fact_claim": "Signed delivery agreement with Intel.",
+                        "source_kind": "OFFICIAL_PRESS",
+                        "source_ref": "press_asml_001.pdf",
+                        "independence_key": "asml_intel_deal"
+                    },
+                    {
+                        "fact_type": "CAPEX",
+                        "fact_claim": "Samsung 2026 Capex allocated to EUV.",
+                        "source_kind": "EARNINGS_CALL",
+                        "source_ref": "samsung_q4_call.json",
+                        "independence_key": "samsung_earnings"
+                    }
+                ]
+            }
+        ]
+        
+        proof_engine = ProofPackEngine(base_dir)
+        decision_card_model, proof_logs = proof_engine.process_card(decision_card_model, mock_artifacts)
+        
+        for p_log in proof_logs:
+            print(f"PROOFSIGNAL: {p_log}")
+
+        # 9. Content Generation
+        # Convert back or use model to save (simulation simplified)
         pack_path = generator.generate(pack_data)
+        
+        # Save V2 Decision Card (Additive)
+        v2_card_path = base_dir / "data" / "issuesignal" / "packs" / f"{issue_id}_v2.json"
+        v2_card_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(v2_card_path, "w", encoding="utf-8") as v2f:
+            import dataclasses
+            json.dump(dataclasses.asdict(decision_card_model), v2f, ensure_ascii=False, indent=2)
+        
         print(f"Content Pack Ready: {pack_path}")
+        print(f"V2 Decision Card: {v2_card_path}")
 
     # Final: Dashboard Build (IS-27) - Soft fail
     try:
