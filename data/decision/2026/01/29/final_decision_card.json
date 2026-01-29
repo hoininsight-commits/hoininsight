@@ -1,6 +1,6 @@
 {
   "card_version": "phase50_dual_v1",
-  "generated_at": "2026-01-29T14:49:59.743705+00:00Z",
+  "generated_at": "2026-01-29T14:59:12.823996+00:00Z",
   "date": "2026-01-29",
   "blocks": {
     "regime": {
@@ -61,7 +61,7 @@
       "title": "[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 99.6% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-29T14:49:52Z",
+        "ts_utc": "2026-01-29T14:59:04Z",
         "dataset_id": "index_spx_fred",
         "topic_id": "index_spx_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/29/index_spx_fred.json L2 Signal",
@@ -115,9 +115,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 96.0% (Extreme). 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 95.8% (Extreme). 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-29T14:49:52Z",
+        "ts_utc": "2026-01-29T14:59:04Z",
         "dataset_id": "index_kospi_stooq",
         "topic_id": "index_kospi_stooq::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/29/index_kospi_stooq.json L2 Signal",
@@ -128,10 +128,10 @@
           "level": "L2",
           "details": {
             "z_score": 0.0,
-            "percentile": 96.0,
+            "percentile": 95.8,
             "value": 5221.25,
             "rolling_mean_20d": 5221.25,
-            "reasoning": "Percentile 96.0% (Extreme)"
+            "reasoning": "Percentile 95.8% (Extreme)"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -152,7 +152,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/29/index_kospi_stooq.json"
         },
-        "rationale": "[L2] Percentile 96.0% (Extreme) (Regime x1.0)",
+        "rationale": "[L2] Percentile 95.8% (Extreme) (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -171,9 +171,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.62배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.59배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-29T14:49:52Z",
+        "ts_utc": "2026-01-29T14:59:04Z",
         "dataset_id": "metal_gold_paxg_coingecko",
         "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/29/metal_gold_paxg_coingecko.json L2 Signal",
@@ -183,11 +183,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.62,
+            "z_score": 2.59,
             "percentile": 50.0,
-            "value": 5545.93,
-            "rolling_mean_20d": 4827.984956054688,
-            "reasoning": "Z-Score 2.62 >= 2.0"
+            "value": 5535.18,
+            "rolling_mean_20d": 4827.447456054688,
+            "reasoning": "Z-Score 2.59 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -208,7 +208,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/29/metal_gold_paxg_coingecko.json"
         },
-        "rationale": "[L2] Z-Score 2.62 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.59 >= 2.0 (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -230,7 +230,7 @@
       "title": "[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.38배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-29T14:49:52Z",
+        "ts_utc": "2026-01-29T14:59:04Z",
         "dataset_id": "metal_silver_kag_coingecko",
         "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/29/metal_silver_kag_coingecko.json L2 Signal",
@@ -242,8 +242,8 @@
           "details": {
             "z_score": 2.38,
             "percentile": 50.0,
-            "value": 121.08,
-            "rolling_mean_20d": 96.87915115356445,
+            "value": 121.15,
+            "rolling_mean_20d": 96.88265115356445,
             "reasoning": "Z-Score 2.38 >= 2.0"
           },
           "regime": {
@@ -285,9 +285,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -3.08 >= 2.0. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -3.35 >= 2.0. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-29T14:49:52Z",
+        "ts_utc": "2026-01-29T14:59:04Z",
         "dataset_id": "crypto_btc_usd_spot_coingecko",
         "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/29/crypto_btc_usd_spot_coingecko.json L2 Signal",
@@ -297,11 +297,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": -3.08,
-            "percentile": 2.4,
-            "value": 87530.0,
-            "rolling_mean_20d": 87904.7,
-            "reasoning": "Z-Score -3.08 >= 2.0"
+            "z_score": -3.35,
+            "percentile": 0.4,
+            "value": 87208.0,
+            "rolling_mean_20d": 87870.65,
+            "reasoning": "Z-Score -3.35 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -322,7 +322,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/29/crypto_btc_usd_spot_coingecko.json"
         },
-        "rationale": "[L2] Z-Score -3.08 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score -3.35 >= 2.0 (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
