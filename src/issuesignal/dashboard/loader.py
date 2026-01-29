@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict, Any
-from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint
+from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow
 from datetime import datetime, timedelta
 
 class DashboardLoader:
@@ -44,6 +44,12 @@ class DashboardLoader:
             if c.status in counts:
                 counts[c.status] += 1
 
+        # 4. Load Hoin Evidence (IS-29)
+        hoin_evidence = self._load_hoin_evidence(ymd)
+        
+        # 5. Create Link View (IS-29)
+        link_view = self._create_link_view(cards, hoin_evidence)
+
         return DashboardSummary(
             date=ymd,
             engine_status="SUCCESS",
@@ -52,7 +58,9 @@ class DashboardLoader:
             watchlist=watchlist,
             hold_queue=hold_queue,
             reject_logs=reject_logs,
-            timeline=self._generate_mock_timeline(ymd)
+            timeline=self._generate_mock_timeline(ymd),
+            hoin_evidence=hoin_evidence,
+            link_view=link_view
         )
 
     def _load_recent_cards(self) -> List[DecisionCard]:
@@ -99,6 +107,80 @@ class DashboardLoader:
                             ))
                 except: continue
         return logs[:5] # Top 5 recent
+
+    def _load_hoin_evidence(self, ymd: str) -> List[HoinEvidenceItem]:
+        evidence = []
+        # Location 1: data/decision/YYYY/MM/DD/final_decision_card.json
+        ymd_path = ymd.replace("-", "/")
+        final_card_path = self.base_dir / "data" / "decision" / ymd_path / "final_decision_card.json"
+        if final_card_path.exists():
+            try:
+                with open(final_card_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    topics = data.get("top_topics", [])
+                    for t in topics:
+                        evidence.append(HoinEvidenceItem(
+                            title=t.get("title", t.get("topic", "Untitled")),
+                            summary=t.get("one_line_summary", t.get("rationale", "-")),
+                            date=ymd,
+                            source_file=str(final_card_path.relative_to(self.base_dir)),
+                            bullets=[t.get("impact", "-"), t.get("action", "-")] if "impact" in t else [],
+                            tickers=t.get("tickers", []),
+                            topic_key=t.get("topic_id")
+                        ))
+            except: pass
+
+        # Location 2: data/snapshots/memory/YYYY-MM-DD.json
+        snapshot_path = self.base_dir / "data" / "snapshots" / "memory" / f"{ymd}.json"
+        if snapshot_path.exists():
+            try:
+                with open(snapshot_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    # Simplified extraction from snapshot
+                    for item in data.get("entities", [])[:5]:
+                        evidence.append(HoinEvidenceItem(
+                            title=f"Snapshot: {item.get('name')}",
+                            summary=item.get("state", "-"),
+                            date=ymd,
+                            source_file=str(snapshot_path.relative_to(self.base_dir)),
+                            bullets=[f"Score: {item.get('score', 0)}", f"Trend: {item.get('trend', '-')}"]
+                        ))
+            except: pass
+            
+        return evidence
+
+    def _create_link_view(self, cards: List[DecisionCard], evidence: List[HoinEvidenceItem]) -> List[UnifiedLinkRow]:
+        rows = []
+        for card in cards:
+            linked = []
+            reason = None
+            
+            card_tickers = {t.get("symbol", "").upper() for t in card.tickers if t.get("symbol")}
+            
+            for ev in evidence:
+                match = False
+                # 1. Ticker match
+                ev_tickers = {str(t).upper() for t in ev.tickers}
+                if card_tickers & ev_tickers:
+                    match = True
+                    reason = "Ticker Overlap"
+                
+                # 2. Structural Hash / Topic ID match
+                elif ev.topic_key and ev.topic_key == card.topic_id:
+                    match = True
+                    reason = "Topic ID Match"
+                
+                if match:
+                    linked.append(ev)
+            
+            status = "MATCHED" if linked else "NO_HOIN_EVIDENCE"
+            rows.append(UnifiedLinkRow(
+                issue_card=card,
+                linked_evidence=linked,
+                link_status=status,
+                match_reason=reason
+            ))
+        return rows
 
     def _generate_mock_timeline(self, ymd: str) -> List[TimelinePoint]:
         # Generating 14-day mock trend for visualization

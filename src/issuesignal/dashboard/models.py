@@ -23,6 +23,23 @@ class RejectLog:
     fact_text: str = "-"
 
 @dataclass
+class HoinEvidenceItem:
+    title: str
+    summary: str
+    date: str
+    source_file: str
+    bullets: List[str] = field(default_factory=list)
+    tickers: List[str] = field(default_factory=list)
+    topic_key: Optional[str] = None
+
+@dataclass
+class UnifiedLinkRow:
+    issue_card: DecisionCard
+    linked_evidence: List[HoinEvidenceItem] = field(default_factory=list)
+    link_status: str = "NO_HOIN_EVIDENCE" # MATCHED, NO_HOIN_EVIDENCE
+    match_reason: Optional[str] = None
+
+@dataclass
 class TimelinePoint:
     date: str
     counts: Dict[str, int] # status -> count
@@ -37,3 +54,6 @@ class DashboardSummary:
     hold_queue: List[DecisionCard] = field(default_factory=list)
     reject_logs: List[RejectLog] = field(default_factory=list)
     timeline: List[TimelinePoint] = field(default_factory=list)
+    # IS-29 Additions
+    hoin_evidence: List[HoinEvidenceItem] = field(default_factory=list)
+    link_view: List[UnifiedLinkRow] = field(default_factory=list)

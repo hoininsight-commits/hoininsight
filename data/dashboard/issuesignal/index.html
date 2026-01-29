@@ -4,57 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IssueSignal Operator Dashboard</title>
+    <title>IssueSignal & Hoin Unified Dashboard</title>
     <style>
         :root {
-            --bg: #F9FAFB;
+            --bg: #F3F4F6;
             --card-bg: #FFFFFF;
-            --text-main: #111827;
+            --text-main: #1F2937;
             --text-sub: #6B7280;
             --emerald: #10B981;
             --blue: #3B82F6;
             --amber: #F59E0B;
+            --purple: #8B5CF6;
             --red: #EF4444;
             --border: #E5E7EB;
         }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }
+        
+        .nav-tabs { background: #FFF; border-bottom: 1px solid var(--border); display: flex; gap: 20px; padding: 0 40px; position: sticky; top: 0; z-index: 100; }
+        .tab-btn { padding: 15px 5px; border: none; background: none; font-weight: bold; font-size: 0.9em; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; }
+        .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+        
+        .container { padding: 30px 40px; display: none; }
+        .container.active { display: block; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         .status-badge { padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.8em; }
         .status-success { background: #D1FAE5; color: #065F46; }
         
-        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .summary-card { background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        /* Dashboard Cards */
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .summary-card { background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
         .summary-card .count { font-size: 1.5em; font-weight: bold; margin-top: 5px; }
         
-        .section-title { font-size: 1.25em; font-weight: bold; margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px; }
+        .section-title { font-size: 1.25em; font-weight: bold; margin: 30px 0 15px 0; }
+        .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
         
-        .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .decision-card { background: var(--card-bg); border-left: 5px solid var(--emerald); padding: 20px; border-radius: 8px; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .decision-card .title { font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
-        .decision-card .metas { font-size: 0.85em; color: var(--text-sub); display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
-        .decision-card .meta-item { background: #F3F4F6; padding: 2px 8px; border-radius: 4px; }
+        .card-base { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px; }
+        .is-card { border-left: 6px solid var(--emerald); }
+        .hoin-card { border-left: 6px solid var(--purple); }
         
-        .watchlist-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
-        .watchlist-table th { background: #F3F4F6; text-align: left; padding: 12px; font-size: 0.9em; }
-        .watchlist-table td { padding: 12px; border-top: 1px solid var(--border); font-size: 0.9em; }
+        /* Unified Link View Table */
+        .unified-table { width: 100%; border-collapse: collapse; background: #FFF; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+        .unified-table th { background: #F9FAFB; padding: 15px; text-align: left; font-size: 0.85em; color: var(--text-sub); border-bottom: 1px solid var(--border); }
+        .unified-table td { padding: 15px; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+        .expanded-row { background: #F9FAFB; display: none; }
         
-        .reject-log { font-family: monospace; font-size: 0.85em; background: #FFF; border: 1px solid var(--border); padding: 15px; border-radius: 8px; }
-        .reject-item { border-bottom: 1px dashed var(--border); padding: 5px 0; }
-        .reject-item:last-child { border-bottom: none; }
-        .reject-code { color: var(--red); font-weight: bold; }
+        .evidence-drawer { padding: 20px; border-top: 1px solid var(--border); }
+        .evidence-item { background: #FFF; border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+        
+        /* Interactive */
+        .expand-btn { cursor: pointer; color: var(--blue); font-weight: bold; border: none; background: none; }
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; background: #FFF; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
+        
+        .badge-status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75em; }
+        .status-trust { background: #D1FAE5; color: #065F46; }
+        .status-no-ev { background: #F3F4F6; color: #6B7280; border: 1px solid var(--border); }
+        .status-matched { background: #E0E7FF; color: #3730A3; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div>
-            <h1 style="margin:0; font-size: 1.5em;">🛡️ IssueSignal Operator</h1>
-            <div style="color: var(--text-sub); font-size: 0.9em;">As of 2026-01-29</div>
+    <div style="background: #FFF; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);">
+        <h1 style="margin:0; font-size: 1.4em;">🛰️ HOIN Unified Ops View</h1>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div style="font-size: 0.9em; color: var(--text-sub);">Data: 2026-01-29</div>
+            <div class="status-badge status-success">ENGINE: SUCCESS</div>
         </div>
-        <div class="status-badge status-success">ENGINE: SUCCESS</div>
     </div>
 
-    <div class="summary-grid">
-        
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Evidence</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">Link View (IS ↔ Hoin)</button>
+    </div>
+
+    <!-- Tab 1: IssueSignal -->
+    <div id="issuesignal" class="container active">
+        <div class="summary-grid">
+            
             <div class="summary-card" style="border-top: 3px solid #10B981">
                 <div style="font-size: 0.8em; color: var(--text-sub);">TRUST_LOCKED</div>
                 <div class="count">5</div>
@@ -90,11 +116,10 @@
                 <div class="count">0</div>
             </div>
             
-    </div>
-
-    <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
-    <div class="insight-grid">
-        
+        </div>
+        <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
+        <div class="insight-grid">
+            
             <div class="decision-card">
                 <div class="title">Verification Success</div>
                 <div class="metas">
@@ -111,21 +136,210 @@
                 <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: -</div>
             </div>
             
-    </div>
-
-    <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
-    <div class="watchlist-section">
+        </div>
+        <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
         <div style='color:var(--text-sub)'>Watchlist empty.</div>
+        <div class="section-title">🚫 REJECT LOGS</div>
+        <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
+            No rejections logged recently.
+        </div>
     </div>
 
-    <div class="section-title">🚫 SILENT QUEUE & REJECTIONS</div>
-    <div class="reject-log">
-        No rejections logged recently.
+    <!-- Tab 2: Hoin Evidence -->
+    <div id="hoinevidence" class="container">
+        <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
+        <div class="insight-grid">
+            
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.62배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/decision/2026/01/29/final_decision_card.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.25배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/decision/2026/01/29/final_decision_card.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.43 >= 2.0. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/decision/2026/01/29/final_decision_card.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/decision/2026/01/29/final_decision_card.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/decision/2026/01/29/final_decision_card.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">Snapshot: Sector Leader A</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">OBSERVE</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    <li>Score: 0</li><li>Trend: -</li>
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/snapshots/memory/2026-01-29.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">Snapshot: Infrastructure B</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">OBSERVE</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    <li>Score: 0</li><li>Trend: -</li>
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/snapshots/memory/2026-01-29.json</code>
+                </div>
+            </div>
+            
+
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">Snapshot: Hedge ETF C</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">OBSERVE</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    <li>Score: 0</li><li>Trend: -</li>
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>data/snapshots/memory/2026-01-29.json</code>
+                </div>
+            </div>
+            
+        </div>
+        
     </div>
-    
-    <div style="margin-top: 50px; text-align: center; color: var(--text-sub); font-size: 0.8em;">
-        Generated by IssueSignal IS-27
+
+    <!-- Tab 3: Link View -->
+    <div id="linkview" class="container">
+        <div class="filter-bar">
+            <b>Filters:</b>
+            <select id="statusFilter" onchange="filterLinkView()">
+                <option value="ALL">All Status</option>
+                <option value="TRUST_LOCKED">TRUST_LOCKED</option>
+                <option value="HOLD">HOLD</option>
+                <option value="REJECT">REJECT</option>
+            </select>
+            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Linked Evidence Only</label>
+        </div>
+        
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th width="120">LINK</th>
+                    <th>ISSUE TITLE</th>
+                    <th width="120">STATUS</th>
+                    <th width="150">TICKERS</th>
+                    <th width="120">HOIN EVIDENCE</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="link-row" id="row-0" data-status="TRUST_LOCKED" data-has-ev="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>Verification Success</b><br><small>TEST-LOCKED-001</small></td>
+                <td>TRUST_LOCKED</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('0')">
+                        0 Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-0">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='color:var(--text-sub)'>NO_HOIN_EVIDENCE matched for this card (TEST-LOCKED-001).</div>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
     </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function toggleRow(id) {
+            const row = document.getElementById('drawer-' + id);
+            row.style.display = (row.style.display === 'table-row') ? 'none' : 'table-row';
+        }
+
+        function filterLinkView() {
+            const status = document.getElementById('statusFilter').value;
+            const evOnly = document.getElementById('evOnly').checked;
+            const rows = document.querySelectorAll('.link-row');
+            
+            rows.forEach(row => {
+                const rStatus = row.getAttribute('data-status');
+                const hasEv = row.getAttribute('data-has-ev') === 'true';
+                let visible = true;
+                
+                if (status !== 'ALL' && rStatus !== status) visible = false;
+                if (evOnly && !hasEv) visible = false;
+                
+                row.style.display = visible ? 'table-row' : 'none';
+                if (!visible) {
+                    const id = row.id.split('-')[1];
+                    document.getElementById('drawer-' + id).style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
         

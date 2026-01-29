@@ -1,5 +1,6 @@
 import os
 import json
+import dataclasses
 from pathlib import Path
 from datetime import datetime
 from .loader import DashboardLoader
@@ -29,16 +30,22 @@ class DashboardBuilder:
         # 3. Save Files
         html_path = self.output_dir / "index.html"
         json_path = self.output_dir / "dashboard.json"
+        unified_json_path = self.output_dir / "unified_dashboard.json"
         
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(html)
             
+        summary_dict = dataclasses.asdict(summary)
+        
         with open(json_path, "w", encoding="utf-8") as f:
-            # Simple conversion of dataclass to dict if possible, 
-            # for simulation we just dump a message
-            json.dump({"date": ymd, "status": "BUILT"}, f)
+            # Backward compatibility
+            json.dump({"date": ymd, "status": "BUILT", "counts": summary.counts}, f)
+
+        with open(unified_json_path, "w", encoding="utf-8") as f:
+            json.dump(summary_dict, f, ensure_ascii=False, indent=2)
             
         print(f"Dashboard Built: {html_path}")
+        print(f"Unified JSON: {unified_json_path}")
         return html_path
 
 if __name__ == "__main__":

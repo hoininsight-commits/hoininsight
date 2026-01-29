@@ -1,4 +1,4 @@
-from .models import DashboardSummary, DecisionCard, RejectLog
+from .models import DashboardSummary, DecisionCard, RejectLog, HoinEvidenceItem, UnifiedLinkRow
 from typing import List
 
 class DashboardRenderer:
@@ -12,77 +12,154 @@ class DashboardRenderer:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IssueSignal Operator Dashboard</title>
+    <title>IssueSignal & Hoin Unified Dashboard</title>
     <style>
         :root {{
-            --bg: #F9FAFB;
+            --bg: #F3F4F6;
             --card-bg: #FFFFFF;
-            --text-main: #111827;
+            --text-main: #1F2937;
             --text-sub: #6B7280;
             --emerald: #10B981;
             --blue: #3B82F6;
             --amber: #F59E0B;
+            --purple: #8B5CF6;
             --red: #EF4444;
             --border: #E5E7EB;
         }}
-        body {{ font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 20px; }}
-        .header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }}
+        body {{ font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }}
+        
+        .nav-tabs {{ background: #FFF; border-bottom: 1px solid var(--border); display: flex; gap: 20px; padding: 0 40px; position: sticky; top: 0; z-index: 100; }}
+        .tab-btn {{ padding: 15px 5px; border: none; background: none; font-weight: bold; font-size: 0.9em; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; }}
+        .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); }}
+        
+        .container {{ padding: 30px 40px; display: none; }}
+        .container.active {{ display: block; }}
+        
+        .header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }}
         .status-badge {{ padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.8em; }}
         .status-success {{ background: #D1FAE5; color: #065F46; }}
         
-        .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }}
-        .summary-card {{ background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        /* Dashboard Cards */
+        .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }}
+        .summary-card {{ background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }}
         .summary-card .count {{ font-size: 1.5em; font-weight: bold; margin-top: 5px; }}
         
-        .section-title {{ font-size: 1.25em; font-weight: bold; margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px; }}
+        .section-title {{ font-size: 1.25em; font-weight: bold; margin: 30px 0 15px 0; }}
+        .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }}
         
-        .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }}
-        .decision-card {{ background: var(--card-bg); border-left: 5px solid var(--emerald); padding: 20px; border-radius: 8px; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }}
-        .decision-card .title {{ font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }}
-        .decision-card .metas {{ font-size: 0.85em; color: var(--text-sub); display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }}
-        .decision-card .meta-item {{ background: #F3F4F6; padding: 2px 8px; border-radius: 4px; }}
+        .card-base {{ background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px; }}
+        .is-card {{ border-left: 6px solid var(--emerald); }}
+        .hoin-card {{ border-left: 6px solid var(--purple); }}
         
-        .watchlist-table {{ width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }}
-        .watchlist-table th {{ background: #F3F4F6; text-align: left; padding: 12px; font-size: 0.9em; }}
-        .watchlist-table td {{ padding: 12px; border-top: 1px solid var(--border); font-size: 0.9em; }}
+        /* Unified Link View Table */
+        .unified-table {{ width: 100%; border-collapse: collapse; background: #FFF; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }}
+        .unified-table th {{ background: #F9FAFB; padding: 15px; text-align: left; font-size: 0.85em; color: var(--text-sub); border-bottom: 1px solid var(--border); }}
+        .unified-table td {{ padding: 15px; border-bottom: 1px solid var(--border); font-size: 0.9em; }}
+        .expanded-row {{ background: #F9FAFB; display: none; }}
         
-        .reject-log {{ font-family: monospace; font-size: 0.85em; background: #FFF; border: 1px solid var(--border); padding: 15px; border-radius: 8px; }}
-        .reject-item {{ border-bottom: 1px dashed var(--border); padding: 5px 0; }}
-        .reject-item:last-child {{ border-bottom: none; }}
-        .reject-code {{ color: var(--red); font-weight: bold; }}
+        .evidence-drawer {{ padding: 20px; border-top: 1px solid var(--border); }}
+        .evidence-item {{ background: #FFF; border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 10px; }}
+        
+        /* Interactive */
+        .expand-btn {{ cursor: pointer; color: var(--blue); font-weight: bold; border: none; background: none; }}
+        .filter-bar {{ display: flex; gap: 10px; margin-bottom: 20px; background: #FFF; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }}
+        
+        .badge-status {{ display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75em; }}
+        .status-trust {{ background: #D1FAE5; color: #065F46; }}
+        .status-no-ev {{ background: #F3F4F6; color: #6B7280; border: 1px solid var(--border); }}
+        .status-matched {{ background: #E0E7FF; color: #3730A3; }}
     </style>
 </head>
 <body>
-    <div class="header">
-        <div>
-            <h1 style="margin:0; font-size: 1.5em;">🛡️ IssueSignal Operator</h1>
-            <div style="color: var(--text-sub); font-size: 0.9em;">As of {summary.date}</div>
+    <div style="background: #FFF; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);">
+        <h1 style="margin:0; font-size: 1.4em;">🛰️ HOIN Unified Ops View</h1>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div style="font-size: 0.9em; color: var(--text-sub);">Data: {summary.date}</div>
+            <div class="status-badge status-success">ENGINE: {summary.engine_status}</div>
         </div>
-        <div class="status-badge status-success">ENGINE: {summary.engine_status}</div>
     </div>
 
-    <div class="summary-grid">
-        {self._render_counters(summary.counts)}
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Evidence</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">Link View (IS ↔ Hoin)</button>
     </div>
 
-    <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
-    <div class="insight-grid">
-        {self._render_top_cards(summary.top_cards)}
-    </div>
-
-    <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
-    <div class="watchlist-section">
+    <!-- Tab 1: IssueSignal -->
+    <div id="issuesignal" class="container active">
+        <div class="summary-grid">
+            {self._render_counters(summary.counts)}
+        </div>
+        <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
+        <div class="insight-grid">
+            {self._render_top_cards(summary.top_cards)}
+        </div>
+        <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
         {self._render_watchlist(summary.watchlist)}
+        <div class="section-title">🚫 REJECT LOGS</div>
+        <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
+            {self._render_reject_logs(summary.reject_logs)}
+        </div>
     </div>
 
-    <div class="section-title">🚫 SILENT QUEUE & REJECTIONS</div>
-    <div class="reject-log">
-        {self._render_reject_logs(summary.reject_logs)}
+    <!-- Tab 2: Hoin Evidence -->
+    <div id="hoinevidence" class="container">
+        <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
+        <div class="insight-grid">
+            {self._render_hoin_evidence(summary.hoin_evidence)}
+        </div>
+        {f"<div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>No Hoin artifacts detected for {summary.date}</div>" if not summary.hoin_evidence else ""}
     </div>
-    
-    <div style="margin-top: 50px; text-align: center; color: var(--text-sub); font-size: 0.8em;">
-        Generated by IssueSignal IS-27
+
+    <!-- Tab 3: Link View -->
+    <div id="linkview" class="container">
+        <div class="filter-bar">
+            <b>Filters:</b>
+            <select id="statusFilter" onchange="filterLinkView()">
+                <option value="ALL">All Status</option>
+                <option value="TRUST_LOCKED">TRUST_LOCKED</option>
+                <option value="HOLD">HOLD</option>
+                <option value="REJECT">REJECT</option>
+            </select>
+            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Linked Evidence Only</label>
+        </div>
+        {self._render_link_view(summary.link_view)}
     </div>
+
+    <script>
+        function switchTab(tabId, btn) {{
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }}
+
+        function toggleRow(id) {{
+            const row = document.getElementById('drawer-' + id);
+            row.style.display = (row.style.display === 'table-row') ? 'none' : 'table-row';
+        }}
+
+        function filterLinkView() {{
+            const status = document.getElementById('statusFilter').value;
+            const evOnly = document.getElementById('evOnly').checked;
+            const rows = document.querySelectorAll('.link-row');
+            
+            rows.forEach(row => {{
+                const rStatus = row.getAttribute('data-status');
+                const hasEv = row.getAttribute('data-has-ev') === 'true';
+                let visible = true;
+                
+                if (status !== 'ALL' && rStatus !== status) visible = false;
+                if (evOnly && !hasEv) visible = false;
+                
+                row.style.display = visible ? 'table-row' : 'none';
+                if (!visible) {{
+                    const id = row.id.split('-')[1];
+                    document.getElementById('drawer-' + id).style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
 </body>
 </html>
         """
@@ -168,3 +245,85 @@ class DashboardRenderer:
             </div>
             """)
         return "\n".join(items)
+
+    def _render_hoin_evidence(self, items: List[HoinEvidenceItem]) -> str:
+        res = []
+        for i in items:
+            bullets = "".join([f"<li>{b}</li>" for b in i.bullets])
+            res.append(f"""
+            <div class="card-base hoin-card">
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">{i.title}</div>
+                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">{i.summary}</div>
+                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
+                    {bullets}
+                </ul>
+                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
+                    SOURCE: <code>{i.source_file}</code>
+                </div>
+            </div>
+            """)
+        return "\n".join(res)
+
+    def _render_link_view(self, rows: List[UnifiedLinkRow]) -> str:
+        html_rows = []
+        for idx, r in enumerate(rows):
+            c = r.issue_card
+            status_class = "status-matched" if r.link_status == "MATCHED" else "status-no-ev"
+            has_ev = 'true' if r.linked_evidence else 'false'
+            
+            html_rows.append(f"""
+            <tr class="link-row" id="row-{idx}" data-status="{c.status}" data-has-ev="{has_ev}">
+                <td><span class="badge-status {status_class}">{r.link_status}</span></td>
+                <td><b>{c.title}</b><br><small>{c.topic_id}</small></td>
+                <td>{c.status}</td>
+                <td>{", ".join([t.get('symbol', '') for t in c.tickers])}</td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('{idx}')">
+                        {len(r.linked_evidence)} Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-{idx}">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        {self._render_drawer_content(r)}
+                    </div>
+                </td>
+            </tr>
+            """)
+        
+        return f"""
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th width="120">LINK</th>
+                    <th>ISSUE TITLE</th>
+                    <th width="120">STATUS</th>
+                    <th width="150">TICKERS</th>
+                    <th width="120">HOIN EVIDENCE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {''.join(html_rows)}
+            </tbody>
+        </table>
+        """
+
+    def _render_drawer_content(self, row: UnifiedLinkRow) -> str:
+        if not row.linked_evidence:
+            return f"<div style='color:var(--text-sub)'>NO_HOIN_EVIDENCE matched for this card ({row.issue_card.topic_id}).</div>"
+        
+        items = []
+        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald);'>MATCH REASON: {row.match_reason}</div>")
+        for ev in row.linked_evidence:
+            bullets = "".join([f"<li>{b}</li>" for b in ev.bullets])
+            items.append(f"""
+            <div class="evidence-item">
+                <div style="font-weight:bold; font-size:1em;">{ev.title}</div>
+                <div style="font-size:0.85em; color:var(--text-sub); margin:5px 0;">{ev.summary}</div>
+                <ul style="font-size:0.8em; margin:8px 0;">{bullets}</ul>
+                <div style="font-size:0.7em; color:var(--blue);">REF: {ev.source_file}</div>
+            </div>
+            """)
+        return "".join(items)
