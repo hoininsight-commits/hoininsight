@@ -1,0 +1,41 @@
+{
+  "date": "2026-01-29",
+  "meta": {
+    "generated_at": "2026-01-29T01:58:36.021976Z",
+    "version": "v1.0"
+  },
+  "top_signal": {
+    "title": "",
+    "trigger": "",
+    "intensity": "",
+    "rhythm": "",
+    "pressure_type": ""
+  },
+  "entities": [
+    {
+      "name": "Sector Leader A",
+      "role": "STRUCTURAL EXECUTOR",
+      "state": "OBSERVE",
+      "constraints": [
+        "NARRATIVE_LOCKED"
+      ]
+    },
+    {
+      "name": "Infrastructure B",
+      "role": "STRUCTURAL EXECUTOR",
+      "state": "OBSERVE",
+      "constraints": [
+        "NARRATIVE_LOCKED"
+      ]
+    },
+    {
+      "name": "Hedge ETF C",
+      "role": "STRUCTURAL EXECUTOR",
+      "state": "OBSERVE",
+      "constraints": [
+        "CAPITAL_LOCKED"
+      ]
+    }
+  ],
+  "memory_hash": "78312a8bb8b5b41746c2303de737c9f42c6fdee983c5b8347b2b4179032c069f"
+}
