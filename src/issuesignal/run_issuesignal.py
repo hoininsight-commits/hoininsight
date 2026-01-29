@@ -9,6 +9,7 @@ from src.issuesignal.issue_pool import IssuePool
 from src.issuesignal.fast_gate import FastGate
 from src.issuesignal.hoin_adapter import HoinAdapter
 from src.issuesignal.content_pack import ContentPack
+from src.issuesignal.trap_engine import TrapEngine
 
 def main():
     base_dir = Path(".")
@@ -37,18 +38,41 @@ def main():
     print(f"Gate Status: {status}")
     
     if status == "READY":
-        # 3. Adapter Call (Mocking keyword match)
+        # 3. Adapter Call
         evidence = adapter.get_structural_evidence("semiconductor")
+        # Mock evidence if empty for simulation
+        if not evidence:
+            evidence = {
+                "evidence": [
+                    {"type": "STRONG", "desc": "Confirmed factory expansion orders."}
+                ]
+            }
         
-        # 4. Content Generation
+        # 4. Content Prep
         pack_data = {
             "id": issue_id,
             "one_liner": "Export controls freeze chip supply chain.",
-            "long_form": "The official signing of export controls marks an irreversible shift in the semiconductor landscape...",
-            "shorts_ready": ["New export controls signed.", "Structural bottleneck confirmed.", "Capital forced to move."],
+            "actor": "GOV",
+            "must_item": "EUV_STEPPER",
+            "time_window": "2w",
+            "entry_latency": 1,
+            "exit_shock": 2,
+            "long_form": "The official signing of export controls marks an irreversible shift...",
+            "shorts_ready": ["New export controls signed."],
             "tickers": [{"ticker": "ASML", "role": "OWNER", "revenue_focus": 0.95}],
             "confidence": 90
         }
+
+        # 5. Trap Detection (IS-24)
+        trap_engine = TrapEngine(base_dir)
+        is_passed, reason, debug = trap_engine.evaluate(pack_data, evidence)
+        
+        if not is_passed:
+            print(f"REJECTED BY TRAP ENGINE: {reason}")
+            print(f"DEBUG: {debug}")
+            return
+
+        # 6. Content Generation
         pack_path = generator.generate(pack_data)
         print(f"Content Pack Ready: {pack_path}")
     else:
