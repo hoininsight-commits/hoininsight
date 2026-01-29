@@ -10,25 +10,21 @@ class PreTriggerLayer:
         
     def classify_state(self, signal: Dict[str, Any]) -> str:
         """
-        Classifies signal into PRE_TRIGGER, READY, HOLD, or REJECT.
+        Classifies signal into WATCH, PRE_TRIGGER, or TRIGGER.
         """
         content = signal.get("content", "").lower()
         importance = signal.get("importance", "LOW")
         
-        # 1. READY Conditions (Immediate impact)
+        # 1. TRIGGER Conditions (Immediate impact/Official)
         if "official" in content or "signed" in content or importance == "CRITICAL":
-            return "READY"
+            return "TRIGGER"
             
-        # 2. PRE_TRIGGER Conditions (Unavoidable precursor)
-        pre_trigger_keywords = ["committee", "passed", "converge", "upcoming", "scheduled"]
-        if any(kw in content for kw in pre_trigger_keywords) and importance == "HIGH":
+        # 2. PRE_TRIGGER Conditions (Unavoidable precursor with Commitment)
+        if importance == "HIGH" and any(kw in content for kw in ["committee", "passed", "upcoming"]):
             return "PRE_TRIGGER"
             
-        # 3. HOLD / REJECT
-        if "potential" in content or "rumor" in content:
-            return "HOLD"
-            
-        return "REJECT"
+        # 3. WATCH (Interest but not locked)
+        return "WATCH"
 
     def generate_watch_narrative(self, signal: Dict[str, Any]) -> str:
         """
