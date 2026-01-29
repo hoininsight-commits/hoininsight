@@ -81,6 +81,12 @@ class DecisionCard:
     quote_verdict: Optional[str] = None # PASS, HOLD, REJECT
     quote_reason_code: Optional[str] = None
 
+    # [IS-32] Source Diversity
+    source_clusters_count: Optional[int] = None
+    source_families_list: Optional[List[str]] = None
+    diversity_verdict: Optional[str] = None
+    diversity_reason_code: Optional[str] = None
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -374,6 +380,10 @@ class DecisionDashboard:
                 trigger_quote=t.get("trigger_quote"),
                 quote_verdict=t.get("quote_verdict"),
                 quote_reason_code=t.get("quote_reason_code"),
+                source_clusters_count=t.get("source_clusters_count"),
+                source_families_list=t.get("source_families_list"),
+                diversity_verdict=t.get("diversity_verdict"),
+                diversity_reason_code=t.get("diversity_reason_code"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1524,6 +1534,9 @@ class DecisionDashboard:
         
         # [IS-31] Render Quote Proof
         self._render_quote_proof_panel(lines, c)
+        
+        # [IS-32] Render Source Diversity
+        self._render_source_diversity_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1551,6 +1564,28 @@ class DecisionDashboard:
         lines.append(f"- **Speaker**: {quote['speaker']}")
         lines.append(f"- **Event**: {quote['event_name']} ({quote['event_time_utc']})")
         lines.append(f"- **Source**: {quote['source_url']} ({quote['source_type']})")
+
+    def _render_source_diversity_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-32 Source Diversity summary in the drawer."""
+        if c.source_clusters_count is None:
+            return
+
+        verdict = c.diversity_verdict or "HOLD"
+        clusters = c.source_clusters_count
+        families = ", ".join(c.source_families_list or [])
+        reason = c.diversity_reason_code or "UNKNOWN"
+
+        badge_map = {
+            "PASS": "🟢 PASS",
+            "HOLD": "🟡 HOLD",
+            "REJECT": "🔴 REJECT"
+        }
+        badge = badge_map.get(verdict, "🟡 HOLD")
+
+        lines.append("\n### ⚖️ SOURCE DIVERSITY")
+        lines.append(f"**Verdict**: {badge} ({reason})")
+        lines.append(f"- **Independent Clusters**: {clusters}")
+        lines.append(f"- **Source Families**: {families}")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""

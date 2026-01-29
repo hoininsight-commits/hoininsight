@@ -7,6 +7,7 @@ from dataclasses import asdict, is_dataclass
 # Adjust imports to absolute
 from src.topics.topic_gate import CandidateGenerator, Ranker, Validator, OutputBuilder, HandoffDecider
 from src.ops.quote_failsafe import QuoteFailsafe
+from src.ops.source_diversity_auditor import SourceDiversityAuditor
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -91,6 +92,10 @@ def main(as_of_date: str):
     # If not, to_plain handles it later. Let's ensure they are dictionaries.
     ranked_dicts = to_plain(ranked)
     processed_ranked = failsafe.process_ranked_topics(ranked_dicts, to_plain(events_index))
+    
+    # [IS-32] Source Diversity Audit & Enforce
+    auditor = SourceDiversityAuditor(Path("."))
+    processed_ranked = auditor.audit_topics(processed_ranked, to_plain(events_index))
     
     top1 = ranker.pick_top1(processed_ranked)
 
