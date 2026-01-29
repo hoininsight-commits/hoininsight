@@ -1072,7 +1072,65 @@ def generate_dashboard(base_dir: Path):
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
 
-    # --- Modifications for Step 85 ---
+    # [NEW] Step 100: Narrative Preview
+    narrative_preview_html = ""
+    try:
+        preview_path = base_dir / "data" / "ops" / "narrative_preview_today.json"
+        if preview_path.exists():
+            p_data = json.loads(preview_path.read_text(encoding="utf-8"))
+            
+            # Icon selection
+            align = p_data.get("comparison_alignment", "ALIGNED")
+            icon = "✅" if align == "ALIGNED" else "⚠️"
+            status_color = "#166534" if align == "ALIGNED" else "#ca8a04"
+            status_bg = "#f0fdf4" if align == "ALIGNED" else "#fefce8"
+            
+            titles_html = ""
+            for t in p_data.get("title_candidates", []):
+                titles_html += f"<div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 {t}</div>"
+                
+            script = p_data.get("script", {})
+            
+            narrative_preview_html = f"""
+            <div class="narrative-preview-container" style="background:white; border:1px solid #cbd5e1; border-radius:12px; padding:25px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
+                    <div style="font-size:18px; font-weight:800; color:#1e293b;">🎬 오늘의 제목/대본 미리보기 (Draft)</div>
+                    <div style="background:{status_bg}; color:{status_color}; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
+                        {icon} {align} ({p_data.get('divergence_type', 'NORMAL')})
+                    </div>
+                </div>
+                
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px;">
+                    <!-- Titles -->
+                    <div>
+                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">Title Candidates</div>
+                        {titles_html}
+                        
+                        <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border-left:3px solid #3b82f6;">
+                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">CONTEXT</div>
+                            <div style="font-size:13px; color:#475569;">
+                                <strong>Topic:</strong> {p_data.get('topic_id')}<br>
+                                <strong>Why Now:</strong> {script.get('why_now')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Script Draft -->
+                    <div>
+                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">Script Preview</div>
+                        <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:14px; line-height:1.6; color:#334155;">
+                            <span style="color:#2563eb; font-weight:bold;">[Opening]</span> {script.get('opening')}<br><br>
+                            <span style="color:#2563eb; font-weight:bold;">[Structure]</span> {script.get('structure')}<br><br>
+                            <span style="color:#dc2626; font-weight:bold;">[Caution]</span> {script.get('caution')}<br><br>
+                            <span style="color:#2563eb; font-weight:bold;">[Closing]</span> {script.get('closing')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            """
+    except Exception as e:
+        print(f"Error generating narrative preview: {e}", file=sys.stderr)
+
     top1_card_html = TopicCardRenderer.render_top1_card(top1_data) # Use top1_data for the top card
     
     # [NEW] Judgment Memory View (Step 93)
@@ -1588,6 +1646,7 @@ def generate_dashboard(base_dir: Path):
         
         <div class="main-content">
             <div id="tab-today">
+                {narrative_preview_html}
                 {top1_card_html}
                 {judgment_memory_html}
                 {entity_state_html}

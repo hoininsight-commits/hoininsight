@@ -581,6 +581,16 @@ def main(target_categories: list[str] = None):
             print(f"judgment_comparison: fail ({e_compare})", file=sys.stderr)
             # Non-fatal
 
+        # [NEW] Step 100: Narrative Preview (Presentation Layer)
+        try:
+            from src.ops.narrative_preview_engine import run_step100_narrative_preview
+            preview_res = run_step100_narrative_preview(Path("."))
+            details_lines.append(f"narrative_preview: ok | {preview_res.get('topic_id', 'Unknown')}")
+            print("narrative_preview: ok", file=sys.stderr)
+        except Exception as e_preview:
+            print(f"narrative_preview: fail ({e_preview})", file=sys.stderr)
+            # Non-fatal
+
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
         print(f"report: ok | {report_path.as_posix()}", file=sys.stderr)
