@@ -1641,6 +1641,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
+                <div class="menu-item" onclick="location.href='./issuesignal/'">🛡️ IssueSignal 연산 현황</div>
             </div>
         </div>
         
