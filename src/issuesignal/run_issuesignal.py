@@ -10,6 +10,7 @@ from src.issuesignal.fast_gate import FastGate
 from src.issuesignal.hoin_adapter import HoinAdapter
 from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.trap_engine import TrapEngine
+from src.issuesignal.fact_verifier import FactVerifier
 
 def main():
     base_dir = Path(".")
@@ -65,14 +66,31 @@ def main():
 
         # 5. Trap Detection (IS-24)
         trap_engine = TrapEngine(base_dir)
-        is_passed, reason, debug = trap_engine.evaluate(pack_data, evidence)
+        is_trap_passed, trap_reason, trap_debug = trap_engine.evaluate(pack_data, evidence)
         
-        if not is_passed:
-            print(f"REJECTED BY TRAP ENGINE: {reason}")
-            print(f"DEBUG: {debug}")
+        if not is_trap_passed:
+            print(f"REJECTED BY TRAP ENGINE: {trap_reason}")
+            print(f"DEBUG: {trap_debug}")
             return
 
-        # 6. Content Generation
+        # 6. Fact Verification (IS-25)
+        # Enhance evidence with source types for verification
+        evidence_pack = {
+            "evidence": [
+                {"text": "Confirmed factory expansion orders.", "source_type": "COMPANY_FILINGS", "is_original": True},
+                {"text": "Government subsidy audit report.", "source_type": "GOV_DOC", "is_original": True}
+            ]
+        }
+        
+        fact_verifier = FactVerifier(base_dir)
+        is_fact_passed, fact_reason, fact_debug = fact_verifier.verify(pack_data, evidence_pack)
+        
+        if not is_fact_passed:
+            print(f"REJECTED BY FACT VERIFIER: {fact_reason}")
+            print(f"DEBUG: {fact_debug}")
+            return
+
+        # 7. Content Generation
         pack_path = generator.generate(pack_data)
         print(f"Content Pack Ready: {pack_path}")
     else:
