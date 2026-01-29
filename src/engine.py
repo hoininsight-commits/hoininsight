@@ -571,6 +571,16 @@ def main(target_categories: list[str] = None):
             print(f"judgment_ledger: fail ({e_ledger})", file=sys.stderr)
             # Non-fatal
 
+        # [NEW] Step 99: Economic Hunter vs Engine Comparison View
+        try:
+            from src.ops.judgment_comparison_view import run_step99_judgment_comparison_view
+            compare_res = run_step99_judgment_comparison_view(Path("."))
+            details_lines.append(f"judgment_comparison: ok | {compare_res.get('view', {}).get('delta_interpretation', {}).get('alignment_status')}")
+            print("judgment_comparison: ok", file=sys.stderr)
+        except Exception as e_compare:
+            print(f"judgment_comparison: fail ({e_compare})", file=sys.stderr)
+            # Non-fatal
+
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
         print(f"report: ok | {report_path.as_posix()}", file=sys.stderr)
