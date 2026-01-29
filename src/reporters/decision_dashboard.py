@@ -76,6 +76,11 @@ class DecisionCard:
     # [Step 74] Pre-Structural Signal
     pre_structural_signal: Optional[Dict[str, Any]] = None
 
+    # [IS-31] Quote Proof Layer
+    trigger_quote: Optional[Dict[str, Any]] = None # QuoteEvidencePack
+    quote_verdict: Optional[str] = None # PASS, HOLD, REJECT
+    quote_reason_code: Optional[str] = None
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -366,6 +371,9 @@ class DecisionDashboard:
                 renarration_status=perm_status,
                 renarration_reason=perm_reason,
                 pre_structural_signal=t.get("pre_structural_signal"),
+                trigger_quote=t.get("trigger_quote"),
+                quote_verdict=t.get("quote_verdict"),
+                quote_reason_code=t.get("quote_reason_code"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1513,10 +1521,36 @@ class DecisionDashboard:
             bucket = overlay["overlay_bucket"]
             badge = "STRONG" if "STRONG" in bucket else ("WEAK" if "WEAK" in bucket else "?")
             lines.append(f"🧠 **HUMAN**: {badge}")
+        
+        # [IS-31] Render Quote Proof
+        self._render_quote_proof_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
         return "\n".join(lines)
+
+    def _render_quote_proof_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-31 Quote Proof panel in the drawer."""
+        quote = c.trigger_quote
+        if not quote:
+            return
+
+        verdict = c.quote_verdict or "HOLD"
+        reason = c.quote_reason_code or "UNKNOWN"
+        
+        badge_map = {
+            "PASS": "🟢 PASS",
+            "HOLD": "🟡 HOLD",
+            "REJECT": "🔴 REJECT"
+        }
+        badge = badge_map.get(verdict, "🟡 HOLD")
+
+        lines.append("\n### 💬 QUOTE PROOF")
+        lines.append(f"**Verdict**: {badge} ({reason})")
+        lines.append(f"> \"{quote['quote_text']}\"")
+        lines.append(f"- **Speaker**: {quote['speaker']}")
+        lines.append(f"- **Event**: {quote['event_name']} ({quote['event_time_utc']})")
+        lines.append(f"- **Source**: {quote['source_url']} ({quote['source_type']})")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""

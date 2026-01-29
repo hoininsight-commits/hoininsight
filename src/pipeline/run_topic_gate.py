@@ -6,6 +6,7 @@ from dataclasses import asdict, is_dataclass
 
 # Adjust imports to absolute
 from src.topics.topic_gate import CandidateGenerator, Ranker, Validator, OutputBuilder, HandoffDecider
+from src.ops.quote_failsafe import QuoteFailsafe
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -83,9 +84,17 @@ def main(as_of_date: str):
     # 3) Rank (uses hook_score + number_score + trust_score)
     events_index = {e.event_id: e for e in events}
     ranked = ranker.rank(numbered_candidates, events_index=events_index)
-    top1 = ranker.pick_top1(ranked)
+    
+    # [IS-31] Quote Proof Layer & Failsafe
+    failsafe = QuoteFailsafe(Path("."))
+    # Convert dataclasses to dicts for failsafe if necessary, but ranked items are usually dicts at this stage
+    # If not, to_plain handles it later. Let's ensure they are dictionaries.
+    ranked_dicts = to_plain(ranked)
+    processed_ranked = failsafe.process_ranked_topics(ranked_dicts, to_plain(events_index))
+    
+    top1 = ranker.pick_top1(processed_ranked)
 
-    output = builder.build(as_of_date=as_of_date, top1=top1, ranked=ranked, events=events)
+    output = builder.build(as_of_date=as_of_date, top1=top1, ranked=processed_ranked, events=events)
     output = handoff.decide(output, top1=top1, snapshot=snapshot)
 
     candidates_payload = {
