@@ -11,6 +11,7 @@ from src.issuesignal.hoin_adapter import HoinAdapter
 from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
+from src.issuesignal.trust_lock import TrustLockEngine
 
 def main():
     base_dir = Path(".")
@@ -58,7 +59,7 @@ def main():
             "time_window": "2w",
             "entry_latency": 1,
             "exit_shock": 2,
-            "long_form": "The official signing of export controls marks an irreversible shift...",
+            "long_form": "The official signing of export controls marks an irreversible shift... 자본은 지금 당장 이동해야 한다.",
             "shorts_ready": ["New export controls signed."],
             "tickers": [{"ticker": "ASML", "role": "OWNER", "revenue_focus": 0.95}],
             "confidence": 90
@@ -90,7 +91,28 @@ def main():
             print(f"DEBUG: {fact_debug}")
             return
 
-        # 7. Content Generation
+        # 7. Trust Lock (IS-26)
+        # Prepare final card for validation
+        final_card = {
+            "what": pack_data["one_liner"],
+            "why": pack_data["long_form"],
+            "who": pack_data["actor"],
+            "where": pack_data["must_item"],
+            "kill_switch": "Any structural change to export control decree."
+        }
+        
+        trust_engine = TrustLockEngine(base_dir)
+        # Mock novelty check (is_fact_passed is already from IS-25, mock has_duplicate)
+        trust_state, trust_fails, signature = trust_engine.evaluate(final_card, is_fact_passed, has_duplicate=False)
+        
+        if trust_state != "TRUST_LOCKED":
+            print(f"TRUST LOCK BLOCKED: {trust_state}")
+            print(f"FAIL CODES: {trust_fails}")
+            return
+
+        print(f"TRUST_LOCKED (Signature: {signature})")
+
+        # 8. Content Generation
         pack_path = generator.generate(pack_data)
         print(f"Content Pack Ready: {pack_path}")
     else:
