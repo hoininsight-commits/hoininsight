@@ -503,6 +503,50 @@ def main(target_categories: list[str] = None):
                     narrator.run()
                     details_lines.append("economic_hunter_narrator: ok (LOCKED)")
                     print("economic_hunter_narrator: ok (LOCKED)", file=sys.stderr)
+                    
+                    # [NEW] Phase 3: Final Economic Hunter Engine Pipeline (Steps 52-56)
+                    try:
+                        from src.ops.ticker_occupancy_layer import TickerOccupancyLayer
+                        from src.ops.reasoning_trace_layer import ReasoningTraceLayer
+                        from src.ops.evidence_anchor_layer import EvidenceAnchorLayer
+                        from src.ops.risk_sync_layer import RiskSyncLayer
+                        from src.ops.narrative_output_compiler import NarrativeOutputCompiler
+                        
+                        # Load current Top-1 for context
+                        top1_path = Path("data/ops/structural_top1_today.json")
+                        if top1_path.exists():
+                            t1_payload = json.loads(top1_path.read_text(encoding='utf-8'))
+                            top_topic = t1_payload.get("top1_topics", [{}])[0]
+                            
+                            if top_topic:
+                                ctx = {}
+                                # Step 52
+                                tol = TickerOccupancyLayer(Path("."))
+                                # Extract candidates from top_topic or related fields
+                                candidates = top_topic.get("leader_stocks", [])
+                                ctx["selected_tickers"] = tol.select_tickers(candidates, top_topic)
+                                
+                                # Step 53
+                                rtl = ReasoningTraceLayer(Path("."))
+                                ctx["reasoning_trace"] = rtl.generate_trace(top_topic, ctx)
+                                
+                                # Step 54
+                                eal = EvidenceAnchorLayer(Path("."))
+                                ctx["evidence_anchors"] = eal.map_anchors(top_topic)
+                                
+                                # Step 55
+                                rsl = RiskSyncLayer(Path("."))
+                                ctx["sync_data"] = rsl.evaluate_sync(top_topic, ctx)
+                                
+                                # Step 56
+                                noc = NarrativeOutputCompiler(Path("."))
+                                eh_card = noc.compile_card(top_topic, ctx)
+                                noc.save_card(eh_card, get_target_ymd().replace("-", "/"))
+                                details_lines.append("eh_engine_p3: ok (Steps 52-56)")
+                                print("eh_engine_p3: ok (Steps 52-56)", file=sys.stderr)
+                    except Exception as e_p3:
+                        print(f"eh_engine_p3: fail ({e_p3})", file=sys.stderr)
+                        
                 except Exception as e:
                     print(f"economic_hunter_narrator: fail ({e})", file=sys.stderr)
             else:
