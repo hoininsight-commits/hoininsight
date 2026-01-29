@@ -519,7 +519,7 @@ def main(target_categories: list[str] = None):
                     narrator = EconomicHunterNarrator(Path("."))
                     narrator.run()
                     details_lines.append("economic_hunter_narrator: ok (Standard)")
-            except Exception as e:
+                except Exception as e:
                     print(f"narrator_fallback: fail ({e})", file=sys.stderr)
 
             # [NEW] Step 85: Topic Exporter (Dashboard Surface)
