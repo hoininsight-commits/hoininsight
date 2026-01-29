@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-29T14:59:04Z",
+    "ts_utc": "2026-01-29T15:10:14Z",
     "dataset_id": "index_nasdaq_fred",
     "topic_id": "index_nasdaq_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/29/index_nasdaq_fred.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/01/29/index_nasdaq_fred.json"
     },
     "rationale": "[L2] Percentile 99.6% (Extreme) (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
