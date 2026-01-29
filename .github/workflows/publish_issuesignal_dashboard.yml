@@ -1,0 +1,99 @@
+name: Publish IssueSignal Dashboard
+
+on:
+  workflow_run:
+    workflows: ["full_pipeline"]
+    types:
+      - completed
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/issuesignal/dashboard/**'
+      - 'src/issuesignal/run_issuesignal.py'
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these builds to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate IssueSignal Dashboard
+        run: |
+          # 1. Ensure production directories exist
+          mkdir -p data/decision/final_decision_cards
+          mkdir -p data/issuesignal/packs
+          mkdir -p data/ops
+          
+          # 2. Run the builder
+          python3 -m src.issuesignal.dashboard.build_dashboard
+
+      - name: Prepare site directory
+        run: |
+          # Create root site folder
+          mkdir -p site
+          
+          # 1. Copy existing docs content (Preserve current main dashboard and docs)
+          if [ -d "docs" ]; then
+            cp -r docs/* site/
+          fi
+          
+          # 2. Integrate IssueSignal under /issuesignal/ path
+          mkdir -p site/issuesignal
+          if [ -d "data/dashboard/issuesignal" ]; then
+            cp -r data/dashboard/issuesignal/* site/issuesignal/
+          fi
+          
+          # 3. Create a minimal index.html if it doesn't exist (failsafe)
+          if [ ! -f "site/index.html" ]; then
+            echo "<html><body><h1>HoinInsight Dashboard</h1><ul><li><a href='/issuesignal/'>IssueSignal Operator Dashboard</a></li></ul></body></html>" > site/index.html
+          fi
+
+      - name: Verify site structure
+        run: |
+          echo "=== Site Structure ==="
+          find site -maxdepth 2
+          if [ ! -f "site/issuesignal/index.html" ]; then
+            echo "❌ [DEPLOY][FAIL] issuesignal/index.html missing"
+            exit 1
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
