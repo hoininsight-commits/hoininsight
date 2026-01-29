@@ -680,7 +680,7 @@
                     <span class="badge-pressure" style="font-size: 11px;">PRESSURE: Structural</span>
                     <span class="badge-scope" style="font-size: 11px;">SCOPE: MULTI</span>
                     <span class="badge-intensity" style="font-size: 11px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">INTENSITY: STRIKE 🎯</span>
-                    <span class="meta-date">2026-01-28</span>
+                    <span class="meta-date">2026-01-29</span>
                 </div>
                 
                 <div class="top1-context">
@@ -693,7 +693,7 @@
                 <div class="top1-footer">
                     
                     <button class="action-btn" onclick="openSignalDetail('top1_current')">🔍 분석 원문 보기</button>
-                    <a href="topics/items/2026-01-28__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none; margin-left: 10px;">[원문 JSON 보기]</a>
+                    <a href="topics/items/2026-01-29__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none; margin-left: 10px;">[원문 JSON 보기]</a>
                 </div>
             </div>
         </div>
@@ -810,218 +810,28 @@
                 
         <div class="memory-delta-container">
             <div class="delta-status-group">
-                <div class="delta-icon">🆕</div>
+                <div class="delta-icon">🔁</div>
                 <div class="delta-text">
-                    <div class="delta-title">New Structural Topic</div>
-                    <div class="delta-sub">This structure has not been observed recently.</div>
+                    <div class="delta-title">Recurring Structure</div>
+                    <div class="delta-sub">Identical logic block observed yesterday (2026-01-28).</div>
                     
                 </div>
             </div>
             <div class="delta-badges">
-                <div class="delta-badge badge-new">NEW TOPIC</div>
+                <div class="delta-badge badge-recurring">RECURRING</div><div class="delta-badge badge-sustained">⏸ SUSTAINED</div>
             </div>
         </div>
         
                 
             </div>
             <div id="tab-candidates" class="hidden">
-                
-    <div class="candidate-container">
-        <div class="today-header">
-            <div class="today-summary">📂 토픽 후보군 <strong>16개</strong></div>
-        </div>
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th width="150">ID</th>
-                    <th width="100">분류</th>
-                    <th>상세 이유</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td><code style="font-size:11px;">cand_index_spx_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_spx_fred] with corroborating signals in ['index_kospi_stooq', 'crypto_btc_usd_spot_coingecko'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_disposal_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_kor_cpi_ecos_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_cpi_fred', 'inflation_pce_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_rates_fed_funds_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_fed_funds_fred] with corroborating signals in ['derived_yield_curve_10y_2y'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_index_kospi_stooq_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['index_spx_fred', 'crypto_btc_usd_spot_coingecko'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_metal_gold_paxg_coingecko_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">PRECIOUS_METALS</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [metal_gold_paxg_coingecko] with corroborating signals in ['metal_silver_kag_coingecko', 'derived_gold_silver_ratio'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_metal_silver_kag_coingecko_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">PRECIOUS_METALS</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [metal_silver_kag_coingecko] with corroborating signals in ['metal_gold_paxg_coingecko', 'derived_gold_silver_ratio'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_index_nasdaq_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">GLOBAL_INDEX</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [index_nasdaq_fred] during global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'PRECIOUS_METALS', 'CREDIT', 'LIQUIDITY'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_crypto_btc_usd_spot_coingecko_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [crypto_btc_usd_spot_coingecko] with corroborating signals in ['index_spx_fred', 'index_kospi_stooq'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_derived_yield_curve_10y_2y_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [derived_yield_curve_10y_2y] with corroborating signals in ['rates_fed_funds_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_credit_hy_spread_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">CREDIT</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [credit_hy_spread_fred] during global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'LIQUIDITY'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_derived_gold_silver_ratio_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">PRECIOUS_METALS</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [derived_gold_silver_ratio] with corroborating signals in ['metal_gold_paxg_coingecko', 'metal_silver_kag_coingecko'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_cpi_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_cpi_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_pce_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_pce_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_pce_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260128</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION', 'RATES_YIELD', 'PRECIOUS_METALS', 'GLOBAL_INDEX', 'CREDIT'].</td>
-            </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
+                <div class="empty-state">진행 중인 토픽 후보군이 없습니다.</div>
             </div>
             <div id="tab-decision" class="hidden">
                 <div class="empty-state">오늘의 최종 의사결정 데이터가 없습니다.</div>
             </div>
             <div id="tab-ops" class="hidden">
-                
-    <div class="ops-container">
-        <div class="today-header">
-            <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
-        </div>
-        
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
-                <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
-            </div>
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
-                <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
-            </div>
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
-                <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
-            </div>
-        </div>
-
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th>날짜</th>
-                    <th>상태</th>
-                    <th>소요시간 (분)</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td>2026-01-28</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-27</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>6.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-26</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>7.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-25</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-24</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>6.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-23</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>7.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-01-22</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
+                <div class="empty-state">운영 지표 데이터가 없습니다.</div>
             </div>
             <div id="tab-archive" class="hidden">
                 <div class="today-header">
