@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-29T01:58:35.902025",
+  "generated_at": "2026-01-29T02:13:32.246354",
   "candidate_count": 15,
   "alive_count": 15,
   "candidates": [
@@ -7,7 +7,7 @@
       "candidate_id": "cand_index_spx_fred_20260129",
       "dataset_id": "index_spx_fred",
       "category": "OTHER",
-      "created_at": "2026-01-29T01:58:35.901954",
+      "created_at": "2026-01-29T02:13:32.246274",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -33,7 +33,7 @@
       "candidate_id": "cand_fx_usdkrw_ecos_20260129",
       "dataset_id": "fx_usdkrw_ecos",
       "category": "FX_RATES",
-      "created_at": "2026-01-29T01:58:35.901968",
+      "created_at": "2026-01-29T02:13:32.246296",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -59,7 +59,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260129",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-01-29T01:58:35.901975",
+      "created_at": "2026-01-29T02:13:32.246302",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -87,7 +87,7 @@
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260129",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-01-29T01:58:35.901979",
+      "created_at": "2026-01-29T02:13:32.246306",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -116,7 +116,7 @@
       "candidate_id": "cand_rates_fed_funds_fred_20260129",
       "dataset_id": "rates_fed_funds_fred",
       "category": "RATES_YIELD",
-      "created_at": "2026-01-29T01:58:35.901983",
+      "created_at": "2026-01-29T02:13:32.246310",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -144,7 +144,7 @@
       "candidate_id": "cand_metal_gold_paxg_coingecko_20260129",
       "dataset_id": "metal_gold_paxg_coingecko",
       "category": "PRECIOUS_METALS",
-      "created_at": "2026-01-29T01:58:35.901986",
+      "created_at": "2026-01-29T02:13:32.246314",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -173,7 +173,7 @@
       "candidate_id": "cand_metal_silver_kag_coingecko_20260129",
       "dataset_id": "metal_silver_kag_coingecko",
       "category": "PRECIOUS_METALS",
-      "created_at": "2026-01-29T01:58:35.901990",
+      "created_at": "2026-01-29T02:13:32.246317",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -202,7 +202,7 @@
       "candidate_id": "cand_index_nasdaq_fred_20260129",
       "dataset_id": "index_nasdaq_fred",
       "category": "GLOBAL_INDEX",
-      "created_at": "2026-01-29T01:58:35.901997",
+      "created_at": "2026-01-29T02:13:32.246325",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -228,7 +228,7 @@
       "candidate_id": "cand_derived_yield_curve_10y_2y_20260129",
       "dataset_id": "derived_yield_curve_10y_2y",
       "category": "RATES_YIELD",
-      "created_at": "2026-01-29T01:58:35.902001",
+      "created_at": "2026-01-29T02:13:32.246329",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -256,7 +256,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260129",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-01-29T01:58:35.902005",
+      "created_at": "2026-01-29T02:13:32.246333",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -284,7 +284,7 @@
       "candidate_id": "cand_credit_hy_spread_fred_20260129",
       "dataset_id": "credit_hy_spread_fred",
       "category": "CREDIT",
-      "created_at": "2026-01-29T01:58:35.902008",
+      "created_at": "2026-01-29T02:13:32.246336",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -310,7 +310,7 @@
       "candidate_id": "cand_derived_gold_silver_ratio_20260129",
       "dataset_id": "derived_gold_silver_ratio",
       "category": "PRECIOUS_METALS",
-      "created_at": "2026-01-29T01:58:35.902011",
+      "created_at": "2026-01-29T02:13:32.246340",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -339,7 +339,7 @@
       "candidate_id": "cand_inflation_cpi_fred_20260129",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-01-29T01:58:35.902015",
+      "created_at": "2026-01-29T02:13:32.246344",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -368,7 +368,7 @@
       "candidate_id": "cand_inflation_pce_fred_20260129",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-01-29T01:58:35.902018",
+      "created_at": "2026-01-29T02:13:32.246347",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -397,7 +397,7 @@
       "candidate_id": "cand_liquidity_m2_fred_20260129",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-01-29T01:58:35.902022",
+      "created_at": "2026-01-29T02:13:32.246350",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
