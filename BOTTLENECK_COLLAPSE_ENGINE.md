@@ -1,46 +1,97 @@
-# BOTTLENECK COLLAPSE ENGINE (Step 3.2)
+# BOTTLENECK_COLLAPSE_ENGINE.md
+# (Economic Hunter – Step 4)
 
-**Role:** Filters the value chain to ensure "All Roads Lead to Rome" (1~3 winners).
-**Input:** Compressed Value Chain (from Module 2).
-**Output:** 1~3 Specific Bottleneck Entities (or REJECT).
+## 0. Purpose
 
----
+This engine collapses
+a verified Structural Necessity
+into unavoidable bottlenecks.
 
-## 1. Module 3: BOTTLENECK_RESOLUTION
-
-### Objective
-Prove that the Forced Capital Flow cannot bypass these specific entities.
-
-### The "Inevitable" Criteria (Must satisfy at least 2)
-To be a valid bottleneck, an entity must hold **at least 2** of the following cards:
-
-1.  **Lead-Time Constraint (Time Moat)**: "If you order today, you get it in 2 years." (e.g., HD Hyundai Heavy, HBM).
-2.  **Capacity Constraint (Physical Moat)**: "Sold out for the next 12 months."
-3.  **Certification/Regulation Gate**: "Only 2 companies have the license/approval to sell this." (e.g., FDA-approved specific drug, Mil-spec vendor).
-4.  **Standard Lock-in**: "The entire industry infrastructure is built on this standard." (e.g., CUDA, x86, Windows).
-5.  **Patent/IP Moat**: "Legally impossible to copy."
-6.  **Installed Base Switching Cost**: "Replacing this costs more than buying it."
-7.  **"Stop-the-Line" Necessity**: "Without this $1 part, the $1M machine stops."
+If spending can diffuse across many players,
+the Topic must be rejected.
 
 ---
 
-## 2. Collapse Rules (Hard Constraints)
+## 1. Input Requirements
 
-### Rule A: The "Numbers Game"
-*   **0 Entities**: Theme is valid, but no actionable target. **REJECT**.
-*   **1 Entity (Monopoly)**: Ideal. **LOCK**.
-*   **2 Entities (Duopoly)**: Excellent. **LOCK**.
-*   **3 Entities (Oligopoly)**: Acceptable. **LOCK**.
-*   **4+ Entities (Fragmented)**: No collapse. Competition will erode margins. **REJECT**.
+Input must be:
+- STRUCTURAL_VERDICT = PASS
+from STRUCTURAL_NECESSITY_ENGINE
 
-### Rule B: The "ETF Test"
-If the conclusion is "Buy the whole sector" (e.g., "Buy any solar stock"), it is **REJECTED**. The engine must identify specific names or a specific sub-segment that is a bottleneck (e.g., "Buy the only inverter maker compatible with the new grid code").
-
-### Rule C: No "Winner Takes All" Gambling
-If the bottleneck *will be* 1 company, but we don't know *which one yet* (e.g., Phase 2 drug trials with 5 competitors), **REJECT**. We hunt current bottlenecks, not future bets.
+No speculative or future assumptions allowed.
 
 ---
 
-## 3. Output State
-*   **PASS**: 1~3 Entities identified + 2 Criteria met.
-*   **FAIL**: Anything else.
+## 2. Bottleneck Definition
+
+A bottleneck is defined as a node where:
+
+- Failure blocks the entire system
+- Replacement is not immediate
+- Scale cannot be ramped quickly
+- Alternatives exist only on paper
+
+If substitution is feasible → INVALID
+
+---
+
+## 3. Bottleneck Qualification Tests
+
+At least TWO of the following must be TRUE:
+
+1. Lead-time Constraint (≥ 12 months)
+2. Capacity Ceiling (fixed or saturated)
+3. Regulatory / Certification Lock
+4. Physical Infrastructure Dependency
+5. Technological Complexity Barrier
+6. Skilled Labor Scarcity
+7. Sovereign / National Restriction
+
+If fewer than 2 → REJECT
+
+---
+
+## 4. Collapse Rule
+
+Valid outputs must collapse to:
+
+- Minimum: 1 bottleneck
+- Maximum: 3 bottlenecks
+
+0 → No bottleneck → INVALID  
+≥4 → Diffused theme → INVALID
+
+---
+
+## 5. Time Pressure Gate
+
+Bottleneck impact must manifest within:
+
+- 0–18 months
+
+Long-term (2–5 years) themes are forbidden.
+
+---
+
+## 6. Output Format
+
+[BOTTLENECK_VERDICT]
+
+- Bottleneck Name (generic, non-company)
+- Why it cannot be bypassed
+- What breaks without it
+- Time-to-failure if delayed
+
+No company names allowed at this stage.
+
+---
+
+## 7. Absolute Prohibitions
+
+- Company guessing ❌
+- Sector labeling ❌
+- Trend extrapolation ❌
+- Market narrative ❌
+
+This engine isolates pressure,
+not beneficiaries.
