@@ -87,6 +87,11 @@ class DecisionCard:
     diversity_verdict: Optional[str] = None
     diversity_reason_code: Optional[str] = None
 
+    # [IS-33] Trigger Confidence Decay
+    current_confidence: Optional[int] = None # 0~100
+    elapsed_time_str: Optional[str] = None # e.g. "15시간 경합"
+    decay_state_ko: Optional[str] = None # 활성, 보류, 침묵
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -384,6 +389,9 @@ class DecisionDashboard:
                 source_families_list=t.get("source_families_list"),
                 diversity_verdict=t.get("diversity_verdict"),
                 diversity_reason_code=t.get("diversity_reason_code"),
+                current_confidence=t.get("current_confidence"),
+                elapsed_time_str=t.get("elapsed_time_str"),
+                decay_state_ko=t.get("decay_state_ko"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1537,6 +1545,9 @@ class DecisionDashboard:
         
         # [IS-32] Render Source Diversity
         self._render_source_diversity_panel(lines, c)
+        
+        # [IS-33] Render Signal Lifecycle
+        self._render_signal_lifecycle_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1552,18 +1563,18 @@ class DecisionDashboard:
         reason = c.quote_reason_code or "UNKNOWN"
         
         badge_map = {
-            "PASS": "🟢 PASS",
-            "HOLD": "🟡 HOLD",
-            "REJECT": "🔴 REJECT"
+            "PASS": "🟢 통과",
+            "HOLD": "🟡 보류",
+            "REJECT": "🔴 거절"
         }
-        badge = badge_map.get(verdict, "🟡 HOLD")
+        badge = badge_map.get(verdict, "🟡 보류")
 
-        lines.append("\n### 💬 QUOTE PROOF")
-        lines.append(f"**Verdict**: {badge} ({reason})")
+        lines.append("\n### 💬 핵심 인용구 (QUOTE PROOF)")
+        lines.append(f"**판정**: {badge} ({reason})")
         lines.append(f"> \"{quote['quote_text']}\"")
-        lines.append(f"- **Speaker**: {quote['speaker']}")
-        lines.append(f"- **Event**: {quote['event_name']} ({quote['event_time_utc']})")
-        lines.append(f"- **Source**: {quote['source_url']} ({quote['source_type']})")
+        lines.append(f"- **발화자**: {quote['speaker']}")
+        lines.append(f"- **이벤트**: {quote['event_name']} ({quote['event_time_utc']})")
+        lines.append(f"- **출처**: {quote['source_url']} ({quote['source_type']})")
 
     def _render_source_diversity_panel(self, lines: List[str], c: DecisionCard):
         """Renders the IS-32 Source Diversity summary in the drawer."""
@@ -1576,16 +1587,44 @@ class DecisionDashboard:
         reason = c.diversity_reason_code or "UNKNOWN"
 
         badge_map = {
-            "PASS": "🟢 PASS",
-            "HOLD": "🟡 HOLD",
-            "REJECT": "🔴 REJECT"
+            "PASS": "🟢 통과",
+            "HOLD": "🟡 보류",
+            "REJECT": "🔴 거절"
         }
-        badge = badge_map.get(verdict, "🟡 HOLD")
+        badge = badge_map.get(verdict, "🟡 보류")
 
-        lines.append("\n### ⚖️ SOURCE DIVERSITY")
-        lines.append(f"**Verdict**: {badge} ({reason})")
-        lines.append(f"- **Independent Clusters**: {clusters}")
-        lines.append(f"- **Source Families**: {families}")
+        lines.append("\n### ⚖️ 출처 다양성 (SOURCE DIVERSITY)")
+        lines.append(f"**판정**: {badge} ({reason})")
+        lines.append(f"- **독립적 클러스터**: {clusters}개")
+        lines.append(f"- **출처 패밀리**: {families}")
+
+    def _render_signal_lifecycle_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-33 Signal Lifecycle (Confidence Decay) in Korean."""
+        if c.current_confidence is None:
+            return
+
+        conf = c.current_confidence
+        state = c.decay_state_ko or "활성"
+        elapsed = c.elapsed_time_str or "정보 없음"
+
+        # Coloring based on state
+        color_map = {
+            "활성": "🟢",
+            "보류": "🟡",
+            "침묵": "🔴"
+        }
+        icon = color_map.get(state, "⚪")
+
+        lines.append("\n### ⏳ 신호 생애주기 (SIGNAL LIFECYCLE)")
+        lines.append(f"**현재 상태**: {icon} **{state}**")
+        lines.append(f"- **잔여 신뢰도**: {conf}%")
+        lines.append(f"- **경과 시간**: {elapsed}")
+        
+        # Add visual progress bar
+        bar_len = 10
+        filled = int(conf / 10)
+        bar = "█" * filled + "░" * (bar_len - filled)
+        lines.append(f"- **강도**: `[{bar}]` ({conf}/100)")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""

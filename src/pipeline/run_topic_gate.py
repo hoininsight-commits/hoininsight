@@ -8,6 +8,7 @@ from dataclasses import asdict, is_dataclass
 from src.topics.topic_gate import CandidateGenerator, Ranker, Validator, OutputBuilder, HandoffDecider
 from src.ops.quote_failsafe import QuoteFailsafe
 from src.ops.source_diversity_auditor import SourceDiversityAuditor
+from src.issuesignal.time_decay import TriggerTimeDecayEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -97,6 +98,15 @@ def main(as_of_date: str):
     auditor = SourceDiversityAuditor(Path("."))
     processed_ranked = auditor.audit_topics(processed_ranked, to_plain(events_index))
     
+    # [IS-33] Trigger Confidence Decay
+    decay_engine = TriggerTimeDecayEngine()
+    for t in processed_ranked:
+        decay_engine.process_trigger(t)
+        # Apply re-arm if topic has diverse sources (example condition)
+        if t.get("diversity_verdict") == "PASS":
+             # We gather enriched sources if available
+             decay_engine.re_arm(t, t.get("enriched_sources", []))
+
     top1 = ranker.pick_top1(processed_ranked)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=processed_ranked, events=events)
