@@ -11,8 +11,8 @@ IssueSignal Operator Dashboard를 GitHub Pages를 통해 배포하기 위한 설
 
 ## 2. 배포 확인 (Expected URL)
 배포가 성공적으로 완료되면 아래 주소에서 대시보드를 확인할 수 있습니다.
-- **IssueSignal 대시보드**: `https://hoininsight-commits.github.io/HoinInsight/issuesignal/`
-- **메인 페이지 (기존)**: `https://hoininsight-commits.github.io/HoinInsight/`
+- **IssueSignal 대시보드**: `https://hoininsight-commits.github.io/hoininsight/issuesignal/`
+- **메인 페이지 (기존)**: `https://hoininsight-commits.github.io/hoininsight/`
 
 | 경로 | 내용 |
 | :--- | :--- |
