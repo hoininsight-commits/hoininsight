@@ -319,6 +319,26 @@ class DashboardRenderer:
         items = []
         c = row.issue_card
         
+        # 0. Trigger Quote Section (IS-31)
+        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>")
+        if not c.trigger_quote:
+            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div>")
+        else:
+            q = c.trigger_quote
+            q_status_class = "status-matched" if q.verification_status == "PASS" else "status-no-ev"
+            items.append(f"""
+            <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">{q.fact_type}</span>
+                    <span class="badge-status {q_status_class}">{q.verification_status}: {q.reason_code}</span>
+                </div>
+                <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"{q.excerpt}"</div>
+                <div style="font-size:0.75em; color:var(--text-sub);">
+                    SOURCE: <b>{q.source_kind}</b> ({q.source_date}) | <a href="{q.source_ref}" target="_blank" style="color:var(--blue); text-decoration:none;">{q.source_ref}</a>
+                </div>
+            </div>
+            """)
+
         # 1. Hoin Evidence Section
         items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div>")
         if not row.linked_evidence:

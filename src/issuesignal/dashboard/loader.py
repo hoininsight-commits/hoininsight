@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict, Any
-from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow, ProofPack, HardFact
+from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow, ProofPack, HardFact, TriggerQuote
 from datetime import datetime, timedelta
 
 class DashboardLoader:
@@ -68,7 +68,9 @@ class DashboardLoader:
         # Look in data/decision/final_decision_cards/
         card_dir = self.base_dir / "data" / "issuesignal" / "packs"
         if card_dir.exists():
-            for f in card_dir.glob("*.json"):
+            # Sort files descending to get latest first
+            json_files = sorted(card_dir.glob("*.json"), reverse=True)
+            for f in json_files:
                 try:
                     with open(f, "r", encoding="utf-8") as jf:
                         data = json.load(jf)
@@ -92,10 +94,13 @@ class DashboardLoader:
                                 bottleneck_role=p.get("bottleneck_role", ""),
                                 why_irreplaceable_now=p.get("why_irreplaceable_now", ""),
                                 proof_status=p.get("proof_status", "PROOF_FAIL"),
-                                hard_facts=[HardFact(**f) for f in p.get("hard_facts", [])]
-                            ) for p in data.get("proof_packs", [])]
+                                hard_facts=[HardFact(**f_dict) for f_dict in p.get("hard_facts", [])]
+                            ) for p in data.get("proof_packs", [])],
+                            trigger_quote=TriggerQuote(**data.get("trigger_quote")) if data.get("trigger_quote") else None
                         ))
-                except: continue
+                except Exception as e:
+                    print(f"ERROR: Failed to load card {f}: {e}")
+                    continue
         return cards
 
     def _load_reject_logs(self) -> List[RejectLog]:

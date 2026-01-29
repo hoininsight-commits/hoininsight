@@ -30,7 +30,8 @@ class ContentPack:
             "safety": {
                 "kill_switch": False,
                 "confidence": data.get("confidence", 0)
-            }
+            },
+            "trigger_quote": data.get("trigger_quote")
         }
         
         with open(file_path, "w", encoding="utf-8") as f:

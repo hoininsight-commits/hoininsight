@@ -19,6 +19,8 @@ class DecisionCard:
     forced_capex: str = "-"
     bottleneck: str = "-"
     proof_packs: List['ProofPack'] = field(default_factory=list)
+    # IS-31 Additions
+    trigger_quote: Optional['TriggerQuote'] = None
 
 @dataclass
 class RejectLog:
@@ -44,6 +46,16 @@ class ProofPack:
     why_irreplaceable_now: str
     hard_facts: List[HardFact] = field(default_factory=list)
     proof_status: str = "PROOF_FAIL" # PROOF_OK, PROOF_FAIL
+
+@dataclass
+class TriggerQuote:
+    excerpt: str
+    source_kind: str # GOV, FILING, etc.
+    source_ref: str
+    source_date: str = "-"
+    fact_type: str = "OFFICIAL_STATEMENT"
+    verification_status: str = "HOLD" # PASS, HOLD, REJECT
+    reason_code: str = "MISSING_QUOTE"
 
 @dataclass
 class HoinEvidenceItem:

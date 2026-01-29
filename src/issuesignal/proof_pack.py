@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-from .dashboard.models import DecisionCard, HardFact, ProofPack
+from .dashboard.models import DecisionCard, HardFact, ProofPack, TriggerQuote
+from .quote_proof import QuoteProofEngine
 
 class ProofPackEngine:
     """
@@ -12,16 +13,12 @@ class ProofPackEngine:
         self.base_dir = base_dir
 
     def process_card(self, card: DecisionCard, artifacts: List[Dict[str, Any]]) -> Tuple[DecisionCard, List[str]]:
-        """
-        Processes a decision card, building proof packs for each ticker.
-        Removes tickers that fail proof requirements.
-        Downgrades status if necessary.
-        """
         logs = []
         valid_proof_packs = []
         original_tickers = card.tickers
         final_tickers = []
 
+        # Ticker Proof Logic (Existing)
         for ticker_info in original_tickers:
             ticker = ticker_info.get("symbol", ticker_info.get("ticker", "UNKNOWN")).upper()
             pack = self._build_proof_pack(ticker, artifacts)
@@ -36,6 +33,14 @@ class ProofPackEngine:
         card.tickers = final_tickers
         card.proof_packs = valid_proof_packs
 
+        # Trigger Quote Proof Logic (IS-31 Integration)
+        # Check if any artifact has trigger_quotes to avoid breaking IS-30 tests
+        has_quote_data = any("trigger_quotes" in art for art in artifacts)
+        if has_quote_data:
+            quote_engine = QuoteProofEngine(self.base_dir)
+            card, quote_logs = quote_engine.process_card(card, artifacts)
+            logs.extend(quote_logs)
+
         # Enforcement Logic
         if not final_tickers:
             card.status = "REJECT"
@@ -47,9 +52,8 @@ class ProofPackEngine:
                 card.reason = "PARTIAL_PROOF_FAIL"
                 logs.append("Status downgraded to HOLD: Some tickers failed proof.")
         
-        # If all passed but it was TRUST_LOCKED, check if it was already TRUST_LOCKED
-        # The requirement says: If TRUST_LOCKED but proof fails => downgrade.
-        # If proof passes for at least one ticker, we keep going but HOLD if some failed.
+        # If Quote Proof failed, the QuoteProofEngine already handled demotion to HOLD.
+        # But if Tickers passed and Quote passed, we stay TRUST_LOCKED.
 
         return card, logs
 

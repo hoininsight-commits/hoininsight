@@ -13,7 +13,8 @@ from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
 from src.issuesignal.proof_pack import ProofPackEngine
-from src.issuesignal.dashboard.models import DecisionCard, ProofPack
+from src.issuesignal.quote_proof import QuoteProofEngine
+from src.issuesignal.dashboard.models import DecisionCard, ProofPack, TriggerQuote
 from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
 def main():
@@ -160,7 +161,24 @@ def main():
         for p_log in proof_logs:
             print(f"PROOFSIGNAL: {p_log}")
 
-        # 9. Content Generation
+        # 9. Quote Proof Enforcement (IS-31)
+        quote_engine = QuoteProofEngine(base_dir)
+        # Add mock trigger quotes to artifacts
+        mock_artifacts[0]["trigger_quotes"] = [
+            {
+                "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
+                "source_kind": "GOV",
+                "source_ref": "https://www.whitehouse.gov/briefing-room/",
+                "source_date": "2026-01-29",
+                "fact_type": "POLICY_EXCERPT"
+            }
+        ]
+        decision_card_model, quote_logs = quote_engine.process_card(decision_card_model, mock_artifacts)
+        
+        for q_log in quote_logs:
+            print(f"QUOTESIGNAL: {q_log}")
+
+        # 10. Content Generation
         # Convert back or use model to save (simulation simplified)
         pack_path = generator.generate(pack_data)
         
