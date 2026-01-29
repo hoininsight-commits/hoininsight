@@ -551,6 +551,26 @@ def main(target_categories: list[str] = None):
         details_lines.append("decision: ok")
         print("decision: ok", file=sys.stderr)
 
+        # [NEW] Step 97: Operator Judgment Log Auto-Generation
+        try:
+            from src.ops.operator_judgment_log import run_step97_operator_judgment_log
+            log_res = run_step97_operator_judgment_log(Path("."))
+            details_lines.append(f"operator_log: ok | {log_res.get('entry', {}).get('engine_decision')}")
+            print("operator_log: ok", file=sys.stderr)
+        except Exception as e_log:
+            print(f"operator_log: fail ({e_log})", file=sys.stderr)
+            # Non-fatal, do not raise
+
+        # [NEW] Step 98: Judgment Failure / Hold Ledger Layer
+        try:
+            from src.ops.judgment_ledger import run_step98_judgment_ledger
+            ledger_res = run_step98_judgment_ledger(Path("."))
+            details_lines.append(f"judgment_ledger: ok | {ledger_res.get('entry', {}).get('ledger_tag')}")
+            print("judgment_ledger: ok", file=sys.stderr)
+        except Exception as e_ledger:
+            print(f"judgment_ledger: fail ({e_ledger})", file=sys.stderr)
+            # Non-fatal
+
         report_path = write_daily_brief(Path("."))
         details_lines.append(f"report: ok | {report_path.as_posix()}")
         print(f"report: ok | {report_path.as_posix()}", file=sys.stderr)
