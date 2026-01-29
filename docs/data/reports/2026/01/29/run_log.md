@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-29T01:57:53Z
-- finished_utc: 2026-01-29T01:58:30Z
+- started_utc: 2026-01-29T02:12:50Z
+- finished_utc: 2026-01-29T02:13:26Z
 - status: SUCCESS
 
 ## details
@@ -38,6 +38,7 @@ economic_hunter_narrator: ok (Standard)
 topic_exporter: ok
 decision: ok
 judgment_ledger: ok | None
+judgment_comparison: ok | None
 report: ok | data/reports/2026/01/29/daily_brief.md
 checks:
 [SKIP] outputs(fx_dxy_index_stooq) missing
