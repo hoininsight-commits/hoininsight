@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 from .dashboard.models import DecisionCard, TriggerQuote
+from .source_diversity import SourceDiversityEngine
 
 class QuoteProofEngine:
     """
@@ -37,7 +38,7 @@ class QuoteProofEngine:
             quote.reason_code = code
             card.trigger_quote = quote
             
-            if code == "REJECT:NON_INDEPENDENT":
+            if code.startswith("REJECT"):
                 card.status = "REJECT"
                 card.reason = code
                 logs.append(f"Issue REJECTED: {reason}")
@@ -90,41 +91,42 @@ class QuoteProofEngine:
         if len(quote.excerpt) > 240 or len(quote.excerpt.splitlines()) > 2:
             return False, "Quote exceeds length limits (>240 chars or >2 lines).", "HOLD:LENGTH_EXCEEDED"
 
-        # Rule 2: Strength
-        if quote.fact_type == "OFFICIAL_TRANSCRIPT":
-            # For transcript, we ideally want to see context, but we check presence of source_ref
-            if quote.source_ref != "-":
-                return True, "PASS", "PASS"
-
-        # Check for independent sources if not strong enough
-        all_refs = []
+        diversity_engine = SourceDiversityEngine()
+        
+        # Rule 3: Independence / Cluster-based Diversity
+        all_clusters = []
         all_kinds = []
         for art in artifacts:
             if "trigger_quotes" in art:
                 for q in art["trigger_quotes"]:
-                    if q.get("excerpt") == quote.excerpt:
-                        all_refs.append(q.get("source_ref"))
-                        all_kinds.append(q.get("source_kind"))
+                    q_text = q.get("excerpt", "")
+                    cluster = diversity_engine.get_cluster(q.get("source_ref", ""), q_text, q.get("source_kind", "UNKNOWN"))
+                    all_clusters.append(cluster.cluster_id)
+                    all_kinds.append(cluster.cluster_type)
 
-        # Rule 3: Independence / Repetitive Source Check
-        unique_refs = set(all_refs)
+        unique_clusters = set(all_clusters)
         unique_kinds = set(all_kinds)
         
-        # Non-independent (same kind and ref but different artifacts) - Check this FIRST
-        if len(unique_refs) < 2 and len(all_refs) >= 2:
-            return False, "Two articles citing same press release.", "REJECT:NON_INDEPENDENT"
+        # Assign cluster to current quote
+        main_cluster = diversity_engine.get_cluster(quote.source_ref, quote.excerpt, quote.source_kind)
+        quote.cluster_id = main_cluster.cluster_id
 
-        # Strong single source
-        if quote.source_kind in ["GOV", "REGULATOR", "COURT"]:
+        # Non-independent (same cluster but multiple artifacts) - REJECT
+        if len(unique_clusters) < 2 and len(all_clusters) >= 2:
+            return False, "Circular reporting or wire chain detected.", "REJECT:WIRE_CHAIN_DUPLICATION"
+
+        # Strong single source (OFFICIAL)
+        if main_cluster.cluster_type == "OFFICIAL":
             return True, "PASS", "PASS"
             
+        # MAJOR_MEDIA Diversity
+        if len(unique_clusters) >= 2 and "MAJOR_MEDIA" in unique_kinds:
+            return True, "PASS", "PASS"
+
         # Single news article check (simulated)
-        if len(unique_refs) == 1 and all_kinds[0] not in ["GOV", "REGULATOR", "COURT"]:
+        if len(unique_clusters) == 1 and all_kinds[0] not in ["OFFICIAL"]:
             if "official said" in quote.excerpt.lower() or ("said" in quote.excerpt.lower() and "official" in quote.excerpt.lower()):
                  return False, "Single news article quoting 'official said' without link.", "HOLD:VAGUE_QUOTE"
             return False, "Single non-official source for quote.", "HOLD:SINGLE_SOURCE_RISK"
-
-        if len(unique_refs) >= 2 and len(unique_kinds) >= 2:
-            return True, "PASS", "PASS"
 
         return False, "Insufficient verification for quote.", "HOLD:MISSING_QUOTE"

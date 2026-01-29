@@ -14,6 +14,7 @@ from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
 from src.issuesignal.proof_pack import ProofPackEngine
 from src.issuesignal.quote_proof import QuoteProofEngine
+from src.issuesignal.source_diversity import SourceDiversityEngine
 from src.issuesignal.dashboard.models import DecisionCard, ProofPack, TriggerQuote
 from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
@@ -178,7 +179,30 @@ def main():
         for q_log in quote_logs:
             print(f"QUOTESIGNAL: {q_log}")
 
-        # 10. Content Generation
+        # 10. Source Diversity Audit (IS-32)
+        diversity_engine = SourceDiversityEngine()
+        # Simulate artifact analysis for audit
+        for art in mock_artifacts:
+            for fact in art.get("hard_facts", []):
+                diversity_engine.get_cluster(fact.get("source_ref", ""), fact.get("fact_claim", ""))
+            for q in art.get("trigger_quotes", []):
+                diversity_engine.get_cluster(q.get("source_ref", ""), q.get("excerpt", ""))
+        
+        audit_data = {
+            "timestamp": datetime.now().isoformat(),
+            "topic_id": issue_id,
+            "audit_trail": diversity_engine.get_audit_trail(),
+            "distinct_clusters": [c.cluster_id for c in decision_card_model.source_clusters],
+            "verdict": decision_card_model.status
+        }
+        
+        audit_path = base_dir / "data" / "issuesignal" / "audit" / f"{issue_id}_diversity.json"
+        audit_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(audit_path, "w", encoding="utf-8") as af:
+            json.dump(audit_data, af, indent=2)
+        print(f"Diversity Audit: {audit_path}")
+
+        # 11. Content Generation
         # Convert back or use model to save (simulation simplified)
         pack_path = generator.generate(pack_data)
         

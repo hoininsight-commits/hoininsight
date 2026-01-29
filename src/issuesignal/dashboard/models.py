@@ -21,6 +21,8 @@ class DecisionCard:
     proof_packs: List['ProofPack'] = field(default_factory=list)
     # IS-31 Additions
     trigger_quote: Optional['TriggerQuote'] = None
+    # IS-32 Additions
+    source_clusters: List['SourceCluster'] = field(default_factory=list)
 
 @dataclass
 class RejectLog:
@@ -37,6 +39,8 @@ class HardFact:
     source_ref: str
     source_date: str = "-"
     independence_key: str = "-"
+    # IS-32 Additions
+    cluster_id: str = "UNKNOWN"
 
 @dataclass
 class ProofPack:
@@ -56,6 +60,15 @@ class TriggerQuote:
     fact_type: str = "OFFICIAL_STATEMENT"
     verification_status: str = "HOLD" # PASS, HOLD, REJECT
     reason_code: str = "MISSING_QUOTE"
+    # IS-32 Additions
+    cluster_id: str = "UNKNOWN"
+
+@dataclass
+class SourceCluster:
+    cluster_id: str
+    cluster_type: str # OFFICIAL, MAJOR_MEDIA, General, etc.
+    origin_name: str
+    reason: str = "-"
 
 @dataclass
 class HoinEvidenceItem:

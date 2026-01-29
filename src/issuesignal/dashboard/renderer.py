@@ -319,7 +319,21 @@ class DashboardRenderer:
         items = []
         c = row.issue_card
         
-        # 0. Trigger Quote Section (IS-31)
+        # 0. Source Clusters Summary (IS-32)
+        if c.source_clusters:
+            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div>")
+            cluster_badges = []
+            for sc in c.source_clusters:
+                color = "#059669" if sc.cluster_type == "OFFICIAL" else "#2563EB"
+                bg = "#ECFDF5" if sc.cluster_type == "OFFICIAL" else "#EFF6FF"
+                cluster_badges.append(f"""
+                <div style="display:inline-block; background:{bg}; color:{color}; border:1px solid {color}33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
+                    <b>{sc.cluster_id}</b>: {sc.origin_name}
+                </div>
+                """)
+            items.append(f"<div style='margin-bottom:15px;'>{''.join(cluster_badges)}</div>")
+
+        # 1. Trigger Quote Section (IS-31)
         items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>")
         if not c.trigger_quote:
             items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div>")

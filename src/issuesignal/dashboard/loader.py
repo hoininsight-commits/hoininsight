@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict, Any
-from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow, ProofPack, HardFact, TriggerQuote
+from .models import DecisionCard, RejectLog, DashboardSummary, TimelinePoint, HoinEvidenceItem, UnifiedLinkRow, ProofPack, HardFact, TriggerQuote, SourceCluster
 from datetime import datetime, timedelta
 
 class DashboardLoader:
@@ -96,7 +96,8 @@ class DashboardLoader:
                                 proof_status=p.get("proof_status", "PROOF_FAIL"),
                                 hard_facts=[HardFact(**f_dict) for f_dict in p.get("hard_facts", [])]
                             ) for p in data.get("proof_packs", [])],
-                            trigger_quote=TriggerQuote(**data.get("trigger_quote")) if data.get("trigger_quote") else None
+                            trigger_quote=TriggerQuote(**data.get("trigger_quote")) if data.get("trigger_quote") else None,
+                            source_clusters=[SourceCluster(**c) for c in data.get("source_clusters", [])]
                         ))
                 except Exception as e:
                     print(f"ERROR: Failed to load card {f}: {e}")

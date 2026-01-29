@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple, Set
 from enum import Enum
+from .source_diversity import SourceDiversityEngine
 
 class SourceType(Enum):
     GOV_DOC = "GOV_DOC"
@@ -59,20 +60,30 @@ class FactVerifier:
             except ValueError:
                 continue
 
-            # Check if this is a redundant re-quote
-            if not ev.get("is_original", True):
-                continue
-                
+            # IS-32: Check Clusters
+            diversity_engine = SourceDiversityEngine()
+            source_ref = ev.get("source_ref", "")
+            text = ev.get("text", "")
+            cluster = diversity_engine.get_cluster(source_ref, text, s_type_str)
+            ev["cluster_id"] = cluster.cluster_id
+            ev["cluster_type"] = cluster.cluster_type
+
             source_types_found.add(s_type)
-            verified_facts.append(ev.get("text"))
+            verified_facts.append(ev)
 
         debug["source_types"] = [s.value for s in source_types_found]
         debug["fact_count"] = len(verified_facts)
 
         # 2. Apply PASS Logic
-        # Condition 1: 2+ different types
-        if len(source_types_found) >= 2:
+        # Condition 1: 2+ different types AND different clusters
+        unique_clusters = {ev.get("cluster_id") for ev in verified_facts if ev.get("cluster_id")}
+        debug["unique_clusters"] = list(unique_clusters)
+        
+        if len(source_types_found) >= 2 and len(unique_clusters) >= 2:
             return True, None, debug
+        
+        if len(unique_clusters) < 2 and len(source_types_found) >= 2:
+            return False, "WIRE_CHAIN_DUPLICATION", debug
             
         # Condition 2: 1 Strong + 1 Medium (but we checked len >= 2 above)
         # Re-check logic: If only 1 type, it's a fail.

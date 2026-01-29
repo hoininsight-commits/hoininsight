@@ -48,7 +48,7 @@ def verify_is31():
     ]
     res4, logs4 = engine.process_card(card4, art4)
     assert res4.status == "REJECT", f"Scenario 4 failed: {res4.status}"
-    assert res4.trigger_quote.reason_code == "REJECT:NON_INDEPENDENT"
+    assert res4.trigger_quote.reason_code == "REJECT:WIRE_CHAIN_DUPLICATION"
     print("✅ Scenario 4: Non-Independent REJECT verified.")
 
     # 5) Quote exceeds 2 lines / >240 chars → HOLD
