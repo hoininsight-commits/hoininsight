@@ -12,6 +12,7 @@ from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
+from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
 def main():
     base_dir = Path(".")
@@ -115,6 +116,13 @@ def main():
         # 8. Content Generation
         pack_path = generator.generate(pack_data)
         print(f"Content Pack Ready: {pack_path}")
+
+    # Final: Dashboard Build (IS-27) - Soft fail
+    try:
+        db_builder = DashboardBuilder(base_dir)
+        db_builder.build()
+    except Exception as e:
+        print(f"WARNING: Dashboard build failed: {e}")
     else:
         print("Signal held or rejected.")
 
