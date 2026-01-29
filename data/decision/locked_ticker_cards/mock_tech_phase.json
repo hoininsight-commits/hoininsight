@@ -1,0 +1,29 @@
+{
+  "card_type": "LOCKED_TICKER_CARD",
+  "status": "LOCKED",
+  "trigger_context": {
+    "type": "MAPPED_FROM_STEP2",
+    "event": "NVIDIA Blackwell Launch",
+    "timestamp": "Today"
+  },
+  "structural_logic": {
+    "forced_capex": "HBM3E",
+    "bottleneck_def": "HBM_STACKED_MEMORY"
+  },
+  "tickers": [
+    {
+      "ticker": [
+        "000660.KS"
+      ],
+      "name": "SK Hynix",
+      "role": "Sole Supplier (Initial)",
+      "why_irreplaceable_now": "Exclusive initial supplier for NVIDIA HBM3E.",
+      "evidence": [
+        "FACT_NVIDIA_SUPPLIER",
+        "FACT_SOLD_OUT_2024",
+        "FACT_YIELD_LEADER_MR_MUF"
+      ]
+    }
+  ],
+  "kill_switch": "SK Hynix: Samsung Electronics successfully qualifies HBM3E with NVIDIA."
+}

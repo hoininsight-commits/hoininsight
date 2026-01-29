@@ -1,0 +1,55 @@
+{
+  "card_type": "LOCKED_TICKER_CARD",
+  "status": "LOCKED",
+  "trigger_context": {
+    "type": "MAPPED_FROM_STEP2",
+    "event": "US Transformer Shortage",
+    "timestamp": "Today"
+  },
+  "structural_logic": {
+    "forced_capex": "UHV Transformers",
+    "bottleneck_def": "HV_TRANSFORMER_LEADTIME"
+  },
+  "tickers": [
+    {
+      "ticker": [
+        "267260.KS"
+      ],
+      "name": "HD Hyundai Electric",
+      "role": "Key US Vendor",
+      "why_irreplaceable_now": "Only major Asian vendor with massive US backlog and anti-dumping clearance.",
+      "evidence": [
+        "FACT_US_BACKLOG_GROWTH_80",
+        "FACT_ALABAMA_PLANT",
+        "FACT_RATED_345KV",
+        "FACT_ANTI_DUMPING_CLEAR"
+      ]
+    },
+    {
+      "ticker": [
+        "298040.KS"
+      ],
+      "name": "Hyosung Heavy Industries",
+      "role": "Secondary US Vendor",
+      "why_irreplaceable_now": "Memphis plant operational; capacity overflow beneficiary.",
+      "evidence": [
+        "FACT_MEMPHIS_PLANT",
+        "FACT_UK_GRID_DEAL",
+        "FACT_UTILIZATION_100"
+      ]
+    },
+    {
+      "ticker": [
+        "010120.KS"
+      ],
+      "name": "LS Electric",
+      "role": "Distribution Leader",
+      "why_irreplaceable_now": "Expanding into US market.",
+      "evidence": [
+        "FACT_DISTRIBUTION_LEADER",
+        "FACT_BATTERY_PLANT_DEAL"
+      ]
+    }
+  ],
+  "kill_switch": "HD Hyundai Electric: US DOE relaxes import ban on Chinese transformers. | Hyosung Heavy Industries: Quality control failure in US plant. | LS Electric: Failed US expansion."
+}
