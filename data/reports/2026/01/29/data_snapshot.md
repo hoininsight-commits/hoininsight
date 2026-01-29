@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-29T13:24:02Z`
+- ts_utc: `2026-01-29T13:28:05Z`
 - ymd_utc: `2026/01/29`
 - enabled_datasets: `32`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 256 | 2026-01-15T07:32:29Z | 2026-01-29T13:23:26Z | 104 | 255 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 257 | 2026-01-15T07:32:29Z | 2026-01-29T13:27:29Z | 105 | 256 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
 | CPI_USA | inflation_cpi_fred | OK | 947 | 1947-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/inflation/cpi_usa.csv | - |
 | FED_FUNDS | rates_fed_funds_fred | OK | 858 | 1954-07-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/rates/fed_funds.csv | - |
 | FIN_STRESS | risk_financial_stress_fred | OK | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/risk/financial_stress_usa.csv | - |
@@ -17,7 +17,7 @@
 | HY_SPREAD | credit_hy_spread_fred | OK | 7590 | 1996-12-31T00:00:00Z | 2026-01-27T00:00:00Z | 3 | 19 | 6 | 1 | 0 | data/curated/credit/hy_spread_usa.csv | - |
 | KOR_CPI | inflation_kor_cpi_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/inflation/korea_cpi.csv | - |
 | KOR_RATE | rates_kor_base_rate_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/rates/korea_base_rate.csv | - |
-| KOSPI | index_kospi_stooq | OK | 255 | 2026-01-15T07:32:40Z | 2026-01-29T13:23:29Z | 103 | 254 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
+| KOSPI | index_kospi_stooq | OK | 256 | 2026-01-15T07:32:40Z | 2026-01-29T13:27:33Z | 104 | 255 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
 | M2_USA | liquidity_m2_fred | OK | 804 | 1959-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/liquidity/m2_usa.csv | - |
 | M_AND_A_CB | struct_dart_cb_bw | OK | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 1 | 1 | 6 | 1 | 0 | data/curated/structural/cb_bw.csv | - |
 | M_AND_A_DISP | struct_dart_disposal | OK | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 2 | 2 | 6 | 1 | 0 | data/curated/structural/disposal.csv | - |
