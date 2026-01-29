@@ -44,3 +44,14 @@ IssueSignal이 발화하는 모든 트리거가 "출처 2중 이상 검증된 �
 `TRAP_ENGINE (IS-24) → FACT_VERIFIER (IS-25) → FINAL_DECISION (IS-15)`
 
 IS-24가 구조적 함정을 제거한다면, IS-25는 그 서사를 지탱하는 **데이터의 객관적 증거력**을 최종 심판한다.
+
+---
+
+## 6. Source Diversity Rule (IS-32) [NEW]
+Starting from IS-32, the Hard Fact Verifier requires source diversity to avoid "echo chambers". Simply having 두 news articles is no longer enough if they both derive from the same wire service or official release.
+
+### Requirements for PASS:
+1. **Min 2 Origin Clusters**: Evidence must come from at least two distinct root sources.
+2. **Min 2 Source Families**: Evidence must span at least two different categories (e.g., Official + Media).
+
+Refer to [SOURCE_DIVERSITY_ENGINE.md](file:///Users/jihopa/.gemini/antigravity/scratch/HoinInsight/docs/SOURCE_DIVERSITY_ENGINE.md) for full details.
