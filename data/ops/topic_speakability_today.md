@@ -2,7 +2,7 @@
 
 **SUMMARY**: 🟢 SPEAKABLE_NOW=0 | ⚪ NOT_SPEAKABLE_YET=1
 
-## ⚪ 지수 상승 속 섹터 하락의 이유 (gate_745b082f3b)
+## ⚪ 지수 상승 속 섹터 하락의 이유 (gate_3e3d9bbf24)
 - **Speakability**: NOT_SPEAKABLE_YET
 - **Blocking Reasons**: INSUFFICIENT_ANCHOR_STRENGTH, LOW_NARRATIVE_FIT
 - **Decision Basis**:
