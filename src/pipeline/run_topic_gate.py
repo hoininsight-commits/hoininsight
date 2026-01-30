@@ -11,6 +11,7 @@ from src.ops.source_diversity_auditor import SourceDiversityAuditor
 from src.issuesignal.time_decay import TriggerTimeDecayEngine
 from src.issuesignal.urgency_engine import UrgencyEngine
 from src.issuesignal.output_decider import OutputDecider
+from src.issuesignal.content_composer import ContentPackageComposer
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -128,6 +129,13 @@ def main(as_of_date: str):
         if "침묵" in fmt_ko and t.get("status") == "READY":
              t["status"] = "SILENT"
              t["demotion_reason"] = reason_ko
+
+    # [IS-35] Content Package Composition
+    composer = ContentPackageComposer()
+    for t in processed_ranked:
+        content_pkg = composer.compose(t)
+        if content_pkg:
+            t["content_package"] = content_pkg
 
     top1 = ranker.pick_top1(processed_ranked)
 

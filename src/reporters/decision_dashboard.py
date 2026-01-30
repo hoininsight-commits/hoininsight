@@ -97,6 +97,9 @@ class DecisionCard:
     output_format_ko: Optional[str] = None # 대형 영상, 숏츠, 등
     editorial_reason_ko: Optional[str] = None # 왜 지금인가 / 왜 침묵인가
 
+    # [IS-35] Content Package Composer
+    content_package: Optional[Dict[str, Any]] = None
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -400,6 +403,7 @@ class DecisionDashboard:
                 urgency_score=t.get("urgency_score"),
                 output_format_ko=t.get("output_format_ko"),
                 editorial_reason_ko=t.get("editorial_reason_ko"),
+                content_package=t.get("content_package"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1559,6 +1563,9 @@ class DecisionDashboard:
         
         # [IS-34] Render Editorial Decision
         self._render_editorial_decision_panel(lines, c)
+        
+        # [IS-35] Render Content Package
+        self._render_content_package_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1658,11 +1665,33 @@ class DecisionDashboard:
         lines.append(f"- **발화 압력 점수**: {urgency}점")
         lines.append(f"- **판단 근거**: {reason}")
         
-        # Visual urgency bar
-        bar_len = 10
-        filled = int(urgency / 10)
-        bar = "▓" * filled + "░" * (bar_len - filled)
+        description = f"위 조건이 충족되지 않는다면 이 분석은 즉시 파기해야 합니다."
         lines.append(f"- **긴급도**: `[{bar}]` ({urgency}/100)")
+
+    def _render_content_package_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-35 Content Package in Korean."""
+        if not c.content_package:
+            return
+
+        pkg = c.content_package
+        ctype = pkg.get("type", "알 수 없음")
+        content = pkg.get("content", "")
+
+        lines.append("\n### 📦 콘텐츠 패키지 (CONTENT PACKAGE)")
+        lines.append(f"**유형**: {ctype}")
+        lines.append(f"**생성 시간**: {pkg.get('composed_at', '시간 정보 없음')}")
+        lines.append(f"**적용 트리거**: {pkg.get('trigger_sentence', '정보 없음')}")
+        lines.append("\n---")
+        
+        if isinstance(content, dict):
+            # Short Form variants
+            for k, v in content.items():
+                lines.append(f"#### ⚡ {k} 버전")
+                lines.append(f"> {v}")
+                lines.append("")
+        else:
+            # Long Form or Text Card
+            lines.append(content)
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""
