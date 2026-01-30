@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T14:25:46Z",
+    "ts_utc": "2026-01-30T15:22:55Z",
     "dataset_id": "index_kospi_stooq",
     "topic_id": "index_kospi_stooq::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/index_kospi_stooq.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/01/30/index_kospi_stooq.json"
     },
     "rationale": "[L1] Percentile 93.3% (Watch) (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
