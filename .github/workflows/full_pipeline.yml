@@ -399,7 +399,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No intelligence changes to commit"
           else
-            git commit -m "chore: save intelligence artifacts and docs [skip ci]"
+            git commit -m "chore: save intelligence artifacts and docs"
             git fetch origin main
             git rebase origin/main
             git push origin main
