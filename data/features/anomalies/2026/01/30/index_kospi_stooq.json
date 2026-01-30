@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-01-30T10:07:33Z",
+    "ts_utc": "2026-01-30T10:40:05Z",
     "dataset_id": "index_kospi_stooq",
     "entity": "KOSPI",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": -0.62,
-      "percentile": 95.4,
+      "z_score": -0.63,
+      "percentile": 95.2,
       "value": 5224.36,
-      "rolling_mean_20d": 5235.494,
-      "reasoning": "Percentile 95.4% (Extreme)"
+      "rolling_mean_20d": 5235.6494999999995,
+      "reasoning": "Percentile 95.2% (Extreme)"
     }
   }
 ]
