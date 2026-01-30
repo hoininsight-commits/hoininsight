@@ -1557,7 +1557,7 @@ def generate_dashboard(base_dir: Path):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOIN Insight Dashboard (Step 84)</title>
+        <title>HOIN 인사이트 대시보드 (Step 84)</title>
         <style>
             {topic_card_css}
             

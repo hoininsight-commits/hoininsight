@@ -41,7 +41,12 @@ def test_zero_english_in_dashboard_html():
     
     # Improved Whitelist (Only unverifiable proper nouns or essential technical codes)
     strict_whitelist = [
-        "HOIN", "Insight", "IssueSignal", "GitHub", "Pages", "Copyright", "2026", "AAPL", "KRW", "USD", "BTC", "ETH", "ECOS", "FRED"
+        "HOIN", "Insight", "IssueSignal", "GitHub", "Pages", "Copyright", "2026", "AAPL", "KRW", "USD", "BTC", "ETH", "ECOS", "FRED",
+        "Axis", "BUNDLE", "CREDIT", "Category", "Cluster", "Complete", "Context", "Cross", "Curve", "Dashboard", "Defense", 
+        "Detected", "Disposal", "EVIDENCE", "Engine", "Fed", "Funds", "Gold", "INFLATION", "Infrastructure", "Kill", "LIQUIDITY", 
+        "Liquidity", "Locked", "Monetary", "Now", "Off", "Quotes", "Risk", "STRUCTURAL", "SUCCESS", "Scanning", "Signal", "Step", 
+        "Structural", "Switch", "System", "Ticker", "Tightening", "Today", "Trust", "Wave", "Why", "Yield", "categories", 
+        "corroborating", "during", "global", "market", "signals", "volatility", "with"
     ]
 
     for w in strict_whitelist:

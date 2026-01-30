@@ -314,7 +314,7 @@ class TopicCardRenderer:
         return """
         <div class="empty-state-card">
             <span class="empty-icon-small">☕️</span>
-            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (System Scanning)</strong></span>
+            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (시스템 스캐닝)</strong></span>
         </div>
         """
 
