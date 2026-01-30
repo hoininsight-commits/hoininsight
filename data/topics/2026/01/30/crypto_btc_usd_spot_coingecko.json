@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T09:13:00Z",
+    "ts_utc": "2026-01-30T09:22:12Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json L2 Signal",
@@ -10,10 +10,10 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": -0.89,
+        "z_score": -0.85,
         "percentile": 2.8,
-        "value": 82546.0,
-        "rolling_mean_20d": 84930.0,
+        "value": 82423.0,
+        "rolling_mean_20d": 84654.05,
         "reasoning": "Percentile 2.8% (Extreme)"
       },
       "regime": {
