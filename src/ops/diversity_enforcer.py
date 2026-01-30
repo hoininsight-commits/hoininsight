@@ -35,7 +35,14 @@ class DiversityEnforcer:
         Output: Dict with 'verdict', 'reason_code', and 'enriched_sources'.
         """
         if not sources:
-            return {"verdict": "REJECT", "reason_code": "NO_EVIDENCE", "enriched_sources": []}
+            return {
+                "verdict": "REJECT",
+                "reason_code": "NO_EVIDENCE",
+                "clusters_count": 0,
+                "families_count": 0,
+                "families_list": [],
+                "enriched_sources": []
+            }
 
         # 1. Enrich Sources
         enriched = []
