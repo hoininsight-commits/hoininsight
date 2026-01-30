@@ -1,6 +1,6 @@
 {
   "card_version": "phase50_dual_v1",
-  "generated_at": "2026-01-30T03:26:33.492375+00:00Z",
+  "generated_at": "2026-01-30T03:31:00.243420+00:00Z",
   "date": "2026-01-30",
   "blocks": {
     "regime": {
@@ -34,7 +34,6 @@
     "ANCHOR": {
       "step1_axis": [
         "index_kospi_stooq",
-        "crypto_btc_usd_spot_coingecko",
         "derived_gold_silver_ratio"
       ],
       "step6_gap": "Insufficient Evidence for L4",
@@ -60,7 +59,7 @@
       "title": "[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 96.0% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-30T03:26:25Z",
+        "ts_utc": "2026-01-30T03:30:52Z",
         "dataset_id": "index_spx_fred",
         "topic_id": "index_spx_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/30/index_spx_fred.json L2 Signal",
@@ -114,9 +113,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.96배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.42배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-30T03:26:25Z",
+        "ts_utc": "2026-01-30T03:30:52Z",
         "dataset_id": "index_kospi_stooq",
         "topic_id": "index_kospi_stooq::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/30/index_kospi_stooq.json L2 Signal",
@@ -126,11 +125,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.96,
+            "z_score": 2.42,
             "percentile": 100.0,
-            "value": 5262.23,
-            "rolling_mean_20d": 5226.5975,
-            "reasoning": "Z-Score 2.96 >= 2.0"
+            "value": 5264.06,
+            "rolling_mean_20d": 5228.737999999999,
+            "reasoning": "Z-Score 2.42 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -151,7 +150,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/30/index_kospi_stooq.json"
         },
-        "rationale": "[L2] Z-Score 2.96 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.42 >= 2.0 (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -170,9 +169,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)",
-      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.15 >= 2.0. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 1.6% (Extreme). 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-30T03:26:25Z",
+        "ts_utc": "2026-01-30T03:30:52Z",
         "dataset_id": "crypto_btc_usd_spot_coingecko",
         "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json L2 Signal",
@@ -182,11 +181,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": -2.15,
-            "percentile": 0.8,
-            "value": 82156.0,
-            "rolling_mean_20d": 86817.15,
-            "reasoning": "Z-Score -2.15 >= 2.0"
+            "z_score": -1.81,
+            "percentile": 1.6,
+            "value": 82225.0,
+            "rolling_mean_20d": 86530.1,
+            "reasoning": "Percentile 1.6% (Extreme)"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -207,7 +206,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json"
         },
-        "rationale": "[L2] Z-Score -2.15 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Percentile 1.6% (Extreme) (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -228,7 +227,7 @@
       "title": "[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-30T03:26:25Z",
+        "ts_utc": "2026-01-30T03:30:52Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/30/inflation_cpi_fred.json L2 Signal",
@@ -285,7 +284,7 @@
       "title": "[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-01-30T03:26:25Z",
+        "ts_utc": "2026-01-30T03:30:52Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/01/30/inflation_pce_fred.json L2 Signal",
