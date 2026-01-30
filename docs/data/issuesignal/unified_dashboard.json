@@ -2,10 +2,10 @@
   "date": "2026-01-30",
   "engine_status": "SUCCESS",
   "counts": {
-    "TRUST_LOCKED": 22,
+    "TRUST_LOCKED": 0,
     "TRIGGER": 0,
     "PRE_TRIGGER": 0,
-    "HOLD": 0,
+    "HOLD": 2,
     "REJECT": 0,
     "SILENT_DROP": 0
   },
@@ -224,8 +224,60 @@
     }
   ],
   "watchlist": [],
-  "hold_queue": [],
-  "reject_logs": [],
+  "hold_queue": [
+    {
+      "topic_id": "ID",
+      "title": "Untitled",
+      "status": "HOLD",
+      "one_liner": "-",
+      "trigger_type": "-",
+      "actor": "-",
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
+      "reason": "-",
+      "signature": null,
+      "authority_sentence": "-",
+      "forced_capex": "-",
+      "bottleneck": "-",
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": []
+    },
+    {
+      "topic_id": "ID",
+      "title": "Untitled",
+      "status": "HOLD",
+      "one_liner": "-",
+      "trigger_type": "-",
+      "actor": "-",
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
+      "reason": "-",
+      "signature": null,
+      "authority_sentence": "-",
+      "forced_capex": "-",
+      "bottleneck": "-",
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": []
+    }
+  ],
+  "reject_logs": [
+    {
+      "timestamp": "2026-01-30 22:22:20",
+      "topic_id": "SUMMARY",
+      "reason_code": "QUOTE_MISSING",
+      "fact_text": "전체 1건의 토픽이 이 사유로 보류/개선 중입니다."
+    },
+    {
+      "timestamp": "2026-01-30 22:22:20",
+      "topic_id": "SUMMARY",
+      "reason_code": "TRUST_LOCKED_FAIL",
+      "fact_text": "전체 1건의 토픽이 이 사유로 보류/개선 중입니다."
+    }
+  ],
   "timeline": [
     {
       "date": "2026-01-17",
@@ -388,6 +440,54 @@
     }
   ],
   "link_view": [
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "Untitled",
+        "status": "HOLD",
+        "one_liner": "-",
+        "trigger_type": "-",
+        "actor": "-",
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": []
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "Untitled",
+        "status": "HOLD",
+        "one_liner": "-",
+        "trigger_type": "-",
+        "actor": "-",
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": []
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
     {
       "issue_card": {
         "topic_id": "RAW-20260129150807",
