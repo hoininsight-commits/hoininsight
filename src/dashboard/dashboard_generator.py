@@ -2416,6 +2416,57 @@ def generate_dashboard(base_dir: Path):
         speak_topics = [t for t in speak_topics if t.get("title") != s_title]
         watch_topics = [t for t in watch_topics if t.get("title") != s_title]
     
+    # [IS-49] Top Block Logic (Definite Topic vs Silence)
+    top_block_html = ""
+    if final_card and final_card.get("status") == "TRUST_LOCKED":
+         # TOPIC LOCKED CASE
+         topic_title = final_card.get('human_prompt', '제목 없음')
+         script_exists = bool(script_body)
+         script_preview_txt = script_body[:100] + "..." if script_body else "스크립트가 아직 생성되지 않았습니다."
+         
+         top_block_html = f"""
+         <div style="background:white; border:2px solid #10b981; border-radius:12px; padding:25px; box-shadow:0 10px 15px -3px rgba(16, 185, 129, 0.1); display:flex; justify-content:space-between; align-items:center;">
+             <div style="flex:1;">
+                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                     <span style="background:#10b981; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">📌 오늘의 확정 토픽</span>
+                     <span style="color:#059669; font-weight:700; font-size:12px;">신뢰도: {final_card.get('blocks', {}).get('regime', {}).get('confidence', 0):.0%} (TRUST_LOCKED)</span>
+                 </div>
+                 <h2 style="font-size:24px; font-weight:800; color:#064e3b; margin:0 0 10px 0;">{topic_title}</h2>
+                 <div style="color:#374151; font-size:14px;">지금 말해야 하는 이유: <span style="font-weight:600;">{final_card.get('decision_rationale', '-')}</span></div>
+             </div>
+             <div style="display:flex; gap:10px; flex-direction:column;">
+                 <button onclick="copyScript()" style="background:#10b981; color:white; border:none; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
+                     📄 텍스트 스크립트 복사 ({'완료' if script_exists else '대기'})
+                 </button>
+                 <div style="display:flex; gap:5px;">
+                     <button onclick="alert('준비중')" style="flex:1; background:#ecfdf5; color:#065f46; border:1px solid #10b981; padding:8px; border-radius:6px; font-size:12px; cursor:pointer;">Longs 복사</button>
+                     <button onclick="alert('준비중')" style="flex:1; background:#ecfdf5; color:#065f46; border:1px solid #10b981; padding:8px; border-radius:6px; font-size:12px; cursor:pointer;">Shorts 복사</button>
+                 </div>
+             </div>
+         </div>
+         """
+    else:
+         # SILENCE CASE
+         reason = "독립 출처 부족" # Default fallback
+         if final_card:
+             reason = final_card.get("decision_rationale", "조건 충족 토픽 없음")
+         
+         top_block_html = f"""
+         <div style="background:white; border:2px solid #ef4444; border-radius:12px; padding:25px; box-shadow:0 10px 15px -3px rgba(239, 68, 68, 0.1); display:flex; justify-content:space-between; align-items:center;">
+             <div>
+                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                     <span style="background:#ef4444; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">❌ 오늘 발화할 토픽 없음 (침묵)</span>
+                     <span style="color:#b91c1c; font-weight:700; font-size:12px;">데이터 기준 미달</span>
+                 </div>
+                 <h2 style="font-size:24px; font-weight:800; color:#7f1d1d; margin:0 0 5px 0;">침묵 사유: {reason}</h2>
+                 <div style="color:#7f1d1d; font-size:13px; opacity:0.8;">무리한 발화는 신뢰도를 훼손합니다. 다음 기회를 기다리세요.</div>
+             </div>
+             <div>
+                 <div style="font-size:40px;">🤫</div>
+             </div>
+         </div>
+         """
+
     # [Phase 18] Generate HTML for Refactored Panels
     
     # [Grouping] Post-process Watch Topics (Deduplicate by Theme)
@@ -2891,6 +2942,11 @@ def generate_dashboard(base_dir: Path):
             </div>
         </div>
         
+        <!-- TOP BLOCK: Today's Definite Topic or Silence -->
+        <div style="max-width: 1600px; margin: 20px auto; padding: 0 20px;">
+            {top_block_html}
+        </div>
+
         <div class="dashboard-container">
             
             <!-- LEFT: Navigation Panel -->

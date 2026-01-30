@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T15:22:55Z",
+    "ts_utc": "2026-01-30T14:25:46Z",
     "dataset_id": "derived_yield_curve_10y_2y",
     "topic_id": "derived_yield_curve_10y_2y::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/derived_yield_curve_10y_2y.json L2 Signal",
@@ -36,6 +36,7 @@
       "anomalies_path": "data/features/anomalies/2026/01/30/derived_yield_curve_10y_2y.json"
     },
     "rationale": "[L2] Percentile 96.8% (Extreme) (Regime x1.0)",
-    "links": []
+    "links": [],
+    "is_pre_structural": false
   }
 ]

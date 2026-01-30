@@ -302,6 +302,10 @@ jobs:
           python -m src.dashboard.topic_exporter
           python -m src.dashboard.dashboard_generator
 
+      - name: Run IssueSignal Engine (IS-49 Loop Lock)
+        run: |
+          python -m src.issuesignal.run_issuesignal
+
       - name: Generate IssueSignal Dashboard
         run: |
           mkdir -p data/issuesignal/packs
@@ -321,6 +325,12 @@ jobs:
           cp -r data/dashboard/* docs/data/ || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
           cp -r data/reports docs/data/ || true
+
+      - name: Upload Pages Artifact (IS-49 Guarantee)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-artifact
+          path: docs/
 
       - name: Verify Phase 39 Topic Candidates
         run: |

@@ -71,15 +71,15 @@ class DashboardRenderer:
             HOIN Unified Ops Center
         </h1>
         <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">Data: {summary.date}</div>
-            <div class="status-badge status-success">ENGINE: {summary.engine_status}</div>
+            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">날짜: {summary.date}</div>
+            <div class="status-badge status-success">엔진: {summary.engine_status}</div>
         </div>
     </div>
 
     <div class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Evidence</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">Link View (IS ↔ Hoin)</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 증거 (Hoin Evidence)</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">연결 보기 (IS ↔ Hoin)</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
@@ -106,21 +106,21 @@ class DashboardRenderer:
         <div class="insight-grid">
             {self._render_hoin_evidence(summary.hoin_evidence)}
         </div>
-        {f"<div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>No Hoin artifacts detected for {summary.date}</div>" if not summary.hoin_evidence else ""}
+        {f"<div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>{summary.date}에 감지된 호인 아티팩트가 없습니다.</div>" if not summary.hoin_evidence else ""}
     </div>
 
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
         <div class="filter-bar">
-            <b>Filters:</b>
+            <b>필터:</b>
             <select id="statusFilter" onchange="filterLinkView()">
-                <option value="ALL">All Status</option>
+                <option value="ALL">전체 상태</option>
                 <option value="TRUST_LOCKED">TRUST_LOCKED</option>
                 <option value="HOLD">HOLD</option>
                 <option value="REJECT">REJECT</option>
             </select>
-            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Linked Evidence Only</label>
-            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Proof Only</label>
+            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결만 보기</label>
+            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 검증 완료만 보기</label>
         </div>
         {self._render_link_view(summary.link_view)}
     </div>
@@ -170,11 +170,11 @@ class DashboardRenderer:
     def _render_counters(self, counts: dict) -> str:
         items = []
         status_map = {
-            "TRUST_LOCKED": "확정(LOCKED)",
-            "REJECT": "반려(REJECT)",
-            "PRE_TRIGGER": "감시(WATCH)",
-            "HOLD": "보류(HOLD)",
-            "SILENT_DROP": "침묵(SILENT)"
+            "TRUST_LOCKED": "확정",
+            "REJECT": "반려",
+            "PRE_TRIGGER": "감시",
+            "HOLD": "보류",
+            "SILENT_DROP": "침묵"
         }
         colors = {
             "TRUST_LOCKED": "#10B981",
@@ -195,7 +195,7 @@ class DashboardRenderer:
         return "\n".join(items)
 
     def _render_top_cards(self, cards: List[DecisionCard]) -> str:
-        if not cards: return "<div style='color:var(--text-sub)'>No high-trust insights available today.</div>"
+        if not cards: return "<div style='color:var(--text-sub)'>오늘 확정된 신뢰성 높은 인사이트가 없습니다.</div>"
         items = []
         for c in cards:
             items.append(f"""
@@ -218,7 +218,7 @@ class DashboardRenderer:
         return "\n".join(items)
 
     def _render_watchlist(self, cards: List[DecisionCard]) -> str:
-        if not cards: return "<div style='color:var(--text-sub)'>Watchlist empty.</div>"
+        if not cards: return "<div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>"
         rows = []
         for c in cards:
             rows.append(f"""
@@ -364,7 +364,7 @@ class DashboardRenderer:
         # 1. Trigger Quote Section (IS-31)
         items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>")
         if not c.trigger_quote:
-            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div>")
+            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div>")
         else:
             q = c.trigger_quote
             q_status_class = "status-matched" if q.verification_status == "PASS" else "status-no-ev"
@@ -384,7 +384,7 @@ class DashboardRenderer:
         # 1. Hoin Evidence Section
         items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div>")
         if not row.linked_evidence:
-            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card ({c.topic_id}).</div>")
+            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 ({c.topic_id}).</div>")
         else:
             items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); font-size:0.85em;'>MATCH REASON: {row.match_reason}</div>")
             for ev in row.linked_evidence:
@@ -401,7 +401,7 @@ class DashboardRenderer:
         # 2. Proof Pack Section (IS-30)
         items.append(f"<div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>")
         if not c.proof_packs:
-            items.append(f"<div style='color:var(--text-sub)'>No atomic proof packs generated.</div>")
+            items.append(f"<div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>")
         else:
             for p in c.proof_packs:
                 f_items = []
