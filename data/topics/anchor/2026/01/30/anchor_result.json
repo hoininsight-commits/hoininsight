@@ -1,19 +1,18 @@
 {
   "data_axis": [
-    "index_kospi_stooq",
     "derived_gold_silver_ratio"
   ],
   "baseline_match": [
-    "index_kospi_stooq: Volatility Surge (Z=2.42)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=2.43)"
+    "derived_gold_silver_ratio: Single Axis Surge (Z=-2.43)"
   ],
-  "anomaly_logic": "Risk Off",
-  "why_now_type": "Structural-driven",
+  "anomaly_logic": "Unknown (Single Axis)",
+  "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation > 2.0 Sigma",
-  "gap_detection": "Insufficient Evidence for L4",
+  "level_proof": "Statistical Deviation Z=-2.43 (No Cluster)",
+  "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
-    "Need Volume/Flow Data to verify Capital Fixation"
+    "Need Correlated Asset Movement",
+    "Need News/Event Confirmation"
   ],
   "pre_structural_context": null
 }
