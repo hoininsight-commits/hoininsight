@@ -297,15 +297,30 @@ jobs:
         run: |
           python -m src.decision.final_decision_card
 
-      - name: Generate Dashboard (Update)
+      - name: Generate Main Dashboard
         run: |
+          python -m src.dashboard.topic_exporter
           python -m src.dashboard.dashboard_generator
 
-      - name: Generate Dashboard Manifest & Health (Step 26 & 33)
+      - name: Generate IssueSignal Dashboard
+        run: |
+          mkdir -p data/issuesignal/packs
+          python3 -m src.issuesignal.dashboard.build_dashboard
+
+      - name: Generate Ops Metadata
         run: |
           python -m src.ops.dashboard_manifest
           python -m src.ops.health_check
           python -m src.ops.event_coverage
+
+      - name: Prepare Docs for Deployment
+        run: |
+          mkdir -p docs/data
+          mkdir -p docs/issuesignal
+          cp dashboard/index.html docs/index.html
+          cp -r data/dashboard/* docs/data/ || true
+          cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
+          cp -r data/reports docs/data/ || true
 
       - name: Verify Phase 39 Topic Candidates
         run: |
@@ -384,8 +399,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "No intelligence changes to commit"
           else
-            git commit -m "chore: save intelligence artifacts [skip ci]"
-            git pull --rebase origin main
+            git commit -m "chore: save intelligence artifacts and docs [skip ci]"
+            git fetch origin main
+            git rebase origin/main
             git push origin main
           fi
 
