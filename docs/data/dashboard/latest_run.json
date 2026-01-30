@@ -1,8 +1,8 @@
 {
   "run_date": "2026-01-30",
-  "run_ts": "2026-01-30T04:18:20.077438",
+  "run_ts": "2026-01-30T04:27:19.991294",
   "report_md": "data/reports/2026/01/30/daily_brief.md",
-  "decision_md": null,
+  "decision_md": "data/reports/2026/01/30/decision_dashboard.md",
   "daily_lock": null,
   "script_md": "data/topics/gate/2026/01/30/script_v1_gate_a0cb00f390.md",
   "fact_first_shadow_json": null,
@@ -39,7 +39,6 @@
   "issue_signal_narrative_json": "data/ops/issue_signal_narrative_today.json",
   "issue_signal_narrative_md": "data/ops/issue_signal_narrative_today.md",
   "missing": [
-    "decision_dashboard.md",
     "daily_lock.json"
   ]
 }
