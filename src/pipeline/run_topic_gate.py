@@ -15,6 +15,7 @@ from src.issuesignal.content_composer import ContentPackageComposer
 from src.issuesignal.audience_gate import AudienceGateEngine
 from src.issuesignal.followup_engine import FollowUpEngine
 from src.issuesignal.membership_queue import MembershipQueueEngine
+from src.issuesignal.voice_lock import VoiceLockEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -155,6 +156,25 @@ def main(as_of_date: str):
     # [IS-38] Membership-Only Topic Queue
     mem_queue_eng = MembershipQueueEngine()
     membership_queue = mem_queue_eng.generate_queue(processed_ranked)
+
+    # [IS-39] Human Voice Lock
+    voice_eng = VoiceLockEngine()
+    for t in processed_ranked:
+        pkg = t.get("content_package")
+        if pkg:
+            # We lock long form content as lead
+            if "content" in pkg and isinstance(pkg["content"], str):
+                res = voice_eng.apply_lock(pkg["content"])
+                pkg["content"] = res["locked_content"]
+                t["voice_consistent"] = res["voice_consistent"]
+            elif "content" in pkg and isinstance(pkg["content"], dict):
+                # Lock short variants
+                is_consist = True
+                for k, v in pkg["content"].items():
+                    res = voice_eng.apply_lock(v)
+                    pkg["content"][k] = res["locked_content"]
+                    if not res["voice_consistent"]: is_consist = False
+                t["voice_consistent"] = is_consist
 
     top1 = ranker.pick_top1(processed_ranked)
 

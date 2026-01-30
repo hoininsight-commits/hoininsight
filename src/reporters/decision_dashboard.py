@@ -106,6 +106,8 @@ class DecisionCard:
     # [IS-37] Narrative Continuity & Follow-up
     follow_up_plans: Optional[List[Dict[str, str]]] = None # 토픽, 예상 시점, 사유
 
+    voice_consistent: bool = False # [IS-39] 화자 일관성: LOCKED
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -420,6 +422,7 @@ class DecisionDashboard:
                 audience_ko=t.get("audience_ko"),
                 distribution_reason_ko=t.get("distribution_reason_ko"),
                 follow_up_plans=t.get("follow_up_plans"),
+                voice_consistent=t.get("voice_consistent", False),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1538,6 +1541,9 @@ class DecisionDashboard:
         else:
             badges.append(c.get('eligibility_badge', 'NOT SPEAKABLE'))
             
+        if c.get('voice_consistent'):
+            badges.append("🔒 **화자 일관성: LOCKED**")
+        
         lines.append(" | ".join(badges))
         
         # Content
