@@ -1,0 +1,24 @@
+{
+  "run_date_kst": "2026-01-30",
+  "run_ts_kst": "2026-01-30 22:22:20",
+  "topics_total": 2,
+  "topics_active": 0,
+  "topics_hold": 2,
+  "topics_silent": 0,
+  "top_reason_counts": [
+    {
+      "reason": "QUOTE_MISSING",
+      "count": 1
+    },
+    {
+      "reason": "TRUST_LOCKED_FAIL",
+      "count": 1
+    }
+  ],
+  "pinned_topic_ids": [],
+  "paths": {
+    "dashboard_json": "data/issuesignal/dashboard.json",
+    "packs_root": "data/issuesignal/packs/",
+    "hoin_today": "data/decision/2026/01/30/final_decision_card.json"
+  }
+}

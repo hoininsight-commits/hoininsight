@@ -87,16 +87,17 @@ class DashboardRenderer:
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
+        {self._render_no_topic_alert(summary)}
         <div class="summary-grid">
             {self._render_counters(summary.counts)}
         </div>
-        <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
+        <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
         <div class="insight-grid">
             {self._render_top_cards(summary.top_cards)}
         </div>
-        <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
+        <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
         {self._render_watchlist(summary.watchlist)}
-        <div class="section-title">🚫 REJECT LOGS</div>
+        <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
         <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
             {self._render_reject_logs(summary.reject_logs)}
         </div>
@@ -171,17 +172,26 @@ class DashboardRenderer:
 
     def _render_counters(self, counts: dict) -> str:
         items = []
+        status_map = {
+            "TRUST_LOCKED": "확정(LOCKED)",
+            "REJECT": "반려(REJECT)",
+            "PRE_TRIGGER": "감시(WATCH)",
+            "HOLD": "보류(HOLD)",
+            "SILENT_DROP": "침묵(SILENT)"
+        }
         colors = {
             "TRUST_LOCKED": "#10B981",
             "REJECT": "#EF4444",
             "PRE_TRIGGER": "#3B82F6",
-            "HOLD": "#F59E0B"
+            "HOLD": "#F59E0B",
+            "SILENT_DROP": "#6B7280"
         }
         for status, count in counts.items():
+            if status not in status_map: continue
             color = colors.get(status, "#6B7280")
             items.append(f"""
             <div class="summary-card" style="border-top: 3px solid {color}">
-                <div style="font-size: 0.8em; color: var(--text-sub);">{status}</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">{status_map[status]}</div>
                 <div class="count">{count}</div>
             </div>
             """)
@@ -239,16 +249,37 @@ class DashboardRenderer:
         """
 
     def _render_reject_logs(self, logs: List[RejectLog]) -> str:
-        if not logs: return "No rejections logged recently."
+        if not logs: return "최근 기록된 개선/반려 내역이 없습니다."
         items = []
         for l in logs:
             items.append(f"""
-            <div class="reject-item">
-                [{l.timestamp}] <span class="reject-code">{l.reason_code}</span> | 
-                <b>{l.topic_id}</b>: {l.fact_text}
+            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
+                <span style="color:#9CA3AF; font-size:0.8em;">[{l.timestamp}]</span> 
+                <span class="badge-status status-no-ev" style="margin:0 8px;">{l.reason_code}</span>
+                <b style="color:#374151;">{l.topic_id}</b>: <span style="color:#4B5563;">{l.fact_text}</span>
             </div>
             """)
         return "\n".join(items)
+
+    def _render_no_topic_alert(self, summary: DashboardSummary) -> str:
+        if summary.counts.get("TRUST_LOCKED", 0) > 0:
+            return ""
+        
+        top_reasons = []
+        for log in summary.reject_logs:
+            if log.reason_code not in top_reasons:
+                top_reasons.append(log.reason_code)
+        
+        reasons_html = ", ".join([f"<b>{r}</b>" for r in top_reasons[:3]])
+        return f"""
+        <div style="background:#FFFBEB; border:1px solid #F59E0B; padding:20px; border-radius:12px; margin-bottom:30px; display:flex; gap:20px; align-items:center;">
+            <div style="font-size:2em;">⚠️</div>
+            <div>
+                <div style="font-weight:bold; color:#92400E; font-size:1.1em; margin-bottom:5px;">오늘 확정된 발화 토픽이 없습니다.</div>
+                <div style="font-size:0.9em; color:#B45309;">주요 보류 사유: {reasons_html if top_reasons else "데이터 신뢰도 검증 중"}</div>
+            </div>
+        </div>
+        """
 
     def _render_hoin_evidence(self, items: List[HoinEvidenceItem]) -> str:
         res = []

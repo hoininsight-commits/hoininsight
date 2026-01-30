@@ -197,9 +197,24 @@ class DecisionDashboard:
         return candidates[:3]
 
     def _render_pin_board(self, lines: List[str], pins: List[Dict[str, Any]], ymd: str):
+        # (IS-48) Sync with SSOT index
+        index_path = self.base_dir / "data" / "issuesignal" / "packs" / "latest_index.json"
+        index_data = {}
+        if index_path.exists():
+            try:
+                with open(index_path, "r", encoding="utf-8") as f:
+                    index_data = json.load(f)
+            except: pass
+
+        run_ts = index_data.get("run_ts_kst") or f"{ymd} 09:00 KST"
+        
         lines.append(f"## 📌 오늘의 확정 토픽 (TOP {len(pins)})")
         if not pins:
-            lines.append("> **확정된 토픽 없음**: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.")
+            # (IS-48) Show reasons for 0 topics
+            reasons = index_data.get("top_reason_counts", [])
+            reason_str = ", ".join([f"**{r['reason']}**" for r in reasons[:3]]) if reasons else "데이터 신뢰도 검증 중"
+            lines.append(f"> **오늘 확정된 토픽 없음**: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.")
+            lines.append(f"> - **주요 보류 사유**: {reason_str}")
             return
 
         for c in pins:
@@ -208,7 +223,7 @@ class DecisionDashboard:
             why = c.get("editorial_reason_ko") or c.get("reason") or "사유 미정"
             
             lines.append(f"> ### 🚩 {c.get('title', 'Untitled')}")
-            lines.append(f"> - **형식**: {fmt} | **압력**: {score}점 | **시각**: {ymd} 09:00 KST")
+            lines.append(f"> - **형식**: {fmt} | **압력**: {score}점 | **시각**: {run_ts}")
             lines.append(f"> - **Why Now**: {why}")
             lines.append(">")
 

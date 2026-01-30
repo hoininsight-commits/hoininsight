@@ -220,8 +220,21 @@ def main():
     try:
         db_builder = DashboardBuilder(base_dir)
         db_builder.build()
+        
+        # (IS-48) Generate SSOT Index
+        from src.issuesignal.index_generator import IssueSignalIndexGenerator
+        index_gen = IssueSignalIndexGenerator(base_dir)
+        # In a real run, we'd collect all cards from this session.
+        # For now, we simulate with the last card processed if success, or empty if fail.
+        cards_for_index = []
+        if 'decision_card_model' in locals():
+            import dataclasses
+            cards_for_index.append(dataclasses.asdict(locals()['decision_card_model']))
+        
+        index_gen.generate(cards_for_index)
+        
     except Exception as e:
-        print(f"WARNING: Dashboard build failed: {e}")
+        print(f"WARNING: Dashboard build or SSOT generation failed: {e}")
     else:
         print("Signal held or rejected.")
 

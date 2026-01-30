@@ -1531,15 +1531,34 @@ def generate_dashboard(base_dir: Path):
             </div>
             """
 
+    # (IS-48) Sync with SSOT index
+    index_path = base_dir / "data" / "issuesignal" / "packs" / "latest_index.json"
+    index_data = {}
+    if index_path.exists():
+        try:
+            with open(index_path, "r", encoding="utf-8") as f:
+                index_data = json.load(f)
+        except: pass
+
+    # Override ymd with SSOT date if available
+    ymd_ssot = index_data.get("run_date_kst", ymd)
+    
     # [IS-45] Load Operational Dashboard & Convert to HTML for Embedding
-    ops_dashboard_md_path = base_dir / "data" / "reports" / ymd.replace("-", "/") / "operational_dashboard.md"
+    ops_dashboard_md_path = base_dir / "data" / "reports" / ymd_ssot.replace("-", "/") / "operational_dashboard.md"
     ops_dashboard_html = ""
     if ops_dashboard_md_path.exists():
         ops_md_content = ops_dashboard_md_path.read_text(encoding="utf-8")
-        # Reuse existing markdown parser
         ops_dashboard_html = parse_markdown(ops_md_content)
     else:
-        ops_dashboard_html = "<div class='empty-state'><h3>📉 아직 생성된 운영 대시보드가 없습니다.</h3></div>"
+        # Check if we have reasons in SSOT
+        reasons = index_data.get("top_reason_counts", [])
+        reason_str = ", ".join([f"<b>{r['reason']}</b>" for r in reasons[:3]]) if reasons else "데이터 분석 중"
+        ops_dashboard_html = f"""
+        <div style="background:#FFFBEB; border:1px solid #F59E0B; padding:30px; border-radius:12px; text-align:center;">
+             <h3 style="color:#92400E; margin-bottom:10px;">오늘 확정된 토픽이 없습니다.</h3>
+             <p style="color:#B45309;">주요 보류 사유: {reason_str}</p>
+        </div>
+        """
 
     # [NEW] YouTube Inbox View
     youtube_videos = _load_youtube_videos(base_dir)

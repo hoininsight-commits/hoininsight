@@ -12,37 +12,57 @@ class DashboardLoader:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
 
-    def load_today_summary(self, ymd: str) -> DashboardSummary:
+    def load_today_summary(self, ymd_requested: str) -> DashboardSummary:
+        # (IS-48) Read SSOT index first
+        index_path = self.base_dir / "data" / "issuesignal" / "packs" / "latest_index.json"
+        index_data = {}
+        if index_path.exists():
+            try:
+                with open(index_path, "r", encoding="utf-8") as f:
+                    index_data = json.load(f)
+            except: pass
+
+        ymd = index_data.get("run_date_kst", ymd_requested)
+        
         counts = {
-            "TRUST_LOCKED": 0,
+            "TRUST_LOCKED": index_data.get("topics_active", 0),
             "TRIGGER": 0,
             "PRE_TRIGGER": 0,
-            "HOLD": 0,
-            "REJECT": 0,
-            "SILENT_DROP": 0
+            "HOLD": index_data.get("topics_hold", 0),
+            "REJECT": index_data.get("topics_silent", 0),
+            "SILENT_DROP": index_data.get("topics_silent", 0)
         }
         
-        # 1. Load Emission Packs for counts (SILENT_DROP vs others)
-        pack_dir = self.base_dir / "data" / "issuesignal" / "packs"
-        if pack_dir.exists():
-            # Count files created today
-            for f in pack_dir.glob("*.yaml"):
-                # Simplified check for simulation
-                counts["TRUST_LOCKED"] += 1
-
-        # 2. Load Decision Cards
+        # 2. Load Decision Cards (Use pinned IDs from index if available)
+        pinned_ids = index_data.get("pinned_topic_ids", [])
         cards = self._load_recent_cards()
-        top_cards = [c for c in cards if c.status == "TRUST_LOCKED"][:3]
+        
+        # Priority sort: Pinned first
+        top_cards = []
+        if pinned_ids:
+            pinned_map = {c.topic_id: c for c in cards}
+            for pid in pinned_ids:
+                if pid in pinned_map and pinned_map[pid].status == "TRUST_LOCKED":
+                    top_cards.append(pinned_map[pid])
+        
+        if not top_cards:
+            top_cards = [c for c in cards if c.status == "TRUST_LOCKED"][:3]
+
         watchlist = [c for c in cards if c.status == "PRE_TRIGGER"]
         hold_queue = [c for c in cards if c.status == "HOLD"]
 
         # 3. Load Reject Logs
         reject_logs = self._load_reject_logs()
-
-        # Update counts based on loaded cards
-        for c in cards:
-            if c.status in counts:
-                counts[c.status] += 1
+        
+        # (IS-48) Enrich reject logs with Top Reasons from index if counts are zero
+        if not reject_logs and index_data.get("top_reason_counts"):
+            for entry in index_data["top_reason_counts"]:
+                reject_logs.append(RejectLog(
+                    timestamp=index_data.get("run_ts_kst", "-"),
+                    topic_id="SUMMARY",
+                    reason_code=entry["reason"],
+                    fact_text=f"전체 {entry['count']}건의 토픽이 이 사유로 보류/개선 중입니다."
+                ))
 
         # 4. Load Hoin Evidence (IS-29)
         hoin_evidence = self._load_hoin_evidence(ymd)
