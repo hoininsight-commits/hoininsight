@@ -100,6 +100,10 @@ class DecisionCard:
     # [IS-35] Content Package Composer
     content_package: Optional[Dict[str, Any]] = None
 
+    # [IS-36] Audience Gate & Distribution Control
+    audience_ko: Optional[str] = None # 공개, 멤버십, 내부전용
+    distribution_reason_ko: Optional[str] = None # 배포 결정 사유
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -404,6 +408,8 @@ class DecisionDashboard:
                 output_format_ko=t.get("output_format_ko"),
                 editorial_reason_ko=t.get("editorial_reason_ko"),
                 content_package=t.get("content_package"),
+                audience_ko=t.get("audience_ko"),
+                distribution_reason_ko=t.get("distribution_reason_ko"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1566,6 +1572,9 @@ class DecisionDashboard:
         
         # [IS-35] Render Content Package
         self._render_content_package_panel(lines, c)
+        
+        # [IS-36] Render Distribution Control
+        self._render_distribution_control_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1692,6 +1701,34 @@ class DecisionDashboard:
         else:
             # Long Form or Text Card
             lines.append(content)
+
+    def _render_distribution_control_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-36 Distribution Control panel in Korean."""
+        if not c.audience_ko:
+            return
+
+        audience = c.audience_ko
+        reason = c.distribution_reason_ko or "배포 정책에 따름"
+
+        # Badge based on audience
+        icon_map = {
+            "공개": "🌐",
+            "멤버십": "💎",
+            "내부전용": "🔒"
+        }
+        icon = icon_map.get(audience, "⚪")
+
+        lines.append("\n### 🛂 배포 제어 (DISTRIBUTION CONTROL)")
+        lines.append(f"**노출 대상**: {icon} **{audience}**")
+        lines.append(f"- **결정 사유**: {reason}")
+        
+        # Small distribution restriction badge
+        if audience == "내부전용":
+            lines.append("> [!CAUTION]\n> **외부 유출 금지**: 본 내용은 내부 분석용이며 외부 배포가 불가합니다.")
+        elif audience == "멤버십":
+            lines.append("> [!IMPORTANT]\n> **멤버십 한정**: 후원회원 및 멤버십 전용 커뮤니티에 선배포 되는 내용입니다.")
+        else:
+            lines.append("> [!NOTE]\n> **공개 배포**: 모든 플랫폼에 즉시 배포 가능한 공개 콘텐츠입니다.")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""
