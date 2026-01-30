@@ -37,11 +37,11 @@ Historical context:
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/30/struct_dart_disposal.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] SPX: data/features/anomalies/2026/01/30/index_spx_fred.json L2 Signal (base=6.00, final_m=10.56) | Mom: UP (slope=1.00) -> x1.1 | App7d=4
 - [HIGH] YIELD_CURVE: data/features/anomalies/2026/01/30/derived_yield_curve_10y_2y.json L2 Signal (base=6.00, final_m=10.56) | Mom: UP (slope=1.00) -> x1.1 | App7d=4
-- [HIGH] KOSPI: data/features/anomalies/2026/01/30/index_kospi_stooq.json L2 Signal (base=6.00, final_m=9.57) | Mom: UP (slope=1.50) -> x1.1 | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/01/30/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/30/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/30/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] BTCUSD: data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.73) | Mom: DOWN (slope=-0.75) -> x0.9 | App7d=5
+- [MED] KOSPI: data/features/anomalies/2026/01/30/index_kospi_stooq.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] US10Y: data/features/anomalies/2026/01/30/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] VIX: data/features/anomalies/2026/01/30/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
