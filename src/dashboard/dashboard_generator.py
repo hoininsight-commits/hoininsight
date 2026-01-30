@@ -1305,10 +1305,10 @@ def generate_dashboard(base_dir: Path):
                         {titles_html}
                         
                         <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border-left:3px solid #3b82f6;">
-                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">맥락 (Context)</div>
+                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">맥락 정보 (Context)</div>
                             <div style="font-size:13px; color:#475569;">
-                                <strong>토픽 ID:</strong> {p_data.get('topic_id')}<br>
-                                <strong>Why Now:</strong> {script.get('why_now')}
+                                <strong>토픽 ID:</strong> {p_data.get('topic_id').replace('NO_TOPIC', '감지된 토픽 없음')}<br>
+                                <strong>발화 시점:</strong> {script.get('why_now')}
                             </div>
                         </div>
                     </div>
@@ -1757,7 +1757,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
                 <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (Today)</div>
+                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (금일)</div>
             </div>
         </div>
         
