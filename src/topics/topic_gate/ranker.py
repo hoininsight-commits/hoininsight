@@ -11,13 +11,15 @@ class Ranker:
             hook_score = self._hook_score(c)
             
             # 1) Number score: 정량적 증거가 많을수록 가산
-            number_score = len(c.numbers) * 0.5
+            numbers = c.numbers if hasattr(c, "numbers") else c.get("numbers", [])
+            number_score = len(numbers) * 0.5
             
             # 2) Evidence quality score: 이벤트 연동 여부 및 출처 신뢰도 반영
             evidence_quality_score = 0.0
             linked_event_req_conf = False
             
-            for ref in c.evidence_refs:
+            evidence_refs = c.evidence_refs if hasattr(c, "evidence_refs") else c.get("evidence_refs", [])
+            for ref in evidence_refs:
                 if ref.startswith("events:"):
                     parts = ref.split(":")
                     if len(parts) >= 3:
@@ -43,9 +45,12 @@ class Ranker:
             final = hook_score + number_score + timeliness_score + explainability_score + evidence_quality_score
             
             # Metadata for Top1 filtering
-            c.requires_confirmation = linked_event_req_conf
+            if hasattr(c, "requires_confirmation"):
+                c.requires_confirmation = linked_event_req_conf
+            else:
+                c["requires_confirmation"] = linked_event_req_conf
             
-            c.rank_features = RankFeatures(
+            features = RankFeatures(
                 hook_score=hook_score,
                 number_score=number_score,
                 timeliness_score=timeliness_score,
@@ -53,9 +58,14 @@ class Ranker:
                 evidence_quality_score=evidence_quality_score,
                 final_score=final,
             )
+            
+            if hasattr(c, "rank_features"):
+                c.rank_features = features
+            else:
+                c["rank_features"] = features
             ranked.append(c)
 
-        ranked.sort(key=lambda x: x.rank_features.final_score, reverse=True)
+        ranked.sort(key=lambda x: x.rank_features.final_score if hasattr(x, "rank_features") else x["rank_features"].final_score, reverse=True)
         return ranked
 
     def pick_top1(self, ranked: List[Candidate]) -> Candidate:
@@ -73,9 +83,10 @@ class Ranker:
         # 여기서는 가장 점수 높은 것을 반환하되, 경고성으로 첫번째 반환
         return ranked[0]
 
-    def _hook_score(self, c: Candidate) -> float:
+    def _hook_score(self, c: Candidate | dict) -> float:
         # 단순 룰: 인지부조화 타입에 가중치
-        hooks = set(c.hook_signals)
+        hook_signals = c.hook_signals if hasattr(c, "hook_signals") else c.get("hook_signals", [])
+        hooks = set(hook_signals)
         score = 0.0
         if "earnings_up_price_down" in hooks: score += 2.0
         if "index_up_sector_down" in hooks: score += 1.5
