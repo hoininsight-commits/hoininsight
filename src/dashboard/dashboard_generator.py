@@ -1642,6 +1642,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
                 <div class="menu-item" onclick="location.href='./issuesignal/'">🛡️ IssueSignal 연산 현황</div>
+                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="window.open('../data/reports/{ymd.replace('-', '/')}/operational_dashboard.md', '_blank')">📌 운영 대시보드 (Today)</div>
             </div>
         </div>
         
