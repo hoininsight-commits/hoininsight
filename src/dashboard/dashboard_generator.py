@@ -1110,12 +1110,18 @@ def generate_dashboard(base_dir: Path):
     except: pass
 
     # [NEW] Entity Mapping (Moved here)
-    entity_pool = EntityMappingLayer.map_target_entities(today_json, final_card)
-    entity_pool_html = TopicCardRenderer.render_entity_pool(entity_pool)
+    entity_pool = []
+    classified_entities = []
+    entity_state_html = ""
+    entity_pool_html = ""
     
-    # [NEW] Entity State Classification (Step 84)
-    classified_entities = EntityStateClassifier.classify_entities(entity_pool, today_json)
-    entity_state_html = TopicCardRenderer.render_entity_state_panel(classified_entities)
+    if today_json:
+        entity_pool = EntityMappingLayer.map_target_entities(today_json, final_card)
+        entity_pool_html = TopicCardRenderer.render_entity_pool(entity_pool)
+        
+        # [NEW] Entity State Classification (Step 84)
+        classified_entities = EntityStateClassifier.classify_entities(entity_pool, today_json)
+        entity_state_html = TopicCardRenderer.render_entity_state_panel(classified_entities)
     
     # [NEW] Structural Memory Engine (Step 85)
     memory_engine = StructuralMemoryEngine(base_dir)
