@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-29T15:09:40Z
-- finished_utc: 2026-01-29T15:10:16Z
+- started_utc: 2026-01-30T00:51:53Z
+- finished_utc: 2026-01-30T00:52:32Z
 - status: SUCCESS
 
 ## details
@@ -37,7 +37,6 @@ topic_lock: ok (lock=False)
 economic_hunter_narrator: ok (Standard)
 topic_exporter: ok
 decision: ok
-operator_log: ok | NO_TOPIC
 judgment_ledger: ok | None
 judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC
