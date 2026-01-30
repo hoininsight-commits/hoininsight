@@ -894,6 +894,125 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
         "latest_value": latest_value
     }
 
+def _generate_operator_top_view(final_card: Dict, top1_data: Dict) -> str:
+    """[IS-46] Operator-First Top Section: Confirmed Topic or No Topic"""
+    
+    # Priority: final_card > top1_data
+    target_card = final_card if final_card else (top1_data if top1_data else {})
+    status = target_card.get("status", "SILENT").upper()
+    
+    # Active or Ready means Confirmed
+    is_confirmed = status in ["ACTIVE", "READY"]
+    
+    if is_confirmed:
+        # [CASE A] Confirmed Topic
+        title = target_card.get("title", "무제")
+        urgency = target_card.get("urgency_score", 0)
+        
+        # Why Now / Reason
+        reason = target_card.get("reason", target_card.get("why_now", "사유 미정"))
+        if isinstance(reason, dict):
+            reason = f"[{reason.get('type','')}] {reason.get('anchor','')}"
+            
+        output_format = target_card.get("output_format_ko", "형식 미정")
+        
+        html = f"""
+        <div class="today-section-header">📌 오늘의 확정 토픽</div>
+        <div class="topic-card top1" style="border:2px solid #2563eb; background:#eff6ff; margin-bottom:30px;">
+            <div class="card-badges">
+                <div class="card-badge" style="background:#2563eb; color:white; font-size:14px; padding:4px 12px;">📢 발화 확정</div>
+                <div class="card-badge" style="background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe;">발화 압력 {urgency}</div>
+                <div class="card-badge" style="background:#dcfce7; color:#166534; border:1px solid #bbf7d0;">🔒 신뢰 확정</div>
+            </div>
+            
+            <div class="card-title" style="color:#1e3a8a; font-size:28px; margin-top:15px; font-weight:800; line-height:1.3;">
+                {title}
+            </div>
+            
+            <div style="margin-top:20px; padding:15px; background:white; border-radius:8px; border-left:5px solid #2563eb;">
+                <div style="font-size:13px; color:#2563eb; font-weight:bold; margin-bottom:5px;">💡 지금 말해야 하는 이유</div>
+                <div style="font-size:16px; color:#334155; font-weight:500;">{reason}</div>
+            </div>
+            
+            <div style="margin-top:15px; display:flex; gap:10px; align-items:center;">
+                <span style="font-size:14px; color:#64748b; font-weight:600;">출력 형식:</span>
+                <span style="font-size:14px; color:#0f172a; font-weight:bold; background:#f1f5f9; padding:2px 8px; border-radius:4px;">{output_format}</span>
+            </div>
+        </div>
+        """
+        return html
+    else:
+        # [CASE B] No Topic
+        reason_summary = "신뢰 등급(Trust Locked) 충족 토픽 없음"
+        if status == "SILENT":
+            reason_summary = "감지된 신호가 있으나 구조적 임계치 미달 (SILENT)"
+        elif status == "HOLD":
+            reason_summary = "추가 검증 필요로 인한 보류 (HOLD)"
+        
+        html = f"""
+        <div class="today-section-header" style="color:#64748b;">📌 오늘의 확정 토픽</div>
+        <div class="topic-card" style="border:2px dashed #94a3b8; background:#f8fafc; margin-bottom:30px; text-align:center; padding:40px 20px;">
+            <div style="font-size:48px; margin-bottom:20px;">❌</div>
+            <div style="font-size:24px; color:#475569; font-weight:bold; margin-bottom:10px;">
+                오늘 발화할 토픽 없음
+            </div>
+            <div style="font-size:15px; color:#64748b; background:#e2e8f0; display:inline-block; padding:8px 16px; border-radius:20px;">
+                사유: {reason_summary}
+            </div>
+        </div>
+        """
+        return html
+
+def _generate_candidate_summary_view(today_json: Dict[str, Any]) -> str:
+    """[IS-46] Middle Section: Candidate Summary (Max 3)"""
+    candidates = today_json.get("candidates", [])
+    if not candidates:
+        return ""
+        
+    display_list = sorted(candidates, key=lambda x: x.get("urgency_score", 0), reverse=True)[:3]
+    
+    rows = ""
+    for c in display_list:
+        status_map = {
+            "READY": "준비 완료", "ACTIVE": "발화 확정", 
+            "HOLD": "보류", "SILENT": "침묵", 
+            "DISCARD": "폐기", "COMPLETED": "완료"
+        }
+        status_ko = status_map.get(c.get("status"), c.get("status"))
+        
+        st_color = "#64748b"
+        if c.get("status") in ["READY", "ACTIVE"]: st_color = "#2563eb"
+        elif c.get("status") == "HOLD": st_color = "#d97706"
+        
+        rows += f"""
+        <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:12px; font-weight:600; color:#1e293b;">{c.get('title')}</td>
+            <td style="padding:12px; font-weight:bold; color:{st_color};">{status_ko}</td>
+            <td style="padding:12px; color:#64748b; font-size:13px;">{c.get('reason', 'N/A')}</td>
+        </tr>
+        """
+        
+    html = f"""
+    <div style="margin-bottom:40px;">
+        <div class="today-section-header">🧠 오늘의 판단 후보 요약 (Top {len(display_list)})</div>
+        <div style="background:white; border-radius:12px; box-shadow:0 1px 3px rgba(0,0,0,0.1); overflow:hidden;">
+            <table style="width:100%; border-collapse:collapse; font-size:14px;">
+                <thead style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                    <tr>
+                        <th style="padding:12px; text-align:left; color:#475569; width:40%;">토픽 제목</th>
+                        <th style="padding:12px; text-align:left; color:#475569; width:15%;">상태</th>
+                        <th style="padding:12px; text-align:left; color:#475569;">판단 사유</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    """
+    return html
+
 def generate_dashboard(base_dir: Path):
     """Step 62: Simplified HOIN Dashboard Generation"""
     ymd = _utc_ymd()
@@ -1131,14 +1250,17 @@ def generate_dashboard(base_dir: Path):
     except Exception as e:
         print(f"Error generating narrative preview: {e}", file=sys.stderr)
 
-    top1_card_html = TopicCardRenderer.render_top1_card(top1_data) # Use top1_data for the top card
+    # [IS-46] Operator Top View (Confirmed or No Topic)
+    today_view_html = _generate_operator_top_view(final_card, top1_data)
     
-    # [NEW] Judgment Memory View (Step 93)
+    # [IS-46] Candidate Summary View
+    candidate_summary_html = _generate_candidate_summary_view(candidates_data)
+
+    # [Legacy Reference]
+    top1_card_html = TopicCardRenderer.render_top1_card(top1_data) 
     judgment_memory_html = TopicCardRenderer.render_judgment_memory_view(top1_data)
     
-    today_view_html = _generate_today_topic_view(final_card, signals, video_candidates, None) # Pass None to hide bottom duplicate
-    
-    # [G] Generate Candidate View HTML
+    # [G] Full Candidate View (Hidden or Reference)
     candidate_view_html = _generate_candidate_view(candidates_data)
     
     # [I] Generate Ops View HTML
@@ -1147,16 +1269,7 @@ def generate_dashboard(base_dir: Path):
     # [J] Generate Decision View HTML
     decision_view_html = _generate_decision_view(final_card)
     
-    # [Strict Filter Check]
-    # If no signals and no top1, show specific empty state
-    if not signals and not top1_data:
-        today_view_html = """
-        <div class="empty-state" style="padding:40px; text-align:center; color:#64748b;">
-            <div style="font-size:48px; margin-bottom:10px;">📭</div>
-            <h3>오늘 생성된 이슈시그널 토픽이 없습니다.</h3>
-            <p>HOIN Engine이 유의미한 구조적 변화를 감지하지 못했습니다.</p>
-        </div>
-        """
+    # [Removed Legacy Empty State Check - Handled by _generate_operator_top_view]
     archive_view_html = _generate_simple_archive_view(historical_cards)
 
     # 3. Build Details Map (JSON for JS)
@@ -1571,6 +1684,13 @@ def generate_dashboard(base_dir: Path):
         
         <div class="main-content">
             <div id="tab-today">
+                {today_view_html}
+                {candidate_summary_html}
+                
+                <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">
+                    <h3 style="color: #64748b; font-size: 13px; font-weight:600;">👇 분석 상세 및 참고 데이터 (Reference)</h3>
+                </div>
+                
                 {narrative_preview_html}
                 {top1_card_html}
                 {judgment_memory_html}
