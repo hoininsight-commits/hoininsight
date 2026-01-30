@@ -19,13 +19,14 @@ from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 from src.dashboard.topic_card_renderer import TopicCardRenderer
+from src.dashboard.styles import DashboardStyles
+from src.dashboard.issue_signal_formatter import IssueSignalFormatter
 from src.ops.entity_mapping_layer import EntityMappingLayer
 from src.ops.entity_state_classifier import EntityStateClassifier
 from src.ops.structural_memory_engine import StructuralMemoryEngine
 from src.ops.snapshot_comparison_engine import SnapshotComparisonEngine
 from src.ops.structural_pattern_detector import StructuralPatternDetector
 from src.ops.pattern_memory_engine import PatternMemoryEngine
-from src.ops.narrative_compressor import NarrativeCompressor
 
 def _utc_ymd() -> str:
     return datetime.utcnow().strftime("%Y-%m-%d")
@@ -1576,192 +1577,20 @@ def generate_dashboard(base_dir: Path):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOIN 인사이트 대시보드 (Step 84)</title>
+        <title>🔴 HOIN Insight Engine</title>
         <style>
+            {DashboardStyles.COMMON_CSS}
             {topic_card_css}
             
-            * {{ box-sizing: border-box; }}
-            body {{
-                margin: 0;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                background-color: var(--bg-color);
-                color: var(--text-primary);
-                height: 100vh;
-                display: flex;
-            }}
+            /* Overrides and Specifics */
+            .sidebar {{ width: 320px; }}
+            .tab-content {{ display: none; width: 100%; }}
+            .tab-content.active {{ display: block; }}
             
-            .sidebar {{
-                width: 250px;
-                background: white;
-                border-right: 1px solid var(--border-color);
-                display: flex;
-                flex-direction: column;
-                padding: 24px;
-                z-index: 10;
-                box-shadow: 2px 0 5px rgba(0,0,0,0.02);
-            }}
-            
-            .logo {{
-                font-size: 20px;
-                font-weight: 800;
-                color: var(--text-primary);
-                margin-bottom: 32px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }}
-            
-            .menu-item {{
-                padding: 12px 16px;
-                margin-bottom: 4px;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.2s;
-                font-weight: 500;
-                color: var(--text-secondary);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }}
-            .menu-item:hover {{
-                background: #f1f5f9;
-                color: var(--text-primary);
-            }}
-            .menu-item.active {{
-                background: #eff6ff;
-                color: var(--accent-blue);
-                font-weight: 600;
-            }}
-            
-            .main-content {{
-                flex: 1;
-                overflow-y: auto;
-                padding: 32px;
-                height: 100vh;
-            }}
-            
-            h2 {{
-                margin-top: 0;
-                margin-bottom: 24px;
-                font-size: 24px;
-            }}
-            
-            .card-grid {{
+            .architecture-grid {{
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
-            }}
-            
-            .hidden {{ display: none !important; }}
-            
-            /* Modal */
-            .modal {{
-                display: none;
-                position: fixed;
-                z-index: 100;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: rgba(0,0,0,0.5);
-                backdrop-filter: blur(2px);
-            }}
-            .modal.active {{ display: flex; align-items: center; justify-content: center; }}
-            .modal-content {{
-                background-color: #fff;
-                margin: auto;
-                padding: 32px;
-                border: 1px solid var(--border-color);
-                width: 70%;
-                max-width: 900px;
-                max-height: 85vh;
-                overflow-y: auto;
-                border-radius: 16px;
-                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            }}
-
-            @media (max-width: 768px) {{
-                body {{ flex-direction: column; }}
-                .sidebar {{ 
-                    width: 100%; 
-                    height: auto; 
-                    border-right: none;
-                    border-bottom: 1px solid var(--border-color);
-                    padding: 15px 20px;
-                    flex-direction: column;
-                    gap: 10px;
-                }}
-                .logo {{ 
-                    margin-bottom: 10px; 
-                    justify-content: center;
-                }}
-                .menu-container {{
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 5px;
-                    justify-content: center;
-                }}
-                .menu-item {{
-                    flex: 1 1 auto;
-                    margin-bottom: 0;
-                    padding: 8px 10px;
-                    font-size: 11px;
-                    text-align: center;
-                    white-space: nowrap;
-                }}
-                .main-content {{
-                    padding: 15px;
-                    overflow-y: visible;
-                }}
-                .today-summary {{ font-size: 20px; }}
-                
-                .card-grid {{
-                    grid-template-columns: 1fr;
-                }}
-                
-                /* Top-1 Mobile */
-                .topic-card-top1 {{
-                    padding: 16px;
-                    margin-bottom: 24px;
-                }}
-                .top1-title {{ font-size: 20px; }}
-                
-                /* Fix for narrow columns */
-                .empty-state-card h3 {{
-                    word-break: keep-all;
-                    font-size: 18px;
-                    margin: 0 10px;
-                }}
-                
-                .modal-content {{
-                    width: 95%;
-                    padding: 20px;
-                    max-height: 90vh;
-                }}
-                
-                .menu-item.active {{
-                    border-bottom: 2px solid var(--accent-blue);
-                    background: transparent;
-                    color: var(--accent-blue);
-                }}
-                
-                .main-content {{
-                    flex: 1;
-                    padding: 40px;
-                    overflow-y: auto;
-                }}
-            }}
-            .ops-report-container {{
-                background:white; padding:40px; border-radius:12px;
-                max-width: 1000px; margin: 0 auto;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            }}
-            .ops-report-container h1 {{ font-size: 28px; border-bottom: 2px solid #333; padding-bottom:10px; }}
-            .ops-report-container h2 {{ font-size: 22px; color: #1e293b; margin-top: 30px; border-left: 4px solid #3b82f6; padding-left:10px; }}
-            .ops-report-container h3 {{ font-size: 18px; color: #475569; margin-top: 20px; }}
-            .ops-report-container blockquote {{ background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 10px 20px; margin: 10px 0; }}
-            .ops-report-container table {{ width:100%; border-collapse:collapse; margin: 20px 0; }}
             .ops-report-container th {{ background:#f1f5f9; padding:10px; text-align:left; border-bottom:2px solid #e2e8f0; }}
             .ops-report-container td {{ padding:10px; border-bottom:1px solid #e2e8f0; }}
         </style>

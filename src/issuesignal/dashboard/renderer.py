@@ -15,66 +15,63 @@ class DashboardRenderer:
     <title>IssueSignal & Hoin Unified Dashboard</title>
     <style>
         :root {{
-            --bg: #F3F4F6;
+            --bg: #f8fafc;
+            --header-bg: #0f172a;
             --card-bg: #FFFFFF;
-            --text-main: #1F2937;
-            --text-sub: #6B7280;
-            --emerald: #10B981;
-            --blue: #3B82F6;
-            --amber: #F59E0B;
-            --purple: #8B5CF6;
-            --red: #EF4444;
-            --border: #E5E7EB;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --emerald: #10b981;
+            --blue: #3b82f6;
+            --purple: #7c3aed;
+            --red: #ef4444;
+            --border: #e2e8f0;
         }}
-        body {{ font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }}
+        body {{ font-family: 'Pretendard', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }}
         
-        .nav-tabs {{ background: #FFF; border-bottom: 1px solid var(--border); display: flex; gap: 20px; padding: 0 40px; position: sticky; top: 0; z-index: 100; }}
-        .tab-btn {{ padding: 15px 5px; border: none; background: none; font-weight: bold; font-size: 0.9em; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; }}
+        .top-header {{ background: var(--header-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); }}
+        
+        .nav-tabs {{ background: white; border-bottom: 1px solid var(--border); display: flex; gap: 30px; padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }}
+        .tab-btn {{ padding: 18px 5px; border: none; background: none; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }}
         .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); }}
         
-        .container {{ padding: 30px 40px; display: none; }}
+        .container {{ padding: 40px; max-width: 1200px; margin: 0 auto; display: none; }}
         .container.active {{ display: block; }}
         
-        .header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }}
-        .status-badge {{ padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.8em; }}
-        .status-success {{ background: #D1FAE5; color: #065F46; }}
+        .status-badge {{ padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; }}
+        .status-success {{ background: #dcfce7; color: #166534; }}
         
-        /* Dashboard Cards */
-        .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }}
-        .summary-card {{ background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }}
-        .summary-card .count {{ font-size: 1.5em; font-weight: bold; margin-top: 5px; }}
+        .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }}
+        .summary-card {{ background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
+        .summary-card .count {{ font-size: 28px; font-weight: 800; margin-top: 10px; color: #0f172a; }}
         
-        .section-title {{ font-size: 1.25em; font-weight: bold; margin: 30px 0 15px 0; }}
-        .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }}
+        .section-title {{ font-size: 20px; font-weight: 800; color: #1e293b; margin: 40px 0 20px 0; display: flex; align-items: center; gap: 10px; }}
+        .section-title::before {{ content: ''; display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }}
         
-        .card-base {{ background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px; }}
-        .is-card {{ border-left: 6px solid var(--emerald); }}
-        .hoin-card {{ border-left: 6px solid var(--purple); }}
+        .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 25px; }}
         
-        /* Unified Link View Table */
-        .unified-table {{ width: 100%; border-collapse: collapse; background: #FFF; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }}
-        .unified-table th {{ background: #F9FAFB; padding: 15px; text-align: left; font-size: 0.85em; color: var(--text-sub); border-bottom: 1px solid var(--border); }}
-        .unified-table td {{ padding: 15px; border-bottom: 1px solid var(--border); font-size: 0.9em; }}
-        .expanded-row {{ background: #F9FAFB; display: none; }}
+        .card-base {{ background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); padding: 25px; transition: transform 0.2s; }}
+        .card-base:hover {{ transform: translateY(-2px); }}
+        .is-card {{ border-top: 6px solid var(--emerald); }}
+        .hoin-card {{ border-top: 6px solid var(--purple); }}
         
-        .evidence-drawer {{ padding: 20px; border-top: 1px solid var(--border); }}
-        .evidence-item {{ background: #FFF; border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 10px; }}
+        .unified-table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
+        .unified-table th {{ background: #f8fafc; padding: 18px; text-align: left; font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); }}
+        .unified-table td {{ padding: 18px; border-bottom: 1px solid var(--border); font-size: 14px; }}
         
-        /* Interactive */
-        .expand-btn {{ cursor: pointer; color: var(--blue); font-weight: bold; border: none; background: none; }}
-        .filter-bar {{ display: flex; gap: 10px; margin-bottom: 20px; background: #FFF; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }}
+        .evidence-drawer {{ padding: 30px; background: #fbfcfe; border-top: 1px solid var(--border); }}
+        .evidence-item {{ background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }}
         
-        .badge-status {{ display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75em; }}
-        .status-trust {{ background: #D1FAE5; color: #065F46; }}
-        .status-no-ev {{ background: #F3F4F6; color: #6B7280; border: 1px solid var(--border); }}
-        .status-matched {{ background: #E0E7FF; color: #3730A3; }}
+        .expand-btn {{ background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px; }}
     </style>
 </head>
 <body>
-    <div style="background: #FFF; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);">
-        <h1 style="margin:0; font-size: 1.4em;">🛰️ HOIN Unified Ops View</h1>
+    <div class="top-header">
+        <h1 style="margin:0; font-size: 1.4em; display:flex; align-items:center; gap:10px;">
+            <span style="background:white; color:#0f172a; padding:4px 10px; border-radius:8px;">🛰️</span> 
+            HOIN Unified Ops Center
+        </h1>
         <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="font-size: 0.9em; color: var(--text-sub);">Data: {summary.date}</div>
+            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">Data: {summary.date}</div>
             <div class="status-badge status-success">ENGINE: {summary.engine_status}</div>
         </div>
     </div>

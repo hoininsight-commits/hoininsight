@@ -68,58 +68,49 @@ class TopicCardRenderer:
         if esc_count > 0:
             esc_html = f'<span class="escalation-mark">🔥 +{esc_count} Accelerated</span>'
 
+        # [Premium Update]
+        gradient = "linear-gradient(135deg, #ffffff 0%, #faf5ff 100%)" if trigger_type == "Structural" else "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)"
+        border_color = "#7c3aed" if trigger_type == "Structural" else "#3b82f6"
+        
         return f"""
-        <div class="topic-card-top1">
-            <div class="top1-header-label">🟣 오늘의 구조적 핵심 이슈 (Top-1)</div>
+        <div class="topic-card-top1" style="background: {gradient}; border: 1px solid #e2e8f0; border-top: 5px solid {border_color}; border-radius: 12px; padding: 30px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); margin-bottom: 40px;">
+            <div style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
+                <span>🟣 오늘의 구조적 핵심 이슈 (Top-1)</span>
+                {esc_html}
+            </div>
             
             <div class="top1-body">
-                <!-- [STEP 95] Decision Snapshot Block (10-second Summary) -->
+                <!-- [STEP 95] Decision Snapshot Block -->
                 {TopicCardRenderer.render_decision_snapshot(data)}
 
                 <!-- [STEP 96] Action Posture Layer -->
                 {TopicCardRenderer.render_action_posture(data)}
                 
-                <!-- [STEP 93] Rewritten Judgment Status Line (Human Language) -->
-                <div class="judgment-status-line" style="font-size: 15px; font-weight: bold; color: #7e22ce; margin-bottom: 8px;">
-                    판단 상태: {data.get('judgment_stack', {}).get('state_label', '새로운 흐름 포착')}
-                </div>
-                
-                <!-- [STEP 92] Narrative Drift Label (Muted) -->
-                <div class="narrative-drift-label" style="font-size: 11px; color: #94a3b8; margin-bottom: 20px;">
-                    {data.get('narrative_drift', {}).get('label', 'Narrative Stable (Recurring Structure)')}
-                </div>
+                <h1 class="top1-title" style="font-size: 28px; font-weight: 800; color: #1e293b; margin: 0 0 20px 0; line-height: 1.2;">{title}</h1>
 
-                <h1 class="top1-title" style="margin-bottom: 20px;">{title}</h1>
-
-                <!-- [STEP 90-A] Human Interpretation Block (Judgment First) -->
-                <div class="top1-interpretation" style="margin: 0 0 20px 0; padding: 0; background: transparent;">
-                    <div style="font-size: 15px; color: #1e293b; line-height: 1.8; white-space: pre-line; font-weight: 500;">
+                <!-- [STEP 90-A] Human Interpretation Block -->
+                <div class="top1-interpretation" style="margin-bottom: 25px; background: rgba(255,255,255,0.5); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
+                    <div style="font-size: 15.5px; color: #334155; line-height: 1.8; white-space: pre-line; font-weight: 500;">
                         {data.get('human_interpretation', '엔진이 구조적 유효성을 분석 중입니다.').replace('왜 지금 이 토픽인가', '').strip()}
                     </div>
                 </div>
 
-                <div style="height: 1px; background: #e2e8f0; margin-bottom: 20px;"></div>
+                <div style="height: 1px; background: #e2e8f0; margin-bottom: 25px;"></div>
 
-                <!-- [STEP 90-A] Cognitive Badges (Evidence Layer) -->
-                <div class="top1-meta-row" style="margin-bottom: 20px;">
-                    <span class="badge-whynow {whynow_badge_cls}" style="font-size: 11px;">지금 다루는 이유: {trigger_type}</span>
-                    <span class="badge-pressure" style="font-size: 11px;">압력 유형: {pressure_type}</span>
-                    <span class="badge-scope" style="font-size: 11px;">범위: {scope_hint}</span>
-                    <span class="badge-intensity" style="font-size: 11px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">강도: {intensity} {intensity_icon}</span>
-                    <span class="meta-date">{date}</span>
+                <!-- Evidence Badges -->
+                <div class="top1-meta-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px;">
+                    <span style="background: #f3e8ff; color: #6b21a8; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">지금 다루는 이유: {trigger_type}</span>
+                    <span style="background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">압력: {pressure_type}</span>
+                    <span style="background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">범위: {scope_hint}</span>
+                    <span style="background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">강도: {intensity} {intensity_icon}</span>
                 </div>
                 
-                <div class="top1-context">
-                    <div class="context-item">
-                        <span class="context-label">구조적 리듬</span>
-                        <span class="context-text">{rhythm}</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                    <div style="font-size: 12px; color: #94a3b8;">Record Date: {date}</div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="openSignalDetail('top1_current')" style="background: {border_color}; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px;">📊 상세 분석 보기</button>
+                        <a href="topics/items/{date}__top1.json" target="_blank" style="font-size: 12px; color: {border_color}; text-decoration: none; padding: 8px; border: 1px solid {border_color}; border-radius: 6px; font-weight: bold;">JSON</a>
                     </div>
-                </div>
-                
-                <div class="top1-footer">
-                    {esc_html}
-                    <button class="action-btn" onclick="openSignalDetail('top1_current')">🔍 분석 원문 보기</button>
-                    <a href="topics/items/{date}__top1.json" target="_blank" style="font-size:11px; color:#9333ea; text-decoration:none; margin-left: 10px;">[원문 JSON 보기]</a>
                 </div>
             </div>
         </div>
