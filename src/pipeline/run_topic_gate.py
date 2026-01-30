@@ -9,6 +9,8 @@ from src.topics.topic_gate import CandidateGenerator, Ranker, Validator, OutputB
 from src.ops.quote_failsafe import QuoteFailsafe
 from src.ops.source_diversity_auditor import SourceDiversityAuditor
 from src.issuesignal.time_decay import TriggerTimeDecayEngine
+from src.issuesignal.urgency_engine import UrgencyEngine
+from src.issuesignal.output_decider import OutputDecider
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -106,6 +108,26 @@ def main(as_of_date: str):
         if t.get("diversity_verdict") == "PASS":
              # We gather enriched sources if available
              decay_engine.re_arm(t, t.get("enriched_sources", []))
+
+    # [IS-34] Urgency & Output Decision
+    urgency_eng = UrgencyEngine()
+    output_dec = OutputDecider()
+    for t in processed_ranked:
+        # 1. Calc Urgency
+        u_score = urgency_eng.calculate_urgency(t)
+        # 2. Check Too-Late Override
+        too_late_reason = urgency_eng.check_too_late(t)
+        # 3. Decide Format & Reason
+        fmt_ko, reason_ko = output_dec.decide(u_score, too_late_reason)
+        
+        t["urgency_score"] = u_score
+        t["output_format_ko"] = fmt_ko
+        t["editorial_reason_ko"] = reason_ko
+        
+        # 4. If SILENT and was READY, demote or flag
+        if "침묵" in fmt_ko and t.get("status") == "READY":
+             t["status"] = "SILENT"
+             t["demotion_reason"] = reason_ko
 
     top1 = ranker.pick_top1(processed_ranked)
 

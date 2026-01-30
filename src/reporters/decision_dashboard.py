@@ -92,6 +92,11 @@ class DecisionCard:
     elapsed_time_str: Optional[str] = None # e.g. "15시간 경합"
     decay_state_ko: Optional[str] = None # 활성, 보류, 침묵
 
+    # [IS-34] Urgency & Output Decision
+    urgency_score: Optional[int] = None # 0~100
+    output_format_ko: Optional[str] = None # 대형 영상, 숏츠, 등
+    editorial_reason_ko: Optional[str] = None # 왜 지금인가 / 왜 침묵인가
+
 class DecisionDashboard:
     """
     Reporter for the Topic Gate.
@@ -392,6 +397,9 @@ class DecisionDashboard:
                 current_confidence=t.get("current_confidence"),
                 elapsed_time_str=t.get("elapsed_time_str"),
                 decay_state_ko=t.get("decay_state_ko"),
+                urgency_score=t.get("urgency_score"),
+                output_format_ko=t.get("output_format_ko"),
+                editorial_reason_ko=t.get("editorial_reason_ko"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1548,6 +1556,9 @@ class DecisionDashboard:
         
         # [IS-33] Render Signal Lifecycle
         self._render_signal_lifecycle_panel(lines, c)
+        
+        # [IS-34] Render Editorial Decision
+        self._render_editorial_decision_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1625,6 +1636,33 @@ class DecisionDashboard:
         filled = int(conf / 10)
         bar = "█" * filled + "░" * (bar_len - filled)
         lines.append(f"- **강도**: `[{bar}]` ({conf}/100)")
+
+    def _render_editorial_decision_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-34 Editorial Decision summary in Korean."""
+        if c.urgency_score is None:
+            return
+
+        urgency = c.urgency_score
+        fmt = c.output_format_ko or "침묵"
+        reason = c.editorial_reason_ko or "판단 보류"
+
+        # Badge based on format
+        icon = "⚪"
+        if "대형" in fmt: icon = "🔥"
+        elif "숏츠" in fmt: icon = "⚡"
+        elif "텍스트" in fmt: icon = "📄"
+        elif "침묵" in fmt: icon = "🤫"
+
+        lines.append("\n### 🎬 편집적 결단 (EDITORIAL DECISION)")
+        lines.append(f"**출력 형식**: {icon} **{fmt}**")
+        lines.append(f"- **발화 압력 점수**: {urgency}점")
+        lines.append(f"- **판단 근거**: {reason}")
+        
+        # Visual urgency bar
+        bar_len = 10
+        filled = int(urgency / 10)
+        bar = "▓" * filled + "░" * (bar_len - filled)
+        lines.append(f"- **긴급도**: `[{bar}]` ({urgency}/100)")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""
