@@ -148,22 +148,22 @@ class IssueSignalFormatter:
         
         return f"""
         <div class="detail-section">
-            <h3>⚡ 왜 지금 봐야 하나 (Why Now)</h3>
+            <h3>⚡ 지금 봐야 하는 이유</h3>
             <p>{rationale}</p>
         </div>
         <div class="detail-section">
-            <h3>🔄 어떤 구조가 바뀌었나 (Change)</h3>
+            <h3>🔄 구조적 변화 내용</h3>
             <p>{summary}</p>
         </div>
         <div class="detail-section">
-            <h3>📊 근거 데이터 (Drivers)</h3>
+            <h3>📊 근거 데이터</h3>
             <ul class="data-list">
                 <li><strong>운영기제:</strong> {drivers_str}</li>
                 <li><strong>참조 ID:</strong> {len(card.get('evidence_refs', {}).get('source_ids', []))}건</li>
             </ul>
         </div>
         <div class="detail-section">
-            <h3>⚠️ 리스크 / 확인 포인트</h3>
+            <h3>⚠️ 리스크 및 검증 포인트</h3>
             <p>{risk}</p>
         </div>
         """

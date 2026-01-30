@@ -146,18 +146,25 @@ def _generate_youtube_view(videos: List[Dict]) -> str:
         status = v.get("status", "NEW").upper()
         
         badge_class = "status-new"
-        if status == "PROPOSED": badge_class = "status-proposed"
-        elif status == "APPROVED": badge_class = "status-approved"
-        elif status == "APPLIED": badge_class = "status-applied"
+        status_ko = "신규"
+        if status == "PROPOSED": 
+            badge_class = "status-proposed"
+            status_ko = "후보"
+        elif status == "APPROVED": 
+            badge_class = "status-approved"
+            status_ko = "승인"
+        elif status == "APPLIED": 
+            badge_class = "status-applied"
+            status_ko = "반영됨"
         
         rows += f"""
         <tr>
             <td>{date_str}</td>
             <td>
                 <div style="font-weight:600; margin-bottom:4px;">{title}</div>
-                <a href="{url}" target="_blank" style="font-size:12px; color:#2563eb; text-decoration:none;">Watch Video &rarr;</a>
+                <a href="{url}" target="_blank" style="font-size:12px; color:#2563eb; text-decoration:none;">📺 영상 보기 &rarr;</a>
             </td>
-            <td><span class="status-badge {{badge_class}}">{{status}}</span></td>
+            <td><span class="status-badge {badge_class}">{status_ko}</span></td>
         </tr>
         """
         
@@ -165,13 +172,13 @@ def _generate_youtube_view(videos: List[Dict]) -> str:
     <table class="youtube-table">
         <thead>
             <tr>
-                <th style="width:120px;">Date</th>
-                <th>Title</th>
-                <th style="width:100px;">Status</th>
+                <th style="width:120px;">날짜</th>
+                <th>제목</th>
+                <th style="width:100px;">상태</th>
             </tr>
         </thead>
         <tbody>
-            {{rows}}
+            {rows}
         </tbody>
     </table>
     """
@@ -312,15 +319,15 @@ def _get_static_top1(base_dir: Path, target_ymd: str) -> Optional[Dict]:
     try:
         index = json.loads(index_path.read_text(encoding='utf-8'))
         item_path = None
-        # Priority 1: Exact date
+        # Priority 1: Exact date ONLY (IS-47 Real Data Binding)
         for entry in index:
             if entry["date"] == target_ymd:
                 item_path = entry["path"]
                 break
         
-        # Priority 2: Latest if not today
-        if not item_path and index:
-            item_path = index[0]["path"]
+        # [IS-47] Fallback Removed: Do NOT show old data as today's
+        if not item_path:
+             return None
             
         if item_path:
             full_path = base_dir / "docs" / item_path
@@ -1384,7 +1391,7 @@ def generate_dashboard(base_dir: Path):
             
             <!-- Step 1: The Hook -->
             <div class="detail-section" style="border-left: 4px solid #a855f7; background-color: #faf5ff;">
-                <h3 style="color: #6b21a8;">1. The Hook (시선 강탈)</h3>
+                <h3 style="color: #6b21a8;">1. 시선 강탈 (The Hook)</h3>
                 <p class="script-text" style="font-weight:bold; font-size: 1.1em;">
                     {sections.get('hook', n.get('opening_hook', ''))}
                 </p>
@@ -1392,7 +1399,7 @@ def generate_dashboard(base_dir: Path):
 
             <!-- Step 2: Core Tension -->
             <div class="detail-section">
-                <h3>2. Core Tension (구조적 역학)</h3>
+                <h3>2. 구조적 역학 (Core Tension)</h3>
                 <p class="script-text">
                     {sections.get('tension', n.get('core_story', '')).replace(chr(10), '<br>')}
                 </p>
@@ -1400,7 +1407,7 @@ def generate_dashboard(base_dir: Path):
 
             <!-- Step 3: The Hunt -->
             <div class="detail-section">
-                <h3>3. The Hunt (결정적 증거)</h3>
+                <h3>3. 결정적 증거 (The Hunt)</h3>
                 <p class="script-text" style="white-space: pre-wrap; background: #f8fafc; padding: 10px; border-radius: 6px;">
                     {sections.get('hunt', '')}
                 </p>
@@ -1408,7 +1415,7 @@ def generate_dashboard(base_dir: Path):
 
             <!-- Step 4: Action -->
             <div class="detail-section" style="border: 2px solid #22c55e; background-color: #f0fdf4;">
-                <h3 style="color: #15803d;">4. Action (행동 지침)</h3>
+                <h3 style="color: #15803d;">4. 행동 지침 (Action)</h3>
                 <p class="script-text" style="font-weight:bold; color: #166534;">
                     {sections.get('action', n.get('why_now', ''))}
                 </p>

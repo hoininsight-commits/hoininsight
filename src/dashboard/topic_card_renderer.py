@@ -102,16 +102,16 @@ class TopicCardRenderer:
 
                 <!-- [STEP 90-A] Cognitive Badges (Evidence Layer) -->
                 <div class="top1-meta-row" style="margin-bottom: 20px;">
-                    <span class="badge-whynow {whynow_badge_cls}" style="font-size: 11px;">WHY NOW: {trigger_type}</span>
-                    <span class="badge-pressure" style="font-size: 11px;">PRESSURE: {pressure_type}</span>
-                    <span class="badge-scope" style="font-size: 11px;">SCOPE: {scope_hint}</span>
-                    <span class="badge-intensity" style="font-size: 11px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">INTENSITY: {intensity} {intensity_icon}</span>
+                    <span class="badge-whynow {whynow_badge_cls}" style="font-size: 11px;">지금 다루는 이유: {trigger_type}</span>
+                    <span class="badge-pressure" style="font-size: 11px;">압력 유형: {pressure_type}</span>
+                    <span class="badge-scope" style="font-size: 11px;">범위: {scope_hint}</span>
+                    <span class="badge-intensity" style="font-size: 11px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">강도: {intensity} {intensity_icon}</span>
                     <span class="meta-date">{date}</span>
                 </div>
                 
                 <div class="top1-context">
                     <div class="context-item">
-                        <span class="context-label">STRUCTURAL_RHYTHM</span>
+                        <span class="context-label">구조적 리듬</span>
                         <span class="context-text">{rhythm}</span>
                     </div>
                 </div>
@@ -168,13 +168,13 @@ class TopicCardRenderer:
                         {esc_badge}
                     </div>
                 </div>
-                <button class="list-action-btn" onclick="openSignalDetail('archive_{date}')">View</button>
+                <button class="list-action-btn" onclick="openSignalDetail('archive_{date}')">상세 보기</button>
             </div>
             """
             
         return f"""
         <div class="snapshot-list-container">
-            <h3 class="list-header">📅 Recent Structural Signals</h3>
+            <h3 class="list-header">📅 최근 구조적 시그널 이력</h3>
             <div class="snapshot-list">
                 {cards_html}
             </div>
@@ -218,7 +218,7 @@ class TopicCardRenderer:
         return f"""
         <div class="state-panel-container">
             <h3 class="entity-section-header">
-                🧭 현재 인식해야 할 구조적 상태 (Decision Surface)
+                🧭 현재 인식해야 할 결정 국면 (Decision Surface)
             </h3>
             <div class="state-grid">
                 {cards_html}
@@ -240,16 +240,28 @@ class TopicCardRenderer:
         cards_html = ""
         for e in entities:
             name = e.get("name", "Unknown")
-            role = e.get("role", "STRUCTURAL EXECUTOR").replace("STRUCTURAL ", "")
+            # Role Localization Map
+            role_map = {
+                "EXECUTOR": "주도자 (Executor)",
+                "BENEFICIARY": "수혜자 (Beneficiary)",
+                "VICTIM": "피해자 (Victim)",
+                "HEDGE": "헤지 수단 (Hedge)",
+                "BOTTLENECK": "병목점 (Bottleneck)",
+                "STRUCTURAL EXECUTOR": "구조적 주도자"
+            }
+            
+            raw_role = e.get("role", "STRUCTURAL EXECUTOR").replace("STRUCTURAL ", "")
+            role = role_map.get(raw_role, raw_role)
+            
             constraints = e.get("constraints", [])
             logic = e.get("logic_summary", "")
             
             # Badge Colors based on Role
             role_class = "role-default"
-            if "BENEFICIARY" in role: role_class = "role-beneficiary"
-            elif "VICTIM" in role: role_class = "role-victim"
-            elif "HEDGE" in role: role_class = "role-hedge"
-            elif "BOTTLENECK" in role: role_class = "role-bottleneck"
+            if "BENEFICIARY" in raw_role: role_class = "role-beneficiary"
+            elif "VICTIM" in raw_role: role_class = "role-victim"
+            elif "HEDGE" in raw_role: role_class = "role-hedge"
+            elif "BOTTLENECK" in raw_role: role_class = "role-bottleneck"
             
             # Constraint Tags
             tags_html = ""
@@ -275,13 +287,13 @@ class TopicCardRenderer:
         return f"""
         <div class="entity-pool-container">
             <h3 class="entity-section-header">
-                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Structural Entities)
+                🎯 이 이슈에서 말할 수밖에 없는 대상들 (Mapping)
             </h3>
             <div class="entity-grid">
                 {cards_html}
             </div>
             <div class="entity-disclaimer">
-                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter Decision Engine)
+                ⚠️ 이 엔티티는 추천이 아닙니다. 본 토픽을 설명할 때 언급되지 않을 수 없는 구조적 대상입니다. (Target Mapping by Economic Hunter)
             </div>
         </div>
         """
@@ -291,7 +303,7 @@ class TopicCardRenderer:
         return """
         <div class="empty-state-card">
             <span class="empty-icon-small">☕️</span>
-            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>Scanning for potential triggers...</strong></span>
+            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (System Scanning)</strong></span>
         </div>
         """
 
@@ -625,22 +637,22 @@ class TopicCardRenderer:
         
         # Icon & Badge Logic
         icon = "🆕"
-        status_text = "New Structural Topic"
-        status_sub = "This structure has not been observed recently."
-        badge_html = '<div class="delta-badge badge-new">NEW TOPIC</div>'
+        status_text = "신규 구조적 토픽 발굴"
+        status_sub = "최근 관측된 적 없는 새로운 구조입니다."
+        badge_html = '<div class="delta-badge badge-new">신규 (NEW)</div>'
         
         if status == "RECURRING":
             icon = "🔁"
-            status_text = "Recurring Structure" 
-            status_sub = f"Identical logic block observed yesterday ({d1_date})."
-            badge_html = '<div class="delta-badge badge-recurring">RECURRING</div>'
+            status_text = "반복되는 구조 (재진입)" 
+            status_sub = f"어제({d1_date})와 동일한 논리 구조가 재확인되었습니다."
+            badge_html = '<div class="delta-badge badge-recurring">구조 반복</div>'
             
             if intensity_delta == "INTENSIFIED":
-                 badge_html += '<div class="delta-badge badge-intensified">🔺 INTENSIFIED</div>'
+                 badge_html += '<div class="delta-badge badge-intensified">🔺 강도 심화</div>'
             elif intensity_delta == "EASED":
-                 badge_html += '<div class="delta-badge badge-eased">🔻 EASED</div>'
+                 badge_html += '<div class="delta-badge badge-eased">🔻 강도 완화</div>'
             else:
-                 badge_html += '<div class="delta-badge badge-sustained">⏸ SUSTAINED</div>'
+                 badge_html += '<div class="delta-badge badge-sustained">⏸ 강도 유지</div>'
         
         # Entity Shifts
         shifts = comparison.get("entity_shifts", [])
@@ -653,7 +665,7 @@ class TopicCardRenderer:
                 else:
                     shift_list.append(f"{s['name']}: {s['from']}→{s['to']}")
             if shift_list:
-                shift_html = f'<div class="delta-sub" style="color:#f59e0b; margin-top:2px;">Target Shift: {", ".join(shift_list)}</div>'
+                shift_html = f'<div class="delta-sub" style="color:#f59e0b; margin-top:2px;">타겟 대상 변경: {", ".join(shift_list)}</div>'
 
         return f"""
         <div class="memory-delta-container">
@@ -678,6 +690,8 @@ class TopicCardRenderer:
         Step 93: Judgment Memory View.
         Summarizes multi-day continuity in short, natural sentences.
         """
+        if not data:
+            return ""
         stack = data.get("judgment_stack", {})
         summary = stack.get("memory_summary", [])
         if not summary or not isinstance(summary, list):
@@ -687,7 +701,7 @@ class TopicCardRenderer:
 
         return f"""
         <div class="judgment-memory-container" style="margin-top: 10px; margin-bottom: 30px; padding: 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            <div style="font-size: 11px; font-weight: bold; color: #64748b; margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase;">Judgment Memory</div>
+            <div style="font-size: 11px; font-weight: bold; color: #64748b; margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase;">판단 이력 (Judgment Memory)</div>
             <div class="memory-sentences">
                 {sentences_html}
             </div>
