@@ -107,6 +107,7 @@ class DecisionCard:
     follow_up_plans: Optional[List[Dict[str, str]]] = None # 토픽, 예상 시점, 사유
 
     voice_consistent: bool = False # [IS-39] 화자 일관성: LOCKED
+    anticipated_questions: Optional[List[Dict[str, Any]]] = None # [IS-41] 예상 질문 & 대응 전략
 
 class DecisionDashboard:
     """
@@ -427,6 +428,7 @@ class DecisionDashboard:
                 distribution_reason_ko=t.get("distribution_reason_ko"),
                 follow_up_plans=t.get("follow_up_plans"),
                 voice_consistent=t.get("voice_consistent", False),
+                anticipated_questions=t.get("anticipated_questions"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1606,6 +1608,10 @@ class DecisionDashboard:
         
         # [IS-37] Render Follow-up Planning
         self._render_follow_up_panel(lines, c)
+        
+        # [IS-41] Render Audience Question Anticipation
+        self._render_audience_questions_panel(lines, c)
+        
         lines.append("")
         
         lines.append("\n---")
@@ -2688,3 +2694,24 @@ class DecisionDashboard:
         lines.append(f"- **공개 대상**: {audience}")
         lines.append("")
         lines.append("---\n")
+
+    def _render_audience_questions_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-41 Audience Question Anticipation panel."""
+        questions = getattr(c, 'anticipated_questions', None)
+        if not questions:
+            return
+
+        lines.append("\n### 🗣️ 예상 질문 & 대응 전략 (QUESTION ANTICIPATION)")
+        lines.append("| 질문 (Question) | 분류 (Classification) | 대응 전략 (Strategy) | 사유 (Internal Reason) |")
+        lines.append("| :--- | :--- | :--- | :--- |")
+        
+        for q in questions:
+            q_text = q.get("question", "")
+            cls = q.get("classification", "")
+            strategy = q.get("strategy", "")
+            reason = q.get("internal_reason", "")
+            
+            # Highlight strategy if it's not silent
+            strat_display = f"**{strategy}**" if strategy != "(무대응)" else strategy
+            
+            lines.append(f"| {q_text} | `{cls}` | {strat_display} | *{reason}* |")

@@ -17,6 +17,7 @@ from src.issuesignal.followup_engine import FollowUpEngine
 from src.issuesignal.membership_queue import MembershipQueueEngine
 from src.issuesignal.voice_lock import VoiceLockEngine
 from src.issuesignal.teaser_engine import NextSignalTeaserEngine
+from src.issuesignal.question_engine import AudienceQuestionEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -180,6 +181,11 @@ def main(as_of_date: str):
     # [IS-40] Next-Signal Teaser
     teaser_eng = NextSignalTeaserEngine()
     next_teaser = teaser_eng.generate_teaser(membership_queue)
+
+    # [IS-41] Audience Question Anticipation
+    question_eng = AudienceQuestionEngine()
+    for t in processed_ranked:
+        t["anticipated_questions"] = question_eng.process_signal(t)
 
     top1 = ranker.pick_top1(processed_ranked)
 
