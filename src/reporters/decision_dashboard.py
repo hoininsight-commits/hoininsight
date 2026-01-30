@@ -144,11 +144,11 @@ class DecisionDashboard:
         lines.append(f"# 🎬 이슈시그널 편집 회의 보드 - {ymd}")
         lines.append(f"> **데이터 기준일**: {ymd} | **작성**: IssueSignal Engine/V4\n")
         
-        # We use pre-calculated data
+        # We use pre-calculated data (list of dicts)
         cards = data.get("cards", [])
         
         # Filter for topics that got processed (ACTIVE, HOLD, SILENT)
-        selected_cards = [c for c in cards if c.status in ["READY", "HOLD", "SILENT", "ACTIVE"]]
+        selected_cards = [c for c in cards if c.get("status") in ["READY", "HOLD", "SILENT", "ACTIVE"]]
 
         # 1. TOPIC BOARD (Summary Table)
         lines.append("## 📌 오늘의 발화 결정 리스트")
@@ -158,9 +158,11 @@ class DecisionDashboard:
         status_map = {"READY": "✅ 발화 확정", "ACTIVE": "✅ 발화 확정", "HOLD": "⏳ 보류", "SILENT": "🤐 침묵", "DROP": "❌ 제외"}
         
         for c in selected_cards:
-            status_ko = status_map.get(c.status, c.status)
-            fmt_ko = c.output_format_ko or "미정"
-            lines.append(f"| **{c.title}** | `{status_ko}` | {fmt_ko} | {c.editorial_reason_ko or c.reason[:40]} |")
+            status = c.get("status", "DROP")
+            status_ko = status_map.get(status, status)
+            fmt_ko = c.get("output_format_ko") or "미정"
+            reason = c.get("editorial_reason_ko") or (c.get("reason") or "")[:40]
+            lines.append(f"| **{c.get('title', 'Untitled')}** | `{status_ko}` | {fmt_ko} | {reason} |")
         
         lines.append("\n---\n")
 
@@ -168,41 +170,45 @@ class DecisionDashboard:
         lines.append("## 🔍 상세 판단 및 실행 가이드")
         
         for i, c in enumerate(selected_cards, 1):
-            lines.append(f"### {i}. {c.title}")
-            lines.append(f"- **상태**: `{status_map.get(c.status, c.status)}` | **출력 형식**: {c.output_format_ko or '미정'}")
+            status = c.get("status", "DROP")
+            lines.append(f"### {i}. {c.get('title', 'Untitled')}")
+            lines.append(f"- **상태**: `{status_map.get(status, status)}` | **출력 형식**: {c.get('output_format_ko') or '미정'}")
             
             # ① 토픽 요약
             lines.append("#### ① 토픽 요약")
-            lines.append(f"- **선정 배경**: {c.why_today or '핵심 지표 변화에 따른 구조적 필연성 감지.'}")
-            lines.append(f"- **해석**: 시장은 이를 수급 변화로 보나, IssueSignal은 이를 {c.reason}(으)로 정의한다.")
+            lines.append(f"- **선정 배경**: {c.get('why_today') or '핵심 지표 변화에 따른 구조적 필연성 감지.'}")
+            lines.append(f"- **해석**: 시장은 이를 수급 변화로 보나, IssueSignal은 이를 {c.get('reason', '미확인 신호')}(으)로 정의한다.")
             
             # ② 판단 근거 요약
             lines.append("#### ② 판단 근거 요약")
-            lines.append(f"> {c.reason}")
-            if c.evidence_refs:
-                # evidence_refs is List[str] in some versions, or List[Dict] in others. Handle both.
+            lines.append(f"> {c.get('reason', 'N/A')}")
+            evidence_refs = c.get("evidence_refs")
+            if evidence_refs:
                 refs = []
-                for r in c.evidence_refs:
+                for r in evidence_refs:
                     if isinstance(r, dict):
                         refs.append(r.get('title') or r.get('entity') or '문서')
                     else:
                         refs.append(str(r))
                 lines.append(f"- **공식 인용 및 출처**: {', '.join(refs[:3])}")
-            lines.append(f"- **독립 검증 상태**: {'✅ 검증 완료' if c.is_fact_driven else '🔄 모델 추론 중'}")
+            lines.append(f"- **독립 검증 상태**: {'✅ 검증 완료' if c.get('is_fact_driven') else '🔄 모델 추론 중'}")
             
             # ③ 자본 경로 및 종목
             lines.append("#### ③ 자본 경로 및 종목")
-            if c.tags:
-                lines.append(f"- **연결 종목 (티커)**: `{', '.join(c.tags)}`")
-            lines.append(f"- **구조적 병목**: {c.bridge_eligible and '상위 자본 경로와 직접 연결됨' or '개별적 신호 노출'}")
-            if c.pre_structural_signal:
-                kill_switch = c.pre_structural_signal.get("kill_switch_price", "N/A")
+            tags = c.get("tags")
+            if tags:
+                lines.append(f"- **연결 종목 (티커)**: `{', '.join(tags)}`")
+            lines.append(f"- **구조적 병목**: {c.get('bridge_eligible') and '상위 자본 경로와 직접 연결됨' or '개별적 신호 노출'}")
+            pre_structural = c.get("pre_structural_signal")
+            if pre_structural:
+                kill_switch = pre_structural.get("kill_switch_price", "N/A")
                 lines.append(f"- **자동 생성 킬 스위치**: `{kill_switch}`")
             
             # ④ 콘텐츠 패키지
             lines.append("#### ④ 콘텐츠 패키지")
-            if c.content_package:
-                pkg = c.content_package
+            content_package = c.get("content_package")
+            if content_package:
+                pkg = content_package
                 if "content" in pkg:
                     content = pkg["content"]
                     if isinstance(content, dict):
@@ -231,18 +237,8 @@ class DecisionDashboard:
         gate_dir = self.base_dir / "data" / "topics" / "gate" / ymd.replace("-", "/")
         gate_out = gate_dir / "topic_gate_output.json"
         gate_cands = gate_dir / "topic_gate_candidates.json"
-        # ... rest of the logic ...
-        
-        # Load Candidates for Source Mapping
-        cand_map = {}
-        if gate_cands.exists():
-            try:
-                c_data = json.loads(gate_cands.read_text(encoding="utf-8"))
-                for c in c_data.get("candidates", []):
-                    cand_map[c.get("candidate_id")] = c
-            except:
-                pass
 
+        # 1. Load context data first
         # [Step 47.5] Load FACT-FIRST Shadow Pool
         fact_first_shadows = []
         topic_seeds = []
@@ -318,8 +314,69 @@ class DecisionDashboard:
         if ov_path.exists():
             try: pref_overlay = json.loads(ov_path.read_text(encoding="utf-8"))
             except: pass
+        fact_first_shadows = []
+        topic_seeds = []
+        narrative_hypotheses = []
+        ff_path = self.base_dir / "data" / "topics" / "shadow_pool" / ymd.replace("-", "/") / "fact_first.json"
+        if ff_path.exists():
+            try:
+                ff_data = json.loads(ff_path.read_text(encoding="utf-8"))
+                fact_first_shadows = ff_data.get("topics", [])
+                topic_seeds = ff_data.get("topic_seeds", [])
+                narrative_hypotheses = ff_data.get("narrative_hypotheses", [])
+            except Exception as e:
+                print(f"[Dashboard] Error parsing fact_first shadows: {e}")
 
-        # [NEW] Step 58: Load Calibration Review
+        fact_anchors = []
+        fa_path = self.base_dir / "data" / "facts" / f"fact_anchors_{ymd.replace('-', '')}.json"
+        if fa_path.exists():
+            try:
+                fa_data = json.loads(fa_path.read_text(encoding="utf-8"))
+                fact_anchors = fa_data
+            except Exception as e:
+                print(f"[Dashboard] Error parsing fact anchors: {e}")
+
+        topic_view = {}
+        tv_path = self.base_dir / "data" / "ops" / "topic_view_today.json"
+        if tv_path.exists():
+            try: topic_view = json.loads(tv_path.read_text(encoding="utf-8"))
+            except: pass
+
+        quality_review = {}
+        qr_path = self.base_dir / "data" / "ops" / "topic_quality_review_today.json"
+        if qr_path.exists():
+            try: quality_review = json.loads(qr_path.read_text(encoding="utf-8"))
+            except: pass
+
+        speakability = {}
+        es_path = self.base_dir / "data" / "ops" / "topic_speakability_today.json"
+        if es_path.exists():
+            try: speakability = json.loads(es_path.read_text(encoding="utf-8"))
+            except: pass
+
+        console = {}
+        tc_path = self.base_dir / "data" / "ops" / "topic_console_today.json"
+        if tc_path.exists():
+            try: console = json.loads(tc_path.read_text(encoding="utf-8"))
+            except: pass
+
+        calibration_summary = {"STRONG": 0, "BORDERLINE": 0, "WEAK": 0}
+        from src.ops.topic_quality_calibrator import TopicQualityCalibrator
+        calibrator = TopicQualityCalibrator(self.base_dir)
+        try: calibration_summary = calibrator.get_todays_summary(ymd)
+        except: pass
+
+        pref_signature = {}
+        pref_overlay = {}
+        sig_path = self.base_dir / "data" / "ops" / "human_pref_signature_30d.json"
+        if sig_path.exists():
+            try: pref_signature = json.loads(sig_path.read_text(encoding="utf-8"))
+            except: pass
+        ov_path = self.base_dir / "data" / "ops" / "human_pref_overlay_today.json"
+        if ov_path.exists():
+            try: pref_overlay = json.loads(ov_path.read_text(encoding="utf-8"))
+            except: pass
+
         calibration_review = {}
         y, m, d = ymd.split("-")
         cr_path = self.base_dir / "data" / "ops" / "calibration" / y / m / d / "calibration_review_today.json"
@@ -327,8 +384,18 @@ class DecisionDashboard:
             try: calibration_review = json.loads(cr_path.read_text(encoding="utf-8"))
             except: pass
 
+        cand_map = {}
+        if gate_cands.exists():
+            try:
+                c_data = json.loads(gate_cands.read_text(encoding="utf-8"))
+                for c in c_data.get("candidates", []):
+                    cand_map[c.get("candidate_id")] = c
+            except: pass
+
         topics = []
+        membership_queue = []
         next_teaser = None
+        accuracy_summary = {}
         if gate_out.exists():
             try:
                 data = json.loads(gate_out.read_text(encoding="utf-8"))
@@ -338,39 +405,21 @@ class DecisionDashboard:
                     elif "top1" in data:
                         topics = [data["top1"]]
                     elif "topic_id" in data:
-                        # Direct single topic object
                         topics = [data]
-                
-                # [IS-38] Load Membership Query
                 membership_queue = data.get("membership_only_queue", [])
-                
-                # [IS-40] Load Next-Signal Teaser
                 next_teaser = data.get("next_signal_teaser")
-                
-                # [IS-43] Load Accuracy Summary
                 accuracy_summary = data.get("accuracy_summary", {})
-                
             except Exception as e:
                 print(f"[Dashboard] Error parsing gate_out: {e}")
-                membership_queue = []
-        else:
-            membership_queue = []
         
-        # Post-Mortem History Loading (Step 18)
+        # Post-Mortem and History
         from datetime import datetime, timedelta
         t_dt = datetime.strptime(ymd, "%Y-%m-%d")
-        # Load [target_date + 1, target_date + 90]
         next_day_str = (t_dt + timedelta(days=1)).strftime("%Y-%m-%d")
         future_end_str = (t_dt + timedelta(days=90)).strftime("%Y-%m-%d")
         history = self.tracker.load_history(next_day_str, future_end_str)
-        
-        # Load Memory (Step 20) - 90 days lookback from today
         mem_index = self.memory.load_memory(ymd, lookback_days=90)
-        
-        # Load Saturation History (Step 21) - 14 days lookback
         sat_index = self.saturation.load_history(ymd, days=14)
-        
-        # Aggregate stats for today's panel (Past performance up to target_date)
         pm_stats = self.tracker.get_aggregate_stats(ymd, lookback_days=90)
         
         cards = []
@@ -379,16 +428,12 @@ class DecisionDashboard:
         failure_tally = {}
         flag_tally = {}
         
-        # 2. Process each topic
         for t in topics:
             tid = t.get("topic_id")
             if not tid: continue
             
-            # Find script sidecar
-            # Pattern: script_v1_{tid}.md.quality.json
             quality_file = gate_dir / f"script_v1_{tid}.md.quality.json"
-            
-            status = "DROP" # Default if no script
+            status = "DROP"
             codes = ["NO_SCRIPT"]
             evidence_cnt = 0
             
@@ -397,66 +442,38 @@ class DecisionDashboard:
                     q_data = json.loads(quality_file.read_text(encoding="utf-8"))
                     status = q_data.get("quality_status", "DROP")
                     codes = q_data.get("failure_codes", [])
-                    # Infer evidence count from script if possible, or assume based on status
                     evidence_cnt = self._count_evidence_from_script(gate_dir / f"script_v1_{tid}.md")
-                except:
-                    pass
+                except: pass
             
-            # Translate Reason
             reason_text = self._get_reason_text(status, codes)
-            
-            # Tally
             status_counts[status] = status_counts.get(status, 0) + 1
-            for c in codes:
-                failure_tally[c] = failure_tally.get(c, 0) + 1
+            for c in codes: failure_tally[c] = failure_tally.get(c, 0) + 1
             
-            # Compute Flags
             flags = self._compute_flags(t, evidence_cnt)
-            for f in flags:
-                flag_tally[f] = flag_tally.get(f, 0) + 1
+            for f in flags: flag_tally[f] = flag_tally.get(f, 0) + 1
 
-            # Build Speak Pack & Recommender (only for READY)
-            speak_pack = None
-            evidence_refs = None
-            tags = None
-            why_today = None
+            speak_pack, evidence_refs, tags, why_today = None, None, None, None
+            impact_win, impact_hint = None, None
             
             if status == "READY":
                 speak_pack = self._build_speak_pack(t, evidence_cnt, flags)
                 evidence_refs = self._build_evidence_refs(t, cand_map)
-                # Recommender Hints
                 tags = self._compute_recommender_tags(t, flags)
                 why_today = self._compute_why_today(t, speak_pack)
-                
-                # Step 17: Time-to-Impact Tag
                 impact_win, impact_hint = self._determine_impact_window(t, tags)
-            else:
-                impact_win = None
-                impact_hint = None
                 
-            # Step 18: Post-Mortem Evaluation
             outcome = None
-            # Step 20: Topic Memory
             mem_res = {"type": "NEW_TOPIC", "meta": None}
-            # Step 21: Narrative Saturation
             sat_res = {"level": "NORMAL", "count": 0, "axis": None}
             
             if status == "READY":
                 outcome = self.tracker.evaluate_topic(t, ymd, history)
                 mem_res = self.memory.classify_topic(t, mem_index, current_date=ymd)
                 sat_res = self.saturation.compute_saturation(t, sat_index)
-                
-                # Update Saturation Summary
-                lvl = sat_res["level"]
-                sat_summary[lvl] = sat_summary.get(lvl, 0) + 1
-                
-                # Step 22: Re-Narration Permission
-                perm_status, perm_reason = self._determine_renarration_permission(
-                    mem_res["type"], impact_win, outcome
-                )
+                sat_summary[sat_res["level"]] = sat_summary.get(sat_res["level"], 0) + 1
+                perm_status, perm_reason = self._determine_renarration_permission(mem_res["type"], impact_win, outcome)
             else:
                  perm_status, perm_reason = None, None
-
 
             depth_info = self._calculate_narration_depth(t, status, self._check_fact_driven(t), t.get("handoff_to_structural", False))
             ceiling_reason = self._get_ceiling_reason(depth_info["narration_level"], self._check_fact_driven(t))
@@ -477,24 +494,8 @@ class DecisionDashboard:
                 is_fact_driven=self._check_fact_driven(t),
                 fact_why_now=self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
                 narration_ceiling=ceiling_reason,
-                judgment_notes=self._build_judgment_notes({
-                    **t, 
-                    "status": status, 
-                    "evidence_count": evidence_cnt,
-                    "narration_level": depth_info["narration_level"],
-                    "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None,
-                    "is_fact_driven": self._check_fact_driven(t),
-                    "flags": flags,
-                    "narration_ceiling": ceiling_reason
-                }),
-                selection_rationale=self._build_selection_rationale({
-                    **t,
-                    "status": status,
-                    "is_fact_driven": self._check_fact_driven(t),
-                    "narration_level": depth_info["narration_level"],
-                    "judgment_notes": self._build_judgment_notes({**t, "status": status, "evidence_count": evidence_cnt, "narration_level": depth_info["narration_level"], "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None, "is_fact_driven": self._check_fact_driven(t), "flags": flags, "narration_ceiling": ceiling_reason}),
-                    "narration_ceiling": ceiling_reason
-                }) if status == "READY" else None,
+                judgment_notes=self._build_judgment_notes({**t, "status": status, "evidence_count": evidence_cnt, "narration_level": depth_info["narration_level"], "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None, "is_fact_driven": self._check_fact_driven(t), "flags": flags, "narration_ceiling": ceiling_reason}),
+                selection_rationale=self._build_selection_rationale({**t, "status": status, "is_fact_driven": self._check_fact_driven(t), "narration_level": depth_info["narration_level"], "judgment_notes": self._build_judgment_notes({**t, "status": status, "evidence_count": evidence_cnt, "narration_level": depth_info["narration_level"], "fact_why_now": self._get_fact_why_now_hint(t) if self._check_fact_driven(t) else None, "is_fact_driven": self._check_fact_driven(t), "flags": flags, "narration_ceiling": ceiling_reason}), "narration_ceiling": ceiling_reason}) if status == "READY" else None,
                 impact_window=impact_win,
                 impact_hint=impact_hint,
                 outcome=outcome,
@@ -530,28 +531,18 @@ class DecisionDashboard:
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
-            
-        # 3. Sort (Presentation Only)
-        # Groups: READY -> HOLD -> DROP
-        # Within: Score desc
-        cards.sort(key=lambda x: (
-            {"READY": 0, "HOLD": 1, "DROP": 2}.get(x.status, 3), 
-            -x.raw_score
-        ))
+
+        cards.sort(key=lambda x: ({"READY": 0, "HOLD": 1, "DROP": 2}.get(x.status, 3), -x.raw_score))
         
-        # Step 15: Contrast Post-processing
         for c in cards:
             if c.status == "READY":
                 c.contrast_rationale = self._get_contrast_rationale(c, [card for card in cards if card.status == "HOLD"])
         
-        # 4. "Why No Speak" Analysis
         no_speak_reason = []
         if status_counts["READY"] == 0:
-            # Top 3 blockers
             sorted_fails = sorted(failure_tally.items(), key=lambda x: x[1], reverse=True)[:3]
             for code, count in sorted_fails:
-                 # Translate code
-                 desc = self._get_code_desc(status="DROP", code=code) # Assume DROP context for blockers
+                 desc = self._get_code_desc(status="DROP", code=code)
                  no_speak_reason.append(f"{desc} ({count}건)")
         
         return {
@@ -768,18 +759,6 @@ class DecisionDashboard:
         lines.append("---")
         lines.append("")
 
-        lines.append("### 📟 TOPIC CONSOLE SNAPSHOT")
-        # Show top 3 topics
-        for t in console.get("topics", [])[:3]:
-            speak_icon = "🟢" if t["speakability"] == "SPEAKABLE_NOW" else "⚪"
-            script_icon = "✅" if t["script_assets"].get("script_md_path") else "⛔"
-            bundle_icon = "✅" if t["script_assets"].get("speak_bundle_md_path") else "⛔"
-            
-            lines.append(f"- **{t['title']}**")
-            lines.append(f"  {speak_icon} SPEAK | SCRIPT{script_icon} | BUNDLE{bundle_icon}")
-        lines.append("")
-        lines.append("---")
-        lines.append("")
 
     def _render_speakability_summary_panel(self, lines: List[str], speakability: Dict[str, Any]):
         """Renders Step 54 Editorial Speakability Summary Panel."""
@@ -1105,7 +1084,7 @@ class DecisionDashboard:
                 lines.append("_No ANOMALY-DRIVEN signals today_")
             else:
                 for c in anomaly_lane[:5]: 
-                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids))
+                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids, data))
                 if len(anomaly_lane) > 5:
                     lines.append("\n**Additional Anomaly Signals (Optional)**")
                     for c in anomaly_lane[5:]:
@@ -1118,7 +1097,7 @@ class DecisionDashboard:
                 lines.append("_No FACT-DRIVEN topics today_")
             else:
                 for c in fact_lane[:5]:
-                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids))
+                    lines.append(self._render_ready_card(c, decisions_map, auto_approved_ids, data))
                 if len(fact_lane) > 5:
                     lines.append("\n**Additional Fact Topics (Optional)**")
                     for c in fact_lane[5:]:
@@ -1404,7 +1383,7 @@ class DecisionDashboard:
         # Default DISCOURAGED
         return "DISCOURAGED", "최근 반복 소비된 서사로 신규 정보 없음"
 
-    def _render_ready_card(self, c: Dict, decisions_map: Dict[str, Dict], auto_approved_ids: List[str] = None) -> str:
+    def _render_ready_card(self, c: Dict, decisions_map: Dict[str, Dict], auto_approved_ids: List[str] = None, data: Dict[str, Any] = None) -> str:
         """Renders the detailed READY card with Speak Pack."""
         tid = c.get('topic_id')
         lines = []
