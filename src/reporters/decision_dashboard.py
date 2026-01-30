@@ -108,6 +108,8 @@ class DecisionCard:
 
     voice_consistent: bool = False # [IS-39] 화자 일관성: LOCKED
     anticipated_questions: Optional[List[Dict[str, Any]]] = None # [IS-41] 예상 질문 & 대응 전략
+    misinterpretation_risks: Optional[List[Dict[str, Any]]] = None # [IS-42] 오해 리스크
+    applied_defense: Optional[str] = None # [IS-42] 적용된 방어 문구
 
 class DecisionDashboard:
     """
@@ -429,6 +431,8 @@ class DecisionDashboard:
                 follow_up_plans=t.get("follow_up_plans"),
                 voice_consistent=t.get("voice_consistent", False),
                 anticipated_questions=t.get("anticipated_questions"),
+                misinterpretation_risks=t.get("misinterpretation_risks"),
+                applied_defense=t.get("applied_defense"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1612,6 +1616,9 @@ class DecisionDashboard:
         # [IS-41] Render Audience Question Anticipation
         self._render_audience_questions_panel(lines, c)
         
+        # [IS-42] Render Misinterpretation Risk & Defense
+        self._render_misinterpretation_panel(lines, c)
+        
         lines.append("")
         
         lines.append("\n---")
@@ -2715,3 +2722,24 @@ class DecisionDashboard:
             strat_display = f"**{strategy}**" if strategy != "(무대응)" else strategy
             
             lines.append(f"| {q_text} | `{cls}` | {strat_display} | *{reason}* |")
+
+    def _render_misinterpretation_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-42 Misinterpretation Risk & Defense panel."""
+        risks = getattr(c, 'misinterpretation_risks', None)
+        defense = getattr(c, 'applied_defense', None)
+        if not risks:
+            return
+
+        lines.append("\n### ⚠️ 오해 리스크 & 방어 장치 (MISINTERPRETATION DEFENSE)")
+        if defense:
+            lines.append(f"> [!IMPORTANT]\n> **적용된 방어 문구**: {defense}\n")
+        
+        lines.append("| 오해 가능 시나리오 (Scenario) | 리스크 등급 (Risk) |")
+        lines.append("| :--- | :--- |")
+        
+        for r in risks:
+            scenario = r.get("scenario", "")
+            level = r.get("risk_level", "낮음")
+            
+            level_icon = "🔴" if level == "높음" else ("🟡" if level == "중간" else "🟢")
+            lines.append(f"| {scenario} | {level_icon} {level} |")

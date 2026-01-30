@@ -18,6 +18,8 @@ from src.issuesignal.membership_queue import MembershipQueueEngine
 from src.issuesignal.voice_lock import VoiceLockEngine
 from src.issuesignal.teaser_engine import NextSignalTeaserEngine
 from src.issuesignal.question_engine import AudienceQuestionEngine
+from src.issuesignal.misinterpretation_engine import MisinterpretationEngine
+from src.issuesignal.defense_generator import DefenseGenerator
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -142,6 +144,24 @@ def main(as_of_date: str):
         content_pkg = composer.compose(t)
         if content_pkg:
             t["content_package"] = content_pkg
+
+    # [IS-42] Misinterpretation Risk & Defense
+    risk_eng = MisinterpretationEngine()
+    defense_gen = DefenseGenerator()
+    for t in processed_ranked:
+        # Step A: Analyze Risks
+        risks = risk_eng.analyze_risks(t)
+        t["misinterpretation_risks"] = risks
+        
+        # Step B: Generate Defensive Language
+        defense_text = defense_gen.generate_defense(risks)
+        t["applied_defense"] = defense_text
+        
+        # Step C: Re-compose with Defense if applicable
+        if defense_text and t.get("content_package"):
+            new_pkg = composer.compose(t, defense_text=defense_text)
+            if new_pkg:
+                t["content_package"] = new_pkg
 
     # [IS-36] Audience Gate & Distribution Control
     gate = AudienceGateEngine()

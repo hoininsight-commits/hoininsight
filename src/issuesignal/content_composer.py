@@ -7,7 +7,7 @@ class ContentPackageComposer:
     Transforms approved IssueSignal decisions into publish-ready content.
     """
 
-    def compose(self, data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    def compose(self, data: Dict[str, Any], defense_text: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
         Main entry point for composition.
         """
@@ -23,17 +23,17 @@ class ContentPackageComposer:
         }
 
         if "대형 영상" in output_form or "LONG" in str(output_form).upper():
-            package["content"] = self._compose_long_form(data)
+            package["content"] = self._compose_long_form(data, defense_text)
         elif "숏츠" in output_form or "SHORT" in str(output_form).upper():
-            package["content"] = self._compose_short_form(data)
+            package["content"] = self._compose_short_form(data, defense_text)
         elif "텍스트" in output_form or "TEXT" in str(output_form).upper():
-            package["content"] = self._compose_text_card(data)
+            package["content"] = self._compose_text_card(data, defense_text)
         else:
             return None
 
         return package
 
-    def _compose_long_form(self, data: Dict[str, Any]) -> str:
+    def _compose_long_form(self, data: Dict[str, Any], defense_text: Optional[str] = None) -> str:
         """5-step Mandated Voice Structure for IS-39."""
         trigger = data.get("trigger_sentence", "트리거 신호 없음")
         flow = data.get("capital_flow_summary", "자본의 이동이 시작됐다.")
@@ -54,12 +54,15 @@ class ContentPackageComposer:
         blocks.append(f"## 4. 구조적 강제\n{trigger}\n이 사실이 자본을 움직이게 만든다. 자본은 탈출구가 없다. 특정 방향으로 이동하도록 이미 결정됐다.")
         
         # 5. 결론 (Conclusion)
+        if defense_text:
+            blocks.append(f"### ⚠️ 방어 기제\n{defense_text}")
+            
         ticker_str = ", ".join(tickers) if tickers else "핵심 병목 지점"
         blocks.append(f"## 5. 결론\n{flow}\n결론은 명확하다. 자본은 {ticker_str}(으)로 집중된다. 이 흐름을 거스르는 선택지는 없다. 분석은 완료됐다.")
 
         return "\n\n".join(blocks)
 
-    def _compose_short_form(self, data: Dict[str, Any]) -> Dict[str, str]:
+    def _compose_short_form(self, data: Dict[str, Any], defense_text: Optional[str] = None) -> Dict[str, str]:
         """3 variants of Short Form content with voice lock."""
         trigger = data.get("trigger_sentence", "")
         
@@ -74,9 +77,13 @@ class ContentPackageComposer:
         # 45s
         variants["45초"] = f"결론은 하나다. {trigger} 신호가 구조를 바꿨다. 자본은 특정 병목 지점으로 집중되어야 한다. 우리는 이 흐름을 읽고 결과를 받아들여야 한다. 분석은 끝났다."
 
+        if defense_text:
+            for k in variants:
+                variants[k] = variants[k].strip() + f" {defense_text}"
+
         return variants
 
-    def _compose_text_card(self, data: Dict[str, Any]) -> str:
+    def _compose_text_card(self, data: Dict[str, Any], defense_text: Optional[str] = None) -> str:
         """5-line Text Card in Voice-Locked tone."""
         trigger = data.get("trigger_sentence", "")
         
@@ -88,5 +95,9 @@ class ContentPackageComposer:
         lines.append("3. 시장의 오해: 일시적 현상으로 치부함.")
         lines.append("4. 강제: 자본의 필연적 이동 시작됨.")
         lines.append("5. 결론: 핵심 병목 티커 집중 관찰 필요.")
+        
+        if defense_text:
+            lines.append("")
+            lines.append(f"[방어] {defense_text}")
         
         return "\n".join(lines)
