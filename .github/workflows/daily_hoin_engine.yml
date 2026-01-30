@@ -43,7 +43,7 @@ jobs:
       run: |
         # Engine 2: Topic Decision Gate
         # Reads daily_snapshot.json -> writes topic_gate_output.json
-        python -m pipeline.run_topic_gate
+        python -m src.pipeline.run_topic_gate
 
     - name: Commit and Push Results
       run: |
