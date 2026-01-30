@@ -1630,6 +1630,49 @@ def generate_dashboard(base_dir: Path):
                     padding: 20px;
                 }}
             }}
+    # [IS-45] Load Operational Dashboard & Convert to HTML for Embedding
+    ops_dashboard_md_path = base_dir / "data" / "reports" / ymd.replace("-", "/") / "operational_dashboard.md"
+    ops_dashboard_html = ""
+    if ops_dashboard_md_path.exists():
+        ops_md_content = ops_dashboard_md_path.read_text(encoding="utf-8")
+        # Reuse existing markdown parser
+        ops_dashboard_html = parse_markdown(ops_md_content)
+    else:
+        ops_dashboard_html = "<div class='empty-state'><h3>📉 아직 생성된 운영 대시보드가 없습니다.</h3></div>"
+
+    # [NEW] YouTube Inbox View
+    youtube_videos = _load_youtube_videos(base_dir)
+    youtube_view_html = _generate_youtube_view(youtube_videos)
+
+    # [IS-45] Copy report to docs (Keep existing logic)
+    today_report_dst = base_dir / "docs" / "data" / "reports" / ymd.replace("-", "/") / "operational_dashboard.md"
+    if ops_dashboard_md_path.exists():
+        today_report_dst.parent.mkdir(parents=True, exist_ok=True)
+        today_report_dst.write_text(ops_dashboard_md_path.read_text(encoding="utf-8"), encoding="utf-8")
+
+    # Update Menu & Content Structure
+    html = f"""<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOIN Insight Dashboard (Step 84)</title>
+        <style>
+            {topic_card_css}
+            
+            /* [IS-45] Ops Dashboard Style */
+            .ops-report-container {{
+                background:white; padding:40px; border-radius:12px;
+                max-width: 1000px; margin: 0 auto;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            }}
+            .ops-report-container h1 {{ font-size: 28px; border-bottom: 2px solid #333; padding-bottom:10px; }}
+            .ops-report-container h2 {{ font-size: 22px; color: #1e293b; margin-top: 30px; border-left: 4px solid #3b82f6; padding-left:10px; }}
+            .ops-report-container h3 {{ font-size: 18px; color: #475569; margin-top: 20px; }}
+            .ops-report-container blockquote {{ background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 10px 20px; margin: 10px 0; }}
+            .ops-report-container table {{ width:100%; border-collapse:collapse; margin: 20px 0; }}
+            .ops-report-container th {{ background:#f1f5f9; padding:10px; text-align:left; border-bottom:2px solid #e2e8f0; }}
+            .ops-report-container td {{ padding:10px; border-bottom:1px solid #e2e8f0; }}
         </style>
     </head>
     <body>
@@ -1641,8 +1684,8 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
-                <div class="menu-item" onclick="location.href='./issuesignal/'">🛡️ IssueSignal 연산 현황</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="window.open('data/reports/{ymd.replace('-', '/')}/operational_dashboard.md', '_blank')">📌 운영 대시보드 (Today)</div>
+                <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
+                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (Today)</div>
             </div>
         </div>
         
@@ -1671,6 +1714,18 @@ def generate_dashboard(base_dir: Path):
                 </div>
                 {archive_view_html}
             </div>
+            
+            <!-- [NEW] IssueSignal Tab (Iframe) -->
+            <div id="tab-issuesignal" class="hidden" style="height:100%;">
+                <iframe src="./issuesignal/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
+            </div>
+
+            <!-- [NEW] Ops Report Tab (Embedded HTML) -->
+            <div id="tab-ops-report" class="hidden">
+                <div class="ops-report-container">
+                    {ops_dashboard_html}
+                </div>
+            </div>
         </div>
 
         <!-- Detail Modal -->
@@ -1696,11 +1751,8 @@ def generate_dashboard(base_dir: Path):
                 el.classList.add('active');
                 
                 // Update Content
-                document.getElementById('tab-today').classList.add('hidden');
-                document.getElementById('tab-candidates').classList.add('hidden');
-                document.getElementById('tab-decision').classList.add('hidden');
-                document.getElementById('tab-ops').classList.add('hidden');
-                document.getElementById('tab-archive').classList.add('hidden');
+                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report"];
+                tabs.forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');
             }}
