@@ -67,9 +67,7 @@ class EntityMappingLayer:
         # Fallback if no candidates found (for safety/mock)
         if not candidates and "Risk-Off" in topic_title:
             candidates = ["KODEX 200선물인버스2X", "SQQQ", "VIXY"]
-        elif not candidates:
-            # Generic fallback to ensure UI doesn't break
-            candidates = ["Sector Leader A", "Infrastructure B", "Hedge ETF C"]
+        # Removed generic fallback ["Sector Leader A", ...] to prevent mock data in Silence Mode
 
         # 2. Enrich Entities (The Core "Cognitive" Step)
         entity_cards = []

@@ -192,7 +192,18 @@ class TopicCardRenderer:
         cards_html = ""
         for e in entities:
             name = e.get("name", "Unknown")
-            role = e.get("role", "EXECUTOR").replace("STRUCTURAL ", "")
+            # Role Localization Map
+            role_map = {
+                "EXECUTOR": "주도자 (Executor)",
+                "BENEFICIARY": "수혜자 (Beneficiary)",
+                "VICTIM": "피해자 (Victim)",
+                "HEDGE": "헤지 수단 (Hedge)",
+                "BOTTLENECK": "병목점 (Bottleneck)",
+                "STRUCTURAL EXECUTOR": "구조적 주도자"
+            }
+            raw_role = e.get("role", "EXECUTOR").replace("STRUCTURAL ", "")
+            role = role_map.get(raw_role, raw_role)
+            
             state = e.get("state", "OBSERVE")
             justification = e.get("state_justification", [])
             
