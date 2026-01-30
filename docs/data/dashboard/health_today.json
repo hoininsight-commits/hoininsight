@@ -1,13 +1,13 @@
 {
   "run_date": "2026-01-30",
-  "checked_at": "2026-01-30T00:49:07.803020",
+  "checked_at": "2026-01-30T00:53:25.795203",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
-    "anomalies_count": 0,
-    "gate_candidates_count": 0,
-    "scripts_md_count": 1,
-    "script_quality_json_count": 1,
+    "anomalies_count": 24,
+    "gate_candidates_count": 17,
+    "scripts_md_count": 3,
+    "script_quality_json_count": 3,
     "topics_count": {
       "READY": 0,
       "HOLD": 0,
@@ -19,14 +19,10 @@
   "errors": [
     "decision_dashboard.md missing",
     "events_dir missing: FETCH_FAILED",
-    "anomalies_dir missing: /home/runner/work/hoininsight/hoininsight/data/features/anomalies/2026/01/30",
-    "candidates_file missing: /home/runner/work/hoininsight/hoininsight/data/topics/candidates/2026/01/30/topic_candidates.json",
     "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/01/30"
   ],
   "missing_files": [
-    "/home/runner/work/hoininsight/hoininsight/data/events/2026/01/30",
-    "/home/runner/work/hoininsight/hoininsight/data/features/anomalies/2026/01/30",
-    "/home/runner/work/hoininsight/hoininsight/data/topics/candidates/2026/01/30/topic_candidates.json"
+    "/home/runner/work/hoininsight/hoininsight/data/events/2026/01/30"
   ],
   "input_root_cause_code": "FETCH_FAILED",
   "input_details": {
