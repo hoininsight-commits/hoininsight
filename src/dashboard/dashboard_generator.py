@@ -1642,7 +1642,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
                 <div class="menu-item" onclick="location.href='./issuesignal/'">🛡️ IssueSignal 연산 현황</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="window.open('../data/reports/{ymd.replace('-', '/')}/operational_dashboard.md', '_blank')">📌 운영 대시보드 (Today)</div>
+                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="window.open('data/reports/{ymd.replace('-', '/')}/operational_dashboard.md', '_blank')">📌 운영 대시보드 (Today)</div>
             </div>
         </div>
         
@@ -1736,6 +1736,14 @@ def generate_dashboard(base_dir: Path):
     # [NEW] YouTube Inbox View
     youtube_videos = _load_youtube_videos(base_dir)
     youtube_view_html = _generate_youtube_view(youtube_videos)
+
+    today_report_src = base_dir / "data" / "reports" / ymd.replace("-", "/") / "operational_dashboard.md"
+    today_report_dst = base_dir / "docs" / "data" / "reports" / ymd.replace("-", "/") / "operational_dashboard.md"
+    
+    if today_report_src.exists():
+        today_report_dst.parent.mkdir(parents=True, exist_ok=True)
+        today_report_dst.write_text(today_report_src.read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"[Dashboard] Copied operational_dashboard.md to {today_report_dst}")
 
     (base_dir / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"[Dashboard] Generated docs/index.html with YouTube Inbox (Restored)")
