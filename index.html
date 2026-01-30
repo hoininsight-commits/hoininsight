@@ -1,22 +1,10 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOIN Insight - Operator View</title>
+        <title>HOIN Insight Dashboard (Step 84)</title>
         <style>
-            :root {
-                --bg-color: #f8fafc;
-                --text-primary: #0f172a;
-                --text-secondary: #64748b;
-                --accent-blue: #2563eb; 
-                --accent-green: #059669;
-                --card-bg: #ffffff;
-                --border-color: #e2e8f0;
-            }
-            
-            /* [NEW] Topic Card CSS */
             
         /* Top-1 Card Styles */
         .topic-card-top1 {
@@ -330,272 +318,20 @@
         .badge-new { background: #3b82f6; }
         .badge-recurring { background: #7c3aed; }
         
-
-            * { box-sizing: border-box; }
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                background-color: var(--bg-color);
-                color: var(--text-primary);
-                display: flex;
-                height: 100vh;
-                overflow: hidden;
-            }
-            /* Sidebar */
-            .sidebar {
-                width: 240px;
-                background: white;
-                border-right: 1px solid var(--border-color);
-                display: flex;
-                flex-direction: column;
-                padding: 20px;
-            }
-            .logo {
-                font-size: 18px;
-                font-weight: 800;
-                color: var(--text-primary);
-                margin-bottom: 40px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            .menu-item {
-                padding: 12px 16px;
-                margin-bottom: 8px;
-                border-radius: 8px;
-                cursor: pointer;
-                font-size: 14px;
-                font-weight: 600;
-                color: var(--text-secondary);
-                transition: all 0.2s;
-            }
-            .menu-item:hover { background: #f1f5f9; color: var(--text-primary); }
-            .menu-item.active {
-                background: #eff6ff;
-                color: var(--accent-blue);
-            }
             
-            /* Main Content */
-            .main-content {
-                flex: 1;
-                padding: 40px;
-                overflow-y: auto;
+            /* [IS-45] Ops Dashboard Style */
+            .ops-report-container {
+                background:white; padding:40px; border-radius:12px;
+                max-width: 1000px; margin: 0 auto;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             }
-            
-            /* Today View */
-            .today-header {
-                margin-bottom: 30px;
-            }
-            .today-date {
-                font-size: 13px;
-                color: var(--text-secondary);
-                margin-bottom: 5px;
-                font-weight: 600;
-            }
-            .today-summary {
-                font-size: 24px;
-                font-weight: 800;
-                color: var(--text-primary);
-            }
-            
-            .card-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 20px;
-            }
-            
-            .topic-card {
-                background: var(--card-bg);
-                border: 1px solid var(--border-color);
-                border-radius: 12px;
-                padding: 20px;
-                cursor: pointer;
-                transition: transform 0.2s, box-shadow 0.2s;
-                position: relative;
-                overflow: hidden;
-            }
-            .topic-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-                border-color: #cbd5e1;
-            }
-            
-            .card-badge {
-                display: inline-block;
-                font-size: 11px;
-                font-weight: 700;
-                padding: 4px 8px;
-                border-radius: 4px;
-                margin-bottom: 12px;
-            }
-            .card-badge.engine { background: #eff6ff; color: #1e40af; }
-            .card-badge.signal { background: #ecfdf5; color: #065f46; }
-            
-            .card-title {
-                font-size: 16px;
-                font-weight: 700;
-                margin-bottom: 15px;
-                line-height: 1.4;
-                color: #1e293b;
-                word-break: keep-all;
-            }
-            
-            .card-meta {
-                display: flex;
-                align-items: center;
-                font-size: 12px;
-                color: #64748b;
-            }
-            .meta-item.importance { font-weight: 600; color: #334155; }
-            .meta-divider { margin: 0 8px; color: #cbd5e1; }
-            
-            /* Archive View */
-            .archive-table {
-                width: 100%;
-                border-collapse: collapse;
-                background: white;
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            }
-            .archive-table th {
-                background: #f8fafc;
-                text-align: left;
-                padding: 12px 16px;
-                font-size: 12px;
-                color: #64748b;
-                border-bottom: 1px solid #e2e8f0;
-            }
-            .archive-table td {
-                padding: 16px;
-                border-bottom: 1px solid #f1f5f9;
-                font-size: 14px;
-                cursor: pointer;
-            }
-            .archive-table tr:hover td { background: #f8fafc; }
-            
-            /* Modal */
-            .modal {
-                display: none;
-                position: fixed;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                background: rgba(0,0,0,0.5);
-                z-index: 1000;
-                justify-content: center;
-                align-items: center;
-            }
-            .modal.active { display: flex; }
-            .modal-content {
-                background: white;
-                width: 90%;
-                max-width: 600px;
-                max-height: 85vh;
-                border-radius: 16px;
-                overflow-y: auto;
-                padding: 30px;
-                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            }
-            .detail-header { margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
-            .detail-badge { 
-                font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; 
-            }
-            .detail-badge.engine { background: #eff6ff; color: #1e40af; }
-            .detail-badge.signal { background: #ecfdf5; color: #065f46; }
-            
-            .detail-header h2 { margin: 10px 0 0 0; font-size: 20px; font-weight: 800; color: #1e293b; }
-            
-            .detail-section { margin-bottom: 25px; }
-            .detail-section h3 { font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-            .detail-section p { font-size: 15px; line-height: 1.6; color: #334155; margin: 0; }
-            .script-text { white-space: pre-wrap; }
-            
-            .raw-data-box {
-                background: #f1f5f9;
-                padding: 10px;
-                border-radius: 6px;
-                font-family: monospace;
-                font-size: 12px;
-                color: #475569;
-                overflow-x: auto;
-            }
-            .data-list { padding-left: 20px; font-size: 14px; color: #334155; }
-            .data-list li { margin-bottom: 5px; }
-            
-            .empty-state { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
-            
-            /* Utility */
-            .hidden { display: none; }
-
-            /* [NEW] Responsive Design */
-            @media (max-width: 1024px) {
-                .sidebar { width: 220px; }
-                .main-content { padding: 30px; }
-            }
-
-            @media (max-width: 768px) {
-                body {
-                    flex-direction: column;
-                    height: auto;
-                    overflow: auto;
-                }
-                .sidebar {
-                    width: 100%;
-                    height: auto;
-                    border-right: none;
-                    border-bottom: 1px solid var(--border-color);
-                    padding: 15px 20px;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-                .logo { 
-                    margin-bottom: 10px; 
-                    justify-content: center;
-                }
-                .menu-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 5px;
-                    justify-content: center;
-                }
-                .menu-item {
-                    flex: 1 1 auto;
-                    margin-bottom: 0;
-                    padding: 8px 10px;
-                    font-size: 11px;
-                    text-align: center;
-                    white-space: nowrap;
-                }
-                .main-content {
-                    padding: 15px;
-                    overflow-y: visible;
-                }
-                .today-summary { font-size: 20px; }
-                
-                .card-grid {
-                    grid-template-columns: 1fr;
-                }
-                
-                /* Top-1 Mobile */
-                .topic-card-top1 {
-                    padding: 16px;
-                    margin-bottom: 24px;
-                }
-                .top1-title { font-size: 20px; }
-                
-                /* Fix for narrow columns */
-                .empty-state-card h3 {
-                    word-break: keep-all;
-                    font-size: 18px;
-                    margin: 0 10px;
-                }
-                
-                .modal-content {
-                    width: 95%;
-                    padding: 20px;
-                }
-            }
+            .ops-report-container h1 { font-size: 28px; border-bottom: 2px solid #333; padding-bottom:10px; }
+            .ops-report-container h2 { font-size: 22px; color: #1e293b; margin-top: 30px; border-left: 4px solid #3b82f6; padding-left:10px; }
+            .ops-report-container h3 { font-size: 18px; color: #475569; margin-top: 20px; }
+            .ops-report-container blockquote { background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 10px 20px; margin: 10px 0; }
+            .ops-report-container table { width:100%; border-collapse:collapse; margin: 20px 0; }
+            .ops-report-container th { background:#f1f5f9; padding:10px; text-align:left; border-bottom:2px solid #e2e8f0; }
+            .ops-report-container td { padding:10px; border-bottom:1px solid #e2e8f0; }
         </style>
     </head>
     <body>
@@ -607,8 +343,8 @@
                 <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
-                <div class="menu-item" onclick="location.href='./issuesignal/'">🛡️ IssueSignal 연산 현황</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="window.open('data/reports/2026/01/30/operational_dashboard.md', '_blank')">📌 운영 대시보드 (Today)</div>
+                <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
+                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (Today)</div>
             </div>
         </div>
         
@@ -1408,6 +1144,18 @@
     </div>
     
             </div>
+            
+            <!-- [NEW] IssueSignal Tab (Iframe) -->
+            <div id="tab-issuesignal" class="hidden" style="height:100%;">
+                <iframe src="./issuesignal/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
+            </div>
+
+            <!-- [NEW] Ops Report Tab (Embedded HTML) -->
+            <div id="tab-ops-report" class="hidden">
+                <div class="ops-report-container">
+                    <h3 style='margin-top:10px; margin-bottom:5px;'>🎬 이슈시그널 편집 회의 보드 - 2026-01-30</h3><p style='margin-bottom:8px;'>> <strong>데이터 기준일</strong>: 2026-01-30 | <strong>작성</strong>: IssueSignal Engine/V4</p><h4 style='margin-top:10px; margin-bottom:5px;'>📌 오늘의 확정 토픽 (TOP 0)</h4><p style='margin-bottom:8px;'>> <strong>확정된 토픽 없음</strong>: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.</p><p style='margin-bottom:8px;'>---</p><h4 style='margin-top:10px; margin-bottom:5px;'>🔍 상세 완결 데이터 (EVIDENCE BUNDLE)</h4><h5 style='margin-top:5px; margin-bottom:5px;'>📄 1. 지수 상승 속 섹터 하락의 이유</h5><p style='margin-bottom:8px;'>> <strong>데이터 신뢰 마크</strong>: 🕒 기준시각 UTC+9 | 👁️ 독립 출처 1개 확인 | 🛡️ 검증: N/A</p><p style='margin-bottom:8px;'><strong>① 요약 및 판단 근거</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>배경</strong>: N/A</li><li><strong>판단</strong>: 근거 데이터가 부족합니다 (최소 2개 필요).</li></ul><p style='margin-bottom:8px;'><strong>② 공식 인용(Quotes) & 증거</strong></p><p style='margin-bottom:8px;'><strong>③ 자본 경로(Ticker) & Kill-Switch</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>Kill-Switch</strong>: `설정 없음`</li></ul><p style='margin-bottom:8px;'><strong>④ 콘텐츠 패키지 (Complete)</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li>*콘텐츠 패키지 미생성*</li></ul><p style='margin-bottom:8px;'><strong>⑤ 오해 방어 & 예상 질문 (Defense)</strong></p><p style='margin-bottom:8px;'>---</p>
+                </div>
+            </div>
         </div>
 
         <!-- Detail Modal -->
@@ -1433,11 +1181,8 @@
                 el.classList.add('active');
                 
                 // Update Content
-                document.getElementById('tab-today').classList.add('hidden');
-                document.getElementById('tab-candidates').classList.add('hidden');
-                document.getElementById('tab-decision').classList.add('hidden');
-                document.getElementById('tab-ops').classList.add('hidden');
-                document.getElementById('tab-archive').classList.add('hidden');
+                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report"];
+                tabs.forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
                 
                 document.getElementById('tab-' + tabName).classList.remove('hidden');
             }
