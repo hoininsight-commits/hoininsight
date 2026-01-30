@@ -583,6 +583,16 @@ def main(target_categories: list[str] = None):
             dd_path.parent.mkdir(parents=True, exist_ok=True)
             dd_path.write_text(dd_md, encoding="utf-8")
             
+            # [IS-44] Operational Dashboard
+            try:
+                ops_md = dd.render_operational_view(dd_data, run_ymd)
+                ops_path = Path("data/reports") / y / m / d / "operational_dashboard.md"
+                ops_path.write_text(ops_md, encoding="utf-8")
+                details_lines.append(f"operational_dashboard: ok | {ops_path.as_posix()}")
+                print(f"operational_dashboard: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"operational_dashboard: fail ({e})", file=sys.stderr)
+            
             details_lines.append(f"decision_dashboard: ok | {dd_path.as_posix()}")
             print(f"decision_dashboard: ok", file=sys.stderr)
         except Exception as e:
