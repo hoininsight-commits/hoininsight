@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-01-30T00:52:31Z`
+- ts_utc: `2026-01-30T03:11:43Z`
 - ymd_utc: `2026/01/30`
 - enabled_datasets: `32`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 269 | 2026-01-15T07:32:29Z | 2026-01-30T00:51:53Z | 114 | 268 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 270 | 2026-01-15T07:32:29Z | 2026-01-30T03:11:07Z | 115 | 269 | 6 | 1 | 0 | data/curated/crypto/btc_usd.csv | - |
 | CPI_USA | inflation_cpi_fred | OK | 947 | 1947-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/inflation/cpi_usa.csv | - |
 | FED_FUNDS | rates_fed_funds_fred | OK | 858 | 1954-07-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/rates/fed_funds.csv | - |
 | FIN_STRESS | risk_financial_stress_fred | OK | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/risk/financial_stress_usa.csv | - |
@@ -17,7 +17,7 @@
 | HY_SPREAD | credit_hy_spread_fred | OK | 7591 | 1996-12-31T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 19 | 6 | 1 | 0 | data/curated/credit/hy_spread_usa.csv | - |
 | KOR_CPI | inflation_kor_cpi_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/inflation/korea_cpi.csv | - |
 | KOR_RATE | rates_kor_base_rate_ecos | OK | 61 | 2021-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/ecos/rates/korea_base_rate.csv | - |
-| KOSPI | index_kospi_stooq | OK | 268 | 2026-01-15T07:32:40Z | 2026-01-30T00:51:57Z | 113 | 267 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
+| KOSPI | index_kospi_stooq | OK | 269 | 2026-01-15T07:32:40Z | 2026-01-30T03:11:11Z | 114 | 268 | 6 | 1 | 0 | data/curated/indices/kospi.csv | - |
 | M2_USA | liquidity_m2_fred | OK | 804 | 1959-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/liquidity/m2_usa.csv | - |
 | M_AND_A_CB | struct_dart_cb_bw | OK | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 0 | 1 | 6 | 1 | 0 | data/curated/structural/cb_bw.csv | - |
 | M_AND_A_DISP | struct_dart_disposal | OK | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 1 | 2 | 6 | 1 | 0 | data/curated/structural/disposal.csv | - |
@@ -25,11 +25,11 @@
 | PCE_USA | inflation_pce_fred | OK | 803 | 1959-01-01T00:00:00Z | 2025-11-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/inflation/pce_usa.csv | - |
 | SILVER | metal_silver_kag_coingecko | OK | 88 | 2026-01-15T08:10:58Z | 2026-01-30T00:00:00Z | 7 | 88 | 6 | 1 | 0 | data/curated/metals/silver_usd.csv | - |
 | SILVER | metal_silver_kag_coingecko | OK | 88 | 2026-01-15T08:10:58Z | 2026-01-30T00:00:00Z | 7 | 88 | 6 | 1 | 0 | data/curated/metals/silver_usd.csv | - |
-| SPX | index_spx_fred | OK | 2599 | 2016-01-19T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 95 | 6 | 1 | 0 | data/curated/indices/spx.csv | - |
+| SPX | index_spx_fred | OK | 2600 | 2016-01-19T00:00:00Z | 2026-01-29T00:00:00Z | 4 | 96 | 6 | 1 | 0 | data/curated/indices/spx.csv | - |
 | UNRATE | employment_unrate_fred | OK | 935 | 1948-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 6 | 1 | 0 | data/curated/employment/unrate_usa.csv | - |
 | US02Y | rates_us02y_fred | OK | 12414 | 1976-06-01T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 22 | 6 | 1 | 0 | data/curated/rates/us02y.csv | - |
 | US10Y | rates_us10y_fred | OK | 16079 | 1962-01-02T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 95 | 6 | 1 | 0 | data/curated/rates/us10y.csv | - |
-| USDKRW_ECOS | fx_usdkrw_ecos | OK | 1240 | 2021-01-18T00:00:00Z | 2026-01-29T00:00:00Z | 4 | 20 | 6 | 1 | 0 | data/curated/ecos/fx/usdkrw.csv | - |
+| USDKRW_ECOS | fx_usdkrw_ecos | OK | 1241 | 2021-01-18T00:00:00Z | 2026-01-30T00:00:00Z | 5 | 21 | 6 | 1 | 0 | data/curated/ecos/fx/usdkrw.csv | - |
 | VIX | risk_vix_fred | OK | 9188 | 1990-01-02T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 96 | 6 | 1 | 0 | data/curated/risk/vix.csv | - |
 | WTI | comm_wti_fred | OK | 10089 | 1986-01-02T00:00:00Z | 2026-01-26T00:00:00Z | 1 | 20 | 6 | 1 | 0 | data/curated/commodities/wti.csv | - |
 | YIELD_CURVE | derived_yield_curve_10y_2y | OK | 12410 | 1976-06-01T00:00:00Z | 2026-01-28T00:00:00Z | 3 | 18 | 6 | 1 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | - |

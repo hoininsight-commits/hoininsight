@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-01-30T00:52:21Z",
+    "ts_utc": "2026-01-30T03:11:33Z",
     "dataset_id": "index_spx_fred",
     "entity": "SPX",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": 1.22,
-      "percentile": 99.6,
-      "value": 6978.03,
-      "rolling_mean_20d": 6931.421347656249,
-      "reasoning": "Percentile 99.6% (Extreme)"
+      "z_score": 0.93,
+      "percentile": 96.0,
+      "value": 6969.01,
+      "rolling_mean_20d": 6932.871359375,
+      "reasoning": "Percentile 96.0% (Extreme)"
     }
   }
 ]

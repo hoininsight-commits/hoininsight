@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T00:52:27Z",
+    "ts_utc": "2026-01-30T03:11:40Z",
     "dataset_id": "fx_usdkrw_ecos",
     "topic_id": "fx_usdkrw_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json L1 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 30,
       "level": "L1",
       "details": {
-        "z_score": -1.92,
-        "percentile": 49.6,
-        "value": 1428.6,
-        "rolling_mean_20d": 1457.985,
-        "reasoning": "Z-Score -1.92 >= 1.5"
+        "z_score": -1.91,
+        "percentile": 47.6,
+        "value": 1427.0,
+        "rolling_mean_20d": 1457.5900000000001,
+        "reasoning": "Z-Score -1.91 >= 1.5"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json"
     },
-    "rationale": "[L1] Z-Score -1.92 >= 1.5 (Regime x1.0)",
+    "rationale": "[L1] Z-Score -1.91 >= 1.5 (Regime x1.0)",
     "links": [],
     "is_pre_structural": false
   }
