@@ -243,8 +243,15 @@ class DecisionDashboard:
                     elif "topic_id" in data:
                         # Direct single topic object
                         topics = [data]
+                
+                # [IS-38] Load Membership Query
+                membership_queue = data.get("membership_only_queue", [])
+                
             except Exception as e:
                 print(f"[Dashboard] Error parsing gate_out: {e}")
+                membership_queue = []
+        else:
+            membership_queue = []
         
         # Post-Mortem History Loading (Step 18)
         from datetime import datetime, timedelta
@@ -470,7 +477,8 @@ class DecisionDashboard:
             "calibration_summary": calibration_summary,
             "pref_signature": pref_signature,
             "pref_overlay": pref_overlay,
-            "calibration_review": calibration_review
+            "calibration_review": calibration_review,
+            "membership_only_queue": membership_queue
         }
 
     def _render_hoin_signal_panel(self, lines: List[str], data: Dict[str, Any]):
@@ -1453,6 +1461,9 @@ class DecisionDashboard:
         
         # [Step 52] TODAY TOPIC VIEW
         self._render_topic_view_panel(lines, data.get("topic_view", {}))
+        
+        # [IS-38] MEMBERSHIP ONLY FORECAST
+        self._render_membership_queue_section(lines, data.get("membership_only_queue", []))
         
         # Top 5
         top_5 = sorted_cards[:5]
@@ -2614,3 +2625,34 @@ class DecisionDashboard:
             lines.append(f"- **{a['title']}** (🟢 **AUTO-APPROVED** 🔒 | {fmt_badge} | Score: {score})")
             if reasons:
                 lines.append(f"   - *Reasons*: {reasons}")
+    def _render_membership_queue_section(self, lines: List[str], queue: List[Dict[str, Any]]):
+        """Renders the IS-38 Membership Only Forecast section in Korean."""
+        if not queue:
+            return
+
+        lines.append("\n## 💎 멤버십 전용 예보 (MEMBERSHIP ONLY FORECAST)")
+        lines.append("> [!IMPORTANT]\n> 본 섹션은 후원회원(Membership)에게만 선공개되는 후속 분석 예보입니다. 최종 결론 및 티커 정보는 포함되지 않습니다.\n")
+
+        for item in queue:
+            title = item.get("title", "주제 미정")
+            timing = item.get("expected_timing", "미정")
+            state = item.get("status", "대기중")
+            reason = item.get("reason", "")
+            points = item.get("observation_points", [])
+
+            # Icon based on state
+            icon = "⏳"
+            if state == "분석중": icon = "🔥"
+            elif state == "관찰중": icon = "👁️"
+
+            lines.append(f"### {icon} {title}")
+            lines.append(f"- **현재 상태**: `{state}`")
+            lines.append(f"- **예상 시점**: {timing}")
+            lines.append(f"- **분석 가치**: {reason}")
+            if points:
+                lines.append("- **핵심 관찰 포인트**:")
+                for p in points:
+                    lines.append(f"  - {p}")
+            lines.append("")
+        
+        lines.append("---\n")

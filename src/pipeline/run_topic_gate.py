@@ -14,6 +14,7 @@ from src.issuesignal.output_decider import OutputDecider
 from src.issuesignal.content_composer import ContentPackageComposer
 from src.issuesignal.audience_gate import AudienceGateEngine
 from src.issuesignal.followup_engine import FollowUpEngine
+from src.issuesignal.membership_queue import MembershipQueueEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -151,6 +152,10 @@ def main(as_of_date: str):
     for t in processed_ranked:
         t["follow_up_plans"] = followup_eng.plan_follow_ups(t)
 
+    # [IS-38] Membership-Only Topic Queue
+    mem_queue_eng = MembershipQueueEngine()
+    membership_queue = mem_queue_eng.generate_queue(processed_ranked)
+
     top1 = ranker.pick_top1(processed_ranked)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=processed_ranked, events=events)
@@ -164,6 +169,7 @@ def main(as_of_date: str):
     output_payload = {
         "schema_version": "topic_gate_output_v1",
         **to_plain(output),
+        "membership_only_queue": membership_queue,
     }
 
     # Guardrail enforcement (no mixing)
