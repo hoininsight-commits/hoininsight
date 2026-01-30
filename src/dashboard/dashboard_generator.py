@@ -1115,6 +1115,8 @@ def generate_dashboard(base_dir: Path):
     entity_state_html = ""
     entity_pool_html = ""
     
+    memory_delta_html = ""
+    
     if today_json:
         entity_pool = EntityMappingLayer.map_target_entities(today_json, final_card)
         entity_pool_html = TopicCardRenderer.render_entity_pool(entity_pool)
@@ -1123,49 +1125,49 @@ def generate_dashboard(base_dir: Path):
         classified_entities = EntityStateClassifier.classify_entities(entity_pool, today_json)
         entity_state_html = TopicCardRenderer.render_entity_state_panel(classified_entities)
     
-    # [NEW] Structural Memory Engine (Step 85)
-    memory_engine = StructuralMemoryEngine(base_dir)
-    snapshot_path = memory_engine.save_snapshot(today_json.get("date", ymd), today_json, classified_entities)
-    
-    # [NEW] Comparison Engine
-    comparison_engine = SnapshotComparisonEngine(memory_engine)
-    # Re-load the just saved snapshot to ensure format consistency
-    today_snap = memory_engine.load_snapshot(today_json.get("date", ymd))
-    comparison_result = comparison_engine.compare(today_json.get("date", ymd), today_snap)
-    
-    memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
-    
-    # [NEW] Structural Pattern Detection (Step 86)
-    detected_patterns = []
-    try:
-        pattern_detector = StructuralPatternDetector(base_dir)
-        pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
+        # [NEW] Structural Memory Engine (Step 85)
+        memory_engine = StructuralMemoryEngine(base_dir)
+        snapshot_path = memory_engine.save_snapshot(today_json.get("date", ymd), today_json, classified_entities)
         
-        # Load detected patterns for next steps
-        import json
-        pattern_snapshot = json.loads(pattern_snapshot_path.read_text(encoding="utf-8"))
-        detected_patterns = pattern_snapshot.get("active_patterns", [])
-    except Exception as e:
-        print(f"[PatternDetector] Error: {e}")
-
-    # [NEW] Pattern Memory & Replay (Step 88)
-    replay_blocks = []
-    try:
-        memory_engine = PatternMemoryEngine(base_dir)
-        for pattern in detected_patterns:
-            # Save pattern to memory
-            pattern_id = pattern.get("pattern_type", "UNKNOWN")
-            memory_engine.save_pattern(
-                pattern_id=pattern_id,
-                pattern_data=pattern,
-                context={"date": today_json.get("date", ymd), "trigger": today_json.get("top_signal", {}).get("trigger", "")}
-            )
+        # [NEW] Comparison Engine
+        comparison_engine = SnapshotComparisonEngine(memory_engine)
+        # Re-load the just saved snapshot to ensure format consistency
+        today_snap = memory_engine.load_snapshot(today_json.get("date", ymd))
+        comparison_result = comparison_engine.compare(today_json.get("date", ymd), today_snap)
+        
+        memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
+        
+        # [NEW] Structural Pattern Detection (Step 86)
+        detected_patterns = []
+        try:
+            pattern_detector = StructuralPatternDetector(base_dir)
+            pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
             
-            # Replay similar patterns
-            replay_block = memory_engine.replay(pattern)
-            replay_blocks.append(replay_block)
-    except Exception as e:
-        print(f"[PatternMemory] Error: {e}")
+            # Load detected patterns for next steps
+            import json
+            pattern_snapshot = json.loads(pattern_snapshot_path.read_text(encoding="utf-8"))
+            detected_patterns = pattern_snapshot.get("active_patterns", [])
+        except Exception as e:
+            print(f"[PatternDetector] Error: {e}")
+    
+        # [NEW] Pattern Memory & Replay (Step 88)
+        replay_blocks = []
+        try:
+            memory_engine = PatternMemoryEngine(base_dir)
+            for pattern in detected_patterns:
+                # Save pattern to memory
+                pattern_id = pattern.get("pattern_type", "UNKNOWN")
+                memory_engine.save_pattern(
+                    pattern_id=pattern_id,
+                    pattern_data=pattern,
+                    context={"date": today_json.get("date", ymd), "trigger": today_json.get("top_signal", {}).get("trigger", "")}
+                )
+                
+                # Replay similar patterns
+                replay_block = memory_engine.replay(pattern)
+                replay_blocks.append(replay_block)
+        except Exception as e:
+            print(f"[PatternMemory] Error: {e}")
 
     # [NEW] Narrative Compression (Step 87)
     compressed_narratives = []
