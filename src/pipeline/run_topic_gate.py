@@ -13,6 +13,7 @@ from src.issuesignal.urgency_engine import UrgencyEngine
 from src.issuesignal.output_decider import OutputDecider
 from src.issuesignal.content_composer import ContentPackageComposer
 from src.issuesignal.audience_gate import AudienceGateEngine
+from src.issuesignal.followup_engine import FollowUpEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -144,6 +145,11 @@ def main(as_of_date: str):
         aud_ko, reason_ko = gate.classify(t)
         t["audience_ko"] = aud_ko
         t["distribution_reason_ko"] = reason_ko
+
+    # [IS-37] Narrative Continuity & Follow-up
+    followup_eng = FollowUpEngine()
+    for t in processed_ranked:
+        t["follow_up_plans"] = followup_eng.plan_follow_ups(t)
 
     top1 = ranker.pick_top1(processed_ranked)
 

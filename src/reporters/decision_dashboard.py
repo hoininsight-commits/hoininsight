@@ -100,9 +100,11 @@ class DecisionCard:
     # [IS-35] Content Package Composer
     content_package: Optional[Dict[str, Any]] = None
 
-    # [IS-36] Audience Gate & Distribution Control
     audience_ko: Optional[str] = None # 공개, 멤버십, 내부전용
     distribution_reason_ko: Optional[str] = None # 배포 결정 사유
+
+    # [IS-37] Narrative Continuity & Follow-up
+    follow_up_plans: Optional[List[Dict[str, str]]] = None # 토픽, 예상 시점, 사유
 
 class DecisionDashboard:
     """
@@ -410,6 +412,7 @@ class DecisionDashboard:
                 content_package=t.get("content_package"),
                 audience_ko=t.get("audience_ko"),
                 distribution_reason_ko=t.get("distribution_reason_ko"),
+                follow_up_plans=t.get("follow_up_plans"),
                 **self._get_eligibility_info(status, self._check_fact_driven(t), flags, t.get("handoff_to_structural", False)),
                 **depth_info
             ))
@@ -1575,6 +1578,9 @@ class DecisionDashboard:
         
         # [IS-36] Render Distribution Control
         self._render_distribution_control_panel(lines, c)
+        
+        # [IS-37] Render Follow-up Planning
+        self._render_follow_up_panel(lines, c)
         lines.append("")
         
         lines.append("\n---")
@@ -1729,6 +1735,23 @@ class DecisionDashboard:
             lines.append("> [!IMPORTANT]\n> **멤버십 한정**: 후원회원 및 멤버십 전용 커뮤니티에 선배포 되는 내용입니다.")
         else:
             lines.append("> [!NOTE]\n> **공개 배포**: 모든 플랫폼에 즉시 배포 가능한 공개 콘텐츠입니다.")
+
+    def _render_follow_up_panel(self, lines: List[str], c: DecisionCard):
+        """Renders the IS-37 Follow-up Planning in Korean."""
+        if not c.follow_up_plans:
+            return
+
+        lines.append("\n### ⏭️ 후속 분석 계획 (FOLLOW-UP PLANNING)")
+        
+        for plan in c.follow_up_plans:
+            topic = plan.get("topic", "정보 없음")
+            timing = plan.get("timing", "미정")
+            reason = plan.get("reason", "분석 연속성 확보")
+            
+            lines.append(f"#### 📌 {topic}")
+            lines.append(f"- **예상 시점**: {timing}")
+            lines.append(f"- **필요 사유**: {reason}")
+            lines.append("")
 
     def _get_hold_reason(self, c: Dict) -> str:
         """Determines the single strongest human-readable reason for HOLD."""
