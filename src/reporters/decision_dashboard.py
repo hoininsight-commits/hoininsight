@@ -150,85 +150,139 @@ class DecisionDashboard:
         # Filter for topics that got processed (ACTIVE, HOLD, SILENT)
         selected_cards = [c for c in cards if c.get("status") in ["READY", "HOLD", "SILENT", "ACTIVE"]]
 
-        # 1. TOPIC BOARD (Summary Table)
-        lines.append("## 📌 오늘의 발화 결정 리스트")
-        lines.append("| 토픽 제목 | 상태 | 출력 형식 | 판단 요약 |")
-        lines.append("| :--- | :--- | :--- | :--- |")
-        
-        status_map = {"READY": "✅ 발화 확정", "ACTIVE": "✅ 발화 확정", "HOLD": "⏳ 보류", "SILENT": "🤐 침묵", "DROP": "❌ 제외"}
-        
-        for c in selected_cards:
-            status = c.get("status", "DROP")
-            status_ko = status_map.get(status, status)
-            fmt_ko = c.get("output_format_ko") or "미정"
-            reason = c.get("editorial_reason_ko") or (c.get("reason") or "")[:40]
-            lines.append(f"| **{c.get('title', 'Untitled')}** | `{status_ko}` | {fmt_ko} | {reason} |")
+        # [IS-45] Today's PIN Board (Fixed Top 1-3)
+        pins = self._get_pin_candidates(selected_cards)
+        self._render_pin_board(lines, pins, ymd)
         
         lines.append("\n---\n")
 
-        # 2. TOPIC DETAIL (The 5 Sections)
-        lines.append("## 🔍 상세 판단 및 실행 가이드")
+        # 2. EVIDENCE BUNDLE (Unified View)
+        lines.append("## 🔍 상세 완결 데이터 (EVIDENCE BUNDLE)")
         
-        for i, c in enumerate(selected_cards, 1):
-            status = c.get("status", "DROP")
-            lines.append(f"### {i}. {c.get('title', 'Untitled')}")
-            lines.append(f"- **상태**: `{status_map.get(status, status)}` | **출력 형식**: {c.get('output_format_ko') or '미정'}")
-            
-            # ① 토픽 요약
-            lines.append("#### ① 토픽 요약")
-            lines.append(f"- **선정 배경**: {c.get('why_today') or '핵심 지표 변화에 따른 구조적 필연성 감지.'}")
-            lines.append(f"- **해석**: 시장은 이를 수급 변화로 보나, IssueSignal은 이를 {c.get('reason', '미확인 신호')}(으)로 정의한다.")
-            
-            # ② 판단 근거 요약
-            lines.append("#### ② 판단 근거 요약")
-            lines.append(f"> {c.get('reason', 'N/A')}")
-            evidence_refs = c.get("evidence_refs")
-            if evidence_refs:
-                refs = []
-                for r in evidence_refs:
-                    if isinstance(r, dict):
-                        refs.append(r.get('title') or r.get('entity') or '문서')
-                    else:
-                        refs.append(str(r))
-                lines.append(f"- **공식 인용 및 출처**: {', '.join(refs[:3])}")
-            lines.append(f"- **독립 검증 상태**: {'✅ 검증 완료' if c.get('is_fact_driven') else '🔄 모델 추론 중'}")
-            
-            # ③ 자본 경로 및 종목
-            lines.append("#### ③ 자본 경로 및 종목")
-            tags = c.get("tags")
-            if tags:
-                lines.append(f"- **연결 종목 (티커)**: `{', '.join(tags)}`")
-            lines.append(f"- **구조적 병목**: {c.get('bridge_eligible') and '상위 자본 경로와 직접 연결됨' or '개별적 신호 노출'}")
-            pre_structural = c.get("pre_structural_signal")
-            if pre_structural:
-                kill_switch = pre_structural.get("kill_switch_price", "N/A")
-                lines.append(f"- **자동 생성 킬 스위치**: `{kill_switch}`")
-            
-            # ④ 콘텐츠 패키지
-            lines.append("#### ④ 콘텐츠 패키지")
-            content_package = c.get("content_package")
-            if content_package:
-                pkg = content_package
-                if "content" in pkg:
-                    content = pkg["content"]
-                    if isinstance(content, dict):
-                        for k, v in content.items():
-                            lines.append(f"<details><summary>숏츠 스크립트 ({k}) - 내용 보기</summary>\n\n{v}\n\n</details>")
-                    else:
-                        lines.append(f"<details><summary>영상 제작용 긴급 스크립트 - 내용 보기</summary>\n\n{content}\n\n</details>")
-                if "text_card" in pkg:
-                    lines.append(f"<details><summary>텍스트 카드 뉴스 - 내용 보기</summary>\n\n{pkg['text_card']}\n\n</details>")
-                lines.append("- [ ] *본 스크립트는 IS-39 화자 일관성 규칙에 따라 작성되었습니다. 복제하여 배포하십시오.*")
-            else:
-                lines.append("- *생성된 콘텐츠 패키지가 없거나 침묵(SILENT) 상태입니다.*")
-            
-            # ⑤ 사후 판단 참고
-            lines.append("#### ⑤ 사후 판단 참고")
-            lines.append("- **유사 과거 토픽 성과 요약**: 최근 유사 트리거 발생 시 정확도 92% 기록함.")
-            
-            lines.append("\n---\n")
+        # Determine strict display order: PINs first, then remaining selected cards
+        pin_ids = {c.get("topic_id") for c in pins}
+        remaining_cards = [c for c in selected_cards if c.get("topic_id") not in pin_ids]
+        
+        display_order = pins + remaining_cards
+        
+        for i, c in enumerate(display_order, 1):
+            self._render_evidence_bundle(lines, c, i, is_pin=(c.get("topic_id") in pin_ids))
 
         return "\n".join(lines)
+
+    def _get_pin_candidates(self, cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        [IS-45] Selects today's fixed PIN topics.
+        Rules:
+        - Status is READY/ACTIVE
+        - Not Decayed to SILENT
+        - Trust Lock (voice_consistent) is True
+        - Sort by Urgency Score (Desc)
+        - Limit Top 3
+        """
+        candidates = []
+        for c in cards:
+            status = c.get("status")
+            if status not in ["READY", "ACTIVE"]:
+                continue
+            if c.get("decay_state_ko") == "침묵":
+                continue
+            if not c.get("voice_consistent"):
+                # Trust Lock Failed
+                continue
+            candidates.append(c)
+        
+        # Sort by urgency_score desc (default 0 if None)
+        candidates.sort(key=lambda x: (x.get("urgency_score") or 0), reverse=True)
+        return candidates[:3]
+
+    def _render_pin_board(self, lines: List[str], pins: List[Dict[str, Any]], ymd: str):
+        lines.append(f"## 📌 오늘의 확정 토픽 (TOP {len(pins)})")
+        if not pins:
+            lines.append("> **확정된 토픽 없음**: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.")
+            return
+
+        for c in pins:
+            score = c.get("urgency_score") or 0
+            fmt = c.get("output_format_ko") or "형식 미정"
+            why = c.get("editorial_reason_ko") or c.get("reason") or "사유 미정"
+            
+            lines.append(f"> ### 🚩 {c.get('title', 'Untitled')}")
+            lines.append(f"> - **형식**: {fmt} | **압력**: {score}점 | **시각**: {ymd} 09:00 KST")
+            lines.append(f"> - **Why Now**: {why}")
+            lines.append(">")
+
+    def _render_evidence_bundle(self, lines: List[str], c: Dict[str, Any], index: int, is_pin: bool):
+        """
+        [IS-45] Renders the Unified Evidence Bundle.
+        """
+        icon = "📌" if is_pin else "📄"
+        lines.append(f"### {icon} {index}. {c.get('title', 'Untitled')}")
+        
+        # TRUST MARK
+        lines.append(f"> **데이터 신뢰 마크**: 🕒 기준시각 UTC+9 | 👁️ 독립 출처 {c.get('evidence_count', 0)}개 확인 | 🛡️ 검증: {c.get('quote_verdict') or 'N/A'}")
+        lines.append("")
+
+        # 1. Summary & Rationale (Merged)
+        lines.append("**① 요약 및 판단 근거**")
+        lines.append(f"- **배경**: {c.get('why_today') or 'N/A'}")
+        lines.append(f"- **판단**: {c.get('reason', 'N/A')}")
+        if c.get('is_fact_driven'):
+             lines.append(f"- **검증**: ✅ FACT-DRIVEN 확정 (참 거짓 판별 완료)")
+        
+        # 2. Quotes & Evidence
+        lines.append("\n**② 공식 인용(Quotes) & 증거**")
+        evidence_refs = c.get("evidence_refs")
+        if evidence_refs:
+            for idx, r in enumerate(evidence_refs[:3], 1):
+                ref_txt = r.get('title') or r.get('entity') if isinstance(r, dict) else str(r)
+                lines.append(f"- {idx}. {ref_txt}")
+        
+        trigger_quote = c.get("trigger_quote")
+        if trigger_quote:
+            q_txt = trigger_quote.get("quote", "")[:100] + "..."
+            lines.append(f"- **핵심 인용**: \"{q_txt}\"")
+
+        # 3. Capital & Tickers
+        lines.append("\n**③ 자본 경로(Ticker) & Kill-Switch**")
+        tags = c.get("tags")
+        if tags:
+            lines.append(f"- **Target**: `{', '.join(tags)}`")
+        
+        ks = "설정 없음"
+        pre_structural = c.get("pre_structural_signal")
+        if pre_structural:
+             ks = pre_structural.get("kill_switch_price", "설정 없음")
+        lines.append(f"- **Kill-Switch**: `{ks}`")
+
+        # 4. Content Package (Collapsible)
+        lines.append("\n**④ 콘텐츠 패키지 (Complete)**")
+        pkg = c.get("content_package")
+        if pkg:
+            # Long / Short / Card
+            if "content" in pkg:
+                content = pkg["content"]
+                if isinstance(content, dict):
+                    for k, v in content.items():
+                         lines.append(f"<details><summary>🎬 숏츠 스크립트 ({k})</summary>\n\n{v}\n\n</details>")
+                else:
+                    lines.append(f"<details><summary>🎥 롱폼 스크립트</summary>\n\n{content}\n\n</details>")
+            if "text_card" in pkg:
+                lines.append(f"<details><summary>📰 텍스트 카드 뉴스</summary>\n\n{pkg['text_card']}\n\n</details>")
+        else:
+             lines.append("- *콘텐츠 패키지 미생성*")
+
+        # 5. Defense & Q&A
+        lines.append("\n**⑤ 오해 방어 & 예상 질문 (Defense)**")
+        applied_defense = c.get("applied_defense")
+        if applied_defense:
+            lines.append(f"- **필수 방어**: \"{applied_defense}\"")
+        
+        anticipated_questions = c.get("anticipated_questions")
+        if anticipated_questions:
+            lines.append(f"- **예상 질문**: {len(anticipated_questions)}개 대비됨 (상세 뷰 확인 필요)")
+        
+        lines.append("\n---\n")
 
     def build_dashboard_data(self, ymd: str) -> Dict[str, Any]:
         """
