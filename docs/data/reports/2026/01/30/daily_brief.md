@@ -41,15 +41,15 @@ Historical context:
 - [HIGH] KOSPI: data/features/anomalies/2026/01/30/index_kospi_stooq.json L2 Signal (base=6.00, final_m=9.57) | Mom: UP (slope=1.50) -> x1.1 | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/01/30/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/30/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
-- [MED] GOLD: data/features/anomalies/2026/01/30/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
-- [MED] SILVER: data/features/anomalies/2026/01/30/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
-- [MED] SILVER: data/features/anomalies/2026/01/30/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] HY_SPREAD: data/features/anomalies/2026/01/30/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] US10Y: data/features/anomalies/2026/01/30/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] VIX: data/features/anomalies/2026/01/30/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] US02Y: data/features/anomalies/2026/01/30/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] WTI: data/features/anomalies/2026/01/30/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
+- [LOW] GOLD: data/features/anomalies/2026/01/30/metal_gold_paxg_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
+- [LOW] SILVER: data/features/anomalies/2026/01/30/metal_silver_kag_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
+- [LOW] SILVER: data/features/anomalies/2026/01/30/metal_silver_kag_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] KOR_RATE: data/features/anomalies/2026/01/30/rates_kor_base_rate_ecos.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] UNRATE: data/features/anomalies/2026/01/30/employment_unrate_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] FIN_STRESS: data/features/anomalies/2026/01/30/risk_financial_stress_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -60,14 +60,20 @@ Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
 
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
+
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- (No structural anomaly detected)
+- **Topic:** [Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 96.0% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Risk Off] Structural-driven
+- **Topic:** [Unknown] Hybrid-driven
 - **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
@@ -85,3 +91,7 @@ Narrative Drift Signals:
 - Confidence: LOW
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 17 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.
