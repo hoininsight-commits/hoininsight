@@ -79,45 +79,48 @@
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
+        
+        <div style="background:#FFFBEB; border:1px solid #F59E0B; padding:20px; border-radius:12px; margin-bottom:30px; display:flex; gap:20px; align-items:center;">
+            <div style="font-size:2em;">⚠️</div>
+            <div>
+                <div style="font-weight:bold; color:#92400E; font-size:1.1em; margin-bottom:5px;">오늘 확정된 발화 토픽이 없습니다.</div>
+                <div style="font-size:0.9em; color:#B45309;">주요 보류 사유: <b>QUOTE_MISSING</b>, <b>TRUST_LOCKED_FAIL</b></div>
+            </div>
+        </div>
+        
         <div class="summary-grid">
             
             <div class="summary-card" style="border-top: 3px solid #10B981">
-                <div style="font-size: 0.8em; color: var(--text-sub);">TRUST_LOCKED</div>
-                <div class="count">22</div>
-            </div>
-            
-
-            <div class="summary-card" style="border-top: 3px solid #6B7280">
-                <div style="font-size: 0.8em; color: var(--text-sub);">TRIGGER</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">확정(LOCKED)</div>
                 <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #3B82F6">
-                <div style="font-size: 0.8em; color: var(--text-sub);">PRE_TRIGGER</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">감시(WATCH)</div>
                 <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #F59E0B">
-                <div style="font-size: 0.8em; color: var(--text-sub);">HOLD</div>
-                <div class="count">0</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">보류(HOLD)</div>
+                <div class="count">2</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #EF4444">
-                <div style="font-size: 0.8em; color: var(--text-sub);">REJECT</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">반려(REJECT)</div>
                 <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #6B7280">
-                <div style="font-size: 0.8em; color: var(--text-sub);">SILENT_DROP</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">침묵(SILENT)</div>
                 <div class="count">0</div>
             </div>
             
         </div>
-        <div class="section-title">✨ TOP TRUST_LOCKED INSIGHTS</div>
+        <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
         <div class="insight-grid">
             
             <div class="decision-card">
@@ -171,11 +174,24 @@
             </div>
             
         </div>
-        <div class="section-title">🔭 PRE_TRIGGER WATCHLIST</div>
+        <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
         <div style='color:var(--text-sub)'>Watchlist empty.</div>
-        <div class="section-title">🚫 REJECT LOGS</div>
+        <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
         <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
-            No rejections logged recently.
+            
+            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
+                <span style="color:#9CA3AF; font-size:0.8em;">[2026-01-30 22:22:20]</span> 
+                <span class="badge-status status-no-ev" style="margin:0 8px;">QUOTE_MISSING</span>
+                <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
+            </div>
+            
+
+            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
+                <span style="color:#9CA3AF; font-size:0.8em;">[2026-01-30 22:22:20]</span> 
+                <span class="badge-status status-no-ev" style="margin:0 8px;">TRUST_LOCKED_FAIL</span>
+                <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
+            </div>
+            
         </div>
     </div>
 
@@ -278,10 +294,10 @@
             </thead>
             <tbody>
                 
-            <tr class="link-row" id="row-0" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-0" data-status="HOLD" data-has-ev="false" data-has-proof="false">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
-                <td>TRUST_LOCKED</td>
+                <td><b>Untitled</b><br><small>ID</small></td>
+                <td>HOLD</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('0')">
@@ -290,6 +306,44 @@
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-0">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>No atomic proof packs generated.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-1" data-status="HOLD" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>Untitled</b><br><small>ID</small></td>
+                <td>HOLD</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('1')">
+                        0 Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-1">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>No atomic proof packs generated.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
+                <td>TRUST_LOCKED</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('2')">
+                        0 Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-2">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -341,18 +395,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-1" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129150757</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('1')">
+                    <button class="expand-btn" onclick="toggleRow('3')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-1">
+            <tr class="expanded-row" id="drawer-3">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -404,18 +458,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145652</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('2')">
+                    <button class="expand-btn" onclick="toggleRow('4')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-2">
+            <tr class="expanded-row" id="drawer-4">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -459,18 +513,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145641</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('3')">
+                    <button class="expand-btn" onclick="toggleRow('5')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-3">
+            <tr class="expanded-row" id="drawer-5">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -514,18 +568,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145437</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('4')">
+                    <button class="expand-btn" onclick="toggleRow('6')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-4">
+            <tr class="expanded-row" id="drawer-6">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -569,18 +623,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144451</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('5')">
+                    <button class="expand-btn" onclick="toggleRow('7')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-5">
+            <tr class="expanded-row" id="drawer-7">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144451).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -613,18 +667,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144423</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('6')">
+                    <button class="expand-btn" onclick="toggleRow('8')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-6">
+            <tr class="expanded-row" id="drawer-8">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144423).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -657,18 +711,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-9" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144347</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('7')">
+                    <button class="expand-btn" onclick="toggleRow('9')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-7">
+            <tr class="expanded-row" id="drawer-9">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144347).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -701,18 +755,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-10" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144324</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('8')">
+                    <button class="expand-btn" onclick="toggleRow('10')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-8">
+            <tr class="expanded-row" id="drawer-10">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144324).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
