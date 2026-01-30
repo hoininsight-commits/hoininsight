@@ -16,6 +16,7 @@ from src.issuesignal.audience_gate import AudienceGateEngine
 from src.issuesignal.followup_engine import FollowUpEngine
 from src.issuesignal.membership_queue import MembershipQueueEngine
 from src.issuesignal.voice_lock import VoiceLockEngine
+from src.issuesignal.teaser_engine import NextSignalTeaserEngine
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -176,6 +177,10 @@ def main(as_of_date: str):
                     if not res["voice_consistent"]: is_consist = False
                 t["voice_consistent"] = is_consist
 
+    # [IS-40] Next-Signal Teaser
+    teaser_eng = NextSignalTeaserEngine()
+    next_teaser = teaser_eng.generate_teaser(membership_queue)
+
     top1 = ranker.pick_top1(processed_ranked)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=processed_ranked, events=events)
@@ -190,6 +195,7 @@ def main(as_of_date: str):
         "schema_version": "topic_gate_output_v1",
         **to_plain(output),
         "membership_only_queue": membership_queue,
+        "next_signal_teaser": next_teaser,
     }
 
     # Guardrail enforcement (no mixing)

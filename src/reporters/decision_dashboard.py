@@ -234,6 +234,7 @@ class DecisionDashboard:
             except: pass
 
         topics = []
+        next_teaser = None
         if gate_out.exists():
             try:
                 data = json.loads(gate_out.read_text(encoding="utf-8"))
@@ -248,6 +249,9 @@ class DecisionDashboard:
                 
                 # [IS-38] Load Membership Query
                 membership_queue = data.get("membership_only_queue", [])
+                
+                # [IS-40] Load Next-Signal Teaser
+                next_teaser = data.get("next_signal_teaser")
                 
             except Exception as e:
                 print(f"[Dashboard] Error parsing gate_out: {e}")
@@ -481,7 +485,8 @@ class DecisionDashboard:
             "pref_signature": pref_signature,
             "pref_overlay": pref_overlay,
             "calibration_review": calibration_review,
-            "membership_only_queue": membership_queue
+            "membership_only_queue": membership_queue,
+            "next_signal_teaser": next_teaser
         }
 
     def _render_hoin_signal_panel(self, lines: List[str], data: Dict[str, Any]):
@@ -1467,6 +1472,9 @@ class DecisionDashboard:
         
         # [IS-38] MEMBERSHIP ONLY FORECAST
         self._render_membership_queue_section(lines, data.get("membership_only_queue", []))
+
+        # [IS-40] NEXT SIGNAL TEASER
+        self._render_teaser_section(lines, data.get("next_signal_teaser"))
         
         # Top 5
         top_5 = sorted_cards[:5]
@@ -2661,4 +2669,22 @@ class DecisionDashboard:
                     lines.append(f"  - {p}")
             lines.append("")
         
+        lines.append("---\n")
+
+    def _render_teaser_section(self, lines: List[str], teaser: Optional[Dict[str, Any]]):
+        """Renders the IS-40 Next Signal Teaser section in Korean."""
+        if not teaser:
+            return
+
+        lines.append("\n## 📣 다음 발화 예고 (NEXT SIGNAL TEASER)")
+        lines.append("> [!TIP]\n> 이슈시그널이 감지한 다음 핵심 신호를 미리 예고합니다. 본 예고는 확정된 티커를 포함하지 않습니다.\n")
+        
+        sentence = teaser.get("sentence", "다음 신호를 준비 중입니다.")
+        timing = teaser.get("timing", "미정")
+        audience = teaser.get("audience", "공개")
+
+        lines.append(f"### \"{sentence}\"")
+        lines.append(f"- **예상 시점**: `{timing}`")
+        lines.append(f"- **공개 대상**: {audience}")
+        lines.append("")
         lines.append("---\n")
