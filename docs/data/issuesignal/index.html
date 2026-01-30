@@ -63,56 +63,48 @@
             HOIN Unified Ops Center
         </h1>
         <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">Data: 2026-01-30</div>
-            <div class="status-badge status-success">ENGINE: SUCCESS</div>
+            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">날짜: 2026-01-31</div>
+            <div class="status-badge status-success">엔진: SUCCESS</div>
         </div>
     </div>
 
     <div class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Evidence</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">Link View (IS ↔ Hoin)</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 증거 (Hoin Evidence)</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">연결 보기 (IS ↔ Hoin)</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
         
-        <div style="background:#FFFBEB; border:1px solid #F59E0B; padding:20px; border-radius:12px; margin-bottom:30px; display:flex; gap:20px; align-items:center;">
-            <div style="font-size:2em;">⚠️</div>
-            <div>
-                <div style="font-weight:bold; color:#92400E; font-size:1.1em; margin-bottom:5px;">오늘 확정된 발화 토픽이 없습니다.</div>
-                <div style="font-size:0.9em; color:#B45309;">주요 보류 사유: <b>QUOTE_MISSING</b>, <b>TRUST_LOCKED_FAIL</b></div>
-            </div>
-        </div>
-        
         <div class="summary-grid">
             
             <div class="summary-card" style="border-top: 3px solid #10B981">
-                <div style="font-size: 0.8em; color: var(--text-sub);">확정(LOCKED)</div>
-                <div class="count">0</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">확정</div>
+                <div class="count">1</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #3B82F6">
-                <div style="font-size: 0.8em; color: var(--text-sub);">감시(WATCH)</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">감시</div>
                 <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #F59E0B">
-                <div style="font-size: 0.8em; color: var(--text-sub);">보류(HOLD)</div>
-                <div class="count">2</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">보류</div>
+                <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #EF4444">
-                <div style="font-size: 0.8em; color: var(--text-sub);">반려(REJECT)</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">반려</div>
                 <div class="count">0</div>
             </div>
             
 
             <div class="summary-card" style="border-top: 3px solid #6B7280">
-                <div style="font-size: 0.8em; color: var(--text-sub);">침묵(SILENT)</div>
+                <div style="font-size: 0.8em; color: var(--text-sub);">침묵</div>
                 <div class="count">0</div>
             </div>
             
@@ -136,59 +128,12 @@
                 <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: a2ce7fb4ef8805f2</div>
             </div>
             
-
-            <div class="decision-card">
-                <div class="title">Export Control Impact</div>
-                <div class="metas">
-                    <span class="meta-item">WHO: GOV</span>
-                    <span class="meta-item">TYPE: GOV_ACTION</span>
-                    <span class="meta-item">ITEM: EUV_STEPPER</span>
-                </div>
-                <div style="font-size: 0.95em; line-height: 1.5; margin-bottom: 15px;">
-                    Export controls freeze chip supply chain.
-                </div>
-                <div style="font-size: 0.85em; border-top: 1px solid var(--border); padding-top: 10px;">
-                    <span style="color: var(--red); font-weight: bold;">KILL_SWITCH:</span> Any structural change to export control decree.
-                </div>
-                <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: a2ce7fb4ef8805f2</div>
-            </div>
-            
-
-            <div class="decision-card">
-                <div class="title">Export Control Impact</div>
-                <div class="metas">
-                    <span class="meta-item">WHO: GOV</span>
-                    <span class="meta-item">TYPE: GOV_ACTION</span>
-                    <span class="meta-item">ITEM: EUV_STEPPER</span>
-                </div>
-                <div style="font-size: 0.95em; line-height: 1.5; margin-bottom: 15px;">
-                    Export controls freeze chip supply chain.
-                </div>
-                <div style="font-size: 0.85em; border-top: 1px solid var(--border); padding-top: 10px;">
-                    <span style="color: var(--red); font-weight: bold;">KILL_SWITCH:</span> Any structural change to export control decree.
-                </div>
-                <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: a2ce7fb4ef8805f2</div>
-            </div>
-            
         </div>
         <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
-        <div style='color:var(--text-sub)'>Watchlist empty.</div>
+        <div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>
         <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
         <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
-            
-            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
-                <span style="color:#9CA3AF; font-size:0.8em;">[2026-01-30 22:22:20]</span> 
-                <span class="badge-status status-no-ev" style="margin:0 8px;">QUOTE_MISSING</span>
-                <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
-            </div>
-            
-
-            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
-                <span style="color:#9CA3AF; font-size:0.8em;">[2026-01-30 22:22:20]</span> 
-                <span class="badge-status status-no-ev" style="margin:0 8px;">TRUST_LOCKED_FAIL</span>
-                <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
-            </div>
-            
+            최근 기록된 개선/반려 내역이 없습니다.
         </div>
     </div>
 
@@ -197,86 +142,22 @@
         <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
         <div class="insight-grid">
             
-            <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
-                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</div>
-                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 96.0% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
-                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
-                    
-                </ul>
-                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>data/decision/2026/01/30/final_decision_card.json</code>
-                </div>
-            </div>
-            
-
-            <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
-                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</div>
-                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
-                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
-                    
-                </ul>
-                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>data/decision/2026/01/30/final_decision_card.json</code>
-                </div>
-            </div>
-            
-
-            <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
-                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</div>
-                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
-                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
-                    
-                </ul>
-                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>data/decision/2026/01/30/final_decision_card.json</code>
-                </div>
-            </div>
-            
-
-            <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
-                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</div>
-                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_cb_bw] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
-                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
-                    
-                </ul>
-                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>data/decision/2026/01/30/final_decision_card.json</code>
-                </div>
-            </div>
-            
-
-            <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
-                <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">[Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, OTHER 동반)</div>
-                <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 장단기 금리차에서 Percentile 96.8% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.</div>
-                <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
-                    
-                </ul>
-                <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>data/decision/2026/01/30/final_decision_card.json</code>
-                </div>
-            </div>
-            
         </div>
-        
+        <div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>2026-01-31에 감지된 호인 아티팩트가 없습니다.</div>
     </div>
 
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
         <div class="filter-bar">
-            <b>Filters:</b>
+            <b>필터:</b>
             <select id="statusFilter" onchange="filterLinkView()">
-                <option value="ALL">All Status</option>
+                <option value="ALL">전체 상태</option>
                 <option value="TRUST_LOCKED">TRUST_LOCKED</option>
                 <option value="HOLD">HOLD</option>
                 <option value="REJECT">REJECT</option>
             </select>
-            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Linked Evidence Only</label>
-            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Proof Only</label>
+            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결만 보기</label>
+            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 검증 완료만 보기</label>
         </div>
         
         <table class="unified-table">
@@ -305,7 +186,7 @@
             <tr class="expanded-row" id="drawer-0">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>No atomic proof packs generated.</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
                     </div>
                 </td>
             </tr>
@@ -324,14 +205,14 @@
             <tr class="expanded-row" id="drawer-1">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>No atomic proof packs generated.</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
                     </div>
                 </td>
             </tr>
             
             <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260130154629</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -362,7 +243,7 @@
                     SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129150807).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260130154629).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -394,7 +275,7 @@
             
             <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129150757</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -425,7 +306,7 @@
                     SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129150757).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129150807).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -457,7 +338,7 @@
             
             <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129145652</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129150757</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -469,7 +350,15 @@
             <tr class="expanded-row" id="drawer-4">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
+                    <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
+                </div>
+                
+                <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
+                    <b>GENERIC_samsung_q4</b>: Generic Source
+                </div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -480,13 +369,13 @@
                     SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129145652).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129150757).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
                         <span class="badge-status status-matched">PROOF_OK</span>
                     </div>
-                    <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
+                    <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
                     <li style="margin-bottom:8px;">
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
@@ -512,7 +401,7 @@
             
             <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129145641</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129145652</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -535,7 +424,7 @@
                     SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129145641).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145652).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -567,7 +456,7 @@
             
             <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129145437</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129145641</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -590,7 +479,7 @@
                     SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129145437).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145641).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -622,7 +511,7 @@
             
             <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129144451</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129145437</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -634,7 +523,18 @@
             <tr class="expanded-row" id="drawer-7">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144451).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+            <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
+                    <span class="badge-status status-matched">PASS: PASS</span>
+                </div>
+                <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
+                <div style="font-size:0.75em; color:var(--text-sub);">
+                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                </div>
+            </div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145437).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -666,7 +566,7 @@
             
             <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129144423</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129144451</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -678,7 +578,7 @@
             <tr class="expanded-row" id="drawer-8">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144423).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144451).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -710,7 +610,7 @@
             
             <tr class="link-row" id="row-9" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129144347</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129144423</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -722,7 +622,7 @@
             <tr class="expanded-row" id="drawer-9">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144347).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144423).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -754,7 +654,7 @@
             
             <tr class="link-row" id="row-10" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260129144324</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129144347</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -766,7 +666,51 @@
             <tr class="expanded-row" id="drawer-10">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>No validated quote proof attached.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>NO_HOIN_EVIDENCE matched for this card (RAW-20260129144324).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144347).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
+                        <span class="badge-status status-matched">PROOF_OK</span>
+                    </div>
+                    <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
+                    <ul style="margin:0; padding-left:15px; color:#374151;">
+                    <li style="margin-bottom:8px;">
+                        <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
+                        <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
+                        <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
+                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom:8px;">
+                        <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
+                        <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
+                        <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
+                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                        </div>
+                    </li>
+                    </ul>
+                </div>
+                
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-11" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260129144324</small></td>
+                <td>TRUST_LOCKED</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('11')">
+                        0 Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-11">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144324).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>

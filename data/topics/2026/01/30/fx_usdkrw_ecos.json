@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T14:25:46Z",
+    "ts_utc": "2026-01-30T15:46:24Z",
     "dataset_id": "fx_usdkrw_ecos",
     "topic_id": "fx_usdkrw_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/01/30/fx_usdkrw_ecos.json"
     },
     "rationale": "[L1] Z-Score -1.91 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]

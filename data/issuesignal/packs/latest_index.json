@@ -1,21 +1,14 @@
 {
   "run_date_kst": "2026-01-31",
-  "run_ts_kst": "2026-01-31 00:25:04",
-  "topics_total": 2,
-  "topics_active": 0,
-  "topics_hold": 2,
+  "run_ts_kst": "2026-01-31 00:46:29",
+  "topics_total": 1,
+  "topics_active": 1,
+  "topics_hold": 0,
   "topics_silent": 0,
-  "top_reason_counts": [
-    {
-      "reason": "QUOTE_MISSING",
-      "count": 1
-    },
-    {
-      "reason": "TRUST_LOCKED_FAIL",
-      "count": 1
-    }
+  "top_reason_counts": [],
+  "pinned_topic_ids": [
+    "RAW-20260130154629"
   ],
-  "pinned_topic_ids": [],
   "paths": {
     "dashboard_json": "data/issuesignal/dashboard.json",
     "packs_root": "data/issuesignal/packs/",

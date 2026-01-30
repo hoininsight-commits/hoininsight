@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-30T14:25:46Z",
+    "ts_utc": "2026-01-30T15:46:24Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/01/30/crypto_btc_usd_spot_coingecko.json"
     },
     "rationale": "[L1] Z-Score 1.64 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
