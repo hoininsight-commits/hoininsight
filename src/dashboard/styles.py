@@ -12,76 +12,96 @@ class DashboardStyles:
     BORDER_COLOR = "#e2e8f0"
 
     COMMON_CSS = """
-    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #f4f7fa; color: #1e293b; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #f4f7fa; color: #1e293b; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
     
-    .top-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; height: 60px; box-sizing: border-box; }
-    h1 { margin: 0; font-size: 18px; font-weight: 700; color: #334155; }
+    .top-bar { 
+        background: #0f172a; 
+        color: white; 
+        padding: 0 40px; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        height: 64px; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 100;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .top-bar h1 { margin: 0; font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .top-bar .engine-badge { background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 11px; letter-spacing: 0.05em; }
     
-    .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: #e2e8f0; }
-    .status-SUCCESS { background: #dcfce7; color: #166534; }
-    .status-PARTIAL { background: #fef9c3; color: #854d0e; }
-    .status-FAIL { background: #fee2e2; color: #991b1b; }
-    
-    .dashboard-container { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - 60px); overflow: hidden; }
+    .app-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
     
     .nav-panel { 
+        width: 280px;
         background: #0f172a; 
         color: #94a3b8; 
         display: flex; 
         flex-direction: column; 
-        gap: 5px; 
-        padding-top: 20px;
-        overflow-y: auto;
+        padding: 20px 0;
+        border-right: 1px solid rgba(255,255,255,0.05);
     }
     
     .nav-label {
         font-size: 11px;
-        font-weight: 700;
+        font-weight: 800;
         text-transform: uppercase;
         color: #475569;
-        margin: 20px 0 10px 25px;
-        letter-spacing: 0.05em;
+        margin: 25px 30px 12px 30px;
+        letter-spacing: 0.08em;
     }
 
     .nav-item { 
-        padding: 12px 25px; 
+        padding: 14px 30px; 
         font-size: 14px; 
-        font-weight: 500; 
+        font-weight: 600; 
         cursor: pointer; 
         text-decoration: none; 
         display: flex; 
         align-items: center; 
         gap: 12px; 
         color: #94a3b8;
-        border-left: 3px solid transparent;
-        transition: all 0.2s; 
+        border-left: 4px solid transparent;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
     }
     .nav-item:hover { 
-        background: #1e293b; 
+        background: rgba(255,255,255,0.03); 
         color: #f1f5f9; 
     }
     .nav-item.active { 
-        background: #1e293b; 
+        background: rgba(59, 130, 246, 0.1); 
         color: #3b82f6; 
         border-left-color: #3b82f6;
-        font-weight: 600;
     }
     
-    .main-panel { padding: 40px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 20px; scroll-behavior: smooth; }
-    .sections-wrapper { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 60px; padding-bottom: 100px; }
-    
-    /* Topic Card Premium Styles */
-    .topic-card-top1 {
-        background: white; border: 1px solid #e2e8f0; border-left: 4px solid #7c3aed;
-        border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        margin-bottom: 30px; position: relative;
+    .main-panel { 
+        flex: 1; 
+        padding: 40px; 
+        overflow-y: auto; 
+        background: #f8fafc; 
+        scroll-behavior: smooth; 
+        position: relative;
     }
-    .top1-title { font-size: 24px; font-weight: 800; color: #1e293b; line-height: 1.3; }
+    .content-max-width { 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 40px; 
+        padding-bottom: 120px; 
+    }
     
-    .badge-whynow { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
-    .badge-whynow-escalated { background: #fee2e2; color: #991b1b; }
-    .badge-whynow-smartmoney { background: #dcfce7; color: #166534; }
-    .badge-whynow-default { background: #f3e8ff; color: #6b21a8; }
+    .data-intake-panel {
+        width: 360px;
+        background: white;
+        border-left: 1px solid #e2e8f0;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    /* Modal */
+    .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 1000; }
+    .modal.active { display: flex; }
+    .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 20px; overflow-y: auto; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
     
-    .sidebar { background: white; border-left: 1px solid #e2e8f0; padding: 30px; overflow-y: auto; }
+    .hidden { display: none !important; }
     """

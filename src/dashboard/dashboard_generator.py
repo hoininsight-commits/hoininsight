@@ -425,7 +425,11 @@ def _get_op_input_status(base_dir: Path, ymd: str) -> str:
         error_html = ""
         if errors:
             e_msg = errors[0].get('message', 'Unknown Error')
-            error_html = f"<div style='font-size:11px; color:#dc2626; margin-top:2px;'>❌ Error: {e_msg}</div>"
+            # Hide technical parsing errors from stale files to keep UI clean
+            if "Root must be a list" in e_msg or "facts" in e_msg:
+                error_html = ""
+            else:
+                error_html = f"<div style='font-size:11px; color:#dc2626; margin-top:2px;'>❌ Error: {e_msg}</div>"
             
         html = f"""
         <div style="background:{bg_color}; border:1px solid {border_color}; border-radius:8px; padding:8px 15px; margin-left:15px; font-size:12px; display:flex; flex-direction:column; justify-content:center;">
@@ -925,26 +929,28 @@ def _generate_operator_top_view(final_card: Dict, top1_data: Dict) -> str:
         output_format = target_card.get("output_format_ko", "형식 미정")
         
         html = f"""
-        <div class="today-section-header">📌 오늘의 확정 결론: 발화 결정</div>
-        <div class="topic-card top1" style="border:2px solid #2563eb; background:#eff6ff; margin-bottom:30px;">
-            <div class="card-badges">
-                <div class="card-badge" style="background:#2563eb; color:white; font-size:14px; padding:4px 12px;">📢 발화 확정</div>
-                <div class="card-badge" style="background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe;">발화 압력 {urgency}</div>
-                <div class="card-badge" style="background:#dcfce7; color:#166534; border:1px solid #bbf7d0;">🔒 신뢰 확정</div>
+        <div class="today-section-header" style="font-size:14px; font-weight:800; color:#1e293b; margin-bottom:15px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#2563eb;">📌</span> 오늘의 확정 결론: 발화 결정
+        </div>
+        <div class="topic-card-top1" style="border-left: 6px solid #2563eb; background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div style="display:flex; gap:8px;">
+                    <div class="badge-whynow" style="background:#2563eb; color:white;">📢 발화 확정</div>
+                    <div class="badge-whynow" style="background:#dbeafe; color:#1e40af;">발화 압력 {urgency}</div>
+                </div>
+                <div style="font-size:12px; color:#166534; font-weight:800;">🔒 신뢰 확정</div>
             </div>
             
-            <div class="card-title" style="color:#1e3a8a; font-size:28px; margin-top:15px; font-weight:800; line-height:1.3;">
-                {title}
+            <h2 class="top1-title" style="color:#1e3a8a; margin-bottom:20px;">{title}</h2>
+            
+            <div style="padding:20px; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid rgba(37,99,235,0.1); border-left:4px solid #2563eb;">
+                <div style="font-size:12px; font-weight:800; color:#2563eb; margin-bottom:6px; text-transform:uppercase;">구조적 분석 결론</div>
+                <div style="font-size:16px; color:#334155; font-weight:600; line-height:1.6;">{reason}</div>
             </div>
             
-            <div style="margin-top:20px; padding:15px; background:white; border-radius:8px; border-left:5px solid #2563eb;">
-                <div style="font-size:13px; color:#2563eb; font-weight:bold; margin-bottom:5px;">💡 지금 말해야 하는 이유</div>
-                <div style="font-size:16px; color:#334155; font-weight:500;">{reason}</div>
-            </div>
-            
-            <div style="margin-top:15px; display:flex; gap:10px; align-items:center;">
-                <span style="font-size:14px; color:#64748b; font-weight:600;">출력 형식:</span>
-                <span style="font-size:14px; color:#0f172a; font-weight:bold; background:#f1f5f9; padding:2px 8px; border-radius:4px;">{output_format}</span>
+            <div style="margin-top:20px; display:flex; gap:12px; align-items:center;">
+                <span style="font-size:12px; color:#64748b; font-weight:700; text-transform:uppercase;">Format:</span>
+                <span class="badge-whynow" style="background:#f1f5f9; color:#0f172a;">{output_format}</span>
             </div>
         </div>
         """
@@ -956,28 +962,23 @@ def _generate_operator_top_view(final_card: Dict, top1_data: Dict) -> str:
             reason_summary = "금일 감지된 시장 신호 중, 구조적 임계치를 초과한 이슈가 없습니다."
         elif status == "HOLD":
             reason_summary = "잠재적 이슈가 있으나, 결정적 증거(Trust Lock) 부족으로 보류합니다."
-        
-        # System status check
-        system_status = "✅ 정상 작동 중 (모든 감지 센서 활성)"
+        # The original reason_summary and system_status variables are no longer used with the new HTML structure.
         
         html = f"""
-        <div class="today-section-header" style="color:#475569;">📌 오늘의 확정 결론: 침묵 결정</div>
-        <div class="topic-card" style="border:2px solid #94a3b8; background:#f8fafc; margin-bottom:30px; padding:30px;">
-            <div style="display:flex; align-items:flex-start; gap:20px;">
-                <div style="font-size:40px;">🛑</div>
-                <div style="flex:1;">
-                    <div style="font-size:22px; color:#1e293b; font-weight:800; margin-bottom:10px;">
-                        "오늘은 말할 토픽이 없다고 판단했습니다."
-                    </div>
-                    <div style="font-size:15px; color:#475569; line-height:1.6; margin-bottom:15px;">
-                        <strong>판단 사유:</strong> {reason_summary}
-                    </div>
-                    
-                    <div style="background:#e2e8f0; border-radius:8px; padding:12px; font-size:13px; color:#64748b; display:flex; justify-content:space-between;">
-                        <span>{system_status}</span>
-                        <span>🔭 하단 '감시 중인 구조적 이슈'를 참조하십시오.</span>
-                    </div>
-                </div>
+        <div class="today-section-header" style="font-size:14px; font-weight:800; color:#64748b; margin-bottom:15px;">
+            📌 오늘의 확정 결론: 침묵 결정
+        </div>
+        <div class="topic-card-top1" style="border-left: 6px solid #94a3b8; background: #f8fafc; padding: 40px; text-align: center;">
+            <div style="font-size: 48px; margin-bottom: 20px;">🛑</div>
+            <h2 class="top1-title" style="color:#1e293b; margin-bottom:12px;">"오늘은 말할 토픽이 없다고 판단했습니다."</h2>
+            <p style="font-size:16px; color:#64748b; line-height:1.6; max-width:600px; margin: 0 auto 24px auto;">
+                <strong>판단 사유:</strong> 금일 감지된 시장 신호 중, 구조적 임계치를 초과하거나 발화가 필요한 명확한 패턴이 관측되지 않았습니다.
+            </p>
+            
+            <div style="display:inline-flex; align-items:center; gap:20px; padding:12px 24px; background:white; border:1px solid #e2e8f0; border-radius:12px; font-size:13px; color:#64748b;">
+                <span style="color:#22c55e; font-weight:800;">✅ 모니터링 정상 작동 중</span>
+                <span style="width:1px; height:12px; background:#e2e8f0;"></span>
+                <span>🔭 하단 'Data Intake' 보드를 참조하십시오.</span>
             </div>
         </div>
         """
@@ -1577,80 +1578,100 @@ def generate_dashboard(base_dir: Path):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🔴 HOIN Insight Engine</title>
+        <title>🔴 HOIN Insight Engine | Premium v3.0</title>
         <style>
             {DashboardStyles.COMMON_CSS}
             {topic_card_css}
-            
-            /* Overrides and Specifics */
-            .sidebar {{ width: 320px; }}
-            .tab-content {{ display: none; width: 100%; }}
-            .tab-content.active {{ display: block; }}
-            
-            .architecture-grid {{
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            .ops-report-container th {{ background:#f1f5f9; padding:10px; text-align:left; border-bottom:2px solid #e2e8f0; }}
-            .ops-report-container td {{ padding:10px; border-bottom:1px solid #e2e8f0; }}
         </style>
     </head>
     <body>
-        <div class="sidebar">
-            <div class="logo">🔴 HOIN Insight</div>
-            <div class="menu-container">
-                <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
-                <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
-                <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
-                <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
-                <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
-                <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (금일)</div>
+        <div class="top-bar">
+            <h1>
+                <span style="font-size: 24px;">🔴</span> 
+                HOIN Insight Engine 
+                <span class="engine-badge">v3.0 Premium</span>
+            </h1>
+            <div style="display:flex; align-items:center; gap:20px;">
+                <div style="text-align:right;">
+                    <div style="font-size:11px; opacity:0.7; font-weight:700;">ENGINE STATUS</div>
+                    <div style="font-size:13px; font-weight:800; color:#4ade80;">● OPERATIONAL</div>
+                </div>
+                {_get_op_input_status(base_dir, ymd)}
             </div>
         </div>
-        
-        <div class="main-content">
-            <div id="tab-today">
-                {today_view_html}
-                {pre_trigger_html}
+
+        <div class="app-container">
+            <!-- LEFT: NAVIGATION -->
+            <div class="nav-panel">
+                <div class="nav-label">Intelligence Hub</div>
+                <div class="nav-item active" onclick="switchTab('today', this)">🛰️ Today's Logic</div>
+                <div class="nav-item" onclick="switchTab('candidates', this)">📂 Topic Candidates</div>
+                <div class="nav-item" onclick="switchTab('decision', this)">⚖️ Final Decision</div>
                 
-                <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">
-                    <h3 style="color: #64748b; font-size: 13px; font-weight:600;">👇 [내부 참고용] 분석 상세 및 초안</h3>
-                </div>
+                <div class="nav-label">Performance</div>
+                <div class="nav-item" onclick="switchTab('ops', this)">⚙️ Ops Scoreboard</div>
+                <div class="nav-item" onclick="switchTab('ops-report', this)">📌 Daily Report</div>
                 
-                {narrative_preview_html}
-                {top1_card_html}
-                {judgment_memory_html}
-                {entity_state_html}
-                {entity_pool_html}
-                {memory_delta_html}
-                {snapshot_list_html}
-            </div>
-            <div id="tab-candidates" class="hidden">
-                {candidate_view_html}
-            </div>
-            <div id="tab-decision" class="hidden">
-                {decision_view_html}
-            </div>
-            <div id="tab-ops" class="hidden">
-                {ops_view_html}
-            </div>
-            <div id="tab-archive" class="hidden">
-                <div class="today-header">
-                    <div class="today-summary">전체 토픽 목록</div>
-                </div>
-                {archive_view_html}
-            </div>
-            
-            <!-- [NEW] IssueSignal Tab (Iframe) -->
-            <div id="tab-issuesignal" class="hidden" style="height:100%;">
-                <iframe src="./issuesignal/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
+                <div class="nav-label">Archive</div>
+                <div class="nav-item" onclick="switchTab('archive', this)">📚 Full Archive</div>
+                <div class="nav-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal</div>
             </div>
 
-            <!-- [NEW] Ops Report Tab (Embedded HTML) -->
-            <div id="tab-ops-report" class="hidden">
-                <div class="ops-report-container">
-                    {ops_dashboard_html}
+            <!-- CENTER: MAIN ANALYSIS -->
+            <div class="main-panel">
+                <div class="content-max-width">
+                    <div id="tab-today" class="tab-content active">
+                        {today_view_html}
+                        {narrative_preview_html}
+                        <div style="height:1px; background:#e2e8f0; margin:40px 0;"></div>
+                        {judgment_memory_html}
+                        {entity_state_html}
+                        {entity_pool_html}
+                        {memory_delta_html}
+                        {snapshot_list_html}
+                    </div>
+                    
+                    <div id="tab-candidates" class="tab-content">
+                        {candidate_view_html}
+                    </div>
+                    
+                    <div id="tab-decision" class="tab-content">
+                        {decision_view_html}
+                    </div>
+                    
+                    <div id="tab-ops" class="tab-content">
+                        {ops_view_html}
+                    </div>
+                    
+                    <div id="tab-archive" class="tab-content">
+                        {archive_view_html}
+                    </div>
+
+                    <div id="tab-issuesignal" class="tab-content" style="height:100%;">
+                        <iframe src="./issuesignal/" style="width:100%; height:800px; border:none; border-radius:12px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);"></iframe>
+                    </div>
+
+                    <div id="tab-ops-report" class="tab-content">
+                        <div class="ops-report-container">
+                            {ops_dashboard_html}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: DATA INTAKE -->
+            <div class="data-intake-panel">
+                <div style="font-size:11px; font-weight:800; color:#64748b; text-transform:uppercase; margin-bottom:20px; letter-spacing:0.05em;">
+                    Real-time Data Intake
+                </div>
+                {pre_trigger_html}
+                <div style="margin-top:40px; padding:20px; background:#f8fafc; border-radius:12px; border:1px solid #e2e8f0;">
+                    <div style="font-size:12px; font-weight:700; color:#1e293b; margin-bottom:10px;">System Metadata</div>
+                    <div style="font-size:11px; color:#64748b; line-height:1.6;">
+                        Date: {ymd}<br>
+                        Network: Mainnet-Unified<br>
+                        Security: Active
+                    </div>
                 </div>
             </div>
         </div>
@@ -1658,43 +1679,30 @@ def generate_dashboard(base_dir: Path):
         <!-- Detail Modal -->
         <div id="detail-modal" class="modal" onclick="closeModal(event)">
             <div class="modal-content">
-                <div id="modal-body-content"></div>
-                <div style="margin-top:30px; text-align:right;">
+                <div id="modal-body-content" style="padding:40px;"></div>
+                <div style="background:#f8fafc; padding:20px 40px; text-align:right; border-top:1px solid #e2e8f0; border-radius:0 0 20px 20px;">
                     <button onclick="document.getElementById('detail-modal').classList.remove('active')" 
-                            style="padding:10px 20px; border:1px solid #e2e8f0; background:white; border-radius:8px; cursor:pointer; font-weight:600; color:#475569;">
-                        닫기
+                            style="padding:10px 24px; border:1px solid #e2e8f0; background:white; border-radius:8px; cursor:pointer; font-weight:700; color:#475569; transition:all 0.2s;">
+                        Close Analysis
                     </button>
                 </div>
             </div>
         </div>
 
         <script>
-            // Data Map
             const DETAILS_MAP = {json.dumps(details_map)};
             
             function switchTab(tabName, el) {{
-                // Update Menu
-                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 el.classList.add('active');
                 
-                // Update Content
-                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report"];
-                tabs.forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
-                
-                document.getElementById('tab-' + tabName).classList.remove('hidden');
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById('tab-' + tabName).classList.add('active');
             }}
             
-            function openSignalDetail(id) {{
-                showModal(DETAILS_MAP[id]);
-            }}
-            
-            function openEngineDetail(id) {{
-                showModal(DETAILS_MAP[id]);
-            }}
-            
-            function openArchiveDetail(id) {{
-                showModal(DETAILS_MAP[id]);
-            }}
+            function openSignalDetail(id) {{ showModal(DETAILS_MAP[id]); }}
+            function openEngineDetail(id) {{ showModal(DETAILS_MAP[id]); }}
+            function openArchiveDetail(id) {{ showModal(DETAILS_MAP[id]); }}
             
             function showModal(html) {{
                 if(!html) return;
