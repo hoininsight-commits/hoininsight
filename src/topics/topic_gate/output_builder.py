@@ -5,7 +5,7 @@ from .types import Candidate, GateOutput, NumberItem, SpeakEligibility
 from .speak_eligibility import SpeakEligibilityCheck
 
 class OutputBuilder:
-    def build(self, as_of_date: str, top1: Candidate, ranked: List[Candidate], events: List[Any] = None) -> GateOutput:
+    def build(self, as_of_date: str, top1: Candidate | dict, ranked: List[Candidate], events: List[Any] = None) -> GateOutput:
         title = self._make_title(top1)
         why_confused = self._why_confused(top1)
         reasons = self._reasons(top1)
@@ -24,19 +24,23 @@ class OutputBuilder:
         })
         speak_elig = checker.evaluate(eval_data, evidence_pool=event_dicts)
 
+        question = top1.question if hasattr(top1, "question") else top1.get("question")
+        numbers = top1.numbers if hasattr(top1, "numbers") else top1.get("numbers", [])
+        confidence = top1.confidence if hasattr(top1, "confidence") else top1.get("confidence", 0)
+
         return GateOutput(
             as_of_date=as_of_date,
             topic_id=f"gate_{uuid.uuid4().hex[:10]}",
             title=title,
-            question=top1.question,
+            question=question,
             why_people_confused=why_confused,
             key_reasons=reasons,
-            numbers=top1.numbers[:3],
+            numbers=numbers[:3] if numbers else [],
             risk_one=risk,
-            confidence=top1.confidence,
+            confidence=confidence,
             handoff_to_structural=False,
             handoff_reason="",
-            source_candidates=[c.candidate_id for c in ranked[:5]],
+            source_candidates=[c.candidate_id if hasattr(c, "candidate_id") else c.get("candidate_id") for c in ranked[:5]],
             speak_eligibility=speak_elig
         )
 
