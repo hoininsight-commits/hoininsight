@@ -20,6 +20,7 @@ from src.issuesignal.teaser_engine import NextSignalTeaserEngine
 from src.issuesignal.question_engine import AudienceQuestionEngine
 from src.issuesignal.misinterpretation_engine import MisinterpretationEngine
 from src.issuesignal.defense_generator import DefenseGenerator
+from src.issuesignal.outcome_tracker import OutcomeTracker
 
 def load_daily_snapshot(as_of_date: str) -> dict:
     # Use standard path
@@ -207,6 +208,10 @@ def main(as_of_date: str):
     for t in processed_ranked:
         t["anticipated_questions"] = question_eng.process_signal(t)
 
+    # [IS-43] Post-Emission Outcome Tracking
+    outcome_eng = OutcomeTracker(Path(os.getcwd()))
+    accuracy_summary = outcome_eng.track_historical_signals(as_of_date)
+
     top1 = ranker.pick_top1(processed_ranked)
 
     output = builder.build(as_of_date=as_of_date, top1=top1, ranked=processed_ranked, events=events)
@@ -222,6 +227,7 @@ def main(as_of_date: str):
         **to_plain(output),
         "membership_only_queue": membership_queue,
         "next_signal_teaser": next_teaser,
+        "accuracy_summary": accuracy_summary,
     }
 
     # Guardrail enforcement (no mixing)
