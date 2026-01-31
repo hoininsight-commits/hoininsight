@@ -2509,7 +2509,7 @@ def generate_dashboard(base_dir: Path):
     # We'll add a stamp bar above the Top Block
     stamp_html = f"""
     <div style="max-width: 1600px; margin: 0 auto; padding: 10px 20px; text-align:right; font-size:11px; color:#64748b; font-family:monospace;">
-        <span>DATA: {latest_date}</span> | 
+        <span>DATA: {ymd}</span> | 
         <span>RUN: {pipeline_time_kst} (KST)</span> | 
         <span>COMMIT: {commit_hash}</span> | 
         <span>ENGINE: {engine_version}</span>
@@ -3554,7 +3554,7 @@ def generate_dashboard(base_dir: Path):
         reg = blocks.get("regime", {})
         rev = blocks.get("revival", {})
         ops = blocks.get("ops", {})
-        reg_col = "#10b981" if reg.get("confidence") > 0.5 else "#f59e0b"
+        reg_col = "#10b981" if (reg.get("confidence") or 0.0) > 0.5 else "#f59e0b"
         rev_col = "#3b82f6" if rev.get("has_revival") else "#64748b"
         ops_col = "#10b981" if ops.get("system_freshness", 0) >= 85 and not ops.get("has_stale_warning") else "#ef4444"
         
@@ -3568,7 +3568,7 @@ def generate_dashboard(base_dir: Path):
             "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"
             "            <div style=\"font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 15px;\">01. Regime Context</div>\n"
             f"            <div style=\"font-size: 18px; font-weight: 700; color: {reg_col};\">{reg.get('current_regime')}</div>\n"
-            f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Confidence: {reg.get('confidence'):.1%} ({reg.get('basis_type')})</div>\n"
+            f"            <div style=\"font-size: 13px; color: #475569; margin-top: 5px;\">Confidence: {(reg.get('confidence') or 0.0):.1%} ({reg.get('basis_type')})</div>\n"
             f"            <div style=\"font-size: 12px; color: #64748b; margin-top: 8px;\">Meta Topics: {reg.get('meta_topic_count')} detected</div>\n"
             "        </div>\n"
             "        <div style=\"padding: 20px; border-right: 1px solid #e2e8f0; min-height: 140px;\">\n"

@@ -306,10 +306,6 @@ jobs:
         run: |
           python -m src.issuesignal.run_issuesignal
 
-      - name: Generate IssueSignal Dashboard
-        run: |
-          mkdir -p data/issuesignal/packs
-          python3 -m src.issuesignal.dashboard.build_dashboard
 
       - name: Generate Ops Metadata
         run: |
