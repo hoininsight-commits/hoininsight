@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=122
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=134
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -618,6 +618,66 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### [현장] 이걸 사람이 만들었다고?…전통 공예로 풀어낸 쿠키런 주역들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 강훈식 “캐나다 ‘60조원 잠수함 사업’ 수주, 쉽지 않지만 자신 있다” - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "강남, 끝났다?"…돈·사람 다 빨아들이는 '새 중심지' 등장 - 아시아경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “낮은 배당률에 개인·기관 해외로”…미국이 분석한 원화약세 이유 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “사람을 살려야 선생님이지”...성형외과 의사들 100여년 전엔 신이었다 [Book] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “정신 아무리 차려도 호랑이는 물어요”...정신력 맹신은 실패의 지름길 [Book] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “혼자 밥먹다 마주친 전 여친, 이 말 하세요”...혼밥학원, 현실이 된다 [Book] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 이란 남부 항구도시 건물서 폭발…“원인 불명”< AFP> (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 1209회 로또 1등, ‘22명 대박’…2, 17, 20, 35, 37, 39 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

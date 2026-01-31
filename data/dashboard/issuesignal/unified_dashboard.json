@@ -1,5 +1,5 @@
 {
-  "date": "2026-01-31",
+  "date": "2026-02-01",
   "engine_status": "SUCCESS",
   "counts": {
     "TRUST_LOCKED": 0,
@@ -65,21 +65,13 @@
   ],
   "reject_logs": [
     {
-      "timestamp": "2026-01-31 19:55:22",
+      "timestamp": "2026-02-01 05:46:31",
       "topic_id": "SUMMARY",
       "reason_code": "UNKNOWN",
       "fact_text": "전체 1건의 토픽이 이 사유로 보류/개선 중입니다."
     }
   ],
   "timeline": [
-    {
-      "date": "2026-01-18",
-      "counts": {
-        "TRUST_LOCKED": 1,
-        "TRIGGER": 2,
-        "PRE_TRIGGER": 3
-      }
-    },
     {
       "date": "2026-01-19",
       "counts": {
@@ -178,6 +170,14 @@
     },
     {
       "date": "2026-01-31",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-02-01",
       "counts": {
         "TRUST_LOCKED": 1,
         "TRIGGER": 2,

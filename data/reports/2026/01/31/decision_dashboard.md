@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 122
+- **Unreviewed**: 134
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=122
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=134
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 122
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 119
+- **Count**: 134
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 131
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,18 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -344,6 +356,18 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -473,6 +497,18 @@
 | 고교생들도 나섰다…트럼프 이민정책 반대시위, 美 전역으로 확산 | Structural implication: '고교생들도 나섰다…트럼프 이민정책 반대시위, 美 전역으로 확산' suggests a shift in NEWS dynamics. | LOW |
 | 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 | Structural implication: '쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡' suggests a shift in NEWS dynamics. | LOW |
 | [현장] 이걸 사람이 만들었다고?…전통 공예로 풀어낸 쿠키런 주역들 | Structural implication: '[현장] 이걸 사람이 만들었다고?…전통 공예로 풀어낸 쿠키런 주역들' suggests a shift in NEWS dynamics. | LOW |
+| 강훈식 “캐나다 ‘60조원 잠수함 사업’ 수주, 쉽지 않지만 자신 있다” - 경향신문 | Structural implication: '강훈식 “캐나다 ‘60조원 잠수함 사업’ 수주, 쉽지 않지만 자신 있다” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| "강남, 끝났다?"…돈·사람 다 빨아들이는 '새 중심지' 등장 - 아시아경제 | Structural implication: '"강남, 끝났다?"…돈·사람 다 빨아들이는 '새 중심지' 등장 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| 오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보 | Structural implication: '오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스 | Structural implication: '"에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보 | Structural implication: '청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| “낮은 배당률에 개인·기관 해외로”…미국이 분석한 원화약세 이유 - 매일경제 | Structural implication: '“낮은 배당률에 개인·기관 해외로”…미국이 분석한 원화약세 이유 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “사람을 살려야 선생님이지”...성형외과 의사들 100여년 전엔 신이었다 [Book] | Structural implication: '“사람을 살려야 선생님이지”...성형외과 의사들 100여년 전엔 신이었다 [Book]' suggests a shift in NEWS dynamics. | LOW |
+| “정신 아무리 차려도 호랑이는 물어요”...정신력 맹신은 실패의 지름길 [Book] | Structural implication: '“정신 아무리 차려도 호랑이는 물어요”...정신력 맹신은 실패의 지름길 [Book]' suggests a shift in NEWS dynamics. | LOW |
+| “혼자 밥먹다 마주친 전 여친, 이 말 하세요”...혼밥학원, 현실이 된다 [Book] | Structural implication: '“혼자 밥먹다 마주친 전 여친, 이 말 하세요”...혼밥학원, 현실이 된다 [Book]' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 이란 남부 항구도시 건물서 폭발…“원인 불명”< AFP> | Structural implication: '[속보] 이란 남부 항구도시 건물서 폭발…“원인 불명”< AFP>' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 1209회 로또 1등, ‘22명 대박’…2, 17, 20, 35, 37, 39 | Structural implication: '[속보] 1209회 로또 1등, ‘22명 대박’…2, 17, 20, 35, 37, 39' suggests a shift in NEWS dynamics. | LOW |
+| “징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크 | Structural implication: '“징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
