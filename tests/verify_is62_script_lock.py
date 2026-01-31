@@ -12,7 +12,7 @@ class TestIS62ScriptLock(unittest.TestCase):
         }
         why_now = "Deadline approaching"
         
-        result = ScriptLockEngine.generate(protagonist, why_now, "Energy")
+        result = ScriptLockEngine.generate(protagonist, why_now, "Energy", [])
         script = result['long_form']
         
         print(f"Generated Script:\n{script}")

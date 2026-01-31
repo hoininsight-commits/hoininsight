@@ -22,7 +22,7 @@ class TestIS66Editorial(unittest.TestCase):
             "details": {"company": "TestCorp", "action_type": "Action"},
             "bottleneck_reason": "Reason"
         }
-        res = ScriptLockEngine.generate(mock_cand, "WhyNow", "Sector")
+        res = ScriptLockEngine.generate(mock_cand, "WhyNow", "Sector", [])
         algo_script = res['long_form']
         
         expected_headers = [
