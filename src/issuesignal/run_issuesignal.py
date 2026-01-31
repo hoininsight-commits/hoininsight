@@ -175,33 +175,33 @@ def main():
                  # Should be caught by Condition 1 logic, but redundancy is safe.
                  status_verdict = "SPEAKABLE_CANDIDATE"
 
-             if status_verdict == "SPEAKABLE_CANDIDATE" and (has_macro or has_official or has_corporate):
-                  status_verdict = "TRUST_LOCKED" 
+            if status_verdict == "SPEAKABLE_CANDIDATE" and (has_macro or has_official or has_corporate):
+                status_verdict = "TRUST_LOCKED" 
 
-             # [IS-61] WHY-NOW Logic Integration
-             # 1. Run Bottleneck Analysis first
-             bottleneck_result = BottleneckRanker.rank_protagonists(corporate_facts)
+            # [IS-61] WHY-NOW Logic Integration
+            # 1. Run Bottleneck Analysis first
+            bottleneck_result = BottleneckRanker.rank_protagonists(corporate_facts)
              
-             # 2. Synthesize Why-Now for Protagonists
-             all_context = flow_evidence + macro_facts + official_facts
+            # 2. Synthesize Why-Now for Protagonists
+            all_context = flow_evidence + macro_facts + official_facts
              
-             for p in bottleneck_result['protagonists']:
-                 why_now = WhyNowSynthesizer.synthesize(
-                     p, 
-                     all_context, 
-                     rotation_verdict['triggered'], 
-                     rotation_verdict.get('target_sector', '-')
-                 )
-                 p['why_now'] = why_now
+            for p in bottleneck_result['protagonists']:
+                why_now = WhyNowSynthesizer.synthesize(
+                    p, 
+                    all_context, 
+                    rotation_verdict['triggered'], 
+                    rotation_verdict.get('target_sector', '-')
+                )
+                p['why_now'] = why_now
                  
-             # 3. Downgrade Logic
-             if status_verdict == "TRUST_LOCKED" and bottleneck_result['protagonists']:
-                 # If top protagonist has NO Why-Now, downgrade.
-                 top_p = bottleneck_result['protagonists'][0]
-                 if not top_p.get('why_now'):
-                     print("[IS-61] Downgrading to HOLD: Protagonist exists but WHY-NOW is missing.")
-                     status_verdict = "HOLD"
-                     desc_rationale += "\n(불가 판정: Protagonist의 시점 필연성(WHY-NOW) 부재)"
+            # 3. Downgrade Logic
+            if status_verdict == "TRUST_LOCKED" and bottleneck_result['protagonists']:
+                # If top protagonist has NO Why-Now, downgrade.
+                top_p = bottleneck_result['protagonists'][0]
+                if not top_p.get('why_now'):
+                    print("[IS-61] Downgrading to HOLD: Protagonist exists but WHY-NOW is missing.")
+                    status_verdict = "HOLD"
+                    desc_rationale += "\n(불가 판정: Protagonist의 시점 필연성(WHY-NOW) 부재)"
 
              # [IS-62] Script Lock Engine Integration
              if status_verdict == "TRUST_LOCKED" and bottleneck_result['protagonists']:
