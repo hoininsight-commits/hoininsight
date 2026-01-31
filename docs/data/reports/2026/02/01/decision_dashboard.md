@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 강훈식 "加 잠수함 수주, 쉽지 않지만 자신 있다…1년 내 결과" - 연합뉴스 (Google_News_KR_Economy)
-  - [NEWS] 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제 (Google_News_KR_Economy)
-  - [NEWS] 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] [케빈 워시 연준] '21세기 최고' 1월 랠리 뒤로하고…국내증시 긴장 - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 비트코인, 9개월 만에 7만 달러대로...“워시 지명 영향” - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] K잠수함 유리했는데…독일, 캐나다 시스팬과 'MRO 동맹' 반격 [강경주의 테크X] - 한국경제 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,26 +187,31 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 강훈식 "加 잠수함 수주, 쉽지 않지만 자신 있다…1년 내 결과" - 연합뉴스 | Structural implication: '강훈식 "加 잠수함 수주, 쉽지 않지만 자신 있다…1년 내 결과" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제 | Structural implication: '쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보 | Structural implication: '케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| "K-의료 특화 모델 필수"...포티투마루, AI 헬스케어 미래 비전 제시 - 지디넷코리아 | Structural implication: '"K-의료 특화 모델 필수"...포티투마루, AI 헬스케어 미래 비전 제시 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| "비트코인, 금값처럼 뛸 줄 알았는데…" 무서운 경고 나왔다 - 한국경제 | Structural implication: '"비트코인, 금값처럼 뛸 줄 알았는데…" 무서운 경고 나왔다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| '오천피 얘기 꺼내지도 마라'…남몰래 눈물 흘리는 개미들 [노정동의 어쩌다 투자자] - 한국경제 | Structural implication: ''오천피 얘기 꺼내지도 마라'…남몰래 눈물 흘리는 개미들 [노정동의 어쩌다 투자자] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 로봇 막겠단 현차 노조에 李 “거대한 수레 피할 수 없다” - 문화일보 | Structural implication: '로봇 막겠단 현차 노조에 李 “거대한 수레 피할 수 없다” - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| “월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com | Structural implication: '“월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com' suggests a shift in NEWS dynamics. | LOW |
-| 오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보 | Structural implication: '오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| "강남, 끝났다?"…돈·사람 다 빨아들이는 '새 중심지' 등장 - 아시아경제 | Structural implication: '"강남, 끝났다?"…돈·사람 다 빨아들이는 '새 중심지' 등장 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레 | Structural implication: '트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리 | Structural implication: '李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리' suggests a shift in NEWS dynamics. | LOW |
-| "에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스 | Structural implication: '"에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 서울역까지 1시간→20분…"드디어 뚫린다" 교통호재에 들썩 - 한국경제 | Structural implication: '서울역까지 1시간→20분…"드디어 뚫린다" 교통호재에 들썩 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제 | Structural implication: '"총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [속보] ‘90만닉스’ 됐다…SK하이닉스, 장중 90만원 돌파 - 매일경제 | Structural implication: '[속보] ‘90만닉스’ 됐다…SK하이닉스, 장중 90만원 돌파 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| [케빈 워시 연준] '21세기 최고' 1월 랠리 뒤로하고…국내증시 긴장 - 연합인포맥스 | Structural implication: '[케빈 워시 연준] '21세기 최고' 1월 랠리 뒤로하고…국내증시 긴장 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인, 9개월 만에 7만 달러대로...“워시 지명 영향” - 조선일보 | Structural implication: '비트코인, 9개월 만에 7만 달러대로...“워시 지명 영향” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| K잠수함 유리했는데…독일, 캐나다 시스팬과 'MRO 동맹' 반격 [강경주의 테크X] - 한국경제 | Structural implication: 'K잠수함 유리했는데…독일, 캐나다 시스팬과 'MRO 동맹' 반격 [강경주의 테크X] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| ‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보 | Structural implication: '‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 두 달 표류 끝 '애엽제제' 약가 인하…결정은 막판, 부담은 현장 몫 - 약사공론 | Structural implication: '두 달 표류 끝 '애엽제제' 약가 인하…결정은 막판, 부담은 현장 몫 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
-| 강남 결혼식장 평균 1인 식대 사상 처음 ‘이 가격대’ 진입했다, 소비자원 - 문화일보 | Structural implication: '강남 결혼식장 평균 1인 식대 사상 처음 ‘이 가격대’ 진입했다, 소비자원 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| 다나와 "메모리 이어 SSD·HDD 값도 상승세" - 지디넷코리아 | Structural implication: '다나와 "메모리 이어 SSD·HDD 값도 상승세" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 결국 표면화된 `로봇` 갈등… 李 대통령과 노조, `강대강` 충돌하나 [주말 리뷰] - 디지털데일리 | Structural implication: '결국 표면화된 `로봇` 갈등… 李 대통령과 노조, `강대강` 충돌하나 [주말 리뷰] - 디지털데일리' suggests a shift in NEWS dynamics. | LOW |
+| “월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com | Structural implication: '“월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com' suggests a shift in NEWS dynamics. | LOW |
 | 한국서 만든 ‘두쫀쿠’, 진짜 두바이로… 현지에선 “한쫀쿠” - 조선일보 | Structural implication: '한국서 만든 ‘두쫀쿠’, 진짜 두바이로… 현지에선 “한쫀쿠” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "XRP 가격 100달러 가능할까?"...리플 기술책임자의 솔직한 '답변' - gukjenews.com | Structural implication: '"XRP 가격 100달러 가능할까?"...리플 기술책임자의 솔직한 '답변' - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
+| “죄송합니다 제가 샀습니다”…금·은값 폭락에 개미들 '멘붕' - 이데일리 | Structural implication: '“죄송합니다 제가 샀습니다”…금·은값 폭락에 개미들 '멘붕' - 이데일리' suggests a shift in NEWS dynamics. | LOW |
+| "총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제 | Structural implication: '"총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| SK하이닉스, 엔비디아 '루빈' 탑재 '9부 능선' 넘었다 - 한국경제 | Structural implication: 'SK하이닉스, 엔비디아 '루빈' 탑재 '9부 능선' 넘었다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 리플 XRP, 3개월 반 만에 1.70달러 붕괴…ETF 자금 유출·비트코인 급락 겹쳤다 - 톱스타뉴스 | Structural implication: '리플 XRP, 3개월 반 만에 1.70달러 붕괴…ETF 자금 유출·비트코인 급락 겹쳤다 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레 | Structural implication: '트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| ‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보 | Structural implication: '‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 금 한 돈 ’100만 원’ 시대의 이모저모 [앵커리포트] - YTN | Structural implication: '금 한 돈 ’100만 원’ 시대의 이모저모 [앵커리포트] - YTN' suggests a shift in NEWS dynamics. | LOW |
+| "에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스 | Structural implication: '"에이비엘바이오, '그랩바디-B' 경쟁력 데이터로 증명" - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
+| HBM4 양산·디램 수익성 동반 상승…올해 ‘메모리 황금기’ 온다 - 매일경제 | Structural implication: 'HBM4 양산·디램 수익성 동반 상승…올해 ‘메모리 황금기’ 온다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보 | Structural implication: '청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| '머스크 주식회사' 출범하나...스페이스X, xAI 이어 테슬라와 통합 논의 - AI타임스 | Structural implication: ''머스크 주식회사' 출범하나...스페이스X, xAI 이어 테슬라와 통합 논의 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
+| 드럼 연주하다 ‘쿵’…FT아일랜드 최민환, 공연 무대서 실신 | Structural implication: '드럼 연주하다 ‘쿵’…FT아일랜드 최민환, 공연 무대서 실신' suggests a shift in NEWS dynamics. | LOW |
+| 누구보다 빵에 진심인 사람이 ‘결단’을 내리면 벌어지는 일 [여책저책] | Structural implication: '누구보다 빵에 진심인 사람이 ‘결단’을 내리면 벌어지는 일 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
+| “다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세 | Structural implication: '“다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세' suggests a shift in NEWS dynamics. | LOW |
+| “유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화 | Structural implication: '“유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화' suggests a shift in NEWS dynamics. | LOW |
+| “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 | Structural implication: '“거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들' suggests a shift in NEWS dynamics. | LOW |
 | 대전 둔산동 아파트 빈집서 화재…주민 40여명 대피, 심각한 부상자 없어 | Structural implication: '대전 둔산동 아파트 빈집서 화재…주민 40여명 대피, 심각한 부상자 없어' suggests a shift in NEWS dynamics. | LOW |
 | 오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상 | Structural implication: '오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상' suggests a shift in NEWS dynamics. | LOW |
 | 일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈 | Structural implication: '일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈' suggests a shift in NEWS dynamics. | LOW |
@@ -222,11 +227,6 @@
 | [현장] 이걸 사람이 만들었다고?…전통 공예로 풀어낸 쿠키런 주역들 | Structural implication: '[현장] 이걸 사람이 만들었다고?…전통 공예로 풀어낸 쿠키런 주역들' suggests a shift in NEWS dynamics. | LOW |
 | “아이를 잡아야 어른이 온다”... 대형 쇼핑시설 키즈 마케팅 | Structural implication: '“아이를 잡아야 어른이 온다”... 대형 쇼핑시설 키즈 마케팅' suggests a shift in NEWS dynamics. | LOW |
 | “서울에선 힘들어 못살겠어요”…높은 집값에 300만명 이상이 ‘탈서울’ | Structural implication: '“서울에선 힘들어 못살겠어요”…높은 집값에 300만명 이상이 ‘탈서울’' suggests a shift in NEWS dynamics. | LOW |
-| “내가 업어 키웠다”…이서진, 남다른 애정 드러낸 여배우 누구길래 | Structural implication: '“내가 업어 키웠다”…이서진, 남다른 애정 드러낸 여배우 누구길래' suggests a shift in NEWS dynamics. | LOW |
-| “경은이가 참 좋아할 텐데”…유재석, 결혼 19년 차에도 애틋한 아내 사랑 | Structural implication: '“경은이가 참 좋아할 텐데”…유재석, 결혼 19년 차에도 애틋한 아내 사랑' suggests a shift in NEWS dynamics. | LOW |
-| 뇌물로 ‘나무 2그루’ 받은 공무원, 집행유예에 “부당하다” 항소했는데 | Structural implication: '뇌물로 ‘나무 2그루’ 받은 공무원, 집행유예에 “부당하다” 항소했는데' suggests a shift in NEWS dynamics. | LOW |
-| “가수 신 씨 저 아닙니다”…해외 원정 도박 의혹 부인한 여가수 | Structural implication: '“가수 신 씨 저 아닙니다”…해외 원정 도박 의혹 부인한 여가수' suggests a shift in NEWS dynamics. | LOW |
-| GS건설, 6856억원 규모 송파한양2차 재건축 수주...신년 마수걸이 성공 | Structural implication: 'GS건설, 6856억원 규모 송파한양2차 재건축 수주...신년 마수걸이 성공' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
