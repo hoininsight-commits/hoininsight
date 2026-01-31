@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-30T23:51:08Z
-- finished_utc: 2026-01-30T23:51:41Z
+- started_utc: 2026-01-31T02:08:12Z
+- finished_utc: 2026-01-31T02:08:44Z
 - status: SUCCESS
 
 ## details
@@ -39,7 +39,6 @@ topic_exporter: ok
 operational_dashboard: ok | data/reports/2026/01/31/operational_dashboard.md
 decision_dashboard: ok | data/reports/2026/01/31/decision_dashboard.md
 decision: ok
-operator_log: ok | NO_TOPIC
 judgment_ledger: ok | None
 judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC

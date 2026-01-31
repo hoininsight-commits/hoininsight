@@ -79,6 +79,15 @@
 
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
+### 🧱 FACT ANCHORS COLLECTED TODAY
+- **Count**: 3
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1
+- **Samples (Top 3)**:
+  - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
+  - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
+  - [POLICY] ECB policy document: Focus shifts to long-term inflation stability over short-term cuts (ECB Official)
+
+
 ## 🚫 WHY NO SPEAK (Today)
 > **오늘은 영상화 가능한 토픽이 없습니다.** 아래 사유로 인해 보류되었습니다.
 
