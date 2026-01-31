@@ -1,0 +1,31 @@
+header:
+  issue_id: ISSUE-20260131-001
+  status: PUBLISHED
+  timestamp: '2026-01-31T06:11:17.493926'
+narrative:
+  long_form: '# 감지된 신호 분석
+
+
+    ## 1. 핵심 내용
+
+    美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보
+
+
+    ## 2. 자본 이동 판단 (Rotation)
+
+    실시간 RSS/Official 데이터에서 감지된 최우선 토픽입니다.
+
+
+    ## 3. 대응 코멘트
+
+    시장 데이터를 기반으로 분석된 결과입니다. - 섹터에 대한 비중 확대를 검토하십시오.'
+  one_liner: '[자동 감지] 美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보'
+  shorts_ready:
+  - '속보: 美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보'
+  - 지금 바로 확인하세요.
+  - '자본이동: -'
+safety:
+  confidence: 70
+  kill_switch: false
+ticker_card: []
+trigger_quote: null

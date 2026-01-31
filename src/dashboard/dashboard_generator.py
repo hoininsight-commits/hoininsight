@@ -2591,23 +2591,36 @@ def generate_dashboard(base_dir: Path):
          topic_title = final_card.get('human_prompt', '제목 없음')
          decision_rationale = final_card.get('decision_rationale', '-')
          
-         # Load Content Package
-         long_script = all_scripts_map.get("structural_0", "스크립트 내용 없음")
+         # [IS-56] Retrieve content from Content Package Block first
+         content_pkg = final_card.get('blocks', {}).get('content_package', {})
          
-         # Shorts (Try to load or placeholder)
-         shorts_script = "숏츠 스크립트 대기중 (생성 파이프라인 확인 필요)"
-         try:
-             s_path = base_dir / "data" / "content" / "insight_shotlist_v1.md"
-             if s_path.exists(): shorts_script = s_path.read_text(encoding='utf-8')
-         except: pass
+         # Longform
+         long_script = content_pkg.get('long_form')
+         if not long_script or long_script == "-":
+             long_script = all_scripts_map.get("structural_0", "스크립트 내용 없음")
          
-         # Text Card (Summary)
-         text_card = f"제목: {topic_title}\n\n핵심: {decision_rationale}\n\n[Hoin Insight 분석]"
+         # Shorts
+         shorts_data = content_pkg.get('shorts_ready', [])
+         if shorts_data:
+             shorts_script = "\n".join(shorts_data)
+         else:
+             shorts_script = "숏츠 스크립트 대기중 (생성 파이프라인 확인 필요)"
+             try:
+                 s_path = base_dir / "data" / "content" / "insight_shotlist_v1.md"
+                 if s_path.exists(): shorts_script = s_path.read_text(encoding='utf-8')
+             except: pass
+         
+         # Text Card
+         text_base = content_pkg.get('text_card')
+         if text_base and text_base != "-":
+             text_card = f"제목: {topic_title}\n\n핵심: {text_base}\n\n[Hoin Insight 분석]"
+         else:
+             text_card = f"제목: {topic_title}\n\n핵심: {decision_rationale}\n\n[Hoin Insight 분석]"
 
          top_block_html = f"""
          {copy_script_js}
          <div style="background:white; border:2px solid #10b981; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px -5px rgba(16, 185, 129, 0.15);">
-             <!-- [IS-55] Pinned Header -->
+             <!-- [IS-55] Pinned Header with Capital Rotation -->
              <div style="padding:25px; background:linear-gradient(to right, #f0fdf4, #ffffff); border-bottom:1px solid #d1fae5;">
                  <div style="display:flex; justify-content:space-between; align-items:start;">
                      <div>
@@ -2617,9 +2630,15 @@ def generate_dashboard(base_dir: Path):
                              <span style="background:#d1fae5; color:#047857; padding:4px 8px; border-radius:6px; font-weight:700; font-size:11px;">대형 영상 + 숏츠</span>
                          </div>
                          <h2 style="font-size:26px; font-weight:800; color:#064e3b; margin:0 0 10px 0; letter-spacing:-0.5px;">{topic_title}</h2>
+                         
+                         <!-- [IS-57] Capital Rotation Badge & Rationale -->
                          <div style="color:#374151; font-size:15px; font-weight:500;">
                              <span style="color:#059669; font-weight:700;">지금 말해야 하는 이유:</span> {decision_rationale}
                          </div>
+                         
+                         <!-- Rotation Logic Block if available -->
+                         {'<div style="margin-top:12px; padding:10px; background:#f0fdf4; border-left:4px solid #10b981; font-size:13px; color:#065f46;">🔄 <b>자본 이동 감지 (Capital Rotation):</b> 시장 구조 변화로 인해 강제적인 자본 흐름이 포착되었습니다.</div>' if final_card.get('trigger_type') == "CAPITAL_ROTATION" else ''}
+
                      </div>
                      <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
                          <span>📂 스크립트 & 패키지 열기</span>

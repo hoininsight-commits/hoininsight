@@ -25,6 +25,12 @@ class DecisionCard:
     source_clusters: List['SourceCluster'] = field(default_factory=list)
     # IS-50 Additions (Flexible Blocks)
     blocks: Dict[str, Any] = field(default_factory=dict)
+    # IS-56 Operational Fields
+    decision_rationale: str = "-"
+    observed_metrics: List[str] = field(default_factory=list)
+    leader_stocks: List[str] = field(default_factory=list)
+    risk_factors: List[str] = field(default_factory=list)
+    card_version: str = "v1"
 
 @dataclass
 class RejectLog:

@@ -6,6 +6,9 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
+# [IS-55] Import Real Ingress Connector
+from src.collectors.real_ingress_connector import collect_rss_headlines, collect_official_releases, collect_market_proxy
+
 class FactEvidenceHarvester:
     """
     Lightweight fact-harvesting layer.
@@ -20,76 +23,78 @@ class FactEvidenceHarvester:
         
     def harvest(self, target_date: Optional[str] = None) -> List[Dict[str, Any]]:
         """
-        Main harvesting loop.
-        In production, this would crawl RSS feeds/news APIs.
-        For this step, we emulate collection from passive sources.
+        Main harvesting loop using Real Ingress Connectors.
         """
         ymd = target_date or datetime.utcnow().strftime("%Y-%m-%d")
         facts = []
         
-        # 1. Emulate RSS/News Headlines collection
-        facts.extend(self._harvest_headlines(ymd))
+        # 1. RSS/News Headlines (Real)
+        rss_data = collect_rss_headlines(self.base_dir, ymd)
+        facts.extend(self._process_rss(rss_data, ymd))
         
-        # 2. Emulate Institutional Releases
-        facts.extend(self._harvest_institutional(ymd))
+        # 2. Institutional Releases (Real)
+        official_data = collect_official_releases(self.base_dir, ymd)
+        facts.extend(self._process_official(official_data, ymd))
         
-        # 3. Emulate Capital Flow text summaries
-        facts.extend(self._harvest_flows(ymd))
+        # 3. Market Proxy (Sync)
+        # We ensure the raw data exists, even if we don't converting it all to text anchors yet.
+        collect_market_proxy(self.base_dir, ymd)
         
         if facts:
             self._save_facts(facts, ymd)
-            
+        
+        print(f"[Harvester] Completed harvest for {ymd}. Found {len(facts)} facts.")
         return facts
 
-    def _harvest_headlines(self, ymd: str) -> List[Dict[str, Any]]:
-        # Mocking reality: news titles from known publishers
-        mock_data = [
-            {
-                "text": "Nvidia confirms new AI chip delivery schedule for H2 2026",
-                "source": "TechNews RSS",
-                "type": "TECH",
-                "entities": ["Nvidia", "AI", "Semiconductors"]
-            },
-            {
-                "text": "Goldman Sachs reports 15% increase in institutional crypto flow",
-                "source": "FinanceDaily RSS",
-                "type": "FLOW",
-                "entities": ["Goldman Sachs", "Crypto", "Institutional"]
-            }
-        ]
-        return [self._format_fact(d, ymd) for d in mock_data]
+    def _process_rss(self, raw_items: List[Dict], ymd: str) -> List[Dict[str, Any]]:
+        """Convert RSS raw items to Fact format."""
+        processed = []
+        for item in raw_items:
+            # Basic parsing using title as text
+            processed.append({
+                "text": item.get("title", ""),
+                "source": item.get("source_name", "RSS"),
+                "type": "NEWS",
+                "entities": [], # Entity extraction removed to keep it lightweight/raw
+                "url": item.get("link", "")
+            })
+        return [self._format_fact(d, ymd) for d in processed]
 
-    def _harvest_institutional(self, ymd: str) -> List[Dict[str, Any]]:
-        mock_data = [
-            {
-                "text": "ECB policy document: Focus shifts to long-term inflation stability over short-term cuts",
-                "source": "ECB Official",
+    def _process_official(self, raw_items: List[Dict], ymd: str) -> List[Dict[str, Any]]:
+        """Convert Official raw items to Fact format."""
+        processed = []
+        for item in raw_items:
+            processed.append({
+                "text": item.get("title", ""),
+                "source": item.get("source", "OFFICIAL"),
                 "type": "POLICY",
-                "entities": ["ECB", "Eurozone", "Inflation"]
-            }
-        ]
-        return [self._format_fact(d, ymd) for d in mock_data]
-
-    def _harvest_flows(self, ymd: str) -> List[Dict[str, Any]]:
-        # For MISSION: verbatim or lightly cleaned textual summaries
-        return []
+                "entities": [],
+                "url": item.get("link", "")
+            })
+        return [self._format_fact(d, ymd) for d in processed]
 
     def _format_fact(self, data: Dict[str, Any], ymd: str) -> Dict[str, Any]:
         return {
             "fact_id": f"fact_{uuid.uuid4().hex[:8]}",
-            "fact_type": data["type"],
+            "fact_type": data["fact_type"] if "fact_type" in data else data.get("type", "UNKNOWN"),
             "fact_text": data["text"],
             "source": data["source"],
+            "url": data.get("url", ""),
             "published_at": ymd,
-            "entities": data["entities"],
+            "entities": data.get("entities", []),
             "confidence": "RAW"
         }
 
     def _save_facts(self, facts: List[Dict[str, Any]], ymd: str):
-        filename = f"fact_anchors_{ymd.replace('-', '')}.json"
+        # Format: YYYYMMDD
+        ymd_compact = ymd.replace("-", "")
+        filename = f"fact_anchors_{ymd_compact}.json"
+        
+        # Ensure directory (year/month/day structure optional, but current code uses flat or flat-ish)
+        # Checking existing structure usage: data/facts/fact_anchors_YYYYMMDD.json
         out_path = self.output_root / filename
         
-        # Load existing if any (to avoid overwriting if run multiple times)
+        # Load existing if any
         existing = []
         if out_path.exists():
             try:
@@ -103,7 +108,7 @@ class FactEvidenceHarvester:
         combined = existing + new_facts
         
         out_path.write_text(json.dumps(combined, indent=2, ensure_ascii=False), encoding="utf-8")
-        print(f"[Harvester] Harvested {len(new_facts)} new facts. Total for {ymd}: {len(combined)}")
+        print(f"[Harvester] Saved {len(combined)} facts to {filename}")
 
 if __name__ == "__main__":
     harvest = FactEvidenceHarvester(Path("."))
