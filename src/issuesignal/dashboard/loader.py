@@ -46,7 +46,13 @@ class DashboardLoader:
                     top_cards.append(pinned_map[pid])
         
         if not top_cards:
-            top_cards = [c for c in cards if c.status == "TRUST_LOCKED"][:3]
+            # [IS-52] Strict Lock: If SSOT says 0 topics today, DO NOT show old cards.
+            fresh_index = (index_data.get("run_date_kst") == ymd)
+            if fresh_index and index_data.get("topics_active", 0) == 0:
+                top_cards = []
+            else:
+                # Fallback only if no fresh index or index implies topics exist but pinned_ids missing
+                top_cards = [c for c in cards if c.status == "TRUST_LOCKED"][:3]
 
         watchlist = [c for c in cards if c.status == "PRE_TRIGGER"]
         hold_queue = [c for c in cards if c.status == "HOLD"]

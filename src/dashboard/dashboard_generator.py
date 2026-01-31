@@ -2467,6 +2467,38 @@ def generate_dashboard(base_dir: Path):
          </div>
          """
 
+    # [IS-51] Metadata Stamps
+    import subprocess
+    from datetime import datetime, timedelta, timezone
+    def get_git_hash():
+        try:
+            return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).decode('ascii').strip()
+        except:
+            return "unknown"
+
+    commit_hash = get_git_hash()
+    pipeline_time_kst = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Assuming system time is KST or close enough for now, or use timezone adjustment if strictly UTC system. 
+    # System is usually UTC in Actions. 
+    utc_now = datetime.now(timezone.utc)
+    kst_now_dt = utc_now + timedelta(hours=9)
+    pipeline_time_kst = kst_now_dt.strftime("%Y-%m-%d %H:%M:%S")
+    
+    engine_version = "v2.5.1" # Fixed or read from VERSION file
+    
+    # Inject Stamps into Top Block or Header
+    # We'll add a stamp bar above the Top Block
+    stamp_html = f"""
+    <div style="max-width: 1600px; margin: 0 auto; padding: 10px 20px; text-align:right; font-size:11px; color:#64748b; font-family:monospace;">
+        <span>DATA: {latest_date}</span> | 
+        <span>RUN: {pipeline_time_kst} (KST)</span> | 
+        <span>COMMIT: {commit_hash}</span> | 
+        <span>ENGINE: {engine_version}</span>
+    </div>
+    """
+    
+    # Insert before top_block_html
+    top_block_html = stamp_html + top_block_html
+
     # [Phase 18] Generate HTML for Refactored Panels
     
     # [Grouping] Post-process Watch Topics (Deduplicate by Theme)

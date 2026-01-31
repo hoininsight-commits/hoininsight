@@ -23,6 +23,8 @@ class DecisionCard:
     trigger_quote: Optional['TriggerQuote'] = None
     # IS-32 Additions
     source_clusters: List['SourceCluster'] = field(default_factory=list)
+    # IS-50 Additions (Flexible Blocks)
+    blocks: Dict[str, Any] = field(default_factory=dict)
 
 @dataclass
 class RejectLog:

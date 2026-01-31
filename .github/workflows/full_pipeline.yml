@@ -325,6 +325,10 @@ jobs:
           cp -r data/dashboard/* docs/data/ || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
           cp -r data/reports docs/data/ || true
+          
+          # [IS-51] Operational Dashboard Guarantee
+          # Flatten the latest operational dashboard to root docs for easy access
+          find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \;
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4
