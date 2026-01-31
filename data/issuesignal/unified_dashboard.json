@@ -11,7 +11,7 @@
   },
   "top_cards": [
     {
-      "topic_id": "RAW-20260131034736",
+      "topic_id": "RAW-20260131035228",
       "title": "Export Control Impact",
       "status": "TRUST_LOCKED",
       "one_liner": "Export controls freeze chip supply chain.",
@@ -291,6 +291,87 @@
         "proof_packs": [],
         "trigger_quote": null,
         "source_clusters": [],
+        "blocks": {}
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "RAW-20260131040121",
+        "title": "Export Control Impact",
+        "status": "TRUST_LOCKED",
+        "one_liner": "Export controls freeze chip supply chain.",
+        "trigger_type": "GOV_ACTION",
+        "actor": "GOV",
+        "must_item": "EUV_STEPPER",
+        "tickers": [
+          {
+            "ticker": "ASML",
+            "role": "OWNER",
+            "revenue_focus": 0.95
+          }
+        ],
+        "kill_switch": "Any structural change to export control decree.",
+        "reason": "-",
+        "signature": "a2ce7fb4ef8805f2",
+        "authority_sentence": "Export controls freeze chip supply chain.",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [
+          {
+            "ticker": "ASML",
+            "company_name": "ASML",
+            "bottleneck_role": "Verified Bottleneck Owner",
+            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
+            "hard_facts": [
+              {
+                "fact_type": "CONTRACT",
+                "fact_claim": "Signed delivery agreement with Intel.",
+                "source_kind": "OFFICIAL_PRESS",
+                "source_ref": "press_asml_001.pdf",
+                "source_date": "-",
+                "independence_key": "asml_intel_deal",
+                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
+              },
+              {
+                "fact_type": "CAPEX",
+                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
+                "source_kind": "EARNINGS_CALL",
+                "source_ref": "samsung_q4_call.json",
+                "source_date": "-",
+                "independence_key": "samsung_earnings",
+                "cluster_id": "GENERIC_samsung_q4"
+              }
+            ],
+            "proof_status": "PROOF_OK"
+          }
+        ],
+        "trigger_quote": {
+          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
+          "source_kind": "GOV",
+          "source_ref": "https://www.whitehouse.gov/briefing-room/",
+          "source_date": "2026-01-29",
+          "fact_type": "POLICY_EXCERPT",
+          "verification_status": "PASS",
+          "reason_code": "PASS",
+          "cluster_id": "GOV_OFFICIAL_https://ww"
+        },
+        "source_clusters": [
+          {
+            "cluster_id": "FILE_press_asml_001.pdf",
+            "cluster_type": "GENERAL_NEWS",
+            "origin_name": "press_asml_001.pdf",
+            "reason": "Filename match."
+          },
+          {
+            "cluster_id": "GENERIC_samsung_q4",
+            "cluster_type": "GENERAL_NEWS",
+            "origin_name": "Generic Source",
+            "reason": "-"
+          }
+        ],
         "blocks": {}
       },
       "linked_evidence": [],
