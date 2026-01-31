@@ -680,7 +680,7 @@ def generate_dashboard(base_dir: Path):
         display: flex; 
         flex-direction: column; 
         gap: 5px; 
-        padding-top: 20px;
+        padding-top: 10px;
         overflow-y: auto;
     }
     
@@ -3003,10 +3003,6 @@ def generate_dashboard(base_dir: Path):
             
             <!-- LEFT: Navigation Panel -->
             <div class="nav-panel">
-                <div style="font-size: 13px; font-weight: 800; color: #f8fafc; padding: 20px 25px; border-bottom: 1px solid #1e293b; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
-                    <span>HOIN INSIGHT v2.0</span>
-                    <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
-                </div>
                 <!-- Navigation -->
                 <a href="issuesignal/" class="nav-btn-highlight">
                     <span>🚀 IssueSignal Center</span>
