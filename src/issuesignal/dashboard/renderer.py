@@ -366,8 +366,8 @@ class DashboardRenderer:
                 </div>
                 <div style="text-align:right;">
                     <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px;">
-                        <div style="font-size:11px; font-weight:700; color:#64748b; margin-bottom:4px;">분석 주체</div>
-                        <div style="font-size:14px; font-weight:800; color:#1e293b;">{c.actor}</div>
+                        <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">주인공 ({c.actor_type})</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">{c.actor} <span style="font-size:11px; color:var(--blue); font-weight:700;">#{c.actor_tag}</span></div>
                     </div>
                 </div>
             </div>
@@ -681,6 +681,34 @@ class DashboardRenderer:
             <b style="color:var(--purple);">⚙️ 시스템 판단 로직:</b><br>
             {c.decision_rationale}
         </div>
+        
+        <!-- Factor Bridge Evidence (IS-68) -->
+        {self._render_actor_evidence(c)}
         """)
         
         return "".join(items)
+
+    def _render_actor_evidence(self, c: DecisionCard) -> str:
+        actor_ev = c.blocks.get('actor_bridge', {}).get('actor_evidence', [])
+        if not actor_ev:
+            return ""
+            
+        items = []
+        for ev in actor_ev:
+            grade_color = "#2563eb" if "증거" in ev.get('grade', '') else "#475569"
+            items.append(f"""
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:12px; margin-top:10px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <b style="font-size:12px; color:#1e293b;">{ev.get('title')}</b>
+                    <span style="font-size:10px; background:#f1f5f9; color:{grade_color}; padding:2px 6px; border-radius:4px; font-weight:800;">{ev.get('grade')}</span>
+                </div>
+                <div style="font-size:11px; color:#64748b;">출처: {ev.get('source')} ({ev.get('ts')})</div>
+            </div>
+            """)
+        
+        return f"""
+        <div style="margin-top:20px; border-top: 1px solid #e2e8f0; padding-top:15px;">
+            <b style="color:#2563eb; font-size:13px;">🏷️ 주인공 도출 근거:</b>
+            {''.join(items)}
+        </div>
+        """

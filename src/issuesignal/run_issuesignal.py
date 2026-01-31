@@ -21,6 +21,7 @@ from src.collectors.corporate_action_connector import collect_corporate_facts
 from src.issuesignal.bottleneck_ranker import BottleneckRanker
 from src.issuesignal.why_now_synthesizer import WhyNowSynthesizer
 from src.issuesignal.script_lock_engine import ScriptLockEngine
+from src.issuesignal.actor_bridge import ActorBridgeEngine
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -100,6 +101,11 @@ def main():
         # Merge types for consideration (Protagonists + High Grade Corp Facts)
         # For simplicity, we prioritize Protagonists. If < 3, fill with Corp Facts.
         candidates_pool = ranked_protagonists[:]
+        
+        # 3-B. Macro → Actor Bridge (New IS-68 Step)
+        macro_candidates = ActorBridgeEngine.bridge(macro_facts)
+        candidates_pool.extend(macro_candidates)
+        
         for cf in corporate_facts:
              # Avoid duplicates if Corp Fact is already in Protagonist source
              if not any(p['fact_text'] == cf['fact_text'] for p in candidates_pool):
@@ -132,16 +138,30 @@ def main():
             if rotation_verdict["triggered"]: score += 20
             if cand.get('details', {}).get('ticker'): score += 10
             
-            # Status Decision
+            # Status Decision (Updated for IS-68 Actor Bridge)
             # TRUST_LOCKED: Rank #1 AND Score >= 80 AND Ticker AND WhyNow
-            # EDITORIAL_CANDIDATE: HardFact (Implicit in collection) AND WhyNow AND (Proto OR Corp OR Capital)
+            # EDITORIAL_CANDIDATE: HardFact (Implicit in collection) AND WhyNow AND Actor Confidence >= 70
             
+            # Actor details
+            actor_type = cand.get('details', {}).get('actor_type', '없음')
+            actor_conf = cand.get('details', {}).get('actor_confidence', 0)
+            has_ticker = bool(cand.get('details', {}).get('ticker'))
+
             status = "HOLD"
-            if idx == 0 and score >= 80 and cand.get('details', {}).get('ticker') and cand.get('why_now'):
-                status = "TRUST_LOCKED"
-            elif cand.get('why_now') and (is_proto or len(corporate_facts) > 0 or rotation_verdict["triggered"]):
-                # [IS-66] Editorial Candidate Condition
-                status = "EDITORIAL_CANDIDATE"
+            # Priority 1: High confidence Structural/Macro with Actor
+            if idx == 0 and score >= 80 and (has_ticker or actor_type != '없음') and cand.get('why_now'):
+                if actor_type == '없음' or actor_conf >= 70:
+                    status = "TRUST_LOCKED"
+            
+            # Priority 2: Editorial Candidate if it meets quality floor + Actor
+            if status == "HOLD":
+                if cand.get('why_now') and (is_proto or len(corporate_facts) > 0 or rotation_verdict["triggered"] or cand.get('is_macro_promotion')):
+                    # IS-68 Rule: Must have actor with confidence >= 70 for promotion
+                    if actor_type != '없음' and actor_conf >= 70:
+                        status = "EDITORIAL_CANDIDATE"
+                    elif is_proto and not cand.get('is_macro_promotion'):
+                        # Keep existing proto promotion for now
+                        status = "EDITORIAL_CANDIDATE"
             
             # Generate Script if Eligible (IS-67 Quality Floor)
             script_data = None
@@ -255,7 +275,9 @@ def main():
             pack_data = {
                 "id": f"ISSUE-{datetime.now().strftime('%Y%m%d')}-001",
                 "one_liner": one_liner,
-                "actor": details.get('company', 'Market'),
+                "actor": details.get('actor_name_ko') or details.get('company') or '시장 자본',
+                "actor_type": details.get('actor_type', '없음'),
+                "actor_tag": details.get('actor_tag', '-'),
                 "must_item": "Topic",
                 "time_window": "24h",
                 "long_form": long_form,
@@ -275,7 +297,9 @@ def main():
                 status=status_verdict,
                 one_liner=one_liner,
                 trigger_type="CAPITAL_ROTATION" if rotation_verdict["triggered"] else "DATA",
-                actor=details.get('company', 'Market'),
+                actor=pack_data.get('actor', '-'),
+                actor_type=pack_data.get('actor_type', '없음'),
+                actor_tag=pack_data.get('actor_tag', '-'),
                 must_item="Issue",
                 tickers=tickers_list,
                 kill_switch="즉시 중단 가능",
@@ -290,6 +314,9 @@ def main():
                      "flow_evidence": flow_evidence + macro_facts + official_facts,
                      "corporate_facts": corporate_facts, 
                      "all_evidence": all_context + corporate_facts,
+                     "actor_bridge": {
+                        "actor_evidence": selected_candidate.get('details', {}).get('actor_evidence', [])
+                     },
                      "bottleneck_analysis": bottleneck_result,
                      "editorial_candidates": editorial_candidates_data, # [IS-66] List Injection
                      "content_package": {

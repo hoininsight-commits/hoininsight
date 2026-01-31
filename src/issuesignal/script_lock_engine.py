@@ -17,10 +17,11 @@ class ScriptLockEngine:
         """
         IS-67: Generates script WITH automated evidence binding.
         """
-        company = protagonist.get("details", {}).get("company", "대상 기업")
-        action_type = protagonist.get("details", {}).get("action_type", "행동")
+        company = protagonist.get("details", {}).get("company") or protagonist.get("details", {}).get("actor_name_ko", "시장 자본")
+        actor_name = protagonist.get("details", {}).get("actor_name_ko") or company
+        action_type = protagonist.get("details", {}).get("action_type", "지표 변동")
         fact_text = protagonist.get("fact_text", "")
-        reasoning = protagonist.get("bottleneck_reason", "구조적 변화")
+        reasoning = protagonist.get("bottleneck_reason") or protagonist.get("details", {}).get("actor_reason_ko", "구조적 변화")
 
         # 1. Bind Evidence
         bindings = ScriptLockEngine.bind_evidence(protagonist, evidence_pool)
@@ -40,11 +41,11 @@ class ScriptLockEngine:
         step2 = f"2. 표면 해석 (Surface)\n{step2_base}{get_ref('step2', '')}"
 
         # Step 3: 시장의 오해
-        step3_base = f"시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 {reasoning}의 시작입니다."
+        step3_base = f"시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 {actor_name}을 중심으로 한 {reasoning}의 시작입니다."
         step3 = f"3. 시장의 오해 (Misread)\n{step3_base}{get_ref('step3', '')}"
 
         # Step 4: 구조적 강제
-        step4_base = f"구조적으로 {reasoning}이 강제될 수밖에 없는 환경입니다. {why_now}."
+        step4_base = f"구조적으로 {actor_name}에게 {reasoning}이 강제될 수밖에 없는 환경입니다. {why_now}."
         step4 = f"4. 구조적 강제 (Structural Force)\n{step4_base}{get_ref('step4', ' [구조적 팩트 확인 중]')}"
 
         # Step 5: 결론

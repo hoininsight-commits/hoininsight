@@ -9,6 +9,8 @@ class DecisionCard:
     one_liner: str = "-"
     trigger_type: str = "-"
     actor: str = "-"
+    actor_type: str = "없음"
+    actor_tag: str = "-"
     must_item: str = "-"
     tickers: List[Dict[str, str]] = field(default_factory=list)
     kill_switch: str = "-"
