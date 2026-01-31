@@ -35,6 +35,16 @@ jobs:
         run: |
           python -m src.ops.production_sanity_check
 
+      - name: Run Unit Tests (IS-57 to IS-62)
+        run: |
+          echo "[PIPELINE] Running Verification Tests..."
+          python -m tests.verify_is57_capital_rotation
+          python -m tests.verify_is59_evidence_chain
+          python -m tests.verify_is60_bottleneck_rank
+          python -m tests.verify_is61_why_now
+          python -m tests.verify_is62_script_lock
+          echo "[PIPELINE] All Verification Tests Passed."
+
       - name: Set AS_OF_DATE
         run: |
           echo "AS_OF_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
