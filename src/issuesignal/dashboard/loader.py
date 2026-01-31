@@ -90,12 +90,16 @@ class DashboardLoader:
         )
 
     def _load_recent_cards(self) -> List[DecisionCard]:
+        """
+        Load recent decision cards from packs directory.
+        [IS-73 HOTFIX] Only load ISSUE-*.json files, exclude latest*.json and RAW-*.json
+        """
         cards = []
         # Look in data/decision/final_decision_cards/
         card_dir = self.base_dir / "data" / "issuesignal" / "packs"
         if card_dir.exists():
-            # Sort files descending to get latest first
-            json_files = sorted(card_dir.glob("*.json"), reverse=True)
+            # [IS-73] Sort ISSUE-*.json files descending to get latest first
+            json_files = sorted(card_dir.glob("ISSUE-*.json"), reverse=True)
             for f in json_files:
                 try:
                     with open(f, "r", encoding="utf-8") as jf:
