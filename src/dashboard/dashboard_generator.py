@@ -719,6 +719,26 @@ def generate_dashboard(base_dir: Path):
     }
     .nav-icon { margin-right: 5px; font-size: 16px; }
     
+    .nav-btn-highlight {
+        margin: 10px 20px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.3);
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+    .nav-btn-highlight:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.4); color:white; }
+
+    
     /* CENTER: Main Process Flow */
     .main-panel { padding: 40px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 20px; scroll-behavior: smooth; }
     /* Sections Container */
@@ -2987,8 +3007,12 @@ def generate_dashboard(base_dir: Path):
                     <span>HOIN INSIGHT v2.0</span>
                     <span title="System Status: {display_status}" style="font-size:10px; cursor:help;">{status_icon_char}</span>
                 </div>
-                
-                <div class="nav-label">PRODUCTION FLOW</div>
+                <!-- Navigation -->
+                <a href="issuesignal/" class="nav-btn-highlight">
+                    <span>🚀 IssueSignal Center</span>
+                </a>
+
+                <div class="nav-label">Main Views</div>
                 <div class="nav-item active" onclick="activate('speak-today')"><span class="nav-icon">🎬</span> 오늘 발화 가능 (SPEAK)</div>
                 <div class="nav-item" onclick="activate('watch-today')"><span class="nav-icon">🔭</span> 오늘 관찰 (WATCH)</div>
                 <div class="nav-item" onclick="activate('evidence-today')"><span class="nav-icon">📊</span> 오늘 근거 (EVIDENCE)</div>
