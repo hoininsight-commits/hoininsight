@@ -1420,13 +1420,13 @@ def generate_dashboard(base_dir: Path):
                     </div>
                     <div style="font-size:10px; color:#94a3b8; margin-top:4px;">
                         {it['published_at'][:10]}
-                        { " <span style='color:#f59e0b; font-weight:bold;'>⚠ Action</span>" if it['needs_action'] else "" }
+                        { " <span style='color:#f59e0b; font-weight:bold;'>⚠ 조치 필요 (Action)</span>" if it['needs_action'] else "" }
                         { f" <span style='color:#3b82f6; font-weight:bold; margin-left:5px;'>✨ {I18N_KO['ANALYSIS_DONE']}</span>" if it.get('has_deep') else "" }
                         { f" <span style='color:#8b5cf6; font-weight:bold; margin-left:5px;'>🚀 {I18N_KO['EVOLUTION_NEEDED']} ({it['evo_count']})</span>" if it.get('evo_count', 0) > 0 else "" }
                         { f" <span style='color:#ef4444; font-weight:bold; margin-left:5px;'>⚠ {I18N_KO['STALE_DATA_WARNING']}</span>" if freshness_summary.get('sla_breach_count', 0) > 0 else "" }
                     </div>
                     <button onclick="showDeepLogicReport('{vid}')" style="width:100%; margin-top:10px; background:#f8fafc; border:1px solid #cbd5e1; padding:6px; border-radius:4px; font-size:11px; cursor:pointer; font-weight:bold; color:#475569;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='#f8fafc'">
-                        {I18N_KO['VIEW_ANALYSIS_ACTION']}
+                        {I18N_KO['VIEW_ANALYSIS_ACTION']} 순환 논리 보기
                     </button>
     """
                 
@@ -1440,29 +1440,29 @@ def generate_dashboard(base_dir: Path):
                     # Decay badge
                     decay_badge = ""
                     decay_cls = "bg-green-50 text-green-700"
-                    decay_label = "FRESH"
+                    decay_label = "신선함 (FRESH)"
                     if age_days >= 21:
                         decay_cls = "bg-red-50 text-red-700"
-                        decay_label = "EXPIRED"
+                        decay_label = "만료됨 (EXPIRED)"
                     elif age_days >= 7:
                         decay_cls = "bg-orange-50 text-orange-700"
-                        decay_label = "STALE"
+                        decay_label = "오래됨 (STALE)"
                     
                     decay_badge = f'<span style="font-size:8px; padding:1px 4px; border-radius:3px; background:{decay_cls.split()[0].replace("bg-","#")}; color:{decay_cls.split()[1].replace("text-","#")}; margin-left:3px;">{decay_label}</span>'
                     
                     inbox_html += f"""
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#64748b;">Age: {age_days}d</span> {decay_badge}
+                        <span style="color:#64748b;">경과: {age_days}일</span> {decay_badge}
                     </div>
                     <div style="margin-top:2px; font-size:10px;">
-                        <span style="font-weight:bold; color:#1e293b;">Final Priority: {final_score}</span>
-                        <span style="color:#94a3b8; margin-left:5px;">(Align: {a_score})</span>
+                        <span style="font-weight:bold; color:#1e293b;">최종 우선순위: {final_score}</span>
+                        <span style="color:#94a3b8; margin-left:5px;">(일치도: {a_score})</span>
                     </div>
                     """
                 else:
                     inbox_html += f"""
                     <div style="margin-top:4px; font-size:10px;">
-                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">No scored proposals yet</span>
+                        <span style="color:#cbd5e1; font-size:9px; border:1px dashed #cbd5e1; padding:1px 4px; border-radius:3px;">평가된 제안 없음</span>
                     </div>
                     """
                 
@@ -1595,7 +1595,7 @@ def generate_dashboard(base_dir: Path):
                     {score_badge_html}
     
                     <div class="prop-content" style="margin-top:10px;">
-                        <strong>Note (Extract):</strong><br>
+                        <strong>노트 (Extract):</strong><br>
                         <span style="color:#64748b; font-size:11px;">{prop_excerpt}</span>
                     </div>
                     
@@ -1797,7 +1797,7 @@ def generate_dashboard(base_dir: Path):
                 <div style="background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
                         <div style="width:70%;">
-                            <div style="font-size:11px; font-weight:700; color:#64748b; margin-bottom:5px;">REAL TOPIC</div>
+                            <div style="font-size:11px; font-weight:700; color:#64748b; margin-bottom:5px;">실제 주제 (REAL TOPIC)</div>
                             <div style="font-size:18px; font-weight:800; color:#1e293b;">{res.get('real_topic')}</div>
                             <div style="font-size:12px; color:#475569; margin-top:4px;">{res.get('real_topic_reasoning')}</div>
                         </div>
@@ -1809,19 +1809,19 @@ def generate_dashboard(base_dir: Path):
                     
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
                         <div style="background:#f8fafc; padding:12px; border-radius:8px;">
-                            <div style="font-size:10px; font-weight:800; color:#64748b; margin-bottom:8px;">💡 WHY NOW (Trigger)</div>
+                            <div style="font-size:10px; font-weight:800; color:#64748b; margin-bottom:8px;">💡 타이밍 (Why Now)</div>
                             <div style="font-size:12px; font-weight:700; color:#334155;">{res.get('why_now', {}).get('trigger_type')}</div>
                             <div style="font-size:11px; color:#475569; margin-top:4px; line-height:1.4;">{res.get('why_now', {}).get('description')}</div>
                         </div>
                         <div style="background:#f0f9ff; padding:12px; border-radius:8px;">
-                            <div style="font-size:10px; font-weight:800; color:#0369a1; margin-bottom:8px;">🎯 ENGINE CONCLUSION</div>
+                            <div style="font-size:10px; font-weight:800; color:#0369a1; margin-bottom:8px;">🎯 엔진 결론 (Conclusion)</div>
                             <div style="font-size:12px; color:#0c4a6e; line-height:1.5;">{res.get('engine_conclusion')}</div>
                         </div>
                     </div>
                     
                     <div style="margin-top:15px; display:flex; justify-content:space-between; align-items:center;">
-                        <div style="font-size:11px; color:#94a3b8;">Video: {res.get('title')} ({vid})</div>
-                        <a href="https://youtu.be/{vid}" target="_blank" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold;">Watch Original ➜</a>
+                        <div style="font-size:11px; color:#94a3b8;">영상: {res.get('title')} ({vid})</div>
+                        <a href="https://youtu.be/{vid}" target="_blank" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold;">원본 보기 ➜</a>
                     </div>
                 </div>
                 """
@@ -1859,7 +1859,7 @@ def generate_dashboard(base_dir: Path):
                         </div>
                         <div style="font-size:12px; color:#475569;">{summary}</div>
                         <div style="font-size:11px; color:#94a3b8; background:#f8fafc; padding:6px; border-radius:4px;">
-                            <span style="font-weight:bold;">Learned Rule:</span> {res.get('learned_rule','-')}
+                            <span style="font-weight:bold;">학습된 규칙:</span> {res.get('learned_rule','-')}
                         </div>
                     </div>
                     """
@@ -1963,14 +1963,14 @@ def generate_dashboard(base_dir: Path):
                      </div>
                          <div style="padding:20px;">
                             <div style="margin-bottom:10px;">
-                                <div style="font-size:11px; font-weight:bold; color:#64748b;">DRIVER</div>
+                                <div style="font-size:11px; font-weight:bold; color:#64748b;">드라이버 (DRIVER)</div>
                                 <div style="font-size:13px; color:#1e293b; font-weight:600;">{t['narrative_driver']}</div>
                             </div>
                             <div style="font-size:11px; color:#64748b; background:#f8fafc; padding:8px; border-radius:4px; margin-top:10px; border:1px solid #e2e8f0;">
                                 "{script_prev}"
                             </div>
                             <div style="margin-top:15px; text-align:right;">
-                                <span style="font-size:11px; color:#7c3aed; font-weight:bold;">Tap to View Details ➜</span>
+                                <span style="font-size:11px; color:#7c3aed; font-weight:bold;">상세 내용 보기 ➜</span>
                             </div>
                          </div>
                     </div>
@@ -2428,19 +2428,19 @@ def generate_dashboard(base_dir: Path):
         # Simple 7-step pattern
         outline = [
             f"# {title}",
-            "## 1. Hook (Current Status)",
+            "## 1. 훅 (현재 상황)",
             f"시장 데이터에서 {title}와 관련하여 평소와 다른 유의미한 움직임이 감지되었습니다.",
-            "## 2. Market Expectation",
+            "## 2. 시장 기대치 (Market Expectation)",
             f"기존 시장의 기대치와 달리 {rationale.split('.')[0]} 수준의 변화가 확인됩니다.",
-            "## 3. Actual Market Move",
+            "## 3. 실제 시장 움직임 (Actual Move)",
             f"지표는 {t.get('level', 'L2')} 수준의 경고 영역에 진입했습니다.",
-            "## 4. Why Mismatch (Divergence)",
+            "## 4. 괴리 발생 원인 (Divergence)",
             "공급망 및 자금 흐름 데이터상에서 실질적인 괴리가 발생하고 있습니다.",
-            "## 5. Evidence (Quant & Trace)",
+            "## 5. 증거 데이터 (Evidence)",
             f"정량 데이터: {t.get('observed_metrics', ['N/A'])} / Trace 코드: {t.get('topic_id', 'Unknown')}",
-            "## 6. What to Watch Next",
+            "## 6. 향후 관전 포인트 (What to Watch)",
             f"관련 대장주({', '.join(t.get('leader_stocks', ['N/A']))[:50]})의 변동성과 추가 지표 확인이 필수적입니다.",
-            "## 7. Risk Note",
+            "## 7. 리스크 노트",
             "단기적인 변동성에 유의하며, 지표의 확산 여부를 지속적으로 관찰해야 합니다."
         ]
         return "\n\n".join(outline)
@@ -2559,21 +2559,31 @@ def generate_dashboard(base_dir: Path):
     top_block_html = ""
     
     # helper for copy script
+    # [IS-66] Editorial View (Top Section)
+    
+    # helper for copy script
     copy_script_js = """
     <script>
     function copyText(elementId) {
         var copyText = document.getElementById(elementId);
         if (!copyText) return;
         
-        // Create temp textarea
-        var el = document.createElement('textarea');
-        el.value = copyText.innerText || copyText.textContent;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
+        var val = copyText.innerText || copyText.textContent;
+        // Strip out "복사하기" button text if accidentally captured, usually innerText won't if hidden
         
-        alert('클립보드에 복사되었습니다.');
+        navigator.clipboard.writeText(val).then(function() {
+             alert('클립보드에 복사되었습니다.');
+        }, function(err) {
+             console.error('Async: Could not copy text: ', err);
+             // Fallback
+             var el = document.createElement('textarea');
+             el.value = val;
+             document.body.appendChild(el);
+             el.select();
+             document.execCommand('copy');
+             document.body.removeChild(el);
+             alert('클립보드에 복사되었습니다. (Fallback)');
+        });
     }
     
     function toggleDetails(id) {
@@ -2586,289 +2596,98 @@ def generate_dashboard(base_dir: Path):
     }
     </script>
     """
+
+    editorial_candidates = final_card.get('blocks', {}).get('editorial_candidates', [])
     
-    if final_card and final_card.get("status") == "TRUST_LOCKED":
-         # TOPIC LOCKED CASE
-         topic_title = final_card.get('human_prompt', '제목 없음')
-         decision_rationale = final_card.get('decision_rationale', '-')
-         
-         # [IS-56] Retrieve content from Content Package Block first
-         content_pkg = final_card.get('blocks', {}).get('content_package', {})
-         
-         # Longform
-         long_script = content_pkg.get('long_form')
-         if not long_script or long_script == "-":
-             long_script = all_scripts_map.get("structural_0", "스크립트 내용 없음")
-         
-         # Shorts
-         shorts_data = content_pkg.get('shorts_ready', [])
-         if shorts_data:
-             shorts_script = "\n".join(shorts_data)
-         else:
-             shorts_script = "숏츠 스크립트 대기중 (생성 파이프라인 확인 필요)"
-             try:
-                 s_path = base_dir / "data" / "content" / "insight_shotlist_v1.md"
-                 if s_path.exists(): shorts_script = s_path.read_text(encoding='utf-8')
-             except: pass
-         
-         # Text Card
-         text_base = content_pkg.get('text_card')
-         if text_base and text_base != "-":
-             text_card = f"제목: {topic_title}\n\n핵심: {text_base}\n\n[Hoin Insight 분석]"
-         else:
-             text_card = f"제목: {topic_title}\n\n핵심: {decision_rationale}\n\n[Hoin Insight 분석]"
+    # If no list (legacy or error), try to map single card
+    if not editorial_candidates and final_card:
+         editorial_candidates = [{
+             "index": 0,
+             "title": final_card.get('title'),
+             "full_text": final_card.get('title'),
+             "status": final_card.get('status'),
+             "why_now": final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists', [{}])[0].get('why_now', '-'),
+             "script": final_card.get('blocks', {}).get('content_package'), # Might differ in shape
+             "score": 0
+         }]
 
-         top_block_html = f"""
-         {copy_script_js}
-         <div style="background:white; border:2px solid #10b981; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px -5px rgba(16, 185, 129, 0.15);">
-             <!-- [IS-55] Pinned Header with Capital Rotation -->
-             <div style="padding:25px; background:linear-gradient(to right, #f0fdf4, #ffffff); border-bottom:1px solid #d1fae5;">
-                 <div style="display:flex; justify-content:space-between; align-items:start;">
-                     <div>
-                         <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                             <span style="background:#10b981; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">📌 오늘의 확정 토픽</span>
-                             <span style="border:1px solid #10b981; color:#059669; padding:3px 8px; border-radius:6px; font-weight:700; font-size:11px;">발화 확정 (ACTIVE)</span>
-                             <span style="background:#d1fae5; color:#047857; padding:4px 8px; border-radius:6px; font-weight:700; font-size:11px;">대형 영상 + 숏츠</span>
-                         </div>
-                         <h2 style="font-size:26px; font-weight:800; color:#064e3b; margin:0 0 10px 0; letter-spacing:-0.5px;">{topic_title}</h2>
-                         
-                         <!-- [IS-57] Capital Rotation Badge & Rationale -->
-                         <div style="color:#374151; font-size:15px; font-weight:500;">
-                             <span style="color:#059669; font-weight:700;">지금 말해야 하는 이유:</span> {decision_rationale}
-                         </div>
-                         
-                         <!-- Rotation Logic Block if available -->
-                         {'<div style="margin-top:12px; padding:10px; background:#f0fdf4; border-left:4px solid #10b981; font-size:13px; color:#065f46;">🔄 <b>자본 이동 감지 (Capital Rotation):</b> 시장 구조 변화로 인해 강제적인 자본 흐름이 포착되었습니다.</div>' if final_card.get('trigger_type') == "CAPITAL_ROTATION" else ''}
+    candidates_html = ""
+    for cand in editorial_candidates:
+        c_status = cand.get('status', 'HOLD')
+        c_title = cand.get('full_text', '제목 없음')
+        c_whynow = cand.get('why_now', '-')
+        c_idx = cand.get('index', 0)
+        
+        # Badge Style
+        if c_status == "TRUST_LOCKED":
+            badge = '<span style="background:#10b981; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">🔒 발행 확정 (LOCKED)</span>'
+            border_color = "#10b981"
+            bg_grad = "linear-gradient(to right, #f0fdf4, #ffffff)"
+        elif c_status == "EDITORIAL_CANDIDATE":
+            badge = '<span style="background:#3b82f6; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">📝 편집 후보 (EDITORIAL)</span>'
+            border_color = "#3b82f6"
+            bg_grad = "linear-gradient(to right, #eff6ff, #ffffff)"
+        else: # HOLD / SILENT
+            badge = '<span style="background:#9ca3af; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">⚠️ 편집 검토 (HOLD)</span>'
+            border_color = "#e5e7eb"
+            bg_grad = "#f9fafb"
 
-                         <!-- [IS-57A] Real Flow Evidence Panel -->
-                         <!-- [IS-57C] Split Evidence Panel (Hint vs Fact) -->
-                         {
-                             f'''
-                             <div style="margin-top:12px; background:#fff; border:1px solid #d1fae5; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
-                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                     <div style="font-size:12px; font-weight:800; color:#059669; display:flex; align-items:center; gap:6px;">
-                                         <span>📈 자본 이동 증거 (Real Data)</span>
-                                     </div>
-                                 </div>
-                                 
-                                 {
-                                     '<div style="font-size:12px; color:#6b7280; padding:4px 0;">확정 가능한 증거가 없습니다. <span style="font-size:11px; color:#9ca3af;">(단서만 존재하거나 데이터 부재)</span></div>' 
-                                     if not final_card.get('blocks', {}).get('flow_evidence') else 
-                                     "<div style='display:flex; flex-direction:column; gap:8px;'>" + 
-                                     
-                                     (''.join([
-                                         '<div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:2px;">✅ 증거 (HARD FACT / OFFICIAL)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
-                                         ''.join([
-                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','Official')})</span></li>" 
-                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') in ['HARD_FACT', 'STRONG']
-                                         ]) + '</ul>'
-                                     ]) if any(i.get('evidence_grade') in ['HARD_FACT', 'STRONG'] for i in final_card['blocks']['flow_evidence']) else '') +
-
-                                     (''.join([
-                                         '<div style="font-size:11px; font-weight:700; color:#b45309; margin-bottom:2px;">🟡 참고 (TIER 1 NEWS)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
-                                         ''.join([
-                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','News')})</span></li>" 
-                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') == 'MEDIUM'
-                                         ]) + '</ul>'
-                                     ]) if any(i.get('evidence_grade') == 'MEDIUM' for i in final_card['blocks']['flow_evidence']) else '') +
-
-                                     (''.join([
-                                         '<div style="font-size:11px; font-weight:700; color:#d97706; margin-bottom:2px;">🔍 단서 (TEXT HINT)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' +
-                                         ''.join([
-                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','RSS')})</span></li>" 
-                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') not in ['HARD_FACT', 'STRONG', 'MEDIUM']
-                                         ]) + '</ul>'
-                                     ]) if any(i.get('evidence_grade') not in ['HARD_FACT', 'STRONG', 'MEDIUM'] for i in final_card['blocks']['flow_evidence']) else '') +
-
-                                     "</div>"
-                                 }
-                             </div>
-                             '''
-                         }
-                         
-                         <!-- [IS-59] Corporate Action Panel -->
-                         {
-                             f'''
-                             <div style="margin-top:12px; background:#fff; border:1px solid #dbeafe; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
-                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                     <div style="font-size:12px; font-weight:800; color:#1e40af; display:flex; align-items:center; gap:6px;">
-                                         <span>🏭 기업 행동 하드팩트 (Corporate Actions)</span>
-                                     </div>
-                                 </div>
-                                 
-                                 {
-                                     '<div style="font-size:12px; color:#6b7280; padding:4px 0;">오늘 감지된 중요 기업 행동(계약/투자) 없음 <span style="font-size:11px; color:#9ca3af;">(SEC 8-K / PR Hard Fact)</span></div>' 
-                                     if not final_card.get('blocks', {}).get('corporate_facts') else 
-                                     '<ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' + 
-                                     ''.join([
-                                         f"<li>[✅{item.get('details',{}).get('action_type','ACT')}] {item['fact_text']} <span style='color:#9ca3af; font-size:11px;'> <a href='{item.get('source_ref','#')}' target='_blank' style='color:#2563eb; text-decoration:none;'>[원문]</a></span></li>" 
-                                         for item in final_card['blocks']['corporate_facts']
-                                     ]) + 
-                                     '</ul>'
-                                 }
-                             </div>
-                             '''
-                         }
-                         
-                         <!-- [IS-60] Structural Bottleneck Panel -->
-                         {
-                             f'''
-                             <div style="margin-top:12px; background:#fff; border:1px solid #c4b5fd; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
-                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                     <div style="font-size:12px; font-weight:800; color:#4c1d95; display:flex; align-items:center; gap:6px;">
-                                         <span>🧠 구조적 병목 판정 (Structural Bottleneck)</span>
-                                     </div>
-                                 </div>
-                                 
-                                 {
-                                     '<div style="font-size:12px; color:#6b7280; padding:4px 0;">구조적 병목(독점/필수)으로 판정된 기업이 없습니다.</div>' 
-                                     if not final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists') else 
-                                     '<ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' + 
-                                     ''.join([
-                                         f"<li><span style='background:#8b5cf6; color:white; font-size:11px; padding:1px 4px; border-radius:3px;'>🏆 주인공</span> <b>[{item.get('details',{}).get('company','Target')}]</b> <span style='color:#6d28d9; font-weight:700;'>({item.get('bottleneck_score', 0)}점)</span><br><span style='font-size:12px; color:#5b21b6;'>└ {item.get('bottleneck_reason','-')}</span></li>" 
-                                         for item in final_card['blocks']['bottleneck_analysis']['protagonists']
-                                     ]) + 
-                                     '</ul>'
-                                 }
-                             </div>
-                             '''
-                         }
-                         
-                         <!-- [IS-61] WHY-NOW Panel -->
-                         {
-                             f'''
-                             <div style="margin-top:12px; background:#fff1f2; border:1px solid #fda4af; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
-                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                     <div style="font-size:12px; font-weight:800; color:#9f1239; display:flex; align-items:center; gap:6px;">
-                                         <span>⏰ 지금 말해야 하는 이유 (WHY NOW)</span>
-                                     </div>
-                                 </div>
-                                 <div style="font-size:13px; font-weight:700; color:#881337; line-height:1.4;">
-                                     "{final_card['blocks']['bottleneck_analysis']['protagonists'][0]['why_now']}"
-                                 </div>
-                             </div>
-                             '''
-                             if final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists') 
-                                and final_card['blocks']['bottleneck_analysis']['protagonists'][0].get('why_now') else ''
-                         }
-                         
-                         <!-- [IS-62] Locked Script Section -->
-                         {
-                             f'''
-                             <div style="margin-top:12px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
-                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                     <div style="font-size:12px; font-weight:800; color:#0369a1; display:flex; align-items:center; gap:6px;">
-                                         <span>📜 최종 스크립트 (IS-62 LOCKED)</span>
-                                     </div>
-                                     <span style="background:#0284c7; color:white; font-size:11px; padding:2px 6px; border-radius:4px; font-weight:bold;">🔒 화자·서사 고정됨</span>
-                                 </div>
-                                 <div style="font-size:12px; color:#334155; line-height:1.6; white-space:pre-wrap; font-family:'Pretendard', sans-serif;">{final_card['blocks'].get('content_package', {}).get('long_form','-')}</div>
-                             </div>
-                             '''
-                             if "1. 정의" in final_card['blocks'].get('content_package', {}).get('long_form','') else ''
-                         }
-
-                     </div>
-                     <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
-                         <span>📂 스크립트 & 패키지 열기</span>
-                         <span>▼</span>
-                     </button>
-                 </div>
+        # Script
+        script_data = cand.get('script') or {}
+        long_body = script_data.get('long_form', '')
+        
+        # If no script but status is HOLD, show placeholder
+        if not long_body or long_body == "-":
+             long_body = "⚠️ 스크립트 생성 조건 미달 (Why-Now 또는 구조적 원인 부족)"
+        
+        script_block_id = f"script-view-{c_idx}"
+        
+        candidates_html += f"""
+        <div style="margin-bottom:20px; border:2px solid {border_color}; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px -5px rgba(0,0,0,0.05);">
+             <div style="padding:20px; background:{bg_grad}; border-bottom:1px solid {border_color};">
+                  <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:10px;">
+                      <div style="display:flex; align-items:center; gap:10px;">
+                          {badge}
+                          <span style="font-size:11px; color:#6b7280; font-weight:600;">Rank #{c_idx+1}</span>
+                      </div>
+                  </div>
+                  <h3 style="font-size:20px; font-weight:800; color:#1f2937; margin:0 0 10px 0; line-height:1.4;">{c_title}</h3>
+                  <div style="font-size:14px; color:#4b5563; margin-bottom:15px;">
+                      <span style="font-weight:700; color:{border_color};">Why Now:</span> {c_whynow}
+                  </div>
+                  
+                  <button onclick="toggleDetails('{script_block_id}')" style="background:{border_color}; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:6px;">
+                      <span>📄 스크립트 보기 & 복사</span>
+                      <span>▼</span>
+                  </button>
              </div>
-
-             <!-- [IS-56] Expandable Detail View -->
-             <div id="topic-detail-view" style="display:none; border-top:1px solid #e5e7eb;">
-                 <div style="display:grid; grid-template-columns: 1.2fr 0.8fr; background:#fff;">
-                     
-                     <!-- Left: Content Package -->
-                     <div style="padding:30px; border-right:1px solid #f3f4f6;">
-                         <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin:0 0 20px 0; display:flex; align-items:center; gap:8px;">
-                             📦 콘텐츠 패키지 (Writer's Kit)
-                         </h3>
-                         
-                         <!-- Longform -->
-                         <div style="margin-bottom:25px;">
-                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                 <span style="font-size:13px; font-weight:700; color:#475569;">🎥 롱폼 스크립트 (Main)</span>
-                                 <button onclick="copyText('script-long')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
-                             </div>
-                             <div id="script-long" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; max-height:200px; overflow-y:auto; white-space:pre-wrap;">{long_script}</div>
-                         </div>
-
-                         <!-- Shorts -->
-                         <div style="margin-bottom:25px;">
-                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                 <span style="font-size:13px; font-weight:700; color:#475569;">⚡ 숏츠 (Shorts)</span>
-                                 <button onclick="copyText('script-shorts')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
-                             </div>
-                             <div id="script-shorts" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; max-height:150px; overflow-y:auto; white-space:pre-wrap;">{shorts_script}</div>
-                         </div>
-                         
-                         <!-- Text Card -->
-                         <div>
-                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                                 <span style="font-size:13px; font-weight:700; color:#475569;">🃏 텍스트 카드 (Community)</span>
-                                 <button onclick="copyText('script-card')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
-                             </div>
-                             <div id="script-card" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; white-space:pre-wrap;">{text_card}</div>
-                         </div>
-                     </div>
-
-                     <!-- Right: Logic & Strategy -->
-                     <div style="padding:30px; background:#fafafa;">
-                         <!-- 1. Summary -->
-                         <div style="margin-bottom:30px;">
-                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">① 토픽 요약 구조</h4>
-                             <div style="background:white; border:1px solid #e2e8f0; padding:15px; border-radius:8px;">
-                                 <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">News (Surface)</div>
-                                 <div style="font-size:13px; color:#334155; font-weight:600; margin-bottom:10px;">{final_card.get('human_prompt','-')}</div>
-                                 <div style="border-top:1px dashed #e2e8f0; margin:10px 0;"></div>
-                                 <div style="font-size:12px; color:#6366f1; margin-bottom:4px;">IssueSignal (Structure)</div>
-                                 <div style="font-size:13px; color:#4338ca; font-weight:700;">"{final_card.get('decision_rationale','-')}"</div>
-                             </div>
-                         </div>
-
-                         <!-- 2. Evidence -->
-                         <div style="margin-bottom:30px;">
-                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">② 판단 근거 (HoinEngine)</h4>
-                             <ul style="font-size:13px; color:#475569; padding-left:20px; line-height:1.6;">
-                                 {''.join([f'<li>{metric}</li>' for metric in final_card.get('observed_metrics', [])[:3]])}
-                             </ul>
-                         </div>
-
-                         <!-- 3. Capital & Stocks -->
-                         <div>
-                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">③ 자본 경로 및 종목</h4>
-                             <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                                 {''.join([f'<span style="background:#eff6ff; color:#1e40af; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:700;">{stock}</span>' for stock in final_card.get('leader_stocks', [])[:5]])}
-                             </div>
-                             <div style="margin-top:10px; font-size:12px; color:#ef4444; font-weight:700;">
-                                 🚫 Kill Switch: {final_card.get('risk_factors', ['시장 변동성 확대 시 중단'])[0]}
-                             </div>
-                         </div>
-                     </div>
+             
+             <!-- Script Area -->
+             <div id="{script_block_id}" style="display:none; background:#ffffff; padding:20px; border-top:1px solid #e5e7eb;">
+                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                     <span style="font-size:13px; font-weight:700; color:#374151;">전문 스크립트 (5-Step)</span>
+                     <button onclick="copyText('txt-{script_block_id}')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">전체 복사</button>
                  </div>
+                 <div id="txt-{script_block_id}" style="white-space:pre-wrap; font-family:'Pretendard', sans-serif; font-size:14px; line-height:1.7; color:#334155; background:#f8fafc; padding:20px; border-radius:8px; border:1px solid #e2e8f0;">{long_body}</div>
              </div>
-         </div>
-         """
-    else:
-         # SILENCE CASE (Improved for IS-55)
-         reason = "독립 출처 부족" # Default fallback
-         if final_card:
-             reason = final_card.get("decision_rationale", "조건 충족 토픽 없음")
-         
-         top_block_html = f"""
-         <div style="background:white; border:2px solid #ef4444; border-radius:12px; padding:25px; box-shadow:0 10px 15px -3px rgba(239, 68, 68, 0.1); display:flex; justify-content:space-between; align-items:center;">
-             <div>
-                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                     <span style="background:#ef4444; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">❌ 오늘 발화할 토픽 없음 (침묵)</span>
-                     <span style="color:#b91c1c; font-weight:700; font-size:12px;">보류 (HOLD) / 침묵 (SILENT)</span>
-                 </div>
-                 <h2 style="font-size:24px; font-weight:800; color:#7f1d1d; margin:0 0 5px 0;">침묵 사유: {reason}</h2>
-                 <div style="color:#7f1d1d; font-size:13px; opacity:0.8;">무리한 발화는 신뢰도를 훼손합니다. 다음 기회를 기다리세요.</div>
-             </div>
-         </div>
-         """
+        </div>
+        """
+
+    top_block_html = f"""
+    {copy_script_js}
+    <div style="margin-bottom:40px;">
+        <h2 style="font-size:24px; font-weight:900; color:#1e293b; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+            📌 오늘의 콘텐츠 후보 (EDITORIAL VIEW)
+        </h2>
+        
+        {candidates_html if candidates_html else '<div style="padding:20px; background:#f9fafb; border-radius:8px; text-align:center; color:#6b7280;">콘텐츠 후보 없음 (데이터 부족)</div>'}
+        
+        <!-- Legacy / Fallback Info -->
+        <div style="margin-top:20px; text-align:right;">
+             <span style="font-size:12px; color:#9ca3af;">* TRUST_LOCKED: 100% 자동 생성 보장 | EDITORIAL: 운영자 검토 후 즉시 사용 가능 | HOLD: 추가 확인 필요</span>
+        </div>
+    </div>
+    """
 
     # [IS-51] Metadata Stamps
     import subprocess
@@ -3030,7 +2849,7 @@ def generate_dashboard(base_dir: Path):
             evidence_today_html += f"""
             <div class="card" style="margin-bottom:25px; padding:0; overflow:hidden;">
                 <div style="background:#f8fafc; padding:12px 20px; border-bottom:1px solid #e2e8f0; font-weight:800; font-size:12px; color:#475569; text-transform:uppercase;">
-                    {atype.replace("_"," ")}
+                    {atype.replace("_"," ").replace("structural", "구조적 (STRUCTURAL)").replace("event", "이벤트 (EVENT)")}
                 </div>
                 <table style="width:100%; border-collapse:collapse; font-size:13px;">
                     {rows}
@@ -3160,7 +2979,7 @@ def generate_dashboard(base_dir: Path):
 
                 let html = `
                     <div style="border-bottom:1px solid #e2e8f0; padding-bottom:15px; margin-bottom:15px;">
-                        <div style="font-size:12px; font-weight:bold; color:#64748b;">TOPIC #${{idx+1}}</div>
+                        <div style="font-size:12px; font-weight:bold; color:#64748b;">선정 토픽 (TOPIC) #${{idx+1}}</div>
                         <h2 style="margin:5px 0; font-size:22px; color:#1e293b;">${{t.title}}</h2>
                         <div style="display:flex; gap:10px; align-items:center;">
                             <div style="font-size:11px; color:#fff; background:${{levelColor}}; display:inline-block; padding:2px 8px; border-radius:10px; font-weight:bold;">${{levelLabel}}</div>

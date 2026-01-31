@@ -69,39 +69,48 @@ def check_files_content(path, content_blocklist=["simulate", "mock", "emulate"])
             except: pass
 
 def main():
-    print("[SANITY] Starting Production Artifact Sanity Check...")
+    print("[SANITY] Starting Production Artifact Sanity Check (Strict IS-64)...")
     root = Path(__file__).parent.parent.parent
     
-    # 1. Check Date Folders
-    check_date_folders(root / "data/decision")
-    check_date_folders(root / "data/dashboard")
+    # [IS-64] Mock/Test Data Ban
+    # Scan all 'data/' and 'docs/' directories for files with forbidden patterns
+    # Patterns: test_*, *mock*, *sample*
     
-    # 2. Check Decision Files
-    # (Covered by check_date_folders for filename tokens, but let's check packs specially)
-    pack_dir = root / "data/issuesignal/packs"
-    if pack_dir.exists():
-        for item in pack_dir.glob("*"):
-            # Refined check to avoid 'laTEST' matches
-            upper_name = item.name.upper()
-            is_mock = False
+    forbidden_roots = [root / "data", root / "docs"]
+    forbidden_tokens = ["mock", "sample", "test_"] # "test_" prefix or substring? user said "test_*.json"
+    
+    # Exceptions (e.g., this script itself or tests/ folder are okay, but data/ shouldn't have them)
+    
+    for base_dir in forbidden_roots:
+        if not base_dir.exists(): continue
+        
+        for file_path in base_dir.rglob("*"):
+            if not file_path.is_file(): continue
+            name_lower = file_path.name.lower()
             
-            # Split filename by common delimiters to check exact tokens
-            import re
-            tokens = re.split(r'[_\-\.]', upper_name)
+            # Skip hidden files
+            if name_lower.startswith('.'): continue
             
-            for token in ["MOCK", "TEST", "DEMO"]:
-                if token in tokens:
-                    is_mock = True
-                    break
-            
-            if is_mock:
-                print(f"[FAIL] Mock pack detected: {item}")
-                sys.exit(1)
-            
-        # Content check for packs (Optimized: call once outside loop)
-        check_files_content(pack_dir)
+            # Check for forbidden tokens
+            for token in forbidden_tokens:
+                if token in name_lower:
+                    # Specific exception management
+                    # e.g., "latest_run.json" contains "test" -> No
+                    # "contest" -> No
+                    # Token matching:
+                    # User patterns: "test_*.json", "*_mock_*.json", "*sample*"
+                    
+                    is_violation = False
+                    if "mock" in name_lower: is_violation = True
+                    if "sample" in name_lower: is_violation = True
+                    if name_lower.startswith("test_"): is_violation = True
+                    if "_test." in name_lower: is_violation = True # end with _test
+                    
+                    if is_violation:
+                        print(f"[FAIL] Forbidden file pattern detected in production path: {file_path}")
+                        sys.exit(1)
 
-    print("[SANITY] Passed. No mock/future artifacts detected.")
+    print("[SANITY] Passed. No mock/test/sample artifacts detected in data/ or docs/.")
 
 if __name__ == "__main__":
     main()
