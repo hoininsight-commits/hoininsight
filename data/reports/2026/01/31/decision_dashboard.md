@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 140
+- **Unreviewed**: 143
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=140
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=143
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 140
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 137
+- **Count**: 143
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 140
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,9 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -380,6 +383,9 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -527,6 +533,9 @@
 | '로켓·AI·로봇' 묶는 머스크 … 우주제국 서막 연다 - 매일경제 | Structural implication: ''로켓·AI·로봇' 묶는 머스크 … 우주제국 서막 연다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대전 둔산동 아파트 빈집서 화재…주민 40여명 대피, 심각한 부상자 없어 | Structural implication: '대전 둔산동 아파트 빈집서 화재…주민 40여명 대피, 심각한 부상자 없어' suggests a shift in NEWS dynamics. | LOW |
 | 오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상 | Structural implication: '오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상' suggests a shift in NEWS dynamics. | LOW |
+| 강훈식 “캐나다 잠수함 수주, 쉽지 않지만 자신 있어…결과 발표 1년 걸릴 수도” - KBS 뉴스 | Structural implication: '강훈식 “캐나다 잠수함 수주, 쉽지 않지만 자신 있어…결과 발표 1년 걸릴 수도” - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제 | Structural implication: '쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| ‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보 | Structural implication: '‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

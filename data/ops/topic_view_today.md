@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=140
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=143
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -710,4 +710,19 @@ No SHADOW candidates today.
 ### 오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 강훈식 “캐나다 잠수함 수주, 쉽지 않지만 자신 있어…결과 발표 1년 걸릴 수도” - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
