@@ -4,7 +4,7 @@ from src.issuesignal.script_lock_engine import ScriptLockEngine
 class TestIS62ScriptLock(unittest.TestCase):
     
     def test_structure_generation(self):
-        print("\n[TEST] Verifying 6-Step Structure...")
+        print("\n[TEST] Verifying 5-Step Structure (IS-66)...")
         protagonist = {
             "fact_text": "[Company A] Signed Exclusive Deal",
             "details": {"action_type": "AGREEMENT", "company": "Company A"},
@@ -21,9 +21,8 @@ class TestIS62ScriptLock(unittest.TestCase):
         self.assertIn("2. 표면 해석", script)
         self.assertIn("3. 시장의 오해", script)
         self.assertIn("4. 구조적 강제", script)
-        self.assertIn("5. WHY NOW", script)
-        self.assertIn("6. 결론", script)
-        print("[PASS] 6-Step Structure Verified.")
+        self.assertIn("5. 결론", script)
+        print("[PASS] 5-Step Structure Verified (IS-66 Updated).")
 
     def test_forbidden_words(self):
         print("\n[TEST] Verifying Forbidden Words...")
