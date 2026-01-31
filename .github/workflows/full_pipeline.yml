@@ -395,7 +395,7 @@ jobs:
           
           if [ -f "$CARD" ]; then
             echo "[VERIFY][OK] final_decision_card.json generated"
-            grep -q "phase50_dual_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
+            grep -q "phase50_real_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
           else
             echo "[VERIFY][OK] No final decision card today (valid state)"
           fi
