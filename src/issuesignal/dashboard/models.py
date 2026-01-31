@@ -5,7 +5,7 @@ from typing import List, Dict, Any, Optional
 class DecisionCard:
     topic_id: str
     title: str
-    status: str # TRUST_LOCKED, TRIGGER, PRE_TRIGGER, HOLD, REJECT
+    status: str # TRUST_LOCKED, TRIGGER, PRE_TRIGGER, HOLD, REJECT, EDITORIAL_LIGHT
     one_liner: str = "-"
     trigger_type: str = "-"
     actor: str = "-"

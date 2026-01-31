@@ -329,6 +329,10 @@ class DashboardRenderer:
         # We only focus on Rank 0 for the Top Priority Card
         c = cards[0]
         
+        # [IS-70] Low-Intensity Editorial Layer
+        if c.status == "EDITORIAL_LIGHT":
+            return self._render_light_card(c)
+
         # [IS-67-UX] Handle SILENT/HOLD status as "No Topic"
         if c.status in ["SILENT", "HOLD"] and not c.blocks.get('content_package', {}).get('long_form'):
             return f"""
@@ -754,5 +758,48 @@ class DashboardRenderer:
         <div style="margin-top:20px; border-top: 1px solid #e2e8f0; padding-top:15px;">
             <b style="color:#2563eb; font-size:13px;">🏷️ 주인공 도출 근거:</b>
             {''.join(items)}
+        </div>
+        """
+
+    def _render_light_card(self, c: DecisionCard) -> str:
+        cp = c.blocks.get('content_package', {})
+        long_form = cp.get('long_form', '-')
+        
+        return f"""
+        <div class="topic-card-top1" style="border-top: 8px solid #64748b; background: #f8fafc;">
+            <!-- Header Group -->
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+                <div>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                        <span style="background:#475569; color:white; padding:4px 12px; border-radius:4px; font-size:12px; font-weight:800;">📘 오늘의 구조 해설 (EDITORIAL · LIGHT)</span>
+                        <span style="font-size:12px; color:var(--text-sub); font-weight:600;">상태: 관찰 콘텐츠 (발화 가능)</span>
+                    </div>
+                    <h1 style="font-size:28px; font-weight:900; color:#1e293b; margin:0; line-height:1.2;">{c.title}</h1>
+                </div>
+                <div style="text-align:right;">
+                    <div style="background:#e2e8f0; padding:8px 12px; border-radius:8px;">
+                        <div style="font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px;">주인공 ({c.actor_type})</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">{c.actor} <span style="font-size:11px; color:#64748b; font-weight:700;">#{c.actor_tag}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caution Message -->
+            <div style="background:#f1f5f9; border:1px solid #cbd5e1; padding:12px 15px; border-radius:8px; margin-bottom:25px; display:flex; align-items:center; gap:10px;">
+                <span style="font-size:16px;">👁️</span>
+                <span style="font-size:13px; font-weight:700; color:#475569;">주의: "본 콘텐츠는 종목/행동 지시가 아닌 구조 해설입니다."</span>
+            </div>
+
+            <!-- Narrative Content -->
+            <div style="background:#ffffff; border:2px solid #e2e8f0; border-radius:12px; padding:25px; margin-bottom:20px;">
+                <div style="font-size:15px; line-height:1.8; color:#334155; white-space:pre-wrap;">{long_form}</div>
+                <div style="margin-top:20px; text-align:right;">
+                    <button class="copy-btn" style="background:#64748b; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:700; cursor:pointer;" onclick="copyToClipboard(this.parentElement.previousElementSibling.innerText)">스크립트 복사</button>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; color: #94a3b8; text-align:right;">
+                본 콘텐츠는 에디토리얼 공백 방지를 위한 구조 해설형 레이어(IS-70)에 의해 생성되었습니다.
+            </div>
         </div>
         """

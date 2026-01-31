@@ -23,6 +23,7 @@ from src.issuesignal.why_now_synthesizer import WhyNowSynthesizer
 from src.issuesignal.script_lock_engine import ScriptLockEngine
 from src.issuesignal.actor_bridge import ActorBridgeEngine
 from src.issuesignal.ticker_path_extractor import TickerPathExtractor
+from src.issuesignal.editorial_light_engine import EditorialLightEngine
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -225,26 +226,69 @@ def main():
         # Select Primary for DecisionCard (Rank 0)
         selected_candidate = processed_candidates[0] if processed_candidates else None
         
-        # 4. Silence Condition (Update logic)
-        # If no candidates at all -> Silence
-        # If candidates exist, we always make a card, but status might be HOLD.
+        # 4. Editorial Rhythm & Light Layer (IS-70)
+        rhythm_path = base_dir / "data" / "ops" / "editorial_rhythm.json"
+        rhythm_path.parent.mkdir(parents=True, exist_ok=True)
+        rhythm_data = {"consecutive_hold_days": 0, "last_editorial_date": ymd}
+        if rhythm_path.exists():
+            try: rhythm_data = json.loads(rhythm_path.read_text())
+            except: pass
+
+        # Check if we have an editorial for today
+        has_editorial = len(processed_candidates) > 0
+        
+        if not has_editorial:
+            rhythm_data["consecutive_hold_days"] += 1
+        else:
+            rhythm_data["consecutive_hold_days"] = 0
+            rhythm_data["last_editorial_date"] = ymd
+
+        rhythm_path.write_text(json.dumps(rhythm_data, indent=2))
         
         if not editorial_candidates_data:
-             print("[IS-67] No valid candidates passed quality floor. Generating SILENCE.")
-             decision_card_model = DecisionCard(
-                topic_id=f"SILENCE-{datetime.now().strftime('%Y%m%d')}",
-                title="❌ 오늘 발화할 토픽 없음",
-                status="SILENT",
-                one_liner="수집된 데이터가 없거나 운영 품질 하한선(Quality Floor)을 만족하지 못합니다.",
-                trigger_type="NO_DATA",
-                actor="-",
-                must_item="-",
-                tickers=[],
-                kill_switch="-",
-                signature="silence_sig",
-                authority_sentence="수집된 유의미한 데이터 신호 없음.",
-                decision_rationale="사유: WHY-NOW 미충족 또는 시장 가격 반영 완료로 인한 발화 실익 부재."
-            )
+             # Check for LIGHT Trigger (3 days HOLD & Non-Neutral Macro)
+             is_macro_active = len(macro_facts) > 0 
+             if rhythm_data["consecutive_hold_days"] >= 3 and is_macro_active:
+                 print(f"[IS-70] Consecutive HOLD ({rhythm_data['consecutive_hold_days']}d) & Macro Active. Triggering LIGHT.")
+                 # Use macro_candidates from IS-68 step if available, else generic
+                 best_macro = macro_candidates[0]['details'] if macro_candidates else {"actor_name_ko": "시장 구조", "actor_tag": "관찰"}
+                 light_data = EditorialLightEngine.generate(best_macro, "Neut")
+                 
+                 decision_card_model = DecisionCard(
+                    topic_id=f"LIGHT-{datetime.now().strftime('%Y%m%d')}",
+                    title=light_data["title"],
+                    status="EDITORIAL_LIGHT",
+                    one_liner=light_data["one_liner"],
+                    actor=light_data["actor"],
+                    actor_type=light_data["actor_type"],
+                    actor_tag=light_data["actor_tag"],
+                    authority_sentence=light_data["one_liner"],
+                    decision_rationale=light_data["decision_rationale"],
+                    blocks={
+                        "content_package": {
+                            "long_form": light_data["long_form"],
+                            "shorts_ready": [],
+                            "text_card": light_data["one_liner"]
+                        },
+                        "ticker_path": light_data["ticker_path"]
+                    }
+                 )
+             else:
+                 print("[IS-67] No valid candidates passed quality floor. Generating SILENCE.")
+                 decision_card_model = DecisionCard(
+                    topic_id=f"SILENCE-{datetime.now().strftime('%Y%m%d')}",
+                    title="❌ 오늘 발화할 토픽 없음",
+                    status="SILENT",
+                    one_liner="수집된 데이터가 없거나 운영 품질 하한선(Quality Floor)을 만족하지 못합니다.",
+                    trigger_type="NO_DATA",
+                    actor="-",
+                    must_item="-",
+                    tickers=[],
+                    kill_switch="-",
+                    signature="silence_sig",
+                    authority_sentence="수집된 유의미한 데이터 신호 없음.",
+                    decision_rationale="사유: WHY-NOW 미충족 또는 시장 가격 반영 완료로 인한 발화 실익 부재."
+                )
              decision_card_model.blocks["editorial_candidates"] = []
              # Reference Area (Hold/Silent candidates)
              decision_card_model.blocks["reference_candidates"] = [c for c in top_candidates if c not in processed_candidates]
