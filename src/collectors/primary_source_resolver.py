@@ -11,7 +11,13 @@ TRUSTED_DOMAINS = [
     "kdi.re.kr",       # KDI
     "imf.org",         # IMF
     "worldbank.org",   # World Bank
-    "krx.co.kr"        # Korea Exchange
+    "krx.co.kr",       # Korea Exchange
+    "sec.gov",         # US SEC (Edgar)
+    "dart.fss.or.kr",  # KR DART
+    "businesswire.com", # Official PR
+    "prnewswire.com",   # Official PR
+    "accesswire.com",   # Official PR
+    "globenewswire.com" # Official PR
 ]
 
 # Tier 1 News (MEDIUM Evidence) - Reliable but Secondary

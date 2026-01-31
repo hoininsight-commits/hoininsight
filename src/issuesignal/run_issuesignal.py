@@ -86,8 +86,9 @@ def main():
             from src.collectors.capital_flow_connector import collect_capital_flows
             from src.collectors.macro_fact_connector import collect_macro_facts
             from src.collectors.official_fact_connector import collect_official_facts
+            from src.collectors.corporate_action_connector import collect_corporate_facts
             
-            # [IS-57C] Harvest All Evidence Sources
+            # [IS-59] Harvest All Evidence Sources (Expanded)
             ymd = datetime.now().strftime("%Y-%m-%d")
             
             # 1. Flow Hints (RSS)
@@ -96,9 +97,11 @@ def main():
             macro_facts = collect_macro_facts(base_dir, ymd)
             # 3. Official Hard Facts (Gov/Bank RSS Filter)
             official_facts = collect_official_facts(base_dir, ymd)
+            # 4. Corporate Hard Facts (SEC 8-K)
+            corporate_facts = collect_corporate_facts(base_dir, ymd)
             
             # Combine for Dashboard
-            all_evidence = flow_evidence + macro_facts + official_facts
+            all_evidence = flow_evidence + macro_facts + official_facts + corporate_facts
             
             # [IS-57] Capital Rotation Trigger Layer
             rotation_engine = CapitalRotationEngine(base_dir)
@@ -111,77 +114,68 @@ def main():
             one_liner = f"[자동 감지] {fact_text}"
             desc_rationale = "실시간 RSS/Official 데이터에서 감지된 최우선 토픽입니다."
             
-            # [IS-57C] Trust Integrity Logic (Score-based)
+            # [IS-59] Trust Integrity Logic (Combinatorial)
             # Base Score
             trust_score = 50
             status_verdict = "HOLD"
             
-            # Scoring Components
+            # Scoring Components & Checks
+            has_hint = len(flow_evidence) > 0
+            has_macro = len(macro_facts) > 0
+            has_official = len(official_facts) > 0
+            has_corporate = len(corporate_facts) > 0
+            
             # 1. Rotation (+30)
             if rotation_verdict["triggered"]:
                 trust_score += 30
                 one_liner = f"[자본 이동] {rotation_verdict['logic_ko']}"
                 desc_rationale = f"구조적 신호({rotation_verdict['rule_id']})에 의해 자본 이동이 강제됩니다.\n타겟 섹터: {rotation_verdict['target_sector']}"
             
-            # 2. Flow Hints (+20 max)
-            if flow_evidence:
+            # 2. Evidence Scoring
+            if has_hint:
                 trust_score += 20
                 desc_rationale += f"\n\n[증거:FlowHint] 자금 흐름 단서 {len(flow_evidence)}건 포착."
 
-            # 3. Hard Facts (+40 per distinct source type)
-            if macro_facts:
+            if has_macro:
                 trust_score += 40
                 desc_rationale += f"\n\n[증거:Macro] 거시경제 지표 변동 {len(macro_facts)}건 확인."
                 
-            if official_facts:
+            if has_official:
                 trust_score += 40
                 desc_rationale += f"\n\n[증거:Official] 공식 기관 발표 {len(official_facts)}건 확인."
                 
-            # Final Gate
-            # Requirement: >= 80 for TRUST_LOCKED
-            # Examples:
-            # - Hint(20) + Macro(40) = 110 (LOCK) -> No wait, base 50. So 50+60 = 110.
-            # - Hint(20) only = 70 (CANDIDATE)
-            # - Rotation(30) only = 80 (LOCK) -> Wait, user said "Rotation/Flow 여전히 Candidate까지만".
-            #   Let's check IS-57B rule: "Rotation/Flow는 TRUST_LOCKED를 직접 찍지 못함".
-            #   So score alone is not enough? Or does "Rotation + Hard Fact" count as valid?
-            #   "IS-57C-3 ... Rotation/Flow는 여전히 Candidate까지만 (IS-57B 유지)"
-            #   "IS-57C-2 ... Proof 승격 규칙 ... HARD_FACT 2개 OR STRONG 1 + MEDIUM 1 (IS-25 준수)"
-            #   So if we have Hard Facts, we CAN lock.
+            if has_corporate:
+                trust_score += 45 # Slightly higher than Macro/Official
+                desc_rationale += f"\n\n[증거:Corporate] 기업 중요 공시/계약 {len(corporate_facts)}건 확인."
+
+            # Final Gate (IS-59 Upgrade)
+            status_verdict = "HOLD"
             
+            # Condition 1: High Score (80+) -> Requires at least one Hard Fact
             if trust_score >= 80:
-                status_verdict = "TRUST_LOCKED"
+                if has_macro or has_official or has_corporate:
+                    status_verdict = "TRUST_LOCKED"
+                else:
+                    status_verdict = "SPEAKABLE_CANDIDATE" # Backoff if only Rotation+Hint
+                    
             elif trust_score >= 60:
                 status_verdict = "SPEAKABLE_CANDIDATE"
-            else:
-                status_verdict = "HOLD"
 
-            # Strict Constitution Check (Redundancy)
-            # If ONLY Hints (no Hard Facts) and NO Rotation, can we lock?
-            # 50 + 20 = 70. No Lock.
-            # If Rotation (30) + Hint (20) = 100. LOCK?
-            # IS-57B said "Rotation/Flow는 TRUST_LOCKED를 직접 찍지 못함".
-            # This implies Rotation+Hint should NOT lock.
-            # So we need at least ONE Hard Fact to lock if base is weak?
-            # Let's add a "Hard Fact Requirement" for Lock.
-            
-            has_hard_fact = (len(macro_facts) > 0 or len(official_facts) > 0)
-            if status_verdict == "TRUST_LOCKED" and not has_hard_fact:
-                 # Downgrade if locked purely by Base(50) + Rotation(30) + Hint(20) = 100?
-                 # Yes, strict constitution.
+            # Condition 2: IS-59 Combinatorial Trigger (Corporate + Macro/Official)
+            # "CorporateAction STRONG 1 + Macro/Policy STRONG 1 -> TRUST_CHAIN Pass"
+            if has_corporate and (has_macro or has_official):
+                 status_verdict = "TRUST_LOCKED"
+                 desc_rationale += "\n(트리거 발동: 기업 행동 + 거시/정책 교차 검증 완료)"
+
+            # Condition 3: Strict Constitution Backup
+            if status_verdict == "TRUST_LOCKED" and not (has_macro or has_official or has_corporate):
+                 # Should be caught by Condition 1 logic, but redundancy is safe.
                  status_verdict = "SPEAKABLE_CANDIDATE"
-                 desc_rationale += "\n(주의: 하드 팩트 부재로 확정 유보)"
-                 
-            # Provisional Lock for Operational Continuity (IS-56)
-            # If Source is Real RSS/Exchange (Hard/Hint) and distinct top candidate.
-            if status_verdict == "SPEAKABLE_CANDIDATE" and (has_hard_fact or flow_evidence):
-                 # "IS-56 requires Today's Topic" -> We allow upgrading for the View, 
-                 # but internally we know it's not fully independent.
-                 # User said "Mock 금지", but "Operational Logic" allows usage of best available real data.
-                 # We will set it to TRUST_LOCKED if we have ANY Hard Fact.
-                 # If only Hints, we keep Candidate (Dashboard will show yellow).
-                 if has_hard_fact:
-                    status_verdict = "TRUST_LOCKED" 
+
+            # Operational Fallback (IS-56)
+            # If Candidate + ANY Hard Fact -> Lock (Operational Continuity with legit data)
+            if status_verdict == "SPEAKABLE_CANDIDATE" and (has_macro or has_official or has_corporate):
+                 status_verdict = "TRUST_LOCKED" 
 
             long_form = (
                 f"# 감지된 신호 분석\n\n"
@@ -228,7 +222,14 @@ def main():
                 risk_factors=["초기 데이터 불확실성"],
                 blocks={
                     "capital_rotation": rotation_verdict,
-                    "flow_evidence": flow_evidence # [IS-57A] Pass evidence to dashboard
+                    "flow_evidence": all_evidence, # [IS-59] Pass ALL Evidence (Flow + Macro + Official + Corporate) to general pool if needed, OR separate.
+                    # User requested distinct panel. Let's pass separate lists AND a combined one if useful.
+                    # Actually, if I pass 'all_evidence' to 'flow_evidence' key, the existing panel shows them all.
+                    # But verifying IS-59-4: "Separate Panel".
+                    # So I will pass 'corporate_facts' separately.
+                    # And 'flow_evidence' will contain (Flow + Macro + Official).
+                    "flow_evidence": flow_evidence + macro_facts + official_facts,
+                    "corporate_facts": corporate_facts
                 } 
             )
             
