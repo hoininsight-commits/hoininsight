@@ -357,8 +357,8 @@ def main():
                 long_form = f"## 분석 대기\n{fact_text}"
                 one_liner = f"[대기] {fact_text}"
 
-             status_map = {"TRUST_LOCKED": "확정", "EDITORIAL_CANDIDATE": "후보", "HOLD": "보류", "SILENT": "침묵"}
-             desc_rationale = f"1순위 선정. 점수: {score_val}, 최종 상태: {status_map.get(status_verdict, status_verdict)}"
+            status_map = {"TRUST_LOCKED": "확정", "EDITORIAL_CANDIDATE": "후보", "HOLD": "보류", "SILENT": "침묵"}
+            desc_rationale = f"1순위 선정. 점수: {score_val}, 최종 상태: {status_map.get(status_verdict, status_verdict)}"
 
             # Pack Data
             pack_data = {
