@@ -22,7 +22,7 @@ class SilenceLayer:
         """
         Checks if the daily cap (3) has been reached.
         """
-        today = datetime.utcnow().strftime("%Y-%m-%d")
+        today = datetime.now().strftime("%Y-%m-%d")
         with open(self.log_path, "r") as f:
             data = json.load(f)
             
@@ -33,7 +33,7 @@ class SilenceLayer:
         """
         Increments the daily speech count.
         """
-        today = datetime.utcnow().strftime("%Y-%m-%d")
+        today = datetime.now().strftime("%Y-%m-%d")
         with open(self.log_path, "r") as f:
             data = json.load(f)
             
@@ -53,7 +53,7 @@ class SilenceLayer:
         ranked = sorted(triggers, key=lambda x: x.get("priority_score", 0), reverse=True)
         
         # 2. Check remaining quota
-        today = datetime.utcnow().strftime("%Y-%m-%d")
+        today = datetime.now().strftime("%Y-%m-%d")
         with open(self.log_path, "r") as f:
             data = json.load(f)
         remaining = 3 - data.get(today, 0)

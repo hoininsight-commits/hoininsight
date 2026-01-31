@@ -28,7 +28,7 @@ def run_output_checks(base_dir: Path, target_categories: list[str] = None) -> Ou
     # Required outputs: curated + anomalies + topics (report is global)
     for ds in datasets:
         curated = base_dir / ds.curated_path
-        ymd = __import__("datetime").datetime.utcnow().strftime("%Y/%m/%d")
+        ymd = __import__("datetime").datetime.now().strftime("%Y/%m/%d")
         anomalies = base_dir / "data" / "features" / "anomalies" / ymd / f"{ds.dataset_id}.json"
         topics = base_dir / "data" / "topics" / ymd / f"{ds.dataset_id}.json"
 
@@ -56,7 +56,7 @@ def run_output_checks(base_dir: Path, target_categories: list[str] = None) -> Ou
         )
 
     # Meta Topics Check (Soft)
-    ymd = __import__("datetime").datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = __import__("datetime").datetime.now().strftime("%Y/%m/%d")
     meta_path = base_dir / "data" / "meta_topics" / ymd / "meta_topics.json"
     meta_ok = meta_path.exists()
     

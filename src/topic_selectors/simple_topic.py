@@ -8,10 +8,10 @@ from typing import Dict, Any, List
 from src.topics.scoring import load_regime_signals, compute_regime_multiplier
 
 def _utc_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def _read_json(p: Path) -> Any:
     return json.loads(p.read_text(encoding="utf-8"))

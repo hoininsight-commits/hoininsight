@@ -24,7 +24,7 @@ class ContentCompiler:
         payload = {
             "header": {
                 "issue_id": issue_id,
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now().isoformat(),
                 "title": narrative["headline"]
             },
             "content": {

@@ -9,7 +9,7 @@ from src.utils.target_date import get_target_parts
 from src.utils.errors import WarmupError
 
 def _utc_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _load_curated(base_dir: Path, rel_path: str) -> pd.DataFrame:
     p = base_dir / rel_path

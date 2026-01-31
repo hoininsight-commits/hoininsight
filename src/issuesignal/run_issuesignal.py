@@ -1,6 +1,6 @@
 from pathlib import Path
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import dataclasses
 import json
 import logging
@@ -64,10 +64,9 @@ def get_ticker_from_details(details):
     # Here we mock extraction or check for pre-existing ticker field
     return details.get("ticker", None)
 
-def main():
     base_dir = Path(".")
-    now_utc = datetime.now(timezone.utc)
-    print(f"[{now_utc}] Starting IssueSignal Run (IS-62 Loop Lock)...")
+    now_kst = datetime.now()
+    print(f"[{now_kst}] Starting IssueSignal Run (IS-62 Loop Lock - KST Focus)...")
     
     # Init Models to None for safety
     decision_card_model = None
@@ -75,7 +74,8 @@ def main():
     
     try:
         # 1. Harvest Context (Used for filtering and WhyNow)
-        ymd = now_utc.strftime("%Y-%m-%d")
+        # 1. Harvest Context (Used for filtering and WhyNow)
+        ymd = now_kst.strftime("%Y-%m-%d")
         
         flow_evidence = collect_capital_flows(base_dir, ymd)
         macro_facts = collect_macro_facts(base_dir, ymd)
@@ -270,7 +270,7 @@ def main():
             
         # Save Canonical [IS-63] (Moved out of else to handle Silence)
         if decision_card_model:
-            today_ymd = now_utc.strftime("%Y-%m-%d")
+            today_ymd = now_kst.strftime("%Y-%m-%d")
             y, m, d = today_ymd.split('-')
             canonical_dir = base_dir / "data" / "decision" / y / m / d
             canonical_dir.mkdir(parents=True, exist_ok=True)
@@ -280,7 +280,7 @@ def main():
                  card_dict = dataclasses.asdict(decision_card_model)
                  card_dict["card_version"] = "phase66_editorial_v1"
                  card_dict["_date"] = today_ymd
-                 card_dict["_timestamp_utc"] = now_utc.strftime("%Y-%m-%d %H:%M:%S")
+                 card_dict["_timestamp_kst"] = now_kst.strftime("%Y-%m-%d %H:%M:%S")
                  json.dump(card_dict, cf, ensure_ascii=False, indent=2)
 
     except Exception as e:

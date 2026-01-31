@@ -79,7 +79,7 @@ class ProposalIntegrator:
 
 **출처:** {source}  
 **수집 모듈:** `{collector}`  
-**승인일:** {datetime.utcnow().strftime('%Y-%m-%d')}
+**승인일:** {datetime.now().strftime('%Y-%m-%d')}
 """
                 new_entries.append(entry)
             
@@ -124,7 +124,7 @@ class ProposalIntegrator:
 {meaning}
 
 **출처:** {source}  
-**승인일:** {datetime.utcnow().strftime('%Y-%m-%d')}
+**승인일:** {datetime.now().strftime('%Y-%m-%d')}
 
 ---
 """
@@ -150,7 +150,7 @@ class ProposalIntegrator:
             proposal_file = self.proposals_dir / f"{proposal['id']}.json"
             if proposal_file.exists():
                 proposal['status'] = 'INTEGRATED'
-                proposal['integrated_at'] = datetime.utcnow().isoformat()
+                proposal['integrated_at'] = datetime.now().isoformat()
                 proposal_file.write_text(json.dumps(proposal, ensure_ascii=False, indent=2), encoding='utf-8')
     
     def _extract_data_name(self, condition: str) -> str:
@@ -181,7 +181,7 @@ class ProposalIntegrator:
         data_proposals, logic_proposals = self.scan_approved_proposals()
         
         report = {
-            "generated_at": datetime.utcnow().isoformat(),
+            "generated_at": datetime.now().isoformat(),
             "data_proposals": {
                 "total": len(data_proposals),
                 "approved_not_integrated": [p['id'] for p in data_proposals if p.get('status') == 'APPROVED'],

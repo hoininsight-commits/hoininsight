@@ -1007,7 +1007,7 @@ class DecisionDashboard:
             return self._render_final_view(data)
 
         lines = []
-        as_of_date = data.get("as_of_date", datetime.datetime.utcnow().strftime("%Y-%m-%d"))
+        as_of_date = data.get("as_of_date", datetime.datetime.now().strftime("%Y-%m-%d"))
         
         # Step 18: Aggregate Panel
         pm_stats = data.get("post_mortem_summary")

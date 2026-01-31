@@ -43,11 +43,11 @@ def main(target_categories: list[str] = None):
                 collection_status[dataset_id] = {
                     "status": "OK",
                     "reason": "Normalized successfully",
-                    "timestamp": datetime.utcnow().isoformat() + "Z"
+                    "timestamp": datetime.now().isoformat() + "Z"
                 }
             else:
                  # If it was SKIP/WARMUP, keep it but update timestamp
-                 collection_status[dataset_id]["timestamp"] = datetime.utcnow().isoformat() + "Z"
+                 collection_status[dataset_id]["timestamp"] = datetime.now().isoformat() + "Z"
             
         except Exception as e:
             failure_count += 1
@@ -58,7 +58,7 @@ def main(target_categories: list[str] = None):
             collection_status[dataset_id] = {
                 "status": "FAIL",
                 "reason": f"Normalization Error: {str(e)[:100]}",
-                "timestamp": datetime.utcnow().isoformat() + "Z"
+                "timestamp": datetime.now().isoformat() + "Z"
             }
 
     # Save updated status

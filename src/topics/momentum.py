@@ -24,7 +24,7 @@ def collect_scores_7d(base_dir: Path, dataset_id: str, topic_id: str) -> List[Tu
     out: List[Tuple[str, float]] = []
     root = base_dir / "data" / "topics"
     for i in range(6, -1, -1):  # oldest -> newest
-        d = datetime.utcnow().date() - timedelta(days=i)
+        d = datetime.now().date() - timedelta(days=i)
         p = root / _date_path(d) / f"{dataset_id}.json"
         payload = _safe_read_json(p)
         if isinstance(payload, list):

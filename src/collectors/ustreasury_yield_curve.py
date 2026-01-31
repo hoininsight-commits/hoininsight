@@ -15,7 +15,7 @@ CSV_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-
 
 
 def _utc_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _fetch_csv(url: str) -> str:
     req = Request(url, headers={"User-Agent": "hoin-insight-bot"})

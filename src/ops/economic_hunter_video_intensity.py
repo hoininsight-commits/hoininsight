@@ -113,7 +113,7 @@ class EconomicHunterVideoIntensityLayer:
         if date_match:
             try:
                 target_date = datetime.strptime(date_match.group(1), "%Y-%m-%d")
-                delta = (target_date - datetime.utcnow()).days
+                delta = (target_date - datetime.now()).days
                 return delta if delta >= 0 else 0
             except:
                 pass

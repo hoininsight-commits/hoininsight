@@ -17,7 +17,7 @@ QUEUE_BASE = Path("data/narratives/queue")
 LOOKBACK_DAYS = 7
 
 def _get_utc_ymd(delta_days: int = 0) -> str:
-    d = datetime.utcnow() - timedelta(days=delta_days)
+    d = datetime.now() - timedelta(days=delta_days)
     return d.strftime("%Y/%m/%d")
 
 def scan_proposals(base_dir: Path) -> List[Dict[str, Any]]:
@@ -102,7 +102,7 @@ def generate_queue_output(items: List[Dict[str, Any]], output_dir: Path):
     json_path.write_text(json.dumps(items, indent=2, ensure_ascii=False), encoding='utf-8')
     
     # 2. Markdown (Human Readable)
-    md_lines = ["# Proposal Review Queue", f"Generated at: {datetime.utcnow().isoformat()}", ""]
+    md_lines = ["# Proposal Review Queue", f"Generated at: {datetime.now().isoformat()}", ""]
     
     if not items:
         md_lines.append("No proposals found in the last 7 days.")

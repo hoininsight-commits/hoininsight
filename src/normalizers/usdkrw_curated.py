@@ -8,9 +8,9 @@ from src.normalizers.common_timeseries import build_row, append_timeseries_csv
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
+        datetime.now().strftime("%Y"),
+        datetime.now().strftime("%m"),
+        datetime.now().strftime("%d"),
     )
 
 def write_curated_usdkrw_csv(base_dir: Path) -> Path:

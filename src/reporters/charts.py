@@ -13,7 +13,7 @@ import sys
 from src.registry.loader import load_datasets
 
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def _parse_ts(series: pd.Series) -> pd.Series:
     return pd.to_datetime(series, utc=True, errors="coerce")
@@ -54,7 +54,7 @@ def _collect_anomaly_days(base_dir: Path, dataset_id: str, days: int = 90, thr: 
 
     # scan last N days by date
     for i in range(days):
-        d = datetime.utcnow().date() - __import__("datetime").timedelta(days=i)
+        d = datetime.now().date() - __import__("datetime").timedelta(days=i)
         p = root / f"{d.year:04d}" / f"{d.month:02d}" / f"{d.day:02d}" / f"{dataset_id}.json"
         
         # Robustly handle missing file

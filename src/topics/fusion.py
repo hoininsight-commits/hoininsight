@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def _read_json(p: Path) -> Any:
     if not p.exists():
@@ -56,7 +56,7 @@ def fuse_meta_topics(base_dir: Path) -> List[Dict[str, Any]]:
             "severity": "HIGH",
             "score": score,
             "evidence": sorted(list({t.get("_dataset_id") for t in used})),
-            "generated_at": datetime.utcnow().isoformat()
+            "generated_at": datetime.now().isoformat()
         })
 
     # Rule 2: Rate & FX Shock
@@ -71,7 +71,7 @@ def fuse_meta_topics(base_dir: Path) -> List[Dict[str, Any]]:
             "severity": "MEDIUM",
             "score": score,
             "evidence": sorted(list({t.get("_dataset_id") for t in used})),
-            "generated_at": datetime.utcnow().isoformat()
+            "generated_at": datetime.now().isoformat()
         })
 
     return meta

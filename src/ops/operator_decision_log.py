@@ -36,7 +36,7 @@ class OperatorDecisionLog:
         # Append logic
         entry = {
             **decision,
-            "ts": datetime.utcnow().isoformat()
+            "ts": datetime.now().isoformat()
         }
         data["decisions"].append(entry)
         

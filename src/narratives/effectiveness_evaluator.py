@@ -14,7 +14,7 @@ from src.utils.guards import check_learning_enabled
 def load_applied_events(base_dir: Path, lookback_days: int = 30) -> List[Dict[str, Any]]:
     """Load applied events from the last N days."""
     events = []
-    today = datetime.utcnow().date()
+    today = datetime.now().date()
     
     for i in range(lookback_days):
         check_date = today - timedelta(days=i)
@@ -297,14 +297,14 @@ def main():
     # Build output
     output = {
         "effectiveness_version": "phase34_v1",
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now().isoformat() + "Z",
         "lookback_days": lookback_days,
         "window_days": window_days,
         "events": evaluated_events
     }
     
     # Save output
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     output_dir = base_dir / "data" / "narratives" / "effectiveness" / ymd
     output_dir.mkdir(parents=True, exist_ok=True)
     

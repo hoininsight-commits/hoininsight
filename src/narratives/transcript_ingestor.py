@@ -130,7 +130,7 @@ def ingest_transcript(meta_path: Path):
             skip_info = {
                 "video_id": vid_id,
                 "reason": "No transcript content found",
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now().isoformat()
             }
             out_skip.write_text(json.dumps(skip_info, ensure_ascii=False, indent=2), encoding="utf-8")
             

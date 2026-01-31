@@ -122,6 +122,6 @@ class PickOutcomeCorrelator:
 if __name__ == "__main__":
     import sys
     base = Path.cwd()
-    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.utcnow().strftime("%Y-%m-%d")
+    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime("%Y-%m-%d")
     correlator = PickOutcomeCorrelator(base)
     correlator.run(ymd)

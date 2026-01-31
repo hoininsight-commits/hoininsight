@@ -21,7 +21,7 @@ def count_appearances_7d(base_dir: Path, dataset_id: str, topic_id: str) -> int:
     root = base_dir / "data" / "topics"
     n = 0
     for i in range(7):
-        d = datetime.utcnow().date() - timedelta(days=i)
+        d = datetime.now().date() - timedelta(days=i)
         p = root / f"{d.year:04d}" / f"{d.month:02d}" / f"{d.day:02d}" / f"{dataset_id}.json"
         payload = _safe_read_json(p)
         if isinstance(payload, list):

@@ -241,6 +241,6 @@ class ShadowCandidateBuilder:
 
 if __name__ == "__main__":
     import sys
-    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.utcnow().strftime("%Y-%m-%d")
+    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime("%Y-%m-%d")
     builder = ShadowCandidateBuilder(Path("."))
     builder.build(ymd)

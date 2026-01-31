@@ -25,7 +25,7 @@ from src.utils.guards import check_learning_enabled
 
 def _get_utc_ymd(delta_days: int = 0) -> str:
     """Get UTC date with delta."""
-    d = datetime.utcnow() - timedelta(days=delta_days)
+    d = datetime.now() - timedelta(days=delta_days)
     return d.strftime("%Y/%m/%d")
 
 def load_transcript(transcript_path: Path) -> str:

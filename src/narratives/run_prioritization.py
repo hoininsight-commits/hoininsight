@@ -6,7 +6,7 @@ from src.narratives.proposal_scorer import ProposalScorer
 from src.utils.guards import check_learning_enabled
 
 def _get_utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def main():
     check_learning_enabled()
@@ -27,7 +27,7 @@ def main():
         # Write empty structure to satisfy verification and metadata reqs
         final_output = {
             "scoring_version": "phase32_v1",
-            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "generated_at": datetime.now().isoformat() + "Z",
             "inputs_hash": "empty_queue",
             "items": []
         }
@@ -106,7 +106,7 @@ def main():
 
     final_output = {
         "scoring_version": "phase32_v1",
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now().isoformat() + "Z",
         "inputs_hash": input_hash,
         "items": scored_items
     }

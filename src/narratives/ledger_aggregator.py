@@ -16,7 +16,7 @@ from src.utils.guards import check_learning_enabled
 def load_ledger_entries(base_dir: Path, lookback_days: int = 90) -> List[Dict[str, Any]]:
     """Load all ledger entries from the last N days."""
     entries = []
-    today = datetime.utcnow().date()
+    today = datetime.now().date()
     
     for i in range(lookback_days):
         check_date = today - timedelta(days=i)
@@ -92,7 +92,7 @@ def aggregate_ledger(base_dir: Path, lookback_days: int = 90) -> Dict[str, Any]:
     # Build summary
     summary = {
         "ledger_summary_version": "phase35_v1",
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now().isoformat() + "Z",
         "lookback_days": lookback_days,
         "total_entries": len(entries),
         "counts_by_decision": count_by_decision(entries),
@@ -115,7 +115,7 @@ def main():
     summary = aggregate_ledger(base_dir, lookback_days)
     
     # Save output
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     output_dir = base_dir / "data" / "narratives" / "ledger_summary" / ymd
     output_dir.mkdir(parents=True, exist_ok=True)
     

@@ -14,6 +14,7 @@ permissions:
 
 env:
   ENABLE_LEARNING: false
+  TZ: Asia/Seoul
 
 jobs:
   run:
@@ -47,7 +48,7 @@ jobs:
 
       - name: Set AS_OF_DATE
         run: |
-          echo "AS_OF_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Run Data Collection
         env:
@@ -93,7 +94,7 @@ jobs:
 
       - name: Verify Phase 25 Meta Regime
         run: |
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           REPORT="data/reports/$YMD/daily_brief.md"
           META="data/meta_topics/$YMD/meta_topics.json"
 
@@ -121,7 +122,7 @@ jobs:
 
       - name: Verify Phase 26 Regime History
         run: |
-          YMD=$(date -u +"%Y-%m-%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           SNAPSHOT="data/regimes/regime_$YMD.json"
           HISTORY="data/regimes/regime_history.json"
 
@@ -201,7 +202,7 @@ jobs:
         run: |
           echo "[VERIFY] Confidence-Based Content Control Check"
 
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           # Python script outputs to data/content/ directly (not date-partitioned)
           CONTENT_DIR="data/content" 
           REPORT="data/reports/$YMD/daily_brief.md"
@@ -232,7 +233,7 @@ jobs:
         run: |
           echo "[VERIFY] Content Preset Selection Check"
 
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           REPORT="data/reports/$YMD/daily_brief.md"
 
           if [ ! -f "$REPORT" ]; then
@@ -277,7 +278,7 @@ jobs:
           echo "[VERIFY] Core Dataset + Regime Confidence Check"
 
           # daily_brief에 Confidence 라인이 존재해야 함
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           REPORT="data/reports/$YMD/daily_brief.md"
 
           if [ ! -f "$REPORT" ]; then
@@ -350,7 +351,7 @@ jobs:
       - name: Verify Phase 39 Topic Candidates
         run: |
           echo "[VERIFY] Phase 39 Topic Candidate Gate Check"
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           CAND="data/topics/candidates/$YMD/topic_candidates.json"
           DASH="dashboard/index.html"
           
@@ -375,7 +376,7 @@ jobs:
       - name: Verify Phase 36-B Ops Hardening
         run: |
           echo "[VERIFY] Phase 36-B Ops Hardening Check"
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           FRESH="data/ops/freshness/$YMD/freshness_summary.json"
           SCORE="data/ops/scoreboard/$YMD/ops_scoreboard.json"
           DASH="dashboard/index.html"
@@ -399,7 +400,7 @@ jobs:
       - name: Verify Phase 38 Final Decision Card
         run: |
           echo "[VERIFY] Phase 38 Final Decision Card Check"
-          YMD=$(date -u +"%Y/%m/%d")
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
           CARD="data/decision/$YMD/final_decision_card.json"
           DASH="dashboard/index.html"
           
@@ -435,5 +436,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          y=$(date -u +"%Y-%m-%d")
+          y=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."

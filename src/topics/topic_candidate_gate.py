@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Set, Literal
 
@@ -23,8 +23,8 @@ def _write_json(p: Path, data: Any) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
-def get_utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+def get_kst_ymd() -> str:
+    return datetime.now().strftime("%Y/%m/%d")
 
 class TopicCandidateEngine:
     """
@@ -38,7 +38,7 @@ class TopicCandidateEngine:
     """
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
-        self.ymd_str = get_utc_ymd()
+        self.ymd_str = get_kst_ymd()
         self.output_dir = base_dir / "data" / "topics" / "candidates" / self.ymd_str
         self.registry = self._load_registry()
         
@@ -127,7 +127,7 @@ class TopicCandidateEngine:
                 "candidate_id": f"cand_{ds_id}_{self.ymd_str.replace('/','')}",
                 "dataset_id": ds_id,
                 "category": sig.get("_category", "OTHER"),
-                "created_at": datetime.utcnow().isoformat(),
+                "created_at": datetime.now().isoformat(),
                 "status": "UNKNOWN",
                 "gates": {
                     "multi_axis": False,
@@ -186,7 +186,7 @@ class TopicCandidateEngine:
         
         # Output
         output_data = {
-            "generated_at": datetime.utcnow().isoformat(),
+            "generated_at": datetime.now().isoformat(),
             "candidate_count": len(candidates),
             "alive_count": len([c for c in candidates if c["status"] == CANDIDATE_ALIVE]),
             "candidates": candidates

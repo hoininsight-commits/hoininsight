@@ -28,7 +28,7 @@ class StructuralMemoryEngine:
         snapshot = {
             "date": date,
             "meta": {
-                "generated_at": datetime.utcnow().isoformat() + "Z",
+                "generated_at": datetime.now().isoformat() + "Z",
                 "version": "v1.0"
             },
             "top_signal": {

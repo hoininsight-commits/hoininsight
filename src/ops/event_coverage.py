@@ -29,7 +29,7 @@ class EventCoverageBuilder:
         
         coverage = {
             "run_date": run_ymd,
-            "run_ts": datetime.utcnow().isoformat() + "Z",
+            "run_ts": datetime.now().isoformat() + "Z",
             "by_gate_family": {
                 "S1": {"events": 0},
                 "S2": {"events": 0},
@@ -129,7 +129,7 @@ class EventCoverageBuilder:
 if __name__ == "__main__":
     import sys
     base = Path.cwd()
-    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.utcnow().strftime("%Y-%m-%d")
+    ymd = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime("%Y-%m-%d")
     builder = EventCoverageBuilder(base)
     builder.build(ymd)
     print(f"Coverage report generated: {builder.output_path}")

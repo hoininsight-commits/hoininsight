@@ -5,7 +5,7 @@ import time
 import os
 import json
 import traceback
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 from src.reporting.run_log import RunResult, write_run_log, append_observation_log
@@ -20,16 +20,16 @@ from src.reporting.health import write_health
 from src.validation.output_check import run_output_checks
 from src.validation.schema_check import run_schema_checks
 
-def _utc_now_stamp() -> str:
-    # Use standardized YMD but append actual UTC time for high-res logs
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+def _kst_now_stamp() -> str:
+    # Use standardized KST stamp for logs
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%S") + "+09:00"
 
 def _date_path_standardized() -> Path:
     y, m, d = get_target_parts()
     return Path("data") / "reports" / y / m / d
 
 def main(target_categories: list[str] = None):
-    started = _utc_now_stamp()
+    started = _kst_now_stamp()
     start_time = time.time()
     status = "SUCCESS"
     details_lines = []
@@ -164,7 +164,8 @@ def main(target_categories: list[str] = None):
         from src.topics.anchor_engine.logic_core import AnchorEngine
         
         # Load Anomalies for Anchor Input
-        anomalies_dir = Path("data/features/anomalies") / datetime.now().strftime("%Y/%m/%d")
+        y_kst, m_kst, d_kst = get_target_parts()
+        anomalies_dir = Path("data/features/anomalies") / y_kst / m_kst / d_kst
         snapshots = []
         if anomalies_dir.exists():
             for f in anomalies_dir.glob("*.json"):
@@ -194,7 +195,7 @@ def main(target_categories: list[str] = None):
         anchor_results = anchor_engine.run_analysis(snapshots, pre_structural_signals)
         
         # Save Anchor Result
-        anchor_out_dir = Path("data/topics/anchor") / datetime.now().strftime("%Y/%m/%d")
+        anchor_out_dir = Path("data/topics/anchor") / y_kst / m_kst / d_kst
         anchor_out_dir.mkdir(parents=True, exist_ok=True)
         
         # Pick Best Anchor (First one for now, or sort by Level)
@@ -727,7 +728,7 @@ def main(target_categories: list[str] = None):
         print(f"[VERIFY][SKIP] Could not verify runtime: {e}", file=sys.stderr)
     # ----------------------------------------
 
-    finished = _utc_now_stamp()
+    finished = _kst_now_stamp()
     report_dir = _date_path_standardized()
     result = RunResult(
         started_utc=started,

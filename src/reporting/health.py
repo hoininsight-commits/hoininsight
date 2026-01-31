@@ -13,7 +13,7 @@ def write_health(base_dir: Path, status: str, checks_ok: bool, check_lines: List
     out_path = out_dir / "health.json"
 
     payload = {
-        "ts_utc": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "ts_utc": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "status": status,
         "checks_ok": checks_ok,
         "checks": check_lines,

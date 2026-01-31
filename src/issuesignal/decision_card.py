@@ -23,7 +23,7 @@ class DecisionCardGenerator:
         issue_id = trigger.get("id", "UNKNOWN")
         content = [
             f"# DECISION CARD: {issue_id}",
-            f"**Generated at**: {datetime.utcnow().isoformat()}\n",
+            f"**Generated at**: {datetime.now().isoformat()}\n",
             "## 1. WHAT (Trigger)",
             f"- {trigger.get('content', 'No content available')}\n",
             "## 2. WHY (Forced Capital Movement)",

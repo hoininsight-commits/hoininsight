@@ -14,7 +14,7 @@ class StructuralTopicSeeder:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.logger = logging.getLogger("StructuralTopicSeeder")
-        self.ymd = datetime.utcnow().strftime("%Y-%m-%d")
+        self.ymd = datetime.now().strftime("%Y-%m-%d")
         
         # KEYWORD RULES (Hardcoded for v1.0 as per constraints)
         self.DAMAGE_KEYWORDS = [

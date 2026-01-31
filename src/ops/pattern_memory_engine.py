@@ -31,7 +31,7 @@ class PatternMemoryEngine:
             # Update last_seen
             existing_file = self.memory_dir / f"pattern_{pattern_id}.json"
             existing = json.loads(existing_file.read_text(encoding="utf-8"))
-            existing["last_seen_at"] = datetime.utcnow().isoformat() + "Z"
+            existing["last_seen_at"] = datetime.now().isoformat() + "Z"
             existing["occurrence_count"] = existing.get("occurrence_count", 1) + 1
             existing_file.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
             return existing_file
@@ -39,8 +39,8 @@ class PatternMemoryEngine:
         # Create new pattern memory
         memory = {
             "pattern_id": pattern_id,
-            "first_detected_at": datetime.utcnow().isoformat() + "Z",
-            "last_seen_at": datetime.utcnow().isoformat() + "Z",
+            "first_detected_at": datetime.now().isoformat() + "Z",
+            "last_seen_at": datetime.now().isoformat() + "Z",
             "occurrence_count": 1,
             "trigger_type": context.get("trigger", "UNKNOWN"),
             "structural_features": pattern_data.get("signals", []),

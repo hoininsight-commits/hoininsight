@@ -11,7 +11,7 @@ from src.utils.markdown_parser import parse_markdown
 from src.utils.i18n_ko import I18N_KO
 
 def _utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
 
 def _utc_to_kst_display(utc_timestamp_str: str) -> str:
     """Convert UTC timestamp to KST display format (MM/DD HH:MM).
@@ -236,7 +236,7 @@ def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
         Date string in YYYY-MM-DD format, or current date if no data found
     """
     for days_ago in range(max_days_back + 1):
-        check_date = datetime.utcnow() - timedelta(days=days_ago)
+        check_date = datetime.now() - timedelta(days=days_ago)
         ymd = check_date.strftime("%Y-%m-%d")
         ymd_path = ymd.replace("-", "/")
         
@@ -246,7 +246,7 @@ def _find_latest_narrative_date(base_dir: Path, max_days_back: int = 7) -> str:
             return ymd
     
     # Fallback to current date
-    return datetime.utcnow().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
 
 
 
@@ -328,7 +328,7 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
                 cpath = base_dir / cpath_str
                 if cpath.exists() and cpath.stat().st_size > 0:
                      mtime = datetime.utcfromtimestamp(cpath.stat().st_mtime)
-                     now = datetime.utcnow()
+                     now = datetime.now()
                      if (now - mtime).total_seconds() < 86400: # Modified within 24h
                          status = "OK"
                          reason = "데이터 파일 존재 (자동 복구됨)"
@@ -1250,7 +1250,7 @@ def generate_dashboard(base_dir: Path):
         seen_vids = set()
         # Reverse day scan
 
-        base_date = datetime.utcnow()
+        base_date = datetime.now()
         
         # Check applied_summary for today to quick check APPLIED
         applied_today_vids = []
@@ -1638,7 +1638,7 @@ def generate_dashboard(base_dir: Path):
         
         for i in range(10):
             try:
-                d = datetime.utcnow() - timedelta(days=i)
+                d = datetime.now() - timedelta(days=i)
                 d_ymd = d.strftime("%Y/%m/%d")
                 sum_path = deep_base / d_ymd / "deep_analysis_results.json"
                 
@@ -2039,7 +2039,7 @@ def generate_dashboard(base_dir: Path):
         # List last 7 days of output
         archive_html += '<div class="archive-list" style="background:white; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">'
         for i in range(1, 8):
-            past_date = (datetime.utcnow() - timedelta(days=i)).strftime("%Y/%m/%d")
+            past_date = (datetime.now() - timedelta(days=i)).strftime("%Y/%m/%d")
             p_script = base_dir / "data" / "reports" / past_date / "daily_brief.md"
             if p_script.exists():
                 archive_html += f'<div style="padding:15px; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between;">'

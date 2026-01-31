@@ -8,7 +8,7 @@ from src.utils.retry import retry
 from src.utils.target_date import get_target_parts
 
 def _utc_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 @retry(max_attempts=3, base_delay=1.0)
 def _fetch_spx_data() -> tuple[str, float]:

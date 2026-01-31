@@ -14,7 +14,7 @@ class RunResult:
     details: str
 
 def _utc_now_stamp() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def write_run_log(report_dir: Path, result: RunResult) -> Path:
     report_dir.mkdir(parents=True, exist_ok=True)

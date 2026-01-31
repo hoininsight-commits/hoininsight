@@ -32,7 +32,7 @@ class StructuralPatternDetector:
         snapshot = {
             "date": date,
             "meta": {
-                "generated_at": datetime.utcnow().isoformat() + "Z",
+                "generated_at": datetime.now().isoformat() + "Z",
                 "engine_version": "v1.0"
             },
             "active_patterns": active_patterns,

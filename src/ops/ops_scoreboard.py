@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Any
 
 def get_ops_metrics(base_dir: Path, days: int = 7) -> Dict[str, Any]:
-    now = datetime.now(timezone.utc)
+    now = datetime.now()
     history = []
     
     success_count = 0
@@ -63,7 +63,8 @@ def main():
     base_dir = Path(__file__).parent.parent.parent
     scoreboard = get_ops_metrics(base_dir)
     
-    ymd = datetime.now(timezone.utc).strftime("%Y/%m/%d")
+    now_kst = datetime.now()
+    ymd = now_kst.strftime("%Y/%m/%d")
     out_dir = base_dir / "data" / "ops" / "scoreboard" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
     

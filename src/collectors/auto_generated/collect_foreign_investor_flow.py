@@ -32,7 +32,7 @@ def collect():
     output_dir = base_dir / "data" / "raw" / "market_flow" / "foreign_investor_flow"
     
     # Get current date
-    now = datetime.utcnow()
+    now = datetime.now()
     date_path = output_dir / now.strftime("%Y/%m/%d")
     date_path.mkdir(parents=True, exist_ok=True)
     

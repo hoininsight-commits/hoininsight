@@ -108,7 +108,7 @@ class AutoCollectorGenerator:
 Auto-generated collector for: {data_name}
 Source: {source_name}
 Method: {method}
-Generated: {datetime.utcnow().isoformat()}
+Generated: {datetime.now().isoformat()}
 Status: CANDIDATE
 Proposal ID: {proposal['id']}
 """
@@ -135,7 +135,7 @@ def collect():
     output_dir = base_dir / "data" / "raw" / "{category}" / "{data_name}"
     
     # Get current date
-    now = datetime.utcnow()
+    now = datetime.now()
     date_path = output_dir / now.strftime("%Y/%m/%d")
     date_path.mkdir(parents=True, exist_ok=True)
     

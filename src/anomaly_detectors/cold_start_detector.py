@@ -17,9 +17,9 @@ class AnomalyEvent:
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
+        datetime.now().strftime("%Y"),
+        datetime.now().strftime("%m"),
+        datetime.now().strftime("%d"),
     )
 
 def detect_event_nonzero(base_dir: Path, dataset_id: str, curated_csv: Path, entity: str) -> Path:
@@ -46,7 +46,7 @@ def detect_event_nonzero(base_dir: Path, dataset_id: str, curated_csv: Path, ent
         # Event Detected!
         events.append(
             AnomalyEvent(
-                ts_utc=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                ts_utc=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 dataset_id=dataset_id,
                 entity=entity,
                 anomaly_type="EVENT_NONZERO",
@@ -66,7 +66,7 @@ def detect_event_nonzero(base_dir: Path, dataset_id: str, curated_csv: Path, ent
         # Let's save a "Normal" event if 0.
         events.append(
             AnomalyEvent(
-                ts_utc=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                ts_utc=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 dataset_id=dataset_id,
                 entity=entity,
                 anomaly_type="EVENT_NONZERO",

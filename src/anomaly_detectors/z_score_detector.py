@@ -19,9 +19,9 @@ class AnomalyEvent:
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
+        datetime.now().strftime("%Y"),
+        datetime.now().strftime("%m"),
+        datetime.now().strftime("%d"),
     )
 
 def detect_z_score(base_dir: Path, dataset_id: str, curated_csv: Path, entity: str) -> Path:
@@ -86,7 +86,7 @@ def detect_z_score(base_dir: Path, dataset_id: str, curated_csv: Path, entity: s
     if level != "NORMAL":
         events.append(
             AnomalyEvent(
-                ts_utc=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                ts_utc=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 dataset_id=dataset_id,
                 entity=entity,
                 anomaly_type="Z_SCORE_MODEL_V1",

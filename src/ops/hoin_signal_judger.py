@@ -145,7 +145,7 @@ class HoinSignalJudger:
     def _save_output(self, signals: List[Dict[str, Any]]):
         out_path = self.base_dir / "data" / "ops" / "hoin_signal_today.json"
         payload = {
-            "run_ts": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "run_ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "signals": signals
         }
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -155,4 +155,4 @@ class HoinSignalJudger:
 if __name__ == "__main__":
     from pathlib import Path
     judger = HoinSignalJudger(Path("."))
-    judger.run_judgement(datetime.utcnow().strftime("%Y-%m-%d"))
+    judger.run_judgement(datetime.now().strftime("%Y-%m-%d"))

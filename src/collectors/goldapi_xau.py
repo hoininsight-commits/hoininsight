@@ -9,7 +9,7 @@ from src.utils.retry import retry
 from src.utils.target_date import get_target_parts
 
 def _utc_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 @retry(max_attempts=3, base_delay=1.0)
 def _fetch_gold_data() -> tuple[str, float]:
@@ -19,7 +19,7 @@ def _fetch_gold_data() -> tuple[str, float]:
     """
     ticker = yf.Ticker("GC=F")
     
-    end_date = datetime.utcnow() + pd.Timedelta(days=1)
+    end_date = datetime.now() + pd.Timedelta(days=1)
     start_date = end_date - pd.Timedelta(days=10)
     
     hist = ticker.history(start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"))

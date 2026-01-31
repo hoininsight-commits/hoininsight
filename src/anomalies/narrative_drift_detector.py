@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 def _ymd_iso() -> str:
-    return datetime.utcnow().isoformat()
+    return datetime.now().isoformat()
 
 def _read_json(p: Path) -> Any:
     if not p.exists():
@@ -32,7 +32,7 @@ def detect_narrative_drift(base_dir: Path, window_days: int = 7) -> Dict[str, An
     if history_data and "history" in history_data:
         hist_entries = history_data["history"]
         # Filter for recent window
-        cutoff = datetime.utcnow() - timedelta(days=window_days)
+        cutoff = datetime.now() - timedelta(days=window_days)
         recent_entries = []
         for h in hist_entries:
             try:

@@ -18,7 +18,7 @@ class ContentPack:
         pack = {
             "header": {
                 "issue_id": issue_id,
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now().isoformat(),
                 "status": "PUBLISHED"
             },
             "narrative": {

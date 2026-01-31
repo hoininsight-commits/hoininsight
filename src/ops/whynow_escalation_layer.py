@@ -37,7 +37,7 @@ class WhyNowEscalationLayer:
     def _save_history(self):
         self.history_path.parent.mkdir(parents=True, exist_ok=True)
         # Keep only relevant history
-        cutoff = datetime.utcnow() - timedelta(days=self.config.get("history_retention_days", 7))
+        cutoff = datetime.now() - timedelta(days=self.config.get("history_retention_days", 7))
         self.history = [h for h in self.history if datetime.fromisoformat(h['detected_at']) > cutoff]
         self.history_path.write_text(json.dumps(self.history, indent=2, ensure_ascii=False), encoding='utf-8')
 
@@ -45,7 +45,7 @@ class WhyNowEscalationLayer:
         """
         Evaluate and escalate Pre-Structural Signals.
         """
-        now_str = datetime.utcnow().isoformat()
+        now_str = datetime.now().isoformat()
         results = []
         
         for sig in signals:
@@ -98,7 +98,7 @@ class WhyNowEscalationLayer:
     def _check_time_compression(self, sig: Dict) -> bool:
         ds_id = sig.get("dataset_id")
         window = self.config.get("history_retention_days", 7)
-        cutoff = datetime.utcnow() - timedelta(days=window)
+        cutoff = datetime.now() - timedelta(days=window)
         
         # Count occurrences of this dataset_id in history
         matches = [h for h in self.history if h['dataset_id'] == ds_id and datetime.fromisoformat(h['detected_at']) > cutoff]

@@ -9,7 +9,7 @@ def generate_and_send_summary(base_dir: Path):
     """
     Reads today's health.json and sends a summary via Telegram.
     """
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     health_path = base_dir / "data" / "reports" / ymd / "health.json"
     
     if not health_path.exists():

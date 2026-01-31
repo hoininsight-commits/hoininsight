@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class TopicSynthesizer:
     def __init__(self, base_dir: Path, date_str: Optional[str] = None):
         self.base_dir = base_dir
-        self.ymd = date_str if date_str else datetime.utcnow().strftime("%Y-%m-%d")
+        self.ymd = date_str if date_str else datetime.now().strftime("%Y-%m-%d")
         self.output_dir = self.base_dir / "data" / "topics" / "synthesized" / self.ymd.replace("-", "/")
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -44,7 +44,7 @@ class TopicSynthesizer:
         # 1. Base Synthesis Structure
         synthesized_topic = {
             "meta": {
-                "generated_at": datetime.utcnow().isoformat(),
+                "generated_at": datetime.now().isoformat(),
                 "base_date": self.ymd,
                 "version": "v1"
             },

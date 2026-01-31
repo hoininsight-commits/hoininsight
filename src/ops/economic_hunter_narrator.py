@@ -15,7 +15,7 @@ class EconomicHunterNarrator:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.logger = logging.getLogger("EconomicHunterNarrator")
-        self.ymd = datetime.utcnow().strftime("%Y-%m-%d")
+        self.ymd = datetime.now().strftime("%Y-%m-%d")
         
     def _load_json(self, path: Path) -> Dict:
         if not path.exists():

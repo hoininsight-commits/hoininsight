@@ -37,13 +37,13 @@ def should_archive_ledger_entry(entry: Dict[str, Any], today: datetime) -> tuple
 def build_archive_summary(base_dir: Path) -> Dict[str, Any]:
     """Build archive summary from ledger entries."""
     # Load ledger summary
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     ledger_path = base_dir / "data" / "narratives" / "ledger_summary" / ymd / "ledger_summary.json"
     
     if not ledger_path.exists():
         return {
             "archive_version": "phase36_v1",
-            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "generated_at": datetime.now().isoformat() + "Z",
             "total_archived": 0,
             "archived_items": []
         }
@@ -52,7 +52,7 @@ def build_archive_summary(base_dir: Path) -> Dict[str, Any]:
     recent_entries = ledger_data.get("recent_entries", [])
     
     # Determine which entries should be archived
-    today = datetime.utcnow()
+    today = datetime.now()
     archived_items = []
     
     for entry in recent_entries:
@@ -67,7 +67,7 @@ def build_archive_summary(base_dir: Path) -> Dict[str, Any]:
                 "reason": entry.get("reason", ""),
                 "related_video_id": entry.get("related_video_id", ""),
                 "archive_reason": reason,
-                "archived_at": datetime.utcnow().isoformat() + "Z",
+                "archived_at": datetime.now().isoformat() + "Z",
                 "original_ledger_file": entry.get("_ledger_file", ""),
                 "non_destructive": True  # Original file preserved
             }
@@ -75,7 +75,7 @@ def build_archive_summary(base_dir: Path) -> Dict[str, Any]:
     
     return {
         "archive_version": "phase36_v1",
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now().isoformat() + "Z",
         "total_archived": len(archived_items),
         "archived_items": archived_items
     }
@@ -110,7 +110,7 @@ def main():
         archive_summary["non_destructive_verified"] = is_preserved
     
     # Save archive summary
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     output_dir = base_dir / "data" / "narratives" / "archive" / ymd
     output_dir.mkdir(parents=True, exist_ok=True)
     

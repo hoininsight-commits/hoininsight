@@ -22,7 +22,7 @@ class NarrativeGuard:
         """
         Checks if the narrative story is repetitive within 14 days.
         """
-        cutoff = datetime.utcnow() - timedelta(days=14)
+        cutoff = datetime.now() - timedelta(days=14)
         
         with open(self.history_path, "r") as f:
             history = json.load(f)
@@ -56,7 +56,7 @@ class NarrativeGuard:
         history.append({
             "issue_id": issue_id,
             "narrative": narrative,
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now().isoformat()
         })
         
         with open(self.history_path, "w") as f:

@@ -34,7 +34,7 @@ class SpeechTriggerEngine:
             "source": source,
             "why_now": why_now,
             "ignore_reason": ignore_impossible,
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now().isoformat()
         }
 
     def _check_intensity_shift(self, text: str) -> bool:

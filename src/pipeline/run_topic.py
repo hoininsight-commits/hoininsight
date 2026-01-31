@@ -6,9 +6,9 @@ from src.registry.loader import load_datasets
 from src.topic_selectors.simple_topic import select_topics
 
 def main():
-    y = datetime.utcnow().strftime("%Y")
-    m = datetime.utcnow().strftime("%m")
-    d = datetime.utcnow().strftime("%d")
+    y = datetime.now().strftime("%Y")
+    m = datetime.now().strftime("%m")
+    d = datetime.now().strftime("%d")
 
     reg = Path("registry") / "datasets.yml"
     datasets = [ds for ds in load_datasets(reg) if ds.enabled]

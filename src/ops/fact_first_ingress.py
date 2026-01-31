@@ -19,7 +19,7 @@ class FactFirstIngress:
     def _utc_ymd_path(self, target_date: Optional[str] = None) -> str:
         if target_date:
             return target_date.replace("-", "/")
-        return datetime.utcnow().strftime("%Y/%m/%d")
+        return datetime.now().strftime("%Y/%m/%d")
 
     def run_ingress(self, target_date: Optional[str] = None) -> List[Dict[str, Any]]:
         """
@@ -207,7 +207,7 @@ class FactFirstIngress:
         out_file = out_dir / "fact_first.json"
         
         payload = {
-            "run_ts": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "run_ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "topics": topics,
             "topic_seeds": seeds,
             "narrative_hypotheses": hypotheses

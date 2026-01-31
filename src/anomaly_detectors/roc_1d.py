@@ -18,9 +18,9 @@ class AnomalyEvent:
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
+        datetime.now().strftime("%Y"),
+        datetime.now().strftime("%m"),
+        datetime.now().strftime("%d"),
     )
 
 def detect_roc_1d(base_dir: Path, dataset_id: str, curated_csv: Path, entity: str, threshold_pct: float = 3.0) -> Path:
@@ -37,7 +37,7 @@ def detect_roc_1d(base_dir: Path, dataset_id: str, curated_csv: Path, entity: st
             sev = min(100, int(abs(roc) * 10))
             events.append(
                 AnomalyEvent(
-                    ts_utc=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    ts_utc=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                     dataset_id=dataset_id,
                     entity=entity,
                     anomaly_type="ROC_1D",

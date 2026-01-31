@@ -21,10 +21,10 @@ class NarrativeOutputCompiler:
         
         card = {
             "version": "1.0",
-            "topic_id": topic.get("topic_id", f"EH-{datetime.utcnow().strftime('%Y%j')}-{abs(hash(topic.get('title', ''))) % 1000:03d}"),
+            "topic_id": topic.get("topic_id", f"EH-{datetime.now().strftime('%Y%j')}-{abs(hash(topic.get('title', ''))) % 1000:03d}"),
             "title": topic.get("title", "Untitled Structural Analysis"),
             "summary": topic.get("engine_conclusion", topic.get("summary", "No summary available.")),
-            "generated_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "generated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
             
             # Step 52
             "targets": context.get("selected_tickers", []),

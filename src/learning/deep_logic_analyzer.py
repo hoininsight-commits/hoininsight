@@ -69,7 +69,7 @@ class DeepLogicAnalyzer:
         result = {
             "video_id": video_id,
             "title": title,
-            "analysis_date": datetime.utcnow().strftime("%Y-%m-%d"),
+            "analysis_date": datetime.now().strftime("%Y-%m-%d"),
             "surface_topics": self._find_surface_topics(transcript),
             "real_topic": real_topic_info['topic'],
             "real_topic_reasoning": real_topic_info['reasoning'],
@@ -214,7 +214,7 @@ class DeepLogicAnalyzer:
                 if nk in s:
                     # Found a data need
                     proposals.append({
-                        "id": f"EVO-{datetime.utcnow().strftime('%Y%m%d')}-{abs(hash(s)) % 100000:05d}",
+                        "id": f"EVO-{datetime.now().strftime('%Y%m%d')}-{abs(hash(s)) % 100000:05d}",
                         "video_id": video_id,
                         "category": "DATA_ADD",
                         "detected_pattern": f"User explicit need: {nk}",
@@ -243,7 +243,7 @@ class DeepLogicAnalyzer:
                 if r_match: reason = r_match.group(1).strip()
                 
                 proposals.append({
-                    "id": f"EVO-LLM-{datetime.utcnow().strftime('%Y%m%d')}-{abs(hash(sensor)) % 100000:05d}",
+                    "id": f"EVO-LLM-{datetime.now().strftime('%Y%m%d')}-{abs(hash(sensor)) % 100000:05d}",
                     "video_id": video_id,
                     "category": "DATA_ADD", # or LOGIC_UPDATE based on content
                     "detected_pattern": "LLM Engine Evolution Suggestion",
@@ -310,7 +310,7 @@ class DeepLogicAnalyzer:
             evo_data = {
                 "id": p_id,
                 "video_id": p.get('video_id', ''),
-                "generated_at": datetime.utcnow().isoformat(),
+                "generated_at": datetime.now().isoformat(),
                 "category": p.get('category', 'DATA_ADD'),
                 "status": "PROPOSED",
                 "content": {

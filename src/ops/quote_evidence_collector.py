@@ -49,10 +49,10 @@ class QuoteEvidenceCollector:
             "quote_text": quote_text,
             "speaker": trigger.get("speaker") or trigger.get("issuing_body"),
             "event_name": trigger.get("event_name"),
-            "event_time_utc": trigger.get("event_time_utc") or datetime.utcnow().isoformat(),
+            "event_time_utc": trigger.get("event_time_utc") or datetime.now().isoformat(),
             "source_url": trigger.get("source_url"),
             "source_type": trigger.get("source_type"), # Expected OFFICIAL_* enum
-            "retrieved_at": datetime.utcnow().isoformat(),
+            "retrieved_at": datetime.now().isoformat(),
             "hash": self._generate_hash(quote_text, trigger.get("event_time_utc"))
         }
 

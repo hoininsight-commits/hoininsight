@@ -11,7 +11,7 @@ DATA_BASE = Path("data/narratives")
 STATUS_BASE = DATA_BASE / "status"
 
 def get_today_stats():
-    now = datetime.utcnow()
+    now = datetime.now()
     y, m, d = now.strftime("%Y"), now.strftime("%m"), now.strftime("%d")
     
     raw_dir = DATA_BASE / "raw" / "youtube" / y / m / d
@@ -55,7 +55,7 @@ def get_today_stats():
 def record_status():
     stats = get_today_stats()
     
-    now = datetime.utcnow()
+    now = datetime.now()
     y, m, d = now.strftime("%Y"), now.strftime("%m"), now.strftime("%d")
     
     out_dir = STATUS_BASE / y / m / d

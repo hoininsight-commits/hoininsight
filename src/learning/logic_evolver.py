@@ -83,7 +83,7 @@ class LogicEvolver:
 
     def generate_proposals(self, patterns: List[Dict[str, str]]):
         """Save discovered patterns as JSON proposals."""
-        ymd = datetime.utcnow().strftime("%Y%m%d")
+        ymd = datetime.now().strftime("%Y%m%d")
         
         for p in patterns:
             # Create unique ID for the proposal
@@ -91,7 +91,7 @@ class LogicEvolver:
             
             proposal = {
                 "id": f"EVO-{ymd}-{pid}",
-                "generated_at": datetime.utcnow().isoformat(),
+                "generated_at": datetime.now().isoformat(),
                 "category": "LOGIC_UPDATE" if "LOGIC" in p['type'] else "DATA_UPDATE",
                 "status": "PROPOSED", # Waiting for approval
                 "content": {

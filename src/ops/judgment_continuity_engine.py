@@ -32,7 +32,7 @@ class JudgmentContinuityEngine:
             return {}
 
         today_title = today_topic.get("title", "").strip().lower()
-        today_date = today_topic.get("date", datetime.utcnow().strftime("%Y-%m-%d"))
+        today_date = today_topic.get("date", datetime.now().strftime("%Y-%m-%d"))
         
         # 1. Load History (Last 30 days)
         history = self._load_history(today_date, lookback=30)

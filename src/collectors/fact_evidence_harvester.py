@@ -25,7 +25,7 @@ class FactEvidenceHarvester:
         """
         Main harvesting loop using Real Ingress Connectors.
         """
-        ymd = target_date or datetime.utcnow().strftime("%Y-%m-%d")
+        ymd = target_date or datetime.now().strftime("%Y-%m-%d")
         facts = []
         
         # 1. RSS/News Headlines (Real)

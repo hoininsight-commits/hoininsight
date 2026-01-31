@@ -17,7 +17,7 @@ class TopicExporter:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.logger = logging.getLogger("TopicExporter")
-        self.ymd = datetime.utcnow().strftime("%Y-%m-%d")
+        self.ymd = datetime.now().strftime("%Y-%m-%d")
         self.export_root = base_dir / "docs/topics"
         self.export_items = self.export_root / "items"
         

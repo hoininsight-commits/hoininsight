@@ -17,7 +17,7 @@ def _ymd() -> str:
     return get_target_ymd().replace("-", "/")
 
 def _ts_now() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _parse_ts(series: pd.Series) -> pd.Series:
     return pd.to_datetime(series, utc=True, errors="coerce")

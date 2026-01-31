@@ -117,7 +117,7 @@ class HumanLoopNotifier:
             title = f"[Human Approval] {len(proposals)}개 진화 제안 구현 필요"
             
             body = "## 🤖 HOIN ENGINE 진화 제안\n\n"
-            body += f"**생성 시각:** {datetime.utcnow().isoformat()}\n\n"
+            body += f"**생성 시각:** {datetime.now().isoformat()}\n\n"
             body += "---\n\n"
             
             if data_proposals:
@@ -180,7 +180,7 @@ class HumanLoopNotifier:
             notif_file = self.notifications_dir / f"{proposal['id']}_notified.json"
             notif_data = {
                 "proposal_id": proposal['id'],
-                "notified_at": datetime.utcnow().isoformat(),
+                "notified_at": datetime.now().isoformat(),
                 "category": proposal.get('category'),
                 "status": proposal.get('status'),
                 "channels": ["telegram", "github_issue"]

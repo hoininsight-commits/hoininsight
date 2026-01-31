@@ -80,7 +80,7 @@ def calculate_regime_confidence(status_path: Path) -> Dict[str, Any]:
                     if fpath.exists() and fpath.stat().st_size > 0:
                         # Check modification time (within 24h)
                         mtime = fpath.stat().st_mtime
-                        if (datetime.datetime.utcnow().timestamp() - mtime) < 86400:
+                        if (datetime.datetime.now().timestamp() - mtime) < 86400:
                             st = "OK"
             except Exception:
                 pass

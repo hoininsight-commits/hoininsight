@@ -12,12 +12,12 @@ class IssuePool:
         self.pool_dir.mkdir(parents=True, exist_ok=True)
 
     def add_issue(self, signal: dict):
-        signal_id = f"RAW-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        signal_id = f"RAW-{datetime.now().strftime('%Y%m%d%H%M%S')}"
         file_path = self.pool_dir / f"{signal_id}.json"
         
         payload = {
             "id": signal_id,
-            "captured_at": datetime.utcnow().isoformat(),
+            "captured_at": datetime.now().isoformat(),
             "source": signal.get("source", "UNKNOWN"),
             "content": signal.get("content", ""),
             "metadata": signal.get("metadata", {})

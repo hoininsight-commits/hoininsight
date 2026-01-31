@@ -8,13 +8,13 @@ from typing import Any, Dict, List, Optional
 from src.utils.i18n_ko import I18N_KO
 
 def _ymd_iso() -> str:
-    return datetime.utcnow().isoformat()
+    return datetime.now().isoformat()
 
 def _ymd_slashed() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def _ymd_dashed() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
 
 def _read_json(p: Path) -> Any:
     if not p.exists():
@@ -43,7 +43,7 @@ def generate_insight_content(base_dir: Path) -> None:
         skipped_lines.append("")
         skipped_lines.append(f"- **Mode**: {mode}")
         skipped_lines.append(f"- **Reason**: {reason}")
-        skipped_lines.append("- **Timestamp**: " + datetime.utcnow().isoformat())
+        skipped_lines.append("- **Timestamp**: " + datetime.now().isoformat())
         
         (out_dir / "content_skipped.md").write_text("\n".join(skipped_lines), encoding="utf-8")
         print(f"[INFO] Content generation SKIPPED. Mode={mode}")

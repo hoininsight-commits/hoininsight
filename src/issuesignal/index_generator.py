@@ -16,7 +16,7 @@ class IssueSignalIndexGenerator:
         """
         Generates latest_index.json based on today's run results.
         """
-        now = datetime.utcnow() + timedelta(hours=9) # KST
+        now = datetime.now() + timedelta(hours=9) # KST
         if not run_date_kst:
             run_date_kst = now.strftime("%Y-%m-%d")
         

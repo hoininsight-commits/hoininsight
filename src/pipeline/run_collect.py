@@ -74,7 +74,7 @@ def main(target_categories: list[str] = None):
         collection_status[dataset_id] = {
             "status": status,
             "reason": reason,
-            "timestamp": datetime.utcnow().isoformat() + "Z"
+            "timestamp": datetime.now().isoformat() + "Z"
         }
 
     # Save collection status to JSON

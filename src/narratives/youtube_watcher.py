@@ -25,7 +25,7 @@ def _utc_from_iso(iso_str: str) -> str:
         # Just ensure it's clean string
         return iso_str
     except:
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _utc_date_parts(iso_str: str) -> tuple[str, str, str]:
     """Extract YYYY, MM, DD from ISO timestamp."""
@@ -35,7 +35,7 @@ def _utc_date_parts(iso_str: str) -> tuple[str, str, str]:
         dt = datetime.fromisoformat(iso_str.replace('Z', '+00:00'))
         return dt.strftime("%Y"), dt.strftime("%m"), dt.strftime("%d")
     except:
-        now = datetime.utcnow()
+        now = datetime.now()
         return now.strftime("%Y"), now.strftime("%m"), now.strftime("%d")
 
 def fetch_rss_feed(channel_id: str) -> str:
@@ -149,7 +149,7 @@ def run_watcher():
                     "published_at": vid["published_at"],
                     "url": vid["url"],
                     "channel_name": vid["channel_name"],
-                    "collected_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+                    "collected_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
                 }
                 
                 meta_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -87,8 +87,8 @@ def generate_summary():
     PROPOSAL_BASE = base_dir / PROPOSAL_BASE
     
     # Today
-    today_ymd = datetime.utcnow().strftime("%Y/%m/%d")
-    ymd_slug = datetime.utcnow().strftime("%Y-%m-%d")
+    today_ymd = datetime.now().strftime("%Y/%m/%d")
+    ymd_slug = datetime.now().strftime("%Y-%m-%d")
     
     log = load_applied_log(today_ymd)
     

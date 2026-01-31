@@ -6,7 +6,7 @@ Aggregates Regime, Revival, and Ops context into a single structured card for hu
 import json
 import sys
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Any
 import re
 
@@ -160,6 +160,7 @@ def load_json(path: Path) -> Any:
     except:
         return None
 
+
 def validate_proof(ds_id: str, cand_meta: Dict) -> Dict[str, Any]:
     """
     v1.13 Proof-First Validation Rule
@@ -193,9 +194,9 @@ def validate_proof(ds_id: str, cand_meta: Dict) -> Dict[str, Any]:
 
 def main():
     base_dir = Path(__file__).resolve().parent.parent.parent
-    now_utc = datetime.now(timezone.utc)
-    ymd_path = now_utc.strftime("%Y/%m/%d")
-    ymd_dash = now_utc.strftime("%Y-%m-%d")
+    now = datetime.now()
+    ymd_path = now.strftime("%Y/%m/%d")
+    ymd_dash = now.strftime("%Y-%m-%d")
     
     # 1. Load Data Sources
     # Regime
@@ -449,7 +450,7 @@ def main():
     # 4. Construct Final Card
     card = {
         "card_version": "phase66_editorial_v1",
-        "generated_at": now_utc.isoformat() + "Z",
+        "generated_at_kst": now_kst.isoformat(),
         "date": ymd_dash,
         "blocks": {
             "regime": regime_block,
@@ -484,7 +485,7 @@ def main():
                 if not p_file.exists():
                     p_data = {
                         "id": p_id,
-                        "generated_at": now_utc.isoformat(),
+                        "generated_at_kst": now_kst.isoformat(),
                         "category": "DATA_ADD",
                         "status": "PROPOSED",
                         "content": {

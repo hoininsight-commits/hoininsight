@@ -19,7 +19,7 @@ def run_daily_evolution(target_date: str = None):
     analyzer = DeepLogicAnalyzer(base_dir)
     
     if target_date is None:
-        target_date = datetime.utcnow().strftime("%Y/%m/%d")
+        target_date = datetime.now().strftime("%Y/%m/%d")
     
     # Handle YYYY-MM-DD format if passed
     target_date = target_date.replace("-", "/")
@@ -51,18 +51,18 @@ def run_daily_evolution(target_date: str = None):
             
             # Add Source Info
             result['source_file'] = txt_file.name
-            result['analyzed_at'] = datetime.utcnow().isoformat()
+            result['analyzed_at'] = datetime.now().isoformat()
             
             analysis_results.append(result)
             
             # Save Proposals individually
             if result.get('final_decision') == "UPDATE_REQUIRED":
                 for prop in result.get('proposals', []):
-                    prop_id = f"EVO-{datetime.utcnow().strftime('%Y%m%d')}-{abs(hash(prop['content'])) % 100000:05d}"
+                    prop_id = f"EVO-{datetime.now().strftime('%Y%m%d')}-{abs(hash(prop['content'])) % 100000:05d}"
                     
                     proposal_file = {
                         "id": prop_id,
-                        "generated_at": datetime.utcnow().isoformat(),
+                        "generated_at": datetime.now().isoformat(),
                         "category": prop['category'],
                         "status": "PROPOSED",
                         "content": {

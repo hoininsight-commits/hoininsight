@@ -6,9 +6,9 @@ from pathlib import Path
 
 def _utc_date_parts() -> tuple[str, str, str]:
     return (
-        datetime.utcnow().strftime("%Y"),
-        datetime.utcnow().strftime("%m"),
-        datetime.utcnow().strftime("%d"),
+        datetime.now().strftime("%Y"),
+        datetime.now().strftime("%m"),
+        datetime.now().strftime("%d"),
     )
 
 def write_raw_example(base_dir: Path) -> Path:
@@ -17,7 +17,7 @@ def write_raw_example(base_dir: Path) -> Path:
     # TODO: raw 파일명 교체
     filename = "example.json"
 
-    ts_utc = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    ts_utc = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
     y, m, d = _utc_date_parts()
     out_dir = base_dir / "data" / "raw" / source / y / m / d

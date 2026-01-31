@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 def _ymd_dash() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
 
 def _read_json(p: Path) -> Any:
     if not p.exists():

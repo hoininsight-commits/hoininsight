@@ -7,7 +7,7 @@ import json
 import yaml
 import os
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Any
 
 def get_last_modified(path: Path) -> datetime:
@@ -26,7 +26,7 @@ def calculate_freshness(base_dir: Path) -> Dict[str, Any]:
         registry = yaml.safe_load(f)
         datasets = registry.get("datasets", [])
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now()
     freshness_items = []
     sla_breaches = []
     
@@ -85,7 +85,8 @@ def main():
     base_dir = Path(__file__).parent.parent.parent
     summary = calculate_freshness(base_dir)
     
-    ymd = datetime.now(timezone.utc).strftime("%Y/%m/%d")
+    now_kst = datetime.now()
+    ymd = now_kst.strftime("%Y/%m/%d")
     out_dir = base_dir / "data" / "ops" / "freshness" / ymd
     out_dir.mkdir(parents=True, exist_ok=True)
     

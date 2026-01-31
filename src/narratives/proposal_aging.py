@@ -13,13 +13,13 @@ from src.utils.guards import check_learning_enabled
 HALF_LIFE_DAYS = 7
 
 def _get_utc_ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def calculate_age_days(proposal_date_str: str) -> int:
     """Calculate age in days from proposal date (YYYY/MM/DD format)."""
     try:
         proposal_date = datetime.strptime(proposal_date_str, "%Y/%m/%d")
-        now = datetime.utcnow()
+        now = datetime.now()
         delta = now - proposal_date
         return max(0, delta.days)
     except:
@@ -72,7 +72,7 @@ def apply_aging(base_dir: Path):
         # Write empty structure
         empty_output = {
             "aging_version": "phase33_v1",
-            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "generated_at": datetime.now().isoformat() + "Z",
             "half_life_days": HALF_LIFE_DAYS,
             "items": []
         }
@@ -127,7 +127,7 @@ def apply_aging(base_dir: Path):
     # Build output
     output_data = {
         "aging_version": "phase33_v1",
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now().isoformat() + "Z",
         "half_life_days": HALF_LIFE_DAYS,
         "items": aged_items
     }

@@ -19,7 +19,7 @@ TARGET_FILES = {
 }
 
 def load_queue(base_dir: Path) -> List[Dict]:
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     queue_path = base_dir / "data/narratives/queue" / ymd / "proposal_queue.json"
     if not queue_path.exists():
         print(f"[Applier] No queue file found for today ({ymd})")
@@ -148,7 +148,7 @@ def main():
             log['skipped_count'] += 1
             
     # Save Log
-    ymd = datetime.utcnow().strftime("%Y/%m/%d")
+    ymd = datetime.now().strftime("%Y/%m/%d")
     log_dir = base_dir / "data/narratives/applied" / ymd
     log_dir.mkdir(parents=True, exist_ok=True)
     

@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, Tuple
 
 def _ymd() -> str:
-    return datetime.utcnow().strftime("%Y/%m/%d")
+    return datetime.now().strftime("%Y/%m/%d")
 
 def _read_json(p: Path) -> Any:
     return json.loads(p.read_text(encoding="utf-8"))

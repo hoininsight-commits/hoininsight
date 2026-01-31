@@ -30,8 +30,8 @@ def fetch_btc_quote() -> BTCQuote:
         if price is None:
             raise ValueError("CoinGecko response missing bitcoin/usd price")
             
-        ts_utc = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        last_updated_at = int(datetime.utcnow().timestamp())
+        ts_utc = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+        last_updated_at = int(datetime.now().timestamp())
         
         return BTCQuote(ts_utc=ts_utc, price_usd=float(price), last_updated_at=last_updated_at)
         
