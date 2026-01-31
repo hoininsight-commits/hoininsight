@@ -52,11 +52,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 원전에 본격 드라이브 거는 이재명 정부…배경훈 "SMR 투자 강화" - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 오픈AI는 ‘깐부’ 아니었나... 젠슨 황, 145조 투자 보류 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -72,7 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 청와대 비서관, 테슬라 주식만 135억?…‘코리아디스카운트’ 주범은 따로 있었다...국힘 주장 - 문화일보 (ID: unknown)
+### 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -108,6 +103,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 다나와 "메모리 이어 SSD·HDD 값도 상승세" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 한국서 만든 ‘두쫀쿠’, 진짜 두바이로… 현지에선 “한쫀쿠” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
