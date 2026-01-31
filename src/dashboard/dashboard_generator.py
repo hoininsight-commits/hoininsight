@@ -665,7 +665,7 @@ def generate_dashboard(base_dir: Path):
         --blue: #2563eb;
         --emerald: #059669;
     }
-    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; display: flex; flex-direction: column; }
     
     .top-bar { 
         background: #ffffff; 
