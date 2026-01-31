@@ -26,7 +26,7 @@ def calculate_freshness(base_dir: Path) -> Dict[str, Any]:
         registry = yaml.safe_load(f)
         datasets = registry.get("datasets", [])
 
-    now = datetime.now()
+    now = datetime.now(timezone.utc)
     freshness_items = []
     sla_breaches = []
     
