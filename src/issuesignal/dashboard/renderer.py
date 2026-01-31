@@ -33,126 +33,119 @@ class DashboardRenderer:
     <title>IssueSignal Unified Ops Center</title>
     <style>
         :root {{
-            --bg: #f8fafc;
-            --header-bg: #0f172a;
-            --card-bg: #FFFFFF;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
-            --emerald: #10b981;
-            --blue: #3b82f6;
+            --bg: #f1f5f9;
+            --header-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --emerald: #059669;
+            --blue: #2563eb;
             --purple: #7c3aed;
-            --red: #ef4444;
+            --red: #dc2626;
             --border: #e2e8f0;
-            --amber: #f59e0b;
+            --amber: #d97706;
             --amber-light: #fffbeb;
             --amber-border: #fcd34d;
         }}
         body {{ font-family: 'Pretendard', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }}
         
-        /* Premium Header */
+        /* Premium Light Header */
         .top-header {{ 
             background: var(--header-bg); 
             padding: 0 40px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            color: white; 
-            height: 64px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            color: var(--text-main); 
+            height: 70px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
             z-index: 100;
+            border-bottom: 1px solid var(--border);
         }}
-        .header-brand {{ font-size: 18px; font-weight: 800; display:flex; align-items:center; gap:10px; }}
-        .header-meta {{ font-size: 11px; color: rgba(255,255,255,0.6); font-family: monospace; text-align: right; display: flex; gap: 15px; letter-spacing: 0.05em; }}
+        .header-brand {{ font-size: 20px; font-weight: 900; display:flex; align-items:center; gap:12px; color: #1e293b; }}
+        .header-meta {{ font-size: 11px; color: var(--text-sub); font-family: monospace; text-align: right; display: flex; gap: 15px; letter-spacing: 0.05em; }}
         
         /* Navigation Tabs */
         .nav-tabs {{ 
             background: white; 
             border-bottom: 1px solid var(--border); 
             display: flex; 
-            gap: 5px; 
+            gap: 10px; 
             padding: 0 40px; 
             position: sticky; 
             top: 0; 
             z-index: 99; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
-            height: 50px; 
+            height: 54px; 
             align-items: end;
         }}
         .tab-btn {{ 
-            padding: 14px 20px; 
+            padding: 16px 24px; 
             border: none; 
             background: none; 
-            font-weight: 600; 
-            font-size: 13px; 
+            font-weight: 700; 
+            font-size: 14px; 
             cursor: pointer; 
             color: var(--text-sub); 
-            border-bottom: 2px solid transparent; 
+            border-bottom: 3px solid transparent; 
             transition: 0.2s; 
-            letter-spacing: 0.03em; 
         }}
-        .tab-btn:hover {{ color: var(--text-main); background: #f1f5f9; border-radius: 6px 6px 0 0; }}
-        .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); background: none; }}
+        .tab-btn:hover {{ color: var(--text-main); background: #f8fafc; }}
+        .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); }}
         
-        .container {{ padding: 40px; max-width: 1000px; margin: 0 auto; display: none; }}
+        .container {{ padding: 50px 40px; max-width: 1100px; margin: 0 auto; display: none; }}
         .container.active {{ display: block; }}
         
-        .section-title {{ font-size: 18px; font-weight: 800; color: #1e293b; margin: 50px 0 25px 0; display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.05em; }}
-        .section-title::before {{ content: ''; display: inline-block; width: 4px; height: 18px; background: var(--blue); border-radius: 2px; }}
+        .section-title {{ font-size: 20px; font-weight: 900; color: #1e293b; margin: 60px 0 30px 0; display: flex; align-items: center; gap: 12px; }}
+        .section-title::before {{ content: ''; display: inline-block; width: 5px; height: 20px; background: var(--blue); border-radius: 3px; }}
         
-        /* Premium Card Styles (Ported from TopicCardRenderer) */
+        /* High-Visibility Card Styles */
         .topic-card-top1 {{
-            background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
-            border: 1px solid #e2e8f0; border-top: 5px solid #7c3aed;
-            border-radius: 12px; padding: 30px; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
-            margin-bottom: 40px;
-            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 8px solid var(--blue);
+            border-radius: 16px; padding: 40px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02); 
+            margin-bottom: 50px;
         }}
-        .topic-header-label {{ font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 12px; display:flex; align-items:center; gap:8px; }}
-        .topic-title {{ font-size: 28px; font-weight: 800; color: #1e293b; margin: 10px 0 20px 0; line-height: 1.25; }}
+        .topic-header-label {{ font-size: 12px; font-weight: 800; color: var(--text-sub); text-transform: uppercase; margin-bottom: 15px; display:flex; align-items:center; gap:10px; }}
+        .topic-title {{ font-size: 34px; font-weight: 900; color: #0f172a; margin: 15px 0 25px 0; line-height: 1.3; letter-spacing: -0.02em; }}
         
-        .auth-sentence {{ background:#ECFDF5; border-left:4px solid #059669; padding:15px 20px; color:#065F46; font-weight:700; font-size:15px; line-height:1.6; border-radius: 0 8px 8px 0; margin-bottom: 25px; }}
+        .auth-sentence {{ background:#eff6ff; border-left:5px solid var(--blue); padding:20px 30px; color:#1e40af; font-weight:800; font-size:18px; line-height:1.6; border-radius: 0 12px 12px 0; margin-bottom: 30px; }}
         
-        .one-liner {{ font-size: 16px; line-height: 1.7; font-weight: 500; color: #334155; margin-bottom: 25px; }}
+        .one-liner {{ font-size: 17px; line-height: 1.8; font-weight: 600; color: #334155; margin-bottom: 30px; }}
         
         /* Content Package Block */
-        .content-package {{ background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 30px; }}
-        .cp-header {{ font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }}
-        .cp-row {{ display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }}
-        .cp-desc {{ font-size: 12px; color: #64748b; }}
+        .content-package {{ background: #ffffff; border: 2px solid #e2e8f0; border-radius: 14px; overflow: hidden; margin-top: 40px; }}
+        .cp-header {{ background: #f8fafc; padding: 18px 25px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; font-weight: 900; color: #1e293b; }}
         
-        /* Copy Button - Premium Style */
+        /* Copy Button - High Visibility */
         .copy-btn {{ 
-            background: white; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; 
-            cursor: pointer; font-weight: 600; font-size: 12px; color: #475569; 
-            min-width: 130px; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+            background: white; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 8px; 
+            cursor: pointer; font-weight: 700; font-size: 13px; color: #334155; 
+            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
         }}
-        .copy-btn:hover {{ border-color: #94a3b8; background: #f1f5f9; color: #1e293b; }}
-        .copy-btn-primary {{ background: #eff6ff; border-color: #bfdbfe; color: #2563eb; }}
-        .copy-btn-primary:hover {{ background: #dbeafe; border-color: #93c5fd; }}
-        .copy-btn-shorts {{ background: #fff1f2; border-color: #fecdd3; color: #e11d48; }}
-        .copy-btn-shorts:hover {{ background: #ffe4e6; border-color: #fda4af; }}
+        .copy-btn:hover {{ border-color: #94a3b8; background: #f1f5f9; }}
+        .copy-btn-primary {{ background: #2563eb; border-color: #2563eb; color: white; }}
+        .copy-btn-primary:hover {{ background: #1d4ed8; border-color: #1d4ed8; }}
 
         /* Meta Pills */
         .meta-pill {{ background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }}
         .meta-pill.purple {{ background: #f3e8ff; color: #6b21a8; }}
 
-        /* Unified Table Styles */
-        .unified-table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
-        .unified-table th {{ background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }}
-        .unified-table td {{ padding: 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: #334155; }}
-        .unified-table tr:last-child td {{ border-bottom: none; }}
+        /* Unified Table Styles - Light Theme */
+        .unified-table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
+        .unified-table th {{ background: #f8fafc; padding: 18px 20px; text-align: left; font-size: 12px; font-weight: 900; color: #475569; text-transform: uppercase; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }}
+        .unified-table td {{ padding: 20px; border-bottom: 1px solid var(--border); font-size: 14px; color: #1e293b; }}
         
-        .status-badge {{ padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; display: inline-block; }}
-        .status-success {{ background: #dcfce7; color: #166534; }}
-        .status-matched {{ background: #dbeafe; color: #1e40af; }}
-        .status-no-ev {{ background: #f3f4f6; color: #6b7280; }}
+        .badge-status {{ padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 12px; display: inline-block; }}
+        .status-matched {{ background: #dcfce7; color: #166534; }}
+        .status-no-ev {{ background: #f1f5f9; color: #475569; }}
         
         /* Drawer */
-        .evidence-drawer {{ background: #fbfcfe; padding: 20px 30px; border-top: 1px solid #e2e8f0; display: none; }}
-        .evidence-item {{ background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }}
+        .evidence-drawer {{ background: #f8fafc; padding: 30px; border-top: 1px solid #e2e8f0; display: none; }}
+        .evidence-item {{ background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
         
-        .expand-btn {{ background: transparent; color: #3b82f6; border: none; font-weight: 600; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 4px; }}
+        .expand-btn {{ background: transparent; color: var(--blue); border: none; font-weight: 700; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px; }}
         .expand-btn:hover {{ text-decoration: underline; }}
     </style>
 </head>
