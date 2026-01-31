@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-01-31T10:54:37Z
-- finished_utc: 2026-01-31T10:55:13Z
+- started_utc: 2026-01-31T20:45:31+09:00
+- finished_utc: 2026-01-31T20:46:24+09:00
 - status: SUCCESS
 
 ## details
@@ -13,6 +13,7 @@ normalize: ok
 derived: ok
 anomaly: ok
 fact_harvester: ok
+fact_first_ingress: ok
 topic: ok
 pre_structural_layer: ok
 anchor_engine: ok
