@@ -38,11 +38,11 @@ Historical context:
 - [MED] KOR_CPI: data/features/anomalies/2026/01/31/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/31/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] BTCUSD: data/features/anomalies/2026/01/31/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
-- [MED] KOSPI: data/features/anomalies/2026/01/31/index_kospi_stooq.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/31/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] US10Y: data/features/anomalies/2026/01/31/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] VIX: data/features/anomalies/2026/01/31/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] SPX: data/features/anomalies/2026/01/31/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
+- [LOW] KOSPI: data/features/anomalies/2026/01/31/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] NASDAQ: data/features/anomalies/2026/01/31/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] US02Y: data/features/anomalies/2026/01/31/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] WTI: data/features/anomalies/2026/01/31/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -74,7 +74,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=2.44 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.64 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
