@@ -94,6 +94,9 @@ def main():
         rotation_engine = CapitalRotationEngine(base_dir)
         rotation_verdict = rotation_engine.get_rotation_verdict(ymd)
         
+        # [IS-71] Structural Bridge Engine
+        bridge_engine = StructuralBridge(base_dir)
+        
         # 3. Candidate Selection (IS-62 Strict Selection)
         # Priority: Protagonists (Score >= 75) > Rotation Trigger > Others
         
