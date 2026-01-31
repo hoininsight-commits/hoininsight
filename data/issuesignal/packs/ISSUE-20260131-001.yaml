@@ -1,7 +1,7 @@
 header:
   issue_id: ISSUE-20260131-001
   status: PUBLISHED
-  timestamp: '2026-01-31T09:03:22.400330'
+  timestamp: '2026-01-31T09:55:41.663865'
 narrative:
   long_form: '# 감지된 신호 분석
 
@@ -14,6 +14,9 @@ narrative:
     ## 2. 자본 이동 판단 (Rotation)
 
     실시간 RSS/Official 데이터에서 감지된 최우선 토픽입니다.
+
+
+    [증거:FlowHint] 자금 흐름 단서 1건 포착.
 
 
     [증거:Macro] 거시경제 지표 변동 5건 확인.
@@ -36,7 +39,7 @@ narrative:
   - 지금 바로 확인하세요.
   - '자본이동: -'
 safety:
-  confidence: 175
+  confidence: 195
   kill_switch: false
 ticker_card: []
 trigger_quote: null
