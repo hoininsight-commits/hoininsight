@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 144
+- **Unreviewed**: 156
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=144
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=156
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 144
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 141
+- **Count**: 156
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 153
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,18 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -388,6 +400,18 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -539,6 +563,18 @@
 | 쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제 | Structural implication: '쿠팡 사태에 미묘한 변화…압박 멈춘 정치권, 몸 낮춘 쿠팡 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | ‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보 | Structural implication: '‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com | Structural implication: '“월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com' suggests a shift in NEWS dynamics. | LOW |
+| 두쫀쿠, 불황의 그늘 속 자영업자 살린 치트키 [두쫀쿠 이코노미①] - 매거진한경 | Structural implication: '두쫀쿠, 불황의 그늘 속 자영업자 살린 치트키 [두쫀쿠 이코노미①] - 매거진한경' suggests a shift in NEWS dynamics. | LOW |
+| "워시 연준의장 후보, 인준돼도 달성 어려운 3가지 임무 직면" - 연합뉴스 한민족센터 | Structural implication: '"워시 연준의장 후보, 인준돼도 달성 어려운 3가지 임무 직면" - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
+| 강훈식 "캐나다 잠수함 수주, 쉽지 않지만 자신 있다…1년 내 결과" - 부산일보 | Structural implication: '강훈식 "캐나다 잠수함 수주, 쉽지 않지만 자신 있다…1년 내 결과" - 부산일보' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인, 9개월 만에 7만 달러대로...“워시 지명 영향” - 조선일보 | Structural implication: '비트코인, 9개월 만에 7만 달러대로...“워시 지명 영향” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "XRP 가격 100달러 가능할까?"...리플 기술책임자의 솔직한 '답변' - gukjenews.com | Structural implication: '"XRP 가격 100달러 가능할까?"...리플 기술책임자의 솔직한 '답변' - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
+| “죄송합니다 제가 샀습니다”…금·은값 폭락에 개미들 '멘붕' - 이데일리 | Structural implication: '“죄송합니다 제가 샀습니다”…금·은값 폭락에 개미들 '멘붕' - 이데일리' suggests a shift in NEWS dynamics. | LOW |
+| 금 한 돈 ’100만 원’ 시대의 이모저모 [앵커리포트] - YTN | Structural implication: '금 한 돈 ’100만 원’ 시대의 이모저모 [앵커리포트] - YTN' suggests a shift in NEWS dynamics. | LOW |
+| HBM4 양산·디램 수익성 동반 상승…올해 ‘메모리 황금기’ 온다 - 매일경제 | Structural implication: 'HBM4 양산·디램 수익성 동반 상승…올해 ‘메모리 황금기’ 온다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| '머스크 주식회사' 출범하나...스페이스X, xAI 이어 테슬라와 통합 논의 - AI타임스 | Structural implication: ''머스크 주식회사' 출범하나...스페이스X, xAI 이어 테슬라와 통합 논의 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
+| 신고해도 소용없다?…경차 3대 주차칸 차지 ‘민폐 SUV’에 분노폭발 - 매일경제 | Structural implication: '신고해도 소용없다?…경차 3대 주차칸 차지 ‘민폐 SUV’에 분노폭발 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화 | Structural implication: '“유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화' suggests a shift in NEWS dynamics. | LOW |
+| “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 | Structural implication: '“거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

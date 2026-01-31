@@ -1,19 +1,18 @@
 {
   "data_axis": [
-    "crypto_btc_usd_spot_coingecko",
-    "derived_gold_silver_ratio"
+    "crypto_btc_usd_spot_coingecko"
   ],
   "baseline_match": [
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.46)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=2.41)"
+    "crypto_btc_usd_spot_coingecko: Single Axis Surge (Z=-2.26)"
   ],
-  "anomaly_logic": "Unknown",
+  "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation > 2.0 Sigma",
-  "gap_detection": "Insufficient Evidence for L4",
+  "level_proof": "Statistical Deviation Z=-2.26 (No Cluster)",
+  "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
-    "Need Volume/Flow Data to verify Capital Fixation"
+    "Need Correlated Asset Movement",
+    "Need News/Event Confirmation"
   ],
   "pre_structural_context": null
 }

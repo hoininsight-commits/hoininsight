@@ -8,11 +8,11 @@ Content Status: NORMAL
 Content Preset: STANDARD
 Drivers: YIELD_CURVE:UP(0.75)[png](data/reports/2026/01/31/charts/derived_yield_curve_10y_2y.png) | BTCUSD:FLAT(0.00)[png](data/reports/2026/01/31/charts/crypto_btc_usd_spot_coingecko.png)
 Meta topics: [json](data/meta_topics/2026/01/31/meta_topics.json)
-This regime has persisted for 17 consecutive days since 2026-01-14.
+This regime has persisted for 18 consecutive days since 2026-01-14.
 
 Historical context:
 - (no meta regime detected) appeared 1 times historically
-- Average persistence: 17.0 days (max 17 days)
+- Average persistence: 18.0 days (max 18 days)
 
 ## META TOPICS
 - (no meta topics)
@@ -33,7 +33,6 @@ Historical context:
 - [HIGH] CPI_USA: data/features/anomalies/2026/01/31/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] PCE_USA: data/features/anomalies/2026/01/31/inflation_pce_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] M2_USA: data/features/anomalies/2026/01/31/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
-- [HIGH] GS_RATIO: data/features/anomalies/2026/01/31/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/01/31/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/31/struct_dart_disposal.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] KOR_CPI: data/features/anomalies/2026/01/31/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -53,6 +52,7 @@ Historical context:
 - [LOW] UNRATE: data/features/anomalies/2026/01/31/employment_unrate_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] HY_SPREAD: data/features/anomalies/2026/01/31/credit_hy_spread_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [LOW] FIN_STRESS: data/features/anomalies/2026/01/31/risk_financial_stress_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
+- [LOW] GS_RATIO: data/features/anomalies/2026/01/31/derived_gold_silver_ratio.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 
 - See: `data/reports/2026/01/31/data_snapshot.md`
 
@@ -73,8 +73,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=-2.26 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
