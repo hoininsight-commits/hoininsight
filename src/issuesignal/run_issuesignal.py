@@ -87,6 +87,7 @@ def main():
             from src.collectors.macro_fact_connector import collect_macro_facts
             from src.collectors.official_fact_connector import collect_official_facts
             from src.collectors.corporate_action_connector import collect_corporate_facts
+            from src.issuesignal.bottleneck_ranker import BottleneckRanker
             
             # [IS-59] Harvest All Evidence Sources (Expanded)
             ymd = datetime.now().strftime("%Y-%m-%d")
@@ -229,7 +230,9 @@ def main():
                     # So I will pass 'corporate_facts' separately.
                     # And 'flow_evidence' will contain (Flow + Macro + Official).
                     "flow_evidence": flow_evidence + macro_facts + official_facts,
-                    "corporate_facts": corporate_facts
+                    "corporate_facts": corporate_facts,
+                    # [IS-60] Structural Bottleneck Analysis
+                    "bottleneck_analysis": BottleneckRanker.rank_protagonists(corporate_facts)
                 } 
             )
             

@@ -2709,6 +2709,30 @@ def generate_dashboard(base_dir: Path):
                              </div>
                              '''
                          }
+                         
+                         <!-- [IS-60] Structural Bottleneck Panel -->
+                         {
+                             f'''
+                             <div style="margin-top:12px; background:#fff; border:1px solid #c4b5fd; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                     <div style="font-size:12px; font-weight:800; color:#4c1d95; display:flex; align-items:center; gap:6px;">
+                                         <span>🧠 구조적 병목 판정 (Structural Bottleneck)</span>
+                                     </div>
+                                 </div>
+                                 
+                                 {
+                                     '<div style="font-size:12px; color:#6b7280; padding:4px 0;">구조적 병목(독점/필수)으로 판정된 기업이 없습니다.</div>' 
+                                     if not final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists') else 
+                                     '<ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' + 
+                                     ''.join([
+                                         f"<li><span style='background:#8b5cf6; color:white; font-size:11px; padding:1px 4px; border-radius:3px;'>🏆 주인공</span> <b>[{item.get('details',{}).get('company','Target')}]</b> <span style='color:#6d28d9; font-weight:700;'>({item.get('bottleneck_score', 0)}점)</span><br><span style='font-size:12px; color:#5b21b6;'>└ {item.get('bottleneck_reason','-')}</span></li>" 
+                                         for item in final_card['blocks']['bottleneck_analysis']['protagonists']
+                                     ]) + 
+                                     '</ul>'
+                                 }
+                             </div>
+                             '''
+                         }
 
                      </div>
                      <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
