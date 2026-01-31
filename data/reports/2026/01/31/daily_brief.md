@@ -23,14 +23,13 @@ Historical context:
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | NASDAQ | data/features/anomalies/2026/01/31/index_nasdaq_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | UP (0.60) | **12.54** | HIGH | - | [json](data/topics/2026/01/31/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/01/31/index_nasdaq_fred.json) |
 | 2 | YIELD_CURVE | data/features/anomalies/2026/01/31/derived_yield_curve_10y_2y.json L2 Signal | 6.00 | 5 (x1.75) | 10.50 | UP (0.75) | **11.55** | HIGH | - | [json](data/topics/2026/01/31/derived_yield_curve_10y_2y.json) | [json](data/features/anomalies/2026/01/31/derived_yield_curve_10y_2y.json) |
-| 3 | BTCUSD | data/features/anomalies/2026/01/31/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/01/31/crypto_btc_usd_spot_coingecko.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/01/31/inflation_cpi_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/31/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/01/31/inflation_pce_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/31/inflation_pce_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/01/31/inflation_cpi_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/01/31/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/01/31/inflation_pce_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/inflation_pce_fred.json) | [json](data/features/anomalies/2026/01/31/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/01/31/liquidity_m2_fred.json L2 Signal | 6.00 | 6 (x1.90) | 11.40 | FLAT (0.00) | **11.40** | HIGH | - | [json](data/topics/2026/01/31/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/01/31/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] NASDAQ: data/features/anomalies/2026/01/31/index_nasdaq_fred.json L2 Signal (base=6.00, final_m=12.54) | Mom: UP (slope=0.60) -> x1.1 | App7d=6
 - [HIGH] YIELD_CURVE: data/features/anomalies/2026/01/31/derived_yield_curve_10y_2y.json L2 Signal (base=6.00, final_m=11.55) | Mom: UP (slope=0.75) -> x1.1 | App7d=5
-- [HIGH] BTCUSD: data/features/anomalies/2026/01/31/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] CPI_USA: data/features/anomalies/2026/01/31/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] PCE_USA: data/features/anomalies/2026/01/31/inflation_pce_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [HIGH] M2_USA: data/features/anomalies/2026/01/31/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -39,6 +38,7 @@ Historical context:
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/01/31/struct_dart_disposal.json L2 Signal (base=6.00, final_m=11.40) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] KOR_CPI: data/features/anomalies/2026/01/31/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [MED] FED_FUNDS: data/features/anomalies/2026/01/31/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=5.70) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
+- [MED] BTCUSD: data/features/anomalies/2026/01/31/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=5.13) | Mom: DOWN (slope=-0.60) -> x0.9 | App7d=6
 - [MED] KOSPI: data/features/anomalies/2026/01/31/index_kospi_stooq.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/01/31/fx_usdkrw_ecos.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] US10Y: data/features/anomalies/2026/01/31/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
@@ -73,8 +73,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=-2.43 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
