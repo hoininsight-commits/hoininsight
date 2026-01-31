@@ -138,33 +138,24 @@
         </div>
         <div>
             <div class="header-meta">
-                <span>DATA: 2026-01-31</span>
-                <span>RUN: 2026-01-31 20:46:31</span>
+                <span>DATA: 2026-02-01</span>
+                <span>RUN: 2026-01-31 21:37:22</span>
             </div>
             <div class="header-meta" style="margin-top:2px;">
-                <span>COMMIT: 055f724</span>
+                <span>COMMIT: cad29ff</span>
                 <span>ENG: v2.5.1</span>
             </div>
         </div>
     </div>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal Operator</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Artifacts</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">Evidence Link View</button>
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">이슈시그널 운영센터</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 분석 데이터</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">통합 근거 연결뷰</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
-        
-        <div style="background:#FFFBEB; border:1px solid #F59E0B; padding:20px; border-radius:12px; margin-bottom:30px; display:flex; gap:20px; align-items:center;">
-            <div style="font-size:2em;">⚠️</div>
-            <div>
-                <div style="font-weight:bold; color:#92400E; font-size:1.1em; margin-bottom:5px;">오늘 확정된 발화 토픽이 없습니다.</div>
-                <div style="font-size:0.9em; color:#B45309;">주요 보류 사유: <b>UNKNOWN</b></div>
-            </div>
-        </div>
-        
         
         <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
             
@@ -199,26 +190,23 @@
             
         </div>
 
-        <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
+        <div class="section-title">✨ 오늘의 최종 가공 인텔리전스</div>
         
-            <div style="background:#fffbeb; border:1px solid #fcd34d; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="background:#fff1f2; border:1px solid #fecdd3; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center;">
                 <div style="font-size:3em; margin-bottom:15px;">❌</div>
-                <div style="font-weight:800; color:#92400e; font-size:1.5em; margin-bottom:10px;">오늘 발화할 토픽 없음</div>
-                <div style="font-size:1.1em; color:#b45309;">사유: 신뢰도 검증 미달 및 중복 트리거</div>
-                <div style="margin-top:20px; font-size:0.9em; color:#d97706;">
-                    * HOIN 엔진의 엄격한 검증 기준(IS-26)을 통과한 이슈가 없습니다.
-                </div>
+                <div style="font-weight:800; color:#e11d48; font-size:1.5em; margin-bottom:10px;">오늘 발화할 토픽 없음</div>
+                <div style="font-size:1.1em; color:#be123c;">사유: 운영 품질 하한선(WHY-NOW/신호 강도) 미달</div>
             </div>
             
 
-        <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
+        <div class="section-title">🔭 사전 트리거 감시망 (관찰 중)</div>
         <div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>
 
-        <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
+        <div class="section-title">🚫 품질 하한선 미달 및 반려 기록</div>
         <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
             
             <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
-                <span style="color:#9CA3AF; font-size:0.8em;">[2026-01-31 19:55:22]</span> 
+                <span style="color:#9CA3AF; font-size:0.8em;">[2026-02-01 05:46:31]</span> 
                 <span class="badge-status status-no-ev" style="margin:0 8px;">UNKNOWN</span>
                 <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
             </div>
@@ -228,35 +216,35 @@
 
     <!-- Tab 2: Hoin Evidence -->
     <div id="hoinevidence" class="container">
-        <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
+        <div class="section-title">🧬 호인 아티팩트 (최신 분석 데이터)</div>
         <div style="display:grid; gap:20px;">
             
         </div>
-        <div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>2026-01-31에 감지된 호인 아티팩트가 없습니다.</div>
+        <div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>2026-02-01에 감지된 호인 아티팩트가 없습니다.</div>
     </div>
 
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
         <div class="filter-bar" style="margin-bottom:20px; display:flex; gap:15px; align-items:center; font-size:13px; color:#475569;">
-            <b>VIEW FILTER:</b>
+            <b>상태 필터:</b>
             <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
-                <option value="ALL">All Status</option>
-                <option value="TRUST_LOCKED">TRUST_LOCKED (Confirmed)</option>
-                <option value="HOLD">HOLD</option>
-                <option value="REJECT">REJECT</option>
+                <option value="ALL">전체 상태</option>
+                <option value="TRUST_LOCKED">발화 확정 (Confirmed)</option>
+                <option value="HOLD">보류 (HOLD)</option>
+                <option value="REJECT">반려 (REJECT)</option>
             </select>
-            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Evidence Attached Only</label>
-            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Verified Proof Only</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결됨</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 실체 검증됨</label>
         </div>
         
         <table class="unified-table">
             <thead>
                 <tr>
-                    <th width="120">LINK</th>
-                    <th>ISSUE TITLE</th>
-                    <th width="120">STATUS</th>
-                    <th width="150">TICKERS</th>
-                    <th width="120">HOIN EVIDENCE</th>
+                    <th width="120">연결 상태</th>
+                    <th>이슈 제목</th>
+                    <th width="120">현재 상태</th>
+                    <th width="150">관련 종목</th>
+                    <th width="120">호인 근거 데이터</th>
                 </tr>
             </thead>
             <tbody>
@@ -268,14 +256,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('0')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-0">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
                     </div>
                 </td>
             </tr>
@@ -287,14 +275,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('1')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-1">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (ID).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
                     </div>
                 </td>
             </tr>
@@ -306,14 +294,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('2')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-2">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -321,7 +309,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -329,10 +317,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131044929).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -344,7 +332,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -352,7 +340,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -369,14 +357,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('3')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-3">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -384,7 +372,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -392,10 +380,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131043959).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -407,7 +395,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -415,7 +403,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -432,14 +420,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('4')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-4">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -447,7 +435,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -455,10 +443,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131041914).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -470,7 +458,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -478,7 +466,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -495,14 +483,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('5')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-5">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -510,7 +498,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -518,10 +506,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131040121).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -533,7 +521,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -541,7 +529,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -558,14 +546,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('6')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-6">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -573,7 +561,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -581,10 +569,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131035228).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -596,7 +584,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -604,7 +592,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -621,14 +609,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('7')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-7">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -636,7 +624,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -644,10 +632,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131034736).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -659,7 +647,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -667,7 +655,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -684,14 +672,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('8')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-8">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -699,7 +687,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -707,10 +695,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131034359).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -722,7 +710,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -730,7 +718,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -747,14 +735,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('9')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-9">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -762,7 +750,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -770,10 +758,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131021233).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -785,7 +773,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -793,7 +781,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -810,14 +798,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('10')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-10">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -825,7 +813,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -833,10 +821,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131020850).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -848,7 +836,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -856,7 +844,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -873,14 +861,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('11')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-11">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -888,7 +876,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -896,10 +884,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260130235145).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -911,7 +899,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -919,7 +907,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -936,14 +924,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('12')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-12">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -951,7 +939,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -959,10 +947,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260130154629).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -974,7 +962,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -982,7 +970,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -999,14 +987,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('13')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-13">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -1014,7 +1002,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -1022,10 +1010,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129150807).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1037,7 +1025,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1045,7 +1033,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1062,14 +1050,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('14')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-14">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div><div style='margin-bottom:15px;'>
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
                 </div>
@@ -1077,7 +1065,7 @@
                 <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
                     <b>GENERIC_samsung_q4</b>: Generic Source
                 </div>
-                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -1085,10 +1073,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129150757).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1100,7 +1088,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1108,7 +1096,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1125,14 +1113,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('15')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-15">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -1140,10 +1128,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145652).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1155,7 +1143,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1163,7 +1151,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1180,14 +1168,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('16')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-16">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -1195,10 +1183,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145641).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1210,7 +1198,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1218,7 +1206,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1235,14 +1223,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('17')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-17">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
@@ -1250,10 +1238,10 @@
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                    출처: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
-            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129145437).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1265,7 +1253,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1273,7 +1261,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1290,14 +1278,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('18')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-18">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144451).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1309,7 +1297,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1317,7 +1305,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1334,14 +1322,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('19')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-19">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144423).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1353,7 +1341,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1361,7 +1349,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1378,14 +1366,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('20')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-20">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144347).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1397,7 +1385,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1405,7 +1393,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1422,14 +1410,14 @@
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('21')">
-                        0 Evidence ▾
+                        0개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-21">
                 <td colspan="5">
                     <div class="evidence-drawer">
-                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144324).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
@@ -1441,7 +1429,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
                         <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                            출처: <b>OFFICIAL_PRESS</b> (-) | 참조: <code>press_asml_001.pdf</code>
                         </div>
                     </li>
                     
@@ -1449,7 +1437,7 @@
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
                         <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                            출처: <b>EARNINGS_CALL</b> (-) | 참조: <code>samsung_q4_call.json</code>
                         </div>
                     </li>
                     </ul>
@@ -1472,6 +1460,18 @@
             // Show new tab
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            const isHidden = el.style.display === 'none';
+            el.style.display = isHidden ? 'block' : 'none';
+            
+            // Toggle arrow if exists
+            const arrow = document.getElementById(id + '-arrow');
+            if (arrow) {
+                arrow.innerText = isHidden ? '▴' : '▾';
+            }
         }
 
         function toggleRow(id) {
