@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IssueSignal & Hoin Unified Dashboard</title>
+    <title>IssueSignal Unified Ops Center</title>
     <style>
         :root {
             --bg: #f8fafc;
@@ -17,122 +17,262 @@
             --purple: #7c3aed;
             --red: #ef4444;
             --border: #e2e8f0;
+            --amber: #f59e0b;
+            --amber-light: #fffbeb;
+            --amber-border: #fcd34d;
         }
         body { font-family: 'Pretendard', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }
         
-        .top-header { background: var(--header-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Premium Header */
+        .top-header { 
+            background: var(--header-bg); 
+            padding: 0 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: white; 
+            height: 64px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            z-index: 100;
+        }
+        .header-brand { font-size: 18px; font-weight: 800; display:flex; align-items:center; gap:10px; }
+        .header-meta { font-size: 11px; color: rgba(255,255,255,0.6); font-family: monospace; text-align: right; display: flex; gap: 15px; letter-spacing: 0.05em; }
         
-        .nav-tabs { background: white; border-bottom: 1px solid var(--border); display: flex; gap: 30px; padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .tab-btn { padding: 18px 5px; border: none; background: none; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
-        .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+        /* Navigation Tabs */
+        .nav-tabs { 
+            background: white; 
+            border-bottom: 1px solid var(--border); 
+            display: flex; 
+            gap: 5px; 
+            padding: 0 40px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 99; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+            height: 50px; 
+            align-items: end;
+        }
+        .tab-btn { 
+            padding: 14px 20px; 
+            border: none; 
+            background: none; 
+            font-weight: 600; 
+            font-size: 13px; 
+            cursor: pointer; 
+            color: var(--text-sub); 
+            border-bottom: 2px solid transparent; 
+            transition: 0.2s; 
+            letter-spacing: 0.03em; 
+        }
+        .tab-btn:hover { color: var(--text-main); background: #f1f5f9; border-radius: 6px 6px 0 0; }
+        .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); background: none; }
         
-        .container { padding: 40px; max-width: 1200px; margin: 0 auto; display: none; }
+        .container { padding: 40px; max-width: 1000px; margin: 0 auto; display: none; }
         .container.active { display: block; }
         
-        .status-badge { padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; }
+        .section-title { font-size: 18px; font-weight: 800; color: #1e293b; margin: 50px 0 25px 0; display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .section-title::before { content: ''; display: inline-block; width: 4px; height: 18px; background: var(--blue); border-radius: 2px; }
+        
+        /* Premium Card Styles (Ported from TopicCardRenderer) */
+        .topic-card-top1 {
+            background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+            border: 1px solid #e2e8f0; border-top: 5px solid #7c3aed;
+            border-radius: 12px; padding: 30px; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .topic-header-label { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 12px; display:flex; align-items:center; gap:8px; }
+        .topic-title { font-size: 28px; font-weight: 800; color: #1e293b; margin: 10px 0 20px 0; line-height: 1.25; }
+        
+        .auth-sentence { background:#ECFDF5; border-left:4px solid #059669; padding:15px 20px; color:#065F46; font-weight:700; font-size:15px; line-height:1.6; border-radius: 0 8px 8px 0; margin-bottom: 25px; }
+        
+        .one-liner { font-size: 16px; line-height: 1.7; font-weight: 500; color: #334155; margin-bottom: 25px; }
+        
+        /* Content Package Block */
+        .content-package { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 30px; }
+        .cp-header { font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
+        .cp-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .cp-desc { font-size: 12px; color: #64748b; }
+        
+        /* Copy Button - Premium Style */
+        .copy-btn { 
+            background: white; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; font-size: 12px; color: #475569; 
+            min-width: 130px; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .copy-btn:hover { border-color: #94a3b8; background: #f1f5f9; color: #1e293b; }
+        .copy-btn-primary { background: #eff6ff; border-color: #bfdbfe; color: #2563eb; }
+        .copy-btn-primary:hover { background: #dbeafe; border-color: #93c5fd; }
+        .copy-btn-shorts { background: #fff1f2; border-color: #fecdd3; color: #e11d48; }
+        .copy-btn-shorts:hover { background: #ffe4e6; border-color: #fda4af; }
+
+        /* Meta Pills */
+        .meta-pill { background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+        .meta-pill.purple { background: #f3e8ff; color: #6b21a8; }
+
+        /* Unified Table Styles */
+        .unified-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .unified-table th { background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }
+        .unified-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: #334155; }
+        .unified-table tr:last-child td { border-bottom: none; }
+        
+        .status-badge { padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; display: inline-block; }
         .status-success { background: #dcfce7; color: #166534; }
+        .status-matched { background: #dbeafe; color: #1e40af; }
+        .status-no-ev { background: #f3f4f6; color: #6b7280; }
         
-        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .summary-card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .summary-card .count { font-size: 28px; font-weight: 800; margin-top: 10px; color: #0f172a; }
+        /* Drawer */
+        .evidence-drawer { background: #fbfcfe; padding: 20px 30px; border-top: 1px solid #e2e8f0; display: none; }
+        .evidence-item { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
         
-        .section-title { font-size: 20px; font-weight: 800; color: #1e293b; margin: 40px 0 20px 0; display: flex; align-items: center; gap: 10px; }
-        .section-title::before { content: ''; display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }
-        
-        .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 25px; }
-        
-        .card-base { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); padding: 25px; transition: transform 0.2s; }
-        .card-base:hover { transform: translateY(-2px); }
-        .is-card { border-top: 6px solid var(--emerald); }
-        .hoin-card { border-top: 6px solid var(--purple); }
-        
-        .unified-table { width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .unified-table th { background: #f8fafc; padding: 18px; text-align: left; font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); }
-        .unified-table td { padding: 18px; border-bottom: 1px solid var(--border); font-size: 14px; }
-        
-        .evidence-drawer { padding: 30px; background: #fbfcfe; border-top: 1px solid var(--border); }
-        .evidence-item { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        
-        .expand-btn { background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px; }
+        .expand-btn { background: transparent; color: #3b82f6; border: none; font-weight: 600; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+        .expand-btn:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="top-header">
-        <h1 style="margin:0; font-size: 1.4em; display:flex; align-items:center; gap:10px;">
-            <span style="background:white; color:#0f172a; padding:4px 10px; border-radius:8px;">🛰️</span> 
+        <div class="header-brand">
+            <span style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:6px; font-size:16px;">🛰️</span> 
             HOIN Unified Ops Center
-        </h1>
-        <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">날짜: 2026-01-31</div>
-            <div class="status-badge status-success">엔진: SUCCESS</div>
+        </div>
+        <div>
+            <div class="header-meta">
+                <span>DATA: 2026-01-31</span>
+                <span>RUN: 2026-01-31 11:08:50</span>
+            </div>
+            <div class="header-meta" style="margin-top:2px;">
+                <span>COMMIT: 2cbd7fb</span>
+                <span>ENG: v2.5.1</span>
+            </div>
         </div>
     </div>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 증거 (Hoin Evidence)</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">연결 보기 (IS ↔ Hoin)</button>
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal Operator</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Artifacts</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">Evidence Link View</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
         
-        <div class="summary-grid">
+        
+        <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
             
-            <div class="summary-card" style="border-top: 3px solid #10B981">
-                <div style="font-size: 0.8em; color: var(--text-sub);">확정</div>
-                <div class="count">1</div>
+            <div style="background:white; border-left:4px solid #10B981; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">확정 (Confirmed)</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">1</div>
             </div>
             
 
-            <div class="summary-card" style="border-top: 3px solid #3B82F6">
-                <div style="font-size: 0.8em; color: var(--text-sub);">감시</div>
-                <div class="count">0</div>
+            <div style="background:white; border-left:4px solid #3B82F6; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">감시 (Watching)</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
-            <div class="summary-card" style="border-top: 3px solid #F59E0B">
-                <div style="font-size: 0.8em; color: var(--text-sub);">보류</div>
-                <div class="count">0</div>
+            <div style="background:white; border-left:4px solid #F59E0B; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">보류 (Hold)</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
-            <div class="summary-card" style="border-top: 3px solid #EF4444">
-                <div style="font-size: 0.8em; color: var(--text-sub);">반려</div>
-                <div class="count">0</div>
+            <div style="background:white; border-left:4px solid #EF4444; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">반려 (Rejected)</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
-            <div class="summary-card" style="border-top: 3px solid #6B7280">
-                <div style="font-size: 0.8em; color: var(--text-sub);">침묵</div>
-                <div class="count">0</div>
+            <div style="background:white; border-left:4px solid #94A3B8; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">침묵 (Silent)</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
         </div>
+
         <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
-        <div class="insight-grid">
-            
-            <div class="decision-card">
-                <div class="title">Export Control Impact</div>
-                <div class="metas">
-                    <span class="meta-item">WHO: GOV</span>
-                    <span class="meta-item">TYPE: GOV_ACTION</span>
-                    <span class="meta-item">ITEM: EUV_STEPPER</span>
+        
+            <div class="topic-card-top1">
+                <!-- Header -->
+                <div class="topic-header-label">
+                     <span>🟣 오늘의 구조적 핵심 이슈 (Top-1)</span>
                 </div>
-                <div style="font-size: 0.95em; line-height: 1.5; margin-bottom: 15px;">
+                
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <div>
+                        <span class="status-badge status-success" style="padding:4px 10px; font-size:11px;">발화 확정 (TRUST_LOCKED)</span>
+                        <h1 class="topic-title">Export Control Impact</h1>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="display:flex; gap:6px; justify-content:flex-end;">
+                            <span class="meta-pill">GOV</span>
+                            <span class="meta-pill purple">GOV_ACTION</span>
+                        </div>
+                        <div style="margin-top:5px; font-size:11px; color:#94a3b8;">ID: RAW-20260130235145</div>
+                    </div>
+                </div>
+
+                <!-- Why Now -->
+                <div class="auth-sentence">
+                    💡 지금 말해야 하는 이유:<br>
+                    "Export controls freeze chip supply chain."
+                </div>
+
+                <!-- One Liner -->
+                <div class="one-liner">
                     Export controls freeze chip supply chain.
                 </div>
-                <div style="font-size: 0.85em; border-top: 1px solid var(--border); padding-top: 10px;">
-                    <span style="color: var(--red); font-weight: bold;">KILL_SWITCH:</span> Any structural change to export control decree.
+
+                <!-- IS-52 Content Package & Operator Actions -->
+                <div class="content-package">
+                    <div class="cp-header">
+                        <span>📋 운영자 콘텐츠 패키지</span>
+                        <span style="font-weight:400; color:#94a3b8; font-size:11px;">(Ready to Speak)</span>
+                    </div>
+                    
+                    <!-- Text Card -->
+                    <div class="cp-row">
+                        <button class="copy-btn" onclick="copyToClipboard(`-`)">
+                            <span>📄 텍스트 카드</span>
+                        </button>
+                        <span class="cp-desc">한 줄 요약 텍스트</span>
+                    </div>
+
+                    <!-- Long Form -->
+                    <div class="cp-row">
+                        <button class="copy-btn copy-btn-primary" onclick="copyToClipboard(`-`)">
+                            <span>📝 롱폼 스크립트</span>
+                        </button>
+                        <span class="cp-desc">전체 논리 구조 포함 (1자)</span>
+                    </div>
+
+                    <!-- Shorts -->
+                    <div class="cp-row">
+                        <button class="copy-btn copy-btn-shorts" onclick="copyToClipboard(`-`)">
+                            <span>🎬 숏츠 대본</span>
+                        </button>
+                        <span class="cp-desc">15초/30초 숏폼용</span>
+                    </div>
                 </div>
-                <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: a2ce7fb4ef8805f2</div>
+
+                <div style="font-size: 0.8em; margin-top: 25px; color:#ef4444; font-weight:600;">
+                    ⛔ KILL_SWITCH: <span style="font-weight:400; color:#334155;">Any structural change to export control decree.</span>
+                </div>
+
+                
+
+                <div style="font-size: 0.7em; margin-top: 15px; color: #94a3b8; text-align:right; border-top:1px solid #f1f5f9; padding-top:10px;">
+                    Signature Verify: a2ce7fb4ef8805f2
+                </div>
             </div>
             
-        </div>
+
         <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
         <div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>
+
         <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
-        <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
+        <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
             최근 기록된 개선/반려 내역이 없습니다.
         </div>
     </div>
@@ -140,7 +280,7 @@
     <!-- Tab 2: Hoin Evidence -->
     <div id="hoinevidence" class="container">
         <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
-        <div class="insight-grid">
+        <div style="display:grid; gap:20px;">
             
         </div>
         <div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>2026-01-31에 감지된 호인 아티팩트가 없습니다.</div>
@@ -148,16 +288,16 @@
 
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
-        <div class="filter-bar">
-            <b>필터:</b>
-            <select id="statusFilter" onchange="filterLinkView()">
-                <option value="ALL">전체 상태</option>
-                <option value="TRUST_LOCKED">TRUST_LOCKED</option>
+        <div class="filter-bar" style="margin-bottom:20px; display:flex; gap:15px; align-items:center; font-size:13px; color:#475569;">
+            <b>VIEW FILTER:</b>
+            <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
+                <option value="ALL">All Status</option>
+                <option value="TRUST_LOCKED">TRUST_LOCKED (Confirmed)</option>
                 <option value="HOLD">HOLD</option>
                 <option value="REJECT">REJECT</option>
             </select>
-            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결만 보기</label>
-            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 검증 완료만 보기</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Evidence Attached Only</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Verified Proof Only</label>
         </div>
         
         <table class="unified-table">
@@ -212,7 +352,7 @@
             
             <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
-                <td><b>Export Control Impact</b><br><small>RAW-20260130235145</small></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260131020850</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
@@ -222,6 +362,69 @@
                 </td>
             </tr>
             <tr class="expanded-row" id="drawer-2">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
+                <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
+                    <b>FILE_press_asml_001.pdf</b>: press_asml_001.pdf
+                </div>
+                
+                <div style="display:inline-block; background:#EFF6FF; color:#2563EB; border:1px solid #2563EB33; padding:2px 8px; border-radius:15px; font-size:0.75em; margin-right:5px; margin-bottom:5px;">
+                    <b>GENERIC_samsung_q4</b>: Generic Source
+                </div>
+                </div><div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
+            <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
+                    <span class="badge-status status-matched">PASS: PASS</span>
+                </div>
+                <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
+                <div style="font-size:0.75em; color:var(--text-sub);">
+                    SOURCE: <b>GOV</b> (2026-01-29) | <a href="https://www.whitehouse.gov/briefing-room/" target="_blank" style="color:var(--blue); text-decoration:none;">https://www.whitehouse.gov/briefing-room/</a>
+                </div>
+            </div>
+            <div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260131020850).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
+                <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
+                        <span class="badge-status status-matched">PROOF_OK</span>
+                    </div>
+                    <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
+                    <ul style="margin:0; padding-left:15px; color:#374151;">
+                    <li style="margin-bottom:8px;">
+                        <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CONTRACT</span>
+                        <span style="font-size:0.85em;">Signed delivery agreement with Intel.</span>
+                        <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
+                            SOURCE: <b>OFFICIAL_PRESS</b> (-) | REF: <code>press_asml_001.pdf</code>
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom:8px;">
+                        <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">CAPEX</span>
+                        <span style="font-size:0.85em;">Samsung 2026 Capex allocated to EUV.</span>
+                        <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
+                            SOURCE: <b>EARNINGS_CALL</b> (-) | REF: <code>samsung_q4_call.json</code>
+                        </div>
+                    </li>
+                    </ul>
+                </div>
+                
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>Export Control Impact</b><br><small>RAW-20260130235145</small></td>
+                <td>TRUST_LOCKED</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('3')">
+                        0 Evidence ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-3">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -273,18 +476,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260130154629</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('3')">
+                    <button class="expand-btn" onclick="toggleRow('4')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-3">
+            <tr class="expanded-row" id="drawer-4">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -336,18 +539,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('4')">
+                    <button class="expand-btn" onclick="toggleRow('5')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-4">
+            <tr class="expanded-row" id="drawer-5">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -399,18 +602,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129150757</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('5')">
+                    <button class="expand-btn" onclick="toggleRow('6')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-5">
+            <tr class="expanded-row" id="drawer-6">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div><div style='margin-bottom:15px;'>
@@ -462,18 +665,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145652</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('6')">
+                    <button class="expand-btn" onclick="toggleRow('7')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-6">
+            <tr class="expanded-row" id="drawer-7">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -517,18 +720,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145641</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('7')">
+                    <button class="expand-btn" onclick="toggleRow('8')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-7">
+            <tr class="expanded-row" id="drawer-8">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -572,18 +775,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-9" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145437</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('8')">
+                    <button class="expand-btn" onclick="toggleRow('9')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-8">
+            <tr class="expanded-row" id="drawer-9">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>
@@ -627,18 +830,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-9" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-10" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144451</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('9')">
+                    <button class="expand-btn" onclick="toggleRow('10')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-9">
+            <tr class="expanded-row" id="drawer-10">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144451).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -671,18 +874,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-10" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-11" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144423</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('10')">
+                    <button class="expand-btn" onclick="toggleRow('11')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-10">
+            <tr class="expanded-row" id="drawer-11">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144423).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -715,18 +918,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-11" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-12" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144347</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('11')">
+                    <button class="expand-btn" onclick="toggleRow('12')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-11">
+            <tr class="expanded-row" id="drawer-12">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144347).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -759,18 +962,18 @@
                 </td>
             </tr>
             
-            <tr class="link-row" id="row-12" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
+            <tr class="link-row" id="row-13" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144324</small></td>
                 <td>TRUST_LOCKED</td>
                 <td></td>
                 <td>
-                    <button class="expand-btn" onclick="toggleRow('12')">
+                    <button class="expand-btn" onclick="toggleRow('13')">
                         0 Evidence ▾
                     </button>
                 </td>
             </tr>
-            <tr class="expanded-row" id="drawer-12">
+            <tr class="expanded-row" id="drawer-13">
                 <td colspan="5">
                     <div class="evidence-drawer">
                         <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 (RAW-20260129144324).</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>
@@ -810,15 +1013,22 @@
 
     <script>
         function switchTab(tabId, btn) {
+            // Hide all tabs
             document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Show new tab
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
         }
 
         function toggleRow(id) {
             const row = document.getElementById('drawer-' + id);
-            row.style.display = (row.style.display === 'table-row') ? 'none' : 'table-row';
+            // Check computed style
+            if(row.style.display === 'table-row') {
+                row.style.display = 'none';
+            } else {
+                row.style.display = 'table-row';
+            }
         }
 
         function filterLinkView() {
@@ -840,8 +1050,18 @@
                 row.style.display = visible ? 'table-row' : 'none';
                 if (!visible) {
                     const id = row.id.split('-')[1];
-                    document.getElementById('drawer-' + id).style.display = 'none';
+                    const drawer = document.getElementById('drawer-' + id);
+                    if(drawer) drawer.style.display = 'none';
                 }
+            });
+        }
+
+        function copyToClipboard(text) {
+            if(!text || text === '-' || text === 'undefined') return;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('콘텐츠가 클립보드에 복사되었습니다.');
+            }).catch(err => {
+                console.error('Copy failed: ', err);
             });
         }
     </script>
