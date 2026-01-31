@@ -2733,6 +2733,24 @@ def generate_dashboard(base_dir: Path):
                              </div>
                              '''
                          }
+                         
+                         <!-- [IS-61] WHY-NOW Panel -->
+                         {
+                             f'''
+                             <div style="margin-top:12px; background:#fff1f2; border:1px solid #fda4af; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                     <div style="font-size:12px; font-weight:800; color:#9f1239; display:flex; align-items:center; gap:6px;">
+                                         <span>⏰ 지금 말해야 하는 이유 (WHY NOW)</span>
+                                     </div>
+                                 </div>
+                                 <div style="font-size:13px; font-weight:700; color:#881337; line-height:1.4;">
+                                     "{final_card['blocks']['bottleneck_analysis']['protagonists'][0]['why_now']}"
+                                 </div>
+                             </div>
+                             '''
+                             if final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists') 
+                                and final_card['blocks']['bottleneck_analysis']['protagonists'][0].get('why_now') else ''
+                         }
 
                      </div>
                      <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
