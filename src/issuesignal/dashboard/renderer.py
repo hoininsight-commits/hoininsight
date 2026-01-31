@@ -175,26 +175,25 @@ class DashboardRenderer:
     </div>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal Operator</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Artifacts</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">Evidence Link View</button>
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">이슈시그널 운영센터</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 분석 데이터</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">통합 근거 연결뷰</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
-        {self._render_no_topic_alert(summary)}
         
         <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
             {self._render_counters(summary.counts)}
         </div>
 
-        <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
+        <div class="section-title">✨ 오늘의 최종 가공 인텔리전스</div>
         {self._render_top_cards(summary.top_cards)}
 
-        <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
+        <div class="section-title">🔭 사전 트리거 감시망 (관찰 중)</div>
         {self._render_watchlist(summary.watchlist)}
 
-        <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
+        <div class="section-title">🚫 품질 하한선 미달 및 반려 기록</div>
         <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
             {self._render_reject_logs(summary.reject_logs)}
         </div>
@@ -202,7 +201,7 @@ class DashboardRenderer:
 
     <!-- Tab 2: Hoin Evidence -->
     <div id="hoinevidence" class="container">
-        <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
+        <div class="section-title">🧬 호인 아티팩트 (최신 분석 데이터)</div>
         <div style="display:grid; gap:20px;">
             {self._render_hoin_evidence(summary.hoin_evidence)}
         </div>
@@ -212,15 +211,15 @@ class DashboardRenderer:
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
         <div class="filter-bar" style="margin-bottom:20px; display:flex; gap:15px; align-items:center; font-size:13px; color:#475569;">
-            <b>VIEW FILTER:</b>
+            <b>상태 필터:</b>
             <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
-                <option value="ALL">All Status</option>
-                <option value="TRUST_LOCKED">TRUST_LOCKED (Confirmed)</option>
-                <option value="HOLD">HOLD</option>
-                <option value="REJECT">REJECT</option>
+                <option value="ALL">전체 상태</option>
+                <option value="TRUST_LOCKED">발화 확정 (Confirmed)</option>
+                <option value="HOLD">보류 (HOLD)</option>
+                <option value="REJECT">반려 (REJECT)</option>
             </select>
-            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Evidence Attached Only</label>
-            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Verified Proof Only</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결됨</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 실체 검증됨</label>
         </div>
         {self._render_link_view(summary.link_view)}
     </div>
@@ -233,6 +232,18 @@ class DashboardRenderer:
             // Show new tab
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
+        }}
+
+        function toggleElement(id) {{
+            const el = document.getElementById(id);
+            const isHidden = el.style.display === 'none';
+            el.style.display = isHidden ? 'block' : 'none';
+            
+            // Toggle arrow if exists
+            const arrow = document.getElementById(id + '-arrow');
+            if (arrow) {{
+                arrow.innerText = isHidden ? '▴' : '▾';
+            }}
         }}
 
         function toggleRow(id) {{
@@ -312,124 +323,122 @@ class DashboardRenderer:
         return "\n".join(items)
 
     def _render_top_cards(self, cards: List[DecisionCard]) -> str:
-        # [IS-52] Daily Issue Lock Loop UI with Premium Restoration
+        # [IS-67-UX] Operator Decision Mode: Single Top Priority Card
         if not cards:
             return """
-            <div style="background:#fffbeb; border:1px solid #fcd34d; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="background:#fff1f2; border:1px solid #fecdd3; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center;">
                 <div style="font-size:3em; margin-bottom:15px;">❌</div>
-                <div style="font-weight:800; color:#92400e; font-size:1.5em; margin-bottom:10px;">오늘 발화할 토픽 없음</div>
-                <div style="font-size:1.1em; color:#b45309;">사유: 신뢰도 검증 미달 및 중복 트리거</div>
-                <div style="margin-top:20px; font-size:0.9em; color:#d97706;">
-                    * HOIN 엔진의 엄격한 검증 기준(IS-26)을 통과한 이슈가 없습니다.
-                </div>
+                <div style="font-weight:800; color:#e11d48; font-size:1.5em; margin-bottom:10px;">오늘 발화할 토픽 없음</div>
+                <div style="font-size:1.1em; color:#be123c;">사유: 운영 품질 하한선(WHY-NOW/신호 강도) 미달</div>
             </div>
             """
             
-        items = []
-        for c in cards:
-            # Prepare Content Package
-            cp = c.blocks.get('content_package', {})
-            long_form = cp.get('long_form', '-')
-            shorts = cp.get('shorts_ready', [])
-            text_card = cp.get('text_card', '-')
-            shorts_text = " / ".join(shorts) if shorts else "-"
+        # We only focus on Rank 0 for the Top Priority Card
+        c = cards[0]
+        
+        # [IS-67-UX] Handle SILENT/HOLD status as "No Topic"
+        if c.status in ["SILENT", "HOLD"] and not c.blocks.get('content_package', {}).get('long_form'):
+            return f"""
+            <div style="background:#fff1f2; border:1px solid #fecdd3; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center;">
+                <div style="font-size:3em; margin-bottom:15px;">❌</div>
+                <div style="font-weight:800; color:#e11d48; font-size:1.5em; margin-bottom:10px;">{c.title}</div>
+                <div style="font-size:1.1em; color:#be123c;">{c.decision_rationale}</div>
+            </div>
+            """
 
-            # Narrative Block
-            narrative_html = ""
-            if c.blocks and 'narrative_reconstruction' in c.blocks:
-                nr = c.blocks['narrative_reconstruction']
-                narrative_html = f"""
-                <div style="margin-top:25px; padding-top:25px; border-top:1px dashed #e2e8f0;">
-                    <div style="font-size:11px; font-weight:800; color:#475569; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.05em;">
-                        📜 역사적 패턴 재구성 (IS-50)
+        cp = c.blocks.get('content_package', {})
+        long_form = cp.get('long_form', '-')
+        text_card = cp.get('text_card', '-')
+        
+        # Risk factors summary
+        risk_text = c.risk_factors[0] if c.risk_factors else "시장 변동성 확인 필요"
+
+        # Evidence Summary for Collapse
+        evidence_summary = []
+        if c.trigger_quote: evidence_summary.append("인용구(Quote)")
+        if c.blocks.get('flow_evidence'): evidence_summary.append("수급 데이터(Flow)")
+        if c.blocks.get('corporate_facts'): evidence_summary.append("기업 공시(Corp)")
+        ev_summary_label = " + ".join(evidence_summary) if evidence_summary else "데이터 분석 결과"
+
+        return f"""
+        <div class="topic-card-top1" style="border-top: 8px solid var(--blue);">
+            <!-- Header Group -->
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+                <div>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                        <span style="background:var(--blue); color:white; padding:4px 12px; border-radius:4px; font-size:12px; font-weight:800;">📌 오늘의 1순위 발화</span>
+                        <span style="font-size:12px; color:var(--text-sub); font-weight:600;">추천 형식: 롱폼 / 숏츠 / 텍스트</span>
                     </div>
-                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:15px;">
-                         <div style="font-size:12px; margin-bottom:10px; color:#64748b;">
-                            유사 사례: <b>{nr['past_case_id']}</b> ({nr['reference_date']}) | 패턴: <span style="color:#ef4444; font-weight:bold;">{nr['pattern_tag']}</span>
-                        </div>
-                        <div style="font-size:14px; line-height:1.6; color:#334155; white-space: pre-line;">
-                            {nr['narrative_text']}
-                        </div>
-                    </div>
+                    <h1 style="font-size:32px; font-weight:900; color:#0f172a; margin:0; line-height:1.2;">{c.title}</h1>
                 </div>
-                """
-
-            items.append(f"""
-            <div class="topic-card-top1">
-                <!-- Header -->
-                <div class="topic-header-label">
-                     <span>🟣 오늘의 구조적 핵심 이슈 (Top-1)</span>
-                </div>
-                
-                <div style="display:flex; justify-content:space-between; align-items:start;">
-                    <div>
-                        <span class="status-badge status-success" style="padding:4px 10px; font-size:11px;">발화 확정 (TRUST_LOCKED)</span>
-                        <h1 class="topic-title">{c.title}</h1>
+                <div style="text-align:right;">
+                    <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:700; color:#64748b; margin-bottom:4px;">분석 주체</div>
+                        <div style="font-size:14px; font-weight:800; color:#1e293b;">{c.actor}</div>
                     </div>
-                    <div style="text-align:right;">
-                        <div style="display:flex; gap:6px; justify-content:flex-end;">
-                            <span class="meta-pill">{c.actor}</span>
-                            <span class="meta-pill purple">{c.trigger_type}</span>
-                        </div>
-                        <div style="margin-top:5px; font-size:11px; color:#94a3b8;">ID: {c.topic_id}</div>
-                    </div>
-                </div>
-
-                <!-- Why Now -->
-                <div class="auth-sentence">
-                    💡 지금 말해야 하는 이유:<br>
-                    "{c.authority_sentence}"
-                </div>
-
-                <!-- One Liner -->
-                <div class="one-liner">
-                    {c.one_liner}
-                </div>
-
-                <!-- IS-52 Content Package & Operator Actions -->
-                <div class="content-package">
-                    <div class="cp-header">
-                        <span>📋 운영자 콘텐츠 패키지</span>
-                        <span style="font-weight:400; color:#94a3b8; font-size:11px;">(Ready to Speak)</span>
-                    </div>
-                    
-                    <!-- Text Card -->
-                    <div class="cp-row">
-                        <button class="copy-btn" onclick="copyToClipboard(`{text_card}`)">
-                            <span>📄 텍스트 카드</span>
-                        </button>
-                        <span class="cp-desc">한 줄 요약 텍스트</span>
-                    </div>
-
-                    <!-- Long Form -->
-                    <div class="cp-row">
-                        <button class="copy-btn copy-btn-primary" onclick="copyToClipboard(`{long_form}`)">
-                            <span>📝 롱폼 스크립트</span>
-                        </button>
-                        <span class="cp-desc">전체 논리 구조 포함 ({len(long_form)}자)</span>
-                    </div>
-
-                    <!-- Shorts -->
-                    <div class="cp-row">
-                        <button class="copy-btn copy-btn-shorts" onclick="copyToClipboard(`{shorts_text}`)">
-                            <span>🎬 숏츠 대본</span>
-                        </button>
-                        <span class="cp-desc">15초/30초 숏폼용</span>
-                    </div>
-                </div>
-
-                <div style="font-size: 0.8em; margin-top: 25px; color:#ef4444; font-weight:600;">
-                    ⛔ KILL_SWITCH: <span style="font-weight:400; color:#334155;">{c.kill_switch}</span>
-                </div>
-
-                {narrative_html}
-
-                <div style="font-size: 0.7em; margin-top: 15px; color: #94a3b8; text-align:right; border-top:1px solid #f1f5f9; padding-top:10px;">
-                    Signature Verify: {c.signature or '-'}
                 </div>
             </div>
-            """)
-        return "\n".join(items)
+
+            <!-- WHY-NOW Banner -->
+            <div style="background:linear-gradient(to right, #eff6ff, #ffffff); border-left:5px solid var(--blue); padding:18px 25px; border-radius:0 12px 12px 0; margin-bottom:25px;">
+                <div style="font-size:12px; font-weight:800; color:var(--blue); margin-bottom:6px; text-transform:uppercase;">💡 지금 말해야 하는 이유 (WHY-NOW)</div>
+                <div style="font-size:18px; font-weight:700; color:#1e3a8a; line-height:1.5;">"{c.authority_sentence}"</div>
+            </div>
+
+            <!-- Risk Factor -->
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px; padding:10px 15px; background:#fff7ed; border-radius:8px; border:1px solid #ffedd5;">
+                <span style="font-size:14px;">⚠️</span>
+                <span style="font-size:13px; font-weight:600; color:#9a3412;">리스크: {risk_text}</span>
+            </div>
+
+            <!-- Unified Content Package (Immediate Script Exposure) -->
+            <div style="background:#ffffff; border:2px solid #e2e8f0; border-radius:12px; overflow:hidden;">
+                <div style="background:#f8fafc; padding:15px 20px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:14px; font-weight:800; color:#1e293b;">📋 제작 스크립트 (즉시 사용 가능)</span>
+                    <button class="copy-btn copy-btn-primary" onclick="copyToClipboard(document.getElementById('main-script').innerText)">전체 복사</button>
+                </div>
+                <div id="main-script" style="padding:25px; font-size:15px; line-height:1.8; color:#334155; white-space:pre-wrap; background:#ffffff;">{long_form}</div>
+                
+                <!-- Foldable Sub-Contents -->
+                <div style="border-top:1px solid #e2e8f0; background:#f1f5f9; padding:10px 20px;">
+                    <button onclick="toggleElement('sub-contents')" style="background:none; border:none; color:#475569; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:5px;">
+                        기타 형식 (숏츠/텍스트) 보기 <span id="sub-arrow">▾</span>
+                    </button>
+                    <div id="sub-contents" style="display:none; padding-top:15px; padding-bottom:10px;">
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                            <div style="background:white; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
+                                <div style="font-size:11px; font-weight:800; color:#e11d48; margin-bottom:10px;">🎬 숏츠 패키지</div>
+                                <div style="font-size:12px; color:#475569; margin-bottom:5px;">15s: {cp.get('shorts_15s', '-')}</div>
+                                <div style="font-size:12px; color:#475569; margin-bottom:5px;">30s: {cp.get('shorts_30s', '-')}</div>
+                                <div style="font-size:12px; color:#475569;">45s: {cp.get('shorts_45s', '-')}</div>
+                            </div>
+                            <div style="background:white; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
+                                <div style="font-size:11px; font-weight:800; color:#475569; margin-bottom:10px;">📌 텍스트 카드</div>
+                                <div style="font-size:12px; color:#334155; white-space:pre-wrap;">{text_card}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidence Collapse -->
+            <div style="margin-top:25px; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden;">
+                <button onclick="toggleElement('evidence-block')" style="width:100%; text-align:left; background:#f8fafc; border:none; padding:12px 20px; font-size:13px; font-weight:700; color:var(--blue); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                    <span>판단 근거 보기 ({ev_summary_label}) ▸</span>
+                    <span style="font-size:11px; color:#94a3b8; font-weight:400;">데이터 검증 완료</span>
+                </button>
+                <div id="evidence-block" style="display:none; padding:20px; background:#ffffff; border-top:1px solid #e2e8f0;">
+                    <div style="font-size:13px; line-height:1.7; color:#475569;">
+                        {self._render_evidence_summary(c)}
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; margin-top: 20px; color: #94a3b8; text-align:right;">
+                데이터 보증 식별자: {c.signature or '-'} | 분석 모델: {c.card_version}
+            </div>
+        </div>
+        """
 
     def _render_watchlist(self, cards: List[DecisionCard]) -> str:
         if not cards: return "<div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>"
@@ -440,17 +449,17 @@ class DashboardRenderer:
                 <td><b>{c.title}</b></td>
                 <td>{c.actor}</td>
                 <td>{c.trigger_type}</td>
-                <td style="color: var(--blue)">PRE_TRIGGER</td>
+                <td style="color: var(--blue)">사전 트리거 감지</td>
             </tr>
             """)
         return f"""
         <table class="watchlist-table">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Actor</th>
-                    <th>Type</th>
-                    <th>Status</th>
+                    <th>항목 제목</th>
+                    <th>주체</th>
+                    <th>트리거 종류</th>
+                    <th>현재 상태</th>
                 </tr>
             </thead>
             <tbody>
@@ -498,14 +507,14 @@ class DashboardRenderer:
             bullets = "".join([f"<li>{b}</li>" for b in i.bullets])
             res.append(f"""
             <div class="card-base hoin-card">
-                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[HOIN ARTIFACT]</div>
+                <div style="font-size: 0.75em; color: var(--purple); font-weight: bold; margin-bottom:5px;">[호인 아티팩트]</div>
                 <div style="font-weight: bold; font-size: 1.1em; margin-bottom:8px;">{i.title}</div>
                 <div style="font-size: 0.9em; color: var(--text-sub); margin-bottom:12px;">{i.summary}</div>
                 <ul style="font-size:0.85em; padding-left:18px; margin-bottom:12px; color:#374151;">
                     {bullets}
                 </ul>
                 <div style="font-size: 0.75em; color: var(--text-sub); border-top: 1px solid var(--border); padding-top:8px;">
-                    SOURCE: <code>{i.source_file}</code>
+                    출처 파일: <code>{i.source_file}</code>
                 </div>
             </div>
             """)
@@ -527,7 +536,7 @@ class DashboardRenderer:
                 <td>{", ".join([t.get('symbol', '') for t in c.tickers])}</td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('{idx}')">
-                        {len(r.linked_evidence)} Evidence ▾
+                        {len(r.linked_evidence)}개 근거 항목 ▾
                     </button>
                 </td>
             </tr>
@@ -544,11 +553,11 @@ class DashboardRenderer:
         <table class="unified-table">
             <thead>
                 <tr>
-                    <th width="120">LINK</th>
-                    <th>ISSUE TITLE</th>
-                    <th width="120">STATUS</th>
-                    <th width="150">TICKERS</th>
-                    <th width="120">HOIN EVIDENCE</th>
+                    <th width="120">연결 상태</th>
+                    <th>이슈 제목</th>
+                    <th width="120">현재 상태</th>
+                    <th width="150">관련 종목</th>
+                    <th width="120">호인 근거 데이터</th>
                 </tr>
             </thead>
             <tbody>
@@ -563,7 +572,7 @@ class DashboardRenderer:
         
         # 0. Source Clusters Summary (IS-32)
         if c.source_clusters:
-            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--green); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 SOURCE DIVERSITY (IS-32)</div>")
+            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); border-bottom:1px solid var(--border); padding-bottom:5px;'>🌐 정보 출처 다양성 검증</div>")
             cluster_badges = []
             for sc in c.source_clusters:
                 color = "#059669" if sc.cluster_type == "OFFICIAL" else "#2563EB"
@@ -576,7 +585,7 @@ class DashboardRenderer:
             items.append(f"<div style='margin-bottom:15px;'>{''.join(cluster_badges)}</div>")
 
         # 1. Trigger Quote Section (IS-31)
-        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ TRIGGER QUOTE PROOF (IS-31)</div>")
+        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div>")
         if not c.trigger_quote:
             items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div>")
         else:
@@ -590,17 +599,17 @@ class DashboardRenderer:
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"{q.excerpt}"</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
-                    SOURCE: <b>{q.source_kind}</b> ({q.source_date}) | <a href="{q.source_ref}" target="_blank" style="color:var(--blue); text-decoration:none;">{q.source_ref}</a>
+                    출처: <b>{q.source_kind}</b> ({q.source_date}) | <a href="{q.source_ref}" target="_blank" style="color:var(--blue); text-decoration:none;">원문 보기</a>
                 </div>
             </div>
             """)
 
         # 1. Hoin Evidence Section
-        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 HOIN EVIDENCE</div>")
+        items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div>")
         if not row.linked_evidence:
-            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다 ({c.topic_id}).</div>")
+            items.append(f"<div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div>")
         else:
-            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); font-size:0.85em;'>MATCH REASON: {row.match_reason}</div>")
+            items.append(f"<div style='margin-bottom:15px; font-weight:bold; color:var(--emerald); font-size:0.85em;'>매칭 근거: {row.match_reason}</div>")
             for ev in row.linked_evidence:
                 bullets = "".join([f"<li>{b}</li>" for b in ev.bullets])
                 items.append(f"""
@@ -608,12 +617,12 @@ class DashboardRenderer:
                     <div style="font-weight:bold; font-size:0.95em;">{ev.title}</div>
                     <div style="font-size:0.85em; color:var(--text-sub); margin:5px 0;">{ev.summary}</div>
                     <ul style="font-size:0.8em; margin:8px 0; padding-left:20px;">{bullets}</ul>
-                    <div style="font-size:0.7em; color:var(--blue);">REF: {ev.source_file}</div>
+                    <div style="font-size:0.7em; color:var(--blue);">분석 파일: {ev.source_file}</div>
                 </div>
                 """)
 
         # 2. Proof Pack Section (IS-30)
-        items.append(f"<div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ TICKER PROOF PACKS (IS-30)</div>")
+        items.append(f"<div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div>")
         if not c.proof_packs:
             items.append(f"<div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>")
         else:
@@ -625,7 +634,7 @@ class DashboardRenderer:
                         <span style="background:#FEF3C7; color:#92400E; padding:1px 5px; border-radius:3px; font-size:0.75em; font-weight:bold;">{f.fact_type}</span>
                         <span style="font-size:0.85em;">{f.fact_claim}</span>
                         <div style="font-size:0.7em; color:var(--text-sub); margin-top:2px;">
-                            SOURCE: <b>{f.source_kind}</b> ({f.source_date}) | REF: <code>{f.source_ref}</code>
+                            출처: <b>{f.source_kind}</b> ({f.source_date}) | 참조: <code>{f.source_ref}</code>
                         </div>
                     </li>
                     """)
@@ -641,5 +650,44 @@ class DashboardRenderer:
                     <ul style="margin:0; padding-left:15px; color:#374151;">{''.join(f_items)}</ul>
                 </div>
                 """)
+        
+        return "".join(items)
+
+    def _render_evidence_summary(self, c: DecisionCard) -> str:
+        items = []
+        
+        # 1. Trigger Quote
+        if c.trigger_quote:
+            items.append(f"""
+            <div style="margin-bottom:15px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
+                <b style="color:var(--blue);">🗣️ 직접 발언 근거 (인용구):</b><br>
+                <div style="margin-top:5px; font-weight:700; color:#1e293b;">"{c.trigger_quote.excerpt}"</div>
+                <div style="font-size:11px; color:var(--text-sub); margin-top:3px;">출처: {c.trigger_quote.source_kind} ({c.trigger_quote.source_date})</div>
+            </div>
+            """)
+            
+        # 2. Hard Facts (Corporate Actions/Macro)
+        hard_facts_raw = c.blocks.get('flow_evidence', []) + c.blocks.get('corporate_facts', [])
+        if hard_facts_raw:
+            facts_html = []
+            for f in hard_facts_raw[:5]:
+                facts_html.append(f"<li>{f.get('fact_text', f.get('fact', '데이터 확인 불가'))}</li>")
+            
+            items.append(f"""
+            <div style="margin-bottom:15px;">
+                <b style="color:var(--emerald);">✅ 데이터 팩트 (공시/지표):</b>
+                <ul style="margin:8px 0; padding-left:20px;">
+                    {''.join(facts_html)}
+                </ul>
+            </div>
+            """)
+            
+        # 3. Decision Rationale
+        items.append(f"""
+        <div style="background:#f8fafc; padding:12px; border-radius:6px; font-size:12px;">
+            <b style="color:var(--purple);">⚙️ 시스템 판단 로직:</b><br>
+            {c.decision_rationale}
+        </div>
+        """)
         
         return "".join(items)

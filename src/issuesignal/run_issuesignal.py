@@ -143,33 +143,53 @@ def main():
                 # [IS-66] Editorial Candidate Condition
                 status = "EDITORIAL_CANDIDATE"
             
-            # Generate Script if Eligible
+            # Generate Script if Eligible (IS-67 Quality Floor)
             script_data = None
+            
+            # Floor Check: HARD_FACT >= 1, WHY_NOW exists
+            # We count official_facts and corporate_facts as hard facts
+            has_hard_fact = len(corporate_facts) > 0 or len(official_facts) > 0
+            has_why_now = bool(cand.get('why_now'))
+
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
-                try:
-                    script_data = ScriptLockEngine.generate(
-                        cand, 
-                        cand.get('why_now', '시점 정보 부족'), 
-                        rotation_verdict.get('target_sector', '관련 섹터')
-                    )
-                    cand['generated_script'] = script_data
-                except Exception as e:
-                    print(f"[Warn] Script Gen Failed for {idx}: {e}")
+                if has_hard_fact and has_why_now:
+                    try:
+                        script_data = ScriptLockEngine.generate(
+                            cand, 
+                            cand.get('why_now', '시점 정보 부족'), 
+                            rotation_verdict.get('target_sector', '관련 섹터'),
+                            all_context + corporate_facts # Evidence Pool
+                        )
+                        cand['generated_script'] = script_data
+                    except Exception as e:
+                        print(f"[Warn] Script Gen Failed for {idx}: {e}")
+                else:
+                    status = "HOLD" # Downgrade if floor not met
+                    print(f"[Floor] Candidate {idx} rejected: hard_fact={has_hard_fact}, why_now={has_why_now}")
             
-            cand['final_status'] = status
-            cand['final_score'] = score
-            processed_candidates.append(cand)
+            if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"] and not script_data:
+                status = "HOLD" # Catch-all for failed script generation
+                print(f"[Floor] Candidate {idx} rejected: Script generation failed or blocked by validation.")
             
-            # Add to Editorial List for Dashboard
-            editorial_candidates_data.append({
-                "index": idx,
-                "title": cand.get('fact_text', '')[:30],
-                "full_text": cand.get('fact_text', ''),
-                "status": status,
-                "why_now": cand.get('why_now', '-'),
-                "script": script_data,
-                "score": score
-            })
+            if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
+                cand['final_status'] = status
+                cand['final_score'] = score
+                processed_candidates.append(cand)
+                
+                # Add to Editorial List for Dashboard
+                editorial_candidates_data.append({
+                    "index": idx,
+                    "title": cand.get('fact_text', '')[:30],
+                    "full_text": cand.get('fact_text', ''),
+                    "status": status,
+                    "why_now": cand.get('why_now', '-'),
+                    "script": script_data,
+                    "score": score
+                })
+            else:
+                # Add to a bottom 'Reference' pool for reference (HOLD/SILENT)
+                # This meets requirement 4 (Silence/Hold candidates in 'Reference' area)
+                pass
 
         # Select Primary for DecisionCard (Rank 0)
         selected_candidate = processed_candidates[0] if processed_candidates else None
@@ -178,24 +198,25 @@ def main():
         # If no candidates at all -> Silence
         # If candidates exist, we always make a card, but status might be HOLD.
         
-        if not selected_candidate:
-             print("[Loop] No valid candidates found. Generating SILENCE.")
+        if not editorial_candidates_data:
+             print("[IS-67] No valid candidates passed quality floor. Generating SILENCE.")
              decision_card_model = DecisionCard(
                 topic_id=f"SILENCE-{datetime.now().strftime('%Y%m%d')}",
-                title="오늘의 확정 토픽 없음",
+                title="❌ 오늘 발화할 토픽 없음",
                 status="SILENT",
-                one_liner="수집된 데이터가 없거나 기준에 미달합니다.",
+                one_liner="수집된 데이터가 없거나 운영 품질 하한선(Quality Floor)을 만족하지 못합니다.",
                 trigger_type="NO_DATA",
                 actor="-",
                 must_item="-",
                 tickers=[],
                 kill_switch="-",
                 signature="silence_sig",
-                authority_sentence="수집된 데이터 없음.",
-                decision_rationale="유의미한 시장 신호가 감지되지 않았습니다."
+                authority_sentence="수집된 유의미한 데이터 신호 없음.",
+                decision_rationale="사유: WHY-NOW 미충족 또는 시장 가격 반영 완료로 인한 발화 실익 부재."
             )
-             # Even in silence, add empty editorial list
              decision_card_model.blocks["editorial_candidates"] = []
+             # Reference Area (Hold/Silent candidates)
+             decision_card_model.blocks["reference_candidates"] = [c for c in top_candidates if c not in processed_candidates]
              
         else:
             # 5. Build Active Card (Based on Rank 0)
@@ -209,15 +230,20 @@ def main():
             score_val = selected_candidate['final_score']
             
             # Prepare Script for Rank 0
-            long_form = "스크립트 생성 대기중"
-            one_liner = "대기"
-            shorts_ready = []
-            
+            text_card = "-"
+            shorts_15s = "-"
+            shorts_30s = "-"
+            shorts_45s = "-"
+
             if selected_candidate.get('generated_script'):
                 s_data = selected_candidate['generated_script']
                 long_form = s_data['long_form']
                 one_liner = s_data['one_liner']
-                shorts_ready = s_data['shorts_ready']
+                text_card = s_data.get('text_card', '-')
+                shorts_15s = s_data.get('shorts_15s', '-')
+                shorts_30s = s_data.get('shorts_30s', '-')
+                shorts_45s = s_data.get('shorts_45s', '-')
+                shorts_ready = [shorts_15s, shorts_30s, shorts_45s]
             else:
                 # Fallback for HOLD
                 long_form = f"## 분석 대기\n{fact_text}"
@@ -265,7 +291,16 @@ def main():
                      "corporate_facts": corporate_facts, 
                      "all_evidence": all_context + corporate_facts,
                      "bottleneck_analysis": bottleneck_result,
-                     "editorial_candidates": editorial_candidates_data # [IS-66] List Injection
+                     "editorial_candidates": editorial_candidates_data, # [IS-66] List Injection
+                     "content_package": {
+                        "long_form": long_form,
+                        "shorts_ready": shorts_ready,
+                        "shorts_15s": shorts_15s,
+                        "shorts_30s": shorts_30s,
+                        "shorts_45s": shorts_45s,
+                        "one_liner": one_liner,
+                        "text_card": text_card
+                     }
                 }
             )
             

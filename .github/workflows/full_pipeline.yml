@@ -56,7 +56,6 @@ jobs:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: |
-          echo "[PIPELINE] ========== PHASE 1: DATA COLLECTION =========="
           python -m src.collectors.market_collectors || echo "[WARN] Market collectors failed"
           python -m src.collectors.fred_collector || echo "[WARN] FRED collector failed"
           python -m src.collectors.ecos_collector || echo "[WARN] ECOS collector failed"
