@@ -574,7 +574,8 @@ def generate_dashboard(base_dir: Path):
     }
 
     # [UI Logic] Prepare Data for Today's Insight (Safe variable generation)
-    topic_title = final_card.get('topic')
+    # [Fix] Support both 'title' (v2) and 'topic' (legacy) keys
+    topic_title = final_card.get('title') or final_card.get('topic')
     
     # Check for Narrative Topics if Structural is missing
     narrative_topics = final_card.get('narrative_topics', [])
@@ -2642,7 +2643,7 @@ def generate_dashboard(base_dir: Path):
                          <!-- [IS-57A] Real Flow Evidence Panel -->
                          <!-- [IS-57C] Split Evidence Panel (Hint vs Fact) -->
                          {
-                             f"""
+                             f'''
                              <div style="margin-top:12px; background:#fff; border:1px solid #d1fae5; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
                                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                                      <div style="font-size:12px; font-weight:800; color:#059669; display:flex; align-items:center; gap:6px;">
@@ -2653,9 +2654,7 @@ def generate_dashboard(base_dir: Path):
                                  {
                                      '<div style="font-size:12px; color:#6b7280; padding:4px 0;">확정 가능한 증거가 없습니다. <span style="font-size:11px; color:#9ca3af;">(단서만 존재하거나 데이터 부재)</span></div>' 
                                      if not final_card.get('blocks', {}).get('flow_evidence') else 
-                                     """
-                                     <div style="display:flex; flex-direction:column; gap:8px;">
-                                     """ + 
+                                     "<div style='display:flex; flex-direction:column; gap:8px;'>" + 
                                      
                                      (''.join([
                                          '<div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:2px;">✅ 증거 (HARD FACT / OFFICIAL)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
@@ -2681,17 +2680,15 @@ def generate_dashboard(base_dir: Path):
                                          ]) + '</ul>'
                                      ]) if any(i.get('evidence_grade') not in ['HARD_FACT', 'STRONG', 'MEDIUM'] for i in final_card['blocks']['flow_evidence']) else '') +
 
-                                     """
-                                     </div>
-                                     """
+                                     "</div>"
                                  }
                              </div>
-                             """
+                             '''
                          }
                          
                          <!-- [IS-59] Corporate Action Panel -->
                          {
-                             f"""
+                             f'''
                              <div style="margin-top:12px; background:#fff; border:1px solid #dbeafe; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
                                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                                      <div style="font-size:12px; font-weight:800; color:#1e40af; display:flex; align-items:center; gap:6px;">
@@ -2710,7 +2707,7 @@ def generate_dashboard(base_dir: Path):
                                      '</ul>'
                                  }
                              </div>
-                             """
+                             '''
                          }
 
                      </div>

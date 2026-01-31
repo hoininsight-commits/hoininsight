@@ -61,12 +61,12 @@
   },
   {
     "fact_type": "MACRO_FACT",
-    "fact_text": "금 선물 4713.90 (🔻 -11.37%)",
+    "fact_text": "금 선물 (Hint) 4713.90 (🔻 -11.37%)",
     "source": "Market Data (Yahoo)",
     "source_ref": "GC=F",
     "source_date": "2026-01-31",
-    "evidence_grade": "HARD_FACT",
-    "reliability_score": 90,
+    "evidence_grade": "TEXT_HINT",
+    "reliability_score": 50,
     "independence_key": "MACRO_GOLD_2026-01-31",
     "details": {
       "ticker": "GOLD",

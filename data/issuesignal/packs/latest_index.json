@@ -1,17 +1,14 @@
 {
   "run_date_kst": "2026-01-31",
-  "run_ts_kst": "2026-01-31 15:22:18",
+  "run_ts_kst": "2026-01-31 17:40:29",
   "topics_total": 1,
-  "topics_active": 0,
+  "topics_active": 1,
   "topics_hold": 0,
   "topics_silent": 0,
-  "top_reason_counts": [
-    {
-      "reason": "UNKNOWN",
-      "count": 1
-    }
+  "top_reason_counts": [],
+  "pinned_topic_ids": [
+    "ISSUE-20260131-001"
   ],
-  "pinned_topic_ids": [],
   "paths": {
     "dashboard_json": "data/issuesignal/dashboard.json",
     "packs_root": "data/issuesignal/packs/",
