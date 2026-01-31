@@ -11,11 +11,11 @@ from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Any
 
 def get_last_modified(path: Path) -> datetime:
-    """Get last modified time of a file in UTC."""
+    """Get last modified time of a file in local time."""
     if not path.exists():
-        return datetime.min.replace(tzinfo=timezone.utc)
+        return datetime.min
     mtime = os.path.getmtime(path)
-    return datetime.fromtimestamp(mtime, tz=timezone.utc)
+    return datetime.fromtimestamp(mtime)
 
 def calculate_freshness(base_dir: Path) -> Dict[str, Any]:
     dataset_path = base_dir / "registry" / "datasets.yml"
@@ -26,7 +26,7 @@ def calculate_freshness(base_dir: Path) -> Dict[str, Any]:
         registry = yaml.safe_load(f)
         datasets = registry.get("datasets", [])
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now()
     freshness_items = []
     sla_breaches = []
     
@@ -47,14 +47,14 @@ def calculate_freshness(base_dir: Path) -> Dict[str, Any]:
         freshness_minutes = int(diff.total_seconds() / 60)
         
         # In case of missing files (min date)
-        if last_collected == datetime.min.replace(tzinfo=timezone.utc):
+        if last_collected == datetime.min:
             freshness_minutes = 999999
             
         is_breach = freshness_minutes > (6 * 60) # 6 hours SLA
         
         item = {
             "dataset_id": ds_id,
-            "last_collected_at": last_collected.isoformat() if last_collected != datetime.min.replace(tzinfo=timezone.utc) else "N/A",
+            "last_collected_at": last_collected.isoformat() if last_collected != datetime.min else "N/A",
             "freshness_minutes": freshness_minutes,
             "is_sla_breach": is_breach
         }

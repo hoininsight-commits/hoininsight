@@ -11,15 +11,15 @@ def get_target_ymd() -> str:
     target = os.environ.get("HOIN_TARGET_DATE")
     if target:
         return target
-    # KST is UTC+9
-    now_kst = datetime.datetime.now() + datetime.timedelta(hours=9)
+    # KST is handled by TZ env var
+    now_kst = datetime.datetime.now()
     return now_kst.strftime("%Y-%m-%d")
 
 def get_now_kst():
     """
-    Returns the current datetime in KST (UTC+9).
+    Returns the current datetime in KST.
     """
-    return datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)
+    return datetime.datetime.now()
 
 def get_target_parts():
     """
@@ -30,5 +30,5 @@ def get_target_parts():
     if len(parts) == 3:
         return parts[0], parts[1], parts[2]
     # Fallback if malformed (using KST)
-    now_kst = datetime.datetime.now() + datetime.timedelta(hours=9)
+    now_kst = datetime.datetime.now()
     return now_kst.strftime("%Y"), now_kst.strftime("%m"), now_kst.strftime("%d")
