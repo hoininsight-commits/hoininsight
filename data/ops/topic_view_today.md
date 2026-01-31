@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=143
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=144
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -723,6 +723,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### ‘금’과 ‘디지털 금’의 엇갈린 운명…지난 1년 금값 95% 뛰고, 비트코인은 19% 떨어져 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “월급만으론 안돼” 쇼츠 끊고 주식 앱… 지옥철서 ‘7.8조 뭉칫돈’ 터졌다 - segye.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
