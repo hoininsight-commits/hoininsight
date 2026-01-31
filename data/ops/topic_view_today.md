@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=137
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=140
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -693,6 +693,21 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### '로켓·AI·로봇' 묶는 머스크 … 우주제국 서막 연다 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 대전 둔산동 아파트 빈집서 화재…주민 40여명 대피, 심각한 부상자 없어 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 오토바이를 12톤 화물차가 ‘꽝’…용인서 7중 추돌사고, 1명 사망·3명 부상 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
