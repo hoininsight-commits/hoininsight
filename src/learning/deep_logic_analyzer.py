@@ -371,7 +371,6 @@ Do not use outside logic.
 
 {full_context}
 
-====================================================
 
 === CURRENT TASK ===
 Analyze the following video transcript according to the HOIN ENGINE logic defined above.

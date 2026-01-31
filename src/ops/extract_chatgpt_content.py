@@ -107,7 +107,6 @@ def main():
         
         print("\n\n=== EXTRACTED SPECIFICATION ===\n")
         print(clean_spec)
-        print("\n===============================\n")
         
         # Save to a file for easier reading
         Path("extracted_spec.md").write_text(clean_spec, encoding="utf-8")

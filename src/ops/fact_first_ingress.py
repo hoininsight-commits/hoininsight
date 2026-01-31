@@ -31,6 +31,7 @@ class FactFirstIngress:
         candidates = []
         
         # 1. Load from Policy
+        policy_dir = raw_dir / "policy" / ymd_path
         if policy_dir.exists():
             for f in policy_dir.glob("*.json"):
                 try:

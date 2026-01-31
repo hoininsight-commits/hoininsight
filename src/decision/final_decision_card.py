@@ -450,7 +450,7 @@ def main():
     # 4. Construct Final Card
     card = {
         "card_version": "phase66_editorial_v1",
-        "generated_at_kst": now_kst.isoformat(),
+        "generated_at_kst": now.isoformat(),
         "date": ymd_dash,
         "blocks": {
             "regime": regime_block,
@@ -485,7 +485,7 @@ def main():
                 if not p_file.exists():
                     p_data = {
                         "id": p_id,
-                        "generated_at_kst": now_kst.isoformat(),
+                        "generated_at_kst": now.isoformat(),
                         "category": "DATA_ADD",
                         "status": "PROPOSED",
                         "content": {
