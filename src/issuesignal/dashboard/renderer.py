@@ -6,13 +6,31 @@ class DashboardRenderer:
     (IS-27) Renders a static HTML page for IssueSignal Dashboard.
     """
     def render(self, summary: DashboardSummary) -> str:
+        # [IS-51] Stamps
+        import subprocess
+        from datetime import datetime, timedelta, timezone
+        
+        def get_git_hash():
+            try:
+                return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).decode('ascii').strip()
+            except:
+                return "unknown"
+        
+        commit_hash = get_git_hash()
+        engine_version = "v2.5.1"
+        
+        # Calculate KST Time for Pipeline Run
+        utc_now = datetime.now(timezone.utc)
+        kst_now_dt = utc_now + timedelta(hours=9)
+        pipeline_time_kst = kst_now_dt.strftime("%Y-%m-%d %H:%M:%S")
+
         html = f"""
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IssueSignal & Hoin Unified Dashboard</title>
+    <title>IssueSignal Unified Ops Center</title>
     <style>
         :root {{
             --bg: #f8fafc;
@@ -25,77 +43,159 @@ class DashboardRenderer:
             --purple: #7c3aed;
             --red: #ef4444;
             --border: #e2e8f0;
+            --amber: #f59e0b;
+            --amber-light: #fffbeb;
+            --amber-border: #fcd34d;
         }}
         body {{ font-family: 'Pretendard', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }}
         
-        .top-header {{ background: var(--header-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); }}
+        /* Premium Header */
+        .top-header {{ 
+            background: var(--header-bg); 
+            padding: 0 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: white; 
+            height: 64px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            z-index: 100;
+        }}
+        .header-brand {{ font-size: 18px; font-weight: 800; display:flex; align-items:center; gap:10px; }}
+        .header-meta {{ font-size: 11px; color: rgba(255,255,255,0.6); font-family: monospace; text-align: right; display: flex; gap: 15px; letter-spacing: 0.05em; }}
         
-        .nav-tabs {{ background: white; border-bottom: 1px solid var(--border); display: flex; gap: 30px; padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }}
-        .tab-btn {{ padding: 18px 5px; border: none; background: none; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--text-sub); border-bottom: 3px solid transparent; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }}
-        .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); }}
+        /* Navigation Tabs */
+        .nav-tabs {{ 
+            background: white; 
+            border-bottom: 1px solid var(--border); 
+            display: flex; 
+            gap: 5px; 
+            padding: 0 40px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 99; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+            height: 50px; 
+            align-items: end;
+        }}
+        .tab-btn {{ 
+            padding: 14px 20px; 
+            border: none; 
+            background: none; 
+            font-weight: 600; 
+            font-size: 13px; 
+            cursor: pointer; 
+            color: var(--text-sub); 
+            border-bottom: 2px solid transparent; 
+            transition: 0.2s; 
+            letter-spacing: 0.03em; 
+        }}
+        .tab-btn:hover {{ color: var(--text-main); background: #f1f5f9; border-radius: 6px 6px 0 0; }}
+        .tab-btn.active {{ color: var(--blue); border-bottom-color: var(--blue); background: none; }}
         
-        .container {{ padding: 40px; max-width: 1200px; margin: 0 auto; display: none; }}
+        .container {{ padding: 40px; max-width: 1000px; margin: 0 auto; display: none; }}
         .container.active {{ display: block; }}
         
-        .status-badge {{ padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; }}
+        .section-title {{ font-size: 18px; font-weight: 800; color: #1e293b; margin: 50px 0 25px 0; display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.05em; }}
+        .section-title::before {{ content: ''; display: inline-block; width: 4px; height: 18px; background: var(--blue); border-radius: 2px; }}
+        
+        /* Premium Card Styles (Ported from TopicCardRenderer) */
+        .topic-card-top1 {{
+            background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+            border: 1px solid #e2e8f0; border-top: 5px solid #7c3aed;
+            border-radius: 12px; padding: 30px; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 40px;
+            position: relative;
+        }}
+        .topic-header-label {{ font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 12px; display:flex; align-items:center; gap:8px; }}
+        .topic-title {{ font-size: 28px; font-weight: 800; color: #1e293b; margin: 10px 0 20px 0; line-height: 1.25; }}
+        
+        .auth-sentence {{ background:#ECFDF5; border-left:4px solid #059669; padding:15px 20px; color:#065F46; font-weight:700; font-size:15px; line-height:1.6; border-radius: 0 8px 8px 0; margin-bottom: 25px; }}
+        
+        .one-liner {{ font-size: 16px; line-height: 1.7; font-weight: 500; color: #334155; margin-bottom: 25px; }}
+        
+        /* Content Package Block */
+        .content-package {{ background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 30px; }}
+        .cp-header {{ font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }}
+        .cp-row {{ display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }}
+        .cp-desc {{ font-size: 12px; color: #64748b; }}
+        
+        /* Copy Button - Premium Style */
+        .copy-btn {{ 
+            background: white; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; font-size: 12px; color: #475569; 
+            min-width: 130px; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }}
+        .copy-btn:hover {{ border-color: #94a3b8; background: #f1f5f9; color: #1e293b; }}
+        .copy-btn-primary {{ background: #eff6ff; border-color: #bfdbfe; color: #2563eb; }}
+        .copy-btn-primary:hover {{ background: #dbeafe; border-color: #93c5fd; }}
+        .copy-btn-shorts {{ background: #fff1f2; border-color: #fecdd3; color: #e11d48; }}
+        .copy-btn-shorts:hover {{ background: #ffe4e6; border-color: #fda4af; }}
+
+        /* Meta Pills */
+        .meta-pill {{ background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }}
+        .meta-pill.purple {{ background: #f3e8ff; color: #6b21a8; }}
+
+        /* Unified Table Styles */
+        .unified-table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
+        .unified-table th {{ background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }}
+        .unified-table td {{ padding: 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: #334155; }}
+        .unified-table tr:last-child td {{ border-bottom: none; }}
+        
+        .status-badge {{ padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; display: inline-block; }}
         .status-success {{ background: #dcfce7; color: #166534; }}
+        .status-matched {{ background: #dbeafe; color: #1e40af; }}
+        .status-no-ev {{ background: #f3f4f6; color: #6b7280; }}
         
-        .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }}
-        .summary-card {{ background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
-        .summary-card .count {{ font-size: 28px; font-weight: 800; margin-top: 10px; color: #0f172a; }}
+        /* Drawer */
+        .evidence-drawer {{ background: #fbfcfe; padding: 20px 30px; border-top: 1px solid #e2e8f0; display: none; }}
+        .evidence-item {{ background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }}
         
-        .section-title {{ font-size: 20px; font-weight: 800; color: #1e293b; margin: 40px 0 20px 0; display: flex; align-items: center; gap: 10px; }}
-        .section-title::before {{ content: ''; display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }}
-        
-        .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 25px; }}
-        
-        .card-base {{ background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); padding: 25px; transition: transform 0.2s; }}
-        .card-base:hover {{ transform: translateY(-2px); }}
-        .is-card {{ border-top: 6px solid var(--emerald); }}
-        .hoin-card {{ border-top: 6px solid var(--purple); }}
-        
-        .unified-table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }}
-        .unified-table th {{ background: #f8fafc; padding: 18px; text-align: left; font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid var(--border); }}
-        .unified-table td {{ padding: 18px; border-bottom: 1px solid var(--border); font-size: 14px; }}
-        
-        .evidence-drawer {{ padding: 30px; background: #fbfcfe; border-top: 1px solid var(--border); }}
-        .evidence-item {{ background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }}
-        
-        .expand-btn {{ background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 12px; }}
+        .expand-btn {{ background: transparent; color: #3b82f6; border: none; font-weight: 600; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 4px; }}
+        .expand-btn:hover {{ text-decoration: underline; }}
     </style>
 </head>
 <body>
     <div class="top-header">
-        <h1 style="margin:0; font-size: 1.4em; display:flex; align-items:center; gap:10px;">
-            <span style="background:white; color:#0f172a; padding:4px 10px; border-radius:8px;">🛰️</span> 
+        <div class="header-brand">
+            <span style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:6px; font-size:16px;">🛰️</span> 
             HOIN Unified Ops Center
-        </h1>
-        <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); font-weight:600;">날짜: {summary.date}</div>
-            <div class="status-badge status-success">엔진: {summary.engine_status}</div>
+        </div>
+        <div>
+            <div class="header-meta">
+                <span>DATA: {summary.date}</span>
+                <span>RUN: {pipeline_time_kst}</span>
+            </div>
+            <div class="header-meta" style="margin-top:2px;">
+                <span>COMMIT: {commit_hash}</span>
+                <span>ENG: {engine_version}</span>
+            </div>
         </div>
     </div>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal</button>
-        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 증거 (Hoin Evidence)</button>
-        <button class="tab-btn" onclick="switchTab('linkview', this)">연결 보기 (IS ↔ Hoin)</button>
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">IssueSignal Operator</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">Hoin Artifacts</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">Evidence Link View</button>
     </div>
 
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
         {self._render_no_topic_alert(summary)}
-        <div class="summary-grid">
+        
+        <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
             {self._render_counters(summary.counts)}
         </div>
+
         <div class="section-title">✨ 오늘의 확정 인텔리전스 (TRUST_LOCKED)</div>
-        <div class="insight-grid">
-            {self._render_top_cards(summary.top_cards)}
-        </div>
+        {self._render_top_cards(summary.top_cards)}
+
         <div class="section-title">🔭 사전 트리거 감시망 (WATCHLIST)</div>
         {self._render_watchlist(summary.watchlist)}
+
         <div class="section-title">🚫 개선 필요 및 반려 로그 (REJECT)</div>
-        <div style="background:#FFF; padding:15px; border:1px solid var(--border); border-radius:8px;">
+        <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
             {self._render_reject_logs(summary.reject_logs)}
         </div>
     </div>
@@ -103,7 +203,7 @@ class DashboardRenderer:
     <!-- Tab 2: Hoin Evidence -->
     <div id="hoinevidence" class="container">
         <div class="section-title">🧬 LATEST HOIN ARTIFACTS</div>
-        <div class="insight-grid">
+        <div style="display:grid; gap:20px;">
             {self._render_hoin_evidence(summary.hoin_evidence)}
         </div>
         {f"<div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>{summary.date}에 감지된 호인 아티팩트가 없습니다.</div>" if not summary.hoin_evidence else ""}
@@ -111,31 +211,38 @@ class DashboardRenderer:
 
     <!-- Tab 3: Link View -->
     <div id="linkview" class="container">
-        <div class="filter-bar">
-            <b>필터:</b>
-            <select id="statusFilter" onchange="filterLinkView()">
-                <option value="ALL">전체 상태</option>
-                <option value="TRUST_LOCKED">TRUST_LOCKED</option>
+        <div class="filter-bar" style="margin-bottom:20px; display:flex; gap:15px; align-items:center; font-size:13px; color:#475569;">
+            <b>VIEW FILTER:</b>
+            <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
+                <option value="ALL">All Status</option>
+                <option value="TRUST_LOCKED">TRUST_LOCKED (Confirmed)</option>
                 <option value="HOLD">HOLD</option>
                 <option value="REJECT">REJECT</option>
             </select>
-            <label><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결만 보기</label>
-            <label><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 검증 완료만 보기</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> Evidence Attached Only</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> Verified Proof Only</label>
         </div>
         {self._render_link_view(summary.link_view)}
     </div>
 
     <script>
         function switchTab(tabId, btn) {{
+            // Hide all tabs
             document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Show new tab
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
         }}
 
         function toggleRow(id) {{
             const row = document.getElementById('drawer-' + id);
-            row.style.display = (row.style.display === 'table-row') ? 'none' : 'table-row';
+            // Check computed style
+            if(row.style.display === 'table-row') {{
+                row.style.display = 'none';
+            }} else {{
+                row.style.display = 'table-row';
+            }}
         }}
 
         function filterLinkView() {{
@@ -157,8 +264,18 @@ class DashboardRenderer:
                 row.style.display = visible ? 'table-row' : 'none';
                 if (!visible) {{
                     const id = row.id.split('-')[1];
-                    document.getElementById('drawer-' + id).style.display = 'none';
+                    const drawer = document.getElementById('drawer-' + id);
+                    if(drawer) drawer.style.display = 'none';
                 }}
+            }});
+        }}
+
+        function copyToClipboard(text) {{
+            if(!text || text === '-' || text === 'undefined') return;
+            navigator.clipboard.writeText(text).then(() => {{
+                alert('콘텐츠가 클립보드에 복사되었습니다.');
+            }}).catch(err => {{
+                console.error('Copy failed: ', err);
             }});
         }}
     </script>
@@ -170,49 +287,146 @@ class DashboardRenderer:
     def _render_counters(self, counts: dict) -> str:
         items = []
         status_map = {
-            "TRUST_LOCKED": "확정",
-            "REJECT": "반려",
-            "PRE_TRIGGER": "감시",
-            "HOLD": "보류",
-            "SILENT_DROP": "침묵"
+            "TRUST_LOCKED": "확정 (Confirmed)",
+            "REJECT": "반려 (Rejected)",
+            "PRE_TRIGGER": "감시 (Watching)",
+            "HOLD": "보류 (Hold)",
+            "SILENT_DROP": "침묵 (Silent)"
         }
         colors = {
             "TRUST_LOCKED": "#10B981",
             "REJECT": "#EF4444",
             "PRE_TRIGGER": "#3B82F6",
             "HOLD": "#F59E0B",
-            "SILENT_DROP": "#6B7280"
+            "SILENT_DROP": "#94A3B8"
         }
         for status, count in counts.items():
             if status not in status_map: continue
             color = colors.get(status, "#6B7280")
             items.append(f"""
-            <div class="summary-card" style="border-top: 3px solid {color}">
-                <div style="font-size: 0.8em; color: var(--text-sub);">{status_map[status]}</div>
-                <div class="count">{count}</div>
+            <div style="background:white; border-left:4px solid {color}; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">{status_map[status]}</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">{count}</div>
             </div>
             """)
         return "\n".join(items)
 
     def _render_top_cards(self, cards: List[DecisionCard]) -> str:
-        if not cards: return "<div style='color:var(--text-sub)'>오늘 확정된 신뢰성 높은 인사이트가 없습니다.</div>"
+        # [IS-52] Daily Issue Lock Loop UI with Premium Restoration
+        if not cards:
+            return """
+            <div style="background:#fffbeb; border:1px solid #fcd34d; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="font-size:3em; margin-bottom:15px;">❌</div>
+                <div style="font-weight:800; color:#92400e; font-size:1.5em; margin-bottom:10px;">오늘 발화할 토픽 없음</div>
+                <div style="font-size:1.1em; color:#b45309;">사유: 신뢰도 검증 미달 및 중복 트리거</div>
+                <div style="margin-top:20px; font-size:0.9em; color:#d97706;">
+                    * HOIN 엔진의 엄격한 검증 기준(IS-26)을 통과한 이슈가 없습니다.
+                </div>
+            </div>
+            """
+            
         items = []
         for c in cards:
-            items.append(f"""
-            <div class="decision-card">
-                <div class="title">{c.title}</div>
-                <div class="metas">
-                    <span class="meta-item">WHO: {c.actor}</span>
-                    <span class="meta-item">TYPE: {c.trigger_type}</span>
-                    <span class="meta-item">ITEM: {c.must_item}</span>
+            # Prepare Content Package
+            cp = c.blocks.get('content_package', {})
+            long_form = cp.get('long_form', '-')
+            shorts = cp.get('shorts_ready', [])
+            text_card = cp.get('text_card', '-')
+            shorts_text = " / ".join(shorts) if shorts else "-"
+
+            # Narrative Block
+            narrative_html = ""
+            if c.blocks and 'narrative_reconstruction' in c.blocks:
+                nr = c.blocks['narrative_reconstruction']
+                narrative_html = f"""
+                <div style="margin-top:25px; padding-top:25px; border-top:1px dashed #e2e8f0;">
+                    <div style="font-size:11px; font-weight:800; color:#475569; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.05em;">
+                        📜 역사적 패턴 재구성 (IS-50)
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:15px;">
+                         <div style="font-size:12px; margin-bottom:10px; color:#64748b;">
+                            유사 사례: <b>{nr['past_case_id']}</b> ({nr['reference_date']}) | 패턴: <span style="color:#ef4444; font-weight:bold;">{nr['pattern_tag']}</span>
+                        </div>
+                        <div style="font-size:14px; line-height:1.6; color:#334155; white-space: pre-line;">
+                            {nr['narrative_text']}
+                        </div>
+                    </div>
                 </div>
-                <div style="font-size: 0.95em; line-height: 1.5; margin-bottom: 15px;">
+                """
+
+            items.append(f"""
+            <div class="topic-card-top1">
+                <!-- Header -->
+                <div class="topic-header-label">
+                     <span>🟣 오늘의 구조적 핵심 이슈 (Top-1)</span>
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <div>
+                        <span class="status-badge status-success" style="padding:4px 10px; font-size:11px;">발화 확정 (TRUST_LOCKED)</span>
+                        <h1 class="topic-title">{c.title}</h1>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="display:flex; gap:6px; justify-content:flex-end;">
+                            <span class="meta-pill">{c.actor}</span>
+                            <span class="meta-pill purple">{c.trigger_type}</span>
+                        </div>
+                        <div style="margin-top:5px; font-size:11px; color:#94a3b8;">ID: {c.topic_id}</div>
+                    </div>
+                </div>
+
+                <!-- Why Now -->
+                <div class="auth-sentence">
+                    💡 지금 말해야 하는 이유:<br>
+                    "{c.authority_sentence}"
+                </div>
+
+                <!-- One Liner -->
+                <div class="one-liner">
                     {c.one_liner}
                 </div>
-                <div style="font-size: 0.85em; border-top: 1px solid var(--border); padding-top: 10px;">
-                    <span style="color: var(--red); font-weight: bold;">KILL_SWITCH:</span> {c.kill_switch}
+
+                <!-- IS-52 Content Package & Operator Actions -->
+                <div class="content-package">
+                    <div class="cp-header">
+                        <span>📋 운영자 콘텐츠 패키지</span>
+                        <span style="font-weight:400; color:#94a3b8; font-size:11px;">(Ready to Speak)</span>
+                    </div>
+                    
+                    <!-- Text Card -->
+                    <div class="cp-row">
+                        <button class="copy-btn" onclick="copyToClipboard(`{text_card}`)">
+                            <span>📄 텍스트 카드</span>
+                        </button>
+                        <span class="cp-desc">한 줄 요약 텍스트</span>
+                    </div>
+
+                    <!-- Long Form -->
+                    <div class="cp-row">
+                        <button class="copy-btn copy-btn-primary" onclick="copyToClipboard(`{long_form}`)">
+                            <span>📝 롱폼 스크립트</span>
+                        </button>
+                        <span class="cp-desc">전체 논리 구조 포함 ({len(long_form)}자)</span>
+                    </div>
+
+                    <!-- Shorts -->
+                    <div class="cp-row">
+                        <button class="copy-btn copy-btn-shorts" onclick="copyToClipboard(`{shorts_text}`)">
+                            <span>🎬 숏츠 대본</span>
+                        </button>
+                        <span class="cp-desc">15초/30초 숏폼용</span>
+                    </div>
                 </div>
-                <div style="font-size: 0.7em; margin-top: 10px; color: var(--text-sub);">SIG: {c.signature or '-'}</div>
+
+                <div style="font-size: 0.8em; margin-top: 25px; color:#ef4444; font-weight:600;">
+                    ⛔ KILL_SWITCH: <span style="font-weight:400; color:#334155;">{c.kill_switch}</span>
+                </div>
+
+                {narrative_html}
+
+                <div style="font-size: 0.7em; margin-top: 15px; color: #94a3b8; text-align:right; border-top:1px solid #f1f5f9; padding-top:10px;">
+                    Signature Verify: {c.signature or '-'}
+                </div>
             </div>
             """)
         return "\n".join(items)

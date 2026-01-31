@@ -1,6 +1,7 @@
 from pathlib import Path
 import sys
 from datetime import datetime
+import dataclasses
 
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent.parent))
@@ -18,6 +19,54 @@ from src.issuesignal.source_diversity import SourceDiversityEngine
 from src.issuesignal.dashboard.models import DecisionCard, ProofPack, TriggerQuote
 from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
+def save_reject_log(base_dir, issue_id, reason_code, detail):
+    import json
+    log_data = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "topic_id": issue_id,
+        "reason_code": reason_code,
+        "fact_text": detail
+    }
+    # Append to daily reject logs or save individual
+    # We'll save individual for simplicity, dashboard builder aggregates them
+    log_path = base_dir / "data" / "issuesignal" / "rejects" / f"{datetime.now().strftime('%H%M%S')}_{issue_id}.json"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, ensure_ascii=False, indent=2)
+    print(f"REJECT LOG SAVED: {log_path}")
+
+def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
+    # Final: Dashboard Build (IS-27) - Hard fail for IS-51/52 compliance
+    try:
+        # [IS-52] Inject Content Package
+        if decision_card_model and pack_data:
+            pack_content = {
+                "long_form": pack_data.get("long_form", "-"),
+                "shorts_ready": pack_data.get("shorts_ready", []),
+                "text_card": pack_data.get("one_liner", "-")
+            }
+            # Add to content_package block
+            decision_card_model.blocks["content_package"] = pack_content
+
+        db_builder = DashboardBuilder(base_dir)
+        db_builder.build()
+        
+        # (IS-48) Generate SSOT Index
+        from src.issuesignal.index_generator import IssueSignalIndexGenerator
+        index_gen = IssueSignalIndexGenerator(base_dir)
+        
+        cards_for_index = []
+        if decision_card_model:
+            cards_for_index.append(dataclasses.asdict(decision_card_model))
+        
+        index_gen.generate(cards_for_index)
+        
+    except Exception as e:
+        print(f"CRITICAL: IssueSignal Pipeline Failed: {e}")
+        sys.exit(1)
+    else:
+        print("IssueSignal Loop Completed Successfully.")
+
 def main():
     base_dir = Path(".")
     print(f"[{datetime.now()}] Starting IssueSignal Run...")
@@ -27,24 +76,32 @@ def main():
     adapter = HoinAdapter(base_dir)
     generator = ContentPack(base_dir)
     
-    # 1. Simulate Issue Capture
-    test_signal = {
-        "source": "NEWS_API",
-        "content": "Official confirmation of new export controls on semiconductor equipment.",
-        "metadata": {"market": "GLOBAL"}
-    }
-    issue_id = pool.add_issue(test_signal)
-    print(f"Captured: {issue_id}")
+    # Context variables for finally block
+    decision_card_model = None
+    pack_data = None
     
-    # 2. Gate Evaluation
-    with open(base_dir / "data" / "issuesignal" / "pool" / f"{issue_id}.json", "r") as f:
-        import json
-        issue = json.load(f)
+    try:
+        # 1. Simulate Issue Capture
+        test_signal = {
+            "source": "NEWS_API",
+            "content": "Official confirmation of new export controls on semiconductor equipment.",
+            "metadata": {"market": "GLOBAL"}
+        }
+        issue_id = pool.add_issue(test_signal)
+        print(f"Captured: {issue_id}")
         
-    status = gate.evaluate(issue)
-    print(f"Gate Status: {status}")
-    
-    if status == "READY":
+        # 2. Gate Evaluation
+        with open(base_dir / "data" / "issuesignal" / "pool" / f"{issue_id}.json", "r") as f:
+            import json
+            issue = json.load(f)
+            
+        status = gate.evaluate(issue)
+        print(f"Gate Status: {status}")
+        
+        if status != "READY":
+            save_reject_log(base_dir, issue_id, f"GATE_{status}", "Gate evaluation not ready")
+            return
+
         # 3. Adapter Call
         evidence = adapter.get_structural_evidence("semiconductor")
         # Mock evidence if empty for simulation
@@ -77,6 +134,7 @@ def main():
         if not is_trap_passed:
             print(f"REJECTED BY TRAP ENGINE: {trap_reason}")
             print(f"DEBUG: {trap_debug}")
+            save_reject_log(base_dir, issue_id, "TRAP_FAIL", trap_reason)
             return
 
         # 6. Fact Verification (IS-25)
@@ -94,6 +152,7 @@ def main():
         if not is_fact_passed:
             print(f"REJECTED BY FACT VERIFIER: {fact_reason}")
             print(f"DEBUG: {fact_debug}")
+            save_reject_log(base_dir, issue_id, "FACT_FAIL", fact_reason)
             return
 
         # 7. Trust Lock (IS-26)
@@ -113,6 +172,7 @@ def main():
         if trust_state != "TRUST_LOCKED":
             print(f"TRUST LOCK BLOCKED: {trust_state}")
             print(f"FAIL CODES: {trust_fails}")
+            save_reject_log(base_dir, issue_id, f"TRUST_{trust_state}", str(trust_fails))
             return
 
         print(f"TRUST_LOCKED (Signature: {signature})")
@@ -202,7 +262,18 @@ def main():
             json.dump(audit_data, af, indent=2)
         print(f"Diversity Audit: {audit_path}")
 
-        # 11. Content Generation
+        # 11. Narrative Reconstruction (IS-50)
+        from src.issuesignal.narrative_reconstruction import NarrativeReconstructionEngine
+        narrative_engine = NarrativeReconstructionEngine(base_dir)
+        recon_result = narrative_engine.reconstruct(dataclasses.asdict(decision_card_model))
+        
+        if recon_result:
+            print(f"NARRATIVE RECONSTRUCTED: {recon_result['pattern_tag']}")
+            # Add to Decision Card Blocks (for Dashboard)
+            if not decision_card_model.blocks: decision_card_model.blocks = {}
+            decision_card_model.blocks['narrative_reconstruction'] = recon_result
+
+        # 12. Content Generation
         # Convert back or use model to save (simulation simplified)
         pack_path = generator.generate(pack_data)
         
@@ -210,33 +281,32 @@ def main():
         v2_card_path = base_dir / "data" / "issuesignal" / "packs" / f"{issue_id}_v2.json"
         v2_card_path.parent.mkdir(parents=True, exist_ok=True)
         with open(v2_card_path, "w", encoding="utf-8") as v2f:
-            import dataclasses
             json.dump(dataclasses.asdict(decision_card_model), v2f, ensure_ascii=False, indent=2)
         
         print(f"Content Pack Ready: {pack_path}")
+        
+        # [IS-51] Canonical Path Synchronization
+        # Ensure data/decision/{Y}/{M}/{D}/final_decision_card.json is the SSOT
+        today_ymd = datetime.now().strftime("%Y-%m-%d")
+        y, m, d = today_ymd.split('-')
+        canonical_dir = base_dir / "data" / "decision" / y / m / d
+        canonical_dir.mkdir(parents=True, exist_ok=True)
+        canonical_card_path = canonical_dir / "final_decision_card.json"
+        
+        with open(canonical_card_path, "w", encoding="utf-8") as cf:
+             # Ensure date/timestamp is in the card
+             card_dict = dataclasses.asdict(decision_card_model)
+             card_dict["_date"] = today_ymd
+             card_dict["_timestamp_kst"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+             json.dump(card_dict, cf, ensure_ascii=False, indent=2)
+             
+        print(f"[IS-51] Validated SSOT: {canonical_card_path}")
         print(f"V2 Decision Card: {v2_card_path}")
-
-    # Final: Dashboard Build (IS-27) - Soft fail
-    try:
-        db_builder = DashboardBuilder(base_dir)
-        db_builder.build()
         
-        # (IS-48) Generate SSOT Index
-        from src.issuesignal.index_generator import IssueSignalIndexGenerator
-        index_gen = IssueSignalIndexGenerator(base_dir)
-        # In a real run, we'd collect all cards from this session.
-        # For now, we simulate with the last card processed if success, or empty if fail.
-        cards_for_index = []
-        if 'decision_card_model' in locals():
-            import dataclasses
-            cards_for_index.append(dataclasses.asdict(locals()['decision_card_model']))
-        
-        index_gen.generate(cards_for_index)
-        
-    except Exception as e:
-        print(f"WARNING: Dashboard build or SSOT generation failed: {e}")
-    else:
-        print("Signal held or rejected.")
+    finally:
+        # ALWAYS Run Dashboard Build
+        print("[IS-52] Loop Finish - Triggering Dashboard Build")
+        run_dashboard_build(base_dir, decision_card_model, pack_data)
 
 if __name__ == "__main__":
     main()
