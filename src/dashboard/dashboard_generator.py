@@ -2751,6 +2751,22 @@ def generate_dashboard(base_dir: Path):
                              if final_card.get('blocks', {}).get('bottleneck_analysis', {}).get('protagonists') 
                                 and final_card['blocks']['bottleneck_analysis']['protagonists'][0].get('why_now') else ''
                          }
+                         
+                         <!-- [IS-62] Locked Script Section -->
+                         {
+                             f'''
+                             <div style="margin-top:12px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                     <div style="font-size:12px; font-weight:800; color:#0369a1; display:flex; align-items:center; gap:6px;">
+                                         <span>📜 최종 스크립트 (IS-62 LOCKED)</span>
+                                     </div>
+                                     <span style="background:#0284c7; color:white; font-size:11px; padding:2px 6px; border-radius:4px; font-weight:bold;">🔒 화자·서사 고정됨</span>
+                                 </div>
+                                 <div style="font-size:12px; color:#334155; line-height:1.6; white-space:pre-wrap; font-family:'Pretendard', sans-serif;">{final_card['blocks'].get('content_package', {}).get('long_form','-')}</div>
+                             </div>
+                             '''
+                             if "1. 정의" in final_card['blocks'].get('content_package', {}).get('long_form','') else ''
+                         }
 
                      </div>
                      <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">

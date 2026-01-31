@@ -89,6 +89,7 @@ def main():
             from src.collectors.corporate_action_connector import collect_corporate_facts
             from src.issuesignal.bottleneck_ranker import BottleneckRanker
             from src.issuesignal.why_now_synthesizer import WhyNowSynthesizer
+            from src.issuesignal.script_lock_engine import ScriptLockEngine
             
             # [IS-59] Harvest All Evidence Sources (Expanded)
             ymd = datetime.now().strftime("%Y-%m-%d")
@@ -202,15 +203,26 @@ def main():
                      status_verdict = "HOLD"
                      desc_rationale += "\n(불가 판정: Protagonist의 시점 필연성(WHY-NOW) 부재)"
 
-            long_form = (
-                f"# 감지된 신호 분석\n\n"
-                f"## 1. 핵심 내용\n"
-                f"{fact_text}\n\n"
-                f"## 2. 자본 이동 판단 (Rotation)\n"
-                f"{desc_rationale}\n\n"
-                f"## 3. 대응 코멘트\n"
-                f"시장 데이터를 기반으로 분석된 결과입니다. {rotation_verdict.get('target_sector', '-')} 섹터에 대한 비중 확대를 검토하십시오."
-            )
+             # [IS-62] Script Lock Engine Integration
+             if status_verdict == "TRUST_LOCKED" and bottleneck_result['protagonists']:
+                 top_p = bottleneck_result['protagonists'][0]
+                 locked_content = ScriptLockEngine.generate(top_p, top_p.get('why_now', ''), rotation_verdict.get('target_sector', '-'))
+                 long_form = locked_content['long_form']
+                 one_liner = locked_content['one_liner']
+                 shorts_ready = locked_content['shorts_ready']
+                 print("[IS-62] Content LOCKED with Economic Hunter Script Engine.")
+             else:
+                 # Fallback for non-locked items or empty state
+                 long_form = (
+                     f"# 감지된 신호 분석\n\n"
+                     f"## 1. 핵심 내용\n"
+                     f"{fact_text}\n\n"
+                     f"## 2. 자본 이동 판단 (Rotation)\n"
+                     f"{desc_rationale}\n\n"
+                     f"## 3. 대응 코멘트\n"
+                     f"시장 데이터를 기반으로 분석된 결과입니다. {rotation_verdict.get('target_sector', '-')} 섹터에 대한 비중 확대를 검토하십시오."
+                 )
+                 shorts_ready = [f"속보: {fact_text}", "지금 바로 확인하세요.", f"자본이동: {rotation_verdict.get('target_sector', '-')}"]
             
             pack_data = {
                 "id": issue_id,
@@ -219,7 +231,7 @@ def main():
                 "must_item": "Topic",
                 "time_window": "24h",
                 "long_form": long_form,
-                "shorts_ready": [f"속보: {fact_text}", "지금 바로 확인하세요.", f"자본이동: {rotation_verdict.get('target_sector', '-')}"],
+                "shorts_ready": shorts_ready,
                 "tickers": [],
                 "confidence": trust_score
             }
