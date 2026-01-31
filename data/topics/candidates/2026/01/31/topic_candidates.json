@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-31T04:19:13.384393",
+  "generated_at": "2026-01-31T04:39:58.896438",
   "candidate_count": 12,
   "alive_count": 12,
   "candidates": [
@@ -7,7 +7,7 @@
       "candidate_id": "cand_fx_usdkrw_ecos_20260131",
       "dataset_id": "fx_usdkrw_ecos",
       "category": "FX_RATES",
-      "created_at": "2026-01-31T04:19:13.384331",
+      "created_at": "2026-01-31T04:39:58.896345",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -32,7 +32,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260131",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-01-31T04:19:13.384345",
+      "created_at": "2026-01-31T04:39:58.896370",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -59,7 +59,7 @@
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260131",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-01-31T04:19:13.384351",
+      "created_at": "2026-01-31T04:39:58.896376",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -87,7 +87,7 @@
       "candidate_id": "cand_rates_fed_funds_fred_20260131",
       "dataset_id": "rates_fed_funds_fred",
       "category": "RATES_YIELD",
-      "created_at": "2026-01-31T04:19:13.384356",
+      "created_at": "2026-01-31T04:39:58.896381",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -114,7 +114,7 @@
       "candidate_id": "cand_index_kospi_stooq_20260131",
       "dataset_id": "index_kospi_stooq",
       "category": "OTHER",
-      "created_at": "2026-01-31T04:19:13.384360",
+      "created_at": "2026-01-31T04:39:58.896385",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -139,7 +139,7 @@
       "candidate_id": "cand_index_nasdaq_fred_20260131",
       "dataset_id": "index_nasdaq_fred",
       "category": "GLOBAL_INDEX",
-      "created_at": "2026-01-31T04:19:13.384364",
+      "created_at": "2026-01-31T04:39:58.896390",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -164,7 +164,7 @@
       "candidate_id": "cand_derived_yield_curve_10y_2y_20260131",
       "dataset_id": "derived_yield_curve_10y_2y",
       "category": "RATES_YIELD",
-      "created_at": "2026-01-31T04:19:13.384368",
+      "created_at": "2026-01-31T04:39:58.896394",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -191,7 +191,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260131",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-01-31T04:19:13.384371",
+      "created_at": "2026-01-31T04:39:58.896397",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -218,7 +218,7 @@
       "candidate_id": "cand_derived_gold_silver_ratio_20260131",
       "dataset_id": "derived_gold_silver_ratio",
       "category": "PRECIOUS_METALS",
-      "created_at": "2026-01-31T04:19:13.384375",
+      "created_at": "2026-01-31T04:39:58.896401",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -243,7 +243,7 @@
       "candidate_id": "cand_inflation_cpi_fred_20260131",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-01-31T04:19:13.384378",
+      "created_at": "2026-01-31T04:39:58.896405",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -271,7 +271,7 @@
       "candidate_id": "cand_inflation_pce_fred_20260131",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-01-31T04:19:13.384382",
+      "created_at": "2026-01-31T04:39:58.896409",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -299,7 +299,7 @@
       "candidate_id": "cand_liquidity_m2_fred_20260131",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-01-31T04:19:13.384385",
+      "created_at": "2026-01-31T04:39:58.896413",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
