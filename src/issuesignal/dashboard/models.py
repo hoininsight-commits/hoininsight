@@ -13,6 +13,7 @@ class DecisionCard:
     actor_tag: str = "-"
     bottleneck_link: str = "-"
     ticker_path: Dict[str, Any] = field(default_factory=dict)
+    bridge_info: Optional[Dict[str, Any]] = None
     must_item: str = "-"
     tickers: List[Dict[str, str]] = field(default_factory=list)
     kill_switch: str = "-"

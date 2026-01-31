@@ -376,6 +376,8 @@ class DashboardRenderer:
                 </div>
             </div>
 
+            {self._render_structural_continuity(c)}
+
             <!-- WHY-NOW Banner -->
             <div style="background:linear-gradient(to right, #eff6ff, #ffffff); border-left:5px solid var(--blue); padding:18px 25px; border-radius:0 12px 12px 0; margin-bottom:25px;">
                 <div style="font-size:12px; font-weight:800; color:var(--blue); margin-bottom:6px; text-transform:uppercase;">💡 지금 말해야 하는 이유 (WHY-NOW)</div>
@@ -758,6 +760,23 @@ class DashboardRenderer:
         <div style="margin-top:20px; border-top: 1px solid #e2e8f0; padding-top:15px;">
             <b style="color:#2563eb; font-size:13px;">🏷️ 주인공 도출 근거:</b>
             {''.join(items)}
+        </div>
+        """
+    def _render_structural_continuity(self, c: DecisionCard) -> str:
+        if not c.bridge_info: return ""
+        
+        b = c.bridge_info
+        return f"""
+        <div style="background:#f5f3ff; border:1px solid #ddd6fe; border-radius:12px; padding:20px; margin-bottom:25px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <b style="font-size:14px; color:#5b21b6;">🧠 구조 연속성 추적 (STRUCTURAL CONTINUITY)</b>
+                <span style="background:#7c3aed; color:white; font-size:10px; padding:2px 8px; border-radius:4px; font-weight:800;">🔵 구조 해설 → 🟣 현실화</span>
+            </div>
+            <div style="font-size:13px; color:#4c1d95; line-height:1.5;">
+                연결된 구조 ID: <code style="background:#ede9fe; padding:2px 4px; border-radius:4px;">{b['structure_id']}</code><br>
+                최초 언급일: <b>{b['timestamp'][:10]} ({b['days_ago']}일 전)</b><br>
+                감지된 브릿지: <i>"{b['original_summary']}"</i>
+            </div>
         </div>
         """
 

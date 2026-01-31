@@ -24,6 +24,7 @@ from src.issuesignal.script_lock_engine import ScriptLockEngine
 from src.issuesignal.actor_bridge import ActorBridgeEngine
 from src.issuesignal.ticker_path_extractor import TickerPathExtractor
 from src.issuesignal.editorial_light_engine import EditorialLightEngine
+from src.issuesignal.structural_bridge import StructuralBridge
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -175,6 +176,14 @@ def main():
             cand['details']['ticker_path'] = ticker_path_result
             cand['details']['bottleneck_link'] = ticker_path_result.get('global_bottleneck_ko', '-')
             
+            # IS-71: Find Structural Bridge
+            bridge_info = bridge_engine.find_bridge({
+                "actor": cand.get('details', {}).get('actor_name_ko', ''),
+                "sector": rotation_verdict.get('target_sector', ''),
+                "fact_text": cand.get('fact_text', '')
+            })
+            cand['details']['bridge_info'] = bridge_info
+            
             # Generate Script if Eligible (IS-67 Quality Floor)
             script_data = None
             
@@ -190,7 +199,8 @@ def main():
                             cand, 
                             cand.get('why_now', '시점 정보 부족'), 
                             rotation_verdict.get('target_sector', '관련 섹터'),
-                            all_context + corporate_facts # Evidence Pool
+                            all_context + corporate_facts, # Evidence Pool
+                            bridge_info=cand['details'].get('bridge_info')
                         )
                         cand['generated_script'] = script_data
                     except Exception as e:
@@ -273,6 +283,14 @@ def main():
                         "ticker_path": light_data["ticker_path"]
                     }
                  )
+                 # IS-71: Record the new structure
+                 bridge_engine.record_structure({
+                     "structure_id": light_data["structure_id"],
+                     "summary": light_data["summary"],
+                     "actor": light_data["actor"],
+                     "sector": rotation_verdict.get('target_sector', ''),
+                     "keywords": light_data["keywords"]
+                 })
              else:
                  print("[IS-67] No valid candidates passed quality floor. Generating SILENCE.")
                  decision_card_model = DecisionCard(
@@ -335,6 +353,7 @@ def main():
                 "actor_tag": details.get('actor_tag', '-'),
                 "bottleneck_link": details.get('bottleneck_link', '-'),
                 "ticker_path": details.get('ticker_path', {}),
+                "bridge_info": details.get('bridge_info'),
                 "must_item": "Topic",
                 "time_window": "24h",
                 "long_form": long_form,

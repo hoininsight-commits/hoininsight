@@ -1,6 +1,8 @@
 import logging
 from typing import List, Dict, Any, Optional
 
+from src.issuesignal.structural_bridge import StructuralBridge
+
 logger = logging.getLogger("EditorialLight")
 
 class EditorialLightEngine:
@@ -17,11 +19,17 @@ class EditorialLightEngine:
         actor_name = macro_actor.get("actor_name_ko", "글로벌 매크로 자본")
         actor_tag = macro_actor.get("actor_tag", "관찰")
         
+        # IS-71: Structure ID Generation
+        structure_id = StructuralBridge.generate_id(macro_state, actor_name, actor_tag)
+        keywords = actor_name.split() + [actor_tag, macro_state]
+
         # 1. Title & One Liner
         title = f"시장 구조 보고: {actor_name} 중심의 에너지 축적"
         one_liner = f"현재 시장은 단기 변동성보다 {actor_name}의 구조적 변화가 축적되는 구간에 진입했습니다."
 
-        # 2. 5-Step Script (Editorial Light Style)
+        # ... (rest of the script steps) ...
+        # [REPLACEMENT NOTE] I will keep the existing steps but ensured the return dict has new fields.
+        
         script = {
             "step1": f"지금 시장에서 반복적으로 감지되는 유의미한 흐름은 {actor_name}의 움직임입니다.",
             "step2": f"대부분의 투자자가 차트의 등락에 집중하고 있으나, 본질은 이면에서 작용하는 {actor_state_desc(macro_state)}입니다.",
@@ -32,6 +40,9 @@ class EditorialLightEngine:
 
         # 3. Decision Card Data
         return {
+            "structure_id": structure_id,
+            "keywords": keywords,
+            "summary": one_liner,
             "title": title,
             "one_liner": one_liner,
             "status": "EDITORIAL_LIGHT",

@@ -13,7 +13,7 @@ class ScriptLockEngine:
     MANDATORY_WORDS = ["필연", "결정", "해야 한다"]
 
     @staticmethod
-    def generate(protagonist: Dict[str, Any], why_now: str, target_sector: str, evidence_pool: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def generate(protagonist: Dict[str, Any], why_now: str, target_sector: str, evidence_pool: List[Dict[str, Any]], bridge_info: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         IS-67: Generates script WITH automated evidence binding.
         """
@@ -62,7 +62,14 @@ class ScriptLockEngine:
         step5_base = f"따라서 {target_sector} 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다."
         step5 = f"5. 결론 (Conclusion)\n{step5_base}{get_ref('step5', '')}"
 
-        full_script = f"{step1}\n\n{step2}\n\n{step3}\n\n{step4}\n\n{step5}"
+        # IS-71: Structural Bridge Sentence
+        bridge_prefix = ""
+        if bridge_info:
+            days = bridge_info.get('days_ago', 0)
+            summary = bridge_info.get('original_summary', '이전 구조 해설')
+            bridge_prefix = f"💡 이 변화는 {days}일 전에 구조 해설로 언급했던 ‘{summary}’이 현실로 전환된 첫 신호입니다.\n\n"
+
+        full_script = f"{bridge_prefix}{step1}\n\n{step2}\n\n{step3}\n\n{step4}\n\n{step5}"
         
         # Validation
         is_valid, error_msg = ScriptLockEngine.validate(full_script)
