@@ -64,6 +64,7 @@ def get_ticker_from_details(details):
     # Here we mock extraction or check for pre-existing ticker field
     return details.get("ticker", None)
 
+def main():
     base_dir = Path(".")
     now_kst = datetime.now()
     print(f"[{now_kst}] Starting IssueSignal Run (IS-62 Loop Lock - KST Focus)...")
