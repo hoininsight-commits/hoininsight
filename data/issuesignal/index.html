@@ -132,11 +132,11 @@
         <div>
             <div class="header-meta">
                 <span>DATA: 2026-02-01</span>
-                <span>RUN: 2026-01-31 22:37:39</span>
+                <span>RUN: 2026-01-31 23:01:06</span>
             </div>
             <div class="header-meta" style="margin-top:2px;">
-                <span>COMMIT: c3284b4</span>
-                <span>ENG: v2.5.1</span>
+                <span>커밋: e26f85c</span>
+                <span>엔진: v2.5.1</span>
             </div>
         </div>
     </div>
@@ -153,31 +153,31 @@
         <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
             
             <div style="background:white; border-left:4px solid #10B981; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">확정 (Confirmed)</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">확정</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
             <div style="background:white; border-left:4px solid #3B82F6; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">감시 (Watching)</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">감시</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
             <div style="background:white; border-left:4px solid #F59E0B; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">보류 (Hold)</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">보류</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
             <div style="background:white; border-left:4px solid #EF4444; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">반려 (Rejected)</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">반려</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
 
             <div style="background:white; border-left:4px solid #94A3B8; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">침묵 (Silent)</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">침묵</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
             </div>
             
@@ -199,7 +199,7 @@
         <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
             
             <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
-                <span style="color:#9CA3AF; font-size:0.8em;">[2026-02-01 07:29:42]</span> 
+                <span style="color:#9CA3AF; font-size:0.8em;">[2026-02-01 07:37:39]</span> 
                 <span class="badge-status status-no-ev" style="margin:0 8px;">UNKNOWN</span>
                 <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
             </div>
@@ -222,9 +222,9 @@
             <b>상태 필터:</b>
             <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
                 <option value="ALL">전체 상태</option>
-                <option value="TRUST_LOCKED">발화 확정 (Confirmed)</option>
-                <option value="HOLD">보류 (HOLD)</option>
-                <option value="REJECT">반려 (REJECT)</option>
+                <option value="TRUST_LOCKED">발화 확정</option>
+                <option value="HOLD">보류</option>
+                <option value="REJECT">반려</option>
             </select>
             <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결됨</label>
             <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 실체 검증됨</label>
@@ -245,7 +245,7 @@
             <tr class="link-row" id="row-0" data-status="HOLD" data-has-ev="false" data-has-proof="false">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Untitled</b><br><small>ID</small></td>
-                <td>HOLD</td>
+                <td>보류</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('0')">
@@ -264,7 +264,7 @@
             <tr class="link-row" id="row-1" data-status="HOLD" data-has-ev="false" data-has-proof="false">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Untitled</b><br><small>ID</small></td>
-                <td>HOLD</td>
+                <td>보류</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('1')">
@@ -283,7 +283,7 @@
             <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131044929</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('2')">
@@ -306,7 +306,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -317,7 +317,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -346,7 +346,7 @@
             <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131043959</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('3')">
@@ -369,7 +369,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -380,7 +380,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -409,7 +409,7 @@
             <tr class="link-row" id="row-4" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131041914</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('4')">
@@ -432,7 +432,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -443,7 +443,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -472,7 +472,7 @@
             <tr class="link-row" id="row-5" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131040121</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('5')">
@@ -495,7 +495,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -506,7 +506,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -535,7 +535,7 @@
             <tr class="link-row" id="row-6" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131035228</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('6')">
@@ -558,7 +558,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -569,7 +569,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -598,7 +598,7 @@
             <tr class="link-row" id="row-7" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131034736</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('7')">
@@ -621,7 +621,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -632,7 +632,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -661,7 +661,7 @@
             <tr class="link-row" id="row-8" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131034359</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('8')">
@@ -684,7 +684,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -695,7 +695,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -724,7 +724,7 @@
             <tr class="link-row" id="row-9" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131021233</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('9')">
@@ -747,7 +747,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -758,7 +758,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -787,7 +787,7 @@
             <tr class="link-row" id="row-10" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260131020850</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('10')">
@@ -810,7 +810,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -821,7 +821,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -850,7 +850,7 @@
             <tr class="link-row" id="row-11" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260130235145</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('11')">
@@ -873,7 +873,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -884,7 +884,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -913,7 +913,7 @@
             <tr class="link-row" id="row-12" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260130154629</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('12')">
@@ -936,7 +936,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -947,7 +947,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -976,7 +976,7 @@
             <tr class="link-row" id="row-13" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129150807</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('13')">
@@ -999,7 +999,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -1010,7 +1010,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1039,7 +1039,7 @@
             <tr class="link-row" id="row-14" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129150757</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('14')">
@@ -1062,7 +1062,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -1073,7 +1073,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 clusters."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1102,7 +1102,7 @@
             <tr class="link-row" id="row-15" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145652</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('15')">
@@ -1117,7 +1117,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -1128,7 +1128,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1157,7 +1157,7 @@
             <tr class="link-row" id="row-16" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145641</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('16')">
@@ -1172,7 +1172,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -1183,7 +1183,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1212,7 +1212,7 @@
             <tr class="link-row" id="row-17" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129145437</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('17')">
@@ -1227,7 +1227,7 @@
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">POLICY_EXCERPT</span>
-                    <span class="badge-status status-matched">PASS: PASS</span>
+                    <span class="badge-status status-matched">검증 성공: PASS</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review."</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -1238,7 +1238,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1267,7 +1267,7 @@
             <tr class="link-row" id="row-18" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144451</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('18')">
@@ -1282,7 +1282,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1311,7 +1311,7 @@
             <tr class="link-row" id="row-19" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144423</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('19')">
@@ -1326,7 +1326,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1355,7 +1355,7 @@
             <tr class="link-row" id="row-20" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144347</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('20')">
@@ -1370,7 +1370,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
@@ -1399,7 +1399,7 @@
             <tr class="link-row" id="row-21" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="true">
                 <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
                 <td><b>Export Control Impact</b><br><small>RAW-20260129144324</small></td>
-                <td>TRUST_LOCKED</td>
+                <td>확정</td>
                 <td></td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('21')">
@@ -1414,7 +1414,7 @@
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">ASML: ASML</div>
-                        <span class="badge-status status-matched">PROOF_OK</span>
+                        <span class="badge-status status-matched">검증 성공</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"Structural position confirmed by 2 sources."</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">
