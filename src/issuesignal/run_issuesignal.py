@@ -25,6 +25,7 @@ from src.issuesignal.actor_bridge import ActorBridgeEngine
 from src.issuesignal.ticker_path_extractor import TickerPathExtractor
 from src.issuesignal.editorial_light_engine import EditorialLightEngine
 from src.issuesignal.structural_bridge import StructuralBridge
+from src.issuesignal.decision_tree import DecisionTree
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -122,6 +123,9 @@ def main():
         # Process Top Candidates
         processed_candidates = []
         for idx, cand in enumerate(top_candidates):
+            # IS-72: Initialize Decision Tree Path
+            dt_results = {"DA": True} # Data Ingest is PASS if in loop
+            
             # Generate WhyNow if missing
             if not cand.get('why_now'):
                 cand['why_now'] = WhyNowSynthesizer.synthesize(
@@ -191,6 +195,12 @@ def main():
             # We count official_facts and corporate_facts as hard facts
             has_hard_fact = len(corporate_facts) > 0 or len(official_facts) > 0
             has_why_now = bool(cand.get('why_now'))
+            
+            # IS-72: Fill decision results for tree
+            dt_results["HF"] = has_hard_fact
+            dt_results["WN"] = has_why_now
+            dt_results["AM"] = (actor_type != '없음')
+            dt_results["QF"] = False # Initial
 
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
                 if has_hard_fact and has_why_now:
@@ -203,6 +213,7 @@ def main():
                             bridge_info=cand['details'].get('bridge_info')
                         )
                         cand['generated_script'] = script_data
+                        dt_results["QF"] = True
                     except Exception as e:
                         print(f"[Warn] Script Gen Failed for {idx}: {e}")
                 else:
@@ -211,7 +222,11 @@ def main():
             
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"] and not script_data:
                 status = "HOLD" # Catch-all for failed script generation
+                dt_results["QF"] = False
                 print(f"[Floor] Candidate {idx} rejected: Script generation failed or blocked by validation.")
+            
+            # IS-72: Finalize Tree Data
+            cand['decision_tree_data'] = DecisionTree.create_path(dt_results)
             
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
                 cand['final_status'] = status
@@ -304,9 +319,9 @@ def main():
                     tickers=[],
                     kill_switch="-",
                     signature="silence_sig",
-                    authority_sentence="수집된 유의미한 데이터 신호 없음.",
-                    decision_rationale="사유: WHY-NOW 미충족 또는 시장 가격 반영 완료로 인한 발화 실익 부재."
-                )
+                     authority_sentence="수집된 유의미한 데이터 신호 없음.",
+                     decision_rationale="사유: 시점(WHY-NOW) 요건 미충족 또는 시장 가격 반영 완료로 인한 발화 실익 부재 (상태: 침묵)"
+                 )
              decision_card_model.blocks["editorial_candidates"] = []
              # Reference Area (Hold/Silent candidates)
              decision_card_model.blocks["reference_candidates"] = [c for c in top_candidates if c not in processed_candidates]
@@ -342,7 +357,8 @@ def main():
                 long_form = f"## 분석 대기\n{fact_text}"
                 one_liner = f"[대기] {fact_text}"
 
-            desc_rationale = f"Rank #1 Selected. Score: {score_val}, Status: {status_verdict}"
+             status_map = {"TRUST_LOCKED": "확정", "EDITORIAL_CANDIDATE": "후보", "HOLD": "보류", "SILENT": "침묵"}
+             desc_rationale = f"1순위 선정. 점수: {score_val}, 최종 상태: {status_map.get(status_verdict, status_verdict)}"
 
             # Pack Data
             pack_data = {
@@ -354,6 +370,7 @@ def main():
                 "bottleneck_link": details.get('bottleneck_link', '-'),
                 "ticker_path": details.get('ticker_path', {}),
                 "bridge_info": details.get('bridge_info'),
+                "decision_tree_data": details.get('decision_tree_data', []),
                 "must_item": "Topic",
                 "time_window": "24h",
                 "long_form": long_form,

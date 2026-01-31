@@ -161,8 +161,8 @@ class DashboardRenderer:
                 <span>RUN: {pipeline_time_kst}</span>
             </div>
             <div class="header-meta" style="margin-top:2px;">
-                <span>COMMIT: {commit_hash}</span>
-                <span>ENG: {engine_version}</span>
+                <span>커밋: {commit_hash}</span>
+                <span>엔진: {engine_version}</span>
             </div>
         </div>
     </div>
@@ -207,9 +207,9 @@ class DashboardRenderer:
             <b>상태 필터:</b>
             <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
                 <option value="ALL">전체 상태</option>
-                <option value="TRUST_LOCKED">발화 확정 (Confirmed)</option>
-                <option value="HOLD">보류 (HOLD)</option>
-                <option value="REJECT">반려 (REJECT)</option>
+                <option value="TRUST_LOCKED">발화 확정</option>
+                <option value="HOLD">보류</option>
+                <option value="REJECT">반려</option>
             </select>
             <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결됨</label>
             <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 실체 검증됨</label>
@@ -291,11 +291,13 @@ class DashboardRenderer:
     def _render_counters(self, counts: dict) -> str:
         items = []
         status_map = {
-            "TRUST_LOCKED": "확정 (Confirmed)",
-            "REJECT": "반려 (Rejected)",
-            "PRE_TRIGGER": "감시 (Watching)",
-            "HOLD": "보류 (Hold)",
-            "SILENT_DROP": "침묵 (Silent)"
+            "TRUST_LOCKED": "확정",
+            "EDITORIAL_CANDIDATE": "후보",
+            "REJECT": "반려",
+            "PRE_TRIGGER": "감시",
+            "HOLD": "보류",
+            "SILENT_DROP": "침묵",
+            "EDITORIAL_LIGHT": "구조 해설"
         }
         colors = {
             "TRUST_LOCKED": "#10B981",
@@ -309,7 +311,7 @@ class DashboardRenderer:
             color = colors.get(status, "#6B7280")
             items.append(f"""
             <div style="background:white; border-left:4px solid {color}; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size: 11px; font-weight:700; color: #64748b; text-transform:uppercase;">{status_map[status]}</div>
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">{status_map[status]}</div>
                 <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">{count}</div>
             </div>
             """)
@@ -339,7 +341,8 @@ class DashboardRenderer:
             <div style="background:#fff1f2; border:1px solid #fecdd3; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center;">
                 <div style="font-size:3em; margin-bottom:15px;">❌</div>
                 <div style="font-weight:800; color:#e11d48; font-size:1.5em; margin-bottom:10px;">{c.title}</div>
-                <div style="font-size:1.1em; color:#be123c;">{c.decision_rationale}</div>
+                <div style="font-size:1.1em; color:#be123c;">오늘의 발화 상태: 보류</div>
+                <div style="font-size:0.9em; color:#be123c; margin-top:5px;">{c.decision_rationale}</div>
             </div>
             """
 
@@ -369,10 +372,11 @@ class DashboardRenderer:
                     <h1 style="font-size:32px; font-weight:900; color:#0f172a; margin:0; line-height:1.2;">{c.title}</h1>
                 </div>
                 <div style="text-align:right;">
-                    <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px;">
+                    <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px; margin-bottom:10px;">
                         <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">주인공 ({c.actor_type})</div>
                         <div style="font-size: 14px; font-weight: 800; color: #1e293b;">{c.actor} <span style="font-size:11px; color:var(--blue); font-weight:700;">#{c.actor_tag}</span></div>
                     </div>
+                    {self._render_decision_tree(c)}
                 </div>
             </div>
 
@@ -536,11 +540,22 @@ class DashboardRenderer:
             has_ev = 'true' if r.linked_evidence else 'false'
             has_proof = 'true' if any(p.proof_status == "PROOF_OK" for p in c.proof_packs) else 'false'
             
+            status_map = {
+                "TRUST_LOCKED": "확정",
+                "EDITORIAL_CANDIDATE": "후보",
+                "REJECT": "반려",
+                "PRE_TRIGGER": "감시",
+                "HOLD": "보류",
+                "SILENT": "침묵",
+                "EDITORIAL_LIGHT": "구조 해설"
+            }
+            ko_status = status_map.get(c.status, c.status)
+            
             html_rows.append(f"""
             <tr class="link-row" id="row-{idx}" data-status="{c.status}" data-has-ev="{has_ev}" data-has-proof="{has_proof}">
                 <td><span class="badge-status {status_class}">{r.link_status}</span></td>
                 <td><b>{c.title}</b><br><small>{c.topic_id}</small></td>
-                <td>{c.status}</td>
+                <td>{ko_status}</td>
                 <td>{", ".join([t.get('symbol', '') for t in c.tickers])}</td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('{idx}')">
@@ -603,7 +618,7 @@ class DashboardRenderer:
             <div class="evidence-item" style="border-left: 4px solid var(--blue); background:#EFF6FF; margin-bottom:20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:4px; font-size:0.75em; font-weight:bold;">{q.fact_type}</span>
-                    <span class="badge-status {q_status_class}">{q.verification_status}: {q.reason_code}</span>
+                    <span class="badge-status {q_status_class}">{ "검증 성공" if q.verification_status == "PASS" else "검증 보류" }: {q.reason_code}</span>
                 </div>
                 <div style="font-size:1.1em; font-weight:bold; line-height:1.4; color:#1E3A8A; margin:10px 0;">"{q.excerpt}"</div>
                 <div style="font-size:0.75em; color:var(--text-sub);">
@@ -652,7 +667,7 @@ class DashboardRenderer:
                 <div class="evidence-item" style="border-left: 4px solid var(--amber); background:#FFFBEB;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="font-weight:bold; font-size:1em;">{p.ticker}: {p.company_name}</div>
-                        <span class="badge-status {p_status_class}">{p.proof_status}</span>
+                        <span class="badge-status {p_status_class}">{ "검증 성공" if p.proof_status == "PROOF_OK" else "검증 실패" }</span>
                     </div>
                     <div style="font-size:0.85em; color:#4B5563; margin-bottom:10px; font-style:italic;">"{p.why_irreplaceable_now}"</div>
                     <ul style="margin:0; padding-left:15px; color:#374151;">{''.join(f_items)}</ul>
@@ -820,5 +835,32 @@ class DashboardRenderer:
             <div style="font-size: 11px; color: #94a3b8; text-align:right;">
                 본 콘텐츠는 에디토리얼 공백 방지를 위한 구조 해설형 레이어(IS-70)에 의해 생성되었습니다.
             </div>
+        </div>
+        """
+    def _render_decision_tree(self, c: DecisionCard) -> str:
+        if not c.decision_tree_data: return ""
+        
+        nodes = []
+        for node in c.decision_tree_data:
+            icon = "✅" if node['status'] == 'PASS' else "❌" if node['status'] == 'FAIL' else "⚪"
+            color = "#10b981" if node['status'] == 'PASS' else "#ef4444" if node['status'] == 'FAIL' else "#94a3b8"
+            nodes.append(f"""
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="font-size:14px; margin-bottom:4px;">{icon}</div>
+                <div style="font-size:9px; font-weight:800; color:{color}; white-space:nowrap;">{node['name']}</div>
+            </div>
+            """)
+        
+        # Connectors logic simplified for UI
+        tree_html = []
+        for i, node_html in enumerate(nodes):
+            tree_html.append(node_html)
+            if i < len(nodes) - 1:
+                tree_html.append('<div style="width:12px; height:1px; background:#e2e8f0; margin-top:10px;"></div>')
+
+        return f"""
+        <div style="background:white; border:1px solid #e2e8f0; padding:10px; border-radius:8px; display:inline-flex; align-items:flex-start; gap:5px;">
+            <div style="font-size:9px; font-weight:800; color:#64748b; margin-right:8px; writing-mode:vertical-lr; transform:rotate(180deg);">의사결정 트리</div>
+            {''.join(tree_html)}
         </div>
         """
