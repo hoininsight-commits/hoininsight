@@ -2658,20 +2658,28 @@ def generate_dashboard(base_dir: Path):
                                      """ + 
                                      
                                      (''.join([
-                                         '<div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:2px;">✅ 증거 (HARD FACT)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
+                                         '<div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:2px;">✅ 증거 (HARD FACT / OFFICIAL)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
                                          ''.join([
                                              f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','Official')})</span></li>" 
-                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') == 'HARD_FACT'
+                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') in ['HARD_FACT', 'STRONG']
                                          ]) + '</ul>'
-                                     ]) if any(i.get('evidence_grade') == 'HARD_FACT' for i in final_card['blocks']['flow_evidence']) else '') +
+                                     ]) if any(i.get('evidence_grade') in ['HARD_FACT', 'STRONG'] for i in final_card['blocks']['flow_evidence']) else '') +
+
+                                     (''.join([
+                                         '<div style="font-size:11px; font-weight:700; color:#b45309; margin-bottom:2px;">🟡 참고 (TIER 1 NEWS)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
+                                         ''.join([
+                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','News')})</span></li>" 
+                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') == 'MEDIUM'
+                                         ]) + '</ul>'
+                                     ]) if any(i.get('evidence_grade') == 'MEDIUM' for i in final_card['blocks']['flow_evidence']) else '') +
 
                                      (''.join([
                                          '<div style="font-size:11px; font-weight:700; color:#d97706; margin-bottom:2px;">🔍 단서 (TEXT HINT)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' +
                                          ''.join([
                                              f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','RSS')})</span></li>" 
-                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') != 'HARD_FACT'
+                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') not in ['HARD_FACT', 'STRONG', 'MEDIUM']
                                          ]) + '</ul>'
-                                     ]) if any(i.get('evidence_grade') != 'HARD_FACT' for i in final_card['blocks']['flow_evidence']) else '') +
+                                     ]) if any(i.get('evidence_grade') not in ['HARD_FACT', 'STRONG', 'MEDIUM'] for i in final_card['blocks']['flow_evidence']) else '') +
 
                                      """
                                      </div>

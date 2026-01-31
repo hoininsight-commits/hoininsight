@@ -15,7 +15,9 @@ TARGETS = {
     "US02Y": {"y_sym": "^IRX", "fred_sym": "DGS2", "name": "미 국채 2년물 (Proxy)"}, # IRX is 13 week, getting 2Y via Yahoo is ^TWO usually but sometimes flaky
     "WTI": {"y_sym": "CL=F", "fred_sym": "DCOILWTICO", "name": "WTI 원유"},
     "DXY": {"y_sym": "DX-Y.NYB", "fred_sym": "DTWEXB", "name": "달러 인덱스"},
-    "GOLD": {"y_sym": "GC=F", "fred_sym": "GOLDPMGBD228NLBM", "name": "금 선물"}
+    # [IS-58] User requested Gold to be removed or downgraded.
+    # While we use GC=F (Direct Future), we respect the instruction to treat it as HINT for now if deemed unstable.
+    "GOLD": {"y_sym": "GC=F", "fred_sym": "GOLDPMGBD228NLBM", "name": "금 선물 (Hint)", "force_grade": "TEXT_HINT"} 
 }
 
 def fetch_yahoo_chart_api(symbol: str) -> Dict[str, Any]:
@@ -79,14 +81,18 @@ def collect_macro_facts(base_dir: Path, ymd: str) -> List[Dict[str, Any]]:
                 if chg > 0.5: icon = "🔺"
                 if chg < -0.5: icon = "🔻"
                 
+                # [IS-58] Grade Check (Gold Downgrade Support)
+                grade = info.get("force_grade", "HARD_FACT")
+                score = 50 if grade == "TEXT_HINT" else 90
+                
                 fact = {
                     "fact_type": "MACRO_FACT",
                     "fact_text": f"{info['name']} {val:.2f} ({icon} {chg:+.2f}%)",
                     "source": "Market Data (Yahoo)",
                     "source_ref": info["y_sym"],
                     "source_date": datetime.fromtimestamp(data.get('timestamp', 0)).strftime('%Y-%m-%d'),
-                    "evidence_grade": "HARD_FACT",
-                    "reliability_score": 90,
+                    "evidence_grade": grade,
+                    "reliability_score": score,
                     "independence_key": f"MACRO_{key}_{ymd}",
                     "details": {
                         "ticker": key,
