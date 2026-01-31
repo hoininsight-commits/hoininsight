@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-01-31T22:58:08Z",
+    "ts_utc": "2026-01-31T22:59:50Z",
     "dataset_id": "derived_gold_silver_ratio",
     "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
     "title": "data/features/anomalies/2026/01/31/derived_gold_silver_ratio.json L1 Signal",
@@ -13,7 +13,7 @@
         "z_score": 1.68,
         "percentile": 50.0,
         "value": 54.21116639027086,
-        "rolling_mean_20d": 50.093368980551716,
+        "rolling_mean_20d": 50.0946492709624,
         "reasoning": "Z-Score 1.68 >= 1.5"
       },
       "regime": {

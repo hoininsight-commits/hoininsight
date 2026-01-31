@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=160
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=163
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -808,6 +808,21 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 크루그먼 "워시 연준의장 후보, 긴축 선호자 아냐…정치 동물" - 연합뉴스 한민족센터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 화과자 포장지까지…두쫀쿠 인기에 재료 ‘부르는 게 값’ [두쫀쿠 이코노미③] - 매거진한경 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [케빈 워시 연준] '21세기 최고' 1월 랠리 뒤로하고…국내증시 긴장 - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 결국 표면화된 `로봇` 갈등… 李 대통령과 노조, `강대강` 충돌하나 [주말 리뷰] - 디지털데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
