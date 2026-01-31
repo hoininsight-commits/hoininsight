@@ -1,5 +1,5 @@
 {
-  "topic_id": "ISSUE-20260131-001",
+  "topic_id": "ISSUE-20260201-001",
   "title": "미 국채 10년물 4.24 (➖ +0.33%)",
   "status": "EDITORIAL_CANDIDATE",
   "one_liner": "미국 장기채: - 변화의 필연성",
@@ -18,7 +18,7 @@
   ],
   "kill_switch": "즉시 중단 가능",
   "reason": "-",
-  "signature": "sig_235929",
+  "signature": "sig_010712",
   "authority_sentence": "미국 장기채: - 변화의 필연성",
   "forced_capex": "-",
   "bottleneck": "-",
@@ -44,23 +44,6 @@
     },
     "flow_evidence": [
       {
-        "fact_type": "CAPITAL_FLOW",
-        "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
-        "source": "RSS Finance (Real-time)",
-        "source_ref": "Google_News_KR_Biz",
-        "source_date": "2026-01-31",
-        "evidence_grade": "TEXT_HINT",
-        "reliability_score": 40,
-        "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
-        "flow_metadata": {
-          "ticker": "RSS_SIGNAL",
-          "sector": "Gold/Defense",
-          "change_pct": 0.0,
-          "volume_ratio": 0.0,
-          "direction": "OUTFLOW"
-        }
-      },
-      {
         "fact_type": "MACRO_FACT",
         "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
         "source": "Market Data (Yahoo)",
@@ -68,7 +51,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_US10Y_2026-01-31",
+        "independence_key": "MACRO_US10Y_2026-02-01",
         "details": {
           "ticker": "US10Y",
           "value": 4.241000175476074,
@@ -83,7 +66,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_US02Y_2026-01-31",
+        "independence_key": "MACRO_US02Y_2026-02-01",
         "details": {
           "ticker": "US02Y",
           "value": 3.572000026702881,
@@ -98,7 +81,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_WTI_2026-01-31",
+        "independence_key": "MACRO_WTI_2026-02-01",
         "details": {
           "ticker": "WTI",
           "value": 65.20999908447266,
@@ -113,7 +96,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_DXY_2026-01-31",
+        "independence_key": "MACRO_DXY_2026-02-01",
         "details": {
           "ticker": "DXY",
           "value": 96.98999786376953,
@@ -128,7 +111,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "MACRO_GOLD_2026-01-31",
+        "independence_key": "MACRO_GOLD_2026-02-01",
         "details": {
           "ticker": "GOLD",
           "value": 4713.89990234375,
@@ -143,7 +126,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+        "independence_key": "OFFICIAL_Fed_5499234800831362307_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -158,7 +141,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+        "independence_key": "OFFICIAL_Fed_4025360642168803162_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -173,7 +156,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+        "independence_key": "OFFICIAL_Fed_712416190867765336_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -188,7 +171,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+        "independence_key": "OFFICIAL_Fed_-8562416856777944531_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -203,7 +186,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+        "independence_key": "OFFICIAL_Fed_-3640824301985423907_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -218,7 +201,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+        "independence_key": "OFFICIAL_Fed_394274202173595885_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -233,7 +216,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+        "independence_key": "OFFICIAL_Fed_5656911782679180047_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -248,7 +231,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+        "independence_key": "OFFICIAL_Fed_6208571981140709445_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -263,7 +246,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+        "independence_key": "OFFICIAL_Fed_-3819211794007767833_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -278,7 +261,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+        "independence_key": "OFFICIAL_Fed_1786187159542814407_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -293,7 +276,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+        "independence_key": "OFFICIAL_Fed_8767999996969573053_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -308,7 +291,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+        "independence_key": "OFFICIAL_Fed_77334741714251625_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -323,7 +306,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+        "independence_key": "OFFICIAL_Fed_-6758714867476514838_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -338,7 +321,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+        "independence_key": "OFFICIAL_Fed_6883567115201090632_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -353,7 +336,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+        "independence_key": "OFFICIAL_Fed_-8691451141171893929_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -368,7 +351,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+        "independence_key": "OFFICIAL_Fed_-9119879393154928509_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -383,7 +366,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+        "independence_key": "OFFICIAL_Fed_1589714146182660913_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -398,7 +381,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+        "independence_key": "OFFICIAL_Fed_-1539311585845624723_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -413,7 +396,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+        "independence_key": "OFFICIAL_Fed_-943801442385882646_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -428,7 +411,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+        "independence_key": "OFFICIAL_Fed_4500648968612940492_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -443,7 +426,7 @@
         "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_한국은행_6316327418369526924_2026-02-01",
         "details": {
           "entity": "한국은행",
           "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
@@ -458,7 +441,7 @@
         "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_White House_-7516961299480282627_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
@@ -473,7 +456,7 @@
         "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_한국은행_2465237122358871327_2026-02-01",
         "details": {
           "entity": "한국은행",
           "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
@@ -490,7 +473,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-02-01",
         "details": {
           "company": "Mountain Lake Acquisition Corp. II",
           "action_type": "AGREEMENT",
@@ -505,7 +488,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Aspira Women's Health Inc.",
           "action_type": "AGREEMENT",
@@ -520,7 +503,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_NN INC_AGREEMENT_2026-02-01",
         "details": {
           "company": "NN INC",
           "action_type": "AGREEMENT",
@@ -535,7 +518,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-02-01",
         "details": {
           "company": "SARATOGA INVESTMENT CORP.",
           "action_type": "AGREEMENT",
@@ -550,7 +533,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Aspire Biopharma Holdings, Inc.",
           "action_type": "AGREEMENT",
@@ -565,7 +548,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "ASP Isotopes Inc.",
           "action_type": "AGREEMENT",
@@ -580,7 +563,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-02-01",
         "details": {
           "company": "MADRIGAL PHARMACEUTICALS, INC.",
           "action_type": "AGREEMENT",
@@ -595,7 +578,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Comstock Inc.",
           "action_type": "AGREEMENT",
@@ -610,7 +593,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-02-01",
         "details": {
           "company": "PENNANTPARK INVESTMENT CORP",
           "action_type": "AGREEMENT",
@@ -620,23 +603,6 @@
     ],
     "all_evidence": [
       {
-        "fact_type": "CAPITAL_FLOW",
-        "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
-        "source": "RSS Finance (Real-time)",
-        "source_ref": "Google_News_KR_Biz",
-        "source_date": "2026-01-31",
-        "evidence_grade": "TEXT_HINT",
-        "reliability_score": 40,
-        "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
-        "flow_metadata": {
-          "ticker": "RSS_SIGNAL",
-          "sector": "Gold/Defense",
-          "change_pct": 0.0,
-          "volume_ratio": 0.0,
-          "direction": "OUTFLOW"
-        }
-      },
-      {
         "fact_type": "MACRO_FACT",
         "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
         "source": "Market Data (Yahoo)",
@@ -644,7 +610,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_US10Y_2026-01-31",
+        "independence_key": "MACRO_US10Y_2026-02-01",
         "details": {
           "ticker": "US10Y",
           "value": 4.241000175476074,
@@ -659,7 +625,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_US02Y_2026-01-31",
+        "independence_key": "MACRO_US02Y_2026-02-01",
         "details": {
           "ticker": "US02Y",
           "value": 3.572000026702881,
@@ -674,7 +640,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_WTI_2026-01-31",
+        "independence_key": "MACRO_WTI_2026-02-01",
         "details": {
           "ticker": "WTI",
           "value": 65.20999908447266,
@@ -689,7 +655,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "MACRO_DXY_2026-01-31",
+        "independence_key": "MACRO_DXY_2026-02-01",
         "details": {
           "ticker": "DXY",
           "value": 96.98999786376953,
@@ -704,7 +670,7 @@
         "source_date": "2026-01-31",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "MACRO_GOLD_2026-01-31",
+        "independence_key": "MACRO_GOLD_2026-02-01",
         "details": {
           "ticker": "GOLD",
           "value": 4713.89990234375,
@@ -719,7 +685,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+        "independence_key": "OFFICIAL_Fed_5499234800831362307_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -734,7 +700,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+        "independence_key": "OFFICIAL_Fed_4025360642168803162_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -749,7 +715,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+        "independence_key": "OFFICIAL_Fed_712416190867765336_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -764,7 +730,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+        "independence_key": "OFFICIAL_Fed_-8562416856777944531_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -779,7 +745,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+        "independence_key": "OFFICIAL_Fed_-3640824301985423907_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -794,7 +760,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+        "independence_key": "OFFICIAL_Fed_394274202173595885_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -809,7 +775,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+        "independence_key": "OFFICIAL_Fed_5656911782679180047_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -824,7 +790,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+        "independence_key": "OFFICIAL_Fed_6208571981140709445_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -839,7 +805,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+        "independence_key": "OFFICIAL_Fed_-3819211794007767833_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -854,7 +820,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+        "independence_key": "OFFICIAL_Fed_1786187159542814407_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -869,7 +835,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+        "independence_key": "OFFICIAL_Fed_8767999996969573053_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -884,7 +850,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+        "independence_key": "OFFICIAL_Fed_77334741714251625_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -899,7 +865,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+        "independence_key": "OFFICIAL_Fed_-6758714867476514838_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -914,7 +880,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+        "independence_key": "OFFICIAL_Fed_6883567115201090632_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -929,7 +895,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+        "independence_key": "OFFICIAL_Fed_-8691451141171893929_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -944,7 +910,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+        "independence_key": "OFFICIAL_Fed_-9119879393154928509_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -959,7 +925,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+        "independence_key": "OFFICIAL_Fed_1589714146182660913_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -974,7 +940,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+        "independence_key": "OFFICIAL_Fed_-1539311585845624723_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -989,7 +955,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+        "independence_key": "OFFICIAL_Fed_-943801442385882646_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -1004,7 +970,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+        "independence_key": "OFFICIAL_Fed_4500648968612940492_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -1019,7 +985,7 @@
         "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_한국은행_6316327418369526924_2026-02-01",
         "details": {
           "entity": "한국은행",
           "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
@@ -1034,7 +1000,7 @@
         "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_White House_-7516961299480282627_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
@@ -1049,7 +1015,7 @@
         "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+        "independence_key": "OFFICIAL_NEWS_한국은행_2465237122358871327_2026-02-01",
         "details": {
           "entity": "한국은행",
           "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
@@ -1064,7 +1030,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-02-01",
         "details": {
           "company": "Mountain Lake Acquisition Corp. II",
           "action_type": "AGREEMENT",
@@ -1079,7 +1045,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Aspira Women's Health Inc.",
           "action_type": "AGREEMENT",
@@ -1094,7 +1060,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_NN INC_AGREEMENT_2026-02-01",
         "details": {
           "company": "NN INC",
           "action_type": "AGREEMENT",
@@ -1109,7 +1075,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-02-01",
         "details": {
           "company": "SARATOGA INVESTMENT CORP.",
           "action_type": "AGREEMENT",
@@ -1124,7 +1090,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Aspire Biopharma Holdings, Inc.",
           "action_type": "AGREEMENT",
@@ -1139,7 +1105,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "ASP Isotopes Inc.",
           "action_type": "AGREEMENT",
@@ -1154,7 +1120,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-02-01",
         "details": {
           "company": "MADRIGAL PHARMACEUTICALS, INC.",
           "action_type": "AGREEMENT",
@@ -1169,7 +1135,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+        "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-02-01",
         "details": {
           "company": "Comstock Inc.",
           "action_type": "AGREEMENT",
@@ -1184,7 +1150,7 @@
         "source_date": "2026-01-30",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 95,
-        "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+        "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-02-01",
         "details": {
           "company": "PENNANTPARK INVESTMENT CORP",
           "action_type": "AGREEMENT",
@@ -1214,7 +1180,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+          "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-02-01",
           "details": {
             "company": "Mountain Lake Acquisition Corp. II",
             "action_type": "AGREEMENT",
@@ -1231,7 +1197,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-02-01",
           "details": {
             "company": "Aspira Women's Health Inc.",
             "action_type": "AGREEMENT",
@@ -1248,7 +1214,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+          "independence_key": "CORP_NN INC_AGREEMENT_2026-02-01",
           "details": {
             "company": "NN INC",
             "action_type": "AGREEMENT",
@@ -1265,7 +1231,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-02-01",
           "details": {
             "company": "SARATOGA INVESTMENT CORP.",
             "action_type": "AGREEMENT",
@@ -1282,7 +1248,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-02-01",
           "details": {
             "company": "Aspire Biopharma Holdings, Inc.",
             "action_type": "AGREEMENT",
@@ -1299,7 +1265,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-02-01",
           "details": {
             "company": "ASP Isotopes Inc.",
             "action_type": "AGREEMENT",
@@ -1316,7 +1282,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-02-01",
           "details": {
             "company": "MADRIGAL PHARMACEUTICALS, INC.",
             "action_type": "AGREEMENT",
@@ -1333,7 +1299,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+          "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-02-01",
           "details": {
             "company": "Comstock Inc.",
             "action_type": "AGREEMENT",
@@ -1350,7 +1316,7 @@
           "source_date": "2026-01-30",
           "evidence_grade": "HARD_FACT",
           "reliability_score": 95,
-          "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+          "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-02-01",
           "details": {
             "company": "PENNANTPARK INVESTMENT CORP",
             "action_type": "AGREEMENT",
