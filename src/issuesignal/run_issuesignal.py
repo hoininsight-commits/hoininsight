@@ -267,7 +267,8 @@ def main():
                 }
             )
             
-            # Save Canonical [IS-63]
+        # Save Canonical [IS-63] (Moved out of else to handle Silence)
+        if decision_card_model:
             today_ymd = datetime.now().strftime("%Y-%m-%d")
             y, m, d = today_ymd.split('-')
             canonical_dir = base_dir / "data" / "decision" / y / m / d
