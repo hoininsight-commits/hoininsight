@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=156
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=159
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -788,6 +788,21 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

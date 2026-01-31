@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 156
+- **Unreviewed**: 159
 
 ---
 
@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **지수 상승 속 섹터 하락의 이유**
+- **오늘 시장의 핵심 혼란 포인트**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=156
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=159
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -72,16 +72,16 @@
 
 ### 🏥 SYSTEM STATUS (Today)
 - **Topics Generated**: 1
-- **READY / HOLD / DROP**: 0 / 1 / 0
+- **READY / HOLD / DROP**: 0 / 0 / 1
 - **FACT-DRIVEN / ANOMALY-DRIVEN**: 0 / 1
 
 ✅ **SYSTEM HEALTH**: All clear (Operational margins normal)
 
-**SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
+**SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 156
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 153
+- **Count**: 159
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 156
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,9 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -412,6 +415,9 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -575,12 +581,16 @@
 | 신고해도 소용없다?…경차 3대 주차칸 차지 ‘민폐 SUV’에 분노폭발 - 매일경제 | Structural implication: '신고해도 소용없다?…경차 3대 주차칸 차지 ‘민폐 SUV’에 분노폭발 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화 | Structural implication: '“유로화 강세는 반갑지만, 수출 타격 어쩌나”…‘달러 딜레마’ 닮아가는 유로화' suggests a shift in NEWS dynamics. | LOW |
 | “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 | Structural implication: '“거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들' suggests a shift in NEWS dynamics. | LOW |
+| ‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보 | Structural implication: '‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보 | Structural implication: '‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| “다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세 | Structural implication: '“다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
 > **오늘은 영상화 가능한 토픽이 없습니다.** 아래 사유로 인해 보류되었습니다.
 
-- 근거 데이터가 부족합니다 (최소 2개 필요). (1건)
+- 근거 데이터가 전혀 없습니다. (1건)
+- 논리적 일관성이 결여되었습니다. (1건)
 - EVIDENCE_TOO_THIN: 1건
 - TITLE_MISMATCH: 1건
 
@@ -592,7 +602,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🟡 지수 상승 속 섹터 하락의 이유 (HOLD)
+### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -602,8 +612,8 @@
 - [ ] Contract / order / disclosure-level evidence
 - [ ] Capital signal (ownership, buyback, investment)
 - [ ] Structural advantage vs competitors
-- **Reason**: 제목과 근거 데이터의 연관성이 낮습니다.
-- **Evidence**: 1 items
+- **Reason**: 근거 데이터가 전혀 없습니다.
+- **Evidence**: 0 items
 
 
 #### 📨 SIGNAL ARRIVAL TODAY
@@ -613,7 +623,13 @@
 > **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.
 _Shadow pool empty — no promotable topics detected._
 
-## 👀 WATCHLIST — NOT YET (1)
-| Status | Title | Why not speak yet? |
+## 👀 WATCHLIST — NOT YET (0)
+- (No items on watchlist)
+
+## 🗑️ ARCHIVE — DROP (1)
+<details><summary>Click to view dropped topics</summary>
+
+| Status | Title | Reason |
 |---|---|---|
-| ⚠️ HOLD | 지수 상승 속 섹터 하락의 이유 | 아직 말하지 않는 이유: 제목과 근거 데이터의 연관성이 낮습니다. |
+| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 근거 데이터가 전혀 없습니다. |
+</details>
