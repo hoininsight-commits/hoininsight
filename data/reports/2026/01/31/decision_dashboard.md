@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 159
+- **Unreviewed**: 160
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=159
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=160
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 159
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 156
+- **Count**: 160
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 157
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,7 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -418,6 +419,7 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -584,6 +586,7 @@
 | ‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보 | Structural implication: '‘너 여기 스타벅스 아직도 가?’…스벅 이용자 ‘뚝’, 왜?[아하 미국] - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | ‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보 | Structural implication: '‘강남 결혼식’ 식대 평균 9만원 넘어…청첩장이 두렵다 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | “다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세 | Structural implication: '“다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세' suggests a shift in NEWS dynamics. | LOW |
+| 크루그먼 "워시 연준의장 후보, 긴축 선호자 아냐…정치 동물" - 연합뉴스 한민족센터 | Structural implication: '크루그먼 "워시 연준의장 후보, 긴축 선호자 아냐…정치 동물" - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

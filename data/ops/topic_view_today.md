@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=159
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=160
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -805,4 +805,9 @@ No SHADOW candidates today.
 ### “다 막아버리면 난 어떡하라고”…한달 새 1800채 사라진 서울 전세 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 크루그먼 "워시 연준의장 후보, 긴축 선호자 아냐…정치 동물" - 연합뉴스 한민족센터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
