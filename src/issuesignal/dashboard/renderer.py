@@ -350,6 +350,20 @@ class DashboardRenderer:
         long_form = cp.get('long_form', '-')
         text_card = cp.get('text_card', '-')
         
+        # [IS-73] Opening One-Liner Display
+        one_liner_html = ""
+        if c.opening_one_liner and c.opening_one_liner != "-":
+            one_liner_html = f"""
+            <div style="background:#F0FDF4; border:1px solid #BBF7D0; padding:15px; border-radius:8px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+                <div style="font-weight:700; color:#15803d; font-size:1.1em; flex-grow:1;">
+                    📌 오프닝 1문장: "{c.opening_one_liner}"
+                </div>
+                <button onclick="navigator.clipboard.writeText('{c.opening_one_liner}')" style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px; font-size:0.8em; cursor:pointer; color:#64748b;">
+                    복사
+                </button>
+            </div>
+            """
+
         # Risk factors summary
         risk_text = c.risk_factors[0] if c.risk_factors else "시장 변동성 확인 필요"
 
@@ -363,13 +377,18 @@ class DashboardRenderer:
         return f"""
         <div class="topic-card-top1" style="border-top: 8px solid var(--blue);">
             <!-- Header Group -->
+            <!-- Header Group -->
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
                 <div>
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
                         <span style="background:var(--blue); color:white; padding:4px 12px; border-radius:4px; font-size:12px; font-weight:800;">📌 오늘의 1순위 발화</span>
                         <span style="font-size:12px; color:var(--text-sub); font-weight:600;">추천 형식: 롱폼 / 숏츠 / 텍스트</span>
                     </div>
-                    <h1 style="font-size:32px; font-weight:900; color:#0f172a; margin:0; line-height:1.2;">{c.title}</h1>
+                </div>
+            </div>
+            {one_liner_html}
+            
+            <h1 style="font-size:2.2em; line-height:1.2; font-weight:800; color:var(--gray-900); margin:0 0 15px 0;">{c.title}</h1>
                 </div>
                 <div style="text-align:right;">
                     <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px; margin-bottom:10px;">

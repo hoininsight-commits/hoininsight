@@ -26,6 +26,7 @@ from src.issuesignal.ticker_path_extractor import TickerPathExtractor
 from src.issuesignal.editorial_light_engine import EditorialLightEngine
 from src.issuesignal.structural_bridge import StructuralBridge
 from src.issuesignal.decision_tree import DecisionTree
+from src.issuesignal.opening_one_liner import synthesize_opening_one_liner
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -363,10 +364,14 @@ def main():
             status_map = {"TRUST_LOCKED": "확정", "EDITORIAL_CANDIDATE": "후보", "HOLD": "보류", "SILENT": "침묵"}
             desc_rationale = f"1순위 선정. 점수: {score_val}, 최종 상태: {status_map.get(status_verdict, status_verdict)}"
 
+            # [IS-73] Opening One-Liner
+            opening_one_liner = synthesize_opening_one_liner(selected_candidate, details.get('decision_tree_data', []))
+
             # Pack Data
             pack_data = {
                 "id": f"ISSUE-{datetime.now().strftime('%Y%m%d')}-001",
                 "one_liner": one_liner,
+                "opening_one_liner": opening_one_liner,
                 "actor": details.get('actor_name_ko') or details.get('company') or '시장 자본',
                 "actor_type": details.get('actor_type', '없음'),
                 "actor_tag": details.get('actor_tag', '-'),
@@ -392,6 +397,7 @@ def main():
                 title=fact_text[:50],
                 status=status_verdict,
                 one_liner=one_liner,
+                opening_one_liner=opening_one_liner,
                 trigger_type="CAPITAL_ROTATION" if rotation_verdict["triggered"] else "DATA",
                 actor=pack_data.get('actor', '-'),
                 actor_type=pack_data.get('actor_type', '없음'),
