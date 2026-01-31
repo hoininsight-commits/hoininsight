@@ -7,7 +7,7 @@ class DecisionCard:
     title: str
     status: str # TRUST_LOCKED, TRIGGER, PRE_TRIGGER, HOLD, REJECT, EDITORIAL_LIGHT
     one_liner: str = "-"
-    opening_one_liner: str = "-" # [IS-73] Auto Opening One-Liner
+    opening_sentence: str = "-" # [IS-73] Auto Opening One-Liner
     trigger_type: str = "-"
     actor: str = "-"
     actor_type: str = "없음"

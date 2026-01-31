@@ -23,7 +23,7 @@ class IssueSignalIndexGenerator:
         run_ts_kst = now.strftime("%Y-%m-%d %H:%M:%S")
 
         topics_total = len(cards)
-        topics_active = len([c for c in cards if c.get("status") == "TRUST_LOCKED"])
+        topics_active = len([c for c in cards if c.get("status") in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]])
         topics_hold = len([c for c in cards if c.get("status") == "HOLD"])
         topics_silent = len([c for c in cards if c.get("status") == "SILENT_DROP"])
         
@@ -38,7 +38,7 @@ class IssueSignalIndexGenerator:
         top_reasons = sorted(reason_counts.items(), key=lambda x: x[1], reverse=True)[:5]
         top_reason_counts = [{"reason": r, "count": c} for r, c in top_reasons]
 
-        pinned_topic_ids = [c.get("topic_id") for c in cards if c.get("status") == "TRUST_LOCKED"][:3]
+        pinned_topic_ids = [c.get("topic_id") for c in cards if c.get("status") in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]][:3]
 
         # Define paths (Relative to project root for flexibility)
         index_path = self.packs_dir / "latest_index.json"

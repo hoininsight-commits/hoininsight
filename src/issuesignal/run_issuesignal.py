@@ -40,6 +40,23 @@ def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
             }
             decision_card_model.blocks["content_package"] = pack_content
 
+        # [IS-63] Ensure today.json is overwritten BEFORE build
+        if decision_card_model:
+            today_json_path = base_dir / "data" / "dashboard" / "today.json"
+            today_json_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            card_dict = dataclasses.asdict(decision_card_model)
+            
+            with open(today_json_path, "w", encoding="utf-8") as f:
+                json.dump(card_dict, f, ensure_ascii=False, indent=2)
+            
+            # [IS-73] Also save to packs directory for DashboardLoader
+            packs_dir = base_dir / "data" / "issuesignal" / "packs"
+            packs_dir.mkdir(parents=True, exist_ok=True)
+            pack_json_path = packs_dir / f"{decision_card_model.topic_id}.json"
+            with open(pack_json_path, "w", encoding="utf-8") as f:
+                json.dump(card_dict, f, ensure_ascii=False, indent=2)
+
         db_builder = DashboardBuilder(base_dir)
         db_builder.build()
         
@@ -52,13 +69,6 @@ def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
             cards_for_index.append(dataclasses.asdict(decision_card_model))
         
         index_gen.generate(cards_for_index)
-        
-        # [IS-63] Ensure today.json is overwritten
-        if decision_card_model:
-            today_json_path = base_dir / "data" / "dashboard" / "today.json"
-            today_json_path.parent.mkdir(parents=True, exist_ok=True)
-            with open(today_json_path, "w", encoding="utf-8") as f:
-                json.dump(dataclasses.asdict(decision_card_model), f, ensure_ascii=False, indent=2)
                 
     except Exception as e:
         print(f"CRITICAL: Dashboard Build Failed: {e}")
@@ -365,13 +375,13 @@ def main():
             desc_rationale = f"1순위 선정. 점수: {score_val}, 최종 상태: {status_map.get(status_verdict, status_verdict)}"
 
             # [IS-73] Opening One-Liner
-            opening_one_liner = synthesize_opening_one_liner(selected_candidate, details.get('decision_tree_data', []))
+            opening_sentence = synthesize_opening_one_liner(selected_candidate, details.get('decision_tree_data', []))
 
             # Pack Data
             pack_data = {
                 "id": f"ISSUE-{datetime.now().strftime('%Y%m%d')}-001",
                 "one_liner": one_liner,
-                "opening_one_liner": opening_one_liner,
+                "opening_sentence": opening_sentence,
                 "actor": details.get('actor_name_ko') or details.get('company') or '시장 자본',
                 "actor_type": details.get('actor_type', '없음'),
                 "actor_tag": details.get('actor_tag', '-'),
@@ -397,7 +407,7 @@ def main():
                 title=fact_text[:50],
                 status=status_verdict,
                 one_liner=one_liner,
-                opening_one_liner=opening_one_liner,
+                opening_sentence=opening_sentence,
                 trigger_type="CAPITAL_ROTATION" if rotation_verdict["triggered"] else "DATA",
                 actor=pack_data.get('actor', '-'),
                 actor_type=pack_data.get('actor_type', '없음'),

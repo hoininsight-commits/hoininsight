@@ -42,7 +42,7 @@ class DashboardLoader:
         if pinned_ids:
             pinned_map = {c.topic_id: c for c in cards}
             for pid in pinned_ids:
-                if pid in pinned_map and pinned_map[pid].status == "TRUST_LOCKED":
+                if pid in pinned_map and pinned_map[pid].status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
                     top_cards.append(pinned_map[pid])
         
         if not top_cards:
@@ -52,7 +52,7 @@ class DashboardLoader:
                 top_cards = []
             else:
                 # Fallback only if no fresh index or index implies topics exist but pinned_ids missing
-                top_cards = [c for c in cards if c.status == "TRUST_LOCKED"][:3]
+                top_cards = [c for c in cards if c.status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]][:3]
 
         watchlist = [c for c in cards if c.status == "PRE_TRIGGER"]
         hold_queue = [c for c in cards if c.status == "HOLD"]
@@ -105,6 +105,7 @@ class DashboardLoader:
                             title=data.get("title", "Untitled"),
                             status=data.get("status", "HOLD"),
                             one_liner=data.get("one_liner", "-"),
+                            opening_sentence=data.get("opening_sentence", "-"),  # [IS-73]
                             trigger_type=data.get("trigger_type", "-"),
                             actor=data.get("actor", "-"),
                             must_item=data.get("must_item", "-"),
@@ -123,7 +124,12 @@ class DashboardLoader:
                                 hard_facts=[HardFact(**f_dict) for f_dict in p.get("hard_facts", [])]
                             ) for p in data.get("proof_packs", [])],
                             trigger_quote=TriggerQuote(**data.get("trigger_quote")) if data.get("trigger_quote") else None,
-                            source_clusters=[SourceCluster(**c) for c in data.get("source_clusters", [])]
+                            source_clusters=[SourceCluster(**c) for c in data.get("source_clusters", [])],
+                            blocks=data.get("blocks", {}),  # [IS-73] Load blocks field
+                            decision_rationale=data.get("decision_rationale", "-"),
+                            observed_metrics=data.get("observed_metrics", []),
+                            leader_stocks=data.get("leader_stocks", []),
+                            risk_factors=data.get("risk_factors", [])
                         ))
                 except Exception as e:
                     print(f"ERROR: Failed to load card {f}: {e}")
@@ -198,7 +204,15 @@ class DashboardLoader:
             linked = []
             reason = None
             
-            card_tickers = {t.get("symbol", "").upper() for t in card.tickers if t.get("symbol")}
+            # Handle both string list and dict list formats for tickers
+            card_tickers = set()
+            for t in card.tickers:
+                if isinstance(t, dict):
+                    symbol = t.get("symbol", "")
+                else:
+                    symbol = str(t)
+                if symbol:
+                    card_tickers.add(symbol.upper())
             
             for ev in evidence:
                 match = False

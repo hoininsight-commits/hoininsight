@@ -337,9 +337,14 @@ class DashboardRenderer:
 
         # [IS-67-UX] Handle SILENT/HOLD status as "No Topic"
         if c.status in ["SILENT", "HOLD"] and not c.blocks.get('content_package', {}).get('long_form'):
+            fail_sentence_html = ""
+            if c.opening_sentence and c.opening_sentence != "-":
+                fail_sentence_html = f"""<div style="font-size:1.2em; font-weight:800; color:#b91c1c; margin-bottom:20px; background:#fef2f2; padding:15px; border-radius:8px; border:1px solid #fca5a5;">📌 오늘의 핵심 한 문장: "{c.opening_sentence}"</div>"""
+
             return f"""
             <div style="background:#fff1f2; border:1px solid #fecdd3; padding:40px; border-radius:12px; margin-bottom:40px; text-align:center;">
                 <div style="font-size:3em; margin-bottom:15px;">❌</div>
+                {fail_sentence_html}
                 <div style="font-weight:800; color:#e11d48; font-size:1.5em; margin-bottom:10px;">{c.title}</div>
                 <div style="font-size:1.1em; color:#be123c;">오늘의 발화 상태: 보류</div>
                 <div style="font-size:0.9em; color:#be123c; margin-top:5px;">{c.decision_rationale}</div>
@@ -352,13 +357,13 @@ class DashboardRenderer:
         
         # [IS-73] Opening One-Liner Display
         one_liner_html = ""
-        if c.opening_one_liner and c.opening_one_liner != "-":
+        if c.opening_sentence and c.opening_sentence != "-":
             one_liner_html = f"""
             <div style="background:#F0FDF4; border:1px solid #BBF7D0; padding:15px; border-radius:8px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
                 <div style="font-weight:700; color:#15803d; font-size:1.1em; flex-grow:1;">
-                    📌 오프닝 1문장: "{c.opening_one_liner}"
+                    📌 오늘의 핵심 한 문장: "{c.opening_sentence}"
                 </div>
-                <button onclick="navigator.clipboard.writeText('{c.opening_one_liner}')" style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px; font-size:0.8em; cursor:pointer; color:#64748b;">
+                <button onclick="navigator.clipboard.writeText('{c.opening_sentence}')" style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px; font-size:0.8em; cursor:pointer; color:#64748b;">
                     복사
                 </button>
             </div>
@@ -575,7 +580,7 @@ class DashboardRenderer:
                 <td><span class="badge-status {status_class}">{r.link_status}</span></td>
                 <td><b>{c.title}</b><br><small>{c.topic_id}</small></td>
                 <td>{ko_status}</td>
-                <td>{", ".join([t.get('symbol', '') for t in c.tickers])}</td>
+                <td>{", ".join([t.get('symbol', '') if isinstance(t, dict) else str(t) for t in c.tickers])}</td>
                 <td>
                     <button class="expand-btn" onclick="toggleRow('{idx}')">
                         {len(r.linked_evidence)}개 근거 항목 ▾
