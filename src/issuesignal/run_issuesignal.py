@@ -296,6 +296,7 @@ def main():
         with open(canonical_card_path, "w", encoding="utf-8") as cf:
              # Ensure date/timestamp is in the card
              card_dict = dataclasses.asdict(decision_card_model)
+             card_dict["card_version"] = "phase50_dual_v1" # [IS-52] Required for Phase 38 Verification
              card_dict["_date"] = today_ymd
              card_dict["_timestamp_kst"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
              json.dump(card_dict, cf, ensure_ascii=False, indent=2)
