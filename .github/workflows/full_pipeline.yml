@@ -304,7 +304,7 @@ jobs:
 
       - name: Run IssueSignal Engine (IS-49 Loop Lock)
         run: |
-          python -m src.issuesignal.run_issuesignal
+          python -m src.issuesignal.run_issuesignal --mode=production
 
 
       - name: Generate Ops Metadata

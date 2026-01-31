@@ -2554,37 +2554,157 @@ def generate_dashboard(base_dir: Path):
         speak_topics = [t for t in speak_topics if t.get("title") != s_title]
         watch_topics = [t for t in watch_topics if t.get("title") != s_title]
     
-    # [IS-49] Top Block Logic (Definite Topic vs Silence)
+    # [IS-55] Top Pinned Section & [IS-56] Instant Script View
     top_block_html = ""
+    
+    # helper for copy script
+    copy_script_js = """
+    <script>
+    function copyText(elementId) {
+        var copyText = document.getElementById(elementId);
+        if (!copyText) return;
+        
+        // Create temp textarea
+        var el = document.createElement('textarea');
+        el.value = copyText.innerText || copyText.textContent;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        
+        alert('클립보드에 복사되었습니다.');
+    }
+    
+    function toggleDetails(id) {
+        var el = document.getElementById(id);
+        if (el.style.display === 'none') {
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    }
+    </script>
+    """
+    
     if final_card and final_card.get("status") == "TRUST_LOCKED":
          # TOPIC LOCKED CASE
          topic_title = final_card.get('human_prompt', '제목 없음')
-         script_exists = bool(script_body)
-         script_preview_txt = script_body[:100] + "..." if script_body else "스크립트가 아직 생성되지 않았습니다."
+         decision_rationale = final_card.get('decision_rationale', '-')
          
+         # Load Content Package
+         long_script = all_scripts_map.get("structural_0", "스크립트 내용 없음")
+         
+         # Shorts (Try to load or placeholder)
+         shorts_script = "숏츠 스크립트 대기중 (생성 파이프라인 확인 필요)"
+         try:
+             s_path = base_dir / "data" / "content" / "insight_shotlist_v1.md"
+             if s_path.exists(): shorts_script = s_path.read_text(encoding='utf-8')
+         except: pass
+         
+         # Text Card (Summary)
+         text_card = f"제목: {topic_title}\n\n핵심: {decision_rationale}\n\n[Hoin Insight 분석]"
+
          top_block_html = f"""
-         <div style="background:white; border:2px solid #10b981; border-radius:12px; padding:25px; box-shadow:0 10px 15px -3px rgba(16, 185, 129, 0.1); display:flex; justify-content:space-between; align-items:center;">
-             <div style="flex:1;">
-                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                     <span style="background:#10b981; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">📌 오늘의 확정 토픽</span>
-                     <span style="color:#059669; font-weight:700; font-size:12px;">신뢰도: {final_card.get('blocks', {}).get('regime', {}).get('confidence', 0):.0%} (TRUST_LOCKED)</span>
+         {copy_script_js}
+         <div style="background:white; border:2px solid #10b981; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px -5px rgba(16, 185, 129, 0.15);">
+             <!-- [IS-55] Pinned Header -->
+             <div style="padding:25px; background:linear-gradient(to right, #f0fdf4, #ffffff); border-bottom:1px solid #d1fae5;">
+                 <div style="display:flex; justify-content:space-between; align-items:start;">
+                     <div>
+                         <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                             <span style="background:#10b981; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">📌 오늘의 확정 토픽</span>
+                             <span style="border:1px solid #10b981; color:#059669; padding:3px 8px; border-radius:6px; font-weight:700; font-size:11px;">발화 확정 (ACTIVE)</span>
+                             <span style="background:#d1fae5; color:#047857; padding:4px 8px; border-radius:6px; font-weight:700; font-size:11px;">대형 영상 + 숏츠</span>
+                         </div>
+                         <h2 style="font-size:26px; font-weight:800; color:#064e3b; margin:0 0 10px 0; letter-spacing:-0.5px;">{topic_title}</h2>
+                         <div style="color:#374151; font-size:15px; font-weight:500;">
+                             <span style="color:#059669; font-weight:700;">지금 말해야 하는 이유:</span> {decision_rationale}
+                         </div>
+                     </div>
+                     <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
+                         <span>📂 스크립트 & 패키지 열기</span>
+                         <span>▼</span>
+                     </button>
                  </div>
-                 <h2 style="font-size:24px; font-weight:800; color:#064e3b; margin:0 0 10px 0;">{topic_title}</h2>
-                 <div style="color:#374151; font-size:14px;">지금 말해야 하는 이유: <span style="font-weight:600;">{final_card.get('decision_rationale', '-')}</span></div>
              </div>
-             <div style="display:flex; gap:10px; flex-direction:column;">
-                 <button onclick="copyScript()" style="background:#10b981; color:white; border:none; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
-                     📄 텍스트 스크립트 복사 ({'완료' if script_exists else '대기'})
-                 </button>
-                 <div style="display:flex; gap:5px;">
-                     <button onclick="alert('준비중')" style="flex:1; background:#ecfdf5; color:#065f46; border:1px solid #10b981; padding:8px; border-radius:6px; font-size:12px; cursor:pointer;">Longs 복사</button>
-                     <button onclick="alert('준비중')" style="flex:1; background:#ecfdf5; color:#065f46; border:1px solid #10b981; padding:8px; border-radius:6px; font-size:12px; cursor:pointer;">Shorts 복사</button>
+
+             <!-- [IS-56] Expandable Detail View -->
+             <div id="topic-detail-view" style="display:none; border-top:1px solid #e5e7eb;">
+                 <div style="display:grid; grid-template-columns: 1.2fr 0.8fr; background:#fff;">
+                     
+                     <!-- Left: Content Package -->
+                     <div style="padding:30px; border-right:1px solid #f3f4f6;">
+                         <h3 style="font-size:16px; font-weight:800; color:#1e293b; margin:0 0 20px 0; display:flex; align-items:center; gap:8px;">
+                             📦 콘텐츠 패키지 (Writer's Kit)
+                         </h3>
+                         
+                         <!-- Longform -->
+                         <div style="margin-bottom:25px;">
+                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                 <span style="font-size:13px; font-weight:700; color:#475569;">🎥 롱폼 스크립트 (Main)</span>
+                                 <button onclick="copyText('script-long')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
+                             </div>
+                             <div id="script-long" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; max-height:200px; overflow-y:auto; white-space:pre-wrap;">{long_script}</div>
+                         </div>
+
+                         <!-- Shorts -->
+                         <div style="margin-bottom:25px;">
+                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                 <span style="font-size:13px; font-weight:700; color:#475569;">⚡ 숏츠 (Shorts)</span>
+                                 <button onclick="copyText('script-shorts')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
+                             </div>
+                             <div id="script-shorts" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; max-height:150px; overflow-y:auto; white-space:pre-wrap;">{shorts_script}</div>
+                         </div>
+                         
+                         <!-- Text Card -->
+                         <div>
+                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                 <span style="font-size:13px; font-weight:700; color:#475569;">🃏 텍스트 카드 (Community)</span>
+                                 <button onclick="copyText('script-card')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold; cursor:pointer;">복사하기</button>
+                             </div>
+                             <div id="script-card" style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:13px; color:#334155; white-space:pre-wrap;">{text_card}</div>
+                         </div>
+                     </div>
+
+                     <!-- Right: Logic & Strategy -->
+                     <div style="padding:30px; background:#fafafa;">
+                         <!-- 1. Summary -->
+                         <div style="margin-bottom:30px;">
+                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">① 토픽 요약 구조</h4>
+                             <div style="background:white; border:1px solid #e2e8f0; padding:15px; border-radius:8px;">
+                                 <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">News (Surface)</div>
+                                 <div style="font-size:13px; color:#334155; font-weight:600; margin-bottom:10px;">{final_card.get('human_prompt','-')}</div>
+                                 <div style="border-top:1px dashed #e2e8f0; margin:10px 0;"></div>
+                                 <div style="font-size:12px; color:#6366f1; margin-bottom:4px;">IssueSignal (Structure)</div>
+                                 <div style="font-size:13px; color:#4338ca; font-weight:700;">"{final_card.get('decision_rationale','-')}"</div>
+                             </div>
+                         </div>
+
+                         <!-- 2. Evidence -->
+                         <div style="margin-bottom:30px;">
+                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">② 판단 근거 (HoinEngine)</h4>
+                             <ul style="font-size:13px; color:#475569; padding-left:20px; line-height:1.6;">
+                                 {''.join([f'<li>{metric}</li>' for metric in final_card.get('observed_metrics', [])[:3]])}
+                             </ul>
+                         </div>
+
+                         <!-- 3. Capital & Stocks -->
+                         <div>
+                             <h4 style="font-size:12px; font-weight:800; color:#64748b; text-transform:uppercase; margin:0 0 10px 0;">③ 자본 경로 및 종목</h4>
+                             <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                                 {''.join([f'<span style="background:#eff6ff; color:#1e40af; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:700;">{stock}</span>' for stock in final_card.get('leader_stocks', [])[:5]])}
+                             </div>
+                             <div style="margin-top:10px; font-size:12px; color:#ef4444; font-weight:700;">
+                                 🚫 Kill Switch: {final_card.get('risk_factors', ['시장 변동성 확대 시 중단'])[0]}
+                             </div>
+                         </div>
+                     </div>
                  </div>
              </div>
          </div>
          """
     else:
-         # SILENCE CASE
+         # SILENCE CASE (Improved for IS-55)
          reason = "독립 출처 부족" # Default fallback
          if final_card:
              reason = final_card.get("decision_rationale", "조건 충족 토픽 없음")
@@ -2594,13 +2714,10 @@ def generate_dashboard(base_dir: Path):
              <div>
                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
                      <span style="background:#ef4444; color:white; padding:4px 10px; border-radius:6px; font-weight:800; font-size:12px;">❌ 오늘 발화할 토픽 없음 (침묵)</span>
-                     <span style="color:#b91c1c; font-weight:700; font-size:12px;">데이터 기준 미달</span>
+                     <span style="color:#b91c1c; font-weight:700; font-size:12px;">보류 (HOLD) / 침묵 (SILENT)</span>
                  </div>
                  <h2 style="font-size:24px; font-weight:800; color:#7f1d1d; margin:0 0 5px 0;">침묵 사유: {reason}</h2>
                  <div style="color:#7f1d1d; font-size:13px; opacity:0.8;">무리한 발화는 신뢰도를 훼손합니다. 다음 기회를 기다리세요.</div>
-             </div>
-             <div>
-                 <div style="font-size:40px;">🤫</div>
              </div>
          </div>
          """
