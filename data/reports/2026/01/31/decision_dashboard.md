@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 3
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1
+- **Count**: 94
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 91
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
