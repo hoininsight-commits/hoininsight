@@ -405,12 +405,12 @@ jobs:
           
           if [ -f "$CARD" ]; then
             echo "[VERIFY][OK] final_decision_card.json generated"
-            grep -q "phase50_real_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
+            grep -q "phase66_editorial_v1" "$CARD" && echo "[VERIFY][OK] card_version present" || (echo "[VERIFY][FAIL] card_version missing"; exit 1)
           else
             echo "[VERIFY][OK] No final decision card today (valid state)"
           fi
           
-          grep -q "⚖️ 최종 의사결정" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
+          grep -q "오늘의 콘텐츠 후보" "$DASH" && echo "[VERIFY][OK] Final Decision section rendered" || (echo "[VERIFY][FAIL] Final Decision section missing"; exit 1)
 
       - name: Commit Intelligence Outputs
         if: success()
