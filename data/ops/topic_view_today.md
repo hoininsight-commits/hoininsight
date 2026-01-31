@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=135
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=137
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -683,6 +683,16 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### [속보] 이란 남부 항구도시 8층 건물서 폭발…“원인 불명”< AFP> (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

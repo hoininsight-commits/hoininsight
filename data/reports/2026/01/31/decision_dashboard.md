@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 135
+- **Unreviewed**: 137
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=135
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=137
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -80,8 +80,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 135
-- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 132
+- **Count**: 137
+- **Type Breakdown**: TECH: 1, FLOW: 1, POLICY: 1, NEWS: 134
 - **Samples (Top 3)**:
   - [TECH] Nvidia confirms new AI chip delivery schedule for H2 2026 (TechNews RSS)
   - [FLOW] Goldman Sachs reports 15% increase in institutional crypto flow (FinanceDaily RSS)
@@ -93,6 +93,8 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-01-31 |
@@ -370,6 +372,8 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -512,6 +516,8 @@
 | [속보] 1209회 로또 1등, ‘22명 대박’…2, 17, 20, 35, 37, 39 | Structural implication: '[속보] 1209회 로또 1등, ‘22명 대박’…2, 17, 20, 35, 37, 39' suggests a shift in NEWS dynamics. | LOW |
 | “징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크 | Structural implication: '“징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 이란 남부 항구도시 8층 건물서 폭발…“원인 불명”< AFP> | Structural implication: '[속보] 이란 남부 항구도시 8층 건물서 폭발…“원인 불명”< AFP>' suggests a shift in NEWS dynamics. | LOW |
+| "총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제 | Structural implication: '"총알 더 준비해야 하나"…'1억→2.2억' 대박에 개미들 '환호' [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈 | Structural implication: '일요일도 춥다 추워…아침 최저 -14도, 새벽부터 전국 곳곳에 눈' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
