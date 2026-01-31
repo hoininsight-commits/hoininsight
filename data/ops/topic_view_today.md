@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-01-31
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=134
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=135
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -678,6 +678,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “징역 1년 이상 받으면 가차 없이 추방”…이민정책 강화하는 덴마크 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 이란 남부 항구도시 8층 건물서 폭발…“원인 불명”< AFP> (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
