@@ -682,8 +682,22 @@ def generate_dashboard(base_dir: Path):
     .ops-label { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
     .sla-breach { color: #ef4444; font-weight: 700; }
     
-    /* Layout: 3 Columns (Nav | Main | Right Ops) */
-    .dashboard-container { display: grid; grid-template-columns: 260px 1fr 300px; height: calc(100vh - 60px); overflow: hidden; }
+    /* Layout: 3 Columns Full Height */
+    .dashboard-container { 
+        display: grid; 
+        grid-template-columns: 260px 1fr 300px; 
+        height: 100vh; /* Full viewport height */
+        overflow: hidden; 
+    }
+    
+    .center-panel-wrapper {
+        grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
     
     /* GLASSMORPHISM UTILITIES */
     .glass-panel {
@@ -724,7 +738,8 @@ def generate_dashboard(base_dir: Path):
 
     /* CENTER: Main Process Flow */
     .main-panel { 
-        grid-column: 2;
+        /* grid-column: 2; <-- REMOVED, parent wrapper handles grid */
+        flex: 1; /* Fill remaining vertical space below Top Bar */
         padding: 40px; 
         overflow-y: auto; 
         background: transparent; 
@@ -3074,34 +3089,7 @@ def generate_dashboard(base_dir: Path):
         </script>
     </head>
     <body>
-        <div class="top-bar">
-            <div style="display:flex; align-items:center; gap:20px;">
-                <h1>Hoin Insight</h1>
-                
-                <div style="display:flex; gap:10px; align-items:center; margin-left:10px;">
-                    <div class="stat-counter" title="Latest Run Date">📅 {status_data['run_date']}</div>
-                    <div class="stat-counter" style="background:#ecfdf5; color:#059669; border:1px solid #10b981;">
-                        SPEAK: <strong>{len(speak_topics)}</strong>
-                    </div>
-                    <div class="stat-counter" style="background:#fff7ed; color:#d97706; border:1px solid #f59e0b;">
-                        WATCH: <strong>{len(watch_topics)}</strong>
-                    </div>
-                    <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#3b82f6; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
-                </div>
-            </div>
-            
-            <div style="display:flex; gap:10px; align-items:center;">
-                <div class="conf-badge bg-green-100 text-green-800">{I18N_KO['NORMAL']}</div>
-                <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" title="Content Depth Preset">{I18N_KO['PRESET']}: {I18N_KO['STANDARD']}</div>
-                <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
-            </div>
-        </div>
-        
-        <!-- TOP BLOCK: Today's Definite Topic or Silence -->
-        <div style="max-width: 1600px; margin: 20px auto; padding: 0 20px;">
-            {top_block_html}
-        </div>
-
+        <!-- 3-Column Layout Container -->
         <div class="dashboard-container">
             
             <!-- LEFT: Navigation Panel -->
@@ -3143,6 +3131,36 @@ def generate_dashboard(base_dir: Path):
                     <div class="nav-item" onclick="activate('insight-script')"><span class="nav-icon">📜</span> {I18N_KO['INSIGHT_SCRIPT_RAW']}</div>
                 </div>
             </div>
+
+            <!-- CENTER WRAPPER: Top Bar + Main Panel -->
+            <div class="center-panel-wrapper">
+                <div class="top-bar">
+                    <div style="display:flex; align-items:center; gap:20px;">
+                        <h1>Hoin Insight</h1>
+                        
+                        <div style="display:flex; gap:10px; align-items:center; margin-left:10px;">
+                            <div class="stat-counter" title="Latest Run Date">📅 {status_data['run_date']}</div>
+                            <div class="stat-counter" style="background:rgba(16, 185, 129, 0.1); color:#34d399; border:1px solid rgba(16, 185, 129, 0.2);">
+                                SPEAK: <strong>{len(speak_topics)}</strong>
+                            </div>
+                            <div class="stat-counter" style="background:rgba(245, 158, 11, 0.1); color:#fbbf24; border:1px solid rgba(245, 158, 11, 0.2);">
+                                WATCH: <strong>{len(watch_topics)}</strong>
+                            </div>
+                            <a href="#" onclick="activate('insight-script')" style="font-size:11px; color:#60a5fa; text-decoration:none; font-weight:bold; margin-left:5px;">[최신 리포트 열기]</a>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <div class="conf-badge bg-green-100 text-green-800" style="background:rgba(16, 185, 129, 0.1); color:#34d399; border:1px solid rgba(16, 185, 129, 0.2);">{I18N_KO['NORMAL']}</div>
+                        <div class="conf-badge bg-blue-100 text-blue-800 border border-blue-300" style="background:rgba(59, 130, 246, 0.1); color:#60a5fa; border:1px solid rgba(59, 130, 246, 0.2);" title="Content Depth Preset">{I18N_KO['PRESET']}: {I18N_KO['STANDARD']}</div>
+                        <div class="status-badge status-{status_data['raw_status']}">{status_data['status']}</div>
+                    </div>
+                </div>
+                
+                <!-- TOP BLOCK: Today's Definite Topic or Silence -->
+                <div style="max-width: 1600px; margin: 20px auto; padding: 0 20px;">
+                    {top_block_html}
+                </div>
 
             <!-- CENTER: Main Process Flow (Tabs) -->
             <div class="main-panel">
@@ -3744,8 +3762,9 @@ def generate_dashboard(base_dir: Path):
     html += f"""
         <div style="height: 50px;"></div>
         </div> <!-- End sections-wrapper -->
+    </div> <!-- SAFETY FIX for unclosed inner div -->
     </div> <!-- End Main Panel -->
-    </div> <!-- SAFETY CLOSE to ensure Main Panel is closed -->
+    </div> <!-- End CENTER WRAPPER -->
     
     <!-- RIGHT: Ops Panel (Persistent) -->
     <div class="right-panel">
