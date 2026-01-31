@@ -378,6 +378,15 @@ class DashboardRenderer:
                 <div style="font-size:18px; font-weight:700; color:#1e3a8a; line-height:1.5;">"{c.authority_sentence}"</div>
             </div>
 
+            <!-- Ticker Path & Bottleneck (IS-69) -->
+            <div style="margin-bottom:25px; background:#ffffff; border:1px solid #e2e8f0; padding:20px; border-radius:12px;">
+                <div style="font-size:15px; font-weight:800; color:#1e293b; margin-bottom:15px; line-height:1.4; display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:18px;">🔗</span> 
+                    <span>병목 연결: {c.bottleneck_link}</span>
+                </div>
+                {self._render_ticker_path_results(c)}
+            </div>
+
             <!-- Risk Factor -->
             <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px; padding:10px 15px; background:#fff7ed; border-radius:8px; border:1px solid #ffedd5;">
                 <span style="font-size:14px;">⚠️</span>
@@ -687,6 +696,41 @@ class DashboardRenderer:
         """)
         
         return "".join(items)
+    def _render_ticker_path_results(self, c: DecisionCard) -> str:
+        results = c.ticker_path.get('ticker_results', [])
+        if not results: return ""
+        
+        items = []
+        for r in results:
+            ticker_display = r['ticker']
+            if r.get('exposure') == "마스킹":
+                ticker_display = f"{ticker_display[0]}***" if ticker_display else "***"
+            
+            badge_color = "#2563eb" if r['confidence'] >= 80 else "#f59e0b"
+            badge_text = "✅증거" if r['confidence'] >= 80 else "🟡보통"
+            
+            items.append(f"""
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px; flex:1; min-width:180px;">
+                <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:8px;">
+                    <div>
+                        <div style="font-size:11px; color:#64748b; font-weight:700;">{r['event_type']}</div>
+                        <b style="font-size:16px; color:#1e293b;">{r['company_name_ko']}</b>
+                        <span style="font-size:12px; color:#94a3b8; margin-left:4px;">{ticker_display}</span>
+                    </div>
+                    <span style="font-size:10px; background:#f1f5f9; color:{badge_color}; padding:2px 6px; border-radius:4px; font-weight:800;">{badge_text}</span>
+                </div>
+                <div style="font-size:11px; color:#475569; line-height:1.4;">{r['bottleneck_link_ko']}</div>
+            </div>
+            """)
+            
+        return f"""
+        <div style="margin-bottom:20px;">
+            <div style="color:var(--text-sub); font-size:12px; margin-bottom:8px;">🎯 도출 종목 (실데이터 기반)</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                {''.join(items)}
+            </div>
+        </div>
+        """
 
     def _render_actor_evidence(self, c: DecisionCard) -> str:
         actor_ev = c.blocks.get('actor_bridge', {}).get('actor_evidence', [])

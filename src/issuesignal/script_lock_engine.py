@@ -45,8 +45,18 @@ class ScriptLockEngine:
         step3 = f"3. 시장의 오해 (Misread)\n{step3_base}{get_ref('step3', '')}"
 
         # Step 4: 구조적 강제
-        step4_base = f"구조적으로 {actor_name}에게 {reasoning}이 강제될 수밖에 없는 환경입니다. {why_now}."
-        step4 = f"4. 구조적 강제 (Structural Force)\n{step4_base}{get_ref('step4', ' [구조적 팩트 확인 중]')}"
+        bottleneck_link = protagonist.get("details", {}).get("bottleneck_link", reasoning)
+        ticker_path = protagonist.get("details", {}).get("ticker_path", {}).get("ticker_results", [])
+        ticker_mentions = ", ".join([t['company_name_ko'] for t in ticker_path if t['exposure'] == '공개'])
+        
+        step4_text = f"구조적으로 {actor_name}에게 {reasoning}이 강제될 수밖에 없는 환경입니다. "
+        if ticker_mentions:
+            step4_text += f"특히 {ticker_mentions}와(과) 같은 기업들이 {bottleneck_link} "
+        else:
+            step4_text += f"{bottleneck_link} "
+        
+        step4_text += f"{why_now}."
+        step4 = f"4. 구조적 강제 (Structural Force)\n{step4_text}{get_ref('step4', ' [구조적 팩트 확인 중]')}"
 
         # Step 5: 결론
         step5_base = f"따라서 {target_sector} 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다."

@@ -22,6 +22,7 @@ from src.issuesignal.bottleneck_ranker import BottleneckRanker
 from src.issuesignal.why_now_synthesizer import WhyNowSynthesizer
 from src.issuesignal.script_lock_engine import ScriptLockEngine
 from src.issuesignal.actor_bridge import ActorBridgeEngine
+from src.issuesignal.ticker_path_extractor import TickerPathExtractor
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -163,6 +164,16 @@ def main():
                         # Keep existing proto promotion for now
                         status = "EDITORIAL_CANDIDATE"
             
+            # IS-69: Ticker Path Extraction
+            actor_info = {
+                "actor_type": actor_type,
+                "actor_name_ko": cand.get('details', {}).get('actor_name_ko', '-'),
+                "actor_tag": cand.get('details', {}).get('actor_tag', '-')
+            }
+            ticker_path_result = TickerPathExtractor.extract(actor_info, corporate_facts)
+            cand['details']['ticker_path'] = ticker_path_result
+            cand['details']['bottleneck_link'] = ticker_path_result.get('global_bottleneck_ko', '-')
+            
             # Generate Script if Eligible (IS-67 Quality Floor)
             script_data = None
             
@@ -278,6 +289,8 @@ def main():
                 "actor": details.get('actor_name_ko') or details.get('company') or '시장 자본',
                 "actor_type": details.get('actor_type', '없음'),
                 "actor_tag": details.get('actor_tag', '-'),
+                "bottleneck_link": details.get('bottleneck_link', '-'),
+                "ticker_path": details.get('ticker_path', {}),
                 "must_item": "Topic",
                 "time_window": "24h",
                 "long_form": long_form,
