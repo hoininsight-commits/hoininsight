@@ -653,7 +653,7 @@ def generate_dashboard(base_dir: Path):
     
     # CSS
     css = """
-    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #f4f7fa; color: #1e293b; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
     
     .top-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; height: 60px; box-sizing: border-box; }
     h1 { margin: 0; font-size: 18px; font-weight: 700; color: #334155; }
@@ -740,7 +740,7 @@ def generate_dashboard(base_dir: Path):
 
     
     /* CENTER: Main Process Flow */
-    .main-panel { padding: 40px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 20px; scroll-behavior: smooth; }
+    .main-panel { padding: 40px; overflow-y: auto; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 20px; scroll-behavior: smooth; }
     /* Sections Container */
     .sections-wrapper { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 60px; padding-bottom: 100px; }
     
