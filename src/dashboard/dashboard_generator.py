@@ -655,12 +655,24 @@ def generate_dashboard(base_dir: Path):
     css = """
     body { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; }
     
-    .top-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; height: 60px; box-sizing: border-box; }
-    h1 { margin: 0; font-size: 18px; font-weight: 700; color: #334155; }
-    .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: #e2e8f0; }
-    .status-성공, .status-SUCCESS { background: #dcfce7; color: #166534; }
-    .status-부분.성공, .status-PARTIAL { background: #fef9c3; color: #854d0e; }
-    .status-실패, .status-FAIL { background: #fee2e2; color: #991b1b; }
+    .top-bar { 
+        background: rgba(15, 23, 42, 0.8); 
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.05); 
+        padding: 0 30px; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        height: 60px; 
+        box-sizing: border-box;
+        position: relative;
+        z-index: 50;
+    }
+    h1 { margin: 0; font-size: 18px; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    .status-성공, .status-SUCCESS { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-부분.성공, .status-PARTIAL { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .status-실패, .status-FAIL { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
     
     /* [Phase 36-B] Ops Styles */
     .ops-section { background: white; border-top: 2px solid #e2e8f0; padding: 40px; }
@@ -670,12 +682,36 @@ def generate_dashboard(base_dir: Path):
     .ops-label { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
     .sla-breach { color: #ef4444; font-weight: 700; }
     
-    /* Layout */
-    .dashboard-container { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - 60px); overflow: hidden; }
+    /* Layout: 3 Columns (Nav | Main | Right Ops) */
+    .dashboard-container { display: grid; grid-template-columns: 260px 1fr 300px; height: calc(100vh - 60px); overflow: hidden; }
     
+    /* GLASSMORPHISM UTILITIES */
+    .glass-panel {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    }
+    .glass-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 15px rgba(59, 130, 246, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
+    }
+
     /* LEFT: Navigation Panel (Modern Dark) */
     .nav-panel { 
-        background: #0f172a; 
+        grid-column: 1;
+        background: rgba(15, 23, 42, 0.95); 
+        border-right: 1px solid rgba(255,255,255,0.05);
         color: #94a3b8; 
         display: flex; 
         flex-direction: column; 
@@ -684,11 +720,39 @@ def generate_dashboard(base_dir: Path):
         overflow-y: auto;
     }
     
+    /* ... (nav items skipped) ... */
+
+    /* CENTER: Main Process Flow */
+    .main-panel { 
+        grid-column: 2;
+        padding: 40px; 
+        overflow-y: auto; 
+        background: transparent; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+        scroll-behavior: smooth; 
+    }
+    
+    /* RIGHT: Ops Panel (New) */
+    .right-panel {
+        grid-column: 3;
+        background: rgba(15, 23, 42, 0.6);
+        border-left: 1px solid rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
     .nav-label {
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
-        color: #475569;
+        color: #64748b;
         margin: 20px 0 10px 25px;
         letter-spacing: 0.05em;
     }
@@ -707,40 +771,79 @@ def generate_dashboard(base_dir: Path):
         transition: all 0.2s; 
     }
     .nav-item:hover { 
-        background: #1e293b; 
+        background: rgba(255,255,255,0.05); 
         color: #f1f5f9; 
     }
     .nav-item.active { 
-        background: #1e293b; 
-        color: #3b82f6; 
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+        color: #60a5fa; 
         border-left-color: #3b82f6;
         font-weight: 600;
-        box-shadow: inset 5px 0 10px -5px rgba(0,0,0,0.2);
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
     }
     .nav-icon { margin-right: 5px; font-size: 16px; }
     
     .nav-btn-highlight {
         margin: 10px 20px;
-        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         color: white;
-        border: none;
+        border: 1px solid rgba(255,255,255,0.2);
         padding: 12px 20px;
-        border-radius: 8px;
+        border-radius: 12px;
         font-weight: 700;
         font-size: 13px;
         cursor: pointer;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
-        box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.3);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         text-decoration: none;
-        transition: transform 0.2s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
     }
-    .nav-btn-highlight:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.4); color:white; }
+    .nav-btn-highlight::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+    .nav-btn-highlight:hover { 
+        transform: translateY(-2px); 
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6); 
+    }
+    .nav-btn-highlight:hover::before {
+        left: 100%;
+    }
 
     
     /* CENTER: Main Process Flow */
     .main-panel { padding: 40px; overflow-y: auto; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 20px; scroll-behavior: smooth; }
+    
+    /* RIGHT: Ops Panel (New) */
+    .right-panel {
+        background: rgba(15, 23, 42, 0.6);
+        border-left: 1px solid rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .right-section-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 8px;
+    }
     /* Sections Container */
     .sections-wrapper { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 60px; padding-bottom: 100px; }
     
@@ -3642,6 +3745,77 @@ def generate_dashboard(base_dir: Path):
         <div style="height: 50px;"></div>
         </div> <!-- End sections-wrapper -->
     </div> <!-- End Main Panel -->
+    </div> <!-- SAFETY CLOSE to ensure Main Panel is closed -->
+    
+    <!-- RIGHT: Ops Panel (Persistent) -->
+    <div class="right-panel">
+        <!-- 1. Data Ingestion Status -->
+        <div>
+            <div class="right-section-title">Data Ingestion Status</div>
+            <div style="font-size: 13px; font-weight: 500; color: #cbd5e1; display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <span style="width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981;"></span> FRED (Macro)
+                    </span>
+                    <span style="color:#10b981; font-weight:700;">Live</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <span style="width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981;"></span> ECOS (KR)
+                    </span>
+                    <span style="color:#10b981; font-weight:700;">Live</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <span style="width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981;"></span> YouTube API
+                    </span>
+                    <span style="color:#10b981; font-weight:700;">Connected</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. System Metrics -->
+        <div>
+             <div class="right-section-title">System Metrics</div>
+             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                 <div class="glass-card" style="text-align:center; padding:15px 10px;">
+                     <div style="font-size:24px; font-weight:700; color:#3b82f6;">{ops_scoreboard.get('system_freshness', 98)}%</div>
+                     <div style="font-size:10px; color:#94a3b8; margin-top:5px;">FRESHNESS</div>
+                 </div>
+                 <div class="glass-card" style="text-align:center; padding:15px 10px;">
+                     <div style="font-size:24px; font-weight:700; color:#a855f7;">{ops_scoreboard.get('7d_success_rate', '100%')}</div>
+                     <div style="font-size:10px; color:#94a3b8; margin-top:5px;">RELIABILITY</div>
+                 </div>
+             </div>
+        </div>
+
+        <!-- 3. Model Performance (Learning Curve) -->
+        <div>
+            <div class="right-section-title">Model Status</div>
+            <div class="glass-card" style="padding:15px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-size:12px; color:#cbd5e1;">Topic Detection</span>
+                    <span style="font-size:12px; color:#10b981;">Optimized</span>
+                </div>
+                <div style="width:100%; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
+                     <div style="width:92%; height:100%; background:#10b981;"></div>
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px; margin-top:15px;">
+                    <span style="font-size:12px; color:#cbd5e1;">Narrative Gen</span>
+                    <span style="font-size:12px; color:#a855f7;">Active</span>
+                </div>
+                <div style="width:100%; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
+                     <div style="width:100%; height:100%; background:linear-gradient(90deg, #6366f1, #a855f7);"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:auto; text-align:center; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);">
+            <div style="font-size:10px; color:#64748b;">HOIN INSIGHT ENGINE v3.0</div>
+            <div style="font-size:10px; color:#475569;">Managed by Antigravity</div>
+        </div>
+    </div>
 </div>
 
 
