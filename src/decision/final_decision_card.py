@@ -448,7 +448,7 @@ def main():
     # 4. Construct Final Card
     # 4. Construct Final Card
     card = {
-        "card_version": "phase50_dual_v1",
+        "card_version": "phase66_editorial_v1",
         "generated_at": now_utc.isoformat() + "Z",
         "date": ymd_dash,
         "blocks": {
