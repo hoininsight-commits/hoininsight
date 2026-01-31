@@ -1,0 +1,76 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific - Generated data files (should not be committed)
+data/issuesignal/packs/ISSUE-*.json
+data/issuesignal/packs/RAW-*.json
+data/decision/*/
+data/facts/fact_anchors_*.json
+data/dashboard/issuesignal/
+data/dashboard/today.json
+data/ops/editorial_rhythm.json
+
+# Keep directory structure but ignore contents
+data/issuesignal/packs/.gitkeep
+data/decision/.gitkeep
+data/facts/.gitkeep
+data/dashboard/.gitkeep
