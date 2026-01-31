@@ -2639,6 +2639,48 @@ def generate_dashboard(base_dir: Path):
                          <!-- Rotation Logic Block if available -->
                          {'<div style="margin-top:12px; padding:10px; background:#f0fdf4; border-left:4px solid #10b981; font-size:13px; color:#065f46;">🔄 <b>자본 이동 감지 (Capital Rotation):</b> 시장 구조 변화로 인해 강제적인 자본 흐름이 포착되었습니다.</div>' if final_card.get('trigger_type') == "CAPITAL_ROTATION" else ''}
 
+                         <!-- [IS-57A] Real Flow Evidence Panel -->
+                         <!-- [IS-57C] Split Evidence Panel (Hint vs Fact) -->
+                         {
+                             f"""
+                             <div style="margin-top:12px; background:#fff; border:1px solid #d1fae5; border-radius:8px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                     <div style="font-size:12px; font-weight:800; color:#059669; display:flex; align-items:center; gap:6px;">
+                                         <span>📈 자본 이동 증거 (Real Data)</span>
+                                     </div>
+                                 </div>
+                                 
+                                 {
+                                     '<div style="font-size:12px; color:#6b7280; padding:4px 0;">확정 가능한 증거가 없습니다. <span style="font-size:11px; color:#9ca3af;">(단서만 존재하거나 데이터 부재)</span></div>' 
+                                     if not final_card.get('blocks', {}).get('flow_evidence') else 
+                                     """
+                                     <div style="display:flex; flex-direction:column; gap:8px;">
+                                     """ + 
+                                     
+                                     (''.join([
+                                         '<div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:2px;">✅ 증거 (HARD FACT)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5; margin-bottom:6px;">' +
+                                         ''.join([
+                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','Official')})</span></li>" 
+                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') == 'HARD_FACT'
+                                         ]) + '</ul>'
+                                     ]) if any(i.get('evidence_grade') == 'HARD_FACT' for i in final_card['blocks']['flow_evidence']) else '') +
+
+                                     (''.join([
+                                         '<div style="font-size:11px; font-weight:700; color:#d97706; margin-bottom:2px;">🔍 단서 (TEXT HINT)</div><ul style="margin:0; padding-left:20px; font-size:13px; color:#374151; line-height:1.5;">' +
+                                         ''.join([
+                                             f"<li>{item['fact_text']} <span style='color:#9ca3af; font-size:11px;'>({item.get('source','RSS')})</span></li>" 
+                                             for item in final_card['blocks']['flow_evidence'] if item.get('evidence_grade') != 'HARD_FACT'
+                                         ]) + '</ul>'
+                                     ]) if any(i.get('evidence_grade') != 'HARD_FACT' for i in final_card['blocks']['flow_evidence']) else '') +
+
+                                     """
+                                     </div>
+                                     """
+                                 }
+                             </div>
+                             """
+                         }
+
                      </div>
                      <button onclick="toggleDetails('topic-detail-view')" style="background:#10b981; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:6px; box-shadow:0 4px 6px -1px rgba(16, 185, 129, 0.3);">
                          <span>📂 스크립트 & 패키지 열기</span>

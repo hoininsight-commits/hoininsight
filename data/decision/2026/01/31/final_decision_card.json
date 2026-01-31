@@ -1,7 +1,7 @@
 {
   "topic_id": "ISSUE-20260131-001",
   "title": "美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락...",
-  "status": "TRUST_LOCKED",
+  "status": "SPEAKABLE_CANDIDATE",
   "one_liner": "[자동 감지] 美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보",
   "trigger_type": "DATA_INGRESS",
   "actor": "Market",
@@ -9,7 +9,7 @@
   "tickers": [],
   "kill_switch": "시장 반응이 예상과 다를 경우 즉시 중단.",
   "reason": "-",
-  "signature": "sig_151117",
+  "signature": "sig_152218",
   "authority_sentence": "[자동 감지] 美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보",
   "forced_capex": "-",
   "bottleneck": "-",
@@ -33,6 +33,7 @@
       },
       "verdict_reason": "No dominant rotation pattern detected."
     },
+    "flow_evidence": [],
     "content_package": {
       "long_form": "# 감지된 신호 분석\n\n## 1. 핵심 내용\n美연준 의장 워시 지명되자... 폭주하던 금·은값 폭락했다 - 조선일보\n\n## 2. 자본 이동 판단 (Rotation)\n실시간 RSS/Official 데이터에서 감지된 최우선 토픽입니다.\n\n## 3. 대응 코멘트\n시장 데이터를 기반으로 분석된 결과입니다. - 섹터에 대한 비중 확대를 검토하십시오.",
       "shorts_ready": [
@@ -56,5 +57,5 @@
   ],
   "card_version": "phase50_real_v1",
   "_date": "2026-01-31",
-  "_timestamp_kst": "2026-01-31 15:11:17"
+  "_timestamp_kst": "2026-01-31 15:22:18"
 }
