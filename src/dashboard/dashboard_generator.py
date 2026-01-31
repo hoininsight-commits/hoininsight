@@ -450,6 +450,11 @@ def generate_dashboard(base_dir: Path):
         card_path = card_base / "final_decision_card.json"
         if card_path.exists():
             final_card = json.loads(card_path.read_text(encoding="utf-8"))
+        else:
+            # [IS-73] Fallback to today.json
+            today_path = base_dir / "data" / "dashboard" / "today.json"
+            if today_path.exists():
+                final_card = json.loads(today_path.read_text(encoding="utf-8"))
     except: pass
 
     # [Phase 40] Load Topic Gate Output
@@ -2256,8 +2261,11 @@ def generate_dashboard(base_dir: Path):
     ledger_html = '<div style="padding:20px; text-align:center; color:#94a3b8;">No ledger data.</div>'
     
     # 6. Final Card (Ensure variable exists)
+    # [IS-73] DO NOT reset final_card here - it was loaded at Line 446-458
+    # if 'final_card' not in locals():
+    #     final_card = {}
     if 'final_card' not in locals():
-        final_card = {}
+        final_card = {}  # Only set if truly not defined
 
     # 7. Topic List Tab Logic
     topic_list_html = ""
@@ -2681,12 +2689,26 @@ def generate_dashboard(base_dir: Path):
         </div>
         """
 
+    # [IS-73] Extract opening_sentence directly from final_card (avoid scope issues)
+    opening_for_banner = (final_card.get("opening_sentence") or "").strip()
+    one_liner_html = ""
+    if opening_for_banner and opening_for_banner != "-":
+        one_liner_html = f"""
+        <div style="margin:0 0 18px 0; padding:14px 16px; border-radius:10px;
+                    background:linear-gradient(to right, #f0fdf4, #ffffff);
+                    border:1px solid #86efac; color:#065f46; font-weight:800; font-size:14px;">
+            📌 오늘의 핵심 한 문장: "{opening_for_banner}"
+        </div>
+        """
+
     top_block_html = f"""
     {copy_script_js}
     <div style="margin-bottom:40px;">
         <h2 style="font-size:24px; font-weight:900; color:#1e293b; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
             📌 오늘의 콘텐츠 후보 (EDITORIAL VIEW)
         </h2>
+        
+        {one_liner_html}
         
         {candidates_html if candidates_html else '<div style="padding:20px; background:#f9fafb; border-radius:8px; text-align:center; color:#6b7280;">콘텐츠 후보 없음 (데이터 부족)</div>'}
         
@@ -4075,4 +4097,9 @@ if __name__ == "__main__":
     with open("dashboard/index.html", "w") as f:
         f.write(html)
     
-    print("[Dashboard] Generated dashboard/index.html")
+    # [IS-73] Also update docs/index.html for GitHub Pages
+    os.makedirs("docs", exist_ok=True)
+    with open("docs/index.html", "w") as f:
+        f.write(html)
+    
+    print("[Dashboard] Generated dashboard/index.html and docs/index.html")
