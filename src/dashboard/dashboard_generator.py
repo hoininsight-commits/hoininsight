@@ -694,20 +694,17 @@ def generate_dashboard(base_dir: Path):
     .ops-label { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
     .sla-breach { color: #ef4444; font-weight: 700; }
     
-    /* Layout: 3 Columns Full Height */
+    /* Layout: 3 Columns Full Page Scroll */
     .dashboard-container { 
         display: grid; 
         grid-template-columns: 260px 1fr 300px; 
-        height: calc(100vh - 60px); 
-        overflow: hidden; 
+        min-height: calc(100vh - 60px); 
     }
     
     .center-panel-wrapper {
         grid-column: 2;
         display: flex;
         flex-direction: column;
-        height: 100%;
-        overflow: hidden;
         position: relative;
     }
     
@@ -741,6 +738,9 @@ def generate_dashboard(base_dir: Path):
         flex-direction: column; 
         gap: 5px; 
         padding-top: 10px;
+        position: sticky;
+        top: 60px;
+        height: calc(100vh - 60px);
         overflow-y: auto;
     }
     
@@ -748,16 +748,14 @@ def generate_dashboard(base_dir: Path):
 
     /* CENTER: Main Process Flow */
     .main-panel { 
-        /* grid-column: 2; <-- REMOVED, parent wrapper handles grid */
-        flex: 1; /* Fill remaining vertical space below Top Bar */
+        flex: 1; 
         padding: 40px; 
-        overflow-y: auto; 
         background: transparent; 
         display: flex; 
         flex-direction: column; 
         align-items: center; 
         gap: 20px; 
-        scroll-behavior: smooth; 
+    }
     }
     
     /* RIGHT: Ops Panel */
@@ -766,6 +764,9 @@ def generate_dashboard(base_dir: Path):
         background: var(--panel-bg);
         border-left: 1px solid var(--border);
         padding: 25px;
+        position: sticky;
+        top: 60px;
+        height: calc(100vh - 60px);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
