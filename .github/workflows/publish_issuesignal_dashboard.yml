@@ -32,6 +32,8 @@ jobs:
         with:
           name: pages-artifact
           path: docs
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify site structure
         run: |
