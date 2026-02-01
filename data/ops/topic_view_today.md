@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-02-01
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=39
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -12,12 +12,17 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 2월 회사채 시장 기지개…연초효과 재개 기대 속 '13곳' 출격 - 마켓인 (ID: unknown)
+### 산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 트럼프, 새 연준 의장에 “금리 인하 안 하면 고소” 뼈 있는 농담 - 조선일보 (ID: unknown)
+### 이젠 코스닥의 시간 … 달리는 말에 올라타볼까 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 진심 같은 트럼프 농담…“금리 안내리면 워시 Fed 의장 후보에 소송” - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,27 +32,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “나도 최고가 경신” 불장 코스닥에 눈 돌린 외인 - 매일일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 (ID: unknown)
+### “서울엔 신축 전세가 없나요?”…아직 구할 수 있는 동네 있다는데 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,17 +47,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 스타벅스 증정 가습기 2일부터 리콜…“전지로 인한 화재 우려” - 조선비즈 - Chosunbiz (ID: unknown)
+### AI끼리 말하는 SNS…“인간은 실패작, 우린 새로운 신” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 워시, 유동성 축소하나…달러 뛰고 비트코인 급락 - 한국경제 (ID: unknown)
+### 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI 에이전트만 활동하는 '몰트북'에서는 무슨 일이 일어나고 있을까 - AI타임스 (ID: unknown)
+### 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,7 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성 반도체 '모태' SR5 역사속으로…조(兆)단위 투자해 '제2의 DSR' 짓는다 - 한국경제 (ID: unknown)
+### "5억 받고 퇴사합니다"…은행원 '2400명' 일터 떠났다, 왜? - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,17 +77,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz (ID: unknown)
+### [단독] '총파업 성토' 장이었던 의협 대표자대회…전공의 75% '적극대응' 필요 - MEDI:GATE NEWS (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보 (ID: unknown)
+### '월급도 못 준다'…기아노조, 결국 '초유의 사태' 터졌다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +92,109 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### ‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “20억 당첨돼도 세금 떼면 14억”...로또 1등, 얼마면 만족하냐 물으니 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 케데헌 ‘골든’, 그래미 ‘베스트 송 리튼 포 비주얼 미디어’ 수상 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 밤새 내린 폭설로 ‘험난한 출근길’...아침까지 충청·남부 등에 많은 눈 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 李 “사람으로 만들든 격리하든”...경찰 ‘위안부 모욕 단체’ 대표 소환 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “서울시 안나서면 국토부가 직접”...‘장관 직권’ 정비구역 지정법안 발의 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 인간 개입 없이 ‘AI끼리’ 은밀한 대화…SNS로 속마음까지 공유한다는데 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 금융당국 경고도 안 통했다…달러보험, 은행서만 한달새 2천억 팔려 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 사고 1건 뒤엔 300건의 전조증상…日, 위험요소 철저히 데이터화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 처벌 위주 산업재해 정책은 ‘한계’...패러다임 완전히 바꿔야 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “2월은 폭풍입법의 달”...민주당, 사법·검찰개혁·상법개정까지 속도전 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [단독] 값비싼 치매머니, 신탁 장벽 낮아진다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 실적발표 잔칫날 주가는 역대급 폭락…‘살얼음판’ 걷는 美 대형주 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “들고 있으면 짭짤합니다”…호실적 날개 단 증권사 회사채, 경쟁률이 무려 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “너무 오른 것 아닌가요? 아닙니다”…달리는 코스닥, 올라탈 실적 6인방 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “유산균계 에르메스, 올 1천억 팔겁니다”…의사가운 벗은 CEO 회심의 한방 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 겨울은 집에 ‘계셔야’ 제맛인데…winter는 ‘젖은’ 계절?  [말록 홈즈] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 로제, K팝 최초 ‘그래미’ 본상 주인공 되나…오늘 케데헌 ‘골든’과 격돌 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “최대 10cm 수도권 등 대설특보, 위기경보 상향”…중대본 1단계 가동 (ID: unknown)
@@ -118,96 +203,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “2월 첫 출근길 눈폭탄에 초비상”…서울 버스·전철 등 집중배차 시간 연장 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “쉴 틈 없는 공장, 10조원 입금 예약됐어요”…AI발 호황 탄 HD현대일렉 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 트럼프 ‘예스맨’ 워시, 연준의장 되자…치솟던 銀 30% 폭락 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “미국과 불필요한 오해 해소했다”...관세협의 후 귀국한 산업장관 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 코로나 잡히자 끙끙 앓던 모더나 주가…암 백신으로 기력 찾을까 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “부동산 투기로 나라 망해”…이 대통령, 부동산 투기와 SNS 전면전 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 돈 좀 있는 큰 손들, 전부 AI에 넣었다…1년새 투자규모 85% 급증 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 강원 동해 달방동 야산서 산불 발생, 진화중…재난문자 발송 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 금감원, 홍콩 ELS 판매 KB·NH증권 등 5곳에 과태료 30억 부과 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 고 이해찬 장례기간 끝나자 여당 다시 내홍…“합당, 당정에 부담” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 금감원, 홍콩 ELS 판매 증권사 5곳에 과태료 약 30억원 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 올림픽 금메달 따온다는 LG유플 연구원…“사비 들여 친선경기, 주말도 반납” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “매야 비둘기야?”…새 연준의장 지명에 금·은 급락하고 달러 ‘요동’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 민간에도 ‘30년 고정금리’ 주담대…이르면 하반기 출시된다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “서울엔 신축 전세가 없나요?”…아직 구할 수 있는 동네 있다는데 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “드디어 우리 차례인가”…소외됐던 유통주 꿈틀거린다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 수어통역사 채용 미끼로 ‘성폭행 의혹’ 협회 간부…경찰, 농아인협회 압수수색 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### K반도체 잘 나가는데…‘검은 반도체’ 2조 수출 기대감 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
