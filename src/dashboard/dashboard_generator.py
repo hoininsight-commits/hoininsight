@@ -378,6 +378,7 @@ def check_collection_status(base_dir: Path, dataset: Dict, collection_status_dat
     }
 
 def generate_dashboard(base_dir: Path):
+    regime_name = "Unknown"  # [IS-73 Fix] Initialize early to prevent UnboundLocalError
     ymd = _utc_ymd()  # Current date for data collection status
     narrative_ymd = _find_latest_narrative_date(base_dir)  # Latest date with narrative data
     datasets = parse_registry(base_dir)
@@ -443,19 +444,34 @@ def generate_dashboard(base_dir: Path):
             revival_loops = json.loads(loop_path.read_text(encoding="utf-8"))
     except: pass
 
-    # [Phase 38] Load Final Decision Card
+    # [Phase 38] Load Final Decision Card (Enhanced for IS-73 Persistence)
     final_card = {}
     try:
+        # Step 1: Base data from today.json (Stable source for opening_sentence)
+        today_path = base_dir / "data" / "dashboard" / "today.json"
+        if today_path.exists():
+            final_card = json.loads(today_path.read_text(encoding="utf-8"))
+        
+        # Step 2: Update with latest Decision Card if exists (Merged carefully)
         card_base = base_dir / "data" / "decision" / ymd.replace("-","/")
         card_path = card_base / "final_decision_card.json"
         if card_path.exists():
-            final_card = json.loads(card_path.read_text(encoding="utf-8"))
-        else:
-            # [IS-73] Fallback to today.json
-            today_path = base_dir / "data" / "dashboard" / "today.json"
-            if today_path.exists():
-                final_card = json.loads(today_path.read_text(encoding="utf-8"))
-    except: pass
+            latest_card = json.loads(card_path.read_text(encoding="utf-8"))
+            
+            # [IS-73] MERGE STRATEGY: 
+            # Only overwrite if new value is more meaningful than 'None' or empty.
+            for k, v in latest_card.items():
+                is_v_valid = v and str(v).lower() != 'none'
+                current_v = final_card.get(k)
+                is_current_valid = current_v and str(current_v).lower() != 'none'
+                
+                if is_v_valid:
+                    final_card[k] = v
+                elif not is_current_valid:
+                    # If both are invalid, take the latest one anyway
+                    final_card[k] = v
+    except Exception as e:
+        print(f"[ERROR] final_card merge failed: {e}")
 
     # [Phase 40] Load Topic Gate Output
     gate_data = {}
@@ -3250,7 +3266,7 @@ def generate_dashboard(base_dir: Path):
             <div class="center-panel-wrapper">
                 <div class="top-bar">
                     <div style="display:flex; align-items:center; gap:20px;">
-                        <h1>Hoin Insight</h1>
+                        <h1>Hoin Insight <span style="font-size:12px; vertical-align:middle; color:#94a3b8; font-weight:normal;">Hardened v2</span></h1>
                         
                         <div style="display:flex; gap:10px; align-items:center; margin-left:10px;">
                             <div class="stat-counter" title="Latest Run Date">📅 {status_data['run_date']}</div>
