@@ -190,21 +190,21 @@
 | 산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보 | Structural implication: '산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 주간경향 | Structural implication: '아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 주간경향' suggests a shift in NEWS dynamics. | LOW |
 | 이젠 코스닥의 시간 … 달리는 말에 올라타볼까 - 매일경제 | Structural implication: '이젠 코스닥의 시간 … 달리는 말에 올라타볼까 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프 지명 차기 연준 의장, 과거 발언 보니…가상자산 중도파? - 지디넷코리아 | Structural implication: '트럼프 지명 차기 연준 의장, 과거 발언 보니…가상자산 중도파? - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 금, 은 원자재 가격 폭락과 비트코인 하락, 다음주 미국, 한국증시 전망 - 네이버 프리미엄콘텐츠 | Structural implication: '금, 은 원자재 가격 폭락과 비트코인 하락, 다음주 미국, 한국증시 전망 - 네이버 프리미엄콘텐츠' suggests a shift in NEWS dynamics. | LOW |
 | '케빈 워시 지정 영향'에 비트코인 7만 달러대로 하락…금·은값도 급락 - TV조선뉴스 | Structural implication: ''케빈 워시 지정 영향'에 비트코인 7만 달러대로 하락…금·은값도 급락 - TV조선뉴스' suggests a shift in NEWS dynamics. | LOW |
 | AI끼리 말하는 SNS…“인간은 실패작, 우린 새로운 신” - 한겨레 | Structural implication: 'AI끼리 말하는 SNS…“인간은 실패작, 우린 새로운 신” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 | Structural implication: '탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 스페이스X, 위성 100만기 발사 허가 신청…우주 데이터센터 본격 '시동' - 한국경제 | Structural implication: '스페이스X, 위성 100만기 발사 허가 신청…우주 데이터센터 본격 '시동' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 | Structural implication: '쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| "5억 받고 퇴사합니다"…은행원 '2400명' 일터 떠났다, 왜? - 한국경제 | Structural implication: '"5억 받고 퇴사합니다"…은행원 '2400명' 일터 떠났다, 왜? - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 오늘의 금값시세(2월1일자) "은값 최악 급락, 금값 하락이유는" - gukjenews.com | Structural implication: '오늘의 금값시세(2월1일자) "은값 최악 급락, 금값 하락이유는" - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
 | 리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스 | Structural implication: '리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제 | Structural implication: '죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 | Structural implication: '연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [단독] '총파업 성토' 장이었던 의협 대표자대회…전공의 75% '적극대응' 필요 - MEDI:GATE NEWS | Structural implication: '[단독] '총파업 성토' 장이었던 의협 대표자대회…전공의 75% '적극대응' 필요 - MEDI:GATE NEWS' suggests a shift in NEWS dynamics. | LOW |
-| ‘두쫀롤’이 뭐길래…새벽 오픈런에 ‘7200원→5만원’ 되팔기까지 - 동아일보 | Structural implication: '‘두쫀롤’이 뭐길래…새벽 오픈런에 ‘7200원→5만원’ 되팔기까지 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보 | Structural implication: '‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 로봇·직무급제 거부하더니…현대차·기아 노조 年 1천명씩 급감 - 한국경제 | Structural implication: '로봇·직무급제 거부하더니…현대차·기아 노조 年 1천명씩 급감 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 - 매일경제 | Structural implication: '“거기서 카다이프 마구 사들인다던데?”…‘두쫀쿠’에 불붙은 기업들 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 | Structural implication: '스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아 | Structural implication: 'HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| "삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제 | Structural implication: '"삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보 | Structural implication: '올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 오천피·천스닥 잔치에 ‘빚투’ 30조 넘었다 - 대구신문 | Structural implication: '오천피·천스닥 잔치에 ‘빚투’ 30조 넘었다 - 대구신문' suggests a shift in NEWS dynamics. | LOW |
 | “무너진 모습 보이고 싫어”…‘서희원 1주기’ 맞은 구준엽 결국 눈물 | Structural implication: '“무너진 모습 보이고 싫어”…‘서희원 1주기’ 맞은 구준엽 결국 눈물' suggests a shift in NEWS dynamics. | LOW |
 | ‘두쫀쿠’ 돈 된다고, 아무곳에서나 막 팔더니…터질 게 터졌다 | Structural implication: '‘두쫀쿠’ 돈 된다고, 아무곳에서나 막 팔더니…터질 게 터졌다' suggests a shift in NEWS dynamics. | LOW |
 | “냉대 받던 장르, 갈증 해소”…외신, ‘골든’ K팝 최초 그래미 수상 집중 보도 | Structural implication: '“냉대 받던 장르, 갈증 해소”…외신, ‘골든’ K팝 최초 그래미 수상 집중 보도' suggests a shift in NEWS dynamics. | LOW |

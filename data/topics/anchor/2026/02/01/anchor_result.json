@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "derived_gold_silver_ratio"
+    "fx_usdkrw_ecos"
   ],
   "baseline_match": [
-    "derived_gold_silver_ratio: Single Axis Surge (Z=2.18)"
+    "fx_usdkrw_ecos: Single Axis Surge (Z=-1.91)"
   ],
   "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation Z=2.18 (No Cluster)",
+  "level_proof": "Statistical Deviation Z=-1.91 (No Cluster)",
   "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
     "Need Correlated Asset Movement",
