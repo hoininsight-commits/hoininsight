@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-01
+# 🧭 TODAY TOPIC VIEW - 2026-02-02
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 (ID: unknown)
+### 1월 수출, 600억달러 첫 돌파 ‘역대 최대’ - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 중소형 아파트값, 한강 이남에선 평균 18억 넘었다 - 경향신문 (ID: unknown)
+### "서울 한강 이남 중소형 아파트 평균 18억원 첫 돌파" - 연합뉴스TV (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,7 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 산업용 전기요금, 밤에는 올리고 낮에는 내린다 … 1분기 중 요금체계 개편 - 뉴데일리 경제 (ID: unknown)
+### 1분기 산업용 전기요금 개편…재생에너지 100GW 보급에도 속도 - 전기신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,7 +42,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 홍콩서 인기 '삼성전자 2배 ETF' 한국서도 대박칠까 - 아시아경제 (ID: unknown)
+### 머스크도, 팀 쿡도 “반도체 부족” 토로…공급난 장기화하나 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 올해 코스닥 지수 24% '껑충'..."삼천스닥 가능할까?" - YTN (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,7 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '탈모 원인' 92% 억제…"모자처럼 쓰고 다녀" 놀라운 효과 - 한국경제 (ID: unknown)
+### 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,19 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아 (ID: unknown)
+### “1월 주도주가 상반기 휩쓴다”…韓 반도체·자동차 ‘비중 확대’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### "삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제 (ID: unknown)
+### HD현대중공업 76조 vs 한화오션 35조... 트럼프의 ‘MASGA’, 승자는? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “3년치 일감 꽉 찼다”…현대로템, 실적 숨고르기 뒤 ‘수주 랠리’ 시동 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 하나증권 “현대로템, 4분기 실적 컨센서스 하회…신규수주 성과 중요” (ID: unknown)
@@ -193,21 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 로제, 그래미 ‘베스트 팝 듀오·그룹 퍼포먼스’ 수상 불발 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 상하이 명품거리에 깃발 꽂은 LF 헤지스...“2040 VIP 모신다” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “너무 창피, 이거 좀 이해가 안간다”…로제 수줍게한 일, 뭐길래 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 거거익선, 크다고 좋은 시절 끝났다…성공한 아빠車, 이젠 ‘테크닉’ 승부 [왜몰랐을카] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
