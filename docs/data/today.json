@@ -18,7 +18,7 @@
   ],
   "kill_switch": "즉시 중단 가능",
   "reason": "-",
-  "signature": "sig_221755",
+  "signature": "sig_224903",
   "authority_sentence": "미국 장기채: - 변화의 필연성",
   "forced_capex": "-",
   "bottleneck": "-",
@@ -51,13 +51,30 @@
         "source_date": "2026-02-01",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 40,
-        "independence_key": "FLOW_RSS_-5104493092126296871_2026-02-01",
+        "independence_key": "FLOW_RSS_277630604456282114_2026-02-01",
         "flow_metadata": {
           "ticker": "RSS_SIGNAL",
           "sector": "Currency",
           "change_pct": 0.0,
           "volume_ratio": 0.0,
           "direction": "INFLOW"
+        }
+      },
+      {
+        "fact_type": "CAPITAL_FLOW",
+        "fact_text": "[자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대 ETF 자금 유출…1.26달러 하락 위험 부상 - 톱스타뉴스",
+        "source": "RSS Finance (Real-time)",
+        "source_ref": "Google_News_KR_Biz",
+        "source_date": "2026-02-01",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 40,
+        "independence_key": "FLOW_RSS_572638423875861445_2026-02-01",
+        "flow_metadata": {
+          "ticker": "RSS_SIGNAL",
+          "sector": "Currency",
+          "change_pct": 0.0,
+          "volume_ratio": 0.0,
+          "direction": "OUTFLOW"
         }
       },
       {
@@ -92,7 +109,7 @@
       },
       {
         "fact_type": "MACRO_FACT",
-        "fact_text": "WTI 원유 65.55 (➖ +0.20%)",
+        "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
         "source": "Market Data (Yahoo)",
         "source_ref": "CL=F",
         "source_date": "2026-01-31",
@@ -101,8 +118,8 @@
         "independence_key": "MACRO_WTI_2026-02-01",
         "details": {
           "ticker": "WTI",
-          "value": 65.55000305175781,
-          "change_pct": 0.19872345834795963
+          "value": 65.20999908447266,
+          "change_pct": -0.3210013609757975
         }
       },
       {
@@ -122,7 +139,7 @@
       },
       {
         "fact_type": "MACRO_FACT",
-        "fact_text": "금 선물 (Hint) 5067.50 (🔻 -4.72%)",
+        "fact_text": "금 선물 (Hint) 4745.10 (🔻 -10.78%)",
         "source": "Market Data (Yahoo)",
         "source_ref": "GC=F",
         "source_date": "2026-01-31",
@@ -131,8 +148,8 @@
         "independence_key": "MACRO_GOLD_2026-02-01",
         "details": {
           "ticker": "GOLD",
-          "value": 5067.5,
-          "change_pct": -4.7175824862884355
+          "value": 4745.10009765625,
+          "change_pct": -10.779554287274527
         }
       },
       {
@@ -143,7 +160,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4489042614677198245_20260201",
+        "independence_key": "OFFICIAL_Fed_-1156573095850464955_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -158,7 +175,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8237288871071491034_20260201",
+        "independence_key": "OFFICIAL_Fed_-5052951129590641638_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -173,7 +190,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2745967919762757394_20260201",
+        "independence_key": "OFFICIAL_Fed_3913371563600519736_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -188,7 +205,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6202910433956609357_20260201",
+        "independence_key": "OFFICIAL_Fed_1977016582080671728_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -203,7 +220,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4360965082728335163_20260201",
+        "independence_key": "OFFICIAL_Fed_1776347313556063862_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -218,7 +235,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1780427151930436141_20260201",
+        "independence_key": "OFFICIAL_Fed_4095702159147846442_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -233,7 +250,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5619440063653679887_20260201",
+        "independence_key": "OFFICIAL_Fed_5730144813156345485_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -248,7 +265,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1454178498163881385_20260201",
+        "independence_key": "OFFICIAL_Fed_-5389026917566568070_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -263,7 +280,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2330447544333956753_20260201",
+        "independence_key": "OFFICIAL_Fed_3121541288118047052_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -278,7 +295,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7959494140469812357_20260201",
+        "independence_key": "OFFICIAL_Fed_6428570943086901531_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -293,7 +310,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1075921168407359978_20260201",
+        "independence_key": "OFFICIAL_Fed_1508717582068463874_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -308,7 +325,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5436101423655567460_20260201",
+        "independence_key": "OFFICIAL_Fed_-8356182336864209372_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -323,7 +340,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5556426081514686672_20260201",
+        "independence_key": "OFFICIAL_Fed_6183448182923559795_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -338,7 +355,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2258847429455274761_20260201",
+        "independence_key": "OFFICIAL_Fed_410857162124066681_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -353,7 +370,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3569779797752556445_20260201",
+        "independence_key": "OFFICIAL_Fed_727028751411298726_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -368,7 +385,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8105416182043493779_20260201",
+        "independence_key": "OFFICIAL_Fed_-5740046365018514071_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -383,7 +400,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4509695288501835299_20260201",
+        "independence_key": "OFFICIAL_Fed_801306088112424518_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -398,7 +415,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7435962937635545157_20260201",
+        "independence_key": "OFFICIAL_Fed_-8669257933767357044_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -413,7 +430,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4738502202512458448_20260201",
+        "independence_key": "OFFICIAL_Fed_2293518042255091067_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -428,7 +445,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6146023557497503628_20260201",
+        "independence_key": "OFFICIAL_Fed_3263704560007510850_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -443,7 +460,7 @@
         "source_date": "Sun, 01 Feb 2026 03:26:29 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6799643610802762090_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_671839638650245430_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보",
@@ -458,7 +475,7 @@
         "source_date": "Sun, 01 Feb 2026 11:20:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-3395398028274963638_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6097231866834876758_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레",
@@ -467,31 +484,31 @@
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[White House] 트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+        "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
         "source": "News Filter (White House)",
-        "source_ref": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1RSXdyT0Y0S3NUMjZITnhHVF9BMEpxZ1NSUjA2UmZYbm5ySXBWaXc2Z1VzbkdPTEtpUnVsdjl2WHVlN09fbHFuYk9hcnZwaDct?",
-        "source_date": "Fri, 30 Jan 2026 23:56:47 GMT",
+        "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+        "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_6223746935080001845_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_610072383805667950_2026-02-01",
         "details": {
           "entity": "White House",
-          "raw_title": "트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+          "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[한국은행] 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
-        "source": "News Filter (한국은행)",
-        "source_ref": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5MNnRPUUdMTExjXzR3WEdFRW9JQTZTM2JSbk8zWFBxaEEwZ2NGbV9uc0NnWUNDX1BaMnZpSnZMYjZIWmJseGFKbklOcHJxWkx1b",
-        "source_date": "Sat, 31 Jan 2026 07:36:00 GMT",
+        "fact_text": "[White House] 트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+        "source": "News Filter (White House)",
+        "source_ref": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzMya3c5U1pxcmg4bHIzSzdsQVd1dlNDaERUZE1NY2ExVnFVYzlTYTBFaU9KN19nUmRPWGxIaUdoNWdlQU45c19BV09YR1E4a",
+        "source_date": "Sat, 31 Jan 2026 01:59:49 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_6225936060184272911_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_1564967921855610917_2026-02-01",
         "details": {
-          "entity": "한국은행",
-          "raw_title": "李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
+          "entity": "White House",
+          "raw_title": "트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
@@ -503,7 +520,7 @@
         "source_date": "Sun, 01 Feb 2026 09:47:21 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_-8263816422126956838_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_6144844847479021209_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "[단독]에릭 트럼프 “모든 자산 토큰화 될 것···크립토, 전통 금융 대체 아닌 현대화 수단” - 매일경제",
@@ -657,13 +674,30 @@
         "source_date": "2026-02-01",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 40,
-        "independence_key": "FLOW_RSS_-5104493092126296871_2026-02-01",
+        "independence_key": "FLOW_RSS_277630604456282114_2026-02-01",
         "flow_metadata": {
           "ticker": "RSS_SIGNAL",
           "sector": "Currency",
           "change_pct": 0.0,
           "volume_ratio": 0.0,
           "direction": "INFLOW"
+        }
+      },
+      {
+        "fact_type": "CAPITAL_FLOW",
+        "fact_text": "[자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대 ETF 자금 유출…1.26달러 하락 위험 부상 - 톱스타뉴스",
+        "source": "RSS Finance (Real-time)",
+        "source_ref": "Google_News_KR_Biz",
+        "source_date": "2026-02-01",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 40,
+        "independence_key": "FLOW_RSS_572638423875861445_2026-02-01",
+        "flow_metadata": {
+          "ticker": "RSS_SIGNAL",
+          "sector": "Currency",
+          "change_pct": 0.0,
+          "volume_ratio": 0.0,
+          "direction": "OUTFLOW"
         }
       },
       {
@@ -698,7 +732,7 @@
       },
       {
         "fact_type": "MACRO_FACT",
-        "fact_text": "WTI 원유 65.55 (➖ +0.20%)",
+        "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
         "source": "Market Data (Yahoo)",
         "source_ref": "CL=F",
         "source_date": "2026-01-31",
@@ -707,8 +741,8 @@
         "independence_key": "MACRO_WTI_2026-02-01",
         "details": {
           "ticker": "WTI",
-          "value": 65.55000305175781,
-          "change_pct": 0.19872345834795963
+          "value": 65.20999908447266,
+          "change_pct": -0.3210013609757975
         }
       },
       {
@@ -728,7 +762,7 @@
       },
       {
         "fact_type": "MACRO_FACT",
-        "fact_text": "금 선물 (Hint) 5067.50 (🔻 -4.72%)",
+        "fact_text": "금 선물 (Hint) 4745.10 (🔻 -10.78%)",
         "source": "Market Data (Yahoo)",
         "source_ref": "GC=F",
         "source_date": "2026-01-31",
@@ -737,8 +771,8 @@
         "independence_key": "MACRO_GOLD_2026-02-01",
         "details": {
           "ticker": "GOLD",
-          "value": 5067.5,
-          "change_pct": -4.7175824862884355
+          "value": 4745.10009765625,
+          "change_pct": -10.779554287274527
         }
       },
       {
@@ -749,7 +783,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4489042614677198245_20260201",
+        "independence_key": "OFFICIAL_Fed_-1156573095850464955_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -764,7 +798,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8237288871071491034_20260201",
+        "independence_key": "OFFICIAL_Fed_-5052951129590641638_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -779,7 +813,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2745967919762757394_20260201",
+        "independence_key": "OFFICIAL_Fed_3913371563600519736_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -794,7 +828,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6202910433956609357_20260201",
+        "independence_key": "OFFICIAL_Fed_1977016582080671728_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -809,7 +843,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4360965082728335163_20260201",
+        "independence_key": "OFFICIAL_Fed_1776347313556063862_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -824,7 +858,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1780427151930436141_20260201",
+        "independence_key": "OFFICIAL_Fed_4095702159147846442_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -839,7 +873,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5619440063653679887_20260201",
+        "independence_key": "OFFICIAL_Fed_5730144813156345485_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -854,7 +888,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1454178498163881385_20260201",
+        "independence_key": "OFFICIAL_Fed_-5389026917566568070_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -869,7 +903,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2330447544333956753_20260201",
+        "independence_key": "OFFICIAL_Fed_3121541288118047052_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -884,7 +918,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7959494140469812357_20260201",
+        "independence_key": "OFFICIAL_Fed_6428570943086901531_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -899,7 +933,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-1075921168407359978_20260201",
+        "independence_key": "OFFICIAL_Fed_1508717582068463874_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -914,7 +948,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5436101423655567460_20260201",
+        "independence_key": "OFFICIAL_Fed_-8356182336864209372_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -929,7 +963,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5556426081514686672_20260201",
+        "independence_key": "OFFICIAL_Fed_6183448182923559795_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -944,7 +978,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-2258847429455274761_20260201",
+        "independence_key": "OFFICIAL_Fed_410857162124066681_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -959,7 +993,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-3569779797752556445_20260201",
+        "independence_key": "OFFICIAL_Fed_727028751411298726_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -974,7 +1008,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_8105416182043493779_20260201",
+        "independence_key": "OFFICIAL_Fed_-5740046365018514071_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -989,7 +1023,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4509695288501835299_20260201",
+        "independence_key": "OFFICIAL_Fed_801306088112424518_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -1004,7 +1038,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7435962937635545157_20260201",
+        "independence_key": "OFFICIAL_Fed_-8669257933767357044_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -1019,7 +1053,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_4738502202512458448_20260201",
+        "independence_key": "OFFICIAL_Fed_2293518042255091067_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -1034,7 +1068,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6146023557497503628_20260201",
+        "independence_key": "OFFICIAL_Fed_3263704560007510850_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -1049,7 +1083,7 @@
         "source_date": "Sun, 01 Feb 2026 03:26:29 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6799643610802762090_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_671839638650245430_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보",
@@ -1064,7 +1098,7 @@
         "source_date": "Sun, 01 Feb 2026 11:20:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-3395398028274963638_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6097231866834876758_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레",
@@ -1073,31 +1107,31 @@
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[White House] 트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+        "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
         "source": "News Filter (White House)",
-        "source_ref": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1RSXdyT0Y0S3NUMjZITnhHVF9BMEpxZ1NSUjA2UmZYbm5ySXBWaXc2Z1VzbkdPTEtpUnVsdjl2WHVlN09fbHFuYk9hcnZwaDct?",
-        "source_date": "Fri, 30 Jan 2026 23:56:47 GMT",
+        "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+        "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_6223746935080001845_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_610072383805667950_2026-02-01",
         "details": {
           "entity": "White House",
-          "raw_title": "트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+          "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[한국은행] 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
-        "source": "News Filter (한국은행)",
-        "source_ref": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5MNnRPUUdMTExjXzR3WEdFRW9JQTZTM2JSbk8zWFBxaEEwZ2NGbV9uc0NnWUNDX1BaMnZpSnZMYjZIWmJseGFKbklOcHJxWkx1b",
-        "source_date": "Sat, 31 Jan 2026 07:36:00 GMT",
+        "fact_text": "[White House] 트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+        "source": "News Filter (White House)",
+        "source_ref": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzMya3c5U1pxcmg4bHIzSzdsQVd1dlNDaERUZE1NY2ExVnFVYzlTYTBFaU9KN19nUmRPWGxIaUdoNWdlQU45c19BV09YR1E4a",
+        "source_date": "Sat, 31 Jan 2026 01:59:49 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_한국은행_6225936060184272911_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_1564967921855610917_2026-02-01",
         "details": {
-          "entity": "한국은행",
-          "raw_title": "李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
+          "entity": "White House",
+          "raw_title": "트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
@@ -1109,7 +1143,7 @@
         "source_date": "Sun, 01 Feb 2026 09:47:21 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_-8263816422126956838_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_6144844847479021209_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "[단독]에릭 트럼프 “모든 자산 토큰화 될 것···크립토, 전통 금융 대체 아닌 현대화 수단” - 매일경제",
@@ -1429,13 +1463,18 @@
         "status": "EDITORIAL_CANDIDATE",
         "why_now": "국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.",
         "script": {
-          "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
+          "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다. (근거: [자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대...)\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
           "shorts_15s": "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
           "shorts_30s": "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
           "shorts_45s": "1분 요약: 미국 장기채 지표 변동의 진짜 의미. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이라는 구조적 강제가 작동 중입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
           "text_card": "📌 미국 장기채 지표 변동\n- 원인: 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
           "one_liner": "미국 장기채: - 변화의 필연성",
-          "bindings": {}
+          "bindings": {
+            "step2": {
+              "id": null,
+              "text": "[자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대 ETF 자금 유출…1.26달러 하락 위험 부상 - 톱스타뉴스"
+            }
+          }
         },
         "score": 60,
         "content_type": "FACT",
@@ -1449,13 +1488,18 @@
         "status": "EDITORIAL_CANDIDATE",
         "why_now": "금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.",
         "script": {
-          "long_form": "1. 정의 (Signal)\n지금 미국 단기 자금의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 단기 자금을 중심으로 한 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 단기 자금에게 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
+          "long_form": "1. 정의 (Signal)\n지금 미국 단기 자금의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다. (근거: [자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대...)\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 단기 자금을 중심으로 한 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 단기 자금에게 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
           "shorts_15s": "[필연] 미국 단기 자금 지표 변동! 팩트는 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.입니다. -에 주목하십시오.",
           "shorts_30s": "[데이터 이상신호] 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). 시장의 오해를 넘어 본질을 봐야 합니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. -의 변화는 필연입니다.",
           "shorts_45s": "1분 요약: 미국 단기 자금 지표 변동의 진짜 의미. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이라는 구조적 강제가 작동 중입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
           "text_card": "📌 미국 단기 자금 지표 변동\n- 원인: 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
           "one_liner": "미국 단기 자금: - 변화의 필연성",
-          "bindings": {}
+          "bindings": {
+            "step2": {
+              "id": null,
+              "text": "[자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대 ETF 자금 유출…1.26달러 하락 위험 부상 - 톱스타뉴스"
+            }
+          }
         },
         "score": 60,
         "content_type": "FACT",
@@ -1464,18 +1508,23 @@
       },
       {
         "index": 2,
-        "title": "WTI 원유 65.55 (➖ +0.20%)",
-        "full_text": "WTI 원유 65.55 (➖ +0.20%)",
+        "title": "WTI 원유 65.21 (➖ -0.32%)",
+        "full_text": "WTI 원유 65.21 (➖ -0.32%)",
         "status": "EDITORIAL_CANDIDATE",
         "why_now": "원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.",
         "script": {
-          "long_form": "1. 정의 (Signal)\n지금 에너지 섹터의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. WTI 원유 65.55 (➖ +0.20%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 에너지 섹터을 중심으로 한 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 에너지 섹터에게 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
+          "long_form": "1. 정의 (Signal)\n지금 에너지 섹터의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. WTI 원유 65.21 (➖ -0.32%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다. (근거: [자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대...)\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 에너지 섹터을 중심으로 한 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 에너지 섹터에게 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
           "shorts_15s": "[필연] 에너지 섹터 지표 변동! 팩트는 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.입니다. -에 주목하십시오.",
-          "shorts_30s": "[데이터 이상신호] WTI 원유 65.55 (➖ +0.20%). 시장의 오해를 넘어 본질을 봐야 합니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. -의 변화는 필연입니다.",
+          "shorts_30s": "[데이터 이상신호] WTI 원유 65.21 (➖ -0.32%). 시장의 오해를 넘어 본질을 봐야 합니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. -의 변화는 필연입니다.",
           "shorts_45s": "1분 요약: 에너지 섹터 지표 변동의 진짜 의미. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이라는 구조적 강제가 작동 중입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
           "text_card": "📌 에너지 섹터 지표 변동\n- 원인: 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
           "one_liner": "에너지 섹터: - 변화의 필연성",
-          "bindings": {}
+          "bindings": {
+            "step2": {
+              "id": null,
+              "text": "[자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대 ETF 자금 유출…1.26달러 하락 위험 부상 - 톱스타뉴스"
+            }
+          }
         },
         "score": 60,
         "content_type": "FACT",
@@ -1484,7 +1533,7 @@
       }
     ],
     "content_package": {
-      "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
+      "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다. (근거: [자금흐름포착] Currency OUTFLOW: 리플 XRP, 사상 최대...)\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.\n\n---\n본 내용은 확정된 사실 기반의 정보입니다.",
       "shorts_ready": [
         "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
         "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
@@ -1525,7 +1574,8 @@
     },
     "content_type": "FACT",
     "permission_granted": true,
-    "disclaimer": "본 내용은 확정된 사실 기반의 정보입니다."
+    "disclaimer": "본 내용은 확정된 사실 기반의 정보입니다.",
+    "supplement_reason": ""
   },
   "decision_rationale": "1순위 선정. 점수: 60, 최종 상태: 후보",
   "observed_metrics": [
