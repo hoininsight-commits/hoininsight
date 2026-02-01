@@ -190,21 +190,21 @@
 | 차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보 | Structural implication: '차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 | Structural implication: '1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 | Structural implication: '60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 돈 싸들고 '코스닥' 대이동…큰손들, 싹 쓸어 담은 종목 - 한국경제 | Structural implication: '돈 싸들고 '코스닥' 대이동…큰손들, 싹 쓸어 담은 종목 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문 | Structural implication: '인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 | Structural implication: '스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| “보너스 받아서 뭐 했냐고? 주식 샀지”…증시 더 뜨겁게 만든 ‘머니 무브’ - 매일경제 | Structural implication: '“보너스 받아서 뭐 했냐고? 주식 샀지”…증시 더 뜨겁게 만든 ‘머니 무브’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제 | Structural implication: '개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz | Structural implication: '작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 | Structural implication: '탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레 | Structural implication: '금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문 | Structural implication: '인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 엔비디아–오픈AI 140조원 투자 '제동' … 1천억달러 구상 보류 - 뉴데일리 경제 | Structural implication: '엔비디아–오픈AI 140조원 투자 '제동' … 1천억달러 구상 보류 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
-| 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 | Structural implication: '쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 삼성 반도체 '모태' SR5 역사속으로…조(兆)단위 투자해 '제2의 DSR' 짓는다 - 한국경제 | Structural implication: '삼성 반도체 '모태' SR5 역사속으로…조(兆)단위 투자해 '제2의 DSR' 짓는다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제 | Structural implication: '죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문 | Structural implication: '금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 | Structural implication: '쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 | Structural implication: '연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스 | Structural implication: '리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
 | "5년 걸려 합격했는데"…전문직 취업 한파에 '눈물' 쏟은 이유 [이슈+] - 한국경제 | Structural implication: '"5년 걸려 합격했는데"…전문직 취업 한파에 '눈물' 쏟은 이유 [이슈+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보 | Structural implication: '올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문 | Structural implication: '아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | "삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제 | Structural implication: '"삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환 | Structural implication: '“또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환' suggests a shift in NEWS dynamics. | LOW |

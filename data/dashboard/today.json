@@ -18,7 +18,7 @@
   ],
   "kill_switch": "즉시 중단 가능",
   "reason": "-",
-  "signature": "sig_221451",
+  "signature": "sig_221755",
   "authority_sentence": "미국 장기채: - 변화의 필연성",
   "forced_capex": "-",
   "bottleneck": "-",
@@ -43,6 +43,23 @@
       "verdict_reason": "No dominant rotation pattern detected."
     },
     "flow_evidence": [
+      {
+        "fact_type": "CAPITAL_FLOW",
+        "fact_text": "[자금흐름포착] Currency INFLOW: 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz",
+        "source": "RSS Finance (Real-time)",
+        "source_ref": "Google_News_KR_Biz",
+        "source_date": "2026-02-01",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 40,
+        "independence_key": "FLOW_RSS_-5104493092126296871_2026-02-01",
+        "flow_metadata": {
+          "ticker": "RSS_SIGNAL",
+          "sector": "Currency",
+          "change_pct": 0.0,
+          "volume_ratio": 0.0,
+          "direction": "INFLOW"
+        }
+      },
       {
         "fact_type": "MACRO_FACT",
         "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
@@ -126,7 +143,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1542236106491102682_20260201",
+        "independence_key": "OFFICIAL_Fed_4489042614677198245_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -141,7 +158,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-890245823624672472_20260201",
+        "independence_key": "OFFICIAL_Fed_8237288871071491034_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -156,7 +173,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1230007116917781740_20260201",
+        "independence_key": "OFFICIAL_Fed_-2745967919762757394_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -171,7 +188,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_3151541172805459308_20260201",
+        "independence_key": "OFFICIAL_Fed_-6202910433956609357_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -186,7 +203,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5346828048705466969_20260201",
+        "independence_key": "OFFICIAL_Fed_4360965082728335163_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -201,7 +218,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-968272266066812136_20260201",
+        "independence_key": "OFFICIAL_Fed_1780427151930436141_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -216,7 +233,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6555707120542175739_20260201",
+        "independence_key": "OFFICIAL_Fed_-5619440063653679887_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -231,7 +248,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5293515148053475733_20260201",
+        "independence_key": "OFFICIAL_Fed_1454178498163881385_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -246,7 +263,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7472619761706205492_20260201",
+        "independence_key": "OFFICIAL_Fed_2330447544333956753_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -261,7 +278,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7040745153852362372_20260201",
+        "independence_key": "OFFICIAL_Fed_-7959494140469812357_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -276,7 +293,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2478469443764289031_20260201",
+        "independence_key": "OFFICIAL_Fed_-1075921168407359978_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -291,7 +308,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7637877072103495335_20260201",
+        "independence_key": "OFFICIAL_Fed_-5436101423655567460_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -306,7 +323,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_659300400917648341_20260201",
+        "independence_key": "OFFICIAL_Fed_-5556426081514686672_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -321,7 +338,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7545886739809496891_20260201",
+        "independence_key": "OFFICIAL_Fed_-2258847429455274761_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -336,7 +353,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7790934922123346065_20260201",
+        "independence_key": "OFFICIAL_Fed_-3569779797752556445_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -351,7 +368,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_969071205880538287_20260201",
+        "independence_key": "OFFICIAL_Fed_8105416182043493779_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -366,7 +383,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5396855683123705023_20260201",
+        "independence_key": "OFFICIAL_Fed_4509695288501835299_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -381,7 +398,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_6611442085488124822_20260201",
+        "independence_key": "OFFICIAL_Fed_-7435962937635545157_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -396,7 +413,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_7703155471380649308_20260201",
+        "independence_key": "OFFICIAL_Fed_4738502202512458448_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -411,7 +428,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-927810272444671250_20260201",
+        "independence_key": "OFFICIAL_Fed_-6146023557497503628_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -426,7 +443,7 @@
         "source_date": "Sun, 01 Feb 2026 03:26:29 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_4763662322512215637_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6799643610802762090_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보",
@@ -441,7 +458,7 @@
         "source_date": "Sun, 01 Feb 2026 11:20:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-8002548777737565935_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-3395398028274963638_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레",
@@ -450,16 +467,31 @@
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[White House] 트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+        "fact_text": "[White House] 트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
         "source": "News Filter (White House)",
-        "source_ref": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzMya3c5U1pxcmg4bHIzSzdsQVd1dlNDaERUZE1NY2ExVnFVYzlTYTBFaU9KN19nUmRPWGxIaUdoNWdlQU45c19BV09YR1E4a",
-        "source_date": "Sat, 31 Jan 2026 01:59:49 GMT",
+        "source_ref": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1RSXdyT0Y0S3NUMjZITnhHVF9BMEpxZ1NSUjA2UmZYbm5ySXBWaXc2Z1VzbkdPTEtpUnVsdjl2WHVlN09fbHFuYk9hcnZwaDct?",
+        "source_date": "Fri, 30 Jan 2026 23:56:47 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_-4218879210183774705_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_6223746935080001845_2026-02-01",
         "details": {
           "entity": "White House",
-          "raw_title": "트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+          "raw_title": "트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+          "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+        }
+      },
+      {
+        "fact_type": "OFFICIAL_FACT",
+        "fact_text": "[한국은행] 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
+        "source": "News Filter (한국은행)",
+        "source_ref": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5MNnRPUUdMTExjXzR3WEdFRW9JQTZTM2JSbk8zWFBxaEEwZ2NGbV9uc0NnWUNDX1BaMnZpSnZMYjZIWmJseGFKbklOcHJxWkx1b",
+        "source_date": "Sat, 31 Jan 2026 07:36:00 GMT",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 50,
+        "independence_key": "OFFICIAL_NEWS_한국은행_6225936060184272911_2026-02-01",
+        "details": {
+          "entity": "한국은행",
+          "raw_title": "李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
@@ -471,7 +503,7 @@
         "source_date": "Sun, 01 Feb 2026 09:47:21 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_3602198998315473638_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_-8263816422126956838_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "[단독]에릭 트럼프 “모든 자산 토큰화 될 것···크립토, 전통 금융 대체 아닌 현대화 수단” - 매일경제",
@@ -618,6 +650,23 @@
     ],
     "all_evidence": [
       {
+        "fact_type": "CAPITAL_FLOW",
+        "fact_text": "[자금흐름포착] Currency INFLOW: 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz",
+        "source": "RSS Finance (Real-time)",
+        "source_ref": "Google_News_KR_Biz",
+        "source_date": "2026-02-01",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 40,
+        "independence_key": "FLOW_RSS_-5104493092126296871_2026-02-01",
+        "flow_metadata": {
+          "ticker": "RSS_SIGNAL",
+          "sector": "Currency",
+          "change_pct": 0.0,
+          "volume_ratio": 0.0,
+          "direction": "INFLOW"
+        }
+      },
+      {
         "fact_type": "MACRO_FACT",
         "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
         "source": "Market Data (Yahoo)",
@@ -700,7 +749,7 @@
         "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1542236106491102682_20260201",
+        "independence_key": "OFFICIAL_Fed_4489042614677198245_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
@@ -715,7 +764,7 @@
         "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-890245823624672472_20260201",
+        "independence_key": "OFFICIAL_Fed_8237288871071491034_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
@@ -730,7 +779,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_1230007116917781740_20260201",
+        "independence_key": "OFFICIAL_Fed_-2745967919762757394_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve issues FOMC statement",
@@ -745,7 +794,7 @@
         "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_3151541172805459308_20260201",
+        "independence_key": "OFFICIAL_Fed_-6202910433956609357_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
@@ -760,7 +809,7 @@
         "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5346828048705466969_20260201",
+        "independence_key": "OFFICIAL_Fed_4360965082728335163_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
@@ -775,7 +824,7 @@
         "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-968272266066812136_20260201",
+        "independence_key": "OFFICIAL_Fed_1780427151930436141_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
@@ -790,7 +839,7 @@
         "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-6555707120542175739_20260201",
+        "independence_key": "OFFICIAL_Fed_-5619440063653679887_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
@@ -805,7 +854,7 @@
         "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-5293515148053475733_20260201",
+        "independence_key": "OFFICIAL_Fed_1454178498163881385_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies issue 2025 Shared National Credit Program report",
@@ -820,7 +869,7 @@
         "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7472619761706205492_20260201",
+        "independence_key": "OFFICIAL_Fed_2330447544333956753_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
@@ -835,7 +884,7 @@
         "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7040745153852362372_20260201",
+        "independence_key": "OFFICIAL_Fed_-7959494140469812357_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
@@ -850,7 +899,7 @@
         "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_2478469443764289031_20260201",
+        "independence_key": "OFFICIAL_Fed_-1075921168407359978_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
@@ -865,7 +914,7 @@
         "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7637877072103495335_20260201",
+        "independence_key": "OFFICIAL_Fed_-5436101423655567460_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
@@ -880,7 +929,7 @@
         "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_659300400917648341_20260201",
+        "independence_key": "OFFICIAL_Fed_-5556426081514686672_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
@@ -895,7 +944,7 @@
         "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7545886739809496891_20260201",
+        "independence_key": "OFFICIAL_Fed_-2258847429455274761_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
@@ -910,7 +959,7 @@
         "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-7790934922123346065_20260201",
+        "independence_key": "OFFICIAL_Fed_-3569779797752556445_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
@@ -925,7 +974,7 @@
         "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_969071205880538287_20260201",
+        "independence_key": "OFFICIAL_Fed_8105416182043493779_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
@@ -940,7 +989,7 @@
         "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_5396855683123705023_20260201",
+        "independence_key": "OFFICIAL_Fed_4509695288501835299_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
@@ -955,7 +1004,7 @@
         "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_6611442085488124822_20260201",
+        "independence_key": "OFFICIAL_Fed_-7435962937635545157_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
@@ -970,7 +1019,7 @@
         "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_7703155471380649308_20260201",
+        "independence_key": "OFFICIAL_Fed_4738502202512458448_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
@@ -985,7 +1034,7 @@
         "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
         "evidence_grade": "HARD_FACT",
         "reliability_score": 90,
-        "independence_key": "OFFICIAL_Fed_-927810272444671250_20260201",
+        "independence_key": "OFFICIAL_Fed_-6146023557497503628_20260201",
         "details": {
           "entity": "Fed",
           "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
@@ -1000,7 +1049,7 @@
         "source_date": "Sun, 01 Feb 2026 03:26:29 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_4763662322512215637_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-6799643610802762090_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보",
@@ -1015,7 +1064,7 @@
         "source_date": "Sun, 01 Feb 2026 11:20:00 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_Fed (US)_-8002548777737565935_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_Fed (US)_-3395398028274963638_2026-02-01",
         "details": {
           "entity": "Fed (US)",
           "raw_title": "금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레",
@@ -1024,16 +1073,31 @@
       },
       {
         "fact_type": "OFFICIAL_FACT",
-        "fact_text": "[White House] 트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+        "fact_text": "[White House] 트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
         "source": "News Filter (White House)",
-        "source_ref": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzMya3c5U1pxcmg4bHIzSzdsQVd1dlNDaERUZE1NY2ExVnFVYzlTYTBFaU9KN19nUmRPWGxIaUdoNWdlQU45c19BV09YR1E4a",
-        "source_date": "Sat, 31 Jan 2026 01:59:49 GMT",
+        "source_ref": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1RSXdyT0Y0S3NUMjZITnhHVF9BMEpxZ1NSUjA2UmZYbm5ySXBWaXc2Z1VzbkdPTEtpUnVsdjl2WHVlN09fbHFuYk9hcnZwaDct?",
+        "source_date": "Fri, 30 Jan 2026 23:56:47 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_-4218879210183774705_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_6223746935080001845_2026-02-01",
         "details": {
           "entity": "White House",
-          "raw_title": "트럼프 “관세로 美경제 기적” 자화자찬... 첫 사례로 한국 콕 집었다 - 조선일보",
+          "raw_title": "트럼프, WSJ에 ‘자화자찬’ 기고…“내 말이 다 맞았다 관세 덕에 미국 경제 기적” - 문화일보",
+          "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+        }
+      },
+      {
+        "fact_type": "OFFICIAL_FACT",
+        "fact_text": "[한국은행] 李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
+        "source": "News Filter (한국은행)",
+        "source_ref": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5MNnRPUUdMTExjXzR3WEdFRW9JQTZTM2JSbk8zWFBxaEEwZ2NGbV9uc0NnWUNDX1BaMnZpSnZMYjZIWmJseGFKbklOcHJxWkx1b",
+        "source_date": "Sat, 31 Jan 2026 07:36:00 GMT",
+        "evidence_grade": "TEXT_HINT",
+        "reliability_score": 50,
+        "independence_key": "OFFICIAL_NEWS_한국은행_6225936060184272911_2026-02-01",
+        "details": {
+          "entity": "한국은행",
+          "raw_title": "李 정부 공직자들 美 주식으로 배불리는 동안 … 서학개미에 환율 책임 돌린 이창용의 바보 놀음 - 뉴데일리",
           "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
         }
       },
@@ -1045,7 +1109,7 @@
         "source_date": "Sun, 01 Feb 2026 09:47:21 GMT",
         "evidence_grade": "TEXT_HINT",
         "reliability_score": 50,
-        "independence_key": "OFFICIAL_NEWS_White House_3602198998315473638_2026-02-01",
+        "independence_key": "OFFICIAL_NEWS_White House_-8263816422126956838_2026-02-01",
         "details": {
           "entity": "White House",
           "raw_title": "[단독]에릭 트럼프 “모든 자산 토큰화 될 것···크립토, 전통 금융 대체 아닌 현대화 수단” - 매일경제",
