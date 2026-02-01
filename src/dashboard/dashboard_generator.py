@@ -2653,6 +2653,20 @@ def generate_dashboard(base_dir: Path):
         c_title = cand.get('full_text', '제목 없음')
         c_whynow = cand.get('why_now', '-')
         c_idx = cand.get('index', 0)
+        c_type = cand.get('content_type', 'FACT')
+        c_disclaimer = cand.get('disclaimer', '-')
+        
+        # Content Type Badge
+        type_badge = ""
+        type_border = border_color # fallback
+        if c_type == "STRUCTURE":
+            type_badge = '<span style="background:#8b5cf6; color:white; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:800; margin-left:5px;">🧩 STRUCTURE</span>'
+        elif c_type == "PREVIEW":
+            type_badge = '<span style="background:#06b6d4; color:white; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:800; margin-left:5px;">📅 PREVIEW</span>'
+        elif c_type == "SCENARIO":
+            type_badge = '<span style="background:#f59e0b; color:white; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:800; margin-left:5px;">⚖️ SCENARIO</span>'
+        else:
+            type_badge = '<span style="background:#10b981; color:white; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:800; margin-left:5px;">📄 FACT</span>'
         
         # Badge Style
         if c_status == "TRUST_LOCKED":
@@ -2684,13 +2698,16 @@ def generate_dashboard(base_dir: Path):
                   <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:10px;">
                       <div style="display:flex; align-items:center; gap:10px;">
                           {badge}
+                          {type_badge}
                           <span style="font-size:11px; color:#6b7280; font-weight:600;">Rank #{c_idx+1}</span>
                       </div>
                   </div>
                   <h3 style="font-size:20px; font-weight:800; color:#1f2937; margin:0 0 10px 0; line-height:1.4;">{c_title}</h3>
-                  <div style="font-size:14px; color:#4b5563; margin-bottom:15px;">
+                   <div style="font-size:14px; color:#4b5563; margin-bottom:15px;">
                       <span style="font-weight:700; color:{border_color};">Why Now:</span> {c_whynow}
                   </div>
+                  
+                  {f'<div style="background:#fff7ed; border-left:4px solid #f97316; padding:10px 14px; margin-bottom:15px; font-size:12px; color:#9a3412; font-weight:600;">⚠️ {c_disclaimer}</div>' if c_type != "FACT" else ""}
                   
                   <button onclick="toggleDetails('{script_block_id}')" style="background:{border_color}; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:6px;">
                       <span>📄 스크립트 보기 & 복사</span>

@@ -1,16 +1,12 @@
 [
   {
-    "fact_text": "미국 연방정부, 팔란티어(PLTR)와 5억 달러 규모 탄약 공급망 최적화 계약 체결",
-    "source": "SEC-8K",
+    "fact_text": "미국 상무부, 반도체 공급망 구조적 재편 계획 발표",
+    "source": "gov.us",
     "source_date": "2026-02-01",
-    "evidence_grade": "HARD_FACT",
+    "evidence_grade": "MEDIUM",
     "details": {
-      "ticker": "PLTR",
-      "actor_type": "연방정부",
-      "actor_name_ko": "미국 연방정부",
-      "actor_tag": "수혜",
-      "actor_confidence": 95,
-      "change_pct": 0.8
+      "entity": "상무부",
+      "raw_title": "Supply Chain Restructuring"
     }
   }
 ]

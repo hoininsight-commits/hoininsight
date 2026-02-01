@@ -29,6 +29,7 @@ from src.issuesignal.decision_tree import DecisionTree
 from src.issuesignal.opening_one_liner import synthesize_opening_one_liner
 from src.issuesignal.strategic_watchlist import StrategicWatchlistEngine
 from src.issuesignal.scenario_interpreter import ScenarioInterpreter
+from src.issuesignal.content_permission import ContentPermissionLayer
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -204,42 +205,69 @@ def main():
             })
             cand['details']['bridge_info'] = bridge_info
             
-            # Generate Script if Eligible (IS-67 Quality Floor)
-            script_data = None
-            
             # Floor Check: HARD_FACT >= 1, WHY_NOW exists
             # We count official_facts and corporate_facts as hard facts
             has_hard_fact = len(corporate_facts) > 0 or len(official_facts) > 0
             has_why_now = bool(cand.get('why_now'))
             
+            # IS-80: Content Permission Layer
+            content_type, permission_granted, disclaimer = ContentPermissionLayer.classify_and_authorize(cand, all_context + corporate_facts)
+            cand['content_type'] = content_type
+            cand['permission_granted'] = permission_granted
+            cand['disclaimer'] = disclaimer
+
+            # Apply Safety Rules (Masking tickers for non-FACT)
+            cand['details'] = ContentPermissionLayer.apply_safety_rules(content_type, cand['details'])
+            
             # IS-72: Fill decision results for tree
             dt_results["HF"] = has_hard_fact
             dt_results["WN"] = has_why_now
             dt_results["AM"] = (actor_type != '없음')
+
+            # Floor Check (Modified for IS-80)
+            # FACT requires HARD_FACT and WHY_NOW for strict quality.
+            # PREVIEW, STRUCTURE, SCENARIO are allowed to bypass strict floor if permission_granted.
+            is_strict_floor_met = has_hard_fact and has_why_now
+            can_proceed_to_script = False
+
+            if content_type == "FACT":
+                can_proceed_to_script = is_strict_floor_met
+            else:
+                can_proceed_to_script = permission_granted # IS-80 Rule
+
+            # Update Status based on permission
+            if status == "HOLD" and permission_granted and content_type != "FACT":
+                status = "EDITORIAL_CANDIDATE"
+
             dt_results["QF"] = False # Initial
 
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"]:
-                if has_hard_fact and has_why_now:
+                if can_proceed_to_script:
                     try:
+                        # Append disclaimer to script context
                         script_data = ScriptLockEngine.generate(
                             cand, 
-                            cand.get('why_now', '시점 정보 부족'), 
+                            cand.get('why_now', '시장 해석 대본 생성'), 
                             rotation_verdict.get('target_sector', '관련 섹터'),
                             all_context + corporate_facts, # Evidence Pool
                             bridge_info=cand['details'].get('bridge_info')
                         )
+                        if script_data:
+                            # Add disclaimer to script
+                            script_data["long_form"] += f"\n\n---\n{disclaimer}"
+                            
                         cand['generated_script'] = script_data
                         dt_results["QF"] = True
                     except Exception as e:
                         print(f"[Warn] Script Gen Failed for {idx}: {e}")
                 else:
-                    status = "HOLD" # Downgrade if floor not met
-                    print(f"[Floor] Candidate {idx} rejected: hard_fact={has_hard_fact}, why_now={has_why_now}")
+                    status = "HOLD" # Downgrade if floor not met and not permitted
+                    print(f"[Floor] Candidate {idx} rejected: type={content_type}, floor_met={is_strict_floor_met}, permitted={permission_granted}")
             
             if status in ["TRUST_LOCKED", "EDITORIAL_CANDIDATE"] and not script_data:
-                status = "HOLD" # Catch-all for failed script generation
+                status = "HOLD" 
                 dt_results["QF"] = False
-                print(f"[Floor] Candidate {idx} rejected: Script generation failed or blocked by validation.")
+                print(f"[Floor] Candidate {idx} rejected: Script generation failed or blocked.")
             
             # IS-72: Finalize Tree Data
             cand['decision_tree_data'] = DecisionTree.create_path(dt_results)
@@ -257,7 +285,10 @@ def main():
                     "status": status,
                     "why_now": cand.get('why_now', '-'),
                     "script": script_data,
-                    "score": score
+                    "score": score,
+                    "content_type": content_type,
+                    "permission_granted": permission_granted,
+                    "disclaimer": disclaimer
                 })
             else:
                 # Add to a bottom 'Reference' pool for reference (HOLD/SILENT)
@@ -449,8 +480,11 @@ def main():
                         "text_card": text_card
                      },
                      "strategic_watchlist": watchlist_data,
-                     "scenario_interpretation": scenario_data
-                }
+                     "scenario_interpretation": scenario_data,
+                     "content_type": selected_candidate.get("content_type", "FACT"),
+                     "permission_granted": selected_candidate.get("permission_granted", False),
+                     "disclaimer": selected_candidate.get("disclaimer", "-")
+                 }
             )
             
         # Save Canonical [IS-63] (Moved out of else to handle Silence)

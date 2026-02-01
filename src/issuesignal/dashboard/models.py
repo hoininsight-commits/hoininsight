@@ -37,6 +37,10 @@ class DecisionCard:
     observed_metrics: List[str] = field(default_factory=list)
     leader_stocks: List[str] = field(default_factory=list)
     risk_factors: List[str] = field(default_factory=list)
+    # IS-80 Additions
+    content_type: str = "FACT" # FACT, PREVIEW, STRUCTURE, SCENARIO
+    permission_granted: bool = False
+    disclaimer: str = "-"
     card_version: str = "v1"
 
 @dataclass
