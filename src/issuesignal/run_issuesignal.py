@@ -4,6 +4,7 @@ from datetime import datetime, timezone, timedelta
 import dataclasses
 import json
 import logging
+import os
 
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent.parent))
@@ -30,6 +31,7 @@ from src.issuesignal.opening_one_liner import synthesize_opening_one_liner
 from src.issuesignal.strategic_watchlist import StrategicWatchlistEngine
 from src.issuesignal.scenario_interpreter import ScenarioInterpreter
 from src.issuesignal.content_permission import ContentPermissionLayer
+from src.issuesignal.editorial_rhythm import EditorialRhythmLayer
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -97,10 +99,17 @@ def main():
         # 1. Harvest Context (Used for filtering and WhyNow)
         ymd = now_kst.strftime("%Y-%m-%d")
         
-        flow_evidence = collect_capital_flows(base_dir, ymd)
-        macro_facts = collect_macro_facts(base_dir, ymd)
-        official_facts = collect_official_facts(base_dir, ymd)
-        corporate_facts = collect_corporate_facts(base_dir, ymd)
+        if os.environ.get("HOIN_SKIP_CONNECTORS") == "true":
+            print("[VERIFY] Skipping all connectors as requested.")
+            flow_evidence = []
+            macro_facts = []
+            official_facts = []
+            corporate_facts = []
+        else:
+            flow_evidence = collect_capital_flows(base_dir, ymd)
+            macro_facts = collect_macro_facts(base_dir, ymd)
+            official_facts = collect_official_facts(base_dir, ymd)
+            corporate_facts = collect_corporate_facts(base_dir, ymd)
         
         all_context = flow_evidence + macro_facts + official_facts
         
@@ -301,8 +310,28 @@ def main():
         # [IS-75] Scenario Interpretation Layer
         scenario_data = ScenarioInterpreter.interpret(watchlist_data, official_facts + corporate_facts)
 
-        # Select Primary for DecisionCard (Rank 0)
-        selected_candidate = processed_candidates[0] if processed_candidates else None
+        # [IS-81] Editorial Rhythm Layer: Enforce minimum 3 candidates
+        editorial_candidates_data = EditorialRhythmLayer.enforce_minimum_output(editorial_candidates_data, rotation_verdict)
+        
+        # If we supplemented and have no processed candidates, use the supplemented ones
+        if not processed_candidates and editorial_candidates_data:
+            mock_best = editorial_candidates_data[0]
+            # Convert to internal format loosely for main card build
+            selected_candidate = {
+                "fact_text": mock_best.get("title", ""),
+                "source": "RhythmEngine",
+                "final_status": mock_best.get("status", "EDITORIAL_CANDIDATE"),
+                "final_score": mock_best.get("score", 60),
+                "generated_script": mock_best.get("script"),
+                "details": mock_best.get("details", {}),
+                "content_type": mock_best.get("content_type", "STRUCTURE"),
+                "permission_granted": True,
+                "disclaimer": mock_best.get("disclaimer", "-"),
+                "supplement_reason": mock_best.get("supplement_reason", "")
+            }
+        else:
+            # Select Primary for DecisionCard (Rank 0)
+            selected_candidate = processed_candidates[0] if processed_candidates else None
         
         # 4. Editorial Rhythm & Light Layer (IS-70)
         rhythm_path = base_dir / "data" / "ops" / "editorial_rhythm.json"
@@ -395,11 +424,12 @@ def main():
             shorts_15s = "-"
             shorts_30s = "-"
             shorts_45s = "-"
+            shorts_ready = ["-", "-", "-"] # IS-81: Initialize to prevent UnboundLocalError
 
-            if selected_candidate.get('generated_script'):
-                s_data = selected_candidate['generated_script']
-                long_form = s_data['long_form']
-                one_liner = s_data['one_liner']
+            s_data = selected_candidate.get('generated_script') or selected_candidate.get('script')
+            if s_data:
+                long_form = s_data.get('long_form', fact_text)
+                one_liner = s_data.get('one_liner', fact_text[:30])
                 text_card = s_data.get('text_card', '-')
                 shorts_15s = s_data.get('shorts_15s', '-')
                 shorts_30s = s_data.get('shorts_30s', '-')
@@ -483,7 +513,8 @@ def main():
                      "scenario_interpretation": scenario_data,
                      "content_type": selected_candidate.get("content_type", "FACT"),
                      "permission_granted": selected_candidate.get("permission_granted", False),
-                     "disclaimer": selected_candidate.get("disclaimer", "-")
+                     "disclaimer": selected_candidate.get("disclaimer", "-"),
+                     "supplement_reason": selected_candidate.get("supplement_reason") or selected_candidate.get("details", {}).get("supplement_reason", "")
                  }
             )
             

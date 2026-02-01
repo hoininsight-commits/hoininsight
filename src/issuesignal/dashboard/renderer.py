@@ -176,9 +176,11 @@ class DashboardRenderer:
     <!-- Tab 1: IssueSignal -->
     <div id="issuesignal" class="container active">
         
-        <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:40px;">
+        <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:20px;">
             {self._render_counters(summary.counts)}
         </div>
+
+        {self._render_content_flow(summary.top_cards)}
 
         <div class="section-title">✨ 오늘의 최종 가공 인텔리전스</div>
         {self._render_top_cards(summary.top_cards)}
@@ -317,6 +319,38 @@ class DashboardRenderer:
             """)
         return "\n".join(items)
 
+    def _render_content_flow(self, cards: List[DecisionCard]) -> str:
+        if not cards: return ""
+        # Count types
+        type_counts = {}
+        for c in cards:
+            ctype = c.blocks.get('content_type', 'FACT')
+            type_counts[ctype] = type_counts.get(ctype, 0) + 1
+            
+        type_colors = {
+            "FACT": "#334155",
+            "STRUCTURE": "#2563eb",
+            "PREVIEW": "#7c3aed",
+            "SCENARIO": "#059669"
+        }
+        
+        badges = []
+        for t in ["FACT", "STRUCTURE", "PREVIEW", "SCENARIO"]:
+            count = type_counts.get(t, 0)
+            if count > 0:
+                badges.append(f'<span style="background:{type_colors.get(t, "#64748b")}; color:white; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:900; margin-right:8px;">{t} {count}</span>')
+        
+        if not badges: return ""
+        
+        return f"""
+        <div style="margin-bottom:40px; display:flex; align-items:center; gap:12px; padding:12px 20px; background:white; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+            <span style="font-size:12px; font-weight:800; color:#475569;">📊 오늘의 콘텐츠 필진 구성:</span>
+            <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                {''.join(badges)}
+            </div>
+        </div>
+        """
+
     def _render_top_cards(self, cards: List[DecisionCard]) -> str:
         # [IS-67-UX] Operator Decision Mode: Single Top Priority Card
         if not cards:
@@ -411,6 +445,8 @@ class DashboardRenderer:
                 <div style="font-size:12px; font-weight:800; color:var(--blue); margin-bottom:6px; text-transform:uppercase;">💡 지금 말해야 하는 이유 (WHY-NOW)</div>
                 <div style="font-size:18px; font-weight:700; color:#1e3a8a; line-height:1.5;">"{c.authority_sentence}"</div>
             </div>
+
+            {f'<div style="background:#f1f5f9; border:1px dashed #cbd5e1; padding:10px 15px; margin-bottom:25px; font-size:12px; color:#475569; font-weight:800; border-radius:8px;">🔄 {c.blocks.get("supplement_reason")}</div>' if c.blocks.get("supplement_reason") else ""}
 
             <!-- Ticker Path & Bottleneck (IS-69) -->
             <div style="margin-bottom:25px; background:#ffffff; border:1px solid #e2e8f0; padding:20px; border-radius:12px;">

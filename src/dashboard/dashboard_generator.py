@@ -2655,6 +2655,7 @@ def generate_dashboard(base_dir: Path):
         c_idx = cand.get('index', 0)
         c_type = cand.get('content_type', 'FACT')
         c_disclaimer = cand.get('disclaimer', '-')
+        c_supplement_reason = cand.get('supplement_reason', '')
         
         # Content Type Badge
         type_badge = ""
@@ -2709,6 +2710,8 @@ def generate_dashboard(base_dir: Path):
                   
                   {f'<div style="background:#fff7ed; border-left:4px solid #f97316; padding:10px 14px; margin-bottom:15px; font-size:12px; color:#9a3412; font-weight:600;">⚠️ {c_disclaimer}</div>' if c_type != "FACT" else ""}
                   
+                  {f'<div style="background:#f1f5f9; border:1px dashed #cbd5e1; padding:8px 12px; margin-bottom:15px; font-size:11px; color:#475569; font-weight:700; border-radius:6px;">🔄 {c_supplement_reason}</div>' if c_supplement_reason else ""}
+                  
                   <button onclick="toggleDetails('{script_block_id}')" style="background:{border_color}; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:13px; display:flex; align-items:center; gap:6px;">
                       <span>📄 스크립트 보기 & 복사</span>
                       <span>▼</span>
@@ -2735,6 +2738,26 @@ def generate_dashboard(base_dir: Path):
                     background:linear-gradient(to right, #f0fdf4, #ffffff);
                     border:1px solid #86efac; color:#065f46; font-weight:800; font-size:14px;">
             📌 오늘의 핵심 한 문장: "{opening_for_banner}"
+        </div>
+        """
+
+    # [IS-81] Content Flow Summary Badge Area
+    flow_types = [c.get('content_type', 'FACT') for c in editorial_candidates]
+    flow_badges_html = ""
+    type_colors = {"FACT": "#10b981", "STRUCTURE": "#8b5cf6", "PREVIEW": "#06b6d4", "SCENARIO": "#f59e0b"}
+    for t in ["FACT", "STRUCTURE", "PREVIEW", "SCENARIO"]:
+        count = flow_types.count(t)
+        if count > 0:
+            flow_badges_html += f'<span style="background:{type_colors.get(t, "#64748b")}; color:white; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:900; margin-right:8px;">{t} {count}</span>'
+    
+    content_flow_html = ""
+    if flow_badges_html:
+        content_flow_html = f"""
+        <div style="margin-bottom:20px; display:flex; align-items:center; gap:12px; padding:10px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0;">
+            <span style="font-size:12px; font-weight:800; color:#475569;">📊 오늘의 콘텐츠 흐름:</span>
+            <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                {flow_badges_html}
+            </div>
         </div>
         """
 
@@ -2790,6 +2813,7 @@ def generate_dashboard(base_dir: Path):
         </h2>
         
         {one_liner_html}
+        {content_flow_html if 'content_flow_html' in locals() else ""}
         
         {candidates_html if candidates_html else '<div style="padding:20px; background:#f9fafb; border-radius:8px; text-align:center; color:#6b7280;">콘텐츠 후보 없음 (데이터 부족)</div>'}
 
