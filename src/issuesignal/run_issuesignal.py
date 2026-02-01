@@ -27,6 +27,8 @@ from src.issuesignal.editorial_light_engine import EditorialLightEngine
 from src.issuesignal.structural_bridge import StructuralBridge
 from src.issuesignal.decision_tree import DecisionTree
 from src.issuesignal.opening_one_liner import synthesize_opening_one_liner
+from src.issuesignal.strategic_watchlist import StrategicWatchlistEngine
+from src.issuesignal.scenario_interpreter import ScenarioInterpreter
 
 def run_dashboard_build(base_dir, decision_card_model=None, pack_data=None):
     # Final: Dashboard Build
@@ -262,6 +264,12 @@ def main():
                 # This meets requirement 4 (Silence/Hold candidates in 'Reference' area)
                 pass
 
+        # [IS-74] Strategic Watchlist Evaluation
+        watchlist_data = StrategicWatchlistEngine.evaluate(top_candidates, official_facts, corporate_facts)
+        
+        # [IS-75] Scenario Interpretation Layer
+        scenario_data = ScenarioInterpreter.interpret(watchlist_data, official_facts + corporate_facts)
+
         # Select Primary for DecisionCard (Rank 0)
         selected_candidate = processed_candidates[0] if processed_candidates else None
         
@@ -439,7 +447,9 @@ def main():
                         "shorts_45s": shorts_45s,
                         "one_liner": one_liner,
                         "text_card": text_card
-                     }
+                     },
+                     "strategic_watchlist": watchlist_data,
+                     "scenario_interpretation": scenario_data
                 }
             )
             

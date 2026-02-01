@@ -466,7 +466,11 @@ def generate_dashboard(base_dir: Path):
                 is_current_valid = current_v and str(current_v).lower() != 'none'
                 
                 if is_v_valid:
-                    final_card[k] = v
+                    if k == 'blocks' and isinstance(v, dict) and isinstance(current_v, dict):
+                        # Recursive merge for blocks to preserve both old and new data
+                        current_v.update(v)
+                    else:
+                        final_card[k] = v
                 elif not is_current_valid:
                     # If both are invalid, take the latest one anyway
                     final_card[k] = v
@@ -2717,6 +2721,50 @@ def generate_dashboard(base_dir: Path):
         </div>
         """
 
+    # [IS-74] Strategic Watchlist Rendering
+    watchlist_data = final_card.get('blocks', {}).get('strategic_watchlist')
+    watchlist_html = ""
+    if watchlist_data:
+        entities_html = "".join([f'<span style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; margin-right:5px; font-weight:bold;">{e}</span>' for e in watchlist_data.get('entities', [])])
+        watchlist_html = f"""
+        <div style="margin-bottom:25px; padding:20px; border-radius:12px; background:#f0f9ff; border:1px solid #bae6fd;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span style="font-size:14px; font-weight:900; color:#0369a1; background:#e0f2fe; padding:4px 10px; border-radius:6px;">📌 전략적 감시 대상</span>
+                <span style="font-size:11px; color:#64748b; font-weight:bold;">{watchlist_data.get('disclaimer')}</span>
+            </div>
+            <div style="margin-bottom:10px;">
+                <span style="font-size:12px; color:#64748b;">주체: </span>
+                <span style="font-size:15px; font-weight:800; color:#1e293b;">{watchlist_data.get('actor')}</span>
+            </div>
+            <div style="margin-bottom:12px;">
+                {entities_html}
+            </div>
+            <div style="font-size:14px; line-height:1.6; color:#334155; background:#ffffff; padding:15px; border-radius:8px; border:1px dashed #bae6fd;">
+                <b>감시 이유:</b> {watchlist_data.get('reason')}
+            </div>
+        </div>
+        """
+
+    # [IS-75] Scenario Interpretation Rendering
+    scenario_data = final_card.get('blocks', {}).get('scenario_interpretation')
+    scenario_html = ""
+    if scenario_data:
+        scenarios_rendered = "".join([f'<li style="margin-bottom:8px;">{s}</li>' for s in scenario_data.get('scenarios', [])])
+        scenario_html = f"""
+        <div style="margin-bottom:30px; padding:20px; border-radius:12px; background:#f8fafc; border:1px solid #e2e8f0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span style="font-size:14px; font-weight:900; color:#475569; background:#f1f5f9; padding:4px 10px; border-radius:6px;">📘 구조적 시나리오 해설</span>
+                <span style="font-size:11px; color:#94a3b8; font-weight:bold;">{scenario_data.get('disclaimer')}</span>
+            </div>
+            <ul style="margin:0; padding-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+                {scenarios_rendered}
+            </ul>
+            <div style="margin-top:12px; font-size:11px; color:#94a3b8; text-align:right;">
+                Based on: {", ".join(scenario_data.get('based_on', []))}
+            </div>
+        </div>
+        """
+
     top_block_html = f"""
     {copy_script_js}
     <div style="margin-bottom:40px;">
@@ -2727,6 +2775,11 @@ def generate_dashboard(base_dir: Path):
         {one_liner_html}
         
         {candidates_html if candidates_html else '<div style="padding:20px; background:#f9fafb; border-radius:8px; text-align:center; color:#6b7280;">콘텐츠 후보 없음 (데이터 부족)</div>'}
+
+        <div style="margin-top:30px;">
+            {watchlist_html}
+            {scenario_html}
+        </div>
         
         <!-- Legacy / Fallback Info -->
         <div style="margin-top:20px; text-align:right;">
