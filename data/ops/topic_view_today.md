@@ -17,6 +17,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -27,7 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 16만전자 찍은 날 “으악”…주가 뛰자 대출 알아보는 삼전 임원들, 무슨 일이 - 매일경제 (ID: unknown)
+### 인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,12 +42,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 (ID: unknown)
+### “보너스 받아서 뭐 했냐고? 주식 샀지”…증시 더 뜨겁게 만든 ‘머니 무브’ - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,11 +67,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -82,12 +77,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 (ID: unknown)
+### 금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문 (ID: unknown)
+### 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +105,16 @@ No SHADOW candidates today.
 ### 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "삼전·하닉 주식 없어 서러운데"…뜻밖의 가격 폭등에 '비명' [테크로그] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 트럼프 ‘예스맨’ 워시, 연준의장 되자…치솟던 銀 30% 폭락 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “최대 10cm 폭설 예고에”…코레일, 내일 출퇴근 시간 수도권전철 ‘확’ 늘려 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 안전지대 日, 토목현장 90% ICT 접목…AI 기술로 예방에 ‘방점’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
