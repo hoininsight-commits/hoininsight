@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보 (Google_News_KR_Economy)
-  - [NEWS] 증권사 발행 회사채 인기 … 떴다 하면 1조 넘게 몰려 - 매일경제 (Google_News_KR_Economy)
-  - [NEWS] 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 (Google_News_KR_Economy)
+  - [NEWS] 2월 회사채 시장 기지개…연초효과 재개 기대 속 '13곳' 출격 - 마켓인 (Google_News_KR_Economy)
+  - [NEWS] 트럼프, 새 연준 의장에 “금리 인하 안 하면 고소” 뼈 있는 농담 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,26 +187,28 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보 | Structural implication: '차기 연준 의장 지명된 워시, 기준금리 낮추나...해외 IB도 ‘갑론을박’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 증권사 발행 회사채 인기 … 떴다 하면 1조 넘게 몰려 - 매일경제 | Structural implication: '증권사 발행 회사채 인기 … 떴다 하면 1조 넘게 몰려 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 | Structural implication: '60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 | Structural implication: '스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 2월 회사채 시장 기지개…연초효과 재개 기대 속 '13곳' 출격 - 마켓인 | Structural implication: '2월 회사채 시장 기지개…연초효과 재개 기대 속 '13곳' 출격 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프, 새 연준 의장에 “금리 인하 안 하면 고소” 뼈 있는 농담 - 조선일보 | Structural implication: '트럼프, 새 연준 의장에 “금리 인하 안 하면 고소” 뼈 있는 농담 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스 | Structural implication: '1월 수출 34% 증가…반도체 수출 두 달 연속 200억 달러 돌파 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보 | Structural implication: '60조 캐나다 잠수함 입찰 앞둔 한화, 현지에 대대적 거리 광고 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제 | Structural implication: '개미들 몰리더니 '103조' 기록 터졌다…"코스피 고평가 아냐" [주간전망] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz | Structural implication: '작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 16만전자 찍은 날 “으악”…주가 뛰자 대출 알아보는 삼전 임원들, 무슨 일이 - 매일경제 | Structural implication: '16만전자 찍은 날 “으악”…주가 뛰자 대출 알아보는 삼전 임원들, 무슨 일이 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스 | Structural implication: '스페이스X, '우주 AI 데이터센터' 위해 위성 100만개 발사 추진 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| “나도 최고가 경신” 불장 코스닥에 눈 돌린 외인 - 매일일보 | Structural implication: '“나도 최고가 경신” 불장 코스닥에 눈 돌린 외인 - 매일일보' suggests a shift in NEWS dynamics. | LOW |
 | 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 | Structural implication: '탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레 | Structural implication: '금·은 시총, 하루새 7조4000억불 증발…‘매파’ 워시 연준 의장 지명 여파 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문 | Structural implication: '인간은 구경만 해···AI끼리 글 쓰고 댓글 다는 커뮤니티 ‘몰트북’ 등장 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| '케빈 워시 지정 영향'에 비트코인 7만 달러대로 하락…금·은값도 급락 - TV조선뉴스 | Structural implication: ''케빈 워시 지정 영향'에 비트코인 7만 달러대로 하락…금·은값도 급락 - TV조선뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 스타벅스 증정 가습기 2일부터 리콜…“전지로 인한 화재 우려” - 조선비즈 - Chosunbiz | Structural implication: '스타벅스 증정 가습기 2일부터 리콜…“전지로 인한 화재 우려” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 워시, 유동성 축소하나…달러 뛰고 비트코인 급락 - 한국경제 | Structural implication: '워시, 유동성 축소하나…달러 뛰고 비트코인 급락 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| AI 에이전트만 활동하는 '몰트북'에서는 무슨 일이 일어나고 있을까 - AI타임스 | Structural implication: 'AI 에이전트만 활동하는 '몰트북'에서는 무슨 일이 일어나고 있을까 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 | Structural implication: '쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문 | Structural implication: '금 -11%·은 -31%, 개미는 월요일 오전 9시가 두렵다···‘AI 과열론’에 워시 지명 겹쳐 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 삼성 반도체 '모태' SR5 역사속으로…조(兆)단위 투자해 '제2의 DSR' 짓는다 - 한국경제 | Structural implication: '삼성 반도체 '모태' SR5 역사속으로…조(兆)단위 투자해 '제2의 DSR' 짓는다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스 | Structural implication: '리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz | Structural implication: '작년 ‘사상 최대 수출’ 기록했지만… 달러 무역대금 국내 유입은 5년래 최저 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 | Structural implication: '연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| ‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보 | Structural implication: '‘낸드의 봄’ 왔다...후순위 기업들, 공격적 증설로 삼성·SK 위협할까 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문 | Structural implication: '아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보 | Structural implication: '올해 1월, 기관 투자자 10조원 넘게 순매수해 사상 최고 기록 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아 | Structural implication: 'HBM 공급 프로세스 달라졌다…삼성·SK 모두 리스크 양산 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| [단독] '총파업 성토' 장이었던 의협 대표자대회…전공의 75% '적극대응' 필요 - MEDI:GATE NEWS | Structural implication: '[단독] '총파업 성토' 장이었던 의협 대표자대회…전공의 75% '적극대응' 필요 - MEDI:GATE NEWS' suggests a shift in NEWS dynamics. | LOW |
-| 지난해 서울 아파트 청약가점 역대 최고…강남 로또단지에 ‘우르르’ - 매일경제 | Structural implication: '지난해 서울 아파트 청약가점 역대 최고…강남 로또단지에 ‘우르르’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| “최대 10cm 수도권 등 대설특보, 위기경보 상향”…중대본 1단계 가동 | Structural implication: '“최대 10cm 수도권 등 대설특보, 위기경보 상향”…중대본 1단계 가동' suggests a shift in NEWS dynamics. | LOW |
+| “2월 첫 출근길 눈폭탄에 초비상”…서울 버스·전철 등 집중배차 시간 연장 | Structural implication: '“2월 첫 출근길 눈폭탄에 초비상”…서울 버스·전철 등 집중배차 시간 연장' suggests a shift in NEWS dynamics. | LOW |
 | “쉴 틈 없는 공장, 10조원 입금 예약됐어요”…AI발 호황 탄 HD현대일렉 | Structural implication: '“쉴 틈 없는 공장, 10조원 입금 예약됐어요”…AI발 호황 탄 HD현대일렉' suggests a shift in NEWS dynamics. | LOW |
 | “또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환 | Structural implication: '“또 다시 삼성삼성 하는 이유가”…23만 직장인 꼽은 ‘일하고 싶은 1위’ 탈환' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 ‘예스맨’ 워시, 연준의장 되자…치솟던 銀 30% 폭락 | Structural implication: '트럼프 ‘예스맨’ 워시, 연준의장 되자…치솟던 銀 30% 폭락' suggests a shift in NEWS dynamics. | LOW |
@@ -225,8 +227,6 @@
 | “드디어 우리 차례인가”…소외됐던 유통주 꿈틀거린다 | Structural implication: '“드디어 우리 차례인가”…소외됐던 유통주 꿈틀거린다' suggests a shift in NEWS dynamics. | LOW |
 | 수어통역사 채용 미끼로 ‘성폭행 의혹’ 협회 간부…경찰, 농아인협회 압수수색 | Structural implication: '수어통역사 채용 미끼로 ‘성폭행 의혹’ 협회 간부…경찰, 농아인협회 압수수색' suggests a shift in NEWS dynamics. | LOW |
 | K반도체 잘 나가는데…‘검은 반도체’ 2조 수출 기대감 | Structural implication: 'K반도체 잘 나가는데…‘검은 반도체’ 2조 수출 기대감' suggests a shift in NEWS dynamics. | LOW |
-| ‘AI 안전요원’이 위험구역 경고…日 터널 공사 인명사고 막아 | Structural implication: '‘AI 안전요원’이 위험구역 경고…日 터널 공사 인명사고 막아' suggests a shift in NEWS dynamics. | LOW |
-| “기회 있을 때 다주택 해소하길”...李 대통령, 다주택자 향한 경고 | Structural implication: '“기회 있을 때 다주택 해소하길”...李 대통령, 다주택자 향한 경고' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
