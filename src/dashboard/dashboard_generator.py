@@ -1117,6 +1117,57 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
         shorts = content_v1.get("shorts", "")
         script_label = "📝 Long-form Script (Operator Mode)"
     
+    
+    # [IS-87] Editor Pick (Daily Editorial Selector)
+    editorial_selection = issue_data.get("editorial_selection", {})
+    picks = editorial_selection.get("picks", [])
+    if picks:
+        html += """
+        <div style="background: #fff; border: 2px solid #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <div style="font-size: 12px; font-weight: 900; color: #1e293b; letter-spacing: 1px;">EDITOR PICK: 오늘의 최종 선택</div>
+                <div style="font-size: 11px; color: #64748b; font-weight: 500;">""" + editorial_selection.get('summary_line', '') + """</div>
+            </div>
+        """
+        
+        # Rank 1 (Expanded)
+        top1 = picks[0]
+        t1_type = top1.get("dominant_type", "TOPIC")
+        t1_bg = "#dc2626" if t1_type == "FACT" else "#2563eb"
+        
+        html += f"""
+            <div style="margin-bottom: 15px;">
+                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                    <span style="background: {t1_bg}; color: white; px; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px;">{t1_type}</span>
+                    <span style="font-size: 16px; font-weight: 800; color: #0f172a; line-height: 1.4;">{top1.get('theme', '')}</span>
+                </div>
+                <div style="background: #f8fafc; border-left: 3px solid {t1_bg}; padding: 10px; font-size: 13px; color: #334155; line-height: 1.6;">
+                    <span style="font-weight: 700; color: #475569;">[선정 이유]</span> {top1.get('editor_rationale', '')}
+                </div>
+            </div>
+        """
+        
+        # Rank 2 (Compact)
+        if len(picks) > 1:
+            top2 = picks[1]
+            t2_type = top2.get("dominant_type", "TOPIC")
+            html += f"""
+            <div style="border-top: 1px dashed #cbd5e1; padding-top: 12px; margin-top: 12px;">
+                <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">2순위 후보</div>
+                <div style="display: flex; align-items: center;">
+                    <span style="background: #94a3b8; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; margin-right: 6px;">{t2_type}</span>
+                    <span style="font-size: 13px; color: #475569; font-weight: 500;">{top2.get('theme', '')}</span>
+                </div>
+            </div>
+            """
+            
+        html += """
+            <div style="margin-top: 15px; font-size: 10px; color: #94a3b8; text-align: center;">
+                * 본 콘텐츠는 확정된 투자 판단이 아닌 구조적 관찰 및 시나리오 해설입니다.
+            </div>
+        </div>
+        """
+
     # 3. Main Opening Sentence
     html += f"""
         <div style="font-size: 1.4em; font-weight: 800; color: #1e3a8a; line-height: 1.5; margin-bottom: 15px; text-align: center;">

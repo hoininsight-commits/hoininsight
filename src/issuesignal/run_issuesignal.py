@@ -18,6 +18,7 @@ from src.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
 from src.issuesignal.narrative.narrative_framing_engine import NarrativeFramingEngine
 from src.issuesignal.narrative.urgency_amplifier import UrgencyAmplifierEngine
 from src.issuesignal.fusion.issue_fusion_engine import IssueFusionEngine
+from src.editorial.editorial_selector import DailyEditorialSelector
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -328,7 +329,31 @@ def main():
         
         # Inject into Main Issue JSON
         issue_json["narrative_candidates"] = narrative_candidates
-        # Re-save Main Issue Pack to include candidates
+
+        # [IS-87] Daily Editorial Selector (Editor Pick)
+        print("Step 5C: Running Daily Editorial Selector (IS-87)...")
+        selector = DailyEditorialSelector(base_dir)
+        editorial_selection = selector.select(narrative_candidates)
+        
+        # Save Editorial Selection
+        es_path = base_dir / "data" / "editorial" / f"editorial_selection_{ymd}.json"
+        es_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(es_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "date": ymd,
+                "picks": editorial_selection,
+                "summary_line": f"오늘의 최종 선택은 {len(editorial_selection)}건입니다."
+            }, f, indent=4, ensure_ascii=False)
+        print(f"Saved Editorial Selection to {es_path}")
+        
+        # Inject into Main Issue JSON
+        issue_json["editorial_selection"] = {
+            "date": ymd,
+            "picks": editorial_selection,
+            "summary_line": f"오늘의 최종 선택은 {len(editorial_selection)}건입니다."
+        }
+
+        # Re-save Main Issue Pack to include candidates & selection
         with open(issue_path, "w", encoding="utf-8") as jf:
             json.dump(issue_json, jf, indent=2, ensure_ascii=False)
 
