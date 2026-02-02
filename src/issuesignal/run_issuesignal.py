@@ -28,6 +28,9 @@ from src.issuesignal.engines.statement_document_engine import StatementDocumentE
 from src.collectors.statement_collector import StatementCollector
 from src.collectors.statements.official_statement_collector import OfficialStatementCollector
 from src.collectors.statements.policy_document_collector import PolicyDocumentCollector
+from src.issuesignal.roster.statement_roster_manager import StatementRosterManager
+from src.collectors.statement_primary_anchor_resolver import StatementPrimaryAnchorResolver
+from src.issuesignal.engines.statement_dedup_engine import StatementDedupEngine
 from src.issuesignal.engines.statement_momentum_engine import StatementMomentumEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
@@ -47,46 +50,67 @@ def main():
     adapter = HoinAdapter(base_dir)
     generator = ContentPack(base_dir)
     
-    # [IS-93R] Step 0: Real Narrative Supply (Statement / Document)
-    print("Step 0: Running Real Statement/Document Narrative Supply (IS-93R)...")
+    # [IS-94A] Step 0: Real Narrative Supply (Roster-based)
+    print("Step 0: Running Statement Roster-based Supply (IS-94A)...")
+    roster_manager = StatementRosterManager(base_dir / "src" / "issuesignal" / "config" / "statement_roster.json")
+    anchor_resolver = StatementPrimaryAnchorResolver()
+    dedup_engine = StatementDedupEngine()
+    
     official_collector = OfficialStatementCollector(base_dir)
     policy_collector = PolicyDocumentCollector(base_dir)
     stmt_engine = StatementDocumentEngine(base_dir)
     
-    # 1. Collect Real Data
-    real_statements = official_collector.collect()
-    real_documents = policy_collector.collect()
-    all_raw_data = real_statements + real_documents
+    # 1. Collect based on Roster
+    sources = roster_manager.get_sources_for_collection()
+    raw_statements = official_collector.collect_from_roster(sources)
+    raw_documents = policy_collector.collect_from_roster(sources)
+    all_raw_data = raw_statements + raw_documents
     
-    # 2. Persist Raw Data
+    # 2. Source Anchoring & Metadata Enrichment
+    enriched_data = []
+    for item in all_raw_data:
+        # Find allowed domains for this item's roster ID
+        roster_item = roster_manager.get_item_by_id(item.get("person_or_org_id") or "UNKNOWN") # Need to ensure collectors provide ID
+        # Finding by name if ID missing (fallback)
+        if not roster_item:
+            for r in roster_manager.get_active_roster():
+                if r["name"] in item.get("person_or_org", ""):
+                    roster_item = r
+                    break
+        
+        allowlist = roster_item.get("domain_allowlist", []) if roster_item else []
+        enriched_item = anchor_resolver.resolve(item, allowlist)
+        enriched_data.append(enriched_item)
+        
+    # 3. Deduplication
+    deduped_data = dedup_engine.dedup(enriched_data)
+    print(f"Collection complete: {len(all_raw_data)} raw -> {len(deduped_data)} deduped.")
+
+    # 4. Persist Results
     ymd_short = datetime.now().strftime("%Y%m%d")
     stmt_save_dir = base_dir / "data" / "statements"
     stmt_save_dir.mkdir(parents=True, exist_ok=True)
     
-    if real_statements:
-        (stmt_save_dir / f"statements_{ymd_short}.json").write_text(json.dumps(real_statements, indent=2, ensure_ascii=False), encoding="utf-8")
-    if real_documents:
-        (stmt_save_dir / f"documents_{ymd_short}.json").write_text(json.dumps(real_documents, indent=2, ensure_ascii=False), encoding="utf-8")
+    (stmt_save_dir / f"statement_items_{ymd_short}.json").write_text(json.dumps(all_raw_data, indent=2, ensure_ascii=False), encoding="utf-8")
+    (stmt_save_dir / f"statement_dedup_{ymd_short}.json").write_text(json.dumps(deduped_data, indent=2, ensure_ascii=False), encoding="utf-8")
     
-    # 3. Extract Candidates using Existing Engine
-    # Note: StatementDocumentEngine expects a list of dicts with 'content' and 'source_type'
-    # We map 'person_or_org' to 'entity' for the engine if needed, but our new collectors already provide enough.
-    # The existing engine expects: item.get("content"), item.get("source_type"), item.get("entity"), item.get("organization")
+    # 5. Extract Candidates
     mapped_data = []
-    for item in all_raw_data:
+    for item in deduped_data:
         mapped_data.append({
             "content": item["content"],
-            "source_type": item["source_type"],
+            "source_type": "STATEMENT", # Default for engine mapping
             "entity": item["person_or_org"],
             "organization": item.get("organization", "N/A"),
-            "source_url": item.get("source_url", ""),
-            "trust_level": item.get("trust_level", "HARD_FACT")
+            "source_url": item.get("primary_url", item.get("all_sources", [""])[0]),
+            "trust_level": item.get("trust_level", "MEDIUM"),
+            "merged_count": item.get("merged_count", 1),
+            "all_sources": item.get("all_sources", [])
         })
 
     statement_candidates = stmt_engine.extract_candidates(mapped_data)
     
     for sc in statement_candidates:
-        # Check if sc has all required fields for pool
         pool.add_issue({
             "source": sc["source"],
             "content": sc["content"],
@@ -98,7 +122,9 @@ def main():
                 "why_it_matters_hint": sc["why_it_matters_hint"],
                 "linked_assets": sc.get("linked_assets", []),
                 "source_url": sc.get("source_url", ""),
-                "trust_level": sc.get("trust_level", "HARD_FACT")
+                "trust_level": sc.get("trust_level", "MEDIUM"),
+                "merged_count": sc.get("merged_count", 1),
+                "all_sources": sc.get("all_sources", [])
             }
         })
     print(f"Added {len(statement_candidates)} real statement/document candidates to pool.")
@@ -106,7 +132,7 @@ def main():
     # [IS-94] Step 0.5: Statement Momentum Analysis
     print("Step 0.5: Running Statement Momentum Analysis (IS-94)...")
     momentum_engine = StatementMomentumEngine(base_dir)
-    momentum_results = momentum_engine.process(all_raw_data)
+    momentum_results = momentum_engine.process(deduped_data)
     print(f"Momentum Analysis complete. Detected {len([m for m in momentum_results if m['momentum_state'] != 'STABLE'])} active movements.")
 
     # 1. Simulate Issue Capture
@@ -408,7 +434,19 @@ def main():
         numeric_engine = NumericEvidenceEngine(base_dir)
         narrative_candidates = numeric_engine.attach_evidence(narrative_candidates)
 
-        # [IS-90] Relative Re-rating Layer
+        # [IS-94A] Metadata Injection
+        summary_dict = {
+            "date": ymd,
+            "momentum_results": [m for m in momentum_results if m["momentum_state"] != "STABLE"],
+            "roster_summary": {
+                "active_count": len(roster_manager.get_active_roster()),
+                "total_sources": len(sources)
+            },
+            "dedup_summary": {
+                "original_count": len(all_raw_data),
+                "merged_count": len(deduped_data)
+            }
+        }
         print("Integration: Running Relative Re-rating Engine (IS-90)...")
         relative_engine = RelativeReratingEngine(base_dir)
         narrative_candidates = relative_engine.attach_relative_card(narrative_candidates)

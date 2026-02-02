@@ -42,6 +42,10 @@ class StatementDocumentEngine:
                     "linked_assets": item.get("linked_assets", []),
                     "source_url": item.get("source_url", ""),
                     "trust_level": item.get("trust_level", "HARD_FACT"),
+                    "anchor_confidence": item.get("anchor_confidence", 0.0),
+                    "primary_url": item.get("primary_url"),
+                    "merged_count": item.get("merged_count", 1),
+                    "all_sources": item.get("all_sources", []),
                     "confidence": "CANDIDATE"
                 })
         

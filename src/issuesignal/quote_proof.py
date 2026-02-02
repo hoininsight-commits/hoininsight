@@ -64,7 +64,11 @@ class QuoteProofEngine:
                         source_kind=q_data.get("source_kind", "UNKNOWN"),
                         source_ref=q_data.get("source_ref", "-"),
                         source_date=q_data.get("source_date", "-"),
-                        fact_type=q_data.get("fact_type", "OFFICIAL_STATEMENT")
+                        fact_type=q_data.get("fact_type", "OFFICIAL_STATEMENT"),
+                        anchor_confidence=q_data.get("anchor_confidence", 0.0),
+                        primary_url=q_data.get("primary_url"),
+                        merged_count=q_data.get("merged_count", 1),
+                        all_sources=q_data.get("all_sources", [])
                     ))
         
         # Sort by quality: OFFICIAL_TRANSCRIPT > OFFICIAL_STATEMENT > etc.

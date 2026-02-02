@@ -88,6 +88,11 @@ class TriggerQuote:
     reason_code: str = "MISSING_QUOTE"
     # IS-32 Additions
     cluster_id: str = "UNKNOWN"
+    # IS-94A Additions
+    anchor_confidence: float = 0.0
+    primary_url: Optional[str] = None
+    merged_count: int = 1
+    all_sources: List[str] = field(default_factory=list)
 
 @dataclass
 class SourceCluster:

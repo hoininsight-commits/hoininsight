@@ -10,24 +10,6 @@ class PolicyDocumentCollector:
     [IS-93R] Real Policy Document Collector
     Collects official documents from FTC, DOJ, and government newsrooms.
     """
-    FEEDS = {
-        "FTC": {
-            "organization": "FTC",
-            "url": "https://www.ftc.gov/feeds/press-release.xml",
-            "trust_level": "HARD_FACT"
-        },
-        "DOJ": {
-            "organization": "Department of Justice",
-            "url": "https://www.justice.gov/news/press-releases/rss.xml",
-            "trust_level": "HARD_FACT"
-        },
-        "SEC": {
-            "organization": "SEC",
-            "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&output=atom",
-            "trust_level": "HARD_FACT"
-        }
-    }
-
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.logger = logging.getLogger("PolicyDocumentCollector")
@@ -43,14 +25,16 @@ class PolicyDocumentCollector:
             "Accept-Language": "en-US,en;q=0.9"
         }
 
-    def collect(self) -> List[Dict[str, Any]]:
+    def collect_from_roster(self, sources: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         all_results = []
-        for key, info in self.FEEDS.items():
+        for info in sources:
+            if info.get("kind") not in ["RSS", "WEB"]:
+                continue
+            key = info.get("id")
             try:
                 self.logger.info(f"Collecting documents for {key} from {info['url']}")
-                headers = self.sec_headers if key == "SEC" else self.default_headers
+                headers = self.sec_headers if "sec.gov" in info['url'] else self.default_headers
                 
-                # Soft skip DOJ if it might be captcha blocked in this environment
                 response = requests.get(info['url'], headers=headers, timeout=15)
                 if response.status_code != 200:
                     self.logger.warning(f"Failed to fetch {key}: HTTP {response.status_code}")

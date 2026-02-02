@@ -759,11 +759,40 @@ class DashboardRenderer:
         
         # 1. Trigger Quote
         if c.trigger_quote:
+            tq = c.trigger_quote
+            badges = []
+            if tq.anchor_confidence >= 0.8:
+                badges.append('<span style="background:#dcfce7; color:#166534; padding:2px 6px; border-radius:4px; font-size:10px; font-weight:800; margin-right:5px;">[ORIGINAL]</span>')
+            if tq.merged_count > 1:
+                badges.append(f'<span style="background:#fef9c3; color:#854d0e; padding:2px 6px; border-radius:4px; font-size:10px; font-weight:800; margin-right:5px;">[MERGED x{tq.merged_count}]</span>')
+            
+            source_list_html = ""
+            if tq.all_sources and len(tq.all_sources) > 1:
+                sources_html = "".join([f'<li style="font-size:10px;"><a href="{s}" target="_blank" style="color:var(--blue);">{s[:50]}...</a></li>' for s in tq.all_sources])
+                source_list_html = f"""
+                <div style="margin-top:8px;">
+                    <button onclick="toggleElement('sources-{c.topic_id}')" style="background:none; border:none; color:#64748b; font-size:10px; cursor:pointer; padding:0;">기타 출처 ({len(tq.all_sources)-1}개) 보기 ▾</button>
+                    <ul id="sources-{c.topic_id}" style="display:none; margin:5px 0; padding-left:15px; color:#64748b;">
+                        {sources_html}
+                    </ul>
+                </div>
+                """
+
+            primary_link_html = f'<a href="{tq.primary_url}" target="_blank" style="color:var(--blue); text-decoration:underline;">{tq.primary_url[:60]}...</a>' if tq.primary_url else "링크 미확보"
+
             items.append(f"""
-            <div style="margin-bottom:15px; border-bottom:1px solid #f1f5f9; padding-bottom:10px;">
+            <div style="margin-bottom:15px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
+                <div style="margin-bottom:8px;">{''.join(badges)}</div>
                 <b style="color:var(--blue);">🗣️ 직접 발언 근거 (인용구):</b><br>
-                <div style="margin-top:5px; font-weight:700; color:#1e293b;">"{c.trigger_quote.excerpt}"</div>
-                <div style="font-size:11px; color:var(--text-sub); margin-top:3px;">출처: {c.trigger_quote.source_kind} ({c.trigger_quote.source_date})</div>
+                <div style="margin-top:8px; font-weight:700; color:#1e293b; font-size:1.1em; line-height:1.5;">"{tq.excerpt}"</div>
+                <div style="font-size:11px; color:var(--text-sub); margin-top:10px; background:#f8fafc; padding:10px; border-radius:6px;">
+                    <b>원문 앵커:</b> {primary_link_html}<br>
+                    <b>출처 유형:</b> {tq.source_kind} | <b>날짜:</b> {tq.source_date}
+                    {source_list_html}
+                </div>
+                <div style="font-size:10px; color:#94a3b8; margin-top:8px; font-style:italic;">
+                    ※ 본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다.
+                </div>
             </div>
             """)
             

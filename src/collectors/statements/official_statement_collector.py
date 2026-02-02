@@ -10,28 +10,6 @@ class OfficialStatementCollector:
     [IS-93R] Real Statement Collector
     Collects official statements from CEO blogs and Corporate newsrooms via RSS/HTML.
     """
-    FEEDS = {
-        "Musk": {
-            "entity": "Elon Musk",
-            "organization": "Tesla",
-            # If Tesla IR is blocked, we use a high-trust technical news stream for Musk's specific actions/statements
-            "url": "https://www.theverge.com/rss/elon-musk/index.xml", 
-            "trust_level": "MEDIUM" # Aggregator is medium, official is hard_fact
-        },
-        "Huang": {
-            "entity": "Jensen Huang",
-            "organization": "NVIDIA",
-            "url": "https://nvidianews.nvidia.com/releases.xml",
-            "trust_level": "HARD_FACT"
-        },
-        "Altman": {
-            "entity": "Sam Altman",
-            "organization": "OpenAI",
-            "url": "https://openai.com/blog/rss.xml",
-            "trust_level": "HARD_FACT"
-        }
-    }
-
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.logger = logging.getLogger("OfficialStatementCollector")
@@ -41,9 +19,16 @@ class OfficialStatementCollector:
             "Referer": "https://www.google.com/"
         }
 
-    def collect(self) -> List[Dict[str, Any]]:
+    def collect_from_roster(self, sources: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Collects statements based on roster sources.
+        """
         all_results = []
-        for key, info in self.FEEDS.items():
+        for info in sources:
+            if info.get("kind") not in ["RSS", "WEB"]:
+                continue
+                
+            key = info.get("id")
             try:
                 self.logger.info(f"Collecting statements for {key} from {info['url']}")
                 response = requests.get(info['url'], headers=self.headers, timeout=15)

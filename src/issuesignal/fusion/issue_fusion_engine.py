@@ -124,7 +124,11 @@ class IssueFusionEngine:
                     "entity": sc["entity"],
                     "organization": sc["organization"],
                     "raw_text": sc["content"],
-                    "detected_signals": sc["detected_signals"]
+                    "detected_signals": sc["detected_signals"],
+                    "anchor_confidence": sc.get("anchor_confidence", 0.0),
+                    "primary_url": sc.get("primary_url"),
+                    "merged_count": sc.get("merged_count", 1),
+                    "all_sources": sc.get("all_sources", [])
                 })
         if len(candidates) < 3:
              candidates.append({
