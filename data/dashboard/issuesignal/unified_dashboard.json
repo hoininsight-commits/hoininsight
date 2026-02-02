@@ -2,7 +2,7 @@
   "date": "2026-02-02",
   "engine_status": "SUCCESS",
   "counts": {
-    "TRUST_LOCKED": 37,
+    "TRUST_LOCKED": 1,
     "TRIGGER": 0,
     "PRE_TRIGGER": 0,
     "HOLD": 0,
@@ -11,234 +11,121 @@
   },
   "top_cards": [
     {
-      "topic_id": "RAW-20260202014726",
-      "title": "Export Control Impact",
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
       "status": "TRUST_LOCKED",
-      "one_liner": "Export controls freeze chip supply chain.",
-      "trigger_type": "GOV_ACTION",
-      "actor": "GOV",
-      "must_item": "EUV_STEPPER",
-      "tickers": [
-        {
-          "ticker": "ASML",
-          "role": "OWNER",
-          "revenue_focus": 0.95
-        }
-      ],
-      "kill_switch": "Any structural change to export control decree.",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
       "reason": "-",
-      "signature": "a2ce7fb4ef8805f2",
-      "authority_sentence": "Export controls freeze chip supply chain.",
+      "signature": null,
+      "authority_sentence": "-",
       "forced_capex": "-",
       "bottleneck": "-",
-      "proof_packs": [
-        {
-          "ticker": "ASML",
-          "company_name": "ASML",
-          "bottleneck_role": "Verified Bottleneck Owner",
-          "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-          "hard_facts": [
-            {
-              "fact_type": "CONTRACT",
-              "fact_claim": "Signed delivery agreement with Intel.",
-              "source_kind": "OFFICIAL_PRESS",
-              "source_ref": "press_asml_001.pdf",
-              "source_date": "-",
-              "independence_key": "asml_intel_deal",
-              "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-            },
-            {
-              "fact_type": "CAPEX",
-              "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-              "source_kind": "EARNINGS_CALL",
-              "source_ref": "samsung_q4_call.json",
-              "source_date": "-",
-              "independence_key": "samsung_earnings",
-              "cluster_id": "GENERIC_samsung_q4"
-            }
-          ],
-          "proof_status": "PROOF_OK"
-        }
-      ],
-      "trigger_quote": {
-        "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-        "source_kind": "GOV",
-        "source_ref": "https://www.whitehouse.gov/briefing-room/",
-        "source_date": "2026-01-29",
-        "fact_type": "POLICY_EXCERPT",
-        "verification_status": "PASS",
-        "reason_code": "PASS",
-        "cluster_id": "GOV_OFFICIAL_https://ww"
-      },
-      "source_clusters": [
-        {
-          "cluster_id": "FILE_press_asml_001.pdf",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "press_asml_001.pdf",
-          "reason": "Filename match."
-        },
-        {
-          "cluster_id": "GENERIC_samsung_q4",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "Generic Source",
-          "reason": "-"
-        }
-      ]
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1"
     },
     {
-      "topic_id": "RAW-20260202013201",
-      "title": "Export Control Impact",
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
       "status": "TRUST_LOCKED",
-      "one_liner": "Export controls freeze chip supply chain.",
-      "trigger_type": "GOV_ACTION",
-      "actor": "GOV",
-      "must_item": "EUV_STEPPER",
-      "tickers": [
-        {
-          "ticker": "ASML",
-          "role": "OWNER",
-          "revenue_focus": 0.95
-        }
-      ],
-      "kill_switch": "Any structural change to export control decree.",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
       "reason": "-",
-      "signature": "a2ce7fb4ef8805f2",
-      "authority_sentence": "Export controls freeze chip supply chain.",
+      "signature": null,
+      "authority_sentence": "-",
       "forced_capex": "-",
       "bottleneck": "-",
-      "proof_packs": [
-        {
-          "ticker": "ASML",
-          "company_name": "ASML",
-          "bottleneck_role": "Verified Bottleneck Owner",
-          "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-          "hard_facts": [
-            {
-              "fact_type": "CONTRACT",
-              "fact_claim": "Signed delivery agreement with Intel.",
-              "source_kind": "OFFICIAL_PRESS",
-              "source_ref": "press_asml_001.pdf",
-              "source_date": "-",
-              "independence_key": "asml_intel_deal",
-              "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-            },
-            {
-              "fact_type": "CAPEX",
-              "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-              "source_kind": "EARNINGS_CALL",
-              "source_ref": "samsung_q4_call.json",
-              "source_date": "-",
-              "independence_key": "samsung_earnings",
-              "cluster_id": "GENERIC_samsung_q4"
-            }
-          ],
-          "proof_status": "PROOF_OK"
-        }
-      ],
-      "trigger_quote": {
-        "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-        "source_kind": "GOV",
-        "source_ref": "https://www.whitehouse.gov/briefing-room/",
-        "source_date": "2026-01-29",
-        "fact_type": "POLICY_EXCERPT",
-        "verification_status": "PASS",
-        "reason_code": "PASS",
-        "cluster_id": "GOV_OFFICIAL_https://ww"
-      },
-      "source_clusters": [
-        {
-          "cluster_id": "FILE_press_asml_001.pdf",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "press_asml_001.pdf",
-          "reason": "Filename match."
-        },
-        {
-          "cluster_id": "GENERIC_samsung_q4",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "Generic Source",
-          "reason": "-"
-        }
-      ]
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1"
     },
     {
-      "topic_id": "RAW-20260202013027",
-      "title": "Export Control Impact",
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
       "status": "TRUST_LOCKED",
-      "one_liner": "Export controls freeze chip supply chain.",
-      "trigger_type": "GOV_ACTION",
-      "actor": "GOV",
-      "must_item": "EUV_STEPPER",
-      "tickers": [
-        {
-          "ticker": "ASML",
-          "role": "OWNER",
-          "revenue_focus": 0.95
-        }
-      ],
-      "kill_switch": "Any structural change to export control decree.",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
       "reason": "-",
-      "signature": "a2ce7fb4ef8805f2",
-      "authority_sentence": "Export controls freeze chip supply chain.",
+      "signature": null,
+      "authority_sentence": "-",
       "forced_capex": "-",
       "bottleneck": "-",
-      "proof_packs": [
-        {
-          "ticker": "ASML",
-          "company_name": "ASML",
-          "bottleneck_role": "Verified Bottleneck Owner",
-          "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-          "hard_facts": [
-            {
-              "fact_type": "CONTRACT",
-              "fact_claim": "Signed delivery agreement with Intel.",
-              "source_kind": "OFFICIAL_PRESS",
-              "source_ref": "press_asml_001.pdf",
-              "source_date": "-",
-              "independence_key": "asml_intel_deal",
-              "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-            },
-            {
-              "fact_type": "CAPEX",
-              "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-              "source_kind": "EARNINGS_CALL",
-              "source_ref": "samsung_q4_call.json",
-              "source_date": "-",
-              "independence_key": "samsung_earnings",
-              "cluster_id": "GENERIC_samsung_q4"
-            }
-          ],
-          "proof_status": "PROOF_OK"
-        }
-      ],
-      "trigger_quote": {
-        "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-        "source_kind": "GOV",
-        "source_ref": "https://www.whitehouse.gov/briefing-room/",
-        "source_date": "2026-01-29",
-        "fact_type": "POLICY_EXCERPT",
-        "verification_status": "PASS",
-        "reason_code": "PASS",
-        "cluster_id": "GOV_OFFICIAL_https://ww"
-      },
-      "source_clusters": [
-        {
-          "cluster_id": "FILE_press_asml_001.pdf",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "press_asml_001.pdf",
-          "reason": "Filename match."
-        },
-        {
-          "cluster_id": "GENERIC_samsung_q4",
-          "cluster_type": "GENERAL_NEWS",
-          "origin_name": "Generic Source",
-          "reason": "-"
-        }
-      ]
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1"
     }
   ],
   "watchlist": [],
   "hold_queue": [],
-  "reject_logs": [],
+  "reject_logs": [
+    {
+      "timestamp": "2026-02-02 17:51:01",
+      "topic_id": "SUMMARY",
+      "reason_code": "UNKNOWN",
+      "fact_text": "전체 1건의 토픽이 이 사유로 보류/개선 중입니다."
+    }
+  ],
   "timeline": [
     {
       "date": "2026-01-20",
@@ -353,1076 +240,89 @@
       }
     }
   ],
-  "hoin_evidence": [],
+  "hoin_evidence": [
+    {
+      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+      "summary": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-02-02",
+      "source_file": "data/decision/2026/02/02/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+      "summary": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-02-02",
+      "source_file": "data/decision/2026/02/02/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)",
+      "summary": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_cb_bw] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-02-02",
+      "source_file": "data/decision/2026/02/02/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)",
+      "summary": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 장단기 금리차에서 Percentile 99.0% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-02-02",
+      "source_file": "data/decision/2026/02/02/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    },
+    {
+      "title": "[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, INFLATION 동반)",
+      "summary": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 전환사채(CB/BW) 발행가 오늘 하루 1건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_disposal] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "date": "2026-02-02",
+      "source_file": "data/decision/2026/02/02/final_decision_card.json",
+      "bullets": [],
+      "tickers": [],
+      "topic_key": null
+    }
+  ],
   "link_view": [
     {
       "issue_card": {
-        "topic_id": "RAW-20260202014726",
-        "title": "Export Control Impact",
+        "topic_id": "ID",
+        "title": "[긴급] None의 발언이 암시하는 구조적 균열",
         "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
+        "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "trigger_type": "-",
+        "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
         "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
+        "signature": null,
+        "authority_sentence": "-",
         "forced_capex": "-",
         "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260202013201",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260202013027",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260202012953",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260202012939",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260202012802",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129150807",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129150757",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 clusters.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "OFFICIAL_PRESS_OFFICIAL_press_asml"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "GENERIC_samsung_q4"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "GOV_OFFICIAL_https://ww"
-        },
-        "source_clusters": [
-          {
-            "cluster_id": "FILE_press_asml_001.pdf",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "press_asml_001.pdf",
-            "reason": "Filename match."
-          },
-          {
-            "cluster_id": "GENERIC_samsung_q4",
-            "cluster_type": "GENERAL_NEWS",
-            "origin_name": "Generic Source",
-            "reason": "-"
-          }
-        ]
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129145652",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "UNKNOWN"
-        },
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129145641",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "UNKNOWN"
-        },
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129145437",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": {
-          "excerpt": "Effective immediately, all exports of specialized semiconductor chips to listed entities are suspended pending further technical review.",
-          "source_kind": "GOV",
-          "source_ref": "https://www.whitehouse.gov/briefing-room/",
-          "source_date": "2026-01-29",
-          "fact_type": "POLICY_EXCERPT",
-          "verification_status": "PASS",
-          "reason_code": "PASS",
-          "cluster_id": "UNKNOWN"
-        },
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129144451",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
+        "proof_packs": [],
         "trigger_quote": null,
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129144423",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": null,
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129144347",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": null,
-        "source_clusters": []
-      },
-      "linked_evidence": [],
-      "link_status": "NO_HOIN_EVIDENCE",
-      "match_reason": null
-    },
-    {
-      "issue_card": {
-        "topic_id": "RAW-20260129144324",
-        "title": "Export Control Impact",
-        "status": "TRUST_LOCKED",
-        "one_liner": "Export controls freeze chip supply chain.",
-        "trigger_type": "GOV_ACTION",
-        "actor": "GOV",
-        "must_item": "EUV_STEPPER",
-        "tickers": [
-          {
-            "ticker": "ASML",
-            "role": "OWNER",
-            "revenue_focus": 0.95
-          }
-        ],
-        "kill_switch": "Any structural change to export control decree.",
-        "reason": "-",
-        "signature": "a2ce7fb4ef8805f2",
-        "authority_sentence": "Export controls freeze chip supply chain.",
-        "forced_capex": "-",
-        "bottleneck": "-",
-        "proof_packs": [
-          {
-            "ticker": "ASML",
-            "company_name": "ASML",
-            "bottleneck_role": "Verified Bottleneck Owner",
-            "why_irreplaceable_now": "Structural position confirmed by 2 sources.",
-            "hard_facts": [
-              {
-                "fact_type": "CONTRACT",
-                "fact_claim": "Signed delivery agreement with Intel.",
-                "source_kind": "OFFICIAL_PRESS",
-                "source_ref": "press_asml_001.pdf",
-                "source_date": "-",
-                "independence_key": "asml_intel_deal",
-                "cluster_id": "UNKNOWN"
-              },
-              {
-                "fact_type": "CAPEX",
-                "fact_claim": "Samsung 2026 Capex allocated to EUV.",
-                "source_kind": "EARNINGS_CALL",
-                "source_ref": "samsung_q4_call.json",
-                "source_date": "-",
-                "independence_key": "samsung_earnings",
-                "cluster_id": "UNKNOWN"
-              }
-            ],
-            "proof_status": "PROOF_OK"
-          }
-        ],
-        "trigger_quote": null,
-        "source_clusters": []
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1"
       },
       "linked_evidence": [],
       "link_status": "NO_HOIN_EVIDENCE",
@@ -1434,8 +334,15 @@
         "title": "[긴급] None의 발언이 암시하는 구조적 균열",
         "status": "TRUST_LOCKED",
         "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
         "trigger_type": "-",
         "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
         "must_item": "-",
         "tickers": [],
         "kill_switch": "-",
@@ -1446,7 +353,16 @@
         "bottleneck": "-",
         "proof_packs": [],
         "trigger_quote": null,
-        "source_clusters": []
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1"
       },
       "linked_evidence": [],
       "link_status": "NO_HOIN_EVIDENCE",
@@ -1458,8 +374,15 @@
         "title": "[긴급] None의 발언이 암시하는 구조적 균열",
         "status": "TRUST_LOCKED",
         "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
         "trigger_type": "-",
         "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
         "must_item": "-",
         "tickers": [],
         "kill_switch": "-",
@@ -1470,7 +393,16 @@
         "bottleneck": "-",
         "proof_packs": [],
         "trigger_quote": null,
-        "source_clusters": []
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1"
       },
       "linked_evidence": [],
       "link_status": "NO_HOIN_EVIDENCE",
@@ -1482,8 +414,15 @@
         "title": "[긴급] None의 발언이 암시하는 구조적 균열",
         "status": "TRUST_LOCKED",
         "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
         "trigger_type": "-",
         "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
         "must_item": "-",
         "tickers": [],
         "kill_switch": "-",
@@ -1494,7 +433,1462 @@
         "bottleneck": "-",
         "proof_packs": [],
         "trigger_quote": null,
-        "source_clusters": []
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1"
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ISSUE-20260131-001",
+        "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+        "status": "EDITORIAL_CANDIDATE",
+        "one_liner": "미국 장기채: - 변화의 필연성",
+        "opening_sentence": "국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.",
+        "trigger_type": "DATA",
+        "actor": "미국 장기채",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "Issue",
+        "tickers": [
+          "US10Y"
+        ],
+        "kill_switch": "즉시 중단 가능",
+        "reason": "-",
+        "signature": "sig_235929",
+        "authority_sentence": "미국 장기채: - 변화의 필연성",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {
+          "capital_rotation": {
+            "triggered": false,
+            "rule_id": null,
+            "target_sector": "-",
+            "logic_ko": "이번 구조에서는 자본 이동이 강제되지 않으므로, 개별 이슈에 집중합니다.",
+            "state_snapshot": {
+              "rate_regime": "NEUTRAL",
+              "inflation_regime": "STABLE",
+              "liquidity": "NEUTRAL",
+              "yield_curve": "NORMAL",
+              "risk_sentiment": "NEUTRAL",
+              "geopolitics": "STABLE",
+              "growth_regime": "MODERATE"
+            },
+            "verdict_reason": "No dominant rotation pattern detected."
+          },
+          "flow_evidence": [
+            {
+              "fact_type": "CAPITAL_FLOW",
+              "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
+              "source": "RSS Finance (Real-time)",
+              "source_ref": "Google_News_KR_Biz",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 40,
+              "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
+              "flow_metadata": {
+                "ticker": "RSS_SIGNAL",
+                "sector": "Gold/Defense",
+                "change_pct": 0.0,
+                "volume_ratio": 0.0,
+                "direction": "OUTFLOW"
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^TNX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US10Y_2026-01-31",
+              "details": {
+                "ticker": "US10Y",
+                "value": 4.241000175476074,
+                "change_pct": 0.33120270124230344
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^IRX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US02Y_2026-01-31",
+              "details": {
+                "ticker": "US02Y",
+                "value": 3.572000026702881,
+                "change_pct": -0.22346081490672906
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "CL=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_WTI_2026-01-31",
+              "details": {
+                "ticker": "WTI",
+                "value": 65.20999908447266,
+                "change_pct": -0.3210013609757975
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "달러 인덱스 96.99 (🔺 +0.74%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "DX-Y.NYB",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_DXY_2026-01-31",
+              "details": {
+                "ticker": "DXY",
+                "value": 96.98999786376953,
+                "change_pct": 0.7374315470237912
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "금 선물 (Hint) 4713.90 (🔻 -11.37%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "GC=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "MACRO_GOLD_2026-01-31",
+              "details": {
+                "ticker": "GOLD",
+                "value": 4713.89990234375,
+                "change_pct": -11.366200569716554
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260130a.htm",
+              "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260129a.htm",
+              "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve issues FOMC statement",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve issues FOMC statement",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128b.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260116a.htm",
+              "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260115a.htm",
+              "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260113a.htm",
+              "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies issue 2025 Shared National Credit Program report",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260112a.htm",
+              "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies issue 2025 Shared National Credit Program report",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260109a.htm",
+              "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260108a.htm",
+              "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Board's discount rate meeting on December 10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Federal Open Market Committee, December 9–10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20251223a.htm",
+              "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219b.htm",
+              "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219a.htm",
+              "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251218a.htm",
+              "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251217a.htm",
+              "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20251216a.htm",
+              "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMTBSZ2xlYmxYVHExNnozR0h2d0o4czh1Q093c1BUY285QnlVOFAzMGl3WkFGbU5fUUN4NWk5SUR3WEN0bDhHWTUyd0pCVE9pc",
+              "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+              "source": "News Filter (White House)",
+              "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+              "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+              "details": {
+                "entity": "White House",
+                "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMickFVX3lxTE9SUEdES1c1RlRBSWRwR2lyZFJWZFlNdHUySXBHMjNYVnFpX3g2bWhYc2ZsamN3V0xRZmszclVVZG9TeXFjUDBKOFB5REVINDF2R",
+              "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            }
+          ],
+          "corporate_facts": [
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Mountain Lake Acquisition Corp. II",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspira Women's Health Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "NN INC",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "SARATOGA INVESTMENT CORP.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspire Biopharma Holdings, Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "ASP Isotopes Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Comstock Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "PENNANTPARK INVESTMENT CORP",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            }
+          ],
+          "all_evidence": [
+            {
+              "fact_type": "CAPITAL_FLOW",
+              "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
+              "source": "RSS Finance (Real-time)",
+              "source_ref": "Google_News_KR_Biz",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 40,
+              "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
+              "flow_metadata": {
+                "ticker": "RSS_SIGNAL",
+                "sector": "Gold/Defense",
+                "change_pct": 0.0,
+                "volume_ratio": 0.0,
+                "direction": "OUTFLOW"
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^TNX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US10Y_2026-01-31",
+              "details": {
+                "ticker": "US10Y",
+                "value": 4.241000175476074,
+                "change_pct": 0.33120270124230344
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^IRX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US02Y_2026-01-31",
+              "details": {
+                "ticker": "US02Y",
+                "value": 3.572000026702881,
+                "change_pct": -0.22346081490672906
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "CL=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_WTI_2026-01-31",
+              "details": {
+                "ticker": "WTI",
+                "value": 65.20999908447266,
+                "change_pct": -0.3210013609757975
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "달러 인덱스 96.99 (🔺 +0.74%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "DX-Y.NYB",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_DXY_2026-01-31",
+              "details": {
+                "ticker": "DXY",
+                "value": 96.98999786376953,
+                "change_pct": 0.7374315470237912
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "금 선물 (Hint) 4713.90 (🔻 -11.37%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "GC=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "MACRO_GOLD_2026-01-31",
+              "details": {
+                "ticker": "GOLD",
+                "value": 4713.89990234375,
+                "change_pct": -11.366200569716554
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260130a.htm",
+              "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260129a.htm",
+              "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve issues FOMC statement",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve issues FOMC statement",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128b.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260116a.htm",
+              "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260115a.htm",
+              "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260113a.htm",
+              "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies issue 2025 Shared National Credit Program report",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260112a.htm",
+              "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies issue 2025 Shared National Credit Program report",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260109a.htm",
+              "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260108a.htm",
+              "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Board's discount rate meeting on December 10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Federal Open Market Committee, December 9–10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20251223a.htm",
+              "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219b.htm",
+              "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219a.htm",
+              "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251218a.htm",
+              "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251217a.htm",
+              "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20251216a.htm",
+              "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMTBSZ2xlYmxYVHExNnozR0h2d0o4czh1Q093c1BUY285QnlVOFAzMGl3WkFGbU5fUUN4NWk5SUR3WEN0bDhHWTUyd0pCVE9pc",
+              "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+              "source": "News Filter (White House)",
+              "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+              "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+              "details": {
+                "entity": "White House",
+                "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMickFVX3lxTE9SUEdES1c1RlRBSWRwR2lyZFJWZFlNdHUySXBHMjNYVnFpX3g2bWhYc2ZsamN3V0xRZmszclVVZG9TeXFjUDBKOFB5REVINDF2R",
+              "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Mountain Lake Acquisition Corp. II",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspira Women's Health Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "NN INC",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "SARATOGA INVESTMENT CORP.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspire Biopharma Holdings, Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "ASP Isotopes Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Comstock Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "PENNANTPARK INVESTMENT CORP",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            }
+          ],
+          "actor_bridge": {
+            "actor_evidence": [
+              {
+                "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+                "source": "Market Data (Yahoo)",
+                "grade": "✅증거",
+                "url": "^TNX",
+                "ts": "2026-01-31"
+              }
+            ]
+          },
+          "bottleneck_analysis": {
+            "protagonists": [],
+            "supporting": [
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Mountain Lake Acquisition Corp. II",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Aspira Women's Health Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "NN INC",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "SARATOGA INVESTMENT CORP.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Aspire Biopharma Holdings, Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "ASP Isotopes Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Comstock Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "PENNANTPARK INVESTMENT CORP",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              }
+            ]
+          },
+          "editorial_candidates": [
+            {
+              "index": 0,
+              "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "full_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 미국 장기채 지표 변동의 진짜 의미. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이라는 구조적 강제가 작동 중입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 미국 장기채 지표 변동\n- 원인: 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "미국 장기채: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            },
+            {
+              "index": 1,
+              "title": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22",
+              "full_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 미국 단기 자금의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 단기 자금을 중심으로 한 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 단기 자금에게 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 미국 단기 자금 지표 변동! 팩트는 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). 시장의 오해를 넘어 본질을 봐야 합니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 미국 단기 자금 지표 변동의 진짜 의미. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이라는 구조적 강제가 작동 중입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 미국 단기 자금 지표 변동\n- 원인: 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "미국 단기 자금: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            },
+            {
+              "index": 2,
+              "title": "WTI 원유 65.21 (➖ -0.32%)",
+              "full_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 에너지 섹터의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. WTI 원유 65.21 (➖ -0.32%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 에너지 섹터을 중심으로 한 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 에너지 섹터에게 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 에너지 섹터 지표 변동! 팩트는 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] WTI 원유 65.21 (➖ -0.32%). 시장의 오해를 넘어 본질을 봐야 합니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 에너지 섹터 지표 변동의 진짜 의미. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이라는 구조적 강제가 작동 중입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 에너지 섹터 지표 변동\n- 원인: 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "에너지 섹터: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            }
+          ],
+          "content_package": {
+            "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+            "shorts_ready": [
+              "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
+              "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
+              "1분 요약: 미국 장기채 지표 변동의 진짜 의미. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이라는 구조적 강제가 작동 중입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다."
+            ],
+            "text_card": "미국 장기채: - 변화의 필연성"
+          }
+        },
+        "decision_rationale": "1순위 선정. 점수: 60, 최종 상태: 후보",
+        "observed_metrics": [
+          "Source: Market Data (Yahoo)"
+        ],
+        "leader_stocks": [
+          "-"
+        ],
+        "risk_factors": [
+          "시장 변동성 확인 필요"
+        ],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1"
       },
       "linked_evidence": [],
       "link_status": "NO_HOIN_EVIDENCE",
