@@ -133,7 +133,10 @@ class DashboardLoader:
                             decision_rationale=data.get("decision_rationale", "-"),
                             observed_metrics=data.get("observed_metrics", []),
                             leader_stocks=data.get("leader_stocks", []),
-                            risk_factors=data.get("risk_factors", [])
+                            risk_factors=data.get("risk_factors", []),
+                            # IS-84 Content Packages
+                            content_package=data.get("content_package", {}),
+                            content_package_v2=data.get("content_package_v2", {})
                         ))
                 except Exception as e:
                     print(f"ERROR: Failed to load card {f}: {e}")

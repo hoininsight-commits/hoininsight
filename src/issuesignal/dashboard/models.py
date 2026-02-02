@@ -42,6 +42,9 @@ class DecisionCard:
     permission_granted: bool = False
     disclaimer: str = "-"
     card_version: str = "v1"
+    # IS-84 Content Packages
+    content_package: Dict[str, Any] = field(default_factory=dict)
+    content_package_v2: Dict[str, Any] = field(default_factory=dict)
 
 @dataclass
 class RejectLog:

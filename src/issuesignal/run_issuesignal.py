@@ -14,6 +14,7 @@ from src.issuesignal.content_compiler import ContentCompiler
 from src.issuesignal.watchlist.strategic_watchlist_engine import StrategicWatchlistEngine
 from src.issuesignal.editorial.watchlist_promotion_engine import WatchlistPromotionEngine
 from src.issuesignal.editorial.editorial_tone_selector import EditorialToneSelector
+from src.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -254,6 +255,19 @@ def main():
             "timestamp": datetime.utcnow().isoformat()
         }
         
+        # [IS-84] Script Writer V2 (Main Issue)
+        # Determine main tone first (Defaulting for now if Selector not run on Main)
+        main_candidate_mock = {
+            "tone_type": "STRUCTURAL", "script_mode": "EXPLANATION",
+            "title": issue_json["title"],
+            "opening_sentence": issue_json["opening_sentence"],
+            "reason": issue_json["content_package"]["true_why_now"],
+            "category": "MAIN_ISSUE"
+        }
+        v2_writer = ScriptWriterV2(base_dir)
+        v2_package = v2_writer.generate_package(main_candidate_mock)
+        issue_json["content_package_v2"] = v2_package
+        
         # Save as ISSUE-{id}.json
         issue_path = base_dir / "data" / "issuesignal" / "packs" / f"ISSUE-{issue_id}.json"
         with open(issue_path, "w", encoding="utf-8") as jf:
@@ -276,8 +290,30 @@ def main():
         if promoted_path:
             tone_selector = EditorialToneSelector(base_dir)
             tone_selector.process(promoted_path)
+            tone_selector.process(promoted_path)
             print(f"Editorial Tone Applied to Candidates.")
-        
+
+            # [IS-84] Script Writer V2 (Promoted Candidates)
+            # Reload, generate scripts, save back
+            try:
+                import json
+                p_data = json.loads(promoted_path.read_text(encoding="utf-8"))
+                updates = []
+                for c in p_data.get("candidates", []):
+                    # Only generate if Tone is set (IS-83 should have set it)
+                    if "tone_type" in c:
+                        # Use same writer instance
+                        writer = ScriptWriterV2(base_dir) 
+                        script_pkg = writer.generate_package(c)
+                        c["content_package_v2"] = script_pkg
+                    updates.append(c)
+                p_data["candidates"] = updates
+                with open(promoted_path, "w", encoding="utf-8") as f:
+                    json.dump(p_data, f, indent=2, ensure_ascii=False)
+                print(f"Scripts V2 generated for Promoted Candidates.")
+            except Exception as e:
+                print(f"Failed to generate V2 scripts for candidates: {e}")
+
     except Exception as e:
         print(f"WARNING: Watchlist/Promotion generation failed: {e}")
 

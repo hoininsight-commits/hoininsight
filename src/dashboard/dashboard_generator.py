@@ -1089,11 +1089,33 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
 
     # 2. Content Extraction
     opening = issue_data.get("opening_sentence", "-")
-    content = issue_data.get("content_package", {})
-    long_form = content.get("long_form", "").replace("\\n", "<br>")
+    # [IS-84] Content Extraction (Prefer V2)
+    content_v2 = issue_data.get("content_package_v2")
+    content_v1 = issue_data.get("content_package", {})
     
-    # Shorts & text cards (use safe get)
-    shorts = content.get("shorts", "")
+    if content_v2:
+        # V2 Data
+        tone = content_v2.get("tone_type", "STRUCTURAL")
+        mode = content_v2.get("script_mode", "EXPLANATION")
+        long_form = content_v2.get("long_form_script", "").replace("\n", "<br>")
+        
+        # Shorts & Text Card
+        shorts_list = content_v2.get("shorts_scripts", [])
+        shorts_text = "<br><br>".join([f"<strong>[Shorts Option {i+1}]</strong><br>{s}" for i, s in enumerate(shorts_list)])
+        
+        card_text = content_v2.get("text_card", "").replace("\n", "<br>")
+        shorts = f"{shorts_text}<br><br><hr><strong>[Text Card]</strong><br>{card_text}"
+        
+        disclaimer = content_v2.get("disclaimer_line", "")
+        if disclaimer:
+            long_form += f"<br><br><span style='color:#94a3b8; font-size:11px;'>* {disclaimer}</span>"
+            
+        script_label = f"📝 Long-form Script (Tone: {tone} / Mode: {mode})"
+    else:
+        # V1 Fallback
+        long_form = content_v1.get("long_form", "").replace("\\n", "<br>")
+        shorts = content_v1.get("shorts", "")
+        script_label = "📝 Long-form Script (Operator Mode)"
     
     # 3. Main Opening Sentence
     html += f"""
@@ -1106,7 +1128,8 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
     if long_form:
         html += f"""
         <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
-            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb;">📝 Long-form Script (Operator Mode)</div>
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb;">{script_label}</div>
             {long_form}
         </div>
         """
@@ -1644,6 +1667,45 @@ def generate_dashboard(base_dir: Path):
                 </p>
             </div>
             """
+        elif s.get("content_package_v2"):
+             # [IS-84] Auto-render V2 Package in Modal
+             cp = s.get("content_package_v2")
+             tone = cp.get("tone_type", "STRUCTURAL")
+             mode = cp.get("script_mode", "-")
+             long_form = cp.get("long_form_script", "").replace("\n", "<br>")
+             
+             shorts_list = cp.get("shorts_scripts", [])
+             shorts_html = "<br><br>".join([f"<strong>Shorts #{i+1}</strong><br>{st}" for i, st in enumerate(shorts_list)])
+             text_card = cp.get("text_card", "").replace("\n", "<br>")
+             
+             details_map[sid] = f"""
+            <div class="detail-header">
+                {top1_badge}
+                <span class="detail-badge signal" style="background:#f1f5f9; color:#475569;">{tone} / {mode}</span>
+                <h2>{s.get('title', 'Untitled')}</h2>
+            </div>
+            {video_section}
+            
+            <div class="detail-section">
+                <h3 style="color:#2563eb;">📝 Long-form Script (V2)</h3>
+                <p class="script-text" style="font-size:14px; line-height:1.6; color:#334155;">
+                    {long_form}
+                </p>
+            </div>
+            
+            <div class="detail-section" style="background:#f8fafc;">
+                <h3 style="color:#475569;">📱 Shorts & Text Card</h3>
+                 <details>
+                    <summary style="cursor:pointer; color:#64748b; font-weight:bold;">Click to Expand</summary>
+                    <div style="margin-top:10px; font-size:13px; color:#334155;">
+                        {shorts_html}
+                        <hr style="margin:15px 0;">
+                        <strong>[Text Card]</strong><br>
+                        {text_card}
+                    </div>
+                </details>
+            </div>
+             """
         else:
             # Standard IssueSignal Detail (Updated Step 68)
             f = IssueSignalFormatter.format_card(s)
