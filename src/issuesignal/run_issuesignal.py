@@ -15,6 +15,7 @@ from src.issuesignal.watchlist.strategic_watchlist_engine import StrategicWatchl
 from src.issuesignal.editorial.watchlist_promotion_engine import WatchlistPromotionEngine
 from src.issuesignal.editorial.editorial_tone_selector import EditorialToneSelector
 from src.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
+from src.issuesignal.narrative.narrative_framing_engine import NarrativeFramingEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -255,6 +256,17 @@ def main():
             "timestamp": datetime.utcnow().isoformat()
         }
         
+        # [IS-84 Extension] Narrative Framing
+        # Must run BEFORE script writer and AFTER opening sentence
+        framing_engine = NarrativeFramingEngine(base_dir)
+        # Mock main candidate data for framing
+        main_candidate_for_framing = {
+             "why_now": issue_json["content_package"]["true_why_now"],
+             "content_type": "STRUCTURE", # Default for Main Issue
+             "status": "TRUST_LOCKED"
+        }
+        issue_json["narrative_framing"] = framing_engine.generate(main_candidate_for_framing)
+
         # [IS-84] Script Writer V2 (Main Issue)
         # Determine main tone first (Defaulting for now if Selector not run on Main)
         main_candidate_mock = {
@@ -288,6 +300,23 @@ def main():
 
         # [IS-83] Editorial Tone Selection
         if promoted_path:
+            # [IS-84 Extension] Narrative Framing for Promoted
+            # Load, inject, save
+            try:
+                import json
+                p_data = json.loads(promoted_path.read_text(encoding="utf-8"))
+                updates = []
+                f_engine = NarrativeFramingEngine(base_dir)
+                for c in p_data.get("candidates", []):
+                    c["narrative_framing"] = f_engine.generate(c)
+                    updates.append(c)
+                p_data["candidates"] = updates
+                with open(promoted_path, "w", encoding="utf-8") as f:
+                     json.dump(p_data, f, indent=2, ensure_ascii=False)
+                print("Narrative Framing Applied to Candidates.")
+            except Exception as e:
+                print(f"Narrative Framing Failed: {e}")
+
             tone_selector = EditorialToneSelector(base_dir)
             tone_selector.process(promoted_path)
             tone_selector.process(promoted_path)

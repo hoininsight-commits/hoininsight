@@ -1123,11 +1123,26 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
             "{opening}"
         </div>
     """
+
+    # [IS-84 Extension] Narrative Framing
+    framing = issue_data.get("narrative_framing", "")
+    print(f"DEBUG: Framing in dashboard_generator: '{framing}' Keys: {list(issue_data.keys())}")
+    if framing:
+        html += f"""
+        <div style="background: #f1f5f9; border-radius: 6px; padding: 12px; margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Market Framing</div>
+            <div style="font-size: 14px; color: #334155; font-weight: 600;">
+                {framing}
+            </div>
+            <div style="margin-top: 6px; font-size: 10px; color: #94a3b8;">
+                * 본 문장은 시장 구조 해석을 위한 프레이밍입니다.
+            </div>
+        </div>
+        """
     
     # 4. Long Form Script (Default Open)
     if long_form:
         html += f"""
-        <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
         <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
             <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb;">{script_label}</div>
             {long_form}

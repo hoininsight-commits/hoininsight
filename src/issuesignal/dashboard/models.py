@@ -45,6 +45,8 @@ class DecisionCard:
     # IS-84 Content Packages
     content_package: Dict[str, Any] = field(default_factory=dict)
     content_package_v2: Dict[str, Any] = field(default_factory=dict)
+    # IS-84 Extension (Framing)
+    narrative_framing: str = ""
 
 @dataclass
 class RejectLog:
