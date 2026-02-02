@@ -12,17 +12,17 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 서울 중소형 아파트값, 한강 이남에선 평균 18억 넘었다 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 금·은 급락 부른 ‘케빈 워시 효과’…조기 금리인하 베팅 점화 - mstoday.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 일부 대형주에 쏠렸던 1월… 증권가 “2월엔 실적 발표 속 업종 이동 주목” - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [특징주] 고려아연, 은 가격 폭락에 11% 하락 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,22 +37,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 서울 중소형 아파트값, 한강 이남에선 평균 18억 넘었다 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### [재계 키맨] 최태원의 AI 드라이브 진두지휘하는 ‘반도체 참모’ 곽노정 SK하이닉스 사장 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피, 미국 금리인하 기대 꺾이며 5100선 붕괴 By MoneyS - Investing.com 한국어 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 주간경향 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 1월 수출 역대 최대…반도체가 끌었다 - KBS 뉴스 (ID: unknown)
+### 코스피 장중 5100선 무너져... 코스닥도 3% 넘게 하락 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “60만원대 팔았다” “난 50만원이다” 판 사람 어쩌나…90만원 돌파 SK하이닉스 더 간다 - v.daum.net (ID: unknown)
+### 1월 수출액 33.9% 급등 658.5억…반도체는 두배 늘어 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 아틀라스가 공장 들어오는 날, 한국사회는 준비돼 있나 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,7 +72,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “전원 끄면 우린 사라지나” AI끼리 단톡방 만들었다 - 조선일보 (ID: unknown)
+### 인간은 구경만…AI끼리 주인 뒷담화 내뱉는 SNS ‘몰트북’ 등장 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,22 +82,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '탈모 원인' 92% 억제…"모자처럼 쓰고 다녀" 놀라운 효과 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “노년에 못 쉬어도 괜찮다” 간절한 정년 연장…그들의 희망 정년은 몇 살? - 매일경제 (ID: unknown)
+### 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 스페이스X, 위성 100만기 발사 허가 신청…우주 데이터센터 본격 '시동' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,41 @@ No SHADOW candidates today.
 ### 연말 연초 은행원 2400명 희망퇴직...평균 퇴직금 4억원 추정 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “3000만원대 구매가”…BYD코리아, ‘씰 후륜구동’ 2종 출시 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “올해 첫 마수걸이 수주”... 동부건설, 154㎸ 초정-보은 송전선로 공사 수주 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 급락하는 비트코인, 주말간 코인시장 시총 300조원 증발 [매일코인] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한만중 전 서울시교육청 비서실장, 서울교육감 출마 선언 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### KERI, 美 캘리포니아 56억원 규모 ‘전기차 충전 프로젝트’ 맡는다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 하이브 파워는 아직…캣츠아이, 그래미 ‘신인상’ 불발 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 신세경 “목동 여신? 빡빡한 학군서 전교 8등…학창시절은 축복” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 노랑풍선, 연간 우수 가이드·인솔자·랜드사 시상식 개최 (ID: unknown)
@@ -162,7 +197,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 만원대 와인부터 억대 위스키까지…롯데마트, 설선물 ‘극과극’ 전략 (ID: unknown)
+### 대형마트에 1억4000만원짜리 술이...구경만 해도 떨린다는 위스키의 정체 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -173,41 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 2월 전국 1만여가구 일반분양... 전년 동기 4배 수준 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “서해선 완전 개통 수혜”…우미건설, ‘화성 남양뉴타운 우미 린 에듀하이’ 공급 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 대우건설 신이문 역세권 도시정비형 재개발사업 시공사 선정 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 농심 신라면 골드 출시 한 달 만에 1000만 봉지 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 치킨값도 아끼는 시대… 세븐일레븐, 치킨 최대 34% 할인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “현대홈쇼핑 체질 개선 증명…높아지는 이익에 배당 증가 기대” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “제2의 루나 사태 막는다”…업비트, 주민 대상 ‘디지털 자산’ 리스크 관리 교육 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이달 전국 9999가구 일반분양…비수기에도 분양 열기 ‘활활’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

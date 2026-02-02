@@ -1,4 +1,4 @@
-# Insight Script: [Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, FX_RATES 동반)
+# Insight Script: [Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)
 <!-- Metadata
 Topic ID: derived_yield_curve_10y_2y
 Level: L2
@@ -7,7 +7,7 @@ Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, FX_RATES 동반)** 현상이 감지되었습니다.
+- **[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유

@@ -1,4 +1,4 @@
-# Insight Script: [Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, FX_RATES 동반)
+# Insight Script: [Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)
 <!-- Metadata
 Topic ID: struct_dart_disposal
 Level: L2
@@ -7,7 +7,7 @@ Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, FX_RATES 동반)** 현상이 감지되었습니다.
+- **[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유
