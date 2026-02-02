@@ -6,7 +6,7 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: BTCUSD:UP(0.50)[png](data/reports/2026/02/02/charts/crypto_btc_usd_spot_coingecko.png) | YIELD_CURVE:UP(0.50)[png](data/reports/2026/02/02/charts/derived_yield_curve_10y_2y.png)
+Drivers: YIELD_CURVE:UP(0.50)[png](data/reports/2026/02/02/charts/derived_yield_curve_10y_2y.png) | CPI_USA:FLAT(0.00)[png](data/reports/2026/02/02/charts/inflation_cpi_fred.png)
 Meta topics: [json](data/meta_topics/2026/02/02/meta_topics.json)
 This regime has persisted for 19 consecutive days since 2026-01-14.
 
@@ -21,14 +21,13 @@ Historical context:
 
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
-| 1 | BTCUSD | data/features/anomalies/2026/02/02/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | UP (0.50) | **13.53** | HIGH | [png](data/reports/2026/02/02/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/02/02/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/02/02/crypto_btc_usd_spot_coingecko.json) |
-| 2 | YIELD_CURVE | data/features/anomalies/2026/02/02/derived_yield_curve_10y_2y.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | UP (0.50) | **13.53** | HIGH | [png](data/reports/2026/02/02/charts/derived_yield_curve_10y_2y.png) | [json](data/topics/2026/02/02/derived_yield_curve_10y_2y.json) | [json](data/features/anomalies/2026/02/02/derived_yield_curve_10y_2y.json) |
-| 3 | CPI_USA | data/features/anomalies/2026/02/02/inflation_cpi_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/02/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/02/inflation_cpi_fred.json) |
-| 4 | PCE_USA | data/features/anomalies/2026/02/02/inflation_pce_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/02/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/02/inflation_pce_fred.json) |
-| 5 | M2_USA | data/features/anomalies/2026/02/02/liquidity_m2_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/liquidity_m2_fred.png) | [json](data/topics/2026/02/02/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/02/02/liquidity_m2_fred.json) |
+| 1 | YIELD_CURVE | data/features/anomalies/2026/02/02/derived_yield_curve_10y_2y.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | UP (0.50) | **13.53** | HIGH | [png](data/reports/2026/02/02/charts/derived_yield_curve_10y_2y.png) | [json](data/topics/2026/02/02/derived_yield_curve_10y_2y.json) | [json](data/features/anomalies/2026/02/02/derived_yield_curve_10y_2y.json) |
+| 2 | CPI_USA | data/features/anomalies/2026/02/02/inflation_cpi_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/02/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/02/inflation_cpi_fred.json) |
+| 3 | PCE_USA | data/features/anomalies/2026/02/02/inflation_pce_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/02/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/02/inflation_pce_fred.json) |
+| 4 | M2_USA | data/features/anomalies/2026/02/02/liquidity_m2_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/liquidity_m2_fred.png) | [json](data/topics/2026/02/02/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/02/02/liquidity_m2_fred.json) |
+| 5 | GS_RATIO | data/features/anomalies/2026/02/02/derived_gold_silver_ratio.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/02/charts/derived_gold_silver_ratio.png) | [json](data/topics/2026/02/02/derived_gold_silver_ratio.json) | [json](data/features/anomalies/2026/02/02/derived_gold_silver_ratio.json) |
 
 ## Per-dataset Topics
-- [HIGH] BTCUSD: data/features/anomalies/2026/02/02/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=13.53) | Mom: UP (slope=0.50) -> x1.1 | App7d=7
 - [HIGH] YIELD_CURVE: data/features/anomalies/2026/02/02/derived_yield_curve_10y_2y.json L2 Signal (base=6.00, final_m=13.53) | Mom: UP (slope=0.50) -> x1.1 | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/02/02/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/02/02/inflation_pce_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -36,6 +35,7 @@ Historical context:
 - [HIGH] GS_RATIO: data/features/anomalies/2026/02/02/derived_gold_silver_ratio.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/02/02/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/02/02/struct_dart_disposal.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
+- [MED] BTCUSD: data/features/anomalies/2026/02/02/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] KOR_CPI: data/features/anomalies/2026/02/02/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/02/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] SILVER: data/features/anomalies/2026/02/02/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -74,7 +74,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=2.35 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.46 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)

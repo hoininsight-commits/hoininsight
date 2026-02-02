@@ -1,6 +1,6 @@
 {
   "tracker_version": "phase36b_v1",
-  "generated_at": "2026-02-02T18:07:10.906545",
+  "generated_at": "2026-02-02T18:38:07.263381",
   "overall_system_freshness_pct": 93.0,
   "latest_updated_axis": "crypto_btc_usd_spot_coingecko",
   "sla_breach_count": 3,
@@ -12,61 +12,61 @@
   "axes": [
     {
       "dataset_id": "crypto_btc_usd_spot_coingecko",
-      "last_collected_at": "2026-02-02T18:06:32.418900",
+      "last_collected_at": "2026-02-02T18:37:30.546913",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "fx_usdkrw_spot_open_er_api",
-      "last_collected_at": "2026-02-02T18:05:26.840507",
+      "last_collected_at": "2026-02-02T18:36:24.896553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_gold_xauusd_spot_gold_api",
-      "last_collected_at": "2026-02-02T18:06:36.604963",
+      "last_collected_at": "2026-02-02T18:37:34.711920",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_silver_xagusd_spot_gold_api",
-      "last_collected_at": "2026-02-02T18:06:36.611963",
+      "last_collected_at": "2026-02-02T18:37:34.718921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "rates_us10y_fred",
-      "last_collected_at": "2026-02-02T18:06:33.545917",
+      "last_collected_at": "2026-02-02T18:37:31.675915",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "risk_vix_index_stooq",
-      "last_collected_at": "2026-02-02T18:06:34.168926",
+      "last_collected_at": "2026-02-02T18:37:32.293916",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "risk_vix_fred",
-      "last_collected_at": "2026-02-02T18:06:34.168926",
+      "last_collected_at": "2026-02-02T18:37:32.293916",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "index_spx_sp500_stooq",
-      "last_collected_at": "2026-02-02T18:06:34.348929",
+      "last_collected_at": "2026-02-02T18:37:32.468917",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "index_spx_fred",
-      "last_collected_at": "2026-02-02T18:06:34.348929",
+      "last_collected_at": "2026-02-02T18:37:32.468917",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "index_kospi_stooq",
-      "last_collected_at": "2026-02-02T18:06:34.352929",
+      "last_collected_at": "2026-02-02T18:37:32.473917",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
@@ -84,163 +84,163 @@
     },
     {
       "dataset_id": "index_nasdaq_ndx_stooq",
-      "last_collected_at": "2026-02-02T18:06:35.045940",
+      "last_collected_at": "2026-02-02T18:37:33.155918",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "index_nasdaq_fred",
-      "last_collected_at": "2026-02-02T18:06:35.045940",
+      "last_collected_at": "2026-02-02T18:37:33.155918",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "fx_dxy_index_stooq",
-      "last_collected_at": "2026-02-02T18:06:35.051940",
+      "last_collected_at": "2026-02-02T18:37:33.161918",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "rates_us02y_fred",
-      "last_collected_at": "2026-02-02T18:06:35.905952",
+      "last_collected_at": "2026-02-02T18:37:34.022919",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "comm_wti_crude_oil_stooq",
-      "last_collected_at": "2026-02-02T18:06:36.596963",
+      "last_collected_at": "2026-02-02T18:37:34.703921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "comm_wti_fred",
-      "last_collected_at": "2026-02-02T18:06:36.596963",
+      "last_collected_at": "2026-02-02T18:37:34.703921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_platinum_xptusd_stooq",
-      "last_collected_at": "2026-02-02T18:06:36.601963",
+      "last_collected_at": "2026-02-02T18:37:34.708920",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_gold_paxg_coingecko",
-      "last_collected_at": "2026-02-02T18:06:36.604963",
+      "last_collected_at": "2026-02-02T18:37:34.711920",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_silver_kag_coingecko",
-      "last_collected_at": "2026-02-02T18:06:36.611963",
+      "last_collected_at": "2026-02-02T18:37:34.718921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_gold_fred",
-      "last_collected_at": "2026-02-02T18:06:36.604963",
+      "last_collected_at": "2026-02-02T18:37:34.711920",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_silver_kag_coingecko",
-      "last_collected_at": "2026-02-02T18:06:36.611963",
+      "last_collected_at": "2026-02-02T18:37:34.718921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "metal_silver_fred",
-      "last_collected_at": "2026-02-02T18:06:36.611963",
+      "last_collected_at": "2026-02-02T18:37:34.718921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "crypto_eth_usd_spot_coingecko",
-      "last_collected_at": "2026-02-02T18:06:36.614963",
+      "last_collected_at": "2026-02-02T18:37:34.721921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "rates_kor_base_rate_ecos",
-      "last_collected_at": "2026-02-02T18:06:36.621963",
+      "last_collected_at": "2026-02-02T18:37:34.728921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "inflation_kor_cpi_ecos",
-      "last_collected_at": "2026-02-02T18:06:36.627963",
+      "last_collected_at": "2026-02-02T18:37:34.734921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "fx_usdkrw_ecos",
-      "last_collected_at": "2026-02-02T18:06:36.682964",
+      "last_collected_at": "2026-02-02T18:37:34.788921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "rates_fed_funds_fred",
-      "last_collected_at": "2026-02-02T18:06:36.743965",
+      "last_collected_at": "2026-02-02T18:37:34.850921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "inflation_cpi_fred",
-      "last_collected_at": "2026-02-02T18:06:36.810967",
+      "last_collected_at": "2026-02-02T18:37:34.917921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "inflation_pce_fred",
-      "last_collected_at": "2026-02-02T18:06:36.867968",
+      "last_collected_at": "2026-02-02T18:37:34.975921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "liquidity_m2_fred",
-      "last_collected_at": "2026-02-02T18:06:36.924969",
+      "last_collected_at": "2026-02-02T18:37:35.033921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "employment_unrate_fred",
-      "last_collected_at": "2026-02-02T18:06:36.990970",
+      "last_collected_at": "2026-02-02T18:37:35.100921",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "credit_hy_spread_fred",
-      "last_collected_at": "2026-02-02T18:06:37.504980",
+      "last_collected_at": "2026-02-02T18:37:35.606922",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "risk_financial_stress_fred",
-      "last_collected_at": "2026-02-02T18:06:37.607981",
+      "last_collected_at": "2026-02-02T18:37:35.709922",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "derived_yield_curve_10y_2y",
-      "last_collected_at": "2026-02-02T18:06:37.925987",
+      "last_collected_at": "2026-02-02T18:37:36.033923",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "derived_gold_silver_ratio",
-      "last_collected_at": "2026-02-02T18:06:37.937988",
+      "last_collected_at": "2026-02-02T18:37:36.045923",
       "freshness_minutes": 0,
       "is_sla_breach": false
     },
     {
       "dataset_id": "struct_dart_cb_bw",
-      "last_collected_at": "2026-02-02T18:05:26.856507",
+      "last_collected_at": "2026-02-02T18:36:24.911553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     },
     {
       "dataset_id": "struct_dart_disposal",
-      "last_collected_at": "2026-02-02T18:05:26.856507",
+      "last_collected_at": "2026-02-02T18:36:24.911553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     },
@@ -252,19 +252,19 @@
     },
     {
       "dataset_id": "real_estate_price_index",
-      "last_collected_at": "2026-02-02T18:05:26.853507",
+      "last_collected_at": "2026-02-02T18:36:24.909553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     },
     {
       "dataset_id": "real_estate_volume",
-      "last_collected_at": "2026-02-02T18:05:26.853507",
+      "last_collected_at": "2026-02-02T18:36:24.909553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     },
     {
       "dataset_id": "real_estate_unsold",
-      "last_collected_at": "2026-02-02T18:05:26.853507",
+      "last_collected_at": "2026-02-02T18:36:24.909553",
       "freshness_minutes": 1,
       "is_sla_breach": false
     }

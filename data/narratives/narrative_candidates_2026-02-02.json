@@ -50,36 +50,32 @@
             ]
         },
         {
-            "id": "NC-STMT-STMT-230850",
+            "id": "NC-STMT-STMT-546405",
             "source_mix": [
                 "statement",
-                "Person (Social)"
+                "STATEMENT"
             ],
             "dominant_type": "FACT",
-            "theme": "Elon Musk (xAI / Tesla)의 의도: 실행 시점 및 강력한 의도 포착 / 공급망 및 인프라 구조적 변화 암시 / 압도적 규모의 물리적 성과 언급 / 시장 점유율 및 경쟁 구도 재편 가능성",
-            "why_now": "실제 발언('We decided to prioritize the massive GPU cluster i...')을 통해 포착된 ['TIME', 'INTENT', 'SCALE', 'STRUCTURE', 'COMPETITION'] 신호입니다.",
+            "theme": "Elon Musk (Tesla)의 의도: 실행 시점 및 강력한 의도 포착",
+            "why_now": "실제 발언('Elon Musk might merge SpaceX with Tesla or xAI\nElo...')을 통해 포착된 ['TIME'] 신호입니다.",
             "confidence_level": "HIGH",
             "promotion_hint": "EDITORIAL_VIEW",
             "status": "CANDIDATE",
             "entity": "Elon Musk",
-            "organization": "xAI / Tesla",
-            "raw_text": "We decided to prioritize the massive GPU cluster immediately. This year, we will build the most significant AI infrastructure from 2026. This is a supply constraint challenge, but our platform is unbeatable.",
+            "organization": "Tesla",
+            "raw_text": "Elon Musk might merge SpaceX with Tesla or xAI\nElon Musk-led SpaceX may merge with another company helmed by Elon Musk. Reuters initially reported Thursday that SpaceX and xAI are \"in discussions to merge\" ahead of SpaceX's IPO that's planned for later this year. The merger would help with SpaceX's plans to launch data centers into space, according to the publication. Later on Thursday, [&#8230;]",
             "detected_signals": [
-                "TIME",
-                "INTENT",
-                "SCALE",
-                "STRUCTURE",
-                "COMPETITION"
+                "TIME"
             ],
             "angles": [
                 "PERSON"
             ]
         },
         {
-            "id": "NC-STMT-STMT-679196",
+            "id": "NC-STMT-STMT-593654",
             "source_mix": [
                 "statement",
-                "Person (Interview)",
+                "STATEMENT",
                 "numeric",
                 "relative"
             ],
@@ -121,7 +117,7 @@
             ]
         },
         {
-            "id": "NC-STMT-STMT-423833",
+            "id": "NC-STMT-STMT-205432",
             "source_mix": [
                 "statement",
                 "STATEMENT",
@@ -166,7 +162,7 @@
             ]
         },
         {
-            "id": "NC-STMT-STMT-463027",
+            "id": "NC-STMT-STMT-613306",
             "source_mix": [
                 "statement",
                 "STATEMENT",
@@ -211,7 +207,7 @@
             ]
         },
         {
-            "id": "NC-STMT-STMT-91600",
+            "id": "NC-STMT-STMT-522086",
             "source_mix": [
                 "statement",
                 "STATEMENT"
