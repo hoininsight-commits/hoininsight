@@ -1147,19 +1147,67 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
             </div>
         """
         
+        # [IS-89] Add Numeric Evidence to Rank 1 if present
+        metrics = top1.get("numeric_evidence", [])
+        if metrics:
+            html += """
+            <div style="margin-bottom: 15px; background: #f0f9ff; padding: 12px; border-radius: 6px; border: 1px solid #bae6fd;">
+                <div style="font-size: 11px; font-weight: 800; color: #0369a1; margin-bottom: 8px;">📊 핵심 숫자 (Numeric Evidence)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            """
+            for m in metrics:
+                html += f"""
+                <div style="border-right: 1px solid #e0f2fe; padding-right: 8px;">
+                    <div style="font-size: 10px; color: #64748b;">{m.get('name')}</div>
+                    <div style="font-size: 14px; font-weight: 800; color: #0c4a6e;">{m.get('value')} <span style="font-size: 10px; font-weight: 600; color: #0369a1;">({m.get('growth')})</span></div>
+                </div>
+                """
+            html += f"""
+                </div>
+                <div style="margin-top: 6px; font-size: 9px; color: #94a3b8;">출처: {top1.get('numeric_source', 'Official IR')} / {top1.get('period', '')}</div>
+            </div>
+            """
+
+        # [IS-90] Add Relative Re-rating Card to Rank 1
+        rcard = top1.get("relative_card", {})
+        if rcard:
+            html += f"""
+            <div style="margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden;">
+                <div style="background: #1e293b; color: white; padding: 6px 12px; font-size: 11px; font-weight: 700;">📈 상대 비교 & 재평가 (Relative Re-rating)</div>
+                <div style="padding: 12px; background: #fff;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">
+                        {rcard.get('rerate_thesis')}
+                    </div>
+                    <div style="display: flex; font-size: 11px; color: #64748b; gap: 15px;">
+                        <div><span style="font-weight: 600;">{rcard.get('peer_group')} 대비:</span> {rcard.get('perf_gap_1y')}</div>
+                        <div><span style="font-weight: 600;">현재 Fwd P/E:</span> {rcard.get('valuation_band')}</div>
+                        <div><span style="font-weight: 600;">5y 평균:</span> {rcard.get('avg_pe')}</div>
+                    </div>
+                    <div style="margin-top: 8px; font-size: 11px; color: #dc2626; font-weight: 600;">
+                        ⚠ 리스크: {rcard.get('risk_anchor')}
+                    </div>
+                </div>
+            </div>
+            """
+        
         # Rank 2 (Compact)
         if len(picks) > 1:
             top2 = picks[1]
             t2_type = top2.get("dominant_type", "TOPIC")
             html += f"""
             <div style="border-top: 1px dashed #cbd5e1; padding-top: 12px; margin-top: 12px;">
-                <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">2순위 후보</div>
-                <div style="display: flex; align-items: center;">
+                <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">2순위 후보 (Enriched)</div>
+                <div style="display: flex; align-items: center; margin-bottom: 4px;">
                     <span style="background: #94a3b8; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; margin-right: 6px;">{t2_type}</span>
                     <span style="font-size: 13px; color: #475569; font-weight: 500;">{top2.get('theme', '')}</span>
                 </div>
-            </div>
             """
+            t2_metrics = top2.get("numeric_evidence", [])
+            if t2_metrics:
+                mtext = " / ".join([f"{m['name']}: {m['value']} ({m['growth']})" for m in t2_metrics])
+                html += f'<div style="font-size: 11px; color: #0369a1; font-weight: 600;">📊 {mtext}</div>'
+            
+            html += "</div>"
             
         html += """
             <div style="margin-top: 15px; font-size: 10px; color: #94a3b8; text-align: center;">
@@ -1259,7 +1307,29 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
                     <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">{nc.get('promotion_hint', '')}</span>
                 </div>
                 <div style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">{nc.get('theme', '')}</div>
-                <div style="font-size: 11px; color: #64748b;">{nc.get('why_now', '')}</div>
+                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">{nc.get('why_now', '')}</div>
+            """
+            
+            # Numeric Evidence in candidate list
+            nc_metrics = nc.get("numeric_evidence", [])
+            if nc_metrics:
+                mtext = " | ".join([f"{m['name']}: {m['value']} ({m['growth']})" for m in nc_metrics])
+                html += f"""
+                <div style="font-size: 10px; color: #0369a1; background: #eff6ff; padding: 4px 8px; border-radius: 4px; margin-bottom: 4px;">
+                    📊 {mtext}
+                </div>
+                """
+                
+            # Relative Rerating in candidate list
+            nc_rcard = nc.get("relative_card", {})
+            if nc_rcard:
+                html += f"""
+                <div style="font-size: 10px; color: #475569; border-top: 1px solid #f1f5f9; padding-top: 4px; font-style: italic;">
+                    📈 {nc_rcard.get('rerate_thesis')}
+                </div>
+                """
+                
+            html += """
             </div>
             """
         html += """

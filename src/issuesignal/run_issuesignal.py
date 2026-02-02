@@ -19,6 +19,9 @@ from src.issuesignal.narrative.narrative_framing_engine import NarrativeFramingE
 from src.issuesignal.narrative.urgency_amplifier import UrgencyAmplifierEngine
 from src.issuesignal.fusion.issue_fusion_engine import IssueFusionEngine
 from src.editorial.editorial_selector import DailyEditorialSelector
+from src.issuesignal.engines.calendar_trigger_engine import CalendarTriggerEngine
+from src.issuesignal.engines.numeric_evidence_engine import NumericEvidenceEngine
+from src.issuesignal.engines.relative_rerating_engine import RelativeReratingEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -309,6 +312,13 @@ def main():
         # [IS-86] Issue Fusion Engine (Generate Narrative Candidates)
         print("Step 5B: Running Issue Fusion Engine (IS-86)...")
         ymd = datetime.utcnow().strftime("%Y-%m-%d")
+        
+        # [IS-88] Calendar Trigger Engine
+        print("Integration: Running Calendar Trigger Engine (IS-88)...")
+        calendar_engine = CalendarTriggerEngine(base_dir)
+        calendar_engine.process() # Ensures data/calendar/ file exists
+        calendar_candidates = calendar_engine.get_candidates()
+        
         watchlist_data = {}
         if watchlist_path.exists():
             with open(watchlist_path, "r", encoding="utf-8") as f:
@@ -316,6 +326,19 @@ def main():
                 
         fusion_engine = IssueFusionEngine(base_dir)
         narrative_candidates = fusion_engine.generate_candidates(issue_json, watchlist_data)
+        
+        # Merge Calendar Candidates into Narrative Candidates
+        narrative_candidates.extend(calendar_candidates)
+
+        # [IS-89] Numeric Evidence Layer
+        print("Integration: Running Numeric Evidence Engine (IS-89)...")
+        numeric_engine = NumericEvidenceEngine(base_dir)
+        narrative_candidates = numeric_engine.attach_evidence(narrative_candidates)
+
+        # [IS-90] Relative Re-rating Layer
+        print("Integration: Running Relative Re-rating Engine (IS-90)...")
+        relative_engine = RelativeReratingEngine(base_dir)
+        narrative_candidates = relative_engine.attach_relative_card(narrative_candidates)
         
         # Save Narrative Candidates
         nc_path = base_dir / "data" / "narratives" / f"narrative_candidates_{ymd}.json"

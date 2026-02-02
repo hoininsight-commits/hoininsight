@@ -82,6 +82,14 @@ class DailyEditorialSelector:
         if len(source_mix) >= 2:
             score += 10
             rationales.append("Multi-Signal Fusion")
+            
+        # [IS-88~90] Economic Hunter Line Bonus (High Priority)
+        if "numeric" in source_mix and "relative" in source_mix:
+            score += 60
+            rationales.append("Economic Hunter Deep Dive")
+        elif "numeric" in source_mix or "relative" in source_mix:
+            score += 20
+            rationales.append("Data-Driven Evidence")
 
         # 4. Structure Continuity
         # Mock check for IS-71 bridge (If theme mentions '구조')
