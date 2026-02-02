@@ -14,7 +14,20 @@
       "confidence_level": "MEDIUM",
       "tone_type": "PREVIEW",
       "script_mode": "HEADS_UP",
-      "opening_hook_style": "이번 주 시장에서 반드시 체크해야 할 일정은 …"
+      "opening_hook_style": "이번 주 시장에서 반드시 체크해야 할 일정은 …",
+      "content_package_v2": {
+        "version": "v2",
+        "tone_type": "PREVIEW",
+        "script_mode": "HEADS_UP",
+        "long_form_script": "이번 주 시장에서 반드시 체크해야 할 일정은 이것입니다.\n\n대부분은 이 이슈를 'WATCHLIST_PREVIEW' 관점에서 단순히 바라봅니다.\n하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.\n\n이 일정은 단순한 이벤트가 아니라, '[FROM WATCHLIST] Schedule within execution window (7 days)'라는 변화를 확인하는 중요한 분기점이기 때문입니다.\n\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "shorts_scripts": [
+          "이번 주 시장에서 반드시 체크해야 할 일정은 이것입니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 이 일정은 단순한 이벤트가 아니라, '[FROM WATCHLIST] Schedule within execution window (7 days)'라는 변화를 확인하는 중요한 분기점이기 때문입니다.",
+          "이번 주 시장에서 반드시 체크해야 할 일정은 이것입니다. 왜냐하면 이 일정은 단순한 이벤트가 아니라, '[FROM WATCHLIST] Schedule within execution window (7 days)'라는 변화를 확인하는 중요한 분기점이기 때문입니다."
+        ],
+        "text_card": "[KEY POINT]\n이번 주 시장에서 반드시 체크해야 할 일정은 이것입니다.\n\n[STRUCTURE]\n이 일정은 단순한 이벤트가 아니라, '[FROM WATCHLIST] Schedule within execution window (7 days)'라는 변화를 확인하는 중요한 분기점이기 때문입니다.\n\n[CHECK]\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "disclaimer_line": "본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다."
+      }
     },
     {
       "candidate_id": "PROM-WL-20260202-002",
@@ -28,7 +41,20 @@
       "confidence_level": "MEDIUM",
       "tone_type": "STRUCTURAL",
       "script_mode": "EXPLANATION",
-      "opening_hook_style": "지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다."
+      "opening_hook_style": "지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.",
+      "content_package_v2": {
+        "version": "v2",
+        "tone_type": "STRUCTURAL",
+        "script_mode": "EXPLANATION",
+        "long_form_script": "지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n대부분은 이 이슈를 'WATCHLIST_STRUCTURE' 관점에서 단순히 바라봅니다.\n하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.\n\n이것은 일시적 현상이 아니라, '[FROM WATCHLIST] Recurring structural pattern detected'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "shorts_scripts": [
+          "지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 이것은 일시적 현상이 아니라, '[FROM WATCHLIST] Recurring structural pattern detected'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.",
+          "지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 왜냐하면 이것은 일시적 현상이 아니라, '[FROM WATCHLIST] Recurring structural pattern detected'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다."
+        ],
+        "text_card": "[KEY POINT]\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n[STRUCTURE]\n이것은 일시적 현상이 아니라, '[FROM WATCHLIST] Recurring structural pattern detected'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n[CHECK]\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "disclaimer_line": "본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다."
+      }
     },
     {
       "candidate_id": "PROM-WL-20260202-003",
@@ -42,7 +68,20 @@
       "confidence_level": "MEDIUM",
       "tone_type": "SCENARIO",
       "script_mode": "WHAT_IF",
-      "opening_hook_style": "만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다."
+      "opening_hook_style": "만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다.",
+      "content_package_v2": {
+        "version": "v2",
+        "tone_type": "SCENARIO",
+        "script_mode": "WHAT_IF",
+        "long_form_script": "만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다.\n\n대부분은 이 이슈를 'WATCHLIST_SCENARIO' 관점에서 단순히 바라봅니다.\n하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.\n\n조건은 명확합니다. '[FROM WATCHLIST] Scenario condition (WTI) trigger active' 현상이 심화되면 우리가 알던 공식은 깨지게 됩니다.\n\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "shorts_scripts": [
+          "만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 조건은 명확합니다. '[FROM WATCHLIST] Scenario condition (WTI) trigger active' 현상이 심화되면 우리가 알던 공식은 깨지게 됩니다.",
+          "만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다. 왜냐하면 조건은 명확합니다. '[FROM WATCHLIST] Scenario condition (WTI) trigger active' 현상이 심화되면 우리가 알던 공식은 깨지게 됩니다."
+        ],
+        "text_card": "[KEY POINT]\n만약 이 흐름이 이어진다면, 시장은 전혀 다른 방향으로 움직일 수 있습니다.\n\n[STRUCTURE]\n조건은 명확합니다. '[FROM WATCHLIST] Scenario condition (WTI) trigger active' 현상이 심화되면 우리가 알던 공식은 깨지게 됩니다.\n\n[CHECK]\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "disclaimer_line": "본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다."
+      }
     }
   ]
 }
