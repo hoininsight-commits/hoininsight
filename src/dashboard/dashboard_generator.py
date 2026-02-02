@@ -611,16 +611,18 @@ def _generate_today_topic_view(final_card: Dict, signals: List[Dict[str, Any]], 
     </div>
     """
 
-def _generate_candidate_view(candidates_data: Dict[str, Any]) -> str:
+def _generate_candidate_view(candidates_data: Dict[str, Any], promoted_data: Dict[str, Any] = None) -> str:
     """Generates Phase 39 Topic Candidate Gate View"""
     candidates = candidates_data.get("candidates", [])
-    if not candidates:
+    promoted = promoted_data.get("candidates", []) if promoted_data else []
+    candidate_list = candidates + promoted
+    if not candidate_list:
         return '<div class="empty-state">진행 중인 토픽 후보군이 없습니다.</div>'
         
     html = f"""
     <div class="candidate-container">
         <div class="today-header">
-            <div class="today-summary">📂 토픽 후보군 <strong>{len(candidates)}개</strong></div>
+            <div class="today-summary">📂 토픽 후보군 (포함: 관찰 승격) <strong>{len(candidate_list)}개</strong></div>
         </div>
         <table class="archive-table">
             <thead>
@@ -632,14 +634,20 @@ def _generate_candidate_view(candidates_data: Dict[str, Any]) -> str:
             </thead>
             <tbody>
     """
-    for c in candidates:
+    for c in candidate_list:
         cid = c.get("candidate_id", "N/A")
         cat = c.get("category", "N/A")
         reason = c.get("reason", "N/A")
+        
+        # [IS-82] Badge Style for Promoted Items
+        badge_style = "background:#f1f5f9; color:#475569;"
+        if "WATCHLIST" in cat:
+            badge_style = "background:#e0e7ff; color:#4338ca; font-weight:bold;"
+            
         html += f"""
             <tr>
                 <td><code style="font-size:11px;">{cid}</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">{cat}</span></td>
+                <td><span class="card-badge signal" style="{badge_style}">{cat}</span></td>
                 <td style="font-size:13px; color:#334155;">{reason}</td>
             </tr>
         """
@@ -1430,6 +1438,14 @@ def generate_dashboard(base_dir: Path):
         if score_path.exists():
             scoreboard_data = json.loads(score_path.read_text(encoding="utf-8"))
     except: pass
+    
+    # [IS-82] Load Promoted Candidates
+    promoted_candidates = {}
+    try:
+        promoted_path = base_dir / "data" / "issuesignal" / f"promoted_candidates_{ymd}.json"
+        if promoted_path.exists():
+            promoted_candidates = json.loads(promoted_path.read_text(encoding="utf-8"))
+    except: pass
 
     # [E] Historical Archive
     historical_cards = _load_historical_cards(base_dir)
@@ -1514,8 +1530,8 @@ def generate_dashboard(base_dir: Path):
     top1_card_html = TopicCardRenderer.render_top1_card(top1_data) 
     judgment_memory_html = TopicCardRenderer.render_judgment_memory_view(top1_data)
     
-    # [G] Full Candidate View (Hidden or Reference)
-    candidate_view_html = _generate_candidate_view(candidates_data)
+    # [G] Full Candidate View
+    candidate_view_html = _generate_candidate_view(candidates_data, promoted_candidates)
     
     # [I] Generate Ops View HTML
     ops_view_html = _generate_ops_view(scoreboard_data)

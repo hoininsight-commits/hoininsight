@@ -12,6 +12,7 @@ from src.issuesignal.hoin_adapter import HoinAdapter
 from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.content_compiler import ContentCompiler
 from src.issuesignal.watchlist.strategic_watchlist_engine import StrategicWatchlistEngine
+from src.issuesignal.editorial.watchlist_promotion_engine import WatchlistPromotionEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -264,8 +265,14 @@ def main():
         watchlist_engine = StrategicWatchlistEngine(base_dir)
         watchlist_path = watchlist_engine.generate()
         print(f"Strategic Watchlist Ready: {watchlist_path}")
+        
+        # [IS-82] Watchlist Promotion
+        promotion_engine = WatchlistPromotionEngine(base_dir)
+        promoted_path = promotion_engine.process(datetime.utcnow().strftime("%Y-%m-%d"))
+        print(f"Promoted Candidates Ready: {promoted_path}")
+        
     except Exception as e:
-        print(f"WARNING: Watchlist generation failed: {e}")
+        print(f"WARNING: Watchlist/Promotion generation failed: {e}")
 
     # Final: Dashboard Build (IS-27) - Soft fail
     try:
