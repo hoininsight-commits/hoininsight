@@ -2,6 +2,7 @@ from pathlib import Path
 import sys
 from datetime import datetime
 import yaml
+import json
 
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent.parent))
@@ -25,6 +26,8 @@ from src.issuesignal.engines.relative_rerating_engine import RelativeReratingEng
 from src.issuesignal.engines.multi_angle_editorial_composer import MultiAngleEditorialComposer
 from src.issuesignal.engines.statement_document_engine import StatementDocumentEngine
 from src.collectors.statement_collector import StatementCollector
+from src.collectors.statements.official_statement_collector import OfficialStatementCollector
+from src.collectors.statements.policy_document_collector import PolicyDocumentCollector
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -43,15 +46,46 @@ def main():
     adapter = HoinAdapter(base_dir)
     generator = ContentPack(base_dir)
     
-    # [IS-93] Step 0: Narrative Supply (Statement / Person / Document)
-    print("Step 0: Running Statement/Document Narrative Supply (IS-93)...")
-    stmt_collector = StatementCollector(base_dir)
+    # [IS-93R] Step 0: Real Narrative Supply (Statement / Document)
+    print("Step 0: Running Real Statement/Document Narrative Supply (IS-93R)...")
+    official_collector = OfficialStatementCollector(base_dir)
+    policy_collector = PolicyDocumentCollector(base_dir)
     stmt_engine = StatementDocumentEngine(base_dir)
     
-    raw_statements = stmt_collector.collect()
-    statement_candidates = stmt_engine.extract_candidates(raw_statements)
+    # 1. Collect Real Data
+    real_statements = official_collector.collect()
+    real_documents = policy_collector.collect()
+    all_raw_data = real_statements + real_documents
+    
+    # 2. Persist Raw Data
+    ymd_short = datetime.now().strftime("%Y%m%d")
+    stmt_save_dir = base_dir / "data" / "statements"
+    stmt_save_dir.mkdir(parents=True, exist_ok=True)
+    
+    if real_statements:
+        (stmt_save_dir / f"statements_{ymd_short}.json").write_text(json.dumps(real_statements, indent=2, ensure_ascii=False), encoding="utf-8")
+    if real_documents:
+        (stmt_save_dir / f"documents_{ymd_short}.json").write_text(json.dumps(real_documents, indent=2, ensure_ascii=False), encoding="utf-8")
+    
+    # 3. Extract Candidates using Existing Engine
+    # Note: StatementDocumentEngine expects a list of dicts with 'content' and 'source_type'
+    # We map 'person_or_org' to 'entity' for the engine if needed, but our new collectors already provide enough.
+    # The existing engine expects: item.get("content"), item.get("source_type"), item.get("entity"), item.get("organization")
+    mapped_data = []
+    for item in all_raw_data:
+        mapped_data.append({
+            "content": item["content"],
+            "source_type": item["source_type"],
+            "entity": item["person_or_org"],
+            "organization": item.get("organization", "N/A"),
+            "source_url": item.get("source_url", ""),
+            "trust_level": item.get("trust_level", "HARD_FACT")
+        })
+
+    statement_candidates = stmt_engine.extract_candidates(mapped_data)
     
     for sc in statement_candidates:
+        # Check if sc has all required fields for pool
         pool.add_issue({
             "source": sc["source"],
             "content": sc["content"],
@@ -61,10 +95,12 @@ def main():
                 "organization": sc["organization"],
                 "detected_signals": sc["detected_signals"],
                 "why_it_matters_hint": sc["why_it_matters_hint"],
-                "linked_assets": sc["linked_assets"]
+                "linked_assets": sc.get("linked_assets", []),
+                "source_url": sc.get("source_url", ""),
+                "trust_level": sc.get("trust_level", "HARD_FACT")
             }
         })
-    print(f"Added {len(statement_candidates)} statement candidates to pool.")
+    print(f"Added {len(statement_candidates)} real statement/document candidates to pool.")
 
     # 1. Simulate Issue Capture
     test_signal = {
@@ -77,7 +113,6 @@ def main():
     
     # 2. Gate Evaluation
     with open(base_dir / "data" / "issuesignal" / "pool" / f"{issue_id}.json", "r") as f:
-        import json
         issue = json.load(f)
         
     status = gate.evaluate(issue)
@@ -418,7 +453,6 @@ def main():
         if promoted_path:
             # Load, inject, save
             try:
-                import json
                 p_data = json.loads(promoted_path.read_text(encoding="utf-8"))
                 updates = []
                 f_engine = NarrativeFramingEngine(base_dir)
@@ -442,7 +476,6 @@ def main():
             # [IS-84] Script Writer V2 (Promoted Candidates)
             # Reload, generate scripts, save back
             try:
-                import json
                 p_data = json.loads(promoted_path.read_text(encoding="utf-8"))
                 updates = []
                 for c in p_data.get("candidates", []):

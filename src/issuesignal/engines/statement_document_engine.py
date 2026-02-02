@@ -40,6 +40,8 @@ class StatementDocumentEngine:
                     "detected_signals": detected,
                     "why_it_matters_hint": self._generate_hint(detected, item.get("entity", "")),
                     "linked_assets": item.get("linked_assets", []),
+                    "source_url": item.get("source_url", ""),
+                    "trust_level": item.get("trust_level", "HARD_FACT"),
                     "confidence": "CANDIDATE"
                 })
         
