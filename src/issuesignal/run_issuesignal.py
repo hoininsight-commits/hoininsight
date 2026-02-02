@@ -13,6 +13,7 @@ from src.issuesignal.content_pack import ContentPack
 from src.issuesignal.content_compiler import ContentCompiler
 from src.issuesignal.watchlist.strategic_watchlist_engine import StrategicWatchlistEngine
 from src.issuesignal.editorial.watchlist_promotion_engine import WatchlistPromotionEngine
+from src.issuesignal.editorial.editorial_tone_selector import EditorialToneSelector
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -270,6 +271,12 @@ def main():
         promotion_engine = WatchlistPromotionEngine(base_dir)
         promoted_path = promotion_engine.process(datetime.utcnow().strftime("%Y-%m-%d"))
         print(f"Promoted Candidates Ready: {promoted_path}")
+
+        # [IS-83] Editorial Tone Selection
+        if promoted_path:
+            tone_selector = EditorialToneSelector(base_dir)
+            tone_selector.process(promoted_path)
+            print(f"Editorial Tone Applied to Candidates.")
         
     except Exception as e:
         print(f"WARNING: Watchlist/Promotion generation failed: {e}")

@@ -627,8 +627,10 @@ def _generate_candidate_view(candidates_data: Dict[str, Any], promoted_data: Dic
         <table class="archive-table">
             <thead>
                 <tr>
-                    <th width="150">ID</th>
+                    <th width="120">ID</th>
                     <th width="100">분류</th>
+                    <th width="80">Tone</th>
+                    <th width="80">Mode</th>
                     <th>상세 이유</th>
                 </tr>
             </thead>
@@ -644,10 +646,32 @@ def _generate_candidate_view(candidates_data: Dict[str, Any], promoted_data: Dic
         if "WATCHLIST" in cat:
             badge_style = "background:#e0e7ff; color:#4338ca; font-weight:bold;"
             
+        # [IS-83] Tone & Mode Badges
+        tone = c.get("tone_type", "-")
+        mode = c.get("script_mode", "-")
+        
+        tone_color = "#64748b" # Default Gray
+        tone_bg = "#f1f5f9"
+        
+        if tone == "WARNING":
+            tone_color = "#b91c1c" # Red
+            tone_bg = "#fef2f2"
+        elif tone == "PREVIEW":
+            tone_color = "#0369a1" # Blue
+            tone_bg = "#f0f9ff"
+        elif tone == "STRUCTURAL":
+            tone_color = "#7e22ce" # Purple
+            tone_bg = "#faf5ff"
+        elif tone == "SCENARIO":
+            tone_color = "#c2410c" # Orange
+            tone_bg = "#fff7ed"
+
         html += f"""
             <tr>
                 <td><code style="font-size:11px;">{cid}</code></td>
                 <td><span class="card-badge signal" style="{badge_style}">{cat}</span></td>
+                <td><span class="card-badge" style="background:{tone_bg}; color:{tone_color}; font-weight:bold; font-size:10px;">{tone}</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">{mode}</span></td>
                 <td style="font-size:13px; color:#334155;">{reason}</td>
             </tr>
         """
