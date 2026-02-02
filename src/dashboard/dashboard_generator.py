@@ -1164,6 +1164,48 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
         </div>
         """
 
+    # [IS-93] Statement / Person / Document Based Candidates
+    statement_candidates = [c for c in issue_data.get("narrative_candidates", []) if "statement" in c.get("source_mix", [])]
+    if statement_candidates:
+        html += """
+        <div style="background: #fff5f5; border: 1px solid #fecaca; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
+            <div style="font-size: 13px; font-weight: 800; color: #991b1b; margin-bottom: 12px; display: flex; align-items: center;">
+                🗣 발언/문서 기반 이슈 후보 (Statement Layer)
+                <span style="margin-left: 8px; font-size: 10px; font-weight: 500; color: #ef4444; background: #fff; padding: 2px 6px; border-radius: 4px; border: 1px solid #fecaca;">Narrative Supply</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+        """
+        for sc in statement_candidates:
+            signals = ", ".join(sc.get("detected_signals", []))
+            html += f"""
+                <div style="background: #fff; border: 1px solid #fecaca; border-radius: 6px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+                        <div>
+                            <div style="font-size: 11px; font-weight: 800; color: #b91c1c;">{sc.get('entity', '')}</div>
+                            <div style="font-size: 9px; color: #ef4444; font-weight: 600;">{sc.get('organization', '')}</div>
+                        </div>
+                        <span style="font-size: 9px; background: #fee2e2; color: #991b1b; padding: 2px 5px; border-radius: 3px; font-weight: 700;">{signals}</span>
+                    </div>
+                    <div style="font-size: 12px; color: #1e293b; font-weight: 700; margin-bottom: 6px; line-height: 1.4;">
+                        "{sc.get('theme', '')}"
+                    </div>
+                    <div style="font-size: 10px; color: #4b5563; background: #f9fafb; padding: 8px; border-radius: 4px; border-left: 2px solid #fecaca; margin-bottom: 8px; font-style: italic;">
+                        {sc.get('raw_text', '')}
+                    </div>
+                    <div style="font-size: 10px; color: #dc2626; font-weight: 600;">
+                        💡 해석 힌트: {sc.get('why_now', '')}
+                    </div>
+                </div>
+            """
+            
+        html += """
+            </div>
+            <div style="margin-top: 10px; font-size: 10px; color: #991b1b; text-align: center; font-style: italic; opacity: 0.8;">
+                * 본 섹션은 확정된 투자 판단이 아닌 발언/문서 기반의 해석 후보군을 제공합니다.
+            </div>
+        </div>
+        """
+
     # [IS-87] Editor Pick (Daily Editorial Selector)
     editorial_selection = issue_data.get("editorial_selection", {})
     picks = editorial_selection.get("picks", [])

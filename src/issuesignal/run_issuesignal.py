@@ -23,6 +23,8 @@ from src.issuesignal.engines.calendar_trigger_engine import CalendarTriggerEngin
 from src.issuesignal.engines.numeric_evidence_engine import NumericEvidenceEngine
 from src.issuesignal.engines.relative_rerating_engine import RelativeReratingEngine
 from src.issuesignal.engines.multi_angle_editorial_composer import MultiAngleEditorialComposer
+from src.issuesignal.engines.statement_document_engine import StatementDocumentEngine
+from src.collectors.statement_collector import StatementCollector
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -41,6 +43,29 @@ def main():
     adapter = HoinAdapter(base_dir)
     generator = ContentPack(base_dir)
     
+    # [IS-93] Step 0: Narrative Supply (Statement / Person / Document)
+    print("Step 0: Running Statement/Document Narrative Supply (IS-93)...")
+    stmt_collector = StatementCollector(base_dir)
+    stmt_engine = StatementDocumentEngine(base_dir)
+    
+    raw_statements = stmt_collector.collect()
+    statement_candidates = stmt_engine.extract_candidates(raw_statements)
+    
+    for sc in statement_candidates:
+        pool.add_issue({
+            "source": sc["source"],
+            "content": sc["content"],
+            "metadata": {
+                "type": "STATEMENT",
+                "entity": sc["entity"],
+                "organization": sc["organization"],
+                "detected_signals": sc["detected_signals"],
+                "why_it_matters_hint": sc["why_it_matters_hint"],
+                "linked_assets": sc["linked_assets"]
+            }
+        })
+    print(f"Added {len(statement_candidates)} statement candidates to pool.")
+
     # 1. Simulate Issue Capture
     test_signal = {
         "source": "NEWS_API",
@@ -326,7 +351,7 @@ def main():
                 watchlist_data = json.load(f)
                 
         fusion_engine = IssueFusionEngine(base_dir)
-        narrative_candidates = fusion_engine.generate_candidates(issue_json, watchlist_data)
+        narrative_candidates = fusion_engine.generate_candidates(issue_json, watchlist_data, statement_candidates=statement_candidates)
         
         # Merge Calendar Candidates into Narrative Candidates
         narrative_candidates.extend(calendar_candidates)

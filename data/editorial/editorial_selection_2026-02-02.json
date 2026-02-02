@@ -2,6 +2,57 @@
     "date": "2026-02-02",
     "picks": [
         {
+            "id": "NC-STMT-STMT-49772",
+            "source_mix": [
+                "statement",
+                "Person (Interview)",
+                "numeric",
+                "relative"
+            ],
+            "dominant_type": "FACT",
+            "theme": "Jensen Huang (NVIDIA)의 의도: 실행 시점 및 강력한 의도 포착 / 공급망 및 인프라 구조적 변화 암시 / 압도적 규모의 물리적 성과 언급",
+            "why_now": "실제 발언('The demand for Blackwell is record-breaking. We ar...')을 통해 포착된 ['TIME', 'INTENT', 'SCALE', 'STRUCTURE'] 신호입니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "EDITORIAL_VIEW",
+            "status": "CANDIDATE",
+            "entity": "Jensen Huang",
+            "organization": "NVIDIA",
+            "raw_text": "The demand for Blackwell is record-breaking. We are focused on increasing capacity to resolve the bottleneck in the global supply chain. This trillion-dollar cycle is now just beginning.",
+            "detected_signals": [
+                "TIME",
+                "INTENT",
+                "SCALE",
+                "STRUCTURE"
+            ],
+            "numeric_evidence": [
+                {
+                    "name": "Data Center Revenue",
+                    "value": "$30.8B",
+                    "growth": "+112% YoY"
+                },
+                {
+                    "name": "Gross Margin",
+                    "value": "75.0%",
+                    "growth": "+1.0% QoQ"
+                }
+            ],
+            "numeric_source": "https://nvidianews.nvidia.com/",
+            "relative_card": {
+                "peer_group": "BigTech",
+                "perf_gap_1y": "+152%",
+                "valuation_band": "35x",
+                "avg_pe": "42x",
+                "rerate_thesis": "BigTech 대비 +152% 초과수익, 밸류에이션 부담 점검 필요",
+                "risk_anchor": "금리 변동성 확대 시 멀티플 축소 위험"
+            },
+            "angles": [
+                "PERSON"
+            ],
+            "editor_score": 135,
+            "editor_rationale": "Multi-Signal Fusion / Economic Hunter Deep Dive / Structural Bridge",
+            "selected_rank": 1
+        },
+        {
             "id": "NC-CAL-EARN-NVDA-2026-02-10",
             "source_mix": [
                 "schedule",
@@ -40,8 +91,8 @@
             ],
             "editor_score": 135,
             "editor_rationale": "Strong Why-Now / Multi-Signal Fusion / Economic Hunter Deep Dive",
-            "selected_rank": 1
+            "selected_rank": 2
         }
     ],
-    "summary_line": "오늘의 최종 선택은 1건입니다."
+    "summary_line": "오늘의 최종 선택은 2건입니다."
 }

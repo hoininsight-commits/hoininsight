@@ -50,6 +50,105 @@
             ]
         },
         {
+            "id": "NC-STMT-STMT-757545",
+            "source_mix": [
+                "statement",
+                "Person (Social)"
+            ],
+            "dominant_type": "FACT",
+            "theme": "Elon Musk (xAI / Tesla)의 의도: 실행 시점 및 강력한 의도 포착 / 공급망 및 인프라 구조적 변화 암시 / 압도적 규모의 물리적 성과 언급 / 시장 점유율 및 경쟁 구도 재편 가능성",
+            "why_now": "실제 발언('We decided to prioritize the massive GPU cluster i...')을 통해 포착된 ['TIME', 'INTENT', 'SCALE', 'STRUCTURE', 'COMPETITION'] 신호입니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "EDITORIAL_VIEW",
+            "status": "CANDIDATE",
+            "entity": "Elon Musk",
+            "organization": "xAI / Tesla",
+            "raw_text": "We decided to prioritize the massive GPU cluster immediately. This year, we will build the most significant AI infrastructure from 2026. This is a supply constraint challenge, but our platform is unbeatable.",
+            "detected_signals": [
+                "TIME",
+                "INTENT",
+                "SCALE",
+                "STRUCTURE",
+                "COMPETITION"
+            ],
+            "angles": [
+                "PERSON"
+            ]
+        },
+        {
+            "id": "NC-STMT-STMT-49772",
+            "source_mix": [
+                "statement",
+                "Person (Interview)",
+                "numeric",
+                "relative"
+            ],
+            "dominant_type": "FACT",
+            "theme": "Jensen Huang (NVIDIA)의 의도: 실행 시점 및 강력한 의도 포착 / 공급망 및 인프라 구조적 변화 암시 / 압도적 규모의 물리적 성과 언급",
+            "why_now": "실제 발언('The demand for Blackwell is record-breaking. We ar...')을 통해 포착된 ['TIME', 'INTENT', 'SCALE', 'STRUCTURE'] 신호입니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "EDITORIAL_VIEW",
+            "status": "CANDIDATE",
+            "entity": "Jensen Huang",
+            "organization": "NVIDIA",
+            "raw_text": "The demand for Blackwell is record-breaking. We are focused on increasing capacity to resolve the bottleneck in the global supply chain. This trillion-dollar cycle is now just beginning.",
+            "detected_signals": [
+                "TIME",
+                "INTENT",
+                "SCALE",
+                "STRUCTURE"
+            ],
+            "numeric_evidence": [
+                {
+                    "name": "Data Center Revenue",
+                    "value": "$30.8B",
+                    "growth": "+112% YoY"
+                },
+                {
+                    "name": "Gross Margin",
+                    "value": "75.0%",
+                    "growth": "+1.0% QoQ"
+                }
+            ],
+            "numeric_source": "https://nvidianews.nvidia.com/",
+            "relative_card": {
+                "peer_group": "BigTech",
+                "perf_gap_1y": "+152%",
+                "valuation_band": "35x",
+                "avg_pe": "42x",
+                "rerate_thesis": "BigTech 대비 +152% 초과수익, 밸류에이션 부담 점검 필요",
+                "risk_anchor": "금리 변동성 확대 시 멀티플 축소 위험"
+            },
+            "angles": [
+                "PERSON"
+            ]
+        },
+        {
+            "id": "NC-STMT-STMT-559596",
+            "source_mix": [
+                "statement",
+                "Document (Policy)"
+            ],
+            "dominant_type": "FACT",
+            "theme": "SEC / Government (U.S. Government)의 의도: 실행 시점 및 강력한 의도 포착 / 공급망 및 인프라 구조적 변화 암시 / 압도적 규모의 물리적 성과 언급 / 시장 점유율 및 경쟁 구도 재편 가능성",
+            "why_now": "실제 발언('The new regulatory framework for AI safety will be...')을 통해 포착된 ['TIME', 'SCALE', 'STRUCTURE', 'COMPETITION'] 신호입니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "EDITORIAL_VIEW",
+            "status": "CANDIDATE",
+            "entity": "SEC / Government",
+            "organization": "U.S. Government",
+            "raw_text": "The new regulatory framework for AI safety will be applied immediately. Significant market share players must disclose infrastructure investments to avoid monopoly charges.",
+            "detected_signals": [
+                "TIME",
+                "SCALE",
+                "STRUCTURE",
+                "COMPETITION"
+            ],
+            "angles": [
+                "PERSON"
+            ]
+        },
+        {
             "id": "NC-CAL-EARN-NVDA-2026-02-10",
             "source_mix": [
                 "schedule",
