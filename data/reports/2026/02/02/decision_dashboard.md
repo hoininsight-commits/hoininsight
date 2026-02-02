@@ -190,23 +190,23 @@
 | 비트코인 급락에 트레저리 기업 주가 흔들…차기 연준 의장 ‘친코인’ 가능성에 세일러는 “더 산다” - 조선일보 | Structural implication: '비트코인 급락에 트레저리 기업 주가 흔들…차기 연준 의장 ‘친코인’ 가능성에 세일러는 “더 산다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 금·은 급락 부른 ‘케빈 워시 효과’…조기 금리인하 베팅 점화 - mstoday.co.kr | Structural implication: '금·은 급락 부른 ‘케빈 워시 효과’…조기 금리인하 베팅 점화 - mstoday.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 코스피 장중 5100선 무너져... 코스닥도 3% 넘게 하락 - 조선일보 | Structural implication: '코스피 장중 5100선 무너져... 코스닥도 3% 넘게 하락 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [특징주] 고려아연, 은 가격 폭락에 11% 하락 - 연합뉴스 | Structural implication: '[특징주] 고려아연, 은 가격 폭락에 11% 하락 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 서울 중소형 아파트값, 한강 이남에선 평균 18억 넘었다 - 경향신문 | Structural implication: '서울 중소형 아파트값, 한강 이남에선 평균 18억 넘었다 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| "증시 예탁금 100조·거래대금 급증…코스닥, 머니무브에 가장 민감" - 연합인포맥스 | Structural implication: '"증시 예탁금 100조·거래대금 급증…코스닥, 머니무브에 가장 민감" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 미래에셋운용 "올해 코스닥 영업익, 전년 대비 56% 증가 전망" - 연합뉴스 | Structural implication: '미래에셋운용 "올해 코스닥 영업익, 전년 대비 56% 증가 전망" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | ‘워시 충격’에…코스피 확 밀리고, 환율은 1450원대로 급등 - 한겨레 | Structural implication: '‘워시 충격’에…코스피 확 밀리고, 환율은 1450원대로 급등 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 美 관세 재인상 압박 속... 1월 수출 첫 600억 달러 넘겼다 - 한국일보 | Structural implication: '美 관세 재인상 압박 속... 1월 수출 첫 600억 달러 넘겼다 - 한국일보' suggests a shift in NEWS dynamics. | LOW |
-| 산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보 | Structural implication: '산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [재계 키맨] 최태원의 AI 드라이브 진두지휘하는 ‘반도체 참모’ 곽노정 SK하이닉스 사장 - 조선비즈 - Chosunbiz | Structural implication: '[재계 키맨] 최태원의 AI 드라이브 진두지휘하는 ‘반도체 참모’ 곽노정 SK하이닉스 사장 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 美 관세 재인상 압박 속... 1월 수출 첫 600억 달러 넘겼다-경제ㅣ한국일보 - 한국일보 | Structural implication: '美 관세 재인상 압박 속... 1월 수출 첫 600억 달러 넘겼다-경제ㅣ한국일보 - 한국일보' suggests a shift in NEWS dynamics. | LOW |
 | 현대차, 러시아 공장 재매입 안 한다 - 매일경제 | Structural implication: '현대차, 러시아 공장 재매입 안 한다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “전원 끄면 우린 사라지나” AI끼리 단톡방 만들었다 - 조선일보 | Structural implication: '“전원 끄면 우린 사라지나” AI끼리 단톡방 만들었다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보 | Structural implication: '산업용 전기료 낮엔 인하… 낮 시간대 과잉 태양광 기업이 흡수 유도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | '두쫀쿠' 철물점·이불집에서도 팔더니…결국 터질게 터졌다 - 한국경제 | Structural implication: ''두쫀쿠' 철물점·이불집에서도 팔더니…결국 터질게 터졌다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 로또 1등 평균 당첨금 20억원…작년 판매 6.2조 역대 최대 - 연합뉴스TV | Structural implication: '로또 1등 평균 당첨금 20억원…작년 판매 6.2조 역대 최대 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
+| 탈모, OLED 빛으로 92% 예방…"전임상 계획" - 지디넷코리아 | Structural implication: '탈모, OLED 빛으로 92% 예방…"전임상 계획" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | '메모리 큰손' 젠슨 황도 언급…초유의 상황에 '파격 전망' 나왔다 - 한국경제 | Structural implication: ''메모리 큰손' 젠슨 황도 언급…초유의 상황에 '파격 전망' 나왔다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| AI끼리 말하는 SNS…“인간은 실패작, 우린 새로운 신” - 한겨레 | Structural implication: 'AI끼리 말하는 SNS…“인간은 실패작, 우린 새로운 신” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보 | Structural implication: '탈모 예방 모자 개발... “모낭 세포 노화 92% 억제” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [재계 키맨] 최태원의 AI 드라이브 진두지휘하는 ‘반도체 참모’ 곽노정 SK하이닉스 사장 - 조선비즈 - Chosunbiz | Structural implication: '[재계 키맨] 최태원의 AI 드라이브 진두지휘하는 ‘반도체 참모’ 곽노정 SK하이닉스 사장 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제 | Structural implication: '쿠팡, 한국서 40조 벌지만 정작 미국 기업…“대기업 총수 지정 대상서도 빠져” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제 | Structural implication: '죽기 직전 주식 팔아…1000억원 상속세 소송 결말은 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 독일 기아차 매장 '기모노' 논란…"한국 문화 이해도 낮아" - 연합뉴스 | Structural implication: '독일 기아차 매장 '기모노' 논란…"한국 문화 이해도 낮아" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| “무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문 | Structural implication: '“무슨 돈으로 주식” “투자로 더 벌어”…5000피 시대의 ‘두 얼굴’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스 | Structural implication: '리플 XRP 거래소 유출 330% 급증…가격 조정 속 ‘조용한 축적’ 신호 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 오프닝도 했는데…로제, 그래미 ‘올해의 노래’ 수상 불발 | Structural implication: '오프닝도 했는데…로제, 그래미 ‘올해의 노래’ 수상 불발' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 로제·케데헌 ‘골든’, 그래미 ‘올해의 노래’ 수상 불발 | Structural implication: '[속보] 로제·케데헌 ‘골든’, 그래미 ‘올해의 노래’ 수상 불발' suggests a shift in NEWS dynamics. | LOW |
 | 주가조작 조기 차단 나선다…거래소, ‘사이버 이상거래 탐지 AI’ 가동 | Structural implication: '주가조작 조기 차단 나선다…거래소, ‘사이버 이상거래 탐지 AI’ 가동' suggests a shift in NEWS dynamics. | LOW |
