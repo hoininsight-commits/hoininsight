@@ -1171,7 +1171,7 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
         html += """
         <div style="background: #fff; border: 2px solid #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <div style="font-size: 12px; font-weight: 900; color: #1e293b; letter-spacing: 1px;">EDITOR PICK: 오늘의 최종 선택</div>
+                <div style="font-size: 12px; font-weight: 900; color: #1e293b; letter-spacing: 1px;">EDITOR PICK: 오늘의 콘텐츠 후보</div>
                 <div style="font-size: 11px; color: #64748b; font-weight: 500;">""" + editorial_selection.get('summary_line', '') + """</div>
             </div>
         """
@@ -2391,7 +2391,8 @@ def generate_dashboard(base_dir: Path):
         print(f"[Dashboard] Copied operational_dashboard.md to {today_report_dst}")
 
     (base_dir / "docs" / "index.html").write_text(html, encoding="utf-8")
-    print(f"[Dashboard] Generated docs/index.html with YouTube Inbox (Restored)")
+    (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
+    print(f"[Dashboard] Generated docs/index.html and dashboard/index.html with YouTube Inbox (Restored)")
     return html
 
 
