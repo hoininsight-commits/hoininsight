@@ -22,6 +22,7 @@ from src.editorial.editorial_selector import DailyEditorialSelector
 from src.issuesignal.engines.calendar_trigger_engine import CalendarTriggerEngine
 from src.issuesignal.engines.numeric_evidence_engine import NumericEvidenceEngine
 from src.issuesignal.engines.relative_rerating_engine import RelativeReratingEngine
+from src.issuesignal.engines.multi_angle_editorial_composer import MultiAngleEditorialComposer
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -340,6 +341,11 @@ def main():
         relative_engine = RelativeReratingEngine(base_dir)
         narrative_candidates = relative_engine.attach_relative_card(narrative_candidates)
         
+        # [IS-92] Multi-Angle Editorial Composer
+        print("Step 5D: Running Multi-Angle Editorial Composer (IS-92)...")
+        composer = MultiAngleEditorialComposer(base_dir)
+        multi_angle_editorial = composer.compose(narrative_candidates)
+        
         # Save Narrative Candidates
         nc_path = base_dir / "data" / "narratives" / f"narrative_candidates_{ymd}.json"
         nc_path.parent.mkdir(parents=True, exist_ok=True)
@@ -375,6 +381,9 @@ def main():
             "picks": editorial_selection,
             "summary_line": f"오늘의 최종 선택은 {len(editorial_selection)}건입니다."
         }
+        
+        # Inject IS-92 Multi-Angle Editorial
+        issue_json["multi_angle_editorial"] = multi_angle_editorial
 
         # Re-save Main Issue Pack to include candidates & selection
         with open(issue_path, "w", encoding="utf-8") as jf:

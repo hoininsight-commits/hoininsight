@@ -1118,6 +1118,52 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
         script_label = "📝 Long-form Script (Operator Mode)"
     
     
+    
+    # [IS-92] Multi-Angle Editorial View
+    multi_angle = issue_data.get("multi_angle_editorial", {})
+    slots = multi_angle.get("slots", [])
+    if slots:
+        html += """
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
+            <div style="font-size: 13px; font-weight: 800; color: #475569; margin-bottom: 12px; display: flex; align-items: center;">
+                📌 오늘의 해석 구도 (Multi-Angle View)
+                <span style="margin-left: 8px; font-size: 10px; font-weight: 500; color: #94a3b8; background: #fff; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0;">Advanced Editorial</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        """
+        for slot in slots:
+            angle = slot.get("angle", "STRUCTURE")
+            # Color map for angles
+            acolors = {
+                "STRUCTURE": "#1e3a8a",
+                "SCHEDULE": "#10b981",
+                "PERSON": "#f59e0b",
+                "ANOMALY": "#dc2626"
+            }
+            acolor = acolors.get(angle, "#64748b")
+            
+            html += f"""
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="font-size: 9px; font-weight: 800; color: {acolor}; margin-bottom: 4px; text-transform: uppercase;">
+                        {slot.get('slot_id')} / {angle}
+                    </div>
+                    <div style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
+                        {slot.get('title')}
+                    </div>
+                    <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
+                        {slot.get('why_now')}
+                    </div>
+                </div>
+            """
+            
+        html += f"""
+            </div>
+            <div style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center; font-style: italic;">
+                * {multi_angle.get('footer_disclaimer', '')}
+            </div>
+        </div>
+        """
+
     # [IS-87] Editor Pick (Daily Editorial Selector)
     editorial_selection = issue_data.get("editorial_selection", {})
     picks = editorial_selection.get("picks", [])
