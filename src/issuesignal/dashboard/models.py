@@ -47,6 +47,8 @@ class DecisionCard:
     content_package_v2: Dict[str, Any] = field(default_factory=dict)
     # IS-84 Extension (Framing)
     narrative_framing: str = ""
+    # IS-85 Urgency
+    urgency_sentence: str = ""
 
 @dataclass
 class RejectLog:

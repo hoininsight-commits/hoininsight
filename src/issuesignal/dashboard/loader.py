@@ -138,7 +138,8 @@ class DashboardLoader:
                             # IS-84 Content Packages
                             content_package=data.get("content_package", {}),
                             content_package_v2=data.get("content_package_v2", {}),
-                            narrative_framing=data.get("narrative_framing", "")
+                            narrative_framing=data.get("narrative_framing", ""),
+                            urgency_sentence=data.get("urgency_sentence", "")
                         ))
                 except Exception as e:
                     print(f"ERROR: Failed to load card {f}: {e}")

@@ -16,6 +16,7 @@ from src.issuesignal.editorial.watchlist_promotion_engine import WatchlistPromot
 from src.issuesignal.editorial.editorial_tone_selector import EditorialToneSelector
 from src.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
 from src.issuesignal.narrative.narrative_framing_engine import NarrativeFramingEngine
+from src.issuesignal.narrative.urgency_amplifier import UrgencyAmplifierEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -267,6 +268,10 @@ def main():
         }
         issue_json["narrative_framing"] = framing_engine.generate(main_candidate_for_framing)
 
+        # [IS-85] Urgency Amplifier (Main)
+        urgency_engine = UrgencyAmplifierEngine(base_dir)
+        issue_json["urgency_sentence"] = urgency_engine.generate(main_candidate_for_framing, tone="WARNING")
+
         # [IS-84] Script Writer V2 (Main Issue)
         # Determine main tone first (Defaulting for now if Selector not run on Main)
         main_candidate_mock = {
@@ -307,8 +312,10 @@ def main():
                 p_data = json.loads(promoted_path.read_text(encoding="utf-8"))
                 updates = []
                 f_engine = NarrativeFramingEngine(base_dir)
+                u_engine = UrgencyAmplifierEngine(base_dir)
                 for c in p_data.get("candidates", []):
                     c["narrative_framing"] = f_engine.generate(c)
+                    c["urgency_sentence"] = u_engine.generate(c, tone=c.get("tone", "WARNING"))
                     updates.append(c)
                 p_data["candidates"] = updates
                 with open(promoted_path, "w", encoding="utf-8") as f:

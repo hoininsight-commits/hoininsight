@@ -1126,7 +1126,6 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
 
     # [IS-84 Extension] Narrative Framing
     framing = issue_data.get("narrative_framing", "")
-    print(f"DEBUG: Framing in dashboard_generator: '{framing}' Keys: {list(issue_data.keys())}")
     if framing:
         html += f"""
         <div style="background: #f1f5f9; border-radius: 6px; padding: 12px; margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0;">
@@ -1140,6 +1139,21 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
         </div>
         """
     
+    # [IS-85 Extension] Urgency Amplifier
+    urgency = issue_data.get("urgency_sentence", "")
+    if urgency:
+        html += f"""
+        <div style="background: #fff; border-left: 4px solid #dc2626; border-radius: 4px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+            <div style="font-size: 11px; font-weight: 800; color: #dc2626; margin-bottom: 6px; text-transform: uppercase;">[WHY THIS MATTERS NOW]</div>
+            <div style="font-size: 15px; color: #1e293b; font-weight: 700; line-height: 1.5;">
+                {urgency}
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #dc2626; opacity: 0.8;">
+                * 이 문장은 투자 확정이 아닌, 시점 중요성에 대한 해석입니다.
+            </div>
+        </div>
+        """
+
     # 4. Long Form Script (Default Open)
     if long_form:
         html += f"""
