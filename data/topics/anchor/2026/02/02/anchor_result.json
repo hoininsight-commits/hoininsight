@@ -1,19 +1,18 @@
 {
   "data_axis": [
-    "metal_silver_kag_coingecko",
     "derived_gold_silver_ratio"
   ],
   "baseline_match": [
-    "metal_silver_kag_coingecko: Volatility Surge (Z=2.48)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=3.26)"
+    "derived_gold_silver_ratio: Single Axis Surge (Z=2.37)"
   ],
-  "anomaly_logic": "Unknown",
+  "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation > 2.0 Sigma",
-  "gap_detection": "Insufficient Evidence for L4",
+  "level_proof": "Statistical Deviation Z=2.37 (No Cluster)",
+  "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
-    "Need Volume/Flow Data to verify Capital Fixation"
+    "Need Correlated Asset Movement",
+    "Need News/Event Confirmation"
   ],
   "pre_structural_context": null
 }
