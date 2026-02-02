@@ -12,13 +12,14 @@ class IssueFusionEngine:
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
 
-    def generate_candidates(self, issue_json: Dict[str, Any], watchlist: Dict[str, Any], statement_candidates: Optional[List[Dict[str, Any]]] = None) -> List[Dict[str, Any]]:
+    def generate_candidates(self, issue_json: Dict[str, Any], watchlist: Dict[str, Any], statement_candidates: Optional[List[Dict[str, Any]]] = None, momentum_results: Optional[List[Dict[str, Any]]] = None) -> List[Dict[str, Any]]:
         """
         Generates narrative candidates based on fusion rules.
         
         Inputs:
          - issue_json: Main Issue Signal output (IS-73~)
          - watchlist: Strategic Watchlist (IS-81/82)
+         - momentum_results: Result from StatementMomentumEngine (IS-94)
          
         Returns:
          - List of candidate dictionaries.
@@ -83,7 +84,32 @@ class IssueFusionEngine:
 
         # Rule 4: Statement/Document Fusion (INTENT/STRUCTURE)
         if statement_candidates:
+            # Map momentum for quick lookup
+            momentum_map = {}
+            if momentum_results:
+                for m in momentum_results:
+                    momentum_map[(m["person"], m["theme"])] = m
+
             for sc in statement_candidates:
+                person = sc.get("entity", "Unknown")
+                # Inference theme for lookup if not present, but better to match precisely
+                # Here we simplify: if momentum exists for this person, we check themes
+                m_data = None
+                for (p, t), val in momentum_map.items():
+                    if p == person:
+                        m_data = val # Take latest/relevant for this person for now
+                        break
+                
+                weight_bonus = 0
+                status_label = "CANDIDATE"
+                if m_data:
+                    if m_data["momentum_state"] == "ESCALATING":
+                        weight_bonus = 2
+                        status_label = "ESCALATING"
+                    elif m_data["momentum_state"] == "BUILDING":
+                        weight_bonus = 1
+                        status_label = "BUILDING"
+
                 candidates.append({
                     "id": f"NC-STMT-{sc['id']}",
                     "source_mix": ["statement", sc["source"]],
@@ -91,8 +117,10 @@ class IssueFusionEngine:
                     "theme": f"{sc['entity']} ({sc['organization']})의 의도: {sc['why_it_matters_hint']}",
                     "why_now": f"실제 발언('{sc['content'][:50]}...')을 통해 포착된 {sc['detected_signals']} 신호입니다.",
                     "confidence_level": "HIGH",
-                    "promotion_hint": "EDITORIAL_VIEW",
-                    "status": "CANDIDATE",
+                    "momentum_weight": weight_bonus,
+                    "momentum_state": status_label,
+                    "promotion_hint": "EDITORIAL_VIEW" if status_label == "ESCALATING" else "DAILY_VIEW",
+                    "status": status_label,
                     "entity": sc["entity"],
                     "organization": sc["organization"],
                     "raw_text": sc["content"],

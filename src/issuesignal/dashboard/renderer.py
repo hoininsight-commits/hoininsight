@@ -1,5 +1,5 @@
 from .models import DashboardSummary, DecisionCard, RejectLog, HoinEvidenceItem, UnifiedLinkRow
-from typing import List
+from typing import List, Dict, Any
 
 class DashboardRenderer:
     """
@@ -147,6 +147,19 @@ class DashboardRenderer:
         
         .expand-btn {{ background: transparent; color: var(--blue); border: none; font-weight: 700; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px; }}
         .expand-btn:hover {{ text-decoration: underline; }}
+
+        /* Momentum Cards (IS-94) */
+        .momentum-card {{ background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
+        .momentum-header {{ display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }}
+        .momentum-person {{ font-weight: 800; font-size: 16px; color: #1e293b; }}
+        .momentum-theme {{ font-size: 12px; color: var(--blue); font-weight: 700; margin-top: 4px; }}
+        .momentum-badge {{ padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; display: inline-block; }}
+        .badge-escalating {{ background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }}
+        .badge-building {{ background: #fef3c7; color: #92400E; border: 1px solid #fcd34d; }}
+        .badge-stable {{ background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }}
+        .momentum-reason {{ font-size: 13px; color: var(--text-sub); margin-top: 12px; line-height: 1.6; background: #f8fafc; padding: 12px; border-radius: 8px; border-left: 3px solid #cbd5e1; }}
+        .momentum-footer {{ font-size: 11px; color: #94a3b8; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #e2e8f0; }}
+        .collapsible-momentum {{ display: none; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }}
     </style>
 </head>
 <body>
@@ -187,6 +200,11 @@ class DashboardRenderer:
 
         <div class="section-title">🔭 사전 트리거 감시망 (관찰 중)</div>
         {self._render_watchlist(summary.watchlist)}
+
+        <div class="section-title">🔥 발언 모멘텀 감지 (Statement Momentum)</div>
+        <div style="margin-bottom: 40px;">
+            {self._render_momentum_section(summary.momentum_list)}
+        </div>
 
         <div class="section-title">🚫 품질 하한선 미달 및 반려 기록</div>
         <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
@@ -922,5 +940,64 @@ class DashboardRenderer:
         <div style="background:white; border:1px solid #e2e8f0; padding:10px; border-radius:8px; display:inline-flex; align-items:flex-start; gap:5px;">
             <div style="font-size:9px; font-weight:800; color:#64748b; margin-right:8px; writing-mode:vertical-lr; transform:rotate(180deg);">의사결정 트리</div>
             {''.join(tree_html)}
+        </div>
+        """
+    def _render_momentum_section(self, momentum_list: List[Dict[str, Any]]) -> str:
+        if not momentum_list:
+            return "<div style='color:var(--text-sub); background:white; padding:20px; border-radius:12px; border:1px solid var(--border);'>현재 감지된 유의미한 발언 모멘텀이 없습니다.</div>"
+
+        # Separate by state
+        escalating = [m for m in momentum_list if m["momentum_state"] == "ESCALATING"]
+        building = [m for m in momentum_list if m["momentum_state"] == "BUILDING"]
+        # Stable is usually hidden as per requirement, but we might show if nothing else? 
+        # Requirement: "STABLE은 숨김"
+
+        items = []
+
+        # Render Escalating first (Prominent)
+        for m in escalating:
+            items.append(self._render_single_momentum_card(m, "badge-escalating"))
+
+        # Render Building (Collapsible)
+        if building:
+            building_cards = "\n".join([self._render_single_momentum_card(m, "badge-building") for m in building])
+            items.append(f"""
+            <div style="margin-top: 20px;">
+                <button onclick="toggleElement('momentum-building')" style="background:none; border:none; color:var(--text-sub); font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                    📈 점증 중인 모멘텀 ({len(building)}) 보기 <span id="momentum-building-arrow">▾</span>
+                </button>
+                <div id="momentum-building" style="display:none; margin-top:15px;">
+                    {building_cards}
+                </div>
+            </div>
+            """)
+
+        footer_note = """
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 15px; line-height: 1.5;">
+            💡 <b>안내:</b> 본 항목은 특정 주체의 발언 빈도와 강도 변화를 추적한 '의도(Intent)' 분석입니다. 
+            단순 뉴스가 아닌 구조적 흐름의 변화를 감지하기 위한 실험적 레이어입니다.
+        </div>
+        """
+        
+        return "\n".join(items) + footer_note
+
+    def _render_single_momentum_card(self, m: Dict[str, Any], badge_class: str) -> str:
+        state_ko = "에스컬레이션" if m["momentum_state"] == "ESCALATING" else "관심도 상승"
+        
+        return f"""
+        <div class="momentum-card">
+            <div class="momentum-header">
+                <div>
+                    <div class="momentum-person">{m['person']}</div>
+                    <div class="momentum-theme">#{m['theme']}</div>
+                </div>
+                <span class="momentum-badge {badge_class}">{state_ko} (Score: {m['momentum_score']})</span>
+            </div>
+            <div class="momentum-reason">
+                <b>💡 감지 이유:</b> {m['escalation_reason']}
+            </div>
+            <div class="momentum-footer">
+                최초 포착: {m['first_seen_date']} | 최근 발언: {m['last_seen_date']} ({m['mention_count_30d']}회 언급)
+            </div>
         </div>
         """

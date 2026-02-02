@@ -76,18 +76,39 @@ class DashboardLoader:
         # 5. Create Link View (IS-29)
         link_view = self._create_link_view(cards, hoin_evidence)
 
+        # 6. Load Momentum (IS-94)
+        momentum_data = self._load_momentum(ymd_requested)
+        
+        # Prepare variables for DashboardSummary
+        timeline_data = self._generate_mock_timeline(ymd)
+        hoin_evidence_items = hoin_evidence # Renaming for clarity as per instruction snippet
+
         return DashboardSummary(
-            date=ymd,
+            date=ymd_requested,
             engine_status="SUCCESS",
             counts=counts,
             top_cards=top_cards,
             watchlist=watchlist,
             hold_queue=hold_queue,
             reject_logs=reject_logs,
-            timeline=self._generate_mock_timeline(ymd),
-            hoin_evidence=hoin_evidence,
-            link_view=link_view
+            timeline=timeline_data,
+            hoin_evidence=hoin_evidence_items,
+            link_view=link_view,
+            momentum_list=momentum_data
         )
+
+    def _load_momentum(self, ymd_requested: str) -> List[Dict[str, Any]]:
+        # Map YYYY-MM-DD to YYYYMMDD
+        ymd_short = ymd_requested.replace("-", "")
+        momentum_path = self.base_dir / "data" / "momentum" / f"statement_momentum_{ymd_short}.json"
+        
+        if momentum_path.exists():
+            try:
+                data = json.loads(momentum_path.read_text(encoding="utf-8"))
+                return data.get("momentum_list", [])
+            except:
+                pass
+        return []
 
     def _load_recent_cards(self) -> List[DecisionCard]:
         """

@@ -28,6 +28,7 @@ from src.issuesignal.engines.statement_document_engine import StatementDocumentE
 from src.collectors.statement_collector import StatementCollector
 from src.collectors.statements.official_statement_collector import OfficialStatementCollector
 from src.collectors.statements.policy_document_collector import PolicyDocumentCollector
+from src.issuesignal.engines.statement_momentum_engine import StatementMomentumEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -101,6 +102,12 @@ def main():
             }
         })
     print(f"Added {len(statement_candidates)} real statement/document candidates to pool.")
+
+    # [IS-94] Step 0.5: Statement Momentum Analysis
+    print("Step 0.5: Running Statement Momentum Analysis (IS-94)...")
+    momentum_engine = StatementMomentumEngine(base_dir)
+    momentum_results = momentum_engine.process(all_raw_data)
+    print(f"Momentum Analysis complete. Detected {len([m for m in momentum_results if m['momentum_state'] != 'STABLE'])} active movements.")
 
     # 1. Simulate Issue Capture
     test_signal = {
@@ -386,7 +393,12 @@ def main():
                 watchlist_data = json.load(f)
                 
         fusion_engine = IssueFusionEngine(base_dir)
-        narrative_candidates = fusion_engine.generate_candidates(issue_json, watchlist_data, statement_candidates=statement_candidates)
+        narrative_candidates = fusion_engine.generate_candidates(
+            issue_json, 
+            watchlist_data, 
+            statement_candidates=statement_candidates,
+            momentum_results=momentum_results
+        )
         
         # Merge Calendar Candidates into Narrative Candidates
         narrative_candidates.extend(calendar_candidates)

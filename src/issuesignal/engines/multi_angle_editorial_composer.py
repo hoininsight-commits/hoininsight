@@ -31,11 +31,21 @@ class MultiAngleEditorialComposer:
             selected_ids.add(s1["id"])
             
         # Slot 2: ANGLE_SCHEDULE or ANGLE_PERSON (Required)
-        s2 = self._pick_candidate(angled_candidates, ["SCHEDULE", "PERSON"], selected_ids, last_slot=slots[0] if slots else None)
-        if s2:
-            angle = "SCHEDULE" if "SCHEDULE" in s2["angles"] else "PERSON"
+        # IS-94: If there is an ESCALATING candidate, prioritize PERSON/INTENT angle here or in Slot 3
+        escalating_candidates = [c for c in angled_candidates if c.get("status") == "ESCALATING"]
+        
+        s2 = None
+        if escalating_candidates:
+            s2 = escalating_candidates[0]
+            angle = "PERSON"
             slots.append(self._to_slot_format(s2, "SLOT-2", angle))
             selected_ids.add(s2["id"])
+        else:
+            s2 = self._pick_candidate(angled_candidates, ["SCHEDULE", "PERSON"], selected_ids, last_slot=slots[0] if slots else None)
+            if s2:
+                angle = "SCHEDULE" if "SCHEDULE" in s2["angles"] else "PERSON"
+                slots.append(self._to_slot_format(s2, "SLOT-2", angle))
+                selected_ids.add(s2["id"])
             
         # Slot 3: ANGLE_ANOMALY or ANGLE_PERSON (Required)
         s3 = self._pick_candidate(angled_candidates, ["ANOMALY", "PERSON"], selected_ids, last_slot=slots[-1] if slots else None)
@@ -75,7 +85,7 @@ class MultiAngleEditorialComposer:
                 angles.append("STRUCTURE")
             if dtype == "PREVIEW" or "schedule" in smix:
                 angles.append("SCHEDULE")
-            if "statement" in smix or "person" in smix:
+            if "statement" in smix or "person" in smix or cand.get("momentum_state") in ["ESCALATING", "BUILDING"]:
                 angles.append("PERSON")
             if "anomaly" in smix:
                 angles.append("ANOMALY")

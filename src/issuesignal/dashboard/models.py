@@ -131,3 +131,5 @@ class DashboardSummary:
     # IS-29 Additions
     hoin_evidence: List[HoinEvidenceItem] = field(default_factory=list)
     link_view: List[UnifiedLinkRow] = field(default_factory=list)
+    # IS-94 Additions
+    momentum_list: List[Dict[str, Any]] = field(default_factory=list)
