@@ -2,27 +2,18 @@
     "date": "2026-02-02",
     "picks": [
         {
-            "id": "NC-STMT-STMT-684931",
+            "id": "NC-CAL-EARN-NVDA-2026-02-10",
             "source_mix": [
-                "statement",
-                "STATEMENT",
+                "schedule",
                 "numeric",
                 "relative"
             ],
-            "dominant_type": "FACT",
-            "theme": "Jensen Huang (NVIDIA)의 의도: 공급망 및 인프라 구조적 변화 암시",
-            "why_now": "실제 발언('Mercedes-Benz Unveils New S-Class Built on NVIDIA ...')을 통해 포착된 ['STRUCTURE'] 신호입니다.",
+            "dominant_type": "PREVIEW",
+            "theme": "[D-8] NVIDIA (NVDA) 실적 발표 사전 점검",
+            "why_now": "지금 시점에서 NVIDIA 실적이 시장 방향성을 결정할 수 있습니다.",
             "confidence_level": "HIGH",
-            "momentum_weight": 2,
-            "momentum_state": "ESCALATING",
-            "promotion_hint": "EDITORIAL_VIEW",
-            "status": "ESCALATING",
-            "entity": "Jensen Huang",
-            "organization": "NVIDIA",
-            "raw_text": "Mercedes-Benz Unveils New S-Class Built on NVIDIA DRIVE AV, Which Enables an L4-Ready Architecture\nMercedes-Benz is marking 140 years of automotive innovation with a new S-Class built for the AI era, bringing together automotive safety and NVIDIA’s advanced autonomous driving platform to enable a level 4-ready architecture designed for trust. The new S-Class with MB.OS, which will be equipped with the NVIDIA DRIVE Hyperion architecture and full-stack NVIDIA DRIVE\t\n\t\tRead Article\t\t\n\n",
-            "detected_signals": [
-                "STRUCTURE"
-            ],
+            "promotion_hint": "WEEKLY_STRUCTURE",
+            "status": "CANDIDATE",
             "numeric_evidence": [
                 {
                     "name": "Data Center Revenue",
@@ -45,10 +36,10 @@
                 "risk_anchor": "금리 변동성 확대 시 멀티플 축소 위험"
             },
             "angles": [
-                "PERSON"
+                "SCHEDULE"
             ],
             "editor_score": 135,
-            "editor_rationale": "Multi-Signal Fusion / Economic Hunter Deep Dive / Structural Bridge",
+            "editor_rationale": "Strong Why-Now / Multi-Signal Fusion / Economic Hunter Deep Dive",
             "selected_rank": 1
         }
     ],
