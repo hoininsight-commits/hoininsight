@@ -17,6 +17,7 @@ from src.issuesignal.editorial.editorial_tone_selector import EditorialToneSelec
 from src.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
 from src.issuesignal.narrative.narrative_framing_engine import NarrativeFramingEngine
 from src.issuesignal.narrative.urgency_amplifier import UrgencyAmplifierEngine
+from src.issuesignal.fusion.issue_fusion_engine import IssueFusionEngine
 from src.issuesignal.trap_engine import TrapEngine
 from src.issuesignal.fact_verifier import FactVerifier
 from src.issuesignal.trust_lock import TrustLockEngine
@@ -304,8 +305,35 @@ def main():
         print(f"Promoted Candidates Ready: {promoted_path}")
 
         # [IS-83] Editorial Tone Selection
+        # [IS-86] Issue Fusion Engine (Generate Narrative Candidates)
+        print("Step 5B: Running Issue Fusion Engine (IS-86)...")
+        ymd = datetime.utcnow().strftime("%Y-%m-%d")
+        watchlist_data = {}
+        if watchlist_path.exists():
+            with open(watchlist_path, "r", encoding="utf-8") as f:
+                watchlist_data = json.load(f)
+                
+        fusion_engine = IssueFusionEngine(base_dir)
+        narrative_candidates = fusion_engine.generate_candidates(issue_json, watchlist_data)
+        
+        # Save Narrative Candidates
+        nc_path = base_dir / "data" / "narratives" / f"narrative_candidates_{ymd}.json"
+        nc_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(nc_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "date": ymd,
+                "candidates": narrative_candidates
+            }, f, indent=4, ensure_ascii=False)
+        print(f"Saved Narrative Candidates to {nc_path}")
+        
+        # Inject into Main Issue JSON
+        issue_json["narrative_candidates"] = narrative_candidates
+        # Re-save Main Issue Pack to include candidates
+        with open(issue_path, "w", encoding="utf-8") as jf:
+            json.dump(issue_json, jf, indent=2, ensure_ascii=False)
+
+        # [IS-83] Editorial Tone Selection & Framing for Promoted
         if promoted_path:
-            # [IS-84 Extension] Narrative Framing for Promoted
             # Load, inject, save
             try:
                 import json

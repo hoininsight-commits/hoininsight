@@ -1181,6 +1181,45 @@ def _generate_issue_signal_top_section(issue_data: Optional[Dict]) -> str:
     html += """
             </div>
         </details>
+        
+        <!-- [IS-86] Narrative Candidates Section -->
+        """
+    narrative_candidates = issue_data.get("narrative_candidates", [])
+    if narrative_candidates:
+        html += """
+        <div style="margin-top: 25px; border-top: 1px dashed #cbd5e1; padding-top: 15px;">
+            <div style="font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 10px; display: flex; align-items: center;">
+                <span style="font-size: 16px; margin-right: 6px;">🧩</span> 오늘의 해석 후보 (Narrative Candidates)
+            </div>
+            <div style="display: grid; gap: 10px;">
+        """
+        for nc in narrative_candidates:
+            d_type = nc.get("dominant_type", "CANDIDATE")
+            badge_bg = "#64748b" # Default Gray
+            if d_type == "STRUCTURE": badge_bg = "#3b82f6" # Blue
+            elif d_type == "PREVIEW": badge_bg = "#f59e0b" # Amber
+            elif d_type == "SCENARIO": badge_bg = "#8b5cf6" # Purple
+            elif d_type == "FACT": badge_bg = "#dc2626" # Red
+            
+            html += f"""
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="background: {badge_bg}; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">{d_type}</span>
+                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">{nc.get('promotion_hint', '')}</span>
+                </div>
+                <div style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">{nc.get('theme', '')}</div>
+                <div style="font-size: 11px; color: #64748b;">{nc.get('why_now', '')}</div>
+            </div>
+            """
+        html += """
+            </div>
+            <div style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center;">
+                * 본 항목은 확정된 투자 판단이 아닌 시장 해석을 위한 후보 시나리오입니다.
+            </div>
+        </div>
+        """
+        
+    html += """
         </div>
     </div>
     """
