@@ -310,18 +310,14 @@ jobs:
         run: |
           python -m src.decision.final_decision_card
 
-      - name: Run Issue Signal Generator (IS-73)
+      - name: Run IssueSignal Engine (IS-49 Loop Lock)
         run: |
-          python -m src.issuesignal.run_issuesignal
+          python -m src.issuesignal.run_issuesignal --mode=production
 
       - name: Generate Dashboard (Update)
         run: |
           python -m src.dashboard.topic_exporter
           python -m src.dashboard.dashboard_generator
-
-      - name: Run IssueSignal Engine (IS-49 Loop Lock)
-        run: |
-          python -m src.issuesignal.run_issuesignal --mode=production
 
 
       - name: Generate Ops Metadata
