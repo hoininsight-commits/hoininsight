@@ -38,12 +38,17 @@ jobs:
 
     - name: Run Topic Decision Gate (Engine 2)
       env:
-        # Re-use same envs if needed (though gate mostly uses local JSONs)
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
       run: |
         # Engine 2: Topic Decision Gate
         # Reads daily_snapshot.json -> writes topic_gate_output.json
-        python -m src.pipeline.run_topic_gate
+        python -m src.pipeline.run_topic_gate --as-of-date $(date +'%Y-%m-%d')
+
+    - name: Run Economic Hunter Production Line (IssueSignal)
+      run: |
+        # Engine 3: IssueSignal (IS-88~92)
+        # Generates enriched narrative candidates and multi-angle view
+        python src/issuesignal/run_issuesignal.py
 
     - name: Commit and Push Results
       run: |

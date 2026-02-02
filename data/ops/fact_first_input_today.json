@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-01-27",
+  "run_date": "2026-02-02",
   "count": 0,
   "counts_by_type": {
     "FLOW": 0,
@@ -9,7 +9,8 @@
   "facts": [],
   "errors": [
     {
-      "message": "Root must be a list or dict with 'facts' list"
+      "message": "Input file not found",
+      "path": "/Users/jihopa/.gemini/antigravity/scratch/HoinInsight/data/facts/fact_first/2026-02-02.json"
     }
   ]
 }

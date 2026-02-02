@@ -160,6 +160,39 @@ def run_hoin_signal():
         print(f"[Pipeline] ❌ Error running HOIN Signal: {e}")
         return False
 
+def run_issue_signal():
+    """Step 88-92: Issue Signal (Economic Hunter Production Line)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2.7: ISSUE SIGNAL (EH LINE) STARTED")
+    try:
+        import subprocess
+        is_script = project_root / "src" / "issuesignal" / "run_issuesignal.py"
+        if not is_script.exists():
+            print(f"[Pipeline] ❌ Error: run_issuesignal.py not found at {is_script}")
+            return False
+            
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(project_root)
+        
+        result = subprocess.run(
+            [sys.executable, str(is_script)],
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            env=env
+        )
+        print(result.stdout)
+        if result.returncode != 0:
+            print(f"[Pipeline] ❌ IssueSignal run failed with code {result.returncode}")
+            print(result.stderr)
+            return False
+            
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 2.7: ISSUE SIGNAL (EH LINE) COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Error running IssueSignal: {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -179,6 +212,9 @@ def main():
 
     # 2.4 HOIN Signal (NEW)
     run_hoin_signal()
+    
+    # 2.5 Issue Signal (EH Line - NEW)
+    run_issue_signal()
     
     # Step 3: Generate Dashboard
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")
