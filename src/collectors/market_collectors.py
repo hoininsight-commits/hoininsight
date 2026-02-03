@@ -141,7 +141,40 @@ def collect_silver_kinesis_coingecko():
     return _fetch_coingecko_simple("kinesis-silver", "KAG")
 
 
+def collect_is95_market_flow():
+    """
+    IS-95-1: Global Index Inclusion & Flow/Rotation Layer.
+    """
+    # 1. Global Index
+    index_data = [{
+        "date": _utc_ymd(),
+        "index": "MSCI_KOREA",
+        "event_countdown": 45, # days
+        "passive_inflow_expectation": "5.2B USD",
+        "tag": "GLOBAL_INDEX",
+        "source": "Mock_MSCI_Review"
+    }]
+    _soft_fail_save("is95_global_index", index_data, _utc_ymd(), "jsonl")
+
+    # 2. Flow & Rotation
+    flow_data = [{
+        "date": _utc_ymd(),
+        "rotation_sector": "Growth_to_Value",
+        "rotation_signal_score": 0.78,
+        "flow_from": "SEMICONDUCTOR_LARGE",
+        "flow_to": "FINANCIAL_VALUE",
+        "tag": "FLOW_ROTATION",
+        "source": "Mock_Flow_Analyzer"
+    }]
+    _soft_fail_save("is95_flow_rotation", flow_data, _utc_ymd(), "jsonl")
+
 # --- Entry Points matched to Registry ---
+
+def write_raw_is95_market_flow(base_dir: Path):
+    """
+    Combined IS-95-1 entry point.
+    """
+    collect_is95_market_flow()
 
 def write_raw_nasdaq(base_dir: Path):
     pass # Migrated to FRED

@@ -77,12 +77,46 @@ def collect_key_economic_events():
     }]
     _save_csv("economic_calendar", data, "events.csv")
 
+def collect_is95_policy_flow():
+    """
+    IS-95-1: Strategic Policy Flow (KR/US)
+    Capture Govt Roadmap vs Execution data.
+    """
+    today = datetime.now()
+    data = [{
+        "date": get_target_ymd(),
+        "policy_id": "KR_VALUE_UP_2026",
+        "title": "Corporate Value-up Program Phase 2",
+        "status": "ANNOUNCED",
+        "target_sector": "ALL_MARKET",
+        "tag": "KR_POLICY",
+        "metrics": {
+            "policy_commitment_score": 0.85,
+            "policy_execution_gap": 0.20
+        },
+        "source": "Gov_Press_Release"
+    }, {
+        "date": get_target_ymd(),
+        "policy_id": "US_CHIPS_ACT_EXT",
+        "title": "CHIPS Act Ecosystem Expansion Fund",
+        "status": "EXECUTION",
+        "target_sector": "SEMICONDUCTOR",
+        "tag": "US_POLICY",
+        "metrics": {
+            "policy_commitment_score": 0.95,
+            "policy_execution_gap": 0.05
+        },
+        "source": "US_Commerce_Dept"
+    }]
+    _save_csv("is95_policy_flow", data, "observation_layer.csv")
+
 # --- Entry Point ---
 
 def run_collector():
     print(">>> Starting Policy/Event Collector (Mock)...")
     collect_fomc_calendar()
     collect_key_economic_events()
+    collect_is95_policy_flow()
     print("<<< Policy Collection Complete.\n")
 
 if __name__ == "__main__":

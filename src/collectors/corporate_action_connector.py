@@ -25,11 +25,47 @@ TARGET_ITEMS = [
     # "Item 8.01" (Other) is too generic.
 ]
 
+def collect_is95_pretext_layer(base_dir: Path, ymd: str):
+    """
+    IS-95-1: Pretext Validation & Earnings Verification.
+    """
+    # 1. Pretext Validation (Buybacks/Value-up)
+    pretext_facts = [{
+        "fact_type": "PRETEXT_VALIDATION",
+        "fact_text": "[Samsung Electronics] Board approved 3T KRW Buyback as Value-up pretext.",
+        "pretext_score": 0.92,
+        "tag": "PRETEXT_VALIDATION",
+        "source_date": ymd,
+        "source": "Mock_DART_API"
+    }]
+    
+    # 2. Earnings Verification
+    earnings_facts = [{
+        "fact_type": "EARNINGS_VERIFY",
+        "fact_text": "[SK Hynix] Earnings Surprise, Actual OP +15% vs Consensus.",
+        "earnings_shock_flag": True,
+        "post_earnings_reaction_score": 0.88,
+        "tag": "EARNINGS_VERIFY",
+        "source_date": ymd,
+        "source": "Mock_Earnings_Scanner"
+    }]
+    
+    all_is95_facts = pretext_facts + earnings_facts
+    save_path = base_dir / f"data/facts/is95_observation_layer_{ymd.replace('-', '')}.json"
+    save_path.parent.mkdir(parents=True, exist_ok=True)
+    save_path.write_text(json.dumps(all_is95_facts, ensure_ascii=False, indent=2), encoding='utf-8')
+    logger.info(f"Saved {len(all_is95_facts)} IS-95-1 Observation Facts.")
+
+    return all_is95_facts
+
 def collect_corporate_facts(base_dir: Path, ymd: str) -> List[Dict[str, Any]]:
     """
     Collects Corporate Action Hard Facts via SEC 8-K RSS.
     Returns list of facts with 'evidence_grade': 'HARD_FACT' based on Filings.
     """
+    # Add IS-95-1 Add-on
+    collect_is95_pretext_layer(base_dir, ymd)
+
     facts = []
     
     headers = {
