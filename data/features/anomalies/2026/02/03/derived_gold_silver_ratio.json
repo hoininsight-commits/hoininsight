@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-02-03T15:10:47Z",
+    "ts_utc": "2026-02-03T15:21:40Z",
     "dataset_id": "derived_gold_silver_ratio",
     "entity": "GOLD_SILVER_RATIO",
     "anomaly_type": "Z_SCORE_MODEL_V1",
-    "severity": 30,
-    "level": "L1",
+    "severity": 60,
+    "level": "L2",
     "evidence": {
-      "z_score": 1.98,
+      "z_score": 2.0,
       "percentile": 50.0,
-      "value": 58.10299760191846,
-      "rolling_mean_20d": 50.854457692809135,
-      "reasoning": "Z-Score 1.98 >= 1.5"
+      "value": 58.23165192445613,
+      "rolling_mean_20d": 50.86089040893602,
+      "reasoning": "Z-Score 2.00 >= 2.0"
     }
   }
 ]
