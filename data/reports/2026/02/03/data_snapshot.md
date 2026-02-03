@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-02-03T13:30:57Z`
+- ts_utc: `2026-02-03T14:57:47Z`
 - ymd_utc: `2026/02/03`
 - enabled_datasets: `32`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 351 | 2026-01-15T07:32:29Z | 2026-02-03T13:30:01Z | 121 | 351 | 7 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/02/03/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 353 | 2026-01-15T07:32:29Z | 2026-02-03T14:56:55Z | 123 | 353 | 7 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/02/03/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | OK | 947 | 1947-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/02/03/charts/inflation_cpi_fred.png) |
 | FED_FUNDS | rates_fed_funds_fred | OK | 859 | 1954-07-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/02/03/charts/rates_fed_funds_fred.png) |
 | FIN_STRESS | risk_financial_stress_fred | OK | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/risk/financial_stress_usa.csv | [png](data/reports/2026/02/03/charts/risk_financial_stress_fred.png) |
@@ -17,11 +17,11 @@
 | HY_SPREAD | credit_hy_spread_fred | OK | 7594 | 1996-12-31T00:00:00Z | 2026-01-31T00:00:00Z | 4 | 21 | 7 | 0 | 0 | data/curated/credit/hy_spread_usa.csv | [png](data/reports/2026/02/03/charts/credit_hy_spread_fred.png) |
 | KOR_CPI | inflation_kor_cpi_ecos | OK | 60 | 2021-02-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/ecos/inflation/korea_cpi.csv | [png](data/reports/2026/02/03/charts/inflation_kor_cpi_ecos.png) |
 | KOR_RATE | rates_kor_base_rate_ecos | OK | 60 | 2021-02-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/ecos/rates/korea_base_rate.csv | [png](data/reports/2026/02/03/charts/rates_kor_base_rate_ecos.png) |
-| KOSPI | index_kospi_stooq | OK | 350 | 2026-01-15T07:32:40Z | 2026-02-03T13:30:04Z | 121 | 350 | 7 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/02/03/charts/index_kospi_stooq.png) |
+| KOSPI | index_kospi_stooq | OK | 352 | 2026-01-15T07:32:40Z | 2026-02-03T14:56:59Z | 123 | 352 | 7 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/02/03/charts/index_kospi_stooq.png) |
 | M2_USA | liquidity_m2_fred | OK | 804 | 1959-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/liquidity/m2_usa.csv | [png](data/reports/2026/02/03/charts/liquidity_m2_fred.png) |
 | M_AND_A_CB | struct_dart_cb_bw | OK | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 0 | 1 | 7 | 0 | 0 | data/curated/structural/cb_bw.csv | [png](data/reports/2026/02/03/charts/struct_dart_cb_bw.png) |
 | M_AND_A_DISP | struct_dart_disposal | OK | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 0 | 2 | 7 | 0 | 0 | data/curated/structural/disposal.csv | [png](data/reports/2026/02/03/charts/struct_dart_disposal.png) |
-| NASDAQ | index_nasdaq_fred | OK | 10104 | 1986-01-02T00:00:00Z | 2026-01-30T00:00:00Z | 3 | 23 | 7 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/02/03/charts/index_nasdaq_fred.png) |
+| NASDAQ | index_nasdaq_fred | OK | 10105 | 1986-01-02T00:00:00Z | 2026-02-02T00:00:00Z | 4 | 24 | 7 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/02/03/charts/index_nasdaq_fred.png) |
 | PCE_USA | inflation_pce_fred | OK | 803 | 1959-01-01T00:00:00Z | 2025-11-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/inflation/pce_usa.csv | [png](data/reports/2026/02/03/charts/inflation_pce_fred.png) |
 | SILVER | metal_silver_kag_coingecko | OK | 92 | 2026-01-15T08:10:58Z | 2026-02-03T00:00:00Z | 7 | 92 | 7 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/02/03/charts/metal_silver_kag_coingecko.png) |
 | SILVER | metal_silver_kag_coingecko | OK | 92 | 2026-01-15T08:10:58Z | 2026-02-03T00:00:00Z | 7 | 92 | 7 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/02/03/charts/metal_silver_kag_coingecko.png) |
