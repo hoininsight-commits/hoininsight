@@ -417,16 +417,20 @@ jobs:
         run: |
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
-          # Force add all production directories and root index
+          
+          # Force add all changes
           git add . || true
           
-          # Check for changes
           if git diff --cached --quiet; then
             echo "No intelligence changes to commit"
           else
-            git commit -m "chore: save intelligence artifacts and docs"
+            # Save local changes as stash just in case (though we use reset)
+            # Robust strategy: Fetch latest, soft reset to it, re-add everything, and commit.
+            # This ensures we are always on top of origin/main without rebase conflicts.
             git fetch origin main
-            git rebase origin/main
+            git reset origin/main
+            git add .
+            git commit -m "chore: save intelligence artifacts and docs [automated]"
             git push origin main
           fi
 

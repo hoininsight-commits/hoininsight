@@ -55,13 +55,14 @@ jobs:
         git config --global user.name "Hoin Engine Bot"
         git config --global user.email "bot@hoin.engine"
         
-        # Add all new files in data/
         git add data/
         
-        # Commit if there are changes
         if git diff --staged --quiet; then
           echo "No changes to commit."
         else
+          git fetch origin main
+          git reset origin/main
+          git add data/
           git commit -m "auto: daily topic selection data $(date +'%Y-%m-%d')"
-          git push
+          git push origin main
         fi
