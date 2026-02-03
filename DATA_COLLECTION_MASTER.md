@@ -1,6 +1,6 @@
-VERSION: v1.9
-DATE: 2026-02-03 10:38:00
-CHANGELOG: v1.9 IS-95-1 ADDON appended (no modification to previous versions)
+VERSION: v1.8
+DATE: 2026-01-16 23:06:51
+CHANGELOG: v1.8 ADDON appended (no modification to previous versions)
 
 # DATA_COLLECTION_MASTER (v1.3)
 
@@ -292,7 +292,10 @@ L4 주제 확정 후보
 
 ---
 
-## ⑲ IS-95-1 ADDON: ECONOMY HUNTER OBSERVATION LAYER
+## ⑲ IS-95-1 ADDON: ECONOMY HUNTER OBSERVATION LAYER (v1.9 ADDON)
+
+**VERSION**: v1.9 (2026-02-03)
+**NOTE**: IS-95-1 Observation Layer expansion.
 
 | 카테고리 | 수집 데이터 | 수집처 | 방식 | 무료 여부 | 상태 | WHY | 최적 수집 주기 | 파생 여부 | Tag |
 |---|---|---|---|---|---|---|---|---|---|
