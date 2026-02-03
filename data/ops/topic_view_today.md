@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 (ID: unknown)
+### 자산시장 뒤흔든 케빈 워시의 ‘막후 실세’···월가의 전설 드러켄밀러 주목 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 (ID: unknown)
+### ‘개미’의 승부수 통했나…코스피 ‘매수 사이드카’ 발동 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,7 +37,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 韓 자산가 유출 세계 4위…"상속세 납부방식 개선해야" - 한국무역협회-KITA.NET (ID: unknown)
+### 스페이스X, xAI 합병 완료…일론 머스크 "다음 사명은 우주 AI 데이터센터" - 디일렉 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,17 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “가상자산 거래소 지분제한, 금융 혁신에 장애” - 문화일보 (ID: unknown)
+### 캐나다 조달 수장 "잠수함 수주 핵심은 비용·일정·일자리" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [외신 헤드라인] "스페이스X-xAI 합병 이르면 이번주 발표" - v.daum.net (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "26년간 추억 찢겨나간 듯" 눈물…홈플러스 안산 '마지막 날' [현장+] - 한국경제 (ID: unknown)
+### 유일선 국민대 교수 연구팀, NIST 표준 양자내성 암호 적용한 PQC-TLS 상용 구현 - 보안뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -68,11 +63,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 트럼프, 핵심광물 조달 ‘프로젝트 볼트’ 출범…‘자원 무기화’ 중국에 맞대응 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “주황 조끼를 찾으세요”...서울시 디지털 안내사, 올해부터 AI도 알려준다 - 농민신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,7 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "악재 뚫는 증시 '돈의 논리'…주도주에 올라타야" - 연합인포맥스 (ID: unknown)
+### 뉴로핏, '알츠하이머 처방 필수' 종합 분석 솔루션 美 FDA '본격 허가'…퀀텀 점프 '날개' - 프라임경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +100,26 @@ No SHADOW candidates today.
 ### “오늘 돈 좀 썼다”…하이닉스 직원 성과급 1억 앞두고 올린 인증샷 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 292,000,000,000,000원 증발한 가상자산…보름만에 반납한 1년 상승분 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이억원 “미국은 4천억원 주는데…주가조작 신고 포상금 확대” - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 포스코이앤씨, ‘오티에르’ 앞세워 신반포 19·25차 재건축 입찰 참여 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 천일테크윈·대원에스디, 대구국가산단에 295억원 투자 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 웹툰 ‘지옥’ 작가 최규석 “한일 만화는 선의 경쟁자” (ID: unknown)
@@ -198,16 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 한국남부발전, 경사노위·공공노련과 탈석탄 과정 ‘고용 불안’ 해소 위해 맞손 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “1개 1만2000원인데, 완판”…두바이 상륙한 ‘두쫀쿠’, 현지서도 난리났다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 방탄소년단, 3월 21일 광화문광장 공연… 넷플릭스로 생중계 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
