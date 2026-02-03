@@ -84,8 +84,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 (Google_News_KR_Economy)
-  - [NEWS] 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 (Google_News_KR_Economy)
   - [NEWS] "코스피 7,500도 가능"…JP모간의 파격 전망 - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -188,8 +188,8 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 | Structural implication: '[속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 | Structural implication: '연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "코스피 7,500도 가능"…JP모간의 파격 전망 - 연합인포맥스 | Structural implication: '"코스피 7,500도 가능"…JP모간의 파격 전망 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 | Structural implication: '연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | K-패스, 내일부터 전국 어디서든 사용 가능 - KBS 뉴스 | Structural implication: 'K-패스, 내일부터 전국 어디서든 사용 가능 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | "엔비디아 칩 느려" 타 공급처 찾아 나선 오픈AI…주가 3%↓ - 마켓인 | Structural implication: '"엔비디아 칩 느려" 타 공급처 찾아 나선 오픈AI…주가 3%↓ - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 지재처, 정부 최초 ‘KpqC’ 온라인 실증 적용...국정원·국보연 등과 맞손 - 보안뉴스 | Structural implication: '지재처, 정부 최초 ‘KpqC’ 온라인 실증 적용...국정원·국보연 등과 맞손 - 보안뉴스' suggests a shift in NEWS dynamics. | LOW |
@@ -197,16 +197,17 @@
 | 트럼프, 핵심광물 조달 ‘프로젝트 볼트’ 출범…‘자원 무기화’ 중국에 맞대응 - 한겨레 | Structural implication: '트럼프, 핵심광물 조달 ‘프로젝트 볼트’ 출범…‘자원 무기화’ 중국에 맞대응 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [2026년 2월3일(화)] 배추·쪽파·양파·고구마·깻잎 경락값 분석 - 농민신문 | Structural implication: '[2026년 2월3일(화)] 배추·쪽파·양파·고구마·깻잎 경락값 분석 - 농민신문' suggests a shift in NEWS dynamics. | LOW |
 | 금융당국은 주가조작 포상금 확대, ‘자본시장특위’는 3차상법개정 추진…증시 체질개선 나선 당정 - 경향신문 | Structural implication: '금융당국은 주가조작 포상금 확대, ‘자본시장특위’는 3차상법개정 추진…증시 체질개선 나선 당정 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| [포토뉴스] “전년보다 ‘핫해진’ AI 혁신” 다쏘시스템 사단 ‘무대 장악’ - 헬로티 | Structural implication: '[포토뉴스] “전년보다 ‘핫해진’ AI 혁신” 다쏘시스템 사단 ‘무대 장악’ - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | [카드뉴스] 2026 설 명절, 장 보기부터 이동까지 '돈 되는' 혜택 4 - 이투데이 | Structural implication: '[카드뉴스] 2026 설 명절, 장 보기부터 이동까지 '돈 되는' 혜택 4 - 이투데이' suggests a shift in NEWS dynamics. | LOW |
-| 다쏘시스템 "AI 활용 효과, 작업 노하우·경험 축적서 극대화" - 지디넷코리아 | Structural implication: '다쏘시스템 "AI 활용 효과, 작업 노하우·경험 축적서 극대화" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 캐나다 국방조달장관 "자동차 분야에서 더 큰 경제협력 원해" - 한국무역협회-KITA.NET | Structural implication: '캐나다 국방조달장관 "자동차 분야에서 더 큰 경제협력 원해" - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 스페이스X, xAI 인수…일론 머스크 “우주 기반 AI 시동” - 전자신문 | Structural implication: '스페이스X, xAI 인수…일론 머스크 “우주 기반 AI 시동” - 전자신문' suggests a shift in NEWS dynamics. | LOW |
+| 스페이스X, xAI 인수했다…우주 데이터 센터 건설 계획 발표 - 지디넷코리아 | Structural implication: '스페이스X, xAI 인수했다…우주 데이터 센터 건설 계획 발표 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스 | Structural implication: '"주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 은행, 단독 발행 대신 다자연합⋯ 생태계 선점 [불붙은 스테이블 코인 경쟁] - 이투데이 | Structural implication: '은행, 단독 발행 대신 다자연합⋯ 생태계 선점 [불붙은 스테이블 코인 경쟁] - 이투데이' suggests a shift in NEWS dynamics. | LOW |
 | "26년간 추억 찢겨나간 듯" 눈물…홈플러스 안산 '마지막 날' [현장+] - 한국경제 | Structural implication: '"26년간 추억 찢겨나간 듯" 눈물…홈플러스 안산 '마지막 날' [현장+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [유미's 픽] 풀스택으로 중동 뚫은 'K-AI 연합군'…조준희 리더십 빛났다 - 지디넷코리아 | Structural implication: '[유미's 픽] 풀스택으로 중동 뚫은 'K-AI 연합군'…조준희 리더십 빛났다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 'K-AI 풀스택' 컨소시엄, 세계 최대 에너지 기업 아람코 AX 참여 - 전자신문 | Structural implication: ''K-AI 풀스택' 컨소시엄, 세계 최대 에너지 기업 아람코 AX 참여 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
 | “3월 3일까지 주식 양도소득세 신고·납부하세요“...국세청, 4일부터 카카오톡으로 안내문 발송 - 조선일보 | Structural implication: '“3월 3일까지 주식 양도소득세 신고·납부하세요“...국세청, 4일부터 카카오톡으로 안내문 발송 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “계란 훔친 사람 처벌하면서 기업 거대 범죄엔 장애물 많아” - 한겨레 | Structural implication: '이 대통령 “계란 훔친 사람 처벌하면서 기업 거대 범죄엔 장애물 많아” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| [Find Dining] 제주 동네 맛집…관광객보다 현지인이 더 많은 곳은 어디? | Structural implication: '[Find Dining] 제주 동네 맛집…관광객보다 현지인이 더 많은 곳은 어디?' suggests a shift in NEWS dynamics. | LOW |
 | 호텔신라, 지난해 영업이익 135억원…1년 만에 흑자전환 | Structural implication: '호텔신라, 지난해 영업이익 135억원…1년 만에 흑자전환' suggests a shift in NEWS dynamics. | LOW |
 | “최대 5만원 정리 지원금 드립니다”…번개장터, 번개 신년장 개최 | Structural implication: '“최대 5만원 정리 지원금 드립니다”…번개장터, 번개 신년장 개최' suggests a shift in NEWS dynamics. | LOW |
 | “알리바바 텐센트 압도했다”…중국 두 인터넷 공룡 제친 한국 반도체 투톱 | Structural implication: '“알리바바 텐센트 압도했다”…중국 두 인터넷 공룡 제친 한국 반도체 투톱' suggests a shift in NEWS dynamics. | LOW |
@@ -226,7 +227,6 @@
 | "판 바뀐 K증시로 돈 벌자"… 주식투자서 판매 236% 급증 | Structural implication: '"판 바뀐 K증시로 돈 벌자"… 주식투자서 판매 236% 급증' suggests a shift in NEWS dynamics. | LOW |
 | 호텔신라, 연간실적 흑자로 전환…“내실 경영에 주력” | Structural implication: '호텔신라, 연간실적 흑자로 전환…“내실 경영에 주력”' suggests a shift in NEWS dynamics. | LOW |
 | “행복경영 확산”…휴넷, 중기CEO 무료 ‘행복한경영대학’ 19기 모집 | Structural implication: '“행복경영 확산”…휴넷, 중기CEO 무료 ‘행복한경영대학’ 19기 모집' suggests a shift in NEWS dynamics. | LOW |
-| “결혼 못할까봐 내가 구제해준 것”…‘이숙캠’ 이성호 폭로에 윤유선이 한 말 | Structural implication: '“결혼 못할까봐 내가 구제해준 것”…‘이숙캠’ 이성호 폭로에 윤유선이 한 말' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
