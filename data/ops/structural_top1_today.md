@@ -1,4 +1,4 @@
-# 오늘의 구조 재정의 TOP 1 - 2026-02-04
+# 오늘의 구조 재정의 TOP 1 - 2026-02-03
 
 ## 🟣 Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.
 - **구조 유형**: 구조적 재정의 (공격)
