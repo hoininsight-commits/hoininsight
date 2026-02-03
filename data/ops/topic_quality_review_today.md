@@ -1,6 +1,6 @@
 # TOPIC QUALITY REVIEW (RUN_DATE: 2026-02-03)
 
-## 지수 상승 속 섹터 하락의 이유 (gate_b5ee26b091)
+## 지수 상승 속 섹터 하락의 이유 (gate_98cfc0109e)
 - **Lane**: ANOMALY
 - **Review**:
   - Fact Anchor: WEAK
