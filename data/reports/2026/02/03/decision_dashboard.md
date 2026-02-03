@@ -199,14 +199,15 @@
 | 금융당국은 주가조작 포상금 확대, ‘자본시장특위’는 3차상법개정 추진…증시 체질개선 나선 당정 - 경향신문 | Structural implication: '금융당국은 주가조작 포상금 확대, ‘자본시장특위’는 3차상법개정 추진…증시 체질개선 나선 당정 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | [포토뉴스] “전년보다 ‘핫해진’ AI 혁신” 다쏘시스템 사단 ‘무대 장악’ - 헬로티 | Structural implication: '[포토뉴스] “전년보다 ‘핫해진’ AI 혁신” 다쏘시스템 사단 ‘무대 장악’ - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | [카드뉴스] 2026 설 명절, 장 보기부터 이동까지 '돈 되는' 혜택 4 - 이투데이 | Structural implication: '[카드뉴스] 2026 설 명절, 장 보기부터 이동까지 '돈 되는' 혜택 4 - 이투데이' suggests a shift in NEWS dynamics. | LOW |
-| “잠수함 사시면 K지상무기 따라갑니다” 韓-獨, 캐나다 수주전 경쟁 - 동아일보 | Structural implication: '“잠수함 사시면 K지상무기 따라갑니다” 韓-獨, 캐나다 수주전 경쟁 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 스페이스X, xAI 인수했다…우주 데이터 센터 건설 계획 발표 - 지디넷코리아 | Structural implication: '스페이스X, xAI 인수했다…우주 데이터 센터 건설 계획 발표 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스 | Structural implication: '"주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 은행, 단독 발행 대신 다자연합⋯ 생태계 선점 [불붙은 스테이블 코인 경쟁] - 이투데이 | Structural implication: '은행, 단독 발행 대신 다자연합⋯ 생태계 선점 [불붙은 스테이블 코인 경쟁] - 이투데이' suggests a shift in NEWS dynamics. | LOW |
-| 'K-AI 풀스택' 컨소시엄, 세계 최대 에너지 기업 아람코 AX 참여 - 전자신문 | Structural implication: ''K-AI 풀스택' 컨소시엄, 세계 최대 에너지 기업 아람코 AX 참여 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
+| 캐나다 국방조달장관 "자동차 분야에서 더 큰 경제협력 원해" - 한국무역협회-KITA.NET | Structural implication: '캐나다 국방조달장관 "자동차 분야에서 더 큰 경제협력 원해" - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
+| [유미's 픽] 풀스택으로 중동 뚫은 'K-AI 연합군'…조준희 리더십 빛났다 - 지디넷코리아 | Structural implication: '[유미's 픽] 풀스택으로 중동 뚫은 'K-AI 연합군'…조준희 리더십 빛났다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “3월 3일까지 주식 양도소득세 신고·납부하세요“...국세청, 4일부터 카카오톡으로 안내문 발송 - 조선일보 | Structural implication: '“3월 3일까지 주식 양도소득세 신고·납부하세요“...국세청, 4일부터 카카오톡으로 안내문 발송 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| "26년간 추억 찢겨나간 듯" 눈물…홈플러스 안산 '마지막 날' [현장+] - 한국경제 | Structural implication: '"26년간 추억 찢겨나간 듯" 눈물…홈플러스 안산 '마지막 날' [현장+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| AI들끼리 토론, ’종교 창설’까지...’인간 없는 SNS’ 등장 [앵커리포트] - YTN | Structural implication: 'AI들끼리 토론, ’종교 창설’까지...’인간 없는 SNS’ 등장 [앵커리포트] - YTN' suggests a shift in NEWS dynamics. | LOW |
 | 중국, 안전 문제로 '매립형 차량 문 손잡이' 퇴출한다 - BBC | Structural implication: '중국, 안전 문제로 '매립형 차량 문 손잡이' 퇴출한다 - BBC' suggests a shift in NEWS dynamics. | LOW |
+| 292,000,000,000,000원 증발한 가상자산…보름만에 반납한 1년 상승분 - 문화일보 | Structural implication: '292,000,000,000,000원 증발한 가상자산…보름만에 반납한 1년 상승분 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| "D램은 AI시대 완성할 황금나사"…지난달 수출 12.6조 사상 최대 - 한국경제 | Structural implication: '"D램은 AI시대 완성할 황금나사"…지난달 수출 12.6조 사상 최대 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “오늘 돈 좀 썼다”…하이닉스 직원 성과급 1억 앞두고 올린 인증샷 - 조선일보 | Structural implication: '“오늘 돈 좀 썼다”…하이닉스 직원 성과급 1억 앞두고 올린 인증샷 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 호텔신라, 지난해 영업이익 135억원…1년 만에 흑자전환 | Structural implication: '호텔신라, 지난해 영업이익 135억원…1년 만에 흑자전환' suggests a shift in NEWS dynamics. | LOW |
 | “최대 5만원 정리 지원금 드립니다”…번개장터, 번개 신년장 개최 | Structural implication: '“최대 5만원 정리 지원금 드립니다”…번개장터, 번개 신년장 개최' suggests a shift in NEWS dynamics. | LOW |
 | “알리바바 텐센트 압도했다”…중국 두 인터넷 공룡 제친 한국 반도체 투톱 | Structural implication: '“알리바바 텐센트 압도했다”…중국 두 인터넷 공룡 제친 한국 반도체 투톱' suggests a shift in NEWS dynamics. | LOW |
 | [Health Recipe] 생애 주기별 단백질 섭취 전략 ‘많이’ 말고, ‘잘’ 먹자! | Structural implication: '[Health Recipe] 생애 주기별 단백질 섭취 전략 ‘많이’ 말고, ‘잘’ 먹자!' suggests a shift in NEWS dynamics. | LOW |
@@ -226,7 +227,6 @@
 | 호텔신라, 연간실적 흑자로 전환…“내실 경영에 주력” | Structural implication: '호텔신라, 연간실적 흑자로 전환…“내실 경영에 주력”' suggests a shift in NEWS dynamics. | LOW |
 | “행복경영 확산”…휴넷, 중기CEO 무료 ‘행복한경영대학’ 19기 모집 | Structural implication: '“행복경영 확산”…휴넷, 중기CEO 무료 ‘행복한경영대학’ 19기 모집' suggests a shift in NEWS dynamics. | LOW |
 | “결혼 못할까봐 내가 구제해준 것”…‘이숙캠’ 이성호 폭로에 윤유선이 한 말 | Structural implication: '“결혼 못할까봐 내가 구제해준 것”…‘이숙캠’ 이성호 폭로에 윤유선이 한 말' suggests a shift in NEWS dynamics. | LOW |
-| 강기정 “대학 정원 조정·청년 일자리, 불이익 없을 것” | Structural implication: '강기정 “대학 정원 조정·청년 일자리, 불이익 없을 것”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
