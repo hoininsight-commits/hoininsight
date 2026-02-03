@@ -2,7 +2,7 @@
     "date": "2026-02-03",
     "candidates": [
         {
-            "id": "NC-20260203-001",
+            "id": "NC-20260204-001",
             "source_mix": [
                 "schedule",
                 "structure"
@@ -19,7 +19,7 @@
             ]
         },
         {
-            "id": "NC-20260203-002",
+            "id": "NC-20260204-002",
             "source_mix": [
                 "anomaly",
                 "watchlist"
@@ -35,7 +35,7 @@
             ]
         },
         {
-            "id": "NC-20260203-003",
+            "id": "NC-20260204-003",
             "source_mix": [
                 "structure"
             ],
@@ -57,7 +57,7 @@
                 "relative"
             ],
             "dominant_type": "PREVIEW",
-            "theme": "[D-7] NVIDIA (NVDA) 실적 발표 사전 점검",
+            "theme": "[D-6] NVIDIA (NVDA) 실적 발표 사전 점검",
             "why_now": "지금 시점에서 NVIDIA 실적이 시장 방향성을 결정할 수 있습니다.",
             "confidence_level": "HIGH",
             "promotion_hint": "WEEKLY_STRUCTURE",
@@ -93,8 +93,23 @@
                 "schedule"
             ],
             "dominant_type": "PREVIEW",
-            "theme": "[D-7] US CPI Release 사전 점검",
+            "theme": "[D-6] US CPI Release 사전 점검",
             "why_now": "지금 시점에서 인플레이션 재점화 여부를 판가름할 지표입니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "WEEKLY_STRUCTURE",
+            "status": "CANDIDATE",
+            "angles": [
+                "SCHEDULE"
+            ]
+        },
+        {
+            "id": "NC-CAL-MACRO-FOMC_MINUTES-2026-02-18",
+            "source_mix": [
+                "schedule"
+            ],
+            "dominant_type": "PREVIEW",
+            "theme": "[D-14] FOMC Meeting Minutes 사전 점검",
+            "why_now": "지금 시점에서 연준의 금리 인하 경로에 대한 핵심 힌트가 공개됩니다.",
             "confidence_level": "HIGH",
             "promotion_hint": "WEEKLY_STRUCTURE",
             "status": "CANDIDATE",

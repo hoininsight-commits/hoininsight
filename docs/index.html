@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOIN 인사이트 대시보드 (Step 84)</title>
-    <style>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOIN 인사이트 대시보드 (Step 84)</title>
+        <style>
+            
         .topic-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -14,275 +14,126 @@
             margin-bottom: 20px;
             transition: all 0.2s ease;
         }
-
-        .topic-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+        .topic-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
         .topic-card-top1 {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-left: 6px solid #7c3aed;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.1);
-            position: relative;
-            overflow: hidden;
+            background: white; border: 1px solid #e2e8f0; border-left: 6px solid #7c3aed;
+            border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.1);
+            position: relative; overflow: hidden;
         }
-
-        .top1-header-label {
-            font-size: 11px;
-            font-weight: 800;
-            color: #7c3aed;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
-        }
-
-        .top1-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: #1e293b;
-            line-height: 1.3;
-            margin-bottom: 24px;
-        }
-
-        .badge-whynow {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
-        }
-
-        .badge-whynow-escalated {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .badge-whynow-smartmoney {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .badge-whynow-default {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
-
-        .empty-text {
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .snapshot-list-item {
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            height: 100vh;
-            display: flex;
-        }
-
-        .sidebar {
-            width: 250px;
-            background: white;
-            border-right: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            padding: 24px;
-            z-index: 10;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .menu-item {
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .menu-item:hover {
-            background: #f1f5f9;
-            color: var(--text-primary);
-        }
-
-        .menu-item.active {
-            background: #eff6ff;
-            color: var(--accent-blue);
-            font-weight: 600;
-        }
-
-        .main-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 32px;
-            height: 100vh;
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 24px;
-            font-size: 24px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(2px);
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 32px;
-            border: 1px solid var(--border-color);
-            width: 70%;
-            max-width: 900px;
-            max-height: 85vh;
-            overflow-y: auto;
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
+        
+        .top1-header-label { font-size: 11px; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+        .top1-title { font-size: 28px; font-weight: 800; color: #1e293b; line-height: 1.3; margin-bottom: 24px; }
+        
+        .badge-whynow { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+        .badge-whynow-escalated { background: #fee2e2; color: #991b1b; }
+        .badge-whynow-smartmoney { background: #dcfce7; color: #166534; }
+        .badge-whynow-default { background: #f3e8ff; color: #6b21a8; }
+        
+        .empty-text { font-size: 14px; color: #64748b; }
+        .snapshot-list-item { padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; }
+        
+            
+            * { box-sizing: border-box; }
             body {
-                flex-direction: column;
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-primary);
+                height: 100vh;
+                display: flex;
             }
-
+            
             .sidebar {
-                width: 100%;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 15px 20px;
+                width: 250px;
+                background: white;
+                border-right: 1px solid var(--border-color);
+                display: flex;
                 flex-direction: column;
+                padding: 24px;
+                z-index: 10;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+            }
+            
+            .logo {
+                font-size: 20px;
+                font-weight: 800;
+                color: var(--text-primary);
+                margin-bottom: 32px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .menu-item {
+                padding: 12px 16px;
+                margin-bottom: 4px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-weight: 500;
+                color: var(--text-secondary);
+                display: flex;
+                align-items: center;
                 gap: 10px;
             }
-
-            .logo {
-                margin-bottom: 10px;
-                justify-content: center;
+            .menu-item:hover {
+                background: #f1f5f9;
+                color: var(--text-primary);
             }
-
-            .menu-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 5px;
-                justify-content: center;
-            }
-
-            .menu-item {
-                flex: 1 1 auto;
-                margin-bottom: 0;
-                padding: 8px 10px;
-                font-size: 11px;
-                text-align: center;
-                white-space: nowrap;
-            }
-
-            .main-content {
-                padding: 15px;
-                overflow-y: visible;
-            }
-
-            .today-summary {
-                font-size: 20px;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Top-1 Mobile */
-            .topic-card-top1 {
-                padding: 16px;
-                margin-bottom: 24px;
-            }
-
-            .top1-title {
-                font-size: 20px;
-            }
-
-            /* Fix for narrow columns */
-            .empty-state-card h3 {
-                word-break: keep-all;
-                font-size: 18px;
-                margin: 0 10px;
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-                max-height: 90vh;
-            }
-
             .menu-item.active {
-                border-bottom: 2px solid var(--accent-blue);
-                background: transparent;
+                background: #eff6ff;
                 color: var(--accent-blue);
+                font-weight: 600;
             }
-
+            
             .main-content {
                 flex: 1;
-                padding: 40px;
                 overflow-y: auto;
+                padding: 32px;
+                height: 100vh;
             }
-        }
+            
+            h2 {
+                margin-top: 0;
+                margin-bottom: 24px;
+                font-size: 24px;
+            }
+            
+            .card-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 20px;
+            }
+            
+            .hidden { display: none !important; }
+            
+            /* Modal */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 100;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.5);
+                backdrop-filter: blur(2px);
+            }
+            .modal.active { display: flex; align-items: center; justify-content: center; }
+            .modal-content {
+                background-color: #fff;
+                margin: auto;
+                padding: 32px;
+                border: 1px solid var(--border-color);
+                width: 70%;
+                max-width: 900px;
+                max-height: 85vh;
+                overflow-y: auto;
+                border-radius: 16px;
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            }
 
         .ops-report-container {
             background: white;
@@ -356,900 +207,198 @@
                 onclick="switchTab('ops-dashboard', this)">✅ 신규 운영 UI (IS-100)</div>
         </div>
     </div>
-
-    <div class="main-content">
-        <div id="tab-today">
-
-            <div class="today-container" style="margin-bottom: 20px; border: 2px solid #2563eb; background: #eff6ff;">
-                <div class="today-header" style="border-bottom: 1px solid #bfdbfe; background: #dbeafe;">
-                    <div class="today-summary" style="color: #1e40af;">📌 오늘의 핵심 한 문장 (Operator Decision)</div>
+    
+                
+    <div style="margin-bottom: 30px;">
+        <div style="font-size:14px; font-weight:700; color:#475569; margin-bottom:10px; display:flex; justify-content:space-between; align-items:flex-end;">
+            <span>🔭 이번 주 전략적 관찰 (Strategic Watchlist)</span>
+            <span style="font-size:11px; font-weight:400; color:#94a3b8;">*확정된 사실이 아닌 구조적 시나리오입니다.</span>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:10px;">
+            
+        <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                    <span style="background:#3b82f6; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">PREVIEW</span>
+                    <span style="font-weight:700; color:#334155; font-size:14px;">FOMC & Liquidity</span>
                 </div>
-                <div style="padding: 20px;">
-
-                    <div
-                        style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
-                        <div
-                            style="font-size: 13px; font-weight: 800; color: #475569; margin-bottom: 12px; display: flex; align-items: center;">
-                            📌 오늘의 해석 구도 (Multi-Angle View)
-                            <span
-                                style="margin-left: 8px; font-size: 10px; font-weight: 500; color: #94a3b8; background: #fff; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0;">Advanced
-                                Editorial</span>
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-
-                            <div
-                                style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                                <div
-                                    style="font-size: 9px; font-weight: 800; color: #1e3a8a; margin-bottom: 4px; text-transform: uppercase;">
-                                    SLOT-1 / STRUCTURE
-                                </div>
-                                <div
-                                    style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
-                                    예정된 'FOMC 의사록 공개'와 구조적 이슈의 충돌 가능성 미리보기
-                                </div>
-                                <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
-                                    일정이 다가옴에 따라 시장의 구조적 우려가 자극될 시점입니다.
-                                </div>
-                            </div>
-
-                            <div
-                                style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                                <div
-                                    style="font-size: 9px; font-weight: 800; color: #10b981; margin-bottom: 4px; text-transform: uppercase;">
-                                    SLOT-2 / SCHEDULE
-                                </div>
-                                <div
-                                    style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
-                                    [D-7] NVIDIA (NVDA) 실적 발표 사전 점검
-                                </div>
-                                <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
-                                    지금 시점에서 NVIDIA 실적이 시장 방향성을 결정할 수 있습니다.
-                                </div>
-                            </div>
-
-                            <div
-                                style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                                <div
-                                    style="font-size: 9px; font-weight: 800; color: #dc2626; margin-bottom: 4px; text-transform: uppercase;">
-                                    SLOT-3 / ANOMALY
-                                </div>
-                                <div
-                                    style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
-                                    감지된 이상징후가 기존 관찰 리스트의 핵심 전제를 흔드는 시나리오
-                                </div>
-                                <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
-                                    이상징후가 단순 노이즈가 아닌 구조적 균열의 신호일 수 있습니다.
-                                </div>
-                            </div>
-
-                        </div>
-                        <div
-                            style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center; font-style: italic;">
-                            * 본 섹션은 하나의 정답이 아닌, 서로 다른 시점에서 시장을 바라보기 위한 해석 구도입니다.
-                        </div>
-                    </div>
-
-                    <div
-                        style="background: #fff; border: 2px solid #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                            <div style="font-size: 12px; font-weight: 900; color: #1e293b; letter-spacing: 1px;">EDITOR
-                                PICK: 오늘의 콘텐츠 후보</div>
-                            <div style="font-size: 11px; color: #64748b; font-weight: 500;">오늘의 최종 선택은 1건입니다.</div>
-                        </div>
-
-                        <div style="margin-bottom: 15px;">
-                            <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                                <span
-                                    style="background: #2563eb; color: white; px; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px;">PREVIEW</span>
-                                <span style="font-size: 16px; font-weight: 800; color: #0f172a; line-height: 1.4;">[D-7]
-                                    NVIDIA (NVDA) 실적 발표 사전 점검</span>
-                            </div>
-                            <div
-                                style="background: #f8fafc; border-left: 3px solid #2563eb; padding: 10px; font-size: 13px; color: #334155; line-height: 1.6;">
-                                <span style="font-weight: 700; color: #475569;">[선정 이유]</span> Strong Why-Now /
-                                Multi-Signal Fusion / Economic Hunter Deep Dive
-                            </div>
-                        </div>
-
-                        <div
-                            style="margin-bottom: 15px; background: #f0f9ff; padding: 12px; border-radius: 6px; border: 1px solid #bae6fd;">
-                            <div style="font-size: 11px; font-weight: 800; color: #0369a1; margin-bottom: 8px;">📊 핵심 숫자
-                                (Numeric Evidence)</div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-
-                                <div style="border-right: 1px solid #e0f2fe; padding-right: 8px;">
-                                    <div style="font-size: 10px; color: #64748b;">Data Center Revenue</div>
-                                    <div style="font-size: 14px; font-weight: 800; color: #0c4a6e;">$30.8B <span
-                                            style="font-size: 10px; font-weight: 600; color: #0369a1;">(+112%
-                                            YoY)</span></div>
-                                </div>
-
-                                <div style="border-right: 1px solid #e0f2fe; padding-right: 8px;">
-                                    <div style="font-size: 10px; color: #64748b;">Gross Margin</div>
-                                    <div style="font-size: 14px; font-weight: 800; color: #0c4a6e;">75.0% <span
-                                            style="font-size: 10px; font-weight: 600; color: #0369a1;">(+1.0%
-                                            QoQ)</span></div>
-                                </div>
-
-                            </div>
-                            <div style="margin-top: 6px; font-size: 9px; color: #94a3b8;">출처:
-                                https://nvidianews.nvidia.com/ / </div>
-                        </div>
-
-                        <div
-                            style="margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden;">
-                            <div
-                                style="background: #1e293b; color: white; padding: 6px 12px; font-size: 11px; font-weight: 700;">
-                                📈 상대 비교 & 재평가 (Relative Re-rating)</div>
-                            <div style="padding: 12px; background: #fff;">
-                                <div style="font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">
-                                    BigTech 대비 +152% 초과수익, 밸류에이션 부담 점검 필요
-                                </div>
-                                <div style="display: flex; font-size: 11px; color: #64748b; gap: 15px;">
-                                    <div><span style="font-weight: 600;">BigTech 대비:</span> +152%</div>
-                                    <div><span style="font-weight: 600;">현재 Fwd P/E:</span> 35x</div>
-                                    <div><span style="font-weight: 600;">5y 평균:</span> 42x</div>
-                                </div>
-                                <div style="margin-top: 8px; font-size: 11px; color: #dc2626; font-weight: 600;">
-                                    ⚠ 리스크: 금리 변동성 확대 시 멀티플 축소 위험
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 15px; font-size: 10px; color: #94a3b8; text-align: center;">
-                            * 본 콘텐츠는 확정된 투자 판단이 아닌 구조적 관찰 및 시나리오 해설입니다.
-                        </div>
-                    </div>
-
-                    <div
-                        style="font-size: 1.4em; font-weight: 800; color: #1e3a8a; line-height: 1.5; margin-bottom: 15px; text-align: center;">
-                        "[긴급] None의 발언이 암시하는 구조적 균열"
-                    </div>
-
-                    <div
-                        style="background: #f1f5f9; border-radius: 6px; padding: 12px; margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0;">
-                        <div
-                            style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">
-                            Market Framing</div>
-                        <div style="font-size: 14px; color: #334155; font-weight: 600;">
-                            숫자는 조용하지만, 시장 구조는 이미 방향을 틀었습니다.
-                        </div>
-                        <div style="margin-top: 6px; font-size: 10px; color: #94a3b8;">
-                            * 본 문장은 시장 구조 해석을 위한 프레이밍입니다.
-                        </div>
-                    </div>
-
-                    <div
-                        style="background: #fff; border-left: 4px solid #dc2626; border-radius: 4px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-                        <div
-                            style="font-size: 11px; font-weight: 800; color: #dc2626; margin-bottom: 6px; text-transform: uppercase;">
-                            [WHY THIS MATTERS NOW]</div>
-                        <div style="font-size: 15px; color: #1e293b; font-weight: 700; line-height: 1.5;">
-                            이 구조는 아직 뉴스가 아니지만, 시장은 항상 결과보다 먼저 움직입니다.
-                        </div>
-                        <div style="margin-top: 8px; font-size: 10px; color: #dc2626; opacity: 0.8;">
-                            * 이 문장은 투자 확정이 아닌, 시점 중요성에 대한 해석입니다.
-                        </div>
-                    </div>
-
-                    <div
-                        style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
-                        <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb;">📝 Long-form Script (Tone:
-                            STRUCTURAL / Mode: EXPLANATION)</div>
-                        [긴급] None의 발언이 암시하는 구조적 균열<br>지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.<br><br>대부분은 이 이슈를 'MAIN_ISSUE'
-                        관점에서 단순히 바라봅니다.<br>하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.<br><br>이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이
-                        시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br>따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게
-                        지켜봐야 합니다.<br><br><span style='color:#94a3b8; font-size:11px;'>* 본 내용은 확정된 투자 판단이 아닌 구조적
-                            관찰입니다.</span>
-                    </div>
-
-                    <details style="margin-top: 10px;">
-                        <summary style="cursor: pointer; color: #64748b; font-size: 12px; font-weight: 600;">🔽 쇼츠 및 추가
-                            텍스트 보기</summary>
-                        <div style="margin-top: 10px; padding: 10px; background: #f8fafc; border-radius: 6px;">
-
-                            <div style="margin-bottom: 10px;">
-                                <div style="font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px;">
-                                    SHORT FORM</div>
-                                <div style="font-size: 13px; color: #334155; white-space: pre-wrap;"><strong>[Shorts
-                                        Option 1]</strong><br>[긴급] None의 발언이 암시하는 구조적 균열
-                                    지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야
-                                    합니다.<br><br><strong>[Shorts Option 2]</strong><br>하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이
-                                    아닙니다. 사실은 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는
-                                    증거입니다.<br><br><strong>[Shorts Option 3]</strong><br>[긴급] None의 발언이 암시하는 구조적 균열
-                                    지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 왜냐하면 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해
-                                    자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br>
-                                    <hr><strong>[Text Card]</strong><br>[KEY POINT]<br>[긴급] None의 발언이 암시하는 구조적 균열<br>지금
-                                    시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.<br><br>[STRUCTURE]<br>이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이
-                                    시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br>[CHECK]<br>따라서 지금 우리는 가격이 아니라, 이
-                                    구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.
-                                </div>
-                            </div>
-
-                        </div>
-                    </details>
-
-                    <!-- [IS-86] Narrative Candidates Section -->
-
-                    <div style="margin-top: 25px; border-top: 1px dashed #cbd5e1; padding-top: 15px;">
-                        <div
-                            style="font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 10px; display: flex; align-items: center;">
-                            <span style="font-size: 16px; margin-right: 6px;">🧩</span> 오늘의 해석 후보 (Narrative Candidates)
-                        </div>
-                        <div style="display: grid; gap: 10px;">
-
-                            <div
-                                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                    <span
-                                        style="background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">PREVIEW</span>
-                                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">DAILY_LONG</span>
-                                </div>
-                                <div
-                                    style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">
-                                    예정된 'FOMC 의사록 공개'와 구조적 이슈의 충돌 가능성 미리보기</div>
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">일정이 다가옴에 따라 시장의 구조적
-                                    우려가 자극될 시점입니다.</div>
-
-                            </div>
-
-                            <div
-                                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                    <span
-                                        style="background: #8b5cf6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">SCENARIO</span>
-                                    <span
-                                        style="font-size: 10px; color: #94a3b8; font-weight: 500;">WEEKLY_STRUCTURE</span>
-                                </div>
-                                <div
-                                    style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">
-                                    감지된 이상징후가 기존 관찰 리스트의 핵심 전제를 흔드는 시나리오</div>
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">이상징후가 단순 노이즈가 아닌 구조적
-                                    균열의 신호일 수 있습니다.</div>
-
-                            </div>
-
-                            <div
-                                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                    <span
-                                        style="background: #3b82f6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">STRUCTURE</span>
-                                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">DAILY_SHORT</span>
-                                </div>
-                                <div
-                                    style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">
-                                    핵심 이슈의 구조적 경로 재점검</div>
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">뉴스가 없을 때야말로 구조를 점검해야 할
-                                    최적의 시간입니다.</div>
-
-                            </div>
-
-                            <div
-                                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                    <span
-                                        style="background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">PREVIEW</span>
-                                    <span
-                                        style="font-size: 10px; color: #94a3b8; font-weight: 500;">WEEKLY_STRUCTURE</span>
-                                </div>
-                                <div
-                                    style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">
-                                    [D-7] NVIDIA (NVDA) 실적 발표 사전 점검</div>
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">지금 시점에서 NVIDIA 실적이 시장
-                                    방향성을 결정할 수 있습니다.</div>
-
-                                <div
-                                    style="font-size: 10px; color: #0369a1; background: #eff6ff; padding: 4px 8px; border-radius: 4px; margin-bottom: 4px;">
-                                    📊 Data Center Revenue: $30.8B (+112% YoY) | Gross Margin: 75.0% (+1.0% QoQ)
-                                </div>
-
-                                <div
-                                    style="font-size: 10px; color: #475569; border-top: 1px solid #f1f5f9; padding-top: 4px; font-style: italic;">
-                                    📈 BigTech 대비 +152% 초과수익, 밸류에이션 부담 점검 필요
-                                </div>
-
-                            </div>
-
-                            <div
-                                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                    <span
-                                        style="background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">PREVIEW</span>
-                                    <span
-                                        style="font-size: 10px; color: #94a3b8; font-weight: 500;">WEEKLY_STRUCTURE</span>
-                                </div>
-                                <div
-                                    style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">
-                                    [D-7] US CPI Release 사전 점검</div>
-                                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">지금 시점에서 인플레이션 재점화 여부를
-                                    판가름할 지표입니다.</div>
-
-                            </div>
-
-                        </div>
-                        <div style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center;">
-                            * 본 항목은 확정된 투자 판단이 아닌 시장 해석을 위한 후보 시나리오입니다.
-                        </div>
-                    </div>
-
+                <div style="font-size:12px; color:#475569;">
+                    금리 결정 이후 단기 유동성 향방 결정
                 </div>
             </div>
-
-
-            <div style="margin-bottom: 30px;">
-                <div
-                    style="font-size:14px; font-weight:700; color:#475569; margin-bottom:10px; display:flex; justify-content:space-between; align-items:flex-end;">
-                    <span>🔭 이번 주 전략적 관찰 (Strategic Watchlist)</span>
-                    <span style="font-size:11px; font-weight:400; color:#94a3b8;">*확정된 사실이 아닌 구조적 시나리오입니다.</span>
+            <div style="text-align:right; min-width:80px;">
+                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
+                <div style="font-size:12px; font-weight:600; color:#1e293b;">This Week</div>
+            </div>
+        </div>
+        
+        <div style="background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                    <span style="background:#a855f7; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">STRUCTURE</span>
+                    <span style="font-weight:700; color:#334155; font-size:14px;">AI Capex Bottleneck</span>
                 </div>
-                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:10px;">
-
-                    <div
-                        style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                                <span
-                                    style="background:#3b82f6; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">PREVIEW</span>
-                                <span style="font-weight:700; color:#334155; font-size:14px;">FOMC & Liquidity</span>
-                            </div>
-                            <div style="font-size:12px; color:#475569;">
-                                금리 결정 이후 단기 유동성 향방 결정
-                            </div>
-                        </div>
-                        <div style="text-align:right; min-width:80px;">
-                            <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                            <div style="font-size:12px; font-weight:600; color:#1e293b;">This Week</div>
-                        </div>
-                    </div>
-
-                    <div
-                        style="background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                                <span
-                                    style="background:#a855f7; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">STRUCTURE</span>
-                                <span style="font-weight:700; color:#334155; font-size:14px;">AI Capex Bottleneck</span>
-                            </div>
-                            <div style="font-size:12px; color:#475569;">
-                                빅테크 실적 발표 시즌, AI 수익화 지연 우려 vs Capex 지속
-                            </div>
-                        </div>
-                        <div style="text-align:right; min-width:80px;">
-                            <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                            <div style="font-size:12px; font-weight:600; color:#1e293b;">2 Weeks</div>
-                        </div>
-                    </div>
-
-                    <div
-                        style="background:#fff7ed; border:1px solid #fed7aa; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                                <span
-                                    style="background:#f97316; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">SCENARIO</span>
-                                <span style="font-weight:700; color:#334155; font-size:14px;">Oil Price Spike
-                                    (Hormuz)</span>
-                            </div>
-                            <div style="font-size:12px; color:#475569;">
-                                지정학적 리스크 임계치 근접 (WTI $80 접근)
-                            </div>
-                        </div>
-                        <div style="text-align:right; min-width:80px;">
-                            <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                            <div style="font-size:12px; font-weight:600; color:#1e293b;">Indefinite</div>
-                        </div>
-                    </div>
-
+                <div style="font-size:12px; color:#475569;">
+                    빅테크 실적 발표 시즌, AI 수익화 지연 우려 vs Capex 지속
                 </div>
             </div>
-
-
-            <div class="today-section-header" style="color:#475569;">📌 오늘의 확정 결론: 침묵 결정</div>
-            <div class="topic-card"
-                style="border:2px solid #94a3b8; background:#f8fafc; margin-bottom:30px; padding:30px;">
-                <div style="display:flex; align-items:flex-start; gap:20px;">
-                    <div style="font-size:40px;">🛑</div>
-                    <div style="flex:1;">
-                        <div style="font-size:22px; color:#1e293b; font-weight:800; margin-bottom:10px;">
-                            "오늘은 말할 토픽이 없다고 판단했습니다."
-                        </div>
-                        <div style="font-size:15px; color:#475569; line-height:1.6; margin-bottom:15px;">
-                            <strong>판단 사유:</strong> 금일 감지된 시장 신호 중, 구조적 임계치를 초과한 이슈가 없습니다.
-                        </div>
-
-                        <div
-                            style="background:#e2e8f0; border-radius:8px; padding:12px; font-size:13px; color:#64748b; display:flex; justify-content:space-between;">
-                            <span>✅ 정상 작동 중 (모든 감지 센서 활성)</span>
-                            <span>🔭 하단 '감시 중인 구조적 이슈'를 참조하십시오.</span>
-                        </div>
+            <div style="text-align:right; min-width:80px;">
+                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
+                <div style="font-size:12px; font-weight:600; color:#1e293b;">2 Weeks</div>
+            </div>
+        </div>
+        
+        <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                    <span style="background:#f97316; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">SCENARIO</span>
+                    <span style="font-weight:700; color:#334155; font-size:14px;">Oil Price Spike (Hormuz)</span>
+                </div>
+                <div style="font-size:12px; color:#475569;">
+                    지정학적 리스크 임계치 근접 (WTI $80 접근)
+                </div>
+            </div>
+            <div style="text-align:right; min-width:80px;">
+                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
+                <div style="font-size:12px; font-weight:600; color:#1e293b;">Indefinite</div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+    
+                
+        <div class="today-section-header" style="color:#475569;">📌 오늘의 확정 결론: 침묵 결정</div>
+        <div class="topic-card" style="border:2px solid #94a3b8; background:#f8fafc; margin-bottom:30px; padding:30px;">
+            <div style="display:flex; align-items:flex-start; gap:20px;">
+                <div style="font-size:40px;">🛑</div>
+                <div style="flex:1;">
+                    <div style="font-size:22px; color:#1e293b; font-weight:800; margin-bottom:10px;">
+                        "오늘은 말할 토픽이 없다고 판단했습니다."
+                    </div>
+                    <div style="font-size:15px; color:#475569; line-height:1.6; margin-bottom:15px;">
+                        <strong>판단 사유:</strong> 금일 감지된 시장 신호 중, 구조적 임계치를 초과한 이슈가 없습니다.
+                    </div>
+                    
+                    <div style="background:#e2e8f0; border-radius:8px; padding:12px; font-size:13px; color:#64748b; display:flex; justify-content:space-between;">
+                        <span>✅ 정상 작동 중 (모든 감지 센서 활성)</span>
+                        <span>🔭 하단 '감시 중인 구조적 이슈'를 참조하십시오.</span>
                     </div>
                 </div>
             </div>
-
-
-
-            <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">
-                <h3 style="color: #64748b; font-size: 13px; font-weight:600;">👇 [내부 참고용] 분석 상세 및 초안</h3>
-            </div>
-
-
-            <div class="narrative-preview-container"
-                style="background:white; border:1px solid #cbd5e1; border-radius:12px; padding:25px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
-                <div
-                    style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
+        </div>
+        
+                
+                
+                <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">
+                    <h3 style="color: #64748b; font-size: 13px; font-weight:600;">👇 [내부 참고용] 분석 상세 및 초안</h3>
+                </div>
+                
+                
+            <div class="narrative-preview-container" style="background:white; border:1px solid #cbd5e1; border-radius:12px; padding:25px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
                     <div style="font-size:18px; font-weight:800; color:#1e293b;">📜 생성된 대본 초안 (참고용)</div>
-                    <div
-                        style="background:#f0fdf4; color:#166534; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
+                    <div style="background:#f0fdf4; color:#166534; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
                         ✅ 정합성 일치
                     </div>
                 </div>
-
+                
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px;">
                     <!-- Titles -->
                     <div>
-                        <div
-                            style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">
-                            제목 후보안</div>
-                        <div
-                            style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>
-                            📝 오늘은 말할 주제가 없다</div>
-                        <div
-                            style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>
-                            📝 NO_TOPIC은 정상 상태다</div>
-                        <div
-                            style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>
-                            📝 오늘의 시장: 구조적 주제 부재</div>
-
-                        <div
-                            style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border-left:3px solid #3b82f6;">
-                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">맥락 정보
-                                (Context)</div>
+                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">제목 후보안</div>
+                        <div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 오늘은 말할 주제가 없다</div><div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 NO_TOPIC은 정상 상태다</div><div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 오늘의 시장: 구조적 주제 부재</div>
+                        
+                        <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border-left:3px solid #3b82f6;">
+                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">맥락 정보 (Context)</div>
                             <div style="font-size:13px; color:#475569;">
                                 <strong>토픽 ID:</strong> 감지된 토픽 없음<br>
                                 <strong>발화 시점:</strong> 특별한 트리거 없음.
                             </div>
                         </div>
                     </div>
-
+                    
                     <!-- Script Draft -->
                     <div>
-                        <div
-                            style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">
-                            대본 초안 미리보기</div>
-                        <div
-                            style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:14px; line-height:1.6; color:#334155;">
-                            <span style="color:#2563eb; font-weight:bold;">[도입]</span> 오늘은 시장에서 강력한 구조적 신호가 발견되지
-                            않았습니다.<br><br>
-                            <span style="color:#2563eb; font-weight:bold;">[전개]</span> 현재 시장은 과도기적 상태이거나 명확한 방향성이
-                            부재함.<br><br>
+                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">대본 초안 미리보기</div>
+                        <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:14px; line-height:1.6; color:#334155;">
+                            <span style="color:#2563eb; font-weight:bold;">[도입]</span> 오늘은 시장에서 강력한 구조적 신호가 발견되지 않았습니다.<br><br>
+                            <span style="color:#2563eb; font-weight:bold;">[전개]</span> 현재 시장은 과도기적 상태이거나 명확한 방향성이 부재함.<br><br>
                             <span style="color:#dc2626; font-weight:bold;">[주의]</span> 무리한 진입 자제 요망.<br><br>
                             <span style="color:#2563eb; font-weight:bold;">[제언]</span> 다음 신호를 기다리며 모니터링을 지속합니다.
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="empty-state-card">
-                <span class="empty-icon-small">☕️</span>
-                <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (시스템 스캐닝)</strong></span>
-            </div>
-
-
-
-
-
-            <div class="memory-delta-container">
-                <div class="delta-status-group">
-                    <div class="delta-icon">🔁</div>
-                    <div class="delta-text">
-                        <div class="delta-title">반복되는 구조 (재진입)</div>
-                        <div class="delta-sub">어제(2026-02-02)와 동일한 논리 구조가 재확인되었습니다.</div>
-
-                    </div>
-                </div>
-                <div class="delta-badges">
-                    <div class="delta-badge badge-recurring">구조 반복</div>
-                    <div class="delta-badge badge-sustained">⏸ 강도 유지</div>
-                </div>
-            </div>
-
-
-            <div class="snapshot-list-container">
-                <h3 class="list-header">📅 최근 구조적 시그널 이력</h3>
-                <div class="snapshot-list">
-
-                    <div class="snapshot-list-item">
-                        <div class="list-date">2026-06-15</div>
-                        <div class="list-body">
-                            <div class="list-title">AI 데이터 센터 전력망 붕괴 위기</div>
-                            <div class="list-meta">
-                                <span class="list-pressure">Infrastructure</span>
-                                <span class="list-esc-badge">🔥 +3</span>
-                            </div>
-                        </div>
-                        <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-15')">상세 보기</button>
-                    </div>
-
-                    <div class="snapshot-list-item">
-                        <div class="list-date">2026-06-10</div>
-                        <div class="list-body">
-                            <div class="list-title">국채 금리 발작과 유동성 경색</div>
-                            <div class="list-meta">
-                                <span class="list-pressure">Liquidity</span>
-                                <span class="list-esc-badge">🔥 +1</span>
-                            </div>
-                        </div>
-                        <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-10')">상세 보기</button>
-                    </div>
-
-                    <div class="snapshot-list-item">
-                        <div class="list-date">2026-06-05</div>
-                        <div class="list-body">
-                            <div class="list-title">특정 반도체 공정 수율 저하</div>
-                            <div class="list-meta">
-                                <span class="list-pressure">Structural</span>
-
-                            </div>
-                        </div>
-                        <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-05')">상세 보기</button>
-                    </div>
-
-                </div>
-            </div>
-
+            
+                
+        <div class="empty-state-card">
+            <span class="empty-icon-small">☕️</span>
+            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (시스템 스캐닝)</strong></span>
         </div>
-        <div id="tab-candidates" class="hidden">
-
-            <div class="candidate-container">
-                <div class="today-header">
-                    <div class="today-summary">📂 토픽 후보군 (포함: 관찰 승격) <strong>15개</strong></div>
+        
+                
+                
+                
+                
+        <div class="memory-delta-container">
+            <div class="delta-status-group">
+                <div class="delta-icon">🔁</div>
+                <div class="delta-text">
+                    <div class="delta-title">반복되는 구조 (재진입)</div>
+                    <div class="delta-sub">어제(2026-02-02)와 동일한 논리 구조가 재확인되었습니다.</div>
+                    
                 </div>
-                <table class="archive-table">
-                    <thead>
-                        <tr>
-                            <th width="120">ID</th>
-                            <th width="100">분류</th>
-                            <th width="80">Tone</th>
-                            <th width="80">Mode</th>
-                            <th>상세 이유</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_index_spx_fred_20260203</code></td>
-                            <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_spx_fred]
-                                with
-                                corroborating signals in ['index_kospi_stooq'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_struct_dart_disposal_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">STRUCTURAL</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [struct_dart_disposal]
-                                with corroborating signals in ['struct_dart_cb_bw'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_inflation_kor_cpi_ecos_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">INFLATION</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_cpi_fred',
-                                'inflation_pce_fred'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_rates_fed_funds_fred_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [rates_fed_funds_fred]
-                                with corroborating signals in ['derived_yield_curve_10y_2y'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_index_kospi_stooq_20260203</code></td>
-                            <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_kospi_stooq]
-                                with corroborating signals in ['index_spx_fred'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_index_nasdaq_fred_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">GLOBAL_INDEX</span></td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [index_nasdaq_fred]
-                                during
-                                global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION',
-                                'RATES_YIELD',
-                                'CREDIT', 'LIQUIDITY'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_derived_yield_curve_10y_2y_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [derived_yield_curve_10y_2y] with corroborating signals in ['rates_fed_funds_fred'].
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">STRUCTURAL</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw]
-                                with corroborating signals in ['struct_dart_disposal'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_credit_hy_spread_fred_20260203</code></td>
-                            <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">CREDIT</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [credit_hy_spread_fred]
-                                during global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION',
-                                'RATES_YIELD', 'GLOBAL_INDEX', 'LIQUIDITY'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_inflation_cpi_fred_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">INFLATION</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [inflation_cpi_fred]
-                                with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_pce_fred'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_inflation_pce_fred_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">INFLATION</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Category Cluster: Detected in
-                                [inflation_pce_fred]
-                                with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260203</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#f1f5f9; color:#475569;">LIQUIDITY</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred]
-                                during
-                                global market volatility in categories ['OTHER', 'STRUCTURAL', 'INFLATION',
-                                'RATES_YIELD',
-                                'GLOBAL_INDEX', 'CREDIT'].</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">PROM-WL-20260203-001</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_PREVIEW</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#f0f9ff; color:#0369a1; font-weight:bold; font-size:10px;">PREVIEW</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">HEADS_UP</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Schedule within execution window
-                                (7
-                                days)</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">PROM-WL-20260203-002</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_STRUCTURE</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#faf5ff; color:#7e22ce; font-weight:bold; font-size:10px;">STRUCTURAL</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">EXPLANATION</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Recurring structural pattern
-                                detected</td>
-                        </tr>
-
-                        <tr>
-                            <td><code style="font-size:11px;">PROM-WL-20260203-003</code></td>
-                            <td><span class="card-badge signal"
-                                    style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_SCENARIO</span>
-                            </td>
-                            <td><span class="card-badge"
-                                    style="background:#fff7ed; color:#c2410c; font-weight:bold; font-size:10px;">SCENARIO</span>
-                            </td>
-                            <td><span
-                                    style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">WHAT_IF</span>
-                            </td>
-                            <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Scenario condition (WTI) trigger
-                                active</td>
-                        </tr>
-
-                    </tbody>
-                </table>
             </div>
-
+            <div class="delta-badges">
+                <div class="delta-badge badge-recurring">구조 반복</div><div class="delta-badge badge-sustained">⏸ 강도 유지</div>
+            </div>
         </div>
-        <div id="tab-decision" class="hidden">
-            <div class="empty-state">오늘의 최종 의사결정 데이터가 없습니다.</div>
+        
+                
+        <div class="snapshot-list-container">
+            <h3 class="list-header">📅 최근 구조적 시그널 이력</h3>
+            <div class="snapshot-list">
+                
+            <div class="snapshot-list-item">
+                <div class="list-date">2026-06-15</div>
+                <div class="list-body">
+                    <div class="list-title">AI 데이터 센터 전력망 붕괴 위기</div>
+                    <div class="list-meta">
+                        <span class="list-pressure">Infrastructure</span>
+                        <span class="list-esc-badge">🔥 +3</span>
+                    </div>
+                </div>
+                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-15')">상세 보기</button>
+            </div>
+            
+            <div class="snapshot-list-item">
+                <div class="list-date">2026-06-10</div>
+                <div class="list-body">
+                    <div class="list-title">국채 금리 발작과 유동성 경색</div>
+                    <div class="list-meta">
+                        <span class="list-pressure">Liquidity</span>
+                        <span class="list-esc-badge">🔥 +1</span>
+                    </div>
+                </div>
+                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-10')">상세 보기</button>
+            </div>
+            
+            <div class="snapshot-list-item">
+                <div class="list-date">2026-06-05</div>
+                <div class="list-body">
+                    <div class="list-title">특정 반도체 공정 수율 저하</div>
+                    <div class="list-meta">
+                        <span class="list-pressure">Structural</span>
+                        
+                    </div>
+                </div>
+                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-05')">상세 보기</button>
+            </div>
+            
+            </div>
         </div>
-        <div id="tab-ops" class="hidden">
-
-            <div class="ops-container">
-                <div class="today-header">
-                    <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
-                </div>
-
-                <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
-                    <div class="topic-card" style="text-align:center;">
-                        <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
-                        <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
-                    </div>
-                    <div class="topic-card" style="text-align:center;">
-                        <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
-                        <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
-                    </div>
-                    <div class="topic-card" style="text-align:center;">
-                        <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
-                        <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="memory-delta-container">
-                    <div class="delta-status-group">
-                        <div class="delta-icon">🔁</div>
-                        <div class="delta-text">
-                            <div class="delta-title">반복되는 구조 (재진입)</div>
-                            <div class="delta-sub">어제(2026-02-02)와 동일한 논리 구조가 재확인되었습니다.</div>
-
-                        </div>
-                    </div>
-                    <div class="delta-badges">
-                        <div class="delta-badge badge-recurring">구조 반복</div>
-                        <div class="delta-badge badge-sustained">⏸ 강도 유지</div>
-                    </div>
-                </div>
-
-
-                <div class="snapshot-list-container">
-                    <h3 class="list-header">📅 최근 구조적 시그널 이력</h3>
-                    <div class="snapshot-list">
-
-                        <div class="snapshot-list-item">
-                            <div class="list-date">2026-06-15</div>
-                            <div class="list-body">
-                                <div class="list-title">AI 데이터 센터 전력망 붕괴 위기</div>
-                                <div class="list-meta">
-                                    <span class="list-pressure">Infrastructure</span>
-                                    <span class="list-esc-badge">🔥 +3</span>
-                                </div>
-                            </div>
-                            <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-15')">상세
-                                보기</button>
-                        </div>
-
-                        <div class="snapshot-list-item">
-                            <div class="list-date">2026-06-10</div>
-                            <div class="list-body">
-                                <div class="list-title">국채 금리 발작과 유동성 경색</div>
-                                <div class="list-meta">
-                                    <span class="list-pressure">Liquidity</span>
-                                    <span class="list-esc-badge">🔥 +1</span>
-                                </div>
-                            </div>
-                            <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-10')">상세
-                                보기</button>
-                        </div>
-
-                        <div class="snapshot-list-item">
-                            <div class="list-date">2026-06-05</div>
-                            <div class="list-body">
-                                <div class="list-title">특정 반도체 공정 수율 저하</div>
-                                <div class="list-meta">
-                                    <span class="list-pressure">Structural</span>
-
-                                </div>
-                            </div>
-                            <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-05')">상세
-                                보기</button>
-                        </div>
-
-                    </div>
-                </div>
-
+        
             </div>
             <div id="tab-candidates" class="hidden">
 
@@ -1537,543 +686,457 @@
                 <div class="empty-state">오늘의 최종 의사결정 데이터가 없습니다.</div>
             </div>
             <div id="tab-ops" class="hidden">
+                
+    <div class="ops-container">
+        <div class="today-header">
+            <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
+        </div>
+        
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
+                <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
+                <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
+            </div>
+            <div class="topic-card" style="text-align:center;">
+                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
+                <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
+            </div>
+        </div>
 
-                <div class="ops-container">
-                    <div class="today-header">
-                        <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
-                    </div>
-
-                    <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
-                        <div class="topic-card" style="text-align:center;">
-                            <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
-                            <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
-                        </div>
-                        <div class="topic-card" style="text-align:center;">
-                            <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
-                            <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
-                        </div>
-                        <div class="topic-card" style="text-align:center;">
-                            <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
-                            <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
-                        </div>
-                    </div>
-
-                    <table class="archive-table">
-                        <thead>
-                            <tr>
-                                <th>날짜</th>
-                                <th>상태</th>
-                                <th>소요시간 (분)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td>2026-02-03</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>5.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-02-02</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>6.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-02-01</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>7.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-01-31</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>5.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-01-30</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>6.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-01-29</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>7.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>2026-01-28</td>
-                                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                                <td>5.2</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>상태</th>
+                    <th>소요시간 (분)</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>2026-02-03</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-02-02</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>6.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-02-01</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>7.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-31</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-30</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>6.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-29</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>7.2</td>
+            </tr>
+        
+            <tr>
+                <td>2026-01-28</td>
+                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
+                <td>5.2</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
             </div>
             <div id="tab-archive" class="hidden">
                 <div class="today-header">
                     <div class="today-summary">전체 토픽 목록</div>
                 </div>
-
-                <div class="archive-container">
-                    <table class="archive-table">
-                        <thead>
-                            <tr>
-                                <th width="100">날짜</th>
-                                <th>주제</th>
-                                <th width="80">방식</th>
-                                <th width="60">중요도</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr onclick="openArchiveDetail('archive_0_0')">
-                                <td class="col-date">2026-02-03</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_0_1')">
-                                <td class="col-date">2026-02-03</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크,
-                                    미국
-                                    소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_0_2')">
-                                <td class="col-date">2026-02-03</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작
-                                    (코스피(KOSPI)
-                                    지수 충격, STRUCTURAL 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_0_3')">
-                                <td class="col-date">2026-02-03</td>
-                                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행
-                                    폭증,
-                                    OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_0_4')">
-                                <td class="col-date">2026-02-03</td>
-                                <td class="col-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred,
-                                    STRUCTURAL
-                                    동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_1_0')">
-                                <td class="col-date">2026-01-31</td>
-                                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI)
-                                    쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_1_1')">
-                                <td class="col-date">2026-01-31</td>
-                                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국
-                                    소비자물가(CPI)
-                                    쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_1_2')">
-                                <td class="col-date">2026-01-31</td>
-                                <td class="col-title">[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW)
-                                    발행
-                                    폭증, FX_RATES 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_1_3')">
-                                <td class="col-date">2026-01-31</td>
-                                <td class="col-title">[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준
-                                    기준금리(Fed Funds) 변동, FX_RATES 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_1_4')">
-                                <td class="col-date">2026-01-31</td>
-                                <td class="col-title">[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산
-                                    매각(Disposal)
-                                    급증, FX_RATES 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_2_0')">
-                                <td class="col-date">2026-01-30</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작
-                                    (코스피(KOSPI)
-                                    지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_2_1')">
-                                <td class="col-date">2026-01-30</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_2_2')">
-                                <td class="col-date">2026-01-30</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크,
-                                    미국
-                                    소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_2_3')">
-                                <td class="col-date">2026-01-30</td>
-                                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행
-                                    폭증,
-                                    OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_2_4')">
-                                <td class="col-date">2026-01-30</td>
-                                <td class="col-title">[Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed
-                                    Funds) 변동, OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_3_0')">
-                                <td class="col-date">2026-01-29</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작
-                                    (코스피(KOSPI)
-                                    지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_3_1')">
-                                <td class="col-date">2026-01-29</td>
-                                <td class="col-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred,
-                                    crypto_btc_usd_spot_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_3_2')">
-                                <td class="col-date">2026-01-29</td>
-                                <td class="col-title">[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작
-                                    (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_3_3')">
-                                <td class="col-date">2026-01-29</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal
-                                    중심의 시장
-                                    발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_3_4')">
-                                <td class="col-date">2026-01-29</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장
-                                    발작
-                                    (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_4_0')">
-                                <td class="col-date">2026-01-28</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작
-                                    (코스피(KOSPI)
-                                    지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_4_1')">
-                                <td class="col-date">2026-01-28</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의
-                                    시장 발작
-                                    (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_4_2')">
-                                <td class="col-date">2026-01-28</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal
-                                    중심의 시장
-                                    발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_4_3')">
-                                <td class="col-date">2026-01-28</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장
-                                    발작
-                                    (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_4_4')">
-                                <td class="col-date">2026-01-28</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_5_0')">
-                                <td class="col-date">2026-01-27</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장
-                                    발작
-                                    (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_5_1')">
-                                <td class="col-date">2026-01-27</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_5_2')">
-                                <td class="col-date">2026-01-27</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크,
-                                    미국
-                                    소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_5_3')">
-                                <td class="col-date">2026-01-27</td>
-                                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행
-                                    폭증,
-                                    OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_5_4')">
-                                <td class="col-date">2026-01-27</td>
-                                <td class="col-title">[Risk-Off Wave] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal)
-                                    급증,
-                                    OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_6_0')">
-                                <td class="col-date">2026-01-26</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장
-                                    발작
-                                    (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_6_1')">
-                                <td class="col-date">2026-01-26</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_6_2')">
-                                <td class="col-date">2026-01-26</td>
-                                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크,
-                                    미국
-                                    소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_6_3')">
-                                <td class="col-date">2026-01-26</td>
-                                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행
-                                    폭증,
-                                    INFLATION 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_6_4')">
-                                <td class="col-date">2026-01-26</td>
-                                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal
-                                    중심의 시장
-                                    발작 (미국 10년물 국채금리 급변, STRUCTURAL 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_7_0')">
-                                <td class="col-date">2026-01-24</td>
-                                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal
-                                    중심의
-                                    시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_7_1')">
-                                <td class="col-date">2026-01-24</td>
-                                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작
-                                    (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_7_2')">
-                                <td class="col-date">2026-01-24</td>
-                                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal
-                                    중심의
-                                    시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_7_3')">
-                                <td class="col-date">2026-01-24</td>
-                                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI)
-                                    쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_7_4')">
-                                <td class="col-date">2026-01-24</td>
-                                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국
-                                    소비자물가(CPI)
-                                    쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_8_0')">
-                                <td class="col-date">2026-01-23</td>
-                                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi,
-                                    crypto_btc_usd_spot_coingecko 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_8_1')">
-                                <td class="col-date">2026-01-23</td>
-                                <td class="col-title">[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2
-                                    Signal
-                                    중심의 시장 발작 (미국 10년물 국채금리 급변, etf_mock_xbi 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_8_2')">
-                                <td class="col-date">2026-01-23</td>
-                                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal
-                                    중심의
-                                    시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_8_3')">
-                                <td class="col-date">2026-01-23</td>
-                                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작
-                                    (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_8_4')">
-                                <td class="col-date">2026-01-23</td>
-                                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal
-                                    중심의
-                                    시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_9_0')">
-                                <td class="col-date">2026-01-22</td>
-                                <td class="col-title">[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred,
-                                    미국
-                                    10년물 국채금리 급변 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_9_1')">
-                                <td class="col-date">2026-01-22</td>
-                                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (공포지수(VIX) 이상 급등,
-                                    index_spx_fred 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_9_2')">
-                                <td class="col-date">2026-01-22</td>
-                                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI)
-                                    쇼크, 미국
-                                    개인소비지출(PCE) 물가 이상 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_9_3')">
-                                <td class="col-date">2026-01-22</td>
-                                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국
-                                    소비자물가(CPI)
-                                    쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                            <tr onclick="openArchiveDetail('archive_9_4')">
-                                <td class="col-date">2026-01-22</td>
-                                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작
-                                    (metal_silver_kag_coingecko, OTHER 동반)</td>
-                                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                                <td class="col-imp">보통</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-
+                
+    <div class="archive-container">
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th width="100">날짜</th>
+                    <th>주제</th>
+                    <th width="80">방식</th>
+                    <th width="60">중요도</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr onclick="openArchiveDetail('archive_0_0')">
+                <td class="col-date">2026-02-04</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_0_1')">
+                <td class="col-date">2026-02-04</td>
+                <td class="col-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_0_2')">
+                <td class="col-date">2026-02-04</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_0_3')">
+                <td class="col-date">2026-02-04</td>
+                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_0_4')">
+                <td class="col-date">2026-02-04</td>
+                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_1_0')">
+                <td class="col-date">2026-01-31</td>
+                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_1_1')">
+                <td class="col-date">2026-01-31</td>
+                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_1_2')">
+                <td class="col-date">2026-01-31</td>
+                <td class="col-title">[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, FX_RATES 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_1_3')">
+                <td class="col-date">2026-01-31</td>
+                <td class="col-title">[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, FX_RATES 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_1_4')">
+                <td class="col-date">2026-01-31</td>
+                <td class="col-title">[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, FX_RATES 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_2_0')">
+                <td class="col-date">2026-01-30</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_2_1')">
+                <td class="col-date">2026-01-30</td>
+                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_2_2')">
+                <td class="col-date">2026-01-30</td>
+                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_2_3')">
+                <td class="col-date">2026-01-30</td>
+                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_2_4')">
+                <td class="col-date">2026-01-30</td>
+                <td class="col-title">[Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, OTHER 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_3_0')">
+                <td class="col-date">2026-01-29</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_3_1')">
+                <td class="col-date">2026-01-29</td>
+                <td class="col-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_3_2')">
+                <td class="col-date">2026-01-29</td>
+                <td class="col-title">[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_3_3')">
+                <td class="col-date">2026-01-29</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_3_4')">
+                <td class="col-date">2026-01-29</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_4_0')">
+                <td class="col-date">2026-01-28</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_4_1')">
+                <td class="col-date">2026-01-28</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_4_2')">
+                <td class="col-date">2026-01-28</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_4_3')">
+                <td class="col-date">2026-01-28</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_4_4')">
+                <td class="col-date">2026-01-28</td>
+                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_5_0')">
+                <td class="col-date">2026-01-27</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_5_1')">
+                <td class="col-date">2026-01-27</td>
+                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_5_2')">
+                <td class="col-date">2026-01-27</td>
+                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_5_3')">
+                <td class="col-date">2026-01-27</td>
+                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_5_4')">
+                <td class="col-date">2026-01-27</td>
+                <td class="col-title">[Risk-Off Wave] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, OTHER 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_6_0')">
+                <td class="col-date">2026-01-26</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_6_1')">
+                <td class="col-date">2026-01-26</td>
+                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_6_2')">
+                <td class="col-date">2026-01-26</td>
+                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_6_3')">
+                <td class="col-date">2026-01-26</td>
+                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_6_4')">
+                <td class="col-date">2026-01-26</td>
+                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (미국 10년물 국채금리 급변, STRUCTURAL 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_7_0')">
+                <td class="col-date">2026-01-24</td>
+                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_7_1')">
+                <td class="col-date">2026-01-24</td>
+                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_7_2')">
+                <td class="col-date">2026-01-24</td>
+                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_7_3')">
+                <td class="col-date">2026-01-24</td>
+                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_7_4')">
+                <td class="col-date">2026-01-24</td>
+                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_8_0')">
+                <td class="col-date">2026-01-23</td>
+                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, crypto_btc_usd_spot_coingecko 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_8_1')">
+                <td class="col-date">2026-01-23</td>
+                <td class="col-title">[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (미국 10년물 국채금리 급변, etf_mock_xbi 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_8_2')">
+                <td class="col-date">2026-01-23</td>
+                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_8_3')">
+                <td class="col-date">2026-01-23</td>
+                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_8_4')">
+                <td class="col-date">2026-01-23</td>
+                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_9_0')">
+                <td class="col-date">2026-01-22</td>
+                <td class="col-title">[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_9_1')">
+                <td class="col-date">2026-01-22</td>
+                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (공포지수(VIX) 이상 급등, index_spx_fred 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_9_2')">
+                <td class="col-date">2026-01-22</td>
+                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_9_3')">
+                <td class="col-date">2026-01-22</td>
+                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            <tr onclick="openArchiveDetail('archive_9_4')">
+                <td class="col-date">2026-01-22</td>
+                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, OTHER 동반)</td>
+                <td class="col-type"><span class="badge engine">호인엔진</span></td>
+                <td class="col-imp">보통</td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    
             </div>
-
+            
             <!-- [NEW] IssueSignal Tab (Iframe) -->
             <div id="tab-issuesignal" class="hidden" style="height:100%;">
                 <iframe src="./issuesignal/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
@@ -2082,45 +1145,9 @@
             <!-- [NEW] Ops Report Tab (Embedded HTML) -->
             <div id="tab-ops-report" class="hidden">
                 <div class="ops-report-container">
-                    <h3 style='margin-top:10px; margin-bottom:5px;'>🎬 이슈시그널 편집 회의 보드 - 2026-02-03</h3>
-                    <p style='margin-bottom:8px;'>> <strong>데이터 기준일</strong>: 2026-02-03 | <strong>작성</strong>:
-                        IssueSignal
-                        Engine/V4</p>
-                    <h4 style='margin-top:10px; margin-bottom:5px;'>📌 오늘의 확정 토픽 (TOP 0)</h4>
-                    <p style='margin-bottom:8px;'>> <strong>오늘 확정된 토픽 없음</strong>: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked)
-                        토픽이
-                        없습니다.</p>
-                    <p style='margin-bottom:8px;'>> - <strong>주요 보류 사유</strong>: <strong>UNKNOWN</strong></p>
-                    <p style='margin-bottom:8px;'>---</p>
-                    <h4 style='margin-top:10px; margin-bottom:5px;'>🔍 상세 완결 데이터 (EVIDENCE BUNDLE)</h4>
-                    <h5 style='margin-top:5px; margin-bottom:5px;'>📄 1. 지수 상승 속 섹터 하락의 이유</h5>
-                    <p style='margin-bottom:8px;'>> <strong>데이터 신뢰 마크</strong>: 🕒 기준시각 UTC+9 | 👁️ 독립 출처 1개 확인 | 🛡️
-                        검증:
-                        N/A</p>
-                    <p style='margin-bottom:8px;'><strong>① 요약 및 판단 근거</strong></p>
-                    <ul style='margin-bottom:10px; padding-left:20px;'>
-                        <li><strong>배경</strong>: N/A</li>
-                        <li><strong>판단</strong>: 근거 데이터가 부족합니다 (최소 2개 필요).</li>
-                    </ul>
-                    <p style='margin-bottom:8px;'><strong>② 공식 인용(Quotes) & 증거</strong></p>
-                    <p style='margin-bottom:8px;'><strong>③ 자본 경로(Ticker) & Kill-Switch</strong></p>
-                    <ul style='margin-bottom:10px; padding-left:20px;'>
-                        <li><strong>Kill-Switch</strong>: `설정 없음`</li>
-                    </ul>
-                    <p style='margin-bottom:8px;'><strong>④ 콘텐츠 패키지 (Complete)</strong></p>
-                    <ul style='margin-bottom:10px; padding-left:20px;'>
-                        <li>*콘텐츠 패키지 미생성*</li>
-                    </ul>
-                    <p style='margin-bottom:8px;'><strong>⑤ 오해 방어 & 예상 질문 (Defense)</strong></p>
-                    <p style='margin-bottom:8px;'>---</p>
+                    <h3 style='margin-top:10px; margin-bottom:5px;'>🎬 이슈시그널 편집 회의 보드 - 2026-02-03</h3><p style='margin-bottom:8px;'>> <strong>데이터 기준일</strong>: 2026-02-03 | <strong>작성</strong>: IssueSignal Engine/V4</p><h4 style='margin-top:10px; margin-bottom:5px;'>📌 오늘의 확정 토픽 (TOP 0)</h4><p style='margin-bottom:8px;'>> <strong>오늘 확정된 토픽 없음</strong>: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.</p><p style='margin-bottom:8px;'>> - <strong>주요 보류 사유</strong>: <strong>UNKNOWN</strong></p><p style='margin-bottom:8px;'>---</p><h4 style='margin-top:10px; margin-bottom:5px;'>🔍 상세 완결 데이터 (EVIDENCE BUNDLE)</h4><h5 style='margin-top:5px; margin-bottom:5px;'>📄 1. 지수 상승 속 섹터 하락의 이유</h5><p style='margin-bottom:8px;'>> <strong>데이터 신뢰 마크</strong>: 🕒 기준시각 UTC+9 | 👁️ 독립 출처 1개 확인 | 🛡️ 검증: N/A</p><p style='margin-bottom:8px;'><strong>① 요약 및 판단 근거</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>배경</strong>: N/A</li><li><strong>판단</strong>: 근거 데이터가 부족합니다 (최소 2개 필요).</li></ul><p style='margin-bottom:8px;'><strong>② 공식 인용(Quotes) & 증거</strong></p><p style='margin-bottom:8px;'><strong>③ 자본 경로(Ticker) & Kill-Switch</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>Kill-Switch</strong>: `설정 없음`</li></ul><p style='margin-bottom:8px;'><strong>④ 콘텐츠 패키지 (Complete)</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li>*콘텐츠 패키지 미생성*</li></ul><p style='margin-bottom:8px;'><strong>⑤ 오해 방어 & 예상 질문 (Defense)</strong></p><p style='margin-bottom:8px;'>---</p>
                 </div>
             </div>
-
-            <!-- [NEW] Operator Dashboard (Iframe) -->
-            <div id="tab-ops-dashboard" class="hidden" style="height:100%;">
-                <iframe src="./ui/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
-            </div>
-
         </div>
 
         <!-- Detail Modal -->
@@ -2128,8 +1155,8 @@
             <div class="modal-content">
                 <div id="modal-body-content"></div>
                 <div style="margin-top:30px; text-align:right;">
-                    <button onclick="document.getElementById('detail-modal').classList.remove('active')"
-                        style="padding:10px 20px; border:1px solid #e2e8f0; background:white; border-radius:8px; cursor:pointer; font-weight:600; color:#475569;">
+                    <button onclick="document.getElementById('detail-modal').classList.remove('active')" 
+                            style="padding:10px 20px; border:1px solid #e2e8f0; background:white; border-radius:8px; cursor:pointer; font-weight:600; color:#475569;">
                         닫기
                     </button>
                 </div>
