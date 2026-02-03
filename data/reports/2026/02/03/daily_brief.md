@@ -69,8 +69,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)
-- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Topic:** [Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)
+- **Rationale:** 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 98.8% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
@@ -79,19 +79,18 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## Content Topic (Topic Decision Gate)
 
-- Title: 지수 상승 속 섹터 하락의 이유
-- Question: 왜 지수는 오르는데 내 종목은 하락하나?
-- Why people confused: 지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.
+- Title: 오늘 시장의 핵심 혼란 포인트
+- Question: 오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)
+- Why people confused: 시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.
 - Key reasons:
   - 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.
   - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
-- Numbers:
-  - S&P500 Status: Active 
+- Numbers: (none)
 - Risk: 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
-- Confidence: LOW
+- Confidence: UNCERTAIN
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 12 candidate(s) survived survival rules.
+Gate Filter Result: 14 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
