@@ -31,8 +31,18 @@ def main():
         }
     ]
 
-    # 2. Run Assembly
-    run_decision_assembly(units)
+    # 2. Loading Live Catalyst Events (IS-96-5b Wiring)
+    import json
+    from pathlib import Path
+    catalyst_events = []
+    catalyst_path = Path("data/ops/catalyst_events.json")
+    if catalyst_path.exists():
+        with open(catalyst_path, "r", encoding="utf-8") as f:
+            catalyst_events = json.load(f)
+        print(f"[OK] Loaded {len(catalyst_events)} catalyst events.")
+
+    # 3. Run Assembly
+    run_decision_assembly(units, catalyst_events=catalyst_events)
     print("<<< IS-96-4 Assembly Complete.")
 
 if __name__ == "__main__":

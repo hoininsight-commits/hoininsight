@@ -65,8 +65,8 @@ class DecisionAssembler:
                 json.dump(data, f, ensure_ascii=False, indent=2)
             print(f"[OK] Saved to {out_path}")
 
-def run_decision_assembly(interpretation_units: List[Dict[str, Any]], output_dir: str = "data/decision"):
-    assembler = DecisionAssembler(output_dir)
-    results = assembler.assemble(interpretation_units)
+def run_decision_assembly(interpretation_units: List[Dict[str, Any]], catalyst_events: List[Dict[str, Any]] = None):
+    assembler = DecisionAssembler()
+    results = assembler.assemble(interpretation_units, catalyst_events=catalyst_events)
     assembler.save(results)
     return results
