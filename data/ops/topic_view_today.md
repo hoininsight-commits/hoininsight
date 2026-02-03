@@ -12,7 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 스페이스X-xAI 합병, 테슬라 주식에 미칠 영향은 - 글로벌이코노믹 (ID: unknown)
+### 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,6 +37,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 외환보유액 21.5억 달러 감소…국민연금 외환스와프 영향 - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 몬덜리즈 인터내셔널, 시간외 4%↑…호실적에도 가이던스 '실망' - 마켓인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -52,7 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 쌀·사과·조기…설 성수품 물가 두 자릿수 상승 - KBS 뉴스 (ID: unknown)
+### 李대통령 "물가안정에 총력…적극적·선제적 장바구니 물가대책 집행" - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 지식재산처, 온라인시스템에 한국형 양자내성암호 실증 추진 - 사이언스타임즈 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레 (ID: unknown)
+### [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 (ID: unknown)
+### 아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -78,16 +88,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 1월 소비자물가 상승률 2.0% 기록…5개월 만에 최저 - 대한민국 정책브리핑 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [AW 2026 프리뷰 인터뷰] 데이터랩스 “데이터 쌓이지만, 문제 해결 이어지지 않는 제조 현장 바꾼다” - 헬로티 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +107,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 (ID: unknown)
+### ‘반도체 고평가’ 뉴욕증시 하락 마감···나스닥 1.4% ↓ - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “실적 개선은 2분기부터”…호텔신라, 목표가 줄하향[오늘 나온 보고서] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 여름 휴양지인 줄만 알았던 세부, 겨울에 더 주목받는 까닭 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 매경이 전하는 세상의 지식 (매-세-지, 2월 4일) (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

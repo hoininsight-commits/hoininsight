@@ -83,7 +83,7 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 스페이스X-xAI 합병, 테슬라 주식에 미칠 영향은 - 글로벌이코노믹 (Google_News_KR_Economy)
+  - [NEWS] 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 (Google_News_KR_Economy)
   - [NEWS] [초점] 해외 전기차 업체들, 포드·GM 인수 나설까 우회 진출 택할까…美 완성차 지형 흔들리나 - 글로벌이코노믹 (Google_News_KR_Economy)
   - [NEWS] [3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티 (Google_News_KR_Economy)
 
@@ -187,26 +187,27 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 스페이스X-xAI 합병, 테슬라 주식에 미칠 영향은 - 글로벌이코노믹 | Structural implication: '스페이스X-xAI 합병, 테슬라 주식에 미칠 영향은 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
+| 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 | Structural implication: '일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [초점] 해외 전기차 업체들, 포드·GM 인수 나설까 우회 진출 택할까…美 완성차 지형 흔들리나 - 글로벌이코노믹 | Structural implication: '[초점] 해외 전기차 업체들, 포드·GM 인수 나설까 우회 진출 택할까…美 완성차 지형 흔들리나 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | [3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티 | Structural implication: '[3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레 | Structural implication: '이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | ‘탈쿠팡’ 바람 속 네이버 반사이익···플러스 스토어 앱 신규 설치 100만 육박 - 경향신문 | Structural implication: '‘탈쿠팡’ 바람 속 네이버 반사이익···플러스 스토어 앱 신규 설치 100만 육박 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 외환보유액 21.5억 달러 감소…국민연금 외환스와프 영향 - KBS 뉴스 | Structural implication: '외환보유액 21.5억 달러 감소…국민연금 외환스와프 영향 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 몬덜리즈 인터내셔널, 시간외 4%↑…호실적에도 가이던스 '실망' - 마켓인 | Structural implication: '몬덜리즈 인터내셔널, 시간외 4%↑…호실적에도 가이던스 '실망' - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 젠슨황, 오픈AI와 불화설 부인…“투자 계획 순조롭게 진행” - 마켓인 | Structural implication: '젠슨황, 오픈AI와 불화설 부인…“투자 계획 순조롭게 진행” - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | LG에너지솔루션, 한화큐셀 美ESS 5GWh 추가 수주 - 디일렉 | Structural implication: 'LG에너지솔루션, 한화큐셀 美ESS 5GWh 추가 수주 - 디일렉' suggests a shift in NEWS dynamics. | LOW |
-| 쌀·사과·조기…설 성수품 물가 두 자릿수 상승 - KBS 뉴스 | Structural implication: '쌀·사과·조기…설 성수품 물가 두 자릿수 상승 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 李대통령 "물가안정에 총력…적극적·선제적 장바구니 물가대책 집행" - 연합인포맥스 | Structural implication: '李대통령 "물가안정에 총력…적극적·선제적 장바구니 물가대책 집행" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 지식재산처, 온라인시스템에 한국형 양자내성암호 실증 추진 - 사이언스타임즈 | Structural implication: '지식재산처, 온라인시스템에 한국형 양자내성암호 실증 추진 - 사이언스타임즈' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스 | Structural implication: '비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레 | Structural implication: '아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 | Structural implication: '[속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레 | Structural implication: '아르테미스 2호 발사 3월로 연기…연료 누출 문제 발생 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | AI 기본법 시행 열흘, 상담 172건... “AI 생성물 표시 방법” 문의 최다 - 조선일보 | Structural implication: 'AI 기본법 시행 열흘, 상담 172건... “AI 생성물 표시 방법” 문의 최다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 1월 소비자물가 상승률 2.0% 기록…5개월 만에 최저 - 대한민국 정책브리핑 | Structural implication: '1월 소비자물가 상승률 2.0% 기록…5개월 만에 최저 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
-| [AW 2026 프리뷰 인터뷰] 데이터랩스 “데이터 쌓이지만, 문제 해결 이어지지 않는 제조 현장 바꾼다” - 헬로티 | Structural implication: '[AW 2026 프리뷰 인터뷰] 데이터랩스 “데이터 쌓이지만, 문제 해결 이어지지 않는 제조 현장 바꾼다” - 헬로티' suggests a shift in NEWS dynamics. | LOW |
-| 조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문 | Structural implication: '조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문' suggests a shift in NEWS dynamics. | LOW |
 | [2026년 2월3일(화)] 배추·쪽파·양파·고구마·깻잎 경락값 분석 - 농민신문 | Structural implication: '[2026년 2월3일(화)] 배추·쪽파·양파·고구마·깻잎 경락값 분석 - 농민신문' suggests a shift in NEWS dynamics. | LOW |
 | 분산특구 이행 추진단 출범…7개 사업 지원·규제 개선 논의 - 전기신문 | Structural implication: '분산특구 이행 추진단 출범…7개 사업 지원·규제 개선 논의 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
 | 칩플레이션이 쏜 IT산업 수요 위축…PC·TV·차까지 도미노 우려 - 매일경제 | Structural implication: '칩플레이션이 쏜 IT산업 수요 위축…PC·TV·차까지 도미노 우려 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 | Structural implication: '연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘반도체 고평가’ 뉴욕증시 하락 마감···나스닥 1.4% ↓ - 경향신문 | Structural implication: '‘반도체 고평가’ 뉴욕증시 하락 마감···나스닥 1.4% ↓ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| “실적 개선은 2분기부터”…호텔신라, 목표가 줄하향[오늘 나온 보고서] | Structural implication: '“실적 개선은 2분기부터”…호텔신라, 목표가 줄하향[오늘 나온 보고서]' suggests a shift in NEWS dynamics. | LOW |
 | 여름 휴양지인 줄만 알았던 세부, 겨울에 더 주목받는 까닭 | Structural implication: '여름 휴양지인 줄만 알았던 세부, 겨울에 더 주목받는 까닭' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 통상교섭본부장 “관세인상 관보, 미국 부처간 협의중으로 알아” | Structural implication: '[속보] 통상교섭본부장 “관세인상 관보, 미국 부처간 협의중으로 알아”' suggests a shift in NEWS dynamics. | LOW |
 | 한미 외교장관 “원자력·핵잠·조선 협력하기로”…관세 언급은 미포함 | Structural implication: '한미 외교장관 “원자력·핵잠·조선 협력하기로”…관세 언급은 미포함' suggests a shift in NEWS dynamics. | LOW |
@@ -226,7 +227,6 @@
 | “AI가 결국 SW 삼킨다”…기술주 투매에 뉴욕증시 하락 [월가월부] | Structural implication: '“AI가 결국 SW 삼킨다”…기술주 투매에 뉴욕증시 하락 [월가월부]' suggests a shift in NEWS dynamics. | LOW |
 | 관세 인상 압박…조현 외교장관, 미 국무장관과 회담 시작 | Structural implication: '관세 인상 압박…조현 외교장관, 미 국무장관과 회담 시작' suggests a shift in NEWS dynamics. | LOW |
 | 11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ | Structural implication: '11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’' suggests a shift in NEWS dynamics. | LOW |
-| 매경이 전하는 세상의 지식 (매-세-지, 2월 4일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 2월 4일)' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
