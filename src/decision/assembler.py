@@ -3,10 +3,11 @@ from pathlib import Path
 from typing import Any, Dict, List
 from src.topics.gate.speakability_gate import SpeakabilityGate
 from src.topics.narrator.narrative_skeleton import NarrativeSkeletonBuilder
+from src.topics.interpretation.hypothesis_jump_mode import HypothesisJumpEngine
 
 class DecisionAssembler:
     """
-    IS-96-4: Decision Output Assembly Layer
+    IS-96-4/5: Decision Output Assembly Layer
     Aggregates Interpretation, Speakability, and Narrative Skeleton into unified assets.
     """
 
@@ -15,11 +16,17 @@ class DecisionAssembler:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.gate = SpeakabilityGate()
         self.skeleton_builder = NarrativeSkeletonBuilder()
+        self.hypothesis_engine = HypothesisJumpEngine()
 
-    def assemble(self, interpretation_units: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def assemble(self, interpretation_units: List[Dict[str, Any]], catalyst_events: List[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
-        Processes a list of interpretation units through the gated pipeline.
+        Processes a list of interpretation units (and catalyst-born hypotheses) through the gated pipeline.
         """
+        # 1. Process Hypothesis Jumps (IS-96-5)
+        if catalyst_events:
+            hypothesis_units = self.hypothesis_engine.process_events(catalyst_events)
+            interpretation_units.extend(hypothesis_units)
+
         speakability_decisions = {}
         narrative_skeletons = {}
         

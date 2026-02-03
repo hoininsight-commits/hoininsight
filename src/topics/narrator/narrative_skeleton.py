@@ -23,24 +23,38 @@ class NarrativeSkeletonBuilder:
         tags = unit.get("evidence_tags", [])
         
         # Determine Tone
+        mode = unit.get("mode", "STRUCTURAL")
         prefix = "[READY] " if flag == "READY" else "[WATCH/HOLD] "
         
         # 1. HOOK & CLAIM
-        hook = f"{prefix}{sector} 섹터에서 포착된 {key} 시그널의 실체를 확인합니다."
-        claim = f"{unit.get('structural_narrative', '구조적 변화가 감지되었습니다.')}"
+        if mode == "HYPOTHESIS_JUMP":
+            hook = f"[HYPOTHESIS] 지금은 '확정'이 아니라 '가능성'이다. {sector} 섹터의 {unit.get('reasoning_chain', {}).get('trigger_event', '새로운 시그널')}을 진단합니다."
+            claim = f"결정론적 가설: {unit.get('structural_narrative', '변화 가능성이 포착되었습니다.')}"
+        else:
+            hook = f"{prefix}{sector} 섹터에서 포착된 {key} 시그널의 실체를 확인합니다."
+            claim = f"{unit.get('structural_narrative', '구조적 변화가 감지되었습니다.')}"
 
         # 2. EVIDENCE_3 (Derived from reasons and metrics)
         evidence = []
-        evidence.append(f"명분 점수(Pretext) {metrics.get('pretext_score', 0.0)}로 구조적 타당성 확보")
-        evidence.append(f"주요 데이터 태그 정렬: {', '.join(tags[:3])}")
-        evidence.append(f"입증 근거: {reasons[0] if reasons else '데이터 정합성 확인'}")
+        if mode == "HYPOTHESIS_JUMP":
+            chain = unit.get("reasoning_chain", {})
+            evidence.append(f"트리거: {chain.get('trigger_event', '카탈리스트 포착')}")
+            evidence.append(f"메커니즘: {chain.get('mechanism', '수급 이동 경로 분석 중')}")
+            evidence.append(f"수혜 주체: {', '.join(chain.get('beneficiaries', []))}")
+        else:
+            evidence.append(f"명분 점수(Pretext) {metrics.get('pretext_score', 0.0)}로 구조적 타당성 확보")
+            evidence.append(f"주요 데이터 태그 정렬: {', '.join(tags[:3])}")
+            evidence.append(f"입증 근거: {reasons[0] if reasons else '데이터 정합성 확인'}")
         
         # 3. CHECKLIST_3
-        checklist = [
-            f"{tags[0] if len(tags)>0 else 'POLICY'} 후속 집행 데이터 업데이트 확인",
-            f"섹터 수급(FLOW_ROTATION)의 지속성 여부 체크",
-            f"실적(EARNINGS_VERIFY) 기반 펀더멘털 괴리율 모니터링"
-        ]
+        if mode == "HYPOTHESIS_JUMP":
+            checklist = unit.get("reasoning_chain", {}).get("verification_checklist", [])
+        else:
+            checklist = [
+                f"{tags[0] if len(tags)>0 else 'POLICY'} 후속 집행 데이터 업데이트 확인",
+                f"섹터 수급(FLOW_ROTATION)의 지속성 여부 체크",
+                f"실적(EARNINGS_VERIFY) 기반 펀더멘털 괴리율 모니터링"
+            ]
 
         # 4. WHAT_TO_AVOID
         avoid = [

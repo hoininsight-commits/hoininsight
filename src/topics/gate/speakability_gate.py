@@ -10,6 +10,10 @@ class SpeakabilityGate:
         """
         Evaluate speakability based on deterministic rules.
         """
+        mode = unit.get("mode", "STRUCTURAL")
+        if mode == "HYPOTHESIS_JUMP":
+            return self._evaluate_hypothesis(unit)
+            
         metrics = unit.get("derived_metrics_snapshot", {})
         pretext_score = metrics.get("pretext_score", 0.0)
         execution_gap = metrics.get("policy_execution_gap", 0.0)
@@ -53,6 +57,32 @@ class SpeakabilityGate:
             return {
                 "speakability_flag": "HOLD",
                 "speakability_reasons": reasons[:5]
+            }
+
+    def _evaluate_hypothesis(self, unit: Dict[str, Any]) -> Dict[str, Any]:
+        """IS-96-5: Hypothesis-specific speakability rules."""
+        metrics = unit.get("derived_metrics_snapshot", {})
+        trust = metrics.get("hypothesis_source_trust", "C")
+        reasoning = unit.get("reasoning_chain", {})
+        checklist = reasoning.get("verification_checklist", [])
+        
+        # 1. DROP Logic (Untrusted or incomplete)
+        if trust == "D": # Hypothetical untrusted level
+             return {"speakability_flag": "DROP", "speakability_reasons": ["Source is blacklisted or untrusted"]}
+        if not checklist or len(checklist) < 3:
+             return {"speakability_flag": "DROP", "speakability_reasons": ["Incomplete reasoning chain (missing checklist)"]}
+             
+        # 2. READY vs HOLD Logic
+        # READY if trust is High (A) or multiple sources (implied by logic if we had source counts)
+        if trust == "A":
+            return {
+                "speakability_flag": "READY",
+                "speakability_reasons": ["Confirmed via official filing or whitelisted agency"]
+            }
+        else:
+            return {
+                "speakability_flag": "HOLD",
+                "speakability_reasons": [f"Rumor/Catalyst requires verification (Trust Level: {trust})", "Waiting for independent cross-check"]
             }
 
 def run_gate(interpretation_unit: Dict[str, Any]) -> Dict[str, Any]:
