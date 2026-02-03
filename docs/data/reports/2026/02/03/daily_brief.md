@@ -40,7 +40,6 @@ Historical context:
 - [HIGH] HY_SPREAD: data/features/anomalies/2026/02/03/credit_hy_spread_fred.json L2 Signal (base=6.00, final_m=9.57) | Mom: UP (slope=1.50) -> x1.1 | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/02/03/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/03/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
-- [MED] GS_RATIO: data/features/anomalies/2026/02/03/derived_gold_silver_ratio.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
 - [LOW] BTCUSD: data/features/anomalies/2026/02/03/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] US10Y: data/features/anomalies/2026/02/03/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] VIX: data/features/anomalies/2026/02/03/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -53,6 +52,7 @@ Historical context:
 - [LOW] USDKRW_ECOS: data/features/anomalies/2026/02/03/fx_usdkrw_ecos.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] UNRATE: data/features/anomalies/2026/02/03/employment_unrate_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] FIN_STRESS: data/features/anomalies/2026/02/03/risk_financial_stress_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
+- [LOW] GS_RATIO: data/features/anomalies/2026/02/03/derived_gold_silver_ratio.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 
 - See: `data/reports/2026/02/03/data_snapshot.md`
 
