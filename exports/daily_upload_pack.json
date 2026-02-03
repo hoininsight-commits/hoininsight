@@ -1,0 +1,51 @@
+{
+  "date": "2026-02-03",
+  "packs": [
+    {
+      "pack_id": "LONG_20260203_001",
+      "format": "LONG",
+      "topic_id": "T1",
+      "status": {
+        "speakability": "READY"
+      },
+      "assets": {
+        "title": "Daily Market Intelligence",
+        "one_liner": "Market maintains bullish momentum despite rate uncertainty.",
+        "long_script": {
+          "sections": [
+            {
+              "name": "HOOK",
+              "text": "Are you ready for the next move?"
+            },
+            {
+              "name": "EVIDENCE",
+              "text": "Volume surge in tech stocks suggests institutional buying."
+            }
+          ]
+        },
+        "decision_card": {
+          "risks": [
+            "Volatility"
+          ],
+          "why_now": "Policy shift"
+        },
+        "mentionables": [
+          {
+            "name": "NVDA",
+            "why_must": "Core AI driver"
+          }
+        ],
+        "evidence_sources": [
+          {
+            "evidence_tag": "TECH_FLOW",
+            "status": "VERIFIED"
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "ready_count": 1,
+    "hold_included": 0
+  }
+}
