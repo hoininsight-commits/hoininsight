@@ -34,13 +34,13 @@ Historical context:
 - [HIGH] M2_USA: data/features/anomalies/2026/02/03/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/02/03/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/02/03/struct_dart_disposal.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
-- [HIGH] KOSPI: data/features/anomalies/2026/02/03/index_kospi_stooq.json L2 Signal (base=6.00, final_m=11.55) | Mom: UP (slope=0.75) -> x1.1 | App7d=5
 - [HIGH] SPX: data/features/anomalies/2026/02/03/index_spx_fred.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [HIGH] HY_SPREAD: data/features/anomalies/2026/02/03/credit_hy_spread_fred.json L2 Signal (base=6.00, final_m=9.57) | Mom: UP (slope=1.50) -> x1.1 | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/02/03/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/03/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] BTCUSD: data/features/anomalies/2026/02/03/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
 - [MED] GS_RATIO: data/features/anomalies/2026/02/03/derived_gold_silver_ratio.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
+- [MED] KOSPI: data/features/anomalies/2026/02/03/index_kospi_stooq.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] US10Y: data/features/anomalies/2026/02/03/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] VIX: data/features/anomalies/2026/02/03/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/02/03/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
@@ -69,12 +69,12 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)
-- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Topic:** [Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)
+- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 98.8% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.50 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
@@ -93,5 +93,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 12 candidate(s) survived survival rules.
+Gate Filter Result: 13 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
