@@ -1,6 +1,6 @@
 [
   {
-    "topic_id": "c1c29028-fa78-4940-a854-3c3c09e95bbf",
+    "topic_id": "eb156691-e397-4b34-8701-d71d7a5e1357",
     "version": "is97_3_v1",
     "persona": "MARKET_OBSERVER",
     "tone": "OBSERVATIONAL",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "topic_id": "3ee0270e-aa7d-4940-8c72-196e67e1c6ea",
+    "topic_id": "d371aa99-d6d7-44eb-b7f0-0a8285f102ce",
     "version": "is97_3_v1",
     "persona": "MARKET_OBSERVER",
     "tone": "OBSERVATIONAL",
@@ -82,11 +82,11 @@
     "topic_id": "HYP-fab88b81",
     "version": "is97_3_v1",
     "persona": "MARKET_OBSERVER",
-    "tone": "ASSERTIVE",
+    "tone": "OBSERVATIONAL",
     "speakability": "READY",
     "script": {
       "hook": "님들, 지금 GENERAL_ALPHA 이슈에서 시장이 진짜 무서워하는 건 HYPOTHESIS_US_MA_RUMOR야.",
-      "claim": "숫자가 확인됐다. 0.82가 핵심 증거다.",
+      "claim": "이건 단기 뉴스가 아니라 구조 변화다. HYPOTHESIS_US_MA_RUMOR 조합이 근거다.",
       "evidence_3": [
         "트리거: SpaceX and xAI strategic merger confirmed",
         "메커니즘: 자본 구조 재편 및 수급 집중",
@@ -96,7 +96,7 @@
         "지표 US_MA_RUMOR: US_MA_RUMOR 데이터 확인 — 임계치 도달 여부",
         "지표 HYPOTHESIS_JUMP: HYPOTHESIS_JUMP 데이터 확인 — 임계치 도달 여부"
       ],
-      "risk_note": "데이터 기반 관찰 지속이 필요함.",
+      "risk_note": "단, 추가 지표 변동 시 시나리오 폐기가 필요함.",
       "closing": "정리하면, 지금은 GENERAL_ALPHA 섹터가 보상받는 구간이다. 체크리스트만 보고 따라가면 된다."
     },
     "citations": [
