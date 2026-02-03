@@ -41,9 +41,8 @@ jobs:
       - name: Run Pipeline & Orchestrator
         run: |
           export PYTHONPATH=$PYTHONPATH:.
-          # In a real environment, this would run the full pipeline
-          # Here we run the orchestrator which is the final stage
-          python3 src/topics/content_pack/daily_run_orchestrator.py
+          # Runs all layers from IS-96 to IS-99 end-to-end
+          python3 src/ops/run_content_pack_pipeline.py
 
       - name: Validate Outputs & Integrity
         run: |
