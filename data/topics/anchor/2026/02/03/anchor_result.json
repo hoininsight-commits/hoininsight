@@ -1,19 +1,18 @@
 {
   "data_axis": [
-    "credit_hy_spread_fred",
-    "derived_gold_silver_ratio"
+    "credit_hy_spread_fred"
   ],
   "baseline_match": [
-    "credit_hy_spread_fred: Volatility Surge (Z=2.50)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=2.10)"
+    "credit_hy_spread_fred: Single Axis Surge (Z=2.50)"
   ],
-  "anomaly_logic": "Unknown",
+  "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation > 2.0 Sigma",
-  "gap_detection": "Insufficient Evidence for L4",
+  "level_proof": "Statistical Deviation Z=2.50 (No Cluster)",
+  "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
-    "Need Volume/Flow Data to verify Capital Fixation"
+    "Need Correlated Asset Movement",
+    "Need News/Event Confirmation"
   ],
   "pre_structural_context": null
 }
