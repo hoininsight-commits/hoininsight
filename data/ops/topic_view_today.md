@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 연준 의장 워시가 뭘 어쨌길래…금·은 폭락에 코스피까지 출렁이는 이유는 - 조선일보 (ID: unknown)
+### 자산시장 뒤흔든 케빈 워시의 ‘막후 실세’···월가의 전설 드러켄밀러 주목 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보]‘5100선 탈환’ 코스피…4% 급등에 매수사이드카 발동도 - 경향신문 (ID: unknown)
+### 코스피 급반전, 하루 만에 5000 탈환…‘매수 사이드카’ 발동도 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,17 +27,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "엔비디아 칩 느려" 타 공급처 찾아 나선 오픈AI…주가 3%↓ - 마켓인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "코스피 7,500도 가능"…JP모간의 파격 전망 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한화오션, 캐나다 국방조달 특임장관 거제사업장 맞아 - 디일렉 (ID: unknown)
+### "엔비디아 칩 느려" 타 공급처 찾아 나선 오픈AI…주가 3%↓ - 마켓인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +42,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 우주청, 항공 분야 5개 신규사업에 2천117억원 투입 - 연합뉴스 (ID: unknown)
+### 60조 잠수함 사업 총괄 캐나다 장관… 장영실함 타본 뒤 “내부 기술력 대단” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 수출입은행, “올해 1분기 수출, 전년보다 12~13% 증가 전망” - 조선일보 (ID: unknown)
+### 우주청, 항공 분야 5개 신규사업에 2천117억원 투입 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,22 +57,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 수출입은행, “올해 1분기 수출, 전년보다 12~13% 증가 전망” - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 정부 “먹거리 물가 강세로 서민 부담…설 대책 추진” - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 다쏘시스템 "AI 활용 효과, 작업 노하우·경험 축적서 극대화" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "인간들 월요병 꿀잼" "주인이 헛소리"…한국판 AI SNS '머슴' 등장[이런일이] - 노컷뉴스 (ID: unknown)
+### [포토뉴스] “전년보다 ‘핫해진’ AI 혁신” 다쏘시스템 사단 ‘무대 장악’ - 헬로티 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### “3월 3일까지 주식 양도소득세 신고·납부하세요“...국세청, 4일부터 카카오톡으로 안내문 발송 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### AI들끼리 토론, ’종교 창설’까지...’인간 없는 SNS’ 등장 [앵커리포트] - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,26 @@ No SHADOW candidates today.
 ### 뉴욕 증시 상승 이끈 제조업 “2022년 8월 이후 최고” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “죽음보다 강한 사랑”…구준엽, 고 서희원 묘비에 ‘눈물의 입맞춤’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이젠 무역에서도 블록체인 쓴다…유럽·아프리카서 IOTA 메인넷 활용 검증 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 조동철 KDI 원장 퇴임 “이념에 경도되지 않는 연구를 해달라” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “매출 10조원 돌파”…한온시스템, 지난해 영업익 2718억원 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “국중박, 3월부터 9시30분에 문엽니다” (ID: unknown)
@@ -188,26 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “4월부터 금연구역서도 못 피워요”…액상형 전자담배도 ‘담배’ 규제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 카카오게임즈, SM엔터 IP게임 ‘슴미니즈’ 사전등록 시작 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 검찰 ‘서부지법 난동 배후’ 전광훈 목사 구속기소 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 에임드바이오, 에이비스와 ADC 바이오마커 공동연구·지분투자 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 유바이오로직스, 1115억 규모 제3공장 착공 결정 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
