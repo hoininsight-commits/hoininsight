@@ -88,6 +88,19 @@ def main(target_categories: list[str] = None):
         details_lines.append("topic: ok")
         print("topic: ok", file=sys.stderr)
 
+        # [IS-96-8] Relationship Stress Layer
+        try:
+            from src.collectors.relationship_stress_collector import RelationshipStressCollector
+            from src.decision.relationship_break_interpreter import RelationshipBreakInterpreter
+            rs_collector = RelationshipStressCollector(Path("."))
+            rs_collector.collect()
+            rs_interpreter = RelationshipBreakInterpreter(Path("."))
+            rs_interpreter.interpret()
+            details_lines.append("relationship_stress_layer: ok")
+            print("relationship_stress_layer: ok", file=sys.stderr)
+        except Exception as e:
+            print(f"relationship_stress_layer: error ({e})", file=sys.stderr)
+
         # [NEW] Step 74: Pre-Structural Signal Layer (Economic Hunter Style)
         pre_structural_signals = []
         try:

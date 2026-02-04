@@ -352,3 +352,9 @@ v1.9 (IS-95-1) Economic Hunter Observation Layer: Policy/Index/Flow/Pretext/Earn
 | Structure | Allocation Flag (Shortage) | News/Report | Stub | Free | CANDIDATE | 공급자 우위 극대화 시그널 (배정 판매) | 이벤트 | 수집데이터 | PRICE_MECHANISM_LAYER |
 
 **IS-95-4 STATEMENT**: 본 레이어는 가격 상승의 원인을 "수요 견인"이 아닌 "구조적 결정권(Pricing Power) 이동"에서 찾는다. 공급 비탄력성과 구매자의 의존도를 측정하여 가격 하락이 불가능한 구조(Rigidity)를 탐지한다.
+
+## RELATIONSHIP_SIGNAL_LAYER (IS-96-8)
+- **tag namespace**: REL_STRESS
+- **key fields**: entity_a, entity_b, relationship_type, stress_score, break_risk
+- **cadence**: Daily (Intra-day via catalyst events)
+- **MVP fields**: deal_reprice, statement_divergence, capital_link, supply_dependency
