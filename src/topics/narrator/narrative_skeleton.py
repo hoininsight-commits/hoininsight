@@ -1,4 +1,6 @@
 from typing import Any, Dict, List
+import json
+from pathlib import Path
 
 class NarrativeSkeletonBuilder:
     """
@@ -26,8 +28,25 @@ class NarrativeSkeletonBuilder:
         mode = unit.get("mode", "STRUCTURAL")
         prefix = "[READY] " if flag == "READY" else "[WATCH/HOLD] "
         
+        # IS-96-6 Historical Framing Check
+        historical_frame = None
+        frame_path = Path(__file__).parent.parent.parent.parent / "data" / "decision" / "historical_shift_frame.json"
+        if frame_path.exists():
+            try:
+                frame_data = json.loads(frame_path.read_text())
+                if frame_data.get("interpretation_key") == key:
+                    historical_frame = frame_data
+            except:
+                pass
+
         # 1. HOOK & CLAIM
-        if mode == "HYPOTHESIS_JUMP":
+        if historical_frame:
+            # Shift Upgrade
+            shift_type = historical_frame.get('shift_type', 'REGIME_SHIFT')
+            hist_claim = historical_frame.get('historical_claim', '')
+            hook = f"[{shift_type}] {hist_claim} {sector} 섹터가 새로운 국면에 진입했습니다."
+            claim = f"Era Declaration: {unit.get('structural_narrative', '')} (Shift Confidence: High)"
+        elif mode == "HYPOTHESIS_JUMP":
             hook = f"[HYPOTHESIS] 지금은 '확정'이 아니라 '가능성'이다. {sector} 섹터의 {unit.get('reasoning_chain', {}).get('trigger_event', '새로운 시그널')}을 진단합니다."
             claim = f"결정론적 가설: {unit.get('structural_narrative', '변화 가능성이 포착되었습니다.')}"
         else:
@@ -70,6 +89,13 @@ class NarrativeSkeletonBuilder:
             "checklist_3": checklist[:3],
             "what_to_avoid": avoid[:2]
         }
+        
+        if historical_frame:
+             skeleton["era_declaration_block"] = {
+                 "shift_type": historical_frame.get("shift_type"),
+                 "what_changed": historical_frame.get("what_changed", []),
+                 "what_breaks_next": historical_frame.get("what_breaks_next", [])
+             }
 
         # 5. HOLD_TRIGGER (Optional)
         if flag == "HOLD":
