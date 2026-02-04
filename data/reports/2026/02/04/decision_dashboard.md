@@ -197,8 +197,8 @@
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | [3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티 | Structural implication: '[3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 | Structural implication: '[특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| [인사이트 칼럼] AI 시대, 인간의 뇌처럼 작동하는 반도체 - v.daum.net | Structural implication: '[인사이트 칼럼] AI 시대, 인간의 뇌처럼 작동하는 반도체 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | “제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net | Structural implication: '“제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| [인사이트 칼럼] AI 시대, 인간의 뇌처럼 작동하는 반도체 - v.daum.net | Structural implication: '[인사이트 칼럼] AI 시대, 인간의 뇌처럼 작동하는 반도체 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 공공구매력 활용해 AI 키운다…조달행정에도 'AI 접목' - 노컷뉴스 | Structural implication: '정부, 공공구매력 활용해 AI 키운다…조달행정에도 'AI 접목' - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 | Structural implication: '[기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
 | 외환당국 선물환 순매수 작년 12월 13억弗로 급감…"NDF 개입 추정" - 연합인포맥스 | Structural implication: '외환당국 선물환 순매수 작년 12월 13억弗로 급감…"NDF 개입 추정" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
@@ -207,6 +207,7 @@
 | 잘 나가던 위고비, 경쟁 심화·트럼프 압박에 매출 급감 전망 - 마켓인 | Structural implication: '잘 나가던 위고비, 경쟁 심화·트럼프 압박에 매출 급감 전망 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 녹색전환 전략 수립 본격화 - 축산신문 | Structural implication: '정부, 녹색전환 전략 수립 본격화 - 축산신문' suggests a shift in NEWS dynamics. | LOW |
 | 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
+| 교섭단체 대표 연설 나선 장동혁, 이 대통령에 영수회담 재차 요구 [전문] | Structural implication: '교섭단체 대표 연설 나선 장동혁, 이 대통령에 영수회담 재차 요구 [전문]' suggests a shift in NEWS dynamics. | LOW |
 | 하나로 의료재단, 3대 특화 클리닉으로 통합 의료 강화 | Structural implication: '하나로 의료재단, 3대 특화 클리닉으로 통합 의료 강화' suggests a shift in NEWS dynamics. | LOW |
 | 인도, 집안일 서비스 앱 급성장…부르면 15분 도착 | Structural implication: '인도, 집안일 서비스 앱 급성장…부르면 15분 도착' suggests a shift in NEWS dynamics. | LOW |
 | “검찰 간판 바꾸기법”…조국, 중수청·공소청법 정부안 수정 촉구 | Structural implication: '“검찰 간판 바꾸기법”…조국, 중수청·공소청법 정부안 수정 촉구' suggests a shift in NEWS dynamics. | LOW |
@@ -226,7 +227,6 @@
 | “고속도로 달리다 깜놀, 설악산에 UFO?”…속초 하늘에 뜬 ‘그놈’ 정체는 | Structural implication: '“고속도로 달리다 깜놀, 설악산에 UFO?”…속초 하늘에 뜬 ‘그놈’ 정체는' suggests a shift in NEWS dynamics. | LOW |
 | “반도체 클러스터 수혜”…삼라·SM스틸, ‘클러스터용인 경남아너스빌’ 완판 눈앞 | Structural implication: '“반도체 클러스터 수혜”…삼라·SM스틸, ‘클러스터용인 경남아너스빌’ 완판 눈앞' suggests a shift in NEWS dynamics. | LOW |
 | 방송인 이홍렬 “남을 즐겁게 하면 나도 즐거워지는 마법” | Structural implication: '방송인 이홍렬 “남을 즐겁게 하면 나도 즐거워지는 마법”' suggests a shift in NEWS dynamics. | LOW |
-| 한국은 ‘北비핵화’·미국은 ‘관세논의’ 제외…韓美 발표에 미묘한 차이 | Structural implication: '한국은 ‘北비핵화’·미국은 ‘관세논의’ 제외…韓美 발표에 미묘한 차이' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
