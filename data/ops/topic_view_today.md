@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 (ID: unknown)
+### 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보 (ID: unknown)
+### 삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,17 +77,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 비트코인 등 가상자산, 일주일새 시총 680조원 증발 - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### "국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 홍준표 "1세대 1주택 제한하고 다주택은 모두 법인만 소유해야" - 경기일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +102,39 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 선거 코앞인데 집값 안 꺾이니… 다시 등장한 ‘다주택자 때리기’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 60조 '캐나다 잠수함' 수주전에 韓 국회도 '지원 사격' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 화이자 "사활", '1개월' GLP-1 비만 첫 윤곽 '의구심..' - 바이오스펙테이터 (ID: unknown)
+### [매일경제TV] 강단에 선 메달리스트 기보배 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 젊은 작가들, 고정관념을 비틀다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [MBN] 배우 정호근이 내림굿 받은 사연 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 인간이 아닌 '정보'가 된 사람들 … 임무 뒤에 남는 잔혹한 진실 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 90세 거장 인발이 응시하는 죽음과 시대의 비극 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 후진기어 놓고 내린 20대, 차·벽 사이 끼여 숨져 (ID: unknown)
@@ -122,12 +147,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 대기업 유상증자로 주식발행액 55% ↑ (ID: unknown)
+### 온라인 사교육 1위 메가스터디 매물로 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 온라인 사교육 1위 메가스터디 매물로 (ID: unknown)
+### 대기업 유상증자로 주식발행액 55% ↑ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -177,37 +202,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
 ### '압구정 현대' 매물 한달새 60% 급증 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 오늘의 운세 2026년 2월 5일 木(음력 12월 18일) (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### (주)코오롱 흑자 전환...코오롱모빌리티 수입차 판매 호조 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 김길리 금 빛 질주…캐나다 업체가 전망한 밀라노 대회 한국 순위는? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### HS효성더클래스, 오송·방배 서비스센터 오픈 1주년 캠페인 실시 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 교제는 맞지만…하정우 7월 결혼설에 “확정 아냐” (ID: unknown)
+### 1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
