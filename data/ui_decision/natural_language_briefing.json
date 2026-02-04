@@ -180,5 +180,47 @@
         "데이터 후속 모니터링"
       ]
     }
+  },
+  "IS-96-20260204-NVID-Open": {
+    "unit_id": "IS-96-20260204-NVID-Open",
+    "hero": {
+      "title": "🔥 오늘의 핵심 한 문장",
+      "sentence": "“STRATEGIC_ALLIANCE 섹터에서 새로운 흐름의 신호가 확인됐습니다.”",
+      "metric": "(근거: Structural Score 0.60 / RELATIONSHIP_BREAK_RISK=True)"
+    },
+    "decision": {
+      "title": "⏸️ 현재는 대기 상태입니다",
+      "points": [
+        "• 데이터 정합성 검증 중"
+      ]
+    },
+    "why_now": {
+      "title": "❓ 왜 지금인가요?",
+      "items": [
+        "데이터 상으로 상태 주도 변화가 관찰되었습니다."
+      ]
+    },
+    "perspectives": {
+      "title": "🔍 이 구조에서 중요한 건 ‘종목’이 아닙니다",
+      "items": [
+        "• 없으면 전체가 멈추는 역할 (Bottleneck Rank 1 / Dependency 0.93)",
+        "• 공급이 막히면 가격이 내려갈 수 없는 지점 (Rigidity Score 0.88)",
+        "• 자금이 가장 먼저 들어오는 위치 (Capital Lead Time +6M)"
+      ]
+    },
+    "trust": {
+      "title": "🛡️ 이 판단의 신뢰 근거",
+      "items": [
+        "• 공식 통계 + 기업 공시 기반 (Sources: 1 / Official Ratio 100%)",
+        "• 단일 뉴스가 아닌 다중 신호 합의 (Multi-Eye Count 1)",
+        "• 루머·추정 기반 시나리오 아님 (Speculation Flag: False)"
+      ]
+    },
+    "checklist": {
+      "title": "📋 오늘 확인할 사항",
+      "items": [
+        "데이터 후속 모니터링"
+      ]
+    }
   }
 }

@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-02-04T17:39:29+09:00
-- finished_utc: 2026-02-04T17:40:21+09:00
+- started_utc: 2026-02-04T17:47:12+09:00
+- finished_utc: 2026-02-04T17:48:03+09:00
 - status: SUCCESS
 
 ## details
@@ -15,6 +15,7 @@ anomaly: ok
 fact_harvester: ok
 fact_first_ingress: ok
 topic: ok
+relationship_stress_layer: ok
 pre_structural_layer: ok
 anchor_engine: ok
 snapshot: ok (data/reports/2026/02/04/data_snapshot.md)
