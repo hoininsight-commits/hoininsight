@@ -4,17 +4,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function loadJson(file, isCritical = false) {
         try {
-            // Determine path: build_meta.json is in ../data/, decision files are in ../data/decision/
             const path = file === 'build_meta.json' ? '../data/' : DATA_PATH;
             const res = await fetch(path + file);
             if (!res.ok) throw new Error(`Status ${res.status}`);
-            return await res.json();
+            const data = await res.json();
+
+            // Adapter: Auto-convert list to dict if needed
+            if (Array.isArray(data)) {
+                const dict = {};
+                data.forEach(item => {
+                    const id = item.interpretation_id || item.topic_id || item.id;
+                    if (id) dict[id] = item;
+                });
+                return dict;
+            }
+            return data;
         } catch (e) {
             console.warn(`[DATA] Failed to load ${file}: ${e.message}`);
             if (isCritical) {
                 showDiagnostic(file, e.message);
             }
-            return null;
+            return {}; // Return empty dict instead of null to prevent "cannot read property of null"
         }
     }
 
@@ -44,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [units, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+    const [unitsDict, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
@@ -53,21 +63,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadJson('content_pack.json')
     ]);
 
-    if (!units || units.length === 0) {
+    // units are now a DICT, so we might need a way to find the latest/first.
+    // Usually engine renders top-1. We expect interpretation_units to have at least one.
+    const unitKeys = Object.keys(unitsDict);
+    if (unitKeys.length === 0) {
         document.getElementById('issue-hook').innerText = "오늘의 분석 결과가 없습니다.";
         return;
     }
 
-    // Pick Top-1 Unit (First one in JSON)
-    const topUnit = units[0];
-    const unitId = topUnit.interpretation_id;
-    const unitDecision = decision ? decision[unitId] : { speakability_flag: 'HOLD', speakability_reasons: ['No decision data'] };
-    const unitSkeleton = skeleton ? skeleton[unitId] : null;
+    // Pick Top-1 Unit (Assuming natural sort or first key if not specified)
+    // For now, take the first one available.
+    const unitId = unitKeys[0];
+    const topUnit = unitsDict[unitId];
+    const unitDecision = decision ? (decision[unitId] || decision[topUnit.topic_id]) : null;
+    const finalDecision = unitDecision || { speakability_flag: 'HOLD', speakability_reasons: ['No decision data'] };
+    const unitSkeleton = skeleton ? (skeleton[unitId] || skeleton[topUnit.topic_id]) : null;
 
     // 2. Render Header & Global Status
     document.getElementById('current-date').innerText = topUnit.as_of_date || new Date().toISOString().split('T')[0];
     const globalStatus = document.getElementById('global-status-badge');
-    const flag = unitDecision.speakability_flag;
+    const flag = finalDecision.speakability_flag;
     const mode = topUnit.mode || 'STRUCTURAL';
 
     if (mode === 'HYPOTHESIS_JUMP') {
@@ -96,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (flag === 'READY') {
         guideText = "✅ 바로 제작 가능: 강력한 근거가 확보되었습니다. 자신 있게 전달하세요.";
     } else {
-        guideText = `⏸️ 대기(HOLD): ${unitDecision.speakability_reasons.join(', ')}`;
+        guideText = `⏸️ 대기(HOLD): ${finalDecision.speakability_reasons.join(', ')}`;
     }
     guideBox.innerHTML = `<p>${guideText}</p>`;
 
@@ -125,8 +140,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 6. Render Mentionables
     const mentionGrid = document.getElementById('mention-cards');
-    if (mentionables && mentionables[unitId]) {
-        const items = mentionables[unitId].mentionable_items || [];
+    const unitMentions = mentionables ? (mentionables[unitId] || mentionables[topUnit.topic_id]) : null;
+    if (unitMentions) {
+        const items = unitMentions.mentionable_items || [];
         mentionGrid.innerHTML = items.map(m => `
             <div class="mention-card">
                 <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 4px;">${m.name}</div>
@@ -137,8 +153,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 7. Render Content Packs
     const packContainer = document.getElementById('pack-container');
-    if (packs && packs.packs) {
-        packContainer.innerHTML = packs.packs.map(p => `
+    const unitPacks = packs ? (packs[unitId] || packs[topUnit.topic_id]) : null;
+    if (unitPacks) {
+        // If it's a list under the keyed item
+        const pList = unitPacks.packs || [unitPacks];
+        packContainer.innerHTML = pList.map(p => `
             <div class="pack-card">
                 <div>
                     <span class="tag-badge">${p.format}</span>
@@ -151,8 +170,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 8. Render Evidence
     const evidenceGrid = document.getElementById('evidence-list');
-    if (evidence && evidence[unitId]) {
-        const refs = evidence[unitId].citations || [];
+    const unitEvidence = evidence ? (evidence[unitId] || evidence[topUnit.topic_id]) : null;
+    if (unitEvidence) {
+        const refs = unitEvidence.citations || [];
         evidenceGrid.innerHTML = refs.map(r => `
             <div class="mention-card" style="font-size: 0.85rem;">
                 <div style="color: var(--status-ready); font-weight: bold; margin-bottom: 4px;">${r.source_name}</div>

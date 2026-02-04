@@ -337,8 +337,9 @@ jobs:
           cp -r data/dashboard/* docs/data/ || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
           cp -r data/reports docs/data/ || true
-          cp -r data/decision/* docs/data/decision/ || true
-          cp -r exports/* docs/exports/ || true
+          
+          # [IS-100] Adapt and Publish UI Decision Assets
+          python -m src.ui.run_publish_ui_decision_assets
           
           # [IS-51] Operational Dashboard Guarantee
           # Flatten the latest operational dashboard to root docs for easy access
