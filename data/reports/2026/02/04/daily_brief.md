@@ -35,7 +35,6 @@ Historical context:
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/02/04/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/02/04/struct_dart_disposal.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] KOSPI: data/features/anomalies/2026/02/04/index_kospi_stooq.json L2 Signal (base=6.00, final_m=10.50) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
-- [HIGH] NASDAQ: data/features/anomalies/2026/02/04/index_nasdaq_fred.json L2 Signal (base=6.00, final_m=9.60) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] KOR_CPI: data/features/anomalies/2026/02/04/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/04/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] BTCUSD: data/features/anomalies/2026/02/04/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
@@ -44,6 +43,7 @@ Historical context:
 - [LOW] US10Y: data/features/anomalies/2026/02/04/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] VIX: data/features/anomalies/2026/02/04/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] SPX: data/features/anomalies/2026/02/04/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
+- [LOW] NASDAQ: data/features/anomalies/2026/02/04/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] US02Y: data/features/anomalies/2026/02/04/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] WTI: data/features/anomalies/2026/02/04/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] GOLD: data/features/anomalies/2026/02/04/metal_gold_paxg_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
@@ -75,7 +75,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=1.80 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=1.81 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
@@ -94,5 +94,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 12 candidate(s) survived survival rules.
+Gate Filter Result: 13 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
