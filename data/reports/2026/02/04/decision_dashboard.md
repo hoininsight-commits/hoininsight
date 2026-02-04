@@ -207,6 +207,9 @@
 | ‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily | Structural implication: '‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily' suggests a shift in NEWS dynamics. | LOW |
 | 노보노디스크 2026년 실적 ‘쇼크’… 트럼프 약가 압박에 주가 12%↓ - 팜뉴스 | Structural implication: '노보노디스크 2026년 실적 ‘쇼크’… 트럼프 약가 압박에 주가 12%↓ - 팜뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 녹색전환 전략 수립 본격화 - 축산신문 | Structural implication: '정부, 녹색전환 전략 수립 본격화 - 축산신문' suggests a shift in NEWS dynamics. | LOW |
+| “봄 인테리어, 킨텍스서 보세요”LX하우시스, 코리아빌드위크 참가 | Structural implication: '“봄 인테리어, 킨텍스서 보세요”LX하우시스, 코리아빌드위크 참가' suggests a shift in NEWS dynamics. | LOW |
+| 시장 눈높이 못 맞춘 호텔신라…증권사 목표주가도 ‘뚝’[매경 자이앤트] | Structural implication: '시장 눈높이 못 맞춘 호텔신라…증권사 목표주가도 ‘뚝’[매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
+| 대우건설 “가덕도신공항 부지조성공사 수행에 문제없다” | Structural implication: '대우건설 “가덕도신공항 부지조성공사 수행에 문제없다”' suggests a shift in NEWS dynamics. | LOW |
 | 부동산 개발 기대감에 상한가 ‘하림지주’, 초고수는 팔았다[주식 초고수는 지금] | Structural implication: '부동산 개발 기대감에 상한가 ‘하림지주’, 초고수는 팔았다[주식 초고수는 지금]' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령, 각계에 보낸 설 선물에 ‘5극 3특’ 담았다 | Structural implication: '이 대통령, 각계에 보낸 설 선물에 ‘5극 3특’ 담았다' suggests a shift in NEWS dynamics. | LOW |
 | 안철수 “의원 배지가 의총장 출입증 돼선 안돼” | Structural implication: '안철수 “의원 배지가 의총장 출입증 돼선 안돼”' suggests a shift in NEWS dynamics. | LOW |
@@ -224,9 +227,6 @@
 | 호남 관문 광천터미널, 3조원 들여 교통·상업·문화 허브로 | Structural implication: '호남 관문 광천터미널, 3조원 들여 교통·상업·문화 허브로' suggests a shift in NEWS dynamics. | LOW |
 | “복합동박 탑재 드론 나오나”…고려아연, ‘차세대 배터리 소재’ 개발 협력 | Structural implication: '“복합동박 탑재 드론 나오나”…고려아연, ‘차세대 배터리 소재’ 개발 협력' suggests a shift in NEWS dynamics. | LOW |
 | 하얀 눈이 내리면 더욱 아름다운 ‘경기도 명소’ | Structural implication: '하얀 눈이 내리면 더욱 아름다운 ‘경기도 명소’' suggests a shift in NEWS dynamics. | LOW |
-| ‘뷰티 대장주’ 에이피알, ‘최대 실적’ 경신…지난해 매출 1조5273억원 | Structural implication: '‘뷰티 대장주’ 에이피알, ‘최대 실적’ 경신…지난해 매출 1조5273억원' suggests a shift in NEWS dynamics. | LOW |
-| 차익 실현 매물?…삼성전자·SK 하이닉스, 장 초반 약세 출발 | Structural implication: '차익 실현 매물?…삼성전자·SK 하이닉스, 장 초반 약세 출발' suggests a shift in NEWS dynamics. | LOW |
-| 한병도 “망국적 부동산시장 꼭 정상화…국힘, 정부 대책에 협조하길” | Structural implication: '한병도 “망국적 부동산시장 꼭 정상화…국힘, 정부 대책에 협조하길”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
