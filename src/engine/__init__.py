@@ -610,6 +610,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"topic_exporter: fail ({e})", file=sys.stderr)
 
+            # [IS-101-1] Natural Language Hero Summary (Operator UI)
+            try:
+                from src.ui.natural_language_summary import NaturalLanguageSummary
+                nl_summary = NaturalLanguageSummary(Path("."))
+                nl_summary.run()
+                details_lines.append("hero_summary_layer: ok")
+                print("hero_summary_layer: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"hero_summary_layer: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
