@@ -90,3 +90,59 @@ long_structure:
       결론입니다. {CLAIM_TEXT}
       지금은 흔들릴 때가 아니라 데이터를 믿고 기다릴 때입니다.
       {DISCLAIMER_TEXT}
+
+break_scenario_shorts:
+  - section: PREMISE
+    content: |
+      [PREMISE]
+      {PREMISE_TEXT}
+      관계가 흔들리면 시장 판도가 뒤집힙니다.
+      {HOLD_TEXT}
+
+  - section: COLLAPSE
+    content: |
+      [COLLAPSE]
+      우선 {WHAT_BREAKS_FIRST} 신호가 터질 겁니다.
+      이건 단순 추정이 아니라 데이터가 가리키는 방향입니다.
+
+  - section: WINNERS
+    content: |
+      [WINNERS & PICKAXE]
+      이 균열에서 살아남을 '진짜 병목'은 여기입니다.
+      {WINNERS_TEXT}
+
+  - section: CLOSE
+    content: |
+      [CONCLUSION]
+      가설이 붕괴될 때 사냥은 시작됩니다.
+      {DISCLAIMER_TEXT}
+
+break_scenario_long:
+  - section: INTRO
+    content: |
+      [INTRO]
+      반갑습니다. 경제사냥꾼 호인입니다.
+      오늘은 {RELATIONSHIP} 관계의 균열 가설을 분석합니다.
+      {PREMISE_TEXT}
+      {HOLD_TEXT}
+
+  - section: BREAK_SEQUENCE
+    content: |
+      [BREAK SEQUENCE]
+      만약 이 루프가 깨진다면 가장 먼저 {WHAT_BREAKS_FIRST} 현상이 나타날 겁니다.
+      이후 2차 파급효과로 {SECOND_ORDER_EFFECTS} 단계에 진입하게 됩니다.
+
+  - section: PICKAXE_LOGIC
+    content: |
+      [PICKAXE LOGIC]
+      하지만 위기 속에 사냥감이 있습니다.
+      공급망 재편 과정에서 반드시 거쳐야 하는 '병목' 기업들을 주목하십시오.
+      
+      {PICKAXE_DETAILS}
+
+  - section: CONCLUSION
+    content: |
+      [OUTRO]
+      결론입니다. 루프의 붕괴는 끝이 아니라 새로운 자산 배정의 시작입니다.
+      데이터와 신뢰도를 기반으로 다음 트리거를 기다리겠습니다.
+      {DISCLAIMER_TEXT}

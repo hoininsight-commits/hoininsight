@@ -23,7 +23,8 @@ class UploadPackOrchestrator:
         folders = [
             "01_LONG",
             "02_SHORTS",
-            "03_METADATA"
+            "03_METADATA",
+            "04_BREAK_SCENARIO"
         ]
         for f in folders:
             (self.pack_dir / f).mkdir(parents=True, exist_ok=True)
@@ -61,6 +62,14 @@ class UploadPackOrchestrator:
             else:
                 raise FileNotFoundError(f"Short angle {i} missing. IS-99-4 requires exactly 4 angles.")
 
+        # Break Scenario [IS-98-5]
+        bs_long = self.export_root / "final_script_break_scenario_long.txt"
+        bs_shorts = self.export_root / "final_script_break_scenario_shorts.txt"
+        if bs_long.exists():
+            shutil.copy(bs_long, self.pack_dir / "04_BREAK_SCENARIO" / "break_long.txt")
+        if bs_shorts.exists():
+            shutil.copy(bs_shorts, self.pack_dir / "04_BREAK_SCENARIO" / "break_shorts.txt")
+
     def generate_manifest(self, hero, citations):
         """Generates JSON and CSV manifests."""
         today = datetime.now().strftime("%Y-%m-%d")
@@ -88,6 +97,11 @@ class UploadPackOrchestrator:
             angles = ["macro", "pickaxe", "data", "risk"]
             for i, angle in enumerate(angles, 1):
                 writer.writerow(["SHORT", f"short_0{i}_{angle}.txt", angle, manifest["hypothesis_flag"]])
+            
+            # [IS-98-5]
+            if (self.pack_dir / "04_BREAK_SCENARIO" / "break_long.txt").exists():
+                writer.writerow(["BREAK_LONG", "break_long.txt", "scenario", False])
+                writer.writerow(["BREAK_SHORTS", "break_shorts.txt", "scenario", False])
 
     def generate_readme(self, hero):
         """Generates 00_README.md via template."""
@@ -111,6 +125,11 @@ class UploadPackOrchestrator:
 ## 검증 리포트
 - 데이터 소스: {len(hero.get('eyes_used', []))} Eyes 검증 완료
 - 구조적 패러다임: {hero.get('sector')} 주도권 이동 여부 확인됨
+
+## Break Scenario (가설 붕괴 시나리오) [IS-98-5]
+- 원인: {hero.get('relationship', 'N/A')} 관계 스트레스 포착
+- 내용: 만약 루프가 깨진다면 무엇이 붕괴하고 누가 사냥꾼이 되는가?
+- 파일: `04_BREAK_SCENARIO/` 폴더를 확인하십시오.
 
 ---
 *본 패키지는 IS-99-4 오케스트레이터에 의해 데이터 기반으로 자동 생성되었습니다.*

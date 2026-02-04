@@ -580,6 +580,26 @@ def main(target_categories: list[str] = None):
                 except Exception as e:
                     print(f"narrator_fallback: fail ({e})", file=sys.stderr)
 
+            # [IS-98-5] Break Scenario Narrator
+            try:
+                from src.topics.narrator.break_scenario_narrator import BreakScenarioNarrator
+                bs_narrator = BreakScenarioNarrator(Path("."))
+                bs_narrator.run()
+                details_lines.append("break_scenario_narrator: ok")
+                print("break_scenario_narrator: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"break_scenario_narrator: fail ({e})", file=sys.stderr)
+
+            # [IS-99-4] Upload Pack Orchestration
+            try:
+                from src.orchestrators.upload_pack_orchestrator import UploadPackOrchestrator
+                orchestrator = UploadPackOrchestrator()
+                orchestrator.run()
+                details_lines.append("upload_pack: ok")
+                print("upload_pack: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"upload_pack: fail ({e})", file=sys.stderr)
+
             # [NEW] Step 85: Topic Exporter (Dashboard Surface)
             try:
                 from src.dashboard.topic_exporter import TopicExporter
