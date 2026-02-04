@@ -56,7 +56,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 32px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .card-highlight {
@@ -94,10 +94,21 @@ body {
     color: #fff;
 }
 
-.badge.ready { background-color: var(--status-ready); }
-.badge.hold { background-color: var(--status-hold); }
-.badge.hypothesis { background-color: var(--status-hypothesis); }
-.badge.drop { background-color: var(--status-drop); }
+.badge.ready {
+    background-color: var(--status-ready);
+}
+
+.badge.hold {
+    background-color: var(--status-hold);
+}
+
+.badge.hypothesis {
+    background-color: var(--status-hypothesis);
+}
+
+.badge.drop {
+    background-color: var(--status-drop);
+}
 
 .hook-text {
     font-size: 1.8rem;
@@ -119,7 +130,7 @@ body {
 .guide-box {
     margin-top: 12px;
     padding: 12px;
-    background-color: rgba(255,255,255,0.03);
+    background-color: rgba(255, 255, 255, 0.03);
     border-left: 4px solid var(--accent-blue);
     border-radius: 4px;
     font-size: 0.95rem;
@@ -133,7 +144,7 @@ body {
 
 .logic-item {
     padding: 8px 12px;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 8px;
     position: relative;
 }
@@ -179,4 +190,22 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 12px;
+}
+
+.diag-banner {
+    background-color: rgba(248, 81, 73, 0.1);
+    border: 1px solid var(--status-drop);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--status-drop);
+}
+
+.diag-banner div {
+    margin-bottom: 8px;
+}
+
+.diag-banner div:last-child {
+    margin-bottom: 0;
 }
