@@ -1,20 +1,20 @@
 [
   {
-    "ts_utc": "2026-02-04T11:21:42Z",
+    "ts_utc": "2026-02-04T12:08:07Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
-    "title": "data/features/anomalies/2026/02/04/crypto_btc_usd_spot_coingecko.json L1 Signal",
-    "score": 3.0,
-    "severity": "MED",
+    "title": "data/features/anomalies/2026/02/04/crypto_btc_usd_spot_coingecko.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
     "evidence": {
-      "source_severity": 30,
-      "level": "L1",
+      "source_severity": 60,
+      "level": "L2",
       "details": {
-        "z_score": -0.42,
-        "percentile": 7.9,
-        "value": 76401.0,
-        "rolling_mean_20d": 76942.0,
-        "reasoning": "Percentile 7.9% (Watch)"
+        "z_score": -0.66,
+        "percentile": 4.4,
+        "value": 75999.0,
+        "rolling_mean_20d": 76818.0,
+        "reasoning": "Percentile 4.4% (Extreme)"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/02/04/crypto_btc_usd_spot_coingecko.json"
     },
-    "rationale": "[L1] Percentile 7.9% (Watch) (Regime x1.0)",
+    "rationale": "[L2] Percentile 4.4% (Extreme) (Regime x1.0)",
     "links": [],
     "is_pre_structural": false
   }
