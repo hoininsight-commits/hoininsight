@@ -330,16 +330,22 @@ jobs:
         run: |
           # [IS-56] Clean docs/data to remove stale/mock artifacts
           rm -rf docs/data
-          mkdir -p docs/data
+          mkdir -p docs/data/decision
+          mkdir -p docs/exports
           mkdir -p docs/issuesignal
           cp dashboard/index.html docs/index.html
           cp -r data/dashboard/* docs/data/ || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
           cp -r data/reports docs/data/ || true
+          cp -r data/decision/* docs/data/decision/ || true
+          cp -r exports/* docs/exports/ || true
           
           # [IS-51] Operational Dashboard Guarantee
           # Flatten the latest operational dashboard to root docs for easy access
           find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \;
+
+          # [IS-100] Generate Build Metadata
+          echo "{\"commit\": \"$GITHUB_SHA\", \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\", \"date_kst\": \"$(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M:%S KST')\"}" > docs/data/build_meta.json
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4

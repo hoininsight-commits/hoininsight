@@ -2,20 +2,50 @@ document.addEventListener('DOMContentLoaded', async () => {
     const DATA_PATH = '../data/decision/'; // Assuming UI is in /ui/ and data in /data/decision/
     const MOCK_FALLBACK = true;
 
-    async function loadJson(file) {
+    async function loadJson(file, isCritical = false) {
         try {
-            const res = await fetch(DATA_PATH + file);
-            if (!res.ok) throw new Error(`Not found: ${file}`);
+            // Determine path: build_meta.json is in ../data/, decision files are in ../data/decision/
+            const path = file === 'build_meta.json' ? '../data/' : DATA_PATH;
+            const res = await fetch(path + file);
+            if (!res.ok) throw new Error(`Status ${res.status}`);
             return await res.json();
         } catch (e) {
-            console.warn(`[DATA] Failed to load ${file}, using fallback or empty.`);
+            console.warn(`[DATA] Failed to load ${file}: ${e.message}`);
+            if (isCritical) {
+                showDiagnostic(file, e.message);
+            }
             return null;
         }
     }
 
+    function showDiagnostic(file, error) {
+        let diag = document.getElementById('diag-banner');
+        if (!diag) {
+            diag = document.createElement('div');
+            diag.id = 'diag-banner';
+            diag.className = 'diag-banner';
+            document.getElementById('app').prepend(diag);
+        }
+        const msg = document.createElement('div');
+        msg.innerHTML = `⚠️ <b>데이터 로드 실패:</b> ${file} (${error})<br>
+                        &nbsp;&nbsp;👉 해결: GitHub Actions → <code>full_pipeline</code> 실행 및 <code>docs/data/decision</code> 배포 확인.`;
+        diag.appendChild(msg);
+    }
+
+    // 0. Load Build Meta
+    const buildMeta = await loadJson('build_meta.json');
+    if (buildMeta) {
+        const info = document.createElement('div');
+        info.style.fontSize = '0.75rem';
+        info.style.color = 'var(--text-secondary)';
+        info.style.marginBottom = '10px';
+        info.innerText = `Build: ${buildMeta.date_kst || buildMeta.timestamp} | Commit: ${buildMeta.commit.substring(0, 7)}`;
+        document.getElementById('app').prepend(info);
+    }
+
     // 1. Load All Data
     const [units, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
-        loadJson('interpretation_units.json'),
+        loadJson('interpretation_units.json', true),
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
         loadJson('mentionables.json'),
