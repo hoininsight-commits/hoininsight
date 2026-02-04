@@ -191,17 +191,17 @@
 | 비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스 | Structural implication: '비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹 | Structural implication: '"배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | 中 AI 칩 ‘내수 물량 공세’ 본격화…엔비디아 점유율 11%로 급락 - 글로벌이코노믹 | Structural implication: '中 AI 칩 ‘내수 물량 공세’ 본격화…엔비디아 점유율 11%로 급락 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| 미 관세·보조금 폐지에 작년 대미 전기차 수출 87% 급감 - KBS 뉴스 | Structural implication: '미 관세·보조금 폐지에 작년 대미 전기차 수출 87% 급감 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제 | Structural implication: '11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 1월 말 외환보유액 4천259억달러…환율 관리에 두달째 감소 - 한국무역협회-KITA.NET | Structural implication: '1월 말 외환보유액 4천259억달러…환율 관리에 두달째 감소 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| [단독]"지는 자면서 난 일하래" 섬찟한 내 뒷담화…'머슴' 개발자 "3시간만에 뚝딱" - v.daum.net | Structural implication: '[단독]"지는 자면서 난 일하래" 섬찟한 내 뒷담화…'머슴' 개발자 "3시간만에 뚝딱" - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
+| "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - yna.co.kr | Structural implication: '"주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스 | Structural implication: '다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 | Structural implication: '[특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | KT·KAI·현대차 등 86개 기업 참여 민·관·군 협력 ‘저궤도위성통신산업協’ 출범…“우주패권 시대 대비” - 문화일보 | Structural implication: 'KT·KAI·현대차 등 86개 기업 참여 민·관·군 협력 ‘저궤도위성통신산업協’ 출범…“우주패권 시대 대비” - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | “제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net | Structural implication: '“제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문 | Structural implication: '조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문' suggests a shift in NEWS dynamics. | LOW |
 | [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 | Structural implication: '[기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
-| 장바구니에 금까지...독점판매·기획전 앞세운 온라인쇼핑 플랫폼 - edaily.co.kr | Structural implication: '장바구니에 금까지...독점판매·기획전 앞세운 온라인쇼핑 플랫폼 - edaily.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| "골드바로 프러포즈"…재테크에 진심인 MZ - 네이트 | Structural implication: '"골드바로 프러포즈"…재테크에 진심인 MZ - 네이트' suggests a shift in NEWS dynamics. | LOW |
 | ‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily | Structural implication: '‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily' suggests a shift in NEWS dynamics. | LOW |
 | 잘 나가던 위고비, 경쟁 심화·트럼프 압박에 매출 급감 전망 - 마켓인 | Structural implication: '잘 나가던 위고비, 경쟁 심화·트럼프 압박에 매출 급감 전망 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 삼성중공업, 중동 AM 시장 공략…카타르 조선소와 MOU - 지디넷코리아 | Structural implication: '삼성중공업, 중동 AM 시장 공략…카타르 조선소와 MOU - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
