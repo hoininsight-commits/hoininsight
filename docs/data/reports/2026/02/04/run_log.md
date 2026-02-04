@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-02-04T17:51:51+09:00
-- finished_utc: 2026-02-04T17:52:45+09:00
+- started_utc: 2026-02-04T18:00:27+09:00
+- finished_utc: 2026-02-04T18:01:20+09:00
 - status: SUCCESS
 
 ## details
@@ -39,6 +39,7 @@ topic_lock: ok (lock=False)
 economic_hunter_narrator: ok (Standard)
 break_scenario_narrator: ok
 topic_exporter: ok
+hero_summary_layer: ok
 operational_dashboard: ok | data/reports/2026/02/04/operational_dashboard.md
 decision_dashboard: ok | data/reports/2026/02/04/decision_dashboard.md
 decision: ok
