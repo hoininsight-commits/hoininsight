@@ -2392,10 +2392,10 @@ def generate_dashboard(base_dir: Path):
                 
                 // Update Content
                 const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report", "ops-dashboard"];
-                tabs.forEach(t => {
+                tabs.forEach(t => {{
                    const element = document.getElementById('tab-' + t);
                    if(element) element.classList.add('hidden');
-                });
+                }});
                 
                 const target = document.getElementById('tab-' + tabName);
                 if(target) target.classList.remove('hidden');
