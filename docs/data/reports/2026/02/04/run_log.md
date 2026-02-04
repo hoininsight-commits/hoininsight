@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-02-04T10:09:08+09:00
-- finished_utc: 2026-02-04T10:09:57+09:00
+- started_utc: 2026-02-04T10:24:56+09:00
+- finished_utc: 2026-02-04T10:25:50+09:00
 - status: SUCCESS
 
 ## details
@@ -47,7 +47,6 @@ report: ok | data/reports/2026/02/04/daily_brief.md
 checks:
 [SKIP] outputs(fx_dxy_index_stooq) missing
 [SKIP] outputs(metal_platinum_xptusd_stooq) missing
-[SKIP] outputs(crypto_eth_usd_spot_coingecko) missing
 [SKIP] outputs(struct_krx_foreigner_flow) missing
 [SKIP] outputs(real_estate_price_index) missing
 [SKIP] outputs(real_estate_volume) missing
