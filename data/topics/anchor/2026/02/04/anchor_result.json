@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "inflation_cpi_fred"
+    "crypto_eth_usd_spot_coingecko"
   ],
   "baseline_match": [
-    "inflation_cpi_fred: Single Axis Surge (Z=1.72)"
+    "crypto_eth_usd_spot_coingecko: Single Axis Surge (Z=-1.93)"
   ],
   "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation Z=1.72 (No Cluster)",
+  "level_proof": "Statistical Deviation Z=-1.93 (No Cluster)",
   "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
     "Need Correlated Asset Movement",
