@@ -1,4 +1,4 @@
-# Insight Script: [Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)
+# Insight Script: [Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)
 <!-- Metadata
 Topic ID: derived_yield_curve_10y_2y
 Level: L2
@@ -7,11 +7,11 @@ Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **[Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)** 현상이 감지되었습니다.
+- **[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, STRUCTURAL 동반)** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유
-- 현재 시장은 [Risk-Off Wave] 국면에 진입한 것으로 분석됩니다. 장단기 금리차에서 Percentile 99.0% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 장단기 금리차에서 Percentile 99.0% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## 3. 근거 데이터
 - 주요 지표: `derived_yield_curve_10y_2y`
