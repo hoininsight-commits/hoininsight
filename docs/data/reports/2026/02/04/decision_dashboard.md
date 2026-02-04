@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 (Google_News_KR_Economy)
-  - [NEWS] 삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인 (Google_News_KR_Economy)
+  - [NEWS] 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 (Google_News_KR_Economy)
+  - [NEWS] 삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] "16억짜리 집, 피만 33억을 줬는데...다들 싸게 잘 샀대요" [경매뚝딱] - v.daum.net (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,26 +187,32 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 | Structural implication: '코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레 | Structural implication: '삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인 | Structural implication: '스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 | Structural implication: '미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보 | Structural implication: '삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "16억짜리 집, 피만 33억을 줬는데...다들 싸게 잘 샀대요" [경매뚝딱] - v.daum.net | Structural implication: '"16억짜리 집, 피만 33억을 줬는데...다들 싸게 잘 샀대요" [경매뚝딱] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 다크웹·가상자산 뒤에 숨은 마약범죄, 과학기술로 추적한다 - 대한민국 정책브리핑 | Structural implication: '다크웹·가상자산 뒤에 숨은 마약범죄, 과학기술로 추적한다 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아 | Structural implication: '비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 고의로 회계부정 지시하면 최대 5년간 모든 상장사 임원 취업 못해 - 한국세정신문 | Structural implication: '고의로 회계부정 지시하면 최대 5년간 모든 상장사 임원 취업 못해 - 한국세정신문' suggests a shift in NEWS dynamics. | LOW |
 | 젠슨 황 “인공지능 AI는 물·전기처럼 필수될 것”…다쏘와 산업용 AI 동맹 - KBS 뉴스 | Structural implication: '젠슨 황 “인공지능 AI는 물·전기처럼 필수될 것”…다쏘와 산업용 AI 동맹 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 차익 실현 매물에…삼성전자·SK하이닉스 '숨 고르기' - 한국경제 | Structural implication: '차익 실현 매물에…삼성전자·SK하이닉스 '숨 고르기' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인 | Structural implication: '스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자·SK하이닉스, 프리마켓서 2%대 약세… 한화오션만 강세 - v.daum.net | Structural implication: '삼성전자·SK하이닉스, 프리마켓서 2%대 약세… 한화오션만 강세 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 올릭스, 佛 벡트-호러스의 BBB 셔틀 기술 평가…"CNS로 siRNA 전달" - 팜이데일리 | Structural implication: '올릭스, 佛 벡트-호러스의 BBB 셔틀 기술 평가…"CNS로 siRNA 전달" - 팜이데일리' suggests a shift in NEWS dynamics. | LOW |
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne | Structural implication: 'FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne' suggests a shift in NEWS dynamics. | LOW |
 | [AI픽] 국산 AI 반도체 공공 분야서 판로 확보 물꼬 튼다 - 연합뉴스 | Structural implication: '[AI픽] 국산 AI 반도체 공공 분야서 판로 확보 물꼬 튼다 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인 등 가상자산, 일주일새 시총 680조원 증발 - 마켓인 | Structural implication: '비트코인 등 가상자산, 일주일새 시총 680조원 증발 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | "국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아 | Structural implication: '"국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문 | Structural implication: '대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문' suggests a shift in NEWS dynamics. | LOW |
 | “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 | Structural implication: '“4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 60조 잠수함 사업 총괄 캐나다 장관, HD현대 글로벌R&D센터 방문... “미래에 와있는 것 같다” - 조선일보 | Structural implication: '60조 잠수함 사업 총괄 캐나다 장관, HD현대 글로벌R&D센터 방문... “미래에 와있는 것 같다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보 | Structural implication: 'KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 선거 코앞인데 집값 안 꺾이니… 다시 등장한 ‘다주택자 때리기’ - 조선일보 | Structural implication: '선거 코앞인데 집값 안 꺾이니… 다시 등장한 ‘다주택자 때리기’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 60조 '캐나다 잠수함' 수주전에 韓 국회도 '지원 사격' - 한국경제 | Structural implication: '60조 '캐나다 잠수함' 수주전에 韓 국회도 '지원 사격' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 | Structural implication: '"노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 쿠폰 뿌렸지만 1월 ‘탈팡’ 110만명…탈출 규모 10배 증가 - 한겨레 | Structural implication: '쿠폰 뿌렸지만 1월 ‘탈팡’ 110만명…탈출 규모 10배 증가 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| [표] 당좌거래정지 | Structural implication: '[표] 당좌거래정지' suggests a shift in NEWS dynamics. | LOW |
+| 신한금융, 미소금융재단에 1000억 출연 | Structural implication: '신한금융, 미소금융재단에 1000억 출연' suggests a shift in NEWS dynamics. | LOW |
+| [표] 외국환율고시표 | Structural implication: '[표] 외국환율고시표' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 'HMM 본사 부산 이전' 매각 핵심 변수로 | Structural implication: '[단독] 'HMM 본사 부산 이전' 매각 핵심 변수로' suggests a shift in NEWS dynamics. | LOW |
+| 생산적금융 늘리면 인사평가때 인센티브 | Structural implication: '생산적금융 늘리면 인사평가때 인센티브' suggests a shift in NEWS dynamics. | LOW |
+| 은행 지점 폐쇄 어려워진다 "지방점포 닫으면 평가 감점" | Structural implication: '은행 지점 폐쇄 어려워진다 "지방점포 닫으면 평가 감점"' suggests a shift in NEWS dynamics. | LOW |
 | [매일경제TV] 강단에 선 메달리스트 기보배 | Structural implication: '[매일경제TV] 강단에 선 메달리스트 기보배' suggests a shift in NEWS dynamics. | LOW |
 | 젊은 작가들, 고정관념을 비틀다 | Structural implication: '젊은 작가들, 고정관념을 비틀다' suggests a shift in NEWS dynamics. | LOW |
 | [MBN] 배우 정호근이 내림굿 받은 사연 | Structural implication: '[MBN] 배우 정호근이 내림굿 받은 사연' suggests a shift in NEWS dynamics. | LOW |
@@ -221,12 +227,6 @@
 | 제5회 신준식 장학생 자생한방병원 12명 선발 | Structural implication: '제5회 신준식 장학생 자생한방병원 12명 선발' suggests a shift in NEWS dynamics. | LOW |
 | AI직원 8명 잘쓰는 비결은 … ① 경쟁 유도 ② 분업 ③ 압박 | Structural implication: 'AI직원 8명 잘쓰는 비결은 … ① 경쟁 유도 ② 분업 ③ 압박' suggests a shift in NEWS dynamics. | LOW |
 | 회사 간판보다 개인 경쟁력 … 美 '이민의 법칙' 확 바뀌었죠 | Structural implication: '회사 간판보다 개인 경쟁력 … 美 '이민의 법칙' 확 바뀌었죠' suggests a shift in NEWS dynamics. | LOW |
-| BBQ 사랑의 치킨 나눔 지난달 1000마리 돌파 | Structural implication: 'BBQ 사랑의 치킨 나눔 지난달 1000마리 돌파' suggests a shift in NEWS dynamics. | LOW |
-| [포] 미래서울 전시관 | Structural implication: '[포] 미래서울 전시관' suggests a shift in NEWS dynamics. | LOW |
-| 김윤덕 "과천 교통 문제 TF 만들 것" | Structural implication: '김윤덕 "과천 교통 문제 TF 만들 것"' suggests a shift in NEWS dynamics. | LOW |
-| 與 부동산감독원 법안발의 이상거래 특별수사도 가능 | Structural implication: '與 부동산감독원 법안발의 이상거래 특별수사도 가능' suggests a shift in NEWS dynamics. | LOW |
-| '압구정 현대' 매물 한달새 60% 급증 | Structural implication: ''압구정 현대' 매물 한달새 60% 급증' suggests a shift in NEWS dynamics. | LOW |
-| 1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리 | Structural implication: '1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
