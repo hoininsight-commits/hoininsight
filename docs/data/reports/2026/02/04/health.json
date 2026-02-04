@@ -1,11 +1,10 @@
 {
-  "ts_utc": "2026-02-04T12:44:14Z",
+  "ts_utc": "2026-02-04T12:44:44Z",
   "status": "SUCCESS",
   "checks_ok": true,
   "checks": [
     "[SKIP] outputs(fx_dxy_index_stooq) missing",
     "[SKIP] outputs(metal_platinum_xptusd_stooq) missing",
-    "[SKIP] outputs(crypto_eth_usd_spot_coingecko) missing",
     "[SKIP] outputs(struct_krx_foreigner_flow) missing",
     "[SKIP] outputs(real_estate_price_index) missing",
     "[SKIP] outputs(real_estate_volume) missing",
@@ -119,10 +118,10 @@
     {
       "dataset_id": "crypto_eth_usd_spot_coingecko",
       "soft_fail": true,
-      "status": "SKIPPED",
+      "status": "OK",
       "curated_ok": true,
-      "anomalies_ok": false,
-      "topics_ok": false
+      "anomalies_ok": true,
+      "topics_ok": true
     },
     {
       "dataset_id": "rates_kor_base_rate_ecos",

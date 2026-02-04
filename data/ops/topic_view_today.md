@@ -17,7 +17,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “주인 잘 때 뭉친다” “침묵할 자유”…AI끼리 뒷담화에 철학 논쟁까지 - 주간경향 (ID: unknown)
+### AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 (ID: unknown)
+### 조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문 (ID: unknown)
+### [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,7 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 1년 3개월 만 최저치로 추락한 비트코인 - 조선일보 (ID: unknown)
+### '빅쇼트' 마이클 버리 "비트코인 급락, 기관들 금·은 '강제투매' 유발" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
