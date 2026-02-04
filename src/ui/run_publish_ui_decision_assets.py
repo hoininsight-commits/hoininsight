@@ -1,5 +1,7 @@
 from src.ui.ui_decision_contract import build_ui_decision_contract
+from src.ui.natural_language_mapper import NaturalLanguageMapper
 import shutil
+import json
 import os
 from pathlib import Path
 
@@ -7,7 +9,15 @@ def run_publish():
     # 1. Build contract in temp dir
     build_ui_decision_contract(input_dir="data/decision", output_dir="data/ui_decision")
 
-    # 2. Publish to docs/data/decision
+    # 2. Generate Natural Language Briefing
+    mapper = NaturalLanguageMapper(input_dir="data/decision")
+    briefing = mapper.build_briefing()
+    briefing_path = Path("data/ui_decision/natural_language_briefing.json")
+    with open(briefing_path, "w", encoding="utf-8") as f:
+        json.dump(briefing, f, indent=2, ensure_ascii=False)
+    print(f"[UI-MAPPER] Generated {briefing_path}")
+
+    # 3. Publish to docs/data/decision
     dest_dir = Path("docs/data/decision")
     dest_dir.mkdir(parents=True, exist_ok=True)
 

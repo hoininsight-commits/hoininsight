@@ -54,8 +54,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+    const [unitsDict, briefingDict, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
         loadJson('interpretation_units.json', true),
+        loadJson('natural_language_briefing.json'),
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
         loadJson('mentionables.json'),
@@ -63,129 +64,115 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadJson('content_pack.json')
     ]);
 
-    // units are now a DICT, so we might need a way to find the latest/first.
-    // Usually engine renders top-1. We expect interpretation_units to have at least one.
     const unitKeys = Object.keys(unitsDict);
     if (unitKeys.length === 0) {
-        document.getElementById('issue-hook').innerText = "오늘의 분석 결과가 없습니다.";
+        document.getElementById('issue-hook').innerText = "오늘은 확정된 구조적 판단이 없습니다.";
         return;
     }
 
-    // Pick Top-1 Unit (Assuming natural sort or first key if not specified)
-    // For now, take the first one available.
+    // Pick Top-1 Unit
     const unitId = unitKeys[0];
     const topUnit = unitsDict[unitId];
-    const unitDecision = decision ? (decision[unitId] || decision[topUnit.topic_id]) : null;
-    const finalDecision = unitDecision || { speakability_flag: 'HOLD', speakability_reasons: ['No decision data'] };
-    const unitSkeleton = skeleton ? (skeleton[unitId] || skeleton[topUnit.topic_id]) : null;
+    const briefing = briefingDict ? briefingDict[unitId] : null;
 
     // 2. Render Header & Global Status
     document.getElementById('current-date').innerText = topUnit.as_of_date || new Date().toISOString().split('T')[0];
     const globalStatus = document.getElementById('global-status-badge');
-    const flag = finalDecision.speakability_flag;
-    const mode = topUnit.mode || 'STRUCTURAL';
+    const flag = decision[unitId]?.speakability_flag || 'HOLD';
 
-    if (mode === 'HYPOTHESIS_JUMP') {
-        globalStatus.innerText = '🟡 HYPOTHESIS';
-        globalStatus.className = 'badge hypothesis';
-    } else {
-        globalStatus.innerText = flag === 'READY' ? '🟢 READY' : '🔴 HOLD';
-        globalStatus.className = `badge ${flag.toLowerCase()}`;
+    globalStatus.innerText = flag === 'READY' ? '🟢 READY' : '🔴 HOLD';
+    globalStatus.className = `badge ${flag.toLowerCase()}`;
+
+    // 3. Render [BLOCK 0] Hero Sentence
+    if (briefing) {
+        document.getElementById('issue-hook').innerHTML = `
+            <div>${briefing.hero.sentence}</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">${briefing.hero.metric}</div>
+        `;
     }
 
-    // 3. Render Core Issue (Skeleton-based)
-    if (unitSkeleton) {
-        document.getElementById('issue-hook').innerText = unitSkeleton.hook;
-        document.getElementById('issue-why-now').innerText = `[왜 지금인가] ${topUnit.why_now_type || '구조적 변곡점 포착'}: ${topUnit.structural_narrative}`;
-    }
+    // 4. Render [BLOCK 1] Speakability
+    if (briefing) {
+        document.getElementById('speakability-badge').innerText = flag;
+        document.getElementById('speakability-badge').className = `badge ${flag.toLowerCase()}`;
 
-    // 4. Render Speakability & Guide
-    const speakBadge = document.getElementById('speakability-badge');
-    speakBadge.innerText = flag;
-    speakBadge.className = `badge ${flag.toLowerCase()}`;
-
-    const guideBox = document.getElementById('operator-guide');
-    let guideText = "";
-    if (mode === 'HYPOTHESIS_JUMP') {
-        guideText = "⚠️ 가설 모드: 확정적으로 말하지 말고 '가능성'과 '데이터 추적' 프레임으로 설명하세요.";
-    } else if (flag === 'READY') {
-        guideText = "✅ 바로 제작 가능: 강력한 근거가 확보되었습니다. 자신 있게 전달하세요.";
-    } else {
-        guideText = `⏸️ 대기(HOLD): ${finalDecision.speakability_reasons.join(', ')}`;
-    }
-    guideBox.innerHTML = `<p>${guideText}</p>`;
-
-    // 5. Render Logic Chain
-    const logicFlow = document.getElementById('logic-steps');
-    if (mode === 'HYPOTHESIS_JUMP' && topUnit.reasoning_chain) {
-        const rc = topUnit.reasoning_chain;
-        const steps = [
-            { label: '트리거', value: rc.trigger_event },
-            { label: '메커니즘', value: rc.mechanism },
-            { label: '수혜/영향', value: rc.beneficiaries.join(', ') }
-        ];
-        logicFlow.innerHTML = steps.map(s => `
-            <div class="logic-item">
-                <span class="tag-badge">${s.label}</span>
-                <span>${s.value}</span>
+        const bDec = briefing.decision;
+        document.getElementById('operator-guide').innerHTML = `
+            <div style="font-weight: 800; margin-bottom: 12px; font-size: 1.1rem;">${bDec.title}</div>
+            <div style="font-size: 0.95rem; line-height: 1.6;">
+                ${bDec.points.map(p => `<div>${p}</div>`).join('')}
             </div>
-        `).join('');
-    } else if (unitSkeleton && unitSkeleton.evidence_3) {
-        logicFlow.innerHTML = unitSkeleton.evidence_3.map(ev => `
-            <div class="logic-item">
-                <span>${ev}</span>
+        `;
+    }
+
+    // 5. Render [BLOCK 2] Why Now (Logic Chain)
+    if (briefing) {
+        const bWhy = briefing.why_now;
+        document.getElementById('logic-steps').innerHTML = `
+            <div style="margin-top: 10px;">
+                ${bWhy.items.map((item, idx) => `
+                    <div style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                        <span style="font-weight: 800; color: var(--accent-blue); margin-right: 10px;">${idx + 1}️⃣</span>
+                        <span style="font-size: 0.95rem;">${item}</span>
+                    </div>
+                `).join('')}
             </div>
+        `;
+    }
+
+    // 6. Render [BLOCK 3] Perspectives (Mentionables)
+    if (briefing) {
+        const bPersp = briefing.perspectives;
+        document.getElementById('mention-cards').innerHTML = `
+            <div class="card-large" style="width: 100%; box-sizing: border-box; background: var(--card-bg);">
+                <div style="font-weight: 800; margin-bottom: 15px; color: var(--status-ready);">${bPersp.title}</div>
+                ${bPersp.items.map(item => `
+                    <div style="margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: center;">
+                        <span style="color: var(--accent-blue); margin-right: 8px;">•</span>
+                        <span>${item}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 7. Render [BLOCK 4] Trust (Evidence List)
+    if (briefing) {
+        const bTrust = briefing.trust;
+        document.getElementById('evidence-list').innerHTML = `
+            <div class="card" style="width: 100%; box-sizing: border-box; border-left: 4px solid var(--status-ready);">
+                <div style="font-weight: 800; margin-bottom: 15px;">${bTrust.title}</div>
+                ${bTrust.items.map(item => `
+                    <div style="margin-bottom: 8px; font-size: 0.9rem;">
+                        ${item}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 8. Render [BLOCK 5] Checklist
+    if (briefing) {
+        const bCheck = briefing.checklist;
+        document.getElementById('checklist-items').innerHTML = bCheck.items.map(item => `
+            <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                <span style="margin-right: 10px;">☑</span>
+                <span>${item}</span>
+            </li>
         `).join('');
     }
 
-    // 6. Render Mentionables
-    const mentionGrid = document.getElementById('mention-cards');
-    const unitMentions = mentionables ? (mentionables[unitId] || mentionables[topUnit.topic_id]) : null;
-    if (unitMentions) {
-        const items = unitMentions.mentionable_items || [];
-        mentionGrid.innerHTML = items.map(m => `
-            <div class="mention-card">
-                <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 4px;">${m.name}</div>
-                <div style="font-size: 0.9rem; color: var(--text-secondary);">${m.reason_to_mention}</div>
-            </div>
-        `).join('');
-    }
-
-    // 7. Render Content Packs
-    const packContainer = document.getElementById('pack-container');
+    // 9. Content Packs (Existing logic but simplified)
     const unitPacks = packs ? (packs[unitId] || packs[topUnit.topic_id]) : null;
     if (unitPacks) {
-        // If it's a list under the keyed item
         const pList = unitPacks.packs || [unitPacks];
-        packContainer.innerHTML = pList.map(p => `
+        document.getElementById('pack-container').innerHTML = pList.map(p => `
             <div class="pack-card">
                 <div>
                     <span class="tag-badge">${p.format}</span>
                     <span style="font-weight: bold;">${p.title}</span>
                 </div>
-                <div style="font-size: 0.85rem; color: var(--accent-blue);">내용 포함됨 &gt;</div>
             </div>
-        `).join('');
-    }
-
-    // 8. Render Evidence
-    const evidenceGrid = document.getElementById('evidence-list');
-    const unitEvidence = evidence ? (evidence[unitId] || evidence[topUnit.topic_id]) : null;
-    if (unitEvidence) {
-        const refs = unitEvidence.citations || [];
-        evidenceGrid.innerHTML = refs.map(r => `
-            <div class="mention-card" style="font-size: 0.85rem;">
-                <div style="color: var(--status-ready); font-weight: bold; margin-bottom: 4px;">${r.source_name}</div>
-                <div>${r.content_snippet.substring(0, 50)}...</div>
-            </div>
-        `).join('');
-    }
-
-    // 9. Render Checklist
-    const checklistUl = document.getElementById('checklist-items');
-    if (unitSkeleton && unitSkeleton.checklist_3) {
-        checklistUl.innerHTML = unitSkeleton.checklist_3.map(c => `
-            <li style="margin-left: 20px; margin-bottom: 8px;">${c}</li>
         `).join('');
     }
 });
