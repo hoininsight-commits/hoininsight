@@ -39,3 +39,12 @@ groups:
     candidates:
       - { market: "NYSE", code: "GOLD", name: "Barrick Gold", role: "HEDGE" }
       - { market: "KRX", code: "001440", name: "대한전선", role: "HEDGE" }
+
+  - group_id: LABOR_SHIFT_PHYSICAL_AI
+    triggers:
+      - tag: LABOR_SHIFT_LAYER
+        contains: ["Labor Shift", "Wage Premium", "Blue Collar", "Datacenter Capex"]
+    candidates:
+      - { market: "KRX", code: "006400", name: "Samsung SDI", role: "POWER_STORAGE", why_must: "datacenter build-out requires ESS/Power; bottleneck is battery" }
+      - { market: "KRX", code: "010120", name: "LS ELECTRIC", role: "GRID_INFRA", why_must: "grid interconnection & transformer bottleneck; lead-time is long" }
+      - { market: "NYSE", code: "VRT", name: "Vertiv Holdings", role: "COOLING", why_must: "high-density compute requires liquid cooling; bottleneck is thermal" }

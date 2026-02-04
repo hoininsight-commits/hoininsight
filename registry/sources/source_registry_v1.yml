@@ -29,3 +29,25 @@ rules:
         url: "https://dart.fss.or.kr/"
         date: "2026-02-03"
         note: "실적/가이던스 원문"
+
+  - match:
+      evidence_tag: LABOR_SHIFT_LAYER
+      contains_any: ["실업률", "임금", "직업훈련", "데이터센터", "CAPEX", "구조조정", "AI 고용"]
+    sources:
+      - source_type: OFFICIAL_DB
+        title: "FRED Labor Market Data (US)"
+        url: "https://fred.stlouisfed.org/"
+        date: "Daily Update"
+        note: "IS-95-x: Unemployment by Education, Youth, Wage Premiums"
+
+      - source_type: OFFICIAL_DB
+        title: "FRED Construction Spending (US)"
+        url: "https://fred.stlouisfed.org/"
+        date: "Monthly Update"
+        note: "IS-95-x: Datacenter/Office Construction Proxies"
+
+      - source_type: NEWS_AGGREGATOR
+        title: "Tech Layoff Tracker (Placeholder)"
+        url: "https://layoffs.fyi/"
+        date: "Daily Update"
+        note: "IS-95-x: AI-driven White Collar Layoffs"

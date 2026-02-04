@@ -71,5 +71,25 @@
       "hypothesis_source_trust": "A"
     },
     "source_ref": {}
+  },
+  {
+    "interpretation_id": "IS-96-20260204-LABOR",
+    "as_of_date": "2026-02-04",
+    "target_sector": "PHYSICAL_AI_INFRA",
+    "interpretation_key": "LABOR_MARKET_SHIFT",
+    "confidence_score": 0.5,
+    "evidence_tags": [],
+    "structural_narrative": "AI Industrialization driving labor shift (Blue collar premium / White collar freeze).",
+    "derived_metrics_snapshot": {},
+    "hypothesis_jump": {
+      "status": "HOLD",
+      "trigger_reason": "Insufficient signals (<2)",
+      "independent_sources_count": 0
+    },
+    "why_now": [],
+    "risk": [
+      "Capex Slowdown",
+      "Regulation"
+    ]
   }
 ]
