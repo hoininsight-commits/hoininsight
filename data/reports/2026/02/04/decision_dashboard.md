@@ -191,22 +191,31 @@
 | AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보 | Structural implication: 'AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스 | Structural implication: '다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
-| [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 | Structural implication: '[특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| ‘워시 쇼크’에 코스피 5,000선 붕괴…사이드카 발동 - KBS 뉴스 | Structural implication: '‘워시 쇼크’에 코스피 5,000선 붕괴…사이드카 발동 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| KT·KAI·현대차 등 86개 기업 참여 민·관·군 협력 ‘저궤도위성통신산업協’ 출범…“우주패권 시대 대비” - 문화일보 | Structural implication: 'KT·KAI·현대차 등 86개 기업 참여 민·관·군 협력 ‘저궤도위성통신산업協’ 출범…“우주패권 시대 대비” - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| [조간브리핑]머스크 “연 100만기 위성” 구상···AI 데이터센터 경쟁, 우주로 확장 - 헬로디디 | Structural implication: '[조간브리핑]머스크 “연 100만기 위성” 구상···AI 데이터센터 경쟁, 우주로 확장 - 헬로디디' suggests a shift in NEWS dynamics. | LOW |
+| 마트에서 인간형 로봇 판매…휴머노이드 ‘성큼’ - KBS 뉴스 | Structural implication: '마트에서 인간형 로봇 판매…휴머노이드 ‘성큼’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 정부 “코스피 급락은 단기 차익 실현 영향…실물경제·금융시장 견조” - 한겨레 | Structural implication: '정부 “코스피 급락은 단기 차익 실현 영향…실물경제·금융시장 견조” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문 | Structural implication: '조달청, 공공조달 전면 ‘AI 대전환’...AI 제품 발굴부터 판로·행정까지 전 과정 혁신 - 인공지능신문' suggests a shift in NEWS dynamics. | LOW |
 | [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 | Structural implication: '[기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
-| 젠슨 황 "AI 칩 경쟁 과열…사업 환경 더 어려워질 것" - 한국무역협회-KITA.NET | Structural implication: '젠슨 황 "AI 칩 경쟁 과열…사업 환경 더 어려워질 것" - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
 | "1월 노란우산 가입 소상공인 2만5천여명…1년 전보다 41% 늘어" - 연합뉴스 | Structural implication: '"1월 노란우산 가입 소상공인 2만5천여명…1년 전보다 41% 늘어" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 삼성중공업, 중동 AM 시장 공략…카타르 조선소와 MOU - 지디넷코리아 | Structural implication: '삼성중공업, 중동 AM 시장 공략…카타르 조선소와 MOU - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 정부, 녹색전환 전략 수립 본격화 - 축산신문 | Structural implication: '정부, 녹색전환 전략 수립 본격화 - 축산신문' suggests a shift in NEWS dynamics. | LOW |
-| 도쿄일렉트론, 세미콘코리아 최대 규모로 참가…반도체 '시작의 시작' 경험 제공 - 전기신문 | Structural implication: '도쿄일렉트론, 세미콘코리아 최대 규모로 참가…반도체 '시작의 시작' 경험 제공 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
+| 삼성중공업, 카타르 국영 조선소와 손잡고 중동 사업 확대 - 문화일보 | Structural implication: '삼성중공업, 카타르 국영 조선소와 손잡고 중동 사업 확대 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | '빅쇼트' 마이클 버리 "비트코인 급락, 기관들 금·은 '강제투매' 유발" - 연합인포맥스 | Structural implication: ''빅쇼트' 마이클 버리 "비트코인 급락, 기관들 금·은 '강제투매' 유발" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| [스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스 | Structural implication: '[스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 정부, 녹색전환 전략 수립 본격화 - 축산신문 | Structural implication: '정부, 녹색전환 전략 수립 본격화 - 축산신문' suggests a shift in NEWS dynamics. | LOW |
+| 도쿄일렉트론, 세미콘코리아 최대 규모로 참가…반도체 '시작의 시작' 경험 제공 - 전기신문 | Structural implication: '도쿄일렉트론, 세미콘코리아 최대 규모로 참가…반도체 '시작의 시작' 경험 제공 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
+| 한국유씨비제약, 드라벳 증후군 치료제 ‘핀테플라’ 허가 기자간담회 개최 - 의사신문 | Structural implication: '한국유씨비제약, 드라벳 증후군 치료제 ‘핀테플라’ 허가 기자간담회 개최 - 의사신문' suggests a shift in NEWS dynamics. | LOW |
 | 노보노디스크, 내년 매출 감소 '충격 경고'에 주가 13% 폭락 - 마켓인 | Structural implication: '노보노디스크, 내년 매출 감소 '충격 경고'에 주가 13% 폭락 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보 | Structural implication: 'KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| “국밥 하나에 깍두기 리필하면 적자”… 고물가에 자영업자들 ‘추가 반찬 유료화’ 논란 - 조선일보 | Structural implication: '“국밥 하나에 깍두기 리필하면 적자”… 고물가에 자영업자들 ‘추가 반찬 유료화’ 논란 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | ‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily | Structural implication: '‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily' suggests a shift in NEWS dynamics. | LOW |
-| [단독] ‘수퍼 을’ 된 삼성 메모리... 엔비디아 “공급 당겨달라” 부탁 - 조선일보 | Structural implication: '[단독] ‘수퍼 을’ 된 삼성 메모리... 엔비디아 “공급 당겨달라” 부탁 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| “앞으로 다른 데서 드시라”…회전초밥 집서 출입금지 당했다는 손님 | Structural implication: '“앞으로 다른 데서 드시라”…회전초밥 집서 출입금지 당했다는 손님' suggests a shift in NEWS dynamics. | LOW |
+| 미트박스글로벌, 작년 매출액 1356억원…전년대비 22.9%↑ | Structural implication: '미트박스글로벌, 작년 매출액 1356억원…전년대비 22.9%↑' suggests a shift in NEWS dynamics. | LOW |
+| “수직터널 기술 고도화”…DL이앤씨, 국내 유일 최첨단 굴착 ‘RBM 공법’ 실적 | Structural implication: '“수직터널 기술 고도화”…DL이앤씨, 국내 유일 최첨단 굴착 ‘RBM 공법’ 실적' suggests a shift in NEWS dynamics. | LOW |
+| igniteXL, “K-뷰티, Let’s Go Global”…‘K-Beauty to Global’ 연다 | Structural implication: 'igniteXL, “K-뷰티, Let’s Go Global”…‘K-Beauty to Global’ 연다' suggests a shift in NEWS dynamics. | LOW |
+| 엔비디아도 인텔도 “메모리 부족” 아우성…‘26만전자·140만닉스’ 빈 말 아니네 | Structural implication: '엔비디아도 인텔도 “메모리 부족” 아우성…‘26만전자·140만닉스’ 빈 말 아니네' suggests a shift in NEWS dynamics. | LOW |
+| 오늘도 종이컵에 커피 한 잔? 15분 지나면 ‘플라스틱 수프’ 마시는 셈 | Structural implication: '오늘도 종이컵에 커피 한 잔? 15분 지나면 ‘플라스틱 수프’ 마시는 셈' suggests a shift in NEWS dynamics. | LOW |
+| “밸런타인데이에 장미꽃 대신 어때요?”…스타벅스 ‘붉은 로즈 초콜릿’ 출시 | Structural implication: '“밸런타인데이에 장미꽃 대신 어때요?”…스타벅스 ‘붉은 로즈 초콜릿’ 출시' suggests a shift in NEWS dynamics. | LOW |
+| ‘옹벽붕괴 사망사고’ 중대재해 혐의…경찰, 이권재 오산시장 압수수색 | Structural implication: '‘옹벽붕괴 사망사고’ 중대재해 혐의…경찰, 이권재 오산시장 압수수색' suggests a shift in NEWS dynamics. | LOW |
+| 교통안전도시 인천, 수치로 입증됐다 | Structural implication: '교통안전도시 인천, 수치로 입증됐다' suggests a shift in NEWS dynamics. | LOW |
 | 에이티넘인베스트먼트, 신기천·이승용·맹두진 3인 각자대표 체제 출범 | Structural implication: '에이티넘인베스트먼트, 신기천·이승용·맹두진 3인 각자대표 체제 출범' suggests a shift in NEWS dynamics. | LOW |
 | 민주당 디지털자산TF안 사실상 ‘포기’‥금융위 ‘은행 중심·지분 규제’ 원안대로 강행 | Structural implication: '민주당 디지털자산TF안 사실상 ‘포기’‥금융위 ‘은행 중심·지분 규제’ 원안대로 강행' suggests a shift in NEWS dynamics. | LOW |
 | AI 기반 식품 제조 풀릭스, ‘풀릭스 허브’ MAU 5만명 돌파 | Structural implication: 'AI 기반 식품 제조 풀릭스, ‘풀릭스 허브’ MAU 5만명 돌파' suggests a shift in NEWS dynamics. | LOW |
@@ -218,15 +227,6 @@
 | 프랑스 검찰, 파리의 머스크 사무실 압수수색 | Structural implication: '프랑스 검찰, 파리의 머스크 사무실 압수수색' suggests a shift in NEWS dynamics. | LOW |
 | 정청래, 혁신당과의 합당 논란에 “전 당원 지켜보는 생중계 토론회 열 것” | Structural implication: '정청래, 혁신당과의 합당 논란에 “전 당원 지켜보는 생중계 토론회 열 것”' suggests a shift in NEWS dynamics. | LOW |
 | 3m 넘는 폭설 내린 일본…30명 숨지고 물류 대란났다 | Structural implication: '3m 넘는 폭설 내린 일본…30명 숨지고 물류 대란났다' suggests a shift in NEWS dynamics. | LOW |
-| “법카 반납·소득세 납부”…김선호 1인 법인 논란에 사과[전문] | Structural implication: '“법카 반납·소득세 납부”…김선호 1인 법인 논란에 사과[전문]' suggests a shift in NEWS dynamics. | LOW |
-| “아빠한테 성폭행 당했다고 말해”...신도 상대로 가스라이팅 한 장로 ‘무죄’ | Structural implication: '“아빠한테 성폭행 당했다고 말해”...신도 상대로 가스라이팅 한 장로 ‘무죄’' suggests a shift in NEWS dynamics. | LOW |
-| 여한구 “美, 韓관세인상 관보 게시 부처간 협의중” | Structural implication: '여한구 “美, 韓관세인상 관보 게시 부처간 협의중”' suggests a shift in NEWS dynamics. | LOW |
-| 아기와 떠나는 첫 여행은 여기서…서울신라호텔 ‘베이비문 글로우’ | Structural implication: '아기와 떠나는 첫 여행은 여기서…서울신라호텔 ‘베이비문 글로우’' suggests a shift in NEWS dynamics. | LOW |
-| 수험생 67% “수능성적 기대이하”…상향지원 ‘승부수’는 늘었다 | Structural implication: '수험생 67% “수능성적 기대이하”…상향지원 ‘승부수’는 늘었다' suggests a shift in NEWS dynamics. | LOW |
-| ‘안양역 센트럴 아이파크 수자인’, 1순위 최고 경쟁률 182대 1 | Structural implication: '‘안양역 센트럴 아이파크 수자인’, 1순위 최고 경쟁률 182대 1' suggests a shift in NEWS dynamics. | LOW |
-| “봄 인테리어, 킨텍스서 보세요”LX하우시스, 코리아빌드위크 참가 | Structural implication: '“봄 인테리어, 킨텍스서 보세요”LX하우시스, 코리아빌드위크 참가' suggests a shift in NEWS dynamics. | LOW |
-| 시장 눈높이 못 맞춘 호텔신라…증권사 목표주가도 ‘뚝’[매경 자이앤트] | Structural implication: '시장 눈높이 못 맞춘 호텔신라…증권사 목표주가도 ‘뚝’[매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
-| 대우건설 “가덕도신공항 부지조성공사 수행에 문제없다” | Structural implication: '대우건설 “가덕도신공항 부지조성공사 수행에 문제없다”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
