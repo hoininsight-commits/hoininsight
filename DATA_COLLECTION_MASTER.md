@@ -318,3 +318,21 @@ v1.9 (IS-95-1) Economic Hunter Observation Layer: Policy/Index/Flow/Pretext/Earn
 ---
 
 **IS-95-1 ADDON STATEMENT**: 본 확장은 '경제사냥꾼' 수준의 통찰을 위한 관측 레이어 추가 작업으로, 기존 엔진의 이상징후 탐지 및 판단 로직을 수정하거나 삭제하지 않는다. 모든 신규 데이터는 독립적 시그널로서 IS-96 이후의 해석 레이어에서 참조용으로만 활용된다.
+
+---
+
+## ⑳ IS-95-x LABOUR SHIFT LAYER (AI Industrialization → Labor Market Shift)
+
+**VERSION**: v1.9-extension (2026-02-04)
+**NOTE**: Observation layer for AI-driven labor market transformation.
+
+| 카테고리 | 수집 데이터 | 수집처 | 방식 | 무료 여부 | 상태 | WHY | 최적 수집 주기 | 파생 여부 | Tag |
+|---|---|---|---|---|---|---|---|---|---|
+| Labor | 학력별 실업률 격차 (대졸 vs 고졸/초대졸) | FRED | API | Free | READY | AI 화이트컬러 대체 압력 측정 | 1개월 | 수집데이터 | LABOR_SHIFT_LAYER |
+| Labor | 청년층(20-24) 고용률/실업률 | FRED | API | Free | READY | 진입 단계 노동시장 병목 감지 | 1개월 | 수집데이터 | LABOR_SHIFT_LAYER |
+| Labor | 직업별 임금 상승률 (건설/기술직 vs 사무직) | FRED | API | Free | READY | 블루컬러 프리미엄(Body-Sovereignty) 확인 | 1개월 | 수집데이터 | LABOR_SHIFT_LAYER |
+| Education | 커뮤니티 칼리지/직업훈련 등록률 | Stub/Manual | 파일 | Free | CANDIDATE | 교육 수요의 구조적 전환 포착 | 연/분기 | 수집데이터 | LABOR_SHIFT_LAYER |
+| Capex | 데이터센터/기술 하드웨어 건설 지출 | FRED | API | Free | READY | 물리적 인프라 투자 가속도 확인 | 1개월 | 수집데이터 | LABOR_SHIFT_LAYER |
+| Layoffs | AI 관련 화이트컬러 해고 발표 | News/Layoffs | API/Stub | Free | CANDIDATE | 구조적 실업의 선행 지표 | 이벤트 | 수집데이터 | LABOR_SHIFT_LAYER |
+
+**IS-95-x STATEMENT**: 본 레이어는 "AI 산업화가 노동시장에 미치는 구조적 변화"를 포착하기 위한 것으로, 기술적 실업과 물리적 노동 가치 상승의 디커플링을 데이터로 추적한다.
