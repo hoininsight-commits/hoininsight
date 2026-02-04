@@ -27,7 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 (ID: unknown)
+### 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,12 +102,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스 (ID: unknown)
+### [세미콘2026 프리뷰] 에바텍 "AI·HBM 겨냥 첨단 패키징 스퍼터 소개" - 디일렉 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문 (ID: unknown)
+### [스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

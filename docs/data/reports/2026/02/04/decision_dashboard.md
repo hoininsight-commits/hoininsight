@@ -190,7 +190,7 @@
 | 미 증시 약세에도, 코스피 하락 출발 후 상승세 전환 - 한겨레 | Structural implication: '미 증시 약세에도, 코스피 하락 출발 후 상승세 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스 | Structural implication: '비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹 | Structural implication: '"배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
+| 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | [3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티 | Structural implication: '[3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 | Structural implication: '일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net | Structural implication: '“제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
@@ -205,8 +205,8 @@
 | 이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레 | Structural implication: '이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [알쓸정책] 모든 국민이 대중교통비 환급 혜택…'모두의 카드' 전국 이용 가능 - 헬로티 | Structural implication: '[알쓸정책] 모든 국민이 대중교통비 환급 혜택…'모두의 카드' 전국 이용 가능 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | 정부, '국가 농업AX플랫폼' 추진…AI로 농업 생태계 전환 속도 - 한국무역협회-KITA.NET | Structural implication: '정부, '국가 농업AX플랫폼' 추진…AI로 농업 생태계 전환 속도 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
+| [세미콘2026 프리뷰] 에바텍 "AI·HBM 겨냥 첨단 패키징 스퍼터 소개" - 디일렉 | Structural implication: '[세미콘2026 프리뷰] 에바텍 "AI·HBM 겨냥 첨단 패키징 스퍼터 소개" - 디일렉' suggests a shift in NEWS dynamics. | LOW |
 | [스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스 | Structural implication: '[스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문 | Structural implication: '조달청, "AI 제품 발굴, 숨은 규제 해소, 기업 책임·의무 강화로 혁신성장 견인!" - 인공지능신문' suggests a shift in NEWS dynamics. | LOW |
 | “신데렐라가 현실로”…전 세계 1위 ‘브리저튼4’ 주인공, 손숙 외손녀였다 | Structural implication: '“신데렐라가 현실로”…전 세계 1위 ‘브리저튼4’ 주인공, 손숙 외손녀였다' suggests a shift in NEWS dynamics. | LOW |
 | ‘땅콩 회항’ 박창진 전 대한항공 사무장, 한국공항공사 자회사 임원 되나 | Structural implication: '‘땅콩 회항’ 박창진 전 대한항공 사무장, 한국공항공사 자회사 임원 되나' suggests a shift in NEWS dynamics. | LOW |
 | 명절 끝나면 더 피곤하다? 리캉스 떠나세요 | Structural implication: '명절 끝나면 더 피곤하다? 리캉스 떠나세요' suggests a shift in NEWS dynamics. | LOW |
