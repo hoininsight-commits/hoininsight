@@ -83,8 +83,8 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 (Google_News_KR_Economy)
+  - [NEWS] 삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레 (Google_News_KR_Economy)
   - [NEWS] 스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인 (Google_News_KR_Economy)
 
 
@@ -187,8 +187,8 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 | Structural implication: '미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보 | Structural implication: '삼성전자 시총 1000조원 돌파…국내 기업으론 사상 처음 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 | Structural implication: '코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레 | Structural implication: '삼성전자 시총 1000조 돌파…코스피 5371 사상 최고치 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인 | Structural implication: '스페이스X 업은 xAI, AI 챗봇 판도 흔드나 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | "16억짜리 집, 피만 33억을 줬는데...다들 싸게 잘 샀대요" [경매뚝딱] - v.daum.net | Structural implication: '"16억짜리 집, 피만 33억을 줬는데...다들 싸게 잘 샀대요" [경매뚝딱] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 다크웹·가상자산 뒤에 숨은 마약범죄, 과학기술로 추적한다 - 대한민국 정책브리핑 | Structural implication: '다크웹·가상자산 뒤에 숨은 마약범죄, 과학기술로 추적한다 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
@@ -200,17 +200,22 @@
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne | Structural implication: 'FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne' suggests a shift in NEWS dynamics. | LOW |
 | [AI픽] 국산 AI 반도체 공공 분야서 판로 확보 물꼬 튼다 - 연합뉴스 | Structural implication: '[AI픽] 국산 AI 반도체 공공 분야서 판로 확보 물꼬 튼다 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인 등 가상자산, 일주일새 시총 680조원 증발 - 마켓인 | Structural implication: '비트코인 등 가상자산, 일주일새 시총 680조원 증발 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | "국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아 | Structural implication: '"국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문 | Structural implication: '대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문' suggests a shift in NEWS dynamics. | LOW |
-| 홍준표 "1세대 1주택 제한하고 다주택은 모두 법인만 소유해야" - 경기일보 | Structural implication: '홍준표 "1세대 1주택 제한하고 다주택은 모두 법인만 소유해야" - 경기일보' suggests a shift in NEWS dynamics. | LOW |
 | “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 | Structural implication: '“4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보 | Structural implication: 'KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 선거 코앞인데 집값 안 꺾이니… 다시 등장한 ‘다주택자 때리기’ - 조선일보 | Structural implication: '선거 코앞인데 집값 안 꺾이니… 다시 등장한 ‘다주택자 때리기’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 60조 '캐나다 잠수함' 수주전에 韓 국회도 '지원 사격' - 한국경제 | Structural implication: '60조 '캐나다 잠수함' 수주전에 韓 국회도 '지원 사격' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 화이자 "사활", '1개월' GLP-1 비만 첫 윤곽 '의구심..' - 바이오스펙테이터 | Structural implication: '화이자 "사활", '1개월' GLP-1 비만 첫 윤곽 '의구심..' - 바이오스펙테이터' suggests a shift in NEWS dynamics. | LOW |
+| [매일경제TV] 강단에 선 메달리스트 기보배 | Structural implication: '[매일경제TV] 강단에 선 메달리스트 기보배' suggests a shift in NEWS dynamics. | LOW |
+| 젊은 작가들, 고정관념을 비틀다 | Structural implication: '젊은 작가들, 고정관념을 비틀다' suggests a shift in NEWS dynamics. | LOW |
+| [MBN] 배우 정호근이 내림굿 받은 사연 | Structural implication: '[MBN] 배우 정호근이 내림굿 받은 사연' suggests a shift in NEWS dynamics. | LOW |
+| 인간이 아닌 '정보'가 된 사람들 … 임무 뒤에 남는 잔혹한 진실 | Structural implication: '인간이 아닌 '정보'가 된 사람들 … 임무 뒤에 남는 잔혹한 진실' suggests a shift in NEWS dynamics. | LOW |
+| 90세 거장 인발이 응시하는 죽음과 시대의 비극 | Structural implication: '90세 거장 인발이 응시하는 죽음과 시대의 비극' suggests a shift in NEWS dynamics. | LOW |
 | 후진기어 놓고 내린 20대, 차·벽 사이 끼여 숨져 | Structural implication: '후진기어 놓고 내린 20대, 차·벽 사이 끼여 숨져' suggests a shift in NEWS dynamics. | LOW |
 | 검찰, ‘MBK 홈플러스 사건’ 재배당…“수사·기소 분리” 취지 | Structural implication: '검찰, ‘MBK 홈플러스 사건’ 재배당…“수사·기소 분리” 취지' suggests a shift in NEWS dynamics. | LOW |
-| 대기업 유상증자로 주식발행액 55% ↑ | Structural implication: '대기업 유상증자로 주식발행액 55% ↑' suggests a shift in NEWS dynamics. | LOW |
 | 온라인 사교육 1위 메가스터디 매물로 | Structural implication: '온라인 사교육 1위 메가스터디 매물로' suggests a shift in NEWS dynamics. | LOW |
+| 대기업 유상증자로 주식발행액 55% ↑ | Structural implication: '대기업 유상증자로 주식발행액 55% ↑' suggests a shift in NEWS dynamics. | LOW |
 | 교육부 “전문대서 지역 AI인재 키운다” | Structural implication: '교육부 “전문대서 지역 AI인재 키운다”' suggests a shift in NEWS dynamics. | LOW |
 | 김수환 나눔정신, 14년째 이어가는 두산 | Structural implication: '김수환 나눔정신, 14년째 이어가는 두산' suggests a shift in NEWS dynamics. | LOW |
 | 제5회 신준식 장학생 자생한방병원 12명 선발 | Structural implication: '제5회 신준식 장학생 자생한방병원 12명 선발' suggests a shift in NEWS dynamics. | LOW |
@@ -220,13 +225,8 @@
 | [포] 미래서울 전시관 | Structural implication: '[포] 미래서울 전시관' suggests a shift in NEWS dynamics. | LOW |
 | 김윤덕 "과천 교통 문제 TF 만들 것" | Structural implication: '김윤덕 "과천 교통 문제 TF 만들 것"' suggests a shift in NEWS dynamics. | LOW |
 | 與 부동산감독원 법안발의 이상거래 특별수사도 가능 | Structural implication: '與 부동산감독원 법안발의 이상거래 특별수사도 가능' suggests a shift in NEWS dynamics. | LOW |
-| 1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리 | Structural implication: '1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리' suggests a shift in NEWS dynamics. | LOW |
 | '압구정 현대' 매물 한달새 60% 급증 | Structural implication: ''압구정 현대' 매물 한달새 60% 급증' suggests a shift in NEWS dynamics. | LOW |
-| 오늘의 운세 2026년 2월 5일 木(음력 12월 18일) | Structural implication: '오늘의 운세 2026년 2월 5일 木(음력 12월 18일)' suggests a shift in NEWS dynamics. | LOW |
-| (주)코오롱 흑자 전환...코오롱모빌리티 수입차 판매 호조 | Structural implication: '(주)코오롱 흑자 전환...코오롱모빌리티 수입차 판매 호조' suggests a shift in NEWS dynamics. | LOW |
-| 김길리 금 빛 질주…캐나다 업체가 전망한 밀라노 대회 한국 순위는? | Structural implication: '김길리 금 빛 질주…캐나다 업체가 전망한 밀라노 대회 한국 순위는?' suggests a shift in NEWS dynamics. | LOW |
-| HS효성더클래스, 오송·방배 서비스센터 오픈 1주년 캠페인 실시 | Structural implication: 'HS효성더클래스, 오송·방배 서비스센터 오픈 1주년 캠페인 실시' suggests a shift in NEWS dynamics. | LOW |
-| 교제는 맞지만…하정우 7월 결혼설에 “확정 아냐” | Structural implication: '교제는 맞지만…하정우 7월 결혼설에 “확정 아냐”' suggests a shift in NEWS dynamics. | LOW |
+| 1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리 | Structural implication: '1기 신도시 재건축 속도 격차 분당은 질주…일산은 제자리' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
