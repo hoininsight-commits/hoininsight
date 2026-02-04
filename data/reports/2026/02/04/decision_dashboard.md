@@ -84,8 +84,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 (Google_News_KR_Economy)
-  - [NEWS] 뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - yna.co.kr (Google_News_KR_Economy)
   - [NEWS] 비트코인 끝내 죽음의 소용돌이(death spiral) 끔찍한 재앙...블룸버그 - 글로벌이코노믹 (Google_News_KR_Economy)
+  - [NEWS] 뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - 연합뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -188,25 +188,25 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 | Structural implication: '“4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - yna.co.kr | Structural implication: '뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 끝내 죽음의 소용돌이(death spiral) 끔찍한 재앙...블룸버그 - 글로벌이코노믹 | Structural implication: '비트코인 끝내 죽음의 소용돌이(death spiral) 끔찍한 재앙...블룸버그 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| 수칫 제인 다쏘시스템 "AI 에이전트 간 충돌 막아야…아키텍처 구축 중" - 지디넷코리아 | Structural implication: '수칫 제인 다쏘시스템 "AI 에이전트 간 충돌 막아야…아키텍처 구축 중" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - 연합뉴스 | Structural implication: '뉴욕증시, AI 우려에 기술주 약세 지속…나스닥 1.5%↓(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 알파벳 분기매출, 전망치 넘긴 166조원…올해 AI투자는 두배로↑ - KBS 뉴스 | Structural implication: '알파벳 분기매출, 전망치 넘긴 166조원…올해 AI투자는 두배로↑ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 수출 다변화·지역 균형 병행 필요…新기술 지원 강화해야 - 조선비즈 - Chosunbiz | Structural implication: '수출 다변화·지역 균형 병행 필요…新기술 지원 강화해야 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 핵심 광물 회의 참석 50여개국, 트럼프의 클럽 제안엔 ‘미지근’ - 경향신문 | Structural implication: '핵심 광물 회의 참석 50여개국, 트럼프의 클럽 제안엔 ‘미지근’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 수칫 제인 다쏘시스템 "AI 에이전트 간 충돌 막아야…아키텍처 구축 중" - 지디넷코리아 | Structural implication: '수칫 제인 다쏘시스템 "AI 에이전트 간 충돌 막아야…아키텍처 구축 중" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 약가인하 악재에도 뛴다! 유나이티드 이유있는 자신감 - 의협신문 | Structural implication: '약가인하 악재에도 뛴다! 유나이티드 이유있는 자신감 - 의협신문' suggests a shift in NEWS dynamics. | LOW |
 | ‘빚투’ 사상 첫 30조원 돌파…증권사, 줄줄이 대출 문 걸어 잠근다 - v.daum.net | Structural implication: '‘빚투’ 사상 첫 30조원 돌파…증권사, 줄줄이 대출 문 걸어 잠근다 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | [단독]‘쉬었음’ 청년 작년 71만명… 대졸 등 고학력 이상이 절반, 3년새 9%P 늘어 - 동아일보 | Structural implication: '[단독]‘쉬었음’ 청년 작년 71만명… 대졸 등 고학력 이상이 절반, 3년새 9%P 늘어 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 코스피, 장중·종가 사상 최고치 경신…5370선 마감 - 인더스트리뉴스 | Structural implication: '코스피, 장중·종가 사상 최고치 경신…5370선 마감 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 농업AX플랫폼 주도할 민간사업자 공모 - 농민신문 | Structural implication: '농업AX플랫폼 주도할 민간사업자 공모 - 농민신문' suggests a shift in NEWS dynamics. | LOW |
+| “3년 내 현장 적용 가능”… AI 농업로봇 보급 확산 위한 정책 방향 논의 - 인더스트리뉴스 | Structural implication: '“3년 내 현장 적용 가능”… AI 농업로봇 보급 확산 위한 정책 방향 논의 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 | Structural implication: '코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 국산 AI 반도체 공공 조달 '물꼬'…팹리스·공공기관 협력 - 지디넷코리아 | Structural implication: '정부, 국산 AI 반도체 공공 조달 '물꼬'…팹리스·공공기관 협력 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne | Structural implication: 'FKCCI 규제 업데이트 - 한국, AI 규제 분야에서 세계 최초의 이정표 수립 - Chambre de Commerce et d'Industrie franco-coréenne' suggests a shift in NEWS dynamics. | LOW |
 | "지금 팔면 세금 2억6000만원, 개정 뒤 팔면 6억8000만원" - JTBC | Structural implication: '"지금 팔면 세금 2억6000만원, 개정 뒤 팔면 6억8000만원" - JTBC' suggests a shift in NEWS dynamics. | LOW |
 | 급락했던 금값 급반등···“2008년 11월 이후 최대 일일 상승률” - 경향신문 | Structural implication: '급락했던 금값 급반등···“2008년 11월 이후 최대 일일 상승률” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 | Structural implication: '일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| "국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아 | Structural implication: '"국내 가상자산거래소만 묶이면 해외업체만 웃는다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 김윤덕 국토장관 “재초환·토허제 완화 검토한 적 없다” - 조선일보 | Structural implication: '김윤덕 국토장관 “재초환·토허제 완화 검토한 적 없다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보 | Structural implication: '머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 민주당 디지털자산TF안 사실상 ‘포기’‥금융위 ‘은행 중심·지분 규제’ 원안대로 강행 - 매일경제 | Structural implication: '민주당 디지털자산TF안 사실상 ‘포기’‥금융위 ‘은행 중심·지분 규제’ 원안대로 강행 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론 | Structural implication: '파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문 | Structural implication: '대우건설 "가덕신공항 공사 문제없다…기술력·경험·실적 보유" - 국제신문' suggests a shift in NEWS dynamics. | LOW |
 | 아직도 40% 추가상승 여력 있다는데…삼전·닉스 질주에 반도체 ETF도 ‘대박’ | Structural implication: '아직도 40% 추가상승 여력 있다는데…삼전·닉스 질주에 반도체 ETF도 ‘대박’' suggests a shift in NEWS dynamics. | LOW |
 | “한화오션, 특수선 투자로 몸값 쑥”…목표가↑ | Structural implication: '“한화오션, 특수선 투자로 몸값 쑥”…목표가↑' suggests a shift in NEWS dynamics. | LOW |
 | “왜 무명가수 때문에 우나” 멕시코 방송서 BTS 폄하 논란 | Structural implication: '“왜 무명가수 때문에 우나” 멕시코 방송서 BTS 폄하 논란' suggests a shift in NEWS dynamics. | LOW |
