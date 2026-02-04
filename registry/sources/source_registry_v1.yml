@@ -51,3 +51,19 @@ rules:
         url: "https://layoffs.fyi/"
         date: "Daily Update"
         note: "IS-95-x: AI-driven White Collar Layoffs"
+
+  - match:
+      evidence_tag: PRICE_MECHANISM_LAYER
+      contains_any: ["Contract Price", "Spot Price", "Backlog", "Lead Time", "Allocation"]
+    sources:
+      - source_type: INDUSTRY_DATA
+        title: "Semi/Power Price Spreads (Proxy)"
+        url: "Internal Logic"
+        date: "Real-time"
+        note: "IS-95-4: Spot vs Contract divergence"
+
+      - source_type: INDUSTRY_DATA
+        title: "Order Backlog & Utilization"
+        url: "Internal Logic"
+        date: "Quarterly"
+        note: "IS-95-4: Capacity constraints"

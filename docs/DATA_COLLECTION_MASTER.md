@@ -336,3 +336,19 @@ v1.9 (IS-95-1) Economic Hunter Observation Layer: Policy/Index/Flow/Pretext/Earn
 | Layoffs | AI 관련 화이트컬러 해고 발표 | News/Layoffs | API/Stub | Free | CANDIDATE | 구조적 실업의 선행 지표 | 이벤트 | 수집데이터 | LABOR_SHIFT_LAYER |
 
 **IS-95-x STATEMENT**: 본 레이어는 "AI 산업화가 노동시장에 미치는 구조적 변화"를 포착하기 위한 것으로, 기술적 실업과 물리적 노동 가치 상승의 디커플링을 데이터로 추적한다.
+
+---
+
+## ㉑ IS-95-4 PRICE MECHANISM LAYER (Structural Pricing Power & Rigidity)
+
+**VERSION**: v1.10 (2026-02-04)
+**NOTE**: Detects structural pricing power transfer, NOT short-term inflation.
+
+| 카테고리 | 수집 데이터 | 수집처 | 방식 | 무료 여부 | 상태 | WHY | 최적 수집 주기 | 파생 여부 | Tag |
+|---|---|---|---|---|---|---|---|---|---|
+| Price | Spot vs Contract Price Spread | Industry Data | Proxy | Free | READY | 단기 수급이 장기 계약에 미치는 영향 (Rigidity) | 1일/주 | 수집데이터 | PRICE_MECHANISM_LAYER |
+| Market | Order Backlog & Utilization | Industry Data | Proxy | Free | READY | 생산 능력 한계 및 매도자 우위(Sold-out) 확인 | 분기 | 수집데이터 | PRICE_MECHANISM_LAYER |
+| Structure | Buyer Dependency Index | Internal Logic | Proxy | Free | READY | 매수자의 대체 불가능성(Lock-in) 정량화 | 이벤트 | 수집데이터 | PRICE_MECHANISM_LAYER |
+| Structure | Allocation Flag (Shortage) | News/Report | Stub | Free | CANDIDATE | 공급자 우위 극대화 시그널 (배정 판매) | 이벤트 | 수집데이터 | PRICE_MECHANISM_LAYER |
+
+**IS-95-4 STATEMENT**: 본 레이어는 가격 상승의 원인을 "수요 견인"이 아닌 "구조적 결정권(Pricing Power) 이동"에서 찾는다. 공급 비탄력성과 구매자의 의존도를 측정하여 가격 하락이 불가능한 구조(Rigidity)를 탐지한다.

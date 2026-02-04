@@ -49,6 +49,9 @@ class NarrativeSkeletonBuilder:
         elif mode == "HYPOTHESIS_JUMP":
             hook = f"[HYPOTHESIS] 지금은 '확정'이 아니라 '가능성'이다. {sector} 섹터의 {unit.get('reasoning_chain', {}).get('trigger_event', '새로운 시그널')}을 진단합니다."
             claim = f"결정론적 가설: {unit.get('structural_narrative', '변화 가능성이 포착되었습니다.')}"
+        elif key == "PRICE_MECHANISM_SHIFT":
+            hook = f"{prefix}가격이 오른 이유는 수요가 아니라 '결정권(Pricing Power)'이 {sector} 공급자에게 넘어갔기 때문입니다."
+            claim = "This market is no longer price-sensitive. (Structural Rigidity Confirmed)"
         else:
             hook = f"{prefix}{sector} 섹터에서 포착된 {key} 시그널의 실체를 확인합니다."
             claim = f"{unit.get('structural_narrative', '구조적 변화가 감지되었습니다.')}"
@@ -60,6 +63,10 @@ class NarrativeSkeletonBuilder:
             evidence.append(f"트리거: {chain.get('trigger_event', '카탈리스트 포착')}")
             evidence.append(f"메커니즘: {chain.get('mechanism', '수급 이동 경로 분석 중')}")
             evidence.append(f"수혜 주체: {', '.join(chain.get('beneficiaries', []))}")
+        elif key == "PRICE_MECHANISM_SHIFT":
+             evidence.append(f"가격 경직성(Rigidity) 점수: {metrics.get('rigidity_score', 0)}")
+             evidence.append(f"수주 잔고(Backlog) {metrics.get('backlog_years', 0)}년 이상 (Allocation Market)")
+             evidence.append(f"Inelasticity Score: {metrics.get('inelasticity_score', 0)}")
         else:
             evidence.append(f"명분 점수(Pretext) {metrics.get('pretext_score', 0.0)}로 구조적 타당성 확보")
             evidence.append(f"주요 데이터 태그 정렬: {', '.join(tags[:3])}")
@@ -68,6 +75,12 @@ class NarrativeSkeletonBuilder:
         # 3. CHECKLIST_3
         if mode == "HYPOTHESIS_JUMP":
             checklist = unit.get("reasoning_chain", {}).get("verification_checklist", [])
+        elif key == "PRICE_MECHANISM_SHIFT":
+            checklist = [
+                "Contract Price가 Spot Price를 후행적으로 따라가는지 확인 (Spread 축소)",
+                "Lead Time이 12개월 이상 유지되는지 모니터링",
+                "경쟁사의 증설 발표(CAPEX Cycle) 지연 여부 체크"
+            ]
         else:
             checklist = [
                 f"{tags[0] if len(tags)>0 else 'POLICY'} 후속 집행 데이터 업데이트 확인",
