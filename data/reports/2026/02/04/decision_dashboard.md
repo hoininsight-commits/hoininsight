@@ -191,10 +191,11 @@
 | 비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스 | Structural implication: '비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹 | Structural implication: '"배 만들 사람이 없다"…美, 韓·日 이어 튀르키예에도 'SOS' 타전 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | 젠슨 황 엔비디아 CEO "전력망 현대화, 피지컬 AI 시대 핵심" - 지디넷코리아 | Structural implication: '젠슨 황 엔비디아 CEO "전력망 현대화, 피지컬 AI 시대 핵심" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제 | Structural implication: '11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스 | Structural implication: '"주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | [3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티 | Structural implication: '[3DXW 2026] ‘가상 동반자’ 위해 현실 동반자 만났다...'제조 AI 동맹' 다쏘시스템-엔비디아 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
-| [조간브리핑]머스크 “연 100만기 위성” 구상···AI 데이터센터 경쟁, 우주로 확장 - 헬로디디 | Structural implication: '[조간브리핑]머스크 “연 100만기 위성” 구상···AI 데이터센터 경쟁, 우주로 확장 - 헬로디디' suggests a shift in NEWS dynamics. | LOW |
+| [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 | Structural implication: '[특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | “제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net | Structural implication: '“제발 전셋집 좀 찾아주세요”...전셋값 치솟는 이 동네 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 공공구매력 활용해 AI 키운다…조달행정에도 'AI 접목' - 노컷뉴스 | Structural implication: '정부, 공공구매력 활용해 AI 키운다…조달행정에도 'AI 접목' - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 | Structural implication: '[기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
@@ -206,7 +207,8 @@
 | 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 정책브리핑 | Structural implication: '전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 플리어시스템코리아, 세미콘 코리아 2026서 반도체 공정 이미징 솔루션 공개 - 헬로티 | Structural implication: '플리어시스템코리아, 세미콘 코리아 2026서 반도체 공정 이미징 솔루션 공개 - 헬로티' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레 | Structural implication: '이 대통령 “미운 사람만 고발하는 공정위 전속고발권 폐지해야” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 몬덜리즈 인터내셔널, 시간외 4%↑…호실적에도 가이던스 '실망' - 마켓인 | Structural implication: '몬덜리즈 인터내셔널, 시간외 4%↑…호실적에도 가이던스 '실망' - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| TK단체장 출마 후보자들 ‘출사표’ 던진 장소부터 차별화…의미 짚어보니 | Structural implication: 'TK단체장 출마 후보자들 ‘출사표’ 던진 장소부터 차별화…의미 짚어보니' suggests a shift in NEWS dynamics. | LOW |
+| 1월 말 외환보유액 4259.1억달러…환율 관리로 두 달째 감소세 | Structural implication: '1월 말 외환보유액 4259.1억달러…환율 관리로 두 달째 감소세' suggests a shift in NEWS dynamics. | LOW |
 | 붉은 등불이 수놓는 화려한 설날…말레이시아로 특별한 겨울 여행 | Structural implication: '붉은 등불이 수놓는 화려한 설날…말레이시아로 특별한 겨울 여행' suggests a shift in NEWS dynamics. | LOW |
 | “헌혈하면 ‘보문산 메아리’ 드려요”…‘두쫀쿠’ 이어 성심당 빵 주는 ‘이곳’ | Structural implication: '“헌혈하면 ‘보문산 메아리’ 드려요”…‘두쫀쿠’ 이어 성심당 빵 주는 ‘이곳’' suggests a shift in NEWS dynamics. | LOW |
 | 포스코그룹, 제철소 물류에 휴머노이드 로봇 투입 | Structural implication: '포스코그룹, 제철소 물류에 휴머노이드 로봇 투입' suggests a shift in NEWS dynamics. | LOW |
@@ -225,8 +227,6 @@
 | ‘200억 탈세 의혹’ 차은우, 청담 장어집은 무관?…판타지오 “우리 자회사” | Structural implication: '‘200억 탈세 의혹’ 차은우, 청담 장어집은 무관?…판타지오 “우리 자회사”' suggests a shift in NEWS dynamics. | LOW |
 | LG유플러스, 설 앞두고 중소 협력사에 납품대금 250억 조기 지급 | Structural implication: 'LG유플러스, 설 앞두고 중소 협력사에 납품대금 250억 조기 지급' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 장동혁 “이 대통령에게 다시 영수회담 요청…허비할 시간 없다” | Structural implication: '[속보] 장동혁 “이 대통령에게 다시 영수회담 요청…허비할 시간 없다”' suggests a shift in NEWS dynamics. | LOW |
-| NH농협카드, 교육비 자동납부시 쿠폰 지급한다 | Structural implication: 'NH농협카드, 교육비 자동납부시 쿠폰 지급한다' suggests a shift in NEWS dynamics. | LOW |
-| “인생 짧은데 자는 시간 아까워서”...7시간 미만 수면, 수명 단축 부른다 | Structural implication: '“인생 짧은데 자는 시간 아까워서”...7시간 미만 수면, 수명 단축 부른다' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
