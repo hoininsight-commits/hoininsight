@@ -54,9 +54,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
+        loadJson('../ui/hero_summary.json'), // Prefer specialized summary IS-101-1
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
         loadJson('mentionables.json'),
@@ -78,13 +79,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. Render Header & Global Status
     document.getElementById('current-date').innerText = topUnit.as_of_date || new Date().toISOString().split('T')[0];
     const globalStatus = document.getElementById('global-status-badge');
-    const flag = decision[unitId]?.speakability_flag || 'HOLD';
+    const flag = heroSummary?.status || decision[unitId]?.speakability_flag || 'HOLD';
 
-    globalStatus.innerText = flag === 'READY' ? '🟢 READY' : '🔴 HOLD';
+    globalStatus.innerText = flag === 'READY' ? '🟢 READY' : (flag === 'HYPOTHESIS' ? '🟡 HYPOTHESIS' : '🔴 HOLD');
     globalStatus.className = `badge ${flag.toLowerCase()}`;
 
     // 3. Render [BLOCK 0] Hero Sentence
-    if (briefing) {
+    if (heroSummary) {
+        document.getElementById('issue-hook').innerHTML = `
+            <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 10px;">${heroSummary.headline}</div>
+            <div style="font-size: 1.1rem; border-left: 3px solid var(--accent-blue); padding-left: 15px; margin: 15px 0;">${heroSummary.one_liner}</div>
+        `;
+    } else if (briefing) {
         document.getElementById('issue-hook').innerHTML = `
             <div>${briefing.hero.sentence}</div>
             <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">${briefing.hero.metric}</div>
@@ -137,7 +143,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 7. Render [BLOCK 4] Trust (Evidence List)
-    if (briefing) {
+    if (heroSummary && heroSummary.numbers_with_evidence) {
+        document.getElementById('evidence-list').innerHTML = `
+            <div class="card" style="width: 100%; box-sizing: border-box; border-left: 4px solid var(--status-ready);">
+                <div style="font-weight: 800; margin-bottom: 15px;">📊 핵심 수치 및 근거</div>
+                ${heroSummary.numbers_with_evidence.map(item => `
+                    <div style="margin-bottom: 8px; font-size: 0.95rem;">
+                        ${item}
+                    </div>
+                `).join('')}
+                <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    🚨 리스크: ${heroSummary.risk_note}
+                </div>
+            </div>
+        `;
+    } else if (briefing) {
         const bTrust = briefing.trust;
         document.getElementById('evidence-list').innerHTML = `
             <div class="card" style="width: 100%; box-sizing: border-box; border-left: 4px solid var(--status-ready);">
