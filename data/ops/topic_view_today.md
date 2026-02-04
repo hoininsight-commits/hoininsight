@@ -17,7 +17,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보 (ID: unknown)
+### 삼성·SK, 낸드 마진율 역대 최대치 찍는다…"10년 간 없던 일" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 대만 찾은 젠슨 황, TSMC에 'SOS'…'1450조 만찬'의 비밀 [강경주의 테크X] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,12 +42,32 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [조간브리핑]머스크 “연 100만기 위성” 구상···AI 데이터센터 경쟁, 우주로 확장 - 헬로디디 (ID: unknown)
+### '아틀라스' 배 속엔 배터리‥피지컬AI 따라 'K-배터리' 뜬다 - v.daum.net (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "환율 방어에"...외환보유액 21.5억 달러 감소 - YTN (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 마트에서 인간형 로봇 판매…휴머노이드 ‘성큼’ - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “강북 미아동 월세가 340만원?”…강남 아파트의 배로 뛰었다는데 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,11 +82,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [기자수첩] '세계 최초' 그늘에 가려진 'AI 기본법' - 프라임경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "1월 노란우산 가입 소상공인 2만5천여명…1년 전보다 41% 늘어" - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -67,12 +92,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### '빅쇼트' 마이클 버리 "비트코인 급락, 기관들 금·은 '강제투매' 유발" - 연합인포맥스 (ID: unknown)
+### 비트코인 7만3천달러로 급락…트럼프發 '상승분' 모두 반납(상보) - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,7 +102,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 도쿄일렉트론, 세미콘코리아 최대 규모로 참가…반도체 '시작의 시작' 경험 제공 - 전기신문 (ID: unknown)
+### 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,24 +112,39 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 노보노디스크, 내년 매출 감소 '충격 경고'에 주가 13% 폭락 - 마켓인 (ID: unknown)
+### 첫 교섭단체 대표연설 나선 장동혁…“한국 리노베이션 TF 제안” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### KS 인증 65년 만에 전면 개편···고의로 불량 제품 만들면 ‘인증 취소’, 인증 도용까지 정부 조사 확대 - 조선일보 (ID: unknown)
+### “30년 냉면집·15년 도장가게, 도전하세요” 백년소상공인 300곳 신규 모집 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “국밥 하나에 깍두기 리필하면 적자”… 고물가에 자영업자들 ‘추가 반찬 유료화’ 논란 - 조선일보 (ID: unknown)
+### “골프 불황 속에서도 웃었다” 매출 18% 성장한 성문안CC 비결 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘상표권’ 출원과 ‘저작권’ 등록을 동시에!.. 2026 해외 저작권 등록·출원 지원 사업 - IPDaily (ID: unknown)
+### 유한양행, 창립 100주년 맞아 사료 수집 캠페인 진행 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [단독] 이마트24, 쿠팡이츠에 입점…편의점 퀵커머스 경쟁 심화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “2만5천원 내고 과자 180봉 쌓았어요”…과자 탑 인증샷 찍고 결국 ‘당근 거래’? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 인천시, ‘미세먼지 없는 도시’ 한발 앞으로 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “앞으로 다른 데서 드시라”…회전초밥 집서 출입금지 당했다는 손님 (ID: unknown)
@@ -152,7 +187,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 교통안전도시 인천, 수치로 입증됐다 (ID: unknown)
+### 교통안전도시 인천시, 수치로 입증됐다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -173,41 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 다크웹 숨바꼭질 끝... 가상자산·마약 광고 실시간 추적한다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ㈜에스티빌더, 美 실리콘밸리 뉴멘벤처스와 전략적 업무 협약 체결 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 한국타이어, 북미서 포뮬러E·TGL 연계 브랜드 마케팅 박차 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 인프라 과부하 무시한 물량 공세…‘출퇴근 고통’까지 분양하나 [기자24시] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “AI 시대 고성과 조직개발을 논하다”…코칭경영원 2026 서울 비즈니스 코칭 포럼 성료 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 프랑스 검찰, 파리의 머스크 사무실 압수수색 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 정청래, 혁신당과의 합당 논란에 “전 당원 지켜보는 생중계 토론회 열 것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 3m 넘는 폭설 내린 일본…30명 숨지고 물류 대란났다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
