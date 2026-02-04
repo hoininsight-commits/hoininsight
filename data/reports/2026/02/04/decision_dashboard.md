@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아 (Google_News_KR_Economy)
+  - [NEWS] 미 증시 약세에도, 코스피 하락 출발 후 상승세 전환 - 한겨레 (Google_News_KR_Economy)
   - [NEWS] 1월 말 외환보유액 4천259억달러…환율 관리에 두달째 감소 - 한국무역협회-KITA.NET (Google_News_KR_Economy)
+  - [NEWS] AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,11 +187,9 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레 | Structural implication: '미 증시 약세에도, 코스피 하락 출발 뒤 장중 5300 돌파 상승세 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아 | Structural implication: '비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 미 증시 약세에도, 코스피 하락 출발 후 상승세 전환 - 한겨레 | Structural implication: '미 증시 약세에도, 코스피 하락 출발 후 상승세 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 1월 말 외환보유액 4천259억달러…환율 관리에 두달째 감소 - 한국무역협회-KITA.NET | Structural implication: '1월 말 외환보유액 4천259억달러…환율 관리에 두달째 감소 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제 | Structural implication: '11월엔 고작 13대 수출했다…美정부 차관세·전기차 보조금 철폐에 한국 ‘타격’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| "주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스 | Structural implication: '"주인 잘 때 뭉친다"…AI끼리 '뒷담화'하고 코딩 훈수까지(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보 | Structural implication: 'AI끼리 포커 치고 종교도 만들어… 채팅방이 ‘그들만의 천국’ 됐다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '올해 설날 역대 최대 910억 원 지원, 선물세트 최대 50% 할인! - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스 | Structural implication: '다쏘시스템, 엔비디아와 버추얼트윈 구동하는 산업용 AI 플랫폼 구축 협력 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹 | Structural implication: '[특징주] 미래에셋벤처투자, 스페이스X-xAI 합병 소식에 '급등' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
@@ -207,6 +205,8 @@
 | 전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑 | Structural implication: '전국 229개 지방정부 모두가 참여하는 '모두의 카드(K-패스)' - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | [스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스 | Structural implication: '[스페셜리포트] AI를 품은 비전, 자율제조의 눈이 되다 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 노보노디스크, 내년 매출 감소 '충격 경고'에 주가 13% 폭락 - 마켓인 | Structural implication: '노보노디스크, 내년 매출 감소 '충격 경고'에 주가 13% 폭락 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아 | Structural implication: '비트코인, 한때 7만3천 달러 붕괴…증시 불안에 ‘동반 약세’ - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| [단독] ‘수퍼 을’ 된 삼성 메모리... 엔비디아 “공급 당겨달라” 부탁 - 조선일보 | Structural implication: '[단독] ‘수퍼 을’ 된 삼성 메모리... 엔비디아 “공급 당겨달라” 부탁 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | AI 기반 식품 제조 풀릭스, ‘풀릭스 허브’ MAU 5만명 돌파 | Structural implication: 'AI 기반 식품 제조 풀릭스, ‘풀릭스 허브’ MAU 5만명 돌파' suggests a shift in NEWS dynamics. | LOW |
 | 다크웹 숨바꼭질 끝... 가상자산·마약 광고 실시간 추적한다 | Structural implication: '다크웹 숨바꼭질 끝... 가상자산·마약 광고 실시간 추적한다' suggests a shift in NEWS dynamics. | LOW |
 | ㈜에스티빌더, 美 실리콘밸리 뉴멘벤처스와 전략적 업무 협약 체결 | Structural implication: '㈜에스티빌더, 美 실리콘밸리 뉴멘벤처스와 전략적 업무 협약 체결' suggests a shift in NEWS dynamics. | LOW |
