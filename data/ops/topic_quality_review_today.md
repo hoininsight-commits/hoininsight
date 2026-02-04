@@ -1,6 +1,6 @@
-# TOPIC QUALITY REVIEW (RUN_DATE: 2026-02-04)
+# TOPIC QUALITY REVIEW (RUN_DATE: 2026-02-05)
 
-## 오늘 시장의 핵심 혼란 포인트 (gate_49a96790b0)
+## 오늘 시장의 핵심 혼란 포인트 (gate_58b44cf6f0)
 - **Lane**: ANOMALY
 - **Review**:
   - Fact Anchor: WEAK
