@@ -2312,6 +2312,7 @@ def generate_dashboard(base_dir: Path):
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
                 <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
                 <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (금일)</div>
+                <div class="menu-item" style="font-weight: bold; color: #22c55e;" onclick="switchTab('ops-dashboard', this)">✅ 신규 운영 UI (IS-100)</div>
             </div>
         </div>
         
@@ -2361,6 +2362,10 @@ def generate_dashboard(base_dir: Path):
                     {ops_dashboard_html}
                 </div>
             </div>
+
+            <div id="tab-ops-dashboard" class="hidden">
+                <iframe src="./ui/index.html" style="width:100%; height:90vh; border:none; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05);"></iframe>
+            </div>
         </div>
 
         <!-- Detail Modal -->
@@ -2386,10 +2391,14 @@ def generate_dashboard(base_dir: Path):
                 el.classList.add('active');
                 
                 // Update Content
-                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report"];
-                tabs.forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
+                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report", "ops-dashboard"];
+                tabs.forEach(t => {
+                   const element = document.getElementById('tab-' + t);
+                   if(element) element.classList.add('hidden');
+                });
                 
-                document.getElementById('tab-' + tabName).classList.remove('hidden');
+                const target = document.getElementById('tab-' + tabName);
+                if(target) target.classList.remove('hidden');
             }}
             
             function openSignalDetail(id) {{
