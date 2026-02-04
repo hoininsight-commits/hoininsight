@@ -1,4 +1,4 @@
-# 📅 DAILY CONTENT PACK — 2026-02-03
+# 📅 DAILY CONTENT PACK — 2026-02-04
 
 ## 🎬 LONG FORM (1)
 - Title: TECH_INFRA_KOREA
@@ -17,7 +17,7 @@
 ## 🎞 SHORTS (4)
 ### SHORT #1
 - Hook: 님들, 지금 GENERAL_ALPHA 이슈에서 시장이 진짜 무서워하는 건 HYPOTHESIS_US_MA_RUMOR야. (해석 필요)
-- One-Line Claim: 이건 단기 뉴스가 아니라 구조 변화다. HYPOTHESIS_US_MA_RUMOR 조합이 근거다. (관찰 중)
+- One-Line Claim: 숫자가 확인됐다. 0.82가 핵심 증거다. (관찰 중)
 - Evidence Anchor: 트리거: SpaceX and xAI strategic merger confirmed (데이터 확인 필요)
 - CTA: 오늘 브리핑이 유익했다면 구독과 알림 설정 부탁드립니다.
 

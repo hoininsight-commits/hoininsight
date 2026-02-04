@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-05
+# 🧭 TODAY TOPIC VIEW - 2026-02-04
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -22,12 +22,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '앤트로픽 쇼크'로 글로벌 리걸·SW 시장 '흔들'… 한국 영향은? - 법률신문 (ID: unknown)
+### ‘AI 습격’에 SW 개발기업 주가 급락…”435조원 증발” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 알파벳, AI 클라우드 ‘폭발’에 4Q 호실적…시간외 2% 반등 - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독]‘쉬었음’ 청년 작년 71만명… 대졸 등 고학력 이상이 절반, 3년새 9%P 늘어 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,21 +112,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 롯데마트·홈플러스발 대형약국 확산…유통업체가 파고든 ‘약국’ - 약사공론 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “밥 먹다 나간 아들이 시신으로”…전수경 97세 부친, 가슴에 묻은 두 아들 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 꿈에서 힌트 얻어 문제 해결… ‘수면 공학’ 효과 입증 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
 ### “눈 씻고 찾아봐도 전세 갈 곳 없어요”…‘공공지원 민간임대주택’에 눈길 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
@@ -132,7 +122,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한화오션 주가 한방 더 남았다…“마스가 수혜에 20% 추가 상승 기대” [오늘 나온 보고서] (ID: unknown)
+### “올해 27% 오른 한화오션, 마스가 수혜에 20% 더 오를 것”[오늘 나온 보고서] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -208,6 +198,16 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “설연휴 일본 대신 한국가자” 중국관광객 몰려온다…카지노주 ‘잭팟’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “AI로 만든 애니는 퀄리티가 좀”...삼성이 만들면 조회수 200만 ‘고퀄’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 주가 2배 올라도 여전한 저평가 매력 건설기계株…문제는 옥상옥 지배구조 [매일 돈이 보이는 습관 M+] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
