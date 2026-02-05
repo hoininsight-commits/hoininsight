@@ -54,10 +54,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, hookData, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
-        loadJson('../ui/hero_summary.json'), // Prefer specialized summary IS-101-1
+        loadJson('../ui/hero_summary.json'),
+        loadJson('../ui/narrative_entry_hook.json'), // IS-101-2: Narrative Entry Hook
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
         loadJson('mentionables.json'),
@@ -75,6 +76,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const unitId = unitKeys[0];
     const topUnit = unitsDict[unitId];
     const briefing = briefingDict ? briefingDict[unitId] : null;
+
+    // 1.5 Render [BLOCK -1] Entry Hook (IS-101-2)
+    if (hookData && hookData.entry_sentence) {
+        const hookContainer = document.createElement('div');
+        hookContainer.id = 'narrative-hook';
+        hookContainer.style.background = 'linear-gradient(90deg, #FFD700 0%, #FFA500 100%)';
+        hookContainer.style.color = '#000';
+        hookContainer.style.padding = '15px 25px';
+        hookContainer.style.fontWeight = '900';
+        hookContainer.style.fontSize = '1.2rem';
+        hookContainer.style.textAlign = 'center';
+        hookContainer.style.borderRadius = '8px';
+        hookContainer.style.marginBottom = '25px';
+        hookContainer.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.3)';
+        hookData.confidence_level === 'HIGH' ? hookContainer.style.border = '2px solid #fff' : null;
+
+        hookContainer.innerText = `📢 ${hookData.entry_sentence}`;
+        document.getElementById('app').prepend(hookContainer);
+    }
 
     // 2. Render Header & Global Status
     document.getElementById('current-date').innerText = topUnit.as_of_date || new Date().toISOString().split('T')[0];
