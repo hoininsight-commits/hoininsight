@@ -54,11 +54,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, hookData, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
         loadJson('../ui/hero_summary.json'),
-        loadJson('../ui/narrative_entry_hook.json'), // IS-101-2: Narrative Entry Hook
+        loadJson('../ui/narrative_entry_hook.json'),
+        loadJson('../ui/upcoming_risk_topN.json'), // IS-102
+        loadJson('../ui/schedule_risk_calendar_180d.json'), // IS-102
         loadJson('speakability_decision.json'),
         loadJson('narrative_skeleton.json'),
         loadJson('mentionables.json'),
@@ -200,6 +202,60 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span>${item}</span>
             </li>
         `).join('');
+    }
+
+    // 8. Render [IS-102] Upcoming Risks & Calendar
+    if (topRisks && topRisks.items) {
+        const riskSection = document.createElement('section');
+        riskSection.className = 'section';
+        riskSection.innerHTML = `
+            <h2 class="section-title">📅 다가오는 90일 주요 리스크 (Top 7)</h2>
+            <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
+                ${topRisks.items.map(r => `
+                    <div class="card" style="border-top: 3px solid #FF4500;">
+                        <div style="font-weight: 800; color: #FF4500;">${r.date} | Rank ${r.rank}</div>
+                        <div style="font-size: 1.1rem; font-weight: 800; margin: 8px 0;">${r.title}</div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);">${r.one_liner}</div>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button id="toggle-calendar" class="badge" style="cursor: pointer; padding: 10px 20px; font-size: 0.9rem; width: 100%; text-align: center;">
+                    🗓️ 180일 전체 캘린더 보기/접기
+                </button>
+                <div id="calendar-full" style="display: none; margin-top: 15px; max-height: 400px; overflow-y: auto; background: var(--card-bg); padding: 20px; border-radius: 8px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                        <thead style="border-bottom: 2px solid var(--border);">
+                            <tr>
+                                <th style="padding: 10px; text-align: left;">날짜</th>
+                                <th style="padding: 10px; text-align: left;">지역</th>
+                                <th style="padding: 10px; text-align: left;">일정</th>
+                                <th style="padding: 10px; text-align: left;">영향</th>
+                                <th style="padding: 10px; text-align: right;">점수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${calendar180.items.map(i => `
+                                <tr style="border-bottom: 1px solid var(--border);">
+                                    <td style="padding: 10px;">${i.date}</td>
+                                    <td style="padding: 10px;"><span class="tag-badge">${i.region}</span></td>
+                                    <td style="padding: 10px; font-weight: 600;">${i.title}</td>
+                                    <td style="padding: 10px; font-size: 0.8rem;">${i.risk_mechanism}</td>
+                                    <td style="padding: 10px; text-align: right; color: var(--accent-blue);">${i.final_score}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+        document.getElementById('operator-view').insertBefore(riskSection, document.getElementById('evidence'));
+
+        document.getElementById('toggle-calendar').addEventListener('click', () => {
+            const cal = document.getElementById('calendar-full');
+            cal.style.display = cal.style.display === 'none' ? 'block' : 'none';
+        });
     }
 
     // 9. Content Packs (Existing logic but simplified)
