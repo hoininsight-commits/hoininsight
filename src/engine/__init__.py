@@ -630,6 +630,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"narrative_hook_layer: fail ({e})", file=sys.stderr)
 
+            # [IS-102] Schedule Risk Calendar (KR+Global)
+            try:
+                from src.ui.schedule_risk_calendar import ScheduleRiskCalendar
+                calendar_gen = ScheduleRiskCalendar(Path("."))
+                calendar_gen.run(run_ymd) # Using run_ymd from engine context
+                details_lines.append("risk_calendar_layer: ok")
+                print("risk_calendar_layer: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"risk_calendar_layer: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
