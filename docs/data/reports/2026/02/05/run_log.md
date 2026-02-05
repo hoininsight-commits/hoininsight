@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-02-05T09:57:44+09:00
-- finished_utc: 2026-02-05T09:58:32+09:00
+- started_utc: 2026-02-05T11:56:30+09:00
+- finished_utc: 2026-02-05T11:57:23+09:00
 - status: SUCCESS
 
 ## details
@@ -41,6 +41,7 @@ break_scenario_narrator: ok
 topic_exporter: ok
 hero_summary_layer: ok
 narrative_hook_layer: ok
+risk_calendar_layer: ok
 operational_dashboard: ok | data/reports/2026/02/05/operational_dashboard.md
 decision_dashboard: ok | data/reports/2026/02/05/decision_dashboard.md
 decision: ok
