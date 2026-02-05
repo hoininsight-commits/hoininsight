@@ -620,6 +620,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"hero_summary_layer: fail ({e})", file=sys.stderr)
 
+            # [IS-101-2] Narrative Entry Hook (Attention Layer)
+            try:
+                from src.ui.narrative_entry_hook_generator import NarrativeEntryHookGenerator
+                hook_gen = NarrativeEntryHookGenerator(Path("."))
+                hook_gen.run()
+                details_lines.append("narrative_hook_layer: ok")
+                print("narrative_hook_layer: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"narrative_hook_layer: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
