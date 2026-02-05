@@ -196,17 +196,17 @@
 | 원텍, 레이저-전기자극 융합 통증 치료기기 '엘리제' 국내 허가 - 히트뉴스 | Structural implication: '원텍, 레이저-전기자극 융합 통증 치료기기 '엘리제' 국내 허가 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
 | LGU+, 새해도 서비스매출 2% 이상 성장 목표 - 지디넷코리아 | Structural implication: 'LGU+, 새해도 서비스매출 2% 이상 성장 목표 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “약 싸게 사려다 더 사고 더 위험해져”···서울 상륙한 ‘창고형 약국’, 안전장치는? - 경향신문 | Structural implication: '“약 싸게 사려다 더 사고 더 위험해져”···서울 상륙한 ‘창고형 약국’, 안전장치는? - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 세 번째 단식 농성 돌입한 홈플러스 노동자…“홈플러스를 살려달라” - v.daum.net | Structural implication: '세 번째 단식 농성 돌입한 홈플러스 노동자…“홈플러스를 살려달라” - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| ‘롤러코스피’, 5288 종가 최고치...5% 폭락 뒤 7% 급등 마감 - 한겨레 | Structural implication: '‘롤러코스피’, 5288 종가 최고치...5% 폭락 뒤 7% 급등 마감 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 | Structural implication: '일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| '홈플러스 사태' 해결 안 해도 손실 없다? 4.8조 담보 쥔 메리츠금융 - 땅집고 | Structural implication: ''홈플러스 사태' 해결 안 해도 손실 없다? 4.8조 담보 쥔 메리츠금융 - 땅집고' suggests a shift in NEWS dynamics. | LOW |
+| 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 | Structural implication: '코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보 | Structural implication: '머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론 | Structural implication: '파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 부동산 전문가의 경고 "양도세·보유세 올린다? 노무현·문재인 때와 똑같다" - 프레시안 | Structural implication: '부동산 전문가의 경고 "양도세·보유세 올린다? 노무현·문재인 때와 똑같다" - 프레시안' suggests a shift in NEWS dynamics. | LOW |
 | 일라이릴리, 비만치료제 덕에 4분기 어닝 서프라이즈…주가 9%↑ - 연합인포맥스 | Structural implication: '일라이릴리, 비만치료제 덕에 4분기 어닝 서프라이즈…주가 9%↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 다주택자, 부동산 시장 ‘태풍의 핵’이 되다 - KBS 뉴스 | Structural implication: '다주택자, 부동산 시장 ‘태풍의 핵’이 되다 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 반찬 리필, 공짜 사라지나?…사장도, 손님도 ‘갑론을박’ [잇슈 키워드] - KBS 뉴스 | Structural implication: '반찬 리필, 공짜 사라지나?…사장도, 손님도 ‘갑론을박’ [잇슈 키워드] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | “이제 집밖으로 나와라”…은둔 청년 사회·경제적 비용 年 5.3조 - 매일경제 | Structural implication: '“이제 집밖으로 나와라”…은둔 청년 사회·경제적 비용 年 5.3조 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문 | Structural implication: '대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 | Structural implication: '"노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제 | Structural implication: '“은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| K-패스, 내일부터 전국 어디서든 사용 가능 - KBS 뉴스 | Structural implication: 'K-패스, 내일부터 전국 어디서든 사용 가능 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 페어몬트 서울, 업계 최초 AI 기획한 칵테일 프로모션 출시 | Structural implication: '페어몬트 서울, 업계 최초 AI 기획한 칵테일 프로모션 출시' suggests a shift in NEWS dynamics. | LOW |
 | 최은순 씨 소유 80억원대 건물 공매 절차 돌입 | Structural implication: '최은순 씨 소유 80억원대 건물 공매 절차 돌입' suggests a shift in NEWS dynamics. | LOW |
 | 연 매출 210억…‘부산의 성심당’이라 불리는 동네 빵집의 전설 | Structural implication: '연 매출 210억…‘부산의 성심당’이라 불리는 동네 빵집의 전설' suggests a shift in NEWS dynamics. | LOW |

@@ -57,22 +57,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 세 번째 단식 농성 돌입한 홈플러스 노동자…“홈플러스를 살려달라” - v.daum.net (ID: unknown)
+### '홈플러스 사태' 해결 안 해도 손실 없다? 4.8조 담보 쥔 메리츠금융 - 땅집고 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘롤러코스피’, 5288 종가 최고치...5% 폭락 뒤 7% 급등 마감 - 한겨레 (ID: unknown)
+### 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 일론머스크 “예스” 한 마디에… 주가 25% 폭등한 한국 회사 - 조선일보 (ID: unknown)
+### 머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 부동산 전문가의 경고 "양도세·보유세 올린다? 노무현·문재인 때와 똑같다" - 프레시안 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,11 +92,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 반찬 리필, 공짜 사라지나?…사장도, 손님도 ‘갑론을박’ [잇슈 키워드] - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “이제 집밖으로 나와라”…은둔 청년 사회·경제적 비용 年 5.3조 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -102,12 +102,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제 (ID: unknown)
+### "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### K-패스, 내일부터 전국 어디서든 사용 가능 - KBS 뉴스 (ID: unknown)
+### “은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
