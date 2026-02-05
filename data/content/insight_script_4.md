@@ -11,7 +11,7 @@ Content Preset: STANDARD
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유
-- 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.44 >= 2.0. 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Z-Score -2.43 >= 2.0. 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## 3. 근거 데이터
 - 주요 지표: `index_kospi_stooq`

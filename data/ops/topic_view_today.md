@@ -32,6 +32,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 용산 한복판이 초상집으로…1만가구 닭장 아파트 예고에 근조화환 등장 - 땅집고 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 엔비디아, 다쏘시스템과 산업용 AI 아키텍처 공동 개발 나선다 - elec4 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -62,17 +67,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,7 +92,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 다주택자, 부동산 시장 ‘태풍의 핵’이 되다 - KBS 뉴스 (ID: unknown)
+### “코스피 7500 찍는다?”…JP모건 전망이 현실적인 이유 [잇슈 머니] - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -98,11 +103,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

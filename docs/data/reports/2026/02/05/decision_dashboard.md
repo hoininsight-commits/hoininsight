@@ -191,21 +191,21 @@
 | 계약서 검토해주는 AI 뜨자… 美 법무SW 등 시총 413조원 증발 - 동아일보 | Structural implication: '계약서 검토해주는 AI 뜨자… 美 법무SW 등 시총 413조원 증발 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 당정청 “온·오프라인 상생 방안 논의”…대형마트 ‘새벽배송’ 허용될까? - KBS 뉴스 | Structural implication: '당정청 “온·오프라인 상생 방안 논의”…대형마트 ‘새벽배송’ 허용될까? - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 2026년형 AI 무풍 에어컨 출시 - samsung.com | Structural implication: '삼성전자, 2026년형 AI 무풍 에어컨 출시 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
+| 용산 한복판이 초상집으로…1만가구 닭장 아파트 예고에 근조화환 등장 - 땅집고 | Structural implication: '용산 한복판이 초상집으로…1만가구 닭장 아파트 예고에 근조화환 등장 - 땅집고' suggests a shift in NEWS dynamics. | LOW |
 | 엔비디아, 다쏘시스템과 산업용 AI 아키텍처 공동 개발 나선다 - elec4 | Structural implication: '엔비디아, 다쏘시스템과 산업용 AI 아키텍처 공동 개발 나선다 - elec4' suggests a shift in NEWS dynamics. | LOW |
 | 美, 핵심광물무역블록 '포지이니셔티브' 출범…中희토류독점 대응 - 한국무역협회-KITA.NET | Structural implication: '美, 핵심광물무역블록 '포지이니셔티브' 출범…中희토류독점 대응 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
 | 원텍, 레이저-전기자극 융합 통증 치료기기 '엘리제' 국내 허가 - 히트뉴스 | Structural implication: '원텍, 레이저-전기자극 융합 통증 치료기기 '엘리제' 국내 허가 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
 | LGU+, 새해도 서비스매출 2% 이상 성장 목표 - 지디넷코리아 | Structural implication: 'LGU+, 새해도 서비스매출 2% 이상 성장 목표 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “약 싸게 사려다 더 사고 더 위험해져”···서울 상륙한 ‘창고형 약국’, 안전장치는? - 경향신문 | Structural implication: '“약 싸게 사려다 더 사고 더 위험해져”···서울 상륙한 ‘창고형 약국’, 안전장치는? - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | '홈플러스 사태' 해결 안 해도 손실 없다? 4.8조 담보 쥔 메리츠금융 - 땅집고 | Structural implication: ''홈플러스 사태' 해결 안 해도 손실 없다? 4.8조 담보 쥔 메리츠금융 - 땅집고' suggests a shift in NEWS dynamics. | LOW |
+| “4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제 | Structural implication: '“4년 유예 충분”…강남권·한강벨트 매물 증가, 다주택자 움직이나 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제 | Structural implication: '코스피, 종가 기준 사상 첫 5300선…'천조전자' 시대 열렸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보 | Structural implication: '머스크 “스페이스X-xAI 합병”… ‘우주 데이터센터 공룡’ 탄생 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론 | Structural implication: '파마리서치, 2025년 실적 역대 최대 연매출 5000억 돌파 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
 | 부동산 전문가의 경고 "양도세·보유세 올린다? 노무현·문재인 때와 똑같다" - 프레시안 | Structural implication: '부동산 전문가의 경고 "양도세·보유세 올린다? 노무현·문재인 때와 똑같다" - 프레시안' suggests a shift in NEWS dynamics. | LOW |
 | 일라이릴리, 비만치료제 덕에 4분기 어닝 서프라이즈…주가 9%↑ - 연합인포맥스 | Structural implication: '일라이릴리, 비만치료제 덕에 4분기 어닝 서프라이즈…주가 9%↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 다주택자, 부동산 시장 ‘태풍의 핵’이 되다 - KBS 뉴스 | Structural implication: '다주택자, 부동산 시장 ‘태풍의 핵’이 되다 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| “코스피 7500 찍는다?”…JP모건 전망이 현실적인 이유 [잇슈 머니] - KBS 뉴스 | Structural implication: '“코스피 7500 찍는다?”…JP모건 전망이 현실적인 이유 [잇슈 머니] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | “이제 집밖으로 나와라”…은둔 청년 사회·경제적 비용 年 5.3조 - 매일경제 | Structural implication: '“이제 집밖으로 나와라”…은둔 청년 사회·경제적 비용 年 5.3조 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문 | Structural implication: '대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 | Structural implication: '"노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제 | Structural implication: '“은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 암 속 ‘면역 사막’에 면역 오아시스를 만들다 | Structural implication: '암 속 ‘면역 사막’에 면역 오아시스를 만들다' suggests a shift in NEWS dynamics. | LOW |
 | “풉, 넌 성공했다면서 아직 벤츠?”…치욕 씻은 BMW, 테슬라 공세에 “우린 깐부” [세상만車] | Structural implication: '“풉, 넌 성공했다면서 아직 벤츠?”…치욕 씻은 BMW, 테슬라 공세에 “우린 깐부” [세상만車]' suggests a shift in NEWS dynamics. | LOW |
