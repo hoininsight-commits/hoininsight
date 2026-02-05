@@ -107,17 +107,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     globalStatus.className = `badge ${flag.toLowerCase()}`;
 
     // 3. Render [BLOCK 0] Hero Sentence
-    if (heroSummary) {
-        document.getElementById('issue-hook').innerHTML = `
-            <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 10px;">${heroSummary.headline}</div>
-            <div style="font-size: 1.1rem; border-left: 3px solid var(--accent-blue); padding-left: 15px; margin: 15px 0;">${heroSummary.one_liner}</div>
-        `;
-    } else if (briefing) {
-        document.getElementById('issue-hook').innerHTML = `
-            <div>${briefing.hero.sentence}</div>
-            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">${briefing.hero.metric}</div>
-        `;
+    // Diagnostic log for IS-100 [FIX]
+    console.log('[IS-100] Data Diagnostics:', {
+        heroSummary: {
+            hasData: !!heroSummary,
+            headline: heroSummary?.headline,
+            oneLiner: heroSummary?.one_liner
+        },
+        briefing: {
+            hasData: !!briefing,
+            sentence: briefing?.hero?.sentence
+        },
+        topUnit: {
+            hasData: !!topUnit,
+            id: topUnit?.interpretation_id,
+            theme: topUnit?.theme
+        }
+    });
+
+    let heroTitle = "";
+    let heroOneLiner = "";
+
+    if (heroSummary && heroSummary.headline && heroSummary.one_liner) {
+        heroTitle = heroSummary.headline;
+        heroOneLiner = heroSummary.one_liner;
+    } else if (briefing && briefing.hero && briefing.hero.sentence) {
+        heroTitle = briefing.hero.sentence;
+        heroOneLiner = briefing.hero.metric || "구조적 변화 신호 포착";
+    } else {
+        // Ultimate fallback: generate from topUnit (Decision logic)
+        const sector = topUnit.target_sector || "알 수 없는 섹터";
+        const theme = topUnit.theme || "구조적 변화";
+        heroTitle = `${sector} ${theme} 분석`;
+        heroOneLiner = "단순 뉴스가 아니라 구조 변화입니다.";
     }
+
+    // Ensure no 'undefined' reaches the innerHTML
+    heroTitle = heroTitle || "인사이트 데시보드";
+    heroOneLiner = heroOneLiner || "데이터 수집 및 분석 중입니다.";
+
+    document.getElementById('issue-hook').innerHTML = `
+        <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 10px;">${heroTitle}</div>
+        <div style="font-size: 1.1rem; border-left: 3px solid var(--accent-blue); padding-left: 15px; margin: 15px 0;">${heroOneLiner}</div>
+    `;
 
     // 4. Render [BLOCK 1] Speakability
     if (briefing) {
