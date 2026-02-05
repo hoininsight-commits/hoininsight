@@ -1,7 +1,7 @@
 {
-  "eb156691-e397-4b34-8701-d71d7a5e1357": {
-    "interpretation_id": "eb156691-e397-4b34-8701-d71d7a5e1357",
-    "as_of_date": "2026-02-03",
+  "bb57fa02-f8b1-468d-aaf9-11a8466185b6": {
+    "interpretation_id": "bb57fa02-f8b1-468d-aaf9-11a8466185b6",
+    "as_of_date": "2026-02-04",
     "target_sector": "TECH_INFRA_KOREA",
     "interpretation_key": "STRUCTURAL_ROUTE_FIXATION",
     "why_now_type": "Schedule-driven",
@@ -17,9 +17,9 @@
       "policy_commitment_score": 0.85
     }
   },
-  "d371aa99-d6d7-44eb-b7f0-0a8285f102ce": {
-    "interpretation_id": "d371aa99-d6d7-44eb-b7f0-0a8285f102ce",
-    "as_of_date": "2026-02-03",
+  "336c08d0-7914-4367-877f-e2dcc96be00a": {
+    "interpretation_id": "336c08d0-7914-4367-877f-e2dcc96be00a",
+    "as_of_date": "2026-02-04",
     "target_sector": "FINANCIAL_VALUE_UP",
     "interpretation_key": "FUNDAMENTAL_RE-RATING",
     "why_now_type": "State-driven",
@@ -36,7 +36,7 @@
   "HYP-fab88b81": {
     "interpretation_id": "HYP-fab88b81",
     "mode": "HYPOTHESIS_JUMP",
-    "as_of_date": "2026-02-03",
+    "as_of_date": "2026-02-04",
     "target_sector": "GENERAL_ALPHA",
     "interpretation_key": "HYPOTHESIS_US_MA_RUMOR",
     "why_now_type": "State-driven",
@@ -72,29 +72,9 @@
     },
     "source_ref": {}
   },
-  "IS-96-20260204-LABOR": {
-    "interpretation_id": "IS-96-20260204-LABOR",
-    "as_of_date": "2026-02-04",
-    "target_sector": "PHYSICAL_AI_INFRA",
-    "interpretation_key": "LABOR_MARKET_SHIFT",
-    "confidence_score": 0.5,
-    "evidence_tags": [],
-    "structural_narrative": "AI Industrialization driving labor shift (Blue collar premium / White collar freeze).",
-    "derived_metrics_snapshot": {},
-    "hypothesis_jump": {
-      "status": "HOLD",
-      "trigger_reason": "Insufficient signals (<2)",
-      "independent_sources_count": 0
-    },
-    "why_now": [],
-    "risk": [
-      "Capex Slowdown",
-      "Regulation"
-    ]
-  },
-  "IS-96-20260204-NVID-Open": {
-    "interpretation_id": "IS-96-20260204-NVID-Open",
-    "as_of_date": "2026-02-04",
+  "IS-96-20260205-NVID-Open": {
+    "interpretation_id": "IS-96-20260205-NVID-Open",
+    "as_of_date": "2026-02-05",
     "target_sector": "STRATEGIC_ALLIANCE",
     "interpretation_key": "RELATIONSHIP_BREAK_RISK",
     "theme": "RELATIONSHIP_BREAK_RISK",
