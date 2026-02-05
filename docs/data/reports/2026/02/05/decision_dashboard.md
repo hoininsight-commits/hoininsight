@@ -207,6 +207,8 @@
 | 대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문 | Structural implication: '대형 건설사 다 발빼고 남은 건 대우건설 달랑 1곳···가덕도신공항, 단독 계약 이뤄질까 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | "노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제 | Structural implication: '"노른자 공급한다면서 반포 조달청 왜 뺏나"…선택적 잣대 '지적' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제 | Structural implication: '“은행 지방점포, 함부로 없애지마”…정부, 결정적 족쇄 채운다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 암 속 ‘면역 사막’에 면역 오아시스를 만들다 | Structural implication: '암 속 ‘면역 사막’에 면역 오아시스를 만들다' suggests a shift in NEWS dynamics. | LOW |
+| “풉, 넌 성공했다면서 아직 벤츠?”…치욕 씻은 BMW, 테슬라 공세에 “우린 깐부” [세상만車] | Structural implication: '“풉, 넌 성공했다면서 아직 벤츠?”…치욕 씻은 BMW, 테슬라 공세에 “우린 깐부” [세상만車]' suggests a shift in NEWS dynamics. | LOW |
 | 페어몬트 서울, 업계 최초 AI 기획한 칵테일 프로모션 출시 | Structural implication: '페어몬트 서울, 업계 최초 AI 기획한 칵테일 프로모션 출시' suggests a shift in NEWS dynamics. | LOW |
 | 최은순 씨 소유 80억원대 건물 공매 절차 돌입 | Structural implication: '최은순 씨 소유 80억원대 건물 공매 절차 돌입' suggests a shift in NEWS dynamics. | LOW |
 | 연 매출 210억…‘부산의 성심당’이라 불리는 동네 빵집의 전설 | Structural implication: '연 매출 210억…‘부산의 성심당’이라 불리는 동네 빵집의 전설' suggests a shift in NEWS dynamics. | LOW |
@@ -220,13 +222,11 @@
 | 특수교육 졸업생 중 65% “월급 100만원도 못 받아요” | Structural implication: '특수교육 졸업생 중 65% “월급 100만원도 못 받아요”' suggests a shift in NEWS dynamics. | LOW |
 | 장동혁 ‘선거 연령 하향’…힘 보태는 안철수 “최소한 17세까지 확대를” | Structural implication: '장동혁 ‘선거 연령 하향’…힘 보태는 안철수 “최소한 17세까지 확대를”' suggests a shift in NEWS dynamics. | LOW |
 | CJ제일제당, ‘스팸 골드바 에디션’ 설맞이 재출시 | Structural implication: 'CJ제일제당, ‘스팸 골드바 에디션’ 설맞이 재출시' suggests a shift in NEWS dynamics. | LOW |
-| 中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어 | Structural implication: '中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어' suggests a shift in NEWS dynamics. | LOW |
 | “집값·연봉 다 오른 부장님, 아들은 왜이래?”…40대 소득 18% 뛸때 청년은 5% | Structural implication: '“집값·연봉 다 오른 부장님, 아들은 왜이래?”…40대 소득 18% 뛸때 청년은 5%' suggests a shift in NEWS dynamics. | LOW |
+| 中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어 | Structural implication: '中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어' suggests a shift in NEWS dynamics. | LOW |
 | “항균 기능성 신소재 ‘퓨로텍’ 아시나요”…LG전자, 아시아 시장 공략 속도 낸다 | Structural implication: '“항균 기능성 신소재 ‘퓨로텍’ 아시나요”…LG전자, 아시아 시장 공략 속도 낸다' suggests a shift in NEWS dynamics. | LOW |
 | ‘두쫀쿠’ 열풍 어디까지…메가MGC커피 ‘딸기 크림치즈 쫀득빵’ 누적 25만개 돌파 | Structural implication: '‘두쫀쿠’ 열풍 어디까지…메가MGC커피 ‘딸기 크림치즈 쫀득빵’ 누적 25만개 돌파' suggests a shift in NEWS dynamics. | LOW |
 | 캐나다서 ‘로빈후드’ 복장 사람들 식료품점 턴 이유는? | Structural implication: '캐나다서 ‘로빈후드’ 복장 사람들 식료품점 턴 이유는?' suggests a shift in NEWS dynamics. | LOW |
-| 저출생에도 키즈 소비는 성장 중…신세계百, 신학기 필수품 최대 40% 할인 | Structural implication: '저출생에도 키즈 소비는 성장 중…신세계百, 신학기 필수품 최대 40% 할인' suggests a shift in NEWS dynamics. | LOW |
-| “북유럽 여행이 이렇게 쉬웠어?” 환승 없는 직항 전세기 상품 뜬다 | Structural implication: '“북유럽 여행이 이렇게 쉬웠어?” 환승 없는 직항 전세기 상품 뜬다' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

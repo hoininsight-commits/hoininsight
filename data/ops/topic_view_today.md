@@ -112,6 +112,16 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 암 속 ‘면역 사막’에 면역 오아시스를 만들다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “풉, 넌 성공했다면서 아직 벤츠?”…치욕 씻은 BMW, 테슬라 공세에 “우린 깐부” [세상만車] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
 ### 페어몬트 서울, 업계 최초 AI 기획한 칵테일 프로모션 출시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
@@ -177,12 +187,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어 (ID: unknown)
+### “집값·연봉 다 오른 부장님, 아들은 왜이래?”…40대 소득 18% 뛸때 청년은 5% (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “집값·연봉 다 오른 부장님, 아들은 왜이래?”…40대 소득 18% 뛸때 청년은 5% (ID: unknown)
+### 中 트레이딩 업체, 은 가격 하락 베팅해 5억달러 벌어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -198,16 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 캐나다서 ‘로빈후드’ 복장 사람들 식료품점 턴 이유는? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 저출생에도 키즈 소비는 성장 중…신세계百, 신학기 필수품 최대 40% 할인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “북유럽 여행이 이렇게 쉬웠어?” 환승 없는 직항 전세기 상품 뜬다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
