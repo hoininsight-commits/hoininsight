@@ -28,12 +28,17 @@ function initLegacyReadonlyWrapper() {
     legacyContainer.prepend(banner);
 
     // Disable potential interactive elements in legacy content
-    const buttons = legacyContainer.querySelectorAll('button:not(.nav-back)');
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        btn.style.opacity = '0.5';
-        btn.style.cursor = 'not-allowed';
-        btn.title = "읽기 전용 모드에서는 비활성화됩니다.";
+    const interactiveElements = legacyContainer.querySelectorAll('button, a:not([href="#"]), input');
+    interactiveElements.forEach(el => {
+        if (el.tagName === 'BUTTON') {
+            el.disabled = true;
+            el.style.opacity = '0.5';
+            el.style.cursor = 'not-allowed';
+        } else {
+            el.style.pointerEvents = 'none';
+            el.style.opacity = '0.5';
+        }
+        el.title = "레거시 화면에서는 실행/수정할 수 없습니다. (읽기 전용)";
     });
 }
 
