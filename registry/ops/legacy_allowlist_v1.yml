@@ -1,0 +1,12 @@
+version: 1
+enabled: true
+allow:
+  - module: "src.ui.publish_ui_assets"
+    reason: "Docs publish path 아직 전환 중"
+    expires: "2026-03-15"
+  - module: "src.ui.render_helpers"
+    reason: "UI legacy helper 임시 유지"
+    expires: "2026-03-15"
+  - module: "src.ui.operator_main_contract"
+    reason: "테스트용 임시 허용"
+    expires: "2026-02-28"

@@ -1,5 +1,7 @@
 from pathlib import Path
 from src.ui_logic.contracts.publish_ui_assets import publish_assets
+from src.ui_logic.guards.legacy_report import write_report
+from src.ui_logic.guards.legacy_hard_report import generate_readiness_report
 
 def run_publish(project_root: Path = None):
     """
@@ -13,6 +15,10 @@ def run_publish(project_root: Path = None):
     
     # Delegate to the unified logic (which mirrors to data_outputs and docs/data)
     publish_assets(project_root)
+    
+    # Generate Legacy Usage & Hard Readiness Reports
+    write_report(project_root)
+    generate_readiness_report(project_root)
     
     print("[Canonical Publish] Completed. SSOT: data_outputs/")
 

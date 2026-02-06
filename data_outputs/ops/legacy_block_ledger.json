@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-06",
+  "hard_mode": true,
+  "blocked": [
+    {
+      "module": "src.ui.ui_decision_contract",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:47:47.018322"
+    }
+  ],
+  "allowed": [
+    {
+      "module": "src.ui.operator_main_contract",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
+      "reason": "ALLOWLIST_MATCH(테스트용 임시 허용)",
+      "ts": "2026-02-06T23:47:47.027439"
+    }
+  ]
+}
