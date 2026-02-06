@@ -7,6 +7,7 @@ def build_manifest_v2(project_root: Path):
     """
     Registry-driven Manifest Builder v2.
     Reads registry/ui_cards/ui_card_registry_v1.yml and generates data/ui/manifest.json.
+    Strictly follows the registry and favors contracts.
     """
     registry_path = project_root / "registry" / "ui_cards" / "ui_card_registry_v1.yml"
     if not registry_path.exists():
@@ -21,11 +22,18 @@ def build_manifest_v2(project_root: Path):
     # Sort by order
     sorted_cards = sorted(cards, key=lambda x: x.get("order", 999))
     
+    # [REF-003] Strict Registry Mapping
     assets = []
+    registered_keys = set()
+    
     for card in sorted_cards:
         asset_full_path = project_root / card["asset_path"]
         exists = asset_full_path.exists()
         
+        # If duplicated keys found in registry (shouldn't happen), first one wins
+        if card["key"] in registered_keys:
+            continue
+            
         assets.append({
             "key": card["key"],
             "title": card["title"],
@@ -35,11 +43,16 @@ def build_manifest_v2(project_root: Path):
             "order": card.get("order", 999),
             "exists": exists
         })
+        registered_keys.add(card["key"])
+
+    # [REF-003] Pruning: We only include what's in the registry. 
+    # Any other JSONs in data/ui/ are considered deprecated/legacy and omitted from manifest.
 
     manifest = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "registry_version": version,
-        "assets": assets
+        "assets": assets,
+        "authority": "src/ui_contracts"
     }
     
     out_path = project_root / "data" / "ui" / "manifest.json"
