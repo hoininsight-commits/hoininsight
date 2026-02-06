@@ -650,6 +650,96 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"risk_narrative_layer: fail ({e})", file=sys.stderr)
 
+            # [IS-107] Multi-Topic Priority Engine
+            try:
+                from src.topics.multi_topic_priority_engine import MultiTopicPriorityEngine
+                priority_engine = MultiTopicPriorityEngine(Path("."))
+                priority_engine.run()
+                details_lines.append("multi_topic_priority: ok")
+                print("multi_topic_priority: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"multi_topic_priority: fail ({e})", file=sys.stderr)
+
+            # [IS-108] Narrative Fusion Engine
+            try:
+                from src.ui.narrative_fusion_engine import NarrativeFusionEngine
+                fusion_engine = NarrativeFusionEngine(Path("."))
+                fusion_engine.run()
+                details_lines.append("narrative_fusion: ok")
+                print("narrative_fusion: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"narrative_fusion: fail ({e})", file=sys.stderr)
+
+            # [IS-109-A] Policy → Capital Transmission Layer
+            try:
+                from src.ui.policy_capital_transmission import PolicyCapitalTransmission
+                transmission_engine = PolicyCapitalTransmission(Path("."))
+                transmission_engine.run()
+                details_lines.append("policy_capital_transmission: ok")
+                print("policy_capital_transmission: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"policy_capital_transmission: fail ({e})", file=sys.stderr)
+
+            # [IS-109-B] Time-to-Money Resolver Layer
+            try:
+                from src.ui.time_to_money_resolver import TimeToMoneyResolver
+                time_resolver = TimeToMoneyResolver(Path("."))
+                time_resolver.run()
+                details_lines.append("time_to_money_resolver: ok")
+                print("time_to_money_resolver: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"time_to_money_resolver: fail ({e})", file=sys.stderr)
+
+            # [IS-109-A] Policy → Capital Script Exporter
+            try:
+                from src.ui.policy_capital_script_exporter import PolicyCapitalScriptExporter
+                script_exporter = PolicyCapitalScriptExporter(Path("."))
+                script_exporter.run()
+                details_lines.append("policy_capital_script: ok")
+                print("policy_capital_script: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"policy_capital_script: fail ({e})", file=sys.stderr)
+
+            # [IS-103] Operator Main UI Contract Builder
+            try:
+                from src.ui.operator_main_contract import OperatorMainContractBuilder
+                card_builder = OperatorMainContractBuilder(Path("."))
+                card_builder.run()
+                details_lines.append("operator_main_contract: ok")
+                print("operator_main_contract: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"operator_main_contract: fail ({e})", file=sys.stderr)
+
+            # [IS-104] Multi-Topic Content Packaging Layer
+            try:
+                from src.ui.multi_topic_selector import MultiTopicSelector
+                selector = MultiTopicSelector(Path("."))
+                selector.run()
+                details_lines.append("multi_topic_package: ok")
+                print("multi_topic_package: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"multi_topic_package: fail ({e})", file=sys.stderr)
+
+            # [IS-105] Capital Perspective Narrator Layer
+            try:
+                from src.ui.capital_perspective_narrator import CapitalPerspectiveNarrator
+                cp_narrator = CapitalPerspectiveNarrator(Path("."))
+                cp_narrator.run()
+                details_lines.append("capital_perspective: ok")
+                print("capital_perspective: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"capital_perspective: fail ({e})", file=sys.stderr)
+
+            # [IS-106] Relationship Stress & Break Narrative Layer
+            try:
+                from src.ui.relationship_stress_generator import RelationshipStressGenerator
+                rel_gen = RelationshipStressGenerator(Path("."))
+                rel_gen.run()
+                details_lines.append("relationship_stress: ok")
+                print("relationship_stress: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"relationship_stress: fail ({e})", file=sys.stderr)
+
             dd_md = dd.render_markdown(dd_data)
             
             y, m, d = get_target_parts()
