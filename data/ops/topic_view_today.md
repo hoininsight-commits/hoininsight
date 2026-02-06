@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-06
+# 🧭 TODAY TOPIC VIEW - 2026-02-07
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -47,17 +47,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 하루에 5%씩 출렁이는 코스피...삼성전자·하이닉스 편중에 변동성 커졌다 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 코스피, 4% 넘게 하락해 5000선 깨져…나흘 만에 또 ‘매도 사이드카’ - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

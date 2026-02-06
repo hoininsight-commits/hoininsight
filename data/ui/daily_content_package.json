@@ -32,5 +32,10 @@
       "type": "FLOW"
     }
   ],
-  "dropped_topics": []
+  "dropped_topics": [
+    {
+      "topic_id": "IS-96-20260207-NVID-Open",
+      "reason": "최대 쇼츠 개수 초과 (우선순위 밀림)"
+    }
+  ]
 }
