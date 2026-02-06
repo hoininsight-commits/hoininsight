@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스 (Google_News_KR_Economy)
   - [NEWS] 4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보 (Google_News_KR_Economy)
-  - [NEWS] 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] 빗썸, 고객 수백명에 1인당 2천억어치 비트코인 ‘오입금’ - 한겨레 (Google_News_KR_Economy)
+  - [NEWS] 美지수선물, 위험회피 심리에 하락…S&P500 선물 0.51%↓·나스닥100 선물 0.94%↓ - 연합인포맥스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,16 +187,18 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스 | Structural implication: '비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보 | Structural implication: '4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 | Structural implication: '퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 빗썸, ‘2000원’을 ‘2000BTC’로 잘못지급···2000억 상당 비트코인 오입금돼 - 경향신문 | Structural implication: '빗썸, ‘2000원’을 ‘2000BTC’로 잘못지급···2000억 상당 비트코인 오입금돼 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 빗썸, 고객 수백명에 1인당 2천억어치 비트코인 ‘오입금’ - 한겨레 | Structural implication: '빗썸, 고객 수백명에 1인당 2천억어치 비트코인 ‘오입금’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 美지수선물, 위험회피 심리에 하락…S&P500 선물 0.51%↓·나스닥100 선물 0.94%↓ - 연합인포맥스 | Structural implication: '美지수선물, 위험회피 심리에 하락…S&P500 선물 0.51%↓·나스닥100 선물 0.94%↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 | Structural implication: '대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr | Structural implication: '뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 | Structural implication: '작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
+| “이젠 못버티고 손절”···5개월 만에 ‘반토막’ 난 비트코인에 코인개미도 ‘휘청’ - 경향신문 | Structural implication: '“이젠 못버티고 손절”···5개월 만에 ‘반토막’ 난 비트코인에 코인개미도 ‘휘청’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 | Structural implication: '퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인 | Structural implication: '아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| ‘반도체 원툴’ 코스피, 불안한 환호…美 AI거품론에 힘 없이 ‘폭삭’ - 동아일보 | Structural implication: '‘반도체 원툴’ 코스피, 불안한 환호…美 AI거품론에 힘 없이 ‘폭삭’ - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 | Structural implication: '정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr | Structural implication: '"AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
-| 코스피, 4% 넘게 하락해 5000선 깨져…나흘 만에 또 ‘매도 사이드카’ - 한겨레 | Structural implication: '코스피, 4% 넘게 하락해 5000선 깨져…나흘 만에 또 ‘매도 사이드카’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아 | Structural implication: '[기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 | Structural implication: '‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | ‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스 | Structural implication: '‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
@@ -205,8 +207,6 @@
 | 앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아 | Structural implication: '앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이 | Structural implication: '다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | 5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보 | Structural implication: '5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC | Structural implication: '이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC' suggests a shift in NEWS dynamics. | LOW |
-| 네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스 | Structural implication: '네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장 | Structural implication: '미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장' suggests a shift in NEWS dynamics. | LOW |
 | “지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태 | Structural implication: '“지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태' suggests a shift in NEWS dynamics. | LOW |
 | 어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장 | Structural implication: '어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장' suggests a shift in NEWS dynamics. | LOW |
