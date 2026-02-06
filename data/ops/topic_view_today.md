@@ -17,27 +17,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뉴욕증시, 하락 마감…다시 강추위, 전날보다 10도 '뚝' [모닝브리핑] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 코스피 매도사이드카 발동···장중 5% 급락해 5000선 깨지기도 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 모든 사업장 퇴직연금 의무화…노사정 공동선언 발표 - 대한민국 정책브리핑 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 (ID: unknown)
+### 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +32,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 (ID: unknown)
+### 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 쿠팡 주가 10% 급락…대형마트 새벽배송 허용 논의 여파 - 연합인포맥스 (ID: unknown)
+### 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +47,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 하루에 5%씩 출렁이는 코스피...삼성전자·하이닉스 편중에 변동성 커졌다 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,17 +72,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 오는 9일부터 평일에는 스마트폰으로 1인당 회차별 5000원까지 로또복권 산다 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 개미들 비명 지르며 다 던졌다…순식간에 20% 대폭락 '패닉' - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 홈플러스, 1월 급여 절반만 지급…"명절 상여금·2월 급여 지키기 어려워" - 데일리안 미디어 (ID: unknown)
+### ‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,17 +87,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 'SK하닉'에 3억 빚내서 5억 몰빵…30대 공무원 결말은 - fnnews.com (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 엔씨, '리니지 클래식' 7일 한국·대만 출시 - 지디넷코리아 (ID: unknown)
+### 다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
