@@ -81,6 +81,11 @@ Ranked all tests successfully:
 
 ## 릴리즈 노트(운영자용, 한글 고정)
 
+### [IS-111] Sector Rotation Acceleration Detector
+- 섹터 간 자금 이동이 단순 순환을 넘어 실질적인 '가속(Acceleration)' 단계에 진입했는지 결정론적 수치로 판정.
+- 운영자 UI에 "섹터 자금 이동 가속 신호" 전용 카드 추가 (FROM ➔ TO 구조 시각화).
+- 자금 이동의 초입/가속 단계를 구분하여 설명하는 "경사" 톤앤매너의 한국어 롱/숏 제작 대본 자동 생성.
+
 ### [IS-110] Market Expectation vs Reality Gap Detector
 - 시장의 기대치와 실적/현실 데이터의 괴리를 분석하여 주가 움직임의 근본 원인을 판정(Expectation Shock 등 4종).
 - 운영자 UI에 "시장 기대 vs 현실 괴리" 전용 분석 카드 추가.

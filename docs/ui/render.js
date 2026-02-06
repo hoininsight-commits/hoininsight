@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
         loadJson('../ui/hero_summary.json'),
@@ -71,7 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadJson('../ui/capital_perspective.json'), // IS-105
         loadJson('../ui/relationship_stress_card.json'), // IS-106
         loadJson('../ui/policy_capital_transmission.json'), // IS-109-A
-        loadJson('../ui/time_to_money.json') // IS-109-B
+        loadJson('../ui/time_to_money.json'), // IS-109-B
+        loadJson('../ui/expectation_gap_card.json'), // IS-110
+        loadJson('../ui/sector_rotation_acceleration.json') // IS-111
     ]);
 
     const unitKeys = Object.keys(unitsDict);
@@ -412,6 +414,131 @@ document.addEventListener('DOMContentLoaded', async () => {
             operatorView.insertBefore(timeSection, hooks.nextSibling);
         } else {
             operatorView.prepend(timeSection);
+        }
+    }
+
+    // [IS-110] Render Expectation Gap Card
+    if (expectationGap && expectationGap.headline) {
+        const gapSection = document.createElement('section');
+        gapSection.className = 'section card-highlight';
+        gapSection.style.background = 'linear-gradient(135deg, #262626 0%, #0a0a0a 100%)'; // Darker background
+        gapSection.style.border = '1px solid #404040';
+        gapSection.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
+
+        const gapColor = expectationGap.gap_type === 'POSITIVE' ? '#22C55E' : '#EF4444'; // Green for positive, Red for negative
+
+        gapSection.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0; color: #A3A3A3;">📉 시장 기대 vs 현실 괴리 (Market Gap)</h2>
+                <div style="background: ${gapColor}; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em;">
+                    ${expectationGap.gap_type}
+                </div>
+            </div>
+            
+            <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 10px;">${expectationGap.headline || ''}</div>
+            <div style="font-size: 1rem; color: #A3A3A3; border-left: 2px solid ${gapColor}; padding-left: 15px; margin-bottom: 20px;">
+                ${expectationGap.one_liner || ''}
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div>
+                    <h3 style="font-size: 0.9rem; color: #A3A3A3; text-transform: uppercase; margin-bottom: 10px;">📈 시장 기대</h3>
+                    ${(expectationGap.market_expectation || []).map(e => `<div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 6px; margin-bottom: 8px; font-size: 0.95rem;">• ${e}</div>`).join('')}
+                </div>
+                <div>
+                    <h3 style="font-size: 0.9rem; color: #A3A3A3; text-transform: uppercase; margin-bottom: 10px;">📊 현실 데이터</h3>
+                    ${(expectationGap.real_data || []).map(d => `<div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 6px; margin-bottom: 8px; font-size: 0.95rem;">• ${d}</div>`).join('')}
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #404040;">
+                <h3 style="font-size: 0.9rem; color: #A3A3A3; margin-bottom: 10px;">💡 핵심 인사이트</h3>
+                <div style="font-size: 0.95rem; color: #D4D4D4;">${expectationGap.insight || ''}</div>
+            </div>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #EF4444; font-style: italic;">🚨 리스크: ${expectationGap.risk_note || ''}</div>
+        `;
+
+        const operatorView = document.getElementById('operator-view');
+        const heroSection = document.querySelector('.section.card'); // 대략적인 Hero 섹션 추정
+        if (heroSection && heroSection.nextSibling) {
+            operatorView.insertBefore(gapSection, heroSection.nextSibling);
+        } else {
+            operatorView.prepend(gapSection);
+        }
+    }
+
+    // [IS-111] Render Sector Rotation Acceleration Card
+    if (sectorRotation && sectorRotation.acceleration) {
+        const rotSection = document.createElement('section');
+        rotSection.className = 'section card-highlight';
+        rotSection.style.background = 'linear-gradient(135deg, #111827 0%, #1f2937 100%)';
+        rotSection.style.border = '1px solid #374151';
+        rotSection.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+
+        const accelColorMap = {
+            "ACCELERATING": "#10B981", // Emerald
+            "ROTATING": "#3B82F6",     // Blue
+            "NONE": "#6B7280"          // Gray
+        };
+        const color = accelColorMap[sectorRotation.acceleration] || "#fff";
+
+        rotSection.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0; color: #9ca3af;">📈 섹터 자금 이동 가속 신호 (Rotation Accel)</h2>
+                <div style="background: ${color}; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em;">
+                    ${sectorRotation.acceleration}
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 30px; padding: 25px; background: rgba(0,0,0,0.2); border-radius: 12px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 5px; font-weight: 800;">FROM (이탈)</div>
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #f87171;">${sectorRotation.from_sector || ''}</div>
+                </div>
+                <div style="font-size: 2rem; color: ${color}; animation: pulse 2s infinite;">➔</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 0.75rem; color: #9ca3af; margin-bottom: 5px; font-weight: 800;">TO (유입)</div>
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #4ade80;">${sectorRotation.to_sector || ''}</div>
+                </div>
+            </div>
+            
+            <div style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 20px; text-align: center; line-height: 1.4;">
+                "${sectorRotation.operator_sentence || ''}"
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border: 1px solid rgba(156, 163, 175, 0.1); margin-bottom: 20px;">
+                <h3 style="font-size: 0.8rem; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; font-weight: 800;">🏛️ 가속 판정 근거 (Evidence)</h3>
+                ${(sectorRotation.evidence || []).map(e => `<div style="font-size: 0.9rem; color: #d1d5db; margin-bottom: 8px;">• ${e}</div>`).join('')}
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
+                <div style="color: #6b7280;">신뢰도: <span style="color: ${color}; font-weight: 800;">${sectorRotation.confidence || ''}</span></div>
+                <div style="color: #f87171; font-weight: 600;">⚠️ 리스크: ${sectorRotation.risk_note || ''}</div>
+            </div>
+
+            <style>
+                @keyframes pulse {
+                    0% { transform: translateX(0px); opacity: 0.5; }
+                    50% { transform: translateX(10px); opacity: 1; }
+                    100% { transform: translateX(0px); opacity: 0.5; }
+                }
+            </style>
+        `;
+
+        const operatorView = document.getElementById('operator-view');
+        // Market Gap 카드 바로 아래 배치 (방금 추가한 gapSection을 찾아서 그 뒤에 삽입)
+        const allCards = operatorView.querySelectorAll('.section.card-highlight');
+        if (allCards.length > 0) {
+            const gapCard = Array.from(allCards).find(c => c.innerHTML.includes('시장 기대 vs 현실 괴리'));
+            if (gapCard && gapCard.nextSibling) {
+                operatorView.insertBefore(rotSection, gapCard.nextSibling);
+            } else if (gapCard) {
+                operatorView.appendChild(rotSection);
+            } else {
+                operatorView.prepend(rotSection);
+            }
+        } else {
+            operatorView.prepend(rotSection);
         }
     }
 

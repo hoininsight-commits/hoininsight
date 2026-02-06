@@ -690,6 +690,19 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"time_to_money_resolver: fail ({e})", file=sys.stderr)
 
+            # [IS-111] Sector Rotation Acceleration Detector
+            try:
+                from src.ui.sector_rotation_acceleration_detector import SectorRotationAccelerationDetector
+                from src.ui.sector_rotation_exporter import SectorRotationExporter
+                rotation_detector = SectorRotationAccelerationDetector(Path("."))
+                rotation_detector.run()
+                rotation_exporter = SectorRotationExporter(Path("."))
+                rotation_exporter.run()
+                details_lines.append("sector_rotation_acceleration: ok")
+                print("sector_rotation_acceleration: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"sector_rotation_acceleration: fail ({e})", file=sys.stderr)
+
             # [IS-109-A] Policy → Capital Script Exporter
             try:
                 from src.ui.policy_capital_script_exporter import PolicyCapitalScriptExporter
