@@ -81,6 +81,11 @@ Ranked all tests successfully:
 
 ## 릴리즈 노트(운영자용, 한글 고정)
 
+### [IS-112] Valuation Reset Detector
+- 현재 가격 움직임이 실적에 근거한 재평가(RESET)인지, 기대만 앞선 과열(OVERPRICED)인지 결정론적 수치로 판정.
+- 운영자 UI에 "지금 이 가격, 재평가인가 과열인가" 전용 분석 카드 추가 (IS-110 아래 배치).
+- 주가 상승률 대비 실적 지표(EPS 스코어 등)의 괴리 데이터를 상세 근거와 출처와 함께 제공.
+
 ### [IS-111] Sector Rotation Acceleration Detector
 - 섹터 간 자금 이동이 단순 순환을 넘어 실질적인 '가속(Acceleration)' 단계에 진입했는지 결정론적 수치로 판정.
 - 운영자 UI에 "섹터 자금 이동 가속 신호" 전용 카드 추가 (FROM ➔ TO 구조 시각화).

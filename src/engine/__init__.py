@@ -703,6 +703,16 @@ def main(target_categories: list[str] = None):
             except Exception as e:
                 print(f"sector_rotation_acceleration: fail ({e})", file=sys.stderr)
 
+            # [IS-112] Valuation Reset Detector
+            try:
+                from src.ui.valuation_reset_detector import ValuationResetDetector
+                val_detector = ValuationResetDetector(Path("."))
+                val_detector.run()
+                details_lines.append("valuation_reset_detector: ok")
+                print("valuation_reset_detector: ok", file=sys.stderr)
+            except Exception as e:
+                print(f"valuation_reset_detector: fail ({e})", file=sys.stderr)
+
             # [IS-109-A] Policy → Capital Script Exporter
             try:
                 from src.ui.policy_capital_script_exporter import PolicyCapitalScriptExporter
