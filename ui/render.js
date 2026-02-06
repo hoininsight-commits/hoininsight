@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation, valuationReset] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
         loadJson('../ui/hero_summary.json'),
@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadJson('../ui/policy_capital_transmission.json'), // IS-109-A
         loadJson('../ui/time_to_money.json'), // IS-109-B
         loadJson('../ui/expectation_gap_card.json'), // IS-110
-        loadJson('../ui/sector_rotation_acceleration.json') // IS-111
+        loadJson('../ui/sector_rotation_acceleration.json'), // IS-111
+        loadJson('../ui/valuation_reset_card.json') // IS-112
     ]);
 
     const unitKeys = Object.keys(unitsDict);
@@ -464,6 +465,66 @@ document.addEventListener('DOMContentLoaded', async () => {
             operatorView.insertBefore(gapSection, heroSection.nextSibling);
         } else {
             operatorView.prepend(gapSection);
+        }
+    }
+
+    // [IS-112] Render Valuation Reset Card
+    if (valuationReset && valuationReset.valuation_state) {
+        const valSection = document.createElement('section');
+        valSection.className = 'section card-highlight';
+        valSection.style.background = 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)';
+        valSection.style.border = '1px solid #334155';
+        valSection.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+
+        const stateColorMap = {
+            "RESET": "#10B981",       // Emerald
+            "OVERPRICED": "#ef4444",  // Red
+            "EARLY": "#3B82F6",       // Blue
+            "UNCONFIRMED": "#9ca3af"   // Gray
+        };
+        const color = stateColorMap[valuationReset.valuation_state] || "#fff";
+
+        valSection.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0; color: #94a3b8;">⚖️ 가치 재평가 분석 (Valuation Reset)</h2>
+                <div style="background: ${color}; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em;">
+                    ${valuationReset.valuation_state}
+                </div>
+            </div>
+
+            <div style="font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.3;">
+                "${valuationReset.one_liner}"
+            </div>
+            <div style="font-size: 1.1rem; color: #cbd5e1; font-weight: 600; margin-bottom: 25px; border-left: 3px solid ${color}; padding-left: 15px;">
+                ${valuationReset.operator_judgement}
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                <div style="background: rgba(255,255,255,0.02); padding: 18px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.1);">
+                    <h3 style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; margin-bottom: 15px; font-weight: 800;">🧠 판단 근거 (Core Reason)</h3>
+                    ${valuationReset.core_reason.map(r => `<div style="font-size: 0.95rem; color: #e2e8f0; margin-bottom: 10px; line-height: 1.5;">• ${r}</div>`).join('')}
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 18px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.1);">
+                    <h3 style="font-size: 0.8rem; color: #f43f5e; text-transform: uppercase; margin-bottom: 15px; font-weight: 800;">📊 수치 검증 (Numeric Checks)</h3>
+                    ${valuationReset.numeric_checks.map(n => {
+            const highlighted = n.replace(/([-+]?\d*\.?\d+(?:%|배)?)/g, '<span style="color:#fff; font-weight:800; border-bottom:1px solid #f43f5e;">$1</span>');
+            return `<div style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 10px;">• ${highlighted}</div>`;
+        }).join('')}
+                </div>
+            </div>
+
+            <div style="padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; border-top: 2px solid ${color};">
+                <div style="font-size: 0.85rem; color: #ef4444; font-weight: 700;">⚠️ 리스크 리포트: ${valuationReset.risk_note}</div>
+            </div>
+        `;
+
+        const operatorView = document.getElementById('operator-view');
+        // IS-110 아래, IS-111 위 배치
+        const gapCard = Array.from(operatorView.querySelectorAll('.section.card-highlight')).find(c => c.innerHTML.includes('시장 기대 vs 현실 괴리'));
+        if (gapCard && gapCard.nextSibling) {
+            operatorView.insertBefore(valSection, gapCard.nextSibling);
+        } else {
+            operatorView.prepend(valSection);
         }
     }
 
