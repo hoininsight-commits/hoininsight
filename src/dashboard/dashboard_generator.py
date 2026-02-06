@@ -1857,7 +1857,41 @@ def generate_dashboard(base_dir: Path):
     # [G] Full Candidate View
     candidate_view_html = _generate_candidate_view(candidates_data, promoted_candidates)
     
+    # [IS-111] Sector Rotation Acceleration
+    rotation_path = base_dir / "data" / "ui" / "sector_rotation_acceleration.json"
+    rotation_data = {}
+    if rotation_path.exists():
+        try:
+            rotation_data = json.loads(rotation_path.read_text(encoding="utf-8"))
+        except: pass
+    
+    rotation_html = ""
+    if rotation_data and rotation_data.get("acceleration") == "ACCELERATING":
+        rotation_html = f"""
+        <div class="today-section-header" style="color: #c026d3;">🚀 섹터 자금 이동 가속 탐지 (IS-111)</div>
+        <div class="topic-card" style="border: 2px solid #d946ef; background: #fdf4ff; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div style="font-size: 14px; color: #d946ef; font-weight: 800; margin-bottom: 8px;">자본 가속도: {rotation_data.get('acceleration')}</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #701a75; margin-bottom: 12px;">{rotation_data.get('from_sector')} → {rotation_data.get('to_sector')}</div>
+                    <div style="font-size: 15px; color: #4a044e; line-height: 1.5; background: rgba(217, 70, 239, 0.05); padding: 12px; border-radius: 8px; border-left: 4px solid #d946ef;">
+                        {rotation_data.get('operator_sentence')}
+                    </div>
+                </div>
+                <div style="background: #fdf4ff; border: 1px solid #d946ef; color: #d946ef; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 800;">
+                    {rotation_data.get('confidence')} CONFIDENCE
+                </div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #f5d0fe;">
+                <div style="font-size: 12px; color: #a21caf; font-weight: bold; margin-bottom: 8px;">📋 주요 근거 (Evidence)</div>
+                {"".join([f'<div style="font-size: 13px; color: #701a75; margin-bottom: 4px;">• {e}</div>' for e in rotation_data.get('evidence', [])])}
+            </div>
+        </div>
+        """
+
     # [I] Generate Ops View HTML
+    # (Inserting rotation_html into the main assembly below)
+    
     ops_view_html = _generate_ops_view(scoreboard_data)
 
     # [J] Generate Decision View HTML
@@ -2321,6 +2355,7 @@ def generate_dashboard(base_dir: Path):
                 {issue_top_section_html}
                 {watchlist_html}
                 {today_view_html}
+                {rotation_html}
                 {pre_trigger_html}
                 
                 <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">

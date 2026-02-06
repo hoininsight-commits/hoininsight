@@ -54,7 +54,7 @@ class ContentCompiler:
         Strict 7-step EH structure builder.
         """
         return {
-            "headline": f"[긴급] {signal.get('source')}의 발언이 암시하는 구조적 균열",
+            "headline": f"[긴급] {signal.get('source') or '핵심 관계자'}의 발언이 암시하는 구조적 균열",
             "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
             "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
             "true_why_now": signal.get("why_now", "지금 당장 구조적 재편이 시작되었습니다."),

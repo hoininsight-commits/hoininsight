@@ -45,6 +45,8 @@ class OperatorMainContractBuilder:
         units = self.load_json(self.decision_dir, "interpretation_units.json")
         citations = self.load_json(self.decision_dir, "evidence_citations.json")
         mentionables = self.load_json(self.decision_dir, "mentionables.json")
+        rotation = self.load_json(self.ui_dir, "sector_rotation_acceleration.json")
+        
         
         # Handle units potentially being list or dict
         if isinstance(units, list) and units:
@@ -69,7 +71,9 @@ class OperatorMainContractBuilder:
             "one_liner": hero_summary.get("one_liner") or "단순 뉴스가 아니라 구조 변화입니다.",
             "status": hero_summary.get("status") or "HOLD",
             "why_now": hero_summary.get("why_now") or ["데이터 정합성 검토 중", "시장 반응 대기 중"],
-            "risk_note": hero_summary.get("risk_note") or "확정되지 않은 테마 중심의 수급 변동성에 주의하십시오."
+            "risk_note": hero_summary.get("risk_note") or "확정되지 않은 테마 중심의 수급 변동성에 주의하십시오.",
+            "acceleration": rotation.get("acceleration", "NONE"),
+            "acceleration_sentence": rotation.get("operator_sentence", "")
         }
 
         # 3. Build Three-Eye
