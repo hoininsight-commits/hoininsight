@@ -193,11 +193,10 @@
 | 4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보 | Structural implication: '4대 금융 지난해 실적 18조원...‘이자 장사’도 했지만 ‘수수료 장사’ 크게 늘렸다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 모든 사업장 퇴직연금 의무화…노사정 공동선언 발표 - 대한민국 정책브리핑 | Structural implication: '모든 사업장 퇴직연금 의무화…노사정 공동선언 발표 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 | Structural implication: '대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
-| 빗썸, 비트코인 수십만 개 오지급 사고…한때 시세 8,100만 원대까지 수직 낙하 - KBS 뉴스 | Structural implication: '빗썸, 비트코인 수십만 개 오지급 사고…한때 시세 8,100만 원대까지 수직 낙하 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 빗썸, 고객 수백명에 1인당 2천억어치 비트코인 ‘오입금’ - 한겨레 | Structural implication: '빗썸, 고객 수백명에 1인당 2천억어치 비트코인 ‘오입금’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 | Structural implication: '작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 쿠팡 주가 10% 급락…대형마트 새벽배송 허용 논의 여파 - 연합인포맥스 | Structural implication: '쿠팡 주가 10% 급락…대형마트 새벽배송 허용 논의 여파 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인 | Structural implication: '아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr | Structural implication: '"AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 | Structural implication: '정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 | Structural implication: '‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 오는 9일부터 평일에는 스마트폰으로 1인당 회차별 5000원까지 로또복권 산다 - 조선일보 | Structural implication: '오는 9일부터 평일에는 스마트폰으로 1인당 회차별 5000원까지 로또복권 산다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -207,6 +206,7 @@
 | 2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈 | Structural implication: '2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈' suggests a shift in NEWS dynamics. | LOW |
 | 'SK하닉'에 3억 빚내서 5억 몰빵…30대 공무원 결말은 - fnnews.com | Structural implication: ''SK하닉'에 3억 빚내서 5억 몰빵…30대 공무원 결말은 - fnnews.com' suggests a shift in NEWS dynamics. | LOW |
 | 앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아 | Structural implication: '앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 엔씨, '리니지 클래식' 7일 한국·대만 출시 - 지디넷코리아 | Structural implication: '엔씨, '리니지 클래식' 7일 한국·대만 출시 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장 | Structural implication: '미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장' suggests a shift in NEWS dynamics. | LOW |
 | “지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태 | Structural implication: '“지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태' suggests a shift in NEWS dynamics. | LOW |
 | 어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장 | Structural implication: '어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장' suggests a shift in NEWS dynamics. | LOW |
