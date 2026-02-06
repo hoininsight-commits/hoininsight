@@ -39,13 +39,13 @@ Historical context:
 - [HIGH] SPX: data/features/anomalies/2026/02/06/index_spx_fred.json L2 Signal (base=6.00, final_m=7.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/02/06/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/06/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
-- [MED] KOSPI: data/features/anomalies/2026/02/06/index_kospi_stooq.json L1 Signal (base=3.00, final_m=4.73) | Mom: DOWN (slope=-0.75) -> x0.9 | App7d=5
 - [MED] ETHUSD: data/features/anomalies/2026/02/06/crypto_eth_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [MED] HY_SPREAD: data/features/anomalies/2026/02/06/credit_hy_spread_fred.json L1 Signal (base=3.00, final_m=3.90) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=2
 - [MED] VIX: data/features/anomalies/2026/02/06/risk_vix_fred.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] SILVER: data/features/anomalies/2026/02/06/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [MED] SILVER: data/features/anomalies/2026/02/06/metal_silver_kag_coingecko.json L1 Signal (base=3.00, final_m=3.45) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] US10Y: data/features/anomalies/2026/02/06/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
+- [LOW] KOSPI: data/features/anomalies/2026/02/06/index_kospi_stooq.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] NASDAQ: data/features/anomalies/2026/02/06/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=6
 - [LOW] US02Y: data/features/anomalies/2026/02/06/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] WTI: data/features/anomalies/2026/02/06/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
