@@ -232,17 +232,12 @@ def main():
         print(f"[Pipeline] ⚠️ Dashboard generation failed: {e}")
         traceback.print_exc()
 
-    # Step 4: UI Sync & Manifest (REF-001)
+    # Step 4: UI Sync & Manifest (REF-001 & REF-002)
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 4: UI SYNC & MANIFEST STARTED")
     try:
-        from src.ui.manifest_builder import build_manifest
-        from src.ui.publish_ui_assets import publish_assets
-        
-        print("[Pipeline] Building UI Manifest...")
-        build_manifest(project_root)
-        
-        print("[Pipeline] Publishing assets to docs/data/...")
-        publish_assets(project_root)
+        # REF-002: Use Registry-driven Publish Orchestrator
+        from src.ui_contracts.publish import run_publish
+        run_publish(project_root)
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 4: UI SYNC COMPLETED")
     except Exception as e:
