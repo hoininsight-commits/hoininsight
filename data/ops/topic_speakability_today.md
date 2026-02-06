@@ -2,7 +2,7 @@
 
 **SUMMARY**: 🟢 SPEAKABLE_NOW=0 | ⚪ NOT_SPEAKABLE_YET=1
 
-## ⚪ 오늘 시장의 핵심 혼란 포인트 (gate_5b0877ee4e)
+## ⚪ 지수 상승 속 섹터 하락의 이유 (gate_b4f8976458)
 - **Speakability**: NOT_SPEAKABLE_YET
 - **Blocking Reasons**: INSUFFICIENT_ANCHOR_STRENGTH, LOW_NARRATIVE_FIT
 - **Decision Basis**:

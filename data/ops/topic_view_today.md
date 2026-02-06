@@ -32,7 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [뉴욕증시] AI 매도세 지속에 3대 지수 하락…팔란티어, 6.83% 급락 - 글로벌이코노믹 (ID: unknown)
+### AI 투자 폭탄에 뉴욕증시 '와르르'…MS·아마존 5% 폭락 - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,12 +42,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [뉴욕 금가격] 변동성 장세 속 1%대↓…銀은 15% 폭락 후 낙폭 축소 - 연합인포맥스 (ID: unknown)
+### ‘첨단 산업의 비타민’ 희토류, 공급망 독립 첫발 뗀다 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [사설]‘장군멍군’ 美中 희토류 전쟁… 우리도 비축량 대폭 늘릴 때 - 동아일보 (ID: unknown)
+### 국제 금·은값, 다시 낙폭 확대‥금 2%↓·은 12%↓ - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +62,37 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### "5억 레버리지였다"…SK하이닉스에 올인한 30대 공무원의 결말 - 매일신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 스트래티지, 비트코인 하락으로 평가손 38억달러 발생 - 디지털투데이 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 셀트리온, 사상 최대 실적에 장중 신고가 경신 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 금보다 잘 나가던 은, 17% 급락…이유는 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### [속보]李, 경제신문기자 선행매매 수사에 “주가조작 패가망신” - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 연매출 '3조' 바라보는 넷마블, 2026년 신작 8종 출격 - 전자신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,39 +107,39 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [속보] 비트코인 전략비축 루미스법 공식 폐기...미국 재무부 "암호화폐 구제금융 포기" - 글로벌이코노믹 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 대통령 물가지적에 제당·제분사, 설탕·밀가루가격 줄줄이 인하(종합3보) - yna.co.kr (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 네이버, 4분기 영업익 6천106억원·12.7%↑…시장 예상치 상회(상보) - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금보다 잘 나가던 은, 17% 급락…이유는 - 지디넷코리아 (ID: unknown)
+### 당대회 분위기 띄우는 북한, 경제 성과 대대적 선전 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 배터리 과잉투자의 숙취…하이브리드차·ESS용 전환으로 속도 내야 - 한겨레 (ID: unknown)
+### “이대로 가면 지방선거 필패”…장동혁 재신임 놓고 국힘 ‘와글와글’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보 (ID: unknown)
+### ‘조수석 날벼락 사고’ 나흘 만에…가해 화물차 운전자도 숨졌다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “대나무밭서 불 붙었다”…부산 기장 야산 화재, 1시간 만에 진화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “창 너머 보이는 북한뷰”…이색 매장 경쟁 나선 카페업계 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 쿠팡 로저스, 경찰 2차 출석…‘국회 위증’ 혐의 조사 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “한국인 건들면 패가망신…요즘 피싱 뜸해져” 이 대통령, 초국가범죄 또 경고 (ID: unknown)
@@ -178,36 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 로엘 법무법인, 여의도 사무소 개소 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 반자율주행 믿었다가 ‘쾅’…SUV, 정차한 트럭 추돌 사고 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “첫 월급 76만원”…‘흑백요리사’ 출신 셰프들, 과거 ‘열정페이’ 폭로 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 문재인 전 대통령, 퇴임 후 첫 해외 일정…미국 랜드연구소 초청, LA 방문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 롤스로이스 “전기차 ‘스펙터’, 10만km 뛰고도 배터리 성능 99% 유지” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “공간 설계 경쟁력 입증”…현대건설, 조경 디자인 국제 무대에서 빛났다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “5일 일하고 200만원, 오후 3시면 끝”…20대 영국女가 주중 하는 일 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
