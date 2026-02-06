@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-02-06T23:46:39+09:00
-- finished_utc: 2026-02-06T23:47:35+09:00
+- started_utc: 2026-02-06T23:49:56+09:00
+- finished_utc: 2026-02-06T23:50:48+09:00
 - status: SUCCESS
 
 ## details
@@ -40,7 +40,6 @@ economic_hunter_narrator: ok (Standard)
 break_scenario_narrator: ok
 topic_exporter: ok
 hero_summary_layer: ok
-narrative_hook_layer: ok
 risk_calendar_layer: ok
 risk_narrative_layer: ok
 multi_topic_priority: ok

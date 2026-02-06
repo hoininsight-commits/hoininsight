@@ -1,12 +1,90 @@
 {
   "date": "2026-02-06",
-  "hard_mode": true,
+  "hard_mode": false,
   "blocked": [
     {
       "module": "src.ui.ui_decision_contract",
       "caller": "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
       "reason": "NOT_IN_ALLOWLIST",
       "ts": "2026-02-06T23:47:47.018322"
+    },
+    {
+      "module": "src.ui.natural_language_summary",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.097484"
+    },
+    {
+      "module": "src.ui.narrative_entry_hook_generator",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.101303"
+    },
+    {
+      "module": "src.ui.schedule_risk_calendar",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.103387"
+    },
+    {
+      "module": "src.ui.risk_timeline_narrator",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.112407"
+    },
+    {
+      "module": "src.ui.narrative_fusion_engine",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.118253"
+    },
+    {
+      "module": "src.ui.time_to_money_resolver",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.122993"
+    },
+    {
+      "module": "src.ui.sector_rotation_acceleration_detector",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.126257"
+    },
+    {
+      "module": "src.ui.sector_rotation_exporter",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.129135"
+    },
+    {
+      "module": "src.ui.valuation_reset_detector",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.132451"
+    },
+    {
+      "module": "src.ui.policy_capital_script_exporter",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.135610"
+    },
+    {
+      "module": "src.ui.multi_topic_selector",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.142684"
+    },
+    {
+      "module": "src.ui.capital_perspective_narrator",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.146550"
+    },
+    {
+      "module": "src.ui.relationship_stress_generator",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "NOT_IN_ALLOWLIST",
+      "ts": "2026-02-06T23:50:41.150647"
     }
   ],
   "allowed": [
@@ -15,6 +93,12 @@
       "caller": "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
       "reason": "ALLOWLIST_MATCH(테스트용 임시 허용)",
       "ts": "2026-02-06T23:47:47.027439"
+    },
+    {
+      "module": "src.ui.operator_main_contract",
+      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
+      "reason": "ALLOWLIST_MATCH(테스트용 임시 허용)",
+      "ts": "2026-02-06T23:50:41.138627"
     }
   ]
 }
