@@ -1,5 +1,6 @@
 import yaml
 import os
+import inspect
 from pathlib import Path
 from datetime import datetime
 
@@ -19,11 +20,19 @@ def load_allowlist():
         print(f"[HardGate] Failed to load allowlist: {e}")
         return {"allow": []}
 
-def is_allowed(module_name: str) -> (bool, str):
+def is_allowed(module_name: str, caller_file: str = None) -> (bool, str):
     """
     Checks if a module is in the allowlist and hasn't expired.
+    REF-009: Also checks if the caller is in a NEW context.
     Returns (allowed, reason).
     """
+    # 1. New Context Verification (REF-009 Absolute Rule)
+    if caller_file:
+        from src.legacy_guard.boundary import is_legacy_context
+        if not is_legacy_context(caller_file):
+            # Caller is in NEW context. Even if it's in allowlist, we block expansion.
+            return False, "NEW_CONTEXT_FORBIDDEN_EXPANSION"
+
     config = load_allowlist()
     if not config.get("enabled", True):
         return False, "ALLOWLIST_DISABLED"
@@ -40,3 +49,15 @@ def is_allowed(module_name: str) -> (bool, str):
                 return False, f"EXPIRED({expires})"
                 
     return False, "NOT_IN_ALLOWLIST"
+
+def enforce_gate(module_name: str, caller_file: str = None):
+    """
+    Helper for enforcement.
+    """
+    from src.ui_logic.guards.warning_mode import get_hard_mode
+    
+    allowed, reason = is_allowed(module_name, caller_file)
+    if get_hard_mode() and not allowed:
+        raise RuntimeError(f"[REF-009][CRITICAL] Legacy Access Blocked: {module_name} (Reason: {reason})")
+    
+    return allowed, reason

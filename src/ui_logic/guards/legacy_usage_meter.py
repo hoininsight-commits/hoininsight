@@ -14,15 +14,21 @@ def hit_legacy(module_name: str):
     Records a hit to a legacy module.
     Warns or fails based on configuration.
     """
-    # 1. Gate Intelligence (REF-008)
-    allowed, gate_reason = is_allowed(module_name)
-    
-    # 2. Trace caller
-    stack = traceback.format_stack()
+    # 1. Trace caller
+    stack = traceback.extract_stack()
     caller = "unknown"
-    if len(stack) > 3:
-        caller = stack[-3].strip().split('\n')[0]
+    caller_file = None
+    if len(stack) > 2:
+        # stack[-1] is hit_legacy
+        # stack[-2] is the shim
+        # stack[-3] is the ACTUAL CALLER
+        caller_frame = stack[-3] if len(stack) > 2 else stack[-1]
+        caller = f"{caller_frame.filename}:{caller_frame.lineno}"
+        caller_file = caller_frame.filename
 
+    # 2. Gate Intelligence (REF-008 + REF-009)
+    allowed, gate_reason = is_allowed(module_name, caller_file)
+    
     # 3. Log Decision
     log_gate_decision(module_name, caller, allowed, gate_reason)
 
