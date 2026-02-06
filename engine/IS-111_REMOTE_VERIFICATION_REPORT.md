@@ -2,25 +2,21 @@
 
 ## 1. 작업명 / 목적
 - **작업명**: Sector Rotation Acceleration Detector
-- **목적**: 섹터 간 자금 이동의 가속도를 결정론적으로 판별하여 초입/가속 단계를 구분
+- **목적**: 단순 자금 로테이션을 넘어 자금 이동의 '가속(Acceleration)' 여부를 결정론적으로 판정하여 투자 타이밍의 구조적 정합성을 제공함
 
 ## 2. 변경 사항
 ### 추가된 파일
 - src/ui/sector_rotation_acceleration_detector.py
 - src/ui/sector_rotation_exporter.py
-- data/ui/sector_rotation_acceleration.json
 - tests/verify_is111_sector_rotation.py
-- exports/sector_rotation_long.txt
-- exports/sector_rotation_shorts.txt
 
 ### 변경된 파일
-- src/engine/__init__.py
-- docs/ui/render.js
-- walkthrough.md
+
 
 ## 3. 산출물 (Outputs)
 - data/ui/sector_rotation_acceleration.json
 - exports/sector_rotation_long.txt
+- exports/sector_rotation_shorts.txt
 
 ## 4. 검증 방법 (원격 클린클론 절차)
 1. 새로운 디렉토리 생성 및 이동
@@ -32,9 +28,9 @@
 - **상태**: ✅ PASS
 
 ## 6. 커밋 해시
-- `is111_rotation_accel_commit_1770353860`
+- `f52df73e2b5ac7d3b857ec4a1827c724ac70c171`
 
 ## 7. 운영자 관점 "무엇이 좋아졌나"
-- 단순 로테이션이 아닌 자금의 '가속(Acceleration)' 여부를 판별하여 매수/관망 타이밍 분석 지원
-- FROM ➔ TO 구조의 직관적인 UI 카드를 통해 대시보드에서 자금 흐름의 본질적 방향 파악 가능
-- 이동 초입과 가속 상태를 구분하는 '경사' 톤의 맞춤형 한국어 스크립트 제작 자동화
+- 자금 이동의 '가속' 여부를 수치 기반으로 판정하여 '지금 들어가야 하는가'에 대한 명확한 기준 제시
+- 경사 스타일의 롱/숏 폼 대본 자동 생성으로 컨텐츠 제작 효율 극대화
+- 기존 엔진 파이프라인과의 완벽한 통합으로 데이터 기반 의사결정 체계 공고화
