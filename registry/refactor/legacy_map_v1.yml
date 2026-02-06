@@ -1,0 +1,28 @@
+version: 1
+defaults:
+  sunset_days: 21
+legacy_items:
+  - legacy_key: "legacy_main_dashboard_entry"
+    paths:
+      - "docs/ui/index.html"
+    detect:
+      - "string_contains:레거시"
+      - "string_contains:legacy"
+    replacement: "Use docs/ui/index.html routed to Operator UI + manifest-driven render"
+    severity: "MED"
+
+  - legacy_key: "direct_ui_load_without_manifest"
+    paths:
+      - "docs/ui/render.js"
+    detect:
+      - "regex:fetch\\([^\\)]*data/ui/[^\\)]*\\.json"
+    replacement: "Load assets only from docs/data/ui/manifest.json assets[]"
+    severity: "HIGH"
+
+  - legacy_key: "deprecated_collector_path"
+    paths:
+      - "src/engine/__init__.py"
+    detect:
+      - "string_contains:src.collectors."
+    replacement: "Migrate imports to src.engine.collectors.*"
+    severity: "HIGH"

@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-06",
+  "status": "FAIL",
+  "legacy_hits": [
+    {
+      "legacy_key": "deprecated_collector_path",
+      "path": "src/engine/__init__.py",
+      "reason": "Matched rule in src/engine/__init__.py",
+      "replacement": "Migrate imports to src.engine.collectors.*",
+      "sunset": "2026-02-27",
+      "severity": "HIGH"
+    }
+  ],
+  "summary": {
+    "total_hits": 1,
+    "high": 1,
+    "med": 0,
+    "low": 0
+  }
+}
