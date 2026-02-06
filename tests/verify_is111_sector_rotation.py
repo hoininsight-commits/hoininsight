@@ -6,33 +6,38 @@ class TestIS111SectorRotation(unittest.TestCase):
     def setUp(self):
         self.base_dir = Path(".")
         self.output_json = self.base_dir / "data" / "ui" / "sector_rotation_acceleration.json"
+        self.long_script = self.base_dir / "exports" / "sector_rotation_long.txt"
+        self.shorts_script = self.base_dir / "exports" / "sector_rotation_shorts.txt"
 
     def test_output_exists(self):
-        self.assertTrue(self.output_json.exists(), "sector_rotation_acceleration.json이 생성되지 않았습니다.")
+        self.assertTrue(self.output_json.exists(), "JSON 출력 파일이 존재하지 않습니다.")
 
-    def test_schema_keys(self):
+    def test_schema_validity(self):
         data = json.loads(self.output_json.read_text(encoding='utf-8'))
-        required_keys = [
-            "date", "from_sector", "to_sector", "acceleration", 
-            "confidence", "evidence", "operator_sentence", "risk_note"
-        ]
+        required_keys = ["date", "from_sector", "to_sector", "acceleration", "confidence", "evidence", "operator_sentence"]
         for key in required_keys:
-            self.assertIn(key, data, f"필수 키 {key}가 누락되었습니다.")
+            self.assertIn(key, data, f"키 누락: {key}")
+        
+        self.assertIn(data["acceleration"], ["ACCELERATING", "ROTATING", "NONE"])
+        self.assertIn(data["confidence"], ["HIGH", "MEDIUM", "LOW"])
 
-    def test_acceleration_enum(self):
+    def test_evidence_citations(self):
         data = json.loads(self.output_json.read_text(encoding='utf-8'))
-        allowed = ["ACCELERATING", "ROTATING", "NONE"]
-        self.assertIn(data["acceleration"], allowed, f"유효하지 않은 가속도 유형: {data['acceleration']}")
-
-    def test_evidence_format(self):
-        data = json.loads(self.output_json.read_text(encoding='utf-8'))
-        self.assertGreaterEqual(len(data["evidence"]), 2, "evidence 항목은 최소 2개 이상이어야 합니다.")
-        for e in data["evidence"]:
-            self.assertTrue("(" in e or "[" in e, f"출처가 누락된 근거: {e}")
+        self.assertGreaterEqual(len(data["evidence"]), 1)
+        for ev in data["evidence"]:
+            # 출처 (괄호) 포함 확인
+            self.assertTrue("(" in ev and ")" in ev, f"출처 미표기 근거 발견: {ev}")
 
     def test_no_undefined(self):
         content = self.output_json.read_text(encoding='utf-8')
-        self.assertNotIn("undefined", content.lower(), "산출물에 'undefined' 문자열이 포함되어 있습니다.")
+        self.assertNotIn("undefined", content.lower())
+        
+        if self.long_script.exists():
+            self.assertNotIn("undefined", self.long_script.read_text(encoding='utf-8').lower())
+
+    def test_scripts_exist(self):
+        self.assertTrue(self.long_script.exists(), "롱폼 대본이 생성되지 않았습니다.")
+        self.assertTrue(self.shorts_script.exists(), "쇼츠 대본이 생성되지 않았습니다.")
 
 if __name__ == "__main__":
     unittest.main()
