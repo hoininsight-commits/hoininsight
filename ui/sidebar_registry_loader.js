@@ -53,7 +53,9 @@ async function loadSidebarRegistry() {
     const stages = ["DECISION", "CONTENT", "SUPPORT"];
     stages.forEach(stage => {
         const stageAssets = manifest.assets.filter(a => a.stage === stage && a.exists);
-        if (stageAssets.length === 0) return;
+        const stageOverflow = (manifest.overflow || []).filter(a => a.stage === stage && a.exists);
+
+        if (stageAssets.length === 0 && stageOverflow.length === 0) return;
 
         const groupTitle = document.createElement('div');
         groupTitle.innerText = stageMap[stage] || stage;
@@ -66,9 +68,9 @@ async function loadSidebarRegistry() {
         groupTitle.style.fontWeight = '800';
         sidebar.appendChild(groupTitle);
 
-        stageAssets.forEach(asset => {
+        const renderItem = (asset) => {
             const item = document.createElement('div');
-            item.innerText = asset.title;
+            item.innerText = asset.title || 'Untitled Card';
             item.style.padding = '8px 12px';
             item.style.color = '#94a3b8';
             item.style.fontSize = '0.9rem';
@@ -77,11 +79,48 @@ async function loadSidebarRegistry() {
             item.onmouseover = () => item.style.background = '#1e293b';
             item.onmouseout = () => item.style.background = 'transparent';
             item.onclick = () => {
-                // Scroll to target card if exists, or just log
-                console.log(`Navigating to ${asset.key}`);
+                const target = document.getElementById(`card-${asset.key}`);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             };
             sidebar.appendChild(item);
-        });
+        };
+
+        stageAssets.forEach(renderItem);
+
+        if (stageOverflow.length > 0) {
+            const overflowBtn = document.createElement('div');
+            overflowBtn.innerText = `... 더보기 (${stageOverflow.length})`;
+            overflowBtn.style.padding = '4px 12px';
+            overflowBtn.style.color = '#475569';
+            overflowBtn.style.fontSize = '0.8rem';
+            overflowBtn.style.cursor = 'pointer';
+            overflowBtn.style.fontStyle = 'italic';
+
+            const overflowContainer = document.createElement('div');
+            overflowContainer.style.display = 'none';
+            stageOverflow.forEach(asset => {
+                const item = document.createElement('div');
+                item.innerText = asset.title;
+                item.style.padding = '4px 20px';
+                item.style.color = '#64748b';
+                item.style.fontSize = '0.85rem';
+                item.style.cursor = 'pointer';
+                item.onclick = () => {
+                    const target = document.getElementById(`card-${asset.key}`);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                };
+                overflowContainer.appendChild(item);
+            });
+
+            overflowBtn.onclick = () => {
+                const isHidden = overflowContainer.style.display === 'none';
+                overflowContainer.style.display = isHidden ? 'block' : 'none';
+                overflowBtn.innerText = isHidden ? '접기' : `... 더보기 (${stageOverflow.length})`;
+            };
+
+            sidebar.appendChild(overflowBtn);
+            sidebar.appendChild(overflowContainer);
+        }
     });
 
     document.body.style.paddingLeft = '240px';
