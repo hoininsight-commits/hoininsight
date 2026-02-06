@@ -1,31 +1,40 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const DATA_PATH = '../data/decision/'; // Assuming UI is in /ui/ and data in /data/decision/
-    const MOCK_FALLBACK = true;
+    // [REF-001] Unified Data Paths
+    const BASE_PATH = '/hoininsight/data/'; // Canonical base for GitHub Pages
+    const LOCAL_DATA_PATH = '../data/';   // Fallback for local development
+
+    // UI Helpers to prevent "undefined"
+    const safeText = (v) => v === undefined || v === null ? "" : String(v);
+    const safeArray = (v) => Array.isArray(v) ? v : [];
+    const safeObj = (v) => (v && typeof v === 'object' && !Array.isArray(v)) ? v : {};
 
     async function loadJson(file, isCritical = false) {
-        try {
-            const path = file === 'build_meta.json' ? '../data/' : DATA_PATH;
-            const res = await fetch(path + file);
-            if (!res.ok) throw new Error(`Status ${res.status}`);
-            const data = await res.json();
+        // Try multiple paths: canonical first, then local fallback
+        const paths = [BASE_PATH + file, LOCAL_DATA_PATH + file];
 
-            // Adapter: Auto-convert list to dict if needed
-            if (Array.isArray(data)) {
-                const dict = {};
-                data.forEach(item => {
-                    const id = item.interpretation_id || item.topic_id || item.id;
-                    if (id) dict[id] = item;
-                });
-                return dict;
+        for (const path of paths) {
+            try {
+                const res = await fetch(path);
+                if (!res.ok) continue;
+                const data = await res.json();
+
+                // Adapter: Auto-convert list to dict if needed
+                if (Array.isArray(data)) {
+                    const dict = {};
+                    data.forEach(item => {
+                        const id = item.interpretation_id || item.topic_id || item.id;
+                        if (id) dict[id] = item;
+                    });
+                    return dict;
+                }
+                return data;
+            } catch (e) {
+                console.warn(`[DATA] Fetch failed for ${path}: ${e.message}`);
             }
-            return data;
-        } catch (e) {
-            console.warn(`[DATA] Failed to load ${file}: ${e.message}`);
-            if (isCritical) {
-                showDiagnostic(file, e.message);
-            }
-            return {}; // Return empty dict instead of null to prevent "cannot read property of null"
         }
+
+        if (isCritical) showDiagnostic(file, "데이터를 찾을 수 없습니다.");
+        return null;
     }
 
     function showDiagnostic(file, error) {
@@ -34,54 +43,44 @@ document.addEventListener('DOMContentLoaded', async () => {
             diag = document.createElement('div');
             diag.id = 'diag-banner';
             diag.className = 'diag-banner';
-            document.getElementById('app').prepend(diag);
+            const app = document.getElementById('app');
+            if (app) app.prepend(diag);
         }
         const msg = document.createElement('div');
         msg.innerHTML = `⚠️ <b>데이터 로드 실패:</b> ${file} (${error})<br>
-                        &nbsp;&nbsp;👉 해결: GitHub Actions → <code>full_pipeline</code> 실행 및 <code>docs/data/decision</code> 배포 확인.`;
-        diag.appendChild(msg);
+                        &nbsp;&nbsp;👉 해결: GitHub Actions → <code>full_pipeline</code> 실행 및 <code>docs/data/</code> 배포 확인.`;
+        if (diag) diag.appendChild(msg);
     }
 
-    // 0. Load Build Meta
-    const buildMeta = await loadJson('build_meta.json');
-    if (buildMeta) {
-        const info = document.createElement('div');
-        info.style.fontSize = '0.75rem';
-        info.style.color = 'var(--text-secondary)';
-        info.style.marginBottom = '10px';
-        info.innerText = `Build: ${buildMeta.date_kst || buildMeta.timestamp} | Commit: ${buildMeta.commit.substring(0, 7)}`;
-        document.getElementById('app').prepend(info);
-    }
+    // 0. Load Manifest (REF-001 Core)
+    const manifest = await loadJson('ui/manifest.json');
+    console.log('[REF-001] Manifest Loaded:', manifest);
 
-    // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation, valuationReset, operatorNarrativeOrder] = await Promise.all([
-        loadJson('interpretation_units.json', true),
-        loadJson('natural_language_briefing.json'),
-        loadJson('../ui/hero_summary.json'),
-        loadJson('../ui/operator_main_card.json'), // IS-103
-        loadJson('../ui/narrative_entry_hook.json'),
-        loadJson('../ui/upcoming_risk_topN.json'), // IS-102
-        loadJson('../ui/schedule_risk_calendar_180d.json'), // IS-102
-        loadJson('speakability_decision.json'),
-        loadJson('narrative_skeleton.json'),
-        loadJson('mentionables.json'),
-        loadJson('evidence_citations.json'),
-        loadJson('content_pack.json'),
-        loadJson('../ui/daily_content_package.json'), // IS-104
-        loadJson('../ui/capital_perspective.json'), // IS-105
-        loadJson('../ui/relationship_stress_card.json'), // IS-106
-        loadJson('../ui/policy_capital_transmission.json'), // IS-109-A
-        loadJson('../ui/time_to_money.json'), // IS-109-B
-        loadJson('../ui/expectation_gap_card.json'), // IS-110
-        loadJson('../ui/sector_rotation_acceleration.json'), // IS-111
-        loadJson('../ui/valuation_reset_card.json'), // IS-112
-        loadJson('../ui/operator_narrative_order.json') // IS-113
+    // 1. Load All Data (Defensive)
+    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, operatorNarrativeOrder, dailyPackage] = await Promise.all([
+        loadJson('decision/interpretation_units.json', true),
+        loadJson('decision/natural_language_briefing.json'),
+        loadJson('ui/hero_summary.json'),
+        loadJson('ui/operator_main_card.json'),
+        loadJson('ui/narrative_entry_hook.json'),
+        loadJson('ui/upcoming_risk_topN.json'),
+        loadJson('ui/schedule_risk_calendar_180d.json'),
+        loadJson('decision/speakability_decision.json'),
+        loadJson('ui/operator_narrative_order.json'),
+        loadJson('ui/daily_content_package.json')
     ]);
 
-    const unitKeys = Object.keys(unitsDict);
+    // Manifest-driven fallback: if interpretation_units missing, don't return!
+    const unitKeys = unitsDict ? Object.keys(unitsDict) : [];
     if (unitKeys.length === 0) {
-        document.getElementById('issue-hook').innerText = "오늘은 확정된 구조적 판단이 없습니다.";
-        return;
+        console.warn('[REF-001] No interpretation_units found. Rendering placeholder Decision Zone.');
+        const placeholder = document.createElement('div');
+        placeholder.style.padding = '20px';
+        placeholder.style.background = 'rgba(255,255,255,0.05)';
+        placeholder.style.borderRadius = '8px';
+        placeholder.style.textAlign = 'center';
+        placeholder.innerHTML = `<h2 style="color:var(--text-secondary)">⚠️ 현재 구조적 판단 데이터가 없습니다.</h2><p>엔진이 데이터를 정제 중이거나 수집된 신호가 부족합니다.</p>`;
+        document.getElementById('app').prepend(placeholder);
     }
 
     // [IS-113] Narrative Order Mode Dispatch

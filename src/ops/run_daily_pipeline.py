@@ -232,6 +232,23 @@ def main():
         print(f"[Pipeline] ⚠️ Dashboard generation failed: {e}")
         traceback.print_exc()
 
+    # Step 4: UI Sync & Manifest (REF-001)
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 4: UI SYNC & MANIFEST STARTED")
+    try:
+        from src.ui.manifest_builder import build_manifest
+        from src.ui.publish_ui_assets import publish_assets
+        
+        print("[Pipeline] Building UI Manifest...")
+        build_manifest(project_root)
+        
+        print("[Pipeline] Publishing assets to docs/data/...")
+        publish_assets(project_root)
+        
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 4: UI SYNC COMPLETED")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ UI Sync failed (Soft-Fail): {e}")
+        traceback.print_exc()
+
     if success:
         print("\n=== PIPELINE SUCCESS ===")
         sys.exit(0)
