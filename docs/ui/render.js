@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const safeArray = (v) => Array.isArray(v) ? v : [];
     const safeObj = (v) => (v && typeof v === 'object' && !Array.isArray(v)) ? v : {};
 
+    // [REF-011] Deeply safe getter
+    const safeGet = (obj, path, fallback = "") => {
+        const value = path.split('.').reduce((acc, part) => (acc && acc[part] !== undefined) ? acc[part] : undefined, obj);
+        if (value === undefined || value === null) return fallback;
+        if (typeof value === 'string' && (value.toLowerCase() === 'undefined' || value.toLowerCase() === 'null')) return fallback;
+        return value;
+    };
+
     async function loadJson(file, isCritical = false) {
         // Try multiple paths: canonical first, then local fallback
         const paths = [BASE_PATH + file, LOCAL_DATA_PATH + file];
@@ -81,6 +89,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         placeholder.style.textAlign = 'center';
         placeholder.innerHTML = `<h2 style="color:var(--text-secondary)">⚠️ 현재 구조적 판단 데이터가 없습니다.</h2><p>엔진이 데이터를 정제 중이거나 수집된 신호가 부족합니다.</p>`;
         document.getElementById('app').prepend(placeholder);
+    }
+
+    if (!manifest) {
+        const emergencyCard = document.createElement('div');
+        emergencyCard.className = 'card-highlight';
+        emergencyCard.style.margin = '20px';
+        emergencyCard.innerHTML = `
+            <h2>⚠️ 데이터 생성 실패 / 미배포 안내</h2>
+            <p>현재 대시보드 메니페스트를 불러올 수 없습니다. 파이프라인이 완료되었는지 확인하십시오.</p>
+            <div style="margin-top: 15px; font-size: 0.8em;">
+                디버그 링크: 
+                <a href="../data/ui/" style="color: #60a5fa;">[UI 데이터 보관소]</a> | 
+                <a href="../data/decision/" style="color: #60a5fa;">[의사결정 보관소]</a>
+            </div>
+        `;
+        document.getElementById('operator-view').prepend(emergencyCard);
     }
 
     // [IS-113] Narrative Order Mode Dispatch

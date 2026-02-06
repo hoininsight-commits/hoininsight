@@ -50,6 +50,36 @@ async function loadSidebarRegistry() {
     title.style.marginBottom = '30px';
     sidebar.appendChild(title);
 
+    // [REF-011] Fixed Navigation Links
+    const navGroup = document.createElement('div');
+    navGroup.style.marginBottom = '20px';
+
+    const createNavLink = (text, href, icon) => {
+        const link = document.createElement('a');
+        link.href = href;
+        link.innerHTML = `${icon} ${text}`;
+        link.style.display = 'block';
+        link.style.padding = '10px 12px';
+        link.style.color = '#f8fafc';
+        link.style.textDecoration = 'none';
+        link.style.fontSize = '0.9rem';
+        link.style.fontWeight = '600';
+        link.style.borderRadius = '6px';
+        link.onmouseover = () => link.style.background = '#1e293b';
+        link.onmouseout = () => link.style.background = 'transparent';
+        return link;
+    };
+
+    navGroup.appendChild(createNavLink('오늘의 운영자 메인', '#', '🏠'));
+    navGroup.appendChild(createNavLink('레거시 메인(읽기전용)', '#legacy', '📜'));
+    sidebar.appendChild(navGroup);
+
+    const divider = document.createElement('hr');
+    divider.style.border = '0';
+    divider.style.borderTop = '1px solid #1e293b';
+    divider.style.margin = '10px 0 20px 0';
+    sidebar.appendChild(divider);
+
     const stages = ["DECISION", "CONTENT", "SUPPORT"];
     stages.forEach(stage => {
         const stageAssets = manifest.assets.filter(a => a.stage === stage && a.exists);
