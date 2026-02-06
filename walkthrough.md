@@ -22,5 +22,21 @@
 - [IS-111 원격 검증 보고서](file:///Users/jihopa/.gemini/antigravity/scratch/HoinInsight/docs/engine/IS-111_REMOTE_VERIFICATION_REPORT.md)
 - [생성된 가속 신호 JSON](file:///Users/jihopa/.gemini/antigravity/scratch/HoinInsight/data/ui/sector_rotation_acceleration.json)
 
+### Dashboard UI Verification (IS-111 & Bug Fix)
+The deployment has been verified on the live dashboard. The IS-111 section is now visible, and the "None" headline bug has been resolved.
+
+````carousel
+![Headline Fix (No more None)](file:///Users/jihopa/.gemini/antigravity/brain/96448f15-469d-4b6e-b07d-12899ed4fd8a/dashboard_headline_fix_1770366061612.png)
+<!-- slide -->
+![IS-111 Section Verification](file:///Users/jihopa/.gemini/antigravity/brain/96448f15-469d-4b6e-b07d-12899ed4fd8a/is111_section_verify_1770366128461.png)
+````
+
+#### Verification Recording
+![Final Deployment Verification Recording](file:///Users/jihopa/.gemini/antigravity/brain/96448f15-469d-4b6e-b07d-12899ed4fd8a/final_dashboard_verification_1770365717052.webp)
+
+### Automated Tests
+- Ran `tests/verify_is111_sector_rotation.py`: **PASSED**
+- Verified schema compliance for `data/ui/sector_rotation_acceleration.json`.
+
 ## 향후 계획
 - IS-112: Valuation Reset Detector 레이어 구현 예정.

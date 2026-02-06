@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 1. Load All Data
-    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation, valuationReset] = await Promise.all([
+    const [unitsDict, briefingDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, skeleton, mentionables, evidence, packs, dailyPackage, capitalPerspective, relStressCard, policyCapital, timeToMoney, expectationGap, sectorRotation, valuationReset, operatorNarrativeOrder] = await Promise.all([
         loadJson('interpretation_units.json', true),
         loadJson('natural_language_briefing.json'),
         loadJson('../ui/hero_summary.json'),
@@ -74,13 +74,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadJson('../ui/time_to_money.json'), // IS-109-B
         loadJson('../ui/expectation_gap_card.json'), // IS-110
         loadJson('../ui/sector_rotation_acceleration.json'), // IS-111
-        loadJson('../ui/valuation_reset_card.json') // IS-112
+        loadJson('../ui/valuation_reset_card.json'), // IS-112
+        loadJson('../ui/operator_narrative_order.json') // IS-113
     ]);
 
     const unitKeys = Object.keys(unitsDict);
     if (unitKeys.length === 0) {
         document.getElementById('issue-hook').innerText = "오늘은 확정된 구조적 판단이 없습니다.";
         return;
+    }
+
+    // [IS-113] Narrative Order Mode Dispatch
+    if (operatorNarrativeOrder && operatorNarrativeOrder.content_package) {
+        console.log('[IS-113] Narrative Order Mode Activated');
+        renderNarrativeOrderMode(operatorNarrativeOrder);
+        return; // PREVENT LEGACY RENDER
     }
 
     // Pick Top-1 Unit
@@ -831,17 +839,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
-        // 9. Content Packs (Existing logic but simplified)
-        const unitPacks = packs ? (packs[unitId] || (topUnit && packs[topUnit.topic_id])) : null;
-        if (unitPacks) {
-            document.getElementById('pack-container').innerHTML = Object.entries(unitPacks).map(([type, p]) => {
-                if (type === 'as_of_date') return '';
-                return `
-                <div class="card" style="margin-bottom: 15px; border-top: 4px solid var(--accent-blue);">
                     <div style="font-weight: 800; margin-bottom: 10px;">📦 ${type}</div>
                     <div style="font-size: 1.1rem; font-weight: 800;">${p.title || 'No Title'}</div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary); white-space: pre-wrap;">${p.script_draft || p.hook || 'No content'}</div>
-                </div>
+                </div >
             `;
             }).join('');
         }
@@ -852,6 +853,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         legacyLink.style.marginTop = '40px';
         legacyLink.style.padding = '20px';
         legacyLink.style.borderTop = '1px solid var(--border)';
-        legacyLink.innerHTML = `<a href="../index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 600;">📍 레거시 메인(구버전) 바로가기</a>`;
+        legacyLink.innerHTML = `< a href = "../index.html" style = "color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 600;" >📍 레거시 메인(구버전) 바로가기</a > `;
         document.getElementById('app').appendChild(legacyLink);
     });
