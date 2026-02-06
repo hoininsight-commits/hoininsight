@@ -1,15 +1,11 @@
 {
   "data_axis": [
     "index_spx_fred",
-    "index_kospi_stooq",
-    "crypto_btc_usd_spot_coingecko",
     "derived_gold_silver_ratio"
   ],
   "baseline_match": [
     "index_spx_fred: Volatility Surge (Z=2.45)",
-    "index_kospi_stooq: Volatility Surge (Z=2.17)",
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.11)",
-    "derived_gold_silver_ratio: Volatility Surge (Z=2.55)"
+    "derived_gold_silver_ratio: Volatility Surge (Z=2.60)"
   ],
   "anomaly_logic": "Risk Off",
   "why_now_type": "Structural-driven",
