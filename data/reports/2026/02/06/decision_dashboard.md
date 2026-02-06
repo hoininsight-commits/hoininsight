@@ -84,8 +84,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스 (Google_News_KR_Economy)
-  - [NEWS] 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 (Google_News_KR_Economy)
+  - [NEWS] 코스피, 한 주 내내 롤러코스터…매도사이드카 발동 - v.daum.net (Google_News_KR_Economy)
+  - [NEWS] 뉴욕증시, AI 우려에 일제히 하락…다우 1.2%↓ - 경향신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -188,25 +188,25 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스 | Structural implication: '비트코인 폭락에 관련 기업 자산 36조원 증발 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스 | Structural implication: '퇴직연금도 국민연금처럼…“의무화·기금화” 합의 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 코스피, 한 주 내내 롤러코스터…매도사이드카 발동 - v.daum.net | Structural implication: '코스피, 한 주 내내 롤러코스터…매도사이드카 발동 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, AI 우려에 일제히 하락…다우 1.2%↓ - 경향신문 | Structural implication: '뉴욕증시, AI 우려에 일제히 하락…다우 1.2%↓ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문 | Structural implication: '대한전선, 2025년 매출 3.6조, 영업이익 1286억… 역대 최대 실적 달성 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
+| 모든 사업장 퇴직연금 의무화…노사정 공동선언 발표 - 대한민국 정책브리핑 | Structural implication: '모든 사업장 퇴직연금 의무화…노사정 공동선언 발표 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 빗썸, 이벤트 2000원씩 주려다… 비트코인 2000개씩 전송했다 - 조선일보 | Structural implication: '빗썸, 이벤트 2000원씩 주려다… 비트코인 2000개씩 전송했다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 | Structural implication: '정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 | Structural implication: '작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문 | Structural implication: '정부, 세입자 낀 다주택자 퇴로 마련…토허제 ‘갭투자 금지’ 규정 완화할 듯 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr | Structural implication: '"AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인 | Structural implication: '아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 ‘롤러코스터’…5%대 급락 뒤 낙폭 줄여 5080 마감 - 한겨레 | Structural implication: '코스피 ‘롤러코스터’…5%대 급락 뒤 낙폭 줄여 5080 마감 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr | Structural implication: '뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| 그때 그 리니지가 돌아온다···추억의 ‘명작 게임’ 속속 귀환 - 경향신문 | Structural implication: '그때 그 리니지가 돌아온다···추억의 ‘명작 게임’ 속속 귀환 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡 주가 10% 급락…대형마트 새벽배송 허용 논의 여파 - 연합인포맥스 | Structural implication: '쿠팡 주가 10% 급락…대형마트 새벽배송 허용 논의 여파 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 | Structural implication: '‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| ‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스 | Structural implication: '‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 주식투자 열풍에 웃은 4대 금융지주, 작년 순이익 18조 ‘사상 최대’ - v.daum.net | Structural implication: '주식투자 열풍에 웃은 4대 금융지주, 작년 순이익 18조 ‘사상 최대’ - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| 오는 9일부터 평일에는 스마트폰으로 1인당 회차별 5000원까지 로또복권 산다 - 조선일보 | Structural implication: '오는 9일부터 평일에는 스마트폰으로 1인당 회차별 5000원까지 로또복권 산다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| “정부 지원을”…홈플러스 임대 점주·납품업체·노조 한 목소리 - v.daum.net | Structural implication: '“정부 지원을”…홈플러스 임대 점주·납품업체·노조 한 목소리 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| “진작 내다 팔 걸 그랬나”…국제 금·은값, 다시 낙폭 확대 - v.daum.net | Structural implication: '“진작 내다 팔 걸 그랬나”…국제 금·은값, 다시 낙폭 확대 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | [AI는 지금] 오픈AI·앤트로픽, 코딩 AI 정면승부…SW 재편 우려에 美 증시도 '흔들' - 지디넷코리아 | Structural implication: '[AI는 지금] 오픈AI·앤트로픽, 코딩 AI 정면승부…SW 재편 우려에 美 증시도 '흔들' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈 | Structural implication: '2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈' suggests a shift in NEWS dynamics. | LOW |
 | 앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아 | Structural implication: '앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 헤지펀드 레버리지 노출 8배…금·은 선물 포지션 청산 리스크↑ - 연합인포맥스 | Structural implication: '헤지펀드 레버리지 노출 8배…금·은 선물 포지션 청산 리스크↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC | Structural implication: '이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC' suggests a shift in NEWS dynamics. | LOW |
-| 16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스 | Structural implication: '16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보 | Structural implication: '5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 네이버, 연 매출 12조원…"올해 커머스 사업 도약 가속" - 지디넷코리아 | Structural implication: '네이버, 연 매출 12조원…"올해 커머스 사업 도약 가속" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장 | Structural implication: '미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장' suggests a shift in NEWS dynamics. | LOW |
 | “지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태 | Structural implication: '“지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태' suggests a shift in NEWS dynamics. | LOW |
 | 어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장 | Structural implication: '어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장' suggests a shift in NEWS dynamics. | LOW |
