@@ -27,7 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 빗썸, 비트코인 수십만 개 오지급 사고…한때 시세 8,100만 원대까지 수직 낙하 - KBS 뉴스 (ID: unknown)
+### 빗썸, 이벤트 2000원씩 주려다… 비트코인 2000개씩 전송했다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,7 +37,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 해외 투자로 번 돈 年300억달러 넘었다…경상수지 흑자도 사상 최대 - 조선일보 (ID: unknown)
+### 작년 반도체 수출·해외 배당 증가에 경상수지 1230억달러 흑자…역대 최대 - 인더스트리뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,12 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 (ID: unknown)
+### 뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아 (ID: unknown)
+### ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,7 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이 (ID: unknown)
+### 헤지펀드 레버리지 노출 8배…금·은 선물 포지션 청산 리스크↑ - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,12 +102,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 공정위, 동아시아 경쟁당국 고위급회의 참석 - 日刊 NTN (ID: unknown)
+### 5억 vs 0.5억… 청년 자산도 ‘극과 극’ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스 (ID: unknown)
+### 네이버, 연 매출 12조원…"올해 커머스 사업 도약 가속" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
