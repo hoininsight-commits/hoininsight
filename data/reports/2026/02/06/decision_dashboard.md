@@ -196,17 +196,17 @@
 | "AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr | Structural implication: '"AI 믿고 쓸 환경 만들려면" AI안전생태계 마스터플랜 간담회 - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인 | Structural implication: '아마존, 이커머스 이익률 개선 등 기대요인 더 많아…목표주가는↓-골드만삭스 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 코스피 ‘롤러코스터’…5%대 급락 뒤 낙폭 줄여 5080 마감 - 한겨레 | Structural implication: '코스피 ‘롤러코스터’…5%대 급락 뒤 낙폭 줄여 5080 마감 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr | Structural implication: '뉴욕증시, AI 우려에 전방위 매도세…다우 1.2%↓(종합) - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | ‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레 | Structural implication: '‘햇살론’ 금리, 15.9%→12.5% 인하…기초수급층은 9.9% - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| [기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아 | Structural implication: '[기고] 인공지능기본법 시행 이후 과제는 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | ‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스 | Structural implication: '‘로또 복권’ 다음주부터 휴대전화로 구입 가능 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [AI는 지금] 오픈AI·앤트로픽, 코딩 AI 정면승부…SW 재편 우려에 美 증시도 '흔들' - 지디넷코리아 | Structural implication: '[AI는 지금] 오픈AI·앤트로픽, 코딩 AI 정면승부…SW 재편 우려에 美 증시도 '흔들' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 공정위, 동아시아 경쟁당국 고위급회의 참석 - 日刊 NTN | Structural implication: '공정위, 동아시아 경쟁당국 고위급회의 참석 - 日刊 NTN' suggests a shift in NEWS dynamics. | LOW |
 | 2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈 | Structural implication: '2026년 과기정통부 R&D 35조5천억… AI·반도체·우주·원전까지 ‘전략기술 풀가동’ - 사이언스타임즈' suggests a shift in NEWS dynamics. | LOW |
 | 앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아 | Structural implication: '앤트로픽, '클로드 오퍼스 4.6' 공개..."스스로 생각 깊이 조절" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 헤지펀드 레버리지 노출 8배…금·은 선물 포지션 청산 리스크↑ - 연합인포맥스 | Structural implication: '헤지펀드 레버리지 노출 8배…금·은 선물 포지션 청산 리스크↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이 | Structural implication: '다쏘시스템, ‘2026 AAKRUTI 국제 학생 디자인 공모전’ 우승자 발표 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC | Structural implication: '이 대통령, ‘기자 선행매매’ 수사에 "주가조작 패가망신" - JTBC' suggests a shift in NEWS dynamics. | LOW |
 | 16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스 | Structural implication: '16만 5천개 계정 더 털렸다…"3천개만 저장" 쿠팡 발표에 '물음표' - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 네이버, 연 매출 12조원…"올해 커머스 사업 도약 가속" - 지디넷코리아 | Structural implication: '네이버, 연 매출 12조원…"올해 커머스 사업 도약 가속" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 공정위, 동아시아 경쟁당국 고위급회의 참석 - 日刊 NTN | Structural implication: '공정위, 동아시아 경쟁당국 고위급회의 참석 - 日刊 NTN' suggests a shift in NEWS dynamics. | LOW |
+| 네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스 | Structural implication: '네이버, 2년 연속 '매출 10조' 돌파…역대 최대 실적(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장 | Structural implication: '미국 국무 차관 “중국, 핵폭발 실험 숨겨…600기 핵탄두 보유” 주장' suggests a shift in NEWS dynamics. | LOW |
 | “지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태 | Structural implication: '“지갑에 2000 비트코인이 꽂혔다”… 빗썸 ‘초유의 오입금’ 사태' suggests a shift in NEWS dynamics. | LOW |
 | 어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장 | Structural implication: '어린이집 여교사 화장실 불법촬영 40대 운전기사…잡고 보니 아내가 원장' suggests a shift in NEWS dynamics. | LOW |
