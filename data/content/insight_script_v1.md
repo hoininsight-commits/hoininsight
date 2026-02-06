@@ -1,4 +1,4 @@
-# Insight Script: [Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, 코스피(KOSPI) 지수 충격 동반)
+# Insight Script: [Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, crypto_btc_usd_spot_coingecko 동반)
 <!-- Metadata
 Topic ID: index_spx_fred
 Level: L2
@@ -7,7 +7,7 @@ Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **[Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, 코스피(KOSPI) 지수 충격 동반)** 현상이 감지되었습니다.
+- **[Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, crypto_btc_usd_spot_coingecko 동반)** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유

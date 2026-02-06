@@ -70,7 +70,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** [Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, 코스피(KOSPI) 지수 충격 동반)
+- **Topic:** [Monetary Tightening] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, crypto_btc_usd_spot_coingecko 동반)
 - **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.45 >= 2.0. 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
@@ -94,5 +94,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 16 candidate(s) survived survival rules.
+Gate Filter Result: 15 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.

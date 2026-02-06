@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-02-06T17:01:10Z",
+    "ts_utc": "2026-02-06T17:16:40Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "entity": "BTCUSD",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": -1.59,
-      "percentile": 1.2,
-      "value": 64789.0,
-      "rolling_mean_20d": 72669.25,
-      "reasoning": "Percentile 1.2% (Extreme)"
+      "z_score": -1.38,
+      "percentile": 2.0,
+      "value": 64992.0,
+      "rolling_mean_20d": 72098.8,
+      "reasoning": "Percentile 2.0% (Extreme)"
     }
   }
 ]
