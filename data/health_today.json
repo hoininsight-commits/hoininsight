@@ -1,11 +1,11 @@
 {
-  "run_date": "2026-02-09",
-  "checked_at": "2026-02-09T08:57:45.112875",
+  "run_date": "2026-02-10",
+  "checked_at": "2026-02-10T08:30:24.762310",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
     "anomalies_count": 25,
-    "gate_candidates_count": 13,
+    "gate_candidates_count": 11,
     "scripts_md_count": 2,
     "script_quality_json_count": 2,
     "topics_count": {
@@ -18,15 +18,15 @@
   "event_coverage_path": "data/dashboard/event_coverage_today.json",
   "errors": [
     "events_dir missing: FETCH_FAILED",
-    "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/02/09"
+    "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/02/10"
   ],
   "missing_files": [
-    "/home/runner/work/hoininsight/hoininsight/data/events/2026/02/09"
+    "/home/runner/work/hoininsight/hoininsight/data/events/2026/02/10"
   ],
   "input_root_cause_code": "FETCH_FAILED",
   "input_details": {
     "missing_paths": [
-      "/home/runner/work/hoininsight/hoininsight/data/events/2026/02/09/events.json"
+      "/home/runner/work/hoininsight/hoininsight/data/events/2026/02/10/events.json"
     ],
     "exceptions": []
   }
