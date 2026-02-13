@@ -1,25 +1,7 @@
 {
-  "as_of": "2026-02-13",
+  "as_of": "2026-02-14",
   "window_days": 90,
   "items": [
-    {
-      "date": "2026-02-13",
-      "date_type": "FIXED",
-      "region": "US",
-      "category": "MACRO",
-      "title": "미국 소비자물가지수(CPI) 발표",
-      "risk_mechanism": "인플레이션 고착화 리스크 시 금리 인하 기대 후퇴",
-      "affected_axes": [
-        "RATES",
-        "VALUATION"
-      ],
-      "base_weight": 0.85,
-      "tags": [
-        "MACRO_SHOCK"
-      ],
-      "final_score": 1.25,
-      "theme_boost": 0.2
-    },
     {
       "date": "2026-02-27",
       "date_type": "FIXED",

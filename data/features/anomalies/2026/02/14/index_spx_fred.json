@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-02-14T08:23:04Z",
+    "dataset_id": "index_spx_fred",
+    "entity": "SPX",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": -1.56,
+      "percentile": 50.0,
+      "value": 6832.76,
+      "rolling_mean_20d": 6919.2444765625,
+      "reasoning": "Z-Score -1.56 >= 1.5"
+    }
+  }
+]

@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-13
+# 🧭 TODAY TOPIC VIEW - 2026-02-14
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### AI에 대한 우려가 기술주 매도세 부추겼다…나스닥 2%↓ - 조선일보 (ID: unknown)
+### 코스피 소폭 하락해 5,500대 마감…코스닥 지수도 하락 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 'HBM4 샅바싸움' 승기 잡은 삼성…메모리 초호황기 주도권 노린다 - 노컷뉴스 (ID: unknown)
+### 빠릿빠릿한 AI 비서 만들어… 앤스로픽 기업가치 2배로 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,187 +27,187 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “왜 가계대출 늘리나”…당국 경고에 상호금융 다시 ‘대출조이기’ - 매일경제 (ID: unknown)
+### 서울 아파트 매매 ‘15억 이하’ 쏠림···고가 거래 비중 축소 - 시사저널e (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 5500도 넘은 코스피···‘삼전·하닉’ 끌고 ‘배당 확대·행동주의’도 훈풍으로 - 경향신문 (ID: unknown)
+### “택배 왔어요” 설 선물 배송 문자, 눌렀다간 계좌 털린다 - 이투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 빗썸 오지급 사태, 대국민 사과보다 수수료 0원이 먼저였다 - 뉴데일리 (ID: unknown)
+### 의료기기조합, 중동 최대 의료기기전시회서 한국 의료기기 홍보 - 청년의사 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금융위, 코스닥 부실기업 퇴출 속도…올해 최대 150개사 상폐 대상 - 대한민국 정책브리핑 (ID: unknown)
+### [AI와 보안] “생성형 AI 추론 능력 원리 뜯어보자”... AI 모델 겨냥 공격 증가 - 보안뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중과세 회피 매물 나오면서 서울 아파트값 상승폭 2주째 둔화 - 한겨레 (ID: unknown)
+### 보건산업진흥원, 수출 유망 의약품 제조 선진화 지원사업 공모 - 후생신보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인 6만7000달러선 '털썩'…이더·리플·솔라나 줄줄이 약세 - 디지털투데이 (ID: unknown)
+### “엔비디아 HBM4 공급, 삼성·하이닉스·마이크론 3파전 전망” - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘설 선물 배송’ 문자 눌렀다가 낭패…명절 앞두고 스미싱 주의보 - 조선일보 (ID: unknown)
+### 류제명 과기정통부 차관, 설 명절 대비 사이버 보안 최전선 점검 - 보안뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주병기 위원장 "생활물가 흔든 구조적 카르텔"...설탕 담합에 4083억 철퇴 - 오마이뉴스 (ID: unknown)
+### 코인 거래소 제휴 은행들 ‘빗썸 사태’로 재계약 앞두고 신중 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대법 "SK하닉 경영성과급, 퇴직금 반영 안 돼"…원고패소 확정 - 한국경제 (ID: unknown)
+### 코스닥 동전주 상장폐지 강화… 제약·바이오 영향은? - 코메디닷컴 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주요 바이오·제약社, 작년 ‘역대급’ 실적… 종근당만 영업이익 감소 - 조선일보 (ID: unknown)
+### 금융위, 조각투자 장외거래소 2곳 인가 '가닥' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대정부질문 무대 오른 '코스닥 구하기'…종목 솎아내기 나선 당국 - 연합인포맥스 (ID: unknown)
+### 외국인, 1월 코스피 사고 코스닥 팔았다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 카카오, 'AI 수익화 원년' 칼 뺐다...구글·오픈AI 스킬 장착 - 지디넷코리아 (ID: unknown)
+### “호두과자 한 봉지 5300원”… 슬그머니 양까지 줄인 휴게소 ‘꼼수’ - 세계일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘2년 실거주 의무화’에 외국인 서울 주택 매수 반토막 - 한겨레 (ID: unknown)
+### “일자리·산업 다 뺏긴다” 공포에 뉴욕증시 패닉 급락…나스닥 2%↓ - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “풀어만 주면 쿠팡쯤이야”…새벽배송 기대감에 이마트·롯데쇼핑 ‘신고가’ - 매일경제 (ID: unknown)
+### 삼성전자 사상 첫 18만원대 올라…코스피 5507.01 마감 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ICT 수출액, 국가 전제 수출 40% 비중 넘어섰다 - 지디넷코리아 (ID: unknown)
+### 비트코인 하락 속 가상자산 시장 약세 신호 확산 - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 반도체 수퍼사이클 타고 북새통 이룬 ‘세미콘 2026’ - 조선일보 (ID: unknown)
+### 이 대통령이 삼성·LG·한화 공개 칭찬한 이유 - 오마이뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [뉴스분석]‘감세’ 외치던 윤석열 정부 결국···역대 첫 ‘세수 역성장’ 초라한 성적 - 경향신문 (ID: unknown)
+### 美 대만과 '15% 상호관세' 합의 서명 … 대만, 美 원유 등 121조 구매 - 뉴데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “텔레그램서 1만불 송금하니 사람 배달”‥코인 타고 85% 폭증한 인신매매 (ID: unknown)
+### “끝까지 진술 거부”…함께 살던 친누나 살해 혐의 30대 CCTV보니 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “19금 드라마 여주인공 됐다”…‘최민환과 이혼’ 율희, 배우 본격 활동 (ID: unknown)
+### “여섯째와 62살 차이”…52살 연하 아내와 결혼 90대男, 득녀 ‘화제’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 트럼프 가문 주도 WLFI, 대출 넘어 외환시장 진출 선언 (ID: unknown)
+### “이제 작별 인사 드리려 한다”…‘100만 유튜버’ 충주맨 사직한 진짜 이유 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 공포에 질린 코인판…SC “비트코인 5만불까지 밀린다” 경고 (ID: unknown)
+### 끝없이 나오는 이름들…‘엡스타인 파일’서 드러난 엘리트의 민낯 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 실적 전망치 밑돈 하이브…“BTS 컴백하는 올해는 다르다”[오늘 나온 보고서] (ID: unknown)
+### 트럼프 또 겁먹고 물러났다…미네소타주 이민단속 종료 선언 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 망망대해 크루즈 위에서 맞는 개기일식 느낌은 어떨까 (ID: unknown)
+### “너희 신혼집 150평이잖아”…전현무 말에 팥 먹던 곽튜브가 한 말 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 산재 사망자 연간 3명 이상 기업, 영업이익 5% 과징금 낸다 (ID: unknown)
+### “결국엔 가격인상 불가피”…넷플릭스에 토종OTT까지 독과점 정조준 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 설 연휴 해외 가는 두 명 중 한 명 어디 가나 보니 (ID: unknown)
+### ‘충격’ 설마 했는데 사실이었다…대만 간 롯데 나승엽 등 4명, 귀국 조치 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “불륜 아니라고?” 최동석, ‘박지윤 상간 소송’ 기각에 항소 (ID: unknown)
+### 제주 왜 이러나…중국인 칼부림, 수영장엔 등산객, 뚫려버린 호텔 보안 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “버티면 된다는 분들께 말씀드린다”…李 대통령, 다주택자 대출연장 문제 지적 (ID: unknown)
+### “용서 받을 수 없는 행동했다”…‘학폭 의혹’ 지수 전 소속사, 8억8천만원 배상 판결 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 임신 5개월 차, 태교에 전념 중…두 아이 부모된 이승기 이다인 부부 (ID: unknown)
+### 미국증시 AI공포 비웃은 코스피…“명절 즐기시죠” 장중 최고치 돌파 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “김 이사, 올해도 1등 해야지”…단골이 함께 영업 뛴 판매왕 (ID: unknown)
+### 매경이 전하는 세상의 지식 (매-세-지, 2월 14일) (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “딸이 아빠 엄마 불렀다”…5살 연하 일반인과 재혼 소식 전한 최정윤 (ID: unknown)
+### “급매 맞아? 여전히 비싸네”…매물 바라보는 두가지의 시선 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 대법 “SK하이닉스 성과급, 퇴직금 산정 안돼”...퇴직자 패소 이유는 (ID: unknown)
+### “귀성길 운전 주의해야”…설 연휴 첫날, 전국 곳곳 안개와 미세먼지 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 매경이 전하는 세상의 지식 (매-세-지, 2월 13일) (ID: unknown)
+### “설 연휴 혼잡 예상”…인천공항 14일 오전·고속도로 15일 가장 붐벼 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### AI발 파괴 전방위 확산에 뉴욕증시 급락 [월가월부] (ID: unknown)
+### 이 대통령 “다주택자의 대출연장 혜택 공정하겠나”…SNS서 소통 활발 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “날 고발하는 건 언론 자유 탄압하는 것”…전한길 목에 ‘기자증’ 눈길 (ID: unknown)
+### “李, 경제·부동산 정책은 인정해야죠”…지지율 63% 올들어 최고 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “왜 가계대출 늘리나”…당국 경고에 상호금융 다시 ‘대출조이기’ (ID: unknown)
+### ‘금빛 투혼’ 최가온의 발을 지탱한 스노보드…출발은 헛간에서 만든 너저분한 발명품이었다 [추동훈의 흥부전] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 강남 대장주도 매물 쏟아진다…압구정 현대 호가 36억 ‘뚝’ (ID: unknown)
+### “대장주가 40% 빠졌는데 볼것 있나요”…코인관련 기업들 실적 추락 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “영끌해 대박, 너도 할 수 있어”…‘68억 수익 인증’ 공무원, 조작 의혹 (ID: unknown)
+### “계산없이 들고 나가도 절도 아닙니다”…서울 곳곳에 있다는 마트의 정체 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
