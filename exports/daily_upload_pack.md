@@ -1,4 +1,4 @@
-# 📅 DAILY CONTENT PACK — 2026-02-12
+# 📅 DAILY CONTENT PACK — 2026-02-13
 
 ## 🎬 LONG FORM (1)
 - Title: TECH_INFRA_KOREA
