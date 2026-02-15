@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-15
+# 🧭 TODAY TOPIC VIEW - 2026-02-16
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,202 +12,202 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### "5년 만에 매출 27배로 폭증"…불안 팔아 성장했다 [부동산 강의지옥 中] - 한국경제 (ID: unknown)
+### 마이클 세일러, 비트코인 추가 매수…시장 침체에도 공격적 행보 - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “니 아직도 엄마집에 사나”…두려운 명절 잔소리에도 독립 어려운 이유 [캥거루족 탈출기⑤] - 매일경제 (ID: unknown)
+### '빚더미' 소상공인, 대출 상환 포기하고 보증기관 의존 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘고갈 위기’ 무색한 국민연금…美·코스피 쌍끌이 수익에 ‘든든’ - 마켓인 (ID: unknown)
+### "메모리 호황 최소 2028년까지…삼성전자·하이닉스 더 간다" [오천피 시대 투자전략] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 톰 크루즈와 브래드 피트의 격투…"할리우드는 끝인 것 같다" AI영상에 충격 - 아시아경제 (ID: unknown)
+### 출근길 도열 인사전…압구정 재건축 수주전 불붙었다 - 미디어데일 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 명절 전후에도 보이스피싱 '기승'…최근 6년간 피해 4만건 넘어 - 한국NGO신문 (ID: unknown)
+### [AI는 지금] 오일머니 '절실'…중동 향하는 글로벌 빅테크들 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 의료기기조합, 중동 최대 의료기기전시회서 한국 의료기기 홍보 - 청년의사 (ID: unknown)
+### “상장시 대박” “사주 투자운 있다”…금감원, 투자 사기 주의보 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '유령코인' 불안감 커지는데, 탈중앙화 거래소 대안될까?[계좌부활전] - 노컷뉴스 (ID: unknown)
+### ‘낙관론자’ 톰리 “코인 혹한기, 이미 끝났거나 늦어도 4월엔 끝” - edaily.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 암호화폐 투자 패러다임 변화…가격보다 '고정 수익' 대세 - 디지털투데이 (ID: unknown)
+### LG전자 ‘미등록 특허권 사용료’ 세금 소송 파기환송…대법 “국내 제조에 쓰였다면 법인세 내야” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘다주택자 양도세 중과’ 부활… 부동산 시장, 규제와 공급의 ‘시험대’ - 경기일보 (ID: unknown)
+### 고창경찰서 흥덕파출소, 설 명절 앞두고 보이스피싱 예방 홍보 - 전라매일 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미국 국무장관의 뼈아픈 반성문 "우리는 눈이 멀었습니다" [기후인사이트 19 | 인싸M] - MBC 뉴스 (ID: unknown)
+### [블록체인핫이슈] 빗썸 '오지급 사태' 일파만파…XRP, 이더리움 넘었다 - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [코스닥 개혁] 7월부터 상장 유지하려면 최소 몸값 200억…발등에 불 - 연합인포맥스 (ID: unknown)
+### 설 앞두고 과일·고기·생선 등 가격 올라…정부 할인 지원 - 국제신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 쿠팡 뉴욕 집단소송, 보안 전문 판사에 배당‥본격 심리 - v.daum.net (ID: unknown)
+### 바디텍메드, 신흥시장 공략 속도···공공 조달 시장 주시 - 시사저널e (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI가 갉아먹는 미국 경제 패권… ‘지식 무상시대’에 흔들리는 뉴욕증시 - 글로벌이코노믹 (ID: unknown)
+### 법원, 한국GM 노조 ‘직영센터 폐쇄·전직 금지’ 가처분 기각 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피 5500 광풍에 ‘개미 대통합’… 2060 전 세대 “믿을 건 SK하이닉스·삼성전자” - 조선비즈 - Chosunbiz (ID: unknown)
+### 비트코인, 횡보 끝 난기류 진입 - abcn.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "엔비디아 HBM4 공급, 삼성·하이닉스·마이크론 3파전 전망" - 한국NGO신문 (ID: unknown)
+### “두줄 프롬프트로?”...할리우드 충격에 몰아넣은 중국 AI - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### OTT요금 들썩이자…공정위, 가격구조 조사 - 매일경제 (ID: unknown)
+### ‘두바이 쫀득 쿠키’ 인기 높아지면서 소비자 불만도 폭증 - 국제신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 클래리티법, 2027년으로 승인 연기…통과 가능성 ‘뚝’ - 디지털투데이 (ID: unknown)
+### "이거 모르면 비행기 못 탈 수도"…출국 전에 꼭 확인하라는데 [플라잇톡] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 18만전자에 투자자들 ‘들썩’... ‘이재용 밈’도 화제 - 매거진한경 (ID: unknown)
+### 다주택자 맹공에 서울 아파트 매물 증가세…설 이후 집값 향방은 - 아주경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “비싸고 맛없는 휴게소” 지적에…정부, 운영구조 손본다 - 경향신문 (ID: unknown)
+### 코스피 5,500 돌파, 뉴욕 증시는 롤러코스터 - 데일리바이트(DAILY BYTE) (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 리플 XRP, 머스크 X 머니 통합설…베타 임박에 촉각 - 톱스타뉴스 (ID: unknown)
+### “개인정보 위험에 익숙해지는 한국” 국회입법조사처 보고서에 담긴 ‘쿠팡 사태’ 쟁점 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “연휴에 낮잠 자세요”…45분만 자도 똑똑해진다는데 (ID: unknown)
+### “상장시 대박” “사주 투자운 있다”…금감원, 투자 사기 주의보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “지갑은 가볍게, 연휴는 풍성하게”…설 ‘가성비 풀세팅’ 총력전 (ID: unknown)
+### “95%가 중국산”…5년간 ‘라벨 갈이’ 상품 2천억 규모 적발 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “니 아직도 엄마집에 사나”…두려운 명절 잔소리에도 독립 어려운 이유 [캥거루족 탈출기⑤] (ID: unknown)
+### “BTS 따라 배운다”…K팝 열풍에 해외 팬 10명 중 9명 ‘한글 공부’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한동훈 제명 후 지지율 ‘약보합’…장동혁, 설 민심잡기 성공할까 (ID: unknown)
+### “상위 1%는 무려 연 수입 13억”…유튜버 1인당 평균은 7천만원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 자고 나니 뒷목이 뻐근?…녹내장 환자, 높은 베개쓰면 안돼는 치명적 이유 (ID: unknown)
+### “BTS 사는 나인원 한남급”…목동 ‘대장’ 5단지 설계안 뜯어보니 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 올림픽부터 F1까지 천문학적 돈 쏟아붓는다…스포츠 후원에 꽂힌 명품시계 (ID: unknown)
+### 중국서 탄생한 혈액암 ‘블록버스터’ 치료제…중국 바이오테크 새 지평 열다 [중국과 글로벌 투자] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “거의 옷을 입지 않는다”…시내버스 비키니 민폐女에 뿔난 시드니 (ID: unknown)
+### 16년 뉴욕 홀린 손정완 “진정한 화려움은 내면의 힘에서 나오죠” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 로또 1등 14명, 당첨금 24억원씩…‘23, 26, 27, 35, 38, 40’ (ID: unknown)
+### “나 왕년에 운전 좀 했는데”…VR로 고령자 운전 능력 실질 진단한다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 의료계 이목 쏠린 서울대 차기 병원장에 6명 지원한 듯 (ID: unknown)
+### 배현진 징계에 또 내홍 조짐…윤어게인 불만까지 겹친 국민의힘 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “본인한테 물어봤는데”…‘솔로지옥5’ 이성훈, MB 손자설에 제작진의 답변 (ID: unknown)
+### “대출 안나와? 그럼 주식 팔지 뭐”…서울 집값 치른 개미들 ‘수익 실현’ 2조원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “쓰레기·병원·주차부터 아이스링크까지”…설 연휴 서울 ‘꿀정보’ 한눈에 (ID: unknown)
+### “세 번째 말씀드린다”…유승민, 경기지사 불출마 거듭 확인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 미인때문에 나라 망했다더니…3천년 전 주나라 멸망시킨 이 녀석 (ID: unknown)
+### “관계 정리하자”…홧김에 흉기 휘두른 60대 현행범 체포 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “부동산 불패 우리 정부서 끝낸다는 것이 기조”…‘이재명은 한다’는 강훈식 (ID: unknown)
+### “IMF 때보다 더 불안하다”…대출 못 갚는 중소기업 속출 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 루비오 美 국무장관 “스스로 방어할 수 있는 동맹국 원해” (ID: unknown)
+### “인공근육 도움받아 일하기 편하네요”…초고령사회 해결나선 사장님 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “배가 너무 많이 나왔다. 난 다산의 후예”…셋째까지 낳겠다는 남보라 (ID: unknown)
+### 트럼프 원숭이 조롱에 오바마 일침…“국민이 답할 것” ​ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “정치가 걱정 덜어주기는 커녕”…‘배현진 중징계’에 한동훈이 한 말 (ID: unknown)
+### 서울 아파트 원정 매입 3년여 만에 최저 찍었다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 오세훈 서울시장 “국힘, 빨리 ‘절윤’ 해야” (ID: unknown)
+### “설날에도 놀 시간 없네”…대입 마지막 기회 ‘추가모집’ 잡아라 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘해피 설날’…둘째 임신 소식 전한 이승기 아내, 한복 입은 첫째 공개 (ID: unknown)
+### “입 안 벌어져 아파”…개그맨 장동민 받은 실리프팅 시술 뭐길래? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 에버랜드보다도 더 많이 찾았다…설 연휴 ‘관광지 1위’ 어디인지 보니 (ID: unknown)
+### “6억원 어치 금 팔려다 호텔에 열흘간 감금돼”…‘골드바’ 사기 속출, 예방은 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “하루 매출 30만원”…강남역에 버거집 연 김남일, 창업 고충 (ID: unknown)
+### ‘고 최진실 딸’ 최준희, 5월 11살 연상 연인과 결혼 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
