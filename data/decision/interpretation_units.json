@@ -71,5 +71,61 @@
       "hypothesis_source_trust": "A"
     },
     "source_ref": {}
+  },
+  {
+    "interpretation_id": "IS-96-20260217-NVID-Open",
+    "as_of_date": "2026-02-17",
+    "target_sector": "STRATEGIC_ALLIANCE",
+    "interpretation_key": "RELATIONSHIP_BREAK_RISK",
+    "theme": "RELATIONSHIP_BREAK_RISK",
+    "confidence_score": 0.6,
+    "evidence_tags": [
+      "Manual Signal"
+    ],
+    "structural_narrative": "NVIDIA와 OpenAI 사이의 supplier_dependency 관계에서 구조적 균열 신호가 감지되었습니다. (Stress Score: 0.6)",
+    "derived_metrics_snapshot": {
+      "stress_score": 0.6,
+      "signals": {
+        "capital_link": {
+          "present": false,
+          "amount_usd": null
+        },
+        "supply_dependency": {
+          "present": false,
+          "note": ""
+        },
+        "statement_divergence": {
+          "present": true,
+          "note": ""
+        },
+        "deal_reprice": {
+          "present": true,
+          "note": ""
+        }
+      },
+      "break_risk": "MED",
+      "reliability": 0.9
+    },
+    "hypothesis_jump": {
+      "status": "HOLD",
+      "trigger_reason": "Relationship Stress (MED)",
+      "independent_sources_count": 1
+    },
+    "why_now": [
+      "NVIDIA exclusive supply priority re-evaluation revealed in internal memo."
+    ],
+    "checklist_3": [
+      "confirm_source_2plus (n>=2 independent sources)",
+      "confirm_capital_link_change",
+      "confirm_supplier_switch_signals"
+    ],
+    "risk_3": [
+      "rumor risk",
+      "negotiation reversal",
+      "timing uncertainty"
+    ],
+    "evidence_refs": [
+      "manual"
+    ]
   }
 ]
