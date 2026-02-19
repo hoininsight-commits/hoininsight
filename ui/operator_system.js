@@ -6,7 +6,7 @@ export async function initSystemView(container) {
         const [auditRes, unitsRes, testRes] = await Promise.all([
             fetch('data/ops/usage_audit.json').then(r => r.ok ? r.json() : null),
             fetch('data/decision/interpretation_units.json').then(r => r.ok ? r.json() : []),
-            fetch('data/ops/test_summary.json').then(r => r.ok ? r.json() : null)
+            fetch('data/ops/system_health.json').then(r => r.ok ? r.json() : null)
         ]);
 
         const todayStr = new Date().toISOString().split('T')[0]; // simple UTC date or use local if needed
@@ -68,7 +68,7 @@ function renderSystem(container, audit, test, anomalyCount, whyNowDist) {
             <div class="status-card full-width">
                 <h3>📜 최근 에러 로그</h3>
                 <div class="log-console">
-                    ${test && test.failures ? test.failures.map(f => `
+                    ${test && test.recent_failures ? test.recent_failures.map(f => `
                         <div class="log-entry error">
                             <span class="bad">[FAIL]</span> ${f.nodeid} - ${f.message ? f.message.substring(0, 100) : "No msg"}...
                         </div>
