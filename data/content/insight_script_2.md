@@ -1,20 +1,20 @@
-# Insight Script: [Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)
+# Insight Script: [Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (crypto_btc_usd_spot_coingecko, 공포지수(VIX) 이상 급등 동반)
 <!-- Metadata
-Topic ID: risk_vix_fred
+Topic ID: rates_us10y_fred
 Level: L2
 Rank: 2
 Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)** 현상이 감지되었습니다.
+- **[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (crypto_btc_usd_spot_coingecko, 공포지수(VIX) 이상 급등 동반)** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유
-- 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)가 평소 변동폭 대비 2.86배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [index_spx_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 10년물 국채금리에서 Z-Score -2.17 >= 2.0. 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## 3. 근거 데이터
-- 주요 지표: `risk_vix_fred`
+- 주요 지표: `rates_us10y_fred`
 
 ## 4. Actionable Insight
 - 이 흐름이 지속될 경우, 관련 섹터에 대한 리스크 관리가 필요합니다.
