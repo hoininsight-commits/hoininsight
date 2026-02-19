@@ -22,12 +22,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스 (ID: unknown)
+### “지금 아니면 못 산다”…서울 생애최초 매수자 절반이 ‘30대’ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 1석3조 AI칩 자체 개발 …天地人 동시 공략 - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,11 +47,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 韓, 페로브스카이트 합성 신기술 개발…태양광 관련주 급등 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### ‘이 도시락이 990원이라고?’…초저가 도시락·반값 생리대 내놓은 대형마트들 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -57,12 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 두산로지스틱스솔루션, 1620억 규모 물류자동화 프로젝트 수주 - 뉴스톱 (ID: unknown)
+### 두산로지스틱스솔루션, 아성다이소 양주센터 물류 자동화 수주 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [게시판] 다이슨 슬림·초경량 물청소기 '펜슬 워시' 공개 - 연합뉴스 한민족센터 (ID: unknown)
+### 다이슨, 가벼운 물청소기 ‘펜슬 워시’ 공개… 3월 국내 출시 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,39 +77,64 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 보건산업진흥원, 「2026년 KHIDI 지원사업 가이드북」 발간 - 후생신보 (ID: unknown)
+### 韓, 페로브스카이트 합성 신기술 개발…태양광 관련주 급등 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 거버넌스포럼 "자사주 소각 예외 안돼…코스닥 정상화 역행" - 연합인포맥스 (ID: unknown)
+### 네이버페이 정오부터 온라인 결제 등 일부 먹통...현재 복구 중 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한미, 흑색종 신약 ‘벨바라페닙’ 임상 2상 투약 개시 - 의협신문 (ID: unknown)
+### 금융권→대부업체로 ‘채권 털어내기’ 度 넘어… ‘추심의 늪’ 빠진 채무자들 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중진공, K-브랜드 온라인 플랫폼에 최대 2억원…참여기업 모집 - 연합뉴스 한민족센터 (ID: unknown)
+### [로봇특구 만들자] 휴머노이드 도입 가시화…노동 현장 바뀐다 - 딜사이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 섭식장애 치료 성공은? ‘가족’과 ‘지속성’이 열쇠 - 농민신문 (ID: unknown)
+### 창고형약국 '무법천지'…무자격 판매·재포장·조경 훼손 확인 - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 리브리반트 SC, 두경부암 영역 확장…혁신치료제 지정 - 메디칼타임즈 (ID: unknown)
+### 삼성전자 직원 작년 평균 연봉 1억5000만원 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대기업·공공기관과의 개방형 혁신 참여 스타트업 모집...'스타트업 협업' 수요과제 중 30개 선정 - 인공지능신문 (ID: unknown)
+### 백악관, '관세인상 역효과' 뉴욕 연은 보고서에 "징계감" 발끈 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 조산 위기 산모 병원 30곳 거절당해 45㎞ 달린 구급대원들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 강원도 “올해 기업 20곳 유치, 1000명 고용 창출 목표” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘판사 이한영’으로 빵 뜬 여배우 “10년 무명…월급 받는 친구들 부러웠다” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 에이플러스에셋, 환경교육·보전 활동 7년째 후원…사회공헌 지속 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 990원 삼겹살·5000원 생리대…설 끝나자 ‘초저가 전쟁’ 불붙었다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “나도 언제 떠날지”…임현식, 故이순재 비보 속 경도인지장애 고백 (ID: unknown)
@@ -183,31 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 코스닥 마감, 1,160.71P (4.94%↑) 케어젠, 삼천당제약등 상승세 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “삼성전자는 연일 최고가인데”…지지부진한 현대차, 상승세 시작되나 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “천사 실사판인가요?”…입석서 쩔쩔매던 아기 엄마에 자리 양보한 부부 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 숨고, ‘AI 포트폴리오’로 전문가 등록 64% 늘려 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 와이파워원, 레인보우로보틱스·PHA 자율주행이동로봇 무선 충전 시스템 업무 협약 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 카카오게임즈, SM엔터 IP 신작 ‘슴미니즈’ 25일 글로벌 출시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
