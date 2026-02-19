@@ -328,17 +328,19 @@ jobs:
 
       - name: Prepare Docs for Deployment
         run: |
-          # [IS-56] Clean docs/data to remove stale/mock artifacts
+          # [IS-56] Clean docs/data (PRESERVE docs/index.html and docs/legacy)
+          # We only want to refresh data, not the UI shell
           rm -rf docs/data
           mkdir -p docs/data/decision
           mkdir -p docs/exports
           mkdir -p docs/issuesignal
-          cp dashboard/index.html docs/index.html
+          
+          # COPY DATA ONLY (Do do not touch index.html)
           cp -r data/dashboard/* docs/data/ || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
           cp -r data/reports docs/data/ || true
           
-          # [IS-100] Adapt and Publish UI Decision Assets
+          # [IS-100] Adapt and Publish UI Decision Assets (This populates docs/data/decision)
           python -m src.ui.run_publish_ui_decision_assets
           
           # [IS-51] Operational Dashboard Guarantee
