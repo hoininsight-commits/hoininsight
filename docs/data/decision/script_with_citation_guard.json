@@ -1,0 +1,142 @@
+[
+  {
+    "topic_id": "e2830a98-06e6-4662-ba47-a6b8cdef5285",
+    "version": "is97_3_v1",
+    "persona": "MARKET_OBSERVER",
+    "tone": "CAUTIONARY",
+    "speakability": "READY",
+    "script": {
+      "hook": "오늘은 TECH_INFRA_KOREA을 '왜 지금인가' 관점에서 데이터로만 정리할게. 핵심은 STRUCTURAL_ROUTE_FIXATION다. (관찰 중)",
+      "claim": "이건 단기 뉴스가 아니라 구조 변화다. STRUCTURAL_ROUTE_FIXATION 조합이 근거다. (관찰 중)",
+      "evidence_3": [
+        "명분 점수(Pretext) 0.92로 구조적 타당성 확보 (데이터 확인 필요)",
+        "주요 데이터 태그 정렬: KR_POLICY, PRETEXT_VALIDATION, EARNINGS_VERIFY (데이터 확인 필요)",
+        "입증 근거: High pretext score and confidence (데이터 확인 필요)"
+      ],
+      "checklist_3": [
+        "지표 KR_POLICY: KR_POLICY 데이터 확인 — 임계치 도달 여부",
+        "지표 PRETEXT_VALIDATION: PRETEXT_VALIDATION 데이터 확인 — 임계치 도달 여부",
+        "지표 EARNINGS_VERIFY: EARNINGS_VERIFY 데이터 확인 — 임계치 도달 여부"
+      ],
+      "risk_note": "단, 추가 지표 변동 시 시나리오 폐기가 필요함.",
+      "closing": "정리하면, 지금은 TECH_INFRA_KOREA 섹터가 보상받는 구간이다. 체크리스트만 보고 따라가면 된다. (관찰 중)"
+    },
+    "citations": [
+      {
+        "key": "KR_POLICY",
+        "source": "INTERNAL_ENGINE"
+      },
+      {
+        "key": "PRETEXT_VALIDATION",
+        "source": "INTERNAL_ENGINE"
+      },
+      {
+        "key": "EARNINGS_VERIFY",
+        "source": "INTERNAL_ENGINE"
+      }
+    ],
+    "governance": {
+      "deterministic": true,
+      "no_llm": true,
+      "add_only_integrity": true
+    },
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  },
+  {
+    "topic_id": "e6ca7874-1227-4ec6-aa87-e34a4f2bc2de",
+    "version": "is97_3_v1",
+    "persona": "MARKET_OBSERVER",
+    "tone": "CAUTIONARY",
+    "speakability": "HOLD",
+    "script": {
+      "hook": "지금은 FINANCIAL_VALUE_UP이 확정 구간이 아니라 '조건 대기' 구간이야. 트리거만 확인하면 된다. (관찰 중)",
+      "claim": "이슈는 진행 중이지만 조건이 완성되려면 차기 실적 발표(EARNINGS_VERIFY) 데이터 반영 시점까지 관망가 필요하다. (관찰 중)",
+      "evidence_3": [
+        "명분 점수(Pretext) 0.78로 구조적 타당성 확보 (데이터 확인 필요)",
+        "주요 데이터 태그 정렬: KR_POLICY, FLOW_ROTATION (데이터 확인 필요)",
+        "입증 근거: Pretext strength is moderate (0.78) (데이터 확인 필요)"
+      ],
+      "checklist_3": [
+        "지표 KR_POLICY: KR_POLICY 데이터 확인 — 임계치 도달 여부",
+        "지표 FLOW_ROTATION: FLOW_ROTATION 데이터 확인 — 임계치 도달 여부"
+      ],
+      "risk_note": "단, 차기 실적 발표(EARNINGS_VERIFY) 데이터 반영 시점까지 관망 변동 시 시나리오 폐기가 필요함.",
+      "closing": "정리하면, 지금은 차기 실적 발표(EARNINGS_VERIFY) 데이터 반영 시점까지 관망만 기다리면 된다. 조건이 오면 행동하고, 아니면 관찰로 해석된다."
+    },
+    "citations": [
+      {
+        "key": "KR_POLICY",
+        "source": "INTERNAL_ENGINE"
+      },
+      {
+        "key": "FLOW_ROTATION",
+        "source": "INTERNAL_ENGINE"
+      }
+    ],
+    "governance": {
+      "deterministic": true,
+      "no_llm": true,
+      "add_only_integrity": true
+    },
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  },
+  {
+    "topic_id": "HYP-fab88b81",
+    "version": "is97_3_v1",
+    "persona": "MARKET_OBSERVER",
+    "tone": "CAUTIONARY",
+    "speakability": "READY",
+    "script": {
+      "hook": "님들, 지금 GENERAL_ALPHA 이슈에서 시장이 진짜 무서워하는 건 HYPOTHESIS_US_MA_RUMOR야. (해석 필요)",
+      "claim": "숫자가 확인됐다. 0.82가 핵심 증거다. (관찰 중)",
+      "evidence_3": [
+        "트리거: SpaceX and xAI strategic merger confirmed (데이터 확인 필요)",
+        "메커니즘: 자본 구조 재편 및 수급 집중 (데이터 확인 필요)",
+        "수혜 주체: SpaceX, xAI, Acquirer Shareholders (데이터 확인 필요)"
+      ],
+      "checklist_3": [
+        "지표 US_MA_RUMOR: US_MA_RUMOR 데이터 확인 — 임계치 도달 여부",
+        "지표 HYPOTHESIS_JUMP: HYPOTHESIS_JUMP 데이터 확인 — 임계치 도달 여부"
+      ],
+      "risk_note": "데이터 기반 관찰 지속이 필요함.",
+      "closing": "정리하면, 지금은 GENERAL_ALPHA 섹터가 보상받는 구간이다. 체크리스트만 보고 따라가면 된다. (관찰 중)"
+    },
+    "citations": [
+      {
+        "key": "US_MA_RUMOR",
+        "source": "INTERNAL_ENGINE"
+      },
+      {
+        "key": "HYPOTHESIS_JUMP",
+        "source": "INTERNAL_ENGINE"
+      }
+    ],
+    "governance": {
+      "deterministic": true,
+      "no_llm": true,
+      "add_only_integrity": true
+    },
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  }
+]
