@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-02-19T14:38:46Z",
+    "ts_utc": "2026-02-19T15:07:41Z",
     "dataset_id": "index_kospi_stooq",
     "topic_id": "index_kospi_stooq::z_score_model_v1",
     "title": "data/features/anomalies/2026/02/19/index_kospi_stooq.json L2 Signal",
@@ -10,10 +10,10 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": 1.52,
+        "z_score": 1.42,
         "percentile": 100.0,
-        "value": 5658.78,
-        "rolling_mean_20d": 5326.9045,
+        "value": 5673.51,
+        "rolling_mean_20d": 5356.1230000000005,
         "reasoning": "Percentile 100.0% (Extreme)"
       },
       "regime": {

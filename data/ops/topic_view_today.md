@@ -17,7 +17,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 집합건물 생애 최초 매수자 절반이 30대…2010년 이후 최대 - 매일경제 (ID: unknown)
+### “지금 아니면 못 산다”…서울 생애최초 매수자 절반이 ‘30대’ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,12 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 엔비디아 다음은 구글…삼성·SK, HBM4E 경쟁 본격화 - 뉴스토마토 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 서울 매물 쏟아진다는데 … 고가 주택, 실제론 안 팔고 '증여 직행' 확산 - 뉴데일리 경제 (ID: unknown)
+### 엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,7 +42,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [증시키워드] 삼전 18만·SK하닉 혼조…미래에셋증권 15% 폭등에 증권주 투심↑ - 이투데이 (ID: unknown)
+### [특징주] 삼성전자, 사상 첫 '19만원' 돌파.. 美 기술주발 훈풍 - 글로벌이코노믹 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 채용 한파 풀릴까…기업 70% "올해 사람 뽑는다" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### CCTV 카메라 렌즈 오염 자동제거 기술, 정부 공공연구성과 확산 '모범' - 동아사이언스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,22 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 채용 한파 풀릴까…기업 70% "올해 사람 뽑는다" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘60조 규모’ 비트코인 오지급 사태 검사, 이달 말까지 연장…“추가사례 파악” - 매일경제 (ID: unknown)
+### 설 연휴에도 "투기 근절"…강남·한강벨트 쌓이는 매물 - JTBC (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### [로봇특구 만들자] 휴머노이드 도입 가시화…노동 현장 바뀐다 - 딜사이트 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### '우주산업 미들파워' 한국…위성 파운드리 시장 정조준 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +97,99 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “나만 월 4백 못 버나?”…직장인 평균 연봉 봤더니 [잇슈 키워드] - KBS 뉴스 (ID: unknown)
+### [임지선의 틈]성과급 ‘1인당 1억3000만원’이 던지는 질문 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "성과급 반영해 퇴직금 올려달라"…삼성그룹 전반으로 '확전' - 한국경제 (ID: unknown)
+### "K배터리, ESS 판도 흔들 것"…LG엔솔 10위권 내 진입 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “OLED 넘는 꿈의 화질”... 韓 연구팀, ‘0도 합성’으로 ‘꿈의 소재’ 페로브스카이트 대량생산 길 열었다 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 교내 상장 수여시 공적조서 안 쓴다…교원 조퇴·외출 사유 기재도 폐지 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “비자 문제로 공연 열지 못했다”…미국 LA공연 연기한 송가인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 윤석열 ‘내란 우두머리’ 혐의 1심 선고공판 시작 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “야간 조업 허용하면 뭐 하나”...올해 인천 꽃게 허용어획량 오히려 줄어 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### GS건설, 성수1지구 입찰보증금 1천억 ‘완납’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 교보생명, ‘女자궁 질환 초음파검사’ 특약 6개월 배타적사용권 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 얼음 녹는 ‘해빙기’ 주의보···5년간 사상자 32명 발생 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “백댄서가 너보다 날씬” 지적에…트와이스 쯔위 ‘사이다 일침’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 배현진 “장동혁, 부당징계 무효화하라…진정성 증명할 유일한 길” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 인도 AI 정상회의 참석한 배경훈 부총리...앤스로픽 CEO와도 협력 논의 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 윤석열 전 대통령 공소기각 촉구집회 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 윤석열 전 대통령 무죄 외치는 시민들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “22년간 똑같은 번호 로또 구매, 결국 터졌다”…‘50억 잭팟’ 조합 눈길 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 근로소득세 70조 육박 ‘역대 최대’…직장인 “소리 없는 증세” vs 정부 “실효세율 낮다” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 尹 1심선고 앞둔 서초동 초긴장…1만명 집회신고·1000명 경찰투입 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “명문대 전현무, 고졸인 나와 같은 대상”…박나래 발언, 무슨 상황? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 연예계 떠난 ‘미남 개그맨’, 나이트 DJ 근황…“심각한 우울증·트라우마도” (ID: unknown)
@@ -127,87 +207,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 이 대통령 “경제산업 전반에 암적·반시장적 담합…영구퇴출 검토” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### LG유플러스의 통신 특화 AI, MWC 무대서 안전성 검증 받는다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “구독자 떨어져 급히 올린 영상”…충주맨 후임, 300만뷰 대박 ‘추노’ 비하인드 공개 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 에이엔피, PCB 사업 고부가 구조 전환 본격화 …“고사양·고성장 적용처 확대” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [단독] 변협, 2차 종합특검 특검보에 군법무관 출신 이수동 추천 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘MZ 무당’ 노슬비, 19세 강제 임신·폭행 고백…“왼쪽 가슴 종양” 전율 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “개인적으로 사형 선고는”…판사 출신 윤유선 남편 이성호 ‘소신 발언’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “중국서 부는 K패션”...무신사, 다음 달 중국 2호점 연다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 패션그룹형지, 여성캐주얼 황숙현 총괄본부장 선임 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 지난달 서울 집값 0.91%↑…상승폭은 10·15 대책 발표 이후 크게 꺾여 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 셀트리온 “램시마SC, 치료 공백 환자군서 효과 확인” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 민주 “통합추진준비위 곧 구성”…혁신당 “어떤 논의할지 답부터” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 오매불망 기다렸는데…송가인, LA 공연 돌연 연기된 이유 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 日, 2차 대미 투자 프로젝트로 차세대원자로(SMR) 뜬다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 김여정 “정동영의 무인기 재발방지 의지표명 높이 평가한다” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### KB금융, 1조 인프라펀드 조성...용인반도체클러스터 투자 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 교보생명, ‘자궁질환 초음파검사 특약’ 6개월 배타적사용권 획득 (ID: unknown)
+### [속보] 이 대통령 “경제산업 전반에 암적 담합, 영구퇴출 검토” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
