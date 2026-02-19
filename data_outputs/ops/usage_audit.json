@@ -8,6 +8,7 @@
   "workflow_references": [],
   "code_references": {
     "docs/data/ui": [
+      "tests/verify_architecture_guards.py",
       "tests/verify_ref002_registry_contracts.py",
       "tests/verify_is99_2_scheduler.py",
       "tests/verify_ref011_single_entry_and_legacy_readonly.py",
@@ -21,6 +22,9 @@
       "docs/engine/REF-013_REMOTE_VERIFICATION_REPORT.md",
       "scripts/audit_usage.py",
       "registry/refactor/legacy_map_v1.yml",
+      "data/ui/DEPRECATED.md",
+      "data_outputs/ops/usage_audit.md",
+      "data_outputs/ops/usage_audit.json",
       "src/ui_logic/contracts/publish_ui_assets.py"
     ],
     "data/ui": [
@@ -37,6 +41,7 @@
       "remote_verify_is102/src/ui/run_publish_ui_decision_assets.py",
       "remote_verify_is98_5/src/ui/ui_decision_contract.py",
       "remote_verify_is98_5/src/ui/run_publish_ui_decision_assets.py",
+      "tests/verify_architecture_guards.py",
       "tests/verify_is113_operator_narrative_order.py",
       "tests/verify_ref002_registry_contracts.py",
       "tests/verify_is99_2_scheduler.py",
@@ -52,10 +57,9 @@
       "docs/ui/sidebar_registry_loader.js",
       "docs/ref/ui_contract_authority.md",
       "docs/ref/legacy_ui_asset_inventory.md",
+      "docs/handoff/COMPLETION_REPORT_TEMPLATE_KO.md",
       "docs/architecture/WIRING_RULES.md",
       "docs/architecture/ARCHITECTURE_SEPARATION_CHARTER.md",
-      "docs/data/ui/_deprecated.json",
-      "docs/data/ui/manifest.json",
       "docs/engine/IS-106_REMOTE_VERIFICATION_REPORT.md",
       "docs/engine/IS-101-1_REMOTE_VERIFICATION_REPORT.md",
       "docs/engine/IS-109-A_REMOTE_VERIFICATION_REPORT.md",
@@ -93,8 +97,11 @@
       "remote_verify_is98_6/src/ui/run_publish_ui_decision_assets.py",
       "data/ui/_deprecated.json",
       "data/ui/manifest.json",
+      "data/ui/DEPRECATED.md",
       "data_outputs/ui/_deprecated.json",
       "data_outputs/ui/manifest.json",
+      "data_outputs/ops/usage_audit.md",
+      "data_outputs/ops/usage_audit.json",
       "remote_verify_is100_v2/src/ui/ui_decision_contract.py",
       "remote_verify_is100_v2/src/ui/run_publish_ui_decision_assets.py",
       "src/ui_logic/narrators/natural_language_summary.py",
@@ -107,7 +114,9 @@
     ],
     "data_outputs/ui": [
       "tests/verify_ref005_structure_integrity.py",
-      "scripts/audit_usage.py"
+      "scripts/audit_usage.py",
+      "data_outputs/ops/usage_audit.md",
+      "data_outputs/ops/usage_audit.json"
     ],
     "exports": [
       "walkthrough.md",
@@ -195,6 +204,7 @@
       "docs/QUOTE_PROOF_LAYER_SPEC.md",
       "docs/walkthrough.md",
       "docs/DECISION_CARD_V2_SCHEMA.md",
+      "docs/handoff/COMPLETION_REPORT_TEMPLATE_KO.md",
       "docs/engine/IS-106_REMOTE_VERIFICATION_REPORT.md",
       "docs/engine/IS-109-A_REMOTE_VERIFICATION_REPORT.md",
       "docs/engine/IS-98-4_SHORTS_BRANCHING.md",
@@ -338,6 +348,8 @@
       "data/issuesignal/packs/RAW-20260202144043_v2.json",
       "data/issuesignal/packs/RAW-20260202155631_v2.json",
       "data/issuesignal/packs/RAW-20260202180221_v2.json",
+      "data_outputs/ops/usage_audit.md",
+      "data_outputs/ops/usage_audit.json",
       "remote_verify_is100_v2/tests/verify_is99_2_scheduler.py",
       "remote_verify_is100_v2/tests/verify_is99_4_upload_pack.py",
       "remote_verify_is100_v2/tests/verify_is99_1_daily_export.py",
@@ -395,6 +407,7 @@
       "remote_verify_is98_5/docs/engine/IS-100_UI_REMOTE_VERIFICATION_REPORT.md",
       "remote_verify_is98_5/docs/engine/IS-100_REMOTE_VERIFICATION_REPORT.md",
       "remote_verify_is98_5/src/ui/run_publish_ui_decision_assets.py",
+      "tests/verify_architecture_guards.py",
       "tests/verify_is100_pages_paths.py",
       "docs/engine/IS-100_UI_REMOTE_VERIFICATION_REPORT.md",
       "docs/engine/IS-100_REMOTE_VERIFICATION_REPORT.md",
@@ -420,6 +433,8 @@
       "remote_verify_is98_6/docs/engine/IS-100_REMOTE_VERIFICATION_REPORT.md",
       "remote_verify_is98_6/src/ui/run_publish_ui_decision_assets.py",
       "remote_verify_is100/docs/ui/render.js",
+      "data_outputs/ops/usage_audit.md",
+      "data_outputs/ops/usage_audit.json",
       "remote_verify_is100_v2/tests/verify_is100_pages_paths.py",
       "remote_verify_is100_v2/docs/ui/render.js",
       "remote_verify_is100_v2/docs/engine/IS-100_UI_REMOTE_VERIFICATION_REPORT.md",
@@ -434,5 +449,243 @@
     "docs/data/decision",
     "docs/data/ui",
     "data_outputs/ui"
-  ]
+  ],
+  "quantification": {
+    "docs/data/ui": {
+      "total_reference_count": 27,
+      "top_referrers": [
+        [
+          "data_outputs/ops/usage_audit.json",
+          4
+        ],
+        [
+          "tests/verify_architecture_guards.py",
+          3
+        ],
+        [
+          "tests/verify_ref011_single_entry_and_legacy_readonly.py",
+          3
+        ],
+        [
+          "tests/verify_ref013_no_undefined_across_ui_assets.py",
+          2
+        ],
+        [
+          "docs/engine/REF-001_REMOTE_VERIFICATION_REPORT.md",
+          2
+        ],
+        [
+          "tests/verify_ref002_registry_contracts.py",
+          1
+        ],
+        [
+          "tests/verify_is99_2_scheduler.py",
+          1
+        ],
+        [
+          "tests/verify_ref012_manifest_only_legacy.py",
+          1
+        ],
+        [
+          "tests/verify_ref005_structure_integrity.py",
+          1
+        ],
+        [
+          "tests/verify_ref001_manifest_and_publish.py",
+          1
+        ]
+      ],
+      "reference_type_breakdown": {
+        "tests": 13,
+        "scripts": 1,
+        "docs": 5,
+        "workflows": 0,
+        "runtime": 8
+      }
+    },
+    "data/ui": {
+      "total_reference_count": 165,
+      "top_referrers": [
+        [
+          "data_outputs/ops/usage_audit.json",
+          8
+        ],
+        [
+          "src/ui_logic/contracts/manifest_builder_v1.py",
+          7
+        ],
+        [
+          "registry/ui_cards/ui_card_registry_v1.yml",
+          6
+        ],
+        [
+          "data/ui/manifest.json",
+          6
+        ],
+        [
+          "data_outputs/ui/manifest.json",
+          6
+        ],
+        [
+          "docs/engine/REF-001_REMOTE_VERIFICATION_REPORT.md",
+          4
+        ],
+        [
+          "docs/engine/REF-003_REMOTE_VERIFICATION_REPORT.md",
+          4
+        ],
+        [
+          "remote_verify_is101_2/src/ui/run_publish_ui_decision_assets.py",
+          3
+        ],
+        [
+          "remote_verify_is102/src/ui/run_publish_ui_decision_assets.py",
+          3
+        ],
+        [
+          "remote_verify_is98_5/src/ui/run_publish_ui_decision_assets.py",
+          3
+        ]
+      ],
+      "reference_type_breakdown": {
+        "tests": 18,
+        "scripts": 2,
+        "docs": 52,
+        "workflows": 0,
+        "runtime": 93
+      }
+    },
+    "data_outputs/ui": {
+      "total_reference_count": 8,
+      "top_referrers": [
+        [
+          "data_outputs/ops/usage_audit.json",
+          4
+        ],
+        [
+          "tests/verify_ref005_structure_integrity.py",
+          2
+        ],
+        [
+          "scripts/audit_usage.py",
+          1
+        ],
+        [
+          "data_outputs/ops/usage_audit.md",
+          1
+        ]
+      ],
+      "reference_type_breakdown": {
+        "tests": 2,
+        "scripts": 1,
+        "docs": 0,
+        "workflows": 0,
+        "runtime": 5
+      }
+    },
+    "exports": {
+      "total_reference_count": 390,
+      "top_referrers": [
+        [
+          "tests/verify_is98_6_risk_timeline_narrator.py",
+          7
+        ],
+        [
+          "remote_verify_is98_6/tests/verify_is98_6_risk_timeline_narrator.py",
+          7
+        ],
+        [
+          "remote_verify_is98_6/src/ui/risk_timeline_narrator.py",
+          6
+        ],
+        [
+          "src/ui_logic/narrators/risk_timeline_narrator.py",
+          6
+        ],
+        [
+          "docs/engine/IS-109-A_REMOTE_VERIFICATION_REPORT.md",
+          4
+        ],
+        [
+          "docs/engine/IS-108_REMOTE_VERIFICATION_REPORT.md",
+          4
+        ],
+        [
+          "remote_verify_is101_2/tests/verify_is99_2_scheduler.py",
+          3
+        ],
+        [
+          "remote_verify_is101_2/docs/engine/IS-99-1_REMOTE_VERIFICATION_REPORT.md",
+          3
+        ],
+        [
+          "remote_verify_is101_2/docs/engine/IS-99-2_DAILY_SCHEDULER.md",
+          3
+        ],
+        [
+          "remote_verify_is102/tests/verify_is99_2_scheduler.py",
+          3
+        ]
+      ],
+      "reference_type_breakdown": {
+        "tests": 77,
+        "scripts": 1,
+        "docs": 170,
+        "workflows": 0,
+        "runtime": 142
+      }
+    },
+    "docs/data/decision": {
+      "total_reference_count": 136,
+      "top_referrers": [
+        [
+          "remote_verify_is101_2/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is102/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is98_5/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is101_1/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is101/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is96_8/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is98_6/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "remote_verify_is100_v2/tests/verify_is100_pages_paths.py",
+          7
+        ],
+        [
+          "tests/verify_architecture_guards.py",
+          6
+        ]
+      ],
+      "reference_type_breakdown": {
+        "tests": 69,
+        "scripts": 1,
+        "docs": 35,
+        "workflows": 0,
+        "runtime": 31
+      }
+    }
+  }
 }
