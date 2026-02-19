@@ -54,5 +54,5 @@ def publish_assets(project_root: Path):
     print("\n[Publish] Sync completed to docs/data/* and data_outputs/*")
 
 if __name__ == "__main__":
-    project_root = Path(__file__).parent.parent.parent
+    project_root = Path(__file__).parent.parent.parent.parent
     publish_assets(project_root)
