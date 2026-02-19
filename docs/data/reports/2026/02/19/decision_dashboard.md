@@ -191,22 +191,25 @@
 | 한은 기대감에 外人 순매수까지…국고채 금리 하락 - 연합인포맥스 | Structural implication: '한은 기대감에 外人 순매수까지…국고채 금리 하락 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | “지금 아니면 못 산다”…서울 생애최초 매수자 절반이 ‘30대’ - 조선일보 | Structural implication: '“지금 아니면 못 산다”…서울 생애최초 매수자 절반이 ‘30대’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 1석3조 AI칩 자체 개발 …天地人 동시 공략 - 마켓인 | Structural implication: '1석3조 AI칩 자체 개발 …天地人 동시 공략 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스 | Structural implication: '엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [속보]코스닥 급등에 매수 사이드카 발동 - 경향신문 | Structural implication: '[속보]코스닥 급등에 매수 사이드카 발동 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스 | Structural implication: '엔비디아, HBM4 투트랙 전략 짜나…최상위 성능중심·차상위 보완 유력 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [증시키워드] 삼전 18만·SK하닉 혼조…미래에셋증권 15% 폭등에 증권주 투심↑ - 이투데이 | Structural implication: '[증시키워드] 삼전 18만·SK하닉 혼조…미래에셋증권 15% 폭등에 증권주 투심↑ - 이투데이' suggests a shift in NEWS dynamics. | LOW |
 | ‘이 도시락이 990원이라고?’…초저가 도시락·반값 생리대 내놓은 대형마트들 - 문화일보 | Structural implication: '‘이 도시락이 990원이라고?’…초저가 도시락·반값 생리대 내놓은 대형마트들 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 이노스페이스, 영국 CTS와 위성 서비스 유통계약 - 지디넷코리아 | Structural implication: '이노스페이스, 영국 CTS와 위성 서비스 유통계약 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 두산로지스틱스솔루션, 아성다이소 양주센터 물류 자동화 수주 - 연합뉴스 한민족센터 | Structural implication: '두산로지스틱스솔루션, 아성다이소 양주센터 물류 자동화 수주 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | 다이슨, 가벼운 물청소기 ‘펜슬 워시’ 공개… 3월 국내 출시 - 동아일보 | Structural implication: '다이슨, 가벼운 물청소기 ‘펜슬 워시’ 공개… 3월 국내 출시 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 미국 빅테크도 없는 '제조 데이터'…경남이 모은다 - 연합뉴스 | Structural implication: '미국 빅테크도 없는 '제조 데이터'…경남이 모은다 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 인도가 야심차게 준비한 AI 서밋…빌 게이츠 노쇼로 찬물 - 마켓인 | Structural implication: '인도가 야심차게 준비한 AI 서밋…빌 게이츠 노쇼로 찬물 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 韓, 페로브스카이트 합성 신기술 개발…태양광 관련주 급등 - 한국경제 | Structural implication: '韓, 페로브스카이트 합성 신기술 개발…태양광 관련주 급등 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 네이버페이 정오부터 온라인 결제 등 일부 먹통...현재 복구 중 - 조선일보 | Structural implication: '네이버페이 정오부터 온라인 결제 등 일부 먹통...현재 복구 중 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 금융권→대부업체로 ‘채권 털어내기’ 度 넘어… ‘추심의 늪’ 빠진 채무자들 - 매일경제 | Structural implication: '금융권→대부업체로 ‘채권 털어내기’ 度 넘어… ‘추심의 늪’ 빠진 채무자들 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | [로봇특구 만들자] 휴머노이드 도입 가시화…노동 현장 바뀐다 - 딜사이트 | Structural implication: '[로봇특구 만들자] 휴머노이드 도입 가시화…노동 현장 바뀐다 - 딜사이트' suggests a shift in NEWS dynamics. | LOW |
 | 창고형약국 '무법천지'…무자격 판매·재포장·조경 훼손 확인 - 약사공론 | Structural implication: '창고형약국 '무법천지'…무자격 판매·재포장·조경 훼손 확인 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 금융권→대부업체로 ‘채권 털어내기’ 度 넘어… ‘추심의 늪’ 빠진 채무자들 - 매일경제 | Structural implication: '금융권→대부업체로 ‘채권 털어내기’ 度 넘어… ‘추심의 늪’ 빠진 채무자들 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자 직원 작년 평균 연봉 1억5000만원 - 조선일보 | Structural implication: '삼성전자 직원 작년 평균 연봉 1억5000만원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| '자사주 소각 의무화' 3차 상법 개정 임박…자사주 많은 종목은 [분석+] - 한국경제 | Structural implication: ''자사주 소각 의무화' 3차 상법 개정 임박…자사주 많은 종목은 [분석+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 백악관, '관세인상 역효과' 뉴욕 연은 보고서에 "징계감" 발끈 - 연합뉴스 한민족센터 | Structural implication: '백악관, '관세인상 역효과' 뉴욕 연은 보고서에 "징계감" 발끈 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
+| 1억원 선 또 무너진 비트코인...두 마이클의 엇갈린 전망 - 조선일보 | Structural implication: '1억원 선 또 무너진 비트코인...두 마이클의 엇갈린 전망 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 엔비디아·메타 협력에 환호했지만…금리 인상 거론에 '움찔' [뉴욕증시 브리핑] - 한국경제 | Structural implication: '엔비디아·메타 협력에 환호했지만…금리 인상 거론에 '움찔' [뉴욕증시 브리핑] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 尹측 “특검 주장대로 결론…역사의 법정서 진실 밝혀질 것” | Structural implication: '[속보] 尹측 “특검 주장대로 결론…역사의 법정서 진실 밝혀질 것”' suggests a shift in NEWS dynamics. | LOW |
+| ‘충주맨’ 김선태, 다음 행보는 청와대?…“‘공직에 관심 있나’ 물어” | Structural implication: '‘충주맨’ 김선태, 다음 행보는 청와대?…“‘공직에 관심 있나’ 물어”' suggests a shift in NEWS dynamics. | LOW |
+| “이거 먹는다고 독도가 일본땅 되나”…시마네현 ‘다케시마 카레’ 또 판매 | Structural implication: '“이거 먹는다고 독도가 일본땅 되나”…시마네현 ‘다케시마 카레’ 또 판매' suggests a shift in NEWS dynamics. | LOW |
 | 조산 위기 산모 병원 30곳 거절당해 45㎞ 달린 구급대원들 | Structural implication: '조산 위기 산모 병원 30곳 거절당해 45㎞ 달린 구급대원들' suggests a shift in NEWS dynamics. | LOW |
 | 강원도 “올해 기업 20곳 유치, 1000명 고용 창출 목표” | Structural implication: '강원도 “올해 기업 20곳 유치, 1000명 고용 창출 목표”' suggests a shift in NEWS dynamics. | LOW |
 | ‘판사 이한영’으로 빵 뜬 여배우 “10년 무명…월급 받는 친구들 부러웠다” | Structural implication: '‘판사 이한영’으로 빵 뜬 여배우 “10년 무명…월급 받는 친구들 부러웠다”' suggests a shift in NEWS dynamics. | LOW |
@@ -224,9 +227,6 @@
 | [속보] 법원 “김용현·조지호·김봉식·노상원·목현태, 내란 중요임무 종사죄 성립” | Structural implication: '[속보] 법원 “김용현·조지호·김봉식·노상원·목현태, 내란 중요임무 종사죄 성립”' suggests a shift in NEWS dynamics. | LOW |
 | 서울공대 최재혁 교수팀, ‘반도체 설계 올림픽’서 최우수 논문상 수상 | Structural implication: '서울공대 최재혁 교수팀, ‘반도체 설계 올림픽’서 최우수 논문상 수상' suggests a shift in NEWS dynamics. | LOW |
 | ‘브리저튼4’ 하예린, 여주인공서 들러리로?…인종차별 의혹 ‘후끈’ | Structural implication: '‘브리저튼4’ 하예린, 여주인공서 들러리로?…인종차별 의혹 ‘후끈’' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 법원 “윤석열 내란 우두머리죄 성립”…무기징역 선고 | Structural implication: '[속보] 법원 “윤석열 내란 우두머리죄 성립”…무기징역 선고' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 마감, 5,677.25P (3.09%↑) HD현대중공업, 삼성전자등 상승세 | Structural implication: '코스피 마감, 5,677.25P (3.09%↑) HD현대중공업, 삼성전자등 상승세' suggests a shift in NEWS dynamics. | LOW |
-| 코스닥 마감, 1,160.71P (4.94%↑) 케어젠, 삼천당제약등 상승세 | Structural implication: '코스닥 마감, 1,160.71P (4.94%↑) 케어젠, 삼천당제약등 상승세' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
