@@ -1,204 +1,245 @@
 
-export async function initTodayView(container) {
-    container.innerHTML = '<div class="p-8 text-blue-400 animate-pulse">📡 Initializing Today View Logic...</div>';
+/**
+ * Operator Today View v2.2
+ * Features: HERO + LIST, Robust ISO Matching, Anti-Undefined Policy, Minimized Diagnostics
+ */
 
-    const debugState = {
-        computedToday: new Date().toLocaleDateString('en-CA'),
-        timezoneOffset: new Date().getTimezoneOffset(),
-        manifestFiles: [],
-        loadResults: [],
-        errors: []
-    };
+const UI_SAFE = {
+    get: (val, fallback = "-") => (val === undefined || val === null || val === "" || val === "undefined") ? fallback : val,
+    num: (val, fallback = 0) => {
+        const n = parseFloat(val);
+        return isNaN(n) ? fallback : n;
+    }
+};
+
+export async function initTodayView(container) {
+    container.innerHTML = `
+        <div class="p-8 flex flex-col items-center justify-center space-y-4">
+            <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Synchronizing Decision Stream...</div>
+        </div>
+    `;
+
+    const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
+    const debug = { today, matches: 0, totalFiles: 0, mismatchReasons: [] };
 
     try {
-        // 1. Load Manifest
         const manifestResp = await fetch('data/decision/manifest.json?v=' + Date.now());
-        if (!manifestResp.ok) throw new Error('Manifest not found. Run publish_ui_assets.py');
-
+        if (!manifestResp.ok) throw new Error("Manifest Missing");
         const manifest = await manifestResp.json();
-        debugState.manifestFiles = manifest.files || [];
+        debug.totalFiles = (manifest.files || []).length;
 
-        // 2. Fetch all files in parallel
-        const fetchPromises = debugState.manifestFiles.map(async (filename) => {
+        const allDecisions = [];
+        const fetchTasks = (manifest.files || []).map(async (file) => {
             try {
-                const res = await fetch(`data/decision/${filename}?v=${Date.now()}`);
-                if (!res.ok) return { filename, error: `HTTP ${res.status}` };
+                const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
+                if (!res.ok) return;
                 const data = await res.json();
-                return { filename, data };
-            } catch (e) {
-                return { filename, error: e.message };
-            }
-        });
+                const items = Array.isArray(data) ? data : [data];
 
-        const rawResults = await Promise.all(fetchPromises);
+                items.forEach(item => {
+                    const dDate = UI_SAFE.get(item.date, "");
+                    const dSelected = UI_SAFE.get(item.selected_at, "");
 
-        // 3. Process and Filter
-        const diagnosticData = [];
-        const matches = [];
+                    let isToday = false;
+                    if (dDate === today) isToday = true;
+                    else if (dSelected.startsWith(today)) isToday = true;
 
-        rawResults.forEach(res => {
-            if (res.error) {
-                diagnosticData.push({ filename: res.filename, match: false, reason: 'parse error', detail: res.error });
-                return;
-            }
-
-            const items = Array.isArray(res.data) ? res.data : [res.data];
-
-            items.forEach((item, idx) => {
-                const date = item.date || '';
-                const selectedAt = item.selected_at || '';
-
-                let isMatch = false;
-                let reason = 'date mismatch';
-
-                if (date === debugState.computedToday) {
-                    isMatch = true;
-                } else if (selectedAt.startsWith(debugState.computedToday)) {
-                    isMatch = true;
-                }
-
-                if (!date && !selectedAt) reason = 'missing date fields';
-
-                if (isMatch) {
-                    matches.push(item);
-                }
-
-                diagnosticData.push({
-                    filename: res.filename + (items.length > 1 ? `[${idx}]` : ''),
-                    date: date,
-                    selected_at: selectedAt,
-                    match: isMatch,
-                    reason: isMatch ? 'OK' : reason
+                    if (isToday) {
+                        allDecisions.push(item);
+                        debug.matches++;
+                    } else {
+                        debug.mismatchReasons.push({ file, date: dDate, selected: dSelected });
+                    }
                 });
-            });
+            } catch (e) {
+                console.warn(`Failed to parse ${file}`, e);
+            }
         });
 
-        debugState.loadResults = diagnosticData;
-        matches.sort((a, b) => new Date(b.selected_at) - new Date(a.selected_at));
+        await Promise.all(fetchTasks);
 
-        renderView(container, matches, debugState);
+        // Sort by selected_at desc
+        allDecisions.sort((a, b) => new Date(UI_SAFE.get(b.selected_at, 0)) - new Date(UI_SAFE.get(a.selected_at, 0)));
+
+        renderTodayUI(container, allDecisions, debug);
 
     } catch (e) {
-        console.error('Today View Error:', e);
-        debugState.errors.push(e.message);
-        renderView(container, [], debugState);
+        console.error(e);
+        renderTodayUI(container, [], debug, e.message);
     }
 }
 
-function renderView(container, matches, debugState) {
+function renderTodayUI(container, items, debug, error = null) {
+    const hasItems = items.length > 0;
+    const hero = hasItems ? items[0] : null;
+    const list = hasItems ? items.slice(1) : [];
+
     container.innerHTML = `
-        <div class="space-y-6 fade-in">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-white">📅 오늘 선정 분석</h1>
-                <button id="toggle-debug" class="text-xs px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded transition-colors">
-                    디버그 보기
+        <div class="space-y-8 fade-in">
+            <!-- Header & Debug Toggle -->
+            <div class="flex justify-between items-end">
+                <div>
+                    <h1 class="text-3xl font-black text-white tracking-tighter">오늘의 TOP 선정</h1>
+                    <p class="text-slate-500 text-xs mt-1 font-medium">운영 기준일: ${debug.today} (KST)</p>
+                </div>
+                <button id="hotfix-debug-trigger" class="text-[10px] font-black text-slate-600 hover:text-slate-400 border border-slate-800 px-2 py-1 rounded transition-colors uppercase">
+                    Debug Mode
                 </button>
             </div>
 
-            <div id="debug-panel" class="hidden bg-slate-900 border border-slate-700 rounded-lg p-4 font-mono text-[10px] text-slate-300 overflow-x-auto">
-                <div class="grid grid-cols-2 gap-4 mb-4 border-b border-slate-800 pb-2">
-                    <div>Computed Today: <span class="text-blue-400">${debugState.computedToday}</span></div>
-                    <div>TZ Offset: <span class="text-blue-400">${debugState.timezoneOffset}</span></div>
-                    <div>Manifest Count: <span class="text-blue-400">${debugState.manifestFiles.length}</span></div>
-                    <div>Errors: <span class="text-red-400">${debugState.errors.length}</span></div>
+            <!-- Debug Panel (Hidden) -->
+            <div id="hotfix-debug-panel" class="hidden bg-slate-900/50 border border-slate-800 rounded p-4 font-mono text-[10px] text-slate-500">
+                <div class="grid grid-cols-3 gap-4 mb-2">
+                    <div>Today: ${debug.today}</div>
+                    <div>Files: ${debug.totalFiles}</div>
+                    <div>Matches: ${debug.matches}</div>
                 </div>
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="text-slate-500 border-b border-slate-800">
-                            <th class="py-1">File/Item</th>
-                            <th class="py-1">Date</th>
-                            <th class="py-1">Selected At</th>
-                            <th class="py-1">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${debugState.loadResults.slice(0, 15).map(res => `
-                            <tr class="border-b border-slate-800/50">
-                                <td class="py-1 truncate max-w-[120px]">${res.filename}</td>
-                                <td class="py-1">${res.date || '-'}</td>
-                                <td class="py-1">${res.selected_at || '-'}</td>
-                                <td class="py-1 ${res.match ? 'text-green-500' : 'text-slate-500'}">
-                                    ${res.match ? 'MATCH' : res.reason}
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-                ${debugState.loadResults.length > 15 ? `<div class="mt-1 text-slate-500">... and ${debugState.loadResults.length - 15} more</div>` : ''}
-            </div>
-
-            ${matches.length > 0 ? renderMatches(matches) : renderFallback(debugState)}
-        </div>
-    `;
-
-    document.getElementById('toggle-debug').onclick = () => {
-        const panel = document.getElementById('debug-panel');
-        panel.classList.toggle('hidden');
-    };
-}
-
-function renderMatches(items) {
-    const topItem = items[0];
-    return `
-        <div class="space-y-6">
-            <!-- TOP CARD -->
-            <div class="bg-blue-600/10 border border-blue-500/30 rounded-xl p-6 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl">🔥</div>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="bg-blue-500 text-white text-[10px] font-black px-2 py-0.5 rounded">TOP SIGNAL</span>
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">${topItem.why_now_type}</span>
-                </div>
-                <h2 class="text-3xl font-black text-white mb-4 leading-tight">${topItem.title}</h2>
-                <p class="text-slate-300 text-lg mb-6 leading-relaxed">${topItem.why_now_summary}</p>
-                <div class="flex items-center gap-4 pt-4 border-t border-blue-500/20 text-xs font-bold text-slate-400">
-                    <div class="flex items-center gap-1"><span class="text-blue-400">⚡ Intensity:</span> ${topItem.intensity}%</div>
-                    <div class="flex items-center gap-1"><span class="text-blue-400">🕒 Time:</span> ${topItem.selected_at.split('T')[1].substring(0, 5)}</div>
+                <div class="max-h-24 overflow-y-auto border-t border-slate-800 mt-2 pt-2">
+                    ${debug.mismatchReasons.slice(0, 10).map(r => `<div>[MISMATCH] ${r.file} (${r.date || 'no-date'})</div>`).join('')}
                 </div>
             </div>
 
-            <!-- LIST -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                ${items.map(item => `
-                    <div class="bg-slate-800/40 border border-slate-700/50 rounded-lg p-4 hover:bg-slate-800 transition-all cursor-pointer">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-[10px] font-bold text-slate-500">${item.selected_at.split('T')[1].substring(0, 5)}</span>
-                            <span class="text-[10px] font-bold text-blue-400">${item.why_now_type}</span>
-                        </div>
-                        <h3 class="text-sm font-bold text-white mb-2 line-clamp-2">${item.title}</h3>
-                        <div class="text-[10px] text-slate-400 line-clamp-1 italic">"${item.content_hook}"</div>
+            ${hasItems ? `
+                <!-- HERO CARD -->
+                <div class="bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/30 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-8xl opacity-10 font-black italic select-none">TOP</div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg uppercase tracking-wider">
+                            ${UI_SAFE.get(hero.selected_at).split('T')[1]?.substring(0, 5) || "00:00"}
+                        </span>
+                        <span class="bg-slate-800 text-blue-400 text-[10px] font-black px-2 py-1 rounded border border-blue-500/20 uppercase">
+                            ${UI_SAFE.get(hero.why_now_type)}
+                        </span>
+                        <span class="${hero.intensity >= 70 ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'bg-slate-800 text-slate-400 border-slate-700/50'} text-[10px] font-black px-2 py-1 rounded border uppercase">
+                            INT ${UI_SAFE.num(hero.intensity)}%
+                        </span>
+                        <span class="bg-slate-800 text-green-400 text-[10px] font-black px-2 py-1 rounded border border-green-500/20 uppercase">
+                            ${UI_SAFE.get(hero.speakability, "OK")}
+                        </span>
                     </div>
-                `).join('')}
+
+                    <h2 class="text-4xl font-black text-white mb-4 leading-[1.1] tracking-tight">
+                        ${UI_SAFE.get(hero.title)}
+                    </h2>
+                    
+                    <p class="text-slate-300 text-lg leading-relaxed max-w-3xl font-medium">
+                        ${UI_SAFE.get(hero.why_now_summary)}
+                    </p>
+
+                    <div class="mt-8 pt-6 border-t border-blue-500/10 flex items-center gap-6">
+                        <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Selected For You Today</div>
+                        <div class="flex -space-x-2">
+                            ${(hero.related_assets || []).slice(0, 3).map(asset => `
+                                <div class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[8px] font-bold text-blue-400 uppercase ring-2 ring-slate-900">
+                                    ${asset.substring(0, 2)}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIST SECTION -->
+                <div class="space-y-4">
+                    <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                        <span>오늘 선정 리스트</span>
+                        <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    </h3>
+                    
+                    <div class="grid gap-3">
+                        ${list.length > 0 ? list.map((item, idx) => renderCompactCard(item, idx)).join('') : `
+                            <div class="p-8 border border-dashed border-slate-800 rounded-xl text-center text-slate-600 text-xs font-bold uppercase italic">
+                                Additional signals are being processed...
+                            </div>
+                        `}
+                    </div>
+                </div>
+            ` : renderFallback(debug, error)}
+        </div>
+    `;
+
+    // Handlers
+    document.getElementById('hotfix-debug-trigger').onclick = () => {
+        document.getElementById('hotfix-debug-panel').classList.toggle('hidden');
+    };
+
+    // Expand logic
+    container.querySelectorAll('.expand-trigger').forEach(btn => {
+        btn.onclick = (e) => {
+            const target = container.querySelector(`#detail-${btn.dataset.idx}`);
+            target.classList.toggle('hidden');
+            btn.querySelector('.icon').innerText = target.classList.contains('hidden') ? '▼' : '▲';
+        };
+    });
+}
+
+function renderCompactCard(item, idx) {
+    const time = UI_SAFE.get(item.selected_at).split('T')[1]?.substring(0, 5) || "--:--";
+    return `
+        <div class="bg-slate-800/30 border border-slate-800 hover:border-slate-700 rounded-xl transition-all">
+            <div class="p-4 flex items-center justify-between cursor-pointer expand-trigger" data-idx="${idx}">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-slate-500">${time}</span>
+                    <h4 class="text-sm font-bold text-white">${UI_SAFE.get(item.title)}</h4>
+                    <div class="flex gap-1">
+                        <span class="text-[8px] font-black px-1.5 py-0.5 rounded border border-slate-700 text-slate-500 uppercase">${UI_SAFE.get(item.why_now_type)}</span>
+                        <span class="text-[8px] font-black px-1.5 py-0.5 rounded border border-slate-700 text-slate-500 uppercase">INT ${UI_SAFE.num(item.intensity)}%</span>
+                    </div>
+                </div>
+                <div class="icon text-[10px] text-slate-600 transition-transform">▼</div>
+            </div>
+
+            <!-- Expandable Details -->
+            <div id="detail-${idx}" class="hidden p-4 pt-0 border-t border-slate-800/50 bg-slate-900/20 rounded-b-xl fade-in">
+                <div class="space-y-4 pt-4">
+                    <div>
+                        <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-1">Anomaly Points</div>
+                        <ul class="text-[11px] text-slate-400 space-y-1 pl-1">
+                            ${(item.anomaly_points || ["-"]).slice(0, 3).map(pt => `<li class="flex items-start gap-2"><span>•</span> ${UI_SAFE.get(pt)}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-1">Related Assets</div>
+                            <div class="flex flex-wrap gap-1">
+                                ${(item.related_assets || ["-"]).map(a => `<span class="px-1.5 py-0.5 bg-slate-800 text-[9px] text-slate-400 rounded">${a}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="italic text-[10px] text-slate-600 font-medium">
+                            "${UI_SAFE.get(item.content_hook).substring(0, 50)}..."
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     `;
 }
 
-function renderFallback(debugState) {
-    const latestFile = debugState.loadResults[0] || null;
+function renderFallback(debug, error) {
     return `
-        <div class="bg-slate-800/20 border-2 border-dashed border-slate-700 rounded-2xl p-12 text-center space-y-4">
-            <div class="text-6xl mb-4">🔇</div>
-            <h2 class="text-2xl font-black text-white tracking-tight">🔥 오늘은 선정된 주제가 없습니다.</h2>
-            <div class="text-slate-400 max-w-sm mx-auto text-sm leading-relaxed">
-                현재 시스템이 실시간 신호를 분석 중이나, ${debugState.computedToday} 날짜와 일치하는 결정 사항이 발견되지 않았습니다.
+        <div class="p-20 border-2 border-dashed border-slate-800 rounded-3xl text-center space-y-6">
+            <div class="text-7xl opacity-20 grayscale">📭</div>
+            <div class="space-y-2">
+                <h2 class="text-2xl font-black text-white tracking-tighter">🔥 오늘은 선정된 주제가 없습니다.</h2>
+                <p class="text-slate-500 text-xs font-medium">날짜: ${debug.today} | 현재 시각: ${new Date().toLocaleTimeString('ko-KR')}</p>
             </div>
             
-            <div class="pt-8 grid grid-cols-2 max-w-xs mx-auto gap-2">
-                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
-                    <div class="text-[10px] text-slate-500 uppercase font-black mb-1">Total Files</div>
-                    <div class="text-xl font-bold text-white">${debugState.manifestFiles.length}</div>
+            <div class="flex justify-center gap-4 max-w-sm mx-auto">
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex-1">
+                    <div class="text-[9px] font-black text-slate-500 uppercase mb-1">Total Assets</div>
+                    <div class="text-2xl font-bold text-white">${debug.totalFiles}</div>
                 </div>
-                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
-                    <div class="text-[10px] text-slate-500 uppercase font-black mb-1">Today Matches</div>
-                    <div class="text-xl font-bold text-red-500">0</div>
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex-1">
+                    <div class="text-[9px] font-black text-slate-500 uppercase mb-1">Today Matches</div>
+                    <div class="text-2xl font-bold text-red-500">0</div>
                 </div>
             </div>
 
-            ${latestFile ? `
-                <div class="mt-6 text-[11px] text-slate-500">
-                    가장 최근 발견된 데이터: <span class="text-slate-300 font-bold">${latestFile.selected_at || latestFile.date || 'N/A'}</span>
-                </div>
-            ` : ''}
+            <div class="text-[10px] font-mono text-slate-600 bg-slate-900 p-2 rounded inline-block">
+                Reason: ${error || "No dynamic signals matched the current date filter."}
+            </div>
         </div>
     `;
 }

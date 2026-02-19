@@ -39,32 +39,53 @@ def verify_ui_inputs():
         print(f"❌ Missing Directory: {docs_data_decision}")
         missing.append("docs/data/decision/")
     else:
-        # [TASK E] Manifest Check
-        manifest_path = docs_data_decision / "manifest.json"
-        if not manifest_path.exists():
-            print(f"❌ Missing Manifest: docs/data/decision/manifest.json")
-            missing.append("docs/data/decision/manifest.json")
-        else:
-            try:
-                with open(manifest_path, "r") as f:
-                    manifest = json.load(f)
-                if not manifest.get("files"):
-                    print(f"⚠️ Manifest Empty: docs/data/decision/manifest.json")
-                    # Not a hard fail but a warning
-            except Exception as e:
-                print(f"❌ Manifest Corrupt: {e}")
-                missing.append("docs/data/decision/manifest.json")
+    # [PHASE 5] Enhanced Manifest & Decision Validation
+    manifest_path = docs_data_decision / "manifest.json"
+    if not manifest_path.exists():
+        print(f"❌ Missing Manifest: {manifest_path}")
+        missing.append("manifest.json")
+    else:
+        try:
+            with open(manifest_path, "r") as f:
+                manifest = json.load(f)
+            files = manifest.get("files", [])
+            if not files:
+                print(f"⚠️ Manifest is empty.")
+            
+            # Check if each file in manifest exists and is valid
+            valid_count = 0
+            for fname in files:
+                fpath = docs_data_decision / fname
+                if not fpath.exists():
+                    print(f"❌ Manifest entry missing on disk: {fname}")
+                    missing.append(fname)
+                    continue
+                
+                try:
+                    with open(fpath, "r") as df:
+                        data = json.load(df)
+                    items = data if isinstance(data, list) else [data]
+                    for item in items:
+                        # Schema assertion (v2.2)
+                        if "title" in item:
+                            valid_count += 1
+                except Exception as e:
+                    print(f"❌ Decision file corrupt: {fname} ({e})")
+                    missing.append(fname)
+            
+            if valid_count == 0:
+                print("❌ No valid decision items found in any manifest file.")
+                missing.append("empty_decisions")
 
-        for f in required_decision_files:
-            if not (docs_data_decision / f).exists():
-                print(f"❌ Missing File: docs/data/decision/{f}")
-                missing.append(f"docs/data/decision/{f}")
+        except Exception as e:
+            print(f"❌ Manifest parsing failed: {e}")
+            missing.append("manifest_error")
 
     if missing:
         print("\n🚨 UI Input Verification FAILED!")
         sys.exit(1)
     
-    print("✅ UI Input Verification PASSED!")
+    print(f"✅ UI Input Verification PASSED! (Validated {valid_count} entries)")
     sys.exit(0)
 
 if __name__ == "__main__":
