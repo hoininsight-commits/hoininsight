@@ -28,14 +28,19 @@ def scan_repository(root_path):
         audit_results["code_references"][pattern] = []
         audit_results["quantification"][pattern] = {
             "total_reference_count": 0,
-            "top_referrers": [], # Will store tuples (file, count)
+            "runtime_reference_count": 0,
+            "test_reference_count": 0,
+            "verify_copy_reference_count": 0,
+            "top_runtime_referrers": [], # Will store tuples (file, count)
+            # We keep the old breakdown for compatibility but prioritize new metrics
             "reference_type_breakdown": {
                 "tests": 0, "scripts": 0, "docs": 0, "workflows": 0, "runtime": 0
             }
         }
 
     # Helper to track referrer counts
-    referrer_counts = {p: {} for p in deprecated_patterns}
+    referrer_counts = {p: {} for p in deprecated_patterns} # For total top referrers
+    runtime_referrer_counts = {p: {} for p in deprecated_patterns} # For RUNTIME top referrers
 
     for root, dirs, files in os.walk(root_path):
         if ".git" in root or "__pycache__" in root:
@@ -43,6 +48,10 @@ def scan_repository(root_path):
             
         rel_root = os.path.relpath(root, root_path)
         
+        # EXCLUSION RULE: Skip data_outputs/ops/ entirely (self-artifacts)
+        if rel_root.startswith("data_outputs/ops"):
+            continue
+
         # Check UI Entrypoints
         if rel_root == "docs" and "index.html" in files:
             audit_results["ui_entrypoints"].append("docs/index.html")
@@ -74,7 +83,7 @@ def scan_repository(root_path):
                     for pattern in deprecated_patterns:
                         count = content.count(pattern)
                         if count > 0:
-                            # 1. Add to code_references list (unique files)
+                            # 1. Add to code_references
                             if rel_path not in audit_results["code_references"][pattern]:
                                 audit_results["code_references"][pattern].append(rel_path)
                             
@@ -82,25 +91,35 @@ def scan_repository(root_path):
                             if pattern not in audit_results["deprecated_paths_found"]:
                                 audit_results["deprecated_paths_found"].append(pattern)
                                 
-                            # 3. Quantify
+                            # 3. Quantify Total
                             audit_results["quantification"][pattern]["total_reference_count"] += count
                             
-                            # Category breakdown
+                            # 4. Domain Separation
+                            if "remote_verify_" in rel_path:
+                                audit_results["quantification"][pattern]["verify_copy_reference_count"] += count
+                            elif "tests/" in rel_path:
+                                audit_results["quantification"][pattern]["test_reference_count"] += count
+                            else:
+                                # Treat as runtime (includes scripts/docs unless specific filter needed)
+                                # But we want strict "runtime code" vs "docs".
+                                # Let's stick to the prompt categories: runtime_refs, test_refs, verify_copy_refs
+                                # Ideally, runtime_refs = src/* + scripts/* + docs/* excluding tests/verify
+                                audit_results["quantification"][pattern]["runtime_reference_count"] += count
+                                runtime_referrer_counts[pattern][rel_path] = count
+
+                            # Category breakdown (Legacy)
                             cat = get_file_category(rel_path)
                             audit_results["quantification"][pattern]["reference_type_breakdown"][cat] += count
-                            
-                            # Track per-file count for top list
-                            referrer_counts[pattern][rel_path] = count
                             
             except Exception:
                 pass # Binary or unreadable
 
-    # Finalize Top Referrers
+    # Finalize Top Referrers (only runtime interesting ones)
     for pattern in deprecated_patterns:
-        # Sort files by count descending
-        sorted_referrers = sorted(referrer_counts[pattern].items(), key=lambda item: item[1], reverse=True)
+        # Sort runtime files by count descending
+        sorted_referrers = sorted(runtime_referrer_counts[pattern].items(), key=lambda item: item[1], reverse=True)
         # Take top 10
-        audit_results["quantification"][pattern]["top_referrers"] = sorted_referrers[:10]
+        audit_results["quantification"][pattern]["top_runtime_referrers"] = sorted_referrers[:10]
 
     return audit_results
 
@@ -111,7 +130,8 @@ def generate_report(results, output_json, output_md):
         
     # Markdown
     with open(output_md, "w", encoding="utf-8") as f:
-        f.write("# Repository Usage Audit Report (Quantified)\n\n")
+        f.write("# Repository Usage Audit Report (Sanitized)\n\n")
+        f.write("> **Note**: Self-references (`data_outputs/ops/`) are excluded.\n\n")
         
         f.write("## UI Entrypoints\n")
         for entry in results["ui_entrypoints"]:
@@ -125,19 +145,17 @@ def generate_report(results, output_json, output_md):
                 
             f.write(f"\n### `{pattern}`\n")
             f.write(f"- **Total References**: {data['total_reference_count']}\n")
+            f.write(f"  - **Runtime**: {data['runtime_reference_count']}\n")
+            f.write(f"  - **Tests**: {data['test_reference_count']}\n")
+            f.write(f"  - **Verify Copies**: {data['verify_copy_reference_count']}\n")
             
-            f.write("- **Breakdown by Type**:\n")
-            for cat, count in data["reference_type_breakdown"].items():
-                if count > 0:
-                   f.write(f"  - {cat}: {count}\n")
-            
-            f.write("- **Top Referrers**:\n")
-            for file, count in data["top_referrers"]:
+            f.write("- **Top Runtime Referrers**:\n")
+            for file, count in data["top_runtime_referrers"]:
                 f.write(f"  - `{file}`: {count} refs\n")
 
 if __name__ == "__main__":
     root = os.getcwd()
-    print(f"Scanning repository at {root} (Quantified)...")
+    print(f"Scanning repository at {root} (Sanitized)...")
     results = scan_repository(root)
     
     out_dir = Path("data_outputs/ops")

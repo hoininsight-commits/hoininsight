@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import re
+import sys
 
 def run_tests_and_summarize():
     print("Running pytest...")
@@ -11,8 +12,11 @@ def run_tests_and_summarize():
     # Run pytest and capture output
     # -v: verbose
     # --tb=short: shorter traceback
+    # --continue-on-collection-errors: Ensure we get through collection
+    cmd = ["python3", "-m", "pytest", "--continue-on-collection-errors", "-v", "--tb=short"]
+    
     result = subprocess.run(
-        ["python3", "-m", "pytest", "-v", "--tb=short"], 
+        cmd, 
         capture_output=True, 
         text=True
     )
@@ -21,13 +25,13 @@ def run_tests_and_summarize():
     stderr = result.stderr
     exit_code = result.returncode
     
-    # Parse output for summary stats
-    # Example line: "== 15 passed, 1 skipped in 0.5s =="
+    # Parse stats
     summary_line_match = re.search(r"=+\s+(.*?)\s+=+", stdout.splitlines()[-1] if stdout else "")
     
     passed = 0
     failed = 0
     skipped = 0
+    errors = 0 # Collection errors often show up as "errors" in the summary line too
     
     if summary_line_match:
         summary_text = summary_line_match.group(1)
@@ -40,6 +44,12 @@ def run_tests_and_summarize():
         
         s_match = re.search(r"(\d+) skipped", summary_text)
         if s_match: skipped = int(s_match.group(1))
+        
+        e_match = re.search(r"(\d+) error", summary_text)
+        if e_match: errors = int(e_match.group(1))
+    
+    # Check if exit code implies collection error (2 or sometimes 1 if fails + errors)
+    # With --continue-on-collection-errors, valid tests run.
     
     # Tail for debugging (max 200 lines)
     raw_output = stdout + "\n" + stderr
@@ -49,6 +59,7 @@ def run_tests_and_summarize():
         "total_passed": passed,
         "total_failed": failed,
         "total_skipped": skipped,
+        "collection_error_count": errors,
         "exit_code": exit_code,
         "raw_tail": raw_tail
     }
@@ -68,10 +79,11 @@ def run_tests_and_summarize():
         f.write(f"- **Exit Code**: {exit_code}\n")
         f.write(f"- **Passed**: {passed}\n")
         f.write(f"- **Failed**: {failed}\n")
-        f.write(f"- **Skipped**: {skipped}\n\n")
+        f.write(f"- **Skipped**: {skipped}\n")
+        f.write(f"- **Errors (Collection/Setup)**: {errors}\n\n")
         
-        if failed > 0:
-            f.write("## ❌ Failures Detected\n")
+        if failed > 0 or errors > 0:
+            f.write("## ❌ Issues Detected\n")
             f.write("Please check `raw_tail` in JSON or console output.\n")
         elif passed > 0:
             f.write("## ✅ Success\n")
@@ -82,7 +94,7 @@ def run_tests_and_summarize():
         f.write("\n```\n")
         
     print(f"Test summary generated at {json_path}")
-    print(f"Passed: {passed}, Failed: {failed}")
+    print(f"Passed: {passed}, Failed: {failed}, Errors: {errors}")
 
 if __name__ == "__main__":
     run_tests_and_summarize()

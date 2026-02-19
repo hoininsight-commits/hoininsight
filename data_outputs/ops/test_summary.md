@@ -1,13 +1,17 @@
 # Pytest Execution Summary
 
-- **Exit Code**: 2
-- **Passed**: 0
-- **Failed**: 0
+- **Exit Code**: 1
+- **Passed**: 218
+- **Failed**: 8
 - **Skipped**: 0
+- **Errors (Collection/Setup)**: 576
 
+## ❌ Issues Detected
+Please check `raw_tail` in JSON or console output.
 
 ## Output Tail
 ```
+ERROR remote_verify_is96_8/tests/test_topic_quality_calibrator.py
 ERROR remote_verify_is96_8/tests/test_topic_quality_review.py
 ERROR remote_verify_is96_8/tests/test_topic_seed_builder.py
 ERROR remote_verify_is96_8/tests/test_topic_view_builder.py
@@ -205,7 +209,6 @@ ERROR tests/test_topic_seed_builder.py
 ERROR tests/test_topic_view_builder.py
 ERROR tests/test_trigger_map.py
 ERROR tests/test_zero_english.py
-!!!!!!!!!!!!!!!!!! Interrupted: 576 errors during collection !!!!!!!!!!!!!!!!!!!
-======================== 1 warning, 576 errors in 9.11s ========================
+============ 8 failed, 218 passed, 1 warning, 576 errors in 10.79s =============
 
 ```
