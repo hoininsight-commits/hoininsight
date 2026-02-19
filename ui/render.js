@@ -31,17 +31,32 @@ const manifest = await loader.loadManifest();
 console.log('[REF-001] Manifest Loaded:', manifest);
 
 // 1. Load All Data (Defensive)
-const [unitsDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, operatorNarrativeOrder, dailyPackage] = await Promise.all([
-    loader.loadAsset('decision/interpretation_units.json'),
-    loader.loadAsset('ui/hero_summary.json'),
-    loader.loadAsset('ui/operator_main_card.json'),
-    loader.loadAsset('ui/narrative_entry_hook.json'),
-    loader.loadAsset('ui/upcoming_risk_topN.json'),
-    loader.loadAsset('ui/schedule_risk_calendar_180d.json'),
-    loader.loadAsset('decision/speakability_decision.json'),
-    loader.loadAsset('ui/operator_narrative_order.json'),
-    loader.loadAsset('ui/daily_content_package.json')
-]);
+// 1. Load All Data (Defensive)
+let unitsDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, operatorNarrativeOrder, dailyPackage, capitalPerspective, policyCapital, timeToMoney, expectationGap, valuationReset, sectorRotation, relStressCard;
+
+try {
+    [unitsDict, heroSummary, mainCard, hookData, topRisks, calendar180, decision, operatorNarrativeOrder, dailyPackage, capitalPerspective, policyCapital, timeToMoney, expectationGap, valuationReset, sectorRotation, relStressCard] = await Promise.all([
+        loader.loadAsset('decision/interpretation_units.json'),
+        loader.loadAsset('ui/hero_summary.json'),
+        loader.loadAsset('ui/operator_main_card.json'),
+        loader.loadAsset('ui/narrative_entry_hook.json'),
+        loader.loadAsset('ui/upcoming_risk_topN.json'),
+        loader.loadAsset('ui/schedule_risk_calendar_180d.json'),
+        loader.loadAsset('decision/speakability_decision.json'),
+        loader.loadAsset('ui/operator_narrative_order.json'),
+        loader.loadAsset('ui/daily_content_package.json'),
+        loader.loadAsset('ui/capital_perspective.json'),
+        loader.loadAsset('ui/policy_capital_transmission.json'),
+        loader.loadAsset('ui/time_to_money.json'),
+        loader.loadAsset('ui/expectation_gap_card.json'),
+        loader.loadAsset('ui/valuation_reset_card.json'),
+        loader.loadAsset('ui/sector_rotation_acceleration.json'),
+        loader.loadAsset('ui/relationship_stress_card.json')
+    ]);
+} catch (e) {
+    console.error("Asset Loading Failed:", e);
+    showDiagnostic("Asset Bundle", e.message || "Unknown Network Error");
+}
 
 // Manifest-driven fallback: if interpretation_units missing, don't return!
 const unitKeys = unitsDict ? Object.keys(unitsDict) : [];
