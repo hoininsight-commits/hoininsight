@@ -1,21 +1,15 @@
 name: Publish IssueSignal Dashboard
 
 on:
-  workflow_run:
-    workflows: ["full_pipeline"]
-    types:
-      - completed
+  push:
+    branches: ["main"]
+    paths: ["docs/**"]
   workflow_dispatch:
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these builds to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+# ...
 
 jobs:
   build-and-deploy:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,22 +21,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Download Pages Artifact (IS-49 Guarantee)
-        uses: actions/download-artifact@v4
-        with:
-          name: pages-artifact
-          path: docs
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Verify site structure
-        run: |
-          echo "=== Site Structure ==="
-          ls -R docs/
-          if [ ! -f "docs/issuesignal/index.html" ]; then
-            echo "❌ [DEPLOY][FAIL] docs/issuesignal/index.html missing"
-            exit 1
-          fi
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

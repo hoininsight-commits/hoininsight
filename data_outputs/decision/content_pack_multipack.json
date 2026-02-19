@@ -1,10 +1,10 @@
 {
-  "date": "2026-02-04",
+  "date": "2026-02-18",
   "packs": [
     {
       "version": "is98_2_v1",
-      "topic_id": "bb57fa02-f8b1-468d-aaf9-11a8466185b6",
-      "created_at": "2026-02-04",
+      "topic_id": "e2830a98-06e6-4662-ba47-a6b8cdef5285",
+      "created_at": "2026-02-18",
       "status": {
         "speakability": "READY",
         "tone_lock": "EXPLANATORY",
@@ -147,12 +147,12 @@
           "EARNINGS_VERIFY"
         ]
       },
-      "pack_id": "LONG_20260204_001"
+      "pack_id": "LONG_20260218_001"
     },
     {
       "version": "is98_2_v1",
       "topic_id": "HYP-fab88b81",
-      "created_at": "2026-02-04",
+      "created_at": "2026-02-18",
       "status": {
         "speakability": "READY",
         "tone_lock": "ASSERTIVE",
@@ -266,7 +266,7 @@
         "close": "정리하면, 지금은 GENERAL_ALPHA 섹터가 보상받는 구간이다. 체크리스트만 보고 따라가면 된다. (관찰 중)",
         "citations": []
       },
-      "pack_id": "SHORT_20260204_002"
+      "pack_id": "SHORT_20260218_002"
     }
   ],
   "summary": {
@@ -279,5 +279,13 @@
     "deterministic": true,
     "no_llm": true,
     "add_only_integrity": true
-  }
+  },
+  "title": "[Unknown] Signal Detected",
+  "selected_at": "2026-01-01T09:00:00",
+  "intensity": 50,
+  "speakability": "Review Required",
+  "why_now_summary": "No narrative available.",
+  "anomaly_points": [],
+  "related_assets": [],
+  "content_hook": ""
 }

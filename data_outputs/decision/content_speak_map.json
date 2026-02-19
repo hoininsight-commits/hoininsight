@@ -1,6 +1,6 @@
 [
   {
-    "topic_id": "bb57fa02-f8b1-468d-aaf9-11a8466185b6",
+    "topic_id": "e2830a98-06e6-4662-ba47-a6b8cdef5285",
     "speakability": "READY",
     "content_mode": "LONG",
     "content_count": 2,
@@ -11,10 +11,18 @@
       "입증 근거: High pretext score and confidence"
     ],
     "why_now_hook": "Schedule-driven 기반 KR_POLICY 변곡점 포착",
-    "blocked_reason": null
+    "blocked_reason": null,
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
   {
-    "topic_id": "336c08d0-7914-4367-877f-e2dcc96be00a",
+    "topic_id": "e6ca7874-1227-4ec6-aa87-e34a4f2bc2de",
     "speakability": "HOLD",
     "content_mode": "HOLD",
     "content_count": 1,
@@ -23,7 +31,15 @@
       "차기 실적 발표(EARNINGS_VERIFY) 데이터 반영 시점까지 관망"
     ],
     "why_now_hook": "State-driven",
-    "blocked_reason": null
+    "blocked_reason": null,
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
   {
     "topic_id": "HYP-fab88b81",
@@ -37,6 +53,14 @@
       "수혜 주체: SpaceX, xAI, Acquirer Shareholders"
     ],
     "why_now_hook": "State-driven 기반 US_MA_RUMOR 변곡점 포착",
-    "blocked_reason": null
+    "blocked_reason": null,
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   }
 ]

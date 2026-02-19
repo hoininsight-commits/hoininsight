@@ -44,6 +44,11 @@ jobs:
           # Runs all layers from IS-96 to IS-99 end-to-end
           python3 src/ops/run_content_pack_pipeline.py
 
+      - name: Publish Dashboard Assets (REF-011/012)
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
+          python3 -m src.ui_logic.publish.publish_all
+
       - name: Validate Outputs & Integrity
         run: |
           export PYTHONPATH=$PYTHONPATH:.
@@ -56,6 +61,7 @@ jobs:
           path: |
             exports/
             data/decision/
+            docs/
           retention-days: 7
 
       - name: Commit Back Exports
@@ -64,14 +70,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git add exports/ data/
+          git add exports/ data/ docs/
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git fetch origin main
             git reset origin/main
-            git add exports/ data/
-            git commit -m "[IS-99-2] Daily run: Update exports and intelligence data"
+            git add exports/ data/ docs/
+            git commit -m "[IS-99-2] Daily run: Update exports, intelligence data, and dashboard assets"
             git push origin main
           fi
