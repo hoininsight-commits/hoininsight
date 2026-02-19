@@ -1,0 +1,19 @@
+{
+  "as_of": "2026-02-09",
+  "topic_id": "IS-96-20260209-NVID-Open",
+  "relationship": "NVIDIA와-OpenAI",
+  "scenario": {
+    "premise": "NVIDIA와 OpenAI 사이의 supplier_dependency 관계에서 구조적 균열 신호가 감지되었습니다. (Stress Score: 0.6)",
+    "what_breaks_first": [
+      "구조적 협력 체계의 약화"
+    ],
+    "second_order_effects": [
+      "시장 전반의 공급망 재편 및 불확실성 증대"
+    ],
+    "winners_pickaxe": [],
+    "guardrails": {
+      "confidence": "HOLD",
+      "disclaimer": "본 시나리오는 데이터 기반 가설이며 실제와 다를 수 있습니다."
+    }
+  }
+}

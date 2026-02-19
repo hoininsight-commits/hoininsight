@@ -62,8 +62,7 @@ def verify_is99_2():
         except Exception as e:
             print(f"  ❌ {doc}: Error checking integrity: {e}")
 
-    # 3. Deterministic Confirmation
-    print("\n[3/3] Checking LLM usage in Orchestrator...")
+    print(f"\n[3/3] Checking LLM usage in Orchestrator...")
     orchestrator_path = "src/topics/content_pack/daily_run_orchestrator.py"
     if Path(orchestrator_path).exists():
         content = Path(orchestrator_path).read_text()
@@ -74,6 +73,15 @@ def verify_is99_2():
             print(f"  ✅ {orchestrator_path}: Deterministic (No LLM libs): PASS")
     else:
         print(f"  ⚠️ {orchestrator_path}: Not found for check.")
+
+    # 4. Check Dashboard Publishing (REF-011/REF-012)
+    print("\n[4/4] Verifying Dashboard Publishing...")
+    manifest_path = Path("docs/data/ui/manifest.json")
+    if manifest_path.exists() and manifest_path.stat().st_size > 0:
+        print(f"  ✅ manifest.json: PASS (Size: {manifest_path.stat().st_size} bytes)")
+    else:
+        print(f"  ❌ manifest.json: FAIL (Missing or Empty) - Run python -m src.ui_logic.publish.publish_all")
+        sys.exit(1)
 
     print("\nVERIFICATION COMPLETE")
 
