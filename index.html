@@ -33,62 +33,204 @@
         }
     </script>
     <style>
-        /* Base Styles */
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            @apply bg-dark-bg text-dark-text min-h-screen flex overflow-hidden;
+        /* Base Reset & Layout */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Sidebar */
-        .sidebar {
-            @apply w-64 bg-dark-card border-r border-dark-border flex flex-col p-6 z-10 shadow-lg;
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .app {
+            display: flex;
             height: 100vh;
         }
 
+        /* Sidebar Styling (Fixed 240px) */
+        .sidebar {
+            width: 240px;
+            background: #0f172a;
+            position: fixed;
+            height: 100vh;
+            padding: 24px;
+            border-right: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
         .logo {
-            @apply text-xl font-bold text-white mb-8 flex items-center gap-2;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.025em;
         }
 
         .menu-item {
-            @apply px-4 py-3 mb-2 rounded-lg cursor-pointer transition-all duration-200 font-medium text-dark-muted flex items-center gap-3;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 700;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            text-decoration: none;
         }
 
         .menu-item:hover {
-            @apply bg-slate-800 text-white;
+            background-color: #1e293b;
+            color: #ffffff;
         }
 
         .menu-item.active {
-            @apply bg-blue-600/10 text-blue-400 font-semibold border-l-4 border-blue-500;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border-left: 4px solid #3b82f6;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
 
-        /* Main Content */
-        .main-content {
-            @apply flex-1 p-8 overflow-y-auto h-screen relative;
+        /* Content Area (Fixed Margin) */
+        .content {
+            margin-left: 240px;
+            width: calc(100% - 240px);
+            padding: 2rem;
+            overflow-y: auto;
+            height: 100vh;
         }
 
         /* Loading Overlay */
         #loading-overlay {
-            @apply fixed inset-0 bg-dark-bg/80 backdrop-blur-sm z-50 flex items-center justify-center;
-            transition: opacity 0.3s;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
         }
 
         .spinner {
-            @apply w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin;
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid #3b82f6;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        /* Utility */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Legacy Link */
+        .legacy-link {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1e293b;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legacy-link:hover {
+            color: #ffffff;
+        }
+
+        /* Mobile Responsive Fallback (<768px) */
+        @media (max-width: 767px) {
+            .app {
+                flex-direction: column;
+                height: auto;
+                overflow: visible;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5rem;
+                overflow-x: auto;
+                border-right: none;
+                border-bottom: 1px solid #1e293b;
+            }
+
+            .logo {
+                margin-bottom: 0;
+                padding-right: 1rem;
+                border-right: 1px solid #1e293b;
+                flex-shrink: 0;
+                font-size: 0.875rem;
+            }
+
+            .menu-item {
+                margin-bottom: 0;
+                padding: 0.5rem 0.75rem;
+                white-space: nowrap;
+                font-size: 0.75rem;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+                height: auto;
+                overflow: visible;
+                padding: 1.5rem;
+            }
+
+            .legacy-link {
+                display: none;
+            }
+        }
+
+        /* UTILITY */
         .hidden {
             display: none !important;
         }
 
         .fade-in {
-            animation: fadeIn 0.3s ease-in;
+            animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(5px);
+                transform: translateY(10px);
             }
 
             to {
@@ -96,132 +238,110 @@
                 transform: translateY(0);
             }
         }
-
-        /* Legacy Link */
-        .legacy-link {
-            @apply mt-auto pt-6 border-t border-dark-border text-xs text-dark-muted hover:text-white transition-colors flex items-center gap-2;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen -->
+    <!-- Global App Entry -->
     <div id="loading-overlay">
         <div class="text-center">
             <div class="spinner mb-4 mx-auto"></div>
-            <div class="text-lg font-semibold text-blue-400">HOIN Operator Engine</div>
-            <div class="text-sm text-dark-muted mt-2">v2.1 System Loading...</div>
+            <div class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">HOIN Engine v2.1</div>
         </div>
     </div>
 
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <div class="logo">
-            <span class="text-red-500">🔴</span> HOIN Operator
-        </div>
-
-        <div class="flex flex-col gap-1">
-            <div class="menu-item active" onclick="app.navigate('today')">
-                <span>📅</span> 오늘 선정
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="text-blue-500">◆</span> HOIN Operator
             </div>
-            <div class="menu-item" onclick="app.navigate('history')">
-                <span>🗂️</span> 선정 히스토리
-            </div>
-            <div class="menu-item" onclick="app.navigate('system')">
-                <span>🛡️</span> 시스템 상태
-            </div>
-        </div>
 
-        <a href="legacy/index.html" class="legacy-link" target="_blank">
-            <span>External Link ↗</span>
-            <span>Legacy Dashboard</span>
-        </a>
-    </nav>
+            <nav class="flex flex-col gap-1 w-full">
+                <div class="menu-item" data-view="today" onclick="app.navigate('today')">
+                    오늘 선정
+                </div>
+                <div class="menu-item" data-view="history" onclick="app.navigate('history')">
+                    선정 히스토리
+                </div>
+                <div class="menu-item" data-view="system" onclick="app.navigate('system')">
+                    시스템 상태
+                </div>
+            </nav>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-        <!-- Views will be injected here -->
-        <div id="view-container" class="max-w-7xl mx-auto space-y-6"></div>
-    </main>
+            <a href="legacy/index.html" class="legacy-link" target="_blank">
+                Legacy Dashboard ↗
+            </a>
+        </aside>
 
-    <!-- Core Application Logic -->
+        <main class="content">
+            <div id="view-container" class="max-w-6xl mx-auto"></div>
+        </main>
+    </div>
+
     <script type="module">
-        // View Router
         const views = {
-            today: { js: './ui/operator_today.js?v=2.1', init: 'initTodayView' },
-            history: { js: './ui/operator_history.js?v=2.1', init: 'initHistoryView' },
-            system: { js: './ui/operator_system.js?v=2.1', init: 'initSystemView' }
+            today: { js: './ui/operator_today.js?v=2.1', init: 'initTodayView', label: '오늘 선정' },
+            history: { js: './ui/operator_history.js?v=2.1', init: 'initHistoryView', label: '선정 히스토리' },
+            system: { js: './ui/operator_system.js?v=2.1', init: 'initSystemView', label: '시스템 상태' }
         };
 
-        // App Controller
         const app = {
-            currentView: null,
-
             async init() {
-                // Check URL params for initial view
                 const params = new URLSearchParams(window.location.search);
                 const initialView = params.get('view') || 'today';
+
+                window.onpopstate = (e) => {
+                    const p = new URLSearchParams(window.location.search);
+                    this.navigate(p.get('view') || 'today', true);
+                };
+
                 await this.navigate(initialView);
 
-                // Remove loading overlay
                 setTimeout(() => {
                     const loader = document.getElementById('loading-overlay');
                     if (loader) {
                         loader.style.opacity = '0';
-                        setTimeout(() => loader.remove(), 300);
+                        setTimeout(() => loader.remove(), 500);
                     }
-                }, 500);
+                }, 600);
             },
 
-            async navigate(viewName) {
+            async navigate(viewName, isPopState = false) {
                 if (!views[viewName]) return;
 
-                // Update UI state
-                document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
-                const activeMenu = Array.from(document.querySelectorAll('.menu-item'))
-                    .find(el => el.innerText.includes(this.getViewLabel(viewName)));
-                if (activeMenu) activeMenu.classList.add('active');
+                document.querySelectorAll('.menu-item').forEach(el => {
+                    el.classList.toggle('active', el.dataset.view === viewName);
+                });
 
-                // Load View Module
                 const container = document.getElementById('view-container');
-                container.innerHTML = `<div class="animate-pulse flex space-x-4"><div class="flex-1 space-y-6 py-1"><div class="h-2 bg-slate-700 rounded"></div><div class="space-y-3"><div class="grid grid-cols-3 gap-4"><div class="h-2 bg-slate-700 rounded col-span-2"></div><div class="h-2 bg-slate-700 rounded col-span-1"></div></div><div class="h-2 bg-slate-700 rounded"></div></div></div></div>`;
+                container.innerHTML = `<div class="p-4 text-slate-500 text-xs animate-pulse">LOADING ${viewName.toUpperCase()}...</div>`;
 
                 try {
                     const viewConfig = views[viewName];
                     const module = await import(viewConfig.js);
 
-                    // Clear container and init view
                     container.innerHTML = '';
                     if (module[viewConfig.init]) {
                         await module[viewConfig.init](container);
-                    } else {
-                        console.error(`Init function ${viewConfig.init} not found in ${viewConfig.js}`);
-                        container.innerHTML = `<div class="text-red-500">Failed to load view logic.</div>`;
+                        document.title = `HOIN Operator | ${viewConfig.label}`;
                     }
 
-                    // Update URL without reload
-                    const url = new URL(window.location);
-                    url.searchParams.set('view', viewName);
-                    window.history.pushState({}, '', url);
+                    if (!isPopState) {
+                        const url = new URL(window.location);
+                        url.searchParams.set('view', viewName);
+                        window.history.pushState({}, '', url);
+                    }
 
                 } catch (e) {
                     console.error('Navigation Error:', e);
-                    container.innerHTML = `<div class="p-4 bg-red-900/20 border border-red-500/50 rounded text-red-400">
-                        Error loading view: ${e.message}
+                    container.innerHTML = `<div class="p-8 text-red-500 font-mono text-xs bg-red-500/5 rounded border border-red-500/20">
+                        [NAV_ERROR] ${viewName} Load Failed: ${e.message}
                     </div>`;
                 }
-            },
-
-            getViewLabel(view) {
-                const labels = { today: '오늘 선정', history: '선정 히스토리', system: '시스템 상태' };
-                return labels[view] || '';
             }
         };
 
-        // Global Access for Menu Clicks
         window.app = app;
-
-        // Start App
         document.addEventListener('DOMContentLoaded', () => app.init());
     </script>
 </body>
