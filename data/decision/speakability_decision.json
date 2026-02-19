@@ -1,0 +1,23 @@
+{
+  "1cc7ab55-b25d-4896-9699-b149fe64602f": {
+    "speakability_flag": "READY",
+    "speakability_reasons": [
+      "High pretext score and confidence",
+      "Fundamental/Policy execution verified",
+      "Clear Why-now timing confirmed: Schedule-driven"
+    ]
+  },
+  "85d38f8a-ddf0-4519-bad6-34a36b9d6891": {
+    "speakability_flag": "HOLD",
+    "speakability_reasons": [
+      "Pretext strength is moderate (0.78)",
+      "Confidence score is below READY threshold (0.75)"
+    ]
+  },
+  "HYP-fab88b81": {
+    "speakability_flag": "READY",
+    "speakability_reasons": [
+      "Confirmed via official filing or whitelisted agency"
+    ]
+  }
+}
