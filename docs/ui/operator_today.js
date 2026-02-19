@@ -1,114 +1,204 @@
 
 export async function initTodayView(container) {
-    container.innerHTML = '<h2>🔥 오늘 선정 (Loading...)</h2>';
+    container.innerHTML = '<div class="p-8 text-blue-400 animate-pulse">📡 Initializing Today View Logic...</div>';
+
+    const debugState = {
+        computedToday: new Date().toLocaleDateString('en-CA'),
+        timezoneOffset: new Date().getTimezoneOffset(),
+        manifestFiles: [],
+        loadResults: [],
+        errors: []
+    };
 
     try {
-        const response = await fetch('data/decision/interpretation_units.json');
-        if (!response.ok) throw new Error('Failed to load decisions');
-        const data = await response.json();
+        // 1. Load Manifest
+        const manifestResp = await fetch('data/decision/manifest.json?v=' + Date.now());
+        if (!manifestResp.ok) throw new Error('Manifest not found. Run publish_ui_assets.py');
 
-        // Filter Today (YYYY-MM-DD)
-        // Use local time for Korea (implied context) or system time
-        // Simple approach: Match exact string if possible, or use latest date as fallback for demo?
-        // Prompt says: "Filter by today's date (YYYY-MM-DD)"
-        // We will try exact match first.
+        const manifest = await manifestResp.json();
+        debugState.manifestFiles = manifest.files || [];
 
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        const todayStr = `${yyyy}-${mm}-${dd}`;
+        // 2. Fetch all files in parallel
+        const fetchPromises = debugState.manifestFiles.map(async (filename) => {
+            try {
+                const res = await fetch(`data/decision/${filename}?v=${Date.now()}`);
+                if (!res.ok) return { filename, error: `HTTP ${res.status}` };
+                const data = await res.json();
+                return { filename, data };
+            } catch (e) {
+                return { filename, error: e.message };
+            }
+        });
 
-        // For testing purposes, if today has no data, we might want to see something?
-        // But prompt says "If no selections: Show clear card".
+        const rawResults = await Promise.all(fetchPromises);
 
-        const todaysSelections = data.filter(item => item.date === todayStr);
+        // 3. Process and Filter
+        const diagnosticData = [];
+        const matches = [];
 
-        // Sort by selected_at desc
-        todaysSelections.sort((a, b) => new Date(b.selected_at) - new Date(a.selected_at));
+        rawResults.forEach(res => {
+            if (res.error) {
+                diagnosticData.push({ filename: res.filename, match: false, reason: 'parse error', detail: res.error });
+                return;
+            }
 
-        render(container, todaysSelections, todayStr);
+            const items = Array.isArray(res.data) ? res.data : [res.data];
+
+            items.forEach((item, idx) => {
+                const date = item.date || '';
+                const selectedAt = item.selected_at || '';
+
+                let isMatch = false;
+                let reason = 'date mismatch';
+
+                if (date === debugState.computedToday) {
+                    isMatch = true;
+                } else if (selectedAt.startsWith(debugState.computedToday)) {
+                    isMatch = true;
+                }
+
+                if (!date && !selectedAt) reason = 'missing date fields';
+
+                if (isMatch) {
+                    matches.push(item);
+                }
+
+                diagnosticData.push({
+                    filename: res.filename + (items.length > 1 ? `[${idx}]` : ''),
+                    date: date,
+                    selected_at: selectedAt,
+                    match: isMatch,
+                    reason: isMatch ? 'OK' : reason
+                });
+            });
+        });
+
+        debugState.loadResults = diagnosticData;
+        matches.sort((a, b) => new Date(b.selected_at) - new Date(a.selected_at));
+
+        renderView(container, matches, debugState);
 
     } catch (e) {
-        console.error(e);
-        container.innerHTML = `<div class="error-card">Failed to load data: ${e.message}</div>`;
+        console.error('Today View Error:', e);
+        debugState.errors.push(e.message);
+        renderView(container, [], debugState);
     }
 }
 
-function render(container, items, dateStr) {
-    if (items.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state-card">
-                <h1>🔥 오늘은 선정된 주제가 없습니다.</h1>
-                <p>(${dateStr} 기준 엔진 판단 결과)</p>
-                <p class="sub-text">시스템이 모니터링 중입니다.</p>
+function renderView(container, matches, debugState) {
+    container.innerHTML = `
+        <div class="space-y-6 fade-in">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-white">📅 오늘 선정 분석</h1>
+                <button id="toggle-debug" class="text-xs px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded transition-colors">
+                    디버그 보기
+                </button>
             </div>
-        `;
-        return;
-    }
 
-    const topItem = items[0];
-    const restItems = items.slice(0); // All items in list below, or exclude top? Prompt says "Render all today's selections...". implies list includes top? Usually "Top" is highlighted, list is comprehensive. Let's include all in list or separate. 
-    // "Render: [Top Selection] ... [Today Selection List]"
-    // Usually implies Top is highlighted, then List follows. The list *could* duplicate the top item or exclude it.
-    // "Render all today's selections in descending order." -> implied duplication or comprehensive list.
-    // Let's render Top separate, then List of *all*.
-
-    let html = `
-        <div class="today-container">
-            <!-- TOP CARD -->
-            <section class="top-section">
-                <div class="section-header">🔥 오늘의 TOP 선정</div>
-                <div class="top-card" onclick="toggleDetail('${topItem.interpretation_id}')">
-                    <div class="top-header">
-                        <span class="badge intensity-badge">Intensity ${topItem.intensity}%</span>
-                        <span class="badge why-badge">${topItem.why_now_type}</span>
-                    </div>
-                    <h1 class="top-title">${topItem.title}</h1>
-                    <div class="top-summary">${topItem.why_now_summary}</div>
-                    <div class="top-footer">
-                        <span>Speakability: ${topItem.speakability}</span>
-                        <span>${topItem.selected_at.split('T')[1].substring(0, 5)}</span>
-                    </div>
+            <div id="debug-panel" class="hidden bg-slate-900 border border-slate-700 rounded-lg p-4 font-mono text-[10px] text-slate-300 overflow-x-auto">
+                <div class="grid grid-cols-2 gap-4 mb-4 border-b border-slate-800 pb-2">
+                    <div>Computed Today: <span class="text-blue-400">${debugState.computedToday}</span></div>
+                    <div>TZ Offset: <span class="text-blue-400">${debugState.timezoneOffset}</span></div>
+                    <div>Manifest Count: <span class="text-blue-400">${debugState.manifestFiles.length}</span></div>
+                    <div>Errors: <span class="text-red-400">${debugState.errors.length}</span></div>
                 </div>
-            </section>
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-slate-500 border-b border-slate-800">
+                            <th class="py-1">File/Item</th>
+                            <th class="py-1">Date</th>
+                            <th class="py-1">Selected At</th>
+                            <th class="py-1">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${debugState.loadResults.slice(0, 15).map(res => `
+                            <tr class="border-b border-slate-800/50">
+                                <td class="py-1 truncate max-w-[120px]">${res.filename}</td>
+                                <td class="py-1">${res.date || '-'}</td>
+                                <td class="py-1">${res.selected_at || '-'}</td>
+                                <td class="py-1 ${res.match ? 'text-green-500' : 'text-slate-500'}">
+                                    ${res.match ? 'MATCH' : res.reason}
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                ${debugState.loadResults.length > 15 ? `<div class="mt-1 text-slate-500">... and ${debugState.loadResults.length - 15} more</div>` : ''}
+            </div>
 
-            <!-- LIST -->
-            <section class="list-section">
-                <div class="section-header">📋 오늘 선정 리스트 (${items.length})</div>
-                <div class="card-list">
-                    ${items.map(item => renderListItem(item)).join('')}
-                </div>
-            </section>
+            ${matches.length > 0 ? renderMatches(matches) : renderFallback(debugState)}
         </div>
     `;
 
-    container.innerHTML = html;
+    document.getElementById('toggle-debug').onclick = () => {
+        const panel = document.getElementById('debug-panel');
+        panel.classList.toggle('hidden');
+    };
 }
 
-function renderListItem(item) {
-    // anomaly points max 3
-    const anomalies = (item.anomaly_points || []).slice(0, 3).map(p => `<span class="tag">${p}</span>`).join('');
-
+function renderMatches(items) {
+    const topItem = items[0];
     return `
-        <div class="list-card" id="card-${item.interpretation_id}">
-            <div class="card-main" onclick="this.parentElement.classList.toggle('expanded')">
-                <div class="card-time">${item.selected_at.split('T')[1].substring(0, 5)}</div>
-                <div class="card-content">
-                    <div class="card-row">
-                        <span class="card-type">${item.why_now_type}</span>
-                        <span class="card-intensity">⚡ ${item.intensity}</span>
-                    </div>
-                    <div class="card-title">${item.title}</div>
-                    <div class="card-tags">${anomalies}</div>
+        <div class="space-y-6">
+            <!-- TOP CARD -->
+            <div class="bg-blue-600/10 border border-blue-500/30 rounded-xl p-6 shadow-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl">🔥</div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="bg-blue-500 text-white text-[10px] font-black px-2 py-0.5 rounded">TOP SIGNAL</span>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">${topItem.why_now_type}</span>
                 </div>
-                <div class="card-action">▼</div>
+                <h2 class="text-3xl font-black text-white mb-4 leading-tight">${topItem.title}</h2>
+                <p class="text-slate-300 text-lg mb-6 leading-relaxed">${topItem.why_now_summary}</p>
+                <div class="flex items-center gap-4 pt-4 border-t border-blue-500/20 text-xs font-bold text-slate-400">
+                    <div class="flex items-center gap-1"><span class="text-blue-400">⚡ Intensity:</span> ${topItem.intensity}%</div>
+                    <div class="flex items-center gap-1"><span class="text-blue-400">🕒 Time:</span> ${topItem.selected_at.split('T')[1].substring(0, 5)}</div>
+                </div>
             </div>
-            <div class="card-detail">
-                <div class="detail-row"><strong>Why Now:</strong> ${item.why_now_summary}</div>
-                <div class="detail-row"><strong>Hook:</strong> ${item.content_hook}</div>
-                <div class="detail-row"><strong>Assets:</strong> ${item.related_assets.length} refs</div>
+
+            <!-- LIST -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${items.map(item => `
+                    <div class="bg-slate-800/40 border border-slate-700/50 rounded-lg p-4 hover:bg-slate-800 transition-all cursor-pointer">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-slate-500">${item.selected_at.split('T')[1].substring(0, 5)}</span>
+                            <span class="text-[10px] font-bold text-blue-400">${item.why_now_type}</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white mb-2 line-clamp-2">${item.title}</h3>
+                        <div class="text-[10px] text-slate-400 line-clamp-1 italic">"${item.content_hook}"</div>
+                    </div>
+                `).join('')}
             </div>
+        </div>
+    `;
+}
+
+function renderFallback(debugState) {
+    const latestFile = debugState.loadResults[0] || null;
+    return `
+        <div class="bg-slate-800/20 border-2 border-dashed border-slate-700 rounded-2xl p-12 text-center space-y-4">
+            <div class="text-6xl mb-4">🔇</div>
+            <h2 class="text-2xl font-black text-white tracking-tight">🔥 오늘은 선정된 주제가 없습니다.</h2>
+            <div class="text-slate-400 max-w-sm mx-auto text-sm leading-relaxed">
+                현재 시스템이 실시간 신호를 분석 중이나, ${debugState.computedToday} 날짜와 일치하는 결정 사항이 발견되지 않았습니다.
+            </div>
+            
+            <div class="pt-8 grid grid-cols-2 max-w-xs mx-auto gap-2">
+                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-500 uppercase font-black mb-1">Total Files</div>
+                    <div class="text-xl font-bold text-white">${debugState.manifestFiles.length}</div>
+                </div>
+                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-500 uppercase font-black mb-1">Today Matches</div>
+                    <div class="text-xl font-bold text-red-500">0</div>
+                </div>
+            </div>
+
+            ${latestFile ? `
+                <div class="mt-6 text-[11px] text-slate-500">
+                    가장 최근 발견된 데이터: <span class="text-slate-300 font-bold">${latestFile.selected_at || latestFile.date || 'N/A'}</span>
+                </div>
+            ` : ''}
         </div>
     `;
 }

@@ -138,6 +138,20 @@ def publish_assets(project_root: Path):
     sync_dir(src_decision, dest_decision, transform=True)
     sync_dir(src_decision, out_decision, transform=True)
     
+    # [TASK B] Generate Decision Manifest (ADD-ONLY)
+    # Allows UI to discover all decision files on GitHub Pages
+    decision_files = [f.name for f in dest_decision.glob("*.json") if f.name != "manifest.json"]
+    manifest = {
+        "generated_at": datetime.now().isoformat(),
+        "files": decision_files
+    }
+    with open(dest_decision / "manifest.json", "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+    print(f"[Publish] Generated decision/manifest.json with {len(decision_files)} entries.")
+
+    with open(out_decision / "manifest.json", "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+    
     # NEW: Publish OPS data for System Status View
     src_ops = project_root / "data_outputs" / "ops"
     dest_ops = dest_base / "ops"

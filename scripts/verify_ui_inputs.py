@@ -39,6 +39,22 @@ def verify_ui_inputs():
         print(f"❌ Missing Directory: {docs_data_decision}")
         missing.append("docs/data/decision/")
     else:
+        # [TASK E] Manifest Check
+        manifest_path = docs_data_decision / "manifest.json"
+        if not manifest_path.exists():
+            print(f"❌ Missing Manifest: docs/data/decision/manifest.json")
+            missing.append("docs/data/decision/manifest.json")
+        else:
+            try:
+                with open(manifest_path, "r") as f:
+                    manifest = json.load(f)
+                if not manifest.get("files"):
+                    print(f"⚠️ Manifest Empty: docs/data/decision/manifest.json")
+                    # Not a hard fail but a warning
+            except Exception as e:
+                print(f"❌ Manifest Corrupt: {e}")
+                missing.append("docs/data/decision/manifest.json")
+
         for f in required_decision_files:
             if not (docs_data_decision / f).exists():
                 print(f"❌ Missing File: docs/data/decision/{f}")
