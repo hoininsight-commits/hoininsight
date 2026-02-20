@@ -252,7 +252,7 @@ function renderFallback(debug, error) {
                 </div>
                 <div class="bg-black/40 p-4 rounded-xl border border-slate-800 flex-1">
                     <div class="text-[9px] font-black text-slate-600 uppercase mb-1">Today Signals</div>
-                    <div class="text-2xl font-bold text-red-600">NULL</div>
+                    <div class="text-2xl font-bold text-red-600">-</div>
                 </div>
             </div>
 
