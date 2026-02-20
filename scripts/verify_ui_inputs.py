@@ -116,10 +116,25 @@ def verify_ui_inputs():
     if density_issues: missing.append("ui_density_fail")
     if unsafe_literals: missing.append("unsafe_js_templates")
 
+    # [PHASE 8] v2.5 HERO Stabilization & Segregation Assertions
+    if js_dir.exists():
+        today_js = js_dir / "operator_today.js"
+        if today_js.exists():
+            content = today_js.read_text()
+            # Assert HERO completeness check
+            if "completeItems = items.filter(i => !i.incomplete)" not in content:
+                print(f"❌ Missing HERO completeness guard in {today_js.name}")
+                density_issues.append("missing_hero_stabilization")
+            
+            # Assert Segregated List rendering
+            if "보완 필요 신호" not in content:
+                print(f"❌ Missing Incomplete List segregation in {today_js.name}")
+                density_issues.append("missing_segregation")
+
     # Final Summary
-    if missing:
+    if missing or density_issues:
         print("\n🚨 UI Input Verification FAILED!")
-        print(f"Missing/Issues: {', '.join(missing)}")
+        print(f"Issues: {', '.join(missing + density_issues)}")
         sys.exit(1)
     
     print(f"✅ UI Input Verification PASSED! (Validated {valid_count} entries)")
