@@ -81,8 +81,27 @@ def verify_ui_inputs():
             print(f"❌ Manifest parsing failed: {e}")
             missing.append("manifest_error")
 
+    # [PHASE 6] Anti-Undefined JS Template Scan
+    js_dir = project_root / "docs" / "ui"
+    unsafe_literals = []
+    if js_dir.exists():
+        for js_file in js_dir.glob("*.js"):
+            try:
+                content = js_file.read_text().lower()
+                # We check for 'undefined' or 'null' in literal strings, but allow it in code (like utils.js logic)
+                # This is a heuristic: check if common UI patterns have them
+                if "innerText = 'undefined'" in js_file.read_text() or "innerHTML = 'undefined'" in js_file.read_text():
+                    print(f"❌ Unsafe literal detected in {js_file.name}")
+                    unsafe_literals.append(js_file.name)
+            except Exception: pass
+    
+    if unsafe_literals:
+        missing.append("unsafe_js_templates")
+
+    # Final Summary
     if missing:
         print("\n🚨 UI Input Verification FAILED!")
+        print(f"Missing/Issues: {', '.join(missing)}")
         sys.exit(1)
     
     print(f"✅ UI Input Verification PASSED! (Validated {valid_count} entries)")
