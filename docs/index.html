@@ -1,1246 +1,349 @@
 <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOIN 인사이트 대시보드 (Step 84)</title>
-        <style>
-            
-        .topic-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Operator v2.1</title>
+    <link rel="stylesheet" href="ui/styles.css?v=2.1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            text: '#f8fafc',
+                            muted: '#94a3b8',
+                            border: '#334155'
+                        },
+                        brand: {
+                            primary: '#3b82f6',
+                            secondary: '#64748b',
+                            accent: '#f59e0b',
+                            danger: '#ef4444',
+                            success: '#22c55e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Reset & Layout */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .app {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Styling (Fixed 240px) */
+        .sidebar {
+            width: 240px;
+            background: #0f172a;
+            position: fixed;
+            height: 100vh;
             padding: 24px;
-            margin-bottom: 20px;
-            transition: all 0.2s ease;
+            border-right: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
         }
-        .topic-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
-        .topic-card-top1 {
-            background: white; border: 1px solid #e2e8f0; border-left: 6px solid #7c3aed;
-            border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.1);
-            position: relative; overflow: hidden;
+        .logo {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.025em;
         }
-        
-        .top1-header-label { font-size: 11px; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
-        .top1-title { font-size: 28px; font-weight: 800; color: #1e293b; line-height: 1.3; margin-bottom: 24px; }
-        
-        .badge-whynow { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
-        .badge-whynow-escalated { background: #fee2e2; color: #991b1b; }
-        .badge-whynow-smartmoney { background: #dcfce7; color: #166534; }
-        .badge-whynow-default { background: #f3e8ff; color: #6b21a8; }
-        
-        .empty-text { font-size: 14px; color: #64748b; }
-        .snapshot-list-item { padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; }
-        
-            
-            * { box-sizing: border-box; }
-            body {
-                margin: 0;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                background-color: var(--bg-color);
-                color: var(--text-primary);
-                height: 100vh;
-                display: flex;
+
+        .menu-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 700;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            text-decoration: none;
+        }
+
+        .menu-item:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+        }
+
+        .menu-item.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border-left: 4px solid #3b82f6;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Content Area (Fixed Margin) */
+        .content {
+            margin-left: 240px;
+            width: calc(100% - 240px);
+            padding: 2rem;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid #3b82f6;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
             }
-            
-            .sidebar {
-                width: 250px;
-                background: white;
-                border-right: 1px solid var(--border-color);
-                display: flex;
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Legacy Link */
+        .legacy-link {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1e293b;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legacy-link:hover {
+            color: #ffffff;
+        }
+
+        /* Mobile Responsive Fallback (<768px) */
+        @media (max-width: 767px) {
+            .app {
                 flex-direction: column;
-                padding: 24px;
-                z-index: 10;
-                box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+                height: auto;
+                overflow: visible;
             }
-            
-            .logo {
-                font-size: 20px;
-                font-weight: 800;
-                color: var(--text-primary);
-                margin-bottom: 32px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            .menu-item {
-                padding: 12px 16px;
-                margin-bottom: 4px;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.2s;
-                font-weight: 500;
-                color: var(--text-secondary);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-            .menu-item:hover {
-                background: #f1f5f9;
-                color: var(--text-primary);
-            }
-            .menu-item.active {
-                background: #eff6ff;
-                color: var(--accent-blue);
-                font-weight: 600;
-            }
-            
-            .main-content {
-                flex: 1;
-                overflow-y: auto;
-                padding: 32px;
-                height: 100vh;
-            }
-            
-            h2 {
-                margin-top: 0;
-                margin-bottom: 24px;
-                font-size: 24px;
-            }
-            
-            .card-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                gap: 20px;
-            }
-            
-            .hidden { display: none !important; }
-            
-            /* Modal */
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 100;
-                left: 0;
-                top: 0;
+
+            .sidebar {
                 width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: rgba(0,0,0,0.5);
-                backdrop-filter: blur(2px);
-            }
-            .modal.active { display: flex; align-items: center; justify-content: center; }
-            .modal-content {
-                background-color: #fff;
-                margin: auto;
-                padding: 32px;
-                border: 1px solid var(--border-color);
-                width: 70%;
-                max-width: 900px;
-                max-height: 85vh;
-                overflow-y: auto;
-                border-radius: 16px;
-                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+                height: auto;
+                position: relative;
+                padding: 1rem;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5rem;
+                overflow-x: auto;
+                border-right: none;
+                border-bottom: 1px solid #1e293b;
             }
 
-            @media (max-width: 768px) {
-                body { flex-direction: column; }
-                .sidebar { 
-                    width: 100%; 
-                    height: auto; 
-                    border-right: none;
-                    border-bottom: 1px solid var(--border-color);
-                    padding: 15px 20px;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-                .logo { 
-                    margin-bottom: 10px; 
-                    justify-content: center;
-                }
-                .menu-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 5px;
-                    justify-content: center;
-                }
-                .menu-item {
-                    flex: 1 1 auto;
-                    margin-bottom: 0;
-                    padding: 8px 10px;
-                    font-size: 11px;
-                    text-align: center;
-                    white-space: nowrap;
-                }
-                .main-content {
-                    padding: 15px;
-                    overflow-y: visible;
-                }
-                .today-summary { font-size: 20px; }
-                
-                .card-grid {
-                    grid-template-columns: 1fr;
-                }
-                
-                /* Top-1 Mobile */
-                .topic-card-top1 {
-                    padding: 16px;
-                    margin-bottom: 24px;
-                }
-                .top1-title { font-size: 20px; }
-                
-                /* Fix for narrow columns */
-                .empty-state-card h3 {
-                    word-break: keep-all;
-                    font-size: 18px;
-                    margin: 0 10px;
-                }
-                
-                .modal-content {
-                    width: 95%;
-                    padding: 20px;
-                    max-height: 90vh;
-                }
-                
-                .menu-item.active {
-                    border-bottom: 2px solid var(--accent-blue);
-                    background: transparent;
-                    color: var(--accent-blue);
-                }
-                
-                .main-content {
-                    flex: 1;
-                    padding: 40px;
-                    overflow-y: auto;
-                }
+            .logo {
+                margin-bottom: 0;
+                padding-right: 1rem;
+                border-right: 1px solid #1e293b;
+                flex-shrink: 0;
+                font-size: 0.875rem;
             }
-            .ops-report-container {
-                background:white; padding:40px; border-radius:12px;
-                max-width: 1000px; margin: 0 auto;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+
+            .menu-item {
+                margin-bottom: 0;
+                padding: 0.5rem 0.75rem;
+                white-space: nowrap;
+                font-size: 0.75rem;
             }
-            .ops-report-container h1 { font-size: 28px; border-bottom: 2px solid #333; padding-bottom:10px; }
-            .ops-report-container h2 { font-size: 22px; color: #1e293b; margin-top: 30px; border-left: 4px solid #3b82f6; padding-left:10px; }
-            .ops-report-container h3 { font-size: 18px; color: #475569; margin-top: 20px; }
-            .ops-report-container blockquote { background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 10px 20px; margin: 10px 0; }
-            .ops-report-container table { width:100%; border-collapse:collapse; margin: 20px 0; }
-            .ops-report-container th { background:#f1f5f9; padding:10px; text-align:left; border-bottom:2px solid #e2e8f0; }
-            .ops-report-container td { padding:10px; border-bottom:1px solid #e2e8f0; }
-        </style>
-    </head>
-    <body>
-        <div class="sidebar">
-            <div class="logo">🔴 HOIN Insight</div>
-            <div class="menu-container">
-                <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
-                <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
-                <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
-                <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
-                <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
-                <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
-                <div class="menu-item" style="font-weight: bold; color: #ffeb3b;" onclick="switchTab('ops-report', this)">📌 운영 대시보드 (금일)</div>
-                <div class="menu-item" style="font-weight: bold; color: #22c55e;" onclick="switchTab('ops-dashboard', this)">✅ 신규 운영 UI (IS-100)</div>
-            </div>
-        </div>
-        
-        <div class="main-content">
-            <div id="tab-today">
-                
-    <div class="today-container" style="margin-bottom: 20px; border: 2px solid #2563eb; background: #eff6ff;">
-        <div class="today-header" style="border-bottom: 1px solid #bfdbfe; background: #dbeafe;">
-            <div class="today-summary" style="color: #1e40af;">📌 오늘의 핵심 한 문장 (Operator Decision)</div>
-        </div>
-        <div style="padding: 20px;">
-    
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
-            <div style="font-size: 13px; font-weight: 800; color: #475569; margin-bottom: 12px; display: flex; align-items: center;">
-                📌 오늘의 해석 구도 (Multi-Angle View)
-                <span style="margin-left: 8px; font-size: 10px; font-weight: 500; color: #94a3b8; background: #fff; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0;">Advanced Editorial</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-        
-                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="font-size: 9px; font-weight: 800; color: #1e3a8a; margin-bottom: 4px; text-transform: uppercase;">
-                        SLOT-1 / STRUCTURE
-                    </div>
-                    <div style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
-                        예정된 'FOMC 의사록 공개'와 구조적 이슈의 충돌 가능성 미리보기
-                    </div>
-                    <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
-                        일정이 다가옴에 따라 시장의 구조적 우려가 자극될 시점입니다.
-                    </div>
-                </div>
-            
-                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="font-size: 9px; font-weight: 800; color: #dc2626; margin-bottom: 4px; text-transform: uppercase;">
-                        SLOT-3 / ANOMALY
-                    </div>
-                    <div style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3;">
-                        감지된 이상징후가 기존 관찰 리스트의 핵심 전제를 흔드는 시나리오
-                    </div>
-                    <div style="font-size: 10px; color: #64748b; line-height: 1.4;">
-                        이상징후가 단순 노이즈가 아닌 구조적 균열의 신호일 수 있습니다.
-                    </div>
-                </div>
-            
-            </div>
-            <div style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center; font-style: italic;">
-                * 본 섹션은 하나의 정답이 아닌, 서로 다른 시점에서 시장을 바라보기 위한 해석 구도입니다.
-            </div>
-        </div>
-        
-        <div style="background: #fff; border: 2px solid #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <div style="font-size: 12px; font-weight: 900; color: #1e293b; letter-spacing: 1px;">EDITOR PICK: 오늘의 콘텐츠 후보</div>
-                <div style="font-size: 11px; color: #64748b; font-weight: 500;">오늘의 최종 선택은 1건입니다.</div>
-            </div>
-        
-            <div style="margin-bottom: 15px;">
-                <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                    <span style="background: #2563eb; color: white; px; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 8px;">PREVIEW</span>
-                    <span style="font-size: 16px; font-weight: 800; color: #0f172a; line-height: 1.4;">예정된 'FOMC 의사록 공개'와 구조적 이슈의 충돌 가능성 미리보기</span>
-                </div>
-                <div style="background: #f8fafc; border-left: 3px solid #2563eb; padding: 10px; font-size: 13px; color: #334155; line-height: 1.6;">
-                    <span style="font-weight: 700; color: #475569;">[선정 이유]</span> Daily Relevance / Strong Why-Now / Multi-Signal Fusion / Structural Bridge
-                </div>
-            </div>
-        
-            <div style="margin-top: 15px; font-size: 10px; color: #94a3b8; text-align: center;">
-                * 본 콘텐츠는 확정된 투자 판단이 아닌 구조적 관찰 및 시나리오 해설입니다.
-            </div>
-        </div>
-        
-        <div style="font-size: 1.4em; font-weight: 800; color: #1e3a8a; line-height: 1.5; margin-bottom: 15px; text-align: center;">
-            "[긴급] 핵심 관계자의 발언이 암시하는 구조적 균열"
-        </div>
-    
-        <div style="background: #f1f5f9; border-radius: 6px; padding: 12px; margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0;">
-            <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Market Framing</div>
-            <div style="font-size: 14px; color: #334155; font-weight: 600;">
-                숫자는 조용하지만, 시장 구조는 이미 방향을 틀었습니다.
-            </div>
-            <div style="margin-top: 6px; font-size: 10px; color: #94a3b8;">
-                * 본 문장은 시장 구조 해석을 위한 프레이밍입니다.
-            </div>
-        </div>
-        
-        <div style="background: #fff; border-left: 4px solid #dc2626; border-radius: 4px; padding: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-            <div style="font-size: 11px; font-weight: 800; color: #dc2626; margin-bottom: 6px; text-transform: uppercase;">[WHY THIS MATTERS NOW]</div>
-            <div style="font-size: 15px; color: #1e293b; font-weight: 700; line-height: 1.5;">
-                이 구조는 아직 뉴스가 아니지만, 시장은 항상 결과보다 먼저 움직입니다.
-            </div>
-            <div style="margin-top: 8px; font-size: 10px; color: #dc2626; opacity: 0.8;">
-                * 이 문장은 투자 확정이 아닌, 시점 중요성에 대한 해석입니다.
-            </div>
-        </div>
-        
-        <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 14px; line-height: 1.6; color: #334155; margin-bottom: 10px;">
-            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb;">📝 Long-form Script (Tone: STRUCTURAL / Mode: EXPLANATION)</div>
-            [긴급] 핵심 관계자의 발언이 암시하는 구조적 균열<br>지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.<br><br>대부분은 이 이슈를 'MAIN_ISSUE' 관점에서 단순히 바라봅니다.<br>하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.<br><br>이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br>따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.<br><br><span style='color:#94a3b8; font-size:11px;'>* 본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다.</span>
-        </div>
-        
-        <details style="margin-top: 10px;">
-            <summary style="cursor: pointer; color: #64748b; font-size: 12px; font-weight: 600;">🔽 쇼츠 및 추가 텍스트 보기</summary>
-            <div style="margin-top: 10px; padding: 10px; background: #f8fafc; border-radius: 6px;">
-    
-                <div style="margin-bottom: 10px;">
-                    <div style="font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px;">SHORT FORM</div>
-                    <div style="font-size: 13px; color: #334155; white-space: pre-wrap;"><strong>[Shorts Option 1]</strong><br>[긴급] 핵심 관계자의 발언이 암시하는 구조적 균열
-지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.<br><br><strong>[Shorts Option 2]</strong><br>하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br><strong>[Shorts Option 3]</strong><br>[긴급] 핵심 관계자의 발언이 암시하는 구조적 균열
-지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 왜냐하면 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br><hr><strong>[Text Card]</strong><br>[KEY POINT]<br>[긴급] 핵심 관계자의 발언이 암시하는 구조적 균열<br>지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.<br><br>[STRUCTURE]<br>이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.<br><br>[CHECK]<br>따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.</div>
-                </div>
-        
-            </div>
-        </details>
-        
-        <!-- [IS-86] Narrative Candidates Section -->
-        
-        <div style="margin-top: 25px; border-top: 1px dashed #cbd5e1; padding-top: 15px;">
-            <div style="font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 10px; display: flex; align-items: center;">
-                <span style="font-size: 16px; margin-right: 6px;">🧩</span> 오늘의 해석 후보 (Narrative Candidates)
-            </div>
-            <div style="display: grid; gap: 10px;">
-        
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <span style="background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">PREVIEW</span>
-                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">DAILY_LONG</span>
-                </div>
-                <div style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">예정된 'FOMC 의사록 공개'와 구조적 이슈의 충돌 가능성 미리보기</div>
-                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">일정이 다가옴에 따라 시장의 구조적 우려가 자극될 시점입니다.</div>
-            
-            </div>
-            
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <span style="background: #8b5cf6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">SCENARIO</span>
-                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">WEEKLY_STRUCTURE</span>
-                </div>
-                <div style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">감지된 이상징후가 기존 관찰 리스트의 핵심 전제를 흔드는 시나리오</div>
-                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">이상징후가 단순 노이즈가 아닌 구조적 균열의 신호일 수 있습니다.</div>
-            
-            </div>
-            
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <span style="background: #3b82f6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">STRUCTURE</span>
-                    <span style="font-size: 10px; color: #94a3b8; font-weight: 500;">DAILY_SHORT</span>
-                </div>
-                <div style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; line-height: 1.4;">핵심 이슈의 구조적 경로 재점검</div>
-                <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;">뉴스가 없을 때야말로 구조를 점검해야 할 최적의 시간입니다.</div>
-            
-            </div>
-            
-            </div>
-            <div style="margin-top: 10px; font-size: 10px; color: #94a3b8; text-align: center;">
-                * 본 항목은 확정된 투자 판단이 아닌 시장 해석을 위한 후보 시나리오입니다.
-            </div>
-        </div>
-        
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+                height: auto;
+                overflow: visible;
+                padding: 1.5rem;
+            }
+
+            .legacy-link {
+                display: none;
+            }
+        }
+
+        /* UTILITY */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global App Entry -->
+    <div id="loading-overlay">
+        <div class="text-center">
+            <div class="spinner mb-4 mx-auto"></div>
+            <div class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">HOIN Engine v2.1</div>
         </div>
     </div>
-    
-                
-    <div style="margin-bottom: 30px;">
-        <div style="font-size:14px; font-weight:700; color:#475569; margin-bottom:10px; display:flex; justify-content:space-between; align-items:flex-end;">
-            <span>🔭 이번 주 전략적 관찰 (Strategic Watchlist)</span>
-            <span style="font-size:11px; font-weight:400; color:#94a3b8;">*확정된 사실이 아닌 구조적 시나리오입니다.</span>
-        </div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:10px;">
-            
-        <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                    <span style="background:#3b82f6; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">PREVIEW</span>
-                    <span style="font-weight:700; color:#334155; font-size:14px;">FOMC & Liquidity</span>
-                </div>
-                <div style="font-size:12px; color:#475569;">
-                    금리 결정 이후 단기 유동성 향방 결정
-                </div>
+
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="text-blue-500">◆</span> HOIN Operator
             </div>
-            <div style="text-align:right; min-width:80px;">
-                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                <div style="font-size:12px; font-weight:600; color:#1e293b;">This Week</div>
-            </div>
-        </div>
-        
-        <div style="background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                    <span style="background:#a855f7; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">STRUCTURE</span>
-                    <span style="font-weight:700; color:#334155; font-size:14px;">AI Capex Bottleneck</span>
+
+            <nav class="flex flex-col gap-1 w-full">
+                <div class="menu-item" data-view="today" onclick="app.navigate('today')">
+                    오늘 선정
                 </div>
-                <div style="font-size:12px; color:#475569;">
-                    빅테크 실적 발표 시즌, AI 수익화 지연 우려 vs Capex 지속
+                <div class="menu-item" data-view="history" onclick="app.navigate('history')">
+                    선정 히스토리
                 </div>
-            </div>
-            <div style="text-align:right; min-width:80px;">
-                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                <div style="font-size:12px; font-weight:600; color:#1e293b;">2 Weeks</div>
-            </div>
-        </div>
-        
-        <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                    <span style="background:#f97316; color:white; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px;">SCENARIO</span>
-                    <span style="font-weight:700; color:#334155; font-size:14px;">Oil Price Spike (Hormuz)</span>
+                <div class="menu-item" data-view="system" onclick="app.navigate('system')">
+                    시스템 상태
                 </div>
-                <div style="font-size:12px; color:#475569;">
-                    지정학적 리스크 임계치 근접 (WTI $80 접근)
-                </div>
-            </div>
-            <div style="text-align:right; min-width:80px;">
-                <div style="font-size:10px; color:#64748b;">관찰 윈도우</div>
-                <div style="font-size:12px; font-weight:600; color:#1e293b;">Indefinite</div>
-            </div>
-        </div>
-        
-        </div>
+            </nav>
+
+            <a href="legacy/index.html" class="legacy-link" target="_blank">
+                Legacy Dashboard ↗
+            </a>
+        </aside>
+
+        <main class="content">
+            <div id="view-container" class="max-w-6xl mx-auto"></div>
+        </main>
     </div>
-    
-                
-        <div class="today-section-header" style="color:#475569;">📌 오늘의 확정 결론: 침묵 결정</div>
-        <div class="topic-card" style="border:2px solid #94a3b8; background:#f8fafc; margin-bottom:30px; padding:30px;">
-            <div style="display:flex; align-items:flex-start; gap:20px;">
-                <div style="font-size:40px;">🛑</div>
-                <div style="flex:1;">
-                    <div style="font-size:22px; color:#1e293b; font-weight:800; margin-bottom:10px;">
-                        "오늘은 말할 토픽이 없다고 판단했습니다."
-                    </div>
-                    <div style="font-size:15px; color:#475569; line-height:1.6; margin-bottom:15px;">
-                        <strong>판단 사유:</strong> 금일 감지된 시장 신호 중, 구조적 임계치를 초과한 이슈가 없습니다.
-                    </div>
-                    
-                    <div style="background:#e2e8f0; border-radius:8px; padding:12px; font-size:13px; color:#64748b; display:flex; justify-content:space-between;">
-                        <span>✅ 정상 작동 중 (모든 감지 센서 활성)</span>
-                        <span>🔭 하단 '감시 중인 구조적 이슈'를 참조하십시오.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-                
-                
-                
-                <div style="margin: 60px 0 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 20px;">
-                    <h3 style="color: #64748b; font-size: 13px; font-weight:600;">👇 [내부 참고용] 분석 상세 및 초안</h3>
-                </div>
-                
-                
-            <div class="narrative-preview-container" style="background:white; border:1px solid #cbd5e1; border-radius:12px; padding:25px; margin-bottom:30px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #f1f5f9; padding-bottom:15px;">
-                    <div style="font-size:18px; font-weight:800; color:#1e293b;">📜 생성된 대본 초안 (참고용)</div>
-                    <div style="background:#f0fdf4; color:#166534; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
-                        ✅ 정합성 일치
-                    </div>
-                </div>
-                
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px;">
-                    <!-- Titles -->
-                    <div>
-                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">제목 후보안</div>
-                        <div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 오늘은 말할 주제가 없다</div><div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 NO_TOPIC은 정상 상태다</div><div style='background:white; padding:8px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-bottom:6px; font-size:14px; color:#334155;'>📝 오늘의 시장: 구조적 주제 부재</div>
-                        
-                        <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border-left:3px solid #3b82f6;">
-                            <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:8px;">맥락 정보 (Context)</div>
-                            <div style="font-size:13px; color:#475569;">
-                                <strong>토픽 ID:</strong> 감지된 토픽 없음<br>
-                                <strong>발화 시점:</strong> 특별한 트리거 없음.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Script Draft -->
-                    <div>
-                        <div style="font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; text-transform:uppercase;">대본 초안 미리보기</div>
-                        <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; font-size:14px; line-height:1.6; color:#334155;">
-                            <span style="color:#2563eb; font-weight:bold;">[도입]</span> 오늘은 시장에서 강력한 구조적 신호가 발견되지 않았습니다.<br><br>
-                            <span style="color:#2563eb; font-weight:bold;">[전개]</span> 현재 시장은 과도기적 상태이거나 명확한 방향성이 부재함.<br><br>
-                            <span style="color:#dc2626; font-weight:bold;">[주의]</span> 무리한 진입 자제 요망.<br><br>
-                            <span style="color:#2563eb; font-weight:bold;">[제언]</span> 다음 신호를 기다리며 모니터링을 지속합니다.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                
-        <div class="empty-state-card">
-            <span class="empty-icon-small">☕️</span>
-            <span class="empty-text">오늘은 구조적으로 확정된 이슈 시그널이 없습니다. <strong>잠재적 신호 모니터링 중... (시스템 스캐닝)</strong></span>
-        </div>
-        
-                
-                
-                
-                
-        <div class="memory-delta-container">
-            <div class="delta-status-group">
-                <div class="delta-icon">🔁</div>
-                <div class="delta-text">
-                    <div class="delta-title">반복되는 구조 (재진입)</div>
-                    <div class="delta-sub">어제(2026-02-19)와 동일한 논리 구조가 재확인되었습니다.</div>
-                    
-                </div>
-            </div>
-            <div class="delta-badges">
-                <div class="delta-badge badge-recurring">구조 반복</div><div class="delta-badge badge-sustained">⏸ 강도 유지</div>
-            </div>
-        </div>
-        
-                
-        <div class="snapshot-list-container">
-            <h3 class="list-header">📅 최근 구조적 시그널 이력</h3>
-            <div class="snapshot-list">
-                
-            <div class="snapshot-list-item">
-                <div class="list-date">2026-06-15</div>
-                <div class="list-body">
-                    <div class="list-title">AI 데이터 센터 전력망 붕괴 위기</div>
-                    <div class="list-meta">
-                        <span class="list-pressure">Infrastructure</span>
-                        <span class="list-esc-badge">🔥 +3</span>
-                    </div>
-                </div>
-                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-15')">상세 보기</button>
-            </div>
-            
-            <div class="snapshot-list-item">
-                <div class="list-date">2026-06-10</div>
-                <div class="list-body">
-                    <div class="list-title">국채 금리 발작과 유동성 경색</div>
-                    <div class="list-meta">
-                        <span class="list-pressure">Liquidity</span>
-                        <span class="list-esc-badge">🔥 +1</span>
-                    </div>
-                </div>
-                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-10')">상세 보기</button>
-            </div>
-            
-            <div class="snapshot-list-item">
-                <div class="list-date">2026-06-05</div>
-                <div class="list-body">
-                    <div class="list-title">특정 반도체 공정 수율 저하</div>
-                    <div class="list-meta">
-                        <span class="list-pressure">Structural</span>
-                        
-                    </div>
-                </div>
-                <button class="list-action-btn" onclick="openSignalDetail('archive_2026-06-05')">상세 보기</button>
-            </div>
-            
-            </div>
-        </div>
-        
-            </div>
-            <div id="tab-candidates" class="hidden">
-                
-    <div class="candidate-container">
-        <div class="today-header">
-            <div class="today-summary">📂 토픽 후보군 (포함: 관찰 승격) <strong>13개</strong></div>
-        </div>
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th width="120">ID</th>
-                    <th width="100">분류</th>
-                    <th width="80">Tone</th>
-                    <th width="80">Mode</th>
-                    <th>상세 이유</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_disposal_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_risk_vix_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_kospi_stooq'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_kor_cpi_ecos_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_cpi_fred', 'inflation_pce_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_rates_fed_funds_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_fed_funds_fred] with corroborating signals in ['rates_us02y_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_index_kospi_stooq_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['risk_vix_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_rates_us02y_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">RATES_YIELD</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_us02y_fred] with corroborating signals in ['rates_fed_funds_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_cpi_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_cpi_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_pce_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_inflation_pce_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [inflation_pce_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260220</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'OTHER', 'INFLATION', 'RATES_YIELD'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">PROM-WL-20260220-001</code></td>
-                <td><span class="card-badge signal" style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_PREVIEW</span></td>
-                <td><span class="card-badge" style="background:#f0f9ff; color:#0369a1; font-weight:bold; font-size:10px;">PREVIEW</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">HEADS_UP</span></td>
-                <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Schedule within execution window (7 days)</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">PROM-WL-20260220-002</code></td>
-                <td><span class="card-badge signal" style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_STRUCTURE</span></td>
-                <td><span class="card-badge" style="background:#faf5ff; color:#7e22ce; font-weight:bold; font-size:10px;">STRUCTURAL</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">EXPLANATION</span></td>
-                <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Recurring structural pattern detected</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">PROM-WL-20260220-003</code></td>
-                <td><span class="card-badge signal" style="background:#e0e7ff; color:#4338ca; font-weight:bold;">WATCHLIST_SCENARIO</span></td>
-                <td><span class="card-badge" style="background:#fff7ed; color:#c2410c; font-weight:bold; font-size:10px;">SCENARIO</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">WHAT_IF</span></td>
-                <td style="font-size:13px; color:#334155;">[FROM WATCHLIST] Scenario condition (WTI) trigger active</td>
-            </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-            </div>
-            <div id="tab-decision" class="hidden">
-                <div class="empty-state">오늘의 최종 의사결정 데이터가 없습니다.</div>
-            </div>
-            <div id="tab-ops" class="hidden">
-                
-    <div class="ops-container">
-        <div class="today-header">
-            <div class="today-summary">⚙️ 운영 성과 지표 (최근 7일)</div>
-        </div>
-        
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">성공 횟수</div>
-                <div style="font-size:24px; font-weight:800; color:#22c55e;">7</div>
-            </div>
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">실패/미시행</div>
-                <div style="font-size:24px; font-weight:800; color:#ef4444;">0</div>
-            </div>
-            <div class="topic-card" style="text-align:center;">
-                <div style="font-size:12px; color:#64748b; margin-bottom:5px;">평균 소요시간</div>
-                <div style="font-size:24px; font-weight:800; color:#3b82f6;">6.1분</div>
-            </div>
-        </div>
 
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th>날짜</th>
-                    <th>상태</th>
-                    <th>소요시간 (분)</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td>2026-02-20</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-19</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>6.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-18</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>7.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-17</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-16</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>6.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-15</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>7.2</td>
-            </tr>
-        
-            <tr>
-                <td>2026-02-14</td>
-                <td><span style="color:#22c55e; font-weight:bold;">SUCCESS</span></td>
-                <td>5.2</td>
-            </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-            </div>
-            <div id="tab-archive" class="hidden">
-                <div class="today-header">
-                    <div class="today-summary">전체 토픽 목록</div>
-                </div>
-                
-    <div class="archive-container">
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th width="100">날짜</th>
-                    <th>주제</th>
-                    <th width="80">방식</th>
-                    <th width="60">중요도</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            <tr onclick="openArchiveDetail('archive_0_0')">
-                <td class="col-date">2026-02-20</td>
-                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_0_1')">
-                <td class="col-date">2026-02-20</td>
-                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_0_2')">
-                <td class="col-date">2026-02-20</td>
-                <td class="col-title">[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_0_3')">
-                <td class="col-date">2026-02-20</td>
-                <td class="col-title">[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, STRUCTURAL 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_0_4')">
-                <td class="col-date">2026-02-20</td>
-                <td class="col-title">[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_1_0')">
-                <td class="col-date">2026-01-31</td>
-                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_1_1')">
-                <td class="col-date">2026-01-31</td>
-                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_1_2')">
-                <td class="col-date">2026-01-31</td>
-                <td class="col-title">[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, FX_RATES 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_1_3')">
-                <td class="col-date">2026-01-31</td>
-                <td class="col-title">[Monetary Tightening] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, FX_RATES 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_1_4')">
-                <td class="col-date">2026-01-31</td>
-                <td class="col-title">[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, FX_RATES 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_2_0')">
-                <td class="col-date">2026-01-30</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_2_1')">
-                <td class="col-date">2026-01-30</td>
-                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_2_2')">
-                <td class="col-date">2026-01-30</td>
-                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_2_3')">
-                <td class="col-date">2026-01-30</td>
-                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_2_4')">
-                <td class="col-date">2026-01-30</td>
-                <td class="col-title">[Risk-Off Wave] 장단기 금리차(Yield Curve) 역전/해소 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_3_0')">
-                <td class="col-date">2026-01-29</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_3_1')">
-                <td class="col-date">2026-01-29</td>
-                <td class="col-title">[Risk-Off Wave] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (index_spx_fred, crypto_btc_usd_spot_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_3_2')">
-                <td class="col-date">2026-01-29</td>
-                <td class="col-title">[Risk-Off Wave] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_3_3')">
-                <td class="col-date">2026-01-29</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_3_4')">
-                <td class="col-date">2026-01-29</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_4_0')">
-                <td class="col-date">2026-01-28</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: index_spx_fred L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, crypto_btc_usd_spot_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_4_1')">
-                <td class="col-date">2026-01-28</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_4_2')">
-                <td class="col-date">2026-01-28</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (index_spx_fred, 코스피(KOSPI) 지수 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_4_3')">
-                <td class="col-date">2026-01-28</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_4_4')">
-                <td class="col-date">2026-01-28</td>
-                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_5_0')">
-                <td class="col-date">2026-01-27</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_5_1')">
-                <td class="col-date">2026-01-27</td>
-                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_5_2')">
-                <td class="col-date">2026-01-27</td>
-                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_5_3')">
-                <td class="col-date">2026-01-27</td>
-                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_5_4')">
-                <td class="col-date">2026-01-27</td>
-                <td class="col-title">[Risk-Off Wave] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_6_0')">
-                <td class="col-date">2026-01-26</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, metal_silver_kag_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_6_1')">
-                <td class="col-date">2026-01-26</td>
-                <td class="col-title">[Risk-Off Wave] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_6_2')">
-                <td class="col-date">2026-01-26</td>
-                <td class="col-title">[Risk-Off Wave] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_6_3')">
-                <td class="col-date">2026-01-26</td>
-                <td class="col-title">[Risk-Off Wave] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_6_4')">
-                <td class="col-date">2026-01-26</td>
-                <td class="col-title">[Risk-Off Wave] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (미국 10년물 국채금리 급변, STRUCTURAL 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_7_0')">
-                <td class="col-date">2026-01-24</td>
-                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_7_1')">
-                <td class="col-date">2026-01-24</td>
-                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_7_2')">
-                <td class="col-date">2026-01-24</td>
-                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_7_3')">
-                <td class="col-date">2026-01-24</td>
-                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_7_4')">
-                <td class="col-date">2026-01-24</td>
-                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_8_0')">
-                <td class="col-date">2026-01-23</td>
-                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (etf_mock_xbi, crypto_btc_usd_spot_coingecko 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_8_1')">
-                <td class="col-date">2026-01-23</td>
-                <td class="col-title">[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (미국 10년물 국채금리 급변, etf_mock_xbi 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_8_2')">
-                <td class="col-date">2026-01-23</td>
-                <td class="col-title">[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_8_3')">
-                <td class="col-date">2026-01-23</td>
-                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_8_4')">
-                <td class="col-date">2026-01-23</td>
-                <td class="col-title">[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_9_0')">
-                <td class="col-date">2026-01-22</td>
-                <td class="col-title">[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (index_spx_fred, 미국 10년물 국채금리 급변 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_9_1')">
-                <td class="col-date">2026-01-22</td>
-                <td class="col-title">[Monetary Tightening] 미국 10년물 국채금리 급변 중심의 시장 발작 (공포지수(VIX) 이상 급등, index_spx_fred 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_9_2')">
-                <td class="col-date">2026-01-22</td>
-                <td class="col-title">[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_9_3')">
-                <td class="col-date">2026-01-22</td>
-                <td class="col-title">[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            <tr onclick="openArchiveDetail('archive_9_4')">
-                <td class="col-date">2026-01-22</td>
-                <td class="col-title">[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, OTHER 동반)</td>
-                <td class="col-type"><span class="badge engine">호인엔진</span></td>
-                <td class="col-imp">보통</td>
-            </tr>
-            
-            </tbody>
-        </table>
-    </div>
-    
-            </div>
-            
-            <!-- [NEW] IssueSignal Tab (Iframe) -->
-            <div id="tab-issuesignal" class="hidden" style="height:100%;">
-                <iframe src="./issuesignal/" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
-            </div>
+    <script type="module">
+        const views = {
+            today: { js: './ui/operator_today.js?v=2.1', init: 'initTodayView', label: '오늘 선정' },
+            history: { js: './ui/operator_history.js?v=2.1', init: 'initHistoryView', label: '선정 히스토리' },
+            system: { js: './ui/operator_system.js?v=2.1', init: 'initSystemView', label: '시스템 상태' }
+        };
 
-            <!-- [NEW] Ops Report Tab (Embedded HTML) -->
-            <div id="tab-ops-report" class="hidden">
-                <div class="ops-report-container">
-                    <h3 style='margin-top:10px; margin-bottom:5px;'>🎬 이슈시그널 편집 회의 보드 - 2026-02-20</h3><p style='margin-bottom:8px;'>> <strong>데이터 기준일</strong>: 2026-02-20 | <strong>작성</strong>: IssueSignal Engine/V4</p><h4 style='margin-top:10px; margin-bottom:5px;'>📌 오늘의 확정 토픽 (TOP 0)</h4><p style='margin-bottom:8px;'>> <strong>오늘 확정된 토픽 없음</strong>: 금일 기준 '즉시 발화' 가능한 신뢰 등급(Trust Locked) 토픽이 없습니다.</p><p style='margin-bottom:8px;'>> - <strong>주요 보류 사유</strong>: <strong>UNKNOWN</strong></p><p style='margin-bottom:8px;'>---</p><h4 style='margin-top:10px; margin-bottom:5px;'>🔍 상세 완결 데이터 (EVIDENCE BUNDLE)</h4><h5 style='margin-top:5px; margin-bottom:5px;'>📄 1. 지수 상승 속 섹터 하락의 이유</h5><p style='margin-bottom:8px;'>> <strong>데이터 신뢰 마크</strong>: 🕒 기준시각 UTC+9 | 👁️ 독립 출처 1개 확인 | 🛡️ 검증: N/A</p><p style='margin-bottom:8px;'><strong>① 요약 및 판단 근거</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>배경</strong>: N/A</li><li><strong>판단</strong>: 근거 데이터가 부족합니다 (최소 2개 필요).</li></ul><p style='margin-bottom:8px;'><strong>② 공식 인용(Quotes) & 증거</strong></p><p style='margin-bottom:8px;'><strong>③ 자본 경로(Ticker) & Kill-Switch</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li><strong>Kill-Switch</strong>: `설정 없음`</li></ul><p style='margin-bottom:8px;'><strong>④ 콘텐츠 패키지 (Complete)</strong></p><ul style='margin-bottom:10px; padding-left:20px;'><li>*콘텐츠 패키지 미생성*</li></ul><p style='margin-bottom:8px;'><strong>⑤ 오해 방어 & 예상 질문 (Defense)</strong></p><p style='margin-bottom:8px;'>---</p>
-                </div>
-            </div>
+        const app = {
+            async init() {
+                const params = new URLSearchParams(window.location.search);
+                const initialView = params.get('view') || 'today';
 
-            <div id="tab-ops-dashboard" class="hidden">
-                <iframe src="./ui/index.html" style="width:100%; height:90vh; border:none; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05);"></iframe>
-            </div>
-        </div>
+                window.onpopstate = (e) => {
+                    const p = new URLSearchParams(window.location.search);
+                    this.navigate(p.get('view') || 'today', true);
+                };
 
-        <!-- Detail Modal -->
-        <div id="detail-modal" class="modal" onclick="closeModal(event)">
-            <div class="modal-content">
-                <div id="modal-body-content"></div>
-                <div style="margin-top:30px; text-align:right;">
-                    <button onclick="document.getElementById('detail-modal').classList.remove('active')" 
-                            style="padding:10px 20px; border:1px solid #e2e8f0; background:white; border-radius:8px; cursor:pointer; font-weight:600; color:#475569;">
-                        닫기
-                    </button>
-                </div>
-            </div>
-        </div>
+                await this.navigate(initialView);
 
-        <script>
-            // Data Map
-            const DETAILS_MAP = {"STRUCT_20260220_signal_f": "\n            <div class=\"detail-header\">\n                \n                <span class=\"detail-badge signal\">\uad6c\uc870\uc801 \uc7ac\uc815\uc758 (\uacf5\uaca9)</span>\n                <h2>\uc0b0\uc5c5 \uad6c\uc870 \uc7ac\uc815\uc758: \uc758\ubb34\ud654, \ud45c\uc900 \ud328\ud134 \uac10\uc9c0</h2>\n            </div>\n            \n            <div class=\"detail-section\" style=\"background:#fff1f2; border:1px solid #fecaca;\">\n                <h3 style=\"color:#e11d48;\">\ud83c\udfa5 \uc601\uc0c1 \uc81c\uc791 \uc120\uc815 \uc774\uc720</h3>\n                <p>\n                    \uad6c\uc870\uc801 \uc7ac\uc815\uc758 \uad00\uc810\uc5d0\uc11c 'Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.' \uc774\uc288\ub294 \uc2dc\uccad\uc790\ub4e4\uc5d0\uac8c \uc0c8\ub85c\uc6b4 \ud22c\uc790 \uae30\ud68c\ub97c \uc81c\uc2dc\ud558\uae30 \ub54c\ubb38\uc5d0 \uc120\uc815\n                </p>\n            </div>\n            \n            \n        <div class=\"detail-section\">\n            <h3>\u26a1 \uc9c0\uae08 \ubd10\uc57c \ud558\ub294 \uc774\uc720</h3>\n            <p>HOIN Engine \uad6c\uc870\uc801 \ubd84\uc11d \uacb0\uacfc, 'STRUCTURAL_REDEFINITION' \uc720\ud615\uc758 \ud328\ud134\uc774 \uac10\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4. (\ub4dc\ub77c\uc774\ubc84: INDUSTRY, POLICY)</p>\n        </div>\n        <div class=\"detail-section\">\n            <h3>\ud83d\udd04 \uad6c\uc870\uc801 \ubcc0\ud654 \ub0b4\uc6a9</h3>\n            <p>\uad6c\uc870\uc801 \uc7ac\uc815\uc758 \ud328\ud134 \uac10\uc9c0: '' \ud0a4\uc6cc\ub4dc \ub610\ub294 \ud504\ub808\uc784 \ub9e4\uce6d. \uc2dc\uc7a5 \uc778\uc2dd \ubcc0\ud654 \uad6c\uac04.</p>\n        </div>\n        <div class=\"detail-section\">\n            <h3>\ud83d\udcca \uadfc\uac70 \ub370\uc774\ud130</h3>\n            <ul class=\"data-list\">\n                <li><strong>\uc6b4\uc601\uae30\uc81c:</strong> INDUSTRY, POLICY</li>\n                <li><strong>\ucc38\uc870 ID:</strong> 1\uac74</li>\n            </ul>\n        </div>\n        <div class=\"detail-section\">\n            <h3>\u26a0\ufe0f \ub9ac\uc2a4\ud06c \ubc0f \uac80\uc99d \ud3ec\uc778\ud2b8</h3>\n            <p>\uc2e4\uc81c \uc22b\uc790(\ub9e4\ucd9c/\uc774\uc775)\ub85c \uc99d\uba85\ub418\uae30\uae4c\uc9c0 \uc2dc\ucc28 \uc874\uc7ac.</p>\n        </div>\n        \n            ", "archive_0_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_0_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_0_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_0_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uacf5\ud3ec\uc9c0\uc218(VIX) \uc774\uc0c1 \uae09\ub4f1, STRUCTURAL \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ucf54\uc2a4\ud53c \uc9c0\uc218\uc5d0\uc11c Percentile 99.2% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [risk_vix_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ucf54\uc2a4\ud53c \uc9c0\uc218\uc5d0\uc11c Percentile 99.2% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [risk_vix_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_0_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_1_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_1_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_1_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d, FX_RATES \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_1_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28(Yield Curve) \uc5ed\uc804/\ud574\uc18c \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc5f0\uc900 \uae30\uc900\uae08\ub9ac(Fed Funds) \ubcc0\ub3d9, FX_RATES \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28\uc5d0\uc11c Percentile 99.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_fed_funds_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28\uc5d0\uc11c Percentile 99.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_fed_funds_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_1_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d, FX_RATES \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_2_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: index_spx_fred L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9, crypto_btc_usd_spot_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 96.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 96.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_2_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_2_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_2_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_2_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28(Yield Curve) \uc5ed\uc804/\ud574\uc18c \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc5f0\uc900 \uae30\uc900\uae08\ub9ac(Fed Funds) \ubcc0\ub3d9, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28\uc5d0\uc11c Percentile 99.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_fed_funds_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc7a5\ub2e8\uae30 \uae08\ub9ac\ucc28\uc5d0\uc11c Percentile 99.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_fed_funds_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_3_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: index_spx_fred L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9, crypto_btc_usd_spot_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 99.6% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 99.6% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_3_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (index_spx_fred, crypto_btc_usd_spot_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ucf54\uc2a4\ud53c \uc9c0\uc218\uc5d0\uc11c Percentile 95.8% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ucf54\uc2a4\ud53c \uc9c0\uc218\uc5d0\uc11c Percentile 95.8% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_3_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.02\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.02\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_3_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: crypto_btc_usd_spot_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (index_spx_fred, \ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -3.35 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -3.35 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_3_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, metal_silver_kag_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_4_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: index_spx_fred L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9, crypto_btc_usd_spot_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_kospi_stooq] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_4_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: metal_silver_kag_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.2\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.2\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_4_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: crypto_btc_usd_spot_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (index_spx_fred, \ucf54\uc2a4\ud53c(KOSPI) \uc9c0\uc218 \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 3.63\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \ud3ed\ubc1c\uc801\uc778 \ucda9\uaca9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 3.63\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \ud3ed\ubc1c\uc801\uc778 \ucda9\uaca9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_4_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, metal_silver_kag_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_4_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_5_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, metal_silver_kag_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_5_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_5_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_5_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_5_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589\uac00 \uc624\ub298 \ud558\ub8e8 1\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_disposal] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_6_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, metal_silver_kag_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.43 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_6_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_6_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_6_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01(Disposal) \uae09\uc99d \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uc804\ud658\uc0ac\ucc44(CB/BW) \ubc1c\ud589 \ud3ed\uc99d, INFLATION \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uae30\uc5c5 \uc790\uc0b0 \ub9e4\uac01 \uacf5\uc2dc\uac00 \uc624\ub298 \ud558\ub8e8 5\uac74 \ubc1c\uc0dd\ud558\uba70 \ud3c9\uc18c\ubcf4\ub2e4 \uc6b0\ud638\uc801/\ubd80\uc9c4\ud55c \ud750\ub984 \uc591\uc0c1\uc744 \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [struct_dart_cb_bw] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_6_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Risk-Off Wave] \uac10\uc9c0\ub41c \ud1a0\ud53d: crypto_btc_usd_spot_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0, STRUCTURAL \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.65\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_us10y_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Risk-Off Wave] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.65\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_us10y_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_7_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uac10\uc9c0\ub41c \ud1a0\ud53d: metal_silver_kag_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.8\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.8\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_7_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.41\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.41\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_7_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.91 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.91 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_7_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_7_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_8_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (etf_mock_xbi, crypto_btc_usd_spot_coingecko \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.72\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [etf_mock_xbi] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.72\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [etf_mock_xbi] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_8_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uac10\uc9c0\ub41c \ud1a0\ud53d: crypto_btc_usd_spot_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0, etf_mock_xbi \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -3.26 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_us10y_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -3.26 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [rates_us10y_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_8_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uac10\uc9c0\ub41c \ud1a0\ud53d: metal_silver_kag_coingecko L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.72\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.72\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_gold_paxg_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_8_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, derived_gold_silver_ratio \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.54\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.54\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_8_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uac10\uc9c0\ub41c \ud1a0\ud53d: derived_gold_silver_ratio L2 Signal \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.42 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Z-Score -2.42 >= 2.0. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_9_0": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uacf5\ud3ec\uc9c0\uc218(VIX) \uc774\uc0c1 \uae09\ub4f1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (index_spx_fred, \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uacf5\ud3ec\uc9c0\uc218(VIX)\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 3.43\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uacf5\ud3ec\uc9c0\uc218(VIX)\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 3.43\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uae09\uaca9\ud55c \uc774\uc0c1 \ubcc0\ub3d9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [index_spx_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_9_1": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac \uae09\ubcc0 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\uacf5\ud3ec\uc9c0\uc218(VIX) \uc774\uc0c1 \uae09\ub4f1, index_spx_fred \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 4.25\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \ud3ed\ubc1c\uc801\uc778 \ucda9\uaca9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [risk_vix_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d 10\ub144\ubb3c \uad6d\ucc44\uae08\ub9ac\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 4.25\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \ud3ed\ubc1c\uc801\uc778 \ucda9\uaca9\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [risk_vix_fred] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_9_2": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_9_3": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \ubbf8\uad6d \uac1c\uc778\uc18c\ube44\uc9c0\ucd9c(PCE) \ubb3c\uac00 \uc774\uc0c1 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (\ud55c\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \uc1fc\ud06c, \ubbf8\uad6d \uc18c\ube44\uc790\ubb3c\uac00(CPI) \ucda9\uaca9 \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uc9c0\ud45c\uc5d0\uc11c Percentile 100.0% (Extreme). \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [inflation_kor_cpi_ecos] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            ", "archive_9_4": "\n            <div class=\"detail-header\">\n                <span class=\"detail-badge engine\">\ud638\uc778\uc5d4\uc9c4 (\uc544\uce74\uc774\ube0c)</span>\n                <h2>[Monetary Tightening] \uace8\ub4dc(Gold) \uac00\uaca9 \uc774\uc0c1 \ubcc0\ub3d9 \uc911\uc2ec\uc758 \uc2dc\uc7a5 \ubc1c\uc791 (metal_silver_kag_coingecko, OTHER \ub3d9\ubc18)</h2>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\udcdc \uacfc\uac70 \uc2a4\ud06c\ub9bd\ud2b8</h3>\n                <p class=\"script-text\">\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.35\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83c\udfaf \uc120\uc815 \uc774\uc720</h3>\n                <p>\ud604\uc7ac \uc2dc\uc7a5\uc740 [Monetary Tightening] \uad6d\uba74\uc5d0 \uc9c4\uc785\ud55c \uac83\uc73c\ub85c \ubd84\uc11d\ub429\ub2c8\ub2e4. \uace8\ub4dc \uac00\uaca9\uac00 \ud3c9\uc18c \ubcc0\ub3d9\ud3ed \ub300\ube44 2.35\ubc30(\ud45c\uc900\ud3b8\ucc28) \uc774\uc0c1 \uc720\uc758\ubbf8\ud55c \ubcc0\ud654\uc744(\ub97c) \ubcf4\uc600\uc2b5\ub2c8\ub2e4. \ud2b9\ud788 \ub3d9\uc77c \uc139\ud130\uc778 [metal_silver_kag_coingecko] \ub4f1\uc5d0\uc11c\ub3c4 \ub3d9\uc2dc\ub2e4\ubc1c\uc801\uc73c\ub85c \uc774\uc0c1 \uc2e0\ud638\uac00 \uac10\uc9c0\ub418\uc5b4 \ud574\ub2f9 \ud14c\ub9c8\uc758 \uc2e0\ub8b0\ub3c4\uac00 \ub9e4\uc6b0 \ub192\uc2b5\ub2c8\ub2e4.</p>\n            </div>\n            <div class=\"detail-section\">\n                <h3>\ud83d\ude80 \uc911\uc694\ub3c4</h3>\n                <p>\ubcf4\ud1b5 (L2)</p>\n            </div>\n            "};
-            
-            function switchTab(tabName, el) {
-                // Update Menu
-                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
-                el.classList.add('active');
-                
-                // Update Content
-                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report", "ops-dashboard"];
-                tabs.forEach(t => {
-                   const element = document.getElementById('tab-' + t);
-                   if(element) element.classList.add('hidden');
+                setTimeout(() => {
+                    const loader = document.getElementById('loading-overlay');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.remove(), 500);
+                    }
+                }, 600);
+            },
+
+            async navigate(viewName, isPopState = false) {
+                if (!views[viewName]) return;
+
+                document.querySelectorAll('.menu-item').forEach(el => {
+                    el.classList.toggle('active', el.dataset.view === viewName);
                 });
-                
-                const target = document.getElementById('tab-' + tabName);
-                if(target) target.classList.remove('hidden');
-            }
-            
-            function openSignalDetail(id) {
-                showModal(DETAILS_MAP[id]);
-            }
-            
-            function openEngineDetail(id) {
-                showModal(DETAILS_MAP[id]);
-            }
-            
-            function openArchiveDetail(id) {
-                showModal(DETAILS_MAP[id]);
-            }
-            
-            function showModal(html) {
-                if(!html) return;
-                document.getElementById('modal-body-content').innerHTML = html;
-                document.getElementById('detail-modal').classList.add('active');
-            }
-            
-            function closeModal(e) {
-                if(e.target.id === 'detail-modal') {
-                    e.target.classList.remove('active');
+
+                const container = document.getElementById('view-container');
+                container.innerHTML = `<div class="p-4 text-slate-500 text-xs animate-pulse">LOADING ${viewName.toUpperCase()}...</div>`;
+
+                try {
+                    const viewConfig = views[viewName];
+                    const module = await import(viewConfig.js);
+
+                    container.innerHTML = '';
+                    if (module[viewConfig.init]) {
+                        await module[viewConfig.init](container);
+                        document.title = `HOIN Operator | ${viewConfig.label}`;
+                    }
+
+                    if (!isPopState) {
+                        const url = new URL(window.location);
+                        url.searchParams.set('view', viewName);
+                        window.history.pushState({}, '', url);
+                    }
+
+                } catch (e) {
+                    console.error('Navigation Error:', e);
+                    container.innerHTML = `<div class="p-8 text-red-500 font-mono text-xs bg-red-500/5 rounded border border-red-500/20">
+                        [NAV_ERROR] ${viewName} Load Failed: ${e.message}
+                    </div>`;
                 }
             }
-        </script>
-    </body>
-    </html>
-    
+        };
+
+        window.app = app;
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    </script>
+</body>
+
+</html>
