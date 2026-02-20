@@ -193,6 +193,20 @@ def run_issue_signal():
         traceback.print_exc()
         return False
 
+def run_narrative_intelligence():
+    """Phase 12: Narrative Intelligence Layer v1.0"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 12: NARRATIVE INTELLIGENCE STARTED")
+    try:
+        from src.ops.narrative_intelligence_layer import NarrativeIntelligenceLayer
+        ni = NarrativeIntelligenceLayer(project_root)
+        ni.process_topics()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 12: NARRATIVE INTELLIGENCE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Error running Narrative Intelligence: {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -215,6 +229,9 @@ def main():
     
     # 2.5 Issue Signal (EH Line - NEW)
     run_issue_signal()
+    
+    # 2.6 Narrative Intelligence (Phase 12)
+    run_narrative_intelligence()
     
     # Step 3: Generate Dashboard
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")
