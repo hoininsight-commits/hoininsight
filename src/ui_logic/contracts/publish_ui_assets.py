@@ -98,6 +98,11 @@ def publish_assets(project_root: Path):
         
         dest.mkdir(parents=True, exist_ok=True)
         for item in src.iterdir():
+            if item.is_dir():
+                # Recursive call
+                sync_dir(item, dest / item.name, transform=transform)
+                continue
+
             if item.is_file():
                 # Read-Transform-Write flow for decision files
                 if transform and item.suffix == ".json" and "decision" in str(src):
@@ -110,7 +115,6 @@ def publish_assets(project_root: Path):
                             new_data = [transform_decision_card(i, x) for i, x in enumerate(data)]
                         elif isinstance(data, dict):
                             # Try to detect if it's a map of id->card or just a card
-                            # Heuristic: check if values are dicts
                             is_map = all(isinstance(v, dict) for v in data.values())
                             if is_map:
                                 new_data = {k: transform_decision_card(k, v) for k, v in data.items()}
@@ -134,20 +138,27 @@ def publish_assets(project_root: Path):
     sync_dir(src_ui, out_ui, transform=False)
     
 
-    print("\n[Publish] Synchronizing Decision assets...")
+    print("\n[Publish] Synchronizing Decision assets (Recursive)...")
     sync_dir(src_decision, dest_decision, transform=True)
     sync_dir(src_decision, out_decision, transform=True)
     
-    # [TASK B] Generate Decision Manifest (ADD-ONLY)
-    # Allows UI to discover all decision files on GitHub Pages
-    decision_files = [f.name for f in dest_decision.glob("*.json") if f.name != "manifest.json"]
+    # [FIX] Generate Deep Decision Manifest for Navigator
+    # Allows UI to discover all decision files in dated subfolders
+    raw_files = list(dest_decision.rglob("*.json"))
+    decision_files = []
+    for rf in raw_files:
+        if rf.name == "manifest.json": continue
+        # Get path relative to docs/data/decision
+        rel_path = rf.relative_to(dest_decision)
+        decision_files.append(str(rel_path))
+
     manifest = {
         "generated_at": datetime.now().isoformat(),
-        "files": decision_files
+        "files": sorted(decision_files, reverse=True) # Newest first
     }
     with open(dest_decision / "manifest.json", "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
-    print(f"[Publish] Generated decision/manifest.json with {len(decision_files)} entries.")
+    print(f"[Publish] Generated recursive manifest with {len(decision_files)} entries.")
 
     with open(out_decision / "manifest.json", "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
