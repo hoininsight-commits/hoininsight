@@ -81,22 +81,40 @@ def verify_ui_inputs():
             print(f"❌ Manifest parsing failed: {e}")
             missing.append("manifest_error")
 
-    # [PHASE 6] Anti-Undefined JS Template Scan
+    # [PHASE 7] v2.4 Density & Visual Assertions
     js_dir = project_root / "docs" / "ui"
+    density_issues = []
+    if js_dir.exists():
+        today_js = js_dir / "operator_today.js"
+        if today_js.exists():
+            content = today_js.read_text()
+            # Assert Summary Strip exists
+            if "id=\"summary-strip\"" not in content:
+                print(f"❌ Missing mandatory Summary Strip in {today_js.name}")
+                density_issues.append("missing_summary_strip")
+            
+            # Assert HERO accent bar renders
+            if "GET_COLORS.accent" not in content:
+                print(f"❌ Missing HERO accent bar logic in {today_js.name}")
+                density_issues.append("missing_hero_accent")
+            
+            # Assert high-density compression (padding check)
+            if "px-3 py-2" not in content and "p-4" in content: # Simplified heuristic
+                print(f"⚠️ Low density detected in list cards.")
+
+    # [PHASE 6] Anti-Undefined JS Template Scan
     unsafe_literals = []
     if js_dir.exists():
         for js_file in js_dir.glob("*.js"):
             try:
-                content = js_file.read_text().lower()
-                # We check for 'undefined' or 'null' in literal strings, but allow it in code (like utils.js logic)
-                # This is a heuristic: check if common UI patterns have them
+                # Heuristic: check if common UI patterns have 'undefined' or 'null' literally assigned
                 if "innerText = 'undefined'" in js_file.read_text() or "innerHTML = 'undefined'" in js_file.read_text():
                     print(f"❌ Unsafe literal detected in {js_file.name}")
                     unsafe_literals.append(js_file.name)
             except Exception: pass
     
-    if unsafe_literals:
-        missing.append("unsafe_js_templates")
+    if density_issues: missing.append("ui_density_fail")
+    if unsafe_literals: missing.append("unsafe_js_templates")
 
     # Final Summary
     if missing:
