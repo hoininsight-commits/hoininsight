@@ -191,22 +191,22 @@
 | 대출 총량 관리에 작년 4분기 은행권 주담대 증가폭 반토막 - 연합인포맥스 | Structural implication: '대출 총량 관리에 작년 4분기 은행권 주담대 증가폭 반토막 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [독파모 4파전] 추가 합류 모티프테크놀로지스 "기존 팀 뛰어넘는 성과 확신" - 지디넷코리아 | Structural implication: '[독파모 4파전] 추가 합류 모티프테크놀로지스 "기존 팀 뛰어넘는 성과 확신" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 다주택자 ‘퇴로’ 열고 압박하니…서울 아파트값 3주 연속 상승폭 둔화 - 조선일보 | Structural implication: '다주택자 ‘퇴로’ 열고 압박하니…서울 아파트값 3주 연속 상승폭 둔화 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스 | Structural implication: '60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | '장바구니 물가안정' 李대통령 메시지에…할인전 나선 유통가 - 한국경제 | Structural implication: ''장바구니 물가안정' 李대통령 메시지에…할인전 나선 유통가 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 국회 법사1소위, '자사주 소각 의무화' 3차 상법개정안 의결 - MBC 뉴스 | Structural implication: '[속보] 국회 법사1소위, '자사주 소각 의무화' 3차 상법개정안 의결 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 글로벌 시총 14위 올랐다 - 아시아경제 | Structural implication: '삼성전자, 글로벌 시총 14위 올랐다 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| 60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스 | Structural implication: '60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 갤S26 가입자 유치 나선 SKT·KT·LGU+…보조금 경쟁 재점화되나 - 블로터 | Structural implication: '갤S26 가입자 유치 나선 SKT·KT·LGU+…보조금 경쟁 재점화되나 - 블로터' suggests a shift in NEWS dynamics. | LOW |
 | 다음 수 내다봐야 고수라는데…“반도체 이후 뭐지?” 리서치센터장에 물어보니 - 매일경제 | Structural implication: '다음 수 내다봐야 고수라는데…“반도체 이후 뭐지?” 리서치센터장에 물어보니 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 블랙록 펀드 어드바이저스, SK하이닉스 지분 5% 신규 취득 보고 - 데이터투자 | Structural implication: '블랙록 펀드 어드바이저스, SK하이닉스 지분 5% 신규 취득 보고 - 데이터투자' suggests a shift in NEWS dynamics. | LOW |
 | 관세 성적표는 최악인데…트럼프 “내가 가장 좋아하는 단어는 관세” 또 반복 - 조선일보 | Structural implication: '관세 성적표는 최악인데…트럼프 “내가 가장 좋아하는 단어는 관세” 또 반복 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스 | Structural implication: '뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 엔비디아, HBM4 '듀얼빈' 전략 채택…삼성전자 최고성능 HBM4 공급할까 - 글로벌이코노믹 | Structural implication: '엔비디아, HBM4 '듀얼빈' 전략 채택…삼성전자 최고성능 HBM4 공급할까 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
+| HBM4 테스트 시간 증가에 소켓 업계 '화색' - 디일렉 | Structural implication: 'HBM4 테스트 시간 증가에 소켓 업계 '화색' - 디일렉' suggests a shift in NEWS dynamics. | LOW |
 | AI 코딩 툴 뚫렸다…해커, 오픈클로까지 무단 설치 - 디지털투데이 | Structural implication: 'AI 코딩 툴 뚫렸다…해커, 오픈클로까지 무단 설치 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스 | Structural implication: '뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| "저점인 줄 알았는데" 공포에 떤다…'비트코인 대폭락' 오나? [스프] - v.daum.net | Structural implication: '"저점인 줄 알았는데" 공포에 떤다…'비트코인 대폭락' 오나? [스프] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com | Structural implication: '삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
-| “무조건 반등할거야”...개미들 ‘초상집’ 된 비트코인, 큰 손은 다 도망갔다 - 매일경제 | Structural implication: '“무조건 반등할거야”...개미들 ‘초상집’ 된 비트코인, 큰 손은 다 도망갔다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보 | Structural implication: '비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 구글·애플, 음악 생성 AI 시장 놓고 맞대결 - 지디넷코리아 | Structural implication: '구글·애플, 음악 생성 AI 시장 놓고 맞대결 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| [박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스 | Structural implication: '[박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 네이버페이 정오부터 온라인 결제 등 먹통...4시간 만에 복구 - 조선일보 | Structural implication: '네이버페이 정오부터 온라인 결제 등 먹통...4시간 만에 복구 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 파마리서치, 영업익 70%↑… JW중외ㆍ휴온스도 ‘알짜경영’ - 메디소비자뉴스 | Structural implication: '파마리서치, 영업익 70%↑… JW중외ㆍ휴온스도 ‘알짜경영’ - 메디소비자뉴스' suggests a shift in NEWS dynamics. | LOW |
+| “기내 보조배터리 금지했지만”···사각지대는 여전 - 이뉴스투데이 | Structural implication: '“기내 보조배터리 금지했지만”···사각지대는 여전 - 이뉴스투데이' suggests a shift in NEWS dynamics. | LOW |
 | "AI시대 나만의 창의력 덕질·딴짓에서 나와요" | Structural implication: '"AI시대 나만의 창의력 덕질·딴짓에서 나와요"' suggests a shift in NEWS dynamics. | LOW |
 | 포스코청암상에 최경수·최연수·정기로·서울여상 | Structural implication: '포스코청암상에 최경수·최연수·정기로·서울여상' suggests a shift in NEWS dynamics. | LOW |
 | [표] 주말 레저 날씨 | Structural implication: '[표] 주말 레저 날씨' suggests a shift in NEWS dynamics. | LOW |
