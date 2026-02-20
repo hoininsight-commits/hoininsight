@@ -1,0 +1,50 @@
+version: is97_4_v1
+groups:
+  - group_id: AI_INFRA_POWER
+    triggers:
+      - tag: PRETEXT_VALIDATION
+        contains: ["전력", "전력망", "변압기", "송전", "데이터센터 전력", "AI 인프라"]
+      - tag: FLOW_ROTATION
+        contains: ["인프라", "전력기기", "원전", "SMR"]
+    candidates:
+      - { market: "KRX", code: "006400", name: "삼성SDI", role: "INFRA_POWER" }
+      - { market: "KRX", code: "010120", name: "LS ELECTRIC", role: "INFRA_POWER" }
+      - { market: "KRX", code: "000720", name: "현대건설", role: "INFRA_POWER" }
+      - { market: "NYSE", code: "VRT", name: "Vertiv Holdings", role: "INFRA_POWER" }
+
+  - group_id: POLICY_FINANCIAL_REFORM
+    triggers:
+      - tag: KR_POLICY
+        contains: ["ISA", "국민성장", "밸류업", "MSCI", "WGBI", "금융개혁"]
+    candidates:
+      - { market: "KRX", code: "055550", name: "신한지주", role: "FINANCIAL" }
+      - { market: "KRX", code: "105560", name: "KB금융", role: "FINANCIAL" }
+      - { market: "KRX", code: "005490", name: "POSCO홀딩스", role: "POLICY_BENEFIT" }
+
+  - group_id: GLOBAL_CHIP_WAR
+    triggers:
+      - tag: GLOBAL_INDEX
+        contains: ["반도체", "SOX", "Nvidia", "칩"]
+      - tag: EARNINGS_VERIFY
+        contains: ["HBM", "마진", "가이던스"]
+    candidates:
+      - { market: "KRX", code: "000660", name: "SK하이닉스", role: "SEMIS" }
+      - { market: "NASDAQ", code: "NVDA", name: "NVIDIA", role: "SEMIS" }
+      - { market: "NASDAQ", code: "ASML", name: "ASML", role: "PICKS_SHOVELS" }
+
+  - group_id: MARKET_HEDGE
+    triggers:
+      - tag: ANOMALY_DETECTION
+        contains: ["금리 급등", "전쟁", "유가", "인플레이션"]
+    candidates:
+      - { market: "NYSE", code: "GOLD", name: "Barrick Gold", role: "HEDGE" }
+      - { market: "KRX", code: "001440", name: "대한전선", role: "HEDGE" }
+
+  - group_id: LABOR_SHIFT_PHYSICAL_AI
+    triggers:
+      - tag: LABOR_SHIFT_LAYER
+        contains: ["Labor Shift", "Wage Premium", "Blue Collar", "Datacenter Capex"]
+    candidates:
+      - { market: "KRX", code: "006400", name: "Samsung SDI", role: "POWER_STORAGE", why_must: "datacenter build-out requires ESS/Power; bottleneck is battery" }
+      - { market: "KRX", code: "010120", name: "LS ELECTRIC", role: "GRID_INFRA", why_must: "grid interconnection & transformer bottleneck; lead-time is long" }
+      - { market: "NYSE", code: "VRT", name: "Vertiv Holdings", role: "COOLING", why_must: "high-density compute requires liquid cooling; bottleneck is thermal" }

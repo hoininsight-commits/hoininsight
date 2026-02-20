@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Operator UI - Daily Content Decision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- SECTION 0: 오늘 뭐 하면 되나요? -->
+        <header id="status-bar" class="section">
+            <div class="date-display" id="current-date">YYYY-MM-DD</div>
+            <div class="main-status">
+                <span class="label">오늘의 콘텐츠 상태</span>
+                <div id="global-status-badge" class="badge">LOADING...</div>
+            </div>
+        </header>
+
+        <main id="operator-view">
+            <!-- SECTION 1: 오늘의 핵심 이슈 -->
+            <section id="core-issue" class="section card-large">
+                <h2 class="section-title">🔥 오늘의 핵심 이슈</h2>
+                <div id="issue-content">
+                    <h3 id="issue-hook" class="hook-text">데이터를 불러오는 중...</h3>
+                    <p id="issue-why-now" class="why-now-text"></p>
+                </div>
+            </section>
+
+            <div class="dual-column">
+                <!-- SECTION 2: 지금 말해도 되나요? -->
+                <section id="speakability" class="section card">
+                    <h2 class="section-title">🗣 지금 말해도 되나요?</h2>
+                    <div id="speakability-badge" class="badge">CHECKING</div>
+                    <div id="operator-guide" class="guide-box"></div>
+                </section>
+
+                <!-- SECTION 3: 왜 지금 이 얘기가 나왔나요? -->
+                <section id="logic-chain" class="section card">
+                    <h2 class="section-title">🧠 왜 지금 이 얘기가 나왔나요?</h2>
+                    <div id="logic-steps" class="logic-flow"></div>
+                </section>
+            </div>
+
+            <!-- SECTION 4: 왜 이 종목들이 나왔나요? -->
+            <section id="mentionables" class="section">
+                <h2 class="section-title">🎯 왜 이 종목들이 나왔나요?</h2>
+                <div id="mention-cards" class="card-grid"></div>
+            </section>
+
+            <!-- SECTION 5: 오늘 찍을 콘텐츠 -->
+            <section id="content-packs" class="section">
+                <h2 class="section-title">📦 오늘 찍을 콘텐츠</h2>
+                <div id="pack-container" class="pack-items"></div>
+            </section>
+
+            <!-- SECTION 6: 이거 믿어도 되나요? -->
+            <section id="evidence" class="section">
+                <h2 class="section-title">🔍 이거 믿어도 되나요?</h2>
+                <div id="evidence-list" class="evidence-grid"></div>
+            </section>
+
+            <!-- SECTION 7: 오늘 할 일 체크리스트 -->
+            <footer id="checklist" class="section card-highlight">
+                <h2 class="section-title">✅ 오늘 할 일 체크리스트</h2>
+                <ul id="checklist-items"></ul>
+            </footer>
+        </main>
+
+        <!-- [REF-011] Legacy Read-Only Container -->
+        <div id="legacy-view" style="display: none;">
+            <!-- Legacy content will be injected or remained here if partially moved -->
+            <div id="legacy-content-placeholder" style="padding: 100px 20px; text-align: center; color: #64748b;">
+                <h3>레거시 뷰 준비 중...</h3>
+                <p>전통적인 대시보드 화면이 이곳에 렌더링됩니다.</p>
+            </div>
+        </div>
+    </div>
+    <script src="manifest_loader.js"></script>
+    <script src="legacy_adapter.js"></script>
+    <script src="router.js"></script>
+    <script src="legacy_readonly_wrapper.js"></script>
+    <script src="legacy_render.js"></script>
+    <script src="render.js"></script>
+    <script src="sidebar_registry_loader.js"></script>
+    <script src="cards/deprecation_notice_card.js"></script>
+
+</html>

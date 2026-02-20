@@ -1,0 +1,14 @@
+{
+  "id": "EVO-20260117-01087",
+  "generated_at": "2026-01-17T02:42:07.452984",
+  "category": "LOGIC_UPDATE",
+  "status": "PROPOSED",
+  "content": {
+    "condition": "IF Process_Stage == 'Hybrid Bonding' OR 'Glass Substrate' THEN Inspection_Role MUST_BE 'Critical Bottleneck' (Gatekeeper)",
+    "meaning": "Inspection is no longer auxiliary; it is the primary gatekeeper for yield in atomic-level processes."
+  },
+  "evidence": {
+    "quote": "HBM 이후 공정 미세화 단계에서는 '누가 더 잘 만드는가'가 아니라, '누가 양산을 보장하는가(검사 통과)'가 핵심 경쟁력이 되며, 이 역할은 대체 불가능한 구조적 독점이 된다.",
+    "source": "Park Systems MOCK MODE"
+  }
+}

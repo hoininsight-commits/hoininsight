@@ -1,0 +1,65 @@
+version: "1.0"
+type: "preview"
+name: "narrative_preview"
+description: "Daily Title and Script Preview (Step 100)."
+
+fields:
+  run_date:
+    type: string
+    format: date
+    required: true
+
+  engine_state:
+    type: string
+    const: "STEP_96_LOCKED"
+    required: true
+    
+  topic_id:
+    type: string
+    required: true
+
+  selection_status:
+    type: string
+    enum: ["LOCK", "PASS", "NO_TOPIC"]
+    required: true
+
+  comparison_alignment:
+    type: string
+    enum: ["ALIGNED", "DIVERGED"]
+    required: true
+
+  divergence_type:
+    type: string
+    required: true
+
+  title_candidates:
+    type: array
+    items: string
+    minItems: 3
+    maxItems: 3
+    required: true
+
+  script:
+    type: object
+    required: true
+    properties:
+      opening: 
+        type: string
+      why_now: 
+        type: string
+      structure: 
+        type: string
+      caution: 
+        type: string
+      closing: 
+        type: string
+
+  source_refs:
+    type: array
+    items: string
+    required: true
+
+  continuity_flag:
+    type: boolean
+    const: true
+    required: true

@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-01-29T15:10:08Z",
+    "dataset_id": "index_spx_fred",
+    "entity": "SPX",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": 1.22,
+      "percentile": 99.6,
+      "value": 6978.03,
+      "rolling_mean_20d": 6931.421347656249,
+      "reasoning": "Percentile 99.6% (Extreme)"
+    }
+  }
+]

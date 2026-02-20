@@ -1,0 +1,39 @@
+{
+  "run_date": "2026-02-05",
+  "counts": {
+    "fact_anchor": {
+      "STRONG": 0,
+      "MEDIUM": 0,
+      "WEAK": 1
+    },
+    "timing_edge": {
+      "EARLY": 0,
+      "ON_TIME": 1,
+      "LATE": 0
+    },
+    "narration_fit": {
+      "GOOD": 0,
+      "FAIR": 0,
+      "POOR": 1
+    }
+  },
+  "topics": [
+    {
+      "topic_id": "gate_fda3345eaa",
+      "title": "지수 상승 속 섹터 하락의 이유",
+      "fact_anchor": "WEAK",
+      "timing_edge": "ON_TIME",
+      "narration_fit": "POOR",
+      "stock_linkability": "NOT_LINKABLE",
+      "hint": "Standard Observation",
+      "flags": [
+        "EVIDENCE_TOO_THIN",
+        "TITLE_MISMATCH"
+      ],
+      "why_now": "(not specified)",
+      "ceiling": "산업 또는 기업 연결 신호 없음",
+      "missing_to_upgrade": "Industry sector linkage and quantitative trend stability",
+      "lane": "ANOMALY"
+    }
+  ]
+}

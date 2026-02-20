@@ -1,0 +1,62 @@
+version: "1.0"
+type: "ledger"
+name: "judgment_ledger"
+description: "Append-only ledger for classifying judgment failures/holds (Step 98)."
+
+fields:
+  date:
+    type: string
+    format: date
+    required: true
+  
+  time:
+    type: string
+    format: time
+    required: true
+  
+  engine_state:
+    type: string
+    required: true
+    const: "STEP_96_LOCKED"
+
+  topic_id:
+    type: string
+    required: true
+
+  engine_decision:
+    type: string
+    required: true
+    enum: ["LOCK", "PASS", "NO_TOPIC"]
+
+  operator_action:
+    type: string
+    required: true
+    enum: ["PROCEED", "HOLD", "REJECT"]
+
+  ledger_tag:
+    type: string
+    required: true
+    enum: 
+      - "FALSE_POSITIVE_TIME_NOT_READY"
+      - "NARRATIVE_SATURATION"
+      - "INSUFFICIENT_PRESSURE"
+      - "HUMAN_CONFIDENCE_DROP"
+      - "NO_TOPIC_VALID_STATE"
+    description: "Classification of why the judgment was held/rejected"
+
+  ledger_reason:
+    type: string
+    required: true
+    description: "Short human-readable 1-sentence reason"
+
+  evidence_refs:
+    type: array
+    items:
+      type: string
+    required: true
+    description: "Paths to evidence files (e.g. final decision card)"
+
+  continuity_flag:
+    type: boolean
+    required: true
+    const: true

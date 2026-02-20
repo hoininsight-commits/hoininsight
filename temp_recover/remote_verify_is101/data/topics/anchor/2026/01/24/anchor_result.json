@@ -1,0 +1,22 @@
+{
+  "data_axis": [
+    "metal_gold_paxg_coingecko",
+    "rates_us10y_fred",
+    "metal_silver_kag_coingecko",
+    "derived_gold_silver_ratio"
+  ],
+  "baseline_match": [
+    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.37)",
+    "rates_us10y_fred: Volatility Surge (Z=2.20)",
+    "metal_silver_kag_coingecko: Volatility Surge (Z=2.69)",
+    "derived_gold_silver_ratio: Volatility Surge (Z=2.18)"
+  ],
+  "anomaly_logic": "Unknown",
+  "why_now_type": "Hybrid-driven",
+  "level": "L2",
+  "level_proof": "Statistical Deviation > 2.0 Sigma",
+  "gap_detection": "Insufficient Evidence for L4",
+  "missing_data_request": [
+    "Need Volume/Flow Data to verify Capital Fixation"
+  ]
+}

@@ -1,0 +1,12 @@
+schema_version: "timeseries_v1"
+required_columns:
+  - ts_utc
+  - entity
+  - value
+  - unit
+  - source
+  - dataset_id
+  - metric_name
+  - is_derived
+  - derived_from
+  - fingerprint

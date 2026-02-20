@@ -1,0 +1,15 @@
+[
+  {
+    "ts_utc": "2026-02-05T11:57:54Z",
+    "dataset_id": "struct_dart_disposal",
+    "entity": "DART_DISPOSAL",
+    "anomaly_type": "EVENT_NONZERO",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "value": 5.0,
+      "threshold": 0,
+      "reasoning": "New Event Detected (Count=5)"
+    }
+  }
+]

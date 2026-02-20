@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-01-19T23:39:00Z",
+    "dataset_id": "comm_wti_fred",
+    "entity": "WTI",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": 1.94,
+      "percentile": 95.8,
+      "value": 75.2,
+      "rolling_mean_20d": 61.159499999999994,
+      "reasoning": "Percentile 95.8% (Extreme)"
+    }
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "run_date": "2026-02-04",
+  "topics": [
+    {
+      "topic_id": "gate_dd1b51b1b3",
+      "title": "지수 상승 속 섹터 하락의 이유",
+      "lane": "ANOMALY",
+      "status": "READY",
+      "speakability": "NOT_SPEAKABLE_YET",
+      "auto_approved": false,
+      "selection_rationale": null,
+      "fact_anchors": [],
+      "evidence_refs": [],
+      "human_label_today": null,
+      "overlay_bucket_today": null,
+      "mismatch_flag": false,
+      "calibration_review_link": "data/ops/calibration/2026/02/04/calibration_review_today.md",
+      "script_assets": {
+        "script_md_path": null,
+        "speak_bundle_md_path": null,
+        "missing_assets": [
+          "script_md",
+          "speak_bundle"
+        ]
+      },
+      "debug_join": {
+        "matched_by": "topic_id",
+        "missing_fields": []
+      }
+    }
+  ]
+}

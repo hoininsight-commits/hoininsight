@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-01-25T14:15:52Z",
+    "dataset_id": "index_nasdaq_fred",
+    "entity": "NDX",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": 0.52,
+      "percentile": 91.7,
+      "value": 25605.47,
+      "rolling_mean_20d": 24096.7085,
+      "reasoning": "Percentile 91.7% (Watch)"
+    }
+  }
+]

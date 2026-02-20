@@ -1,0 +1,2007 @@
+{
+  "date": "2026-02-05",
+  "engine_status": "SUCCESS",
+  "counts": {
+    "TRUST_LOCKED": 1,
+    "TRIGGER": 0,
+    "PRE_TRIGGER": 0,
+    "HOLD": 0,
+    "REJECT": 0,
+    "SILENT_DROP": 0
+  },
+  "top_cards": [
+    {
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "status": "TRUST_LOCKED",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
+      "reason": "-",
+      "signature": null,
+      "authority_sentence": "-",
+      "forced_capex": "-",
+      "bottleneck": "-",
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1",
+      "content_package": {
+        "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+        "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+        "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+        "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+        "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+        "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+        "tickers": [
+          {
+            "ticker": "ASML",
+            "role": "OWNER",
+            "revenue_focus": 0.95
+          }
+        ]
+      },
+      "content_package_v2": {
+        "version": "v2",
+        "tone_type": "STRUCTURAL",
+        "script_mode": "EXPLANATION",
+        "long_form_script": "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n대부분은 이 이슈를 'MAIN_ISSUE' 관점에서 단순히 바라봅니다.\n하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.\n\n이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "shorts_scripts": [
+          "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.",
+          "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 왜냐하면 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다."
+        ],
+        "text_card": "[KEY POINT]\n[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n[STRUCTURE]\n이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n[CHECK]\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+        "disclaimer_line": "본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다."
+      },
+      "narrative_framing": "숫자는 조용하지만, 시장 구조는 이미 방향을 틀었습니다.",
+      "urgency_sentence": "이 구조는 아직 뉴스가 아니지만, 시장은 항상 결과보다 먼저 움직입니다."
+    },
+    {
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "status": "TRUST_LOCKED",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
+      "reason": "-",
+      "signature": null,
+      "authority_sentence": "-",
+      "forced_capex": "-",
+      "bottleneck": "-",
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1",
+      "content_package": {
+        "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+        "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+        "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+        "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+        "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+        "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+        "tickers": [
+          {
+            "ticker": "ASML",
+            "role": "OWNER",
+            "revenue_focus": 0.95
+          }
+        ]
+      },
+      "content_package_v2": {},
+      "narrative_framing": "",
+      "urgency_sentence": ""
+    },
+    {
+      "topic_id": "ID",
+      "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "status": "TRUST_LOCKED",
+      "one_liner": "-",
+      "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+      "trigger_type": "-",
+      "actor": "-",
+      "actor_type": "없음",
+      "actor_tag": "-",
+      "bottleneck_link": "-",
+      "ticker_path": {},
+      "bridge_info": null,
+      "decision_tree_data": [],
+      "must_item": "-",
+      "tickers": [],
+      "kill_switch": "-",
+      "reason": "-",
+      "signature": null,
+      "authority_sentence": "-",
+      "forced_capex": "-",
+      "bottleneck": "-",
+      "proof_packs": [],
+      "trigger_quote": null,
+      "source_clusters": [],
+      "blocks": {},
+      "decision_rationale": "-",
+      "observed_metrics": [],
+      "leader_stocks": [],
+      "risk_factors": [],
+      "content_type": "FACT",
+      "permission_granted": false,
+      "disclaimer": "-",
+      "card_version": "v1",
+      "content_package": {
+        "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+        "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+        "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+        "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+        "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+        "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+        "tickers": [
+          {
+            "ticker": "ASML",
+            "role": "OWNER",
+            "revenue_focus": 0.95
+          }
+        ]
+      },
+      "content_package_v2": {},
+      "narrative_framing": "",
+      "urgency_sentence": ""
+    }
+  ],
+  "watchlist": [],
+  "hold_queue": [],
+  "reject_logs": [
+    {
+      "timestamp": "2026-02-02 17:51:01",
+      "topic_id": "SUMMARY",
+      "reason_code": "UNKNOWN",
+      "fact_text": "전체 1건의 토픽이 이 사유로 보류/개선 중입니다."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-01-20",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-21",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-22",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-23",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-24",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-25",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-26",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-27",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-28",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-29",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-30",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-01-31",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    },
+    {
+      "date": "2026-02-02",
+      "counts": {
+        "TRUST_LOCKED": 1,
+        "TRIGGER": 2,
+        "PRE_TRIGGER": 3
+      }
+    }
+  ],
+  "hoin_evidence": [],
+  "link_view": [
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "status": "TRUST_LOCKED",
+        "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "trigger_type": "-",
+        "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1",
+        "content_package": {
+          "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+          "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+          "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+          "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+          "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+          "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+          "tickers": [
+            {
+              "ticker": "ASML",
+              "role": "OWNER",
+              "revenue_focus": 0.95
+            }
+          ]
+        },
+        "content_package_v2": {
+          "version": "v2",
+          "tone_type": "STRUCTURAL",
+          "script_mode": "EXPLANATION",
+          "long_form_script": "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n대부분은 이 이슈를 'MAIN_ISSUE' 관점에서 단순히 바라봅니다.\n하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다.\n\n이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "shorts_scripts": [
+            "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+            "하지만 진짜 중요한 포인트는 겉으로 보이는 뉴스 헤드라인이 아닙니다. 사실은 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.",
+            "[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다. 왜냐하면 이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다."
+          ],
+          "text_card": "[KEY POINT]\n[긴급] None의 발언이 암시하는 구조적 균열\n지금 시장에서는 조용하지만 중요한 변화가 일어나고 있습니다.\n\n[STRUCTURE]\n이것은 일시적 현상이 아니라, '지금 당장 구조적 재편이 시작되었습니다.'에 의해 자본의 흐름이 근본적으로 바뀌고 있다는 증거입니다.\n\n[CHECK]\n따라서 지금 우리는 가격이 아니라, 이 구조적 변화가 어디까지 이어질지 냉정하게 지켜봐야 합니다.",
+          "disclaimer_line": "본 내용은 확정된 투자 판단이 아닌 구조적 관찰입니다."
+        },
+        "narrative_framing": "숫자는 조용하지만, 시장 구조는 이미 방향을 틀었습니다.",
+        "urgency_sentence": "이 구조는 아직 뉴스가 아니지만, 시장은 항상 결과보다 먼저 움직입니다."
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "status": "TRUST_LOCKED",
+        "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "trigger_type": "-",
+        "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1",
+        "content_package": {
+          "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+          "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+          "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+          "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+          "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+          "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+          "tickers": [
+            {
+              "ticker": "ASML",
+              "role": "OWNER",
+              "revenue_focus": 0.95
+            }
+          ]
+        },
+        "content_package_v2": {},
+        "narrative_framing": "",
+        "urgency_sentence": ""
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "status": "TRUST_LOCKED",
+        "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "trigger_type": "-",
+        "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1",
+        "content_package": {
+          "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+          "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+          "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+          "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+          "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+          "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+          "tickers": [
+            {
+              "ticker": "ASML",
+              "role": "OWNER",
+              "revenue_focus": 0.95
+            }
+          ]
+        },
+        "content_package_v2": {},
+        "narrative_framing": "",
+        "urgency_sentence": ""
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ID",
+        "title": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "status": "TRUST_LOCKED",
+        "one_liner": "-",
+        "opening_sentence": "[긴급] None의 발언이 암시하는 구조적 균열",
+        "trigger_type": "-",
+        "actor": "-",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "-",
+        "tickers": [],
+        "kill_switch": "-",
+        "reason": "-",
+        "signature": null,
+        "authority_sentence": "-",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {},
+        "decision_rationale": "-",
+        "observed_metrics": [],
+        "leader_stocks": [],
+        "risk_factors": [],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1",
+        "content_package": {
+          "long_form": "[긴급] None의 발언이 암시하는 구조적 균열\n\n단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.\n하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.\n\n지금 당장 구조적 재편이 시작되었습니다.\n이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.\n\n병목 해결사: ASML\n\n경보 해제 조건: 만약 상충하는 공식 정책이 24시간 이내에 발표될 경우 본 분석은 파기됩니다.",
+          "shorts": "한 줄 요약: 지금 당장 구조적 재편이 시작되었습니다.\n1. 단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.? 아닙니다.\n2. 핵심은 이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다..\n3. 그래서 ASML 움직임을 봐야 합니다.\n지금 바로 확인하세요.",
+          "surface_view": "단순히 금리 인하 기대감이나 일시적인 시장 조정으로 보입니다.",
+          "true_why_now": "지금 당장 구조적 재편이 시작되었습니다.",
+          "incompleteness": "하지만 이는 본질적인 공급망의 병목과 자본의 강제적 재편을 간과한 해석입니다.",
+          "forced_flow": "이제 자본은 유동성 함정에서 벗어나 실물 기술 병목을 잡고 있는 곳으로 강제 이동합니다.",
+          "tickers": [
+            {
+              "ticker": "ASML",
+              "role": "OWNER",
+              "revenue_focus": 0.95
+            }
+          ]
+        },
+        "content_package_v2": {},
+        "narrative_framing": "",
+        "urgency_sentence": ""
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    },
+    {
+      "issue_card": {
+        "topic_id": "ISSUE-20260131-001",
+        "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+        "status": "EDITORIAL_CANDIDATE",
+        "one_liner": "미국 장기채: - 변화의 필연성",
+        "opening_sentence": "국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.",
+        "trigger_type": "DATA",
+        "actor": "미국 장기채",
+        "actor_type": "없음",
+        "actor_tag": "-",
+        "bottleneck_link": "-",
+        "ticker_path": {},
+        "bridge_info": null,
+        "decision_tree_data": [],
+        "must_item": "Issue",
+        "tickers": [
+          "US10Y"
+        ],
+        "kill_switch": "즉시 중단 가능",
+        "reason": "-",
+        "signature": "sig_235929",
+        "authority_sentence": "미국 장기채: - 변화의 필연성",
+        "forced_capex": "-",
+        "bottleneck": "-",
+        "proof_packs": [],
+        "trigger_quote": null,
+        "source_clusters": [],
+        "blocks": {
+          "capital_rotation": {
+            "triggered": false,
+            "rule_id": null,
+            "target_sector": "-",
+            "logic_ko": "이번 구조에서는 자본 이동이 강제되지 않으므로, 개별 이슈에 집중합니다.",
+            "state_snapshot": {
+              "rate_regime": "NEUTRAL",
+              "inflation_regime": "STABLE",
+              "liquidity": "NEUTRAL",
+              "yield_curve": "NORMAL",
+              "risk_sentiment": "NEUTRAL",
+              "geopolitics": "STABLE",
+              "growth_regime": "MODERATE"
+            },
+            "verdict_reason": "No dominant rotation pattern detected."
+          },
+          "flow_evidence": [
+            {
+              "fact_type": "CAPITAL_FLOW",
+              "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
+              "source": "RSS Finance (Real-time)",
+              "source_ref": "Google_News_KR_Biz",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 40,
+              "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
+              "flow_metadata": {
+                "ticker": "RSS_SIGNAL",
+                "sector": "Gold/Defense",
+                "change_pct": 0.0,
+                "volume_ratio": 0.0,
+                "direction": "OUTFLOW"
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^TNX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US10Y_2026-01-31",
+              "details": {
+                "ticker": "US10Y",
+                "value": 4.241000175476074,
+                "change_pct": 0.33120270124230344
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^IRX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US02Y_2026-01-31",
+              "details": {
+                "ticker": "US02Y",
+                "value": 3.572000026702881,
+                "change_pct": -0.22346081490672906
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "CL=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_WTI_2026-01-31",
+              "details": {
+                "ticker": "WTI",
+                "value": 65.20999908447266,
+                "change_pct": -0.3210013609757975
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "달러 인덱스 96.99 (🔺 +0.74%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "DX-Y.NYB",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_DXY_2026-01-31",
+              "details": {
+                "ticker": "DXY",
+                "value": 96.98999786376953,
+                "change_pct": 0.7374315470237912
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "금 선물 (Hint) 4713.90 (🔻 -11.37%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "GC=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "MACRO_GOLD_2026-01-31",
+              "details": {
+                "ticker": "GOLD",
+                "value": 4713.89990234375,
+                "change_pct": -11.366200569716554
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260130a.htm",
+              "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260129a.htm",
+              "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve issues FOMC statement",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve issues FOMC statement",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128b.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260116a.htm",
+              "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260115a.htm",
+              "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260113a.htm",
+              "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies issue 2025 Shared National Credit Program report",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260112a.htm",
+              "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies issue 2025 Shared National Credit Program report",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260109a.htm",
+              "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260108a.htm",
+              "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Board's discount rate meeting on December 10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Federal Open Market Committee, December 9–10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20251223a.htm",
+              "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219b.htm",
+              "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219a.htm",
+              "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251218a.htm",
+              "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251217a.htm",
+              "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20251216a.htm",
+              "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMTBSZ2xlYmxYVHExNnozR0h2d0o4czh1Q093c1BUY285QnlVOFAzMGl3WkFGbU5fUUN4NWk5SUR3WEN0bDhHWTUyd0pCVE9pc",
+              "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+              "source": "News Filter (White House)",
+              "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+              "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+              "details": {
+                "entity": "White House",
+                "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMickFVX3lxTE9SUEdES1c1RlRBSWRwR2lyZFJWZFlNdHUySXBHMjNYVnFpX3g2bWhYc2ZsamN3V0xRZmszclVVZG9TeXFjUDBKOFB5REVINDF2R",
+              "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            }
+          ],
+          "corporate_facts": [
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Mountain Lake Acquisition Corp. II",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspira Women's Health Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "NN INC",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "SARATOGA INVESTMENT CORP.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspire Biopharma Holdings, Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "ASP Isotopes Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Comstock Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "PENNANTPARK INVESTMENT CORP",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            }
+          ],
+          "all_evidence": [
+            {
+              "fact_type": "CAPITAL_FLOW",
+              "fact_text": "[자금흐름포착] Gold/Defense OUTFLOW: 캐시 우드 \"금값, 1980년대 수준 도달…급락 위험 대비해야\" - 디지털투데이",
+              "source": "RSS Finance (Real-time)",
+              "source_ref": "Google_News_KR_Biz",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 40,
+              "independence_key": "FLOW_RSS_6319212497260179318_2026-01-31",
+              "flow_metadata": {
+                "ticker": "RSS_SIGNAL",
+                "sector": "Gold/Defense",
+                "change_pct": 0.0,
+                "volume_ratio": 0.0,
+                "direction": "OUTFLOW"
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^TNX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US10Y_2026-01-31",
+              "details": {
+                "ticker": "US10Y",
+                "value": 4.241000175476074,
+                "change_pct": 0.33120270124230344
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "^IRX",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_US02Y_2026-01-31",
+              "details": {
+                "ticker": "US02Y",
+                "value": 3.572000026702881,
+                "change_pct": -0.22346081490672906
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "CL=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_WTI_2026-01-31",
+              "details": {
+                "ticker": "WTI",
+                "value": 65.20999908447266,
+                "change_pct": -0.3210013609757975
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "달러 인덱스 96.99 (🔺 +0.74%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "DX-Y.NYB",
+              "source_date": "2026-01-31",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "MACRO_DXY_2026-01-31",
+              "details": {
+                "ticker": "DXY",
+                "value": 96.98999786376953,
+                "change_pct": 0.7374315470237912
+              }
+            },
+            {
+              "fact_type": "MACRO_FACT",
+              "fact_text": "금 선물 (Hint) 4713.90 (🔻 -11.37%)",
+              "source": "Market Data (Yahoo)",
+              "source_ref": "GC=F",
+              "source_date": "2026-01-31",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "MACRO_GOLD_2026-01-31",
+              "details": {
+                "ticker": "GOLD",
+                "value": 4713.89990234375,
+                "change_pct": -11.366200569716554
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260130a.htm",
+              "source_date": "Fri, 30 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1109697819572480751_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Cornerstone Capital Bancorp, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260129a.htm",
+              "source_date": "Thu, 29 Jan 2026 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_1764019465405318372_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces appointment of seven members, including four new members, to its Insurance Policy Advisory Committee (IPAC)",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve issues FOMC statement",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_8132978028928321925_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve issues FOMC statement",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128b.htm",
+              "source_date": "Wed, 28 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3056426259804818258_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Open Market Committee reaffirms its \"Statement on Longer-Run Goals and Monetary Policy Strategy\"",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260116a.htm",
+              "source_date": "Fri, 16 Jan 2026 18:45:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-8700358163626188993_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Banco Inter, S.A.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260115a.htm",
+              "source_date": "Thu, 15 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-1053656671497728922_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of PrimeLending",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260113a.htm",
+              "source_date": "Tue, 13 Jan 2026 22:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_3829770793256166661_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Fifth Third Bancorp",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies issue 2025 Shared National Credit Program report",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260112a.htm",
+              "source_date": "Mon, 12 Jan 2026 20:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-7081245987460947779_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies issue 2025 Shared National Credit Program report",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/other20260109a.htm",
+              "source_date": "Fri, 9 Jan 2026 18:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-2629358879725107949_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces the designation of the Chairs and Deputy Chairs of the 12 Federal Reserve Banks for 2026",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260108a.htm",
+              "source_date": "Thu, 8 Jan 2026 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-9157306654174601235_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of application by Prosperity Bancshares, Inc.",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Board's discount rate meeting on December 10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3034803152370608140_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Board's discount rate meeting on December 10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260106a.htm",
+              "source_date": "Tue, 6 Jan 2026 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_428693303869227982_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Minutes of the Federal Open Market Committee, December 9–10, 2025",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 19:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_2524646075532607512_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Minutes of the Federal Open Market Committee, December 9–10, 2025",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251230a.htm",
+              "source_date": "Tue, 30 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-5244370168289334799_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Agencies release annual asset-size thresholds under Community Reinvestment Act regulations",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/orders20251223a.htm",
+              "source_date": "Tue, 23 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_6458158731309807345_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces approval of the application by National Bank Holdings Corporation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219b.htm",
+              "source_date": "Fri, 19 Dec 2025 18:30:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3615144354575608066_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes its biennial report on debit card transactions, which summarizes information collected from large debit card issuers and payment card networks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251219a.htm",
+              "source_date": "Fri, 19 Dec 2025 15:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_195429127007579424_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board requests public input on “payment account,” which eligible financial institutions could use for the limited purpose of clearing and settling their payments",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251218a.htm",
+              "source_date": "Thu, 18 Dec 2025 14:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-6282252830979610574_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board publishes first of several staff manuals for the supervision of the largest and most complex banks",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20251217a.htm",
+              "source_date": "Wed, 17 Dec 2025 21:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_5589200670874831166_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board withdraws 2023 policy statement and issues new policy statement regarding the treatment of certain Board-supervised banks that facilitates responsible innovation",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[Fed] Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+              "source": "Official Direct (Fed)",
+              "source_ref": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20251216a.htm",
+              "source_date": "Tue, 16 Dec 2025 16:00:00 GMT",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 90,
+              "independence_key": "OFFICIAL_Fed_-3879608914791794598_20260131",
+              "details": {
+                "entity": "Fed",
+                "raw_title": "Federal Reserve Board announces termination of enforcement actions with The Goldman Sachs Group, Inc. and Metropolitan Commercial Bank",
+                "grade_reason": "공식 도메인 확인됨 (federalreserve.gov)"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMTBSZ2xlYmxYVHExNnozR0h2d0o4czh1Q093c1BUY285QnlVOFAzMGl3WkFGbU5fUUN4NWk5SUR3WEN0bDhHWTUyd0pCVE9pc",
+              "source_date": "Sat, 31 Jan 2026 11:16:01 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_8533022864574814693_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "케빈 워시 연준 의장 지명, 한은 금리 인하 더 멀어지나 - 조선일보",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[White House] 트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+              "source": "News Filter (White House)",
+              "source_ref": "https://news.google.com/rss/articles/CBMiggFBVV95cUxORzBmZzNCOFFRZlJqc1hiMWpLSzJMZ2pjSmNaZHhNazQtZU9KTGdfZ2d0SF9QcUxxYmFvdlNMelVqVDZSLUlleTI3TG43eUM4V",
+              "source_date": "Sat, 31 Jan 2026 05:30:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_White House_8117014712552641331_2026-01-31",
+              "details": {
+                "entity": "White House",
+                "raw_title": "트럼프, 한국 사례 들며 “내 관세 정책이 미국 살려” 자화자찬 기고 - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "OFFICIAL_FACT",
+              "fact_text": "[한국은행] 이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+              "source": "News Filter (한국은행)",
+              "source_ref": "https://news.google.com/rss/articles/CBMickFVX3lxTE9SUEdES1c1RlRBSWRwR2lyZFJWZFlNdHUySXBHMjNYVnFpX3g2bWhYc2ZsamN3V0xRZmszclVVZG9TeXFjUDBKOFB5REVINDF2R",
+              "source_date": "Fri, 30 Jan 2026 05:25:00 GMT",
+              "evidence_grade": "TEXT_HINT",
+              "reliability_score": 50,
+              "independence_key": "OFFICIAL_NEWS_한국은행_5378512995575630513_2026-01-31",
+              "details": {
+                "entity": "한국은행",
+                "raw_title": "이창용 한은 총재 “계엄 충격있던 지난해 1% 성장도 운 좋은 편” - 한겨레",
+                "grade_reason": "일반 뉴스/블로그 또는 재인용 출처"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Mountain Lake Acquisition Corp. II",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspira Women's Health Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "NN INC",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "SARATOGA INVESTMENT CORP.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Aspire Biopharma Holdings, Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "ASP Isotopes Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+              "details": {
+                "company": "Comstock Inc.",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+              }
+            },
+            {
+              "fact_type": "CORPORATE_ACTION",
+              "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+              "source": "SEC 8-K (Official)",
+              "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+              "source_date": "2026-01-30",
+              "evidence_grade": "HARD_FACT",
+              "reliability_score": 95,
+              "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+              "details": {
+                "company": "PENNANTPARK INVESTMENT CORP",
+                "action_type": "AGREEMENT",
+                "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+              }
+            }
+          ],
+          "actor_bridge": {
+            "actor_evidence": [
+              {
+                "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+                "source": "Market Data (Yahoo)",
+                "grade": "✅증거",
+                "url": "^TNX",
+                "ts": "2026-01-31"
+              }
+            ]
+          },
+          "bottleneck_analysis": {
+            "protagonists": [],
+            "supporting": [
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Mountain Lake Acquisition Corp. II] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/2094265/000121390026010358/0001213900-26-010358-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Mountain Lake Acquisition Corp. II_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Mountain Lake Acquisition Corp. II",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010358 <b>Size:</b> 1 MB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>Ite"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Aspira Women's Health Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/926617/000092661726000007/0000926617-26-000007-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Aspira Women's Health Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Aspira Women's Health Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0000926617-26-000007 <b>Size:</b> 555 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[NN INC] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/918541/000110465926008723/0001104659-26-008723-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_NN INC_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "NN INC",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008723 <b>Size:</b> 247 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[SARATOGA INVESTMENT CORP.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1377936/000121390026010305/0001213900-26-010305-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_SARATOGA INVESTMENT CORP._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "SARATOGA INVESTMENT CORP.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010305 <b>Size:</b> 490 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Aspire Biopharma Holdings, Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1847345/000149315226004543/0001493152-26-004543-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Aspire Biopharma Holdings, Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Aspire Biopharma Holdings, Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001493152-26-004543 <b>Size:</b> 666 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[ASP Isotopes Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1921865/000147793226000555/0001477932-26-000555-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_ASP Isotopes Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "ASP Isotopes Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001477932-26-000555 <b>Size:</b> 157 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[MADRIGAL PHARMACEUTICALS, INC.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1157601/000110465926008698/0001104659-26-008698-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_MADRIGAL PHARMACEUTICALS, INC._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "MADRIGAL PHARMACEUTICALS, INC.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001104659-26-008698 <b>Size:</b> 227 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 9.01: Financial Statements and Exhibits\n"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[Comstock Inc.] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1120970/000121390026010287/0001213900-26-010287-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_Comstock Inc._AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "Comstock Inc.",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001213900-26-010287 <b>Size:</b> 877 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 3.02: Unregistered Sales of Equity Securities\n<br>I"
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              },
+              {
+                "fact_type": "CORPORATE_ACTION",
+                "fact_text": "[PENNANTPARK INVESTMENT CORP] 주요 계약 체결 (Material Agreement)",
+                "source": "SEC 8-K (Official)",
+                "source_ref": "https://www.sec.gov/Archives/edgar/data/1383414/000119312526031964/0001193125-26-031964-index.htm",
+                "source_date": "2026-01-30",
+                "evidence_grade": "HARD_FACT",
+                "reliability_score": 95,
+                "independence_key": "CORP_PENNANTPARK INVESTMENT CORP_AGREEMENT_2026-01-31",
+                "details": {
+                  "company": "PENNANTPARK INVESTMENT CORP",
+                  "action_type": "AGREEMENT",
+                  "raw_summary": "\n <b>Filed:</b> 2026-01-30 <b>AccNo:</b> 0001193125-26-031964 <b>Size:</b> 815 KB\n<br>Item 1.01: Entry into a Material Definitive Agreement\n<br>Item 2.03: Creation of a Direct Financial Obligation or "
+                },
+                "bottleneck_score": 65,
+                "bottleneck_reason": "핵심 키워드(DEFINITIVE)가 포함된 AGREEMENT 행동으로 구조적 장악력이 높습니다."
+              }
+            ]
+          },
+          "editorial_candidates": [
+            {
+              "index": 0,
+              "title": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "full_text": "미 국채 10년물 4.24 (➖ +0.33%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 미국 장기채 지표 변동의 진짜 의미. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이라는 구조적 강제가 작동 중입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 미국 장기채 지표 변동\n- 원인: 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "미국 장기채: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            },
+            {
+              "index": 1,
+              "title": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22",
+              "full_text": "미 국채 2년물 (Proxy) 3.57 (➖ -0.22%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 미국 단기 자금의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 단기 자금을 중심으로 한 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 단기 자금에게 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 미국 단기 자금 지표 변동! 팩트는 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] 미 국채 2년물 (Proxy) 3.57 (➖ -0.22%). 시장의 오해를 넘어 본질을 봐야 합니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 미국 단기 자금 지표 변동의 진짜 의미. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.이라는 구조적 강제가 작동 중입니다. 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 미국 단기 자금 지표 변동\n- 원인: 금리 변동성이 확대되면서 미국 단기 자금 중심의 안전 자산 선호가 강제되고 있습니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "미국 단기 자금: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            },
+            {
+              "index": 2,
+              "title": "WTI 원유 65.21 (➖ -0.32%)",
+              "full_text": "WTI 원유 65.21 (➖ -0.32%)",
+              "status": "EDITORIAL_CANDIDATE",
+              "why_now": "원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.",
+              "script": {
+                "long_form": "1. 정의 (Signal)\n지금 에너지 섹터의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. WTI 원유 65.21 (➖ -0.32%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 에너지 섹터을 중심으로 한 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 에너지 섹터에게 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+                "shorts_15s": "[필연] 에너지 섹터 지표 변동! 팩트는 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.입니다. -에 주목하십시오.",
+                "shorts_30s": "[데이터 이상신호] WTI 원유 65.21 (➖ -0.32%). 시장의 오해를 넘어 본질을 봐야 합니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. -의 변화는 필연입니다.",
+                "shorts_45s": "1분 요약: 에너지 섹터 지표 변동의 진짜 의미. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.이라는 구조적 강제가 작동 중입니다. 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다.",
+                "text_card": "📌 에너지 섹터 지표 변동\n- 원인: 원유 가격의 구조적 상승으로 인해 에너지 섹터 내 기업들의 수익성 개선이 필연적입니다.\n- 결론: - 필연적 변화\n- 근거: 데이터 참조",
+                "one_liner": "에너지 섹터: - 변화의 필연성",
+                "bindings": {}
+              },
+              "score": 60
+            }
+          ],
+          "content_package": {
+            "long_form": "1. 정의 (Signal)\n지금 미국 장기채의 지표 변동와 관련하여 평소와 다른 유의미한 이상 신호가 데이터로 포착되었습니다. 미 국채 10년물 4.24 (➖ +0.33%). [직접 근거 확인 중]\n\n2. 표면 해석 (Surface)\n언론과 시장은 이를 단순한 지표 변동로 보고 있으나, 이는 데이터 이면을 놓치고 있는 해석입니다.\n\n3. 시장의 오해 (Misread)\n시장은 현재 일시적 반응으로 오해하고 있지만, 본질은 미국 장기채을 중심으로 한 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.의 시작입니다.\n\n4. 구조적 강제 (Structural Force)\n구조적으로 미국 장기채에게 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이 강제될 수밖에 없는 환경입니다. 구조적 변화로 인한 수혜가 예상되는 기업입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. [구조적 팩트 확인 중]\n\n5. 결론 (Conclusion)\n따라서 - 섹터의 변화는 필연적입니다. 지금이 선제적 대응의 적기입니다.",
+            "shorts_ready": [
+              "[필연] 미국 장기채 지표 변동! 팩트는 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.입니다. -에 주목하십시오.",
+              "[데이터 이상신호] 미 국채 10년물 4.24 (➖ +0.33%). 시장의 오해를 넘어 본질을 봐야 합니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. -의 변화는 필연입니다.",
+              "1분 요약: 미국 장기채 지표 변동의 진짜 의미. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.이라는 구조적 강제가 작동 중입니다. 국채 금리 급등으로 인해 미국 장기채 시장의 자본 이동이 필연적으로 발생하고 있습니다.. 따라서 - 섹터 비중 확대는 필연적인 결정입니다."
+            ],
+            "text_card": "미국 장기채: - 변화의 필연성"
+          }
+        },
+        "decision_rationale": "1순위 선정. 점수: 60, 최종 상태: 후보",
+        "observed_metrics": [
+          "Source: Market Data (Yahoo)"
+        ],
+        "leader_stocks": [
+          "-"
+        ],
+        "risk_factors": [
+          "시장 변동성 확인 필요"
+        ],
+        "content_type": "FACT",
+        "permission_granted": false,
+        "disclaimer": "-",
+        "card_version": "v1",
+        "content_package": {},
+        "content_package_v2": {},
+        "narrative_framing": "",
+        "urgency_sentence": ""
+      },
+      "linked_evidence": [],
+      "link_status": "NO_HOIN_EVIDENCE",
+      "match_reason": null
+    }
+  ],
+  "momentum_list": []
+}

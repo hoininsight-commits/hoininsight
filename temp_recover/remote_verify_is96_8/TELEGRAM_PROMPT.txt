@@ -1,0 +1,41 @@
+📋 HOIN Insight 프로젝트 이어하기 (2026-01-28)
+
+안녕하세요. HOIN Insight 프로젝트를 이어서 작업하려고 합니다.
+
+🚀 최근 배포 정보:
+- 커밋 해시: cb2aee17
+- 배포 시각: 2026-01-28 00:21 (KST)
+- 배포 내용: Steps 87 & 88 (Pattern Memory & Narrative Compression)
+
+📊 현재 시스템 상태:
+완성된 7개 의사결정 레이어:
+1. ✅ Topic Layer (Step 82) - 구조적 이슈 정의
+2. ✅ Entity Layer (Step 83) - 필연적 대상 선정
+3. ✅ State Layer (Step 84) - 현재 국면 진단 (OBSERVE/TRACK/PRESSURE/RESOLUTION)
+4. ✅ Memory Layer (Step 85) - 과거 대비 변화 추적 (D-1, D-7 비교)
+5. ✅ Pattern Layer (Step 86) - 5대 구조적 패턴 감지
+6. ✅ Experience Layer (Step 88) - 패턴 기억 및 재생 (Replay)
+7. ✅ Narrative Layer (Step 87) - 3-5문장 압축 스토리텔링
+
+🔄 파이프라인 흐름:
+Data Collection → Topic Detection → Entity Mapping → State Classification → 
+Memory Save & Compare → Pattern Detection → Pattern Memory & Replay → 
+Narrative Compression → Dashboard UI
+
+📁 프로젝트 위치:
+/Users/taehunlim/.gemini/antigravity/scratch/HoinInsight
+
+🎯 다음 작업 우선순위:
+1. UI 통합 (최우선): Steps 87 & 88의 compressed_narratives 결과를 대시보드에 표시
+   - src/dashboard/topic_card_renderer.py에 렌더링 메서드 추가
+   - src/dashboard/dashboard_generator.py에서 HTML 주입
+   
+2. 패턴 결과 업데이트: 현재 "TBD" 상태인 패턴 메모리에 실제 결과 추적 로직 추가
+
+3. 성능 최적화: 레이어 실행 캐싱 또는 조건부 실행
+
+✅ 검증 상태: 모든 검증 스크립트 통과 완료
+
+📄 상세 문서: HANDOFF_2026-01-28.md 참조
+
+이어서 작업을 시작하겠습니다.

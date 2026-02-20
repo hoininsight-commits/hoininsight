@@ -1,0 +1,20 @@
+[
+    {
+        "fact_id": "fact_signal_test",
+        "fact_type": "STRUCTURAL",
+        "fact_text": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
+        "source": "GSA Official",
+        "published_at": "2026-01-27",
+        "entities": [
+            "Semiconductor",
+            "Supply Chain"
+        ],
+        "confidence": "HIGH",
+        "metadata": {
+            "is_wide": true,
+            "urgency": "HIGH",
+            "sector": "Semiconductors"
+        },
+        "frame": "SUPPLY_CHAIN_MANDATE"
+    }
+]

@@ -1,0 +1,16 @@
+{
+  "id": "EVO-20260116-7ade5f2e",
+  "generated_at": "2026-01-16T17:37:13.548613",
+  "category": "LOGIC_UPDATE",
+  "status": "PROPOSED",
+  "content": {
+    "condition": "구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한",
+    "meaning": "이것은 강력한 경기 침체의 신호",
+    "type": "LOGIC_IF_THEN"
+  },
+  "evidence": {
+    "quote": "만약 구리 가격은 떨어지는데 금 가격이 사상 최고치를 경신한다면, 이것은 강력한 경기 침체의 신호입니다",
+    "source": "MOCK_VIDEO_001"
+  },
+  "action_required": "REVIEW_AND_MERGE"
+}

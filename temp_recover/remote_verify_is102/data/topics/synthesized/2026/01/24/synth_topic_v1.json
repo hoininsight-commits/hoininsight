@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "generated_at": "2026-01-24T14:27:22.433696",
+    "base_date": "2026-01-24",
+    "version": "v1"
+  },
+  "content_topic": {
+    "title": "정책/이벤트 발표 이후 시장 반응이 왜 반대였나",
+    "status": "READY",
+    "why_now": "Q: 왜 FOMC Maintains Interest Rates 규제가 당장의 시장 지배력보다 장기 공급망 재편에 더 결정적인가? Data: 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.8배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+    "status_reason": "Strong Structural Evidence (5 signals)",
+    "components": {
+      "event": {
+        "title": "정책/이벤트 발표 이후 시장 반응이 왜 반대였나",
+        "question": "왜 FOMC Maintains Interest Rates 규제가 당장의 시장 지배력보다 장기 공급망 재편에 더 결정적인가?",
+        "why_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
+        "eligible": false
+      },
+      "structural": [
+        {
+          "dataset_id": "metal_silver_kag_coingecko",
+          "title": "[Monetary Tightening] 감지된 토픽: metal_silver_kag_coingecko L2 Signal 중심의 시장 발작 (골드(Gold) 가격 이상 변동, derived_gold_silver_ratio 동반)",
+          "level": "L2",
+          "score": 100,
+          "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.8배(표준편차) 이상 급격한 이상 변동을(를) 보였습니다. 특히 동일 섹터인 [metal_gold_paxg_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다."
+        },
+        {
+          "dataset_id": "metal_gold_paxg_coingecko",
+          "title": "[Monetary Tightening] 골드(Gold) 가격 이상 변동 중심의 시장 발작 (metal_silver_kag_coingecko, derived_gold_silver_ratio 동반)",
+          "level": "L2",
+          "score": 100,
+          "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 골드 가격가 평소 변동폭 대비 2.41배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다."
+        },
+        {
+          "dataset_id": "derived_gold_silver_ratio",
+          "title": "[Monetary Tightening] 감지된 토픽: derived_gold_silver_ratio L2 Signal 중심의 시장 발작 (metal_silver_kag_coingecko, 골드(Gold) 가격 이상 변동 동반)",
+          "level": "L2",
+          "score": 100,
+          "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Z-Score -2.91 >= 2.0. 특히 동일 섹터인 [metal_silver_kag_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다."
+        },
+        {
+          "dataset_id": "inflation_cpi_fred",
+          "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+          "level": "L2",
+          "score": 100,
+          "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다."
+        },
+        {
+          "dataset_id": "inflation_pce_fred",
+          "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+          "level": "L2",
+          "score": 100,
+          "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다."
+        }
+      ]
+    }
+  }
+}

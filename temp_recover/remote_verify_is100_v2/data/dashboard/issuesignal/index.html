@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IssueSignal Unified Ops Center</title>
+    <style>
+        :root {
+            --bg: #f1f5f9;
+            --header-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --emerald: #059669;
+            --blue: #2563eb;
+            --purple: #7c3aed;
+            --red: #dc2626;
+            --border: #e2e8f0;
+            --amber: #d97706;
+            --amber-light: #fffbeb;
+            --amber-border: #fcd34d;
+        }
+        body { font-family: 'Pretendard', system-ui, sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 0; }
+        
+        /* Premium Light Header */
+        .top-header { 
+            background: var(--header-bg); 
+            padding: 0 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: var(--text-main); 
+            height: 70px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+        .header-brand { font-size: 20px; font-weight: 900; display:flex; align-items:center; gap:12px; color: #1e293b; }
+        .header-meta { font-size: 11px; color: var(--text-sub); font-family: monospace; text-align: right; display: flex; gap: 15px; letter-spacing: 0.05em; }
+        
+        /* Navigation Tabs */
+        .nav-tabs { 
+            background: white; 
+            border-bottom: 1px solid var(--border); 
+            display: flex; 
+            gap: 10px; 
+            padding: 0 40px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 99; 
+            height: 54px; 
+            align-items: end;
+        }
+        .tab-btn { 
+            padding: 16px 24px; 
+            border: none; 
+            background: none; 
+            font-weight: 700; 
+            font-size: 14px; 
+            cursor: pointer; 
+            color: var(--text-sub); 
+            border-bottom: 3px solid transparent; 
+            transition: 0.2s; 
+        }
+        .tab-btn:hover { color: var(--text-main); background: #f8fafc; }
+        .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+        
+        .container { padding: 50px 40px; max-width: 1100px; margin: 0 auto; display: none; }
+        .container.active { display: block; }
+        
+        .section-title { font-size: 20px; font-weight: 900; color: #1e293b; margin: 60px 0 30px 0; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; display: inline-block; width: 5px; height: 20px; background: var(--blue); border-radius: 3px; }
+        
+        /* High-Visibility Card Styles */
+        .topic-card-top1 {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 8px solid var(--blue);
+            border-radius: 16px; padding: 40px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02); 
+            margin-bottom: 50px;
+        }
+        .topic-header-label { font-size: 12px; font-weight: 800; color: var(--text-sub); text-transform: uppercase; margin-bottom: 15px; display:flex; align-items:center; gap:10px; }
+        .topic-title { font-size: 34px; font-weight: 900; color: #0f172a; margin: 15px 0 25px 0; line-height: 1.3; letter-spacing: -0.02em; }
+        
+        .auth-sentence { background:#eff6ff; border-left:5px solid var(--blue); padding:20px 30px; color:#1e40af; font-weight:800; font-size:18px; line-height:1.6; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
+        
+        .one-liner { font-size: 17px; line-height: 1.8; font-weight: 600; color: #334155; margin-bottom: 30px; }
+        
+        /* Content Package Block */
+        .content-package { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 14px; overflow: hidden; margin-top: 40px; }
+        .cp-header { background: #f8fafc; padding: 18px 25px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; font-weight: 900; color: #1e293b; }
+        
+        /* Copy Button - High Visibility */
+        .copy-btn { 
+            background: white; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 8px; 
+            cursor: pointer; font-weight: 700; font-size: 13px; color: #334155; 
+            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .copy-btn:hover { border-color: #94a3b8; background: #f1f5f9; }
+        .copy-btn-primary { background: #2563eb; border-color: #2563eb; color: white; }
+        .copy-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+
+        /* Meta Pills */
+        .meta-pill { background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+        .meta-pill.purple { background: #f3e8ff; color: #6b21a8; }
+
+        /* Unified Table Styles - Light Theme */
+        .unified-table { width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .unified-table th { background: #f8fafc; padding: 18px 20px; text-align: left; font-size: 12px; font-weight: 900; color: #475569; text-transform: uppercase; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }
+        .unified-table td { padding: 20px; border-bottom: 1px solid var(--border); font-size: 14px; color: #1e293b; }
+        
+        .badge-status { padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 12px; display: inline-block; }
+        .status-matched { background: #dcfce7; color: #166534; }
+        .status-no-ev { background: #f1f5f9; color: #475569; }
+        
+        /* Drawer */
+        .evidence-drawer { background: #f8fafc; padding: 30px; border-top: 1px solid #e2e8f0; display: none; }
+        .evidence-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        
+        .expand-btn { background: transparent; color: var(--blue); border: none; font-weight: 700; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+        .expand-btn:hover { text-decoration: underline; }
+
+        /* Momentum Cards (IS-94) */
+        .momentum-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .momentum-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }
+        .momentum-person { font-weight: 800; font-size: 16px; color: #1e293b; }
+        .momentum-theme { font-size: 12px; color: var(--blue); font-weight: 700; margin-top: 4px; }
+        .momentum-badge { padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; display: inline-block; }
+        .badge-escalating { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+        .badge-building { background: #fef3c7; color: #92400E; border: 1px solid #fcd34d; }
+        .badge-stable { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+        .momentum-reason { font-size: 13px; color: var(--text-sub); margin-top: 12px; line-height: 1.6; background: #f8fafc; padding: 12px; border-radius: 8px; border-left: 3px solid #cbd5e1; }
+        .momentum-footer { font-size: 11px; color: #94a3b8; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #e2e8f0; }
+        .collapsible-momentum { display: none; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="header-brand">
+            <span style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:6px; font-size:16px;">🛰️</span> 
+            HOIN Unified Ops Center
+        </div>
+        <div>
+            <div class="header-meta">
+                <span>DATA: 2026-02-04</span>
+                <span>RUN: 2026-02-04 13:30:29</span>
+            </div>
+            <div class="header-meta" style="margin-top:2px;">
+                <span>커밋: 5cae438</span>
+                <span>엔진: v2.5.1</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('issuesignal', this)">이슈시그널 운영센터</button>
+        <button class="tab-btn" onclick="switchTab('hoinevidence', this)">호인 분석 데이터</button>
+        <button class="tab-btn" onclick="switchTab('linkview', this)">통합 근거 연결뷰</button>
+    </div>
+
+    <!-- Tab 1: IssueSignal -->
+    <div id="issuesignal" class="container active">
+        
+        <div class="summary-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:20px;">
+            
+            <div style="background:white; border-left:4px solid #10B981; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">확정</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">1</div>
+            </div>
+            
+
+            <div style="background:white; border-left:4px solid #3B82F6; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">감시</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
+            </div>
+            
+
+            <div style="background:white; border-left:4px solid #F59E0B; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">보류</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
+            </div>
+            
+
+            <div style="background:white; border-left:4px solid #EF4444; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">반려</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
+            </div>
+            
+
+            <div style="background:white; border-left:4px solid #94A3B8; border-radius:8px; padding:15px; border:1px solid #e2e8f0; border-left-width:4px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size: 11px; font-weight:700; color: #64748b;">침묵</div>
+                <div style="font-size: 24px; font-weight: 800; margin-top: 5px; color: #0f172a;">0</div>
+            </div>
+            
+        </div>
+
+        
+        <div style="margin-bottom:40px; display:flex; align-items:center; gap:12px; padding:12px 20px; background:white; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+            <span style="font-size:12px; font-weight:800; color:#475569;">📊 오늘의 콘텐츠 필진 구성:</span>
+            <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                <span style="background:#334155; color:white; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:900; margin-right:8px;">FACT 3</span>
+            </div>
+        </div>
+        
+
+        <div class="section-title">✨ 오늘의 최종 가공 인텔리전스</div>
+        
+        <div class="topic-card-top1" style="border-top: 8px solid var(--blue);">
+            <!-- Header Group -->
+            <!-- Header Group -->
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+                <div>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                        <span style="background:var(--blue); color:white; padding:4px 12px; border-radius:4px; font-size:12px; font-weight:800;">📌 오늘의 1순위 발화</span>
+                        <span style="font-size:12px; color:var(--text-sub); font-weight:600;">추천 형식: 롱폼 / 숏츠 / 텍스트</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background:#F0FDF4; border:1px solid #BBF7D0; padding:15px; border-radius:8px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+                <div style="font-weight:700; color:#15803d; font-size:1.1em; flex-grow:1;">
+                    📌 오늘의 핵심 한 문장: "[긴급] None의 발언이 암시하는 구조적 균열"
+                </div>
+                <button onclick="navigator.clipboard.writeText('[긴급] None의 발언이 암시하는 구조적 균열')" style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px; font-size:0.8em; cursor:pointer; color:#64748b;">
+                    복사
+                </button>
+            </div>
+            
+            
+            <h1 style="font-size:2.2em; line-height:1.2; font-weight:800; color:var(--gray-900); margin:0 0 15px 0;">[긴급] None의 발언이 암시하는 구조적 균열</h1>
+                </div>
+                <div style="text-align:right;">
+                    <div style="background:#f1f5f9; padding:8px 12px; border-radius:8px; margin-bottom:10px;">
+                        <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">주인공 (없음)</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">- <span style="font-size:11px; color:var(--blue); font-weight:700;">#-</span></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+            <!-- WHY-NOW Banner -->
+            <div style="background:linear-gradient(to right, #eff6ff, #ffffff); border-left:5px solid var(--blue); padding:18px 25px; border-radius:0 12px 12px 0; margin-bottom:25px;">
+                <div style="font-size:12px; font-weight:800; color:var(--blue); margin-bottom:6px; text-transform:uppercase;">💡 지금 말해야 하는 이유 (WHY-NOW)</div>
+                <div style="font-size:18px; font-weight:700; color:#1e3a8a; line-height:1.5;">"-"</div>
+            </div>
+
+            
+
+            <!-- Ticker Path & Bottleneck (IS-69) -->
+            <div style="margin-bottom:25px; background:#ffffff; border:1px solid #e2e8f0; padding:20px; border-radius:12px;">
+                <div style="font-size:15px; font-weight:800; color:#1e293b; margin-bottom:15px; line-height:1.4; display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:18px;">🔗</span> 
+                    <span>병목 연결: -</span>
+                </div>
+                
+            </div>
+
+            <!-- Risk Factor -->
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px; padding:10px 15px; background:#fff7ed; border-radius:8px; border:1px solid #ffedd5;">
+                <span style="font-size:14px;">⚠️</span>
+                <span style="font-size:13px; font-weight:600; color:#9a3412;">리스크: 시장 변동성 확인 필요</span>
+            </div>
+
+            <!-- Unified Content Package (Immediate Script Exposure) -->
+            <div style="background:#ffffff; border:2px solid #e2e8f0; border-radius:12px; overflow:hidden;">
+                <div style="background:#f8fafc; padding:15px 20px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:14px; font-weight:800; color:#1e293b;">📋 제작 스크립트 (즉시 사용 가능)</span>
+                    <button class="copy-btn copy-btn-primary" onclick="copyToClipboard(document.getElementById('main-script').innerText)">전체 복사</button>
+                </div>
+                <div id="main-script" style="padding:25px; font-size:15px; line-height:1.8; color:#334155; white-space:pre-wrap; background:#ffffff;">-</div>
+                
+                <!-- Foldable Sub-Contents -->
+                <div style="border-top:1px solid #e2e8f0; background:#f1f5f9; padding:10px 20px;">
+                    <button onclick="toggleElement('sub-contents')" style="background:none; border:none; color:#475569; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:5px;">
+                        기타 형식 (숏츠/텍스트) 보기 <span id="sub-arrow">▾</span>
+                    </button>
+                    <div id="sub-contents" style="display:none; padding-top:15px; padding-bottom:10px;">
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                            <div style="background:white; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
+                                <div style="font-size:11px; font-weight:800; color:#e11d48; margin-bottom:10px;">🎬 숏츠 패키지</div>
+                                <div style="font-size:12px; color:#475569; margin-bottom:5px;">15s: -</div>
+                                <div style="font-size:12px; color:#475569; margin-bottom:5px;">30s: -</div>
+                                <div style="font-size:12px; color:#475569;">45s: -</div>
+                            </div>
+                            <div style="background:white; padding:15px; border-radius:8px; border:1px solid #e2e8f0;">
+                                <div style="font-size:11px; font-weight:800; color:#475569; margin-bottom:10px;">📌 텍스트 카드</div>
+                                <div style="font-size:12px; color:#334155; white-space:pre-wrap;">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidence Collapse -->
+            <div style="margin-top:25px; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden;">
+                <button onclick="toggleElement('evidence-block')" style="width:100%; text-align:left; background:#f8fafc; border:none; padding:12px 20px; font-size:13px; font-weight:700; color:var(--blue); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                    <span>판단 근거 보기 (데이터 분석 결과) ▸</span>
+                    <span style="font-size:11px; color:#94a3b8; font-weight:400;">데이터 검증 완료</span>
+                </button>
+                <div id="evidence-block" style="display:none; padding:20px; background:#ffffff; border-top:1px solid #e2e8f0;">
+                    <div style="font-size:13px; line-height:1.7; color:#475569;">
+                        
+        <div style="background:#f8fafc; padding:12px; border-radius:6px; font-size:12px;">
+            <b style="color:var(--purple);">⚙️ 시스템 판단 로직:</b><br>
+            -
+        </div>
+        
+        <!-- Factor Bridge Evidence (IS-68) -->
+        
+        
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; margin-top: 20px; color: #94a3b8; text-align:right;">
+                데이터 보증 식별자: - | 분석 모델: v1
+            </div>
+        </div>
+        
+
+        <div class="section-title">🔭 사전 트리거 감시망 (관찰 중)</div>
+        <div style='color:var(--text-sub)'>관심 목록이 비어있습니다.</div>
+
+        <div class="section-title">🔥 발언 모멘텀 감지 (Statement Momentum)</div>
+        <div style="margin-bottom: 40px;">
+            <div style='color:var(--text-sub); background:white; padding:20px; border-radius:12px; border:1px solid var(--border);'>현재 감지된 유의미한 발언 모멘텀이 없습니다.</div>
+        </div>
+
+        <div class="section-title">🚫 품질 하한선 미달 및 반려 기록</div>
+        <div style="background:white; padding:20px; border:1px solid #e2e8f0; border-radius:8px;">
+            
+            <div class="reject-item" style="padding:8px 0; border-bottom:1px solid #F3F4F6;">
+                <span style="color:#9CA3AF; font-size:0.8em;">[2026-02-02 17:51:01]</span> 
+                <span class="badge-status status-no-ev" style="margin:0 8px;">UNKNOWN</span>
+                <b style="color:#374151;">SUMMARY</b>: <span style="color:#4B5563;">전체 1건의 토픽이 이 사유로 보류/개선 중입니다.</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Tab 2: Hoin Evidence -->
+    <div id="hoinevidence" class="container">
+        <div class="section-title">🧬 호인 아티팩트 (최신 분석 데이터)</div>
+        <div style="display:grid; gap:20px;">
+            
+        </div>
+        <div class='empty-state' style='padding:40px; text-align:center; color:var(--text-sub);'>2026-02-04에 감지된 호인 아티팩트가 없습니다.</div>
+    </div>
+
+    <!-- Tab 3: Link View -->
+    <div id="linkview" class="container">
+        <div class="filter-bar" style="margin-bottom:20px; display:flex; gap:15px; align-items:center; font-size:13px; color:#475569;">
+            <b>상태 필터:</b>
+            <select id="statusFilter" onchange="filterLinkView()" style="padding:4px 8px; border:1px solid #cbd5e1; border-radius:4px;">
+                <option value="ALL">전체 상태</option>
+                <option value="TRUST_LOCKED">발화 확정</option>
+                <option value="HOLD">보류</option>
+                <option value="REJECT">반려</option>
+            </select>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="evOnly" onchange="filterLinkView()"> 증거 연결됨</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="checkbox" id="proofOnly" onchange="filterLinkView()"> 실체 검증됨</label>
+        </div>
+        
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th width="120">연결 상태</th>
+                    <th>이슈 제목</th>
+                    <th width="120">현재 상태</th>
+                    <th width="150">관련 종목</th>
+                    <th width="120">호인 근거 데이터</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="link-row" id="row-0" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>[긴급] None의 발언이 암시하는 구조적 균열</b><br><small>ID</small></td>
+                <td>확정</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('0')">
+                        0개 근거 항목 ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-0">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-1" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>[긴급] None의 발언이 암시하는 구조적 균열</b><br><small>ID</small></td>
+                <td>확정</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('1')">
+                        0개 근거 항목 ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-1">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-2" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>[긴급] None의 발언이 암시하는 구조적 균열</b><br><small>ID</small></td>
+                <td>확정</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('2')">
+                        0개 근거 항목 ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-2">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-3" data-status="TRUST_LOCKED" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>[긴급] None의 발언이 암시하는 구조적 균열</b><br><small>ID</small></td>
+                <td>확정</td>
+                <td></td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('3')">
+                        0개 근거 항목 ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-3">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="link-row" id="row-4" data-status="EDITORIAL_CANDIDATE" data-has-ev="false" data-has-proof="false">
+                <td><span class="badge-status status-no-ev">NO_HOIN_EVIDENCE</span></td>
+                <td><b>미 국채 10년물 4.24 (➖ +0.33%)</b><br><small>ISSUE-20260131-001</small></td>
+                <td>후보</td>
+                <td>US10Y</td>
+                <td>
+                    <button class="expand-btn" onclick="toggleRow('4')">
+                        0개 근거 항목 ▾
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded-row" id="drawer-4">
+                <td colspan="5">
+                    <div class="evidence-drawer">
+                        <div style='margin-bottom:15px; font-weight:bold; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:5px;'>🗣️ 직접 발언 인용구 검증</div><div style='color:var(--text-sub); margin-bottom:20px;'>검증된 인용구 증거가 없습니다.</div><div style='margin-bottom:15px; font-weight:bold; color:var(--purple); border-bottom:1px solid var(--border); padding-bottom:5px;'>🧬 호인 근거 데이터</div><div style='color:var(--text-sub); margin-bottom:20px;'>이 카드에 매칭된 호인 증거가 없습니다.</div><div style='margin-top:20px; margin-bottom:15px; font-weight:bold; color:var(--amber); border-bottom:1px solid var(--border); padding-bottom:5px;'>🛡️ 종목별 실체 검증 팩 (Proof Packs)</div><div style='color:var(--text-sub)'>생성된 증거 팩트가 없습니다.</div>
+                    </div>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+    </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            // Hide all tabs
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Show new tab
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            const isHidden = el.style.display === 'none';
+            el.style.display = isHidden ? 'block' : 'none';
+            
+            // Toggle arrow if exists
+            const arrow = document.getElementById(id + '-arrow');
+            if (arrow) {
+                arrow.innerText = isHidden ? '▴' : '▾';
+            }
+        }
+
+        function toggleRow(id) {
+            const row = document.getElementById('drawer-' + id);
+            // Check computed style
+            if(row.style.display === 'table-row') {
+                row.style.display = 'none';
+            } else {
+                row.style.display = 'table-row';
+            }
+        }
+
+        function filterLinkView() {
+            const status = document.getElementById('statusFilter').value;
+            const evOnly = document.getElementById('evOnly').checked;
+            const proofOnly = document.getElementById('proofOnly').checked;
+            const rows = document.querySelectorAll('.link-row');
+            
+            rows.forEach(row => {
+                const rStatus = row.getAttribute('data-status');
+                const hasEv = row.getAttribute('data-has-ev') === 'true';
+                const hasProof = row.getAttribute('data-has-proof') === 'true';
+                let visible = true;
+                
+                if (status !== 'ALL' && rStatus !== status) visible = false;
+                if (evOnly && !hasEv) visible = false;
+                if (proofOnly && !hasProof) visible = false;
+                
+                row.style.display = visible ? 'table-row' : 'none';
+                if (!visible) {
+                    const id = row.id.split('-')[1];
+                    const drawer = document.getElementById('drawer-' + id);
+                    if(drawer) drawer.style.display = 'none';
+                }
+            });
+        }
+
+        function copyToClipboard(text) {
+            if(!text || text === '-' || text === 'undefined') return;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('콘텐츠가 클립보드에 복사되었습니다.');
+            }).catch(err => {
+                console.error('Copy failed: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
+        

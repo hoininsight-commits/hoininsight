@@ -1,0 +1,11 @@
+schema_version: "topic_v1"
+required_fields:
+  - ts_utc
+  - dataset_id
+  - topic_id
+  - title
+  - score
+  - severity
+  - evidence
+  - rationale
+  - links

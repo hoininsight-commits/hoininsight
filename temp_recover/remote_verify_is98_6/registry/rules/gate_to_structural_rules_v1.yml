@@ -1,0 +1,52 @@
+version: v1.0
+ruleset_id: gate_to_structural_rules_v1
+description: "Eligibility Rules: Gate TOPIC -> Structural Observation Candidate"
+
+# Evaluation Logic: 
+# 1. Default outcome is NOT_ELIGIBLE.
+# 2. A topic is ELIGIBLE if it satisfies (Trust AND Evidence AND Repetition) OR (Trust AND Evidence AND Concurrency).
+
+parameters:
+  repetition_window_days: 7    # N
+  repetition_min_count: 2      # M
+  min_trust_score: 0.8         # T
+  concurrency_window_days: 3   # K
+  min_evidence_count: 1
+
+rule_groups:
+  A_Repetition:
+    description: "Detects sustained interest or systemic pressure via repeated triggers"
+    conditions:
+      - "count(same_event_type) >= parameters.repetition_min_count"
+      - "within_period(parameters.repetition_window_days)"
+
+  B_Evidence_Strength:
+    description: "Ensures the topic is anchored in factual, numerical data"
+    conditions:
+      - "candidate.evidence_count >= parameters.min_evidence_count"
+      - "OR(has_numeric_evidence(), has_official_document_ref())"
+
+  C_Trust:
+    description: "Strict source verification filter"
+    conditions:
+      - "candidate.trust_score >= parameters.min_trust_score"
+      - "candidate.requires_confirmation == false"
+
+  D_Concurrency:
+    description: "Correlation-based boost: links narrative to existing data anomalies"
+    conditions:
+      - "has_related_anomaly(within_days=parameters.concurrency_window_days)"
+      - "anomaly_severity >= 'MEDIUM'"
+
+eligibility_policy:
+  primary_path:
+    condition: "GROUP(C_Trust) AND GROUP(B_Evidence_Strength) AND GROUP(A_Repetition)"
+    outcome: "ELIGIBLE"
+  
+  boost_path:
+    condition: "GROUP(C_Trust) AND GROUP(B_Evidence_Strength) AND GROUP(D_Concurrency)"
+    outcome: "ELIGIBLE"
+
+  fallback:
+    outcome: "NOT_ELIGIBLE"
+    reason: "Insufficient trust, evidence, or systemic signal (repetition/anomaly correlation)"

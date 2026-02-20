@@ -1,0 +1,15 @@
+[
+  {
+    "ts_utc": "2026-01-31T22:59:48Z",
+    "dataset_id": "struct_dart_cb_bw",
+    "entity": "DART_CB_BW",
+    "anomaly_type": "EVENT_NONZERO",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "value": 1.0,
+      "threshold": 0,
+      "reasoning": "New Event Detected (Count=1)"
+    }
+  }
+]

@@ -1,0 +1,10 @@
+name: ui_manifest
+version: 1
+required_keys:
+  - date
+  - registry_version
+  - assets
+types:
+  date: str
+  registry_version: int
+  assets: list
