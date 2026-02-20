@@ -106,7 +106,32 @@ const GET_COLORS = {
     }
 };
 
+function calculateEngineStatus(items, error, today) {
+    if (error || !items || items.length === 0) return { label: '🔴 수집 오류', color: 'text-red-500', bg: 'bg-red-500/10' };
+
+    const completeCount = items.filter(i => !i.incomplete).length;
+    const latestTime = items.reduce((max, i) => {
+        const t = new Date(i.selected_at).getTime();
+        return t > max ? t : max;
+    }, 0);
+
+    const diffHours = (Date.now() - latestTime) / (1000 * 60 * 60);
+    const staleThreshold = 24; // 24 hours
+
+    if (completeCount === 0 && items.length > 0) {
+        return { label: '🟡 데이터 일부 지연', color: 'text-yellow-500', bg: 'bg-yellow-500/10' };
+    }
+
+    if (diffHours > staleThreshold) {
+        return { label: '🟡 업데이트 지연', color: 'text-yellow-600', bg: 'bg-yellow-600/5' };
+    }
+
+    const timeStr = latestTime > 0 ? new Date(latestTime).toTimeString().substring(0, 5) : '-';
+    return { label: `🟢 정상 (${timeStr} 기준)`, color: 'text-green-500', bg: 'bg-green-500/10' };
+}
+
 function renderTodayUI(container, items, debug, error = null) {
+    const status = calculateEngineStatus(items, error, debug.today);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
     const okItems = completeItems.filter(i => i.speakability === 'OK');
@@ -227,9 +252,14 @@ function renderTodayUI(container, items, debug, error = null) {
         <div class="space-y-4 fade-in max-w-6xl mx-auto">
             <div class="flex justify-between items-end mb-2">
                 <h1 class="text-2xl font-black text-white tracking-tighter uppercase blur-[0.2px]">🔥 오늘의 선정</h1>
-                <button id="hotfix-debug-trigger" class="text-[9px] font-black text-slate-700 hover:text-slate-500 border border-slate-800/50 px-2 py-0.5 rounded transition-colors uppercase">
-                    Debug
-                </button>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800/50 ${status.bg}">
+                        <span class="text-[10px] font-black ${status.color} uppercase">Engine: ${status.label}</span>
+                    </div>
+                    <button id="hotfix-debug-trigger" class="text-[9px] font-black text-slate-700 hover:text-slate-500 border border-slate-800/50 px-2 py-0.5 rounded transition-colors uppercase">
+                        Debug
+                    </button>
+                </div>
             </div>
 
             ${summaryStripHtml}
