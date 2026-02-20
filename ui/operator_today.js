@@ -1,26 +1,21 @@
 
 /**
- * Operator Today View v2.2
- * Features: HERO + LIST, Robust ISO Matching, Anti-Undefined Policy, Minimized Diagnostics
+ * Operator Today View v2.3
+ * Features: Contract Normalization, Priority Sorting, HERO Meta Header, Anti-Undefined
  */
 
-const UI_SAFE = {
-    get: (val, fallback = "-") => (val === undefined || val === null || val === "" || val === "undefined") ? fallback : val,
-    num: (val, fallback = 0) => {
-        const n = parseFloat(val);
-        return isNaN(n) ? fallback : n;
-    }
-};
+import { UI_SAFE, normalizeDecision, assertNoUndefined } from './utils.js?v=2.3';
 
 export async function initTodayView(container) {
     container.innerHTML = `
+        <div id="debug-error-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white font-black text-[10px] p-2 z-[100] text-center shadow-xl animate-bounce"></div>
         <div class="p-8 flex flex-col items-center justify-center space-y-4">
             <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Synchronizing Decision Stream...</div>
+            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Normalizing Decision Stream v2.3...</div>
         </div>
     `;
 
-    const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
+    const today = new Date().toLocaleDateString('en-CA');
     const debug = { today, matches: 0, totalFiles: 0, mismatchReasons: [] };
 
     try {
@@ -38,18 +33,17 @@ export async function initTodayView(container) {
                 const items = Array.isArray(data) ? data : [data];
 
                 items.forEach(item => {
-                    const dDate = UI_SAFE.get(item.date, "");
-                    const dSelected = UI_SAFE.get(item.selected_at, "");
+                    const norm = normalizeDecision(item);
 
                     let isToday = false;
-                    if (dDate === today) isToday = true;
-                    else if (dSelected.startsWith(today)) isToday = true;
+                    if (norm.date === today) isToday = true;
+                    else if (norm.selected_at.startsWith(today)) isToday = true;
 
                     if (isToday) {
-                        allDecisions.push(item);
+                        allDecisions.push(norm);
                         debug.matches++;
                     } else {
-                        debug.mismatchReasons.push({ file, date: dDate, selected: dSelected });
+                        debug.mismatchReasons.push({ file, date: norm.date, selected: norm.selected_at });
                     }
                 });
             } catch (e) {
@@ -59,8 +53,24 @@ export async function initTodayView(container) {
 
         await Promise.all(fetchTasks);
 
-        // Sort by selected_at desc
-        allDecisions.sort((a, b) => new Date(UI_SAFE.get(b.selected_at, 0)) - new Date(UI_SAFE.get(a.selected_at, 0)));
+        // PHASE 4: TODAY LIST SORTING (OPERATOR PRIORITY)
+        // 1) speakability rank: OK(3) > HOLD(2) > "-"(1)
+        // 2) intensity desc
+        // 3) selected_at desc
+        const getSpeakRank = (s) => (s === 'OK' ? 3 : (s === 'HOLD' ? 2 : 1));
+
+        allDecisions.sort((a, b) => {
+            // Incomplete items at bottom regardless of intensity
+            if (a.incomplete !== b.incomplete) return a.incomplete ? 1 : -1;
+
+            const sA = getSpeakRank(a.speakability);
+            const sB = getSpeakRank(b.speakability);
+            if (sA !== sB) return sB - sA;
+
+            if (b.intensity !== a.intensity) return b.intensity - a.intensity;
+
+            return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
+        });
 
         renderTodayUI(container, allDecisions, debug);
 
@@ -76,19 +86,20 @@ function renderTodayUI(container, items, debug, error = null) {
     const list = hasItems ? items.slice(1) : [];
 
     container.innerHTML = `
+        <div id="debug-error-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white font-black text-[10px] p-2 z-[100] text-center shadow-xl animate-bounce"></div>
         <div class="space-y-8 fade-in">
             <!-- Header & Debug Toggle -->
             <div class="flex justify-between items-end">
                 <div>
-                    <h1 class="text-3xl font-black text-white tracking-tighter">오늘의 TOP 선정</h1>
-                    <p class="text-slate-500 text-xs mt-1 font-medium">운영 기준일: ${debug.today} (KST)</p>
+                    <h1 class="text-3xl font-black text-white tracking-tighter uppercase blur-[0.3px]">🔥 오늘의 TOP 선정</h1>
+                    <p class="text-slate-500 text-xs mt-1 font-medium font-mono">OPERATOR_REF: ${debug.today} / MATCHES: ${debug.matches}</p>
                 </div>
                 <button id="hotfix-debug-trigger" class="text-[10px] font-black text-slate-600 hover:text-slate-400 border border-slate-800 px-2 py-1 rounded transition-colors uppercase">
                     Debug Mode
                 </button>
             </div>
 
-            <!-- Debug Panel (Hidden) -->
+            <!-- Debug Panel -->
             <div id="hotfix-debug-panel" class="hidden bg-slate-900/50 border border-slate-800 rounded p-4 font-mono text-[10px] text-slate-500">
                 <div class="grid grid-cols-3 gap-4 mb-2">
                     <div>Today: ${debug.today}</div>
@@ -96,68 +107,73 @@ function renderTodayUI(container, items, debug, error = null) {
                     <div>Matches: ${debug.matches}</div>
                 </div>
                 <div class="max-h-24 overflow-y-auto border-t border-slate-800 mt-2 pt-2">
-                    ${debug.mismatchReasons.slice(0, 10).map(r => `<div>[MISMATCH] ${r.file} (${r.date || 'no-date'})</div>`).join('')}
+                    ${debug.mismatchReasons.slice(0, 5).map(r => `<div>[MISMATCH] ${UI_SAFE.safeStr(r.date)} / ${UI_SAFE.safeStr(r.selected)}</div>`).join('')}
                 </div>
             </div>
 
             ${hasItems ? `
-                <!-- HERO CARD -->
+                <!-- v2.3 HERO CARD UPGRADE -->
                 <div class="bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/30 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
                     <div class="absolute -right-4 -top-4 text-8xl opacity-10 font-black italic select-none">TOP</div>
                     
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg uppercase tracking-wider">
-                            ${UI_SAFE.get(hero.selected_at).split('T')[1]?.substring(0, 5) || "00:00"}
-                        </span>
-                        <span class="bg-slate-800 text-blue-400 text-[10px] font-black px-2 py-1 rounded border border-blue-500/20 uppercase">
-                            ${UI_SAFE.get(hero.why_now_type)}
-                        </span>
-                        <span class="${hero.intensity >= 70 ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'bg-slate-800 text-slate-400 border-slate-700/50'} text-[10px] font-black px-2 py-1 rounded border uppercase">
-                            INT ${UI_SAFE.num(hero.intensity)}%
-                        </span>
-                        <span class="bg-slate-800 text-green-400 text-[10px] font-black px-2 py-1 rounded border border-green-500/20 uppercase">
-                            ${UI_SAFE.get(hero.speakability, "OK")}
-                        </span>
+                    <!-- Meta Info First (PHASE 3) -->
+                    <div class="flex flex-wrap gap-2 mb-8 items-center">
+                         <div class="bg-blue-600 text-white text-[10px] font-black px-3 py-1.5 rounded shadow-lg uppercase tracking-widest mr-2">
+                            TIME: ${UI_SAFE.safeISOTime(hero.selected_at)}
+                        </div>
+                        <div class="flex gap-1.5 px-3 py-1.5 bg-slate-900/80 rounded-full border border-slate-700/50">
+                            <span class="text-blue-400 text-[9px] font-black uppercase tracking-tighter">WHY_NOW: ${hero.display_badge}</span>
+                            <span class="text-slate-600 text-[9px]">|</span>
+                            <span class="${hero.intensity >= 80 ? 'text-red-400' : 'text-slate-400'} text-[9px] font-black uppercase">INTENSITY: ${hero.intensity}%</span>
+                            <span class="text-slate-600 text-[9px]">|</span>
+                            <span class="${hero.speakability === 'OK' ? 'text-green-400' : 'text-yellow-400'} text-[9px] font-black uppercase">${hero.speakability}</span>
+                        </div>
                     </div>
 
-                    <h2 class="text-4xl font-black text-white mb-4 leading-[1.1] tracking-tight">
-                        ${UI_SAFE.get(hero.title)}
+                    <h2 class="text-4xl font-black text-white mb-6 leading-[1.1] tracking-tight">
+                        ${hero.title}
                     </h2>
                     
-                    <p class="text-slate-300 text-lg leading-relaxed max-w-3xl font-medium">
-                        ${UI_SAFE.get(hero.why_now_summary)}
+                    <p class="text-slate-300 text-lg leading-relaxed max-w-4xl font-medium mb-8">
+                        ${hero.why_now_summary}
                     </p>
 
-                    <div class="mt-8 pt-6 border-t border-blue-500/10 flex items-center gap-6">
-                        <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Selected For You Today</div>
-                        <div class="flex -space-x-2">
-                            ${(hero.related_assets || []).slice(0, 3).map(asset => `
-                                <div class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[8px] font-bold text-blue-400 uppercase ring-2 ring-slate-900">
-                                    ${asset.substring(0, 2)}
-                                </div>
+                    ${hero.incomplete ? `
+                        <div class="text-[9px] font-bold text-red-500/60 flex items-center gap-2 mb-6">
+                            <span>⚠ 데이터 일부 누락(렌더 정상, 원본 확인 필요)</span>
+                            <span class="bg-red-500/10 px-1 py-0.5 rounded">MISSING: ${hero.missingFields.join(',')}</span>
+                        </div>
+                    ` : ''}
+
+                    <div class="pt-6 border-t border-blue-500/10 flex items-center justify-between">
+                         <div class="flex gap-1">
+                            ${hero.related_assets.map(a => `
+                                <span class="bg-slate-800/80 text-blue-400 text-[8px] font-black px-2 py-1 rounded border border-blue-500/10 uppercase tracking-tighter">
+                                    ${a}
+                                </span>
                             `).join('')}
                         </div>
+                        <div class="text-[9px] font-black text-slate-600 uppercase tracking-tighter">OPERATOR_INSIGHT_v2.3</div>
                     </div>
                 </div>
 
                 <!-- LIST SECTION -->
                 <div class="space-y-4">
                     <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] flex items-center gap-2">
-                        <span>오늘 선정 리스트</span>
-                        <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                        <span>결정론적 우선순위 리스트</span>
+                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                     </h3>
                     
                     <div class="grid gap-3">
-                        ${list.length > 0 ? list.map((item, idx) => renderCompactCard(item, idx)).join('') : `
-                            <div class="p-8 border border-dashed border-slate-800 rounded-xl text-center text-slate-600 text-xs font-bold uppercase italic">
-                                Additional signals are being processed...
-                            </div>
-                        `}
+                        ${list.map((item, idx) => renderCompactCard(item, idx)).join('')}
                     </div>
                 </div>
             ` : renderFallback(debug, error)}
         </div>
     `;
+
+    // Anti-Undefined Assertions
+    assertNoUndefined(container.innerHTML);
 
     // Handlers
     document.getElementById('hotfix-debug-trigger').onclick = () => {
@@ -169,48 +185,51 @@ function renderTodayUI(container, items, debug, error = null) {
         btn.onclick = (e) => {
             const target = container.querySelector(`#detail-${btn.dataset.idx}`);
             target.classList.toggle('hidden');
-            btn.querySelector('.icon').innerText = target.classList.contains('hidden') ? '▼' : '▲';
+            const icon = btn.querySelector('.icon');
+            if (icon) icon.innerText = target.classList.contains('hidden') ? '▼' : '▲';
         };
     });
 }
 
 function renderCompactCard(item, idx) {
-    const time = UI_SAFE.get(item.selected_at).split('T')[1]?.substring(0, 5) || "--:--";
+    const time = UI_SAFE.safeISOTime(item.selected_at);
     return `
-        <div class="bg-slate-800/30 border border-slate-800 hover:border-slate-700 rounded-xl transition-all">
+        <div class="bg-slate-900/40 border ${item.incomplete ? 'border-red-900/20' : 'border-slate-800'} hover:border-slate-700 rounded-xl transition-all">
             <div class="p-4 flex items-center justify-between cursor-pointer expand-trigger" data-idx="${idx}">
                 <div class="flex items-center gap-4">
-                    <span class="text-[10px] font-black text-slate-500">${time}</span>
-                    <h4 class="text-sm font-bold text-white">${UI_SAFE.get(item.title)}</h4>
-                    <div class="flex gap-1">
-                        <span class="text-[8px] font-black px-1.5 py-0.5 rounded border border-slate-700 text-slate-500 uppercase">${UI_SAFE.get(item.why_now_type)}</span>
-                        <span class="text-[8px] font-black px-1.5 py-0.5 rounded border border-slate-700 text-slate-500 uppercase">INT ${UI_SAFE.num(item.intensity)}%</span>
+                    <span class="text-[10px] font-black text-slate-600 w-10">${time}</span>
+                    <div class="flex flex-col">
+                        <h4 class="text-sm font-bold ${item.incomplete ? 'text-slate-400' : 'text-white'} leading-tight">
+                            ${item.title}
+                        </h4>
+                        <div class="flex gap-2 mt-1">
+                            <span class="text-[8px] font-black text-blue-500 uppercase tracking-tighter">${item.display_badge}</span>
+                            <span class="text-[8px] font-black text-slate-600 uppercase tracking-tighter">INT ${item.intensity}%</span>
+                            <span class="text-[8px] font-black ${item.speakability === 'OK' ? 'text-green-600' : 'text-yellow-600'} uppercase tracking-tighter">${item.speakability}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="icon text-[10px] text-slate-600 transition-transform">▼</div>
+                <div class="icon text-[10px] text-slate-700">▼</div>
             </div>
 
-            <!-- Expandable Details -->
-            <div id="detail-${idx}" class="hidden p-4 pt-0 border-t border-slate-800/50 bg-slate-900/20 rounded-b-xl fade-in">
-                <div class="space-y-4 pt-4">
-                    <div>
-                        <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-1">Anomaly Points</div>
-                        <ul class="text-[11px] text-slate-400 space-y-1 pl-1">
-                            ${(item.anomaly_points || ["-"]).slice(0, 3).map(pt => `<li class="flex items-start gap-2"><span>•</span> ${UI_SAFE.get(pt)}</li>`).join('')}
+            <div id="detail-${idx}" class="hidden p-4 pt-0 border-t border-slate-800/30 text-[11px] text-slate-400 space-y-4 fade-in">
+                <div class="pt-4 grid grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest">Why Now Analysis</div>
+                        <p class="leading-relaxed font-medium">${UI_SAFE.safeStr(item.why_now_summary)}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-[9px] font-black text-green-500 uppercase tracking-widest">Evidence Points</div>
+                        <ul class="space-y-1 list-disc pl-4 italic opacity-80">
+                            ${item.anomaly_points.map(pt => `<li>${UI_SAFE.safeStr(pt)}</li>`).join('')}
                         </ul>
                     </div>
-
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-1">Related Assets</div>
-                            <div class="flex flex-wrap gap-1">
-                                ${(item.related_assets || ["-"]).map(a => `<span class="px-1.5 py-0.5 bg-slate-800 text-[9px] text-slate-400 rounded">${a}</span>`).join('')}
-                            </div>
-                        </div>
-                        <div class="italic text-[10px] text-slate-600 font-medium">
-                            "${UI_SAFE.get(item.content_hook).substring(0, 50)}..."
-                        </div>
+                </div>
+                <div class="flex justify-between items-center py-2 border-t border-slate-800/30">
+                    <div class="flex gap-1">
+                        ${item.related_assets.map(a => `<span class="bg-slate-800/50 px-2 py-0.5 rounded text-[8px] text-slate-500 border border-slate-800/50">${a}</span>`).join('')}
                     </div>
+                    ${item.incomplete ? `<span class="text-[8px] font-black text-red-500 uppercase">⚠ INCOMPLETE</span>` : ''}
                 </div>
             </div>
         </div>
@@ -222,23 +241,23 @@ function renderFallback(debug, error) {
         <div class="p-20 border-2 border-dashed border-slate-800 rounded-3xl text-center space-y-6">
             <div class="text-7xl opacity-20 grayscale">📭</div>
             <div class="space-y-2">
-                <h2 class="text-2xl font-black text-white tracking-tighter">🔥 오늘은 선정된 주제가 없습니다.</h2>
-                <p class="text-slate-500 text-xs font-medium">날짜: ${debug.today} | 현재 시각: ${new Date().toLocaleTimeString('ko-KR')}</p>
+                <h2 class="text-2xl font-black text-white tracking-tighter uppercase">🔥 오늘은 선정된 주제가 없습니다.</h2>
+                <p class="text-slate-500 text-xs font-mono">NODE_DATE: ${debug.today} / SCAN_TIME: ${new Date().toLocaleTimeString('ko-KR')}</p>
             </div>
             
             <div class="flex justify-center gap-4 max-w-sm mx-auto">
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex-1">
-                    <div class="text-[9px] font-black text-slate-500 uppercase mb-1">Total Assets</div>
+                <div class="bg-black/40 p-4 rounded-xl border border-slate-800 flex-1">
+                    <div class="text-[9px] font-black text-slate-600 uppercase mb-1">Scanned Files</div>
                     <div class="text-2xl font-bold text-white">${debug.totalFiles}</div>
                 </div>
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex-1">
-                    <div class="text-[9px] font-black text-slate-500 uppercase mb-1">Today Matches</div>
-                    <div class="text-2xl font-bold text-red-500">0</div>
+                <div class="bg-black/40 p-4 rounded-xl border border-slate-800 flex-1">
+                    <div class="text-[9px] font-black text-slate-600 uppercase mb-1">Today Signals</div>
+                    <div class="text-2xl font-bold text-red-600">NULL</div>
                 </div>
             </div>
 
-            <div class="text-[10px] font-mono text-slate-600 bg-slate-900 p-2 rounded inline-block">
-                Reason: ${error || "No dynamic signals matched the current date filter."}
+            <div class="text-[10px] font-mono text-slate-700 bg-slate-900 p-2 rounded inline-block border border-slate-800">
+                REASON_CODE: ${error ? UI_SAFE.safeStr(error) : "ZERO_MATCH_THRESHOLD"}
             </div>
         </div>
     `;
