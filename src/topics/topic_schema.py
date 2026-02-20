@@ -32,6 +32,10 @@ class TopicV2(TopicV1):
     narrative_score: float
     video_ready: bool
     causal_chain: Dict[str, Optional[str]]
+    actor_tier_score: float
+    cross_axis_count: int
+    cross_axis_multiplier: float
+    escalation_flag: bool
 
 def validate_topic_v1(obj: Dict[str, Any]) -> None:
     for k in REQUIRED:
@@ -40,6 +44,11 @@ def validate_topic_v1(obj: Dict[str, Any]) -> None:
 
 def validate_topic_v2(obj: Dict[str, Any]) -> None:
     validate_topic_v1(obj)
-    for k in ["narrative_score", "video_ready", "causal_chain"]:
+    v2_fields = [
+        "narrative_score", "video_ready", "causal_chain",
+        "actor_tier_score", "cross_axis_count", 
+        "cross_axis_multiplier", "escalation_flag"
+    ]
+    for k in v2_fields:
         if k not in obj:
             raise ValueError(f"topic_v2 missing field: {k}")

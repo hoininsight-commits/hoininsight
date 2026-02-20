@@ -23,12 +23,16 @@ def verify():
         for i, topic in enumerate(topics):
             print(f"Checking topic {i+1}: {topic.get('title')}")
             
-            # v2.0 Fields check
-            required_v2 = ["narrative_score", "video_ready", "causal_chain", "schema_version"]
+            # v2.5 Fields check
+            required_v2 = [
+                "narrative_score", "video_ready", "causal_chain", 
+                "schema_version", "actor_tier_score", "cross_axis_count",
+                "cross_axis_multiplier", "escalation_flag"
+            ]
             missing = [f for f in required_v2 if f not in topic]
             
             if missing:
-                print(f"❌ Error: Topic {i+1} missing v2.0 fields: {missing}")
+                print(f"❌ Error: Topic {i+1} missing v2.5 fields: {missing}")
                 sys.exit(1)
                 
             # Type checks
@@ -38,6 +42,14 @@ def verify():
                  
             if not isinstance(topic["video_ready"], bool):
                  print(f"❌ Error: video_ready should be boolean (got {type(topic['video_ready'])})")
+                 sys.exit(1)
+
+            if not isinstance(topic["actor_tier_score"], (int, float)):
+                 print(f"❌ Error: actor_tier_score should be a number (got {type(topic['actor_tier_score'])})")
+                 sys.exit(1)
+
+            if not isinstance(topic["cross_axis_multiplier"], (int, float)):
+                 print(f"❌ Error: cross_axis_multiplier should be a number (got {type(topic['cross_axis_multiplier'])})")
                  sys.exit(1)
                  
             if not isinstance(topic["causal_chain"], dict):
