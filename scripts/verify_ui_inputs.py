@@ -39,47 +39,47 @@ def verify_ui_inputs():
         print(f"❌ Missing Directory: {docs_data_decision}")
         missing.append("docs/data/decision/")
     else:
-    # [PHASE 5] Enhanced Manifest & Decision Validation
-    manifest_path = docs_data_decision / "manifest.json"
-    if not manifest_path.exists():
-        print(f"❌ Missing Manifest: {manifest_path}")
-        missing.append("manifest.json")
-    else:
-        try:
-            with open(manifest_path, "r") as f:
-                manifest = json.load(f)
-            files = manifest.get("files", [])
-            if not files:
-                print(f"⚠️ Manifest is empty.")
-            
-            # Check if each file in manifest exists and is valid
-            valid_count = 0
-            for fname in files:
-                fpath = docs_data_decision / fname
-                if not fpath.exists():
-                    print(f"❌ Manifest entry missing on disk: {fname}")
-                    missing.append(fname)
-                    continue
+        # [PHASE 5] Enhanced Manifest & Decision Validation
+        manifest_path = docs_data_decision / "manifest.json"
+        if not manifest_path.exists():
+            print(f"❌ Missing Manifest: {manifest_path}")
+            missing.append("manifest.json")
+        else:
+            try:
+                with open(manifest_path, "r") as f:
+                    manifest = json.load(f)
+                files = manifest.get("files", [])
+                if not files:
+                    print(f"⚠️ Manifest is empty.")
                 
-                try:
-                    with open(fpath, "r") as df:
-                        data = json.load(df)
-                    items = data if isinstance(data, list) else [data]
-                    for item in items:
-                        # Schema assertion (v2.2)
-                        if "title" in item:
-                            valid_count += 1
-                except Exception as e:
-                    print(f"❌ Decision file corrupt: {fname} ({e})")
-                    missing.append(fname)
-            
-            if valid_count == 0:
-                print("❌ No valid decision items found in any manifest file.")
-                missing.append("empty_decisions")
+                # Check if each file in manifest exists and is valid
+                valid_count = 0
+                for fname in files:
+                    fpath = docs_data_decision / fname
+                    if not fpath.exists():
+                        print(f"❌ Manifest entry missing on disk: {fname}")
+                        missing.append(fname)
+                        continue
+                    
+                    try:
+                        with open(fpath, "r") as df:
+                            data = json.load(df)
+                        items = data if isinstance(data, list) else [data]
+                        for item in items:
+                            # Schema assertion (v2.2)
+                            if "title" in item:
+                                valid_count += 1
+                    except Exception as e:
+                        print(f"❌ Decision file corrupt: {fname} ({e})")
+                        missing.append(fname)
+                
+                if valid_count == 0:
+                    print("❌ No valid decision items found in any manifest file.")
+                    missing.append("empty_decisions")
 
-        except Exception as e:
-            print(f"❌ Manifest parsing failed: {e}")
-            missing.append("manifest_error")
+            except Exception as e:
+                print(f"❌ Manifest parsing failed: {e}")
+                missing.append("manifest_error")
 
     # [PHASE 7] v2.4 Density & Visual Assertions
     js_dir = project_root / "docs" / "ui"
@@ -116,23 +116,26 @@ def verify_ui_inputs():
     if density_issues: missing.append("ui_density_fail")
     if unsafe_literals: missing.append("unsafe_js_templates")
 
-    # [PHASE 9] v2.6 Decision Console & History Intelligence Assertions
+    # [PHASE 10] v2.7 Intelligence Layer Assertions
     if js_dir.exists():
-        # Today View v2.6 Structural Check
+        # Today View v2.7 Engine Status
         today_js = js_dir / "operator_today.js"
         if today_js.exists():
             content = today_js.read_text()
-            if "Decision Alert" not in content or "SECTION A — TODAY STATUS SUMMARY" not in content:
-                 print(f"❌ Missing v2.6 Decision Console components in {today_js.name}")
-                 density_issues.append("missing_decision_console")
+            if "calculateEngineStatus" not in content or "Engine:" not in content:
+                 print(f"❌ Missing v2.7 Engine Status Indicator in {today_js.name}")
+                 density_issues.append("missing_engine_status")
         
-        # History View v2.6 Tab & Trend Check
+        # History View v2.7 Intelligence
         history_js = js_dir / "operator_history.js"
         if history_js.exists():
             content = history_js.read_text()
-            if "tab-complete" not in content or "Daily Trend Intelligence" not in content:
-                print(f"❌ Missing v2.6 History Intelligence components in {history_js.name}")
-                density_issues.append("missing_history_intelligence")
+            if "calculateIntelligence" not in content or "최근 7일 요약" not in content or "<svg" not in content:
+                print(f"❌ Missing v2.7 Intelligence components in {history_js.name}")
+                density_issues.append("missing_intelligence_layer")
+            if "↑" not in content and "↓" not in content:
+                print(f"❌ Missing v2.7 Delta indicators in {history_js.name}")
+                density_issues.append("missing_deltas")
 
     # Final Summary
     if missing or density_issues:

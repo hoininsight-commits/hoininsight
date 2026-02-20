@@ -97,6 +97,70 @@ function renderHistoryFrame(container, state) {
     update();
 }
 
+/**
+ * PHASE 2-5 Intelligence Calculations (v2.7)
+ */
+function calculateIntelligence(data) {
+    const today = new Date();
+    const sevenDaysAgo = new Date(today);
+    sevenDaysAgo.setDate(today.getDate() - 7);
+
+    // Filter last 7 calendar days
+    const recentItems = data.filter(item => {
+        const d = new Date(item.date);
+        return d >= sevenDaysAgo && d <= today;
+    });
+
+    if (recentItems.length === 0) return null;
+
+    const totalCount = recentItems.length;
+    const completeItems = recentItems.filter(i => !i.incomplete);
+    const avgInt = Math.round(recentItems.reduce((s, i) => s + i.intensity, 0) / totalCount);
+    const maxInt = Math.max(...recentItems.map(i => i.intensity));
+    const compRatio = Math.round((completeItems.length / totalCount) * 100);
+
+    const topSignal = [...completeItems].sort((a, b) => b.intensity - a.intensity)[0] || null;
+
+    // Daily averages for Sparkline
+    const dailyMap = recentItems.reduce((acc, item) => {
+        if (!acc[item.date]) acc[item.date] = [];
+        acc[item.date].push(item.intensity);
+        return acc;
+    }, {});
+
+    const dates = Object.keys(dailyMap).sort();
+    const sparkPoints = dates.map(d => {
+        const vals = dailyMap[d];
+        return Math.round(vals.reduce((s, v) => s + v, 0) / vals.length);
+    });
+
+    return { avgInt, maxInt, compRatio, totalCount, topSignal, sparkPoints };
+}
+
+function renderSparkline(points) {
+    if (!points || points.length < 2) return '';
+    const width = 120;
+    const height = 30;
+    const padding = 2;
+    const max = 100;
+
+    const step = (width - padding * 2) / (points.length - 1);
+    const coords = points.map((p, i) => {
+        const x = padding + i * step;
+        const y = height - (p / max * height);
+        return `${x},${y}`;
+    }).join(' ');
+
+    return `
+        <svg width="${width}" height="${height}" class="overflow-visible">
+            <polyline points="${coords}" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            ${points.map((p, i) => `
+                <circle cx="${padding + i * step}" cy="${height - (p / max * height)}" r="2" fill="#3b82f6" class="animate-pulse" />
+            `).join('')}
+        </svg>
+    `;
+}
+
 function renderHistoryList(container, state) {
     const isCompView = state.activeTab === 'complete';
 
@@ -127,8 +191,40 @@ function renderHistoryList(container, state) {
 
     const sortedDates = Object.keys(grouped).sort((a, b) => new Date(b) - new Date(a));
 
+    const intel = calculateIntelligence(state.data);
+    const intelHtml = (intel && isCompView) ? `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="bg-blue-900/10 border border-blue-900/20 p-5 rounded-2xl flex items-center justify-between group hover:border-blue-500/30 transition-all">
+                <div class="space-y-1">
+                    <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest">최근 7일 요약</div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-2xl font-black text-white italic">${intel.avgInt}%</span>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Average Int</span>
+                    </div>
+                    <div class="text-[10px] text-slate-400 font-medium">최고 ${intel.maxInt}% | 완전율 ${intel.compRatio}% | 총 ${intel.totalCount}건</div>
+                </div>
+                <div class="opacity-80 group-hover:opacity-100 transition-opacity">
+                    ${renderSparkline(intel.sparkPoints)}
+                </div>
+            </div>
+
+            ${intel.topSignal ? `
+                <div class="md:col-span-2 bg-slate-900/40 border border-slate-800 p-5 rounded-2xl flex flex-col justify-center relative overflow-hidden group hover:border-slate-600 transition-all">
+                    <div class="absolute -right-4 -top-4 text-6xl opacity-5 grayscale group-hover:grayscale-0 transition-all">🏆</div>
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">최근 7일 최고 강도 신호</div>
+                    <div class="flex items-center gap-3">
+                        <span class="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-0.5 rounded border border-red-500/20">${intel.topSignal.intensity}%</span>
+                        <h4 class="text-sm font-bold text-slate-200 truncate">${intel.topSignal.title}</h4>
+                        <span class="text-[10px] text-slate-500 font-mono ml-auto">${intel.topSignal.date}</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2 truncate max-w-2xl">${intel.topSignal.why_now_summary}</p>
+                </div>
+            ` : ''}
+        </div>
+    ` : '';
+
     if (sortedDates.length === 0) {
-        container.innerHTML = `
+        container.innerHTML = intelHtml + `
             <div class="p-20 border border-dashed border-slate-800 rounded-2xl text-center space-y-2">
                 <div class="text-3xl grayscale opacity-10">📂</div>
                 <div class="text-slate-700 font-black uppercase tracking-[0.2em] text-[10px]">No records found for ${state.activeTab}</div>
@@ -136,8 +232,22 @@ function renderHistoryList(container, state) {
         return;
     }
 
-    container.innerHTML = sortedDates.map(date => {
+    container.innerHTML = intelHtml + sortedDates.map((date, idx) => {
         const dayItems = grouped[date];
+
+        // Daily Delta (v2.7)
+        let deltaHtml = '';
+        if (idx < sortedDates.length - 1) {
+            const nextDate = sortedDates[idx + 1];
+            const nextDayItems = grouped[nextDate];
+            if (nextDayItems) {
+                const curAvg = Math.round(dayItems.reduce((s, i) => s + i.intensity, 0) / dayItems.length);
+                const prevAvg = Math.round(nextDayItems.reduce((s, i) => s + i.intensity, 0) / nextDayItems.length);
+                const delta = curAvg - prevAvg;
+                if (delta > 0) deltaHtml = `<span class="text-green-500 ml-2">↑ +${delta}%</span>`;
+                else if (delta < 0) deltaHtml = `<span class="text-red-500 ml-2">↓ ${delta}%</span>`;
+            }
+        }
 
         // PHASE 3: DAILY TREND SUMMARY (v2.6)
         const d_ok = dayItems.filter(i => !i.incomplete && i.speakability === 'OK').length;
@@ -149,8 +259,7 @@ function renderHistoryList(container, state) {
         const trendHtml = isCompView ? `
             <div class="flex items-center gap-3 bg-slate-900/30 px-3 py-1 rounded-full border border-slate-800/50">
                 <span class="text-[9px] text-slate-500 font-bold">완전 <strong class="text-slate-300 font-black">${dayItems.length}</strong></span>
-                <span class="text-[9px] text-slate-500 font-bold">HOLD <strong class="text-yellow-500 font-black">${d_hold}</strong></span>
-                <span class="text-[9px] text-slate-500 font-bold">평균 <strong class="text-slate-300 font-black">${d_avg}%</strong></span>
+                <span class="text-[9px] text-slate-500 font-bold">평균 <strong class="text-slate-300 font-black">${d_avg}%</strong>${deltaHtml}</span>
                 <span class="text-[9px] text-slate-500 font-bold">최고 <strong class="text-red-500 font-black">${d_max}%</strong></span>
             </div>
         ` : `
