@@ -1,0 +1,112 @@
+[
+  {
+    "interpretation_id": "22abe012-c679-4441-bd22-44c9fc3178a7",
+    "as_of_date": "2026-02-20",
+    "target_sector": "TECH_INFRA_KOREA",
+    "interpretation_key": "STRUCTURAL_ROUTE_FIXATION",
+    "why_now_type": "Schedule-driven",
+    "confidence_score": 0.88,
+    "evidence_tags": [
+      "KR_POLICY",
+      "PRETEXT_VALIDATION",
+      "EARNINGS_VERIFY"
+    ],
+    "structural_narrative": "정책 예산 집행과 기업 실적 발표가 맞물리며 Tech 인프라 섹터의 구조적 반등 시발점이 확인됨.",
+    "derived_metrics_snapshot": {
+      "pretext_score": 0.92,
+      "policy_commitment_score": 0.85
+    },
+    "title": "[TECH_INFRA_KOREA] 정책 예산 집행과 기업 실적 발표가 맞물리며 Tech ...",
+    "selected_at": "2026-02-20T09:00:00",
+    "date": "2026-02-20",
+    "intensity": 88,
+    "speakability": "Review Required",
+    "why_now_summary": "정책 예산 집행과 기업 실적 발표가 맞물리며 Tech 인프라 섹터의 구조적 반등 시발점이 확인됨.",
+    "anomaly_points": [
+      "KR_POLICY",
+      "PRETEXT_VALIDATION",
+      "EARNINGS_VERIFY"
+    ],
+    "related_assets": [],
+    "content_hook": "정책 예산 집행과 기업 실적 발표가 맞물리며 Tech 인프라 섹터의 구조적 반등 시발점이 확인됨."
+  },
+  {
+    "interpretation_id": "6add55c1-2e88-4ae9-890b-9a367e64f8ee",
+    "as_of_date": "2026-02-20",
+    "target_sector": "FINANCIAL_VALUE_UP",
+    "interpretation_key": "FUNDAMENTAL_RE-RATING",
+    "why_now_type": "State-driven",
+    "confidence_score": 0.75,
+    "evidence_tags": [
+      "KR_POLICY",
+      "FLOW_ROTATION"
+    ],
+    "structural_narrative": "자율 공시 도입 기대감으로 자본 유입이 관찰되나 실적 검증 데이터는 대기 상태.",
+    "derived_metrics_snapshot": {
+      "pretext_score": 0.78
+    },
+    "title": "[FINANCIAL_VALUE_UP] 자율 공시 도입 기대감으로 자본 유입이 관찰되나 실적 ...",
+    "selected_at": "2026-02-20T09:00:00",
+    "date": "2026-02-20",
+    "intensity": 75,
+    "speakability": "Review Required",
+    "why_now_summary": "자율 공시 도입 기대감으로 자본 유입이 관찰되나 실적 검증 데이터는 대기 상태.",
+    "anomaly_points": [
+      "KR_POLICY",
+      "FLOW_ROTATION"
+    ],
+    "related_assets": [],
+    "content_hook": "자율 공시 도입 기대감으로 자본 유입이 관찰되나 실적 검증 데이터는 대기 상태."
+  },
+  {
+    "interpretation_id": "HYP-fab88b81",
+    "mode": "HYPOTHESIS_JUMP",
+    "as_of_date": "2026-02-20",
+    "target_sector": "GENERAL_ALPHA",
+    "interpretation_key": "HYPOTHESIS_US_MA_RUMOR",
+    "why_now_type": "State-driven",
+    "confidence_score": 0.9,
+    "evidence_tags": [
+      "US_MA_RUMOR",
+      "HYPOTHESIS_JUMP"
+    ],
+    "structural_narrative": "SpaceX and xAI strategic merger confirmed 기반 자본 구조 재편 및 수급 집중. CAPITAL_STRUCTURE 층위의 변화가 관찰됩니다.",
+    "reasoning_chain": {
+      "trigger_event": "SpaceX and xAI strategic merger confirmed",
+      "mechanism": "자본 구조 재편 및 수급 집중",
+      "affected_layer": "CAPITAL_STRUCTURE",
+      "beneficiaries": [
+        "SpaceX",
+        "xAI",
+        "Acquirer Shareholders"
+      ],
+      "risks": [
+        "신뢰도 낮은 단일 출처 정보일 가능성",
+        "데이터 확정 전 시장 오인 가능성"
+      ],
+      "verification_checklist": [
+        "독립 소스(필링/공식 발표) 교차 확인",
+        "관련 엔티티의 직접적 부인 여부 감시",
+        "수급 이동(FLOW_ROTATION) 시차 발생 여부 체크"
+      ]
+    },
+    "derived_metrics_snapshot": {
+      "pretext_score": 0.82,
+      "policy_commitment_score": 0.0,
+      "hypothesis_source_trust": "A"
+    },
+    "source_ref": {},
+    "title": "[GENERAL_ALPHA] SpaceX and xAI strategic merge...",
+    "selected_at": "2026-02-20T09:00:00",
+    "date": "2026-02-20",
+    "intensity": 90,
+    "speakability": "Review Required",
+    "why_now_summary": "SpaceX and xAI strategic merger confirmed 기반 자본 구조 재편 및 수급 집중. CAPITAL_STRUCTURE 층위의 변화가 관찰됩니다.",
+    "anomaly_points": [
+      "US_MA_RUMOR",
+      "HYPOTHESIS_JUMP"
+    ],
+    "related_assets": [],
+    "content_hook": "SpaceX and xAI strategic merger confirmed 기반 자본 구조 재편 및 수급 집중. CAPITAL_STRUCTURE 층위의 변화가 관찰됩니다."
+  }
+]
