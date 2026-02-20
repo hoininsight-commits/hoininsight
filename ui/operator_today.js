@@ -1,17 +1,19 @@
 
 /**
- * Operator Today View v2.3
- * Features: Contract Normalization, Priority Sorting, HERO Meta Header, Anti-Undefined
+ * Operator Today View v2.4 — OPERATOR COMPRESSION MODE
+ * Features: Summary Strip, HERO Accent Bar, List Compression, Badge Standardization
  */
 
 import { UI_SAFE, normalizeDecision, assertNoUndefined } from './utils.js?v=2.3';
+
+let CACHED_MANIFEST = null;
 
 export async function initTodayView(container) {
     container.innerHTML = `
         <div id="debug-error-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white font-black text-[10px] p-2 z-[100] text-center shadow-xl animate-bounce"></div>
         <div class="p-8 flex flex-col items-center justify-center space-y-4">
             <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Normalizing Decision Stream v2.3...</div>
+            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Compressing Dashboard v2.4...</div>
         </div>
     `;
 
@@ -19,13 +21,16 @@ export async function initTodayView(container) {
     const debug = { today, matches: 0, totalFiles: 0, mismatchReasons: [] };
 
     try {
-        const manifestResp = await fetch('data/decision/manifest.json?v=' + Date.now());
-        if (!manifestResp.ok) throw new Error("Manifest Missing");
-        const manifest = await manifestResp.json();
-        debug.totalFiles = (manifest.files || []).length;
+        if (!CACHED_MANIFEST) {
+            const manifestResp = await fetch('data/decision/manifest.json?v=' + Date.now());
+            if (!manifestResp.ok) throw new Error("Manifest Missing");
+            CACHED_MANIFEST = await manifestResp.json();
+        }
+
+        debug.totalFiles = (CACHED_MANIFEST.files || []).length;
 
         const allDecisions = [];
-        const fetchTasks = (manifest.files || []).map(async (file) => {
+        const fetchTasks = (CACHED_MANIFEST.files || []).map(async (file) => {
             try {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
                 if (!res.ok) return;
@@ -34,7 +39,6 @@ export async function initTodayView(container) {
 
                 items.forEach(item => {
                     const norm = normalizeDecision(item);
-
                     let isToday = false;
                     if (norm.date === today) isToday = true;
                     else if (norm.selected_at.startsWith(today)) isToday = true;
@@ -53,22 +57,14 @@ export async function initTodayView(container) {
 
         await Promise.all(fetchTasks);
 
-        // PHASE 4: TODAY LIST SORTING (OPERATOR PRIORITY)
-        // 1) speakability rank: OK(3) > HOLD(2) > "-"(1)
-        // 2) intensity desc
-        // 3) selected_at desc
+        // v2.3/v2.4 STABLE SORT
         const getSpeakRank = (s) => (s === 'OK' ? 3 : (s === 'HOLD' ? 2 : 1));
-
         allDecisions.sort((a, b) => {
-            // Incomplete items at bottom regardless of intensity
             if (a.incomplete !== b.incomplete) return a.incomplete ? 1 : -1;
-
             const sA = getSpeakRank(a.speakability);
             const sB = getSpeakRank(b.speakability);
             if (sA !== sB) return sB - sA;
-
             if (b.intensity !== a.intensity) return b.intensity - a.intensity;
-
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
@@ -80,91 +76,142 @@ export async function initTodayView(container) {
     }
 }
 
+/**
+ * PHASE 4: COLOR & BADGE STANDARDIZATION
+ */
+const GET_COLORS = {
+    speak: (s) => {
+        if (s === 'OK') return 'bg-green-500/10 text-green-500 border-green-500/20';
+        if (s === 'HOLD') return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
+        return 'bg-slate-800 text-slate-500 border-slate-700';
+    },
+    why: (t) => {
+        if (t === 'Schedule') return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+        if (t === 'State') return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+        if (t === 'Hybrid') return 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20';
+        return 'bg-slate-800 text-slate-500 border-slate-700';
+    },
+    intensity: (i) => {
+        if (i >= 70) return 'text-red-500 font-black';
+        if (i >= 40) return 'text-orange-400 font-bold';
+        return 'text-blue-400';
+    },
+    accent: (i) => {
+        if (i >= 70) return 'bg-red-500';
+        if (i >= 40) return 'bg-orange-500';
+        return 'bg-blue-500';
+    }
+};
+
 function renderTodayUI(container, items, debug, error = null) {
     const hasItems = items.length > 0;
     const hero = hasItems ? items[0] : null;
     const list = hasItems ? items.slice(1) : [];
 
+    // PHASE 1: SUMMARY STRIP
+    let summaryStripHtml = '';
+    if (hasItems) {
+        const okCount = items.filter(i => i.speakability === 'OK').length;
+        const holdCount = items.filter(i => i.speakability === 'HOLD').length;
+        const avgInt = Math.round(items.reduce((s, i) => s + i.intensity, 0) / items.length);
+        const maxInt = Math.max(...items.map(i => i.intensity));
+
+        summaryStripHtml = `
+            <div id="summary-strip" class="bg-slate-800/40 border border-slate-700/30 rounded-lg px-4 h-[44px] flex items-center justify-between mb-4">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-slate-300 uppercase italic">운영 요약</span>
+                    <div class="h-3 w-[1px] bg-slate-700"></div>
+                    <span class="text-[11px] font-bold text-white">오늘 ${items.length}건</span>
+                    <span class="text-[11px] text-green-500 font-bold">OK ${okCount}</span>
+                    <span class="text-[11px] text-yellow-500 font-bold">HOLD ${holdCount}</span>
+                </div>
+                <div class="flex items-center gap-4 text-[11px]">
+                    <span class="text-slate-500">평균 <strong class="text-slate-300">${avgInt}%</strong></span>
+                    <span class="text-slate-500">최고 <strong class="text-red-400">${maxInt}%</strong></span>
+                </div>
+            </div>
+        `;
+    } else {
+        summaryStripHtml = `
+            <div class="bg-slate-800/20 border border-slate-800/50 rounded-lg px-4 h-[44px] flex items-center justify-center mb-4 italic text-[10px] text-slate-600 uppercase tracking-widest">
+                오늘 선정 없음
+            </div>
+        `;
+    }
+
     container.innerHTML = `
         <div id="debug-error-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white font-black text-[10px] p-2 z-[100] text-center shadow-xl animate-bounce"></div>
-        <div class="space-y-8 fade-in">
-            <!-- Header & Debug Toggle -->
-            <div class="flex justify-between items-end">
-                <div>
-                    <h1 class="text-3xl font-black text-white tracking-tighter uppercase blur-[0.3px]">🔥 오늘의 TOP 선정</h1>
-                    <p class="text-slate-500 text-xs mt-1 font-medium font-mono">OPERATOR_REF: ${debug.today} / MATCHES: ${debug.matches}</p>
-                </div>
-                <button id="hotfix-debug-trigger" class="text-[10px] font-black text-slate-600 hover:text-slate-400 border border-slate-800 px-2 py-1 rounded transition-colors uppercase">
-                    Debug Mode
+        <div class="space-y-4 fade-in max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="flex justify-between items-end mb-2">
+                <h1 class="text-2xl font-black text-white tracking-tighter uppercase blur-[0.2px]">🔥 오늘의 선정</h1>
+                <button id="hotfix-debug-trigger" class="text-[9px] font-black text-slate-700 hover:text-slate-500 border border-slate-800/50 px-2 py-0.5 rounded transition-colors uppercase">
+                    Debug
                 </button>
             </div>
 
+            ${summaryStripHtml}
+
             <!-- Debug Panel -->
-            <div id="hotfix-debug-panel" class="hidden bg-slate-900/50 border border-slate-800 rounded p-4 font-mono text-[10px] text-slate-500">
-                <div class="grid grid-cols-3 gap-4 mb-2">
-                    <div>Today: ${debug.today}</div>
-                    <div>Files: ${debug.totalFiles}</div>
-                    <div>Matches: ${debug.matches}</div>
-                </div>
-                <div class="max-h-24 overflow-y-auto border-t border-slate-800 mt-2 pt-2">
-                    ${debug.mismatchReasons.slice(0, 5).map(r => `<div>[MISMATCH] ${UI_SAFE.safeStr(r.date)} / ${UI_SAFE.safeStr(r.selected)}</div>`).join('')}
+            <div id="hotfix-debug-panel" class="hidden bg-slate-900/80 border border-slate-800 rounded p-3 font-mono text-[9px] text-slate-500 mb-4">
+                <div class="grid grid-cols-3 gap-4">
+                    <div>Ref: ${debug.today}</div>
+                    <div>Docs: ${debug.totalFiles}</div>
+                    <div>Hit: ${debug.matches}</div>
                 </div>
             </div>
 
             ${hasItems ? `
-                <!-- v2.3 HERO CARD UPGRADE -->
-                <div class="bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/30 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 text-8xl opacity-10 font-black italic select-none">TOP</div>
+                <!-- PHASE 2: HERO CARD VISUAL UPGRADE -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-xl shadow-2xl relative overflow-hidden flex">
+                    <div class="w-1.5 ${GET_COLORS.accent(hero.intensity)} flex-shrink-0"></div>
                     
-                    <!-- Meta Info First (PHASE 3) -->
-                    <div class="flex flex-wrap gap-2 mb-8 items-center">
-                         <div class="bg-blue-600 text-white text-[10px] font-black px-3 py-1.5 rounded shadow-lg uppercase tracking-widest mr-2">
-                            TIME: ${UI_SAFE.safeISOTime(hero.selected_at)}
+                    <div class="p-6 flex-1 relative">
+                        <div class="flex flex-wrap gap-2 mb-4 items-center">
+                            <span class="bg-blue-600 text-white text-[9px] font-black px-2 py-0.5 rounded shadow tracking-widest mr-2">
+                                ${UI_SAFE.safeISOTime(hero.selected_at)}
+                            </span>
+                            <span class="${GET_COLORS.why(hero.display_badge)} text-[9px] font-black px-2 py-0.5 rounded border uppercase">
+                                WHY: ${hero.display_badge}
+                            </span>
+                            <span class="${GET_COLORS.speak(hero.speakability)} text-[9px] font-black px-2 py-0.5 rounded border uppercase">
+                                ${hero.speakability}
+                            </span>
+                            <span class="bg-slate-800/50 border border-slate-700 text-[9px] font-black px-2 py-0.5 rounded uppercase ${GET_COLORS.intensity(hero.intensity)}">
+                                INT: ${hero.intensity}%
+                            </span>
                         </div>
-                        <div class="flex gap-1.5 px-3 py-1.5 bg-slate-900/80 rounded-full border border-slate-700/50">
-                            <span class="text-blue-400 text-[9px] font-black uppercase tracking-tighter">WHY_NOW: ${hero.display_badge}</span>
-                            <span class="text-slate-600 text-[9px]">|</span>
-                            <span class="${hero.intensity >= 80 ? 'text-red-400' : 'text-slate-400'} text-[9px] font-black uppercase">INTENSITY: ${hero.intensity}%</span>
-                            <span class="text-slate-600 text-[9px]">|</span>
-                            <span class="${hero.speakability === 'OK' ? 'text-green-400' : 'text-yellow-400'} text-[9px] font-black uppercase">${hero.speakability}</span>
-                        </div>
-                    </div>
 
-                    <h2 class="text-4xl font-black text-white mb-6 leading-[1.1] tracking-tight">
-                        ${hero.title}
-                    </h2>
-                    
-                    <p class="text-slate-300 text-lg leading-relaxed max-w-4xl font-medium mb-8">
-                        ${hero.why_now_summary}
-                    </p>
+                        <h2 class="text-3xl font-black text-white mb-3 leading-tight tracking-tight">
+                            ${hero.title}
+                        </h2>
+                        
+                        <p class="text-slate-400 text-base leading-snug max-w-4xl font-medium mb-6">
+                            ${hero.why_now_summary}
+                        </p>
 
-                    ${hero.incomplete ? `
-                        <div class="text-[9px] font-bold text-red-500/60 flex items-center gap-2 mb-6">
-                            <span>⚠ 데이터 일부 누락(렌더 정상, 원본 확인 필요)</span>
-                            <span class="bg-red-500/10 px-1 py-0.5 rounded">MISSING: ${hero.missingFields.join(',')}</span>
-                        </div>
-                    ` : ''}
+                        ${hero.incomplete ? `<div class="text-[9px] font-bold text-red-500/50 mb-4 italic">⚠ 데이터 누락됨</div>` : ''}
 
-                    <div class="pt-6 border-t border-blue-500/10 flex items-center justify-between">
-                         <div class="flex gap-1">
-                            ${hero.related_assets.map(a => `
-                                <span class="bg-slate-800/80 text-blue-400 text-[8px] font-black px-2 py-1 rounded border border-blue-500/10 uppercase tracking-tighter">
-                                    ${a}
-                                </span>
-                            `).join('')}
+                        <div class="pt-4 border-t border-slate-800/50 flex items-center justify-between">
+                            <div class="flex gap-1">
+                                ${hero.related_assets.map(a => `
+                                    <span class="text-[8px] font-black px-1.5 py-0.5 rounded border border-slate-800 text-slate-600 uppercase">
+                                        ${a}
+                                    </span>
+                                `).join('')}
+                            </div>
+                            <span class="text-[8px] font-black text-slate-700 uppercase tracking-tighter">OPERATOR_v2.4_ALPHA</span>
                         </div>
-                        <div class="text-[9px] font-black text-slate-600 uppercase tracking-tighter">OPERATOR_INSIGHT_v2.3</div>
                     </div>
                 </div>
 
-                <!-- LIST SECTION -->
-                <div class="space-y-4">
-                    <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] flex items-center gap-2">
-                        <span>결정론적 우선순위 리스트</span>
-                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                <!-- PHASE 3: LIST CARD COMPRESSION -->
+                <div class="space-y-1.5">
+                    <h3 class="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] px-1 mb-2">
+                        추가 항목 (${list.length})
                     </h3>
                     
-                    <div class="grid gap-3">
+                    <div class="grid gap-1.5">
                         ${list.map((item, idx) => renderCompactCard(item, idx)).join('')}
                     </div>
                 </div>
@@ -180,10 +227,10 @@ function renderTodayUI(container, items, debug, error = null) {
         document.getElementById('hotfix-debug-panel').classList.toggle('hidden');
     };
 
-    // Expand logic
     container.querySelectorAll('.expand-trigger').forEach(btn => {
         btn.onclick = (e) => {
-            const target = container.querySelector(`#detail-${btn.dataset.idx}`);
+            const idx = btn.dataset.idx;
+            const target = container.querySelector(`#detail-${idx}`);
             target.classList.toggle('hidden');
             const icon = btn.querySelector('.icon');
             if (icon) icon.innerText = target.classList.contains('hidden') ? '▼' : '▲';
@@ -194,42 +241,34 @@ function renderTodayUI(container, items, debug, error = null) {
 function renderCompactCard(item, idx) {
     const time = UI_SAFE.safeISOTime(item.selected_at);
     return `
-        <div class="bg-slate-900/40 border ${item.incomplete ? 'border-red-900/20' : 'border-slate-800'} hover:border-slate-700 rounded-xl transition-all">
-            <div class="p-4 flex items-center justify-between cursor-pointer expand-trigger" data-idx="${idx}">
-                <div class="flex items-center gap-4">
-                    <span class="text-[10px] font-black text-slate-600 w-10">${time}</span>
-                    <div class="flex flex-col">
-                        <h4 class="text-sm font-bold ${item.incomplete ? 'text-slate-400' : 'text-white'} leading-tight">
-                            ${item.title}
-                        </h4>
-                        <div class="flex gap-2 mt-1">
-                            <span class="text-[8px] font-black text-blue-500 uppercase tracking-tighter">${item.display_badge}</span>
-                            <span class="text-[8px] font-black text-slate-600 uppercase tracking-tighter">INT ${item.intensity}%</span>
-                            <span class="text-[8px] font-black ${item.speakability === 'OK' ? 'text-green-600' : 'text-yellow-600'} uppercase tracking-tighter">${item.speakability}</span>
-                        </div>
+        <div class="bg-slate-900/30 border ${item.incomplete ? 'border-red-900/10' : 'border-slate-800/60'} hover:border-slate-600 rounded-lg transition-all group">
+            <div class="px-3 py-2 flex items-center justify-between cursor-pointer expand-trigger" data-idx="${idx}">
+                <div class="flex items-center gap-3">
+                    <span class="text-[9px] font-black text-slate-600 w-8">${time}</span>
+                    <h4 class="text-[13px] font-bold ${item.incomplete ? 'text-slate-500' : 'text-slate-200'} truncate max-w-[300px] lg:max-w-md">
+                        ${item.title}
+                    </h4>
+                    <div class="flex gap-1.5 ml-2">
+                        <span class="${GET_COLORS.why(item.display_badge)} text-[8px] font-black px-1.5 rounded border-0 uppercase">${item.display_badge}</span>
+                        <span class="${GET_COLORS.speak(item.speakability)} text-[8px] font-black px-1.5 rounded border-0 uppercase">${item.speakability}</span>
+                        <span class="${GET_COLORS.intensity(item.intensity)} text-[8px] font-black px-1.5 rounded-0 uppercase tracking-tighter">${item.intensity}%</span>
                     </div>
                 </div>
-                <div class="icon text-[10px] text-slate-700">▼</div>
+                <div class="icon text-[9px] text-slate-800 group-hover:text-slate-600">▼</div>
             </div>
 
-            <div id="detail-${idx}" class="hidden p-4 pt-0 border-t border-slate-800/30 text-[11px] text-slate-400 space-y-4 fade-in">
-                <div class="pt-4 grid grid-cols-2 gap-8">
-                    <div class="space-y-2">
-                        <div class="text-[9px] font-black text-blue-500 uppercase tracking-widest">Why Now Analysis</div>
-                        <p class="leading-relaxed font-medium">${UI_SAFE.safeStr(item.why_now_summary)}</p>
+            <div id="detail-${idx}" class="hidden px-4 pb-3 border-t border-slate-800/20 bg-black/5 text-[10.5px] text-slate-500 space-y-3 fade-in">
+                <div class="pt-3 grid grid-cols-2 gap-6">
+                    <div>
+                        <div class="text-[8px] font-black text-blue-600 uppercase mb-1">Impact Summary</div>
+                        <p class="leading-relaxed">${item.why_now_summary}</p>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-[9px] font-black text-green-500 uppercase tracking-widest">Evidence Points</div>
-                        <ul class="space-y-1 list-disc pl-4 italic opacity-80">
-                            ${item.anomaly_points.map(pt => `<li>${UI_SAFE.safeStr(pt)}</li>`).join('')}
+                    <div>
+                        <div class="text-[8px] font-black text-green-600 uppercase mb-1">Risk Signals</div>
+                        <ul class="space-y-1 italic list-none">
+                            ${item.anomaly_points.map(pt => `<li class="flex gap-2"><span>•</span> ${UI_SAFE.safeStr(pt)}</li>`).join('')}
                         </ul>
                     </div>
-                </div>
-                <div class="flex justify-between items-center py-2 border-t border-slate-800/30">
-                    <div class="flex gap-1">
-                        ${item.related_assets.map(a => `<span class="bg-slate-800/50 px-2 py-0.5 rounded text-[8px] text-slate-500 border border-slate-800/50">${a}</span>`).join('')}
-                    </div>
-                    ${item.incomplete ? `<span class="text-[8px] font-black text-red-500 uppercase">⚠ INCOMPLETE</span>` : ''}
                 </div>
             </div>
         </div>
@@ -238,27 +277,13 @@ function renderCompactCard(item, idx) {
 
 function renderFallback(debug, error) {
     return `
-        <div class="p-20 border-2 border-dashed border-slate-800 rounded-3xl text-center space-y-6">
-            <div class="text-7xl opacity-20 grayscale">📭</div>
-            <div class="space-y-2">
-                <h2 class="text-2xl font-black text-white tracking-tighter uppercase">🔥 오늘은 선정된 주제가 없습니다.</h2>
-                <p class="text-slate-500 text-xs font-mono">NODE_DATE: ${debug.today} / SCAN_TIME: ${new Date().toLocaleTimeString('ko-KR')}</p>
+        <div class="p-16 border border-dashed border-slate-800 rounded-2xl text-center space-y-4">
+            <div class="text-4xl opacity-20">📭</div>
+            <div class="space-y-1">
+                <h2 class="text-xl font-black text-white tracking-widest uppercase">오늘 선정 없음</h2>
+                <p class="text-slate-600 text-[10px] font-mono">${debug.today} | SCAN: ${new Date().toLocaleTimeString('ko-KR')}</p>
             </div>
-            
-            <div class="flex justify-center gap-4 max-w-sm mx-auto">
-                <div class="bg-black/40 p-4 rounded-xl border border-slate-800 flex-1">
-                    <div class="text-[9px] font-black text-slate-600 uppercase mb-1">Scanned Files</div>
-                    <div class="text-2xl font-bold text-white">${debug.totalFiles}</div>
-                </div>
-                <div class="bg-black/40 p-4 rounded-xl border border-slate-800 flex-1">
-                    <div class="text-[9px] font-black text-slate-600 uppercase mb-1">Today Signals</div>
-                    <div class="text-2xl font-bold text-red-600">-</div>
-                </div>
-            </div>
-
-            <div class="text-[10px] font-mono text-slate-700 bg-slate-900 p-2 rounded inline-block border border-slate-800">
-                REASON_CODE: ${error ? UI_SAFE.safeStr(error) : "ZERO_MATCH_THRESHOLD"}
-            </div>
+            <div class="text-[10px] font-mono text-center text-slate-800">${error || "NO_MATCH"}</div>
         </div>
     `;
 }
