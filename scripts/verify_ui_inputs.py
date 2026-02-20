@@ -116,26 +116,34 @@ def verify_ui_inputs():
     if density_issues: missing.append("ui_density_fail")
     if unsafe_literals: missing.append("unsafe_js_templates")
 
-    # [PHASE 10] v2.7 Intelligence Layer Assertions
+    # [PHASE 11] v2.8 Trust Layer Assertions
     if js_dir.exists():
-        # Today View v2.7 Engine Status
+        # Today View v2.8 Trust Refinements
         today_js = js_dir / "operator_today.js"
         if today_js.exists():
             content = today_js.read_text()
-            if "calculateEngineStatus" not in content or "Engine:" not in content:
-                 print(f"❌ Missing v2.7 Engine Status Indicator in {today_js.name}")
-                 density_issues.append("missing_engine_status")
+            if "tooltip:" not in content or "7일 트렌드 비교" not in content:
+                 print(f"❌ Missing v2.8 Today Trust components (Tooltip/Comparison) in {today_js.name}")
+                 density_issues.append("missing_today_trust")
         
-        # History View v2.7 Intelligence
+        # History View v2.8 Trust Refinements
         history_js = js_dir / "operator_history.js"
         if history_js.exists():
             content = history_js.read_text()
-            if "calculateIntelligence" not in content or "최근 7일 요약" not in content or "<svg" not in content:
-                print(f"❌ Missing v2.7 Intelligence components in {history_js.name}")
-                density_issues.append("missing_intelligence_layer")
-            if "↑" not in content and "↓" not in content:
-                print(f"❌ Missing v2.7 Delta indicators in {history_js.name}")
-                density_issues.append("missing_deltas")
+            if "보완 필요 신호는 자동 선정" not in content:
+                print(f"❌ Missing v2.8 Incomplete Info Box in {history_js.name}")
+                density_issues.append("missing_incomplete_info")
+            if "<title" not in content or "<circle" not in content:
+                print(f"❌ Missing v2.8 Interactive Sparkline in {history_js.name}")
+                density_issues.append("missing_sparkline_interactivity")
+
+        # Utils v2.8 Trust Refinements
+        utils_js = js_dir / "utils.js"
+        if utils_js.exists():
+            content = utils_js.read_text()
+            if "제목 미정" not in content:
+                print(f"❌ Missing v2.8 [Unknown] Sanitization in {utils_js.name}")
+                density_issues.append("missing_unknown_sanitization")
 
     # Final Summary
     if missing or density_issues:

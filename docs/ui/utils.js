@@ -57,7 +57,10 @@ export const UI_SAFE = {
 export function normalizeDecision(raw) {
     if (!raw) return null;
 
-    const title = UI_SAFE.safeStr(raw.title, "[Untitled]");
+    let rawTitle = UI_SAFE.safeStr(raw.title, "[Untitled]");
+    const title = (rawTitle === "[Untitled]" || rawTitle.includes("[Unknown]"))
+        ? "제목 미정 (데이터 보완 필요)"
+        : rawTitle;
     const selected_at = UI_SAFE.safeStr(raw.selected_at, raw.timestamp || raw.created_at || "-");
     const date = UI_SAFE.safeStr(raw.date, UI_SAFE.deriveDateFromSelectedAt(selected_at) || "-");
     const why_now_type = UI_SAFE.safeStr(raw.why_now_type, raw.WHY_NOW_TRIGGER_TYPE || "-");
