@@ -1,0 +1,28 @@
+{
+  "date": "2026-01-27",
+  "market": "MIXED",
+  "candidates": [
+    {
+      "candidate_id": "regime_kospi_high",
+      "category_pool": "IndexRegime",
+      "topic_anchor": "코스피 4949 돌파: 새로운 시대",
+      "trigger_event": "KOSPI 4949.6pt 기록 (역사적 고점 부근)",
+      "observed_metrics": [
+        "KOSPI: 4949.6"
+      ],
+      "driver_candidates": [
+        "글로벌 유동성 공급",
+        "국내 기업 이익 성장"
+      ],
+      "public_misconception": "단순히 지수가 높아서 위험하다는 공포심",
+      "money_flow": "외국인 투자자의 우량 대형주 중심 패시브 자금 유입",
+      "comparison_baseline": "과거 10년 평균 코스피 지수 2300pt 대비 2배 이상 상승",
+      "scores": {
+        "hook_score": 10,
+        "number_score": 9,
+        "why_now_score": 10
+      },
+      "confidence": "HIGH"
+    }
+  ]
+}

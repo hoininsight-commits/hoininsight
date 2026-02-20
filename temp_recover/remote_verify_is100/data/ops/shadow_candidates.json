@@ -1,0 +1,35 @@
+{
+  "run_date": "2026-01-26",
+  "count": 0,
+  "candidates": [],
+  "aging_summary": {
+    "FRESH": 0,
+    "STALE": 0,
+    "DECAYING": 0,
+    "EXPIRED": 0
+  },
+  "global_watchlist": {
+    "NUMERIC_EVIDENCE_APPEAR": 0,
+    "SUPPORTING_ANOMALY_DETECTED": 0,
+    "POLICY_EVENT_TRIGGERED": 0,
+    "EARNINGS_RELEASE": 0,
+    "ONCHAIN_CONFIRMATION": 0,
+    "MACRO_THRESHOLD_CROSSED": 0
+  },
+  "signal_arrival": {
+    "arrived_signals": [
+      "NUMERIC_EVIDENCE_APPEAR"
+    ],
+    "signal_sources": {
+      "NUMERIC_EVIDENCE_APPEAR": [
+        "data/reports/2026/01/26/daily_snapshot.json"
+      ]
+    }
+  },
+  "readiness_summary": {
+    "READY_TO_PROMOTE": 0,
+    "NEARLY_READY": 0,
+    "IN_PROGRESS": 0,
+    "FAR": 0
+  }
+}

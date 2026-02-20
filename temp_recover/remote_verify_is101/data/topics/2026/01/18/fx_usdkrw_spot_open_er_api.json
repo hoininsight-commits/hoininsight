@@ -1,0 +1,34 @@
+[
+  {
+    "ts_utc": "2026-01-18T09:39:37Z",
+    "dataset_id": "fx_usdkrw_spot_open_er_api",
+    "topic_id": "fx_usdkrw_spot_open_er_api::roc_1d",
+    "title": "data/features/anomalies/2026/01/18/fx_usdkrw_spot_open_er_api.json daily move",
+    "score": 0.0,
+    "severity": "LOW",
+    "evidence": {
+      "roc_1d": 0.0,
+      "base_score": 0.0,
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/01/18/fx_usdkrw_spot_open_er_api.json"
+    },
+    "rationale": "Topic generated from anomaly signal (roc_1d) with regime multiplier (VIX/US10Y).",
+    "links": []
+  }
+]

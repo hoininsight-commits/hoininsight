@@ -1,0 +1,86 @@
+[
+  {
+    "video_id": "4AHZe1nj5Jo",
+    "title": "월가가 말하는 진짜 2026년 주가 급상승 구간 정체",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "뉴스",
+      "시장",
+      "수익",
+      "전망",
+      "종목"
+    ],
+    "real_topic": "실적",
+    "real_topic_reasoning": "KB Keyword Match: '실적' (mentioned 30 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '독점' found, L3 Keyword '불가능' found",
+    "why_now": {
+      "trigger_type": "Structural-driven",
+      "description": "당장 월요일부터 미국 은행들을 시작으로 본격적인 실적 시즌이 열리는데 이번 실적 시즌은 단순히 돈 많이 벌었냐 적게 벌었냐를 따지는게 아니야"
+    },
+    "core_assumptions": [
+      "제이자 모양으로 처음엔 투자 때문에 비용이 늘다가 어느 순간 생산성이 확 뛰면서 이익이 급등하는 구조를 말해",
+      "금리 때문에 오르는 주식은 다 같이 올라"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '실적'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 제이자 모양으로 처음엔 투자 때문에 비용이 늘다가 어느 순간 생산성이 확 뛰면서 이익이 급등하는 구조를 말해",
+    "llm_report": null
+  },
+  {
+    "video_id": "TLi_qV5ezWo",
+    "title": "환율 1468원.. 현시점 'IMF 수준' 되어버린 한국 환율 상황",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "자산",
+      "뉴스",
+      "분석",
+      "시장",
+      "매도"
+    ],
+    "real_topic": "한국",
+    "real_topic_reasoning": "KB Keyword Match: '한국' (mentioned 6 times)",
+    "anomaly_level": "L2",
+    "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '구조' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "겨울철 에너지 수입 결제 때문에 달러 수요가 급증하고 연말에 [음악] 몰렸던 수출은 줄어드는 반면 수입은 늘어나",
+      "한년이 환율 방어로 달러를 쓰는 동안 국민연금은 해외 투자 때문에 하는 근고에서 달러를 [음악] 빼가고 있다는 거야"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "엔진은 '한국'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 핵심 가정: 겨울철 에너지 수입 결제 때문에 달러 수요가 급증하고 연말에 [음악] 몰렸던 수출은 줄어드는 반면 수입은 늘어나",
+    "llm_report": null
+  },
+  {
+    "video_id": "mWF81cIvMtY",
+    "title": "트럼프vs파월, 나스닥 역대급 주가 변동 올거라는 이유",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "뉴스",
+      "분석",
+      "시장",
+      "매수",
+      "리스크"
+    ],
+    "real_topic": "시장",
+    "real_topic_reasoning": "KB Keyword Match: '시장' (mentioned 6 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '강제' found, L3 Keyword '불가능' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "고작 건물 공사비 문제 때문에 세계 경제 대통령인 연준 의장을 범죄자 취급하면서 소환한다",
+      "연준이 정치 싸움에 휘둘리면 미국 달러 믿을 수 있나?이 공포 때문에 금값은 사상 최고치를 뚫었어"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '시장'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 고작 건물 공사비 문제 때문에 세계 경제 대통령인 연준 의장을 범죄자 취급하면서 소환한다",
+    "llm_report": null
+  }
+]

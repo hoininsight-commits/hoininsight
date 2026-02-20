@@ -97,13 +97,14 @@ def publish_assets(project_root: Path):
             return
         
         dest.mkdir(parents=True, exist_ok=True)
-        for item in src.iterdir():
-            if item.is_dir():
-                # Recursive call
-                sync_dir(item, dest / item.name, transform=transform)
-                continue
-
+        # Use rglob for recursive discovery (Phase 13.1 Fix)
+        for item in src.rglob("*"):
             if item.is_file():
+                # Determine target path relative to src
+                rel_path = item.relative_to(src)
+                target_path = dest / rel_path
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+
                 # Read-Transform-Write flow for decision files
                 if transform and item.suffix == ".json" and "decision" in str(src):
                     try:
@@ -123,15 +124,15 @@ def publish_assets(project_root: Path):
                         else:
                             new_data = data
 
-                        with open(dest / item.name, "w", encoding="utf-8") as f:
+                        with open(target_path, "w", encoding="utf-8") as f:
                             json.dump(new_data, f, indent=2, ensure_ascii=False)
-                        print(f"[Publish] Transformed & Copied {item.name}")
+                        print(f"[Publish] Transformed & Copied {rel_path}")
                         continue
                     except Exception as e:
                         print(f"[Publish] Transform failed for {item.name}: {e}. Falling back to raw copy.")
 
-                shutil.copy2(item, dest / item.name)
-                print(f"[Publish] Copied {item.name} to {dest}")
+                shutil.copy2(item, target_path)
+                print(f"[Publish] Copied {rel_path} to {dest}")
 
     print("\n[Publish] Synchronizing UI assets...")
     sync_dir(src_ui, dest_ui, transform=False)

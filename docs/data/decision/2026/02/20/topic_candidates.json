@@ -1,0 +1,257 @@
+{
+  "generated_at": "2026-02-20T15:47:15.424249",
+  "candidate_count": 10,
+  "alive_count": 10,
+  "candidates": [
+    {
+      "candidate_id": "cand_struct_dart_disposal_20260220",
+      "dataset_id": "struct_dart_disposal",
+      "category": "STRUCTURAL",
+      "created_at": "2026-02-20T15:47:15.424187",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "struct_dart_cb_bw"
+        ],
+        "inter_category_axes": [
+          "OTHER",
+          "INFLATION",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw']."
+    },
+    {
+      "candidate_id": "cand_risk_vix_fred_20260220",
+      "dataset_id": "risk_vix_fred",
+      "category": "OTHER",
+      "created_at": "2026-02-20T15:47:15.424210",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "index_kospi_stooq"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "INFLATION",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_kospi_stooq']."
+    },
+    {
+      "candidate_id": "cand_inflation_kor_cpi_ecos_20260220",
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "category": "INFLATION",
+      "created_at": "2026-02-20T15:47:15.424217",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "inflation_cpi_fred",
+          "inflation_pce_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_cpi_fred', 'inflation_pce_fred']."
+    },
+    {
+      "candidate_id": "cand_rates_fed_funds_fred_20260220",
+      "dataset_id": "rates_fed_funds_fred",
+      "category": "RATES_YIELD",
+      "created_at": "2026-02-20T15:47:15.424222",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "rates_us02y_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "INFLATION",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [rates_fed_funds_fred] with corroborating signals in ['rates_us02y_fred']."
+    },
+    {
+      "candidate_id": "cand_index_kospi_stooq_20260220",
+      "dataset_id": "index_kospi_stooq",
+      "category": "OTHER",
+      "created_at": "2026-02-20T15:47:15.424226",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "risk_vix_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "INFLATION",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['risk_vix_fred']."
+    },
+    {
+      "candidate_id": "cand_rates_us02y_fred_20260220",
+      "dataset_id": "rates_us02y_fred",
+      "category": "RATES_YIELD",
+      "created_at": "2026-02-20T15:47:15.424230",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "rates_fed_funds_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "INFLATION",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [rates_us02y_fred] with corroborating signals in ['rates_fed_funds_fred']."
+    },
+    {
+      "candidate_id": "cand_struct_dart_cb_bw_20260220",
+      "dataset_id": "struct_dart_cb_bw",
+      "category": "STRUCTURAL",
+      "created_at": "2026-02-20T15:47:15.424234",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "struct_dart_disposal"
+        ],
+        "inter_category_axes": [
+          "OTHER",
+          "INFLATION",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal']."
+    },
+    {
+      "candidate_id": "cand_inflation_cpi_fred_20260220",
+      "dataset_id": "inflation_cpi_fred",
+      "category": "INFLATION",
+      "created_at": "2026-02-20T15:47:15.424237",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "inflation_kor_cpi_ecos",
+          "inflation_pce_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [inflation_cpi_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_pce_fred']."
+    },
+    {
+      "candidate_id": "cand_inflation_pce_fred_20260220",
+      "dataset_id": "inflation_pce_fred",
+      "category": "INFLATION",
+      "created_at": "2026-02-20T15:47:15.424241",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "inflation_kor_cpi_ecos",
+          "inflation_cpi_fred"
+        ],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "RATES_YIELD",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [inflation_pce_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred']."
+    },
+    {
+      "candidate_id": "cand_liquidity_m2_fred_20260220",
+      "dataset_id": "liquidity_m2_fred",
+      "category": "LIQUIDITY",
+      "created_at": "2026-02-20T15:47:15.424244",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "OTHER",
+          "INFLATION",
+          "RATES_YIELD"
+        ]
+      },
+      "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'OTHER', 'INFLATION', 'RATES_YIELD']."
+    }
+  ],
+  "title": "[Unknown] Signal Detected",
+  "selected_at": "2026-01-01T09:00:00",
+  "date": "2026-01-01",
+  "intensity": 50,
+  "speakability": "Review Required",
+  "why_now_summary": "No narrative available.",
+  "anomaly_points": [],
+  "related_assets": [],
+  "content_hook": ""
+}

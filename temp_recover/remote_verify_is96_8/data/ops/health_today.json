@@ -1,0 +1,22 @@
+{
+  "run_date": "2026-01-24",
+  "checked_at": "2026-01-25T18:35:32.664083",
+  "status": "FAIL",
+  "metrics": {
+    "events_count": 0,
+    "anomalies_count": 0,
+    "gate_candidates_count": 0,
+    "scripts_md_count": 0,
+    "script_quality_json_count": 0,
+    "topics_count": {
+      "READY": 0,
+      "HOLD": 0,
+      "DROP": 0
+    }
+  },
+  "decision_dashboard_exists": false,
+  "missing_files": [
+    "daily_lock.json"
+  ],
+  "schema_errors": []
+}

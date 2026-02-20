@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "READY": 1,
+    "HOLD": 0,
+    "DROP": 0
+  },
+  "cards": [
+    {
+      "topic_id": "gate_9e6036fc6a",
+      "title": "정책/이벤트 발표 이후 시장 반응이 왜 반대였나",
+      "status": "READY",
+      "reason": "승인됨 - 즉시 제작 가능",
+      "evidence_count": 2,
+      "raw_score": 0.0,
+      "flags": [],
+      "speak_pack": {
+        "one_liner": "왜 지금: 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다. 신호가 확인되어 '정책/이벤트 발표 이후 시장 반응이 왜 반대였나'가 설명 가능한 상태.",
+        "numbers": [
+          "US 10Y Rate: Active",
+          "Lower bound: 5.25"
+        ],
+        "watch_next": [
+          "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다. 여부",
+          "관련 지표 추세 지속성"
+        ],
+        "risk_note": "Risk: 단기 변동성 확대 구간, 추세 확인 필요."
+      },
+      "evidence_refs": [
+        {
+          "label": "US 10Y Rate",
+          "value": "Active",
+          "context": "Extracted from topic numbers",
+          "source": {
+            "publisher": "unknown",
+            "url": "unknown"
+          }
+        },
+        {
+          "label": "Lower bound",
+          "value": "5.25",
+          "context": "Extracted from topic numbers",
+          "source": {
+            "publisher": "unknown",
+            "url": "unknown"
+          }
+        }
+      ],
+      "tags": [],
+      "why_today": "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다. 신호가 확인되어 '정책/이벤트 발표 이후 시장 반응이 왜 반대였나'가 설명 가능한 상태.",
+      "bridge_eligible": false
+    }
+  ],
+  "no_speak_analysis": [],
+  "flag_summary": {}
+}

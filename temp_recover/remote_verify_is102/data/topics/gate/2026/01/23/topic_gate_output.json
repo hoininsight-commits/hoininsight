@@ -1,0 +1,22 @@
+{
+  "schema_version": "topic_gate_output_v1",
+  "as_of_date": "2026-01-23",
+  "topic_id": "gate_8cdce3bbbe",
+  "title": "실적은 좋은데 주가는 왜 빠졌나",
+  "question": "왜 실적이 좋았는데도 주가가 하락했나?",
+  "why_people_confused": "좋은 실적=상승이라는 상식과, 실제 주가 하락이 충돌한다.",
+  "key_reasons": [
+    "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.",
+    "자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다."
+  ],
+  "numbers": [],
+  "risk_one": "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.",
+  "confidence": "LOW",
+  "handoff_to_structural": false,
+  "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
+  "source_candidates": [
+    "cand_56870bc344",
+    "cand_8bb4eeca68",
+    "cand_9f1f4f0b5a"
+  ]
+}

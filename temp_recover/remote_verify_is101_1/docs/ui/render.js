@@ -1,0 +1,198 @@
+document.addEventListener('DOMContentLoaded', async () => {
+    const DATA_PATH = '../data/decision/'; // Assuming UI is in /ui/ and data in /data/decision/
+    const MOCK_FALLBACK = true;
+
+    async function loadJson(file, isCritical = false) {
+        try {
+            const path = file === 'build_meta.json' ? '../data/' : DATA_PATH;
+            const res = await fetch(path + file);
+            if (!res.ok) throw new Error(`Status ${res.status}`);
+            const data = await res.json();
+
+            // Adapter: Auto-convert list to dict if needed
+            if (Array.isArray(data)) {
+                const dict = {};
+                data.forEach(item => {
+                    const id = item.interpretation_id || item.topic_id || item.id;
+                    if (id) dict[id] = item;
+                });
+                return dict;
+            }
+            return data;
+        } catch (e) {
+            console.warn(`[DATA] Failed to load ${file}: ${e.message}`);
+            if (isCritical) {
+                showDiagnostic(file, e.message);
+            }
+            return {}; // Return empty dict instead of null to prevent "cannot read property of null"
+        }
+    }
+
+    function showDiagnostic(file, error) {
+        let diag = document.getElementById('diag-banner');
+        if (!diag) {
+            diag = document.createElement('div');
+            diag.id = 'diag-banner';
+            diag.className = 'diag-banner';
+            document.getElementById('app').prepend(diag);
+        }
+        const msg = document.createElement('div');
+        msg.innerHTML = `⚠️ <b>데이터 로드 실패:</b> ${file} (${error})<br>
+                        &nbsp;&nbsp;👉 해결: GitHub Actions → <code>full_pipeline</code> 실행 및 <code>docs/data/decision</code> 배포 확인.`;
+        diag.appendChild(msg);
+    }
+
+    // 0. Load Build Meta
+    const buildMeta = await loadJson('build_meta.json');
+    if (buildMeta) {
+        const info = document.createElement('div');
+        info.style.fontSize = '0.75rem';
+        info.style.color = 'var(--text-secondary)';
+        info.style.marginBottom = '10px';
+        info.innerText = `Build: ${buildMeta.date_kst || buildMeta.timestamp} | Commit: ${buildMeta.commit.substring(0, 7)}`;
+        document.getElementById('app').prepend(info);
+    }
+
+    // 1. Load All Data
+    const [unitsDict, briefingDict, heroSummary, decision, skeleton, mentionables, evidence, packs] = await Promise.all([
+        loadJson('interpretation_units.json', true),
+        loadJson('natural_language_briefing.json'),
+        loadJson('../ui/hero_summary.json'), // Prefer specialized summary IS-101-1
+        loadJson('speakability_decision.json'),
+        loadJson('narrative_skeleton.json'),
+        loadJson('mentionables.json'),
+        loadJson('evidence_citations.json'),
+        loadJson('content_pack.json')
+    ]);
+
+    const unitKeys = Object.keys(unitsDict);
+    if (unitKeys.length === 0) {
+        document.getElementById('issue-hook').innerText = "오늘은 확정된 구조적 판단이 없습니다.";
+        return;
+    }
+
+    // Pick Top-1 Unit
+    const unitId = unitKeys[0];
+    const topUnit = unitsDict[unitId];
+    const briefing = briefingDict ? briefingDict[unitId] : null;
+
+    // 2. Render Header & Global Status
+    document.getElementById('current-date').innerText = topUnit.as_of_date || new Date().toISOString().split('T')[0];
+    const globalStatus = document.getElementById('global-status-badge');
+    const flag = heroSummary?.status || decision[unitId]?.speakability_flag || 'HOLD';
+
+    globalStatus.innerText = flag === 'READY' ? '🟢 READY' : (flag === 'HYPOTHESIS' ? '🟡 HYPOTHESIS' : '🔴 HOLD');
+    globalStatus.className = `badge ${flag.toLowerCase()}`;
+
+    // 3. Render [BLOCK 0] Hero Sentence
+    if (heroSummary) {
+        document.getElementById('issue-hook').innerHTML = `
+            <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 10px;">${heroSummary.headline}</div>
+            <div style="font-size: 1.1rem; border-left: 3px solid var(--accent-blue); padding-left: 15px; margin: 15px 0;">${heroSummary.one_liner}</div>
+        `;
+    } else if (briefing) {
+        document.getElementById('issue-hook').innerHTML = `
+            <div>${briefing.hero.sentence}</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">${briefing.hero.metric}</div>
+        `;
+    }
+
+    // 4. Render [BLOCK 1] Speakability
+    if (briefing) {
+        document.getElementById('speakability-badge').innerText = flag;
+        document.getElementById('speakability-badge').className = `badge ${flag.toLowerCase()}`;
+
+        const bDec = briefing.decision;
+        document.getElementById('operator-guide').innerHTML = `
+            <div style="font-weight: 800; margin-bottom: 12px; font-size: 1.1rem;">${bDec.title}</div>
+            <div style="font-size: 0.95rem; line-height: 1.6;">
+                ${bDec.points.map(p => `<div>${p}</div>`).join('')}
+            </div>
+        `;
+    }
+
+    // 5. Render [BLOCK 2] Why Now (Logic Chain)
+    if (briefing) {
+        const bWhy = briefing.why_now;
+        document.getElementById('logic-steps').innerHTML = `
+            <div style="margin-top: 10px;">
+                ${bWhy.items.map((item, idx) => `
+                    <div style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                        <span style="font-weight: 800; color: var(--accent-blue); margin-right: 10px;">${idx + 1}️⃣</span>
+                        <span style="font-size: 0.95rem;">${item}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 6. Render [BLOCK 3] Perspectives (Mentionables)
+    if (briefing) {
+        const bPersp = briefing.perspectives;
+        document.getElementById('mention-cards').innerHTML = `
+            <div class="card-large" style="width: 100%; box-sizing: border-box; background: var(--card-bg);">
+                <div style="font-weight: 800; margin-bottom: 15px; color: var(--status-ready);">${bPersp.title}</div>
+                ${bPersp.items.map(item => `
+                    <div style="margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: center;">
+                        <span style="color: var(--accent-blue); margin-right: 8px;">•</span>
+                        <span>${item}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 7. Render [BLOCK 4] Trust (Evidence List)
+    if (heroSummary && heroSummary.numbers_with_evidence) {
+        document.getElementById('evidence-list').innerHTML = `
+            <div class="card" style="width: 100%; box-sizing: border-box; border-left: 4px solid var(--status-ready);">
+                <div style="font-weight: 800; margin-bottom: 15px;">📊 핵심 수치 및 근거</div>
+                ${heroSummary.numbers_with_evidence.map(item => `
+                    <div style="margin-bottom: 8px; font-size: 0.95rem;">
+                        ${item}
+                    </div>
+                `).join('')}
+                <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    🚨 리스크: ${heroSummary.risk_note}
+                </div>
+            </div>
+        `;
+    } else if (briefing) {
+        const bTrust = briefing.trust;
+        document.getElementById('evidence-list').innerHTML = `
+            <div class="card" style="width: 100%; box-sizing: border-box; border-left: 4px solid var(--status-ready);">
+                <div style="font-weight: 800; margin-bottom: 15px;">${bTrust.title}</div>
+                ${bTrust.items.map(item => `
+                    <div style="margin-bottom: 8px; font-size: 0.9rem;">
+                        ${item}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 8. Render [BLOCK 5] Checklist
+    if (briefing) {
+        const bCheck = briefing.checklist;
+        document.getElementById('checklist-items').innerHTML = bCheck.items.map(item => `
+            <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                <span style="margin-right: 10px;">☑</span>
+                <span>${item}</span>
+            </li>
+        `).join('');
+    }
+
+    // 9. Content Packs (Existing logic but simplified)
+    const unitPacks = packs ? (packs[unitId] || packs[topUnit.topic_id]) : null;
+    if (unitPacks) {
+        const pList = unitPacks.packs || [unitPacks];
+        document.getElementById('pack-container').innerHTML = pList.map(p => `
+            <div class="pack-card">
+                <div>
+                    <span class="tag-badge">${p.format}</span>
+                    <span style="font-weight: bold;">${p.title}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+});

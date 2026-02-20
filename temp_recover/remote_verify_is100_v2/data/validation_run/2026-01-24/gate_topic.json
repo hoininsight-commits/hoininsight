@@ -1,0 +1,36 @@
+{
+  "schema_version": "topic_gate_output_v1",
+  "as_of_date": "2026-01-24",
+  "topic_id": "gate_9e6036fc6a",
+  "title": "정책/이벤트 발표 이후 시장 반응이 왜 반대였나",
+  "question": "왜 FOMC Maintains Interest Rates 규제가 당장의 시장 지배력보다 장기 공급망 재편에 더 결정적인가?",
+  "why_people_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
+  "key_reasons": [
+    "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.",
+    "자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.",
+    "정책은 즉시 실적이 아니라 '기대 경로'를 바꿔 반응이 지연/왜곡될 수 있다."
+  ],
+  "numbers": [
+    {
+      "label": "US 10Y Rate",
+      "value": "Active",
+      "unit": ""
+    },
+    {
+      "label": "Lower bound",
+      "value": "5.25",
+      "unit": "%"
+    }
+  ],
+  "risk_one": "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.",
+  "confidence": "MEDIUM",
+  "handoff_to_structural": false,
+  "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
+  "source_candidates": [
+    "cand_ev_c1a52164b5",
+    "cand_ev_6821990943",
+    "cand_ev_68da655090",
+    "cand_ev_48710d0707",
+    "cand_ev_757ea908ee"
+  ]
+}

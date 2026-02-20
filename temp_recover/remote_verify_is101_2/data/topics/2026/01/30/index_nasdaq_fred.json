@@ -1,0 +1,41 @@
+[
+  {
+    "ts_utc": "2026-01-30T23:51:40Z",
+    "dataset_id": "index_nasdaq_fred",
+    "topic_id": "index_nasdaq_fred::z_score_model_v1",
+    "title": "data/features/anomalies/2026/01/30/index_nasdaq_fred.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
+    "evidence": {
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 0.57,
+        "percentile": 98.0,
+        "value": 25884.3,
+        "rolling_mean_20d": 24199.858,
+        "reasoning": "Percentile 98.0% (Extreme)"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/01/30/index_nasdaq_fred.json"
+    },
+    "rationale": "[L2] Percentile 98.0% (Extreme) (Regime x1.0)",
+    "links": []
+  }
+]

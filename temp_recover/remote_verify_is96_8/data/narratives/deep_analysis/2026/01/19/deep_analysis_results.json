@@ -1,0 +1,139 @@
+[
+  {
+    "video_id": "mock_supercycle_01",
+    "title": "[긴급진단] 전력 인프라, 지금이 마지막 탑승 기회인가? (feat. 변압기 슈퍼사이클)",
+    "analysis_date": "2026-01-19",
+    "surface_topics": [
+      "전망",
+      "주식"
+    ],
+    "real_topic": "전력",
+    "real_topic_reasoning": "Heuristic Extraction: High-frequency term '전력'",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '병목' found, L3 Keyword '강제' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "주가가 많이 올랐다고 하지만, 실적 성장 속도가 더 빠르기 때문에 여전히 저평가 국면일 수 있습니다"
+    ],
+    "evolution_proposals": [
+      {
+        "id": "EVO-LLM-20260119-78095",
+        "video_id": "mock_supercycle_01",
+        "category": "DATA_ADD",
+        "detected_pattern": "LLM Engine Evolution Suggestion",
+        "condition": "**The Lead-Time/Order Book Fixation Ratio (LT/OFR)**",
+        "meaning": "This sensor directly measures the duration (T) capital is guaranteed to remain fixed. A 48-month lead time means the capital flow associated with that unit is temporally locked, making the revenue stream highly predictable and insulating the sector from short-term macro economic contraction risk. It proves policy execution is overriding macro uncertainty.",
+        "status": "PROPOSED"
+      }
+    ],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '전력'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 주가가 많이 올랐다고 하지만, 실적 성장 속도가 더 빠르기 때문에 여전히 저평가 국면일 수 있습니다",
+    "llm_report": "# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis\n\nThe analysis confirms the transition of the Power Infrastructure sector from a cyclical trade to a fixed capital infrastructure bottleneck. The primary mechanism is the collision between mandated CAPEX execution and rigid global supply capacity.\n\n## 1️⃣ [Surface vs Deep] : The Core Misunderstanding\n> The crowd is pricing a 'Supercycle' based on volume expectation; the data shows capital fixation based on temporal lock-in and mandated spend.\n\n* **❌ Surface View (The Crowd)**: Transformer stocks are rallying due to the ephemeral \"AI theme\" and general grid upgrade expectations. They believe this is a classic cyclical boom that will eventually decelerate as supply catches up.\n* **✅ HOIN Deep View (The Logic)**: US utility CAPEX (Duke, Exelon) tied to IRA subsidies translates into non-discretionary, mandatory budget execution. The 36-48 month lead time for high-voltage units is proof that revenue is fixed and secured for four fiscal years, irrespective of short-term economic volatility. This is infrastructure lock-in, not market hype.\n\n## 2️⃣ [Anomaly Detection] : Why Now?\n\n* **Trigger Event**: The confluence of utility CAPEX upward revisions (10-year maximums) and the immediate, physical constraint imposed by AI data center demand (Virginia power approval delays). This shifts power demand from theoretical load growth to an immediate, hard bottleneck for the next industrial revolution.\n* **State Shift**: The market state has transitioned from **'Policy Hype'** (IRA legislation announced) to **'Budget Execution Necessity'**. Capital expenditure is now fixed in steel and copper for the next 48 months, guaranteeing volume and providing extreme pricing power (ASP).\n\n## 3️⃣ [Critical Logic Chain]\n\n1. **Policy Mandate Fixation**: US utility CAPEX is being force-executed, driven by long-term IRA incentives and grid stability requirements. This funding is structural; failure to spend risks regulatory penalty or forfeiture of subsidies.\n2. **Inelastic Supply Collision**: Transformer lead times (up to 48 months) establish an undeniable supply constraint. This low elasticity guarantees pricing power for incumbents capable of quality high-voltage production. **Volume + ASP are structurally supported.**\n3. **AI Demand as Non-Negotiable Load**: The AI/Data Center industry's primary bottleneck has shifted from silicon supply to power grid capacity. Since computational infrastructure cannot be activated without power, CAPEX for grid expansion becomes the prerequisite spend, making the demand side mandatory and accelerated.\n\n## 4️⃣ [Data Verification Needs]\nWe need specialized sensors focused on capital commitment and supply chain rigidity, moving beyond standard financial reporting.\n\n* **[PROPOSAL] Utility CAPEX Execution Index (UCX)**: Track the quarterly percentage of stated CAPEX plans actually spent by the top 5 US utilities (Duke, Exelon, NextEra) specifically on transmission and distribution modernization (as opposed to generation).\n* **[PROPOSAL] Global Transformer Lead Time Index (GTTLI)**: Establish a real-time data feed tracking quoted lead times for high-voltage (HV, 230kV+) and ultra-high-voltage (UHV) power transformers from key global suppliers. The persistence of 36+ months confirms structural lock-in.\n* **[PROPOSAL] Grid Bottleneck Index (GBI)**: Monitor permit application approval rates and power allocation wait times in major data center aggregation zones (Virginia, Arizona, Texas). Declining approval rates confirm the grid's role as the primary choke point, forcing essential infrastructure spend.\n\n## 5️⃣ [Cold Conclusion]\n\nCapital is fixed for the next four years inside specific high-voltage component manufacturers. Rising Volume, maximized ASP leverage, and long-term locked-in Relative Strength are confirmed. This is not a cycle; it is policy-mandated infrastructure refitting where supply cannot meet necessary demand, forcing premium capture.\n\n## 6️⃣ [Engine Evolution Suggestion]\nThe Engine must prioritize tracking temporal fixed capital over simple financial ratios.\n\n* **Proposed Sensor**: **The Lead-Time/Order Book Fixation Ratio (LT/OFR)**\n* **Reason**: This sensor directly measures the duration (T) capital is guaranteed to remain fixed. A 48-month lead time means the capital flow associated with that unit is temporally locked, making the revenue stream highly predictable and insulating the sector from short-term macro economic contraction risk. It proves policy execution is overriding macro uncertainty."
+  },
+  {
+    "video_id": "c19nIAA0Y7Y",
+    "title": "지금, 투자자들이 꼭 알아야 할 2026년 국내 정책 3가지",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "분석",
+      "시장",
+      "리스크",
+      "종목",
+      "경제"
+    ],
+    "real_topic": "정부",
+    "real_topic_reasoning": "KB Keyword Match: '정부' (mentioned 5 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L3 Keyword '강제' found, L3 Keyword '필수' found",
+    "why_now": {
+      "trigger_type": "Structural-driven",
+      "description": "이번에 새롭게 시작되는 건데 이거 제대로 알아야 투자할 때 손해 안 보고 수혜 섹터도 미리 알 수 있다는데 우리 같은 일반 개미들만 모르고 있었어"
+    },
+    "core_assumptions": [],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '정부'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 이번에 새롭게 시작되는 건데 이거 제대로 알아야 투자할 때 손해 안 보고 수혜 섹터도 미리 알 수 있다는데 우리 같은 일반 개미들만 모르고 있었어",
+    "llm_report": null
+  },
+  {
+    "video_id": "qkpA_c-Nt7M",
+    "title": "미국이 현시점 유럽과 '관세전쟁' 시작한 진짜 이유",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "자산",
+      "뉴스",
+      "분석",
+      "시장",
+      "리스크"
+    ],
+    "real_topic": "미국",
+    "real_topic_reasoning": "KB Keyword Match: '미국' (mentioned 13 times)",
+    "anomaly_level": "L2",
+    "anomaly_reasoning": "Supply/Demand imbalance signals. L3 Keyword '독점' found",
+    "why_now": {
+      "trigger_type": "Structural-driven",
+      "description": "게다가 오늘 미장은 마틴 루터 킹데이로 휴장이지만 내일부터 넷플릭스 존슨 앤 존슨 같은 대형주들 실적 발표가 쏟아져"
+    },
+    "core_assumptions": [],
+    "evolution_proposals": [],
+    "content_nature": "Lagging/Result",
+    "engine_conclusion": "엔진은 '미국'와(과) 관련하여 L2 수준의 이상징후를 감지했습니다. 게다가 오늘 미장은 마틴 루터 킹데이로 휴장이지만 내일부터 넷플릭스 존슨 앤 존슨 같은 대형주들 실적 발표가 쏟아져",
+    "llm_report": null
+  },
+  {
+    "video_id": "zM3XDwvwSlw",
+    "title": "상위 1% 부자들이 쓸어담았다는 의외의 종목 5개",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "분석",
+      "시장",
+      "종목",
+      "주식",
+      "투자"
+    ],
+    "real_topic": "시장",
+    "real_topic_reasoning": "KB Keyword Match: '시장' (mentioned 6 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '필수' found, L3 Keyword '불가능' found, L3 Keyword '대체 불가' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '시장'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. No explicit immediate trigger found, likely a trend analysis.",
+    "llm_report": "=== HOIN ENGINE CANONICAL ANALYSIS ===\n\n### ① DATA AXIS IDENTIFICATION (DATA_COLLECTION_MASTER_v1.8 기준)\n\n활성화된 데이터 축은 다음과 같다.\n\n1.  **⑫ 섹터·역할 단위 자본 유입**: 전선(인프라) 섹터의 상대적 강세 및 AI 생태계 완성을 위한 필수 역할군 포착.\n2.  **⑭ 인프라 운영 한계·병목**: 데이터센터 증가와 연계된 전력 공급망 확충 필요성 언급 (AI 인프라 전력 Lock-in 지표 연관).\n3.  **⑮ 구조적 자본·지배구조 변화 사전 감지**: 현대차 우선주 선호(효율적 자본 배분/구조 할인 해소), 바이오 기업 대규모 매수(기술 수출/현금 흐름 담보) 등 실적 무관한 구조적 재평가 흐름 감지.\n4.  **③ 주식시장 (거래대금)**: 특정 바이오 기업에 400억 원 규모의 대규모 매수가 집중되어 실자금 동반 여부 축이 활성화됨 (거래대금 이례).\n\n### ② BASELINE SIGNAL MATCHING (BASELINE_SIGNALS_v1.0과 매칭)\n\n감지된 상태 변화(State Shift) 관련 기준 정보는 다음과 같다.\n\n*   **D1. 기술 수요의 확정성**: AI 반도체 성장(핵심)이 전력 인프라(필수 조건)로 확장되어 수요가 확정된 단계. 희귀 질환 치료제(매지오니아) 임상 3상 성공 평가를 통한 기술 가치 확정.\n*   **D2. 공급 병목 위치**: AI 성장의 병목이 칩/장비에서 **전력 공급망(전선/인프라)**으로 이동하고 있음을 인지.\n*   **H. 자본 Lock-in 기준**: 역할군(전력 인프라) 단위 거래대금 집중 및 바이오 기술력 기반 현금 흐름에 자본이 고정됨.\n*   **G. 구조 변화 선행 기준**: 현대차 우선주 매수 선호는 효율성(더 싸게 사고 더 많이 돌려받는 구조)을 중시하는 자본 배분 구조 변화에 대한 선행 판단.\n\n### ③ ANOMALY LOGIC TRIGGER (ANOMALY_DETECTION_LOGIC_v1.11 중 2개 이상 동시 충족)\n\n다음의 이상징후 로직이 동시 충족되었다.\n\n1.  **AI 인프라 전력 Lock-in** (D. AI·기술): AI 확장에 필수적인 전력 인프라(전선)에 대한 투자가 장기적 관점에서 필연적인 Lock-in 구조로 인식되고 있음.\n2.  **J. 거래대금 이례(참여 변화)** (4-3. Equity): 특정 바이오 기업(ABL 바이오)에 일주일간 400억 원이 넘는 대규모 매수가 집중되어 위험 선호의 경로가 구체적인 기술력 담보 자산으로 전환됨.\n3.  **S-L2 Structural Anticipation** (I. Structural–Capital Branch): 실적이나 단기 등락과 무관하게 (주가 하락/조정기에도 불구하고) 희소성(경쟁자 없는 치료제) 또는 기술력(표적 치료제)이라는 미래 구조적 가치에 대한 선행적 자본 배팅이 발생함.\n\n### ④ ANOMALY LEVEL & BRANCH\n\n*   **ANOMALY LEVEL**: L4 (주제 확정 후보 / Lock-in)\n*   **BRANCH**: **Hybrid (Structural + Capital)**\n\n*   *판단 근거*: 시장의 단기적 수급이나 주가 조정기에 역행하여 (바이오/기술 부문), 또는 낮은 효율성을 해소하기 위해 (우선주/지배구조 관련), 대규모 자금이 특정 역할군(전력 인프라)과 구조적 가치(기술 희소성)에 고정(Lock-in)되는 현상이 복합적으로 관찰된다. 이는 자본 경로가 확정된 국면을 의미한다.\n\n### ⑤ WHY_NOW EXPLANATION\n\n**WHY_NOW_TRIGGER_TYPE: Hybrid (Structural + Capital)**\n\n지금 이 시점이 아니면 안 되는 이유는 자본이 **단기 변동성을 회피**하고 **구조적 고정(Lock-in) 자산**으로 이동하는 상태 변화가 명확해졌기 때문이다.\n\n시장 참여자들이 주가 하락 및 조정기에 단기 수급을 따라 자산을 매도할 때, 상위 자본은 ▲ AI 성장의 필수 인프라(전력망)라는 **피할 수 없는 CAPEX 경로(D2, Lock-in)**에 자금을 고정시키고, ▲ 기술 수출이나 희소성 기반의 **대체 불가능한 미래 현금 흐름(D1, G, J)**에 대규모 자금(400억 KRW)을 선행적으로 투입했다. 또한, ▲ 본주 대비 효율이 낮은 주식 형태(우선주)를 통해 **자본 효율성(G)**을 극대화하는 구조적 선택을 동시에 수행했다. 이는 단순한 호재 추종이 아니라, 시장의 단기적인 가격 등락이 아닌 구조적 가치 재평가(S-L2)와 고정 자본 경로(L4)가 형성되는 임계점에 진입했음을 의미한다.\n\n---\n\n**[HOIN ENGINE FINAL OUTPUT]**\n\n**자본은 단기 변동성(Volatile Pricing)을 무시하고, AI 인프라와 기술 희소성이라는 구조적 경로에 고정(Lock-in)되고 있다.** 이 주제는 예측이 아니라, 현재 자본이 고정되기 시작한 구조를 설명한다.\n\n| 항목 | 상세 분석 |\n|---|---|\n| **DATA AXIS IDENTIFICATION** | ⑫ 섹터·역할 단위 자본 유입, ⑭ 인프라 운영 한계·병목, ⑮ 구조적 자본·지배구조 변화 사전 감지, ③ 주식시장 (거래대금) |\n| **BASELINE SIGNAL MATCHING** | D1. 기술 수요의 확정성, D2. 공급 병목 위치, H. 자본 Lock-in 기준, G. 구조 변화 선행 기준 |\n| **ANOMALY LOGIC TRIGGER** | AI 인프라 전력 Lock-in (D), J. 거래대금 이례(참여 변화), S-L2 Structural Anticipation (I) |\n| **ANOMALY LEVEL & BRANCH** | L4 (주제 확정 후보) / Hybrid (Structural + Capital) |\n| **WHY_NOW EXPLANATION** | WHY_NOW_TRIGGER_TYPE: Hybrid (Structural + Capital). 시장의 단기적인 가격 등락을 무시하고, AI 인프라 확충의 필연성 및 희귀 기술의 대체 불가능한 현금 흐름이라는 구조적 가치에 자본이 선행적으로 고정되는 Lock-in 국면이 확인되었다. 이는 자본 경로가 확정된 임계점 진입을 의미한다. |"
+  },
+  {
+    "video_id": "bdg8MTlXvIA",
+    "title": "트럼프가 금리 인하로 주가 역대급 상승장 만드는 방법",
+    "analysis_date": "2026-01-20",
+    "surface_topics": [
+      "자산",
+      "뉴스",
+      "시장",
+      "수익",
+      "리스크"
+    ],
+    "real_topic": "금리",
+    "real_topic_reasoning": "KB Keyword Match: '금리' (mentioned 63 times)",
+    "anomaly_level": "L3",
+    "anomaly_reasoning": "High structural impact detected. L3 Keyword '구조' found, L2 Keyword '지연' found",
+    "why_now": {
+      "trigger_type": "State-driven (Price/News)",
+      "description": "No explicit immediate trigger found, likely a trend analysis."
+    },
+    "core_assumptions": [
+      "이런 발언 때문에 워신은 매파로 분류됐어",
+      "관세 때문에 물가가 오르더라도 그건 이외성 가격 조정일뿐 지속적인 인플레이션이 아니라는 거야"
+    ],
+    "evolution_proposals": [],
+    "content_nature": "Leading Indicator",
+    "engine_conclusion": "엔진은 '금리'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 이런 발언 때문에 워신은 매파로 분류됐어",
+    "llm_report": null
+  }
+]

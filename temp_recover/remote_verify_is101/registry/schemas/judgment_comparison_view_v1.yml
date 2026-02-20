@@ -1,0 +1,72 @@
+version: "1.0"
+type: "view"
+name: "judgment_comparison_view"
+description: "Daily comparison view between Engine logic and Operator judgment (Step 99)."
+
+fields:
+  date:
+    type: string
+    format: date
+    required: true
+
+  engine_state:
+    type: string
+    const: "STEP_96_LOCKED"
+    required: true
+
+  topic_id:
+    type: string
+    required: true
+
+  engine_side:
+    type: object
+    required: true
+    properties:
+      engine_decision:
+        type: string
+        enum: ["LOCK", "PASS", "NO_TOPIC"]
+      engine_why_now:
+        type: string
+      engine_basis:
+        type: array
+        items: string
+
+  human_side:
+    type: object
+    required: true
+    properties:
+      operator_action:
+        type: string
+        enum: ["PROCEED", "HOLD", "REJECT"]
+      operator_reason:
+        type: string
+      operator_tag:
+        type: string
+
+  delta_interpretation:
+    type: object
+    required: true
+    properties:
+      alignment_status:
+        type: string
+        enum: ["ALIGNED", "DIVERGED"]
+      divergence_reason:
+        type: string
+      divergence_type:
+        type: string
+        enum: 
+          - "TIME_MISMATCH"
+          - "CONFIDENCE_GAP"
+          - "NARRATIVE_SATURATION"
+          - "NO_TOPIC_ALIGNMENT"
+          - "NONE"
+
+  continuity_flag:
+    type: boolean
+    const: true
+    required: true
+
+  source_refs:
+    type: array
+    items: string
+    required: true

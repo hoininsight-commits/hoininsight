@@ -1,0 +1,43 @@
+{
+  "as_of": "2026-02-20",
+  "relationships": [
+    {
+      "entity_a": "NVIDIA",
+      "entity_b": "OpenAI",
+      "relationship_type": "supplier_dependency",
+      "evidence": [
+        {
+          "source_id": "manual",
+          "kind": "manual_seed",
+          "title": "Manual Signal",
+          "reliability": 0.9,
+          "date": "2026-02-04"
+        }
+      ],
+      "signals": {
+        "capital_link": {
+          "present": false,
+          "amount_usd": null
+        },
+        "supply_dependency": {
+          "present": false,
+          "note": ""
+        },
+        "statement_divergence": {
+          "present": true,
+          "note": ""
+        },
+        "deal_reprice": {
+          "present": true,
+          "note": ""
+        }
+      },
+      "stress_score": 0.6,
+      "break_risk": "MED",
+      "why_now": [
+        "NVIDIA exclusive supply priority re-evaluation revealed in internal memo."
+      ],
+      "risk_notes": []
+    }
+  ]
+}

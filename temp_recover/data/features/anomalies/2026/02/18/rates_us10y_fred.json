@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-02-18T08:21:13Z",
+    "dataset_id": "rates_us10y_fred",
+    "entity": "US10Y",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": -1.9,
+      "percentile": 37.1,
+      "value": 4.04,
+      "rolling_mean_20d": 4.2105,
+      "reasoning": "Z-Score -1.90 >= 1.5"
+    }
+  }
+]

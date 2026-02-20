@@ -1,0 +1,42 @@
+[
+  {
+    "ts_utc": "2026-01-28T01:18:47Z",
+    "dataset_id": "metal_silver_kag_coingecko",
+    "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
+    "title": "data/features/anomalies/2026/01/28/metal_silver_kag_coingecko.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
+    "evidence": {
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 2.2,
+        "percentile": 50.0,
+        "value": 114.1,
+        "rolling_mean_20d": 95.25200128173829,
+        "reasoning": "Z-Score 2.20 >= 2.0"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/01/28/metal_silver_kag_coingecko.json"
+    },
+    "rationale": "[L2] Z-Score 2.20 >= 2.0 (Regime x1.0)",
+    "links": [],
+    "is_pre_structural": false
+  }
+]

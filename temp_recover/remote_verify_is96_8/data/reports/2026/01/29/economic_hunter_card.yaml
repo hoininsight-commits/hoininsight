@@ -1,0 +1,34 @@
+version: '1.0'
+topic_id: EH-2026-TEST
+title: '[구조적 병목] 2nm 파운드리 공정 지연과 장비 독점'
+summary: ASML의 High-NA EUV 장비 반입 스케줄이 전체 AI 반도체 사이클의 결정적 패치가 됨.
+generated_at: '2026-01-29T12:57:22Z'
+targets:
+- ticker: TSM
+  logic_role: OWNER
+  revenue_focus: 1.0
+  rationale: TSM은(는) 해당 병목 기술을 직접 소유하고 제조하는 원천 기업으로서, 공급망의 핵심 키를 쥐고 있습니다.
+- ticker: ASML
+  logic_role: OWNER
+  revenue_focus: 0.95
+  rationale: ASML은(는) 해당 병목 기술을 직접 소유하고 제조하는 원천 기업으로서, 공급망의 핵심 키를 쥐고 있습니다.
+- ticker: Samsung
+  logic_role: OWNER
+  revenue_focus: 0.4
+  rationale: Samsung은(는) 해당 병목 기술을 직접 소유하고 제조하는 원천 기업으로서, 공급망의 핵심 키를 쥐고 있습니다.
+trace:
+- TSMC 2nm 수율 루머 및 대만 지진 직후 장비 가동 데이터 이상 포착.
+- TSMC의 수율 부진이 칩 설계사들의 로드맵 지연으로 이어지는 물리적 병목 현상.
+- 차기 AP 양산 확정 데드라인 D-90 진입.
+- 물리적 장비(ASML)와 제조 공정(TSMC)이 결합된 하드코어 병목.
+- TSM, ASML, Samsung을(를) 해당 병목의 최종 해결자로 확정
+anchors:
+- 'FRED: HIGH'
+- 'DART: DELAY'
+- 'news: LINKED'
+- 'data: LINKED'
+meta:
+  confidence: 100
+  status: READY
+  risk_check: OK
+  narrative_format: ECONOMIC_HUNTER_VIDEO

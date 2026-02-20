@@ -1,0 +1,42 @@
+[
+  {
+    "ts_utc": "2026-02-19T16:57:18Z",
+    "dataset_id": "derived_yield_curve_10y_2y",
+    "topic_id": "derived_yield_curve_10y_2y::z_score_model_v1",
+    "title": "data/features/anomalies/2026/02/19/derived_yield_curve_10y_2y.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
+    "evidence": {
+      "source_severity": 30,
+      "level": "L1",
+      "details": {
+        "z_score": -1.69,
+        "percentile": 81.0,
+        "value": 0.6199999999999997,
+        "rolling_mean_20d": 0.6885,
+        "reasoning": "Z-Score -1.69 >= 1.5"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/02/19/derived_yield_curve_10y_2y.json"
+    },
+    "rationale": "[L1] Z-Score -1.69 >= 1.5 (Regime x1.0)",
+    "links": [],
+    "is_pre_structural": false
+  }
+]

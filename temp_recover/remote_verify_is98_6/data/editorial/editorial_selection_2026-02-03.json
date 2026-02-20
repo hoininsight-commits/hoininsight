@@ -1,0 +1,47 @@
+{
+    "date": "2026-02-03",
+    "picks": [
+        {
+            "id": "NC-CAL-EARN-NVDA-2026-02-10",
+            "source_mix": [
+                "schedule",
+                "numeric",
+                "relative"
+            ],
+            "dominant_type": "PREVIEW",
+            "theme": "[D-6] NVIDIA (NVDA) 실적 발표 사전 점검",
+            "why_now": "지금 시점에서 NVIDIA 실적이 시장 방향성을 결정할 수 있습니다.",
+            "confidence_level": "HIGH",
+            "promotion_hint": "WEEKLY_STRUCTURE",
+            "status": "CANDIDATE",
+            "numeric_evidence": [
+                {
+                    "name": "Data Center Revenue",
+                    "value": "$30.8B",
+                    "growth": "+112% YoY"
+                },
+                {
+                    "name": "Gross Margin",
+                    "value": "75.0%",
+                    "growth": "+1.0% QoQ"
+                }
+            ],
+            "numeric_source": "https://nvidianews.nvidia.com/",
+            "relative_card": {
+                "peer_group": "BigTech",
+                "perf_gap_1y": "+152%",
+                "valuation_band": "35x",
+                "avg_pe": "42x",
+                "rerate_thesis": "BigTech 대비 +152% 초과수익, 밸류에이션 부담 점검 필요",
+                "risk_anchor": "금리 변동성 확대 시 멀티플 축소 위험"
+            },
+            "angles": [
+                "SCHEDULE"
+            ],
+            "editor_score": 135,
+            "editor_rationale": "Strong Why-Now / Multi-Signal Fusion / Economic Hunter Deep Dive",
+            "selected_rank": 1
+        }
+    ],
+    "summary_line": "오늘의 최종 선택은 1건입니다."
+}

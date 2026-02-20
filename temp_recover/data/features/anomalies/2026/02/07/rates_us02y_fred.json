@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-02-07T08:54:05Z",
+    "dataset_id": "rates_us02y_fred",
+    "entity": "US02Y",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": -0.8,
+      "percentile": 7.3,
+      "value": 3.47,
+      "rolling_mean_20d": 3.6975000000000002,
+      "reasoning": "Percentile 7.3% (Watch)"
+    }
+  }
+]

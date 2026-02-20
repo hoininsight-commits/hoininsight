@@ -1,0 +1,92 @@
+# Script Templates v1.0
+# Add-only registry style
+
+shorts_structure:
+  - section: HOOK
+    content: |
+      [HOOK]
+      {HOOK_TEXT}
+      이게 그냥 뉴스가 아닙니다. 구조적 신호입니다.
+
+  - section: CLAIM
+    content: |
+      [CLAIM]
+      {CLAIM_TEXT}
+      지금 {SECTOR_NAME} 시장에서 가격 결정권이 완전히 넘어갔습니다.
+
+  - section: EVIDENCE
+    content: |
+      [EVIDENCE]
+      첫째, {EYE_1_TEXT}
+      둘째, {EYE_2_TEXT}
+      셋째, {EYE_3_TEXT}
+      이 세 가지가 동시에 터진 건 {YEARS_BACK}년 만입니다.
+
+  - section: WHY_MUST
+    content: |
+      [PICKAXE]
+      이 구조에서 없으면 안 되는 기업 딱 두 개만 봅니다.
+      1. {PICK_1_NAME}: {PICK_1_REASON}
+      2. {PICK_2_NAME}: {PICK_2_REASON}
+
+  - section: CLOSE
+    content: |
+      [CONCLUSION]
+      지금은 단순 테마가 아니라, {TOPIC_TYPE_KR} 구간입니다.
+      {DISCLAIMER_TEXT}
+
+long_structure:
+  - section: INTRO
+    content: |
+      [INTRO]
+      반갑습니다. 경제사냥꾼 호인입니다.
+      오늘 포착한 사냥감은 '{SECTOR_NAME}' 섹터의 구조적 변화입니다.
+      {HOOK_TEXT}
+
+  - section: MECHANISM
+    content: |
+      [MECHANISM]
+      단순히 가격이 오르는 게 아닙니다. '이유'가 바뀌었습니다.
+      {DOMINANT_EYE_DESC}
+
+  - section: WHY_NOW
+    content: |
+      [WHY NOW: 3-EYE CONFLUENCE]
+      이 변화를 확신하는 이유는 3가지 독립 변수가 일치했기 때문입니다.
+      
+      1. {EYE_1_TITLE}: {EYE_1_TEXT}
+      2. {EYE_2_TITLE}: {EYE_2_TEXT}
+      3. {EYE_3_TITLE}: {EYE_3_TEXT}
+
+  - section: DEEP_DIVE
+    content: |
+      [DEEP DIVE]
+      특히 {EYE_1_TITLE} 지표를 주목해야 합니다.
+      과거 사이클과 달리 이번에는 공급자 우위(Pricing Power)가 확인되었습니다.
+
+  - section: PICKAXE
+    content: |
+      [CORE PLAYERS]
+      이 병목을 쥐고 있는 핵심 플레이어는 누구일까요?
+      
+      #{PICK_1_NAME} ({PICK_1_TICKER})
+      - 역할: {PICK_1_ROLE}
+      - 이유: {PICK_1_REASON}
+      
+      #{PICK_2_NAME} ({PICK_2_TICKER})
+      - 역할: {PICK_2_ROLE}
+      - 이유: {PICK_2_REASON}
+
+  - section: RISK_CHECK
+    content: |
+      [RISK CHECK]
+      물론 리스크도 있습니다.
+      1. 경쟁사의 증설 발표 여부
+      2. {RISK_FACTOR_1}
+
+  - section: CLOSE
+    content: |
+      [OUTRO]
+      결론입니다. {CLAIM_TEXT}
+      지금은 흔들릴 때가 아니라 데이터를 믿고 기다릴 때입니다.
+      {DISCLAIMER_TEXT}

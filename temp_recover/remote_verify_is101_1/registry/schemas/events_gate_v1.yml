@@ -1,0 +1,46 @@
+id: events_gate_v1
+type: object
+required: [schema_version, as_of_date, events]
+properties:
+  schema_version:
+    type: string
+    enum: ["events_gate_v1"]
+  as_of_date:
+    type: string
+    description: "YYYY-MM-DD"
+  events:
+    type: array
+    items:
+      type: object
+      required: [event_id, event_type, title, source, effective_window, evidence]
+      properties:
+        event_id: { type: string }
+        event_type:
+          type: string
+          enum: ["earnings", "policy", "regulation", "contract", "geopolitics", "macro_release", "flow", "capital"]
+        title: { type: string }
+        source:
+          type: object
+          required: [publisher, url]
+          properties:
+            publisher: { type: string }
+            url: { type: string }
+        effective_window:
+          type: object
+          required: [start_date, end_date]
+          properties:
+            start_date: { type: string }
+            end_date: { type: string }
+        evidence:
+          type: array
+          maxItems: 5
+          items:
+            type: object
+            required: [label, value, unit]
+            properties:
+              label: { type: string }
+              value:
+                oneOf:
+                  - { type: number }
+                  - { type: string }
+              unit: { type: string }

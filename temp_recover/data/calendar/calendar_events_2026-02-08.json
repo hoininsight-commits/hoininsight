@@ -1,0 +1,40 @@
+{
+    "date": "2026-02-08",
+    "events": [
+        {
+            "id": "EARN-NVDA-2026-02-10",
+            "type": "EARNINGS",
+            "title": "NVIDIA (NVDA) 실적 발표",
+            "entity": "NVIDIA",
+            "ticker": "NVDA",
+            "event_date": "2026-02-10",
+            "window": "D-2",
+            "source_url": "https://investor.nvidia.com/",
+            "evidence_grade": "HARD_FACT",
+            "why_now_hint": "NVIDIA 실적이 시장 방향성을 결정할 수 있습니다."
+        },
+        {
+            "id": "MACRO-US_CPI-2026-02-10",
+            "type": "POLICY",
+            "title": "US CPI Release",
+            "entity": "BLS",
+            "event_date": "2026-02-10",
+            "window": "D-2",
+            "source_url": "Official Source",
+            "evidence_grade": "HARD_FACT",
+            "why_now_hint": "인플레이션 재점화 여부를 판가름할 지표입니다."
+        },
+        {
+            "id": "MACRO-FOMC_MINUTES-2026-02-18",
+            "type": "POLICY",
+            "title": "FOMC Meeting Minutes",
+            "entity": "Federal Reserve",
+            "event_date": "2026-02-18",
+            "window": "D-10",
+            "source_url": "Official Source",
+            "evidence_grade": "HARD_FACT",
+            "why_now_hint": "연준의 금리 인하 경로에 대한 핵심 힌트가 공개됩니다."
+        }
+    ],
+    "count": 3
+}

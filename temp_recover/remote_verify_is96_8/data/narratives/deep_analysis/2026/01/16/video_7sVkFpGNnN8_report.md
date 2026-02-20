@@ -1,0 +1,31 @@
+
+# 🕵️‍♀️ HOIN ENGINE Deep Logic Analysis
+
+## 1️⃣ 겉주제 제거 (Surface Topic 제거)
+영상의 표면 메시지 (Removed):
+* 자산
+* 뉴스
+* 시장
+* 전망
+* 매도
+
+## 2️⃣ 엔진 관점의 '진짜 주제' 재정의 (Engine-View Real Topic)
+* **Real Topic**: 미국
+* **Reframed**: KB Keyword Match: '미국' (mentioned 25 times)
+
+## 3️⃣ 이상징후 레벨 판정 (ANOMALY LEVEL)
+* **Level**: L3
+* **Reasoning**: High structural impact detected. L3 Keyword '구조' found, L2 Keyword '수급' found
+
+## 4️⃣ WHY_NOW 트리거 판정
+* **Type**: State-driven (Price/News)
+* **Trigger**: No explicit immediate trigger found, likely a trend analysis.
+
+## 5️⃣ 핵심 가정 (Core Assumptions)
+* 미국 입장에서는 자기네 땅에 공장 짓고 일자리 만들어 주기로 한 약속이 환율 때문에 틀어지는 걸 원치 않는 거야
+
+## 6️⃣ DATA_COLLECTION_MASTER 관점 (Evolution Proposals)
+* (No new data collection needs identified)
+
+## 7️⃣ 엔진 최종 판정 요약
+> 엔진은 '미국'와(과) 관련하여 L3 수준의 이상징후를 감지했습니다. 핵심 가정: 미국 입장에서는 자기네 땅에 공장 짓고 일자리 만들어 주기로 한 약속이 환율 때문에 틀어지는 걸 원치 않는 거야

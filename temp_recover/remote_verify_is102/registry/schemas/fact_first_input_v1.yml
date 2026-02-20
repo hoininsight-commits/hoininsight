@@ -1,0 +1,52 @@
+name: fact_first_input_v1
+description: Standard schema for operator-provided raw facts to seed the Fact-First Ingress engine.
+version: 1.0.0
+
+fields:
+  - name: fact_id
+    type: string
+    required: true
+    description: Unique identifier for the fact within the day (e.g., 'F-001').
+
+  - name: type
+    type: enum
+    values: ["FLOW", "POLICY", "STRUCTURE"]
+    required: true
+    description: Category of the fact (Flow of funds, Policy change, Structural shift).
+
+  - name: date
+    type: date
+    format: "YYYY-MM-DD"
+    required: true
+    description: Date of the fact (KST).
+
+  - name: subject
+    type: string
+    required: true
+    description: The main entity or concept (Subject).
+
+  - name: object
+    type: string
+    required: true
+    description: The target entity or concept (Object).
+
+  - name: fact
+    type: string
+    required: true
+    description: A single sentence describing the fact. No opinions, just the core event.
+
+  - name: source
+    type: string
+    required: true
+    description: Origin of the fact (e.g., 'BOK', 'Fed', 'Samsung Electronics Report').
+
+  - name: confidence
+    type: enum
+    values: ["HIGH", "MEDIUM", "LOW"]
+    required: true
+    description: Reliability of the source/fact.
+
+  - name: url
+    type: string
+    required: false
+    description: Reference URL for verification.

@@ -1,0 +1,150 @@
+{
+  "schema_version": "gate_events_v1",
+  "as_of_date": "2026-01-24",
+  "events": [
+    {
+      "event_id": "ev_earnings_a2e65397",
+      "event_type": "earnings",
+      "title": "NVIDIA (NVDA) Earnings Beat Expectations",
+      "source": {
+        "publisher": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/news/nvda-earnings"
+      },
+      "effective_window": {
+        "start_date": "2026-01-24",
+        "end_date": "2026-01-31"
+      },
+      "evidence": [
+        {
+          "label": "Revenue",
+          "value": 26.0,
+          "unit": "B",
+          "context": "Source: Yahoo Finance | NVIDIA (NVDA) Earnings Beat Expectations"
+        },
+        {
+          "label": "EPS Actual",
+          "value": 6.12,
+          "unit": "USD",
+          "context": "Source: Yahoo Finance | NVIDIA (NVDA) Earnings Beat Expectations"
+        },
+        {
+          "label": "EPS Expected",
+          "value": 5.59,
+          "unit": "USD",
+          "context": "Source: Yahoo Finance | NVIDIA (NVDA) Earnings Beat Expectations"
+        }
+      ],
+      "trust_score": 0.7999999999999999,
+      "trust_tier": "C",
+      "requires_confirmation": false
+    },
+    {
+      "event_id": "ev_policy_68820661",
+      "event_type": "policy",
+      "title": "FOMC Maintains Interest Rates",
+      "source": {
+        "publisher": "Federal Reserve",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases"
+      },
+      "effective_window": {
+        "start_date": "2026-01-24",
+        "end_date": "2026-01-31"
+      },
+      "evidence": [
+        {
+          "label": "Lower bound",
+          "value": 5.25,
+          "unit": "%",
+          "context": "Source: Federal Reserve | FOMC Maintains Interest Rates"
+        },
+        {
+          "label": "Upper bound",
+          "value": 5.5,
+          "unit": "%",
+          "context": "Source: Federal Reserve | FOMC Maintains Interest Rates"
+        }
+      ],
+      "trust_score": 1.0,
+      "trust_tier": "A",
+      "requires_confirmation": false
+    },
+    {
+      "event_id": "ev_flow_ea3a2ce9",
+      "event_type": "flow",
+      "title": "Massive Inflow into Tech ETFs",
+      "source": {
+        "publisher": "ETF.com",
+        "url": "https://www.etf.com/news/tech-inflows"
+      },
+      "effective_window": {
+        "start_date": "2026-01-24",
+        "end_date": "2026-01-31"
+      },
+      "evidence": [
+        {
+          "label": "Weekly Inflow",
+          "value": 1.2,
+          "unit": "B",
+          "context": "Source: ETF.com | Massive Inflow into Tech ETFs"
+        }
+      ],
+      "trust_score": 0.7,
+      "trust_tier": "C",
+      "requires_confirmation": false
+    },
+    {
+      "event_id": "ev_contract_1d1eb82f",
+      "event_type": "contract",
+      "title": "[공시] 삼성전자, 5000억 규모 공급 계약 체결",
+      "source": {
+        "publisher": "DART",
+        "url": "https://dart.fss.or.kr/dsaf001/main.do"
+      },
+      "effective_window": {
+        "start_date": "2026-01-24",
+        "end_date": "2026-01-31"
+      },
+      "evidence": [
+        {
+          "label": "Contract Amount",
+          "value": 5000.0,
+          "unit": "KRW_100M",
+          "context": "Source: DART | [공시] 삼성전자, 5000억 규모 공급 계약 체결"
+        },
+        {
+          "label": "Duration",
+          "value": 24.0,
+          "unit": "months",
+          "context": "Source: DART | [공시] 삼성전자, 5000억 규모 공급 계약 체결"
+        }
+      ],
+      "trust_score": 1.0,
+      "trust_tier": "A",
+      "requires_confirmation": false
+    },
+    {
+      "event_id": "ev_capital_3de648ba",
+      "event_type": "capital",
+      "title": "Apple Announces $110B Buyback Program",
+      "source": {
+        "publisher": "Reuters",
+        "url": "https://www.reuters.com/technology/apple-buyback"
+      },
+      "effective_window": {
+        "start_date": "2026-01-24",
+        "end_date": "2026-01-31"
+      },
+      "evidence": [
+        {
+          "label": "Buyback Authorized",
+          "value": 110.0,
+          "unit": "B",
+          "context": "Source: Reuters | Apple Announces $110B Buyback Program"
+        }
+      ],
+      "trust_score": 0.8999999999999999,
+      "trust_tier": "B",
+      "requires_confirmation": false
+    }
+  ]
+}
