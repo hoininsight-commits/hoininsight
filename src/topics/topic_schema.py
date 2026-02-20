@@ -37,6 +37,14 @@ class TopicV2(TopicV1):
     cross_axis_multiplier: float
     escalation_flag: bool
 
+@dataclass
+class TopicV3(TopicV2):
+    conflict_flag: bool
+    expectation_gap_score: int
+    expectation_gap_level: str
+    tension_multiplier_applied: bool
+    final_narrative_score: float
+
 def validate_topic_v1(obj: Dict[str, Any]) -> None:
     for k in REQUIRED:
         if k not in obj:
@@ -52,3 +60,14 @@ def validate_topic_v2(obj: Dict[str, Any]) -> None:
     for k in v2_fields:
         if k not in obj:
             raise ValueError(f"topic_v2 missing field: {k}")
+
+def validate_topic_v3(obj: Dict[str, Any]) -> None:
+    validate_topic_v2(obj)
+    v3_fields = [
+        "conflict_flag", "expectation_gap_score", 
+        "expectation_gap_level", "tension_multiplier_applied",
+        "final_narrative_score"
+    ]
+    for k in v3_fields:
+        if k not in obj:
+            raise ValueError(f"topic_v3 missing field: {k}")

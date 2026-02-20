@@ -24,19 +24,24 @@
         "risk_factor": "실제 숫자(매출/이익)로 증명되기까지 시차 존재."
       },
       "narrative_score": 35.65,
+      "final_narrative_score": 35.65,
       "video_ready": false,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "STRUCTURAL_REDEFINITION",
-        "market_consequence": "Monitoring impact",
-        "affected_sector": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
-        "time_pressure": "low"
-      },
       "actor_tier_score": 0.0,
       "cross_axis_count": 3,
       "cross_axis_multiplier": 1.15,
       "escalation_flag": false,
-      "schema_version": "v2.5"
+      "conflict_flag": false,
+      "expectation_gap_score": 0,
+      "expectation_gap_level": "none",
+      "tension_multiplier_applied": false,
+      "causal_chain": {
+        "cause": null,
+        "structural_shift": "STRUCTURAL_REDEFINITION",
+        "market_consequence": "Monitoring friction",
+        "affected_sector": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
+        "time_pressure": "low"
+      },
+      "schema_version": "v3.0"
     }
   ]
 }

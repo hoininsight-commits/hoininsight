@@ -23,33 +23,35 @@ def verify():
         for i, topic in enumerate(topics):
             print(f"Checking topic {i+1}: {topic.get('title')}")
             
-            # v2.5 Fields check
-            required_v2 = [
-                "narrative_score", "video_ready", "causal_chain", 
-                "schema_version", "actor_tier_score", "cross_axis_count",
-                "cross_axis_multiplier", "escalation_flag"
+            # v3.0 Fields check
+            required_v3 = [
+                "narrative_score", "final_narrative_score", "video_ready", 
+                "causal_chain", "schema_version", "actor_tier_score", 
+                "cross_axis_count", "cross_axis_multiplier", "escalation_flag",
+                "conflict_flag", "expectation_gap_score", "expectation_gap_level",
+                "tension_multiplier_applied"
             ]
-            missing = [f for f in required_v2 if f not in topic]
+            missing = [f for f in required_v3 if f not in topic]
             
             if missing:
-                print(f"❌ Error: Topic {i+1} missing v2.5 fields: {missing}")
+                print(f"❌ Error: Topic {i+1} missing v3.0 fields: {missing}")
                 sys.exit(1)
                 
             # Type checks
-            if not isinstance(topic["narrative_score"], (int, float)):
-                 print(f"❌ Error: narrative_score should be a number (got {type(topic['narrative_score'])})")
+            if not isinstance(topic["final_narrative_score"], (int, float)):
+                 print(f"❌ Error: final_narrative_score should be a number (got {type(topic['final_narrative_score'])})")
                  sys.exit(1)
                  
-            if not isinstance(topic["video_ready"], bool):
-                 print(f"❌ Error: video_ready should be boolean (got {type(topic['video_ready'])})")
+            if not isinstance(topic["conflict_flag"], bool):
+                 print(f"❌ Error: conflict_flag should be boolean (got {type(topic['conflict_flag'])})")
                  sys.exit(1)
 
-            if not isinstance(topic["actor_tier_score"], (int, float)):
-                 print(f"❌ Error: actor_tier_score should be a number (got {type(topic['actor_tier_score'])})")
+            if not isinstance(topic["expectation_gap_score"], int):
+                 print(f"❌ Error: expectation_gap_score should be an int (got {type(topic['expectation_gap_score'])})")
                  sys.exit(1)
 
-            if not isinstance(topic["cross_axis_multiplier"], (int, float)):
-                 print(f"❌ Error: cross_axis_multiplier should be a number (got {type(topic['cross_axis_multiplier'])})")
+            if topic["expectation_gap_level"] not in ["none", "moderate", "strong"]:
+                 print(f"❌ Error: invalid expectation_gap_level: {topic['expectation_gap_level']}")
                  sys.exit(1)
                  
             if not isinstance(topic["causal_chain"], dict):
