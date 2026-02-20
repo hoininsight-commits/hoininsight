@@ -2476,9 +2476,13 @@ def generate_dashboard(base_dir: Path):
         today_report_dst.write_text(today_report_src.read_text(encoding="utf-8"), encoding="utf-8")
         print(f"[Dashboard] Copied operational_dashboard.md to {today_report_dst}")
 
-    (base_dir / "docs" / "index.html").write_text(html, encoding="utf-8")
+    # [FIX] Shift legacy dashboard to docs/legacy/ to prevent overwriting modern Sidebar UI
+    legacy_path = base_dir / "docs" / "legacy" / "index.html"
+    legacy_path.parent.mkdir(parents=True, exist_ok=True)
+    legacy_path.write_text(html, encoding="utf-8")
+    
     (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
-    print(f"[Dashboard] Generated docs/index.html and dashboard/index.html with YouTube Inbox (Restored)")
+    print(f"[Dashboard] Generated docs/legacy/index.html and dashboard/index.html (Legacy UI preserved)")
     return html
 
 
