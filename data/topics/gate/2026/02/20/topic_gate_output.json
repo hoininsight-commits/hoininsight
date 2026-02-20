@@ -1,23 +1,29 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-02-20",
-  "topic_id": "gate_d526e080b7",
-  "title": "오늘 시장의 핵심 혼란 포인트",
-  "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
-  "why_people_confused": "시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.",
+  "topic_id": "gate_269133d8e4",
+  "title": "지수 상승 속 섹터 하락의 이유",
+  "question": "왜 지수는 오르는데 내 종목은 하락하나?",
+  "why_people_confused": "지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.",
   "key_reasons": [
     "시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.",
     "자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다."
   ],
-  "numbers": [],
+  "numbers": [
+    {
+      "label": "S&P500 Status",
+      "value": "Active",
+      "unit": ""
+    }
+  ],
   "risk_one": "추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.",
-  "confidence": "UNCERTAIN",
+  "confidence": "LOW",
   "handoff_to_structural": false,
   "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
   "source_candidates": [
-    "cand_c639f72625",
-    "cand_3474fec572",
-    "cand_1e12e065b9"
+    "cand_025ddd2c25",
+    "cand_5c45785c84",
+    "cand_e88e037e6e"
   ],
   "speak_eligibility": {
     "eligible": false,
