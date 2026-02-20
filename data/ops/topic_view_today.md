@@ -97,11 +97,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “무조건 반등할거야”...개미들 ‘초상집’ 된 비트코인, 큰 손은 다 도망갔다 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “텍스트 한 줄로 30초 음악 완성”…구글, 제미나이에 ‘리리아 3’ 탑재 - edaily.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -112,12 +107,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불' (ID: unknown)
+### [박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 한국콜마 지난해 최대 실적…매출 2.7조·영업익 2396억 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 쏟아지는 매물에 강남 상승 멈춰…"실수요자 4월 이후 매수 기회" (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불' (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -172,12 +177,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 밀가루 담합 7개 기업에 과징금 최대 1.1조 예고 (ID: unknown)
+### 신한銀, 기초연금수급자에 보이스피싱 무료보험 지원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 신한銀, 기초연금수급자에 보이스피싱 무료보험 지원 (ID: unknown)
+### 밀가루 담합 7개 기업에 과징금 최대 1.1조 예고 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 이재명 대통령, KAIST 학위수여식 참석... “R&D는 국가 생존 전략, 전폭 지원할 것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### "AI시대 나만의 창의력 덕질·딴짓에서 나와요" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

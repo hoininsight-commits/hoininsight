@@ -204,11 +204,12 @@
 | 비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보 | Structural implication: '비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com | Structural implication: '삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
 | 민주당, 스테이블코인 이자 금지 가닥…뱅크런 우려 던다 - 지디넷코리아 | Structural implication: '민주당, 스테이블코인 이자 금지 가닥…뱅크런 우려 던다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| “무조건 반등할거야”...개미들 ‘초상집’ 된 비트코인, 큰 손은 다 도망갔다 - 매일경제 | Structural implication: '“무조건 반등할거야”...개미들 ‘초상집’ 된 비트코인, 큰 손은 다 도망갔다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “텍스트 한 줄로 30초 음악 완성”…구글, 제미나이에 ‘리리아 3’ 탑재 - edaily.co.kr | Structural implication: '“텍스트 한 줄로 30초 음악 완성”…구글, 제미나이에 ‘리리아 3’ 탑재 - edaily.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 의료 AI 빅3, 올해 '흑자 원년' 총력전 - 전자신문 | Structural implication: '의료 AI 빅3, 올해 '흑자 원년' 총력전 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
-| 주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불' | Structural implication: '주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불'' suggests a shift in NEWS dynamics. | LOW |
+| [박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스 | Structural implication: '[박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 한국콜마 지난해 최대 실적…매출 2.7조·영업익 2396억 | Structural implication: '한국콜마 지난해 최대 실적…매출 2.7조·영업익 2396억' suggests a shift in NEWS dynamics. | LOW |
 | 쏟아지는 매물에 강남 상승 멈춰…"실수요자 4월 이후 매수 기회" | Structural implication: '쏟아지는 매물에 강남 상승 멈춰…"실수요자 4월 이후 매수 기회"' suggests a shift in NEWS dynamics. | LOW |
+| 주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불' | Structural implication: '주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불'' suggests a shift in NEWS dynamics. | LOW |
 | 6~11세 제자들 250회 성적학대 교장…항소심서 형량 반토막, 이유가 | Structural implication: '6~11세 제자들 250회 성적학대 교장…항소심서 형량 반토막, 이유가' suggests a shift in NEWS dynamics. | LOW |
 | 모바일어플라이언스, 100억 원 규모 전환사채 발행 | Structural implication: '모바일어플라이언스, 100억 원 규모 전환사채 발행' suggests a shift in NEWS dynamics. | LOW |
 | KB스타리츠, 1500억원 규모 유상증자 실시 | Structural implication: 'KB스타리츠, 1500억원 규모 유상증자 실시' suggests a shift in NEWS dynamics. | LOW |
@@ -219,14 +220,13 @@
 | [표] 외국환율고시표 | Structural implication: '[표] 외국환율고시표' suggests a shift in NEWS dynamics. | LOW |
 | 장민영 기업은행장 "생산적금융에 5년내 300조 투입" | Structural implication: '장민영 기업은행장 "생산적금융에 5년내 300조 투입"' suggests a shift in NEWS dynamics. | LOW |
 | 구제역 고양시로 확산 … 수도권 방역 비상 | Structural implication: '구제역 고양시로 확산 … 수도권 방역 비상' suggests a shift in NEWS dynamics. | LOW |
-| 밀가루 담합 7개 기업에 과징금 최대 1.1조 예고 | Structural implication: '밀가루 담합 7개 기업에 과징금 최대 1.1조 예고' suggests a shift in NEWS dynamics. | LOW |
 | 신한銀, 기초연금수급자에 보이스피싱 무료보험 지원 | Structural implication: '신한銀, 기초연금수급자에 보이스피싱 무료보험 지원' suggests a shift in NEWS dynamics. | LOW |
+| 밀가루 담합 7개 기업에 과징금 최대 1.1조 예고 | Structural implication: '밀가루 담합 7개 기업에 과징금 최대 1.1조 예고' suggests a shift in NEWS dynamics. | LOW |
 | 보험업계 나홀로 '활짝 웃은' 삼성생명 | Structural implication: '보험업계 나홀로 '활짝 웃은' 삼성생명' suggests a shift in NEWS dynamics. | LOW |
 | ‘금융·원전·반도체’ K증시 이끈다…신고가 속출 랠리 [매경 자이앤트] | Structural implication: '‘금융·원전·반도체’ K증시 이끈다…신고가 속출 랠리 [매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
 | 내 자산을 지키는 최후의 보루…금·은을 포트폴리오에 담아볼까 [K주식, 이걸 사? 말아?] | Structural implication: '내 자산을 지키는 최후의 보루…금·은을 포트폴리오에 담아볼까 [K주식, 이걸 사? 말아?]' suggests a shift in NEWS dynamics. | LOW |
 | 정읍 양계장서 화재…닭 2500마리 폐사 | Structural implication: '정읍 양계장서 화재…닭 2500마리 폐사' suggests a shift in NEWS dynamics. | LOW |
 | 이재명 대통령, KAIST 학위수여식 참석... “R&D는 국가 생존 전략, 전폭 지원할 것” | Structural implication: '이재명 대통령, KAIST 학위수여식 참석... “R&D는 국가 생존 전략, 전폭 지원할 것”' suggests a shift in NEWS dynamics. | LOW |
-| "AI시대 나만의 창의력 덕질·딴짓에서 나와요" | Structural implication: '"AI시대 나만의 창의력 덕질·딴짓에서 나와요"' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
