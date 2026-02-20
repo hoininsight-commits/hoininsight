@@ -30,6 +30,7 @@ export async function initTodayView(container) {
         debug.totalFiles = (CACHED_MANIFEST.files || []).length;
 
         const allDecisions = [];
+        const historyDecisions = [];
         const fetchTasks = (CACHED_MANIFEST.files || []).map(async (file) => {
             try {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
@@ -39,9 +40,18 @@ export async function initTodayView(container) {
 
                 items.forEach(item => {
                     const norm = normalizeDecision(item);
+                    norm._file = file; // Attach for status tooltip (v2.8)
+
+                    // Keep for 7-day average calculation (v2.8)
+                    const itemDate = new Date(norm.date);
+                    const diffDays = (todayDate - itemDate) / (1000 * 60 * 60 * 24);
+                    if (diffDays >= 0 && diffDays <= 7) {
+                        historyDecisions.push(norm);
+                    }
+
                     let isToday = false;
-                    if (norm.date === today) isToday = true;
-                    else if (norm.selected_at.startsWith(today)) isToday = true;
+                    if (norm.date === todayStr) isToday = true;
+                    else if (norm.selected_at.startsWith(todayStr)) isToday = true;
 
                     if (isToday) {
                         allDecisions.push(norm);
@@ -73,11 +83,11 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug);
+        renderTodayUI(container, allDecisions, debug, historyDecisions);
 
     } catch (e) {
         console.error(e);
-        renderTodayUI(container, [], debug, e.message);
+        renderTodayUI(container, [], debug, [], e.message);
     }
 }
 
@@ -106,32 +116,40 @@ const GET_COLORS = {
     }
 };
 
-function calculateEngineStatus(items, error, today) {
-    if (error || !items || items.length === 0) return { label: '🔴 수집 오류', color: 'text-red-500', bg: 'bg-red-500/10' };
+function calculateEngineStatus(items, error, debug) {
+    const isJsonLoaded = debug.totalFiles > 0;
+    if (error || !isJsonLoaded) {
+        return { label: '🔴 수집 오류', color: 'text-red-500', bg: 'bg-red-500/10', tooltip: `Error: ${error || 'Manifest Missing'}` };
+    }
 
     const completeCount = items.filter(i => !i.incomplete).length;
-    const latestTime = items.reduce((max, i) => {
+    const latestItem = items.reduce((max, i) => {
         const t = new Date(i.selected_at).getTime();
-        return t > max ? t : max;
-    }, 0);
+        return t > (max ? new Date(max.selected_at).getTime() : 0) ? i : max;
+    }, null);
 
-    const diffHours = (Date.now() - latestTime) / (1000 * 60 * 60);
-    const staleThreshold = 24; // 24 hours
+    const latestTime = latestItem ? new Date(latestItem.selected_at).getTime() : 0;
+    const diffHours = latestTime > 0 ? (Date.now() - latestTime) / (1000 * 60 * 60) : 0;
+    const staleThreshold = 24;
 
-    if (completeCount === 0 && items.length > 0) {
-        return { label: '🟡 데이터 일부 지연', color: 'text-yellow-500', bg: 'bg-yellow-500/10' };
+    const tooltip = latestItem ? `Last Update: ${latestItem.selected_at}\nFile: ${latestItem._file || 'today'}` : '오늘 수집된 신호가 없습니다. 수집 엔진은 정상 작동 중입니다.';
+
+    // Corrected v2.8 Logic: Items exist but none are complete
+    if (items.length > 0 && completeCount === 0) {
+        return { label: '🟡 데이터 일부 지연', color: 'text-yellow-500', bg: 'bg-yellow-500/10', tooltip };
     }
 
-    if (diffHours > staleThreshold) {
-        return { label: '🟡 업데이트 지연', color: 'text-yellow-600', bg: 'bg-yellow-600/5' };
+    // Updates older than 24h
+    if (latestTime > 0 && diffHours > staleThreshold) {
+        return { label: '🟡 업데이트 지연', color: 'text-yellow-600', bg: 'bg-yellow-600/5', tooltip };
     }
 
-    const timeStr = latestTime > 0 ? new Date(latestTime).toTimeString().substring(0, 5) : '-';
-    return { label: `🟢 정상 (${timeStr} 기준)`, color: 'text-green-500', bg: 'bg-green-500/10' };
+    const timeStr = latestTime > 0 ? new Date(latestTime).toTimeString().substring(0, 5) : '정규 수집 대기 중';
+    return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, error = null) {
-    const status = calculateEngineStatus(items, error, debug.today);
+function renderTodayUI(container, items, debug, historyItems = [], error = null) {
+    const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
     const okItems = completeItems.filter(i => i.speakability === 'OK');
@@ -149,21 +167,50 @@ function renderTodayUI(container, items, debug, error = null) {
     const avgInt = totalCount > 0 ? Math.round(items.reduce((s, i) => s + i.intensity, 0) / totalCount) : 0;
     const maxInt = totalCount > 0 ? Math.max(...items.map(i => i.intensity)) : 0;
 
+    // v2.8: 7-Day Comparison
+    const histComplete = (historyItems || []).filter(i => !i.incomplete);
+    const histAvg = histComplete.length > 0 ? Math.round(histComplete.reduce((s, i) => s + i.intensity, 0) / histComplete.length) : 0;
+    const diff = histAvg > 0 ? (avgInt - histAvg) : 0;
+    const diffText = diff > 0 ? `↑ +${diff}%` : `↓ ${diff}%`;
+    const diffColor = diff > 0 ? 'text-green-400' : 'text-red-400';
+
+    const comparisonHtml = histAvg > 0 ? `
+        <div class="bg-slate-800/60 border border-slate-700/50 rounded-lg px-4 py-2 flex flex-col justify-center animate-in fade-in slide-in-from-right-4">
+            <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">7일 트렌드 비교</div>
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col">
+                    <span class="text-[8px] text-slate-500 font-bold">7일 평균</span>
+                    <span class="text-xs font-black text-slate-300">${histAvg}%</span>
+                </div>
+                <div class="h-6 w-[1px] bg-slate-700"></div>
+                ${avgInt > 0 ? `
+                    <div class="flex flex-col">
+                        <span class="text-[8px] text-slate-500 font-bold">오늘 대비</span>
+                        <span class="text-xs font-black ${diffColor}">${diffText}</span>
+                    </div>
+                ` : `<span class="text-[9px] text-slate-600 font-bold italic">오늘은 최근 평균 대비 유의미한 신호 없음</span>`}
+            </div>
+        </div>
+    ` : '';
+
     // Build Summary Strip
     const summaryStripHtml = `
-        <div id="summary-strip" class="bg-slate-800/40 border border-slate-700/30 rounded-lg px-4 h-[44px] flex items-center justify-between mb-4">
-            <div class="flex items-center gap-4">
-                <span class="text-[10px] font-black text-slate-300 uppercase italic">운영 요약</span>
-                <div class="h-3 w-[1px] bg-slate-700"></div>
-                <span class="text-[11px] font-bold text-white">오늘 ${totalCount}건</span>
-                <span class="text-[11px] text-green-500 font-bold">OK ${okCount}</span>
-                <span class="text-[11px] text-yellow-500 font-bold">HOLD ${holdCount}</span>
-                <span class="text-[11px] text-slate-500 font-bold italic">불완전 ${incCount}</span>
+        <div id="summary-strip" class="flex gap-4 mb-4">
+            <div class="flex-1 bg-slate-800/40 border border-slate-700/30 rounded-lg px-4 h-[56px] flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-slate-300 uppercase italic">운영 요약</span>
+                    <div class="h-3 w-[1px] bg-slate-700"></div>
+                    <span class="text-[11px] font-bold text-white">오늘 ${totalCount}건</span>
+                    <span class="text-[11px] text-green-500 font-bold">OK ${okCount}</span>
+                    <span class="text-[11px] text-yellow-500 font-bold">HOLD ${holdCount}</span>
+                    <span class="text-[11px] text-slate-500 font-bold italic">불완전 ${incCount}</span>
+                </div>
+                <div class="flex items-center gap-4 text-[11px]">
+                    <span class="text-slate-500">평균 <strong class="text-slate-300">${avgInt}%</strong></span>
+                    <span class="text-slate-500">최고 <strong class="text-red-400">${maxInt}%</strong></span>
+                </div>
             </div>
-            <div class="flex items-center gap-4 text-[11px]">
-                <span class="text-slate-500">평균 <strong class="text-slate-300">${avgInt}%</strong></span>
-                <span class="text-slate-500">최고 <strong class="text-red-400">${maxInt}%</strong></span>
-            </div>
+            ${comparisonHtml}
         </div>
     `;
 
@@ -253,7 +300,7 @@ function renderTodayUI(container, items, debug, error = null) {
             <div class="flex justify-between items-end mb-2">
                 <h1 class="text-2xl font-black text-white tracking-tighter uppercase blur-[0.2px]">🔥 오늘의 선정</h1>
                 <div class="flex items-center gap-4">
-                    <div class="flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800/50 ${status.bg}">
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800/50 ${status.bg} cursor-help group relative" title="${status.tooltip}">
                         <span class="text-[10px] font-black ${status.color} uppercase">Engine: ${status.label}</span>
                     </div>
                     <button id="hotfix-debug-trigger" class="text-[9px] font-black text-slate-700 hover:text-slate-500 border border-slate-800/50 px-2 py-0.5 rounded transition-colors uppercase">

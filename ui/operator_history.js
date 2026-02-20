@@ -155,7 +155,9 @@ function renderSparkline(points) {
         <svg width="${width}" height="${height}" class="overflow-visible">
             <polyline points="${coords}" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             ${points.map((p, i) => `
-                <circle cx="${padding + i * step}" cy="${height - (p / max * height)}" r="2" fill="#3b82f6" class="animate-pulse" />
+                <circle cx="${padding + i * step}" cy="${height - (p / max * height)}" r="3" fill="#3b82f6" class="hover:r-4 hover:fill-blue-400 cursor-help transition-all">
+                    <title>Avg Intensity: ${p}%</title>
+                </circle>
             `).join('')}
         </svg>
     `;
@@ -223,8 +225,18 @@ function renderHistoryList(container, state) {
         </div>
     ` : '';
 
+    const infoHtml = !isCompView ? `
+        <div class="bg-blue-900/10 border border-blue-500/20 p-4 rounded-xl mb-6 flex items-start gap-3 animate-in fade-in slide-in-from-top-2">
+            <span class="text-blue-500 text-sm">ℹ️</span>
+            <p class="text-[10.5px] text-slate-400 leading-relaxed font-medium">
+                보완 필요 신호는 자동 선정 조건을 충족하지 못한 기록입니다.<br/>
+                엔진 선정 대상(HERO/Main)에는 포함되지 않으며, 데이터 보완 후 재검토가 권장됩니다.
+            </p>
+        </div>
+    ` : '';
+
     if (sortedDates.length === 0) {
-        container.innerHTML = intelHtml + `
+        container.innerHTML = intelHtml + infoHtml + `
             <div class="p-20 border border-dashed border-slate-800 rounded-2xl text-center space-y-2">
                 <div class="text-3xl grayscale opacity-10">📂</div>
                 <div class="text-slate-700 font-black uppercase tracking-[0.2em] text-[10px]">No records found for ${state.activeTab}</div>
@@ -232,7 +244,7 @@ function renderHistoryList(container, state) {
         return;
     }
 
-    container.innerHTML = intelHtml + sortedDates.map((date, idx) => {
+    container.innerHTML = intelHtml + infoHtml + sortedDates.map((date, idx) => {
         const dayItems = grouped[date];
 
         // Daily Delta (v2.7)
