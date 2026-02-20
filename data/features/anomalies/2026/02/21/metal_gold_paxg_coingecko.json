@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-02-21T08:21:02Z",
+    "dataset_id": "metal_gold_paxg_coingecko",
+    "entity": "XAUUSD",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": 1.52,
+      "percentile": 50.0,
+      "value": 5111.39,
+      "rolling_mean_20d": 4984.4275,
+      "reasoning": "Z-Score 1.52 >= 1.5"
+    }
+  }
+]
