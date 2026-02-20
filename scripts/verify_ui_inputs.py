@@ -116,20 +116,23 @@ def verify_ui_inputs():
     if density_issues: missing.append("ui_density_fail")
     if unsafe_literals: missing.append("unsafe_js_templates")
 
-    # [PHASE 8] v2.5 HERO Stabilization & Segregation Assertions
+    # [PHASE 9] v2.6 Decision Console & History Intelligence Assertions
     if js_dir.exists():
+        # Today View v2.6 Structural Check
         today_js = js_dir / "operator_today.js"
         if today_js.exists():
             content = today_js.read_text()
-            # Assert HERO completeness check
-            if "completeItems = items.filter(i => !i.incomplete)" not in content:
-                print(f"❌ Missing HERO completeness guard in {today_js.name}")
-                density_issues.append("missing_hero_stabilization")
-            
-            # Assert Segregated List rendering
-            if "보완 필요 신호" not in content:
-                print(f"❌ Missing Incomplete List segregation in {today_js.name}")
-                density_issues.append("missing_segregation")
+            if "Decision Alert" not in content or "SECTION A — TODAY STATUS SUMMARY" not in content:
+                 print(f"❌ Missing v2.6 Decision Console components in {today_js.name}")
+                 density_issues.append("missing_decision_console")
+        
+        # History View v2.6 Tab & Trend Check
+        history_js = js_dir / "operator_history.js"
+        if history_js.exists():
+            content = history_js.read_text()
+            if "tab-complete" not in content or "Daily Trend Intelligence" not in content:
+                print(f"❌ Missing v2.6 History Intelligence components in {history_js.name}")
+                density_issues.append("missing_history_intelligence")
 
     # Final Summary
     if missing or density_issues:
