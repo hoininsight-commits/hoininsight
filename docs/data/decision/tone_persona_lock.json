@@ -1,0 +1,67 @@
+[
+  {
+    "topic_id": "75131fcb-ea45-402c-af06-b2656b30a516",
+    "persona": "POLICY_ANALYST",
+    "tone": "EXPLANATORY",
+    "stance": "DATA_VALIDATED",
+    "authority_level": "HIGH",
+    "confidence_level": "HIGH",
+    "emotion_level": "LOW",
+    "risk_disclaimer_mode": "IMPLICIT",
+    "lock_reason": [
+      "PRETEXT_SCORE=0.92",
+      "EARNINGS_VALIDATED"
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  },
+  {
+    "topic_id": "da334eb9-00c5-46dc-bb5c-6686d5b2c8e0",
+    "persona": "POLICY_ANALYST",
+    "tone": "OBSERVATIONAL",
+    "stance": "STRUCTURAL",
+    "authority_level": "MEDIUM",
+    "confidence_level": "LOW",
+    "emotion_level": "LOW",
+    "risk_disclaimer_mode": "EXPLICIT",
+    "lock_reason": [
+      "FLOW_ROTATION_CONFIRMED"
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  },
+  {
+    "topic_id": "HYP-fab88b81",
+    "persona": "MARKET_OBSERVER",
+    "tone": "ASSERTIVE",
+    "stance": "DATA_VALIDATED",
+    "authority_level": "MEDIUM",
+    "confidence_level": "HIGH",
+    "emotion_level": "LOW",
+    "risk_disclaimer_mode": "IMPLICIT",
+    "lock_reason": [],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
+  }
+]

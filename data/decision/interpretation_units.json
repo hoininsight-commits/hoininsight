@@ -1,7 +1,7 @@
 [
   {
-    "interpretation_id": "22abe012-c679-4441-bd22-44c9fc3178a7",
-    "as_of_date": "2026-02-20",
+    "interpretation_id": "75131fcb-ea45-402c-af06-b2656b30a516",
+    "as_of_date": "2026-02-21",
     "target_sector": "TECH_INFRA_KOREA",
     "interpretation_key": "STRUCTURAL_ROUTE_FIXATION",
     "why_now_type": "Schedule-driven",
@@ -18,8 +18,8 @@
     }
   },
   {
-    "interpretation_id": "6add55c1-2e88-4ae9-890b-9a367e64f8ee",
-    "as_of_date": "2026-02-20",
+    "interpretation_id": "da334eb9-00c5-46dc-bb5c-6686d5b2c8e0",
+    "as_of_date": "2026-02-21",
     "target_sector": "FINANCIAL_VALUE_UP",
     "interpretation_key": "FUNDAMENTAL_RE-RATING",
     "why_now_type": "State-driven",
@@ -36,7 +36,7 @@
   {
     "interpretation_id": "HYP-fab88b81",
     "mode": "HYPOTHESIS_JUMP",
-    "as_of_date": "2026-02-20",
+    "as_of_date": "2026-02-21",
     "target_sector": "GENERAL_ALPHA",
     "interpretation_key": "HYPOTHESIS_US_MA_RUMOR",
     "why_now_type": "State-driven",
@@ -71,61 +71,5 @@
       "hypothesis_source_trust": "A"
     },
     "source_ref": {}
-  },
-  {
-    "interpretation_id": "IS-96-20260222-NVID-Open",
-    "as_of_date": "2026-02-22",
-    "target_sector": "STRATEGIC_ALLIANCE",
-    "interpretation_key": "RELATIONSHIP_BREAK_RISK",
-    "theme": "RELATIONSHIP_BREAK_RISK",
-    "confidence_score": 0.6,
-    "evidence_tags": [
-      "Manual Signal"
-    ],
-    "structural_narrative": "NVIDIA와 OpenAI 사이의 supplier_dependency 관계에서 구조적 균열 신호가 감지되었습니다. (Stress Score: 0.6)",
-    "derived_metrics_snapshot": {
-      "stress_score": 0.6,
-      "signals": {
-        "capital_link": {
-          "present": false,
-          "amount_usd": null
-        },
-        "supply_dependency": {
-          "present": false,
-          "note": ""
-        },
-        "statement_divergence": {
-          "present": true,
-          "note": ""
-        },
-        "deal_reprice": {
-          "present": true,
-          "note": ""
-        }
-      },
-      "break_risk": "MED",
-      "reliability": 0.9
-    },
-    "hypothesis_jump": {
-      "status": "HOLD",
-      "trigger_reason": "Relationship Stress (MED)",
-      "independent_sources_count": 1
-    },
-    "why_now": [
-      "NVIDIA exclusive supply priority re-evaluation revealed in internal memo."
-    ],
-    "checklist_3": [
-      "confirm_source_2plus (n>=2 independent sources)",
-      "confirm_capital_link_change",
-      "confirm_supplier_switch_signals"
-    ],
-    "risk_3": [
-      "rumor risk",
-      "negotiation reversal",
-      "timing uncertainty"
-    ],
-    "evidence_refs": [
-      "manual"
-    ]
   }
 ]
