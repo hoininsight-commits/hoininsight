@@ -1,10 +1,11 @@
 
 /**
- * Operator History View v2.6 — DECISION MODE UPGRADE
- * Features: Tabbed Interface (Complete vs Incomplete), Daily Trend Intelligence
+ * Operator History View v2.7 — DECISION CARD SCHEMA ADAPTER
+ * Features: Tabbed Interface (Complete vs Incomplete), Daily Trend Intelligence,
+ *           Decision Card schema support via extractDecisions
  */
 
-import { UI_SAFE, normalizeDecision, assertNoUndefined } from './utils.js?v=2.3';
+import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.4';
 
 export async function initHistoryView(container) {
     container.innerHTML = `
@@ -25,9 +26,15 @@ export async function initHistoryView(container) {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
                 if (!res.ok) return;
                 const data = await res.json();
-                const items = Array.isArray(data) ? data : [data];
-                items.forEach(item => {
-                    const norm = normalizeDecision(item);
+
+                // ADAPTER: handles Decision Card / array / legacy / non-decision (skip empty)
+                const rawItems = extractDecisions(data);
+                if (rawItems.length === 0) return;
+
+                rawItems.forEach(item => {
+                    const norm = item._source === 'decision_card'
+                        ? { ...item }              // already converted by adapter
+                        : normalizeDecision(item); // legacy item
                     allDecisions.push({ ...norm, _file: file });
                 });
             } catch (e) { console.warn(`Skip ${file}`, e); }
@@ -168,8 +175,10 @@ function renderHistoryList(container, state) {
 
     // Global Sorting & Filtering (v2.6 Unified)
     const filtered = state.data.filter(item => {
-        if (isCompView && item.incomplete) return false;
-        if (!isCompView && !item.incomplete) return false;
+        // Use data_incomplete (set by adapter) OR the legacy `incomplete` flag
+        const isIncomplete = item.data_incomplete || item.incomplete || false;
+        if (isCompView && isIncomplete) return false;
+        if (!isCompView && !isIncomplete) return false;
 
         const typeMatch = state.filters.type === 'All' || item.why_now_type === state.filters.type;
         const intMatch = item.intensity >= state.filters.intensity;

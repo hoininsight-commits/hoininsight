@@ -1,10 +1,11 @@
 
 /**
- * Operator Today View v2.6 — DECISION MODE UPGRADE
- * Features: Structured No-Signal Panel, Strongest HOLD/Incomplete Highlighting
+ * Operator Today View v2.7 — DECISION CARD SCHEMA ADAPTER
+ * Features: Structured No-Signal Panel, Strongest HOLD/Incomplete Highlighting,
+ *           Decision Card schema support via extractDecisions, latest-card fallback
  */
 
-import { UI_SAFE, normalizeDecision, assertNoUndefined } from './utils.js?v=2.3';
+import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.4';
 
 let CACHED_MANIFEST = null;
 
@@ -17,8 +18,9 @@ export async function initTodayView(container) {
         </div>
     `;
 
-    const today = new Date().toLocaleDateString('en-CA');
-    const debug = { today, matches: 0, totalFiles: 0, mismatchReasons: [] };
+    const todayDate = new Date();
+    const todayStr = todayDate.toLocaleDateString('en-CA'); // YYYY-MM-DD
+    const debug = { today: todayStr, matches: 0, totalFiles: 0, mismatchReasons: [] };
 
     try {
         if (!CACHED_MANIFEST) {
@@ -31,27 +33,38 @@ export async function initTodayView(container) {
 
         const allDecisions = [];
         const historyDecisions = [];
+        const latestPool = []; // holds all normalised items for fallback
+
         const fetchTasks = (CACHED_MANIFEST.files || []).map(async (file) => {
             try {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
                 if (!res.ok) return;
                 const data = await res.json();
-                const items = Array.isArray(data) ? data : [data];
 
-                items.forEach(item => {
-                    const norm = normalizeDecision(item);
-                    norm._file = file; // Attach for status tooltip (v2.8)
+                // ADAPTER: extractDecisions handles Decision Card / array / legacy / non-decision
+                const rawItems = extractDecisions(data);
+                if (rawItems.length === 0) return; // non-decision file — skip
 
-                    // Keep for 7-day average calculation (v2.8)
+                rawItems.forEach(item => {
+                    // Items from extractDecisions may already be normalised (Decision Card path)
+                    // but we still run normalizeDecision for legacy items to fill missing fields.
+                    const norm = item._source === 'decision_card'
+                        ? { ...item }              // already converted
+                        : normalizeDecision(item); // legacy item
+                    norm._file = file;
+
+                    // 7-day pool for comparison widget
                     const itemDate = new Date(norm.date);
                     const diffDays = (todayDate - itemDate) / (1000 * 60 * 60 * 24);
-                    if (diffDays >= 0 && diffDays <= 7) {
+                    if (!isNaN(diffDays) && diffDays >= 0 && diffDays <= 7) {
                         historyDecisions.push(norm);
                     }
 
+                    latestPool.push(norm); // always add to fallback pool
+
                     let isToday = false;
                     if (norm.date === todayStr) isToday = true;
-                    else if (norm.selected_at.startsWith(todayStr)) isToday = true;
+                    else if (norm.selected_at && norm.selected_at.startsWith(todayStr)) isToday = true;
 
                     if (isToday) {
                         allDecisions.push(norm);
@@ -66,6 +79,19 @@ export async function initTodayView(container) {
         });
 
         await Promise.all(fetchTasks);
+
+        // FALLBACK (v2.7): if today's date matched nothing, show latest 1 card
+        if (allDecisions.length === 0 && latestPool.length > 0) {
+            latestPool.sort((a, b) => {
+                const ta = new Date(a.selected_at || a.date || 0).getTime();
+                const tb = new Date(b.selected_at || b.date || 0).getTime();
+                return tb - ta;
+            });
+            const latest = latestPool[0];
+            latest._fallback = true; // mark for optional UI note
+            allDecisions.push(latest);
+            console.info('[Today] No signal for today — showing latest decision card as fallback:', latest._file);
+        }
 
         // UNIFIED SORTING RULE (v2.6)
         const getGlobalRank = (item) => {
