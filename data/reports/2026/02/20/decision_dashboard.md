@@ -197,36 +197,36 @@
 | 60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스 | Structural implication: '60조 캐나다 잠수함 수주 위한 정부지원 확약서 서명식 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 갤S26 가입자 유치 나선 SKT·KT·LGU+…보조금 경쟁 재점화되나 - 블로터 | Structural implication: '갤S26 가입자 유치 나선 SKT·KT·LGU+…보조금 경쟁 재점화되나 - 블로터' suggests a shift in NEWS dynamics. | LOW |
 | 다음 수 내다봐야 고수라는데…“반도체 이후 뭐지?” 리서치센터장에 물어보니 - 매일경제 | Structural implication: '다음 수 내다봐야 고수라는데…“반도체 이후 뭐지?” 리서치센터장에 물어보니 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 블랙록 펀드 어드바이저스, SK하이닉스 지분 5% 신규 취득 보고 - 데이터투자 | Structural implication: '블랙록 펀드 어드바이저스, SK하이닉스 지분 5% 신규 취득 보고 - 데이터투자' suggests a shift in NEWS dynamics. | LOW |
 | 관세 성적표는 최악인데…트럼프 “내가 가장 좋아하는 단어는 관세” 또 반복 - 조선일보 | Structural implication: '관세 성적표는 최악인데…트럼프 “내가 가장 좋아하는 단어는 관세” 또 반복 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| HBM4 테스트 시간 증가에 소켓 업계 '화색' - 디일렉 | Structural implication: 'HBM4 테스트 시간 증가에 소켓 업계 '화색' - 디일렉' suggests a shift in NEWS dynamics. | LOW |
+| 주담대 변동금리 5개월 만에 하락 전환…1월 코픽스 0.12%p↓ - 연합인포맥스 | Structural implication: '주담대 변동금리 5개월 만에 하락 전환…1월 코픽스 0.12%p↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 美 사모대출 ’환매 중단’ 충격…월가 "금융위기 전조일 수도" By Economic Review - Investing.com 한국어 | Structural implication: '美 사모대출 ’환매 중단’ 충격…월가 "금융위기 전조일 수도" By Economic Review - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
 | AI 코딩 툴 뚫렸다…해커, 오픈클로까지 무단 설치 - 디지털투데이 | Structural implication: 'AI 코딩 툴 뚫렸다…해커, 오픈클로까지 무단 설치 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스 | Structural implication: '뉴욕증시, 이란·블루아울이 자극한 위험 회피…하락 마감 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| "저점인 줄 알았는데" 공포에 떤다…'비트코인 대폭락' 오나? [스프] - v.daum.net | Structural implication: '"저점인 줄 알았는데" 공포에 떤다…'비트코인 대폭락' 오나? [스프] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보 | Structural implication: '비트코인 다시 1억 밑으로… 시장 심리 ‘극단적 공포’ - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com | Structural implication: '삼성전자, 강력한 디바이스 에이전트로 진화한 ‘빅스비(Bixby)’ 베타 프로그램 운영 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
-| 구글·애플, 음악 생성 AI 시장 놓고 맞대결 - 지디넷코리아 | Structural implication: '구글·애플, 음악 생성 AI 시장 놓고 맞대결 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 파마리서치, 영업익 70%↑… JW중외ㆍ휴온스도 ‘알짜경영’ - 메디소비자뉴스 | Structural implication: '파마리서치, 영업익 70%↑… JW중외ㆍ휴온스도 ‘알짜경영’ - 메디소비자뉴스' suggests a shift in NEWS dynamics. | LOW |
-| “기내 보조배터리 금지했지만”···사각지대는 여전 - 이뉴스투데이 | Structural implication: '“기내 보조배터리 금지했지만”···사각지대는 여전 - 이뉴스투데이' suggests a shift in NEWS dynamics. | LOW |
-| "AI시대 나만의 창의력 덕질·딴짓에서 나와요" | Structural implication: '"AI시대 나만의 창의력 덕질·딴짓에서 나와요"' suggests a shift in NEWS dynamics. | LOW |
-| 포스코청암상에 최경수·최연수·정기로·서울여상 | Structural implication: '포스코청암상에 최경수·최연수·정기로·서울여상' suggests a shift in NEWS dynamics. | LOW |
-| [표] 주말 레저 날씨 | Structural implication: '[표] 주말 레저 날씨' suggests a shift in NEWS dynamics. | LOW |
-| "금융소송서 투자자 책임 커져…꼼꼼히 따져야" | Structural implication: '"금융소송서 투자자 책임 커져…꼼꼼히 따져야"' suggests a shift in NEWS dynamics. | LOW |
-| “실종자 끝내 못 찾아”…음성 생필 공장 화재, 수색 22일 만에 종료 | Structural implication: '“실종자 끝내 못 찾아”…음성 생필 공장 화재, 수색 22일 만에 종료' suggests a shift in NEWS dynamics. | LOW |
-| 이재명 대통령, 국군 임관식서 ‘강한 안보’ 강조… “평화는 압도적 힘의 결과” | Structural implication: '이재명 대통령, 국군 임관식서 ‘강한 안보’ 강조… “평화는 압도적 힘의 결과”' suggests a shift in NEWS dynamics. | LOW |
-| “말귀 금방 알아듣네”…삼성전자, ‘빅스비’ 베타 프로그램 운영 | Structural implication: '“말귀 금방 알아듣네”…삼성전자, ‘빅스비’ 베타 프로그램 운영' suggests a shift in NEWS dynamics. | LOW |
-| 한-캐 외교·국방 2+2 회의 25일 개최…군사정보보호협정 체결 | Structural implication: '한-캐 외교·국방 2+2 회의 25일 개최…군사정보보호협정 체결' suggests a shift in NEWS dynamics. | LOW |
-| “비싸서 도저히 쓸 수가 없다”…140% 상승한 은 대신 떠오른 ‘이것’ | Structural implication: '“비싸서 도저히 쓸 수가 없다”…140% 상승한 은 대신 떠오른 ‘이것’' suggests a shift in NEWS dynamics. | LOW |
-| 코스피, 사상 첫 5800 돌파 | Structural implication: '코스피, 사상 첫 5800 돌파' suggests a shift in NEWS dynamics. | LOW |
-| 볼보 EX30 최대 761만원 인하...가격파괴 승부수 | Structural implication: '볼보 EX30 최대 761만원 인하...가격파괴 승부수' suggests a shift in NEWS dynamics. | LOW |
-| Y2K감성 무장한 키키 … 콘크리트 차트 뚫었다 | Structural implication: 'Y2K감성 무장한 키키 … 콘크리트 차트 뚫었다' suggests a shift in NEWS dynamics. | LOW |
-| 서슬퍼런 도끼에서 푸근한 동그라미로 … 얼굴에 시대를 새겼다 | Structural implication: '서슬퍼런 도끼에서 푸근한 동그라미로 … 얼굴에 시대를 새겼다' suggests a shift in NEWS dynamics. | LOW |
-| [전형민의 와인프릭] '신의 미각' 와인 대통령, 숫자로 맛 읽는 경제학자 … 와인을 사랑한 두 천재의 대결 | Structural implication: '[전형민의 와인프릭] '신의 미각' 와인 대통령, 숫자로 맛 읽는 경제학자 … 와인을 사랑한 두 천재의 대결' suggests a shift in NEWS dynamics. | LOW |
-| 국가대표 AI 정예팀 추가 선발에 모티프테크놀로지스 선정 | Structural implication: '국가대표 AI 정예팀 추가 선발에 모티프테크놀로지스 선정' suggests a shift in NEWS dynamics. | LOW |
-| 넥슨 신임 회장에 ‘아크 레이더스’ 흥행 주역 패트릭 쇠더룬드 | Structural implication: '넥슨 신임 회장에 ‘아크 레이더스’ 흥행 주역 패트릭 쇠더룬드' suggests a shift in NEWS dynamics. | LOW |
-| [MBN] 김대호·김광규의 파란만장 인생사 | Structural implication: '[MBN] 김대호·김광규의 파란만장 인생사' suggests a shift in NEWS dynamics. | LOW |
-| [MBN] 등뼈·오징어·럼주 … 치열한 제빵 재료 경쟁 | Structural implication: '[MBN] 등뼈·오징어·럼주 … 치열한 제빵 재료 경쟁' suggests a shift in NEWS dynamics. | LOW |
-| 일상 파고든 AI영상 … 10명 중 6명 "구분 어려워" | Structural implication: '일상 파고든 AI영상 … 10명 중 6명 "구분 어려워"' suggests a shift in NEWS dynamics. | LOW |
-| LG에너지솔루션, 4000억원 규모 회사채 발생…24일 수요 예측 실시 | Structural implication: 'LG에너지솔루션, 4000억원 규모 회사채 발생…24일 수요 예측 실시' suggests a shift in NEWS dynamics. | LOW |
+| 민주당, 스테이블코인 이자 금지 가닥…뱅크런 우려 던다 - 지디넷코리아 | Structural implication: '민주당, 스테이블코인 이자 금지 가닥…뱅크런 우려 던다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| “텍스트 한 줄로 30초 음악 완성”…구글, 제미나이에 ‘리리아 3’ 탑재 - edaily.co.kr | Structural implication: '“텍스트 한 줄로 30초 음악 완성”…구글, 제미나이에 ‘리리아 3’ 탑재 - edaily.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| 의료 AI 빅3, 올해 '흑자 원년' 총력전 - 전자신문 | Structural implication: '의료 AI 빅3, 올해 '흑자 원년' 총력전 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
+| [박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스 | Structural implication: '[박상만 금속노조 위원장] “AI 도입하려면 노조와 합의하도록 법 바꿔야” - 매일노동뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 한국콜마 지난해 최대 실적…매출 2.7조·영업익 2396억 | Structural implication: '한국콜마 지난해 최대 실적…매출 2.7조·영업익 2396억' suggests a shift in NEWS dynamics. | LOW |
+| 쏟아지는 매물에 강남 상승 멈춰…"실수요자 4월 이후 매수 기회" | Structural implication: '쏟아지는 매물에 강남 상승 멈춰…"실수요자 4월 이후 매수 기회"' suggests a shift in NEWS dynamics. | LOW |
+| 주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불' | Structural implication: '주택 임대사업자 대출 총 13.9조… 80%가 올해 만기 도래 '발등의 불'' suggests a shift in NEWS dynamics. | LOW |
+| 6~11세 제자들 250회 성적학대 교장…항소심서 형량 반토막, 이유가 | Structural implication: '6~11세 제자들 250회 성적학대 교장…항소심서 형량 반토막, 이유가' suggests a shift in NEWS dynamics. | LOW |
+| 모바일어플라이언스, 100억 원 규모 전환사채 발행 | Structural implication: '모바일어플라이언스, 100억 원 규모 전환사채 발행' suggests a shift in NEWS dynamics. | LOW |
+| KB스타리츠, 1500억원 규모 유상증자 실시 | Structural implication: 'KB스타리츠, 1500억원 규모 유상증자 실시' suggests a shift in NEWS dynamics. | LOW |
+| 하이드로리튬, 5억 5000만원 규모 유상증자 실시 | Structural implication: '하이드로리튬, 5억 5000만원 규모 유상증자 실시' suggests a shift in NEWS dynamics. | LOW |
+| 방산 수출, 계약하면 끝 ? 수출금융·기술이전·조세까지 최고위과정 2기 가동 | Structural implication: '방산 수출, 계약하면 끝 ? 수출금융·기술이전·조세까지 최고위과정 2기 가동' suggests a shift in NEWS dynamics. | LOW |
+| 불법사채 신고 1만건 육박 … 저신용자 돈줄 더 막힐 듯 | Structural implication: '불법사채 신고 1만건 육박 … 저신용자 돈줄 더 막힐 듯' suggests a shift in NEWS dynamics. | LOW |
+| [포토] "1020세대 공략" 삼전·LG유플과 손잡은 우리은행 | Structural implication: '[포토] "1020세대 공략" 삼전·LG유플과 손잡은 우리은행' suggests a shift in NEWS dynamics. | LOW |
+| [표] 외국환율고시표 | Structural implication: '[표] 외국환율고시표' suggests a shift in NEWS dynamics. | LOW |
+| 장민영 기업은행장 "생산적금융에 5년내 300조 투입" | Structural implication: '장민영 기업은행장 "생산적금융에 5년내 300조 투입"' suggests a shift in NEWS dynamics. | LOW |
+| 구제역 고양시로 확산 … 수도권 방역 비상 | Structural implication: '구제역 고양시로 확산 … 수도권 방역 비상' suggests a shift in NEWS dynamics. | LOW |
+| 신한銀, 기초연금수급자에 보이스피싱 무료보험 지원 | Structural implication: '신한銀, 기초연금수급자에 보이스피싱 무료보험 지원' suggests a shift in NEWS dynamics. | LOW |
+| 밀가루 담합 7개 기업에 과징금 최대 1.1조 예고 | Structural implication: '밀가루 담합 7개 기업에 과징금 최대 1.1조 예고' suggests a shift in NEWS dynamics. | LOW |
+| 보험업계 나홀로 '활짝 웃은' 삼성생명 | Structural implication: '보험업계 나홀로 '활짝 웃은' 삼성생명' suggests a shift in NEWS dynamics. | LOW |
+| ‘금융·원전·반도체’ K증시 이끈다…신고가 속출 랠리 [매경 자이앤트] | Structural implication: '‘금융·원전·반도체’ K증시 이끈다…신고가 속출 랠리 [매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
+| 내 자산을 지키는 최후의 보루…금·은을 포트폴리오에 담아볼까 [K주식, 이걸 사? 말아?] | Structural implication: '내 자산을 지키는 최후의 보루…금·은을 포트폴리오에 담아볼까 [K주식, 이걸 사? 말아?]' suggests a shift in NEWS dynamics. | LOW |
+| 정읍 양계장서 화재…닭 2500마리 폐사 | Structural implication: '정읍 양계장서 화재…닭 2500마리 폐사' suggests a shift in NEWS dynamics. | LOW |
+| 이재명 대통령, KAIST 학위수여식 참석... “R&D는 국가 생존 전략, 전폭 지원할 것” | Structural implication: '이재명 대통령, KAIST 학위수여식 참석... “R&D는 국가 생존 전략, 전폭 지원할 것”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
