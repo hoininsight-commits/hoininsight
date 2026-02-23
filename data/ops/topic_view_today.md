@@ -32,17 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "돈 4배 더 쓸어담는다"…역대급 호재에 '20만전자' 눈앞 [종목+] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,7 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### EQT, 더존비즈온 공개매수 2조 투입 - 한국경제 (ID: unknown)
+### EQT, 더존비즈온 공개매수 후 상폐 추진 [넘버스] - 블로터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성전자, 1년만에 ‘D램 글로벌 왕좌’ 되찾았다 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,12 +72,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '무기 사는 나라'에서 '무기 파는 나라'로…사우디 WDS 2026에서 읽는 글로벌 방산 지형의 대격변 - 글로벌이코노믹 (ID: unknown)
+### [속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 삼성전자, '갤럭시 S26'에 퍼플렉시티 AI 에이전트 기본 탑재 - AI타임스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 사우디 호위함 수주전에 佛·西·伊 참전… HD현대에 유리했던 판세 ‘흔들’ - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,7 +102,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 가짜 장부, 차명계좌, 허위 세금계산서…국세청, 유튜버 16명 탈세 조사 - 조선일보 (ID: unknown)
+### “후원금은 차명 계좌로”…‘700억대 탈루’ 유튜버들 세무조사 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,11 @@ No SHADOW candidates today.
 ### 여전히 높은 환율…전문가 60% "올해 금리인하 없다" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘차세대 리튬메탈 배터리’ 상용화 앞당겨…삼성SDI 연구팀, ‘성능 개선 기술’ 개발 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### MIK 레이싱, 2026 eN1 라인업 확정…오한솔·한재희, ‘전기차 레이싱’ 출전 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “막장 드라마 각본 수준” 민희진, 일본 투자자 보도에 반박 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 삼성생명, 삼성전자 연동 주주환원 확대 기대감에 52주 신고가 달성 [매경 자이앤트] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

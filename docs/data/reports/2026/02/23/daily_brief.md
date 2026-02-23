@@ -71,7 +71,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - **Topic:** [Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, crypto_btc_usd_spot_coingecko 동반)
-- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 98.0% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 97.6% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
