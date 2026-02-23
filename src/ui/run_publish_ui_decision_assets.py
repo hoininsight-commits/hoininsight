@@ -233,7 +233,7 @@ def _write_manifest(entries: List[Dict]) -> None:
 # ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
-def run_publish():
+def main():
     DOCS_DECISION.mkdir(parents=True, exist_ok=True)
 
     manifest_entries: List[Dict] = []
@@ -256,5 +256,5 @@ def run_publish():
 
 
 if __name__ == "__main__":
-    run_publish()
+    main()
 

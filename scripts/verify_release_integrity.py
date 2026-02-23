@@ -81,6 +81,31 @@ def main():
         print("❌ [FAIL] verify_no_duplicate_publishers.py not found.")
         all_passed = False
 
+    # V6. remote_verify_* freeze policy
+    print("\n[V6] Checking remote_verify_* freeze policy...")
+    frozen_dirs = list(root.glob("remote_verify_*"))
+    for d in frozen_dirs:
+        if d.is_dir():
+            for child in d.rglob("*"):
+                if child.is_file() and child.name != "DEPRECATED.md":
+                    print(f"❌ [FAIL] Active file found in frozen directory: {child}")
+                    all_passed = False
+    if not frozen_dirs:
+        print("✅ [OK] No remote_verify_* directories found.")
+
+    # V7. docs/ui/ data fetch constraints
+    print("\n[V7] Checking docs/ui/ data fetch constraints...")
+    forbidden_endpoints = ["data_outputs/", "remote_verify/", "legacy/"]
+    for js_file in docs_ui.rglob("*.js"):
+        try:
+            content = js_file.read_text(encoding="utf-8")
+            for forbidden in forbidden_endpoints:
+                if forbidden in content:
+                    print(f"❌ [FAIL] Disallowed fetch endpoint '{forbidden}' found in {js_file}")
+                    all_passed = False
+        except Exception as e:
+            print(f"⚠️ [WARN] Could not read {js_file} for V7 checking: {e}")
+
     if not all_passed:
         print("\n❌ RELEASE INTEGRITY CHECK FAILED.")
         sys.exit(1)

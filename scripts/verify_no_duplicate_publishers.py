@@ -37,14 +37,20 @@ def main():
         content = path.read_text(encoding="utf-8")
         
         # A shim is defined as a file that explicitly imports the SSOT instead of implementing logic.
-        if "from src.ui.run_publish_ui_decision_assets import" in content:
-            print(f"[{f_path}] -> Identified as WRAPPER SHIM")
+        exact_shim_text = 'from src.ui.run_publish_ui_decision_assets import main\nif __name__ == "__main__":\n    main()'
+        # Normalize newlines and strip whitespace for precise comparison
+        normalized_content = "\n".join([line.strip() for line in content.splitlines() if line.strip()])
+        normalized_target = "\n".join([line.strip() for line in exact_shim_text.splitlines() if line.strip()])
+
+        if normalized_content == normalized_target:
+            print(f"[{f_path}] -> Identified as EXACT WRAPPER SHIM")
             shim_count += 1
         elif path == ssot_path:
             print(f"[{f_path}] -> Identified as AUTHORITATIVE SSOT")
             impl_count += 1
         else:
-            print(f"[{f_path}] -> Identified as UNKNOWN IMPLEMENTATION / DUPLICATE")
+            print(f"[{f_path}] -> ERROR: UNKNOWN IMPLEMENTATION / INVALID SHIM CONTENT")
+            print(f"Content found:\n{content}")
             impl_count += 1
             
     print("-" * 50)
