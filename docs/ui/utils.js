@@ -72,12 +72,13 @@ export function normalizeDecision(raw) {
     const related_assets = UI_SAFE.safeArr(raw.related_assets);
     const content_hook = UI_SAFE.safeStr(raw.content_hook, "-");
 
-    // Completeness check
+    // Completeness check (strict policy: missing fields don't force 'incomplete' unless it's a critical explicit reject)
     let incomplete = false;
     const missingFields = [];
-    if (why_now_type === "-") { incomplete = true; missingFields.push("why_now_type"); }
-    if (title === "[Untitled]") { incomplete = true; missingFields.push("title"); }
-    if (selected_at === "-") { incomplete = true; missingFields.push("selected_at"); }
+    if (why_now_type === "-") { missingFields.push("why_now_type"); }
+    if (title.includes("제목 미정")) { incomplete = true; missingFields.push("title"); }
+    if (selected_at === "-") { missingFields.push("selected_at"); }
+    if (raw.data_incomplete === true) { incomplete = true; missingFields.push("data_incomplete"); }
 
     const normalized = {
         ...raw, // Preserving raw fields but prioritizing normalized ones below
@@ -127,23 +128,21 @@ export function convertDecisionCardToDecisionItem(card) {
         : rawTitle;
 
     // Date: card.date first, then parse from selected_at / generated_at_kst
-    let date = UI_SAFE.safeStr(card.date, null);
-    if (!date || date === "-") {
-        const ts = card.selected_at || card.generated_at_kst || null;
-        date = ts ? (ts.split("T")[0] || "-") : "-";
+    let raw_sat = UI_SAFE.safeStr(card.selected_at, "");
+    if (!raw_sat || raw_sat === "-" || raw_sat.startsWith("2026-01-01")) {
+        raw_sat = UI_SAFE.safeStr(card.generated_at_kst, UI_SAFE.safeStr(card.generated_at, ""));
     }
 
-    // selected_at — skip the known dummy placeholder "2026-01-01T09:00:00"
-    const raw_sat = card.selected_at || "";
-    const isDummy = raw_sat.startsWith("2026-01-01");
-    const fallbackTs = card.generated_at_kst || card.generated_at
-        || (card.date ? `${card.date}T00:00:00` : raw_sat || "-");
-    const selected_at = isDummy
-        ? UI_SAFE.safeStr(fallbackTs, "-")
-        : UI_SAFE.safeStr(raw_sat, fallbackTs || "-");
+    let date = UI_SAFE.safeStr(card.date, "");
+    if (!date || date === "-") {
+        date = (raw_sat && raw_sat !== "-") ? raw_sat.split("T")[0] : "-";
+    }
 
-    // intensity: normalise 0–1 → 0–100
+    const selected_at = (raw_sat && raw_sat !== "-") ? raw_sat : (date !== "-" ? `${date}T00:00:00` : "-");
+
+    // intensity: normalise 0–1 → 0–100, NaN → 0
     let intensity = UI_SAFE.safeNum(card.intensity, 0);
+    if (isNaN(intensity)) intensity = 0;
     if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
     else intensity = Math.round(intensity);
 
@@ -169,14 +168,14 @@ export function convertDecisionCardToDecisionItem(card) {
         card.decision_rationale || card.opening_sentence || card.why_now_summary || card.structural_rationale || "-"
     );
 
-    // Completeness — new schema uses permission_granted (false = incomplete)
+    // Completeness — only explicitly triggered (no falsy triggers for missing fields)
     const permissionGranted = card.permission_granted;
     const data_incomplete = !!(
+        card.data_incomplete === true ||
         permissionGranted === false ||
         card.speakability === "Review Required" ||
         rawSpeak === "EDITORIAL_CANDIDATE" ||
-        (card.title || "").includes("[Unknown]") ||
-        !card.card_version
+        title === "제목 미정 (데이터 보완 필요)"
     );
 
     return {
