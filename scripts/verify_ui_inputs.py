@@ -24,15 +24,32 @@ def verify_ui_inputs():
     
     missing = []
     
-    # Check UI files
+    # Check UI files (docs/data/ui) — may not exist after remote cleanup
     if not docs_data_ui.exists():
-        print(f"❌ Missing Directory: {docs_data_ui}")
-        missing.append("docs/data/ui/")
+        print(f"⚠️ Directory missing (may be expected after cleanup): {docs_data_ui}")
+        # Not a hard failure — new layout uses today.json + reports/
     else:
         for f in required_ui_files:
             if not (docs_data_ui / f).exists():
                 print(f"❌ Missing File: docs/data/ui/{f}")
                 missing.append(f"docs/data/ui/{f}")
+
+    # Check today.json (new primary decision file)
+    today_json_path = project_root / "docs" / "data" / "today.json"
+    if not today_json_path.exists():
+        print(f"⚠️ docs/data/today.json not found (engine may not have run today)")
+    else:
+        try:
+            with open(today_json_path) as f:
+                today_data = json.load(f)
+            if not today_data.get("card_version"):
+                print(f"⚠️ today.json missing card_version field")
+            else:
+                print(f"✅ today.json OK: title='{today_data.get('title','')[:40]}' status={today_data.get('status','?')}")
+        except Exception as e:
+            print(f"❌ today.json parse failed: {e}")
+            missing.append("today_json_error")
+
     
     # Check Decision files
     if not docs_data_decision.exists():

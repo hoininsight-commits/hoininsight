@@ -120,7 +120,7 @@ export function assertNoUndefined(text) {
  * Maps final_decision_card.json (card_version schema) to the UI's expected item shape.
  */
 export function convertDecisionCardToDecisionItem(card) {
-    // Title: prefer `topic` (the real topic title), fallback to `title`
+    // Title: prefer `topic` / `title` (new today.json has title directly)
     const rawTitle = card.topic || card.structural_topic || card.title || "-";
     const title = (rawTitle.includes("[Unknown]") || rawTitle === "-")
         ? "제목 미정 (데이터 보완 필요)"
@@ -147,25 +147,34 @@ export function convertDecisionCardToDecisionItem(card) {
     if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
     else intensity = Math.round(intensity);
 
-    // speakability: "Review Required" is treated as incomplete
-    const rawSpeak = UI_SAFE.safeStr(card.speakability, "HOLD");
-    const speakability = rawSpeak === "Review Required" ? "HOLD" : rawSpeak;
+    // speakability — handle new schema values (EDITORIAL_CANDIDATE → HOLD)
+    const rawSpeak = UI_SAFE.safeStr(card.speakability || card.status, "HOLD");
+    const speakabilityMap = {
+        "Review Required": "HOLD",
+        "EDITORIAL_CANDIDATE": "HOLD",
+        "CANDIDATE": "HOLD",
+        "APPROVED": "OK",
+    };
+    const speakability = speakabilityMap[rawSpeak] || (["OK", "HOLD"].includes(rawSpeak) ? rawSpeak : "HOLD");
 
-    // why_now_type
+    // why_now_type — new schema uses trigger_type
     const why_now_type = UI_SAFE.safeStr(
-        card.why_now?.trigger_type,
-        card.anchor_topic || card.why_now_type || "Hybrid"
+        card.trigger_type,
+        card.why_now?.trigger_type || card.anchor_topic || card.why_now_type || "Hybrid"
     );
 
-    // Summary / narrative
+    // Summary / narrative — new schema has one_liner / opening_sentence
     const why_now_summary = UI_SAFE.safeStr(
-        card.decision_rationale,
-        card.why_now_summary || card.structural_rationale || "-"
+        card.one_liner,
+        card.decision_rationale || card.opening_sentence || card.why_now_summary || card.structural_rationale || "-"
     );
 
-    // Completeness
+    // Completeness — new schema uses permission_granted (false = incomplete)
+    const permissionGranted = card.permission_granted;
     const data_incomplete = !!(
+        permissionGranted === false ||
         card.speakability === "Review Required" ||
+        rawSpeak === "EDITORIAL_CANDIDATE" ||
         (card.title || "").includes("[Unknown]") ||
         !card.card_version
     );
@@ -180,8 +189,8 @@ export function convertDecisionCardToDecisionItem(card) {
         why_now_type,
         why_now_summary,
         anomaly_points: UI_SAFE.safeArr(card.anomaly_points),
-        related_assets: UI_SAFE.safeArr(card.related_assets),
-        content_hook: UI_SAFE.safeStr(card.content_hook, "-"),
+        related_assets: UI_SAFE.safeArr(card.related_assets || card.tickers),
+        content_hook: UI_SAFE.safeStr(card.content_hook || card.opening_sentence, "-"),
         data_incomplete,
         incomplete: data_incomplete,
         missingFields: data_incomplete ? ["complete_signal"] : [],
@@ -190,6 +199,9 @@ export function convertDecisionCardToDecisionItem(card) {
         top_topics: UI_SAFE.safeArr(card.top_topics),
         hero_topic: card.hero_topic || null,
         final_score: card.final_score || null,
+        // New schema extras
+        permission_granted: permissionGranted,
+        status: rawSpeak,
         // Source marker
         _card_version: card.card_version || null,
         _source: "decision_card",
@@ -207,12 +219,12 @@ export function extractDecisions(fileJson) {
     if (Array.isArray(fileJson)) return fileJson;
     // Object with a `.decisions` array
     if (Array.isArray(fileJson.decisions)) return fileJson.decisions;
-    // Decision Card schema (card_version + date)
-    if (fileJson.card_version && fileJson.date) {
+    // Decision Card schema: new v1 (today.json) or legacy phase66 cards
+    if (fileJson.card_version && (fileJson.date || fileJson.title)) {
         return [convertDecisionCardToDecisionItem(fileJson)];
     }
-    // Fallback: single plain object with a title (legacy interpretation unit)
-    if (fileJson.title) return [fileJson];
-    // Non-decision file — skip silently
+    // Fallback: single plain object with a title and selected_at (legacy interpretation unit)
+    if (fileJson.title && fileJson.selected_at) return [fileJson];
+    // Non-decision file (daily_snapshot, collection_status, etc.) — skip silently
     return [];
 }
