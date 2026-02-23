@@ -39,8 +39,8 @@ Historical context:
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/23/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] VIX: data/features/anomalies/2026/02/23/risk_vix_fred.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
 - [MED] YIELD_CURVE: data/features/anomalies/2026/02/23/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
+- [MED] BTCUSD: data/features/anomalies/2026/02/23/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] GOLD: data/features/anomalies/2026/02/23/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
-- [LOW] BTCUSD: data/features/anomalies/2026/02/23/crypto_btc_usd_spot_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [LOW] US10Y: data/features/anomalies/2026/02/23/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] SPX: data/features/anomalies/2026/02/23/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/02/23/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -75,7 +75,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=1.79 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=1.89 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
