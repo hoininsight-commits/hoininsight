@@ -4,9 +4,9 @@
 **Hard Mode Active**: False
 
 ## Active Allowlist (Current Safety Net)
-- `src.ui.publish_ui_assets`: Docs publish path 아직 전환 중 **2026-03-15** (20 days left)
-- `src.ui.render_helpers`: UI legacy helper 임시 유지 **2026-03-15** (20 days left)
-- `src.ui.operator_main_contract`: 테스트용 임시 허용 **2026-02-28** (5 days left)
+- `src.ui.publish_ui_assets`: Docs publish path 아직 전환 중 **2026-03-15** (19 days left)
+- `src.ui.render_helpers`: UI legacy helper 임시 유지 **2026-03-15** (19 days left)
+- `src.ui.operator_main_contract`: 테스트용 임시 허용 **2026-02-28** (4 days left)
 
 ## Top Blocked Attempts (Failed in Test/CI)
 - `src.ui.capital_perspective_narrator`: **8** blocks
