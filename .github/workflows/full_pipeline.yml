@@ -328,27 +328,84 @@ jobs:
 
       - name: Prepare Docs for Deployment
         run: |
-          # [IS-56] Clean docs/data (PRESERVE docs/index.html and docs/legacy)
-          # We only want to refresh data, not the UI shell
-          rm -rf docs/data
+          # [IS-56 / LOCKDOWN] Safe cleanup: delete all docs/data EXCEPT decision dir
+          # WHY: rm -rf docs/data would nuke manifest.json — use targeted removal instead
+          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' -exec rm -rf {} + 2>/dev/null || true
           mkdir -p docs/data/decision
           mkdir -p docs/exports
           mkdir -p docs/issuesignal
-          
-          # COPY DATA ONLY (Do do not touch index.html)
-          cp -r data/dashboard/* docs/data/ || true
-          cp -r data/dashboard/issuesignal/* docs/issuesignal/ || true
-          cp -r data/reports docs/data/ || true
-          
-          # [IS-100] Adapt and Publish UI Decision Assets (This populates docs/data/decision)
+
+          # COPY DATA ONLY (do not touch index.html)
+          cp -r data/dashboard/* docs/data/ 2>/dev/null || true
+          cp -r data/dashboard/issuesignal/* docs/issuesignal/ 2>/dev/null || true
+          cp -r data/reports docs/data/ 2>/dev/null || true
+
+          # [LOCKDOWN] Verify decision source exists before syncing
+          if [ ! -d "data/decision" ]; then
+            echo "❌ LOCKDOWN: data/decision directory missing — skipping decision sync"
+          else
+            CARD_COUNT=$(find data/decision -name "final_decision_card.json" | wc -l | tr -d ' ')
+            echo "[LOCKDOWN] data/decision exists, ${CARD_COUNT} decision cards found"
+            # rsync WITHOUT --delete: preserves existing docs/data/decision files
+            rsync -a data/decision/ docs/data/decision/
+            echo "[LOCKDOWN] rsync complete"
+          fi
+
+          # [LOCKDOWN] Sync editorial_selection files (if available)
+          if [ -d "data/editorial" ]; then
+            mkdir -p docs/data/decision/editorial
+            cp data/editorial/editorial_selection_*.json docs/data/decision/editorial/ 2>/dev/null || true
+            ED_COUNT=$(ls docs/data/decision/editorial/ 2>/dev/null | wc -l | tr -d ' ')
+            echo "[LOCKDOWN] editorial synced: ${ED_COUNT} files"
+          fi
+
+          # [IS-100] Generate manifest + Publish UI Decision Assets
           python -m src.ui.run_publish_ui_decision_assets
-          
-          # [IS-51] Operational Dashboard Guarantee
-          # Flatten the latest operational dashboard to root docs for easy access
-          find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \;
+
+          # [IS-51] Flatten operational dashboard
+          find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \; 2>/dev/null || true
 
           # [IS-100] Generate Build Metadata
           echo "{\"commit\": \"$GITHUB_SHA\", \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\", \"date_kst\": \"$(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M:%S KST')\"}" > docs/data/build_meta.json
+
+
+      - name: Verify Decision Manifest (CI Guard)
+        run: |
+          MANIFEST="docs/data/decision/manifest.json"
+
+          # 1. manifest.json must exist
+          if [ ! -f "$MANIFEST" ]; then
+            echo "❌ DEPLOY GUARD: docs/data/decision/manifest.json is MISSING — aborting"
+            exit 1
+          fi
+          echo "✅ manifest.json exists"
+
+          # 2. manifest must have >= 1 entry, and all paths must exist on disk
+          python3 - << 'PYEOF'
+import json, sys
+from pathlib import Path
+base = Path("docs/data/decision")
+m = json.loads((base / "manifest.json").read_text())
+files = m.get("files_flat") or [
+    f if isinstance(f, str) else f.get("path", "")
+    for f in m.get("files", [])
+]
+if len(files) < 1:
+    print("❌ DEPLOY GUARD: manifest.files is empty — aborting")
+    sys.exit(1)
+missing = [f for f in files if not (base / f).exists()]
+if missing:
+    print(f"❌ DEPLOY GUARD: {len(missing)} manifest paths missing on disk:")
+    for f in missing:
+        print(f"   - {f}")
+    sys.exit(1)
+# Assert no non-decision files
+bad = [f for f in files if "snapshot" in f or "daily_snapshot" in f]
+if bad:
+    print(f"❌ DEPLOY GUARD: non-decision files in manifest: {bad}")
+    sys.exit(1)
+print(f"✅ DEPLOY GUARD: manifest OK — {len(files)} entries, all paths verified")
+PYEOF
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4
