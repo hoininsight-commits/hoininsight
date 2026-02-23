@@ -34,12 +34,12 @@ Historical context:
 - [HIGH] M2_USA: data/features/anomalies/2026/02/23/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/02/23/struct_dart_cb_bw.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/02/23/struct_dart_disposal.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
-- [HIGH] BTCUSD: data/features/anomalies/2026/02/23/crypto_btc_usd_spot_coingecko.json L2 Signal (base=6.00, final_m=10.56) | Mom: UP (slope=1.00) -> x1.1 | App7d=4
 - [MED] US02Y: data/features/anomalies/2026/02/23/rates_us02y_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] KOR_CPI: data/features/anomalies/2026/02/23/inflation_kor_cpi_ecos.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/02/23/rates_fed_funds_fred.json L1 Signal (base=3.00, final_m=6.15) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [MED] VIX: data/features/anomalies/2026/02/23/risk_vix_fred.json L1 Signal (base=3.00, final_m=5.53) | Mom: DOWN (slope=-0.50) -> x0.9 | App7d=7
 - [MED] YIELD_CURVE: data/features/anomalies/2026/02/23/derived_yield_curve_10y_2y.json L1 Signal (base=3.00, final_m=5.25) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
+- [MED] BTCUSD: data/features/anomalies/2026/02/23/crypto_btc_usd_spot_coingecko.json L1 Signal (base=3.00, final_m=4.80) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=4
 - [MED] GOLD: data/features/anomalies/2026/02/23/metal_gold_paxg_coingecko.json L1 Signal (base=3.00, final_m=4.35) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=3
 - [LOW] US10Y: data/features/anomalies/2026/02/23/rates_us10y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=5
 - [LOW] SPX: data/features/anomalies/2026/02/23/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -71,11 +71,11 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - **Topic:** [Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, crypto_btc_usd_spot_coingecko 동반)
-- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 97.6% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
+- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 98.0% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=1.91 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=1.92 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
