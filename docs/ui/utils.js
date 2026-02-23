@@ -209,6 +209,48 @@ export function convertDecisionCardToDecisionItem(card) {
 }
 
 /**
+ * PHASE ADAPTER: editorial_selection pick → decision item
+ */
+function convertEditorialPickToDecisionItem(pick, date) {
+    const title = UI_SAFE.safeStr(pick.theme || pick.promotion_hint, "제목 미정");
+    const why_now_type = UI_SAFE.safeStr(pick.dominant_type, "Hybrid");
+    const why_now_summary = UI_SAFE.safeStr(
+        pick.why_now, pick.editor_rationale || pick.numeric_evidence || "-"
+    );
+    const rawStatus = pick.status || "CANDIDATE";
+    const speakability = rawStatus === "APPROVED" ? "OK"
+        : rawStatus === "PUBLISHED" ? "OK"
+            : "HOLD";
+    const data_incomplete = !["APPROVED", "PUBLISHED"].includes(rawStatus);
+    const intensity = UI_SAFE.safeNum(
+        pick.editor_score != null ? pick.editor_score * 10 : null,
+        UI_SAFE.safeNum(pick.confidence_level === "HIGH" ? 80
+            : pick.confidence_level === "MEDIUM" ? 55 : 30, 50)
+    );
+
+    return {
+        title,
+        date: UI_SAFE.safeStr(date, "-"),
+        selected_at: date ? `${date}T00:00:00` : "-",
+        intensity: Math.min(100, Math.round(intensity)),
+        speakability,
+        why_now_type,
+        why_now_summary,
+        anomaly_points: UI_SAFE.safeArr(pick.angles),
+        related_assets: [],
+        content_hook: UI_SAFE.safeStr(pick.promotion_hint, "-"),
+        data_incomplete,
+        incomplete: data_incomplete,
+        missingFields: data_incomplete ? ["approval_pending"] : [],
+        display_badge: data_incomplete ? "CANDIDATE" : why_now_type,
+        // extras
+        confidence_level: pick.confidence_level || "-",
+        _source: "editorial_selection",
+        _status: rawStatus,
+    };
+}
+
+/**
  * PHASE ADAPTER: Universal dispatch — file JSON → decisions array
  * Used by both operator_today.js and operator_history.js.
  * Never throws; always returns an array (possibly empty).
@@ -219,6 +261,10 @@ export function extractDecisions(fileJson) {
     if (Array.isArray(fileJson)) return fileJson;
     // Object with a `.decisions` array
     if (Array.isArray(fileJson.decisions)) return fileJson.decisions;
+    // editorial_selection schema: { date, picks: [...] }
+    if (fileJson.date && Array.isArray(fileJson.picks) && fileJson.picks.length > 0) {
+        return fileJson.picks.map(p => convertEditorialPickToDecisionItem(p, fileJson.date));
+    }
     // Decision Card schema: new v1 (today.json) or legacy phase66 cards
     if (fileJson.card_version && (fileJson.date || fileJson.title)) {
         return [convertDecisionCardToDecisionItem(fileJson)];
