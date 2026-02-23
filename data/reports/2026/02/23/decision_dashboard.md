@@ -85,7 +85,7 @@
 - **Samples (Top 3)**:
   - [NEWS] [증시-마감] 관세 위헌에 코스피 5,931 찍고 전강후약 5,846 - 연합인포맥스 (Google_News_KR_Economy)
   - [NEWS] 한은 총재 이창용, "내수 회복·반도체 호조에 성장률 지난해보다 높아질 것" - 비즈니스포스트 (Google_News_KR_Economy)
-  - [NEWS] “당첨돼도 걱정이야”…서울 민간아파트 평당 분양가 또 역대 최고 - 매일경제 (Google_News_KR_Economy)
+  - [NEWS] "강남은 꿈도 못 꾸죠"…'6억 영끌' 30대 몰리더니 3억 뛰었다 - 한국경제 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -189,24 +189,34 @@
 |---|---|---|
 | [증시-마감] 관세 위헌에 코스피 5,931 찍고 전강후약 5,846 - 연합인포맥스 | Structural implication: '[증시-마감] 관세 위헌에 코스피 5,931 찍고 전강후약 5,846 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 한은 총재 이창용, "내수 회복·반도체 호조에 성장률 지난해보다 높아질 것" - 비즈니스포스트 | Structural implication: '한은 총재 이창용, "내수 회복·반도체 호조에 성장률 지난해보다 높아질 것" - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
-| “당첨돼도 걱정이야”…서울 민간아파트 평당 분양가 또 역대 최고 - 매일경제 | Structural implication: '“당첨돼도 걱정이야”…서울 민간아파트 평당 분양가 또 역대 최고 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| "강남은 꿈도 못 꾸죠"…'6억 영끌' 30대 몰리더니 3억 뛰었다 - 한국경제 | Structural implication: '"강남은 꿈도 못 꾸죠"…'6억 영끌' 30대 몰리더니 3억 뛰었다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “수도권 공급 비상등 켜졌다”…김포·하남 사실상 입주 ‘제로’ - 매일경제 | Structural implication: '“수도권 공급 비상등 켜졌다”…김포·하남 사실상 입주 ‘제로’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 압구정 현대 30억 낮춘 거래 2건…'최정점' 조정 시작? - 세상을 바꾸는 시민언론 민들레 | Structural implication: '압구정 현대 30억 낮춘 거래 2건…'최정점' 조정 시작? - 세상을 바꾸는 시민언론 민들레' suggests a shift in NEWS dynamics. | LOW |
 | “투자 비용 50% 줄여준다”… 日, 삼성전자·SK하이닉스에 끊임없는 러브콜 - 조선비즈 - Chosunbiz | Structural implication: '“투자 비용 50% 줄여준다”… 日, 삼성전자·SK하이닉스에 끊임없는 러브콜 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 코스피200 전체 이익 증가분 가운데 98%는 삼성전자·SK하이닉스 몫 - 조선일보 | Structural implication: '코스피200 전체 이익 증가분 가운데 98%는 삼성전자·SK하이닉스 몫 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 전분당 담합 의혹에 업체들 줄줄이 '가격 인하' - segye.com | Structural implication: '전분당 담합 의혹에 업체들 줄줄이 '가격 인하' - segye.com' suggests a shift in NEWS dynamics. | LOW |
-| “수도권 공급 비상등 켜졌다”…김포·하남 사실상 입주 ‘제로’ - 매일경제 | Structural implication: '“수도권 공급 비상등 켜졌다”…김포·하남 사실상 입주 ‘제로’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대기업-中企 월급 차이 평균 306만원…역대 최대로 벌어져 - 동아일보 | Structural implication: '대기업-中企 월급 차이 평균 306만원…역대 최대로 벌어져 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 다주택자보다 더 급한 무주택자… 노도강 ‘패닉바잉’ - v.daum.net | Structural implication: '다주택자보다 더 급한 무주택자… 노도강 ‘패닉바잉’ - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | “AI 다음은 뭐지?”…전문가들이 점찍은 후속 수혜주는 - 매일경제 | Structural implication: '“AI 다음은 뭐지?”…전문가들이 점찍은 후속 수혜주는 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보 | Structural implication: '美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보' suggests a shift in NEWS dynamics. | LOW |
 | 이달 1∼20일 수출 435억 달러…′역대 최대′ 기록 - 연합뉴스TV | Structural implication: '이달 1∼20일 수출 435억 달러…′역대 최대′ 기록 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 2030년까지 방산 스타트업 100개·벤처천억기업 30개 육성 - 한국경제 | Structural implication: '정부, 2030년까지 방산 스타트업 100개·벤처천억기업 30개 육성 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 외국인, 코스피서 올해 9조원대 순매도…하락 베팅? - 조선일보 | Structural implication: '외국인, 코스피서 올해 9조원대 순매도…하락 베팅? - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 더 안심할 수 있는’New 갤럭시 AI 구독클럽’ 업그레이드 출시 - samsung.com | Structural implication: '삼성전자, 더 안심할 수 있는’New 갤럭시 AI 구독클럽’ 업그레이드 출시 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
-| 서울 아파트값 작년에만 13.5% 상승…팬데믹 이후 ‘최대 상승폭’ - 매일경제 | Structural implication: '서울 아파트값 작년에만 13.5% 상승…팬데믹 이후 ‘최대 상승폭’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| “존재 이유에 의문”…비트코인 폭락장, 과거와 다른 8가지 [머니+] - 에너지경제신문 | Structural implication: '“존재 이유에 의문”…비트코인 폭락장, 과거와 다른 8가지 [머니+] - 에너지경제신문' suggests a shift in NEWS dynamics. | LOW |
 | 아마존 "해커들, AI 이용해 5주 만에 세계 방화벽 600대 침해" - 지디넷코리아 | Structural implication: '아마존 "해커들, AI 이용해 5주 만에 세계 방화벽 600대 침해" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 불장에도 올해 외국인 9조 팔았다…“반도체 차익실현” - 동아일보 | Structural implication: '코스피 불장에도 올해 외국인 9조 팔았다…“반도체 차익실현” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| “존재 이유에 의문”…비트코인 폭락장, 과거와 다른 8가지 [머니+] - 에너지경제신문 | Structural implication: '“존재 이유에 의문”…비트코인 폭락장, 과거와 다른 8가지 [머니+] - 에너지경제신문' suggests a shift in NEWS dynamics. | LOW |
+| 서울 아파트값 작년에만 13.5% 상승…팬데믹 이후 ‘최대 상승폭’ - 매일경제 | Structural implication: '서울 아파트값 작년에만 13.5% 상승…팬데믹 이후 ‘최대 상승폭’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 與 "코스피 7천 날아오르려면 3차 상법 개정 시급" - 연합인포맥스 | Structural implication: '與 "코스피 7천 날아오르려면 3차 상법 개정 시급" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 해외 인재들 돌아오더니…전세계 발칵 뒤집어 놓은 中바이오 - 한국경제 | Structural implication: '해외 인재들 돌아오더니…전세계 발칵 뒤집어 놓은 中바이오 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 한국남부발전, 2026년 상반기 신입사원 102명 공개 채용 | Structural implication: '한국남부발전, 2026년 상반기 신입사원 102명 공개 채용' suggests a shift in NEWS dynamics. | LOW |
+| 불씨 꺼진 잿더미도 못 버린다…산불에 몸살 앓더니 ‘과태료 벼락’ | Structural implication: '불씨 꺼진 잿더미도 못 버린다…산불에 몸살 앓더니 ‘과태료 벼락’' suggests a shift in NEWS dynamics. | LOW |
+| ‘한집 건너 편의점’ 요즘 왜 줄었나했더니…전략바꾼 편의점업계 | Structural implication: '‘한집 건너 편의점’ 요즘 왜 줄었나했더니…전략바꾼 편의점업계' suggests a shift in NEWS dynamics. | LOW |
+| 밀양 삼랑진읍 야산서 불…소방대응 1단계 발령 | Structural implication: '밀양 삼랑진읍 야산서 불…소방대응 1단계 발령' suggests a shift in NEWS dynamics. | LOW |
+| 강원정보문화산업진흥원, ‘가상융합산업혁신센터’ 운영 기관 선정 | Structural implication: '강원정보문화산업진흥원, ‘가상융합산업혁신센터’ 운영 기관 선정' suggests a shift in NEWS dynamics. | LOW |
+| “수도사들이 흙을 먹어요”…집념의 과학이 최고의 와인 만들었다 [전형민의 와인프릭] | Structural implication: '“수도사들이 흙을 먹어요”…집념의 과학이 최고의 와인 만들었다 [전형민의 와인프릭]' suggests a shift in NEWS dynamics. | LOW |
+| 고윤정, ‘시상식 공황’ 직접 해명…조인성 조언 뭐길래 | Structural implication: '고윤정, ‘시상식 공황’ 직접 해명…조인성 조언 뭐길래' suggests a shift in NEWS dynamics. | LOW |
+| 직장인이 가장 피곤한 때는?…9월, 수요일, 오후 1시 | Structural implication: '직장인이 가장 피곤한 때는?…9월, 수요일, 오후 1시' suggests a shift in NEWS dynamics. | LOW |
+| 故 김새론 유작 ‘우리는 매일매일’ 4일 개봉…“연기 위해 태어난 배우” | Structural implication: '故 김새론 유작 ‘우리는 매일매일’ 4일 개봉…“연기 위해 태어난 배우”' suggests a shift in NEWS dynamics. | LOW |
+| 과학적 근거에 따라...올 상반기 ‘사회적 거리두기’ 매뉴얼 마련 | Structural implication: '과학적 근거에 따라...올 상반기 ‘사회적 거리두기’ 매뉴얼 마련' suggests a shift in NEWS dynamics. | LOW |
 | “피규어 덕후들 용산서 다 본다는데”...일주일만에 1만3천명 찾은 아이파크몰 매장은 | Structural implication: '“피규어 덕후들 용산서 다 본다는데”...일주일만에 1만3천명 찾은 아이파크몰 매장은' suggests a shift in NEWS dynamics. | LOW |
 | 美 관세복원 …'슈퍼301조' 中부터 겨눴다 | Structural implication: '美 관세복원 …'슈퍼301조' 中부터 겨눴다' suggests a shift in NEWS dynamics. | LOW |
 | 메모리 빼곤 … 車·로봇 中에 다 밀려 | Structural implication: '메모리 빼곤 … 車·로봇 中에 다 밀려' suggests a shift in NEWS dynamics. | LOW |
@@ -217,16 +227,6 @@
 | "AI 명령받는 휴머노이드는 보안 위협 더 클것" | Structural implication: '"AI 명령받는 휴머노이드는 보안 위협 더 클것"' suggests a shift in NEWS dynamics. | LOW |
 | 해커로 돌변하는 AI … 민감 데이터는 반드시 인간이 관리해야 | Structural implication: '해커로 돌변하는 AI … 민감 데이터는 반드시 인간이 관리해야' suggests a shift in NEWS dynamics. | LOW |
 | 소방청, 설연휴 1355명 구조 … 車사고 줄고 산악사고 늘어 | Structural implication: '소방청, 설연휴 1355명 구조 … 車사고 줄고 산악사고 늘어' suggests a shift in NEWS dynamics. | LOW |
-| "최애 메뉴는 가래떡·쌍화차" 한방찻집 외국인으로 '북적' | Structural implication: '"최애 메뉴는 가래떡·쌍화차" 한방찻집 외국인으로 '북적'' suggests a shift in NEWS dynamics. | LOW |
-| [포토] 졸업식날 꽃처럼 웃는 학생들 | Structural implication: '[포토] 졸업식날 꽃처럼 웃는 학생들' suggests a shift in NEWS dynamics. | LOW |
-| '삼성 기밀유출' 파기환송 … 비밀 누설도 범죄로 봐야 | Structural implication: ''삼성 기밀유출' 파기환송 … 비밀 누설도 범죄로 봐야' suggests a shift in NEWS dynamics. | LOW |
-| '따릉이 해킹' 피의자 범행당시 중학생 | Structural implication: ''따릉이 해킹' 피의자 범행당시 중학생' suggests a shift in NEWS dynamics. | LOW |
-| 조희대 "사법 3법, 개헌 맞먹는데 공론화도 없어" | Structural implication: '조희대 "사법 3법, 개헌 맞먹는데 공론화도 없어"' suggests a shift in NEWS dynamics. | LOW |
-| [표] 오늘의 날씨 | Structural implication: '[표] 오늘의 날씨' suggests a shift in NEWS dynamics. | LOW |
-| "중국 LLM과 격차만 최소 3년 … 韓, 제조업 강점 살려 피지컬AI로 승부를" | Structural implication: '"중국 LLM과 격차만 최소 3년 … 韓, 제조업 강점 살려 피지컬AI로 승부를"' suggests a shift in NEWS dynamics. | LOW |
-| 中 조선 굴기 가속 … 수십년 韓노하우, AI로 모두 따라잡아 | Structural implication: '中 조선 굴기 가속 … 수십년 韓노하우, AI로 모두 따라잡아' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 불장 놓친 개미들…코스닥으로 진격 | Structural implication: '코스피 불장 놓친 개미들…코스닥으로 진격' suggests a shift in NEWS dynamics. | LOW |
-| 독감 유행하고 車사고 급증 … 보험사 실적 '울상' | Structural implication: '독감 유행하고 車사고 급증 … 보험사 실적 '울상'' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
