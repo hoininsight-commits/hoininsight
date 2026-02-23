@@ -380,32 +380,9 @@ jobs:
           fi
           echo "✅ manifest.json exists"
 
-          # 2. manifest must have >= 1 entry, and all paths must exist on disk
-          python3 - << 'PYEOF'
-import json, sys
-from pathlib import Path
-base = Path("docs/data/decision")
-m = json.loads((base / "manifest.json").read_text())
-files = m.get("files_flat") or [
-    f if isinstance(f, str) else f.get("path", "")
-    for f in m.get("files", [])
-]
-if len(files) < 1:
-    print("❌ DEPLOY GUARD: manifest.files is empty — aborting")
-    sys.exit(1)
-missing = [f for f in files if not (base / f).exists()]
-if missing:
-    print(f"❌ DEPLOY GUARD: {len(missing)} manifest paths missing on disk:")
-    for f in missing:
-        print(f"   - {f}")
-    sys.exit(1)
-# Assert no non-decision files
-bad = [f for f in files if "snapshot" in f or "daily_snapshot" in f]
-if bad:
-    print(f"❌ DEPLOY GUARD: non-decision files in manifest: {bad}")
-    sys.exit(1)
-print(f"✅ DEPLOY GUARD: manifest OK — {len(files)} entries, all paths verified")
-PYEOF
+          # 2. manifest entries >= 1, all paths on disk, no non-decision files
+          python3 scripts/ci_guard_manifest.py
+
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4
