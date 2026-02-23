@@ -51,6 +51,31 @@ def _utc_now() -> str:
 # ---------------------------------------------------------------------------
 # Step 1: Publish today.json from final_decision_card (if available)
 # ---------------------------------------------------------------------------
+def _load_approval_titles() -> set:
+    """Loads approved titles from engine gates to merge into UI cards."""
+    approved_titles = set()
+    try:
+        f = ROOT / "data" / "ops" / "topic_speakability_today.json"
+        if f.exists():
+            data = json.loads(f.read_text(encoding="utf-8"))
+            for v in data.get("verdicts", []):
+                if v.get("speakability") == "SPEAKABLE_NOW":
+                    approved_titles.add(v.get("title", ""))
+    except Exception as e:
+        print(f"[PUBLISH] warn loading topic_speakability_today: {e}")
+        
+    try:
+        f2 = ROOT / "data" / "ops" / "auto_approved_today.json"
+        if f2.exists():
+            data2 = json.loads(f2.read_text(encoding="utf-8"))
+            for a in data2.get("auto_approved", []):
+                approved_titles.add(a.get("title", ""))
+    except Exception as e:
+        print(f"[PUBLISH] warn loading auto_approved_today: {e}")
+        
+    return approved_titles
+
+
 def _publish_today() -> Optional[Dict]:
     """
     Copies the most recent final_decision_card.json → docs/data/decision/today.json.
@@ -77,10 +102,23 @@ def _publish_today() -> Optional[Dict]:
     shutil.copy2(source, dest)
     print(f"[PUBLISH] today.json → {dest}")
 
-    # Read to get actual date from file
+    # Read to get actual date from file and merge approvals
     try:
         data = json.loads(dest.read_text(encoding="utf-8"))
         file_date = data.get("date", kst_date) or kst_date
+        
+        # Merge approval status
+        approved_titles = _load_approval_titles()
+        if approved_titles and "top_topics" in data:
+            changed = False
+            for top in data["top_topics"]:
+                if top.get("title") in approved_titles:
+                    top["status"] = "APPROVED"
+                    top["speakability"] = "OK"
+                    changed = True
+            if changed:
+                dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+                
     except Exception:
         file_date = kst_date
 
@@ -108,10 +146,26 @@ def _publish_editorial() -> List[Dict]:
 
     dest_dir = DOCS_DECISION / "editorial"
     dest_dir.mkdir(parents=True, exist_ok=True)
+    
+    approved_titles = _load_approval_titles()
 
     for src in sorted(DATA_EDITORIAL.glob("editorial_selection_*.json")):
         dest = dest_dir / src.name
         shutil.copy2(src, dest)
+        
+        # Merge approval status
+        try:
+            ed_data = json.loads(dest.read_text(encoding="utf-8"))
+            changed = False
+            for pick in ed_data.get("picks", []):
+                pick_title = pick.get("theme") or pick.get("title")
+                if pick_title in approved_titles:
+                    pick["status"] = "APPROVED"
+                    changed = True
+            if changed:
+                dest.write_text(json.dumps(ed_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        except Exception as e:
+            print(f"[PUBLISH] warn merging approvals for {src.name}: {e}")
 
         # Extract date from filename: editorial_selection_2026-02-23.json
         date_str = src.stem.replace("editorial_selection_", "")
@@ -125,7 +179,6 @@ def _publish_editorial() -> List[Dict]:
     entries.sort(key=lambda e: e["date"], reverse=True)
     print(f"[PUBLISH] editorial: {len(entries)} files → {dest_dir}")
     return entries
-
 
 # ---------------------------------------------------------------------------
 # Step 3: Copy legacy data/ui_decision/*.json (backward compat)
