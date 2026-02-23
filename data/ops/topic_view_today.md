@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-23
+# 🧭 TODAY TOPIC VIEW - 2026-02-24
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,202 +12,202 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [증시-마감] 관세 위헌에 코스피 5,931 찍고 전강후약 5,846 - 연합인포맥스 (ID: unknown)
+### '다주택자 압박' 통했다…집값 상승 기대 3년7개월래 최대폭 급락 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한은 총재 이창용, "내수 회복·반도체 호조에 성장률 지난해보다 높아질 것" - 비즈니스포스트 (ID: unknown)
+### 韓 버팀목 반도체도 中과 경합…가격·인프라·AI칩설계 열세 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "강남은 꿈도 못 꾸죠"…'6억 영끌' 30대 몰리더니 3억 뛰었다 - 한국경제 (ID: unknown)
+### 커지는 위기감…“韓 10대 수출업종, 5년내 모두 中에 추월 당할 것” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “수도권 공급 비상등 켜졌다”…김포·하남 사실상 입주 ‘제로’ - 매일경제 (ID: unknown)
+### AI·트럼프 관세에 대한 우려가 흔들었다…뉴욕증시 동반 하락 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 압구정 현대 30억 낮춘 거래 2건…'최정점' 조정 시작? - 세상을 바꾸는 시민언론 민들레 (ID: unknown)
+### [기고] 등록민간임대사업자 규제의 모순 - segye.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “투자 비용 50% 줄여준다”… 日, 삼성전자·SK하이닉스에 끊임없는 러브콜 - 조선비즈 - Chosunbiz (ID: unknown)
+### ‘꽉 잡아! 떨어진다’…비트코인 6만5천弗 아래로 급락..더 이상 ‘디지털 금’ 아냐 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피200 전체 이익 증가분 가운데 98%는 삼성전자·SK하이닉스 몫 - 조선일보 (ID: unknown)
+### 강남 고가 아파트 호가는 '뚝'...눈치싸움 본격화 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 전분당 담합 의혹에 업체들 줄줄이 '가격 인하' - segye.com (ID: unknown)
+### 중국 AI 테마주 '미국 소프트웨어주'와 달리 강세 유지, "성장 가능성 낙관" - 비즈니스포스트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대기업-中企 월급 차이 평균 306만원…역대 최대로 벌어져 - 동아일보 (ID: unknown)
+### "파킨슨병, AI로 보행·음성·뇌영상 분석해 초기에 잡아낸다" - 사이언스타임즈 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “AI 다음은 뭐지?”…전문가들이 점찍은 후속 수혜주는 - 매일경제 (ID: unknown)
+### 오토닉스, AW2026서 자동화 솔루션 선봬 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보 (ID: unknown)
+### 현대차그룹, 2030년까지 125조 국내 투자…"AI기반 로보틱스 분야 집중" - 인더스트리뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이달 1∼20일 수출 435억 달러…′역대 최대′ 기록 - 연합뉴스TV (ID: unknown)
+### "코스피 6천은 시간문제"…키움증권, 코스피 상단 7,300으로 대폭 상향 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 정부, 2030년까지 방산 스타트업 100개·벤처천억기업 30개 육성 - 한국경제 (ID: unknown)
+### 병원 넘어 가정 모니터링으로 24시간 전국민 건강 돌봄 제공 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 외국인, 코스피서 올해 9조원대 순매도…하락 베팅? - 조선일보 (ID: unknown)
+### 중국 생물보안법 '맞불' 대응에 임상시험 '탈한국' 가속화 우려 - 히트뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성전자, 더 안심할 수 있는’New 갤럭시 AI 구독클럽’ 업그레이드 출시 - samsung.com (ID: unknown)
+### ‘리튬메탈 배터리’ 획기적 성능 개선, 삼성SDI 주도로 개발 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 아마존 "해커들, AI 이용해 5주 만에 세계 방화벽 600대 침해" - 지디넷코리아 (ID: unknown)
+### 검찰, ‘전분당 담합 의혹’ CJ제일제당·대상 등 압수수색 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “존재 이유에 의문”…비트코인 폭락장, 과거와 다른 8가지 [머니+] - 에너지경제신문 (ID: unknown)
+### [단독] 박민우 현대차 신임 AVP본부장 “AVP와 포티투닷 시너지로 시장 가치 증명하겠다” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 아파트값 작년에만 13.5% 상승…팬데믹 이후 ‘최대 상승폭’ - 매일경제 (ID: unknown)
+### 삼성SDS “2026년 보안 최대 화두는 AI... 응답자 81% AI 기반 위협 우려” - 보안뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 與 "코스피 7천 날아오르려면 3차 상법 개정 시급" - 연합인포맥스 (ID: unknown)
+### ‘지분 규제’ 늪에 빠진 디지털자산기본법…TF는 ‘시행령 위임’ vs 금융당국은 ‘업계 간담회’ - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 해외 인재들 돌아오더니…전세계 발칵 뒤집어 놓은 中바이오 - 한국경제 (ID: unknown)
+### 여전히 높은 환율…전문가 60% "올해 금리인하 없다" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한국남부발전, 2026년 상반기 신입사원 102명 공개 채용 (ID: unknown)
+### “1억 정치생명 걸 가치 없어”…강선우 체포 동의안, 국회 본회의 통과될까 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 불씨 꺼진 잿더미도 못 버린다…산불에 몸살 앓더니 ‘과태료 벼락’ (ID: unknown)
+### “SK텔레콤, 5G SA 전환 효과·배당 조기 정상화 가능성”…목표가↑ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘한집 건너 편의점’ 요즘 왜 줄었나했더니…전략바꾼 편의점업계 (ID: unknown)
+### “김동현처럼 뭘 시켜도”…‘방송인’ 고민 김보름에 서장훈의 뼈있는 조언 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 밀양 삼랑진읍 야산서 불…소방대응 1단계 발령 (ID: unknown)
+### AI 투자 열풍의 그림자…1.5조달러 美 사모대출 시장 ‘경고음’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 강원정보문화산업진흥원, ‘가상융합산업혁신센터’ 운영 기관 선정 (ID: unknown)
+### 진작에 ‘무속 서바이벌’ 떠난 이호선…지금 보니 소름 돋는 ‘글’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “수도사들이 흙을 먹어요”…집념의 과학이 최고의 와인 만들었다 [전형민의 와인프릭] (ID: unknown)
+### “현대해상, 올해 큰 폭의 기저효과 기대”…목표가↑ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 고윤정, ‘시상식 공황’ 직접 해명…조인성 조언 뭐길래 (ID: unknown)
+### AI 인프라 핵심 ‘5G SA’ 조기전환 부상…SKT 최선호주  [오늘 나온 보고서] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 직장인이 가장 피곤한 때는?…9월, 수요일, 오후 1시 (ID: unknown)
+### SK오션플랜트, 해상풍력 훈풍에 수익성 날개…‘목표가 2만5000원’ [오늘 나온 보고서] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 故 김새론 유작 ‘우리는 매일매일’ 4일 개봉…“연기 위해 태어난 배우” (ID: unknown)
+### 코스맥스, 미·중 고성장에 4분기 호실적…목표가 ‘24만원’ 상향[오늘 나온 보고서] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 과학적 근거에 따라...올 상반기 ‘사회적 거리두기’ 매뉴얼 마련 (ID: unknown)
+### 야당보다 유능한 야당 ‘시장’…그곳을 향하는 정책 언어의 품격 [매경포럼] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “피규어 덕후들 용산서 다 본다는데”...일주일만에 1만3천명 찾은 아이파크몰 매장은 (ID: unknown)
+### “이제 좋아질 일만 남았다”…현대해상, 목표가 4만8천원 ‘껑충’[오늘 나온 보고서] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 美 관세복원 …'슈퍼301조' 中부터 겨눴다 (ID: unknown)
+### “코스맥스, 잘 나가는 ‘K뷰티’ 고객사 업고 실적 쑥”…목표가↑ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 메모리 빼곤 … 車·로봇 中에 다 밀려 (ID: unknown)
+### “교통법규 위반 문자 눌렀다가…” 노유정, 보이스피싱 피해로 생활고까지 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 6·3선거 '개헌 동시투표' 가시화 (ID: unknown)
+### “최연소 장관직 내려놓고 한국 갑니다”...10년뒤 KAIST 졸업생 된 남자 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 도와준 여중생에 “4600만원 물어내라”…거액 소송에 분노한 중국 (ID: unknown)
+### 외국인이 쌍화차를 왜 좋아해요?…한방 찻집에 1000명씩 온다는데 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 커지는 위기감…"中기업 경쟁력, 5년내 美와 동등한 수준될 것" (ID: unknown)
+### 현대차그룹, 새만금에 10조 ‘통큰 투자’...AI·수소 거점 구축 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 韓 버팀목 반도체도 中과 경합…가격·인프라·AI칩설계 열세 (ID: unknown)
+### 김정은, 선대 뛰어넘는 ‘절대적 수령’ 됐다…당대회서 총비서 재추대 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### "AI 명령받는 휴머노이드는 보안 위협 더 클것" (ID: unknown)
+### “아내가 오해할 정도” 조세호, 조폭 연루설로 일 끊긴 근황 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 해커로 돌변하는 AI … 민감 데이터는 반드시 인간이 관리해야 (ID: unknown)
+### “결정권 자는 나야”…‘장군들 이란 공격 반대’ 보도에 발끈한 트럼프 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 소방청, 설연휴 1355명 구조 … 車사고 줄고 산악사고 늘어 (ID: unknown)
+### [속보] 서울 대치동 은마아파트 화재로 1명 사망·3명 부상 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
