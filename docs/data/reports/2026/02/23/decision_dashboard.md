@@ -83,8 +83,8 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 (Google_News_KR_Economy)
   - [NEWS] [길 잃은 카카오]③ 직원 신뢰 잃은 임원들, 일탈에도 '자리 보전' 급급…수평적 문화라면서 직장 내 차별·괴롭힘 급증 - 네이트 (Google_News_KR_Economy)
+  - [NEWS] “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 (Google_News_KR_Economy)
   - [NEWS] 대규모 개인정보 유출 후 쿠팡 첫 성적표에 쏠린 눈 - 조선비즈 - Chosunbiz (Google_News_KR_Economy)
 
 
@@ -187,26 +187,27 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 | Structural implication: '“포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | [길 잃은 카카오]③ 직원 신뢰 잃은 임원들, 일탈에도 '자리 보전' 급급…수평적 문화라면서 직장 내 차별·괴롭힘 급증 - 네이트 | Structural implication: '[길 잃은 카카오]③ 직원 신뢰 잃은 임원들, 일탈에도 '자리 보전' 급급…수평적 문화라면서 직장 내 차별·괴롭힘 급증 - 네이트' suggests a shift in NEWS dynamics. | LOW |
+| “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 | Structural implication: '“포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대규모 개인정보 유출 후 쿠팡 첫 성적표에 쏠린 눈 - 조선비즈 - Chosunbiz | Structural implication: '대규모 개인정보 유출 후 쿠팡 첫 성적표에 쏠린 눈 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 글로벌 D램 시장 1위 탈환…SK하이닉스 2위로 - 경기일보 | Structural implication: '삼성전자, 글로벌 D램 시장 1위 탈환…SK하이닉스 2위로 - 경기일보' suggests a shift in NEWS dynamics. | LOW |
 | “전세는 없고 월세는 비싸다” 봄 이사철 경고등 - 문화일보 | Structural implication: '“전세는 없고 월세는 비싸다” 봄 이사철 경고등 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| EQT, 더존비즈온 잔여지분 12만원에 전량 공개매수 - 마켓인 | Structural implication: 'EQT, 더존비즈온 잔여지분 12만원에 전량 공개매수 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 균형발전 2040년 강서구 비전, 주민과 함께 설계한다 - 문화일보 | Structural implication: '균형발전 2040년 강서구 비전, 주민과 함께 설계한다 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| EQT파트너스, 더존비즈온 공개매수 돌입…2조1791억원 규모 - 인베스트조선 | Structural implication: 'EQT파트너스, 더존비즈온 공개매수 돌입…2조1791억원 규모 - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
+| "27만전자 가나"…삼성전자, 영업익 200조 시대에 목표가 '쑥'-대신 - edaily.co.kr | Structural implication: '"27만전자 가나"…삼성전자, 영업익 200조 시대에 목표가 '쑥'-대신 - edaily.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | “증권株 지금 담아도 안 늦었나요?”…신고가 행진 시장의 평가는 - 매일경제 | Structural implication: '“증권株 지금 담아도 안 늦었나요?”…신고가 행진 시장의 평가는 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 코인 거래소 ‘대주주 지분 제한’, 점유율 따라 규제 가능성 - 조선비즈 - Chosunbiz | Structural implication: '코인 거래소 ‘대주주 지분 제한’, 점유율 따라 규제 가능성 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 오늘 금융위·코인거래소 만난다…빗썸 입법 분수령 - 네이트 | Structural implication: '오늘 금융위·코인거래소 만난다…빗썸 입법 분수령 - 네이트' suggests a shift in NEWS dynamics. | LOW |
 | 개설약국 평균 크기 "1년새 2배 커졌다" - 약사공론 | Structural implication: '개설약국 평균 크기 "1년새 2배 커졌다" - 약사공론' suggests a shift in NEWS dynamics. | LOW |
-| 자사주 소각·고배당 확산…K제약바이오 ‘주주환원 경쟁’ 본격화 - 이투데이 | Structural implication: '자사주 소각·고배당 확산…K제약바이오 ‘주주환원 경쟁’ 본격화 - 이투데이' suggests a shift in NEWS dynamics. | LOW |
-| '사이버 레커·부동산 영끌 조장' 16개 유튜버 세무조사‥"수백억 탈루" - MBC 뉴스 | Structural implication: ''사이버 레커·부동산 영끌 조장' 16개 유튜버 세무조사‥"수백억 탈루" - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼성서울병원 AI 연구센터, AI로 파킨슨병 초기에 잡아낸다. - 메디포뉴스 | Structural implication: '삼성서울병원 AI 연구센터, AI로 파킨슨병 초기에 잡아낸다. - 메디포뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 국세청, 부동산 유튜버 등 16명 탈세 조사 - 조선일보 | Structural implication: '국세청, 부동산 유튜버 등 16명 탈세 조사 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 3月 주총 앞두고 곳간 여는 제약·바이오…배당금 늘리고 감액 배당도 - 조선비즈 - Chosunbiz | Structural implication: '3月 주총 앞두고 곳간 여는 제약·바이오…배당금 늘리고 감액 배당도 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 코스피 불장에도 외국인 올해 9조 ‘팔자’ - 동아일보 | Structural implication: '코스피 불장에도 외국인 올해 9조 ‘팔자’ - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | "퇴직연금도 내가 직접 운용"…DC형·IRP 대세 - 한국경제 | Structural implication: '"퇴직연금도 내가 직접 운용"…DC형·IRP 대세 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹 | Structural implication: '[속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, '갤럭시 S26'에 퍼플렉시티 AI 에이전트 기본 탑재 - AI타임스 | Structural implication: '삼성전자, '갤럭시 S26'에 퍼플렉시티 AI 에이전트 기본 탑재 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | "마이크로 LED 디스플레이 수율 가르는 핵심 특허…韓 싹쓸이" - 한국경제 | Structural implication: '"마이크로 LED 디스플레이 수율 가르는 핵심 특허…韓 싹쓸이" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | XRP, 1000~2000달러 투자로 은퇴 가능할까? - 디지털투데이 | Structural implication: 'XRP, 1000~2000달러 투자로 은퇴 가능할까? - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | 19만전자·95만닉스…엔비디아 실적 타고 날아오를까 - v.daum.net | Structural implication: '19만전자·95만닉스…엔비디아 실적 타고 날아오를까 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 1억원 횡보하는 비트코인…"더 떨어질 것" vs "저가매수 기회" - 한국경제 | Structural implication: '1억원 횡보하는 비트코인…"더 떨어질 것" vs "저가매수 기회" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| ‘달 왕복선’ 아르테미스 2호 발사전 최종시험 통과 - 한겨레 | Structural implication: '‘달 왕복선’ 아르테미스 2호 발사전 최종시험 통과 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 관세 복원 나선 미국 “무역법 301조로 타국 불공정관행 검토할 것” | Structural implication: '관세 복원 나선 미국 “무역법 301조로 타국 불공정관행 검토할 것”' suggests a shift in NEWS dynamics. | LOW |
 | 15세 때 받은 성적 압박, 24세까지 우울증·자해 위험 높인다 | Structural implication: '15세 때 받은 성적 압박, 24세까지 우울증·자해 위험 높인다' suggests a shift in NEWS dynamics. | LOW |
 | “정말 돈 빌릴 곳이 없네”…금융권 대출 거절에 서민들 대부업체로 몰린다 | Structural implication: '“정말 돈 빌릴 곳이 없네”…금융권 대출 거절에 서민들 대부업체로 몰린다' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 코스피 ‘5900선’ 돌파…사상 최고가 연이어 경신 | Structural implication: '[속보] 코스피 ‘5900선’ 돌파…사상 최고가 연이어 경신' suggests a shift in NEWS dynamics. | LOW |
@@ -226,7 +227,6 @@
 | “국민 존엄과 자존심 문제”…美, 우라늄 농축 중단 요구에 이란의 입장 | Structural implication: '“국민 존엄과 자존심 문제”…美, 우라늄 농축 중단 요구에 이란의 입장' suggests a shift in NEWS dynamics. | LOW |
 | 수원특례시, 모든 소방서 긴급차량에 우선신호 적용 | Structural implication: '수원특례시, 모든 소방서 긴급차량에 우선신호 적용' suggests a shift in NEWS dynamics. | LOW |
 | [속보] ‘코스피 5800 돌파’…이 대통령 지지도 58.2%, 4주 연속 상승 [리얼미터] | Structural implication: '[속보] ‘코스피 5800 돌파’…이 대통령 지지도 58.2%, 4주 연속 상승 [리얼미터]' suggests a shift in NEWS dynamics. | LOW |
-| 모리스, ‘저스트클릭’ 앞세워 독일 Ambiente 참가…뚜껑 없는 마커로 글로벌 UX 혁신 선도 | Structural implication: '모리스, ‘저스트클릭’ 앞세워 독일 Ambiente 참가…뚜껑 없는 마커로 글로벌 UX 혁신 선도' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

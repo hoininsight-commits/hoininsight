@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 (ID: unknown)
+### [길 잃은 카카오]③ 직원 신뢰 잃은 임원들, 일탈에도 '자리 보전' 급급…수평적 문화라면서 직장 내 차별·괴롭힘 급증 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [길 잃은 카카오]③ 직원 신뢰 잃은 임원들, 일탈에도 '자리 보전' 급급…수평적 문화라면서 직장 내 차별·괴롭힘 급증 - 네이트 (ID: unknown)
+### “포스코 주주입니다, 오래 기다렸어요”…악재 턴 저평가주 더 있다는데 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,12 +37,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### EQT, 더존비즈온 잔여지분 12만원에 전량 공개매수 - 마켓인 (ID: unknown)
+### EQT파트너스, 더존비즈온 공개매수 돌입…2조1791억원 규모 - 인베스트조선 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 균형발전 2040년 강서구 비전, 주민과 함께 설계한다 - 문화일보 (ID: unknown)
+### "27만전자 가나"…삼성전자, 영업익 200조 시대에 목표가 '쑥'-대신 - edaily.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,7 +52,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코인 거래소 ‘대주주 지분 제한’, 점유율 따라 규제 가능성 - 조선비즈 - Chosunbiz (ID: unknown)
+### 오늘 금융위·코인거래소 만난다…빗썸 입법 분수령 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +62,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 자사주 소각·고배당 확산…K제약바이오 ‘주주환원 경쟁’ 본격화 - 이투데이 (ID: unknown)
+### 삼성서울병원 AI 연구센터, AI로 파킨슨병 초기에 잡아낸다. - 메디포뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '사이버 레커·부동산 영끌 조장' 16개 유튜버 세무조사‥"수백억 탈루" - MBC 뉴스 (ID: unknown)
+### 국세청, 부동산 유튜버 등 16명 탈세 조사 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 3月 주총 앞두고 곳간 여는 제약·바이오…배당금 늘리고 감액 배당도 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -78,6 +83,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### "퇴직연금도 내가 직접 운용"…DC형·IRP 대세 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 1억원 횡보하는 비트코인…"더 떨어질 것" vs "저가매수 기회" - 한국경제 (ID: unknown)
+### 관세 복원 나선 미국 “무역법 301조로 타국 불공정관행 검토할 것” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘달 왕복선’ 아르테미스 2호 발사전 최종시험 통과 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 15세 때 받은 성적 압박, 24세까지 우울증·자해 위험 높인다 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### [속보] ‘코스피 5800 돌파’…이 대통령 지지도 58.2%, 4주 연속 상승 [리얼미터] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 모리스, ‘저스트클릭’ 앞세워 독일 Ambiente 참가…뚜껑 없는 마커로 글로벌 UX 혁신 선도 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
