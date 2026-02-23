@@ -359,7 +359,14 @@ jobs:
             echo "[LOCKDOWN] editorial synced: ${ED_COUNT} files"
           fi
 
+          # [NO-DUP-LOCK] CI Guard: Enforce SSOT for run_publish_ui_decision_assets.py
+          echo "[GUARD] Checking for duplicate publishers..."
+          python scripts/verify_no_duplicate_publishers.py
+          
           # [IS-100] Generate manifest + Publish UI Decision Assets
+          echo "[PUBLISH] Using publish SSOT: src/ui/run_publish_ui_decision_assets.py"
+          echo "[PUBLISH] Publish SSOT path details:"
+          ls -al src/ui/run_publish_ui_decision_assets.py
           python -m src.ui.run_publish_ui_decision_assets
 
           # [IS-51] Flatten operational dashboard
