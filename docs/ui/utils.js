@@ -133,8 +133,14 @@ export function convertDecisionCardToDecisionItem(card) {
         date = ts ? (ts.split("T")[0] || "-") : "-";
     }
 
-    // selected_at
-    const selected_at = UI_SAFE.safeStr(card.selected_at, card.generated_at_kst || card.generated_at || "-");
+    // selected_at — skip the known dummy placeholder "2026-01-01T09:00:00"
+    const raw_sat = card.selected_at || "";
+    const isDummy = raw_sat.startsWith("2026-01-01");
+    const fallbackTs = card.generated_at_kst || card.generated_at
+        || (card.date ? `${card.date}T00:00:00` : raw_sat || "-");
+    const selected_at = isDummy
+        ? UI_SAFE.safeStr(fallbackTs, "-")
+        : UI_SAFE.safeStr(raw_sat, fallbackTs || "-");
 
     // intensity: normalise 0–1 → 0–100
     let intensity = UI_SAFE.safeNum(card.intensity, 0);
