@@ -193,11 +193,11 @@
 | 3월 수도권 아파트 입주 전월비 22%↓…일정조정 따른 단기 감소 - 연합인포맥스 | Structural implication: '3월 수도권 아파트 입주 전월비 22%↓…일정조정 따른 단기 감소 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹 | Structural implication: '[속보] 비트코인 끝내 사망 " 구글 검색 급속 확산"... 뉴튜데이 긴급 보도 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | "돈 4배 더 쓸어담는다"…역대급 호재에 '20만전자' 눈앞 [종목+] - 한국경제 | Structural implication: '"돈 4배 더 쓸어담는다"…역대급 호재에 '20만전자' 눈앞 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보 | Structural implication: '美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보' suggests a shift in NEWS dynamics. | LOW |
 | 오토닉스, AW 2026서 자율제조 고도화를 위한 자동화 솔루션 대거 공개 - 뉴스와이어 | Structural implication: '오토닉스, AW 2026서 자율제조 고도화를 위한 자동화 솔루션 대거 공개 - 뉴스와이어' suggests a shift in NEWS dynamics. | LOW |
 | 대원제약, 킴스클럽과 건기식 14종 런칭 - 의학신문 | Structural implication: '대원제약, 킴스클럽과 건기식 14종 런칭 - 의학신문' suggests a shift in NEWS dynamics. | LOW |
 | 담합 의혹에 전분 및 당류 업체들 줄줄이 ‘가격 인하’ - KBS 뉴스 | Structural implication: '담합 의혹에 전분 및 당류 업체들 줄줄이 ‘가격 인하’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 12월 결산법인 118만곳, 3월말까지 법인세 신고·납부해야 - 한국무역협회-KITA.NET | Structural implication: '12월 결산법인 118만곳, 3월말까지 법인세 신고·납부해야 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보 | Structural implication: '美 관세 불확실성에 달러 환율 1430원대 터치 - 국민일보' suggests a shift in NEWS dynamics. | LOW |
 | AI 시대 전장 게임체인저…스타트업 방산 진입 장벽 낮춘다 - 한국경제 | Structural implication: 'AI 시대 전장 게임체인저…스타트업 방산 진입 장벽 낮춘다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 더존비즈온, 코스피 떠난다…EQT “비상장 전환해 장기 성장 집중” - 디지털데일리 | Structural implication: '더존비즈온, 코스피 떠난다…EQT “비상장 전환해 장기 성장 집중” - 디지털데일리' suggests a shift in NEWS dynamics. | LOW |
 | 대기업 월 평균 근로소득 20만원 늘 때 중소기업은 9만원 늘어···임금격차 3년만에 확대 - 조선일보 | Structural implication: '대기업 월 평균 근로소득 20만원 늘 때 중소기업은 9만원 늘어···임금격차 3년만에 확대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -206,7 +206,10 @@
 | 삼성전자, '갤럭시 S26'에 퍼플렉시티 AI 에이전트 기본 탑재 - AI타임스 | Structural implication: '삼성전자, '갤럭시 S26'에 퍼플렉시티 AI 에이전트 기본 탑재 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 與 "코스피 7천 날아오르려면 3차 상법 개정 시급" - 연합인포맥스 | Structural implication: '與 "코스피 7천 날아오르려면 3차 상법 개정 시급" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 해외 인재들 돌아오더니…전세계 발칵 뒤집어 놓은 中바이오 - 한국경제 | Structural implication: '해외 인재들 돌아오더니…전세계 발칵 뒤집어 놓은 中바이오 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| '얼죽아 나라' 韓서 세계 최초 출시…스타벅스 메뉴 뭐길래 - 한국경제 | Structural implication: ''얼죽아 나라' 韓서 세계 최초 출시…스타벅스 메뉴 뭐길래 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| ‘로열티 쇼크’ 알테오젠, 3분기 말 코스피 이전 시동…관건은 신뢰 회복 - 조선비즈 - Chosunbiz | Structural implication: '‘로열티 쇼크’ 알테오젠, 3분기 말 코스피 이전 시동…관건은 신뢰 회복 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 법무법인 화우, 박상현 전 금감원 자금세탁방지실장 등 금융·AML 분야 전문가 대거 영입 | Structural implication: '법무법인 화우, 박상현 전 금감원 자금세탁방지실장 등 금융·AML 분야 전문가 대거 영입' suggests a shift in NEWS dynamics. | LOW |
+| “쿠팡서 28만원 무단결제” “11번 결제·취소 반복”…경찰 수사의뢰 | Structural implication: '“쿠팡서 28만원 무단결제” “11번 결제·취소 반복”…경찰 수사의뢰' suggests a shift in NEWS dynamics. | LOW |
+| 불국사 대웅전 해체 수리한다 | Structural implication: '불국사 대웅전 해체 수리한다' suggests a shift in NEWS dynamics. | LOW |
 | 준공 앞둔 ‘샤힌 프로젝트’… 울산시 “투자 사업 끝까지 책임진다” | Structural implication: '준공 앞둔 ‘샤힌 프로젝트’… 울산시 “투자 사업 끝까지 책임진다”' suggests a shift in NEWS dynamics. | LOW |
 | KETI, 5G 환경 ‘자율주행 이동형 로봇팔’ 시험장 구축 | Structural implication: 'KETI, 5G 환경 ‘자율주행 이동형 로봇팔’ 시험장 구축' suggests a shift in NEWS dynamics. | LOW |
 | 파주시, 운정중앙역에 경기북부 최대 ‘문화공연 콤플렉스’ 조성 | Structural implication: '파주시, 운정중앙역에 경기북부 최대 ‘문화공연 콤플렉스’ 조성' suggests a shift in NEWS dynamics. | LOW |
@@ -224,9 +227,6 @@
 | “자사주 1년내 소각 의무화 기대”…보험주 급등, 미래에셋생명 상한가 | Structural implication: '“자사주 1년내 소각 의무화 기대”…보험주 급등, 미래에셋생명 상한가' suggests a shift in NEWS dynamics. | LOW |
 | 인천 빵 제조업체서 수억원 임금 체불…운영자 검찰 송치 | Structural implication: '인천 빵 제조업체서 수억원 임금 체불…운영자 검찰 송치' suggests a shift in NEWS dynamics. | LOW |
 | 알레르망 침대 신학기 행사…최대 50% 할인 | Structural implication: '알레르망 침대 신학기 행사…최대 50% 할인' suggests a shift in NEWS dynamics. | LOW |
-| 미래에셋운용 ‘TIGER 증권’, 연초 이후 수익률 102%…수익률 1위 | Structural implication: '미래에셋운용 ‘TIGER 증권’, 연초 이후 수익률 102%…수익률 1위' suggests a shift in NEWS dynamics. | LOW |
-| 코스모화학, 글로벌 최대 전구체 생산법인 배터리 원료 공급 MOU | Structural implication: '코스모화학, 글로벌 최대 전구체 생산법인 배터리 원료 공급 MOU' suggests a shift in NEWS dynamics. | LOW |
-| SK스퀘어, 미국 AI 기업 해머스페이스에 투자 집행...“유망기업에 1천억 투자” | Structural implication: 'SK스퀘어, 미국 AI 기업 해머스페이스에 투자 집행...“유망기업에 1천억 투자”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
