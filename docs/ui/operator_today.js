@@ -29,13 +29,16 @@ export async function initTodayView(container) {
             CACHED_MANIFEST = await manifestResp.json();
         }
 
-        debug.totalFiles = (CACHED_MANIFEST.files || []).length;
+        // v2.5 manifest uses files_flat (string[]) for UI compat; older uses files[] as strings
+        const fileList = CACHED_MANIFEST.files_flat
+            || (CACHED_MANIFEST.files || []).map(f => typeof f === 'string' ? f : f.path);
+        debug.totalFiles = fileList.length;
 
         const allDecisions = [];
         const historyDecisions = [];
         const latestPool = []; // holds all normalised items for fallback
 
-        const fetchTasks = (CACHED_MANIFEST.files || []).map(async (file) => {
+        const fetchTasks = fileList.map(async (file) => {
             try {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
                 if (!res.ok) return;

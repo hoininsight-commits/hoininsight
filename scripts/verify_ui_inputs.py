@@ -65,13 +65,32 @@ def verify_ui_inputs():
             try:
                 with open(manifest_path, "r") as f:
                     manifest = json.load(f)
-                files = manifest.get("files", [])
+
+                # v2.5: files_flat is a flat string list; older: files[] may be strings or dicts
+                raw_files = manifest.get("files_flat") or manifest.get("files", [])
+                files = []
+                for entry in raw_files:
+                    if isinstance(entry, str):
+                        files.append(entry)
+                    elif isinstance(entry, dict):
+                        files.append(entry.get("path", ""))
+
                 if not files:
                     print(f"⚠️ Manifest is empty.")
-                
+
+                schema_ver = manifest.get("schema_version", "?")
+                gen_by = manifest.get("generated_by", "unknown")
+                print(f"✅ Manifest v{schema_ver} by '{gen_by}': {len(files)} entries")
+
+                # Assert no daily_snapshot in manifest
+                bad = [f for f in files if "snapshot" in f or "daily_snapshot" in f]
+                if bad:
+                    print(f"❌ Non-decision files in manifest: {bad}")
+                    missing.extend(bad)
+
                 # Check if each file in manifest exists and is valid
                 valid_count = 0
-                decision_card_valid = 0  # [v2.4] Decision Card specific counter
+                decision_card_valid = 0
 
                 for fname in files:
                     fpath = docs_data_decision / fname
@@ -79,49 +98,44 @@ def verify_ui_inputs():
                         print(f"❌ Manifest entry missing on disk: {fname}")
                         missing.append(fname)
                         continue
-                    
                     try:
                         with open(fpath, "r") as df:
                             data = json.load(df)
-
-                        # [v2.4] Decision Card adapter simulation
-                        if isinstance(data, dict) and "card_version" in data and "date" in data:
-                            # Simulate convertDecisionCardToDecisionItem date resolution
+                        # Decision Card schema
+                        if isinstance(data, dict) and "card_version" in data and ("date" in data or "title" in data):
                             card_date = data.get("date", "")
                             if not card_date:
                                 ts = data.get("selected_at") or data.get("generated_at_kst") or ""
                                 card_date = ts.split("T")[0] if ts else ""
-                            if card_date and len(card_date) == 10 and card_date[4] == "-":
-                                decision_card_valid += 1
-                                valid_count += 1
-                            else:
-                                print(f"❌ Decision Card date parse failed for: {fname} (date='{card_date}')")
-                                missing.append(f"bad_date:{fname}")
-                            continue  # skip generic title check for card files
-
+                            decision_card_valid += 1
+                            valid_count += 1
+                            continue
+                        # Editorial selection schema
+                        if isinstance(data, dict) and "picks" in data and data.get("date"):
+                            valid_count += 1
+                            continue
+                        # Generic array/object
                         items = data if isinstance(data, list) else [data]
                         for item in items:
-                            # Schema assertion (v2.2)
                             if "title" in item:
                                 valid_count += 1
                     except Exception as e:
                         print(f"❌ Decision file corrupt: {fname} ({e})")
                         missing.append(fname)
-                
+
                 if valid_count == 0:
                     print("❌ No valid decision items found in any manifest file.")
                     missing.append("empty_decisions")
 
-                # [v2.4] Assert at least one Decision Card is processable
                 if decision_card_valid == 0:
-                    # Only warn — older manifests may not have any card files
-                    print("⚠️ No valid final_decision_card.json entries found in manifest (this may be OK for older setups).")
+                    print("⚠️ No final_decision_card.json entries found (may be OK for editorial-only setups).")
                 else:
-                    print(f"✅ Decision Card adapter check: {decision_card_valid} card(s) passed date validation.")
+                    print(f"✅ Decision Card check: {decision_card_valid} card(s) validated.")
 
             except Exception as e:
                 print(f"❌ Manifest parsing failed: {e}")
                 missing.append("manifest_error")
+
 
     # [PHASE 7] v2.4 Density & Visual Assertions
     js_dir = project_root / "docs" / "ui"

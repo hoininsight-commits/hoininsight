@@ -21,7 +21,10 @@ export async function initHistoryView(container) {
         const manifest = await manifestResp.json();
 
         const allDecisions = [];
-        const fetchTasks = (manifest.files || []).map(async (file) => {
+        // v2.5 manifest uses files_flat (string[]); old format uses files[] as strings
+        const fileList = manifest.files_flat
+            || (manifest.files || []).map(f => typeof f === 'string' ? f : f.path);
+        const fetchTasks = fileList.map(async (file) => {
             try {
                 const res = await fetch(`data/decision/${file}?v=${Date.now()}`);
                 if (!res.ok) return;
