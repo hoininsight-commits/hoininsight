@@ -105,6 +105,30 @@ def main():
                     all_passed = False
         except Exception as e:
             print(f"⚠️ [WARN] Could not read {js_file} for V7 checking: {e}")
+            
+    # V8. Narrative Score Generation Guard
+    print("\n[V8] Checking Narrative Score Generation (PHASE-14B)...")
+    try:
+        today_publish = docs_decision / "today.json"
+        if today_publish.exists():
+            data = json.loads(today_publish.read_text(encoding="utf-8"))
+            topics = data if isinstance(data, list) else data.get("top_topics", [data])
+            
+            has_score = False
+            for t in topics:
+                if "narrative_score" in t and t["narrative_score"] is not None:
+                    has_score = True
+                    break
+                    
+            if not has_score:
+                print("⚠️ [WARN] No narrative_score found in today.json.")
+                print("          This is allowed (e.g. inactive days), but if persistent for 3 days, it's a Publish Drop.")
+            else:
+                print("✅ [OK] Narrative score successfully verified in today.json.")
+        else:
+            print("⚠️ [WARN] today.json not found for narrative check.")
+    except Exception as e:
+        print(f"⚠️ [WARN] Could not verify narrative score: {e}")
 
     if not all_passed:
         print("\n❌ RELEASE INTEGRITY CHECK FAILED.")

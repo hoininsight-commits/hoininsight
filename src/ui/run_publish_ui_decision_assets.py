@@ -76,6 +76,36 @@ def _load_approval_titles() -> set:
     return approved_titles
 
 
+def _load_narrative_data() -> Dict[str, Dict]:
+    """Loads narrative intelligence outputs to merge into UI cards, keyed by title."""
+    narrative_map = {}
+    try:
+        f = ROOT / "data" / "ops" / "narrative_intelligence_v2.json"
+        if f.exists():
+            data = json.loads(f.read_text(encoding="utf-8"))
+            for t in data.get("topics", []):
+                title = t.get("title", "")
+                topic_id = t.get("topic_id", "")
+                
+                n_data = {
+                    "narrative_score": t.get("final_narrative_score", t.get("narrative_score", 0)),
+                    "video_ready": t.get("video_ready", False),
+                    "actor_tier_score": t.get("actor_tier_score", 0),
+                    "escalation_flag": t.get("escalation_flag", False),
+                    "conflict_flag": t.get("conflict_flag", False),
+                    "cross_axis_multiplier": t.get("cross_axis_multiplier", 1.0),
+                    "causal_chain": t.get("causal_chain", {})
+                }
+                
+                if title: narrative_map[title] = n_data
+                if topic_id: narrative_map[topic_id] = n_data
+                
+    except Exception as e:
+        print(f"[PUBLISH] warn loading narrative_intelligence_v2: {e}")
+    return narrative_map
+
+
+
 def _publish_today() -> Optional[Dict]:
     """
     Copies the most recent final_decision_card.json → docs/data/decision/today.json.
@@ -107,15 +137,48 @@ def _publish_today() -> Optional[Dict]:
         data = json.loads(dest.read_text(encoding="utf-8"))
         file_date = data.get("date", kst_date) or kst_date
         
-        # Merge approval status
+        # Merge approval status & narrative data
         approved_titles = _load_approval_titles()
-        if approved_titles and "top_topics" in data:
+        narrative_map = _load_narrative_data()
+        
+        if approved_titles or narrative_map:
             changed = False
-            for top in data["top_topics"]:
-                if top.get("title") in approved_titles:
+            
+            # Determine the list of topics to mutate based on schema
+            topics_to_check = []
+            if isinstance(data, list):
+                topics_to_check = data
+            elif isinstance(data, dict):
+                if "top_topics" in data:
+                    topics_to_check = data["top_topics"]
+                elif "title" in data:
+                    # It's a single topic object root
+                    topics_to_check = [data]
+                    
+            for top in topics_to_check:
+                title = top.get("title", "")
+                topic_id = top.get("topic_id", "")
+                
+                # 1. Approval Mapping
+                if title in approved_titles:
                     top["status"] = "APPROVED"
                     top["speakability"] = "OK"
                     changed = True
+                    
+                # 2. Narrative Score Mapping (CASE 3 Fix)
+                n_key = title if title in narrative_map else (topic_id if topic_id in narrative_map else None)
+                if n_key:
+                    n_data = narrative_map[n_key]
+                    top["narrative_score"] = n_data["narrative_score"]
+                    top["video_ready"] = n_data["video_ready"]
+                    top["actor_tier_score"] = n_data["actor_tier_score"]
+                    top["escalation_flag"] = n_data["escalation_flag"]
+                    top["conflict_flag"] = n_data["conflict_flag"]
+                    top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
+                    if n_data["causal_chain"]:
+                        top["causal_chain"] = n_data["causal_chain"]
+                    changed = True
+                    
             if changed:
                 dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
                 
