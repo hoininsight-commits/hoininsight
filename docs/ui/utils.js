@@ -141,18 +141,19 @@ export function convertDecisionCardToDecisionItem(card) {
     const selected_at = (raw_sat && raw_sat !== "-") ? raw_sat : (date !== "-" ? `${date}T00:00:00` : "-");
 
     // intensity: normalise 0–1 → 0–100, NaN → 0
-    let intensity = UI_SAFE.safeNum(card.intensity, 0);
+    let intensity = UI_SAFE.safeNum(card.narrative_score || card.intensity, 0);
     if (isNaN(intensity)) intensity = 0;
     if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
     else intensity = Math.round(intensity);
 
     // speakability — handle new schema values (EDITORIAL_CANDIDATE → HOLD)
-    const rawSpeak = UI_SAFE.safeStr(card.speakability || card.status, "HOLD");
+    const rawSpeak = UI_SAFE.safeStr(card.proof_status || card.speakability || card.status, "HOLD");
     const speakabilityMap = {
         "Review Required": "HOLD",
         "EDITORIAL_CANDIDATE": "HOLD",
         "CANDIDATE": "HOLD",
         "APPROVED": "OK",
+        "VALIDATED": "OK",
     };
     const speakability = speakabilityMap[rawSpeak] || (["OK", "HOLD"].includes(rawSpeak) ? rawSpeak : "HOLD");
 
@@ -265,8 +266,19 @@ export function extractDecisions(fileJson) {
         return fileJson.picks.map(p => convertEditorialPickToDecisionItem(p, fileJson.date));
     }
     // Decision Card schema: new v1 (today.json) or legacy phase66 cards
-    if (fileJson.card_version && (fileJson.date || fileJson.title)) {
-        return [convertDecisionCardToDecisionItem(fileJson)];
+    if (fileJson.card_version && (fileJson.date || fileJson.title || fileJson.topic)) {
+        const items = [convertDecisionCardToDecisionItem(fileJson)];
+        if (Array.isArray(fileJson.top_topics) && fileJson.top_topics.length > 0) {
+            fileJson.top_topics.forEach(t => {
+                // Ensure sub-topics carry over the date from the parent card if missing
+                items.push(convertDecisionCardToDecisionItem({
+                    ...t,
+                    date: t.date || fileJson.date,
+                    selected_at: t.selected_at || fileJson.selected_at || fileJson.generated_at_kst
+                }));
+            });
+        }
+        return items;
     }
     // Fallback: single plain object with a title and selected_at (legacy interpretation unit)
     if (fileJson.title && fileJson.selected_at) return [fileJson];

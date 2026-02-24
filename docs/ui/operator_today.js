@@ -5,7 +5,7 @@
  *           Decision Card schema support via extractDecisions, latest-card fallback
  */
 
-import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.4';
+import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.6';
 
 let CACHED_MANIFEST = null;
 
@@ -29,9 +29,9 @@ export async function initTodayView(container) {
             CACHED_MANIFEST = await manifestResp.json();
         }
 
-        // v2.5 manifest uses files_flat (string[]) for UI compat; older uses files[] as strings
-        const fileList = CACHED_MANIFEST.files_flat
-            || (CACHED_MANIFEST.files || []).map(f => typeof f === 'string' ? f : f.path);
+        // v2.5 manifest uses files_flat for UI compat; older uses files[]
+        const rawList = CACHED_MANIFEST.files_flat || CACHED_MANIFEST.files || [];
+        const fileList = rawList.map(f => typeof f === 'string' ? f : (f.path || ''));
         debug.totalFiles = fileList.length;
 
         const allDecisions = [];
@@ -342,14 +342,14 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
             ${heroAreaHtml}
 
             <!-- LIST SECTIONS (Only if complete list exists beyond hero) -->
-            ${completeItems.filter(i => i.interpretation_id !== hero?.interpretation_id).length > 0 ? `
+            ${completeItems.filter(i => i.title !== hero?.title).length > 0 ? `
                 <div class="space-y-1.5 mt-8">
                     <h3 class="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] px-1 mb-2 flex items-center gap-2">
                         <span>검증 완료 신호</span>
                         <div class="h-[1px] bg-slate-800 flex-1"></div>
                     </h3>
                     <div class="grid gap-1.5">
-                        ${items.filter(i => !i.incomplete && i.interpretation_id !== hero?.interpretation_id).map((item, idx) => renderCompactCard(item, `c-${idx}`)).join('')}
+                        ${items.filter(i => !i.incomplete && i.title !== hero?.title).map((item, idx) => renderCompactCard(item, `c-${idx}`)).join('')}
                     </div>
                 </div>
             ` : ''}

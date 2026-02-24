@@ -5,7 +5,7 @@
  *           Decision Card schema support via extractDecisions
  */
 
-import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.4';
+import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.6';
 
 export async function initHistoryView(container) {
     container.innerHTML = `
