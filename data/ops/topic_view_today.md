@@ -17,12 +17,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보]SK하이닉스, 주가 100만원 첫 돌파 - 아시아경제 (ID: unknown)
+### [특징주] 삼성전자, 장중 '20만 전자' 터치…신고가 경신 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 지난해 4분기 신규 주담대 평균 2.1억…3분기 보다 1천421만원 감소 - 경기일보 (ID: unknown)
+### 정부 대출 규제에 '영끌' 제동…수도권 거주 30대 주담대 감소 - 마켓인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,17 +57,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [알립니다] 다주택 양도세 폭탄 피해갈 비책, 김학렬·제네시스박 특강 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 수서역 KTX, 서울역 SRT 25일 운행 시작 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "3주 전엔 12억대였는데…" 전셋집 구하려다 '화들짝' [돈앤톡] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,7 +82,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인·금 ‘디커플링’ 심화…관세 충격에 폭락한 코인, 금·은 구리는 활짝 - 조선일보 (ID: unknown)
+### ‘꽉 잡아! 떨어진다’…비트코인 6만5천弗 아래로 급락..더 이상 ‘디지털 금’ 아냐 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [알립니다] 다주택 양도세 폭탄 피해갈 비책, 김학렬·제네시스박 특강 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +97,34 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 의료 경계 허문다?…대웅제약, ‘전 국민 모니터링’ 청사진 제시 - 약사공론 (ID: unknown)
+### 환자 원격관리 시장 쟁탈전…대웅 "올해 10만 병상 도입" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스 (ID: unknown)
+### “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 대기업 김 부장 월 800만 원 벌었다... 대·중소기업 임금 격차 '2배'-경제ㅣ한국일보 - 한국일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 추진력 강화…다이나핏, 고탄성 러닝화 ‘스카이 다이나마이트’ 공개 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘K-푸드 사랑’ 브라질 영부인 만난 백종원…“BTS 진 함께 못 와 아쉽” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 월세처럼 '옵션사용료' 받는 전세 단속 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 김병민, 정원오에 일침 “성수동을 개인브랜드 포장용으로 사용 말라” (ID: unknown)
@@ -177,12 +192,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 중수청 수사분야 9개 → 6개 (ID: unknown)
+### "농지까지 투기대상 돼…강제매각 명령도 검토" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### "농지까지 투기대상 돼…강제매각 명령도 검토" (ID: unknown)
+### 중수청 수사분야 9개 → 6개 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -193,21 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 쿠팡, 美하원서 증언…韓 '301조' 명분되나 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 트럼프 "대법원 결정으로 장난치면 더 높은 관세"… EU는 반발 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이재명 대통령 “충남대전 통합, 충분한 공감없이 일방 강행할 순 없다” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘하이브에 승소’ 민희진, 25일 기자회견 개최…향후 계획 발표 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
