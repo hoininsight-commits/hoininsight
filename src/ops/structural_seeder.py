@@ -128,6 +128,22 @@ class StructuralTopicSeeder:
         # topic_seeds.json is a list at root
         topic_seeds_raw = self._load_json(self.base_dir / "data/ops/topic_seeds.json")
         topic_seeds = topic_seeds_raw if isinstance(topic_seeds_raw, list) else topic_seeds_raw.get('seeds', [])
+
+        # [NEW] Bridge Engine 1 Macro Anomalies (topic_candidates.json) into the flow
+        ymd_path = self.ymd.replace("-", "/")
+        topic_candidates_path = self.base_dir / "data/topics/candidates" / ymd_path / "topic_candidates.json"
+        candidates_data = self._load_json(topic_candidates_path)
+        macro_candidates = candidates_data.get('candidates', []) if candidates_data else []
+        
+        # Convert macro candidates into a format the seeder understands
+        for cand in macro_candidates:
+            if cand.get("status") == "CANDIDATE_ALIVE" or cand.get("status") == "UNKNOWN":
+                cand['signal_id'] = cand.get('candidate_id', cand.get('dataset_id', 'unknown'))
+                # Handle titles wrapped in metadata or nested
+                title = cand.get('dataset_id', 'Unknown Macro Signal')
+                if 'candidate_id' in cand:
+                    cand['signal_title_kr'] = f"거시경제 이상징후: {title}"
+                hoin_signals.append(cand)
         
         # 2. Process
         output_seeds = []
