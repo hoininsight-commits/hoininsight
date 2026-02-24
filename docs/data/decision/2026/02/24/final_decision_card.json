@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-02-24T15:48:20.621144",
+  "generated_at_kst": "2026-02-24T16:11:50.572740",
   "date": "2026-02-24",
   "blocks": {
     "regime": {
@@ -27,7 +27,7 @@
   "structural_topic": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
   "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
   "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=2.31 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=2.06 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
@@ -59,7 +59,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-24T15:47:57Z",
+        "ts_utc": "2026-02-24T16:11:25Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/24/inflation_cpi_fred.json L2 Signal",
@@ -116,7 +116,7 @@
       "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-24T15:47:57Z",
+        "ts_utc": "2026-02-24T16:11:25Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/24/inflation_pce_fred.json L2 Signal",
@@ -173,7 +173,7 @@
       "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_cb_bw] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-24T15:47:57Z",
+        "ts_utc": "2026-02-24T16:11:25Z",
         "dataset_id": "struct_dart_disposal",
         "topic_id": "struct_dart_disposal::event_nonzero",
         "title": "data/features/anomalies/2026/02/24/struct_dart_disposal.json L2 Signal",
@@ -226,9 +226,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (crypto_btc_usd_spot_coingecko, STRUCTURAL 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.31배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수가 평소 변동폭 대비 2.06배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-24T15:47:57Z",
+        "ts_utc": "2026-02-24T16:11:25Z",
         "dataset_id": "index_kospi_stooq",
         "topic_id": "index_kospi_stooq::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/24/index_kospi_stooq.json L2 Signal",
@@ -238,11 +238,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 2.31,
-            "percentile": 99.6,
-            "value": 5961.56,
-            "rolling_mean_20d": 5849.482,
-            "reasoning": "Z-Score 2.31 >= 2.0"
+            "z_score": 2.06,
+            "percentile": 100.0,
+            "value": 5969.64,
+            "rolling_mean_20d": 5857.5375,
+            "reasoning": "Z-Score 2.06 >= 2.0"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -263,7 +263,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/02/24/index_kospi_stooq.json"
         },
-        "rationale": "[L2] Z-Score 2.31 >= 2.0 (Regime x1.0)",
+        "rationale": "[L2] Z-Score 2.06 >= 2.0 (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -283,9 +283,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (코스피(KOSPI) 지수 충격, STRUCTURAL 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 0.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 0.8% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-24T15:47:57Z",
+        "ts_utc": "2026-02-24T16:11:25Z",
         "dataset_id": "crypto_btc_usd_spot_coingecko",
         "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/24/crypto_btc_usd_spot_coingecko.json L2 Signal",
@@ -295,11 +295,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": -1.69,
-            "percentile": 0.4,
-            "value": 63173.0,
-            "rolling_mean_20d": 65574.65,
-            "reasoning": "Percentile 0.4% (Extreme)"
+            "z_score": -1.5,
+            "percentile": 0.8,
+            "value": 63194.0,
+            "rolling_mean_20d": 65360.3,
+            "reasoning": "Percentile 0.8% (Extreme)"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -320,7 +320,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/02/24/crypto_btc_usd_spot_coingecko.json"
         },
-        "rationale": "[L2] Percentile 0.4% (Extreme) (Regime x1.0)",
+        "rationale": "[L2] Percentile 0.8% (Extreme) (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
