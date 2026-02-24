@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "metal_gold_paxg_coingecko"
+    "index_kospi_stooq"
   ],
   "baseline_match": [
-    "metal_gold_paxg_coingecko: Single Axis Surge (Z=1.88)"
+    "index_kospi_stooq: Single Axis Surge (Z=1.78)"
   ],
   "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation Z=1.88 (No Cluster)",
+  "level_proof": "Statistical Deviation Z=1.78 (No Cluster)",
   "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
     "Need Correlated Asset Movement",

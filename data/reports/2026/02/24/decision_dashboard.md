@@ -85,7 +85,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 뉴욕증시, 3대 지수 모두 반등 마감 - KBS 뉴스 (Google_News_KR_Economy)
   - [NEWS] 20만전자·100만닉스 현실로... 코스피 6000 코앞에 왔다 - 조선일보 (Google_News_KR_Economy)
-  - [NEWS] [증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 중국 로봇·전기차·배터리·자율주행 모두 한국보다 앞서…비메모리도 우위 - 경향신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -189,24 +189,24 @@
 |---|---|---|
 | 뉴욕증시, 3대 지수 모두 반등 마감 - KBS 뉴스 | Structural implication: '뉴욕증시, 3대 지수 모두 반등 마감 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 20만전자·100만닉스 현실로... 코스피 6000 코앞에 왔다 - 조선일보 | Structural implication: '20만전자·100만닉스 현실로... 코스피 6000 코앞에 왔다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스 | Structural implication: '[증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 중국 로봇·전기차·배터리·자율주행 모두 한국보다 앞서…비메모리도 우위 - 경향신문 | Structural implication: '중국 로봇·전기차·배터리·자율주행 모두 한국보다 앞서…비메모리도 우위 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 기술·의약품 수출 245억달러 성과에도 '약가인하 변수'…제약바이오협회 총력 대응 나선다 - MEDI:GATE NEWS | Structural implication: '기술·의약품 수출 245억달러 성과에도 '약가인하 변수'…제약바이오협회 총력 대응 나선다 - MEDI:GATE NEWS' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보 | Structural implication: '비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| [삼성 언팩] '갤럭시 AI' 배지 건 사람들이 분주히…D-1 모습은 - 연합인포맥스 | Structural implication: '[삼성 언팩] '갤럭시 AI' 배지 건 사람들이 분주히…D-1 모습은 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 | Structural implication: 'AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| '갤럭시 S26 울트라' 초도 물량 100만대 늘린다…칩플레이션 대비 - 전자신문 | Structural implication: ''갤럭시 S26 울트라' 초도 물량 100만대 늘린다…칩플레이션 대비 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| '전세 18억' 과천 아파트, 얼마나 빠졌길래…집값도 '출렁' - 한국경제 | Structural implication: ''전세 18억' 과천 아파트, 얼마나 빠졌길래…집값도 '출렁' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | ‘자사주 소각’ 상법 개정안 본회의 상정…국힘 필리버스터 시작 - 한겨레 | Structural implication: '‘자사주 소각’ 상법 개정안 본회의 상정…국힘 필리버스터 시작 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 방산 판 바꾼다…2030년 스타트업 100개·벤처천억기업 30개 육성 - 조선비즈 - Chosunbiz | Structural implication: '방산 판 바꾼다…2030년 스타트업 100개·벤처천억기업 30개 육성 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴 | Structural implication: '美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴' suggests a shift in NEWS dynamics. | LOW |
 | 코스피 5000시대, 역대급 돈잔치…배당 6조원 돌파 "호재일까" - 지디넷코리아 | Structural implication: '코스피 5000시대, 역대급 돈잔치…배당 6조원 돌파 "호재일까" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| [증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스 | Structural implication: '[증시 긴급진단] "28년 AI발 금융위기 경고보고서가 삼전·SK하닉 끌어올렸다" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 수서역 KTX, 서울역 SRT 25일 운행 시작 - 조선일보 | Structural implication: '수서역 KTX, 서울역 SRT 25일 운행 시작 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 | Structural implication: '“이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 원화 실질가치 7개월 만에 반등…환율, 4.7원 오른 1444.7원 개장 - 조선일보 | Structural implication: '원화 실질가치 7개월 만에 반등…환율, 4.7원 오른 1444.7원 개장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 | Structural implication: '다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 가상자산거래소 대주주 지분규제 두고 금융위-정치권 온도차 여전, '금융통제 연장선' VS '신산업 육성 영역' - 비즈니스포스트 | Structural implication: '가상자산거래소 대주주 지분규제 두고 금융위-정치권 온도차 여전, '금융통제 연장선' VS '신산업 육성 영역' - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
 | 의료 경계 허문다?…대웅제약, ‘전 국민 모니터링’ 청사진 제시 - 약사공론 | Structural implication: '의료 경계 허문다?…대웅제약, ‘전 국민 모니터링’ 청사진 제시 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 멀쩡한 치킨 쌓아놓고…‘배민온리’에 처갓집 속타는 사연 - 한겨레 | Structural implication: '멀쩡한 치킨 쌓아놓고…‘배민온리’에 처갓집 속타는 사연 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 중국, 일본기업 20개사 블랙리스트 즉시발효…추가 20곳도 감시대상 | Structural implication: '중국, 일본기업 20개사 블랙리스트 즉시발효…추가 20곳도 감시대상' suggests a shift in NEWS dynamics. | LOW |
 | 회사이름 불닭으로 바꿔도 인정…김정수 부회장, 여성 최초 경영자대상 | Structural implication: '회사이름 불닭으로 바꿔도 인정…김정수 부회장, 여성 최초 경영자대상' suggests a shift in NEWS dynamics. | LOW |
 | “형 떠나 보내면서 시작됐다”…20년 투병 끝에 사망한 유명 배우 | Structural implication: '“형 떠나 보내면서 시작됐다”…20년 투병 끝에 사망한 유명 배우' suggests a shift in NEWS dynamics. | LOW |
