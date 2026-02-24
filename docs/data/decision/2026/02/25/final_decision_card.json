@@ -1,0 +1,339 @@
+{
+  "card_version": "phase66_editorial_v1",
+  "generated_at_kst": "2026-02-25T08:35:41.035796",
+  "date": "2026-02-25",
+  "blocks": {
+    "regime": {
+      "current_regime": "(no meta regime detected)",
+      "confidence": 0.0,
+      "has_meta_topics": false,
+      "meta_topic_count": 0,
+      "basis_type": "NONE"
+    },
+    "revival": {
+      "proposal_count": 0,
+      "has_revival": false,
+      "loop_warning_count": 0,
+      "primary_revival_reason": "N/A"
+    },
+    "ops": {
+      "system_freshness": 93.0,
+      "sla_breach_count": 3,
+      "has_stale_warning": true,
+      "7d_success_rate": "7/7"
+    }
+  },
+  "topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
+  "structural_topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
+  "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
+  "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.69 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "narrative_topics": [],
+  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "key_data": {
+    "ANCHOR": {
+      "step1_axis": [
+        "inflation_kor_cpi_ecos"
+      ],
+      "step6_gap": "Insufficient Evidence for L3/L4",
+      "request": [
+        "Need Correlated Asset Movement",
+        "Need News/Event Confirmation"
+      ],
+      "pre_structural": null
+    },
+    "risk_vix_fred": "Primary",
+    "index_kospi_stooq": "Secondary",
+    "crypto_btc_usd_spot_coingecko": "Secondary",
+    "rates_us02y_fred": "Secondary",
+    "inflation_cpi_fred": "Secondary"
+  },
+  "top_topics": [
+    {
+      "dataset_id": "risk_vix_fred",
+      "level": "L2",
+      "score": 115,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-02-25T08:35:19Z",
+        "dataset_id": "risk_vix_fred",
+        "topic_id": "risk_vix_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/02/25/risk_vix_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.25,
+            "percentile": 96.4,
+            "value": 21.01,
+            "rolling_mean_20d": 18.7595,
+            "reasoning": "Percentile 96.4% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/02/25/risk_vix_fred.json"
+        },
+        "rationale": "[L2] Percentile 96.4% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "level": "L2",
+      "score": 115,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, 미국 10년물 국채금리 급변 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 99.6% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-02-25T08:35:19Z",
+        "dataset_id": "index_kospi_stooq",
+        "topic_id": "index_kospi_stooq::z_score_model_v1",
+        "title": "data/features/anomalies/2026/02/25/index_kospi_stooq.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.57,
+            "percentile": 99.6,
+            "value": 5969.64,
+            "rolling_mean_20d": 5873.6485,
+            "reasoning": "Percentile 99.6% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/02/25/index_kospi_stooq.json"
+        },
+        "rationale": "[L2] Percentile 99.6% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "level": "L2",
+      "score": 115,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, 코스피(KOSPI) 지수 충격 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 2.0% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-02-25T08:35:19Z",
+        "dataset_id": "crypto_btc_usd_spot_coingecko",
+        "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
+        "title": "data/features/anomalies/2026/02/25/crypto_btc_usd_spot_coingecko.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": -0.61,
+            "percentile": 2.0,
+            "value": 64162.0,
+            "rolling_mean_20d": 64975.0,
+            "reasoning": "Percentile 2.0% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/02/25/crypto_btc_usd_spot_coingecko.json"
+        },
+        "rationale": "[L2] Percentile 2.0% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "rates_us02y_fred",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 감지된 토픽: rates_us02y_fred L2 Signal 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, 장단기 금리차(Yield Curve) 역전/해소 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 1.6% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-02-25T08:35:19Z",
+        "dataset_id": "rates_us02y_fred",
+        "topic_id": "rates_us02y_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/02/25/rates_us02y_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": -1.33,
+            "percentile": 1.6,
+            "value": 3.43,
+            "rolling_mean_20d": 3.4989999999999997,
+            "reasoning": "Percentile 1.6% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/02/25/rates_us02y_fred.json"
+        },
+        "rationale": "[L2] Percentile 1.6% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    },
+    {
+      "dataset_id": "inflation_cpi_fred",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-02-25T08:35:19Z",
+        "dataset_id": "inflation_cpi_fred",
+        "topic_id": "inflation_cpi_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/02/25/inflation_cpi_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.65,
+            "percentile": 100.0,
+            "value": 326.588,
+            "rolling_mean_20d": 319.3257,
+            "reasoning": "Percentile 100.0% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/02/25/inflation_cpi_fred.json"
+        },
+        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ]
+    }
+  ],
+  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
+}

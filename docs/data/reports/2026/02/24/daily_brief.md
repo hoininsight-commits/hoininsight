@@ -6,7 +6,7 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: KOSPI:FLAT(0.00)[png](data/reports/2026/02/24/charts/index_kospi_stooq.png) | CPI_USA:FLAT(0.00)[png](data/reports/2026/02/24/charts/inflation_cpi_fred.png)
+Drivers: KOSPI:FLAT(0.00)[png](data/reports/2026/02/24/charts/index_kospi_stooq.png) | US02Y:FLAT(0.00)[png](data/reports/2026/02/24/charts/rates_us02y_fred.png)
 Meta topics: [json](data/meta_topics/2026/02/24/meta_topics.json)
 This regime has persisted for 41 consecutive days since 2026-01-14.
 
@@ -22,13 +22,14 @@ Historical context:
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | KOSPI | data/features/anomalies/2026/02/24/index_kospi_stooq.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/index_kospi_stooq.png) | [json](data/topics/2026/02/24/index_kospi_stooq.json) | [json](data/features/anomalies/2026/02/24/index_kospi_stooq.json) |
-| 2 | CPI_USA | data/features/anomalies/2026/02/24/inflation_cpi_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/24/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/24/inflation_cpi_fred.json) |
-| 3 | PCE_USA | data/features/anomalies/2026/02/24/inflation_pce_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/24/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/24/inflation_pce_fred.json) |
-| 4 | M2_USA | data/features/anomalies/2026/02/24/liquidity_m2_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/liquidity_m2_fred.png) | [json](data/topics/2026/02/24/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/02/24/liquidity_m2_fred.json) |
-| 5 | M_AND_A_CB | data/features/anomalies/2026/02/24/struct_dart_cb_bw.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/struct_dart_cb_bw.png) | [json](data/topics/2026/02/24/struct_dart_cb_bw.json) | [json](data/features/anomalies/2026/02/24/struct_dart_cb_bw.json) |
+| 2 | US02Y | data/features/anomalies/2026/02/24/rates_us02y_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/rates_us02y_fred.png) | [json](data/topics/2026/02/24/rates_us02y_fred.json) | [json](data/features/anomalies/2026/02/24/rates_us02y_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/02/24/inflation_cpi_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/24/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/24/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/02/24/inflation_pce_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/24/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/24/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/02/24/liquidity_m2_fred.json L2 Signal | 6.00 | 7 (x2.05) | 12.30 | FLAT (0.00) | **12.30** | HIGH | [png](data/reports/2026/02/24/charts/liquidity_m2_fred.png) | [json](data/topics/2026/02/24/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/02/24/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] KOSPI: data/features/anomalies/2026/02/24/index_kospi_stooq.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
+- [HIGH] US02Y: data/features/anomalies/2026/02/24/rates_us02y_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/02/24/inflation_cpi_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/02/24/inflation_pce_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/02/24/liquidity_m2_fred.json L2 Signal (base=6.00, final_m=12.30) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -43,7 +44,6 @@ Historical context:
 - [LOW] VIX: data/features/anomalies/2026/02/24/risk_vix_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] SPX: data/features/anomalies/2026/02/24/index_spx_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/02/24/index_nasdaq_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
-- [LOW] US02Y: data/features/anomalies/2026/02/24/rates_us02y_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=1
 - [LOW] WTI: data/features/anomalies/2026/02/24/comm_wti_fred.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/02/24/metal_silver_kag_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/02/24/metal_silver_kag_coingecko.json (Normal) (base=0.00, final_m=0.00) | Mom: FLAT (slope=0.00) -> x1.0 | App7d=7
@@ -75,7 +75,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=1.88 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=1.78 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
