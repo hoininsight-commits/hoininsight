@@ -166,7 +166,21 @@ def _publish_today() -> Optional[Dict]:
                     changed = True
                     
                 # 2. Narrative Score Mapping (CASE 3 Fix)
-                n_key = title if title in narrative_map else (topic_id if topic_id in narrative_map else None)
+                n_key = None
+                dataset_id = top.get("dataset_id")
+                
+                # Try exact matches first
+                if title in narrative_map:
+                    n_key = title
+                elif topic_id in narrative_map:
+                    n_key = topic_id
+                elif dataset_id:
+                    # Try finding dataset_id inside the keys
+                    for k in narrative_map.keys():
+                        if dataset_id in k:
+                            n_key = k
+                            break
+
                 if n_key:
                     n_data = narrative_map[n_key]
                     top["narrative_score"] = n_data["narrative_score"]
