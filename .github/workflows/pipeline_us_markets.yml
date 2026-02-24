@@ -26,6 +26,9 @@ jobs:
           pip install -r requirements.txt
           
       - name: Run pipeline (US_MARKETS)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
           python -m src.pipeline.run_pipeline --only-axis US_MARKETS
           
@@ -37,7 +40,7 @@ jobs:
           git add data docs || true
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: us_markets daily run [skip ci]"
-          git pull --rebase
+          git pull --rebase --autostash
           git push
           
       - name: Verify Schedule

@@ -74,21 +74,21 @@ def normalize_base_rate(base_dir: Path):
     # Or process ALL raw files? Ideally just new ones.
     # For now, let's process the latest available one.
     
-    from src.collectors.ecos_collector import _get_latest_ecos_path
+    from src.engine.collectors.ecos_collector import _get_latest_ecos_path
     raw_path = _get_latest_ecos_path('rates', 'korea_base_rate')
     curated_path = base_dir / "data" / "curated" / "ecos" / "rates" / "korea_base_rate.csv"
     
     _normalize_ecos_csv(raw_path, curated_path, "KOR_BASE_RATE", "PCT", "interest_rate")
 
 def normalize_cpi(base_dir: Path):
-    from src.collectors.ecos_collector import _get_latest_ecos_path
+    from src.engine.collectors.ecos_collector import _get_latest_ecos_path
     raw_path = _get_latest_ecos_path('inflation', 'korea_cpi')
     curated_path = base_dir / "data" / "curated" / "ecos" / "inflation" / "korea_cpi.csv"
     
     _normalize_ecos_csv(raw_path, curated_path, "KOR_CPI", "INDEX", "cpi_index")
 
 def normalize_usdkrw(base_dir: Path):
-    from src.collectors.ecos_collector import _get_latest_ecos_path
+    from src.engine.collectors.ecos_collector import _get_latest_ecos_path
     raw_path = _get_latest_ecos_path('fx', 'korea_usdkrw')
     curated_path = base_dir / "data" / "curated" / "ecos" / "fx" / "usdkrw.csv"
     
