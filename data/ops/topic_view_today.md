@@ -12,7 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 코스피 반도체주 강세에 사상 최고치 5960선, '20만전자' '100만닉스' 등극 - 비즈니스포스트 (ID: unknown)
+### 뉴욕증시, 3대 지수 모두 반등 마감 - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 20만전자·100만닉스 현실로... 코스피 6000 코앞에 왔다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -22,17 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 중국 로봇·전기차·배터리·자율주행 모두 한국보다 앞서…비메모리도 우위 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 제약바이오협회 권기범 신임 이사장 취임... "수출 500억불 달성 추진" - 팜뉴스 (ID: unknown)
+### 기술·의약품 수출 245억달러 성과에도 '약가인하 변수'…제약바이오협회 총력 대응 나선다 - MEDI:GATE NEWS (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,27 +47,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “이자를 10%나 준다고요?”…‘원금도 보장’되는 예금 상품이 있다? [잇슈 머니] - KBS 뉴스 (ID: unknown)
+### '갤럭시 S26 울트라' 초도 물량 100만대 늘린다…칩플레이션 대비 - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 적극 도입” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 다쏘시스템, '산업용 AI 동반자' 공개…업무 방식 대전환 예고 - 지디넷코리아 (ID: unknown)
+### “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### '전세 18억' 과천 아파트, 얼마나 빠졌길래…집값도 '출렁' - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### '갤럭시 S26 울트라' 초도 물량 100만대 늘린다…칩플레이션 대비 - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,24 +87,79 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주가 하락에 '149조 베팅'…역대급 불장에 신기록 터졌다 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '5월9일 다주택 양도 중과' 시행령 개정안 국무회의 의결 - segye.com (ID: unknown)
+### 원화 실질가치 7개월 만에 반등…환율, 4.7원 오른 1444.7원 개장 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “위험자산 팔자”…비트코인 6만3000달러 붕괴 - 국민일보 (ID: unknown)
+### 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 가상자산거래소 대주주 지분규제 두고 금융위-정치권 온도차 여전, '금융통제 연장선' VS '신산업 육성 영역' - 비즈니스포스트 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 의료 경계 허문다?…대웅제약, ‘전 국민 모니터링’ 청사진 제시 - 약사공론 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 중국, 일본기업 20개사 블랙리스트 즉시발효…추가 20곳도 감시대상 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 회사이름 불닭으로 바꿔도 인정…김정수 부회장, 여성 최초 경영자대상 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “형 떠나 보내면서 시작됐다”…20년 투병 끝에 사망한 유명 배우 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “20년 조울증 투병”…‘기숙사 대소동’ 로버트 캐러딘 별세 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “마약류 중독 정도 심각”…징역 1년6개월 실형 확정된 가수 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “지구를 위성으로 다 덮어도 되나”…아마존도 4500개 쏘아올린다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 외국인 매출 1조 노린다…신세계백화점, 면세점·관광공사 MOU 연장 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매경이 전하는 세상의 지식 (매-세-지, 2월 25일) (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 백악관 당국자 “글로벌 관세 15%로 올리는 작업 중” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 자사주 소각 의무화…‘3차 상법’, 오늘 본회의 처리 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### AI 공포 진정됐나? 소프트웨어 섹터 반등에 뉴욕증시 방긋…나스닥 1.1% 상승 [월가월부] (ID: unknown)
@@ -158,56 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “금천구 무슨일이죠?”…역대급 청년백수 시대, 나홀로 고용률 60% (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “탄약 부족한데 전쟁이요?” 합참의장 경고에도…트럼프 “내가 결정” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중국, 미국에 “관세 추가 안돼…협력하면 모두 이롭고 싸우면 모두 다쳐” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “우리 엄마가 실수로 만든 줄”…다리미 자국 남은 셔츠, 가격은 얼마? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “1명 숨지고 14명 다쳤다”…‘종각역 추돌사고’ 70대 택시기사 불구속 송치 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 서울 한복판 “승리는 우리의 것” 논란에…러 대사관, 현수막 거둬들여 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 돌싱남, 재혼상대 예쁘면 모든 게 용서?…돌싱녀, 돈 많다면 노안 쯤이야 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “이번에도 또?”…다카이치 측, 총선 당선자들에 수십만원 선물 논란 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 국힘 “여당, TK통합법 보류 야당탓”…의총선 “누가 반대했나” 설전 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “분양가만 무려 21억원”…더샵분당센트로 ‘줍줍’ 경쟁률 11대 1 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 기부·입학금에 교재비까지…‘학원비 더받기’ 꼼수 막는다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
