@@ -70,6 +70,10 @@ class StructuralTopicSeeder:
             if kw in text_blob:
                 return self._build_seed_obj(item, "STRUCTURAL_DAMAGE", match_kw=kw)
                 
+        # 4. Fallback for Verified HOIN Engine Signals
+        if 'signal_id' in item:
+            return self._build_seed_obj(item, "HOIN_ANOMALY", match_kw="거시/시장 이상징후")
+                
         return None
 
     def _build_seed_obj(self, item: Dict, seed_type: str, match_kw: str = "") -> Dict:
@@ -86,12 +90,18 @@ class StructuralTopicSeeder:
             misunderstanding = "단발성 악재가 아닌 구조적 디스카운트 요인입니다."
             driver = ["GOVERNANCE"]
             risk = "대주주 의사결정 철회 시 해소 가능."
-        else:
+        elif seed_type == "STRUCTURAL_REDEFINITION":
             summary = f"구조적 재정의 패턴 감지: '{match_kw}' 키워드 또는 프레임 매칭. 시장 인식 변화 구간."
             why_now = "기존 PER/PBR 프레임에서 벗어나는 트리거가 발생했습니다."
             misunderstanding = "단순 호재가 아닌 밸류에이션 리레이팅(Re-rating) 시그널입니다."
             driver = ["INDUSTRY", "POLICY"] # Default heuristics
             risk = "실제 숫자(매출/이익)로 증명되기까지 시차 존재."
+        else:
+            summary = f"매크로/시장 이상 징후 감지: '{match_kw}'. 파급력 검토 필요."
+            why_now = "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다."
+            misunderstanding = "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다."
+            driver = ["MACRO", "MARKET"]
+            risk = "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
 
         return {
             "run_date": self.ymd,
