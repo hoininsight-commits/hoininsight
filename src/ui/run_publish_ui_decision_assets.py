@@ -191,7 +191,18 @@ def _publish_today() -> Optional[Dict]:
                     top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
                     if n_data["causal_chain"]:
                         top["causal_chain"] = n_data["causal_chain"]
-                    changed = True
+                    
+                # 3. Structural Contract Alignment (NO-DRIFT)
+                if top.get("intensity") is None and top.get("score") is not None:
+                    try:
+                        top["intensity"] = float(top["score"])
+                    except (ValueError, TypeError):
+                        pass
+
+                if "narrative_score" not in top:
+                    top["narrative_score"] = None
+
+                changed = True
                     
             if changed:
                 dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
