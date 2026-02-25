@@ -75,21 +75,20 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=1.92 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=1.69 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
 
-- Title: 지수 상승 속 섹터 하락의 이유
-- Question: 왜 지수는 오르는데 내 종목은 하락하나?
-- Why people confused: 지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.
+- Title: 오늘 시장의 핵심 혼란 포인트
+- Question: 오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)
+- Why people confused: 시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.
 - Key reasons:
   - 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.
   - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
-- Numbers:
-  - S&P500 Status: Active 
+- Numbers: (none)
 - Risk: 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
-- Confidence: LOW
+- Confidence: UNCERTAIN
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 

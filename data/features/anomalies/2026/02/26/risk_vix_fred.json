@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-02-26T08:34:12Z",
+    "dataset_id": "risk_vix_fred",
+    "entity": "VIX",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": 0.37,
+      "percentile": 90.5,
+      "value": 19.55,
+      "rolling_mean_20d": 18.919500000000003,
+      "reasoning": "Percentile 90.5% (Watch)"
+    }
+  }
+]

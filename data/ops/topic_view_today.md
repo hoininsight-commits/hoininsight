@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-25
+# 🧭 TODAY TOPIC VIEW - 2026-02-26
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,27 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 삼성전자, 3세대 AI폰 ‘갤럭시 S26 시리즈’ 공개 - Samsung Global Newsroom (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 기세등등 코스피, 6000마저 뚫었다…시가총액 첫 5천조원 넘어 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 박상진 산은 회장 "통합 HD현대케미칼, 사업 재편에 1조 신규 자금 지원" - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 비트코인· 리플 돌연 폭발 "뉴욕증시 엔비디아 실적발표 환호" - 글로벌이코노믹 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘6000피’ K-증시 시총, 경제 규모 더 큰 프랑스도 제쳤다 - 문화일보 (ID: unknown)
+### 삼성전자, ‘갤럭시 S26 시리즈’ 사전 판매 시작 - Samsung Global Newsroom (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,12 +22,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성전자, ‘갤럭시 버즈4 시리즈’ 공개 - Samsung Global Newsroom (ID: unknown)
+### '석유화학 사업재편 1호' 대산에 2.1조 투입 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 육천피에…곱버스 커뮤니티에 상조광고까지 ‘곡소리’ - 동아일보 (ID: unknown)
+### ‘6000피’ K-증시 시총, 경제 규모 더 큰 프랑스도 제쳤다 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성전자, AI 기술 접목한 '갤럭시 버즈4' 공개 - 디일렉 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 기세등등 코스피, 6000마저 뚫었다…시가총액 첫 5천조원 넘어 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,17 +47,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 월가 뒤흔든 'AI 공포' 보고서 "AI로 사상 초유의 경제 위기" - YTN (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '엔비디아 천하' 흔들리나…역대급 동맹 출범에 中도 '긴장' - 한국경제 (ID: unknown)
+### 李 “주가조작 신고땐 수백억 포상, 로또보다 팔자 고치기 쉽다” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 李 “주가조작 신고땐 수백억 포상, 로또보다 팔자 고치기 쉽다” - 조선일보 (ID: unknown)
+### AMD, 메타에 1000억弗 AI칩 공급…"삼성전자 수혜" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,6 +92,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 중국 판매 허용 두 달짼데 '0건'…엔비디아의 '대굴욕' - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 박상진 산은 회장 “홈플러스 개입 어렵다”…MBK 지원 요청 거절 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -110,6 +110,71 @@ No SHADOW candidates today.
 ### 법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “처음 만난 사람에게 8천만원 뜯겼다”…가수 임형주에 무슨일이 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “외국서 자발적 안락사 고민, 날짜 미뤄” 여에스더, 난치성 우울증 고백 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “이런 식이면 재판 위축 뻔해”…여당 ‘사법 3법’ 맹공에 법원장 긴급회의 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “프리미엄 서비스 비용, 엄청난 손실”…생존 기로에 선 하이브리드 LCC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “난장판 만들고 도망갔다”…CCTV에 찍힌 신지 신혼집 범인의 정체 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “묵히는 농지 매각 명령이 공산당이냐”…李 대통령, 이승만 소환한 이유는 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘자사주 소각’ 단독처리한 與…간첩죄 포함 형법개정도 올려 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 탈원전 강행하고 中에 지나친 의존…獨, 제조업 고수하다 산업전환 실패 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “NHN, 4분기 실적발표 후 이익 체력 증가 기대감…비게임사업도 수익성 개선” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 투약 후 운전?…반포대교서 포르쉐 추락해 2명 부상, 약물운전 정황 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 2배나 올리다니…관광객 너무 많이 오자, 日교토시의 내놓은 대책 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 시스트란, 온프레미스 sLLM ‘QUESAR(퀘이사)’ 고도화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 삼전·하닉 역대급 실적에도…여전한 최상위권 의약학계열 선호 [임성호의 입시판] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “걱정 말라, 하고픈 말 한 것”…김동완, ‘성매매 합법화’ 발언 후 근황 (ID: unknown)
@@ -143,71 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “10년간 790조 투입 ”…탄소 줄이는 기업, 역대급 금융지원 받는다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 김정은 “미국이 적대시정책 철회하면 좋게 못지낼 이유 없어” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 친구가 車 보더니 “남편이 진짜 사랑하는구나”…그돈이면 벤츠 사는데 왜? [최기성의 허브車] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 北 당대회 폐막…김정은 “핵보유국 지위 철저히 행사” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### HD현대·롯데케미칼 5대5 통폐합…에틸렌 생산 110만t 줄인다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “K시니어, 유럽 노신사들에 안 꿀립니다”…발로 뛰며 ‘멋’ 발굴하는 여성은 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “딸 통학 도우미 구해요, ‘외제차 차주’만 가능”…구인글 논란 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 매경이 전하는 세상의 지식 (매-세-지, 2월 26일) (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 빌 게이츠, 러 여성과 외도 사실 인정…“엡스타인 성 착취 피해자는 아냐” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “기본급 5.7억, 잘하면 주식 20억 더 드려요”…화끈한 연봉 공개한 회사 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “30대 초반이면 조리원 막내”…늦깎이 엄마 힘낸 한국, 출산율 끌어올렸다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “AI가 인프라가 된 순간” ... 삼성, 갤럭시 S26 공개 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 엔비디아 실적 기대감에 AI파괴론 쏙...뉴욕증시 반등 [월가월부] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “트럼프 보단 시진핑이 낫다”…유럽 정상들, 너도나도 중국행 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
