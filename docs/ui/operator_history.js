@@ -93,7 +93,7 @@ function renderHistoryFrame(container, state) {
 
     const update = () => {
         state.filters.type = document.getElementById('filter-type').value;
-        state.filters.intensity = parseInt(document.getElementById('filter-int').value);
+        state.filters.narrative_score = parseInt(document.getElementById('filter-int').value);
         renderHistoryList(document.getElementById('history-list-container'), state);
         assertNoUndefined(container.innerHTML);
     };
@@ -125,16 +125,16 @@ function calculateIntelligence(data) {
 
     const totalCount = recentItems.length;
     const completeItems = recentItems.filter(i => !i.incomplete);
-    const avgInt = Math.round(recentItems.reduce((s, i) => s + i.intensity, 0) / totalCount);
-    const maxInt = Math.max(...recentItems.map(i => i.intensity));
+    const avgInt = Math.round(recentItems.reduce((s, i) => s + i.narrative_score, 0) / totalCount);
+    const maxInt = Math.max(...recentItems.map(i => i.narrative_score));
     const compRatio = Math.round((completeItems.length / totalCount) * 100);
 
-    const topSignal = [...completeItems].sort((a, b) => b.intensity - a.intensity)[0] || null;
+    const topSignal = [...completeItems].sort((a, b) => b.narrative_score - a.narrative_score)[0] || null;
 
     // Daily averages for Sparkline
     const dailyMap = recentItems.reduce((acc, item) => {
         if (!acc[item.date]) acc[item.date] = [];
-        acc[item.date].push(item.intensity);
+        acc[item.date].push(item.narrative_score);
         return acc;
     }, {});
 
@@ -184,7 +184,7 @@ function renderHistoryList(container, state) {
         if (!isCompView && !isIncomplete) return false;
 
         const typeMatch = state.filters.type === 'All' || item.why_now_type === state.filters.type;
-        const intMatch = item.intensity >= state.filters.intensity;
+        const intMatch = item.narrative_score >= state.filters.narrative_score;
         return typeMatch && intMatch;
     });
 
@@ -227,7 +227,7 @@ function renderHistoryList(container, state) {
                     <div class="absolute -right-4 -top-4 text-6xl opacity-5 grayscale group-hover:grayscale-0 transition-all">🏆</div>
                     <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">최근 7일 최고 강도 신호</div>
                     <div class="flex items-center gap-3">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-0.5 rounded border border-red-500/20">${intel.topSignal.intensity}%</span>
+                        <span class="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-0.5 rounded border border-red-500/20">${intel.topSignal.narrative_score}%</span>
                         <h4 class="text-sm font-bold text-slate-200 truncate">${intel.topSignal.title}</h4>
                         <span class="text-[10px] text-slate-500 font-mono ml-auto">${intel.topSignal.date}</span>
                     </div>
@@ -265,8 +265,8 @@ function renderHistoryList(container, state) {
             const nextDate = sortedDates[idx + 1];
             const nextDayItems = grouped[nextDate];
             if (nextDayItems) {
-                const curAvg = Math.round(dayItems.reduce((s, i) => s + i.intensity, 0) / dayItems.length);
-                const prevAvg = Math.round(nextDayItems.reduce((s, i) => s + i.intensity, 0) / nextDayItems.length);
+                const curAvg = Math.round(dayItems.reduce((s, i) => s + i.narrative_score, 0) / dayItems.length);
+                const prevAvg = Math.round(nextDayItems.reduce((s, i) => s + i.narrative_score, 0) / nextDayItems.length);
                 const delta = curAvg - prevAvg;
                 if (delta > 0) deltaHtml = `<span class="text-green-500 ml-2">↑ +${delta}%</span>`;
                 else if (delta < 0) deltaHtml = `<span class="text-red-500 ml-2">↓ ${delta}%</span>`;
@@ -277,8 +277,8 @@ function renderHistoryList(container, state) {
         const d_ok = dayItems.filter(i => !i.incomplete && i.speakability === 'OK').length;
         const d_hold = dayItems.filter(i => !i.incomplete && i.speakability === 'HOLD').length;
         const d_inc = dayItems.filter(i => i.incomplete).length;
-        const d_avg = Math.round(dayItems.reduce((s, i) => s + i.intensity, 0) / dayItems.length);
-        const d_max = Math.max(...dayItems.map(i => i.intensity));
+        const d_avg = Math.round(dayItems.reduce((s, i) => s + i.narrative_score, 0) / dayItems.length);
+        const d_max = Math.max(...dayItems.map(i => i.narrative_score));
 
         const trendHtml = isCompView ? `
             <div class="flex items-center gap-3 bg-slate-900/30 px-3 py-1 rounded-full border border-slate-800/50">
@@ -307,7 +307,7 @@ function renderHistoryList(container, state) {
             const rA = getRank(a);
             const rB = getRank(b);
             if (rA !== rB) return rB - rA;
-            if (b.intensity !== a.intensity) return b.intensity - a.intensity;
+            if (b.narrative_score !== a.narrative_score) return b.narrative_score - a.narrative_score;
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         }).map((item, idx) => renderHistoryCardSnippet(item, `${date}-${idx}`)).join('')}
                 </div>
@@ -323,7 +323,7 @@ function renderHistoryCardSnippet(item, id) {
     const isInc = item.incomplete;
     const opacity = isInc ? 'opacity-80 grayscale-[0.2]' : '';
     const border = isInc ? 'border-l-[3px] border-slate-700/50 border-slate-800' : 'border-l-[3px] border-blue-600/60 border-slate-800/60';
-    const accent = isInc ? '' : (item.intensity >= 70 ? 'bg-red-500/10' : (item.intensity >= 40 ? 'bg-orange-500/5' : 'bg-blue-500/5'));
+    const accent = isInc ? '' : (item.narrative_score >= 70 ? 'bg-red-500/10' : (item.narrative_score >= 40 ? 'bg-orange-500/5' : 'bg-blue-500/5'));
 
     return `
         <div class="bg-slate-900/40 border-slate-800 hover:border-slate-500 transition-all group ${border} ${accent} ${opacity}">
@@ -334,7 +334,7 @@ function renderHistoryCardSnippet(item, id) {
                 </span>
                 <div class="flex gap-2 items-center">
                     <span class="text-[8.5px] font-black px-1.5 py-0.5 rounded border border-slate-800 text-slate-600 uppercase ${isInc ? 'hidden' : ''}">${item.display_badge}</span>
-                    <span class="text-[8.5px] font-black text-slate-500 uppercase">INT ${item.intensity}%</span>
+                    <span class="text-[8.5px] font-black text-slate-500 uppercase">INT ${item.narrative_score}%</span>
                     <span class="text-[8.5px] font-black px-1.5 py-0.5 rounded border border-slate-800 ${item.speakability === 'OK' ? 'text-green-600' : 'text-yellow-600'} uppercase">${item.speakability}</span>
                     ${isInc ? '<span class="text-[8px] font-black bg-red-900/20 text-red-900/60 px-1 rounded">● 불완전</span>' : ''}
                 </div>

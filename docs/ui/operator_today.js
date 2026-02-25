@@ -108,7 +108,7 @@ export async function initTodayView(container) {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
             if (rA !== rB) return rB - rA;
-            if (b.intensity !== a.intensity) return b.intensity - a.intensity;
+            if (b.narrative_score !== a.narrative_score) return b.narrative_score - a.narrative_score;
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
@@ -193,12 +193,12 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
     const okCount = okItems.length;
     const holdCount = holdItems.length;
     const incCount = incompleteItems.length;
-    const avgInt = totalCount > 0 ? Math.round(items.reduce((s, i) => s + i.intensity, 0) / totalCount) : 0;
-    const maxInt = totalCount > 0 ? Math.max(...items.map(i => i.intensity)) : 0;
+    const avgInt = totalCount > 0 ? Math.round(items.reduce((s, i) => s + i.narrative_score, 0) / totalCount) : 0;
+    const maxInt = totalCount > 0 ? Math.max(...items.map(i => i.narrative_score)) : 0;
 
     // v2.8: 7-Day Comparison
     const histComplete = (historyItems || []).filter(i => !i.incomplete);
-    const histAvg = histComplete.length > 0 ? Math.round(histComplete.reduce((s, i) => s + i.intensity, 0) / histComplete.length) : 0;
+    const histAvg = histComplete.length > 0 ? Math.round(histComplete.reduce((s, i) => s + i.narrative_score, 0) / histComplete.length) : 0;
     const diff = histAvg > 0 ? (avgInt - histAvg) : 0;
     const diffText = diff > 0 ? `↑ +${diff}%` : `↓ ${diff}%`;
     const diffColor = diff > 0 ? 'text-green-400' : 'text-red-400';
@@ -279,7 +279,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
                             <div class="bg-black/20 border border-yellow-900/20 p-4 rounded-lg space-y-2 group hover:border-yellow-900/40 transition-colors">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xs font-bold text-slate-300 truncate w-4/5">${strongestHold.title}</h4>
-                                    <span class="text-yellow-500 font-black text-[10px]">${strongestHold.intensity}%</span>
+                                    <span class="text-yellow-500 font-black text-[10px]">${strongestHold.narrative_score}%</span>
                                 </div>
                                 <div class="flex gap-2 items-center text-[9px] text-slate-500 font-bold uppercase">
                                     <span>${UI_SAFE.safeISOTime(strongestHold.selected_at)}</span>
@@ -300,7 +300,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
                             <div class="bg-black/20 border border-red-900/10 p-4 rounded-lg space-y-2 opacity-70 group hover:opacity-100 transition-opacity">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xs font-bold text-slate-500 truncate w-4/5 italic">${strongestInc.title}</h4>
-                                    <span class="text-slate-600 font-black text-[10px]">${strongestInc.intensity}%</span>
+                                    <span class="text-slate-600 font-black text-[10px]">${strongestInc.narrative_score}%</span>
                                 </div>
                                 <div class="flex gap-2 items-center text-[9px] text-slate-600 font-bold uppercase">
                                     <span class="bg-slate-800 px-1.5 rounded-sm">보완 필요</span>
@@ -375,7 +375,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
 function renderHeroCard(hero) {
     return `
         <div class="bg-slate-1000/90 border border-slate-800 rounded-xl shadow-2xl relative overflow-hidden flex animate-in slide-in-from-top-4 duration-500">
-            <div class="w-1.5 ${GET_COLORS.accent(hero.intensity)} flex-shrink-0"></div>
+            <div class="w-1.5 ${GET_COLORS.accent(hero.narrative_score)} flex-shrink-0"></div>
             <div class="p-6 flex-1 relative">
                 <div class="flex flex-wrap gap-2 mb-4 items-center">
                     <span class="bg-blue-600 text-white text-[9px] font-black px-2 py-0.5 rounded shadow tracking-widest mr-2">
@@ -387,8 +387,8 @@ function renderHeroCard(hero) {
                     <span class="${GET_COLORS.speak(hero.speakability)} text-[9px] font-black px-2 py-0.5 rounded border uppercase">
                         ${hero.speakability}
                     </span>
-                    <span class="bg-slate-800/50 border border-slate-700 text-[9px] font-black px-2 py-0.5 rounded uppercase ${GET_COLORS.intensity(hero.intensity)}">
-                        INT: ${hero.intensity}%
+                    <span class="bg-slate-800/50 border border-slate-700 text-[9px] font-black px-2 py-0.5 rounded uppercase ${GET_COLORS.intensity(hero.narrative_score)}">
+                        INT: ${hero.narrative_score}%
                     </span>
                 </div>
                 <h2 class="text-3xl font-black text-white mb-3 leading-tight tracking-tight uppercase">${hero.title}</h2>
@@ -425,7 +425,7 @@ function renderCompactCard(item, idx) {
                             ${item.incomplete ? '● 불완전' : item.display_badge}
                         </span>
                         <span class="${GET_COLORS.speak(item.speakability)} text-[8px] font-black px-1.5 rounded border-0 uppercase">${item.speakability}</span>
-                        <span class="${GET_COLORS.intensity(item.intensity)} text-[8px] font-black px-1.5 rounded-0 uppercase tracking-tighter">${item.intensity}%</span>
+                        <span class="${GET_COLORS.intensity(item.narrative_score)} text-[8px] font-black px-1.5 rounded-0 uppercase tracking-tighter">${item.narrative_score}%</span>
                     </div>
                 </div>
                 <div class="icon text-[9px] text-slate-800 group-hover:text-slate-600">▼</div>
