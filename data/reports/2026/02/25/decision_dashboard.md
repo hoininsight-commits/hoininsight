@@ -202,11 +202,11 @@
 | 공공 클라우드 빗장 풀린다…국정자원 이전 수요에 업계 촉각 - 지디넷코리아 | Structural implication: '공공 클라우드 빗장 풀린다…국정자원 이전 수요에 업계 촉각 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “구독자한테 물량 다 떠넘기고 슈퍼카”…‘코인팔이’ 유튜버들 철퇴 맞는다 - 매일경제 | Structural implication: '“구독자한테 물량 다 떠넘기고 슈퍼카”…‘코인팔이’ 유튜버들 철퇴 맞는다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | "유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com | Structural implication: '"유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보 | Structural implication: '비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | SK하이닉스, 용인 반도체 팹에 21.6조원 추가 투자 - 조선일보 | Structural implication: 'SK하이닉스, 용인 반도체 팹에 21.6조원 추가 투자 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 베시 "삼성전자 하이브리드 본딩 채택, 2분기 명확해질 것" - 디일렉 | Structural implication: '베시 "삼성전자 하이브리드 본딩 채택, 2분기 명확해질 것" - 디일렉' suggests a shift in NEWS dynamics. | LOW |
 | 박상진 산은 회장 “홈플러스 개입 어렵다”…MBK 지원 요청 거절 - 한겨레 | Structural implication: '박상진 산은 회장 “홈플러스 개입 어렵다”…MBK 지원 요청 거절 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선 | Structural implication: '법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
 | “걱정 말라, 하고픈 말 한 것”…김동완, ‘성매매 합법화’ 발언 후 근황 | Structural implication: '“걱정 말라, 하고픈 말 한 것”…김동완, ‘성매매 합법화’ 발언 후 근황' suggests a shift in NEWS dynamics. | LOW |
 | “3·1절 앞두고 이게 무슨 짓이야”…‘유관순 방귀’ 조롱 영상 논란 | Structural implication: '“3·1절 앞두고 이게 무슨 짓이야”…‘유관순 방귀’ 조롱 영상 논란' suggests a shift in NEWS dynamics. | LOW |
 | “또 다시 갈아치웠다”…‘세계 시총 1위’ 엔비디아, 4분기 매출 98조원 | Structural implication: '“또 다시 갈아치웠다”…‘세계 시총 1위’ 엔비디아, 4분기 매출 98조원' suggests a shift in NEWS dynamics. | LOW |
