@@ -113,6 +113,7 @@ class StructuralTopicSeeder:
             "structural_driver": driver,
             "risk_side": risk,
             "status": "STRUCTURAL_ONLY",
+            "intensity": item.get('intensity', 50.0),  # Forward the calculated intensity
             "source_refs": [
                 {"kind": "artifact", "path": "hoin_signal/topic_seeds", "id": base_id}
             ],
@@ -140,9 +141,23 @@ class StructuralTopicSeeder:
             if cand.get("status") == "CANDIDATE_ALIVE" or cand.get("status") == "UNKNOWN":
                 cand['signal_id'] = cand.get('candidate_id', cand.get('dataset_id', 'unknown'))
                 # Handle titles wrapped in metadata or nested
-                title = cand.get('dataset_id', 'Unknown Macro Signal')
+                dataset_id = cand.get('dataset_id', 'Unknown Macro Signal')
+                title = dataset_id
                 if 'candidate_id' in cand:
                     cand['signal_title_kr'] = f"거시경제 이상징후: {title}"
+                
+                # [PHASE-14C] Read true anomaly score from original dataset to prevent constant 14.0 fallback
+                try:
+                    raw_topic_path = self.base_dir / "data/topics" / ymd_path / f"{dataset_id}.json"
+                    if raw_topic_path.exists():
+                        raw_data = json.loads(raw_topic_path.read_text(encoding='utf-8'))
+                        if isinstance(raw_data, list) and len(raw_data) > 0:
+                            raw_score = float(raw_data[0].get('score', 5.0))
+                            # Convert z-score-like values (e.g. 3.0~10.0) to 0-100 intensity scale
+                            cand['intensity'] = min(100.0, max(0.0, raw_score * 10.0))
+                except Exception as e:
+                    self.logger.warning(f"Could not load real score for {dataset_id}: {e}")
+                    
                 hoin_signals.append(cand)
         
         # 2. Process

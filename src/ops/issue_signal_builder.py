@@ -60,6 +60,7 @@ class IssueSignalBuilder:
             "title": seed.get('structure_summary', '').split('] ')[0].strip('['), # Extract title from summary "[Title] ..."
             "one_line_summary": summary,
             "importance_level": "보통", # Default logic, can be enhanced
+            "intensity": seed.get('intensity', 50.0),
             "rationale_natural": rationale,
             "script_natural": script_natural,
             "evidence_refs": {
