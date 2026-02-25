@@ -84,8 +84,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net (Google_News_KR_Economy)
-  - [NEWS] 집값 상승 기대, 중장년·중상위 소득층서 더 꺾여 - 연합뉴스TV (Google_News_KR_Economy)
-  - [NEWS] 트럼프 "빅테크, AI 데이터센터 전력 확보 책임 있어" - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 한기평 "롯데·HD현대케미칼 사업재편, 신용도 영향 살필 것" - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 정의선 현대차그룹 회장 "무인 소방로봇 100대 보급" - 디일렉 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -188,45 +188,45 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net | Structural implication: '삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 집값 상승 기대, 중장년·중상위 소득층서 더 꺾여 - 연합뉴스TV | Structural implication: '집값 상승 기대, 중장년·중상위 소득층서 더 꺾여 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프 "빅테크, AI 데이터센터 전력 확보 책임 있어" - 연합인포맥스 | Structural implication: '트럼프 "빅테크, AI 데이터센터 전력 확보 책임 있어" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| “석유화학산업 구조개편에 2조 이상 지원패키지 제공한다” - 에너지데일리 | Structural implication: '“석유화학산업 구조개편에 2조 이상 지원패키지 제공한다” - 에너지데일리' suggests a shift in NEWS dynamics. | LOW |
+| 한기평 "롯데·HD현대케미칼 사업재편, 신용도 영향 살필 것" - 연합인포맥스 | Structural implication: '한기평 "롯데·HD현대케미칼 사업재편, 신용도 영향 살필 것" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 정의선 현대차그룹 회장 "무인 소방로봇 100대 보급" - 디일렉 | Structural implication: '정의선 현대차그룹 회장 "무인 소방로봇 100대 보급" - 디일렉' suggests a shift in NEWS dynamics. | LOW |
-| 환율, 이란 핵 협상 기대 속 하락…1.7원 내린 1,440.8원 - 한국무역협회-KITA.NET | Structural implication: '환율, 이란 핵 협상 기대 속 하락…1.7원 내린 1,440.8원 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 기아, 10%대 급등하며 최고가 경신…현대차도 5%↑ - 한국경제 | Structural implication: '기아, 10%대 급등하며 최고가 경신…현대차도 5%↑ - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 현대무벡스, AW 2026 참가해 AI·로봇 중심의 물류 기술력 선뵌다 - 뉴스톱 | Structural implication: '현대무벡스, AW 2026 참가해 AI·로봇 중심의 물류 기술력 선뵌다 - 뉴스톱' suggests a shift in NEWS dynamics. | LOW |
-| 희귀약 150일로 신속등재…이중약가, 신약·시밀러까지 전격 확대 - 약사공론 | Structural implication: '희귀약 150일로 신속등재…이중약가, 신약·시밀러까지 전격 확대 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
-| 국내기업 경기전망 4년 만에 긍정 전환…“반도체·자동차 등 핵심 수출 품목 선전 효과” - 경향신문 | Structural implication: '국내기업 경기전망 4년 만에 긍정 전환…“반도체·자동차 등 핵심 수출 품목 선전 효과” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 대만은 아니라더니...쿠팡 “대만 고객 20만명 개인정보 유출” - 조선일보 | Structural implication: '대만은 아니라더니...쿠팡 “대만 고객 20만명 개인정보 유출” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| '새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아 | Structural implication: ''새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 불장에 공매도 대기자금도 '사상 최대' - 한국경제 | Structural implication: '불장에 공매도 대기자금도 '사상 최대' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 앤트로픽 "클로드서 기존 소프트웨어와 연동 지원"…AI공포 완화 - 연합인포맥스 | Structural implication: '앤트로픽 "클로드서 기존 소프트웨어와 연동 지원"…AI공포 완화 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보 | Structural implication: '비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| [서환-오전] 수급 공방 속 월말 네고에 하락…1,430원대 후반 - 연합인포맥스 | Structural implication: '[서환-오전] 수급 공방 속 월말 네고에 하락…1,430원대 후반 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡 개인정보 유출 사건, 대만 계정도 20만건 털렸다 - 한겨레 | Structural implication: '쿠팡 개인정보 유출 사건, 대만 계정도 20만건 털렸다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| LH, 올해 17.9조 푼다…3기 신도시 등 수도권 주택공급 집중 - 연합인포맥스 | Structural implication: 'LH, 올해 17.9조 푼다…3기 신도시 등 수도권 주택공급 집중 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 현대차 주가, 급등세... 왜? - 금강일보 | Structural implication: '현대차 주가, 급등세... 왜? - 금강일보' suggests a shift in NEWS dynamics. | LOW |
+| AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 | Structural implication: 'AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 정부, 2030년까지 전 시스템 재해복구 구축…민간 클라우드 활용 - 지디넷코리아 | Structural implication: '정부, 2030년까지 전 시스템 재해복구 구축…민간 클라우드 활용 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 집값 상승 기대, 중장년·중상위 소득층서 더 꺾여 - 연합뉴스TV | Structural implication: '집값 상승 기대, 중장년·중상위 소득층서 더 꺾여 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
+| 월가 뒤흔든 'AI 공포' 보고서 "AI로 사상 초유의 경제 위기" - YTN | Structural implication: '월가 뒤흔든 'AI 공포' 보고서 "AI로 사상 초유의 경제 위기" - YTN' suggests a shift in NEWS dynamics. | LOW |
+| 이통3사 갤럭시S26 출시 앞서 가입자 유치전, 200만 원대 높은 출고가에 지원금 경쟁 한풀 꺾이나 - 비즈니스포스트 | Structural implication: '이통3사 갤럭시S26 출시 앞서 가입자 유치전, 200만 원대 높은 출고가에 지원금 경쟁 한풀 꺾이나 - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
 | 메타, 엔비디아 이어 AMD와도 대규모 AI칩 계약…"1천억불 규모"(종합) - 연합뉴스 | Structural implication: '메타, 엔비디아 이어 AMD와도 대규모 AI칩 계약…"1천억불 규모"(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보 | Structural implication: '비트코인 9100만원대로 ‘뚝’… 넉달만에 반토막 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 앞으론 주가조작 신고=인생역전…240억 포상금도 꿈 아니다 - 한겨레 | Structural implication: '앞으론 주가조작 신고=인생역전…240억 포상금도 꿈 아니다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com | Structural implication: '"유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com' suggests a shift in NEWS dynamics. | LOW |
+| 중국 판매 허용 두 달짼데 '0건'…엔비디아의 '대굴욕' - 한국경제 | Structural implication: '중국 판매 허용 두 달짼데 '0건'…엔비디아의 '대굴욕' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 지난해 ‘서학개미’ 국외 투자 207조원…외국인 국내 투자는 80조원 - 한겨레 | Structural implication: '지난해 ‘서학개미’ 국외 투자 207조원…외국인 국내 투자는 80조원 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 | Structural implication: '다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 동화약품, 우병우 전 청와대 민정수석 사외이사 선임...업계 “이례적” - 조선비즈 - Chosunbiz | Structural implication: '동화약품, 우병우 전 청와대 민정수석 사외이사 선임...업계 “이례적” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 정부, 채권시장 안정화 위해 1분기 발행량 줄인다 | Structural implication: '정부, 채권시장 안정화 위해 1분기 발행량 줄인다' suggests a shift in NEWS dynamics. | LOW |
-| “LA갈비야? 베이컨이야?” 홈쇼핑 강행한 ‘전과 6회’ 임성근 셰프, 품질 논란 | Structural implication: '“LA갈비야? 베이컨이야?” 홈쇼핑 강행한 ‘전과 6회’ 임성근 셰프, 품질 논란' suggests a shift in NEWS dynamics. | LOW |
-| [단독] SNS에 드러난 ‘아동학대’ 정황…법원, 30대 母 접근금지 조치 | Structural implication: '[단독] SNS에 드러난 ‘아동학대’ 정황…법원, 30대 母 접근금지 조치' suggests a shift in NEWS dynamics. | LOW |
-| 교외선 ‘의정부 가능역 신설’ 국토부 승인 | Structural implication: '교외선 ‘의정부 가능역 신설’ 국토부 승인' suggests a shift in NEWS dynamics. | LOW |
-| [속보] ‘자사주 소각 의무화’ 상법 개정안, 여당 주도 국회 본회의 통과 | Structural implication: '[속보] ‘자사주 소각 의무화’ 상법 개정안, 여당 주도 국회 본회의 통과' suggests a shift in NEWS dynamics. | LOW |
-| “中, 이젠 로봇 결합한 휴대폰까지”…MWC서 프리미엄 폰 쏟아낸다 | Structural implication: '“中, 이젠 로봇 결합한 휴대폰까지”…MWC서 프리미엄 폰 쏟아낸다' suggests a shift in NEWS dynamics. | LOW |
-| 코스피, 사상 첫 ‘6000피’ 개막…5000피 이후 18거래일 만에 ‘새 역사’ | Structural implication: '코스피, 사상 첫 ‘6000피’ 개막…5000피 이후 18거래일 만에 ‘새 역사’' suggests a shift in NEWS dynamics. | LOW |
-| 대구 찾은 한동훈 “지방선거·보궐선거, 출마 가능성 열려 있다” | Structural implication: '대구 찾은 한동훈 “지방선거·보궐선거, 출마 가능성 열려 있다”' suggests a shift in NEWS dynamics. | LOW |
-| “수십 통 독촉 전화”…불법사금융 평균 이자율 546%, 피해 구제 지원 | Structural implication: '“수십 통 독촉 전화”…불법사금융 평균 이자율 546%, 피해 구제 지원' suggests a shift in NEWS dynamics. | LOW |
-| KB운용 ‘RISE 200위클리커버드콜’, 순자산 8000억 돌파 | Structural implication: 'KB운용 ‘RISE 200위클리커버드콜’, 순자산 8000억 돌파' suggests a shift in NEWS dynamics. | LOW |
-| 김은혜 “항공기 결함을 원인으로 발생한 재해도 중대재해 처벌” | Structural implication: '김은혜 “항공기 결함을 원인으로 발생한 재해도 중대재해 처벌”' suggests a shift in NEWS dynamics. | LOW |
-| “한국 시장에선 답 없다”…K푸드 업계, 해외로 ‘탈출 러시’ | Structural implication: '“한국 시장에선 답 없다”…K푸드 업계, 해외로 ‘탈출 러시’' suggests a shift in NEWS dynamics. | LOW |
-| “과천 경마장 이전, 고양시가 최적지” | Structural implication: '“과천 경마장 이전, 고양시가 최적지”' suggests a shift in NEWS dynamics. | LOW |
-| 우리운용 ‘WON 초대형IB&금융지주 ETF’, 순자산 1000억 돌파 | Structural implication: '우리운용 ‘WON 초대형IB&금융지주 ETF’, 순자산 1000억 돌파' suggests a shift in NEWS dynamics. | LOW |
-| “다문화가정의 꿈 응원”…금호건설, 기부금 전달로 ‘선한 영향력’ 전파 | Structural implication: '“다문화가정의 꿈 응원”…금호건설, 기부금 전달로 ‘선한 영향력’ 전파' suggests a shift in NEWS dynamics. | LOW |
-| ‘해킹사태’ 롯데카드 새 대표 내부출신 정상호 전 부사장 | Structural implication: '‘해킹사태’ 롯데카드 새 대표 내부출신 정상호 전 부사장' suggests a shift in NEWS dynamics. | LOW |
-| “휴대폰 검색·카톡 기록 터는건 하수”…사건 해결 새 스모킹건 된 ‘이것’ | Structural implication: '“휴대폰 검색·카톡 기록 터는건 하수”…사건 해결 새 스모킹건 된 ‘이것’' suggests a shift in NEWS dynamics. | LOW |
-| 최수연 네이버 대표 서울대 졸업식 축사 “어디로든 갈 수 있는 게 인생…‘엉덩이의 힘’ 믿어라” | Structural implication: '최수연 네이버 대표 서울대 졸업식 축사 “어디로든 갈 수 있는 게 인생…‘엉덩이의 힘’ 믿어라”' suggests a shift in NEWS dynamics. | LOW |
-| “외국관광객들, 여긴 반드시 간다”…올해 1조원 노리는 신세계백화점 | Structural implication: '“외국관광객들, 여긴 반드시 간다”…올해 1조원 노리는 신세계백화점' suggests a shift in NEWS dynamics. | LOW |
-| 구자열 LS그룹 이사회 의장, 제16대 한일경제협회 신임 회장 취임 | Structural implication: '구자열 LS그룹 이사회 의장, 제16대 한일경제협회 신임 회장 취임' suggests a shift in NEWS dynamics. | LOW |
+| 법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선 | Structural implication: '법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
+| ‘모텔 연쇄살인범’ SNS, 팔로어 45배 치솟자 부랴부랴 비공개 전환 | Structural implication: '‘모텔 연쇄살인범’ SNS, 팔로어 45배 치솟자 부랴부랴 비공개 전환' suggests a shift in NEWS dynamics. | LOW |
+| [속보] ‘사법개혁 3법 논의’ 전국법원장회의 5시간만에 종료 | Structural implication: '[속보] ‘사법개혁 3법 논의’ 전국법원장회의 5시간만에 종료' suggests a shift in NEWS dynamics. | LOW |
+| “마약검사 받고 귀가한 날 대마” 래퍼 키스에이프, 징역 1년6월 확정 | Structural implication: '“마약검사 받고 귀가한 날 대마” 래퍼 키스에이프, 징역 1년6월 확정' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 내란특검, ‘내란 우두머리’ 尹 1심 무기징역에 항소 | Structural implication: '[속보] 내란특검, ‘내란 우두머리’ 尹 1심 무기징역에 항소' suggests a shift in NEWS dynamics. | LOW |
+| 자사주 소각 의무화에…벤처기업협회 “벤처 특수성 고려해 예외적용을” | Structural implication: '자사주 소각 의무화에…벤처기업협회 “벤처 특수성 고려해 예외적용을”' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 검찰, ‘돈봉투 수수’ 허종식·윤관석·임종성 상고 취하 | Structural implication: '[속보] 검찰, ‘돈봉투 수수’ 허종식·윤관석·임종성 상고 취하' suggests a shift in NEWS dynamics. | LOW |
+| 아이센스, 중장기 기업가치 제고 계획 발표…“CGM 매출 1조 목표” [매경 자이앤트] | Structural implication: '아이센스, 중장기 기업가치 제고 계획 발표…“CGM 매출 1조 목표” [매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
+| “프랑스는 한국 전략산업의 숨은 파트너” | Structural implication: '“프랑스는 한국 전략산업의 숨은 파트너”' suggests a shift in NEWS dynamics. | LOW |
+| 20대 여자들 거주 집 침입, 속옷 냄새 맡다 기소된 30대 남성…집유 판결에 피해자들만 짐쌌다 | Structural implication: '20대 여자들 거주 집 침입, 속옷 냄새 맡다 기소된 30대 남성…집유 판결에 피해자들만 짐쌌다' suggests a shift in NEWS dynamics. | LOW |
+| DB김준기문화재단, 130명에게 16억원 장학금 지급 | Structural implication: 'DB김준기문화재단, 130명에게 16억원 장학금 지급' suggests a shift in NEWS dynamics. | LOW |
+| “국민 10명 중 8명 ”사회 갈등 심각“…물질적 안정 추구↑ 공동체 가치↓” | Structural implication: '“국민 10명 중 8명 ”사회 갈등 심각“…물질적 안정 추구↑ 공동체 가치↓”' suggests a shift in NEWS dynamics. | LOW |
+| 자동차산업협회장에 정대진 前 통상차관보 | Structural implication: '자동차산업협회장에 정대진 前 통상차관보' suggests a shift in NEWS dynamics. | LOW |
+| 포스코·SK온 '리튬동맹'으로 배터리 협업 | Structural implication: '포스코·SK온 '리튬동맹'으로 배터리 협업' suggests a shift in NEWS dynamics. | LOW |
+| [포토] 현대무벡스 AW2026 참가 | Structural implication: '[포토] 현대무벡스 AW2026 참가' suggests a shift in NEWS dynamics. | LOW |
+| LG전자 "TV 대체할 모니터 시장 잡자" | Structural implication: 'LG전자 "TV 대체할 모니터 시장 잡자"' suggests a shift in NEWS dynamics. | LOW |
+| 청년 취업난 해소 나선 CJ 3년간 1만3천명 신규 채용 | Structural implication: '청년 취업난 해소 나선 CJ 3년간 1만3천명 신규 채용' suggests a shift in NEWS dynamics. | LOW |
+| [속보] SK하이닉스, 용인 클러스터 1기 팹에 21.6조 투자 의결 | Structural implication: '[속보] SK하이닉스, 용인 클러스터 1기 팹에 21.6조 투자 의결' suggests a shift in NEWS dynamics. | LOW |
+| 6천피 뚫은 날 '자사주 소각' 의무화 | Structural implication: '6천피 뚫은 날 '자사주 소각' 의무화' suggests a shift in NEWS dynamics. | LOW |
+| 멈춰선 독일전차 獨, 2년 연속 역성장 이어 작년 성장률 0.2% 그쳐 | Structural implication: '멈춰선 독일전차 獨, 2년 연속 역성장 이어 작년 성장률 0.2% 그쳐' suggests a shift in NEWS dynamics. | LOW |
+| 정부, 석화 구조조정 1호에 2.1조 지원 | Structural implication: '정부, 석화 구조조정 1호에 2.1조 지원' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
