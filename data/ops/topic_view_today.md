@@ -12,7 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 코스피 개장 직후 사상 첫 6천피 돌파…코스피 새역사 - KBS 뉴스 (ID: unknown)
+### 삼성전자, 3세대 AI폰 ‘갤럭시 S26 시리즈’ 공개 - Samsung Global Newsroom (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 기세등등 코스피, 6000마저 뚫었다…시가총액 첫 5천조원 넘어 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,27 +37,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 약가정책, 재정은 'SAVE' 혁신은 'DIE'…"성장 동력 무력화" - 메디칼업저버 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 티로보틱스, 자체 개발 휴머노이드 내달 공개한다 - 로봇신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 월가 뒤흔든 'AI 공포' 보고서 "AI로 사상 초유의 경제 위기" - YTN (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### '엔비디아 천하' 흔들리나…역대급 동맹 출범에 中도 '긴장' - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 李 “주가조작 신고땐 수백억 포상, 로또보다 팔자 고치기 쉽다” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 쿠팡, 대만서도 20만개 계정 개인정보 유출…대만 정부 조사 착수 - 연합뉴스TV (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### AMD, 메타에 1000억弗 AI칩 공급…"삼성전자 수혜" - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성, 갤럭시 S26에 마이크론 D램 50% 탑재…가격 협상 '변수' - 딜사이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 베시 "삼성전자 하이브리드 본딩 채택, 2분기 명확해질 것" - 디일렉 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### '코스피 불장'에 순대외금융자산 1조달러 깨져…5년만에 감소 - 연합인포맥스 (ID: unknown)
+### “구독자한테 물량 다 떠넘기고 슈퍼카”…‘코인팔이’ 유튜버들 철퇴 맞는다 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,22 +77,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] SK하이닉스, 용인 클러스터 1기 팹에 21.6조 투자 의결 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 李대통령 엄포 통했나…수도권 규제지역서 집값 첫 하락 - 한국경제 (ID: unknown)
+### 베시 "삼성전자 하이브리드 본딩 채택, 2분기 명확해질 것" - 디일렉 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### XRP, 2024년 대폭등 전 신호 3가지 포착…619% 불꽃 랠리 가나 - 디지털투데이 (ID: unknown)
+### SK하이닉스, 용인 반도체 팹에 21.6조원 추가 투자 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 박상진 산은 회장 “홈플러스 개입 어렵다”…MBK 지원 요청 거절 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +102,79 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 추격자 된 한국, 첨단산업 중국에 다 밀려…반도체마저 경합 - 매일경제 (ID: unknown)
+### 중국 판매 허용 두 달짼데 '0건'…엔비디아의 '대굴욕' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 앤트로픽 "클로드서 기존 소프트웨어와 연동 지원"…AI공포 완화 - 연합인포맥스 (ID: unknown)
+### 법원, 홈플러스 회생계획 ‘리셋’ 요구…문제는 결국 ‘자금 조달 실현 가능성’ - 인베스트조선 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 빌 게이츠, 러 여성과 외도 사실 인정…“엡스타인 성 착취 피해자는 아냐” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “기본급 5.7억, 잘하면 주식 20억 더 드려요”…화끈한 연봉 공개한 회사 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “30대 초반이면 조리원 막내”…늦깎이 엄마 힘낸 한국, 출산율 끌어올렸다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “AI가 인프라가 된 순간” ... 삼성, 갤럭시 S26 공개 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 엔비디아 실적 기대감에 AI파괴론 쏙...뉴욕증시 반등 [월가월부] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “트럼프 보단 시진핑이 낫다”…유럽 정상들, 너도나도 중국행 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 오세훈 시장에게 “너 우파냐 좌파냐”…전한길, ‘윤어게인 콘서트’ 협조 촉구 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “LG전자 주주들 걱정없겠네”…잘 나가는 모니터에 힘 더 싣는다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매년 매출 1조 성장세에도…개인 매도vs외국인 매수 엇갈리는 셀트리온 [매일 돈이 보이는 습관 M+] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “옆 사람이 훔쳐봐도 안 보여요”…보안 수준 끌어올린 ‘갤S26 울트라’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 갤럭시S26에 “택시 불러줘” 말했더니…결제버튼만 누르면 끝 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "지하철서 옆사람 신경 안써도 되네"… 보안 강화한 '갤S26 울트라' (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 갤럭시에 "택시 불러" 말했더니 … AI가 앱 열어 호출 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 릴리, 세콰이어캐피탈이 찜한 K바이오텍...브리즈바이오 ‘원샷치료제’ 개발 도전 (ID: unknown)
@@ -143,71 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 이규연 “부동산 카드 많지만 이 대통령 ‘보유세 언급’은 안해” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중증환자 앰뷸런스 일단 받는다…‘응급실 뺑뺑이’ 대책 전남에서 시범 운영 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘185억’ 당첨 편의점 직원…그런데, 손님이 버린 복권이라면? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘삼성 TV 전설’ 이승현, 서울시장 출사표...“서울은 저평가...초우량주 만들것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 민주, 의총서 거수투표로 ‘법왜곡죄 수정’ 결정, 이유가? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 고객사의 안전까지 책임…보람상조, 한국나눔안전과 업무협약 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “아가야 반갑다”…합계출산율 4년 만에 0.8명 복귀 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “관세가 미국을 황금기로 이끌어”…트럼프, 108분 내내 ‘자화자찬’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “나락행 버스를 타버렸습니다”...‘육천피’ 시대 오자 슬피 우는 개미들 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “800도 불길 속으로 진격”…‘화재 진압’ 로봇 기증한 현대차 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 웃어야 할지 울어야 할지…‘춘절 특수’ 중국 관광객 몰린 나라, 한국 아니네 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 경북 영주서 전투기 야간 비행훈련 중 추락…조종사 비상탈출 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### "법왜곡죄 부작용 불보듯" 법원장들 강력 반발 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 檢, 민주당 돈봉투 의혹 전·현직의원 상고 취하 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
