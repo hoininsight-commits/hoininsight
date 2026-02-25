@@ -1,23 +1,50 @@
 {
-  "bb57fa02-f8b1-468d-aaf9-11a8466185b6": {
+  "6b35df54-99b2-4ef2-8918-0a11ed0ddc6c": {
     "speakability_flag": "READY",
     "speakability_reasons": [
       "High pretext score and confidence",
       "Fundamental/Policy execution verified",
       "Clear Why-now timing confirmed: Schedule-driven"
-    ]
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
-  "336c08d0-7914-4367-877f-e2dcc96be00a": {
+  "0564b8ae-2f74-411f-9098-fe052071d399": {
     "speakability_flag": "HOLD",
     "speakability_reasons": [
       "Pretext strength is moderate (0.78)",
       "Confidence score is below READY threshold (0.75)"
-    ]
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
   "HYP-fab88b81": {
     "speakability_flag": "READY",
     "speakability_reasons": [
       "Confirmed via official filing or whitelisted agency"
-    ]
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   }
 }
