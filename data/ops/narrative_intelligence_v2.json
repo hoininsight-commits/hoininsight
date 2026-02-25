@@ -1,16 +1,17 @@
 {
-  "date": "2026-02-24",
-  "total_topics": 12,
+  "date": "2026-02-25",
+  "total_topics": 15,
   "video_ready_count": 0,
   "topics": [
     {
-      "topic_id": "STRUCT_20260224_signal_f",
+      "topic_id": "STRUCT_20260225_signal_f",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "STRUCTURAL_REDEFINITION",
       "structure_card_type": "구조적 재정의 (공격)",
       "title": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
       "one_line_summary": "구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간.",
       "importance_level": "보통",
+      "intensity": 50.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'STRUCTURAL_REDEFINITION' 유형의 패턴이 감지되었습니다. (드라이버: INDUSTRY, POLICY)",
       "script_natural": "구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간.\n\n지금 이 이슈를 주목해야 하는 이유는 기존 PER/PBR 프레임에서 벗어나는 트리거가 발생했습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 단순 호재가 아닌 밸류에이션 리레이팅(Re-rating) 시그널입니다.",
       "evidence_refs": {
@@ -23,10 +24,20 @@
         ],
         "risk_factor": "실제 숫자(매출/이익)로 증명되기까지 시차 존재."
       },
+      "_diag_actor_matches": [],
+      "_diag_axis_matches": [
+        "Policy:POLICY",
+        "Supply Chain:CHAIN",
+        "Structural Capital:STRUCTURAL"
+      ],
+      "_diag_conflict_patterns": [],
       "narrative_score": 35.65,
       "final_narrative_score": 35.65,
       "video_ready": false,
       "actor_tier_score": 0.0,
+      "structural_actor_score": 0.0,
+      "capital_flow_score": 0.0,
+      "policy_score": 100.0,
       "cross_axis_count": 3,
       "cross_axis_multiplier": 1.15,
       "escalation_flag": false,
@@ -41,21 +52,23 @@
         "affected_sector": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: STRUCTURAL_REDEFINITION 감지 (Policy:POLICY, Supply Chain:CHAIN, Structural Capital:STRUCTURAL)\n자본 흐름 영향:  중심의 시장 반응 및 지표 변동\n리스크 포인트: 실제 숫자(매출/이익)로 증명되기까지 시차 존재.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_str",
+      "topic_id": "STRUCT_20260225_cand_str",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: struct_dart_disposal",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_struct_dart_disposal_20260224"
+          "cand_struct_dart_disposal_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -63,10 +76,20 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.900000000000002,
+      "final_narrative_score": 28.9,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -79,23 +102,25 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: struct_dart_disposal",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_inf",
+      "topic_id": "STRUCT_20260225_cand_ris",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
-      "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
+      "title": "거시경제 이상징후: risk_vix_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_inflation_kor_cpi_ecos_20260224"
+          "cand_risk_vix_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -103,10 +128,73 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_3:SK",
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 33.3,
+      "final_narrative_score": 33.3,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.75,
+      "structural_actor_score": 75.0,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
+      "cross_axis_count": 1,
+      "cross_axis_multiplier": 1.0,
+      "escalation_flag": false,
+      "conflict_flag": false,
+      "expectation_gap_score": 0,
+      "expectation_gap_level": "none",
+      "tension_multiplier_applied": false,
+      "causal_chain": {
+        "cause": null,
+        "structural_shift": "HOIN_ANOMALY",
+        "market_consequence": "Monitoring friction",
+        "affected_sector": "거시경제 이상징후: risk_vix_fred",
+        "time_pressure": "medium"
+      },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_3:SK, TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "schema_version": "v3.0"
+    },
+    {
+      "topic_id": "STRUCT_20260225_cand_inf",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 30.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_inflation_kor_cpi_ecos_20260225"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      },
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 20.5,
+      "final_narrative_score": 20.5,
+      "video_ready": false,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -121,21 +209,23 @@
         "affected_sector": "거시경제 이상징후: inflation_kor_cpi_ecos",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_rat",
+      "topic_id": "STRUCT_20260225_cand_rat",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: rates_fed_funds_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 30.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_rates_fed_funds_fred_20260224"
+          "cand_rates_fed_funds_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -143,12 +233,24 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 53.0,
-      "final_narrative_score": 53.0,
+      "_diag_actor_matches": [
+        "TIER_1:FED",
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Policy:FED FUNDS",
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 51.192,
+      "final_narrative_score": 51.19,
       "video_ready": false,
       "actor_tier_score": 1.0,
-      "cross_axis_count": 1,
-      "cross_axis_multiplier": 1.0,
+      "structural_actor_score": 100.0,
+      "capital_flow_score": 0.0,
+      "policy_score": 100.0,
+      "cross_axis_count": 2,
+      "cross_axis_multiplier": 1.08,
       "escalation_flag": false,
       "conflict_flag": false,
       "expectation_gap_score": 0,
@@ -161,21 +263,23 @@
         "affected_sector": "거시경제 이상징후: rates_fed_funds_fred",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Policy:FED FUNDS, Structural Capital:구조적)\n자본 흐름 영향: TIER_1:FED, TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_ind",
+      "topic_id": "STRUCT_20260225_cand_ind",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: index_kospi_stooq",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_index_kospi_stooq_20260224"
+          "cand_index_kospi_stooq_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -183,10 +287,20 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.900000000000002,
+      "final_narrative_score": 28.9,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -199,23 +313,25 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: index_kospi_stooq",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_met",
+      "topic_id": "STRUCT_20260225_cand_met",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: metal_gold_paxg_coingecko",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 30.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_metal_gold_paxg_coingecko_20260224"
+          "cand_metal_gold_paxg_coingecko_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -223,10 +339,21 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 33.800000000000004,
-      "final_narrative_score": 33.8,
+      "_diag_actor_matches": [
+        "TIER_2:META",
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.200000000000003,
+      "final_narrative_score": 28.2,
       "video_ready": false,
       "actor_tier_score": 0.9,
+      "structural_actor_score": 90.0,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -241,21 +368,23 @@
         "affected_sector": "거시경제 이상징후: metal_gold_paxg_coingecko",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_2:META, TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_cry",
+      "topic_id": "STRUCT_20260225_cand_rat",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
-      "title": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
+      "title": "거시경제 이상징후: rates_us10y_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 30.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_crypto_btc_usd_spot_coingecko_20260224"
+          "cand_rates_us10y_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -263,10 +392,73 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Policy:RATE",
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 40.5,
+      "final_narrative_score": 40.5,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 100.0,
+      "cross_axis_count": 2,
+      "cross_axis_multiplier": 1.08,
+      "escalation_flag": false,
+      "conflict_flag": false,
+      "expectation_gap_score": 0,
+      "expectation_gap_level": "none",
+      "tension_multiplier_applied": false,
+      "causal_chain": {
+        "cause": null,
+        "structural_shift": "HOIN_ANOMALY",
+        "market_consequence": "Monitoring friction",
+        "affected_sector": "거시경제 이상징후: rates_us10y_fred",
+        "time_pressure": "low"
+      },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Policy:RATE, Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "schema_version": "v3.0"
+    },
+    {
+      "topic_id": "STRUCT_20260225_cand_cry",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 30.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_crypto_btc_usd_spot_coingecko_20260225"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      },
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 20.5,
+      "final_narrative_score": 20.5,
+      "video_ready": false,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -281,21 +473,23 @@
         "affected_sector": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_der",
+      "topic_id": "STRUCT_20260225_cand_der",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: derived_yield_curve_10y_2y",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 30.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_derived_yield_curve_10y_2y_20260224"
+          "cand_derived_yield_curve_10y_2y_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -303,10 +497,20 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 20.5,
+      "final_narrative_score": 20.5,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -321,21 +525,23 @@
         "affected_sector": "거시경제 이상징후: derived_yield_curve_10y_2y",
         "time_pressure": "low"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_str",
+      "topic_id": "STRUCT_20260225_cand_rat",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
-      "title": "거시경제 이상징후: struct_dart_cb_bw",
+      "title": "거시경제 이상징후: rates_us02y_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_struct_dart_cb_bw_20260224"
+          "cand_rates_us02y_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -343,10 +549,73 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Policy:RATE",
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 49.57200000000001,
+      "final_narrative_score": 49.57,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 100.0,
+      "cross_axis_count": 2,
+      "cross_axis_multiplier": 1.08,
+      "escalation_flag": false,
+      "conflict_flag": false,
+      "expectation_gap_score": 0,
+      "expectation_gap_level": "none",
+      "tension_multiplier_applied": false,
+      "causal_chain": {
+        "cause": null,
+        "structural_shift": "HOIN_ANOMALY",
+        "market_consequence": "Monitoring friction",
+        "affected_sector": "거시경제 이상징후: rates_us02y_fred",
+        "time_pressure": "medium"
+      },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Policy:RATE, Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "schema_version": "v3.0"
+    },
+    {
+      "topic_id": "STRUCT_20260225_cand_str",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: struct_dart_cb_bw",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_struct_dart_cb_bw_20260225"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      },
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.900000000000002,
+      "final_narrative_score": 28.9,
+      "video_ready": false,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -359,23 +628,25 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: struct_dart_cb_bw",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_inf",
+      "topic_id": "STRUCT_20260225_cand_inf",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: inflation_cpi_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_inflation_cpi_fred_20260224"
+          "cand_inflation_cpi_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -383,10 +654,20 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.900000000000002,
+      "final_narrative_score": 28.9,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -399,23 +680,25 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: inflation_cpi_fred",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_inf",
+      "topic_id": "STRUCT_20260225_cand_inf",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: inflation_pce_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_inflation_pce_fred_20260224"
+          "cand_inflation_pce_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -423,10 +706,20 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 14.000000000000002,
-      "final_narrative_score": 14.0,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Structural Capital:구조적"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 28.900000000000002,
+      "final_narrative_score": 28.9,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 0.0,
+      "policy_score": 0.0,
       "cross_axis_count": 1,
       "cross_axis_multiplier": 1.0,
       "escalation_flag": false,
@@ -439,23 +732,25 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: inflation_pce_fred",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Structural Capital:구조적)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260224_cand_liq",
+      "topic_id": "STRUCT_20260225_cand_liq",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
       "title": "거시경제 이상징후: liquidity_m2_fred",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
+      "intensity": 60.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_liquidity_m2_fred_20260224"
+          "cand_liquidity_m2_fred_20260225"
         ],
         "structural_drivers": [
           "MACRO",
@@ -463,10 +758,22 @@
         ],
         "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       },
-      "narrative_score": 36.8,
-      "final_narrative_score": 36.8,
+      "_diag_actor_matches": [
+        "TIER_4:MARKET"
+      ],
+      "_diag_axis_matches": [
+        "Capital Flow:LIQUIDITY",
+        "Structural Capital:구조적",
+        "Liquidity:LIQUIDITY"
+      ],
+      "_diag_conflict_patterns": [],
+      "narrative_score": 53.935,
+      "final_narrative_score": 53.94,
       "video_ready": false,
-      "actor_tier_score": 0.0,
+      "actor_tier_score": 0.55,
+      "structural_actor_score": 55.00000000000001,
+      "capital_flow_score": 100.0,
+      "policy_score": 0.0,
       "cross_axis_count": 3,
       "cross_axis_multiplier": 1.15,
       "escalation_flag": false,
@@ -479,8 +786,9 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: liquidity_m2_fred",
-        "time_pressure": "low"
+        "time_pressure": "medium"
       },
+      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Capital Flow:LIQUIDITY, Structural Capital:구조적, Liquidity:LIQUIDITY)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
       "schema_version": "v3.0"
     }
   ]
