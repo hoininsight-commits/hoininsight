@@ -489,6 +489,36 @@ jobs:
             git push origin main
           fi
 
+      - name: Remote Deploy Verification (Post-Deploy Data Integrity Check)
+        if: always()
+        run: |
+          echo "Waiting for GitHub Pages deployment cache flush... (30s)"
+          sleep 30
+          
+          echo "Curling manifest.json..."
+          HTTP_CODE=$(curl -s -o temp_manifest.json -w "%{http_code}" https://hoininsight-commits.github.io/hoininsight/data/decision/manifest.json)
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "❌ [FAIL] manifest.json returned HTTP $HTTP_CODE"
+            exit 1
+          fi
+          if ! jq -r '.files' temp_manifest.json > /dev/null 2>&1 && ! python3 -c "import json; json.load(open('temp_manifest.json'))" > /dev/null 2>&1; then
+             echo "❌ [FAIL] manifest.json invalid JSON"
+             exit 1
+          fi
+          echo "✅ [OK] manifest.json HTTP 200 and parsed"
+
+          echo "Curling today.json..."
+          HTTP_CODE2=$(curl -s -o temp_today.json -w "%{http_code}" https://hoininsight-commits.github.io/hoininsight/data/decision/today.json)
+          if [ "$HTTP_CODE2" -ne 200 ]; then
+            echo "❌ [FAIL] today.json returned HTTP $HTTP_CODE2"
+            exit 1
+          fi
+          if ! jq -r '.' temp_today.json > /dev/null 2>&1 && ! python3 -c "import json; json.load(open('temp_today.json'))" > /dev/null 2>&1; then
+             echo "❌ [FAIL] today.json invalid JSON"
+             exit 1
+          fi
+          echo "✅ [OK] today.json HTTP 200 and parsed"
+
       - name: Create issue on failure
         if: failure()
         env:

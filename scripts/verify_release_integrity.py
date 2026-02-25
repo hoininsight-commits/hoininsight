@@ -130,6 +130,31 @@ def main():
     except Exception as e:
         print(f"⚠️ [WARN] Could not verify narrative score: {e}")
 
+    # V9. Native Fake Sequence & Hash UI Blocker
+    print("\n[V9] Checking UI against Fake Hash Narrative Injections...")
+    import re
+    # Patterns that represent the fake hash generation
+    disallowed_patterns = [
+        r"hash.*score",
+        r"hash.*narrative_score",
+        r"hash.*intensity",
+        r"charCodeAt.*%",
+        r"charCodeAt.*mod",
+        r"Math\.random",
+        r"salt.*score",
+        r"salt.*narrative",
+        r"salt %"
+    ]
+    for js_file in docs_ui.rglob("*.js"):
+        try:
+            content = js_file.read_text(encoding="utf-8")
+            for pattern in disallowed_patterns:
+                if re.search(pattern, content, re.IGNORECASE):
+                    print(f"❌ [FAIL] Disallowed fake score pattern '{pattern}' found in {js_file}")
+                    all_passed = False
+        except Exception as e:
+            print(f"⚠️ [WARN] Could not read {js_file} for V9 checking: {e}")
+
     if not all_passed:
         print("\n❌ RELEASE INTEGRITY CHECK FAILED.")
         sys.exit(1)
