@@ -134,11 +134,13 @@ const GET_COLORS = {
         return 'bg-slate-800 text-slate-500 border-slate-700';
     },
     intensity: (i) => {
+        if (i === null || i === undefined || Number.isNaN(i)) return 'text-slate-500 font-bold';
         if (i >= 70) return 'text-red-500 font-black';
         if (i >= 40) return 'text-orange-400 font-bold';
         return 'text-blue-400';
     },
     accent: (i) => {
+        if (i === null || i === undefined || Number.isNaN(i)) return 'bg-slate-600';
         if (i >= 70) return 'bg-red-500';
         if (i >= 40) return 'bg-orange-500';
         return 'bg-blue-500';
@@ -193,12 +195,14 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
     const okCount = okItems.length;
     const holdCount = holdItems.length;
     const incCount = incompleteItems.length;
-    const avgInt = totalCount > 0 ? Math.round(items.reduce((s, i) => s + i.narrative_score, 0) / totalCount) : 0;
-    const maxInt = totalCount > 0 ? Math.max(...items.map(i => i.narrative_score)) : 0;
+    const itemsWithScore = items.filter(i => i.narrative_score !== null);
+    const avgInt = itemsWithScore.length > 0 ? Math.round(itemsWithScore.reduce((s, i) => s + i.narrative_score, 0) / itemsWithScore.length) : 0;
+    const maxInt = itemsWithScore.length > 0 ? Math.max(...itemsWithScore.map(i => i.narrative_score)) : 0;
 
     // v2.8: 7-Day Comparison
     const histComplete = (historyItems || []).filter(i => !i.incomplete);
-    const histAvg = histComplete.length > 0 ? Math.round(histComplete.reduce((s, i) => s + i.narrative_score, 0) / histComplete.length) : 0;
+    const histWithScore = histComplete.filter(i => i.narrative_score !== null);
+    const histAvg = histWithScore.length > 0 ? Math.round(histWithScore.reduce((s, i) => s + i.narrative_score, 0) / histWithScore.length) : 0;
     const diff = histAvg > 0 ? (avgInt - histAvg) : 0;
     const diffText = diff > 0 ? `↑ +${diff}%` : `↓ ${diff}%`;
     const diffColor = diff > 0 ? 'text-green-400' : 'text-red-400';
@@ -279,7 +283,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
                             <div class="bg-black/20 border border-yellow-900/20 p-4 rounded-lg space-y-2 group hover:border-yellow-900/40 transition-colors">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xs font-bold text-slate-300 truncate w-4/5">${strongestHold.title}</h4>
-                                    <span class="text-yellow-500 font-black text-[10px]">${strongestHold.narrative_score}%</span>
+                                    <span class="text-yellow-500 font-black text-[10px]">${strongestHold.narrative_score !== null ? strongestHold.narrative_score + '%' : 'N/A'}</span>
                                 </div>
                                 <div class="flex gap-2 items-center text-[9px] text-slate-500 font-bold uppercase">
                                     <span>${UI_SAFE.safeISOTime(strongestHold.selected_at)}</span>
@@ -300,7 +304,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
                             <div class="bg-black/20 border border-red-900/10 p-4 rounded-lg space-y-2 opacity-70 group hover:opacity-100 transition-opacity">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xs font-bold text-slate-500 truncate w-4/5 italic">${strongestInc.title}</h4>
-                                    <span class="text-slate-600 font-black text-[10px]">${strongestInc.narrative_score}%</span>
+                                    <span class="text-slate-600 font-black text-[10px]">${strongestInc.narrative_score !== null ? strongestInc.narrative_score + '%' : 'N/A'}</span>
                                 </div>
                                 <div class="flex gap-2 items-center text-[9px] text-slate-600 font-bold uppercase">
                                     <span class="bg-slate-800 px-1.5 rounded-sm">보완 필요</span>
@@ -388,7 +392,7 @@ function renderHeroCard(hero) {
                         ${hero.speakability}
                     </span>
                     <span class="bg-slate-800/50 border border-slate-700 text-[9px] font-black px-2 py-0.5 rounded uppercase ${GET_COLORS.intensity(hero.narrative_score)}">
-                        INT: ${hero.narrative_score}%
+                        INT: ${hero.narrative_score !== null ? hero.narrative_score + '%' : 'N/A'}
                     </span>
                 </div>
                 <h2 class="text-3xl font-black text-white mb-3 leading-tight tracking-tight uppercase">${hero.title}</h2>
@@ -425,7 +429,7 @@ function renderCompactCard(item, idx) {
                             ${item.incomplete ? '● 불완전' : item.display_badge}
                         </span>
                         <span class="${GET_COLORS.speak(item.speakability)} text-[8px] font-black px-1.5 rounded border-0 uppercase">${item.speakability}</span>
-                        <span class="${GET_COLORS.intensity(item.narrative_score)} text-[8px] font-black px-1.5 rounded-0 uppercase tracking-tighter">${item.narrative_score}%</span>
+                        <span class="${GET_COLORS.intensity(item.narrative_score)} text-[8px] font-black px-1.5 rounded-0 uppercase tracking-tighter">${item.narrative_score !== null ? item.narrative_score + '%' : 'N/A'}</span>
                     </div>
                 </div>
                 <div class="icon text-[9px] text-slate-800 group-hover:text-slate-600">▼</div>

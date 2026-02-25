@@ -48,7 +48,8 @@ function renderSystemUI(container, data) {
 
     // Calculate Anomaly Stats (Today)
     const todayItems = decisions.filter(d => UI_SAFE.get(d.date) === today || UI_SAFE.get(d.selected_at).startsWith(today));
-    const avgIntensity = todayItems.length > 0 ? todayItems.reduce((s, i) => s + UI_SAFE.num(i.narrative_score), 0) / todayItems.length : 0;
+    const itemsWScore = todayItems.filter(i => i.narrative_score !== null);
+    const avgIntensity = itemsWScore.length > 0 ? itemsWScore.reduce((s, i) => s + UI_SAFE.num(i.narrative_score), 0) / itemsWScore.length : 0;
     const dist = todayItems.reduce((acc, i) => {
         const t = UI_SAFE.get(i.why_now_type);
         acc[t] = (acc[t] || 0) + 1;

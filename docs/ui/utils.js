@@ -140,20 +140,14 @@ export function convertDecisionCardToDecisionItem(card) {
 
     const selected_at = (raw_sat && raw_sat !== "-") ? raw_sat : (date !== "-" ? `${date}T00:00:00` : "-");
 
-    // intensity: normalise 0–1 → 0–100, NaN → 0
-    let intensity = UI_SAFE.safeNum(card.narrative_score || card.intensity, 0);
+    // intensity: normalise 0–1 → 0–100, NaN → null
+    let rawScore = card.narrative_score !== undefined ? card.narrative_score : card.intensity;
+    let intensity = UI_SAFE.safeNum(rawScore, null);
 
-    // [PHASE-14D] Ensure unified narrative_score logic NEVER shows 0% if backend mapping dropped it
-    if (intensity === 0) {
-        let salt = 0;
-        const saltStr = String(card.title || card.topic_id || card.theme || "");
-        for (let i = 0; i < saltStr.length; i++) salt += saltStr.charCodeAt(i);
-        intensity = 45 + (salt % 35); // 45 to 80 range
+    if (intensity !== null) {
+        if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
+        else intensity = Math.round(intensity);
     }
-
-    if (isNaN(intensity)) intensity = 0;
-    if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
-    else intensity = Math.round(intensity);
 
     // speakability — handle new schema values (EDITORIAL_CANDIDATE → HOLD)
     const rawSpeak = UI_SAFE.safeStr(card.proof_status || card.speakability || card.status, "HOLD");

@@ -124,9 +124,10 @@ function calculateIntelligence(data) {
     if (recentItems.length === 0) return null;
 
     const totalCount = recentItems.length;
+    const recentWithScore = recentItems.filter(i => i.narrative_score !== null);
     const completeItems = recentItems.filter(i => !i.incomplete);
-    const avgInt = Math.round(recentItems.reduce((s, i) => s + i.narrative_score, 0) / totalCount);
-    const maxInt = Math.max(...recentItems.map(i => i.narrative_score));
+    const avgInt = recentWithScore.length > 0 ? Math.round(recentWithScore.reduce((s, i) => s + i.narrative_score, 0) / recentWithScore.length) : 0;
+    const maxInt = recentWithScore.length > 0 ? Math.max(...recentWithScore.map(i => i.narrative_score)) : 0;
     const compRatio = Math.round((completeItems.length / totalCount) * 100);
 
     const topSignal = [...completeItems].sort((a, b) => b.narrative_score - a.narrative_score)[0] || null;
@@ -227,7 +228,7 @@ function renderHistoryList(container, state) {
                     <div class="absolute -right-4 -top-4 text-6xl opacity-5 grayscale group-hover:grayscale-0 transition-all">🏆</div>
                     <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">최근 7일 최고 강도 신호</div>
                     <div class="flex items-center gap-3">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-0.5 rounded border border-red-500/20">${intel.topSignal.narrative_score}%</span>
+                        <span class="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-0.5 rounded border border-red-500/20">${intel.topSignal.narrative_score !== null ? intel.topSignal.narrative_score + '%' : 'N/A'}</span>
                         <h4 class="text-sm font-bold text-slate-200 truncate">${intel.topSignal.title}</h4>
                         <span class="text-[10px] text-slate-500 font-mono ml-auto">${intel.topSignal.date}</span>
                     </div>
@@ -265,8 +266,10 @@ function renderHistoryList(container, state) {
             const nextDate = sortedDates[idx + 1];
             const nextDayItems = grouped[nextDate];
             if (nextDayItems) {
-                const curAvg = Math.round(dayItems.reduce((s, i) => s + i.narrative_score, 0) / dayItems.length);
-                const prevAvg = Math.round(nextDayItems.reduce((s, i) => s + i.narrative_score, 0) / nextDayItems.length);
+                const dScore = dayItems.filter(i => i.narrative_score !== null);
+                const nScore = nextDayItems.filter(i => i.narrative_score !== null);
+                const curAvg = dScore.length > 0 ? Math.round(dScore.reduce((s, i) => s + i.narrative_score, 0) / dScore.length) : 0;
+                const prevAvg = nScore.length > 0 ? Math.round(nScore.reduce((s, i) => s + i.narrative_score, 0) / nScore.length) : 0;
                 const delta = curAvg - prevAvg;
                 if (delta > 0) deltaHtml = `<span class="text-green-500 ml-2">↑ +${delta}%</span>`;
                 else if (delta < 0) deltaHtml = `<span class="text-red-500 ml-2">↓ ${delta}%</span>`;
@@ -277,8 +280,9 @@ function renderHistoryList(container, state) {
         const d_ok = dayItems.filter(i => !i.incomplete && i.speakability === 'OK').length;
         const d_hold = dayItems.filter(i => !i.incomplete && i.speakability === 'HOLD').length;
         const d_inc = dayItems.filter(i => i.incomplete).length;
-        const d_avg = Math.round(dayItems.reduce((s, i) => s + i.narrative_score, 0) / dayItems.length);
-        const d_max = Math.max(...dayItems.map(i => i.narrative_score));
+        const dB_score = dayItems.filter(i => i.narrative_score !== null);
+        const d_avg = dB_score.length > 0 ? Math.round(dB_score.reduce((s, i) => s + i.narrative_score, 0) / dB_score.length) : 0;
+        const d_max = dB_score.length > 0 ? Math.max(...dB_score.map(i => i.narrative_score)) : 0;
 
         const trendHtml = isCompView ? `
             <div class="flex items-center gap-3 bg-slate-900/30 px-3 py-1 rounded-full border border-slate-800/50">
@@ -334,7 +338,7 @@ function renderHistoryCardSnippet(item, id) {
                 </span>
                 <div class="flex gap-2 items-center">
                     <span class="text-[8.5px] font-black px-1.5 py-0.5 rounded border border-slate-800 text-slate-600 uppercase ${isInc ? 'hidden' : ''}">${item.display_badge}</span>
-                    <span class="text-[8.5px] font-black text-slate-500 uppercase">INT ${item.narrative_score}%</span>
+                    <span class="text-[8.5px] font-black text-slate-500 uppercase">INT ${item.narrative_score !== null ? item.narrative_score + '%' : 'N/A'}</span>
                     <span class="text-[8.5px] font-black px-1.5 py-0.5 rounded border border-slate-800 ${item.speakability === 'OK' ? 'text-green-600' : 'text-yellow-600'} uppercase">${item.speakability}</span>
                     ${isInc ? '<span class="text-[8px] font-black bg-red-900/20 text-red-900/60 px-1 rounded">● 불완전</span>' : ''}
                 </div>
