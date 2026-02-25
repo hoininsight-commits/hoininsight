@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-02-25T16:33:02.918734",
+  "generated_at_kst": "2026-02-25T16:58:59.429176",
   "date": "2026-02-25",
   "blocks": {
     "regime": {
@@ -27,7 +27,7 @@
   "structural_topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
   "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
   "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.93 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.92 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
@@ -59,7 +59,7 @@
       "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-25T16:32:40Z",
+        "ts_utc": "2026-02-25T16:58:40Z",
         "dataset_id": "risk_vix_fred",
         "topic_id": "risk_vix_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/25/risk_vix_fred.json L2 Signal",
@@ -114,9 +114,9 @@
       "proof_status": "VALIDATED",
       "missing_sensors": [],
       "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, 미국 10년물 국채금리 급변 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 97.8% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 97.6% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-25T16:32:40Z",
+        "ts_utc": "2026-02-25T16:58:40Z",
         "dataset_id": "index_kospi_stooq",
         "topic_id": "index_kospi_stooq::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/25/index_kospi_stooq.json L2 Signal",
@@ -126,11 +126,11 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 1.08,
-            "percentile": 97.8,
+            "z_score": 0.98,
+            "percentile": 97.6,
             "value": 6083.86,
-            "rolling_mean_20d": 5959.9875,
-            "reasoning": "Percentile 97.8% (Extreme)"
+            "rolling_mean_20d": 5973.1915,
+            "reasoning": "Percentile 97.6% (Extreme)"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -151,7 +151,7 @@
           },
           "anomalies_path": "data/features/anomalies/2026/02/25/index_kospi_stooq.json"
         },
-        "rationale": "[L2] Percentile 97.8% (Extreme) (Regime x1.0)",
+        "rationale": "[L2] Percentile 97.6% (Extreme) (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -173,7 +173,7 @@
       "title": "[Monetary Tightening] 감지된 토픽: rates_us02y_fred L2 Signal 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, 장단기 금리차(Yield Curve) 역전/해소 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 1.6% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-25T16:32:40Z",
+        "ts_utc": "2026-02-25T16:58:40Z",
         "dataset_id": "rates_us02y_fred",
         "topic_id": "rates_us02y_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/25/rates_us02y_fred.json L2 Signal",
@@ -230,7 +230,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-25T16:32:40Z",
+        "ts_utc": "2026-02-25T16:58:40Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/25/inflation_cpi_fred.json L2 Signal",
@@ -287,7 +287,7 @@
       "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-25T16:32:40Z",
+        "ts_utc": "2026-02-25T16:58:40Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/25/inflation_pce_fred.json L2 Signal",
