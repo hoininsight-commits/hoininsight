@@ -83,9 +83,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 코스피 개장 직후 사상 첫 6천피 돌파…코스피 새역사 - KBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] 삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net (Google_News_KR_Economy)
   - [NEWS] 강남 집값 상승률 둔화 후…‘불패신화’ 흔드는 李 대통령의 압박 - 더스쿠프 (Google_News_KR_Economy)
-  - [NEWS] [쿠팡 해킹] 쿠팡, 대만서도 개인정보 유출... 3367만개 중 20만개 대만 소재 - 보안뉴스 (Google_News_KR_Economy)
+  - [NEWS] 반도체 호황 기대감…기업 경기전망 3년4개월 만에 ‘최고’ - 경향신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,33 +187,36 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 코스피 개장 직후 사상 첫 6천피 돌파…코스피 새역사 - KBS 뉴스 | Structural implication: '코스피 개장 직후 사상 첫 6천피 돌파…코스피 새역사 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net | Structural implication: '삼전·SK하닉 프리마켓에서 3%·2% 강세… 코스피 6000 돌파하나 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 강남 집값 상승률 둔화 후…‘불패신화’ 흔드는 李 대통령의 압박 - 더스쿠프 | Structural implication: '강남 집값 상승률 둔화 후…‘불패신화’ 흔드는 李 대통령의 압박 - 더스쿠프' suggests a shift in NEWS dynamics. | LOW |
-| [쿠팡 해킹] 쿠팡, 대만서도 개인정보 유출... 3367만개 중 20만개 대만 소재 - 보안뉴스 | Structural implication: '[쿠팡 해킹] 쿠팡, 대만서도 개인정보 유출... 3367만개 중 20만개 대만 소재 - 보안뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 반도체 호황 기대감…기업 경기전망 3년4개월 만에 ‘최고’ - 경향신문 | Structural implication: '반도체 호황 기대감…기업 경기전망 3년4개월 만에 ‘최고’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| [뉴욕마켓워치] AI 공포 완화에 증시 반등…채권 혼조·달러↑ - 연합인포맥스 | Structural implication: '[뉴욕마켓워치] AI 공포 완화에 증시 반등…채권 혼조·달러↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| [특징주] 현대차·기아, 실적 개선 및 피지컬 AI 수혜 기대 '강세' - 글로벌이코노믹 | Structural implication: '[특징주] 현대차·기아, 실적 개선 및 피지컬 AI 수혜 기대 '강세' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
+| AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인 | Structural implication: 'AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 현대약품, ‘미에로사이다 에너지’ CU 단독 출시 - 의학신문 | Structural implication: '현대약품, ‘미에로사이다 에너지’ CU 단독 출시 - 의학신문' suggests a shift in NEWS dynamics. | LOW |
 | 현대무벡스 ‘AW 2026’ 참가… AI·로봇 미래 물류 기술 총망라 - 뉴스와이어 | Structural implication: '현대무벡스 ‘AW 2026’ 참가… AI·로봇 미래 물류 기술 총망라 - 뉴스와이어' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡 사태 잊혀졌다고요?···시민들은 여전히 ‘탈팡’ 중 - 경향신문 | Structural implication: '쿠팡 사태 잊혀졌다고요?···시민들은 여전히 ‘탈팡’ 중 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| “솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제 | Structural implication: '“솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 서울 아파트-빌라 전세가율 역전 임박 - 한국경제 | Structural implication: '서울 아파트-빌라 전세가율 역전 임박 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | '새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아 | Structural implication: ''새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz | Structural implication: '삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| [비즈톡톡] 우리가 입점하니 건물값 쑥… ‘핫플 메이커’ 된 유통사들 - 조선비즈 - Chosunbiz | Structural implication: '[비즈톡톡] 우리가 입점하니 건물값 쑥… ‘핫플 메이커’ 된 유통사들 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 외국인 코스피 탈출 이달 12조 팔아치워 - 매일경제 | Structural implication: '외국인 코스피 탈출 이달 12조 팔아치워 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | ‘자사주 의무 소각’ 3차 상법 개정안 법사위 통과 - 경향신문 | Structural implication: '‘자사주 의무 소각’ 3차 상법 개정안 법사위 통과 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz | Structural implication: '삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스 | Structural implication: '석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | AMD 주가, 메타 AI 파트너십 체결로 14% 급등 - Investing.com 한국어 | Structural implication: 'AMD 주가, 메타 AI 파트너십 체결로 14% 급등 - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
 | 이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보 | Structural implication: '이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 | Structural implication: '“이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 바이젠셀 "NK/T세포림프종 임상2상, 환자 95% 재발 없이 2년간 생존" - 한국경제 | Structural implication: '바이젠셀 "NK/T세포림프종 임상2상, 환자 95% 재발 없이 2년간 생존" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴 | Structural implication: '美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴' suggests a shift in NEWS dynamics. | LOW |
-| '다주택 양도세 중과 재개' 시행령 개정안 국무회의 의결 - 연합인포맥스 | Structural implication: ''다주택 양도세 중과 재개' 시행령 개정안 국무회의 의결 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 | Structural implication: '다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ | Structural implication: '“대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’' suggests a shift in NEWS dynamics. | LOW |
+| “로봇도 현대車가 진짜 잘 만드네”…생명 지켜주는 ‘정의선 야심작’ 소방로봇 [왜몰랐을카] | Structural implication: '“로봇도 현대車가 진짜 잘 만드네”…생명 지켜주는 ‘정의선 야심작’ 소방로봇 [왜몰랐을카]' suggests a shift in NEWS dynamics. | LOW |
+| “상용차 보안 대응체계 구축”…타타대우, 특장업체 사이버보안 설명회 | Structural implication: '“상용차 보안 대응체계 구축”…타타대우, 특장업체 사이버보안 설명회' suggests a shift in NEWS dynamics. | LOW |
 | “버려지긴 일러요”…볼보 장난감병원, 고장 난 장난감 707개 수리·기부 | Structural implication: '“버려지긴 일러요”…볼보 장난감병원, 고장 난 장난감 707개 수리·기부' suggests a shift in NEWS dynamics. | LOW |
 | 픽업트럭 ‘램’, 차봇모터스 통해 한국 진출…4월 ‘램 1500’ 출시 | Structural implication: '픽업트럭 ‘램’, 차봇모터스 통해 한국 진출…4월 ‘램 1500’ 출시' suggests a shift in NEWS dynamics. | LOW |
 | [포토] 매경에이엑스, 디지털저널리즘혁신대상 서비스·비즈니스 대상 수상 | Structural implication: '[포토] 매경에이엑스, 디지털저널리즘혁신대상 서비스·비즈니스 대상 수상' suggests a shift in NEWS dynamics. | LOW |
 | 신한투자증권, ‘신한프리미어 청주금융센터’ 통합 이전 오픈 | Structural implication: '신한투자증권, ‘신한프리미어 청주금융센터’ 통합 이전 오픈' suggests a shift in NEWS dynamics. | LOW |
 | 교보증권, 자립준비청년 ‘드림업 5기’ 장학금 전달 | Structural implication: '교보증권, 자립준비청년 ‘드림업 5기’ 장학금 전달' suggests a shift in NEWS dynamics. | LOW |
 | ‘눈물의 여왕’ 홍해인처럼 독일행 비행기 탈 여력 있을까…NGS 검사와 표적항암의 세계 [전지적 보험시점] | Structural implication: '‘눈물의 여왕’ 홍해인처럼 독일행 비행기 탈 여력 있을까…NGS 검사와 표적항암의 세계 [전지적 보험시점]' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 국힘 중진, 내일 장동혁 만난다…‘윤 어게인’ 제동거나 | Structural implication: '[단독] 국힘 중진, 내일 장동혁 만난다…‘윤 어게인’ 제동거나' suggests a shift in NEWS dynamics. | LOW |
+| 국힘 중진, 내일 장동혁 만난다…‘윤 어게인’ 제동거나 | Structural implication: '국힘 중진, 내일 장동혁 만난다…‘윤 어게인’ 제동거나' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 트럼프 “대부분 국가, 무역합의 유지 원해…더나쁜 합의도 가능” | Structural implication: '[속보] 트럼프 “대부분 국가, 무역합의 유지 원해…더나쁜 합의도 가능”' suggests a shift in NEWS dynamics. | LOW |
 | 민주 윤건영 “공천헌금 공소시효 6개월→5년” 법안 발의 | Structural implication: '민주 윤건영 “공천헌금 공소시효 6개월→5년” 법안 발의' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 경찰, 김병기 차남 피의자 소환…편입·취업특혜 조사 | Structural implication: '[속보] 경찰, 김병기 차남 피의자 소환…편입·취업특혜 조사' suggests a shift in NEWS dynamics. | LOW |
@@ -224,9 +227,6 @@
 | ‘문과의 의대공습’…탐구영역 제한 없는 의대 지원자 중 10% 사탐 응시자 | Structural implication: '‘문과의 의대공습’…탐구영역 제한 없는 의대 지원자 중 10% 사탐 응시자' suggests a shift in NEWS dynamics. | LOW |
 | 피지컬 AI로 화재 진압 돕는다…현대차, 무인소방로봇 4대 기증 | Structural implication: '피지컬 AI로 화재 진압 돕는다…현대차, 무인소방로봇 4대 기증' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 트럼프, 집권 2기 첫 국정연설 시작 | Structural implication: '[속보] 트럼프, 집권 2기 첫 국정연설 시작' suggests a shift in NEWS dynamics. | LOW |
-| 코리아신탁, 4164가구 수원 우만동 재개발 본격 추진 | Structural implication: '코리아신탁, 4164가구 수원 우만동 재개발 본격 추진' suggests a shift in NEWS dynamics. | LOW |
-| CCTV 보는 순간 직감…식당주인이 실외기 아래서 발견한 돈뭉치의 정체 | Structural implication: 'CCTV 보는 순간 직감…식당주인이 실외기 아래서 발견한 돈뭉치의 정체' suggests a shift in NEWS dynamics. | LOW |
-| 강서 국회대로 인근 도심 공공주택 복합지구 예정지구 지정…5973세대 최대 규모 | Structural implication: '강서 국회대로 인근 도심 공공주택 복합지구 예정지구 지정…5973세대 최대 규모' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
