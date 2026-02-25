@@ -191,22 +191,22 @@
 | 강남 집값 상승률 둔화 후…‘불패신화’ 흔드는 李 대통령의 압박 - 더스쿠프 | Structural implication: '강남 집값 상승률 둔화 후…‘불패신화’ 흔드는 李 대통령의 압박 - 더스쿠프' suggests a shift in NEWS dynamics. | LOW |
 | 반도체 호황 기대감…기업 경기전망 3년4개월 만에 ‘최고’ - 경향신문 | Structural implication: '반도체 호황 기대감…기업 경기전망 3년4개월 만에 ‘최고’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | [특징주] 현대차·기아, 실적 개선 및 피지컬 AI 수혜 기대 '강세' - 글로벌이코노믹 | Structural implication: '[특징주] 현대차·기아, 실적 개선 및 피지컬 AI 수혜 기대 '강세' - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인 | Structural implication: 'AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 대만은 아니라더니...쿠팡 “대만 고객 20만명 개인정보 유출” - 조선일보 | Structural implication: '대만은 아니라더니...쿠팡 “대만 고객 20만명 개인정보 유출” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [뉴욕증시-1보] 병주고 약주는 앤트로픽…반등 마감 - 연합뉴스 | Structural implication: '[뉴욕증시-1보] 병주고 약주는 앤트로픽…반등 마감 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 현대약품, ‘미에로사이다 에너지’ CU 단독 출시 - 의학신문 | Structural implication: '현대약품, ‘미에로사이다 에너지’ CU 단독 출시 - 의학신문' suggests a shift in NEWS dynamics. | LOW |
 | 현대무벡스 ‘AW 2026’ 참가… AI·로봇 미래 물류 기술 총망라 - 뉴스와이어 | Structural implication: '현대무벡스 ‘AW 2026’ 참가… AI·로봇 미래 물류 기술 총망라 - 뉴스와이어' suggests a shift in NEWS dynamics. | LOW |
-| 쿠팡 사태 잊혀졌다고요?···시민들은 여전히 ‘탈팡’ 중 - 경향신문 | Structural implication: '쿠팡 사태 잊혀졌다고요?···시민들은 여전히 ‘탈팡’ 중 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| “솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제 | Structural implication: '“솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 서울 아파트-빌라 전세가율 역전 임박 - 한국경제 | Structural implication: '서울 아파트-빌라 전세가율 역전 임박 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | '새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아 | Structural implication: ''새로운 10년' 출발점에 다시 선 갤럭시S26, AI 혁신 베일 벗는다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| ‘자사주 의무 소각’ 3차 상법 개정안 법사위 통과 - 경향신문 | Structural implication: '‘자사주 의무 소각’ 3차 상법 개정안 법사위 통과 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz | Structural implication: '삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 외국인 코스피 탈출 이달 12조 팔아치워 - 매일경제 | Structural implication: '외국인 코스피 탈출 이달 12조 팔아치워 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 소상공인도 대환대출 길 열려…카카오페이 등 내달 공식출시 - 매일경제 | Structural implication: '[단독] 소상공인도 대환대출 길 열려…카카오페이 등 내달 공식출시 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스 | Structural implication: '석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | AMD 주가, 메타 AI 파트너십 체결로 14% 급등 - Investing.com 한국어 | Structural implication: 'AMD 주가, 메타 AI 파트너십 체결로 14% 급등 - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
-| 이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보 | Structural implication: '이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 | Structural implication: '“이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보 | Structural implication: '이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴 | Structural implication: '美 FDA, 신약 허가 임상 건수 완화 예고… K-신약 탄생 속도 붙나 - 코메디닷컴' suggests a shift in NEWS dynamics. | LOW |
 | 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 | Structural implication: '다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인·금 ‘디커플링’ 심화…관세 충격에 폭락한 코인, 금·은 구리는 활짝 - 조선일보 | Structural implication: '비트코인·금 ‘디커플링’ 심화…관세 충격에 폭락한 코인, 금·은 구리는 활짝 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ | Structural implication: '“대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’' suggests a shift in NEWS dynamics. | LOW |
 | “로봇도 현대車가 진짜 잘 만드네”…생명 지켜주는 ‘정의선 야심작’ 소방로봇 [왜몰랐을카] | Structural implication: '“로봇도 현대車가 진짜 잘 만드네”…생명 지켜주는 ‘정의선 야심작’ 소방로봇 [왜몰랐을카]' suggests a shift in NEWS dynamics. | LOW |
 | “상용차 보안 대응체계 구축”…타타대우, 특장업체 사이버보안 설명회 | Structural implication: '“상용차 보안 대응체계 구축”…타타대우, 특장업체 사이버보안 설명회' suggests a shift in NEWS dynamics. | LOW |

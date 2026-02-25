@@ -32,7 +32,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI 공포 진정에 뉴욕증시 반등…나스닥 1.1%↑ - 마켓인 (ID: unknown)
+### 대만은 아니라더니...쿠팡 “대만 고객 20만명 개인정보 유출” - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [뉴욕증시-1보] 병주고 약주는 앤트로픽…반등 마감 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -43,16 +48,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 현대무벡스 ‘AW 2026’ 참가… AI·로봇 미래 물류 기술 총망라 - 뉴스와이어 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 쿠팡 사태 잊혀졌다고요?···시민들은 여전히 ‘탈팡’ 중 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,12 +67,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘자사주 의무 소각’ 3차 상법 개정안 법사위 통과 - 경향신문 (ID: unknown)
+### 외국인 코스피 탈출 이달 12조 팔아치워 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성전자, 장중 20만원 돌파… ‘육천피’ 눈앞 - 조선비즈 - Chosunbiz (ID: unknown)
+### [단독] 소상공인도 대환대출 길 열려…카카오페이 등 내달 공식출시 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,12 +87,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보 (ID: unknown)
+### “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “이제 통신사라고 부르지 마세요”…일주일 앞으로 다가온 MWC - 매일경제 (ID: unknown)
+### 이재용·이부진·홍라희·이서현, 작년 배당액 Top10에 삼성家만 4명 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -108,6 +103,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 다주택자 "서둘러 집 팔자"…분당 아파트 매물 56% 증가 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 비트코인·금 ‘디커플링’ 심화…관세 충격에 폭락한 코인, 금·은 구리는 활짝 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
