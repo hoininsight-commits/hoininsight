@@ -137,75 +137,70 @@ def _publish_today() -> Optional[Dict]:
         data = json.loads(dest.read_text(encoding="utf-8"))
         file_date = data.get("date", kst_date) or kst_date
         
-        # Merge approval status & narrative data
+        # Always align contracts and merge metadata if present
         approved_titles = _load_approval_titles()
         narrative_map = _load_narrative_data()
         
-        if approved_titles or narrative_map:
-            changed = False
+        # Determine the list of topics to mutate based on schema
+        topics_to_check = []
+        if isinstance(data, list):
+            topics_to_check = data
+        elif isinstance(data, dict):
+            if "top_topics" in data:
+                topics_to_check = data["top_topics"]
+            elif "title" in data:
+                # It's a single topic object root
+                topics_to_check = [data]
+                
+        changed = False
+        for top in topics_to_check:
+            title = top.get("title", "")
+            topic_id = top.get("topic_id", "")
             
-            # Determine the list of topics to mutate based on schema
-            topics_to_check = []
-            if isinstance(data, list):
-                topics_to_check = data
-            elif isinstance(data, dict):
-                if "top_topics" in data:
-                    topics_to_check = data["top_topics"]
-                elif "title" in data:
-                    # It's a single topic object root
-                    topics_to_check = [data]
-                    
-            for top in topics_to_check:
-                title = top.get("title", "")
-                topic_id = top.get("topic_id", "")
-                
-                # 1. Approval Mapping
-                if title in approved_titles:
-                    top["status"] = "APPROVED"
-                    top["speakability"] = "OK"
-                    changed = True
-                    
-                # 2. Narrative Score Mapping (CASE 3 Fix)
-                n_key = None
-                dataset_id = top.get("dataset_id")
-                
-                # Try exact matches first
-                if title in narrative_map:
-                    n_key = title
-                elif topic_id in narrative_map:
-                    n_key = topic_id
-                elif dataset_id:
-                    # Try finding dataset_id inside the keys
-                    for k in narrative_map.keys():
-                        if dataset_id in k:
-                            n_key = k
-                            break
-
-                if n_key:
-                    n_data = narrative_map[n_key]
-                    top["narrative_score"] = n_data["narrative_score"]
-                    top["video_ready"] = n_data["video_ready"]
-                    top["actor_tier_score"] = n_data["actor_tier_score"]
-                    top["escalation_flag"] = n_data["escalation_flag"]
-                    top["conflict_flag"] = n_data["conflict_flag"]
-                    top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
-                    if n_data["causal_chain"]:
-                        top["causal_chain"] = n_data["causal_chain"]
-                    
-                # 3. Structural Contract Alignment (NO-DRIFT)
-                if top.get("intensity") is None and top.get("score") is not None:
-                    try:
-                        top["intensity"] = float(top["score"])
-                    except (ValueError, TypeError):
-                        pass
-
-                if "narrative_score" not in top:
-                    top["narrative_score"] = None
-
+            # 1. Approval Mapping
+            if title in approved_titles:
+                top["status"] = "APPROVED"
+                top["speakability"] = "OK"
                 changed = True
-                    
-            if changed:
-                dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+                
+            # 2. Narrative Score Mapping
+            n_key = None
+            dataset_id = top.get("dataset_id")
+            if title in narrative_map: n_key = title
+            elif topic_id in narrative_map: n_key = topic_id
+            elif dataset_id:
+                for k in narrative_map.keys():
+                    if dataset_id in k:
+                        n_key = k
+                        break
+
+            if n_key:
+                n_data = narrative_map[n_key]
+                top["narrative_score"] = n_data["narrative_score"]
+                top["video_ready"] = n_data["video_ready"]
+                top["actor_tier_score"] = n_data["actor_tier_score"]
+                top["escalation_flag"] = n_data["escalation_flag"]
+                top["conflict_flag"] = n_data["conflict_flag"]
+                top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
+                if n_data["causal_chain"]:
+                    top["causal_chain"] = n_data["causal_chain"]
+                changed = True
+                
+            # 3. Structural Contract Alignment (ALWAYS RUN)
+            if top.get("intensity") is None and top.get("score") is not None:
+                try:
+                    top["intensity"] = float(top["score"])
+                    changed = True
+                except (ValueError, TypeError):
+                    pass
+
+            if "narrative_score" not in top:
+                top["narrative_score"] = None
+                changed = True
+                
+        if changed:
+            dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"[PUBLISH] Aligned contract for today.json")
                 
     except Exception:
         file_date = kst_date
@@ -265,8 +260,12 @@ def _publish_editorial() -> List[Dict]:
                     changed = True
                     
                 # [PHASE-14C] Fallback Adapter: Convert remaining raw editorial scores into Narrative UI format
+                if pick.get("intensity") is None and pick.get("score") is not None:
+                    pick["intensity"] = pick["score"]
+                    changed = True
+
                 if "narrative_score" not in pick:
-                    base_val = float(pick.get("editor_score", 50))
+                    base_val = float(pick.get("editor_score", pick.get("score", 50)))
                     # Apply a deterministic salt to break duplicate dummy samples into realistic variance
                     salt = sum(ord(c) for c in src.name) % 15 
                     derived_score = (base_val * 0.75) + float(salt)
@@ -274,6 +273,11 @@ def _publish_editorial() -> List[Dict]:
                     pick["narrative_score"] = min(100.0, max(0.0, round(derived_score, 1)))
                     pick["actor_tier_score"] = 0.85 if pick.get("confidence_level") == "HIGH" else 0.5
                     pick["video_ready"] = pick.get("promotion_hint") == "DAILY_LONG"
+                    changed = True
+                
+                # Double check fields
+                if "intensity" not in pick:
+                    pick["intensity"] = pick.get("score") or pick.get("narrative_score") or 0
                     changed = True
                     
             if changed:
