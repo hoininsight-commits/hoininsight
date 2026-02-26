@@ -83,6 +83,11 @@ def main():
                  valid = False
         else:
             print(f"✅ Found {len(topics)} topics in today.json.")
+        
+            # Check conflict_flag count
+            conflicts = [t for t in topics if t.get("conflict_flag") == True]
+            print(f"📊 Remote Conflict Count: {len(conflicts)}/{len(topics)}")
+            
             t0 = topics[0]
             print(f"🔎 Sample [0] Keys: {list(t0.keys())}")
             
