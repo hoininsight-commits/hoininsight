@@ -56,7 +56,13 @@ def main():
             print("❌ Invalid or missing manifest structure.")
             valid = False
         else:
+            gen_at = manifest_data.get("generated_at", "Unknown")
             print(f"✅ manifest.json parsed successfully. Keys: {list(manifest_data.keys())}")
+            print(f"📊 Remote Manifest Generation Time: {gen_at}")
+            
+            # [PHASE-16A] Detect stale cache
+            if "2026-02-26" not in gen_at and gen_at != "Unknown":
+                print(f"⚠️ WARNING: Remote data appears to be STALE ({gen_at}). CDN has not propagated yet.")
 
         # Today Verification
         if not today_data:
