@@ -66,7 +66,8 @@ export function normalizeDecision(raw) {
     const date = UI_SAFE.safeStr(raw.date, UI_SAFE.deriveDateFromSelectedAt(selected_at) || "-");
     const why_now_type = UI_SAFE.safeStr(raw.why_now_type, raw.WHY_NOW_TRIGGER_TYPE || "-");
     const speakability = UI_SAFE.safeStr(raw.speakability, raw.speakability_decision || "-");
-    const intensity = UI_SAFE.safeNum(raw.narrative_score, UI_SAFE.safeNum(raw.stress_score, 0) * 100);
+    const intensity = UI_SAFE.safeNum(raw.intensity, UI_SAFE.safeNum(raw.score, null));
+    const narrative_score = UI_SAFE.safeNum(raw.narrative_score, null);
     const summary = UI_SAFE.safeStr(raw.why_now_summary, raw.summary || "-");
     const anomaly_points = UI_SAFE.safeArr(raw.anomaly_points);
     const related_assets = UI_SAFE.safeArr(raw.related_assets);
@@ -87,7 +88,8 @@ export function normalizeDecision(raw) {
         date,
         why_now_type,
         speakability,
-        narrative_score: intensity,
+        intensity,
+        narrative_score,
         why_now_summary: summary,
         anomaly_points,
         related_assets,
@@ -140,14 +142,15 @@ export function convertDecisionCardToDecisionItem(card) {
 
     const selected_at = (raw_sat && raw_sat !== "-") ? raw_sat : (date !== "-" ? `${date}T00:00:00` : "-");
 
-    // intensity: normalise 0–1 → 0–100, NaN → null
-    let rawScore = card.narrative_score !== undefined ? card.narrative_score : card.intensity;
-    let intensity = UI_SAFE.safeNum(rawScore, null);
-
+    // intensity vs narrative_score separation (v2.8)
+    const rawInt = card.intensity !== undefined ? card.intensity : card.score;
+    let intensity = UI_SAFE.safeNum(rawInt, null);
     if (intensity !== null) {
         if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
         else intensity = Math.round(intensity);
     }
+
+    const narrative_score = UI_SAFE.safeNum(card.narrative_score, null);
 
     // speakability — handle new schema values (EDITORIAL_CANDIDATE → HOLD)
     const rawSpeak = UI_SAFE.safeStr(card.proof_status || card.speakability || card.status, "HOLD");
@@ -187,7 +190,8 @@ export function convertDecisionCardToDecisionItem(card) {
         title,
         date,
         selected_at,
-        narrative_score: intensity,
+        intensity,
+        narrative_score,
         speakability,
         why_now_type,
         why_now_summary,

@@ -172,16 +172,25 @@ def _publish_today() -> Optional[Dict]:
                 top["speakability"] = "OK"
                 changed = True
                 
-            # 2. Narrative Score Mapping
+            # 2. Narrative Score & Intensity Mapping
             n_key = None
             dataset_id = top.get("dataset_id")
-            if title in narrative_map: n_key = title
-            elif topic_id in narrative_map: n_key = topic_id
-            elif dataset_id:
-                for k in narrative_map.keys():
-                    if dataset_id in k:
-                        n_key = k
-                        break
+            
+            # Prioritize Unique Matches
+            if dataset_id:
+                # Direct check if dataset_id itself is a key
+                if dataset_id in narrative_map:
+                    n_key = dataset_id
+                else:
+                    # Search inside keys (handling side-effects like _2026)
+                    for k in narrative_map.keys():
+                        if dataset_id == k or (isinstance(k, str) and dataset_id in k):
+                            n_key = k
+                            break
+            
+            # Fallback to Title only if no ID match (risky, but preserved for legacy)
+            if not n_key and title in narrative_map:
+                n_key = title
 
             if n_key:
                 n_data = narrative_map[n_key]

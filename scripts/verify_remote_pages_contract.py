@@ -120,6 +120,22 @@ def main():
                 print("❌ 'narrative_score' missing from topic [0]. SSOT Publisher drifted.")
                 valid = False
 
+            # [IS-100] Zero Variance Check (Variance=0 among 3+ items is a major Red Flag)
+            valid_ints = [t.get("intensity") for t in topics if isinstance(t.get("intensity"), (int, float))]
+            if len(valid_ints) >= 3:
+                # Manual variance check
+                mean = sum(valid_ints) / len(valid_ints)
+                variance = sum((x - mean) ** 2 for x in valid_ints) / (len(valid_ints) - 1)
+                print(f"📊 Intensity Variance: {variance:.2f} (Count: {len(valid_ints)})")
+                if variance == 0:
+                    print("⚠️ WARNING: ZERO VARIANCE DETECTED across all intensities. Possible duplication bug.")
+                    # We print warning but don't fail immediately unless strict enforcement is needed
+            
+            # Print samples for Actions Log as requested
+            print("\n--- Actions Log Sample (Top 3) ---")
+            for i, st in enumerate(topics[:3]):
+                print(f"[{i}] {st.get('title')[:30]}... | INT: {st.get('intensity')} | NS: {st.get('narrative_score')}")
+
         if valid:
             print("\n✅ Remote Contract Verification PASSED.")
             sys.exit(0)
