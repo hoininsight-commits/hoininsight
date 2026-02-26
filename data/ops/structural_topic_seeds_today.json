@@ -1,6 +1,6 @@
 {
   "run_date": "2026-02-26",
-  "count": 14,
+  "count": 13,
   "seeds": [
     {
       "run_date": "2026-02-26",
@@ -159,29 +159,6 @@
           "kind": "artifact",
           "path": "hoin_signal/topic_seeds",
           "id": "cand_metal_gold_paxg_coingecko_20260226"
-        }
-      ],
-      "created_at": "2026-02-26"
-    },
-    {
-      "run_date": "2026-02-26",
-      "topic_seed_id": "STRUCT_20260226_cand_cry",
-      "seed_type": "HOIN_ANOMALY",
-      "structure_summary": "[거시경제 이상징후: crypto_btc_usd_spot_coingecko] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
-      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
-      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
-      "structural_driver": [
-        "MACRO",
-        "MARKET"
-      ],
-      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
-      "status": "STRUCTURAL_ONLY",
-      "intensity": 0.0,
-      "source_refs": [
-        {
-          "kind": "artifact",
-          "path": "hoin_signal/topic_seeds",
-          "id": "cand_crypto_btc_usd_spot_coingecko_20260226"
         }
       ],
       "created_at": "2026-02-26"
