@@ -42,12 +42,6 @@
 - **Conflict**: None
 - **Final Score**: 53.13
 
-## Topic: 거시경제 이상징후: crypto_btc_usd_spot_coingecko
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 44.27
-
 ## Topic: 거시경제 이상징후: risk_vix_fred
 - **Actors**: TIER_3:SK, TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
@@ -70,7 +64,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 74.83
+- **Final Score**: 69.42
 
 ## Topic: 거시경제 이상징후: rates_us02y_fred
 - **Actors**: TIER_4:MARKET

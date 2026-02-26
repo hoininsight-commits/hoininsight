@@ -1,6 +1,6 @@
 {
   "date": "2026-02-26",
-  "total_topics": 14,
+  "total_topics": 13,
   "video_ready_count": 2,
   "topics": [
     {
@@ -403,61 +403,6 @@
       "schema_version": "v3.0"
     },
     {
-      "topic_id": "STRUCT_20260226_cand_cry",
-      "dataset_id": "crypto_btc_usd_spot_coingecko",
-      "topic_type": "ISSUE_SIGNAL",
-      "structure_type": "HOIN_ANOMALY",
-      "structure_card_type": "구조적 분석",
-      "title": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
-      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
-      "importance_level": "보통",
-      "intensity": 30.0,
-      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: N/A (insufficient evidence)",
-      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
-      "evidence_refs": {
-        "source_ids": [
-          "cand_crypto_btc_usd_spot_coingecko_20260226"
-        ],
-        "structural_drivers": [
-          "MACRO",
-          "MARKET"
-        ],
-        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
-      },
-      "_diag_actor_matches": [
-        "TIER_4:MARKET"
-      ],
-      "_diag_axis_matches": [
-        "Policy:GOV",
-        "Capital Flow:CAPITAL",
-        "Structural Capital:STRUCTURAL"
-      ],
-      "_diag_conflict_patterns": [],
-      "narrative_score": 44.275,
-      "final_narrative_score": 44.27,
-      "video_ready": false,
-      "actor_tier_score": 0.55,
-      "structural_actor_score": 55.00000000000001,
-      "capital_flow_score": 100.0,
-      "policy_score": 0.0,
-      "cross_axis_count": 3,
-      "cross_axis_multiplier": 1.15,
-      "escalation_flag": false,
-      "conflict_flag": false,
-      "expectation_gap_score": 0,
-      "expectation_gap_level": "none",
-      "tension_multiplier_applied": false,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
-        "affected_sector": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
-        "time_pressure": "low"
-      },
-      "summary_3_line": "구조적 원인: HOIN_ANOMALY 감지 (Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL)\n자본 흐름 영향: TIER_4:MARKET 중심의 시장 반응 및 지표 변동\n리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
-      "schema_version": "v3.0"
-    },
-    {
       "topic_id": "STRUCT_20260226_cand_ris",
       "dataset_id": "risk_vix_fred",
       "topic_type": "ISSUE_SIGNAL",
@@ -664,8 +609,8 @@
       "_diag_conflict_patterns": [
         "Macro_Price_Divergence"
       ],
-      "narrative_score": 66.815,
-      "final_narrative_score": 74.83,
+      "narrative_score": 61.985,
+      "final_narrative_score": 69.42,
       "video_ready": false,
       "actor_tier_score": 0.55,
       "structural_actor_score": 55.00000000000001,
@@ -681,7 +626,7 @@
       "causal_chain": {
         "cause": null,
         "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Derived from final_n_score",
+        "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: index_kospi_stooq",
         "time_pressure": "high"
       },
