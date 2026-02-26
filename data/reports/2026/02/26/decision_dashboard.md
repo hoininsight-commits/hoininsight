@@ -192,39 +192,39 @@
 | 256GB→512GB 무상 업그레이드...'갤럭시S26 시리즈' 사전 판매 개시 - 지디넷코리아 | Structural implication: '256GB→512GB 무상 업그레이드...'갤럭시S26 시리즈' 사전 판매 개시 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 동전주 ‘퇴출’ 예고…6개 제약사 ‘상폐여부’ 촉각 - 데일리메디 | Structural implication: '동전주 ‘퇴출’ 예고…6개 제약사 ‘상폐여부’ 촉각 - 데일리메디' suggests a shift in NEWS dynamics. | LOW |
 | 젠슨 황이 또 일냈다…삼성전자·SK하닉 개미들 '기대감 폭발' [종목+] - 한국경제 | Structural implication: '젠슨 황이 또 일냈다…삼성전자·SK하닉 개미들 '기대감 폭발' [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 진격의 코스피, 6300 돌파... 최태원·정의선 밈까지 등장 - 조선일보 | Structural implication: '진격의 코스피, 6300 돌파... 최태원·정의선 밈까지 등장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스 | Structural implication: '자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| “‘100만닉스’ 드립니다”...코스피 불장에 개미 모시기 나선 증권사들 - 조선비즈 - Chosunbiz | Structural implication: '“‘100만닉스’ 드립니다”...코스피 불장에 개미 모시기 나선 증권사들 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 | Structural implication: '삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 삼천당제약, '경구용 GLP-1' 유럽 11개국 독점 라이센스·상업화 계약 체결 - 파이낸셜뉴스 | Structural implication: '삼천당제약, '경구용 GLP-1' 유럽 11개국 독점 라이센스·상업화 계약 체결 - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 | Structural implication: '삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 | Structural implication: 'AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| "34만전자·170만닉스 간다" 파격 전망…불장에 기름 부었다 - 한국경제 | Structural implication: '"34만전자·170만닉스 간다" 파격 전망…불장에 기름 부었다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아 | Structural implication: '공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 "주가조작 신고 시 수백억 포상"...금융위원장에 "잘하셨다" 공개 칭찬 - JTBC | Structural implication: '이 대통령 "주가조작 신고 시 수백억 포상"...금융위원장에 "잘하셨다" 공개 칭찬 - JTBC' suggests a shift in NEWS dynamics. | LOW |
-| “삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보 | Structural implication: '“삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스 | Structural implication: '국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스 | Structural implication: '비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [亞증시-종합] 일제히 강세…日 닛케이 역대 최고 - 연합인포맥스 | Structural implication: '[亞증시-종합] 일제히 강세…日 닛케이 역대 최고 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 대형마트 규제 푼다고 이마트·롯데마트 '새벽배송' 가능할까 - 지디넷코리아 | Structural implication: '대형마트 규제 푼다고 이마트·롯데마트 '새벽배송' 가능할까 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 공식 석상 때마다 ‘이목 집중’…이부진, 아들 서울대 입학식 패션도 화제 | Structural implication: '공식 석상 때마다 ‘이목 집중’…이부진, 아들 서울대 입학식 패션도 화제' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 서울 중구 북창동 화재 신고…짙은 연기 자욱 | Structural implication: '[속보] 서울 중구 북창동 화재 신고…짙은 연기 자욱' suggests a shift in NEWS dynamics. | LOW |
+| “코스피 불장에 초고가 옷 더 팔려”…200만원 니트·500만원 재킷 선보인 기업들 | Structural implication: '“코스피 불장에 초고가 옷 더 팔려”…200만원 니트·500만원 재킷 선보인 기업들' suggests a shift in NEWS dynamics. | LOW |
+| 7박8일 필리버스터 ‘대여 투쟁’…강경한 野, 내부서 피로감 호소도 | Structural implication: '7박8일 필리버스터 ‘대여 투쟁’…강경한 野, 내부서 피로감 호소도' suggests a shift in NEWS dynamics. | LOW |
+| 강수진 국립발레단장, 12년 임기 마치고 4월 퇴임…“후학 양성 전념” | Structural implication: '강수진 국립발레단장, 12년 임기 마치고 4월 퇴임…“후학 양성 전념”' suggests a shift in NEWS dynamics. | LOW |
+| 경북도, 국민성장펀드로 1조원대 ‘메가 프로젝트’ 시동 | Structural implication: '경북도, 국민성장펀드로 1조원대 ‘메가 프로젝트’ 시동' suggests a shift in NEWS dynamics. | LOW |
+| 법왜곡죄 다음은 재판소원…민주 '사법개혁' 속전속결 | Structural implication: '법왜곡죄 다음은 재판소원…민주 '사법개혁' 속전속결' suggests a shift in NEWS dynamics. | LOW |
 | 6·3 지방선거 앞두고 검·경 “AI 가짜뉴스 엄정 대응” | Structural implication: '6·3 지방선거 앞두고 검·경 “AI 가짜뉴스 엄정 대응”' suggests a shift in NEWS dynamics. | LOW |
 | 매번 부득이하게 올린다던 빵값...밀가루 담합 철퇴 맞자 바로 내렸다 | Structural implication: '매번 부득이하게 올린다던 빵값...밀가루 담합 철퇴 맞자 바로 내렸다' suggests a shift in NEWS dynamics. | LOW |
 | “코로나 ‘이물질 백신’ 정은경 물러나야”…국힘, 이 대통령에 경질 촉구 | Structural implication: '“코로나 ‘이물질 백신’ 정은경 물러나야”…국힘, 이 대통령에 경질 촉구' suggests a shift in NEWS dynamics. | LOW |
 | 춘천 원형육교 ‘소양아트서클’ 상권 연계 방안 모색 | Structural implication: '춘천 원형육교 ‘소양아트서클’ 상권 연계 방안 모색' suggests a shift in NEWS dynamics. | LOW |
 | ‘불패신화’ 강남·용산 집값 2년만에 꺾였다…다주택자 압박에 호가 뚝뚝 | Structural implication: '‘불패신화’ 강남·용산 집값 2년만에 꺾였다…다주택자 압박에 호가 뚝뚝' suggests a shift in NEWS dynamics. | LOW |
 | 롯데백화점, 정월대보름 맞아 부럼·오곡 행사 연다 | Structural implication: '롯데백화점, 정월대보름 맞아 부럼·오곡 행사 연다' suggests a shift in NEWS dynamics. | LOW |
-| 올 성장률 1.8→2% … 한은, 기준금리 6연속 동결 | Structural implication: '올 성장률 1.8→2% … 한은, 기준금리 6연속 동결' suggests a shift in NEWS dynamics. | LOW |
 | '불스피' 덕에… 국민연금 올해 137조 벌어 | Structural implication: ''불스피' 덕에… 국민연금 올해 137조 벌어' suggests a shift in NEWS dynamics. | LOW |
+| 올 성장률 1.8→2% … 한은, 기준금리 6연속 동결 | Structural implication: '올 성장률 1.8→2% … 한은, 기준금리 6연속 동결' suggests a shift in NEWS dynamics. | LOW |
 | 강남·용산 집값 … 2년만에 꺾였다 | Structural implication: '강남·용산 집값 … 2년만에 꺾였다' suggests a shift in NEWS dynamics. | LOW |
 | 역시 갓비디아! 실적 새역사 | Structural implication: '역시 갓비디아! 실적 새역사' suggests a shift in NEWS dynamics. | LOW |
 | "AI 모르면 대입·취업 밀린다"… 교육현장은 지금 'JX 준비모드' | Structural implication: '"AI 모르면 대입·취업 밀린다"… 교육현장은 지금 'JX 준비모드'' suggests a shift in NEWS dynamics. | LOW |
 | 한국서도 AI發 고용충격 조짐 … IT개발자 일자리 5000개 증발 | Structural implication: '한국서도 AI發 고용충격 조짐 … IT개발자 일자리 5000개 증발' suggests a shift in NEWS dynamics. | LOW |
 | 月15만원 농어촌 기본소득 덕분에 ··· 장수군엔 필리핀 음식점 생겼다 | Structural implication: '月15만원 농어촌 기본소득 덕분에 ··· 장수군엔 필리핀 음식점 생겼다' suggests a shift in NEWS dynamics. | LOW |
-| 오늘의 운세 2026년 2월 27일 金(음력 1월 11일) | Structural implication: '오늘의 운세 2026년 2월 27일 金(음력 1월 11일)' suggests a shift in NEWS dynamics. | LOW |
-| 시세이도 코리아, 김정미 CEO 선임 | Structural implication: '시세이도 코리아, 김정미 CEO 선임' suggests a shift in NEWS dynamics. | LOW |
-| 셀트리온 “충남 예산 신공장 신설, 6개월 이내 재공시” | Structural implication: '셀트리온 “충남 예산 신공장 신설, 6개월 이내 재공시”' suggests a shift in NEWS dynamics. | LOW |
-| 산업용 전기료 인상 효과 봤네…한전, 작년 영업익 13.5조 최대 | Structural implication: '산업용 전기료 인상 효과 봤네…한전, 작년 영업익 13.5조 최대' suggests a shift in NEWS dynamics. | LOW |
-| 오늘의 증시 일정(2월 27일) | Structural implication: '오늘의 증시 일정(2월 27일)' suggests a shift in NEWS dynamics. | LOW |
-| TIME 액티브 ETF 순자산 5조 돌파 | Structural implication: 'TIME 액티브 ETF 순자산 5조 돌파' suggests a shift in NEWS dynamics. | LOW |
-| 경쟁사 지분 사들이자 … 요동치는 주가 | Structural implication: '경쟁사 지분 사들이자 … 요동치는 주가' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

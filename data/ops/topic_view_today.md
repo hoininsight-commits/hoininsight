@@ -47,17 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 진격의 코스피, 6300 돌파... 최태원·정의선 밈까지 등장 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “‘100만닉스’ 드립니다”...코스피 불장에 개미 모시기 나선 증권사들 - 조선비즈 - Chosunbiz (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,7 +62,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "34만전자·170만닉스 간다" 파격 전망…불장에 기름 부었다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -78,11 +83,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 이 대통령 "주가조작 신고 시 수백억 포상"...금융위원장에 "잘하셨다" 공개 칭찬 - JTBC (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,41 @@ No SHADOW candidates today.
 ### 대형마트 규제 푼다고 이마트·롯데마트 '새벽배송' 가능할까 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 공식 석상 때마다 ‘이목 집중’…이부진, 아들 서울대 입학식 패션도 화제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 서울 중구 북창동 화재 신고…짙은 연기 자욱 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “코스피 불장에 초고가 옷 더 팔려”…200만원 니트·500만원 재킷 선보인 기업들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 7박8일 필리버스터 ‘대여 투쟁’…강경한 野, 내부서 피로감 호소도 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 강수진 국립발레단장, 12년 임기 마치고 4월 퇴임…“후학 양성 전념” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 경북도, 국민성장펀드로 1조원대 ‘메가 프로젝트’ 시동 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 법왜곡죄 다음은 재판소원…민주 '사법개혁' 속전속결 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 6·3 지방선거 앞두고 검·경 “AI 가짜뉴스 엄정 대응” (ID: unknown)
@@ -142,12 +177,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 올 성장률 1.8→2% … 한은, 기준금리 6연속 동결 (ID: unknown)
+### '불스피' 덕에… 국민연금 올해 137조 벌어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### '불스피' 덕에… 국민연금 올해 137조 벌어 (ID: unknown)
+### 올 성장률 1.8→2% … 한은, 기준금리 6연속 동결 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -173,41 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 月15만원 농어촌 기본소득 덕분에 ··· 장수군엔 필리핀 음식점 생겼다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 오늘의 운세 2026년 2월 27일 金(음력 1월 11일) (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 시세이도 코리아, 김정미 CEO 선임 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 셀트리온 “충남 예산 신공장 신설, 6개월 이내 재공시” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 산업용 전기료 인상 효과 봤네…한전, 작년 영업익 13.5조 최대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 오늘의 증시 일정(2월 27일) (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### TIME 액티브 ETF 순자산 5조 돌파 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 경쟁사 지분 사들이자 … 요동치는 주가 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
