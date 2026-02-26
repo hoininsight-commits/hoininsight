@@ -12,7 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레 (ID: unknown)
+### 파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### Nvidia, Salesforce 실적 발표; 미국-이란 핵 협상 - 시장 움직임 By Investing.com - Investing.com 한국어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -22,12 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보]대통령 ‘의지’ 통했나···강남3구·용산 아파트값 2년 만에 꺾였다 - 경향신문 (ID: unknown)
+### [단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 파바·뚜쥬, 이 대통령 ‘담합’ 질타에 빵값 내린다…일부 케이크도 1만원 인하 - 한겨레 (ID: unknown)
+### 강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 정주영이 전한 '울림'…정의선 "할아버지 정신 이어갈 것" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,17 +47,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 동전주 ‘퇴출’ 예고…6개 제약사 ‘상폐여부’ 촉각 - 데일리메디 (ID: unknown)
+### 코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 젠슨 황이 또 일냈다…삼성전자·SK하닉 개미들 '기대감 폭발' [종목+] - 한국경제 (ID: unknown)
+### 부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 진격의 코스피, 6300 돌파... 최태원·정의선 밈까지 등장 - 조선일보 (ID: unknown)
+### "최대 5.3조 계약 체결"…삼천당제약, 상한가 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,32 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼천당제약, '경구용 GLP-1' 유럽 11개국 독점 라이센스·상업화 계약 체결 - 파이낸셜뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### AI·휴머노이드 집결…'로봇 물결' 올라탄 AW 2026 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "34만전자·170만닉스 간다" 파격 전망…불장에 기름 부었다 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 이 대통령 "주가조작 신고 시 수백억 포상"...금융위원장에 "잘하셨다" 공개 칭찬 - JTBC (ID: unknown)
+### “안 오면 손해” 880원 삼겹살 1톤 푼 이마트…‘미끼’는 옛말[르포] - edaily.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,122 +77,137 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 (ID: unknown)
+### 공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스 (ID: unknown)
+### 한국전력, ‘역대 최대’ 영업익 13조원… 205조 부채는 여전 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [亞증시-종합] 일제히 강세…日 닛케이 역대 최고 - 연합인포맥스 (ID: unknown)
+### 107일간의 태양광 공급 과잉 대응… 봄철 전력망 시험대 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대형마트 규제 푼다고 이마트·롯데마트 '새벽배송' 가능할까 - 지디넷코리아 (ID: unknown)
+### [갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - samsung.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 공식 석상 때마다 ‘이목 집중’…이부진, 아들 서울대 입학식 패션도 화제 (ID: unknown)
+### 진격의 코스피, 6300 돌파... 최태원·정의선 밈도 등장 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이 대통령 “주식시장 개혁, 부동산 투기 공화국 탈출은 앞으로도 쭉 계속” - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [경제포커스] 창업 숨통을 끊겠다고 덤비는 금융위 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 李대통령 “주가누르기 방지법으로 6천피 뒷받침”…상속세 개정 예고 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 서울 중구 북창동 화재 신고…짙은 연기 자욱 (ID: unknown)
+### 정부공직자윤리위원회 2월 재산 수시 공개…1위 이한주 이사장 75억원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “코스피 불장에 초고가 옷 더 팔려”…200만원 니트·500만원 재킷 선보인 기업들 (ID: unknown)
+### 정부, 구글 등에 고정밀 지도 국외 반출 ‘허용’ 가닥 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 7박8일 필리버스터 ‘대여 투쟁’…강경한 野, 내부서 피로감 호소도 (ID: unknown)
+### ‘왕의 귀환’ 삼성전자, 4분기 D램 시장 1위 탈환…“올해 1분기도 좋다” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 강수진 국립발레단장, 12년 임기 마치고 4월 퇴임…“후학 양성 전념” (ID: unknown)
+### “남편이 여성과 모텔로 들어갔습니다”…불륜 현장 급습한 아내 외려 실형 선고 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 경북도, 국민성장펀드로 1조원대 ‘메가 프로젝트’ 시동 (ID: unknown)
+### 경기 중 축구공 맞고 쓰러진 갈매기…선수 CPR에 ‘벌떡’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 법왜곡죄 다음은 재판소원…민주 '사법개혁' 속전속결 (ID: unknown)
+### 한 살 차이 지인에 “버릇 없다” 살해한 50대 체포 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 6·3 지방선거 앞두고 검·경 “AI 가짜뉴스 엄정 대응” (ID: unknown)
+### 서울 북창동서 화재…건물 허물어 3시간 30분만에 완진 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 매번 부득이하게 올린다던 빵값...밀가루 담합 철퇴 맞자 바로 내렸다 (ID: unknown)
+### ‘백의종군’ 요구에 한동훈 반발…“尹이 보수 망칠 때 뭘 했나” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “코로나 ‘이물질 백신’ 정은경 물러나야”…국힘, 이 대통령에 경질 촉구 (ID: unknown)
+### “길고양이 얼굴만 불로 지졌다”…화상 테러 동일범 가능성 수사 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 춘천 원형육교 ‘소양아트서클’ 상권 연계 방안 모색 (ID: unknown)
+### [속보] ‘北 무인기’ 대학원생 구속…“증거인멸·도망 염려” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘불패신화’ 강남·용산 집값 2년만에 꺾였다…다주택자 압박에 호가 뚝뚝 (ID: unknown)
+### “야 인마!” “인마?” 거친 고성 오가…야당 몫 천영식 방미통위 위원안 국회 부결 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 롯데백화점, 정월대보름 맞아 부럼·오곡 행사 연다 (ID: unknown)
+### 음주운전 사고 낸 현직 경찰…‘스마트워치 자동신고’에 덜미 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### '불스피' 덕에… 국민연금 올해 137조 벌어 (ID: unknown)
+### “4억6000만원에 서울 집 사고 싶어요”…그런데 현실 집값은? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 올 성장률 1.8→2% … 한은, 기준금리 6연속 동결 (ID: unknown)
+### 한국남부발전, 삼척빛드림본부 현장 안전경영 행보…에너지 공급 안정·상생 강화 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 강남·용산 집값 … 2년만에 꺾였다 (ID: unknown)
+### “18년 기다렸는데 또” 재개발 조합 풍비박산…북아현3구역 표류 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 역시 갓비디아! 실적 새역사 (ID: unknown)
+### “너만 보면 설레~”…女수강생에 강제 목키스 프로 골퍼, 항소심서 감형 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### "AI 모르면 대입·취업 밀린다"… 교육현장은 지금 'JX 준비모드' (ID: unknown)
+### “1년 이상 방치”…무안공항 참사 현장서 희생자 추정 유해 발견 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한국서도 AI發 고용충격 조짐 … IT개발자 일자리 5000개 증발 (ID: unknown)
+### ‘축구의 신’ 메시도 막혔다…깜짝 고백한 영어 콤플렉스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 月15만원 농어촌 기본소득 덕분에 ··· 장수군엔 필리핀 음식점 생겼다 (ID: unknown)
+### “안마의자, 돈보다 공간이 없네”…고민 해결해줄 안마침대 등장했다는데 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
