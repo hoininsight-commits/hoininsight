@@ -1,11 +1,11 @@
 {
-  "date": "2026-02-26",
+  "date": "2026-02-27",
   "long": {
     "topic_id": "6b35df54-99b2-4ef2-8918-0a11ed0ddc6c",
     "title": "정책 예산 집행과 기업 실적 발표가 맞물리며 Tech 인프라 섹터의 구조적 반등 시발점이 ...",
     "axes": [
-      "POLICY",
       "EARNINGS",
+      "POLICY",
       "STRUCTURAL"
     ],
     "confidence": 0.88
@@ -35,10 +35,18 @@
         "RELATIONSHIP"
       ],
       "confidence": 0.6
+    },
+    {
+      "topic_id": "IS-96-20260227-NVID-Open",
+      "title": "NVIDIA와 OpenAI 사이의 supplier_dependency 관계에서 구조적 균열...",
+      "axes": [
+        "RELATIONSHIP"
+      ],
+      "confidence": 0.6
     }
   ],
   "metadata": {
-    "total_candidates": 4,
+    "total_candidates": 5,
     "engine_version": "is107_v1"
   }
 }
