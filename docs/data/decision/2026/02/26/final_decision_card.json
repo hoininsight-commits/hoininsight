@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-02-26T13:09:19.000387",
+  "generated_at_kst": "2026-02-26T13:32:19.698156",
   "date": "2026-02-26",
   "blocks": {
     "regime": {
@@ -27,7 +27,7 @@
   "structural_topic": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
   "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
   "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.76 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.75 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
   "key_data": {
@@ -59,7 +59,7 @@
       "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-26T13:08:57Z",
+        "ts_utc": "2026-02-26T13:31:57Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/26/inflation_pce_fred.json L2 Signal",
@@ -116,7 +116,7 @@
       "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (crypto_btc_usd_spot_coingecko, 공포지수(VIX) 이상 급등 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 99.2% (Extreme). 특히 동일 섹터인 [crypto_btc_usd_spot_coingecko] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-26T13:08:57Z",
+        "ts_utc": "2026-02-26T13:31:57Z",
         "dataset_id": "index_kospi_stooq",
         "topic_id": "index_kospi_stooq::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/26/index_kospi_stooq.json L2 Signal",
@@ -126,10 +126,10 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 1.5,
+            "z_score": 1.46,
             "percentile": 99.2,
-            "value": 6209.48,
-            "rolling_mean_20d": 6056.489,
+            "value": 6213.3,
+            "rolling_mean_20d": 6074.8495,
             "reasoning": "Percentile 99.2% (Extreme)"
           },
           "regime": {
@@ -173,7 +173,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (미국 개인소비지출(PCE) 물가 이상, 한국 소비자물가(CPI) 쇼크 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_pce_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-26T13:08:57Z",
+        "ts_utc": "2026-02-26T13:31:57Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/02/26/inflation_cpi_fred.json L2 Signal",
@@ -230,7 +230,7 @@
       "title": "[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, INFLATION 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 전환사채(CB/BW) 발행가 오늘 하루 1건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_disposal] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-26T13:08:57Z",
+        "ts_utc": "2026-02-26T13:31:57Z",
         "dataset_id": "struct_dart_cb_bw",
         "topic_id": "struct_dart_cb_bw::event_nonzero",
         "title": "data/features/anomalies/2026/02/26/struct_dart_cb_bw.json L2 Signal",
@@ -285,7 +285,7 @@
       "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)",
       "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 기업 자산 매각 공시가 오늘 하루 5건 발생하며 평소보다 우호적/부진한 흐름 양상을 보였습니다. 특히 동일 섹터인 [struct_dart_cb_bw] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
       "raw_data": {
-        "ts_utc": "2026-02-26T13:08:57Z",
+        "ts_utc": "2026-02-26T13:31:57Z",
         "dataset_id": "struct_dart_disposal",
         "topic_id": "struct_dart_disposal::event_nonzero",
         "title": "data/features/anomalies/2026/02/26/struct_dart_disposal.json L2 Signal",
