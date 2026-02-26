@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인 (Google_News_KR_Economy)
-  - [NEWS] 자사주 의무 소각 상법 개정…비상장법인의 세무상 체크리스트 - 한국세정신문 (Google_News_KR_Economy)
-  - [NEWS] 이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보 (Google_News_KR_Economy)
+  - [NEWS] 쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,25 +186,37 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인 | Structural implication: '엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 자사주 의무 소각 상법 개정…비상장법인의 세무상 체크리스트 - 한국세정신문 | Structural implication: '자사주 의무 소각 상법 개정…비상장법인의 세무상 체크리스트 - 한국세정신문' suggests a shift in NEWS dynamics. | LOW |
-| 이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보 | Structural implication: '이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보 | Structural implication: '李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보' suggests a shift in NEWS dynamics. | LOW |
+| 쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스 | Structural implication: '쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [인터뷰] [갤럭시 언팩 2026] 영화감독 매기 강 “기술에 따뜻한 온기를 담아내다” - Samsung Global Newsroom | Structural implication: '[인터뷰] [갤럭시 언팩 2026] 영화감독 매기 강 “기술에 따뜻한 온기를 담아내다” - Samsung Global Newsroom' suggests a shift in NEWS dynamics. | LOW |
-| 파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레 | Structural implication: '파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 | Structural implication: '삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN | Structural implication: '코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN' suggests a shift in NEWS dynamics. | LOW |
+| 자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스 | Structural implication: '자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보 | Structural implication: '이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net | Structural implication: '[단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스 | Structural implication: '부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레 | Structural implication: '삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 삼천당제약, 경구용 GLP-1 유럽 11개국 독점 라이센스 계약 - 연합뉴스 | Structural implication: '삼천당제약, 경구용 GLP-1 유럽 11개국 독점 라이센스 계약 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 저가형 맥북 출시 임박…어떤 기능 빼고 나올까 - 지디넷코리아 | Structural implication: '저가형 맥북 출시 임박…어떤 기능 빼고 나올까 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC | Structural implication: '강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC' suggests a shift in NEWS dynamics. | LOW |
+| 파리바게뜨·뚜레쥬르, 빵·케이크 가격 인하 - MBC 뉴스 | Structural implication: '파리바게뜨·뚜레쥬르, 빵·케이크 가격 인하 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스 | Structural implication: '국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [속보] CJ제일제당, 밀가루 가격 추가 5% 인하 - 매일경제 | Structural implication: '[속보] CJ제일제당, 밀가루 가격 추가 5% 인하 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 한국전력, ‘역대 최대’ 영업익 13조원… 205조 부채는 여전 - 조선일보 | Structural implication: '한국전력, ‘역대 최대’ 영업익 13조원… 205조 부채는 여전 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 디지털자산기본법, 민주당은 어떤 선택을 할까 - 바이라인네트워크 | Structural implication: '디지털자산기본법, 민주당은 어떤 선택을 할까 - 바이라인네트워크' suggests a shift in NEWS dynamics. | LOW |
+| ﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보 | Structural implication: '﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아 | Structural implication: '공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | [갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - Samsung Global Newsroom | Structural implication: '[갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - Samsung Global Newsroom' suggests a shift in NEWS dynamics. | LOW |
-| ﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보 | Structural implication: '﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 107일간의 태양광 공급 과잉 대응… 봄철 전력망 시험대 - 조선일보 | Structural implication: '107일간의 태양광 공급 과잉 대응… 봄철 전력망 시험대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 세계 250위 안에 K병원 16곳… 삼성서울, 처음으로 국내 1위 - 조선일보 | Structural implication: '세계 250위 안에 K병원 16곳… 삼성서울, 처음으로 국내 1위 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 김범석 쿠팡Inc 의장 “개인정보 유출 사태 다시 한번 사과” | Structural implication: '[속보] 김범석 쿠팡Inc 의장 “개인정보 유출 사태 다시 한번 사과”' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 김범석, 개인정보 유출에 “사과”…첫 육성 입장 발표 | Structural implication: '[속보] 김범석, 개인정보 유출에 “사과”…첫 육성 입장 발표' suggests a shift in NEWS dynamics. | LOW |
+| “외도한 적 없어…끝까지 간다” 유키스 동호, 전처 형사고소 예고 | Structural implication: '“외도한 적 없어…끝까지 간다” 유키스 동호, 전처 형사고소 예고' suggests a shift in NEWS dynamics. | LOW |
+| 갤럭시S26 사면 AI에이전트 따라온다…택시호출·음식배달 한방에 끝 | Structural implication: '갤럭시S26 사면 AI에이전트 따라온다…택시호출·음식배달 한방에 끝' suggests a shift in NEWS dynamics. | LOW |
+| “우리 훌륭한 영부인”…아내 치켜세운 트럼프, 멜라니아 ‘파격 행보’ | Structural implication: '“우리 훌륭한 영부인”…아내 치켜세운 트럼프, 멜라니아 ‘파격 행보’' suggests a shift in NEWS dynamics. | LOW |
+| “직접 사인도 받았다더라”…배우 임주환, 쿠팡물류센터 목격담 확산 | Structural implication: '“직접 사인도 받았다더라”…배우 임주환, 쿠팡물류센터 목격담 확산' suggests a shift in NEWS dynamics. | LOW |
+| 김정은, 금수산태양궁전 참배...당 지도부와 결속 다져 | Structural implication: '김정은, 금수산태양궁전 참배...당 지도부와 결속 다져' suggests a shift in NEWS dynamics. | LOW |
+| “무역·관세 위험 보다 더 위협적”...美 CEO들이 꼽은 산업 최대 위험 요인은 | Structural implication: '“무역·관세 위험 보다 더 위협적”...美 CEO들이 꼽은 산업 최대 위험 요인은' suggests a shift in NEWS dynamics. | LOW |
+| 정보 유출 악재에 성장세 꺾였나…쿠팡Inc, 4분기 영업익 97% ‘뚝’ | Structural implication: '정보 유출 악재에 성장세 꺾였나…쿠팡Inc, 4분기 영업익 97% ‘뚝’' suggests a shift in NEWS dynamics. | LOW |
+| “불편한데 심지어 비싸기까지”…교복값 내리고 ‘정장형’ 폐지 논의 | Structural implication: '“불편한데 심지어 비싸기까지”…교복값 내리고 ‘정장형’ 폐지 논의' suggests a shift in NEWS dynamics. | LOW |
+| 매경이 전하는 세상의 지식(매-세-지, 2월 27일) | Structural implication: '매경이 전하는 세상의 지식(매-세-지, 2월 27일)' suggests a shift in NEWS dynamics. | LOW |
+| 미국·이란, 3차 핵 협상 종료…“상당한 진전, 내주 빈에서 논의 계속” | Structural implication: '미국·이란, 3차 핵 협상 종료…“상당한 진전, 내주 빈에서 논의 계속”' suggests a shift in NEWS dynamics. | LOW |
 | 경찰, 김병기 의원 연이틀 소환…아들 빗썸 취업 의혹 등 추궁 | Structural implication: '경찰, 김병기 의원 연이틀 소환…아들 빗썸 취업 의혹 등 추궁' suggests a shift in NEWS dynamics. | LOW |
 | “뛰는 쌀값 잡는다”…농식품부, 정부양곡 15만t 단계적 공급 | Structural implication: '“뛰는 쌀값 잡는다”…농식품부, 정부양곡 15만t 단계적 공급' suggests a shift in NEWS dynamics. | LOW |
 | “이왕 주식할거면 절세혜택도 챙겨야”…ISA가입 한달새 42만명 급증 | Structural implication: '“이왕 주식할거면 절세혜택도 챙겨야”…ISA가입 한달새 42만명 급증' suggests a shift in NEWS dynamics. | LOW |
@@ -213,18 +225,6 @@
 | 이 대통령 “집 투기 철저히 봉쇄...잠긴 매물은 질식할 것” | Structural implication: '이 대통령 “집 투기 철저히 봉쇄...잠긴 매물은 질식할 것”' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 쿠팡, 4분기 매출 12조8103억원…전년 동기보다 11% 성장 | Structural implication: '[속보] 쿠팡, 4분기 매출 12조8103억원…전년 동기보다 11% 성장' suggests a shift in NEWS dynamics. | LOW |
 | 대통령이 지르면 뒷수습하기 바쁜 정부…‘15% 관세’ 혼란 가중 | Structural implication: '대통령이 지르면 뒷수습하기 바쁜 정부…‘15% 관세’ 혼란 가중' suggests a shift in NEWS dynamics. | LOW |
-| 1년 내내 맘 졸였는데, 관세는 불법?…“대법원 결정 터무니 없다”며 재반격 나선 트럼프 [뉴스 쉽게보기] | Structural implication: '1년 내내 맘 졸였는데, 관세는 불법?…“대법원 결정 터무니 없다”며 재반격 나선 트럼프 [뉴스 쉽게보기]' suggests a shift in NEWS dynamics. | LOW |
-| “월세 너무 안 내서 원룸문 열었더니”..집주인, 유학생 세입자에 ‘속수무책’ | Structural implication: '“월세 너무 안 내서 원룸문 열었더니”..집주인, 유학생 세입자에 ‘속수무책’' suggests a shift in NEWS dynamics. | LOW |
-| “삼전닉스 놓쳤으면 ETF 가도 되죠?”…반도체TOP10 1조 뭉칫돈 | Structural implication: '“삼전닉스 놓쳤으면 ETF 가도 되죠?”…반도체TOP10 1조 뭉칫돈' suggests a shift in NEWS dynamics. | LOW |
-| 백악관 “트럼프, 김정은과 조건없는 대화에 열려있어” | Structural implication: '백악관 “트럼프, 김정은과 조건없는 대화에 열려있어”' suggests a shift in NEWS dynamics. | LOW |
-| 李대통령 “주가누르기 방지법으로 6천피 뒷받침”…상속세 개정 예고 | Structural implication: '李대통령 “주가누르기 방지법으로 6천피 뒷받침”…상속세 개정 예고' suggests a shift in NEWS dynamics. | LOW |
-| 정부공직자윤리위원회 2월 재산 수시 공개…1위 이한주 이사장 75억원 | Structural implication: '정부공직자윤리위원회 2월 재산 수시 공개…1위 이한주 이사장 75억원' suggests a shift in NEWS dynamics. | LOW |
-| 정부, 구글 등에 고정밀 지도 국외 반출 ‘허용’ 가닥 | Structural implication: '정부, 구글 등에 고정밀 지도 국외 반출 ‘허용’ 가닥' suggests a shift in NEWS dynamics. | LOW |
-| ‘왕의 귀환’ 삼성전자, 4분기 D램 시장 1위 탈환…“올해 1분기도 좋다” | Structural implication: '‘왕의 귀환’ 삼성전자, 4분기 D램 시장 1위 탈환…“올해 1분기도 좋다”' suggests a shift in NEWS dynamics. | LOW |
-| “남편이 여성과 모텔로 들어갔습니다”…불륜 현장 급습한 아내 외려 실형 선고 | Structural implication: '“남편이 여성과 모텔로 들어갔습니다”…불륜 현장 급습한 아내 외려 실형 선고' suggests a shift in NEWS dynamics. | LOW |
-| 경기 중 축구공 맞고 쓰러진 갈매기…선수 CPR에 ‘벌떡’ | Structural implication: '경기 중 축구공 맞고 쓰러진 갈매기…선수 CPR에 ‘벌떡’' suggests a shift in NEWS dynamics. | LOW |
-| 한 살 차이 지인에 “버릇 없다” 살해한 50대 체포 | Structural implication: '한 살 차이 지인에 “버릇 없다” 살해한 50대 체포' suggests a shift in NEWS dynamics. | LOW |
-| 서울 북창동서 화재…건물 허물어 3시간 30분만에 완진 | Structural implication: '서울 북창동서 화재…건물 허물어 3시간 30분만에 완진' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
