@@ -5,3 +5,8 @@
 - **Criteria**: STRUCTURAL_PATTERN_CLEAR, GENERAL_AUDIENCE_RELEVANT, TIME_SENSITIVE, EXTENDIBLE_SCOPE(2)
 - **Importance**: HIGH
 
+## 🎥 거시경제 이상징후: inflation_pce_fred
+- **Why Video**: 구조적 중요도가 높아 영상으로 다루기 적합함
+- **Criteria**: GENERAL_AUDIENCE_RELEVANT, TIME_SENSITIVE, EXTENDIBLE_SCOPE(2)
+- **Importance**: MEDIUM
+
