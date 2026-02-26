@@ -22,7 +22,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스 (ID: unknown)
+### [2보] 쿠팡 4분기 영업이익 97% 줄어…당기순손실로 적자전환 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,27 +32,32 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스 (ID: unknown)
+### 파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 원금은 지키자던 60대도 '돌변'…은퇴자금 들고 향한 곳 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 자사주 소각 의무화 동시에 육천피…주주 웃고 재계는 속앓이 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -68,11 +73,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 파리바게뜨·뚜레쥬르, 빵·케이크 가격 인하 - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,16 @@ No SHADOW candidates today.
 ### [갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - Samsung Global Newsroom (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “스스로 돌아봐” 원지, 유튜브 복귀…‘6평 사무실’ 논란 3개월만 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “호텔 커피머신으로 속옷 세탁”…‘황당 꿀팁’ 비난에 유명 틱톡女가 한 말 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### [속보] 김범석 쿠팡Inc 의장 “개인정보 유출 사태 다시 한번 사과” (ID: unknown)
@@ -198,16 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 이 대통령 “집 투기 철저히 봉쇄...잠긴 매물은 질식할 것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 쿠팡, 4분기 매출 12조8103억원…전년 동기보다 11% 성장 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 대통령이 지르면 뒷수습하기 바쁜 정부…‘15% 관세’ 혼란 가중 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

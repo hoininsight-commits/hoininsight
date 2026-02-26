@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인 (Google_News_KR_Economy)
   - [NEWS] 李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보 (Google_News_KR_Economy)
-  - [NEWS] 쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스 (Google_News_KR_Economy)
+  - [NEWS] [2보] 쿠팡 4분기 영업이익 97% 줄어…당기순손실로 적자전환 - 연합뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,17 +187,17 @@
 |---|---|---|
 | 엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인 | Structural implication: '엔비디아, 실적 성장보다 AI 투자 지속 '우려'…184달러서 마감 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보 | Structural implication: '李대통령 “투자·투기용 1주택자도 매각 유리하게…버티면 더 손해” - 경기일보' suggests a shift in NEWS dynamics. | LOW |
-| 쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스 | Structural implication: '쿠팡, 4분기 영업익 97% 급감…"개인정보 유출 사태 등 영향" - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [2보] 쿠팡 4분기 영업이익 97% 줄어…당기순손실로 적자전환 - 연합뉴스 | Structural implication: '[2보] 쿠팡 4분기 영업이익 97% 줄어…당기순손실로 적자전환 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [인터뷰] [갤럭시 언팩 2026] 영화감독 매기 강 “기술에 따뜻한 온기를 담아내다” - Samsung Global Newsroom | Structural implication: '[인터뷰] [갤럭시 언팩 2026] 영화감독 매기 강 “기술에 따뜻한 온기를 담아내다” - Samsung Global Newsroom' suggests a shift in NEWS dynamics. | LOW |
-| 자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스 | Structural implication: '자사주 소각 의무화+α 나온다…'8천피' 리레이팅 기대 커져 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레 | Structural implication: '파리바게뜨·뚜레쥬르 빵값 내린다…이 대통령 ‘소비자가격’ 지적 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스 | Structural implication: '삼성전자, 꿈의 시총 1조달러 클럽 입성…'글로벌 빅테크' 어깨 나란히 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 원금은 지키자던 60대도 '돌변'…은퇴자금 들고 향한 곳 - 한국경제 | Structural implication: '원금은 지키자던 60대도 '돌변'…은퇴자금 들고 향한 곳 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 자사주 소각 의무화 동시에 육천피…주주 웃고 재계는 속앓이 - 지디넷코리아 | Structural implication: '자사주 소각 의무화 동시에 육천피…주주 웃고 재계는 속앓이 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN | Structural implication: '코스피 3% 급등 6,300 돌파...한은 6번째 금리 동결 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | 이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보 | Structural implication: '이창용 총재 “반도체가 성장률 끌어올렸지만... IT 중심 성장이 양극화 심화” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net | Structural implication: '[단독] 불스피에 국민연금 두달새 127조 벌었다…삼성전자 시총 1조달러 육박 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스 | Structural implication: '부동산·가상자산 떠나 주식으로…‘머니 무브’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레 | Structural implication: '삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 삼천당제약, 경구용 GLP-1 유럽 11개국 독점 라이센스 계약 - 연합뉴스 | Structural implication: '삼천당제약, 경구용 GLP-1 유럽 11개국 독점 라이센스 계약 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 저가형 맥북 출시 임박…어떤 기능 빼고 나올까 - 지디넷코리아 | Structural implication: '저가형 맥북 출시 임박…어떤 기능 빼고 나올까 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC | Structural implication: '강남 집값 꺾였다…"부동산 공화국 해체, 못 넘을 벽 아냐" - JTBC' suggests a shift in NEWS dynamics. | LOW |
-| 파리바게뜨·뚜레쥬르, 빵·케이크 가격 인하 - MBC 뉴스 | Structural implication: '파리바게뜨·뚜레쥬르, 빵·케이크 가격 인하 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스 | Structural implication: '국민성장펀드 티켓 따낸 성장금융·신한·우리…국민 참여 상품 상반기 출시 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [속보] CJ제일제당, 밀가루 가격 추가 5% 인하 - 매일경제 | Structural implication: '[속보] CJ제일제당, 밀가루 가격 추가 5% 인하 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 한국전력, ‘역대 최대’ 영업익 13조원… 205조 부채는 여전 - 조선일보 | Structural implication: '한국전력, ‘역대 최대’ 영업익 13조원… 205조 부채는 여전 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -205,6 +205,8 @@
 | ﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보 | Structural implication: '﻿“어서 타!” 진격의 코스피... 최태원·정의선 밈도 등장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아 | Structural implication: '공정위는 쿠팡에 왜·어떻게 21.8억원 과징금 부과했나 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | [갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - Samsung Global Newsroom | Structural implication: '[갤럭시 언팩 2026] 한발 앞서 만난 ‘갤럭시 버즈4’, 인체공학적 설계로 완성한 독보적 사운드 - Samsung Global Newsroom' suggests a shift in NEWS dynamics. | LOW |
+| “스스로 돌아봐” 원지, 유튜브 복귀…‘6평 사무실’ 논란 3개월만 | Structural implication: '“스스로 돌아봐” 원지, 유튜브 복귀…‘6평 사무실’ 논란 3개월만' suggests a shift in NEWS dynamics. | LOW |
+| “호텔 커피머신으로 속옷 세탁”…‘황당 꿀팁’ 비난에 유명 틱톡女가 한 말 | Structural implication: '“호텔 커피머신으로 속옷 세탁”…‘황당 꿀팁’ 비난에 유명 틱톡女가 한 말' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 김범석 쿠팡Inc 의장 “개인정보 유출 사태 다시 한번 사과” | Structural implication: '[속보] 김범석 쿠팡Inc 의장 “개인정보 유출 사태 다시 한번 사과”' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 김범석, 개인정보 유출에 “사과”…첫 육성 입장 발표 | Structural implication: '[속보] 김범석, 개인정보 유출에 “사과”…첫 육성 입장 발표' suggests a shift in NEWS dynamics. | LOW |
 | “외도한 적 없어…끝까지 간다” 유키스 동호, 전처 형사고소 예고 | Structural implication: '“외도한 적 없어…끝까지 간다” 유키스 동호, 전처 형사고소 예고' suggests a shift in NEWS dynamics. | LOW |
@@ -223,8 +225,6 @@
 | 연기흡입 스프링클러 만든 이 남자…“시연회서 눈물짓던 소방관 못잊죠” | Structural implication: '연기흡입 스프링클러 만든 이 남자…“시연회서 눈물짓던 소방관 못잊죠”' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 쿠팡, 49조원 연매출로 ‘사상 최대’…‘유출사고’ 4분기 영업이익은 97% 급감 | Structural implication: '[속보] 쿠팡, 49조원 연매출로 ‘사상 최대’…‘유출사고’ 4분기 영업이익은 97% 급감' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “집 투기 철저히 봉쇄...잠긴 매물은 질식할 것” | Structural implication: '이 대통령 “집 투기 철저히 봉쇄...잠긴 매물은 질식할 것”' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 쿠팡, 4분기 매출 12조8103억원…전년 동기보다 11% 성장 | Structural implication: '[속보] 쿠팡, 4분기 매출 12조8103억원…전년 동기보다 11% 성장' suggests a shift in NEWS dynamics. | LOW |
-| 대통령이 지르면 뒷수습하기 바쁜 정부…‘15% 관세’ 혼란 가중 | Structural implication: '대통령이 지르면 뒷수습하기 바쁜 정부…‘15% 관세’ 혼란 가중' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
