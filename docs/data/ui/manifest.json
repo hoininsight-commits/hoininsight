@@ -1,0 +1,63 @@
+{
+  "date": "2026-02-26",
+  "registry_version": 1,
+  "policy_version": 1,
+  "authority": "src/ui_logic/contracts",
+  "assets": [
+    {
+      "key": "operator_main_card",
+      "title": "운영자 메인 카드",
+      "path": "data/ui/operator_main_card.json",
+      "required": true,
+      "stage": "DECISION",
+      "order": 10,
+      "exists": true
+    },
+    {
+      "key": "operator_narrative_order",
+      "title": "내러티브 순서",
+      "path": "data/ui/operator_narrative_order.json",
+      "required": true,
+      "stage": "DECISION",
+      "order": 20,
+      "exists": true
+    },
+    {
+      "key": "narrative_entry_hook",
+      "title": "내러티브 훅",
+      "path": "data/ui/narrative_entry_hook.json",
+      "required": false,
+      "stage": "DECISION",
+      "order": 30,
+      "exists": true
+    },
+    {
+      "key": "daily_content_package",
+      "title": "컨텐츠 패키지",
+      "path": "data/ui/daily_content_package.json",
+      "required": false,
+      "stage": "CONTENT",
+      "order": 100,
+      "exists": true
+    },
+    {
+      "key": "capital_eye",
+      "title": "Capital Eye",
+      "path": "data/ui/capital_perspective.json",
+      "required": false,
+      "stage": "SUPPORT",
+      "order": 50,
+      "exists": true
+    },
+    {
+      "key": "schedule_risk_calendar",
+      "title": "리스크 캘린더",
+      "path": "data/ui/upcoming_risk_topN.json",
+      "required": false,
+      "stage": "SUPPORT",
+      "order": 150,
+      "exists": true
+    }
+  ],
+  "overflow": []
+}
