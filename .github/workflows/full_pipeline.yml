@@ -11,6 +11,8 @@ on:
 permissions:
   contents: write
   issues: write
+  pages: write
+  id-token: write
 
 env:
   ENABLE_LEARNING: false
@@ -503,3 +505,21 @@ jobs:
         run: |
           y=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."
+
+      - name: Upload Pages Artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
+    needs: run
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
