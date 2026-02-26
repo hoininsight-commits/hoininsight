@@ -94,11 +94,20 @@ def _load_narrative_data() -> Dict[str, Dict]:
                     "escalation_flag": t.get("escalation_flag", False),
                     "conflict_flag": t.get("conflict_flag", False),
                     "cross_axis_multiplier": t.get("cross_axis_multiplier", 1.0),
-                    "causal_chain": t.get("causal_chain", {})
+                    "causal_chain": t.get("causal_chain", {}),
+                    "rationale": t.get("rationale_natural", "")
                 }
                 
                 if title: narrative_map[title] = n_data
                 if topic_id: narrative_map[topic_id] = n_data
+                
+                # [PHASE-16A] Extra mapping for dataset_id matching
+                refs = t.get("evidence_refs", {})
+                for sid in refs.get("source_ids", []):
+                    # Strip timestamps like _20260225 for broader matching
+                    clean_sid = sid.split("_202")[0] if "_202" in sid else sid
+                    narrative_map[clean_sid] = n_data
+                    narrative_map[sid] = n_data
                 
     except Exception as e:
         print(f"[PUBLISH] warn loading narrative_intelligence_v2: {e}")
@@ -184,6 +193,17 @@ def _publish_today() -> Optional[Dict]:
                 top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
                 if n_data["causal_chain"]:
                     top["causal_chain"] = n_data["causal_chain"]
+                
+                # [PHASE-16A] Bridge rationale from narrative layer to UI
+                if n_data.get("rationale"):
+                    top["rationale"] = n_data["rationale"]
+                    
+                # Fix "Unknown" Tag in UI: Ensure anchor_topic reflects conflict state
+                if top.get("conflict_flag") and top.get("dataset_id") != "human_selection":
+                    # Force UI to see dynamic conflict state
+                    cam = top.get("cross_axis_multiplier", 1.0)
+                    top["logic_block"] = f"CONFLICT DETECTED (x{cam})"
+                
                 changed = True
                 
             # 3. Structural Contract Alignment (ALWAYS RUN)
@@ -199,10 +219,20 @@ def _publish_today() -> Optional[Dict]:
                 changed = True
                 
         if changed:
+            # Sync root level topics with top topic [0] if it changed
+            if isinstance(data, dict) and "top_topics" in data and len(data["top_topics"]) > 0:
+                t0 = data["top_topics"][0]
+                if t0.get("conflict_flag"):
+                    data["anchor_topic"] = "[CONFLICT] MULTI-AXIS FRICTION"
+                    data["topic"] = t0.get("title", data["topic"])
+                    data["structural_topic"] = t0.get("title", data["structural_topic"])
+                    data["decision_rationale"] = t0.get("rationale", data["decision_rationale"])
+            
             dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
             print(f"[PUBLISH] Aligned contract for today.json")
                 
-    except Exception:
+    except Exception as e:
+        print(f"[PUBLISH] error in _publish_today: {e}")
         file_date = kst_date
 
     return {
