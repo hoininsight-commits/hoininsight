@@ -28,7 +28,12 @@ class IssueSignalBuilder:
     def _build_card(self, seed: Dict) -> Dict:
         """Transform a structural seed into an IssueSignal card."""
         
-        # 1. Map Structure Type to KR
+        # 1. Dataset ID Extraction (Phase 17)
+        source_id = seed.get('source_refs', [{}])[0].get('id', '')
+        # Handle formats like cand_inflation_pce_fred_20260226 or inflation_pce_fred
+        dataset_id = source_id.replace('cand_', '').split('_202')[0] if source_id else "unknown"
+
+        # 2. Map Structure Type to KR
         seed_type = seed.get('seed_type', 'UNKNOWN')
         if seed_type == "STRUCTURAL_DAMAGE":
             structure_kr = "구조적 피해 (방어)"
@@ -54,6 +59,7 @@ class IssueSignalBuilder:
 
         return {
             "topic_id": seed.get('topic_seed_id'),
+            "dataset_id": dataset_id,
             "topic_type": "ISSUE_SIGNAL",
             "structure_type": seed_type,
             "structure_card_type": structure_kr, # Display Label

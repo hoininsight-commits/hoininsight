@@ -319,9 +319,26 @@ class NarrativeIntelligenceLayer:
             return
 
         v3_topics = []
+        
+        # [Phase 17] authoritative intensity sync
+        decision_path = self.base_dir / f"data/decision/{self.ymd.replace('-', '/')}/final_decision_card.json"
+        decision_data = self._load_json(decision_path)
+        score_map = {}
+        if decision_data and "top_topics" in decision_data:
+            for t in decision_data["top_topics"]:
+                ds_id = t.get("dataset_id")
+                if ds_id:
+                    score_map[ds_id] = float(t.get("score", 0))
+
         for card in data["cards"]:
+            ds_id = card.get("dataset_id", "")
             intensity = float(card.get("intensity", 50))
-            matches = self._get_history(card.get("dataset_id", ""))
+            
+            # [Phase 17] Link to final engine score (100/85) for calculation parity
+            if ds_id in score_map:
+                intensity = score_map[ds_id]
+
+            matches = self._get_history(ds_id)
             
             # --- PHASE 16A: Narrative Density Injection ---
             if self.context_pack_enabled:

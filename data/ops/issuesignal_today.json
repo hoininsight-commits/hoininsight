@@ -4,6 +4,7 @@
   "cards": [
     {
       "topic_id": "STRUCT_20260226_signal_f",
+      "dataset_id": "signal_fact_signal_test",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "STRUCTURAL_REDEFINITION",
       "structure_card_type": "구조적 재정의 (공격)",
@@ -26,6 +27,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_inf",
+      "dataset_id": "inflation_pce_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -48,6 +50,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_rat",
+      "dataset_id": "rates_fed_funds_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -70,6 +73,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_str",
+      "dataset_id": "struct_dart_cb_bw",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -92,6 +96,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_inf",
+      "dataset_id": "inflation_kor_cpi_ecos",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -114,6 +119,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_str",
+      "dataset_id": "struct_dart_disposal",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -136,6 +142,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_met",
+      "dataset_id": "metal_gold_paxg_coingecko",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -158,6 +165,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_cry",
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -180,6 +188,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_ris",
+      "dataset_id": "risk_vix_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -202,6 +211,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_liq",
+      "dataset_id": "liquidity_m2_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -224,6 +234,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_cre",
+      "dataset_id": "credit_hy_spread_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -246,6 +257,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_ind",
+      "dataset_id": "index_kospi_stooq",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -268,6 +280,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_rat",
+      "dataset_id": "rates_us02y_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
@@ -290,6 +303,7 @@
     },
     {
       "topic_id": "STRUCT_20260226_cand_inf",
+      "dataset_id": "inflation_cpi_fred",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
