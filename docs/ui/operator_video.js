@@ -1,27 +1,19 @@
 /**
- * operator_video.js
- * Renders the Video Intelligence Candidate Pool for the Operator UI.
+ * operator_video.js — VIDEO CANDIDATE POOL ADAPTER
+ * Premium Tailwind-based Rendering for Phase 18
  */
 
-async function initVideoView() {
-    const container = document.getElementById('operator-view');
-    if (!container) return;
-
-    // Set Loading State
+export async function initVideoView(container) {
     container.innerHTML = `
-        <section class="section">
-            <h2 class="section-title">🎬 영상 후보 (Video Candidates)</h2>
-            <div id="video-pool-list" class="card-grid">
-                <div class="card" style="text-align: center; padding: 50px;">
-                    <p>영상 제작 후보군 데이터를 불러오는 중...</p>
-                </div>
-            </div>
-        </section>
+        <div class="p-8 flex flex-col items-center justify-center space-y-4">
+            <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <div class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Loading Video Intelligence...</div>
+        </div>
     `;
 
     try {
         const paths = [
-            '/hoininsight/data/ops/video_candidate_pool.json',
+            './data/ops/video_candidate_pool.json',
             '../data/ops/video_candidate_pool.json'
         ];
 
@@ -44,76 +36,114 @@ async function initVideoView() {
         renderVideoCandidates(container, data.top_candidates);
     } catch (err) {
         console.error('[VideoView] Error:', err);
-        container.innerHTML += `<p style="color: red; padding: 20px;">데이터 로드 실패: ${err.message}</p>`;
+        container.innerHTML = `
+            <div class="p-8 text-red-500 font-mono text-xs bg-red-500/5 rounded border border-red-500/20 m-4">
+                [VIDEO_ERROR] Load Failed: ${err.message}
+            </div>
+        `;
     }
 }
 
 function renderEmptyVideoState(container) {
-    const list = document.getElementById('video-pool-list');
-    if (list) {
-        list.innerHTML = `
-            <div class="card" style="text-align: center; padding: 50px; grid-column: 1 / -1;">
-                <h3 style="color: #64748b;">현재 선별된 영상 후보가 없습니다.</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">
-                    NS 점수 및 구조적 조건(Axis, Trigger)을 충족하는 토픽이 발견되면 이곳에 표시됩니다.
-                </p>
-            </div>
-        `;
-    }
+    container.innerHTML = `
+        <div class="max-w-4xl mx-auto py-20 px-4 text-center">
+            <div class="text-6xl mb-6 opacity-20">🎬</div>
+            <h3 class="text-xl font-black text-slate-400 mb-2 uppercase tracking-tighter">현재 선별된 영상 후보가 없습니다</h3>
+            <p class="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                NS 점수 및 구조적 조건(Axis, Trigger)을 충족하는 지능형 선별 토픽이 발견되면 이곳에 자동으로 표시됩니다.
+            </p>
+        </div>
+    `;
 }
 
 function renderVideoCandidates(container, candidates) {
-    const list = document.getElementById('video-pool-list');
-    if (!list) return;
-
-    // Sort by video_score desc (already sorted by engine, but for safety)
+    // Sort by video_score desc
     candidates.sort((a, b) => (b.video_score || 0) - (a.video_score || 0));
-
-    // Show only top 3
     const top3 = candidates.slice(0, 3);
 
-    list.innerHTML = '';
-    top3.forEach((c, idx) => {
-        const card = document.createElement('div');
-        card.className = 'card video-candidate-card';
-        card.style.position = 'relative';
-        card.style.borderLeft = idx === 0 ? '6px solid #f59e0b' : '1px solid #e2e8f0';
+    container.innerHTML = `
+        <div class="space-y-8 fade-in">
+            <header class="mb-10 px-4">
+                <div class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em] mb-2">Video Intelligence Layer</div>
+                <h1 class="text-4xl font-black text-white tracking-tighter uppercase leading-none">편집 회의 보드</h1>
+                <p class="text-slate-500 text-sm mt-4 font-medium max-w-2xl">
+                    영상 제작 파급력(Video Score)이 높은 상위 3개 토픽을 선별했습니다. 
+                    서사 점수(NS)와 함께 영상화 시 파급력을 검토하십시오.
+                </p>
+            </header>
 
-        const ns = c.narrative_score != null ? c.narrative_score : 'N/A';
-        const vs = c.video_score != null ? c.video_score : 'N/A';
-        const intensity = c.intensity != null ? `${c.intensity}%` : 'N/A';
-        const conflict = c.conflict_flag ? '⚠️ CONFLICT' : '';
-
-        card.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <span class="badge" style="background: #fff7ed; color: #c2410c; font-weight: 800; border: 1px solid #ffedd5;">
-                    RANK ${idx + 1}
-                </span>
-                <span style="font-size: 0.75rem; color: #ef4444; font-weight: 800;">${conflict}</span>
+            <div class="grid gap-6 px-4">
+                ${top3.map((c, idx) => renderVideoCard(c, idx)).join('')}
             </div>
-            <h3 style="font-size: 1.1rem; font-weight: 800; color: #1e293b; margin-bottom: 15px; line-height: 1.4;">${c.title || 'Untitled'}</h3>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <div style="background: #f8fafc; padding: 10px; border-radius: 6px; text-align: center;">
-                    <div style="font-size: 0.7rem; color: #64748b; margin-bottom: 4px;">VIDEO SCORE</div>
-                    <div style="font-size: 1.2rem; font-weight: 900; color: #f59e0b;">${vs}</div>
+            <footer class="mt-20 py-10 border-t border-slate-800 text-center opacity-30 px-4">
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                    Generated by HOIN Video Intelligence Engine v1.0
                 </div>
-                <div style="background: #f8fafc; padding: 10px; border-radius: 6px; text-align: center;">
-                    <div style="font-size: 0.7rem; color: #64748b; margin-bottom: 4px;">NARRATIVE (NS)</div>
-                    <div style="font-size: 1.2rem; font-weight: 900; color: #3b82f6;">${ns}</div>
+            </footer>
+        </div>
+    `;
+}
+
+function renderVideoCard(c, idx) {
+    const isTop = idx === 0;
+    const borderClass = isTop ? 'border-amber-500/50' : 'border-slate-800';
+    const bgClass = isTop ? 'bg-amber-500/5' : 'bg-slate-900/50';
+
+    const ns = c.narrative_score != null ? c.narrative_score : 'N/A';
+    const vs = c.video_score != null ? c.video_score : 'N/A';
+    const intensity = c.intensity != null ? `${c.intensity}%` : 'N/A';
+    const conflict = c.conflict_flag ? '<span class="text-red-500 animate-pulse">⚠️ CONFLICT</span>' : '';
+
+    return `
+        <div class="${bgClass} border ${borderClass} rounded-2xl p-8 relative overflow-hidden group transition-all duration-300 hover:border-blue-500/50">
+            ${isTop ? '<div class="absolute top-0 left-0 w-1.5 h-full bg-amber-500"></div>' : ''}
+            
+            <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-slate-800 text-white text-[10px] font-black px-3 py-1 rounded-full border border-slate-700 tracking-widest">
+                        RANK ${idx + 1}
+                    </span>
+                    <span class="text-[10px] font-black text-slate-500 uppercase">${c.dataset_id || 'unknown'}</span>
+                </div>
+                <div class="font-black text-[10px] tracking-widest uppercase">
+                    ${conflict}
                 </div>
             </div>
 
-            <div style="font-size: 0.85rem; color: #475569; margin-bottom: 15px;">
-                <div style="margin-bottom: 5px;"><strong>Intensity:</strong> ${intensity}</div>
-                <div style="margin-bottom: 5px;"><strong>Trigger:</strong> ${c.why_now_type || 'N/A'}</div>
-                <div><strong>Axes:</strong> ${(c.structural_axes || []).join(', ') || 'N/A'}</div>
+            <h2 class="text-2xl font-black text-white mb-6 group-hover:text-blue-400 transition-colors tracking-tight leading-tight">${c.title || 'Untitled Topic'}</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-black/40 border border-slate-800 rounded-xl p-4 flex justify-between items-center">
+                    <div>
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Video Score</div>
+                        <div class="text-3xl font-black text-amber-500">${vs}</div>
+                    </div>
+                    <div class="text-amber-500/20 text-4xl">🎬</div>
+                </div>
+                <div class="bg-black/40 border border-slate-800 rounded-xl p-4 flex justify-between items-center">
+                    <div>
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Narrative Score</div>
+                        <div class="text-3xl font-black text-blue-500">${ns}</div>
+                    </div>
+                    <div class="text-blue-500/20 text-4xl">🏹</div>
+                </div>
             </div>
 
-            <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-                <span class="badge-mini" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">ID: ${c.dataset_id || 'unknown'}</span>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-[11px] border-t border-slate-800/50 pt-6">
+                <div class="space-y-1">
+                    <div class="text-slate-500 font-bold uppercase tracking-wider">INTENSITY</div>
+                    <div class="text-white font-black">${intensity}</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-slate-500 font-bold uppercase tracking-wider">TRIGGER</div>
+                    <div class="text-white font-black">${c.why_now_type || 'N/A'}</div>
+                </div>
+                <div class="space-y-1 col-span-2 md:col-span-1">
+                    <div class="text-slate-500 font-bold uppercase tracking-wider">DETECTED AXES</div>
+                    <div class="text-white font-black break-words">${(c.structural_axes || []).join(', ') || 'N/A'}</div>
+                </div>
             </div>
-        `;
-        list.appendChild(card);
-    });
+        </div>
+    `;
 }

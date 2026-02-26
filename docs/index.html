@@ -266,11 +266,11 @@
                 <div class="menu-item" data-view="system" onclick="app.navigate('system')">
                     시스템 상태
                 </div>
+                <div class="menu-item" data-view="video" onclick="app.navigate('video')">
+                    🎬 영상 후보
+                </div>
             </nav>
 
-            <a href="legacy/index.html" class="legacy-link" target="_blank">
-                Legacy Dashboard ↗
-            </a>
         </aside>
 
         <main class="content">
@@ -282,7 +282,8 @@
         const views = {
             today: { js: './ui/operator_today.js?v=2.1', init: 'initTodayView', label: '오늘 선정' },
             history: { js: './ui/operator_history.js?v=2.1', init: 'initHistoryView', label: '선정 히스토리' },
-            system: { js: './ui/operator_system.js?v=2.1', init: 'initSystemView', label: '시스템 상태' }
+            system: { js: './ui/operator_system.js?v=2.1', init: 'initSystemView', label: '시스템 상태' },
+            video: { js: './ui/operator_video.js?v=2.1', init: 'initVideoView', label: '영상 후보' }
         };
 
         const app = {
