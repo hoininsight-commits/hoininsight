@@ -1,6 +1,6 @@
 {
   "meta": {
-    "ts_utc": "2026-02-26T13:32:18Z",
+    "ts_utc": "2026-02-26T04:59:37Z",
     "ymd_utc": "2026/02/26",
     "enabled_datasets": 32,
     "lookback_days": 30,
@@ -47,11 +47,11 @@
       "dataset_id": "crypto_eth_usd_spot_coingecko",
       "report_key": "ETHUSD",
       "curated_path": "data/curated/crypto/eth_usd.csv",
-      "rows": 28,
+      "rows": 29,
       "first_ts": "2026-01-15T00:00:00Z",
-      "last_ts": "2026-02-25T00:00:00Z",
-      "last_7d_rows": 4,
-      "last_30d_rows": 15,
+      "last_ts": "2026-02-26T00:00:00Z",
+      "last_7d_rows": 5,
+      "last_30d_rows": 16,
       "ok_7d": 5,
       "skipped_7d": 0,
       "fail_7d": 0,
