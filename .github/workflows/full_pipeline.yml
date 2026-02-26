@@ -316,6 +316,11 @@ jobs:
         run: |
           python -m src.issuesignal.run_issuesignal --mode=production
 
+      - name: Run Intelligence Layers (Phase 17/18)
+        run: |
+          python -m src.ops.narrative_intelligence_layer
+          python -m src.ops.video_intelligence_layer
+
       - name: Generate Dashboard (Update)
         run: |
           python -m src.dashboard.topic_exporter

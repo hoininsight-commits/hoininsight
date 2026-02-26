@@ -132,9 +132,17 @@ def main():
                     # We print warning but don't fail immediately unless strict enforcement is needed
             
             # Print samples for Actions Log as requested
-            print("\n--- Actions Log Sample (Top 3) ---")
             for i, st in enumerate(topics[:3]):
                 print(f"[{i}] {st.get('title')[:30]}... | INT: {st.get('intensity')} | NS: {st.get('narrative_score')}")
+
+        # Video Candidate Pool Verification
+        video_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/video_candidate_pool.json"
+        video_data = fetch_json(video_url)
+        if not video_data or "top_candidates" not in video_data:
+            print("❌ Invalid or missing video_candidate_pool.json structure.")
+            valid = False
+        else:
+            print(f"✅ video_candidate_pool.json parsed successfully. Candidates: {len(video_data.get('top_candidates', []))}")
 
         if valid:
             print("\n✅ Remote Contract Verification PASSED.")

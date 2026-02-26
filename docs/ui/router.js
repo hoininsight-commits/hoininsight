@@ -7,6 +7,7 @@ class Router {
         this.routes = {
             '': 'operator',
             'operator': 'operator',
+            'video': 'video',
             'legacy': 'legacy'
         };
         window.addEventListener('hashchange', () => this.handleRoute());
@@ -32,24 +33,29 @@ class Router {
             return;
         }
 
-        if (route === 'legacy') {
-            operatorView.style.display = 'none';
-            legacyView.style.display = 'block';
-            if (sidebar) sidebar.style.display = 'none';
-            document.body.style.paddingLeft = '0';
-
-            // Trigger legacy load if needed
-            if (typeof initLegacyView === 'function') {
-                initLegacyView();
-            }
-        } else {
-            operatorView.style.display = 'block';
-            legacyView.style.display = 'none';
-            if (sidebar) {
-                sidebar.style.display = 'block';
-                document.body.style.paddingLeft = '240px';
-            }
-        }
+    } else if(route === 'video') {
+    operatorView.style.display = 'block';
+    legacyView.style.display = 'none';
+    if (sidebar) {
+        sidebar.style.display = 'block';
+        document.body.style.paddingLeft = '240px';
+    }
+    // Init Video View
+    if (typeof initVideoView === 'function') {
+        initVideoView();
+    }
+} else {
+    operatorView.style.display = 'block';
+    legacyView.style.display = 'none';
+    if (sidebar) {
+        sidebar.style.display = 'block';
+        document.body.style.paddingLeft = '240px';
+    }
+    // Trigger main view render if needed
+    if (typeof renderMainView === 'function') {
+        renderMainView();
+    }
+}
     }
 }
 

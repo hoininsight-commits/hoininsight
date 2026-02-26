@@ -406,10 +406,25 @@ def main():
     # 3. Legacy (no manifest entries added)
     _publish_legacy_ui_decision()
 
-    # 4. Write manifest
+    # 4. Ops Assets (Video Pool)
+    _publish_ops_assets()
+
+    # 5. Write manifest
     _write_manifest(manifest_entries)
 
     print(f"[PUBLISH] Done. {len(manifest_entries)} manifest entries.")
+
+def _publish_ops_assets():
+    """Copies data_outputs/ops/video_candidate_pool.json to docs/data/ops/."""
+    src = ROOT / "data_outputs" / "ops" / "video_candidate_pool.json"
+    dest_dir = ROOT / "docs" / "data" / "ops"
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    
+    if src.exists():
+        shutil.copy2(src, dest_dir / "video_candidate_pool.json")
+        print(f"[PUBLISH] video_candidate_pool.json → {dest_dir}")
+    else:
+        print(f"[PUBLISH] skip ops: {src} not found")
 
 
 if __name__ == "__main__":

@@ -71,7 +71,7 @@ async function loadSidebarRegistry() {
     };
 
     navGroup.appendChild(createNavLink('오늘의 운영자 메인', '#', '🏠'));
-    navGroup.appendChild(createNavLink('레거시 메인(읽기전용)', '#legacy', '📜'));
+    navGroup.appendChild(createNavLink('영상 후보 (편집 회의)', '#video', '🎬'));
     sidebar.appendChild(navGroup);
 
     const divider = document.createElement('hr');
