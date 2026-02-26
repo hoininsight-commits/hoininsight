@@ -82,7 +82,7 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아 (Google_News_KR_Economy)
-  - [NEWS] 엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱 (Google_News_KR_Economy)
+  - [NEWS] 엔비디아 실적 기대에 뉴욕증시 강세 마감 - 경향신문 (Google_News_KR_Economy)
   - [NEWS] 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 (Google_News_KR_Economy)
 
 
@@ -186,16 +186,16 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아 | Structural implication: '함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱 | Structural implication: '엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱' suggests a shift in NEWS dynamics. | LOW |
+| 엔비디아 실적 기대에 뉴욕증시 강세 마감 - 경향신문 | Structural implication: '엔비디아 실적 기대에 뉴욕증시 강세 마감 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 | Structural implication: '한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이재용 주식재산 40조 육박…정몽구·정의선 합산 20조 넘어 - 연합뉴스 | Structural implication: '이재용 주식재산 40조 육박…정몽구·정의선 합산 20조 넘어 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 반도체 호조에…한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 한국무역협회-KITA.NET | Structural implication: '반도체 호조에…한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
+| 한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 동아일보 | Structural implication: '한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | “삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보 | Structural implication: '“삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "집값 떨어진다" 결사반대하더니…강남도 결국 백기 든 이유 [집코노미-집 100세 시대] - 한국경제 | Structural implication: '"집값 떨어진다" 결사반대하더니…강남도 결국 백기 든 이유 [집코노미-집 100세 시대] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레 | Structural implication: '삼성전자 6% 급등, 코스피 6200 돌파…엔비디아 호실적 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [채권-마감] 환율 급락·外人 순매수에 국고채 금리 하락 - 연합인포맥스 | Structural implication: '[채권-마감] 환율 급락·外人 순매수에 국고채 금리 하락 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| “이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레 | Structural implication: '“이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “주식시장 개혁, 부동산 투기 공화국 탈출은 앞으로도 쭉 계속” - 경향신문 | Structural implication: '이 대통령 “주식시장 개혁, 부동산 투기 공화국 탈출은 앞으로도 쭉 계속” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| “이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레 | Structural implication: '“이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 티로보틱스, 자체 개발 휴머노이드 내달 공개한다 - 로봇신문 | Structural implication: '티로보틱스, 자체 개발 휴머노이드 내달 공개한다 - 로봇신문' suggests a shift in NEWS dynamics. | LOW |
 | LG그룹 'AI 원팀' MWC 출격 - 한국경제 | Structural implication: 'LG그룹 'AI 원팀' MWC 출격 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스 | Structural implication: '비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
