@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아 (Google_News_KR_Economy)
-  - [NEWS] 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 (Google_News_KR_Economy)
   - [NEWS] 엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱 (Google_News_KR_Economy)
+  - [NEWS] 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,8 +186,8 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아 | Structural implication: '함성 터진 갤S26 '프라이버시 디스플레이'..."엿보기 못해" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 | Structural implication: '한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱 | Structural implication: '엔비디아 실적 쇼크 이겨낸 나스닥 1.26% 급반등 - 뉴스톱' suggests a shift in NEWS dynamics. | LOW |
+| 한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레 | Structural implication: '한은, 기준금리 연 2.5% 동결…6차례 연속 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이재용 주식재산 40조 육박…정몽구·정의선 합산 20조 넘어 - 연합뉴스 | Structural implication: '이재용 주식재산 40조 육박…정몽구·정의선 합산 20조 넘어 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 반도체 호조에…한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 한국무역협회-KITA.NET | Structural implication: '반도체 호조에…한은, 올해 성장률 전망치 1.8→2.0% 상향 조정 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
 | “삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보 | Structural implication: '“삼성전자 34만원·SK하이닉스 170만원 간다” 맥쿼리, 목표가 또 상향 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -197,14 +197,14 @@
 | “이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레 | Structural implication: '“이 대통령, 어떻게 1400만 개미 영웅 됐나”…외신이 본 K-불장 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “주식시장 개혁, 부동산 투기 공화국 탈출은 앞으로도 쭉 계속” - 경향신문 | Structural implication: '이 대통령 “주식시장 개혁, 부동산 투기 공화국 탈출은 앞으로도 쭉 계속” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 티로보틱스, 자체 개발 휴머노이드 내달 공개한다 - 로봇신문 | Structural implication: '티로보틱스, 자체 개발 휴머노이드 내달 공개한다 - 로봇신문' suggests a shift in NEWS dynamics. | LOW |
+| LG그룹 'AI 원팀' MWC 출격 - 한국경제 | Structural implication: 'LG그룹 'AI 원팀' MWC 출격 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스 | Structural implication: '비트코인 7% 급등하며 6만8천달러 돌파…"공매도 포지션 청산" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | “北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보 | Structural implication: '“北 해킹 조직, 위장 취업 작전에 챗GPT·제미나이 등 AI 도구 적극 도입” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| “대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ - 매일경제 | Structural implication: '“대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| "유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com | Structural implication: '"유행이라 먹었는데"…'두쫀쿠' 등 디저트 업체 위생 불량 81곳 적발 - segye.com' suggests a shift in NEWS dynamics. | LOW |
 | 공공 클라우드 빗장 풀린다…국정자원 이전 수요에 업계 촉각 - 지디넷코리아 | Structural implication: '공공 클라우드 빗장 풀린다…국정자원 이전 수요에 업계 촉각 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 이 대통령 지적에 ‘100원 생리대’ 등장…가장 큰 숙제 ‘안전성 신뢰’ - 한겨레 | Structural implication: '이 대통령 지적에 ‘100원 생리대’ 등장…가장 큰 숙제 ‘안전성 신뢰’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| AMD, 메타에 1000억弗 AI칩 공급…"삼성전자 수혜" - 한국경제 | Structural implication: 'AMD, 메타에 1000억弗 AI칩 공급…"삼성전자 수혜" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 활명수 파는 동화약품에 왜… 다시 돌아온 ‘국정농단’ 우병우 - 조선비즈 - Chosunbiz | Structural implication: '활명수 파는 동화약품에 왜… 다시 돌아온 ‘국정농단’ 우병우 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스 | Structural implication: '석화 1호 사업재편 승인…정부, HD현대-롯데에 2.1조 파격 지원 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 메타, 엔비디아 이어 AMD와도 대규모 AI칩 계약…"1천억불 규모"(종합) - 연합뉴스 | Structural implication: '메타, 엔비디아 이어 AMD와도 대규모 AI칩 계약…"1천억불 규모"(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| '석유화학 사업재편 1호' 대산에 2.1조 투입 - 한국경제 | Structural implication: ''석유화학 사업재편 1호' 대산에 2.1조 투입 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ - 매일경제 | Structural implication: '“대출금리 또 올랐는데”…내일부터 은행 줄 안서도 이자 깎아주는 ‘이것’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “한국의 호킹들 축하합니다 ” 신경근육계 희귀병 환우들의 특별한 졸업식 | Structural implication: '“한국의 호킹들 축하합니다 ” 신경근육계 희귀병 환우들의 특별한 졸업식' suggests a shift in NEWS dynamics. | LOW |
 | 에스티젠바이오, 1100억 투자해 생산능력 확대…“글로벌 수주 대응” | Structural implication: '에스티젠바이오, 1100억 투자해 생산능력 확대…“글로벌 수주 대응”' suggests a shift in NEWS dynamics. | LOW |
 | 오염원 찾아가는 공기정화로봇, MWC 2026 참가 | Structural implication: '오염원 찾아가는 공기정화로봇, MWC 2026 참가' suggests a shift in NEWS dynamics. | LOW |

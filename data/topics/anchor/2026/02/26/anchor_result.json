@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "crypto_btc_usd_spot_coingecko"
+    "metal_gold_paxg_coingecko"
   ],
   "baseline_match": [
-    "crypto_btc_usd_spot_coingecko: Single Axis Surge (Z=2.02)"
+    "metal_gold_paxg_coingecko: Single Axis Surge (Z=1.74)"
   ],
   "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation Z=2.02 (No Cluster)",
+  "level_proof": "Statistical Deviation Z=1.74 (No Cluster)",
   "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
     "Need Correlated Asset Movement",
