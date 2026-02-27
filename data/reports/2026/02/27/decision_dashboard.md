@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 정부, 구글 에 ‘1대 5000 축척’ 고정밀 지도 국외반출 허가 결정 - 문화일보 (Google_News_KR_Economy)
   - [NEWS] AI 에이전트 확산에 흔들리는 SaaS…“구독 모델 붕괴 가능성” 경고 - cio.com (Google_News_KR_Economy)
-  - [NEWS] 국세청, 고액체납자 압류 홍보하다 코인 정보 유출 - KBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] 서울 아파트값 상승세 위축…강남3구·용산 하락 전환 - 세무사신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,16 +187,16 @@
 |---|---|---|
 | 정부, 구글 에 ‘1대 5000 축척’ 고정밀 지도 국외반출 허가 결정 - 문화일보 | Structural implication: '정부, 구글 에 ‘1대 5000 축척’ 고정밀 지도 국외반출 허가 결정 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | AI 에이전트 확산에 흔들리는 SaaS…“구독 모델 붕괴 가능성” 경고 - cio.com | Structural implication: 'AI 에이전트 확산에 흔들리는 SaaS…“구독 모델 붕괴 가능성” 경고 - cio.com' suggests a shift in NEWS dynamics. | LOW |
+| 서울 아파트값 상승세 위축…강남3구·용산 하락 전환 - 세무사신문 | Structural implication: '서울 아파트값 상승세 위축…강남3구·용산 하락 전환 - 세무사신문' suggests a shift in NEWS dynamics. | LOW |
+| 국민연금, 국내 주식 덕에 작년 231조 벌어 수익률 ‘역대 최고’ - 한겨레 | Structural implication: '국민연금, 국내 주식 덕에 작년 231조 벌어 수익률 ‘역대 최고’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 국세청, 고액체납자 압류 홍보하다 코인 정보 유출 - KBS 뉴스 | Structural implication: '국세청, 고액체납자 압류 홍보하다 코인 정보 유출 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| [기자수첩] 공시는 508억, 보도자료는 5조원… 논란 부른 삼천당제약 - 코메디닷컴 | Structural implication: '[기자수첩] 공시는 508억, 보도자료는 5조원… 논란 부른 삼천당제약 - 코메디닷컴' suggests a shift in NEWS dynamics. | LOW |
-| "수익률 82% 잭팟"…국민연금 고갈 2090년까지 늦춘다 - 마켓인 | Structural implication: '"수익률 82% 잭팟"…국민연금 고갈 2090년까지 늦춘다 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 이 대통령 “현대차, 새만금 투자 환영…미래도시로 거듭날 것” - 한겨레 | Structural implication: '이 대통령 “현대차, 새만금 투자 환영…미래도시로 거듭날 것” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 민생물가 특별관리 국민 제안창구 개설…체감물가 안정 총력 - 팜인사이트 | Structural implication: '민생물가 특별관리 국민 제안창구 개설…체감물가 안정 총력 - 팜인사이트' suggests a shift in NEWS dynamics. | LOW |
+| 삼천당제약, '먹는 위고비' 독점 계약에 전날 상한가 이어 급등 - 한국경제 | Structural implication: '삼천당제약, '먹는 위고비' 독점 계약에 전날 상한가 이어 급등 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 李대통령, '새만금 투자' 정의선에 "깊이 감사…과감한 지원으로 화답" - 연합인포맥스 | Structural implication: '李대통령, '새만금 투자' 정의선에 "깊이 감사…과감한 지원으로 화답" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| [지분제한 나비효과]② 빗썸, 73% 집중…20% 상한 타격 가능성 - 블로터 | Structural implication: '[지분제한 나비효과]② 빗썸, 73% 집중…20% 상한 타격 가능성 - 블로터' suggests a shift in NEWS dynamics. | LOW |
 | 김범석, 실적 발표 날 ‘육성 사과’…"주가 빠지자 뒷북" - JTBC | Structural implication: '김범석, 실적 발표 날 ‘육성 사과’…"주가 빠지자 뒷북" - JTBC' suggests a shift in NEWS dynamics. | LOW |
 | 상상을 현실로 바꾸는 갤럭시S26 '비주얼 에이전트' - 지디넷코리아 | Structural implication: '상상을 현실로 바꾸는 갤럭시S26 '비주얼 에이전트' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “우린 이미 목격했다”…‘직원 절반 해고하겠다’는 유명 결제 회사 - 매일경제 | Structural implication: '“우린 이미 목격했다”…‘직원 절반 해고하겠다’는 유명 결제 회사 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 넷플릭스, 워너브러더스 인수 포기…위약금은 파라마운트가 낼 듯 - 경향신문 | Structural implication: '넷플릭스, 워너브러더스 인수 포기…위약금은 파라마운트가 낼 듯 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| [지분제한 나비효과]② 빗썸, 73% 집중…20% 상한 타격 가능성 - 블로터 | Structural implication: '[지분제한 나비효과]② 빗썸, 73% 집중…20% 상한 타격 가능성 - 블로터' suggests a shift in NEWS dynamics. | LOW |
 | 주주환원 없는데 주가만 훨훨…보험사 늑장 밸류업 '업보 청산의 시간' - 인베스트조선 | Structural implication: '주주환원 없는데 주가만 훨훨…보험사 늑장 밸류업 '업보 청산의 시간' - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 마음 훔친 산업부 김의중 ‘마스가 과장’ 국장으로 파격 승진 - 한겨레 | Structural implication: '트럼프 마음 훔친 산업부 김의중 ‘마스가 과장’ 국장으로 파격 승진 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이창용 "24시간 환시 시스템 대비 중…CD에서 KOFR로 전환 확실시" - 연합인포맥스 | Structural implication: '이창용 "24시간 환시 시스템 대비 중…CD에서 KOFR로 전환 확실시" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |

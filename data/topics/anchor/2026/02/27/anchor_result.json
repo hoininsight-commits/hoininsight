@@ -1,14 +1,14 @@
 {
   "data_axis": [
-    "fx_usdkrw_ecos"
+    "metal_gold_paxg_coingecko"
   ],
   "baseline_match": [
-    "fx_usdkrw_ecos: Single Axis Surge (Z=-1.80)"
+    "metal_gold_paxg_coingecko: Single Axis Surge (Z=2.38)"
   ],
   "anomaly_logic": "Unknown (Single Axis)",
   "why_now_type": "Hybrid-driven",
   "level": "L2",
-  "level_proof": "Statistical Deviation Z=-1.80 (No Cluster)",
+  "level_proof": "Statistical Deviation Z=2.38 (No Cluster)",
   "gap_detection": "Insufficient Evidence for L3/L4",
   "missing_data_request": [
     "Need Correlated Asset Movement",

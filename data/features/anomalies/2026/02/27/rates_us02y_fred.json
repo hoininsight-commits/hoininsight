@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-02-27T22:46:09Z",
+    "ts_utc": "2026-02-27T22:48:56Z",
     "dataset_id": "rates_us02y_fred",
     "entity": "US02Y",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": -0.74,
-      "percentile": 4.4,
-      "value": 3.45,
-      "rolling_mean_20d": 3.4884999999999997,
-      "reasoning": "Percentile 4.4% (Extreme)"
+      "z_score": -1.2,
+      "percentile": 1.2,
+      "value": 3.42,
+      "rolling_mean_20d": 3.4814999999999996,
+      "reasoning": "Percentile 1.2% (Extreme)"
     }
   }
 ]
