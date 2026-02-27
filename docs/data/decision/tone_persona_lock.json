@@ -1,6 +1,6 @@
 [
   {
-    "topic_id": "3a734eb8-19ba-4674-bfd5-ee2beccff89f",
+    "topic_id": "86cdbab0-be89-4863-bc3a-9ddcd33334ab",
     "persona": "POLICY_ANALYST",
     "tone": "EXPLANATORY",
     "stance": "DATA_VALIDATED",
@@ -11,10 +11,19 @@
     "lock_reason": [
       "PRETEXT_SCORE=0.92",
       "EARNINGS_VALIDATED"
-    ]
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
   {
-    "topic_id": "dc29b841-a1a1-4da7-852f-06a0e4712259",
+    "topic_id": "7810473d-e864-40e5-8087-d0cdb5c0b062",
     "persona": "POLICY_ANALYST",
     "tone": "OBSERVATIONAL",
     "stance": "STRUCTURAL",
@@ -24,7 +33,16 @@
     "risk_disclaimer_mode": "EXPLICIT",
     "lock_reason": [
       "FLOW_ROTATION_CONFIRMED"
-    ]
+    ],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   },
   {
     "topic_id": "HYP-fab88b81",
@@ -35,6 +53,15 @@
     "confidence_level": "HIGH",
     "emotion_level": "LOW",
     "risk_disclaimer_mode": "IMPLICIT",
-    "lock_reason": []
+    "lock_reason": [],
+    "title": "[Unknown] Signal Detected",
+    "selected_at": "2026-01-01T09:00:00",
+    "date": "2026-01-01",
+    "intensity": 50,
+    "speakability": "Review Required",
+    "why_now_summary": "No narrative available.",
+    "anomaly_points": [],
+    "related_assets": [],
+    "content_hook": ""
   }
 ]
