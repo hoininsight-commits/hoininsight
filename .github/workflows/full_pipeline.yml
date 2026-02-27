@@ -366,9 +366,11 @@ jobs:
             echo "[LOCKDOWN] editorial synced: ${ED_COUNT} files"
           fi
 
-          # [NO-DUP-LOCK] CI Guard: Enforce SSOT for run_publish_ui_decision_assets.py
-          echo "[GUARD] Checking for duplicate publishers..."
+          # [NO-DUP-LOCK] CI Guard: Enforce SSOT & Responsibility Contracts
+          echo "[GUARD] Verifying architecture policies..."
           python3 scripts/verify_no_duplicate_publishers.py
+          python3 scripts/verify_collector_policy.py
+          python3 scripts/verify_no_scoring_leak.py
           
           # [IS-100] Generate manifest + Publish UI Decision Assets
           echo "[PUBLISH] Using publish SSOT: src/ui/run_publish_ui_decision_assets.py"
@@ -402,6 +404,13 @@ jobs:
         run: |
           python3 scripts/verify_release_integrity.py
           python3 scripts/verify_no_legacy_runtime.py
+          python3 scripts/verify_no_legacy_links.py
+
+      - name: Verify Data Contracts (SSOT-JSON)
+        run: |
+          echo "[VERIFY] Checking today.json contract..."
+          python3 -c "import json; d=json.load(open('docs/data/decision/today.json')); assert 'picks' in d; [assert 'intensity' in p for p in d['picks']]"
+          echo "✅ data cards intensity check passed"
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4

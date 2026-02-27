@@ -30,14 +30,14 @@ export async function initHistoryView(container) {
                 if (!res.ok) return;
                 const data = await res.json();
 
-                // ADAPTER: handles Decision Card / array / legacy / non-decision (skip empty)
+                // ADAPTER: handles Decision Card / array / v1_archived / non-decision (skip empty)
                 const rawItems = extractDecisions(data);
                 if (rawItems.length === 0) return;
 
                 rawItems.forEach(item => {
                     const norm = item._source === 'decision_card'
                         ? { ...item }              // already converted by adapter
-                        : normalizeDecision(item); // legacy item
+                        : normalizeDecision(item); // v1_archived item
                     allDecisions.push({ ...norm, _file: file });
                 });
             } catch (e) { console.warn(`Skip ${file}`, e); }
@@ -179,7 +179,7 @@ function renderHistoryList(container, state) {
 
     // Global Sorting & Filtering (v2.6 Unified)
     const filtered = state.data.filter(item => {
-        // Use data_incomplete (set by adapter) OR the legacy `incomplete` flag
+        // Use data_incomplete (set by adapter) OR the v1_archived `incomplete` flag
         const isIncomplete = item.data_incomplete || item.incomplete || false;
         if (isCompView && isIncomplete) return false;
         if (!isCompView && !isIncomplete) return false;

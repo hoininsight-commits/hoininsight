@@ -155,33 +155,21 @@ def write_daily_brief(base_dir: Path) -> Path:
         dataset_id = str(t.get("_dataset_id", ""))
         topic_id = str(t.get("topic_id", ""))
         
-        # [Phase 22] Persistence
+        # [Phase 22] Persistence (Stats only, no more score leak)
         appearances_7d = count_appearances_7d(base_dir, dataset_id, topic_id)
-        # 1.0 + 0.15 * count => e.g. 1 appearance -> x1.15
-        persistence_multiplier = 1.0 + 0.15 * float(appearances_7d)
-        _final_score = float(t.get("score")) * persistence_multiplier
         
-        # [Phase 23-B] Momentum
+        # [Phase 23-B] Momentum (Stats only, no more score leak)
         momentum_meta = compute_momentum_7d(base_dir, dataset_id, topic_id)
-        _momentum = momentum_meta["momentum"]
-        _momentum_slope = momentum_meta["slope"]
-        _momentum_n = momentum_meta["n"]
-        _momentum_multiplier = momentum_meta["multiplier"]
-        
-        # Calculate final_score_m
-        _final_score_m = _final_score * _momentum_multiplier
         
         t2 = dict(t)
         t2["_appearances_7d"] = int(appearances_7d)
-        t2["_persistence_multiplier"] = float(persistence_multiplier)
-        t2["_final_score"] = float(_final_score)
+        t2["_momentum"] = momentum_meta["momentum"]
+        t2["_momentum_slope"] = float(momentum_meta["slope"])
+        t2["_momentum_n"] = int(momentum_meta["n"])
         
-        t2["_momentum"] = _momentum
-        t2["_momentum_slope"] = float(_momentum_slope)
-        t2["_momentum_n"] = int(_momentum_n)
-        t2["_momentum_multiplier"] = float(_momentum_multiplier)
-        t2["_final_score_m"] = float(_final_score_m)
-
+        # [INTEGRITY-FIX] Use base score for ranking. No more multipliers in reporter.
+        t2["_final_score_m"] = float(t.get("score", 0.0))
+        
         enriched.append(t2)
 
     # Sort by final_score_m (Momentum-adjusted)
@@ -302,7 +290,7 @@ def write_daily_brief(base_dir: Path) -> Path:
 
             lines.append(
                 f"| {i} | {t.get('_report_key','')} | {t.get('title','')} | {t.get('score'):.2f} | "
-                f"{t.get('_appearances_7d')} (x{t.get('_persistence_multiplier'):.2f}) | {t.get('_final_score'):.2f} | "
+                f"{t.get('_appearances_7d')} | {t.get('score'):.2f} | "
                 f"{mom_str} | **{final_score_m_val:.2f}** | {t.get('severity')} | "
                 f"{chart_cell} | {topics_cell} | {anomalies_cell} |"
             )
@@ -313,10 +301,10 @@ def write_daily_brief(base_dir: Path) -> Path:
         lines.append("- (no topics)")
     else:
         for t in enriched:
-            mom_line = f"Mom: {t.get('_momentum')} (slope={t.get('_momentum_slope'):.2f}) -> x{t.get('_momentum_multiplier')}"
+            mom_line = f"Mom: {t.get('_momentum')} (slope={t.get('_momentum_slope'):.2f})"
             lines.append(
                 f"- [{t.get('severity')}] {t.get('_report_key','')}: {t.get('title','')} "
-                f"(base={t.get('score'):.2f}, final_m={t.get('_final_score_m'):.2f}) | {mom_line} | "
+                f"(score={t.get('score'):.2f}) | {mom_line} | "
                 f"App7d={t.get('_appearances_7d')}"
             )
 

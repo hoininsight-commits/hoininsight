@@ -1,14 +1,13 @@
 /**
  * router.js - Simple hash-based router for HoinInsight UI
- * Handles switching between Operator Dashboard and Legacy View.
+ * Handles switching between Operator Dashboard views.
  */
 class Router {
     constructor() {
         this.routes = {
             '': 'operator',
             'operator': 'operator',
-            'video': 'video',
-            'legacy': 'legacy'
+            'video': 'video'
         };
         window.addEventListener('hashchange', () => this.handleRoute());
     }
@@ -25,37 +24,34 @@ class Router {
 
     renderRoute(route) {
         const operatorView = document.getElementById('operator-view');
-        const legacyView = document.getElementById('legacy-view');
         const sidebar = document.getElementById('registry-sidebar');
 
-        if (!operatorView || !legacyView) {
-            console.error('[Router] View containers not found');
+        if (!operatorView) {
+            console.error('[Router] View container not found');
             return;
         }
 
-    } else if(route === 'video') {
-    operatorView.style.display = 'block';
-    legacyView.style.display = 'none';
-    if (sidebar) {
-        sidebar.style.display = 'block';
-        document.body.style.paddingLeft = '240px';
-    }
-    // Init Video View
-    if (typeof initVideoView === 'function') {
-        initVideoView();
-    }
-} else {
-    operatorView.style.display = 'block';
-    legacyView.style.display = 'none';
-    if (sidebar) {
-        sidebar.style.display = 'block';
-        document.body.style.paddingLeft = '240px';
-    }
-    // Trigger main view render if needed
-    if (typeof renderMainView === 'function') {
-        renderMainView();
-    }
-}
+        if (route === 'video') {
+            operatorView.style.display = 'block';
+            if (sidebar) {
+                sidebar.style.display = 'block';
+                document.body.style.paddingLeft = '240px';
+            }
+            // Init Video View
+            if (typeof initVideoView === 'function') {
+                initVideoView();
+            }
+        } else {
+            operatorView.style.display = 'block';
+            if (sidebar) {
+                sidebar.style.display = 'block';
+                document.body.style.paddingLeft = '240px';
+            }
+            // Trigger main view render if needed
+            if (typeof renderMainView === 'function') {
+                renderMainView();
+            }
+        }
     }
 }
 

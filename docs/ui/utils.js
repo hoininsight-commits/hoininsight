@@ -272,7 +272,7 @@ export function extractDecisions(fileJson) {
     if (fileJson.date && Array.isArray(fileJson.picks) && fileJson.picks.length > 0) {
         return fileJson.picks.map(p => convertEditorialPickToDecisionItem(p, fileJson.date));
     }
-    // Decision Card schema: new v1 (today.json) or legacy phase66 cards
+    // Decision Card schema: new v1 (today.json) or v1_archived phase66 cards
     if (fileJson.card_version && (fileJson.date || fileJson.title || fileJson.topic)) {
         const items = [convertDecisionCardToDecisionItem(fileJson)];
         if (Array.isArray(fileJson.top_topics) && fileJson.top_topics.length > 0) {
@@ -287,7 +287,7 @@ export function extractDecisions(fileJson) {
         }
         return items;
     }
-    // Fallback: single plain object with a title and selected_at (legacy interpretation unit)
+    // Fallback: single plain object with a title and selected_at (v1_archived interpretation unit)
     if (fileJson.title && fileJson.selected_at) return [fileJson];
     // Non-decision file (daily_snapshot, collection_status, etc.) — skip silently
     return [];

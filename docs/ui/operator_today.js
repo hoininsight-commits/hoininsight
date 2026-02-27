@@ -44,16 +44,16 @@ export async function initTodayView(container) {
                 if (!res.ok) return;
                 const data = await res.json();
 
-                // ADAPTER: extractDecisions handles Decision Card / array / legacy / non-decision
+                // ADAPTER: extractDecisions handles Decision Card / array / v1_archived / non-decision
                 const rawItems = extractDecisions(data);
                 if (rawItems.length === 0) return; // non-decision file — skip
 
                 rawItems.forEach(item => {
                     // Items from extractDecisions may already be normalised (Decision Card path)
-                    // but we still run normalizeDecision for legacy items to fill missing fields.
+                    // but we still run normalizeDecision for v1_archived items to fill missing fields.
                     const norm = item._source === 'decision_card'
                         ? { ...item }              // already converted
-                        : normalizeDecision(item); // legacy item
+                        : normalizeDecision(item); // v1_archived item
                     norm._file = file;
 
                     // 7-day pool for comparison widget

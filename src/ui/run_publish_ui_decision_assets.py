@@ -304,13 +304,10 @@ def _publish_editorial() -> List[Dict]:
                     changed = True
 
                 if "narrative_score" not in pick:
-                    base_val = float(pick.get("editor_score", pick.get("score", 50)))
-                    # Apply a deterministic salt to break duplicate dummy samples into realistic variance
-                    salt = sum(ord(c) for c in src.name) % 15 
-                    derived_score = (base_val * 0.75) + float(salt)
-                    
-                    pick["narrative_score"] = min(100.0, max(0.0, round(derived_score, 1)))
-                    pick["actor_tier_score"] = 0.85 if pick.get("confidence_level") == "HIGH" else 0.5
+                    # [PHASE-14C] Rollback: No longer generating dummy salt-based scores in Publisher.
+                    # UI will handle missing scores as "N/A".
+                    pick["narrative_score"] = None
+                    pick["actor_tier_score"] = None
                     pick["video_ready"] = pick.get("promotion_hint") == "DAILY_LONG"
                     changed = True
                 
