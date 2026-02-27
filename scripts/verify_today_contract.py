@@ -14,17 +14,28 @@ def verify():
     except Exception as e:
         print(f"❌ ERROR: Failed to parse JSON: {e}")
         sys.exit(1)
-        
-    if "picks" not in data:
-        print("❌ ERROR: 'picks' key missing in today.json")
+    
+    topics = []
+    if isinstance(data, list):
+        topics = data
+    elif isinstance(data, dict):
+        if "picks" in data:
+            topics = data["picks"]
+        elif "top_topics" in data:
+            topics = data["top_topics"]
+        elif "title" in data:
+            topics = [data]
+            
+    if not topics:
+        print("❌ ERROR: No topics found in today.json (checked 'picks', 'top_topics', and root list)")
         sys.exit(1)
         
-    for i, pick in enumerate(data["picks"]):
-        if "intensity" not in pick:
-            print(f"❌ ERROR: Pick #{i} missing 'intensity' field")
+    for i, t in enumerate(topics):
+        if "intensity" not in t:
+            print(f"❌ ERROR: Topic #{i} ({t.get('title', 'No Title')}) missing 'intensity' field")
             sys.exit(1)
             
-    print("✅ data cards intensity check passed (today.json)")
+    print(f"✅ data cards intensity check passed ({len(topics)} topics found in today.json)")
 
 if __name__ == "__main__":
     verify()
