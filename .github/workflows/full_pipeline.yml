@@ -409,7 +409,7 @@ jobs:
       - name: Verify Data Contracts (SSOT-JSON)
         run: |
           echo "[VERIFY] Checking today.json contract..."
-          python3 -c "import json; d=json.load(open('docs/data/decision/today.json')); assert 'picks' in d; [p['intensity'] for p in d['picks']]"
+          python3 scripts/verify_today_contract.py
           echo "✅ data cards intensity check passed"
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
