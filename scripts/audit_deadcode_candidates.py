@@ -5,26 +5,29 @@ import glob
 from pathlib import Path
 
 def get_runtime_files(project_root):
-    # entrypoints from audit_runtime (manually simplified for this script)
-    entrypoints = [
-        "src/engine",
-        "src/issuesignal/run_issuesignal.py",
-        "src/ops/narrative_intelligence_layer.py",
-        "src/ops/video_intelligence_layer.py",
-        "src/ui/run_publish_ui_decision_assets.py",
-        "src/dashboard/dashboard_generator.py",
-        "src/reporting/telegram_daily_summary.py"
-    ]
-    # Expand specialized collectors
-    entrypoints.extend(glob.glob("src/collectors/*.py"))
-    entrypoints.extend(glob.glob("src/ops/*.py"))
-    entrypoints.extend(glob.glob("src/pipeline/*.py"))
+    pipeline_file = project_root / ".github" / "workflows" / "full_pipeline.yml"
+    if not pipeline_file.exists():
+        print("Error: full_pipeline.yml not found.")
+        return set()
+
+    content = pipeline_file.read_text()
+    # Find all python -m xxx.yyy or python xxx/yyy.py
+    # Allowing for python, python3, or any variation followed by optional -m
+    py_modules = re.findall(r'python3?\s+-m\s+([a-zA-Z0-9\._]+)', content)
+    py_files = re.findall(r'python3?\s+([a-zA-Z0-9\._\-/]+\.py)', content)
     
     runtime_files = set()
-    for ep in entrypoints:
-        p = project_root / ep
-        if p.exists():
-            runtime_files.add(str(p.relative_to(project_root)))
+    for mod in py_modules:
+        # handle src.xxx or tests.xxx
+        rel_path = mod.replace(".", "/") + ".py"
+        if (project_root / rel_path).exists():
+            runtime_files.add(rel_path)
+        elif (project_root / mod.replace(".", "/") / "__init__.py").exists():
+            runtime_files.add(mod.replace(".", "/") + "/__init__.py")
+
+    for f in py_files:
+        if (project_root / f).exists():
+            runtime_files.add(f)
             
     return runtime_files
 
@@ -43,15 +46,19 @@ def get_imported_files(project_root, runtime_files):
         if not path.is_file() or path.suffix != ".py": continue
         
         content = path.read_text(errors='ignore')
-        # Simple regex for from src... import or import src...
-        imports = re.findall(r'(?:from|import)\s+src\.([\w\.]+)', content)
-        for imp in imports:
-            rel_path = imp.replace(".", "/") + ".py"
-            if (project_root / rel_path).exists():
-                all_imports.add(rel_path)
-                to_scan.append(rel_path)
-            elif (project_root / (imp.replace(".", "/") + "/__init__.py")).exists():
-                init_path = imp.replace(".", "/") + "/__init__.py"
+        # Find imports from src or tests
+        # from src.xxx import yyy
+        # import src.xxx
+        imports = re.findall(r'(?:from|import)\s+(src|tests)\.([\w\.]+)', content)
+        for prefix, imp in imports:
+            base = f"{prefix}/{imp.replace('.', '/')}"
+            py_path = f"{base}.py"
+            init_path = f"{base}/__init__.py"
+            
+            if (project_root / py_path).exists():
+                all_imports.add(py_path)
+                to_scan.append(py_path)
+            elif (project_root / init_path).exists():
                 all_imports.add(init_path)
                 to_scan.append(init_path)
                 
