@@ -1,4 +1,6 @@
 # Proposal Review Queue
-Generated at: 2026-02-27T02:33:15.801109
+Generated at: 2026-02-27T04:49:51.484213
 
-No proposals found in the last 7 days.
+| Date | Video ID | Status | Actions |
+|---|---|---|---|
+| 2026/02/24 | JF9miBfClgo | **PENDING** | - |
