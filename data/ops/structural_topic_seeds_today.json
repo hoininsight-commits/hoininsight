@@ -1,6 +1,6 @@
 {
   "run_date": "2026-02-27",
-  "count": 1,
+  "count": 11,
   "seeds": [
     {
       "run_date": "2026-02-27",
@@ -21,6 +21,236 @@
           "kind": "artifact",
           "path": "hoin_signal/topic_seeds",
           "id": "signal_fact_signal_test"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_inf",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: inflation_pce_fred] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_inflation_pce_fred_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_rat",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: rates_fed_funds_fred] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 30.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_rates_fed_funds_fred_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_str",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: struct_dart_cb_bw] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_struct_dart_cb_bw_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_inf",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: inflation_kor_cpi_ecos] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 30.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_inflation_kor_cpi_ecos_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_str",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: struct_dart_disposal] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_struct_dart_disposal_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_met",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: metal_gold_paxg_coingecko] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 30.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_metal_gold_paxg_coingecko_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_liq",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: liquidity_m2_fred] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_liquidity_m2_fred_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_ind",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: index_kospi_stooq] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_index_kospi_stooq_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_rat",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: rates_us02y_fred] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_rates_us02y_fred_20260227"
+        }
+      ],
+      "created_at": "2026-02-27"
+    },
+    {
+      "run_date": "2026-02-27",
+      "topic_seed_id": "STRUCT_20260227_cand_inf",
+      "seed_type": "HOIN_ANOMALY",
+      "structure_summary": "[거시경제 이상징후: inflation_cpi_fred] 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "why_now": "엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.",
+      "market_misunderstanding": "시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "structural_driver": [
+        "MACRO",
+        "MARKET"
+      ],
+      "risk_side": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.",
+      "status": "STRUCTURAL_ONLY",
+      "intensity": 60.0,
+      "source_refs": [
+        {
+          "kind": "artifact",
+          "path": "hoin_signal/topic_seeds",
+          "id": "cand_inflation_cpi_fred_20260227"
         }
       ],
       "created_at": "2026-02-27"

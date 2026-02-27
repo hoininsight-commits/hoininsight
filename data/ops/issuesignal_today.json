@@ -1,6 +1,6 @@
 {
   "run_date": "2026-02-27",
-  "count": 1,
+  "count": 11,
   "cards": [
     {
       "topic_id": "STRUCT_20260227_signal_f",
@@ -23,6 +23,236 @@
           "POLICY"
         ],
         "risk_factor": "실제 숫자(매출/이익)로 증명되기까지 시차 존재."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_inf",
+      "dataset_id": "inflation_pce_fred",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: inflation_pce_fred",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_inflation_pce_fred_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_rat",
+      "dataset_id": "rates_fed_funds_fred",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: rates_fed_funds_fred",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 30.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_rates_fed_funds_fred_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_str",
+      "dataset_id": "struct_dart_cb_bw",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: struct_dart_cb_bw",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_struct_dart_cb_bw_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_inf",
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 30.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_inflation_kor_cpi_ecos_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_str",
+      "dataset_id": "struct_dart_disposal",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: struct_dart_disposal",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_struct_dart_disposal_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_met",
+      "dataset_id": "metal_gold_paxg_coingecko",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: metal_gold_paxg_coingecko",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 30.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_metal_gold_paxg_coingecko_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_liq",
+      "dataset_id": "liquidity_m2_fred",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: liquidity_m2_fred",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_liquidity_m2_fred_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_ind",
+      "dataset_id": "index_kospi_stooq",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: index_kospi_stooq",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_index_kospi_stooq_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_rat",
+      "dataset_id": "rates_us02y_fred",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: rates_us02y_fred",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_rates_us02y_fred_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
+      }
+    },
+    {
+      "topic_id": "STRUCT_20260227_cand_inf",
+      "dataset_id": "inflation_cpi_fred",
+      "topic_type": "ISSUE_SIGNAL",
+      "structure_type": "HOIN_ANOMALY",
+      "structure_card_type": "구조적 분석",
+      "title": "거시경제 이상징후: inflation_cpi_fred",
+      "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
+      "importance_level": "보통",
+      "intensity": 60.0,
+      "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
+      "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
+      "evidence_refs": {
+        "source_ids": [
+          "cand_inflation_cpi_fred_20260227"
+        ],
+        "structural_drivers": [
+          "MACRO",
+          "MARKET"
+        ],
+        "risk_factor": "시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
       }
     }
   ]
