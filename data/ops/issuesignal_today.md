@@ -144,7 +144,7 @@ HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지�
 - Drivers: MACRO, MARKET
 - Risk: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려.
 
-## 거시경제 이상징후: metal_gold_paxg_coingecko
+## 거시경제 이상징후: fx_usdkrw_ecos
 **유형**: 구조적 분석
 
 **중요도**: 보통
@@ -154,7 +154,7 @@ HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지�
 ---
 [상세 보기]
 ---
-### 주제: 거시경제 이상징후: metal_gold_paxg_coingecko
+### 주제: 거시경제 이상징후: fx_usdkrw_ecos
 **자연어 상세 스크립트**:
 매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.
 

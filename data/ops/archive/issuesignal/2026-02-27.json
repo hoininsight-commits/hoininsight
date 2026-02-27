@@ -141,20 +141,20 @@
       }
     },
     {
-      "topic_id": "STRUCT_20260227_cand_met",
-      "dataset_id": "metal_gold_paxg_coingecko",
+      "topic_id": "STRUCT_20260227_cand_fx_",
+      "dataset_id": "fx_usdkrw_ecos",
       "topic_type": "ISSUE_SIGNAL",
       "structure_type": "HOIN_ANOMALY",
       "structure_card_type": "구조적 분석",
-      "title": "거시경제 이상징후: metal_gold_paxg_coingecko",
+      "title": "거시경제 이상징후: fx_usdkrw_ecos",
       "one_line_summary": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.",
       "importance_level": "보통",
-      "intensity": 0.0,
+      "intensity": 30.0,
       "rationale_natural": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)",
       "script_natural": "매크로/시장 이상 징후 감지: '거시/시장 이상징후'. 파급력 검토 필요.\n\n지금 이 이슈를 주목해야 하는 이유는 엔진에서 유의미한 통계적 이상치(Anomaly)가 실시간으로 관찰되었습니다.\n시장은 단지 노이즈로 볼 수 있으나, 본질은 시장 컨센서스와 실제 데이터 간 단기적 또는 구조적 괴리가 발생했을 수 있습니다.",
       "evidence_refs": {
         "source_ids": [
-          "cand_metal_gold_paxg_coingecko_20260227"
+          "cand_fx_usdkrw_ecos_20260227"
         ],
         "structural_drivers": [
           "MACRO",
