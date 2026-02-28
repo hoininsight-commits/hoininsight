@@ -62,7 +62,7 @@ Narrative Drift Signals:
 
 
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - (No structural anomaly detected)

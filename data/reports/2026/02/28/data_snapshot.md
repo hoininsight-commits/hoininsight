@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-02-28T04:21:43Z`
+- ts_utc: `2026-02-28T09:36:31Z`
 - ymd_utc: `2026/02/28`
 - enabled_datasets: `32`
 
@@ -8,11 +8,11 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
+| ETHUSD | crypto_eth_usd_spot_coingecko | OK | 31 | 2026-01-15T00:00:00Z | 2026-02-28T00:00:00Z | 6 | 16 | 3 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/02/28/charts/crypto_eth_usd_spot_coingecko.png) |
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 2 | 0 | data/curated/structural/foreigner_flow.csv | - |
-| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 485 | 2026-01-15T07:32:29Z | 2026-02-27T18:23:38Z | 45 | 241 | 2 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/02/28/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 485 | 2026-01-15T07:32:29Z | 2026-02-27T18:23:38Z | 44 | 237 | 2 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/02/28/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | UNKNOWN | 948 | 1947-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/02/28/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 2 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/02/28/charts/fx_dxy_index_stooq.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 31 | 2026-01-15T00:00:00Z | 2026-02-28T00:00:00Z | 6 | 16 | 2 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/02/28/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | UNKNOWN | 859 | 1954-07-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 6 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/02/28/charts/rates_fed_funds_fred.png) |
 | FIN_STRESS | risk_financial_stress_fred | UNKNOWN | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/risk/financial_stress_usa.csv | [png](data/reports/2026/02/28/charts/risk_financial_stress_fred.png) |
 | GOLD | metal_gold_paxg_coingecko | UNKNOWN | 116 | 2026-01-15T08:10:58Z | 2026-02-27T00:00:00Z | 6 | 29 | 6 | 0 | 0 | data/curated/metals/gold_usd.csv | [png](data/reports/2026/02/28/charts/metal_gold_paxg_coingecko.png) |
@@ -20,7 +20,7 @@
 | HY_SPREAD | credit_hy_spread_fred | UNKNOWN | 7612 | 1996-12-31T00:00:00Z | 2026-02-25T00:00:00Z | 3 | 20 | 2 | 0 | 0 | data/curated/credit/hy_spread_usa.csv | [png](data/reports/2026/02/28/charts/credit_hy_spread_fred.png) |
 | KOR_CPI | inflation_kor_cpi_ecos | UNKNOWN | 61 | 2021-02-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/ecos/inflation/korea_cpi.csv | [png](data/reports/2026/02/28/charts/inflation_kor_cpi_ecos.png) |
 | KOR_RATE | rates_kor_base_rate_ecos | UNKNOWN | 61 | 2021-02-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 6 | 0 | 0 | data/curated/ecos/rates/korea_base_rate.csv | [png](data/reports/2026/02/28/charts/rates_kor_base_rate_ecos.png) |
-| KOSPI | index_kospi_stooq | UNKNOWN | 483 | 2026-01-15T07:32:40Z | 2026-02-27T18:23:41Z | 44 | 240 | 2 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/02/28/charts/index_kospi_stooq.png) |
+| KOSPI | index_kospi_stooq | UNKNOWN | 483 | 2026-01-15T07:32:40Z | 2026-02-27T18:23:41Z | 43 | 236 | 2 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/02/28/charts/index_kospi_stooq.png) |
 | M2_USA | liquidity_m2_fred | UNKNOWN | 805 | 1959-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/liquidity/m2_usa.csv | [png](data/reports/2026/02/28/charts/liquidity_m2_fred.png) |
 | M_AND_A_CB | struct_dart_cb_bw | UNKNOWN | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/structural/cb_bw.csv | [png](data/reports/2026/02/28/charts/struct_dart_cb_bw.png) |
 | M_AND_A_DISP | struct_dart_disposal | UNKNOWN | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/structural/disposal.csv | [png](data/reports/2026/02/28/charts/struct_dart_disposal.png) |
