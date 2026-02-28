@@ -1,25 +1,7 @@
 {
-  "as_of": "2026-02-27",
+  "as_of": "2026-02-28",
   "window_days": 180,
   "items": [
-    {
-      "date": "2026-02-27",
-      "date_type": "FIXED",
-      "region": "KR",
-      "category": "REBALANCE",
-      "title": "MSCI 분기 리뷰 발효",
-      "risk_mechanism": "패시브 자금 리밸런싱에 따른 수급 변동성",
-      "affected_axes": [
-        "LIQUIDITY"
-      ],
-      "base_weight": 0.8,
-      "tags": [
-        "CAPITAL_FLOW",
-        "REBALANCE"
-      ],
-      "final_score": 1.15,
-      "theme_boost": 0.2
-    },
     {
       "date": "2026-03-20",
       "date_type": "FIXED",
@@ -92,6 +74,24 @@
         "DERIVATIVES"
       ],
       "final_score": 0.85,
+      "theme_boost": 0.2
+    },
+    {
+      "date": "2026-08-27",
+      "date_type": "RULE_BASED",
+      "region": "US",
+      "category": "MACRO",
+      "title": "Jackson Hole 미팅",
+      "risk_mechanism": "통화 정책 기조의 중장기적 전환 신호 노출",
+      "affected_axes": [
+        "RATES",
+        "VALUATION"
+      ],
+      "base_weight": 0.9,
+      "tags": [
+        "FED"
+      ],
+      "final_score": 1.1,
       "theme_boost": 0.2
     }
   ]
