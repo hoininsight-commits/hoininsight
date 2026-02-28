@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [美 이란 공격] 이란, 호르무즈해협 선박 통행 봉쇄(종합) - 연합뉴스 한민족센터 (ID: unknown)
+### [서정인의 아세안ABC 15] 미국의 이란 공습, 호르무즈의 불꽃 ' 아세안의 시험대' - 아세안익스프레스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [주간e종목] 삼천당제약, 먹는 위고비 복제약 기술수출로 '上' - 시사저널e (ID: unknown)
+### 독자 기술 집약한 삼성 갤럭시S26…세트부문 구원투수될까 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,17 +32,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이재용 회장 깜짝 놀라겠네…"갤S26 보러 왔어요" 바글바글 [현장+] - 한국경제 (ID: unknown)
+### “R&D 유인 부족” 지적…정은경 장관 “약가제도 보완” - 데일리메디 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘마스가’ 기획한 산업부 과장, 고위 국장급으로 파격 승진 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC (ID: unknown)
+### 트럼프 마음 훔친 '마스가' 기획한 공무원들…놀라운 근황 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,7 +47,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 무명 배우서 ‘할리우드 왕좌’…워너브라더스 품은 데이비드 엘리슨 누구? - 한겨레 (ID: unknown)
+### 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +57,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 직원 4000명 해고했더니 주가 25% 폭등…피도 눈물도 없는 AI경영 - 매일경제 (ID: unknown)
+### 무명 배우서 ‘할리우드 왕좌’…워너브라더스 품은 데이비드 엘리슨 누구? - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [기자수첩] 공시는 508억, 보도자료는 5조원… 논란 부른 삼천당제약 - 코메디닷컴 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 직원 절반 해고 발표했더니 오히려 주가 25% 폭등…AI발 고용 위협 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 시간은 매수자 편?…강남3구 수요-공급 우열 '동등' - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,7 +82,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 역대급 外人 투매, 개미가 받았다 … 코스피, 엔비디아 쇼크에도 롤러코스터 끝 1% 하락 그쳐 - 뉴데일리 경제 (ID: unknown)
+### 외국인 “삼전닉스 잘먹었습니다”…차익실현 매물 육탄방어한 개미들 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,24 +102,34 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 토스 행운퀴즈 '햇반 비비고' 정답…2월 28일 - 게임톡 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “2,500조 짜리 큰 거 온다” 스페이스X 곧 상장 절차 개시 [지금뉴스] - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “우리도 韓주식 사게해줘” 中부자들 바이코리아 열풍 - 문화일보 (ID: unknown)
+### 비트코인, 위험자산 회피에 2% 넘게 하락…6만6천달러선 위협 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 클래리티법, 스테이블코인 규제 이견에 난항…3월 1일 시한 - 디지털투데이 (ID: unknown)
+### [속보] 트럼프 “하메네이 사망…정밀폭격 지속될 것” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미국의 이란 공격…글로벌 시장 충격에 ‘코스피’ 변동성도 커지나 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 美 이란 공습에 ‘가미카제 드론’ 투입...자폭드론 첫 운용 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 트럼프, 이란 하메네이 사망 발표…“전세계 위한 정의” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “아내가 바람피워”…필리핀서 집에 불 지른 남성, 300채 가구 피해 (ID: unknown)
@@ -188,26 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “월요일이 두렵다” 美 패닉셀 벌어지나 ...이란 공습에 요동 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 마크롱, 유엔 안보리 긴급회의 소집 촉구…스페인, 美공격 비판 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘압류 코인 탈취’ 국세청, “실제 피해액 수천달러 불과” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란, 중동 미군기지에 미사일…아부다비서 사망자 발생 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 매체들 “이란 남부 초등학교서 50여명 폭사” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
