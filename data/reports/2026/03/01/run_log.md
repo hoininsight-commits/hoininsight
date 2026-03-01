@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-03-01T21:33:02+09:00
-- finished_utc: 2026-03-01T21:33:32+09:00
+- started_utc: 2026-03-01T22:44:48+09:00
+- finished_utc: 2026-03-01T22:45:18+09:00
 - status: SUCCESS
 
 ## details
@@ -60,8 +60,10 @@ judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC
 report: ok | data/reports/2026/03/01/daily_brief.md
 checks:
+[SKIP] outputs(fx_dxy_index_stooq) missing
 schema_checks:
-[OK] schema(crypto_eth_usd_spot_coingecko): timeseries_v1
+[OK] schema(fx_dxy_index_stooq): timeseries_v1
+[OK] schema(fx_usdkrw_ecos): timeseries_v1
 engine: done
 health: data/reports/2026/03/01/health.json
 dashboard_projection: skipped (no snapshot)

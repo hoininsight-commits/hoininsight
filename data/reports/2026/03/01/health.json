@@ -1,11 +1,21 @@
 {
-  "ts_utc": "2026-03-01T21:33:32Z",
+  "ts_utc": "2026-03-01T22:45:18Z",
   "status": "SUCCESS",
   "checks_ok": true,
-  "checks": [],
+  "checks": [
+    "[SKIP] outputs(fx_dxy_index_stooq) missing"
+  ],
   "per_dataset": [
     {
-      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "dataset_id": "fx_dxy_index_stooq",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "fx_usdkrw_ecos",
       "soft_fail": true,
       "status": "OK",
       "curated_ok": true,

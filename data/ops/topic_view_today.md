@@ -22,7 +22,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] 암호화폐, 전쟁 발발에 수직하락 … 하메네이 사망 소식에 상승 반전 - 뉴데일리 경제 (ID: unknown)
+### 하메네이 사망에 비트코인 반등·금값 요동…원화값 급락 전망도 - 매일경제 마켓 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 마우저 일렉트로닉스, AW 2026서 전자부품·스마트 제조 솔루션 공개 - 헬로티 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,7 +52,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 증시, 美·이란 충돌에 하락 마감…사우디 2%↓·이집트 2.5%↓ - 연합인포맥스 (ID: unknown)
+### [李대통령 부동산 X] ②압구정 40억 조정…서울 매물 26% 증가 - 뉴스1 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +67,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼겹살·목살 ‘반값’에 푼다..삼겹살 100g 1290원 - 조선일보 (ID: unknown)
+### 2월 수출 29% 증가... 반도체는 160% 늘며 역대 최대 실적 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [李대통령 부동산 X] ②압구정 40억 조정…서울 매물 26% 증가 - 뉴스1 (ID: unknown)
+### 밀가루 담합 걸리자 연달아 가격 인하…“CJ제일제당 제 발 저렸나” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,7 +82,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] 2월 수출 675억달러로 29%↑…반도체 역대 최대 실적 - 매일경제 (ID: unknown)
+### 농식품부, 삼겹살데이 맞아 3월 한돈 최대 50% 할인 - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,12 +92,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 수치로 확인된 ‘탈팡’…쿠팡, 전분기 영업익 97% 떨어졌다 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 구글 ‘지도 반출’ 허가 결정에…"산업 생태계·미래 성장동력 저해" 우려 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '곧 챗GPT 제친다'…한국서 결제액 '폭발' AI 뭐길래 - 한국경제 (ID: unknown)
+### 엔비디아, 실적 발표 뒤 주가 내리막길…임계점 도달했나 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,29 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC (ID: unknown)
+### “패키지 끝나 추가비용 내란다”…중동 왔다 발묶인 한국인 관광객, 날벼락 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### AI공포·신용위험에 이란 전쟁까지 다중악재 … 韓 증시 큰 폭 조정받을 수도 - 뉴데일리 경제 (ID: unknown)
+### 트럼프 “미군 죽음에 복수할것”…이란 국민에 봉기 촉구 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “비행기마다 1명 꼭 있다”…아찔한 보조배터리 규정 위반 실태 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매경이 전하는 세상의 지식 (매-세-지, 3월 2일) (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이란 호르무즈 해협 봉쇄 이후 민간 선박 4척 피격…1명 사망 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### [속보] 트럼프 “對이란공격, 모든 목표 달성까지 계속될 것” (ID: unknown)
@@ -183,31 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 전남광주 통합 특별법, 국회 본회의 넘었다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 李 "집 팔고 사는 건 자유 이익·손해는 정부가 정해" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘이란 봉쇄’ 호르무즈해협서 선박 잇단 피격 침몰…해협 150척 선박 정박 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 얼죽아 한국인, 아이스크림은 손절…주요기업 영업익 30% 녹았다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘하메네이 사망 14시간만’ 미국 규탄한 중국…“정상회담 앞두고 수위 고심한듯” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이재명 대통령 “북한체제 존중…신뢰회복 조치 계속 추진” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
