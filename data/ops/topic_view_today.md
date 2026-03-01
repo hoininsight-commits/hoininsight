@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-02-28
+# 🧭 TODAY TOPIC VIEW - 2026-03-01
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,27 +12,52 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [서정인의 아세안ABC 15] 미국의 이란 공습, 호르무즈의 불꽃 ' 아세안의 시험대' - 아세안익스프레스 (ID: unknown)
+### [하메네이 사망] 무역협회 "호르무즈 봉쇄 시 해상운임 최대 80% 폭증" - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 독자 기술 집약한 삼성 갤럭시S26…세트부문 구원투수될까 - 연합뉴스 (ID: unknown)
+### 오늘의 금값시세(3월1일자) "금값 7개월 연속" 상승전망 - gukjenews.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 세이지, 보는 AI에서 행동하는 AI로...AW 2026서 기술 선봬 - 헬로티 (ID: unknown)
+### [속보] 암호화폐, 전쟁 발발에 수직하락 … 하메네이 사망 소식에 상승 반전 - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 현대차그룹, 새만금에 9조원 투자… 로봇·AI·수소 '미래산업 메가 프로젝트' 시동 - 프라임경제 (ID: unknown)
+### 이재용 회장 깜짝 놀라겠네…"갤S26 보러 왔어요" 바글바글 [현장+] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “R&D 유인 부족” 지적…정은경 장관 “약가제도 보완” - 데일리메디 (ID: unknown)
+### "테슬라·현대차 붙자"…中 샤오미, '전기 하이퍼카' 내놨다 [MWC 2026] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼일절 오후, 카톡서 "대한독립 만세" 외치면? - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼겹살·목살 ‘반값’에 푼다..삼겹살 100g 1290원 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 현대차 9조 투자… 새만금 'AI 개벽' - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 네이버페이, 결제오류 보상 … “동시간대 결제 수수료 3배 지급” - 국민일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [속보] 2월 수출 675억달러로 29%↑…반도체 역대 최대 실적 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,37 +67,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중부지방국세청, 국세체납관리단 활동 앞두고 협조 체제 구축 - 한국세정신문 (ID: unknown)
+### 5월9일 전에 나온다는 다주택 급매물 잡을까요? - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 주주들의 ‘새 금고’ 될까…자사주 강제 소각이 불러올 파장 - 일요신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 무명 배우서 ‘할리우드 왕좌’…워너브라더스 품은 데이비드 엘리슨 누구? - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [기자수첩] 공시는 508억, 보도자료는 5조원… 논란 부른 삼천당제약 - 코메디닷컴 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 직원 절반 해고 발표했더니 오히려 주가 25% 폭등…AI발 고용 위협 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 시간은 매수자 편?…강남3구 수요-공급 우열 '동등' - 연합뉴스 한민족센터 (ID: unknown)
+### ‘200억 전액 현금’ 제니, 팀내 재산 1위 아니었다! 블랙핑크 진짜 실세 따로 있다 - segye.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,22 +82,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 외국인 “삼전닉스 잘먹었습니다”…차익실현 매물 육탄방어한 개미들 - 매일경제 (ID: unknown)
+### [기자수첩] 공시는 508억, 보도자료는 5조원… 논란 부른 삼천당제약 - 코메디닷컴 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 식품사가 밀가루 많이 쓴 초코파이·몽쉘 등 가격 못 내리는 이유 - 지디넷코리아 (ID: unknown)
+### 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피 6000시대 ‘활짝’… 종목 쏠림, 빚투 리스크 경계해야 - 더스쿠프 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 뉴욕증시, 물가 쇼크에 이란 정세 불안까지…다우 1% 하락 - 조선일보 (ID: unknown)
+### 직원 절반 해고 발표했더니 오히려 주가 25% 폭등…AI발 고용 위협 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,107 +102,112 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인, 위험자산 회피에 2% 넘게 하락…6만6천달러선 위협 - 연합인포맥스 (ID: unknown)
+### 삼성전자만 6조 원 샀다… 역대급 매수로 코스피 견인한 개미들 - 주간동아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] 트럼프 “하메네이 사망…정밀폭격 지속될 것” (ID: unknown)
+### [뉴욕마켓워치] 증시 강타한 영국發 신용불안…채권↑달러↓ - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 금융당국, 비주거용 임대사업자 대출현황도 들여다본다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 미국의 이란 공격…글로벌 시장 충격에 ‘코스피’ 변동성도 커지나 (ID: unknown)
+### 미국투자이민 벙커힐 공공 인프라 2차, 잔여 13세대…투자자 관심 집중 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 美 이란 공습에 ‘가미카제 드론’ 투입...자폭드론 첫 운용 (ID: unknown)
+### 중동 정세 불확실성…이 대통령 “관계부처 비상대응 체제 유지하라” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 트럼프, 이란 하메네이 사망 발표…“전세계 위한 정의” (ID: unknown)
+### 하메네이 사망에 쌍수 든 ‘비운의 왕세자’…“이슬람공화국 쓰레기통으로” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “아내가 바람피워”…필리핀서 집에 불 지른 남성, 300채 가구 피해 (ID: unknown)
+### “경기·인천 지금이 기회?”…작년 공급가뭄 시달린 분양 시장 ‘기지개’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 1400만명 도시에서 데이팅앱 뿌렸더니…신혼부부가 사라졌다 [Book] (ID: unknown)
+### “국제금융·에너지 시장 변동성 커질듯”…구윤철, 이란 공습 중동상황 긴급점검 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 조국 배신해 부자·귀족된 걸로 부족했나…이완용 명필의 진실 [Book] (ID: unknown)
+### 진보 시민단체 “미국 이란 공격, 정당화할 수 없는 침략…즉각 멈춰야” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “방탈출 성공하고 대한독립 만세, 애국심 벅차올라”… 3·1절 온몸으로 느낀다 (ID: unknown)
+### 5만원짜리 아기턱받이, 1분만에 품절…요즘 엄마들 ‘빕게팅’ 열풍 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “285%·441% 뛰었는데, 더 오른다고?”…21만전자·100만닉스, 상승여력 남아 있다는데 (ID: unknown)
+### 스페이스X, 3월 비공개 상장 신청…기업가치 1조7500억달러 노린다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 트럼프, 하메네이 사망설에 “맞는 이야기라고 생각” (ID: unknown)
+### “제발 우리 돈 좀 가져가세요” 앞다퉈 투자…1200조 기업 등극한 오픈AI (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “정규직 되고 내 집 사면 행복할 줄 알았다”…묘한 죄책감 드는 이유는 [Book] (ID: unknown)
+### 비타민 메가도스·영양제 먹어도 피곤…그럼 코큐텐 드셔보시죠 [MK약국x약들약] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 트럼프, 이란 공습에 “장기전도, 2~3일내 종결도 가능해” (ID: unknown)
+### 신세계사이먼 부산서 티니핑 팝업스토어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 네타냐후 “하메네이 ‘생존 않는다’ 다수의 징후 있어” (ID: unknown)
+### 김치 수출 100개국 돌파...수출액도 2년 연속 최대 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이란, 공습으로 최소 201명 사망…“미군 사상자 없어” (ID: unknown)
+### 정월 대보름 물가, 작년보다 안정세 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “하메네이 축출시 이슬람 혁명수비대가 권력공백 메울 가능성” (ID: unknown)
+### 이란 민간인 133명 사망·200여명 부상…미국 인명 피해는? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 백악관 “트럼프, 마러라고서 밤새 상황 주시…이란 공격중 네타냐후와 통화” (ID: unknown)
+### 장동혁 “2억 안되는 내 집, 누구처럼 똘똘한 한채 아니라 매수자 안나타나” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이란, 호르무즈 해협 봉쇄...유가 100달러 현실로? (ID: unknown)
+### 해수욕장에서 달집태우기, 국내 최대 규모 ‘삼척 정월대보름제’ 가보니 [제철축제] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이란 “최고지도자 생존…전쟁 원치않아” (ID: unknown)
+### 이란혁명수비대, 하메네이 사망에 “단호한 처벌” 다짐 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 중간선거 승부수? 자충수?...트럼프 또다시 전쟁 도박 (ID: unknown)
+### 평택서 돈 훔치다 훈계하는 노인 살해한 30대…원심 파기 징역 10년 감형, 왜? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “월요일이 두렵다” 美 패닉셀 벌어지나 ...이란 공습에 요동 (ID: unknown)
+### “이제부턴 매수자가 갑입니다”…강남3구 수요·공급 우열 ‘동등’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
