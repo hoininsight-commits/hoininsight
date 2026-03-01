@@ -69,7 +69,7 @@ Narrative Drift Signals:
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=2.44 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.30 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)

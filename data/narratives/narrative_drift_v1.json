@@ -5711,6 +5711,23 @@
           }
         }
       ]
+    },
+    {
+      "generated_at": "2026-03-01T22:48:19.890369",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
     }
   ]
 }

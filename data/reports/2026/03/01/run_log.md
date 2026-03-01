@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-03-01T22:44:48+09:00
-- finished_utc: 2026-03-01T22:45:18+09:00
+- started_utc: 2026-03-01T22:47:46+09:00
+- finished_utc: 2026-03-01T22:48:20+09:00
 - status: SUCCESS
 
 ## details
@@ -60,10 +60,19 @@ judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC
 report: ok | data/reports/2026/03/01/daily_brief.md
 checks:
-[SKIP] outputs(fx_dxy_index_stooq) missing
+[SKIP] outputs(metal_platinum_xptusd_stooq) missing
 schema_checks:
-[OK] schema(fx_dxy_index_stooq): timeseries_v1
-[OK] schema(fx_usdkrw_ecos): timeseries_v1
+[OK] schema(index_nasdaq_fred): timeseries_v1
+[OK] schema(rates_us02y_fred): timeseries_v1
+[OK] schema(comm_wti_fred): timeseries_v1
+[OK] schema(metal_platinum_xptusd_stooq): timeseries_v1
+[OK] schema(metal_gold_paxg_coingecko): timeseries_v1
+[OK] schema(metal_silver_kag_coingecko): timeseries_v1
+[OK] schema(metal_silver_kag_coingecko): timeseries_v1
+[OK] schema(rates_kor_base_rate_ecos): timeseries_v1
+[OK] schema(rates_fed_funds_fred): timeseries_v1
+[OK] schema(derived_yield_curve_10y_2y): timeseries_v1
+[OK] schema(derived_gold_silver_ratio): timeseries_v1
 engine: done
 health: data/reports/2026/03/01/health.json
 dashboard_projection: skipped (no snapshot)

@@ -22,7 +22,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 하메네이 사망에 비트코인 반등·금값 요동…원화값 급락 전망도 - 매일경제 마켓 (ID: unknown)
+### 비트코인 6만 달러 아래로...이란 분쟁으로 - 굿모닝베트남미디어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,12 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 밀가루 담합 걸리자 연달아 가격 인하…“CJ제일제당 제 발 저렸나” - 매일경제 (ID: unknown)
+### 국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보 (ID: unknown)
+### [자사주 점검] 두산, RSU용 빼고 전량 소각한다…주가 상승여력 아직 남았나 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,7 +92,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 수치로 확인된 ‘탈팡’…쿠팡, 전분기 영업익 97% 떨어졌다 - 경향신문 (ID: unknown)
+### [사설] 정보 유출 99일 만에 미국에만 사과한 쿠팡 김범석 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,11 @@ No SHADOW candidates today.
 ### [Weekly Coin] 관세 불확실성·군사 갈등···출렁이는 비트코인 - 시사저널e (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “양치승 관장의 실체를 폭로한다”…제작진이 전한 설날 생긴일 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “패키지 끝나 추가비용 내란다”…중동 왔다 발묶인 한국인 관광객, 날벼락 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 1년새 4배 커진 원자재 토큰화…‘금’이 시장 이끈다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 전남광주 통합 특별법, 국회 본회의 넘었다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
