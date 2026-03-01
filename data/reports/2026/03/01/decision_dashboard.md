@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] "호르무즈 봉쇄 시 해상운임 최대 80% 폭증 가능성도" - 연합뉴스TV (Google_News_KR_Economy)
-  - [NEWS] 1년새 금융지주 주가 2배 오르자 함박 웃음 짓는 자사주 산 금융그룹 회장들…하나 함영주 12억원, 신한 진옥동 10억원 평가차익 올렸다 - 조선일보 (Google_News_KR_Economy)
   - [NEWS] 삼성전자, MWC서 갤럭시 S26으로 진화한 'AI 혁신 경험' 제시 - 노컷뉴스 (Google_News_KR_Economy)
+  - [NEWS] [속보] 암호화폐, 전쟁 발발에 수직하락 … 하메네이 사망 소식에 상승 반전 - 뉴데일리 경제 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,25 +186,34 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | "호르무즈 봉쇄 시 해상운임 최대 80% 폭증 가능성도" - 연합뉴스TV | Structural implication: '"호르무즈 봉쇄 시 해상운임 최대 80% 폭증 가능성도" - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
-| 1년새 금융지주 주가 2배 오르자 함박 웃음 짓는 자사주 산 금융그룹 회장들…하나 함영주 12억원, 신한 진옥동 10억원 평가차익 올렸다 - 조선일보 | Structural implication: '1년새 금융지주 주가 2배 오르자 함박 웃음 짓는 자사주 산 금융그룹 회장들…하나 함영주 12억원, 신한 진옥동 10억원 평가차익 올렸다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, MWC서 갤럭시 S26으로 진화한 'AI 혁신 경험' 제시 - 노컷뉴스 | Structural implication: '삼성전자, MWC서 갤럭시 S26으로 진화한 'AI 혁신 경험' 제시 - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 이란 분쟁으로 비트코인 6만 달러 아래로 떨어질 수 있다. - 굿모닝베트남미디어 | Structural implication: '이란 분쟁으로 비트코인 6만 달러 아래로 떨어질 수 있다. - 굿모닝베트남미디어' suggests a shift in NEWS dynamics. | LOW |
-| 마우저 일렉트로닉스, AW 2026서 전자부품·스마트 제조 솔루션 공개 - Hellot.net | Structural implication: '마우저 일렉트로닉스, AW 2026서 전자부품·스마트 제조 솔루션 공개 - Hellot.net' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 “2030년까지 AI 자율공장 전환” - 한국경제 | Structural implication: '삼성전자 “2030년까지 AI 자율공장 전환” - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 바르셀로나 MWC 전시장에 들어선 광화문 광장 - 지디넷코리아 | Structural implication: '바르셀로나 MWC 전시장에 들어선 광화문 광장 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 암호화폐, 전쟁 발발에 수직하락 … 하메네이 사망 소식에 상승 반전 - 뉴데일리 경제 | Structural implication: '[속보] 암호화폐, 전쟁 발발에 수직하락 … 하메네이 사망 소식에 상승 반전 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
 | "테슬라·현대차 붙자"…中 샤오미, '전기 하이퍼카' 내놨다 [MWC 2026] - 한국경제 | Structural implication: '"테슬라·현대차 붙자"…中 샤오미, '전기 하이퍼카' 내놨다 [MWC 2026] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [MWC26 개막 D-1] AI 넘어 우주 향하는 통신 인프라·서비스 - 지디넷코리아 | Structural implication: '[MWC26 개막 D-1] AI 넘어 우주 향하는 통신 인프라·서비스 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 현대차그룹, 새만금 9조 투자…대기업 AI 제조혁신 박차 - 국제신문 | Structural implication: '현대차그룹, 새만금 9조 투자…대기업 AI 제조혁신 박차 - 국제신문' suggests a shift in NEWS dynamics. | LOW |
 | 인천지방국세청, 인천경찰청과 고의·악의적 체납자 근절 공조 - 기호일보 | Structural implication: '인천지방국세청, 인천경찰청과 고의·악의적 체납자 근절 공조 - 기호일보' suggests a shift in NEWS dynamics. | LOW |
-| 국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보 | Structural implication: '국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 농식품부, 삼겹살데이 맞아 3월 한돈 최대 50% 할인 - MBC 뉴스 | Structural implication: '농식품부, 삼겹살데이 맞아 3월 한돈 최대 50% 할인 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| '곧 챗GPT 제친다'…한국서 결제액 '폭발' AI 뭐길래 - 한국경제 | Structural implication: ''곧 챗GPT 제친다'…한국서 결제액 '폭발' AI 뭐길래 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 내부 폭로 터진 테슬라코리아...인력 줄퇴사에 차량 인도 '초비상' [지금이뉴스] - YTN | Structural implication: '내부 폭로 터진 테슬라코리아...인력 줄퇴사에 차량 인도 '초비상' [지금이뉴스] - YTN' suggests a shift in NEWS dynamics. | LOW |
-| ‘고정밀 지도’ 구글, 산업 생태계 훼손 우려 - 경향신문 | Structural implication: '‘고정밀 지도’ 구글, 산업 생태계 훼손 우려 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| [이란 타격] 중동 증시, 급락 개장…이집트 장중 5.8%↓·사우디 4.8%↓ - 연합인포맥스 | Structural implication: '[이란 타격] 중동 증시, 급락 개장…이집트 장중 5.8%↓·사우디 4.8%↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 질주에 ‘황제주’ 9개…열 번째 후보는 - 문화일보 | Structural implication: '코스피 질주에 ‘황제주’ 9개…열 번째 후보는 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| 중동 증시, 美·이란 충돌에 하락 마감…사우디 2%↓·이집트 2.5%↓ - 연합인포맥스 | Structural implication: '중동 증시, 美·이란 충돌에 하락 마감…사우디 2%↓·이집트 2.5%↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 엑스알피(리플) 시세 추락...중동 긴장감에도 '31달러' 자신감 - gukjenews.com | Structural implication: '엑스알피(리플) 시세 추락...중동 긴장감에도 '31달러' 자신감 - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
-| 1.9兆 자사주 모두 태우는 KT&G… 3차 상법개정 첫 반영 사례 - 동아일보 | Structural implication: '1.9兆 자사주 모두 태우는 KT&G… 3차 상법개정 첫 반영 사례 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 2월 수출 29% 증가... 반도체는 160% 늘며 역대 최대 실적 - 조선일보 | Structural implication: '2월 수출 29% 증가... 반도체는 160% 늘며 역대 최대 실적 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 코스피 질주에 ‘황제주’ 9개…열 번째 후보는 - 문화일보 | Structural implication: '코스피 질주에 ‘황제주’ 9개…열 번째 후보는 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| 삼겹살·목살 ‘반값’에 푼다..삼겹살 100g 1290원 - 조선일보 | Structural implication: '삼겹살·목살 ‘반값’에 푼다..삼겹살 100g 1290원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [李대통령 부동산 X] ②압구정 40억 조정…서울 매물 26% 증가 - 뉴스1 | Structural implication: '[李대통령 부동산 X] ②압구정 40억 조정…서울 매물 26% 증가 - 뉴스1' suggests a shift in NEWS dynamics. | LOW |
+| 국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보 | Structural implication: '국세청, 다주택자 양도세 중과 전용 신고·상담창구 운영한다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 2월 수출 675억달러로 29%↑…반도체 역대 최대 실적 - 매일경제 | Structural implication: '[속보] 2월 수출 675억달러로 29%↑…반도체 역대 최대 실적 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “영끌도 비빌 언덕 있어야 하지”…부모세대 자산 많을수록 자녀세대 불평등↑ - 매일경제 | Structural implication: '“영끌도 비빌 언덕 있어야 하지”…부모세대 자산 많을수록 자녀세대 불평등↑ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 구글 ‘지도 반출’ 허가 결정에…"산업 생태계·미래 성장동력 저해" 우려 - 지디넷코리아 | Structural implication: '구글 ‘지도 반출’ 허가 결정에…"산업 생태계·미래 성장동력 저해" 우려 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| '곧 챗GPT 제친다'…한국서 결제액 '폭발' AI 뭐길래 - 한국경제 | Structural implication: ''곧 챗GPT 제친다'…한국서 결제액 '폭발' AI 뭐길래 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [Weekly Coin] 관세 불확실성·군사 갈등···출렁이는 비트코인 - 시사저널e | Structural implication: '[Weekly Coin] 관세 불확실성·군사 갈등···출렁이는 비트코인 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
+| 실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC | Structural implication: '실적 꺾여도 ‘남 탓’ 쿠팡…‘허술한 보안 방치’ 아직도 부인 - JTBC' suggests a shift in NEWS dynamics. | LOW |
+| AI공포·신용위험에 이란 전쟁까지 다중악재 … 韓 증시 큰 폭 조정받을 수도 - 뉴데일리 경제 | Structural implication: 'AI공포·신용위험에 이란 전쟁까지 다중악재 … 韓 증시 큰 폭 조정받을 수도 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 트럼프 “對이란공격, 모든 목표 달성까지 계속될 것” | Structural implication: '[속보] 트럼프 “對이란공격, 모든 목표 달성까지 계속될 것”' suggests a shift in NEWS dynamics. | LOW |
+| 예술이다…용어에 담긴 말의 본래 뜻 [말록 홈즈] | Structural implication: '예술이다…용어에 담긴 말의 본래 뜻 [말록 홈즈]' suggests a shift in NEWS dynamics. | LOW |
+| 대체공휴일 나들이갈까 했더니…전국에 눈·비, 강원엔 40㎝ 폭설 | Structural implication: '대체공휴일 나들이갈까 했더니…전국에 눈·비, 강원엔 40㎝ 폭설' suggests a shift in NEWS dynamics. | LOW |
+| 전쟁 악재 덮친 코스피에…월가는 “닷컴버블급 광기” 경고까지 | Structural implication: '전쟁 악재 덮친 코스피에…월가는 “닷컴버블급 광기” 경고까지' suggests a shift in NEWS dynamics. | LOW |
+| 낮에는 세계경찰, 밤에는 무기상인…전쟁기계 미국이 돈버는 법 [Book] | Structural implication: '낮에는 세계경찰, 밤에는 무기상인…전쟁기계 미국이 돈버는 법 [Book]' suggests a shift in NEWS dynamics. | LOW |
+| “전기차라니요, 우린 람보르기니입니다”…감성 그대로 간다는 회장님 | Structural implication: '“전기차라니요, 우린 람보르기니입니다”…감성 그대로 간다는 회장님' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈해협서 선박 피습, 홍해까지 불똥...유가폭등 우려 | Structural implication: '호르무즈해협서 선박 피습, 홍해까지 불똥...유가폭등 우려' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프 “이란 새 지도부, 대화 원해…나도 대화에 동의” | Structural implication: '트럼프 “이란 새 지도부, 대화 원해…나도 대화에 동의”' suggests a shift in NEWS dynamics. | LOW |
+| 미군 “작전중 미군 3명 사망·5명 중상”…첫 인명피해 발생 | Structural implication: '미군 “작전중 미군 3명 사망·5명 중상”…첫 인명피해 발생' suggests a shift in NEWS dynamics. | LOW |
 | 이제 로봇이 삼성 반도체 만든다…AI자율공장 가동 계획 살펴보니 | Structural implication: '이제 로봇이 삼성 반도체 만든다…AI자율공장 가동 계획 살펴보니' suggests a shift in NEWS dynamics. | LOW |
 | 백악관도 샤라웃한 K푸드 끝판왕…102개국에 수출 한다는데 | Structural implication: '백악관도 샤라웃한 K푸드 끝판왕…102개국에 수출 한다는데' suggests a shift in NEWS dynamics. | LOW |
 | 불꽃놀이도 보정없이 찰칵…카메라 자랑한 샤오미, AI는 별거 없네 | Structural implication: '불꽃놀이도 보정없이 찰칵…카메라 자랑한 샤오미, AI는 별거 없네' suggests a shift in NEWS dynamics. | LOW |
@@ -216,15 +225,6 @@
 | 얼죽아 한국인, 아이스크림은 손절…주요기업 영업익 30% 녹았다 | Structural implication: '얼죽아 한국인, 아이스크림은 손절…주요기업 영업익 30% 녹았다' suggests a shift in NEWS dynamics. | LOW |
 | ‘하메네이 사망 14시간만’ 미국 규탄한 중국…“정상회담 앞두고 수위 고심한듯” | Structural implication: '‘하메네이 사망 14시간만’ 미국 규탄한 중국…“정상회담 앞두고 수위 고심한듯”' suggests a shift in NEWS dynamics. | LOW |
 | 이재명 대통령 “북한체제 존중…신뢰회복 조치 계속 추진” | Structural implication: '이재명 대통령 “북한체제 존중…신뢰회복 조치 계속 추진”' suggests a shift in NEWS dynamics. | LOW |
-| 싱가포르 국빈 방문하는 이재명 대통령 | Structural implication: '싱가포르 국빈 방문하는 이재명 대통령' suggests a shift in NEWS dynamics. | LOW |
-| 교황 “폭력의 악순환 멈춰야…거대한 비극될 수 있다” | Structural implication: '교황 “폭력의 악순환 멈춰야…거대한 비극될 수 있다”' suggests a shift in NEWS dynamics. | LOW |
-| 하메네이 사망에 비트코인 반등·금값 요동…원화값 급락 전망도 | Structural implication: '하메네이 사망에 비트코인 반등·금값 요동…원화값 급락 전망도' suggests a shift in NEWS dynamics. | LOW |
-| ‘이란 공습’ 공포감에 핵 더 움켜쥘 김정은…북미대화 영향은 | Structural implication: '‘이란 공습’ 공포감에 핵 더 움켜쥘 김정은…북미대화 영향은' suggests a shift in NEWS dynamics. | LOW |
-| 반도체 힘입어…2월 한국 수출 29% 증가 ‘매직’ | Structural implication: '반도체 힘입어…2월 한국 수출 29% 증가 ‘매직’' suggests a shift in NEWS dynamics. | LOW |
-| 푸틴 “하메네이 사망에 깊은 애도…국제 규범 위반한 암살” | Structural implication: '푸틴 “하메네이 사망에 깊은 애도…국제 규범 위반한 암살”' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 전남·광주 통합특별법, 與 주도 국회 본회의 통과…“서울시 위상 부여” | Structural implication: '[속보] 전남·광주 통합특별법, 與 주도 국회 본회의 통과…“서울시 위상 부여”' suggests a shift in NEWS dynamics. | LOW |
-| 李대통령 “다주택자가 집 안팔고 버티면 손실되게 할 것” | Structural implication: '李대통령 “다주택자가 집 안팔고 버티면 손실되게 할 것”' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 국민투표법 개정안, 與주도 국회 본회의 통과 | Structural implication: '[속보] 국민투표법 개정안, 與주도 국회 본회의 통과' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
