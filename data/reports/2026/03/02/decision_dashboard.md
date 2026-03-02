@@ -81,7 +81,7 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 뉴욕증시, 이란 전쟁은 불확실성 제거일뿐…나스닥 강세 마감 - 연합뉴스 (Google_News_KR_Economy)
+  - [NEWS] 이란 사태에 유럽 증시 일제히 급락…유가·천연가스 급등 - 마켓인 (Google_News_KR_Economy)
   - [NEWS] 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (Google_News_KR_Economy)
   - [NEWS] 아파트 '반전세' 확산…전월세 전환율도 상승 - 한국경제 (Google_News_KR_Economy)
 
@@ -185,7 +185,7 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 뉴욕증시, 이란 전쟁은 불확실성 제거일뿐…나스닥 강세 마감 - 연합뉴스 | Structural implication: '뉴욕증시, 이란 전쟁은 불확실성 제거일뿐…나스닥 강세 마감 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 이란 사태에 유럽 증시 일제히 급락…유가·천연가스 급등 - 마켓인 | Structural implication: '이란 사태에 유럽 증시 일제히 급락…유가·천연가스 급등 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 | Structural implication: '정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 아파트 '반전세' 확산…전월세 전환율도 상승 - 한국경제 | Structural implication: '아파트 '반전세' 확산…전월세 전환율도 상승 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 중동 정세 불안에 글로벌 방산 공급망 재편 속 K방산 기회 확대 - 글로벌이코노믹 | Structural implication: '중동 정세 불안에 글로벌 방산 공급망 재편 속 K방산 기회 확대 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
@@ -196,15 +196,16 @@
 | LG, ‘K-엑사원’ 로드맵 4대 전략 발표 - 디일렉 | Structural implication: 'LG, ‘K-엑사원’ 로드맵 4대 전략 발표 - 디일렉' suggests a shift in NEWS dynamics. | LOW |
 | 중동발 충격에 경제부처 '총력 대응' - 신아일보 | Structural implication: '중동발 충격에 경제부처 '총력 대응' - 신아일보' suggests a shift in NEWS dynamics. | LOW |
 | 근로장려금 반기신청 3월 16일까지, 잊지말고 신청하세요! - 조세플러스 | Structural implication: '근로장려금 반기신청 3월 16일까지, 잊지말고 신청하세요! - 조세플러스' suggests a shift in NEWS dynamics. | LOW |
-| 극한 車시험장에서 첨단의료단지까지…'中관광섬' 하이난의 변신 - 연합뉴스 한민족센터 | Structural implication: '극한 車시험장에서 첨단의료단지까지…'中관광섬' 하이난의 변신 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 | Structural implication: '‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 극한 車시험장에서 첨단의료단지까지…'中관광섬' 하이난의 변신 - 연합뉴스 한민족센터 | Structural implication: '극한 車시험장에서 첨단의료단지까지…'中관광섬' 하이난의 변신 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | 커지는 오일쇼크 공포 … 상승랠리 달리던 韓증시 '최대 암초' - 매일경제 | Structural implication: '커지는 오일쇼크 공포 … 상승랠리 달리던 韓증시 '최대 암초' - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| '아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - v.daum.net | Structural implication: ''아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | ‘이란·이스라엘 주재’ 한국 11개 업체 30여명, 요르단 등으로 피난 - 한겨레 | Structural implication: '‘이란·이스라엘 주재’ 한국 11개 업체 30여명, 요르단 등으로 피난 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| '아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - 한국경제 | Structural implication: ''아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가·주가 충격 완화 속 코인↑·美국채↓…배경은 - 연합인포맥스 | Structural implication: '국제유가·주가 충격 완화 속 코인↑·美국채↓…배경은 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 3월 2일 삼일절 대체공휴일 적용… 은행·주식·택배 운영 여부는? - gukjenews.com | Structural implication: '3월 2일 삼일절 대체공휴일 적용… 은행·주식·택배 운영 여부는? - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
 | 한온시스템 과징금 14억…금형업계 '구두계약 관행' 도마 위에 - 리드경제 | Structural implication: '한온시스템 과징금 14억…금형업계 '구두계약 관행' 도마 위에 - 리드경제' suggests a shift in NEWS dynamics. | LOW |
 | 2월 서울 아파트값 오름폭 확대…21개월 연속 상승 - 조선비즈 - Chosunbiz | Structural implication: '2월 서울 아파트값 오름폭 확대…21개월 연속 상승 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| [영상] “수십년간 괴롭히고 공격해왔다”…이란 함정 11척 격침 발표한 미군 | Structural implication: '[영상] “수십년간 괴롭히고 공격해왔다”…이란 함정 11척 격침 발표한 미군' suggests a shift in NEWS dynamics. | LOW |
 | “10년전 10억에 산 집, 20억에 팔면 세금이 무려”...다주택, 빨리 팔거나 증여하거나 | Structural implication: '“10년전 10억에 산 집, 20억에 팔면 세금이 무려”...다주택, 빨리 팔거나 증여하거나' suggests a shift in NEWS dynamics. | LOW |
 | “호르무즈 오지 말라, 통과 선박 다 불태우겠다”…경고 날린 이란 | Structural implication: '“호르무즈 오지 말라, 통과 선박 다 불태우겠다”…경고 날린 이란' suggests a shift in NEWS dynamics. | LOW |
 | “깊이 생각지 못한 제 불찰”…3·1절 앞두고 日여행 영상 올린 여배우 사과 | Structural implication: '“깊이 생각지 못한 제 불찰”…3·1절 앞두고 日여행 영상 올린 여배우 사과' suggests a shift in NEWS dynamics. | LOW |
@@ -224,7 +225,6 @@
 | 이란 “호르무즈 통과하면 불태울 것”...해협 폐쇄에 유가 급등 | Structural implication: '이란 “호르무즈 통과하면 불태울 것”...해협 폐쇄에 유가 급등' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프, 이란 작전 “4~5주 예상했지만 더 오래 할 능력 있어” | Structural implication: '트럼프, 이란 작전 “4~5주 예상했지만 더 오래 할 능력 있어”' suggests a shift in NEWS dynamics. | LOW |
 | 마크롱 “프랑스 핵무기 보유량 증대할 것” | Structural implication: '마크롱 “프랑스 핵무기 보유량 증대할 것”' suggests a shift in NEWS dynamics. | LOW |
-| 우주사령부가 이란 선제공격…“카타르·UAE 등이 방공포대 지원” | Structural implication: '우주사령부가 이란 선제공격…“카타르·UAE 등이 방공포대 지원”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
