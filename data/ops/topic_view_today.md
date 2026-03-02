@@ -12,12 +12,22 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 뉴욕증시, 美 이란 공격에도 보합권 혼조 마감…나스닥 0.4%↑ - 연합뉴스 한민족센터 (ID: unknown)
+### 뉴욕증시, 이란 전쟁은 불확실성 제거일뿐…나스닥 강세 마감 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '미사일 부품' 강자 단암시스템즈 "英·佛 방산기업 납품 추진" - 한국경제 (ID: unknown)
+### 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 아파트 '반전세' 확산…전월세 전환율도 상승 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 중동 정세 불안에 글로벌 방산 공급망 재편 속 K방산 기회 확대 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,17 +37,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 영하 40도서 전기차·자율주행 기술 연마…車·부품기업 집결 - 마켓인 (ID: unknown)
+### 안력감축 대신 '직원 빚 탕감'…매출 3조 '부활 드라마' 쓴 사모펀드 - 마켓인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘대륙의 카피캣’ 조롱받던 샤오미...스마트폰·전기차·가전 아우르는 생태계 구축 - 조선일보 (ID: unknown)
+### 美 독점에 흔들린 日, 해법은 K-솔루션?…"기술보다 문화가 승부 가른다" [only 이데일리] - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 임상 성공률 87%, 기술이전 69건… R&D '타율왕' 파마비전 - 히트뉴스 (ID: unknown)
+### “AI가 집과 자동차를 하나로”…샤오미, MWC 2026서 미래 생태계 공개 - 뉴스탭 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +57,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 위기 속 해운사 주가 급등: Maersk, Hapag-Lloyd By Investing.com - Investing.com 한국어 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "호르무즈 봉쇄 시 해상운임 최대 80% 폭증 가능성도" - 연합뉴스TV (ID: unknown)
+### 중동발 충격에 경제부처 '총력 대응' - 신아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +67,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 (ID: unknown)
+### 극한 車시험장에서 첨단의료단지까지…'中관광섬' 하이난의 변신 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [MWC 2026] 노태문 삼성전자 사장 만난 정재헌 SK텔레콤 대표 “필름회사 망하겠네요” - 조선비즈 - Chosunbiz (ID: unknown)
+### ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,11 +102,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [타운홀 미팅] 李대통령, 전북 타운홀미팅서 밝힌 전북에 대한 ‘인식’과 ‘진심’ - v.daum.net (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 한온시스템 과징금 14억…금형업계 '구두계약 관행' 도마 위에 - 리드경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -110,6 +110,56 @@ No SHADOW candidates today.
 ### 2월 서울 아파트값 오름폭 확대…21개월 연속 상승 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “10년전 10억에 산 집, 20억에 팔면 세금이 무려”...다주택, 빨리 팔거나 증여하거나 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “호르무즈 오지 말라, 통과 선박 다 불태우겠다”…경고 날린 이란 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “깊이 생각지 못한 제 불찰”…3·1절 앞두고 日여행 영상 올린 여배우 사과 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “후배들 사줘봐야 지갑만 얇아져”...부장님은 오늘 점심도 편의점 간다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 항공 숙박에 日 큐슈서 36홀 골프가 99만원...선착순 100명만 갑니다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 뉴욕증시, 이란 사태에도 충격 제한적…유가·천연가스는 급등 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “싸고 좋은 車 없다”더니…벤츠급인데 3천만원대로 뚝, ‘가격파괴’ 통했다 [왜몰랐을카] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “반도체 부족에 생산라인 늘린다고 난리”…한화비전·원익IPS 주목받는 이유 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매경이 전하는 세상의 지식 (매-세-지, 3월 3일) (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전국 흐리고 강원 산지엔 많은 눈…낮 최고 16도 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 애플, AI 성능강화한 ‘보급형 아이폰17e’ 출시…가격은? (ID: unknown)
@@ -158,56 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 우주사령부가 이란 선제공격…“카타르·UAE 등이 방공포대 지원” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 미 전쟁장관 “끝까지 갈것”…‘지상군 투입’ 배제안해 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 공습에 靑 비상 대응 …위성락 “모든 분야서 대비” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 美 “카타르·UAE·쿠웨이트·요르단·사우디가 방공포대 지원” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 공격에 중상 미군 1명 치료 중 숨져…사망자 4명으로 늘어 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘연봉 수억’ 전문가 영입보다 김과장 키우는게 낫다…‘돈 되는 AI’ 설계 비법 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 靑 “중동 정세, 지나치게 우려 않아도 돼…비상대응 체제 유지” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 안규백, 美 전쟁부 정책차관과 통화…중동 상황 공유 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 정부 “7개월치 석유 비축”...유가 100불 넘으면 경제 비상 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 정부 “원유 석유 208일분 비축…3일 증시 개장 전 관계부처 회의” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 유가 치솟고 아시아 증시 불안…‘전쟁 암운’에 숨죽인 자산시장 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
