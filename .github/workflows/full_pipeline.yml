@@ -52,30 +52,23 @@ jobs:
         run: |
           echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - name: Run Data Collection
+      - name: A1: Data Processing Agent (Collect & Normalize)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: |
-          python -m src.collectors.market_collectors || echo "[WARN] Market collectors failed"
-          python -m src.collectors.fred_collector || echo "[WARN] FRED collector failed"
-          python -m src.collectors.ecos_collector || echo "[WARN] ECOS collector failed"
-          python -m src.collectors.coingecko_collector || echo "[WARN] CoinGecko collector failed"
-          python -m src.collectors.policy_collector || echo "[WARN] Policy collector failed"
-          echo "[PIPELINE] Data collection completed"
+          python -m src.agents.data_agent --emit-runlog
+          echo "[PIPELINE] A1: Data collection & normalization completed"
 
-      - name: Run Content Topic Gate
-        run: |
-          python -m src.pipeline.run_topic_gate --as-of-date "${AS_OF_DATE}"
-
-      - name: Run engine
+      - name: A2: Signal Discovery Agent (Anomaly -> Topics)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
-          python -m src.engine
+          python -m src.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
+          echo "[PIPELINE] A2: Signal discovery completed"
 
 
       - name: Notify Telegram (Daily Summary)
@@ -296,91 +289,50 @@ jobs:
 
           echo "[VERIFY][OK] Core dataset confidence verification passed"
 
-      - name: Track Ops Freshness (Phase 36-B)
+      - name: A3: Narrative Intelligence Agent (Scoring & Stress)
         run: |
-          python -m src.ops.freshness_tracker
+          python -m src.agents.narrative_agent --emit-runlog
+          echo "[PIPELINE] A3: Narrative intelligence completed"
 
-      - name: Update Ops Scoreboard (Phase 36-B)
+      - name: A4: Decision Surface Agent (Approval & Card)
         run: |
-          python -m src.ops.ops_scoreboard
+          python -m src.agents.decision_agent --emit-runlog
+          echo "[PIPELINE] A4: Decision assets generated"
 
-      - name: Run Topic Candidate Gate (Phase 39)
+      - name: A5: Video Intelligence Agent (Video Pool)
         run: |
-          python -m src.topics.topic_candidate_gate
-
-      - name: Integrate Final Decision Card (Phase 38)
-        run: |
-          python -m src.decision.final_decision_card
-
-      - name: Run IssueSignal Engine (IS-49 Loop Lock)
-        run: |
-          python -m src.issuesignal.run_issuesignal --mode=production
-
-      - name: Run Intelligence Layers (Phase 17/18)
-        run: |
-          python -m src.ops.narrative_intelligence_layer
-          python -m src.ops.video_intelligence_layer
-
-      - name: Generate Dashboard (Update)
-        run: |
-          python -m src.dashboard.topic_exporter
-          python -m src.dashboard.dashboard_generator
+          python -m src.agents.video_agent --emit-runlog
+          echo "[PIPELINE] A5: Video candidate pool updated"
 
 
-      - name: Generate Ops Metadata
-        run: |
-          python -m src.ops.dashboard_manifest
-          python -m src.ops.health_check
-          python -m src.ops.event_coverage
+
 
       - name: Prepare Docs for Deployment
+      - name: A6: SSOT Publishing Agent (Asset Delivery)
         run: |
-          # [IS-56 / LOCKDOWN] Safe cleanup: delete all docs/data EXCEPT decision dir
-          # WHY: rm -rf docs/data would nuke manifest.json — use targeted removal instead
+          # Safe cleanup: delete all docs/data EXCEPT decision dir
           find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' -exec rm -rf {} + 2>/dev/null || true
           mkdir -p docs/data/decision
           mkdir -p docs/exports
           mkdir -p docs/issuesignal
 
-          # COPY DATA ONLY (do not touch index.html)
+          # Sync secondary assets before SSOT publish
           cp -r data/dashboard/* docs/data/ 2>/dev/null || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ 2>/dev/null || true
           cp -r data/reports docs/data/ 2>/dev/null || true
-
-          # [LOCKDOWN] Verify decision source exists before syncing
-          if [ ! -d "data/decision" ]; then
-            echo "❌ LOCKDOWN: data/decision directory missing — skipping decision sync"
-          else
-            CARD_COUNT=$(find data/decision -name "final_decision_card.json" | wc -l | tr -d ' ')
-            echo "[LOCKDOWN] data/decision exists, ${CARD_COUNT} decision cards found"
-            # rsync WITHOUT --delete: preserves existing docs/data/decision files
-            rsync -a data/decision/ docs/data/decision/
-            echo "[LOCKDOWN] rsync complete"
-          fi
-
+          
           # [LOCKDOWN] Sync editorial_selection files (if available)
           if [ -d "data/editorial" ]; then
             mkdir -p docs/data/decision/editorial
             cp data/editorial/editorial_selection_*.json docs/data/decision/editorial/ 2>/dev/null || true
-            ED_COUNT=$(ls docs/data/decision/editorial/ 2>/dev/null | wc -l | tr -d ' ')
-            echo "[LOCKDOWN] editorial synced: ${ED_COUNT} files"
           fi
 
-          # [NO-DUP-LOCK] CI Guard: Enforce SSOT & Responsibility Contracts
-          echo "[GUARD] Verifying architecture policies..."
-          python3 scripts/verify_no_duplicate_publishers.py
-          python3 scripts/verify_collector_policy.py
-          python3 scripts/verify_no_scoring_leak.py
+          # Run Official Agent A6
+          python -m src.agents.publish_agent --emit-runlog
           
-          # [IS-100] Generate manifest + Publish UI Decision Assets
-          echo "[PUBLISH] Using publish SSOT: src/ui/run_publish_ui_decision_assets.py"
-          echo "[PUBLISH] Publish SSOT path details:"
-          ls -al src/ui/run_publish_ui_decision_assets.py
-          python -m src.ui.run_publish_ui_decision_assets
-
           # [IS-51] Flatten operational dashboard
           find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \; 2>/dev/null || true
-
+          
           # [IS-100] Generate Build Metadata
           echo "{\"commit\": \"$GITHUB_SHA\", \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\", \"date_kst\": \"$(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M:%S KST')\"}" > docs/data/build_meta.json
 
