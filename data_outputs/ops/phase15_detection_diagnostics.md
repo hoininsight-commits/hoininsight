@@ -10,7 +10,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 74.83
+- **Final Score**: 60.41
 
 ## Topic: 거시경제 이상징후: rates_fed_funds_fred
 - **Actors**: TIER_1:FED, TIER_4:MARKET
@@ -22,7 +22,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 69.42
+- **Final Score**: 60.41
 
 ## Topic: 거시경제 이상징후: inflation_kor_cpi_ecos
 - **Actors**: TIER_4:MARKET
@@ -34,7 +34,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 69.42
+- **Final Score**: 60.41
 
 ## Topic: 거시경제 이상징후: rates_us10y_fred
 - **Actors**: TIER_4:MARKET
@@ -70,11 +70,11 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:POLICY, Capital Flow:FLOW, Structural Capital:구조적
 - **Conflict**: Tightening_Inflow, Macro_Price_Divergence
-- **Final Score**: 91.32
+- **Final Score**: 82.3
 
 ## Topic: 거시경제 이상징후: inflation_cpi_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 74.83
+- **Final Score**: 60.41
 

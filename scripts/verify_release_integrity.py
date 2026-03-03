@@ -78,6 +78,18 @@ def main():
                 print("❌ [FAIL] Regime evidence missing"); all_passed = False
         except: pass
 
+    print("\n[V4.3] Checking Investment OS assets (PHASE-24)...")
+    os_path = docs_ops / "investment_os_state.json"
+    if not check_file(os_path): all_passed = False
+    else:
+        try:
+            o_data = json.loads(os_path.read_text("utf-8"))
+            if not o_data.get("regime", {}).get("state") or not o_data.get("os_summary", {}).get("stance"):
+                print("❌ [FAIL] OS state/stance missing"); all_passed = False
+            if len(o_data.get("priority_topics", [])) < 1:
+                print("❌ [FAIL] OS priority topics empty"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():

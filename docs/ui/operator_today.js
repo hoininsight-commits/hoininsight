@@ -105,10 +105,16 @@ export async function initTodayView(container) {
         };
 
         let regimeData = null;
+        let osData = null;
         try {
             const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
             if (regimeResp.ok) regimeData = await regimeResp.json();
         } catch (re) { console.warn("Regime data missing or invalid:", re); }
+
+        try {
+            const osResp = await fetch('data/ops/investment_os_state.json?v=' + Date.now());
+            if (osResp.ok) osData = await osResp.json();
+        } catch (oe) { console.warn("Investment OS data missing:", oe); }
 
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
@@ -118,7 +124,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData);
 
     } catch (e) {
         console.error(e);
@@ -185,7 +191,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -351,6 +357,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
             </div>
 
             ${renderRegimeSection(regimeData)}
+            ${renderOSSection(osData)}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -504,6 +511,137 @@ function renderRegimeSection(data) {
                 <div class="space-y-1">
                     <div class="text-[9px] font-black text-red-900/60 uppercase tracking-widest">Risk Note</div>
                     <p class="text-[11px] font-medium text-red-900/80 italic">${s.risk_note || '-'}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderOSSection(data) {
+    if (!data || !data.priority_topics) return '';
+
+    const s = data.os_summary || {};
+    const topics = data.priority_topics || [];
+
+    const getStanceColor = (stance) => {
+        if (stance?.includes('DEFENSIVE')) return 'text-orange-500 bg-orange-500/10 border-orange-500/20';
+        if (stance?.includes('AGGRESSIVE')) return 'text-green-500 bg-green-500/10 border-green-500/20';
+        return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+    };
+
+    return `
+        <div id="os-section" class="space-y-6 mb-10 animate-in fade-in slide-in-from-bottom-4">
+            <!-- OS HEADER: STANCE & FOCUS -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="md:col-span-1 bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-center items-center text-center">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2">Operational Stance</div>
+                    <div class="px-3 py-1 rounded-full border text-[11px] font-black uppercase ${getStanceColor(s.stance)}">
+                        ${s.stance || 'NEUTRAL'}
+                    </div>
+                </div>
+                <div class="md:col-span-3 bg-slate-900/60 border border-slate-800 rounded-xl p-5 grid grid-cols-2 gap-6">
+                    <div>
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2">Today's Focus</div>
+                        <div class="flex flex-wrap gap-2">
+                            ${(s.focus || []).map(f => `<span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">${f}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-black text-red-900/60 uppercase tracking-widest mb-2">Do Not Do</div>
+                        <div class="space-y-1">
+                            ${(s.do_not_do || []).map(d => `<div class="text-[10px] font-medium text-slate-400 flex gap-2"><span>•</span> ${d}</div>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRIORITY TOPICS -->
+            <div class="space-y-3">
+                <h3 class="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] px-1 mb-2 flex items-center gap-2">
+                    <span>Priority Operational Cards</span>
+                    <div class="h-[1px] bg-slate-800 flex-1"></div>
+                </h3>
+                <div class="grid grid-cols-1 gap-4">
+                    ${topics.map(t => renderPriorityTopicCard(t)).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderPriorityTopicCard(t) {
+    const getClassColor = (c) => {
+        if (c === 'OPPORTUNITY') return 'text-green-500 bg-green-500/10 border-green-500/20';
+        if (c === 'RISK') return 'text-red-500 bg-red-500/10 border-red-500/20';
+        return 'text-slate-400 bg-slate-800 border-slate-700';
+    };
+
+    return `
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden group hover:border-slate-700 transition-colors">
+            <div class="p-5 space-y-4">
+                <div class="flex justify-between items-start">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getClassColor(t.os_classification)}">${t.os_classification}</span>
+                            <h4 class="text-sm font-black text-white group-hover:text-blue-400 transition-colors">${t.title}</h4>
+                        </div>
+                        <div class="flex gap-2 text-[10px] text-slate-500 font-bold uppercase ml-1">
+                            <span>Axis: ${t.axis.join(', ')}</span>
+                            <span>•</span>
+                            <span>Int: ${t.intensity}%</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[9px] font-black text-slate-600 uppercase">Action Intent</div>
+                        <div class="text-[11px] font-black text-slate-300 uppercase">${t.action_card.intent}</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-800/50">
+                    <div class="space-y-3">
+                        <div>
+                            <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2">Reasoning</div>
+                            <div class="space-y-1">
+                                ${t.reasoning.map(r => `<div class="text-[10px] text-slate-400 flex gap-2"><span>-</span> ${r}</div>`).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[9px] font-black text-blue-900/60 uppercase tracking-widest mb-2">Checklist</div>
+                            <div class="space-y-1.5">
+                                ${t.action_card.checklist.map(c => `
+                                    <div class="flex items-center gap-2 group cursor-pointer">
+                                        <div class="w-3 h-3 border border-slate-700 rounded-sm flex-shrink-0"></div>
+                                        <span class="text-[10px] font-medium text-slate-300 group-hover:text-white transition-colors">${c}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2">Linked Exposure</div>
+                        ${t.linked_stocks.length > 0 ? `
+                            <div class="border border-slate-800 rounded-lg overflow-hidden bg-black/20">
+                                <table class="w-full text-left text-[9px]">
+                                    <thead class="bg-slate-800/50 text-slate-500 uppercase font-black border-b border-slate-800">
+                                        <tr>
+                                            <th class="px-2 py-1.5">Ticker</th>
+                                            <th class="px-2 py-1.5">Name</th>
+                                            <th class="px-2 py-1.5">Exposure</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-800">
+                                        ${t.linked_stocks.map(s => `
+                                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                                <td class="px-2 py-1.5 font-mono text-slate-400">${s.ticker}</td>
+                                                <td class="px-2 py-1.5 font-bold text-slate-300">${s.name}</td>
+                                                <td class="px-2 py-1.5 text-slate-500">${s.exposure_type}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ` : '<div class="text-[10px] text-slate-700 italic border border-dashed border-slate-800/50 rounded-lg p-4 text-center">연결 종목 없음</div>'}
+                    </div>
                 </div>
             </div>
         </div>

@@ -78,6 +78,22 @@ def main():
             if not r_data.get("regime", {}).get("policy_state"): valid = False; print("❌ policy_state missing")
             if len(r_data.get("evidence", [])) < 1: valid = False; print("❌ evidence empty")
 
+        # [PHASE-24] Investment OS Layer
+        o_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/investment_os_state.json"
+        o_data = fetch_json(o_url)
+        if not o_data: valid = False; print("❌ investment_os_state.json missing")
+        else:
+            print(f"✅ OS state parsed. Stance: {o_data.get('os_summary', {}).get('stance')}")
+            if len(o_data.get("priority_topics", [])) < 1: valid = False; print("❌ priority_topics empty")
+
+        b_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/investment_os_brief.md"
+        req_b = urllib.request.Request(b_url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req_b, context=ssl._create_unverified_context(), timeout=10) as resp_b:
+                if resp_b.getcode() == 200: print("✅ OS brief (markdown) found")
+                else: valid = False; print("❌ investment_os_brief.md found but code not 200")
+        except: valid = False; print("❌ investment_os_brief.md missing")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

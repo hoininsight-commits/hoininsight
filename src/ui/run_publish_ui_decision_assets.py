@@ -223,5 +223,15 @@ def _publish_ops_assets():
         shutil.copy2(src_regime, dest_dir / "regime_state.json")
         print(f"[PUBLISH] regime_state.json → {dest_dir}")
 
+    # 6. [PHASE-24] Investment OS Layer
+    src_os_json = ROOT / "data_outputs" / "ops" / "investment_os_state.json"
+    src_os_md = ROOT / "data_outputs" / "ops" / "investment_os_brief.md"
+    if src_os_json.exists():
+        shutil.copy2(src_os_json, dest_dir / "investment_os_state.json")
+        print(f"[PUBLISH] investment_os_state.json → {dest_dir}")
+    if src_os_md.exists():
+        shutil.copy2(src_os_md, dest_dir / "investment_os_brief.md")
+        print(f"[PUBLISH] investment_os_brief.md → {dest_dir}")
+
 if __name__ == "__main__":
     main()

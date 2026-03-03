@@ -1,0 +1,45 @@
+{
+  "scoreboard_version": "phase36b_v1",
+  "generated_at": "2026-03-04T08:21:42.861947",
+  "lookback_days": 7,
+  "success_count": 6,
+  "fail_count": 1,
+  "avg_duration_minutes": 6.2,
+  "history": [
+    {
+      "date": "2026-03-04",
+      "status": "FAIL/MISSING",
+      "duration_minutes": 0
+    },
+    {
+      "date": "2026-03-03",
+      "status": "SUCCESS",
+      "duration_minutes": 6.2
+    },
+    {
+      "date": "2026-03-02",
+      "status": "SUCCESS",
+      "duration_minutes": 7.2
+    },
+    {
+      "date": "2026-03-01",
+      "status": "SUCCESS",
+      "duration_minutes": 5.2
+    },
+    {
+      "date": "2026-02-28",
+      "status": "SUCCESS",
+      "duration_minutes": 6.2
+    },
+    {
+      "date": "2026-02-27",
+      "status": "SUCCESS",
+      "duration_minutes": 7.2
+    },
+    {
+      "date": "2026-02-26",
+      "status": "SUCCESS",
+      "duration_minutes": 5.2
+    }
+  ]
+}
