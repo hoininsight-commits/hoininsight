@@ -15,6 +15,7 @@ export async function initVideoView(container) {
         const poolPaths = ['./data/ops/video_candidate_pool.json', '../data/ops/video_candidate_pool.json', './docs/data/ops/video_candidate_pool.json'];
         const scriptPaths = ['./data/ops/video_script_pack.json', '../data/ops/video_script_pack.json', './docs/data/ops/video_script_pack.json'];
         const linkagePaths = ['./data/ops/stock_linkage_pack.json', '../data/ops/stock_linkage_pack.json', './docs/data/ops/stock_linkage_pack.json'];
+        const densityPaths = ['./data/ops/conflict_density_pack.json', '../data/ops/conflict_density_pack.json', './docs/data/ops/conflict_density_pack.json'];
 
         let poolData = null;
         for (const path of poolPaths) {
@@ -40,6 +41,14 @@ export async function initVideoView(container) {
             } catch (e) { }
         }
 
+        let densityData = null;
+        for (const path of densityPaths) {
+            try {
+                const res = await fetch(path);
+                if (res.ok) { densityData = await res.json(); break; }
+            } catch (e) { }
+        }
+
         if (!poolData || !poolData.top_candidates || poolData.top_candidates.length === 0) {
             renderEmptyVideoState(container);
             return;
@@ -48,10 +57,12 @@ export async function initVideoView(container) {
         const mergedCandidates = poolData.top_candidates.map(c => {
             const sMatch = scriptData?.candidates?.find(sc => sc.dataset_id === c.dataset_id);
             const lMatch = linkageData?.topics?.find(lt => lt.dataset_id === c.dataset_id);
+            const dMatch = densityData?.topics?.find(dt => dt.dataset_id === c.dataset_id);
             return {
                 ...c,
                 script: sMatch ? sMatch.script : null,
-                linkage: lMatch || null
+                linkage: lMatch || null,
+                density: dMatch || null
             };
         });
 
@@ -147,6 +158,60 @@ function renderVideoCard(c, idx) {
         </div>
     ` : '';
 
+    // ⚔️ Conflict Density Section
+    const density = c.density;
+    const densitySection = density ? `
+        <div class="mt-8 pt-8 border-t border-slate-800/50">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-[10px] font-black text-red-500 uppercase tracking-widest">⚔️ Conflict Density (Structural Analysis)</span>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Density Summary -->
+                <div class="text-[11px] text-slate-300 font-medium leading-relaxed bg-red-500/5 border border-red-500/10 p-4 rounded-xl">
+                    ${density.density_text.summary}
+                </div>
+
+                <!-- Structured Paragraph -->
+                <div class="grid grid-cols-1 gap-2">
+                    ${density.density_text.structured_paragraph.map(p => `
+                        <div class="text-[10px] text-slate-400 flex gap-2">
+                            <span class="text-red-500/50">•</span>
+                            <span>${p}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <!-- Contradiction Pairs -->
+                ${density.density_text.contradiction_pairs.length > 0 ? `
+                    <div class="mt-4 space-y-2">
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">탐지된 상충 후보 (Contradiction Candidates)</div>
+                        <div class="grid grid-cols-1 gap-2">
+                            ${density.density_text.contradiction_pairs.map(pair => `
+                                <div class="bg-black/60 border border-red-500/20 p-3 rounded-lg flex flex-col gap-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-[10px] font-black text-white">${pair.pattern}</span>
+                                        <span class="text-[8px] bg-red-500 text-white px-1.5 py-0.5 rounded font-black">CANDIDATE</span>
+                                    </div>
+                                    <div class="text-[9px] text-slate-500 leading-tight">${pair.description}</div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span class="text-[8px] font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded border border-red-400/20">${pair.lhs_label}</span>
+                                        <span class="text-slate-700 text-[10px]">vs</span>
+                                        <span class="text-[8px] font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded border border-blue-400/20">${pair.rhs_label}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : `
+                    <div class="mt-4 text-[9px] font-black text-slate-600 uppercase tracking-widest text-center py-2 bg-slate-800/20 rounded">
+                        상충 후보 없음 (단일 축 또는 입력 밀도 충분)
+                    </div>
+                `}
+            </div>
+        </div>
+    ` : '';
+
     const scriptSection = script ? `
         <div class="mt-8 pt-8 border-t border-slate-800/50 space-y-6">
             <div class="flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span><span class="text-[10px] font-black text-blue-500 uppercase tracking-widest">Auto-Generated Script</span></div>
@@ -157,6 +222,7 @@ function renderVideoCard(c, idx) {
                     <div class="bg-black/40 border border-slate-800 rounded-xl p-4"><div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-3">인과 사슬 (Causal Chain)</div><div class="space-y-2 text-[11px]"><div class="flex justify-between items-center"><span class="text-slate-500 uppercase font-bold">CAUSE</span> <span class="text-white font-medium">${script.causal_chain.cause || 'N/A'}</span></div><div class="flex justify-between items-center"><span class="text-slate-500 uppercase font-bold">SHIFT</span> <span class="text-white font-medium">${script.causal_chain.structural_shift || 'N/A'}</span></div><div class="flex justify-between items-center"><span class="text-slate-500 uppercase font-bold">RESULT</span> <span class="text-white font-medium">${script.causal_chain.market_consequence || 'N/A'}</span></div></div></div>
                 </div>
                 ${linkageSection}
+                ${densitySection}
             </div>
         </div>
     ` : `<div class="mt-8 pt-8 border-t border-slate-800/50 text-center py-4"><span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Script Generation in progress...</span></div>`;

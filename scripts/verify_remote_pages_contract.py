@@ -57,6 +57,18 @@ def main():
             print(f"✅ Stock linkage parsed. Topics: {topics_count}")
             if topics_count == 0: valid = False; print("❌ linkage topics empty")
 
+        # [PHASE-22C] Video Conflict Density Pack
+        d_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/conflict_density_pack.json"
+        d_data = fetch_json(d_url)
+        if not d_data: valid = False; print("❌ conflict_density_pack.json missing")
+        else:
+            topics_count = len(d_data.get("topics", []))
+            print(f"✅ Conflict density parsed. Topics: {topics_count}")
+            if topics_count == 0: valid = False; print("❌ density topics empty")
+            for t in d_data.get("topics", []):
+                p = t.get("density_text", {}).get("structured_paragraph", [])
+                if len(p) < 3: valid = False; print(f"❌ paragraph density low for {t.get('dataset_id')}")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

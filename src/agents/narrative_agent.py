@@ -10,16 +10,20 @@ class NarrativeAgent(BaseAgent):
         )
 
     def execute(self):
-        # Step 1: Narrative Intelligence Layer (WhyNow + Stress)
+        # Step 1: Narrative Intelligence Layer
         self.logger.info("Step 1: Running Narrative Intelligence Layer...")
         self._run_module("src.ops.narrative_intelligence_layer")
         
-        # Step 2: Freshness Tracking (Phase 36-B)
-        self.logger.info("Step 2: Tracking Ops Freshness...")
+        # Step 2: [PHASE-22C] Conflict Density Layer
+        self.logger.info("Step 2: [PHASE-22C] Running Conflict Density Layer...")
+        self._run_module("src.ops.conflict_density_layer")
+        
+        # Step 3: Freshness Tracking (Phase 36-B)
+        self.logger.info("Step 3: Tracking Ops Freshness...")
         self._run_module("src.ops.freshness_tracker")
         
-        # Step 3: Ops Scoreboard (Phase 36-B)
-        self.logger.info("Step 3: Updating Ops Scoreboard...")
+        # Step 4: Ops Scoreboard (Phase 36-B)
+        self.logger.info("Step 4: Updating Ops Scoreboard...")
         self._run_module("src.ops.ops_scoreboard")
         
         return {
