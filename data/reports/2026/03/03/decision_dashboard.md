@@ -189,7 +189,6 @@
 | [속보] 코스피 급락세, 매도 사이드카 발동 - 지디넷코리아 | Structural implication: '[속보] 코스피 급락세, 매도 사이드카 발동 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 이란 사태 '첩첩산중'…이억원 "견조한 펀더멘털로 정책 대응 능력 충분" - v.daum.net | Structural implication: '이란 사태 '첩첩산중'…이억원 "견조한 펀더멘털로 정책 대응 능력 충분" - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | "아빠"…LG그룹 수장 최초 MWC 무대 선 홍범식 사장의 첫 마디 [MWC 2026] - 한국경제 | Structural implication: '"아빠"…LG그룹 수장 최초 MWC 무대 선 홍범식 사장의 첫 마디 [MWC 2026] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 유조선 용선료 하루 40만 달러 돌파…이란 전쟁 이후 두 배 올랐다 - v.daum.net | Structural implication: '[단독] 유조선 용선료 하루 40만 달러 돌파…이란 전쟁 이후 두 배 올랐다 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 | Structural implication: '홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 전쟁에 방산·해운株 폭등…한화에어로·HMM, 10% 이상↑ - 연합인포맥스 | Structural implication: '전쟁에 방산·해운株 폭등…한화에어로·HMM, 10% 이상↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 그릭요거트, 제품별 영양성분 ‘천차만별’···당류 함량 제품간 최대 10배까지 벌어져 - 조선일보 | Structural implication: '그릭요거트, 제품별 영양성분 ‘천차만별’···당류 함량 제품간 최대 10배까지 벌어져 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -202,9 +201,10 @@
 | '로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제 | Structural implication: ''로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 | Structural implication: '‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | '아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - v.daum.net | Structural implication: ''아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| '더는 못 참아' 예금 싹 다 뺐다…개미들 쓸어담는 '이 상품' 정체 [일확연금 노후부자] - 한국경제 | Structural implication: ''더는 못 참아' 예금 싹 다 뺐다…개미들 쓸어담는 '이 상품' 정체 [일확연금 노후부자] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “앞으로 더 떨어질텐데 지금 왜 사요”…불붙던 아파트 매수 심리 ‘급변’ - 매일경제 | Structural implication: '“앞으로 더 떨어질텐데 지금 왜 사요”…불붙던 아파트 매수 심리 ‘급변’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| '더는 못 참아' 예금 싹 다 뺐다…개미들 쓸어담는 '이 상품' 정체 [일확연금 노후부자] - 한국경제 | Structural implication: ''더는 못 참아' 예금 싹 다 뺐다…개미들 쓸어담는 '이 상품' 정체 [일확연금 노후부자] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | [하메네이 사망] 이란 공습 직전 '폴리마켓'서 대규모 베팅…내부자거래 논란 - 연합뉴스 | Structural implication: '[하메네이 사망] 이란 공습 직전 '폴리마켓'서 대규모 베팅…내부자거래 논란 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 21조 던진 외국인, 삼성전자·하이닉스 팔고 소부장으로 이동 - 조선일보 | Structural implication: '21조 던진 외국인, 삼성전자·하이닉스 팔고 소부장으로 이동 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 서울아산병원-UNIST ‘의료 AI 연구’ 맞손 | Structural implication: '서울아산병원-UNIST ‘의료 AI 연구’ 맞손' suggests a shift in NEWS dynamics. | LOW |
 | 日 IT기업, 9년째 영진전문대에 장학금 기탁 | Structural implication: '日 IT기업, 9년째 영진전문대에 장학금 기탁' suggests a shift in NEWS dynamics. | LOW |
 | ‘간편결제 솔루션’ 페이업, 신규 투자 유치 추진 | Structural implication: '‘간편결제 솔루션’ 페이업, 신규 투자 유치 추진' suggests a shift in NEWS dynamics. | LOW |
