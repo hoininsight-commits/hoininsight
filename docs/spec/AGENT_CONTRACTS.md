@@ -64,4 +64,4 @@
   - **SSOT Purest**: **로직 복제 금지**. 반드시 내부적으로 `src.ui.run_publish_ui_decision_assets`만 호출해야 함.
   - **No Calculation**: 어떠한 점수 계산이나 해시 생성 로직도 포함해서는 안 됨.
   - **Failure Mode**: `manifest.json` 생성 실패 시 배포를 중단하고 Exit 1.
-- **Required Fields**: `files` (manifest 내), `picks` (today 내).
+- **Required Fields**: `files` (manifest 내), `top_topics` (today 내).

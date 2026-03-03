@@ -118,6 +118,7 @@ class VideoIntelligenceLayer:
                     "narrative_score": ns,
                     "video_score": round(v_score, 2),
                     "why_now_type": why_now_type,
+                    "video_ready": True,
                     "structural_axes": t.get("_diag_axis_matches", [])
                 })
 

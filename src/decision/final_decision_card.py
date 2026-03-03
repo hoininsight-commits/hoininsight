@@ -466,6 +466,8 @@ def main():
         "decision_rationale": structural_rationale,  # Legacy rationale
         "key_data": key_data,
         "top_topics": top_topics,                    # Full Top 5 List
+        "status": "APPROVED" if (structural_topic_title or anchor_topic_title) else "REJECTED",
+        "decision_date": ymd_dash,
         "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
     }
 
