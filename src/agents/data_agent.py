@@ -20,7 +20,7 @@ class DataAgent(BaseAgent):
         self._run_module("src.collectors.ecos_collector")
         
         self.logger.info("Step 4: Running CoinGecko Collector...")
-        self._run_module("src.collectors.coingecko_collector")
+        self._run_module("src.collectors.coingecko_btc")
         
         self.logger.info("Step 5: Running Policy Collector...")
         self._run_module("src.collectors.policy_collector")
