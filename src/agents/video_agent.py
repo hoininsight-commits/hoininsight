@@ -14,13 +14,17 @@ class VideoAgent(BaseAgent):
         self.logger.info("Step 1: Running Video Intelligence Layer...")
         self._run_module("src.ops.video_intelligence_layer")
         
-        # Step 2: [PHASE-22A] Script Intelligence Layer
-        self.logger.info("Step 2: [PHASE-22A] Running Script Intelligence Layer...")
+        # Step 2: [PHASE-22B] Structural Stock Linkage Layer
+        self.logger.info("Step 2: [PHASE-22B] Running Structural Stock Linkage Layer...")
+        self._run_module("src.ops.structural_stock_linkage_layer")
+        
+        # Step 3: [PHASE-22A] Script Intelligence Layer
+        self.logger.info("Step 3: [PHASE-22A] Running Script Intelligence Layer...")
         self._run_module("src.ops.video_script_intelligence_layer")
         
         return {
             "entrypoint": "VideoAgent",
-            "modules_run": ["video_intelligence_layer", "video_script_intelligence_layer"],
+            "modules_run": ["video_intelligence_layer", "structural_stock_linkage_layer", "video_script_intelligence_layer"],
             "status": "COMPLETED"
         }
 

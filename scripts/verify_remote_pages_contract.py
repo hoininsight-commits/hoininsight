@@ -48,6 +48,15 @@ def main():
             for c in s_data.get("candidates", []):
                 if not c.get("script", {}).get("hook"): valid = False; print(f"❌ hook missing for {c.get('dataset_id')}")
 
+        # [PHASE-22B] Video Stock Linkage Pack
+        l_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/stock_linkage_pack.json"
+        l_data = fetch_json(l_url)
+        if not l_data: valid = False; print("❌ stock_linkage_pack.json missing")
+        else:
+            topics_count = len(l_data.get("topics", []))
+            print(f"✅ Stock linkage parsed. Topics: {topics_count}")
+            if topics_count == 0: valid = False; print("❌ linkage topics empty")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

@@ -48,10 +48,21 @@ def main():
     print("\n[V4] Checking data assets (current spec)...")
     if not check_file(docs_decision / "today.json"): all_passed = False
     
-    print("\n[V4.1] Checking video intelligence assets (PHASE-22A)...")
+    print("\n[V4.1] Checking video intelligence assets (PHASE-22A/B)...")
     docs_ops = docs / "data" / "ops"
-    for f in ["video_candidate_pool.json", "video_script_pack.json"]:
+    for f in ["video_candidate_pool.json", "video_script_pack.json", "stock_linkage_pack.json"]:
         if not check_file(docs_ops / f, required=True): all_passed = False
+    
+    # [PHASE-22B] Deep Search for fields
+    linkage_path = docs_ops / "stock_linkage_pack.json"
+    if linkage_path.exists():
+        try:
+            l_data = json.loads(linkage_path.read_text("utf-8"))
+            for t in l_data.get("topics", []):
+                if not t.get("dataset_id") or not t.get("stocks"):
+                    print(f"❌ [FAIL] Linkage pack topic missing fields: {t.get('dataset_id')}")
+                    all_passed = False
+        except: pass
 
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"

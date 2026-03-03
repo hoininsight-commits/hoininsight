@@ -27,12 +27,15 @@ class VideoScriptIntelligenceLayer:
             self.logger.error(f"Failed to load {path}: {e}")
             return {}
 
-    def _generate_script(self, candidate: Dict, narrative_topics: List[Dict], decision_card: Dict) -> Dict:
+    def _generate_script(self, candidate: Dict, narrative_topics: List[Dict], decision_card: Dict, stock_linkage: List[Dict]) -> Dict:
         ds_id = str(candidate.get("dataset_id", ""))
         title = str(candidate.get("title", "Unknown Topic"))
         
         # Match narrative data
         narrative = next((t for t in narrative_topics if t.get("dataset_id") == ds_id), {})
+        
+        # Match linkage data
+        linkage = next((l for l in stock_linkage if l.get("dataset_id") == ds_id), {})
         
         # Source Causal Chain
         causal = narrative.get("causal_chain", {})
@@ -67,15 +70,8 @@ class VideoScriptIntelligenceLayer:
         else:
             evidence_bullets.append("엔진 데이터셋 기반 이상징후 포착")
 
-        # 4. Mentionables (Fixed logic based on data)
-        mentionables = []
-        ds_id_lower = ds_id.lower()
-        if "inflation" in ds_id_lower or "rates" in ds_id_lower:
-            mentionables.append({"ticker": "KB금융", "reason": "금리 민감주", "risk": "순이자마진(NIM) 정점 우려"})
-            mentionables.append({"ticker": "신한지주", "reason": "배당 매력", "risk": "부동산 PF 리스크"})
-        elif "semicon" in ds_id_lower or "nvidia" in ds_id_lower or "hbm" in ds_id_lower:
-            mentionables.append({"ticker": "SK하이닉스", "reason": "HBM 선도", "risk": "재고 소진 속도"})
-            mentionables.append({"ticker": "한미반도체", "reason": "TC본더 독점", "risk": "미국 수출 규제"})
+        # 4. Mentionables (Referenced from stock_linkage_layer)
+        mentionables = linkage.get("stocks", [])
         
         return {
             "hook": hook,
@@ -105,10 +101,15 @@ class VideoScriptIntelligenceLayer:
         decision_path = self.base_dir / f"data/decision/{self.ymd_path}/final_decision_card.json"
         decision_card = self._load_json(decision_path)
 
+        # [PHASE-22B] Static linkage pack
+        linkage_path = self.base_dir / "data_outputs/ops/stock_linkage_pack.json"
+        linkage_data = self._load_json(linkage_path)
+        stock_linkage = linkage_data.get("topics", [])
+
         # 2. Process Candidates
         script_candidates = []
         for cand in candidates:
-            script_data = self._generate_script(cand, narrative_topics, decision_card)
+            script_data = self._generate_script(cand, narrative_topics, decision_card, stock_linkage)
             
             # COPY-ONLY scores/metadata
             full_cand = {
@@ -158,9 +159,9 @@ class VideoScriptIntelligenceLayer:
             
             md_content += "\n### [언급 가능 종목]\n"
             for m in s['mentionables']:
-                md_content += f"- **{m['ticker']}**: {m['reason']} (리스크: {m['risk']})\n"
+                md_content += f"- **{m['ticker']}**: {m.get('exposure_type', 'N/A')} (리스크: {m.get('risk_note', 'N/A')})\n"
             
-            md_content += f"\n### [Closing]\n> {s['closing']}\n\n---\n\n"
+            md_content += "\n### [Closing]\n> {s['closing']}\n\n---\n\n"
 
         md_out = self.base_dir / "data_outputs/ops/video_script_pack.md"
         md_out.write_text(md_content, encoding='utf-8')

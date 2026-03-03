@@ -205,9 +205,11 @@ def _publish_ops_assets():
         print(f"❌ [PUBLISH] CRITICAL MISSING: {src_json}")
         # Note: In CI this should fail the build if Phase 22A is strictly enforced.
 
-    if src_md.exists():
-        shutil.copy2(src_md, dest_dir / "video_script_pack.md")
-        print(f"[PUBLISH] video_script_pack.md → {dest_dir}")
+    # 3. [PHASE-22B] Stock Linkage Pack
+    src_linkage = ROOT / "data_outputs" / "ops" / "stock_linkage_pack.json"
+    if src_linkage.exists():
+        shutil.copy2(src_linkage, dest_dir / "stock_linkage_pack.json")
+        print(f"[PUBLISH] stock_linkage_pack.json → {dest_dir}")
 
 if __name__ == "__main__":
     main()
