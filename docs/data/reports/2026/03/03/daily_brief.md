@@ -35,13 +35,13 @@ Historical context:
 - [HIGH] HY_SPREAD: data/features/anomalies/2026/03/03/credit_hy_spread_fred.json L2 Signal (score=6.00) | Mom: UP (slope=3.00) | App7d=2
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/03/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/03/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] BTCUSD: data/features/anomalies/2026/03/03/crypto_btc_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [MED] US10Y: data/features/anomalies/2026/03/03/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [MED] VIX: data/features/anomalies/2026/03/03/risk_vix_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.50) | App7d=3
-- [MED] KOSPI: data/features/anomalies/2026/03/03/index_kospi_stooq.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
 - [MED] KOR_CPI: data/features/anomalies/2026/03/03/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/03/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] BTCUSD: data/features/anomalies/2026/03/03/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] SPX: data/features/anomalies/2026/03/03/index_spx_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [LOW] KOSPI: data/features/anomalies/2026/03/03/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] NASDAQ: data/features/anomalies/2026/03/03/index_nasdaq_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] WTI: data/features/anomalies/2026/03/03/comm_wti_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] GOLD: data/features/anomalies/2026/03/03/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=2
@@ -62,9 +62,9 @@ Narrative Drift Signals:
 
 
 ## OPS HEALTH SNAPSHOT
-⚠️ SLA BREACH DETECTED: 9 axes stale (>6h)
-Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
-- System Freshness: 79.1%
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: (no meta regime detected) (Conf: 0.0%)
