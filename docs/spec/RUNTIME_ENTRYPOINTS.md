@@ -16,7 +16,7 @@
 
 ## 2. Specialized Collectors
 
-- `src.collectors.coingecko_collector`
+- `src.collectors.coingecko_btc`
 - `src.collectors.ecos_collector`
 - `src.collectors.fred_collector`
 - `src.collectors.market_collectors`
