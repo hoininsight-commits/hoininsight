@@ -12,27 +12,32 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 금융 당국, 중동 수출 기업에 20조3000억 지원 - 조선일보 (ID: unknown)
+### 중동 분쟁 여파에 20조원 중소·중견기업 지원…정부 “매일 비상대응” - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독]“배엔 한 달치 식량뿐”···호르무즈 해협 발 묶여 공포에 떠는 우리 선원들 - 경향신문 (ID: unknown)
+### [뉴욕증시] 이란 전쟁 장기화 우려에 3대 지수 하락…기술주 약세 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이란 침공 여파, 코스피 ‘뚝’…삼전·닉스 주가도 큰폭 하락 - 한겨레 (ID: unknown)
+### 유가 급등 우려에 프랑스 곳곳서 주유소 대기행렬 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코인도 주식처럼 호가창 촘촘하게…'큰손'이 거래 체결 돕는다 - 한국경제 (ID: unknown)
+### 원·달러 환율 한때 1500원 돌파...2009년 금융위기 이후 처음 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "지금이라도 기름 넣자"…50대 주부, 주유소 달려간 까닭 [현장+] - 한국경제 (ID: unknown)
+### 서부발전, 중동정세 관련 사업 영향 긴급 점검 - 에너지데일리 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 현대차 모베드, 'AW 2026'서 베일 벗는다 - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,12 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 (ID: unknown)
+### 법원, 홈플러스 회생계획안 가결 기간 두 달 연장‥"일부 매각 지켜볼 필요" - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "반등 믿는다"…증시 폭락에도 레버리지 담은 '불꽃개미' - 한국경제 (ID: unknown)
+### 경실련 “압구정현대 102억 차익에 세금 7억”…고가 아파트 유리 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,12 +62,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### CATL·파나소닉도 온다…韓 인터배터리, 글로벌 비즈니스 허브 '우뚝' - 지디넷코리아 (ID: unknown)
+### [뉴욕 금가격] 금리 급등에 상승분 반납…銀은 5% 넘게 급락 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,27 +72,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 금값 2.8% 급등·아시아 증시 줄하락…미, 이란 공격 영향 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 기아, 국내 최초 月 전기차 판매 1만대 벽 깼다 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 유가 급등에 인플레 공포 엄습 … 다이먼 "장기전땐 물가 위험 심각해질 것" - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 국제유가·주가 충격 완화 속 코인↑·美국채↓…배경은 - 연합인포맥스 (ID: unknown)
+### 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +82,79 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### CATL·파나소닉도 온다…韓 인터배터리, 글로벌 비즈니스 허브 '우뚝' - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “중동 전쟁은 물타기 좋은 찬스”...비트코인 3000개 추가매수한 ‘고래’ - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### [AI와 보안] 악성 웹사이트 방문만 해도 오픈클로 제어 권한 뺏길 수 있다 - 보안뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 조원태 회장 "통합 대한항공 출범 첫 페이지…완전한 '한 팀' 돼야" - 한국경제 (ID: unknown)
+### 18조 현금 쥔 현대차, '새만금 9조' 투자체력은? - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 기아, 국내 최초 月 전기차 판매 1만대 벽 깼다 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 트럼프 “지상군 투입 울렁증 없다”…이란전 4~5주 이상 길어지나 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 확전·장기전에 美증시 급락...트럼프 “유조선 호위” [월가월부] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “아이 치료 하려면 성 동영상 찍고 87억 내놔”…수상한 무속인의 정체는? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “단순 ‘밈’ 아닌 일본의 희망”…다카이치 총리 코인 26배 급등, 무슨 일 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 올해 국민연금 지급액, 500조 넘는다…수급자 800만명 넘을 듯 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 세계 톱10 모두가 사용한다…말렛 퍼터 전성 시대 [임정우의 스리 퍼트] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이젠 4세부터 무상교육·무상보육…지원 확대에 50만명 혜택 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [단독] 디지털자산법 정부안 135개조로 ‘슬림화’…‘은행 중심 스테이블코인 발행’은 시행령 위임 가닥 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 원·달러 환율 한때 1500원 돌파…2009년來 처음 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### ‘공천헌금’ 강선우·김경 구속...“증거인멸 염려” (ID: unknown)
@@ -162,52 +207,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “개가 똥을 끊지”…하루 새 40만명 돌파한 김선태 유튜브 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중동 사태에 러·우 종전 ‘불투명’…우크라 항만 드론 피습 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “돈 벌고 싶어서”…‘충주맨’ 김선태, 직접 밝힌 사직 이유 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 박찬욱 ‘어쩔수가없다’, 북미 수익 천만 달러 돌파…최고 흥행작 등극 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “이래도 안팔아?”…정부, 이젠 비거주용 고가 1주택자 칼 겨눈다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 李대통령 조선 세일즈…필리핀 대통령에 금거북선 선물 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [포토] 붉은 달, 정월대보름 개기월식 겹쳐 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 트럼프 “미국과 영국 견고한 관계 달라졌다”…스타머와 최대 균열 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘비상 걸린’ 환율, 연장거래서 1480원대 돌파…연고점 경신 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [포토] 정월대보름 ‘레드문’, 36년 만 관측 (ID: unknown)
+### “개가 똥을 끊지”…하루 새 50만명 돌파한 김선태 유튜브 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
