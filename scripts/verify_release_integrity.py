@@ -41,7 +41,8 @@ def main():
                 print(f"✅ [OK] manifest.json has {len(entries)} entries")
                 print("\n[V3] Checking manifest entries existence...")
                 for entry in entries:
-                    if not check_file(docs_decision / entry["path"]): all_passed = False
+                    pathStr = entry["path"] if isinstance(entry, dict) else entry
+                    if not check_file(docs_decision / pathStr): all_passed = False
         except Exception as e:
             print(f"❌ [FAIL] Could not parse manifest.json: {e}"); all_passed = False
 
