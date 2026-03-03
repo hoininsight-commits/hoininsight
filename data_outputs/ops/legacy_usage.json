@@ -1,26 +1,25 @@
 {
   "date": "2026-02-06",
-  "total_hits": 1121,
+  "total_hits": 1135,
   "modules": {
-    "src.ui.operator_main_contract": 81,
-    "src.ui.natural_language_summary": 80,
-    "src.ui.narrative_entry_hook_generator": 80,
-    "src.ui.schedule_risk_calendar": 80,
-    "src.ui.risk_timeline_narrator": 80,
-    "src.ui.narrative_fusion_engine": 80,
-    "src.ui.time_to_money_resolver": 80,
-    "src.ui.sector_rotation_acceleration_detector": 80,
-    "src.ui.sector_rotation_exporter": 80,
-    "src.ui.valuation_reset_detector": 80,
-    "src.ui.policy_capital_script_exporter": 80,
-    "src.ui.multi_topic_selector": 80,
-    "src.ui.capital_perspective_narrator": 80,
-    "src.ui.relationship_stress_generator": 80
+    "src.ui.operator_main_contract": 82,
+    "src.ui.natural_language_summary": 81,
+    "src.ui.narrative_entry_hook_generator": 81,
+    "src.ui.schedule_risk_calendar": 81,
+    "src.ui.risk_timeline_narrator": 81,
+    "src.ui.narrative_fusion_engine": 81,
+    "src.ui.time_to_money_resolver": 81,
+    "src.ui.sector_rotation_acceleration_detector": 81,
+    "src.ui.sector_rotation_exporter": 81,
+    "src.ui.valuation_reset_detector": 81,
+    "src.ui.policy_capital_script_exporter": 81,
+    "src.ui.multi_topic_selector": 81,
+    "src.ui.capital_perspective_narrator": 81,
+    "src.ui.relationship_stress_generator": 81
   },
   "top_callers": [
     "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
     "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
-    "<frozen importlib._bootstrap>:241",
-    "<frozen importlib._bootstrap>:228"
+    "<frozen importlib._bootstrap>:241"
   ]
 }
