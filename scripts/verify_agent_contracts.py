@@ -8,7 +8,7 @@ from datetime import datetime
 CONTAINER_MAP = {
     "dataset_id": ["candidates", "topics", "top_topics", "top_candidates", "picks"],
     "narrative_score": ["topics", "top_topics", "top_candidates"],
-    "video_ready": ["topics", "top_topics", "top_candidates"],
+    "video_ready": ["topics", "top_topics", "top_candidates", "candidates"],
     "intensity": ["topics", "candidates", "top_topics"],
     "status": ["candidates"], # Note: Decision card has 'status' at root, handle separately
 }

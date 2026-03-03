@@ -1,35 +1,5 @@
 {
-  "run_date": "2026-03-03",
-  "pool_size": 2,
-  "top_candidates": [
-    {
-      "title": "거시경제 이상징후: rates_us02y_fred",
-      "dataset_id": "rates_us02y_fred",
-      "intensity": 60.0,
-      "narrative_score": 81.535,
-      "video_score": 78.77,
-      "why_now_type": "State-driven",
-      "video_ready": true,
-      "structural_axes": [
-        "Policy:POLICY",
-        "Capital Flow:FLOW",
-        "Structural Capital:구조적"
-      ]
-    },
-    {
-      "title": "거시경제 이상징후: rates_fed_funds_fred",
-      "dataset_id": "rates_fed_funds_fred",
-      "intensity": 30.0,
-      "narrative_score": 75.21,
-      "video_score": 66.6,
-      "why_now_type": "State-driven",
-      "video_ready": true,
-      "structural_axes": [
-        "Policy:POLICY",
-        "Capital Flow:FLOW",
-        "Structural Capital:구조적"
-      ]
-    }
-  ],
-  "schema_version": "v1.0"
+  "date": "2026-03-04",
+  "count": 0,
+  "candidates": []
 }

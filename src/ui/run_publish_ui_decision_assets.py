@@ -83,11 +83,20 @@ def _load_narrative_data() -> Dict[str, Dict]:
     return narrative_map
 
 def _publish_today() -> Optional[Dict]:
-    kst_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Correct KST logic: UTC+9
+    from datetime import timedelta
+    now_utc = datetime.now(timezone.utc)
+    kst_now = now_utc + timedelta(hours=9)
+    kst_date = kst_now.strftime("%Y-%m-%d")
+    
     ymd = kst_date.replace("-", "/")
     dated_card = DATA_DECISION / ymd / "final_decision_card.json"
-    source = dated_card if dated_card.exists() else (DOCS_TODAY if DOCS_TODAY.exists() else None)
-    if source is None: return None
+    
+    # Priority: 1. Today's dated card, 2. Previous version on docs/data/decision/today.json (self-fallback)
+    source = dated_card if dated_card.exists() else None
+    if source is None:
+        print(f"[PUBLISH] warn: No dated card found for {kst_date} at {dated_card}")
+        return None
     dest = DOCS_DECISION / "today.json"
     shutil.copy2(source, dest)
     try:
@@ -98,14 +107,24 @@ def _publish_today() -> Optional[Dict]:
         topics_to_check = data if isinstance(data, list) else (data.get("top_topics", [data]) if isinstance(data, dict) else [])
         changed = False
         for top in topics_to_check:
+            if not isinstance(top, dict): continue
             title, topic_id = top.get("title", ""), top.get("topic_id", "")
             if title in approved_titles: top["status"], top["speakability"], changed = "APPROVED", "OK", True
+            
             dataset_id = top.get("dataset_id")
-            n_key = dataset_id if dataset_id in narrative_map else next((k for k in narrative_map.keys() if dataset_id == k or (isinstance(k, str) and dataset_id in k)), None)
+            n_key = None
+            if dataset_id:
+                if dataset_id in narrative_map:
+                    n_key = dataset_id
+                else:
+                    n_key = next((k for k in narrative_map.keys() if dataset_id == k or (isinstance(k, str) and dataset_id in k)), None)
+            
             if not n_key and title in narrative_map: n_key = title
+            
             if n_key:
                 n_data = narrative_map[n_key]
-                for k in ["narrative_score", "video_ready", "actor_tier_score", "escalation_flag", "conflict_flag", "cross_axis_multiplier"]: top[k] = n_data.get(k)
+                for k in ["narrative_score", "video_ready", "actor_tier_score", "escalation_flag", "conflict_flag", "cross_axis_multiplier"]: 
+                    top[k] = n_data.get(k)
                 if n_data.get("causal_chain"): top["causal_chain"] = n_data["causal_chain"]
                 if n_data.get("rationale"): top["rationale"] = n_data["rationale"]
                 if top.get("conflict_flag") and top.get("dataset_id") != "human_selection":
