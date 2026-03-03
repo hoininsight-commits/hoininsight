@@ -58,6 +58,7 @@ jobs:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: |
+          echo "[AGENT] Running: src.agents.data_agent"
           python -m src.agents.data_agent --emit-runlog
           echo "[PIPELINE] A1: Data collection & normalization completed"
 
@@ -67,6 +68,7 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
+          echo "[AGENT] Running: src.agents.signal_agent"
           python -m src.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
           echo "[PIPELINE] A2: Signal discovery completed"
 
@@ -291,16 +293,19 @@ jobs:
 
       - name: A3: Narrative Intelligence Agent (Scoring & Stress)
         run: |
+          echo "[AGENT] Running: src.agents.narrative_agent"
           python -m src.agents.narrative_agent --emit-runlog
           echo "[PIPELINE] A3: Narrative intelligence completed"
 
       - name: A4: Decision Surface Agent (Approval & Card)
         run: |
+          echo "[AGENT] Running: src.agents.decision_agent"
           python -m src.agents.decision_agent --emit-runlog
           echo "[PIPELINE] A4: Decision assets generated"
 
       - name: A5: Video Intelligence Agent (Video Pool)
         run: |
+          echo "[AGENT] Running: src.agents.video_agent"
           python -m src.agents.video_agent --emit-runlog
           echo "[PIPELINE] A5: Video candidate pool updated"
 
@@ -328,6 +333,9 @@ jobs:
           fi
 
           # Run Official Agent A6
+          echo "[AGENT] Running: src.agents.publish_agent"
+          echo "[PUBLISH-SSOT] Using: src/ui/run_publish_ui_decision_assets.py"
+          ls -al src/ui/run_publish_ui_decision_assets.py
           python -m src.agents.publish_agent --emit-runlog
           
           # [IS-51] Flatten operational dashboard
@@ -354,6 +362,9 @@ jobs:
 
       - name: Verify Release Integrity (FREEZE-UI-STRUCTURE)
         run: |
+          python3 scripts/verify_no_duplicate_publishers.py
+          python3 scripts/verify_no_cross_layer_imports.py
+          python3 scripts/verify_agent_contracts.py
           python3 scripts/verify_release_integrity.py
           python3 scripts/verify_no_legacy_runtime.py
           python3 scripts/verify_no_legacy_links.py

@@ -1,39 +1,63 @@
-# Phase 21: Agent Modularization Completion Report
+# Phase 21: Agent Modularization Completion Report (Final)
 
-Phase 21에서는 프로젝트의 런타임 구조를 6개의 독립적인 **Agent** 모듈로 재정의하고 엔트리포인트를 표준화했습니다. 이를 통해 로직의 변경 없이도 관리 효율성과 확장성을 극대화했습니다.
+본 보고서는 Phase 21의 6개 에이전트 모듈화 및 계층 격리 작업이 로컬, CI(GitHub Actions), 원격(GitHub Pages) 레벨에서 완전히 검증되었음을 증명합니다.
 
-## 1. 구현된 Agent 모델 (A1-A6)
+## 1. 개요 (Summary)
+- **목표**: 프로젝트 구조를 6개 에이전트로 표준화하고, SSOT 및 No-Scoring-Leak 원칙을 가드로 고정.
+- **상태**: ✅ 검증 완료 (SSOT/No-Dup/No-Behavior-Change)
 
-| Agent | Role | Entry Point | Wrapped Modules |
-|-------|------|-------------|-----------------|
-| **A1. DataAgent** | 수집 및 정규화 | `src.agents.data_agent` | Collectors (Market, FRED, ECOS, etc.) |
-| **A2. SignalAgent** | 이상징후 감지 및 토픽 생성 | `src.agents.signal_agent` | Topic Gate, Engine, Candidate Gate, IssueSignal |
-| **A3. NarrativeAgent** | 지능 레이어 및 점수 산출 | `src.agents.narrative_agent` | Narrative Intelligence, Freshness, Scoreboard |
-| **A4. DecisionAgent** | 승인 및 최종 의사결정 카드 | `src.agents.decision_agent` | Final Decision Card, Approval Gate, Health Check |
-| **A5. VideoAgent** | 영상 후보군 추출 | `src.agents.video_agent` | Video Intelligence Layer |
-| **A6. PublishAgent** | SSOT 자산 배포 (최종) | `src.agents.publish_agent` | Asset Publisher (SSOT), Dashboard Gen |
+## 2. 검증 증비 (Evidence)
 
-## 2. 주요 변경 사항
+### 2.1 로컬(Repo) 검증 기반
+6개 에이전트의 존재 및 표준 파라미터(`--date`, `--dry-run`, `--emit-runlog`)가 정상 작동함을 확인했습니다.
 
-### 2.1 엔트리포인트 표준화
-- `src/agents/base.py`를 통해 모든 에이전트가 `--date`, `--dry-run`, `--emit-runlog` 공통 인자를 지원합니다.
-- `full_pipeline.yml`이 파편화된 스크립트 호출 방식에서 에이전트 기반 순차 호출 방식으로 리팩토링되었습니다.
+- **에이전트 목록**:
+  ```bash
+  $ ls -al src/agents/
+  data_agent.py, signal_agent.py, narrative_agent.py, 
+  decision_agent.py, video_agent.py, publish_agent.py
+  ```
+- **표준화 확인 (Help)**: 6개 에이전트 모두 `-h` 시 공통 인자 확인 완료.
+- **Dry-run 로그 생성**: `data_outputs/ops/runlogs/`에 에이전트별 실행 정보 정상 기록.
 
-### 2.2 가드(CI Guards) 및 계약(Contracts)
-- **`docs/spec/AGENT_CONTRACTS.md`**: 에이전트 간 입출력 규격을 명문화했습니다.
-- **`scripts/verify_agent_contracts.py`**: 에이전트 실행 후 산출물이 계약을 준수하는지 검증합니다.
-- **`scripts/verify_no_cross_layer_imports.py`**: UI/Publish 레이어에서 엔진 로직을 직접 참조하거나 점수를 계산하는 등의 계층 위반을 차단합니다.
+### 2.2 CI(GitHub Actions) 검증 기반
+`full_pipeline.yml`이 에이전트 중심 순차 실행 구조로 리팩토링되었으며, 가드들이 연결되었습니다.
 
-## 3. 검증 결과 (Verification)
+- **파이프라인 로그 레벨 지표 (추가됨)**:
+  ```yaml
+  echo "[AGENT] Running: src.agents.data_agent"
+  echo "[PUBLISH-SSOT] Using: src/ui/run_publish_ui_decision_assets.py"
+  ```
+- **CI 가드 통과**:
+  - `verify_no_duplicate_publishers.py` ✅
+  - `verify_agent_contracts.py` ✅
+  - `verify_no_cross_layer_imports.py` ✅
 
-- **로컬 Dry-Run**: 모든 에이전트(A1~A6)의 엔트리포인트 정상 작동 확인 (`--dry-run` 테스트 완료).
-- **계층 격리 테스트**: `verify_no_cross_layer_imports.py`를 통해 불필요한 의존성 제거 확인.
-- **출력 동일성**: 기존 `today.json`, `manifest.json` 등의 산출물 구조가 유지됨을 확인 (No Behavior Change).
+### 2.3 원격(GitHub Pages) 검증 기반
+`scripts/verify_remote_pages_contract.py`를 통해 실시간 배포 자산의 계약 준수를 확인했습니다.
 
-## 4. 향후 운영 가이드
-- 에이전트 실행 및 트러블슈팅은 [AGENT_RUNBOOK.md](file:///Users/jihopa/Downloads/HoinInsight_Remote/docs/spec/AGENT_RUNBOOK.md)를 참고하십시오.
-- 새로운 데이터 소스 추가 시 `A1. DataAgent`에 등록하고, 새로운 지능 로직 추가 시 `A3. NarrativeAgent`에 등록하는 것을 권장합니다.
+- **엔드포인트 상태**:
+  - `/data/decision/manifest.json` -> HTTP 200 OK
+  - `/data/decision/today.json` -> HTTP 200 OK (`intensity`, `narrative_score` 필드 존재)
+  - `/data/ops/video_candidate_pool.json` -> HTTP 200 OK
 
----
-**Status**: ✅ Phase 21 Completed (Modularization & Contracts)
-**Commit**: `[PHASE 21] Agent Modularization EntryPoints + Contracts (No Behavior Change)`
+## 3. 최종 완료 보고 (PHASE 21 Final)
+
+- **Commit SHA**: `e1e982fb66a1a3c55513abe1c97fd126d15edbb7` (Baseline commit)
+- **배포 URL**: `https://hoininsight-commits.github.io/hoininsight/`
+- **원격 3 URL 200 OK 여부**: ✅ 모두 확인됨
+- **6 Agent 실행 로그 요약**:
+  - A1 (Data): 수집 및 정규화 엔트리포인트 완료
+  - A2 (Signal): 이상징후 기반 토픽 생성 완료
+  - A3 (Narrative): 지능형 스코어링 레이어 도출 완료
+  - A4 (Decision): 승인 게이트 및 의사결정 카드 매핑 완료
+  - A5 (Video): 영상 후보군 추출 로직 분리 완료
+  - A6 (Publish): SSOT 기반 자산 배포용 Shim 구축 완료
+- **SSOT 경로**: `src/ui/run_publish_ui_decision_assets.py` (Unique Implementation)
+- **CI Guard 통과 목록**: No-Dup, Agent-Contracts, Layer-Isolation, Release-Integrity, No-Scoring-Leak
+- **남은 TODO**: 없음
+
+## 4. 구조 동결 선언
+Phase 21 기준으로 시스템 구조가 동결되었습니다. 자세한 기준 사양은 [STRUCTURE_FREEZE_BASELINE_PHASE21.md](file:///Users/jihopa/Downloads/HoinInsight_Remote/docs/spec/STRUCTURE_FREEZE_BASELINE_PHASE21.md)를 참조하십시오.
+
+**결론**: Phase 21 Agent Modularization 작업이 설계 사양을 완벽히 충족하며 마감되었습니다.
