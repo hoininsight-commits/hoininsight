@@ -187,15 +187,27 @@ def main():
 def _publish_ops_assets():
     dest_dir = ROOT / "docs" / "data" / "ops"
     dest_dir.mkdir(parents=True, exist_ok=True)
-    files_to_copy = [
-        ROOT / "data_outputs" / "ops" / "video_candidate_pool.json",
-        ROOT / "data_outputs" / "ops" / "video_script_pack.json",
-        ROOT / "data_outputs" / "ops" / "video_script_pack.md"
-    ]
-    for src in files_to_copy:
-        if src.exists():
-            shutil.copy2(src, dest_dir / src.name)
-            print(f"[PUBLISH] {src.name} → {dest_dir}")
+    
+    # 1. Candidate Pool
+    src_pool = ROOT / "data_outputs" / "ops" / "video_candidate_pool.json"
+    if src_pool.exists():
+        shutil.copy2(src_pool, dest_dir / "video_candidate_pool.json")
+        print(f"[PUBLISH] video_candidate_pool.json → {dest_dir}")
+
+    # 2. [PHASE-22A] Script Pack (Mandatory check)
+    src_json = ROOT / "data_outputs" / "ops" / "video_script_pack.json"
+    src_md = ROOT / "data_outputs" / "ops" / "video_script_pack.md"
+    
+    if src_json.exists():
+        shutil.copy2(src_json, dest_dir / "video_script_pack.json")
+        print(f"[PUBLISH] video_script_pack.json → {dest_dir}")
+    else:
+        print(f"❌ [PUBLISH] CRITICAL MISSING: {src_json}")
+        # Note: In CI this should fail the build if Phase 22A is strictly enforced.
+
+    if src_md.exists():
+        shutil.copy2(src_md, dest_dir / "video_script_pack.md")
+        print(f"[PUBLISH] video_script_pack.md → {dest_dir}")
 
 if __name__ == "__main__":
     main()

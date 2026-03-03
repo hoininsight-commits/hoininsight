@@ -14,8 +14,8 @@ class VideoAgent(BaseAgent):
         self.logger.info("Step 1: Running Video Intelligence Layer...")
         self._run_module("src.ops.video_intelligence_layer")
         
-        # Step 2: Script Intelligence Layer
-        self.logger.info("Step 2: Running Script Intelligence Layer...")
+        # Step 2: [PHASE-22A] Script Intelligence Layer
+        self.logger.info("Step 2: [PHASE-22A] Running Script Intelligence Layer...")
         self._run_module("src.ops.video_script_intelligence_layer")
         
         return {
