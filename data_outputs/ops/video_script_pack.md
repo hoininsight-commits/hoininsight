@@ -1,7 +1,7 @@
 # HOIN Insight Video Script Pack (2026-03-03)
 
 ## 후보 1: 거시경제 이상징후: rates_us02y_fred
-- **Stats**: Intensity 60.0 | Narrative 73.485 | Video 74.74
+- **Stats**: Intensity 60.0 | Narrative 81.535 | Video 78.77
 - **Type**: State-driven
 
 ### [Hook]
@@ -26,7 +26,7 @@
 - **신한지주**: 배당 매력 (리스크: 부동산 PF 리스크)
 
 ### [Closing]
-> 정리하면, 지금은 ‘수치’가 아니라 ‘반응’이 바뀌는 구간입니다. HOIN Insight였습니다.
+> {s['closing']}
 
 ---
 
@@ -56,7 +56,7 @@
 - **신한지주**: 배당 매력 (리스크: 부동산 PF 리스크)
 
 ### [Closing]
-> 정리하면, 지금은 ‘수치’가 아니라 ‘반응’이 바뀌는 구간입니다. HOIN Insight였습니다.
+> {s['closing']}
 
 ---
 

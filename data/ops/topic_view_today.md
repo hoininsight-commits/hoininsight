@@ -32,6 +32,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### [단독] 유조선 용선료 하루 40만 달러 돌파…이란 전쟁 이후 두 배 올랐다 - v.daum.net (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -57,12 +62,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금값 2.8% 급등·아시아 증시 줄하락…미, 이란 공격 영향 - 한겨레 (ID: unknown)
+### “뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보 (ID: unknown)
+### 금값 2.8% 급등·아시아 증시 줄하락…미, 이란 공격 영향 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,19 +102,39 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '더는 못 참아' 예금 싹 다 뺐다…개미들 쓸어담는 '이 상품' 정체 [일확연금 노후부자] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### [하메네이 사망] 이란 공습 직전 '폴리마켓'서 대규모 베팅…내부자거래 논란 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 21조 던진 외국인, 삼성전자·하이닉스 팔고 소부장으로 이동 - 조선일보 (ID: unknown)
+### 음성 공장 화재에 투입된 ‘현대차 무인소방로봇’…800도 버티는 현장 영상 공개 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 미국과 이란 교전에…상승세였던 삼전닉스·현대차 9~11%대 하락 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “핫하던 아파트 경매도 꺽이나?”…급매 쏟아지면서 낙찰가율 하락세 전환 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 오세훈 “정부가 시장 못이겨…주택 공급 확대가 정공법” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “고국 폭격에 왜 기뻐하냐고 묻는데”…‘미스 이란’ 출신女, 소신발언 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전남, 두산에너빌리티와 손잡고 해상풍력 산업 확대 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 서울아산병원-UNIST ‘의료 AI 연구’ 맞손 (ID: unknown)
@@ -183,31 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 중동 사태에 ‘반도체 투톱’ 와르르…삼성전자 20만원·SK하이닉스 100만원 붕괴 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 美·이란 전쟁에 방산주 급등…해운주도 탄력받아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 한국동서발전, ‘중동정세 대응 긴급 상황점검회의’ 개최 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “6살 늦둥이와 키즈카페도 가”…‘82세’ 아빠 김용건, 육아 열정 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 한서대, ‘제20기 항공우주 최고경영자과정’ 19일 개강 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 황종우 해수부 장관 후보자 “핵심 과제는 북극항로 선도·해양수도권 육성” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
