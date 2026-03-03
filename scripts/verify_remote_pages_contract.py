@@ -69,6 +69,15 @@ def main():
                 p = t.get("density_text", {}).get("structured_paragraph", [])
                 if len(p) < 3: valid = False; print(f"❌ paragraph density low for {t.get('dataset_id')}")
 
+        # [PHASE-23] Structural Regime State
+        r_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/regime_state.json"
+        r_data = fetch_json(r_url)
+        if not r_data: valid = False; print("❌ regime_state.json missing")
+        else:
+            print(f"✅ Regime state parsed. State: {r_data.get('regime', {}).get('liquidity_state')}")
+            if not r_data.get("regime", {}).get("policy_state"): valid = False; print("❌ policy_state missing")
+            if len(r_data.get("evidence", [])) < 1: valid = False; print("❌ evidence empty")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

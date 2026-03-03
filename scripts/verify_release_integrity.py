@@ -65,6 +65,19 @@ def main():
                     all_passed = False
         except: pass
 
+    print("\n[V4.2] Checking Structural Regime assets (PHASE-23)...")
+    regime_path = docs_ops / "regime_state.json"
+    if not check_file(regime_path): all_passed = False
+    else:
+        try:
+            r_data = json.loads(regime_path.read_text("utf-8"))
+            r = r_data.get("regime", {})
+            if not r.get("liquidity_state") or not r.get("policy_state"):
+                print("❌ [FAIL] Regime state fields missing"); all_passed = False
+            if len(r_data.get("evidence", [])) < 1:
+                print("❌ [FAIL] Regime evidence missing"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():

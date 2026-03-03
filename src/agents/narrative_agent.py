@@ -13,22 +13,26 @@ class NarrativeAgent(BaseAgent):
         # Step 1: Narrative Intelligence Layer
         self.logger.info("Step 1: Running Narrative Intelligence Layer...")
         self._run_module("src.ops.narrative_intelligence_layer")
+
+        # Step 2: [PHASE-23] Structural Regime Layer
+        self.logger.info("Step 2: [PHASE-23] Running Structural Regime Layer...")
+        self._run_module("src.ops.structural_regime_layer")
         
-        # Step 2: [PHASE-22C] Conflict Density Layer
-        self.logger.info("Step 2: [PHASE-22C] Running Conflict Density Layer...")
+        # Step 3: [PHASE-22C] Conflict Density Layer
+        self.logger.info("Step 3: [PHASE-22C] Running Conflict Density Layer...")
         self._run_module("src.ops.conflict_density_layer")
         
-        # Step 3: Freshness Tracking (Phase 36-B)
-        self.logger.info("Step 3: Tracking Ops Freshness...")
+        # Step 4: Freshness Tracking (Phase 36-B)
+        self.logger.info("Step 4: Tracking Ops Freshness...")
         self._run_module("src.ops.freshness_tracker")
         
-        # Step 4: Ops Scoreboard (Phase 36-B)
-        self.logger.info("Step 4: Updating Ops Scoreboard...")
+        # Step 5: Ops Scoreboard (Phase 36-B)
+        self.logger.info("Step 5: Updating Ops Scoreboard...")
         self._run_module("src.ops.ops_scoreboard")
         
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "conflict_density_layer", "freshness_tracker", "ops_scoreboard"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "freshness_tracker", "ops_scoreboard"],
             "status": "COMPLETED"
         }
 

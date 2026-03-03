@@ -104,6 +104,12 @@ export async function initTodayView(container) {
             return 2;
         };
 
+        let regimeData = null;
+        try {
+            const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
+            if (regimeResp.ok) regimeData = await regimeResp.json();
+        } catch (re) { console.warn("Regime data missing or invalid:", re); }
+
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
@@ -112,7 +118,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData);
 
     } catch (e) {
         console.error(e);
@@ -179,7 +185,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -344,6 +350,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null)
                 </div>
             </div>
 
+            ${renderRegimeSection(regimeData)}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -450,6 +457,54 @@ function renderCompactCard(item, idx) {
                     </div>
                 </div>
                 ${item.incomplete ? `<div class="pt-2 border-t border-slate-800/10 text-[9px] font-bold text-red-900/40 italic uppercase">Required Data Missing: ${item.missingFields?.join(', ')}</div>` : ''}
+            </div>
+        </div>
+    `;
+}
+
+function renderRegimeSection(data) {
+    if (!data || !data.regime) return '';
+
+    const getRegimeColor = (val) => {
+        val = String(val).toUpperCase();
+        if (['TIGHTENING', 'RESTRICTIVE', 'RISK_OFF', 'INVERTED', 'STICKY'].includes(val)) return 'bg-red-500/10 text-red-500 border-red-500/20';
+        if (['EASING', 'ACCOMMODATIVE', 'RISK_ON', 'NORMAL', 'DISINFLATION'].includes(val)) return 'bg-green-500/10 text-green-500 border-green-500/20';
+        return 'bg-slate-800 text-slate-400 border-slate-700';
+    };
+
+    const r = data.regime;
+    const s = data.regime_summary || {};
+
+    return `
+        <div id="regime-section" class="bg-slate-900/40 border border-slate-800/60 rounded-xl p-5 mb-6 animate-in fade-in slide-in-from-top-2">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">🌍</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Structural Regime</h3>
+                    <div class="h-4 w-[1px] bg-slate-700 ml-2"></div>
+                    <span class="text-[10px] font-bold text-slate-500">${data.date_kst} 기준</span>
+                </div>
+                <div class="flex gap-2">
+                    <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getRegimeColor(r.liquidity_state)}">LIQ: ${r.liquidity_state}</span>
+                    <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getRegimeColor(r.policy_state)}">POL: ${r.policy_state}</span>
+                    <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getRegimeColor(r.risk_state)}">RISK: ${r.risk_state}</span>
+                    <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getRegimeColor(r.yield_curve_state)}">CURVE: ${r.yield_curve_state}</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-800/30">
+                <div class="space-y-1">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Key Outlook</div>
+                    <p class="text-[12px] font-bold text-slate-200 leading-tight">${s.one_liner || '-'}</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Structural Bias</div>
+                    <p class="text-[11px] font-medium text-slate-400">${s.structural_bias || '-'}</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-[9px] font-black text-red-900/60 uppercase tracking-widest">Risk Note</div>
+                    <p class="text-[11px] font-medium text-red-900/80 italic">${s.risk_note || '-'}</p>
+                </div>
             </div>
         </div>
     `;

@@ -217,5 +217,11 @@ def _publish_ops_assets():
         shutil.copy2(src_density, dest_dir / "conflict_density_pack.json")
         print(f"[PUBLISH] conflict_density_pack.json → {dest_dir}")
 
+    # 5. [PHASE-23] Structural Regime Layer
+    src_regime = ROOT / "data_outputs" / "ops" / "regime_state.json"
+    if src_regime.exists():
+        shutil.copy2(src_regime, dest_dir / "regime_state.json")
+        print(f"[PUBLISH] regime_state.json → {dest_dir}")
+
 if __name__ == "__main__":
     main()
