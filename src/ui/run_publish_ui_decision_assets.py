@@ -16,19 +16,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
-
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
 ROOT = Path(".")
 DOCS_DECISION = ROOT / "docs" / "data" / "decision"
 DATA_EDITORIAL = ROOT / "data" / "editorial"
-DATA_DECISION  = ROOT / "data" / "decision"   # engine writes final_decision_card.json here
+DATA_DECISION  = ROOT / "data" / "decision"
 DOCS_TODAY     = ROOT / "docs" / "data" / "today.json"
 
-# ---------------------------------------------------------------------------
-# Schema validation helpers
-# ---------------------------------------------------------------------------
 _NON_DECISION_NAMES = {
     "daily_snapshot.json", "health.json", "build_meta.json",
     "collection_status.json", "event_coverage_today.json",
@@ -36,48 +29,31 @@ _NON_DECISION_NAMES = {
 }
 
 def _is_decision_file(path: Path) -> bool:
-    """Return True only for files that contain decision/editorial data."""
-    if path.name in _NON_DECISION_NAMES:
-        return False
-    if path.suffix != ".json":
-        return False
+    if path.name in _NON_DECISION_NAMES: return False
+    if path.suffix != ".json": return False
     return True
-
 
 def _utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-
-# ---------------------------------------------------------------------------
-# Step 1: Publish today.json from final_decision_card (if available)
-# ---------------------------------------------------------------------------
 def _load_approval_titles() -> set:
-    """Loads approved titles from engine gates to merge into UI cards."""
     approved_titles = set()
     try:
         f = ROOT / "data" / "ops" / "topic_speakability_today.json"
         if f.exists():
             data = json.loads(f.read_text(encoding="utf-8"))
             for v in data.get("verdicts", []):
-                if v.get("speakability") == "SPEAKABLE_NOW":
-                    approved_titles.add(v.get("title", ""))
-    except Exception as e:
-        print(f"[PUBLISH] warn loading topic_speakability_today: {e}")
-        
+                if v.get("speakability") == "SPEAKABLE_NOW": approved_titles.add(v.get("title", ""))
+    except Exception as e: print(f"[PUBLISH] warn loading topic_speakability_today: {e}")
     try:
         f2 = ROOT / "data" / "ops" / "auto_approved_today.json"
         if f2.exists():
             data2 = json.loads(f2.read_text(encoding="utf-8"))
-            for a in data2.get("auto_approved", []):
-                approved_titles.add(a.get("title", ""))
-    except Exception as e:
-        print(f"[PUBLISH] warn loading auto_approved_today: {e}")
-        
+            for a in data2.get("auto_approved", []): approved_titles.add(a.get("title", ""))
+    except Exception as e: print(f"[PUBLISH] warn loading auto_approved_today: {e}")
     return approved_titles
 
-
 def _load_narrative_data() -> Dict[str, Dict]:
-    """Loads narrative intelligence outputs to merge into UI cards, keyed by title."""
     narrative_map = {}
     try:
         f = ROOT / "data" / "ops" / "narrative_intelligence_v2.json"
@@ -86,7 +62,6 @@ def _load_narrative_data() -> Dict[str, Dict]:
             for t in data.get("topics", []):
                 title = t.get("title", "")
                 topic_id = t.get("topic_id", "")
-                
                 n_data = {
                     "narrative_score": t.get("final_narrative_score", t.get("narrative_score", 0)),
                     "video_ready": t.get("video_ready", False),
@@ -97,343 +72,130 @@ def _load_narrative_data() -> Dict[str, Dict]:
                     "causal_chain": t.get("causal_chain", {}),
                     "rationale": t.get("rationale_natural", "")
                 }
-                
                 if title: narrative_map[title] = n_data
                 if topic_id: narrative_map[topic_id] = n_data
-                
-                # [PHASE-16A] Extra mapping for dataset_id matching
                 refs = t.get("evidence_refs", {})
                 for sid in refs.get("source_ids", []):
-                    # Strip timestamps like _20260225 for broader matching
                     clean_sid = sid.split("_202")[0] if "_202" in sid else sid
                     narrative_map[clean_sid] = n_data
                     narrative_map[sid] = n_data
-                
-    except Exception as e:
-        print(f"[PUBLISH] warn loading narrative_intelligence_v2: {e}")
+    except Exception as e: print(f"[PUBLISH] warn loading narrative_intelligence_v2: {e}")
     return narrative_map
 
-
-
 def _publish_today() -> Optional[Dict]:
-    """
-    Copies the most recent final_decision_card.json → docs/data/decision/today.json.
-    Falls back to docs/data/today.json (written by engine) if dated card is missing.
-    Returns the manifest entry dict, or None if no source found.
-    """
-    kst_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")  # approx KST; fine for manifest
+    kst_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ymd = kst_date.replace("-", "/")
     dated_card = DATA_DECISION / ymd / "final_decision_card.json"
-
-    source = None
-    if dated_card.exists():
-        source = dated_card
-        print(f"[PUBLISH] today.json source: {dated_card}")
-    elif DOCS_TODAY.exists():
-        source = DOCS_TODAY
-        print(f"[PUBLISH] today.json source (fallback): {DOCS_TODAY}")
-
-    if source is None:
-        print("[PUBLISH] No today.json source found — skipping")
-        return None
-
+    source = dated_card if dated_card.exists() else (DOCS_TODAY if DOCS_TODAY.exists() else None)
+    if source is None: return None
     dest = DOCS_DECISION / "today.json"
     shutil.copy2(source, dest)
-    print(f"[PUBLISH] today.json → {dest}")
-
-    # Read to get actual date from file and merge approvals
     try:
         data = json.loads(dest.read_text(encoding="utf-8"))
         file_date = data.get("date", kst_date) or kst_date
-        
-        # Always align contracts and merge metadata if present
         approved_titles = _load_approval_titles()
         narrative_map = _load_narrative_data()
-        
-        # Determine the list of topics to mutate based on schema
-        topics_to_check = []
-        if isinstance(data, list):
-            topics_to_check = data
-        elif isinstance(data, dict):
-            if "top_topics" in data:
-                topics_to_check = data["top_topics"]
-            elif "title" in data:
-                # It's a single topic object root
-                topics_to_check = [data]
-                
+        topics_to_check = data if isinstance(data, list) else (data.get("top_topics", [data]) if isinstance(data, dict) else [])
         changed = False
         for top in topics_to_check:
-            title = top.get("title", "")
-            topic_id = top.get("topic_id", "")
-            
-            # 1. Approval Mapping
-            if title in approved_titles:
-                top["status"] = "APPROVED"
-                top["speakability"] = "OK"
-                changed = True
-                
-            # 2. Narrative Score & Intensity Mapping
-            n_key = None
+            title, topic_id = top.get("title", ""), top.get("topic_id", "")
+            if title in approved_titles: top["status"], top["speakability"], changed = "APPROVED", "OK", True
             dataset_id = top.get("dataset_id")
-            
-            # Prioritize Unique Matches
-            if dataset_id:
-                # Direct check if dataset_id itself is a key
-                if dataset_id in narrative_map:
-                    n_key = dataset_id
-                else:
-                    # Search inside keys (handling side-effects like _2026)
-                    for k in narrative_map.keys():
-                        if dataset_id == k or (isinstance(k, str) and dataset_id in k):
-                            n_key = k
-                            break
-            
-            # Fallback to Title only if no ID match (risky, but preserved for legacy)
-            if not n_key and title in narrative_map:
-                n_key = title
-
+            n_key = dataset_id if dataset_id in narrative_map else next((k for k in narrative_map.keys() if dataset_id == k or (isinstance(k, str) and dataset_id in k)), None)
+            if not n_key and title in narrative_map: n_key = title
             if n_key:
                 n_data = narrative_map[n_key]
-                top["narrative_score"] = n_data["narrative_score"]
-                top["video_ready"] = n_data["video_ready"]
-                top["actor_tier_score"] = n_data["actor_tier_score"]
-                top["escalation_flag"] = n_data["escalation_flag"]
-                top["conflict_flag"] = n_data["conflict_flag"]
-                top["cross_axis_multiplier"] = n_data["cross_axis_multiplier"]
-                if n_data["causal_chain"]:
-                    top["causal_chain"] = n_data["causal_chain"]
-                
-                # [PHASE-16A] Bridge rationale from narrative layer to UI
-                if n_data.get("rationale"):
-                    top["rationale"] = n_data["rationale"]
-                    
-                # Fix "Unknown" Tag in UI: Ensure anchor_topic reflects conflict state
+                for k in ["narrative_score", "video_ready", "actor_tier_score", "escalation_flag", "conflict_flag", "cross_axis_multiplier"]: top[k] = n_data.get(k)
+                if n_data.get("causal_chain"): top["causal_chain"] = n_data["causal_chain"]
+                if n_data.get("rationale"): top["rationale"] = n_data["rationale"]
                 if top.get("conflict_flag") and top.get("dataset_id") != "human_selection":
-                    # Force UI to see dynamic conflict state
                     cam = top.get("cross_axis_multiplier", 1.0)
                     top["logic_block"] = f"CONFLICT DETECTED (x{cam})"
-                
                 changed = True
-                
-            # 3. Structural Contract Alignment (ALWAYS RUN)
             if top.get("intensity") is None and top.get("score") is not None:
-                try:
-                    top["intensity"] = float(top["score"])
-                    changed = True
-                except (ValueError, TypeError):
-                    pass
-
-            if "narrative_score" not in top:
-                top["narrative_score"] = None
-                changed = True
-                
+                try: top["intensity"], changed = float(top["score"]), True
+                except: pass
+            if "narrative_score" not in top: top["narrative_score"], changed = None, True
         if changed:
-            # Sync root level topics with top topic [0] if it changed
             if isinstance(data, dict) and "top_topics" in data and len(data["top_topics"]) > 0:
                 t0 = data["top_topics"][0]
                 if t0.get("conflict_flag"):
                     data["anchor_topic"] = "[CONFLICT] MULTI-AXIS FRICTION"
-                    data["topic"] = t0.get("title", data["topic"])
-                    data["structural_topic"] = t0.get("title", data["structural_topic"])
-                    data["decision_rationale"] = t0.get("rationale", data["decision_rationale"])
-            
+                    for k in ["topic", "structural_topic"]: data[k] = t0.get("title", data.get(k))
+                    data["decision_rationale"] = t0.get("rationale", data.get("decision_rationale"))
             dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-            print(f"[PUBLISH] Aligned contract for today.json")
-                
-    except Exception as e:
-        print(f"[PUBLISH] error in _publish_today: {e}")
-        file_date = kst_date
+    except Exception as e: print(f"[PUBLISH] error in _publish_today: {e}"); file_date = kst_date
+    return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
 
-    return {
-        "path": "today.json",
-        "type": "today",
-        "date": file_date,
-        "updated_at": _utc_now(),
-    }
-
-
-# ---------------------------------------------------------------------------
-# Step 2: Publish editorial_selection_*.json
-# ---------------------------------------------------------------------------
 def _publish_editorial() -> List[Dict]:
-    """
-    Copies data/editorial/editorial_selection_*.json
-    → docs/data/decision/editorial/editorial_selection_*.json
-    Returns sorted list of manifest entry dicts (newest first).
-    """
     entries = []
-    if not DATA_EDITORIAL.exists():
-        print("[PUBLISH] data/editorial/ not found — no editorial history to publish")
-        return entries
-
+    if not DATA_EDITORIAL.exists(): return entries
     dest_dir = DOCS_DECISION / "editorial"
     dest_dir.mkdir(parents=True, exist_ok=True)
-    
     approved_titles = _load_approval_titles()
     narrative_map = _load_narrative_data()
-
     for src in sorted(DATA_EDITORIAL.glob("editorial_selection_*.json")):
         dest = dest_dir / src.name
         shutil.copy2(src, dest)
-        
-        # Merge approval status
         try:
             ed_data = json.loads(dest.read_text(encoding="utf-8"))
             changed = False
             for pick in ed_data.get("picks", []):
                 pick_title = pick.get("theme") or pick.get("title")
-                if pick_title in approved_titles:
-                    pick["status"] = "APPROVED"
-                    changed = True
-                    
-                # [PHASE-14C] Map Narrative Data to Editorial Picks
+                if pick_title in approved_titles: pick["status"], changed = "APPROVED", True
                 if pick_title in narrative_map:
                     n_data = narrative_map[pick_title]
-                    pick["narrative_score"] = n_data["narrative_score"]
-                    pick["actor_tier_score"] = n_data["actor_tier_score"]
-                    pick["video_ready"] = n_data["video_ready"]
+                    for k in ["narrative_score", "actor_tier_score", "video_ready"]: pick[k] = n_data.get(k)
                     pick["escalation_flag"] = n_data.get("escalation_flag", False)
                     pick["conflict_flag"] = n_data.get("conflict_flag", False)
-                    if n_data.get("causal_chain"):
-                        pick["causal_chain"] = n_data["causal_chain"]
+                    if n_data.get("causal_chain"): pick["causal_chain"] = n_data["causal_chain"]
                     changed = True
-                    
-                # [PHASE-14C] Fallback Adapter: Convert remaining raw editorial scores into Narrative UI format
-                if pick.get("intensity") is None and pick.get("score") is not None:
-                    pick["intensity"] = pick["score"]
-                    changed = True
-
+                if pick.get("intensity") is None and pick.get("score") is not None: pick["intensity"], changed = pick["score"], True
                 if "narrative_score" not in pick:
-                    # [PHASE-14C] Rollback: No longer generating dummy salt-based scores in Publisher.
-                    # UI will handle missing scores as "N/A".
-                    pick["narrative_score"] = None
-                    pick["actor_tier_score"] = None
+                    pick["narrative_score"] = pick["actor_tier_score"] = None
                     pick["video_ready"] = pick.get("promotion_hint") == "DAILY_LONG"
                     changed = True
-                
-                # Double check fields
-                if "intensity" not in pick:
-                    pick["intensity"] = pick.get("score") or pick.get("narrative_score") or 0
-                    changed = True
-                    
-            if changed:
-                dest.write_text(json.dumps(ed_data, indent=2, ensure_ascii=False), encoding="utf-8")
-        except Exception as e:
-            print(f"[PUBLISH] warn merging approvals for {src.name}: {e}")
-
-        # Extract date from filename: editorial_selection_2026-02-23.json
-        date_str = src.stem.replace("editorial_selection_", "")
-        entries.append({
-            "path": f"editorial/{src.name}",
-            "type": "editorial",
-            "date": date_str,
-            "updated_at": _utc_now(),
-        })
-
+                if "intensity" not in pick: pick["intensity"] = pick.get("score") or pick.get("narrative_score") or 0; changed = True
+            if changed: dest.write_text(json.dumps(ed_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        except Exception as e: print(f"[PUBLISH] warn merging approvals for {src.name}: {e}")
+        entries.append({"path": f"editorial/{src.name}", "type": "editorial", "date": src.stem.replace("editorial_selection_", ""), "updated_at": _utc_now()})
     entries.sort(key=lambda e: e["date"], reverse=True)
-    print(f"[PUBLISH] editorial: {len(entries)} files → {dest_dir}")
     return entries
 
-# ---------------------------------------------------------------------------
-# Step 3: Copy legacy data/ui_decision/*.json (backward compat)
-# ---------------------------------------------------------------------------
 def _publish_legacy_ui_decision() -> List[Dict]:
-    """
-    Copies data/ui_decision/*.json → docs/data/decision/*.json
-    Only copies files that pass the decision schema check.
-    Does NOT add these to manifest (legacy; may be duplicates).
-    """
     src_dir = ROOT / "data" / "ui_decision"
-    if not src_dir.exists():
-        return []
-    copied = 0
+    if not src_dir.exists(): return []
     for f in src_dir.glob("*.json"):
-        if not _is_decision_file(f):
-            print(f"[PUBLISH] SKIP non-decision legacy file: {f.name}")
-            continue
-        shutil.copy2(f, DOCS_DECISION / f.name)
-        copied += 1
-    print(f"[PUBLISH] legacy ui_decision: {copied} files copied")
+        if _is_decision_file(f): shutil.copy2(f, DOCS_DECISION / f.name)
     return []
 
-
-# ---------------------------------------------------------------------------
-# Step 4: Write manifest.json
-# ---------------------------------------------------------------------------
 def _write_manifest(entries: List[Dict]) -> None:
-    """
-    Writes docs/data/decision/manifest.json.
-    entries = list of { path, type, date, updated_at }
-    Only decision/editorial types are included — never market snapshots.
-    """
-    manifest = {
-        "generated_at": _utc_now(),
-        "schema_version": "v2.5",
-        "generated_by": "src.ui_logic.contracts.run_publish_ui_decision_assets",
-        "files": entries,
-        # UI compat (legacy key): flat list of path strings for operator_today/history.js
-        "files_flat": [e["path"] for e in entries],
-    }
+    manifest = {"generated_at": _utc_now(), "schema_version": "v2.5", "generated_by": "src.ui_logic.contracts.run_publish_ui_decision_assets", "files": entries, "files_flat": [e["path"] for e in entries]}
     out = DOCS_DECISION / "manifest.json"
     out.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"[PUBLISH] manifest.json → {out}  ({len(entries)} entries)")
 
-    # Sanity: assert no daily_snapshot in manifest
-    bad = [e for e in entries if "snapshot" in e["path"] or "daily_snapshot" in e["path"]]
-    if bad:
-        raise RuntimeError(f"[PUBLISH][BUG] Non-decision files in manifest: {bad}")
-
-
-# ---------------------------------------------------------------------------
-# Main entry point
-# ---------------------------------------------------------------------------
 def main():
     DOCS_DECISION.mkdir(parents=True, exist_ok=True)
-
-    manifest_entries: List[Dict] = []
-
-    # 1. Today
+    manifest_entries = []
     today_entry = _publish_today()
-    if today_entry:
-        manifest_entries.append(today_entry)
-
-    # 2. Editorial history
+    if today_entry: manifest_entries.append(today_entry)
     manifest_entries.extend(_publish_editorial())
-
-    # 3. Legacy (no manifest entries added)
     _publish_legacy_ui_decision()
-
-    # 4. Ops Assets (Video Pool)
     _publish_ops_assets()
-
-    # 5. Write manifest
     _write_manifest(manifest_entries)
 
-    print(f"[PUBLISH] Done. {len(manifest_entries)} manifest entries.")
-
 def _publish_ops_assets():
-    """Copies data_outputs/ops/video_candidate_pool.json to docs/data/ops/."""
-    src = ROOT / "data_outputs" / "ops" / "video_candidate_pool.json"
     dest_dir = ROOT / "docs" / "data" / "ops"
     dest_dir.mkdir(parents=True, exist_ok=True)
-    
-    if src.exists():
-        shutil.copy2(src, dest_dir / "video_candidate_pool.json")
-        print(f"[PUBLISH] video_candidate_pool.json → {dest_dir}")
-    
-    # [PHASE-22A] Addition
-    src_json = ROOT / "data_outputs" / "ops" / "video_script_pack.json"
-    src_md = ROOT / "data_outputs" / "ops" / "video_script_pack.md"
-    
-    if src_json.exists():
-        shutil.copy2(src_json, dest_dir / "video_script_pack.json")
-        print(f"[PUBLISH] video_script_pack.json → {dest_dir}")
-    
-    if src_md.exists():
-        shutil.copy2(src_md, dest_dir / "video_script_pack.md")
-        print(f"[PUBLISH] video_script_pack.md → {dest_dir}")
-
+    files_to_copy = [
+        ROOT / "data_outputs" / "ops" / "video_candidate_pool.json",
+        ROOT / "data_outputs" / "ops" / "video_script_pack.json",
+        ROOT / "data_outputs" / "ops" / "video_script_pack.md"
+    ]
+    for src in files_to_copy:
+        if src.exists():
+            shutil.copy2(src, dest_dir / src.name)
+            print(f"[PUBLISH] {src.name} → {dest_dir}")
 
 if __name__ == "__main__":
     main()
-
