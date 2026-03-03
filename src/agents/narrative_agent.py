@@ -28,7 +28,7 @@ class NarrativeAgent(BaseAgent):
         
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "freshness_tracker", "ops_scoreboard"],
+            "modules_run": ["narrative_intelligence_layer", "conflict_density_layer", "freshness_tracker", "ops_scoreboard"],
             "status": "COMPLETED"
         }
 
