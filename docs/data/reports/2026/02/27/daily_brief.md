@@ -23,13 +23,14 @@ Historical context:
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | KOSPI | data/features/anomalies/2026/02/27/index_kospi_stooq.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/index_kospi_stooq.png) | [json](data/topics/2026/02/27/index_kospi_stooq.json) | [json](data/features/anomalies/2026/02/27/index_kospi_stooq.json) |
 | 2 | US02Y | data/features/anomalies/2026/02/27/rates_us02y_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/rates_us02y_fred.png) | [json](data/topics/2026/02/27/rates_us02y_fred.json) | [json](data/features/anomalies/2026/02/27/rates_us02y_fred.json) |
-| 3 | CPI_USA | data/features/anomalies/2026/02/27/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/27/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/27/inflation_cpi_fred.json) |
-| 4 | PCE_USA | data/features/anomalies/2026/02/27/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/27/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/27/inflation_pce_fred.json) |
-| 5 | M2_USA | data/features/anomalies/2026/02/27/liquidity_m2_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/liquidity_m2_fred.png) | [json](data/topics/2026/02/27/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/02/27/liquidity_m2_fred.json) |
+| 3 | GOLD | data/features/anomalies/2026/02/27/metal_gold_paxg_coingecko.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/metal_gold_paxg_coingecko.png) | [json](data/topics/2026/02/27/metal_gold_paxg_coingecko.json) | [json](data/features/anomalies/2026/02/27/metal_gold_paxg_coingecko.json) |
+| 4 | CPI_USA | data/features/anomalies/2026/02/27/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/inflation_cpi_fred.png) | [json](data/topics/2026/02/27/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/02/27/inflation_cpi_fred.json) |
+| 5 | PCE_USA | data/features/anomalies/2026/02/27/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/02/27/charts/inflation_pce_fred.png) | [json](data/topics/2026/02/27/inflation_pce_fred.json) | [json](data/features/anomalies/2026/02/27/inflation_pce_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] KOSPI: data/features/anomalies/2026/02/27/index_kospi_stooq.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] US02Y: data/features/anomalies/2026/02/27/rates_us02y_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
+- [HIGH] GOLD: data/features/anomalies/2026/02/27/metal_gold_paxg_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/02/27/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/02/27/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/02/27/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -44,7 +45,6 @@ Historical context:
 - [LOW] SPX: data/features/anomalies/2026/02/27/index_spx_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/02/27/index_nasdaq_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] WTI: data/features/anomalies/2026/02/27/comm_wti_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] GOLD: data/features/anomalies/2026/02/27/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] SILVER: data/features/anomalies/2026/02/27/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/02/27/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] ETHUSD: data/features/anomalies/2026/02/27/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -75,7 +75,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
 - **Topic:** [Unknown (Single Axis)] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation Z=-1.80 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.38 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
