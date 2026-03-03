@@ -188,7 +188,9 @@
 | 이란 “호르무즈 송유관 공격 대상”…유가 급등 조짐 - 한겨레 | Structural implication: '이란 “호르무즈 송유관 공격 대상”…유가 급등 조짐 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이란 사태 '첩첩산중'…이억원 "견조한 펀더멘털로 정책 대응 능력 충분" - v.daum.net | Structural implication: '이란 사태 '첩첩산중'…이억원 "견조한 펀더멘털로 정책 대응 능력 충분" - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | [속보]코스피 7% 급락 마감, 이란 공습 직격탄…환율 26원 급등 1466원으로 - 경향신문 | Structural implication: '[속보]코스피 7% 급락 마감, 이란 공습 직격탄…환율 26원 급등 1466원으로 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| "더 오른다"…불안한 중동 정세에 '기름 쟁이기' 나선 시민들 - 네이트 | Structural implication: '"더 오른다"…불안한 중동 정세에 '기름 쟁이기' 나선 시민들 - 네이트' suggests a shift in NEWS dynamics. | LOW |
+| "더 오르기 전 기름 채우자"…중동 불안에 주유소 앞 장사진 - 네이트 | Structural implication: '"더 오르기 전 기름 채우자"…중동 불안에 주유소 앞 장사진 - 네이트' suggests a shift in NEWS dynamics. | LOW |
+| 국고채 3년 3.1% 돌파…30년물 입찰 경계·이란사태 장기화 우려 - 연합인포맥스 | Structural implication: '국고채 3년 3.1% 돌파…30년물 입찰 경계·이란사태 장기화 우려 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| “집은 자산이 아니라 자격이다”… 다주택 넘어 ‘비거주 1주택’까지 규제 확장 - v.daum.net | Structural implication: '“집은 자산이 아니라 자격이다”… 다주택 넘어 ‘비거주 1주택’까지 규제 확장 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 | Structural implication: '홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 | Structural implication: '홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 속도 혁신 재확인한 스페이스X "스타링크, 내년 중 5G 수준 속도 내겠다" [MWC 2026] - 한국경제 | Structural implication: '속도 혁신 재확인한 스페이스X "스타링크, 내년 중 5G 수준 속도 내겠다" [MWC 2026] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
@@ -196,15 +198,16 @@
 | 경실련 “압구정현대 102억 차익에 세금 7억”…고가 아파트 유리 - 한겨레 | Structural implication: '경실련 “압구정현대 102억 차익에 세금 7억”…고가 아파트 유리 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 스마트폰부터 PC까지…메모리플레이션 확산 - 한국경제 | Structural implication: '스마트폰부터 PC까지…메모리플레이션 확산 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | CATL·파나소닉도 온다…韓 인터배터리, 글로벌 비즈니스 허브 '우뚝' - 지디넷코리아 | Structural implication: 'CATL·파나소닉도 온다…韓 인터배터리, 글로벌 비즈니스 허브 '우뚝' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| '로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제 | Structural implication: ''로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 | Structural implication: '정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr | Structural implication: '딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 금값 2.8% 급등·아시아 증시 줄하락…미, 이란 공격 영향 - 한겨레 | Structural implication: '금값 2.8% 급등·아시아 증시 줄하락…미, 이란 공격 영향 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | [단독]"임대 갱신계약은 해당없다?"…실거주 의무 유예방안 해석 혼선 - MTN 머니투데이방송 | Structural implication: '[단독]"임대 갱신계약은 해당없다?"…실거주 의무 유예방안 해석 혼선 - MTN 머니투데이방송' suggests a shift in NEWS dynamics. | LOW |
+| 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr | Structural implication: '딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가·주가 충격 완화 속 코인↑·美국채↓…배경은 - 연합인포맥스 | Structural implication: '국제유가·주가 충격 완화 속 코인↑·美국채↓…배경은 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 에이비엘바이오-네옥바이오, ABL209 미국 임상 1상 IND 승인 - 한국경제 | Structural implication: '에이비엘바이오-네옥바이오, ABL209 미국 임상 1상 IND 승인 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| '로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제 | Structural implication: ''로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 서울숲 옆 48층 아파트·호텔에도 부영 ‘사랑으로’ 붙일까 - 조선비즈 - Chosunbiz | Structural implication: '서울숲 옆 48층 아파트·호텔에도 부영 ‘사랑으로’ 붙일까 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| “뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보 | Structural implication: '“뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 | Structural implication: '‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 증권맨 사위가 리포트 쓰기전 장모가 샀다면…대법 “사기 거래” | Structural implication: '증권맨 사위가 리포트 쓰기전 장모가 샀다면…대법 “사기 거래”' suggests a shift in NEWS dynamics. | LOW |
+| 삼성바이오로직스, 제60회 납세자의 날 ‘고액 납세의 탑’ 수상 | Structural implication: '삼성바이오로직스, 제60회 납세자의 날 ‘고액 납세의 탑’ 수상' suggests a shift in NEWS dynamics. | LOW |
+| GC녹십자의료재단 영남센터 원장에 김선주 교수 | Structural implication: 'GC녹십자의료재단 영남센터 원장에 김선주 교수' suggests a shift in NEWS dynamics. | LOW |
 | 서울시, 4월부터 ‘미리내집’ 보증금 분할납부제 도입 | Structural implication: '서울시, 4월부터 ‘미리내집’ 보증금 분할납부제 도입' suggests a shift in NEWS dynamics. | LOW |
 | 필리핀 국빈 방문한 이재명 대통령 | Structural implication: '필리핀 국빈 방문한 이재명 대통령' suggests a shift in NEWS dynamics. | LOW |
 | 총리 “경제는 심리, 지금은 정확한 정보 중요…불안심리 자극 가짜뉴스 엄정대응” | Structural implication: '총리 “경제는 심리, 지금은 정확한 정보 중요…불안심리 자극 가짜뉴스 엄정대응”' suggests a shift in NEWS dynamics. | LOW |
@@ -222,9 +225,6 @@
 | 한국서부발전, 중동정세 관련 사업 영향 긴급 점검 | Structural implication: '한국서부발전, 중동정세 관련 사업 영향 긴급 점검' suggests a shift in NEWS dynamics. | LOW |
 | 보트·서핑·낚시 … K해양레저 미래를 본다 | Structural implication: '보트·서핑·낚시 … K해양레저 미래를 본다' suggests a shift in NEWS dynamics. | LOW |
 | 속도내는 전남광주특별시 … 기업유치도 빠르게 진행 | Structural implication: '속도내는 전남광주특별시 … 기업유치도 빠르게 진행' suggests a shift in NEWS dynamics. | LOW |
-| [표] 오늘의 날씨 | Structural implication: '[표] 오늘의 날씨' suggests a shift in NEWS dynamics. | LOW |
-| 외국인, 삼전닉스 4.4조 '매도 폭격'… 방산·정유株는 급등 | Structural implication: '외국인, 삼전닉스 4.4조 '매도 폭격'… 방산·정유株는 급등' suggests a shift in NEWS dynamics. | LOW |
-| 결사항전 이란 "선박 다 불탈것"… 원유·가스 초비상 | Structural implication: '결사항전 이란 "선박 다 불탈것"… 원유·가스 초비상' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
