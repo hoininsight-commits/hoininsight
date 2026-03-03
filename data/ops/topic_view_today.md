@@ -22,12 +22,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보] 코스피 급락세, 매도 사이드카 발동 - 지디넷코리아 (ID: unknown)
+### [속보]코스피 7% 급락 마감, 이란 공습 직격탄…환율 26원 급등 1466원으로 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "아빠"…LG그룹 수장 최초 MWC 무대 선 홍범식 사장의 첫 마디 [MWC 2026] - 한국경제 (ID: unknown)
+### “금이 최고 안전자산”...이란 공습에 금값 뛰고 美국채 하락 - v.daum.net (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,7 +42,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 전쟁에 방산·해운株 폭등…한화에어로·HMM, 10% 이상↑ - 연합인포맥스 (ID: unknown)
+### 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,7 +52,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 홈플러스 입점 소상공인의 눈물...“회생 1년, 인생 계획 송두리째 무너졌다” - 조선일보 (ID: unknown)
+### 전쟁에 방산·해운株 폭등…한화에어로·HMM, 10% 이상↑ - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,12 +62,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (ID: unknown)
+### CATL·파나소닉도 온다…韓 인터배터리, 글로벌 비즈니스 허브 '우뚝' - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr (ID: unknown)
+### 정재헌 SKT, 노태문 삼성 만나 "필름 회사 망하겠다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,7 +82,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보 (ID: unknown)
+### 딥시크, ‘V4’로 양회 무대 오른다…中 AI 자립 시험대 - mstoday.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,127 +92,122 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 애플, 아이폰17e·M4 아이패드 에어 공개…"AI 성능 대폭 강화" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘갤 S26′ AI 사진 편집 기능이 너무 좋아서... ‘딥페이크’ 논란 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### '로봇 스마트폰' 보려 관람객 장사진…中, 피지컬 AI로 MWC 점령 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '아들아 미안'…60대 주부, 14억 아파트 물려주려다 '화들짝' [고정삼의 절세GPT] - v.daum.net (ID: unknown)
+### 서울숲 옆 48층 아파트·호텔에도 부영 ‘사랑으로’ 붙일까 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 李대통령 '부동산 투기와의 전쟁'에 강남 불패신화 "휘청" - 노컷뉴스 (ID: unknown)
+### “뇌에 칩 심는다”...시각장애 한국인 유튜버, 머스크 임상 실험 신청 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유용원 국힘 의원, “우크라 북한군 포로 송환 위해 대통령 특사 파견 시급” (ID: unknown)
+### 애플, 아이폰17e·M4 아이패드 에어 공개…"AI 성능 대폭 강화" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “오늘 떨어졌지만 내일은 오를 것”…인버스 팔고 레버리지 담은 개미들 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 금감원 “시장안정에 감독역량 집중”…중동발 리스크에 비상대응 (ID: unknown)
+### “아이폰보다 낫다” 샤오미의 도발…삼성은 AI·애플은 가격으로 맞불 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 2026 회계사 1차 시험 응시자 14% 감소...선발인원 줄었지만 지원자 더 많이 줄어 (ID: unknown)
+### “팀장 대화 점유율 90%? 팀원에게 70% 말하게 하세요” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 쉐보레, 2월 해외서 ‘3만5703대’ · 국내서 ‘927대’ 판매 (ID: unknown)
+### 형지I&C, 131억원 규모 유상증자 실시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 피아니스트 김정원, 피터 야블론스키와 듀오 리사이틀 (ID: unknown)
+### 유일에너테크, 10억원 규모 유상증자 실시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 예금보험공사, 아동용 통장 ‘디딤씨앗 적립예금’ 예금보호 대상에 포함 (ID: unknown)
+### 이란, 사우디 미 대사관 드론 공격…대사관 “미국인, 즉각 대피 권고” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “어제 개설한 채널 구독자 1만명 눈앞?” 충주맨 김선태, 개인 유튜버 홀로서나 (ID: unknown)
+### “친구의 친구를 사랑했네”…남성 두 명과 동시 결혼한 태국女 ‘화제’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “필랑트만 팔리면”…르노코리아, 2월 내수 2000대·수출 1893대 판매 (ID: unknown)
+### "원팀 정신으로 통합 대한항공 첫 페이지 열것" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한국은행 “BIS 기후대응 회사채 펀드에 투자…저탄소 전환 지원” (ID: unknown)
+### 롯데 계열사 15곳 세자릿수 수시채용 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “내년 말까지 메모리 수급난”…올해 스마트폰 출하량, 13년 만에 ‘최저’ (ID: unknown)
+### 현대로템, 무주에 항공우주거점 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “미래산업 육성 지원”…기술보증기금, 부산시·하나은행 등과 협력 (ID: unknown)
+### 치솟는 메모리 값에도…"전략폰은 가격동결" 승부수 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “명품 대신 나이키 키웠다”…중소형 지방 백화점, 생존 전략은 (ID: unknown)
+### 출근길 ‘쌀쌀’ 퇴근길 ‘포근’…수요일 내륙 중심 일교차 15도 이상 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 청와대행 아니었나…‘충주맨’ 김선태, 새 유튜브 채널 개설 (ID: unknown)
+### ‘식스센스’ PD, 불구속 기소…경찰 ‘불기소’ 뒤집혔다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘트럼프 이란 공습’에 국제 유가 급등…미국 휘발유 갤런당 3달러 넘어 (ID: unknown)
+### [매일경제TV] 美 증시 변동성 확대 대응 전략은 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [Mind Note] 빛 드는 곳에 그림자가 있듯…긍정적 이면 속에 그림자가 있는 이유 (ID: unknown)
+### 피아노 2대가 빚는 균형·긴장의 미학 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 국채 수익률 보다 못한 연금저축의 배신…“이젠 수익률 비교 쉬워진다” (ID: unknown)
+### [MBN] '작은 거인' 김한율의 압도적 가창력 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 차세대 K배터리 12개 기술...인터배터리 어워즈 2026서 수상 (ID: unknown)
+### '왕사남' 열풍 창극 무대로 … 계유정난 소재 '보허자' (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “인기 급식 모아놨다”…GS25, 이달의 도시락 ‘개강·개학편’ 선봬 (ID: unknown)
+### "단순하고 행복하게 보이는 타인의 삶도 복잡하게 꼬여버린 내 삶과 다르지 않아" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 미군 “1000곳 이상 목표물 타격했다”…B-2까지 투입한 이란 공격 초기 결과는 (ID: unknown)
+### 주춤해진 머니무브?…은행 요구불예금 30조 쑥 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 창립 19주년 바디프랜드 “AI헬스케어로봇이 글로벌 스탠다드 되는 원년으로” (ID: unknown)
+### 기보에만 기대는 은행권 '생산적금융 외주화' 논란 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
