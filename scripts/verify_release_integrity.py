@@ -60,9 +60,15 @@ def main():
             print(f"❌ [FAIL] Could not parse manifest.json: {e}")
             all_passed = False
 
-    # V4. 현재 규격 (docs/data/decision) 필수 파일 존재
-    print("\n[V4] Checking data assets (current spec)...")
     if not check_file(docs_decision / "today.json"):
+        all_passed = False
+    
+    # [PHASE-22A] Video Assets check
+    print("\n[V4.1] Checking video intelligence assets...")
+    docs_ops = docs / "data" / "ops"
+    if not check_file(docs_ops / "video_candidate_pool.json", required=True):
+        all_passed = False
+    if not check_file(docs_ops / "video_script_pack.json", required=True):
         all_passed = False
     
     # V5. 중복 publish 스크립트 guard 통과

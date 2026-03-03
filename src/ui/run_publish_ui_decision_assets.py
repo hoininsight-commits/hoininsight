@@ -420,8 +420,18 @@ def _publish_ops_assets():
     if src.exists():
         shutil.copy2(src, dest_dir / "video_candidate_pool.json")
         print(f"[PUBLISH] video_candidate_pool.json → {dest_dir}")
-    else:
-        print(f"[PUBLISH] skip ops: {src} not found")
+    
+    # [PHASE-22A] Addition
+    src_json = ROOT / "data_outputs" / "ops" / "video_script_pack.json"
+    src_md = ROOT / "data_outputs" / "ops" / "video_script_pack.md"
+    
+    if src_json.exists():
+        shutil.copy2(src_json, dest_dir / "video_script_pack.json")
+        print(f"[PUBLISH] video_script_pack.json → {dest_dir}")
+    
+    if src_md.exists():
+        shutil.copy2(src_md, dest_dir / "video_script_pack.md")
+        print(f"[PUBLISH] video_script_pack.md → {dest_dir}")
 
 
 if __name__ == "__main__":

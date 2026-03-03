@@ -141,8 +141,22 @@ def main():
         if not video_data or "top_candidates" not in video_data:
             print("❌ Invalid or missing video_candidate_pool.json structure.")
             valid = False
+        # [PHASE-22A] Video Script Pack Verification
+        script_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/video_script_pack.json"
+        script_data = fetch_json(script_url)
+        if not script_data or "candidates" not in script_data:
+            print("❌ Invalid or missing video_script_pack.json structure.")
+            valid = False
         else:
-            print(f"✅ video_candidate_pool.json parsed successfully. Candidates: {len(video_data.get('top_candidates', []))}")
+            print(f"✅ video_script_pack.json parsed successfully. Scripts: {len(script_data.get('candidates', []))}")
+            for sc in script_data.get("candidates", []):
+                s = sc.get("script", {})
+                if not s.get("hook"):
+                    print(f"❌ Missing hook in script for {sc.get('dataset_id')}")
+                    valid = False
+                if len(s.get("one_min_summary_3lines", [])) != 3:
+                    print(f"❌ Invalid summary lines in script for {sc.get('dataset_id')}")
+                    valid = False
 
         if valid:
             print("\n✅ Remote Contract Verification PASSED.")
