@@ -751,13 +751,13 @@ function renderCapitalSection(data) {
                     <div class="pt-2 border-t border-slate-800">
                         <div class="text-[8px] font-black text-red-900/60 uppercase mb-1">Risk Warning</div>
                         <div class="space-y-1">
-                            ${(data.risk_expansion_warning || []).map(w => \`<div class="text-[9px] text-slate-500 flex gap-1"><span>•</span> \${w}</div>\`).join('')}
+                            ${(data.risk_expansion_warning || []).map(w => `<div class="text-[9px] text-slate-500 flex gap-1"><span>•</span> ${w}</div>`).join('')}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    \`;
+    `;
 }
 
 function renderTimingSection(data) {
@@ -774,7 +774,7 @@ function renderTimingSection(data) {
     };
 
     return `
-        < div id = "timing-section" class= "bg-slate-900/40 border border-slate-800 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-left-4" >
+        <div id="timing-section" class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-left-4">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-3">
                     <span class="text-xl">⚙️</span>
@@ -827,8 +827,8 @@ function renderTimingSection(data) {
                     </div>
                 </div>
             </div>
-        </div >
-        \`;
+        </div>
+    `;
 }
 
 function renderCompressionSection(data) {
@@ -845,7 +845,7 @@ function renderCompressionSection(data) {
     };
 
     return `
-        < div id = "compression-section" class= "bg-slate-900/80 border border-slate-700/50 rounded-xl p-6 mb-8 animate-in fade-in zoom-in-95" >
+        <div id="compression-section" class="bg-slate-900/80 border border-slate-700/50 rounded-xl p-6 mb-8 animate-in fade-in zoom-in-95">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-3">
                     <span class="text-xl">🎯</span>
@@ -913,6 +913,6 @@ function renderCompressionSection(data) {
                     </div>
                 </div>
             </div>
-        </div >
-        \`;
+        </div>
+    `;
 }
