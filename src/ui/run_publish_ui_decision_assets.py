@@ -272,5 +272,15 @@ def _publish_ops_assets():
         shutil.copy2(src_tm_md, dest_dir / "timing_brief.md")
         print(f"[PUBLISH] timing_brief.md → {dest_dir}")
 
+    # 9. [PHASE-27] Structural Probability Compression Layer
+    src_pc_json = ROOT / "data_outputs" / "ops" / "probability_compression_state.json"
+    src_pc_md = ROOT / "data_outputs" / "ops" / "probability_compression_brief.md"
+    if src_pc_json.exists():
+        shutil.copy2(src_pc_json, dest_dir / "probability_compression_state.json")
+        print(f"[PUBLISH] probability_compression_state.json → {dest_dir}")
+    if src_pc_md.exists():
+        shutil.copy2(src_pc_md, dest_dir / "probability_compression_brief.md")
+        print(f"[PUBLISH] probability_compression_brief.md → {dest_dir}")
+
 if __name__ == "__main__":
     main()

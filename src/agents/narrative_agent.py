@@ -41,10 +41,14 @@ class NarrativeAgent(BaseAgent):
         # Step 8: [PHASE-26] Structural Timing Layer
         self.logger.info("Step 8: [PHASE-26] Running Structural Timing Layer...")
         self._run_module("src.ops.structural_timing_layer")
+
+        # Step 9: [PHASE-27] Structural Probability Compression Layer
+        self.logger.info("Step 9: [PHASE-27] Running Structural Probability Compression Layer...")
+        self._run_module("src.ops.structural_probability_compression_layer")
         
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer", "structural_probability_compression_layer"],
             "status": "COMPLETED"
         }
 

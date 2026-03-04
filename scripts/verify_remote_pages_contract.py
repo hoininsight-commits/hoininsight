@@ -126,6 +126,22 @@ def main():
                 else: valid = False; print("❌ timing_brief.md found but code not 200")
         except: valid = False; print("❌ timing_brief.md missing")
 
+        # [PHASE-27] Structural Probability Compression Layer
+        pc_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/probability_compression_state.json"
+        pc_data = fetch_json(pc_url)
+        if not pc_data: valid = False; print("❌ probability_compression_state.json missing")
+        else:
+            print(f"✅ Compression State parsed. Direction: {pc_data.get('compression_state', {}).get('direction')}")
+            if not pc_data.get("scenario_tree", {}).get("primary_path"): valid = False; print("❌ primary_path missing")
+
+        pcb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/probability_compression_brief.md"
+        req_pcb = urllib.request.Request(pcb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req_pcb, context=ctx, timeout=10) as resp_pcb:
+                if resp_pcb.getcode() == 200: print("✅ Probability Compression brief (markdown) found")
+                else: valid = False; print("❌ probability_compression_brief.md found but code not 200")
+        except: valid = False; print("❌ probability_compression_brief.md missing")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

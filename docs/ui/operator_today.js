@@ -128,6 +128,12 @@ export async function initTodayView(container) {
             if (timingResp.ok) timingData = await timingResp.json();
         } catch (te) { console.warn("Timing data missing:", te); }
 
+        let compressionData = null;
+        try {
+            const compResp = await fetch('data/ops/probability_compression_state.json?v=' + Date.now());
+            if (compResp.ok) compressionData = await compResp.json();
+        } catch (ce) { console.warn("Compression data missing:", ce); }
+
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
@@ -136,7 +142,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData);
 
     } catch (e) {
         console.error(e);
@@ -203,7 +209,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -372,6 +378,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
             ${renderOSSection(osData)}
             ${renderCapitalSection(capitalData)}
             ${renderTimingSection(timingData)}
+            ${renderCompressionSection(compressionData)}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -817,6 +824,92 @@ function renderTimingSection(data) {
                         <ul class="space-y-1">
                             ${(data.deceleration_warning || []).map(w => `<li class="text-[9px] text-slate-400 flex gap-1"><span>!</span> ${w}</li>`).join('')}
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div >
+        \`;
+}
+
+function renderCompressionSection(data) {
+    if (!data || !data.compression_state) return '';
+
+    const c = data.compression_state;
+    const t = data.scenario_tree;
+    const d = data.decision_compression;
+
+    const getDirectionColor = (dir) => {
+        if (dir === 'UPWARD_BIAS') return 'text-green-500 bg-green-500/10 border-green-500/20';
+        if (dir === 'DOWNWARD_BIAS') return 'text-red-500 bg-red-500/10 border-red-500/20';
+        return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+    };
+
+    return `
+        < div id = "compression-section" class= "bg-slate-900/80 border border-slate-700/50 rounded-xl p-6 mb-8 animate-in fade-in zoom-in-95" >
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">🎯</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Structural Probability Compression</h3>
+                    <div class="h-4 w-[1px] bg-slate-700 ml-2"></div>
+                    <span class="px-3 py-1 rounded-full border text-[10px] font-black uppercase ${getDirectionColor(c.direction)}">
+                        ${c.direction.replace('_', ' ')}
+                    </span>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-right">
+                        <div class="text-[9px] font-black text-slate-500 uppercase">Pressure</div>
+                        <div class="text-[11px] font-black text-slate-300">${c.pressure_level}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[9px] font-black text-slate-500 uppercase">Stability</div>
+                        <div class="text-[11px] font-black text-slate-300">${c.stability}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- SCENARIO TREE -->
+                <div class="space-y-4">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest border-b border-slate-800 pb-2">Scenario Tree</div>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                            <div>
+                                <div class="text-[10px] font-black text-blue-400 uppercase">Primary Path</div>
+                                <div class="text-[12px] font-bold text-slate-200">${t.primary_path}</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-slate-600 mt-1.5"></div>
+                            <div>
+                                <div class="text-[10px] font-black text-slate-500 uppercase">Secondary Path</div>
+                                <div class="text-[12px] font-bold text-slate-400">${t.secondary_path}</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-red-900/10 border border-red-900/20 rounded-lg">
+                            <div class="text-[9px] font-black text-red-500/80 uppercase mb-1">Invalidator</div>
+                            <div class="text-[11px] font-bold text-slate-300 text-center">${t.invalidator}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OPERATOR POSTURE -->
+                <div class="bg-black/20 border border-slate-800 rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-[9px] font-black text-slate-500 uppercase mb-4 tracking-widest">Operator Posture</div>
+                        <div class="text-center py-4 bg-slate-800/30 rounded border border-slate-700/30 mb-4">
+                            <div class="text-[18px] font-black text-white tracking-tight">${d.operator_posture}</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+                        <div>
+                            <div class="text-[8px] font-black text-slate-500 uppercase mb-1">Risk Band</div>
+                            <div class="text-[11px] font-black text-orange-400 uppercase">${d.risk_band}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[8px] font-black text-slate-500 uppercase mb-1">Conviction</div>
+                            <div class="text-[11px] font-black text-blue-400 uppercase">${d.conviction_state}</div>
+                        </div>
                     </div>
                 </div>
             </div>

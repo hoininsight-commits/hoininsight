@@ -119,6 +119,20 @@ def main():
                 print("❌ [FAIL] Deceleration warning empty"); all_passed = False
         except: pass
 
+    print("\n[V4.6] Checking Probability Compression assets (PHASE-27)...")
+    pc_path = docs_ops / "probability_compression_state.json"
+    if not check_file(pc_path): all_passed = False
+    else:
+        try:
+            pc_data = json.loads(pc_path.read_text("utf-8"))
+            if not pc_data.get("compression_state", {}).get("direction"):
+                print("❌ [FAIL] Compression direction missing"); all_passed = False
+            if not pc_data.get("scenario_tree", {}).get("primary_path"):
+                print("❌ [FAIL] Scenario primary path missing"); all_passed = False
+            if not pc_data.get("decision_compression", {}).get("operator_posture"):
+                print("❌ [FAIL] Operator posture missing"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():
