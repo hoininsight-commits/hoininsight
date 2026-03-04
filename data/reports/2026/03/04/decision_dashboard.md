@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] [증시-마감] 9·11 때보다 더 빠진 코스피…시총 672조 증발 '아비규환' - 연합인포맥스 (Google_News_KR_Economy)
+  - [NEWS] 미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문 (Google_News_KR_Economy)
   - [NEWS] ‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] ‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC (Google_News_KR_Economy)
+  - [NEWS] 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,26 +185,39 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| [증시-마감] 9·11 때보다 더 빠진 코스피…시총 672조 증발 '아비규환' - 연합인포맥스 | Structural implication: '[증시-마감] 9·11 때보다 더 빠진 코스피…시총 672조 증발 '아비규환' - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문 | Structural implication: '미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | ‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스 | Structural implication: '‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| ‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC | Structural implication: '‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC' suggests a shift in NEWS dynamics. | LOW |
 | 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 | Structural implication: '티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문' suggests a shift in NEWS dynamics. | LOW |
-| 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 | Structural implication: '금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| '빚투' 32조원…증권사들, 한도 소진에 신용거래 일시 중단 - v.daum.net | Structural implication: ''빚투' 32조원…증권사들, 한도 소진에 신용거래 일시 중단 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
+| [증시 서킷브레이커] '빚투 그만'…NH·한투·신한證, 한도 소진 신용공여 중단 - 연합인포맥스 | Structural implication: '[증시 서킷브레이커] '빚투 그만'…NH·한투·신한證, 한도 소진 신용공여 중단 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아 | Structural implication: '"5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 회생 유지냐 청산이냐…법원 판단만 남은 홈플러스, 건물주들 ‘연쇄 EOD’ 우려 - 인베스트조선 | Structural implication: '회생 유지냐 청산이냐…법원 판단만 남은 홈플러스, 건물주들 ‘연쇄 EOD’ 우려 - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
 | “오라클 시스템 모십니다”···AWS, 클라우드 이전 가속화 - 시사저널e | Structural implication: '“오라클 시스템 모십니다”···AWS, 클라우드 이전 가속화 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
+| 원·달러 환율 한때 1500원 돌파…금융위기 이후 17년만 - 한겨레 | Structural implication: '원·달러 환율 한때 1500원 돌파…금융위기 이후 17년만 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | "물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론 | Structural implication: '"물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론' suggests a shift in NEWS dynamics. | LOW |
 | 뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아 | Structural implication: '뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| “친구 말에 혹해서” “예금 넣었는데”…증시 폭락에 포모 개미들 한숨 - 한겨레 | Structural implication: '“친구 말에 혹해서” “예금 넣었는데”…증시 폭락에 포모 개미들 한숨 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프, 이란 공습 속 디지털자산 법안 통과 압박 - 지디넷코리아 | Structural implication: '트럼프, 이란 공습 속 디지털자산 법안 통과 압박 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 전쟁 장기화 가능성에도 금값 4% 급락…달러 강세에 무너진 ‘안전자산 공식’ - 조선일보 | Structural implication: '전쟁 장기화 가능성에도 금값 4% 급락…달러 강세에 무너진 ‘안전자산 공식’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스 | Structural implication: '반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| [속보]미-이란 전쟁 장기화시 ‘코스피 30% 하락 가능성’…대신증권 전망 - 문화일보 | Structural implication: '[속보]미-이란 전쟁 장기화시 ‘코스피 30% 하락 가능성’…대신증권 전망 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| 금융위 "스테이블코인 컨소시엄, 기술 기업 배려할 것" - 지디넷코리아 | Structural implication: '금융위 "스테이블코인 컨소시엄, 기술 기업 배려할 것" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “설명할 시간 없어, 내려”... 총수 밈도 바뀌었다 - 조선일보 | Structural implication: '“설명할 시간 없어, 내려”... 총수 밈도 바뀌었다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보 | Structural implication: '삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제 | Structural implication: '하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스 | Structural implication: '반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 금융위 "스테이블코인 컨소시엄, 기술 기업 배려할 것" - 지디넷코리아 | Structural implication: '금융위 "스테이블코인 컨소시엄, 기술 기업 배려할 것" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| [논설위원의 단도직입]“집값, 급등보다 양극화 심각…수요 높여놓고 공급으로 잡긴 어려워” - 경향신문 | Structural implication: '[논설위원의 단도직입]“집값, 급등보다 양극화 심각…수요 높여놓고 공급으로 잡긴 어려워” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | “어서 타” 방산주 급등에 이번엔 한화 김승연밈 등장 - 문화일보 | Structural implication: '“어서 타” 방산주 급등에 이번엔 한화 김승연밈 등장 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보 | Structural implication: '삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아 | Structural implication: '중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레 | Structural implication: 'AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| “꿈이 이루어졌다”…하메네이 사망에 ‘트럼프 댄스’ 이란女의 정체 | Structural implication: '“꿈이 이루어졌다”…하메네이 사망에 ‘트럼프 댄스’ 이란女의 정체' suggests a shift in NEWS dynamics. | LOW |
+| [영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입” | Structural implication: '[영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입”' suggests a shift in NEWS dynamics. | LOW |
+| 미래에셋증권 “삼성전자, 3일 동안 20% 급락했어도 사라”…이유는? | Structural implication: '미래에셋증권 “삼성전자, 3일 동안 20% 급락했어도 사라”…이유는?' suggests a shift in NEWS dynamics. | LOW |
+| 코스닥 12% 폭락 와중에 신고가...삼전닉스 휘청여도 선전하는 ‘소부장’ | Structural implication: '코스닥 12% 폭락 와중에 신고가...삼전닉스 휘청여도 선전하는 ‘소부장’' suggests a shift in NEWS dynamics. | LOW |
+| “이란군 수천 명 사망했다”…전투기 100대로 공격한 이스라엘 | Structural implication: '“이란군 수천 명 사망했다”…전투기 100대로 공격한 이스라엘' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프 “미친 사람들이 핵무기 가지면 나쁜 일 일어난다”…또 한 번 경고 | Structural implication: '트럼프 “미친 사람들이 핵무기 가지면 나쁜 일 일어난다”…또 한 번 경고' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프 “이란 지도자 되고자 하는 모든 이들 결국 죽는다” | Structural implication: '트럼프 “이란 지도자 되고자 하는 모든 이들 결국 죽는다”' suggests a shift in NEWS dynamics. | LOW |
+| ‘진짜 사장’ 어디까지 인정하나요?…노란봉투법 코앞인데 여전히 아리송 | Structural implication: '‘진짜 사장’ 어디까지 인정하나요?…노란봉투법 코앞인데 여전히 아리송' suggests a shift in NEWS dynamics. | LOW |
+| 36주차 낙태수술 유튜브 올렸다…정신나간 산모·의사 ‘살인죄 징역’ | Structural implication: '36주차 낙태수술 유튜브 올렸다…정신나간 산모·의사 ‘살인죄 징역’' suggests a shift in NEWS dynamics. | LOW |
+| 매경이 전하는 세상의 지식 (매-세-지, 3월 5일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 3월 5일)' suggests a shift in NEWS dynamics. | LOW |
+| 인간·AI의 발전적 동행을 위한 ‘고영향 AI 판단 가이드라인’ [지평 테크레이더] | Structural implication: '인간·AI의 발전적 동행을 위한 ‘고영향 AI 판단 가이드라인’ [지평 테크레이더]' suggests a shift in NEWS dynamics. | LOW |
+| 귀국하자마자 ‘이란 변수’ 챙긴다…이 대통령, 오늘 임시 국무회의 주재 | Structural implication: '귀국하자마자 ‘이란 변수’ 챙긴다…이 대통령, 오늘 임시 국무회의 주재' suggests a shift in NEWS dynamics. | LOW |
+| 중국 ‘루이싱커피’ 블루보틀 품었다…전 세계 매장 인수 계약 체결 | Structural implication: '중국 ‘루이싱커피’ 블루보틀 품었다…전 세계 매장 인수 계약 체결' suggests a shift in NEWS dynamics. | LOW |
 | 백악관 “트럼프, 쿠르드족과 통화…현재 이란에 지상군투입 계획 없어” | Structural implication: '백악관 “트럼프, 쿠르드족과 통화…현재 이란에 지상군투입 계획 없어”' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 “이란 지도자 되고 싶어하는 모든 사람 결국 죽는다” | Structural implication: '트럼프 “이란 지도자 되고 싶어하는 모든 사람 결국 죽는다”' suggests a shift in NEWS dynamics. | LOW |
 | “아무리 봐도 거품 터질 것 같다”…5.6조 사모펀드 환매폭탄에 월가 ‘흔들’ | Structural implication: '“아무리 봐도 거품 터질 것 같다”…5.6조 사모펀드 환매폭탄에 월가 ‘흔들’' suggests a shift in NEWS dynamics. | LOW |
@@ -212,19 +225,6 @@
 | “유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’ | Structural implication: '“유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’' suggests a shift in NEWS dynamics. | LOW |
 | 175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+] | Structural implication: '175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+]' suggests a shift in NEWS dynamics. | LOW |
 | 전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신 | Structural implication: '전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신' suggests a shift in NEWS dynamics. | LOW |
-| “이란 정보당국, 제3국 통해 미 CIA에 물밑 협상 요청” | Structural implication: '“이란 정보당국, 제3국 통해 미 CIA에 물밑 협상 요청”' suggests a shift in NEWS dynamics. | LOW |
-| “이 동네선 그렇게 장사하다 망한다”…같은 나라, 완전히 다른 두 도시 | Structural implication: '“이 동네선 그렇게 장사하다 망한다”…같은 나라, 완전히 다른 두 도시' suggests a shift in NEWS dynamics. | LOW |
-| 서빙로봇 이어 휴머노이드도 중국산 공습…대학·병원 현장 파고든다 | Structural implication: '서빙로봇 이어 휴머노이드도 중국산 공습…대학·병원 현장 파고든다' suggests a shift in NEWS dynamics. | LOW |
-| ‘비거주 1주택’도 겨눈 정부…장특공제·보유세도 손질 | Structural implication: '‘비거주 1주택’도 겨눈 정부…장특공제·보유세도 손질' suggests a shift in NEWS dynamics. | LOW |
-| 헤그세스 “이란전함 격침…트럼프 암살시도 이란부대 지휘관도 제거” | Structural implication: '헤그세스 “이란전함 격침…트럼프 암살시도 이란부대 지휘관도 제거”' suggests a shift in NEWS dynamics. | LOW |
-| 美재무 "글로벌 관세 이번주 10%에서 15%로 인상" | Structural implication: '美재무 "글로벌 관세 이번주 10%에서 15%로 인상"' suggests a shift in NEWS dynamics. | LOW |
-| “한국은 칩한민국 맞네”…반도체 숨 고르자 전산업 생산 석달만에 ‘뚝’ | Structural implication: '“한국은 칩한민국 맞네”…반도체 숨 고르자 전산업 생산 석달만에 ‘뚝’' suggests a shift in NEWS dynamics. | LOW |
-| 미 국방부, 이란 군사작전에…“미국이 자비 없이 승리하고 있다” | Structural implication: '미 국방부, 이란 군사작전에…“미국이 자비 없이 승리하고 있다”' suggests a shift in NEWS dynamics. | LOW |
-| 이재명 대통령, 내일 임시 국무회의…‘중동 상황’ 경제 여파 등 점검 | Structural implication: '이재명 대통령, 내일 임시 국무회의…‘중동 상황’ 경제 여파 등 점검' suggests a shift in NEWS dynamics. | LOW |
-| 입법조사처 “코인거래소 지분 규제 위헌 소지 다분” | Structural implication: '입법조사처 “코인거래소 지분 규제 위헌 소지 다분”' suggests a shift in NEWS dynamics. | LOW |
-| SK하이닉스 대표가 “삼성에 배우자”…경쟁사 극찬한 이유 있다는데 | Structural implication: 'SK하이닉스 대표가 “삼성에 배우자”…경쟁사 극찬한 이유 있다는데' suggests a shift in NEWS dynamics. | LOW |
-| 이란 혁명수비대 “중동 내 모든 군사·경제 인프라 완전 파괴할 것” | Structural implication: '이란 혁명수비대 “중동 내 모든 군사·경제 인프라 완전 파괴할 것”' suggests a shift in NEWS dynamics. | LOW |
-| 美국방 “트럼프 암살시도했던 이란부대 지휘관 제거” | Structural implication: '美국방 “트럼프 암살시도했던 이란부대 지휘관 제거”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
