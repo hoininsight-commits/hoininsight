@@ -17,7 +17,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 (ID: unknown)
+### ‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,17 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미국-이란 전쟁...국내 주유소 기름값도 불탄다 - JTBC (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [증시 서킷브레이커] 반대매매 쏟아질까…장중 추가증거금 사유 발생 '경고음' - 연합인포맥스 (ID: unknown)
+### 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### '빚투' 32조원…증권사들, 한도 소진에 신용거래 일시 중단 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,17 +47,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “나라가 망할 판, 현금은 무용지물”...미·이스라엘 공습에 이란 코인 거래량 폭증 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 회생 유지냐 청산이냐…법원 판단만 남은 홈플러스, 건물주들 ‘연쇄 EOD’ 우려 - 인베스트조선 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,7 +57,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 정부, '두바이 AI 페스티벌' 참여 취소…"미·이란 갈등 여파" - 지디넷코리아 (ID: unknown)
+### "물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,17 +67,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “친구 말에 혹해서” “예금 넣었는데”…증시 폭락에 포모 개미들 한숨 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 트럼프, 이란 공습 속 디지털자산 법안 통과 압박 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 전쟁 장기화 가능성에도 금값 4% 급락…달러 강세에 무너진 ‘안전자산 공식’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “설명할 시간 없어, 내려”... 총수 밈도 바뀌었다 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제 (ID: unknown)
+### [속보]미-이란 전쟁 장기화시 ‘코스피 30% 하락 가능성’…대신증권 전망 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,19 +97,59 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “설명할 시간 없어, 내려”... 총수 밈도 바뀌었다 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "휴머노이드 성공 기준은 가정…집집마다 로봇 1~2대 시대 온다" - 지디넷코리아 (ID: unknown)
+### “어서 타” 방산주 급등에 이번엔 한화 김승연밈 등장 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레 (ID: unknown)
+### 백악관 “트럼프, 쿠르드족과 통화…현재 이란에 지상군투입 계획 없어” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 트럼프 “이란 지도자 되고 싶어하는 모든 사람 결국 죽는다” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “아무리 봐도 거품 터질 것 같다”…5.6조 사모펀드 환매폭탄에 월가 ‘흔들’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “전쟁통인데 목표가 확 올린다고?”…수혜 확실하다는 에너지株는? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “이란 정보당국, 제3국 통해 미 CIA에 물밑 협상 요청” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “이 동네선 그렇게 장사하다 망한다”…같은 나라, 완전히 다른 두 도시 (ID: unknown)
@@ -168,46 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 美국방 “트럼프 암살시도했던 이란부대 지휘관 제거” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 美국방 “美잠수함, 인도양에서 이란 전함 격침” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 李 “한국선박이 필리핀 제품 실어 세계로”…조선업 협력 러브콜 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “최근 이틀간 20% 가까이 빠졌는데”…코스피 폭락 언제 멈추려나 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 ‘제2의 하메네이’ 등장 임박…트럼프 “선출시 최악” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 “첨단무기는 손도 안댔다”…미국, 무장세력 지원 검토 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 튀르키예 “우리 영공 향하던 이란발 미사일 격추” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중동發 스태그플레이션 공포…ECB 금리인상 확률 25%→60% (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 전 나토 총장 “이란전쟁, 우크라전 시선 빼앗아…러시아에 유리” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
