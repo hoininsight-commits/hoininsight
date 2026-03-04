@@ -12,17 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 코스피·코스닥 한때 ‘8% 폭락’ 서킷브레이커 발동 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 증시 폭락에 환율 급등인데…재경부 홈페이지는 '먹통' - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
+### [증시 서킷브레이커] 반대매매 쏟아질까…장중 추가증거금 사유 발생 '경고음' - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,17 +22,37 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### ‘이란 사태’로 새파랗게 질린 아시아 증시…한·일에 대만도 급락 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 중동발 악재에 코스피·환율 '출렁'…원·달러 3개월만에 최고치 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 미-이란 전쟁 반영?…휘발유 벌써 50원 올랐다 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아 (ID: unknown)
+### 하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제 (ID: unknown)
+### "물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,27 +77,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 이스라엘 주가는 하늘 뚫었다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [증시 서킷브레이커] 투매가 투매 부른다…32조 빚투 '극단적 레버리지 붕괴' - 연합인포맥스 (ID: unknown)
+### "파업 시 회사만 10조 손실"…삼성전자 노사 협상, 최종 결렬 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 (ID: unknown)
+### 뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI 네트워크?...삼성전자 "10년 전부터 준비됐다" - 지디넷코리아 (ID: unknown)
+### 금융위 "스테이블코인 컨소시엄, 기술 기업 배려할 것" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 매출 4조·영업익 1조…'통합 2년차' 셀트리온, 숫자 뒤에 남은 과제는? - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,19 +107,74 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### M5 프로·맥스 맥북 프로 공개…"LLM 처리속도 4배, 가격 400달러 인상" - 지디넷코리아 (ID: unknown)
+### 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아 (ID: unknown)
+### 한국생활 21년 만에…‘미수다’ 에바 포피엘, 대한민국 국적 취득했다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 기아, 국내 최초 月 전기차 판매 1만대 벽 깼다 - 조선일보 (ID: unknown)
+### “K-콘텐츠, 법률관리는 기본이죠”…율촌 미디어엔터팀 출범 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 중동 불안에 불똥 튄 K뷰티…배송 중단에 물류 리스크 ‘촉각’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 장동혁 “최종 책임은 제가”…소장파, 지도부와 노선 차이 재확인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “이번이 마지막 기회일 수도”…홈플러스 회생 1년, 그 끝은? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “TK 통합 무산시 민주당 책임”…법처리 촉구 나선 국힘 “삭발투쟁까진 좀” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 화성특례시, 동탄트램 다시 추진한다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 현대차 로보틱스랩 모베드 시연 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 관람객들로 붐비는 AW2026 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### AI 무장한 해커 막으려면 … 민간·軍전문가 함께 방어훈련해야 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 불안한 환율 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [포토] 요동치는 환율 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 트럼프는 이란만 공격한게 아니었다…중동발 폭탄 맞은 아시아 증시 ‘와르르’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### ‘공급 불안’ 홈플러스서 담배 판매 중단⋯익스프레스선 정상 판매 (ID: unknown)
@@ -143,71 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 하메네이 후계자 선출하는 헌법 기구, 미·이스라엘 폭격에 와르르 [영상] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 조희대, 박영재 법원행정처장 사의 수용…기우종 차장이 대행 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 안양시, 수도권 7개 기초지자체와 ‘경부선 철도 지하화’ 종합계획 조속 발표 촉구 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 애플, M5 프로·맥스 칩 탑재 ‘맥북 프로’ 공개...가격 349만원부터 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “무료 전시 맞아?”…국내 단일 전시 최다 관람객 신기록 세운 특별전 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 임팩트재단, ‘2026’ LIPS 프로그램 선정…11년 경험 바탕으로 기업가형 소상공인 육성 예정 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 발안천 수질개선에 앞장…코스맥스, ‘지속가능혁신상’ 수상 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 여야, 대미투자법 12일 처리 합의…투자 방식은 이견 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 조국, “돈 안줬다” 김성태 녹취에…“李 대통령 공소 취소돼야” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 북한, 15일 최고인민회의 대의원 선거…헌법에 ‘영토조항’ 신설 주목 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 강원 방산기업 지원 확대… 국방벤처센터 신규 협약기업 28개사 선정 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 깨끗한나라, 헬스케어 기기·미용기기 판매 사업목적에 추가한다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 비현실적 ‘성과급 상한 폐지’ 요구에 삼성전자 노사협상 결렬 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 화순전남대병원, 우주의학 혁신연구 플랫폼 구축 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

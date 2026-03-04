@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-04T16:36:30.799315",
+  "generated_at_kst": "2026-03-04T17:07:54.489699",
   "date": "2026-03-04",
   "blocks": {
     "regime": {
@@ -27,13 +27,13 @@
   "structural_topic": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
   "anchor_topic": "[CONFLICT] MULTI-AXIS FRICTION",
   "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=-2.28 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=2.23 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "index_kospi_stooq"
+        "crypto_btc_usd_spot_coingecko"
       ],
       "step6_gap": "Insufficient Evidence for L3/L4",
       "request": [
@@ -43,10 +43,10 @@
       "pre_structural": null
     },
     "inflation_pce_fred": "Primary",
+    "crypto_btc_usd_spot_coingecko": "Secondary",
+    "risk_vix_fred": "Secondary",
     "inflation_cpi_fred": "Secondary",
-    "struct_dart_cb_bw": "Secondary",
-    "struct_dart_disposal": "Secondary",
-    "risk_vix_fred": "Secondary"
+    "struct_dart_cb_bw": "Secondary"
   },
   "top_topics": [
     {
@@ -59,7 +59,7 @@
       "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T16:36:02Z",
+        "ts_utc": "2026-03-04T17:07:31Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/03/04/inflation_pce_fred.json L2 Signal",
@@ -121,6 +121,136 @@
       "intensity": 100.0
     },
     {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 감지된 토픽: crypto_btc_usd_spot_coingecko L2 Signal 중심의 시장 발작 (공포지수(VIX) 이상 급등, 코스피(KOSPI) 지수 충격 동반)",
+      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표가 평소 변동폭 대비 2.23배(표준편차) 이상 유의미한 변화을(를) 보였습니다. 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "raw_data": {
+        "ts_utc": "2026-03-04T17:07:31Z",
+        "dataset_id": "crypto_btc_usd_spot_coingecko",
+        "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
+        "title": "data/features/anomalies/2026/03/04/crypto_btc_usd_spot_coingecko.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 2.23,
+            "percentile": 40.1,
+            "value": 69399.0,
+            "rolling_mean_20d": 68073.35,
+            "reasoning": "Z-Score 2.23 >= 2.0"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/03/04/crypto_btc_usd_spot_coingecko.json"
+        },
+        "rationale": "[L2] Z-Score 2.23 >= 2.0 (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "Monetary Tightening",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ],
+      "intensity": 100.0,
+      "narrative_score": null
+    },
+    {
+      "dataset_id": "risk_vix_fred",
+      "level": "L2",
+      "score": 100,
+      "confidence": 80,
+      "proof_status": "VALIDATED",
+      "missing_sensors": [],
+      "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (crypto_btc_usd_spot_coingecko, 코스피(KOSPI) 지수 충격 동반)",
+      "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent RALLY on ['AssetRally'] axes.",
+      "raw_data": {
+        "ts_utc": "2026-03-04T17:07:31Z",
+        "dataset_id": "risk_vix_fred",
+        "topic_id": "risk_vix_fred::z_score_model_v1",
+        "title": "data/features/anomalies/2026/03/04/risk_vix_fred.json L2 Signal",
+        "score": 6.0,
+        "severity": "HIGH",
+        "evidence": {
+          "source_severity": 60,
+          "level": "L2",
+          "details": {
+            "z_score": 1.39,
+            "percentile": 96.8,
+            "value": 21.44,
+            "rolling_mean_20d": 19.462,
+            "reasoning": "Percentile 96.8% (Extreme)"
+          },
+          "regime": {
+            "vix_roc_1d": null,
+            "us10y_roc_1d": null,
+            "vix_on": false,
+            "us10y_on": false,
+            "multiplier": 1.0,
+            "rule": {
+              "vix_threshold": 0.01,
+              "us10y_threshold": 0.005,
+              "mult_map": {
+                "both": 1.8,
+                "vix": 1.5,
+                "us10y": 1.2,
+                "none": 1.0
+              }
+            }
+          },
+          "anomalies_path": "data/features/anomalies/2026/03/04/risk_vix_fred.json"
+        },
+        "rationale": "[L2] Percentile 96.8% (Extreme) (Regime x1.0)",
+        "links": [],
+        "is_pre_structural": false
+      },
+      "logic_block": "CONFLICT DETECTED (x1.15)",
+      "leader_stocks": [
+        "KB금융",
+        "신한지주",
+        "JP모건(JPM)",
+        "골드만삭스(GS)"
+      ],
+      "narrative_score": 75.09,
+      "video_ready": true,
+      "actor_tier_score": 0.75,
+      "escalation_flag": false,
+      "conflict_flag": true,
+      "cross_axis_multiplier": 1.15,
+      "causal_chain": {
+        "cause": null,
+        "structural_shift": "HOIN_ANOMALY",
+        "market_consequence": "Derived from final_n_score",
+        "affected_sector": "거시경제 이상징후: risk_vix_fred",
+        "time_pressure": "high"
+      },
+      "intensity": 100.0
+    },
+    {
       "dataset_id": "inflation_cpi_fred",
       "level": "L2",
       "score": 100,
@@ -130,7 +260,7 @@
       "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (미국 개인소비지출(PCE) 물가 이상, 한국 소비자물가(CPI) 쇼크 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T16:36:02Z",
+        "ts_utc": "2026-03-04T17:07:31Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/03/04/inflation_cpi_fred.json L2 Signal",
@@ -201,7 +331,7 @@
       "title": "[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, INFLATION 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T16:36:02Z",
+        "ts_utc": "2026-03-04T17:07:31Z",
         "dataset_id": "struct_dart_cb_bw",
         "topic_id": "struct_dart_cb_bw::event_nonzero",
         "title": "data/features/anomalies/2026/03/04/struct_dart_cb_bw.json L2 Signal",
@@ -256,146 +386,6 @@
         "structural_shift": "HOIN_ANOMALY",
         "market_consequence": "Monitoring friction",
         "affected_sector": "거시경제 이상징후: struct_dart_cb_bw",
-        "time_pressure": "high"
-      },
-      "intensity": 85.0
-    },
-    {
-      "dataset_id": "struct_dart_disposal",
-      "level": "L2",
-      "score": 85,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)",
-      "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
-      "raw_data": {
-        "ts_utc": "2026-03-04T16:36:02Z",
-        "dataset_id": "struct_dart_disposal",
-        "topic_id": "struct_dart_disposal::event_nonzero",
-        "title": "data/features/anomalies/2026/03/04/struct_dart_disposal.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "value": 5.0,
-            "threshold": 0,
-            "reasoning": "New Event Detected (Count=5)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/03/04/struct_dart_disposal.json"
-        },
-        "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
-      },
-      "logic_block": "CONFLICT DETECTED (x1.15)",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ],
-      "narrative_score": 69.42,
-      "video_ready": false,
-      "actor_tier_score": 0.55,
-      "escalation_flag": false,
-      "conflict_flag": true,
-      "cross_axis_multiplier": 1.15,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
-        "affected_sector": "거시경제 이상징후: struct_dart_disposal",
-        "time_pressure": "high"
-      },
-      "intensity": 85.0
-    },
-    {
-      "dataset_id": "risk_vix_fred",
-      "level": "L2",
-      "score": 85,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, INFLATION 동반)",
-      "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent RALLY on ['AssetRally'] axes.",
-      "raw_data": {
-        "ts_utc": "2026-03-04T16:36:02Z",
-        "dataset_id": "risk_vix_fred",
-        "topic_id": "risk_vix_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/03/04/risk_vix_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.39,
-            "percentile": 96.8,
-            "value": 21.44,
-            "rolling_mean_20d": 19.462,
-            "reasoning": "Percentile 96.8% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/03/04/risk_vix_fred.json"
-        },
-        "rationale": "[L2] Percentile 96.8% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
-      },
-      "logic_block": "CONFLICT DETECTED (x1.15)",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ],
-      "narrative_score": 75.09,
-      "video_ready": true,
-      "actor_tier_score": 0.75,
-      "escalation_flag": false,
-      "conflict_flag": true,
-      "cross_axis_multiplier": 1.15,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Derived from final_n_score",
-        "affected_sector": "거시경제 이상징후: risk_vix_fred",
         "time_pressure": "high"
       },
       "intensity": 85.0
