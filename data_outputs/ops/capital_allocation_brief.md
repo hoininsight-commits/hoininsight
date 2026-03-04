@@ -12,7 +12,7 @@
 - **Hedge Bucket**: 하락 변동성 보험
 
 ## Priority Rotation
-- **Axis**: Rates
+- **Axis**: Liquidity
 - **Tilt**: UNDERWEIGHT_GROWTH
 - **Rationale**: TIGHTENING 환경 기반 자본 효율성 고려
 

@@ -48,7 +48,13 @@
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.
 
-### Sample 9: 거시경제 이상징후: inflation_cpi_fred
+### Sample 9: 거시경제 이상징후: index_kospi_stooq
+- **Raw Input (Norm)**: 거시경제 이상징후 INDEX KOSPI STOOQ HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
+- **Escalated**: False
+- **Matched Patterns**: NONE
+- **Reason for Result**: No conflict patterns matched semantic conditions.
+
+### Sample 10: 거시경제 이상징후: inflation_cpi_fred
 - **Raw Input (Norm)**: 거시경제 이상징후 INFLATION CPI FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
 - **Escalated**: False
 - **Matched Patterns**: NONE

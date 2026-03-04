@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-04T13:14:52.922135",
+  "generated_at_kst": "2026-03-04T13:32:23.325993",
   "date": "2026-03-04",
   "blocks": {
     "regime": {
@@ -17,17 +17,17 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 79.1,
-      "sla_breach_count": 9,
+      "system_freshness": 93.0,
+      "sla_breach_count": 3,
       "has_stale_warning": true,
       "7d_success_rate": "7/7"
     }
   },
-  "topic": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
-  "structural_topic": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+  "topic": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+  "structural_topic": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
   "anchor_topic": "[CONFLICT] MULTI-AXIS FRICTION",
   "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=-2.62 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=-1.97 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
   "key_data": {
@@ -42,8 +42,9 @@
       ],
       "pre_structural": null
     },
-    "inflation_cpi_fred": "Primary",
-    "inflation_pce_fred": "Secondary",
+    "inflation_pce_fred": "Primary",
+    "inflation_cpi_fred": "Secondary",
+    "struct_dart_cb_bw": "Secondary",
     "struct_dart_disposal": "Secondary",
     "risk_vix_fred": "Secondary"
   },
@@ -58,7 +59,7 @@
       "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T13:14:25Z",
+        "ts_utc": "2026-03-04T13:31:58Z",
         "dataset_id": "inflation_pce_fred",
         "topic_id": "inflation_pce_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/03/04/inflation_pce_fred.json L2 Signal",
@@ -126,10 +127,10 @@
       "confidence": 80,
       "proof_status": "VALIDATED",
       "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
+      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (미국 개인소비지출(PCE) 물가 이상, 한국 소비자물가(CPI) 쇼크 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T13:14:25Z",
+        "ts_utc": "2026-03-04T13:31:58Z",
         "dataset_id": "inflation_cpi_fred",
         "topic_id": "inflation_cpi_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/03/04/inflation_cpi_fred.json L2 Signal",
@@ -191,16 +192,16 @@
       "intensity": 100.0
     },
     {
-      "dataset_id": "inflation_pce_fred",
+      "dataset_id": "struct_dart_cb_bw",
       "level": "L2",
-      "score": 100,
+      "score": 85,
       "confidence": 80,
       "proof_status": "VALIDATED",
       "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
+      "title": "[Monetary Tightening] 전환사채(CB/BW) 발행 폭증 중심의 시장 발작 (기업 자산 매각(Disposal) 급증, INFLATION 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T13:14:25Z",
+        "ts_utc": "2026-03-04T13:31:58Z",
         "dataset_id": "struct_dart_cb_bw",
         "topic_id": "struct_dart_cb_bw::event_nonzero",
         "title": "data/features/anomalies/2026/03/04/struct_dart_cb_bw.json L2 Signal",
@@ -210,11 +211,9 @@
           "source_severity": 60,
           "level": "L2",
           "details": {
-            "z_score": 1.63,
-            "percentile": 100.0,
-            "value": 21474.9,
-            "rolling_mean_20d": 20614.245,
-            "reasoning": "Percentile 100.0% (Extreme)"
+            "value": 1.0,
+            "threshold": 0,
+            "reasoning": "New Event Detected (Count=1)"
           },
           "regime": {
             "vix_roc_1d": null,
@@ -233,9 +232,9 @@
               }
             }
           },
-          "anomalies_path": "data/features/anomalies/2026/03/04/inflation_pce_fred.json"
+          "anomalies_path": "data/features/anomalies/2026/03/04/struct_dart_cb_bw.json"
         },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
+        "rationale": "[L2] New Event Detected (Count=1) (Regime x1.0)",
         "links": [],
         "is_pre_structural": false
       },
@@ -246,7 +245,7 @@
         "JP모건(JPM)",
         "골드만삭스(GS)"
       ],
-      "narrative_score": 74.83,
+      "narrative_score": 69.42,
       "video_ready": false,
       "actor_tier_score": 0.55,
       "escalation_flag": false,
@@ -255,11 +254,11 @@
       "causal_chain": {
         "cause": null,
         "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Derived from final_n_score",
-        "affected_sector": "거시경제 이상징후: inflation_pce_fred",
+        "market_consequence": "Monitoring friction",
+        "affected_sector": "거시경제 이상징후: struct_dart_cb_bw",
         "time_pressure": "high"
       },
-      "intensity": 100.0
+      "intensity": 85.0
     },
     {
       "dataset_id": "struct_dart_disposal",
@@ -268,10 +267,10 @@
       "confidence": 80,
       "proof_status": "VALIDATED",
       "missing_sensors": [],
-      "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, OTHER 동반)",
+      "title": "[Monetary Tightening] 기업 자산 매각(Disposal) 급증 중심의 시장 발작 (전환사채(CB/BW) 발행 폭증, INFLATION 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent DISPOSAL on ['PriceDecline', 'AssetRally', 'Drain'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T13:14:25Z",
+        "ts_utc": "2026-03-04T13:31:58Z",
         "dataset_id": "struct_dart_disposal",
         "topic_id": "struct_dart_disposal::event_nonzero",
         "title": "data/features/anomalies/2026/03/04/struct_dart_disposal.json L2 Signal",
@@ -340,7 +339,7 @@
       "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, INFLATION 동반)",
       "rationale": "HOIN Engine 구조적 분석 결과, 'HOIN_ANOMALY' 유형의 패턴이 감지되었습니다. (드라이버: MACRO, MARKET)\n\n[CONTEXT PACK v1.0]\nA) Observed: Primary signal detected in Structural Capital axis.\nB) Expectation: Based on Structural Capital, monitoring for divergent GOV signals.\nC) Deviation: Friction detected: related signal shows divergent RALLY on ['AssetRally'] axes.",
       "raw_data": {
-        "ts_utc": "2026-03-04T13:14:25Z",
+        "ts_utc": "2026-03-04T13:31:58Z",
         "dataset_id": "risk_vix_fred",
         "topic_id": "risk_vix_fred::z_score_model_v1",
         "title": "data/features/anomalies/2026/03/04/risk_vix_fred.json L2 Signal",
@@ -386,8 +385,8 @@
         "JP모건(JPM)",
         "골드만삭스(GS)"
       ],
-      "narrative_score": 66.07,
-      "video_ready": false,
+      "narrative_score": 75.09,
+      "video_ready": true,
       "actor_tier_score": 0.75,
       "escalation_flag": false,
       "conflict_flag": true,
@@ -395,9 +394,9 @@
       "causal_chain": {
         "cause": null,
         "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
+        "market_consequence": "Derived from final_n_score",
         "affected_sector": "거시경제 이상징후: risk_vix_fred",
-        "time_pressure": "medium"
+        "time_pressure": "high"
       },
       "intensity": 85.0
     }

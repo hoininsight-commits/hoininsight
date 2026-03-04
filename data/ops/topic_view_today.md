@@ -12,7 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [속보] '패닉셀' 코스피·코스닥 8%대 폭락…동반 서킷브레이커 - 지디넷코리아 (ID: unknown)
+### 코스피·코스닥 ‘8% 폭락’ 서킷브레이커 발동…20분간 거래 중단 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,7 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 현대차그룹 아틀라스-모베드 국내 첫 공개 - 동아일보 (ID: unknown)
+### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,7 +47,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [인터뷰] 차상진 변호사 “코인 거래소·중개업 분리 안 하면 금융사고” - 매일경제 (ID: unknown)
+### “韓 코인 혁신 죽는다”…금융위 가상자산위서 정부안 사실상 확정 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,12 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [르포] “기름값 더 뛰기 전에”… 美 이란 공습에 주유소 ‘북적’ - 조선비즈 - Chosunbiz (ID: unknown)
+### 경실련 “압구정현대 102억 차익에 세금 7억”…고가 아파트 유리 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 경실련 “압구정현대 102억 차익에 세금 7억”…고가 아파트 유리 - 한겨레 (ID: unknown)
+### [르포] “기름값 더 뛰기 전에”… 美 이란 공습에 주유소 ‘북적’ - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,22 +82,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI 네트워크?...삼성전자 "10년 전부터 준비됐다" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 속도 혁신 재확인한 스페이스X "스타링크, 내년 중 5G 수준 속도 내겠다" [MWC 2026] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 (ID: unknown)
+### AI 네트워크?...삼성전자 "10년 전부터 준비됐다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### [단독]“삼성 믿고 공장 옮겼는데 발주 중단”···공정위, 삼성전자 하도급법 위반 조사 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 홍범식 LGU+ "익시오로 음성 통화 미래 바꾸겠다" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -112,7 +112,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미디어아트에서 음악까지…거장의 숨결 가득한 경기도 현대미술관 (ID: unknown)
+### 베스타스자산운용, 폴란드 물류센터 2천억 투자 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### SK하이닉스 산 블랙록, 이수페타시스는 차익실현했다 [매경 자이앤트] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 알뜰폰 통신비 6개월 간 ‘0원’으로... 우리은행 이벤트 혜택 누리세요 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한화운용PLUS “3년 뒤 ETF 순자산 100조원 목표”…K제조업 ETF, 미국에도 상장 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미디어아트에서 음악까지…거장 숨결 가득한 경기도 미술관 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -142,7 +162,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “팬데믹 때 취미로 시작해 개인전까지”…화가 변신한 래퍼 치타 (종합) (ID: unknown)
+### “동물 통해 ‘인간의 욕심’ 이야기하고파”…화가 변신한 래퍼 치타 (종합) (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -188,26 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 미래에셋, TIGER ETF ‘ETF 투자는 처음이라’ 가이드북 발간 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “이란전쟁 장기화 공포”…비트코인 7만달러 다시 내줬다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 공습에 무너진 비트코인…‘디지털 금’ 신화 끝나 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “유럽 통화주권 위협”…ECB, 달러 스테이블코인 ‘경고’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 호르무즈 막히자 가스값 폭등…美 LNG 업계 ‘반사이익’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

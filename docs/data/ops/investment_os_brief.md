@@ -4,7 +4,7 @@
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `NEUTRAL`
-- **Focus**: Rates, Policy, Liquidity
+- **Focus**: Liquidity, Rates, Policy
 
 ## 🚫 Do Not Do
 - 방어적 포지션 고수
