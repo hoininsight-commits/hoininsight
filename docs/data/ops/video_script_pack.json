@@ -1,47 +1,5 @@
 {
-  "generated_at": "2026-03-04T17:07:54.798276Z",
-  "date_kst": "2026-03-04",
-  "candidates": [
-    {
-      "dataset_id": "rates_fed_funds_fred",
-      "title": "거시경제 이상징후: rates_fed_funds_fred",
-      "intensity": 30.0,
-      "narrative_score": 75.21,
-      "video_score": 66.6,
-      "why_now_type": "State-driven",
-      "conflict_flag": false,
-      "script": {
-        "hook": "지금 rates_fed_funds_fred를 둘러싸고 시장의 해석이 충돌하고 있습니다. 본질을 보셔야 합니다.",
-        "one_min_summary_3lines": [
-          "구조적 원인: HOIN_ANOMALY 감지 (Policy:POLICY, Capital Flow:FLOW, Structural Capital:구조적)",
-          "자본 흐름 영향: TIER_1:FED, TIER_4:MARKET 중심의 시장 반응 및 지표 변동",
-          "리스크 포인트: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
-        ],
-        "causal_chain": {
-          "cause": null,
-          "structural_shift": "HOIN_ANOMALY",
-          "market_consequence": "Derived from final_n_score"
-        },
-        "evidence_bullets": [
-          "구조적 드라이버: MACRO, MARKET",
-          "주요 리스크: 시장의 단발성 노이즈일 가능성 존재 및 정책 대응 시차 우려."
-        ],
-        "mentionables": [
-          {
-            "ticker": "105560",
-            "name": "KB금융",
-            "exposure_type": "금리 수익",
-            "risk_note": "가계 대출 규제 및 충당금 적립 부담"
-          },
-          {
-            "ticker": "055550",
-            "name": "신한지주",
-            "exposure_type": "금리 수익",
-            "risk_note": "부동산 PF 연체율 관리 리스크"
-          }
-        ],
-        "closing": "정리하면, 지금은 ‘수치’가 아니라 ‘반응’이 바뀌는 구간입니다. HOIN Insight였습니다."
-      }
-    }
-  ]
+  "generated_at": "2026-03-05T08:26:07.043008Z",
+  "date_kst": "2026-03-05",
+  "candidates": []
 }

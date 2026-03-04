@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-04T08:07:54.361002+00:00",
-  "date_kst": "2026-03-04",
+  "generated_at": "2026-03-04T23:26:06.607895+00:00",
+  "date_kst": "2026-03-05",
   "regime_state": "TIGHTENING",
-  "timing_gear": 4,
-  "capital_mode": "DEFENSIVE_ROTATION",
+  "timing_gear": 3,
+  "capital_mode": "DEFENSIVE_BALANCED",
   "compression_state": {
     "direction": "DOWNWARD_BIAS",
-    "pressure_level": "HIGH",
-    "stability": "FRAGILE"
+    "pressure_level": "MODERATE",
+    "stability": "TRANSITION"
   },
   "drivers": [
     {
@@ -16,11 +16,11 @@
     },
     {
       "type": "Timing",
-      "impact": "Gear 4 Acceleration"
+      "impact": "Gear 3 Acceleration"
     },
     {
       "type": "Conflict",
-      "impact": "High Density"
+      "impact": "Normal Density"
     }
   ],
   "scenario_tree": {
@@ -30,7 +30,7 @@
   },
   "decision_compression": {
     "operator_posture": "Cautious Expansion",
-    "risk_band": "NARROW",
-    "conviction_state": "Conditional"
+    "risk_band": "NORMAL",
+    "conviction_state": "Strong"
   }
 }

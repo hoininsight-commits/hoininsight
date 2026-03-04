@@ -1,31 +1,5 @@
 {
-  "generated_at": "2026-03-04T08:07:54.756640Z",
-  "date_kst": "2026-03-04",
-  "topics": [
-    {
-      "dataset_id": "rates_fed_funds_fred",
-      "title": "거시경제 이상징후: rates_fed_funds_fred",
-      "axis": [],
-      "industry_exposure": [
-        {
-          "industry": "은행/보험",
-          "logic": "금리 변동에 따른 순이자마진(NIM) 및 공정가치 변화 민감"
-        }
-      ],
-      "stocks": [
-        {
-          "ticker": "105560",
-          "name": "KB금융",
-          "exposure_type": "금리 수익",
-          "risk_note": "가계 대출 규제 및 충당금 적립 부담"
-        },
-        {
-          "ticker": "055550",
-          "name": "신한지주",
-          "exposure_type": "금리 수익",
-          "risk_note": "부동산 PF 연체율 관리 리스크"
-        }
-      ]
-    }
-  ]
+  "generated_at": "2026-03-04T23:26:07.001996Z",
+  "date_kst": "2026-03-05",
+  "topics": []
 }

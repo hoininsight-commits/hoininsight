@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-03-04
+# 🧭 TODAY TOPIC VIEW - 2026-03-05
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,7 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문 (ID: unknown)
+### [증시-마감] 9·11 때보다 더 빠진 코스피…시총 672조 증발 '아비규환' - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,22 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [증시 서킷브레이커] '빚투 그만'…NH·한투·신한證, 한도 소진 신용공여 중단 - 연합인포맥스 (ID: unknown)
+### '빚투' 32조원…증권사들, 한도 소진에 신용거래 일시 중단 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아 (ID: unknown)
+### 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,6 +57,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### [트럼프 전력청구서] '자체 발전소 지어라'…빅테크發 전력 인프라 재편 - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -72,17 +72,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “친구 말에 혹해서” “예금 넣었는데”…증시 폭락에 포모 개미들 한숨 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 전쟁 장기화 가능성에도 금값 4% 급락…달러 강세에 무너진 ‘안전자산 공식’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### “설명할 시간 없어, 내려”... 총수 밈도 바뀌었다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 하루 새 '830억' 늘었다…주가 폭락에 투자자들 몰린 곳 - 한국경제 (ID: unknown)
+### 반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 반도체 수출은 '역대급'인데 생산은 4.4% 감소…통계 왜 엇갈렸나 - 연합인포맥스 (ID: unknown)
+### [속보]미-이란 전쟁 장기화시 ‘코스피 30% 하락 가능성’…대신증권 전망 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,49 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보 (ID: unknown)
+### ‘흑백’ 우승하고 56억 건물주 됐다…권성준, 약수역 빌딩 매입 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아 (ID: unknown)
+### AI는 ‘화이트칼라 킬러’인가…“모건스탠리 2500명 감원” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이란 닷새 공격했는데 벌써 7조원 넘게 썼다…美 추가예산 요청 ‘만지작’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] “쿠르드족 수천명, 이란 진입해 지상전 돌입”<폭스뉴스> (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “마약 한 적 없다”…박봄 폭로에 ‘강력부인’ 산다라박이 곧바로 한 일 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 300가구 미만 ‘나홀로 단지’ 빛보나...용적률 파격 혜택 준다는데 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “공항 도시는 옛말” 인천 영종도 음악섬으로 바꾼 페스티벌 열린다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “파마리서치, 국내 스킨부스터 시장 경쟁 심화로 성장률 둔화 우려”…목표가↓ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매일 풍경이 바뀌네…봄날 하루 통째로 즐기는 국내 매화 축제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### ‘숲·바다·도심·섬’ 취향 따라 고른다…봄 눈길 끄는 日 호텔 4곳 (ID: unknown)
@@ -122,7 +167,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입” (ID: unknown)
+### [영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입…심층타격 능력 최고” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -163,51 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 매경이 전하는 세상의 지식 (매-세-지, 3월 5일) (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 인간·AI의 발전적 동행을 위한 ‘고영향 AI 판단 가이드라인’ [지평 테크레이더] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 귀국하자마자 ‘이란 변수’ 챙긴다…이 대통령, 오늘 임시 국무회의 주재 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중국 ‘루이싱커피’ 블루보틀 품었다…전 세계 매장 인수 계약 체결 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 백악관 “트럼프, 쿠르드족과 통화…현재 이란에 지상군투입 계획 없어” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 트럼프 “이란 지도자 되고 싶어하는 모든 사람 결국 죽는다” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “아무리 봐도 거품 터질 것 같다”…5.6조 사모펀드 환매폭탄에 월가 ‘흔들’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “전쟁통인데 목표가 확 올린다고?”…수혜 확실하다는 에너지株는? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

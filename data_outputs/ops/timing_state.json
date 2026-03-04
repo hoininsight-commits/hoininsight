@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-03-04T08:07:54.321935+00:00",
-  "date_kst": "2026-03-04",
+  "generated_at": "2026-03-04T23:26:06.569723+00:00",
+  "date_kst": "2026-03-05",
   "regime_state": "TIGHTENING",
-  "os_stance": "NEUTRAL",
-  "capital_mode": "DEFENSIVE_ROTATION",
+  "os_stance": "DEFENSIVE_BIAS",
+  "capital_mode": "DEFENSIVE_BALANCED",
   "timing_gear": {
-    "level": 4,
-    "label": "HIGH_PRESSURE",
-    "description": "구조적 충돌 및 임계 강도 도달 (가속 구간)"
+    "level": 3,
+    "label": "BUILDING",
+    "description": "축 정합성 강화 및 모멘텀 형성 구간"
   },
   "synchronization": {
     "axis_alignment": "STRONG",
-    "conflict_pressure": "HIGH",
+    "conflict_pressure": "LOW",
     "narrative_velocity": "STABLE"
   },
   "acceleration_watch": [

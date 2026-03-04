@@ -1,18 +1,18 @@
-# Strategic Capital Allocation Brief (2026-03-04)
+# Strategic Capital Allocation Brief (2026-03-05)
 
-## Allocation Mode: **DEFENSIVE_ROTATION**
-- **Cash Bias**: MEDIUM
-- **Beta Exposure**: NEUTRAL
-- **Sector Rotation Bias**: VALUE_CASHFLOW
-- **Volatility Posture**: MONITORED
+## Allocation Mode: **DEFENSIVE_BALANCED**
+- **Cash Bias**: HIGH
+- **Beta Exposure**: REDUCED
+- **Sector Rotation Bias**: RATE_SENSITIVE
+- **Volatility Posture**: CONTROLLED
 
 ## Strategic Framework
-- **Core Bucket**: 가치주/현금흐름 중심
-- **Tactical Bucket**: 섹터 로테이션
-- **Hedge Bucket**: 하락 변동성 보험
+- **Core Bucket**: 안정성 중심 (채권/배당)
+- **Tactical Bucket**: 이벤트 드리븐 (숏/헷지)
+- **Hedge Bucket**: 변동성 방어 (VIX/Gold)
 
 ## Priority Rotation
-- **Axis**: Policy
+- **Axis**: Rates
 - **Tilt**: UNDERWEIGHT_GROWTH
 - **Rationale**: TIGHTENING 환경 기반 자본 효율성 고려
 
