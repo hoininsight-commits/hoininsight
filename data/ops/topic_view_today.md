@@ -22,6 +22,16 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### ‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -43,11 +53,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “오라클 시스템 모십니다”···AWS, 클라우드 이전 가속화 - 시사저널e (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 원·달러 환율 한때 1500원 돌파…금융위기 이후 17년만 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레 (ID: unknown)
+### ‘숲·바다·도심·섬’ 취향 따라 고른다…봄 눈길 끄는 日 호텔 4곳 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “꿈이 이루어졌다”…하메네이 사망에 ‘트럼프 댄스’ 이란女의 정체 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

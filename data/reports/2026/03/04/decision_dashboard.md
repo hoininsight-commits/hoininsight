@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문 (Google_News_KR_Economy)
   - [NEWS] ‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 (Google_News_KR_Economy)
+  - [NEWS] ‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,12 +187,13 @@
 |---|---|---|
 | 미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문 | Structural implication: '미·이란 접촉설에 뉴욕증시 상승 마감 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | ‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스 | Structural implication: '‘전 세계 휴머노이드 87%’ 중국 로봇의 한국 상륙 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| ‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC | Structural implication: '‘금융위기 이후 처음’ 환율도 쇼크…한은 총재 긴급회의 - JTBC' suggests a shift in NEWS dynamics. | LOW |
+| 금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제 | Structural implication: '금융위 "증시 추세적 하락 가능성 낮아…시장 교란행위 엄단" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문 | Structural implication: '티로보틱스, 자체 개발 휴머노이드 ‘TR-WORKS’ 첫 공개 - 로봇신문' suggests a shift in NEWS dynamics. | LOW |
 | [증시 서킷브레이커] '빚투 그만'…NH·한투·신한證, 한도 소진 신용공여 중단 - 연합인포맥스 | Structural implication: '[증시 서킷브레이커] '빚투 그만'…NH·한투·신한證, 한도 소진 신용공여 중단 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아 | Structural implication: '"5G 도전 경험 남아있다"...KT, AI 기반 6G 통신 도전 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 회생 유지냐 청산이냐…법원 판단만 남은 홈플러스, 건물주들 ‘연쇄 EOD’ 우려 - 인베스트조선 | Structural implication: '회생 유지냐 청산이냐…법원 판단만 남은 홈플러스, 건물주들 ‘연쇄 EOD’ 우려 - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
 | “오라클 시스템 모십니다”···AWS, 클라우드 이전 가속화 - 시사저널e | Structural implication: '“오라클 시스템 모십니다”···AWS, 클라우드 이전 가속화 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
-| 원·달러 환율 한때 1500원 돌파…금융위기 이후 17년만 - 한겨레 | Structural implication: '원·달러 환율 한때 1500원 돌파…금융위기 이후 17년만 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | "물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론 | Structural implication: '"물 없어도 OK" 파우더 감기약 등장…성패는 '맛·가격' - 약사공론' suggests a shift in NEWS dynamics. | LOW |
 | 뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아 | Structural implication: '뻣뻣해 보이지만…머리는 똑똑한 휴머노이드 로봇 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프, 이란 공습 속 디지털자산 법안 통과 압박 - 지디넷코리아 | Structural implication: '트럼프, 이란 공습 속 디지털자산 법안 통과 압박 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
@@ -204,7 +205,7 @@
 | “어서 타” 방산주 급등에 이번엔 한화 김승연밈 등장 - 문화일보 | Structural implication: '“어서 타” 방산주 급등에 이번엔 한화 김승연밈 등장 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보 | Structural implication: '삼성전자 2년만에 파업 사태 맞나... 노사 임단협 협상 최종 결렬 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아 | Structural implication: '중동 전쟁, 클라우드까지 흔든다…현지 데이터센터 피해 확산 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레 | Structural implication: 'AI가 써준 자소서 못 믿어…실제 직무 역량 검증하는 ‘이색 채용’ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| ‘숲·바다·도심·섬’ 취향 따라 고른다…봄 눈길 끄는 日 호텔 4곳 | Structural implication: '‘숲·바다·도심·섬’ 취향 따라 고른다…봄 눈길 끄는 日 호텔 4곳' suggests a shift in NEWS dynamics. | LOW |
 | “꿈이 이루어졌다”…하메네이 사망에 ‘트럼프 댄스’ 이란女의 정체 | Structural implication: '“꿈이 이루어졌다”…하메네이 사망에 ‘트럼프 댄스’ 이란女의 정체' suggests a shift in NEWS dynamics. | LOW |
 | [영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입” | Structural implication: '[영상] 미군 “장거리 정밀타격 미사일 실전 첫 투입”' suggests a shift in NEWS dynamics. | LOW |
 | 미래에셋증권 “삼성전자, 3일 동안 20% 급락했어도 사라”…이유는? | Structural implication: '미래에셋증권 “삼성전자, 3일 동안 20% 급락했어도 사라”…이유는?' suggests a shift in NEWS dynamics. | LOW |
@@ -224,7 +225,6 @@
 | “전쟁통인데 목표가 확 올린다고?”…수혜 확실하다는 에너지株는? | Structural implication: '“전쟁통인데 목표가 확 올린다고?”…수혜 확실하다는 에너지株는?' suggests a shift in NEWS dynamics. | LOW |
 | “유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’ | Structural implication: '“유럽도 참전? 보복 확대하겠다”…프랑스 핵항모 움직이자 이란 ‘경고’' suggests a shift in NEWS dynamics. | LOW |
 | 175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+] | Structural implication: '175년 ‘고인물’ 美코닝 주가 3배 올랐는데...지금 들어가도 될까요 [매일 돈이 보이는 습관 M+]' suggests a shift in NEWS dynamics. | LOW |
-| 전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신 | Structural implication: '전통시장 품은 제기동 한옥마을…‘경동한옥마을’로 변신' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
