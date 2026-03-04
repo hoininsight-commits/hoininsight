@@ -25,18 +25,22 @@ class NarrativeAgent(BaseAgent):
         # Step 4: [PHASE-24] Investment OS Layer
         self.logger.info("Step 4: [PHASE-24] Running Investment OS Layer...")
         self._run_module("src.ops.investment_os_layer")
+
+        # Step 5: [PHASE-25] Strategic Capital Allocation Layer
+        self.logger.info("Step 5: [PHASE-25] Running Strategic Capital Allocation Layer...")
+        self._run_module("src.ops.capital_allocation_layer")
         
-        # Step 5: Freshness Tracking (Phase 36-B)
-        self.logger.info("Step 5: Tracking Ops Freshness...")
+        # Step 6: Freshness Tracking (Phase 36-B)
+        self.logger.info("Step 6: Tracking Ops Freshness...")
         self._run_module("src.ops.freshness_tracker")
         
-        # Step 6: Ops Scoreboard (Phase 36-B)
-        self.logger.info("Step 6: Updating Ops Scoreboard...")
+        # Step 7: Ops Scoreboard (Phase 36-B)
+        self.logger.info("Step 7: Updating Ops Scoreboard...")
         self._run_module("src.ops.ops_scoreboard")
         
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "freshness_tracker", "ops_scoreboard"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard"],
             "status": "COMPLETED"
         }
 

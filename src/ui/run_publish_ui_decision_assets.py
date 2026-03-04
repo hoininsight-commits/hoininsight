@@ -252,5 +252,15 @@ def _publish_ops_assets():
         shutil.copy2(src_os_md, dest_dir / "investment_os_brief.md")
         print(f"[PUBLISH] investment_os_brief.md → {dest_dir}")
 
+    # 7. [PHASE-25] Strategic Capital Allocation Layer
+    src_ca_json = ROOT / "data_outputs" / "ops" / "capital_allocation_state.json"
+    src_ca_md = ROOT / "data_outputs" / "ops" / "capital_allocation_brief.md"
+    if src_ca_json.exists():
+        shutil.copy2(src_ca_json, dest_dir / "capital_allocation_state.json")
+        print(f"[PUBLISH] capital_allocation_state.json → {dest_dir}")
+    if src_ca_md.exists():
+        shutil.copy2(src_ca_md, dest_dir / "capital_allocation_brief.md")
+        print(f"[PUBLISH] capital_allocation_brief.md → {dest_dir}")
+
 if __name__ == "__main__":
     main()

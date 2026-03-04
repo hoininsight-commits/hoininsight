@@ -106,6 +106,7 @@ export async function initTodayView(container) {
 
         let regimeData = null;
         let osData = null;
+        let capitalData = null;
         try {
             const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
             if (regimeResp.ok) regimeData = await regimeResp.json();
@@ -116,6 +117,11 @@ export async function initTodayView(container) {
             if (osResp.ok) osData = await osResp.json();
         } catch (oe) { console.warn("Investment OS data missing:", oe); }
 
+        try {
+            const capitalResp = await fetch('data/ops/capital_allocation_state.json?v=' + Date.now());
+            if (capitalResp.ok) capitalData = await capitalResp.json();
+        } catch (ce) { console.warn("Capital Allocation data missing:", ce); }
+
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
@@ -124,7 +130,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData);
 
     } catch (e) {
         console.error(e);
@@ -191,7 +197,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -358,6 +364,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
 
             ${renderRegimeSection(regimeData)}
             ${renderOSSection(osData)}
+            ${renderCapitalSection(capitalData)}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -666,4 +673,75 @@ function bindEvents(container) {
             if (icon) icon.innerText = target.classList.contains('hidden') ? '▼' : '▲';
         };
     });
+}
+
+function renderCapitalSection(data) {
+    if (!data || !data.allocation_profile) return '';
+
+    const p = data.allocation_profile;
+    const f = data.framework;
+    const r = data.priority_rotation[0];
+
+    const getModeColor = (mode) => {
+        if (mode.includes('DEFENSIVE')) return 'text-orange-500 bg-orange-500/10 border-orange-500/20';
+        if (mode.includes('AGGRESSIVE')) return 'text-green-500 bg-green-500/10 border-green-500/20';
+        return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+    };
+
+    return `
+        <div id="capital-section" class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-right-4">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">💰</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Capital Allocation Frame</h3>
+                    <div class="h-4 w-[1px] bg-slate-700 ml-2"></div>
+                    <span class="px-3 py-1 rounded-full border text-[10px] font-black uppercase ${getModeColor(p.mode)}">
+                        Mode: ${p.mode}
+                    </span>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-right">
+                        <div class="text-[9px] font-black text-slate-500 uppercase">Cash Bias</div>
+                        <div class="text-[11px] font-black text-slate-300">${p.cash_bias}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[9px] font-black text-slate-500 uppercase">Beta Exp</div>
+                        <div class="text-[11px] font-black text-slate-300">${p.beta_exposure}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 3 BUCKETS -->
+                <div class="md:col-span-2 grid grid-cols-3 gap-4">
+                    <div class="bg-black/20 border border-slate-800 rounded-lg p-3 space-y-1">
+                        <div class="text-[8px] font-black text-blue-500 uppercase">Core Bucket</div>
+                        <div class="text-[11px] font-bold text-slate-300 leading-tight">${f.core_bucket}</div>
+                    </div>
+                    <div class="bg-black/20 border border-slate-800 rounded-lg p-3 space-y-1">
+                        <div class="text-[8px] font-black text-purple-500 uppercase">Tactical</div>
+                        <div class="text-[11px] font-bold text-slate-300 leading-tight">${f.tactical_bucket}</div>
+                    </div>
+                    <div class="bg-black/20 border border-slate-800 rounded-lg p-3 space-y-1">
+                        <div class="text-[8px] font-black text-orange-500 uppercase">Hedge</div>
+                        <div class="text-[11px] font-bold text-slate-300 leading-tight">${f.hedge_bucket}</div>
+                    </div>
+                </div>
+                
+                <!-- ROTATION & WARNING -->
+                <div class="bg-slate-800/20 border border-slate-800 rounded-lg p-3 space-y-3">
+                    <div>
+                        <div class="text-[8px] font-black text-slate-500 uppercase mb-1">Rotation: ${r.axis}</div>
+                        <div class="text-[10px] font-black text-blue-400 uppercase">${r.tilt}</div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800">
+                        <div class="text-[8px] font-black text-red-900/60 uppercase mb-1">Risk Warning</div>
+                        <div class="space-y-1">
+                            ${(data.risk_expansion_warning || []).map(w => \`<div class="text-[9px] text-slate-500 flex gap-1"><span>•</span> \${w}</div>\`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    \`;
 }

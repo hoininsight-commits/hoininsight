@@ -89,10 +89,26 @@ def main():
         b_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/investment_os_brief.md"
         req_b = urllib.request.Request(b_url, headers={'User-Agent': 'Mozilla/5.0'})
         try:
-            with urllib.request.urlopen(req_b, context=ssl._create_unverified_context(), timeout=10) as resp_b:
+            with urllib.request.urlopen(req_b, context=ctx, timeout=10) as resp_b:
                 if resp_b.getcode() == 200: print("✅ OS brief (markdown) found")
                 else: valid = False; print("❌ investment_os_brief.md found but code not 200")
         except: valid = False; print("❌ investment_os_brief.md missing")
+
+        # [PHASE-25] Strategic Capital Allocation Layer
+        ca_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/capital_allocation_state.json"
+        ca_data = fetch_json(ca_url)
+        if not ca_data: valid = False; print("❌ capital_allocation_state.json missing")
+        else:
+            print(f"✅ Capital Allocation parsed. Mode: {ca_data.get('allocation_profile', {}).get('mode')}")
+            if not ca_data.get("framework", {}).get("core_bucket"): valid = False; print("❌ core_bucket missing")
+
+        cab_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/capital_allocation_brief.md"
+        req_cab = urllib.request.Request(cab_url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req_cab, context=ctx, timeout=10) as resp_cab:
+                if resp_cab.getcode() == 200: print("✅ Capital Allocation brief (markdown) found")
+                else: valid = False; print("❌ capital_allocation_brief.md found but code not 200")
+        except: valid = False; print("❌ capital_allocation_brief.md missing")
 
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)

@@ -91,6 +91,20 @@ def main():
                 print("❌ [FAIL] OS priority topics empty"); all_passed = False
         except: pass
 
+    print("\n[V4.4] Checking Capital Allocation assets (PHASE-25)...")
+    ca_path = docs_ops / "capital_allocation_state.json"
+    if not check_file(ca_path): all_passed = False
+    else:
+        try:
+            ca_data = json.loads(ca_path.read_text("utf-8"))
+            if not ca_data.get("allocation_profile", {}).get("mode"):
+                print("❌ [FAIL] Allocation mode missing"); all_passed = False
+            if not ca_data.get("framework", {}).get("core_bucket"):
+                print("❌ [FAIL] Framework core bucket missing"); all_passed = False
+            if len(ca_data.get("risk_expansion_warning", [])) < 1:
+                print("❌ [FAIL] Risk warnings missing"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():
