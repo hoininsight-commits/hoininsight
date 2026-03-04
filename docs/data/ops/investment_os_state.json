@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T23:49:59.323658Z",
+  "generated_at": "2026-03-04T04:14:52.625046Z",
   "date_kst": "2026-03-04",
   "regime": {
     "state": "TIGHTENING",
@@ -12,17 +12,17 @@
   "os_summary": {
     "stance": "NEUTRAL",
     "focus": [
+      "Rates",
       "Policy",
-      "Liquidity",
-      "Rates"
+      "Liquidity"
     ],
     "do_not_do": [
       "방어적 포지션 고수"
     ],
     "today_watch": [
+      "Rates 관련 지표 발표",
       "Policy 관련 지표 발표",
-      "Liquidity 관련 지표 발표",
-      "Rates 관련 지표 발표"
+      "Liquidity 관련 지표 발표"
     ]
   },
   "priority_topics": [
@@ -52,8 +52,71 @@
       }
     },
     {
-      "dataset_id": "risk_vix_fred",
-      "title": "거시경제 이상징후: risk_vix_fred",
+      "dataset_id": "inflation_pce_fred",
+      "title": "거시경제 이상징후: inflation_pce_fred",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "rates_fed_funds_fred",
+      "title": "거시경제 이상징후: rates_fed_funds_fred",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [
+        {
+          "ticker": "105560",
+          "name": "KB금융",
+          "exposure_type": "금리 수익",
+          "risk_note": "가계 대출 규제 및 충당금 적립 부담"
+        },
+        {
+          "ticker": "055550",
+          "name": "신한지주",
+          "exposure_type": "금리 수익",
+          "risk_note": "부동산 PF 연체율 관리 리스크"
+        }
+      ],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "struct_dart_cb_bw",
+      "title": "거시경제 이상징후: struct_dart_cb_bw",
       "intensity": 0.0,
       "narrative_score": 0.0,
       "why_now_type": "Hybrid",
@@ -79,56 +142,6 @@
     {
       "dataset_id": "inflation_kor_cpi_ecos",
       "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
-      "intensity": 0.0,
-      "narrative_score": 0.0,
-      "why_now_type": "Hybrid",
-      "conflict_density": "moderate",
-      "axis": [],
-      "os_classification": "MONITOR",
-      "reasoning": [
-        "상태 정합성 낮음",
-        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
-      ],
-      "linked_stocks": [],
-      "action_card": {
-        "intent": "MONITOR",
-        "checklist": [
-          "지표 추이 및 당국 발언 모니터링"
-        ],
-        "invalidations": [
-          "Regime 전환 발생 시 관점 재검토",
-          "강도(Intensity) 급락 시 감시 해제"
-        ]
-      }
-    },
-    {
-      "dataset_id": "rates_us10y_fred",
-      "title": "거시경제 이상징후: rates_us10y_fred",
-      "intensity": 0.0,
-      "narrative_score": 0.0,
-      "why_now_type": "Hybrid",
-      "conflict_density": "moderate",
-      "axis": [],
-      "os_classification": "MONITOR",
-      "reasoning": [
-        "상태 정합성 낮음",
-        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
-      ],
-      "linked_stocks": [],
-      "action_card": {
-        "intent": "MONITOR",
-        "checklist": [
-          "지표 추이 및 당국 발언 모니터링"
-        ],
-        "invalidations": [
-          "Regime 전환 발생 시 관점 재검토",
-          "강도(Intensity) 급락 시 감시 해제"
-        ]
-      }
-    },
-    {
-      "dataset_id": "struct_dart_disposal",
-      "title": "거시경제 이상징후: struct_dart_disposal",
       "intensity": 0.0,
       "narrative_score": 0.0,
       "why_now_type": "Hybrid",

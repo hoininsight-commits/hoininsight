@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-04T08:49:51.694841",
-  "candidate_count": 8,
-  "alive_count": 8,
+  "generated_at": "2026-03-04T13:14:45.723932",
+  "candidate_count": 9,
+  "alive_count": 9,
   "candidates": [
     {
       "candidate_id": "cand_inflation_pce_fred_20260304",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-03-04T08:49:51.694739",
+      "created_at": "2026-03-04T13:14:45.723880",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -32,7 +32,7 @@
       "candidate_id": "cand_rates_fed_funds_fred_20260304",
       "dataset_id": "rates_fed_funds_fred",
       "category": "RATES_YIELD",
-      "created_at": "2026-03-04T08:49:51.694776",
+      "created_at": "2026-03-04T13:14:45.723897",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -54,7 +54,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260304",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-03-04T08:49:51.694788",
+      "created_at": "2026-03-04T13:14:45.723904",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -78,7 +78,7 @@
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260304",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-03-04T08:49:51.694797",
+      "created_at": "2026-03-04T13:14:45.723908",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -103,7 +103,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260304",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-03-04T08:49:51.694806",
+      "created_at": "2026-03-04T13:14:45.723913",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -127,7 +127,7 @@
       "candidate_id": "cand_risk_vix_fred_20260304",
       "dataset_id": "risk_vix_fred",
       "category": "OTHER",
-      "created_at": "2026-03-04T08:49:51.694814",
+      "created_at": "2026-03-04T13:14:45.723917",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -135,7 +135,9 @@
         "explainability": true
       },
       "supporting_evidence": {
-        "intra_category": [],
+        "intra_category": [
+          "index_kospi_stooq"
+        ],
         "inter_category_axes": [
           "INFLATION",
           "RATES_YIELD",
@@ -143,13 +145,13 @@
           "LIQUIDITY"
         ]
       },
-      "reason": "Cross-Axis: Detected in [risk_vix_fred] during global market volatility in categories ['INFLATION', 'RATES_YIELD', 'STRUCTURAL', 'LIQUIDITY']."
+      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_kospi_stooq']."
     },
     {
       "candidate_id": "cand_liquidity_m2_fred_20260304",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-03-04T08:49:51.694823",
+      "created_at": "2026-03-04T13:14:45.723921",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -168,10 +170,34 @@
       "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['INFLATION', 'RATES_YIELD', 'STRUCTURAL', 'OTHER']."
     },
     {
+      "candidate_id": "cand_index_kospi_stooq_20260304",
+      "dataset_id": "index_kospi_stooq",
+      "category": "OTHER",
+      "created_at": "2026-03-04T13:14:45.723925",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "risk_vix_fred"
+        ],
+        "inter_category_axes": [
+          "INFLATION",
+          "RATES_YIELD",
+          "STRUCTURAL",
+          "LIQUIDITY"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['risk_vix_fred']."
+    },
+    {
       "candidate_id": "cand_inflation_cpi_fred_20260304",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-03-04T08:49:51.694832",
+      "created_at": "2026-03-04T13:14:45.723928",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,

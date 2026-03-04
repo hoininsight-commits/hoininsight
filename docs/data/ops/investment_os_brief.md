@@ -4,7 +4,7 @@
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `NEUTRAL`
-- **Focus**: Policy, Liquidity, Rates
+- **Focus**: Rates, Policy, Liquidity
 
 ## 🚫 Do Not Do
 - 방어적 포지션 고수
@@ -18,16 +18,21 @@
 
 ---
 
-### [MONITOR] 거시경제 이상징후: risk_vix_fred
+### [MONITOR] 거시경제 이상징후: inflation_pce_fred
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링
 
 ---
 
-### [MONITOR] 거시경제 이상징후: inflation_kor_cpi_ecos
+### [MONITOR] 거시경제 이상징후: rates_fed_funds_fred
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링
+
+| Ticker | Name | Exposure | Risk Note |
+|---|---|---|---|
+| 105560 | KB금융 | 금리 수익 | 가계 대출 규제 및 충당금 적립 부담 |
+| 055550 | 신한지주 | 금리 수익 | 부동산 PF 연체율 관리 리스크 |
 
 ---
