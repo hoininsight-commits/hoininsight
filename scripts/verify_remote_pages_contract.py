@@ -110,6 +110,22 @@ def main():
                 else: valid = False; print("❌ capital_allocation_brief.md found but code not 200")
         except: valid = False; print("❌ capital_allocation_brief.md missing")
 
+        # [PHASE-26] Structural Timing Layer
+        tm_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/timing_state.json"
+        tm_data = fetch_json(tm_url)
+        if not tm_data: valid = False; print("❌ timing_state.json missing")
+        else:
+            print(f"✅ Timing State parsed. Gear: {tm_data.get('timing_gear', {}).get('level')}")
+            if not tm_data.get("timing_gear", {}).get("label"): valid = False; print("❌ timing label missing")
+
+        tmb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/timing_brief.md"
+        req_tmb = urllib.request.Request(tmb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req_tmb, context=ctx, timeout=10) as resp_tmb:
+                if resp_tmb.getcode() == 200: print("✅ Timing brief (markdown) found")
+                else: valid = False; print("❌ timing_brief.md found but code not 200")
+        except: valid = False; print("❌ timing_brief.md missing")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

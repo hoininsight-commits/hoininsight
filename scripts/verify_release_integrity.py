@@ -105,6 +105,20 @@ def main():
                 print("❌ [FAIL] Risk warnings missing"); all_passed = False
         except: pass
 
+    print("\n[V4.5] Checking Structural Timing assets (PHASE-26)...")
+    tm_path = docs_ops / "timing_state.json"
+    if not check_file(tm_path): all_passed = False
+    else:
+        try:
+            tm_data = json.loads(tm_path.read_text("utf-8"))
+            if not tm_data.get("timing_gear", {}).get("level"):
+                print("❌ [FAIL] Timing gear level missing"); all_passed = False
+            if len(tm_data.get("acceleration_watch", [])) < 1:
+                print("❌ [FAIL] Acceleration watch empty"); all_passed = False
+            if len(tm_data.get("deceleration_warning", [])) < 1:
+                print("❌ [FAIL] Deceleration warning empty"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():

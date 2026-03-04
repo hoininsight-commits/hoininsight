@@ -262,5 +262,15 @@ def _publish_ops_assets():
         shutil.copy2(src_ca_md, dest_dir / "capital_allocation_brief.md")
         print(f"[PUBLISH] capital_allocation_brief.md → {dest_dir}")
 
+    # 8. [PHASE-26] Structural Timing Layer
+    src_tm_json = ROOT / "data_outputs" / "ops" / "timing_state.json"
+    src_tm_md = ROOT / "data_outputs" / "ops" / "timing_brief.md"
+    if src_tm_json.exists():
+        shutil.copy2(src_tm_json, dest_dir / "timing_state.json")
+        print(f"[PUBLISH] timing_state.json → {dest_dir}")
+    if src_tm_md.exists():
+        shutil.copy2(src_tm_md, dest_dir / "timing_brief.md")
+        print(f"[PUBLISH] timing_brief.md → {dest_dir}")
+
 if __name__ == "__main__":
     main()

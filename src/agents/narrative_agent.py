@@ -37,10 +37,14 @@ class NarrativeAgent(BaseAgent):
         # Step 7: Ops Scoreboard (Phase 36-B)
         self.logger.info("Step 7: Updating Ops Scoreboard...")
         self._run_module("src.ops.ops_scoreboard")
+
+        # Step 8: [PHASE-26] Structural Timing Layer
+        self.logger.info("Step 8: [PHASE-26] Running Structural Timing Layer...")
+        self._run_module("src.ops.structural_timing_layer")
         
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer"],
             "status": "COMPLETED"
         }
 

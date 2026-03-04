@@ -122,6 +122,12 @@ export async function initTodayView(container) {
             if (capitalResp.ok) capitalData = await capitalResp.json();
         } catch (ce) { console.warn("Capital Allocation data missing:", ce); }
 
+        let timingData = null;
+        try {
+            const timingResp = await fetch('data/ops/timing_state.json?v=' + Date.now());
+            if (timingResp.ok) timingData = await timingResp.json();
+        } catch (te) { console.warn("Timing data missing:", te); }
+
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
@@ -130,7 +136,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData);
 
     } catch (e) {
         console.error(e);
@@ -197,7 +203,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -365,6 +371,7 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
             ${renderRegimeSection(regimeData)}
             ${renderOSSection(osData)}
             ${renderCapitalSection(capitalData)}
+            ${renderTimingSection(timingData)}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -744,4 +751,75 @@ function renderCapitalSection(data) {
             </div>
         </div>
     \`;
+}
+
+function renderTimingSection(data) {
+    if (!data || !data.timing_gear) return '';
+
+    const g = data.timing_gear;
+    const s = data.synchronization;
+
+    const getGearColor = (lvl) => {
+        if (lvl >= 4) return 'text-red-500 bg-red-500/10 border-red-500/20';
+        if (lvl >= 3) return 'text-green-500 bg-green-500/10 border-green-500/20';
+        if (lvl >= 2) return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+        return 'text-slate-500 bg-slate-800 border-slate-700';
+    };
+
+    return `
+        < div id = "timing-section" class= "bg-slate-900/40 border border-slate-800 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-left-4" >
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">⚙️</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Structural Timing</h3>
+                    <div class="h-4 w-[1px] bg-slate-700 ml-2"></div>
+                    <span class="px-3 py-1 rounded-full border text-[10px] font-black uppercase ${getGearColor(g.level)}">
+                        Gear: Level ${g.level} (${g.label})
+                    </span>
+                </div>
+                <div class="text-right">
+                    <div class="text-[9px] font-black text-slate-500 uppercase">Synchronicity</div>
+                    <div class="text-[11px] font-black text-slate-300">${s.axis_alignment} / ${s.conflict_pressure}</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-800/30">
+                <div class="space-y-4">
+                    <div class="space-y-1">
+                        <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Timing Context</div>
+                        <p class="text-[12px] font-bold text-slate-200 leading-tight">${g.description}</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="bg-black/20 p-2 rounded border border-slate-800/50">
+                            <div class="text-[8px] text-slate-500 font-bold uppercase mb-0.5">Axis</div>
+                            <div class="text-[10px] font-black text-slate-300">${s.axis_alignment}</div>
+                        </div>
+                        <div class="bg-black/20 p-2 rounded border border-slate-800/50">
+                            <div class="text-[8px] text-slate-500 font-bold uppercase mb-0.5">Conflict</div>
+                            <div class="text-[10px] font-black text-slate-300">${s.conflict_pressure}</div>
+                        </div>
+                        <div class="bg-black/20 p-2 rounded border border-slate-800/50">
+                            <div class="text-[8px] text-slate-500 font-bold uppercase mb-0.5">Velocity</div>
+                            <div class="text-[10px] font-black text-slate-300">${s.narrative_velocity}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-blue-900/5 border border-blue-900/10 p-3 rounded-lg">
+                        <div class="text-[8px] font-black text-blue-500 uppercase mb-2">Acceleration Watch</div>
+                        <ul class="space-y-1">
+                            ${(data.acceleration_watch || []).map(w => `<li class="text-[9px] text-slate-400 flex gap-1"><span>→</span> ${w}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="bg-red-900/5 border border-red-900/10 p-3 rounded-lg">
+                        <div class="text-[8px] font-black text-red-900/60 uppercase mb-2">Deceleration Warning</div>
+                        <ul class="space-y-1">
+                            ${(data.deceleration_warning || []).map(w => `<li class="text-[9px] text-slate-400 flex gap-1"><span>!</span> ${w}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div >
+        \`;
 }

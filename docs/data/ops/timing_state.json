@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-03-04T04:30:24.808162+00:00",
+  "date_kst": "2026-03-04",
+  "regime_state": "TIGHTENING",
+  "os_stance": "NEUTRAL",
+  "capital_mode": "DEFENSIVE_ROTATION",
+  "timing_gear": {
+    "level": 4,
+    "label": "HIGH_PRESSURE",
+    "description": "구조적 충돌 및 임계 강도 도달 (가속 구간)"
+  },
+  "synchronization": {
+    "axis_alignment": "STRONG",
+    "conflict_pressure": "HIGH",
+    "narrative_velocity": "STABLE"
+  },
+  "acceleration_watch": [
+    "동일 축 지표 2개 이상 동시 강도 상승",
+    "Conflict Density 급증",
+    "Regime 전환 시그널 발생"
+  ],
+  "deceleration_warning": [
+    "Video 후보 0건 지속",
+    "Axis 정합도 약화",
+    "내러티브 강도 급락"
+  ]
+}
