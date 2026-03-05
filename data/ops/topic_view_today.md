@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-03-05
+# 🧭 TODAY TOPIC VIEW - 2026-03-06
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -12,12 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [포토] 티로보틱스, AMR에서 휴머노이드까지… 모빌리티 진화의 전 단계 한자리에 - 인더스트리뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 뉴욕증시, 이란 갈등·유가 상승에 하락 출발 - 연합인포맥스 (ID: unknown)
+### 1월 경상수지 132.6억 달러 흑자…반도체 등 수출 확대 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,7 +22,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 지난달 물가 2%↑, 6개월째 2%대…개인서비스 상승 - KBS 뉴스 (ID: unknown)
+### 뉴욕증시, 이란 갈등·유가 상승에 하락 출발 - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 국제 유가 하락에 2월 물가 상승률 2%... 쌀값은 11달째↑ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,22 +42,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 1월 경상수지 132.6억 달러 흑자…반도체 등 수출 확대 - KBS 뉴스 (ID: unknown)
+### [여기는 MWC26] SKT, MWC26에서 ‘지속 가능한 AI혁신 위한 균형 전략’ 제안 - SK텔레콤 뉴스룸 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주병기 공정위원장 “전국 주유소 판매가 모니터링...지방 사무소 총동원” - 조선일보 (ID: unknown)
+### [포토] 티로보틱스, AMR에서 휴머노이드까지… 모빌리티 진화의 전 단계 한자리에 - 인더스트리뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "수능 1등이 일을 제일 잘 하나...LLM 평가 관점 다양해야" - 지디넷코리아 (ID: unknown)
+### 300m 줄 서서 30분 대기···기름값 오를 때 ‘저가 행사’ 나선 대전 최저가 주유소 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국민연금, 국내주식 의결권 민간에 넘긴다 - 한국경제 (ID: unknown)
+### “韓·대만 증시 극심한 변동성...AI에 대한 낙관론 보여줘” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,12 +67,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "코스피 역대 최악 폭락, 외국인 패닉 매도 아냐…변동성 피크아웃 가능성" - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "주가조작 돈 벌어도 세금 못 피한다"... 국세청, 6155억 탈루 적발 - OhmyNews (ID: unknown)
+### "주가조작 패가망신"…국세청, 주식시장 탈세자 2천500억 추징 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,12 +82,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동發 '기초소재 쇼크'···나프타·헬륨 흔들리면 반도체도 멈춘다 - 뉴스웨이 (ID: unknown)
+### 18년 전 '강호동' 먹방 터졌다…"나도 먹을래" 가격 급등 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 중동 전쟁 반도체 쇼크로 이어질라 … 삼성전자 부사장 "매우 심각" - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 코스피, 역대 최대 급락 다음날 ‘9.63%’ 아찔한 급반등 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### '국민연금 관치' 벗나…130조 의결권 민간에 넘긴다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,24 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 18년 전 '강호동' 먹방 터졌다…"나도 먹을래" 가격 급등 - 한국경제 (ID: unknown)
+### “누구도 원치 않아”…의회서 ‘전쟁 반대’ 외치다 끌려 나간 재복男의 정체 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 올해 세븐일레븐 점포선 80% 부피 줄어든 포스기 쓰인다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미 국방장관 “탄약 가득차 있다…공격 지속 불가능하단 판단은 오산” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한국동서발전, 인공지능 예측경보시스템 기술이전 결실 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “저희 제품 너무 좋은데 모르는 것 같다”…‘속옷 사업’ 송지효, 눈물 (ID: unknown)
@@ -188,26 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “난 중동지역 국가 아닌데 왜?”…이란이 공격 나선 ‘뜻밖의 나라’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 강서에서 강남까지 40분…서울시, 남부순환도로 지하화 본격 추진 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 총격에 숨진 이민자에 “테러리스트”…트럼프 ‘충성파’ 국토안보장관 경질 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “보유세 너무 두렵다”…금수저도 꺼리는 강남아파트 증여 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 트럼프 “전 세계 이란 외교관들 망명 신청하길” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

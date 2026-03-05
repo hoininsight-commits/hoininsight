@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-05T03:19:27.083088Z",
-  "date_kst": "2026-03-05",
+  "generated_at": "2026-03-05T23:48:10.531425Z",
+  "date_kst": "2026-03-06",
   "regime": {
     "liquidity_state": "TIGHTENING",
     "policy_state": "RESTRICTIVE",
-    "risk_state": "RISK_OFF",
+    "risk_state": "NEUTRAL",
     "inflation_trend": "STICKY",
     "yield_curve_state": "NORMAL"
   },
@@ -21,7 +21,7 @@
     },
     {
       "indicator": "risk_vix_fred",
-      "observation": "VIX 지수 23.6",
+      "observation": "VIX 지수 21.1",
       "direction": "VOLATILE"
     }
   ],

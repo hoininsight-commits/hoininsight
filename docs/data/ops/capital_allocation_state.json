@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-03-05T03:19:27.208328+00:00",
-  "date_kst": "2026-03-05",
+  "generated_at": "2026-03-05T23:48:10.664830+00:00",
+  "date_kst": "2026-03-06",
   "regime_state": "TIGHTENING",
-  "os_stance": "DEFENSIVE_BIAS",
+  "os_stance": "NEUTRAL",
   "allocation_profile": {
-    "mode": "DEFENSIVE_BALANCED",
-    "cash_bias": "HIGH",
-    "beta_exposure": "REDUCED",
-    "sector_rotation_bias": "RATE_SENSITIVE",
-    "volatility_posture": "CONTROLLED"
+    "mode": "DEFENSIVE_ROTATION",
+    "cash_bias": "MEDIUM",
+    "beta_exposure": "NEUTRAL",
+    "sector_rotation_bias": "VALUE_CASHFLOW",
+    "volatility_posture": "MONITORED"
   },
   "framework": {
-    "core_bucket": "안정성 중심 (채권/배당)",
-    "tactical_bucket": "이벤트 드리븐 (숏/헷지)",
-    "hedge_bucket": "변동성 방어 (VIX/Gold)"
+    "core_bucket": "가치주/현금흐름 중심",
+    "tactical_bucket": "섹터 로테이션",
+    "hedge_bucket": "하락 변동성 보험"
   },
   "priority_rotation": [
     {
-      "axis": "Policy",
+      "axis": "Rates",
       "tilt": "UNDERWEIGHT_GROWTH",
       "logic": "TIGHTENING 환경 기반 자본 효율성 고려"
     }

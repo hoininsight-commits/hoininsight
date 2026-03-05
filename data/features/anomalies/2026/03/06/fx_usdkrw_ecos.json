@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-03-06T08:47:38Z",
+    "dataset_id": "fx_usdkrw_ecos",
+    "entity": "USDKRW",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": 2.09,
+      "percentile": 98.8,
+      "value": 1478.8,
+      "rolling_mean_20d": 1450.8600000000001,
+      "reasoning": "Z-Score 2.09 >= 2.0"
+    }
+  }
+]

@@ -1,50 +1,5 @@
 {
-  "generated_at": "2026-03-05T03:19:27.847201Z",
-  "date_kst": "2026-03-05",
-  "topics": [
-    {
-      "dataset_id": "risk_vix_fred",
-      "title": "거시경제 이상징후: risk_vix_fred",
-      "axis": [],
-      "industry_exposure": [
-        {
-          "industry": "시장 전반",
-          "logic": "특정 섹터 외 거시 지표 변화에 따른 포괄적 영향"
-        }
-      ],
-      "stocks": [
-        {
-          "ticker": "005930",
-          "name": "삼성전자",
-          "exposure_type": "시장 지향",
-          "risk_note": "글로벌 매크로 환경 및 외국인 수급 변동성"
-        }
-      ]
-    },
-    {
-      "dataset_id": "rates_fed_funds_fred",
-      "title": "거시경제 이상징후: rates_fed_funds_fred",
-      "axis": [],
-      "industry_exposure": [
-        {
-          "industry": "은행/보험",
-          "logic": "금리 변동에 따른 순이자마진(NIM) 및 공정가치 변화 민감"
-        }
-      ],
-      "stocks": [
-        {
-          "ticker": "105560",
-          "name": "KB금융",
-          "exposure_type": "금리 수익",
-          "risk_note": "가계 대출 규제 및 충당금 적립 부담"
-        },
-        {
-          "ticker": "055550",
-          "name": "신한지주",
-          "exposure_type": "금리 수익",
-          "risk_note": "부동산 PF 연체율 관리 리스크"
-        }
-      ]
-    }
-  ]
+  "generated_at": "2026-03-05T23:48:11.305959Z",
+  "date_kst": "2026-03-06",
+  "topics": []
 }
