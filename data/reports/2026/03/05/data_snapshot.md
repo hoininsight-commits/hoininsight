@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-03-05T12:19:16Z`
+- ts_utc: `2026-03-05T04:52:51Z`
 - ymd_utc: `2026/03/05`
 - enabled_datasets: `32`
 
@@ -10,7 +10,7 @@
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
 | BTCUSD | crypto_btc_usd_spot_coingecko | OK | 500 | 2026-01-15T07:32:29Z | 2026-03-05T12:18:26Z | 27 | 156 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/03/05/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | OK | 948 | 1947-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/03/05/charts/inflation_cpi_fred.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | OK | 35 | 2026-01-15T00:00:00Z | 2026-03-04T00:00:00Z | 6 | 16 | 1 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/03/05/charts/crypto_eth_usd_spot_coingecko.png) |
+| ETHUSD | crypto_eth_usd_spot_coingecko | OK | 36 | 2026-01-15T00:00:00Z | 2026-03-05T00:00:00Z | 7 | 17 | 1 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/03/05/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | OK | 860 | 1954-07-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 7 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/03/05/charts/rates_fed_funds_fred.png) |
 | FIN_STRESS | risk_financial_stress_fred | OK | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/risk/financial_stress_usa.csv | [png](data/reports/2026/03/05/charts/risk_financial_stress_fred.png) |
 | GOLD | metal_gold_paxg_coingecko | OK | 122 | 2026-01-15T08:10:58Z | 2026-03-05T00:00:00Z | 7 | 30 | 7 | 0 | 0 | data/curated/metals/gold_usd.csv | [png](data/reports/2026/03/05/charts/metal_gold_paxg_coingecko.png) |
