@@ -142,6 +142,22 @@ def main():
                 else: valid = False; print("❌ probability_compression_brief.md found but code not 200")
         except: valid = False; print("❌ probability_compression_brief.md missing")
 
+        # [PHASE-28] Structural Meta-Volatility Layer
+        mv_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/meta_volatility_state.json"
+        mv_data = fetch_json(mv_url)
+        if not mv_data: valid = False; print("❌ meta_volatility_state.json missing")
+        else:
+            print(f"✅ Meta-Volatility parsed. Mode: {mv_data.get('state', {}).get('mode')}")
+            if not mv_data.get("interpretation", {}).get("one_liner"): valid = False; print("❌ one_liner missing")
+
+        mvb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/meta_volatility_brief.md"
+        req_mvb = urllib.request.Request(mvb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req_mvb, context=ctx, timeout=10) as resp_mvb:
+                if resp_mvb.getcode() == 200: print("✅ Meta-Volatility brief (markdown) found")
+                else: valid = False; print("❌ meta_volatility_brief.md found but code not 200")
+        except: valid = False; print("❌ meta_volatility_brief.md missing")
+
         if valid: print("✅ Remote Contract Verification PASSED."); sys.exit(0)
         print("⚠️ Verification rejected. Waiting 20 seconds..."); time.sleep(20)
 

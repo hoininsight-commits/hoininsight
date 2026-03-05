@@ -133,6 +133,25 @@ def main():
                 print("❌ [FAIL] Operator posture missing"); all_passed = False
         except: pass
 
+    print("\n[V4.7] Checking Meta-Volatility assets (PHASE-28)...")
+    mv_path = docs_ops / "meta_volatility_state.json"
+    if not check_file(mv_path): all_passed = False
+    else:
+        try:
+            mv_data = json.loads(mv_path.read_text("utf-8"))
+            for field in ["state", "signals", "interpretation"]:
+                if field not in mv_data:
+                    print(f"❌ [FAIL] {field} missing in meta_volatility_state.json"); all_passed = False
+            
+            s = mv_data["state"]
+            if "mode" not in s or "fragility" not in s or "shock_window" not in s:
+                print("❌ [FAIL] state fields missing"); all_passed = False
+            
+            interp = mv_data["interpretation"]
+            if "one_liner" not in interp or len(interp.get("why_now", [])) < 2 or len(interp.get("invalidators", [])) < 1:
+                print("❌ [FAIL] interpretation fields incomplete"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():

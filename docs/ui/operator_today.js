@@ -107,42 +107,55 @@ export async function initTodayView(container) {
         let regimeData = null;
         let osData = null;
         let capitalData = null;
+        let timingData = null;
+        let compressionData = null;
+        let metaVolData = null; // Declare metaVolData
+
         try {
             const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
-            if (regimeResp.ok) regimeData = await regimeResp.json();
+            if (!regimeResp.ok) throw new Error("Regime data missing");
+            regimeData = await regimeResp.json();
         } catch (re) { console.warn("Regime data missing or invalid:", re); }
 
         try {
             const osResp = await fetch('data/ops/investment_os_state.json?v=' + Date.now());
-            if (osResp.ok) osData = await osResp.json();
+            if (!osResp.ok) throw new Error("Investment OS data missing");
+            osData = await osResp.json();
         } catch (oe) { console.warn("Investment OS data missing:", oe); }
 
         try {
             const capitalResp = await fetch('data/ops/capital_allocation_state.json?v=' + Date.now());
-            if (capitalResp.ok) capitalData = await capitalResp.json();
+            if (!capitalResp.ok) throw new Error("Capital Allocation data missing");
+            capitalData = await capitalResp.json();
         } catch (ce) { console.warn("Capital Allocation data missing:", ce); }
 
-        let timingData = null;
         try {
             const timingResp = await fetch('data/ops/timing_state.json?v=' + Date.now());
-            if (timingResp.ok) timingData = await timingResp.json();
+            if (!timingResp.ok) throw new Error("Timing data missing");
+            timingData = await timingResp.json();
         } catch (te) { console.warn("Timing data missing:", te); }
 
-        let compressionData = null;
         try {
             const compResp = await fetch('data/ops/probability_compression_state.json?v=' + Date.now());
-            if (compResp.ok) compressionData = await compResp.json();
+            if (!compResp.ok) throw new Error("Compression data missing");
+            compressionData = await compResp.json();
         } catch (ce) { console.warn("Compression data missing:", ce); }
+
+        try {
+            const metaVolResp = await fetch('data/ops/meta_volatility_state.json?v=' + Date.now());
+            if (!metaVolResp.ok) throw new Error("Meta-Volatility data missing");
+            metaVolData = await metaVolResp.json();
+        } catch (mve) { console.warn("Meta-Volatility data missing:", mve); }
 
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
             if (rA !== rB) return rB - rA;
             if (b.intensity !== a.intensity) return (b.intensity || 0) - (a.intensity || 0);
-            return new Date(b.selected_at || 0) - new Date(a.selected_at || 0);
+            return new Date(b.selected_at || 0).getTime() - new Date(a.selected_at || 0).getTime();
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData, metaVolData);
 
     } catch (e) {
         console.error(e);
@@ -209,7 +222,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null, metaVolData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -376,9 +389,10 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
 
             ${renderRegimeSection(regimeData)}
             ${renderOSSection(osData)}
-            ${renderCapitalSection(capitalData)}
-            ${renderTimingSection(timingData)}
-            ${renderCompressionSection(compressionData)}
+            ${capitalData ? renderCapitalSection(capitalData) : ''}
+            ${timingData ? renderTimingSection(timingData) : ''}
+            ${compressionData ? renderCompressionSection(compressionData) : ''}
+            ${metaVolData ? renderMetaVolatilitySection(metaVolData) : ''}
             ${summaryStripHtml}
             ${heroAreaHtml}
 
@@ -911,6 +925,87 @@ function renderCompressionSection(data) {
                             <div class="text-[11px] font-black text-blue-400 uppercase">${d.conviction_state}</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderMetaVolatilitySection(data) {
+    if (!data || !data.state) return '';
+
+    const s = data.state;
+    const i = data.interpretation;
+    const sig = data.signals;
+
+    const getModeColor = (mode) => {
+        if (mode === 'COMPRESSION') return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+        if (mode === 'EXPANSION') return 'text-orange-400 bg-orange-400/10 border-orange-400/20';
+        return 'text-purple-400 bg-purple-400/10 border-purple-400/20';
+    };
+
+    const getFragilityColor = (frag) => {
+        if (frag === 'HIGH') return 'text-red-500 bg-red-500/10 border-red-500/20';
+        if (frag === 'MEDIUM') return 'text-orange-400 bg-orange-400/10 border-orange-400/20';
+        return 'text-green-500 bg-green-500/10 border-green-500/20';
+    };
+
+    const getShockColor = (shock) => {
+        if (shock === 'ELEVATED') return 'text-red-600 font-extrabold animate-pulse';
+        if (shock === 'WATCH') return 'text-orange-500 font-bold';
+        return 'text-slate-500';
+    };
+
+    return `
+        <div id="meta-volatility-section" class="bg-slate-900/60 border border-slate-700 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-bottom-4">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">🌪️</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Structural Meta-Volatility</h3>
+                </div>
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 rounded-full border text-[9px] font-black uppercase ${getModeColor(s.mode)}">
+                        ${s.mode}
+                    </span>
+                    <span class="px-3 py-1 rounded-full border text-[9px] font-black uppercase ${getFragilityColor(s.fragility)}">
+                        FRAGILITY: ${s.fragility}
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <!-- SHOCK WINDOW -->
+                <div class="bg-black/40 border border-slate-800 rounded-lg p-4 flex flex-col items-center justify-center">
+                    <div class="text-[8px] font-black text-slate-500 uppercase mb-1">Shock Window</div>
+                    <div class="text-[16px] uppercase tracking-tighter ${getShockColor(s.shock_window)}">
+                        ${s.shock_window}
+                    </div>
+                </div>
+
+                <!-- ONE-LINER -->
+                <div class="md:col-span-2 bg-blue-900/5 border border-blue-900/10 p-4 rounded-lg flex items-center">
+                    <div>
+                        <div class="text-[8px] font-black text-blue-500 uppercase mb-1">Executive Summary</div>
+                        <div class="text-[13px] font-bold text-slate-200">${i.one_liner}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- WHY NOW -->
+                <div class="space-y-3">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest border-b border-slate-800 pb-2">Why Now?</div>
+                    <ul class="space-y-2">
+                        ${(i.why_now || []).map(w => `<li class="text-[10px] text-slate-300 flex gap-2"><span>•</span> ${w}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <!-- INVALIDATORS -->
+                <div class="space-y-3">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest border-b border-slate-800 pb-2">Invalidators</div>
+                    <ul class="space-y-2">
+                        ${(i.invalidators || []).map(v => `<li class="text-[10px] text-slate-400 flex gap-2"><span class="text-red-900">!</span> ${v}</li>`).join('')}
+                    </ul>
                 </div>
             </div>
         </div>

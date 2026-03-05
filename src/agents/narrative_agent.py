@@ -46,9 +46,13 @@ class NarrativeAgent(BaseAgent):
         self.logger.info("Step 9: [PHASE-27] Running Structural Probability Compression Layer...")
         self._run_module("src.ops.structural_probability_compression_layer")
         
+        # Step 10: [PHASE-28] Structural Meta-Volatility Layer
+        self.logger.info("Step 10: [PHASE-28] Running Structural Meta-Volatility Layer...")
+        self._run_module("src.ops.structural_meta_volatility_layer")
+        
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer", "structural_probability_compression_layer"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer", "structural_probability_compression_layer", "structural_meta_volatility_layer"],
             "status": "COMPLETED"
         }
 

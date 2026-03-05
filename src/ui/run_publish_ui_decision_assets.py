@@ -282,5 +282,15 @@ def _publish_ops_assets():
         shutil.copy2(src_pc_md, dest_dir / "probability_compression_brief.md")
         print(f"[PUBLISH] probability_compression_brief.md → {dest_dir}")
 
+    # 10. [PHASE-28] Structural Meta-Volatility Layer
+    src_mv_json = ROOT / "data_outputs" / "ops" / "meta_volatility_state.json"
+    src_mv_md = ROOT / "data_outputs" / "ops" / "meta_volatility_brief.md"
+    if src_mv_json.exists():
+        shutil.copy2(src_mv_json, dest_dir / "meta_volatility_state.json")
+        print(f"[PUBLISH] meta_volatility_state.json → {dest_dir}")
+    if src_mv_md.exists():
+        shutil.copy2(src_mv_md, dest_dir / "meta_volatility_brief.md")
+        print(f"[PUBLISH] meta_volatility_brief.md → {dest_dir}")
+
 if __name__ == "__main__":
     main()
