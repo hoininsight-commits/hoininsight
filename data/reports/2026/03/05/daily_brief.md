@@ -37,6 +37,7 @@ Historical context:
 - [HIGH] M2_USA: data/features/anomalies/2026/03/05/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/05/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/05/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] US02Y: data/features/anomalies/2026/03/05/rates_us02y_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
 - [MED] KOR_CPI: data/features/anomalies/2026/03/05/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/05/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] HY_SPREAD: data/features/anomalies/2026/03/05/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-3.00) | App7d=2
@@ -45,7 +46,6 @@ Historical context:
 - [LOW] SPX: data/features/anomalies/2026/03/05/index_spx_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] KOSPI: data/features/anomalies/2026/03/05/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [LOW] NASDAQ: data/features/anomalies/2026/03/05/index_nasdaq_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] US02Y: data/features/anomalies/2026/03/05/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [LOW] GOLD: data/features/anomalies/2026/03/05/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [LOW] SILVER: data/features/anomalies/2026/03/05/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/05/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
