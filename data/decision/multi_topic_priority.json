@@ -1,12 +1,12 @@
 {
   "date": "2026-03-05",
   "long": {
-    "topic_id": "363ef93a-ebeb-4bf9-9658-2d14eca4cb9e",
+    "topic_id": "f0238ecd-b0d1-49ac-bdc7-4b200ba2f2de",
     "title": "정책 예산 집행과 기업 실적 발표가 맞물리며 Tech 인프라 섹터의 구조적 반등 시발점이 ...",
     "axes": [
       "POLICY",
-      "EARNINGS",
-      "STRUCTURAL"
+      "STRUCTURAL",
+      "EARNINGS"
     ],
     "confidence": 0.88
   },
@@ -20,21 +20,13 @@
       "confidence": 0.9
     },
     {
-      "topic_id": "310c57c4-5819-4678-bf70-3164d175cfd5",
+      "topic_id": "1b934a9a-45d8-449b-ae39-a2804bbd6839",
       "title": "자율 공시 도입 기대감으로 자본 유입이 관찰되나 실적 검증 데이터는 대기 상태....",
       "axes": [
         "CAPITAL",
         "POLICY"
       ],
       "confidence": 0.75
-    },
-    {
-      "topic_id": "IS-96-20260304-NVID-Open",
-      "title": "NVIDIA와 OpenAI 사이의 supplier_dependency 관계에서 구조적 균열...",
-      "axes": [
-        "RELATIONSHIP"
-      ],
-      "confidence": 0.6
     },
     {
       "topic_id": "IS-96-20260305-NVID-Open",
@@ -46,7 +38,7 @@
     }
   ],
   "metadata": {
-    "total_candidates": 5,
+    "total_candidates": 4,
     "engine_version": "is107_v1"
   }
 }

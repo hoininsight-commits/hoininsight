@@ -1,12 +1,14 @@
 {
   "data_axis": [
     "comm_wti_fred",
+    "fx_usdkrw_ecos",
     "crypto_btc_usd_spot_coingecko",
     "risk_vix_fred"
   ],
   "baseline_match": [
     "comm_wti_fred: Volatility Surge (Z=2.94)",
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=3.68)",
+    "fx_usdkrw_ecos: Volatility Surge (Z=2.09)",
+    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.73)",
     "risk_vix_fred: Volatility Surge (Z=2.32)"
   ],
   "anomaly_logic": "Unknown",

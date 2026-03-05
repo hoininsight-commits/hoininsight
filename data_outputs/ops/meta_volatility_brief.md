@@ -9,7 +9,7 @@
 > 지금 시장은 EXPANSION 상태이며, 취약성은 HIGH입니다.
 
 ## Key Signals
-- **Regime**: Liquidity TIGHTENING / Risk NEUTRAL
+- **Regime**: Liquidity TIGHTENING / Risk RISK_OFF
 - **Timing**: Gear 4 (UNKNOWN Sync)
 - **Compression**: DOWNWARD_BIAS (Pressure: HIGH)
 - **Conflict**: HIGH Density

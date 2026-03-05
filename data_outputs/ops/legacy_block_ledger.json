@@ -4,90 +4,6 @@
   "blocked": [
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-03T18:37:01.799354"
-    },
-    {
-      "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-03T18:37:01.802913"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.101003"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.115207"
-    },
-    {
-      "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.127867"
-    },
-    {
-      "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.145707"
-    },
-    {
-      "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.161286"
-    },
-    {
-      "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.174361"
-    },
-    {
-      "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.188153"
-    },
-    {
-      "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.199386"
-    },
-    {
-      "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.212724"
-    },
-    {
-      "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.224756"
-    },
-    {
-      "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.237027"
-    },
-    {
-      "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:228",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-03-04T08:35:08.249818"
-    },
-    {
-      "module": "src.ui.capital_perspective_narrator",
       "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
       "ts": "2026-03-04T08:35:08.263144"
@@ -601,6 +517,90 @@
       "caller": "<frozen importlib._bootstrap>:241",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
       "ts": "2026-03-05T08:25:47.812812"
+    },
+    {
+      "module": "src.ui.natural_language_summary",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.760135"
+    },
+    {
+      "module": "src.ui.narrative_entry_hook_generator",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.763537"
+    },
+    {
+      "module": "src.ui.schedule_risk_calendar",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.765253"
+    },
+    {
+      "module": "src.ui.risk_timeline_narrator",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.773809"
+    },
+    {
+      "module": "src.ui.narrative_fusion_engine",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.779165"
+    },
+    {
+      "module": "src.ui.time_to_money_resolver",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.783481"
+    },
+    {
+      "module": "src.ui.sector_rotation_acceleration_detector",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.786310"
+    },
+    {
+      "module": "src.ui.sector_rotation_exporter",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.788759"
+    },
+    {
+      "module": "src.ui.valuation_reset_detector",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.791570"
+    },
+    {
+      "module": "src.ui.policy_capital_script_exporter",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.794275"
+    },
+    {
+      "module": "src.ui.operator_main_contract",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.796834"
+    },
+    {
+      "module": "src.ui.multi_topic_selector",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.800460"
+    },
+    {
+      "module": "src.ui.capital_perspective_narrator",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.803802"
+    },
+    {
+      "module": "src.ui.relationship_stress_generator",
+      "caller": "<frozen importlib._bootstrap>:241",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-05T12:19:11.807470"
     }
   ],
   "allowed": [
