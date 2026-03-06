@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-03-06
+# 🧭 TODAY TOPIC VIEW - 2026-03-07
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -17,12 +17,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [글로벌차트] 파업·한파·낮은 응답률…혼돈의 美 고용보고서 - 연합인포맥스 (ID: unknown)
+### 뉴욕증시, 유가급등·고용위축에 하락 마감…다우 1%↓ - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 전쟁발 유가 폭등에 고용 쇼크까지…‘스태그 공포’ 에 뉴욕증시 흔들 - 마켓인 (ID: unknown)
+### 클리블랜드 연은 총재 "금리 상당 기간 동결해야…美 인플레 너무 높아" - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 연일 매도·매수 '브레이크' 걸린 현기증 장세…증시 방향성 탐색 구간 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,17 +37,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘롤러코스피’ 장세에 변동성지수도 금융위기 이후 최고... 투자자들 “주식이 코인판 됐다” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### [현장] 대한민국 로봇 다 모였다"불량만두 잡고 무인하역 거뜬" 피지컬 AI 전성시대 - 헬로디디 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 브로드컴, AI칩 고성장 자신…삼성·SK 메모리 수요 견인 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,12 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뉴욕증시, 이란 갈등·부진한 고용에 하락 출발 - 연합인포맥스 (ID: unknown)
+### 카타르發 '헬륨 대란' 온다 … 반도체 공급망 '흔들' - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 카타르發 '헬륨 대란' 온다 … 반도체 공급망 '흔들' - 뉴데일리 경제 (ID: unknown)
+### 원-달러 환율, 1460원대로 하락…중동발 ‘금융시장 공포’ 한숨 돌려 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,17 +62,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 김웅 한은 부총재보 "국제유가 상승, 물가 상방압력 커졌다" - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “7년6개월간 6조2000억원 담합”… 공정위, 설탕, 밀가루 이어 전분당도 제재 절차 돌입 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 김웅 한은 부총재보 "국제유가 상승, 물가 상방압력 커졌다" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 트럼프 호르무즈 조치…리플 XRP 반등 - 톱스타뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “HBM·TSMC 첨단 공정 모두 확보”… 브로드컴, 엔비디아·AMD 자리 넘본다 - 조선비즈 - Chosunbiz (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 송영숙 한미약품그룹 회장 “성비위 사건 깊이 사과…전문경영인 체제 원칙 지켜야” - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,7 +97,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 캐나다 "잠수함 분할발주 없다"…한화오션 "자신 있다" - MTN 머니투데이방송 (ID: unknown)
+### “가덕신공항 부지 올해 착공 최선…부산 도심 철도 지하화 속도낼 것”(종합) - 국제신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 김정관, 캐나다서 잠수함 수주 지원…현대차 동행해 협력 논의 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국세청, 연말정산 환급금 3주 앞당겨 지급…기업들 올해는 3월에 받는다 - 조선일보 (ID: unknown)
+### “3천개 목표물 타격, 함정 43척 파괴”…이란 전쟁 일주일 성과 발표한 미국 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 반도체 수출 103% 증가…1월 경상수지 133억달러 흑자 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “오타니 정면승부 처참한 대가”…일본에 참패 대만, 머리 복잡한 한국야구 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 美고용 9만2천명 감소 커지는 경기침체 공포 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### '중동탈출' 372명 귀국 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

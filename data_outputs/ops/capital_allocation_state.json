@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-03-06T06:28:00.539219+00:00",
-  "date_kst": "2026-03-06",
+  "generated_at": "2026-03-06T23:23:44.446322+00:00",
+  "date_kst": "2026-03-07",
   "regime_state": "TIGHTENING",
-  "os_stance": "NEUTRAL",
+  "os_stance": "DEFENSIVE_BIAS",
   "allocation_profile": {
-    "mode": "DEFENSIVE_ROTATION",
-    "cash_bias": "MEDIUM",
-    "beta_exposure": "NEUTRAL",
-    "sector_rotation_bias": "VALUE_CASHFLOW",
-    "volatility_posture": "MONITORED"
+    "mode": "DEFENSIVE_BALANCED",
+    "cash_bias": "HIGH",
+    "beta_exposure": "REDUCED",
+    "sector_rotation_bias": "RATE_SENSITIVE",
+    "volatility_posture": "CONTROLLED"
   },
   "framework": {
-    "core_bucket": "가치주/현금흐름 중심",
-    "tactical_bucket": "섹터 로테이션",
-    "hedge_bucket": "하락 변동성 보험"
+    "core_bucket": "안정성 중심 (채권/배당)",
+    "tactical_bucket": "이벤트 드리븐 (숏/헷지)",
+    "hedge_bucket": "변동성 방어 (VIX/Gold)"
   },
   "priority_rotation": [
     {
