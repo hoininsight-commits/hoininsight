@@ -29,18 +29,16 @@ def _date_path_standardized() -> Path:
     return Path("data") / "reports" / y / m / d
 
 def main(target_categories: list[str] = None):
+    runtime_mode = os.getenv("HOIN_RUNTIME_MODE", "live").lower()
     started = _kst_now_stamp()
     start_time = time.time()
     status = "SUCCESS"
     details_lines = []
-    check_lines = []
-    checks_ok = False
-    per_dataset = []
-
+    
+    print(f"engine: start (mode: {runtime_mode})", file=sys.stderr)
+    details_lines.append(f"engine: start (mode: {runtime_mode})")
+    
     try:
-        details_lines.append("engine: start")
-        print("engine: start", file=sys.stderr)
-        
         from src.utils.target_date import get_target_ymd
         run_ymd = get_target_ymd()
 

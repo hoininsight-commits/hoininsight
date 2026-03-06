@@ -6,6 +6,7 @@ Collects Korean economic data from Bank of Korea Economic Statistics System
 import requests
 from pathlib import Path
 from datetime import datetime
+from src.utils.errors import SkipError
 import pandas as pd
 import os
 import json
@@ -71,10 +72,8 @@ class ECOSCollector:
     
     def __init__(self, api_key=None):
         load_dotenv() # .env 파일 로드
+        self.runtime_mode = os.getenv("HOIN_RUNTIME_MODE", "live").lower()
         self.api_key = api_key or os.environ.get('ECOS_API_KEY')
-        if not self.api_key:
-            raise ValueError("ECOS API key not found. Set ECOS_API_KEY environment variable.")
-        
         self.base_url = "https://ecos.bok.or.kr/api/StatisticSearch"
         self.base_dir = Path(__file__).parent.parent.parent
         self.stats = {
@@ -82,9 +81,26 @@ class ECOSCollector:
             'failed': 0,
             'total': len(self.SERIES_MAP)
         }
+
+        if self.runtime_mode == "offline":
+            print("[ECOS] Offline mode. Skipping network collection.")
+            self.api_available = False
+            return
+
+        if not self.api_key:
+            print("[ECOS] Warning: ECOS_API_KEY not found. Collection will be skipped.")
+            self.api_available = False
+            return
+        
+        self.api_available = True
     
     def collect_series(self, series_key, start_date=None, end_date=None):
         """단일 시리즈 수집"""
+        if not self.api_available:
+            print(f"[ECOS] Skipping {series_key} (No API client)")
+            self.stats['failed'] += 1
+            return False
+
         series_info = self.SERIES_MAP.get(series_key)
         if not series_info:
             print(f"[ECOS] ✗ Unknown series: {series_key}")
@@ -258,13 +274,7 @@ def write_raw_base_rate(base_dir: Path) -> Path:
 
 def write_raw_cpi(base_dir: Path) -> Path:
     """Collect Korea CPI"""
-    collector = ECOSCollector()
-    key = '901Y009/0'
-    success = collector.collect_series(key)
-    if not success:
-        print("[ECOS] Failed to collect CPI")
-        return None
-    return _get_latest_ecos_path('inflation', 'korea_cpi')
+    return _run_ecos_collector('901Y009/0', base_dir) # Modified this function
 
 def write_raw_usdkrw(base_dir: Path) -> Path:
     """Collect USD/KRW Exchange Rate"""

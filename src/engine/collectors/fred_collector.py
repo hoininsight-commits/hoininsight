@@ -6,6 +6,7 @@ Collects economic data from Federal Reserve Economic Data (FRED)
 from fredapi import Fred
 from pathlib import Path
 from datetime import datetime
+from src.utils.errors import SkipError
 import pandas as pd
 import os
 import json
@@ -62,20 +63,38 @@ class FREDCollector:
     }
     
     def __init__(self, api_key=None):
+        self.runtime_mode = os.getenv("HOIN_RUNTIME_MODE", "live").lower()
         self.api_key = api_key or os.environ.get('FRED_API_KEY')
-        if not self.api_key:
-            raise ValueError("FRED API key not found. Set FRED_API_KEY environment variable.")
-        
-        self.fred = Fred(api_key=self.api_key)
         self.base_dir = Path(__file__).parent.parent.parent
         self.stats = {
             'success': 0,
             'failed': 0,
             'total': len(self.SERIES_MAP)
         }
+        
+        if self.runtime_mode == "offline":
+            print("[FRED] Offline mode. Skipping API initialization.")
+            self.fred = None
+            return
+
+        if not self.api_key:
+            print("[FRED] Warning: FRED_API_KEY not found. Collection will be skipped.")
+            self.fred = None
+            return
+        
+        try:
+            self.fred = Fred(api_key=self.api_key)
+        except Exception as e:
+            print(f"[FRED] Initialization error: {e}")
+            self.fred = None
     
     def collect_series(self, series_id, save_raw=True, save_curated=True):
         """단일 시리즈 수집"""
+        if not self.fred:
+            print(f"[FRED] Skipping {series_id} (No API client)")
+            self.stats['failed'] += 1
+            return False
+            
         try:
             # 데이터 가져오기
             data = self.fred.get_series(series_id)
@@ -185,7 +204,7 @@ def _run_fred_collector(series_id: str, base_dir: Path) -> Path:
     collector = FREDCollector()
     result_path = collector.collect_single_for_pipeline(series_id, base_dir)
     if not result_path:
-        raise RuntimeError(f"Failed to collect FRED series: {series_id}")
+        raise SkipError(f"FRED collection skipped or failed for {series_id}")
     return result_path
 
 def write_raw_fed_funds(base_dir: Path) -> Path:

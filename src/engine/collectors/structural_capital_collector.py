@@ -45,6 +45,10 @@ def collect_keyword_filings(keyword: str, days: int = 3) -> List[Dict]:
     Search DART for specific keywords (e.g., '보호예수', '블록딜')
     API: list.json
     """
+    if os.getenv("HOIN_RUNTIME_MODE", "live").lower() == "offline":
+        print("[FRED] Offline mode. Skipping DART collection.") # Keeping FRED log style or generic
+        return []
+
     if not DART_API_KEY:
         print("[WARN] OPENDART_API_KEY not found. Skipping DART collection.")
         return []

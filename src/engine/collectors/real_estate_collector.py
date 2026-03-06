@@ -46,6 +46,10 @@ def collect_apt_transaction_price(lawd_cd: str = "11680", deal_ym: str = None):
     lawd_cd: Region Code (11680 = Gangnam-gu, 11110 = Jongno-gu)
     deal_ym: YYYYMM (Default: Current Month)
     """
+    if os.getenv("HOIN_RUNTIME_MODE", "live").lower() == "offline":
+        print("[REAL_ESTATE] Offline mode. Skipping Public Data Portal collection.")
+        return
+
     if not DATA_GO_KR_API_KEY:
         print("[WARN] DATA_GO_KR_API_KEY not found. Skipping Real Estate collection.")
         return

@@ -12,11 +12,61 @@
 - `scripts/`: Generated video scripts based on real-time market anomalies.
   - `HOIN_Script_001.md`: Pilot episode script (The Silent Crash).
 
-## 원칙 (Principles)
-- 시스템 구축 자체보다 “데이터 소스 누적 확장”이 최우선
-- 삭제/교체 금지, 누적(Additive) 업데이트
-- 중복 자동정리(단, 다른 지표면 유지)
-- 파생지표는 별도 표기(derived_from)
+## Setup & Execution
+
+### 1. Dependency Installation
+Install required packages using `pip`:
+```bash
+pip install -r requirements.txt
+```
+For development tools:
+```bash
+pip install -r requirements-dev.txt
+```
+
+### 2. Environment Configuration
+Copy `env.example` to `.env` and fill in your API keys:
+```bash
+cp env.example .env
+```
+Key required variables:
+- `GEMINI_API_KEY`: For LLM analysis
+- `FRED_API_KEY`: Macro data collection
+- `ECOS_API_KEY`: Bank of Korea data
+
+### 3. Execution Routes
+The engine can be executed via two main routes:
+
+#### Route A: Main Engine
+The primary automated logic starting from data normalization.
+```bash
+python -m src.engine
+```
+
+#### Route B: Daily Pipeline Runner
+Orchestrates collection, engine, and publishing.
+```bash
+python src/ops/run_daily_pipeline.py
+```
+
+### 4. Runtime Modes
+Control the engine behavior via `HOIN_RUNTIME_MODE`:
+
+- **Offline Mode**: Skip network/API collection, use local data if exists.
+  ```bash
+  export HOIN_RUNTIME_MODE=offline
+  python -m src.engine
+  ```
+- **Live Mode** (Default): Perform full data collection and analysis.
+  ```bash
+  export HOIN_RUNTIME_MODE=live
+  python -m src.engine
+  ```
+
+## Principles (Phase 28 Baseline)
+- **Soft-fail**: External API failures skip the collector but do not crash the engine.
+- **SSOT**: Primary data lives in `data/`.
+- **Additive**: Preservation of existing logic and historical data.
 
 ## 문서 체계 (Documentation)
 - docs/HOIN_ATLAS.md
