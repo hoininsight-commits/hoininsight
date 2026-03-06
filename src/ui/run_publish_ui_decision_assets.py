@@ -8,6 +8,9 @@ It is the SOLE authority for generating:
   - docs/data/decision/manifest.json
 
 DO NOT include daily_snapshot.json, ops, or market data in manifest.
+
+NOTE: This script currently pulls some assets from 'data_outputs/ops/' for legacy compatibility.
+Future versions should transition to 'data/decision/' or 'data/ops/' as the primary source.
 """
 
 import json

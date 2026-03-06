@@ -5,6 +5,11 @@ import time
 import os
 import json
 import traceback
+
+# --- Path Authority ---
+# All collection and engine outputs MUST target the project root 'data/' directory.
+# Legacy mirrors may exist in 'data_outputs/'.
+# --------------------
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 

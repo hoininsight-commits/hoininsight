@@ -63,6 +63,19 @@ Control the engine behavior via `HOIN_RUNTIME_MODE`:
   python -m src.engine
   ```
 
+## Authority Map (SSOT)
+
+HoinInsight follows a strict Single Source of Truth (SSOT) for data and UI.
+
+| Category | Authority Path | Role |
+| :--- | :--- | :--- |
+| **Engine Data** | `data/` | **Primary SSOT** (Decisions, Ops, Reports) |
+| **UI Code** | `docs/ui/` | Primary UI (Ground truth for renderer) |
+| **UI Data** | `docs/data/` | Live data for GitHub Pages |
+| **Legacy** | `data_outputs/` | Backward compatibility layer |
+
+Detailed path mapping and rules can be found in [SSOT_PATH_MAP.md](docs/SSOT_PATH_MAP.md).
+
 ## Principles (Phase 28 Baseline)
 - **Soft-fail**: External API failures skip the collector but do not crash the engine.
 - **SSOT**: Primary data lives in `data/`.
