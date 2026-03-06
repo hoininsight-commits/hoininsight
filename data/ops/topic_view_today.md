@@ -17,17 +17,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뉴욕증시, 유가급등·고용위축에 하락 마감…다우 1%↓ - 연합뉴스 한민족센터 (ID: unknown)
+### [글로벌차트] 파업·한파·낮은 응답률…혼돈의 美 고용보고서 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 고용 ‘충격’에 유가 급등까지…연준 금리 셈법 더 복잡해졌다 - 마켓인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “몇 주 내 에너지 생산 중단될 수도”…서부텍사스유 90달러 돌파 - KBS 뉴스 (ID: unknown)
+### 전쟁발 유가 폭등에 고용 쇼크까지…‘스태그 공포’ 에 뉴욕증시 흔들 - 마켓인 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -53,6 +48,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 갤럭시S26 사러 신도림 갔더니…"한 달 뒤 오세요" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 뉴욕증시, 이란 갈등·부진한 고용에 하락 출발 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +107,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 트럼프 "스테이블코인에 이자 지급해야"…가상자산기업에 힘실어 - 지디넷코리아 (ID: unknown)
+### 반도체 수출 103% 증가…1월 경상수지 133억달러 흑자 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “오타니 정면승부 처참한 대가”…일본에 참패 대만, 머리 복잡한 한국야구 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 낮은 생산성·투자 부족·원화 약세…한국 국민소득 성장판 닫혔다 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### '중동탈출' 372명 귀국 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 트럼프 “이란 후계구도에 내가 관여할것…외교관들 망명하라” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
