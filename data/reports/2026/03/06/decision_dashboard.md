@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 20
+- **Unreviewed**: 40
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=20
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=40
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,12 +78,12 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 20
-- **Type Breakdown**: NEWS: 20
+- **Count**: 40
+- **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 이 대통령 꺼낸 ‘유가 상한제’…기름값 안정되나 가격 통제 부작용도 - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 널뛰던 코스피 숨 고르며 5,580 강보합 마감‥코스닥은 3% 넘게 상승 - MBC 뉴스 (Google_News_KR_Economy)
-  - [NEWS] “HBM·TSMC 첨단 공정 모두 확보”… 브로드컴, 엔비디아·AMD 자리 넘본다 - 조선비즈 - Chosunbiz (Google_News_KR_Economy)
+  - [NEWS] 뉴욕증시, 유가급등·고용위축에 하락 마감…다우 1%↓ - 연합뉴스 한민족센터 (Google_News_KR_Economy)
+  - [NEWS] 美 고용 ‘충격’에 유가 급등까지…연준 금리 셈법 더 복잡해졌다 - 마켓인 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -91,6 +91,26 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-06 |
@@ -138,6 +158,26 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -146,25 +186,45 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 이 대통령 꺼낸 ‘유가 상한제’…기름값 안정되나 가격 통제 부작용도 - 한겨레 | Structural implication: '이 대통령 꺼낸 ‘유가 상한제’…기름값 안정되나 가격 통제 부작용도 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 널뛰던 코스피 숨 고르며 5,580 강보합 마감‥코스닥은 3% 넘게 상승 - MBC 뉴스 | Structural implication: '널뛰던 코스피 숨 고르며 5,580 강보합 마감‥코스닥은 3% 넘게 상승 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| “HBM·TSMC 첨단 공정 모두 확보”… 브로드컴, 엔비디아·AMD 자리 넘본다 - 조선비즈 - Chosunbiz | Structural implication: '“HBM·TSMC 첨단 공정 모두 확보”… 브로드컴, 엔비디아·AMD 자리 넘본다 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, 유가급등·고용위축에 하락 마감…다우 1%↓ - 연합뉴스 한민족센터 | Structural implication: '뉴욕증시, 유가급등·고용위축에 하락 마감…다우 1%↓ - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
+| 美 고용 ‘충격’에 유가 급등까지…연준 금리 셈법 더 복잡해졌다 - 마켓인 | Structural implication: '美 고용 ‘충격’에 유가 급등까지…연준 금리 셈법 더 복잡해졌다 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| “몇 주 내 에너지 생산 중단될 수도”…서부텍사스유 90달러 돌파 - KBS 뉴스 | Structural implication: '“몇 주 내 에너지 생산 중단될 수도”…서부텍사스유 90달러 돌파 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [속보]코스닥 급등세에 매수사이드카 발동 - 경향신문 | Structural implication: '[속보]코스닥 급등세에 매수사이드카 발동 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| ‘롤러코스피’ 장세에 변동성지수도 금융위기 이후 최고... 투자자들 “주식이 코인판 됐다” - 조선일보 | Structural implication: '‘롤러코스피’ 장세에 변동성지수도 금융위기 이후 최고... 투자자들 “주식이 코인판 됐다” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [현장] 대한민국 로봇 다 모였다"불량만두 잡고 무인하역 거뜬" 피지컬 AI 전성시대 - 헬로디디 | Structural implication: '[현장] 대한민국 로봇 다 모였다"불량만두 잡고 무인하역 거뜬" 피지컬 AI 전성시대 - 헬로디디' suggests a shift in NEWS dynamics. | LOW |
+| 브로드컴, AI칩 고성장 자신…삼성·SK 메모리 수요 견인 - 지디넷코리아 | Structural implication: '브로드컴, AI칩 고성장 자신…삼성·SK 메모리 수요 견인 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 갤럭시S26 사러 신도림 갔더니…"한 달 뒤 오세요" - 지디넷코리아 | Structural implication: '갤럭시S26 사러 신도림 갔더니…"한 달 뒤 오세요" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 카타르發 '헬륨 대란' 온다 … 반도체 공급망 '흔들' - 뉴데일리 경제 | Structural implication: '카타르發 '헬륨 대란' 온다 … 반도체 공급망 '흔들' - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
 | [디깅노트] 비통신 'AI' 경연장 된 통신축제 'MWC' - 블로터 | Structural implication: '[디깅노트] 비통신 'AI' 경연장 된 통신축제 'MWC' - 블로터' suggests a shift in NEWS dynamics. | LOW |
+| 김웅 한은 부총재보 "국제유가 상승, 물가 상방압력 커졌다" - 한국경제 | Structural implication: '김웅 한은 부총재보 "국제유가 상승, 물가 상방압력 커졌다" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “7년6개월간 6조2000억원 담합”… 공정위, 설탕, 밀가루 이어 전분당도 제재 절차 돌입 - 조선일보 | Structural implication: '“7년6개월간 6조2000억원 담합”… 공정위, 설탕, 밀가루 이어 전분당도 제재 절차 돌입 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 이란 전쟁 충격파 실물로 전이되나…다우, 약 1년 만에 2% 급락 - 연합인포맥스 | Structural implication: '이란 전쟁 충격파 실물로 전이되나…다우, 약 1년 만에 2% 급락 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 코스닥 매수 사이드카 또 발동…선물지수 6.36% 상승 - 채널A | Structural implication: '코스닥 매수 사이드카 또 발동…선물지수 6.36% 상승 - 채널A' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 호르무즈 조치…리플 XRP 반등 - 톱스타뉴스 | Structural implication: '트럼프 호르무즈 조치…리플 XRP 반등 - 톱스타뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 이란 전쟁 터지자 “석탄 미리 사두자” 난리…가스 가격 뛰니 덩달아 급등 - 매일경제 | Structural implication: '이란 전쟁 터지자 “석탄 미리 사두자” 난리…가스 가격 뛰니 덩달아 급등 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| "美 정부, AI 반도체 수출 통제 강화 검토" - 지디넷코리아 | Structural implication: '"美 정부, AI 반도체 수출 통제 강화 검토" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 두쫀쿠 다음은 봄동…대상 종가 ‘봄동겉절이’ 22톤 팔렸다 - 지디넷코리아 | Structural implication: '두쫀쿠 다음은 봄동…대상 종가 ‘봄동겉절이’ 22톤 팔렸다 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 김정관 산업장관, 캐나다서 60조 잠수함 수주 지원 “양국 협력 발전시킬 모멘텀” - 조선일보 | Structural implication: '김정관 산업장관, 캐나다서 60조 잠수함 수주 지원 “양국 협력 발전시킬 모멘텀” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘두쫀쿠’ 간 자리에 ‘봄동비빔밥’ ‘얼먹젤리’···1020 유행 쫓아가기 바쁜 유통업계 - 경향신문 | Structural implication: '‘두쫀쿠’ 간 자리에 ‘봄동비빔밥’ ‘얼먹젤리’···1020 유행 쫓아가기 바쁜 유통업계 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 캐나다 "잠수함 분할발주 없다"…한화오션 "자신 있다" - MTN 머니투데이방송 | Structural implication: '캐나다 "잠수함 분할발주 없다"…한화오션 "자신 있다" - MTN 머니투데이방송' suggests a shift in NEWS dynamics. | LOW |
+| 코스닥 매수 사이드카 또 발동…선물지수 6.36% 상승 - 채널A | Structural implication: '코스닥 매수 사이드카 또 발동…선물지수 6.36% 상승 - 채널A' suggests a shift in NEWS dynamics. | LOW |
 | 국세청, 연말정산 환급금 3주 앞당겨 지급…기업들 올해는 3월에 받는다 - 조선일보 | Structural implication: '국세청, 연말정산 환급금 3주 앞당겨 지급…기업들 올해는 3월에 받는다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 간송미술관장, 29억 횡령 의혹… 제작사엔 "돈 없다" - NewsTapa | Structural implication: '간송미술관장, 29억 횡령 의혹… 제작사엔 "돈 없다" - NewsTapa' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 "스테이블코인에 이자 지급해야"…가상자산기업에 힘실어 - 지디넷코리아 | Structural implication: '트럼프 "스테이블코인에 이자 지급해야"…가상자산기업에 힘실어 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 반도체 수출 103% 증가…1월 경상수지 133억달러 흑자 - 한국경제 | Structural implication: '반도체 수출 103% 증가…1월 경상수지 133억달러 흑자 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 與김현정, 'PBR 1배 미만 상장사 밸류업 계획 공시 의무화법' 발의 - 연합인포맥스 | Structural implication: '與김현정, 'PBR 1배 미만 상장사 밸류업 계획 공시 의무화법' 발의 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 낮은 생산성·투자 부족·원화 약세…한국 국민소득 성장판 닫혔다 | Structural implication: '낮은 생산성·투자 부족·원화 약세…한국 국민소득 성장판 닫혔다' suggests a shift in NEWS dynamics. | LOW |
+| “찬성” 한마디하고 연봉 8500만원…신도 부러워 할 이 직업 뭐길래 | Structural implication: '“찬성” 한마디하고 연봉 8500만원…신도 부러워 할 이 직업 뭐길래' suggests a shift in NEWS dynamics. | LOW |
+| “유재석 실제로 봤다”…하하 허경환 옆 압도적 비율, 목격담 화제 | Structural implication: '“유재석 실제로 봤다”…하하 허경환 옆 압도적 비율, 목격담 화제' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕 한인 금융인들 부총리 표창 수상 | Structural implication: '뉴욕 한인 금융인들 부총리 표창 수상' suggests a shift in NEWS dynamics. | LOW |
+| “밥 먹다가 침대 가서 애 낳았다”…세 딸 집에서 출산한 걸그룹 출신女 | Structural implication: '“밥 먹다가 침대 가서 애 낳았다”…세 딸 집에서 출산한 걸그룹 출신女' suggests a shift in NEWS dynamics. | LOW |
+| 매경이 전하는 세상의 지식 (매-세-지, 3월 7일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 3월 7일)' suggests a shift in NEWS dynamics. | LOW |
+| 글로벌 비료·석탄 가격도 급등…식량·에너지 ‘이중위기’ 덮치나 | Structural implication: '글로벌 비료·석탄 가격도 급등…식량·에너지 ‘이중위기’ 덮치나' suggests a shift in NEWS dynamics. | LOW |
+| “주식이 생수 한병보다 싸네”…코스닥 이달에만 7개사 ‘동전주’ 전락 | Structural implication: '“주식이 생수 한병보다 싸네”…코스닥 이달에만 7개사 ‘동전주’ 전락' suggests a shift in NEWS dynamics. | LOW |
+| 전국 대부분 아침 영하권 ‘꽃샘추위’…낮 최고 4∼11도, 일교차 커 | Structural implication: '전국 대부분 아침 영하권 ‘꽃샘추위’…낮 최고 4∼11도, 일교차 커' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프 “이란과 합의는 ‘무조건 항복’ 뿐…수용가능한 지도자 선택” | Structural implication: '트럼프 “이란과 합의는 ‘무조건 항복’ 뿐…수용가능한 지도자 선택”' suggests a shift in NEWS dynamics. | LOW |
+| 중동 전쟁에 차 시장도 ‘충격’…“현대차·도요타 잠재적 타격” | Structural implication: '중동 전쟁에 차 시장도 ‘충격’…“현대차·도요타 잠재적 타격”' suggests a shift in NEWS dynamics. | LOW |
+| “호르무즈 막히자 유가 폭주”…국제유가, 배럴당 90달러 돌파 | Structural implication: '“호르무즈 막히자 유가 폭주”…국제유가, 배럴당 90달러 돌파' suggests a shift in NEWS dynamics. | LOW |
+| 한국 소득, 12년째 3만불 정체…대만은 “내년 4만5천불” | Structural implication: '한국 소득, 12년째 3만불 정체…대만은 “내년 4만5천불”' suggests a shift in NEWS dynamics. | LOW |
+| “내 입에 들어가는건 다 담합했나”…액상과당·물엿값도 짬짜미 혐의 | Structural implication: '“내 입에 들어가는건 다 담합했나”…액상과당·물엿값도 짬짜미 혐의' suggests a shift in NEWS dynamics. | LOW |
+| “하메네이 차남, 시민들 환영 못 받을 것”…이란전문가 확신 이유는? | Structural implication: '“하메네이 차남, 시민들 환영 못 받을 것”…이란전문가 확신 이유는?' suggests a shift in NEWS dynamics. | LOW |
+| 미국도 오일쇼크 공포…트럼프 행정부 “모든 대책 검토” | Structural implication: '미국도 오일쇼크 공포…트럼프 행정부 “모든 대책 검토”' suggests a shift in NEWS dynamics. | LOW |
+| 이란, 무차별 전방위 타격…중동 밖 아제르바이잔까지 드론 공격 | Structural implication: '이란, 무차별 전방위 타격…중동 밖 아제르바이잔까지 드론 공격' suggests a shift in NEWS dynamics. | LOW |
+| 美고용 9만2천명 감소 커지는 경기침체 공포 | Structural implication: '美고용 9만2천명 감소 커지는 경기침체 공포' suggests a shift in NEWS dynamics. | LOW |
+| '중동탈출' 372명 귀국 | Structural implication: ''중동탈출' 372명 귀국' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프 “이란 후계구도에 내가 관여할것…외교관들 망명하라” | Structural implication: '트럼프 “이란 후계구도에 내가 관여할것…외교관들 망명하라”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
