@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T23:48:10.620272Z",
+  "generated_at": "2026-03-06T06:28:00.488415Z",
   "date_kst": "2026-03-06",
   "regime": {
     "state": "TIGHTENING",
@@ -12,23 +12,123 @@
   "os_summary": {
     "stance": "NEUTRAL",
     "focus": [
+      "Policy",
       "Rates",
-      "Liquidity",
-      "Policy"
+      "Liquidity"
     ],
     "do_not_do": [
       "방어적 포지션 고수"
     ],
     "today_watch": [
+      "Policy 관련 지표 발표",
       "Rates 관련 지표 발표",
-      "Liquidity 관련 지표 발표",
-      "Policy 관련 지표 발표"
+      "Liquidity 관련 지표 발표"
     ]
   },
   "priority_topics": [
     {
       "dataset_id": "signal_fact_signal_test",
       "title": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "inflation_pce_fred",
+      "title": "거시경제 이상징후: inflation_pce_fred",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "rates_fed_funds_fred",
+      "title": "거시경제 이상징후: rates_fed_funds_fred",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "struct_dart_cb_bw",
+      "title": "거시경제 이상징후: struct_dart_cb_bw",
+      "intensity": 0.0,
+      "narrative_score": 0.0,
+      "why_now_type": "Hybrid",
+      "conflict_density": "moderate",
+      "axis": [],
+      "os_classification": "MONITOR",
+      "reasoning": [
+        "상태 정합성 낮음",
+        "분석 밀도(MONITOR) 기반 대응 우선순위 설정"
+      ],
+      "linked_stocks": [],
+      "action_card": {
+        "intent": "MONITOR",
+        "checklist": [
+          "지표 추이 및 당국 발언 모니터링"
+        ],
+        "invalidations": [
+          "Regime 전환 발생 시 관점 재검토",
+          "강도(Intensity) 급락 시 감시 해제"
+        ]
+      }
+    },
+    {
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
       "intensity": 0.0,
       "narrative_score": 0.0,
       "why_now_type": "Hybrid",

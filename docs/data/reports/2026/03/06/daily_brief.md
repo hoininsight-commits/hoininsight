@@ -23,14 +23,13 @@ Historical context:
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | VIX | data/features/anomalies/2026/03/06/risk_vix_fred.json L2 Signal | 6.00 | 4 | 6.00 | UP (1.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/risk_vix_fred.png) | [json](data/topics/2026/03/06/risk_vix_fred.json) | [json](data/features/anomalies/2026/03/06/risk_vix_fred.json) |
 | 2 | WTI | data/features/anomalies/2026/03/06/comm_wti_fred.json L2 Signal | 6.00 | 3 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/comm_wti_fred.png) | [json](data/topics/2026/03/06/comm_wti_fred.json) | [json](data/features/anomalies/2026/03/06/comm_wti_fred.json) |
-| 3 | USDKRW_ECOS | data/features/anomalies/2026/03/06/fx_usdkrw_ecos.json L2 Signal | 6.00 | 5 | 6.00 | UP (0.75) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/fx_usdkrw_ecos.png) | [json](data/topics/2026/03/06/fx_usdkrw_ecos.json) | [json](data/features/anomalies/2026/03/06/fx_usdkrw_ecos.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/03/06/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/inflation_cpi_fred.png) | [json](data/topics/2026/03/06/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/03/06/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/03/06/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/inflation_pce_fred.png) | [json](data/topics/2026/03/06/inflation_pce_fred.json) | [json](data/features/anomalies/2026/03/06/inflation_pce_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/03/06/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/inflation_cpi_fred.png) | [json](data/topics/2026/03/06/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/03/06/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/03/06/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/inflation_pce_fred.png) | [json](data/topics/2026/03/06/inflation_pce_fred.json) | [json](data/features/anomalies/2026/03/06/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/03/06/liquidity_m2_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/06/charts/liquidity_m2_fred.png) | [json](data/topics/2026/03/06/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/03/06/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] VIX: data/features/anomalies/2026/03/06/risk_vix_fred.json L2 Signal (score=6.00) | Mom: UP (slope=1.00) | App7d=4
 - [HIGH] WTI: data/features/anomalies/2026/03/06/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=3
-- [HIGH] USDKRW_ECOS: data/features/anomalies/2026/03/06/fx_usdkrw_ecos.json L2 Signal (score=6.00) | Mom: UP (slope=0.75) | App7d=5
 - [HIGH] CPI_USA: data/features/anomalies/2026/03/06/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/03/06/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/03/06/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -49,6 +48,7 @@ Historical context:
 - [LOW] SILVER: data/features/anomalies/2026/03/06/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] ETHUSD: data/features/anomalies/2026/03/06/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] KOR_RATE: data/features/anomalies/2026/03/06/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [LOW] USDKRW_ECOS: data/features/anomalies/2026/03/06/fx_usdkrw_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [LOW] UNRATE: data/features/anomalies/2026/03/06/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] HY_SPREAD: data/features/anomalies/2026/03/06/credit_hy_spread_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [LOW] FIN_STRESS: data/features/anomalies/2026/03/06/risk_financial_stress_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -61,15 +61,21 @@ Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
 
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
+
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- (No structural anomaly detected)
+- **Topic:** [Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)
+- **Rationale:** 현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.94 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
@@ -85,3 +91,7 @@ Narrative Drift Signals:
 - Confidence: UNCERTAIN
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 11 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.

@@ -1,13 +1,13 @@
 # Run Log
 
-- started_utc: 2026-03-06T08:47:08+09:00
-- finished_utc: 2026-03-06T08:48:01+09:00
+- started_utc: 2026-03-06T15:26:58+09:00
+- finished_utc: 2026-03-06T15:27:51+09:00
 - status: SUCCESS
 
 ## details
 
 ```
-engine: start
+engine: start (mode: live)
 collect: ok
 normalize: ok
 derived: ok
