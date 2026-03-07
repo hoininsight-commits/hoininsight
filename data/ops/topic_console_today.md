@@ -1,6 +1,6 @@
 # TOPIC CONSOLE (RUN_DATE: 2026-03-07)
 
-## 오늘 시장의 핵심 혼란 포인트 (gate_e8be929c81)
+## 오늘 시장의 핵심 혼란 포인트 (gate_55f0818752)
 **Badges**: LANE:ANOMALY | STATUS:READY | SPEAK:NOT_SPEAKABLE_YET
 
 ### 1) Why Selected
