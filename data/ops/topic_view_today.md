@@ -1,4 +1,4 @@
-# 🧭 TODAY TOPIC VIEW - 2026-03-07
+# 🧭 TODAY TOPIC VIEW - 2026-03-08
 
 **SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
@@ -13,6 +13,11 @@ No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
 ### '기름값 2천원 시대' 눈앞…정부, 30년만에 가격상한제 꺼내나 - 연합뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 미 달러화, 1년여 만에 최대 주간 상승…유가 급등에 연준 금리 인하 기대 후퇴 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,22 +47,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독]“UAE 요청 ‘천궁-2’ 유도탄 30기 8, 9일 인도” - 동아일보 (ID: unknown)
+### "이란 미사일 격추시키는 거 봤지?"…하락장에 고점 뚫었다 [종목+] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경 (ID: unknown)
+### 이란 전쟁 여파 車업계 번진다…유가·물류·환율 '도미노' - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스 (ID: unknown)
+### 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### ‘패가망신’ 경고, 李 취임 후 10여번 써…주가-산재 등 겨냥 - 동아일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,27 +82,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 2월 소비자물가 2.0%↑‥가공식품 상승폭 14개월 만에 최저 - MBC 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 중동 전황 따라 롤러코스터 … 간 커진 개미들, 또 무섭게 사들이며 코스피 보합 마감 - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 아파트 평균 월세 150만원 돌파…역대 최고치 찍었다 - 조선일보 (ID: unknown)
+### 美, 2월 사업체 일자리 9만 2000개 감소…실업률 4.4%로 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미 SK 배터리 공장, 958명 해고…"트럼프 ‘전기차 전쟁’ 경제 해쳐" - JTBC (ID: unknown)
+### 서울 아파트 평균 월세 150만원 돌파…역대 최고치 찍었다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +107,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피 출렁이자 ＂이때다＂...사상 최대로 불었다 - 한국경제TV - 대한민국 대표 경제방송 (ID: unknown)
+### 미 SK 배터리 공장, 958명 해고…"트럼프 ‘전기차 전쟁’ 경제 해쳐" - JTBC (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 민주·혁신, 지방선거 연대 본격화?…주도권 기싸움은 계속 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 美·이스라엘·이란 모두 “공격 앞으로”...트럼프 “쿠르드족 참전 원치 않아” (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “강남은 꺾였는데 여기는 여전하네”…서울 전월세난 우려에 수지·동탄 강세 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “액상과당이 혈당 스파이크 주범이라는데”…인기 식어가는 주스 대신 이것 찾는다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
