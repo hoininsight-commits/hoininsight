@@ -32,11 +32,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 국제유가 90달러 돌파에 70년대식 오일쇼크 우려…세계 경제 흔드나 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -47,12 +42,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스 (ID: unknown)
+### [단독]“UAE 요청 ‘천궁-2’ 유도탄 30기 8, 9일 인도” - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오 (ID: unknown)
+### 현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,12 +62,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "이란 미사일 격추시키는 거 봤지?"…하락장에 고점 뚫었다 [종목+] - 한국경제 (ID: unknown)
+### 인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 (ID: unknown)
+### 비트코인, 2026년 5억원 돌파 전망…"귀금속 상승세 따라갈 것” - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,7 +77,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인, 2026년 5억원 돌파 전망…"귀금속 상승세 따라갈 것” - 디지털투데이 (ID: unknown)
+### 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -112,6 +112,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 美·이스라엘·이란 모두 “공격 앞으로”...트럼프 “쿠르드족 참전 원치 않아” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
 ### “요즘 어디서 8000원에 이런 밥 먹겠어”…런치플레이션 시대 뜨는 이곳은 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
@@ -122,7 +127,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 성착취 지옥도에 끌러간 소녀…“그들은 나를 사랑한다고 말했다” [Book] (ID: unknown)
+### 성착취 지옥도에 끌려간 소녀…“그들은 나를 사랑한다고 말했다” [Book] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “액상과당이 혈당 스파이크 주범이라는데”…인기 식어가는 주스 대신 이것 찾는다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 손종원 셰프 ‘쌍별’ 지켰다…국내호텔 미쉐린 스타 레스토랑은 어디? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

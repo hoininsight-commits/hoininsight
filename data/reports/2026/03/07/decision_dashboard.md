@@ -189,25 +189,26 @@
 | 티엑스알로보틱스, ‘AI 피스피킹 로봇’ 공개… 물류 자동화 확장 전략 제시 - 산업일보 | Structural implication: '티엑스알로보틱스, ‘AI 피스피킹 로봇’ 공개… 물류 자동화 확장 전략 제시 - 산업일보' suggests a shift in NEWS dynamics. | LOW |
 | [산업영향점검] 전쟁도 '메모리 슈퍼사이클'은 못 흔든다 - 연합인포맥스 | Structural implication: '[산업영향점검] 전쟁도 '메모리 슈퍼사이클'은 못 흔든다 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | “비싸도 좋은 걸로”...갤S26 울트라 ‘올인’ 전략 통했나 - IT조선 | Structural implication: '“비싸도 좋은 걸로”...갤S26 울트라 ‘올인’ 전략 통했나 - IT조선' suggests a shift in NEWS dynamics. | LOW |
-| 현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경 | Structural implication: '현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가 90달러 돌파에 70년대식 오일쇼크 우려…세계 경제 흔드나 - 문화일보 | Structural implication: '국제유가 90달러 돌파에 70년대식 오일쇼크 우려…세계 경제 흔드나 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 코스닥 장 초반 매수세 몰리며 매수 사이드카 발동 - MBC 뉴스 | Structural implication: '코스닥 장 초반 매수세 몰리며 매수 사이드카 발동 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [단독]“UAE 요청 ‘천궁-2’ 유도탄 30기 8, 9일 인도” - 동아일보 | Structural implication: '[단독]“UAE 요청 ‘천궁-2’ 유도탄 30기 8, 9일 인도” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경 | Structural implication: '현대차, 이란 점유율 10%..."전쟁으로 큰 타격 입을 수도" - 매거진한경' suggests a shift in NEWS dynamics. | LOW |
 | 美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스 | Structural implication: '美 에너지장관, 국제유가 급등에 "우려할 이유 없어" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오 | Structural implication: '인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오' suggests a shift in NEWS dynamics. | LOW |
 | ‘패가망신’ 경고, 李 취임 후 10여번 써…주가-산재 등 겨냥 - 동아일보 | Structural implication: '‘패가망신’ 경고, 李 취임 후 10여번 써…주가-산재 등 겨냥 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| "이란 미사일 격추시키는 거 봤지?"…하락장에 고점 뚫었다 [종목+] - 한국경제 | Structural implication: '"이란 미사일 격추시키는 거 봤지?"…하락장에 고점 뚫었다 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 | Structural implication: '비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 2월 소비자물가 2.0%↑‥가공식품 상승폭 14개월 만에 최저 - MBC 뉴스 | Structural implication: '2월 소비자물가 2.0%↑‥가공식품 상승폭 14개월 만에 최저 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오 | Structural implication: '인벤티지랩, 985억원 자금조달 성공… 바이오 전문 VC 대거 참여 - 더바이오' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인, 2026년 5억원 돌파 전망…"귀금속 상승세 따라갈 것” - 디지털투데이 | Structural implication: '비트코인, 2026년 5억원 돌파 전망…"귀금속 상승세 따라갈 것” - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
+| 2월 소비자물가 2.0%↑‥가공식품 상승폭 14개월 만에 최저 - MBC 뉴스 | Structural implication: '2월 소비자물가 2.0%↑‥가공식품 상승폭 14개월 만에 최저 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 | Structural implication: '비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 중동 전황 따라 롤러코스터 … 간 커진 개미들, 또 무섭게 사들이며 코스피 보합 마감 - 뉴데일리 경제 | Structural implication: '중동 전황 따라 롤러코스터 … 간 커진 개미들, 또 무섭게 사들이며 코스피 보합 마감 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
 | 서울 아파트 평균 월세 150만원 돌파…역대 최고치 찍었다 - 조선일보 | Structural implication: '서울 아파트 평균 월세 150만원 돌파…역대 최고치 찍었다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 미 SK 배터리 공장, 958명 해고…"트럼프 ‘전기차 전쟁’ 경제 해쳐" - JTBC | Structural implication: '미 SK 배터리 공장, 958명 해고…"트럼프 ‘전기차 전쟁’ 경제 해쳐" - JTBC' suggests a shift in NEWS dynamics. | LOW |
 | 캐나다 "잠수함 분할발주 없다"…한화오션 "자신 있다" - MTN 머니투데이방송 | Structural implication: '캐나다 "잠수함 분할발주 없다"…한화오션 "자신 있다" - MTN 머니투데이방송' suggests a shift in NEWS dynamics. | LOW |
 | 삼성 "스마트 안경에 '눈높이' 카메라 내장...생태계 확장에 중점" - AI타임스 | Structural implication: '삼성 "스마트 안경에 '눈높이' 카메라 내장...생태계 확장에 중점" - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 코스피 출렁이자 ＂이때다＂...사상 최대로 불었다 - 한국경제TV - 대한민국 대표 경제방송 | Structural implication: '코스피 출렁이자 ＂이때다＂...사상 최대로 불었다 - 한국경제TV - 대한민국 대표 경제방송' suggests a shift in NEWS dynamics. | LOW |
+| 美·이스라엘·이란 모두 “공격 앞으로”...트럼프 “쿠르드족 참전 원치 않아” | Structural implication: '美·이스라엘·이란 모두 “공격 앞으로”...트럼프 “쿠르드족 참전 원치 않아”' suggests a shift in NEWS dynamics. | LOW |
 | “요즘 어디서 8000원에 이런 밥 먹겠어”…런치플레이션 시대 뜨는 이곳은 | Structural implication: '“요즘 어디서 8000원에 이런 밥 먹겠어”…런치플레이션 시대 뜨는 이곳은' suggests a shift in NEWS dynamics. | LOW |
 | 쓰린 속 달래던 약 ‘활명수’…독립운동가의 생명수였다 [Book] | Structural implication: '쓰린 속 달래던 약 ‘활명수’…독립운동가의 생명수였다 [Book]' suggests a shift in NEWS dynamics. | LOW |
-| 성착취 지옥도에 끌러간 소녀…“그들은 나를 사랑한다고 말했다” [Book] | Structural implication: '성착취 지옥도에 끌러간 소녀…“그들은 나를 사랑한다고 말했다” [Book]' suggests a shift in NEWS dynamics. | LOW |
+| 성착취 지옥도에 끌려간 소녀…“그들은 나를 사랑한다고 말했다” [Book] | Structural implication: '성착취 지옥도에 끌려간 소녀…“그들은 나를 사랑한다고 말했다” [Book]' suggests a shift in NEWS dynamics. | LOW |
 | 박정희는 살아있다…군대규율·무한경쟁이 빚어낸 ‘박통민국’ [Book] | Structural implication: '박정희는 살아있다…군대규율·무한경쟁이 빚어낸 ‘박통민국’ [Book]' suggests a shift in NEWS dynamics. | LOW |
 | 전쟁은 본능도 발명품도 아니다…히틀러가 꿰뚫어본 폭력의 역사 [Book] | Structural implication: '전쟁은 본능도 발명품도 아니다…히틀러가 꿰뚫어본 폭력의 역사 [Book]' suggests a shift in NEWS dynamics. | LOW |
 | 퇴근길 지하철에서 이유 없이 눈물을 쏟고 나서  결심한 일 [여책저책] | Structural implication: '퇴근길 지하철에서 이유 없이 눈물을 쏟고 나서  결심한 일 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
@@ -224,7 +225,6 @@
 | “암표 팔려고 팬클럽 가입한 암표상들”…팬미팅 매진 소식 전한 성시경 | Structural implication: '“암표 팔려고 팬클럽 가입한 암표상들”…팬미팅 매진 소식 전한 성시경' suggests a shift in NEWS dynamics. | LOW |
 | “강남은 꺾였는데 여기는 여전하네”…서울 전월세난 우려에 수지·동탄 강세 | Structural implication: '“강남은 꺾였는데 여기는 여전하네”…서울 전월세난 우려에 수지·동탄 강세' suggests a shift in NEWS dynamics. | LOW |
 | “액상과당이 혈당 스파이크 주범이라는데”…인기 식어가는 주스 대신 이것 찾는다 | Structural implication: '“액상과당이 혈당 스파이크 주범이라는데”…인기 식어가는 주스 대신 이것 찾는다' suggests a shift in NEWS dynamics. | LOW |
-| 손종원 셰프 ‘쌍별’ 지켰다…국내호텔 미쉐린 스타 레스토랑은 어디? | Structural implication: '손종원 셰프 ‘쌍별’ 지켰다…국내호텔 미쉐린 스타 레스토랑은 어디?' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
