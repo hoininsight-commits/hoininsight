@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-08T23:31:03.648427+00:00",
+  "generated_at": "2026-03-08T23:20:01.623427+00:00",
   "date_kst": "2026-03-09",
   "state": {
-    "mode": "EXPANSION",
-    "fragility": "HIGH",
-    "shock_window": "ELEVATED"
+    "mode": "MIXED",
+    "fragility": "MEDIUM",
+    "shock_window": "WATCH"
   },
   "signals": {
     "regime": {
@@ -14,7 +14,7 @@
       "curve": "UNKNOWN"
     },
     "timing": {
-      "gear": 4,
+      "gear": 3,
       "sync": "UNKNOWN",
       "accel_watch": [
         "동일 축 지표 2개 이상 동시 강도 상승",
@@ -29,14 +29,12 @@
     },
     "compression": {
       "direction": "DOWNWARD_BIAS",
-      "pressure": "HIGH",
-      "stability": "FRAGILE"
+      "pressure": "MODERATE",
+      "stability": "TRANSITION"
     },
     "conflict": {
-      "density_level": "HIGH",
+      "density_level": "LOW",
       "top_conflicts": [
-        null,
-        null,
         null
       ]
     },
@@ -45,15 +43,15 @@
     }
   },
   "interpretation": {
-    "one_liner": "지금 시장은 EXPANSION 상태이며, 취약성은 HIGH입니다.",
+    "one_liner": "지금 시장은 MIXED 상태이며, 취약성은 MEDIUM입니다.",
     "why_now": [
-      "Timing Gear 4 가속 및 UNKNOWN 동기화 상태 감지",
-      "Probability Compression 압력 HIGH 도달로 인한 에너지 응축",
+      "Timing Gear 3 가속 및 UNKNOWN 동기화 상태 감지",
+      "상대적으로 낮은 변동성 압축 강도 (MODERATE)",
       "유동성 TIGHTENING 정권 하에서의 구조적 민감도 증폭"
     ],
     "invalidators": [
-      "Timing Gear 3 이하로의 급격한 서사 감속",
-      "Stability가 FRAGILE에서 STABLE로의 구조적 전환 발생"
+      "Timing Gear 2 이하로의 급격한 서사 감속",
+      "Stability가 TRANSITION에서 STABLE로의 구조적 전환 발생"
     ]
   }
 }

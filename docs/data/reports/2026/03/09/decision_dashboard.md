@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **지수 상승 속 섹터 하락의 이유**
+- **오늘 시장의 핵심 혼란 포인트**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -70,12 +70,12 @@
 
 ### 🏥 SYSTEM STATUS (Today)
 - **Topics Generated**: 1
-- **READY / HOLD / DROP**: 0 / 1 / 0
+- **READY / HOLD / DROP**: 0 / 0 / 1
 - **FACT-DRIVEN / ANOMALY-DRIVEN**: 0 / 1
 
 ✅ **SYSTEM HEALTH**: All clear (Operational margins normal)
 
-**SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=1 | 🔴 DROP=0
+**SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
 - **Count**: 40
@@ -191,24 +191,20 @@
 | [뉴욕증시-주간전망] 유가 향방이 최대 변수…때마침 나오는 CPI - 연합인포맥스 | Structural implication: '[뉴욕증시-주간전망] 유가 향방이 최대 변수…때마침 나오는 CPI - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 서초·용산·동작 알짜단지 나온다…분양 큰장 서는 '서울의 봄' - 한국경제 | Structural implication: '서초·용산·동작 알짜단지 나온다…분양 큰장 서는 '서울의 봄' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | "'고려아연 사원증' 달고 의결권 설득?"⋯영풍·MBK 대행사 논란 확산 - 아이뉴스24 | Structural implication: '"'고려아연 사원증' 달고 의결권 설득?"⋯영풍·MBK 대행사 논란 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
-| 단백질 고수 '알파폴드' 한계 넘어섰다 [지금은 과학] - 아이뉴스24 | Structural implication: '단백질 고수 '알파폴드' 한계 넘어섰다 [지금은 과학] - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
+| "전기만으론 한계"…철강 '징검다리 기술'로 탄소감축 속도낸다 - 한국경제 | Structural implication: '"전기만으론 한계"…철강 '징검다리 기술'로 탄소감축 속도낸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 소비자원, ‘두쫀쿠’ 안전주의보… “치아손상·알레르기 주의" - 조선비즈 - Chosunbiz | Structural implication: '소비자원, ‘두쫀쿠’ 안전주의보… “치아손상·알레르기 주의" - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 이란發 퍼펙트스톰, 한국 반도체 산업마저 덮쳤다 - 뉴데일리 경제 | Structural implication: '이란發 퍼펙트스톰, 한국 반도체 산업마저 덮쳤다 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
-| "전기만으론 한계"…철강 '징검다리 기술'로 탄소감축 속도낸다 - 한국경제 | Structural implication: '"전기만으론 한계"…철강 '징검다리 기술'로 탄소감축 속도낸다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 단백질 고수 '알파폴드' 한계 넘어섰다 [지금은 과학] - 아이뉴스24 | Structural implication: '단백질 고수 '알파폴드' 한계 넘어섰다 [지금은 과학] - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | 공정위, 엽기떡볶이 시정명령...POS·키오스크 구매 강제 - 지디넷코리아 | Structural implication: '공정위, 엽기떡볶이 시정명령...POS·키오스크 구매 강제 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | "조선·해운·원전株 수혜…반도체株는 타격 작을 것" - 한국경제 | Structural implication: '"조선·해운·원전株 수혜…반도체株는 타격 작을 것" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 실전 경쟁력 K방산 주가 쑥…한화, LG 제치고 그룹시총 4위 - 매일경제 | Structural implication: '실전 경쟁력 K방산 주가 쑥…한화, LG 제치고 그룹시총 4위 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 엑스알피(리플) 시세 상승...가상화폐 법안 통과로 100달러 가나 - gukjenews.com | Structural implication: '엑스알피(리플) 시세 상승...가상화폐 법안 통과로 100달러 가나 - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 노조 “파업 불참자에 불이익”... 블랙리스트 예고 - 조선일보 | Structural implication: '삼성전자 노조 “파업 불참자에 불이익”... 블랙리스트 예고 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | ‘패가망신’ 경고, 李 취임 후 10여번 써…주가-산재 등 겨냥 - 동아일보 | Structural implication: '‘패가망신’ 경고, 李 취임 후 10여번 써…주가-산재 등 겨냥 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아 | Structural implication: '비트코인, 미국 고용지표 악화로 7만달러 선 깨져 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 노조 “파업 불참자에 불이익”... 블랙리스트 예고 - 조선일보 | Structural implication: '삼성전자 노조 “파업 불참자에 불이익”... 블랙리스트 예고 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 농협, 300억 긴급 투입…면세유·주유소 할인 지원 - 조선일보 | Structural implication: '농협, 300억 긴급 투입…면세유·주유소 할인 지원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 15억 넘기 전에…'당장 계약할게요' 이 동네에 무슨 일이 - 한국경제 | Structural implication: '15억 넘기 전에…'당장 계약할게요' 이 동네에 무슨 일이 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | "비싼 소고기 대신 매일 챙겨 먹었는데"…국민 음식의 배신 [장바구니+] - 한국경제 | Structural implication: '"비싼 소고기 대신 매일 챙겨 먹었는데"…국민 음식의 배신 [장바구니+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 김정관 산업 “국제유가 상승에 편승한 물가안정 역행 행위 엄정대처” | Structural implication: '김정관 산업 “국제유가 상승에 편승한 물가안정 역행 행위 엄정대처”' suggests a shift in NEWS dynamics. | LOW |
-| [3/9, MK추천매물] 화성 봉담지구 8.5%대 직영 슈퍼 21억원 등 | Structural implication: '[3/9, MK추천매물] 화성 봉담지구 8.5%대 직영 슈퍼 21억원 등' suggests a shift in NEWS dynamics. | LOW |
-| “빙그레, 내년부터 실적 본격 반등 예상…목표가 내려도 사라” | Structural implication: '“빙그레, 내년부터 실적 본격 반등 예상…목표가 내려도 사라”' suggests a shift in NEWS dynamics. | LOW |
-| “에코프로비엠, 유가 상승에 유럽정책 발표로 반사수혜”…목표가↑ | Structural implication: '“에코프로비엠, 유가 상승에 유럽정책 발표로 반사수혜”…목표가↑' suggests a shift in NEWS dynamics. | LOW |
 | “곰탕집이 기획사 분점?”…이하늬, 차은우 ‘장어집’과 닮은꼴 의혹 | Structural implication: '“곰탕집이 기획사 분점?”…이하늬, 차은우 ‘장어집’과 닮은꼴 의혹' suggests a shift in NEWS dynamics. | LOW |
 | KB금융 ‘그룹 신임 여성 부점장 컨퍼런스’ 개최 | Structural implication: 'KB금융 ‘그룹 신임 여성 부점장 컨퍼런스’ 개최' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 이 대통령 지지율 58.2%…민주 48.1%·국힘 32.4% [리얼미터] | Structural implication: '[속보] 이 대통령 지지율 58.2%…민주 48.1%·국힘 32.4% [리얼미터]' suggests a shift in NEWS dynamics. | LOW |
@@ -225,12 +221,17 @@
 | 매경이 전하는 세상의 지식 (매-세-지, 3월 9일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 3월 9일)' suggests a shift in NEWS dynamics. | LOW |
 | 이란, 최고지도자로 결국 하메네이 아들...트럼프 “우리 승인 받아야” | Structural implication: '이란, 최고지도자로 결국 하메네이 아들...트럼프 “우리 승인 받아야”' suggests a shift in NEWS dynamics. | LOW |
 | 10년 전 바둑판서 잘 싸우는 기사였는데…지금은 전쟁판도 바꾸는 전사로 | Structural implication: '10년 전 바둑판서 잘 싸우는 기사였는데…지금은 전쟁판도 바꾸는 전사로' suggests a shift in NEWS dynamics. | LOW |
+| “2600만원 버킨백, 300부터 갑니다”...나라에서 하는 공매시장 가보니 | Structural implication: '“2600만원 버킨백, 300부터 갑니다”...나라에서 하는 공매시장 가보니' suggests a shift in NEWS dynamics. | LOW |
+| ‘강남 불패’ 지금은 틀린말 …서울 아파트 신고가, 80%가 비강남 | Structural implication: '‘강남 불패’ 지금은 틀린말 …서울 아파트 신고가, 80%가 비강남' suggests a shift in NEWS dynamics. | LOW |
+| “이것 없으면 백약이 무효…1일 1땀, 땀나는 루틴 만드세요” | Structural implication: '“이것 없으면 백약이 무효…1일 1땀, 땀나는 루틴 만드세요”' suggests a shift in NEWS dynamics. | LOW |
+| “주식계좌 -50%, 3년 버틸 수 있나요?”...안 되면 몰빵하지 말라는 고수 | Structural implication: '“주식계좌 -50%, 3년 버틸 수 있나요?”...안 되면 몰빵하지 말라는 고수' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
 > **오늘은 영상화 가능한 토픽이 없습니다.** 아래 사유로 인해 보류되었습니다.
 
-- 근거 데이터가 부족합니다 (최소 2개 필요). (1건)
+- 근거 데이터가 전혀 없습니다. (1건)
+- 논리적 일관성이 결여되었습니다. (1건)
 - EVIDENCE_TOO_THIN: 1건
 - TITLE_MISMATCH: 1건
 
@@ -242,7 +243,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🟡 지수 상승 속 섹터 하락의 이유 (HOLD)
+### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -252,8 +253,8 @@
 - [ ] Contract / order / disclosure-level evidence
 - [ ] Capital signal (ownership, buyback, investment)
 - [ ] Structural advantage vs competitors
-- **Reason**: 제목과 근거 데이터의 연관성이 낮습니다.
-- **Evidence**: 1 items
+- **Reason**: 근거 데이터가 전혀 없습니다.
+- **Evidence**: 0 items
 
 
 #### 📨 SIGNAL ARRIVAL TODAY
@@ -263,7 +264,13 @@
 > **NOT FOR NARRATION YET** — Structurally promising topics awaiting additional triggers.
 _Shadow pool empty — no promotable topics detected._
 
-## 👀 WATCHLIST — NOT YET (1)
-| Status | Title | Why not speak yet? |
+## 👀 WATCHLIST — NOT YET (0)
+- (No items on watchlist)
+
+## 🗑️ ARCHIVE — DROP (1)
+<details><summary>Click to view dropped topics</summary>
+
+| Status | Title | Reason |
 |---|---|---|
-| ⚠️ HOLD | 지수 상승 속 섹터 하락의 이유 | 아직 말하지 않는 이유: 제목과 근거 데이터의 연관성이 낮습니다. |
+| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 근거 데이터가 전혀 없습니다. |
+</details>
