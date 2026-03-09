@@ -90,7 +90,7 @@ class VideoScriptIntelligenceLayer:
         self.logger.info(f"Generating Video Script Pack for {self.ymd_dash}...")
         
         # 1. Load Inputs
-        pool_path = self.base_dir / "data_outputs/ops/video_candidate_pool.json"
+        pool_path = self.base_dir / "data/ops/video_candidate_pool.json"
         pool_data = self._load_json(pool_path)
         candidates = pool_data.get("top_candidates", [])
 
@@ -102,7 +102,7 @@ class VideoScriptIntelligenceLayer:
         decision_card = self._load_json(decision_path)
 
         # [PHASE-22B] Static linkage pack
-        linkage_path = self.base_dir / "data_outputs/ops/stock_linkage_pack.json"
+        linkage_path = self.base_dir / "data/ops/stock_linkage_pack.json"
         linkage_data = self._load_json(linkage_path)
         stock_linkage = linkage_data.get("topics", [])
 
@@ -131,7 +131,7 @@ class VideoScriptIntelligenceLayer:
             "candidates": script_candidates
         }
 
-        json_out = self.base_dir / "data_outputs/ops/video_script_pack.json"
+        json_out = self.base_dir / "data/ops/video_script_pack.json"
         json_out.parent.mkdir(parents=True, exist_ok=True)
         json_out.write_text(json.dumps(pack, indent=2, ensure_ascii=False), encoding='utf-8')
 
@@ -163,7 +163,7 @@ class VideoScriptIntelligenceLayer:
             
             md_content += "\n### [Closing]\n> {s['closing']}\n\n---\n\n"
 
-        md_out = self.base_dir / "data_outputs/ops/video_script_pack.md"
+        md_out = self.base_dir / "data/ops/video_script_pack.md"
         md_out.write_text(md_content, encoding='utf-8')
         
         self.logger.info(f"Successfully generated script pack with {len(script_candidates)} candidates.")

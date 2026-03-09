@@ -6,7 +6,7 @@
 - **Structure**: 0
 
 ## Errors
-- {'message': 'Input file not found', 'path': '/home/runner/work/hoininsight/hoininsight/data/facts/fact_first/2026-03-09.json'}
+- {'message': 'Input file not found', 'path': '/Users/jihopa/Downloads/HoinInsight_Remote/data/facts/fact_first/2026-03-09.json'}
 
 ## Valid Facts (Top 10)
 | Type | Subject -> Object | Fact | Source |

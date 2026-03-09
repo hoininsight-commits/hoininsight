@@ -9,8 +9,8 @@ It is the SOLE authority for generating:
 
 DO NOT include daily_snapshot.json, ops, or market data in manifest.
 
-NOTE: This script currently pulls some assets from 'data_outputs/ops/' for legacy compatibility.
-Future versions should transition to 'data/decision/' or 'data/ops/' as the primary source.
+NOTE: This script primary source of truth is 'data/ops/' and 'data/decision/'.
+It maintains 'data_outputs/ops/' as a legacy compatibility mirror.
 """
 
 import json
@@ -23,6 +23,8 @@ ROOT = Path(".")
 DOCS_DECISION = ROOT / "docs" / "data" / "decision"
 DATA_EDITORIAL = ROOT / "data" / "editorial"
 DATA_DECISION  = ROOT / "data" / "decision"
+DATA_OPS       = ROOT / "data" / "ops"
+DATA_OUTPUTS_OPS = ROOT / "data_outputs" / "ops" # Legacy Mirror
 DOCS_TODAY     = ROOT / "docs" / "data" / "today.json"
 
 _NON_DECISION_NAMES = {
@@ -42,14 +44,14 @@ def _utc_now() -> str:
 def _load_approval_titles() -> set:
     approved_titles = set()
     try:
-        f = ROOT / "data" / "ops" / "topic_speakability_today.json"
+        f = DATA_OPS / "topic_speakability_today.json"
         if f.exists():
             data = json.loads(f.read_text(encoding="utf-8"))
             for v in data.get("verdicts", []):
                 if v.get("speakability") == "SPEAKABLE_NOW": approved_titles.add(v.get("title", ""))
     except Exception as e: print(f"[PUBLISH] warn loading topic_speakability_today: {e}")
     try:
-        f2 = ROOT / "data" / "ops" / "auto_approved_today.json"
+        f2 = DATA_OPS / "auto_approved_today.json"
         if f2.exists():
             data2 = json.loads(f2.read_text(encoding="utf-8"))
             for a in data2.get("auto_approved", []): approved_titles.add(a.get("title", ""))
@@ -59,7 +61,7 @@ def _load_approval_titles() -> set:
 def _load_narrative_data() -> Dict[str, Dict]:
     narrative_map = {}
     try:
-        f = ROOT / "data" / "ops" / "narrative_intelligence_v2.json"
+        f = DATA_OPS / "narrative_intelligence_v2.json"
         if f.exists():
             data = json.loads(f.read_text(encoding="utf-8"))
             for t in data.get("topics", []):
@@ -210,90 +212,44 @@ def _publish_ops_assets():
     dest_dir = ROOT / "docs" / "data" / "ops"
     dest_dir.mkdir(parents=True, exist_ok=True)
     
-    # 1. Candidate Pool
-    src_pool = ROOT / "data_outputs" / "ops" / "video_candidate_pool.json"
-    if src_pool.exists():
-        shutil.copy2(src_pool, dest_dir / "video_candidate_pool.json")
-        print(f"[PUBLISH] video_candidate_pool.json → {dest_dir}")
-
-    # 2. [PHASE-22A] Script Pack (Mandatory check)
-    src_json = ROOT / "data_outputs" / "ops" / "video_script_pack.json"
-    src_md = ROOT / "data_outputs" / "ops" / "video_script_pack.md"
+    # Authority: data/ops/
+    # Legacy Mirror: data_outputs/ops/
     
-    if src_json.exists():
-        shutil.copy2(src_json, dest_dir / "video_script_pack.json")
-        print(f"[PUBLISH] video_script_pack.json → {dest_dir}")
-    else:
-        print(f"❌ [PUBLISH] CRITICAL MISSING: {src_json}")
-        # Note: In CI this should fail the build if Phase 22A is strictly enforced.
+    files_to_publish = [
+        "video_candidate_pool.json",
+        "video_script_pack.json",
+        "video_script_pack.md",
+        "stock_linkage_pack.json",
+        "conflict_density_pack.json",
+        "regime_state.json",
+        "investment_os_state.json",
+        "investment_os_brief.md",
+        "capital_allocation_state.json",
+        "capital_allocation_brief.md",
+        "timing_state.json",
+        "timing_brief.md",
+        "probability_compression_state.json",
+        "probability_compression_brief.md",
+        "meta_volatility_state.json",
+        "meta_volatility_brief.md",
+        "phase15_detection_diagnostics.md",
+        "phase15_conflict_trace.md"
+    ]
 
-    # 3. [PHASE-22B] Stock Linkage Pack
-    src_linkage = ROOT / "data_outputs" / "ops" / "stock_linkage_pack.json"
-    if src_linkage.exists():
-        shutil.copy2(src_linkage, dest_dir / "stock_linkage_pack.json")
-        print(f"[PUBLISH] stock_linkage_pack.json → {dest_dir}")
+    print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
+    for filename in files_to_publish:
+        src = DATA_OPS / filename
+        if src.exists():
+            shutil.copy2(src, dest_dir / filename)
+            # Sync to legacy mirror
+            DATA_OUTPUTS_OPS.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, DATA_OUTPUTS_OPS / filename)
+            print(f"✅ [OK] {filename}")
+        else:
+            if filename.endswith(".json"):
+                print(f"⚠️ [SKIP] {filename} (not found in {DATA_OPS})")
 
-    # 4. [PHASE-22C] Conflict Density Pack
-    src_density = ROOT / "data_outputs" / "ops" / "conflict_density_pack.json"
-    if src_density.exists():
-        shutil.copy2(src_density, dest_dir / "conflict_density_pack.json")
-        print(f"[PUBLISH] conflict_density_pack.json → {dest_dir}")
-
-    # 5. [PHASE-23] Structural Regime Layer
-    src_regime = ROOT / "data_outputs" / "ops" / "regime_state.json"
-    if src_regime.exists():
-        shutil.copy2(src_regime, dest_dir / "regime_state.json")
-        print(f"[PUBLISH] regime_state.json → {dest_dir}")
-
-    # 6. [PHASE-24] Investment OS Layer
-    src_os_json = ROOT / "data_outputs" / "ops" / "investment_os_state.json"
-    src_os_md = ROOT / "data_outputs" / "ops" / "investment_os_brief.md"
-    if src_os_json.exists():
-        shutil.copy2(src_os_json, dest_dir / "investment_os_state.json")
-        print(f"[PUBLISH] investment_os_state.json → {dest_dir}")
-    if src_os_md.exists():
-        shutil.copy2(src_os_md, dest_dir / "investment_os_brief.md")
-        print(f"[PUBLISH] investment_os_brief.md → {dest_dir}")
-
-    # 7. [PHASE-25] Strategic Capital Allocation Layer
-    src_ca_json = ROOT / "data_outputs" / "ops" / "capital_allocation_state.json"
-    src_ca_md = ROOT / "data_outputs" / "ops" / "capital_allocation_brief.md"
-    if src_ca_json.exists():
-        shutil.copy2(src_ca_json, dest_dir / "capital_allocation_state.json")
-        print(f"[PUBLISH] capital_allocation_state.json → {dest_dir}")
-    if src_ca_md.exists():
-        shutil.copy2(src_ca_md, dest_dir / "capital_allocation_brief.md")
-        print(f"[PUBLISH] capital_allocation_brief.md → {dest_dir}")
-
-    # 8. [PHASE-26] Structural Timing Layer
-    src_tm_json = ROOT / "data_outputs" / "ops" / "timing_state.json"
-    src_tm_md = ROOT / "data_outputs" / "ops" / "timing_brief.md"
-    if src_tm_json.exists():
-        shutil.copy2(src_tm_json, dest_dir / "timing_state.json")
-        print(f"[PUBLISH] timing_state.json → {dest_dir}")
-    if src_tm_md.exists():
-        shutil.copy2(src_tm_md, dest_dir / "timing_brief.md")
-        print(f"[PUBLISH] timing_brief.md → {dest_dir}")
-
-    # 9. [PHASE-27] Structural Probability Compression Layer
-    src_pc_json = ROOT / "data_outputs" / "ops" / "probability_compression_state.json"
-    src_pc_md = ROOT / "data_outputs" / "ops" / "probability_compression_brief.md"
-    if src_pc_json.exists():
-        shutil.copy2(src_pc_json, dest_dir / "probability_compression_state.json")
-        print(f"[PUBLISH] probability_compression_state.json → {dest_dir}")
-    if src_pc_md.exists():
-        shutil.copy2(src_pc_md, dest_dir / "probability_compression_brief.md")
-        print(f"[PUBLISH] probability_compression_brief.md → {dest_dir}")
-
-    # 10. [PHASE-28] Structural Meta-Volatility Layer
-    src_mv_json = ROOT / "data_outputs" / "ops" / "meta_volatility_state.json"
-    src_mv_md = ROOT / "data_outputs" / "ops" / "meta_volatility_brief.md"
-    if src_mv_json.exists():
-        shutil.copy2(src_mv_json, dest_dir / "meta_volatility_state.json")
-        print(f"[PUBLISH] meta_volatility_state.json → {dest_dir}")
-    if src_mv_md.exists():
-        shutil.copy2(src_mv_md, dest_dir / "meta_volatility_brief.md")
-        print(f"[PUBLISH] meta_volatility_brief.md → {dest_dir}")
+    print(f"[PUBLISH] Ops sync completed to docs/data/ops and data_outputs/ops (legacy mirror)")
 
 if __name__ == "__main__":
     main()

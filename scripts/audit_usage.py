@@ -48,8 +48,8 @@ def scan_repository(root_path):
             
         rel_root = os.path.relpath(root, root_path)
         
-        # EXCLUSION RULE: Skip data_outputs/ops/ entirely (self-artifacts)
-        if rel_root.startswith("data_outputs/ops"):
+        # EXCLUSION RULE: Skip data/ops/ entirely (self-artifacts)
+        if rel_root.startswith("data/ops"):
             continue
 
         # Check UI Entrypoints
@@ -131,7 +131,7 @@ def generate_report(results, output_json, output_md):
     # Markdown
     with open(output_md, "w", encoding="utf-8") as f:
         f.write("# Repository Usage Audit Report (Sanitized)\n\n")
-        f.write("> **Note**: Self-references (`data_outputs/ops/`) are excluded.\n\n")
+        f.write("> **Note**: Self-references (`data/ops/`) are excluded.\n\n")
         
         f.write("## UI Entrypoints\n")
         for entry in results["ui_entrypoints"]:
@@ -158,7 +158,7 @@ if __name__ == "__main__":
     print(f"Scanning repository at {root} (Sanitized)...")
     results = scan_repository(root)
     
-    out_dir = Path("data_outputs/ops")
+    out_dir = Path("data/ops")
     out_dir.mkdir(parents=True, exist_ok=True)
     
     generate_report(

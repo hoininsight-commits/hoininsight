@@ -14,8 +14,8 @@ def write_md(path, content):
 
 def main():
     print("Loading extracted forensics datasets...")
-    data_14 = load_json("data_outputs/ops/approval_forensics_last14days.json")
-    data_30 = load_json("data_outputs/ops/economic_hunter_candidates_30days.json")
+    data_14 = load_json("data/ops/approval_forensics_last14days.json")
+    data_30 = load_json("data/ops/economic_hunter_candidates_30days.json")
     
     total_14 = len(data_14)
     if total_14 == 0:
@@ -199,10 +199,10 @@ def main():
 
 > **[조치 권고사항]**
 > 본 분석은 코드(로직) 단의 어떠한 수정도 가하지 않았으며, 오직 데이터 메타데이터를 백트래킹한 결과입니다.
-> 현재 나타난 병목 구간(1순위/2순위)의 Score 임계값을 하향하거나, Speakability 룰을 유연하게 조정하는 방향으로 Phase-14 튜닝을 검토해야 합니다.
+> 현재 나타난 병목 구간(1순위/2순위)의 Score 임계값을 하향하거나, Phase-14 튜닝을 검토해야 합니다.
 """
-    write_md("data_outputs/ops/approval_forensics_summary.md", md_content)
-    print("Report generated: data_outputs/ops/approval_forensics_summary.md")
+    write_md("data/ops/approval_forensics_summary.md", md_content)
+    print("Report generated: data/ops/approval_forensics_summary.md")
 
 if __name__ == "__main__":
     main()

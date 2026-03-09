@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-08T23:20:01.623427+00:00",
+  "generated_at": "2026-03-09T07:26:56.119182+00:00",
   "date_kst": "2026-03-09",
   "state": {
-    "mode": "MIXED",
+    "mode": "EXPANSION",
     "fragility": "MEDIUM",
     "shock_window": "WATCH"
   },
@@ -14,7 +14,7 @@
       "curve": "UNKNOWN"
     },
     "timing": {
-      "gear": 3,
+      "gear": 4,
       "sync": "UNKNOWN",
       "accel_watch": [
         "동일 축 지표 2개 이상 동시 강도 상승",
@@ -28,13 +28,15 @@
       ]
     },
     "compression": {
-      "direction": "DOWNWARD_BIAS",
-      "pressure": "MODERATE",
-      "stability": "TRANSITION"
+      "direction": "NEUTRAL",
+      "pressure": "LOW",
+      "stability": "STABLE"
     },
     "conflict": {
-      "density_level": "LOW",
+      "density_level": "HIGH",
       "top_conflicts": [
+        null,
+        null,
         null
       ]
     },
@@ -43,15 +45,15 @@
     }
   },
   "interpretation": {
-    "one_liner": "지금 시장은 MIXED 상태이며, 취약성은 MEDIUM입니다.",
+    "one_liner": "지금 시장은 EXPANSION 상태이며, 취약성은 MEDIUM입니다.",
     "why_now": [
-      "Timing Gear 3 가속 및 UNKNOWN 동기화 상태 감지",
-      "상대적으로 낮은 변동성 압축 강도 (MODERATE)",
+      "Timing Gear 4 가속 및 UNKNOWN 동기화 상태 감지",
+      "상대적으로 낮은 변동성 압축 강도 (LOW)",
       "유동성 TIGHTENING 정권 하에서의 구조적 민감도 증폭"
     ],
     "invalidators": [
-      "Timing Gear 2 이하로의 급격한 서사 감속",
-      "Stability가 TRANSITION에서 STABLE로의 구조적 전환 발생"
+      "Timing Gear 3 이하로의 급격한 서사 감속",
+      "Stability가 STABLE에서 STABLE로의 구조적 전환 발생"
     ]
   }
 }

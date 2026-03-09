@@ -436,7 +436,7 @@ class NarrativeIntelligenceLayer:
             and t.get("actor_tier_score", 0) > 0 
             and t.get("cross_axis_multiplier", 1.0) > 1.0
         ]
-        video_pool_path = self.base_dir / "data_outputs/ops/video_candidate_pool.json"
+        video_pool_path = self.base_dir / "data/ops/video_candidate_pool.json"
         self._save_json(video_pool_path, {
             "date": self.ymd,
             "count": len(video_candidates),
@@ -468,7 +468,7 @@ class NarrativeIntelligenceLayer:
         })
 
     def save_diagnostics(self):
-        diag_path = self.base_dir / "data_outputs/ops/phase15_detection_diagnostics.md"
+        diag_path = self.base_dir / "data/ops/phase15_detection_diagnostics.md"
         content = "# Phase 15 Detection Diagnostics\n\n"
         for d in self.diagnostics:
             content += f"## Topic: {d['title']}\n"
@@ -486,7 +486,7 @@ class NarrativeIntelligenceLayer:
         data = self._load_json(issues_path)
         if not data or not data.get("cards"): return
         
-        trace_path = self.base_dir / "data_outputs/ops/phase15_conflict_trace.md"
+        trace_path = self.base_dir / "data/ops/phase15_conflict_trace.md"
         content = "# Phase 15 Conflict Trace Report\n\n"
         
         samples = data["cards"][:count]

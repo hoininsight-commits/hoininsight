@@ -1,7 +1,11 @@
 {
   "schema_version": "topic_gate_output_v1",
   "as_of_date": "2026-03-09",
+<<<<<<< HEAD
   "topic_id": "gate_09d1a5abbe",
+=======
+  "topic_id": "gate_cbdf00cd60",
+>>>>>>> c34b92bed ([STEP-9,10] Implement Economic Hunter Topic Refinement & Radar Layer)
   "title": "지수 상승 속 섹터 하락의 이유",
   "question": "왜 지수는 오르는데 내 종목은 하락하나?",
   "why_people_confused": "지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.",
@@ -21,9 +25,15 @@
   "handoff_to_structural": false,
   "handoff_reason": "콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.",
   "source_candidates": [
+<<<<<<< HEAD
     "cand_facfe2c767",
     "cand_9f588bf97a",
     "cand_fce1b27e1a"
+=======
+    "cand_e7be83d252",
+    "cand_014684e6c8",
+    "cand_307a044d4f"
+>>>>>>> c34b92bed ([STEP-9,10] Implement Economic Hunter Topic Refinement & Radar Layer)
   ],
   "speak_eligibility": {
     "eligible": false,

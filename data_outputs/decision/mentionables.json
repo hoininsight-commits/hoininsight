@@ -1,9 +1,18 @@
 [
   {
-    "topic_id": "bb57fa02-f8b1-468d-aaf9-11a8466185b6",
+    "topic_id": "60d1c8e5-475a-4ea5-a39b-0a5bad2f6c7f",
     "version": "is97_4_v1",
     "speakability": "READY",
-    "mentionables": [],
+    "mentionables": [
+      {
+        "ticker": "KR_EXAMPLE_1",
+        "name": "예시종목1",
+        "theme": "Tech Infra",
+        "reason": "정책 수혜 및 실적 가시성 확보",
+        "mechanism_link": "STRUCTURAL_ROUTE_FIXATION",
+        "risk": "정부 예산 집행 지연 시 모멘텀 약화"
+      }
+    ],
     "governance": {
       "deterministic": true,
       "no_llm": true,
@@ -20,7 +29,7 @@
     "content_hook": ""
   },
   {
-    "topic_id": "336c08d0-7914-4367-877f-e2dcc96be00a",
+    "topic_id": "f4c51fc7-bbb3-48bc-8fbf-0eaebd11fed5",
     "version": "is97_4_v1",
     "speakability": "HOLD",
     "mentionables": [],
@@ -43,7 +52,16 @@
     "topic_id": "HYP-fab88b81",
     "version": "is97_4_v1",
     "speakability": "READY",
-    "mentionables": [],
+    "mentionables": [
+      {
+        "ticker": "US_EXAMPLE_1",
+        "name": "Example Corp",
+        "theme": "General Alpha",
+        "reason": "전략적 합병에 따른 수급 집중",
+        "mechanism_link": "CAPITAL_STRUCTURE_SHIFT",
+        "risk": "합병 승인 지연 및 규제 리스크"
+      }
+    ],
     "governance": {
       "deterministic": true,
       "no_llm": true,

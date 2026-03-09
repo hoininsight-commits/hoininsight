@@ -126,7 +126,7 @@ class VideoIntelligenceLayer:
         candidates.sort(key=lambda x: x["video_score"], reverse=True)
         top_3 = candidates[:3]
 
-        output_path = self.base_dir / "data_outputs/ops/video_candidate_pool.json"
+        output_path = self.base_dir / "data/ops/video_candidate_pool.json"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
         output_data = {

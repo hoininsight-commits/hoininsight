@@ -4,7 +4,7 @@ from pathlib import Path
 
 def analyze():
     base_dir = Path("/Users/jihopa/Downloads/HoinInsight_Remote")
-    autopsy_path = base_dir / "data_outputs/ops/narrative_component_autopsy_last14days.json"
+    autopsy_path = base_dir / "data/ops/narrative_component_autopsy_last14days.json"
     
     if not autopsy_path.exists():
         print(f"Error: {autopsy_path} not found")

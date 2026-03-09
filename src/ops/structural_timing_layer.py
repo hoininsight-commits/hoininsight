@@ -18,7 +18,7 @@ logger = logging.getLogger("StructuralTiming")
 
 # Constants
 ROOT = Path(__file__).resolve().parent.parent.parent
-DATA_OPS = ROOT / "data_outputs" / "ops"
+DATA_OPS = ROOT / "data" / "ops"
 DOCS_DECISION = ROOT / "docs" / "data" / "decision"
 OUTPUT_JSON = DATA_OPS / "timing_state.json"
 OUTPUT_MD = DATA_OPS / "timing_brief.md"

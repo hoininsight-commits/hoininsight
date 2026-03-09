@@ -31,9 +31,9 @@ class InvestmentOSLayer:
         self.logger.info(f"Running Investment OS Layer for {self.ymd_dash}...")
 
         # 1. Load Inputs
-        regime_p = self._load_json("data_outputs/ops/regime_state.json")
-        conflict_p = self._load_json("data_outputs/ops/conflict_density_pack.json")
-        linkage_p = self._load_json("data_outputs/ops/stock_linkage_pack.json")
+        regime_p = self._load_json("data/ops/regime_state.json")
+        conflict_p = self._load_json("data/ops/conflict_density_pack.json")
+        linkage_p = self._load_json("data/ops/stock_linkage_pack.json")
         
         # fallback for today.json / decision card
         decision_card = self._load_json("data/decision/final_decision_card.json") or {}
@@ -166,7 +166,7 @@ class InvestmentOSLayer:
         }
 
         # Save JSON
-        json_path = self.base_dir / "data_outputs/ops/investment_os_state.json"
+        json_path = self.base_dir / "data/ops/investment_os_state.json"
         json_path.parent.mkdir(parents=True, exist_ok=True)
         json_path.write_text(json.dumps(os_state, indent=2, ensure_ascii=False), encoding='utf-8')
 
@@ -205,7 +205,7 @@ class InvestmentOSLayer:
                     lines.append(f"| {st['ticker']} | {st['name']} | {st['exposure_type']} | {st['risk_note']} |")
             lines.append("\n---\n")
 
-        md_path = self.base_dir / "data_outputs/ops/investment_os_brief.md"
+        md_path = self.base_dir / "data/ops/investment_os_brief.md"
         md_path.write_text("\n".join(lines), encoding='utf-8')
 
 if __name__ == "__main__":

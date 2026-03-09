@@ -6,7 +6,7 @@ from datetime import datetime, timezone, timedelta
 
 # Project Root Setup
 ROOT = Path(__file__).parent.parent.parent
-DATA_OPS = ROOT / "data_outputs" / "ops"
+DATA_OPS = ROOT / "data" / "ops"
 DATA_DECISION = ROOT / "data" / "decision"
 
 # Output Paths

@@ -61,7 +61,16 @@ class MentionablesLayer:
 
     def _get_candidates(self, unit: Dict[str, Any]) -> List[Dict[str, Any]]:
         tags = unit.get("evidence_tags", [])
-        raw_text = unit.get("interpretation_key", "").lower()
+        
+        # [IMPROVEMENT] Search keywords in multiple fields for better coverage
+        search_text = " ".join([
+            unit.get("interpretation_key", ""),
+            unit.get("structural_narrative", ""),
+            unit.get("title", ""),
+            unit.get("theme", ""),
+            unit.get("target_sector", "")
+        ]).lower()
+        
         candidates = []
         seen_codes = set()
 
@@ -70,7 +79,7 @@ class MentionablesLayer:
             for trigger in group.get("triggers", []):
                 if trigger["tag"] in tags:
                     for keyword in trigger.get("contains", []):
-                        if keyword.lower() in raw_text:
+                        if keyword.lower() in search_text:
                             match_found = True
                             break
                 if match_found:

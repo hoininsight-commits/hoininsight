@@ -31,7 +31,7 @@ def run_publish(project_root: Path = None):
     if os.getenv("HOIN_LEGACY_ENFORCE") == "1" and ledger["summary"]["high"] > 0:
         raise RuntimeError(f"[REF-010][BLOCK] critical legacy hits found: {ledger['summary']['high']}")
 
-    print("\n[Canonical Publish] Complete. SSOT: data_outputs/ops/")
+    print("\n[Canonical Publish] Complete. SSOT: data/")
 
 if __name__ == "__main__":
     run_publish()

@@ -18,7 +18,7 @@ logger = logging.getLogger("CapitalAllocation")
 
 # Constants
 ROOT = Path(__file__).resolve().parent.parent.parent
-DATA_OPS = ROOT / "data_outputs" / "ops"
+DATA_OPS = ROOT / "data" / "ops"
 OUTPUT_JSON = DATA_OPS / "capital_allocation_state.json"
 OUTPUT_MD = DATA_OPS / "capital_allocation_brief.md"
 

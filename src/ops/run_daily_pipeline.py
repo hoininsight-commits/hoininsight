@@ -87,26 +87,16 @@ def run_structural_engine():
     """Run the main Hoin Engine (Selection -> Insight)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2: ENGINE EXECUTION STARTED")
     
-    # We call main.py's functionality. 
-    # Best way is to import the engine or run it as a subprocess to ensure clean state.
-    # Given the complexity, subprocess is safer to avoid polluting the global namespace 
-    # or mock-imports from main.py interfering here.
-    
     import subprocess
     
-    main_script = project_root / "src" / "engine.py"
-    if not main_script.exists():
-        print(f"[Pipeline] ⚠️ Legacy engine.py not found at {main_script}. Skipping execution.")
-        # Legacy engine is deprecated; return True to avoid breaking the pipeline
-        return True
-        
     try:
-        # Run src/engine.py with project root in PYTHONPATH
+        # Run src.engine as a module with project root in PYTHONPATH
         env = os.environ.copy()
         env["PYTHONPATH"] = str(project_root)
         
+        print("[Pipeline] Executing: python3 -m src.engine")
         result = subprocess.run(
-            [sys.executable, str(main_script)],
+            [sys.executable, "-m", "src.engine"],
             cwd=project_root,
             capture_output=True,
             text=True,
@@ -194,18 +184,31 @@ def run_issue_signal():
         traceback.print_exc()
         return False
 
-def run_narrative_intelligence():
-    """Phase 12: Narrative Intelligence Layer v1.0"""
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 12: NARRATIVE INTELLIGENCE STARTED")
+def run_agent(agent_module: str, description: str):
+    """Generic wrapper to run an agent as a module."""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> {description} STARTED")
+    import subprocess
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(project_root)
+    
     try:
-        from src.ops.narrative_intelligence_layer import NarrativeIntelligenceLayer
-        ni = NarrativeIntelligenceLayer(project_root)
-        ni.process_topics()
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 12: NARRATIVE INTELLIGENCE COMPLETED")
+        print(f"[Pipeline] Executing: python3 -m {agent_module}")
+        result = subprocess.run(
+            [sys.executable, "-m", agent_module],
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            env=env
+        )
+        print(result.stdout)
+        if result.returncode != 0:
+            print(f"[Pipeline] ❌ {agent_module} failed with code {result.returncode}")
+            print(result.stderr)
+            return False
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< {description} COMPLETED")
         return True
     except Exception as e:
-        print(f"[Pipeline] ❌ Error running Narrative Intelligence: {e}")
-        traceback.print_exc()
+        print(f"[Pipeline] ❌ Error running {agent_module}: {e}")
         return False
 
 def main():
@@ -214,53 +217,62 @@ def main():
     # Step 1: Collect Data
     run_collection()
     
-    # Step 2: Run Engine
-    # 2.1 Narrative Engine (NEW)
+    # Step 2: Run Engine Components
+    # 2.1 Narrative Engine (Legacy/Phase 1.5)
     run_narrative_engine()
     
-    # 2.2 Structural Engine (Legacy)
+    # 2.2 Core Engine (Structural + Signal Detection)
+    # This calls python -m src.engine which covers A1 (redundant but safe) + A2
     success = run_structural_engine()
+    
+    # 2.3 [A3] Narrative Intelligence Agent (Structural Layers: Regime, Timing, OS)
+    # This is critical for generating regime_state.json, investment_os_state.json, etc.
+    run_agent("src.agents.narrative_agent", "PHASE 2.3: NARRATIVE AGENT (A3)")
 
-    # 2.3 Topic Synthesis (NEW)
-    # Merges Event Gate and Structural Output
+    # 2.4 Topic Synthesis
     run_topic_synthesis()
 
-    # 2.4 HOIN Signal (NEW)
+    # 2.5 HOIN Signal
     run_hoin_signal()
     
-    # 2.5 Issue Signal (EH Line - NEW)
+    # 2.6 Issue Signal (EH Production Line)
     run_issue_signal()
     
-    # 2.6 Narrative Intelligence (Phase 12)
-    run_narrative_intelligence()
+    # 2.7 [A4] Decision Agent (Approval & Final Decision Card)
+    run_agent("src.agents.decision_agent", "PHASE 2.7: DECISION AGENT (A4)")
     
-    # Step 3: Generate Dashboard
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3: DASHBOARD GENERATION STARTED")
+    # Step 3: Generate Dashboard & Publishing
+    # 3.1 [A6] Publish Agent (SSOT & Delivery)
+    run_agent("src.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
+    
+    # 3.2 Backward Compatible Dashboard Generation
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.2: LEGACY DASHBOARD GENERATION STARTED")
     try:
         from src.dashboard.dashboard_generator import generate_dashboard
         html = generate_dashboard(project_root)
-        
-        # Write to dashboard/index.html
         dash_out = project_root / "dashboard" / "index.html"
         dash_out.parent.mkdir(parents=True, exist_ok=True)
         dash_out.write_text(html, encoding="utf-8")
-        
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3: DASHBOARD GENERATION COMPLETED ({dash_out})")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.2: LEGACY DASHBOARD COMPLETED ({dash_out})")
     except Exception as e:
         print(f"[Pipeline] ⚠️ Dashboard generation failed: {e}")
         traceback.print_exc()
 
-    # Step 4: UI Sync & Manifest (REF-001 & REF-002)
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 4: UI SYNC & MANIFEST STARTED")
+    # Step 4: Final UI Sync & Contract Verification
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 4: FINAL UI SYNC STARTED")
     try:
-        # REF-002: Use Registry-driven Publish Orchestrator
         from src.ui_contracts.publish import run_publish
         run_publish(project_root)
-        
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 4: UI SYNC COMPLETED")
     except Exception as e:
         print(f"[Pipeline] ⚠️ UI Sync failed (Soft-Fail): {e}")
-        traceback.print_exc()
+
+    if success:
+        print("\n=== PIPELINE SUCCESS ===")
+        sys.exit(0)
+    else:
+        print("\n=== PIPELINE FAILED ===")
+        sys.exit(1)
 
     if success:
         print("\n=== PIPELINE SUCCESS ===")

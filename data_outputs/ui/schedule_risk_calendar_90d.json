@@ -1,25 +1,7 @@
 {
-  "as_of": "2026-02-20",
+  "as_of": "2026-03-09",
   "window_days": 90,
   "items": [
-    {
-      "date": "2026-02-27",
-      "date_type": "FIXED",
-      "region": "KR",
-      "category": "REBALANCE",
-      "title": "MSCI 분기 리뷰 발효",
-      "risk_mechanism": "패시브 자금 리밸런싱에 따른 수급 변동성",
-      "affected_axes": [
-        "LIQUIDITY"
-      ],
-      "base_weight": 0.8,
-      "tags": [
-        "CAPITAL_FLOW",
-        "REBALANCE"
-      ],
-      "final_score": 1.15,
-      "theme_boost": 0.2
-    },
     {
       "date": "2026-03-20",
       "date_type": "FIXED",
@@ -58,6 +40,23 @@
       ],
       "final_score": 0.6,
       "theme_boost": 0.0
+    },
+    {
+      "date": "2026-05-31",
+      "date_type": "RULE_BASED",
+      "region": "GLOBAL",
+      "category": "CONFERENCE",
+      "title": "ASCO 2026 (미국암학회)",
+      "risk_mechanism": "주요 파이프라인 임상 결과 발표에 따른 제약/바이오 변동성",
+      "affected_axes": [
+        "EARNINGS"
+      ],
+      "base_weight": 0.75,
+      "tags": [
+        "BIO_TECH"
+      ],
+      "final_score": 0.95,
+      "theme_boost": 0.2
     }
   ]
 }

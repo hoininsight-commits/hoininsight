@@ -104,7 +104,7 @@ class ConflictDensityLayer:
             "topics": processed_topics
         }
 
-        out_path = self.base_dir / "data_outputs/ops/conflict_density_pack.json"
+        out_path = self.base_dir / "data/ops/conflict_density_pack.json"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(json.dumps(pack, indent=2, ensure_ascii=False), encoding='utf-8')
         

@@ -6784,7 +6784,96 @@
       ]
     },
     {
+<<<<<<< HEAD
       "generated_at": "2026-03-09T05:01:34.514990",
+=======
+      "generated_at": "2026-03-09T10:59:07.963837",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-09T11:05:51.231202",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-09T11:07:33.892055",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-09T15:35:28.650760",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-09T15:43:40.586694",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "7d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-09T16:26:55.248896",
+>>>>>>> c34b92bed ([STEP-9,10] Implement Economic Hunter Topic Refinement & Radar Layer)
       "window_days": 7,
       "drifts": [
         {
