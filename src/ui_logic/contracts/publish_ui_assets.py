@@ -195,6 +195,7 @@ def publish_assets(project_root: Path):
             "phase15_detection_diagnostics.md",
             "phase15_conflict_trace.md",
             "economic_hunter_radar.json",
+            "topic_probability_ranking.json",
             "usage_audit.json",
             "ci_minimal_summary.json"
         ]
