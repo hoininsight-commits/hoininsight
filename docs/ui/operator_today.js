@@ -6,6 +6,8 @@
  */
 
 import { UI_SAFE, normalizeDecision, assertNoUndefined, extractDecisions } from './utils.js?v=2.6';
+import { renderRadarSection } from './radar_board.js';
+import { renderProbabilitySection } from './probability_board.js';
 
 let CACHED_MANIFEST = null;
 
@@ -109,7 +111,9 @@ export async function initTodayView(container) {
         let capitalData = null;
         let timingData = null;
         let compressionData = null;
-        let metaVolData = null; // Declare metaVolData
+        let metaVolData = null;
+        let radarData = null;
+        let probData = null;
 
         try {
             const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
@@ -147,6 +151,16 @@ export async function initTodayView(container) {
             metaVolData = await metaVolResp.json();
         } catch (mve) { console.warn("Meta-Volatility data missing:", mve); }
 
+        try {
+            const radarResp = await fetch('data/ops/economic_hunter_radar.json?v=' + Date.now());
+            if (radarResp.ok) radarData = await radarResp.json();
+        } catch (e) { console.warn("Radar data missing:", e); }
+
+        try {
+            const probResp = await fetch('data/ops/topic_probability_ranking.json?v=' + Date.now());
+            if (probResp.ok) probData = await probResp.json();
+        } catch (e) { console.warn("Probability data missing:", e); }
+
         allDecisions.sort((a, b) => {
             const rA = getGlobalRank(a);
             const rB = getGlobalRank(b);
@@ -155,7 +169,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0).getTime() - new Date(a.selected_at || 0).getTime();
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData, metaVolData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData, metaVolData, radarData, probData);
 
     } catch (e) {
         console.error(e);
@@ -222,7 +236,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null, metaVolData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null, metaVolData = null, radarData = null, probData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -393,6 +407,10 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
             ${timingData ? renderTimingSection(timingData) : ''}
             ${compressionData ? renderCompressionSection(compressionData) : ''}
             ${metaVolData ? renderMetaVolatilitySection(metaVolData) : ''}
+            
+            ${radarData ? renderRadarSection(radarData) : ''}
+            ${probData ? renderProbabilitySection(probData) : ''}
+
             ${summaryStripHtml}
             ${heroAreaHtml}
 
