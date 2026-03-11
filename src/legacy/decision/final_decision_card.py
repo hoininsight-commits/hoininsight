@@ -193,16 +193,35 @@ def validate_proof(ds_id: str, cand_meta: Dict) -> Dict[str, Any]:
     }
 
 def main():
-    base_dir = Path(__file__).resolve().parent.parent.parent
+    base_dir = Path(__file__).resolve().parent.parent.parent.parent
     now = datetime.now()
     ymd_path = now.strftime("%Y/%m/%d")
     ymd_dash = now.strftime("%Y-%m-%d")
     
     # 1. Load Data Sources
-    # Regime
-    regime_path = base_dir / f"data/regimes/regime_{ymd_dash}.json"
+    # Regime (New Engine Path)
+    regime_path = base_dir / "data/ops/regime_state.json"
     regime_data = load_json(regime_path) or {}
     
+    # Check if we need to extract from nested structure
+    if "regime_summary" in regime_data:
+        r_sum = regime_data["regime_summary"]
+        regime_block = {
+            "current_regime": r_sum.get("one_liner", "Unknown"),
+            "confidence": regime_data.get("confidence", 0.9), # New engine is confident
+            "has_meta_topics": True,
+            "meta_topic_count": 1,
+            "basis_type": "STRUCTURAL_REGIME"
+        }
+    else:
+        regime_block = {
+            "current_regime": regime_data.get("regime", "Unknown"),
+            "confidence": regime_data.get("confidence", 0.0),
+            "has_meta_topics": False,
+            "meta_topic_count": 0,
+            "basis_type": regime_data.get("basis_type", "NONE")
+        }
+
     meta_path = base_dir / "data/meta_topics" / ymd_path / "meta_topics.json"
     meta_topics = load_json(meta_path) or []
     
@@ -219,21 +238,37 @@ def main():
     score_path = base_dir / "data/ops/scoreboard" / ymd_path / "ops_scoreboard.json"
     ops_scoreboard = load_json(score_path) or {}
 
-    # Candidates (Phase 39 Output)
-    cand_path = base_dir / "data/topics/candidates" / ymd_path / "topic_candidates.json"
-    candidates_data = load_json(cand_path)
-    candidates = candidates_data.get("candidates", []) if candidates_data else []
+    # Candidates (New Engine Output: Topic Probability Ranking)
+    cand_path = base_dir / "data/ops/topic_probability_ranking.json"
+    ranking_data = load_json(cand_path)
+    
+    # Transform ranking format to candidates format
+    candidates = []
+    if ranking_data:
+        if "ranked_candidates" in ranking_data:
+            for rc in ranking_data["ranked_candidates"]:
+                candidates.append({
+                    "dataset_id": rc["signal_id"],
+                    "category": rc["theme"],
+                    "supporting_evidence": {
+                        "intra_category": rc.get("supporting_factors", [])
+                    },
+                    "probability_score": rc.get("probability_score")
+                })
+        elif "top_topic_probability" in ranking_data:
+            rc = ranking_data["top_topic_probability"]
+            candidates.append({
+                "dataset_id": rc["signal_id"],
+                "category": rc["theme"],
+                "supporting_evidence": {
+                    "intra_category": rc.get("supporting_factors", [])
+                },
+                "probability_score": rc.get("probability_score")
+            })
 
     # 2. Build Blocks
     
-    # Regime Block
-    regime_block = {
-        "current_regime": regime_data.get("regime", "Unknown"),
-        "confidence": regime_data.get("confidence", 0.0),
-        "has_meta_topics": len(meta_topics) > 0,
-        "meta_topic_count": len(meta_topics),
-        "basis_type": regime_data.get("basis_type", "NONE")
-    }
+    # (Regime Block handled above)
 
     # Revival Block
     rev_items = revival_proposals.get("items", [])
@@ -300,7 +335,11 @@ def main():
         
         for cand in candidates:
             ds_id = cand["dataset_id"]
-            topic_file = base_dir / "data/topics" / ymd_path / f"{ds_id}.json"
+            # Try new engine path first (data/ops/)
+            topic_file = base_dir / "data/ops" / f"{ds_id}.json"
+            if not topic_file.exists():
+                topic_file = base_dir / "data/topics" / ymd_path / f"{ds_id}.json"
+            
             t_data_raw = load_json(topic_file)
             
             if t_data_raw:
