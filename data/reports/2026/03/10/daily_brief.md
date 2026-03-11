@@ -61,8 +61,13 @@ Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
 
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
+
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: (no meta regime detected) (Conf: 0.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - (No structural anomaly detected)

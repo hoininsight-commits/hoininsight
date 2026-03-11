@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-10T03:27:45Z",
+    "ts_utc": "2026-03-10T22:52:24Z",
     "dataset_id": "comm_wti_fred",
     "topic_id": "comm_wti_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/10/comm_wti_fred.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/10/comm_wti_fred.json"
     },
     "rationale": "[L2] Z-Score 2.94 >= 2.0 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
