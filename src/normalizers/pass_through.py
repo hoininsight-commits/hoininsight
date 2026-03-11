@@ -1,2 +1,6 @@
-# DO NOT EDIT LOGIC; alias only
-from src.engine.normalize.pass_through import *
+from pathlib import Path
+
+def pass_through(base_dir: Path):
+    # Derived metrics are already saved in curated format by the engine.
+    # This is a no-op normalizer required by registry schema.
+    pass

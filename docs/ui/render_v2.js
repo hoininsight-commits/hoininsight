@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const BASE_PATH = '/hoininsight/data/';
-    const LOCAL_DATA_PATH = '../data/';
+    const LOCAL_DATA_PATH = 'data/';
 
     const safeText = (v) => v === undefined || v === null ? "" : String(v);
     const safeArray = (v) => Array.isArray(v) ? v : [];

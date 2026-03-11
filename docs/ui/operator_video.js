@@ -12,15 +12,15 @@ export async function initVideoView(container) {
     `;
 
     try {
-        const poolPaths = ['./data/ops/video_candidate_pool.json', '../data/ops/video_candidate_pool.json', './docs/data/ops/video_candidate_pool.json'];
-        const scriptPaths = ['./data/ops/video_script_pack.json', '../data/ops/video_script_pack.json', './docs/data/ops/video_script_pack.json'];
-        const linkagePaths = ['./data/ops/stock_linkage_pack.json', '../data/ops/stock_linkage_pack.json', './docs/data/ops/stock_linkage_pack.json'];
-        const densityPaths = ['./data/ops/conflict_density_pack.json', '../data/ops/conflict_density_pack.json', './docs/data/ops/conflict_density_pack.json'];
+        const poolPaths = ['data/ops/video_candidate_pool.json'];
+        const scriptPaths = ['data/ops/video_script_pack.json'];
+        const linkagePaths = ['data/ops/stock_linkage_pack.json'];
+        const densityPaths = ['data/ops/conflict_density_pack.json'];
 
         let poolData = null;
         for (const path of poolPaths) {
             try {
-                const res = await fetch(path);
+                const res = await fetch(`${path}?v=${Date.now()}`);
                 if (res.ok) { poolData = await res.json(); break; }
             } catch (e) { }
         }
@@ -49,12 +49,12 @@ export async function initVideoView(container) {
             } catch (e) { }
         }
 
-        if (!poolData || !poolData.top_candidates || poolData.top_candidates.length === 0) {
+        if (!poolData || !poolData.candidates || poolData.candidates.length === 0) {
             renderEmptyVideoState(container);
             return;
         }
 
-        const mergedCandidates = poolData.top_candidates.map(c => {
+        const mergedCandidates = poolData.candidates.map(c => {
             const sMatch = scriptData?.candidates?.find(sc => sc.dataset_id === c.dataset_id);
             const lMatch = linkageData?.topics?.find(lt => lt.dataset_id === c.dataset_id);
             const dMatch = densityData?.topics?.find(dt => dt.dataset_id === c.dataset_id);

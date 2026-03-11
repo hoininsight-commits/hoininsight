@@ -1,0 +1,21 @@
+{
+  "data_axis": [
+    "risk_vix_fred",
+    "comm_wti_fred",
+    "fx_usdkrw_ecos"
+  ],
+  "baseline_match": [
+    "risk_vix_fred: Volatility Surge (Z=3.26)",
+    "comm_wti_fred: Volatility Surge (Z=2.94)",
+    "fx_usdkrw_ecos: Volatility Surge (Z=2.27)"
+  ],
+  "anomaly_logic": "Unknown",
+  "why_now_type": "Hybrid-driven",
+  "level": "L2",
+  "level_proof": "Statistical Deviation > 2.0 Sigma",
+  "gap_detection": "Insufficient Evidence for L4",
+  "missing_data_request": [
+    "Need Volume/Flow Data to verify Capital Fixation"
+  ],
+  "pre_structural_context": null
+}

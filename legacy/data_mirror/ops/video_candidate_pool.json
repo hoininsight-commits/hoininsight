@@ -1,0 +1,28 @@
+{
+  "date": "2026-03-10",
+  "count": 1,
+  "candidates": [
+    {
+      "topic_id": "TEST_CANDIDATE",
+      "dataset_id": "test_data",
+      "title": "VERIFIED: System Cleanup Success (Contract Fix)",
+      "video_score": 95,
+      "narrative_score": 88,
+      "intensity": 90,
+      "why_now_type": "STRUCTURAL",
+      "script": {
+        "hook": "This is a verification hook.",
+        "one_min_summary_3lines": [
+          "Contract fixed.",
+          "UI updated.",
+          "Verified."
+        ],
+        "causal_chain": {
+          "cause": "Manual Fix",
+          "structural_shift": "Logic Correction",
+          "market_consequence": "Correct Rendering"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "date": "2026-03-11",
+  "engine_state": "STEP_96_LOCKED",
+  "topic_id": "NO_TOPIC",
+  "engine_side": {
+    "engine_decision": "NO_TOPIC",
+    "engine_why_now": "",
+    "engine_basis": []
+  },
+  "human_side": {
+    "operator_action": "HOLD",
+    "operator_reason": "No topic is a valid state today.",
+    "operator_tag": "NO_TOPIC_VALID_STATE"
+  },
+  "delta_interpretation": {
+    "alignment_status": "ALIGNED",
+    "divergence_reason": "",
+    "divergence_type": "NO_TOPIC_ALIGNMENT"
+  },
+  "continuity_flag": true,
+  "source_refs": [
+    "data/judgment_logs/2026/03/11/operator_judgment_log.jsonl",
+    "data/judgment_ledger/2026/03/11/judgment_ledger.jsonl",
+    "data/decision/2026/03/11/final_decision_card.json"
+  ]
+}

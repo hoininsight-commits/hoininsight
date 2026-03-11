@@ -55,13 +55,24 @@ class NarrativeIntelligenceEngine:
                     break
 
         # Synthesis
-        storyline = {
-            "hook": self.generate_hook(top_topic),
-            "market_problem": self.generate_market_problem(regime, os_state),
+        common_flow = {
+            "problem": self.generate_market_problem(regime, os_state),
             "mechanism": self.generate_mechanism(top_topic, matched_radar, timing),
             "implication": self.generate_implication(top_topic, regime),
             "stocks": self.generate_stock_section(matched_mentions),
             "conclusion": self.generate_conclusion(top_topic)
+        }
+
+        # Narrative Schema: { hook, problem, mechanism, implication, stocks, conclusion }
+        narrative_storyline = {
+            "hook": self.generate_hook(top_topic),
+            **common_flow
+        }
+        
+        # Script Schema: { intro, problem, mechanism, implication, stocks, conclusion }
+        script_storyline = {
+            "intro": self.generate_hook(top_topic), # Using hook as intro for now
+            **common_flow
         }
         
         structural_context = {
@@ -70,25 +81,41 @@ class NarrativeIntelligenceEngine:
             "timing": timing.get("timing_gear", {}).get("label", "N/A") if timing else "N/A"
         }
         
-        result = {
+        narrative_result = {
             "generated_at": datetime.now().isoformat(),
             "topic": top_topic.get("potential_topic"),
-            "storyline": storyline,
+            "storyline": narrative_storyline,
             "structural_context": structural_context,
             "supporting_signals": top_topic.get("supporting_factors", []),
+            "confidence": f"{top_topic.get('probability_score', 0)}%"
+        }
+
+        script_result = {
+            "generated_at": datetime.now().isoformat(),
+            "topic": top_topic.get("potential_topic"),
+            "script": script_storyline,
+            "structural_context": structural_context,
             "confidence": f"{top_topic.get('probability_score', 0)}%"
         }
         
         # Save Local
         os.makedirs(os.path.dirname(self.output_local_path), exist_ok=True)
         with open(self.output_local_path, 'w', encoding='utf-8') as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
+            json.dump(narrative_result, f, ensure_ascii=False, indent=2)
             
+        script_local_path = "data/decision/script_realization.json"
+        with open(script_local_path, 'w', encoding='utf-8') as f:
+            json.dump(script_result, f, ensure_ascii=False, indent=2)
+
         # Publish to Docs
         os.makedirs(os.path.dirname(self.output_docs_path), exist_ok=True)
         shutil.copy2(self.output_local_path, self.output_docs_path)
         
-        print(f"[Narrative Intelligence] Success. Generated at {self.output_docs_path}")
+        script_docs_path = "docs/data/decision/script_realization.json"
+        os.makedirs(os.path.dirname(script_docs_path), exist_ok=True)
+        shutil.copy2(script_local_path, script_docs_path)
+        
+        print(f"[Narrative Intelligence] Success. Generated Narrative and Script at {self.output_docs_path}")
 
     def generate_hook(self, topic):
         title = topic.get("potential_topic", "이 이슈")

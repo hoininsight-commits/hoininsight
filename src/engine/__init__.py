@@ -13,17 +13,17 @@ import traceback
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-from src.reporting.run_log import RunResult, write_run_log, append_observation_log
+from src.legacy.reporting.run_log import RunResult, write_run_log, append_observation_log
 from src.utils.target_date import get_target_ymd, get_target_parts
-from src.pipeline.run_collect import main as collect_main
-from src.pipeline.run_normalize import main as normalize_main
-from src.pipeline.run_anomaly import main as anomaly_main
-from src.pipeline.run_topic import main as topic_main
-from src.pipeline.run_topic_gate import main as gate_pipeline_main
+from src.ops.pipeline.run_collect import main as collect_main
+from src.ops.pipeline.run_normalize import main as normalize_main
+from src.ops.pipeline.run_anomaly import main as anomaly_main
+from src.ops.pipeline.run_topic import main as topic_main
+from src.ops.pipeline.run_topic_gate import main as gate_pipeline_main
 from src.reporters.daily_report import write_daily_brief
-from src.reporting.health import write_health
-from src.validation.output_check import run_output_checks
-from src.validation.schema_check import run_schema_checks
+from src.legacy.reporting.health import write_health
+from src.utils.validation.output_check import run_output_checks
+from src.utils.validation.schema_check import run_schema_checks
 
 def _kst_now_stamp() -> str:
     # Use standardized KST stamp for logs
@@ -43,6 +43,11 @@ def main(target_categories: list[str] = None):
     print(f"engine: start (mode: {runtime_mode})", file=sys.stderr)
     details_lines.append(f"engine: start (mode: {runtime_mode})")
     
+    # Initialize health/check variables
+    checks_ok = True
+    check_lines = []
+    per_dataset = {}
+    
     try:
         from src.utils.target_date import get_target_ymd
         run_ymd = get_target_ymd()
@@ -56,7 +61,7 @@ def main(target_categories: list[str] = None):
         print("normalize: ok", file=sys.stderr)
         
         # --- Logic Layer ---
-        from src.pipeline.derived_metrics_engine import run_derived_metrics
+        from src.ops.pipeline.derived_metrics_engine import run_derived_metrics
         run_derived_metrics(Path("."))
         details_lines.append("derived: ok")
         print("derived: ok", file=sys.stderr)
@@ -94,7 +99,7 @@ def main(target_categories: list[str] = None):
         # [IS-96-8] Relationship Stress Layer
         try:
             from src.collectors.relationship_stress_collector import RelationshipStressCollector
-            from src.decision.relationship_break_interpreter import RelationshipBreakInterpreter
+            from src.legacy.decision.relationship_break_interpreter import RelationshipBreakInterpreter
             rs_collector = RelationshipStressCollector(Path("."))
             rs_collector.collect()
             rs_interpreter = RelationshipBreakInterpreter(Path("."))
@@ -595,7 +600,7 @@ def main(target_categories: list[str] = None):
 
             # [IS-99-4] Upload Pack Orchestration
             try:
-                from src.orchestrators.upload_pack_orchestrator import UploadPackOrchestrator
+                from src.ops.orchestrators.upload_pack_orchestrator import UploadPackOrchestrator
                 orchestrator = UploadPackOrchestrator()
                 orchestrator.run()
                 details_lines.append("upload_pack: ok")
@@ -605,7 +610,7 @@ def main(target_categories: list[str] = None):
 
             # [NEW] Step 85: Topic Exporter (Dashboard Surface)
             try:
-                from src.dashboard.topic_exporter import TopicExporter
+                from src.ui.dashboard.topic_exporter import TopicExporter
                 exporter = TopicExporter(Path("."))
                 exporter.run(run_ymd)
                 details_lines.append("topic_exporter: ok")
@@ -615,7 +620,7 @@ def main(target_categories: list[str] = None):
 
             # [IS-101-1] Natural Language Hero Summary (Operator UI)
             try:
-                from src.ui.natural_language_summary import NaturalLanguageSummary
+                from src.ui.ui_logic.narrators.natural_language_summary import NaturalLanguageSummary
                 nl_summary = NaturalLanguageSummary(Path("."))
                 nl_summary.run()
                 details_lines.append("hero_summary_layer: ok")
@@ -625,7 +630,7 @@ def main(target_categories: list[str] = None):
 
             # [IS-101-2] Narrative Entry Hook (Attention Layer)
             try:
-                from src.ui.narrative_entry_hook_generator import NarrativeEntryHookGenerator
+                from src.ui.ui_logic.narrators.narrative_entry_hook_generator import NarrativeEntryHookGenerator
                 hook_gen = NarrativeEntryHookGenerator(Path("."))
                 hook_gen.run()
                 details_lines.append("narrative_hook_layer: ok")
@@ -655,7 +660,7 @@ def main(target_categories: list[str] = None):
 
             # [IS-107] Multi-Topic Priority Engine
             try:
-                from src.topics.multi_topic_priority_engine import MultiTopicPriorityEngine
+                from src.ui.topics.multi_topic_priority_engine import MultiTopicPriorityEngine
                 priority_engine = MultiTopicPriorityEngine(Path("."))
                 priority_engine.run()
                 details_lines.append("multi_topic_priority: ok")
@@ -790,7 +795,7 @@ def main(target_categories: list[str] = None):
             traceback.print_exc(file=sys.stderr)
 
         # [Fixed] Ensure Final Decision Card is generated
-        from src.decision.final_decision_card import main as decision_main
+        from src.legacy.decision.final_decision_card import main as decision_main
         decision_main()
         details_lines.append("decision: ok")
         print("decision: ok", file=sys.stderr)

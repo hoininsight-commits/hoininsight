@@ -3,7 +3,7 @@
  * Dynamically builds the sidebar based on docs/data/ui/manifest.json
  */
 async function loadSidebarRegistry() {
-    const MANIFEST_PATH = '../data/ui/manifest.json';
+    const MANIFEST_PATH = 'data/ui/manifest.json';
     const GITHUB_PAGES_MANIFEST = '/hoininsight/data/ui/manifest.json';
 
     async function fetchManifest() {

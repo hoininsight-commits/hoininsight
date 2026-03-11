@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-03-10T03:28:07.908690Z",
+  "date_kst": "2026-03-10",
+  "regime": {
+    "liquidity_state": "TIGHTENING",
+    "policy_state": "RESTRICTIVE",
+    "risk_state": "RISK_OFF",
+    "inflation_trend": "STICKY",
+    "yield_curve_state": "NORMAL"
+  },
+  "evidence": [
+    {
+      "indicator": "rates_fed_funds_fred",
+      "observation": "정책금리 3.64% 수준",
+      "direction": "HIGH"
+    },
+    {
+      "indicator": "yield_curve_10y_2y",
+      "observation": "장단기 금리차 0.59",
+      "direction": "NORMAL"
+    },
+    {
+      "indicator": "risk_vix_fred",
+      "observation": "VIX 지수 29.5",
+      "direction": "VOLATILE"
+    }
+  ],
+  "regime_summary": {
+    "one_liner": "긴축 기조 강화 및 유동성 축소 지속",
+    "structural_bias": "섹터별 차별화 및 금리 민감도 확대",
+    "risk_note": "지표 발표에 따른 체제 전환(Regime Shift) 가능성 상존"
+  }
+}

@@ -1,5 +1,7 @@
 date,value,ts_utc,entity,unit,source,dataset_id,metric_name,is_derived,derived_from,fingerprint
 2025-12-01,2.5,,,,,,,,,
+,2.5,2026-01-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,0148d949f7caec23
+,2.5,2026-02-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,97191f690fbe5ec7
 ,0.5,2021-02-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,f4c3862d1b340056
 ,0.5,2021-03-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,f7ac7ec983573e6c
 ,0.5,2021-04-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,753c6da76c4d624b
@@ -59,5 +61,3 @@ date,value,ts_utc,entity,unit,source,dataset_id,metric_name,is_derived,derived_f
 ,2.5,2025-10-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,2297f6c27274d965
 ,2.5,2025-11-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,4f44929cd98d4ac1
 ,2.5,2025-12-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,8116c62035547943
-,2.5,2026-01-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,0148d949f7caec23
-,2.5,2026-02-01T00:00:00Z,KOR_BASE_RATE,PCT,ecos,ecos_kor_base_rate,interest_rate,False,,97191f690fbe5ec7

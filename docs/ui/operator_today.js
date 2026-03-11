@@ -636,7 +636,7 @@ function renderPriorityTopicCard(t) {
                     <div class="space-y-1">
                         <div class="flex items-center gap-3">
                             <span class="px-2 py-0.5 rounded border text-[9px] font-black uppercase ${getClassColor(t.os_classification)}">${t.os_classification}</span>
-                            <h4 class="text-sm font-black text-white group-hover:text-blue-400 transition-colors">${t.title}</h4>
+                            <h4 class="text-sm font-black text-white group-hover:text-blue-400 transition-colors">${t.title_refined || t.title_raw || t.title}</h4>
                         </div>
                         <div class="flex gap-2 text-[10px] text-slate-500 font-bold uppercase ml-1">
                             <span>Axis: ${t.axis.join(', ')}</span>
@@ -672,7 +672,7 @@ function renderPriorityTopicCard(t) {
                     </div>
                     <div>
                         <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2">Linked Exposure</div>
-                        ${t.linked_stocks.length > 0 ? `
+                        ${(t.linked_stocks && t.linked_stocks.length > 0) ? `
                             <div class="border border-slate-800 rounded-lg overflow-hidden bg-black/20">
                                 <table class="w-full text-left text-[9px]">
                                     <thead class="bg-slate-800/50 text-slate-500 uppercase font-black border-b border-slate-800">

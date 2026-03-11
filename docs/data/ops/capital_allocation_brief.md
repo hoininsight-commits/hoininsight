@@ -1,4 +1,4 @@
-# Strategic Capital Allocation Brief (2026-03-09)
+# Strategic Capital Allocation Brief (2026-03-11)
 
 ## Allocation Mode: **DEFENSIVE_BALANCED**
 - **Cash Bias**: HIGH

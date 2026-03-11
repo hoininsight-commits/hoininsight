@@ -124,7 +124,7 @@ def run_topic_synthesis():
     """Run Topic Synthesis Layer (Phase 2.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2.5: TOPIC SYNTHESIS STARTED")
     try:
-        from src.synthesis.topic_synthesizer import TopicSynthesizer
+        from src.ops.synthesis.topic_synthesizer import TopicSynthesizer
         synth = TopicSynthesizer(project_root)
         res = synth.run()
         print(f"[Pipeline] Synthesized Topic: {res.get('content_topic', {}).get('title', 'None')}")
@@ -156,7 +156,7 @@ def run_issue_signal():
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 2.7: ISSUE SIGNAL (EH LINE) STARTED")
     try:
         import subprocess
-        is_script = project_root / "src" / "issuesignal" / "run_issuesignal.py"
+        is_script = project_root / "src" / "ops" / "issuesignal" / "run_issuesignal.py"
         if not is_script.exists():
             print(f"[Pipeline] ❌ Error: run_issuesignal.py not found at {is_script}")
             return False
@@ -227,7 +227,7 @@ def main():
     
     # 2.3 [A3] Narrative Intelligence Agent (Structural Layers: Regime, Timing, OS)
     # This is critical for generating regime_state.json, investment_os_state.json, etc.
-    run_agent("src.agents.narrative_agent", "PHASE 2.3: NARRATIVE AGENT (A3)")
+    run_agent("src.ops.agents.narrative_agent", "PHASE 2.3: NARRATIVE AGENT (A3)")
 
     # 2.4 Topic Synthesis
     run_topic_synthesis()
@@ -239,16 +239,16 @@ def main():
     run_issue_signal()
     
     # 2.7 [A4] Decision Agent (Approval & Final Decision Card)
-    run_agent("src.agents.decision_agent", "PHASE 2.7: DECISION AGENT (A4)")
+    run_agent("src.ops.agents.decision_agent", "PHASE 2.7: DECISION AGENT (A4)")
     
     # Step 3: Generate Dashboard & Publishing
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
-    run_agent("src.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
+    run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
     
     # 3.2 Backward Compatible Dashboard Generation
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.2: LEGACY DASHBOARD GENERATION STARTED")
     try:
-        from src.dashboard.dashboard_generator import generate_dashboard
+        from src.ui.dashboard.dashboard_generator import generate_dashboard
         html = generate_dashboard(project_root)
         dash_out = project_root / "dashboard" / "index.html"
         dash_out.parent.mkdir(parents=True, exist_ok=True)
@@ -261,18 +261,11 @@ def main():
     # Step 4: Final UI Sync & Contract Verification
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 4: FINAL UI SYNC STARTED")
     try:
-        from src.ui_contracts.publish import run_publish
+        from src.ui.ui_contracts.publish import run_publish
         run_publish(project_root)
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 4: UI SYNC COMPLETED")
     except Exception as e:
         print(f"[Pipeline] ⚠️ UI Sync failed (Soft-Fail): {e}")
-
-    if success:
-        print("\n=== PIPELINE SUCCESS ===")
-        sys.exit(0)
-    else:
-        print("\n=== PIPELINE FAILED ===")
-        sys.exit(1)
 
     if success:
         print("\n=== PIPELINE SUCCESS ===")

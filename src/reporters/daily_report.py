@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
-from src.registry.loader import load_datasets
+from src.utils.registry.loader import load_datasets
 try:
     from src.reporters.data_snapshot import write_data_snapshot
 except ImportError:

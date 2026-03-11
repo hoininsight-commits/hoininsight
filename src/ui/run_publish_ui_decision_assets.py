@@ -140,13 +140,22 @@ def _publish_today() -> Optional[Dict]:
                 try: top["intensity"], changed = float(top["score"]), True
                 except: pass
             if "narrative_score" not in top: top["narrative_score"], changed = None, True
+            
+            # Merge refined titles if available from Topic Formatter
+            try:
+                topic_f = DATA_OPS / "economic_hunter_topic.json"
+                if topic_f.exists():
+                    tf_data = json.loads(topic_f.read_text(encoding="utf-8"))
+                    if tf_data.get("title_refined"):
+                        top["title_refined"] = tf_data["title_refined"]
+                        top["title_raw"] = tf_data.get("title_raw", top.get("title"))
+                        changed = True
+            except: pass
         if changed:
             if isinstance(data, dict) and "top_topics" in data and len(data["top_topics"]) > 0:
                 t0 = data["top_topics"][0]
                 if t0.get("conflict_flag"):
-                    data["anchor_topic"] = "[CONFLICT] MULTI-AXIS FRICTION"
-                    for k in ["topic", "structural_topic"]: data[k] = t0.get("title", data.get(k))
-                    data["decision_rationale"] = t0.get("rationale", data.get("decision_rationale"))
+                    pass # Placeholder logic removed. Deliver original engine result.
             dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e: print(f"[PUBLISH] error in _publish_today: {e}"); file_date = kst_date
     return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
@@ -216,6 +225,7 @@ def _publish_ops_assets():
     # Legacy Mirror: data_outputs/ops/
     
     files_to_publish = [
+        "structural_top1_today.json",
         "video_candidate_pool.json",
         "video_script_pack.json",
         "video_script_pack.md",
@@ -233,7 +243,9 @@ def _publish_ops_assets():
         "meta_volatility_state.json",
         "meta_volatility_brief.md",
         "phase15_detection_diagnostics.md",
-        "phase15_conflict_trace.md"
+        "phase15_conflict_trace.md",
+        "topic_probability_ranking.json",
+        "economic_hunter_radar.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
