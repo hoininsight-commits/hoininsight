@@ -1,4 +1,4 @@
-# Insight Script: Topic #1
+# Insight Script: Policy Radar
 <!-- Metadata
 Topic ID: unknown
 Level: L2
@@ -7,11 +7,11 @@ Content Preset: STANDARD
 -->
 
 ## 1. 감지 로직
-- **Topic #1** 현상이 감지되었습니다.
+- **Policy Radar** 현상이 감지되었습니다.
 - 이는 **(no meta regime detected)** 국면 하에서 발생한 중요한 시그널입니다.
 
 ## 2. 선정 이유
-- No rationale provided.
+- [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## 3. 근거 데이터
 - 주요 지표: `unknown`

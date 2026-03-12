@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-03-09T08:19:50Z`
+- ts_utc: `2026-03-09T10:04:10Z`
 - ymd_utc: `2026/03/09`
 - enabled_datasets: `32`
 
@@ -9,37 +9,37 @@
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 0 | 0 | data/curated/structural/foreigner_flow.csv | - |
-| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 505 | 2026-01-15T07:32:29Z | 2026-03-09T08:18:55Z | 20 | 103 | 0 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/03/09/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 511 | 2026-01-15T07:32:29Z | 2026-03-09T16:26:35Z | 26 | 98 | 0 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/03/09/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | UNKNOWN | 948 | 1947-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/03/09/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/03/09/charts/fx_dxy_index_stooq.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 39 | 2026-01-15T00:00:00Z | 2026-03-08T00:00:00Z | 7 | 18 | 0 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/03/09/charts/crypto_eth_usd_spot_coingecko.png) |
+| ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 40 | 2026-01-15T00:00:00Z | 2026-03-09T00:00:00Z | 7 | 19 | 0 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/03/09/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | UNKNOWN | 860 | 1954-07-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 6 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/03/09/charts/rates_fed_funds_fred.png) |
 | FIN_STRESS | risk_financial_stress_fred | UNKNOWN | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/risk/financial_stress_usa.csv | [png](data/reports/2026/03/09/charts/risk_financial_stress_fred.png) |
-| GOLD | metal_gold_paxg_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/metals/gold_usd.csv | [png](data/reports/2026/03/09/charts/metal_gold_paxg_coingecko.png) |
-| GS_RATIO | derived_gold_silver_ratio | UNKNOWN | 116 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/derived/metals/gold_silver_ratio.csv | [png](data/reports/2026/03/09/charts/derived_gold_silver_ratio.png) |
-| HY_SPREAD | credit_hy_spread_fred | UNKNOWN | 7619 | 1996-12-31T00:00:00Z | 2026-03-05T00:00:00Z | 4 | 20 | 0 | 0 | 0 | data/curated/credit/hy_spread_usa.csv | [png](data/reports/2026/03/09/charts/credit_hy_spread_fred.png) |
+| GOLD | metal_gold_paxg_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 7 | 30 | 6 | 0 | 0 | data/curated/metals/gold_usd.csv | [png](data/reports/2026/03/09/charts/metal_gold_paxg_coingecko.png) |
+| GS_RATIO | derived_gold_silver_ratio | UNKNOWN | 116 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 7 | 30 | 6 | 0 | 0 | data/curated/derived/metals/gold_silver_ratio.csv | [png](data/reports/2026/03/09/charts/derived_gold_silver_ratio.png) |
+| HY_SPREAD | credit_hy_spread_fred | UNKNOWN | 7619 | 1996-12-31T00:00:00Z | 2026-03-05T00:00:00Z | 3 | 20 | 0 | 0 | 0 | data/curated/credit/hy_spread_usa.csv | [png](data/reports/2026/03/09/charts/credit_hy_spread_fred.png) |
 | KOR_CPI | inflation_kor_cpi_ecos | UNKNOWN | 61 | 2021-02-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/ecos/inflation/korea_cpi.csv | [png](data/reports/2026/03/09/charts/inflation_kor_cpi_ecos.png) |
 | KOR_RATE | rates_kor_base_rate_ecos | UNKNOWN | 62 | 2021-02-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 6 | 0 | 0 | data/curated/ecos/rates/korea_base_rate.csv | [png](data/reports/2026/03/09/charts/rates_kor_base_rate_ecos.png) |
-| KOSPI | index_kospi_stooq | UNKNOWN | 502 | 2026-01-15T07:32:40Z | 2026-03-09T08:18:59Z | 19 | 101 | 0 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/03/09/charts/index_kospi_stooq.png) |
+| KOSPI | index_kospi_stooq | UNKNOWN | 508 | 2026-01-15T07:32:40Z | 2026-03-09T16:26:35Z | 25 | 96 | 0 | 0 | 0 | data/curated/indices/kospi.csv | [png](data/reports/2026/03/09/charts/index_kospi_stooq.png) |
 | M2_USA | liquidity_m2_fred | UNKNOWN | 805 | 1959-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/liquidity/m2_usa.csv | [png](data/reports/2026/03/09/charts/liquidity_m2_fred.png) |
 | M_AND_A_CB | struct_dart_cb_bw | UNKNOWN | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/structural/cb_bw.csv | [png](data/reports/2026/03/09/charts/struct_dart_cb_bw.png) |
 | M_AND_A_DISP | struct_dart_disposal | UNKNOWN | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/structural/disposal.csv | [png](data/reports/2026/03/09/charts/struct_dart_disposal.png) |
-| NASDAQ | index_nasdaq_fred | UNKNOWN | 10128 | 1986-01-02T00:00:00Z | 2026-03-06T00:00:00Z | 5 | 19 | 6 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/03/09/charts/index_nasdaq_fred.png) |
+| NASDAQ | index_nasdaq_fred | UNKNOWN | 10128 | 1986-01-02T00:00:00Z | 2026-03-06T00:00:00Z | 4 | 19 | 6 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/03/09/charts/index_nasdaq_fred.png) |
 | PCE_USA | inflation_pce_fred | UNKNOWN | 804 | 1959-01-01T00:00:00Z | 2025-12-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/inflation/pce_usa.csv | [png](data/reports/2026/03/09/charts/inflation_pce_fred.png) |
 | PLATINUM | metal_platinum_xptusd_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 6 | 0 | data/curated/metals/platinum.csv | [png](data/reports/2026/03/09/charts/metal_platinum_xptusd_stooq.png) |
 | RE_PRICE | real_estate_price_index | UNKNOWN | 2 | 2026-01-22T00:00:00Z | 2026-01-24T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/real_estate/price_index.csv | [png](data/reports/2026/03/09/charts/real_estate_price_index.png) |
 | RE_UNSOLD | real_estate_unsold | UNKNOWN | 2 | 2026-01-22T00:00:00Z | 2026-01-24T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/real_estate/unsold.csv | [png](data/reports/2026/03/09/charts/real_estate_unsold.png) |
 | RE_VOL | real_estate_volume | UNKNOWN | 2 | 2026-01-22T00:00:00Z | 2026-01-24T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/real_estate/volume.csv | [png](data/reports/2026/03/09/charts/real_estate_volume.png) |
-| SILVER | metal_silver_kag_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/03/09/charts/metal_silver_kag_coingecko.png) |
-| SILVER | metal_silver_kag_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/03/09/charts/metal_silver_kag_coingecko.png) |
-| SPX | index_spx_fred | UNKNOWN | 2625 | 2016-01-19T00:00:00Z | 2026-03-06T00:00:00Z | 5 | 19 | 0 | 0 | 0 | data/curated/indices/spx.csv | [png](data/reports/2026/03/09/charts/index_spx_fred.png) |
+| SILVER | metal_silver_kag_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 7 | 30 | 6 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/03/09/charts/metal_silver_kag_coingecko.png) |
+| SILVER | metal_silver_kag_coingecko | UNKNOWN | 126 | 2026-01-15T08:10:58Z | 2026-03-09T00:00:00Z | 7 | 30 | 6 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/03/09/charts/metal_silver_kag_coingecko.png) |
+| SPX | index_spx_fred | UNKNOWN | 2625 | 2016-01-19T00:00:00Z | 2026-03-06T00:00:00Z | 4 | 19 | 0 | 0 | 0 | data/curated/indices/spx.csv | [png](data/reports/2026/03/09/charts/index_spx_fred.png) |
 | UNRATE | employment_unrate_fred | UNKNOWN | 937 | 1948-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/employment/unrate_usa.csv | [png](data/reports/2026/03/09/charts/employment_unrate_fred.png) |
-| US02Y | rates_us02y_fred | UNKNOWN | 12439 | 1976-06-01T00:00:00Z | 2026-03-05T00:00:00Z | 4 | 18 | 6 | 0 | 0 | data/curated/rates/us02y.csv | [png](data/reports/2026/03/09/charts/rates_us02y_fred.png) |
-| US10Y | rates_us10y_fred | UNKNOWN | 16104 | 1962-01-02T00:00:00Z | 2026-03-05T00:00:00Z | 4 | 18 | 0 | 0 | 0 | data/curated/rates/us10y.csv | [png](data/reports/2026/03/09/charts/rates_us10y_fred.png) |
+| US02Y | rates_us02y_fred | UNKNOWN | 12439 | 1976-06-01T00:00:00Z | 2026-03-05T00:00:00Z | 3 | 18 | 6 | 0 | 0 | data/curated/rates/us02y.csv | [png](data/reports/2026/03/09/charts/rates_us02y_fred.png) |
+| US10Y | rates_us10y_fred | UNKNOWN | 16104 | 1962-01-02T00:00:00Z | 2026-03-05T00:00:00Z | 3 | 18 | 0 | 0 | 0 | data/curated/rates/us10y.csv | [png](data/reports/2026/03/09/charts/rates_us10y_fred.png) |
 | USDKRW_ECOS | fx_usdkrw_ecos | UNKNOWN | 1262 | 2021-01-18T00:00:00Z | 2026-03-06T00:00:00Z | 4 | 16 | 0 | 0 | 0 | data/curated/ecos/fx/usdkrw.csv | [png](data/reports/2026/03/09/charts/fx_usdkrw_ecos.png) |
-| VIX | risk_vix_fred | UNKNOWN | 9214 | 1990-01-02T00:00:00Z | 2026-03-05T00:00:00Z | 4 | 19 | 0 | 0 | 0 | data/curated/risk/vix.csv | [png](data/reports/2026/03/09/charts/risk_vix_fred.png) |
-| WTI | comm_wti_fred | UNKNOWN | 10113 | 1986-01-02T00:00:00Z | 2026-03-02T00:00:00Z | 1 | 15 | 6 | 0 | 0 | data/curated/commodities/wti.csv | [png](data/reports/2026/03/09/charts/comm_wti_fred.png) |
-| YIELD_CURVE | derived_yield_curve_10y_2y | UNKNOWN | 12435 | 1976-06-01T00:00:00Z | 2026-03-05T00:00:00Z | 4 | 18 | 6 | 0 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | [png](data/reports/2026/03/09/charts/derived_yield_curve_10y_2y.png) |
+| VIX | risk_vix_fred | UNKNOWN | 9214 | 1990-01-02T00:00:00Z | 2026-03-05T00:00:00Z | 3 | 19 | 0 | 0 | 0 | data/curated/risk/vix.csv | [png](data/reports/2026/03/09/charts/risk_vix_fred.png) |
+| WTI | comm_wti_fred | UNKNOWN | 10113 | 1986-01-02T00:00:00Z | 2026-03-02T00:00:00Z | 0 | 15 | 6 | 0 | 0 | data/curated/commodities/wti.csv | [png](data/reports/2026/03/09/charts/comm_wti_fred.png) |
+| YIELD_CURVE | derived_yield_curve_10y_2y | UNKNOWN | 12435 | 1976-06-01T00:00:00Z | 2026-03-05T00:00:00Z | 3 | 18 | 6 | 0 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | [png](data/reports/2026/03/09/charts/derived_yield_curve_10y_2y.png) |
 
 ## Charts
 - Directory: `data/reports/2026/03/09/charts/`

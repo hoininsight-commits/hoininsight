@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-12T10:36:13Z",
+    "ts_utc": "2026-03-12T12:56:07Z",
     "dataset_id": "inflation_kor_cpi_ecos",
     "entity": "KOR_CPI",
     "anomaly_type": "Z_SCORE_MODEL_V1",
@@ -10,7 +10,7 @@
       "z_score": 1.78,
       "percentile": 50.0,
       "value": 118.4,
-      "rolling_mean_20d": 116.1505,
+      "rolling_mean_20d": 116.15050000000001,
       "reasoning": "Z-Score 1.78 >= 1.5"
     }
   }
