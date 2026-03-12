@@ -1596,8 +1596,10 @@ def generate_dashboard(base_dir: Path):
     # entity_pool moved after final_card load
         
     snapshot_list_html = TopicCardRenderer.render_snapshot_list(history_json)
+    # [NEW] Variable Initialization for Scope Safety
+    detected_patterns = []
+    replay_blocks = []
     topic_card_css = TopicCardRenderer.get_css()
-    
     
     # [A] HOIN Engine Topics (Final Decision)
     final_card = {}
@@ -1637,7 +1639,6 @@ def generate_dashboard(base_dir: Path):
         memory_delta_html = TopicCardRenderer.render_memory_delta_panel(comparison_result)
         
         # [NEW] Structural Pattern Detection (Step 86)
-        detected_patterns = []
         try:
             pattern_detector = StructuralPatternDetector(base_dir)
             pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
@@ -1649,7 +1650,6 @@ def generate_dashboard(base_dir: Path):
             print(f"[PatternDetector] Error: {e}")
     
         # [NEW] Pattern Memory & Replay (Step 88)
-        replay_blocks = []
         try:
             memory_engine = PatternMemoryEngine(base_dir)
             for pattern in detected_patterns:
@@ -2480,7 +2480,9 @@ def generate_dashboard(base_dir: Path):
     legacy_path.parent.mkdir(parents=True, exist_ok=True)
     legacy_path.write_text(html, encoding="utf-8")
     
-    (base_dir / "dashboard" / "index.html").write_text(html, encoding="utf-8")
+    dashboard_idx = base_dir / "dashboard" / "index.html"
+    dashboard_idx.parent.mkdir(parents=True, exist_ok=True)
+    dashboard_idx.write_text(html, encoding="utf-8")
     print(f"[Dashboard] Generated docs/legacy/index.html and dashboard/index.html (Legacy UI preserved)")
     return html
 
@@ -2491,5 +2493,5 @@ if __name__ == "__main__":
     # File is at src/dashboard/dashboard_generator.py
     # Git root is ../../
     current_file = Path(__file__).resolve()
-    project_root = current_file.parent.parent.parent
+    project_root = current_file.parent.parent.parent.parent
     generate_dashboard(project_root)
