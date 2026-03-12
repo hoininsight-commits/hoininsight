@@ -49,6 +49,7 @@ def main():
         "src/ui/dashboard/topic_exporter.py",
         "src/ui/narratives/run_prioritization.py",
         "src/ui/narratives/revival_scanner.py",
+        "src/ui/narratives/narrative_analyzer.py",
         "src/ui/ui_logic/guards/legacy_hard_gate.py"
     ]
     
