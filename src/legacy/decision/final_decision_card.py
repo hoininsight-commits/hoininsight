@@ -238,6 +238,13 @@ def main():
     score_path = base_dir / "data/ops/scoreboard" / ymd_path / "ops_scoreboard.json"
     ops_scoreboard = load_json(score_path) or {}
 
+    # Mentionables (New Engine Output: Structural Mentionables)
+    mention_path = base_dir / "data/decision/mentionables.json"
+    mention_data = load_json(mention_path)
+    structural_stocks = []
+    if mention_data and "mentionables" in mention_data:
+        structural_stocks = [m["name"] for m in mention_data["mentionables"]]
+
     # Candidates (New Engine Output: Topic Probability Ranking)
     cand_path = base_dir / "data/ops/topic_probability_ranking.json"
     ranking_data = load_json(cand_path)
@@ -485,6 +492,27 @@ def main():
         selected_topic_title = None # Explicitly None for Structural
         selected_rationale = f"구조적(Structural) 토픽은 발견되지 않았으나, {len(narrative_topics)}개의 내러티브(Narrative) 후보가 감지되었습니다."
 
+    # Load structural stocks from mentionables.json
+    mentionables_path = base_dir / "data/decision/mentionables.json"
+    mentionables_data = load_json(mentionables_path)
+    structural_stocks = mentionables_data.get("structural_stocks", []) if mentionables_data else []
+
+    # [STEP-19] Load Capital Flow Impact
+    capital_flow_path = base_dir / "data/ops/capital_flow_impact.json"
+    capital_flow_data = load_json(capital_flow_path)
+    
+    cf_theme = None
+    cf_sector = None
+    cf_direction = None
+    cf_stocks = []
+    
+    if capital_flow_data:
+        top_theme = capital_flow_data.get("top_capital_flow_theme", {})
+        cf_theme = top_theme.get("theme")
+        cf_sector = top_theme.get("primary_sector")
+        cf_direction = top_theme.get("impact_direction")
+        cf_stocks = [s["name"] for s in capital_flow_data.get("stock_impacts", [])[:3]]
+
     # 4. Construct Final Card
     # 4. Construct Final Card
     card = {
@@ -505,6 +533,14 @@ def main():
         "decision_rationale": structural_rationale,  # Legacy rationale
         "key_data": key_data,
         "top_topics": top_topics,                    # Full Top 5 List
+        "stocks": structural_stocks,                 # [New] Structural Stock List
+        
+        # [STEP-19] Capital Flow Fields
+        "capital_flow_theme": cf_theme,
+        "capital_flow_sector": cf_sector,
+        "capital_flow_direction": cf_direction,
+        "capital_flow_top_stocks": cf_stocks,
+
         "status": "APPROVED" if (structural_topic_title or anchor_topic_title) else "REJECTED",
         "decision_date": ymd_dash,
         "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"

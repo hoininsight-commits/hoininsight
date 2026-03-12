@@ -50,9 +50,25 @@ class NarrativeAgent(BaseAgent):
         self.logger.info("Step 10: [PHASE-28] Running Structural Meta-Volatility Layer...")
         self._run_module("src.ops.structural_meta_volatility_layer")
         
+        # Step 11: [STEP-16] Structural Mentionables Engine
+        self.logger.info("Step 11: [STEP-16] Running Structural Mentionables Engine...")
+        self._run_module("src.ops.structural_mentionables_engine")
+
+        # Step 12: [STEP-17] Topic Prediction Engine
+        self.logger.info("Step 12: [STEP-17] Running Topic Prediction Engine...")
+        self._run_module("src.ops.topic_prediction_engine")
+
+        # Step 13: [STEP-18] Narrative Propagation Engine
+        self.logger.info("Step 13: [STEP-18] Running Narrative Propagation Engine...")
+        self._run_module("src.ops.narrative_propagation_engine")
+
+        # Step 14: [STEP-19] Capital Flow Impact Engine
+        self.logger.info("Step 14: [STEP-19] Running Capital Flow Impact Engine...")
+        self._run_module("src.ops.capital_flow_impact_engine")
+        
         return {
             "entrypoint": "NarrativeAgent",
-            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer", "structural_probability_compression_layer", "structural_meta_volatility_layer"],
+            "modules_run": ["narrative_intelligence_layer", "structural_regime_layer", "conflict_density_layer", "investment_os_layer", "capital_allocation_layer", "freshness_tracker", "ops_scoreboard", "structural_timing_layer", "structural_probability_compression_layer", "structural_meta_volatility_layer", "structural_mentionables_engine", "topic_prediction_engine", "narrative_propagation_engine", "capital_flow_impact_engine"],
             "status": "COMPLETED"
         }
 

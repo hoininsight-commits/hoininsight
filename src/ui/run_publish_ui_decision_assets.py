@@ -245,7 +245,12 @@ def _publish_ops_assets():
         "phase15_detection_diagnostics.md",
         "phase15_conflict_trace.md",
         "topic_probability_ranking.json",
-        "economic_hunter_radar.json"
+        "economic_hunter_radar.json",
+        "topic_predictions.json",
+        "narrative_propagation.json",
+        "capital_flow_impact.json",
+        "../decision/predicted_narratives.json",
+        "../decision/mentionables.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
