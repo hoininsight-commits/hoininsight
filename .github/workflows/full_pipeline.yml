@@ -58,8 +58,8 @@ jobs:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: |
-          echo "[AGENT] Running: src.agents.data_agent"
-          python -m src.agents.data_agent --emit-runlog
+          echo "[AGENT] Running: src.ops.agents.data_agent"
+          python -m src.ops.agents.data_agent --emit-runlog
           echo "[PIPELINE] A1: Data collection & normalization completed"
 
       - name: "A2: Signal Discovery Agent (Anomaly -> Topics)"
@@ -68,8 +68,8 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
-          echo "[AGENT] Running: src.agents.signal_agent"
-          python -m src.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
+          echo "[AGENT] Running: src.ops.agents.signal_agent"
+          python -m src.ops.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
           echo "[PIPELINE] A2: Signal discovery completed"
 
 
@@ -79,7 +79,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python -m src.reporting.telegram_daily_summary
+          python -m src.legacy.reporting.telegram_daily_summary
 
       - name: Upload Daily Brief Artifact
         if: success()
@@ -293,20 +293,20 @@ jobs:
 
       - name: "A3: Narrative Intelligence Agent (Scoring & Stress)"
         run: |
-          echo "[AGENT] Running: src.agents.narrative_agent"
-          python -m src.agents.narrative_agent --emit-runlog
+          echo "[AGENT] Running: src.ops.agents.narrative_agent"
+          python -m src.ops.agents.narrative_agent --emit-runlog
           echo "[PIPELINE] A3: Narrative intelligence completed"
 
       - name: "A4: Decision Surface Agent (Approval & Card)"
         run: |
-          echo "[AGENT] Running: src.agents.decision_agent"
-          python -m src.agents.decision_agent --emit-runlog
+          echo "[AGENT] Running: src.ops.agents.decision_agent"
+          python -m src.ops.agents.decision_agent --emit-runlog
           echo "[PIPELINE] A4: Decision assets generated"
 
       - name: "A5: Video Intelligence Agent (Video Pool)"
         run: |
-          echo "[AGENT] Running: src.agents.video_agent"
-          python -m src.agents.video_agent --emit-runlog
+          echo "[AGENT] Running: src.ops.agents.video_agent"
+          python -m src.ops.agents.video_agent --emit-runlog
           echo "[PIPELINE] A5: Video candidate pool updated"
 
 
@@ -332,10 +332,10 @@ jobs:
           fi
 
           # Run Official Agent A6
-          echo "[AGENT] Running: src.agents.publish_agent"
+          echo "[AGENT] Running: src.ops.agents.publish_agent"
           echo "[PUBLISH-SSOT] Using: src/ui/run_publish_ui_decision_assets.py"
           ls -al src/ui/run_publish_ui_decision_assets.py
-          python -m src.agents.publish_agent --emit-runlog
+          python -m src.ops.agents.publish_agent --emit-runlog
           
           # [IS-51] Flatten operational dashboard
           find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \; 2>/dev/null || true
