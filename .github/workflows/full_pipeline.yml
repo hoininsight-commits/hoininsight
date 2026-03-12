@@ -481,6 +481,10 @@ jobs:
           y=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."
 
+      - name: Create .nojekyll for GitHub Pages
+        if: success()
+        run: touch docs/.nojekyll
+
       - name: Upload Pages Artifact
         if: success()
         uses: actions/upload-pages-artifact@v3
