@@ -451,28 +451,26 @@ jobs:
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
           
-          # Force add all changes
-          git add . || true
+          # Save our fully generated data safely outside git
+          cp -r docs /tmp/docs_bk || true
+          cp -r data /tmp/data_bk || true
           
-          if git diff --cached --quiet; then
-            echo "No intelligence changes to commit"
-          else
-            # Save our fully generated data safely outside git
-            cp -r docs /tmp/docs_bk || true
-            cp -r data /tmp/data_bk || true
-            
-            # Reset to latest main to avoid reverting concurrent pushes to source files
-            git fetch origin main
-            git reset --hard origin/main
-            
-            # Restore our generated data and only commit that
-            rm -rf docs data
-            cp -r /tmp/docs_bk docs || true
-            cp -r /tmp/data_bk data || true
-            
-            git add docs/ data/ || true
+          # Reset to latest main to avoid reverting concurrent pushes to source files
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # Restore our generated data
+          rm -rf docs data
+          cp -r /tmp/docs_bk docs || true
+          cp -r /tmp/data_bk data || true
+          
+          git add docs/ data/ || true
+          
+          if [ -n "$(git status --porcelain docs/ data/)" ]; then
             git commit -m "chore: save intelligence artifacts and docs [automated]" || true
             git push origin main
+          else
+            echo "No intelligence changes to commit"
           fi
 
       - name: Create issue on failure
