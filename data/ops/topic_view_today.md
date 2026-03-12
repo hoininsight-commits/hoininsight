@@ -12,12 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 (ID: unknown)
+### 비축유 방출에도 유가 상승…원유 프리미엄에 기름값 불안 지속 - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,12 +22,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체에 과징금 31억6500만원 - 조선일보 (ID: unknown)
+### 상승세 꺾인 기름값...'전략비축유 방출' 국제공조 논의 - YTN 사이언스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 아파트값 6주째 상승률 둔화…강남 3구·용산구 3주째 하락세 - 연합인포맥스 (ID: unknown)
+### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 서울 아파트값 상승세 6주째 둔화…강남3구 하락폭 확대 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,17 +42,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘네 마녀의 날’ 맞은 코스피…유가 4% 급등 속 향방은 - 문화일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 널뛰기 장세에 사팔사팔… 단타에 빠진 개미들 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 호르무즈 해협 공격으로 유가 급등하며 월가 선물 하락 - Investing.com 한국어 (ID: unknown)
+### 트럼프, 유가급등 등 오판했나…"참모들 단기현상으로 치부" - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 김윤덕 국토장관 "초고가·비거주 1주택자 보유세 개편도 준비" - 연합뉴스 (ID: unknown)
+### [단독] “중동 전쟁 선박보험 괜찮나”…금감원, 보험사 CFO 소집 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 김윤덕 "평수 늘린 1주택도 후회…집 보유 이익 안될 것" 보유세 인상 시사 - 뉴스1 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,12 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 (ID: unknown)
+### 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 (ID: unknown)
+### “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,7 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제 (ID: unknown)
+### 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,12 +97,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 대법 “한화오션 경영성과급은 임금 아냐”… 퇴직자들 최종 패소 - 조선일보 (ID: unknown)
+### 33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +105,21 @@ No SHADOW candidates today.
 ### 외국인, 2월 국내주식 20조원 가까이 팔아치웠다…사상 최대 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "삼성전자, 메모리 물량 내년치까지 완판…목표가 32만원"-KB - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “사생활 존중해 달라” 호소한 제니, 돌연 ‘손가락 욕’ 사진 공개 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “집이 안팔려서 새집 못들어가요”…전국 아파트 입주율 ‘뚝’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “지금이 적기, 한 방 노린다”…빚투에 ‘풀매수’ 개미들 반대매매 공포 어쩌나 (ID: unknown)
@@ -198,16 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 해군기지 아니라 초등학교였다…데이터 업데이트 미비에 170명 참변 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 박병무 엔씨 대표 “2030년 매출 5조원 달성”…모바일 캐주얼로 성장 가속 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### HS효성 장애인 사이클 국가대표에 탄소섬유 의족 지원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
