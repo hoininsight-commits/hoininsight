@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 트럼프, 유가급등 등 오판했나‥"참모들, 부차적 문제로 치부" - v.daum.net (Google_News_KR_Economy)
-  - [NEWS] [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 (Google_News_KR_Economy)
+  - [NEWS] 사상 최대 비축유 방출에도 ‘역부족’···국제 유가, 다시 장중 100달러 돌파 - 경향신문 (Google_News_KR_Economy)
+  - [NEWS] 국제 유가, 사흘만에 다시 장중 100달러 돌파 - KBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] 전쟁 4일차 ‘일본의 8배’ 기름값 폭등에 충격파…누가 이익 보나[점선면] - v.daum.net (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,28 +185,32 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 | Structural implication: '미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프, 유가급등 등 오판했나‥"참모들, 부차적 문제로 치부" - v.daum.net | Structural implication: '트럼프, 유가급등 등 오판했나‥"참모들, 부차적 문제로 치부" - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 | Structural implication: '[점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 사상 최대 비축유 방출에도 ‘역부족’···국제 유가, 다시 장중 100달러 돌파 - 경향신문 | Structural implication: '사상 최대 비축유 방출에도 ‘역부족’···국제 유가, 다시 장중 100달러 돌파 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 국제 유가, 사흘만에 다시 장중 100달러 돌파 - KBS 뉴스 | Structural implication: '국제 유가, 사흘만에 다시 장중 100달러 돌파 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 전쟁 4일차 ‘일본의 8배’ 기름값 폭등에 충격파…누가 이익 보나[점선면] - v.daum.net | Structural implication: '전쟁 4일차 ‘일본의 8배’ 기름값 폭등에 충격파…누가 이익 보나[점선면] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 | Structural implication: '이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 코스피, 유가반등에 0.5% 내려…환율 1,480원대로 급등 - KBS 뉴스 | Structural implication: '코스피, 유가반등에 0.5% 내려…환율 1,480원대로 급등 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz | Structural implication: '[단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕증시, 이란 전쟁·CPI 주목하며 혼조 출발 - 연합인포맥스 | Structural implication: '뉴욕증시, 이란 전쟁·CPI 주목하며 혼조 출발 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| ‘네 마녀의 날’엔 증시 하락?… 20번중 13번은 올랐다[단독] - 문화일보 | Structural implication: '‘네 마녀의 날’엔 증시 하락?… 20번중 13번은 올랐다[단독] - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 청담르엘 14억↓·잠실파크리오 6억↓…강남권 매물 쏟아지나 - 한겨레 | Structural implication: '청담르엘 14억↓·잠실파크리오 6억↓…강남권 매물 쏟아지나 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz | Structural implication: '[단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | [단독] “중동 전쟁 선박보험 괜찮나”…금감원, 보험사 CFO 소집 - 매일경제 | Structural implication: '[단독] “중동 전쟁 선박보험 괜찮나”…금감원, 보험사 CFO 소집 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 청담르엘 14억↓·잠실파크리오 6억↓…강남권 매물 쏟아지나 - 한겨레 | Structural implication: '청담르엘 14억↓·잠실파크리오 6억↓…강남권 매물 쏟아지나 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 김윤덕 국토장관 "초고가·비거주 1주택자 보유세 개편도 준비" - 연합뉴스 | Structural implication: '김윤덕 국토장관 "초고가·비거주 1주택자 보유세 개편도 준비" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | '각형' K배터리 원조 삼성SDI "특허 침해 좌시 않을 것" - 지디넷코리아 | Structural implication: ''각형' K배터리 원조 삼성SDI "특허 침해 좌시 않을 것" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제 | Structural implication: '33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 | Structural implication: '호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, 이란 전쟁·CPI 주목하며 혼조 출발 - 연합인포맥스 | Structural implication: '뉴욕증시, 이란 전쟁·CPI 주목하며 혼조 출발 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 알테오젠, 키트루다 SC 조성물 특허 미국 등록 - 히트뉴스 | Structural implication: '알테오젠, 키트루다 SC 조성물 특허 미국 등록 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 | Structural implication: '호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 | Structural implication: '“회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| "삼성전자, 메모리 물량 내년치까지 완판…목표가 32만원"-KB - 한국경제 | Structural implication: '"삼성전자, 메모리 물량 내년치까지 완판…목표가 32만원"-KB - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "26만전자, 135만닉스 간다"…골드만삭스도 '파격 전망' - v.daum.net | Structural implication: '"26만전자, 135만닉스 간다"…골드만삭스도 '파격 전망' - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 대법 “한화오션 경영성과급은 임금 아냐”… 퇴직자들 최종 패소 - 조선일보 | Structural implication: '대법 “한화오션 경영성과급은 임금 아냐”… 퇴직자들 최종 패소 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 외국인, 2월 국내주식 20조원 가까이 팔아치웠다…사상 최대 - 한겨레 | Structural implication: '외국인, 2월 국내주식 20조원 가까이 팔아치웠다…사상 최대 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자, 갤럭시S26·버즈4 전세계 출시 - 지디넷코리아 | Structural implication: '삼성전자, 갤럭시S26·버즈4 전세계 출시 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 삼성SDI “2040년 로봇 수요 4배로...내년 전고체 배터리 양산 준비” | Structural implication: '삼성SDI “2040년 로봇 수요 4배로...내년 전고체 배터리 양산 준비”' suggests a shift in NEWS dynamics. | LOW |
+| 석유공사, 알뜰주유소 가격 인상 논란에 대국민 사과 - MBC 뉴스 | Structural implication: '석유공사, 알뜰주유소 가격 인상 논란에 대국민 사과 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 카카오 노조 “디케이테크인 고용 불안, 카카오가 책임져라” | Structural implication: '카카오 노조 “디케이테크인 고용 불안, 카카오가 책임져라”' suggests a shift in NEWS dynamics. | LOW |
+| “베트남에서 한국인은 팁 주는 호구…동남아만 가면 귀족되냐” SNS ‘시끌’ | Structural implication: '“베트남에서 한국인은 팁 주는 호구…동남아만 가면 귀족되냐” SNS ‘시끌’' suggests a shift in NEWS dynamics. | LOW |
+| 이재명 대통령 “취약계층 차등 지원 필요…지역화폐로 경제 이중효과 노려야” | Structural implication: '이재명 대통령 “취약계층 차등 지원 필요…지역화폐로 경제 이중효과 노려야”' suggests a shift in NEWS dynamics. | LOW |
+| “용산 대통령실 경비하느라 안전대비 못했나”…이태원참사 청문회서 집중 추궁 | Structural implication: '“용산 대통령실 경비하느라 안전대비 못했나”…이태원참사 청문회서 집중 추궁' suggests a shift in NEWS dynamics. | LOW |
 | “우리 아이 어깨 높이 왜 다르지?”…뒷모습이 보내는 척추 건강 신호 [생활 속 건강 Talk] | Structural implication: '“우리 아이 어깨 높이 왜 다르지?”…뒷모습이 보내는 척추 건강 신호 [생활 속 건강 Talk]' suggests a shift in NEWS dynamics. | LOW |
+| 삼성SDI “2040년 로봇 수요 4배로...내년 전고체 배터리 양산 준비” | Structural implication: '삼성SDI “2040년 로봇 수요 4배로...내년 전고체 배터리 양산 준비”' suggests a shift in NEWS dynamics. | LOW |
 | “미성숙과 어리석음을 영감과 우울로 포장”…남태현, 음주운전 실형 구형에 선처 호소 [종합] | Structural implication: '“미성숙과 어리석음을 영감과 우울로 포장”…남태현, 음주운전 실형 구형에 선처 호소 [종합]' suggests a shift in NEWS dynamics. | LOW |
 | 이란전 불똥 여기까지 튀나…희토류 관련주 일제히 강세 | Structural implication: '이란전 불똥 여기까지 튀나…희토류 관련주 일제히 강세' suggests a shift in NEWS dynamics. | LOW |
 | 태광산업, 롯데홈쇼핑 대표이사 재선임 반대 | Structural implication: '태광산업, 롯데홈쇼핑 대표이사 재선임 반대' suggests a shift in NEWS dynamics. | LOW |
@@ -221,10 +225,6 @@
 | 국제유가 다시 100달러 돌파…“중동 유조선 꼼짝 못해, 비축유 좀 푼다고 되겠나” | Structural implication: '국제유가 다시 100달러 돌파…“중동 유조선 꼼짝 못해, 비축유 좀 푼다고 되겠나”' suggests a shift in NEWS dynamics. | LOW |
 | “사생활 존중해 달라” 호소한 제니, 돌연 ‘손가락 욕’ 사진 공개 | Structural implication: '“사생활 존중해 달라” 호소한 제니, 돌연 ‘손가락 욕’ 사진 공개' suggests a shift in NEWS dynamics. | LOW |
 | “집이 안팔려서 새집 못들어가요”…전국 아파트 입주율 ‘뚝’ | Structural implication: '“집이 안팔려서 새집 못들어가요”…전국 아파트 입주율 ‘뚝’' suggests a shift in NEWS dynamics. | LOW |
-| “지금이 적기, 한 방 노린다”…빚투에 ‘풀매수’ 개미들 반대매매 공포 어쩌나 | Structural implication: '“지금이 적기, 한 방 노린다”…빚투에 ‘풀매수’ 개미들 반대매매 공포 어쩌나' suggests a shift in NEWS dynamics. | LOW |
-| 이녹스, 배터리 전시회 ‘인터배터리 2026’ 참가 | Structural implication: '이녹스, 배터리 전시회 ‘인터배터리 2026’ 참가' suggests a shift in NEWS dynamics. | LOW |
-| [속보] ‘대미투자특별법’ 여야 합의로 국회 본회의 통과 | Structural implication: '[속보] ‘대미투자특별법’ 여야 합의로 국회 본회의 통과' suggests a shift in NEWS dynamics. | LOW |
-| ‘11억원 불법대출’ 양문석 민주당 의원 당선무효...“재판소원 할 것” | Structural implication: '‘11억원 불법대출’ 양문석 민주당 의원 당선무효...“재판소원 할 것”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
