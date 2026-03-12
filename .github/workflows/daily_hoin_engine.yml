@@ -42,13 +42,13 @@ jobs:
       run: |
         # Engine 2: Topic Decision Gate
         # Reads daily_snapshot.json -> writes topic_gate_output.json
-        python -m src.pipeline.run_topic_gate --as-of-date $(date +'%Y-%m-%d')
+        python -m src.ops.pipeline.run_topic_gate --as-of-date $(date +'%Y-%m-%d')
 
     - name: Run Economic Hunter Production Line (IssueSignal)
       run: |
         # Engine 3: IssueSignal (IS-88~92)
         # Generates enriched narrative candidates and multi-angle view
-        python src/issuesignal/run_issuesignal.py
+        python src/ops/issuesignal/run_issuesignal.py
 
     - name: Commit and Push Results
       run: |

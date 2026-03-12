@@ -33,7 +33,7 @@ jobs:
           HOIN_TARGET_DATE: ${{ inputs.date }}
         run: |
           # Only-axis BACKFILL maps to 'None' (All Categories) in run_pipeline.py
-          python -m src.pipeline.run_pipeline --only-axis BACKFILL --target-date ${{ inputs.date }}
+          python -m src.ops.pipeline.run_pipeline --only-axis BACKFILL --target-date ${{ inputs.date }}
 
       - name: Verify Backfill Status
         run: |

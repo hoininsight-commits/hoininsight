@@ -30,7 +30,7 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
-          python -m src.pipeline.run_pipeline --only-axis CRYPTO
+          python -m src.ops.pipeline.run_pipeline --only-axis CRYPTO
           
       - name: Commit outputs
         if: success()
