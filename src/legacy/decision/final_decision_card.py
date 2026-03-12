@@ -337,8 +337,8 @@ def main():
         except Exception as e:
             print(f"[Decision] Failed to load Anchor Result: {e}")
 
+    scored_candidates = []
     if candidates:
-        scored_candidates = []
         
         for cand in candidates:
             ds_id = cand["dataset_id"]
@@ -445,26 +445,53 @@ def main():
                     "leader_stocks": related_stocks
                 })
         
-        # Sort by Score Descending
-        scored_candidates.sort(key=lambda x: x["score"], reverse=True)
+        pass # End of reactive candidates block
+
+    # [STEP-17-19] Merge Predicted Topics
+    prediction_path = base_dir / "data/ops/topic_predictions.json"
+    prediction_data = load_json(prediction_path)
+    if prediction_data and "predictions" in prediction_data:
+        for pred in prediction_data["predictions"]:
+            p_score = pred.get("prediction_score", 0)
+            if p_score >= 70:
+                # Check if already in scored_candidates (by title/theme)
+                if not any(c["title"] == pred["theme"] for c in scored_candidates):
+                    scored_candidates.append({
+                        "id": pred["topic_id"],
+                        "score": p_score,
+                        "intensity": p_score / 100.0, # Map to intensity for contract
+                        "title": pred["theme"],
+                        "rationale": f"[Predicted] {pred.get('prediction_reason', '')}",
+                        "raw_data": pred,
+                        "logic_block": "PREDICTIVE_TOPIC",
+                        "leader_stocks": []
+                    })
+
+    # Sort by Score Descending
+    scored_candidates.sort(key=lambda x: x["score"], reverse=True)
+    
+    # Select Top 5
+    top_topics = scored_candidates[:5]
+    
+    # Set Main Topic
+    if top_topics:
+        best = top_topics[0]
+        selected_topic_title = best["title"]
+        selected_rationale = best["rationale"]
+        # [Phase 50] Capture for Dual Display
+        structural_topic_title = best["title"]
+        structural_rationale = best["rationale"]
         
-        # Select Top 5
-        top_topics = scored_candidates[:5]
+        # Use .get() or check for dataset_id compatibility
+        main_id = best.get("dataset_id") or best.get("id")
+        if main_id:
+            key_data[main_id] = "Primary"
         
-        # Set Main Topic
-        if top_topics:
-            best = top_topics[0]
-            selected_topic_title = best["title"]
-            selected_rationale = best["rationale"]
-            # [Phase 50] Capture for Dual Display
-            structural_topic_title = best["title"]
-            structural_rationale = best["rationale"]
-            
-            key_data[best["dataset_id"]] = "Primary"
-            
-            # Add secondary badges
-            for other in top_topics[1:]:
-                key_data[other["dataset_id"]] = "Secondary"
+        # Add secondary badges
+        for other in top_topics[1:]:
+            other_id = other.get("dataset_id") or other.get("id")
+            if other_id:
+                key_data[other_id] = "Secondary"
 
     # Fallback if no candidates but maybe Revival exists? 
     # (Existing logic didn't handle this, but adding minimal fallback)
