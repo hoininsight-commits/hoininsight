@@ -24,7 +24,7 @@ class SignalAgent(BaseAgent):
 
         # Step 4: IssueSignal (IS-49 Loop Lock)
         self.logger.info("Step 4: Running IssueSignal Engine (Production mode)...")
-        self._run_module("src.issuesignal.run_issuesignal", ["--mode=production"])
+        self._run_module("src.ops.issuesignal.run_issuesignal", ["--mode=production"])
         
         return {
             "entrypoint": "SignalAgent",

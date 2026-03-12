@@ -19,7 +19,7 @@ from src.ops.issuesignal.editorial.script_writer_v2 import ScriptWriterV2
 from src.ops.issuesignal.narrative.narrative_framing_engine import NarrativeFramingEngine
 from src.ops.issuesignal.narrative.urgency_amplifier import UrgencyAmplifierEngine
 from src.ops.issuesignal.fusion.issue_fusion_engine import IssueFusionEngine
-from src.editorial.editorial_selector import DailyEditorialSelector
+from src.ui.editorial.editorial_selector import DailyEditorialSelector
 from src.ops.issuesignal.engines.calendar_trigger_engine import CalendarTriggerEngine
 from src.ops.issuesignal.engines.numeric_evidence_engine import NumericEvidenceEngine
 from src.ops.issuesignal.engines.relative_rerating_engine import RelativeReratingEngine
@@ -52,7 +52,7 @@ def main():
     
     # [IS-94A] Step 0: Real Narrative Supply (Roster-based)
     print("Step 0: Running Statement Roster-based Supply (IS-94A)...")
-    roster_manager = StatementRosterManager(base_dir / "src" / "issuesignal" / "config" / "statement_roster.json")
+    roster_manager = StatementRosterManager(base_dir / "src" / "ops" / "issuesignal" / "config" / "statement_roster.json")
     anchor_resolver = StatementPrimaryAnchorResolver()
     dedup_engine = StatementDedupEngine()
     
