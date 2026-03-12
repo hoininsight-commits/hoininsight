@@ -5,10 +5,12 @@ import ssl
 import sys
 import time
 
+# Module-level SSL context (disables cert verification for GitHub Pages)
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
 def fetch_json(url):
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
     req = urllib.request.Request(f"{url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
     try:
         with urllib.request.urlopen(req, context=ctx, timeout=10) as response:
