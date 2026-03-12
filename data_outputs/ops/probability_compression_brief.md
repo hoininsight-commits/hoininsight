@@ -1,4 +1,4 @@
-# Structural Probability Compression Brief (2026-03-11)
+# Structural Probability Compression Brief (2026-03-12)
 
 ## Compression State: **DOWNWARD_BIAS**
 - **Pressure Level**: MODERATE
@@ -16,5 +16,5 @@
 
 ## Key Drivers
 - **Regime**: Liquidity TIGHTENING
-- **Timing**: Gear 3 Acceleration
+- **Timing**: Gear 1 IDLE
 - **Conflict**: Normal Density

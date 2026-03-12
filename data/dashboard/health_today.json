@@ -1,13 +1,13 @@
 {
-  "run_date": "2026-03-11",
-  "checked_at": "2026-03-11T14:22:06.761017",
+  "run_date": "2026-03-12",
+  "checked_at": "2026-03-12T10:36:24.657464",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
     "anomalies_count": 25,
     "gate_candidates_count": 0,
-    "scripts_md_count": 7,
-    "script_quality_json_count": 7,
+    "scripts_md_count": 0,
+    "script_quality_json_count": 0,
     "topics_count": {
       "READY": 0,
       "HOLD": 0,
@@ -18,17 +18,17 @@
   "event_coverage_path": "data/dashboard/event_coverage_today.json",
   "errors": [
     "events_dir missing: FETCH_FAILED",
-    "candidates_file missing: /Users/jihopa/Downloads/HoinInsight_Remote/data/topics/candidates/2026/03/11/topic_candidates.json",
-    "daily_lock.json missing in /Users/jihopa/Downloads/HoinInsight_Remote/data/reports/2026/03/11"
+    "candidates_file missing: /Users/jihopa/Downloads/HoinInsight_Remote/data/topics/candidates/2026/03/12/topic_candidates.json",
+    "daily_lock.json missing in /Users/jihopa/Downloads/HoinInsight_Remote/data/reports/2026/03/12"
   ],
   "missing_files": [
-    "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/03/11",
-    "/Users/jihopa/Downloads/HoinInsight_Remote/data/topics/candidates/2026/03/11/topic_candidates.json"
+    "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/03/12",
+    "/Users/jihopa/Downloads/HoinInsight_Remote/data/topics/candidates/2026/03/12/topic_candidates.json"
   ],
   "input_root_cause_code": "FETCH_FAILED",
   "input_details": {
     "missing_paths": [
-      "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/03/11/events.json"
+      "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/03/12/events.json"
     ],
     "exceptions": []
   }

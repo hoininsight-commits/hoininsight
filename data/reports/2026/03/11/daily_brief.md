@@ -34,12 +34,12 @@ Historical context:
 - [HIGH] CPI_USA: data/features/anomalies/2026/03/11/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/03/11/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/03/11/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [HIGH] HY_SPREAD: data/features/anomalies/2026/03/11/credit_hy_spread_fred.json L2 Signal (score=6.00) | Mom: UP (slope=1.50) | App7d=3
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/11/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/11/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US02Y: data/features/anomalies/2026/03/11/rates_us02y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] KOR_CPI: data/features/anomalies/2026/03/11/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/11/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [MED] HY_SPREAD: data/features/anomalies/2026/03/11/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [LOW] BTCUSD: data/features/anomalies/2026/03/11/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] US10Y: data/features/anomalies/2026/03/11/rates_us10y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SPX: data/features/anomalies/2026/03/11/index_spx_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=5
@@ -62,18 +62,19 @@ Narrative Drift Signals:
 
 
 ## OPS HEALTH SNAPSHOT
-⚠️ SLA BREACH DETECTED: 41 axes stale (>6h)
-Affected: crypto_btc_usd_spot_coingecko, fx_usdkrw_spot_open_er_api, metal_gold_xauusd_spot_gold_api, metal_silver_xagusd_spot_gold_api, rates_us10y_fred, risk_vix_index_stooq, risk_vix_fred, index_spx_sp500_stooq, index_spx_fred, index_kospi_stooq, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, index_nasdaq_ndx_stooq, index_nasdaq_fred, fx_dxy_index_stooq, rates_us02y_fred, comm_wti_crude_oil_stooq, comm_wti_fred, metal_platinum_xptusd_stooq, metal_gold_paxg_coingecko, metal_silver_kag_coingecko, metal_gold_fred, metal_silver_kag_coingecko, metal_silver_fred, crypto_eth_usd_spot_coingecko, rates_kor_base_rate_ecos, inflation_kor_cpi_ecos, fx_usdkrw_ecos, rates_fed_funds_fred, inflation_cpi_fred, inflation_pce_fred, liquidity_m2_fred, employment_unrate_fred, credit_hy_spread_fred, risk_financial_stress_fred, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
-- System Freshness: 4.7%
+⚠️ SLA BREACH DETECTED: 9 axes stale (>6h)
+Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
+- System Freshness: 79.1%
 
 ## FINAL DECISION CARD SNAPSHOT
-- Regime: Unknown (Conf: 0.0%)
+- Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
 
 ## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
 - (No structural anomaly detected)
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- (No anchor logic matched)
+- **Topic:** [Unknown] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)

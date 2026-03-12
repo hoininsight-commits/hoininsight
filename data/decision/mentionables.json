@@ -1,38 +1,27 @@
-[
-  {
-    "topic_id": "f9e712b6-5760-4976-a6f8-cafa44d9b78e",
-    "version": "is97_4_v1",
-    "speakability": "READY",
-    "mentionables": [],
-    "governance": {
-      "deterministic": true,
-      "no_llm": true,
-      "add_only_integrity": true,
-      "no_unbacked_stock_calls": true
+{
+  "generated_at": "2026-03-12T10:36:24.386111",
+  "theme": null,
+  "mentionables": [
+    {
+      "name": "KB금융",
+      "ticker": "105560.KS",
+      "theme": "Financials Banks",
+      "reason": "국내 최대 금융 지주 및 금리 수혜",
+      "mechanism_link": "Financials",
+      "risk": "Financials 리스크 확인 필요"
+    },
+    {
+      "name": "신한지주",
+      "ticker": "055550.KS",
+      "theme": "Financials Banks",
+      "reason": "주주 환원 및 포트폴리오 다각화",
+      "mechanism_link": "Financials",
+      "risk": "Financials 리스크 확인 필요"
     }
-  },
-  {
-    "topic_id": "7a3d8cc9-839c-4a12-9f83-786c6eb0773a",
-    "version": "is97_4_v1",
-    "speakability": "HOLD",
-    "mentionables": [],
-    "governance": {
-      "deterministic": true,
-      "no_llm": true,
-      "add_only_integrity": true,
-      "no_unbacked_stock_calls": true
-    }
-  },
-  {
-    "topic_id": "HYP-fab88b81",
-    "version": "is97_4_v1",
-    "speakability": "READY",
-    "mentionables": [],
-    "governance": {
-      "deterministic": true,
-      "no_llm": true,
-      "add_only_integrity": true,
-      "no_unbacked_stock_calls": true
-    }
+  ],
+  "governance": {
+    "deterministic": true,
+    "no_llm": true,
+    "structural_linkage": true
   }
-]
+}

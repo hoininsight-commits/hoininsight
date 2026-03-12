@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-03-11T14:09:02Z",
+    "ts_utc": "2026-03-11T17:10:00Z",
     "dataset_id": "credit_hy_spread_fred",
     "entity": "HY_SPREAD_USA",
     "anomaly_type": "Z_SCORE_MODEL_V1",
-    "severity": 30,
-    "level": "L1",
+    "severity": 60,
+    "level": "L2",
     "evidence": {
-      "z_score": 1.85,
-      "percentile": 74.0,
-      "value": 3.13,
-      "rolling_mean_20d": 2.966,
-      "reasoning": "Z-Score 1.85 >= 1.5"
+      "z_score": 2.12,
+      "percentile": 81.2,
+      "value": 3.19,
+      "rolling_mean_20d": 2.9825,
+      "reasoning": "Z-Score 2.12 >= 2.0"
     }
   }
 ]

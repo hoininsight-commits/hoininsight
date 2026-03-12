@@ -1,14 +1,14 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-11T13:41:49.914302",
+  "generated_at_kst": "2026-03-11T17:10:11.359127",
   "date": "2026-03-11",
   "blocks": {
     "regime": {
-      "current_regime": "Unknown",
-      "confidence": 0.0,
-      "has_meta_topics": false,
-      "meta_topic_count": 0,
-      "basis_type": "NONE"
+      "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
+      "confidence": 0.9,
+      "has_meta_topics": true,
+      "meta_topic_count": 1,
+      "basis_type": "STRUCTURAL_REGIME"
     },
     "revival": {
       "proposal_count": 0,
@@ -17,22 +17,40 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 0,
-      "sla_breach_count": 0,
-      "has_stale_warning": false,
-      "7d_success_rate": "N/A"
+      "system_freshness": 79.1,
+      "sla_breach_count": 9,
+      "has_stale_warning": true,
+      "7d_success_rate": "7/7"
     }
   },
-  "topic": null,
+  "topic": "[Unknown] Hybrid-driven",
   "structural_topic": null,
-  "anchor_topic": null,
+  "anchor_topic": "[Unknown] Hybrid-driven",
   "structural_rationale": null,
-  "anchor_rationale": null,
+  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
   "decision_rationale": null,
-  "key_data": {},
+  "key_data": {
+    "ANCHOR": {
+      "step1_axis": [
+        "comm_wti_fred",
+        "credit_hy_spread_fred",
+        "fx_usdkrw_ecos"
+      ],
+      "step6_gap": "Insufficient Evidence for L4",
+      "request": [
+        "Need Volume/Flow Data to verify Capital Fixation"
+      ],
+      "pre_structural": null
+    }
+  },
   "top_topics": [],
-  "status": "REJECTED",
+  "stocks": [],
+  "capital_flow_theme": "Policy Radar",
+  "capital_flow_sector": "Regulatory Impact / Finance",
+  "capital_flow_direction": "NEGATIVE",
+  "capital_flow_top_stocks": [],
+  "status": "APPROVED",
   "decision_date": "2026-03-11",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
   "title": "[Unknown] Signal Detected",

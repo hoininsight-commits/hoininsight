@@ -495,7 +495,7 @@ def main():
     # Load structural stocks from mentionables.json
     mentionables_path = base_dir / "data/decision/mentionables.json"
     mentionables_data = load_json(mentionables_path)
-    structural_stocks = mentionables_data.get("structural_stocks", []) if mentionables_data else []
+    structural_stocks = mentionables_data.get("mentionables", []) if mentionables_data else []
 
     # [STEP-19] Load Capital Flow Impact
     capital_flow_path = base_dir / "data/ops/capital_flow_impact.json"

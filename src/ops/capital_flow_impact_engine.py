@@ -157,8 +157,8 @@ class CapitalFlowImpactEngine:
         
         # Get stocks from mentionables
         relevant_stocks = []
-        if mentionables and "structural_stocks" in mentionables:
-            relevant_stocks = mentionables["structural_stocks"]
+        if mentionables and "mentionables" in mentionables:
+            relevant_stocks = mentionables["mentionables"]
         
         stock_impacts = self._analyze_stock_impacts(relevant_stocks, theme)
 
