@@ -38,15 +38,15 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ENABLE_LEARNING: "true"
         run: |
-          python -m src.narratives.youtube_watcher
-          python -m src.narratives.transcript_ingestor
-          python -m src.narratives.narrative_status
+          python -m src.ui.narratives.youtube_watcher
+          python -m src.ui.narratives.transcript_ingestor
+          python -m src.ui.narratives.narrative_status
           # [Added] Deep Logic Analysis & Proposal Generation
-          python -m src.narratives.narrative_analyzer
+          python -m src.ui.narratives.narrative_analyzer
           # [Added] Queue Indexing for Dashboard
-          python -m src.narratives.proposal_queue
+          python -m src.ui.narratives.proposal_queue
           # [Added] Update Dashboard HTML
-          python -m src.dashboard.dashboard_generator
+          python -m src.ui.dashboard.dashboard_generator
 
       - name: Commit outputs
         if: success()
