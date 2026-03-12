@@ -1,7 +1,7 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-12T17:43:06.474678",
-  "date": "2026-03-12",
+  "generated_at_kst": "2026-03-13T08:23:55.333304",
+  "date": "2026-03-13",
   "blocks": {
     "regime": {
       "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
@@ -25,35 +25,37 @@
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
+  "anchor_topic": "[Unknown] Hybrid-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=2.73 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
   "decision_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "comm_wti_fred"
+        "comm_wti_fred",
+        "crypto_btc_usd_spot_coingecko",
+        "rates_us10y_fred",
+        "rates_us02y_fred"
       ],
-      "step6_gap": "Insufficient Evidence for L3/L4",
+      "step6_gap": "Insufficient Evidence for L4",
       "request": [
-        "Need Correlated Asset Movement",
-        "Need News/Event Confirmation"
+        "Need Volume/Flow Data to verify Capital Fixation"
       ],
       "pre_structural": null
     },
-    "PRED_20260312_05": "Primary",
-    "PRED_20260312_01": "Secondary"
+    "PRED_20260313_05": "Primary",
+    "PRED_20260313_01": "Secondary"
   },
   "top_topics": [
     {
-      "id": "PRED_20260312_05",
+      "id": "PRED_20260313_05",
       "score": 83.2,
       "intensity": 0.8320000000000001,
       "title": "Policy Radar",
       "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260312_05",
+        "topic_id": "PRED_20260313_05",
         "theme": "Policy Radar",
         "prediction_score": 83.2,
         "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
@@ -73,13 +75,13 @@
       "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "id": "PRED_20260312_01",
+      "id": "PRED_20260313_01",
       "score": 71.85,
       "intensity": 0.7184999999999999,
       "title": "Macro Shock Radar",
       "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260312_01",
+        "topic_id": "PRED_20260313_01",
         "theme": "Macro Shock Radar",
         "prediction_score": 71.85,
         "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
@@ -125,6 +127,6 @@
     "신한지주"
   ],
   "status": "APPROVED",
-  "decision_date": "2026-03-12",
+  "decision_date": "2026-03-13",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
 }
