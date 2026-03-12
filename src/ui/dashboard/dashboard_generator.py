@@ -1643,7 +1643,6 @@ def generate_dashboard(base_dir: Path):
             pattern_snapshot_path = pattern_detector.detect_and_save(today_json.get("date", ymd), final_card)
             
             # Load detected patterns for next steps
-            import json
             pattern_snapshot = json.loads(pattern_snapshot_path.read_text(encoding="utf-8"))
             detected_patterns = pattern_snapshot.get("active_patterns", [])
         except Exception as e:
