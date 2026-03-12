@@ -12,6 +12,11 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
+### [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -22,12 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 호르무즈 해협 공격으로 유가 급등하며 월가 선물 하락 By Investing.com - Investing.com 한국어 (ID: unknown)
+### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체에 과징금 31억6500만원 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,12 +37,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### ‘네 마녀의 날’ 맞은 코스피…유가 4% 급등 속 향방은 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz (ID: unknown)
+### 널뛰기 장세에 사팔사팔… 단타에 빠진 개미들 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 호르무즈 해협 공격으로 유가 급등하며 월가 선물 하락 - Investing.com 한국어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,17 +72,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 현대차 9조 새만금 투자 ‘초속도 지원’…金 총리 “5월까지 종합계획 마련” - 전북일보 인터넷신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보 (ID: unknown)
+### ‘현대차 새만금 9조 투자’ 추진 본격화…5월 중 범정부 지원계획 발표 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,12 +92,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 (ID: unknown)
+### 옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 (ID: unknown)
+### 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 바이오 파트너로 韓 낙점한 일라이 릴리…삼성까지 이어지는 '릴리 효과' - 데일리안 (ID: unknown)
+### “지금이 적기, 한 방 노린다”…빚투에 ‘풀매수’ 개미들 반대매매 공포 어쩌나 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 전쟁 터졌다고 ‘안도 랠리’?…다우지수가 보여준 반전의 ‘전쟁 법칙’ - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 이녹스, 배터리 전시회 ‘인터배터리 2026’ 참가 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### HS효성 장애인 사이클 국가대표에 탄소섬유 의족 지원 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이 대통령 “결국 추경 편성해야…최대한 신속하고 치밀하게” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
