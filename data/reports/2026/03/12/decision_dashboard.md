@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 (Google_News_KR_Economy)
   - [NEWS] 국제유가 100달러 재돌파…이란 "200달러 각오하라" - 마켓인 (Google_News_KR_Economy)
-  - [NEWS] 상승세 꺾인 기름값...'전략비축유 방출' 국제공조 논의 - YTN 사이언스 (Google_News_KR_Economy)
+  - [NEWS] [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,24 +187,28 @@
 |---|---|---|
 | 미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레 | Structural implication: '미국도 비축유 1억7천만배럴 푼다…“그래도 유가 진정 안 돼” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가 100달러 재돌파…이란 "200달러 각오하라" - 마켓인 | Structural implication: '국제유가 100달러 재돌파…이란 "200달러 각오하라" - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 상승세 꺾인 기름값...'전략비축유 방출' 국제공조 논의 - YTN 사이언스 | Structural implication: '상승세 꺾인 기름값...'전략비축유 방출' 국제공조 논의 - YTN 사이언스' suggests a shift in NEWS dynamics. | LOW |
-| [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz | Structural implication: '[단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| ‘송파 0.17%↓’ 강남 3구·용산 아파트값 3주 연속 하락…강동도 하락 전환 - KBS 뉴스 | Structural implication: '‘송파 0.17%↓’ 강남 3구·용산 아파트값 3주 연속 하락…강동도 하락 전환 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문 | Structural implication: '[점선면] ⛽'일본의 8배' 한국 기름값 폭등한 이유 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 해협 공격으로 유가 급등하며 월가 선물 하락 By Investing.com - Investing.com 한국어 | Structural implication: '호르무즈 해협 공격으로 유가 급등하며 월가 선물 하락 By Investing.com - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
+| 서울 아파트값 6주째 상승률 둔화…강남 3구·용산구 3주째 하락세 - 연합인포맥스 | Structural implication: '서울 아파트값 6주째 상승률 둔화…강남 3구·용산구 3주째 하락세 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | ‘네 마녀의 날’ 맞은 코스피…유가 4% 급등 속 향방은 - 문화일보 | Structural implication: '‘네 마녀의 날’ 맞은 코스피…유가 4% 급등 속 향방은 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프, 유가급등 등 오판했나…"참모들 단기현상으로 치부" - 연합뉴스 | Structural implication: '트럼프, 유가급등 등 오판했나…"참모들 단기현상으로 치부" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz | Structural implication: '[단독] “출국 즉시 3000만원 입금”... 금융 범죄 온상 ‘하데스 카페’ 부활 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [단독] “중동 전쟁 선박보험 괜찮나”…금감원, 보험사 CFO 소집 - 매일경제 | Structural implication: '[단독] “중동 전쟁 선박보험 괜찮나”…금감원, 보험사 CFO 소집 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 김윤덕 "평수 늘린 1주택도 후회…집 보유 이익 안될 것" 보유세 인상 시사 - 뉴스1 | Structural implication: '김윤덕 "평수 늘린 1주택도 후회…집 보유 이익 안될 것" 보유세 인상 시사 - 뉴스1' suggests a shift in NEWS dynamics. | LOW |
+| 김윤덕 국토장관 "초고가·비거주 1주택자 보유세 개편도 준비" - 연합뉴스 | Structural implication: '김윤덕 국토장관 "초고가·비거주 1주택자 보유세 개편도 준비" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | '각형' K배터리 원조 삼성SDI "특허 침해 좌시 않을 것" - 지디넷코리아 | Structural implication: ''각형' K배터리 원조 삼성SDI "특허 침해 좌시 않을 것" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제 | Structural implication: '호르무즈 봉쇄 여파…유황값 급등에 비료·반도체 공급망 ‘비상’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 | Structural implication: '“회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보 | Structural implication: '옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 현대차 9조 새만금 투자 ‘초속도 지원’…金 총리 “5월까지 종합계획 마련” - 전북일보 인터넷신문 | Structural implication: '현대차 9조 새만금 투자 ‘초속도 지원’…金 총리 “5월까지 종합계획 마련” - 전북일보 인터넷신문' suggests a shift in NEWS dynamics. | LOW |
-| 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 | Structural implication: '경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보 | Structural implication: '옆에서 훔쳐보려 해도… 갤 S26 울트라 ‘검은 화면’만 보이네 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제 | Structural implication: '33조 역대급 ‘빚투’ 주의보...금감원 “리스크 관리” 강조 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| "삼성전자, 메모리 물량 내년치까지 완판…목표가 32만원"-KB - 한국경제 | Structural implication: '"삼성전자, 메모리 물량 내년치까지 완판…목표가 32만원"-KB - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레 | Structural implication: '경유값 하루 새 606원↑…‘배신’ 알뜰주유소에 계약 해지 방침 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| “회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제 | Structural implication: '“회의 가면 아이디어가 전부 똑같아요”...심지어 문체까지도 판박이라는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 대법 “한화오션 경영성과급은 임금 아냐”… 퇴직자들 최종 패소 - 조선일보 | Structural implication: '대법 “한화오션 경영성과급은 임금 아냐”… 퇴직자들 최종 패소 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 외국인, 2월 국내주식 20조원 가까이 팔아치웠다…사상 최대 - 한겨레 | Structural implication: '외국인, 2월 국내주식 20조원 가까이 팔아치웠다…사상 최대 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 바이오 파트너로 韓 낙점한 일라이 릴리…삼성까지 이어지는 '릴리 효과' - 데일리안 | Structural implication: '바이오 파트너로 韓 낙점한 일라이 릴리…삼성까지 이어지는 '릴리 효과' - 데일리안' suggests a shift in NEWS dynamics. | LOW |
 | 전쟁 터졌다고 ‘안도 랠리’?…다우지수가 보여준 반전의 ‘전쟁 법칙’ - 매일경제 | Structural implication: '전쟁 터졌다고 ‘안도 랠리’?…다우지수가 보여준 반전의 ‘전쟁 법칙’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 이녹스, 배터리 전시회 ‘인터배터리 2026’ 참가 | Structural implication: '이녹스, 배터리 전시회 ‘인터배터리 2026’ 참가' suggests a shift in NEWS dynamics. | LOW |
+| [속보] ‘대미투자특별법’ 여야 합의로 국회 본회의 통과 | Structural implication: '[속보] ‘대미투자특별법’ 여야 합의로 국회 본회의 통과' suggests a shift in NEWS dynamics. | LOW |
+| ‘11억원 불법대출’ 양문석 민주당 의원 당선무효...“재판소원 할 것” | Structural implication: '‘11억원 불법대출’ 양문석 민주당 의원 당선무효...“재판소원 할 것”' suggests a shift in NEWS dynamics. | LOW |
+| “미래라는 게 늘 불안”…택시 기사 이어 ‘싱글맘’ 정가은이 택한 직업 | Structural implication: '“미래라는 게 늘 불안”…택시 기사 이어 ‘싱글맘’ 정가은이 택한 직업' suggests a shift in NEWS dynamics. | LOW |
 | 장동혁 ‘윤리위 징계 논의 중단’ 밝혔는데…‘절윤’ 후속조치 시작 or 끝? | Structural implication: '장동혁 ‘윤리위 징계 논의 중단’ 밝혔는데…‘절윤’ 후속조치 시작 or 끝?' suggests a shift in NEWS dynamics. | LOW |
 | “어제 잠 잘 못자서…” 10명 중 7명은 주1회 이상 불편함 겪어 | Structural implication: '“어제 잠 잘 못자서…” 10명 중 7명은 주1회 이상 불편함 겪어' suggests a shift in NEWS dynamics. | LOW |
 | “숙원사업 예타 통과됐다”…5호선 연장에 화색 도는 김포 아파트 단지들 | Structural implication: '“숙원사업 예타 통과됐다”…5호선 연장에 화색 도는 김포 아파트 단지들' suggests a shift in NEWS dynamics. | LOW |
@@ -221,10 +225,6 @@
 | 박병무 엔씨 대표 “2030년 매출 5조원 달성”…모바일 캐주얼로 성장 가속 | Structural implication: '박병무 엔씨 대표 “2030년 매출 5조원 달성”…모바일 캐주얼로 성장 가속' suggests a shift in NEWS dynamics. | LOW |
 | HS효성 장애인 사이클 국가대표에 탄소섬유 의족 지원 | Structural implication: 'HS효성 장애인 사이클 국가대표에 탄소섬유 의족 지원' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “결국 추경 편성해야…최대한 신속하고 치밀하게” | Structural implication: '이 대통령 “결국 추경 편성해야…최대한 신속하고 치밀하게”' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 경찰 “조희대 대법원장 ‘법왜곡죄’ 고발 용인서부서가 수사” | Structural implication: '[속보] 경찰 “조희대 대법원장 ‘법왜곡죄’ 고발 용인서부서가 수사”' suggests a shift in NEWS dynamics. | LOW |
-| 고려대, 올해 19만명에 ‘천원의 아침밥’ 제공…전국 대학 최대 규모 | Structural implication: '고려대, 올해 19만명에 ‘천원의 아침밥’ 제공…전국 대학 최대 규모' suggests a shift in NEWS dynamics. | LOW |
-| “완전 아이돌이다!” 장항준 커피 200잔 돌리자 도심 북새통 | Structural implication: '“완전 아이돌이다!” 장항준 커피 200잔 돌리자 도심 북새통' suggests a shift in NEWS dynamics. | LOW |
-| “일상 속 일탈”…라이프스타일 ‘택플로우’, 용산 아이파크몰에 첫 팝업스토어 열어 | Structural implication: '“일상 속 일탈”…라이프스타일 ‘택플로우’, 용산 아이파크몰에 첫 팝업스토어 열어' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
