@@ -24,6 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Initialize Docs Structure
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
+          echo "Placeholder for GitHub Pages" > docs/index.html
+          ls -la docs/.nojekyll
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -467,7 +474,7 @@ jobs:
           git add docs/ data/ || true
           
           if [ -n "$(git status --porcelain docs/ data/)" ]; then
-            git commit -m "chore: save intelligence artifacts and docs [automated]" || true
+            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
             git push origin main
           else
             echo "No intelligence changes to commit"
@@ -481,9 +488,6 @@ jobs:
           y=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."
 
-      - name: Create .nojekyll for GitHub Pages
-        if: success()
-        run: touch docs/.nojekyll
 
       - name: Upload Pages Artifact
         if: success()
