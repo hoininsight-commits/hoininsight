@@ -9,7 +9,7 @@ def fetch_json(url):
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    req = urllib.request.Request(f"{url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
     try:
         with urllib.request.urlopen(req, context=ctx, timeout=10) as response:
             if response.getcode() != 200: return None
@@ -95,7 +95,7 @@ def main():
             if len(o_data.get("priority_topics", [])) < 1: valid = False; print("❌ priority_topics empty")
 
         b_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/investment_os_brief.md"
-        req_b = urllib.request.Request(b_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req_b = urllib.request.Request(f"{b_url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
         try:
             with urllib.request.urlopen(req_b, context=ctx, timeout=10) as resp_b:
                 if resp_b.getcode() == 200: print("✅ OS brief (markdown) found")
@@ -111,7 +111,7 @@ def main():
             if not ca_data.get("framework", {}).get("core_bucket"): valid = False; print("❌ core_bucket missing")
 
         cab_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/capital_allocation_brief.md"
-        req_cab = urllib.request.Request(cab_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req_cab = urllib.request.Request(f"{cab_url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
         try:
             with urllib.request.urlopen(req_cab, context=ctx, timeout=10) as resp_cab:
                 if resp_cab.getcode() == 200: print("✅ Capital Allocation brief (markdown) found")
@@ -127,7 +127,7 @@ def main():
             if not tm_data.get("timing_gear", {}).get("label"): valid = False; print("❌ timing label missing")
 
         tmb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/timing_brief.md"
-        req_tmb = urllib.request.Request(tmb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req_tmb = urllib.request.Request(f"{tmb_url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
         try:
             with urllib.request.urlopen(req_tmb, context=ctx, timeout=10) as resp_tmb:
                 if resp_tmb.getcode() == 200: print("✅ Timing brief (markdown) found")
@@ -143,7 +143,7 @@ def main():
             if not pc_data.get("scenario_tree", {}).get("primary_path"): valid = False; print("❌ primary_path missing")
 
         pcb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/probability_compression_brief.md"
-        req_pcb = urllib.request.Request(pcb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req_pcb = urllib.request.Request(f"{pcb_url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
         try:
             with urllib.request.urlopen(req_pcb, context=ctx, timeout=10) as resp_pcb:
                 if resp_pcb.getcode() == 200: print("✅ Probability Compression brief (markdown) found")
@@ -159,7 +159,7 @@ def main():
             if not mv_data.get("interpretation", {}).get("one_liner"): valid = False; print("❌ one_liner missing")
 
         mvb_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/meta_volatility_brief.md"
-        req_mvb = urllib.request.Request(mvb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        req_mvb = urllib.request.Request(f"{mvb_url}?v={int(time.time())}", headers={'User-Agent': 'Mozilla/5.0'})
         try:
             with urllib.request.urlopen(req_mvb, context=ctx, timeout=10) as resp_mvb:
                 if resp_mvb.getcode() == 200: print("✅ Meta-Volatility brief (markdown) found")
