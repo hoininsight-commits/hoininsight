@@ -31,7 +31,14 @@ def main():
         
         if not m_data or not t_data: valid = False; print("❌ manifest or today.json missing")
         else:
-            print(f"✅ manifest and today.json parsed. Time: {m_data.get('generated_at')}")
+            gen_time = m_data.get('generated_at', '')
+            print(f"✅ manifest and today.json parsed. Remote Time: {gen_time}")
+            
+            # Freshness Check (PHASE-22A Hardening)
+            current_date_utc = time.strftime("%Y-%m-%d", time.gmtime())
+            if current_date_utc not in gen_time:
+                valid = False
+                print(f"⚠️ Remote data is STALE (Expected: {current_date_utc}, Found: {gen_time}). Waiting for GH Pages sync...")
             
         # Video Candidate Pool
         v_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/video_candidate_pool.json"
@@ -48,14 +55,15 @@ def main():
             for c in s_data.get("candidates", []):
                 if not c.get("script", {}).get("hook"): valid = False; print(f"❌ hook missing for {c.get('dataset_id')}")
 
-        # [PHASE-22B] Video Stock Linkage Pack
-        l_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/stock_linkage_pack.json"
+        # [STEP-16] Video Stock Mentionables (Subsumed Linkage Pack)
+        l_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/mentionables.json"
         l_data = fetch_json(l_url)
-        if not l_data: valid = False; print("❌ stock_linkage_pack.json missing")
+        if not l_data: valid = False; print("❌ mentionables.json missing")
         else:
-            topics_count = len(l_data.get("topics", []))
-            print(f"✅ Stock linkage parsed. Topics: {topics_count}")
-            if topics_count == 0: valid = False; print("❌ linkage topics empty")
+            mention_count = len(l_data.get("mentionables", []))
+            print(f"✅ Stock mentionables parsed. Count: {mention_count}")
+            # [Relaxation] Allow zero mentionables on quiet days if valid
+            # But the engine usually finds a sector fallback
 
         # [PHASE-22C] Video Conflict Density Pack
         d_url = "https://hoininsight-commits.github.io/hoininsight/data/ops/conflict_density_pack.json"

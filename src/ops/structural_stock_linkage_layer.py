@@ -78,7 +78,9 @@ class StructuralStockLinkageLayer:
         self.logger.info(f"Running Structural Stock Linkage for {self.ymd_dash}...")
         
         # 1. Load Inputs
-        pool_path = self.base_dir / "data_outputs/ops/video_candidate_pool.json"
+        pool_path = self.base_dir / "data/ops/video_candidate_pool.json"
+        if not pool_path.exists():
+            pool_path = self.base_dir / "data_outputs/ops/video_candidate_pool.json"
         pool_data = self._load_json(pool_path)
         candidates = pool_data.get("top_candidates", [])
 
@@ -108,7 +110,7 @@ class StructuralStockLinkageLayer:
             "topics": linked_topics
         }
 
-        out_path = self.base_dir / "data_outputs/ops/stock_linkage_pack.json"
+        out_path = self.base_dir / "data/ops/stock_linkage_pack.json"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(json.dumps(pack, indent=2, ensure_ascii=False), encoding='utf-8')
         
