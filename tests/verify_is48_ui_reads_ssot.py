@@ -11,7 +11,7 @@ def verify_is48_ui_reads_ssot():
     base_dir = Path(".")
     
     # 1. Check loader logic (loader.py)
-    loader_path = base_dir / "src/issuesignal/dashboard/loader.py"
+    loader_path = base_dir / "src.ops.issuesignal/dashboard/loader.py"
     if loader_path.exists():
         content = loader_path.read_text(encoding="utf-8")
         if "latest_index.json" in content:
@@ -21,7 +21,7 @@ def verify_is48_ui_reads_ssot():
             return False
     
     # 2. Check renderer logic for Korean labels
-    renderer_path = base_dir / "src/issuesignal/dashboard/renderer.py"
+    renderer_path = base_dir / "src.ops.issuesignal/dashboard/renderer.py"
     if renderer_path.exists():
         content = renderer_path.read_text(encoding="utf-8")
         if "오늘의 확정 인텔리전스" in content and "사전 트리거 감시망" in content:

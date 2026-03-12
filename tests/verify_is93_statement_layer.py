@@ -6,7 +6,7 @@ from pathlib import Path
 def run_pipeline():
     print("Running Pipeline...")
     result = subprocess.run(
-        [sys.executable, "src/issuesignal/run_issuesignal.py"],
+        [sys.executable, "src.ops.issuesignal/run_issuesignal.py"],
         capture_output=True,
         text=True
     )

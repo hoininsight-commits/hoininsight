@@ -6,8 +6,8 @@ from pathlib import Path
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.proof_pack import ProofPackEngine
-from src.issuesignal.dashboard.models import DecisionCard
+from src.ops.issuesignal.proof_pack import ProofPackEngine
+from src.ops.issuesignal.dashboard.models import DecisionCard
 
 def verify_is30():
     base_dir = Path(".")

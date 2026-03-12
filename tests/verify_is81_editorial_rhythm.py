@@ -24,7 +24,7 @@ def verify_is81_final():
         # For simplicity, we assume pool is empty or we run in a way that forces it.
         env = os.environ.copy()
         env["HOIN_SKIP_CONNECTORS"] = "true"
-        result = subprocess.run(["python3", "src/issuesignal/run_issuesignal.py"], 
+        result = subprocess.run(["python3", "src.ops.issuesignal/run_issuesignal.py"], 
                                 capture_output=True, text=True, cwd=base_dir, env=env)
         if result.returncode != 0:
             print("Pipeline failed!")

@@ -5,8 +5,8 @@ import shutil
 from pathlib import Path
 from datetime import datetime
 import dataclasses
-from src.issuesignal.dashboard.models import DecisionCard
-from src.issuesignal.script_lock_engine import ScriptLockEngine
+from src.ops.issuesignal.dashboard.models import DecisionCard
+from src.ops.issuesignal.script_lock_engine import ScriptLockEngine
 # Mock imports if needed, but we can verify by checking output existence
 # or importing the module functions if possible. 
 # Better to run a subprocess of run_issuesignal.py with controlled data

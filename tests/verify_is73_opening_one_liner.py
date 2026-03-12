@@ -6,7 +6,7 @@ from pathlib import Path
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.opening_one_liner import synthesize_opening_one_liner
+from src.ops.issuesignal.opening_one_liner import synthesize_opening_one_liner
 
 class TestOpeningOneLiner(unittest.TestCase):
     

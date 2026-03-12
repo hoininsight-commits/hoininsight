@@ -6,8 +6,8 @@ from pathlib import Path
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.quote_proof import QuoteProofEngine
-from src.issuesignal.dashboard.models import DecisionCard, TriggerQuote
+from src.ops.issuesignal.quote_proof import QuoteProofEngine
+from src.ops.issuesignal.dashboard.models import DecisionCard, TriggerQuote
 
 def verify_is31():
     base_dir = Path(".")

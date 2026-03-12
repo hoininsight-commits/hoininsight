@@ -21,7 +21,7 @@ def main():
     
     # 1. Run IssueSignal (Watchlist -> Promoted -> Tone Applied)
     print("1. Running run_issuesignal...")
-    run_command("python3 -m src.issuesignal.run_issuesignal")
+    run_command("python3 -m src.ops.issuesignal.run_issuesignal")
     
     # 2. Verify Promoted JSON has Tone/Mode
     ymd = datetime.utcnow().strftime("%Y-%m-%d")

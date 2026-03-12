@@ -1,6 +1,6 @@
 import unittest
-from src.issuesignal.misinterpretation_engine import MisinterpretationEngine
-from src.issuesignal.defense_generator import DefenseGenerator
+from src.ops.issuesignal.misinterpretation_engine import MisinterpretationEngine
+from src.ops.issuesignal.defense_generator import DefenseGenerator
 
 class TestIS42Misinterpretation(unittest.TestCase):
     def setUp(self):

@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.issuesignal.dashboard.loader import DashboardLoader
+from src.ops.issuesignal.dashboard.loader import DashboardLoader
 
 
 def test_loader_loads_issue_files():

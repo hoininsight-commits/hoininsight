@@ -10,7 +10,7 @@ def verify_is48_no_topic_reasons():
     base_dir = Path(".")
     
     # Mock index with 0 topics
-    from src.issuesignal.index_generator import IssueSignalIndexGenerator
+    from src.ops.issuesignal.index_generator import IssueSignalIndexGenerator
     gen = IssueSignalIndexGenerator(base_dir)
     gen.generate([
         {"topic_id": "REF_001", "status": "HOLD", "reason_code": "QUOTE_MISSING"},
@@ -18,8 +18,8 @@ def verify_is48_no_topic_reasons():
     ])
     
     # Run renderer (simulated)
-    from src.issuesignal.dashboard.loader import DashboardLoader
-    from src.issuesignal.dashboard.renderer import DashboardRenderer
+    from src.ops.issuesignal.dashboard.loader import DashboardLoader
+    from src.ops.issuesignal.dashboard.renderer import DashboardRenderer
     
     loader = DashboardLoader(base_dir)
     summary = loader.load_today_summary("2026-01-30")

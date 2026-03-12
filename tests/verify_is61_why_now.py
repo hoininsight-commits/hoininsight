@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.why_now_synthesizer import WhyNowSynthesizer
+from src.ops.issuesignal.why_now_synthesizer import WhyNowSynthesizer
 
 class TestIS61WhyNow(unittest.TestCase):
     

@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.teaser_engine import NextSignalTeaserEngine
+from src.ops.issuesignal.teaser_engine import NextSignalTeaserEngine
 
 class TestIS40TeaserEngine(unittest.TestCase):
     def setUp(self):

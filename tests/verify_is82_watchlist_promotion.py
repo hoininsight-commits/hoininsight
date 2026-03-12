@@ -21,7 +21,7 @@ def main():
     
     # 1. Run IssueSignal (Generates Watchlist -> Promotes to Candidates)
     print("1. Running run_issuesignal...")
-    run_command("python3 -m src.issuesignal.run_issuesignal")
+    run_command("python3 -m src.ops.issuesignal.run_issuesignal")
     
     # 2. Verify Promoted JSON
     ymd = datetime.utcnow().strftime("%Y-%m-%d")

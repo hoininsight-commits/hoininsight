@@ -1,4 +1,4 @@
-from src.issuesignal.actor_bridge import ActorBridgeEngine
+from src.ops.issuesignal.actor_bridge import ActorBridgeEngine
 
 def test_actor_bridge_logic():
     macro_facts = [

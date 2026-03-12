@@ -4,7 +4,7 @@ from pathlib import Path
 # Add root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.trap_engine import TrapEngine
+from src.ops.issuesignal.trap_engine import TrapEngine
 
 def main():
     base_dir = Path(".")

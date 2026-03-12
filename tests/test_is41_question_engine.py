@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.question_engine import AudienceQuestionEngine
+from src.ops.issuesignal.question_engine import AudienceQuestionEngine
 
 class TestIS41QuestionEngine(unittest.TestCase):
     def setUp(self):

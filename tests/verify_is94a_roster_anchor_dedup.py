@@ -6,11 +6,11 @@ from datetime import datetime, timedelta
 # Add project root to sys.path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.roster.statement_roster_manager import StatementRosterManager
+from src.ops.issuesignal.roster.statement_roster_manager import StatementRosterManager
 from src.collectors.statement_primary_anchor_resolver import StatementPrimaryAnchorResolver
-from src.issuesignal.engines.statement_dedup_engine import StatementDedupEngine
-from src.issuesignal.dashboard.renderer import DashboardRenderer
-from src.issuesignal.dashboard.models import DashboardSummary, DecisionCard, TriggerQuote
+from src.ops.issuesignal.engines.statement_dedup_engine import StatementDedupEngine
+from src.ops.issuesignal.dashboard.renderer import DashboardRenderer
+from src.ops.issuesignal.dashboard.models import DashboardSummary, DecisionCard, TriggerQuote
 
 def verify_is94a():
     base_dir = Path(__file__).parent.parent

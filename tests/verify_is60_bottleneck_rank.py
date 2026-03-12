@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.bottleneck_ranker import BottleneckRanker
+from src.ops.issuesignal.bottleneck_ranker import BottleneckRanker
 
 class TestIS60BottleneckRanker(unittest.TestCase):
     

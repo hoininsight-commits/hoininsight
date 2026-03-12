@@ -3,9 +3,9 @@ import os
 import shutil
 from pathlib import Path
 from datetime import datetime, timedelta
-from src.issuesignal.structural_bridge import StructuralBridge
-from src.issuesignal.editorial_light_engine import EditorialLightEngine
-from src.issuesignal.script_lock_engine import ScriptLockEngine
+from src.ops.issuesignal.structural_bridge import StructuralBridge
+from src.ops.issuesignal.editorial_light_engine import EditorialLightEngine
+from src.ops.issuesignal.script_lock_engine import ScriptLockEngine
 
 def test_structural_bridge_full_cycle():
     base_dir = Path("./test_env")

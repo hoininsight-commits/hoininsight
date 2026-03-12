@@ -5,7 +5,7 @@ import json
 # Add root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.trust_lock import TrustLockEngine
+from src.ops.issuesignal.trust_lock import TrustLockEngine
 
 def main():
     base_dir = Path(".")
