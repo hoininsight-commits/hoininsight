@@ -44,7 +44,12 @@ def main():
         "src/ui/valuation_reset_detector.py",
         "src/ui/policy_capital_script_exporter.py",
         "src/ui/policy_capital_transmission.py",
-        "src/ui/expectation_gap_exporter.py"
+        "src/ui/expectation_gap_exporter.py",
+        "src/ui/dashboard/dashboard_generator.py",
+        "src/ui/dashboard/topic_exporter.py",
+        "src/ui/narratives/run_prioritization.py",
+        "src/ui/narratives/revival_scanner.py",
+        "src/ui/ui_logic/guards/legacy_hard_gate.py"
     ]
     
     all_passed = True
