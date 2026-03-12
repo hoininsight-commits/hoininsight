@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-03-12T14:51:54Z`
+- ts_utc: `2026-03-12T14:55:25Z`
 - ymd_utc: `2026/03/12`
 - enabled_datasets: `32`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 522 | 2026-01-15T07:32:29Z | 2026-03-12T14:51:08Z | 24 | 107 | 2 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/03/12/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 523 | 2026-01-15T07:32:29Z | 2026-03-12T14:54:30Z | 25 | 108 | 2 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/03/12/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | OK | 949 | 1947-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 2 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/03/12/charts/inflation_cpi_fred.png) |
 | ETHUSD | crypto_eth_usd_spot_coingecko | OK | 43 | 2026-01-15T00:00:00Z | 2026-03-12T00:00:00Z | 7 | 22 | 4 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/03/12/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | OK | 860 | 1954-07-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 5 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/03/12/charts/rates_fed_funds_fred.png) |
