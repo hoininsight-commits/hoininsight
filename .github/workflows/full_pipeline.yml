@@ -512,6 +512,6 @@ jobs:
           python-version: "3.11"
       - name: Remote Deploy Verification (Post-Deploy Data Integrity Check)
         run: |
-          echo "Waiting for GitHub Pages deployment cache flush... (10s)"
-          sleep 10
+          echo "Waiting for GitHub Pages deployment cache flush... (120s)"
+          sleep 120
           python3 scripts/verify_remote_pages_contract.py
