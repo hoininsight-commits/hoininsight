@@ -27,7 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 전쟁에 널뛰는 환율... 장중 1490원대 - 조선일보 (ID: unknown)
+### [속보] 환율 9.4원 오른 1490.6원에 개장 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,7 +37,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제 (ID: unknown)
+### “내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - v.daum.net (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,7 +52,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 거세지는 美·이란 전쟁 후폭풍…삼전닉스 주가에 쏠린 눈 [빅데이터로 본 재테크] - 매일경제 (ID: unknown)
+### LG화학·롯데케미칼 이어 한화솔루션도…“불가항력 가능성” [중동 리스크, 산업 도미노] - 이투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,17 +77,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 강남 3구 아파트 가격 더 하락…서울 외곽·비규제지역은 상승 - 채널A (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 삼성SDI, “전고체 배터리, 휴머노이드 '게임체인저' 될 것” - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "삼성전자, 메모리 가격 상승·주주환원 기대…목표가 30만원"-하나 - 한국경제 (ID: unknown)
+### 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +107,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 (ID: unknown)
+### 거세지는 美·이란 전쟁 후폭풍…삼전닉스 주가에 쏠린 눈 [빅데이터로 본 재테크] - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제 (ID: unknown)
+### [Tour List] “이제부터 봄!” 바다로 떠나는 3월 봄 여행 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 해양경찰청, 중동 사태에 해상 석유 불법 유통 특별 단속 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 작은 창업만 늘었다…2024년 소상공인실태조사 발표 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 서울 핵심 ‘강남·용산’, 신규 분양 단지는 어디 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
