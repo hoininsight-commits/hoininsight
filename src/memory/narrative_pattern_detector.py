@@ -54,11 +54,39 @@ class NarrativePatternDetector:
         recent_counts = Counter(recent_titles)
         emerging_topics = [{"title": t, "count": c} for t, c in recent_counts.most_common(5)]
 
+        # 4. Theme Analysis (Ontology Layer)
+        themes = [h.get("theme") for h in history if h.get("theme")]
+        theme_counts = Counter(themes)
+        top_themes = [{"theme": t, "count": c} for t, c in theme_counts.most_common(10)]
+
+        theme_interval_map = {}
+        for h in history:
+            th = h.get("theme")
+            if not th: continue
+            d = datetime.strptime(h["date"], "%Y-%m-%d")
+            if th not in theme_interval_map: theme_interval_map[th] = []
+            theme_interval_map[th].append(d)
+
+        theme_patterns = []
+        for theme, dates in theme_interval_map.items():
+            if len(dates) < 2: continue
+            dates.sort()
+            intervals = [(dates[i] - dates[i-1]).days for i in range(1, len(dates))]
+            avg_interval = sum(intervals) / len(intervals)
+            theme_patterns.append({
+                "theme": theme,
+                "count": len(dates),
+                "avg_interval_days": round(avg_interval, 1),
+                "last_seen": dates[-1].strftime("%Y-%m-%d")
+            })
+
         patterns = {
             "last_updated": datetime.now().isoformat(),
             "frequent_topics": frequent_topics,
             "recurring_patterns": recurring_patterns,
             "emerging_topics": emerging_topics,
+            "top_themes": top_themes,
+            "theme_patterns": theme_patterns,
             "total_records": len(history)
         }
 

@@ -49,6 +49,10 @@ async function handleRoute() {
                 const { initMemoryView } = await import('./operator_memory.js?v=' + Date.now());
                 await initMemoryView(app);
                 break;
+            case '#ontology':
+                const { initOntologyView } = await import('./operator_ontology.js?v=' + Date.now());
+                await initOntologyView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

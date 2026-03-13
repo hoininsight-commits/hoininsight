@@ -285,31 +285,36 @@ def _publish_ops_assets():
         "usage_audit.json",
         "../memory/narrative_patterns.json",
         "../decision/predicted_narratives.json",
-        "../decision/mentionables.json"
+        "../decision/mentionables.json",
+        "../ontology/topic_resolved.json",
+        "../ontology/topic_ontology.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
     for filename in files_to_publish:
-        # Handle relative paths for memory/decision
+        # Handle relative paths for memory/decision/ontology
         if filename.startswith("../"):
             source_dir = DATA_OPS.parent
             src = (source_dir / filename.replace("../", "")).resolve()
-            # If it's memory, we might want it in its own docs folder or just docs/data/ops
             target_name = src.name
+            
             if "memory" in filename:
                 target_dir = ROOT / "docs" / "data" / "memory"
-                target_dir.mkdir(parents=True, exist_ok=True)
-                dest = target_dir / target_name
+            elif "ontology" in filename:
+                target_dir = ROOT / "docs" / "data" / "ontology"
             else:
-                dest = dest_dir / target_name
+                target_dir = dest_dir # default to ops if not specified
+            
+            target_dir.mkdir(parents=True, exist_ok=True)
+            dest = target_dir / target_name
         else:
             src = DATA_OPS / filename
             dest = dest_dir / filename
 
         if src.exists():
             shutil.copy2(src, dest)
-            # Sync to legacy mirror only if not memory
-            if "memory" not in filename:
+            # Sync to legacy mirror only if not memory/ontology
+            if "memory" not in filename and "ontology" not in filename:
                 DATA_OUTPUTS_OPS.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, DATA_OUTPUTS_OPS / (src.name))
             print(f"✅ [OK] {filename}")
