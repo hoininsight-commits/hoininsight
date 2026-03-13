@@ -1,4 +1,4 @@
-# Structural Meta-Volatility Brief (2026-03-12)
+# Structural Meta-Volatility Brief (2026-03-13)
 
 ## Meta-Volatility State
 - **Mode**: EXPANSION
