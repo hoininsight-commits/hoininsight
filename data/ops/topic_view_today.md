@@ -22,22 +22,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 전쟁에 널뛰는 환율... 장중 1490원대 - 조선일보 (ID: unknown)
+### 국제유가 다시 들썩이자...달러 대비 원화 환율 또 1500원대 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 군산조선소 9년 만에 ‘신조’ 복귀 길 열렸다···HD현대중공업·에코프라임 양수도 합의 - 경향신문 (ID: unknown)
+### HD현대중공업, 군산조선소 HJ중공업 측에 매각한다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국토부 장관 “보유세 인상 추진…장기보유자 세제 혜택도 손질” - v.daum.net (ID: unknown)
+### “소속, 이름 적고 나가라”는 출입절차 반발한 현대차노조.... 사무실 점거하고 기물 파손 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 무단외출 막았다고…임원실 때려 부순 현대차노조 - 한국경제 (ID: unknown)
+### 유가 급등에…코스피, 3%대 급락 출발 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독] 선진국 수준 보유세 올리겠다는 李정부 … 정작 해외선 역효과 경고 - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,32 +52,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레 (ID: unknown)
+### “아침 밥으로 먹고 운동하고 먹고, 계란 없으면 안되는데”…또 한판에 7천원 껑충 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "버틸 수 있는 건 딱 20일" 무서운 경고…진짜 공포 덮친다 - 한국경제 (ID: unknown)
+### 대법 “경영성과급은 임금 아냐…한화오션 퇴직금 반영 불필요” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대법 "한화오션 경영성과급은 임금 아냐"…퇴직자들 패소 확정 - 연합뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 이재용-최주선, 유럽 출장 후 귀국…삼성SDI 신규 수주 '주목' - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [속보] 미, 강제노동 생산 수입품 관련 301조 조사…한국 등 60개국 - 연합뉴스TV (ID: unknown)
+### [속보] 경찰 여객기참사 특별수사단, 국토교통부 압수수색 - 연합뉴스TV (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### "한국서도 故 제인 구달 박사 나올 수 있게…고유 브랜드 'K-사이언스' 추진" - 동아사이언스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이재용-최주선, 유럽 출장 후 귀국…삼성SDI 신규 수주 '주목' - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,6 +97,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 삼성SDI, “전고체 배터리, 휴머노이드 '게임체인저' 될 것” - 전자신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 日 혼다 69년만 첫 연간 적자... 전기차 전략 실패 탓 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -107,12 +112,32 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성SDI, “전고체 배터리, 휴머노이드 '게임체인저' 될 것” - 전자신문 (ID: unknown)
+### 부산 주택가에 알약 공장?…집에서 마약 제조한 30대 외국인 구속 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보]두바이 국제금융센터 피격…한국 금융사 입주 (ID: unknown)
+### 인신매매로 헤어졌던 남매, 이 기술 덕분에 30년만에 재회? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “피지컬 AI는 안양에서”…안양시, 제1회 신성장전략 포럼 성황리 개최 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전통 금융과 가상자산의 대통합...실생활 결제 시대 온다[엠블록레터] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 신호철 카카오페이증권 대표 연임 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 두바이 국제금융센터 피격…한국 금융사 입주 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -183,31 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 코오롱글로텍 생활소재 부분 '선택과 집중' 위해 매각 추진 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 특별퇴직금 철회하고 배당재원 늘리고 … 기업 주주환원 확대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 기업 vs 행동주의 펀드 '표 전쟁' … 소액주주 잡기 총력 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 제주반도체, 450억 원 규모 전환사채 발행 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 코스모신소재, 350억원 규모 유상증자 실시 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 에이직랜드, 450억 원 규모 전환사채 발행 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
