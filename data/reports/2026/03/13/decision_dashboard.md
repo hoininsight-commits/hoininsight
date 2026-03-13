@@ -190,41 +190,41 @@
 | [속보]코스피 3% 급락 출발 “전형적 거품현상…금보다 극단적” - 문화일보 | Structural implication: '[속보]코스피 3% 급락 출발 “전형적 거품현상…금보다 극단적” - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 중동 전쟁에 널뛰는 환율... 장중 1490원대 - 조선일보 | Structural implication: '중동 전쟁에 널뛰는 환율... 장중 1490원대 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | '절묘한 딜' 돼버린 팬오션의 1조 원유운반선 사업부 인수 - 인베스트조선 | Structural implication: ''절묘한 딜' 돼버린 팬오션의 1조 원유운반선 사업부 인수 - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
-| 진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제 | Structural implication: '진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "원전·조선·방산주 긍정적...변동성 대비 현금 비중 늘려야" - 네이버 프리미엄콘텐츠 | Structural implication: '"원전·조선·방산주 긍정적...변동성 대비 현금 비중 늘려야" - 네이버 프리미엄콘텐츠' suggests a shift in NEWS dynamics. | LOW |
+| 결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보 | Structural implication: '결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - 매일경제 | Structural implication: '“내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 미, 강제노동 생산 수입품 관련 301조 조사…한국 등 60개국 - 연합뉴스TV | Structural implication: '[속보] 미, 강제노동 생산 수입품 관련 301조 조사…한국 등 60개국 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | 호르무즈 봉쇄 장기화 조짐에…주가 20% 넘게 급등한 종목 [종목+] - 한국경제 | Structural implication: '호르무즈 봉쇄 장기화 조짐에…주가 20% 넘게 급등한 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스 | Structural implication: '과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz | Structural implication: '한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 대법 “경영성과급은 임금 아냐…한화오션 퇴직금 반영 불필요” - 한겨레 | Structural implication: '대법 “경영성과급은 임금 아냐…한화오션 퇴직금 반영 불필요” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 석유화학 업계, 중동발 리스크에 '공급 불가항력' 확산 - 아이뉴스24 | Structural implication: '석유화학 업계, 중동발 리스크에 '공급 불가항력' 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | 삼성SDI, “전고체 배터리, 휴머노이드 '게임체인저' 될 것” - 전자신문 | Structural implication: '삼성SDI, “전고체 배터리, 휴머노이드 '게임체인저' 될 것” - 전자신문' suggests a shift in NEWS dynamics. | LOW |
-| 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 | Structural implication: '골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
+| "삼성전자, 메모리 가격 상승·주주환원 기대…목표가 30만원"-하나 - 한국경제 | Structural implication: '"삼성전자, 메모리 가격 상승·주주환원 기대…목표가 30만원"-하나 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 | Structural implication: '설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스 | Structural implication: '트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 | Structural implication: '이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 | Structural implication: '[단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제 | Structural implication: '미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
-| 국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보 | Structural implication: '국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 | Structural implication: '[단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스 | Structural implication: '트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 넷마블문화재단, ‘2026 게임탐험대’ 참가자 모집 | Structural implication: '넷마블문화재단, ‘2026 게임탐험대’ 참가자 모집' suggests a shift in NEWS dynamics. | LOW |
+| 한투그룹, MS와 창업 기업 성장 지원 | Structural implication: '한투그룹, MS와 창업 기업 성장 지원' suggests a shift in NEWS dynamics. | LOW |
+| 네덜란드 최대 자산운용사 로베코 “한국 증시 급락 단기적…우량주 투자 기회” | Structural implication: '네덜란드 최대 자산운용사 로베코 “한국 증시 급락 단기적…우량주 투자 기회”' suggests a shift in NEWS dynamics. | LOW |
+| “13.5초에 만나는 하늘”…페라리, V8 오픈톱 ‘아말피 스파이더’ 출시 | Structural implication: '“13.5초에 만나는 하늘”…페라리, V8 오픈톱 ‘아말피 스파이더’ 출시' suggests a shift in NEWS dynamics. | LOW |
+| 넥슨, ‘FC 온라인’ 국내 최상위 리그 ‘2026 FSL 스프링’ 결승전 22일 개최 | Structural implication: '넥슨, ‘FC 온라인’ 국내 최상위 리그 ‘2026 FSL 스프링’ 결승전 22일 개최' suggests a shift in NEWS dynamics. | LOW |
+| 아카데미 후보 ‘케데헌’, 속편 제작도 확정 | Structural implication: '아카데미 후보 ‘케데헌’, 속편 제작도 확정' suggests a shift in NEWS dynamics. | LOW |
+| 올해 광주비엔날레 주제는 변화와 실천…박찬경·권병준 신작 참여 | Structural implication: '올해 광주비엔날레 주제는 변화와 실천…박찬경·권병준 신작 참여' suggests a shift in NEWS dynamics. | LOW |
+| 이재명 대통령, 내달 인도네시아·프랑스와 연쇄 정상회담 | Structural implication: '이재명 대통령, 내달 인도네시아·프랑스와 연쇄 정상회담' suggests a shift in NEWS dynamics. | LOW |
+| 이랜드가 30년 넘게 수집해온 ‘이것’…럭셔리 리조트에서 이번에 공개합니다 | Structural implication: '이랜드가 30년 넘게 수집해온 ‘이것’…럭셔리 리조트에서 이번에 공개합니다' suggests a shift in NEWS dynamics. | LOW |
+| 민주 윤준병 ‘추경 편성 의무화법’ 발의…“국회 예산 심의확정권 형해화 방지” | Structural implication: '민주 윤준병 ‘추경 편성 의무화법’ 발의…“국회 예산 심의확정권 형해화 방지”' suggests a shift in NEWS dynamics. | LOW |
+| 울산형 광역비자 일자리 잠식 논란…해당 비자 외국인은 4339명 중 89명 | Structural implication: '울산형 광역비자 일자리 잠식 논란…해당 비자 외국인은 4339명 중 89명' suggests a shift in NEWS dynamics. | LOW |
+| 태광에 칼 빼든 롯데홈쇼핑 “회사 피해주는 행위에 합법적 모든 조치 취할 것” | Structural implication: '태광에 칼 빼든 롯데홈쇼핑 “회사 피해주는 행위에 합법적 모든 조치 취할 것”' suggests a shift in NEWS dynamics. | LOW |
+| “운전은 바쁜 하루 속 숨 고르기”…벤츠, 미쉐린 셰프 손종원과 메이트 되다 | Structural implication: '“운전은 바쁜 하루 속 숨 고르기”…벤츠, 미쉐린 셰프 손종원과 메이트 되다' suggests a shift in NEWS dynamics. | LOW |
+| “BTS 아미들, ‘아미동’ 오세요” 부산 서구, 연계 콘텐츠 개발 검토 | Structural implication: '“BTS 아미들, ‘아미동’ 오세요” 부산 서구, 연계 콘텐츠 개발 검토' suggests a shift in NEWS dynamics. | LOW |
+| 이광형 KAIST 총장 사의 철회...차기 총장 선임까지 직무 수행키로 | Structural implication: '이광형 KAIST 총장 사의 철회...차기 총장 선임까지 직무 수행키로' suggests a shift in NEWS dynamics. | LOW |
+| [Find Dining] 돼지고기가 거기서 거기? 당신의 편견을 깰 서울의 ‘돈(豚) 맛집’ | Structural implication: '[Find Dining] 돼지고기가 거기서 거기? 당신의 편견을 깰 서울의 ‘돈(豚) 맛집’' suggests a shift in NEWS dynamics. | LOW |
 | “소비자 꽁꽁 묶어두자”…구독 강화하는 커피업계 [Consumer News] | Structural implication: '“소비자 꽁꽁 묶어두자”…구독 강화하는 커피업계 [Consumer News]' suggests a shift in NEWS dynamics. | LOW |
 | 조비, 금문교 위 날았다…‘하늘 택시’ 현실 성큼 | Structural implication: '조비, 금문교 위 날았다…‘하늘 택시’ 현실 성큼' suggests a shift in NEWS dynamics. | LOW |
-| 어바웃피싱, 실시간 선상 낚시 예약 서비스 출시 및 할인 프로모션 진행 | Structural implication: '어바웃피싱, 실시간 선상 낚시 예약 서비스 출시 및 할인 프로모션 진행' suggests a shift in NEWS dynamics. | LOW |
 | 글로벌 프로페셔널 헤어 전문 기업 알비에치㈜, 필리핀 수출 계약 체결…시장 공략 가속화 | Structural implication: '글로벌 프로페셔널 헤어 전문 기업 알비에치㈜, 필리핀 수출 계약 체결…시장 공략 가속화' suggests a shift in NEWS dynamics. | LOW |
-| [Style] 서둘러야 하는 봄옷 준비…Ready to Spring Item | Structural implication: '[Style] 서둘러야 하는 봄옷 준비…Ready to Spring Item' suggests a shift in NEWS dynamics. | LOW |
-| 이재용 회장 유럽 출장 마치고 귀국…벤츠 등 완성차 ‘배터리 수주’ 직접 챙겼다 | Structural implication: '이재용 회장 유럽 출장 마치고 귀국…벤츠 등 완성차 ‘배터리 수주’ 직접 챙겼다' suggests a shift in NEWS dynamics. | LOW |
-| 롯데홈쇼핑, 2대 주주 태광에 경고 날려…김재겸 대표는 이사 재선임 | Structural implication: '롯데홈쇼핑, 2대 주주 태광에 경고 날려…김재겸 대표는 이사 재선임' suggests a shift in NEWS dynamics. | LOW |
-| 집값 뛸 땐 좋았는데…강남3구 보유세 큰 폭 상승 전망 | Structural implication: '집값 뛸 땐 좋았는데…강남3구 보유세 큰 폭 상승 전망' suggests a shift in NEWS dynamics. | LOW |
-| [Tour List] “이제부터 봄!” 바다로 떠나는 3월 봄 여행 | Structural implication: '[Tour List] “이제부터 봄!” 바다로 떠나는 3월 봄 여행' suggests a shift in NEWS dynamics. | LOW |
-| 해양경찰청, 중동 사태에 해상 석유 불법 유통 특별 단속 | Structural implication: '해양경찰청, 중동 사태에 해상 석유 불법 유통 특별 단속' suggests a shift in NEWS dynamics. | LOW |
-| 강명구 “배달앱 ‘수수료 상한제’ 신중해야…직접 규제는 부작용” [요즘여의섬] | Structural implication: '강명구 “배달앱 ‘수수료 상한제’ 신중해야…직접 규제는 부작용” [요즘여의섬]' suggests a shift in NEWS dynamics. | LOW |
-| 김재식·장종필의 법을 알면 부동산이 보인다 - 건물주 말 한마디에 갈리는 권리금의 운명 | Structural implication: '김재식·장종필의 법을 알면 부동산이 보인다 - 건물주 말 한마디에 갈리는 권리금의 운명' suggests a shift in NEWS dynamics. | LOW |
-| “그냥 산책했을 뿐”…수원 팔달산 ‘연쇄 방화’ 피의자 혐의 부인 | Structural implication: '“그냥 산책했을 뿐”…수원 팔달산 ‘연쇄 방화’ 피의자 혐의 부인' suggests a shift in NEWS dynamics. | LOW |
-| 홍콩에서 다리만 건너갔더니…“3분의 1 값으로 넣었어요” | Structural implication: '홍콩에서 다리만 건너갔더니…“3분의 1 값으로 넣었어요”' suggests a shift in NEWS dynamics. | LOW |
-| ‘취약점 이용하라’…AI 에이전트, 스스로 해킹해 비밀번호 유출 | Structural implication: '‘취약점 이용하라’…AI 에이전트, 스스로 해킹해 비밀번호 유출' suggests a shift in NEWS dynamics. | LOW |
-| [Travel] 매화가 함께 하는 사유와 명상의 시간...사유원 ‘2026 매화 축제’ | Structural implication: '[Travel] 매화가 함께 하는 사유와 명상의 시간...사유원 ‘2026 매화 축제’' suggests a shift in NEWS dynamics. | LOW |
-| 마이크로소프트, 의료기록 읽는 AI ‘코파일럿 헬스’ 공개 | Structural implication: '마이크로소프트, 의료기록 읽는 AI ‘코파일럿 헬스’ 공개' suggests a shift in NEWS dynamics. | LOW |
-| “나를 위한 힐링 선물”…제니퍼 에디츠, 도시인에 웰니스 라이프스타일 제안 | Structural implication: '“나를 위한 힐링 선물”…제니퍼 에디츠, 도시인에 웰니스 라이프스타일 제안' suggests a shift in NEWS dynamics. | LOW |
-| [단독] ‘케데헌’ 갓진우 안효섭, 생애 첫 오스카 참석 | Structural implication: '[단독] ‘케데헌’ 갓진우 안효섭, 생애 첫 오스카 참석' suggests a shift in NEWS dynamics. | LOW |
-| 어도비, 최고 실적에도 CEO는 사임 | Structural implication: '어도비, 최고 실적에도 CEO는 사임' suggests a shift in NEWS dynamics. | LOW |
+| 어바웃피싱, 실시간 선상 낚시 예약 서비스 출시 및 할인 프로모션 진행 | Structural implication: '어바웃피싱, 실시간 선상 낚시 예약 서비스 출시 및 할인 프로모션 진행' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

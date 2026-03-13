@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-03-13T13:18:03.776071",
+  "results": [
+    {
+      "topic_id": "PRED_20260313_05",
+      "theme": "Policy Radar",
+      "propagation_score": 73,
+      "spread_channels": [
+        "News Media"
+      ],
+      "detailed_channels": [
+        {
+          "channel": "News Media",
+          "probability": 0.8083333333333333,
+          "speed": "FAST"
+        },
+        {
+          "channel": "YouTube / Video",
+          "probability": 0.48666666666666664,
+          "speed": "MEDIUM"
+        },
+        {
+          "channel": "Social Media",
+          "probability": 0.36499999999999994,
+          "speed": "FAST"
+        },
+        {
+          "channel": "Institutional Research",
+          "probability": 0.24333333333333332,
+          "speed": "SLOW"
+        }
+      ],
+      "spread_speed": "FAST",
+      "market_sensitivity": "MEDIUM",
+      "score_breakdown": {
+        "narrative_strength": 30,
+        "media_compatibility": 18,
+        "social_spread": 15,
+        "market_sensitivity": 10
+      }
+    },
+    {
+      "topic_id": "PRED_20260313_01",
+      "theme": "Macro Shock Radar",
+      "propagation_score": 65,
+      "spread_channels": [
+        "Social Media",
+        "News Media"
+      ],
+      "detailed_channels": [
+        {
+          "channel": "Social Media",
+          "probability": 0.725,
+          "speed": "INSTANT"
+        },
+        {
+          "channel": "News Media",
+          "probability": 0.5416666666666666,
+          "speed": "MEDIUM"
+        },
+        {
+          "channel": "YouTube / Video",
+          "probability": 0.43333333333333335,
+          "speed": "MEDIUM"
+        },
+        {
+          "channel": "Institutional Research",
+          "probability": 0.21666666666666667,
+          "speed": "SLOW"
+        }
+      ],
+      "spread_speed": "MEDIUM",
+      "market_sensitivity": "MEDIUM",
+      "score_breakdown": {
+        "narrative_strength": 15,
+        "media_compatibility": 18,
+        "social_spread": 22,
+        "market_sensitivity": 10
+      }
+    },
+    {
+      "topic_id": "PRED_20260313_04",
+      "theme": "Macro Shock Radar",
+      "propagation_score": 65,
+      "spread_channels": [
+        "Social Media",
+        "News Media"
+      ],
+      "detailed_channels": [
+        {
+          "channel": "Social Media",
+          "probability": 0.725,
+          "speed": "INSTANT"
+        },
+        {
+          "channel": "News Media",
+          "probability": 0.5416666666666666,
+          "speed": "MEDIUM"
+        },
+        {
+          "channel": "YouTube / Video",
+          "probability": 0.43333333333333335,
+          "speed": "MEDIUM"
+        },
+        {
+          "channel": "Institutional Research",
+          "probability": 0.21666666666666667,
+          "speed": "SLOW"
+        }
+      ],
+      "spread_speed": "MEDIUM",
+      "market_sensitivity": "MEDIUM",
+      "score_breakdown": {
+        "narrative_strength": 15,
+        "media_compatibility": 18,
+        "social_spread": 22,
+        "market_sensitivity": 10
+      }
+    }
+  ]
+}

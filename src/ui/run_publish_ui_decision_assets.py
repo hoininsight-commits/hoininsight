@@ -281,6 +281,8 @@ def _publish_ops_assets():
         "narrative_propagation.json",
         "capital_flow_impact.json",
         "portfolio_relevance.json",
+        "system_health.json",
+        "usage_audit.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json"
     ]

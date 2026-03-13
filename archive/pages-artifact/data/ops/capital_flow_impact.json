@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-03-12T15:28:20.819601",
+  "top_capital_flow_theme": {
+    "topic_id": "PRED_20260312_05",
+    "theme": "Policy Radar",
+    "capital_flow_impact_score": 71.25,
+    "primary_sector": "Regulatory Impact / Finance",
+    "impact_direction": "NEGATIVE",
+    "reason": "Policy Radar 확산에 따른 자본 재배치 압력 분석 결과",
+    "score_breakdown": {
+      "propagation_weight": 18.25,
+      "sector_impact": 20,
+      "rotation_likelihood": 18,
+      "money_conversion": 15
+    }
+  },
+  "sector_impacts": [
+    {
+      "sector": "Regulatory Impact / Finance",
+      "impact_direction": "NEGATIVE",
+      "impact_strength": "MEDIUM",
+      "reason": "지배구조 리스크 및 규제 불확실성 증대"
+    }
+  ],
+  "stock_impacts": [
+    {
+      "name": "KB금융",
+      "ticker": "105560.KS",
+      "sector": "Unknown",
+      "impact_direction": "POSITIVE",
+      "impact_score": 65,
+      "impact_type": "INDIRECT_BENEFIT",
+      "reason": "Policy Radar 테마와의 구조적 연결성에 기반한 INDIRECT_BENEFIT 예상",
+      "risk": "매크로 변동성 및 개별 기업 이슈에 따른 변동성 주의"
+    },
+    {
+      "name": "신한지주",
+      "ticker": "055550.KS",
+      "sector": "Unknown",
+      "impact_direction": "POSITIVE",
+      "impact_score": 65,
+      "impact_type": "INDIRECT_BENEFIT",
+      "reason": "Policy Radar 테마와의 구조적 연결성에 기반한 INDIRECT_BENEFIT 예상",
+      "risk": "매크로 변동성 및 개별 기업 이슈에 따른 변동성 주의"
+    }
+  ]
+}

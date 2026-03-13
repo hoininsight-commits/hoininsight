@@ -114,6 +114,12 @@ export async function initTodayView(container) {
         let metaVolData = null;
         let radarData = null;
         let probData = null;
+        let todayJsonData = null;
+
+        try {
+            const todayResp = await fetch('data/decision/today.json?v=' + Date.now());
+            if (todayResp.ok) todayJsonData = await todayResp.json();
+        } catch (e) { console.warn("today.json missing:", e); }
 
         try {
             const regimeResp = await fetch('data/ops/regime_state.json?v=' + Date.now());
@@ -169,7 +175,7 @@ export async function initTodayView(container) {
             return new Date(b.selected_at || 0).getTime() - new Date(a.selected_at || 0).getTime();
         });
 
-        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData, metaVolData, radarData, probData);
+        renderTodayUI(container, allDecisions, debug, historyDecisions, null, regimeData, osData, capitalData, timingData, compressionData, metaVolData, radarData, probData, todayJsonData);
 
     } catch (e) {
         console.error(e);
@@ -236,7 +242,7 @@ function calculateEngineStatus(items, error, debug) {
     return { label: `🟢 정상 (${timeStr})`, color: 'text-green-500', bg: 'bg-green-500/10', tooltip };
 }
 
-function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null, metaVolData = null, radarData = null, probData = null) {
+function renderTodayUI(container, items, debug, historyItems = [], error = null, regimeData = null, osData = null, capitalData = null, timingData = null, compressionData = null, metaVolData = null, radarData = null, probData = null, todayJsonData = null) {
     const status = calculateEngineStatus(items, error, debug);
     const completeItems = items.filter(i => !i.incomplete);
     const incompleteItems = items.filter(i => i.incomplete);
@@ -410,6 +416,8 @@ function renderTodayUI(container, items, debug, historyItems = [], error = null,
             
             ${radarData ? renderRadarSection(radarData) : ''}
             ${probData ? renderProbabilitySection(probData) : ''}
+
+            ${todayJsonData ? renderTodayPickSection(todayJsonData) : ''}
 
             ${summaryStripHtml}
             ${heroAreaHtml}
@@ -1024,6 +1032,86 @@ function renderMetaVolatilitySection(data) {
                     <ul class="space-y-2">
                         ${(i.invalidators || []).map(v => `<li class="text-[10px] text-slate-400 flex gap-2"><span class="text-red-900">!</span> ${v}</li>`).join('')}
                     </ul>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderTodayPickSection(data) {
+    const core = data.core_picks || [];
+    const tactical = data.tactical_picks || [];
+    const watchlist = data.watchlist_picks || [];
+    const focus = data.portfolio_focus || data.portfolio_theme || 'N/A';
+    const flow = data.capital_flow_theme || 'N/A';
+
+    const renderStockRow = (s) => `
+        <div class="flex items-center justify-between p-3 bg-black/20 border border-slate-800 rounded-lg group hover:border-slate-700 transition-colors">
+            <div class="flex items-center gap-3">
+                <div class="w-1.5 h-1.5 rounded-full ${s.impact_direction === 'POSITIVE' ? 'bg-green-500' : (s.impact_direction === 'NEGATIVE' ? 'bg-red-500' : 'bg-slate-500')}"></div>
+                <div>
+                    <div class="text-[11px] font-black text-white">${s.name}</div>
+                    <div class="text-[8px] font-bold text-slate-500 uppercase">${s.ticker}</div>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="text-[10px] font-black text-slate-300">${s.score || '50'}%</div>
+                <div class="text-[8px] text-slate-500 italic max-w-[120px] truncate">${s.action_note || ''}</div>
+            </div>
+        </div>
+    `;
+
+    return `
+        <div id="today-picks-section" class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 mb-8 animate-in fade-in slide-in-from-bottom-4">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">🏆</span>
+                    <h3 class="text-[11px] font-black text-white uppercase tracking-[0.2em]">Engine Top Picks</h3>
+                </div>
+                <div class="flex gap-6">
+                    <div class="text-right">
+                        <div class="text-[8px] font-black text-slate-500 uppercase tracking-widest">Portfolio Focus</div>
+                        <div class="text-xs font-black text-blue-400 uppercase tracking-tighter">${focus}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[8px] font-black text-slate-500 uppercase tracking-widest">Money Flow</div>
+                        <div class="text-xs font-black text-amber-500 uppercase tracking-tighter">${flow}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- CORE -->
+                <div class="space-y-4">
+                    <div class="text-[9px] font-black text-blue-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                        <span>Core Picks</span>
+                        <div class="h-[1px] bg-blue-500/20 flex-1"></div>
+                    </div>
+                    <div class="space-y-2">
+                        ${core.length > 0 ? core.map(renderStockRow).join('') : '<div class="text-[9px] text-slate-700 italic py-4 text-center">No Core Picks</div>'}
+                    </div>
+                </div>
+
+                <!-- TACTICAL -->
+                <div class="space-y-4">
+                    <div class="text-[9px] font-black text-purple-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                        <span>Tactical Picks</span>
+                        <div class="h-[1px] bg-purple-500/20 flex-1"></div>
+                    </div>
+                    <div class="space-y-2">
+                        ${tactical.length > 0 ? tactical.map(renderStockRow).join('') : '<div class="text-[9px] text-slate-700 italic py-4 text-center">No Tactical Picks</div>'}
+                    </div>
+                </div>
+
+                <!-- WATCHLIST -->
+                <div class="space-y-4">
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                        <span>Watchlist</span>
+                        <div class="h-[1px] bg-slate-800 flex-1"></div>
+                    </div>
+                    <div class="space-y-2">
+                        ${watchlist.length > 0 ? watchlist.map(renderStockRow).join('') : (data.stocks ? data.stocks.slice(0, 3).map(s => renderStockRow({...s, score: 50, impact_direction: 'NEUTRAL', action_note: s.reason})).join('') : '<div class="text-[9px] text-slate-700 italic py-4 text-center">No Entries</div>')}
+                    </div>
                 </div>
             </div>
         </div>

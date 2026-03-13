@@ -251,17 +251,14 @@ def main():
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
     
-    # 3.2 Backward Compatible Dashboard Generation
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.2: LEGACY DASHBOARD GENERATION STARTED")
+    # 3.6 System Health Generation
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.6: SYSTEM HEALTH GENERATION STARTED")
     try:
-        from src.ui.dashboard.dashboard_generator import generate_dashboard
-        html = generate_dashboard(project_root)
-        dash_out = project_root / "dashboard" / "index.html"
-        dash_out.parent.mkdir(parents=True, exist_ok=True)
-        dash_out.write_text(html, encoding="utf-8")
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.2: LEGACY DASHBOARD COMPLETED ({dash_out})")
+        from src.ops.system_health_generator import generate_health_data
+        generate_health_data()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.6: SYSTEM HEALTH GENERATION COMPLETED")
     except Exception as e:
-        print(f"[Pipeline] ⚠️ Dashboard generation failed: {e}")
+        print(f"[Pipeline] ⚠️ System Health generation failed: {e}")
         traceback.print_exc()
 
     # Step 4: Final UI Sync & Contract Verification

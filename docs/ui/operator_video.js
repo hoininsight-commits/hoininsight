@@ -49,12 +49,12 @@ export async function initVideoView(container) {
             } catch (e) { }
         }
 
-        if (!poolData || !poolData.candidates || poolData.candidates.length === 0) {
+        if (!poolData || !poolData.top_candidates || poolData.top_candidates.length === 0) {
             renderEmptyVideoState(container);
             return;
         }
 
-        const mergedCandidates = poolData.candidates.map(c => {
+        const mergedCandidates = poolData.top_candidates.map(c => {
             const sMatch = scriptData?.candidates?.find(sc => sc.dataset_id === c.dataset_id);
             const lMatch = linkageData?.topics?.find(lt => lt.dataset_id === c.dataset_id);
             const dMatch = densityData?.topics?.find(dt => dt.dataset_id === c.dataset_id);

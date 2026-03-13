@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-12T10:36:24.617069",
+  "generated_at_kst": "2026-03-12T13:47:20.748838",
   "date": "2026-03-12",
   "blocks": {
     "regime": {
@@ -23,13 +23,13 @@
       "7d_success_rate": "7/7"
     }
   },
-  "topic": "[Unknown] Hybrid-driven",
-  "structural_topic": null,
+  "topic": "Policy Radar",
+  "structural_topic": "Policy Radar",
   "anchor_topic": "[Unknown] Hybrid-driven",
-  "structural_rationale": null,
+  "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
-  "decision_rationale": null,
+  "decision_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
@@ -42,9 +42,58 @@
         "Need Volume/Flow Data to verify Capital Fixation"
       ],
       "pre_structural": null
-    }
+    },
+    "PRED_20260312_05": "Primary",
+    "PRED_20260312_01": "Secondary"
   },
-  "top_topics": [],
+  "top_topics": [
+    {
+      "id": "PRED_20260312_05",
+      "score": 83.2,
+      "intensity": 0.8320000000000001,
+      "title": "Policy Radar",
+      "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
+      "raw_data": {
+        "topic_id": "PRED_20260312_05",
+        "theme": "Policy Radar",
+        "prediction_score": 83.2,
+        "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
+        "expected_market_impact": "Policy Radar volatility acceleration expected",
+        "expected_sector": "Infrastructure",
+        "breakdown": {
+          "radar": 30,
+          "probability": 25.2,
+          "regime": 10,
+          "narrative": 18
+        }
+      },
+      "logic_block": "PREDICTIVE_TOPIC",
+      "leader_stocks": []
+    },
+    {
+      "id": "PRED_20260312_01",
+      "score": 71.85,
+      "intensity": 0.7184999999999999,
+      "title": "Macro Shock Radar",
+      "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
+      "raw_data": {
+        "topic_id": "PRED_20260312_01",
+        "theme": "Macro Shock Radar",
+        "prediction_score": 71.85,
+        "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
+        "expected_market_impact": "Macro Shock Radar volatility acceleration expected",
+        "expected_sector": "Financials",
+        "breakdown": {
+          "radar": 20,
+          "probability": 23.85,
+          "regime": 10,
+          "narrative": 18
+        }
+      },
+      "logic_block": "PREDICTIVE_TOPIC",
+      "leader_stocks": []
+    }
+  ],
   "stocks": [
     {
       "name": "KB금융",

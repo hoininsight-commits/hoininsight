@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-03-13T04:18:03.606884+00:00",
+  "date_kst": "2026-03-13",
+  "regime_state": "TIGHTENING",
+  "timing_gear": 1,
+  "capital_mode": "DEFENSIVE_BALANCED",
+  "compression_state": {
+    "direction": "DOWNWARD_BIAS",
+    "pressure_level": "HIGH",
+    "stability": "FRAGILE"
+  },
+  "drivers": [
+    {
+      "type": "Regime",
+      "impact": "Liquidity TIGHTENING"
+    },
+    {
+      "type": "Timing",
+      "impact": "Gear 1 IDLE"
+    },
+    {
+      "type": "Conflict",
+      "impact": "High Density"
+    }
+  ],
+  "scenario_tree": {
+    "primary_path": "Defensive Rotation 지속",
+    "secondary_path": "Volatility Expansion",
+    "invalidator": "Regime 완화 전환"
+  },
+  "decision_compression": {
+    "operator_posture": "Cautious Expansion",
+    "risk_band": "NARROW",
+    "conviction_state": "Conditional"
+  }
+}
