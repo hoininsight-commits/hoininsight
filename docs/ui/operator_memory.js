@@ -104,7 +104,7 @@ function renderMemoryUI(container, data) {
                     <!-- MOST FREQUENT -->
                     <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 space-y-4">
                         <div class="text-[10px] font-black text-amber-500 uppercase tracking-widest">
-                            역대 최다 등장 주제 (Legacy Winners)
+                            역대 최다 등장 주제 (Historical Winners)
                         </div>
                         <div class="grid grid-cols-1 gap-2">
                              ${frequent_topics.map(t => `

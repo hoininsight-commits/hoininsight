@@ -27,6 +27,8 @@ def check_publisher(name):
             capture_output=True, text=True, check=True
         )
         files = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        # Filter out archived files
+        files = [f for f in files if not f.startswith("archive/")]
     except subprocess.CalledProcessError as e:
         print(f"Error querying git ls-files: {e}")
         return False
