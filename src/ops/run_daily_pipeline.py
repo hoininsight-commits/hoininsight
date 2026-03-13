@@ -230,6 +230,18 @@ def run_memory_update():
         
         print("[Pipeline] Running pattern detection...")
         detector.run_analysis()
+
+        # [STEP-25] Topic Ontology Resolution
+        print("[Pipeline] Running Topic Ontology Engine...")
+        from src.ontology.topic_ontology_engine import TopicOntologyEngine
+        ontology_engine = TopicOntologyEngine(project_root)
+        ontology_engine.run_daily_resolution()
+
+        # [STEP-26] Narrative Cycle Detection
+        print("[Pipeline] Running Narrative Cycle Detector...")
+        from src.memory.narrative_cycle_detector import NarrativeCycleDetector
+        cycle_detector = NarrativeCycleDetector(project_root)
+        cycle_detector.run_analysis()
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
         return True

@@ -53,6 +53,10 @@ async function handleRoute() {
                 const { initOntologyView } = await import('./operator_ontology.js?v=' + Date.now());
                 await initOntologyView(app);
                 break;
+            case '#cycles':
+                const { initCycleView } = await import('./operator_cycles.js?v=' + Date.now());
+                await initCycleView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

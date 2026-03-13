@@ -284,6 +284,7 @@ def _publish_ops_assets():
         "system_health.json",
         "usage_audit.json",
         "../memory/narrative_patterns.json",
+        "../memory/narrative_cycles.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json",
         "../ontology/topic_resolved.json",
