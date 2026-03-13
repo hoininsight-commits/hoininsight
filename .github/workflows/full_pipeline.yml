@@ -24,29 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Initialize Docs Structure
+      - name: Ensure Docs Structure
         run: |
-          mkdir -p docs
+          mkdir -p docs/data
+          mkdir -p docs/ui
           touch docs/.nojekyll
-          cat > docs/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="ko">
-          <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=/hoininsight/ui/">
-            <title>HOIN Insight → 대시보드로 이동 중...</title>
-            <style>
-              body { background:#0d1117; color:#c9d1d9; font-family:sans-serif;
-                     display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
-              a { color:#58a6ff; }
-            </style>
-          </head>
-          <body>
-            <p>대시보드로 이동 중... <a href="/hoininsight/ui/">클릭하여 바로 이동</a></p>
-          </body>
-          </html>
-          EOF
-          ls -la docs/.nojekyll
+          ls -la docs/
 
       - uses: actions/setup-python@v5
         with:
@@ -348,8 +331,8 @@ jobs:
 
       - name: "A6: SSOT Publishing Agent (Asset Delivery)"
         run: |
-          # Safe cleanup: delete all docs/data EXCEPT decision dir
-          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' -exec rm -rf {} + 2>/dev/null || true
+          # Safe cleanup: delete all docs/data EXCEPT decision and ui dirs
+          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' ! -name 'ui' -exec rm -rf {} + 2>/dev/null || true
           mkdir -p docs/data/decision
           mkdir -p docs/exports
           mkdir -p docs/issuesignal
