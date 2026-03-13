@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 국제유가, 호르무즈 봉쇄 위기에 100달러 돌파 - 지디넷코리아 (ID: unknown)
+### 美 주유소 휘발유 3.5달러 넘었다… 4달러가 트럼프 ‘정치 위기선’ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 기름값 폭등에 정부 칼 빼들어…최고가격제 13일 0시부터 시행 - 기후에너지데이터뱅크 (ID: unknown)
+### 최고가격제 첫날 주유소 기준 ‘리터당 1884원’…국제유가는 치솟아 [지금뉴스] - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,7 +37,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### CME그룹 CEO, 유가 선물 시장 개입에 경고 - Investing.com 한국어 (ID: unknown)
+### 트럼프 행정부, 유가 억제를 위해 존스 법 면제 예정 - Bloomberg By Investing.com - Investing.com 한국어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,22 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '네 마녀의 날'·국제유가 급등에...코스피 0.48% 하락 마감 - YTN (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 중동 전쟁 여파…롯데케미칼·LG화학, 불가항력 가능성 공지 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 李대통령, 라면·식용유 가격 인하에 "위기 극복 동참 감사" - 노컷뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,17 +77,32 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 美 비행기서 여성 '강제 하차' 이유가…조회수 대박 터졌다 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 (ID: unknown)
+### '비료 대란' 공포 현실로?…남해화학, 이란 사태에 주가 날개 - 핀포인트뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### LG엔솔-삼성SDI, 특허 설전 … "기술 카피 좌시 않을 것" - 뉴데일리 경제 (ID: unknown)
+### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,19 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보 (ID: unknown)
+### “노르딕 맞춤형 원전 풀가동”…현대건설, 북유럽 에너지 전환 핵심 파트너로 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 장동혁, 오세훈 공천 미신청에 “공천은 공정이 생명” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 스마트치유산업포럼-국립대만대, 국제협력 나선다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 이젠 건설주 아닌 원전주?…현대건설 주목 [주식 초고수는 지금] (ID: unknown)
@@ -182,7 +197,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 내년 강원대·충북대 의대 정원 39명 늘어난다 (ID: unknown)
+### ‘의대 증원’ 강원대·충북대가 최대 수혜…내년 정원 39명씩 늘어난다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -193,21 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 광교 마지막 산업거점 짓는다…GH 지식산업센터 본격화 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 日 성인 42% “70세 이후에도 일하겠다” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 베트남 진출하는 KGM…곽재선 회장, 현지 다낭·후에 KD공장 점검 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 1만원대로 내놓은 위스키…세 달 만에 5만병 팔고 10만병 간다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
