@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-13T08:23:55.333304",
+  "generated_at_kst": "2026-03-13T10:49:01.385985",
   "date": "2026-03-13",
   "blocks": {
     "regime": {
@@ -25,7 +25,7 @@
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Unknown] Hybrid-driven",
+  "anchor_topic": "[Monetary Tightening] Capital-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
@@ -34,6 +34,7 @@
     "ANCHOR": {
       "step1_axis": [
         "comm_wti_fred",
+        "index_spx_fred",
         "crypto_btc_usd_spot_coingecko",
         "rates_us10y_fred",
         "rates_us02y_fred"

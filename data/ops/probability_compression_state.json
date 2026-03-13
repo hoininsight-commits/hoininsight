@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-12T23:23:54.991695+00:00",
+  "generated_at": "2026-03-13T01:49:01.034752+00:00",
   "date_kst": "2026-03-13",
   "regime_state": "TIGHTENING",
   "timing_gear": 1,
   "capital_mode": "DEFENSIVE_BALANCED",
   "compression_state": {
     "direction": "DOWNWARD_BIAS",
-    "pressure_level": "MODERATE",
-    "stability": "TRANSITION"
+    "pressure_level": "HIGH",
+    "stability": "FRAGILE"
   },
   "drivers": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "type": "Conflict",
-      "impact": "Normal Density"
+      "impact": "High Density"
     }
   ],
   "scenario_tree": {
@@ -30,7 +30,7 @@
   },
   "decision_compression": {
     "operator_posture": "Cautious Expansion",
-    "risk_band": "NORMAL",
-    "conviction_state": "Strong"
+    "risk_band": "NARROW",
+    "conviction_state": "Conditional"
   }
 }

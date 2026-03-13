@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-12T23:23:54.688868Z",
+  "generated_at": "2026-03-13T01:49:00.742971Z",
   "date_kst": "2026-03-13",
   "topics": [
     {
@@ -17,6 +17,246 @@
           "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
           "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
           "시장반응: 엔진은 현재 STRUCTURAL_REDEFINITION 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "inflation_pce_fred",
+      "title": "거시경제 이상징후: inflation_pce_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "rates_fed_funds_fred",
+      "title": "거시경제 이상징후: rates_fed_funds_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Derived from final_n_score이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "struct_dart_cb_bw",
+      "title": "거시경제 이상징후: struct_dart_cb_bw",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "title": "거시경제 이상징후: inflation_kor_cpi_ecos",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "comm_wti_fred",
+      "title": "거시경제 이상징후: comm_wti_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "struct_dart_disposal",
+      "title": "거시경제 이상징후: struct_dart_disposal",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "title": "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "rates_us10y_fred",
+      "title": "거시경제 이상징후: rates_us10y_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Derived from final_n_score이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "risk_vix_fred",
+      "title": "거시경제 이상징후: risk_vix_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "liquidity_m2_fred",
+      "title": "거시경제 이상징후: liquidity_m2_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "rates_us02y_fred",
+      "title": "거시경제 이상징후: rates_us02y_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Derived from final_n_score이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
+          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
+        ],
+        "contradiction_pairs": []
+      }
+    },
+    {
+      "dataset_id": "inflation_cpi_fred",
+      "title": "거시경제 이상징후: inflation_cpi_fred",
+      "axes": [],
+      "inputs_used": {
+        "narrative_present": true,
+        "decision_present": true,
+        "video_candidate": false
+      },
+      "density_text": {
+        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
+        "structured_paragraph": [
+          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
+          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
+          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
           "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
         ],
         "contradiction_pairs": []
