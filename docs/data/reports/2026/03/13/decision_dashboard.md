@@ -191,20 +191,23 @@
 | 주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제 | Structural implication: '주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - 매일경제 | Structural implication: '“내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보 | Structural implication: '결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - v.daum.net | Structural implication: '전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 호르무즈 봉쇄 장기화 조짐에…주가 20% 넘게 급등한 종목 [종목+] - 한국경제 | Structural implication: '호르무즈 봉쇄 장기화 조짐에…주가 20% 넘게 급등한 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - 한국경제 | Structural implication: '전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스 | Structural implication: '과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz | Structural implication: '한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 거세지는 美·이란 전쟁 후폭풍…삼전닉스 주가에 쏠린 눈 [빅데이터로 본 재테크] - 매일경제 | Structural implication: '거세지는 美·이란 전쟁 후폭풍…삼전닉스 주가에 쏠린 눈 [빅데이터로 본 재테크] - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 | Structural implication: '골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
 | 국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보 | Structural implication: '국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 | Structural implication: '설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 | Structural implication: '[단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스 | Structural implication: '트럼프, 전쟁 속 금리인하 촉구…"다음 회의까지 기다리지 마라"(상보) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | AI 공포에 주가 40% 폭락…'18년 경력' CEO 물러난다 - 한국경제 | Structural implication: 'AI 공포에 주가 40% 폭락…'18년 경력' CEO 물러난다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제 | Structural implication: '미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 | Structural implication: '이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아 | Structural implication: '삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 강남3구 집값 하락세, 한강벨트로 번진다…강동구도 하락 전환 - 한겨레 | Structural implication: '강남3구 집값 하락세, 한강벨트로 번진다…강동구도 하락 전환 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 李대통령, 라면·식용유 가격 인하에 "위기 극복 동참 감사" - 노컷뉴스 | Structural implication: '李대통령, 라면·식용유 가격 인하에 "위기 극복 동참 감사" - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [단독] ‘케데헌’ 갓진우 안효섭, 생애 첫 오스카 참석 | Structural implication: '[단독] ‘케데헌’ 갓진우 안효섭, 생애 첫 오스카 참석' suggests a shift in NEWS dynamics. | LOW |
+| 어도비, 최고 실적에도 CEO는 사임 | Structural implication: '어도비, 최고 실적에도 CEO는 사임' suggests a shift in NEWS dynamics. | LOW |
+| 트랜스코스모스코리아, ‘인사이트 포럼 2026’ 성황리 개최…AI와 공존하는 시대 인사이트 제시 | Structural implication: '트랜스코스모스코리아, ‘인사이트 포럼 2026’ 성황리 개최…AI와 공존하는 시대 인사이트 제시' suggests a shift in NEWS dynamics. | LOW |
 | 아파트 단지에 백화점 ‘맛집’ … 신검단 로열파크씨티Ⅱ에 ‘고메드 갤러리아 1호점’ 오픈 | Structural implication: '아파트 단지에 백화점 ‘맛집’ … 신검단 로열파크씨티Ⅱ에 ‘고메드 갤러리아 1호점’ 오픈' suggests a shift in NEWS dynamics. | LOW |
 | 세계 수면의 날 맞아 수면무호흡증 심각성 알려요~ | Structural implication: '세계 수면의 날 맞아 수면무호흡증 심각성 알려요~' suggests a shift in NEWS dynamics. | LOW |
 | “신의 직장 따로 있었네”…직원 평균연봉 4.3억, 차원이 다른 이곳, 어디길래 | Structural implication: '“신의 직장 따로 있었네”…직원 평균연봉 4.3억, 차원이 다른 이곳, 어디길래' suggests a shift in NEWS dynamics. | LOW |
@@ -222,9 +225,6 @@
 | 조회수 2억1000만회 기록한 G마켓 광고, 아시아 최고 권위 글로벌 광고제서 수상 | Structural implication: '조회수 2억1000만회 기록한 G마켓 광고, 아시아 최고 권위 글로벌 광고제서 수상' suggests a shift in NEWS dynamics. | LOW |
 | “뉴발·아크테릭스 역대급 변신”… 파주 아울렛, 야외활동 시즌 겨냥해 메가숍 오픈 | Structural implication: '“뉴발·아크테릭스 역대급 변신”… 파주 아울렛, 야외활동 시즌 겨냥해 메가숍 오픈' suggests a shift in NEWS dynamics. | LOW |
 | “아메리카노 1000원 딜” 꺼낸 이디야…배민 픽업 할인 확대 | Structural implication: '“아메리카노 1000원 딜” 꺼낸 이디야…배민 픽업 할인 확대' suggests a shift in NEWS dynamics. | LOW |
-| 중동 전쟁 장기화 되나…시장 공포지수 최고조 | Structural implication: '중동 전쟁 장기화 되나…시장 공포지수 최고조' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 노조의 과한 욕심…성과급 상한폐지 부작용 크다 [기자24시] | Structural implication: '삼성전자 노조의 과한 욕심…성과급 상한폐지 부작용 크다 [기자24시]' suggests a shift in NEWS dynamics. | LOW |
-| 국힘 박정훈 “절윤과 절한 동시에? 독립군과 친일파를 함께 청산하나” | Structural implication: '국힘 박정훈 “절윤과 절한 동시에? 독립군과 친일파를 함께 청산하나”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

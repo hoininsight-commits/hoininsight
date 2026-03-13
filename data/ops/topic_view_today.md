@@ -42,12 +42,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - v.daum.net (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 호르무즈 봉쇄 장기화 조짐에…주가 20% 넘게 급등한 종목 [종목+] - 한국경제 (ID: unknown)
+### 전쟁에 '귀한 몸' 됐다…18년 만에 처음 있는 일 '깜짝' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,12 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 (ID: unknown)
+### [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 (ID: unknown)
+### "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,12 +92,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 미국-이란 전쟁에도 뜨는 산업은 어디? - 아시아경제 (ID: unknown)
+### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +100,31 @@ No SHADOW candidates today.
 ### 삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 강남3구 집값 하락세, 한강벨트로 번진다…강동구도 하락 전환 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 李대통령, 라면·식용유 가격 인하에 "위기 극복 동참 감사" - 노컷뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독] ‘케데헌’ 갓진우 안효섭, 생애 첫 오스카 참석 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 어도비, 최고 실적에도 CEO는 사임 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 트랜스코스모스코리아, ‘인사이트 포럼 2026’ 성황리 개최…AI와 공존하는 시대 인사이트 제시 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 아파트 단지에 백화점 ‘맛집’ … 신검단 로열파크씨티Ⅱ에 ‘고메드 갤러리아 1호점’ 오픈 (ID: unknown)
@@ -193,21 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “아메리카노 1000원 딜” 꺼낸 이디야…배민 픽업 할인 확대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중동 전쟁 장기화 되나…시장 공포지수 최고조 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 삼성전자 노조의 과한 욕심…성과급 상한폐지 부작용 크다 [기자24시] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 국힘 박정훈 “절윤과 절한 동시에? 독립군과 친일파를 함께 청산하나” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
