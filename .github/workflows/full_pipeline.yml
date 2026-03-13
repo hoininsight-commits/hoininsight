@@ -319,6 +319,16 @@ jobs:
 
 
 
+      - name: "[STEP-20] Portfolio Relevance Engine (Priority Basket)"
+        run: |
+          echo "[PIPELINE] Running Portfolio Relevance Engine (STEP-20)..."
+          python -m src.ops.portfolio_relevance_engine || echo "[PIPELINE] ⚠️ Portfolio Relevance Engine soft-failed (continuing)"
+          if [ -f "data/ops/portfolio_relevance.json" ]; then
+            echo "[PIPELINE] ✅ portfolio_relevance.json generated"
+          else
+            echo "[PIPELINE] ⚠️ portfolio_relevance.json not generated (will skip publish)"
+          fi
+
       - name: "A6: SSOT Publishing Agent (Asset Delivery)"
         run: |
           # Safe cleanup: delete all docs/data EXCEPT decision dir
