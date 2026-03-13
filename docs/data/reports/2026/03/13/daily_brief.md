@@ -39,11 +39,11 @@ Historical context:
 - [HIGH] M2_USA: data/features/anomalies/2026/03/13/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/13/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/13/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [MED] KOSPI: data/features/anomalies/2026/03/13/index_kospi_stooq.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] NASDAQ: data/features/anomalies/2026/03/13/index_nasdaq_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] KOR_CPI: data/features/anomalies/2026/03/13/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/13/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] BTCUSD: data/features/anomalies/2026/03/13/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [LOW] KOSPI: data/features/anomalies/2026/03/13/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] GOLD: data/features/anomalies/2026/03/13/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/13/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/13/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -62,9 +62,9 @@ Narrative Drift Signals:
 
 
 ## OPS HEALTH SNAPSHOT
-⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
-Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
-- System Freshness: 93.0%
+⚠️ SLA BREACH DETECTED: 9 axes stale (>6h)
+Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
+- System Freshness: 79.1%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)

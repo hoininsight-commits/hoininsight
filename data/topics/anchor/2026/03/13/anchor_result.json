@@ -1,14 +1,14 @@
 {
   "data_axis": [
+    "comm_wti_fred",
     "index_spx_fred",
     "rates_us10y_fred",
-    "comm_wti_fred",
     "rates_us02y_fred"
   ],
   "baseline_match": [
+    "comm_wti_fred: Volatility Surge (Z=2.73)",
     "index_spx_fred: Volatility Surge (Z=2.61)",
     "rates_us10y_fred: Volatility Surge (Z=2.15)",
-    "comm_wti_fred: Volatility Surge (Z=2.73)",
     "rates_us02y_fred: Volatility Surge (Z=2.23)"
   ],
   "anomaly_logic": "Monetary Tightening",

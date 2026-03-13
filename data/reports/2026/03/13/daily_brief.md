@@ -62,9 +62,9 @@ Narrative Drift Signals:
 
 
 ## OPS HEALTH SNAPSHOT
-⚠️ SLA BREACH DETECTED: 21 axes stale (>6h)
-Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, fx_dxy_index_stooq, comm_wti_crude_oil_stooq, comm_wti_fred, metal_platinum_xptusd_stooq, rates_kor_base_rate_ecos, inflation_kor_cpi_ecos, rates_fed_funds_fred, inflation_cpi_fred, inflation_pce_fred, liquidity_m2_fred, employment_unrate_fred, risk_financial_stress_fred, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
-- System Freshness: 51.2%
+⚠️ SLA BREACH DETECTED: 9 axes stale (>6h)
+Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
+- System Freshness: 79.1%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
