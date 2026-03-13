@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "ts_utc": "2026-03-13T13:10:19Z",
+    "dataset_id": "index_kospi_stooq",
+    "entity": "KOSPI",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 30,
+    "level": "L1",
+    "evidence": {
+      "z_score": -1.63,
+      "percentile": 57.5,
+      "value": 5496.04,
+      "rolling_mean_20d": 5577.279,
+      "reasoning": "Z-Score -1.63 >= 1.5"
+    }
+  }
+]

@@ -2,14 +2,12 @@
   "data_axis": [
     "comm_wti_fred",
     "index_spx_fred",
-    "crypto_btc_usd_spot_coingecko",
     "rates_us10y_fred",
     "rates_us02y_fred"
   ],
   "baseline_match": [
     "comm_wti_fred: Volatility Surge (Z=2.73)",
     "index_spx_fred: Volatility Surge (Z=2.61)",
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.67)",
     "rates_us10y_fred: Volatility Surge (Z=2.15)",
     "rates_us02y_fred: Volatility Surge (Z=2.23)"
   ],
