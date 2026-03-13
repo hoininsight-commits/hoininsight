@@ -29,23 +29,23 @@ jobs:
           mkdir -p docs
           touch docs/.nojekyll
           cat > docs/index.html << 'EOF'
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/hoininsight/ui/">
-  <title>HOIN Insight → 대시보드로 이동 중...</title>
-  <style>
-    body { background:#0d1117; color:#c9d1d9; font-family:sans-serif;
-           display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
-    a { color:#58a6ff; }
-  </style>
-</head>
-<body>
-  <p>대시보드로 이동 중... <a href="/hoininsight/ui/">클릭하여 바로 이동</a></p>
-</body>
-</html>
-EOF
+          <!DOCTYPE html>
+          <html lang="ko">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=/hoininsight/ui/">
+            <title>HOIN Insight → 대시보드로 이동 중...</title>
+            <style>
+              body { background:#0d1117; color:#c9d1d9; font-family:sans-serif;
+                     display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+              a { color:#58a6ff; }
+            </style>
+          </head>
+          <body>
+            <p>대시보드로 이동 중... <a href="/hoininsight/ui/">클릭하여 바로 이동</a></p>
+          </body>
+          </html>
+          EOF
           ls -la docs/.nojekyll
 
       - uses: actions/setup-python@v5
