@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-03-13
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=75
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -210,4 +210,179 @@ No SHADOW candidates today.
 ### 하얏트 리젠시 인천 파라다이스시티, 9일 개관…1270실·공항 3분 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전국 휘발유값 26원 하락…산업부 장관 “최고가격제 효과 나타나” - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 유가 급등에…코스피, 3%대 급락 출발 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성 계열사까지 번졌다…"성과급 반영해 퇴직금 올려달라" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “소속, 이름 적고 나가라”는 출입절차 반발한 현대차노조.... 사무실 점거하고 기물 파손 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "버틸 수 있는 건 딱 20일" 무서운 경고…진짜 공포 덮친다 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 김윤덕 “세금 말도 안 되는 수준”···국토부, ‘똘똘한 한 채’ 보유세 개편 예고 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [속보] 미, 강제노동 생산 수입품 관련 301조 조사…한국 등 60개국 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이재용-최주선, 유럽 출장 후 귀국…삼성SDI 신규 수주 '주목' - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [부동산 현장탐방] 강남 3구 전세 매물 없다는데…현장에는 "손님이 없다" - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "과학 난제 해결"…정부 'K-문샷' 참여 기업은 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “신의 직장 따로 있었네”…직원 평균연봉 4.3억, 차원이 다른 이곳, 어디길래 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "한국서도 故 제인 구달 박사 나올 수 있게…고유 브랜드 'K-사이언스' 추진" - 동아사이언스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 日 혼다 69년만 첫 연간 적자... 전기차 전략 실패 탓 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “이제 그만하지…” 26만전자·135만닉스? 골드만삭스의 전망 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 주말 내내 흐려…일요일부터 ‘영하권 아침’ 탈출 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “판사 남편과 17평 집에서 살았다”…검소한 박진희가 매달 100만원어치 사는 것 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "코스닥 활성화 펀드 30조원 조성하자" (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 손종원 셰프, 벤츠와 협업 … 디지털 콘텐츠 제작 참여 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 2억뷰 넘은 G마켓 광고 … 글로벌 어워드도 홀렸다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### K홍삼 수출 머리맞댄 농식품부·인삼공사 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [표] 주말 레저 날씨 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "50년 애플 원동력은 급진적 생각" (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "혈액암 정복 신약, 5년내 개발 자신합니다" (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 지쿠 “스마트 주차 안내 시스템 도입 후 이용자 78% 자발적 개선” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 클래식 듣고 셰프와 대화 오감이 즐거운 미술 축제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 태평양 건넌 청진기 지게에 실린 성경책 강원 산골 울린 복음 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이주의 새책 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 신간 다이제스트 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 매력적인 도시 조건은 … 다양성·포용성·삶의 질 '균형' (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 수백만명 학살 가담한 나치 2인자…악마는 우리곁 평범한 가장이었다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### "판커진 전력기기 시장…6년치 먹거리 확보" (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 반도체·배터리 비용 확 낮출…'꿈의 소재' 초전도체 만든다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [표] 베스트 셀러 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 농민들에 땅 나눠준 韓·日·대만 … 산업화 토대 됐다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 전국 휘발유값 26원 하락…산업장관 “최고가격제 효과 나타나” - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

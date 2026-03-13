@@ -45,6 +45,10 @@ async function handleRoute() {
                 const { initVideoView } = await import('./operator_video.js?v=' + Date.now());
                 await initVideoView(app);
                 break;
+            case '#memory':
+                const { initMemoryView } = await import('./operator_memory.js?v=' + Date.now());
+                await initMemoryView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

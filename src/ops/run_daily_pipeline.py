@@ -211,6 +211,33 @@ def run_agent(agent_module: str, description: str):
         print(f"[Pipeline] ❌ Error running {agent_module}: {e}")
         return False
 
+def run_memory_update():
+    """PHASE Memory Update: Record topics and detect patterns."""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE Memory Update: NARRATIVE MEMORY STARTED")
+    try:
+        from src.memory.narrative_memory_engine import NarrativeMemoryEngine
+        from src.memory.narrative_pattern_detector import NarrativePatternDetector
+        from src.utils.date_utils import get_kst_ymd
+        
+        engine = NarrativeMemoryEngine(project_root)
+        detector = NarrativePatternDetector(project_root)
+        
+        target_date = os.environ.get("HOIN_TARGET_DATE")
+        ymd = target_date if target_date else get_kst_ymd()
+        
+        print(f"[Pipeline] Recording topics for {ymd}...")
+        engine.record_today_topics(ymd)
+        
+        print("[Pipeline] Running pattern detection...")
+        detector.run_analysis()
+        
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Error running Narrative Memory: {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -246,6 +273,9 @@ def main():
 
     # 2.9 [STEP-20] Portfolio Relevance Engine (Priority Stock Basket)
     run_agent("src.ops.portfolio_relevance_engine", "PHASE 2.9: PORTFOLIO RELEVANCE ENGINE (STEP-20)")
+
+    # 2.10 [STEP-24] Narrative Memory Engine
+    run_memory_update()
 
     # Step 3: Generate Dashboard & Publishing
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
