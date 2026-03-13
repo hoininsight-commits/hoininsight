@@ -94,5 +94,5 @@ Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usd
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 15 candidate(s) survived survival rules.
+Gate Filter Result: 14 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
