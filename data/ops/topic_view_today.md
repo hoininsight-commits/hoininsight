@@ -12,7 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 美 주유소 휘발유 3.5달러 넘었다… 4달러가 트럼프 ‘정치 위기선’ - 조선일보 (ID: unknown)
+### 국제유가, 호르무즈 봉쇄 위기에 100달러 돌파 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,7 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제 (ID: unknown)
+### 주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,17 +37,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 트럼프 행정부, 유가 억제를 위해 존스 법 면제 예정 - Bloomberg By Investing.com - Investing.com 한국어 (ID: unknown)
+### 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 유가에 놀란 백악관, '美선박만 美항구간 운송' 30일 면제 검토(종합) - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,17 +77,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 美 비행기서 여성 '강제 하차' 이유가…조회수 대박 터졌다 - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,17 +87,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### '비료 대란' 공포 현실로?…남해화학, 이란 사태에 주가 날개 - 핀포인트뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 (ID: unknown)
+### "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 (ID: unknown)
+### 국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이동채 창업주의 등장…에코프로 소재 풀라인업 참관 [인터배터리 2026] - MTN 머니투데이방송 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

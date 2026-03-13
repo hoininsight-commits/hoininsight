@@ -81,7 +81,7 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 美 주유소 휘발유 3.5달러 넘었다… 4달러가 트럼프 ‘정치 위기선’ - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 국제유가, 호르무즈 봉쇄 위기에 100달러 돌파 - 지디넷코리아 (Google_News_KR_Economy)
   - [NEWS] 최고가격제 첫날 주유소 기준 ‘리터당 1884원’…국제유가는 치솟아 [지금뉴스] - KBS 뉴스 (Google_News_KR_Economy)
   - [NEWS] 국제유가 급등에 환율 이틀째 올라…1,490원대로 출발 - 한국무역협회-KITA.NET (Google_News_KR_Economy)
 
@@ -185,26 +185,26 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 美 주유소 휘발유 3.5달러 넘었다… 4달러가 트럼프 ‘정치 위기선’ - 조선일보 | Structural implication: '美 주유소 휘발유 3.5달러 넘었다… 4달러가 트럼프 ‘정치 위기선’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 국제유가, 호르무즈 봉쇄 위기에 100달러 돌파 - 지디넷코리아 | Structural implication: '국제유가, 호르무즈 봉쇄 위기에 100달러 돌파 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 최고가격제 첫날 주유소 기준 ‘리터당 1884원’…국제유가는 치솟아 [지금뉴스] - KBS 뉴스 | Structural implication: '최고가격제 첫날 주유소 기준 ‘리터당 1884원’…국제유가는 치솟아 [지금뉴스] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가 급등에 환율 이틀째 올라…1,490원대로 출발 - 한국무역협회-KITA.NET | Structural implication: '국제유가 급등에 환율 이틀째 올라…1,490원대로 출발 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제 | Structural implication: '진작 담아두길 잘했네…"이 와중에 10% 넘게 뛰었다" 환호 [분석+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제 | Structural implication: '주도주가 회복도 더 빠르다…반도체·증권·원전 고속 반등 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - v.daum.net | Structural implication: '“내가 주식을 잘하는 줄 알았다”…급등락 맛 본 개미들, ETF로 대거 피신 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
-| 트럼프 행정부, 유가 억제를 위해 존스 법 면제 예정 - Bloomberg By Investing.com - Investing.com 한국어 | Structural implication: '트럼프 행정부, 유가 억제를 위해 존스 법 면제 예정 - Bloomberg By Investing.com - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
-| 결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보 | Structural implication: '결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어 | Structural implication: '골드만삭스 "26만 전자·135만 닉스 간다" 삼성전자 ·SK하이닉스 목표가 올려 By The Guru - Investing.com 한국어' suggests a shift in NEWS dynamics. | LOW |
+| 유가에 놀란 백악관, '美선박만 美항구간 운송' 30일 면제 검토(종합) - 연합뉴스 | Structural implication: '유가에 놀란 백악관, '美선박만 美항구간 운송' 30일 면제 검토(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보 | Structural implication: '결국 유가 낮추는 열쇠는 이란... 비축유 방출도 소용 없다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 메모리 반도체에도 전쟁 불똥… D램값 보름새 30% 급등 - 동아일보 | Structural implication: '메모리 반도체에도 전쟁 불똥… D램값 보름새 30% 급등 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 중동 전쟁 여파…롯데케미칼·LG화학, 불가항력 가능성 공지 - 연합인포맥스 | Structural implication: '중동 전쟁 여파…롯데케미칼·LG화학, 불가항력 가능성 공지 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스 | Structural implication: '과기부, AI 결합 'K-문샷' 프로젝트로 국가 8대 과제 해결 나선다 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | 한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz | Structural implication: '한미약품 박재현 대표 연임 좌초 무게…새 대표에 황상연 유력 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 美 경제에 드리워지는 스태그플레이션 우려…‘퍼펙트 스톰’ 마주한 연준 - 조선일보 | Structural implication: '美 경제에 드리워지는 스태그플레이션 우려…‘퍼펙트 스톰’ 마주한 연준 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 美 비행기서 여성 '강제 하차' 이유가…조회수 대박 터졌다 - 한국경제 | Structural implication: '美 비행기서 여성 '강제 하차' 이유가…조회수 대박 터졌다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레 | Structural implication: '국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아 | Structural implication: '삼성SDI, 첫 전고체 배터리로 파우치 택한 이유 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | [단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제 | Structural implication: '[단독] 화약고 호르무즈에…당국, 보험사 긴급소집해 선박보험 점검 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스 | Structural implication: '설탕·밀가루·전분당 이어 돼지고기 담합 적발…선진 등 9개사 과징금(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | '비료 대란' 공포 현실로?…남해화학, 이란 사태에 주가 날개 - 핀포인트뉴스 | Structural implication: ''비료 대란' 공포 현실로?…남해화학, 이란 사태에 주가 날개 - 핀포인트뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보 | Structural implication: '이마트에 돼지고기 납품가 담합...도드람푸드 등 9개 업체, 과징금 31억6500만원 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제 | Structural implication: '"섬 주민들 외출도 자제"…중동 전쟁 이후 '초비상' 걸린 까닭 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보 | Structural implication: '국토장관 “보유세 올린다…장기보유자 세제혜택도 재고” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 이동채 창업주의 등장…에코프로 소재 풀라인업 참관 [인터배터리 2026] - MTN 머니투데이방송 | Structural implication: '이동채 창업주의 등장…에코프로 소재 풀라인업 참관 [인터배터리 2026] - MTN 머니투데이방송' suggests a shift in NEWS dynamics. | LOW |
 | “노르딕 맞춤형 원전 풀가동”…현대건설, 북유럽 에너지 전환 핵심 파트너로 | Structural implication: '“노르딕 맞춤형 원전 풀가동”…현대건설, 북유럽 에너지 전환 핵심 파트너로' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 장동혁, 오세훈 공천 미신청에 “공천은 공정이 생명” | Structural implication: '[속보] 장동혁, 오세훈 공천 미신청에 “공천은 공정이 생명”' suggests a shift in NEWS dynamics. | LOW |
 | 스마트치유산업포럼-국립대만대, 국제협력 나선다 | Structural implication: '스마트치유산업포럼-국립대만대, 국제협력 나선다' suggests a shift in NEWS dynamics. | LOW |
