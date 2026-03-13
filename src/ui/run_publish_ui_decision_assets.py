@@ -158,6 +158,37 @@ def _publish_today() -> Optional[Dict]:
                     pass # Placeholder logic removed. Deliver original engine result.
             dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e: print(f"[PUBLISH] error in _publish_today: {e}"); file_date = kst_date
+
+    # [STEP-20] Enrich today.json with Portfolio Relevance summary
+    try:
+        pr_path = DATA_OPS / "portfolio_relevance.json"
+        if pr_path.exists() and dest.exists():
+            pr_data = json.loads(pr_path.read_text(encoding="utf-8"))
+            today_data = json.loads(dest.read_text(encoding="utf-8"))
+            if isinstance(today_data, dict):
+                theme = pr_data.get("top_portfolio_theme", {})
+                today_data["portfolio_focus"] = theme.get("portfolio_focus", "")
+                today_data["portfolio_theme"] = theme.get("theme", "")
+                today_data["core_picks"] = [
+                    {"name": p["name"], "ticker": p["ticker"], "score": p["portfolio_relevance_score"],
+                     "impact_direction": p["impact_direction"], "action_note": p["action_note"]}
+                    for p in pr_data.get("core_picks", [])[:5]
+                ]
+                today_data["tactical_picks"] = [
+                    {"name": p["name"], "ticker": p["ticker"], "score": p["portfolio_relevance_score"],
+                     "impact_direction": p["impact_direction"], "action_note": p["action_note"]}
+                    for p in pr_data.get("tactical_picks", [])[:5]
+                ]
+                today_data["watchlist_picks"] = [
+                    {"name": p["name"], "ticker": p["ticker"], "score": p["portfolio_relevance_score"],
+                     "impact_direction": p["impact_direction"], "action_note": p["action_note"]}
+                    for p in pr_data.get("watchlist_picks", [])[:5]
+                ]
+                dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
+                print(f"[PUBLISH] ✅ Portfolio Relevance merged into today.json")
+    except Exception as e:
+        print(f"[PUBLISH] ⚠️ Portfolio Relevance merge failed: {e}")
+
     return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
 
 def _publish_editorial() -> List[Dict]:
@@ -249,6 +280,7 @@ def _publish_ops_assets():
         "topic_predictions.json",
         "narrative_propagation.json",
         "capital_flow_impact.json",
+        "portfolio_relevance.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json"
     ]

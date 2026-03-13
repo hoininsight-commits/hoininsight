@@ -243,7 +243,10 @@ def main():
     
     # 2.8 [A5] Video Agent (Script & Stock Linkage)
     run_agent("src.ops.agents.video_agent", "PHASE 2.8: VIDEO AGENT (A5)")
-    
+
+    # 2.9 [STEP-20] Portfolio Relevance Engine (Priority Stock Basket)
+    run_agent("src.ops.portfolio_relevance_engine", "PHASE 2.9: PORTFOLIO RELEVANCE ENGINE (STEP-20)")
+
     # Step 3: Generate Dashboard & Publishing
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
