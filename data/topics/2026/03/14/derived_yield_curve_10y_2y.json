@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-14T09:45:39Z",
+    "ts_utc": "2026-03-14T15:37:25Z",
     "dataset_id": "derived_yield_curve_10y_2y",
     "topic_id": "derived_yield_curve_10y_2y::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/14/derived_yield_curve_10y_2y.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/14/derived_yield_curve_10y_2y.json"
     },
     "rationale": "[L2] Z-Score -2.51 >= 2.0 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
