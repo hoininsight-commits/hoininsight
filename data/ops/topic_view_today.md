@@ -12,17 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 석유 최고가제 이튿날 기름값 두자릿수 하락세 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “가격 통제하고 비축유 방출” 각국 고유가 대응 안간힘…한국은 ‘추경’까지 꺼낸다 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 갖은 악재 속 긴장 이어지는 증시···엔비디아 GTC ‘반등 트리거’ 될까 - 시사저널e (ID: unknown)
+### 석유 최고가격제 둘째날, 기름값 두 자릿수 하락…휘발유 1851.9원 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,32 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 루시드, 2인승 로보택시 공개…"테슬라 사이버캡 겨냥" - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 트럼프 밈코인에 투자할만하네…트럼프, 고액투자자 297명과 마러라고서 점심 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “아침 밥으로 먹고 운동하고 먹고, 계란 없으면 안되는데”…또 한판에 7천원 껑충 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [속보] 미, 강제노동 생산 수입품 관련 301조 조사…한국 등 60개국 - 연합뉴스TV (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 글로벌 식량시장 '초비상'…호르무즈 봉쇄가 불러온 '비료 쇼크' [글로벌 머니 X파일] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "한국서도 故 제인 구달 박사 나올 수 있게…고유 브랜드 'K-사이언스' 추진" - 동아사이언스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,17 +37,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 산업용 전기요금, 낮엔 싸게 밤엔 비싸게 개편…태양광 공급능력에 맞춰 - 한겨레 (ID: unknown)
+### ‘(-1)-(-1)=0’ 대통령의 셈법…부동산에서 통할까? - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 관세청도 석유 매점매석 차단‥수입 신고 미루면 가산세 부과 - MBC 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 업황은 냉랭 현장은 북적…7.7만명 몰린 인터배터리 이모저모 - 지디넷코리아 (ID: unknown)
+### 글로벌 식량시장 '초비상'…호르무즈 봉쇄가 불러온 '비료 쇼크' [글로벌 머니 X파일] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,7 +52,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "한국, 머뭇거릴 시간이 없다" 석유 막히면 가장 치명적인 나라 [기후인사이트 21 | 인싸M] - MBC 뉴스 (ID: unknown)
+### 다이소 또 일냈다…5000원짜리 내놓자마자 바로 '품절 대란' [현장+] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 현대차, 美사고에 팰리세이드 일부사양 판매 중단 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 업황은 냉랭 현장은 북적…7.7만명 몰린 인터배터리 이모저모 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 산업용 전기요금, 낮엔 싸게 밤엔 비싸게 개편…태양광 공급능력에 맞춰 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “가격 통제하고 비축유 방출” 각국 고유가 대응 안간힘…한국은 ‘추경’까지 꺼낸다 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,112 +82,132 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국제유가 급등, 코스피 3% 하락 출발…이란전 장기화 우려 - 한겨레 (ID: unknown)
+### [단독] 캐시워크 돈버는퀴즈 정답 3월 14일 - bntnews.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 트럼프 2기 아킬레스건…美 30년 국채금리 '마의 5%' 돌파 초읽기 - 연합인포맥스 (ID: unknown)
+### 코스피, 유가 불안에 5500선 아래로 … 원달러 환율 1500원 턱밑 - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이정현 “국민의힘은 ‘의식불명’ 상태…살리려면 전기충격기 밖에 없었는데” (ID: unknown)
+### “시중보다 저렴하게 거주”…목돈 마련할 동안 지낼 임대·청년주택은 [캥거루족 탈출기⑨] - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "한국, 머뭇거릴 시간이 없다" 석유 막히면 가장 치명적인 나라 [기후인사이트 21 | 인싸M] - MBC 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 트럼프 밈코인에 투자할만하네…트럼프, 고액투자자 297명과 마러라고서 점심 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 이번 화이트데이 치트키는 버터떡...두쫀쿠 인기 이어간다 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “눈 밑 지방 끌어올려”…‘6년 만 복귀’ 김건모, 밝아진 근황 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 북한, 동쪽 방향으로 미상 발사체 발사 (ID: unknown)
+### “못 만나게 하면 죽이겠다”…전 여친 살해 예고 30대, 잠복수사에 긴급체포 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한국정부에 소송건다는 쿠팡투자사, 2천억원치 지분 더샀네 (ID: unknown)
+### 1230조원 손에 든 머스크…2년 연속 ‘세계 최고 부자’ [이번주인공] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “남친, 갤럭시 쓴다면 약간 싫어”…76만 유튜버 기피 발언에 불붙은 휴대폰 계급론 (ID: unknown)
+### 전자발찌·스마트워치도 ‘살인’ 못 막았다…‘스토킹 피해’ 20대 여성 숨져 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ​노잼도시 대전에 100가지 가볼 곳이 있다는 사람들 [여책저책] (ID: unknown)
+### 청와대, 북한 탄도미사일 발사에 긴급안보점검회의…“도발 즉각 중단 촉구” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 코리아에셋투자증권, 연 4회 나눔약속…이삭의집과 결연 (ID: unknown)
+### “도전 자체가 감동”…서현, ‘특혜’ 논란 딛고 오케스트라 협연 성료 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 美서 전동시트 관련 사망사고…현대차, 팰리세이드 일부사양 판매 중단·리콜 조치 (ID: unknown)
+### [영상] 하늘에서 갑자기 피가 쏟아졌다…유럽 뒤흔든 ‘붉은 비’ 정체는? (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “성추행 아니다”…‘강사 임용 취소’ 한지상, 녹취록으로 직접 해명 (ID: unknown)
+### 조국-한동훈 설전…“역시 조선제일혀” vs “아첨하면 군산 보내주나” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이번 화이트데이 치트키는 버터떡...두쫀쿠 인기 이어간다 (ID: unknown)
+### “첫 올림픽서 새 역사 썼다”…이재명 대통령, ‘메달 4개’ 김윤지 축하 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 미국의 하르그섬 공격에…이란, 중동내 석유시설 반격 경고<로이터> (ID: unknown)
+### 10명중 7명 “국힘 비호감”, 오세훈·한동훈·이준석 연대하란 말까지 나오지만… (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 남양주서 여성 살해 후 도주한 전자발찌 착용자 검거 (ID: unknown)
+### 쓰레기봉투 속 2500만원 주인 한달째 ‘무소식’…신고자에게 돈다발 넘어가나 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이준석 모친에 ‘젓가락 발언’ 의도적 모방 악플…성폭력처벌법 위반 송치 (ID: unknown)
+### 이재명 대통령이 부자 되는 방법이라고 추천…주가조작 신고 독려 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “살려달라” 119 신고했는데 허사… 야근하던 공무원 끝내 숨진 채 발견 (ID: unknown)
+### “진짜 공격 안하지”…봉쇄된 이란 호르무즈 ‘무사 통과’ LPG운반선의 정체 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “가격 통제하고 비축유 방출” 각국 고유가 대응 안간힘…한국은 ‘추경’까지 꺼낸다 (ID: unknown)
+### “엄마, 배가 계속 아파요” 병원 갔더니…4세 아들 뱃속에 숙변 아닌 자석이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 석유 최고가제에 기름값 또 내렸네 (ID: unknown)
+### “이미 뇌에 칩 심었다고”…시각장애 유튜버, 머스크 임상실험 선정 루머 해명 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 왕사남에 ‘단종앓이’ 열풍 불자…13년전 ‘이정재·송광호’ 관상도 떴다 (ID: unknown)
+### 삼성디스플레이 노사, ‘임금 인상률 6.2%’ 잠정합의…5년 연속 무분규 타결되나 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 남양주 길거리서 전자발찌 대상자, 여성 살해 후 도주…경찰 추적중 (ID: unknown)
+### 트럼프, 김정은에 ‘러브콜’ 보냈는데…북한, 탄도미사일로 무력시위 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 한국 야구, 도미니카공화국에 완패…17년 만의 WBC 4강 진출 무산 (ID: unknown)
+### “여기서 밀리면 나라 망한다”…일본의 결단은 과학기술 ‘560조 예산 확대’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 아파트 주차장서 초면인 여성에게…대낮의 강도질 이유는 사채빚 (ID: unknown)
+### “시중보다 저렴하게 거주”…목돈 마련할 동안 지낼 임대·청년주택은 [캥거루족 탈출기⑨] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 선두는 챗GPT, 추천은 제미나이…이제 반값 구독으로 승부 보겠다는데 (ID: unknown)
+### 장동혁, 이정현에 ‘복귀 결단’ 공개 호소 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
