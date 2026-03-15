@@ -1,10 +1,10 @@
-# Investment OS Operational Brief (2026-03-15)
+# Investment OS Operational Brief (2026-03-16)
 
 ## 🌍 Market Regime
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `DEFENSIVE_BIAS`
-- **Focus**: Rates, Safety, Risk, Policy, Liquidity
+- **Focus**: Policy, Safety, Liquidity, Risk, Rates
 
 ## 🚫 Do Not Do
 - 무리한 추격 매수
