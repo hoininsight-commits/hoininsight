@@ -57,6 +57,10 @@ async function handleRoute() {
                 const { initCycleView } = await import('./operator_cycles.js?v=' + Date.now());
                 await initCycleView(app);
                 break;
+            case '#evolution':
+                const { initEvolutionView } = await import('./operator_evolution.js?v=' + Date.now());
+                await initEvolutionView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

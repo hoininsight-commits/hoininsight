@@ -1,0 +1,30 @@
+[
+  {
+    "theme": "General Interest",
+    "current_evolution_stage": "SATURATING",
+    "successor_themes": [
+      {
+        "theme": "AI Infrastructure",
+        "transition_frequency": 7,
+        "evolution_strength": 1.0
+      }
+    ],
+    "dominant_successor": "AI Infrastructure",
+    "next_likely_theme": "AI Infrastructure",
+    "total_transitions": 7
+  },
+  {
+    "theme": "AI Infrastructure",
+    "current_evolution_stage": "SATURATING",
+    "successor_themes": [
+      {
+        "theme": "General Interest",
+        "transition_frequency": 7,
+        "evolution_strength": 1.0
+      }
+    ],
+    "dominant_successor": "General Interest",
+    "next_likely_theme": "General Interest",
+    "total_transitions": 7
+  }
+]

@@ -242,6 +242,12 @@ def run_memory_update():
         from src.memory.narrative_cycle_detector import NarrativeCycleDetector
         cycle_detector = NarrativeCycleDetector(project_root)
         cycle_detector.run_analysis()
+
+        # [STEP-27] Theme Evolution Analysis
+        print("[Pipeline] Running Theme Evolution Engine...")
+        from src.memory.theme_evolution_engine import ThemeEvolutionEngine
+        evolution_engine = ThemeEvolutionEngine(project_root)
+        evolution_engine.run_analysis()
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
         return True
