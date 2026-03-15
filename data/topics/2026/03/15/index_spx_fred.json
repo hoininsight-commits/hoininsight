@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-15T09:45:52Z",
+    "ts_utc": "2026-03-15T15:38:49Z",
     "dataset_id": "index_spx_fred",
     "topic_id": "index_spx_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/15/index_spx_fred.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/15/index_spx_fred.json"
     },
     "rationale": "[L2] Z-Score -2.50 >= 2.0 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
