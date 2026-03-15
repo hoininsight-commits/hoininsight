@@ -12,57 +12,37 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 이란發 위기에 사모펀드 불안까지, 복합악재에 '2008년 글로벌 금융위기' 소환 … '리먼 악몽' 현실되나 - 뉴데일리 경제 (ID: unknown)
+### 석유 최고가격제 시행 사흘째…주유소 가격 인하 '거북이 속도' - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이란 사태에 요동치는 원자재 시장…사태 길어지면 유가 160달러 - 연합인포맥스 (ID: unknown)
+### 은행 주담대 상단 6.5%↑…2년5개월 내 최고 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대출 규제에 은행도 상호금융도 대출 중단… 대부업만 웃는다 - 조선비즈 - Chosunbiz (ID: unknown)
+### '트럼프책사' 나바로 "이란위협 제거시 국제유가 60달러 밑돌것" - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 석유 최고가격제 사흘째…주유소 기름값 하락세 지속 - 전국매일신문 (ID: unknown)
+### 납사 품귀…미 동맹국 한국·일본 석유화학 위기 심화 - 연합뉴스TV (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 화학연, 순환형 저탄소 촉매 기술 개발 - 충청뉴스 (ID: unknown)
+### 월가 전문가 "현 금융시장, 2008년 위기 직전과 유사" - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 세계 최초 '로봇청소기' 만들었는데…한국서 '600억' 날벼락 [최종석의 차트 밖은 유럽] - 한국경제 (ID: unknown)
+### 삼성에 반도체 맡겼던 테슬라 '파격 선언'…"직접 만들겠다" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뉴욕증시 유가 상승·경제지표 악화에 모두 하락, 다우·S&P500 올해 최저치 - 비즈니스포스트 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [봇규가 간다] AW 2026 ③ | 손 끝에서 시스템까지, 로봇 지능이 현장을 장악하는 법 - 헬로티 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼성전자 노조 '한지붕 두가족' … 반도체 휘파람에 스마트폰·가전 직원들 소외 불만 - 뉴데일리 경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 억만장자 투자자 드러켄밀러 "10년 내 스테이블코인이 글로벌 결제 장악" - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘영끌·빚투족 경악’…주담대 금리 7% 근접, 2년5개월만 최고 - 문화일보 (ID: unknown)
+### 유가 꿈틀에 환율 또 1500원 뚫렸다 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,7 +52,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “전 국민 에너지바우처 지급?…중동 불안 틈탄 보이스피싱입니다” - 경향신문 (ID: unknown)
+### 어제는 “어서 타!” 오늘은 “당장 내려!”… 롤러코스터 장에 개미들 ‘비명’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 유선 이어폰 판매 급증, 블루투스 기기에 대한 반발은 왜? - BBC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 업황은 냉랭 현장은 북적…7.7만명 몰린 인터배터리 이모저모 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘서울에 급매물이 쏟아진다’…고점보다 15%↓...계약 속도도 점점 빨라져 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,127 +82,132 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 네이처셀 협력 일본 줄기세포 클리닉서 한국인 환자 사망 - 아시아경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 업황은 냉랭 현장은 북적…7.7만명 몰린 인터배터리 이모저모 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 꺾인 강남 집값에 하락 도미노 조짐…서울 외곽은 '견조' 대조 - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 다이소 또 일냈다…5000원짜리 내놓자마자 바로 '품절 대란' [현장+] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 400만 ‘삼전·하닉’ 개미들 ‘고점 공포’...증권가에선 “삼성전자 30만원·하이닉스 135만원 가능” - 조선일보 (ID: unknown)
+### WSJ "미국이 '호르무즈 해협' 확보 어려운 5가지 이유 있다" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “지금 기름 ‘만땅’ 채워야 하나?”…석유 최고가격제 효과 사흘째 이어져 (ID: unknown)
+### 메타, AI 투자 여파로 직원 20% 해고 검토...역대 최다 1만6000명 - AI타임스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “이게 세계 최고 부자 집?”...머스크 10평 임대주택 화제 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 넥슨, 메이플 23주년 로드맵 공개…'롯데월드 협업·BTS 진 복귀' - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 산업용 전기료, 낮엔 내리고 밤엔 올리고 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “차라리 찜질방에 묵지”…K-캡슐호텔 찾았다가 봉변당한 관광객들 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 4000만원 보험금 청구하니 현미경 검증…“뇌종양 내 출혈도 뇌출혈”[어쩌다 세상이] (ID: unknown)
+### 엔비디아 톱픽에 기술력도 확실한데 찜찜…‘PER 202배’ 이 종목 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이 대통령, 3·15 유족에 정부 첫 공식사과…“진심 어린 사과와 위로” (ID: unknown)
+### “정 안되면 노가다라도 뛰어야지”…그마저도 월급 깎인 174만원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### ‘1일2아아’ 한국인 최애커피는 이곳…가성비로 1황 차지했다는데 (ID: unknown)
+### 세번이나 정읍 간 조국 “혁신당도 호남의 자식”…지지 호소 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 하나금융, SC그룹과 맞손…글로벌 사업·스테이블코인 협력 (ID: unknown)
+### 호르무즈 파병 숙제받은 한국…판 커지는 이란전쟁 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 현대차 팰리세이드 끼임 사고···판매 중단·리콜 조치 (ID: unknown)
+### [속보]사우디 출발 軍수송기 서울공항 도착…한국인 204명 탑승 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 르노코리아, 쿠페형 SUV ‘아르카나’ 2027년형 출시 (ID: unknown)
+### 트럼프 만난 김민석 ‘20분 깜짝면담’…“북미대화 해법듣자 관심” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “전국민 에너지 바우처 지급” 이 문자, 사기입니다…금감원, 소비자 경보 발령 (ID: unknown)
+### 전쟁 판키우는 美 … 韓에 파병 숙제 던졌다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “빅 브랜드 다시 모십니다”… 다시 불붙은 면세점 ‘럭셔리 전쟁’ (ID: unknown)
+### 미래에셋 '10년의 기적' 시총 10배로 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “편의점표가 제일 무섭네”… 간편식 시장 뒤흔든 ‘가성비 PB’ (ID: unknown)
+### [단독] LGD, 中TCL에 OLED 패널 첫 공급 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “점심값 5천 원의 행복”… 햄버거업계, 고물가 시대 ‘런치 플레이션’ 정면 돌파 (ID: unknown)
+### "AI만 있으면 돼" 1인 창업 빅뱅 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “PK는 진작 내줬고 TK도 불안”…국민의힘 지지율, 뭘해도 답 안나오네 (ID: unknown)
+### "지금은 AI 버블 아니다" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “이자만 무려 2만4000%”…채무자들 숨통 조인 불법 대부 일당 (ID: unknown)
+### '강남 엑소더스' 기업들 … 임대료 싼 고덕·마곡行 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 현대차 무인소방로봇 영상...공개 12일만 3천만뷰 돌파 (ID: unknown)
+### AI칩 자체생산 속도내는 머스크 …"7일내 공장 착공" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “2027학년도 수능서 과탐 응시 역대 최소 가능성” (ID: unknown)
+### 이 대통령 “몇몇 중간서 해먹어 밑빠진 독”…정부 문화 지원 어려움 토로 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “교육부장관님, 뭐하고 계시나요?”…교육비 등골 휘는 아빠엄마들 “답답해” (ID: unknown)
+### 美도 이란도 "휴전협상 거부"…전쟁 길어질듯 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 에쓰오일, ‘2026년 올해의 광고상’ 최우수상 수상 (ID: unknown)
+### 레드라인 넘은 미국…'이란 경제·석유 생명줄' 하르그섬 때렸다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 도쿄 벚꽃 19일께 개화…3월 말 만개 전망 (ID: unknown)
+### "中 선박만 호르무즈 통과"…이란, 전쟁자금 확보 나서 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [속보] 국힘 공관위 “서울시장 후보 추가 공모…오세훈 참여 기대” (ID: unknown)
+### '환율 1500원' 뉴노멀 되나 통화가치 하락률 세계최대 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 머스크 “테슬라 AI칩 생산공장 ‘테라팹’ 일주일 내 시작” (ID: unknown)
+### "현 금융시장 2008년 금융위기 직전과 비슷" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
