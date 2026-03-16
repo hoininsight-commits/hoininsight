@@ -165,5 +165,19 @@
   "liquidity_state": "NEUTRAL",
   "macro_regime": "LATE_CYCLE_TIGHTENING",
   "risk_state": "NEUTRAL",
-  "structural_focus": "Semiconductor Supply Chain Reshuffle"
+  "structural_focus": "Semiconductor Supply Chain Reshuffle",
+  "top_contradictions": [
+    {
+      "name": "AI & Semiconductor Capacity Friction",
+      "type": "Growth vs Capacity",
+      "strength": 0.63,
+      "confidence": "HIGH",
+      "affected_sectors": [
+        "Technology",
+        "Semiconductors",
+        "Infrastructure"
+      ],
+      "reason": "AI narrative remains hyper-strong while fundamental foundry/capacity reshuffle is ongoing."
+    }
+  ]
 }
