@@ -4,7 +4,7 @@
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `DEFENSIVE_BIAS`
-- **Focus**: Safety, Rates, Risk, Policy, Liquidity
+- **Focus**: Risk, Liquidity, Policy, Rates, Safety
 
 ## 🚫 Do Not Do
 - 무리한 추격 매수
