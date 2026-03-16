@@ -69,6 +69,21 @@ def run_collection():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1: DATA COLLECTION COMPLETED\n")
 
 
+def run_market_benchmark():
+    """PHASE 1.2: Market Prediction Benchmark Engine (STEP-33)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.2: MARKET PREDICTION BENCHMARK STARTED")
+    try:
+        from src.prediction.run_prediction import PredictionRunner
+        runner = PredictionRunner(project_root)
+        runner.run_all()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.2: MARKET PREDICTION BENCHMARK COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Market Prediction Benchmark failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_narrative_engine():
     """Run the Narrative Engine (Phase 1.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
@@ -285,6 +300,9 @@ def main():
     
     # Step 1: Collect Data
     run_collection()
+    
+    # Step 1.2: [STEP-33] Market Prediction Benchmark
+    run_market_benchmark()
     
     # Step 2: Run Engine Components
     # 2.1 Narrative Engine (Legacy/Phase 1.5)

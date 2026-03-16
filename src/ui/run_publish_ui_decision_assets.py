@@ -220,6 +220,27 @@ def _publish_today() -> Optional[Dict]:
     except Exception as e:
         print(f"[PUBLISH] ⚠️ Auto Script merge failed: {e}")
 
+    # [STEP-33] Enrich today.json for Market Prediction Benchmark
+    try:
+        mp_path = DATA_OPS / "market_prediction_benchmark.json"
+        if mp_path.exists() and dest.exists():
+            mp_data = json.loads(mp_path.read_text(encoding="utf-8"))
+            today_data = json.loads(dest.read_text(encoding="utf-8"))
+            if isinstance(today_data, dict):
+                today_data["market_state"] = mp_data.get("benchmark_summary", {}).get("market_state", "")
+                today_data["liquidity_state"] = mp_data.get("liquidity", {}).get("state", "")
+                today_data["macro_regime"] = mp_data.get("macro_regime", {}).get("regime", "")
+                today_data["risk_state"] = mp_data.get("risk", {}).get("state", "")
+                
+                shifts = mp_data.get("structural_shift", {}).get("active_shifts", [])
+                if shifts:
+                    today_data["structural_focus"] = shifts[0].get("theme", "")
+                
+                dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
+                print(f"[PUBLISH] ✅ Market Prediction Benchmark merged into today.json")
+    except Exception as e:
+        print(f"[PUBLISH] ⚠️ Market Prediction Benchmark merge failed: {e}")
+
     return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
 
 def _publish_editorial() -> List[Dict]:
@@ -324,7 +345,12 @@ def _publish_ops_assets():
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json",
         "../ontology/topic_resolved.json",
-        "../ontology/topic_ontology.json"
+        "../ontology/topic_ontology.json",
+        "liquidity_state.json",
+        "macro_regime.json",
+        "risk_state.json",
+        "structural_shift.json",
+        "market_prediction_benchmark.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")

@@ -1,0 +1,60 @@
+{
+  "date": "2026-03-16",
+  "liquidity": {
+    "state": "NEUTRAL",
+    "score": 50,
+    "summary": "Market liquidity is NEUTRAL with a score of 50. Drivers include M2 money supply stable/expanding.",
+    "drivers": [
+      "M2 money supply stable/expanding"
+    ],
+    "updated_at": "2026-03-16 14:34:37"
+  },
+  "macro_regime": {
+    "regime": "LATE_CYCLE_TIGHTENING",
+    "confidence": 0.6,
+    "summary": "Currently in LATE_CYCLE_TIGHTENING regime. Persistence in inflation (CPI: 327.46%), Inflation pressure increasing, Strong economic expansion (GDP: 31442.483%), Tight labor market (Unemployment: 4.4%).",
+    "drivers": [
+      "Persistence in inflation (CPI: 327.46%)",
+      "Inflation pressure increasing",
+      "Strong economic expansion (GDP: 31442.483%)",
+      "Tight labor market (Unemployment: 4.4%)"
+    ],
+    "updated_at": "2026-03-16 14:34:37"
+  },
+  "risk": {
+    "state": "NEUTRAL",
+    "score": 40,
+    "summary": "Market stance is NEUTRAL. Tight credit conditions.",
+    "drivers": [
+      "Tight credit conditions"
+    ],
+    "updated_at": "2026-03-16 14:34:37"
+  },
+  "structural_shift": {
+    "active_shifts": [
+      {
+        "theme": "Semiconductor Supply Chain Reshuffle",
+        "intensity": "MEDIUM",
+        "summary": "구조적 재정의 패턴 감지: '' 키워드 또는 프레임 매칭. 시장 인식 변화 구간.",
+        "linked_sectors": [
+          "Technology",
+          "Semiconductors",
+          "Supply Chain"
+        ]
+      }
+    ],
+    "summary": "Detected 1 active structural shifts, primarily in Semiconductor Supply Chain Reshuffle.",
+    "updated_at": "2026-03-16 14:34:37"
+  },
+  "benchmark_summary": {
+    "market_state": "NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle",
+    "focus": [
+      "M2 money supply stable/expanding",
+      "Strong economic expansion (GDP: 31442.483%)",
+      "Inflation pressure increasing",
+      "Persistence in inflation (CPI: 327.46%)",
+      "Tight labor market (Unemployment: 4.4%)"
+    ]
+  },
+  "updated_at": "2026-03-16 14:34:37"
+}

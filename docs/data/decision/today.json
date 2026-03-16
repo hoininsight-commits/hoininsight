@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-16T12:57:45.387357",
+  "generated_at_kst": "2026-03-16T12:55:02.857782",
   "date": "2026-03-16",
   "blocks": {
     "regime": {
@@ -17,8 +17,8 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 93.0,
-      "sla_breach_count": 3,
+      "system_freshness": 79.1,
+      "sla_breach_count": 9,
       "has_stale_warning": true,
       "7d_success_rate": "7/7"
     }
@@ -33,12 +33,12 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "comm_wti_fred",
-        "index_spx_fred",
-        "crypto_btc_usd_spot_coingecko",
-        "rates_us10y_fred",
-        "derived_yield_curve_10y_2y",
         "index_nasdaq_fred",
+        "index_spx_fred",
+        "rates_us10y_fred",
+        "crypto_btc_usd_spot_coingecko",
+        "derived_yield_curve_10y_2y",
+        "comm_wti_fred",
         "rates_us02y_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",
@@ -158,5 +158,10 @@
     "Diverse",
     "General Interest",
     "Market Neutral"
-  ]
+  ],
+  "market_state": "NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle",
+  "liquidity_state": "NEUTRAL",
+  "macro_regime": "LATE_CYCLE_TIGHTENING",
+  "risk_state": "NEUTRAL",
+  "structural_focus": "Semiconductor Supply Chain Reshuffle"
 }
