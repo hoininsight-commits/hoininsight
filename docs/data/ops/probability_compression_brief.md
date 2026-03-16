@@ -1,8 +1,8 @@
-# Structural Probability Compression Brief (2026-03-16)
+# Structural Probability Compression Brief (2026-03-17)
 
 ## Compression State: **DOWNWARD_BIAS**
-- **Pressure Level**: HIGH
-- **Stability**: FRAGILE
+- **Pressure Level**: MODERATE
+- **Stability**: TRANSITION
 
 ## Scenario Tree
 - **Primary Path**: Defensive Rotation 지속
@@ -11,10 +11,10 @@
 
 ## Decision Compression
 - **Operator Posture**: Cautious Expansion
-- **Risk Band**: NARROW
-- **Conviction State**: Conditional
+- **Risk Band**: NORMAL
+- **Conviction State**: Strong
 
 ## Key Drivers
 - **Regime**: Liquidity TIGHTENING
 - **Timing**: Gear 1 IDLE
-- **Conflict**: High Density
+- **Conflict**: Normal Density

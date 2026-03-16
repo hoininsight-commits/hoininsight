@@ -1,7 +1,7 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-16T18:07:30.675630",
-  "date": "2026-03-16",
+  "generated_at_kst": "2026-03-17T08:35:23.378276",
+  "date": "2026-03-17",
   "blocks": {
     "regime": {
       "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
@@ -36,7 +36,7 @@
         "comm_wti_fred",
         "index_spx_fred",
         "rates_us10y_fred",
-        "derived_yield_curve_10y_2y",
+        "credit_hy_spread_fred",
         "index_nasdaq_fred",
         "rates_us02y_fred",
         "crypto_eth_usd_spot_coingecko"
@@ -47,18 +47,18 @@
       ],
       "pre_structural": null
     },
-    "PRED_20260316_05": "Primary",
-    "PRED_20260316_01": "Secondary"
+    "PRED_20260317_05": "Primary",
+    "PRED_20260317_01": "Secondary"
   },
   "top_topics": [
     {
-      "id": "PRED_20260316_05",
+      "id": "PRED_20260317_05",
       "score": 83.2,
       "intensity": 0.8320000000000001,
       "title": "Policy Radar",
       "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260316_05",
+        "topic_id": "PRED_20260317_05",
         "theme": "Policy Radar",
         "prediction_score": 83.2,
         "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
@@ -78,13 +78,13 @@
       "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "id": "PRED_20260316_01",
+      "id": "PRED_20260317_01",
       "score": 71.85,
       "intensity": 0.7184999999999999,
       "title": "Macro Shock Radar",
       "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260316_01",
+        "topic_id": "PRED_20260317_01",
         "theme": "Macro Shock Radar",
         "prediction_score": 71.85,
         "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
@@ -130,7 +130,7 @@
     "신한지주"
   ],
   "status": "APPROVED",
-  "decision_date": "2026-03-16",
+  "decision_date": "2026-03-17",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
   "portfolio_focus": "Policy Radar",
   "portfolio_theme": "Policy Radar",
