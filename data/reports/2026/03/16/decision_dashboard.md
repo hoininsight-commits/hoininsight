@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 45
+- **Unreviewed**: 40
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=45
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=40
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,8 +78,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 45
-- **Type Breakdown**: NEWS: 45
+- **Count**: 40
+- **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 석유 최고가제 나흘째…경유가격 휘발유 보다 비싼 역전현상 종료 - BBS불교방송 (Google_News_KR_Economy)
   - [NEWS] 골드만 "유가 급등에 세계 GDP 0.3% 감소" - 연합인포맥스 (Google_News_KR_Economy)
@@ -91,11 +91,6 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
-| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
-| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
-| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
-| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
-| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
@@ -183,11 +178,6 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
-| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
-| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
-| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
-| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
-| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -199,22 +189,22 @@
 | 골드만 "유가 급등에 세계 GDP 0.3% 감소" - 연합인포맥스 | Structural implication: '골드만 "유가 급등에 세계 GDP 0.3% 감소" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | '유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV | Structural implication: ''유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | [부동산VIEW] 서울 아파트 가격하락을 견인하는 세 가지 요인 - 비즈니스포스트 | Structural implication: '[부동산VIEW] 서울 아파트 가격하락을 견인하는 세 가지 요인 - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
+| [비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz | Structural implication: '[비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | IEA 긴급비축유 방출 개시… 韓, 시기·방식 저울질 - 문화일보 | Structural implication: 'IEA 긴급비축유 방출 개시… 韓, 시기·방식 저울질 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
-| “이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보 | Structural implication: '“이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| '중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제 | Structural implication: ''중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제 | Structural implication: '"이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레 | Structural implication: '미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰 | Structural implication: '9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰' suggests a shift in NEWS dynamics. | LOW |
+| “삼성전자 제쳤다”…입사하고 싶은 대기업 1위는 이곳 - 동아일보 | Structural implication: '“삼성전자 제쳤다”…입사하고 싶은 대기업 1위는 이곳 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | '제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24 | Structural implication: ''제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
-| SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보 | Structural implication: 'SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스 | Structural implication: '"두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 노보노디스크 對 릴리…美 비만약 시장 ‘알약 전쟁’ 본격화 - 조선비즈 - Chosunbiz | Structural implication: '노보노디스크 對 릴리…美 비만약 시장 ‘알약 전쟁’ 본격화 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| '중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제 | Structural implication: ''중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 한화에어로, 韓美 장관 앞에서 LNG 장기구매 계약 체결 - 연합인포맥스 | Structural implication: '한화에어로, 韓美 장관 앞에서 LNG 장기구매 계약 체결 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보 | Structural implication: '실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 비만 치료제‥"원하면 누구나 처방?" - MBC 뉴스 | Structural implication: '비만 치료제‥"원하면 누구나 처방?" - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr | Structural implication: '[단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| 실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보 | Structural implication: '실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 유행따라 널뛰는 가격…두쫀쿠 이어 봄동까지 몸값 급상승 - 연합뉴스TV | Structural implication: '유행따라 널뛰는 가격…두쫀쿠 이어 봄동까지 몸값 급상승 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | “유가 100달러 넘으면 팔고, S&P500 6600 깨지면 사라?” [잇슈 머니] - KBS 뉴스 | Structural implication: '“유가 100달러 넘으면 팔고, S&P500 6600 깨지면 사라?” [잇슈 머니] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보 | Structural implication: '갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| “당첨되면 9억 시세차익” 영등포자이 디그니티 무순위 청약 16일부터 - 조선일보 | Structural implication: '“당첨되면 9억 시세차익” 영등포자이 디그니티 무순위 청약 16일부터 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 하만, AI 기반 앰프 겸 스피커 ‘JBL 밴드박스’ 2종 출시 | Structural implication: '하만, AI 기반 앰프 겸 스피커 ‘JBL 밴드박스’ 2종 출시' suggests a shift in NEWS dynamics. | LOW |
 | “한국인에 바친다”...‘케데헌’ 오스카 2관왕 등극 [종합] | Structural implication: '“한국인에 바친다”...‘케데헌’ 오스카 2관왕 등극 [종합]' suggests a shift in NEWS dynamics. | LOW |
 | “신축 가뭄 끝?”…5년 만의 분양, 마산합포 ‘신축 갈아타기’ 기대감 커진다 | Structural implication: '“신축 가뭄 끝?”…5년 만의 분양, 마산합포 ‘신축 갈아타기’ 기대감 커진다' suggests a shift in NEWS dynamics. | LOW |
@@ -235,11 +225,6 @@
 | RozeAI, ‘AI 화재예보경보 프로그램’ GS인증 1등급 획득 | Structural implication: 'RozeAI, ‘AI 화재예보경보 프로그램’ GS인증 1등급 획득' suggests a shift in NEWS dynamics. | LOW |
 | “적들에게 공격지점 정보제공”…이란, 스파이 혐의 500명 체포 | Structural implication: '“적들에게 공격지점 정보제공”…이란, 스파이 혐의 500명 체포' suggests a shift in NEWS dynamics. | LOW |
 | 카카오모빌리티·로보티즈, 호텔 로봇 플랫폼 운영모델 검증…“가동률 8배 개선” | Structural implication: '카카오모빌리티·로보티즈, 호텔 로봇 플랫폼 운영모델 검증…“가동률 8배 개선”' suggests a shift in NEWS dynamics. | LOW |
-| [비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz | Structural implication: '[비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| "이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제 | Structural implication: '"이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 지투지바이오, 베링거와 협력 순항…글로벌 A·B·C사와도 협업 - PRESS9 | Structural implication: '지투지바이오, 베링거와 협력 순항…글로벌 A·B·C사와도 협업 - PRESS9' suggests a shift in NEWS dynamics. | LOW |
-| '제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24 | Structural implication: ''제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr | Structural implication: '[단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

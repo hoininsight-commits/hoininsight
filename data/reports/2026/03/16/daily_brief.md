@@ -62,9 +62,9 @@ Narrative Drift Signals:
 
 
 ## OPS HEALTH SNAPSHOT
-⚠️ SLA BREACH DETECTED: 9 axes stale (>6h)
-Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_dart_cb_bw, struct_dart_disposal, struct_krx_foreigner_flow, real_estate_price_index, real_estate_volume, real_estate_unsold
-- System Freshness: 79.1%
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
@@ -94,5 +94,5 @@ Affected: fx_usdkrw_spot_open_er_api, derived_corr_btc_spx_30d, derived_corr_usd
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 18 candidate(s) survived survival rules.
+Gate Filter Result: 19 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
