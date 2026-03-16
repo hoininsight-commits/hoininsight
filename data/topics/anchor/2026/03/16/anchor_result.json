@@ -6,7 +6,8 @@
     "rates_us10y_fred",
     "derived_yield_curve_10y_2y",
     "index_nasdaq_fred",
-    "rates_us02y_fred"
+    "rates_us02y_fred",
+    "crypto_eth_usd_spot_coingecko"
   ],
   "baseline_match": [
     "comm_wti_fred: Volatility Surge (Z=2.73)",
@@ -15,7 +16,8 @@
     "rates_us10y_fred: Volatility Surge (Z=2.63)",
     "derived_yield_curve_10y_2y: Volatility Surge (Z=2.51)",
     "index_nasdaq_fred: Volatility Surge (Z=2.26)",
-    "rates_us02y_fred: Volatility Surge (Z=2.85)"
+    "rates_us02y_fred: Volatility Surge (Z=2.85)",
+    "crypto_eth_usd_spot_coingecko: Volatility Surge (Z=2.61)"
   ],
   "anomaly_logic": "Monetary Tightening",
   "why_now_type": "Capital-driven",
