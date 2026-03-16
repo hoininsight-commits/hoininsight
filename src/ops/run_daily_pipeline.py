@@ -102,6 +102,24 @@ def run_contradiction_engine():
         return False
 
 
+        return False
+
+
+def run_theme_early_detection_engine():
+    """PHASE 1.3.9: Theme Early Detection Engine (STEP-39)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.3.9: EARLY DETECTION STARTED")
+    try:
+        from src.theme.theme_early_detection_engine import ThemeEarlyDetectionEngine
+        engine = ThemeEarlyDetectionEngine(project_root)
+        engine.run_detection()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.3.9: EARLY DETECTION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Theme Early Detection failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_market_story_engine():
     """PHASE 1.4: Market Story Engine (STEP-35)"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4: MARKET STORY ENGINE STARTED")
@@ -388,8 +406,11 @@ def main():
     # Step 1.2: [STEP-33] Market Prediction Benchmark
     run_market_benchmark()
     
-    # Step 1.3: [STEP-34] Market Contradiction Engine
+    # Step 1.3.5: [STEP-34] Market Contradiction Engine
     run_contradiction_engine()
+    
+    # Step 1.3.9: [STEP-39] Theme Early Detection Engine
+    run_theme_early_detection_engine()
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()

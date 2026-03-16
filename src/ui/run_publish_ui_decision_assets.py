@@ -240,8 +240,20 @@ def _publish_today() -> Optional[Dict]:
         if contradiction_path.exists() and isinstance(today_data, dict):
             with open(contradiction_path, 'r', encoding='utf-8') as f:
                 contra_data = json.load(f)
-                today_data["top_contradictions"] = contra_data.get("contradictions", [])[:3]
-                print(f"[PUBLISH] ✅ Market Contradiction Engine ({len(today_data['top_contradictions'])} items) merged into today.json")
+                today_data["contradictions"] = contra_data.get("contradictions", [])
+                print(f"[PUBLISH] ✅ Contradiction Engine merged into today.json")
+
+        # [STEP-39] Theme Early Detection Engine
+        early_path = ROOT / "data" / "theme" / "top_early_theme.json"
+        if early_path.exists() and isinstance(today_data, dict):
+            with open(early_path, 'r', encoding='utf-8') as f:
+                early_data = json.load(f)
+                today_data["early_theme"] = {
+                    "theme": early_data.get("theme", "N/A"),
+                    "score": early_data.get("score", 0),
+                    "stage": early_data.get("stage", "N/A")
+                }
+                print(f"[PUBLISH] ✅ Early Detection Engine merged into today.json")
         
         # [STEP-35] Market Story Engine
         story_path = ROOT / "data" / "story" / "today_story.json"
@@ -401,6 +413,7 @@ def _publish_ops_assets():
         "structural_shift.json",
         "market_prediction_benchmark.json",
         "../contradictions/contradiction_state.json",
+        "../theme/top_early_theme.json",
         "../story/today_story.json",
         "../story/impact_mentionables.json",
         "../content/today_video_script.json",
