@@ -61,6 +61,10 @@ async function handleRoute() {
                 const { initEvolutionView } = await import('./operator_evolution.js?v=' + Date.now());
                 await initEvolutionView(app);
                 break;
+            case '#early':
+                const { initEarlyView } = await import('./operator_early_topics.js?v=' + Date.now());
+                await initEarlyView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

@@ -248,6 +248,12 @@ def run_memory_update():
         from src.memory.theme_evolution_engine import ThemeEvolutionEngine
         evolution_engine = ThemeEvolutionEngine(project_root)
         evolution_engine.run_analysis()
+
+        # [STEP-28] Early Topic Detection
+        print("[Pipeline] Running Early Topic Detector...")
+        from src.ops.early_topic_detector import EarlyTopicDetector
+        early_detector = EarlyTopicDetector(project_root)
+        early_detector.run_analysis()
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
         return True

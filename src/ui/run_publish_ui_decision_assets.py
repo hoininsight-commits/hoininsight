@@ -286,6 +286,7 @@ def _publish_ops_assets():
         "../memory/narrative_patterns.json",
         "../memory/narrative_cycles.json",
         "../memory/theme_evolution.json",
+        "early_topic_candidates.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json",
         "../ontology/topic_resolved.json",
