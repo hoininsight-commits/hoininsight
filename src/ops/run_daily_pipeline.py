@@ -99,6 +99,24 @@ def run_contradiction_engine():
         return False
 
 
+        return False
+
+
+def run_market_story_engine():
+    """PHASE 1.4: Market Story Engine (STEP-35)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4: MARKET STORY ENGINE STARTED")
+    try:
+        from src.engine.story_engine import MarketStoryEngine
+        engine = MarketStoryEngine(project_root)
+        engine.run_all()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.4: MARKET STORY ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Market Story Engine failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_narrative_engine():
     """Run the Narrative Engine (Phase 1.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
@@ -321,6 +339,9 @@ def main():
     
     # Step 1.3: [STEP-34] Market Contradiction Engine
     run_contradiction_engine()
+    
+    # Step 1.4: [STEP-35] Market Story Engine
+    run_market_story_engine()
     
     # Step 2: Run Engine Components
     # 2.1 Narrative Engine (Legacy/Phase 1.5)

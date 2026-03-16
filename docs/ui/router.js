@@ -65,6 +65,10 @@ async function handleRoute() {
                 const { initMarketStateView } = await import('./operator_market_state.js?v=' + Date.now());
                 await initMarketStateView(app);
                 break;
+            case '#market-story':
+                const { initMarketStoryView } = await import('./operator_market_story.js?v=' + Date.now());
+                await initMarketStoryView(app);
+                break;
             case '#structural-tensions':
                 const { initStructuralTensionsView } = await import('./operator_structural_tensions.js?v=' + Date.now());
                 await initStructuralTensionsView(app);

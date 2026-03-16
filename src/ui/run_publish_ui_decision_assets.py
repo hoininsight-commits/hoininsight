@@ -243,6 +243,18 @@ def _publish_today() -> Optional[Dict]:
                 today_data["top_contradictions"] = contra_data.get("contradictions", [])[:3]
                 print(f"[PUBLISH] ✅ Market Contradiction Engine ({len(today_data['top_contradictions'])} items) merged into today.json")
         
+        # [STEP-35] Market Story Engine
+        story_path = ROOT / "data" / "story" / "today_story.json"
+        if story_path.exists() and isinstance(today_data, dict):
+            with open(story_path, 'r', encoding='utf-8') as f:
+                story_data = json.load(f)
+                today_data["market_story"] = {
+                    "title": story_data.get("title", ""),
+                    "summary": story_data.get("summary", ""),
+                    "featured_theme": story_data.get("featured_theme", "")
+                }
+                print(f"[PUBLISH] ✅ Market Story Engine merged into today.json")
+        
         # Write back the updated today_data if any changes were made in this block
         dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e:
@@ -358,7 +370,8 @@ def _publish_ops_assets():
         "risk_state.json",
         "structural_shift.json",
         "market_prediction_benchmark.json",
-        "../contradictions/contradiction_state.json"
+        "../contradictions/contradiction_state.json",
+        "../story/today_story.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
