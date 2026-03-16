@@ -292,3 +292,20 @@ export function extractDecisions(fileJson) {
     // Non-decision file (daily_snapshot, collection_status, etc.) — skip silently
     return [];
 }
+
+/**
+ * Universal JSON Fetcher with cache busting
+ */
+export async function fetchJSON(url) {
+    try {
+        const resp = await fetch(url + '?v=' + Date.now());
+        if (!resp.ok) {
+            console.warn(`[fetchJSON] HTTP ${resp.status} for ${url}`);
+            return null;
+        }
+        return await resp.json();
+    } catch (e) {
+        console.error(`[fetchJSON] Error fetching ${url}:`, e);
+        return null;
+    }
+}

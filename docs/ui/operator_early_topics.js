@@ -2,7 +2,7 @@
  * STEP-28 Early Topic View
  * Visualizes Emerging Signals, Early Scores, and Evidence Chains.
  */
-import { fetchJSON } from './utils.js';
+import { fetchJSON } from './utils.js?v=29';
 
 export async function initEarlyView() {
     console.log("[EarlyView] Initializing...");

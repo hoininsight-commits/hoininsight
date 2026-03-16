@@ -2,7 +2,7 @@
  * STEP-26 Narrative Cycle View
  * Visualizes Theme Cycles, Strength, and Recurrence Windows.
  */
-import { fetchJSON } from './utils.js';
+import { fetchJSON } from './utils.js?v=29';
 
 export async function initCycleView() {
     console.log("[CycleView] Initializing...");

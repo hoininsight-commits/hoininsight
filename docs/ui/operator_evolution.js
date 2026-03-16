@@ -2,7 +2,7 @@
  * STEP-27 Theme Evolution View
  * Visualizes Narrative Chains, Evolution Stages, and Successors.
  */
-import { fetchJSON } from './utils.js';
+import { fetchJSON } from './utils.js?v=29';
 
 export async function initEvolutionView() {
     console.log("[EvolutionView] Initializing...");

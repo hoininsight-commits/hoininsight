@@ -2,7 +2,7 @@
  * STEP-29 Narrative Escalation View
  * Visualizes Growth Stages, Escalation Scores, and Evidence Chains.
  */
-import { fetchJSON } from './utils.js';
+import { fetchJSON } from './utils.js?v=29';
 
 export async function initEscalationView() {
     console.log("[EscalationView] Initializing...");

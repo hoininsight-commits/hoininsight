@@ -2,7 +2,7 @@
  * STEP-25 Topic Ontology View
  * Visualizes Topic -> Theme -> Sector mappings and patterns.
  */
-import { fetchJSON } from './utils.js';
+import { fetchJSON } from './utils.js?v=27';
 
 export async function initOntologyView() {
     console.log("[OntologyView] Initializing...");
