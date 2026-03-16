@@ -263,6 +263,17 @@ def _publish_today() -> Optional[Dict]:
                 today_data["mentionable_stocks"] = men_data.get("mentionable_stocks", [])
                 print(f"[PUBLISH] ✅ Mentionables Engine merged into today.json")
 
+        # [STEP-38] Topic Pressure & Selection Engine
+        topic_path = ROOT / "data" / "topic" / "top_topic.json"
+        if topic_path.exists() and isinstance(today_data, dict):
+            with open(topic_path, 'r', encoding='utf-8') as f:
+                topic_data = json.load(f)
+                today_data["top_topic"] = {
+                    "selected": topic_data.get("selected_topic", "N/A"),
+                    "pressure": topic_data.get("topic_pressure", 0)
+                }
+                print(f"[PUBLISH] ✅ Topic Pressure Engine merged into today.json")
+
         # [STEP-37] Video Script Engine
         script_path = ROOT / "data" / "content" / "today_video_script.json"
         if script_path.exists() and isinstance(today_data, dict):
@@ -392,7 +403,8 @@ def _publish_ops_assets():
         "../contradictions/contradiction_state.json",
         "../story/today_story.json",
         "../story/impact_mentionables.json",
-        "../content/today_video_script.json"
+        "../content/today_video_script.json",
+        "../topic/top_topic.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")

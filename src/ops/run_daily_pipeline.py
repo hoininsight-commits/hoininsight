@@ -120,6 +120,9 @@ def run_market_story_engine():
         return False
 
 
+        return False
+
+
 def run_mentionables_engine():
     """PHASE 1.4.5: Impact & Mentionables Engine (STEP-36)"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4.5: MENTIONABLES ENGINE STARTED")
@@ -135,6 +138,18 @@ def run_mentionables_engine():
         return False
 
 
+def run_topic_pressure_engine():
+    """PHASE 1.4.6: Topic Pressure & Selection Engine (STEP-38)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4.6: TOPIC PRESSURE ENGINE STARTED")
+    try:
+        from src.topics.topic_pressure_engine import TopicPressureEngine
+        engine = TopicPressureEngine(project_root)
+        engine.run_selection()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.4.6: TOPIC PRESSURE ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Topic Pressure Engine failed (Soft-Fail): {e}")
+        traceback.print_exc()
         return False
 
 
@@ -381,6 +396,9 @@ def main():
     
     # Step 1.4.5: [STEP-36] Impact & Mentionables Engine
     run_mentionables_engine()
+    
+    # Step 1.4.6: [STEP-38] Topic Pressure & Selection Engine
+    run_topic_pressure_engine()
     
     # Step 1.4.7: [STEP-37] Video Script Engine
     run_script_engine()

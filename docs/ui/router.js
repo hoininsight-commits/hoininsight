@@ -73,6 +73,10 @@ async function handleRoute() {
                 const { initVideoScriptView } = await import('./operator_video_script.js?v=' + Date.now());
                 await initVideoScriptView(app);
                 break;
+            case '#top-topic':
+                const { initTopTopicView } = await import('./operator_top_topic.js?v=' + Date.now());
+                await initTopTopicView(app);
+                break;
             case '#market-story':
                 const { initMarketStoryView } = await import('./operator_market_story.js?v=' + Date.now());
                 await initMarketStoryView(app);
