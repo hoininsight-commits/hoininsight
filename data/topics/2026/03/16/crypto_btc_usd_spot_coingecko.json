@@ -3,12 +3,12 @@
     "ts_utc": "2026-03-16T12:33:25Z",
     "dataset_id": "crypto_btc_usd_spot_coingecko",
     "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
-    "title": "data/features/anomalies/2026/03/16/crypto_btc_usd_spot_coingecko.json L1 Signal",
-    "score": 3.0,
-    "severity": "MED",
+    "title": "data/features/anomalies/2026/03/16/crypto_btc_usd_spot_coingecko.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
     "evidence": {
-      "source_severity": 30,
-      "level": "L1",
+      "source_severity": 60,
+      "level": "L2",
       "details": {
         "z_score": 1.58,
         "percentile": 65.9,

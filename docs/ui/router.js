@@ -73,6 +73,10 @@ async function handleRoute() {
                 const { initActionView } = await import('./operator_actions.js?v=' + Date.now());
                 await initActionView(app);
                 break;
+            case '#scripts':
+                const { initScriptView } = await import('./scripts.js?v=' + Date.now());
+                await initScriptView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

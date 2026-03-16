@@ -52,7 +52,7 @@
 - **Actors**: TIER_2:META, TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 53.13
+- **Final Score**: 43.47
 
 ## Topic: 거시경제 이상징후: index_spx_fred
 - **Actors**: TIER_4:MARKET

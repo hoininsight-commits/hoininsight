@@ -205,6 +205,21 @@ def _publish_today() -> Optional[Dict]:
     except Exception as e:
         print(f"[PUBLISH] ⚠️ Operator Action merge failed: {e}")
 
+    # [STEP-31] Enrich today.json with Auto Script status
+    try:
+        as_path = DATA_OPS.parent / "content" / "auto_scripts.json"
+        if as_path.exists() and dest.exists():
+            as_data = json.loads(as_path.read_text(encoding="utf-8"))
+            today_data = json.loads(dest.read_text(encoding="utf-8"))
+            if isinstance(today_data, dict):
+                today_data["auto_script_available"] = len(as_data) > 0
+                if len(as_data) > 0:
+                    today_data["auto_script_theme"] = as_data[0].get("theme", "")
+                dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
+                print(f"[PUBLISH] ✅ Auto Script status merged into today.json")
+    except Exception as e:
+        print(f"[PUBLISH] ⚠️ Auto Script merge failed: {e}")
+
     return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
 
 def _publish_editorial() -> List[Dict]:
@@ -305,6 +320,7 @@ def _publish_ops_assets():
         "early_topic_candidates.json",
         "narrative_escalation.json",
         "operator_actions.json",
+        "../content/auto_scripts.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json",
         "../ontology/topic_resolved.json",

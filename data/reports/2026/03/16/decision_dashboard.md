@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 40
+- **Unreviewed**: 45
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=40
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=45
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,8 +78,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 40
-- **Type Breakdown**: NEWS: 40
+- **Count**: 45
+- **Type Breakdown**: NEWS: 45
 - **Samples (Top 3)**:
   - [NEWS] 석유 최고가제 나흘째…경유가격 휘발유 보다 비싼 역전현상 종료 - BBS불교방송 (Google_News_KR_Economy)
   - [NEWS] 골드만 "유가 급등에 세계 GDP 0.3% 감소" - 연합인포맥스 (Google_News_KR_Economy)
@@ -91,6 +91,11 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-16 |
@@ -178,6 +183,11 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -225,6 +235,11 @@
 | RozeAI, ‘AI 화재예보경보 프로그램’ GS인증 1등급 획득 | Structural implication: 'RozeAI, ‘AI 화재예보경보 프로그램’ GS인증 1등급 획득' suggests a shift in NEWS dynamics. | LOW |
 | “적들에게 공격지점 정보제공”…이란, 스파이 혐의 500명 체포 | Structural implication: '“적들에게 공격지점 정보제공”…이란, 스파이 혐의 500명 체포' suggests a shift in NEWS dynamics. | LOW |
 | 카카오모빌리티·로보티즈, 호텔 로봇 플랫폼 운영모델 검증…“가동률 8배 개선” | Structural implication: '카카오모빌리티·로보티즈, 호텔 로봇 플랫폼 운영모델 검증…“가동률 8배 개선”' suggests a shift in NEWS dynamics. | LOW |
+| [비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz | Structural implication: '[비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| "이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제 | Structural implication: '"이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 지투지바이오, 베링거와 협력 순항…글로벌 A·B·C사와도 협업 - PRESS9 | Structural implication: '지투지바이오, 베링거와 협력 순항…글로벌 A·B·C사와도 협업 - PRESS9' suggests a shift in NEWS dynamics. | LOW |
+| '제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24 | Structural implication: ''제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr | Structural implication: '[단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
