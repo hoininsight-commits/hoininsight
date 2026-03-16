@@ -47,6 +47,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 이란戰 뜻밖의 승자는 韓 해운사…‘바다위 원유 창고’ 대박 - 동아일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -57,17 +62,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 토스 행운퀴즈 '카카오쇼핑페스타' 정답…3월 16일 - 게임톡 (ID: unknown)
+### 중동전 여파, 비트코인 호재될까…최대 25만달러 점쳐 - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,17 +87,22 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### DS투자증권 “삼성전자, 파운드리도 봐야 할 때…목표주가 27만원” [오늘 나온 보고서] - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "3% 영끌족 ‘금리 리셋’ 시작" … 6.5% 이자 청구서 받은 2021년 차주들 - 뉴데일리 경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유가 뛰자 유류할증료도 ‘꿈틀’…“비행기 표 구매는 4월 되기 전에”? - 경향신문 (ID: unknown)
+### 토스 행운퀴즈 '글루타넥스 글로우 부스' 정답…3월 16일 - 게임톡 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### DS투자증권 “삼성전자, 파운드리도 봐야 할 때…목표주가 27만원” [오늘 나온 보고서] - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 캐시워크 돈버는퀴즈 정답 3월 16일 - bntnews.co.kr (ID: unknown)
+### 스마트폰 하루 6시간 쓰는데…고등학생 86% “중독 아냐” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “차 창문 깨고 침입”…남양주 스토킹 살인범, 전자발찌 끊고 도주하다 체포 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 대신증권, 美 장기채 상품 ‘환오픈형·환헤지형·타겟수익형’으로 세분화 (ID: unknown)
@@ -142,7 +152,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 지난달 서울 집값 상승률, 지난해 9월 이후 최저 수준 찍었다 (ID: unknown)
+### 서울 집값 상승률, 작년 9월 이후 최저치 찍었다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -152,7 +162,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “안 팔고 버틸 것”…‘아파트 3채’ 황현희, 다주택 논쟁에 소신 발언 (ID: unknown)
+### ‘아파트 3채’ 황현희 “이 게임 해봤다…안 팔고 버티면 된다” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -198,16 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 삼성물산, 의왕 메디컬 레지던스에 ‘AI 시니어 리빙’ 구축 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 응암동 노후 주거지, 최고 27층·1120가구 대단지로 변신 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 검암역세권 첫 랜드마크 분양…자이에스앤디 ‘검암역자이르네’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
