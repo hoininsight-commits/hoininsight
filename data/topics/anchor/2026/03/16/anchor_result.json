@@ -1,18 +1,18 @@
 {
   "data_axis": [
-    "comm_wti_fred",
+    "index_nasdaq_fred",
     "index_spx_fred",
     "rates_us10y_fred",
     "derived_yield_curve_10y_2y",
-    "index_nasdaq_fred",
+    "comm_wti_fred",
     "rates_us02y_fred"
   ],
   "baseline_match": [
-    "comm_wti_fred: Volatility Surge (Z=2.73)",
+    "index_nasdaq_fred: Volatility Surge (Z=2.26)",
     "index_spx_fred: Volatility Surge (Z=2.50)",
     "rates_us10y_fred: Volatility Surge (Z=2.63)",
     "derived_yield_curve_10y_2y: Volatility Surge (Z=2.51)",
-    "index_nasdaq_fred: Volatility Surge (Z=2.26)",
+    "comm_wti_fred: Volatility Surge (Z=2.73)",
     "rates_us02y_fred: Volatility Surge (Z=2.85)"
   ],
   "anomaly_logic": "Monetary Tightening",

@@ -260,6 +260,12 @@ def run_memory_update():
         from src.ops.narrative_escalation_engine import NarrativeEscalationEngine
         escalation_engine = NarrativeEscalationEngine(project_root)
         escalation_engine.run_analysis()
+
+        # [STEP-30] Operator Action Generation
+        print("[Pipeline] Running Operator Action Engine...")
+        from src.ops.operator_action_engine import OperatorActionEngine
+        action_engine = OperatorActionEngine(project_root)
+        action_engine.run_analysis()
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
         return True

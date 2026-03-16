@@ -69,6 +69,10 @@ async function handleRoute() {
                 const { initEscalationView } = await import('./operator_escalation.js?v=' + Date.now());
                 await initEscalationView(app);
                 break;
+            case '#actions':
+                const { initActionView } = await import('./operator_actions.js?v=' + Date.now());
+                await initActionView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

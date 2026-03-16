@@ -12,7 +12,7 @@
 - **Hedge Bucket**: 변동성 방어 (VIX/Gold)
 
 ## Priority Rotation
-- **Axis**: Liquidity
+- **Axis**: Policy
 - **Tilt**: UNDERWEIGHT_GROWTH
 - **Rationale**: TIGHTENING 환경 기반 자본 효율성 고려
 

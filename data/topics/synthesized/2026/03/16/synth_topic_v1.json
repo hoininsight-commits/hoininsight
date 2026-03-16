@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "generated_at": "2026-03-16T12:30:30.169959",
+    "base_date": "2026-03-16",
+    "version": "v1"
+  },
+  "content_topic": {
+    "title": "지수 상승 속 섹터 하락의 이유",
+    "status": "WATCH",
+    "why_now": "Q: 왜 지수는 오르는데 내 종목은 하락하나? Data: [Predicted] Policy Radar Momentum + 10 Regime Alignment",
+    "status_reason": "Weak Structural Evidence (2 signals)",
+    "components": {
+      "event": {
+        "title": "지수 상승 속 섹터 하락의 이유",
+        "question": "왜 지수는 오르는데 내 종목은 하락하나?",
+        "why_confused": "지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.",
+        "eligible": false
+      },
+      "structural": [
+        {
+          "dataset_id": null,
+          "title": "Policy Radar",
+          "level": null,
+          "score": 83.2,
+          "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment"
+        },
+        {
+          "dataset_id": null,
+          "title": "Macro Shock Radar",
+          "level": null,
+          "score": 71.85,
+          "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment"
+        }
+      ]
+    }
+  }
+}

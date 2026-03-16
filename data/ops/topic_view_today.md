@@ -37,6 +37,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### “이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### '중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -52,22 +57,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### "두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -88,6 +83,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 유행따라 널뛰는 가격…두쫀쿠 이어 봄동까지 몸값 급상승 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [카나프테라퓨틱스 IPO]⑤ 이어달리기 사업 변수, 조건부 7748억 - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

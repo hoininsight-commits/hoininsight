@@ -190,17 +190,17 @@
 | [부동산VIEW] 서울 아파트 가격하락을 견인하는 세 가지 요인 - 비즈니스포스트 | Structural implication: '[부동산VIEW] 서울 아파트 가격하락을 견인하는 세 가지 요인 - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
 | IEA 긴급비축유 방출 개시… 韓, 시기·방식 저울질 - 문화일보 | Structural implication: 'IEA 긴급비축유 방출 개시… 韓, 시기·방식 저울질 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | '유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV | Structural implication: ''유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
+| “이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보 | Structural implication: '“이란戰 승자 중 한 명”...블룸버그가 주목한 ‘한국의 은둔형 거물 사업가’ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | '중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제 | Structural implication: ''중국, 이 정도였나' 전세계 충격받은 이유가…'무서운 경고' [조평규의 중국 본색] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레 | Structural implication: '미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰 | Structural implication: '9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰' suggests a shift in NEWS dynamics. | LOW |
-| '제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24 | Structural implication: ''제자리서 360도 회전'…로봇·모빌리티 바퀴 혁신 '옴니휠' 확산 - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보 | Structural implication: 'SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스 | Structural implication: '"두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
-| "이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제 | Structural implication: '"이란 만만치 않다"…미국, 동맹에 손 벌리자 급등하는 종목 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 노보노디스크 對 릴리…美 비만약 시장 ‘알약 전쟁’ 본격화 - 조선비즈 - Chosunbiz | Structural implication: '노보노디스크 對 릴리…美 비만약 시장 ‘알약 전쟁’ 본격화 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 한화에어로, 韓美 장관 앞에서 LNG 장기구매 계약 체결 - 연합인포맥스 | Structural implication: '한화에어로, 韓美 장관 앞에서 LNG 장기구매 계약 체결 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보 | Structural implication: '실밸에서 유행이라는 스타트업 단체사진 보니...사람이 없네 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 유행따라 널뛰는 가격…두쫀쿠 이어 봄동까지 몸값 급상승 - 연합뉴스TV | Structural implication: '유행따라 널뛰는 가격…두쫀쿠 이어 봄동까지 몸값 급상승 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
+| [카나프테라퓨틱스 IPO]⑤ 이어달리기 사업 변수, 조건부 7748억 - 블로터 | Structural implication: '[카나프테라퓨틱스 IPO]⑤ 이어달리기 사업 변수, 조건부 7748억 - 블로터' suggests a shift in NEWS dynamics. | LOW |
 | “유가 100달러 넘으면 팔고, S&P500 6600 깨지면 사라?” [잇슈 머니] - KBS 뉴스 | Structural implication: '“유가 100달러 넘으면 팔고, S&P500 6600 깨지면 사라?” [잇슈 머니] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보 | Structural implication: '갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “당첨되면 9억 시세차익” 영등포자이 디그니티 무순위 청약 16일부터 - 조선일보 | Structural implication: '“당첨되면 9억 시세차익” 영등포자이 디그니티 무순위 청약 16일부터 - 조선일보' suggests a shift in NEWS dynamics. | LOW |

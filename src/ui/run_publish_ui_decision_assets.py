@@ -189,6 +189,22 @@ def _publish_today() -> Optional[Dict]:
     except Exception as e:
         print(f"[PUBLISH] ⚠️ Portfolio Relevance merge failed: {e}")
 
+    # [STEP-30] Enrich today.json with Operator Action summary
+    try:
+        oa_path = DATA_OPS / "operator_actions.json"
+        if oa_path.exists() and dest.exists():
+            oa_data = json.loads(oa_path.read_text(encoding="utf-8"))
+            today_data = json.loads(dest.read_text(encoding="utf-8"))
+            if isinstance(today_data, dict) and len(oa_data) > 0:
+                top_action = oa_data[0]
+                today_data["operator_action"] = top_action.get("action", "")
+                today_data["operator_theme"] = top_action.get("theme", "")
+                today_data["operator_focus"] = top_action.get("recommended_focus", [])
+                dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
+                print(f"[PUBLISH] ✅ Operator Action merged into today.json")
+    except Exception as e:
+        print(f"[PUBLISH] ⚠️ Operator Action merge failed: {e}")
+
     return {"path": "today.json", "type": "today", "date": file_date, "updated_at": _utc_now()}
 
 def _publish_editorial() -> List[Dict]:
@@ -288,6 +304,7 @@ def _publish_ops_assets():
         "../memory/theme_evolution.json",
         "early_topic_candidates.json",
         "narrative_escalation.json",
+        "operator_actions.json",
         "../decision/predicted_narratives.json",
         "../decision/mentionables.json",
         "../ontology/topic_resolved.json",

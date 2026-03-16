@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-03-13",
+  "as_of": "2026-03-16",
   "window_days": 90,
   "items": [
     {
@@ -54,6 +54,24 @@
       "base_weight": 0.75,
       "tags": [
         "BIO_TECH"
+      ],
+      "final_score": 0.95,
+      "theme_boost": 0.2
+    },
+    {
+      "date": "2026-06-12",
+      "date_type": "FIXED",
+      "region": "US",
+      "category": "MACRO",
+      "title": "미국 선물/옵션 동시 만기일",
+      "risk_mechanism": "파생상품 결제 관련 수급 충격 및 변동성 확대",
+      "affected_axes": [
+        "LIQUIDITY",
+        "RISK_OFF"
+      ],
+      "base_weight": 0.7,
+      "tags": [
+        "DERIVATIVES"
       ],
       "final_score": 0.95,
       "theme_boost": 0.2

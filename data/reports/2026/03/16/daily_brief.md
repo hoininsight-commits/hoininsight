@@ -41,12 +41,12 @@ Historical context:
 - [HIGH] YIELD_CURVE: data/features/anomalies/2026/03/16/derived_yield_curve_10y_2y.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/16/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/16/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] BTCUSD: data/features/anomalies/2026/03/16/crypto_btc_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] GOLD: data/features/anomalies/2026/03/16/metal_gold_paxg_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [MED] ETHUSD: data/features/anomalies/2026/03/16/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] KOR_CPI: data/features/anomalies/2026/03/16/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/16/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] HY_SPREAD: data/features/anomalies/2026/03/16/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=5
-- [LOW] BTCUSD: data/features/anomalies/2026/03/16/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] KOSPI: data/features/anomalies/2026/03/16/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/16/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/16/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
