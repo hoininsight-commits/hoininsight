@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] '유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV (Google_News_KR_Economy)
-  - [NEWS] [특징주] 해운株, 호르무즈 해협 봉쇄로 운임 오르자 상승(종합) - 연합뉴스 (Google_News_KR_Economy)
-  - [NEWS] 백악관 찾아간 美 석유재벌들... “호르무즈 봉쇄 장기화 땐 위기” 경고 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 환율 1,500원대로 출발 후 내려와…주간거래 금융위기 후 처음 - 연합뉴스 (Google_News_KR_Economy)
+  - [NEWS] 호르무즈 막히자 ‘잭팟’ 터진 한국 회사…“이번 혼란의 최대 수혜자” - 주간조선 (Google_News_KR_Economy)
+  - [NEWS] 미 석유기업 CEO들 “호르무즈 봉쇄 시 유가 더 급등” - KBS 뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,46 +185,46 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| '유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV | Structural implication: ''유가 급등'에 환율 주간거래 1,500원대 출발…금융위기 후 처음 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
-| [특징주] 해운株, 호르무즈 해협 봉쇄로 운임 오르자 상승(종합) - 연합뉴스 | Structural implication: '[특징주] 해운株, 호르무즈 해협 봉쇄로 운임 오르자 상승(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 백악관 찾아간 美 석유재벌들... “호르무즈 봉쇄 장기화 땐 위기” 경고 - 조선일보 | Structural implication: '백악관 찾아간 美 석유재벌들... “호르무즈 봉쇄 장기화 땐 위기” 경고 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| IEA "아시아 긴급 비축유 1억배럴 즉각 방출" - 한국경제 | Structural implication: 'IEA "아시아 긴급 비축유 1억배럴 즉각 방출" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 환율 1,500원대로 출발 후 내려와…주간거래 금융위기 후 처음 - 연합뉴스 | Structural implication: '환율 1,500원대로 출발 후 내려와…주간거래 금융위기 후 처음 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 막히자 ‘잭팟’ 터진 한국 회사…“이번 혼란의 최대 수혜자” - 주간조선 | Structural implication: '호르무즈 막히자 ‘잭팟’ 터진 한국 회사…“이번 혼란의 최대 수혜자” - 주간조선' suggests a shift in NEWS dynamics. | LOW |
+| 미 석유기업 CEO들 “호르무즈 봉쇄 시 유가 더 급등” - KBS 뉴스 | Structural implication: '미 석유기업 CEO들 “호르무즈 봉쇄 시 유가 더 급등” - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| "파는 게 이익 같네요"…10년 버틴 집주인 '매도 러시' [돈앤톡] - 한국경제 | Structural implication: '"파는 게 이익 같네요"…10년 버틴 집주인 '매도 러시' [돈앤톡] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| IEA “아시아 전략 비축유 1억배럴 즉각 방출 시작” - 동아일보 | Structural implication: 'IEA “아시아 전략 비축유 1억배럴 즉각 방출 시작” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 지난달 서울 집값 상승률, 지난해 9월 이후 최저 수준 찍었다 - 매일경제 | Structural implication: '지난달 서울 집값 상승률, 지난해 9월 이후 최저 수준 찍었다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 김정관 "석유 공급가 인하 주유소 반영 느려"‥가격 안정 노력 당부 - MBC 뉴스 | Structural implication: '김정관 "석유 공급가 인하 주유소 반영 느려"‥가격 안정 노력 당부 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz | Structural implication: '[비즈톡톡] 최대 실적인데 성과급은 줄어… 호황 맞은 전력기기社 ‘상한제 딜레마’ - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| “시간 없어, 빨리 팔아야해” 서울 아파트 매물 7.7만건 돌파…집값 더 내릴까 - 매일경제 | Structural implication: '“시간 없어, 빨리 팔아야해” 서울 아파트 매물 7.7만건 돌파…집값 더 내릴까 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 유가 뛰자 유류할증료도 ‘꿈틀’…“비행기 표 구매는 4월 되기 전에”? - 경향신문 | Structural implication: '유가 뛰자 유류할증료도 ‘꿈틀’…“비행기 표 구매는 4월 되기 전에”? - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레 | Structural implication: '미 에너지장관 “한국 호르무즈 협력이 논리적…파병 동의한 국가 있다” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 석유 최고가제 나흘째 기름값 하락세 지속…경윳값 역전 종료 - segye.com | Structural implication: '석유 최고가제 나흘째 기름값 하락세 지속…경윳값 역전 종료 - segye.com' suggests a shift in NEWS dynamics. | LOW |
-| SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보 | Structural implication: 'SK하이닉스, 삼성전자 제치고 ‘입사 희망 대기업’ 1위 올라 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 지투지바이오, 노보 아닌 삼성..상승분 다 토해낸 주가 - 스마트투데이 | Structural implication: '지투지바이오, 노보 아닌 삼성..상승분 다 토해낸 주가 - 스마트투데이' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 첫 추월…'억대 성과급' SK하이닉스, 입사 희망 대기업 1위 - 아시아경제 | Structural implication: '삼성전자 첫 추월…'억대 성과급' SK하이닉스, 입사 희망 대기업 1위 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | 9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰 | Structural implication: '9.4조 흥행 녹십자·동아ST·유한양행 잡은 ‘카나프테라퓨틱스’ 오늘(16일) 코스닥 상장 - 뉴스웰' suggests a shift in NEWS dynamics. | LOW |
-| 지투지바이오, 200억원 규모 전환사채 발행 결정 - 디지털투데이 | Structural implication: '지투지바이오, 200억원 규모 전환사채 발행 결정 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
+| '오늘도 삼성전자 팔았다'…1% 초고수들 쓸어담은 종목은 [마켓PRO] - 한국경제 | Structural implication: ''오늘도 삼성전자 팔았다'…1% 초고수들 쓸어담은 종목은 [마켓PRO] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 중동전 여파, 비트코인 호재될까…최대 25만달러 점쳐 - 디지털투데이 | Structural implication: '중동전 여파, 비트코인 호재될까…최대 25만달러 점쳐 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | 토스 행운퀴즈 '카카오쇼핑페스타' 정답…3월 16일 - 게임톡 | Structural implication: '토스 행운퀴즈 '카카오쇼핑페스타' 정답…3월 16일 - 게임톡' suggests a shift in NEWS dynamics. | LOW |
-| “이란 전쟁 악화에도 꿋꿋한 비트코인”… 7만달러 상회, 오히려 미 금리에 주목 [주간 블록체인] - 디지털데일리 | Structural implication: '“이란 전쟁 악화에도 꿋꿋한 비트코인”… 7만달러 상회, 오히려 미 금리에 주목 [주간 블록체인] - 디지털데일리' suggests a shift in NEWS dynamics. | LOW |
 | "두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스 | Structural implication: '"두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 영등포자이디그니티 3가구 오늘부터 이틀간 '줍줍' - 연합뉴스 | Structural implication: '영등포자이디그니티 3가구 오늘부터 이틀간 '줍줍' - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보 | Structural implication: '갈 길 먼 이란 전쟁…호르무즈 못 여는 美, 핵 문제는 아직 시작도 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [배터리 온에어] 삼성SDI, 美 ESS 수주 릴레이···1.5兆 계약 - 블로터 | Structural implication: '[배터리 온에어] 삼성SDI, 美 ESS 수주 릴레이···1.5兆 계약 - 블로터' suggests a shift in NEWS dynamics. | LOW |
-| “부동산 빨리 물려주자”…50·60대 ‘서울 집 증여’ 늘었다 - 한겨레 | Structural implication: '“부동산 빨리 물려주자”…50·60대 ‘서울 집 증여’ 늘었다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| "3% 영끌족 ‘금리 리셋’ 시작" … 6.5% 이자 청구서 받은 2021년 차주들 - 뉴데일리 경제 | Structural implication: '"3% 영끌족 ‘금리 리셋’ 시작" … 6.5% 이자 청구서 받은 2021년 차주들 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
+| 코스피 소폭 상승 출발...환율은 1500원 넘어 - 조선일보 | Structural implication: '코스피 소폭 상승 출발...환율은 1500원 넘어 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| SKC, 희망퇴직 실시…“석유화학·배터리 불황 여파” - 조선비즈 - Chosunbiz | Structural implication: 'SKC, 희망퇴직 실시…“석유화학·배터리 불황 여파” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| [단독]삼성, 완판 행진 ‘트라이폴드’ 국내판매 3개월만에 종료 - 동아일보 | Structural implication: '[단독]삼성, 완판 행진 ‘트라이폴드’ 국내판매 3개월만에 종료 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 버터 안 쓰고 ‘버터맥주’ 홍보…어반자카파 박용인, 내달 항소심 | Structural implication: '버터 안 쓰고 ‘버터맥주’ 홍보…어반자카파 박용인, 내달 항소심' suggests a shift in NEWS dynamics. | LOW |
+| 나토 주요국 “트럼프가 이끄는 美보다 中 더 의지한다” 여론 우세 | Structural implication: '나토 주요국 “트럼프가 이끄는 美보다 中 더 의지한다” 여론 우세' suggests a shift in NEWS dynamics. | LOW |
+| 웹케시, 주주가치 제고 위해 89억 규모 자사주 소각 | Structural implication: '웹케시, 주주가치 제고 위해 89억 규모 자사주 소각' suggests a shift in NEWS dynamics. | LOW |
+| 반도체·방산 개별주 신고가 행진…바이오·원전주도 뒤따랐다 [매경 자이앤트] | Structural implication: '반도체·방산 개별주 신고가 행진…바이오·원전주도 뒤따랐다 [매경 자이앤트]' suggests a shift in NEWS dynamics. | LOW |
+| “이러니 기름값 날뛰면 못버티지”…유가 10% 오를때 제조원가 얼마나 뛰는지 보니 | Structural implication: '“이러니 기름값 날뛰면 못버티지”…유가 10% 오를때 제조원가 얼마나 뛰는지 보니' suggests a shift in NEWS dynamics. | LOW |
+| 대성하이텍, 별도 영익 64억 흑자 전환...방산·로봇 중심 성장 동력 확대 | Structural implication: '대성하이텍, 별도 영익 64억 흑자 전환...방산·로봇 중심 성장 동력 확대' suggests a shift in NEWS dynamics. | LOW |
+| 파로스아이바이오, 연세대 첨단바이오산업융합연구단과 AI 항노화 공동연구 | Structural implication: '파로스아이바이오, 연세대 첨단바이오산업융합연구단과 AI 항노화 공동연구' suggests a shift in NEWS dynamics. | LOW |
+| 알테오젠, 비과세배당 재원 800억 확대…주주환원 정책 강화 | Structural implication: '알테오젠, 비과세배당 재원 800억 확대…주주환원 정책 강화' suggests a shift in NEWS dynamics. | LOW |
+| 與중동사태 TF “추경안 3월말 국회 제출”…4월 중순 본회의 통과 목표 | Structural implication: '與중동사태 TF “추경안 3월말 국회 제출”…4월 중순 본회의 통과 목표' suggests a shift in NEWS dynamics. | LOW |
+| 전직 검경 ‘보완수사권’ 격돌...“김학의·쿠팡 사건 등 남용” vs “뇌물 경찰 7명 구속” | Structural implication: '전직 검경 ‘보완수사권’ 격돌...“김학의·쿠팡 사건 등 남용” vs “뇌물 경찰 7명 구속”' suggests a shift in NEWS dynamics. | LOW |
+| 취재진 피해 ‘도둑 입장’…이휘재, 부정 여론 속 4년 만 방송 촬영 | Structural implication: '취재진 피해 ‘도둑 입장’…이휘재, 부정 여론 속 4년 만 방송 촬영' suggests a shift in NEWS dynamics. | LOW |
+| 감천항 기름 유출한 러시아 어선 적발…‘유지문’ 분석에 덜미 | Structural implication: '감천항 기름 유출한 러시아 어선 적발…‘유지문’ 분석에 덜미' suggests a shift in NEWS dynamics. | LOW |
+| “BTS 효과 온다”…완전체 컴백에 잠잠했던 엔터주 반등할까 | Structural implication: '“BTS 효과 온다”…완전체 컴백에 잠잠했던 엔터주 반등할까' suggests a shift in NEWS dynamics. | LOW |
 | 작은 필터가 축구장 11개 면적 공기정화?…요즘 가전 신소재 보니 | Structural implication: '작은 필터가 축구장 11개 면적 공기정화?…요즘 가전 신소재 보니' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 이 대통령 “과도한 선명성 경쟁으로 檢개혁 반격명분 줘선 안돼” | Structural implication: '[속보] 이 대통령 “과도한 선명성 경쟁으로 檢개혁 반격명분 줘선 안돼”' suggests a shift in NEWS dynamics. | LOW |
 | NCT 재민 뿌린 ‘300만원’ 상품권, 직원이 가로채기?…신세계 측 “내부 조사” | Structural implication: 'NCT 재민 뿌린 ‘300만원’ 상품권, 직원이 가로채기?…신세계 측 “내부 조사”' suggests a shift in NEWS dynamics. | LOW |
 | 여자화장실 여성 상습 불법 촬영했는데…영장 기각한 법원, 왜? | Structural implication: '여자화장실 여성 상습 불법 촬영했는데…영장 기각한 법원, 왜?' suggests a shift in NEWS dynamics. | LOW |
 | 서민 주거안정 ‘흔들’…작년 빌라 공급, 아파트 10% | Structural implication: '서민 주거안정 ‘흔들’…작년 빌라 공급, 아파트 10%' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 靑, 美 호르무즈 군함파견 요청 관련 “한미 간 긴밀히 연락 중” | Structural implication: '[속보] 靑, 美 호르무즈 군함파견 요청 관련 “한미 간 긴밀히 연락 중”' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 靑, 美 호르무즈 군함파견 요청에 “한미 간 긴밀히 연락 중” | Structural implication: '[속보] 靑, 美 호르무즈 군함파견 요청에 “한미 간 긴밀히 연락 중”' suggests a shift in NEWS dynamics. | LOW |
 | 프랑스 내년 대선 전초전 지방선거서 극우 약진 | Structural implication: '프랑스 내년 대선 전초전 지방선거서 극우 약진' suggests a shift in NEWS dynamics. | LOW |
-| “너무 못해 죄송합니다”…‘13타수 무안타’ 최악부진 사과한 日 간판타자 | Structural implication: '“너무 못해 죄송합니다”…‘13타수 무안타’ 최악부진 사과한 日 간판타자' suggests a shift in NEWS dynamics. | LOW |
-| 국힘, 김영환 현 충북지사 컷오프…공천 잡음에 내홍 | Structural implication: '국힘, 김영환 현 충북지사 컷오프…공천 잡음에 내홍' suggests a shift in NEWS dynamics. | LOW |
-| 민주 서울시장 예비후보들 ‘민생 공약’ 앞세워 경쟁 | Structural implication: '민주 서울시장 예비후보들 ‘민생 공약’ 앞세워 경쟁' suggests a shift in NEWS dynamics. | LOW |
-| 풀렸다 하면 완판인데…삼성 ‘갤럭시 Z 트라이폴드’ 판매 종료, 왜? | Structural implication: '풀렸다 하면 완판인데…삼성 ‘갤럭시 Z 트라이폴드’ 판매 종료, 왜?' suggests a shift in NEWS dynamics. | LOW |
-| “정말 무서운 세상이네, 카톡 친구 보낸 파일도 함부로 열면 낭패”…북한發 피싱 확산 | Structural implication: '“정말 무서운 세상이네, 카톡 친구 보낸 파일도 함부로 열면 낭패”…북한發 피싱 확산' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 이 대통령, 남양주 스토킹 살해사건에 “당국 대응 더뎠다” 질타 | Structural implication: '[속보] 이 대통령, 남양주 스토킹 살해사건에 “당국 대응 더뎠다” 질타' suggests a shift in NEWS dynamics. | LOW |
-| “행정기관 직원 사칭 조심”…한국신용정보원, 보이스피싱 주의 안내 | Structural implication: '“행정기관 직원 사칭 조심”…한국신용정보원, 보이스피싱 주의 안내' suggests a shift in NEWS dynamics. | LOW |
-| 코스피 상승 마감, 5,549.85P (1.14%↑) 코스피 전기·전자, 코스피 제조 등 상승 주도 | Structural implication: '코스피 상승 마감, 5,549.85P (1.14%↑) 코스피 전기·전자, 코스피 제조 등 상승 주도' suggests a shift in NEWS dynamics. | LOW |
-| 김부겸 나오나?…정청래 “대구, 후보 추가접수 필요할 수도” | Structural implication: '김부겸 나오나?…정청래 “대구, 후보 추가접수 필요할 수도”' suggests a shift in NEWS dynamics. | LOW |
-| 뉴욕행 왕복티켓 35만원 더 비싸져…내달 유류할증료 ‘최대 3배’ 폭등 | Structural implication: '뉴욕행 왕복티켓 35만원 더 비싸져…내달 유류할증료 ‘최대 3배’ 폭등' suggests a shift in NEWS dynamics. | LOW |
-| 코스닥 하락 마감, 1,138.29P (-1.27%↓) 코스닥 섬유·의류, 코스닥 일반서비스 등 하락 주도 | Structural implication: '코스닥 하락 마감, 1,138.29P (-1.27%↓) 코스닥 섬유·의류, 코스닥 일반서비스 등 하락 주도' suggests a shift in NEWS dynamics. | LOW |
-| “박물관과 미술관이 만나면? ”…국내 첫 결합형 인천뮤지엄파크 착공 | Structural implication: '“박물관과 미술관이 만나면? ”…국내 첫 결합형 인천뮤지엄파크 착공' suggests a shift in NEWS dynamics. | LOW |
-| 종합특검, ‘관저 이전 의혹’ 관련 윤한홍 의원 압수수색 | Structural implication: '종합특검, ‘관저 이전 의혹’ 관련 윤한홍 의원 압수수색' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
