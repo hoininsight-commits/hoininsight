@@ -1,0 +1,27 @@
+{
+  "agent": "NarrativeAgent",
+  "timestamp": "2026-03-16T12:11:31.547776",
+  "target_date": "2026-03-16",
+  "status": "SUCCESS",
+  "dry_run": false,
+  "metadata": {
+    "entrypoint": "NarrativeAgent",
+    "modules_run": [
+      "narrative_intelligence_layer",
+      "structural_regime_layer",
+      "conflict_density_layer",
+      "investment_os_layer",
+      "capital_allocation_layer",
+      "freshness_tracker",
+      "ops_scoreboard",
+      "structural_timing_layer",
+      "structural_probability_compression_layer",
+      "structural_meta_volatility_layer",
+      "structural_mentionables_engine",
+      "topic_prediction_engine",
+      "narrative_propagation_engine",
+      "capital_flow_impact_engine"
+    ],
+    "status": "COMPLETED"
+  }
+}
