@@ -1,6 +1,6 @@
 {
   "meta": {
-    "ts_utc": "2026-03-16T16:14:54Z",
+    "ts_utc": "2026-03-16T21:52:01Z",
     "ymd_utc": "2026/03/17",
     "enabled_datasets": 32,
     "lookback_days": 30,
@@ -15,6 +15,20 @@
     ]
   },
   "datasets": [
+    {
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "report_key": "ETHUSD",
+      "curated_path": "data/curated/crypto/eth_usd.csv",
+      "rows": 48,
+      "first_ts": "2026-01-15T00:00:00Z",
+      "last_ts": "2026-03-17T00:00:00Z",
+      "last_7d_rows": 8,
+      "last_30d_rows": 26,
+      "ok_7d": 7,
+      "skipped_7d": 0,
+      "fail_7d": 0,
+      "status_today": "OK"
+    },
     {
       "dataset_id": "struct_krx_foreigner_flow",
       "report_key": "BLOCK_DEAL_PROXY",
@@ -36,7 +50,7 @@
       "rows": 564,
       "first_ts": "2026-01-15T07:32:29Z",
       "last_ts": "2026-03-16T18:06:25Z",
-      "last_7d_rows": 54,
+      "last_7d_rows": 53,
       "last_30d_rows": 144,
       "ok_7d": 1,
       "skipped_7d": 0,
@@ -68,20 +82,6 @@
       "last_30d_rows": 0,
       "ok_7d": 0,
       "skipped_7d": 1,
-      "fail_7d": 0,
-      "status_today": "UNKNOWN"
-    },
-    {
-      "dataset_id": "crypto_eth_usd_spot_coingecko",
-      "report_key": "ETHUSD",
-      "curated_path": "data/curated/crypto/eth_usd.csv",
-      "rows": 48,
-      "first_ts": "2026-01-15T00:00:00Z",
-      "last_ts": "2026-03-17T00:00:00Z",
-      "last_7d_rows": 8,
-      "last_30d_rows": 26,
-      "ok_7d": 6,
-      "skipped_7d": 0,
       "fail_7d": 0,
       "status_today": "UNKNOWN"
     },
@@ -190,7 +190,7 @@
       "rows": 565,
       "first_ts": "2026-01-15T07:32:40Z",
       "last_ts": "2026-03-16T18:06:29Z",
-      "last_7d_rows": 58,
+      "last_7d_rows": 57,
       "last_30d_rows": 146,
       "ok_7d": 1,
       "skipped_7d": 0,

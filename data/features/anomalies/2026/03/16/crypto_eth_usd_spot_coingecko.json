@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-03-16T16:14:30Z",
+    "ts_utc": "2026-03-16T21:51:43Z",
     "dataset_id": "crypto_eth_usd_spot_coingecko",
     "entity": "ETHUSD",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": 2.27,
+      "z_score": 2.76,
       "percentile": 50.0,
-      "value": 2278.59,
-      "rolling_mean_20d": 2049.4865,
-      "reasoning": "Z-Score 2.27 >= 2.0"
+      "value": 2363.29,
+      "rolling_mean_20d": 2053.7214999999997,
+      "reasoning": "Z-Score 2.76 >= 2.0"
     }
   }
 ]
