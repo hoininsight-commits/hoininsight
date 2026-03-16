@@ -17,37 +17,37 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘유조선 싹쓸이’ 장금상선 자회사 흥아해운…중동분쟁에 주가 20% 넘게 급등 - 매일경제 (ID: unknown)
+### “은둔형 한국 사업가, 이란 전쟁 가장 큰 승자” - 채널A (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미국 석유 업계 임원들, 트럼프에 에너지 위기 악화 가능성 경고 - WSJ - Investing.com 한국어 (ID: unknown)
+### 백악관 달려간 美 석유재벌…'이대로 가면' 최악 시나리오 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 전쟁 장기화 조짐에 금융·산업 충격 확산 우려 커져 - 한국경제 (ID: unknown)
+### '10년 버텼는데 더 이상은'…송파 아파트 던진 60대 무슨 일 [돈앤톡] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "파는 게 이익 같네요"…10년 버틴 집주인 '매도 러시' [돈앤톡] - 한국경제 (ID: unknown)
+### 증권주 ‘밸류업 랠리’ 브레이크… 외인 변심에 ‘내실 관리’ 시험대 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 당정, 국제유가 급등 대응 본격화…비축유 방출·추경 편성 속도 - 프라임경제 (ID: unknown)
+### 대웅제약 ‘톡신 기술 해제 로비’ 논란…항소심·산업부 결정 변수로 - 팜이데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 양도세 중과 두 달 앞…"급매보다 더 낮게" 싼 매물부터 팔린다 - 연합뉴스 (ID: unknown)
+### 석유 최고가제 나흘째…전국 주유소 10곳 중 8곳 기름값 내려 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 김정관 "석유 공급가 인하 주유소 반영 느려"‥가격 안정 노력 당부 - MBC 뉴스 (ID: unknown)
+### IEA "아시아 긴급 비축유 1억배럴 즉각 방출" - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,7 +57,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유가 뛰자 유류할증료도 ‘꿈틀’…“비행기 표 구매는 4월 되기 전에”? - 경향신문 (ID: unknown)
+### [속보] 컷오프 김영환 “공심위, 원칙·절차 파괴…결정 수용 못해” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,7 +67,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 인천·가덕도·김포공항 통합 반발 목소리…노조 “새공항 건설비 부담 전가” - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 지투지바이오, 노보 아닌 삼성..상승분 다 토해낸 주가 - 스마트투데이 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 유가 뛰자 유류할증료도 ‘꿈틀’…“비행기 표 구매는 4월 되기 전에”? - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,22 +87,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [카나프테라퓨틱스 IPO]⑤ 이어달리기 사업 변수, 조건부 7748억 - 블로터 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 코스피 5,510으로 상승 출발‥환율 1,500원 돌파 - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 보고도 못 믿을 위생에 중국 ‘발칵’..."과산화수소로 닭발 표백했다" - JTBC (ID: unknown)
+### 점안액부터 변비약까지…'다빈도 의약품' 공급 차질 잇따라 - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '오늘도 삼성전자 팔았다'…1% 초고수들 쓸어담은 종목은 [마켓PRO] - 한국경제 (ID: unknown)
+### 유독 뽀얗던 中유명 닭발… 과산화수소로 때 벗겼다 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +107,39 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 토스 행운퀴즈 '카카오쇼핑페스타' 정답…3월 16일 - 게임톡 (ID: unknown)
+### 지난달 서울 집값 상승률, 지난해 9월 이후 최저 수준 찍었다 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "두쫀쿠 팔았다가 한달만에 망했다"...유행 쫓다 벼랑 끝 몰린 외식 사장님들 - 파이낸셜뉴스 (ID: unknown)
+### 삼성重, 업계 최초 '로봇 배관공장' 가동 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘특금법 위반’ 빗썸 일부 영업정지 6개월…과태료 368억원 부과 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “상명하복 따랐다”…‘12·3 계엄 가담’ 전직 장성들, 혐의 부인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘남양주 스토킹 살인’ 경찰 대응 감찰…신병확보 지연 논란 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [Overseas Trip] 멕시코 여행① 열정을 거침없이 사랑하라 ... 강렬한 태양을 닮은 도시, 과달라하라 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘유목민 놀이문화’ 전략게임 체험의 장…‘대한민국 노마드 축제’ 21일 열린다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### [단독] 9년 묶인 ‘금가분리’ 푼다…전통금융사 지분투자부터 허용 가닥 (ID: unknown)
@@ -122,12 +152,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 유일에너테크, 55억원 규모 유상증자 실시 (ID: unknown)
+### 지투지바이오, 200억 원 규모 전환사채 발행 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 지투지바이오, 200억 원 규모 전환사채 발행 (ID: unknown)
+### 유일에너테크, 55억원 규모 유상증자 실시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -147,12 +177,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### HMM 보유한 109척 선박 모두 AI자율운항 도입 (ID: unknown)
+### 현대차그룹 채용 떴다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 현대차그룹 채용 떴다 (ID: unknown)
+### HMM 보유한 109척 선박 모두 AI자율운항 도입 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -172,42 +202,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 中 '전기차 심장'으로 R&D인력 소집한 현대차 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [표] 오늘의 날씨 (ID: unknown)
+### [단독] 中 '전기차 심장'으로 R&D인력 소집한 현대차 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### "주거용 홍보에 속아 계약" 생숙 계약자들 대법서 패소 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 하루 6시간 폰 보는 고3 "난 중독아냐" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 대법원장 이어 일선 법관도 … 법왜곡죄로 고소 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### '10명 부상' 소공동 캡슐호텔, 스프링클러 없어 화재 취약 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 운동 중 심전도 재는 반도체 DGIST 이정협 교수팀 개발 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### "책값이 학원비 맞먹어"…학원 꼼수에 등골휘는 학부모 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
