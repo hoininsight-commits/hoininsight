@@ -117,6 +117,24 @@ def run_market_story_engine():
         return False
 
 
+        return False
+
+
+def run_mentionables_engine():
+    """PHASE 1.4.5: Impact & Mentionables Engine (STEP-36)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4.5: MENTIONABLES ENGINE STARTED")
+    try:
+        from src.impact.mentionables_engine import MentionablesEngine
+        engine = MentionablesEngine(project_root)
+        engine.run_analysis()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.4.5: MENTIONABLES ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Mentionables Engine failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_narrative_engine():
     """Run the Narrative Engine (Phase 1.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
@@ -342,6 +360,9 @@ def main():
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()
+    
+    # Step 1.4.5: [STEP-36] Impact & Mentionables Engine
+    run_mentionables_engine()
     
     # Step 2: Run Engine Components
     # 2.1 Narrative Engine (Legacy/Phase 1.5)

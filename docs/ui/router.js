@@ -65,6 +65,10 @@ async function handleRoute() {
                 const { initMarketStateView } = await import('./operator_market_state.js?v=' + Date.now());
                 await initMarketStateView(app);
                 break;
+            case '#mentionables':
+                const { initMentionablesView } = await import('./operator_mentionables.js?v=' + Date.now());
+                await initMentionablesView(app);
+                break;
             case '#market-story':
                 const { initMarketStoryView } = await import('./operator_market_story.js?v=' + Date.now());
                 await initMarketStoryView(app);

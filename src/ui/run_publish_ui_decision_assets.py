@@ -254,6 +254,14 @@ def _publish_today() -> Optional[Dict]:
                     "featured_theme": story_data.get("featured_theme", "")
                 }
                 print(f"[PUBLISH] ✅ Market Story Engine merged into today.json")
+
+        # [STEP-36] Impact & Mentionables Engine
+        mentionables_path = ROOT / "data" / "story" / "impact_mentionables.json"
+        if mentionables_path.exists() and isinstance(today_data, dict):
+            with open(mentionables_path, 'r', encoding='utf-8') as f:
+                men_data = json.load(f)
+                today_data["mentionable_stocks"] = men_data.get("mentionable_stocks", [])
+                print(f"[PUBLISH] ✅ Mentionables Engine merged into today.json")
         
         # Write back the updated today_data if any changes were made in this block
         dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -371,7 +379,8 @@ def _publish_ops_assets():
         "structural_shift.json",
         "market_prediction_benchmark.json",
         "../contradictions/contradiction_state.json",
-        "../story/today_story.json"
+        "../story/today_story.json",
+        "../story/impact_mentionables.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")
