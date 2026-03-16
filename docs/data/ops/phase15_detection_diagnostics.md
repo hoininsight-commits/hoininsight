@@ -94,13 +94,19 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 49.59
+- **Final Score**: 38.77
 
 ## Topic: 거시경제 이상징후: index_nasdaq_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 60.41
+
+## Topic: 거시경제 이상징후: metal_silver_kag_coingecko
+- **Actors**: TIER_2:META, TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: None
+- **Final Score**: 53.13
 
 ## Topic: 거시경제 이상징후: rates_us02y_fred
 - **Actors**: TIER_4:MARKET
