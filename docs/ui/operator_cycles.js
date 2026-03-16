@@ -4,9 +4,10 @@
  */
 import { fetchJSON } from './utils.js?v=29';
 
-export async function initCycleView() {
+export async function initCycleView(container) {
     console.log("[CycleView] Initializing...");
-    const container = document.getElementById('main-content');
+    if (!container) container = document.getElementById('main-content') || document.getElementById('app');
+    if (!container) return;
     container.innerHTML = `<div class="p-8 text-slate-400 animate-pulse">Scanning Narrative Cycles...</div>`;
 
     try {

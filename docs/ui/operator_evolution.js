@@ -4,9 +4,10 @@
  */
 import { fetchJSON } from './utils.js?v=29';
 
-export async function initEvolutionView() {
+export async function initEvolutionView(container) {
     console.log("[EvolutionView] Initializing...");
-    const container = document.getElementById('main-content');
+    if (!container) container = document.getElementById('main-content') || document.getElementById('app');
+    if (!container) return;
     container.innerHTML = `<div class="p-8 text-slate-400 animate-pulse">Tracing Narrative Evolution...</div>`;
 
     try {

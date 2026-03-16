@@ -4,9 +4,10 @@
  */
 import { fetchJSON } from './utils.js?v=27';
 
-export async function initOntologyView() {
+export async function initOntologyView(container) {
     console.log("[OntologyView] Initializing...");
-    const container = document.getElementById('main-content');
+    if (!container) container = document.getElementById('main-content') || document.getElementById('app');
+    if (!container) return;
     container.innerHTML = `<div class="p-8 text-slate-400 animate-pulse">Loading Ontology Intelligence...</div>`;
 
     try {

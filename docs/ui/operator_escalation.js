@@ -4,9 +4,10 @@
  */
 import { fetchJSON } from './utils.js?v=29';
 
-export async function initEscalationView() {
+export async function initEscalationView(container) {
     console.log("[EscalationView] Initializing...");
-    const container = document.getElementById('main-content');
+    if (!container) container = document.getElementById('main-content') || document.getElementById('app');
+    if (!container) return;
     container.innerHTML = `<div class="p-8 text-slate-400 animate-pulse">Tracking Narrative Escalation Stages...</div>`;
 
     try {
