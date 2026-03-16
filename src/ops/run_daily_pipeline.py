@@ -135,6 +135,24 @@ def run_mentionables_engine():
         return False
 
 
+        return False
+
+
+def run_script_engine():
+    """PHASE 1.4.7: Story-to-Video Script Engine (STEP-37)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4.7: VIDEO SCRIPT ENGINE STARTED")
+    try:
+        from src.content.script_engine import TodayScriptEngine
+        engine = TodayScriptEngine(project_root)
+        engine.run_synthesis()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.4.7: VIDEO SCRIPT ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Video Script Engine failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_narrative_engine():
     """Run the Narrative Engine (Phase 1.5)."""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.5: NARRATIVE ENGINE STARTED")
@@ -363,6 +381,9 @@ def main():
     
     # Step 1.4.5: [STEP-36] Impact & Mentionables Engine
     run_mentionables_engine()
+    
+    # Step 1.4.7: [STEP-37] Video Script Engine
+    run_script_engine()
     
     # Step 2: Run Engine Components
     # 2.1 Narrative Engine (Legacy/Phase 1.5)

@@ -262,6 +262,17 @@ def _publish_today() -> Optional[Dict]:
                 men_data = json.load(f)
                 today_data["mentionable_stocks"] = men_data.get("mentionable_stocks", [])
                 print(f"[PUBLISH] ✅ Mentionables Engine merged into today.json")
+
+        # [STEP-37] Video Script Engine
+        script_path = ROOT / "data" / "content" / "today_video_script.json"
+        if script_path.exists() and isinstance(today_data, dict):
+            with open(script_path, 'r', encoding='utf-8') as f:
+                script_data = json.load(f)
+                today_data["video_script_preview"] = {
+                    "hook": script_data.get("hook", ""),
+                    "action": script_data.get("operator_action", "WATCH")
+                }
+                print(f"[PUBLISH] ✅ Video Script Engine merged into today.json")
         
         # Write back the updated today_data if any changes were made in this block
         dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -380,7 +391,8 @@ def _publish_ops_assets():
         "market_prediction_benchmark.json",
         "../contradictions/contradiction_state.json",
         "../story/today_story.json",
-        "../story/impact_mentionables.json"
+        "../story/impact_mentionables.json",
+        "../content/today_video_script.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")

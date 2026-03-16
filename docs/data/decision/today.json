@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-16T17:25:25.511220",
+  "generated_at_kst": "2026-03-16T12:55:02.857782",
   "date": "2026-03-16",
   "blocks": {
     "regime": {
@@ -17,8 +17,8 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 93.0,
-      "sla_breach_count": 3,
+      "system_freshness": 79.1,
+      "sla_breach_count": 9,
       "has_stale_warning": true,
       "7d_success_rate": "7/7"
     }
@@ -33,14 +33,13 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "comm_wti_fred",
+        "index_nasdaq_fred",
         "index_spx_fred",
         "rates_us10y_fred",
+        "crypto_btc_usd_spot_coingecko",
         "derived_yield_curve_10y_2y",
-        "index_kospi_stooq",
-        "index_nasdaq_fred",
-        "rates_us02y_fred",
-        "crypto_eth_usd_spot_coingecko"
+        "comm_wti_fred",
+        "rates_us02y_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",
       "request": [
@@ -180,9 +179,9 @@
     }
   ],
   "market_story": {
-    "title": "Structural Tension: AI & Semiconductor Capacity Friction",
-    "summary": "Current market is characterized by NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle. AI narrative remains hyper-strong while fundamental foundry/capacity reshuffle is ongoing. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
-    "featured_theme": "Market Equilibrium"
+    "title": "Quantum Leap in AI",
+    "summary": "The gap between software and hardware is narrowing.",
+    "featured_theme": "AI Evolution"
   },
   "mentionable_stocks": [
     {
@@ -215,5 +214,9 @@
       "score": 66.0,
       "reason": "High relevance to Market Equilibrium"
     }
-  ]
+  ],
+  "video_script_preview": {
+    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Quantum Leap in AI'입니다.",
+    "action": "WATCH"
+  }
 }
