@@ -65,6 +65,10 @@ async function handleRoute() {
                 const { initEarlyView } = await import('./operator_early_topics.js?v=' + Date.now());
                 await initEarlyView(app);
                 break;
+            case '#escalation':
+                const { initEscalationView } = await import('./operator_escalation.js?v=' + Date.now());
+                await initEscalationView(app);
+                break;
             default:
                 window.location.hash = '#today';
         }

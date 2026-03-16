@@ -254,6 +254,12 @@ def run_memory_update():
         from src.ops.early_topic_detector import EarlyTopicDetector
         early_detector = EarlyTopicDetector(project_root)
         early_detector.run_analysis()
+
+        # [STEP-29] Narrative Escalation Analysis
+        print("[Pipeline] Running Narrative Escalation Engine...")
+        from src.ops.narrative_escalation_engine import NarrativeEscalationEngine
+        escalation_engine = NarrativeEscalationEngine(project_root)
+        escalation_engine.run_analysis()
         
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE Memory Update: NARRATIVE MEMORY COMPLETED")
         return True
