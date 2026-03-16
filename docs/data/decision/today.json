@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-16T12:30:32.611732",
+  "generated_at_kst": "2026-03-16T12:33:53.588284",
   "date": "2026-03-16",
   "blocks": {
     "regime": {
@@ -17,8 +17,8 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 79.1,
-      "sla_breach_count": 9,
+      "system_freshness": 93.0,
+      "sla_breach_count": 3,
       "has_stale_warning": true,
       "7d_success_rate": "7/7"
     }
@@ -33,11 +33,11 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "index_nasdaq_fred",
+        "comm_wti_fred",
         "index_spx_fred",
         "rates_us10y_fred",
         "derived_yield_curve_10y_2y",
-        "comm_wti_fred",
+        "index_nasdaq_fred",
         "rates_us02y_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",
