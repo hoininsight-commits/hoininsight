@@ -138,6 +138,24 @@ def run_theme_narrative_engine():
         return False
 
 
+        return False
+
+
+def run_theme_evolution_engine():
+    """PHASE 1.3.9.7: Theme Evolution Engine (STEP-41)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.3.9.7: THEME EVOLUTION STARTED")
+    try:
+        from src.theme.theme_evolution_engine import ThemeEvolutionEngine
+        engine = ThemeEvolutionEngine(project_root)
+        engine.run_evolution_analysis()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.3.9.7: THEME EVOLUTION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Theme Evolution failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_market_story_engine():
     """PHASE 1.4: Market Story Engine (STEP-35)"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4: MARKET STORY ENGINE STARTED")
@@ -432,6 +450,9 @@ def main():
     
     # Step 1.3.9.5: [STEP-40] Theme Narrative Engine
     run_theme_narrative_engine()
+    
+    # Step 1.3.9.7: [STEP-41] Theme Evolution Engine
+    run_theme_evolution_engine()
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()

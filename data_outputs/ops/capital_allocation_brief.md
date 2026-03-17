@@ -1,4 +1,4 @@
-# Strategic Capital Allocation Brief (2026-03-16)
+# Strategic Capital Allocation Brief (2026-03-17)
 
 ## Allocation Mode: **DEFENSIVE_BALANCED**
 - **Cash Bias**: HIGH
@@ -12,7 +12,7 @@
 - **Hedge Bucket**: 변동성 방어 (VIX/Gold)
 
 ## Priority Rotation
-- **Axis**: Policy
+- **Axis**: Rates
 - **Tilt**: UNDERWEIGHT_GROWTH
 - **Rationale**: TIGHTENING 환경 기반 자본 효율성 고려
 

@@ -262,6 +262,17 @@ def _publish_today() -> Optional[Dict]:
                 narr_data = json.load(f)
                 today_data["theme_narrative_preview"] = narr_data.get("explanation", "")[:100] + "..."
                 print(f"[PUBLISH] ✅ Theme Narrative Engine merged into today.json")
+
+        # [STEP-41] Theme Evolution Engine
+        evo_path = ROOT / "data" / "theme" / "top_theme_evolution.json"
+        if evo_path.exists() and isinstance(today_data, dict):
+            with open(evo_path, 'r', encoding='utf-8') as f:
+                evo_data = json.load(f)
+                today_data["theme_evolution"] = {
+                    "stage": evo_data.get("stage", "N/A"),
+                    "action_hint": evo_data.get("action_hint", "N/A")
+                }
+                print(f"[PUBLISH] ✅ Theme Evolution Engine merged into today.json")
         
         # [STEP-35] Market Story Engine
         story_path = ROOT / "data" / "story" / "today_story.json"
@@ -423,6 +434,8 @@ def _publish_ops_assets():
         "../contradictions/contradiction_state.json",
         "../theme/top_early_theme.json",
         "../theme/theme_narrative.json",
+        "../theme/theme_evolution_state.json",
+        "../theme/top_theme_evolution.json",
         "../story/today_story.json",
         "../story/impact_mentionables.json",
         "../content/today_video_script.json",
