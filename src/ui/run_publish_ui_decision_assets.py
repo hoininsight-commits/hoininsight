@@ -254,6 +254,14 @@ def _publish_today() -> Optional[Dict]:
                     "stage": early_data.get("stage", "N/A")
                 }
                 print(f"[PUBLISH] ✅ Early Detection Engine merged into today.json")
+
+        # [STEP-40] Theme Narrative Engine
+        narrative_path = ROOT / "data" / "theme" / "theme_narrative.json"
+        if narrative_path.exists() and isinstance(today_data, dict):
+            with open(narrative_path, 'r', encoding='utf-8') as f:
+                narr_data = json.load(f)
+                today_data["theme_narrative_preview"] = narr_data.get("explanation", "")[:100] + "..."
+                print(f"[PUBLISH] ✅ Theme Narrative Engine merged into today.json")
         
         # [STEP-35] Market Story Engine
         story_path = ROOT / "data" / "story" / "today_story.json"
@@ -414,6 +422,7 @@ def _publish_ops_assets():
         "market_prediction_benchmark.json",
         "../contradictions/contradiction_state.json",
         "../theme/top_early_theme.json",
+        "../theme/theme_narrative.json",
         "../story/today_story.json",
         "../story/impact_mentionables.json",
         "../content/today_video_script.json",

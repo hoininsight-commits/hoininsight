@@ -81,6 +81,10 @@ async function handleRoute() {
                 const { initEarlyThemeView } = await import('./operator_early_theme.js?v=' + Date.now());
                 await initEarlyThemeView(app);
                 break;
+            case '#theme-narrative':
+                const { initThemeNarrativeView } = await import('./operator_theme_narrative.js?v=' + Date.now());
+                await initThemeNarrativeView(app);
+                break;
             case '#market-story':
                 const { initMarketStoryView } = await import('./operator_market_story.js?v=' + Date.now());
                 await initMarketStoryView(app);

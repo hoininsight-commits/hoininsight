@@ -120,6 +120,24 @@ def run_theme_early_detection_engine():
         return False
 
 
+        return False
+
+
+def run_theme_narrative_engine():
+    """PHASE 1.3.9.5: Theme Narrative Engine (STEP-40)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.3.9.5: THEME NARRATIVE STARTED")
+    try:
+        from src.theme.theme_narrative_engine import ThemeNarrativeEngine
+        engine = ThemeNarrativeEngine(project_root)
+        engine.run_narrative_expansion()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.3.9.5: THEME NARRATIVE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Theme Narrative failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_market_story_engine():
     """PHASE 1.4: Market Story Engine (STEP-35)"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4: MARKET STORY ENGINE STARTED")
@@ -411,6 +429,9 @@ def main():
     
     # Step 1.3.9: [STEP-39] Theme Early Detection Engine
     run_theme_early_detection_engine()
+    
+    # Step 1.3.9.5: [STEP-40] Theme Narrative Engine
+    run_theme_narrative_engine()
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()
