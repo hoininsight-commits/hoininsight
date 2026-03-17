@@ -156,6 +156,24 @@ def run_theme_evolution_engine():
         return False
 
 
+        return False
+
+
+def run_theme_momentum_engine():
+    """PHASE 1.3.9.9: Narrative Momentum Engine (STEP-42)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.3.9.9: NARRATIVE MOMENTUM STARTED")
+    try:
+        from src.theme.theme_momentum_engine import NarrativeMomentumEngine
+        engine = NarrativeMomentumEngine(project_root)
+        engine.run_momentum_analysis()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.3.9.9: NARRATIVE MOMENTUM COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Narrative Momentum failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
 def run_market_story_engine():
     """PHASE 1.4: Market Story Engine (STEP-35)"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.4: MARKET STORY ENGINE STARTED")
@@ -453,6 +471,9 @@ def main():
     
     # Step 1.3.9.7: [STEP-41] Theme Evolution Engine
     run_theme_evolution_engine()
+    
+    # Step 1.3.9.9: [STEP-42] Narrative Momentum Engine
+    run_theme_momentum_engine()
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()

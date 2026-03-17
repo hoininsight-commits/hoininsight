@@ -77,6 +77,10 @@ async function handleRoute() {
                 const { initTopTopicView } = await import('./operator_top_topic.js?v=' + Date.now());
                 await initTopTopicView(app);
                 break;
+            case '#theme-momentum':
+                const { initThemeMomentumView } = await import('./operator_theme_momentum.js?v=' + Date.now());
+                await initThemeMomentumView(app);
+                break;
             case '#theme-evolution':
                 const { initThemeEvolutionView } = await import('./operator_theme_evolution.js?v=' + Date.now());
                 await initThemeEvolutionView(app);

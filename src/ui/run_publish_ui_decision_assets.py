@@ -273,6 +273,17 @@ def _publish_today() -> Optional[Dict]:
                     "action_hint": evo_data.get("action_hint", "N/A")
                 }
                 print(f"[PUBLISH] ✅ Theme Evolution Engine merged into today.json")
+
+        # [STEP-42] Narrative Momentum Engine
+        mom_path = ROOT / "data" / "theme" / "top_theme_momentum.json"
+        if mom_path.exists() and isinstance(today_data, dict):
+            with open(mom_path, 'r', encoding='utf-8') as f:
+                mom_data = json.load(f)
+                today_data["theme_momentum"] = {
+                    "state": mom_data.get("momentum_state", "N/A"),
+                    "score": mom_data.get("momentum_score", 0)
+                }
+                print(f"[PUBLISH] ✅ Narrative Momentum Engine merged into today.json")
         
         # [STEP-35] Market Story Engine
         story_path = ROOT / "data" / "story" / "today_story.json"
@@ -436,6 +447,8 @@ def _publish_ops_assets():
         "../theme/theme_narrative.json",
         "../theme/theme_evolution_state.json",
         "../theme/top_theme_evolution.json",
+        "../theme/theme_momentum_state.json",
+        "../theme/top_theme_momentum.json",
         "../story/today_story.json",
         "../story/impact_mentionables.json",
         "../content/today_video_script.json",
