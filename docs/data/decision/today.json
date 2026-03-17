@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-17T10:27:18.263815",
+  "generated_at_kst": "2026-03-17T11:12:37.755318",
   "date": "2026-03-17",
   "blocks": {
     "regime": {
@@ -34,7 +34,6 @@
     "ANCHOR": {
       "step1_axis": [
         "comm_wti_fred",
-        "crypto_btc_usd_spot_coingecko",
         "rates_us10y_fred",
         "credit_hy_spread_fred",
         "index_kospi_stooq",
@@ -188,6 +187,10 @@
   "theme_evolution": {
     "stage": "EXPANSION",
     "action_hint": "ACTION / ACCUMULATE"
+  },
+  "theme_momentum": {
+    "state": "ACCELERATING",
+    "score": 0.51
   },
   "market_story": {
     "title": "Quantum Leap in AI",
