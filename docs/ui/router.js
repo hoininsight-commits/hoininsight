@@ -10,7 +10,7 @@ export async function initRouter() {
 }
 
 async function handleRoute() {
-    const hash = window.location.hash || '#today';
+    const hash = window.location.hash || '#market-radar';
     const app = document.getElementById('app');
     
     // 1. Update active state in sidebar
@@ -29,6 +29,22 @@ async function handleRoute() {
 
     try {
         switch (hash) {
+            case '#market-radar':
+                const { initMarketRadarView } = await import('./operator_market_radar.js?v=' + Date.now());
+                await initMarketRadarView(app);
+                break;
+            case '#narrative-brief':
+                const { initNarrativeBriefView } = await import('./operator_narrative_brief.js?v=' + Date.now());
+                await initNarrativeBriefView(app);
+                break;
+            case '#impact-map':
+                const { initImpactMapView } = await import('./operator_impact_map.js?v=' + Date.now());
+                await initImpactMapView(app);
+                break;
+            case '#content-studio':
+                const { initContentStudioView } = await import('./operator_content_studio.js?v=' + Date.now());
+                await initContentStudioView(app);
+                break;
             case '#today':
                 const { initTodayView } = await import('./operator_today.js?v=' + Date.now());
                 await initTodayView(app);
@@ -118,7 +134,7 @@ async function handleRoute() {
                 await initScriptView(app);
                 break;
             default:
-                window.location.hash = '#today';
+                window.location.hash = '#market-radar';
         }
     } catch (err) {
         console.error('[Router] Load Error:', err);

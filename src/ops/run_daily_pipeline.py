@@ -451,6 +451,20 @@ def run_memory_update():
         traceback.print_exc()
         return False
 
+def run_operator_brief_builder():
+    """PHASE 3.0: Operator Brief Builder (STEP-44)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0: OPERATOR BRIEF BUILDER STARTED")
+    try:
+        from src.ops.build_operator_brief import OperatorBriefBuilder
+        builder = OperatorBriefBuilder(project_root)
+        builder.build()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0: OPERATOR BRIEF BUILDER COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Operator Brief Builder failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -521,6 +535,9 @@ def main():
     run_memory_update()
 
     # Step 3: Generate Dashboard & Publishing
+    # 3.0 [STEP-44] Operator Brief Builder
+    run_operator_brief_builder()
+    
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
     

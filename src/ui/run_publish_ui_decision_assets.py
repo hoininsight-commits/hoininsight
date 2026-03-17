@@ -452,7 +452,8 @@ def _publish_ops_assets():
         "../story/today_story.json",
         "../story/impact_mentionables.json",
         "../content/today_video_script.json",
-        "../topic/top_topic.json"
+        "../topic/top_topic.json",
+        "../operator/today_operator_brief.json"
     ]
 
     print(f"\n[PUBLISH] Publishing Ops Assets from {DATA_OPS} to {dest_dir}...")

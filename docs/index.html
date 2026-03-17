@@ -77,95 +77,66 @@
             <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Operator Dashboard</p>
         </div>
 
-        <nav class="flex-1 mt-4">
-            <a href="#today" class="nav-link" id="nav-today">
-                <span class="icon">🔥</span>
-                <span>오늘의 선정</span>
+        <nav class="flex-1 mt-4 overflow-y-auto max-h-[calc(100vh-160px)] custom-scrollbar">
+            <!-- 1. Operator Core Menus -->
+            <div class="px-6 mb-2 mt-4">
+                <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Main Intelligence</p>
+            </div>
+            <a href="#market-radar" class="nav-link" id="nav-market-radar">
+                <span class="icon">📡</span>
+                <span>Market Radar</span>
             </a>
-            <a href="#history" class="nav-link" id="nav-history">
+            <a href="#narrative-brief" class="nav-link" id="nav-narrative-brief">
                 <span class="icon">📜</span>
-                <span>선정 히스토리</span>
+                <span>Narrative Brief</span>
             </a>
-            <a href="#system" class="nav-link" id="nav-system">
+            <a href="#impact-map" class="nav-link" id="nav-impact-map">
+                <span class="icon">🗺️</span>
+                <span>Impact Map</span>
+            </a>
+            <a href="#content-studio" class="nav-link" id="nav-content-studio">
+                <span class="icon">🎬</span>
+                <span>Content Studio</span>
+            </a>
+
+            <!-- 2. Developer Mode -->
+            <div class="px-6 mb-2 mt-10 border-t border-slate-800/50 pt-6">
+                <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">-------- Developer --------</p>
+            </div>
+            <a href="#system" class="nav-link opacity-60 hover:opacity-100" id="nav-system">
                 <span class="icon">⚙️</span>
-                <span>시스템 상태</span>
+                <span>System</span>
             </a>
-            <a href="#video" class="nav-link" id="nav-video">
-                <span class="icon">🎬</span>
-                <span>영상 후보</span>
-            </a>
-            <a href="#memory" class="nav-link" id="nav-memory">
+            <a href="#memory" class="nav-link opacity-60 hover:opacity-100" id="nav-memory">
                 <span class="icon">🧠</span>
-                <span>과거 패턴 (Memory)</span>
+                <span>Memory</span>
             </a>
-            <a href="#ontology" class="nav-link" id="nav-ontology">
+            <a href="#ontology" class="nav-link opacity-60 hover:opacity-100" id="nav-ontology">
                 <span class="icon">🕸️</span>
-                <span>주제 체계 (Ontology)</span>
+                <span>Ontology</span>
             </a>
-            <a href="#cycles" class="nav-link" id="nav-cycles">
+            <a href="#cycles" class="nav-link opacity-60 hover:opacity-100" id="nav-cycles">
                 <span class="icon">🎡</span>
-                <span>내러티브 주기 (Cycles)</span>
+                <span>Cycles</span>
             </a>
-            <a href="#evolution" class="nav-link" id="nav-evolution">
-                <span class="icon">🧬</span>
-                <span>내러티브 진화 (Evolution)</span>
-            </a>
-            <a href="#theme-momentum" class="nav-link" id="nav-theme-momentum">
-                <span class="icon">⚡</span>
-                <span>테마 모멘텀 분석 (Momentum)</span>
-            </a>
-            <a href="#theme-evolution" class="nav-link" id="nav-theme-evolution">
-                <span class="icon">🧬</span>
-                <span>테마 생애주기 판정 (Evolution)</span>
-            </a>
-            <a href="#early-theme" class="nav-link" id="nav-early-theme">
-                <span class="icon">🧭</span>
-                <span>잠재 테마 탐지 (Early Theme)</span>
-            </a>
-            <a href="#theme-narrative" class="nav-link" id="nav-theme-narrative">
+            <a href="#history" class="nav-link opacity-60 hover:opacity-100" id="nav-history">
                 <span class="icon">📜</span>
-                <span>테마 내러티브 확장 (Narrative)</span>
+                <span>History</span>
             </a>
-            <a href="#top-topic" class="nav-link" id="nav-top-topic">
-                <span class="icon">🔥</span>
-                <span>오늘의 핵심 주제 (Today Topic)</span>
-            </a>
-            <a href="#video-script" class="nav-link" id="nav-video-script">
-                <span class="icon">🎬</span>
-                <span>오늘의 영상 스크립트 (Video Script)</span>
-            </a>
-            <a href="#mentionables" class="nav-link" id="nav-mentionables">
-                <span class="icon">📈</span>
-                <span>관련 종목 탐색 (Mentionables)</span>
-            </a>
-            <a href="#market-story" class="nav-link" id="nav-market-story">
-                <span class="icon">📖</span>
-                <span>오늘의 시장 스토리 (Market Story)</span>
-            </a>
-            <a href="#structural-tensions" class="nav-link" id="nav-structural-tensions">
-                <span class="icon">⚡</span>
-                <span>시장 구조적 모순 (Structural Tensions)</span>
-            </a>
-            <a href="#market-state" class="nav-link" id="nav-market-state">
-                <span class="icon">🏛️</span>
-                <span>시장 기준판 (Market State)</span>
-            </a>
-            <a href="#early" class="nav-link" id="nav-early">
-                <span class="icon">⚡</span>
-                <span>조기 주제 탐지 (Early Topics)</span>
-            </a>
-            <a href="#escalation" class="nav-link" id="nav-escalation">
-                <span class="icon">📈</span>
-                <span>내러티브 성장 (Escalation)</span>
-            </a>
-            <a href="#actions" class="nav-link" id="nav-actions">
-                <span class="icon">🚀</span>
-                <span>운영자 액션 (Actions)</span>
-            </a>
-            <a href="#scripts" class="nav-link" id="nav-scripts">
-                <span class="icon">🎬</span>
-                <span>내러티브 스크립트 (Scripts)</span>
-            </a>
+            
+            <!-- Hidden Legacy Items (for router compatibility) -->
+            <div class="hidden">
+                <a href="#today" id="nav-today"></a>
+                <a href="#evolution" id="nav-evolution"></a>
+                <a href="#theme-momentum" id="nav-theme-momentum"></a>
+                <a href="#theme-evolution" id="nav-theme-evolution"></a>
+                <a href="#early-theme" id="nav-early-theme"></a>
+                <a href="#theme-narrative" id="nav-theme-narrative"></a>
+                <a href="#top-topic" id="nav-top-topic"></a>
+                <a href="#video-script" id="nav-video-script"></a>
+                <a href="#mentionables" id="nav-mentionables"></a>
+                <a href="#market-story" id="nav-market-story"></a>
+            </div>
         </nav>
 
         <div class="p-6 border-t border-slate-800/50">
