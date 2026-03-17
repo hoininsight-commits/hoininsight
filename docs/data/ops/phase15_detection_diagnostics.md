@@ -48,17 +48,11 @@
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 60.41
 
-## Topic: 거시경제 이상징후: index_spx_fred
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: Macro_Price_Divergence
-- **Final Score**: 38.77
-
 ## Topic: 거시경제 이상징후: crypto_btc_usd_spot_coingecko
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 44.27
+- **Final Score**: 53.94
 
 ## Topic: 거시경제 이상징후: rates_us10y_fred
 - **Actors**: TIER_4:MARKET

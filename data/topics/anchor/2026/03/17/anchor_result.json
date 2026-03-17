@@ -1,16 +1,20 @@
 {
   "data_axis": [
     "comm_wti_fred",
+    "crypto_btc_usd_spot_coingecko",
     "rates_us10y_fred",
     "credit_hy_spread_fred",
+    "index_kospi_stooq",
     "index_nasdaq_fred",
     "rates_us02y_fred",
     "crypto_eth_usd_spot_coingecko"
   ],
   "baseline_match": [
     "comm_wti_fred: Volatility Surge (Z=2.73)",
+    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.45)",
     "rates_us10y_fred: Volatility Surge (Z=2.24)",
     "credit_hy_spread_fred: Volatility Surge (Z=2.17)",
+    "index_kospi_stooq: Volatility Surge (Z=3.05)",
     "index_nasdaq_fred: Volatility Surge (Z=2.26)",
     "rates_us02y_fred: Volatility Surge (Z=2.08)",
     "crypto_eth_usd_spot_coingecko: Volatility Surge (Z=2.76)"

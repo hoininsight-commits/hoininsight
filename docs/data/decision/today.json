@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-17T09:05:14.321835",
+  "generated_at_kst": "2026-03-17T10:27:18.263815",
   "date": "2026-03-17",
   "blocks": {
     "regime": {
@@ -34,8 +34,10 @@
     "ANCHOR": {
       "step1_axis": [
         "comm_wti_fred",
+        "crypto_btc_usd_spot_coingecko",
         "rates_us10y_fred",
         "credit_hy_spread_fred",
+        "index_kospi_stooq",
         "index_nasdaq_fred",
         "rates_us02y_fred",
         "crypto_eth_usd_spot_coingecko"
@@ -180,9 +182,13 @@
   "early_theme": {
     "theme": "AI Power Constraint",
     "score": 0.8,
-    "stage": "PRE-STORY"
+    "stage": "N/A"
   },
   "theme_narrative_preview": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다....",
+  "theme_evolution": {
+    "stage": "EXPANSION",
+    "action_hint": "ACTION / ACCUMULATE"
+  },
   "market_story": {
     "title": "Quantum Leap in AI",
     "summary": "The gap between software and hardware is narrowing.",

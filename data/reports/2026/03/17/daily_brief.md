@@ -6,7 +6,7 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: US10Y:FLAT(0.00)[png](data/reports/2026/03/17/charts/rates_us10y_fred.png) | VIX:FLAT(0.00)[png](data/reports/2026/03/17/charts/risk_vix_fred.png)
+Drivers: BTCUSD:FLAT(0.00)[png](data/reports/2026/03/17/charts/crypto_btc_usd_spot_coingecko.png) | US10Y:FLAT(0.00)[png](data/reports/2026/03/17/charts/rates_us10y_fred.png)
 Meta topics: [json](data/meta_topics/2026/03/17/meta_topics.json)
 This regime has persisted for 62 consecutive days since 2026-01-14.
 
@@ -21,15 +21,17 @@ Historical context:
 
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
-| 1 | US10Y | data/features/anomalies/2026/03/17/rates_us10y_fred.json L2 Signal | 6.00 | 5 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/rates_us10y_fred.png) | [json](data/topics/2026/03/17/rates_us10y_fred.json) | [json](data/features/anomalies/2026/03/17/rates_us10y_fred.json) |
-| 2 | VIX | data/features/anomalies/2026/03/17/risk_vix_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/risk_vix_fred.png) | [json](data/topics/2026/03/17/risk_vix_fred.json) | [json](data/features/anomalies/2026/03/17/risk_vix_fred.json) |
-| 3 | NASDAQ | data/features/anomalies/2026/03/17/index_nasdaq_fred.json L2 Signal | 6.00 | 5 | 6.00 | UP (0.75) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/index_nasdaq_fred.png) | [json](data/topics/2026/03/17/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/03/17/index_nasdaq_fred.json) |
-| 4 | US02Y | data/features/anomalies/2026/03/17/rates_us02y_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/rates_us02y_fred.png) | [json](data/topics/2026/03/17/rates_us02y_fred.json) | [json](data/features/anomalies/2026/03/17/rates_us02y_fred.json) |
-| 5 | WTI | data/features/anomalies/2026/03/17/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/comm_wti_fred.png) | [json](data/topics/2026/03/17/comm_wti_fred.json) | [json](data/features/anomalies/2026/03/17/comm_wti_fred.json) |
+| 1 | BTCUSD | data/features/anomalies/2026/03/17/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 1 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/03/17/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/03/17/crypto_btc_usd_spot_coingecko.json) |
+| 2 | US10Y | data/features/anomalies/2026/03/17/rates_us10y_fred.json L2 Signal | 6.00 | 5 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/rates_us10y_fred.png) | [json](data/topics/2026/03/17/rates_us10y_fred.json) | [json](data/features/anomalies/2026/03/17/rates_us10y_fred.json) |
+| 3 | VIX | data/features/anomalies/2026/03/17/risk_vix_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/risk_vix_fred.png) | [json](data/topics/2026/03/17/risk_vix_fred.json) | [json](data/features/anomalies/2026/03/17/risk_vix_fred.json) |
+| 4 | KOSPI | data/features/anomalies/2026/03/17/index_kospi_stooq.json L2 Signal | 6.00 | 1 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/index_kospi_stooq.png) | [json](data/topics/2026/03/17/index_kospi_stooq.json) | [json](data/features/anomalies/2026/03/17/index_kospi_stooq.json) |
+| 5 | NASDAQ | data/features/anomalies/2026/03/17/index_nasdaq_fred.json L2 Signal | 6.00 | 5 | 6.00 | UP (0.75) | **6.00** | HIGH | [png](data/reports/2026/03/17/charts/index_nasdaq_fred.png) | [json](data/topics/2026/03/17/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/03/17/index_nasdaq_fred.json) |
 
 ## Per-dataset Topics
+- [HIGH] BTCUSD: data/features/anomalies/2026/03/17/crypto_btc_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [HIGH] US10Y: data/features/anomalies/2026/03/17/rates_us10y_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [HIGH] VIX: data/features/anomalies/2026/03/17/risk_vix_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [HIGH] KOSPI: data/features/anomalies/2026/03/17/index_kospi_stooq.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [HIGH] NASDAQ: data/features/anomalies/2026/03/17/index_nasdaq_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.75) | App7d=5
 - [HIGH] US02Y: data/features/anomalies/2026/03/17/rates_us02y_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] WTI: data/features/anomalies/2026/03/17/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -41,11 +43,9 @@ Historical context:
 - [HIGH] HY_SPREAD: data/features/anomalies/2026/03/17/credit_hy_spread_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/03/17/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/03/17/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [MED] BTCUSD: data/features/anomalies/2026/03/17/crypto_btc_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] KOR_CPI: data/features/anomalies/2026/03/17/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] FED_FUNDS: data/features/anomalies/2026/03/17/rates_fed_funds_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SPX: data/features/anomalies/2026/03/17/index_spx_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
-- [LOW] KOSPI: data/features/anomalies/2026/03/17/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] GOLD: data/features/anomalies/2026/03/17/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [LOW] SILVER: data/features/anomalies/2026/03/17/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] SILVER: data/features/anomalies/2026/03/17/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -94,5 +94,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 17 candidate(s) survived survival rules.
+Gate Filter Result: 16 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.

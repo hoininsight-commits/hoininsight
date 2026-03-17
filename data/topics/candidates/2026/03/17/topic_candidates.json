@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-17T09:05:05.891328",
-  "candidate_count": 16,
-  "alive_count": 16,
+  "generated_at": "2026-03-17T10:27:10.771140",
+  "candidate_count": 17,
+  "alive_count": 17,
   "candidates": [
     {
       "candidate_id": "cand_inflation_pce_fred_20260317",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-03-17T09:05:05.891229",
+      "created_at": "2026-03-17T10:27:10.771033",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -37,7 +37,7 @@
       "candidate_id": "cand_rates_fed_funds_fred_20260317",
       "dataset_id": "rates_fed_funds_fred",
       "category": "RATES_YIELD",
-      "created_at": "2026-03-17T09:05:05.891256",
+      "created_at": "2026-03-17T10:27:10.771062",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -66,7 +66,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260317",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-03-17T09:05:05.891263",
+      "created_at": "2026-03-17T10:27:10.771069",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -95,7 +95,7 @@
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260317",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-03-17T09:05:05.891267",
+      "created_at": "2026-03-17T10:27:10.771073",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -125,7 +125,7 @@
       "candidate_id": "cand_comm_wti_fred_20260317",
       "dataset_id": "comm_wti_fred",
       "category": "COMMODITIES",
-      "created_at": "2026-03-17T09:05:05.891272",
+      "created_at": "2026-03-17T10:27:10.771078",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -152,7 +152,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260317",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-03-17T09:05:05.891277",
+      "created_at": "2026-03-17T10:27:10.771084",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -181,7 +181,7 @@
       "candidate_id": "cand_fx_usdkrw_ecos_20260317",
       "dataset_id": "fx_usdkrw_ecos",
       "category": "FX_RATES",
-      "created_at": "2026-03-17T09:05:05.891282",
+      "created_at": "2026-03-17T10:27:10.771093",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -208,7 +208,7 @@
       "candidate_id": "cand_crypto_btc_usd_spot_coingecko_20260317",
       "dataset_id": "crypto_btc_usd_spot_coingecko",
       "category": "OTHER",
-      "created_at": "2026-03-17T09:05:05.891291",
+      "created_at": "2026-03-17T10:27:10.771098",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -218,7 +218,8 @@
       "supporting_evidence": {
         "intra_category": [
           "rates_us10y_fred",
-          "risk_vix_fred"
+          "risk_vix_fred",
+          "index_kospi_stooq"
         ],
         "inter_category_axes": [
           "INFLATION",
@@ -232,13 +233,13 @@
           "CRYPTO"
         ]
       },
-      "reason": "Category Cluster: Detected in [crypto_btc_usd_spot_coingecko] with corroborating signals in ['rates_us10y_fred', 'risk_vix_fred']."
+      "reason": "Category Cluster: Detected in [crypto_btc_usd_spot_coingecko] with corroborating signals in ['rates_us10y_fred', 'risk_vix_fred', 'index_kospi_stooq']."
     },
     {
       "candidate_id": "cand_rates_us10y_fred_20260317",
       "dataset_id": "rates_us10y_fred",
       "category": "OTHER",
-      "created_at": "2026-03-17T09:05:05.891295",
+      "created_at": "2026-03-17T10:27:10.771102",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -248,7 +249,8 @@
       "supporting_evidence": {
         "intra_category": [
           "crypto_btc_usd_spot_coingecko",
-          "risk_vix_fred"
+          "risk_vix_fred",
+          "index_kospi_stooq"
         ],
         "inter_category_axes": [
           "INFLATION",
@@ -262,13 +264,13 @@
           "CRYPTO"
         ]
       },
-      "reason": "Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'risk_vix_fred']."
+      "reason": "Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'risk_vix_fred', 'index_kospi_stooq']."
     },
     {
       "candidate_id": "cand_risk_vix_fred_20260317",
       "dataset_id": "risk_vix_fred",
       "category": "OTHER",
-      "created_at": "2026-03-17T09:05:05.891299",
+      "created_at": "2026-03-17T10:27:10.771106",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -278,7 +280,8 @@
       "supporting_evidence": {
         "intra_category": [
           "crypto_btc_usd_spot_coingecko",
-          "rates_us10y_fred"
+          "rates_us10y_fred",
+          "index_kospi_stooq"
         ],
         "inter_category_axes": [
           "INFLATION",
@@ -292,13 +295,13 @@
           "CRYPTO"
         ]
       },
-      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'rates_us10y_fred']."
+      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'rates_us10y_fred', 'index_kospi_stooq']."
     },
     {
       "candidate_id": "cand_liquidity_m2_fred_20260317",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-03-17T09:05:05.891303",
+      "created_at": "2026-03-17T10:27:10.771110",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -325,7 +328,7 @@
       "candidate_id": "cand_credit_hy_spread_fred_20260317",
       "dataset_id": "credit_hy_spread_fred",
       "category": "CREDIT",
-      "created_at": "2026-03-17T09:05:05.891307",
+      "created_at": "2026-03-17T10:27:10.771115",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -349,10 +352,41 @@
       "reason": "Cross-Axis: Detected in [credit_hy_spread_fred] during global market volatility in categories ['INFLATION', 'RATES_YIELD', 'STRUCTURAL', 'COMMODITIES', 'FX_RATES', 'OTHER', 'LIQUIDITY', 'GLOBAL_INDEX', 'CRYPTO']."
     },
     {
+      "candidate_id": "cand_index_kospi_stooq_20260317",
+      "dataset_id": "index_kospi_stooq",
+      "category": "OTHER",
+      "created_at": "2026-03-17T10:27:10.771119",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "crypto_btc_usd_spot_coingecko",
+          "rates_us10y_fred",
+          "risk_vix_fred"
+        ],
+        "inter_category_axes": [
+          "INFLATION",
+          "RATES_YIELD",
+          "STRUCTURAL",
+          "COMMODITIES",
+          "FX_RATES",
+          "LIQUIDITY",
+          "CREDIT",
+          "GLOBAL_INDEX",
+          "CRYPTO"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [index_kospi_stooq] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'rates_us10y_fred', 'risk_vix_fred']."
+    },
+    {
       "candidate_id": "cand_index_nasdaq_fred_20260317",
       "dataset_id": "index_nasdaq_fred",
       "category": "GLOBAL_INDEX",
-      "created_at": "2026-03-17T09:05:05.891312",
+      "created_at": "2026-03-17T10:27:10.771124",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -379,7 +413,7 @@
       "candidate_id": "cand_rates_us02y_fred_20260317",
       "dataset_id": "rates_us02y_fred",
       "category": "RATES_YIELD",
-      "created_at": "2026-03-17T09:05:05.891316",
+      "created_at": "2026-03-17T10:27:10.771128",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -408,7 +442,7 @@
       "candidate_id": "cand_inflation_cpi_fred_20260317",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-03-17T09:05:05.891319",
+      "created_at": "2026-03-17T10:27:10.771132",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -438,7 +472,7 @@
       "candidate_id": "cand_crypto_eth_usd_spot_coingecko_20260317",
       "dataset_id": "crypto_eth_usd_spot_coingecko",
       "category": "CRYPTO",
-      "created_at": "2026-03-17T09:05:05.891323",
+      "created_at": "2026-03-17T10:27:10.771136",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
