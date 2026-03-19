@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-19T21:46:44Z",
+    "ts_utc": "2026-03-19T22:51:06Z",
     "dataset_id": "fx_usdkrw_ecos",
     "topic_id": "fx_usdkrw_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/19/fx_usdkrw_ecos.json L2 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": 1.35,
-        "percentile": 99.2,
-        "value": 1491.6,
-        "rolling_mean_20d": 1462.055,
-        "reasoning": "Percentile 99.2% (Extreme)"
+        "z_score": 0.99,
+        "percentile": 98.4,
+        "value": 1486.0,
+        "rolling_mean_20d": 1464.185,
+        "reasoning": "Percentile 98.4% (Extreme)"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/03/19/fx_usdkrw_ecos.json"
     },
-    "rationale": "[L2] Percentile 99.2% (Extreme) (Regime x1.0)",
+    "rationale": "[L2] Percentile 98.4% (Extreme) (Regime x1.0)",
     "links": []
   }
 ]
