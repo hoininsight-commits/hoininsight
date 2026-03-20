@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-20T22:50:46Z",
+    "ts_utc": "2026-03-20T22:54:34Z",
     "dataset_id": "index_nasdaq_fred",
     "topic_id": "index_nasdaq_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/20/index_nasdaq_fred.json L1 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 30,
       "level": "L1",
       "details": {
-        "z_score": -1.76,
-        "percentile": 52.8,
-        "value": 24425.09,
-        "rolling_mean_20d": 24847.653,
-        "reasoning": "Z-Score -1.76 >= 1.5"
+        "z_score": -1.78,
+        "percentile": 51.6,
+        "value": 24355.28,
+        "rolling_mean_20d": 24825.55,
+        "reasoning": "Z-Score -1.78 >= 1.5"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/03/20/index_nasdaq_fred.json"
     },
-    "rationale": "[L1] Z-Score -1.76 >= 1.5 (Regime x1.0)",
+    "rationale": "[L1] Z-Score -1.78 >= 1.5 (Regime x1.0)",
     "links": []
   }
 ]
