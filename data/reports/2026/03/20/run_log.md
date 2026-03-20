@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-03-19T22:54:16+09:00
-- finished_utc: 2026-03-19T22:54:52+09:00
+- started_utc: 2026-03-20T04:55:49+09:00
+- finished_utc: 2026-03-20T04:56:20+09:00
 - status: SUCCESS
 
 ## details
@@ -55,25 +55,13 @@ relationship_stress: ok
 operational_dashboard: ok | data/reports/2026/03/20/operational_dashboard.md
 decision_dashboard: ok | data/reports/2026/03/20/decision_dashboard.md
 decision: ok
-operator_log: ok | NO_TOPIC
 judgment_ledger: ok | None
 judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC
 report: ok | data/reports/2026/03/20/daily_brief.md
 checks:
-[SKIP] outputs(metal_platinum_xptusd_stooq) missing
 schema_checks:
-[OK] schema(index_nasdaq_fred): timeseries_v1
-[OK] schema(rates_us02y_fred): timeseries_v1
-[OK] schema(comm_wti_fred): timeseries_v1
-[OK] schema(metal_platinum_xptusd_stooq): timeseries_v1
-[OK] schema(metal_gold_paxg_coingecko): timeseries_v1
-[OK] schema(metal_silver_kag_coingecko): timeseries_v1
-[OK] schema(metal_silver_kag_coingecko): timeseries_v1
-[OK] schema(rates_kor_base_rate_ecos): timeseries_v1
-[OK] schema(rates_fed_funds_fred): timeseries_v1
-[OK] schema(derived_yield_curve_10y_2y): timeseries_v1
-[OK] schema(derived_gold_silver_ratio): timeseries_v1
+[OK] schema(crypto_eth_usd_spot_coingecko): timeseries_v1
 engine: done
 health: data/reports/2026/03/20/health.json
 dashboard_projection: skipped (no snapshot)
