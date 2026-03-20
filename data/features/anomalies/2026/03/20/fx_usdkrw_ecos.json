@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-03-20T21:39:40Z",
+    "ts_utc": "2026-03-20T22:50:41Z",
     "dataset_id": "fx_usdkrw_ecos",
     "entity": "USDKRW",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": 0.99,
-      "percentile": 98.4,
-      "value": 1486.0,
-      "rolling_mean_20d": 1464.185,
-      "reasoning": "Percentile 98.4% (Extreme)"
+      "z_score": 1.43,
+      "percentile": 100.0,
+      "value": 1499.7,
+      "rolling_mean_20d": 1467.0149999999999,
+      "reasoning": "Percentile 100.0% (Extreme)"
     }
   }
 ]
