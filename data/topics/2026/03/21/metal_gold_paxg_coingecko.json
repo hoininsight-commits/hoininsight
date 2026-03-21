@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-21T22:45:48Z",
+    "ts_utc": "2026-03-21T22:49:11Z",
     "dataset_id": "metal_gold_paxg_coingecko",
     "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/21/metal_gold_paxg_coingecko.json L2 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": -2.78,
+        "z_score": -2.32,
         "percentile": 50.0,
-        "value": 4514.6,
-        "rolling_mean_20d": 5049.746499999999,
-        "reasoning": "Z-Score -2.78 >= 2.0"
+        "value": 4510.57,
+        "rolling_mean_20d": 5008.4055,
+        "reasoning": "Z-Score -2.32 >= 2.0"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/03/21/metal_gold_paxg_coingecko.json"
     },
-    "rationale": "[L2] Z-Score -2.78 >= 2.0 (Regime x1.0)",
+    "rationale": "[L2] Z-Score -2.32 >= 2.0 (Regime x1.0)",
     "links": []
   }
 ]
