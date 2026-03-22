@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-22T09:44:06Z",
+    "ts_utc": "2026-03-22T15:36:20Z",
     "dataset_id": "index_nasdaq_fred",
     "topic_id": "index_nasdaq_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/22/index_nasdaq_fred.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/22/index_nasdaq_fred.json"
     },
     "rationale": "[L2] Z-Score -2.63 >= 2.0 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]

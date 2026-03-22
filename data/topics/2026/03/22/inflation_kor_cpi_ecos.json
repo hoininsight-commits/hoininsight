@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-22T09:44:06Z",
+    "ts_utc": "2026-03-22T15:36:20Z",
     "dataset_id": "inflation_kor_cpi_ecos",
     "topic_id": "inflation_kor_cpi_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/22/inflation_kor_cpi_ecos.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/22/inflation_kor_cpi_ecos.json"
     },
     "rationale": "[L1] Z-Score 1.78 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
