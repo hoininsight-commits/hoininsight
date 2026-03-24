@@ -1,4 +1,4 @@
-# Video Candidates - 2026-03-23
+# Video Candidates - 2026-03-24
 
 ## 🎥 Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.
 - **Why Video**: 구조적 재정의 관점에서 'Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.' 이슈는 시청자들에게 새로운 투자 기회를 제시하기 때문에 선정
