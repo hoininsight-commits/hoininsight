@@ -1,13 +1,13 @@
 {
   "data_axis": [
-    "rates_us10y_fred",
+    "index_kospi_stooq",
     "credit_hy_spread_fred",
-    "index_kospi_stooq"
+    "rates_us10y_fred"
   ],
   "baseline_match": [
-    "rates_us10y_fred: Volatility Surge (Z=2.24)",
+    "index_kospi_stooq: Volatility Surge (Z=2.49)",
     "credit_hy_spread_fred: Volatility Surge (Z=2.17)",
-    "index_kospi_stooq: Volatility Surge (Z=2.49)"
+    "rates_us10y_fred: Volatility Surge (Z=2.24)"
   ],
   "anomaly_logic": "Monetary Tightening",
   "why_now_type": "Capital-driven",
