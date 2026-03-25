@@ -1,12 +1,52 @@
 {
-  "fx_dxy_index_stooq": {
+  "index_nasdaq_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-25T22:58:50.148725Z"
+    "timestamp": "2026-03-25T23:01:21.509942Z"
   },
-  "fx_usdkrw_ecos": {
+  "rates_us02y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-25T22:58:50.206298Z"
+    "timestamp": "2026-03-25T23:01:21.998227Z"
+  },
+  "comm_wti_fred": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.392167Z"
+  },
+  "metal_platinum_xptusd_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.396429Z"
+  },
+  "metal_gold_paxg_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.401699Z"
+  },
+  "metal_silver_kag_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.412177Z"
+  },
+  "rates_kor_base_rate_ecos": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.418088Z"
+  },
+  "rates_fed_funds_fred": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.456055Z"
+  },
+  "derived_yield_curve_10y_2y": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.456406Z"
+  },
+  "derived_gold_silver_ratio": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-03-25T23:01:22.456420Z"
   }
 }
