@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-25T10:02:55Z",
+    "ts_utc": "2026-03-25T16:20:25Z",
     "dataset_id": "risk_vix_fred",
     "topic_id": "risk_vix_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/25/risk_vix_fred.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/25/risk_vix_fred.json"
     },
     "rationale": "[L2] Percentile 99.2% (Extreme) (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]

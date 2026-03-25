@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-25T10:02:55Z",
+    "ts_utc": "2026-03-25T16:20:25Z",
     "dataset_id": "rates_fed_funds_fred",
     "topic_id": "rates_fed_funds_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/25/rates_fed_funds_fred.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/25/rates_fed_funds_fred.json"
     },
     "rationale": "[L1] Z-Score -1.51 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
