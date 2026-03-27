@@ -42,6 +42,11 @@
         "name": "Palantir",
         "relevance_score": 0.56,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "Caterpillar",
+        "name": "Caterpillar",
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
       }
     ]
   },
@@ -53,7 +58,12 @@
     "early_signal_score": 0.67,
     "evolution_stage": "EXPANSION",
     "momentum_state": "ACCELERATING",
-    "momentum_score": 0.52
+    "momentum_score": 0.52,
+    "momentum_drivers": [
+      "AI GPU Demand",
+      "Data Center Capex",
+      "Grid Modernization"
+    ]
   },
   "narrative_brief": {
     "title": "AI Power Constraint",
@@ -88,12 +98,17 @@
         "name": "Palantir",
         "relevance_score": 0.56,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "Caterpillar",
+        "name": "Caterpillar",
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
       }
     ],
     "sector_status": {
+      "Regulatory Impact / Finance": "ACTIVE",
       "AI Software": "ACTIVE",
-      "Broad Market": "ACTIVE",
-      "Regulatory Impact / Finance": "ACTIVE"
+      "Broad Market": "ACTIVE"
     }
   },
   "content_studio": {
@@ -106,8 +121,8 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-27 14:24:38",
+    "repaired_at": "2026-03-27 14:33:26",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-27 14:24:38"
+    "consistency_aligned_at": "2026-03-27 14:33:26"
   }
 }

@@ -1,7 +1,7 @@
 {
   "date": "2026-03-27",
   "total_capital": 1.0,
-  "theme_exposure": 0.0,
+  "theme_exposure": 0.3,
   "allocations": [
     {
       "ticker": "Microsoft",
@@ -26,9 +26,17 @@
       "confidence": 0.3,
       "risk": 0.2,
       "weight": 0.0
+    },
+    {
+      "ticker": "Caterpillar",
+      "stock": "Caterpillar",
+      "base_weight": 0.4,
+      "confidence": 0.5,
+      "risk": 0.2,
+      "weight": 0.3
     }
   ],
   "metadata": {
-    "generated_at": "2026-03-27 14:24:38"
+    "generated_at": "2026-03-27 14:33:26"
   }
 }

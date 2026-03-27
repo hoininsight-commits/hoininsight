@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-03-27
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=49
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -208,6 +208,51 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 나프타 수출 제한 조치 시행…전량 내수 전환·매점매석 금지 - 대한민국 정책브리핑 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 지난해 산지 쌀값 5만8000원으로 역대 최고…벼농사 순수익 1년 새 58% 상승 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘빚투’ ‘영끌’에…부채 상환 고위험가구 35%가 청년층 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “트럼프 정부, ‘배럴당 유가 200달러 경우 파급효과’ 검토” - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “남은 유조선 단 1척”…중동 의존 90% 일본, ‘석탄발전’ 늘리기로 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [단독] 美서도 안달난 SK하이닉스 ADR…월가 운용사 2배 레버리지 낸다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 비트코인 주춤해도 세일러는 ‘직진’…11% 고배당에 개미들 몰렸다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 규제 불확실성의 악재, 국내 가상자산 산업 골든타임을 잃나[엠블록레터] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 교직원공제회, 자산 85조원 돌파… 12년 연속 흑자 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

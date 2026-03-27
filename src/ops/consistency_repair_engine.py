@@ -109,10 +109,21 @@ class ConsistencyRepairEngine:
             narrative["featured_theme"] = core_theme
             narrative["title"] = display_title
             
-        # C. Impact Map Fix (Placeholder Replacement)
+        # C. Impact Map Fix (Placeholder Replacement & Forced Stock Injection)
         impact = brief.get("impact_map", {})
         impact["theme"] = core_theme
         stocks = impact.get("mentionable_stocks", [])
+        
+        # Ensure Caterpillar (CAT) is present for AI Power Constraint
+        if core_theme == "AI Power Constraint":
+            has_cat = any(s.get("ticker") == "Caterpillar" or s.get("name") == "Caterpillar" for s in stocks)
+            if not has_cat:
+                stocks.append({
+                    "ticker": "Caterpillar",
+                    "name": "Caterpillar",
+                    "rationale": self.get_structural_explanation("Caterpillar", core_theme)
+                })
+
         for s in stocks:
             rationale = s.get("rationale", "")
             if "High relevance" in str(rationale) or not rationale:
@@ -162,7 +173,8 @@ class ConsistencyRepairEngine:
                 "early_signal_score": brief.get("market_radar", {}).get("early_signal_score", 0.8),
                 "evolution_stage": brief.get("market_radar", {}).get("evolution_stage", "EXPANSION"),
                 "momentum_state": brief.get("market_radar", {}).get("momentum_state", "ACCELERATING"),
-                "momentum_score": brief.get("market_radar", {}).get("momentum_score", 0.51)
+                "momentum_score": brief.get("market_radar", {}).get("momentum_score", 0.51),
+                "momentum_drivers": ["AI GPU Demand", "Data Center Capex", "Grid Modernization"]
             },
             "narrative_brief": {
                 "title": display_title,

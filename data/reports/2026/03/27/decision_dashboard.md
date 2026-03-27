@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 40
+- **Unreviewed**: 49
 
 ---
 
@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=40
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=49
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,8 +78,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 40
-- **Type Breakdown**: NEWS: 40
+- **Count**: 49
+- **Type Breakdown**: NEWS: 49
 - **Samples (Top 3)**:
   - [NEWS] 2차 석유 최고가격제 시행…전국 기름값 상승세 - KBS 뉴스 (Google_News_KR_Economy)
   - [NEWS] “‘나프타’ 수출제한·수입신고 지연 가산세 부과” - 문화일보 (Google_News_KR_Economy)
@@ -91,6 +91,15 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-27 |
@@ -178,6 +187,15 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -225,6 +243,15 @@
 | 이준석, 미 매체에 “한국, 호르무즈 파병 대신 무기 지원해야” | Structural implication: '이준석, 미 매체에 “한국, 호르무즈 파병 대신 무기 지원해야”' suggests a shift in NEWS dynamics. | LOW |
 | “대중교통 이용·점심시간엔 소등”···중견기업계도 에너지 절약 동참 | Structural implication: '“대중교통 이용·점심시간엔 소등”···중견기업계도 에너지 절약 동참' suggests a shift in NEWS dynamics. | LOW |
 | “60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도 | Structural implication: '“60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도' suggests a shift in NEWS dynamics. | LOW |
+| 나프타 수출 제한 조치 시행…전량 내수 전환·매점매석 금지 - 대한민국 정책브리핑 | Structural implication: '나프타 수출 제한 조치 시행…전량 내수 전환·매점매석 금지 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
+| 지난해 산지 쌀값 5만8000원으로 역대 최고…벼농사 순수익 1년 새 58% 상승 - 조선일보 | Structural implication: '지난해 산지 쌀값 5만8000원으로 역대 최고…벼농사 순수익 1년 새 58% 상승 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| ‘빚투’ ‘영끌’에…부채 상환 고위험가구 35%가 청년층 - 한겨레 | Structural implication: '‘빚투’ ‘영끌’에…부채 상환 고위험가구 35%가 청년층 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| “트럼프 정부, ‘배럴당 유가 200달러 경우 파급효과’ 검토” - 경향신문 | Structural implication: '“트럼프 정부, ‘배럴당 유가 200달러 경우 파급효과’ 검토” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| “남은 유조선 단 1척”…중동 의존 90% 일본, ‘석탄발전’ 늘리기로 - 한겨레 | Structural implication: '“남은 유조선 단 1척”…중동 의존 90% 일본, ‘석탄발전’ 늘리기로 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 美서도 안달난 SK하이닉스 ADR…월가 운용사 2배 레버리지 낸다 | Structural implication: '[단독] 美서도 안달난 SK하이닉스 ADR…월가 운용사 2배 레버리지 낸다' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인 주춤해도 세일러는 ‘직진’…11% 고배당에 개미들 몰렸다 | Structural implication: '비트코인 주춤해도 세일러는 ‘직진’…11% 고배당에 개미들 몰렸다' suggests a shift in NEWS dynamics. | LOW |
+| 규제 불확실성의 악재, 국내 가상자산 산업 골든타임을 잃나[엠블록레터] | Structural implication: '규제 불확실성의 악재, 국내 가상자산 산업 골든타임을 잃나[엠블록레터]' suggests a shift in NEWS dynamics. | LOW |
+| 교직원공제회, 자산 85조원 돌파… 12년 연속 흑자 | Structural implication: '교직원공제회, 자산 85조원 돌파… 12년 연속 흑자' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +269,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +298,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>

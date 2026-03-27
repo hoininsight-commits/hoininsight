@@ -42,6 +42,11 @@
         "name": "Palantir",
         "relevance_score": 0.56,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "Caterpillar",
+        "name": "Caterpillar",
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
       }
     ]
   },
@@ -60,6 +65,11 @@
     "evolution_stage": "EXPANSION",
     "momentum_state": "ACCELERATING",
     "momentum_score": 0.52,
+    "momentum_drivers": [
+      "AI GPU Demand",
+      "Data Center Capex",
+      "Grid Modernization"
+    ],
     "decision": {
       "action": "ACCUMULATE",
       "timing": "IDEAL",
@@ -116,12 +126,18 @@
         "pnl": 0.0,
         "perf_status": "WIN",
         "weight_pct": 0.0
+      },
+      {
+        "ticker": "Caterpillar",
+        "name": "Caterpillar",
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가",
+        "weight_pct": 30.0
       }
     ],
     "sector_status": {
+      "Regulatory Impact / Finance": "ACTIVE",
       "AI Software": "ACTIVE",
-      "Broad Market": "ACTIVE",
-      "Regulatory Impact / Finance": "ACTIVE"
+      "Broad Market": "ACTIVE"
     }
   },
   "content_studio": {
@@ -134,9 +150,9 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-27 14:24:38",
+    "repaired_at": "2026-03-27 14:33:26",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-27 14:24:38"
+    "consistency_aligned_at": "2026-03-27 14:33:26"
   },
   "investment_decision": {
     "action": "ACCUMULATE",
@@ -171,7 +187,7 @@
   "portfolio_allocation": {
     "date": "2026-03-27",
     "total_capital": 1.0,
-    "theme_exposure": 0.0,
+    "theme_exposure": 0.3,
     "allocations": [
       {
         "ticker": "Microsoft",
@@ -196,10 +212,18 @@
         "confidence": 0.3,
         "risk": 0.2,
         "weight": 0.0
+      },
+      {
+        "ticker": "Caterpillar",
+        "stock": "Caterpillar",
+        "base_weight": 0.4,
+        "confidence": 0.5,
+        "risk": 0.2,
+        "weight": 0.3
       }
     ],
     "metadata": {
-      "generated_at": "2026-03-27 14:24:38"
+      "generated_at": "2026-03-27 14:33:26"
     }
   }
 }
