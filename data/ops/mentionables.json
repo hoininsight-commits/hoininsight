@@ -1,0 +1,27 @@
+{
+  "theme": "AI Power Constraint",
+  "mentionable_stocks": [
+    {
+      "ticker": "Microsoft",
+      "name": "Microsoft",
+      "relevance_score": 0.56,
+      "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
+    },
+    {
+      "ticker": "NVIDIA",
+      "name": "NVIDIA",
+      "relevance_score": 0.56,
+      "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
+    },
+    {
+      "ticker": "Palantir",
+      "name": "Palantir",
+      "relevance_score": 0.56,
+      "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+    }
+  ],
+  "metadata": {
+    "generated_at": "2026-03-27 13:44:49",
+    "engine_version": "1.0.0-REPAIRED"
+  }
+}

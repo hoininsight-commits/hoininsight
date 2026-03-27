@@ -39,7 +39,27 @@ class MarketStoryEngine:
         # 2. Extract key elements
         market_state = benchmark.get("benchmark_summary", {}).get("market_state", "Neutral")
         top_contra = self._get_top_contradiction(contradictions)
+        
+        # [STEP-52] Check for Locked Theme
+        locked_path = self.project_root / "data" / "operator" / "locked_brief.json"
+        locked_theme = None
+        if locked_path.exists():
+            try:
+                with open(locked_path, "r", encoding="utf-8") as f:
+                    locked_data = json.load(f)
+                    if locked_data.get("consistency") == "LOCKED":
+                        locked_theme = locked_data.get("core_theme")
+                        print(f"[MarketStoryEngine] 🔒 Using Locked Theme: {locked_theme}")
+            except Exception:
+                pass
+        
         featured_theme = self._get_featured_theme(topic_view)
+        if locked_theme:
+            # Force override theme name
+            if featured_theme:
+                featured_theme["title"] = locked_theme
+            else:
+                featured_theme = {"title": locked_theme}
         
         # 3. Generate Narrative
         story = self._generate_narrative(market_state, top_contra, featured_theme, capital_flow)

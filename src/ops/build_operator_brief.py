@@ -6,7 +6,7 @@ from datetime import datetime
 class OperatorBriefBuilder:
     def __init__(self, project_root):
         self.project_root = Path(project_root)
-        self.output_path = self.project_root / "data" / "operator" / "today_operator_brief.json"
+        self.output_path = self.project_root / "data" / "ops" / "today_operator_brief.json"
 
     def _load_json(self, relative_path):
         full_path = self.project_root / relative_path

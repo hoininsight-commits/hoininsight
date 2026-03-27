@@ -1,5 +1,5 @@
 {
-  "date": "2026-03-16",
+  "date": "2026-03-24",
   "liquidity": {
     "state": "NEUTRAL",
     "score": 50,
@@ -7,7 +7,7 @@
     "drivers": [
       "M2 money supply stable/expanding"
     ],
-    "updated_at": "2026-03-16 14:34:37"
+    "updated_at": "2026-03-24 13:29:03"
   },
   "macro_regime": {
     "regime": "LATE_CYCLE_TIGHTENING",
@@ -19,7 +19,7 @@
       "Strong economic expansion (GDP: 31442.483%)",
       "Tight labor market (Unemployment: 4.4%)"
     ],
-    "updated_at": "2026-03-16 14:34:37"
+    "updated_at": "2026-03-24 13:29:03"
   },
   "risk": {
     "state": "NEUTRAL",
@@ -28,7 +28,7 @@
     "drivers": [
       "Tight credit conditions"
     ],
-    "updated_at": "2026-03-16 14:34:37"
+    "updated_at": "2026-03-24 13:29:03"
   },
   "structural_shift": {
     "active_shifts": [
@@ -44,17 +44,17 @@
       }
     ],
     "summary": "Detected 1 active structural shifts, primarily in Semiconductor Supply Chain Reshuffle.",
-    "updated_at": "2026-03-16 14:34:37"
+    "updated_at": "2026-03-24 13:29:03"
   },
   "benchmark_summary": {
     "market_state": "NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle",
     "focus": [
-      "M2 money supply stable/expanding",
-      "Strong economic expansion (GDP: 31442.483%)",
       "Inflation pressure increasing",
+      "Strong economic expansion (GDP: 31442.483%)",
+      "M2 money supply stable/expanding",
       "Persistence in inflation (CPI: 327.46%)",
-      "Tight labor market (Unemployment: 4.4%)"
+      "Tight credit conditions"
     ]
   },
-  "updated_at": "2026-03-16 14:34:37"
+  "updated_at": "2026-03-24 13:29:03"
 }

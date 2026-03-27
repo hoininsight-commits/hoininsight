@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-24T22:57:04Z",
+    "ts_utc": "2026-03-24T13:29:30Z",
     "dataset_id": "risk_financial_stress_fred",
     "topic_id": "risk_financial_stress_fred::none",
     "title": "data/features/anomalies/2026/03/24/risk_financial_stress_fred.json (Normal)",
@@ -30,6 +30,7 @@
       "anomalies_path": "data/features/anomalies/2026/03/24/risk_financial_stress_fred.json"
     },
     "rationale": "[NORMAL] {} (Regime x1.0)",
-    "links": []
+    "links": [],
+    "is_pre_structural": false
   }
 ]

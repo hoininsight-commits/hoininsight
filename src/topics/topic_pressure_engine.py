@@ -59,6 +59,23 @@ class TopicPressureEngine:
 
         # Sort by pressure and pick TOP 1
         top_topic = sorted(evaluated_topics, key=lambda x: x["topic_pressure"], reverse=True)[0]
+        
+        # [STEP-52] Check for Locked Theme
+        locked_path = self.project_root / "data" / "operator" / "locked_brief.json"
+        if locked_path.exists():
+             with open(locked_path, "r", encoding="utf-8") as f:
+                 locked_theme = json.load(f).get("core_theme")
+                 # Find matching topic or override the top one
+                 found_locked = False
+                 for t in evaluated_topics:
+                     if t["selected_topic"] == locked_theme:
+                         top_topic = t
+                         found_locked = True
+                         break
+                 if not found_locked:
+                     top_topic["selected_topic"] = locked_theme
+                 print(f"[TopicPressureEngine] 🔒 Using Locked Theme: {locked_theme}")
+
         top_topic["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         with open(self.output_path, 'w', encoding='utf-8') as f:

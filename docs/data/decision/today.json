@@ -1,7 +1,7 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-17T11:12:37.755318",
-  "date": "2026-03-17",
+  "generated_at_kst": "2026-03-24T13:29:44.761652",
+  "date": "2026-03-24",
   "blocks": {
     "regime": {
       "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
@@ -17,10 +17,10 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 93.0,
-      "sla_breach_count": 3,
+      "system_freshness": 79.1,
+      "sla_breach_count": 9,
       "has_stale_warning": true,
-      "7d_success_rate": "7/7"
+      "7d_success_rate": "2/7"
     }
   },
   "topic": "Policy Radar",
@@ -33,13 +33,15 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "comm_wti_fred",
-        "rates_us10y_fred",
-        "credit_hy_spread_fred",
-        "index_kospi_stooq",
         "index_nasdaq_fred",
+        "metal_silver_kag_coingecko",
+        "metal_gold_paxg_coingecko",
+        "rates_us10y_fred",
+        "crypto_btc_usd_spot_coingecko",
+        "crypto_eth_usd_spot_coingecko",
+        "comm_wti_fred",
         "rates_us02y_fred",
-        "crypto_eth_usd_spot_coingecko"
+        "credit_hy_spread_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",
       "request": [
@@ -47,18 +49,18 @@
       ],
       "pre_structural": null
     },
-    "PRED_20260317_05": "Primary",
-    "PRED_20260317_01": "Secondary"
+    "PRED_20260324_05": "Primary",
+    "PRED_20260324_01": "Secondary"
   },
   "top_topics": [
     {
-      "id": "PRED_20260317_05",
+      "id": "PRED_20260324_05",
       "score": 83.2,
       "intensity": 0.8320000000000001,
       "title": "Policy Radar",
       "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260317_05",
+        "topic_id": "PRED_20260324_05",
         "theme": "Policy Radar",
         "prediction_score": 83.2,
         "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
@@ -78,13 +80,13 @@
       "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "id": "PRED_20260317_01",
+      "id": "PRED_20260324_01",
       "score": 71.85,
       "intensity": 0.7184999999999999,
       "title": "Macro Shock Radar",
       "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260317_01",
+        "topic_id": "PRED_20260324_01",
         "theme": "Macro Shock Radar",
         "prediction_score": 71.85,
         "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
@@ -130,7 +132,7 @@
     "신한지주"
   ],
   "status": "APPROVED",
-  "decision_date": "2026-03-17",
+  "decision_date": "2026-03-24",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
   "portfolio_focus": "Policy Radar",
   "portfolio_theme": "Policy Radar",
@@ -164,24 +166,11 @@
   "macro_regime": "LATE_CYCLE_TIGHTENING",
   "risk_state": "NEUTRAL",
   "structural_focus": "Semiconductor Supply Chain Reshuffle",
-  "contradictions": [
-    {
-      "name": "AI & Semiconductor Capacity Friction",
-      "type": "Growth vs Capacity",
-      "strength": 0.63,
-      "confidence": "HIGH",
-      "affected_sectors": [
-        "Technology",
-        "Semiconductors",
-        "Infrastructure"
-      ],
-      "reason": "AI narrative remains hyper-strong while fundamental foundry/capacity reshuffle is ongoing."
-    }
-  ],
+  "contradictions": [],
   "early_theme": {
     "theme": "AI Power Constraint",
-    "score": 0.8,
-    "stage": "N/A"
+    "score": 0.67,
+    "stage": "PRE-STORY"
   },
   "theme_narrative_preview": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다....",
   "theme_evolution": {
@@ -189,43 +178,31 @@
     "action_hint": "ACTION / ACCUMULATE"
   },
   "theme_momentum": {
-    "state": "ACCELERATING",
-    "score": 0.51
+    "state": "BUILDING",
+    "score": 0.28
   },
   "market_story": {
-    "title": "Quantum Leap in AI",
-    "summary": "The gap between software and hardware is narrowing.",
-    "featured_theme": "AI Evolution"
+    "title": "Daily Market Convergence",
+    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "featured_theme": "Market Equilibrium"
   },
   "mentionable_stocks": [
     {
       "stock": "Microsoft",
-      "sector": "Technology",
-      "score": 66.0,
+      "sector": "AI Software",
+      "score": 56.0,
       "reason": "High relevance to Market Equilibrium"
     },
     {
       "stock": "NVIDIA",
-      "sector": "Technology",
-      "score": 66.0,
+      "sector": "AI Software",
+      "score": 56.0,
       "reason": "High relevance to Market Equilibrium"
     },
     {
-      "stock": "Apple",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
-    },
-    {
-      "stock": "Google",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
-    },
-    {
-      "stock": "Caterpillar",
-      "sector": "Infrastructure",
-      "score": 66.0,
+      "stock": "Palantir",
+      "sector": "AI Software",
+      "score": 56.0,
       "reason": "High relevance to Market Equilibrium"
     }
   ],
@@ -234,7 +211,7 @@
     "pressure": 0.47
   },
   "video_script_preview": {
-    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Quantum Leap in AI'입니다.",
+    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
     "action": "WATCH"
   }
 }

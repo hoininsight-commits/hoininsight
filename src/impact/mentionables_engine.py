@@ -71,6 +71,14 @@ class MentionablesEngine:
         # 1. Detect Sectors from Story
         detected_sectors = self._detect_sectors(story)
         
+        # [STEP-52] Check for Locked Theme
+        locked_path = self.project_root / "data" / "operator" / "locked_brief.json"
+        locked_theme = None
+        if locked_path.exists():
+             with open(locked_path, "r", encoding="utf-8") as f:
+                 locked_theme = json.load(f).get("core_theme")
+                 print(f"[MentionablesEngine] 🔒 Using Locked Theme: {locked_theme}")
+        
         # 2. Map Stocks & Score
         mentionable_stocks = []
         for sector in detected_sectors:

@@ -1,17 +1,21 @@
 {
   "data_axis": [
-    "comm_wti_fred",
+    "index_nasdaq_fred",
     "rates_us10y_fred",
-    "credit_hy_spread_fred",
     "index_kospi_stooq",
-    "crypto_eth_usd_spot_coingecko"
+    "crypto_eth_usd_spot_coingecko",
+    "comm_wti_fred",
+    "rates_us02y_fred",
+    "credit_hy_spread_fred"
   ],
   "baseline_match": [
-    "comm_wti_fred: Volatility Surge (Z=2.73)",
+    "index_nasdaq_fred: Volatility Surge (Z=2.26)",
     "rates_us10y_fred: Volatility Surge (Z=2.24)",
-    "credit_hy_spread_fred: Volatility Surge (Z=2.17)",
-    "index_kospi_stooq: Volatility Surge (Z=2.49)",
-    "crypto_eth_usd_spot_coingecko: Volatility Surge (Z=2.15)"
+    "index_kospi_stooq: Volatility Surge (Z=2.44)",
+    "crypto_eth_usd_spot_coingecko: Volatility Surge (Z=2.76)",
+    "comm_wti_fred: Volatility Surge (Z=2.73)",
+    "rates_us02y_fred: Volatility Surge (Z=2.08)",
+    "credit_hy_spread_fred: Volatility Surge (Z=2.17)"
   ],
   "anomaly_logic": "Monetary Tightening",
   "why_now_type": "Capital-driven",

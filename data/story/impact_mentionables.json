@@ -1,47 +1,32 @@
 {
-  "theme": "Market Equilibrium",
+  "theme": "AI Power Constraint",
   "affected_sectors": [
-    "AI Software",
-    "Technology",
     "Regulatory Impact / Finance",
-    "Foundry",
-    "Semiconductors",
-    "Infrastructure"
+    "AI Software",
+    "Broad Market"
   ],
   "mentionable_stocks": [
     {
       "stock": "Microsoft",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
+      "sector": "AI Software",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
     },
     {
       "stock": "NVIDIA",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
+      "sector": "AI Software",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
     },
     {
-      "stock": "Apple",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
-    },
-    {
-      "stock": "Google",
-      "sector": "Technology",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
-    },
-    {
-      "stock": "Caterpillar",
-      "sector": "Infrastructure",
-      "score": 66.0,
-      "reason": "High relevance to Market Equilibrium"
+      "stock": "Palantir",
+      "sector": "AI Software",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
     }
   ],
   "metadata": {
-    "generated_at": "2026-03-16 17:21:38",
+    "generated_at": "2026-03-27 13:44:49",
     "engine_version": "1.0.0"
   }
 }

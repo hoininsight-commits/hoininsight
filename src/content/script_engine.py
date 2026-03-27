@@ -93,10 +93,17 @@ class TodayScriptEngine:
 {operator_action}
 """
 
+        # [STEP-52] Check for Locked Theme
+        locked_path = self.project_root / "data" / "operator" / "locked_brief.json"
+        locked_theme = None
+        if locked_path.exists():
+             with open(locked_path, "r", encoding="utf-8") as f:
+                 locked_theme = json.load(f).get("core_theme")
+        
         # JSON Object
         json_output = {
             "date": datetime.now().strftime("%Y-%m-%d"),
-            "theme": story.get("featured_theme", "Market Update"),
+            "theme": locked_theme if locked_theme else story.get("featured_theme", "Market Update"),
             "hook": hook,
             "situation": situation,
             "contradiction": contradiction,

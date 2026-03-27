@@ -6,6 +6,7 @@ Designed to be run by GitHub Actions cron job.
 
 import sys
 import os
+import json
 from pathlib import Path
 from datetime import datetime
 import traceback
@@ -17,6 +18,7 @@ sys.path.append(str(project_root))
 from src.collectors.ecos_collector import ECOSCollector
 from src.collectors.fred_collector import FREDCollector
 from src.ops.fact_first_input_loader import load_fact_first_input
+from src.core.core_narrative_lock_engine import CoreNarrativeLockEngine
 
 def run_collection():
     """Run all data collectors."""
@@ -236,6 +238,20 @@ def run_script_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Video Script Engine failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+
+def run_lock_engine():
+    """PHASE 1.3.10: [STEP-52] Core Narrative Lock Engine"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 1.3.10: CORE NARRATIVE LOCK STARTED")
+    try:
+        engine = CoreNarrativeLockEngine(project_root)
+        engine.run_lock()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 1.3.10: CORE NARRATIVE LOCK COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Core Narrative Lock Engine failed (Soft-Fail): {e}")
         traceback.print_exc()
         return False
 
@@ -465,6 +481,245 @@ def run_operator_brief_builder():
         traceback.print_exc()
         return False
 
+def run_consistency_repair():
+    """PHASE 3.0.5: Narrative Consistency Repair (STEP-51 FIX)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0.5: CONSISTENCY REPAIR STARTED")
+    try:
+        from src.ops.consistency_repair_engine import ConsistencyRepairEngine
+        engine = ConsistencyRepairEngine(project_root)
+        engine.run_repair()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0.5: CONSISTENCY REPAIR COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Consistency Repair failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+def run_investment_decision():
+    """PHASE 3.0.6: Investment Decision Engine (STEP-46)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0.6: INVESTMENT DECISION STARTED")
+    try:
+        from src.ops.investment_decision_engine import InvestmentDecisionEngine
+        from src.ops.stock_decision_mapper import map_stock_decisions
+        
+        engine = InvestmentDecisionEngine(project_root)
+        decision = engine.build_decision()
+        
+        if decision:
+            # [STEP-49] Learning Adjustment
+            from src.learning.pattern_extractor import PatternExtractor
+            from src.learning.learning_engine import LearningEngine
+            
+            # Load radar data independently to avoid engine modification
+            evo_path = project_root / "data" / "theme" / "top_theme_evolution.json"
+            mom_path = project_root / "data" / "theme" / "top_theme_momentum.json"
+            
+            stage = "UNKNOWN"
+            momentum = "UNKNOWN"
+            
+            if evo_path.exists():
+                with open(evo_path, "r", encoding="utf-8") as f:
+                    stage = json.load(f).get("stage", "UNKNOWN")
+            if mom_path.exists():
+                with open(mom_path, "r", encoding="utf-8") as f:
+                    momentum = json.load(f).get("momentum_state", "UNKNOWN")
+            
+            pattern_id = PatternExtractor.extract_id(stage, momentum, decision["decision"]["action"])
+            print(f"[Learning] Current Pattern ID: {pattern_id}")
+            
+            learner = LearningEngine(project_root)
+            adjustment = learner.get_adjustment_for_pattern(pattern_id)
+            
+            base_confidence = decision.get("decision", {}).get("confidence", 0.5)
+            final_confidence = round(max(0.0, min(1.0, base_confidence + adjustment)), 2)
+            
+            # Non-destructive update
+            decision["decision"]["base_confidence"] = base_confidence
+            decision["decision"]["learning_adjustment"] = adjustment
+            decision["decision"]["confidence"] = final_confidence # Apply override
+            print(f"[Learning] Adjustment: {adjustment}, Final Confidence: {final_confidence}")
+            
+        # Save standalone decision
+        decision_path = project_root / "data" / "operator" / "investment_decision.json"
+        with open(decision_path, "w", encoding="utf-8") as f:
+            json.dump(decision, f, indent=2, ensure_ascii=False)
+            
+        # Load impact data for stock mapping
+        impact_path = project_root / "data" / "story" / "impact_mentionables.json"
+        if impact_path.exists():
+            with open(impact_path, "r", encoding="utf-8") as f:
+                impact_data = json.load(f)
+            stock_decisions = map_stock_decisions(decision, impact_data)
+        else:
+            stock_decisions = []
+
+        # Update core operator brief
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if brief_path.exists():
+            with open(brief_path, "r", encoding="utf-8") as f:
+                brief = json.load(f)
+            
+            brief["investment_decision"] = decision["decision"]
+            brief["stock_decisions"] = stock_decisions
+            
+            # Sync to specific components in brief if needed (optional but good for UI)
+            if "market_radar" in brief:
+                brief["market_radar"]["decision"] = decision["decision"]
+            
+            # Update stock entries in impact_map with their specific decisions
+            if "impact_map" in brief and "mentionable_stocks" in brief["impact_map"]:
+                stock_map = {s["ticker"]: s for s in stock_decisions}
+                for stock in brief["impact_map"]["mentionable_stocks"]:
+                    ticker = stock.get("ticker")
+                    if ticker in stock_map:
+                        stock["action"] = stock_map[ticker]["action"]
+                        stock["confidence"] = stock_map[ticker]["confidence"]
+
+            with open(brief_path, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+                
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0.6: INVESTMENT DECISION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Investment Decision failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+        
+def run_execution_tracking():
+    """PHASE 3.0.7: Execution Tracking (STEP-47)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0.7: EXECUTION TRACKING STARTED")
+    try:
+        from src.ops.execution_tracker import ExecutionTracker
+        from src.learning.pattern_extractor import PatternExtractor
+        
+        # Get pattern_id from current decision
+        brief_path = project_root / "data" / "ops" / "today_operator_brief.json"
+        pattern_id = None
+        if brief_path.exists():
+            with open(brief_path, "r", encoding="utf-8") as f:
+                brief = json.load(f)
+                pattern_id = PatternExtractor.get_pattern_from_brief(brief)
+        
+        tracker = ExecutionTracker(project_root)
+        tracker.track_execution(pattern_id=pattern_id)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0.7: EXECUTION TRACKING COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Execution Tracking failed (Soft-Fail): {e}")
+        return False
+
+def run_performance_evaluation():
+    """PHASE 3.0.8: Performance Evaluation (STEP-47)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0.8: PERFORMANCE EVALUATION STARTED")
+    try:
+        from src.ops.performance_evaluator import PerformanceEvaluator
+        evaluator = PerformanceEvaluator(project_root)
+        results = evaluator.evaluate_performance()
+        
+        # Merge into operator brief
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if brief_path.exists() and results:
+            with open(brief_path, "r", encoding="utf-8") as f:
+                brief = json.load(f)
+            
+            # Create lookup
+            perf_map = {r["ticker"]: r for r in results if r.get("ticker")}
+            
+            if "impact_map" in brief and "mentionable_stocks" in brief["impact_map"]:
+                for stock in brief["impact_map"]["mentionable_stocks"]:
+                    ticker = stock.get("ticker")
+                    if ticker in perf_map:
+                        stock["pnl"] = perf_map[ticker]["pnl"]
+                        stock["perf_status"] = perf_map[ticker]["status"]
+            
+            with open(brief_path, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+                
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0.8: PERFORMANCE EVALUATION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Performance Evaluation failed (Soft-Fail): {e}")
+        return False
+
+def run_risk_engine():
+    """PHASE 3.0.9: Risk Management Engine (STEP-48)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.0.9: RISK ENGINE STARTED")
+    try:
+        from src.ops.risk_engine import RiskEngine
+        engine = RiskEngine(project_root)
+        risk = engine.build_risk()
+        
+        # Update operator brief
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if brief_path.exists() and risk:
+            with open(brief_path, "r", encoding="utf-8") as f:
+                brief = json.load(f)
+            
+            brief["risk"] = risk
+            
+            with open(brief_path, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+                
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.0.9: RISK ENGINE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Risk Engine failed (Soft-Fail): {e}")
+        return False
+        
+def run_learning_update():
+    """PHASE 3.1.0: Self Learning Update (STEP-49)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.1.0: SELF LEARNING UPDATE STARTED")
+    try:
+        from src.learning.learning_engine import LearningEngine
+        learner = LearningEngine(project_root)
+        learner.run_update()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.1.0: SELF LEARNING UPDATE COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Learning Update failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
+def run_capital_allocation():
+    """PHASE 3.2.0: Capital Allocation (STEP-50)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.2.0: CAPITAL ALLOCATION STARTED")
+    try:
+        from src.allocation.allocation_engine import AllocationEngine
+        
+        # Load latest brief
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ No brief found for allocation.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        engine = AllocationEngine(project_root)
+        allocation_result = engine.run_allocation(brief)
+        
+        if allocation_result:
+            # Sync back to brief
+            brief["portfolio_allocation"] = allocation_result
+            
+            # Update weights in impact_map for UI consistency
+            alloc_map = {a["ticker"]: a["weight"] for a in allocation_result["allocations"]}
+            if "impact_map" in brief and "mentionable_stocks" in brief["impact_map"]:
+                for stock in brief["impact_map"]["mentionable_stocks"]:
+                    ticker = stock.get("ticker")
+                    if ticker in alloc_map:
+                        stock["weight_pct"] = round(alloc_map[ticker] * 100, 2)
+            
+            with open(brief_path, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+                
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.2.0: CAPITAL ALLOCATION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Capital Allocation failed (Soft-Fail): {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     print(f"=== HOIN DAILY PIPELINE: {datetime.now().strftime('%Y-%m-%d')} ===\n")
     
@@ -488,6 +743,9 @@ def main():
     
     # Step 1.3.9.9: [STEP-42] Narrative Momentum Engine
     run_theme_momentum_engine()
+    
+    # Step 1.3.10: [STEP-52] Core Narrative Lock Engine (Force Theme Alignment)
+    run_lock_engine()
     
     # Step 1.4: [STEP-35] Market Story Engine
     run_market_story_engine()
@@ -537,6 +795,27 @@ def main():
     # Step 3: Generate Dashboard & Publishing
     # 3.0 [STEP-44] Operator Brief Builder
     run_operator_brief_builder()
+    
+    # 3.0.5 [STEP-51] Narrative Consistency Repair (Force Alignment)
+    run_consistency_repair()
+    
+    # 3.0.6 [STEP-46] Investment Decision Engine (Actionable Intelligence)
+    run_investment_decision()
+    
+    # 3.0.7 [STEP-47] Execution Tracking
+    run_execution_tracking()
+    
+    # 3.0.8 [STEP-47] Performance Evaluation
+    run_performance_evaluation()
+    
+    # 3.0.9 [STEP-48] Risk Management Engine
+    run_risk_engine()
+    
+    # 3.1.0 [STEP-49] Self-Improving Engine (Adaptive Learning)
+    run_learning_update()
+    
+    # 3.2.0 [STEP-50] Capital Allocation Engine
+    run_capital_allocation()
     
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")

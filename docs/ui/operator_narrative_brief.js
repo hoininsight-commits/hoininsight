@@ -7,7 +7,7 @@ export async function initNarrativeBriefView(container) {
     console.log('[NarrativeBrief] Initializing...');
     
     try {
-        const response = await fetch('data/ops/today_operator_brief.json');
+        const response = await fetch(`data/ops/today_operator_brief.json?t=${Date.now()}`);
         if (!response.ok) throw new Error('Data brief not found');
         const brief = await response.json();
         const data = brief.narrative_brief;
@@ -37,7 +37,7 @@ export async function initNarrativeBriefView(container) {
                             
                             <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full">
                                 <span class="text-[10px] font-black text-indigo-400 uppercase">Core Theme:</span>
-                                <span class="text-[10px] font-black text-white uppercase ml-1">${data.featured_theme}</span>
+                                <span class="text-[10px] font-black text-white uppercase ml-1">${brief.core_theme || data.featured_theme}</span>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export async function initNarrativeBriefView(container) {
                                 <div>
                                     <div class="flex items-center gap-3 mb-2">
                                         <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
-                                        <div class="text-xs font-black text-slate-300 uppercase">Structural Contradiction (모음)</div>
+                                        <div class="text-xs font-black text-slate-300 uppercase">Structural Contradiction (모순)</div>
                                     </div>
                                     <p class="text-sm text-slate-400 leading-relaxed font-medium pl-4.5">${data.contradiction}</p>
                                 </div>
