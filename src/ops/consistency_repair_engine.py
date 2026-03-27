@@ -133,11 +133,26 @@ class ConsistencyRepairEngine:
         studio = brief.get("content_studio", {})
         current_topic = studio.get("selected_topic", "")
         # If topic is generic or mismatched (e.g. Policy Radar for AI Power), override if needed
-        # In this repair engine, we force align the topic name to the theme if it's too divergent
         if "Radar" in current_topic and core_theme not in current_topic:
             studio["selected_topic"] = f"{core_theme} Frontier"
 
-        # E. Reconstruct into Flat + Nested Structure (Requested in 5.F + UI Compatibility)
+        # E. STEP-52 OVERRIDE: Prioritize data from locked_brief.json if it exists
+        locked_script_hook = None
+        locked_narrative_text = None
+        if locked_path.exists():
+             try:
+                with open(locked_path, "r", encoding="utf-8") as f:
+                    ld = json.load(f)
+                    if ld.get("consistency") == "LOCKED":
+                        locked_script_hook = ld.get("script")
+                        locked_narrative_text = ld.get("narrative")
+                        # Also override topic if locked
+                        if ld.get("topic"):
+                            studio["selected_topic"] = ld.get("topic")
+             except Exception:
+                 pass
+
+        # F. Reconstruct into Flat + Nested Structure (Requested in 5.F + UI Compatibility)
         repaired_brief = {
             # Flat structure requested by user
             "core_theme": core_theme,
@@ -148,14 +163,15 @@ class ConsistencyRepairEngine:
                 "explanation": narrative.get("explanation", ""),
                 "situation": narrative.get("situation", ""),
                 "contradiction": narrative.get("contradiction", ""),
-                "sector_impact": narrative.get("sector_impact", [])
+                "sector_impact": narrative.get("sector_impact", []),
+                "locked_narrative": locked_narrative_text # [STEP-52]
             },
             "topic": {
                 "name": studio.get("selected_topic", "N/A"),
                 "pressure": studio.get("topic_pressure", 0)
             },
             "script": {
-                "hook": studio.get("script", {}).get("hook", f"Today we focus on {core_theme}"),
+                "hook": locked_script_hook if locked_script_hook else studio.get("script", {}).get("hook", f"Today we focus on {core_theme}"),
                 "message": studio.get("script", {}).get("core_message", ""),
                 "action": studio.get("script", {}).get("operator_action", "WATCH")
             },
@@ -193,7 +209,11 @@ class ConsistencyRepairEngine:
             "content_studio": {
                 "selected_topic": studio.get("selected_topic", "N/A"),
                 "topic_pressure": studio.get("topic_pressure", 0),
-                "script": studio.get("script", {})
+                "script": {
+                    "hook": locked_script_hook if locked_script_hook else studio.get("script", {}).get("hook", f"Today we focus on {core_theme}"),
+                    "core_message": studio.get("script", {}).get("core_message", ""),
+                    "operator_action": studio.get("script", {}).get("operator_action", "WATCH")
+                }
             },
             "metadata": {
                 "repaired_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

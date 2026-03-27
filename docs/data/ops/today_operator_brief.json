@@ -2,7 +2,7 @@
   "core_theme": "AI Power Constraint",
   "display_title": "AI Power Constraint",
   "narrative": {
-    "title": "Daily Market Convergence",
+    "title": "AI Power Constraint",
     "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
@@ -11,14 +11,15 @@
       "Utilities",
       "Electrical Equipment",
       "Nuclear"
-    ]
+    ],
+    "locked_narrative": "Structural shift in AI Power Constraint is now the primary driver of market tension."
   },
   "topic": {
-    "name": "AI Power Constraint",
+    "name": "AI Power Constraint Frontier",
     "pressure": 0.47
   },
   "script": {
-    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
+    "hook": "오늘 우리가 주목해야 할 시장의 유일한 균열, 주제는 바로 'AI Power Constraint'입니다.",
     "message": "",
     "action": "WATCH"
   },
@@ -112,17 +113,17 @@
     }
   },
   "content_studio": {
-    "selected_topic": "AI Power Constraint",
+    "selected_topic": "AI Power Constraint Frontier",
     "topic_pressure": 0.47,
     "script": {
-      "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
+      "hook": "오늘 우리가 주목해야 할 시장의 유일한 균열, 주제는 바로 'AI Power Constraint'입니다.",
       "core_message": "",
       "operator_action": "WATCH"
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-27 14:33:26",
+    "repaired_at": "2026-03-27 15:58:41",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-27 14:33:26"
+    "consistency_aligned_at": "2026-03-27 15:58:41"
   }
 }

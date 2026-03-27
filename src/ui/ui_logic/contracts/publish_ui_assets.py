@@ -243,6 +243,6 @@ def publish_assets(project_root: Path):
 
 
 if __name__ == "__main__":
-    project_root = Path(__file__).parent.parent.parent.parent
+    project_root = Path(__file__).parent.parent.parent.parent.parent
     publish_assets(project_root)
 
