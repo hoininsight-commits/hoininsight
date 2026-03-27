@@ -3,6 +3,30 @@
  * Consolidates Market Story and Theme Narrative.
  */
 
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error("UI ERROR:", message);
+    return true;
+};
+
+function safeNumber(value, digits = 2) {
+    if (value === null || value === undefined || isNaN(value)) {
+        return "N/A";
+    }
+    return Number(value).toFixed(digits);
+}
+
+function safeText(value) {
+    if (!value) return "N/A";
+    return value;
+}
+
+function safeArray(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) {
+        return [];
+    }
+    return arr;
+}
+
 export async function initNarrativeBriefView(container) {
     console.log('[NarrativeBrief] Initializing...');
     
@@ -10,6 +34,12 @@ export async function initNarrativeBriefView(container) {
         const response = await fetch(`data/ops/today_operator_brief.json?t=${Date.now()}`);
         if (!response.ok) throw new Error('Data brief not found');
         const brief = await response.json();
+        
+        if (!brief || !brief.narrative_brief) {
+            container.innerHTML = `<div class="p-8 text-slate-500 bg-slate-900/50 rounded-xl border border-slate-800">No Narrative Brief data available</div>`;
+            return;
+        }
+
         const data = brief.narrative_brief;
 
         container.innerHTML = `
@@ -30,14 +60,14 @@ export async function initNarrativeBriefView(container) {
                         
                         <div class="max-w-2xl relative z-10">
                             <div class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-4">Today's Market Story</div>
-                            <h3 class="text-4xl font-black text-white leading-[1.1] mb-6">${data.title}</h3>
+                            <h3 class="text-4xl font-black text-white leading-[1.1] mb-6">${safeText(data.title)}</h3>
                             <p class="text-slate-400 text-lg font-medium leading-relaxed mb-8">
-                                ${data.summary}
+                                ${safeText(data.summary)}
                             </p>
                             
                             <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full">
                                 <span class="text-[10px] font-black text-indigo-400 uppercase">Core Theme:</span>
-                                <span class="text-[10px] font-black text-white uppercase ml-1">${brief.core_theme || data.featured_theme}</span>
+                                <span class="text-[10px] font-black text-white uppercase ml-1">${safeText(brief.core_theme || data.featured_theme)}</span>
                             </div>
                         </div>
                     </div>
@@ -54,7 +84,7 @@ export async function initNarrativeBriefView(container) {
                                         <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
                                         <div class="text-xs font-black text-slate-300 uppercase">Situation (현황)</div>
                                     </div>
-                                    <p class="text-sm text-slate-400 leading-relaxed font-medium pl-4.5">${data.situation}</p>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-medium pl-4.5">${safeText(data.situation)}</p>
                                 </div>
 
                                 <div>
@@ -62,7 +92,7 @@ export async function initNarrativeBriefView(container) {
                                         <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
                                         <div class="text-xs font-black text-slate-300 uppercase">Structural Contradiction (모순)</div>
                                     </div>
-                                    <p class="text-sm text-slate-400 leading-relaxed font-medium pl-4.5">${data.contradiction}</p>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-medium pl-4.5">${safeText(data.contradiction)}</p>
                                 </div>
                            </div>
                         </div>
@@ -71,13 +101,13 @@ export async function initNarrativeBriefView(container) {
                         <div class="bg-[#161b22] border border-slate-800 rounded-2xl p-8">
                             <h4 class="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-6 border-b border-slate-800 pb-4">Sector Impact</h4>
                             <p class="text-sm text-slate-400 leading-relaxed font-medium mb-8">
-                                ${data.sector_impact}
+                                ${safeText(data.sector_impact)}
                             </p>
 
                             <div class="p-5 bg-indigo-500/5 border border-indigo-500/10 rounded-xl">
                                 <div class="text-[10px] font-black text-indigo-400 uppercase mb-3">Narrative Verdict</div>
                                 <p class="text-[11px] text-slate-400 font-medium italic">
-                                    "${data.explanation}"
+                                    "${safeText(data.explanation)}"
                                 </p>
                             </div>
                         </div>

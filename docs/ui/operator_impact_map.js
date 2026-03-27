@@ -3,6 +3,30 @@
  * Consolidates Mentionables Engine results, Investment Decisions & Performance.
  */
 
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error("UI ERROR:", message);
+    return true;
+};
+
+function safeNumber(value, digits = 2) {
+    if (value === null || value === undefined || isNaN(value)) {
+        return "N/A";
+    }
+    return Number(value).toFixed(digits);
+}
+
+function safeText(value) {
+    if (!value) return "N/A";
+    return value;
+}
+
+function safeArray(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) {
+        return [];
+    }
+    return arr;
+}
+
 export async function initImpactMapView(container) {
     console.log('[ImpactMap] Initializing...');
     
@@ -10,6 +34,12 @@ export async function initImpactMapView(container) {
         const response = await fetch(`data/ops/today_operator_brief.json?t=${Date.now()}`);
         if (!response.ok) throw new Error('Data brief not found');
         const brief = await response.json();
+        
+        if (!brief || !brief.impact_map) {
+            container.innerHTML = `<div class="p-8 text-slate-500 bg-slate-900/50 rounded-xl border border-slate-800">No Impact Map data available</div>`;
+            return;
+        }
+
         const data = brief.impact_map;
 
         container.innerHTML = `
@@ -29,8 +59,8 @@ export async function initImpactMapView(container) {
                         <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4">Affected Sectors</div>
                         ${Object.entries(data.sector_status || {}).length > 0 ? Object.entries(data.sector_status).map(([sector, status]) => `
                             <div class="bg-[#161b22] border border-slate-800 rounded-xl p-4 flex justify-between items-center text-nowrap overflow-hidden">
-                                <span class="text-[10px] font-black text-white uppercase tracking-tight truncate mr-2">${sector}</span>
-                                <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-500 text-[9px] font-black rounded uppercase">${status}</span>
+                                <span class="text-[10px] font-black text-white uppercase tracking-tight truncate mr-2">${safeText(sector)}</span>
+                                <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-500 text-[9px] font-black rounded uppercase">${safeText(status)}</span>
                             </div>
                         `).join('') : '<div class="text-slate-600 text-[10px] uppercase font-bold p-4 bg-slate-900/30 rounded-xl border border-slate-800/50">섹터 노출 없음</div>'}
                     </div>
@@ -40,7 +70,7 @@ export async function initImpactMapView(container) {
                         <div class="bg-[#161b22] border border-slate-800 rounded-2xl overflow-hidden">
                             <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/20">
                                 <h3 class="text-xs font-black text-white uppercase tracking-widest">Mentionable Stocks</h3>
-                                <div class="text-[10px] font-bold text-slate-500 italic">Target Theme: ${data.theme}</div>
+                                <div class="text-[10px] font-bold text-slate-500 italic">Target Theme: ${safeText(data.theme)}</div>
                             </div>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left">
@@ -55,29 +85,29 @@ export async function initImpactMapView(container) {
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-800">
-                                        ${(data.mentionable_stocks || []).map(stock => `
+                                        ${safeArray(data.mentionable_stocks).map(stock => `
                                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                                <td class="px-6 py-4 font-black text-blue-400 text-xs tracking-tighter">${stock.ticker}</td>
-                                                <td class="px-6 py-4 font-bold text-white text-xs whitespace-nowrap">${stock.name}</td>
+                                                <td class="px-6 py-4 font-black text-blue-400 text-xs tracking-tighter">${safeText(stock.ticker)}</td>
+                                                <td class="px-6 py-4 font-bold text-white text-xs whitespace-nowrap">${safeText(stock.name || 'Unknown')}</td>
                                                 <td class="px-6 py-4 text-center">
-                                                    <div class="text-[11px] font-black text-white">${stock.weight_pct !== undefined ? stock.weight_pct.toFixed(1) + '%' : '0.0%'}</div>
+                                                    <div class="text-[11px] font-black text-white">${safeNumber(stock.weight_pct, 1)}%</div>
                                                 </td>
                                                 <td class="px-6 py-4 text-center">
                                                     <span class="px-2 py-1 rounded text-[10px] font-black ${stock.pnl >= 0 ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'}">
-                                                        ${stock.pnl !== undefined ? (stock.pnl * 100).toFixed(1) + '%' : '0.0%'}
+                                                        ${safeNumber(stock.pnl !== undefined ? stock.pnl * 100 : undefined, 1)}%
                                                     </span>
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <span class="px-2 py-1 ${getActionBgClass(stock.action)} ${getActionColorClass(stock.action)} text-[9px] font-black rounded uppercase border border-current/20">
-                                                        ${stock.action || 'WATCH'}
+                                                        ${safeText(stock.action || 'WATCH')}
                                                     </span>
                                                 </td>
                                                 <td class="px-6 py-4 text-center">
-                                                     <div class="text-[10px] font-black text-white">${((stock.confidence || 0) * 100).toFixed(0)}%</div>
+                                                     <div class="text-[10px] font-black text-white">${safeNumber((stock.confidence || 0) * 100, 0)}%</div>
                                                 </td>
                                             </tr>
                                         `).join('')}
-                                        ${(!data.mentionable_stocks || data.mentionable_stocks.length === 0) ? `<tr><td colspan="7" class="px-6 py-12 text-center text-slate-600 text-xs font-black uppercase tracking-widest">분석 결과 종목 노출 없음</td></tr>` : ''}
+                                        ${(safeArray(data.mentionable_stocks).length === 0) ? `<tr><td colspan="7" class="px-6 py-12 text-center text-slate-600 text-xs font-black uppercase tracking-widest">분석 결과 종목 노출 없음</td></tr>` : ''}
                                     </tbody>
                                 </table>
                             </div>
