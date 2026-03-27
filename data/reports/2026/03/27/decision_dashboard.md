@@ -189,22 +189,24 @@
 | “‘나프타’ 수출제한·수입신고 지연 가산세 부과” - 문화일보 | Structural implication: '“‘나프타’ 수출제한·수입신고 지연 가산세 부과” - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 엔비디아·테슬라 ‘추풍낙엽’…막판 ‘트럼프 타코’, 삼전·SK하닉 살릴까 - v.daum.net | Structural implication: '엔비디아·테슬라 ‘추풍낙엽’…막판 ‘트럼프 타코’, 삼전·SK하닉 살릴까 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 구글 '터보퀀트' 쇼크에 삼전·하닉 급락…'제번스 역설'로 극복할까 - 연합인포맥스 | Structural implication: '구글 '터보퀀트' 쇼크에 삼전·하닉 급락…'제번스 역설'로 극복할까 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| [사설] 고위험 가구 35%가 2030, 금융절벽에 내몰린 청년들 - 조선일보 | Structural implication: '[사설] 고위험 가구 35%가 2030, 금융절벽에 내몰린 청년들 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 집값 튀어오른 중저가 지역…노원 '신고가' 찍었다 - 한국경제 | Structural implication: '집값 튀어오른 중저가 지역…노원 '신고가' 찍었다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [단독]'터보퀀트 충격에 이탈 가속화되나 … 삼전 外人 보유율, 10년만 48% 추락 - 뉴데일리 경제 | Structural implication: '[단독]'터보퀀트 충격에 이탈 가속화되나 … 삼전 外人 보유율, 10년만 48% 추락 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
 | 환율 상승에 한은 ‘씁쓸한’ 최대 수익…하이닉스 이어 법인세 2위 - 조선일보 | Structural implication: '환율 상승에 한은 ‘씁쓸한’ 최대 수익…하이닉스 이어 법인세 2위 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| ‘오일쇼크’의 귀환… 유가·LNG 급등에 ‘복합 충격’ 덮친다 - 동아일보 | Structural implication: '‘오일쇼크’의 귀환… 유가·LNG 급등에 ‘복합 충격’ 덮친다 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| [공시속보] 엔에이치스팩33호, 신규상장 승인→27일 코스닥 시장 진입 - topstarnews.net | Structural implication: '[공시속보] 엔에이치스팩33호, 신규상장 승인→27일 코스닥 시장 진입 - topstarnews.net' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕 증시, 이란전 발발 이후 가장 큰 폭 하락... S&P500 1.7% ↓ - 조선일보 | Structural implication: '뉴욕 증시, 이란전 발발 이후 가장 큰 폭 하락... S&P500 1.7% ↓ - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “잘 나가던 수출도 전쟁통에 좋을 리 있겠나”…4월 기업경기 전망 ‘뚝’ - 매일경제 | Structural implication: '“잘 나가던 수출도 전쟁통에 좋을 리 있겠나”…4월 기업경기 전망 ‘뚝’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| [공시속보] 엔에이치스팩33호, 신규상장 승인→27일 코스닥 시장 진입 - topstarnews.net | Structural implication: '[공시속보] 엔에이치스팩33호, 신규상장 승인→27일 코스닥 시장 진입 - topstarnews.net' suggests a shift in NEWS dynamics. | LOW |
 | 정부, '모두의 창업' 추진…국민 창업가 5000명 발굴한다 - 대한민국 정책브리핑 | Structural implication: '정부, '모두의 창업' 추진…국민 창업가 5000명 발굴한다 - 대한민국 정책브리핑' suggests a shift in NEWS dynamics. | LOW |
 | 펄어비스 CEO "붉은사막 스토리 아쉬움 공감…계속 업데이트"(종합) - 연합뉴스 | Structural implication: '펄어비스 CEO "붉은사막 스토리 아쉬움 공감…계속 업데이트"(종합) - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 빚 갚으려 유증 강행한 한화솔루션…주가 더 빠지면 '주주충실의무' 위반 - 인베스트조선 | Structural implication: '빚 갚으려 유증 강행한 한화솔루션…주가 더 빠지면 '주주충실의무' 위반 - 인베스트조선' suggests a shift in NEWS dynamics. | LOW |
 | [리벨리온 IPO] 사이드카 타려는 SV인베스트먼트…강민구 찬스 - 딜사이트 | Structural implication: '[리벨리온 IPO] 사이드카 타려는 SV인베스트먼트…강민구 찬스 - 딜사이트' suggests a shift in NEWS dynamics. | LOW |
 | 알테오젠, 바이오젠과 기술수출 계약 소식에 '급등' - 한국경제 | Structural implication: '알테오젠, 바이오젠과 기술수출 계약 소식에 '급등' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| “남은 유조선 단 1척”…중동 의존 90% 일본, ‘석탄발전’ 늘리기로 - 한겨레 | Structural implication: '“남은 유조선 단 1척”…중동 의존 90% 일본, ‘석탄발전’ 늘리기로 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 통과 유조선 한척 남았다…일 정부 ‘석탄 화력발전’ 늘리기로 - 한겨레 | Structural implication: '호르무즈 통과 유조선 한척 남았다…일 정부 ‘석탄 화력발전’ 늘리기로 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 현대로템, 중동형 ‘폭염 특화’ K2 전차 실물 첫 공개 - 조선비즈 - Chosunbiz | Structural implication: '현대로템, 중동형 ‘폭염 특화’ K2 전차 실물 첫 공개 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 한국형 스타링크 추진…TF 꾸려 저궤도 위성망 타당성 검토한다 - 전자신문 | Structural implication: '정부, 한국형 스타링크 추진…TF 꾸려 저궤도 위성망 타당성 검토한다 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
-| [현장] MS "AI 에이전트 보안은 달라야…예측·자율형으로" - 지디넷코리아 | Structural implication: '[현장] MS "AI 에이전트 보안은 달라야…예측·자율형으로" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 순진한 한국 언론...미국 프로그램이 보여준 현대차 로봇의 실체 [강인규 리포트] - v.daum.net | Structural implication: '순진한 한국 언론...미국 프로그램이 보여준 현대차 로봇의 실체 [강인규 리포트] - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | ‘한화 차남’ 김동원 사장 비공개 결혼... 배우자는 일반인 - 조선일보 | Structural implication: '‘한화 차남’ 김동원 사장 비공개 결혼... 배우자는 일반인 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| “집 사기 힘든데 또 오르네”…주담대 27개월來 최고치, 이자 공포 커진다 | Structural implication: '“집 사기 힘든데 또 오르네”…주담대 27개월來 최고치, 이자 공포 커진다' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 日 히타치 가전 사업 매각 결국 불발…삼성·LG도 손 뗐다 | Structural implication: '[단독] 日 히타치 가전 사업 매각 결국 불발…삼성·LG도 손 뗐다' suggests a shift in NEWS dynamics. | LOW |
 | 이재명 대통령 “쓰다만 소설”…‘조폭연루설’ 재차 비판 | Structural implication: '이재명 대통령 “쓰다만 소설”…‘조폭연루설’ 재차 비판' suggests a shift in NEWS dynamics. | LOW |
 | 기름값 순식간에 ‘두 자릿수’ 급등…서울 휘발유 ℓ당 평균 1862.6원 | Structural implication: '기름값 순식간에 ‘두 자릿수’ 급등…서울 휘발유 ℓ당 평균 1862.6원' suggests a shift in NEWS dynamics. | LOW |
 | “야구 입장권에 성심당까지 할인”…‘한화이글스 삼성카드’ 출시 | Structural implication: '“야구 입장권에 성심당까지 할인”…‘한화이글스 삼성카드’ 출시' suggests a shift in NEWS dynamics. | LOW |
@@ -223,8 +225,6 @@
 | 이준석, 미 매체에 “한국, 호르무즈 파병 대신 무기 지원해야” | Structural implication: '이준석, 미 매체에 “한국, 호르무즈 파병 대신 무기 지원해야”' suggests a shift in NEWS dynamics. | LOW |
 | “대중교통 이용·점심시간엔 소등”···중견기업계도 에너지 절약 동참 | Structural implication: '“대중교통 이용·점심시간엔 소등”···중견기업계도 에너지 절약 동참' suggests a shift in NEWS dynamics. | LOW |
 | “60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도 | Structural implication: '“60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도' suggests a shift in NEWS dynamics. | LOW |
-| “스토리라인 워낙 부실해 쓰다만 소설”…이 대통령 ‘조폭연루설’ 재차 비판 | Structural implication: '“스토리라인 워낙 부실해 쓰다만 소설”…이 대통령 ‘조폭연루설’ 재차 비판' suggests a shift in NEWS dynamics. | LOW |
-| “방금도 먹었는데 담배보다 위험하다니”…의사들 경고에 ‘발칵’ | Structural implication: '“방금도 먹었는데 담배보다 위험하다니”…의사들 경고에 ‘발칵’' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

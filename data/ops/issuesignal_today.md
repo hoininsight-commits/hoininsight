@@ -1,4 +1,4 @@
-# IssueSignal Topic Cards - 2026-03-24
+# IssueSignal Topic Cards - 2026-03-27
 
 ## Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.
 **유형**: 구조적 재정의 (공격)

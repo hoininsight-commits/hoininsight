@@ -1,33 +1,85 @@
 {
-  "metadata": {
-    "generated_at": "2026-03-20 18:22:22",
-    "version": "1.0-OPERATOR",
-    "consistency_aligned_at": "2026-03-20 18:22:22"
+  "core_theme": "AI Power Constraint",
+  "display_title": "AI Power Constraint",
+  "narrative": {
+    "title": "Daily Market Convergence",
+    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
+    "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
+    "contradiction": "디지털 혁신의 속도(신속함)와 물리적 인프라의 건설 속도(저속함) 사이의 구조적 시차 발생.",
+    "sector_impact": [
+      "Utilities",
+      "Electrical Equipment",
+      "Nuclear"
+    ]
   },
+  "topic": {
+    "name": "AI Power Constraint",
+    "pressure": 0.47
+  },
+  "script": {
+    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
+    "message": "",
+    "action": "WATCH"
+  },
+  "impact": {
+    "theme": "AI Power Constraint",
+    "stocks": [
+      {
+        "ticker": "Microsoft",
+        "name": "Microsoft",
+        "relevance_score": 0.56,
+        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
+      },
+      {
+        "ticker": "NVIDIA",
+        "name": "NVIDIA",
+        "relevance_score": 0.56,
+        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
+      },
+      {
+        "ticker": "Palantir",
+        "name": "Palantir",
+        "relevance_score": 0.56,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      }
+    ]
+  },
+  "decision": {},
+  "risk": {
+    "theme": "AI Power Constraint",
+    "risk_score": 0.2,
+    "risk_level": "LOW",
+    "invalidation": "AI 관련 Capex 감소 또는 전력 전용 인프라 투자 둔화",
+    "stop_signal": "STABLE"
+  },
+  "allocation": {},
   "market_radar": {
     "theme": "AI Power Constraint",
-    "early_signal_score": 0.8,
+    "early_signal_score": 0.67,
     "evolution_stage": "EXPANSION",
-    "evolution_hint": "ACTION / ACCUMULATE",
     "momentum_state": "ACCELERATING",
-    "momentum_score": 0.9,
-    "momentum_drivers": [],
+    "momentum_score": 0.52,
     "decision": {
-      "action": "HOLD",
+      "action": "ACCUMULATE",
       "timing": "IDEAL",
-      "confidence": 0.42,
-      "base_confidence": 0.42,
+      "confidence": 0.54,
+      "base_confidence": 0.54,
       "learning_adjustment": 0.0
     }
   },
   "narrative_brief": {
-    "title": "Daily Market Convergence",
-    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "title": "AI Power Constraint",
     "featured_theme": "AI Power Constraint",
+    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
     "contradiction": "디지털 혁신의 속도(신속함)와 물리적 인프라의 건설 속도(저속함) 사이의 구조적 시차 발생.",
-    "sector_impact": "Utilities, Electrical Equipment, Nuclear"
+    "sector_impact": [
+      "Utilities",
+      "Electrical Equipment",
+      "Nuclear"
+    ]
   },
   "impact_map": {
     "theme": "AI Power Constraint",
@@ -36,11 +88,9 @@
         "ticker": "Microsoft",
         "name": "Microsoft",
         "relevance_score": 0.56,
-        "rationale": [
-          "High relevance to Market Equilibrium"
-        ],
-        "action": "HOLD",
-        "confidence": 0.24,
+        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
         "weight_pct": 0.0
@@ -49,11 +99,9 @@
         "ticker": "NVIDIA",
         "name": "NVIDIA",
         "relevance_score": 0.56,
-        "rationale": [
-          "High relevance to Market Equilibrium"
-        ],
-        "action": "HOLD",
-        "confidence": 0.24,
+        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
         "weight_pct": 0.0
@@ -62,11 +110,9 @@
         "ticker": "Palantir",
         "name": "Palantir",
         "relevance_score": 0.56,
-        "rationale": [
-          "High relevance to Market Equilibrium"
-        ],
-        "action": "HOLD",
-        "confidence": 0.24,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
         "weight_pct": 0.0
@@ -74,91 +120,86 @@
     ],
     "sector_status": {
       "AI Software": "ACTIVE",
-      "Regulatory Impact / Finance": "ACTIVE",
-      "Broad Market": "ACTIVE"
+      "Broad Market": "ACTIVE",
+      "Regulatory Impact / Finance": "ACTIVE"
     }
   },
   "content_studio": {
-    "selected_topic": "AI Power Constraint (Aligned)",
-    "topic_pressure": 0.7,
-    "pressure_drivers": [],
+    "selected_topic": "AI Power Constraint",
+    "topic_pressure": 0.47,
     "script": {
       "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
       "core_message": "",
       "operator_action": "WATCH"
     }
   },
-  "core_theme": "AI Power Constraint",
-  "display_title": "Insight: AI Power Constraint",
+  "metadata": {
+    "repaired_at": "2026-03-27 14:24:38",
+    "source_build": "LOCKED-ENGINE",
+    "consistency_aligned_at": "2026-03-27 14:24:38"
+  },
   "investment_decision": {
-    "action": "HOLD",
+    "action": "ACCUMULATE",
     "timing": "IDEAL",
-    "confidence": 0.42,
-    "base_confidence": 0.42,
+    "confidence": 0.54,
+    "base_confidence": 0.54,
     "learning_adjustment": 0.0
   },
   "stock_decisions": [
     {
       "ticker": "Microsoft",
       "name": "Microsoft",
-      "action": "HOLD",
-      "confidence": 0.24,
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
       "relevance_weight": 0.56
     },
     {
       "ticker": "NVIDIA",
       "name": "NVIDIA",
-      "action": "HOLD",
-      "confidence": 0.24,
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
       "relevance_weight": 0.56
     },
     {
       "ticker": "Palantir",
       "name": "Palantir",
-      "action": "HOLD",
-      "confidence": 0.24,
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
       "relevance_weight": 0.56
     }
   ],
-  "risk": {
-    "theme": "AI Power Constraint",
-    "risk_score": 0.2,
-    "risk_level": "LOW",
-    "invalidation": "AI 관련 Capex 감소 또는 전력 전용 인프라 투자 둔화",
-    "stop_signal": "STABLE"
-  },
   "portfolio_allocation": {
-    "date": "2026-03-24",
+    "date": "2026-03-27",
     "total_capital": 1.0,
     "theme_exposure": 0.0,
     "allocations": [
       {
         "ticker": "Microsoft",
         "stock": "Microsoft",
-        "base_weight": 0.192,
-        "confidence": 0.24,
+        "base_weight": 0.24,
+        "confidence": 0.3,
         "risk": 0.2,
         "weight": 0.0
       },
       {
         "ticker": "NVIDIA",
         "stock": "NVIDIA",
-        "base_weight": 0.192,
-        "confidence": 0.24,
+        "base_weight": 0.24,
+        "confidence": 0.3,
         "risk": 0.2,
         "weight": 0.0
       },
       {
         "ticker": "Palantir",
         "stock": "Palantir",
-        "base_weight": 0.192,
-        "confidence": 0.24,
+        "base_weight": 0.24,
+        "confidence": 0.3,
         "risk": 0.2,
         "weight": 0.0
       }
     ],
     "metadata": {
-      "generated_at": "2026-03-24 13:29:45"
+      "generated_at": "2026-03-27 14:24:38"
     }
   }
 }

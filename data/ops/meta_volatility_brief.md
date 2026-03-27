@@ -1,4 +1,4 @@
-# Structural Meta-Volatility Brief (2026-03-24)
+# Structural Meta-Volatility Brief (2026-03-27)
 
 ## Meta-Volatility State
 - **Mode**: MIXED

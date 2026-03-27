@@ -1,6 +1,6 @@
-# 🧭 TODAY TOPIC VIEW - 2026-03-24
+# 🧭 TODAY TOPIC VIEW - 2026-03-27
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=46
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -12,232 +12,202 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 벼랑 끝 대치서 발 뺀 트럼프…‘타코(TACO)' 안도감에 뉴욕증시 랠리 - 조선일보 (ID: unknown)
+### 2차 석유 최고가격제 시행…전국 기름값 상승세 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유가 상승에 지난달 생산자물가 0.6%↑…여섯 달째 상승 - KBS 뉴스 (ID: unknown)
+### “‘나프타’ 수출제한·수입신고 지연 가산세 부과” - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 환율 1,500원대 뉴노멀 되나…국내 산업계 빨간불 켜졌다 - 한국무역협회-KITA.NET (ID: unknown)
+### 엔비디아·테슬라 ‘추풍낙엽’…막판 ‘트럼프 타코’, 삼전·SK하닉 살릴까 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 아트블러드, 중기벤처부 '2026 초격차 스타트업' 선정 - 지디넷코리아 (ID: unknown)
+### 구글 '터보퀀트' 쇼크에 삼전·하닉 급락…'제번스 역설'로 극복할까 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 환율 치솟고 코스피 급락…‘확전 공포’ 금융시장 직격 - JTBC (ID: unknown)
+### [사설] 고위험 가구 35%가 2030, 금융절벽에 내몰린 청년들 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘토큰’ IT 업계 화두…젠슨 황 “엔지니어에 기본급 일부 토큰으로 제공하는 방안 검토중” - 동아일보 (ID: unknown)
+### 집값 튀어오른 중저가 지역…노원 '신고가' 찍었다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "에이피알, 수출국 다변화로 성장세 지속 기대… 목표가↑"-교보 - 한국경제 (ID: unknown)
+### 환율 상승에 한은 ‘씁쓸한’ 최대 수익…하이닉스 이어 법인세 2위 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “종량제봉투 있어요?”…전쟁 여파에 ‘비닐 대란’ 우려 - 채널A (ID: unknown)
+### 뉴욕 증시, 이란전 발발 이후 가장 큰 폭 하락... S&P500 1.7% ↓ - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 올해만 대장주 다섯 번 바뀐 코스닥…결국 승자는 ‘바이오’로 가나 - 조선일보 (ID: unknown)
+### “잘 나가던 수출도 전쟁통에 좋을 리 있겠나”…4월 기업경기 전망 ‘뚝’ - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 3월 1~20일 수출 50.4%↑·역대 최대…반도체 163.9% 급증(종합) - 연합인포맥스 (ID: unknown)
+### [공시속보] 엔에이치스팩33호, 신규상장 승인→27일 코스닥 시장 진입 - topstarnews.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 정부, 3대 기반기술 개발·메가 프로젝트로 'K-피지컬 AI' 확보 - 전자신문 (ID: unknown)
+### 정부, '모두의 창업' 추진…국민 창업가 5000명 발굴한다 - 대한민국 정책브리핑 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이 대통령, 떡볶이 가맹점 ‘갑질’ 9.7억 과징금에 “최대치 맞죠?” - 한겨레 (ID: unknown)
+### 펄어비스 CEO "붉은사막 스토리 아쉬움 공감…계속 업데이트"(종합) - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “개미들 정말 탈탈 털린다”…주식 계좌서 ‘쓰윽’ 빠지는 ‘이것’ 뭐길래 - 매일경제 (ID: unknown)
+### 빚 갚으려 유증 강행한 한화솔루션…주가 더 빠지면 '주주충실의무' 위반 - 인베스트조선 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [Who Is ?] 이선주 LG생활건강 대표이사 사장 - 비즈니스포스트 (ID: unknown)
+### [리벨리온 IPO] 사이드카 타려는 SV인베스트먼트…강민구 찬스 - 딜사이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 증권사 서학개미 복귀 'RIA 계좌' 출시…고환율 잡힐까 [돈앤톡] - 한국경제 (ID: unknown)
+### 알테오젠, 바이오젠과 기술수출 계약 소식에 '급등' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 긴장 완화·뉴욕증시 랠리에…코스피, 3%대 급등 출발 - 조선일보 (ID: unknown)
+### 호르무즈 통과 유조선 한척 남았다…일 정부 ‘석탄 화력발전’ 늘리기로 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “구형 아이폰 노린 해킹 도구 공개…수억대 기기 보안 ‘비상’” - 조선비즈 - Chosunbiz (ID: unknown)
+### 현대로템, 중동형 ‘폭염 특화’ K2 전차 실물 첫 공개 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 긴장에 금 대신 달러 산다…금값 3%대 급락 - 지디넷코리아 (ID: unknown)
+### 정부, 한국형 스타링크 추진…TF 꾸려 저궤도 위성망 타당성 검토한다 - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 개인 사업자 대출로 중도금 치르고, 사무실은 전세 내주고...‘꼼수 대출’ 백태 - 조선일보 (ID: unknown)
+### 순진한 한국 언론...미국 프로그램이 보여준 현대차 로봇의 실체 [강인규 리포트] - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “이사 갈 집이 없어요”… 서울 전세 갱신 50% 돌파 - 조선일보 (ID: unknown)
+### ‘한화 차남’ 김동원 사장 비공개 결혼... 배우자는 일반인 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 퀄컴 “삼성과 퍼스널 AI 개발...갤럭시 워치에 스냅드래곤 의미 크다” (ID: unknown)
+### “집 사기 힘든데 또 오르네”…주담대 27개월來 최고치, 이자 공포 커진다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 애플, 6월 WWDC서 AI 반격 승부수 띄운다 (ID: unknown)
+### [단독] 日 히타치 가전 사업 매각 결국 불발…삼성·LG도 손 뗐다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “추위도 녹인 7인의 귀환”…BTS, 뉴욕 루프탑서 아미와 감격 재회 (ID: unknown)
+### 이재명 대통령 “쓰다만 소설”…‘조폭연루설’ 재차 비판 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 샌프란시스코 한인회, 장인환·전명운 의거 118주년 기념식 개최 (ID: unknown)
+### 기름값 순식간에 ‘두 자릿수’ 급등…서울 휘발유 ℓ당 평균 1862.6원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “형, 그냥 가만히 계세요”…김동완, 전 매니저 재폭로 속 버스킹 강행 (ID: unknown)
+### “야구 입장권에 성심당까지 할인”…‘한화이글스 삼성카드’ 출시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [MK부동산 교육] ‘경매·공매 최고의 수업’ 저자 직강 (ID: unknown)
+### 우리은행, 기보와 유망 기업에 3100억 지원 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “한국은 정말 208일 버틸 수 있을까” [나기자의 데이터로 세상읽기] (ID: unknown)
+### 성과급 줄다리기 언제 끝날까?…삼성전자 노사 “집중 교섭 중” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 기아·서울시, 휠체어 특화 ‘PV5 WAV’ 보급 맞손…충전기 무상 설치도 (ID: unknown)
+### 日 세계 2위 전력반도체 회사 나오나…롬·도시바·미쓰비시 통합 논의 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “로봇 목사에 AI 승려까지… 교만 넘어서야 신앙의 위기 해소되죠” [인터뷰] (ID: unknown)
+### “나를 죽이려 하는구나”…배우 장현성에게 전화한 남성의 정체 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 가락시장 중앙청과 ‘가격급락’ 샤인머스켓 농가에 비용 보전 (ID: unknown)
+### 상금만 30억…김종국, ‘AI 경진대회’ 개막식서 한 일 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### L7 충장 바이·브리브 광주 바이 ‘롯데호텔’ 2곳, 이웃돕기 2000만원 투척 (ID: unknown)
+### “이러면 금리인하 물 건너 가는데”…OECD, 美물가 4.2% ‘인플레 경고’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 백악관 만찬서 입 벌리고 춤춘 다카이치…“굴욕외교, 일본의 수치” (ID: unknown)
+### “테슬라 샀는데 완전 마이너스”…지석진 주식 ‘폭망’ 고백 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 트럼프 중대발표 타이밍, ‘공식’ 있었네…‘마감 후·개장 전’ 발표 패턴 반복 (ID: unknown)
+### “에너지절감 동참” 현대차그룹, 차량 5부제 확대 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 파이온코퍼레이션, 마케팅 크리에이티브 자율적AI로(Agentic AI) 1분 만에 ‘뚝딱’ (ID: unknown)
+### “머리가 뿔 달린 소”…‘자유의 여신상’ 미사일로 타격 영상 공개한 이란 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 러닝타임만 72시간, 누워서 공연본다…국립극단 ‘파빌리온 72’ (ID: unknown)
+### “촬영 장비 없어도 가능”소상공인 라이브커머스 문턱 낮췄다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “챗GPT 쓰다가 갈아탔어요”…제미나이 주이용자 65%는 ‘챗GPT 이민자’ (ID: unknown)
+### 본에이아이, 미국 안보 싱크탱크서 한미 방산 협력 논의 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### SK하이닉스, 美ADR 발행 위한 주관사 선정 착수 (ID: unknown)
+### “373% 폭등 미쳤다”…코스닥 휩쓴 바이오株, 상승 배경은 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 이 대통령 “부동산투기 방치하면 나라 망해…담합·조작 등 엄정 제재” (ID: unknown)
+### 이준석, 미 매체에 “한국, 호르무즈 파병 대신 무기 지원해야” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 트럼프 이란공격 보류 발표 직전 5억8000만달러 규모 석유 선물 거래 발생 (ID: unknown)
+### “대중교통 이용·점심시간엔 소등”···중견기업계도 에너지 절약 동참 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 셀트리온, 송도에 원료의약품 생산시설 증설...1.2조원 규모 (ID: unknown)
+### “60개 모아타운, 사업성 보정계수 적용”... 서울시, 소규모 주택정비 속도 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 생산자물가 6개월째 상승…‘고유가 리스크’ 커진다 - 문화일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “이란 공격유예” 메시지에 환율 1,500원 아래로 - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 많이 쓸수록 AI기업 S급 인재… ‘토큰 경제’ 열렸다 - 동아일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [렌트노믹스]① 전세 대신 월세 살고 비트코인 산다… 아파트 ‘방 한 칸’ 하숙도 - 조선비즈 - Chosunbiz (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 휴교·소등·장작때기…‘에너지 절벽’ 남아시아 앞다퉈 비상체제 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [뉴스와 인물] 정동영 장관 “피지컬 AI, 전북 미래 바꿀 ‘신의 한 수’…대한민국 AI의 수도로” - 전북일보 인터넷신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

@@ -1,7 +1,7 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-24T13:29:44.761652",
-  "date": "2026-03-24",
+  "generated_at_kst": "2026-03-27T14:24:38.150032",
+  "date": "2026-03-27",
   "blocks": {
     "regime": {
       "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
@@ -20,12 +20,12 @@
       "system_freshness": 79.1,
       "sla_breach_count": 9,
       "has_stale_warning": true,
-      "7d_success_rate": "2/7"
+      "7d_success_rate": "7/7"
     }
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Monetary Tightening] Capital-driven",
+  "anchor_topic": "[Unknown] Hybrid-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
@@ -33,14 +33,8 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "index_nasdaq_fred",
-        "metal_silver_kag_coingecko",
-        "metal_gold_paxg_coingecko",
         "rates_us10y_fred",
         "crypto_btc_usd_spot_coingecko",
-        "crypto_eth_usd_spot_coingecko",
-        "comm_wti_fred",
-        "rates_us02y_fred",
         "credit_hy_spread_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",
@@ -49,18 +43,18 @@
       ],
       "pre_structural": null
     },
-    "PRED_20260324_05": "Primary",
-    "PRED_20260324_01": "Secondary"
+    "PRED_20260327_05": "Primary",
+    "PRED_20260327_01": "Secondary"
   },
   "top_topics": [
     {
-      "id": "PRED_20260324_05",
+      "id": "PRED_20260327_05",
       "score": 83.2,
       "intensity": 0.8320000000000001,
       "title": "Policy Radar",
       "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260324_05",
+        "topic_id": "PRED_20260327_05",
         "theme": "Policy Radar",
         "prediction_score": 83.2,
         "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
@@ -80,13 +74,13 @@
       "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "id": "PRED_20260324_01",
+      "id": "PRED_20260327_01",
       "score": 71.85,
       "intensity": 0.7184999999999999,
       "title": "Macro Shock Radar",
       "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260324_01",
+        "topic_id": "PRED_20260327_01",
         "theme": "Macro Shock Radar",
         "prediction_score": 71.85,
         "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
@@ -132,7 +126,7 @@
     "신한지주"
   ],
   "status": "APPROVED",
-  "decision_date": "2026-03-24",
+  "decision_date": "2026-03-27",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
   "portfolio_focus": "Policy Radar",
   "portfolio_theme": "Policy Radar",
@@ -178,36 +172,36 @@
     "action_hint": "ACTION / ACCUMULATE"
   },
   "theme_momentum": {
-    "state": "BUILDING",
-    "score": 0.28
+    "state": "ACCELERATING",
+    "score": 0.52
   },
   "market_story": {
     "title": "Daily Market Convergence",
     "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
-    "featured_theme": "Market Equilibrium"
+    "featured_theme": "AI Power Constraint"
   },
   "mentionable_stocks": [
     {
       "stock": "Microsoft",
       "sector": "AI Software",
       "score": 56.0,
-      "reason": "High relevance to Market Equilibrium"
+      "reason": "High relevance to AI Power Constraint"
     },
     {
       "stock": "NVIDIA",
       "sector": "AI Software",
       "score": 56.0,
-      "reason": "High relevance to Market Equilibrium"
+      "reason": "High relevance to AI Power Constraint"
     },
     {
       "stock": "Palantir",
       "sector": "AI Software",
       "score": 56.0,
-      "reason": "High relevance to Market Equilibrium"
+      "reason": "High relevance to AI Power Constraint"
     }
   ],
   "top_topic": {
-    "selected": "Policy Radar",
+    "selected": "AI Power Constraint",
     "pressure": 0.47
   },
   "video_script_preview": {
