@@ -52,7 +52,12 @@
     ]
   },
   "decision": {},
-  "risk": {},
+  "risk": {
+    "risk_level": "MEDIUM",
+    "risk_score": 0.5,
+    "risk_label": "fallback",
+    "risk_reason": "fallback risk applied"
+  },
   "allocation": {},
   "market_radar": {
     "theme": "AI Power Constraint",
@@ -86,24 +91,44 @@
         "ticker": "Microsoft",
         "name": "Microsoft",
         "relevance_score": 0.56,
-        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
+        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
+        "action": "WATCH",
+        "action_label": "fallback (global sync)",
+        "confidence": 0.25,
+        "conviction": 25,
+        "conviction_label": "fallback (global sync)"
       },
       {
         "ticker": "NVIDIA",
         "name": "NVIDIA",
         "relevance_score": 0.56,
-        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
+        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
+        "action": "WATCH",
+        "action_label": "fallback (global sync)",
+        "confidence": 0.25,
+        "conviction": 25,
+        "conviction_label": "fallback (global sync)"
       },
       {
         "ticker": "Palantir",
         "name": "Palantir",
         "relevance_score": 0.56,
-        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "WATCH",
+        "action_label": "fallback (global sync)",
+        "confidence": 0.25,
+        "conviction": 25,
+        "conviction_label": "fallback (global sync)"
       },
       {
         "ticker": "Caterpillar",
         "name": "Caterpillar",
-        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가",
+        "action": "WATCH",
+        "action_label": "fallback (global sync)",
+        "confidence": 0.25,
+        "conviction": 25,
+        "conviction_label": "fallback (global sync)"
       }
     ],
     "sector_status": {
@@ -119,11 +144,35 @@
       "hook": "오늘 우리가 주목해야 할 시장의 유일한 균열, 주제는 바로 'AI Power Constraint'입니다.",
       "core_message": "",
       "operator_action": "WATCH"
+    },
+    "strategy": {
+      "theme": "AI Power Constraint",
+      "action": "WATCH",
+      "timing": "WAIT",
+      "risk": "MEDIUM",
+      "confidence": "25%"
     }
   },
   "metadata": {
     "repaired_at": "2026-03-27 15:58:41",
     "source_build": "LOCKED-ENGINE",
     "consistency_aligned_at": "2026-03-27 15:58:41"
+  },
+  "investment_decision": {
+    "action": "WATCH",
+    "action_label": "fallback",
+    "action_reason": "fallback: decision unavailable",
+    "timing": "WAIT",
+    "timing_label": "fallback",
+    "timing_reason": "fallback: timing unavailable",
+    "confidence": 0.25,
+    "confidence_label": "fallback base",
+    "confidence_reason": "fallback base confidence applied",
+    "conviction": 25
+  },
+  "portfolio_allocation": {
+    "theme_exposure": 0.0,
+    "allocations": [],
+    "allocation_label": "no allocation for WATCH status"
   }
 }
