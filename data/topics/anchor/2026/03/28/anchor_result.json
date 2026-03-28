@@ -1,0 +1,23 @@
+{
+  "data_axis": [
+    "crypto_btc_usd_spot_coingecko",
+    "index_nasdaq_fred",
+    "credit_hy_spread_fred",
+    "rates_us10y_fred"
+  ],
+  "baseline_match": [
+    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.27)",
+    "index_nasdaq_fred: Volatility Surge (Z=2.28)",
+    "credit_hy_spread_fred: Volatility Surge (Z=2.17)",
+    "rates_us10y_fred: Volatility Surge (Z=2.24)"
+  ],
+  "anomaly_logic": "Monetary Tightening",
+  "why_now_type": "Capital-driven",
+  "level": "L2",
+  "level_proof": "Statistical Deviation > 2.0 Sigma",
+  "gap_detection": "Insufficient Evidence for L4",
+  "missing_data_request": [
+    "Need Volume/Flow Data to verify Capital Fixation"
+  ],
+  "pre_structural_context": null
+}
