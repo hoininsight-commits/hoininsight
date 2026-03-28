@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-03-28T09:49:36Z",
+    "ts_utc": "2026-03-28T15:40:51Z",
     "dataset_id": "rates_us02y_fred",
     "topic_id": "rates_us02y_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/03/28/rates_us02y_fred.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/03/28/rates_us02y_fred.json"
     },
     "rationale": "[L1] Z-Score 1.76 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
