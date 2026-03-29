@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from datetime import datetime
 from src.ops.risk_helpers import generate_invalidation
 
 class RiskEngine:
@@ -46,8 +47,14 @@ class RiskEngine:
             "theme": core.get("core_theme"),
             "risk_score": round(risk_score, 2),
             "risk_level": risk_level,
+            "risk_reason": f"Accumulated score from momentum ({m_state}) and evolution ({e_stage}).",
+            "risk_evidence": [f"momentum_state={m_state}", f"evolution_stage={e_stage}"],
             "invalidation": generate_invalidation(core.get("core_theme", "")),
-            "stop_signal": m_state
+            "stop_signal": m_state,
+            "metadata": {
+                "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "engine": "RiskEngine-v1.1"
+            }
         }
         
         with open(self.risk_path, "w", encoding="utf-8") as f:

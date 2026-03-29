@@ -53,10 +53,18 @@
   },
   "decision": {},
   "risk": {
-    "risk_level": "MEDIUM",
-    "risk_score": 0.5,
-    "risk_label": "fallback",
-    "risk_reason": "fallback risk applied"
+    "risk_level": {
+      "value": "MEDIUM",
+      "source": "engine",
+      "reason": "fallback risk applied",
+      "evidence": []
+    },
+    "risk_score": {
+      "value": 0.5,
+      "source": "engine",
+      "reason": "fallback risk applied",
+      "evidence": []
+    }
   },
   "allocation": {},
   "market_radar": {
@@ -150,7 +158,8 @@
       "action": "WATCH",
       "timing": "WAIT",
       "risk": "MEDIUM",
-      "confidence": "25%"
+      "confidence": "25%",
+      "integrity": "DEGRADED"
     }
   },
   "metadata": {
@@ -159,20 +168,69 @@
     "consistency_aligned_at": "2026-03-27 15:58:41"
   },
   "investment_decision": {
-    "action": "WATCH",
-    "action_label": "fallback",
-    "action_reason": "fallback: decision unavailable",
-    "timing": "WAIT",
-    "timing_label": "fallback",
-    "timing_reason": "fallback: timing unavailable",
-    "confidence": 0.25,
-    "confidence_label": "fallback base",
-    "confidence_reason": "fallback base confidence applied",
-    "conviction": 25
+    "action": {
+      "value": "WATCH",
+      "source": "engine",
+      "reason": "fallback: decision unavailable",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "timing": {
+      "value": "WAIT",
+      "source": "engine",
+      "reason": "fallback: timing unavailable",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "confidence": {
+      "value": 0.25,
+      "source": "engine",
+      "reason": "fallback base confidence applied",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "risk": {
+      "value": "MEDIUM",
+      "source": "fallback",
+      "reason": "Missing or zero risk → fallback applied",
+      "evidence": []
+    },
+    "allocation": {
+      "value": 0.0,
+      "source": "fallback",
+      "reason": "Missing or zero allocation → fallback applied",
+      "evidence": []
+    },
+    "conviction": {
+      "value": 25,
+      "source": "engine",
+      "reason": "Derived from UNKNOWN stage and UNKNOWN momentum.",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    }
   },
   "portfolio_allocation": {
-    "theme_exposure": 0.0,
-    "allocations": [],
-    "allocation_label": "no allocation for WATCH status"
+    "theme_exposure": {
+      "value": 0.0,
+      "source": "fallback",
+      "reason": "Capital allocation logic applied",
+      "evidence": []
+    },
+    "allocations": []
+  },
+  "decision_integrity": {
+    "engine_fields": 4,
+    "fallback_fields": 2,
+    "fallback_ratio": 0.33,
+    "status": "DEGRADED",
+    "generated_at": "2026-03-30 08:32:47"
   }
 }

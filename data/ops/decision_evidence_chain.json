@@ -1,0 +1,66 @@
+{
+  "core_theme": "AI Power Constraint",
+  "why_now": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+  "inputs": {
+    "stage": "UNKNOWN",
+    "momentum": "UNKNOWN",
+    "pressure_score": 0.47,
+    "risk_score": 0.5
+  },
+  "decision": {
+    "action": {
+      "value": "WATCH",
+      "source": "engine",
+      "reason": "fallback: decision unavailable",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "timing": {
+      "value": "WAIT",
+      "source": "engine",
+      "reason": "fallback: timing unavailable",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "confidence": {
+      "value": 0.25,
+      "source": "engine",
+      "reason": "fallback base confidence applied",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    },
+    "risk": {
+      "value": "MEDIUM",
+      "source": "fallback",
+      "reason": "Missing or zero risk → fallback applied",
+      "evidence": []
+    },
+    "allocation": {
+      "value": 0.0,
+      "source": "fallback",
+      "reason": "Missing or zero allocation → fallback applied",
+      "evidence": []
+    },
+    "conviction": {
+      "value": 25,
+      "source": "engine",
+      "reason": "Derived from UNKNOWN stage and UNKNOWN momentum.",
+      "evidence": [
+        "Topic Pressure: 0.47",
+        "Risk Score: 0.5"
+      ]
+    }
+  },
+  "fallback_used": true,
+  "fallback_fields": [
+    "risk",
+    "allocation"
+  ],
+  "audit_timestamp": "2026-03-30T08:32:47.235064"
+}

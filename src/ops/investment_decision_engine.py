@@ -49,11 +49,24 @@ class InvestmentDecisionEngine:
             "theme": theme,
             "decision": {
                 "action": action,
+                "action_reason": f"Stage: {stage}, Momentum: {momentum_state}",
+                "action_evidence": [f"stage={stage}", f"momentum={momentum_state}"],
+                
                 "timing": timing,
-                "confidence": confidence
+                "timing_reason": f"Timing derived from {stage} stage mapping.",
+                "timing_evidence": [f"stage={stage}"],
+                
+                "confidence": confidence,
+                "confidence_reason": "Weighted sum of momentum, early signals, and topic pressure.",
+                "confidence_evidence": [
+                    f"momentum_score={momentum_score}",
+                    f"early_score={early_conf}",
+                    f"pressure={pressure}"
+                ]
             },
             "metadata": {
-                "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "engine": "InvestmentDecisionEngine-v1.1"
             }
         }
         

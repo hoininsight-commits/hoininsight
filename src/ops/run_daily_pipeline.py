@@ -19,6 +19,7 @@ from src.collectors.ecos_collector import ECOSCollector
 from src.collectors.fred_collector import FREDCollector
 from src.ops.fact_first_input_loader import load_fact_first_input
 from src.core.core_narrative_lock_engine import CoreNarrativeLockEngine
+from src.ops.decision_provenance_engine import DecisionProvenanceEngine
 
 def run_collection():
     """Run all data collectors."""
@@ -680,163 +681,129 @@ def run_learning_update():
         traceback.print_exc()
         return False
 
-def normalize_decision_fields(brief):
+def normalize_decision_fields(brief, project_root):
     """
-    [STEP-B] No Empty Decision Policy
-    Ensures that all decision fields have non-zero, non-null values.
+    [STEP-C] Decision Authority & Provenance Lock
+    Ensures that all decision fields have provenance metadata (value, source, reason, evidence).
     """
-    print("[Pipeline] Applying [STEP-B] No Empty Decision Policy...")
+    print("[Pipeline] Applying [STEP-C] Decision Provenance Lock...")
     
-    # [STEP-B-9] Content Studio Strategy Banner Must Be Filled
-    core_theme = brief.get("core_theme", "N/A")
-    if "market_radar" in brief and brief["market_radar"].get("theme") == "N/A":
-        brief["market_radar"]["theme"] = core_theme
-    if "narrative_brief" in brief and brief["narrative_brief"].get("featured_theme") == "N/A":
-        brief["narrative_brief"]["featured_theme"] = core_theme
+    provenance_engine = DecisionProvenanceEngine(project_root)
+    
+    # [STEP-C-9] Prepare Context for Provenance
+    context = {
+        "stage": brief.get("market_radar", {}).get("stage", "UNKNOWN"),
+        "momentum": brief.get("market_radar", {}).get("momentum", "UNKNOWN"),
+        "pressure_score": brief.get("topic", {}).get("pressure", 0),
+        "risk_score": brief.get("risk", {}).get("risk_score", 0),
+        "why_now": brief.get("narrative", {}).get("locked_narrative", "")
+    }
 
-    # 1. Action & Timing
-    decision = brief.get("investment_decision", {})
-    if not decision.get("action") or decision.get("action") == "N/A":
-        decision["action"] = "WATCH"
-        decision["action_label"] = "fallback"
-        decision["action_reason"] = "fallback: decision unavailable"
-    
-    if not decision.get("timing") or decision.get("timing") == "UNKNOWN":
-        decision["timing"] = "WAIT"
-        decision["timing_label"] = "fallback"
-        decision["timing_reason"] = "fallback: timing unavailable"
-        
-    # 2. Confidence
-    conf = decision.get("confidence", 0)
-    if conf <= 0:
-        decision["confidence"] = 0.25
-        decision["confidence_label"] = "fallback base"
-        decision["confidence_reason"] = "fallback base confidence applied"
-    
-    # [STEP-B-F] Conviction Rule: Round(Confidence * 100)
-    if not decision.get("conviction") or decision.get("conviction") == 0:
-        decision["conviction"] = int(decision["confidence"] * 100)
-    
-    brief["investment_decision"] = decision
+    # 1. Core Decision Provenance
+    decision_raw = brief.get("investment_decision", {})
+    # If it's already structured (v1.1), just pass through, otherwise wrap
+    if "value" not in str(decision_raw.get("action", "")):
+        # Transitioning from STEP-B flat structure to STEP-C nested structure
+        decision_provenance = provenance_engine.build_decision_provenance(decision_raw, context)
+    else:
+        decision_provenance = decision_raw
 
-    # 3. Risk
-    risk = brief.get("risk", {})
-    if not risk or not risk.get("risk_level"):
-        risk = {
-            "risk_level": "MEDIUM",
-            "risk_score": 0.5,
-            "risk_label": "fallback",
-            "risk_reason": "fallback risk applied"
+    # 2. Risk Provenance
+    risk_raw = brief.get("risk", {})
+    if "value" not in str(risk_raw.get("risk_level", "")):
+        risk_provenance = {
+            "risk_level": provenance_engine.wrap_decision_field(
+                risk_raw.get("risk_level", "MEDIUM"),
+                risk_raw.get("risk_source", "engine"),
+                risk_raw.get("risk_reason", "derived from risk engine output"),
+                risk_raw.get("risk_evidence", [])
+            ),
+            "risk_score": provenance_engine.wrap_decision_field(
+                risk_raw.get("risk_score", 0.5),
+                risk_raw.get("risk_source", "engine"),
+                risk_raw.get("risk_reason", "numeric risk factor"),
+                []
+            )
         }
-    elif not risk.get("risk_score") or risk.get("risk_score") == 0:
-        risk["risk_score"] = 0.5
-        risk["risk_label"] = "fallback"
+    else:
+        risk_provenance = risk_raw
+
+    # 3. Allocation Provenance
+    alloc_raw = brief.get("portfolio_allocation", {})
+    if "value" not in str(alloc_raw.get("theme_exposure", "")):
+        exposure = alloc_raw.get("theme_exposure", 0.0)
+        source = "engine" if exposure > 0 else "fallback"
+        alloc_provenance = {
+            "theme_exposure": provenance_engine.wrap_decision_field(
+                exposure,
+                alloc_raw.get("allocation_source", source),
+                alloc_raw.get("allocation_reason", "Capital allocation logic applied"),
+                alloc_raw.get("allocation_evidence", [])
+            ),
+            "allocations": alloc_raw.get("allocations", [])
+        }
+    else:
+        alloc_provenance = alloc_raw
+
+    # Update Brief with Provenance Structure
+    brief["investment_decision"] = decision_provenance
+    brief["risk"] = risk_provenance
+    brief["portfolio_allocation"] = alloc_provenance
+
+    # 4. Decision Integrity
+    integrity = provenance_engine.compute_decision_integrity(decision_provenance)
+    brief["decision_integrity"] = integrity
+
+    # 5. Evidence Chain
+    core_theme = brief.get("core_theme", "N/A")
+    evidence_chain = provenance_engine.build_evidence_chain(core_theme, context, decision_provenance)
     
-    brief["risk"] = risk
+    chain_path = project_root / "data" / "ops" / "decision_evidence_chain.json"
+    with open(chain_path, "w", encoding="utf-8") as f:
+        json.dump(evidence_chain, f, indent=2, ensure_ascii=False)
+    print(f"[Provenance] Evidence Chain saved to {chain_path}")
 
-    # 4. Impact Map & Stocks
-    if "impact_map" in brief:
-        imap = brief["impact_map"]
-        if not imap.get("theme") or imap.get("theme") == "N/A":
-            imap["theme"] = core_theme
-            
-        stocks = imap.get("mentionable_stocks", [])
-        global_action = decision["action"]
-        global_conviction = decision["conviction"]
-        
-        for stock in stocks:
-            # [STEP-B-G] Impact Map Stock Fallbacks
-            if not stock.get("action") or stock.get("action") == "N/A":
-                stock["action"] = global_action
-                stock["action_label"] = "fallback (global sync)"
-            
-            if not stock.get("confidence") or stock.get("confidence") == 0:
-                stock["confidence"] = decision["confidence"]
-            
-            # Conviction for UI (0-100)
-            if not stock.get("conviction") or stock.get("conviction") == 0:
-                stock["conviction"] = global_conviction
-                stock["conviction_label"] = "fallback (global sync)"
-        
-        brief["impact_map"]["mentionable_stocks"] = stocks
-
-    # 5. Capital Allocation (Fallback if exposure is 0 but action != WATCH)
-    alloc = brief.get("portfolio_allocation", {})
-    if (not alloc or alloc.get("theme_exposure", 0) == 0) and decision["action"] != "WATCH":
-        stocks = brief.get("impact_map", {}).get("mentionable_stocks", [])
-        if stocks:
-            # [STEP-B-E] Allocation Fallback Rule: Top 3 stocks, 0.05 each
-            targets = stocks[:3]
-            fallback_allocs = []
-            for t in targets:
-                fallback_allocs.append({
-                    "ticker": t["ticker"],
-                    "weight": 0.05,
-                    "label": "fallback minimal"
-                })
-            
-            brief["portfolio_allocation"] = {
-                "theme_exposure": round(len(fallback_allocs) * 0.05, 2),
-                "allocations": fallback_allocs,
-                "allocation_label": "fallback minimal allocation applied"
-            }
-            
-            # Sync weights back to impact_map for UI rendering (as weight_pct)
-            alloc_dict = {a["ticker"]: a["weight"] for a in fallback_allocs}
-            for stock in brief["impact_map"]["mentionable_stocks"]:
-                if stock["ticker"] in alloc_dict:
-                    stock["weight_pct"] = round(alloc_dict[stock["ticker"]] * 100, 1)
-
-    elif decision["action"] == "WATCH":
-        if not alloc:
-            brief["portfolio_allocation"] = {
-                "theme_exposure": 0.0,
-                "allocations": [],
-                "allocation_label": "no allocation for WATCH status"
-            }
-        else:
-            brief["portfolio_allocation"]["allocation_label"] = "no allocation for WATCH status"
-
-    # [STEP-B-9] Sync back to Content Studio strategy for UI Banner
+    # [STEP-C-8] Support for UI Strategy Banner (Legacy Compatibility)
     if "content_studio" in brief:
         brief["content_studio"]["strategy"] = {
             "theme": core_theme,
-            "action": decision["action"],
-            "timing": decision["timing"],
-            "risk": risk["risk_level"],
-            "confidence": f"{int(decision['confidence']*100)}%"
+            "action": decision_provenance["action"]["value"],
+            "timing": decision_provenance["timing"]["value"],
+            "risk": risk_provenance["risk_level"]["value"],
+            "confidence": f"{int(decision_provenance['confidence']['value']*100)}%",
+            "integrity": integrity["status"]
         }
 
     return brief
 
 def run_decision_normalization():
-    """PHASE 3.3.0: Decision Normalization Engine (STEP-B)"""
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.3.0: DECISION NORMALIZATION STARTED")
+    """PHASE 3.3.0: Decision Provenance Engine (STEP-C)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.3.0: DECISION PROVENANCE STARTED")
     try:
         # Standardize on both potential brief paths to ensure global consistency
         brief_paths = [
-            Path(__file__).parent.parent.parent / "data" / "operator" / "today_operator_brief.json",
-            Path(__file__).parent.parent.parent / "data" / "ops" / "today_operator_brief.json"
+            project_root / "data" / "operator" / "today_operator_brief.json",
+            project_root / "data" / "ops" / "today_operator_brief.json"
         ]
         
         for brief_path in brief_paths:
             if not brief_path.exists():
-                print(f"[Normalization] Skipping missing path: {brief_path}")
+                print(f"[Provenance] Skipping missing path: {brief_path}")
                 continue
                 
-            print(f"[Normalization] Processing: {brief_path}")
+            print(f"[Provenance] Processing: {brief_path}")
             with open(brief_path, "r", encoding="utf-8") as f:
                 brief = json.load(f)
                 
-            normalized_brief = normalize_decision_fields(brief)
+            normalized_brief = normalize_decision_fields(brief, project_root)
             
             with open(brief_path, "w", encoding="utf-8") as f:
                 json.dump(normalized_brief, f, indent=2, ensure_ascii=False)
             
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.3.0: DECISION NORMALIZATION COMPLETED")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.3.0: DECISION PROVENANCE COMPLETED")
         return True
     except Exception as e:
-        print(f"[Pipeline] ⚠️ Decision Normalization failed: {e}")
+        print(f"[Pipeline] ⚠️ Decision Provenance failed: {e}")
         traceback.print_exc()
         return False
 

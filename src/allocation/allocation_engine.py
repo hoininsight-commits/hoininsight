@@ -49,13 +49,17 @@ class AllocationEngine:
         final_allocs = RiskAdjuster.enforce_diversification(adjusted)
         
         # Final output object
+        total_exposure = round(sum(a["weight"] for a in final_allocs), 4)
         output = {
             "date": datetime.now().strftime("%Y-%m-%d"),
             "total_capital": 1.0,
-            "theme_exposure": round(sum(a["weight"] for a in final_allocs), 4),
+            "theme_exposure": total_exposure,
             "allocations": final_allocs,
+            "allocation_reason": f"Risk-adjusted optimization for {len(final_allocs)} stocks (Exposure: {total_exposure}).",
+            "allocation_evidence": [f"risk_score={risk_score}", f"stock_count={len(stocks)}"],
             "metadata": {
-                "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "engine": "AllocationEngine-v1.1"
             }
         }
         
