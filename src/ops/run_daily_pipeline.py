@@ -600,6 +600,37 @@ def run_ui_contract_binding():
         traceback.print_exc()
         return False
 
+def run_ui_data_integrity_audit():
+    """PHASE 3.5.15: [STEP-I-2] UI Data Integrity Audit"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.15: UI DATA INTEGRITY AUDIT STARTED")
+    try:
+        from src.ops.ui_data_integrity_audit import run_integrity_check
+        
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        impact_path = project_root / "data" / "ops" / "impact_chain.json"
+        
+        if not (brief_path.exists() and impact_path.exists()):
+            print("[Pipeline] ⚠️ Brief or Impact Chain missing, skipping audit.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+        with open(impact_path, "r", encoding="utf-8") as f:
+            impact_chain = json.load(f)
+            
+        audit = run_integrity_check(impact_chain, brief, project_root)
+        
+        if audit["status"] == "FAIL":
+            print(f"[Pipeline] ❌ UI DATA INTEGRITY FAIL: {audit['errors']}")
+            raise Exception(f"UI DATA INTEGRITY FAIL: {audit['errors']}")
+            
+        print(f"[Pipeline] ✅ UI DATA INTEGRITY PASS")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.15: UI DATA INTEGRITY AUDIT COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ UI Data Integrity Audit failed: {e}")
+        raise e
+
 def run_post_structural_analysis():
     """
     [STEP-H-VERIFY] Runs the post-structural validation audit.
@@ -1439,6 +1470,9 @@ def main():
 
     # 3.5.13 [STEP-I-1] UI Data Contract Binding (SSOT Promotion)
     run_ui_contract_binding()
+
+    # 3.5.15 [STEP-I-2] UI Data Integrity Audit
+    run_ui_data_integrity_audit()
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()

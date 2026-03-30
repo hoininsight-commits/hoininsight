@@ -21,7 +21,7 @@ def build_ui_today(brief):
         "intensity_label": radar.get("momentum_state") or radar.get("intensity_label") or "N/A",
         "action": decision.get("action", {}).get("value", "WATCH"),
         "confidence_pct": round(confidence_val * 100),
-        "top_stocks": brief.get("ui_top_stocks", []),
+        "top_stocks": brief.get("ui_top_stocks", [])[:3],
         "market_context": brief.get("market_context") or "AI Power Constraint 테마가 시장의 핵심 동력으로 부상..."
     }
 
