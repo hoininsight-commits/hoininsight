@@ -402,6 +402,33 @@ def run_confidence_recalibration():
         traceback.print_exc()
         return False
 
+def run_engine_audit():
+    """PHASE 3.5.0: [STEP-H] Engine Validation Audit"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.0: ENGINE VALIDATION AUDIT STARTED")
+    try:
+        from src.ops.engine_validation_audit import EngineValidationAudit
+        auditor = EngineValidationAudit(project_root)
+        report = auditor.run_audit()
+        
+        # Update brief if audit generated
+        if report:
+            brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+            if brief_path.exists():
+                with open(brief_path, "r", encoding="utf-8") as f:
+                    brief = json.load(f)
+                
+                brief["engine_audit"] = report
+                
+                with open(brief_path, "w", encoding="utf-8") as f:
+                    json.dump(brief, f, indent=2, ensure_ascii=False)
+                    
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.0: ENGINE VALIDATION AUDIT COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Engine Validation Audit failed: {e}")
+        traceback.print_exc()
+        return False
+
 
 def run_topic_pressure_engine():
     """PHASE 1.4.6: Topic Pressure & Selection Engine (STEP-38)"""
@@ -1168,6 +1195,9 @@ def main():
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()
+
+    # 3.5.0 [STEP-H] Engine Validation Audit
+    run_engine_audit()
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()

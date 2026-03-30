@@ -175,9 +175,9 @@
       }
     ],
     "sector_status": {
+      "AI Software": "ACTIVE",
       "Broad Market": "ACTIVE",
-      "Regulatory Impact / Finance": "ACTIVE",
-      "AI Software": "ACTIVE"
+      "Regulatory Impact / Finance": "ACTIVE"
     },
     "structural_impact_chain": [
       {
@@ -250,9 +250,9 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-30 10:11:58",
+    "repaired_at": "2026-03-30 10:21:09",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-30 10:11:58"
+    "consistency_aligned_at": "2026-03-30 10:21:09"
   },
   "investment_decision": {
     "action": {
@@ -288,16 +288,16 @@
     },
     "confidence": {
       "value": {
-        "value": 0.52,
+        "value": 0.54,
         "source": "recalibrated",
         "base_confidence": 0.5,
         "adjustments": {
           "hit_ratio": 0.0,
-          "decision_accuracy": 0.08,
+          "decision_accuracy": 0.1,
           "failure_penalty": -0.1,
           "recency_bonus": 0.04
         },
-        "final_confidence": 0.52
+        "final_confidence": 0.54
       },
       "source": "recalibrated",
       "reason": "Weighted sum of momentum, early signals, and topic pressure.",
@@ -342,16 +342,16 @@
       }
     },
     "recalibration_details": {
-      "value": 0.52,
+      "value": 0.54,
       "source": "recalibrated",
       "base_confidence": 0.5,
       "adjustments": {
         "hit_ratio": 0.0,
-        "decision_accuracy": 0.08,
+        "decision_accuracy": 0.1,
         "failure_penalty": -0.1,
         "recency_bonus": 0.04
       },
-      "final_confidence": 0.52
+      "final_confidence": 0.54
     },
     "decision": {}
   },
@@ -422,7 +422,7 @@
       "stock_count=4"
     ],
     "metadata": {
-      "generated_at": "2026-03-30 10:11:58",
+      "generated_at": "2026-03-30 10:21:09",
       "engine": "AllocationEngine-v1.1"
     }
   },
@@ -431,7 +431,7 @@
     "fallback_fields": 3,
     "fallback_ratio": 0.5,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 10:11:58"
+    "generated_at": "2026-03-30 10:21:09"
   },
   "outcome_evaluation": {
     "theme_correct": true,
@@ -443,16 +443,33 @@
   "performance_summary": {
     "last_7d": {
       "theme_accuracy": 1.0,
-      "decision_accuracy": 0.4,
+      "decision_accuracy": 0.5,
       "hit_ratio_avg": 0.0,
-      "sample_size": 5
+      "sample_size": 6
     },
     "last_30d": {
       "theme_accuracy": 1.0,
-      "decision_accuracy": 0.4,
+      "decision_accuracy": 0.5,
       "hit_ratio_avg": 0.0,
-      "sample_size": 5
+      "sample_size": 6
     },
-    "updated_at": "2026-03-30 10:11:58"
+    "updated_at": "2026-03-30 10:21:09"
+  },
+  "engine_audit": {
+    "generated_at": "2026-03-30T10:21:09.336644",
+    "period": "Last 6 runs",
+    "failure_distribution": {
+      "THEME_RIGHT_DECISION_WRONG": 0.5,
+      "THEME_RIGHT_STOCK_WRONG": 0.5
+    },
+    "confidence_stability": {
+      "min": 0.38,
+      "max": 0.54,
+      "avg": 0.474,
+      "volatility": 0.16
+    },
+    "outcome_alignment": 0.5,
+    "causality_validity": 1.0,
+    "status": "DEGRADED"
   }
 }

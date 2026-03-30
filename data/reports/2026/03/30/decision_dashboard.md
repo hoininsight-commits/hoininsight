@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 40
+- **Unreviewed**: 58
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=40
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=58
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,8 +78,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 40
-- **Type Breakdown**: NEWS: 40
+- **Count**: 58
+- **Type Breakdown**: NEWS: 58
 - **Samples (Top 3)**:
   - [NEWS] 예멘 후티 반군 참전에 국제유가 급등…브렌트유 배럴당 115달러 돌파 - JTBC (Google_News_KR_Economy)
   - [NEWS] 파라타항공, 항공훈련센터 개소…슬라이드 탈출훈련까지 구현 - 딜사이트 (Google_News_KR_Economy)
@@ -91,6 +91,24 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
@@ -178,6 +196,24 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -225,6 +261,24 @@
 | “건설업계 동반성장 이어간다”…‘2026 현대건설×서울 스타트업 오픈 이노베이션’ 공모전 | Structural implication: '“건설업계 동반성장 이어간다”…‘2026 현대건설×서울 스타트업 오픈 이노베이션’ 공모전' suggests a shift in NEWS dynamics. | LOW |
 | 가상자산 수탁고 80% 증발에도 나홀로 선전…비댁스, 800억 돌파 | Structural implication: '가상자산 수탁고 80% 증발에도 나홀로 선전…비댁스, 800억 돌파' suggests a shift in NEWS dynamics. | LOW |
 | 취임 300일 맞은 이재명 대통령…별도행사 없이 청와대 홈페이지 오픈 | Structural implication: '취임 300일 맞은 이재명 대통령…별도행사 없이 청와대 홈페이지 오픈' suggests a shift in NEWS dynamics. | LOW |
+| 미국-이란 전쟁 한 달 만에…국내 증시 시총 687조 증발 - 조선비즈 - Chosunbiz | Structural implication: '미국-이란 전쟁 한 달 만에…국내 증시 시총 687조 증발 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| "윈도 95처럼 버퍼링이"…일할수록 밀려난 청년 - 노컷뉴스 | Structural implication: '"윈도 95처럼 버퍼링이"…일할수록 밀려난 청년 - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 1년 만에 꺾인 집값 기대심리… 한겨레 “다주택 고위공직자, 국민 설득 어려워” - 미디어오늘 | Structural implication: '1년 만에 꺾인 집값 기대심리… 한겨레 “다주택 고위공직자, 국민 설득 어려워” - 미디어오늘' suggests a shift in NEWS dynamics. | LOW |
+| 유증 후폭풍 한화솔루션, ‘삼연참’ 당하나 | Structural implication: '유증 후폭풍 한화솔루션, ‘삼연참’ 당하나' suggests a shift in NEWS dynamics. | LOW |
+| “광주서 롯데 4성 전략 통할까”…호텔시장 변화 주목 | Structural implication: '“광주서 롯데 4성 전략 통할까”…호텔시장 변화 주목' suggests a shift in NEWS dynamics. | LOW |
+| 분상제 아파트 인기 많네…‘검단호수공원역 파라곤’ 견본주택에 2만4000여명 북적 | Structural implication: '분상제 아파트 인기 많네…‘검단호수공원역 파라곤’ 견본주택에 2만4000여명 북적' suggests a shift in NEWS dynamics. | LOW |
+| [IFRS관리사 기출문제] 재무회계 개념체계 | Structural implication: '[IFRS관리사 기출문제] 재무회계 개념체계' suggests a shift in NEWS dynamics. | LOW |
+| 아파트 매매가 13개월 연속 상승…신축 vs 구축 양극화 뚜렷 | Structural implication: '아파트 매매가 13개월 연속 상승…신축 vs 구축 양극화 뚜렷' suggests a shift in NEWS dynamics. | LOW |
+| 코스피 박스권 장세 전망 속…이자 대신 배당노린 예금·퇴직연금 81조 머니무브 ‘대기’ | Structural implication: '코스피 박스권 장세 전망 속…이자 대신 배당노린 예금·퇴직연금 81조 머니무브 ‘대기’' suggests a shift in NEWS dynamics. | LOW |
+| 법원 “같은 아파트 단지 2년 내 거래가, 상속·증여세 기준으로 적용 가능” | Structural implication: '법원 “같은 아파트 단지 2년 내 거래가, 상속·증여세 기준으로 적용 가능”' suggests a shift in NEWS dynamics. | LOW |
+| 환율 효과 덕분에 그나마…한국서 낙폭 덜한 비트코인 [매일코인] | Structural implication: '환율 효과 덕분에 그나마…한국서 낙폭 덜한 비트코인 [매일코인]' suggests a shift in NEWS dynamics. | LOW |
+| [MK시그널] SGC에너지, 안정적인 실적 성장세 지속 전망 등에 주가 상승세... MK시그널 추천 후 상승률 9.59% 기록 | Structural implication: '[MK시그널] SGC에너지, 안정적인 실적 성장세 지속 전망 등에 주가 상승세... MK시그널 추천 후 상승률 9.59% 기록' suggests a shift in NEWS dynamics. | LOW |
+| [MK 골든크로스 돌파종목 : 모나리자(012690) & 애경산업(018250)] | Structural implication: '[MK 골든크로스 돌파종목 : 모나리자(012690) & 애경산업(018250)]' suggests a shift in NEWS dynamics. | LOW |
+| [MK시그널] 이노브에이지 홀딩, 수익률 39.7% 돌파 | Structural implication: '[MK시그널] 이노브에이지 홀딩, 수익률 39.7% 돌파' suggests a shift in NEWS dynamics. | LOW |
+| [매경경영지원본부 칼럼] 형식적 위원회 대신 ‘현장 제안 루프’ 만들기 | Structural implication: '[매경경영지원본부 칼럼] 형식적 위원회 대신 ‘현장 제안 루프’ 만들기' suggests a shift in NEWS dynamics. | LOW |
+| 창립 70주년 한양증권, 신규 CI 공개 | Structural implication: '창립 70주년 한양증권, 신규 CI 공개' suggests a shift in NEWS dynamics. | LOW |
+| “58년 중식 대가가 끓인 짜파게티 맛은?”…농심, 후덕죽 셰프 모델 발탁 | Structural implication: '“58년 중식 대가가 끓인 짜파게티 맛은?”…농심, 후덕죽 셰프 모델 발탁' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 김부겸 대구시장 출마선언…“국민의힘 버려야 대구가 산다” | Structural implication: '[속보] 김부겸 대구시장 출마선언…“국민의힘 버려야 대구가 산다”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
