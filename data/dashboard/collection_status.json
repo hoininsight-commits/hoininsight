@@ -2,156 +2,156 @@
   "crypto_btc_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:49.616773Z"
+    "timestamp": "2026-03-30T12:59:31.004765Z"
   },
   "rates_us10y_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for DGS10",
-    "timestamp": "2026-03-30T10:20:50.109649Z"
+    "timestamp": "2026-03-30T12:59:31.557587Z"
   },
   "risk_vix_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for VIXCLS",
-    "timestamp": "2026-03-30T10:20:50.409295Z"
+    "timestamp": "2026-03-30T12:59:31.866579Z"
   },
   "index_spx_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for SP500",
-    "timestamp": "2026-03-30T10:20:50.495586Z"
+    "timestamp": "2026-03-30T12:59:31.952166Z"
   },
   "index_kospi_stooq": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/index_kospi_stooq/2026/03/30/kospi.json'",
-    "timestamp": "2026-03-30T10:20:50.498706Z"
+    "timestamp": "2026-03-30T12:59:31.955854Z"
   },
   "index_nasdaq_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for NASDAQ100",
-    "timestamp": "2026-03-30T10:20:50.808700Z"
+    "timestamp": "2026-03-30T12:59:32.275926Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:50.812856Z"
+    "timestamp": "2026-03-30T12:59:32.280350Z"
   },
   "rates_us02y_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for DGS2",
-    "timestamp": "2026-03-30T10:20:51.191549Z"
+    "timestamp": "2026-03-30T12:59:32.669480Z"
   },
   "comm_wti_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for DCOILWTICO",
-    "timestamp": "2026-03-30T10:20:51.496321Z"
+    "timestamp": "2026-03-30T12:59:32.985099Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.499448Z"
+    "timestamp": "2026-03-30T12:59:32.988078Z"
   },
   "metal_gold_paxg_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.512986Z"
+    "timestamp": "2026-03-30T12:59:33.001292Z"
   },
   "metal_silver_kag_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.529657Z"
+    "timestamp": "2026-03-30T12:59:33.017655Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.540766Z"
+    "timestamp": "2026-03-30T12:59:33.029015Z"
   },
   "rates_kor_base_rate_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.545577Z"
+    "timestamp": "2026-03-30T12:59:33.033611Z"
   },
   "inflation_kor_cpi_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.549263Z"
+    "timestamp": "2026-03-30T12:59:33.038209Z"
   },
   "fx_usdkrw_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:51.581214Z"
+    "timestamp": "2026-03-30T12:59:33.071066Z"
   },
   "rates_fed_funds_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for FEDFUNDS",
-    "timestamp": "2026-03-30T10:20:51.612609Z"
+    "timestamp": "2026-03-30T12:59:33.104268Z"
   },
   "inflation_cpi_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for CPIAUCSL",
-    "timestamp": "2026-03-30T10:20:51.646654Z"
+    "timestamp": "2026-03-30T12:59:33.139343Z"
   },
   "inflation_pce_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for PCE",
-    "timestamp": "2026-03-30T10:20:51.675493Z"
+    "timestamp": "2026-03-30T12:59:33.170335Z"
   },
   "liquidity_m2_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for M2SL",
-    "timestamp": "2026-03-30T10:20:51.704559Z"
+    "timestamp": "2026-03-30T12:59:33.201411Z"
   },
   "employment_unrate_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for UNRATE",
-    "timestamp": "2026-03-30T10:20:51.738003Z"
+    "timestamp": "2026-03-30T12:59:33.235772Z"
   },
   "credit_hy_spread_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for BAMLH0A0HYM2",
-    "timestamp": "2026-03-30T10:20:51.967812Z"
+    "timestamp": "2026-03-30T12:59:33.475400Z"
   },
   "risk_financial_stress_fred": {
     "status": "SKIP",
     "reason": "FRED collection skipped or failed for STLFSI2",
-    "timestamp": "2026-03-30T10:20:52.017367Z"
+    "timestamp": "2026-03-30T12:59:33.525974Z"
   },
   "derived_yield_curve_10y_2y": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.017785Z"
+    "timestamp": "2026-03-30T12:59:33.526378Z"
   },
   "derived_gold_silver_ratio": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.017800Z"
+    "timestamp": "2026-03-30T12:59:33.526403Z"
   },
   "struct_dart_cb_bw": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018091Z"
+    "timestamp": "2026-03-30T12:59:33.526753Z"
   },
   "struct_dart_disposal": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018123Z"
+    "timestamp": "2026-03-30T12:59:33.526787Z"
   },
   "struct_krx_foreigner_flow": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018146Z"
+    "timestamp": "2026-03-30T12:59:33.526809Z"
   },
   "real_estate_price_index": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018370Z"
+    "timestamp": "2026-03-30T12:59:33.527057Z"
   },
   "real_estate_volume": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018400Z"
+    "timestamp": "2026-03-30T12:59:33.527087Z"
   },
   "real_estate_unsold": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-03-30T10:20:52.018420Z"
+    "timestamp": "2026-03-30T12:59:33.527115Z"
   }
 }

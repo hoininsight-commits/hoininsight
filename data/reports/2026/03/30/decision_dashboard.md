@@ -14,7 +14,7 @@
 - **STRONG**: 0
 - **BORDERLINE**: 0
 - **WEAK**: 0
-- **Unreviewed**: 58
+- **Unreviewed**: 162
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## 🧭 TODAY TOPIC VIEW (READ-ONLY)
-**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=58
+**SUMMARY**: 🛡️ Engine Pick=0 | 🟢 READY=0 | 🔭 Watchlist=0 | 🏹 Early Signal=162
 
 👉 [Open full Topic View (Markdown)](data/ops/topic_view_today.md)
 ---
@@ -78,8 +78,8 @@
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
 ### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 58
-- **Type Breakdown**: NEWS: 58
+- **Count**: 162
+- **Type Breakdown**: NEWS: 162
 - **Samples (Top 3)**:
   - [NEWS] 예멘 후티 반군 참전에 국제유가 급등…브렌트유 배럴당 115달러 돌파 - JTBC (Google_News_KR_Economy)
   - [NEWS] 파라타항공, 항공훈련센터 개소…슬라이드 탈출훈련까지 구현 - 딜사이트 (Google_News_KR_Economy)
@@ -91,6 +91,110 @@
 
 | Summary | Structural Frames | Facts | First Seen |
 |---|---|---|---|
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
+| Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
 | Identified  alignment across multiple factual anchors. |  | 1 | 2026-03-30 |
@@ -214,6 +318,110 @@
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 | Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
+| Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation. | Identified  alignment across multiple factual anchors. |  | 1 | LOW |
 
 
 ## 🏹 FACT-FIRST SHADOW TOPICS
@@ -279,6 +487,110 @@
 | 창립 70주년 한양증권, 신규 CI 공개 | Structural implication: '창립 70주년 한양증권, 신규 CI 공개' suggests a shift in NEWS dynamics. | LOW |
 | “58년 중식 대가가 끓인 짜파게티 맛은?”…농심, 후덕죽 셰프 모델 발탁 | Structural implication: '“58년 중식 대가가 끓인 짜파게티 맛은?”…농심, 후덕죽 셰프 모델 발탁' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 김부겸 대구시장 출마선언…“국민의힘 버려야 대구가 산다” | Structural implication: '[속보] 김부겸 대구시장 출마선언…“국민의힘 버려야 대구가 산다”' suggests a shift in NEWS dynamics. | LOW |
+| ‘국제 유가’, ‘전쟁과 지지율’, ‘통합돌봄시대’ - 뉴스톱 | Structural implication: '‘국제 유가’, ‘전쟁과 지지율’, ‘통합돌봄시대’ - 뉴스톱' suggests a shift in NEWS dynamics. | LOW |
+| [속보]유가 상승에 코스피 5% 급락, 환율 1513원 출발 - 경향신문 | Structural implication: '[속보]유가 상승에 코스피 5% 급락, 환율 1513원 출발 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 크레디트 유통시장 수난시대…1.5년에 매도 몰리는 이유는 - 연합인포맥스 | Structural implication: '크레디트 유통시장 수난시대…1.5년에 매도 몰리는 이유는 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| “작년 승진했어? 4월 월급 보고 놀라지 마”...‘이것’ 반영된다는데 - 매일경제 | Structural implication: '“작년 승진했어? 4월 월급 보고 놀라지 마”...‘이것’ 반영된다는데 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 4천원 김치찌개·2천원 계란말이…가성비 식당 공유 ‘거지맵’ 인기 - 매일경제 | Structural implication: '4천원 김치찌개·2천원 계란말이…가성비 식당 공유 ‘거지맵’ 인기 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 6G상용화·디지털격차 해소, AI 3대 강국 도약 기본계획 확정 - 전자신문 | Structural implication: '6G상용화·디지털격차 해소, AI 3대 강국 도약 기본계획 확정 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
+| HLB, 담관암 신약 FDA 우선심사 대상 결정 - IT조선 | Structural implication: 'HLB, 담관암 신약 FDA 우선심사 대상 결정 - IT조선' suggests a shift in NEWS dynamics. | LOW |
+| “아침에 산 옷, 저녁에 입는다”… CJ온스타일, ‘오늘 도착’ 물동량 252%↑ | Structural implication: '“아침에 산 옷, 저녁에 입는다”… CJ온스타일, ‘오늘 도착’ 물동량 252%↑' suggests a shift in NEWS dynamics. | LOW |
+| 햇살론 ‘심사안심 보장제’ 도입…서류 미비 고객에 심사기간 유예 | Structural implication: '햇살론 ‘심사안심 보장제’ 도입…서류 미비 고객에 심사기간 유예' suggests a shift in NEWS dynamics. | LOW |
+| 한화투자증권, 해외주식 양도세·종합소득세 등 세무신고 대행 실시 | Structural implication: '한화투자증권, 해외주식 양도세·종합소득세 등 세무신고 대행 실시' suggests a shift in NEWS dynamics. | LOW |
+| 한국인 연간 15일간 최악 대기오염 시달려…UNIST 임정호 교수팀 분석 | Structural implication: '한국인 연간 15일간 최악 대기오염 시달려…UNIST 임정호 교수팀 분석' suggests a shift in NEWS dynamics. | LOW |
+| 또 조회수 대박…‘충주맨’ 김선태, BBQ 회장 만나 벌인 일 | Structural implication: '또 조회수 대박…‘충주맨’ 김선태, BBQ 회장 만나 벌인 일' suggests a shift in NEWS dynamics. | LOW |
+| “삼겹살 900원대”… 대형마트, 장바구니 물가 잡기 사활 건 ‘반값 전쟁’ | Structural implication: '“삼겹살 900원대”… 대형마트, 장바구니 물가 잡기 사활 건 ‘반값 전쟁’' suggests a shift in NEWS dynamics. | LOW |
+| “기다리지 말고 찾아갑니다”… 보폭 넓히는 ‘이동형 점포’ 전성시대 | Structural implication: '“기다리지 말고 찾아갑니다”… 보폭 넓히는 ‘이동형 점포’ 전성시대' suggests a shift in NEWS dynamics. | LOW |
+| “거짓말 같은 가격”… 만우절 맞이 ‘3900원 와퍼’ 출격 | Structural implication: '“거짓말 같은 가격”… 만우절 맞이 ‘3900원 와퍼’ 출격' suggests a shift in NEWS dynamics. | LOW |
+| ‘월 2900원에 최대 7만원 적립’… G마켓, ‘꼭’ 멤버십 | Structural implication: '‘월 2900원에 최대 7만원 적립’… G마켓, ‘꼭’ 멤버십' suggests a shift in NEWS dynamics. | LOW |
+| “호텔 김치도 이제 집 앞 슈퍼에서”… GS더프레시 ‘조선호텔 김치’ 출시 | Structural implication: '“호텔 김치도 이제 집 앞 슈퍼에서”… GS더프레시 ‘조선호텔 김치’ 출시' suggests a shift in NEWS dynamics. | LOW |
+| “미세먼지 휴가 있어야겠네”…연중 15일은 ‘최악 대기오염’이라는데 | Structural implication: '“미세먼지 휴가 있어야겠네”…연중 15일은 ‘최악 대기오염’이라는데' suggests a shift in NEWS dynamics. | LOW |
+| 아시아 시장에서 국제유가 급등...WTI 배럴당 100달러 넘어 - YTN | Structural implication: '아시아 시장에서 국제유가 급등...WTI 배럴당 100달러 넘어 - YTN' suggests a shift in NEWS dynamics. | LOW |
+| 승무원들 긴장할 정도…비상착륙·기내화재 '실제상황' 방불 [영상] - 한국경제 | Structural implication: '승무원들 긴장할 정도…비상착륙·기내화재 '실제상황' 방불 [영상] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [조간브리핑]메모리 6배 압축 시대 열린다···구글 '터보퀀트' 충격파, K-반도체는 위기인가 기회인가 - 헬로디디 | Structural implication: '[조간브리핑]메모리 6배 압축 시대 열린다···구글 '터보퀀트' 충격파, K-반도체는 위기인가 기회인가 - 헬로디디' suggests a shift in NEWS dynamics. | LOW |
+| KB시세로 3월 서울 강남구 아파트값 2년 만에 하락 전환 - 연합뉴스 | Structural implication: 'KB시세로 3월 서울 강남구 아파트값 2년 만에 하락 전환 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 배당 분리과세·퇴직연금 기금화…증시 80조원 자금 유입 기대 - 연합인포맥스 | Structural implication: '배당 분리과세·퇴직연금 기금화…증시 80조원 자금 유입 기대 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 삼전닉스 던진 외국인, 코스닥은 주웠다…줍줍한 종목 대부분 바이오 - 매일경제 | Structural implication: '삼전닉스 던진 외국인, 코스닥은 주웠다…줍줍한 종목 대부분 바이오 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 현대트랜시스, ‘2026년 파트너스 데이’ 개최 - Hyundai Motor Group | Structural implication: '현대트랜시스, ‘2026년 파트너스 데이’ 개최 - Hyundai Motor Group' suggests a shift in NEWS dynamics. | LOW |
+| 농심, 짜파게티 모델로 흑백요리사 후덕죽 셰프 선정 - 조선비즈 - Chosunbiz | Structural implication: '농심, 짜파게티 모델로 흑백요리사 후덕죽 셰프 선정 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 신현송 한은 총재 후보자 입국…“막중한 책임감 느껴” [현장영상] - KBS 뉴스 | Structural implication: '신현송 한은 총재 후보자 입국…“막중한 책임감 느껴” [현장영상] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| RIA에 서학개미 유턴하나…해외주식 보유 한 달 새 100억弗↓ - 연합인포맥스 | Structural implication: 'RIA에 서학개미 유턴하나…해외주식 보유 한 달 새 100억弗↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 서울 휘발유값 1ℓ당 1910원대 돌파 - 농민신문 | Structural implication: '서울 휘발유값 1ℓ당 1910원대 돌파 - 농민신문' suggests a shift in NEWS dynamics. | LOW |
+| 안과 이중특이항체 바비스모 프리필드시린지 4월부 급여 출시 - 후생신보 | Structural implication: '안과 이중특이항체 바비스모 프리필드시린지 4월부 급여 출시 - 후생신보' suggests a shift in NEWS dynamics. | LOW |
+| ‘세계 3위’ 인천공항을 빛낸 사람들은? - 경향신문 | Structural implication: '‘세계 3위’ 인천공항을 빛낸 사람들은? - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| EU 탄소국경조정제도 대응 지원 - 환경일보 | Structural implication: 'EU 탄소국경조정제도 대응 지원 - 환경일보' suggests a shift in NEWS dynamics. | LOW |
+| 대웅제약, 디지털 헬스케어 분야 투자 성과 첫 공개 - 메디칼타임즈 | Structural implication: '대웅제약, 디지털 헬스케어 분야 투자 성과 첫 공개 - 메디칼타임즈' suggests a shift in NEWS dynamics. | LOW |
+| '수입안전 전자심사' OECD 혁신사례 선정 - 의학신문 | Structural implication: ''수입안전 전자심사' OECD 혁신사례 선정 - 의학신문' suggests a shift in NEWS dynamics. | LOW |
+| 알지노믹스, 인하대와 인비보 CAR-T 핵심기술 확보 - 히트뉴스 | Structural implication: '알지노믹스, 인하대와 인비보 CAR-T 핵심기술 확보 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 간소화된 대체조제 사후통보, 응답자 95% “편의성·효율성 도움” - 약사공론 | Structural implication: '간소화된 대체조제 사후통보, 응답자 95% “편의성·효율성 도움” - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| “절친 디카프리오 따라가나”…50살 ‘스파이더맨’, 20살 모델과 데이트 논란 | Structural implication: '“절친 디카프리오 따라가나”…50살 ‘스파이더맨’, 20살 모델과 데이트 논란' suggests a shift in NEWS dynamics. | LOW |
+| 파수, ‘파수AI’로 사명 변경···보안 넘어 ‘AX 전문기업’ 정체성 굳힌다 | Structural implication: '파수, ‘파수AI’로 사명 변경···보안 넘어 ‘AX 전문기업’ 정체성 굳힌다' suggests a shift in NEWS dynamics. | LOW |
+| ‘선구안 팀’ 만든 신한금융…생산적금융 본격화 | Structural implication: '‘선구안 팀’ 만든 신한금융…생산적금융 본격화' suggests a shift in NEWS dynamics. | LOW |
+| iM증권, AI 기반 미국 주식 분석 서비스 ‘AI 리서치’ 오픈 | Structural implication: 'iM증권, AI 기반 미국 주식 분석 서비스 ‘AI 리서치’ 오픈' suggests a shift in NEWS dynamics. | LOW |
+| 빌딩 투자 큰손들 돌아왔나…상업용 부동산 매입 확대 의향 74% ‘역대 최고’ | Structural implication: '빌딩 투자 큰손들 돌아왔나…상업용 부동산 매입 확대 의향 74% ‘역대 최고’' suggests a shift in NEWS dynamics. | LOW |
+| “워크베이 5개”…이베코, 중부 물류 거점 ‘당진 서비스센터’ 리뉴얼 | Structural implication: '“워크베이 5개”…이베코, 중부 물류 거점 ‘당진 서비스센터’ 리뉴얼' suggests a shift in NEWS dynamics. | LOW |
+| “탤런트 준비하다 실패”…BTS 뷔, 아버지 꿈 대신 이뤘다 | Structural implication: '“탤런트 준비하다 실패”…BTS 뷔, 아버지 꿈 대신 이뤘다' suggests a shift in NEWS dynamics. | LOW |
+| “요즘 누가 큰거 삽니까”…서울 청약, 중소형으로 대세 바뀌었다 - 매일경제 | Structural implication: '“요즘 누가 큰거 삽니까”…서울 청약, 중소형으로 대세 바뀌었다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 美 10대 ‘아이폰 피로’…오프라인 소비로 발길 돌렸다 | Structural implication: '美 10대 ‘아이폰 피로’…오프라인 소비로 발길 돌렸다' suggests a shift in NEWS dynamics. | LOW |
+| 아이지에이웍스, 광고 대행·데이터 기술사업 인적분할 | Structural implication: '아이지에이웍스, 광고 대행·데이터 기술사업 인적분할' suggests a shift in NEWS dynamics. | LOW |
+| “시간 얼마 안 남아” 오열했던 윤택…‘유퀴즈’ 고백 나흘만 부친상 | Structural implication: '“시간 얼마 안 남아” 오열했던 윤택…‘유퀴즈’ 고백 나흘만 부친상' suggests a shift in NEWS dynamics. | LOW |
+| 치솟는 분양가에... 청약시장서 4년 연속 중소형 평형 ‘인기’ | Structural implication: '치솟는 분양가에... 청약시장서 4년 연속 중소형 평형 ‘인기’' suggests a shift in NEWS dynamics. | LOW |
+| 상대원2구역 시공권 사수 총력…현장 찾은 박상신 DL이앤씨 대표, “최고의 랜드마크 완성할 것” | Structural implication: '상대원2구역 시공권 사수 총력…현장 찾은 박상신 DL이앤씨 대표, “최고의 랜드마크 완성할 것”' suggests a shift in NEWS dynamics. | LOW |
+| 오늘은 아닌가보다…SK하이닉스 ‘팔자’나서 [주식 초고수는 지금] | Structural implication: '오늘은 아닌가보다…SK하이닉스 ‘팔자’나서 [주식 초고수는 지금]' suggests a shift in NEWS dynamics. | LOW |
+| “군인이 아니라 차력사들이냐”… 북한 특수부대 시범에 김정은 ‘활짝’ | Structural implication: '“군인이 아니라 차력사들이냐”… 북한 특수부대 시범에 김정은 ‘활짝’' suggests a shift in NEWS dynamics. | LOW |
+| 대구 동성로 수놓는 청년 공연…‘청년버스킹’ 대장정 시작 | Structural implication: '대구 동성로 수놓는 청년 공연…‘청년버스킹’ 대장정 시작' suggests a shift in NEWS dynamics. | LOW |
+| 서울 경윳값도 1900원 돌파...2차 석유 최고가제 시행에도 ‘비명’ | Structural implication: '서울 경윳값도 1900원 돌파...2차 석유 최고가제 시행에도 ‘비명’' suggests a shift in NEWS dynamics. | LOW |
+| AI 토큰값 90% 폭락해도 기업 부담 커진다는데, 왜? | Structural implication: 'AI 토큰값 90% 폭락해도 기업 부담 커진다는데, 왜?' suggests a shift in NEWS dynamics. | LOW |
+| 울산·경남 이전 공공기관 채용설명회, 내달 2일 울산서 열려 | Structural implication: '울산·경남 이전 공공기관 채용설명회, 내달 2일 울산서 열려' suggests a shift in NEWS dynamics. | LOW |
+| “AI와 함께 일하는 문화 만들자” NHN, 제1회 ‘AI 스프린톤’ 개최 | Structural implication: '“AI와 함께 일하는 문화 만들자” NHN, 제1회 ‘AI 스프린톤’ 개최' suggests a shift in NEWS dynamics. | LOW |
+| 2위 신동아건설·3위 빌텍종건…공동주택 하자 판정 1위 불명예 어딘가 보니 | Structural implication: '2위 신동아건설·3위 빌텍종건…공동주택 하자 판정 1위 불명예 어딘가 보니' suggests a shift in NEWS dynamics. | LOW |
+| 아톤·티오리, AI 보안 솔루션 ‘진트 코드’ 글로벌 확장 맞손 | Structural implication: '아톤·티오리, AI 보안 솔루션 ‘진트 코드’ 글로벌 확장 맞손' suggests a shift in NEWS dynamics. | LOW |
+| “시간 얼마 안 남아” 오열했던 윤택…‘유퀴즈’ 고백 4일 만 부친상 | Structural implication: '“시간 얼마 안 남아” 오열했던 윤택…‘유퀴즈’ 고백 4일 만 부친상' suggests a shift in NEWS dynamics. | LOW |
+| 대한항공 부산에 신규 공장 건립… 가덕신공항 연계 거점 기대 | Structural implication: '대한항공 부산에 신규 공장 건립… 가덕신공항 연계 거점 기대' suggests a shift in NEWS dynamics. | LOW |
+| 2분기 증시, 이란 전쟁에 팍팍..코스피 5000~6000p-iM증권 - 스마트투데이 | Structural implication: '2분기 증시, 이란 전쟁에 팍팍..코스피 5000~6000p-iM증권 - 스마트투데이' suggests a shift in NEWS dynamics. | LOW |
+| HLB 후속 후보물질 ‘리라푸그라티닙’ FDA 신약허가 결정 9월에 나온다 - 한국경제 | Structural implication: 'HLB 후속 후보물질 ‘리라푸그라티닙’ FDA 신약허가 결정 9월에 나온다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "내년 부자될 기회 온다, 시장붕괴 노려라" 부자아빠가 콕 집어 강조한 투자상품 - asiae.co.kr | Structural implication: '"내년 부자될 기회 온다, 시장붕괴 노려라" 부자아빠가 콕 집어 강조한 투자상품 - asiae.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| ‘1ml당 나노입자 1000조개 모이스처라이저’ 코스맥스, 세계최대 뷰티 박람회서 대상 수상 | Structural implication: '‘1ml당 나노입자 1000조개 모이스처라이저’ 코스맥스, 세계최대 뷰티 박람회서 대상 수상' suggests a shift in NEWS dynamics. | LOW |
+| “행정통합·AI 전환 대응”…광주전남 벤처기업 전략 모색 | Structural implication: '“행정통합·AI 전환 대응”…광주전남 벤처기업 전략 모색' suggests a shift in NEWS dynamics. | LOW |
+| 부산 에코델타 스마트시티에서 자율주행버스 다닌다 | Structural implication: '부산 에코델타 스마트시티에서 자율주행버스 다닌다' suggests a shift in NEWS dynamics. | LOW |
+| 한국타이어, 대형 카고·트랙터 전륜용 ‘스마트플렉스’ 신규 규격 출시 | Structural implication: '한국타이어, 대형 카고·트랙터 전륜용 ‘스마트플렉스’ 신규 규격 출시' suggests a shift in NEWS dynamics. | LOW |
+| “부으면 끝” 편리함에 꽂혔다… 연평균 60% 넘게 크는 ‘캡슐 세제’ 시장 | Structural implication: '“부으면 끝” 편리함에 꽂혔다… 연평균 60% 넘게 크는 ‘캡슐 세제’ 시장' suggests a shift in NEWS dynamics. | LOW |
+| [마켓인사이트] 이란 전쟁, '장기전' 기로…주름 깊어지는 증시 - 연합뉴스 | Structural implication: '[마켓인사이트] 이란 전쟁, '장기전' 기로…주름 깊어지는 증시 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 정청래 “내일 전쟁 추경 국회 제출…역사상 가장 빠른 속도로 처리” | Structural implication: '정청래 “내일 전쟁 추경 국회 제출…역사상 가장 빠른 속도로 처리”' suggests a shift in NEWS dynamics. | LOW |
+| BS그룹, 서남해안기업도시개발 신임 대표이사에 황준호 부사장 선임 | Structural implication: 'BS그룹, 서남해안기업도시개발 신임 대표이사에 황준호 부사장 선임' suggests a shift in NEWS dynamics. | LOW |
+| 채널코퍼레이션·렛서 맞손…고객사 ‘AI 네이티브’ 돕는다 | Structural implication: '채널코퍼레이션·렛서 맞손…고객사 ‘AI 네이티브’ 돕는다' suggests a shift in NEWS dynamics. | LOW |
+| 2주 뒤 원료 바닥…에너지 베스트 애널 "살 종목 없다" - 연합인포맥스 | Structural implication: '2주 뒤 원료 바닥…에너지 베스트 애널 "살 종목 없다" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| "이란 전쟁 긴장 최고조"…오늘도 불안한 코스피 [오늘장 미리보기] - 한국경제 | Structural implication: '"이란 전쟁 긴장 최고조"…오늘도 불안한 코스피 [오늘장 미리보기] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| '60조 순매도' 외국인, 한국증시 더 팔 수 있지만…"큰 의미 둘 필요 없다" - 연합인포맥스 | Structural implication: ''60조 순매도' 외국인, 한국증시 더 팔 수 있지만…"큰 의미 둘 필요 없다" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| “AI시대, 상상하고 이야기하는 능력 필요…친구와 뛰노는 것이 교육” - hani.co.kr | Structural implication: '“AI시대, 상상하고 이야기하는 능력 필요…친구와 뛰노는 것이 교육” - hani.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| '오버워치' 한국 서비스, 이제 '넥슨'과 함께 - 인벤 | Structural implication: ''오버워치' 한국 서비스, 이제 '넥슨'과 함께 - 인벤' suggests a shift in NEWS dynamics. | LOW |
+| 구윤철 “유가 120~130달러 되면 위기 격상…민간 차량 부제 검토” - KBS 뉴스 | Structural implication: '구윤철 “유가 120~130달러 되면 위기 격상…민간 차량 부제 검토” - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 로킷헬스케어, 美 신장재생 핵심특허 확보…"140조원 투석 시장 게임 체인저" - 프라임경제 | Structural implication: '로킷헬스케어, 美 신장재생 핵심특허 확보…"140조원 투석 시장 게임 체인저" - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
+| 은행 주담대 고정금리 7% 넘어… 영끌족 비명 - donga.com | Structural implication: '은행 주담대 고정금리 7% 넘어… 영끌족 비명 - donga.com' suggests a shift in NEWS dynamics. | LOW |
+| "꼼수 안 통하네"…14억 아파트, 11억에 물려받은 부부 '낭패' - 한국경제 | Structural implication: '"꼼수 안 통하네"…14억 아파트, 11억에 물려받은 부부 '낭패' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 캐시워크 돈버는퀴즈 정답 3월 30일 - bntnews.co.kr | Structural implication: '[단독] 캐시워크 돈버는퀴즈 정답 3월 30일 - bntnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| ‘나프타 대란’에 선거 현수막값 급등 조짐…비상 걸린 군소정당들 - 조선일보 | Structural implication: '‘나프타 대란’에 선거 현수막값 급등 조짐…비상 걸린 군소정당들 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 8000원 소바 60번 씹은 이병철, 신화는 ‘그 식탁’서 나왔다 - segye.com | Structural implication: '8000원 소바 60번 씹은 이병철, 신화는 ‘그 식탁’서 나왔다 - segye.com' suggests a shift in NEWS dynamics. | LOW |
+| 대표 되자마자 출근 안 해 ‘웅성’…축하주 대신 피싱 잡으러 간 정재헌 | Structural implication: '대표 되자마자 출근 안 해 ‘웅성’…축하주 대신 피싱 잡으러 간 정재헌' suggests a shift in NEWS dynamics. | LOW |
+| 현대트랜시스, 협력사 120여곳과 ‘파트너스 데이’…AI·동반성장 강조 | Structural implication: '현대트랜시스, 협력사 120여곳과 ‘파트너스 데이’…AI·동반성장 강조' suggests a shift in NEWS dynamics. | LOW |
+| 번역가 황석희, ‘성범죄 전과’ 의혹…“변호사와 검토 중” | Structural implication: '번역가 황석희, ‘성범죄 전과’ 의혹…“변호사와 검토 중”' suggests a shift in NEWS dynamics. | LOW |
+| ‘붉은사막’ 스팀 동접자 27만명 넘었다 | Structural implication: '‘붉은사막’ 스팀 동접자 27만명 넘었다' suggests a shift in NEWS dynamics. | LOW |
+| 여야 추경 심사 논의 평행선…진성준 “합의 때문에 계속 지연 안돼” | Structural implication: '여야 추경 심사 논의 평행선…진성준 “합의 때문에 계속 지연 안돼”' suggests a shift in NEWS dynamics. | LOW |
+| 앱클론-종근당, 이중항체 기반 난치성 고형암 치료제 공동개발 착수 | Structural implication: '앱클론-종근당, 이중항체 기반 난치성 고형암 치료제 공동개발 착수' suggests a shift in NEWS dynamics. | LOW |
+| 타타대우모빌리티·FPT, 협력 강화…“유로6·사이버보안 충족 엔진” | Structural implication: '타타대우모빌리티·FPT, 협력 강화…“유로6·사이버보안 충족 엔진”' suggests a shift in NEWS dynamics. | LOW |
+| 한국서부발전, ‘제1차 최고경영자 청렴 액션플랜 전략회의’ 개최 | Structural implication: '한국서부발전, ‘제1차 최고경영자 청렴 액션플랜 전략회의’ 개최' suggests a shift in NEWS dynamics. | LOW |
+| 대웅제약, 디지털헬스케어 투자 성과 첫 공개...VC 등 100여명 참여 | Structural implication: '대웅제약, 디지털헬스케어 투자 성과 첫 공개...VC 등 100여명 참여' suggests a shift in NEWS dynamics. | LOW |
+| “애가 칭얼대서”…장난감으로 한 살배기 얼굴 때린 40대 입건 | Structural implication: '“애가 칭얼대서”…장난감으로 한 살배기 얼굴 때린 40대 입건' suggests a shift in NEWS dynamics. | LOW |
+| “딱 이틀 먹었는데 10% 뚝”…나쁜 콜레스테롤 잡는 ‘이 음식’ | Structural implication: '“딱 이틀 먹었는데 10% 뚝”…나쁜 콜레스테롤 잡는 ‘이 음식’' suggests a shift in NEWS dynamics. | LOW |
+| 삼성바이오로직스 ‘CDMO 리더십 어워즈’ 받아...13년 연속 수상 | Structural implication: '삼성바이오로직스 ‘CDMO 리더십 어워즈’ 받아...13년 연속 수상' suggests a shift in NEWS dynamics. | LOW |
+| 美국방장관 “예수 이름으로 전쟁…반대세력은 하나님의 적” 발언 논란 | Structural implication: '美국방장관 “예수 이름으로 전쟁…반대세력은 하나님의 적” 발언 논란' suggests a shift in NEWS dynamics. | LOW |
+| 대법 “공사용 임시도로도 ‘그린벨트 부담금’ 내야” | Structural implication: '대법 “공사용 임시도로도 ‘그린벨트 부담금’ 내야”' suggests a shift in NEWS dynamics. | LOW |
+| 한국동서발전, 제24차 사랑의 헌혈 릴레이 시행…“생명 나눔 실천” | Structural implication: '한국동서발전, 제24차 사랑의 헌혈 릴레이 시행…“생명 나눔 실천”' suggests a shift in NEWS dynamics. | LOW |
+| 현대건설, 6607억원 규모 신길1구역 재개발 수주 | Structural implication: '현대건설, 6607억원 규모 신길1구역 재개발 수주' suggests a shift in NEWS dynamics. | LOW |
+| 현대모비스 임직원 가족, 소화전 도색 봉사 ‘누적 1000개’ 목전 | Structural implication: '현대모비스 임직원 가족, 소화전 도색 봉사 ‘누적 1000개’ 목전' suggests a shift in NEWS dynamics. | LOW |
+| “3.3㎡당 1000만 원 싸”…3기 신도시 ‘로또 청약’ 열린다 | Structural implication: '“3.3㎡당 1000만 원 싸”…3기 신도시 ‘로또 청약’ 열린다' suggests a shift in NEWS dynamics. | LOW |
+| [속보] 中 “시진핑, 대만 국민당 주석 4월 7∼12일 방중 초청” | Structural implication: '[속보] 中 “시진핑, 대만 국민당 주석 4월 7∼12일 방중 초청”' suggests a shift in NEWS dynamics. | LOW |
+| 매경이 전하는 세상의 지식 (매-세-지, 3월 30일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 3월 30일)' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

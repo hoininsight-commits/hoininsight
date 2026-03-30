@@ -143,7 +143,7 @@
         "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
-        "weight_pct": 25.0
+        "weight_pct": 16.67
       },
       {
         "ticker": "NVIDIA",
@@ -154,7 +154,7 @@
         "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
-        "weight_pct": 25.0
+        "weight_pct": 16.67
       },
       {
         "ticker": "Palantir",
@@ -165,7 +165,7 @@
         "confidence": 0.3,
         "pnl": 0.0,
         "perf_status": "WIN",
-        "weight_pct": 0.0
+        "weight_pct": 16.67
       },
       {
         "ticker": "Caterpillar",
@@ -183,50 +183,59 @@
       {
         "ticker": "MSFT",
         "name": "Microsoft",
+        "theme_type": "CONSTRAINT",
         "theme_link": "AI Power Constraint",
         "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "industry_link": "AI Software",
+        "industry_link": "Utilities",
         "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
-        "directness": "direct",
-        "impact_reason": "AI Software 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
         "evidence_basis": [
           "Azure AI Contribution",
           "Copilot Subscriptions",
           "Capex Cycle"
-        ]
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
       },
       {
         "ticker": "NVDA",
         "name": "NVIDIA",
+        "theme_type": "CONSTRAINT",
         "theme_link": "AI Power Constraint",
         "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "industry_link": "AI Software",
+        "industry_link": "Utilities",
         "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
-        "directness": "direct",
-        "impact_reason": "AI Software 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
         "evidence_basis": [
           "Data Center Revenue Growth",
           "GPU TAM Expansion",
           "H100/B200 Backlog"
-        ]
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
       },
       {
         "ticker": "PLTR",
         "name": "Palantir",
+        "theme_type": "CONSTRAINT",
         "theme_link": "AI Power Constraint",
         "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "industry_link": "AI Software",
+        "industry_link": "Utilities",
         "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
-        "directness": "proxy",
-        "impact_reason": "AI Software 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
         "evidence_basis": [
-          "AI Software Growth Rate",
+          "Utilities Growth Rate",
           "Market Share Trend",
           "Revenue Visibility"
-        ]
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
       }
     ]
   },
@@ -250,14 +259,14 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-30 10:21:09",
+    "repaired_at": "2026-03-30 12:59:50",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-30 10:21:09"
+    "consistency_aligned_at": "2026-03-30 12:59:50"
   },
   "investment_decision": {
     "action": {
-      "value": "ACCUMULATE",
-      "source": "engine",
+      "value": "ADD",
+      "source": "calibrated",
       "reason": "Stage: EXPANSION, Momentum: ACCELERATING",
       "evidence": [
         "stage=EXPANSION",
@@ -288,16 +297,16 @@
     },
     "confidence": {
       "value": {
-        "value": 0.54,
+        "value": 0.64,
         "source": "recalibrated",
         "base_confidence": 0.5,
         "adjustments": {
           "hit_ratio": 0.0,
-          "decision_accuracy": 0.1,
+          "decision_accuracy": 0.2,
           "failure_penalty": -0.1,
           "recency_bonus": 0.04
         },
-        "final_confidence": 0.54
+        "final_confidence": 0.64
       },
       "source": "recalibrated",
       "reason": "Weighted sum of momentum, early signals, and topic pressure.",
@@ -342,16 +351,16 @@
       }
     },
     "recalibration_details": {
-      "value": 0.54,
+      "value": 0.64,
       "source": "recalibrated",
       "base_confidence": 0.5,
       "adjustments": {
         "hit_ratio": 0.0,
-        "decision_accuracy": 0.1,
+        "decision_accuracy": 0.2,
         "failure_penalty": -0.1,
         "recency_bonus": 0.04
       },
-      "final_confidence": 0.54
+      "final_confidence": 0.64
     },
     "decision": {}
   },
@@ -381,31 +390,31 @@
   "portfolio_allocation": {
     "date": "2026-03-30",
     "total_capital": 1.0,
-    "theme_exposure": 0.5,
+    "theme_exposure": 0.5001,
     "allocations": [
       {
         "ticker": "Microsoft",
         "stock": "Microsoft",
-        "base_weight": 0.43200000000000005,
-        "confidence": 0.54,
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
         "risk": 0.2,
-        "weight": 0.25
+        "weight": 0.1667
       },
       {
         "ticker": "NVIDIA",
         "stock": "NVIDIA",
-        "base_weight": 0.43200000000000005,
-        "confidence": 0.54,
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
         "risk": 0.2,
-        "weight": 0.25
+        "weight": 0.1667
       },
       {
         "ticker": "Palantir",
         "stock": "Palantir",
-        "base_weight": 0.31200000000000006,
-        "confidence": 0.39,
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
         "risk": 0.2,
-        "weight": 0.0
+        "weight": 0.1667
       },
       {
         "ticker": "Caterpillar",
@@ -416,13 +425,13 @@
         "weight": 0.0
       }
     ],
-    "allocation_reason": "Risk-adjusted optimization for 4 stocks (Exposure: 0.5).",
+    "allocation_reason": "Risk-adjusted optimization for 4 stocks (Exposure: 0.5001).",
     "allocation_evidence": [
       "risk_score=0.2",
       "stock_count=4"
     ],
     "metadata": {
-      "generated_at": "2026-03-30 10:21:09",
+      "generated_at": "2026-03-30 12:59:50",
       "engine": "AllocationEngine-v1.1"
     }
   },
@@ -431,45 +440,82 @@
     "fallback_fields": 3,
     "fallback_ratio": 0.5,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 10:21:09"
-  },
-  "outcome_evaluation": {
-    "theme_correct": true,
-    "decision_effective": true,
-    "allocation_effective": true,
-    "hit_ratio": 0.0,
-    "failure_type": "THEME_RIGHT_STOCK_WRONG"
-  },
-  "performance_summary": {
-    "last_7d": {
-      "theme_accuracy": 1.0,
-      "decision_accuracy": 0.5,
-      "hit_ratio_avg": 0.0,
-      "sample_size": 6
-    },
-    "last_30d": {
-      "theme_accuracy": 1.0,
-      "decision_accuracy": 0.5,
-      "hit_ratio_avg": 0.0,
-      "sample_size": 6
-    },
-    "updated_at": "2026-03-30 10:21:09"
+    "generated_at": "2026-03-30 12:59:50"
   },
   "engine_audit": {
-    "generated_at": "2026-03-30T10:21:09.336644",
-    "period": "Last 6 runs",
+    "generated_at": "2026-03-30T12:59:50.484767",
+    "period": "Last 2 runs",
     "failure_distribution": {
-      "THEME_RIGHT_DECISION_WRONG": 0.5,
+      "UNKNOWN": 0.5,
       "THEME_RIGHT_STOCK_WRONG": 0.5
     },
     "confidence_stability": {
       "min": 0.38,
-      "max": 0.54,
-      "avg": 0.474,
-      "volatility": 0.16
+      "max": 0.64,
+      "avg": 0.577,
+      "volatility": 0.26
     },
-    "outcome_alignment": 0.5,
+    "outcome_alignment": 0.0,
     "causality_validity": 1.0,
-    "status": "DEGRADED"
-  }
+    "status": "FAIL (No Outcome Correlation)"
+  },
+  "impact_chain": [
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Azure AI Contribution",
+        "Copilot Subscriptions",
+        "Capex Cycle"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Data Center Revenue Growth",
+        "GPU TAM Expansion",
+        "H100/B200 Backlog"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    }
+  ]
 }
