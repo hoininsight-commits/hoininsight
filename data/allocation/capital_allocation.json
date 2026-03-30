@@ -1,42 +1,48 @@
 {
-  "date": "2026-03-27",
+  "date": "2026-03-30",
   "total_capital": 1.0,
-  "theme_exposure": 0.3,
+  "theme_exposure": 0.5,
   "allocations": [
     {
       "ticker": "Microsoft",
       "stock": "Microsoft",
-      "base_weight": 0.24,
-      "confidence": 0.3,
-      "risk": 0.2,
-      "weight": 0.0
+      "base_weight": 0.23750000000000002,
+      "confidence": 0.47500000000000003,
+      "risk": 0.5,
+      "weight": 0.25
     },
     {
       "ticker": "NVIDIA",
       "stock": "NVIDIA",
-      "base_weight": 0.24,
-      "confidence": 0.3,
-      "risk": 0.2,
-      "weight": 0.0
+      "base_weight": 0.23750000000000002,
+      "confidence": 0.47500000000000003,
+      "risk": 0.5,
+      "weight": 0.25
     },
     {
       "ticker": "Palantir",
       "stock": "Palantir",
-      "base_weight": 0.24,
-      "confidence": 0.3,
-      "risk": 0.2,
+      "base_weight": 0.17500000000000002,
+      "confidence": 0.35000000000000003,
+      "risk": 0.5,
       "weight": 0.0
     },
     {
       "ticker": "Caterpillar",
       "stock": "Caterpillar",
-      "base_weight": 0.4,
-      "confidence": 0.5,
-      "risk": 0.2,
-      "weight": 0.3
+      "base_weight": 0.0625,
+      "confidence": 0.125,
+      "risk": 0.5,
+      "weight": 0.0
     }
   ],
+  "allocation_reason": "Risk-adjusted optimization for 4 stocks (Exposure: 0.5).",
+  "allocation_evidence": [
+    "risk_score=0.5",
+    "stock_count=4"
+  ],
   "metadata": {
-    "generated_at": "2026-03-27 14:33:26"
+    "generated_at": "2026-03-30 09:36:47",
+    "engine": "AllocationEngine-v1.1"
   }
 }

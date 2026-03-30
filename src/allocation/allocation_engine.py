@@ -20,20 +20,51 @@ class AllocationEngine:
         
         impact_map = brief_data.get("impact_map", {})
         stocks = impact_map.get("mentionable_stocks", [])
-        risk_score = brief_data.get("risk", {}).get("risk_score", 0.5)
+        impact_chain = impact_map.get("structural_impact_chain", [])
+        
+        # [STEP-C/D] Risk score is ahora a structured object
+        risk_obj = brief_data.get("risk", {}).get("risk_score", 0.5)
+        risk_score = risk_obj.get("value", 0.5) if isinstance(risk_obj, dict) else risk_obj
         
         if not stocks:
             print("[AllocationEngine] No stocks found for allocation.")
             return None
             
+        # Create a lookup for structural data
+        chain_map = {c["ticker"]: c for c in impact_chain} if impact_chain else {}
+
         # Prepare data for calculator
         stocks_data = []
         for s in stocks:
+            ticker = s.get("ticker", "UNKNOWN")
+            stock_name = s.get("stock", s.get("name", "UNKNOWN"))
+            base_confidence = s.get("confidence", 0.5)
+            
+            # [STEP-E] Structural Weighting Adjustment
+            # Try to match by ticker or name
+            chain = chain_map.get(ticker) or next((v for v in chain_map.values() if v.get("name") == stock_name), None)
+            
+            if chain:
+                # Directness multiplier
+                multiplier = 1.0
+                if chain["directness"] == "direct": multiplier = 1.3
+                elif chain["directness"] == "proxy": multiplier = 0.8
+                
+                # Evidence density bonus
+                evidence_count = len(chain.get("evidence_basis", []))
+                bonus = min(evidence_count * 0.05, 0.2)
+                
+                adjusted_confidence = min((base_confidence * multiplier) + bonus, 1.0)
+                print(f"[Allocation] Structural adjustment for {ticker}: {base_confidence} -> {adjusted_confidence}")
+            else:
+                adjusted_confidence = base_confidence * 0.5 # Penalty for missing structural chain
+                print(f"[Allocation] ⚠️ Penalty for {ticker}: No structural chain found.")
+
             stocks_data.append({
-                "ticker": s.get("ticker", "UNKNOWN"),
+                "ticker": ticker,
                 "stock": s.get("stock", s.get("name", "UNKNOWN")),
-                "confidence": s.get("confidence", 0.5),
-                "risk_score": risk_score # Using theme-level risk as default
+                "confidence": adjusted_confidence,
+                "risk_score": risk_score
             })
             
         # 1. Calculate Base Weights

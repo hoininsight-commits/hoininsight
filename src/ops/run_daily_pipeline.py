@@ -213,6 +213,62 @@ def run_mentionables_engine():
         traceback.print_exc()
         return False
 
+def run_impact_chain_engine():
+    """PHASE 3.3.5: [STEP-E] Decision -> Impact Chain Engine"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.3.5: IMPACT CHAIN STARTED")
+    try:
+        from src.impact.impact_chain_engine import ImpactChainEngine
+        
+        # 1. Load Causality (from STEP-D)
+        causal_path = project_root / "data" / "ops" / "decision_causality_chain.json"
+        if not causal_path.exists():
+            print("[Pipeline] ⚠️ Causality Chain not found. Running fallback...")
+            causality = {"mechanism": "Unknown Mechanism", "structural_context": "Unknown Context"}
+        else:
+            with open(causal_path, "r", encoding="utf-8") as f:
+                causality = json.load(f)
+
+        # 2. Load Mentionables
+        mention_path = project_root / "data" / "story" / "impact_mentionables.json"
+        if not mention_path.exists():
+            print("[Pipeline] ⚠️ Mentionables not found.")
+            return False
+            
+        with open(mention_path, "r", encoding="utf-8") as f:
+            mention_data = json.load(f)
+            
+        core_theme = mention_data.get("theme", "Market Focus")
+        candidates = mention_data.get("mentionable_stocks", [])
+
+        # 3. Build Impact Chain
+        engine = ImpactChainEngine(project_root)
+        impact_chain = engine.build_impact_chain(core_theme, causality, candidates)
+
+        # 4. Save Standalone and Update Brief
+        save_path = project_root / "data" / "ops" / "impact_chain.json"
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(impact_chain, f, indent=2, ensure_ascii=False)
+            
+        # Update today_operator_brief.json if it exists
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if brief_path.exists():
+            with open(brief_path, "r", encoding="utf-8") as f:
+                brief = json.load(f)
+            
+            # Sync to impact_map
+            if "impact_map" not in brief: brief["impact_map"] = {}
+            brief["impact_map"]["structural_impact_chain"] = impact_chain
+            
+            with open(brief_path, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.3.5: IMPACT CHAIN COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Impact Chain Engine failed: {e}")
+        traceback.print_exc()
+        return False
+
 
 def run_topic_pressure_engine():
     """PHASE 1.4.6: Topic Pressure & Selection Engine (STEP-38)"""
@@ -968,11 +1024,14 @@ def main():
     # 3.1.0 [STEP-49] Self-Improving Engine (Adaptive Learning)
     run_learning_update()
     
-    # 3.2.0 [STEP-50] Capital Allocation Engine
-    run_capital_allocation()
-    
-    # 3.3.0 [STEP-B] Decision Normalization (Force No-Empty)
+    # 3.3.0 [STEP-D] Decision Causality Chain
     run_decision_normalization()
+    
+    # 3.3.5 [STEP-E] Decision -> Impact Chain Engine
+    run_impact_chain_engine()
+
+    # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
+    run_capital_allocation()
     
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
