@@ -1,13 +1,13 @@
 {
   "data_axis": [
     "index_nasdaq_fred",
-    "rates_us10y_fred",
-    "credit_hy_spread_fred"
+    "credit_hy_spread_fred",
+    "rates_us10y_fred"
   ],
   "baseline_match": [
     "index_nasdaq_fred: Volatility Surge (Z=2.55)",
-    "rates_us10y_fred: Volatility Surge (Z=2.24)",
-    "credit_hy_spread_fred: Volatility Surge (Z=2.17)"
+    "credit_hy_spread_fred: Volatility Surge (Z=2.17)",
+    "rates_us10y_fred: Volatility Surge (Z=2.24)"
   ],
   "anomaly_logic": "Monetary Tightening",
   "why_now_type": "Capital-driven",
