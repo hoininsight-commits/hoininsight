@@ -38,7 +38,11 @@ class AllocationEngine:
         for s in stocks:
             ticker = s.get("ticker", "UNKNOWN")
             stock_name = s.get("stock", s.get("name", "UNKNOWN"))
-            base_confidence = s.get("confidence", 0.5)
+            
+            # [STEP-G] Confidence is now a structured object
+            conf_obj = s.get("confidence", 0.5)
+            # Support both new structured object and legacy float
+            base_confidence = conf_obj.get("value", 0.5) if isinstance(conf_obj, dict) else conf_obj
             
             # [STEP-E] Structural Weighting Adjustment
             # Try to match by ticker or name
@@ -62,7 +66,7 @@ class AllocationEngine:
 
             stocks_data.append({
                 "ticker": ticker,
-                "stock": s.get("stock", s.get("name", "UNKNOWN")),
+                "stock": stock_name,
                 "confidence": adjusted_confidence,
                 "risk_score": risk_score
             })

@@ -22,6 +22,7 @@ from src.core.core_narrative_lock_engine import CoreNarrativeLockEngine
 from src.ops.decision_provenance_engine import DecisionProvenanceEngine
 from src.ops.decision_causality_engine import DecisionCausalityEngine
 from src.ops.outcome_validation_engine import OutcomeValidationEngine
+from src.ops.confidence_recalibration_engine import ConfidenceRecalibrationEngine
 
 def run_collection():
     """Run all data collectors."""
@@ -334,6 +335,61 @@ def run_outcome_validation():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Outcome Validation failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_confidence_recalibration():
+    """PHASE 3.4.5: [STEP-G] Confidence Recalibration Engine"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.5: CONFIDENCE RECALIBRATION STARTED")
+    try:
+        # 1. Load Summary
+        summary_path = project_root / "data" / "ops" / "outcome_summary.json"
+        if not summary_path.exists():
+            print("[Pipeline] ⚠️ Outcome Summary not found. Using defaults.")
+            summary = {"last_7d": {"theme_accuracy": 0.5, "hit_ratio_avg": 0.5, "decision_accuracy": 0.5, "sample_size": 0}}
+        else:
+            with open(summary_path, "r", encoding="utf-8") as f:
+                summary = json.load(f)
+
+        # 2. Load Current Brief
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ Brief not found.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+
+        # 3. Recalibrate Decision Confidence
+        decision_block = brief.get("investment_decision", {}).get("decision", {})
+        base_conf = decision_block.get("confidence", 0.5)
+        
+        # If confidence is already an object, get the current value
+        current_val = base_conf.get("value", 0.5) if isinstance(base_conf, dict) else base_conf
+        
+        engine = ConfidenceRecalibrationEngine(project_root)
+        recalibrated = engine.recalibrate_confidence(current_val, summary)
+        
+        # 4. Update Brief
+        decision_block["confidence"] = recalibrated
+        brief["investment_decision"]["decision"] = decision_block
+        
+        # Update Individual Mentionables too (optional but recommended for STEP-G)
+        impact_chain = brief.get("impact_map", {}).get("structural_impact_chain", [])
+        for stock in impact_chain:
+            # We can apply a similar recalibration to individual stock confidence if needed
+            pass
+
+        with open(brief_path, "w", encoding="utf-8") as f:
+            json.dump(brief, f, indent=2, ensure_ascii=False)
+
+        # 5. Save Metrics
+        engine.save_metrics(recalibrated)
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.5: CONFIDENCE RECALIBRATION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Confidence Recalibration failed: {e}")
         traceback.print_exc()
         return False
 
@@ -1098,11 +1154,14 @@ def main():
     # 3.3.5 [STEP-E] Decision -> Impact Chain Engine
     run_impact_chain_engine()
 
-    # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
-    run_capital_allocation()
-    
     # 3.4.0 [STEP-F] Outcome Validation Loop (Truth Engine)
     run_outcome_validation()
+    
+    # 3.4.5 [STEP-G] Confidence Recalibration Engine
+    run_confidence_recalibration()
+
+    # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
+    run_capital_allocation()
     
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")

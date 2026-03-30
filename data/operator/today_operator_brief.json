@@ -313,6 +313,20 @@
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
         "decision_link": "Decision 25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
+    },
+    "decision": {
+      "confidence": {
+        "value": 0.44,
+        "source": "recalibrated",
+        "base_confidence": 0.5,
+        "adjustments": {
+          "hit_ratio": 0.0,
+          "decision_accuracy": 0.0,
+          "failure_penalty": -0.1,
+          "recency_bonus": 0.04
+        },
+        "final_confidence": 0.44
+      }
     }
   },
   "portfolio_allocation": {
@@ -359,7 +373,7 @@
       "stock_count=4"
     ],
     "metadata": {
-      "generated_at": "2026-03-30 09:44:34",
+      "generated_at": "2026-03-30 09:57:00",
       "engine": "AllocationEngine-v1.1"
     }
   },
@@ -368,7 +382,7 @@
     "fallback_fields": 2,
     "fallback_ratio": 0.33,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 09:44:34"
+    "generated_at": "2026-03-30 09:57:00"
   },
   "outcome_evaluation": {
     "theme_correct": true,
@@ -382,14 +396,14 @@
       "theme_accuracy": 1.0,
       "decision_accuracy": 0.0,
       "hit_ratio_avg": 0.0,
-      "sample_size": 1
+      "sample_size": 2
     },
     "last_30d": {
       "theme_accuracy": 1.0,
       "decision_accuracy": 0.0,
       "hit_ratio_avg": 0.0,
-      "sample_size": 1
+      "sample_size": 2
     },
-    "updated_at": "2026-03-30 09:44:34"
+    "updated_at": "2026-03-30 09:57:00"
   }
 }
