@@ -5,20 +5,44 @@
     "action": "ACCUMULATE",
     "confidence": 0.64,
     "top_stocks": [
-      "EQIX",
-      "VRT",
-      "MSFT"
+      "MSFT",
+      "NVDA",
+      "PLTR"
     ],
     "weights": [
       0.42,
       0.38,
       0.2
     ],
-    "hit_ratio": 0.66,
-    "alignment": 0.72,
+    "hit_ratio": 0.2,
+    "alignment": 0.4,
+    "impact_chain": [
+      {
+        "ticker": "MSFT",
+        "directness": "indirect"
+      },
+      {
+        "ticker": "NVDA",
+        "directness": "indirect"
+      }
+    ],
+    "decomposition": {
+      "theme": "OK",
+      "industry": "FAIL",
+      "stock": "FAIL",
+      "timing": "FAIL"
+    },
+    "failure_detail": {
+      "type": "MIXED",
+      "primary": "industry",
+      "secondary": [
+        "stock",
+        "timing"
+      ]
+    },
     "result": {
-      "success": true,
-      "failure_type": "SUCCESS"
+      "success": false,
+      "failure_type": "industry"
     }
   }
 ]

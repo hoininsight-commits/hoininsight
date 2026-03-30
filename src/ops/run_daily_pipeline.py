@@ -399,6 +399,41 @@ def run_operator_feedback_loop():
         traceback.print_exc()
         return False
 
+def run_failure_decomposition_audit():
+    """PHASE 3.4.3: [STEP-J-1] Failure Decomposition Engine"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.3: FAILURE DECOMPOSITION STARTED")
+    try:
+        from src.ops.failure_decomposition_engine import build_decomposition_summary
+        
+        log_path = project_root / "data" / "ops" / "operator_feedback_log.json"
+        
+        if not log_path.exists():
+            print("[Pipeline] ⚠️ Feedback Log missing, skipping decomposition summary.")
+            return False
+            
+        with open(log_path, "r", encoding="utf-8") as f:
+            logs = json.load(f)
+            
+        summary = build_decomposition_summary(logs)
+        
+        summary_path = project_root / "data" / "ops" / "failure_decomposition_summary.json"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+            
+        # Sync to docs for server check
+        public_summary = project_root / "docs" / "data" / "ops" / "failure_decomposition_summary.json"
+        public_summary.parent.mkdir(parents=True, exist_ok=True)
+        with open(public_summary, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+
+        print(f"[Pipeline] ✅ FAILURE DECOMPOSITION COMPLETED. Total Root Causes: {len(summary.get('root_causes', {}))}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.3: FAILURE DECOMPOSITION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Failure Decomposition failed: {e}")
+        traceback.print_exc()
+        return False
+
 def run_confidence_recalibration():
     """PHASE 3.4.5: [STEP-G] Confidence Recalibration Engine"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.5: CONFIDENCE RECALIBRATION STARTED")
@@ -1537,6 +1572,9 @@ def main():
 
     # 3.4.2 [STEP-J] Operator Feedback Loop
     run_operator_feedback_loop()
+
+    # 3.4.3 [STEP-J-1] Failure Decomposition Engine
+    run_failure_decomposition_audit()
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()

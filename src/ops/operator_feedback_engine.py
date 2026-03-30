@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from datetime import datetime
+from src.ops.failure_decomposition_engine import decompose_failure, classify_failure
 
 class OperatorFeedbackEngine:
     def __init__(self, project_root):
@@ -66,11 +67,14 @@ class OperatorFeedbackEngine:
                 logs = []
         
         # Ensure result consistency
-        if "result" not in entry:
-            f_type = self.evaluate_outcome(entry)
+        if "decomposition" not in entry:
+            entry["decomposition"] = decompose_failure(entry)
+            entry["failure_detail"] = classify_failure(entry["decomposition"])
+            
+            # Legacy result for backward compatibility
             entry["result"] = {
-                "success": f_type == "SUCCESS",
-                "failure_type": f_type
+                "success": entry["failure_detail"]["type"] == "SUCCESS",
+                "failure_type": entry["failure_detail"]["primary"] or "SUCCESS"
             }
             
         logs.append(entry)
