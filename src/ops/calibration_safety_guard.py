@@ -42,12 +42,61 @@ def is_duplicate_action(action, log):
             return True
     return False
 
-def create_snapshot(params):
-    """Creates a timestamped snapshot of the current engine parameters."""
+def create_snapshot(params, metrics=None):
+    """Creates a timestamped snapshot of the current engine parameters and metrics."""
     return {
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "params": params
+        "params": params,
+        "metrics": metrics or {}
     }
+
+def append_snapshot_history(project_root, snapshot):
+    """Appends a snapshot to a persistent history file, keeping only the last 10 entries."""
+    history_path = Path(project_root) / "data" / "ops" / "calibration_snapshot_history.json"
+    history = []
+    if history_path.exists():
+        with open(history_path, "r", encoding="utf-8") as f:
+            history = json.load(f)
+    
+    history.append(snapshot)
+    # Keep last 10
+    history = history[-10:]
+    
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+    print(f"[SafetyGuard] 📚 Snapshot history updated ({len(history)} entries).")
+
+def update_best_state(project_root, current_snapshot):
+    """Updates the Best State file if the current state outperforms the existing best state."""
+    best_path = Path(project_root) / "data" / "ops" / "calibration_best_state.json"
+    best_state = None
+    if best_path.exists():
+        with open(best_path, "r", encoding="utf-8") as f:
+            best_state = json.load(f)
+            
+    is_new_best = False
+    if not best_state:
+        is_new_best = True
+    else:
+        # Primary tie-breaker: Average Return
+        current_ret = current_snapshot.get("metrics", {}).get("avg_return", 0)
+        best_ret = best_state.get("metrics", {}).get("avg_return", 0)
+        
+        if current_ret > best_ret:
+            is_new_best = True
+        elif current_ret == best_ret:
+            # Secondary: Hit Ratio
+            current_hit = current_snapshot.get("metrics", {}).get("hit_ratio", 0)
+            best_hit = best_state.get("metrics", {}).get("hit_ratio", 0)
+            if current_hit > best_hit:
+                is_new_best = True
+
+    if is_new_best:
+        with open(best_path, "w", encoding="utf-8") as f:
+            json.dump(current_snapshot, f, indent=2, ensure_ascii=False)
+        print(f"[SafetyGuard] 🏆 NEW BEST STATE RECORDED: {current_snapshot.get('metrics')}")
+    
+    return is_new_best
 
 def rollback(project_root, snapshot):
     """Restores engine parameters from a given snapshot."""
@@ -56,17 +105,23 @@ def rollback(project_root, snapshot):
         json.dump(snapshot["params"], f, indent=2, ensure_ascii=False)
     print(f"[SafetyGuard] 🔄 Rollback executed from snapshot: {snapshot['timestamp']}")
 
-def validate_calibration_effect(before_metrics, after_metrics):
+def validate_multi_metric(before, after):
     """
-    Performance Gate: Accept calibration only if it doesn't degrade key metrics.
-    Currently focuses on 'alignment'.
+    Performance Gate: Accept calibration only if it doesn't degrade any key metrics.
+    Metrics: alignment, hit_ratio, avg_return.
     """
-    b_align = before_metrics.get("alignment", 0)
-    a_align = after_metrics.get("alignment", 0)
+    metrics = ["alignment", "hit_ratio", "avg_return"]
+    reasons = []
     
-    if a_align < b_align:
-        print(f"[SafetyGuard] ❌ Rejected: Performance degraded ({b_align} -> {a_align})")
-        return "REJECT"
+    for m in metrics:
+        b_val = before.get(m, 0)
+        a_val = after.get(m, 0)
+        if a_val < b_val:
+            reasons.append(f"{m.upper()}_DOWN ({b_val} -> {a_val})")
+            
+    if reasons:
+        print(f"[SafetyGuard] ❌ Rejected: {', '.join(reasons)}")
+        return {"status": "REJECT", "reasons": reasons}
     
-    print(f"[SafetyGuard] ✅ Accepted: Performance maintained or improved ({b_align} -> {a_align})")
-    return "ACCEPT"
+    print(f"[SafetyGuard] ✅ Accepted: All metrics maintained or improved.")
+    return {"status": "ACCEPT", "reasons": []}
