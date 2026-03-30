@@ -49,13 +49,19 @@ class MentionablesEngine:
         self.output_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _load_json(self, path):
-        if not path.exists():
+        if not path or not path.exists():
             return None
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception:
             return None
+
+    def _get_param(self, param_name, default):
+        """Loads a parameter from the central engine_parameters.json."""
+        param_path = self.project_root / "data" / "ops" / "engine_parameters.json"
+        params = self._load_json(param_path) or {}
+        return params.get("MentionablesEngine", {}).get(param_name, default)
 
     def run_analysis(self):
         print("[MentionablesEngine] Starting Analysis...")
@@ -105,7 +111,8 @@ class MentionablesEngine:
             if s_name not in unique_stocks or item["score"] > unique_stocks[s_name]["score"]:
                 unique_stocks[s_name] = item
         
-        final_list = sorted(unique_stocks.values(), key=lambda x: x["score"], reverse=True)[:5]
+        pool_size = self._get_param("solver_pool_size", 5)
+        final_list = sorted(unique_stocks.values(), key=lambda x: x["score"], reverse=True)[:pool_size]
 
         # 4. Save
         output = {

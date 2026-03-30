@@ -1,0 +1,14 @@
+{
+  "approved": [
+    {
+      "action": "EXPAND_SOLVER_POOL",
+      "target": "MentionablesEngine",
+      "approved": true
+    },
+    {
+      "action": "REWEIGHT_SOLVER_PRIORITY",
+      "target": "SelectionCalibrationLayer",
+      "approved": true
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import json
 
-def calibrate_selection(impact_chain):
+def calibrate_selection(impact_chain, project_root=None):
     """
     [STEP-H-3] Selection Calibration Layer (Upgraded)
     Filters the Impact Chain to the Top 3 stocks using 'selection_score' with solver-first priority.
@@ -8,17 +8,31 @@ def calibrate_selection(impact_chain):
     if not impact_chain:
         return []
 
+    # Load dynamic params
+    solver_weight = 1.0
+    demand_weight = 0.7
+    if project_root:
+        from pathlib import Path
+        param_path = Path(project_root) / "data" / "ops" / "engine_parameters.json"
+        if param_path.exists():
+            try:
+                with open(param_path, "r", encoding="utf-8") as f:
+                    params = json.load(f).get("SelectionCalibrationLayer", {})
+                    solver_weight = params.get("solver_weight", 1.0)
+                    demand_weight = params.get("demand_weight", 0.7)
+            except: pass
+
     # 1. Calculate selection_score for each stock
     for stock in impact_chain:
         directness = stock.get("directness", "indirect")
         
         # New priority-weighted directness
         if directness == "solver_direct":
-            direct_weight = 1.0
+            direct_weight = solver_weight
         elif directness == "user_direct":
             direct_weight = 0.8
         elif directness == "direct":
-            direct_weight = 0.7
+            direct_weight = demand_weight
         else:
             direct_weight = 0.3
             

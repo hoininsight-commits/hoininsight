@@ -519,6 +519,61 @@ def run_calibration_planning():
         traceback.print_exc()
         return False
 
+def run_calibration_execution():
+    """PHASE 3.4.7: [STEP-K] Calibration Execution Layer"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.7: CALIBRATION EXECUTION STARTED")
+    try:
+        from src.ops.calibration_execution_engine import apply_calibration
+        
+        plan_path = project_root / "data" / "ops" / "context_calibration_plan.json"
+        approval_path = project_root / "data" / "ops" / "calibration_execution_state.json"
+        
+        if not plan_path.exists():
+            print("[Pipeline] ℹ️ No calibration plan found. Skipping.")
+            return True
+            
+        if not approval_path.exists():
+            print("[Pipeline] ℹ️ No calibration approval state found. Skipping.")
+            return True
+            
+        with open(plan_path, "r", encoding="utf-8") as f:
+            plan = json.load(f)
+            
+        with open(approval_path, "r", encoding="utf-8") as f:
+            approval = json.load(f)
+            
+        applied = apply_calibration(project_root, plan, approval)
+        
+        if applied:
+            log_path = project_root / "data" / "ops" / "calibration_execution_log.json"
+            # Append if exists
+            history = []
+            if log_path.exists():
+                with open(log_path, "r", encoding="utf-8") as f:
+                    history = json.load(f)
+            
+            history.extend(applied)
+            
+            with open(log_path, "w", encoding="utf-8") as f:
+                json.dump(history, f, indent=2, ensure_ascii=False)
+                
+            # Sync to docs for server check
+            public_log = project_root / "docs" / "data" / "ops" / "calibration_execution_log.json"
+            public_log.parent.mkdir(parents=True, exist_ok=True)
+            with open(public_log, "w", encoding="utf-8") as f:
+                json.dump(history, f, indent=2, ensure_ascii=False)
+
+            print(f"[Pipeline] ✅ CALIBRATION EXECUTION COMPLETED. Actions applied: {len(applied)}")
+        else:
+            print("[Pipeline] ℹ️ No approved actions to apply.")
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.7: CALIBRATION EXECUTION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Calibration Execution failed: {e}")
+        traceback.print_exc()
+        return False
+
 def run_confidence_recalibration():
     """PHASE 3.4.5: [STEP-G] Confidence Recalibration Engine"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.5: CONFIDENCE RECALIBRATION STARTED")
@@ -648,7 +703,7 @@ def run_core_calibration():
             impact_chain = brief.get("impact", {}).get("stocks", [])
             print(f"[Calibration] Fallback to impact.stocks, count: {len(impact_chain)}")
             
-        impact_chain = calibrate_selection(impact_chain)
+        impact_chain = calibrate_selection(impact_chain, project_root)
         print(f"[Calibration] Impact Chain Count After Selection: {len(impact_chain)}")
         
         calibrated_impact = calibrate_allocation(impact_chain, brief["investment_decision"].get("confidence"))
@@ -1666,6 +1721,9 @@ def main():
 
     # 3.4.6 [STEP-J-3] Context-Specific Calibration Planner
     run_calibration_planning()
+
+    # 3.4.7 [STEP-K] Calibration Execution Layer
+    run_calibration_execution()
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()
