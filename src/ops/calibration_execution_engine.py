@@ -64,19 +64,31 @@ def update_engine_param(project_root, target, param, delta):
     }
 
 def apply_calibration(project_root, plan, approval):
-    """Main entry point to execute approved calibration proposals."""
+    """Main entry point to execute approved calibration proposals with safety guards."""
+    from src.ops.calibration_safety_guard import apply_limits, is_duplicate_action
+    
+    # Load execution log for duplicate check
+    log_path = project_root / "data" / "ops" / "calibration_execution_log.json"
+    execution_log = []
+    if log_path.exists():
+        with open(log_path, "r", encoding="utf-8") as f:
+            execution_log = json.load(f)
+
     applied = []
     
     # proposals is a dict sorted by context (CONSTRAINT, EXPANSION)
     proposals = plan.get("proposals", {})
     if not proposals:
-        # Fallback for older plan structures if any
         proposals = plan.get("plans", {})
 
     for ctx, actions in proposals.items():
         for act in actions:
             if not is_approved(act, approval):
-                # print(f"[Calibration] ⏩ Skipping unapproved action: {act['action']} for {act['target']}")
+                continue
+
+            # Safety Guard: Check for duplicate actions to prevent thrashing
+            if is_duplicate_action(act, execution_log):
+                print(f"[Calibration-Guard] 🛡️ Duplicate Action Blocked: {act['action']} for {act['target']}")
                 continue
 
             mapping = map_action_to_parameters(act["action"])
@@ -86,11 +98,15 @@ def apply_calibration(project_root, plan, approval):
 
             print(f"[Calibration] ✅ Applying action: {act['action']} ({mapping['param']} +{mapping['delta']})")
             
+            # Safety Guard: Apply limits before updating
+            # Result from update_engine_param now uses apply_limits internally or we do it here.
+            # I'll update update_engine_param to use it.
             result = update_engine_param(
                 project_root=project_root,
                 target=act["target"],
                 param=mapping["param"],
-                delta=mapping["delta"]
+                delta=mapping["delta"],
+                guard_apply_limits=apply_limits # Pass guard function
             )
 
             applied.append({
@@ -106,3 +122,38 @@ def apply_calibration(project_root, plan, approval):
             })
 
     return applied
+
+def update_engine_param(project_root, target, param, delta, guard_apply_limits=None):
+    """Loads, updates, and saves engine parameters with optional safety guard clipping."""
+    param_path = project_root / "data" / "ops" / "engine_parameters.json"
+    
+    if not param_path.exists():
+        params = {}
+    else:
+        with open(param_path, "r", encoding="utf-8") as f:
+            params = json.load(f)
+
+    if target not in params:
+        params[target] = {}
+
+    current_value = params[target].get(param, 0)
+    
+    # Calculate target value
+    target_value = current_value + delta
+    
+    # Apply safety guard if provided
+    new_value = target_value
+    if guard_apply_limits:
+        new_value = guard_apply_limits(param, target_value)
+        if new_value != target_value:
+             print(f"[Calibration-Guard] 🛡️ Parameter Clipped: {param} ({target_value} -> {new_value})")
+
+    params[target][param] = new_value
+    
+    with open(param_path, "w", encoding="utf-8") as f:
+        json.dump(params, f, indent=2, ensure_ascii=False)
+
+    return {
+        "before": current_value,
+        "after": new_value
+    }

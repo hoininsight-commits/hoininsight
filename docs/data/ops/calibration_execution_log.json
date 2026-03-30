@@ -1,0 +1,24 @@
+[
+  {
+    "timestamp": "2026-03-30 17:46:53",
+    "context": "CONSTRAINT",
+    "action": "EXPAND_SOLVER_POOL",
+    "target": "MentionablesEngine",
+    "param": "solver_pool_size",
+    "delta": 2,
+    "before": 7,
+    "after": 9,
+    "status": "APPLIED"
+  },
+  {
+    "timestamp": "2026-03-30 17:46:53",
+    "context": "CONSTRAINT",
+    "action": "REWEIGHT_SOLVER_PRIORITY",
+    "target": "SelectionCalibrationLayer",
+    "param": "solver_weight",
+    "delta": 0.1,
+    "before": 1.0,
+    "after": 1.1,
+    "status": "APPLIED"
+  }
+]
