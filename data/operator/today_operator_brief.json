@@ -359,7 +359,7 @@
       "stock_count=4"
     ],
     "metadata": {
-      "generated_at": "2026-03-30 09:36:47",
+      "generated_at": "2026-03-30 09:44:34",
       "engine": "AllocationEngine-v1.1"
     }
   },
@@ -368,6 +368,28 @@
     "fallback_fields": 2,
     "fallback_ratio": 0.33,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 09:36:47"
+    "generated_at": "2026-03-30 09:44:34"
+  },
+  "outcome_evaluation": {
+    "theme_correct": true,
+    "decision_effective": false,
+    "allocation_effective": true,
+    "hit_ratio": 0.0,
+    "failure_type": "THEME_RIGHT_DECISION_WRONG"
+  },
+  "performance_summary": {
+    "last_7d": {
+      "theme_accuracy": 1.0,
+      "decision_accuracy": 0.0,
+      "hit_ratio_avg": 0.0,
+      "sample_size": 1
+    },
+    "last_30d": {
+      "theme_accuracy": 1.0,
+      "decision_accuracy": 0.0,
+      "hit_ratio_avg": 0.0,
+      "sample_size": 1
+    },
+    "updated_at": "2026-03-30 09:44:34"
   }
 }

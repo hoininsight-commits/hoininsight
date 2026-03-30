@@ -5,11 +5,11 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
-from src.ops.run_daily_pipeline import run_decision_normalization, run_impact_chain_engine, run_capital_allocation
+from src.ops.run_daily_pipeline import run_decision_normalization, run_impact_chain_engine, run_capital_allocation, run_outcome_validation
 from src.content.script_engine import TodayScriptEngine
 
 if __name__ == "__main__":
-    print(">>> Starting STEP-E Provenance, Causality & Impact Run...")
+    print(">>> Starting STEP-F Full Performance & Truth Loop Run...")
     success = run_decision_normalization()
     if success:
         print("✅ Provenance & Causality Run Completed.")
@@ -21,6 +21,12 @@ if __name__ == "__main__":
             success_alloc = run_capital_allocation()
             if success_alloc:
                 print("✅ Capital Allocation Run Completed.")
+                
+                success_val = run_outcome_validation()
+                if success_val:
+                    print("✅ Outcome Validation Run Completed.")
+                else:
+                    print("❌ Outcome Validation Run Failed.")
             else:
                 print("❌ Capital Allocation Run Failed.")
         else:

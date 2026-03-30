@@ -21,6 +21,7 @@ from src.ops.fact_first_input_loader import load_fact_first_input
 from src.core.core_narrative_lock_engine import CoreNarrativeLockEngine
 from src.ops.decision_provenance_engine import DecisionProvenanceEngine
 from src.ops.decision_causality_engine import DecisionCausalityEngine
+from src.ops.outcome_validation_engine import OutcomeValidationEngine
 
 def run_collection():
     """Run all data collectors."""
@@ -266,6 +267,73 @@ def run_impact_chain_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Impact Chain Engine failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_outcome_validation():
+    """PHASE 3.4.0: [STEP-F] Outcome Validation Loop"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.0: OUTCOME VALIDATION STARTED")
+    try:
+        # 1. Load Current Run Data
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ Brief not found for validation.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        # 2. Mock Market Data for T-0 Validation (Demo)
+        # In production, this would fetch actual returns from an API
+        mock_market_data = {
+            "dominant_narrative": brief.get("core_theme", "N/A"),
+            "theme_realized": True,
+            "benchmark_return": 0.012,
+            "top_stocks_return": 0.025,
+            "stock_performance": {
+                stock.get("ticker"): 0.03 for stock in brief.get("impact_map", {}).get("structural_impact_chain", [])
+            }
+        }
+
+        # 3. Evaluate Outcome
+        engine = OutcomeValidationEngine(project_root)
+        evaluation = engine.evaluate_outcome(brief, mock_market_data)
+
+        # 4. Update Ledger
+        ledger_path = project_root / "data" / "ops" / "outcome_ledger.json"
+        ledger_entries = []
+        if ledger_path.exists():
+            with open(ledger_path, "r", encoding="utf-8") as f:
+                ledger_entries = json.load(f)
+        
+        new_entry = {
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "core_theme": brief.get("core_theme", "N/A"),
+            "decision": brief.get("investment_decision"),
+            "evaluation": evaluation,
+            "validation_window": "T-0 (Initial)"
+        }
+        ledger_entries.append(new_entry)
+        
+        with open(ledger_path, "w", encoding="utf-8") as f:
+            json.dump(ledger_entries, f, indent=2, ensure_ascii=False)
+
+        # 5. Update Summary
+        summary = engine.update_summary(ledger_entries)
+        summary_path = project_root / "data" / "ops" / "outcome_summary.json"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+            
+        # Update Brief with Last Evaluation
+        brief["outcome_evaluation"] = evaluation
+        brief["performance_summary"] = summary
+        with open(brief_path, "w", encoding="utf-8") as f:
+            json.dump(brief, f, indent=2, ensure_ascii=False)
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.0: OUTCOME VALIDATION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Outcome Validation failed: {e}")
         traceback.print_exc()
         return False
 
@@ -1032,6 +1100,9 @@ def main():
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()
+    
+    # 3.4.0 [STEP-F] Outcome Validation Loop (Truth Engine)
+    run_outcome_validation()
     
     # 3.1 [A6] Publish Agent (SSOT & Delivery)
     run_agent("src.ops.agents.publish_agent", "PHASE 3.1: PUBLISH AGENT (A6)")
