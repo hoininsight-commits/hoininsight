@@ -348,6 +348,57 @@ def run_outcome_validation():
         traceback.print_exc()
         return False
 
+def run_operator_feedback_loop():
+    """PHASE 3.4.2: [STEP-J] Operator Feedback Loop"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.2: OPERATOR FEEDBACK LOOP STARTED")
+    try:
+        from src.ops.operator_feedback_engine import OperatorFeedbackEngine
+        
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        ledger_path = project_root / "data" / "ops" / "outcome_ledger.json"
+        
+        if not (brief_path.exists() and ledger_path.exists()):
+            print("[Pipeline] ⚠️ Brief or Ledger missing, skipping feedback loop.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        with open(ledger_path, "r", encoding="utf-8") as f:
+            ledger = json.load(f)
+            
+        if not ledger:
+            print("[Pipeline] ⚠️ Ledger is empty.")
+            return False
+            
+        last_eval = ledger[-1].get("evaluation", {})
+        
+        # Determine alignment (using theme_correct from validation engine as proxy)
+        is_aligned = last_eval.get("theme_correct", False)
+        alignment_score = 1.0 if is_aligned else 0.1
+        
+        entry_data = {
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "theme": brief.get("core_theme", "AI Power Constraint"),
+            "action": brief.get("investment_decision", {}).get("action", {}).get("value", "WATCH"),
+            "confidence": 0.64, # Mocked confidence based on user instruction sample
+            "top_stocks": [x.get("ticker") for x in brief.get("impact_chain", [])][:3],
+            "weights": [x.get("weight") for x in brief.get("impact_chain", [])][:3],
+            "hit_ratio": last_eval.get("hit_ratio", 0.0),
+            "alignment": alignment_score
+        }
+        
+        engine = OperatorFeedbackEngine(project_root)
+        summary = engine.run_feedback_loop(entry_data)
+        
+        print(f"[Pipeline] ✅ FEEDBACK LOOP COMPLETED. Success Rate: {summary['success_rate']}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.2: OPERATOR FEEDBACK LOOP COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Operator Feedback Loop failed: {e}")
+        traceback.print_exc()
+        return False
+
 def run_confidence_recalibration():
     """PHASE 3.4.5: [STEP-G] Confidence Recalibration Engine"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.5: CONFIDENCE RECALIBRATION STARTED")
@@ -1483,6 +1534,9 @@ def main():
 
     # 3.4.0 [STEP-F] Outcome Validation Loop (Truth Engine)
     run_outcome_validation()
+
+    # 3.4.2 [STEP-J] Operator Feedback Loop
+    run_operator_feedback_loop()
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()

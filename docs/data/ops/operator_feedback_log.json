@@ -1,0 +1,24 @@
+[
+  {
+    "date": "2026-03-30",
+    "theme": "AI Power Constraint",
+    "action": "ACCUMULATE",
+    "confidence": 0.64,
+    "top_stocks": [
+      "EQIX",
+      "VRT",
+      "MSFT"
+    ],
+    "weights": [
+      0.42,
+      0.38,
+      0.2
+    ],
+    "hit_ratio": 0.66,
+    "alignment": 0.72,
+    "result": {
+      "success": true,
+      "failure_type": "SUCCESS"
+    }
+  }
+]
