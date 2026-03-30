@@ -94,7 +94,7 @@ class ImpactChainEngine:
         [STEP-H-3] Redefined Directness based on Role (Solver vs User).
         """
         # Infrastructure identification
-        is_infrastructure = any(k in str(industry).lower() for k in ["utility", "infrastructure", "equipment", "power", "grid", "cooling"])
+        is_infrastructure = any(k in str(industry).lower() for k in ["utility", "infrastructure", "equipment", "power", "grid", "cooling", "construction", "center"])
         
         if theme_type == "CONSTRAINT":
             if is_infrastructure:

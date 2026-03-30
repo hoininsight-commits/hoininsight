@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-03-30T14:48:35.502107",
+  "metrics": {
+    "total_candidates": 3,
+    "top3_directness": [
+      "solver_direct",
+      "solver_direct",
+      "indirect"
+    ],
+    "has_solver_top3": true
+  },
+  "errors": [],
+  "top3": [
+    {
+      "ticker": "Equinix",
+      "name": "Equinix",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Constraint",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "solver_direct",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Equinix의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 1.3
+    },
+    {
+      "ticker": "DigitalRealty",
+      "name": "DigitalRealty",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Constraint",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "solver_direct",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> DigitalRealty의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 1.3
+    },
+    {
+      "ticker": "CEG",
+      "name": "ConstellationEnergy",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Constraint",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> ConstellationEnergy의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 0.6
+    }
+  ]
+}

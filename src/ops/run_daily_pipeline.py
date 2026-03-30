@@ -631,6 +631,39 @@ def run_ui_data_integrity_audit():
         print(f"[Pipeline] ❌ UI Data Integrity Audit failed: {e}")
         raise e
 
+def run_ranking_integrity_audit():
+    """PHASE 3.5.17: [STEP-I-3] Top Stock Ranking Integrity Audit"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.17: RANKING INTEGRITY AUDIT STARTED")
+    try:
+        from src.ops.ranking_integrity_audit import run_ranking_integrity
+        
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ Brief missing, skipping audit.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        impact_chain = brief.get("impact_chain", [])
+        if not impact_chain:
+            # Fallback to structural_impact_chain
+            impact_chain = brief.get("impact_map", {}).get("structural_impact_chain", [])
+            
+        audit = run_ranking_integrity(impact_chain, project_root)
+        
+        if audit["status"] == "FAIL":
+            print(f"[Pipeline] ❌ RANKING INTEGRITY FAIL: {audit['errors']}")
+            raise Exception(f"RANKING INTEGRITY FAIL: {audit['errors']}")
+            
+        print(f"[Pipeline] ✅ RANKING INTEGRITY PASS")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.17: RANKING INTEGRITY AUDIT COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ❌ Ranking Integrity Audit failed: {e}")
+        raise e
+
 def run_post_structural_analysis():
     """
     [STEP-H-VERIFY] Runs the post-structural validation audit.
@@ -1473,6 +1506,9 @@ def main():
 
     # 3.5.15 [STEP-I-2] UI Data Integrity Audit
     run_ui_data_integrity_audit()
+
+    # 3.5.17 [STEP-I-3] Top Stock Ranking Integrity Audit
+    run_ranking_integrity_audit()
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()

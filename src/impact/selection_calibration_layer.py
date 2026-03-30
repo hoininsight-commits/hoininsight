@@ -29,10 +29,17 @@ def calibrate_selection(impact_chain):
         stock["selection_score"] = round(direct_weight + evidence_weight, 2)
 
     # 2. Sort and filter to Top 3
+    # Composite Sort: 1) Directness Order (0=solver_direct, 1=direct, 2=indirect) 2) selection_score (descending)
+    order_map = {
+        "solver_direct": 0,
+        "direct": 1,
+        "user_direct": 1, # Treat user_direct with same priority as direct for order
+        "indirect": 2
+    }
+    
     impact_chain = sorted(
         impact_chain,
-        key=lambda x: x.get("selection_score", 0),
-        reverse=True
+        key=lambda x: (order_map.get(x.get("directness"), 9), -x.get("selection_score", 0))
     )[:3]
 
     return impact_chain

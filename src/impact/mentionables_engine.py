@@ -78,6 +78,11 @@ class MentionablesEngine:
              with open(locked_path, "r", encoding="utf-8") as f:
                  locked_theme = json.load(f).get("core_theme")
                  print(f"[MentionablesEngine] 🔒 Using Locked Theme: {locked_theme}")
+                 
+                 # Force relevant sectors for known locked themes
+                 if locked_theme == "AI Power Constraint":
+                     detected_sectors.extend(["Power Infrastructure", "Data Center Construction", "Nuclear Energy"])
+                     detected_sectors = list(set(detected_sectors))
         
         # 2. Map Stocks & Score
         mentionable_stocks = []
