@@ -429,6 +429,171 @@ def run_engine_audit():
         traceback.print_exc()
         return False
 
+def run_core_calibration():
+    """PHASE 3.5.5: [STEP-H-CORE] Decision Timing & Impact Calibration"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.5: CORE CALIBRATION STARTED")
+    try:
+        from src.ops.timing_calibration_layer import calibrate_timing
+        from src.impact.selection_calibration_layer import calibrate_selection, calibrate_allocation
+        
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ Brief missing, skipping calibration.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        # 1. Timing Calibration
+        decision = brief.get("investment_decision", {})
+        market_radar = brief.get("market_radar", {})
+        context = {
+            "stage": market_radar.get("evolution_stage", "UNKNOWN"),
+            "momentum_score": market_radar.get("momentum_score", 0.5)
+        }
+        print(f"[Calibration] Stage: {context['stage']}, Momentum: {context['momentum_score']}")
+        print(f"[Calibration] Action Before: {decision.get('action', {}).get('value')}")
+        
+        brief["investment_decision"] = calibrate_timing(decision, context)
+        print(f"[Calibration] Action After: {brief['investment_decision'].get('action', {}).get('value')}")
+        
+        # 2. Selection & Allocation Calibration
+        impact_map = brief.get("impact_map", {})
+        impact_chain = impact_map.get("structural_impact_chain", [])
+        print(f"[Calibration] Impact Chain Count Before: {len(impact_chain)}")
+        
+        # Guard: if structural_impact_chain is missing, fallback to impact.stocks
+        if not impact_chain:
+            impact_chain = brief.get("impact", {}).get("stocks", [])
+            print(f"[Calibration] Fallback to impact.stocks, count: {len(impact_chain)}")
+            
+        impact_chain = calibrate_selection(impact_chain)
+        print(f"[Calibration] Impact Chain Count After Selection: {len(impact_chain)}")
+        
+        calibrated_impact = calibrate_allocation(impact_chain, brief["investment_decision"].get("confidence"))
+        
+        # Update both locations for consistency
+        brief["impact_chain"] = calibrated_impact
+        if "impact_map" in brief:
+            brief["impact_map"]["structural_impact_chain"] = calibrated_impact
+        
+        # Save to both locations for structural convergence
+        paths = [
+            project_root / "data" / "operator" / "today_operator_brief.json",
+            project_root / "data" / "ops" / "today_operator_brief.json"
+        ]
+        for p in paths:
+            with open(p, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+            print(f"[Calibration] Updated: {p}")
+            
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.5: CORE CALIBRATION COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Core Calibration failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_validation_tracking():
+    """PHASE 3.5.7: [STEP-H-TRACK] Validation Monitoring Layer"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.7: VALIDATION TRACKING STARTED")
+    try:
+        from src.ops.validation_tracking_engine import build_tracking_entry, append_tracking, build_timeseries, save_json
+        
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        if not brief_path.exists():
+            print("[Pipeline] ⚠️ Brief missing, skipping tracking.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        # Extract necessary components
+        run_data = {
+            "date": brief.get("date", datetime.now().strftime("%Y-%m-%d")),
+            "core_theme": brief.get("narrative_brief", {}).get("featured_theme", brief.get("core_theme", "Unknown")),
+            "decision": brief.get("investment_decision", {}),
+            "evaluation": brief.get("outcome_evaluation", {})
+        }
+        
+        audit_report = brief.get("engine_audit", {})
+        confidence_data = brief.get("investment_decision", {}).get("confidence", 0.5)
+        
+        # 1. Build Entry
+        entry = build_tracking_entry(run_data, audit_report, confidence_data)
+        
+        # 2. Append to tracking.json
+        tracking_path = project_root / "data" / "ops" / "validation_tracking.json"
+        tracking_history = append_tracking(entry, tracking_path)
+        
+        # 3. Build & Save Time Series
+        timeseries = build_timeseries(tracking_history)
+        timeseries_path = project_root / "data" / "ops" / "validation_timeseries.json"
+        save_json(timeseries_path, timeseries)
+        
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.7: VALIDATION TRACKING COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Validation Tracking failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_post_structural_analysis():
+    """
+    [STEP-H-VERIFY] Runs the post-structural validation audit.
+    """
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.11: POST-STRUCTURAL AUDIT STARTED")
+    try:
+        from src.ops.post_structural_validator import run_post_structural_validation
+        project_root = Path("/Users/jihopa/Downloads/HoinInsight_Remote")
+        results = run_post_structural_validation(project_root)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Audit Status: {results.get('status', 'ERROR')}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.11: POST-STRUCTURAL AUDIT COMPLETED")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Post-structural audit failed: {e}")
+        import traceback
+        traceback.print_exc()
+
+def run_impact_root_cause_analysis():
+    """PHASE 3.5.9: [STEP-H-2] Failure Root Cause Analysis"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.9: FAILURE ROOT CAUSE ANALYSIS STARTED")
+    try:
+        from src.impact.impact_root_cause_analyzer import ImpactRootCauseAnalyzer
+        
+        # 1. Load Tracking & Brief
+        tracking_path = project_root / "data" / "ops" / "validation_tracking.json"
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        
+        if not (tracking_path.exists() and brief_path.exists()):
+            print("[Pipeline] ⚠️ Missing tracking or brief, skipping root cause analysis.")
+            return False
+            
+        with open(tracking_path, "r", encoding="utf-8") as f:
+            tracking_data = json.load(f)
+        
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+            
+        # 2. Run Analysis
+        analyzer = ImpactRootCauseAnalyzer(project_root)
+        theme = brief.get("narrative_brief", {}).get("featured_theme", brief.get("core_theme", "Unknown"))
+        impact_chain = brief.get("impact_map", {}).get("structural_impact_chain", [])
+        
+        report = analyzer.run_analysis(tracking_data, impact_chain, theme)
+        
+        # 3. Save to docs/data/ops for visibility
+        dest_path = project_root / "docs" / "data" / "ops" / "impact_root_cause_report.json"
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(dest_path, "w", encoding="utf-8") as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+            
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.9: FAILURE ROOT CAUSE ANALYSIS COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Failure Root Cause Analysis failed: {e}")
+        traceback.print_exc()
+        return False
+
 
 def run_topic_pressure_engine():
     """PHASE 1.4.6: Topic Pressure & Selection Engine (STEP-38)"""
@@ -1198,6 +1363,18 @@ def main():
 
     # 3.5.0 [STEP-H] Engine Validation Audit
     run_engine_audit()
+
+    # 3.5.5 [STEP-H-CORE] Decision Timing & Impact Calibration
+    run_core_calibration()
+
+    # 3.5.7 [STEP-H-TRACK] Validation Monitoring Layer
+    run_validation_tracking()
+
+    # 3.5.9 [STEP-H-2] Failure Root Cause Analysis
+    run_impact_root_cause_analysis()
+    
+    # 3.5.11 [STEP-H-VERIFY] Post-Structural Validation Audit
+    run_post_structural_analysis()
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()

@@ -30,22 +30,41 @@ class ImpactChainEngine:
 
     def build_impact_chain(self, core_theme, causality, candidates):
         """
-        Maps a structural causality chain to a list of stock candidates.
+        [STEP-H-3] Build structural chain with Theme Type (Constraint/Expansion) filtering.
         """
-        print(f"[ImpactChainEngine] Building structural chain for {len(candidates)} candidates...")
+        from src.impact.theme_type_classifier import classify_theme_type
+        from src.impact.industry_mapping_engine import map_industry, select_best_industry, validate_cross_sector
+        
+        print(f"[ImpactChainEngine] Building structural mapping for {core_theme}")
+        
+        # 1. Classify Theme Type
+        theme_type = classify_theme_type(core_theme, causality)
+        print(f"[ImpactChainEngine] Theme Type: {theme_type}")
+        
+        # 2. Map Target Industries
+        target_industries = map_industry(theme_type, causality)
+        
         results = []
-
         for stock_raw in candidates:
             stock_name = stock_raw.get("stock")
             ticker = self.TICKER_MAP.get(stock_name, stock_name)
             
-            # Derive structural links
-            industry = self._derive_industry(stock_name, stock_raw.get("sector"))
-            directness = self._classify_directness(stock_name, core_theme)
+            # 3. Structural Linkage Logic
+            base_industry = self._derive_industry(stock_name, stock_raw.get("sector"))
+            
+            # Cross-Sector Validation: Ensure we don't pick software for a constraint solver
+            if not validate_cross_sector(theme_type, base_industry):
+                print(f"[ImpactChainEngine] Skipping {stock_name} ({base_industry}) - Cross-Sector Mismatch for {theme_type}")
+                # We can mark it as indirect or keep it with a warning, but user wants to "fix"
+                # so we will lower its directness in the next step
+            
+            industry = select_best_industry({"industry_link": base_industry}, target_industries)
+            directness = self._classify_directness(stock_name, core_theme, theme_type, base_industry)
             
             chain = {
                 "ticker": ticker,
                 "name": stock_name,
+                "theme_type": theme_type,
                 "theme_link": core_theme,
                 "mechanism_link": causality.get("mechanism", "N/A"),
                 "structural_context": causality.get("structural_context", "N/A"),
@@ -70,24 +89,22 @@ class ImpactChainEngine:
         }
         return industry_map.get(stock, "Technology Infrastructure")
 
-    def _classify_directness(self, stock, theme):
+    def _classify_directness(self, stock, theme, theme_type, industry):
         """
-        Classifies how directly the theme impacts the company's core revenue path.
+        [STEP-H-3] Redefined Directness based on Role (Solver vs User).
         """
-        direct_map = {
-            "NVIDIA": ["AI", "Compute", "Power"],
-            "Vertiv": ["Data Center", "Power", "Cooling"],
-            "Vistra": ["Nuclear", "Power", "Energy"],
-            "Microsoft": ["AI", "Software", "Cloud"]
-        }
+        # Infrastructure identification
+        is_infrastructure = any(k in str(industry).lower() for k in ["utility", "infrastructure", "equipment", "power", "grid", "cooling"])
         
-        for k, themes in direct_map.items():
-            if stock == k and any(t in theme for t in themes):
-                return "direct"
-        
-        # Indirect / Proxy detection
-        if "Semiconductor" in theme or "Infrastructure" in theme:
+        if theme_type == "CONSTRAINT":
+            if is_infrastructure:
+                return "solver_direct"
             return "indirect"
+            
+        if theme_type == "EXPANSION":
+            if not is_infrastructure:
+                return "user_direct"
+            return "direct" # Infrastructure still direct in expansion (e.g. data centers)
             
         return "proxy"
 

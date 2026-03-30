@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-03-30T10:21:09.336644",
-  "period": "Last 6 runs",
+  "generated_at": "2026-03-30T12:59:50.484767",
+  "period": "Last 2 runs",
   "failure_distribution": {
-    "THEME_RIGHT_DECISION_WRONG": 0.5,
+    "UNKNOWN": 0.5,
     "THEME_RIGHT_STOCK_WRONG": 0.5
   },
   "confidence_stability": {
     "min": 0.38,
-    "max": 0.54,
-    "avg": 0.474,
-    "volatility": 0.16
+    "max": 0.64,
+    "avg": 0.577,
+    "volatility": 0.26
   },
-  "outcome_alignment": 0.5,
+  "outcome_alignment": 0.0,
   "causality_validity": 1.0,
-  "status": "DEGRADED"
+  "status": "FAIL (No Outcome Correlation)"
 }

@@ -54,29 +54,32 @@
   "decision": {},
   "risk": {
     "risk_level": {
-      "value": "MEDIUM",
+      "value": "LOW",
       "source": "engine",
-      "reason": "derived from risk engine output",
-      "evidence": [],
+      "reason": "Accumulated score from momentum (STABLE) and evolution (EXPANSION).",
+      "evidence": [
+        "momentum_state=STABLE",
+        "evolution_stage=EXPANSION"
+      ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision MEDIUM aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision LOW aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "risk_score": {
-      "value": 0.5,
+      "value": 0.2,
       "source": "engine",
-      "reason": "numeric risk factor",
+      "reason": "Accumulated score from momentum (STABLE) and evolution (EXPANSION).",
       "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.5 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision 0.2 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     }
   },
@@ -91,7 +94,29 @@
       "AI GPU Demand",
       "Data Center Capex",
       "Grid Modernization"
-    ]
+    ],
+    "decision": {
+      "action": "ACCUMULATE",
+      "action_reason": "Stage: EXPANSION, Momentum: ACCELERATING",
+      "action_evidence": [
+        "stage=EXPANSION",
+        "momentum=ACCELERATING"
+      ],
+      "timing": "IDEAL",
+      "timing_reason": "Timing derived from EXPANSION stage mapping.",
+      "timing_evidence": [
+        "stage=EXPANSION"
+      ],
+      "confidence": 0.54,
+      "confidence_reason": "Weighted sum of momentum, early signals, and topic pressure.",
+      "confidence_evidence": [
+        "momentum_score=0.52",
+        "early_score=0.67",
+        "pressure=0.47"
+      ],
+      "base_confidence": 0.54,
+      "learning_adjustment": 0.0
+    }
   },
   "narrative_brief": {
     "title": "AI Power Constraint",
@@ -113,19 +138,31 @@
         "ticker": "Microsoft",
         "name": "Microsoft",
         "relevance_score": 0.56,
-        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
+        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN"
       },
       {
         "ticker": "NVIDIA",
         "name": "NVIDIA",
         "relevance_score": 0.56,
-        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
+        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN"
       },
       {
         "ticker": "Palantir",
         "name": "Palantir",
         "relevance_score": 0.56,
-        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN"
       },
       {
         "ticker": "Caterpillar",
@@ -137,7 +174,66 @@
       "AI Software": "ACTIVE",
       "Broad Market": "ACTIVE",
       "Regulatory Impact / Finance": "ACTIVE"
-    }
+    },
+    "structural_impact_chain": [
+      {
+        "ticker": "MSFT",
+        "name": "Microsoft",
+        "theme_type": "CONSTRAINT",
+        "theme_link": "AI Power Constraint",
+        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "industry_link": "Utilities",
+        "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
+        "evidence_basis": [
+          "Azure AI Contribution",
+          "Copilot Subscriptions",
+          "Capex Cycle"
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
+      },
+      {
+        "ticker": "NVDA",
+        "name": "NVIDIA",
+        "theme_type": "CONSTRAINT",
+        "theme_link": "AI Power Constraint",
+        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "industry_link": "Utilities",
+        "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
+        "evidence_basis": [
+          "Data Center Revenue Growth",
+          "GPU TAM Expansion",
+          "H100/B200 Backlog"
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
+      },
+      {
+        "ticker": "PLTR",
+        "name": "Palantir",
+        "theme_type": "CONSTRAINT",
+        "theme_link": "AI Power Constraint",
+        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "industry_link": "Utilities",
+        "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+        "directness": "indirect",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+        "evidence_basis": [
+          "Utilities Growth Rate",
+          "Market Share Trend",
+          "Revenue Visibility"
+        ],
+        "selection_score": 0.6,
+        "weight": 0.38
+      }
+    ]
   },
   "content_studio": {
     "selected_topic": "AI Power Constraint Frontier",
@@ -149,58 +245,78 @@
     },
     "strategy": {
       "theme": "AI Power Constraint",
-      "action": "WATCH",
-      "timing": "WAIT",
-      "risk": "MEDIUM",
-      "confidence": "25%",
-      "integrity": "LOW_TRUST",
+      "action": "ACCUMULATE",
+      "timing": "IDEAL",
+      "risk": "LOW",
+      "confidence": "54%",
+      "integrity": "DEGRADED",
       "why_now_trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-      "structural_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+      "structural_link": "Structural shift in AI Power Constraint is now the primary driver of market tension. validates the Infrastructure bottleneck due to exponential AI compute demand; initiating exposure based on structural tailwinds."
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-30 10:21:09",
+    "repaired_at": "2026-03-30 12:59:50",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-30 10:21:09"
+    "consistency_aligned_at": "2026-03-30 12:59:50"
   },
   "investment_decision": {
     "action": {
-      "value": "WATCH",
-      "source": "fallback",
-      "reason": "Missing or zero action → fallback applied",
-      "evidence": [],
+      "value": "ADD",
+      "source": "calibrated",
+      "reason": "Stage: EXPANSION, Momentum: ACCELERATING",
+      "evidence": [
+        "stage=EXPANSION",
+        "momentum=ACCELERATING"
+      ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+        "decision_link": "Structural shift in AI Power Constraint is now the primary driver of market tension. validates the Infrastructure bottleneck due to exponential AI compute demand; initiating exposure based on structural tailwinds."
       }
     },
     "timing": {
-      "value": "WAIT",
-      "source": "fallback",
-      "reason": "Missing or zero timing → fallback applied",
-      "evidence": [],
+      "value": "IDEAL",
+      "source": "engine",
+      "reason": "Timing derived from EXPANSION stage mapping.",
+      "evidence": [
+        "stage=EXPANSION"
+      ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision WAIT aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision IDEAL aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "confidence": {
-      "value": 0.25,
-      "source": "fallback",
-      "reason": "Missing or zero confidence → fallback applied",
-      "evidence": [],
+      "value": {
+        "value": 0.64,
+        "source": "recalibrated",
+        "base_confidence": 0.5,
+        "adjustments": {
+          "hit_ratio": 0.0,
+          "decision_accuracy": 0.2,
+          "failure_penalty": -0.1,
+          "recency_bonus": 0.04
+        },
+        "final_confidence": 0.64
+      },
+      "source": "recalibrated",
+      "reason": "Weighted sum of momentum, early signals, and topic pressure.",
+      "evidence": [
+        "momentum_score=0.52",
+        "early_score=0.67",
+        "pressure=0.47"
+      ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision 0.54 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "risk": {
@@ -229,8 +345,44 @@
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
         "decision_link": "Decision 25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
-    }
+    },
+    "recalibration_details": {
+      "value": 0.64,
+      "source": "recalibrated",
+      "base_confidence": 0.5,
+      "adjustments": {
+        "hit_ratio": 0.0,
+        "decision_accuracy": 0.2,
+        "failure_penalty": -0.1,
+        "recency_bonus": 0.04
+      },
+      "final_confidence": 0.64
+    },
+    "decision": {}
   },
+  "stock_decisions": [
+    {
+      "ticker": "Microsoft",
+      "name": "Microsoft",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    },
+    {
+      "ticker": "NVIDIA",
+      "name": "NVIDIA",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    },
+    {
+      "ticker": "Palantir",
+      "name": "Palantir",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    }
+  ],
   "portfolio_allocation": {
     "theme_exposure": {
       "value": 0.0,
@@ -248,10 +400,86 @@
     "allocations": []
   },
   "decision_integrity": {
-    "engine_fields": 0,
-    "fallback_fields": 6,
-    "fallback_ratio": 1.0,
-    "status": "LOW_TRUST",
-    "generated_at": "2026-03-30 10:21:09"
-  }
+    "engine_fields": 3,
+    "fallback_fields": 3,
+    "fallback_ratio": 0.5,
+    "status": "DEGRADED",
+    "generated_at": "2026-03-30 12:59:50"
+  },
+  "engine_audit": {
+    "generated_at": "2026-03-30T12:59:50.484767",
+    "period": "Last 2 runs",
+    "failure_distribution": {
+      "UNKNOWN": 0.5,
+      "THEME_RIGHT_STOCK_WRONG": 0.5
+    },
+    "confidence_stability": {
+      "min": 0.38,
+      "max": 0.64,
+      "avg": 0.577,
+      "volatility": 0.26
+    },
+    "outcome_alignment": 0.0,
+    "causality_validity": 1.0,
+    "status": "FAIL (No Outcome Correlation)"
+  },
+  "impact_chain": [
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Azure AI Contribution",
+        "Copilot Subscriptions",
+        "Capex Cycle"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Data Center Revenue Growth",
+        "GPU TAM Expansion",
+        "H100/B200 Backlog"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "indirect",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 0.6,
+      "weight": 0.38
+    }
+  ]
 }

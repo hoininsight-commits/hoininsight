@@ -203,7 +203,10 @@ def publish_assets(project_root: Path):
             "script_output.json",
             "mentionables.json",
             "today_operator_brief.json",
-            "core_theme_state.json"
+            "core_theme_state.json",
+            "validation_tracking.json",
+            "validation_timeseries.json",
+            "impact_root_cause_report.json"
         ]
         
         for pack in ops_packs:
