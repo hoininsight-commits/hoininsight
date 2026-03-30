@@ -473,6 +473,52 @@ def run_context_aware_audit():
         traceback.print_exc()
         return False
 
+def run_calibration_planning():
+    """PHASE 3.4.6: [STEP-J-3] Context-Specific Calibration Planner"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.6: CALIBRATION PLANNING STARTED")
+    try:
+        from src.ops.context_calibration_planner import (
+            split_by_context,
+            detect_patterns,
+            generate_calibration
+        )
+        
+        log_path = project_root / "data" / "ops" / "operator_feedback_log.json"
+        
+        if not log_path.exists():
+            print("[Pipeline] ⚠️ Feedback Log missing, skipping calibration planning.")
+            return False
+            
+        with open(log_path, "r", encoding="utf-8") as f:
+            logs = json.load(f)
+            
+        # USER RULE: Minimum 10 logs required
+        if len(logs) < 10:
+            print(f"[Pipeline] ℹ️ Insufficient data for calibration planning ({len(logs)}/10). Skipping.")
+            return True
+            
+        context_logs = split_by_context(logs)
+        patterns = detect_patterns(context_logs)
+        plan = generate_calibration(patterns)
+        
+        summary_path = project_root / "data" / "ops" / "context_calibration_plan.json"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(plan, f, indent=2, ensure_ascii=False)
+            
+        # Sync to docs for server check
+        public_plan = project_root / "docs" / "data" / "ops" / "context_calibration_plan.json"
+        public_plan.parent.mkdir(parents=True, exist_ok=True)
+        with open(public_plan, "w", encoding="utf-8") as f:
+            json.dump(plan, f, indent=2, ensure_ascii=False)
+
+        print(f"[Pipeline] ✅ CALIBRATION PLANNING COMPLETED. Strategies generated for: {list(plan['proposals'].keys())}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.6: CALIBRATION PLANNING COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Calibration Planning failed: {e}")
+        traceback.print_exc()
+        return False
+
 def run_confidence_recalibration():
     """PHASE 3.4.5: [STEP-G] Confidence Recalibration Engine"""
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.5: CONFIDENCE RECALIBRATION STARTED")
@@ -1617,6 +1663,9 @@ def main():
 
     # 3.4.4 [STEP-J-2] Context-Aware Failure Decomposition
     run_context_aware_audit()
+
+    # 3.4.6 [STEP-J-3] Context-Specific Calibration Planner
+    run_calibration_planning()
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()

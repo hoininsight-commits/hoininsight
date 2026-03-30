@@ -1,44 +1,6 @@
 [
   {
-    "date": "2026-03-30",
     "theme_type": "CONSTRAINT",
-    "hit_ratio": 0.6,
-    "alignment": 0.8,
-    "impact_chain": [
-      {
-        "ticker": "EQIX",
-        "directness": "solver_direct",
-        "realized_return": 0.02
-      }
-    ],
-    "decomposition": {
-      "theme": "OK",
-      "industry": "OK",
-      "stock": "OK",
-      "timing": "OK"
-    },
-    "failure_detail": {
-      "type": "SUCCESS",
-      "primary": null,
-      "secondary": null
-    },
-    "result": {
-      "success": true,
-      "failure_type": "SUCCESS"
-    }
-  },
-  {
-    "date": "2026-03-30",
-    "theme_type": "CONSTRAINT",
-    "hit_ratio": 0.6,
-    "alignment": 0.8,
-    "impact_chain": [
-      {
-        "ticker": "MSFT",
-        "directness": "indirect",
-        "realized_return": 0.02
-      }
-    ],
     "decomposition": {
       "theme": "OK",
       "industry": "FAIL",
@@ -47,54 +9,37 @@
     },
     "failure_detail": {
       "type": "SINGLE",
-      "primary": "industry",
-      "secondary": null
-    },
-    "result": {
-      "success": false,
-      "failure_type": "industry"
+      "primary": "industry"
     }
   },
   {
-    "date": "2026-03-30",
-    "theme_type": "EXPANSION",
-    "hit_ratio": 0.6,
-    "alignment": 0.8,
-    "impact_chain": [
-      {
-        "ticker": "NVDA",
-        "directness": "direct",
-        "realized_return": 0.05
-      }
-    ],
+    "theme_type": "CONSTRAINT",
     "decomposition": {
       "theme": "OK",
-      "industry": "OK",
+      "industry": "FAIL",
       "stock": "OK",
       "timing": "OK"
     },
     "failure_detail": {
-      "type": "SUCCESS",
-      "primary": null,
-      "secondary": null
-    },
-    "result": {
-      "success": true,
-      "failure_type": "SUCCESS"
+      "type": "SINGLE",
+      "primary": "industry"
     }
   },
   {
-    "date": "2026-03-30",
-    "theme_type": "EXPANSION",
-    "hit_ratio": 0.6,
-    "alignment": 0.8,
-    "impact_chain": [
-      {
-        "ticker": "NVDA",
-        "directness": "direct",
-        "realized_return": -0.01
-      }
-    ],
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "FAIL",
+      "stock": "OK",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "industry"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
     "decomposition": {
       "theme": "OK",
       "industry": "OK",
@@ -103,12 +48,85 @@
     },
     "failure_detail": {
       "type": "SINGLE",
-      "primary": "stock",
-      "secondary": null
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
     },
-    "result": {
-      "success": false,
-      "failure_type": "stock"
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "OK",
+      "timing": "FAIL"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "timing"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "OK",
+      "timing": "FAIL"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "timing"
     }
   }
 ]
