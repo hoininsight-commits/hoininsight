@@ -5,7 +5,19 @@
     "stage": "UNKNOWN",
     "momentum": "UNKNOWN",
     "pressure_score": 0.47,
-    "risk_score": 0.5
+    "risk_score": {
+      "value": 0.5,
+      "source": "engine",
+      "reason": "fallback risk applied",
+      "evidence": [],
+      "causality": {
+        "theme": "AI Power Constraint",
+        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+        "decision_link": "Decision 0.5 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+      }
+    }
   },
   "decision": {
     "action": {
@@ -15,7 +27,14 @@
       "evidence": [
         "Topic Pressure: 0.47",
         "Risk Score: 0.5"
-      ]
+      ],
+      "causality": {
+        "theme": "AI Power Constraint",
+        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+        "decision_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+      }
     },
     "timing": {
       "value": "WAIT",
@@ -24,7 +43,14 @@
       "evidence": [
         "Topic Pressure: 0.47",
         "Risk Score: 0.5"
-      ]
+      ],
+      "causality": {
+        "theme": "AI Power Constraint",
+        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+        "decision_link": "Decision WAIT aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+      }
     },
     "confidence": {
       "value": 0.25,
@@ -33,7 +59,14 @@
       "evidence": [
         "Topic Pressure: 0.47",
         "Risk Score: 0.5"
-      ]
+      ],
+      "causality": {
+        "theme": "AI Power Constraint",
+        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+        "decision_link": "Decision 0.25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+      }
     },
     "risk": {
       "value": "MEDIUM",
@@ -54,7 +87,14 @@
       "evidence": [
         "Topic Pressure: 0.47",
         "Risk Score: 0.5"
-      ]
+      ],
+      "causality": {
+        "theme": "AI Power Constraint",
+        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+        "decision_link": "Decision 25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+      }
     }
   },
   "fallback_used": true,
@@ -62,5 +102,12 @@
     "risk",
     "allocation"
   ],
-  "audit_timestamp": "2026-03-30T08:32:47.235064"
+  "audit_timestamp": "2026-03-30T09:09:25.402500",
+  "causality_chain": {
+    "theme": "AI Power Constraint",
+    "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
+    "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+    "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
+    "decision_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+  }
 }

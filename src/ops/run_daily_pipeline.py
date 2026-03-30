@@ -20,6 +20,7 @@ from src.collectors.fred_collector import FREDCollector
 from src.ops.fact_first_input_loader import load_fact_first_input
 from src.core.core_narrative_lock_engine import CoreNarrativeLockEngine
 from src.ops.decision_provenance_engine import DecisionProvenanceEngine
+from src.ops.decision_causality_engine import DecisionCausalityEngine
 
 def run_collection():
     """Run all data collectors."""
@@ -683,14 +684,15 @@ def run_learning_update():
 
 def normalize_decision_fields(brief, project_root):
     """
-    [STEP-C] Decision Authority & Provenance Lock
-    Ensures that all decision fields have provenance metadata (value, source, reason, evidence).
+    [STEP-D] Decision Causality Chain
+    Ensures that all decision fields have provenance metadata AND a structural causality chain.
     """
-    print("[Pipeline] Applying [STEP-C] Decision Provenance Lock...")
+    print("[Pipeline] Applying [STEP-D] Decision Causality Chain...")
     
     provenance_engine = DecisionProvenanceEngine(project_root)
+    causality_engine = DecisionCausalityEngine(project_root)
     
-    # [STEP-C-9] Prepare Context for Provenance
+    # [STEP-D-9] Prepare Context for Causality
     context = {
         "stage": brief.get("market_radar", {}).get("stage", "UNKNOWN"),
         "momentum": brief.get("market_radar", {}).get("momentum", "UNKNOWN"),
@@ -698,17 +700,24 @@ def normalize_decision_fields(brief, project_root):
         "risk_score": brief.get("risk", {}).get("risk_score", 0),
         "why_now": brief.get("narrative", {}).get("locked_narrative", "")
     }
+    
+    core_theme = brief.get("core_theme", "N/A")
 
-    # 1. Core Decision Provenance
+    # 1. Process Core Decision Provenance & Causality
     decision_raw = brief.get("investment_decision", {})
-    # If it's already structured (v1.1), just pass through, otherwise wrap
+    # Transitioning to STEP-D structure
     if "value" not in str(decision_raw.get("action", "")):
-        # Transitioning from STEP-B flat structure to STEP-C nested structure
         decision_provenance = provenance_engine.build_decision_provenance(decision_raw, context)
     else:
         decision_provenance = decision_raw
 
-    # 2. Risk Provenance
+    # Inject Causality into each decision field
+    for field in ["action", "timing", "confidence", "conviction"]:
+        if field in decision_provenance:
+            val = decision_provenance[field].get("value")
+            decision_provenance[field]["causality"] = causality_engine.build_causality_chain(core_theme, context, val)
+
+    # 2. Risk Provenance & Causality
     risk_raw = brief.get("risk", {})
     if "value" not in str(risk_raw.get("risk_level", "")):
         risk_provenance = {
@@ -727,8 +736,13 @@ def normalize_decision_fields(brief, project_root):
         }
     else:
         risk_provenance = risk_raw
+    
+    # Inject Risk Causality
+    for field in ["risk_level", "risk_score"]:
+        if field in risk_provenance:
+            risk_provenance[field]["causality"] = causality_engine.build_causality_chain(core_theme, context, risk_provenance[field]["value"])
 
-    # 3. Allocation Provenance
+    # 3. Allocation Provenance & Causality
     alloc_raw = brief.get("portfolio_allocation", {})
     if "value" not in str(alloc_raw.get("theme_exposure", "")):
         exposure = alloc_raw.get("theme_exposure", 0.0)
@@ -744,8 +758,12 @@ def normalize_decision_fields(brief, project_root):
         }
     else:
         alloc_provenance = alloc_raw
+    
+    # Inject Allocation Causality
+    if "theme_exposure" in alloc_provenance:
+        alloc_provenance["theme_exposure"]["causality"] = causality_engine.build_causality_chain(core_theme, context, alloc_provenance["theme_exposure"]["value"])
 
-    # Update Brief with Provenance Structure
+    # Update Brief with Augmented Structure
     brief["investment_decision"] = decision_provenance
     brief["risk"] = risk_provenance
     brief["portfolio_allocation"] = alloc_provenance
@@ -754,16 +772,23 @@ def normalize_decision_fields(brief, project_root):
     integrity = provenance_engine.compute_decision_integrity(decision_provenance)
     brief["decision_integrity"] = integrity
 
-    # 5. Evidence Chain
-    core_theme = brief.get("core_theme", "N/A")
+    # 5. Causal Evidence Chain (STEP-D)
+    causality_chain = causality_engine.build_causality_chain(core_theme, context, decision_provenance.get("action", {}).get("value", "WATCH"))
+    
     evidence_chain = provenance_engine.build_evidence_chain(core_theme, context, decision_provenance)
+    evidence_chain["causality_chain"] = causality_chain # Augmented with STEP-D chain
     
     chain_path = project_root / "data" / "ops" / "decision_evidence_chain.json"
     with open(chain_path, "w", encoding="utf-8") as f:
         json.dump(evidence_chain, f, indent=2, ensure_ascii=False)
-    print(f"[Provenance] Evidence Chain saved to {chain_path}")
+    print(f"[Causality] Evidence Chain (with Causality) saved to {chain_path}")
+    
+    # Save standalone causality chain too
+    causal_path = project_root / "data" / "ops" / "decision_causality_chain.json"
+    with open(causal_path, "w", encoding="utf-8") as f:
+        json.dump(causality_chain, f, indent=2, ensure_ascii=False)
 
-    # [STEP-C-8] Support for UI Strategy Banner (Legacy Compatibility)
+    # [STEP-D-8] Support for UI Strategy Banner (with Causality Link)
     if "content_studio" in brief:
         brief["content_studio"]["strategy"] = {
             "theme": core_theme,
@@ -771,7 +796,9 @@ def normalize_decision_fields(brief, project_root):
             "timing": decision_provenance["timing"]["value"],
             "risk": risk_provenance["risk_level"]["value"],
             "confidence": f"{int(decision_provenance['confidence']['value']*100)}%",
-            "integrity": integrity["status"]
+            "integrity": integrity["status"],
+            "why_now_trigger": causality_chain["trigger"],
+            "structural_link": causality_chain["decision_link"]
         }
 
     return brief

@@ -29,27 +29,40 @@ class TodayScriptEngine:
             return None
 
     def run_synthesis(self):
-        print("[TodayScriptEngine] Starting Script Synthesis...")
+        print("[TodayScriptEngine] Starting Script Synthesis with Causality Alignment...")
         
         story = self._load_json(self.story_path)
         mentionables = self._load_json(self.mentionables_path)
         benchmark = self._load_json(self.benchmark_path)
         signal = self._load_json(self.signal_path)
         
+        # [STEP-D] Load Causality Chain
+        causal_path = self.project_root / "data" / "ops" / "decision_causality_chain.json"
+        causality = self._load_json(causal_path)
+        
         if not story:
             print("[TodayScriptEngine] ❌ Error: Required input 'today_story.json' not found.")
             return None
             
-        # 1. Hook
-        hook = f"오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 '{story.get('title', '시장 긴급 점검')}'입니다."
+        # 1. Hook (Enhanced with Causality Trigger)
+        if causality:
+            hook = f"지금 '{story.get('title')}' 현상 뒤에 숨겨진 진짜 트리거를 아십니까? 바로 {causality['trigger']} 때문입니다."
+        else:
+            hook = f"오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 '{story.get('title', '시장 긴급 점검')}'입니다."
         
-        # 2. Situation
-        market_summary = benchmark.get("benchmark_summary", {}).get("market_state", "중립적") if benchmark else "안정적인 흐름"
-        situation = f"현재 시장은 {market_summary} 상태에 있습니다. 표면적인 지표들은 조용해 보이지만, 그 기저에서는 심각한 변화의 전조가 감지되고 있습니다."
+        # 2. Situation (Enhanced with Structural Context)
+        if causality:
+            situation = f"현재 시장의 구조적 배경은 이렇습니다: {causality['structural_context']}. 단순한 숫자의 변화가 아닌 판의 변화가 시작되었습니다."
+        else:
+            market_summary = benchmark.get("benchmark_summary", {}).get("market_state", "중립적") if benchmark else "안정적인 흐름"
+            situation = f"현재 시장은 {market_summary} 상태에 있습니다. 표면적인 지표들은 조용해 보이지만, 그 기저에서는 심각한 변화의 전조가 감지되고 있습니다."
         
-        # 3. Structural Contradiction
-        summary = story.get("summary", "")
-        contradiction = f"핵심적인 모순은 이겁니다: {summary}"
+        # 3. Structural Contradiction (Enhanced with Mechanism)
+        if causality:
+            contradiction = f"핵심 메커니즘은 이겁니다: {causality['mechanism']}. 이 구조적 모순이 시장의 방향성을 결정짓고 있습니다."
+        else:
+            summary = story.get("summary", "")
+            contradiction = f"핵심적인 모순은 이겁니다: {summary}"
         
         # 4. Sector Impact
         sectors = story.get("impact_sectors", [])
@@ -61,35 +74,38 @@ class TodayScriptEngine:
         stock_bullets = "\n".join([f"- {s['stock']} (신뢰도: {s['score']}): {s['reason']}" for s in stocks])
         mentionable_section = f"우리가 추적해야 할 핵심 종목 리스트입니다:\n{stock_bullets}"
         
-        # 6. Operator Action
+        # 6. Operator Action (Enhanced with Decision Link)
         action = self._determine_action(signal)
-        action_desc = {
-            "WATCH": "관망하며 다음 신호를 기다리십시오.",
-            "TRACK": "비중을 조절하며 추세 추종을 시작하십시오.",
-            "FOCUS": "강력한 베팅 구간입니다. 모멘텀에 집중하십시오."
-        }.get(action, "신호를 예의주시하십시오.")
-        
-        operator_action = f"운영자의 최종 결정은 [{action}]입니다. {action_desc}"
+        if causality:
+            operator_action = f"운영자의 최종 결정은 [{action}]입니다. 판단 근거: {causality['decision_link']}"
+        else:
+            action_desc = {
+                "WATCH": "관망하며 다음 신호를 기다리십시오.",
+                "TRACK": "비중을 조절하며 추세 추종을 시작하십시오.",
+                "FOCUS": "강력한 베팅 구간입니다. 모멘텀에 집중하십시오."
+            }.get(action, "신호를 예의주시하십시오.")
+            operator_action = f"운영자의 최종 결정은 [{action}]입니다. {action_desc}"
 
         # Combine into Markdown
-        md_script = f"""# Today Market Story Script
-
-## Hook
+        md_script = f"""# Today Market Story Script (Causality Aligned)
+        
+---
+## [Hook]
 {hook}
 
-## Situation
+## [Situation: Structural Background]
 {situation}
 
-## Structural Contradiction
+## [Mechanism: Structural Contradiction]
 {contradiction}
 
-## Sector Impact
+## [Sector Impact]
 {sector_impact}
 
-## Mentionable Stocks
+## [Mentionable Stocks]
 {mentionable_section}
 
-## Operator Action
+## [Final Operator Decision]
 {operator_action}
 """
 
@@ -104,6 +120,7 @@ class TodayScriptEngine:
         json_output = {
             "date": datetime.now().strftime("%Y-%m-%d"),
             "theme": locked_theme if locked_theme else story.get("featured_theme", "Market Update"),
+            "causality_link": True,
             "hook": hook,
             "situation": situation,
             "contradiction": contradiction,

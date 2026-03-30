@@ -6,7 +6,7 @@ class DecisionProvenanceEngine:
         self.project_root = project_root
 
     @staticmethod
-    def wrap_decision_field(value, source, reason="", evidence=None):
+    def wrap_decision_field(value, source, reason="", evidence=None, causality=None):
         """
         Wraps a raw decision value with mandatory provenance metadata.
         """
@@ -14,7 +14,8 @@ class DecisionProvenanceEngine:
             "value": value,
             "source": source, # engine | fallback | repaired
             "reason": reason,
-            "evidence": evidence or []
+            "evidence": evidence or [],
+            "causality": causality or {}
         }
 
     @staticmethod
