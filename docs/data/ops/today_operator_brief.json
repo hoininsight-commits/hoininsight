@@ -142,7 +142,8 @@
         "action": "ACCUMULATE",
         "confidence": 0.3,
         "pnl": 0.0,
-        "perf_status": "WIN"
+        "perf_status": "WIN",
+        "weight_pct": 16.67
       },
       {
         "ticker": "NVIDIA",
@@ -152,7 +153,8 @@
         "action": "ACCUMULATE",
         "confidence": 0.3,
         "pnl": 0.0,
-        "perf_status": "WIN"
+        "perf_status": "WIN",
+        "weight_pct": 16.67
       },
       {
         "ticker": "Palantir",
@@ -162,12 +164,14 @@
         "action": "ACCUMULATE",
         "confidence": 0.3,
         "pnl": 0.0,
-        "perf_status": "WIN"
+        "perf_status": "WIN",
+        "weight_pct": 16.67
       },
       {
         "ticker": "Caterpillar",
         "name": "Caterpillar",
-        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가",
+        "weight_pct": 0.0
       }
     ],
     "sector_status": {
@@ -384,20 +388,52 @@
     }
   ],
   "portfolio_allocation": {
-    "theme_exposure": {
-      "value": 0.0,
-      "source": "fallback",
-      "reason": "Capital allocation logic applied",
-      "evidence": [],
-      "causality": {
-        "theme": "AI Power Constraint",
-        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
-        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.0 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+    "date": "2026-03-30",
+    "total_capital": 1.0,
+    "theme_exposure": 0.5001,
+    "allocations": [
+      {
+        "ticker": "Microsoft",
+        "stock": "Microsoft",
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
+        "risk": 0.2,
+        "weight": 0.1667
+      },
+      {
+        "ticker": "NVIDIA",
+        "stock": "NVIDIA",
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
+        "risk": 0.2,
+        "weight": 0.1667
+      },
+      {
+        "ticker": "Palantir",
+        "stock": "Palantir",
+        "base_weight": 0.36000000000000004,
+        "confidence": 0.45,
+        "risk": 0.2,
+        "weight": 0.1667
+      },
+      {
+        "ticker": "Caterpillar",
+        "stock": "Caterpillar",
+        "base_weight": 0.2,
+        "confidence": 0.25,
+        "risk": 0.2,
+        "weight": 0.0
       }
-    },
-    "allocations": []
+    ],
+    "allocation_reason": "Risk-adjusted optimization for 4 stocks (Exposure: 0.5001).",
+    "allocation_evidence": [
+      "risk_score=0.2",
+      "stock_count=4"
+    ],
+    "metadata": {
+      "generated_at": "2026-03-30 13:39:16",
+      "engine": "AllocationEngine-v1.1"
+    }
   },
   "decision_integrity": {
     "engine_fields": 3,
