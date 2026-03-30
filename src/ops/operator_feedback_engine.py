@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from datetime import datetime
-from src.ops.failure_decomposition_engine import decompose_failure, classify_failure
+from src.ops.context_aware_failure_engine import decompose_context_aware, classify_context_failure
 
 class OperatorFeedbackEngine:
     def __init__(self, project_root):
@@ -66,10 +66,10 @@ class OperatorFeedbackEngine:
             except Exception:
                 logs = []
         
-        # Ensure result consistency
+        # Ensure result consistency (Context-Aware)
         if "decomposition" not in entry:
-            entry["decomposition"] = decompose_failure(entry)
-            entry["failure_detail"] = classify_failure(entry["decomposition"])
+            entry["decomposition"] = decompose_context_aware(entry)
+            entry["failure_detail"] = classify_context_failure(entry["decomposition"])
             
             # Legacy result for backward compatibility
             entry["result"] = {

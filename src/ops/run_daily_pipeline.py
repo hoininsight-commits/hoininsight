@@ -380,12 +380,14 @@ def run_operator_feedback_loop():
         entry_data = {
             "date": datetime.now().strftime("%Y-%m-%d"),
             "theme": brief.get("core_theme", "AI Power Constraint"),
+            "theme_type": brief.get("theme_type", "CONSTRAINT"),
             "action": brief.get("investment_decision", {}).get("action", {}).get("value", "WATCH"),
             "confidence": 0.64, # Mocked confidence based on user instruction sample
             "top_stocks": [x.get("ticker") for x in brief.get("impact_chain", [])][:3],
             "weights": [x.get("weight") for x in brief.get("impact_chain", [])][:3],
             "hit_ratio": last_eval.get("hit_ratio", 0.0),
-            "alignment": alignment_score
+            "alignment": alignment_score,
+            "impact_chain": brief.get("impact_chain", [])
         }
         
         engine = OperatorFeedbackEngine(project_root)
@@ -431,6 +433,43 @@ def run_failure_decomposition_audit():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Failure Decomposition failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_context_aware_audit():
+    """PHASE 3.4.4: [STEP-J-2] Context-Aware Failure Decomposition"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.4: CONTEXT-AWARE AUDIT STARTED")
+    try:
+        from src.ops.context_aware_failure_engine import build_context_summary
+        
+        log_path = project_root / "data" / "ops" / "operator_feedback_log.json"
+        
+        if not log_path.exists():
+            print("[Pipeline] ⚠️ Feedback Log missing, skipping context summary.")
+            return False
+            
+        with open(log_path, "r", encoding="utf-8") as f:
+            logs = json.load(f)
+            
+        summary = build_context_summary(logs)
+        
+        summary_path = project_root / "data" / "ops" / "context_failure_summary.json"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+            
+        # Sync to docs for server check
+        public_summary = project_root / "docs" / "data" / "ops" / "context_failure_summary.json"
+        public_summary.parent.mkdir(parents=True, exist_ok=True)
+        with open(public_summary, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+
+        total = summary['total']
+        success_rate = summary.get('failure_types', {}).get('SUCCESS', 0) / total if total else 0
+        print(f"[Pipeline] ✅ CONTEXT-AWARE AUDIT COMPLETED. Success Rate: {success_rate:.2f}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.4: CONTEXT-AWARE AUDIT COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Context-Aware Audit failed: {e}")
         traceback.print_exc()
         return False
 
@@ -1575,6 +1614,9 @@ def main():
 
     # 3.4.3 [STEP-J-1] Failure Decomposition Engine
     run_failure_decomposition_audit()
+
+    # 3.4.4 [STEP-J-2] Context-Aware Failure Decomposition
+    run_context_aware_audit()
     
     # 3.4.5 [STEP-G] Confidence Recalibration Engine
     run_confidence_recalibration()
