@@ -12,7 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### [속보]유가 상승에 코스피 5% 급락, 환율 1513원 출발 - 경향신문 (ID: unknown)
+### 2009년 금융위기보다 200원 높은 원·달러 환율…"펀더멘털 변화도 영향" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 2차 최고가격제 후 유류 가격 급등 주유소 엄정 대응 - 에너지데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -22,7 +27,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 2차 최고가격제 후 유류 가격 급등 주유소 엄정 대응 - 에너지데일리 (ID: unknown)
+### 배당 분리과세·퇴직연금 기금화…증시 80조원 자금 유입 기대 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,17 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 환율 효과 덕분에 그나마…한국서 낙폭 덜한 비트코인 [매일코인] - 매일경제 (ID: unknown)
+### 부동산 대책, 다주택자들 ‘고민’…“10명 중 6명, 효과 기대” - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 주식 사봐도 안되고, 채권도 손해나고, 금값도 빠지는데…나홀로 꿋꿋한 ‘이것’ - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 정품은 품절, 호환은 '2배 폭등'…약국가 포장지 대란 이중고 - 약사공론 (ID: unknown)
+### “나프타 지키려다 리튬-에너지 잃으면 그게 바로 소탐대실” - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,7 +77,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유니슨, 서남해 400MW 터빈 입찰에 사활…8000억 수주가 적자 탈출 가른다 - 리드경제 (ID: unknown)
+### [속보] 삼천당제약, 美 비만·당뇨 경구제 제네릭 라이선스 계약 체결 공시…총 1억달러 규모 - CBC뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,12 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "이란 전쟁 긴장 최고조"…오늘도 불안한 코스피 [오늘장 미리보기] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "사우디 원유 실은 유조선, 호르무즈 통과 후 파키스탄 향해" - JTBC (ID: unknown)
+### “AI시대, 상상하고 이야기하는 능력 필요…친구와 뛰노는 것이 교육” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,17 +97,102 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 'EQT' 더존비즈온, 공동대표 체제로 새 출발…상장폐지도 초읽기 - bloter.net (ID: unknown)
+### 김동관 30억·이사 전원도 증자 참여…한화솔루션 폭락 사태 '정면돌파' - 매거진한경 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “AI시대, 상상하고 이야기하는 능력 필요…친구와 뛰노는 것이 교육” - 한겨레 (ID: unknown)
+### 6G상용화·디지털격차 해소, AI 3대 강국 도약 기본계획 확정 - 전자신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "에너지 문제 심각, 잠이 안 올 정도… 신재생으로 전환을" (ID: unknown)
+### 'EQT' 더존비즈온, 공동대표 체제로 새 출발…상장폐지도 초읽기 - 블로터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 로켓 날아다니는데 “호르무즈 통과하라”…2만명 선원들 ‘공포’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [김기정의 와인 이야기] – 파리의 심판 50주년 불화의 여신이 사과를 건네 생긴 일들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 택시월급제 전국 시행 2년 더 미룬다…국토위 소위 통과 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 가상자산사업자 대주주·재무 심사 더 깐깐하게...자금세탁방지 의무도 강화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 거버넌스포럼 “한화솔루션 이사회, 유증 관련 주주충실 의무 다했는가” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 네이버파이낸셜·두나무 합병 주총 8월로 연기…“인허가 승인 위해 노력” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 러시아서 ‘산업의 쌀’ 왔다…정부·민관 협력, 나프타 2.7만톤 오늘 도착 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 여야, 내달 10일까지 ‘중동 사태’ 추경 합의 처리키로 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 지중해의 부르고뉴라고? 에트나의 진짜 얼굴은…[전형민의 와인프릭] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 5월1일 노동절 ‘법정 공휴일’ 지정법…국회 법사위 통과 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 중동 전황 따라…금융시장도 요동 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한공회, 내달 6일 ‘제23회 지속가능성인증포럼’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### KB證 의료 사각지대 찾아 포용금융 실천 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 지금 훔쳐서 나중에 푼다는 해커들…퀀텀시대, 내 비트코인 지갑은 안전할까 [더테크웨이브] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 삼일PwC “경영진-이사회 ‘건전한 긴장관계’가 기업 거버넌스 좌우” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “정유·화학 추천종목 당분간 전혀 없습니다만”…그래도 산다면 ‘이 종목’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### EY, 2026년도 EY 아시아태평양 우수 여성 기업가 23인 선정 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -122,92 +202,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 김부겸 "대구가 앞장서 국힘 버려야 … 저를 써달라" (ID: unknown)
+### "에너지 문제 심각, 잠이 안 올 정도… 신재생으로 전환을" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 당정 "합성수지도 수출 금지 검토" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이오플로우, 30억 원 규모 전환사채 발행 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 하이드로리튬, 8억 2700만 원 규모 전환사채 발행 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “수년간 참았다” 용준형, 소속사에 전속계약 해지 통보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 투자 여력없고 시스템 제각각…병원 의료AI 도입 '그림의 떡' (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### "AI 신기술 개발해도 현실화 산넘어산 … 다 해외로 떠날판" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 의료데이터 활용 장벽 확 낮춰야 AI 혁신 나올것 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 랑방블랑, 플레이를 넘어 라이프스타일로 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### "메모리 공급난에 터보퀀트 각광" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 연산 속도 8배 높여도 성능 그대로 … AI 효율성 경쟁 시작됐다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “직장인들만 세금 잘내면 뭐해요”…부촌 임대업자 2800억원 탈루 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [포토] 신현송 한은총재 후보자 귀국…고환율·고금리·고물가 '申의 선택'은 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중동 전황 따라…요동친 금융시장 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 노봉법 혼란 속 … 5월엔 '근로자추정제' (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 수술로봇 승인 … 中 145 vs 韓 0 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 반도체 주가 흔든 '터보퀀트' … "AI 메모리 병목현상 줄일것" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [포토] K팝 팬심 잡는 면세점 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
