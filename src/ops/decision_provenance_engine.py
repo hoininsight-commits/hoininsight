@@ -118,10 +118,10 @@ class DecisionProvenanceEngine:
                 "risk_score": context.get("risk_score")
             },
             "decision": decision_provenance,
-            "fallback_used": any(v["source"] == "fallback" for v in decision_provenance.values()),
+            "fallback_used": any(isinstance(v, dict) and v.get("source") == "fallback" for v in decision_provenance.values()),
             "fallback_fields": [
                 k for k, v in decision_provenance.items()
-                if v["source"] == "fallback"
+                if isinstance(v, dict) and v.get("source") == "fallback"
             ],
             "audit_timestamp": datetime.now().isoformat()
         }

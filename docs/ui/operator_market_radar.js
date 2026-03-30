@@ -9,6 +9,9 @@ window.onerror = function(message, source, lineno, colno, error) {
 };
 
 function safeNumber(value, digits = 2) {
+    if (value && typeof value === 'object' && value.hasOwnProperty('value')) {
+        value = value.value;
+    }
     if (value === null || value === undefined || isNaN(value)) {
         return "N/A";
     }

@@ -17,6 +17,9 @@ export const UI_SAFE = {
     },
 
     safeNum: (v, fallback = 0) => {
+        if (v && typeof v === 'object' && v.hasOwnProperty('value')) {
+            return parseFloat(v.value) || fallback;
+        }
         const n = parseFloat(v);
         return isNaN(n) ? fallback : n;
     },

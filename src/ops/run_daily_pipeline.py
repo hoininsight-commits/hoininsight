@@ -371,7 +371,16 @@ def run_confidence_recalibration():
         recalibrated = engine.recalibrate_confidence(current_val, summary)
         
         # 4. Update Brief
-        decision_block["confidence"] = recalibrated
+        # Update main confidence field directly to avoid invalid nesting in provenance
+        if "confidence" in brief.get("investment_decision", {}):
+            brief["investment_decision"]["confidence"]["value"] = recalibrated
+            brief["investment_decision"]["confidence"]["source"] = "recalibrated"
+        else:
+            # Fallback for older structures
+            brief["investment_decision"]["confidence"] = recalibrated
+        
+        # Also preserve a detailed block if needed, but not as "decision" which clashes
+        brief["investment_decision"]["recalibration_details"] = recalibrated
         brief["investment_decision"]["decision"] = decision_block
         
         # Update Individual Mentionables too (optional but recommended for STEP-G)
