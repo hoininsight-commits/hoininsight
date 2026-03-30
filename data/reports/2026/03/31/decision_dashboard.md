@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 환율 1520원 돌파·코스피 급락…정부, 비상 대응 총력전 - 전자신문 (Google_News_KR_Economy)
   - [NEWS] [뉴욕증시]개장 전 트럼프 SNS에 상승 출발…브렌트유 115달러 돌파 - v.daum.net (Google_News_KR_Economy)
   - [NEWS] 국제유가, 상승 지속… WTI, 4년 만에 100달러 돌파 - 글로벌이코노믹 (Google_News_KR_Economy)
+  - [NEWS] “주소부터 신뢰 UP…도쿄 토라노몬 한복판 K-스타트업 허브” - 마켓인 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,26 +185,37 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 환율 1520원 돌파·코스피 급락…정부, 비상 대응 총력전 - 전자신문 | Structural implication: '환율 1520원 돌파·코스피 급락…정부, 비상 대응 총력전 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
 | [뉴욕증시]개장 전 트럼프 SNS에 상승 출발…브렌트유 115달러 돌파 - v.daum.net | Structural implication: '[뉴욕증시]개장 전 트럼프 SNS에 상승 출발…브렌트유 115달러 돌파 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 국제유가, 상승 지속… WTI, 4년 만에 100달러 돌파 - 글로벌이코노믹 | Structural implication: '국제유가, 상승 지속… WTI, 4년 만에 100달러 돌파 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
-| "택시 DX플랫폼으로 지역서 정착 성공…투자자 러브콜 쇄도" - 마켓인 | Structural implication: '"택시 DX플랫폼으로 지역서 정착 성공…투자자 러브콜 쇄도" - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 제일 선방한 포스코가 -10% 찍고 찔끔…그룹주 ETF ‘잔인한 3월’ - 매일경제 | Structural implication: '제일 선방한 포스코가 -10% 찍고 찔끔…그룹주 ETF ‘잔인한 3월’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “주소부터 신뢰 UP…도쿄 토라노몬 한복판 K-스타트업 허브” - 마켓인 | Structural implication: '“주소부터 신뢰 UP…도쿄 토라노몬 한복판 K-스타트업 허브” - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 중동 전쟁 한 달간 시총 840조원 증발…‘삼전닉스’ 감소분만 44% - 경향신문 | Structural implication: '중동 전쟁 한 달간 시총 840조원 증발…‘삼전닉스’ 감소분만 44% - 경향신문' suggests a shift in NEWS dynamics. | LOW |
-| 사우디 경질유 5월 가격 '역대급 폭등' 전망 - 마켓인 | Structural implication: '사우디 경질유 5월 가격 '역대급 폭등' 전망 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | "지주회장 연임 찬성률만 90%"…'특별결의' 무용론 확산 - 연합인포맥스 | Structural implication: '"지주회장 연임 찬성률만 90%"…'특별결의' 무용론 확산 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 제일 선방한 포스코가 -10% 찍고 찔끔…그룹주 ETF ‘잔인한 3월’ - 매일경제 | Structural implication: '제일 선방한 포스코가 -10% 찍고 찔끔…그룹주 ETF ‘잔인한 3월’ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 유럽 ‘탄소 관세’ 앞두고 임직원·협력사 역량 강화 - 조선일보 | Structural implication: '유럽 ‘탄소 관세’ 앞두고 임직원·협력사 역량 강화 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "ACE ETF 떠올리며 러닝을"…한투운용, 'ACE RUN' 진행 - 마켓인 | Structural implication: '"ACE ETF 떠올리며 러닝을"…한투운용, 'ACE RUN' 진행 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| HK이노엔·광동제약 합류로 n조 클럽 확대…외형·수익성 동시 성장 - MEDI:GATE NEWS | Structural implication: 'HK이노엔·광동제약 합류로 n조 클럽 확대…외형·수익성 동시 성장 - MEDI:GATE NEWS' suggests a shift in NEWS dynamics. | LOW |
+| 한국앤컴퍼니, 김준현 신임 대표이사 선임…각자대표 체제 전환 - 연합뉴스 한민족센터 | Structural implication: '한국앤컴퍼니, 김준현 신임 대표이사 선임…각자대표 체제 전환 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
+| [인포맥스 POLL] '유가 쇼크'에 3월 소비자물가 2.4%↑ - 연합인포맥스 | Structural implication: '[인포맥스 POLL] '유가 쇼크'에 3월 소비자물가 2.4%↑ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 환율 1520원 돌파·코스피 급락…정부, 비상 대응 총력전 - 전자신문 | Structural implication: '환율 1520원 돌파·코스피 급락…정부, 비상 대응 총력전 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
 | [KAI 민영화 불붙나] 구원투수였던 KAI 주식…수은, 자본 지켰지만 이제는 '딜레마' - 딜사이트 | Structural implication: '[KAI 민영화 불붙나] 구원투수였던 KAI 주식…수은, 자본 지켰지만 이제는 '딜레마' - 딜사이트' suggests a shift in NEWS dynamics. | LOW |
+| 2차 최고가격제 후 유류 가격 급등 주유소 엄정 대응 - 에너지데일리 | Structural implication: '2차 최고가격제 후 유류 가격 급등 주유소 엄정 대응 - 에너지데일리' suggests a shift in NEWS dynamics. | LOW |
 | 아파트 200채 세놓고 40채 미신고…국세청, 2800억 탈루 조사 - 한겨레 | Structural implication: '아파트 200채 세놓고 40채 미신고…국세청, 2800억 탈루 조사 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 하루 만에 휘발윳값 214원 올린 주유소 찾아간 김정관 장관 - yna.co.kr | Structural implication: '하루 만에 휘발윳값 214원 올린 주유소 찾아간 김정관 장관 - yna.co.kr' suggests a shift in NEWS dynamics. | LOW |
-| ‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e | Structural implication: '‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
 | [단독] 병원에 AI 전면 도입하면 의료비 매년 21조 아낀다 - 매일경제 | Structural implication: '[단독] 병원에 AI 전면 도입하면 의료비 매년 21조 아낀다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| ‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e | Structural implication: '‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
 | 4월 건보료 추가되나... 작년엔 62%가 평균 20만원 더 냈다 - 조선일보 | Structural implication: '4월 건보료 추가되나... 작년엔 62%가 평균 20만원 더 냈다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | HMM 이사회 ‘부산 이전’ 의결… 9부 능선 넘었다(종합) - busan.com | Structural implication: 'HMM 이사회 ‘부산 이전’ 의결… 9부 능선 넘었다(종합) - busan.com' suggests a shift in NEWS dynamics. | LOW |
 | “나프타 지키려다 리튬-에너지 잃으면 그게 바로 소탐대실” - 동아일보 | Structural implication: '“나프타 지키려다 리튬-에너지 잃으면 그게 바로 소탐대실” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| "여기가 밥값 제일 싸다" 거지맵이 알려준 최저가 식당은…[오목조목] - 노컷뉴스 | Structural implication: '"여기가 밥값 제일 싸다" 거지맵이 알려준 최저가 식당은…[오목조목] - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
-| "성과급 더 주겠다" 제안에도…삼성전자 노조, 또 교섭 중단 '논란' - 한국경제 | Structural implication: '"성과급 더 주겠다" 제안에도…삼성전자 노조, 또 교섭 중단 '논란' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 고유가에 50% 넘긴 '금리인상 확률' … 美 증시·채권값 동반 급락, 韓 또 '검은 월요일' 걱정해야 하나 - 뉴데일리 경제 | Structural implication: '고유가에 50% 넘긴 '금리인상 확률' … 美 증시·채권값 동반 급락, 韓 또 '검은 월요일' 걱정해야 하나 - 뉴데일리 경제' suggests a shift in NEWS dynamics. | LOW |
-| 코스면 평균 11만9천원...껑충 뛴 밥값·대관료에 결혼비용 부담↑ - 매일경제 | Structural implication: '코스면 평균 11만9천원...껑충 뛴 밥값·대관료에 결혼비용 부담↑ - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| “SK가스, 원자재 공급망 불안…1분기 영업익, 전망치 상회” | Structural implication: '“SK가스, 원자재 공급망 불안…1분기 영업익, 전망치 상회”' suggests a shift in NEWS dynamics. | LOW |
+| “물가 뛰고 주가 급락, 누가 좋아하겠나”…트럼프 지지율 33% 집권 2기 최저 | Structural implication: '“물가 뛰고 주가 급락, 누가 좋아하겠나”…트럼프 지지율 33% 집권 2기 최저' suggests a shift in NEWS dynamics. | LOW |
+| 17년만에 천정뚫린 환율…외인 순매도·고유가가 관건 [오늘 나온 보고서] | Structural implication: '17년만에 천정뚫린 환율…외인 순매도·고유가가 관건 [오늘 나온 보고서]' suggests a shift in NEWS dynamics. | LOW |
+| “전쟁났다고 AI 안할건가요”…하닉 목표가 여전히 170만원 [오늘 나온 보고서] | Structural implication: '“전쟁났다고 AI 안할건가요”…하닉 목표가 여전히 170만원 [오늘 나온 보고서]' suggests a shift in NEWS dynamics. | LOW |
+| “바닥 치고 올라온다” 벤처기업협회, 2분기 벤처기업 경기전망 긍정 | Structural implication: '“바닥 치고 올라온다” 벤처기업협회, 2분기 벤처기업 경기전망 긍정' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자, 14조5000억 규모 자사주 소각 결정…“주주가치 제고 목적” | Structural implication: '삼성전자, 14조5000억 규모 자사주 소각 결정…“주주가치 제고 목적”' suggests a shift in NEWS dynamics. | LOW |
+| “조용히 살겠다는데 왜”…김동완, 신혜성 불참 논란에 직격 | Structural implication: '“조용히 살겠다는데 왜”…김동완, 신혜성 불참 논란에 직격' suggests a shift in NEWS dynamics. | LOW |
+| “전쟁 한방에 840조 증발, 이게 끝이 아닐수도”…삼전닉스 시총은 372조↓ | Structural implication: '“전쟁 한방에 840조 증발, 이게 끝이 아닐수도”…삼전닉스 시총은 372조↓' suggests a shift in NEWS dynamics. | LOW |
+| “SK텔레콤, 배당금 정상화 기대감 탄력적 반등 기대” | Structural implication: '“SK텔레콤, 배당금 정상화 기대감 탄력적 반등 기대”' suggests a shift in NEWS dynamics. | LOW |
+| “AI 챗봇과 대화한 고객 주문액 6배 늘었다” 센드버드, AI 컨시어지 활용 사례 공개 | Structural implication: '“AI 챗봇과 대화한 고객 주문액 6배 늘었다” 센드버드, AI 컨시어지 활용 사례 공개' suggests a shift in NEWS dynamics. | LOW |
+| 두나무 “네이버파이낸셜 합병 직후 IPO 직행…반대매수 자금 충분” | Structural implication: '두나무 “네이버파이낸셜 합병 직후 IPO 직행…반대매수 자금 충분”' suggests a shift in NEWS dynamics. | LOW |
 | ‘남한강 에스파크CC’ 4월 10일 개장, 원주 부론면 27홀 규모 | Structural implication: '‘남한강 에스파크CC’ 4월 10일 개장, 원주 부론면 27홀 규모' suggests a shift in NEWS dynamics. | LOW |
 | “백화점이 살렸다”…롯데쇼핑, 1분기 ‘깜짝 실적’ 전망에 목표가↑ | Structural implication: '“백화점이 살렸다”…롯데쇼핑, 1분기 ‘깜짝 실적’ 전망에 목표가↑' suggests a shift in NEWS dynamics. | LOW |
 | “인니 국적 평화 유지군 또 사망했다”…레바논서 원인불명 ‘폭발’ | Structural implication: '“인니 국적 평화 유지군 또 사망했다”…레바논서 원인불명 ‘폭발’' suggests a shift in NEWS dynamics. | LOW |
@@ -214,17 +225,6 @@
 | “염소 돌보다 총 주웠는데”…11세 형이 7세 동생을 방안에서 그만 | Structural implication: '“염소 돌보다 총 주웠는데”…11세 형이 7세 동생을 방안에서 그만' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 2월 산업생산 2.5% 증가…소비 ‘보합’, 투자 13.5%↑ | Structural implication: '[속보] 2월 산업생산 2.5% 증가…소비 ‘보합’, 투자 13.5%↑' suggests a shift in NEWS dynamics. | LOW |
 | “이란 전쟁 목표 절반 이상 달성”…종전 시점 묻자 이스라엘 총리의 대답 | Structural implication: '“이란 전쟁 목표 절반 이상 달성”…종전 시점 묻자 이스라엘 총리의 대답' suggests a shift in NEWS dynamics. | LOW |
-| “여자 연예인 혼내줬다”…신동엽 화낸 것 봤다는 사유리, 무슨일이 | Structural implication: '“여자 연예인 혼내줬다”…신동엽 화낸 것 봤다는 사유리, 무슨일이' suggests a shift in NEWS dynamics. | LOW |
-| “곧 만나자”… 희소병 투병 4년만에 셀린 디옹의 전한 깜짝 소식 | Structural implication: '“곧 만나자”… 희소병 투병 4년만에 셀린 디옹의 전한 깜짝 소식' suggests a shift in NEWS dynamics. | LOW |
-| “리조트냐 휴양지 뺨치네”…법무부 부인에도 ‘신축 교도소’ 호화 시설 논란 | Structural implication: '“리조트냐 휴양지 뺨치네”…법무부 부인에도 ‘신축 교도소’ 호화 시설 논란' suggests a shift in NEWS dynamics. | LOW |
-| BTS ‘스윔’, 미국 빌보드 ‘핫 100’ 1위…비틀스·슈프림스 잇는 역대 TOP5 | Structural implication: 'BTS ‘스윔’, 미국 빌보드 ‘핫 100’ 1위…비틀스·슈프림스 잇는 역대 TOP5' suggests a shift in NEWS dynamics. | LOW |
-| 매경이 전하는 세상의 지식 (매-세-지, 3월 31일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 3월 31일)' suggests a shift in NEWS dynamics. | LOW |
-| 대교섭시대의 시작, 노사관계의 법률적 설계가 필요하다 [광장 노동산책] | Structural implication: '대교섭시대의 시작, 노사관계의 법률적 설계가 필요하다 [광장 노동산책]' suggests a shift in NEWS dynamics. | LOW |
-| “게임은 승리, 세금은 패배”…유명 프로게이머, 부친 통해 주식 세금 탈세 | Structural implication: '“게임은 승리, 세금은 패배”…유명 프로게이머, 부친 통해 주식 세금 탈세' suggests a shift in NEWS dynamics. | LOW |
-| 공시지가로 증여세 5700만원 냈는데…법원 “시가 기준 7000만원 더 내라” | Structural implication: '공시지가로 증여세 5700만원 냈는데…법원 “시가 기준 7000만원 더 내라”' suggests a shift in NEWS dynamics. | LOW |
-| “이 나라는 야권이 중국 좋아한다던데”…시진핑, 대만 야당 대표 초청 | Structural implication: '“이 나라는 야권이 중국 좋아한다던데”…시진핑, 대만 야당 대표 초청' suggests a shift in NEWS dynamics. | LOW |
-| “노량진 시장에 파란점퍼 왜이리 많아”…시장후보 3인방 민생행보 | Structural implication: '“노량진 시장에 파란점퍼 왜이리 많아”…시장후보 3인방 민생행보' suggests a shift in NEWS dynamics. | LOW |
-| “재혼할 바에 리얼돌”…돌싱남녀 일부 ‘긍정’ 응답, 왜? | Structural implication: '“재혼할 바에 리얼돌”…돌싱남녀 일부 ‘긍정’ 응답, 왜?' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>
