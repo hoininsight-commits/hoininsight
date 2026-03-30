@@ -2294,6 +2294,40 @@
           }
         }
       ]
+    },
+    {
+      "generated_at": "2026-03-30T13:38:01.390693",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "ACCELERATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "Rising",
+            "avg_score_change": "N/A",
+            "persistence_change": "5d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-03-30T13:39:13.121148",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "ACCELERATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "Rising",
+            "avg_score_change": "N/A",
+            "persistence_change": "5d in 7d window"
+          }
+        }
+      ]
     }
   ]
 }

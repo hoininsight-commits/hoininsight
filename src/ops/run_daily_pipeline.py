@@ -23,6 +23,12 @@ from src.ops.decision_provenance_engine import DecisionProvenanceEngine
 from src.ops.decision_causality_engine import DecisionCausalityEngine
 from src.ops.outcome_validation_engine import OutcomeValidationEngine
 from src.ops.confidence_recalibration_engine import ConfidenceRecalibrationEngine
+from src.ui.build_ui_contract import (
+    build_ui_today,
+    build_ui_history,
+    build_ui_radar,
+    build_ui_engine_status
+)
 
 def run_collection():
     """Run all data collectors."""
@@ -261,6 +267,10 @@ def run_impact_chain_engine():
             if "impact_map" not in brief: brief["impact_map"] = {}
             brief["impact_map"]["structural_impact_chain"] = impact_chain
             
+            # [STEP-I-1] Set top-level theme_type for UI Contract
+            if impact_chain:
+                brief["theme_type"] = impact_chain[0].get("theme_type", "UNKNOWN")
+            
             with open(brief_path, "w", encoding="utf-8") as f:
                 json.dump(brief, f, indent=2, ensure_ascii=False)
 
@@ -472,6 +482,16 @@ def run_core_calibration():
         
         calibrated_impact = calibrate_allocation(impact_chain, brief["investment_decision"].get("confidence"))
         
+        # [STEP-I-1] Top 3 Contract Alignment (Force Server Selection)
+        brief["ui_top_stocks"] = [
+            {
+                "ticker": s.get("ticker"),
+                "industry": s.get("industry_link"),
+                "directness": s.get("directness")
+            }
+            for s in calibrated_impact[:3]
+        ]
+        
         # Update both locations for consistency
         brief["impact_chain"] = calibrated_impact
         if "impact_map" in brief:
@@ -535,6 +555,48 @@ def run_validation_tracking():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Validation Tracking failed: {e}")
+        traceback.print_exc()
+        return False
+
+def run_ui_contract_binding():
+    """PHASE 3.5.13: [STEP-I-1] UI Data Contract Binding (SSOT Promotion)"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.5.13: UI CONTRACT BINDING STARTED")
+    try:
+        brief_path = project_root / "data" / "operator" / "today_operator_brief.json"
+        tracking_path = project_root / "data" / "ops" / "validation_tracking.json"
+        stats_path = project_root / "data" / "ops" / "post_structural_validation.json"
+        
+        if not all(p.exists() for p in [brief_path, tracking_path, stats_path]):
+            print("[Pipeline] ⚠️ Contract sources missing, skipping binding.")
+            return False
+            
+        with open(brief_path, "r", encoding="utf-8") as f:
+            brief = json.load(f)
+        with open(tracking_path, "r", encoding="utf-8") as f:
+            tracking = json.load(f)
+        with open(stats_path, "r", encoding="utf-8") as f:
+            stats = json.load(f)
+            
+        # Build Contracts
+        brief["ui_today"] = build_ui_today(brief)
+        brief["ui_history"] = build_ui_history(tracking)
+        brief["ui_radar"] = build_ui_radar(tracking, stats.get("metrics", stats))
+        brief["ui_engine_status"] = build_ui_engine_status(stats.get("metrics", stats))
+        
+        # Save Back
+        paths = [
+            project_root / "data" / "operator" / "today_operator_brief.json",
+            project_root / "data" / "ops" / "today_operator_brief.json"
+        ]
+        for p in paths:
+            with open(p, "w", encoding="utf-8") as f:
+                json.dump(brief, f, indent=2, ensure_ascii=False)
+            print(f"[Contract] Bound UI blocks to: {p}")
+            
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.13: UI CONTRACT BINDING COMPLETED")
+        return True
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ UI Contract Binding failed: {e}")
         traceback.print_exc()
         return False
 
@@ -1373,8 +1435,10 @@ def main():
     # 3.5.9 [STEP-H-2] Failure Root Cause Analysis
     run_impact_root_cause_analysis()
     
-    # 3.5.11 [STEP-H-VERIFY] Post-Structural Validation Audit
     run_post_structural_analysis()
+
+    # 3.5.13 [STEP-I-1] UI Data Contract Binding (SSOT Promotion)
+    run_ui_contract_binding()
 
     # 3.2.0 [STEP-50] Capital Allocation Engine (Structural weighting)
     run_capital_allocation()

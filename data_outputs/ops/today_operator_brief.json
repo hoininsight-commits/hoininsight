@@ -255,9 +255,9 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-30 12:59:50",
+    "repaired_at": "2026-03-30 13:39:16",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-30 12:59:50"
+    "consistency_aligned_at": "2026-03-30 13:39:16"
   },
   "investment_decision": {
     "action": {
@@ -404,25 +404,43 @@
     "fallback_fields": 3,
     "fallback_ratio": 0.5,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 12:59:50"
+    "generated_at": "2026-03-30 13:39:16"
   },
+  "theme_type": "CONSTRAINT",
   "engine_audit": {
-    "generated_at": "2026-03-30T12:59:50.484767",
-    "period": "Last 2 runs",
+    "generated_at": "2026-03-30T13:39:16.882759",
+    "period": "Last 4 runs",
     "failure_distribution": {
-      "UNKNOWN": 0.5,
-      "THEME_RIGHT_STOCK_WRONG": 0.5
+      "UNKNOWN": 0.25,
+      "THEME_RIGHT_STOCK_WRONG": 0.75
     },
     "confidence_stability": {
       "min": 0.38,
       "max": 0.64,
-      "avg": 0.577,
+      "avg": 0.584,
       "volatility": 0.26
     },
     "outcome_alignment": 0.0,
     "causality_validity": 1.0,
-    "status": "FAIL (No Outcome Correlation)"
+    "status": "FAIL (Bias Detected)"
   },
+  "ui_top_stocks": [
+    {
+      "ticker": "MSFT",
+      "industry": "Utilities",
+      "directness": "indirect"
+    },
+    {
+      "ticker": "NVDA",
+      "industry": "Utilities",
+      "directness": "indirect"
+    },
+    {
+      "ticker": "PLTR",
+      "industry": "Utilities",
+      "directness": "indirect"
+    }
+  ],
   "impact_chain": [
     {
       "ticker": "MSFT",
@@ -481,5 +499,186 @@
       "selection_score": 0.6,
       "weight": 0.38
     }
-  ]
+  ],
+  "ui_today": {
+    "title": "AI Power Constraint",
+    "why_now": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
+    "theme_type": "CONSTRAINT",
+    "evolution_stage": "EXPANSION",
+    "intensity_label": "ACCELERATING",
+    "action": "ADD",
+    "confidence_pct": 64,
+    "top_stocks": [
+      {
+        "ticker": "MSFT",
+        "industry": "Utilities",
+        "directness": "indirect"
+      },
+      {
+        "ticker": "NVDA",
+        "industry": "Utilities",
+        "directness": "indirect"
+      },
+      {
+        "ticker": "PLTR",
+        "industry": "Utilities",
+        "directness": "indirect"
+      }
+    ],
+    "market_context": "AI Power Constraint 테마가 시장의 핵심 동력으로 부상..."
+  },
+  "ui_history": [
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-04-04",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 78,
+      "alignment_pct": 75,
+      "result_label": "성공",
+      "result_status": "SUCCESS"
+    },
+    {
+      "date": "2026-04-03",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 80,
+      "alignment_pct": 81,
+      "result_label": "성공",
+      "result_status": "SUCCESS"
+    },
+    {
+      "date": "2026-04-02",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 70,
+      "alignment_pct": 55,
+      "result_label": "성공",
+      "result_status": "SUCCESS"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 75,
+      "alignment_pct": 68,
+      "result_label": "성공",
+      "result_status": "SUCCESS"
+    },
+    {
+      "date": "2026-03-31",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 72,
+      "alignment_pct": 72,
+      "result_label": "성공",
+      "result_status": "SUCCESS"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 19,
+      "result_label": "보정 필요",
+      "result_status": "THEME_RIGHT_STOCK_WRONG"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 20,
+      "result_label": "보정 필요",
+      "result_status": "THEME_RIGHT_STOCK_WRONG"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 21,
+      "result_label": "보정 필요",
+      "result_status": "THEME_RIGHT_STOCK_WRONG"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 23,
+      "result_label": "보정 필요",
+      "result_status": "THEME_RIGHT_STOCK_WRONG"
+    }
+  ],
+  "ui_radar": {
+    "avg_alignment_pct": 70,
+    "avg_hit_ratio_pct": 49,
+    "sample_size": 5,
+    "recent_topics": [
+      {
+        "date": "2026-03-30",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-03-30",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-03-30",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-04-04",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "SUCCESS"
+      },
+      {
+        "date": "2026-04-03",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "SUCCESS"
+      }
+    ]
+  },
+  "ui_engine_status": {
+    "status": "EARLY_PRODUCTION",
+    "alignment_pct": 70,
+    "hit_ratio_pct": 49,
+    "sample_size": 5,
+    "warning": "초기 운영 단계 — 표본 수 확대 필요"
+  }
 }
