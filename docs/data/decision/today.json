@@ -1,7 +1,7 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-03-27T14:33:25.279289",
-  "date": "2026-03-27",
+  "generated_at_kst": "2026-03-30T10:11:58.049636",
+  "date": "2026-03-30",
   "blocks": {
     "regime": {
       "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
@@ -17,15 +17,15 @@
       "primary_revival_reason": "N/A"
     },
     "ops": {
-      "system_freshness": 79.1,
-      "sla_breach_count": 9,
+      "system_freshness": 76.7,
+      "sla_breach_count": 10,
       "has_stale_warning": true,
       "7d_success_rate": "7/7"
     }
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Unknown] Hybrid-driven",
+  "anchor_topic": "[Monetary Tightening] Capital-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
@@ -33,6 +33,7 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
+        "index_nasdaq_fred",
         "rates_us10y_fred",
         "crypto_btc_usd_spot_coingecko",
         "credit_hy_spread_fred"
@@ -43,18 +44,18 @@
       ],
       "pre_structural": null
     },
-    "PRED_20260327_05": "Primary",
-    "PRED_20260327_01": "Secondary"
+    "PRED_20260330_05": "Primary",
+    "PRED_20260330_01": "Secondary"
   },
   "top_topics": [
     {
-      "id": "PRED_20260327_05",
+      "id": "PRED_20260330_05",
       "score": 83.2,
       "intensity": 0.8320000000000001,
       "title": "Policy Radar",
       "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260327_05",
+        "topic_id": "PRED_20260330_05",
         "theme": "Policy Radar",
         "prediction_score": 83.2,
         "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
@@ -74,13 +75,13 @@
       "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "id": "PRED_20260327_01",
+      "id": "PRED_20260330_01",
       "score": 71.85,
       "intensity": 0.7184999999999999,
       "title": "Macro Shock Radar",
       "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "topic_id": "PRED_20260327_01",
+        "topic_id": "PRED_20260330_01",
         "theme": "Macro Shock Radar",
         "prediction_score": 71.85,
         "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
@@ -126,7 +127,7 @@
     "신한지주"
   ],
   "status": "APPROVED",
-  "decision_date": "2026-03-27",
+  "decision_date": "2026-03-30",
   "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
   "portfolio_focus": "Policy Radar",
   "portfolio_theme": "Policy Radar",
@@ -205,7 +206,7 @@
     "pressure": 0.47
   },
   "video_script_preview": {
-    "hook": "오늘 우리가 주목해야 할 시장의 가장 강력한 균열, 주제는 바로 'Daily Market Convergence'입니다.",
+    "hook": "지금 'Daily Market Convergence' 현상 뒤에 숨겨진 진짜 트리거를 아십니까? 바로 Structural shift in AI Power Constraint is now the primary driver of market tension. 때문입니다.",
     "action": "WATCH"
   }
 }

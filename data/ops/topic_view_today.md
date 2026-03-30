@@ -1,6 +1,6 @@
 # 🧭 TODAY TOPIC VIEW - 2026-03-30
 
-**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=0
+**SUMMARY**: 🛡️ AUTO-APPROVED=0 | 🟢 READY=0 | 🌗 SHADOW=0 | 🏹 FACT-FIRST=40
 
 ## 🛡️ AUTO-APPROVED
 No AUTO-APPROVED topics today.
@@ -12,8 +12,202 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-No FACT-FIRST shadow topics today.
+### 예멘 후티 반군 참전에 국제유가 급등…브렌트유 배럴당 115달러 돌파 - JTBC (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
 
-## ⚠️ DATA STATUS
-Following inputs were missing during generation:
-- shadow_pool/2026/03/30/fact_first.json
+### 파라타항공, 항공훈련센터 개소…슬라이드 탈출훈련까지 구현 - 딜사이트 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘영끌했는데, 이자가 미쳤어요’…주담대 금리 7% 뚫었다 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 한달간 외인들이 팔아치운 36조, 개미가 전부 주웠다…이번주 증시 전망은 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "예금 깰까"…채권개미들 연 4% 우량 회사채 '눈독' - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [속보]미·이란 전쟁 전황 악화에 코스피 5% 급락, 환율 1513원 출발 - 경향신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 4월 월급 반토막?…건강보험료 연말정산 반영 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘서울 아파트값 강남 따라간다’는 옛말… 외곽이 상승세 주도 - v.daum.net (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 역시 방산주…미국·이란 전쟁에 날개 단 ‘한화에어로스페이스’ - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 5월까지 해외주식 팔면 '100% 절세' 수익률 높은 종목이 복귀혜택 더 크죠 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 서울 평균 휘발윳값 1900원 넘어…2차 석유 최고가격제 사흘째 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “매일 새벽 운전자없는 버스가 다녀요”…심야괴담 알고보니 자율주행버스 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 구윤철 “유가 130달러 땐 민간도 차량5부제”…기름값 2000원 가시권 - 전자신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘나프타 대란’에 선거 현수막값 급등 조짐…비상 걸린 군소정당들 - chosun.com (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “요즘 누가 큰거 삽니까‘…서울 청약, 중소형으로 대세 바뀌었다 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "내년 부자될 기회 온다, 시장붕괴 노려라" 부자아빠가 콕 집어 강조한 투자상품 - 아시아경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 비트코인 '롱포지션' 3년 만에 최고치…"위험 신호" - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “며칠 사이 100만원 올랐다”…항공권 급등에 ‘선발권’ 열풍 - 쿠키뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “결혼 전에 사둔 집, 아내가 공동명의 하자네요”…큰 뜻 있었다는데 - 매일경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 성동구 아파트 증여받은 부부…세금 1000만원 넘게 뛴 사연 - hankyung.com (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “나를 보며 포기하지 말아달라”…뇌종양 수술 뒤 컴백,  PGA 투어 우승자의 한마디 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 김부겸 대구시장 출마선언 “국민의힘 버려야 대구가 산다” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “1등 튜닝카에 300만원”…KGM, ‘무쏘 튜닝 페스티벌’ 참가자 모집 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 중동발 강달러 충격 지속에…원화값 1513원으로 출발 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [속보] 김부겸 “대구시장 도전…대구가 앞장서 국민의힘 버려야” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### NH농협금융, 송민규 금융연 부원장 신규 사외이사 추천 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미국 여자 프로농구 연봉 400% 뛴 이유는? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### NH농협손보, 국민성장펀드 1호 ‘리벨리온’에 100억 투자 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미국인 교황도 트럼프 손절?…“손에 피묻힌 지도자 기도는 외면받아” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “리터당 2000원 되겠네요. 경유값이요”...생계형 트럭들 시동 꺼질 판 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “1년 전 같은 단지 다른 아파트 거래가로 과세”…주택 증여세 산정, 법원 판단 보니 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한국마이크로소프트, 숙명여대와 코파일럿 활용 캡스톤 프로젝트 진행 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “비싸도? 아니 비싸야 잘 팔린다”…패션업계, 프리미엄 전략 확대 이유는 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 중동 주둔하는 미군 5만명 돌파…이란 전면 침공하기엔 부족 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 금호건설, ‘계양~강화 고속국도 건설공사’ 수주…김포 핵심 구간 시공 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “급매 쏟아지더니 이제 뚝?”…양도세 매물 두고 매수자·매도자 ‘눈치싸움’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 미 지상군 투입 때 어디 치나...“이란 호르무즈 7개 섬, 공격 가치 더 높아” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “건설업계 동반성장 이어간다”…‘2026 현대건설×서울 스타트업 오픈 이노베이션’ 공모전 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 가상자산 수탁고 80% 증발에도 나홀로 선전…비댁스, 800억 돌파 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 취임 300일 맞은 이재명 대통령…별도행사 없이 청와대 홈페이지 오픈 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references

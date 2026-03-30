@@ -2,12 +2,28 @@
   "theme": "AI Power Constraint",
   "decision": {
     "action": "ACCUMULATE",
+    "action_reason": "Stage: EXPANSION, Momentum: ACCELERATING",
+    "action_evidence": [
+      "stage=EXPANSION",
+      "momentum=ACCELERATING"
+    ],
     "timing": "IDEAL",
+    "timing_reason": "Timing derived from EXPANSION stage mapping.",
+    "timing_evidence": [
+      "stage=EXPANSION"
+    ],
     "confidence": 0.54,
+    "confidence_reason": "Weighted sum of momentum, early signals, and topic pressure.",
+    "confidence_evidence": [
+      "momentum_score=0.52",
+      "early_score=0.67",
+      "pressure=0.47"
+    ],
     "base_confidence": 0.54,
     "learning_adjustment": 0.0
   },
   "metadata": {
-    "generated_at": "2026-03-27 14:33:26"
+    "generated_at": "2026-03-30 10:11:58",
+    "engine": "InvestmentDecisionEngine-v1.1"
   }
 }

@@ -2,7 +2,7 @@
   "core_theme": "AI Power Constraint",
   "display_title": "AI Power Constraint",
   "narrative": {
-    "title": "AI Power Constraint",
+    "title": "Daily Market Convergence",
     "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
@@ -56,7 +56,7 @@
     "risk_level": {
       "value": "MEDIUM",
       "source": "engine",
-      "reason": "fallback risk applied",
+      "reason": "derived from risk engine output",
       "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
@@ -69,7 +69,7 @@
     "risk_score": {
       "value": 0.5,
       "source": "engine",
-      "reason": "fallback risk applied",
+      "reason": "numeric risk factor",
       "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
@@ -113,50 +113,30 @@
         "ticker": "Microsoft",
         "name": "Microsoft",
         "relevance_score": 0.56,
-        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)"
+        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
       },
       {
         "ticker": "NVIDIA",
         "name": "NVIDIA",
         "relevance_score": 0.56,
-        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)"
+        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
       },
       {
         "ticker": "Palantir",
         "name": "Palantir",
         "relevance_score": 0.56,
-        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)"
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
       },
       {
         "ticker": "Caterpillar",
         "name": "Caterpillar",
-        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)"
+        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
       }
     ],
     "sector_status": {
+      "Broad Market": "ACTIVE",
       "Regulatory Impact / Finance": "ACTIVE",
-      "AI Software": "ACTIVE",
-      "Broad Market": "ACTIVE"
+      "AI Software": "ACTIVE"
     }
   },
   "content_studio": {
@@ -173,25 +153,22 @@
       "timing": "WAIT",
       "risk": "MEDIUM",
       "confidence": "25%",
-      "integrity": "DEGRADED",
+      "integrity": "LOW_TRUST",
       "why_now_trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
       "structural_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-27 15:58:41",
+    "repaired_at": "2026-03-30 10:11:58",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-27 15:58:41"
+    "consistency_aligned_at": "2026-03-30 10:11:58"
   },
   "investment_decision": {
     "action": {
       "value": "WATCH",
-      "source": "engine",
-      "reason": "fallback: decision unavailable",
-      "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
-      ],
+      "source": "fallback",
+      "reason": "Missing or zero action → fallback applied",
+      "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
@@ -202,12 +179,9 @@
     },
     "timing": {
       "value": "WAIT",
-      "source": "engine",
-      "reason": "fallback: timing unavailable",
-      "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
-      ],
+      "source": "fallback",
+      "reason": "Missing or zero timing → fallback applied",
+      "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
@@ -218,12 +192,9 @@
     },
     "confidence": {
       "value": 0.25,
-      "source": "engine",
-      "reason": "fallback base confidence applied",
-      "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
-      ],
+      "source": "fallback",
+      "reason": "Missing or zero confidence → fallback applied",
+      "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
@@ -236,22 +207,21 @@
       "value": "MEDIUM",
       "source": "fallback",
       "reason": "Missing or zero risk → fallback applied",
-      "evidence": []
+      "evidence": [],
+      "causality": {}
     },
     "allocation": {
       "value": 0.0,
       "source": "fallback",
       "reason": "Missing or zero allocation → fallback applied",
-      "evidence": []
+      "evidence": [],
+      "causality": {}
     },
     "conviction": {
       "value": 25,
-      "source": "engine",
-      "reason": "Derived from UNKNOWN stage and UNKNOWN momentum.",
-      "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
-      ],
+      "source": "fallback",
+      "reason": "Missing or zero conviction → fallback applied",
+      "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
@@ -278,10 +248,10 @@
     "allocations": []
   },
   "decision_integrity": {
-    "engine_fields": 4,
-    "fallback_fields": 2,
-    "fallback_ratio": 0.33,
-    "status": "DEGRADED",
-    "generated_at": "2026-03-30 10:05:02"
+    "engine_fields": 0,
+    "fallback_fields": 6,
+    "fallback_ratio": 1.0,
+    "status": "LOW_TRUST",
+    "generated_at": "2026-03-30 10:11:58"
   }
 }

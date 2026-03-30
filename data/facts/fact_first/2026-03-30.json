@@ -1,0 +1,30 @@
+{
+    "seeds": [
+        {
+            "topic_id": "seed_ai_power_constraint_20260330",
+            "title": "AI Power Constraint and Infrastructure Expansion",
+            "is_fact_driven": true,
+            "impact_window": "IMMEDIATE",
+            "level": 3,
+            "speak_pack": {
+                "one_liner": "AI 데이터센터 수요 폭증에 따른 전력 인프라 부족 현상이 시장의 핵심 이슈로 부상하고 있습니다.",
+                "numbers": [
+                    0.85,
+                    0.56
+                ],
+                "watch_next": [
+                    "전력망 현대화 법안 통과 유무",
+                    "빅테크 기업들의 직접 발전 설비 투자 발표"
+                ],
+                "risk_note": "인프라 구축 속도가 AI 서비스 확장 속도를 따라가지 못할 경우 성장이 둔화될 수 있음"
+            },
+            "evidence_nodes": [
+                {
+                    "title": "Grid Modernization Data",
+                    "publisher": "DOE",
+                    "url": "https://www.energy.gov/oe/grid-modernization"
+                }
+            ]
+        }
+    ]
+}

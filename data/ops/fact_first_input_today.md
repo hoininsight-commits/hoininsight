@@ -1,4 +1,4 @@
-# Fact-First Input Summary (2026-03-27)
+# Fact-First Input Summary (2026-03-30)
 
 - **Total Facts**: 0
 - **Flow**: 0
@@ -6,7 +6,7 @@
 - **Structure**: 0
 
 ## Errors
-- {'message': 'Input file not found', 'path': '/Users/jihopa/Downloads/HoinInsight_Remote/data/facts/fact_first/2026-03-27.json'}
+- {'message': "Root must be a list or dict with 'facts' list"}
 
 ## Valid Facts (Top 10)
 | Type | Subject -> Object | Fact | Source |

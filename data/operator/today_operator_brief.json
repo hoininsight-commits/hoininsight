@@ -2,7 +2,7 @@
   "core_theme": "AI Power Constraint",
   "display_title": "AI Power Constraint",
   "narrative": {
-    "title": "AI Power Constraint",
+    "title": "Daily Market Convergence",
     "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
@@ -54,29 +54,32 @@
   "decision": {},
   "risk": {
     "risk_level": {
-      "value": "MEDIUM",
+      "value": "LOW",
       "source": "engine",
-      "reason": "fallback risk applied",
-      "evidence": [],
+      "reason": "Accumulated score from momentum (STABLE) and evolution (EXPANSION).",
+      "evidence": [
+        "momentum_state=STABLE",
+        "evolution_stage=EXPANSION"
+      ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision MEDIUM aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision LOW aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "risk_score": {
-      "value": 0.5,
+      "value": 0.2,
       "source": "engine",
-      "reason": "fallback risk applied",
+      "reason": "Accumulated score from momentum (STABLE) and evolution (EXPANSION).",
       "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.5 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision 0.2 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     }
   },
@@ -91,7 +94,29 @@
       "AI GPU Demand",
       "Data Center Capex",
       "Grid Modernization"
-    ]
+    ],
+    "decision": {
+      "action": "ACCUMULATE",
+      "action_reason": "Stage: EXPANSION, Momentum: ACCELERATING",
+      "action_evidence": [
+        "stage=EXPANSION",
+        "momentum=ACCELERATING"
+      ],
+      "timing": "IDEAL",
+      "timing_reason": "Timing derived from EXPANSION stage mapping.",
+      "timing_evidence": [
+        "stage=EXPANSION"
+      ],
+      "confidence": 0.54,
+      "confidence_reason": "Weighted sum of momentum, early signals, and topic pressure.",
+      "confidence_evidence": [
+        "momentum_score=0.52",
+        "early_score=0.67",
+        "pressure=0.47"
+      ],
+      "base_confidence": 0.54,
+      "learning_adjustment": 0.0
+    }
   },
   "narrative_brief": {
     "title": "AI Power Constraint",
@@ -114,11 +139,10 @@
         "name": "Microsoft",
         "relevance_score": 0.56,
         "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN",
         "weight_pct": 25.0
       },
       {
@@ -126,11 +150,10 @@
         "name": "NVIDIA",
         "relevance_score": 0.56,
         "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN",
         "weight_pct": 25.0
       },
       {
@@ -138,29 +161,23 @@
         "name": "Palantir",
         "relevance_score": 0.56,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)",
+        "action": "ACCUMULATE",
+        "confidence": 0.3,
+        "pnl": 0.0,
+        "perf_status": "WIN",
         "weight_pct": 0.0
       },
       {
         "ticker": "Caterpillar",
         "name": "Caterpillar",
         "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가",
-        "action": "WATCH",
-        "action_label": "fallback (global sync)",
-        "confidence": 0.25,
-        "conviction": 25,
-        "conviction_label": "fallback (global sync)",
         "weight_pct": 0.0
       }
     ],
     "sector_status": {
+      "Broad Market": "ACTIVE",
       "Regulatory Impact / Finance": "ACTIVE",
-      "AI Software": "ACTIVE",
-      "Broad Market": "ACTIVE"
+      "AI Software": "ACTIVE"
     },
     "structural_impact_chain": [
       {
@@ -223,100 +240,99 @@
     },
     "strategy": {
       "theme": "AI Power Constraint",
-      "action": "WATCH",
-      "timing": "WAIT",
-      "risk": "MEDIUM",
-      "confidence": "25%",
+      "action": "ACCUMULATE",
+      "timing": "IDEAL",
+      "risk": "LOW",
+      "confidence": "54%",
       "integrity": "DEGRADED",
       "why_now_trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-      "structural_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+      "structural_link": "Structural shift in AI Power Constraint is now the primary driver of market tension. validates the Infrastructure bottleneck due to exponential AI compute demand; initiating exposure based on structural tailwinds."
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-27 15:58:41",
+    "repaired_at": "2026-03-30 10:11:58",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-27 15:58:41"
+    "consistency_aligned_at": "2026-03-30 10:11:58"
   },
   "investment_decision": {
     "action": {
-      "value": "WATCH",
+      "value": "ACCUMULATE",
       "source": "engine",
-      "reason": "fallback: decision unavailable",
+      "reason": "Stage: EXPANSION, Momentum: ACCELERATING",
       "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
+        "stage=EXPANSION",
+        "momentum=ACCELERATING"
       ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Infrastructure bottleneck due to exponential AI compute demand remains uncertain; awaiting confirmation from Structural shift in AI Power Constraint is now the primary driver of market tension. to commit capital."
+        "decision_link": "Structural shift in AI Power Constraint is now the primary driver of market tension. validates the Infrastructure bottleneck due to exponential AI compute demand; initiating exposure based on structural tailwinds."
       }
     },
     "timing": {
-      "value": "WAIT",
+      "value": "IDEAL",
       "source": "engine",
-      "reason": "fallback: timing unavailable",
+      "reason": "Timing derived from EXPANSION stage mapping.",
       "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
+        "stage=EXPANSION"
       ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision WAIT aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision IDEAL aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "confidence": {
       "value": {
-        "value": 0.38,
+        "value": 0.52,
         "source": "recalibrated",
-        "base_confidence": 0.44,
+        "base_confidence": 0.5,
         "adjustments": {
           "hit_ratio": 0.0,
-          "decision_accuracy": 0.0,
+          "decision_accuracy": 0.08,
           "failure_penalty": -0.1,
           "recency_bonus": 0.04
         },
-        "final_confidence": 0.38
+        "final_confidence": 0.52
       },
       "source": "recalibrated",
-      "reason": "fallback base confidence applied",
+      "reason": "Weighted sum of momentum, early signals, and topic pressure.",
       "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
+        "momentum_score=0.52",
+        "early_score=0.67",
+        "pressure=0.47"
       ],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+        "decision_link": "Decision 0.54 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
     "risk": {
       "value": "MEDIUM",
       "source": "fallback",
       "reason": "Missing or zero risk → fallback applied",
-      "evidence": []
+      "evidence": [],
+      "causality": {}
     },
     "allocation": {
       "value": 0.0,
       "source": "fallback",
       "reason": "Missing or zero allocation → fallback applied",
-      "evidence": []
+      "evidence": [],
+      "causality": {}
     },
     "conviction": {
       "value": 25,
-      "source": "engine",
-      "reason": "Derived from UNKNOWN stage and UNKNOWN momentum.",
-      "evidence": [
-        "Topic Pressure: 0.47",
-        "Risk Score: 0.5"
-      ],
+      "source": "fallback",
+      "reason": "Missing or zero conviction → fallback applied",
+      "evidence": [],
       "causality": {
         "theme": "AI Power Constraint",
         "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
@@ -325,33 +341,43 @@
         "decision_link": "Decision 25 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
       }
     },
-    "decision": {
-      "confidence": {
-        "value": 0.44,
-        "source": "recalibrated",
-        "base_confidence": 0.5,
-        "adjustments": {
-          "hit_ratio": 0.0,
-          "decision_accuracy": 0.0,
-          "failure_penalty": -0.1,
-          "recency_bonus": 0.04
-        },
-        "final_confidence": 0.44
-      }
-    },
     "recalibration_details": {
-      "value": 0.38,
+      "value": 0.52,
       "source": "recalibrated",
-      "base_confidence": 0.44,
+      "base_confidence": 0.5,
       "adjustments": {
         "hit_ratio": 0.0,
-        "decision_accuracy": 0.0,
+        "decision_accuracy": 0.08,
         "failure_penalty": -0.1,
         "recency_bonus": 0.04
       },
-      "final_confidence": 0.38
-    }
+      "final_confidence": 0.52
+    },
+    "decision": {}
   },
+  "stock_decisions": [
+    {
+      "ticker": "Microsoft",
+      "name": "Microsoft",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    },
+    {
+      "ticker": "NVIDIA",
+      "name": "NVIDIA",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    },
+    {
+      "ticker": "Palantir",
+      "name": "Palantir",
+      "action": "ACCUMULATE",
+      "confidence": 0.3,
+      "relevance_weight": 0.56
+    }
+  ],
   "portfolio_allocation": {
     "date": "2026-03-30",
     "total_capital": 1.0,
@@ -360,73 +386,73 @@
       {
         "ticker": "Microsoft",
         "stock": "Microsoft",
-        "base_weight": 0.23750000000000002,
-        "confidence": 0.47500000000000003,
-        "risk": 0.5,
+        "base_weight": 0.43200000000000005,
+        "confidence": 0.54,
+        "risk": 0.2,
         "weight": 0.25
       },
       {
         "ticker": "NVIDIA",
         "stock": "NVIDIA",
-        "base_weight": 0.23750000000000002,
-        "confidence": 0.47500000000000003,
-        "risk": 0.5,
+        "base_weight": 0.43200000000000005,
+        "confidence": 0.54,
+        "risk": 0.2,
         "weight": 0.25
       },
       {
         "ticker": "Palantir",
         "stock": "Palantir",
-        "base_weight": 0.17500000000000002,
-        "confidence": 0.35000000000000003,
-        "risk": 0.5,
+        "base_weight": 0.31200000000000006,
+        "confidence": 0.39,
+        "risk": 0.2,
         "weight": 0.0
       },
       {
         "ticker": "Caterpillar",
         "stock": "Caterpillar",
-        "base_weight": 0.0625,
-        "confidence": 0.125,
-        "risk": 0.5,
+        "base_weight": 0.2,
+        "confidence": 0.25,
+        "risk": 0.2,
         "weight": 0.0
       }
     ],
     "allocation_reason": "Risk-adjusted optimization for 4 stocks (Exposure: 0.5).",
     "allocation_evidence": [
-      "risk_score=0.5",
+      "risk_score=0.2",
       "stock_count=4"
     ],
     "metadata": {
-      "generated_at": "2026-03-30 10:05:02",
+      "generated_at": "2026-03-30 10:11:58",
       "engine": "AllocationEngine-v1.1"
     }
   },
   "decision_integrity": {
-    "engine_fields": 5,
-    "fallback_fields": 2,
-    "fallback_ratio": 0.29,
+    "engine_fields": 3,
+    "fallback_fields": 3,
+    "fallback_ratio": 0.5,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 10:05:02"
+    "generated_at": "2026-03-30 10:11:58"
   },
   "outcome_evaluation": {
     "theme_correct": true,
-    "decision_effective": false,
+    "decision_effective": true,
     "allocation_effective": true,
     "hit_ratio": 0.0,
-    "failure_type": "THEME_RIGHT_DECISION_WRONG"
+    "failure_type": "THEME_RIGHT_STOCK_WRONG"
   },
   "performance_summary": {
     "last_7d": {
       "theme_accuracy": 1.0,
-      "decision_accuracy": 0.0,
+      "decision_accuracy": 0.4,
       "hit_ratio_avg": 0.0,
-      "sample_size": 3
+      "sample_size": 5
     },
     "last_30d": {
       "theme_accuracy": 1.0,
-      "decision_accuracy": 0.0,
+      "decision_accuracy": 0.4,
       "hit_ratio_avg": 0.0,
-      "sample_size": 3
+      "sample_size": 5
     },
-    "updated_at": "2026-03-30 10:05:02"
+    "updated_at": "2026-03-30 10:11:58"
   }
 }
