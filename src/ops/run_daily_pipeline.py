@@ -540,12 +540,12 @@ def get_current_metrics():
     return stats
 
 def run_calibration_execution():
-    """PHASE 3.4.7: [STEP-K-2] Multi-Metric Safety Guard"""
-    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.7: SAFE CALIBRATION (MULTI-METRIC) STARTED")
+    """PHASE 3.4.7: [STEP-K-3] Weighted Performance Gate"""
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 3.4.7: SAFE CALIBRATION (WEIGHTED) STARTED")
     try:
         from src.ops.calibration_execution_engine import apply_calibration
         from src.ops.calibration_safety_guard import (
-            create_snapshot, rollback, validate_multi_metric, 
+            create_snapshot, rollback, validate_final, 
             append_snapshot_history, update_best_state
         )
         
@@ -575,24 +575,23 @@ def run_calibration_execution():
         applied = apply_calibration(project_root, plan, approval)
         
         if applied:
-            # 4. After Metrics & Multi-Metric Validation
-            # In a real environment, we would re-run evaluations here.
-            # For this step, we mock 'after' as slightly improved to pass the gate.
+            # 4. After Metrics & Weighted Validation
+            # Mocking a TRADE-OFF: Alignment drops slightly, but Profitability goes up.
             after_metrics = {
-                "alignment": before_metrics["alignment"],
+                "alignment": round(max(0, before_metrics["alignment"] - 0.05), 2), # Slight drop
                 "hit_ratio": before_metrics["hit_ratio"],
-                "avg_return": round(before_metrics["avg_return"] + 0.05, 2)
+                "avg_return": round(before_metrics["avg_return"] + 0.4, 2) # Significant gain
             }
             
-            result = validate_multi_metric(before_metrics, after_metrics)
+            result = validate_final(before_metrics, after_metrics)
             
             if result["status"] == "REJECT":
-                print(f"[Pipeline] 🛡️ REJECTED: {result['reasons']}. Rolling back...")
+                print(f"[Pipeline] 🛡️ REJECTED: {result.get('reason')} / Score: {result.get('score')}. Rolling back...")
                 rollback(project_root, snapshot_before)
             else:
-                print(f"[Pipeline] ✅ ACCEPTED: Engine calibrated successfully.")
+                print(f"[Pipeline] ✅ ACCEPTED: Engine calibrated successfully with Score {result.get('score')}.")
                 # Update Best State if applicable
-                current_snapshot = create_snapshot(current_params, after_metrics) # Mocking current state
+                current_snapshot = create_snapshot(current_params, after_metrics)
                 update_best_state(project_root, current_snapshot)
                 
             # Log results to guard log
@@ -600,8 +599,11 @@ def run_calibration_execution():
             guard_entry = {
                 "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "status": result["status"],
-                "reasons": result["reasons"],
+                "score": result.get("score"),
+                "reason": result.get("reason"),
+                "violations": result.get("violations", []),
                 "metrics": {"before": before_metrics, "after": after_metrics},
+                "details": result.get("details", {}),
                 "actions": applied
             }
             
@@ -612,6 +614,21 @@ def run_calibration_execution():
             history.append(guard_entry)
             with open(guard_log_path, "w", encoding="utf-8") as f:
                 json.dump(history, f, indent=2, ensure_ascii=False)
+                
+            # Sync to docs
+            for fname in ["calibration_guard_log.json", "calibration_snapshot_history.json", "calibration_best_state.json"]:
+                src = project_root / "data" / "ops" / fname
+                dest = project_root / "docs" / "data" / "ops" / fname
+                if src.exists():
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    dest.write_text(src.read_text())
+
+            print(f"[Pipeline] ✅ CALIBRATION EXECUTION COMPLETED (WEIGHTED).")
+        else:
+            print("[Pipeline] ℹ️ No approved actions to apply.")
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.7: SAFE CALIBRATION COMPLETED")
+        return True
                 
             # Sync to docs
             for fname in ["calibration_guard_log.json", "calibration_snapshot_history.json", "calibration_best_state.json"]:

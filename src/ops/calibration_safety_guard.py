@@ -105,23 +105,79 @@ def rollback(project_root, snapshot):
         json.dump(snapshot["params"], f, indent=2, ensure_ascii=False)
     print(f"[SafetyGuard] 🔄 Rollback executed from snapshot: {snapshot['timestamp']}")
 
+METRIC_WEIGHTS = {
+    "avg_return": 0.5,
+    "hit_ratio": 0.3,
+    "alignment": 0.2
+}
+
+HARD_CONSTRAINTS = {
+    "avg_return": -0.3,   # Max allowable drop
+    "hit_ratio": -0.2
+}
+
+def calculate_weighted_score(before, after):
+    """Calculates a weighted performance delta score."""
+    score = 0
+    details = {}
+    for metric, weight in METRIC_WEIGHTS.items():
+        b = before.get(metric, 0)
+        a = after.get(metric, 0)
+        delta = a - b
+        weighted = delta * weight
+        score += weighted
+        details[metric] = {
+            "before": b,
+            "after": a,
+            "delta": round(delta, 3),
+            "weighted": round(weighted, 3)
+        }
+    return round(score, 3), details
+
+def check_hard_constraints(before, after):
+    """Detects if any metric drop exceeds the absolute safety floor."""
+    violations = []
+    for metric, limit in HARD_CONSTRAINTS.items():
+        delta = after.get(metric, 0) - before.get(metric, 0)
+        if delta < limit:
+            violations.append(f"{metric.upper()} ({round(delta, 3)} < {limit})")
+    return violations
+
+def validate_final(before, after):
+    """
+    Final Performance Gate:
+    1. Check Hard Constraints (Absolute floors).
+    2. Evaluate Weighted Score (Net gain).
+    """
+    # 1. Hard Constraints
+    violations = check_hard_constraints(before, after)
+    if violations:
+        print(f"[SafetyGuard] 🚫 REJECTED: Hard Constraint Violation - {', '.join(violations)}")
+        return {
+            "status": "REJECT",
+            "reason": "HARD_CONSTRAINT",
+            "violations": violations,
+            "score": 0
+        }
+    
+    # 2. Weighted Score
+    score, details = calculate_weighted_score(before, after)
+    if score > 0:
+        print(f"[SafetyGuard] ✅ ACCEPTED: Weighted Score {score} > 0. Net improvement detected.")
+        return {
+            "status": "ACCEPT",
+            "score": score,
+            "details": details
+        }
+    else:
+        print(f"[SafetyGuard] ❌ REJECTED: Weighted Score {score} <= 0. No net benefit.")
+        return {
+            "status": "REJECT",
+            "reason": "NEGATIVE_SCORE",
+            "score": score,
+            "details": details
+        }
+
 def validate_multi_metric(before, after):
-    """
-    Performance Gate: Accept calibration only if it doesn't degrade any key metrics.
-    Metrics: alignment, hit_ratio, avg_return.
-    """
-    metrics = ["alignment", "hit_ratio", "avg_return"]
-    reasons = []
-    
-    for m in metrics:
-        b_val = before.get(m, 0)
-        a_val = after.get(m, 0)
-        if a_val < b_val:
-            reasons.append(f"{m.upper()}_DOWN ({b_val} -> {a_val})")
-            
-    if reasons:
-        print(f"[SafetyGuard] ❌ Rejected: {', '.join(reasons)}")
-        return {"status": "REJECT", "reasons": reasons}
-    
-    print(f"[SafetyGuard] ✅ Accepted: All metrics maintained or improved.")
-    return {"status": "ACCEPT", "reasons": []}
+    """Deprecated: Replaced by validate_final. Legacy wrapper for compatibility."""
+    return validate_final(before, after)
