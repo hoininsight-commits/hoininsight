@@ -1857,10 +1857,23 @@ def main():
     try:
         from src.ui.build_operator_view import build_operator_view
         build_operator_view(project_root)
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 5: OPERATOR COGNITIVE LAYER COMPLETED")
+    # Step 6: UI ↔ SSOT Consistency Lock (STEP-L-2)
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 6: UI CONSISTENCY CHECK STARTED")
+    try:
+        from src.ops.ui_consistency_lock import check_consistency
+        failures = check_consistency(project_root)
+        
+        if failures:
+            print(f"[Pipeline] ❌ STEP-L-2 FAIL: UI mismatch detected! {failures}")
+            # In a production CI/CD environment, we would raise an exception here. 
+            # For this pipeline, we will log it and mark success as false.
+            success = False
+        else:
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 6: UI CONSISTENCY CHECK PASSED")
     except Exception as e:
-        print(f"[Pipeline] ⚠️ Operator View generation failed: {e}")
+        print(f"[Pipeline] ⚠️ UI Consistency check failed (Engine Error): {e}")
         traceback.print_exc()
+        success = False
 
     if success:
         print("\n=== PIPELINE SUCCESS ===")
