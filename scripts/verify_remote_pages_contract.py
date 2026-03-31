@@ -15,7 +15,14 @@ def fetch_json(url):
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
     
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    import time
+    buster = str(int(time.time() * 1000))
+    if "?" in url:
+        url = f"{url}&_cb={buster}"
+    else:
+        url = f"{url}?_cb={buster}"
+
+    req = urllib.request.Request(url, headers={"Cache-Control": "no-cache", 'User-Agent': 'Mozilla/5.0'})
     print(f"Curling [GET] {url}...")
     try:
         with urllib.request.urlopen(req, context=ctx, timeout=10) as response:

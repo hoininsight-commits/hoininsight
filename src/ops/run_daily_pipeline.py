@@ -262,6 +262,16 @@ def main():
         print(f"[Pipeline] ⚠️ UI Sync failed (Soft-Fail): {e}")
         traceback.print_exc()
 
+    # Step 5: Operator Cognitive Layer (STEP-L)
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 5: OPERATOR COGNITIVE LAYER STARTED")
+    try:
+        from src.ui.build_operator_view import build_operator_view
+        build_operator_view(project_root)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 5: OPERATOR COGNITIVE LAYER COMPLETED")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Operator View generation failed: {e}")
+        traceback.print_exc()
+
     if success:
         print("\n=== PIPELINE SUCCESS ===")
         sys.exit(0)

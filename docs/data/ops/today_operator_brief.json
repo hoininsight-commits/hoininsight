@@ -1,0 +1,31 @@
+{
+  "core_theme": "AI 전력 인프라 병목과 구조적 기회",
+  "causality": {
+    "summary": "AI 데이터센터 급증으로 인한 전력 공급 부족이 반도체 생산 및 운영의 핵심 병목으로 부상하며 인프라 수요 폭증"
+  },
+  "decision": {
+    "action": "ADD",
+    "timing": "NOW",
+    "confidence": {
+      "value": 0.88
+    },
+    "risk": "MEDIUM",
+    "allocation": 0.25
+  },
+  "impact": {
+    "top_stocks": [
+      {
+        "name": "VRT",
+        "reason": "AI 데이터센터용 냉각 및 전력 관리 글로벌 1위 인프라 제공"
+      },
+      {
+        "name": "VST",
+        "reason": "탄소중립 시대 원자력 기반의 안정적인 전력 생산 핵심 주체"
+      },
+      {
+        "name": "MSFT",
+        "reason": "AI 수요 폭증의 직접적인 수혜자이자 전력 인프라 대규모 선제 투자"
+      }
+    ]
+  }
+}
