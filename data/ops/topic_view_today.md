@@ -22,62 +22,42 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 5월부터 양도세율 최대 75%… 매물잠김땐 1주택 보유세도 ‘손질 예고’[10문10답] - 문화일보 (ID: unknown)
+### "또 떨어지냐" 외국인, '삼전·닉스' 얼마나 팔았길래…떨고 있는 개미들 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
+### 중동 전쟁 한 달…국내 증시 시총 840조 증발, 삼성전자·하이닉스 372조 감소 By 알파경제 alphabiz - Investing.com 한국어 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 중동 전쟁 한 달…국내 증시 시총 840조 증발, 삼성전자·하이닉스 372조 감소 By 알파경제 alphabiz - kr.investing.com (ID: unknown)
+### 코스피 2%대 하락… 삼성전자 17만·SK하이닉스 82만원대 간신히 턱걸이 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [어제장 오늘장] D램 가격 하락 조짐에 AI칩 쇼크…반도체주 향방은? - v.daum.net (ID: unknown)
+### 한미약품 투자전문가 황상연 사내이사 선임…경영 변화 기류 - 메디칼타임즈 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼겹살·치킨값 다 뛴다…중동발 쇼크에 밥상물가 '초비상' [중동발 나비효과①] - hankyung.com (ID: unknown)
+### ‘신의 한 수’가 된 감자… 윤대인 삼천당제약 회장 아들 지분가치 1조원 이상 급등 - 코메디닷컴 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “이란, 후티 반군에 홍해 봉쇄 압박”…WTI 배럴당 100달러 돌파 - news.kbs.co.kr (ID: unknown)
+### “이란, 후티 반군에 홍해 봉쇄 압박”…WTI 배럴당 100달러 돌파 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e (ID: unknown)
+### 삼겹살·치킨값 다 뛴다…중동발 쇼크에 밥상물가 '초비상' [중동발 나비효과①] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 외국인들, 이달 코스피에서만 32조 던졌다…역대 최대 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 인천시, GTX-B 운영 본사 송도 유치 성공…인천대입구역 인근 건립 - 경기일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 경희의료원, ‘2026 의료 AI 콜로키움’ 개최 - 후생신보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### HK이노엔·광동제약 합류로 n조 클럽 확대…외형·수익성 동시 성장 - MEDI:GATE NEWS (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 기름값 2000원 코앞...줄 서서 찾는 ‘싼 주유소’ [더 한장] - 조선일보 (ID: unknown)
+### [단독] 병원에 AI 전면 도입하면 의료비 매년 21조 아낀다 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,29 +67,84 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 지씨셀, 고형암 정밀타격 'CAR-NK' 특허…CAR-T 한계 넘나 - 메디칼타임즈 (ID: unknown)
+### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 데이터로 설계하고 검증까지… 생성형 AI, 신약개발 전주기 확장 - 히트뉴스 (ID: unknown)
+### “오늘 딱 하루 남았다” 해외항공권 싸게 살 기회 - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### EU 탄소국경조정제도 대응, 수출기업 1대1 밀착 지원 - 대한민국 정책브리핑 (ID: unknown)
+### 강남·한강벨트 임대업자 수천억 탈세…전세금까지 굴렸다 - 연합뉴스TV (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 보고에서 평가로…식약처, 시판 후 안전관리 ‘근본 전환’ 선언 - 약업신문 (ID: unknown)
+### 아시안게임 金, 병역면제까지 받았는데… 프로게이머 ‘룰러’ 탈세 추징 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한미약품, 황상연 신임 대표 선임…창사 53년만 첫 외부영입 대표 - 팜이데일리 (ID: unknown)
+### 김정관 산업장관 "현상황 지속시 비축유 4~5월 방출…5부제 추가조치 가능성" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 하루 만에 휘발윳값 214원 올린 주유소 찾아간 김정관 장관 - 연합뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 부동산 대책, 다주택자들 ‘고민’…“10명 중 6명, 효과 기대” - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "5000원 점심 먹자" 거지맵 인기…'거지방' 30대 청년이 만들었다 - 뉴스1 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "외국인 이렇게 많아?"…'SNS 성지'로 뜨더니 관광객 몰려드는 곳 [현장+] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 희귀질환 진단 지원 40% 확대…질병청 “지역의료 격차 해소” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘화상치료 헌신’ 허준 한림대한강성심병원장, 보건복지부장관 표창 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 스틱인베 신임 CEO에 곽동걸 부회장…CIO 겸직 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 남미에 K뷰티 알린다…큐라펄스, 브라질 의료기기 기업과 MOA (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “쓰레기 봉투보다 포장재 대란이 더 큰 문제”…직격탄 맞은 자영업자들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 신영증권, 창립 70주년 기념 ‘우수고객 초청 음악회’ 성료 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용할 듯 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### AI 안면인식 믿었는데…5개월간 억울한 옥살이 (ID: unknown)
@@ -167,47 +202,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### [2026년 추경] K패스 환급 최대 83%…‘쉬었음’ 청년 일자리에 9000억 (ID: unknown)
+### 대중교통 K패스 환급 최대 83%…‘쉬었음’ 청년 일자리에 9000억 지원 [2026년 추경] (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 남양주도시공사, 손끝으로 전하는 진심…찾아가는 수어 교실 성료 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 농협은행, NH특화 기술금융 공급 급증...K-혁신기업도 지원 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 신상진 성남시장, 중동사태 대응 비상경제대책 발표…재난 선포 건의·상품권 확대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 서울시 이어 인천시도 킥보드 운행 제한... 송도 학원가·부평 테마의거리에 시범 도입 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 정장선 평택시장 “평택의 발전은 조화와 협치의 결실” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “1시간 배송의 승부수” SSG닷컴, 4월 한 달간 ‘바로퀵’ 무료배송·할인 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 백화점의 파격 변신… 롯데백화점 ‘신선 미식 전문관’으로 지역 상권 공략 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 한세예스24그룹, 중장기 배당정책 발표…“최소 배당금 상향” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
