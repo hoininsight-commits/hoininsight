@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.outcome_classifier import OutcomeClassifier
+from src.ops.issuesignal.outcome_classifier import OutcomeClassifier
 
 class TestIS43OutcomeClassifier(unittest.TestCase):
     def setUp(self):

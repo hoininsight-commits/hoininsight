@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.audience_gate import AudienceGateEngine
+from src.ops.issuesignal.audience_gate import AudienceGateEngine
 
 class TestIS36AudienceGate(unittest.TestCase):
     def setUp(self):

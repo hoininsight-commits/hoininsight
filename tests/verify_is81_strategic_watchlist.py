@@ -22,7 +22,7 @@ def main():
     
     # 1. Run Issue Signal Generator
     print("1. Running run_issuesignal...")
-    run_command("python3 -m src.issuesignal.run_issuesignal")
+    run_command("python3 -m src.ops.issuesignal.run_issuesignal")
     
     # 2. Verify Watchlist JSON
     print("2. Verifying strategic_watchlist_*.json...")

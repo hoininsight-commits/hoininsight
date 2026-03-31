@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.script_lock_engine import ScriptLockEngine
+from src.ops.issuesignal.script_lock_engine import ScriptLockEngine
 
 class TestIS62ScriptLock(unittest.TestCase):
     

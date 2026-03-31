@@ -37,7 +37,7 @@ def verify_is48_ssot_latest():
 if __name__ == "__main__":
     import sys
     # Simulate a run first to generate the index if it doesn't exist
-    from src.issuesignal.index_generator import IssueSignalIndexGenerator
+    from src.ops.issuesignal.index_generator import IssueSignalIndexGenerator
     gen = IssueSignalIndexGenerator(Path("."))
     gen.generate([{"topic_id": "TEST_001", "status": "HOLD", "reason_code": "TRUST_FAIL"}])
     

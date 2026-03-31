@@ -6,7 +6,7 @@ import os
 # Add root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
+from src.ops.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
 def main():
     base_dir = Path(".")

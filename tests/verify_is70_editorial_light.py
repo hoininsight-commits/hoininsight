@@ -2,8 +2,8 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
-from src.issuesignal.editorial_light_engine import EditorialLightEngine
-from src.issuesignal.dashboard.models import DecisionCard
+from src.ops.issuesignal.editorial_light_engine import EditorialLightEngine
+from src.ops.issuesignal.dashboard.models import DecisionCard
 
 def test_editorial_light_generation():
     # 1. Mock Macro Actor

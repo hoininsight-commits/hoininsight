@@ -1,4 +1,4 @@
-from src.issuesignal.decision_tree import DecisionTree
+from src.ops.issuesignal.decision_tree import DecisionTree
 
 def test_runnerup_loss():
     # 1. Success Path

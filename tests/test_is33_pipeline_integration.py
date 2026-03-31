@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from src.issuesignal.time_decay import TriggerTimeDecayEngine
+from src.ops.issuesignal.time_decay import TriggerTimeDecayEngine
 
 class TestIS33Integration(unittest.TestCase):
     def test_pipeline_decay_flow(self):

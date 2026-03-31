@@ -1,6 +1,6 @@
 import unittest
-from src.issuesignal.urgency_engine import UrgencyEngine
-from src.issuesignal.output_decider import OutputDecider
+from src.ops.issuesignal.urgency_engine import UrgencyEngine
+from src.ops.issuesignal.output_decider import OutputDecider
 
 class TestIS34UrgencyOutput(unittest.TestCase):
     def setUp(self):

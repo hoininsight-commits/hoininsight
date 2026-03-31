@@ -1,5 +1,5 @@
 /**
- * REF-010: Legacy Deprecation Notice Card
+ * REF-010: V1_Archived Deprecation Notice Card
  * Surfaces active technical debt warnings to the operator.
  */
 class DeprecationNoticeCard {
@@ -41,11 +41,11 @@ class DeprecationNoticeCard {
                 <div style="font-size: 0.85em; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #eee;">
             `;
 
-            const topHits = data.legacy_hits.slice(0, 3);
+            const topHits = data.v1_archived_hits.slice(0, 3);
             topHits.forEach(hit => {
                 html += `
                     <div style="margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px;">
-                        <div style="font-weight: bold; color: #333;">${hit.legacy_key}</div>
+                        <div style="font-weight: bold; color: #333;">${hit.v1_archived_key}</div>
                         <div style="color: #666; font-size: 0.9em;">📍 ${hit.path}</div>
                         <div style="color: #0066cc; margin-top: 3px;">💡 권장: ${hit.replacement}</div>
                     </div>

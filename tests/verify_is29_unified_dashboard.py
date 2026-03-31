@@ -6,8 +6,8 @@ from pathlib import Path
 # Add root to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
-from src.issuesignal.dashboard.models import DecisionCard
+from src.ops.issuesignal.dashboard.build_dashboard import DashboardBuilder
+from src.ops.issuesignal.dashboard.models import DecisionCard
 
 def verify_is29():
     base_dir = Path(".")

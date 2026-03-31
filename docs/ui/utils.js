@@ -17,6 +17,9 @@ export const UI_SAFE = {
     },
 
     safeNum: (v, fallback = 0) => {
+        if (v && typeof v === 'object' && v.hasOwnProperty('value')) {
+            return parseFloat(v.value) || fallback;
+        }
         const n = parseFloat(v);
         return isNaN(n) ? fallback : n;
     },
@@ -66,7 +69,8 @@ export function normalizeDecision(raw) {
     const date = UI_SAFE.safeStr(raw.date, UI_SAFE.deriveDateFromSelectedAt(selected_at) || "-");
     const why_now_type = UI_SAFE.safeStr(raw.why_now_type, raw.WHY_NOW_TRIGGER_TYPE || "-");
     const speakability = UI_SAFE.safeStr(raw.speakability, raw.speakability_decision || "-");
-    const intensity = UI_SAFE.safeNum(raw.narrative_score, UI_SAFE.safeNum(raw.stress_score, 0) * 100);
+    const intensity = UI_SAFE.safeNum(raw.intensity, UI_SAFE.safeNum(raw.score, null));
+    const narrative_score = UI_SAFE.safeNum(raw.narrative_score, null);
     const summary = UI_SAFE.safeStr(raw.why_now_summary, raw.summary || "-");
     const anomaly_points = UI_SAFE.safeArr(raw.anomaly_points);
     const related_assets = UI_SAFE.safeArr(raw.related_assets);
@@ -87,7 +91,8 @@ export function normalizeDecision(raw) {
         date,
         why_now_type,
         speakability,
-        narrative_score: intensity,
+        intensity,
+        narrative_score,
         why_now_summary: summary,
         anomaly_points,
         related_assets,
@@ -140,14 +145,15 @@ export function convertDecisionCardToDecisionItem(card) {
 
     const selected_at = (raw_sat && raw_sat !== "-") ? raw_sat : (date !== "-" ? `${date}T00:00:00` : "-");
 
-    // intensity: normalise 0–1 → 0–100, NaN → null
-    let rawScore = card.narrative_score !== undefined ? card.narrative_score : card.intensity;
-    let intensity = UI_SAFE.safeNum(rawScore, null);
-
+    // intensity vs narrative_score separation (v2.8)
+    const rawInt = card.intensity !== undefined ? card.intensity : card.score;
+    let intensity = UI_SAFE.safeNum(rawInt, null);
     if (intensity !== null) {
         if (intensity > 0 && intensity <= 1) intensity = Math.round(intensity * 100);
         else intensity = Math.round(intensity);
     }
+
+    const narrative_score = UI_SAFE.safeNum(card.narrative_score, null);
 
     // speakability — handle new schema values (EDITORIAL_CANDIDATE → HOLD)
     const rawSpeak = UI_SAFE.safeStr(card.proof_status || card.speakability || card.status, "HOLD");
@@ -187,7 +193,8 @@ export function convertDecisionCardToDecisionItem(card) {
         title,
         date,
         selected_at,
-        narrative_score: intensity,
+        intensity,
+        narrative_score,
         speakability,
         why_now_type,
         why_now_summary,
@@ -268,7 +275,7 @@ export function extractDecisions(fileJson) {
     if (fileJson.date && Array.isArray(fileJson.picks) && fileJson.picks.length > 0) {
         return fileJson.picks.map(p => convertEditorialPickToDecisionItem(p, fileJson.date));
     }
-    // Decision Card schema: new v1 (today.json) or legacy phase66 cards
+    // Decision Card schema: new v1 (today.json) or v1_archived phase66 cards
     if (fileJson.card_version && (fileJson.date || fileJson.title || fileJson.topic)) {
         const items = [convertDecisionCardToDecisionItem(fileJson)];
         if (Array.isArray(fileJson.top_topics) && fileJson.top_topics.length > 0) {
@@ -283,8 +290,25 @@ export function extractDecisions(fileJson) {
         }
         return items;
     }
-    // Fallback: single plain object with a title and selected_at (legacy interpretation unit)
+    // Fallback: single plain object with a title and selected_at (v1_archived interpretation unit)
     if (fileJson.title && fileJson.selected_at) return [fileJson];
     // Non-decision file (daily_snapshot, collection_status, etc.) — skip silently
     return [];
+}
+
+/**
+ * Universal JSON Fetcher with cache busting
+ */
+export async function fetchJSON(url) {
+    try {
+        const resp = await fetch(url + '?v=' + Date.now());
+        if (!resp.ok) {
+            console.warn(`[fetchJSON] HTTP ${resp.status} for ${url}`);
+            return null;
+        }
+        return await resp.json();
+    } catch (e) {
+        console.error(`[fetchJSON] Error fetching ${url}:`, e);
+        return null;
+    }
 }

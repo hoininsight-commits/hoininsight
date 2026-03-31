@@ -54,7 +54,7 @@ def analyze_flags(data):
     return counts, total
 
 def main():
-    data = load_json("data_outputs/ops/narrative_component_autopsy_last14days.json")
+    data = load_json("data/ops/narrative_component_autopsy_last14days.json")
     total = len(data)
     if total == 0:
         print("No data extracted.")
@@ -196,8 +196,8 @@ def main():
 > **[조치 권고사항]**
 > Actor Score 와 Flow/Policy Score 의 산출 방식이 비정상적으로 억제되어 있습니다. Component 의 가중치가 아니라, 엔진이 **구조적 액터를 인지하는 기준(Dictionary 또는 Regex 매칭률)** 자체가 완전히 망가져 있을 확률이 유력합니다.
 """
-    write_md("data_outputs/ops/narrative_component_distribution.md", md_dist)
-    print("Report generated: data_outputs/ops/narrative_component_distribution.md")
+    write_md("data/ops/narrative_component_distribution.md", md_dist)
+    print("Report generated: data/ops/narrative_component_distribution.md")
 
     # Markdown - Stage Map
     md_stage = f"""# [PHASE-14A] NARRATIVE STAGE FAILURE MAP

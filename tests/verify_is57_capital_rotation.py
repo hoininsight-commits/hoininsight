@@ -1,7 +1,7 @@
 import sys
 import unittest
 from pathlib import Path
-from src.issuesignal.capital_rotation.engine import CapitalRotationEngine
+from src.ops.issuesignal.capital_rotation.engine import CapitalRotationEngine
 
 class TestCapitalRotation(unittest.TestCase):
     def setUp(self):
@@ -20,7 +20,7 @@ class TestCapitalRotation(unittest.TestCase):
             
     def test_rules_loading(self):
         print("\n[TEST] Verifying Rules Loading...")
-        from src.issuesignal.capital_rotation.rules import ROTATION_RULES
+        from src.ops.issuesignal.capital_rotation.rules import ROTATION_RULES
         self.assertGreater(len(ROTATION_RULES), 0)
         print(f"Loaded {len(ROTATION_RULES)} rules.")
 

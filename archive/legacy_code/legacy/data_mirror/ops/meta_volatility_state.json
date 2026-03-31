@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-03-10T03:28:08.288990+00:00",
+  "date_kst": "2026-03-10",
+  "state": {
+    "mode": "MIXED",
+    "fragility": "MEDIUM",
+    "shock_window": "WATCH"
+  },
+  "signals": {
+    "regime": {
+      "policy": "RESTRICTIVE",
+      "liquidity": "TIGHTENING",
+      "risk": "RISK_OFF",
+      "curve": "UNKNOWN"
+    },
+    "timing": {
+      "gear": 3,
+      "sync": "UNKNOWN",
+      "accel_watch": [
+        "동일 축 지표 2개 이상 동시 강도 상승",
+        "Conflict Density 급증",
+        "Regime 전환 시그널 발생"
+      ],
+      "decel_warning": [
+        "Video 후보 0건 지속",
+        "Axis 정합도 약화",
+        "내러티브 강도 급락"
+      ]
+    },
+    "compression": {
+      "direction": "NEUTRAL",
+      "pressure": "LOW",
+      "stability": "STABLE"
+    },
+    "conflict": {
+      "density_level": "LOW",
+      "top_conflicts": [
+        null
+      ]
+    },
+    "video": {
+      "candidates": 0
+    }
+  },
+  "interpretation": {
+    "one_liner": "지금 시장은 MIXED 상태이며, 취약성은 MEDIUM입니다.",
+    "why_now": [
+      "Timing Gear 3 가속 및 UNKNOWN 동기화 상태 감지",
+      "상대적으로 낮은 변동성 압축 강도 (LOW)",
+      "유동성 TIGHTENING 정권 하에서의 구조적 민감도 증폭"
+    ],
+    "invalidators": [
+      "Timing Gear 2 이하로의 급격한 서사 감속",
+      "Stability가 STABLE에서 STABLE로의 구조적 전환 발생"
+    ]
+  }
+}

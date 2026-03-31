@@ -4,7 +4,7 @@
  */
 const ManifestLoader = {
     BASE_PATH: '/hoininsight/data/ui/',
-    LOCAL_PATH: '../data/ui/',
+    LOCAL_PATH: 'data/ui/',
 
     async fetchJson(file, isCritical = false) {
         const paths = [this.BASE_PATH + file, this.LOCAL_PATH + file];
@@ -29,7 +29,7 @@ const ManifestLoader = {
         // We need to resolve it relative to data/
         const fullPaths = [
             '/hoininsight/data/' + assetPath,
-            '../data/' + assetPath
+            'data/' + assetPath
         ];
 
         for (const path of fullPaths) {

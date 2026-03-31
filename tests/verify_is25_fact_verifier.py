@@ -4,7 +4,7 @@ from pathlib import Path
 # Add root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.fact_verifier import FactVerifier, SourceType
+from src.ops.issuesignal.fact_verifier import FactVerifier, SourceType
 
 def main():
     base_dir = Path(".")

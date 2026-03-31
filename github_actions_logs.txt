@@ -1,0 +1,32 @@
+Failed Run #54 Audit (Daily Hoin Engine Pipeline)
+--------------------------------------------------
+Status: Failure
+Job: daily-insight
+Step: Run Economic Hunter Production Line (IssueSignal)
+Error:
+Traceback (most recent call last):
+  File "/home/runner/work/hoininsight/hoininsight/src/ops/issuesignal/run_issuesignal.py", line 10, in <module>
+    from src.ops.issuesignal.issue_pool import IssuePool
+ModuleNotFoundError: No module named 'src'
+Error: Process completed with exit code 1.
+
+Successful Run #896 Audit (full_pipeline)
+-----------------------------------------
+Status: Success
+Execution Time: 4m 56s
+Summary:
+- A1: Data Processing Agent (20s)
+- A2: Signal Discovery Agent (5s)
+- A3: Narrative Intelligence Agent (1s)
+- A6: SSOT Publishing Agent (1s)
+- Commit Intelligence Outputs (6s)
+
+Commit Message: chore: save intelligence artifacts and docs [automated] [skip ci]
+Changes: 168 files changed, 1294 insertions(+), 1041 deletions(-)
+Key Artifacts:
+- data/issuesignal/audit/RAW-20260316125739_diversity.json
+- data/issuesignal/final_packs/RAW-20260316125739_EH_CONTENT.yaml
+- data/issuesignal/packs/RAW-20260316125739.yaml
+- data/issuesignal/pool/RAW-20260316125739.json
+- data/ops/runlogs/DataAgent_125641.json
+- data/ops/runlogs/DecisionAgent_125745.json

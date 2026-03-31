@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime, timedelta, timezone
-from src.issuesignal.time_decay import TriggerTimeDecayEngine
+from src.ops.issuesignal.time_decay import TriggerTimeDecayEngine
 
 class TestTriggerTimeDecayEngine(unittest.TestCase):
     def setUp(self):

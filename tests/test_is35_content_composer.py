@@ -1,6 +1,6 @@
 import unittest
 import re
-from src.issuesignal.content_composer import ContentPackageComposer
+from src.ops.issuesignal.content_composer import ContentPackageComposer
 
 class TestIS35ContentComposer(unittest.TestCase):
     def setUp(self):

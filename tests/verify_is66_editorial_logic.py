@@ -11,7 +11,7 @@ from pathlib import Path
 # And verify the dashboard HTML generation (light check).
 
 sys.path.append(str(Path(__file__).parent.parent))
-from src.issuesignal.script_lock_engine import ScriptLockEngine
+from src.ops.issuesignal.script_lock_engine import ScriptLockEngine
 
 class TestIS66Editorial(unittest.TestCase):
     def test_5_step_structure(self):

@@ -1,14 +1,14 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-02-25T13:20:04.922652",
-  "date": "2026-02-25",
+  "generated_at_kst": "2026-03-31T13:03:37.290119",
+  "date": "2026-03-31",
   "blocks": {
     "regime": {
-      "current_regime": "(no meta regime detected)",
-      "confidence": 0.0,
-      "has_meta_topics": false,
-      "meta_topic_count": 0,
-      "basis_type": "NONE"
+      "current_regime": "긴축 기조 강화 및 유동성 축소 지속",
+      "confidence": 0.9,
+      "has_meta_topics": true,
+      "meta_topic_count": 1,
+      "basis_type": "STRUCTURAL_REGIME"
     },
     "revival": {
       "proposal_count": 0,
@@ -23,356 +23,202 @@
       "7d_success_rate": "7/7"
     }
   },
-  "topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
-  "structural_topic": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
-  "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
-  "structural_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=1.88 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
+  "topic": "Policy Radar",
+  "structural_topic": "Policy Radar",
+  "anchor_topic": "[Unknown] Hybrid-driven",
+  "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
-  "decision_rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+  "decision_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "metal_gold_paxg_coingecko"
+        "index_spx_fred",
+        "index_nasdaq_fred",
+        "risk_vix_fred",
+        "credit_hy_spread_fred"
       ],
-      "step6_gap": "Insufficient Evidence for L3/L4",
+      "step6_gap": "Insufficient Evidence for L4",
       "request": [
-        "Need Correlated Asset Movement",
-        "Need News/Event Confirmation"
+        "Need Volume/Flow Data to verify Capital Fixation"
       ],
       "pre_structural": null
     },
-    "risk_vix_fred": "Primary",
-    "index_kospi_stooq": "Secondary",
-    "rates_us02y_fred": "Secondary",
-    "inflation_cpi_fred": "Secondary",
-    "inflation_pce_fred": "Secondary"
+    "PRED_20260331_05": "Primary",
+    "PRED_20260331_01": "Secondary"
   },
   "top_topics": [
     {
-      "dataset_id": "risk_vix_fred",
-      "level": "L2",
-      "score": 115,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 공포지수(VIX) 이상 급등 중심의 시장 발작 (코스피(KOSPI) 지수 충격, 미국 10년물 국채금리 급변 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 공포지수(VIX)에서 Percentile 96.4% (Extreme). 특히 동일 섹터인 [index_kospi_stooq] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "id": "PRED_20260331_05",
+      "score": 83.2,
+      "intensity": 0.8320000000000001,
+      "title": "Policy Radar",
+      "rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "ts_utc": "2026-02-25T13:19:46Z",
-        "dataset_id": "risk_vix_fred",
-        "topic_id": "risk_vix_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/02/25/risk_vix_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.25,
-            "percentile": 96.4,
-            "value": 21.01,
-            "rolling_mean_20d": 18.7595,
-            "reasoning": "Percentile 96.4% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/02/25/risk_vix_fred.json"
-        },
-        "rationale": "[L2] Percentile 96.4% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
+        "topic_id": "PRED_20260331_05",
+        "theme": "Policy Radar",
+        "prediction_score": 83.2,
+        "prediction_reason": "Policy Radar Momentum + 10 Regime Alignment",
+        "expected_market_impact": "Policy Radar volatility acceleration expected",
+        "expected_sector": "Infrastructure",
+        "breakdown": {
+          "radar": 30,
+          "probability": 25.2,
+          "regime": 10,
+          "narrative": 18
+        }
       },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ]
+      "logic_block": "PREDICTIVE_TOPIC",
+      "leader_stocks": [],
+      "narrative_score": null,
+      "title_refined": "반도체 공급망 대격변, 지금 대응하지 않으면 늦는 이유",
+      "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     },
     {
-      "dataset_id": "index_kospi_stooq",
-      "level": "L2",
-      "score": 115,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 코스피(KOSPI) 지수 충격 중심의 시장 발작 (공포지수(VIX) 이상 급등, 미국 10년물 국채금리 급변 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 코스피 지수에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [risk_vix_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
+      "id": "PRED_20260331_01",
+      "score": 71.85,
+      "intensity": 0.7184999999999999,
+      "title": "Macro Shock Radar",
+      "rationale": "[Predicted] Macro Shock Radar Momentum + 10 Regime Alignment",
       "raw_data": {
-        "ts_utc": "2026-02-25T13:19:46Z",
-        "dataset_id": "index_kospi_stooq",
-        "topic_id": "index_kospi_stooq::z_score_model_v1",
-        "title": "data/features/anomalies/2026/02/25/index_kospi_stooq.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.73,
-            "percentile": 100.0,
-            "value": 6108.84,
-            "rolling_mean_20d": 5923.723,
-            "reasoning": "Percentile 100.0% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/02/25/index_kospi_stooq.json"
-        },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
+        "topic_id": "PRED_20260331_01",
+        "theme": "Macro Shock Radar",
+        "prediction_score": 71.85,
+        "prediction_reason": "Macro Shock Radar Momentum + 10 Regime Alignment",
+        "expected_market_impact": "Macro Shock Radar volatility acceleration expected",
+        "expected_sector": "Financials",
+        "breakdown": {
+          "radar": 20,
+          "probability": 23.85,
+          "regime": 10,
+          "narrative": 18
+        }
       },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ],
-      "narrative_score": 14.0,
-      "video_ready": false,
-      "actor_tier_score": 0.0,
-      "escalation_flag": false,
-      "conflict_flag": false,
-      "cross_axis_multiplier": 1.0,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
-        "affected_sector": "거시경제 이상징후: index_kospi_stooq",
-        "time_pressure": "low"
-      }
-    },
-    {
-      "dataset_id": "rates_us02y_fred",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 감지된 토픽: rates_us02y_fred L2 Signal 중심의 시장 발작 (연준 기준금리(Fed Funds) 변동, 장단기 금리차(Yield Curve) 역전/해소 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 1.6% (Extreme). 특히 동일 섹터인 [rates_fed_funds_fred] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-02-25T13:19:46Z",
-        "dataset_id": "rates_us02y_fred",
-        "topic_id": "rates_us02y_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/02/25/rates_us02y_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": -1.33,
-            "percentile": 1.6,
-            "value": 3.43,
-            "rolling_mean_20d": 3.4989999999999997,
-            "reasoning": "Percentile 1.6% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/02/25/rates_us02y_fred.json"
-        },
-        "rationale": "[L2] Percentile 1.6% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ]
-    },
-    {
-      "dataset_id": "inflation_cpi_fred",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 소비자물가(CPI) 충격 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 개인소비지출(PCE) 물가 이상 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 미국 소비자물가에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-02-25T13:19:46Z",
-        "dataset_id": "inflation_cpi_fred",
-        "topic_id": "inflation_cpi_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/02/25/inflation_cpi_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.65,
-            "percentile": 100.0,
-            "value": 326.588,
-            "rolling_mean_20d": 319.3257,
-            "reasoning": "Percentile 100.0% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/02/25/inflation_cpi_fred.json"
-        },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ],
-      "narrative_score": 14.0,
-      "video_ready": false,
-      "actor_tier_score": 0.0,
-      "escalation_flag": false,
-      "conflict_flag": false,
-      "cross_axis_multiplier": 1.0,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
-        "affected_sector": "거시경제 이상징후: inflation_cpi_fred",
-        "time_pressure": "low"
-      }
-    },
-    {
-      "dataset_id": "inflation_pce_fred",
-      "level": "L2",
-      "score": 100,
-      "confidence": 80,
-      "proof_status": "VALIDATED",
-      "missing_sensors": [],
-      "title": "[Monetary Tightening] 미국 개인소비지출(PCE) 물가 이상 중심의 시장 발작 (한국 소비자물가(CPI) 쇼크, 미국 소비자물가(CPI) 충격 동반)",
-      "rationale": "현재 시장은 [Monetary Tightening] 국면에 진입한 것으로 분석됩니다. 지표에서 Percentile 100.0% (Extreme). 특히 동일 섹터인 [inflation_kor_cpi_ecos] 등에서도 동시다발적으로 이상 신호가 감지되어 해당 테마의 신뢰도가 매우 높습니다.",
-      "raw_data": {
-        "ts_utc": "2026-02-25T13:19:46Z",
-        "dataset_id": "inflation_pce_fred",
-        "topic_id": "inflation_pce_fred::z_score_model_v1",
-        "title": "data/features/anomalies/2026/02/25/inflation_pce_fred.json L2 Signal",
-        "score": 6.0,
-        "severity": "HIGH",
-        "evidence": {
-          "source_severity": 60,
-          "level": "L2",
-          "details": {
-            "z_score": 1.63,
-            "percentile": 100.0,
-            "value": 21474.9,
-            "rolling_mean_20d": 20614.245,
-            "reasoning": "Percentile 100.0% (Extreme)"
-          },
-          "regime": {
-            "vix_roc_1d": null,
-            "us10y_roc_1d": null,
-            "vix_on": false,
-            "us10y_on": false,
-            "multiplier": 1.0,
-            "rule": {
-              "vix_threshold": 0.01,
-              "us10y_threshold": 0.005,
-              "mult_map": {
-                "both": 1.8,
-                "vix": 1.5,
-                "us10y": 1.2,
-                "none": 1.0
-              }
-            }
-          },
-          "anomalies_path": "data/features/anomalies/2026/02/25/inflation_pce_fred.json"
-        },
-        "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-        "links": [],
-        "is_pre_structural": false
-      },
-      "logic_block": "Monetary Tightening",
-      "leader_stocks": [
-        "KB금융",
-        "신한지주",
-        "JP모건(JPM)",
-        "골드만삭스(GS)"
-      ],
-      "narrative_score": 14.0,
-      "video_ready": false,
-      "actor_tier_score": 0.0,
-      "escalation_flag": false,
-      "conflict_flag": false,
-      "cross_axis_multiplier": 1.0,
-      "causal_chain": {
-        "cause": null,
-        "structural_shift": "HOIN_ANOMALY",
-        "market_consequence": "Monitoring friction",
-        "affected_sector": "거시경제 이상징후: inflation_pce_fred",
-        "time_pressure": "low"
-      }
+      "logic_block": "PREDICTIVE_TOPIC",
+      "leader_stocks": [],
+      "narrative_score": null,
+      "title_refined": "반도체 공급망 대격변, 지금 대응하지 않으면 늦는 이유",
+      "title_raw": "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect."
     }
   ],
-  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?"
+  "stocks": [
+    {
+      "name": "KB금융",
+      "ticker": "105560.KS",
+      "theme": "Financials Banks",
+      "reason": "국내 최대 금융 지주 및 금리 수혜",
+      "mechanism_link": "Financials",
+      "risk": "Financials 리스크 확인 필요"
+    },
+    {
+      "name": "신한지주",
+      "ticker": "055550.KS",
+      "theme": "Financials Banks",
+      "reason": "주주 환원 및 포트폴리오 다각화",
+      "mechanism_link": "Financials",
+      "risk": "Financials 리스크 확인 필요"
+    }
+  ],
+  "capital_flow_theme": "Policy Radar",
+  "capital_flow_sector": "Regulatory Impact / Finance",
+  "capital_flow_direction": "NEGATIVE",
+  "capital_flow_top_stocks": [
+    "KB금융",
+    "신한지주"
+  ],
+  "status": "APPROVED",
+  "decision_date": "2026-03-31",
+  "human_prompt": "현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?",
+  "portfolio_focus": "Policy Radar",
+  "portfolio_theme": "Policy Radar",
+  "core_picks": [],
+  "tactical_picks": [],
+  "watchlist_picks": [
+    {
+      "name": "KB금융",
+      "ticker": "105560.KS",
+      "score": 63,
+      "impact_direction": "POSITIVE",
+      "action_note": "추가 확인 전 관찰 우선"
+    },
+    {
+      "name": "신한지주",
+      "ticker": "055550.KS",
+      "score": 63,
+      "impact_direction": "POSITIVE",
+      "action_note": "추가 확인 전 관찰 우선"
+    }
+  ],
+  "operator_action": "WATCHLIST",
+  "operator_theme": "General Interest",
+  "operator_focus": [
+    "Diverse",
+    "General Interest",
+    "Market Neutral"
+  ],
+  "market_state": "NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle",
+  "liquidity_state": "NEUTRAL",
+  "macro_regime": "LATE_CYCLE_TIGHTENING",
+  "risk_state": "NEUTRAL",
+  "structural_focus": "Semiconductor Supply Chain Reshuffle",
+  "contradictions": [],
+  "early_theme": {
+    "theme": "AI Power Constraint",
+    "score": 0.67,
+    "stage": "PRE-STORY"
+  },
+  "theme_narrative_preview": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다....",
+  "theme_evolution": {
+    "stage": "EXPANSION",
+    "action_hint": "ACTION / ACCUMULATE"
+  },
+  "theme_momentum": {
+    "state": "ACCELERATING",
+    "score": 0.52
+  },
+  "market_story": {
+    "title": "Daily Market Convergence",
+    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "featured_theme": "AI Power Constraint"
+  },
+  "mentionable_stocks": [
+    {
+      "stock": "ConstellationEnergy",
+      "sector": "Nuclear Energy",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "stock": "Cameco",
+      "sector": "Nuclear Energy",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "stock": "Vistra",
+      "sector": "Nuclear Energy",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "stock": "Equinix",
+      "sector": "Data Center Construction",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "stock": "DigitalRealty",
+      "sector": "Data Center Construction",
+      "score": 56.0,
+      "reason": "High relevance to AI Power Constraint"
+    }
+  ],
+  "top_topic": {
+    "selected": "AI Power Constraint",
+    "pressure": 0.47
+  },
+  "video_script_preview": {
+    "hook": "지금 'Daily Market Convergence' 현상 뒤에 숨겨진 진짜 트리거를 아십니까? 바로 Structural shift in AI Power Constraint is now the primary driver of market tension. 때문입니다.",
+    "action": "WATCH"
+  }
 }

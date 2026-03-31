@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-03-30T13:39:16.882759",
+  "period": "Last 4 runs",
+  "failure_distribution": {
+    "UNKNOWN": 0.25,
+    "THEME_RIGHT_STOCK_WRONG": 0.75
+  },
+  "confidence_stability": {
+    "min": 0.38,
+    "max": 0.64,
+    "avg": 0.584,
+    "volatility": 0.26
+  },
+  "outcome_alignment": 0.0,
+  "causality_validity": 1.0,
+  "status": "FAIL (Bias Detected)"
+}

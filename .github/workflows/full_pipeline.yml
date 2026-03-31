@@ -11,6 +11,8 @@ on:
 permissions:
   contents: write
   issues: write
+  pages: write
+  id-token: write
 
 env:
   ENABLE_LEARNING: false
@@ -21,6 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Ensure Docs Structure
+        run: |
+          mkdir -p docs/data
+          mkdir -p docs/ui
+          touch docs/.nojekyll
+          ls -la docs/
 
       - uses: actions/setup-python@v5
         with:
@@ -50,30 +59,25 @@ jobs:
         run: |
           echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - name: Run Data Collection
+      - name: "A1: Data Processing Agent (Collect & Normalize)"
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: |
-          python -m src.collectors.market_collectors || echo "[WARN] Market collectors failed"
-          python -m src.collectors.fred_collector || echo "[WARN] FRED collector failed"
-          python -m src.collectors.ecos_collector || echo "[WARN] ECOS collector failed"
-          python -m src.collectors.coingecko_collector || echo "[WARN] CoinGecko collector failed"
-          python -m src.collectors.policy_collector || echo "[WARN] Policy collector failed"
-          echo "[PIPELINE] Data collection completed"
+          echo "[AGENT] Running: src.ops.agents.data_agent"
+          python -m src.ops.agents.data_agent --emit-runlog
+          echo "[PIPELINE] A1: Data collection & normalization completed"
 
-      - name: Run Content Topic Gate
-        run: |
-          python -m src.pipeline.run_topic_gate --as-of-date "${AS_OF_DATE}"
-
-      - name: Run engine
+      - name: "A2: Signal Discovery Agent (Anomaly -> Topics)"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: |
-          python -m src.engine
+          echo "[AGENT] Running: src.ops.agents.signal_agent"
+          python -m src.ops.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
+          echo "[PIPELINE] A2: Signal discovery completed"
 
 
       - name: Notify Telegram (Daily Summary)
@@ -82,7 +86,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python -m src.reporting.telegram_daily_summary
+          python -m src.legacy.reporting.telegram_daily_summary
 
       - name: Upload Daily Brief Artifact
         if: success()
@@ -294,84 +298,65 @@ jobs:
 
           echo "[VERIFY][OK] Core dataset confidence verification passed"
 
-      - name: Track Ops Freshness (Phase 36-B)
+      - name: "A3: Narrative Intelligence Agent (Scoring & Stress)"
         run: |
-          python -m src.ops.freshness_tracker
+          echo "[AGENT] Running: src.ops.agents.narrative_agent"
+          python -m src.ops.agents.narrative_agent --emit-runlog
+          echo "[PIPELINE] A3: Narrative intelligence completed"
 
-      - name: Update Ops Scoreboard (Phase 36-B)
+      - name: "A4: Decision Surface Agent (Approval & Card)"
         run: |
-          python -m src.ops.ops_scoreboard
+          echo "[AGENT] Running: src.ops.agents.decision_agent"
+          python -m src.ops.agents.decision_agent --emit-runlog
+          echo "[PIPELINE] A4: Decision assets generated"
 
-      - name: Run Topic Candidate Gate (Phase 39)
+      - name: "A5: Video Intelligence Agent (Video Pool)"
         run: |
-          python -m src.topics.topic_candidate_gate
-
-      - name: Integrate Final Decision Card (Phase 38)
-        run: |
-          python -m src.decision.final_decision_card
-
-      - name: Run IssueSignal Engine (IS-49 Loop Lock)
-        run: |
-          python -m src.issuesignal.run_issuesignal --mode=production
-
-      - name: Generate Dashboard (Update)
-        run: |
-          python -m src.dashboard.topic_exporter
-          python -m src.dashboard.dashboard_generator
+          echo "[AGENT] Running: src.ops.agents.video_agent"
+          python -m src.ops.agents.video_agent --emit-runlog
+          echo "[PIPELINE] A5: Video candidate pool updated"
 
 
-      - name: Generate Ops Metadata
-        run: |
-          python -m src.ops.dashboard_manifest
-          python -m src.ops.health_check
-          python -m src.ops.event_coverage
 
-      - name: Prepare Docs for Deployment
+
+      - name: "[STEP-20] Portfolio Relevance Engine (Priority Basket)"
         run: |
-          # [IS-56 / LOCKDOWN] Safe cleanup: delete all docs/data EXCEPT decision dir
-          # WHY: rm -rf docs/data would nuke manifest.json — use targeted removal instead
-          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' -exec rm -rf {} + 2>/dev/null || true
+          echo "[PIPELINE] Running Portfolio Relevance Engine (STEP-20)..."
+          python -m src.ops.portfolio_relevance_engine || echo "[PIPELINE] ⚠️ Portfolio Relevance Engine soft-failed (continuing)"
+          if [ -f "data/ops/portfolio_relevance.json" ]; then
+            echo "[PIPELINE] ✅ portfolio_relevance.json generated"
+          else
+            echo "[PIPELINE] ⚠️ portfolio_relevance.json not generated (will skip publish)"
+          fi
+
+      - name: "A6: SSOT Publishing Agent (Asset Delivery)"
+        run: |
+          # Safe cleanup: delete all docs/data EXCEPT decision and ui dirs
+          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' ! -name 'ui' -exec rm -rf {} + 2>/dev/null || true
           mkdir -p docs/data/decision
           mkdir -p docs/exports
           mkdir -p docs/issuesignal
 
-          # COPY DATA ONLY (do not touch index.html)
+          # Sync secondary assets before SSOT publish
           cp -r data/dashboard/* docs/data/ 2>/dev/null || true
           cp -r data/dashboard/issuesignal/* docs/issuesignal/ 2>/dev/null || true
           cp -r data/reports docs/data/ 2>/dev/null || true
-
-          # [LOCKDOWN] Verify decision source exists before syncing
-          if [ ! -d "data/decision" ]; then
-            echo "❌ LOCKDOWN: data/decision directory missing — skipping decision sync"
-          else
-            CARD_COUNT=$(find data/decision -name "final_decision_card.json" | wc -l | tr -d ' ')
-            echo "[LOCKDOWN] data/decision exists, ${CARD_COUNT} decision cards found"
-            # rsync WITHOUT --delete: preserves existing docs/data/decision files
-            rsync -a data/decision/ docs/data/decision/
-            echo "[LOCKDOWN] rsync complete"
-          fi
-
+          
           # [LOCKDOWN] Sync editorial_selection files (if available)
           if [ -d "data/editorial" ]; then
             mkdir -p docs/data/decision/editorial
             cp data/editorial/editorial_selection_*.json docs/data/decision/editorial/ 2>/dev/null || true
-            ED_COUNT=$(ls docs/data/decision/editorial/ 2>/dev/null | wc -l | tr -d ' ')
-            echo "[LOCKDOWN] editorial synced: ${ED_COUNT} files"
           fi
 
-          # [NO-DUP-LOCK] CI Guard: Enforce SSOT for run_publish_ui_decision_assets.py
-          echo "[GUARD] Checking for duplicate publishers..."
-          python3 scripts/verify_no_duplicate_publishers.py
-          
-          # [IS-100] Generate manifest + Publish UI Decision Assets
-          echo "[PUBLISH] Using publish SSOT: src/ui/run_publish_ui_decision_assets.py"
-          echo "[PUBLISH] Publish SSOT path details:"
+          # Run Official Agent A6
+          echo "[AGENT] Running: src.ops.agents.publish_agent"
+          echo "[PUBLISH-SSOT] Using: src/ui/run_publish_ui_decision_assets.py"
           ls -al src/ui/run_publish_ui_decision_assets.py
-          python -m src.ui.run_publish_ui_decision_assets
-
+          python -m src.ops.agents.publish_agent --emit-runlog
+          
           # [IS-51] Flatten operational dashboard
           find data/reports -name "operational_dashboard.md" -exec cp {} docs/operational_dashboard.md \; 2>/dev/null || true
-
+          
           # [IS-100] Generate Build Metadata
           echo "{\"commit\": \"$GITHUB_SHA\", \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\", \"date_kst\": \"$(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M:%S KST')\"}" > docs/data/build_meta.json
 
@@ -393,8 +378,18 @@ jobs:
 
       - name: Verify Release Integrity (FREEZE-UI-STRUCTURE)
         run: |
+          python3 scripts/verify_no_duplicate_publishers.py
+          python3 scripts/verify_no_cross_layer_imports.py
+          python3 scripts/verify_agent_contracts.py
           python3 scripts/verify_release_integrity.py
           python3 scripts/verify_no_legacy_runtime.py
+          python3 scripts/verify_no_legacy_links.py
+
+      - name: Verify Data Contracts (SSOT-JSON)
+        run: |
+          echo "[VERIFY] Checking today.json contract..."
+          python3 scripts/verify_today_contract.py
+          echo "✅ data cards intensity check passed"
 
       - name: Upload Pages Artifact (IS-49 Guarantee)
         uses: actions/upload-artifact@v4
@@ -473,51 +468,27 @@ jobs:
           git config user.name "hoin-bot"
           git config user.email "hoin-bot@users.noreply.github.com"
           
-          # Force add all changes
-          git add . || true
+          # Save our fully generated data safely outside git
+          cp -r docs /tmp/docs_bk || true
+          cp -r data /tmp/data_bk || true
           
-          if git diff --cached --quiet; then
-            echo "No intelligence changes to commit"
-          else
-            # Save local changes as stash just in case (though we use reset)
-            # Robust strategy: Fetch latest, soft reset to it, re-add everything, and commit.
-            # This ensures we are always on top of origin/main without rebase conflicts.
-            git fetch origin main
-            git reset origin/main
-            git add .
-            git commit -m "chore: save intelligence artifacts and docs [automated]"
+          # Reset to latest main to avoid reverting concurrent pushes to source files
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # Restore our generated data
+          rm -rf docs data
+          cp -r /tmp/docs_bk docs || true
+          cp -r /tmp/data_bk data || true
+          
+          git add docs/ data/ || true
+          
+          if [ -n "$(git status --porcelain docs/ data/)" ]; then
+            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
             git push origin main
+          else
+            echo "No intelligence changes to commit"
           fi
-
-      - name: Remote Deploy Verification (Post-Deploy Data Integrity Check)
-        if: always()
-        run: |
-          echo "Waiting for GitHub Pages deployment cache flush... (30s)"
-          sleep 30
-          
-          echo "Curling manifest.json..."
-          HTTP_CODE=$(curl -s -o temp_manifest.json -w "%{http_code}" https://hoininsight-commits.github.io/hoininsight/data/decision/manifest.json)
-          if [ "$HTTP_CODE" -ne 200 ]; then
-            echo "❌ [FAIL] manifest.json returned HTTP $HTTP_CODE"
-            exit 1
-          fi
-          if ! jq -r '.files' temp_manifest.json > /dev/null 2>&1 && ! python3 -c "import json; json.load(open('temp_manifest.json'))" > /dev/null 2>&1; then
-             echo "❌ [FAIL] manifest.json invalid JSON"
-             exit 1
-          fi
-          echo "✅ [OK] manifest.json HTTP 200 and parsed"
-
-          echo "Curling today.json..."
-          HTTP_CODE2=$(curl -s -o temp_today.json -w "%{http_code}" https://hoininsight-commits.github.io/hoininsight/data/decision/today.json)
-          if [ "$HTTP_CODE2" -ne 200 ]; then
-            echo "❌ [FAIL] today.json returned HTTP $HTTP_CODE2"
-            exit 1
-          fi
-          if ! jq -r '.' temp_today.json > /dev/null 2>&1 && ! python3 -c "import json; json.load(open('temp_today.json'))" > /dev/null 2>&1; then
-             echo "❌ [FAIL] today.json invalid JSON"
-             exit 1
-          fi
-          echo "✅ [OK] today.json HTTP 200 and parsed"
 
       - name: Create issue on failure
         if: failure()
@@ -526,3 +497,37 @@ jobs:
         run: |
           y=$(TZ='Asia/Seoul' date +"%Y-%m-%d")
           gh issue create --title "Pipeline failed: ${y}" --body "full_pipeline failed. Check Actions logs and committed artifacts (if any)."
+
+
+      - name: Upload Pages Artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
+    needs: run
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  verify:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Remote Deploy Verification (Post-Deploy Data Integrity Check)
+        run: |
+          echo "Waiting for GitHub Pages deployment cache flush... (120s)"
+          sleep 120
+          python3 scripts/verify_remote_pages_contract.py

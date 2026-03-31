@@ -1,6 +1,6 @@
 import re
-from src.issuesignal.dashboard.renderer import DashboardRenderer
-from src.issuesignal.dashboard.models import DashboardSummary, DecisionCard
+from src.ops.issuesignal.dashboard.renderer import DashboardRenderer
+from src.ops.issuesignal.dashboard.models import DashboardSummary, DecisionCard
 
 def test_dashboard_no_english_tokens():
     renderer = DashboardRenderer()

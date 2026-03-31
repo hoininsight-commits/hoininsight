@@ -1,4 +1,4 @@
-from src.issuesignal.decision_tree import DecisionTree
+from src.ops.issuesignal.decision_tree import DecisionTree
 
 def test_tree_structure():
     tree = DecisionTree()

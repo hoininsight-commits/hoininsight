@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.followup_engine import FollowUpEngine
+from src.ops.issuesignal.followup_engine import FollowUpEngine
 
 class TestIS37FollowUpEngine(unittest.TestCase):
     def setUp(self):

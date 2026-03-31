@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.membership_queue import MembershipQueueEngine
+from src.ops.issuesignal.membership_queue import MembershipQueueEngine
 
 class TestIS38MembershipQueue(unittest.TestCase):
     def setUp(self):

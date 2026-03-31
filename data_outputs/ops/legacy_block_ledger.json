@@ -1,620 +1,607 @@
 {
-  "date": "2026-02-06",
+  "date": "2026-03-13",
   "hard_mode": false,
   "blocked": [
     {
-      "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T15:48:07.425418"
-    },
-    {
-      "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T15:48:07.429096"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.955398"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.958927"
-    },
-    {
-      "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.960664"
-    },
-    {
-      "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.969467"
-    },
-    {
-      "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.974992"
-    },
-    {
-      "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.979445"
-    },
-    {
-      "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.982365"
-    },
-    {
-      "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.984914"
-    },
-    {
-      "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.987824"
-    },
-    {
-      "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.990628"
-    },
-    {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.993237"
+      "ts": "2026-03-30T10:36:11.664909"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:35.996901"
+      "ts": "2026-03-30T10:36:11.675921"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:36.000284"
+      "ts": "2026-03-30T10:36:11.686529"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T16:11:36.003995"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.555170"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.558577"
+      "ts": "2026-03-30T10:36:11.698196"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.560272"
+      "ts": "2026-03-30T10:39:55.416021"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.568830"
+      "ts": "2026-03-30T10:39:55.433894"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.574277"
+      "ts": "2026-03-30T10:39:55.446438"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.578546"
+      "ts": "2026-03-30T10:39:55.460382"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.581371"
+      "ts": "2026-03-30T10:39:55.472446"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.583869"
+      "ts": "2026-03-30T10:39:55.485046"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.586654"
+      "ts": "2026-03-30T10:39:55.498605"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.589372"
+      "ts": "2026-03-30T10:39:55.512048"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.591921"
+      "ts": "2026-03-30T10:39:55.523995"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.595565"
+      "ts": "2026-03-30T10:39:55.536999"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.598924"
+      "ts": "2026-03-30T10:39:55.548778"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-24T19:17:08.602555"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.836398"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.839998"
+      "ts": "2026-03-30T10:39:55.560947"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.841683"
+      "ts": "2026-03-30T10:51:37.773808"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.849765"
+      "ts": "2026-03-30T10:51:37.789899"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.855303"
+      "ts": "2026-03-30T10:51:37.801572"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.859609"
+      "ts": "2026-03-30T10:51:37.816305"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.862464"
+      "ts": "2026-03-30T10:51:37.827625"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.865023"
+      "ts": "2026-03-30T10:51:37.838363"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.867845"
+      "ts": "2026-03-30T10:51:37.850104"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.870605"
+      "ts": "2026-03-30T10:51:37.861250"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.873197"
+      "ts": "2026-03-30T10:51:37.872417"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.876966"
+      "ts": "2026-03-30T10:51:37.884553"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.880472"
+      "ts": "2026-03-30T10:51:37.896159"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T08:35:27.884074"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.700254"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.703698"
+      "ts": "2026-03-30T10:51:37.908685"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.705373"
+      "ts": "2026-03-30T10:52:22.197993"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.713858"
+      "ts": "2026-03-30T10:52:22.213578"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.719071"
+      "ts": "2026-03-30T10:52:22.224549"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.723273"
+      "ts": "2026-03-30T10:52:22.236324"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.726026"
+      "ts": "2026-03-30T10:52:22.246454"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.728457"
+      "ts": "2026-03-30T10:52:22.256541"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.731175"
+      "ts": "2026-03-30T10:52:22.267585"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.733800"
+      "ts": "2026-03-30T10:52:22.277790"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.736296"
+      "ts": "2026-03-30T10:52:22.288130"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.739775"
+      "ts": "2026-03-30T10:52:22.299226"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.743028"
+      "ts": "2026-03-30T10:52:22.309751"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:39:15.746482"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.722766"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.726193"
+      "ts": "2026-03-30T10:52:22.320868"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.727833"
+      "ts": "2026-03-30T11:04:13.125003"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.736716"
+      "ts": "2026-03-30T11:04:13.142837"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.742026"
+      "ts": "2026-03-30T11:04:13.155039"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.746257"
+      "ts": "2026-03-30T11:04:13.168798"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.749036"
+      "ts": "2026-03-30T11:04:13.181154"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.751510"
+      "ts": "2026-03-30T11:04:13.193853"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.754317"
+      "ts": "2026-03-30T11:04:13.207245"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.757018"
+      "ts": "2026-03-30T11:04:13.219873"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.759542"
+      "ts": "2026-03-30T11:04:13.232030"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.763105"
+      "ts": "2026-03-30T11:04:13.244417"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.766369"
+      "ts": "2026-03-30T11:04:13.257062"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T12:58:12.769986"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.444995"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.448569"
+      "ts": "2026-03-30T11:04:13.269725"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.450244"
+      "ts": "2026-03-30T11:11:39.313651"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.459330"
+      "ts": "2026-03-30T11:11:39.333040"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.464983"
+      "ts": "2026-03-30T11:11:39.346456"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.469363"
+      "ts": "2026-03-30T11:11:39.361502"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.472287"
+      "ts": "2026-03-30T11:11:39.374805"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.474895"
+      "ts": "2026-03-30T11:11:39.386999"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.477714"
+      "ts": "2026-03-30T11:11:39.403842"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.480444"
+      "ts": "2026-03-30T11:11:39.416359"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.483003"
+      "ts": "2026-03-30T11:11:39.428257"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.486730"
+      "ts": "2026-03-30T11:11:39.441482"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.490308"
+      "ts": "2026-03-30T11:11:39.462501"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:05:33.494124"
-    },
-    {
-      "module": "src.ui.natural_language_summary",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.163149"
-    },
-    {
-      "module": "src.ui.narrative_entry_hook_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
-      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.166522"
+      "ts": "2026-03-30T11:11:39.533578"
     },
     {
       "module": "src.ui.schedule_risk_calendar",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.168255"
+      "ts": "2026-03-30T12:59:43.244431"
     },
     {
       "module": "src.ui.risk_timeline_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.176797"
+      "ts": "2026-03-30T12:59:43.261934"
     },
     {
       "module": "src.ui.narrative_fusion_engine",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.182192"
+      "ts": "2026-03-30T12:59:43.273428"
     },
     {
       "module": "src.ui.time_to_money_resolver",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.186542"
+      "ts": "2026-03-30T12:59:43.286659"
     },
     {
       "module": "src.ui.sector_rotation_acceleration_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.189404"
+      "ts": "2026-03-30T12:59:43.298289"
     },
     {
       "module": "src.ui.sector_rotation_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.191871"
+      "ts": "2026-03-30T12:59:43.310418"
     },
     {
       "module": "src.ui.valuation_reset_detector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.194762"
+      "ts": "2026-03-30T12:59:43.323184"
     },
     {
       "module": "src.ui.policy_capital_script_exporter",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.197478"
+      "ts": "2026-03-30T12:59:43.335763"
     },
     {
       "module": "src.ui.operator_main_contract",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.200079"
+      "ts": "2026-03-30T12:59:43.347517"
     },
     {
       "module": "src.ui.multi_topic_selector",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.203608"
+      "ts": "2026-03-30T12:59:43.360318"
     },
     {
       "module": "src.ui.capital_perspective_narrator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.206910"
+      "ts": "2026-03-30T12:59:43.372149"
     },
     {
       "module": "src.ui.relationship_stress_generator",
-      "caller": "<frozen importlib._bootstrap>:241",
+      "caller": "<frozen importlib._bootstrap>:228",
       "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
-      "ts": "2026-02-25T13:19:53.210550"
+      "ts": "2026-03-30T12:59:43.384473"
+    },
+    {
+      "module": "src.ui.schedule_risk_calendar",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:57.992411"
+    },
+    {
+      "module": "src.ui.risk_timeline_narrator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.009393"
+    },
+    {
+      "module": "src.ui.narrative_fusion_engine",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.021606"
+    },
+    {
+      "module": "src.ui.time_to_money_resolver",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.033138"
+    },
+    {
+      "module": "src.ui.sector_rotation_acceleration_detector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.044651"
+    },
+    {
+      "module": "src.ui.sector_rotation_exporter",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.055357"
+    },
+    {
+      "module": "src.ui.valuation_reset_detector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.067262"
+    },
+    {
+      "module": "src.ui.policy_capital_script_exporter",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.078512"
+    },
+    {
+      "module": "src.ui.operator_main_contract",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.089290"
+    },
+    {
+      "module": "src.ui.multi_topic_selector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.100386"
+    },
+    {
+      "module": "src.ui.capital_perspective_narrator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.112320"
+    },
+    {
+      "module": "src.ui.relationship_stress_generator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:37:58.123165"
+    },
+    {
+      "module": "src.ui.schedule_risk_calendar",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.749513"
+    },
+    {
+      "module": "src.ui.risk_timeline_narrator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.766471"
+    },
+    {
+      "module": "src.ui.narrative_fusion_engine",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.779225"
+    },
+    {
+      "module": "src.ui.time_to_money_resolver",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.792065"
+    },
+    {
+      "module": "src.ui.sector_rotation_acceleration_detector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.804265"
+    },
+    {
+      "module": "src.ui.sector_rotation_exporter",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.815856"
+    },
+    {
+      "module": "src.ui.valuation_reset_detector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.828318"
+    },
+    {
+      "module": "src.ui.policy_capital_script_exporter",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.838953"
+    },
+    {
+      "module": "src.ui.operator_main_contract",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.849764"
+    },
+    {
+      "module": "src.ui.multi_topic_selector",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.861186"
+    },
+    {
+      "module": "src.ui.capital_perspective_narrator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.873682"
+    },
+    {
+      "module": "src.ui.relationship_stress_generator",
+      "caller": "<frozen importlib._bootstrap>:228",
+      "reason": "NEW_CONTEXT_FORBIDDEN_EXPANSION",
+      "ts": "2026-03-30T13:39:09.885374"
     }
   ],
-  "allowed": [
-    {
-      "module": "src.ui.operator_main_contract",
-      "caller": "File \"<frozen importlib._bootstrap>\", line 228, in _call_with_frames_removed",
-      "reason": "ALLOWLIST_MATCH(테스트용 임시 허용)",
-      "ts": "2026-02-06T23:47:47.027439"
-    },
-    {
-      "module": "src.ui.operator_main_contract",
-      "caller": "File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed",
-      "reason": "ALLOWLIST_MATCH(테스트용 임시 허용)",
-      "ts": "2026-02-06T23:50:41.138627"
-    }
-  ]
+  "allowed": []
 }

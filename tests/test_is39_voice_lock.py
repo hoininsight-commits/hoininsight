@@ -1,5 +1,5 @@
 import unittest
-from src.issuesignal.voice_lock import VoiceLockEngine
+from src.ops.issuesignal.voice_lock import VoiceLockEngine
 
 class TestIS39VoiceLock(unittest.TestCase):
     def setUp(self):

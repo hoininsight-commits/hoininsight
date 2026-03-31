@@ -51,6 +51,9 @@ class WhyNowEscalationLayer:
         for sig in signals:
             ps_data = sig.get("pre_structural_signal", {})
             if not ps_data:
+                # [BUGFIX] If no pre-structural metadata, keep the topic as-is 
+                # instead of dropping it (e.g., standard STRUCTURAL_REDEFINITION)
+                results.append(sig)
                 continue
                 
             # Update history with this detection

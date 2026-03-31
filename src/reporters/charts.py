@@ -10,7 +10,7 @@ import pandas as pd
 import sys
 # matplotlib imported lazily
 
-from src.registry.loader import load_datasets
+from src.utils.registry.loader import load_datasets
 
 def _ymd() -> str:
     return datetime.now().strftime("%Y/%m/%d")

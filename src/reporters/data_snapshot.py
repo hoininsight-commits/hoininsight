@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 
-from src.registry.loader import load_datasets
+from src.utils.registry.loader import load_datasets
 from src.reporters.charts import generate_curated_charts
 
 from src.utils.target_date import get_target_ymd

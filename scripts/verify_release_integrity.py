@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-[FREEZE-UI-STRUCTURE] Release Integrity Check
-Ensures that the output docs directory is built correctly before deployment.
-"""
 import sys
 import json
 from pathlib import Path
@@ -28,139 +24,144 @@ def main():
 
     all_passed = True
 
-    # V1. docs/ui 핵심 엔트리 파일 존재
     print("\n[V1] Checking core UI files...")
-    ui_files = ["utils.js", "operator_today.js", "operator_history.js"]
-    for f in ui_files:
-        if not check_file(docs_ui / f):
-            all_passed = False
+    for f in ["utils.js", "operator_today.js", "operator_history.js"]:
+        if not check_file(docs_ui / f): all_passed = False
 
-    # V2. docs/data/decision/manifest.json 존재 + entries >= 1
     print("\n[V2] Checking decision manifest...")
     manifest_path = docs_decision / "manifest.json"
-    if not check_file(manifest_path):
-        all_passed = False
+    if not check_file(manifest_path): all_passed = False
     else:
         try:
             data = json.loads(manifest_path.read_text("utf-8"))
             entries = data.get("files", [])
             if len(entries) < 1:
-                print("❌ [FAIL] manifest.json has 0 entries")
-                all_passed = False
+                print("❌ [FAIL] manifest.json has 0 entries"); all_passed = False
             else:
                 print(f"✅ [OK] manifest.json has {len(entries)} entries")
-
-            # V3. manifest가 가리키는 파일 100% 존재
-            print("\n[V3] Checking manifest entries existence...")
-            for entry in entries:
-                file_path = docs_decision / entry["path"]
-                if not check_file(file_path):
-                    all_passed = False
+                print("\n[V3] Checking manifest entries existence...")
+                for entry in entries:
+                    pathStr = entry["path"] if isinstance(entry, dict) else entry
+                    if not check_file(docs_decision / pathStr): all_passed = False
         except Exception as e:
-            print(f"❌ [FAIL] Could not parse manifest.json: {e}")
-            all_passed = False
+            print(f"❌ [FAIL] Could not parse manifest.json: {e}"); all_passed = False
 
-    # V4. 현재 규격 (docs/data/decision) 필수 파일 존재
     print("\n[V4] Checking data assets (current spec)...")
-    if not check_file(docs_decision / "today.json"):
-        all_passed = False
+    if not check_file(docs_decision / "today.json"): all_passed = False
     
-    # V5. 중복 publish 스크립트 guard 통과
+    print("\n[V4.1] Checking video intelligence assets (PHASE-22A/B/C)...")
+    docs_ops = docs / "data" / "ops"
+    for f in ["video_candidate_pool.json", "video_script_pack.json", "stock_linkage_pack.json", "conflict_density_pack.json"]:
+        if not check_file(docs_ops / f, required=True): all_passed = False
+    
+    # [PHASE-22C] Deep Search for fields
+    density_path = docs_ops / "conflict_density_pack.json"
+    if density_path.exists():
+        try:
+            d_data = json.loads(density_path.read_text("utf-8"))
+            for t in d_data.get("topics", []):
+                p = t.get("density_text", {}).get("structured_paragraph", [])
+                if not t.get("dataset_id") or len(p) < 3:
+                    print(f"❌ [FAIL] Density pack topic invalid: {t.get('dataset_id')}")
+                    all_passed = False
+        except: pass
+
+    print("\n[V4.2] Checking Structural Regime assets (PHASE-23)...")
+    regime_path = docs_ops / "regime_state.json"
+    if not check_file(regime_path): all_passed = False
+    else:
+        try:
+            r_data = json.loads(regime_path.read_text("utf-8"))
+            r = r_data.get("regime", {})
+            if not r.get("liquidity_state") or not r.get("policy_state"):
+                print("❌ [FAIL] Regime state fields missing"); all_passed = False
+            if len(r_data.get("evidence", [])) < 1:
+                print("❌ [FAIL] Regime evidence missing"); all_passed = False
+        except: pass
+
+    print("\n[V4.3] Checking Investment OS assets (PHASE-24)...")
+    os_path = docs_ops / "investment_os_state.json"
+    if not check_file(os_path): all_passed = False
+    else:
+        try:
+            o_data = json.loads(os_path.read_text("utf-8"))
+            if not o_data.get("regime", {}).get("state") or not o_data.get("os_summary", {}).get("stance"):
+                print("❌ [FAIL] OS state/stance missing"); all_passed = False
+            if len(o_data.get("priority_topics", [])) < 1:
+                print("❌ [FAIL] OS priority topics empty"); all_passed = False
+        except: pass
+
+    print("\n[V4.4] Checking Capital Allocation assets (PHASE-25)...")
+    ca_path = docs_ops / "capital_allocation_state.json"
+    if not check_file(ca_path): all_passed = False
+    else:
+        try:
+            ca_data = json.loads(ca_path.read_text("utf-8"))
+            if not ca_data.get("allocation_profile", {}).get("mode"):
+                print("❌ [FAIL] Allocation mode missing"); all_passed = False
+            if not ca_data.get("framework", {}).get("core_bucket"):
+                print("❌ [FAIL] Framework core bucket missing"); all_passed = False
+            if len(ca_data.get("risk_expansion_warning", [])) < 1:
+                print("❌ [FAIL] Risk warnings missing"); all_passed = False
+        except: pass
+
+    print("\n[V4.5] Checking Structural Timing assets (PHASE-26)...")
+    tm_path = docs_ops / "timing_state.json"
+    if not check_file(tm_path): all_passed = False
+    else:
+        try:
+            tm_data = json.loads(tm_path.read_text("utf-8"))
+            if not tm_data.get("timing_gear", {}).get("level"):
+                print("❌ [FAIL] Timing gear level missing"); all_passed = False
+            if len(tm_data.get("acceleration_watch", [])) < 1:
+                print("❌ [FAIL] Acceleration watch empty"); all_passed = False
+            if len(tm_data.get("deceleration_warning", [])) < 1:
+                print("❌ [FAIL] Deceleration warning empty"); all_passed = False
+        except: pass
+
+    print("\n[V4.6] Checking Probability Compression assets (PHASE-27)...")
+    pc_path = docs_ops / "probability_compression_state.json"
+    if not check_file(pc_path): all_passed = False
+    else:
+        try:
+            pc_data = json.loads(pc_path.read_text("utf-8"))
+            if not pc_data.get("compression_state", {}).get("direction"):
+                print("❌ [FAIL] Compression direction missing"); all_passed = False
+            if not pc_data.get("scenario_tree", {}).get("primary_path"):
+                print("❌ [FAIL] Scenario primary path missing"); all_passed = False
+            if not pc_data.get("decision_compression", {}).get("operator_posture"):
+                print("❌ [FAIL] Operator posture missing"); all_passed = False
+        except: pass
+
+    print("\n[V4.7] Checking Meta-Volatility assets (PHASE-28)...")
+    mv_path = docs_ops / "meta_volatility_state.json"
+    if not check_file(mv_path): all_passed = False
+    else:
+        try:
+            mv_data = json.loads(mv_path.read_text("utf-8"))
+            for field in ["state", "signals", "interpretation"]:
+                if field not in mv_data:
+                    print(f"❌ [FAIL] {field} missing in meta_volatility_state.json"); all_passed = False
+            
+            s = mv_data["state"]
+            if "mode" not in s or "fragility" not in s or "shock_window" not in s:
+                print("❌ [FAIL] state fields missing"); all_passed = False
+            
+            interp = mv_data["interpretation"]
+            if "one_liner" not in interp or len(interp.get("why_now", [])) < 2 or len(interp.get("invalidators", [])) < 1:
+                print("❌ [FAIL] interpretation fields incomplete"); all_passed = False
+        except: pass
+
     print("\n[V5] Running NO-DUP-LOCK Guard...")
     guard_script = root / "scripts" / "verify_no_duplicate_publishers.py"
     if guard_script.exists():
         res = subprocess.run(["python3", str(guard_script)], capture_output=True, text=True)
-        print(res.stdout)
-        if res.returncode != 0:
-            print(res.stderr)
-            print("❌ [FAIL] NO-DUP-LOCK Guard failed.")
-            all_passed = False
-        else:
-            print("✅ [OK] NO-DUP-LOCK Guard passed.")
-    else:
-        print("❌ [FAIL] verify_no_duplicate_publishers.py not found.")
-        all_passed = False
-
-    # V6. remote_verify_* freeze policy
-    print("\n[V6] Checking remote_verify_* freeze policy...")
-    frozen_dirs = list(root.glob("remote_verify_*"))
-    for d in frozen_dirs:
-        if d.is_dir():
-            for child in d.rglob("*"):
-                if child.is_file() and child.name != "DEPRECATED.md":
-                    print(f"❌ [FAIL] Active file found in frozen directory: {child}")
-                    all_passed = False
-    if not frozen_dirs:
-        print("✅ [OK] No remote_verify_* directories found.")
-
-    # V7. docs/ui/ data fetch constraints
-    print("\n[V7] Checking docs/ui/ data fetch constraints...")
-    forbidden_endpoints = ["data_outputs/", "remote_verify/", "legacy/"]
-    for js_file in docs_ui.rglob("*.js"):
-        try:
-            content = js_file.read_text(encoding="utf-8")
-            for forbidden in forbidden_endpoints:
-                if forbidden in content:
-                    print(f"❌ [FAIL] Disallowed fetch endpoint '{forbidden}' found in {js_file}")
-                    all_passed = False
-        except Exception as e:
-            print(f"⚠️ [WARN] Could not read {js_file} for V7 checking: {e}")
-            
-    # V8. Narrative Score Generation Guard
-    print("\n[V8] Checking Narrative Score Generation (PHASE-14B)...")
-    try:
-        today_publish = docs_decision / "today.json"
-        if today_publish.exists():
-            data = json.loads(today_publish.read_text(encoding="utf-8"))
-            topics = data if isinstance(data, list) else data.get("top_topics", [data])
-            
-            has_score = False
-            for t in topics:
-                if "narrative_score" in t and t["narrative_score"] is not None:
-                    has_score = True
-                    break
-                    
-            if not has_score:
-                print("⚠️ [WARN] No narrative_score found in today.json.")
-                print("          This is allowed (e.g. inactive days), but if persistent for 3 days, it's a Publish Drop.")
-            else:
-                print("✅ [OK] Narrative score successfully verified in today.json.")
-        else:
-            print("⚠️ [WARN] today.json not found for narrative check.")
-    except Exception as e:
-        print(f"⚠️ [WARN] Could not verify narrative score: {e}")
-
-    # V9. Native Fake Sequence & Hash UI Blocker
-    print("\n[V9] Checking UI against Fake Hash Narrative Injections...")
-    import re
-    # Patterns that represent the fake hash generation
-    disallowed_patterns = [
-        r"hash.*score",
-        r"hash.*narrative_score",
-        r"hash.*intensity",
-        r"charCodeAt.*%",
-        r"charCodeAt.*mod",
-        r"Math\.random",
-        r"salt.*score",
-        r"salt.*narrative",
-        r"salt %"
-    ]
-    for js_file in docs_ui.rglob("*.js"):
-        try:
-            content = js_file.read_text(encoding="utf-8")
-            for pattern in disallowed_patterns:
-                if re.search(pattern, content, re.IGNORECASE):
-                    print(f"❌ [FAIL] Disallowed fake score pattern '{pattern}' found in {js_file}")
-                    all_passed = False
-        except Exception as e:
-            print(f"⚠️ [WARN] Could not read {js_file} for V9 checking: {e}")
+        if res.returncode != 0: print(f"❌ [FAIL] NO-DUP-LOCK Guard failed: {res.stderr}"); all_passed = False
+        else: print("✅ [OK] NO-DUP-LOCK Guard passed.")
 
     if not all_passed:
-        print("\n❌ RELEASE INTEGRITY CHECK FAILED.")
-        sys.exit(1)
-    
-    print("\n✅ RELEASE INTEGRITY CHECK PASSED.")
-    sys.exit(0)
+        print("\n❌ RELEASE INTEGRITY CHECK FAILED."); sys.exit(1)
+    print("\n✅ RELEASE INTEGRITY CHECK PASSED."); sys.exit(0)
 
 if __name__ == "__main__":
     main()

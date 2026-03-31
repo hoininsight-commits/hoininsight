@@ -7,7 +7,7 @@ from datetime import datetime
 def run_pipeline():
     print("Running Pipeline for IS-93R Verification...")
     result = subprocess.run(
-        [sys.executable, "src/issuesignal/run_issuesignal.py"],
+        [sys.executable, "src.ops.issuesignal/run_issuesignal.py"],
         capture_output=True,
         text=True
     )

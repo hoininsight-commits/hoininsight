@@ -7,9 +7,9 @@ from datetime import datetime, timedelta
 # Add project root to sys.path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.engines.statement_momentum_engine import StatementMomentumEngine
-from src.issuesignal.run_issuesignal import main as run_pipeline
-from src.issuesignal.dashboard.build_dashboard import DashboardBuilder
+from src.ops.issuesignal.engines.statement_momentum_engine import StatementMomentumEngine
+from src.ops.issuesignal.run_issuesignal import main as run_pipeline
+from src.ops.issuesignal.dashboard.build_dashboard import DashboardBuilder
 
 def verify_is94():
     base_dir = Path(__file__).parent.parent

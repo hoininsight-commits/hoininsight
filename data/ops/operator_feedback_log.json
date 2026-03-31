@@ -1,0 +1,132 @@
+[
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "FAIL",
+      "stock": "OK",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "industry"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "FAIL",
+      "stock": "OK",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "industry"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "FAIL",
+      "stock": "OK",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "industry"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "CONSTRAINT",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "FAIL",
+      "timing": "OK"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "stock"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "OK",
+      "timing": "FAIL"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "timing"
+    }
+  },
+  {
+    "theme_type": "EXPANSION",
+    "decomposition": {
+      "theme": "OK",
+      "industry": "OK",
+      "stock": "OK",
+      "timing": "FAIL"
+    },
+    "failure_detail": {
+      "type": "SINGLE",
+      "primary": "timing"
+    }
+  }
+]

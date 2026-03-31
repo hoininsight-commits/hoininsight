@@ -586,7 +586,7 @@ datasets:
     source: "hoin_logic_engine"
     metric_name: "spread"
     schema_version: "timeseries_v1"
-    collector: "src.pipeline.derived_metrics_engine:run_derived_metrics_wrapper" # Logic engine runs via pipeline, this is placeholder or trigger
+    collector: "src.ops.pipeline.derived_metrics_engine:run_derived_metrics_wrapper" # Logic engine runs via pipeline, this is placeholder or trigger
     normalizer: "src.normalizers.pass_through:pass_through"
     anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
     topic: "src.topic_selectors.simple_topic:select_topics"
@@ -602,7 +602,7 @@ datasets:
     source: "hoin_logic_engine"
     metric_name: "ratio"
     schema_version: "timeseries_v1"
-    collector: "src.pipeline.derived_metrics_engine:run_derived_metrics_wrapper"
+    collector: "src.ops.pipeline.derived_metrics_engine:run_derived_metrics_wrapper"
     normalizer: "src.normalizers.pass_through:pass_through"
     anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
     topic: "src.topic_selectors.simple_topic:select_topics"

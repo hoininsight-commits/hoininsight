@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.issuesignal.ticker_path_extractor import TickerPathExtractor
+from src.ops.issuesignal.ticker_path_extractor import TickerPathExtractor
 
 def test_ticker_path_logic():
     actor_info = {

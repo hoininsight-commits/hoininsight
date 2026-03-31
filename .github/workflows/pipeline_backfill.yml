@@ -27,7 +27,7 @@ jobs:
           
       - name: Run pipeline (BACKFILL)
         run: |
-          python -m src.pipeline.run_pipeline --only-axis BACKFILL
+          python -m src.ops.pipeline.run_pipeline --only-axis BACKFILL
           
       - name: Commit outputs
         if: success()
