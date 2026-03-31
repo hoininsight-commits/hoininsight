@@ -143,11 +143,65 @@ def check_hard_constraints(before, after):
             violations.append(f"{metric.upper()} ({round(delta, 3)} < {limit})")
     return violations
 
-def validate_final(before, after):
+MIN_SCORE_THRESHOLD = 0.05
+MIN_DELTA = 0.01
+MAX_CONSECUTIVE_CALIBRATION = 3
+COOLDOWN_PERIOD = 2  # Not used directly in check_cooldown but part of the rule
+
+def is_noise_change(details):
+    """Returns True if all metric changes are below the noise threshold."""
+    for metric, d in details.items():
+        if abs(d.get("delta", 0)) > MIN_DELTA:
+            return False
+    return True
+
+def check_cooldown(log):
+    """
+    Returns True if the engine should enter cooldown.
+    Rule: If last MAX_CONSECUTIVE_CALIBRATION were all 'ACCEPT', enter cooldown.
+    """
+    if not log or len(log) < MAX_CONSECUTIVE_CALIBRATION:
+        return False
+    
+    # Check the last N entries
+    recent = log[-MAX_CONSECUTIVE_CALIBRATION:]
+    if all(entry.get("status") == "ACCEPT" for entry in recent):
+        return True
+    
+    return False
+
+def validate_stability(before, after, details, log):
+    """
+    Evaluates the stability of the proposed calibration.
+    1. Rejects Noise (Micro-changes).
+    2. Rejects Low-Impact Improvements (< MIN_SCORE_THRESHOLD).
+    3. Enforces Cooldown (Prevents drift).
+    """
+    # 1. Noise Filter
+    if is_noise_change(details):
+        print("[SafetyGuard] ⚠️ REJECTED: NOISE (Changes too small to warrant calibration)")
+        return {"status": "REJECT", "reason": "NOISE"}
+
+    # 2. Score Threshold
+    # details['score'] or recalculate
+    score, _ = calculate_weighted_score(before, after)
+    if score < MIN_SCORE_THRESHOLD:
+        print(f"[SafetyGuard] ⚠️ REJECTED: LOW_SCORE ({score} < {MIN_SCORE_THRESHOLD})")
+        return {"status": "REJECT", "reason": "LOW_SCORE", "score": score}
+
+    # 3. Cooldown Check
+    if check_cooldown(log):
+        print(f"[SafetyGuard] 🧊 REJECTED: COOLDOWN (Limit of {MAX_CONSECUTIVE_CALIBRATION} consecutive calibrations reached)")
+        return {"status": "REJECT", "reason": "COOLDOWN"}
+
+    return {"status": "PASS"}
+
+def validate_final(before, after, log=None):
     """
     Final Performance Gate:
-    1. Check Hard Constraints (Absolute floors).
-    2. Evaluate Weighted Score (Net gain).
+    1. Check Hard Constraints.
+    2. Check Stability (Noise, Score, Cooldown).
+    3. Evaluate Weighted Score.
     """
     # 1. Hard Constraints
     violations = check_hard_constraints(before, after)
@@ -160,8 +214,20 @@ def validate_final(before, after):
             "score": 0
         }
     
-    # 2. Weighted Score
     score, details = calculate_weighted_score(before, after)
+    
+    # 2. Stability Check (If log provided)
+    if log is not None:
+        stability_result = validate_stability(before, after, details, log)
+        if stability_result["status"] == "REJECT":
+            return {
+                "status": "REJECT",
+                "reason": stability_result["reason"],
+                "score": score,
+                "details": details
+            }
+    
+    # 3. Weighted Score final Decision
     if score > 0:
         print(f"[SafetyGuard] ✅ ACCEPTED: Weighted Score {score} > 0. Net improvement detected.")
         return {
