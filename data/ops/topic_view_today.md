@@ -17,22 +17,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 트럼프 '이란 유정 파괴' 위협에 국제유가, 상승 지속… WTI, 4년 만에 100달러 돌파 - 글로벌이코노믹 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 반도체·전기차에 2월 생산·투자 급등…'중동 반영' 3월부터 - kita.net (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼천당제약, 美 80조 시장 독점 계약 체결 - kmpnews.co.kr (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
+### 지난달 반도체 생산 28% 급증, 全산업생산 2.5↑..중동전쟁 발발 전 성적표 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,17 +27,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 범정부 협력으로 K-뷰티 수출거점 육성…지자체 두 곳 모집 - 연합뉴스 (ID: unknown)
+### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 거래대금 식고 예탁금 빠지고…코스피, 버블 경고한 ‘민스키 모델’ 따라가나 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 삼겹살·치킨값 다 뛴다…중동발 쇼크에 밥상물가 '초비상' [중동발 나비효과①] - 한국경제 (ID: unknown)
+### 중동 전쟁 한 달…국내 증시 시총 840조 증발, 삼성전자·하이닉스 372조 감소 By 알파경제 alphabiz - kr.investing.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,54 +42,134 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 삼겹살·치킨값 다 뛴다…중동발 쇼크에 밥상물가 '초비상' [중동발 나비효과①] - hankyung.com (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “이란, 후티 반군에 홍해 봉쇄 압박”…WTI 배럴당 100달러 돌파 - news.kbs.co.kr (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘전인석’ 삼천당제약 대표의 ‘중대 소식’은 비만藥 미국 진출 - 시사저널e (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 외국인들, 이달 코스피에서만 32조 던졌다…역대 최대 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### S&P500 선물, 중동 확전 우려에 하락…美 국채금리↓ - news.einfomax.co.kr (ID: unknown)
+### 인천시, GTX-B 운영 본사 송도 유치 성공…인천대입구역 인근 건립 - 경기일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 병원에 AI 전면 도입하면 의료비 매년 21조 아낀다 - 매일경제 (ID: unknown)
+### 경희의료원, ‘2026 의료 AI 콜로키움’ 개최 - 후생신보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “오늘 딱 하루 남았다” 해외항공권 싸게 살 기회 - 경향신문 (ID: unknown)
+### HK이노엔·광동제약 합류로 n조 클럽 확대…외형·수익성 동시 성장 - MEDI:GATE NEWS (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### `룰러` 박재혁 조세 회피 논란…슈퍼전트 "행정적 미숙, 증여 의도 없었다" - 디지털데일리 (ID: unknown)
+### 기름값 2000원 코앞...줄 서서 찾는 ‘싼 주유소’ [더 한장] - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ﻿주사기·주사바늘 ‘15~20% 인상’…병원 직격탄 - 데일리메디 (ID: unknown)
+### 뉴욕증시, 뒤엉킨 종전 기대와 확전 우려…혼조 마감 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 강남 아파트 등 247채 굴리며 탈세…임대업자 세무조사 착수 - 연합뉴스 (ID: unknown)
+### 지씨셀, 고형암 정밀타격 'CAR-NK' 특허…CAR-T 한계 넘나 - 메디칼타임즈 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 김정관, 하루만에 214원 올린 주유소 불시에 찾았다 - 동아일보 (ID: unknown)
+### 데이터로 설계하고 검증까지… 생성형 AI, 신약개발 전주기 확장 - 히트뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "5000원 점심 먹자" 거지맵 인기…'거지방' 30대 청년이 만들었다 - 뉴스1 (ID: unknown)
+### EU 탄소국경조정제도 대응, 수출기업 1대1 밀착 지원 - 대한민국 정책브리핑 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 테슬라 FSD 무단 활성화 '불법'…국토부 "2년 이하 징역" - zdnet.co.kr (ID: unknown)
+### 보고에서 평가로…식약처, 시판 후 안전관리 ‘근본 전환’ 선언 - 약업신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 한미약품, 황상연 신임 대표 선임…창사 53년만 첫 외부영입 대표 - 팜이데일리 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### AI 안면인식 믿었는데…5개월간 억울한 옥살이 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 80조 국세감면 수술대…관행적 일몰 연장 막는다 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘비상경영 돌입’ 티웨이항공, 16년만에 사명 바꾼다는데... (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 백종원, 본격 활동 재개 선언…“오너리스크 털고 해외진출·공격적 M&A” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 국힘, 경기지사 후보로 유승민 영입포기…“본인 뜻 존중키로” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 개헌 이대로 발목잡히나…우원식·장동혁, 비공개 회동서 입장차만 확인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 올해 ‘불수능’ 피할까…“적정 변별력 확보, 학교 수업 충실하면 돼” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 국민의힘 ‘이정현 공관위’ 일괄사퇴…장동혁 “결단 존중한다” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 민주, 새 법사위원장에 서영교 내정…행안위원장은 권칠승 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 김재섭 “정원오, 여직원과 칸쿤 출장”…鄭측 “11명 참여 공무출장” 반박 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한미약품, 신임 대표에 황상연 선임…첫 외부 출신 CEO (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [2026년 추경] K패스 환급 최대 83%…‘쉬었음’ 청년 일자리에 9000억 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 남양주도시공사, 손끝으로 전하는 진심…찾아가는 수어 교실 성료 (ID: unknown)
@@ -148,66 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 한세예스24그룹, 중장기 배당정책 발표…“최소 배당금 상향” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 피치AI, 옥외광고의 ‘성적표’를 만들다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “대세는 PB 상품” 세정 코코로박스, PB 상품 매출 300% 성장 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [2026년 추경] 추경으로 국채 1조 상환…“성장률 0.2%P 효과” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [2026년 추경]올해 법인세 15조 더 걷힌다···거래세도 5조 추가 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [2026년 추경] 추경 26.2조…국민 3577만명에 10~60만원 지원금 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 환율 장중 1530원 넘어…금융위기 이후 처음 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 미 수도권 한인 과학기술인 한자리에...‘KSEA DMV 2026’ 컨퍼런스 성료 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “우체국소포, 네이버서 예약·발송하세요” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 중동 등 5개 사학...개교 120주년 맞아 함께 남산 걷는다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이미지스, 이동섭 신임 대표이사 선임… Physical AI·로봇 솔루션 사업 확대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘인천공항공사 통폐합 반대 결의안’ 인천시의회 통과...민주당 3명은 ‘반대’ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [포토] 벚꽃스타팅! (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
