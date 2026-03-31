@@ -17,12 +17,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 지난달 반도체 생산 28% 급증, 全산업생산 2.5↑..중동전쟁 발발 전 성적표 - 조선일보 (ID: unknown)
+### 지난달 반도체 생산 28% 급증, 全산업생산 2.5↑..중동전쟁 발발 전 성적표 - chosun.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "또 떨어지냐" 외국인, '삼전·닉스' 얼마나 팔았길래…떨고 있는 개미들 - v.daum.net (ID: unknown)
+### '코스닥 시총 1위' 삼천당제약 주총 이후 25% 급락, 왜? - 한경매거진&북 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 외국인들, 이달 코스피에서만 32조 던졌다…역대 최대 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,17 +37,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 코스피 2%대 하락… 삼성전자 17만·SK하이닉스 82만원대 간신히 턱걸이 - 조선일보 (ID: unknown)
+### [어제장 오늘장] D램 가격 하락 조짐에 AI칩 쇼크…반도체주 향방은? - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 한미약품 투자전문가 황상연 사내이사 선임…경영 변화 기류 - 메디칼타임즈 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘신의 한 수’가 된 감자… 윤대인 삼천당제약 회장 아들 지분가치 1조원 이상 급등 - 코메디닷컴 (ID: unknown)
+### 한미약품 투자전문가 황상연 사내이사 선임…경영 변화 기류 - medicaltimes.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,42 +52,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼겹살·치킨값 다 뛴다…중동발 쇼크에 밥상물가 '초비상' [중동발 나비효과①] - 한국경제 (ID: unknown)
+### HK이노엔·광동제약 합류로 n조 클럽 확대…외형·수익성 동시 성장 - MEDI:GATE NEWS (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독] 병원에 AI 전면 도입하면 의료비 매년 21조 아낀다 - 매일경제 (ID: unknown)
+### S&P500 선물, 중동 긴장 속 상승…美 국채금리↓ - news.einfomax.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 뉴욕증시, 뒤엉킨 종전 기대와 확전 우려…혼조 마감 - 연합뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “오늘 딱 하루 남았다” 해외항공권 싸게 살 기회 - 경향신문 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 강남·한강벨트 임대업자 수천억 탈세…전세금까지 굴렸다 - 연합뉴스TV (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 아시안게임 金, 병역면제까지 받았는데… 프로게이머 ‘룰러’ 탈세 추징 - 조선비즈 - Chosunbiz (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 김정관 산업장관 "현상황 지속시 비축유 4~5월 방출…5부제 추가조치 가능성" - 연합인포맥스 (ID: unknown)
+### 대한항공도 4월부터 비상경영... 이란전쟁으로 고유가 충격 - chosun.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,17 +72,42 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 부동산 대책, 다주택자들 ‘고민’…“10명 중 6명, 효과 기대” - KBS 뉴스 (ID: unknown)
+### 신현송 한은 총재 후보자 “환율 큰 우려 없다…달러 유동성 양호” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "5000원 점심 먹자" 거지맵 인기…'거지방' 30대 청년이 만들었다 - 뉴스1 (ID: unknown)
+### 지씨셀, 고형암 정밀타격 'CAR-NK' 특허…CAR-T 한계 넘나 - medicaltimes.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "외국인 이렇게 많아?"…'SNS 성지'로 뜨더니 관광객 몰려드는 곳 [현장+] - 한국경제 (ID: unknown)
+### AI기본법 지원데스크, 주간 상담 3분의 1로 '뚝' - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### EU 탄소국경조정제도 대응, 수출기업 1대1 밀착 지원 - 대한민국 정책브리핑 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 경희의료원, ‘2026 의료 AI 콜로키움’ 개최 - 후생신보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 무균제제 재평가 시작… 75개 품목 제외에 자료 제출 6월로 - 히트뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 강남 아파트 등 247채 굴리며 탈세…임대업자 세무조사 착수 - 연합뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 관세청, 외화밀반출 단속 강화…인천공항 출국장 전담부서 신설 - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
