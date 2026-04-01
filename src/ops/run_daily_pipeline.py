@@ -1664,7 +1664,16 @@ def run_capital_allocation():
         if allocation_result:
             # Sync back to brief
             brief["portfolio_allocation"] = allocation_result
-            
+
+            # investment_decision.allocation 연결 — Phase 7 논리 무결성 검증을 위해 필수
+            total_weight = sum(a.get("weight", 0) for a in allocation_result.get("allocations", []))
+            if "investment_decision" not in brief:
+                brief["investment_decision"] = {}
+            brief["investment_decision"]["allocation"] = {
+                "value": round(total_weight, 2),
+                "source": "allocation_engine"
+            }
+
             # Update weights in impact_map for UI consistency
             alloc_map = {a["ticker"]: a["weight"] for a in allocation_result["allocations"]}
             if "impact_map" in brief and "mentionable_stocks" in brief["impact_map"]:
@@ -1672,7 +1681,7 @@ def run_capital_allocation():
                     ticker = stock.get("ticker")
                     if ticker in alloc_map:
                         stock["weight_pct"] = round(alloc_map[ticker] * 100, 2)
-            
+
             with open(brief_path, "w", encoding="utf-8") as f:
                 json.dump(brief, f, indent=2, ensure_ascii=False)
                 
@@ -1857,6 +1866,11 @@ def main():
     try:
         from src.ui.build_operator_view import build_operator_view
         build_operator_view(project_root)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 5: OPERATOR COGNITIVE LAYER COMPLETED")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Operator Cognitive Layer failed (Soft-Fail): {e}")
+        traceback.print_exc()
+
     # Step 6: UI ↔ SSOT Consistency Lock (STEP-L-2)
     print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 6: UI CONSISTENCY CHECK STARTED")
     try:
@@ -1872,6 +1886,23 @@ def main():
             print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 6: UI CONSISTENCY CHECK PASSED")
     except Exception as e:
         print(f"[Pipeline] ⚠️ UI Consistency check failed (Engine Error): {e}")
+        traceback.print_exc()
+        success = False
+
+    # Step 7: Decision Logical Integrity Gate (STEP-L-3)
+    print(f"\n[{datetime.now().strftime('%H:%M:%S')}] >>> PHASE 7: DECISION INTEGRITY GATE STARTED")
+    try:
+        from src.ops.decision_integrity_gate import validate_decision
+        decision_failures = validate_decision(project_root)
+        
+        if decision_failures:
+            print(f"[Pipeline] ❌ STEP-L-3 FAIL: Logical inconsistency! {decision_failures}")
+            # This is a critical logic error. Pipeline must stop.
+            success = False
+        else:
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 7: DECISION INTEGRITY GATE PASSED")
+    except Exception as e:
+        print(f"[Pipeline] ⚠️ Decision Integrity Gate failed (Engine Error): {e}")
         traceback.print_exc()
         success = False
 
