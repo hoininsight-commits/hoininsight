@@ -1,20 +1,10 @@
 {
   "date": "2026-04-01",
   "meta": {
-    "generated_at": "2026-04-01T17:14:24.753611Z",
+    "generated_at": "2026-04-02T08:39:26.270135Z",
     "engine_version": "v1.0"
   },
-  "active_patterns": [
-    {
-      "pattern_type": "LIQUIDITY_ROTATION",
-      "confidence": "HIGH",
-      "narrative": "성장 스토리에서 실물/인프라 필수재로의 자금 이동(Rotation)이 관측됩니다.",
-      "signals": [
-        "Infrastructure Capex",
-        "Physical Asset Demand"
-      ]
-    }
-  ],
-  "pattern_count": 1,
-  "pattern_hash": "da2f06cafbf68a25e649a28494265771fc26acc13ad84313ce29266a313456df"
+  "active_patterns": [],
+  "pattern_count": 0,
+  "pattern_hash": "a1419984d8bee14fd48df0e798255288b98bd96ffaa77d8cbb3b71363bcae0a7"
 }
