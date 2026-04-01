@@ -1,11 +1,11 @@
 {
   "data_axis": [
-    "credit_hy_spread_fred",
-    "fx_usdkrw_ecos"
+    "fx_usdkrw_ecos",
+    "credit_hy_spread_fred"
   ],
   "baseline_match": [
-    "credit_hy_spread_fred: Volatility Surge (Z=2.23)",
-    "fx_usdkrw_ecos: Volatility Surge (Z=2.28)"
+    "fx_usdkrw_ecos: Volatility Surge (Z=2.28)",
+    "credit_hy_spread_fred: Volatility Surge (Z=2.23)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",

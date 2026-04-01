@@ -147,7 +147,8 @@
         "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
         "action": "ACCUMULATE",
-        "confidence": 0.36
+        "confidence": 0.36,
+        "weight_pct": 0.0
       },
       {
         "ticker": "NVDA",
@@ -155,7 +156,8 @@
         "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
         "action": "ACCUMULATE",
-        "confidence": 0.36
+        "confidence": 0.36,
+        "weight_pct": 0.0
       },
       {
         "ticker": "CAT",
@@ -163,7 +165,8 @@
         "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
         "action": "ACCUMULATE",
-        "confidence": 0.36
+        "confidence": 0.36,
+        "weight_pct": 16.67
       },
       {
         "ticker": "URI",
@@ -171,7 +174,8 @@
         "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
         "action": "ACCUMULATE",
-        "confidence": 0.36
+        "confidence": 0.36,
+        "weight_pct": 16.67
       },
       {
         "ticker": "PWR",
@@ -179,7 +183,8 @@
         "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
         "action": "ACCUMULATE",
-        "confidence": 0.36
+        "confidence": 0.36,
+        "weight_pct": 16.67
       }
     ],
     "sector_status": {
@@ -345,11 +350,8 @@
       "causality": {}
     },
     "allocation": {
-      "value": 0.0,
-      "source": "fallback",
-      "reason": "Missing or zero allocation → fallback applied",
-      "evidence": [],
-      "causality": {}
+      "value": 0.5,
+      "source": "allocation_engine"
     },
     "conviction": {
       "value": 25,
@@ -416,20 +418,60 @@
     }
   ],
   "portfolio_allocation": {
-    "theme_exposure": {
-      "value": 0.0,
-      "source": "fallback",
-      "reason": "Capital allocation logic applied",
-      "evidence": [],
-      "causality": {
-        "theme": "AI Power Constraint",
-        "mechanism": "Infrastructure bottleneck due to exponential AI compute demand",
-        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "trigger": "Structural shift in AI Power Constraint is now the primary driver of market tension.",
-        "decision_link": "Decision 0.0 aligned with structural Infrastructure bottleneck due to exponential AI compute demand analysis."
+    "date": "2026-04-01",
+    "total_capital": 1.0,
+    "theme_exposure": 0.5001,
+    "allocations": [
+      {
+        "ticker": "MSFT",
+        "stock": "Microsoft",
+        "base_weight": 0.144,
+        "confidence": 0.18,
+        "risk": 0.2,
+        "weight": 0.0
+      },
+      {
+        "ticker": "NVDA",
+        "stock": "NVIDIA",
+        "base_weight": 0.144,
+        "confidence": 0.18,
+        "risk": 0.2,
+        "weight": 0.0
+      },
+      {
+        "ticker": "CAT",
+        "stock": "Caterpillar",
+        "base_weight": 0.40800000000000003,
+        "confidence": 0.51,
+        "risk": 0.2,
+        "weight": 0.1667
+      },
+      {
+        "ticker": "URI",
+        "stock": "UnitedRentals",
+        "base_weight": 0.40800000000000003,
+        "confidence": 0.51,
+        "risk": 0.2,
+        "weight": 0.1667
+      },
+      {
+        "ticker": "PWR",
+        "stock": "QuantaServices",
+        "base_weight": 0.40800000000000003,
+        "confidence": 0.51,
+        "risk": 0.2,
+        "weight": 0.1667
       }
-    },
-    "allocations": []
+    ],
+    "allocation_reason": "Risk-adjusted optimization for 5 stocks (Exposure: 0.5001).",
+    "allocation_evidence": [
+      "risk_score=0.2",
+      "stock_count=5"
+    ],
+    "metadata": {
+      "generated_at": "2026-04-01 16:34:26",
+      "engine": "AllocationEngine-v1.1"
+    }
   },
   "decision_integrity": {
     "engine_fields": 3,
