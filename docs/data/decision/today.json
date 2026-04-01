@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-04-01T08:37:15.127068",
+  "generated_at_kst": "2026-04-01T15:13:31.286095",
   "date": "2026-04-01",
   "blocks": {
     "regime": {
@@ -33,8 +33,8 @@
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "index_spx_fred",
-        "index_nasdaq_fred",
+        "crypto_btc_usd_spot_coingecko",
+        "fx_usdkrw_ecos",
         "credit_hy_spread_fred"
       ],
       "step6_gap": "Insufficient Evidence for L4",

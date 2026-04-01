@@ -1,12 +1,12 @@
 {
   "data_axis": [
-    "index_spx_fred",
-    "index_nasdaq_fred",
+    "crypto_btc_usd_spot_coingecko",
+    "fx_usdkrw_ecos",
     "credit_hy_spread_fred"
   ],
   "baseline_match": [
-    "index_spx_fred: Volatility Surge (Z=2.05)",
-    "index_nasdaq_fred: Volatility Surge (Z=2.33)",
+    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.26)",
+    "fx_usdkrw_ecos: Volatility Surge (Z=2.28)",
     "credit_hy_spread_fred: Volatility Surge (Z=2.23)"
   ],
   "anomaly_logic": "Unknown",
