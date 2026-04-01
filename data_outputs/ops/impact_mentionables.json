@@ -2,31 +2,54 @@
   "theme": "AI Power Constraint",
   "affected_sectors": [
     "AI Software",
-    "Broad Market",
-    "Regulatory Impact / Finance"
+    "Regulatory Impact / Finance",
+    "Infrastructure",
+    "Data Center Construction",
+    "Nuclear Energy",
+    "Technology",
+    "Power Infrastructure",
+    "Semiconductors",
+    "Foundry"
   ],
   "mentionable_stocks": [
     {
+      "ticker": "MSFT",
       "stock": "Microsoft",
-      "sector": "AI Software",
-      "score": 56.0,
+      "sector": "Technology",
+      "score": 66.0,
       "reason": "High relevance to AI Power Constraint"
     },
     {
+      "ticker": "NVDA",
       "stock": "NVIDIA",
-      "sector": "AI Software",
-      "score": 56.0,
+      "sector": "Technology",
+      "score": 66.0,
       "reason": "High relevance to AI Power Constraint"
     },
     {
-      "stock": "Palantir",
-      "sector": "AI Software",
-      "score": 56.0,
+      "ticker": "CAT",
+      "stock": "Caterpillar",
+      "sector": "Infrastructure",
+      "score": 66.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "ticker": "URI",
+      "stock": "UnitedRentals",
+      "sector": "Infrastructure",
+      "score": 66.0,
+      "reason": "High relevance to AI Power Constraint"
+    },
+    {
+      "ticker": "PWR",
+      "stock": "QuantaServices",
+      "sector": "Infrastructure",
+      "score": 66.0,
       "reason": "High relevance to AI Power Constraint"
     }
   ],
   "metadata": {
-    "generated_at": "2026-03-30 13:38:42",
+    "generated_at": "2026-04-01 16:33:53",
     "engine_version": "1.0.0"
   }
 }

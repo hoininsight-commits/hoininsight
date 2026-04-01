@@ -1,13 +1,11 @@
 {
   "data_axis": [
-    "crypto_btc_usd_spot_coingecko",
-    "fx_usdkrw_ecos",
-    "credit_hy_spread_fred"
+    "credit_hy_spread_fred",
+    "fx_usdkrw_ecos"
   ],
   "baseline_match": [
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.26)",
-    "fx_usdkrw_ecos: Volatility Surge (Z=2.28)",
-    "credit_hy_spread_fred: Volatility Surge (Z=2.23)"
+    "credit_hy_spread_fred: Volatility Surge (Z=2.23)",
+    "fx_usdkrw_ecos: Volatility Surge (Z=2.28)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",

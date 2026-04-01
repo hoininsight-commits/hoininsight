@@ -5,30 +5,29 @@
   "timing": "IDEAL",
   "confidence": 0.64,
   "risk": "MEDIUM",
-  "allocation": 0.0,
+  "allocation": 0.5,
   "top_stocks": [
     {
-      "name": "Microsoft",
-      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가"
+      "name": "Caterpillar",
+      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Caterpillar의 시장 지배력 및 매출 가독성 증가"
     },
     {
-      "name": "NVIDIA",
-      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가"
+      "name": "UnitedRentals",
+      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> UnitedRentals의 시장 지배력 및 매출 가독성 증가"
     },
     {
-      "name": "Palantir",
-      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가"
+      "name": "QuantaServices",
+      "reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> QuantaServices의 시장 지배력 및 매출 가독성 증가"
     }
   ],
   "history": [],
   "active_topics": [
     "Global Semiconductor Alliance mandates new supply chain standard for 2026, forcing all member firms to comply with immediate effect.",
+    "거시경제 이상징후: crypto_btc_usd_spot_coingecko",
     "거시경제 이상징후: struct_dart_disposal",
     "거시경제 이상징후: rates_fed_funds_fred",
     "거시경제 이상징후: comm_wti_fred",
     "거시경제 이상징후: fx_usdkrw_ecos",
-    "거시경제 이상징후: index_spx_fred",
-    "거시경제 이상징후: index_nasdaq_fred",
     "거시경제 이상징후: liquidity_m2_fred",
     "거시경제 이상징후: struct_dart_cb_bw",
     "거시경제 이상징후: inflation_pce_fred",
@@ -38,5 +37,5 @@
     "거시경제 이상징후: inflation_cpi_fred",
     "거시경제 이상징후: rates_us10y_fred"
   ],
-  "last_updated": "2026-03-31 13:51:22"
+  "last_updated": "2026-04-01 16:34:26"
 }

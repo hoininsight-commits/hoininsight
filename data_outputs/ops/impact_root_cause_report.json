@@ -1,21 +1,21 @@
 {
   "results": [
     {
-      "ticker": "MSFT",
-      "theme": "AI Power Constraint",
-      "failure_type": "NONE",
-      "root_cause": "COMPANY_MAPPING_ERROR",
-      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem"
-    },
-    {
-      "ticker": "NVDA",
+      "ticker": "Caterpillar",
       "theme": "AI Power Constraint",
       "failure_type": "NONE",
       "root_cause": "TIMING_MISMATCH",
       "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem"
     },
     {
-      "ticker": "PLTR",
+      "ticker": "UnitedRentals",
+      "theme": "AI Power Constraint",
+      "failure_type": "NONE",
+      "root_cause": "TIMING_MISMATCH",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem"
+    },
+    {
+      "ticker": "QuantaServices",
       "theme": "AI Power Constraint",
       "failure_type": "NONE",
       "root_cause": "TIMING_MISMATCH",
@@ -23,7 +23,6 @@
     }
   ],
   "summary": {
-    "COMPANY_MAPPING_ERROR": 1,
-    "TIMING_MISMATCH": 2
+    "TIMING_MISMATCH": 3
   }
 }

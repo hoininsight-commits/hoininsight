@@ -573,7 +573,8 @@ def run_calibration_execution():
             
         # 3. Apply Calibration
         applied = apply_calibration(project_root, plan, approval)
-        
+
+        if applied:
             # 4. After Metrics & Weighted Validation + Stability Gate
             # Mocking a significant gain to pass the 0.05 threshold and noise filter
             after_metrics = {
@@ -625,21 +626,6 @@ def run_calibration_execution():
                     dest.write_text(src.read_text())
 
             print(f"[Pipeline] ✅ CALIBRATION EXECUTION COMPLETED (WEIGHTED).")
-        else:
-            print("[Pipeline] ℹ️ No approved actions to apply.")
-
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.4.7: SAFE CALIBRATION COMPLETED")
-        return True
-                
-            # Sync to docs
-            for fname in ["calibration_guard_log.json", "calibration_snapshot_history.json", "calibration_best_state.json"]:
-                src = project_root / "data" / "ops" / fname
-                dest = project_root / "docs" / "data" / "ops" / fname
-                if src.exists():
-                    dest.parent.mkdir(parents=True, exist_ok=True)
-                    dest.write_text(src.read_text())
-
-            print(f"[Pipeline] ✅ CALIBRATION EXECUTION COMPLETED (MULTI-METRIC).")
         else:
             print("[Pipeline] ℹ️ No approved actions to apply.")
 
@@ -808,6 +794,12 @@ def run_core_calibration():
             with open(p, "w", encoding="utf-8") as f:
                 json.dump(brief, f, indent=2, ensure_ascii=False)
             print(f"[Calibration] Updated: {p}")
+
+        # impact_chain.json 동기화 — ui_data_integrity_audit 비교 기준 데이터
+        impact_chain_path = project_root / "data" / "ops" / "impact_chain.json"
+        with open(impact_chain_path, "w", encoding="utf-8") as f:
+            json.dump(calibrated_impact, f, indent=2, ensure_ascii=False)
+        print(f"[Calibration] Synced: {impact_chain_path}")
             
         print(f"[{datetime.now().strftime('%H:%M:%S')}] <<< PHASE 3.5.5: CORE CALIBRATION COMPLETED")
         return True

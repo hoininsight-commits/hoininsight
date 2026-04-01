@@ -25,6 +25,20 @@ class MentionablesEngine:
         "Infrastructure": ["Caterpillar", "UnitedRentals", "QuantaServices"]
     }
 
+    TICKER_MAP = {
+        "Microsoft": "MSFT", "NVIDIA": "NVDA", "Palantir": "PLTR",
+        "Apple": "AAPL", "Google": "GOOGL", "Caterpillar": "CAT",
+        "Equinix": "EQIX", "DigitalRealty": "DLR", "Vertiv": "VRT",
+        "GeneralElectric": "GE", "Eaton": "ETN", "SchneiderElectric": "SU.PA",
+        "ConstellationEnergy": "CEG", "Cameco": "CCJ", "Vistra": "VST",
+        "TSMC": "TSM", "ASML": "ASML", "AppliedMaterials": "AMAT",
+        "LamResearch": "LRCX", "Micron": "MU", "SKHynix": "000660.KS",
+        "SamsungElectronics": "005930.KS", "Intel": "INTC",
+        "UnitedRentals": "URI", "QuantaServices": "PWR",
+        "ASE": "ASX", "Amkor": "AMKR", "CATL": "300750.SZ",
+        "LGEnergySolution": "373220.KS", "SamsungSDI": "006400.KS"
+    }
+
     KEYWORD_SECTOR_MAP = {
         "HBM": "HBM Memory",
         "Packaging": "Advanced Packaging",
@@ -97,6 +111,7 @@ class MentionablesEngine:
             for stock in stocks:
                 score = self._calculate_score(stock, sector, story, benchmark, flow)
                 mentionable_stocks.append({
+                    "ticker": self.TICKER_MAP.get(stock, stock),
                     "stock": stock,
                     "sector": sector,
                     "score": round(score, 1),

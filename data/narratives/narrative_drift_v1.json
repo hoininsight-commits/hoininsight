@@ -2787,6 +2787,74 @@
           }
         }
       ]
+    },
+    {
+      "generated_at": "2026-04-01T16:13:09.233420",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "6d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-04-01T16:13:55.902192",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "6d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-04-01T16:14:37.590293",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "6d in 7d window"
+          }
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-04-01T16:34:22.835204",
+      "window_days": 7,
+      "drifts": [
+        {
+          "entity_type": "regime",
+          "entity_id": "(no meta regime detected)",
+          "drift_type": "SATURATION",
+          "window_days": 7,
+          "signals": {
+            "frequency_change": "High Sustained",
+            "avg_score_change": "N/A",
+            "persistence_change": "6d in 7d window"
+          }
+        }
+      ]
     }
   ]
 }

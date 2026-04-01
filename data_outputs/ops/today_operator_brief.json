@@ -2,8 +2,8 @@
   "core_theme": "AI Power Constraint",
   "display_title": "AI Power Constraint",
   "narrative": {
-    "title": "Daily Market Convergence",
-    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "title": "Structural Tension: AI & Semiconductor Capacity Friction",
+    "summary": "Current market is characterized by NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle. AI narrative remains hyper-strong while fundamental foundry/capacity reshuffle is ongoing. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
     "contradiction": "디지털 혁신의 속도(신속함)와 물리적 인프라의 건설 속도(저속함) 사이의 구조적 시차 발생.",
@@ -27,27 +27,34 @@
     "theme": "AI Power Constraint",
     "stocks": [
       {
-        "ticker": "Microsoft",
+        "ticker": "MSFT",
         "name": "Microsoft",
-        "relevance_score": 0.56,
-        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인"
-      },
-      {
-        "ticker": "NVIDIA",
-        "name": "NVIDIA",
-        "relevance_score": 0.56,
-        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승"
-      },
-      {
-        "ticker": "Palantir",
-        "name": "Palantir",
-        "relevance_score": 0.56,
+        "relevance_score": 0.66,
         "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
       },
       {
-        "ticker": "Caterpillar",
+        "ticker": "NVDA",
+        "name": "NVIDIA",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "CAT",
         "name": "Caterpillar",
-        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "URI",
+        "name": "UnitedRentals",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
+      },
+      {
+        "ticker": "PWR",
+        "name": "QuantaServices",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중"
       }
     ]
   },
@@ -121,7 +128,7 @@
   "narrative_brief": {
     "title": "AI Power Constraint",
     "featured_theme": "AI Power Constraint",
-    "summary": "Markets are currently navigating standardized flows with no major structural disruptions. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
+    "summary": "Current market is characterized by NEUTRAL LIQUIDITY + NEUTRAL + LATE_CYCLE_TIGHTENING + Semiconductor Supply Chain Reshuffle. AI narrative remains hyper-strong while fundamental foundry/capacity reshuffle is ongoing. Capital flow prioritizes Policy Radar with NEGATIVE impact.",
     "explanation": "AI 경쟁이 가속화됨에 따라 데이터센터 수요가 폭증하고 있으며, 이는 필연적으로 막대한 전력 소모로 이어집니다.",
     "situation": "Big Tech 기업들의 AI Capex 투자가 사상 최고치를 경신 중이나, 전력망 확충 속도는 이를 따라가지 못하는 상황입니다.",
     "contradiction": "디지털 혁신의 속도(신속함)와 물리적 인프라의 건설 속도(저속함) 사이의 구조적 시차 발생.",
@@ -135,103 +142,114 @@
     "theme": "AI Power Constraint",
     "mentionable_stocks": [
       {
-        "ticker": "Microsoft",
-        "name": "Microsoft",
-        "relevance_score": 0.56,
-        "rationale": "AI 데이터센터 인프라 투자 확대 → 전력망 부하 증가의 직접적 원인",
-        "action": "ACCUMULATE",
-        "confidence": 0.3,
-        "pnl": 0.0,
-        "perf_status": "WIN"
-      },
-      {
-        "ticker": "NVIDIA",
-        "name": "NVIDIA",
-        "relevance_score": 0.56,
-        "rationale": "AI 연산 수요 증가 → GPU 수요 폭증 및 전력 효율 중요도 상승",
-        "action": "ACCUMULATE",
-        "confidence": 0.3,
-        "pnl": 0.0,
-        "perf_status": "WIN"
-      },
-      {
-        "ticker": "Palantir",
-        "name": "Palantir",
-        "relevance_score": 0.56,
-        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
-        "action": "ACCUMULATE",
-        "confidence": 0.3,
-        "pnl": 0.0,
-        "perf_status": "WIN"
-      },
-      {
-        "ticker": "Caterpillar",
-        "name": "Caterpillar",
-        "rationale": "데이터센터 및 그리드 인프라 확장 → 대형 발전기 및 건설 장비 수요 증가"
-      }
-    ],
-    "sector_status": {
-      "AI Software": "ACTIVE",
-      "Broad Market": "ACTIVE",
-      "Regulatory Impact / Finance": "ACTIVE"
-    },
-    "structural_impact_chain": [
-      {
         "ticker": "MSFT",
         "name": "Microsoft",
-        "theme_type": "CONSTRAINT",
-        "theme_link": "AI Power Constraint",
-        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
-        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "industry_link": "Utilities",
-        "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
-        "directness": "indirect",
-        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
-        "evidence_basis": [
-          "Azure AI Contribution",
-          "Copilot Subscriptions",
-          "Capex Cycle"
-        ],
-        "selection_score": 0.6,
-        "weight": 0.38
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.36
       },
       {
         "ticker": "NVDA",
         "name": "NVIDIA",
-        "theme_type": "CONSTRAINT",
-        "theme_link": "AI Power Constraint",
-        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
-        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-        "industry_link": "Utilities",
-        "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
-        "directness": "indirect",
-        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
-        "evidence_basis": [
-          "Data Center Revenue Growth",
-          "GPU TAM Expansion",
-          "H100/B200 Backlog"
-        ],
-        "selection_score": 0.6,
-        "weight": 0.38
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.36
       },
       {
-        "ticker": "PLTR",
-        "name": "Palantir",
+        "ticker": "CAT",
+        "name": "Caterpillar",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.36
+      },
+      {
+        "ticker": "URI",
+        "name": "UnitedRentals",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.36
+      },
+      {
+        "ticker": "PWR",
+        "name": "QuantaServices",
+        "relevance_score": 0.66,
+        "rationale": "AI Power Constraint 테마와 긴밀히 연계된 핵심 밸류체인 수혜 분석 중",
+        "action": "ACCUMULATE",
+        "confidence": 0.36
+      }
+    ],
+    "sector_status": {
+      "AI Software": "ACTIVE",
+      "Regulatory Impact / Finance": "ACTIVE",
+      "Infrastructure": "ACTIVE",
+      "Data Center Construction": "ACTIVE",
+      "Nuclear Energy": "ACTIVE",
+      "Technology": "ACTIVE",
+      "Power Infrastructure": "ACTIVE",
+      "Semiconductors": "ACTIVE",
+      "Foundry": "ACTIVE"
+    },
+    "structural_impact_chain": [
+      {
+        "ticker": "Caterpillar",
+        "name": "Caterpillar",
         "theme_type": "CONSTRAINT",
         "theme_link": "AI Power Constraint",
         "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
         "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
         "industry_link": "Utilities",
         "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
-        "directness": "indirect",
-        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+        "directness": "solver_direct",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Caterpillar의 시장 지배력 및 매출 가독성 증가",
         "evidence_basis": [
           "Utilities Growth Rate",
           "Market Share Trend",
           "Revenue Visibility"
         ],
-        "selection_score": 0.6,
-        "weight": 0.38
+        "selection_score": 1.6,
+        "weight": 1.02
+      },
+      {
+        "ticker": "UnitedRentals",
+        "name": "UnitedRentals",
+        "theme_type": "CONSTRAINT",
+        "theme_link": "AI Power Constraint",
+        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "industry_link": "Utilities",
+        "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+        "directness": "solver_direct",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> UnitedRentals의 시장 지배력 및 매출 가독성 증가",
+        "evidence_basis": [
+          "Utilities Growth Rate",
+          "Market Share Trend",
+          "Revenue Visibility"
+        ],
+        "selection_score": 1.6,
+        "weight": 1.02
+      },
+      {
+        "ticker": "QuantaServices",
+        "name": "QuantaServices",
+        "theme_type": "CONSTRAINT",
+        "theme_link": "AI Power Constraint",
+        "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+        "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+        "industry_link": "Utilities",
+        "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+        "directness": "solver_direct",
+        "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> QuantaServices의 시장 지배력 및 매출 가독성 증가",
+        "evidence_basis": [
+          "Utilities Growth Rate",
+          "Market Share Trend",
+          "Revenue Visibility"
+        ],
+        "selection_score": 1.6,
+        "weight": 1.02
       }
     ]
   },
@@ -255,9 +273,9 @@
     }
   },
   "metadata": {
-    "repaired_at": "2026-03-30 13:39:16",
+    "repaired_at": "2026-04-01 16:34:26",
     "source_build": "LOCKED-ENGINE",
-    "consistency_aligned_at": "2026-03-30 13:39:16"
+    "consistency_aligned_at": "2026-04-01 16:34:26"
   },
   "investment_decision": {
     "action": {
@@ -362,25 +380,39 @@
   },
   "stock_decisions": [
     {
-      "ticker": "Microsoft",
+      "ticker": "MSFT",
       "name": "Microsoft",
       "action": "ACCUMULATE",
-      "confidence": 0.3,
-      "relevance_weight": 0.56
+      "confidence": 0.36,
+      "relevance_weight": 0.66
     },
     {
-      "ticker": "NVIDIA",
+      "ticker": "NVDA",
       "name": "NVIDIA",
       "action": "ACCUMULATE",
-      "confidence": 0.3,
-      "relevance_weight": 0.56
+      "confidence": 0.36,
+      "relevance_weight": 0.66
     },
     {
-      "ticker": "Palantir",
-      "name": "Palantir",
+      "ticker": "CAT",
+      "name": "Caterpillar",
       "action": "ACCUMULATE",
-      "confidence": 0.3,
-      "relevance_weight": 0.56
+      "confidence": 0.36,
+      "relevance_weight": 0.66
+    },
+    {
+      "ticker": "URI",
+      "name": "UnitedRentals",
+      "action": "ACCUMULATE",
+      "confidence": 0.36,
+      "relevance_weight": 0.66
+    },
+    {
+      "ticker": "PWR",
+      "name": "QuantaServices",
+      "action": "ACCUMULATE",
+      "confidence": 0.36,
+      "relevance_weight": 0.66
     }
   ],
   "portfolio_allocation": {
@@ -404,20 +436,20 @@
     "fallback_fields": 3,
     "fallback_ratio": 0.5,
     "status": "DEGRADED",
-    "generated_at": "2026-03-30 13:39:16"
+    "generated_at": "2026-04-01 16:34:26"
   },
   "theme_type": "CONSTRAINT",
   "engine_audit": {
-    "generated_at": "2026-03-30T13:39:16.882759",
-    "period": "Last 4 runs",
+    "generated_at": "2026-04-01T16:34:26.638002",
+    "period": "Last 8 runs",
     "failure_distribution": {
-      "UNKNOWN": 0.25,
-      "THEME_RIGHT_STOCK_WRONG": 0.75
+      "UNKNOWN": 0.12,
+      "THEME_RIGHT_STOCK_WRONG": 0.88
     },
     "confidence_stability": {
       "min": 0.38,
       "max": 0.64,
-      "avg": 0.584,
+      "avg": 0.594,
       "volatility": 0.26
     },
     "outcome_alignment": 0.0,
@@ -426,78 +458,78 @@
   },
   "ui_top_stocks": [
     {
-      "ticker": "MSFT",
+      "ticker": "Caterpillar",
       "industry": "Utilities",
-      "directness": "indirect"
+      "directness": "solver_direct"
     },
     {
-      "ticker": "NVDA",
+      "ticker": "UnitedRentals",
       "industry": "Utilities",
-      "directness": "indirect"
+      "directness": "solver_direct"
     },
     {
-      "ticker": "PLTR",
+      "ticker": "QuantaServices",
       "industry": "Utilities",
-      "directness": "indirect"
+      "directness": "solver_direct"
     }
   ],
   "impact_chain": [
     {
-      "ticker": "MSFT",
-      "name": "Microsoft",
-      "theme_type": "CONSTRAINT",
-      "theme_link": "AI Power Constraint",
-      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
-      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-      "industry_link": "Utilities",
-      "company_link": "AI 플랫폼 및 클라우드 인프라 아키텍처 통합 지배력",
-      "directness": "indirect",
-      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Microsoft의 시장 지배력 및 매출 가독성 증가",
-      "evidence_basis": [
-        "Azure AI Contribution",
-        "Copilot Subscriptions",
-        "Capex Cycle"
-      ],
-      "selection_score": 0.6,
-      "weight": 0.38
-    },
-    {
-      "ticker": "NVDA",
-      "name": "NVIDIA",
-      "theme_type": "CONSTRAINT",
-      "theme_link": "AI Power Constraint",
-      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
-      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
-      "industry_link": "Utilities",
-      "company_link": "GPU 공급 핵심 기업으로 AI 연산 수요의 직접적 수혜자",
-      "directness": "indirect",
-      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> NVIDIA의 시장 지배력 및 매출 가독성 증가",
-      "evidence_basis": [
-        "Data Center Revenue Growth",
-        "GPU TAM Expansion",
-        "H100/B200 Backlog"
-      ],
-      "selection_score": 0.6,
-      "weight": 0.38
-    },
-    {
-      "ticker": "PLTR",
-      "name": "Palantir",
+      "ticker": "Caterpillar",
+      "name": "Caterpillar",
       "theme_type": "CONSTRAINT",
       "theme_link": "AI Power Constraint",
       "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
       "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
       "industry_link": "Utilities",
       "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
-      "directness": "indirect",
-      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Palantir의 시장 지배력 및 매출 가독성 증가",
+      "directness": "solver_direct",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> Caterpillar의 시장 지배력 및 매출 가독성 증가",
       "evidence_basis": [
         "Utilities Growth Rate",
         "Market Share Trend",
         "Revenue Visibility"
       ],
-      "selection_score": 0.6,
-      "weight": 0.38
+      "selection_score": 1.6,
+      "weight": 1.02
+    },
+    {
+      "ticker": "UnitedRentals",
+      "name": "UnitedRentals",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "solver_direct",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> UnitedRentals의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 1.6,
+      "weight": 1.02
+    },
+    {
+      "ticker": "QuantaServices",
+      "name": "QuantaServices",
+      "theme_type": "CONSTRAINT",
+      "theme_link": "AI Power Constraint",
+      "mechanism_link": "Infrastructure bottleneck due to exponential AI compute demand",
+      "structural_context": "Early-stage structural formation within the AI Power Constraint ecosystem",
+      "industry_link": "Utilities",
+      "company_link": "AI Power Constraint 밸류체인 내 핵심 파트너 및 솔루션 제공자",
+      "directness": "solver_direct",
+      "impact_reason": "Utilities 내 Infrastructure bottleneck due to exponential AI compute demand 진행 -> QuantaServices의 시장 지배력 및 매출 가독성 증가",
+      "evidence_basis": [
+        "Utilities Growth Rate",
+        "Market Share Trend",
+        "Revenue Visibility"
+      ],
+      "selection_score": 1.6,
+      "weight": 1.02
     }
   ],
   "ui_today": {
@@ -510,24 +542,60 @@
     "confidence_pct": 64,
     "top_stocks": [
       {
-        "ticker": "MSFT",
+        "ticker": "Caterpillar",
         "industry": "Utilities",
-        "directness": "indirect"
+        "directness": "solver_direct"
       },
       {
-        "ticker": "NVDA",
+        "ticker": "UnitedRentals",
         "industry": "Utilities",
-        "directness": "indirect"
+        "directness": "solver_direct"
       },
       {
-        "ticker": "PLTR",
+        "ticker": "QuantaServices",
         "industry": "Utilities",
-        "directness": "indirect"
+        "directness": "solver_direct"
       }
     ],
     "market_context": "AI Power Constraint 테마가 시장의 핵심 동력으로 부상..."
   },
   "ui_history": [
+    {
+      "date": "2026-04-01",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "AI Power Constraint",
+      "action": "ADD",
+      "confidence_pct": 64,
+      "alignment_pct": 0,
+      "result_label": "보정 필요",
+      "result_status": "NONE"
+    },
     {
       "date": "2026-03-30",
       "title": "AI Power Constraint",
@@ -643,7 +711,25 @@
     "sample_size": 5,
     "recent_topics": [
       {
-        "date": "2026-03-30",
+        "date": "2026-04-01",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-04-01",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-04-01",
+        "title": "AI Power Constraint",
+        "action": "ADD",
+        "status": "NONE"
+      },
+      {
+        "date": "2026-04-01",
         "title": "AI Power Constraint",
         "action": "ADD",
         "status": "NONE"
@@ -653,24 +739,6 @@
         "title": "AI Power Constraint",
         "action": "ADD",
         "status": "NONE"
-      },
-      {
-        "date": "2026-03-30",
-        "title": "AI Power Constraint",
-        "action": "ADD",
-        "status": "NONE"
-      },
-      {
-        "date": "2026-04-04",
-        "title": "AI Power Constraint",
-        "action": "ADD",
-        "status": "SUCCESS"
-      },
-      {
-        "date": "2026-04-03",
-        "title": "AI Power Constraint",
-        "action": "ADD",
-        "status": "SUCCESS"
       }
     ]
   },

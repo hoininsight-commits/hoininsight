@@ -36,26 +36,26 @@
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.
 
-### Sample 7: 거시경제 이상징후: index_spx_fred
-- **Raw Input (Norm)**: 거시경제 이상징후 INDEX SPX FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
-- **Escalated**: False
-- **Matched Patterns**: NONE
-- **Reason for Result**: No conflict patterns matched semantic conditions.
-
-### Sample 8: 거시경제 이상징후: index_nasdaq_fred
-- **Raw Input (Norm)**: 거시경제 이상징후 INDEX NASDAQ FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
-- **Escalated**: False
-- **Matched Patterns**: NONE
-- **Reason for Result**: No conflict patterns matched semantic conditions.
-
-### Sample 9: 거시경제 이상징후: liquidity_m2_fred
+### Sample 7: 거시경제 이상징후: liquidity_m2_fred
 - **Raw Input (Norm)**: 거시경제 이상징후 LIQUIDITY M2 FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
 - **Escalated**: False
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.
 
-### Sample 10: 거시경제 이상징후: struct_dart_cb_bw
+### Sample 8: 거시경제 이상징후: struct_dart_cb_bw
 - **Raw Input (Norm)**: 거시경제 이상징후 STRUCT DART CB BW HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
+- **Escalated**: False
+- **Matched Patterns**: NONE
+- **Reason for Result**: No conflict patterns matched semantic conditions.
+
+### Sample 9: 거시경제 이상징후: inflation_pce_fred
+- **Raw Input (Norm)**: 거시경제 이상징후 INFLATION PCE FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
+- **Escalated**: False
+- **Matched Patterns**: NONE
+- **Reason for Result**: No conflict patterns matched semantic conditions.
+
+### Sample 10: 거시경제 이상징후: risk_vix_fred
+- **Raw Input (Norm)**: 거시경제 이상징후 RISK VIX FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
 - **Escalated**: False
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.

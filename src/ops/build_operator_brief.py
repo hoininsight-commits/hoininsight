@@ -65,7 +65,7 @@ class OperatorBriefBuilder:
                 "theme": early_theme.get("theme", "N/A"),
                 "mentionable_stocks": [
                     {
-                        "ticker": s.get("stock", "N/A"),
+                        "ticker": s.get("ticker", s.get("stock", "N/A")),
                         "name": s.get("stock", "N/A"),
                         "relevance_score": s.get("score", 0) / 100.0 if s.get("score", 0) > 1 else s.get("score", 0),
                         "rationale": s.get("reason", "No rationale provided")

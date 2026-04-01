@@ -1,6 +1,6 @@
 {
   "run_date": "2026-04-01",
-  "checked_at": "2026-04-01T15:13:31.334504",
+  "checked_at": "2026-04-01T16:34:26.349594",
   "status": "PARTIAL",
   "metrics": {
     "events_count": 0,
@@ -18,15 +18,15 @@
   "event_coverage_path": "data/dashboard/event_coverage_today.json",
   "errors": [
     "events_dir missing: FETCH_FAILED",
-    "daily_lock.json missing in /home/runner/work/hoininsight/hoininsight/data/reports/2026/04/01"
+    "daily_lock.json missing in /Users/jihopa/Downloads/HoinInsight_Remote/data/reports/2026/04/01"
   ],
   "missing_files": [
-    "/home/runner/work/hoininsight/hoininsight/data/events/2026/04/01"
+    "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/04/01"
   ],
   "input_root_cause_code": "FETCH_FAILED",
   "input_details": {
     "missing_paths": [
-      "/home/runner/work/hoininsight/hoininsight/data/events/2026/04/01/events.json"
+      "/Users/jihopa/Downloads/HoinInsight_Remote/data/events/2026/04/01/events.json"
     ],
     "exceptions": []
   }
