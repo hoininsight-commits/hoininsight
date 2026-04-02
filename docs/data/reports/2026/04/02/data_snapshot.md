@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-02T12:17:17Z`
+- ts_utc: `2026-04-02T12:42:25Z`
 - ymd_utc: `2026/04/02`
 - enabled_datasets: `32`
 
@@ -8,7 +8,7 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 606 | 2026-01-15T07:32:29Z | 2026-04-02T12:16:20Z | 34 | 121 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/02/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | OK | 607 | 2026-01-15T07:32:29Z | 2026-04-02T12:41:21Z | 35 | 122 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/02/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | OK | 949 | 1947-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/04/02/charts/inflation_cpi_fred.png) |
 | ETHUSD | crypto_eth_usd_spot_coingecko | OK | 64 | 2026-01-15T00:00:00Z | 2026-04-02T00:00:00Z | 7 | 30 | 7 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/04/02/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | OK | 861 | 1954-07-01T00:00:00Z | 2026-03-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/04/02/charts/rates_fed_funds_fred.png) |
@@ -22,7 +22,7 @@
 | M2_USA | liquidity_m2_fred | OK | 806 | 1959-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/liquidity/m2_usa.csv | [png](data/reports/2026/04/02/charts/liquidity_m2_fred.png) |
 | M_AND_A_CB | struct_dart_cb_bw | OK | 1 | 2026-01-22T18:00:00Z | 2026-01-22T18:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/structural/cb_bw.csv | [png](data/reports/2026/04/02/charts/struct_dart_cb_bw.png) |
 | M_AND_A_DISP | struct_dart_disposal | OK | 2 | 2026-01-22T18:00:00Z | 2026-01-24T18:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/structural/disposal.csv | [png](data/reports/2026/04/02/charts/struct_dart_disposal.png) |
-| NASDAQ | index_nasdaq_fred | OK | 10145 | 1986-01-02T00:00:00Z | 2026-03-31T00:00:00Z | 3 | 20 | 1 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/04/02/charts/index_nasdaq_fred.png) |
+| NASDAQ | index_nasdaq_fred | OK | 10146 | 1986-01-02T00:00:00Z | 2026-04-01T00:00:00Z | 4 | 21 | 1 | 0 | 0 | data/curated/indices/nasdaq.csv | [png](data/reports/2026/04/02/charts/index_nasdaq_fred.png) |
 | PCE_USA | inflation_pce_fred | OK | 805 | 1959-01-01T00:00:00Z | 2026-01-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/pce_usa.csv | [png](data/reports/2026/04/02/charts/inflation_pce_fred.png) |
 | SILVER | metal_silver_kag_coingecko | OK | 150 | 2026-01-15T08:10:58Z | 2026-04-02T00:00:00Z | 7 | 30 | 1 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/04/02/charts/metal_silver_kag_coingecko.png) |
 | SILVER | metal_silver_kag_coingecko | OK | 150 | 2026-01-15T08:10:58Z | 2026-04-02T00:00:00Z | 7 | 30 | 1 | 0 | 0 | data/curated/metals/silver_usd.csv | [png](data/reports/2026/04/02/charts/metal_silver_kag_coingecko.png) |
