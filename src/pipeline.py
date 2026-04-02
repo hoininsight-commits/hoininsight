@@ -1,0 +1,76 @@
+import sys
+from datetime import datetime
+
+
+def run_pipeline():
+    print(f"\n{'='*50}")
+    print(f"HOIN Insight v3.0 파이프라인 시작")
+    print(f"실행 시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"{'='*50}\n")
+
+    results = {}
+
+    # AGENT-01: COLLECTOR
+    try:
+        from src.agents.collector import CollectorAgent
+        agent01 = CollectorAgent()
+        results["collector"] = agent01.run()
+        print("✅ AGENT-01 COLLECTOR 완료")
+    except Exception as e:
+        print(f"❌ AGENT-01 실패: {e}")
+        sys.exit(1)
+
+    # AGENT-02: LEARNER (미구현 시 소프트-패일)
+    try:
+        from src.agents.learner import LearnerAgent
+        agent02 = LearnerAgent()
+        results["learner"] = agent02.run()
+        print("✅ AGENT-02 LEARNER 완료")
+    except Exception as e:
+        print(f"⚠️ AGENT-02 실패 (계속 진행): {e}")
+
+    # AGENT-03: DETECTOR
+    try:
+        from src.agents.detector import DetectorAgent
+        agent03 = DetectorAgent()
+        results["detector"] = agent03.run(results.get("collector", {}))
+        print("✅ AGENT-03 DETECTOR 완료")
+    except Exception as e:
+        print(f"❌ AGENT-03 실패: {e}")
+        sys.exit(1)
+
+    # AGENT-04: ANALYST
+    try:
+        from src.agents.analyst import AnalystAgent
+        agent04 = AnalystAgent()
+        results["analyst"] = agent04.run(results.get("detector", {}))
+        print("✅ AGENT-04 ANALYST 완료")
+    except Exception as e:
+        print(f"❌ AGENT-04 실패: {e}")
+        sys.exit(1)
+
+    # AGENT-05: WRITER
+    try:
+        from src.agents.writer import WriterAgent
+        agent05 = WriterAgent()
+        results["writer"] = agent05.run(results.get("analyst", {}))
+        print("✅ AGENT-05 WRITER 완료")
+    except Exception as e:
+        print(f"⚠️ AGENT-05 실패 (계속 진행): {e}")
+
+    # AGENT-06: PUBLISHER
+    try:
+        from src.agents.publisher import PublisherAgent
+        agent06 = PublisherAgent()
+        results["publisher"] = agent06.run(results)
+        print("✅ AGENT-06 PUBLISHER 완료")
+    except Exception as e:
+        print(f"⚠️ AGENT-06 실패 (계속 진행): {e}")
+
+    print(f"\n{'='*50}")
+    print("파이프라인 완료")
+    print(f"{'='*50}\n")
+
+
+if __name__ == "__main__":
+    run_pipeline()
