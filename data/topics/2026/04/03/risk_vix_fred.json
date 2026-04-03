@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-03T09:59:30Z",
+    "ts_utc": "2026-04-03T15:49:15Z",
     "dataset_id": "risk_vix_fred",
     "topic_id": "risk_vix_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/03/risk_vix_fred.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/03/risk_vix_fred.json"
     },
     "rationale": "[L1] Percentile 93.3% (Watch) (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
