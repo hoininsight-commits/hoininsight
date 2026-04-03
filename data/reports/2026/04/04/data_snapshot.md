@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-03T21:46:31Z`
+- ts_utc: `2026-04-03T22:56:39Z`
 - ymd_utc: `2026/04/04`
 - enabled_datasets: `32`
 
@@ -36,7 +36,7 @@
 | UNRATE | employment_unrate_fred | UNKNOWN | 937 | 1948-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/employment/unrate_usa.csv | [png](data/reports/2026/04/03/charts/employment_unrate_fred.png) |
 | US02Y | rates_us02y_fred | UNKNOWN | 12458 | 1976-06-01T00:00:00Z | 2026-04-01T00:00:00Z | 3 | 20 | 0 | 0 | 0 | data/curated/rates/us02y.csv | [png](data/reports/2026/04/03/charts/rates_us02y_fred.png) |
 | US10Y | rates_us10y_fred | UNKNOWN | 16123 | 1962-01-02T00:00:00Z | 2026-04-01T00:00:00Z | 3 | 20 | 0 | 0 | 0 | data/curated/rates/us10y.csv | [png](data/reports/2026/04/03/charts/rates_us10y_fred.png) |
-| USDKRW_ECOS | fx_usdkrw_ecos | UNKNOWN | 1281 | 2021-01-18T00:00:00Z | 2026-04-02T00:00:00Z | 4 | 21 | 0 | 0 | 0 | data/curated/ecos/fx/usdkrw.csv | [png](data/reports/2026/04/03/charts/fx_usdkrw_ecos.png) |
+| USDKRW_ECOS | fx_usdkrw_ecos | UNKNOWN | 1282 | 2021-01-18T00:00:00Z | 2026-04-03T00:00:00Z | 5 | 22 | 0 | 0 | 0 | data/curated/ecos/fx/usdkrw.csv | [png](data/reports/2026/04/03/charts/fx_usdkrw_ecos.png) |
 | VIX | risk_vix_fred | UNKNOWN | 9233 | 1990-01-02T00:00:00Z | 2026-04-01T00:00:00Z | 3 | 20 | 0 | 0 | 0 | data/curated/risk/vix.csv | [png](data/reports/2026/04/03/charts/risk_vix_fred.png) |
 | WTI | comm_wti_fred | UNKNOWN | 10133 | 1986-01-02T00:00:00Z | 2026-03-30T00:00:00Z | 1 | 18 | 0 | 0 | 0 | data/curated/commodities/wti.csv | [png](data/reports/2026/04/03/charts/comm_wti_fred.png) |
 | YIELD_CURVE | derived_yield_curve_10y_2y | UNKNOWN | 12454 | 1976-06-01T00:00:00Z | 2026-04-01T00:00:00Z | 3 | 20 | 0 | 0 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | [png](data/reports/2026/04/03/charts/derived_yield_curve_10y_2y.png) |
