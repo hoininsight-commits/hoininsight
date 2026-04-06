@@ -3,36 +3,7 @@
   "as_of_date": "2026-04-06",
   "candidates": [
     {
-      "candidate_id": "cand_4d12edd82d",
-      "as_of_date": "2026-04-06",
-      "question": "왜 지수는 오르는데 내 종목은 하락하나?",
-      "category": "rotation",
-      "hook_signals": [
-        "index_up_sector_down"
-      ],
-      "evidence_refs": [
-        "snapshot:index_spx"
-      ],
-      "numbers": [
-        {
-          "label": "S&P500 Status",
-          "value": "Active",
-          "unit": ""
-        }
-      ],
-      "confidence": "LOW",
-      "requires_confirmation": false,
-      "rank_features": {
-        "hook_score": 1.5,
-        "number_score": 0.5,
-        "timeliness_score": 1.0,
-        "explainability_score": 1.0,
-        "evidence_quality_score": 0.2,
-        "final_score": 4.2
-      }
-    },
-    {
-      "candidate_id": "cand_c4367225a3",
+      "candidate_id": "cand_ff3e02b825",
       "as_of_date": "2026-04-06",
       "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
       "category": "other",
@@ -55,7 +26,30 @@
       }
     },
     {
-      "candidate_id": "cand_c3d7ba94ea",
+      "candidate_id": "cand_70f3410d67",
+      "as_of_date": "2026-04-06",
+      "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
+      "category": "other",
+      "hook_signals": [
+        "other"
+      ],
+      "evidence_refs": [
+        "snapshot:generic"
+      ],
+      "numbers": [],
+      "confidence": "UNCERTAIN",
+      "requires_confirmation": false,
+      "rank_features": {
+        "hook_score": 1.0,
+        "number_score": 0.0,
+        "timeliness_score": 1.0,
+        "explainability_score": 1.0,
+        "evidence_quality_score": 0.2,
+        "final_score": 3.2
+      }
+    },
+    {
+      "candidate_id": "cand_354f8f2193",
       "as_of_date": "2026-04-06",
       "question": "오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)",
       "category": "other",
