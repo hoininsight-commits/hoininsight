@@ -1,4 +1,4 @@
-# Structural Probability Compression Brief (2026-04-06)
+# Structural Probability Compression Brief (2026-04-07)
 
 ## Compression State: **DOWNWARD_BIAS**
 - **Pressure Level**: MODERATE
