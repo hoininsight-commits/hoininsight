@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-08T08:40:19Z`
+- ts_utc: `2026-04-08T08:41:24Z`
 - ymd_utc: `2026/04/08`
 - enabled_datasets: `32`
 
@@ -20,7 +20,7 @@
 | YIELD_CURVE | derived_yield_curve_10y_2y | OK | 12457 | 1976-06-01T00:00:00Z | 2026-04-06T00:00:00Z | 4 | 21 | 1 | 0 | 0 | data/curated/derived/rates/yield_curve_10y_2y.csv | [png](data/reports/2026/04/08/charts/derived_yield_curve_10y_2y.png) |
 | PLATINUM | metal_platinum_xptusd_stooq | SKIPPED | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 1 | 0 | data/curated/metals/platinum.csv | [png](data/reports/2026/04/08/charts/metal_platinum_xptusd_stooq.png) |
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 0 | 0 | data/curated/structural/foreigner_flow.csv | - |
-| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 613 | 2026-01-15T07:32:29Z | 2026-04-08T08:39:18Z | 15 | 109 | 0 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/08/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 613 | 2026-01-15T07:32:29Z | 2026-04-08T08:40:30Z | 15 | 109 | 0 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/08/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | UNKNOWN | 949 | 1947-01-01T00:00:00Z | 2026-02-01T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/04/08/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 0 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/04/08/charts/fx_dxy_index_stooq.png) |
 | ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 70 | 2026-01-15T00:00:00Z | 2026-04-08T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/04/08/charts/crypto_eth_usd_spot_coingecko.png) |

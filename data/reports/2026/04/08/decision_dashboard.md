@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 트럼프 협상 시한 몇시간 앞…뉴욕증시 혼조 마감 - 연합뉴스 한민족센터 (Google_News_KR_Economy)
-  - [NEWS] “시동 끌 수도 없고”…배달기사들도 ‘치솟는 기름값’에 속앓이 - 한겨레 (Google_News_KR_Economy)
+  - [NEWS] 뉴욕증시, 기술주 반등으로 S&P500·나스닥 상승…테슬라·애플은 하락 - 글로벌이코노믹 (Google_News_KR_Economy)
   - [NEWS] [영상] “우주로 가는 디지털 관문”… 삼성전자, 독일 자이스 천체투영관에 몰입형 디스플레이 설치 - samsung.com (Google_News_KR_Economy)
+  - [NEWS] 삼천당제약, 이번엔 핵심 특허 논란... 대만기업 보유설에 “100% 자사 소유” - 조선일보 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,26 +185,26 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 트럼프 협상 시한 몇시간 앞…뉴욕증시 혼조 마감 - 연합뉴스 한민족센터 | Structural implication: '트럼프 협상 시한 몇시간 앞…뉴욕증시 혼조 마감 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
-| “시동 끌 수도 없고”…배달기사들도 ‘치솟는 기름값’에 속앓이 - 한겨레 | Structural implication: '“시동 끌 수도 없고”…배달기사들도 ‘치솟는 기름값’에 속앓이 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, 기술주 반등으로 S&P500·나스닥 상승…테슬라·애플은 하락 - 글로벌이코노믹 | Structural implication: '뉴욕증시, 기술주 반등으로 S&P500·나스닥 상승…테슬라·애플은 하락 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | [영상] “우주로 가는 디지털 관문”… 삼성전자, 독일 자이스 천체투영관에 몰입형 디스플레이 설치 - samsung.com | Structural implication: '[영상] “우주로 가는 디지털 관문”… 삼성전자, 독일 자이스 천체투영관에 몰입형 디스플레이 설치 - samsung.com' suggests a shift in NEWS dynamics. | LOW |
-| 삼천당제약 "약물전달 플랫폼 'S-PASS' 특허권 100% 자사 소유" - 팜뉴스 | Structural implication: '삼천당제약 "약물전달 플랫폼 'S-PASS' 특허권 100% 자사 소유" - 팜뉴스' suggests a shift in NEWS dynamics. | LOW |
-| '글로벌 톱5 수준' 삼성전자 실적, 한미통상·노사협상 영향 주목 - 시사저널e | Structural implication: ''글로벌 톱5 수준' 삼성전자 실적, 한미통상·노사협상 영향 주목 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
+| 삼천당제약, 이번엔 핵심 특허 논란... 대만기업 보유설에 “100% 자사 소유” - 조선일보 | Structural implication: '삼천당제약, 이번엔 핵심 특허 논란... 대만기업 보유설에 “100% 자사 소유” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 노근창 현대차證 센터장이 본 삼전…"3분기 영업익 100조 가능…뉴노멀 시작" - 연합인포맥스 | Structural implication: '노근창 현대차證 센터장이 본 삼전…"3분기 영업익 100조 가능…뉴노멀 시작" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 서울 휘발유 가격 2천원 넘었다…하루 만에 10원 올라 - 한겨레 | Structural implication: '서울 휘발유 가격 2천원 넘었다…하루 만에 10원 올라 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 시총 1위 삼성전자에 선방한 코스피, 시총 1위였던 삼천당 폭락에 우는 코스닥 - khan.co.kr | Structural implication: '시총 1위 삼성전자에 선방한 코스피, 시총 1위였던 삼천당 폭락에 우는 코스닥 - khan.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 수익률 1위부터 11위까지 '싹쓸이…'검은 금' 돈 쓸어담았다 - 한국경제 | Structural implication: '수익률 1위부터 11위까지 '싹쓸이…'검은 금' 돈 쓸어담았다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| “항공권 취소됐습니다”… 고유가에 노선 잇단 축소 - 동아일보 | Structural implication: '“항공권 취소됐습니다”… 고유가에 노선 잇단 축소 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| [사설] ‘중동 사태 에너지 전환 대책’에 원전이 빠지다니 - 조선일보 | Structural implication: '[사설] ‘중동 사태 에너지 전환 대책’에 원전이 빠지다니 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| “금융시장 흔들리고 물가·성장률 타격”…경제심리지수 11개월來 최저 - 매일경제 | Structural implication: '“금융시장 흔들리고 물가·성장률 타격”…경제심리지수 11개월來 최저 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| [논평] 재생에너지 전환의 본질과 사회적 갈등을 ‘계통 소득’이라는 기만적 프레임으로 덮는 재생에너지 정책을 폐기하라 - 환경운동연합 | Structural implication: '[논평] 재생에너지 전환의 본질과 사회적 갈등을 ‘계통 소득’이라는 기만적 프레임으로 덮는 재생에너지 정책을 폐기하라 - 환경운동연합' suggests a shift in NEWS dynamics. | LOW |
+| 기등재약 조정 앞두고 질문 쏟아져…"이 품목은 1단계인가" - 히트뉴스 | Structural implication: '기등재약 조정 앞두고 질문 쏟아져…"이 품목은 1단계인가" - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
+| IEA 총장 "현재 중동 위기, 1970년대 오일쇼크보다 심각" - 연합인포맥스 | Structural implication: 'IEA 총장 "현재 중동 위기, 1970년대 오일쇼크보다 심각" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 항공협회, 중동 사태 관련 정부 지원 요청…항공유 관세 면제 등 - KBS 뉴스 | Structural implication: '항공협회, 중동 사태 관련 정부 지원 요청…항공유 관세 면제 등 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 로킷헬스케어 아르헨티나 계약 체결…'남미 연골재생 시장' 확대 - 메디칼타임즈 | Structural implication: '로킷헬스케어 아르헨티나 계약 체결…'남미 연골재생 시장' 확대 - 메디칼타임즈' suggests a shift in NEWS dynamics. | LOW |
+| FDA, 초기 임상·바이오시밀러 심사 문턱 낮춘다 - 팜뉴스 | Structural implication: 'FDA, 초기 임상·바이오시밀러 심사 문턱 낮춘다 - 팜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| KDI "중동전쟁에 경기 하방 위험 확대…물가상승 압력 커질수도" - 한국무역협회-KITA.NET | Structural implication: 'KDI "중동전쟁에 경기 하방 위험 확대…물가상승 압력 커질수도" - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
 | 앱클론, 자체 ADC 결합 기술 중국 특허 등록 - 히트뉴스 | Structural implication: '앱클론, 자체 ADC 결합 기술 중국 특허 등록 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 테슬라 목표주가 145달러?...고유가에 전기차 인기 높아졌는데 "왜?" - 오피니언뉴스 | Structural implication: '테슬라 목표주가 145달러?...고유가에 전기차 인기 높아졌는데 "왜?" - 오피니언뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 혁신 프리미어 1000 사업에 ‘바이오헬스 20개사’ - 데일리메디 | Structural implication: '혁신 프리미어 1000 사업에 ‘바이오헬스 20개사’ - 데일리메디' suggests a shift in NEWS dynamics. | LOW |
-| 구윤철 "주차장도 노하우 있다" 말에...李대통령 "그게 무슨 가업이야" 빵 터져 - 파이낸셜뉴스 | Structural implication: '구윤철 "주차장도 노하우 있다" 말에...李대통령 "그게 무슨 가업이야" 빵 터져 - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [만물상] 초대형 베이커리 카페 - 조선일보 | Structural implication: '[만물상] 초대형 베이커리 카페 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "셀토스는 올렸는데" 오히려 가격 내린 코나…가성비 승부수 [분석+] - 한국경제 | Structural implication: '"셀토스는 올렸는데" 오히려 가격 내린 코나…가성비 승부수 [분석+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 애플, 첫 폴더블 ‘아이폰 폴드’ 시험 생산 돌입…7월 양산 전망 - v.daum.net | Structural implication: '애플, 첫 폴더블 ‘아이폰 폴드’ 시험 생산 돌입…7월 양산 전망 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | 포스코, 사내하청 직원 7천명 직접 고용한다 - 한겨레 | Structural implication: '포스코, 사내하청 직원 7천명 직접 고용한다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | “도심 복합사업 숨통 트이나”…용적률 완화·공원 기준 손 본다 - 매일경제 | Structural implication: '“도심 복합사업 숨통 트이나”…용적률 완화·공원 기준 손 본다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| [코인시세] 중동 협상 주시 속 혼조세…비트코인 6만8천달러선 등락 - 연합뉴스TV | Structural implication: '[코인시세] 중동 협상 주시 속 혼조세…비트코인 6만8천달러선 등락 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
-| "1년치 항공권 미리 챙겨두자"…대륙도 사재기 몸살 [차이나 워치] - 한국경제 | Structural implication: '"1년치 항공권 미리 챙겨두자"…대륙도 사재기 몸살 [차이나 워치] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 미국·이란 ‘2주 휴전’ 발표에… 국제유가 12.49% 급락 | Structural implication: '미국·이란 ‘2주 휴전’ 발표에… 국제유가 12.49% 급락' suggests a shift in NEWS dynamics. | LOW |
 | “폭격 작전 중단한다”…미국 이란 이어 이스라엘도 2주간 휴전 동의 | Structural implication: '“폭격 작전 중단한다”…미국 이란 이어 이스라엘도 2주간 휴전 동의' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 미국-이란, 2주간의 ‘휴전 및 호르무즈 개방’ 사실상 합의 | Structural implication: '[속보] 미국-이란, 2주간의 ‘휴전 및 호르무즈 개방’ 사실상 합의' suggests a shift in NEWS dynamics. | LOW |

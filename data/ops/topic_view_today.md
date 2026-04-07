@@ -12,12 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 트럼프 협상 시한 몇시간 앞…뉴욕증시 혼조 마감 - 연합뉴스 한민족센터 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### “시동 끌 수도 없고”…배달기사들도 ‘치솟는 기름값’에 속앓이 - 한겨레 (ID: unknown)
+### 뉴욕증시, 기술주 반등으로 S&P500·나스닥 상승…테슬라·애플은 하락 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,12 +22,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼천당제약 "약물전달 플랫폼 'S-PASS' 특허권 100% 자사 소유" - 팜뉴스 (ID: unknown)
+### 삼천당제약, 이번엔 핵심 특허 논란... 대만기업 보유설에 “100% 자사 소유” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '글로벌 톱5 수준' 삼성전자 실적, 한미통상·노사협상 영향 주목 - 시사저널e (ID: unknown)
+### 노근창 현대차證 센터장이 본 삼전…"3분기 영업익 100조 가능…뉴노멀 시작" - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 서울 휘발유 가격 2천원 넘었다…하루 만에 10원 올라 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,17 +47,37 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “항공권 취소됐습니다”… 고유가에 노선 잇단 축소 - 동아일보 (ID: unknown)
+### [논평] 재생에너지 전환의 본질과 사회적 갈등을 ‘계통 소득’이라는 기만적 프레임으로 덮는 재생에너지 정책을 폐기하라 - 환경운동연합 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [사설] ‘중동 사태 에너지 전환 대책’에 원전이 빠지다니 - 조선일보 (ID: unknown)
+### 기등재약 조정 앞두고 질문 쏟아져…"이 품목은 1단계인가" - 히트뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “금융시장 흔들리고 물가·성장률 타격”…경제심리지수 11개월來 최저 - 매일경제 (ID: unknown)
+### IEA 총장 "현재 중동 위기, 1970년대 오일쇼크보다 심각" - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 항공협회, 중동 사태 관련 정부 지원 요청…항공유 관세 면제 등 - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 로킷헬스케어 아르헨티나 계약 체결…'남미 연골재생 시장' 확대 - 메디칼타임즈 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### FDA, 초기 임상·바이오시밀러 심사 문턱 낮춘다 - 팜뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### KDI "중동전쟁에 경기 하방 위험 확대…물가상승 압력 커질수도" - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,27 +87,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 테슬라 목표주가 145달러?...고유가에 전기차 인기 높아졌는데 "왜?" - 오피니언뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 혁신 프리미어 1000 사업에 ‘바이오헬스 20개사’ - 데일리메디 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 구윤철 "주차장도 노하우 있다" 말에...李대통령 "그게 무슨 가업이야" 빵 터져 - 파이낸셜뉴스 (ID: unknown)
+### [만물상] 초대형 베이커리 카페 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### "셀토스는 올렸는데" 오히려 가격 내린 코나…가성비 승부수 [분석+] - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 애플, 첫 폴더블 ‘아이폰 폴드’ 시험 생산 돌입…7월 양산 전망 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -98,16 +108,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “도심 복합사업 숨통 트이나”…용적률 완화·공원 기준 손 본다 - 매일경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [코인시세] 중동 협상 주시 속 혼조세…비트코인 6만8천달러선 등락 - 연합뉴스TV (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "1년치 항공권 미리 챙겨두자"…대륙도 사재기 몸살 [차이나 워치] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
