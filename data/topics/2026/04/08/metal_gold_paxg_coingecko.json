@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-08T10:16:13Z",
+    "ts_utc": "2026-04-08T16:20:04Z",
     "dataset_id": "metal_gold_paxg_coingecko",
     "topic_id": "metal_gold_paxg_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/08/metal_gold_paxg_coingecko.json L2 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/08/metal_gold_paxg_coingecko.json"
     },
     "rationale": "[L2] Z-Score 2.03 >= 2.0 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]

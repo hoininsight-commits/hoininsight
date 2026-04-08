@@ -1,8 +1,8 @@
-# EDITORIAL SPEAKABILITY GATE (RUN_DATE: 2026-04-08)
+# EDITORIAL SPEAKABILITY GATE (RUN_DATE: 2026-04-09)
 
 **SUMMARY**: 🟢 SPEAKABLE_NOW=0 | ⚪ NOT_SPEAKABLE_YET=1
 
-## ⚪ 오늘 시장의 핵심 혼란 포인트 (gate_893faa62f2)
+## ⚪ 오늘 시장의 핵심 혼란 포인트 (gate_58fe6be0f6)
 - **Speakability**: NOT_SPEAKABLE_YET
 - **Blocking Reasons**: INSUFFICIENT_ANCHOR_STRENGTH, LOW_NARRATIVE_FIT
 - **Decision Basis**:
