@@ -34,6 +34,7 @@ Historical context:
 - [HIGH] GOLD: data/features/anomalies/2026/04/08/metal_gold_paxg_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [HIGH] SILVER: data/features/anomalies/2026/04/08/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=3.00) | App7d=2
 - [HIGH] SILVER: data/features/anomalies/2026/04/08/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=3.00) | App7d=2
+- [HIGH] ETHUSD: data/features/anomalies/2026/04/08/crypto_eth_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [HIGH] USDKRW_ECOS: data/features/anomalies/2026/04/08/fx_usdkrw_ecos.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/08/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/08/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -47,7 +48,6 @@ Historical context:
 - [LOW] KOSPI: data/features/anomalies/2026/04/08/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/04/08/index_nasdaq_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] US02Y: data/features/anomalies/2026/04/08/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] ETHUSD: data/features/anomalies/2026/04/08/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] KOR_RATE: data/features/anomalies/2026/04/08/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] FED_FUNDS: data/features/anomalies/2026/04/08/rates_fed_funds_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] UNRATE: data/features/anomalies/2026/04/08/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -60,6 +60,11 @@ Historical context:
 Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
+
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
@@ -75,14 +80,19 @@ Narrative Drift Signals:
 
 ## Content Topic (Topic Decision Gate)
 
-- Title: 오늘 시장의 핵심 혼란 포인트
-- Question: 오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)
-- Why people confused: 시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.
+- Title: 지수 상승 속 섹터 하락의 이유
+- Question: 왜 지수는 오르는데 내 종목은 하락하나?
+- Why people confused: 지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.
 - Key reasons:
   - 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.
   - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
-- Numbers: (none)
+- Numbers:
+  - S&P500 Status: Active 
 - Risk: 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
-- Confidence: UNCERTAIN
+- Confidence: LOW
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 14 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.

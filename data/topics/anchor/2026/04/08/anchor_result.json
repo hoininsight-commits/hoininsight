@@ -1,13 +1,15 @@
 {
   "data_axis": [
     "crypto_btc_usd_spot_coingecko",
+    "metal_gold_paxg_coingecko",
     "metal_silver_kag_coingecko",
-    "metal_gold_paxg_coingecko"
+    "crypto_eth_usd_spot_coingecko"
   ],
   "baseline_match": [
     "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=3.22)",
+    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.03)",
     "metal_silver_kag_coingecko: Volatility Surge (Z=2.31)",
-    "metal_gold_paxg_coingecko: Volatility Surge (Z=2.03)"
+    "crypto_eth_usd_spot_coingecko: Volatility Surge (Z=2.25)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",
