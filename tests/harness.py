@@ -118,6 +118,65 @@ def test_history_update():
     return True
 
 
+def test_writer_output():
+    """AGENT-05: 스크립트 파일 생성 확인"""
+    print("\n[AGENT-05 WRITER 하네스 테스트]")
+
+    scripts_dir = ROOT / "data" / "scripts"
+    if not scripts_dir.exists():
+        print("  scripts/ 폴더 없음 — 건너뜀")
+        return True
+
+    # 가장 최근 스크립트 확인
+    script_dirs = sorted(scripts_dir.iterdir(), reverse=True)
+    if not script_dirs:
+        print("  생성된 스크립트 없음 — 건너뜀")
+        return True
+
+    latest = script_dirs[0]
+    long_path = latest / "today_script_long.md"
+    short_path = latest / "today_script_short.md"
+
+    if long_path.exists():
+        content = long_path.read_text(encoding="utf-8")
+        assert len(content) > 500, "롱폼 스크립트가 너무 짧음"
+        print(f"  롱폼 스크립트 확인 ({len(content)}자)")
+    else:
+        print("  롱폼 스크립트 없음 — 건너뜀")
+
+    if short_path.exists():
+        content = short_path.read_text(encoding="utf-8")
+        assert len(content) > 100, "쇼츠 스크립트가 너무 짧음"
+        print(f"  쇼츠 스크립트 확인 ({len(content)}자)")
+    else:
+        print("  쇼츠 스크립트 없음 — 건너뜀")
+
+    return True
+
+
+def test_publisher_output():
+    """AGENT-06: 이력 및 대시보드 파일 확인"""
+    print("\n[AGENT-06 PUBLISHER 하네스 테스트]")
+
+    content_log = ROOT / "data" / "history" / "content_log.json"
+    dashboard_data = ROOT / "dashboard" / "today_data.json"
+
+    assert content_log.exists(), "content_log.json 없음"
+    data = json.loads(content_log.read_text())
+    assert "contents" in data
+    print(f"  content_log.json 확인 (항목: {len(data['contents'])}개)")
+
+    if dashboard_data.exists():
+        data = json.loads(dashboard_data.read_text())
+        assert "today" in data
+        assert "last_updated" in data
+        print("  dashboard/today_data.json 확인")
+    else:
+        print("  dashboard/today_data.json 없음 — 건너뜀")
+
+    return True
+
+
 def run_harness():
     """전체 하네스 실행"""
     print("=" * 50)
@@ -141,6 +200,22 @@ def run_harness():
     except Exception as e:
         print(f"  이력 파일 테스트 실패: {e}")
         results["history"] = False
+
+    # AGENT-05 테스트
+    try:
+        ok = test_writer_output()
+        results["writer"] = ok
+    except Exception as e:
+        print(f"  WRITER 테스트 실패: {e}")
+        results["writer"] = False
+
+    # AGENT-06 테스트
+    try:
+        ok = test_publisher_output()
+        results["publisher"] = ok
+    except Exception as e:
+        print(f"  PUBLISHER 테스트 실패: {e}")
+        results["publisher"] = False
 
     # 결과 요약
     print("\n" + "=" * 50)
