@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-08T23:03:35Z",
+    "ts_utc": "2026-04-08T23:06:32Z",
     "dataset_id": "comm_wti_fred",
     "topic_id": "comm_wti_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/08/comm_wti_fred.json L2 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 60,
       "level": "L2",
       "details": {
-        "z_score": 1.58,
+        "z_score": 2.19,
         "percentile": 100.0,
-        "value": 104.69,
-        "rolling_mean_20d": 91.8225,
-        "reasoning": "Percentile 100.0% (Extreme)"
+        "value": 114.01,
+        "rolling_mean_20d": 97.387,
+        "reasoning": "Z-Score 2.19 >= 2.0"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/04/08/comm_wti_fred.json"
     },
-    "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
+    "rationale": "[L2] Z-Score 2.19 >= 2.0 (Regime x1.0)",
     "links": []
   }
 ]
