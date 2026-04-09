@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-09T13:52:32Z`
+- ts_utc: `2026-04-09T05:21:09Z`
 - ymd_utc: `2026/04/09`
 - enabled_datasets: `32`
 
