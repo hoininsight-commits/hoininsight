@@ -1,5 +1,9 @@
+# src/agents/learner.py
+# AGENT-02 LEARNER
+# 역할: 경사 유튜브 새 영상 감지 + 자막 추출 + 파일 저장
+# 분석/학습은 하지 않는다 — 선장이 직접 판단
+
 import json
-import os
 from datetime import datetime
 from pathlib import Path
 
@@ -10,159 +14,166 @@ class LearnerAgent:
         self.today = datetime.now().strftime("%Y%m%d")
         self.scripts_dir = Path("data/learning/scripts")
         self.scripts_dir.mkdir(parents=True, exist_ok=True)
-        self.patterns_path = Path("data/learning/topic_patterns.json")
-        self.weights_path = Path("data/learning/filter_weights.json")
-        self._init_files()
+        self.index_path = Path("data/learning/collected_index.json")
+        self._init_index()
 
-    def _init_files(self):
-        """초기 파일 생성 (없을 경우)"""
-        if not self.patterns_path.exists():
-            self.patterns_path.write_text(json.dumps({
-                "total_analyzed": 0,
-                "filter_frequency": {
-                    "필터1_역사적임계값": 0,
-                    "필터2_역설적현상": 0,
-                    "필터3_미반영격차": 0,
-                    "필터4_시의성": 0,
-                    "필터5_연결고리": 0,
-                    "필터6_권위자변화": 0,
-                    "필터7_공포무관섹터": 0
-                },
-                "recent_topics": []
+    def _init_index(self):
+        """수집 이력 파일 초기화"""
+        if not self.index_path.exists():
+            self.index_path.write_text(json.dumps({
+                "total_collected": 0,
+                "videos": []
             }, ensure_ascii=False, indent=2))
 
-        if not self.weights_path.exists():
-            self.weights_path.write_text(json.dumps({
-                "필터1_역사적임계값": 1.5,
-                "필터2_역설적현상": 1.3,
-                "필터3_미반영격차": 1.4,
-                "필터4_시의성": 1.6,
-                "필터5_연결고리": 1.2,
-                "필터6_권위자변화": 1.1,
-                "필터7_공포무관섹터": 1.0
-            }, ensure_ascii=False, indent=2))
+    def _load_index(self) -> dict:
+        return json.loads(self.index_path.read_text())
 
-    def fetch_latest_transcripts(self):
-        """경사 유튜브 채널 최신 영상 자막 수집"""
-        print("🎬 경사 유튜브 채널 크롤링 중...")
+    def _save_index(self, index: dict):
+        self.index_path.write_text(
+            json.dumps(index, ensure_ascii=False, indent=2)
+        )
+
+    def _already_collected(self, video_id: str) -> bool:
+        index = self._load_index()
+        return video_id in [v["video_id"] for v in index["videos"]]
+
+    def fetch_video_list(self, max_videos: int = 10) -> list:
+        """채널 최신 영상 목록 가져오기"""
+        print(f"  채널 영상 목록 조회 중 (최근 {max_videos}개)...")
 
         channel_url = "https://www.youtube.com/@경제사냥꾼/videos"
-        transcripts = []
 
         try:
             import yt_dlp
-            from youtube_transcript_api import YouTubeTranscriptApi
 
             ydl_opts = {
                 'quiet': True,
                 'extract_flat': True,
-                'playlist_items': '1-5',
+                'playlist_items': f'1-{max_videos}',
             }
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info = ydl.extract_info(channel_url, download=False)
-                videos = info.get('entries', [])[:5]
+                videos = info.get('entries', [])
 
-            for video in videos:
-                video_id = video.get('id')
-                title = video.get('title', '제목없음')
+            result = [{
+                "video_id": v.get("id"),
+                "title": v.get("title", "제목없음"),
+                "url": f"https://www.youtube.com/watch?v={v.get('id')}",
+                "duration": v.get("duration"),
+                "view_count": v.get("view_count"),
+            } for v in videos]
 
-                # 이미 수집한 영상은 스킵
-                script_path = self.scripts_dir / f"{video_id}.txt"
-                if script_path.exists():
-                    print(f"  이미 수집됨: {title[:30]}")
-                    continue
-
-                try:
-                    transcript_list = YouTubeTranscriptApi.get_transcript(
-                        video_id, languages=['ko']
-                    )
-                    text = ' '.join([t['text'] for t in transcript_list])
-                    script_path.write_text(
-                        f"제목: {title}\n영상ID: {video_id}\n수집일: {self.today}\n\n{text}",
-                        encoding='utf-8'
-                    )
-                    transcripts.append({
-                        'video_id': video_id,
-                        'title': title,
-                        'text': text
-                    })
-                    print(f"  수집 완료: {title[:30]}")
-
-                except Exception as e:
-                    print(f"  자막 없음: {title[:30]} → {e}")
+            print(f"  영상 목록 조회 완료: {len(result)}개")
+            return result
 
         except ImportError:
-            print("  yt-dlp 또는 youtube-transcript-api 미설치 → pip install yt-dlp youtube-transcript-api")
+            print("  yt-dlp 미설치 — pip install yt-dlp")
+            return []
         except Exception as e:
-            print(f"  크롤링 실패: {e}")
+            print(f"  영상 목록 조회 실패: {e}")
+            return []
 
-        return transcripts
+    def extract_transcript(self, video_id: str, title: str) -> str:
+        """유튜브 자막 추출"""
+        try:
+            from youtube_transcript_api import YouTubeTranscriptApi
 
-    def analyze_patterns(self, transcripts):
-        """수집된 자막에서 토픽 선정 패턴 분석"""
-        if not transcripts:
-            return
+            try:
+                transcript_list = YouTubeTranscriptApi.get_transcript(
+                    video_id, languages=['ko']
+                )
+            except Exception:
+                transcript_list = YouTubeTranscriptApi.get_transcript(
+                    video_id, languages=['ko-KR']
+                )
 
-        print(f"  {len(transcripts)}개 영상 패턴 분석 중...")
+            return ' '.join([t['text'] for t in transcript_list])
 
-        patterns = json.loads(self.patterns_path.read_text())
+        except ImportError:
+            print("  youtube-transcript-api 미설치")
+            return ""
+        except Exception as e:
+            print(f"  자막 없음: {title[:30]} — {e}")
+            return ""
 
-        FILTER_KEYWORDS = {
-            "필터1_역사적임계값": ["N년 만", "역대", "처음", "최초", "최고", "최저", "기록"],
-            "필터2_역설적현상": ["반대 맞고", "틀린 이야기", "역설", "이상한", "근데 여기서"],
-            "필터3_미반영격차": ["아직 안 오른", "저평가", "숨어", "미반영", "담아두고"],
-            "필터4_시의성": ["내일부터", "오늘부터", "빨리", "지금 바로", "긴급"],
-            "필터5_연결고리": ["때문에", "연결", "파급", "영향", "이어지는"],
-            "필터6_권위자변화": ["버핏", "이재용", "머스크", "이재명", "회장", "CEO"],
-            "필터7_공포무관섹터": ["시장 무관", "리스크 없", "독립적", "관계없이"]
-        }
+    def save_script(self, video_id: str, title: str, transcript: str) -> Path:
+        """자막 파일 저장"""
+        filename = f"{self.today}_{video_id}.txt"
+        script_path = self.scripts_dir / filename
 
-        for t in transcripts:
-            text = t['text']
-            for filter_name, keywords in FILTER_KEYWORDS.items():
-                if any(kw in text for kw in keywords):
-                    patterns["filter_frequency"][filter_name] += 1
+        content = f"""제목: {title}
+영상ID: {video_id}
+URL: https://www.youtube.com/watch?v={video_id}
+수집일: {self.today}
+수집시각: {datetime.now().strftime('%H:%M:%S')}
 
-            patterns["recent_topics"].append({
-                "title": t['title'],
-                "video_id": t['video_id'],
-                "date": self.today
-            })
+---
 
-        patterns["total_analyzed"] += len(transcripts)
-        patterns["recent_topics"] = patterns["recent_topics"][-30:]
+{transcript}
+"""
+        script_path.write_text(content, encoding='utf-8')
+        return script_path
 
-        self.patterns_path.write_text(
-            json.dumps(patterns, ensure_ascii=False, indent=2)
-        )
-        self._update_weights(patterns)
-        print("  패턴 및 가중치 업데이트 완료")
+    def update_index(self, video: dict, script_path: Path):
+        """수집 이력 업데이트"""
+        index = self._load_index()
+        index["videos"].append({
+            "video_id": video["video_id"],
+            "title": video["title"],
+            "url": video["url"],
+            "collected_date": self.today,
+            "script_file": str(script_path),
+            "analyzed": False
+        })
+        index["total_collected"] = len(index["videos"])
+        self._save_index(index)
 
-    def _update_weights(self, patterns):
-        """필터 빈도 기반 가중치 재계산"""
-        freq = patterns["filter_frequency"]
-        total = sum(freq.values()) or 1
-        weights = json.loads(self.weights_path.read_text())
-
-        for filter_name, count in freq.items():
-            base = 1.0
-            bonus = (count / total) * 2.0
-            weights[filter_name] = round(base + bonus, 2)
-
-        self.weights_path.write_text(
-            json.dumps(weights, ensure_ascii=False, indent=2)
-        )
-
-    def run(self):
+    def run(self, max_videos: int = 10):
         print(f"\n🎓 AGENT-02 LEARNER 시작 [{self.today}]")
-        transcripts = self.fetch_latest_transcripts()
-        if transcripts:
-            self.analyze_patterns(transcripts)
-        else:
-            print("  새로 수집된 영상 없음 (기존 파일 유지)")
+        print(f"  역할: 경사 유튜브 자막 수집 (분석 없음)")
+
+        videos = self.fetch_video_list(max_videos)
+
+        if not videos:
+            print("  영상 목록 조회 실패")
+            print("✅ AGENT-02 완료 (수집 없음)\n")
+            return {"new_collected": 0, "skipped": 0}
+
+        new_count = 0
+        skip_count = 0
+
+        for video in videos:
+            video_id = video["video_id"]
+            title = video["title"]
+
+            if self._already_collected(video_id):
+                print(f"  스킵 (기수집): {title[:40]}")
+                skip_count += 1
+                continue
+
+            transcript = self.extract_transcript(video_id, title)
+
+            if not transcript:
+                skip_count += 1
+                continue
+
+            script_path = self.save_script(video_id, title, transcript)
+            self.update_index(video, script_path)
+            print(f"  저장 완료: {title[:40]}")
+            new_count += 1
+
+        index = self._load_index()
+        print(f"\n  신규 수집: {new_count}개")
+        print(f"  스킵: {skip_count}개")
+        print(f"  누적 수집: {index['total_collected']}개")
         print("✅ AGENT-02 완료\n")
-        return {"new_transcripts": len(transcripts)}
+
+        return {
+            "new_collected": new_count,
+            "skipped": skip_count,
+            "total": index["total_collected"]
+        }
 
 
 if __name__ == "__main__":

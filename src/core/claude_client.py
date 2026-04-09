@@ -1,45 +1,35 @@
-import anthropic
-import json
-import os
+# src/core/claude_client.py
+# GeminiClient를 ClaudeClient 이름으로 감싸는 어댑터
+# 기존 에이전트 코드 수정 없이 Gemini로 전환
+
+from dotenv import load_dotenv
+load_dotenv()
+
+try:
+    from .gemini_client import GeminiClient as _Backend
+    _USE_GEMINI = True
+except Exception:
+    _USE_GEMINI = False
 
 
 class ClaudeClient:
+    """
+    Gemini API를 백엔드로 사용하는 클라이언트.
+    기존 에이전트 코드와 호환성 유지를 위해 ClaudeClient 이름 유지.
+    """
+
     def __init__(self):
-        self.client = anthropic.Anthropic(
-            api_key=os.environ.get("ANTHROPIC_API_KEY")
-        )
-        self.model = "claude-sonnet-4-20250514"
+        if not _USE_GEMINI:
+            raise ImportError(
+                "GeminiClient 초기화 실패. "
+                "GEMINI_API_KEY 설정 및 "
+                "google-generativeai 설치 여부를 확인하세요."
+            )
+        self._client = _Backend()
+        print(f"  백엔드: Gemini ({self._client.model_name})")
 
     def call(self, prompt: str, max_tokens: int = 4000) -> str:
-        """Claude API 호출"""
-        message = self.client.messages.create(
-            model=self.model,
-            max_tokens=max_tokens,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-        return message.content[0].text
+        return self._client.call(prompt, max_tokens)
 
     def call_json(self, prompt: str, max_tokens: int = 4000) -> dict:
-        """JSON 응답 파싱 포함 호출"""
-        system_prompt = "너는 JSON만 출력하는 분석 엔진이다. 마크다운 코드블록 없이 순수 JSON만 출력해라."
-
-        message = self.client.messages.create(
-            model=self.model,
-            max_tokens=max_tokens,
-            system=system_prompt,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-
-        text = message.content[0].text
-        text = text.replace("```json", "").replace("```", "").strip()
-
-        try:
-            return json.loads(text)
-        except json.JSONDecodeError as e:
-            print(f"JSON 파싱 실패: {e}")
-            print(f"원본 텍스트: {text[:200]}")
-            return {}
+        return self._client.call_json(prompt, max_tokens)
