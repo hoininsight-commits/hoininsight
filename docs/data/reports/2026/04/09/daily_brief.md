@@ -37,7 +37,6 @@ Historical context:
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/04/09/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US10Y: data/features/anomalies/2026/04/09/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] SPX: data/features/anomalies/2026/04/09/index_spx_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
-- [MED] ETHUSD: data/features/anomalies/2026/04/09/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/04/09/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/09/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
 - [LOW] BTCUSD: data/features/anomalies/2026/04/09/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
@@ -47,6 +46,7 @@ Historical context:
 - [LOW] GOLD: data/features/anomalies/2026/04/09/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] SILVER: data/features/anomalies/2026/04/09/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] SILVER: data/features/anomalies/2026/04/09/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
+- [LOW] ETHUSD: data/features/anomalies/2026/04/09/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] KOR_RATE: data/features/anomalies/2026/04/09/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] FED_FUNDS: data/features/anomalies/2026/04/09/rates_fed_funds_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] UNRATE: data/features/anomalies/2026/04/09/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -80,16 +80,15 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 
 ## Content Topic (Topic Decision Gate)
 
-- Title: 지수 상승 속 섹터 하락의 이유
-- Question: 왜 지수는 오르는데 내 종목은 하락하나?
-- Why people confused: 지수 흐름과 섹터 흐름이 분리돼 체감이 엇갈린다.
+- Title: 오늘 시장의 핵심 혼란 포인트
+- Question: 오늘 시장에서 사람들이 가장 헷갈리는 지점은 무엇인가? (혼란 포인트)
+- Why people confused: 시장의 직관과 데이터가 같은 방향으로 움직이지 않는다.
 - Key reasons:
   - 시장 참여자들이 '다음 분기/다음 국면'을 더 중요하게 본다.
   - 자금이 특정 스타일/섹터로 회전하며 상대적 약세가 발생한다.
-- Numbers:
-  - S&P500 Status: Active 
+- Numbers: (none)
 - Risk: 추가 확인 데이터(가이던스/자금흐름)가 나오면 해석이 급변할 수 있다.
-- Confidence: LOW
+- Confidence: UNCERTAIN
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 

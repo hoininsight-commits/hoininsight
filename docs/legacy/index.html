@@ -656,7 +656,7 @@
                 
     <div class="candidate-container">
         <div class="today-header">
-            <div class="today-summary">📂 토픽 후보군 (포함: 관찰 승격) <strong>15개</strong></div>
+            <div class="today-summary">📂 토픽 후보군 (포함: 관찰 승격) <strong>14개</strong></div>
         </div>
         <table class="archive-table">
             <thead>
@@ -671,11 +671,51 @@
             <tbody>
     
             <tr>
-                <td><code style="font-size:11px;">cand_crypto_eth_usd_spot_coingecko_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">CRYPTO</span></td>
+                <td><code style="font-size:11px;">cand_struct_dart_disposal_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
                 <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
                 <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [crypto_eth_usd_spot_coingecko] during global market volatility in categories ['INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'COMMODITIES', 'FX_RATES', 'OTHER'].</td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_comm_wti_fred_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">COMMODITIES</span></td>
+                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['STRUCTURAL', 'FX_RATES', 'OTHER', 'LIQUIDITY', 'INFLATION'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_fx_usdkrw_ecos_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">FX_RATES</span></td>
+                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['STRUCTURAL', 'COMMODITIES', 'OTHER', 'LIQUIDITY', 'INFLATION'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_index_spx_fred_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
+                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_spx_fred] with corroborating signals in ['risk_vix_fred', 'rates_us10y_fred'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
+                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
+                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'COMMODITIES', 'FX_RATES', 'OTHER', 'INFLATION'].</td>
+            </tr>
+        
+            <tr>
+                <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
+                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
+                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal'].</td>
             </tr>
         
             <tr>
@@ -687,19 +727,11 @@
             </tr>
         
             <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_disposal_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
+                <td><code style="font-size:11px;">cand_risk_vix_fred_20260409</code></td>
+                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
                 <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
                 <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_liquidity_m2_fred_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">LIQUIDITY</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['CRYPTO', 'INFLATION', 'STRUCTURAL', 'COMMODITIES', 'FX_RATES', 'OTHER'].</td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_spx_fred', 'rates_us10y_fred'].</td>
             </tr>
         
             <tr>
@@ -711,38 +743,6 @@
             </tr>
         
             <tr>
-                <td><code style="font-size:11px;">cand_comm_wti_fred_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">COMMODITIES</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['CRYPTO', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'FX_RATES', 'OTHER'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_fx_usdkrw_ecos_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">FX_RATES</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['CRYPTO', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'COMMODITIES', 'OTHER'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_index_spx_fred_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [index_spx_fred] with corroborating signals in ['rates_us10y_fred', 'risk_vix_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_rates_us10y_fred_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['index_spx_fred', 'risk_vix_fred'].</td>
-            </tr>
-        
-            <tr>
                 <td><code style="font-size:11px;">cand_inflation_cpi_fred_20260409</code></td>
                 <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">INFLATION</span></td>
                 <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
@@ -751,19 +751,11 @@
             </tr>
         
             <tr>
-                <td><code style="font-size:11px;">cand_risk_vix_fred_20260409</code></td>
+                <td><code style="font-size:11px;">cand_rates_us10y_fred_20260409</code></td>
                 <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">OTHER</span></td>
                 <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
                 <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_spx_fred', 'rates_us10y_fred'].</td>
-            </tr>
-        
-            <tr>
-                <td><code style="font-size:11px;">cand_struct_dart_cb_bw_20260409</code></td>
-                <td><span class="card-badge signal" style="background:#f1f5f9; color:#475569;">STRUCTURAL</span></td>
-                <td><span class="card-badge" style="background:#f1f5f9; color:#64748b; font-weight:bold; font-size:10px;">-</span></td>
-                <td><span style="font-size:10px; color:#475569; border:1px solid #cbd5e1; padding:2px 4px; border-radius:4px;">-</span></td>
-                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal'].</td>
+                <td style="font-size:13px; color:#334155;">Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['index_spx_fred', 'risk_vix_fred'].</td>
             </tr>
         
             <tr>
