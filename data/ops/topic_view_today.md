@@ -17,7 +17,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 외국인, 3월 한국 주식·채권 365억5천만달러 팔아…역대 최대 - 연합뉴스 한민족센터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 번개장터, '2026 K-브랜드 수출 플랫폼 육성사업' 선정 - 지디넷코리아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 중기부 “제과점, 종이봉투 무상 제공 가능” - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,22 +42,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 존슨앤드존슨, 국내 안경광학 교육 발전을 위한 산학 협력 체결 - 팜이데일리 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 휘발유 이어 서울 경윳값 2천 원 돌파 - KBS 뉴스 (ID: unknown)
+### 서울 경유도 2000원 돌파…10일 3차 최고가격 시행 땐 2100원? - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 친환경 포장·공동물류로 기업 부담 낮춘다 - 전라매일 (ID: unknown)
+### 식품산업협회 "중동사태로 원료수급 한계…포장재 우선공급해야" - 한국무역협회-KITA.NET (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독]신현송 “중동 전쟁 장기화 시 기준금리 인상 등 통화정책 대응 필요” - 동아일보 (ID: unknown)
+### 신현송 "현재로서는 스태그플레이션 발생 가능성 높지 않아" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -62,7 +77,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "FDA승인, 15조 공급, 특허권'…삼천당제약 둘러싼 3대 의혹 체크 [이슈체크] - MTN 머니투데이방송 (ID: unknown)
+### 삼천당제약 기자회견서 설명한 ‘디오스파마 대표’ - 데일리메디 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,12 +87,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### '금리 인상' 공감대 커진 3월 FOMC…"양방향 기술 '강력한' 근거"(상보) - 연합인포맥스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 트럼프 '2주 휴전' 호재 한 방에…비트코인 반등 속 대규모 숏 청산 - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 국민연금 평가액 320조 돌파…코스피 수익률 웃돌고 S&P500 압도 - v.daum.net (ID: unknown)
+### “뭐 샀길래 석달 수익률 32%?”... 국민연금 보유 주식 가치 1분기만 80조원 늘어 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,29 +107,54 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "비트코인 창시자 사토시 찾았다"…NYT 보도 파장 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 신고 포상금이 무려 10배 올랐다고?…“학파라치 부활하나” 학원가 긴장 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [속보]구윤철 "3차 석유최고가격, 오후 7시 발표…내일부터 적용" - 노컷뉴스 (ID: unknown)
+### ‘하GPT’ 부산 보궐 안나오나?…이 대통령 “작업에 넘어가면 안 된다” 언급 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 (ID: unknown)
+### 부산 누비는 한동훈, 힘 받는 ‘보궐 선거’ 출마설…전재수 지역구서 與 후보와 격돌할까 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### "식사 중 스마트폰 금지, 못 지키면 오지 마"…일본 라멘집 공지에 갑론을박 - 연합뉴스TV (ID: unknown)
+### IPARK현대산업개발, 루버 태양광 발전 시스템 녹색기술인증 획득 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 지역 특색에 기술 더해 성장…새 모델 만드는 벤처기업들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “안전문화 확산”…현대건설, 건설안전 문화 주도할 혁신기업 7곳 선정 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “미래세대와 지역사회 잇는다”…DL이앤씨, 강서구와 창의예술교육 협력 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한국디자인진흥원, 안전 디자인으로 중소 제조기업 작업환경 개선 추진 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “새로운 주거 모델 제시”…대우건설 정원주 회장, 세계적 건축가 도미니크 페로 면담 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “5월 9일까지 신청만하면 양도세 중과 피한다”…불확실성 해소 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “RWA 2030년 10조달러 열린다”…DAXA, 국내 정책 공백 메울 ‘6대 어젠다’ 제시 (ID: unknown)
@@ -158,51 +203,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “쓸데없이 대규모로 갖고 있나”…이재명 대통령, 기업 비업무용 부동산 지적 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “채용은 부담되고 컨설팅은 비싼데”… ‘프로젝트형 전문가’ 찾는 기업들 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘1만대 돌파’ BYD코리아, ‘천하제빵’ 김진서에 씨라이언7 선물 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 개그맨 이진호, 급성 뇌출혈로 중환자실 입원 치료 중…“생명엔 지장 없어” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 한국동서발전, 자원안보위기 대응 에너지 절약 캠페인 시행 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### SK텔레콤 52주 신고가 찍었다…주가 10만원까지 가나 [매경 자이앤트] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### HS효성더클래스, 현장 중심 임직원 앰배서더 ‘더스타즈’ 4기 출범 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 세달간 체납과태료 714억 징수…작년보다 50% 이상 늘어 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘297만명 개인정보 유출’ 롯데카드 영업정지 4.5월·과징금 50억 사전통지 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이 대통령 “중동사태는 위기이지만 기회…새 도약 시스템 구축해야” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

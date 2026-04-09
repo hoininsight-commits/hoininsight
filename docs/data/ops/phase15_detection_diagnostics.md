@@ -6,11 +6,35 @@
 - **Conflict**: Supply_Demand_Gap
 - **Final Score**: 63.11
 
+## Topic: 거시경제 이상징후: crypto_eth_usd_spot_coingecko
+- **Actors**: TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: None
+- **Final Score**: 44.27
+
+## Topic: 거시경제 이상징후: inflation_pce_fred
+- **Actors**: TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: Macro_Price_Divergence
+- **Final Score**: 60.41
+
 ## Topic: 거시경제 이상징후: struct_dart_disposal
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 60.41
+
+## Topic: 거시경제 이상징후: liquidity_m2_fred
+- **Actors**: TIER_4:MARKET
+- **Axes**: Capital Flow:FLOW, Structural Capital:구조적, Liquidity:LIQUIDITY
+- **Conflict**: Macro_Price_Divergence
+- **Final Score**: 60.41
+
+## Topic: 거시경제 이상징후: inflation_kor_cpi_ecos
+- **Actors**: TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: Macro_Price_Divergence
+- **Final Score**: 49.59
 
 ## Topic: 거시경제 이상징후: comm_wti_fred
 - **Actors**: TIER_4:MARKET
@@ -30,19 +54,13 @@
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 49.59
 
-## Topic: 거시경제 이상징후: liquidity_m2_fred
+## Topic: 거시경제 이상징후: rates_us10y_fred
 - **Actors**: TIER_4:MARKET
-- **Axes**: Capital Flow:FLOW, Structural Capital:구조적, Liquidity:LIQUIDITY
-- **Conflict**: Macro_Price_Divergence
-- **Final Score**: 60.41
+- **Axes**: Policy:POLICY, Capital Flow:FLOW, Structural Capital:구조적
+- **Conflict**: Tightening_Inflow, Macro_Price_Divergence
+- **Final Score**: 71.48
 
-## Topic: 거시경제 이상징후: struct_dart_cb_bw
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: Macro_Price_Divergence
-- **Final Score**: 60.41
-
-## Topic: 거시경제 이상징후: inflation_pce_fred
+## Topic: 거시경제 이상징후: inflation_cpi_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
@@ -54,27 +72,9 @@
 - **Conflict**: GeoRisk_Rally, Macro_Price_Divergence
 - **Final Score**: 66.07
 
-## Topic: 거시경제 이상징후: inflation_kor_cpi_ecos
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: Macro_Price_Divergence
-- **Final Score**: 49.59
-
-## Topic: 거시경제 이상징후: inflation_cpi_fred
+## Topic: 거시경제 이상징후: struct_dart_cb_bw
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 60.41
-
-## Topic: 거시경제 이상징후: rates_us10y_fred
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:POLICY, Capital Flow:FLOW, Structural Capital:구조적
-- **Conflict**: Tightening_Inflow, Macro_Price_Divergence
-- **Final Score**: 71.48
-
-## Topic: 거시경제 이상징후: crypto_eth_usd_spot_coingecko
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 44.27
 
