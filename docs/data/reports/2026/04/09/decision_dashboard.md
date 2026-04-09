@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
+  - [NEWS] 다주택자 양도세 중과 유예, ‘5월9일 신청’까지 허용 - 한겨레 (Google_News_KR_Economy)
   - [NEWS] 번개장터, '2026 K-브랜드 수출 플랫폼 육성사업' 선정 - 지디넷코리아 (Google_News_KR_Economy)
   - [NEWS] 美 전문가 "유가 하락, 손절매 때문…시장 상황 완전히 반전될 것" - 연합인포맥스 (Google_News_KR_Economy)
-  - [NEWS] 빅크(BIGC), 글로벌 라이브 시장 혁신하며 3년간 매출 1028% 성장 달성 - 마켓인 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -183,26 +183,27 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
+| 다주택자 양도세 중과 유예, ‘5월9일 신청’까지 허용 - 한겨레 | Structural implication: '다주택자 양도세 중과 유예, ‘5월9일 신청’까지 허용 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 번개장터, '2026 K-브랜드 수출 플랫폼 육성사업' 선정 - 지디넷코리아 | Structural implication: '번개장터, '2026 K-브랜드 수출 플랫폼 육성사업' 선정 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 美 전문가 "유가 하락, 손절매 때문…시장 상황 완전히 반전될 것" - 연합인포맥스 | Structural implication: '美 전문가 "유가 하락, 손절매 때문…시장 상황 완전히 반전될 것" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 빅크(BIGC), 글로벌 라이브 시장 혁신하며 3년간 매출 1028% 성장 달성 - 마켓인 | Structural implication: '빅크(BIGC), 글로벌 라이브 시장 혁신하며 3년간 매출 1028% 성장 달성 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| ‘갤럭시S 디자인 통일성 없다’ 반박한 삼성전자… “울트라 곡률 변화로 정체성 확보” - 조선비즈 - Chosunbiz | Structural implication: '‘갤럭시S 디자인 통일성 없다’ 반박한 삼성전자… “울트라 곡률 변화로 정체성 확보” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| 서울 경유도 2000원 돌파…10일 3차 최고가격 시행 땐 2100원? - 한겨레 | Structural implication: '서울 경유도 2000원 돌파…10일 3차 최고가격 시행 땐 2100원? - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| 식품-외식업계, 포장재수급난 지원 호소 - 의학신문 | Structural implication: '식품-외식업계, 포장재수급난 지원 호소 - 의학신문' suggests a shift in NEWS dynamics. | LOW |
+| IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보 | Structural implication: 'IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 휘발유 이어 서울 경윳값 2천 원 돌파 - KBS 뉴스 | Structural implication: '휘발유 이어 서울 경윳값 2천 원 돌파 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 친환경 포장·공동물류로 기업 부담 낮춘다 - 전라매일 | Structural implication: '친환경 포장·공동물류로 기업 부담 낮춘다 - 전라매일' suggests a shift in NEWS dynamics. | LOW |
 | [단독]신현송 “중동 전쟁 장기화 시 기준금리 인상 등 통화정책 대응 필요” - 동아일보 | Structural implication: '[단독]신현송 “중동 전쟁 장기화 시 기준금리 인상 등 통화정책 대응 필요” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 모든 5G·LTE 요금제, 데이터 무제한 제공...연간 통신비 3221억 절감 - 지디넷코리아 | Structural implication: '모든 5G·LTE 요금제, 데이터 무제한 제공...연간 통신비 3221억 절감 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스 | Structural implication: 'WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 코스피·코스닥 급등에 매수 사이드카 발동 - MBC 뉴스 | Structural implication: '코스피·코스닥 급등에 매수 사이드카 발동 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 삼천당제약 기자회견서 설명한 ‘디오스파마 대표’ - 데일리메디 | Structural implication: '삼천당제약 기자회견서 설명한 ‘디오스파마 대표’ - 데일리메디' suggests a shift in NEWS dynamics. | LOW |
+| "FDA승인, 15조 공급, 특허권'…삼천당제약 둘러싼 3대 의혹 체크 [이슈체크] - MTN 머니투데이방송 | Structural implication: '"FDA승인, 15조 공급, 특허권'…삼천당제약 둘러싼 3대 의혹 체크 [이슈체크] - MTN 머니투데이방송' suggests a shift in NEWS dynamics. | LOW |
+| WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스 | Structural implication: 'WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 트럼프 '2주 휴전' 호재 한 방에…비트코인 반등 속 대규모 숏 청산 - 디지털투데이 | Structural implication: '트럼프 '2주 휴전' 호재 한 방에…비트코인 반등 속 대규모 숏 청산 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | 국민연금 평가액 320조 돌파…코스피 수익률 웃돌고 S&P500 압도 - v.daum.net | Structural implication: '국민연금 평가액 320조 돌파…코스피 수익률 웃돌고 S&P500 압도 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | [속보] JW중외제약, 대사질환 치료제 ‘보팡글루타이드’ 국내 독점 도입 계약 체결 - CBC뉴스 | Structural implication: '[속보] JW중외제약, 대사질환 치료제 ‘보팡글루타이드’ 국내 독점 도입 계약 체결 - CBC뉴스' suggests a shift in NEWS dynamics. | LOW |
-| IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보 | Structural implication: 'IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인 창시자 사토시 찾았다"…NYT 보도 파장 - 지디넷코리아 | Structural implication: '"비트코인 창시자 사토시 찾았다"…NYT 보도 파장 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 신고 포상금이 무려 10배 올랐다고?…“학파라치 부활하나” 학원가 긴장 - 매일경제 | Structural implication: '신고 포상금이 무려 10배 올랐다고?…“학파라치 부활하나” 학원가 긴장 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 | Structural implication: '돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | [속보]구윤철 "3차 석유최고가격, 오후 7시 발표…내일부터 적용" - 노컷뉴스 | Structural implication: '[속보]구윤철 "3차 석유최고가격, 오후 7시 발표…내일부터 적용" - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 배민, 로드러너 스케줄 신청 기능 폐지…배달플랫폼노조와 협의 - 한국경제 | Structural implication: '배민, 로드러너 스케줄 신청 기능 폐지…배달플랫폼노조와 협의 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 | Structural implication: '돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| "식사 중 스마트폰 금지, 못 지키면 오지 마"…일본 라멘집 공지에 갑론을박 - 연합뉴스TV | Structural implication: '"식사 중 스마트폰 금지, 못 지키면 오지 마"…일본 라멘집 공지에 갑론을박 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
+| “RWA 2030년 10조달러 열린다”…DAXA, 국내 정책 공백 메울 ‘6대 어젠다’ 제시 | Structural implication: '“RWA 2030년 10조달러 열린다”…DAXA, 국내 정책 공백 메울 ‘6대 어젠다’ 제시' suggests a shift in NEWS dynamics. | LOW |
 | “이러다 크게 물리는 거 아냐”…금융위기때 보다 더 빠진 외국인 투자자금 왜? | Structural implication: '“이러다 크게 물리는 거 아냐”…금융위기때 보다 더 빠진 외국인 투자자금 왜?' suggests a shift in NEWS dynamics. | LOW |
 | 발언하는 장동혁 대표 | Structural implication: '발언하는 장동혁 대표' suggests a shift in NEWS dynamics. | LOW |
 | 국민의힘 100만 책임당원 돌파 기념식 | Structural implication: '국민의힘 100만 책임당원 돌파 기념식' suggests a shift in NEWS dynamics. | LOW |
@@ -221,7 +222,6 @@
 | 세달간 체납과태료 714억 징수…작년보다 50% 이상 늘어 | Structural implication: '세달간 체납과태료 714억 징수…작년보다 50% 이상 늘어' suggests a shift in NEWS dynamics. | LOW |
 | ‘297만명 개인정보 유출’ 롯데카드 영업정지 4.5월·과징금 50억 사전통지 | Structural implication: '‘297만명 개인정보 유출’ 롯데카드 영업정지 4.5월·과징금 50억 사전통지' suggests a shift in NEWS dynamics. | LOW |
 | 이 대통령 “중동사태는 위기이지만 기회…새 도약 시스템 구축해야” | Structural implication: '이 대통령 “중동사태는 위기이지만 기회…새 도약 시스템 구축해야”' suggests a shift in NEWS dynamics. | LOW |
-| 경기아트센터, 세계 최첨단 친환경 공기멸균시스템 ‘바이오옥시전’ 도입…‘바이러스 프리’ 공연장 실현 | Structural implication: '경기아트센터, 세계 최첨단 친환경 공기멸균시스템 ‘바이오옥시전’ 도입…‘바이러스 프리’ 공연장 실현' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

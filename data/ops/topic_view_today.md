@@ -12,6 +12,11 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
+### 다주택자 양도세 중과 유예, ‘5월9일 신청’까지 허용 - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 번개장터, '2026 K-브랜드 수출 플랫폼 육성사업' 선정 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -27,17 +32,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘갤럭시S 디자인 통일성 없다’ 반박한 삼성전자… “울트라 곡률 변화로 정체성 확보” - 조선비즈 - Chosunbiz (ID: unknown)
+### IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 서울 경유도 2000원 돌파…10일 3차 최고가격 시행 땐 2100원? - 한겨레 (ID: unknown)
+### 휘발유 이어 서울 경윳값 2천 원 돌파 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 식품-외식업계, 포장재수급난 지원 호소 - 의학신문 (ID: unknown)
+### 친환경 포장·공동물류로 기업 부담 낮춘다 - 전라매일 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,17 +57,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 코스피·코스닥 급등에 매수 사이드카 발동 - MBC 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼천당제약 기자회견서 설명한 ‘디오스파마 대표’ - 데일리메디 (ID: unknown)
+### "FDA승인, 15조 공급, 특허권'…삼천당제약 둘러싼 3대 의혹 체크 [이슈체크] - MTN 머니투데이방송 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### WGBI 우리나라 국채 비중 축소된 두 가지 기술적 이유(종합) - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,11 +87,6 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### IEA 사무총장 “전쟁 전 못 돌아가… 한국, 원전·신재생 늘려야” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "비트코인 창시자 사토시 찾았다"…NYT 보도 파장 - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -97,19 +97,24 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### [속보]구윤철 "3차 석유최고가격, 오후 7시 발표…내일부터 적용" - 노컷뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 배민, 로드러너 스케줄 신청 기능 폐지…배달플랫폼노조와 협의 - 한국경제 (ID: unknown)
+### 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "식사 중 스마트폰 금지, 못 지키면 오지 마"…일본 라멘집 공지에 갑론을박 - 연합뉴스TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “RWA 2030년 10조달러 열린다”…DAXA, 국내 정책 공백 메울 ‘6대 어젠다’ 제시 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “이러다 크게 물리는 거 아냐”…금융위기때 보다 더 빠진 외국인 투자자금 왜? (ID: unknown)
@@ -198,11 +203,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 이 대통령 “중동사태는 위기이지만 기회…새 도약 시스템 구축해야” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 경기아트센터, 세계 최첨단 친환경 공기멸균시스템 ‘바이오옥시전’ 도입…‘바이러스 프리’ 공연장 실현 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
