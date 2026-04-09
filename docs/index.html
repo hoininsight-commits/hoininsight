@@ -172,6 +172,79 @@ body {
 .empty-state { text-align: center; padding: 40px 20px; color: #555570; }
 .empty-icon { font-size: 32px; margin-bottom: 10px; }
 .empty-text { font-size: 13px; }
+
+/* 프롬프트 뷰어 */
+.prompt-section {
+  margin-top: 20px;
+  border-top: 1px solid #2a2a3a;
+  padding-top: 18px;
+}
+.prompt-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.prompt-section-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888899;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prompt-toggle {
+  font-size: 11px;
+  color: #6c63ff;
+  padding: 3px 10px;
+  border: 1px solid rgba(108,99,255,0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(108,99,255,0.08);
+}
+.prompt-toggle:hover { background: rgba(108,99,255,0.18); }
+.prompt-box {
+  background: #0d0d14;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #b0b0cc;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+}
+.prompt-box.visible { display: block; }
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  width: fit-content;
+}
+.copy-btn:hover { background: #5a52e0; }
+.copy-btn.copied { background: #00d4aa; }
+.prompt-guide {
+  font-size: 12px;
+  color: #555570;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.prompt-guide a { color: #6c63ff; text-decoration: none; }
+.prompt-guide a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -244,6 +317,30 @@ body {
         <div class="chain-pending">⏳ AGENT-04 실행 후 자동으로 채워집니다</div>
       </div>
     </div>
+
+    <!-- 레벨2 프롬프트 뷰어 -->
+    <div class="prompt-section">
+      <div class="prompt-section-header" onclick="togglePrompt()">
+        <div class="prompt-section-title">
+          🤖 Gemini 레벨2 분석 프롬프트
+          <span style="font-size:11px; color:#555570; font-weight:400;">(클릭해서 펼치기)</span>
+        </div>
+        <span class="prompt-toggle" id="promptToggleBtn">펼치기</span>
+      </div>
+      <div class="prompt-box" id="promptBox"></div>
+      <div id="promptActions" style="display:none;">
+        <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">
+          📋 프롬프트 전체 복사
+        </button>
+        <div class="prompt-guide">
+          복사 후 →
+          <a href="https://aistudio.google.com/prompts/new_freeform" target="_blank">Google AI Studio</a>
+          또는
+          <a href="https://gemini.google.com" target="_blank">Gemini</a>
+          에 붙여넣기
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="zone-label">C — 전체 후보 신호 · 파이프라인 상태</div>
@@ -302,7 +399,7 @@ const AGENTS = [
 
 async function loadData() {
   try {
-    const res = await fetch('dashboard/today_data.json');
+    const res = await fetch('today_data.json');
     if (!res.ok) throw new Error();
     return await res.json();
   } catch(e) { return null; }
@@ -310,7 +407,7 @@ async function loadData() {
 
 async function loadSignalLog() {
   try {
-    const res = await fetch('data/history/signal_log.json');
+    const res = await fetch('../data/history/signal_log.json');
     if (!res.ok) throw new Error();
     return await res.json();
   } catch(e) { return null; }
@@ -319,9 +416,9 @@ async function loadSignalLog() {
 async function loadCandidates() {
   const today = new Date().toISOString().slice(0,10).replace(/-/g,'');
   const urls = [
-    `data/signals/${today}/candidates.json`,
-    'data/signals/20260409/candidates.json',
-    'data/signals/20260408/candidates.json',
+    `../data/signals/${today}/candidates.json`,
+    '../data/signals/20260409/candidates.json',
+    '../data/signals/20260408/candidates.json',
   ];
   for (const url of urls) {
     try {
@@ -393,6 +490,9 @@ function renderSignal(data) {
       <div class="chain-item"><div class="chain-num">${i+1}</div><span>${item}</span></div>
     `).join('');
   }
+  if (window._rawData) {
+    document.getElementById('promptBox').textContent = buildPrompt(signal, window._rawData);
+  }
 }
 
 function renderCandidates(data) {
@@ -459,8 +559,97 @@ function renderMeta(data) {
   document.getElementById('nextRun').textContent = (tomorrow.getMonth()+1) + '월 ' + tomorrow.getDate() + '일 06:00 KST';
 }
 
+function buildPrompt(signal, rawData) {
+  const market = rawData?.market?.data || {};
+  const macro = rawData?.macro?.data || {};
+
+  const usdKrw = market.usd_krw || '데이터 없음';
+  const wti = market.wti_oil || '데이터 없음';
+  const kospi = market.kospi || '데이터 없음';
+  const kospiChg = market.kospi_1d_change || '데이터 없음';
+  const vix = market.vix || '데이터 없음';
+  const koreaRate = macro.korea_base_rate || '데이터 없음';
+  const usRate = macro.us_fed_rate || '데이터 없음';
+
+  const filters = (signal.filters_hit || [])
+    .map(f => FILTER_LABELS[f] || f)
+    .join(', ');
+
+  return `너는 경제사냥꾼 채널 수준의 거시경제 분석 전문가다.
+아래 신호를 분석해서 JSON만 출력해라. 마크다운 없이 순수 JSON만.
+
+[오늘의 신호]
+토픽: ${signal.topic || '없음'}
+강도: ${signal.strength || 0} / 10
+적중 필터: ${filters}
+
+[수집 데이터]
+원달러 환율: ${usdKrw}원
+KOSPI 등락: ${kospiChg}%
+VIX: ${vix}
+WTI 유가: $${wti}
+한국 기준금리: ${koreaRate}%
+미국 기준금리: ${usRate}%
+
+[분석 요구사항]
+1. three_lens_analysis: 돈의흐름 / 구조적변화 / 정책방향 각각 한 문장
+2. level2_chain: 인과관계 체인 3~5단계 (경제사냥꾼 스타일로 구체적으로)
+3. historical_reference: 과거 유사 사례 1개
+4. risk_factors: 리스크 정확히 3개
+5. check_points: 투자 체크포인트 정확히 2개
+
+[출력 JSON 구조 — 반드시 이 형식 준수]
+{
+  "date": "${new Date().toISOString().slice(0,10)}",
+  "topic": "${(signal.topic || '').replace(/"/g, '\\"')}",
+  "three_lens_analysis": {
+    "money_flow": "돈의 흐름 분석 한 문장",
+    "structural_change": "구조적 변화 분석 한 문장",
+    "policy_direction": "정책 방향 분석 한 문장"
+  },
+  "level2_chain": ["원인1", "원인2", "결과1", "결과2", "투자 임팩트"],
+  "historical_reference": {
+    "case": "과거 사례명",
+    "similarity": "유사한 이유",
+    "outcome": "그때 결과"
+  },
+  "risk_factors": ["리스크1", "리스크2", "리스크3"],
+  "check_points": ["체크포인트1", "체크포인트2"]
+}`;
+}
+
+function togglePrompt() {
+  const box = document.getElementById('promptBox');
+  const actions = document.getElementById('promptActions');
+  const btn = document.getElementById('promptToggleBtn');
+  const isVisible = box.classList.contains('visible');
+  if (isVisible) {
+    box.classList.remove('visible');
+    actions.style.display = 'none';
+    btn.textContent = '펼치기';
+  } else {
+    box.classList.add('visible');
+    actions.style.display = 'block';
+    btn.textContent = '접기';
+  }
+}
+
+function copyPrompt() {
+  const text = document.getElementById('promptBox').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ 복사 완료!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 프롬프트 전체 복사';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
 async function init() {
   const [data, log, candidatesData] = await Promise.all([loadData(), loadSignalLog(), loadCandidates()]);
+  window._rawData = data;
   renderMeta(data || {});
   if (data) { renderMarket(data); renderSignal(data); renderPipeline(data); }
   if (candidatesData) renderCandidates(candidatesData);
