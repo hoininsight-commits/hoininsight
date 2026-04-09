@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-04-09T08:24:30.152437",
+  "last_updated": "2026-04-09T13:15:14.842270",
   "today": {
     "date": "2026-04-09",
     "signal": {
-      "date": "20260408",
-      "topic": "환율 1521원 + 유가 $104.0 동시 급등 → 복합 위기 신호",
+      "date": "20260409",
+      "topic": "환율 1480원 + 유가 $97.4 동시 급등 → 복합 위기 신호",
       "strength": 10.0,
       "content_type": "롱폼",
       "filters_hit": [
@@ -14,8 +14,8 @@
         "필터5_연결고리"
       ],
       "data_evidence": {
-        "usd_krw": 1521.0,
-        "wti": 104.05
+        "usd_krw": 1479.68,
+        "wti": 97.38
       },
       "related_keywords": [
         "환율",
@@ -32,7 +32,7 @@
     "candidates": [
       {
         "rank": 1,
-        "topic": "환율 1521원 + 유가 $104.0 동시 급등 → 복합 위기 신호",
+        "topic": "환율 1480원 + 유가 $97.4 동시 급등 → 복합 위기 신호",
         "filters_hit": [
           "필터1_역사적임계값",
           "필터2_역설적현상",
@@ -47,33 +47,7 @@
       },
       {
         "rank": 2,
-        "topic": "원달러 환율 1521원 → 위험 수준",
-        "filters_hit": [
-          "필터1_역사적임계값",
-          "필터4_시의성"
-        ],
-        "filter_count": 2,
-        "strength": 5.5,
-        "selected": false,
-        "content_type": null,
-        "reject_reason": "더 강한 신호가 선정됨"
-      },
-      {
-        "rank": 3,
-        "topic": "KOSPI 하루 -3.7% 급락",
-        "filters_hit": [
-          "필터1_역사적임계값",
-          "필터4_시의성"
-        ],
-        "filter_count": 2,
-        "strength": 5.5,
-        "selected": false,
-        "content_type": null,
-        "reject_reason": "더 강한 신호가 선정됨"
-      },
-      {
-        "rank": 4,
-        "topic": "WTI 유가 $104.0 → 위험 수준",
+        "topic": "WTI 유가 $97.4 → 주의 수준",
         "filters_hit": [
           "필터1_역사적임계값",
           "필터5_연결고리"
@@ -85,21 +59,20 @@
         "reject_reason": "더 강한 신호가 선정됨"
       },
       {
-        "rank": 5,
-        "topic": "트럼프 → 이란 2~3주 추가 타격 선언",
+        "rank": 3,
+        "topic": "원달러 환율 1480원 → 주의 수준",
         "filters_hit": [
-          "필터6_권위자변화",
-          "필터4_시의성"
+          "필터1_역사적임계값"
         ],
-        "filter_count": 2,
-        "strength": 5.3,
+        "filter_count": 1,
+        "strength": 2.8,
         "selected": false,
         "content_type": null,
         "reject_reason": "더 강한 신호가 선정됨"
       },
       {
-        "rank": 6,
-        "topic": "VIX 24.5 → 공포 구간 진입",
+        "rank": 4,
+        "topic": "VIX 21.0 → 공포 구간 진입",
         "filters_hit": [
           "필터1_역사적임계값"
         ],
