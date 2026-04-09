@@ -16,7 +16,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 44.27
+- **Final Score**: 34.62
 
 ## Topic: 거시경제 이상징후: inflation_pce_fred
 - **Actors**: TIER_4:MARKET

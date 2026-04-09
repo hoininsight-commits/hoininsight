@@ -1,13 +1,39 @@
 {
-  "generated_at": "2026-04-09T08:41:30.213250",
+  "generated_at": "2026-04-09T09:16:57.672619",
   "candidate_count": 12,
   "alive_count": 12,
   "candidates": [
     {
-      "candidate_id": "cand_crypto_eth_usd_spot_coingecko_20260409",
-      "dataset_id": "crypto_eth_usd_spot_coingecko",
-      "category": "CRYPTO",
-      "created_at": "2026-04-09T08:41:30.213184",
+      "candidate_id": "cand_struct_dart_disposal_20260409",
+      "dataset_id": "struct_dart_disposal",
+      "category": "STRUCTURAL",
+      "created_at": "2026-04-09T09:16:57.672539",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "struct_dart_cb_bw"
+        ],
+        "inter_category_axes": [
+          "COMMODITIES",
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw']."
+    },
+    {
+      "candidate_id": "cand_comm_wti_fred_20260409",
+      "dataset_id": "comm_wti_fred",
+      "category": "COMMODITIES",
+      "created_at": "2026-04-09T09:16:57.672561",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -17,21 +43,45 @@
       "supporting_evidence": {
         "intra_category": [],
         "inter_category_axes": [
-          "OTHER",
-          "INFLATION",
           "STRUCTURAL",
+          "FX_RATES",
+          "OTHER",
           "LIQUIDITY",
-          "COMMODITIES",
-          "FX_RATES"
+          "INFLATION",
+          "CRYPTO"
         ]
       },
-      "reason": "Cross-Axis: Detected in [crypto_eth_usd_spot_coingecko] during global market volatility in categories ['OTHER', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'COMMODITIES', 'FX_RATES']."
+      "reason": "Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['STRUCTURAL', 'FX_RATES', 'OTHER', 'LIQUIDITY', 'INFLATION', 'CRYPTO']."
     },
     {
-      "candidate_id": "cand_crypto_btc_usd_spot_coingecko_20260409",
-      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "candidate_id": "cand_fx_usdkrw_ecos_20260409",
+      "dataset_id": "fx_usdkrw_ecos",
+      "category": "FX_RATES",
+      "created_at": "2026-04-09T09:16:57.672571",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "COMMODITIES",
+          "OTHER",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
+        ]
+      },
+      "reason": "Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['STRUCTURAL', 'COMMODITIES', 'OTHER', 'LIQUIDITY', 'INFLATION', 'CRYPTO']."
+    },
+    {
+      "candidate_id": "cand_index_spx_fred_20260409",
+      "dataset_id": "index_spx_fred",
       "category": "OTHER",
-      "created_at": "2026-04-09T08:41:30.213200",
+      "created_at": "2026-04-09T09:16:57.672576",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -40,25 +90,75 @@
       },
       "supporting_evidence": {
         "intra_category": [
-          "rates_us10y_fred",
-          "risk_vix_fred"
+          "risk_vix_fred",
+          "rates_us10y_fred"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "INFLATION",
           "STRUCTURAL",
-          "LIQUIDITY",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
         ]
       },
-      "reason": "Category Cluster: Detected in [crypto_btc_usd_spot_coingecko] with corroborating signals in ['rates_us10y_fred', 'risk_vix_fred']."
+      "reason": "Category Cluster: Detected in [index_spx_fred] with corroborating signals in ['risk_vix_fred', 'rates_us10y_fred']."
+    },
+    {
+      "candidate_id": "cand_liquidity_m2_fred_20260409",
+      "dataset_id": "liquidity_m2_fred",
+      "category": "LIQUIDITY",
+      "created_at": "2026-04-09T09:16:57.672581",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [],
+        "inter_category_axes": [
+          "STRUCTURAL",
+          "COMMODITIES",
+          "FX_RATES",
+          "OTHER",
+          "INFLATION",
+          "CRYPTO"
+        ]
+      },
+      "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['STRUCTURAL', 'COMMODITIES', 'FX_RATES', 'OTHER', 'INFLATION', 'CRYPTO']."
+    },
+    {
+      "candidate_id": "cand_struct_dart_cb_bw_20260409",
+      "dataset_id": "struct_dart_cb_bw",
+      "category": "STRUCTURAL",
+      "created_at": "2026-04-09T09:16:57.672586",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [
+          "struct_dart_disposal"
+        ],
+        "inter_category_axes": [
+          "COMMODITIES",
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
+        ]
+      },
+      "reason": "Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal']."
     },
     {
       "candidate_id": "cand_inflation_pce_fred_20260409",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-09T08:41:30.213207",
+      "created_at": "2026-04-09T09:16:57.672590",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -71,21 +171,21 @@
           "inflation_cpi_fred"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
           "STRUCTURAL",
-          "LIQUIDITY",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "CRYPTO"
         ]
       },
       "reason": "Category Cluster: Detected in [inflation_pce_fred] with corroborating signals in ['inflation_kor_cpi_ecos', 'inflation_cpi_fred']."
     },
     {
-      "candidate_id": "cand_struct_dart_disposal_20260409",
-      "dataset_id": "struct_dart_disposal",
-      "category": "STRUCTURAL",
-      "created_at": "2026-04-09T08:41:30.213211",
+      "candidate_id": "cand_risk_vix_fred_20260409",
+      "dataset_id": "risk_vix_fred",
+      "category": "OTHER",
+      "created_at": "2026-04-09T09:16:57.672594",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -94,48 +194,25 @@
       },
       "supporting_evidence": {
         "intra_category": [
-          "struct_dart_cb_bw"
+          "index_spx_fred",
+          "rates_us10y_fred"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
-          "INFLATION",
-          "LIQUIDITY",
-          "COMMODITIES",
-          "FX_RATES"
-        ]
-      },
-      "reason": "Category Cluster: Detected in [struct_dart_disposal] with corroborating signals in ['struct_dart_cb_bw']."
-    },
-    {
-      "candidate_id": "cand_liquidity_m2_fred_20260409",
-      "dataset_id": "liquidity_m2_fred",
-      "category": "LIQUIDITY",
-      "created_at": "2026-04-09T08:41:30.213215",
-      "status": "CANDIDATE_ALIVE",
-      "gates": {
-        "multi_axis": true,
-        "temporal": true,
-        "explainability": true
-      },
-      "supporting_evidence": {
-        "intra_category": [],
-        "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
-          "INFLATION",
           "STRUCTURAL",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
         ]
       },
-      "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['CRYPTO', 'OTHER', 'INFLATION', 'STRUCTURAL', 'COMMODITIES', 'FX_RATES']."
+      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['index_spx_fred', 'rates_us10y_fred']."
     },
     {
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260409",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-04-09T08:41:30.213220",
+      "created_at": "2026-04-09T09:16:57.672598",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -148,96 +225,21 @@
           "inflation_cpi_fred"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
           "STRUCTURAL",
-          "LIQUIDITY",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "CRYPTO"
         ]
       },
       "reason": "Category Cluster: Detected in [inflation_kor_cpi_ecos] with corroborating signals in ['inflation_pce_fred', 'inflation_cpi_fred']."
     },
     {
-      "candidate_id": "cand_comm_wti_fred_20260409",
-      "dataset_id": "comm_wti_fred",
-      "category": "COMMODITIES",
-      "created_at": "2026-04-09T08:41:30.213224",
-      "status": "CANDIDATE_ALIVE",
-      "gates": {
-        "multi_axis": true,
-        "temporal": true,
-        "explainability": true
-      },
-      "supporting_evidence": {
-        "intra_category": [],
-        "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
-          "INFLATION",
-          "STRUCTURAL",
-          "LIQUIDITY",
-          "FX_RATES"
-        ]
-      },
-      "reason": "Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['CRYPTO', 'OTHER', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'FX_RATES']."
-    },
-    {
-      "candidate_id": "cand_fx_usdkrw_ecos_20260409",
-      "dataset_id": "fx_usdkrw_ecos",
-      "category": "FX_RATES",
-      "created_at": "2026-04-09T08:41:30.213227",
-      "status": "CANDIDATE_ALIVE",
-      "gates": {
-        "multi_axis": true,
-        "temporal": true,
-        "explainability": true
-      },
-      "supporting_evidence": {
-        "intra_category": [],
-        "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
-          "INFLATION",
-          "STRUCTURAL",
-          "LIQUIDITY",
-          "COMMODITIES"
-        ]
-      },
-      "reason": "Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['CRYPTO', 'OTHER', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'COMMODITIES']."
-    },
-    {
-      "candidate_id": "cand_rates_us10y_fred_20260409",
-      "dataset_id": "rates_us10y_fred",
-      "category": "OTHER",
-      "created_at": "2026-04-09T08:41:30.213231",
-      "status": "CANDIDATE_ALIVE",
-      "gates": {
-        "multi_axis": true,
-        "temporal": true,
-        "explainability": true
-      },
-      "supporting_evidence": {
-        "intra_category": [
-          "crypto_btc_usd_spot_coingecko",
-          "risk_vix_fred"
-        ],
-        "inter_category_axes": [
-          "CRYPTO",
-          "INFLATION",
-          "STRUCTURAL",
-          "LIQUIDITY",
-          "COMMODITIES",
-          "FX_RATES"
-        ]
-      },
-      "reason": "Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'risk_vix_fred']."
-    },
-    {
       "candidate_id": "cand_inflation_cpi_fred_20260409",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-09T08:41:30.213235",
+      "created_at": "2026-04-09T09:16:57.672602",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -250,21 +252,21 @@
           "inflation_kor_cpi_ecos"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
           "STRUCTURAL",
-          "LIQUIDITY",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "CRYPTO"
         ]
       },
       "reason": "Category Cluster: Detected in [inflation_cpi_fred] with corroborating signals in ['inflation_pce_fred', 'inflation_kor_cpi_ecos']."
     },
     {
-      "candidate_id": "cand_risk_vix_fred_20260409",
-      "dataset_id": "risk_vix_fred",
+      "candidate_id": "cand_rates_us10y_fred_20260409",
+      "dataset_id": "rates_us10y_fred",
       "category": "OTHER",
-      "created_at": "2026-04-09T08:41:30.213243",
+      "created_at": "2026-04-09T09:16:57.672610",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -273,25 +275,25 @@
       },
       "supporting_evidence": {
         "intra_category": [
-          "crypto_btc_usd_spot_coingecko",
-          "rates_us10y_fred"
+          "index_spx_fred",
+          "risk_vix_fred"
         ],
         "inter_category_axes": [
-          "CRYPTO",
-          "INFLATION",
           "STRUCTURAL",
-          "LIQUIDITY",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "LIQUIDITY",
+          "INFLATION",
+          "CRYPTO"
         ]
       },
-      "reason": "Category Cluster: Detected in [risk_vix_fred] with corroborating signals in ['crypto_btc_usd_spot_coingecko', 'rates_us10y_fred']."
+      "reason": "Category Cluster: Detected in [rates_us10y_fred] with corroborating signals in ['index_spx_fred', 'risk_vix_fred']."
     },
     {
-      "candidate_id": "cand_struct_dart_cb_bw_20260409",
-      "dataset_id": "struct_dart_cb_bw",
-      "category": "STRUCTURAL",
-      "created_at": "2026-04-09T08:41:30.213246",
+      "candidate_id": "cand_crypto_eth_usd_spot_coingecko_20260409",
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "category": "CRYPTO",
+      "created_at": "2026-04-09T09:16:57.672614",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -299,19 +301,17 @@
         "explainability": true
       },
       "supporting_evidence": {
-        "intra_category": [
-          "struct_dart_disposal"
-        ],
+        "intra_category": [],
         "inter_category_axes": [
-          "CRYPTO",
-          "OTHER",
-          "INFLATION",
-          "LIQUIDITY",
+          "STRUCTURAL",
           "COMMODITIES",
-          "FX_RATES"
+          "FX_RATES",
+          "OTHER",
+          "LIQUIDITY",
+          "INFLATION"
         ]
       },
-      "reason": "Category Cluster: Detected in [struct_dart_cb_bw] with corroborating signals in ['struct_dart_disposal']."
+      "reason": "Cross-Axis: Detected in [crypto_eth_usd_spot_coingecko] during global market volatility in categories ['STRUCTURAL', 'COMMODITIES', 'FX_RATES', 'OTHER', 'LIQUIDITY', 'INFLATION']."
     }
   ]
 }
