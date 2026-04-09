@@ -4,7 +4,7 @@
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `DEFENSIVE_BIAS`
-- **Focus**: Safety, Risk, Liquidity, Rates, Policy
+- **Focus**: Liquidity, Safety, Risk, Policy, Rates
 
 ## 🚫 Do Not Do
 - 무리한 추격 매수
@@ -19,14 +19,14 @@
 
 ---
 
-### [MONITOR] 거시경제 이상징후: crypto_eth_usd_spot_coingecko
+### [MONITOR] 거시경제 이상징후: struct_dart_disposal
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링
 
 ---
 
-### [MONITOR] 거시경제 이상징후: crypto_btc_usd_spot_coingecko
+### [MONITOR] 거시경제 이상징후: comm_wti_fred
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링

@@ -23,14 +23,13 @@ Historical context:
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | VIX | data/features/anomalies/2026/04/09/risk_vix_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/risk_vix_fred.png) | [json](data/topics/2026/04/09/risk_vix_fred.json) | [json](data/features/anomalies/2026/04/09/risk_vix_fred.json) |
 | 2 | WTI | data/features/anomalies/2026/04/09/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/comm_wti_fred.png) | [json](data/topics/2026/04/09/comm_wti_fred.json) | [json](data/features/anomalies/2026/04/09/comm_wti_fred.json) |
-| 3 | USDKRW_ECOS | data/features/anomalies/2026/04/09/fx_usdkrw_ecos.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/fx_usdkrw_ecos.png) | [json](data/topics/2026/04/09/fx_usdkrw_ecos.json) | [json](data/features/anomalies/2026/04/09/fx_usdkrw_ecos.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/04/09/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/09/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/09/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/04/09/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/inflation_pce_fred.png) | [json](data/topics/2026/04/09/inflation_pce_fred.json) | [json](data/features/anomalies/2026/04/09/inflation_pce_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/04/09/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/09/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/09/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/04/09/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/inflation_pce_fred.png) | [json](data/topics/2026/04/09/inflation_pce_fred.json) | [json](data/features/anomalies/2026/04/09/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/04/09/liquidity_m2_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/09/charts/liquidity_m2_fred.png) | [json](data/topics/2026/04/09/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/04/09/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] VIX: data/features/anomalies/2026/04/09/risk_vix_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] WTI: data/features/anomalies/2026/04/09/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [HIGH] USDKRW_ECOS: data/features/anomalies/2026/04/09/fx_usdkrw_ecos.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/09/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/09/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/09/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -40,6 +39,7 @@ Historical context:
 - [MED] SPX: data/features/anomalies/2026/04/09/index_spx_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] ETHUSD: data/features/anomalies/2026/04/09/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/04/09/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] USDKRW_ECOS: data/features/anomalies/2026/04/09/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
 - [LOW] BTCUSD: data/features/anomalies/2026/04/09/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] KOSPI: data/features/anomalies/2026/04/09/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] NASDAQ: data/features/anomalies/2026/04/09/index_nasdaq_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
