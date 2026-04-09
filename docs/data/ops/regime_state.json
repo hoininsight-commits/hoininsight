@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-09T06:14:23.200353Z",
-  "date_kst": "2026-04-09",
+  "generated_at": "2026-04-09T23:40:33.418336Z",
+  "date_kst": "2026-04-10",
   "regime": {
     "liquidity_state": "TIGHTENING",
     "policy_state": "RESTRICTIVE",
-    "risk_state": "RISK_OFF",
+    "risk_state": "NEUTRAL",
     "inflation_trend": "STICKY",
     "yield_curve_state": "NORMAL"
   },
@@ -16,12 +16,12 @@
     },
     {
       "indicator": "yield_curve_10y_2y",
-      "observation": "장단기 금리차 0.52",
+      "observation": "장단기 금리차 0.50",
       "direction": "NORMAL"
     },
     {
       "indicator": "risk_vix_fred",
-      "observation": "VIX 지수 25.8",
+      "observation": "VIX 지수 21.0",
       "direction": "VOLATILE"
     }
   ],
