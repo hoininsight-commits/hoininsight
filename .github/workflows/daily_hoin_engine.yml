@@ -1,5 +1,3 @@
-# .github/workflows/daily_hoin_engine.yml
-
 name: Daily HOIN Engine
 
 on:
@@ -7,9 +5,13 @@ on:
     - cron: '0 21 * * *'   # KST 06:00 = UTC 21:00
   workflow_dispatch:         # 수동 실행 가능
 
+permissions:
+  contents: write            # git push 권한
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: 코드 체크아웃
@@ -23,58 +25,129 @@ jobs:
       - name: 패키지 설치
         run: |
           pip install -r requirements.txt
+        continue-on-error: false
 
       - name: AGENT-01 COLLECTOR 실행
-        run: python -m src.agents.collector
+        run: |
+          echo "=== AGENT-01 COLLECTOR 시작 ==="
+          python -m src.agents.collector
+          echo "=== AGENT-01 완료 ==="
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        continue-on-error: true
 
       - name: AGENT-02 LEARNER 실행
-        run: python -m src.agents.learner
-        continue-on-error: true   # 유튜브 크롤링 실패해도 계속
+        run: |
+          echo "=== AGENT-02 LEARNER 시작 ==="
+          python -m src.agents.learner
+          echo "=== AGENT-02 완료 ==="
+        continue-on-error: true
 
       - name: AGENT-03 DETECTOR 실행
-        run: python -m src.agents.detector
+        run: |
+          echo "=== AGENT-03 DETECTOR 시작 ==="
+          python -m src.agents.detector
+          echo "=== AGENT-03 완료 ==="
+        continue-on-error: false
 
-      # AGENT-04, 05는 API 키 설정 후 활성화
+      # AGENT-04 ANALYST — Gemini API 키 설정 후 주석 해제
       # - name: AGENT-04 ANALYST 실행
       #   run: python -m src.agents.analyst
       #   env:
       #     GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      #   continue-on-error: true
 
+      # AGENT-05 WRITER — Gemini API 키 설정 후 주석 해제
       # - name: AGENT-05 WRITER 실행
       #   run: python -m src.agents.writer
       #   env:
       #     GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      #   continue-on-error: true
 
       - name: AGENT-06 PUBLISHER 실행
-        run: python -m src.agents.publisher
+        run: |
+          echo "=== AGENT-06 PUBLISHER 시작 ==="
+          python -m src.agents.publisher
+          echo "=== AGENT-06 완료 ==="
+        continue-on-error: true
 
       - name: docs/ 동기화
         run: |
-          # today_data.json 동기화 (루트 + dashboard/)
-          cp dashboard/today_data.json docs/today_data.json 2>/dev/null || true
-          mkdir -p docs/dashboard
-          cp dashboard/today_data.json docs/dashboard/today_data.json 2>/dev/null || true
+          echo "=== docs/ 동기화 시작 ==="
 
-          # 이력 파일 동기화
+          if [ -f dashboard/today_data.json ]; then
+            cp dashboard/today_data.json docs/today_data.json
+            echo "today_data.json 동기화 완료"
+          fi
+
           mkdir -p docs/data/history
-          cp data/history/signal_log.json docs/data/history/ 2>/dev/null || true
-          cp data/history/content_log.json docs/data/history/ 2>/dev/null || true
+          if [ -f data/history/signal_log.json ]; then
+            cp data/history/signal_log.json docs/data/history/
+            echo "signal_log.json 동기화 완료"
+          fi
+          if [ -f data/history/content_log.json ]; then
+            cp data/history/content_log.json docs/data/history/
+          fi
 
-          # 최신 신호 데이터 동기화
           LATEST=$(ls data/signals/ 2>/dev/null | sort -r | head -1)
           if [ -n "$LATEST" ]; then
             mkdir -p docs/data/signals/$LATEST
-            cp data/signals/$LATEST/candidates.json docs/data/signals/$LATEST/ 2>/dev/null || true
-            cp data/signals/$LATEST/today_signal.json docs/data/signals/$LATEST/ 2>/dev/null || true
+            if [ -f data/signals/$LATEST/candidates.json ]; then
+              cp data/signals/$LATEST/candidates.json docs/data/signals/$LATEST/
+              echo "candidates.json 동기화 완료: $LATEST"
+            fi
+            if [ -f data/signals/$LATEST/today_signal.json ]; then
+              cp data/signals/$LATEST/today_signal.json docs/data/signals/$LATEST/
+            fi
           fi
+
+          echo "=== docs/ 동기화 완료 ==="
+        continue-on-error: true
+
+      - name: 실행 결과 요약
+        run: |
+          echo "=== HOIN Engine 실행 결과 ==="
+          echo "날짜: $(date '+%Y-%m-%d %H:%M UTC')"
+          echo ""
+
+          TODAY=$(date '+%Y%m%d')
+          if [ -f "data/raw/$TODAY/market.json" ]; then
+            echo "✅ AGENT-01: 시장 데이터 수집 완료"
+            python3 -c "
+import json
+d = json.load(open('data/raw/$TODAY/market.json'))
+m = d.get('data', {})
+print(f'  환율: {m.get(\"usd_krw\", \"N/A\")}원')
+print(f'  KOSPI: {m.get(\"kospi\", \"N/A\")}')
+print(f'  VIX: {m.get(\"vix\", \"N/A\")}')
+print(f'  WTI: \${m.get(\"wti_oil\", \"N/A\")}')
+" 2>/dev/null || echo "  데이터 파싱 실패"
+          else
+            echo "❌ AGENT-01: 데이터 없음"
+          fi
+
+          if [ -f "data/signals/$TODAY/today_signal.json" ]; then
+            echo "✅ AGENT-03: 신호 감지 완료"
+            python3 -c "
+import json
+d = json.load(open('data/signals/$TODAY/today_signal.json'))
+print(f'  토픽: {d.get(\"topic\", \"N/A\")[:50]}')
+print(f'  강도: {d.get(\"strength\", \"N/A\")} / 10')
+print(f'  유형: {d.get(\"content_type\", \"N/A\")}')
+" 2>/dev/null || echo "  신호 파싱 실패"
+          else
+            echo "⚠️  AGENT-03: 오늘 신호 없음"
+          fi
+
+          echo "=============================="
+        continue-on-error: true
 
       - name: 결과 커밋 및 푸시
         run: |
           git config --global user.email "hoin-bot@github.com"
           git config --global user.name "HOIN Bot"
           git add data/ dashboard/ docs/
-          git commit -m "🤖 Daily HOIN Engine $(date '+%Y-%m-%d')" || exit 0
+          git diff --staged --quiet || git commit -m "🤖 Daily HOIN Engine $(date '+%Y-%m-%d')"
           git push
+        continue-on-error: true

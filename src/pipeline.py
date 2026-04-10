@@ -45,9 +45,10 @@ def run_pipeline():
         agent04 = AnalystAgent()
         results["analyst"] = agent04.run(results.get("detector", {}))
         print("✅ AGENT-04 ANALYST 완료")
+    except ImportError as e:
+        print(f"⚠️ AGENT-04 패키지 없음 (건너뜀): {e}")
     except Exception as e:
-        print(f"❌ AGENT-04 실패: {e}")
-        sys.exit(1)
+        print(f"⚠️ AGENT-04 실패 (계속 진행): {e}")
 
     # AGENT-05: WRITER
     try:
