@@ -116,6 +116,40 @@ class DetectorAgent:
                 "related_keywords": ["환율", "유가", "인플레이션", "스태그플레이션"]
             })
 
+        # 후보 6: 연결고리 신호 (필터5)
+        f5_hit, f5_details = self.filters.filter5_causal_chain(
+            raw_data.get("market", {}), raw_data.get("sentiment", {})
+        )
+        if f5_hit:
+            for detail in f5_details[:1]:  # 가장 강한 연결고리 1개만
+                filters_hit_f5 = ["필터5_연결고리"]
+                if usd_krw and usd_krw > 1450:
+                    filters_hit_f5.append("필터1_역사적임계값")
+                strength_f5 = self.filters.calculate_strength(filters_hit_f5)
+                candidates.append({
+                    "topic": detail,
+                    "filters_hit": filters_hit_f5,
+                    "strength": round(strength_f5, 1),
+                    "data_evidence": {"detail": detail},
+                    "related_keywords": ["연결고리", "파급효과"]
+                })
+
+        # 후보 7: 역설적 현상 (필터2)
+        f2_hit, f2_details = self.filters.filter2_paradox(
+            raw_data.get("market", {}), raw_data.get("sentiment", {})
+        )
+        if f2_hit:
+            for detail in f2_details[:1]:
+                filters_hit_f2 = ["필터2_역설적현상", "필터4_시의성"]
+                strength_f2 = self.filters.calculate_strength(filters_hit_f2)
+                candidates.append({
+                    "topic": detail,
+                    "filters_hit": filters_hit_f2,
+                    "strength": round(strength_f2, 1),
+                    "data_evidence": {"detail": detail},
+                    "related_keywords": ["역설", "반전", "이상"]
+                })
+
         # 강도 기준 내림차순 정렬
         candidates.sort(key=lambda x: x["strength"], reverse=True)
         return candidates
