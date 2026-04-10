@@ -51,10 +51,29 @@ jobs:
       - name: AGENT-06 PUBLISHER 실행
         run: python -m src.agents.publisher
 
+      - name: docs/ 동기화
+        run: |
+          # today_data.json 동기화
+          mkdir -p docs/dashboard
+          cp dashboard/today_data.json docs/dashboard/today_data.json 2>/dev/null || true
+
+          # 이력 파일 동기화
+          mkdir -p docs/data/history
+          cp data/history/signal_log.json docs/data/history/ 2>/dev/null || true
+          cp data/history/content_log.json docs/data/history/ 2>/dev/null || true
+
+          # 최신 신호 데이터 동기화
+          LATEST=$(ls data/signals/ 2>/dev/null | sort -r | head -1)
+          if [ -n "$LATEST" ]; then
+            mkdir -p docs/data/signals/$LATEST
+            cp data/signals/$LATEST/candidates.json docs/data/signals/$LATEST/ 2>/dev/null || true
+            cp data/signals/$LATEST/today_signal.json docs/data/signals/$LATEST/ 2>/dev/null || true
+          fi
+
       - name: 결과 커밋 및 푸시
         run: |
           git config --global user.email "hoin-bot@github.com"
           git config --global user.name "HOIN Bot"
-          git add data/ dashboard/
+          git add data/ dashboard/ docs/
           git commit -m "🤖 Daily HOIN Engine $(date '+%Y-%m-%d')" || exit 0
           git push

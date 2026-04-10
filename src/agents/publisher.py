@@ -64,6 +64,30 @@ class PublisherAgent:
                 data["candidates"] = json.loads(p.read_text())
                 break
 
+        # market 데이터 (대시보드 A구역용)
+        if Path("data/raw").exists():
+            for d in sorted(Path("data/raw").iterdir(), reverse=True):
+                p = d / "market.json"
+                if p.exists():
+                    data["market"] = json.loads(p.read_text())
+                    break
+
+        # macro 데이터
+        if Path("data/raw").exists():
+            for d in sorted(Path("data/raw").iterdir(), reverse=True):
+                p = d / "macro.json"
+                if p.exists():
+                    data["macro"] = json.loads(p.read_text())
+                    break
+
+        # sentiment 데이터
+        if Path("data/raw").exists():
+            for d in sorted(Path("data/raw").iterdir(), reverse=True):
+                p = d / "sentiment.json"
+                if p.exists():
+                    data["sentiment"] = json.loads(p.read_text())
+                    break
+
         return data
 
     def update_content_log(self, data: dict) -> dict:
@@ -161,6 +185,10 @@ class PublisherAgent:
         stocks = data.get("stocks", {})
         candidates = data.get("candidates", {})
 
+        market = data.get("market", {})
+        macro = data.get("macro", {})
+        sentiment = data.get("sentiment", {})
+
         dashboard_data = {
             "last_updated": datetime.now().isoformat(),
             "today": {
@@ -171,7 +199,10 @@ class PublisherAgent:
                 "candidates": candidates.get("candidates", []),
                 "content_id": content.get("id", ""),
                 "status": "승인대기",
-            }
+            },
+            "market": market,
+            "macro": macro,
+            "sentiment": sentiment,
         }
 
         output_path = self.dashboard_dir / "today_data.json"

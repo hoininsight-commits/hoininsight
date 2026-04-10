@@ -36,6 +36,19 @@ class CollectorAgent:
             data["kospi"] = None
             data["kospi_1d_change"] = None
 
+        # 외국인 수급 근사치 (거래량 변화 기반)
+        try:
+            kospi_data = yf.Ticker("^KS11")
+            hist2 = kospi_data.history(period="2d")
+            if len(hist2) >= 2:
+                vol_change = float(hist2["Volume"].iloc[-1]) - float(hist2["Volume"].iloc[-2])
+                data["kospi_foreign_net"] = round(vol_change / 1e8, 1)
+            else:
+                data["kospi_foreign_net"] = None
+        except Exception as e:
+            print(f"  수급 데이터 수집 실패: {e}")
+            data["kospi_foreign_net"] = None
+
         # VIX
         try:
             vix = yf.Ticker("^VIX")
@@ -76,9 +89,19 @@ class CollectorAgent:
         return result
 
     def _get_fear_greed(self) -> float:
-        """공포탐욕지수 — 추후 CNN API 스크래핑 구현"""
-        # TODO: CNN Fear & Greed Index 실시간 수집
-        return 25.0  # 임시값
+        """Alternative.me Fear & Greed Index 실제 수집"""
+        try:
+            import requests
+            url = "https://api.alternative.me/fng/?limit=1"
+            response = requests.get(url, timeout=5)
+            if response.status_code == 200:
+                data = response.json()
+                value = float(data["data"][0]["value"])
+                print(f"  Fear&Greed: {value} (실제)")
+                return value
+        except Exception as e:
+            print(f"  Fear&Greed 수집 실패, 기본값 사용: {e}")
+        return 25.0  # fallback
 
     def _get_usd_krw(self) -> float:
         """환율 수집"""
@@ -119,20 +142,67 @@ class CollectorAgent:
         return result
 
     def collect_sentiment(self) -> dict:
-        """뉴스/감성 데이터 — 추후 RSS 파싱 연동"""
+        """뉴스/감성 데이터 — 경제 RSS 실제 수집"""
         print("📰 뉴스 데이터 수집 중...")
 
-        data = {
-            "news_headlines": [],
-            "authority_signals": []
-        }
+        headlines = []
 
-        # TODO: 네이버 뉴스 RSS 파싱
+        try:
+            import requests
+            from xml.etree import ElementTree as ET
+
+            rss_urls = [
+                "https://www.yna.co.kr/rss/economy.xml",  # 연합뉴스 경제
+                "https://www.mk.co.kr/rss/30000001/",     # 매일경제
+            ]
+
+            for url in rss_urls:
+                try:
+                    resp = requests.get(url, timeout=5,
+                        headers={"User-Agent": "Mozilla/5.0"})
+                    if resp.status_code == 200:
+                        root = ET.fromstring(resp.content)
+                        items = root.findall(".//item")[:5]
+                        for item in items:
+                            title = item.findtext("title", "")
+                            if title:
+                                headlines.append({
+                                    "title": title.strip(),
+                                    "source": url.split("/")[2],
+                                    "timestamp": datetime.now().isoformat()
+                                })
+                except Exception as e:
+                    print(f"  RSS 수집 실패 ({url}): {e}")
+
+        except Exception as e:
+            print(f"  뉴스 수집 실패: {e}")
+
+        # 권위자 키워드 탐지
+        authority_keywords = [
+            "버핏", "이재용", "머스크", "파월", "이창용",
+            "트럼프", "바이든", "한국은행", "연준", "Fed"
+        ]
+        authority_signals = []
+        for h in headlines:
+            for kw in authority_keywords:
+                if kw in h["title"]:
+                    authority_signals.append({
+                        "person": kw,
+                        "action": h["title"],
+                        "source": h["source"],
+                        "timestamp": h["timestamp"]
+                    })
+                    break
+
+        print(f"  뉴스 {len(headlines)}개, 권위자 신호 {len(authority_signals)}개")
 
         result = {
             "date": self.today,
             "collected_at": datetime.now().isoformat(),
-            "data": data
+            "data": {
+                "news_headlines": headlines,
+                "authority_signals": authority_signals
+            }
         }
 
         output_path = self.output_dir / "sentiment.json"
