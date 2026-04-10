@@ -53,7 +53,8 @@ jobs:
 
       - name: docs/ 동기화
         run: |
-          # today_data.json 동기화
+          # today_data.json 동기화 (루트 + dashboard/)
+          cp dashboard/today_data.json docs/today_data.json 2>/dev/null || true
           mkdir -p docs/dashboard
           cp dashboard/today_data.json docs/dashboard/today_data.json 2>/dev/null || true
 

@@ -407,7 +407,7 @@ async function loadData() {
 
 async function loadSignalLog() {
   try {
-    const res = await fetch('../data/history/signal_log.json');
+    const res = await fetch('data/history/signal_log.json');
     if (!res.ok) throw new Error();
     return await res.json();
   } catch(e) { return null; }
@@ -416,9 +416,9 @@ async function loadSignalLog() {
 async function loadCandidates() {
   const today = new Date().toISOString().slice(0,10).replace(/-/g,'');
   const urls = [
-    `../data/signals/${today}/candidates.json`,
-    '../data/signals/20260409/candidates.json',
-    '../data/signals/20260408/candidates.json',
+    `data/signals/${today}/candidates.json`,
+    'data/signals/20260410/candidates.json',
+    'data/signals/20260409/candidates.json',
   ];
   for (const url of urls) {
     try {
