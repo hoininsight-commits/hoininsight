@@ -17,6 +17,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### "지금 당장 필요해"…'현물' 북해산 원유값 사상 최고 - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 뉴욕증시, “미·이란 휴전 지속된다” 기대감에 3대 지수 상승...메모리 반도체 강세 - 글로벌이코노믹 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -27,12 +32,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 건설자재 가격 모니터링 강화…유류·나프타 주단위 관리 - 연합뉴스 (ID: unknown)
+### 원자재 가격 급등에 건설 자재 가격 모니터링 강화...공공 부문 가상자산 유출 사고 관리 시스템 도입 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 상장사 54社 상폐 위기…한창·테라사이언스 포함 - 한국경제 (ID: unknown)
+### '다주택 양도세 중과유예, 5월 9일 신청까지 허용' 소득세법시행령 입법예고 - 한국세정신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "즉시 상장폐지"…'감사의견 거절' 코스닥 상장사 속출 - nocutnews.co.kr (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -42,17 +52,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 다주택자 양도세 중과 유예, 5월 9일 토허제 신청분까지 허용 - 연합뉴스TV (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 배경훈 "통신사, 국민신뢰 회복해야"...3사 CEO "해킹 방지 환골탈태" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### NYT “비트코인 창시자 사토시는 애덤 백”…본인은 "아니다" - 주간조선 (ID: unknown)
+### 비트코인 만든 ‘사토시’ 정체는 ‘사이버펑크’ 영국 암호학자?···NYT “애덤 백이 유력 후보” - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -72,12 +77,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 (ID: unknown)
+### [두나무, FIU 1심 승소①] 법조계 "제재 근거 미비…예견된 판결, 과태료도 영향권" - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [두나무, FIU 1심 승소①] 법조계 "제재 근거 미비…예견된 판결, 과태료도 영향권" - 지디넷코리아 (ID: unknown)
+### 돼지고기 공급가격 인하…삼겹살·목살 등 최대 28% 인하 - 연합뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,12 +112,62 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “AI, 써도 너무 많이 써요”…인프라 비용 폭증에 ‘별도 과금’ 공포 온다 - 매일경제 (ID: unknown)
+### “유망 스타트업 지원”…삼성물산·SBA, 오픈이노베이션 ‘FutureScape’ 공모전 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “빗썸 잘못이잖아”…‘오지급 비트코인’ 7억 반환 거부, 법조계 의견은? (ID: unknown)
+### 이스라엘·레바논, 휴전 추진 소식에…코스피 5800선 상승 출발 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [단독] 작동 포크레인에 돌진한 현장직원…상대원2구역 또 ‘잡음’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 부산서 40대 남녀 사망한 채 발견… 혼인 신고했던 사이로 나타나 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 현대차·기아, HL만도·상신 등 ‘브레이크 협력사’ 50곳과 기술 교류 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “SPC, 또 사고냐”…삼립 시화공장서 2명 손가락 절단 사고 발생 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘2.4조 유증’ 제동 걸린 한화솔루션…주가 끌어올린 금감원 한마디 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 컵 깨지는 소리만 들어도 가슴 ‘철렁’…트라우마 시달리는 이란 아이들 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “120개국 특장 생태계 공략”…현대차, 상용차 기술정보 플랫폼 개설 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 대통령도 “늑대야 돌아와라”…합성사진·허위신고에 ‘골머리’도 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 대우건설, 임직원 참여형 ESG 프로그램 ‘으쓱 포인트제’ 실시 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “빗썸 너네 잘못이잖아”…‘오지급 비트코인’ 7억 반환 거부한 사용자들 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -153,61 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “서울 집값 잡히는 줄 알았는데, 왜 이리 뜨거워?”...강북 아파트 11억 돌파 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “이제 정말 대부업밖에 없나”…非조합원에 대출문 닫는 상호금융권 왜? (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “돈 포기하고 귀국하겠다” 절규…호르무즈 고립 선원 2만명, 임계점 도달 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “호르무즈 해협 5월도 봉쇄면 감산 고려…POSCO홀딩스, 매수 유지” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 최선희·왕이 북중외교장관, 공조강화 예고…‘반미연대’ 강화될까 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “지방 노동자 공공임대주택으로 활용”…정부 지방 준공후 미분양 5000가구 매입 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “130억 납부, 꼼수 아냐”…차은우 세금 논란, ‘정석 대응’ 해석도 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “나 살아 있다”…CNN 사망 오보에 ‘백 투 더 퓨처’ 주인공 직접 반박 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “GS건설, 주택주 넘어 ‘원전주’ 재평가…전쟁 수혜에 목표가 고공행진” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “버핏 따라 샀는데 계좌가 녹았네요”...고수가 알려준 ‘한끗’ 차이는? [김유신의 딥 머니 토크] (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘데이터가 여는 미래 의료’ 제7차 데이터 경제 컨퍼런스 개최 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 미래에셋증권, 레버리지·인버스 ETN 3종 신규 상장 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
