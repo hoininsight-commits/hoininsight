@@ -1,12 +1,52 @@
 {
-  "fx_dxy_index_stooq": {
+  "index_nasdaq_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-10T22:59:01.331900Z"
+    "timestamp": "2026-04-10T23:02:16.616832Z"
   },
-  "fx_usdkrw_ecos": {
+  "rates_us02y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-10T22:59:01.388846Z"
+    "timestamp": "2026-04-10T23:02:17.460151Z"
+  },
+  "comm_wti_fred": {
+    "status": "SKIP",
+    "reason": "FRED collection skipped or failed for DCOILWTICO",
+    "timestamp": "2026-04-10T23:02:18.142796Z"
+  },
+  "metal_platinum_xptusd_stooq": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.147483Z"
+  },
+  "metal_gold_paxg_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.154054Z"
+  },
+  "metal_silver_kag_coingecko": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.166773Z"
+  },
+  "rates_kor_base_rate_ecos": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.173831Z"
+  },
+  "rates_fed_funds_fred": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.235405Z"
+  },
+  "derived_yield_curve_10y_2y": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.235789Z"
+  },
+  "derived_gold_silver_ratio": {
+    "status": "OK",
+    "reason": "Normalized successfully",
+    "timestamp": "2026-04-10T23:02:18.235807Z"
   }
 }
