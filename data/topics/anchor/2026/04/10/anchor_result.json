@@ -1,11 +1,13 @@
 {
   "data_axis": [
     "credit_hy_spread_fred",
-    "comm_wti_fred"
+    "comm_wti_fred",
+    "metal_silver_kag_coingecko"
   ],
   "baseline_match": [
     "credit_hy_spread_fred: Volatility Surge (Z=2.35)",
-    "comm_wti_fred: Volatility Surge (Z=2.19)"
+    "comm_wti_fred: Volatility Surge (Z=2.19)",
+    "metal_silver_kag_coingecko: Volatility Surge (Z=2.05)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",
