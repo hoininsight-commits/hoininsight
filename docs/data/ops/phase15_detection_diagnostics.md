@@ -6,12 +6,6 @@
 - **Conflict**: Supply_Demand_Gap
 - **Final Score**: 63.11
 
-## Topic: 거시경제 이상징후: crypto_eth_usd_spot_coingecko
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 34.62
-
 ## Topic: 거시경제 이상징후: credit_hy_spread_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL, Liquidity:CREDIT
@@ -42,6 +36,18 @@
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 49.59
 
+## Topic: 거시경제 이상징후: index_nasdaq_fred
+- **Actors**: TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: Macro_Price_Divergence
+- **Final Score**: 49.59
+
+## Topic: 거시경제 이상징후: derived_gold_silver_ratio
+- **Actors**: TIER_4:MARKET
+- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
+- **Conflict**: None
+- **Final Score**: 44.27
+
 ## Topic: 거시경제 이상징후: comm_wti_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
@@ -58,7 +64,7 @@
 - **Actors**: TIER_2:META, TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 62.79
+- **Final Score**: 53.13
 
 ## Topic: 거시경제 이상징후: index_spx_fred
 - **Actors**: TIER_4:MARKET
