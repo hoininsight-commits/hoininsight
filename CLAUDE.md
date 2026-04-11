@@ -1,50 +1,35 @@
-# HOIN Insight v3.0
+# HOIN Insight v3.0 — Claude Code 지침
 
-경제사냥꾼 유튜브 채널 AI 파이프라인. 매일 시장 데이터 수집 → 레벨2 신호 감지 → 스크립트 초안 → 운영자 브리핑.
+## 프로젝트
+경제사냥꾼 스타일 경제 콘텐츠 자동 생성 AI 파이프라인.
+매일 시장 데이터 수집 → 신호 감지 → 스크립트 생성 → 선장 승인.
 
 ## 절대 규칙
-- 모든 커뮤니케이션: **한국어**
-- 코드 변수명/함수명/파일명: 영어 허용
-- `data/`, `archive/` 폴더 내 기존 파일 **삭제 금지**
-- secrets: 환경변수로만 관리 (코드 하드코딩 금지)
-- 에이전트 수정 후: 단독 실행 → pytest → git commit
+- 한국어로만 커뮤니케이션
+- data/ 폴더 기존 데이터 삭제 금지
+- archive/ 폴더 삭제 금지
+- .env 파일 git 커밋 금지
+- secrets 환경변수로만 관리
 
-## 에이전트 구조
-```
-AGENT-01 collector.py   시장 데이터 수집 (yfinance, ECOS, FRED)
-AGENT-02 learner.py     경사 유튜브 자막 수집
-AGENT-03 detector.py    신호 감지 + 토픽 선정 (7개 필터)
-AGENT-04 analyst.py     레벨2 인과관계 분석 (Gemini API)
-AGENT-05 writer.py      스크립트 생성 (Gemini API)
-AGENT-06 publisher.py   대시보드 업데이트
-```
+## 구조
+src/agents/   collector·learner·detector·analyst·writer·publisher
+src/core/     filters·sector_map·claude_client·gemini_client·config
+data/         raw·signals·analysis·scripts·learning·history
+dashboard/    index.html·today_data.json
+docs/         GitHub Pages 서빙
+tests/        harness·fixtures·test_*.py
 
-## 신호 강도 기준
-- 6.0 미만 → 탈락  |  6.0~7.9 → 쇼츠  |  8.0 이상 → 롱폼
+## 에이전트 실행 순서
+01→02→03→04→05→06 순차 실행
+04,05는 GEMINI_API_KEY 필요 (현재 미설정)
 
-## 7개 필터 (AGENT-03)
-필터1 역사적임계값, 필터2 역설적현상, 필터3 가격미반영격차,
-필터4 시의성, 필터5 A→B연결고리, 필터6 권위자행동변화, 필터7 시장공포무관섹터
+## 검증
+python -m pytest tests/ -v
+python tests/harness.py
 
-## 환경변수
-```
-GEMINI_API_KEY    AGENT-04, AGENT-05
-ECOS_API_KEY      한국은행 (AGENT-01)
-FRED_API_KEY      미 연준 (AGENT-01)
-```
+## 알려진 미완성 항목
+- GEMINI_API_KEY 미설정 → AGENT-04,05 대기 중
+- GitHub Secrets 등록 필요 (ECOS, FRED)
 
-## 실행 명령
-```bash
-python -m src.agents.collector   # AGENT-01
-python -m src.agents.detector    # AGENT-03
-python -m src.agents.analyst     # AGENT-04
-python -m pytest tests/ -v       # 전체 테스트
-python tests/harness.py          # 파이프라인 하네스
-```
-
-## GitHub
-레포: https://github.com/hoininsight-commits/HoinInsight  |  브랜치: main  |  커밋: 한국어
-Pages: main → /docs 폴더 서빙
-
-## 상세 컨텍스트
-→ WORKING-CONTEXT.md 참조
+## 자세한 현황
+WORKING-CONTEXT.md 참조
