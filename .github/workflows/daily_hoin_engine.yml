@@ -3,7 +3,7 @@ name: Daily HOIN Engine
 on:
   schedule:
     - cron: '0 21 * * *'   # KST 06:00 = UTC 21:00
-  workflow_dispatch:         # 수동 실행 가능
+  workflow_dispatch:
 
 permissions:
   contents: write            # git push 권한
