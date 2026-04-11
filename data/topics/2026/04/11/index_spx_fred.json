@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-11T09:54:02Z",
+    "ts_utc": "2026-04-11T22:53:33Z",
     "dataset_id": "index_spx_fred",
     "topic_id": "index_spx_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/11/index_spx_fred.json L1 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 30,
       "level": "L1",
       "details": {
-        "z_score": 1.94,
-        "percentile": 43.3,
-        "value": 6824.66,
-        "rolling_mean_20d": 6594.9815,
-        "reasoning": "Z-Score 1.94 >= 1.5"
+        "z_score": 1.69,
+        "percentile": 42.5,
+        "value": 6816.89,
+        "rolling_mean_20d": 6602.195,
+        "reasoning": "Z-Score 1.69 >= 1.5"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/04/11/index_spx_fred.json"
     },
-    "rationale": "[L1] Z-Score 1.94 >= 1.5 (Regime x1.0)",
+    "rationale": "[L1] Z-Score 1.69 >= 1.5 (Regime x1.0)",
     "links": [],
     "is_pre_structural": false
   }
