@@ -22,7 +22,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 (ID: unknown)
+### 3차 석유 최고가격제 시행 이틀째···전국 평균 유가 상승세 '지속' - 한국NGO신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

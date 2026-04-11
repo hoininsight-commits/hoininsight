@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] "이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제 (Google_News_KR_Economy)
   - [NEWS] 이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트 (Google_News_KR_Economy)
-  - [NEWS] 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 (Google_News_KR_Economy)
+  - [NEWS] 3차 석유 최고가격제 시행 이틀째···전국 평균 유가 상승세 '지속' - 한국NGO신문 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,7 +187,7 @@
 |---|---|---|
 | "이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제 | Structural implication: '"이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트 | Structural implication: '이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트' suggests a shift in NEWS dynamics. | LOW |
-| 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 | Structural implication: '3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 3차 석유 최고가격제 시행 이틀째···전국 평균 유가 상승세 '지속' - 한국NGO신문 | Structural implication: '3차 석유 최고가격제 시행 이틀째···전국 평균 유가 상승세 '지속' - 한국NGO신문' suggests a shift in NEWS dynamics. | LOW |
 | 휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV | Structural implication: '휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | [주末머니] “중동발 진통에도 코스피 아직 싸다” - 아시아경제 | Structural implication: '[주末머니] “중동발 진통에도 코스피 아직 싸다” - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | 미 3월 소비자물가 작년보다 3.3%↑…전쟁 여파에 기름값 급등 - KBS 뉴스 | Structural implication: '미 3월 소비자물가 작년보다 3.3%↑…전쟁 여파에 기름값 급등 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
