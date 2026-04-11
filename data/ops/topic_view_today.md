@@ -72,12 +72,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24 (ID: unknown)
+### '추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### '추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com (ID: unknown)
+### 라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references

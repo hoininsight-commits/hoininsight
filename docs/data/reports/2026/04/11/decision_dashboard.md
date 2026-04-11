@@ -197,8 +197,8 @@
 | ‘황금색 아이오닉’ 현대차, 中 취향 저격 전기차 내놨다 - 조선일보 | Structural implication: '‘황금색 아이오닉’ 현대차, 中 취향 저격 전기차 내놨다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 세계은행 총재 “이란 휴전 유지되더라도 경제에 연쇄 영향” - 조선일보 | Structural implication: '세계은행 총재 “이란 휴전 유지되더라도 경제에 연쇄 영향” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 보안 인증제 전면 개편...'강화인증' 등급 신설 - 지디넷코리아 | Structural implication: '정부, 보안 인증제 전면 개편...'강화인증' 등급 신설 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24 | Structural implication: '라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | '추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com | Structural implication: ''추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
+| 라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24 | Structural implication: '라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | [경제뭔데]“천당에서 지옥으로”…잘 나가던 코스닥 발목 잡은 ‘삼천당 쇼크’ - 경향신문 | Structural implication: '[경제뭔데]“천당에서 지옥으로”…잘 나가던 코스닥 발목 잡은 ‘삼천당 쇼크’ - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 다주택자 양도세 중과 앞둔 한달 매도자·매수자 가격 ‘줄다리기’…서울 집값 관망세 길어진다 - 경향신문 | Structural implication: '다주택자 양도세 중과 앞둔 한달 매도자·매수자 가격 ‘줄다리기’…서울 집값 관망세 길어진다 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | “갤럭시S26 판매 호조” 삼성, 1분기 스마트폰 시장 1위 탈환 - 조선일보 | Structural implication: '“갤럭시S26 판매 호조” 삼성, 1분기 스마트폰 시장 1위 탈환 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
