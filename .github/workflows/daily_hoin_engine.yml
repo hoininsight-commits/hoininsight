@@ -114,28 +114,14 @@ jobs:
           TODAY=$(date '+%Y%m%d')
           if [ -f "data/raw/$TODAY/market.json" ]; then
             echo "✅ AGENT-01: 시장 데이터 수집 완료"
-            python3 -c "
-import json
-d = json.load(open('data/raw/$TODAY/market.json'))
-m = d.get('data', {})
-print(f'  환율: {m.get(\"usd_krw\", \"N/A\")}원')
-print(f'  KOSPI: {m.get(\"kospi\", \"N/A\")}')
-print(f'  VIX: {m.get(\"vix\", \"N/A\")}')
-print(f'  WTI: \${m.get(\"wti_oil\", \"N/A\")}')
-" 2>/dev/null || echo "  데이터 파싱 실패"
+            python3 -c "import json; d=json.load(open('data/raw/$TODAY/market.json')); m=d.get('data',{}); print(f'  환율: {m.get(\"usd_krw\",\"N/A\")}원'); print(f'  KOSPI: {m.get(\"kospi\",\"N/A\")}'); print(f'  VIX: {m.get(\"vix\",\"N/A\")}'); print(f'  WTI: \${m.get(\"wti_oil\",\"N/A\")}')" 2>/dev/null || echo "  데이터 파싱 실패"
           else
             echo "❌ AGENT-01: 데이터 없음"
           fi
 
           if [ -f "data/signals/$TODAY/today_signal.json" ]; then
             echo "✅ AGENT-03: 신호 감지 완료"
-            python3 -c "
-import json
-d = json.load(open('data/signals/$TODAY/today_signal.json'))
-print(f'  토픽: {d.get(\"topic\", \"N/A\")[:50]}')
-print(f'  강도: {d.get(\"strength\", \"N/A\")} / 10')
-print(f'  유형: {d.get(\"content_type\", \"N/A\")}')
-" 2>/dev/null || echo "  신호 파싱 실패"
+            python3 -c "import json; d=json.load(open('data/signals/$TODAY/today_signal.json')); print(f'  토픽: {d.get(\"topic\",\"N/A\")[:50]}'); print(f'  강도: {d.get(\"strength\",\"N/A\")} / 10'); print(f'  유형: {d.get(\"content_type\",\"N/A\")}')" 2>/dev/null || echo "  신호 파싱 실패"
           else
             echo "⚠️  AGENT-03: 오늘 신호 없음"
           fi
