@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] "이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제 (Google_News_KR_Economy)
+  - [NEWS] 이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트 (Google_News_KR_Economy)
   - [NEWS] 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 (Google_News_KR_Economy)
-  - [NEWS] 휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,15 +186,16 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | "이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제 | Structural implication: '"이러다 200만닉스도 나오겠네"…목표가 줄줄이 올린 까닭 [종목+] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트 | Structural implication: '이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트' suggests a shift in NEWS dynamics. | LOW |
 | 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 | Structural implication: '3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV | Structural implication: '휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
-| 3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제 | Structural implication: '3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| [주末머니] “중동발 진통에도 코스피 아직 싸다” - 아시아경제 | Structural implication: '[주末머니] “중동발 진통에도 코스피 아직 싸다” - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | 미 3월 소비자물가 작년보다 3.3%↑…전쟁 여파에 기름값 급등 - KBS 뉴스 | Structural implication: '미 3월 소비자물가 작년보다 3.3%↑…전쟁 여파에 기름값 급등 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 20만전자, 100만닉스, 미·이란 휴전에 투심 폭발했지만…[주간 증시해설서] - 더스쿠프 | Structural implication: '20만전자, 100만닉스, 미·이란 휴전에 투심 폭발했지만…[주간 증시해설서] - 더스쿠프' suggests a shift in NEWS dynamics. | LOW |
 | 이창용 한은 총재 "스태그플레이션, 현시점에서 가능성 작아" - 한국경제 | Structural implication: '이창용 한은 총재 "스태그플레이션, 현시점에서 가능성 작아" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 20만전자, 100만닉스, 미·이란 휴전에 투심 폭발했지만…[주간 증시해설서] - 더스쿠프 | Structural implication: '20만전자, 100만닉스, 미·이란 휴전에 투심 폭발했지만…[주간 증시해설서] - 더스쿠프' suggests a shift in NEWS dynamics. | LOW |
+| 3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제 | Structural implication: '3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | ‘황금색 아이오닉’ 현대차, 中 취향 저격 전기차 내놨다 - 조선일보 | Structural implication: '‘황금색 아이오닉’ 현대차, 中 취향 저격 전기차 내놨다 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 세계은행 총재 “이란 휴전 유지되더라도 경제에 연쇄 영향” - 조선일보 | Structural implication: '세계은행 총재 “이란 휴전 유지되더라도 경제에 연쇄 영향” - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| ‘200만닉스·40만전자’... 역대급 서프라이즈에 증권가 ‘목표가 인플레이션’ - 조선비즈 - Chosunbiz | Structural implication: '‘200만닉스·40만전자’... 역대급 서프라이즈에 증권가 ‘목표가 인플레이션’ - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 정부, 보안 인증제 전면 개편...'강화인증' 등급 신설 - 지디넷코리아 | Structural implication: '정부, 보안 인증제 전면 개편...'강화인증' 등급 신설 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24 | Structural implication: '라면·두부 포장지 '비상'⋯"버틸 시간 한 달 남짓" - 아이뉴스24' suggests a shift in NEWS dynamics. | LOW |
 | '추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com | Structural implication: ''추적 60분' 우창코넥타 사태, 기업 파산의 이면 조명 - gukjenews.com' suggests a shift in NEWS dynamics. | LOW |
@@ -204,7 +205,7 @@
 | 역사상 '최악의 위기'...섬뜩한 경고 나왔다 - 한경매거진&북 | Structural implication: '역사상 '최악의 위기'...섬뜩한 경고 나왔다 - 한경매거진&북' suggests a shift in NEWS dynamics. | LOW |
 | 일라이 릴리, 먹는 비만 치료제 '파운다요' 미국 전역 출시 - 헬스조선 | Structural implication: '일라이 릴리, 먹는 비만 치료제 '파운다요' 미국 전역 출시 - 헬스조선' suggests a shift in NEWS dynamics. | LOW |
 | [디깅노트] AI도 못 믿는 삼성전자 실적, 만든 건 결국 '사람' - 블로터 | Structural implication: '[디깅노트] AI도 못 믿는 삼성전자 실적, 만든 건 결국 '사람' - 블로터' suggests a shift in NEWS dynamics. | LOW |
-| “서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직 - 매일경제 | Structural implication: '“서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| 6·3 지방선거, 호남 민심 어디로…민주 vs 혁신, 불붙는 텃밭 쟁탈전 | Structural implication: '6·3 지방선거, 호남 민심 어디로…민주 vs 혁신, 불붙는 텃밭 쟁탈전' suggests a shift in NEWS dynamics. | LOW |
 | 오세훈 시장 “서울이 많이 재밌어졌죠?”…외국인도 반한 체험형 축제 | Structural implication: '오세훈 시장 “서울이 많이 재밌어졌죠?”…외국인도 반한 체험형 축제' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 트럼프 “한중일 등 각국 위해 호르무즈 정리 작업 시작” | Structural implication: '[속보] 트럼프 “한중일 등 각국 위해 호르무즈 정리 작업 시작”' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 파키스탄 소식통 “美·이란·파키스탄 3자 회담 시작” <로이터> | Structural implication: '[속보] 파키스탄 소식통 “美·이란·파키스탄 3자 회담 시작” <로이터>' suggests a shift in NEWS dynamics. | LOW |
@@ -224,7 +225,6 @@
 | [속보] 백악관 “밴스 부통령, 파키스탄 샤리프 총리와 회담” | Structural implication: '[속보] 백악관 “밴스 부통령, 파키스탄 샤리프 총리와 회담”' suggests a shift in NEWS dynamics. | LOW |
 | “이토 히로부미 친필 한국서 발견”…친일파 후손이 보관한 듯 | Structural implication: '“이토 히로부미 친필 한국서 발견”…친일파 후손이 보관한 듯' suggests a shift in NEWS dynamics. | LOW |
 | 캣츠아이, ‘케데헌’ 헌트릭스 만났다…‘코첼라’ 깜짝 합동 무대 | Structural implication: '캣츠아이, ‘케데헌’ 헌트릭스 만났다…‘코첼라’ 깜짝 합동 무대' suggests a shift in NEWS dynamics. | LOW |
-| “서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직 | Structural implication: '“서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>

@@ -17,6 +17,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 이젠 보험 담보로까지 '빚투'한다고?…계약대출 늘어났다 - 네이트 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 3차 최고가격제 시행 이튿날도 상승세…휘발유 전국 평균 1990원 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -27,7 +32,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제 (ID: unknown)
+### [주末머니] “중동발 진통에도 코스피 아직 싸다” - 아시아경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -37,12 +42,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 이창용 한은 총재 "스태그플레이션, 현시점에서 가능성 작아" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 20만전자, 100만닉스, 미·이란 휴전에 투심 폭발했지만…[주간 증시해설서] - 더스쿠프 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이창용 한은 총재 "스태그플레이션, 현시점에서 가능성 작아" - 한국경제 (ID: unknown)
+### 3주 뒤 유럽 ‘항공유 쇼크’ 오나…EU 사무총장 “현실화 우려” - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -53,11 +63,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 세계은행 총재 “이란 휴전 유지되더라도 경제에 연쇄 영향” - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### ‘200만닉스·40만전자’... 역대급 서프라이즈에 증권가 ‘목표가 인플레이션’ - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직 - 매일경제 (ID: unknown)
+### 6·3 지방선거, 호남 민심 어디로…민주 vs 혁신, 불붙는 텃밭 쟁탈전 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 오세훈 시장 “서울이 많이 재밌어졌죠?”…외국인도 반한 체험형 축제 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 캣츠아이, ‘케데헌’ 헌트릭스 만났다…‘코첼라’ 깜짝 합동 무대 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “서울대 컴공과 나와도 갈 데가 없다니”…개발자 60%가 경력직 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
