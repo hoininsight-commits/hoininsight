@@ -1,6 +1,6 @@
 # TOPIC CONSOLE (RUN_DATE: 2026-04-11)
 
-## 지수 상승 속 섹터 하락의 이유 (gate_dcf772a365)
+## 오늘 시장의 핵심 혼란 포인트 (gate_6e592b5972)
 **Badges**: LANE:ANOMALY | STATUS:READY | SPEAK:NOT_SPEAKABLE_YET
 
 ### 1) Why Selected
