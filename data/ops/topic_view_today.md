@@ -17,27 +17,27 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송 (ID: unknown)
+### "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "다주택이면 처분계획 내라" 과장급까지 지시한 국토부 - 매일경제 (ID: unknown)
+### [단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
 ### 3차 최고가격 동결에도 오름세 지속…경남 평균 기름값 1987원 - 경남도민일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,12 +97,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz (ID: unknown)
+### 비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이 (ID: unknown)
+### 6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -112,7 +112,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 (ID: unknown)
+### 한일 재계 저출산위 출범...한국측 최태원 위원장 맡아 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 강남 내리고 강북은 상승?…서울 중소형 아파트, 15억 대로 ‘키맞추기’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -167,12 +172,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해 (ID: unknown)
+### 李 "세제·금융·규제 정상화로 부동산 투기 제로 구현" (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 李 "세제·금융·규제 정상화로 부동산 투기 제로 구현" (ID: unknown)
+### 민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### '달 경제권 시대' 열렸다…트럼프 "다음 단계는 화성" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 투기성 非거주 1주택 전세대출 조인다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

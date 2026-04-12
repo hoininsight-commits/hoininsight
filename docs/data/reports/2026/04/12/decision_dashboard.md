@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] “강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 (Google_News_KR_Economy)
   - [NEWS] 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,11 +186,11 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | “강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스 | Structural implication: '“강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 | Structural implication: '"중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓' suggests a shift in NEWS dynamics. | LOW |
 | 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 | Structural implication: '삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| "금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송 | Structural implication: '"금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송' suggests a shift in NEWS dynamics. | LOW |
-| "다주택이면 처분계획 내라" 과장급까지 지시한 국토부 - 매일경제 | Structural implication: '"다주택이면 처분계획 내라" 과장급까지 지시한 국토부 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
+| "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 | Structural implication: '"중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓' suggests a shift in NEWS dynamics. | LOW |
+| [단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 - 매일경제 | Structural implication: '[단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 3차 최고가격 동결에도 오름세 지속…경남 평균 기름값 1987원 - 경남도민일보 | Structural implication: '3차 최고가격 동결에도 오름세 지속…경남 평균 기름값 1987원 - 경남도민일보' suggests a shift in NEWS dynamics. | LOW |
+| "금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송 | Structural implication: '"금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송' suggests a shift in NEWS dynamics. | LOW |
 | 일본, '반도체 자립' 위해 국가 주도 라피더스에 24조 투자 - AI타임스 | Structural implication: '일본, '반도체 자립' 위해 국가 주도 라피더스에 24조 투자 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
 | “잔금 코앞인데 대출중단이라뇨”…새마을금고 이어 농협·신협도 셧다운 - 매일경제 | Structural implication: '“잔금 코앞인데 대출중단이라뇨”…새마을금고 이어 농협·신협도 셧다운 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 100억 넘는 사택, 누가 살아?…법인 소유 9억 초과 주택 조사 - 한겨레 | Structural implication: '100억 넘는 사택, 누가 살아?…법인 소유 9억 초과 주택 조사 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
@@ -202,10 +202,11 @@
 | 가맹점 수 1위는 '메가커피'...평균 매출액 1위는 '투썸' - 지디넷코리아 | Structural implication: '가맹점 수 1위는 '메가커피'...평균 매출액 1위는 '투썸' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 1시간에 265억씩 벌었다…‘세계 1위 기업’ 왕좌 넘본다 - 시사저널 | Structural implication: '삼성전자, 1시간에 265억씩 벌었다…‘세계 1위 기업’ 왕좌 넘본다 - 시사저널' suggests a shift in NEWS dynamics. | LOW |
 | 개미들, 2주만 버티면 되나요?…외인 쓸어담는 韓증시 시나리오 [노정동의 어쩌다 투자자] - 한국경제 | Structural implication: '개미들, 2주만 버티면 되나요?…외인 쓸어담는 韓증시 시나리오 [노정동의 어쩌다 투자자] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz | Structural implication: '6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | 비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이 | Structural implication: '비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
+| 6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz | Structural implication: '6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
 | '공짜' 바다시대 끝났다…이란발 '해상 톨게이트'에 발칵 - 한국경제 | Structural implication: ''공짜' 바다시대 끝났다…이란발 '해상 톨게이트'에 발칵 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 | Structural implication: '[단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부' suggests a shift in NEWS dynamics. | LOW |
+| 한일 재계 저출산위 출범...한국측 최태원 위원장 맡아 | Structural implication: '한일 재계 저출산위 출범...한국측 최태원 위원장 맡아' suggests a shift in NEWS dynamics. | LOW |
+| 강남 내리고 강북은 상승?…서울 중소형 아파트, 15억 대로 ‘키맞추기’ | Structural implication: '강남 내리고 강북은 상승?…서울 중소형 아파트, 15억 대로 ‘키맞추기’' suggests a shift in NEWS dynamics. | LOW |
 | 완도화재 순직 소방관 2명…훈장 추서·특별승진 추진 | Structural implication: '완도화재 순직 소방관 2명…훈장 추서·특별승진 추진' suggests a shift in NEWS dynamics. | LOW |
 | “최대 60만원, 난 얼마 받지?”…고유가피해지원금 27일부터 지급 | Structural implication: '“최대 60만원, 난 얼마 받지?”…고유가피해지원금 27일부터 지급' suggests a shift in NEWS dynamics. | LOW |
 | “그냥 감방 처넣어라” 차량절도 잡고보니 미성년자…부모들도 포기 | Structural implication: '“그냥 감방 처넣어라” 차량절도 잡고보니 미성년자…부모들도 포기' suggests a shift in NEWS dynamics. | LOW |
@@ -216,15 +217,14 @@
 | 협상 중 이스라엘, 레바논 공습 지속 … 美는 호르무즈서 이란 드론 격추 | Structural implication: '협상 중 이스라엘, 레바논 공습 지속 … 美는 호르무즈서 이란 드론 격추' suggests a shift in NEWS dynamics. | LOW |
 | 밴스 "핵무기 포기하라" vs 이란 "무리한 요구"… 결국 판 깨져 | Structural implication: '밴스 "핵무기 포기하라" vs 이란 "무리한 요구"… 결국 판 깨져' suggests a shift in NEWS dynamics. | LOW |
 | 中왕이 만난 김정은 "북중관계 최우선으로 중시" | Structural implication: '中왕이 만난 김정은 "북중관계 최우선으로 중시"' suggests a shift in NEWS dynamics. | LOW |
-| 민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해 | Structural implication: '민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해' suggests a shift in NEWS dynamics. | LOW |
 | 李 "세제·금융·규제 정상화로 부동산 투기 제로 구현" | Structural implication: '李 "세제·금융·규제 정상화로 부동산 투기 제로 구현"' suggests a shift in NEWS dynamics. | LOW |
+| 민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해 | Structural implication: '민주, 수도권 '원팀' 띄워 총력전 … 국힘은 서울·경기 후보 확정못해' suggests a shift in NEWS dynamics. | LOW |
 | 소뱅·혼다·소니·NEC 등…"니혼 AI모델 개발" 연합 | Structural implication: '소뱅·혼다·소니·NEC 등…"니혼 AI모델 개발" 연합' suggests a shift in NEWS dynamics. | LOW |
 | 中, 국공회담 후속 조치 발표 … 양안 전기 연결·문화 교류 등 | Structural implication: '中, 국공회담 후속 조치 발표 … 양안 전기 연결·문화 교류 등' suggests a shift in NEWS dynamics. | LOW |
 | 이란戰 충격에 英 군비 확대 서두른다 | Structural implication: '이란戰 충격에 英 군비 확대 서두른다' suggests a shift in NEWS dynamics. | LOW |
 | 이란戰 중에…中, 아프리카 영향력 확대 | Structural implication: '이란戰 중에…中, 아프리카 영향력 확대' suggests a shift in NEWS dynamics. | LOW |
 | [단독] 자동차보험 적자 주범 … 병실 호캉스 누리는 '나이롱환자' | Structural implication: '[단독] 자동차보험 적자 주범 … 병실 호캉스 누리는 '나이롱환자'' suggests a shift in NEWS dynamics. | LOW |
 | '달 경제권 시대' 열렸다…트럼프 "다음 단계는 화성" | Structural implication: ''달 경제권 시대' 열렸다…트럼프 "다음 단계는 화성"' suggests a shift in NEWS dynamics. | LOW |
-| 투기성 非거주 1주택 전세대출 조인다 | Structural implication: '투기성 非거주 1주택 전세대출 조인다' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>
