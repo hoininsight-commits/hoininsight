@@ -1,6 +1,18 @@
 {
-  "run_ts": "2026-04-12T21:47:38Z",
+  "run_ts": "2026-04-12T22:57:50Z",
   "topics": [
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "\"사우디, 한국 천궁Ⅱ 조기인도 타진...UAE도 추가 요격미사일 요청\" - YTN",
+      "structural_reason": "Structural implication: '\"사우디, 한국 천궁Ⅱ 조기인도 타진...UAE도 추가 요격미사일 요청\" - YTN' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_b1ae4b4b"
+      ],
+      "structural_frames": []
+    },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
@@ -9,7 +21,19 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_9eaf36f9"
+        "fact:fact_0616ffa0"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "'K-소비재' 수출 날개 단다…코트라, 해외진출 지원사업 13개사 선정 - 뉴스웍스",
+      "structural_reason": "Structural implication: ''K-소비재' 수출 날개 단다…코트라, 해외진출 지원사업 13개사 선정 - 뉴스웍스' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_ba911599"
       ],
       "structural_frames": []
     },
@@ -21,7 +45,7 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_d022a4e3"
+        "fact:fact_77959ee7"
       ],
       "structural_frames": []
     },
@@ -33,7 +57,7 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_61bdca2b"
+        "fact:fact_fd2fccc8"
       ],
       "structural_frames": []
     },
@@ -45,19 +69,19 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_a505201d"
+        "fact:fact_48cba822"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "“반도체 수요 확장세, 내년 상반기까지 이어질것” - 동아일보",
-      "structural_reason": "Structural implication: '“반도체 수요 확장세, 내년 상반기까지 이어질것” - 동아일보' suggests a shift in NEWS dynamics.",
+      "fact_anchor": "[단독] 자동차보험 적자 주범 … 병실 호캉스 누리는 '나이롱환자' - 매일경제",
+      "structural_reason": "Structural implication: '[단독] 자동차보험 적자 주범 … 병실 호캉스 누리는 '나이롱환자' - 매일경제' suggests a shift in NEWS dynamics.",
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_ea59e02b"
+        "fact:fact_70378a9a"
       ],
       "structural_frames": []
     },
@@ -69,7 +93,19 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_1c645508"
+        "fact:fact_2f654439"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "[뉴욕환시-주간] 이란 협상 결렬 후 IMF 회의에 모이는 중앙銀 수장들 - 연합인포맥스",
+      "structural_reason": "Structural implication: '[뉴욕환시-주간] 이란 협상 결렬 후 IMF 회의에 모이는 중앙銀 수장들 - 연합인포맥스' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_121d8737"
       ],
       "structural_frames": []
     },
@@ -81,19 +117,7 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_59cdc2b5"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "월가 전문가 \"중동 협상 결렬로 주가·유가 되돌림 나타날것\" - 연합인포맥스",
-      "structural_reason": "Structural implication: '월가 전문가 \"중동 협상 결렬로 주가·유가 되돌림 나타날것\" - 연합인포맥스' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_6ff165e8"
+        "fact:fact_8cdb73b0"
       ],
       "structural_frames": []
     },
@@ -105,43 +129,43 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_991c02b9"
+        "fact:fact_de6e5060"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "전쟁 타격 가장 컸던 국내 증시...6천피 탈환 가능할까 - YTN",
-      "structural_reason": "Structural implication: '전쟁 타격 가장 컸던 국내 증시...6천피 탈환 가능할까 - YTN' suggests a shift in NEWS dynamics.",
+      "fact_anchor": "삼성전자 1분기 메모리 매출 504억 달러 '역대 최고'… 아마존·메타 수익성 추월 - 글로벌이코노믹",
+      "structural_reason": "Structural implication: '삼성전자 1분기 메모리 매출 504억 달러 '역대 최고'… 아마존·메타 수익성 추월 - 글로벌이코노믹' suggests a shift in NEWS dynamics.",
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_4b0c1623"
+        "fact:fact_9047b26e"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "\"내 음료수, 왜 가볍지?\"... 알고 보니 4개 중 1개는 '정량 미달'(종합) - 아시아경제",
-      "structural_reason": "Structural implication: '\"내 음료수, 왜 가볍지?\"... 알고 보니 4개 중 1개는 '정량 미달'(종합) - 아시아경제' suggests a shift in NEWS dynamics.",
+      "fact_anchor": "삼천당제약 논란에...금감원, 난해한 제약·바이오 공시 손 본다 - 조선일보",
+      "structural_reason": "Structural implication: '삼천당제약 논란에...금감원, 난해한 제약·바이오 공시 손 본다 - 조선일보' suggests a shift in NEWS dynamics.",
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_32ed64ad"
+        "fact:fact_a6059018"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "'월요일 두렵다' 협상 결렬에 코스피 '날벼락'?…전망 들어보니 - 한국경제",
-      "structural_reason": "Structural implication: ''월요일 두렵다' 협상 결렬에 코스피 '날벼락'?…전망 들어보니 - 한국경제' suggests a shift in NEWS dynamics.",
+      "fact_anchor": "AI가 이끈 반도체 경기…한은 “내년 상반기까지는 지속” - 경향신문",
+      "structural_reason": "Structural implication: 'AI가 이끈 반도체 경기…한은 “내년 상반기까지는 지속” - 경향신문' suggests a shift in NEWS dynamics.",
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_666146d5"
+        "fact:fact_44d8975d"
       ],
       "structural_frames": []
     },
@@ -153,7 +177,7 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_d86d8dc4"
+        "fact:fact_4359c420"
       ],
       "structural_frames": []
     },
@@ -165,7 +189,31 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_0e6113ce"
+        "fact:fact_3944158a"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "'월요일 두렵다' 협상 결렬에 코스피 '날벼락'?…전망 들어보니 - 한국경제",
+      "structural_reason": "Structural implication: ''월요일 두렵다' 협상 결렬에 코스피 '날벼락'?…전망 들어보니 - 한국경제' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_d661efbc"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "\"내 음료수, 왜 가볍지?\"... 알고 보니 4개 중 1개는 '정량 미달'(종합) - 아시아경제",
+      "structural_reason": "Structural implication: '\"내 음료수, 왜 가볍지?\"... 알고 보니 4개 중 1개는 '정량 미달'(종합) - 아시아경제' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_d472b73a"
       ],
       "structural_frames": []
     },
@@ -177,7 +225,7 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_d1d01599"
+        "fact:fact_44c1c066"
       ],
       "structural_frames": []
     },
@@ -189,55 +237,103 @@
       "why_now_hint": "Harvested fact from Google_News_KR_Economy",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_9a7e0bb9"
+        "fact:fact_6dd81e30"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "'삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스",
-      "structural_reason": "Structural implication: ''삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "fact_anchor": "운반선도 요격한다…한국서 만든 군함, 남미 마약 전쟁에 투입",
+      "structural_reason": "Structural implication: '운반선도 요격한다…한국서 만든 군함, 남미 마약 전쟁에 투입' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_0774719d"
+        "fact:fact_556ba5e3"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "전세 하나 뜨면 우르르…\"당장 계약할게요\" 난리 난 세입자들 - 한국경제",
-      "structural_reason": "Structural implication: '전세 하나 뜨면 우르르…\"당장 계약할게요\" 난리 난 세입자들 - 한국경제' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "fact_anchor": "BTS ‘아리랑’, 3주 연속 ‘빌보드 200’ 1위…K팝 가수 최초",
+      "structural_reason": "Structural implication: 'BTS ‘아리랑’, 3주 연속 ‘빌보드 200’ 1위…K팝 가수 최초' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_a3176a68"
+        "fact:fact_d4c17276"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "LGU+, 내일부터 유심 업데이트-무료 교체 - 지디넷코리아",
-      "structural_reason": "Structural implication: 'LGU+, 내일부터 유심 업데이트-무료 교체 - 지디넷코리아' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "fact_anchor": "“미국 침공하면 대가 치를 것”…방어하며 죽을수도 있다는 쿠바 대통령",
+      "structural_reason": "Structural implication: '“미국 침공하면 대가 치를 것”…방어하며 죽을수도 있다는 쿠바 대통령' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_4dc32be2"
+        "fact:fact_4a4caa6c"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "쏠퀴즈 정답 4월 13일 - bntnews.co.kr",
-      "structural_reason": "Structural implication: '쏠퀴즈 정답 4월 13일 - bntnews.co.kr' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from Google_News_KR_Economy",
+      "fact_anchor": "“부장님, 요즘 누가 맥주 5캔을 마셔요”...월간 폭음률 2년째 하락",
+      "structural_reason": "Structural implication: '“부장님, 요즘 누가 맥주 5캔을 마셔요”...월간 폭음률 2년째 하락' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_62aa9545"
+        "fact:fact_d446c20a"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "[4,13 MK 추천매물] ◇오산 세교신도시 12%대 직영 편의점",
+      "structural_reason": "Structural implication: '[4,13 MK 추천매물] ◇오산 세교신도시 12%대 직영 편의점' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_8382745f"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "“이스라엘군, 이란과 전쟁 재개 준비”...이스라엘 매체 일제히 보도",
+      "structural_reason": "Structural implication: '“이스라엘군, 이란과 전쟁 재개 준비”...이스라엘 매체 일제히 보도' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_15f4735d"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "“ESG 못 갖추면 Exit도 없다”… 거래 구조의 ‘입증 조건’ 된 지속가능성 [바른 컴플라이언스리포트]",
+      "structural_reason": "Structural implication: '“ESG 못 갖추면 Exit도 없다”… 거래 구조의 ‘입증 조건’ 된 지속가능성 [바른 컴플라이언스리포트]' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_1ca4134f"
+      ],
+      "structural_frames": []
+    },
+    {
+      "topic_type": "FACT_FIRST",
+      "status": "SHADOW",
+      "fact_anchor": "대학 졸업해도 학자금 대출에 허덕여...“5명중 1명 못 갚아”",
+      "structural_reason": "Structural implication: '대학 졸업해도 학자금 대출에 허덕여...“5명중 1명 못 갚아”' suggests a shift in NEWS dynamics.",
+      "why_now_hint": "Harvested fact from MK_News",
+      "confidence": "LOW",
+      "source_refs": [
+        "fact:fact_47b4844d"
       ],
       "structural_frames": []
     },
@@ -249,7 +345,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_0925af3e"
+        "fact:fact_a80f3022"
       ],
       "structural_frames": []
     },
@@ -261,7 +357,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_3cce024e"
+        "fact:fact_257ec782"
       ],
       "structural_frames": []
     },
@@ -273,7 +369,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_5273de30"
+        "fact:fact_48352fec"
       ],
       "structural_frames": []
     },
@@ -285,7 +381,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_24ec341b"
+        "fact:fact_b89605fa"
       ],
       "structural_frames": []
     },
@@ -297,7 +393,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_126c75af"
+        "fact:fact_81034ce7"
       ],
       "structural_frames": []
     },
@@ -309,7 +405,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_4586bf20"
+        "fact:fact_c69f10b8"
       ],
       "structural_frames": []
     },
@@ -321,7 +417,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_8a011b03"
+        "fact:fact_be60cc76"
       ],
       "structural_frames": []
     },
@@ -333,7 +429,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_387c5608"
+        "fact:fact_81c55392"
       ],
       "structural_frames": []
     },
@@ -345,7 +441,7 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_adc0e9f0"
+        "fact:fact_1b04a6a7"
       ],
       "structural_frames": []
     },
@@ -357,19 +453,19 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_32c41aa1"
+        "fact:fact_dfd9e661"
       ],
       "structural_frames": []
     },
     {
       "topic_type": "FACT_FIRST",
       "status": "SHADOW",
-      "fact_anchor": "[속보] 미군 “美동부시간 13일 오전 10시부터 이란 출입 해상교통 봉쇄”",
-      "structural_reason": "Structural implication: '[속보] 미군 “美동부시간 13일 오전 10시부터 이란 출입 해상교통 봉쇄”' suggests a shift in NEWS dynamics.",
+      "fact_anchor": "[속보] 미군, 한국 시간 오늘밤 11시부터 ‘이란 해상 봉쇄’ 공식 발표",
+      "structural_reason": "Structural implication: '[속보] 미군, 한국 시간 오늘밤 11시부터 ‘이란 해상 봉쇄’ 공식 발표' suggests a shift in NEWS dynamics.",
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_cd50ff62"
+        "fact:fact_40fee260"
       ],
       "structural_frames": []
     },
@@ -381,110 +477,14 @@
       "why_now_hint": "Harvested fact from MK_News",
       "confidence": "LOW",
       "source_refs": [
-        "fact:fact_1e2841d9"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "문해력 고갈을 막기 위한 세 가지 심폐소생술 [말록 홈즈]",
-      "structural_reason": "Structural implication: '문해력 고갈을 막기 위한 세 가지 심폐소생술 [말록 홈즈]' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_ce72e50d"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "전쟁은 트럼프가 일으켰는데 고생은 우리가…LNG값, 美선 하락",
-      "structural_reason": "Structural implication: '전쟁은 트럼프가 일으켰는데 고생은 우리가…LNG값, 美선 하락' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_77df1da0"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "“페이로 할게요” 한마디에 심장 철렁…회원수 쭉쭉 빠진다는 카드업계",
-      "structural_reason": "Structural implication: '“페이로 할게요” 한마디에 심장 철렁…회원수 쭉쭉 빠진다는 카드업계' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_14ef0a76"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "8.7조원 한강변 재건축 '빅4' 2곳은 경쟁, 2곳은 단독입찰",
-      "structural_reason": "Structural implication: '8.7조원 한강변 재건축 '빅4' 2곳은 경쟁, 2곳은 단독입찰' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_d51df835"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "미국이 관세로 적 만들때 중국은…“아프리카 53개국 전면 무관세”",
-      "structural_reason": "Structural implication: '미국이 관세로 적 만들때 중국은…“아프리카 53개국 전면 무관세”' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_86309eba"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "가장 멀리 날았던 우주인 4인의 귀환…“지구에 산다는 건 특별한 일”",
-      "structural_reason": "Structural implication: '가장 멀리 날았던 우주인 4인의 귀환…“지구에 산다는 건 특별한 일”' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_3dc3e72a"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "1년반이나 아빠 화물차에 감금?…9세 소년 구조에 프랑스 발칵",
-      "structural_reason": "Structural implication: '1년반이나 아빠 화물차에 감금?…9세 소년 구조에 프랑스 발칵' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_d566ffe1"
-      ],
-      "structural_frames": []
-    },
-    {
-      "topic_type": "FACT_FIRST",
-      "status": "SHADOW",
-      "fact_anchor": "트럼프 “미 해군, 즉각 호르무즈 모든 선박 봉쇄…이란 발포 땐 지옥 맛볼 것”",
-      "structural_reason": "Structural implication: '트럼프 “미 해군, 즉각 호르무즈 모든 선박 봉쇄…이란 발포 땐 지옥 맛볼 것”' suggests a shift in NEWS dynamics.",
-      "why_now_hint": "Harvested fact from MK_News",
-      "confidence": "LOW",
-      "source_refs": [
-        "fact:fact_6cd437a9"
+        "fact:fact_815bdf1f"
       ],
       "structural_frames": []
     }
   ],
   "topic_seeds": [
     {
-      "seed_id": "seed_8dfdc02d",
+      "seed_id": "seed_f30addfd",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -494,7 +494,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_4174dd77",
+      "seed_id": "seed_330aafbd",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -504,7 +504,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_43a89a7b",
+      "seed_id": "seed_25a16b9a",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -514,7 +514,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_05179a04",
+      "seed_id": "seed_0c33104e",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -524,7 +524,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_9a5c3d9a",
+      "seed_id": "seed_a92097a2",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -534,7 +534,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_9a9872a4",
+      "seed_id": "seed_c0cd0026",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -544,7 +544,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_0c4cf290",
+      "seed_id": "seed_fa4aef06",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -554,7 +554,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_f5a45f4a",
+      "seed_id": "seed_b5dbfc28",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -564,7 +564,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_5e747b60",
+      "seed_id": "seed_914a57db",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -574,7 +574,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_712af0e4",
+      "seed_id": "seed_ca6d73fd",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -584,7 +584,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_a9b4e6c3",
+      "seed_id": "seed_e89ebba9",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -594,7 +594,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_94655620",
+      "seed_id": "seed_7ab7e9b7",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -604,7 +604,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_b7e83215",
+      "seed_id": "seed_9f518cfd",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -614,7 +614,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_b628dc90",
+      "seed_id": "seed_61024afa",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -624,7 +624,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_1f3403fe",
+      "seed_id": "seed_924e81c2",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -634,7 +634,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_a6ae4563",
+      "seed_id": "seed_024de0a0",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -644,7 +644,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_0503762b",
+      "seed_id": "seed_ccb905d8",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -654,7 +654,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_acdcaa8e",
+      "seed_id": "seed_4c416ea6",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -664,7 +664,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_b3199886",
+      "seed_id": "seed_1e1d0cf0",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -674,7 +674,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_ae20720b",
+      "seed_id": "seed_87bfd83b",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -684,7 +684,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_2194c368",
+      "seed_id": "seed_c3f4f5ab",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -694,7 +694,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_6d604a70",
+      "seed_id": "seed_743cdb4d",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -704,7 +704,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_0625e826",
+      "seed_id": "seed_479f605b",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -714,7 +714,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_2680864b",
+      "seed_id": "seed_831b6053",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -724,7 +724,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_9b15f6ed",
+      "seed_id": "seed_a4239555",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -734,7 +734,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_a7122f0b",
+      "seed_id": "seed_9e6405bb",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -744,7 +744,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_bb0f32ba",
+      "seed_id": "seed_11d5b86e",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -754,7 +754,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_6e206b8c",
+      "seed_id": "seed_444f61a9",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -764,7 +764,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_26997016",
+      "seed_id": "seed_158ffc80",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -774,7 +774,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_d614c17a",
+      "seed_id": "seed_079fcf6b",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -784,7 +784,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_a1fe8fe8",
+      "seed_id": "seed_bc3541bc",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -794,7 +794,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_3db5a747",
+      "seed_id": "seed_99bdfd9c",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -804,7 +804,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_d91928e0",
+      "seed_id": "seed_4b5ebe94",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -814,7 +814,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_bd0b7ab6",
+      "seed_id": "seed_40dddc59",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -824,7 +824,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_fd55bb4a",
+      "seed_id": "seed_992694b1",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -834,7 +834,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_41fc641f",
+      "seed_id": "seed_ebf0306a",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -844,7 +844,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_529c147a",
+      "seed_id": "seed_e6168f96",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -854,7 +854,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_1a454502",
+      "seed_id": "seed_dfa44613",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -864,7 +864,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_3c191dc4",
+      "seed_id": "seed_b619d8e8",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -874,7 +874,7 @@
       "status": "SHADOW_ONLY"
     },
     {
-      "seed_id": "seed_e6c7f0a7",
+      "seed_id": "seed_0d6e67cb",
       "structural_frames": [],
       "supporting_facts": [
         "unknown"
@@ -886,8 +886,8 @@
   ],
   "narrative_hypotheses": [
     {
-      "hypothesis_id": "hypo_211d900b",
-      "seed_id": "seed_8dfdc02d",
+      "hypothesis_id": "hypo_45d1edfc",
+      "seed_id": "seed_f30addfd",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -895,8 +895,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_fabe7bb3",
-      "seed_id": "seed_4174dd77",
+      "hypothesis_id": "hypo_44e780af",
+      "seed_id": "seed_330aafbd",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -904,8 +904,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_f75c05ad",
-      "seed_id": "seed_43a89a7b",
+      "hypothesis_id": "hypo_04434e1c",
+      "seed_id": "seed_25a16b9a",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -913,8 +913,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_e1608818",
-      "seed_id": "seed_05179a04",
+      "hypothesis_id": "hypo_eb2ab297",
+      "seed_id": "seed_0c33104e",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -922,8 +922,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_268190d8",
-      "seed_id": "seed_9a5c3d9a",
+      "hypothesis_id": "hypo_0e72b3d6",
+      "seed_id": "seed_a92097a2",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -931,8 +931,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_65a5d7a6",
-      "seed_id": "seed_9a9872a4",
+      "hypothesis_id": "hypo_54c0ec40",
+      "seed_id": "seed_c0cd0026",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -940,8 +940,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_8598d22b",
-      "seed_id": "seed_0c4cf290",
+      "hypothesis_id": "hypo_66d69613",
+      "seed_id": "seed_fa4aef06",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -949,8 +949,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_721df0f0",
-      "seed_id": "seed_f5a45f4a",
+      "hypothesis_id": "hypo_7ef22803",
+      "seed_id": "seed_b5dbfc28",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -958,8 +958,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_06f1a882",
-      "seed_id": "seed_5e747b60",
+      "hypothesis_id": "hypo_39be18f9",
+      "seed_id": "seed_914a57db",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -967,8 +967,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_a0bbef5d",
-      "seed_id": "seed_712af0e4",
+      "hypothesis_id": "hypo_ed7f274b",
+      "seed_id": "seed_ca6d73fd",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -976,8 +976,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_b3b326e2",
-      "seed_id": "seed_a9b4e6c3",
+      "hypothesis_id": "hypo_ec32d264",
+      "seed_id": "seed_e89ebba9",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -985,8 +985,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_24f71c9b",
-      "seed_id": "seed_94655620",
+      "hypothesis_id": "hypo_79375a55",
+      "seed_id": "seed_7ab7e9b7",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -994,8 +994,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_8f168a23",
-      "seed_id": "seed_b7e83215",
+      "hypothesis_id": "hypo_6a468fd5",
+      "seed_id": "seed_9f518cfd",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1003,8 +1003,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_64f709b5",
-      "seed_id": "seed_b628dc90",
+      "hypothesis_id": "hypo_6b535016",
+      "seed_id": "seed_61024afa",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1012,8 +1012,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_75426e30",
-      "seed_id": "seed_1f3403fe",
+      "hypothesis_id": "hypo_1ca957c3",
+      "seed_id": "seed_924e81c2",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1021,8 +1021,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_beb9a3d0",
-      "seed_id": "seed_a6ae4563",
+      "hypothesis_id": "hypo_d174be7b",
+      "seed_id": "seed_024de0a0",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1030,8 +1030,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_45841518",
-      "seed_id": "seed_0503762b",
+      "hypothesis_id": "hypo_b903d87e",
+      "seed_id": "seed_ccb905d8",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1039,8 +1039,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_ce0f4f7e",
-      "seed_id": "seed_acdcaa8e",
+      "hypothesis_id": "hypo_f9c05c12",
+      "seed_id": "seed_4c416ea6",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1048,8 +1048,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_4c9ecf41",
-      "seed_id": "seed_b3199886",
+      "hypothesis_id": "hypo_d9307be7",
+      "seed_id": "seed_1e1d0cf0",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1057,8 +1057,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_d0479123",
-      "seed_id": "seed_ae20720b",
+      "hypothesis_id": "hypo_e3aed496",
+      "seed_id": "seed_87bfd83b",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1066,8 +1066,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_e41b1b68",
-      "seed_id": "seed_2194c368",
+      "hypothesis_id": "hypo_99c49f2f",
+      "seed_id": "seed_c3f4f5ab",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1075,8 +1075,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_b86d646e",
-      "seed_id": "seed_6d604a70",
+      "hypothesis_id": "hypo_f6e36645",
+      "seed_id": "seed_743cdb4d",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1084,8 +1084,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_b9d472d4",
-      "seed_id": "seed_0625e826",
+      "hypothesis_id": "hypo_6802e59a",
+      "seed_id": "seed_479f605b",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1093,8 +1093,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_a63535af",
-      "seed_id": "seed_2680864b",
+      "hypothesis_id": "hypo_530466f9",
+      "seed_id": "seed_831b6053",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1102,8 +1102,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_6655f4db",
-      "seed_id": "seed_9b15f6ed",
+      "hypothesis_id": "hypo_c8c2770e",
+      "seed_id": "seed_a4239555",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1111,8 +1111,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_5a84c435",
-      "seed_id": "seed_a7122f0b",
+      "hypothesis_id": "hypo_1fd097a0",
+      "seed_id": "seed_9e6405bb",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1120,8 +1120,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_f26a556f",
-      "seed_id": "seed_bb0f32ba",
+      "hypothesis_id": "hypo_f0dbcebe",
+      "seed_id": "seed_11d5b86e",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1129,8 +1129,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_5342a59e",
-      "seed_id": "seed_6e206b8c",
+      "hypothesis_id": "hypo_c5abc225",
+      "seed_id": "seed_444f61a9",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1138,8 +1138,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_f6b31d49",
-      "seed_id": "seed_26997016",
+      "hypothesis_id": "hypo_3c90d0cb",
+      "seed_id": "seed_158ffc80",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1147,8 +1147,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_ec600cb7",
-      "seed_id": "seed_d614c17a",
+      "hypothesis_id": "hypo_506c3d81",
+      "seed_id": "seed_079fcf6b",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1156,8 +1156,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_d80b8899",
-      "seed_id": "seed_a1fe8fe8",
+      "hypothesis_id": "hypo_36602b1c",
+      "seed_id": "seed_bc3541bc",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1165,8 +1165,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_3cae84a7",
-      "seed_id": "seed_3db5a747",
+      "hypothesis_id": "hypo_2ca25503",
+      "seed_id": "seed_99bdfd9c",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1174,8 +1174,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_1832d481",
-      "seed_id": "seed_d91928e0",
+      "hypothesis_id": "hypo_51fc964d",
+      "seed_id": "seed_4b5ebe94",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1183,8 +1183,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_70482a4a",
-      "seed_id": "seed_bd0b7ab6",
+      "hypothesis_id": "hypo_64c8ba52",
+      "seed_id": "seed_40dddc59",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1192,8 +1192,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_ae1646dd",
-      "seed_id": "seed_fd55bb4a",
+      "hypothesis_id": "hypo_61601366",
+      "seed_id": "seed_992694b1",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1201,8 +1201,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_48af4d70",
-      "seed_id": "seed_41fc641f",
+      "hypothesis_id": "hypo_53c766e8",
+      "seed_id": "seed_ebf0306a",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1210,8 +1210,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_1edfb83c",
-      "seed_id": "seed_529c147a",
+      "hypothesis_id": "hypo_01172fc5",
+      "seed_id": "seed_e6168f96",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1219,8 +1219,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_52c0d3bd",
-      "seed_id": "seed_1a454502",
+      "hypothesis_id": "hypo_d4f107f1",
+      "seed_id": "seed_dfa44613",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1228,8 +1228,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_418cb8af",
-      "seed_id": "seed_3c191dc4",
+      "hypothesis_id": "hypo_7a9f3e98",
+      "seed_id": "seed_b619d8e8",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
@@ -1237,8 +1237,8 @@
       "status": "PRE-NARRATIVE"
     },
     {
-      "hypothesis_id": "hypo_6a13b320",
-      "seed_id": "seed_e6c7f0a7",
+      "hypothesis_id": "hypo_bcef6453",
+      "seed_id": "seed_0d6e67cb",
       "hypothesis_text": "Multiple facts regarding Identified  alignment across multiple factual anchors. indicate a changing structural environment currently under observation.",
       "structural_frames": [],
       "supporting_fact_count": 1,
