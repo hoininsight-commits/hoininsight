@@ -12,11 +12,6 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 정량표시상품 4개 중 1개 실제 내용량 부족…음료·주류 심각 - 네이트 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### 금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -32,12 +27,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송 (ID: unknown)
+### D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보 (ID: unknown)
+### 프랜차이즈 가맹본부 13.2% 증가…주춤했던 가맹산업 다시 활기 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +42,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 새울3호기, ‘첫 시동’ 성공…하반기 상업운전 본격화 - 전기신문 (ID: unknown)
+### 앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터 (ID: unknown)
+### 새울3호기, ‘첫 시동’ 성공…하반기 상업운전 본격화 - 전기신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -82,6 +77,11 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### (주간증시전망)휴전에도 남은 중동 변수…이번주 증시 변동성 장세 - 뉴스토마토 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
@@ -102,22 +102,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "이젠 밥 안 사먹어요"…月150만원 지출하는 청년 '초강수' [이미경의 교육지책] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 우주 생존 ‘물곰’ 파고든 10년 뚝심, 한우물 과학자로 10년 더 이어간다 (ID: unknown)
+### [위클리반도체] 1분기 영업익 57조원 돌파 삼성전자…내년 2㎚·1c D램 초격차 시동 - 디지털데일리 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘이발소 집 딸’ 이효리 부친상…남편 이상순과 상주 (ID: unknown)
+### 우주 생존 ‘물곰’ 파고든 10년 뚝심, 한우물 과학자로 10년 더 이어간다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -208,6 +203,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 전남 완도 수산물 창고서 불…소방관 2명 사망 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “반도체 호황, 최소 내년 상반기까지 간다”…한은 “중동영향 제한적” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

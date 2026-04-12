@@ -23,14 +23,13 @@ Historical context:
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
 | 1 | VIX | data/features/anomalies/2026/04/12/risk_vix_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/risk_vix_fred.png) | [json](data/topics/2026/04/12/risk_vix_fred.json) | [json](data/features/anomalies/2026/04/12/risk_vix_fred.json) |
 | 2 | WTI | data/features/anomalies/2026/04/12/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/comm_wti_fred.png) | [json](data/topics/2026/04/12/comm_wti_fred.json) | [json](data/features/anomalies/2026/04/12/comm_wti_fred.json) |
-| 3 | ETHUSD | data/features/anomalies/2026/04/12/crypto_eth_usd_spot_coingecko.json L2 Signal | 6.00 | 5 | 6.00 | UP (0.75) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/crypto_eth_usd_spot_coingecko.png) | [json](data/topics/2026/04/12/crypto_eth_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/04/12/crypto_eth_usd_spot_coingecko.json) |
-| 4 | CPI_USA | data/features/anomalies/2026/04/12/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/12/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/12/inflation_cpi_fred.json) |
-| 5 | PCE_USA | data/features/anomalies/2026/04/12/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/inflation_pce_fred.png) | [json](data/topics/2026/04/12/inflation_pce_fred.json) | [json](data/features/anomalies/2026/04/12/inflation_pce_fred.json) |
+| 3 | CPI_USA | data/features/anomalies/2026/04/12/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/12/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/12/inflation_cpi_fred.json) |
+| 4 | PCE_USA | data/features/anomalies/2026/04/12/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/inflation_pce_fred.png) | [json](data/topics/2026/04/12/inflation_pce_fred.json) | [json](data/features/anomalies/2026/04/12/inflation_pce_fred.json) |
+| 5 | M2_USA | data/features/anomalies/2026/04/12/liquidity_m2_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/12/charts/liquidity_m2_fred.png) | [json](data/topics/2026/04/12/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/04/12/liquidity_m2_fred.json) |
 
 ## Per-dataset Topics
 - [HIGH] VIX: data/features/anomalies/2026/04/12/risk_vix_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] WTI: data/features/anomalies/2026/04/12/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [HIGH] ETHUSD: data/features/anomalies/2026/04/12/crypto_eth_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=0.75) | App7d=5
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/12/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/12/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/12/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -48,6 +47,7 @@ Historical context:
 - [LOW] GOLD: data/features/anomalies/2026/04/12/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] SILVER: data/features/anomalies/2026/04/12/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [LOW] SILVER: data/features/anomalies/2026/04/12/metal_silver_kag_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=4
+- [LOW] ETHUSD: data/features/anomalies/2026/04/12/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [LOW] KOR_RATE: data/features/anomalies/2026/04/12/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] FED_FUNDS: data/features/anomalies/2026/04/12/rates_fed_funds_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] UNRATE: data/features/anomalies/2026/04/12/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -94,5 +94,5 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
 
 ## TOPIC CANDIDATE SNAPSHOT
-Gate Filter Result: 15 candidate(s) survived survival rules.
+Gate Filter Result: 14 candidate(s) survived survival rules.
 No automatic selection performed. See Dashboard for details.
