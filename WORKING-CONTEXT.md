@@ -5,8 +5,9 @@
 ## 리팩토링 완료 (2026-04-11)
 - 1차: 47개 파일 삭제 (커밋 ad71023ab) — 백업파일·에러테스트·구형보고서·remote_verify 제거
 - 2차: 루트 임시 파일 7개 삭제 + artifacts(62MB)·exports·github-pages(66MB) 삭제 + data_outputs → archive/legacy_data 이동
-- pytest: 251/261 통과 (에러 0)
-- 남은 FAILED 10개: 로직 불일치 (AGENT-04,05 활성화 후 처리 예정)
+- 3차: 구버전 테스트 6개 삭제 (test_consistency_engine, test_final_human_view, test_human_preference_overlay, test_is35_content_composer, test_is44_ops_dashboard, test_zero_english)
+- pytest: **246/246 통과 (에러 0, 실패 0)** — 완전 클린 상태
+- v3.0 핵심 테스트 보존: harness.py, test_collector.py, test_detector.py, test_analyst.py, test_filters.py, fixtures/
 - 삭제 금지 확인: registry/ 광범위 사용 중 (src/ 전체에서 참조)
 
 ## 현재 운영 상태 (2026-04-09 기준)
