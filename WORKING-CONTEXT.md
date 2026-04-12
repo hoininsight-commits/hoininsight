@@ -2,6 +2,13 @@
 
 > CLAUDE.md의 상세 보완 문서. 현재 운영 상태와 JSON 스키마 정의.
 
+## 리팩토링 완료 (2026-04-11)
+- 1차: 47개 파일 삭제 (커밋 ad71023ab) — 백업파일·에러테스트·구형보고서·remote_verify 제거
+- 2차: 루트 임시 파일 7개 삭제 + artifacts(62MB)·exports·github-pages(66MB) 삭제 + data_outputs → archive/legacy_data 이동
+- pytest: 251/261 통과 (에러 0)
+- 남은 FAILED 10개: 로직 불일치 (AGENT-04,05 활성화 후 처리 예정)
+- 삭제 금지 확인: registry/ 광범위 사용 중 (src/ 전체에서 참조)
+
 ## 현재 운영 상태 (2026-04-09 기준)
 
 | 항목 | 상태 |
