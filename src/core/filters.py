@@ -292,13 +292,20 @@ class SignalFilters:
     # ──────────────────────────────────────────
     # 강도 계산
     # ──────────────────────────────────────────
-    def calculate_strength(self, filters_hit: list) -> float:
-        """필터 적중 기반 강도 계산"""
+    def calculate_strength(self, filters_hit: list, usd_krw: float = 0.0, vix: float = 0.0) -> float:
+        """필터 적중 기반 강도 계산 (수치 크기 보너스 포함)"""
         if not filters_hit:
             return 0.0
         base = len(filters_hit) * 2.0
         weight_bonus = sum(self.weights.get(f, 1.0) for f in filters_hit)
-        return min(base + weight_bonus * 0.5, 10.0)
+        magnitude_bonus = 0.0
+        if usd_krw > 1500:
+            magnitude_bonus += 1.0
+        elif usd_krw > 1480:
+            magnitude_bonus += 0.5
+        if vix > 25:
+            magnitude_bonus += 0.5
+        return min(base + weight_bonus * 0.5 + magnitude_bonus, 10.0)
 
     def determine_content_type(self, strength: float) -> str:
         if strength >= 8.0:

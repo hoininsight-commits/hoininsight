@@ -37,7 +37,7 @@ class DetectorAgent:
             filters_hit = ["필터1_역사적임계값"]
             if usd_krw > 1500:
                 filters_hit.append("필터4_시의성")
-            strength = self.filters.calculate_strength(filters_hit)
+            strength = self.filters.calculate_strength(filters_hit, usd_krw=usd_krw)
             candidates.append({
                 "topic": f"원달러 환율 {usd_krw:.0f}원 → {label} 수준",
                 "filters_hit": filters_hit,
@@ -102,18 +102,33 @@ class DetectorAgent:
             })
 
         # 복합 신호: 환율 + 유가 동시
-        if usd_krw and usd_krw > 1400 and wti and wti > 90:
+        if usd_krw and usd_krw > 1400 and wti and wti > 85:
             filters_hit = [
                 "필터1_역사적임계값", "필터2_역설적현상",
                 "필터4_시의성", "필터5_연결고리"
             ]
-            strength = self.filters.calculate_strength(filters_hit)
+            strength = self.filters.calculate_strength(filters_hit, usd_krw=usd_krw, vix=vix)
             candidates.append({
                 "topic": f"환율 {usd_krw:.0f}원 + 유가 ${wti:.1f} 동시 급등 → 복합 위기 신호",
                 "filters_hit": filters_hit,
                 "strength": round(strength, 1),
                 "data_evidence": {"usd_krw": usd_krw, "wti": wti},
                 "related_keywords": ["환율", "유가", "인플레이션", "스태그플레이션"]
+            })
+
+        # 복합 신호: 환율 극단 + VIX 공포 동시
+        if usd_krw and usd_krw > 1480 and vix and vix > 20:
+            filters_hit_ev = [
+                "필터1_역사적임계값", "필터2_역설적현상",
+                "필터4_시의성", "필터3_미반영격차"
+            ]
+            strength_ev = self.filters.calculate_strength(filters_hit_ev, usd_krw=usd_krw, vix=vix)
+            candidates.append({
+                "topic": f"환율 {usd_krw:.0f}원 + VIX {vix:.1f} 동시 위기 → 복합 공포 신호",
+                "filters_hit": filters_hit_ev,
+                "strength": round(strength_ev, 1),
+                "data_evidence": {"usd_krw": usd_krw, "vix": vix},
+                "related_keywords": ["환율", "VIX", "공포", "변동성", "위기"]
             })
 
         # 후보 6: 연결고리 신호 (필터5)
