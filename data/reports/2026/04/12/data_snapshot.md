@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-12T20:20:09Z`
+- ts_utc: `2026-04-12T20:20:54Z`
 - ymd_utc: `2026/04/12`
 - enabled_datasets: `32`
 
@@ -10,7 +10,7 @@
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
 | ETHUSD | crypto_eth_usd_spot_coingecko | OK | 74 | 2026-01-15T00:00:00Z | 2026-04-12T00:00:00Z | 7 | 30 | 7 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/04/12/charts/crypto_eth_usd_spot_coingecko.png) |
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 1 | 0 | data/curated/structural/foreigner_flow.csv | - |
-| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 635 | 2026-01-15T07:32:29Z | 2026-04-12T20:10:37Z | 25 | 100 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/12/charts/crypto_btc_usd_spot_coingecko.png) |
+| BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 635 | 2026-01-15T07:32:29Z | 2026-04-12T20:19:53Z | 25 | 100 | 1 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/12/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | UNKNOWN | 950 | 1947-01-01T00:00:00Z | 2026-03-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/04/12/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 1 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/04/12/charts/fx_dxy_index_stooq.png) |
 | FED_FUNDS | rates_fed_funds_fred | UNKNOWN | 861 | 1954-07-01T00:00:00Z | 2026-03-01T00:00:00Z | 0 | 0 | 1 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/04/12/charts/rates_fed_funds_fred.png) |

@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 3500가구 대단지에 전세 '1건'뿐…갈곳 없는 세입자들 - 한국경제 (Google_News_KR_Economy)
-  - [NEWS] 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] “강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스 (Google_News_KR_Economy)
   - [NEWS] "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 (Google_News_KR_Economy)
+  - [NEWS] 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,27 +185,27 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 3500가구 대단지에 전세 '1건'뿐…갈곳 없는 세입자들 - 한국경제 | Structural implication: '3500가구 대단지에 전세 '1건'뿐…갈곳 없는 세입자들 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 | Structural implication: '삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| “강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스 | Structural implication: '“강남 집값은 내렸다지만”…무주택 서민은 ‘떠밀려 매수’ - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | "중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓 | Structural implication: '"중동전쟁은 단기쇼크 … 자산 절반 이상은 주식 담아라" - 매일경제 마켓' suggests a shift in NEWS dynamics. | LOW |
-| "금리 0.25%p 올리면 수도권 집값 0.6% 하락…지방엔 영향 없어" - 연합뉴스 | Structural implication: '"금리 0.25%p 올리면 수도권 집값 0.6% 하락…지방엔 영향 없어" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보 | Structural implication: '삼전 노조, 성과급 40조 요구... 메모리 사업부는 1인당 6억 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송 | Structural implication: '"금리 0.25%p 올리면 수도권 집값 0.6% 하락...지방엔 영향 없어" - KBC광주방송' suggests a shift in NEWS dynamics. | LOW |
+| "다주택이면 처분계획 내라" 과장급까지 지시한 국토부 - 매일경제 | Structural implication: '"다주택이면 처분계획 내라" 과장급까지 지시한 국토부 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 3차 최고가격 동결에도 오름세 지속…경남 평균 기름값 1987원 - 경남도민일보 | Structural implication: '3차 최고가격 동결에도 오름세 지속…경남 평균 기름값 1987원 - 경남도민일보' suggests a shift in NEWS dynamics. | LOW |
 | 일본, '반도체 자립' 위해 국가 주도 라피더스에 24조 투자 - AI타임스 | Structural implication: '일본, '반도체 자립' 위해 국가 주도 라피더스에 24조 투자 - AI타임스' suggests a shift in NEWS dynamics. | LOW |
-| 현대건설, 핀란드와 원전 이어 에너지 분야 협력도 모색 - 한국무역협회-KITA.NET | Structural implication: '현대건설, 핀란드와 원전 이어 에너지 분야 협력도 모색 - 한국무역협회-KITA.NET' suggests a shift in NEWS dynamics. | LOW |
-| 은행 이어 상호금융까지 주담대 빗장…대부업 풍선효과 경고까지 - 이데일리 | Structural implication: '은행 이어 상호금융까지 주담대 빗장…대부업 풍선효과 경고까지 - 이데일리' suggests a shift in NEWS dynamics. | LOW |
+| “잔금 코앞인데 대출중단이라뇨”…새마을금고 이어 농협·신협도 셧다운 - 매일경제 | Structural implication: '“잔금 코앞인데 대출중단이라뇨”…새마을금고 이어 농협·신협도 셧다운 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 100억 넘는 사택, 누가 살아?…법인 소유 9억 초과 주택 조사 - 한겨레 | Structural implication: '100억 넘는 사택, 누가 살아?…법인 소유 9억 초과 주택 조사 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | LGU+, 내일부터 유심 업데이트-무료 교체 - 지디넷코리아 | Structural implication: 'LGU+, 내일부터 유심 업데이트-무료 교체 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| [마켓 ING]5800선 회복 코스피, 밸류에이션 정상화 나설까 - 아시아경제 | Structural implication: '[마켓 ING]5800선 회복 코스피, 밸류에이션 정상화 나설까 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보 | Structural implication: 'D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | '삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스 | Structural implication: ''삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 20대 전기차 구매 229% 폭증…갑자기 왜? [지금뉴스] - KBS 뉴스 | Structural implication: '20대 전기차 구매 229% 폭증…갑자기 왜? [지금뉴스] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 전기차 할인 소식에 20대 고객 구입 급증…모델Y·EV3 등 인기 - 동아일보 | Structural implication: '전기차 할인 소식에 20대 고객 구입 급증…모델Y·EV3 등 인기 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 몰래 녹음에 AI 비교까지…진료실 '불신' 번진다 - 노컷뉴스 | Structural implication: '몰래 녹음에 AI 비교까지…진료실 '불신' 번진다 - 노컷뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 가맹점 수 1위는 '메가커피'...평균 매출액 1위는 '투썸' - 지디넷코리아 | Structural implication: '가맹점 수 1위는 '메가커피'...평균 매출액 1위는 '투썸' - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 삼성전자, 1시간에 265억씩 벌었다…‘세계 1위 기업’ 왕좌 넘본다 - 시사저널 | Structural implication: '삼성전자, 1시간에 265억씩 벌었다…‘세계 1위 기업’ 왕좌 넘본다 - 시사저널' suggests a shift in NEWS dynamics. | LOW |
+| 개미들, 2주만 버티면 되나요?…외인 쓸어담는 韓증시 시나리오 [노정동의 어쩌다 투자자] - 한국경제 | Structural implication: '개미들, 2주만 버티면 되나요?…외인 쓸어담는 韓증시 시나리오 [노정동의 어쩌다 투자자] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz | Structural implication: '6000 찍은 코스피, 다시 3000선 가나…신한 “밸류업 이후 회귀 가능성 낮아” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| 비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이 | Structural implication: '비트코인 미결제약정 250억달러 근접…새 숏퀴즈 가능성 부상 - 디지털투데이' suggests a shift in NEWS dynamics. | LOW |
 | '공짜' 바다시대 끝났다…이란발 '해상 톨게이트'에 발칵 - 한국경제 | Structural implication: ''공짜' 바다시대 끝났다…이란발 '해상 톨게이트'에 발칵 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "美CPI, 관세·전쟁만 끝내면 해결…연준 나서면 안 돼" - 연합인포맥스 | Structural implication: '"美CPI, 관세·전쟁만 끝내면 해결…연준 나서면 안 돼" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| "이젠 밥 안 사먹어요"…月150만원 지출하는 청년 '초강수' [이미경의 교육지책] - 한국경제 | Structural implication: '"이젠 밥 안 사먹어요"…月150만원 지출하는 청년 '초강수' [이미경의 교육지책] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| [단독] 청와대 “다주택 처분계획 내라”…국토부 과장급까지 압박 | Structural implication: '[단독] 청와대 “다주택 처분계획 내라”…국토부 과장급까지 압박' suggests a shift in NEWS dynamics. | LOW |
+| [단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부 | Structural implication: '[단독]“다주택이면 처분계획 내라”…과장급까지 지시한 국토부' suggests a shift in NEWS dynamics. | LOW |
 | 완도화재 순직 소방관 2명…훈장 추서·특별승진 추진 | Structural implication: '완도화재 순직 소방관 2명…훈장 추서·특별승진 추진' suggests a shift in NEWS dynamics. | LOW |
 | “최대 60만원, 난 얼마 받지?”…고유가피해지원금 27일부터 지급 | Structural implication: '“최대 60만원, 난 얼마 받지?”…고유가피해지원금 27일부터 지급' suggests a shift in NEWS dynamics. | LOW |
 | “그냥 감방 처넣어라” 차량절도 잡고보니 미성년자…부모들도 포기 | Structural implication: '“그냥 감방 처넣어라” 차량절도 잡고보니 미성년자…부모들도 포기' suggests a shift in NEWS dynamics. | LOW |

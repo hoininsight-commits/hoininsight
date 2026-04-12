@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T20:11:19Z",
+    "ts_utc": "2026-04-12T20:20:40Z",
     "dataset_id": "liquidity_m2_fred",
     "topic_id": "liquidity_m2_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/liquidity_m2_fred.json L2 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Federal Reserve (FRED)",
-      "temporal_anchor": "2026-04-12 (Anomaly Detection Date)",
-      "unresolved_question": "이 급격한 M2 증가가 연준의 의도적 공급(QE 재개)인지, 아니면 상업은행의 급격한 신용 팽창에 의한 일시적 노이즈인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "다음 FOMC 의사록에서 과잉 유동성 흡수(QT 강화) 언급이 나오거나 CPI 데이터가 예상치를 상회할 경우",
-        "condition_to_invalidate": "데이터 오류 수정 또는 다음 달 M2 데이터가 80번째 백분위수 이하로 급격히 회귀할 경우"
-      },
-      "narrative_pressure_score": 92,
-      "related_entities": [
-        "Federal Reserve",
-        "US Dollar Index",
-        "Commercial Banks",
-        "Inflation-linked Bonds"
-      ],
-      "rationale": "M2 통화량이 100.0% 백분위수라는 극단적 수치에 도달한 것은 시장의 유동성 과잉 상태를 나타냄. 이는 연준의 정책 공식 발표 이전에 인플레이션 헤지 자산으로의 자본 재배치(Capital Flow Anticipation)를 유도하는 강력한 전조 신호임. 일반적인 추세가 아닌 'Extreme' 상태의 아노말리이므로 구조적 변화(금리 인상 압박 또는 자산 버블 시작)의 임계점에 도달함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

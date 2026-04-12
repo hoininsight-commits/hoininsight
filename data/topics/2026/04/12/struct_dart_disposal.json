@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T20:11:19Z",
+    "ts_utc": "2026-04-12T20:20:40Z",
     "dataset_id": "struct_dart_disposal",
     "topic_id": "struct_dart_disposal::event_nonzero",
     "title": "data/features/anomalies/2026/04/12/struct_dart_disposal.json L2 Signal",
@@ -35,25 +35,6 @@
     },
     "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "DART(전자공시시스템) 상장사 주요주주 및 법인",
-      "temporal_anchor": "2026-04-12 (Anomaly Detection Date)",
-      "unresolved_question": "5건의 대규모 지분 처분(Disposal)이 특정 섹터에 집중되어 있는지, 아니면 시장 전반의 유동성 확보를 위한 강제적 매각인지 여부",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "처분 주체가 동일 계열사이거나, 특정 규제(대주주 적격성/공정거래법) 시한 임박과 맞물릴 경우",
-        "condition_to_invalidate": "단순 오기입 정정 공시이거나, 기획된 블록딜이 시장가에 영향을 주지 않고 종료될 경우"
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "South Korean Listed Companies",
-        "Institutional Investors",
-        "DART"
-      ],
-      "rationale": "본 신호는 한국 DART 시스템에서 단기간(Count=5) 내에 발생한 지분 처분(Disposal) 이상 현상을 포착한 것입니다. 이는 단순한 '미래 성장성' 담론이 아니라, 실제 자본의 이탈과 재배치가 시작되었음을 나타내는 구조적 전조입니다. 대량 매도 공시는 즉각적인 수급 불균형과 가격 조정을 유발하며, 30일 이상 지속되는 일반 트렌드와 달리 공시 시점으로부터 특정 기간 내에 자본 이동이 완료되어야 하는 시점 구속성(Temporal Anchor)을 가집니다.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

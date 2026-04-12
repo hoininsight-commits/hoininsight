@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T20:11:19Z",
+    "ts_utc": "2026-04-12T20:20:40Z",
     "dataset_id": "comm_wti_fred",
     "topic_id": "comm_wti_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/comm_wti_fred.json L2 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L2] Z-Score 2.19 >= 2.0 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Dependency",
-      "trigger_actor": "Global Energy Market Participants / Supply Chain Nodes",
-      "temporal_anchor": "2026-04-12 to 2026-04-19 (Immediate response window)",
-      "unresolved_question": "실물 공급 차질에 의한 물리적 숏스퀴즈인가, 아니면 특정 지정학적 이벤트에 대한 선제적 헷징 수요인가?",
-      "expected_market_behavior": "risk_off",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "OPEC+의 긴급 감산 발표 또는 주요 산유국의 수출 통제 공식화 시",
-        "condition_to_invalidate": "WTI 가격이 48시간 이내에 $100 이하로 회귀하거나 데이터 오류로 판명될 경우"
-      },
-      "narrative_pressure_score": 82,
-      "related_entities": [
-        "WTI Crude Oil",
-        "OPEC+",
-        "Energy Sector Equity",
-        "Global Logistics"
-      ],
-      "rationale": "WTI 유가가 20일 평균($97.38)을 크게 상회하여 $114에 도달하며 Z-Score 2.19를 기록한 것은 단순한 변동성이 아닌 에너지 공급망의 구조적 취약성(Dependency)이 노출된 신호임. 이는 에너지 비용 급증에 따른 타 산업군의 자본 재배치와 리스크 오프 심리를 즉각적으로 유도하는 전형적인 Pre-Structural Signal에 해당함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

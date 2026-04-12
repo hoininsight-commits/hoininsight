@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-04-12T20:20:21.116098",
+  "generated_at_kst": "2026-04-12T20:21:06.221589",
   "date": "2026-04-12",
   "blocks": {
     "regime": {
@@ -25,7 +25,7 @@
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Unknown] Pre-Structural (Step 74)",
+  "anchor_topic": "[Unknown] Hybrid-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
   "narrative_topics": [],
@@ -41,26 +41,7 @@
       "request": [
         "Need Volume/Flow Data to verify Capital Fixation"
       ],
-      "pre_structural": {
-        "signal_type": "Capital",
-        "trigger_actor": "Institutional Fixed Income Investors / High-Yield Desks",
-        "temporal_anchor": "2026-04-26 (14-day mean reversion window)",
-        "unresolved_question": "Does the current spread compression reflect a fundamental improvement in credit quality, or is it a liquidity-driven bubble prone to a sudden widening?",
-        "expected_market_behavior": "rotation",
-        "escalation_path": {
-          "condition_to_upgrade_to_WHY_NOW": "If a major HY issuer misses an earnings target or a sovereign rate spike causes a sudden widening (>20bps in 24h).",
-          "condition_to_invalidate": "Spread remains compressed at current levels for more than 30 days without an increase in VIX or corporate defaults."
-        },
-        "narrative_pressure_score": 78,
-        "related_entities": [
-          "FRED",
-          "High Yield Corporate Bonds",
-          "Credit Risk Premium",
-          "Fed"
-        ],
-        "rationale": "High Yield Spread의 Z-Score가 -2.21에 도달했다는 것은 통계적으로 매우 드문 수준의 신용 스프레드 압축을 의미함. 이는 시장 참여자들이 리스크를 극도로 과소평가하고 고수익 자산으로 자본을 선제적으로 집중시켰음을 나타내는 신호임. 이러한 극단적 수치는 일반적으로 구조적 조정이나 자산 재배분(Rotation)이 발생하기 직전의 'Pre-Structural' 상태로 간주됨.",
-        "is_valid": true
-      }
+      "pre_structural": null
     },
     "PRED_20260412_05": "Primary",
     "PRED_20260412_01": "Secondary"

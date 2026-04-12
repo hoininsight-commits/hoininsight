@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T20:11:19Z",
+    "ts_utc": "2026-04-12T20:20:40Z",
     "dataset_id": "inflation_kor_cpi_ecos",
     "topic_id": "inflation_kor_cpi_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/inflation_kor_cpi_ecos.json L1 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L1] Z-Score 1.86 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital Flow Anticipation",
-      "trigger_actor": "Bank of Korea (BoK)",
-      "temporal_anchor": "2026-04-12 (Data Release) / Next MPC Meeting Window",
-      "unresolved_question": "한국은행이 수출 둔화 우려에도 불구하고 1.86 Z-Score에 달하는 인플레이션 압력을 억제하기 위해 즉각적인 금리 인상 카드를 꺼낼 것인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "한국은행 총재의 매파적(Hawkish) 발언이나 추가적인 생산자물가지수(PPI)의 동반 상승 확인 시",
-        "condition_to_invalidate": "다음 지표에서 기저효과가 확인되거나 원화 가치의 급격한 절상으로 수입 물가 압력이 자연 해소될 경우"
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "Bank of Korea",
-        "KRW/USD",
-        "KOSPI",
-        "Ministry of Economy and Finance"
-      ],
-      "rationale": "한국 CPI가 Z-Score 1.86(임계치 1.5 상회)을 기록하며 통계적 유의미한 변동성을 보임. 이는 시장이 한국은행의 정책 금리 결정을 기다리기 전에 채권 금리 및 외환 시장에서 선제적인 자본 재배치를 유도하는 전형적인 Pre-Structural Signal임. 단순 추세가 아닌 특정 시점(4월 12일)의 데이터 충격에 기반한 신호로 판단됨.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

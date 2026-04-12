@@ -41,7 +41,6 @@ Historical context:
 - [MED] NASDAQ: data/features/anomalies/2026/04/12/index_nasdaq_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [MED] KOR_CPI: data/features/anomalies/2026/04/12/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/12/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
-- [MED] GS_RATIO: data/features/anomalies/2026/04/12/derived_gold_silver_ratio.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] BTCUSD: data/features/anomalies/2026/04/12/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] KOSPI: data/features/anomalies/2026/04/12/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] US02Y: data/features/anomalies/2026/04/12/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -54,6 +53,7 @@ Historical context:
 - [LOW] UNRATE: data/features/anomalies/2026/04/12/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] FIN_STRESS: data/features/anomalies/2026/04/12/risk_financial_stress_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] YIELD_CURVE: data/features/anomalies/2026/04/12/derived_yield_curve_10y_2y.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [LOW] GS_RATIO: data/features/anomalies/2026/04/12/derived_gold_silver_ratio.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 
 - See: `data/reports/2026/04/12/data_snapshot.md`
 
@@ -74,7 +74,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Pre-Structural (Step 74)
+- **Topic:** [Unknown] Hybrid-driven
 - **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 

@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T20:11:19Z",
+    "ts_utc": "2026-04-12T20:20:40Z",
     "dataset_id": "fx_usdkrw_ecos",
     "topic_id": "fx_usdkrw_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/fx_usdkrw_ecos.json L1 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L1] Z-Score -1.55 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital Flow Anticipation",
-      "trigger_actor": "Bank of Korea (BoK) / Ministry of Economy and Finance (MOEF)",
-      "temporal_anchor": "2026-04-12 (T+48h Window)",
-      "unresolved_question": "환율 1,480원선 붕괴 시 외환당국의 실개입(Smoothing Operation)이 즉각적으로 단행될 것인가, 아니면 추가 하락을 용인할 것인가?",
-      "expected_market_behavior": "speculation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "당국의 '구두 개입(Verbal Warning)' 공식 발표 또는 외환보유고 변동 수반 시",
-        "condition_to_invalidate": "Z-Score가 -1.0 이내로 회복되며 20일 이동평균선(1501원)으로 회귀할 경우"
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "USD/KRW",
-        "Bank of Korea",
-        "MOEF",
-        "KOSPI Export Sectors"
-      ],
-      "rationale": "USD/KRW 환율이 20일 이동평균 대비 -1.55 Z-Score 수준인 1481.1원까지 급락한 것은 단순 변동성을 넘어선 통계적 이상치임. 이는 외환 당국의 개입 가능성을 높이고 시장 참여자들의 선제적 포지션 청산 또는 자금 재배치를 유도하는 전구조적 신호(Pre-Structural Signal)로 판단됨.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]
