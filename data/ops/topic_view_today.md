@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트 (ID: unknown)
+### 정량표시상품 4개 중 1개 실제 내용량 부족…음료·주류 심각 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스 (ID: unknown)
+### 금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,17 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 프랜차이즈 가맹본부 13.2% 증가…주춤했던 가맹산업 다시 활기 - 네이트 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### '반려견 유전자 검사' 등 신기술 3건에 실증 특례 부여 - 네이트 (ID: unknown)
+### 프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -47,12 +47,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### '반려견 유전자 검사' 등 신기술 3건에 실증 특례 부여 - 네이트 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 새울3호기, ‘첫 시동’ 성공…하반기 상업운전 본격화 - 전기신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "제2의 삼천당제약 막는다"…금감원, 제약·바이오 공시개선 TF 출범 - 아시아경제 (ID: unknown)
+### "제약·바이오 공시, 알기 쉽게 써라"…금감원, 공시개선 착수 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,17 +82,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### (주간증시전망)휴전에도 남은 중동 변수…이번주 증시 변동성 장세 - 뉴스토마토 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,7 +92,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### "성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### '삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -107,9 +112,9 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [위클리반도체] 1분기 영업익 57조원 돌파 삼성전자…내년 2㎚·1c D램 초격차 시동 - 디지털데일리 (ID: unknown)
+### “3년 모으면 15억, 40억 아파트 산다”…삼성 성과급 요구안에 사내부부 ‘들썩’ (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 우주 생존 ‘물곰’ 파고든 10년 뚝심, 한우물 과학자로 10년 더 이어간다 (ID: unknown)
@@ -203,11 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 전남 완도 수산물 창고서 불…소방관 2명 사망 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “반도체 호황, 최소 내년 상반기까지 간다”…한은 “중동영향 제한적” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

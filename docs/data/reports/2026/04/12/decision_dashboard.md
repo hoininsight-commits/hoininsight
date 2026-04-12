@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **지수 상승 속 섹터 하락의 이유**
+- **오늘 시장의 핵심 혼란 포인트**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 정량표시상품 4개 중 1개 실제 내용량 부족…음료·주류 심각 - 네이트 (Google_News_KR_Economy)
   - [NEWS] 금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트 (Google_News_KR_Economy)
-  - [NEWS] 1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] 유가 급등 틈타 ‘가짜 석유’ 판매…경기권 주유소 4곳 적발 - nongmin.com (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,26 +187,26 @@
 |---|---|---|
 | 정량표시상품 4개 중 1개 실제 내용량 부족…음료·주류 심각 - 네이트 | Structural implication: '정량표시상품 4개 중 1개 실제 내용량 부족…음료·주류 심각 - 네이트' suggests a shift in NEWS dynamics. | LOW |
 | 금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트 | Structural implication: '금융위, 제1회 '금융위人상' 시상…탁월한 성과 '1800만원' 포상 - 네이트' suggests a shift in NEWS dynamics. | LOW |
-| 1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스 | Structural implication: '1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 유가 급등 틈타 ‘가짜 석유’ 판매…경기권 주유소 4곳 적발 - nongmin.com | Structural implication: '유가 급등 틈타 ‘가짜 석유’ 판매…경기권 주유소 4곳 적발 - nongmin.com' suggests a shift in NEWS dynamics. | LOW |
-| 프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송 | Structural implication: '프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송' suggests a shift in NEWS dynamics. | LOW |
+| 1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스 | Structural implication: '1분기 전기차 구매 20대가 가장 많아…보조금·가격 인하 통했다 - SBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보 | Structural implication: 'D램에 이어 낸드도 3년짜리 장기공급계약(LTA) 활발… AI 추론 뜨니 낸드도 뜨거워 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송 | Structural implication: '프랜차이즈 숫자 13.2%↑…외식업 매출 증가폭 최대 - BBS불교방송' suggests a shift in NEWS dynamics. | LOW |
+| 앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터 | Structural implication: '앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | '반려견 유전자 검사' 등 신기술 3건에 실증 특례 부여 - 네이트 | Structural implication: ''반려견 유전자 검사' 등 신기술 3건에 실증 특례 부여 - 네이트' suggests a shift in NEWS dynamics. | LOW |
 | 새울3호기, ‘첫 시동’ 성공…하반기 상업운전 본격화 - 전기신문 | Structural implication: '새울3호기, ‘첫 시동’ 성공…하반기 상업운전 본격화 - 전기신문' suggests a shift in NEWS dynamics. | LOW |
-| 앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터 | Structural implication: '앤트로픽, 기업 도입률 급증…"2달 안에 오픈AI 추월 추세" - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
-| "제2의 삼천당제약 막는다"…금감원, 제약·바이오 공시개선 TF 출범 - 아시아경제 | Structural implication: '"제2의 삼천당제약 막는다"…금감원, 제약·바이오 공시개선 TF 출범 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| "제약·바이오 공시, 알기 쉽게 써라"…금감원, 공시개선 착수 - 연합뉴스 한민족센터 | Structural implication: '"제약·바이오 공시, 알기 쉽게 써라"…금감원, 공시개선 착수 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | 현대건설, 핀란드 사절단과 저탄소 솔루션 협력 - 매일일보 | Structural implication: '현대건설, 핀란드 사절단과 저탄소 솔루션 협력 - 매일일보' suggests a shift in NEWS dynamics. | LOW |
 | "불법 핀플루언서 발본색원"…금감원, 5개 유튜브 채널 적발 - nocutnews.co.kr | Structural implication: '"불법 핀플루언서 발본색원"…금감원, 5개 유튜브 채널 적발 - nocutnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | ‘회사 명의 업무용 고가 아파트 거주’ 사주 일가에 세금 추징한다 - 한겨레 | Structural implication: '‘회사 명의 업무용 고가 아파트 거주’ 사주 일가에 세금 추징한다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV | Structural implication: '휴전 협상 관망세 속 인플레이션 우려에 뉴욕증시 혼조 마감 - 연합뉴스TV' suggests a shift in NEWS dynamics. | LOW |
 | (주간증시전망)휴전에도 남은 중동 변수…이번주 증시 변동성 장세 - 뉴스토마토 | Structural implication: '(주간증시전망)휴전에도 남은 중동 변수…이번주 증시 변동성 장세 - 뉴스토마토' suggests a shift in NEWS dynamics. | LOW |
-| "성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제 | Structural implication: '"성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 몰래 녹음에 AI 비교까지…진료실 '불신' 번진다 - nocutnews.co.kr | Structural implication: '몰래 녹음에 AI 비교까지…진료실 '불신' 번진다 - nocutnews.co.kr' suggests a shift in NEWS dynamics. | LOW |
+| "성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제 | Structural implication: '"성과급이 13억?"…SK하닉 직원도 놀랄 '파격' 전망 나왔다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | '삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스 | Structural implication: ''삼천당제약'으로 바이오주 전반에 불신‥금감원, 공시 개선 나선다 - MBC 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스 | Structural implication: 'LG유플러스, 내일부터 전 고객 유심 무상 교체·업데이트 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
 | "이젠 밥 안 사먹어요"…月150만원 지출하는 청년 '초강수' [이미경의 교육지책] - 한국경제 | Structural implication: '"이젠 밥 안 사먹어요"…月150만원 지출하는 청년 '초강수' [이미경의 교육지책] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “3년 모으면 15억, 40억 아파트 산다”…삼성 성과급 요구안에 사내부부 ‘들썩’ | Structural implication: '“3년 모으면 15억, 40억 아파트 산다”…삼성 성과급 요구안에 사내부부 ‘들썩’' suggests a shift in NEWS dynamics. | LOW |
 | 우주 생존 ‘물곰’ 파고든 10년 뚝심, 한우물 과학자로 10년 더 이어간다 | Structural implication: '우주 생존 ‘물곰’ 파고든 10년 뚝심, 한우물 과학자로 10년 더 이어간다' suggests a shift in NEWS dynamics. | LOW |
-| ‘이발소 집 딸’ 이효리 부친상…남편 이상순과 상주 | Structural implication: '‘이발소 집 딸’ 이효리 부친상…남편 이상순과 상주' suggests a shift in NEWS dynamics. | LOW |
 | “기준금리 0.25%p 인상시 수도권 집값 0.6% 하락…지방 영향 없어” | Structural implication: '“기준금리 0.25%p 인상시 수도권 집값 0.6% 하락…지방 영향 없어”' suggests a shift in NEWS dynamics. | LOW |
 | “오픈AI, 두 달 안에 제낀다”…앤트로픽 기업 도입률 급증, 조만간 역전 | Structural implication: '“오픈AI, 두 달 안에 제낀다”…앤트로픽 기업 도입률 급증, 조만간 역전' suggests a shift in NEWS dynamics. | LOW |
 | 임광현 국세청장 “법인 고가주택 전수 점검…사주일가 거주하면 탈세” | Structural implication: '임광현 국세청장 “법인 고가주택 전수 점검…사주일가 거주하면 탈세”' suggests a shift in NEWS dynamics. | LOW |
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
+### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
+| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
 </details>

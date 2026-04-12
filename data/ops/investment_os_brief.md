@@ -25,7 +25,7 @@
 
 ---
 
-### [MONITOR] 거시경제 이상징후: crypto_btc_usd_spot_coingecko
+### [MONITOR] 거시경제 이상징후: credit_hy_spread_fred
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링

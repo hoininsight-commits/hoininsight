@@ -10,12 +10,6 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 53.94
-
-## Topic: 거시경제 이상징후: crypto_btc_usd_spot_coingecko
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
 - **Final Score**: 34.62
 
 ## Topic: 거시경제 이상징후: credit_hy_spread_fred
