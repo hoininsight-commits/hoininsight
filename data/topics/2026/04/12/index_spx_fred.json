@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T09:54:56Z",
+    "ts_utc": "2026-04-12T20:11:19Z",
     "dataset_id": "index_spx_fred",
     "topic_id": "index_spx_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/index_spx_fred.json L1 Signal",
@@ -37,6 +37,25 @@
     },
     "rationale": "[L1] Z-Score 1.69 >= 1.5 (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Institutional Market Participants",
+      "temporal_anchor": "2026-04-15 (Q1 Earnings Season Kick-off / US Tax Deadline)",
+      "unresolved_question": "이 Z-Score 1.69의 이탈이 실적 발표 전의 선제적 수익 실현인가, 아니면 새로운 펀더멘탈 반영을 위한 포지션 구축인가?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "VIX 또는 US10Y ROC가 임계값을 돌파하여 Regime Multiplier가 1.2 이상으로 상승할 경우",
+        "condition_to_invalidate": "Z-Score가 3거래일 이내에 1.0 미만으로 회귀하며 평균 회귀(Mean Reversion)가 발생할 경우"
+      },
+      "narrative_pressure_score": 68,
+      "related_entities": [
+        "S&P 500 (SPX)",
+        "FRED",
+        "Institutional Rebalancing Flows"
+      ],
+      "rationale": "S&P 500 지수가 FRED 데이터 기준 Z-Score 1.69의 유의미한 이탈을 보임. 이는 4월 중순 실적 시즌 및 매크로 지표 발표를 앞두고 자본이 선제적으로 이동하고 있음을 시사하는 L1 신호임. 단순한 추세 지속이 아닌 통계적 이상점(Anomaly)으로서 자본 재배치(Capital Flow Anticipation)의 전조 현상으로 판단됨.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]

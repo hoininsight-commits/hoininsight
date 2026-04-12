@@ -6,12 +6,6 @@
 - **Conflict**: Supply_Demand_Gap
 - **Final Score**: 63.11
 
-## Topic: 거시경제 이상징후: crypto_eth_usd_spot_coingecko
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 34.62
-
 ## Topic: 거시경제 이상징후: credit_hy_spread_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL, Liquidity:CREDIT

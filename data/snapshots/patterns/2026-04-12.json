@@ -1,10 +1,19 @@
 {
   "date": "2026-04-12",
   "meta": {
-    "generated_at": "2026-04-12T14:41:06.666930Z",
+    "generated_at": "2026-04-12T20:20:22.037401Z",
     "engine_version": "v1.0"
   },
   "active_patterns": [
+    {
+      "pattern_type": "SYSTEM_TRUST_STRESS",
+      "confidence": "MEDIUM",
+      "narrative": "중앙은행의 통제력이나 시스템 신뢰에 대한 의구심이 확산되고 있습니다.",
+      "signals": [
+        "Central Bank Narrative",
+        "Safe Haven Interest"
+      ]
+    },
     {
       "pattern_type": "LIQUIDITY_ROTATION",
       "confidence": "HIGH",
@@ -15,6 +24,6 @@
       ]
     }
   ],
-  "pattern_count": 1,
-  "pattern_hash": "1a0c4a9a053787ea7b1d4e38152b8d953756b8c49f79a981288cb814ab6cd0ad"
+  "pattern_count": 2,
+  "pattern_hash": "1e00d060acf3348f5150f1e458c7792dbc823b39b31784e309d6fb5dc5fff880"
 }

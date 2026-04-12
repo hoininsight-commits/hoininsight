@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-12T14:40:56.072810",
-  "candidate_count": 13,
-  "alive_count": 13,
+  "generated_at": "2026-04-12T20:20:12.795905",
+  "candidate_count": 14,
+  "alive_count": 14,
   "candidates": [
     {
       "candidate_id": "cand_credit_hy_spread_fred_20260412",
       "dataset_id": "credit_hy_spread_fred",
       "category": "CREDIT",
-      "created_at": "2026-04-12T14:40:56.072738",
+      "created_at": "2026-04-12T20:20:12.795813",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -21,18 +21,19 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
         ]
       },
-      "reason": "Cross-Axis: Detected in [credit_hy_spread_fred] during global market volatility in categories ['INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'COMMODITIES', 'FX_RATES', 'OTHER']."
+      "reason": "Cross-Axis: Detected in [credit_hy_spread_fred] during global market volatility in categories ['INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'PRECIOUS_METALS', 'COMMODITIES', 'FX_RATES', 'OTHER']."
     },
     {
       "candidate_id": "cand_inflation_pce_fred_20260412",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-12T14:40:56.072754",
+      "created_at": "2026-04-12T20:20:12.795841",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -49,6 +50,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
@@ -60,7 +62,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260412",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-04-12T14:40:56.072761",
+      "created_at": "2026-04-12T20:20:12.795849",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -76,6 +78,7 @@
           "INFLATION",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
@@ -87,7 +90,7 @@
       "candidate_id": "cand_liquidity_m2_fred_20260412",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-04-12T14:40:56.072766",
+      "created_at": "2026-04-12T20:20:12.795853",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -101,18 +104,19 @@
           "INFLATION",
           "STRUCTURAL",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
         ]
       },
-      "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'GLOBAL_INDEX', 'COMMODITIES', 'FX_RATES', 'OTHER']."
+      "reason": "Cross-Axis: Detected in [liquidity_m2_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'GLOBAL_INDEX', 'PRECIOUS_METALS', 'COMMODITIES', 'FX_RATES', 'OTHER']."
     },
     {
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260412",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-04-12T14:40:56.072770",
+      "created_at": "2026-04-12T20:20:12.795859",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -129,6 +133,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
@@ -140,7 +145,7 @@
       "candidate_id": "cand_index_nasdaq_fred_20260412",
       "dataset_id": "index_nasdaq_fred",
       "category": "GLOBAL_INDEX",
-      "created_at": "2026-04-12T14:40:56.072775",
+      "created_at": "2026-04-12T20:20:12.795863",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -154,18 +159,45 @@
           "INFLATION",
           "STRUCTURAL",
           "LIQUIDITY",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
         ]
       },
-      "reason": "Cross-Axis: Detected in [index_nasdaq_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'COMMODITIES', 'FX_RATES', 'OTHER']."
+      "reason": "Cross-Axis: Detected in [index_nasdaq_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'PRECIOUS_METALS', 'COMMODITIES', 'FX_RATES', 'OTHER']."
+    },
+    {
+      "candidate_id": "cand_derived_gold_silver_ratio_20260412",
+      "dataset_id": "derived_gold_silver_ratio",
+      "category": "PRECIOUS_METALS",
+      "created_at": "2026-04-12T20:20:12.795868",
+      "status": "CANDIDATE_ALIVE",
+      "gates": {
+        "multi_axis": true,
+        "temporal": true,
+        "explainability": true
+      },
+      "supporting_evidence": {
+        "intra_category": [],
+        "inter_category_axes": [
+          "CREDIT",
+          "INFLATION",
+          "STRUCTURAL",
+          "LIQUIDITY",
+          "GLOBAL_INDEX",
+          "COMMODITIES",
+          "FX_RATES",
+          "OTHER"
+        ]
+      },
+      "reason": "Cross-Axis: Detected in [derived_gold_silver_ratio] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'COMMODITIES', 'FX_RATES', 'OTHER']."
     },
     {
       "candidate_id": "cand_comm_wti_fred_20260412",
       "dataset_id": "comm_wti_fred",
       "category": "COMMODITIES",
-      "created_at": "2026-04-12T14:40:56.072779",
+      "created_at": "2026-04-12T20:20:12.795872",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -180,17 +212,18 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "FX_RATES",
           "OTHER"
         ]
       },
-      "reason": "Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'FX_RATES', 'OTHER']."
+      "reason": "Cross-Axis: Detected in [comm_wti_fred] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'PRECIOUS_METALS', 'FX_RATES', 'OTHER']."
     },
     {
       "candidate_id": "cand_fx_usdkrw_ecos_20260412",
       "dataset_id": "fx_usdkrw_ecos",
       "category": "FX_RATES",
-      "created_at": "2026-04-12T14:40:56.072783",
+      "created_at": "2026-04-12T20:20:12.795877",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -205,17 +238,18 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "OTHER"
         ]
       },
-      "reason": "Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'COMMODITIES', 'OTHER']."
+      "reason": "Cross-Axis: Detected in [fx_usdkrw_ecos] during global market volatility in categories ['CREDIT', 'INFLATION', 'STRUCTURAL', 'LIQUIDITY', 'GLOBAL_INDEX', 'PRECIOUS_METALS', 'COMMODITIES', 'OTHER']."
     },
     {
       "candidate_id": "cand_index_spx_fred_20260412",
       "dataset_id": "index_spx_fred",
       "category": "OTHER",
-      "created_at": "2026-04-12T14:40:56.072787",
+      "created_at": "2026-04-12T20:20:12.795886",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -233,6 +267,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES"
         ]
@@ -243,7 +278,7 @@
       "candidate_id": "cand_rates_us10y_fred_20260412",
       "dataset_id": "rates_us10y_fred",
       "category": "OTHER",
-      "created_at": "2026-04-12T14:40:56.072791",
+      "created_at": "2026-04-12T20:20:12.795890",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -261,6 +296,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES"
         ]
@@ -271,7 +307,7 @@
       "candidate_id": "cand_inflation_cpi_fred_20260412",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-12T14:40:56.072799",
+      "created_at": "2026-04-12T20:20:12.795894",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -288,6 +324,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"
@@ -299,7 +336,7 @@
       "candidate_id": "cand_risk_vix_fred_20260412",
       "dataset_id": "risk_vix_fred",
       "category": "OTHER",
-      "created_at": "2026-04-12T14:40:56.072803",
+      "created_at": "2026-04-12T20:20:12.795898",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -317,6 +354,7 @@
           "STRUCTURAL",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES"
         ]
@@ -327,7 +365,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260412",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-04-12T14:40:56.072806",
+      "created_at": "2026-04-12T20:20:12.795901",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -343,6 +381,7 @@
           "INFLATION",
           "LIQUIDITY",
           "GLOBAL_INDEX",
+          "PRECIOUS_METALS",
           "COMMODITIES",
           "FX_RATES",
           "OTHER"

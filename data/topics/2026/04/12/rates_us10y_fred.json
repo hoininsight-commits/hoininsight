@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-12T09:54:56Z",
+    "ts_utc": "2026-04-12T20:11:19Z",
     "dataset_id": "rates_us10y_fred",
     "topic_id": "rates_us10y_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/12/rates_us10y_fred.json L1 Signal",
@@ -37,6 +37,26 @@
     },
     "rationale": "[L1] Percentile 90.5% (Watch) (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Institutional Liquidity Providers / FOMC",
+      "temporal_anchor": "2026-04-12 (T+5 Day Rebalancing Window)",
+      "unresolved_question": "금리가 90.5% 백분위수 임계점에서 저항을 형성할 것인가, 아니면 기술적 돌파를 통해 주식 시장의 투매를 유도할 것인가?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "US10Y 금리가 4.35%를 돌파하거나 백분위수가 95%를 상회하여 'Risk-Off' 정서가 확산될 경우",
+        "condition_to_invalidate": "금리가 20일 이동평균선(4.321%) 아래로 급격히 하회하며 4.20% 수준으로 회귀할 경우"
+      },
+      "narrative_pressure_score": 78,
+      "related_entities": [
+        "US10Y",
+        "FRED",
+        "Federal Reserve",
+        "Fixed Income Portfolios"
+      ],
+      "rationale": "US 10년물 국채 금리가 90.5%라는 극단적인 통계적 임계점(Percentile)에 도달한 것은 단순한 가격 변동이 아닌, 기관 투자자들의 포트폴리오 재조정 및 자본 유출입 압박이 즉각적으로 발생하는 지점임. 이는 법적/정책적 확정 이전에 시장 데이터 자체가 자본의 대이동(Rotation)을 강제하는 '자본 흐름 기대' 신호의 전형적인 모습임.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]
