@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-04-13T08:38:26Z",
+    "dataset_id": "credit_hy_spread_fred",
+    "entity": "HY_SPREAD_USA",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": -2.21,
+      "percentile": 40.5,
+      "value": 2.9,
+      "rolling_mean_20d": 3.1935000000000002,
+      "reasoning": "Z-Score -2.21 >= 2.0"
+    }
+  }
+]
