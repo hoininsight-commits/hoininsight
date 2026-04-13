@@ -75,15 +75,20 @@ class LearnerAgent:
             return []
 
     def extract_transcript(self, video_id: str, title: str) -> str:
-        """유튜브 자막 추출"""
+        """유튜브 자막 추출 (Dual-Engine: API + yt-dlp)"""
+        cookies_path = Path("youtube_cookies.txt")
+        cookies_arg = str(cookies_path) if cookies_path.exists() else None
+        
+        # [1순위] youtube-transcript-api 시도
         try:
             from youtube_transcript_api import YouTubeTranscriptApi
-
+            api = YouTubeTranscriptApi()
+            
+            # 쿠키가 있다면 적용 (라이브러리 버전에 따라 다를 수 있어 예외처리)
             try:
-                # 현재 라이브러리 버전에 맞는 인스턴스 생성 후 list 호출 방식 사용
-                api = YouTubeTranscriptApi()
+                # 최신 버전은 인스턴스 생성 시 또는 list 호출 시 cookies 지원 여부 확인 필요
+                # 여기서는 기본 시도 후 실패 시 yt-dlp로 넘김
                 transcript_list = api.list(video_id)
-                
                 try:
                     transcript = transcript_list.find_manually_created_transcript(['ko'])
                 except:
@@ -95,14 +100,58 @@ class LearnerAgent:
                 data = transcript.fetch()
                 return ' '.join([t.text for t in data])
             except Exception as e:
-                print(f"  자막 추출 API 오류: {title[:30]} — {e}")
-                return ""
-
+                print(f"  [Engine1] API 실패 또는 차단됨: {e}")
         except ImportError:
-            print("  youtube-transcript-api 미설치")
+            pass
+
+        # [2순위] yt-dlp 시도 (API보다 차단 회피력이 강력함)
+        print(f"  [Engine2] yt-dlp로 우회 수집 시도 중...")
+        try:
+            import yt_dlp
+            import tempfile
+            import os
+            import re
+            
+            with tempfile.TemporaryDirectory() as tmp_dir:
+                ydl_opts = {
+                    'skip_download': True,
+                    'writesubtitles': True,
+                    'writeautomaticsub': True,
+                    'subtitleslangs': ['ko', 'en'],
+                    'outtmpl': os.path.join(tmp_dir, '%(id)s.%(ext)s'),
+                    'quiet': True,
+                    'no_warnings': True,
+                }
+                
+                if cookies_arg:
+                    ydl_opts['cookiefile'] = cookies_arg
+                    print(f"    (쿠키 인증 사용 중: {cookies_arg})")
+
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([f"https://www.youtube.com/watch?v={video_id}"])
+                    
+                    # 다운로드된 자막 파일 찾기
+                    sub_files = list(Path(tmp_dir).glob(f"{video_id}.*.vtt"))
+                    if not sub_files:
+                        sub_files = list(Path(tmp_dir).glob(f"{video_id}.*.srt"))
+                        
+                    if sub_files:
+                        with open(sub_files[0], 'r', encoding='utf-8') as f:
+                            raw_text = f.read()
+                            
+                        # VTT/SRT 태그 및 타임스탬프 제거 (간이 파서)
+                        clean_text = re.sub(r'\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*\n', '', raw_text)
+                        clean_text = re.sub(r'<[^>]*>', '', clean_text)
+                        clean_text = re.sub(r'WEBVTT.*\n', '', clean_text)
+                        clean_text = re.sub(r'Kind:.*\n', '', clean_text)
+                        clean_text = re.sub(r'Language:.*\n', '', clean_text)
+                        clean_text = re.sub(r'\n+', ' ', clean_text).strip()
+                        
+                        return clean_text
+            
             return ""
         except Exception as e:
-            print(f"  자막 없음: {title[:30]} — {e}")
+            print(f"  [Engine2] yt-dlp 수집 실패: {e}")
             return ""
 
     def save_script(self, video_id: str, title: str, transcript: str) -> Path:
