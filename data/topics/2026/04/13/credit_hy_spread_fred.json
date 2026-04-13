@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T12:52:12Z",
+    "ts_utc": "2026-04-13T13:07:45Z",
     "dataset_id": "credit_hy_spread_fred",
     "topic_id": "credit_hy_spread_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/credit_hy_spread_fred.json L2 Signal",
@@ -37,6 +37,26 @@
     },
     "rationale": "[L2] Z-Score -2.21 >= 2.0 (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Institutional High-Yield Credit Investors",
+      "temporal_anchor": "2026-04-13 (L2 Anomaly Detection Date)",
+      "unresolved_question": "하이일드 스프레드가 2.9% 이하로 추가 축소될 수 있는 펀더멘탈적 근거가 있는가, 아니면 단순한 유동성 과잉에 의한 기술적 오버슈팅인가?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 -2.5를 초과하거나, VIX 지수와 스프레드 간의 다이버전스가 발생하며 크레딧 시장의 '추세 반전' 징후가 포착될 때",
+        "condition_to_invalidate": "기업 이익 전망의 비약적 상승 또는 금리 인하 기대감 확산으로 인해 스프레드 2.0-3.0 구간이 새로운 정상(New Normal)으로 고착될 경우"
+      },
+      "narrative_pressure_score": 82,
+      "related_entities": [
+        "FRED",
+        "ICE BofA High Yield Master II Index",
+        "High Yield Corporate Bonds",
+        "Credit Risk Premia"
+      ],
+      "rationale": "본 신호는 하이일드 스프레드가 20일 이동평균 대비 -2.21 시그마 수준으로 급격히 축소되었음을 나타냄. 이는 시장 참여자들이 향후 경기 낙관론에 베팅하며 자본을 고수익 채권으로 공격적으로 재배치(Capital Flow Anticipation)하고 있음을 시사함. 통상적인 변동 범위를 벗어난 이러한 극단적 수치는 구조적 금리 변화나 부도율 발표 이전에 자본이 선제적으로 이동한 'Pre-Structural' 신호로 간주되며, 단기 내 포지션 청산이나 로테이션을 유발할 가능성이 높음.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]

@@ -12,7 +12,17 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 중동사태에도 4월초 수출 '역대 최대'…반도체 ‘고공행진’(종합) - 마켓인 (ID: unknown)
+### 이란전쟁에도 4월 초 수출 역대 최대…반도체가 견인 - 전자신문 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 전세 지쳐 매수 유턴…'중저가' 노도강·구로 집값 밀어 올린다 - 뉴스1 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 서울 기숙사·주차장·빈집까지 공공주택 짓는다…"분양 물량 부족하면 집값 자극" - 아시아경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,12 +37,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 경기 부동산 사는 서울 사람 늘었다…지난달 매수 비중 15.7% - 연합뉴스 한민족센터 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 전세 하나 뜨면 우르르…"당장 계약할게요" 난리 난 세입자들 - 한국경제 (ID: unknown)
+### 부동산 매수, 서울 떠나 경기로…＇서울행' 발길은 감소세 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,7 +57,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미·이란 휴전 결렬 여파… 코스피 5700선 후퇴·유가 100달러 돌파 - 조선일보 (ID: unknown)
+### “다 팔아버릴까” VS “오늘이 기회?”…종전 무산에 코스피 향방은 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -77,12 +82,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 다음 주 차 보험료 인하 방안 나온다…당정 “5·2부제로 운행 줄어” - 한겨레 (ID: unknown)
+### 삼성전자 노조 "성과급 40.5조원 달라"…주주는 분통 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼성 노조 "성과급으로 40조 달라"…주주들 '싸늘' - TV조선뉴스 (ID: unknown)
+### 다음 주 차 보험료 인하 방안 나온다…당정 “5·2부제로 운행 줄어” - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -102,14 +107,14 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [흑백요리봇]⑤K요리봇은 우승할 수 있을까 - 아시아경제 (ID: unknown)
+### 비트코인, 美·이란 협상 결렬 소식에 급락 - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 비트코인, 美·이란 협상 결렬 소식에 급락 - 연합인포맥스 (ID: unknown)
+### “운동복만 잘 팔리네”…‘K애슬레저’ 안다르·젝시믹스 나란히 성장 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 반도체 슈퍼사이클 진입 효과…수도권 반도체 벨트 주거시장 ‘훈풍’ (ID: unknown)
@@ -198,11 +203,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### “대전 뭐하러 가?” 과학에 힐링, 미식까지 열차 타고 가볼까 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 스타트럭코리아, 보증 끝난 벤츠트럭 겨냥 ‘트럭파츠’ 출시 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
