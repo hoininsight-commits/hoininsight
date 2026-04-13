@@ -77,6 +77,8 @@ class LearnerAgent:
     def extract_transcript(self, video_id: str, title: str) -> str:
         """유튜브 자막 추출"""
         try:
+            from youtube_transcript_api import YouTubeTranscriptApi
+
             try:
                 # 현재 라이브러리 버전에 맞는 인스턴스 생성 후 list 호출 방식 사용
                 api = YouTubeTranscriptApi()

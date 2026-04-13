@@ -10,6 +10,12 @@ class DataAgent(BaseAgent):
         )
 
     def execute(self):
+        self.logger.info("Step 0: Running Transcript Learner...")
+        if os.getenv("ENABLE_LEARNING") == "true":
+            self._run_module("src.agents.learner")
+        else:
+            self.logger.info("Skipping learning step (ENABLE_LEARNING not true)")
+
         self.logger.info("Step 1: Running Market Collectors...")
         self._run_module("src.collectors.market_collectors")
         

@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 env:
-  ENABLE_LEARNING: false
+  ENABLE_LEARNING: true
   TZ: Asia/Seoul
 
 jobs:
@@ -55,9 +55,14 @@ jobs:
           python -m tests.verify_is62_script_lock
           echo "[PIPELINE] All Verification Tests Passed."
 
-      - name: Set AS_OF_DATE
-        run: |
           echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: "A0: Learning Agent (Transcript Collection)"
+        if: env.ENABLE_LEARNING == 'true'
+        run: |
+          echo "[AGENT] Running: src.agents.learner"
+          python -m src.agents.learner
+          echo "[PIPELINE] A0: Transcript collection completed"
 
       - name: "A1: Data Processing Agent (Collect & Normalize)"
         env:
