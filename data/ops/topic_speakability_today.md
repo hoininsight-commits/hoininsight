@@ -1,8 +1,8 @@
-# EDITORIAL SPEAKABILITY GATE (RUN_DATE: 2026-04-13)
+# EDITORIAL SPEAKABILITY GATE (RUN_DATE: 2026-04-14)
 
 **SUMMARY**: 🟢 SPEAKABLE_NOW=0 | ⚪ NOT_SPEAKABLE_YET=1
 
-## ⚪ 지수 상승 속 섹터 하락의 이유 (gate_16e561c1e3)
+## ⚪ 오늘 시장의 핵심 혼란 포인트 (gate_7059b46dd1)
 - **Speakability**: NOT_SPEAKABLE_YET
 - **Blocking Reasons**: INSUFFICIENT_ANCHOR_STRENGTH, LOW_NARRATIVE_FIT
 - **Decision Basis**:
