@@ -44,7 +44,6 @@ class DetectorAgent:
 
         # 후보 1: 환율 이슈
         if usd_krw and usd_krw > 1400:
-        if usd_krw and usd_krw > 1400:
             label = "위험" if usd_krw > 1500 else "주의"
             filters_hit = ["필터1_역사적임계값"]
             if usd_krw > 1500:
