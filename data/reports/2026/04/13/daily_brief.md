@@ -74,7 +74,7 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Pre-Structural (Step 74)
+- **Topic:** [Unknown] Hybrid-driven
 - **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
