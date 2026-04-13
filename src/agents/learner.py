@@ -77,18 +77,24 @@ class LearnerAgent:
     def extract_transcript(self, video_id: str, title: str) -> str:
         """유튜브 자막 추출"""
         try:
-            from youtube_transcript_api import YouTubeTranscriptApi
-
             try:
-                transcript_list = YouTubeTranscriptApi.get_transcript(
-                    video_id, languages=['ko']
-                )
-            except Exception:
-                transcript_list = YouTubeTranscriptApi.get_transcript(
-                    video_id, languages=['ko-KR']
-                )
-
-            return ' '.join([t['text'] for t in transcript_list])
+                # 현재 라이브러리 버전에 맞는 인스턴스 생성 후 list 호출 방식 사용
+                api = YouTubeTranscriptApi()
+                transcript_list = api.list(video_id)
+                
+                try:
+                    transcript = transcript_list.find_manually_created_transcript(['ko'])
+                except:
+                    try:
+                        transcript = transcript_list.find_generated_transcript(['ko'])
+                    except:
+                        transcript = transcript_list.find_transcript(['en', 'en-US'])
+                
+                data = transcript.fetch()
+                return ' '.join([t.text for t in data])
+            except Exception as e:
+                print(f"  자막 추출 API 오류: {title[:30]} — {e}")
+                return ""
 
         except ImportError:
             print("  youtube-transcript-api 미설치")
