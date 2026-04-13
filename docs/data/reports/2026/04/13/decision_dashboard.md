@@ -189,18 +189,18 @@
 | 코스피, 미·이란 협상 결렬에 0.86% 하락…5800선 사수 - 인더스트리뉴스 | Structural implication: '코스피, 미·이란 협상 결렬에 0.86% 하락…5800선 사수 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 스타벅스, 실적 구조적 개선 가능…투자의견 상향-제프리즈 - 마켓인 | Structural implication: '스타벅스, 실적 구조적 개선 가능…투자의견 상향-제프리즈 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 중동상황 불확실성 지속되는 만큼 24시간 비상대응체계 가동 - intn.co.kr | Structural implication: '중동상황 불확실성 지속되는 만큼 24시간 비상대응체계 가동 - intn.co.kr' suggests a shift in NEWS dynamics. | LOW |
-| "성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제 | Structural implication: '"성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 스스로 학습하고 판단하는 車 … SDV 넘어 AIDV 시대 열린다 - 매일경제 | Structural implication: '스스로 학습하고 판단하는 車 … SDV 넘어 AIDV 시대 열린다 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | 외국인 투자자가 韓 반도체를 매도하는 이유는 - 연합인포맥스 | Structural implication: '외국인 투자자가 韓 반도체를 매도하는 이유는 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| [단독]'다시 중국에서, 중국을 위해'…현대차, 밴 개발·아이오닉도 출격 - 아시아경제 | Structural implication: '[단독]'다시 중국에서, 중국을 위해'…현대차, 밴 개발·아이오닉도 출격 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| "성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제 | Structural implication: '"성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 증권거래세만 벌써 3조…초과세수 35조 넘는다 - 한국경제 | Structural implication: '증권거래세만 벌써 3조…초과세수 35조 넘는다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| [단독]'다시 중국에서, 중국을 위해'…현대차, 밴 개발·아이오닉도 출격 - 아시아경제 | Structural implication: '[단독]'다시 중국에서, 중국을 위해'…현대차, 밴 개발·아이오닉도 출격 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | “하이닉스도 있는데 왜 우리만 비판”... 삼전 노조 주장 따져보니 - 조선일보 | Structural implication: '“하이닉스도 있는데 왜 우리만 비판”... 삼전 노조 주장 따져보니 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | LGU+ "유심 교체 예약자 17만명, 유심 재고 377만장" - 지디넷코리아 | Structural implication: 'LGU+ "유심 교체 예약자 17만명, 유심 재고 377만장" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | “영양제 반값” “환각약 쉽게 구매”… 창고형 약국 확산에 엇갈린 시선 - 조선일보 | Structural implication: '“영양제 반값” “환각약 쉽게 구매”… 창고형 약국 확산에 엇갈린 시선 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | “휘발유 아끼자면서 더 파는 우스운 상황”···가격 눌렀더니 과소비가 생겼다 - 경향신문 | Structural implication: '“휘발유 아끼자면서 더 파는 우스운 상황”···가격 눌렀더니 과소비가 생겼다 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
+| 마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레 | Structural implication: '마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 제2 ‘삼천당제약 사태’ 없게… 제약-바이오 ‘깜깜이 공시’ 손본다 - 동아일보 | Structural implication: '제2 ‘삼천당제약 사태’ 없게… 제약-바이오 ‘깜깜이 공시’ 손본다 - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | [단독]2조원대 정부 GPU 사업, 네클·SDS·KT에 쿠팡까지 도전장 - 전자신문 | Structural implication: '[단독]2조원대 정부 GPU 사업, 네클·SDS·KT에 쿠팡까지 도전장 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
-| 마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레 | Structural implication: '마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 이대로면 '스페인급 대정전' 온다…'전력감독원' 신설 본격화 - 한국경제 | Structural implication: '이대로면 '스페인급 대정전' 온다…'전력감독원' 신설 본격화 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 속보 이란전쟁에도 4월 초 수출 '역대 최대'...36.7% 증가 - YTN | Structural implication: '속보 이란전쟁에도 4월 초 수출 '역대 최대'...36.7% 증가 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | 10년 기다렸다… 새울 3호기 이르면 9월 상업 운전 - 조선일보 | Structural implication: '10년 기다렸다… 새울 3호기 이르면 9월 상업 운전 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
