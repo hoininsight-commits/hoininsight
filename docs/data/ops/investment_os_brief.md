@@ -4,7 +4,7 @@
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `NEUTRAL`
-- **Focus**: Policy, Liquidity, Rates
+- **Focus**: Rates, Liquidity, Policy
 
 ## 🚫 Do Not Do
 - 방어적 포지션 고수
@@ -18,14 +18,14 @@
 
 ---
 
-### [MONITOR] 거시경제 이상징후: credit_hy_spread_fred
+### [MONITOR] 거시경제 이상징후: crypto_btc_usd_spot_coingecko
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링
 
 ---
 
-### [MONITOR] 거시경제 이상징후: inflation_pce_fred
+### [MONITOR] 거시경제 이상징후: credit_hy_spread_fred
 - **Reasoning**: 상태 정합성 낮음 / 분석 밀도(MONITOR) 기반 대응 우선순위 설정
 - **Checklist**:
   - [ ] 지표 추이 및 당국 발언 모니터링

@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T16:29:13Z",
+    "ts_utc": "2026-04-13T17:45:07Z",
     "dataset_id": "index_spx_fred",
     "topic_id": "index_spx_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/index_spx_fred.json L1 Signal",
@@ -37,25 +37,6 @@
     },
     "rationale": "[L1] Z-Score 1.69 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital Flow Anticipation",
-      "trigger_actor": "Institutional Algorithmic Traders",
-      "temporal_anchor": "2026-04-13",
-      "unresolved_question": "실질적인 거시 경제 지표 발표 없이 발생한 S&P 500의 통계적 이탈이 단순 오버슈팅인가, 아니면 미공개 정보에 기반한 선제적 포지셔닝인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 2.0을 돌파하거나 거래량이 동반된 섹터 간 자금 이동이 관측될 때",
-        "condition_to_invalidate": "48시간 이내에 Z-Score가 1.0 미만으로 회귀하며 평균 회귀(Mean Reversion)가 발생할 경우"
-      },
-      "narrative_pressure_score": 68,
-      "related_entities": [
-        "S&P 500 (SPX)",
-        "FRED",
-        "Institutional Liquidity Providers"
-      ],
-      "rationale": "S&P 500 지수의 Z-Score가 1.69를 기록하며 임계치(1.5)를 상회했습니다. 이는 특정 뉴스나 정책 발표 전, 시장 내 자본이 기술적 임계점을 넘어서며 이동하기 시작했음을 나타내는 '자본 흐름 선취(Capital Flow Anticipation)' 신호입니다. 2026년 4월 13일이라는 특정 시점에 발생한 데이터 이상치는 단순한 추세가 아닌, 단기적인 구조적 변화를 암시하는 Pre-Structural 신호로 판단됩니다.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]
