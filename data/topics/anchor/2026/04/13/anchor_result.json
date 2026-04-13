@@ -1,13 +1,11 @@
 {
   "data_axis": [
     "credit_hy_spread_fred",
-    "comm_wti_fred",
-    "risk_vix_fred"
+    "comm_wti_fred"
   ],
   "baseline_match": [
     "credit_hy_spread_fred: Volatility Surge (Z=2.21)",
-    "comm_wti_fred: Volatility Surge (Z=2.19)",
-    "risk_vix_fred: Volatility Surge (Z=2.12)"
+    "comm_wti_fred: Volatility Surge (Z=2.19)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",

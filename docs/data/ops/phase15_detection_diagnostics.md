@@ -76,7 +76,7 @@
 - **Actors**: TIER_3:SK, TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: GeoRisk_Rally, Macro_Price_Divergence
-- **Final Score**: 66.07
+- **Final Score**: 55.26
 
 ## Topic: 거시경제 이상징후: struct_dart_cb_bw
 - **Actors**: TIER_4:MARKET
