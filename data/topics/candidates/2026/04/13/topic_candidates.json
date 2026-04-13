@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-13T17:47:01.207741",
+  "generated_at": "2026-04-13T21:36:03.420039",
   "candidate_count": 13,
   "alive_count": 13,
   "candidates": [
@@ -7,7 +7,7 @@
       "candidate_id": "cand_credit_hy_spread_fred_20260413",
       "dataset_id": "credit_hy_spread_fred",
       "category": "CREDIT",
-      "created_at": "2026-04-13T17:47:01.207648",
+      "created_at": "2026-04-13T21:36:03.419959",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -32,7 +32,7 @@
       "candidate_id": "cand_inflation_pce_fred_20260413",
       "dataset_id": "inflation_pce_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-13T17:47:01.207665",
+      "created_at": "2026-04-13T21:36:03.419985",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -60,7 +60,7 @@
       "candidate_id": "cand_struct_dart_disposal_20260413",
       "dataset_id": "struct_dart_disposal",
       "category": "STRUCTURAL",
-      "created_at": "2026-04-13T17:47:01.207672",
+      "created_at": "2026-04-13T21:36:03.419991",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -87,7 +87,7 @@
       "candidate_id": "cand_liquidity_m2_fred_20260413",
       "dataset_id": "liquidity_m2_fred",
       "category": "LIQUIDITY",
-      "created_at": "2026-04-13T17:47:01.207676",
+      "created_at": "2026-04-13T21:36:03.419995",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -112,7 +112,7 @@
       "candidate_id": "cand_inflation_kor_cpi_ecos_20260413",
       "dataset_id": "inflation_kor_cpi_ecos",
       "category": "INFLATION",
-      "created_at": "2026-04-13T17:47:01.207681",
+      "created_at": "2026-04-13T21:36:03.420000",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -140,7 +140,7 @@
       "candidate_id": "cand_index_nasdaq_fred_20260413",
       "dataset_id": "index_nasdaq_fred",
       "category": "GLOBAL_INDEX",
-      "created_at": "2026-04-13T17:47:01.207685",
+      "created_at": "2026-04-13T21:36:03.420004",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -165,7 +165,7 @@
       "candidate_id": "cand_comm_wti_fred_20260413",
       "dataset_id": "comm_wti_fred",
       "category": "COMMODITIES",
-      "created_at": "2026-04-13T17:47:01.207690",
+      "created_at": "2026-04-13T21:36:03.420009",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -190,7 +190,7 @@
       "candidate_id": "cand_fx_usdkrw_ecos_20260413",
       "dataset_id": "fx_usdkrw_ecos",
       "category": "FX_RATES",
-      "created_at": "2026-04-13T17:47:01.207694",
+      "created_at": "2026-04-13T21:36:03.420013",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -215,7 +215,7 @@
       "candidate_id": "cand_index_spx_fred_20260413",
       "dataset_id": "index_spx_fred",
       "category": "OTHER",
-      "created_at": "2026-04-13T17:47:01.207698",
+      "created_at": "2026-04-13T21:36:03.420017",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -243,7 +243,7 @@
       "candidate_id": "cand_rates_us10y_fred_20260413",
       "dataset_id": "rates_us10y_fred",
       "category": "OTHER",
-      "created_at": "2026-04-13T17:47:01.207702",
+      "created_at": "2026-04-13T21:36:03.420021",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -271,7 +271,7 @@
       "candidate_id": "cand_inflation_cpi_fred_20260413",
       "dataset_id": "inflation_cpi_fred",
       "category": "INFLATION",
-      "created_at": "2026-04-13T17:47:01.207729",
+      "created_at": "2026-04-13T21:36:03.420029",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -299,7 +299,7 @@
       "candidate_id": "cand_risk_vix_fred_20260413",
       "dataset_id": "risk_vix_fred",
       "category": "OTHER",
-      "created_at": "2026-04-13T17:47:01.207734",
+      "created_at": "2026-04-13T21:36:03.420032",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
@@ -327,7 +327,7 @@
       "candidate_id": "cand_struct_dart_cb_bw_20260413",
       "dataset_id": "struct_dart_cb_bw",
       "category": "STRUCTURAL",
-      "created_at": "2026-04-13T17:47:01.207738",
+      "created_at": "2026-04-13T21:36:03.420036",
       "status": "CANDIDATE_ALIVE",
       "gates": {
         "multi_axis": true,
