@@ -2,156 +2,156 @@
   "crypto_btc_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:12.499284Z"
+    "timestamp": "2026-04-13T23:21:05.772081Z"
   },
   "rates_us10y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:13.606905Z"
+    "timestamp": "2026-04-13T23:21:06.894206Z"
   },
   "risk_vix_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:14.214510Z"
+    "timestamp": "2026-04-13T23:21:07.502138Z"
   },
   "index_spx_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:14.393259Z"
+    "timestamp": "2026-04-13T23:21:07.675048Z"
   },
   "index_kospi_stooq": {
     "status": "FAIL",
     "reason": "Normalization Error: [Errno 2] No such file or directory: 'data/raw/index_kospi_stooq/2026/04/13/kospi.json'",
-    "timestamp": "2026-04-13T23:06:14.402017Z"
+    "timestamp": "2026-04-13T23:21:07.696055Z"
   },
   "index_nasdaq_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:15.085612Z"
+    "timestamp": "2026-04-13T23:21:08.374384Z"
   },
   "fx_dxy_index_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:15.090271Z"
+    "timestamp": "2026-04-13T23:21:08.378566Z"
   },
   "rates_us02y_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:15.933595Z"
+    "timestamp": "2026-04-13T23:21:09.211541Z"
   },
   "comm_wti_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.614888Z"
+    "timestamp": "2026-04-13T23:21:09.899571Z"
   },
   "metal_platinum_xptusd_stooq": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.618059Z"
+    "timestamp": "2026-04-13T23:21:09.902511Z"
   },
   "metal_gold_paxg_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.625164Z"
+    "timestamp": "2026-04-13T23:21:09.909029Z"
   },
   "metal_silver_kag_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.638170Z"
+    "timestamp": "2026-04-13T23:21:09.923410Z"
   },
   "crypto_eth_usd_spot_coingecko": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.644023Z"
+    "timestamp": "2026-04-13T23:21:09.929024Z"
   },
   "rates_kor_base_rate_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.651026Z"
+    "timestamp": "2026-04-13T23:21:09.935867Z"
   },
   "inflation_kor_cpi_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.657172Z"
+    "timestamp": "2026-04-13T23:21:09.941700Z"
   },
   "fx_usdkrw_ecos": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.715213Z"
+    "timestamp": "2026-04-13T23:21:09.996990Z"
   },
   "rates_fed_funds_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.777378Z"
+    "timestamp": "2026-04-13T23:21:10.058279Z"
   },
   "inflation_cpi_fred": {
-    "status": "OK",
-    "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.846229Z"
+    "status": "SKIP",
+    "reason": "FRED collection skipped or failed for CPIAUCSL",
+    "timestamp": "2026-04-13T23:21:10.125443Z"
   },
   "inflation_pce_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.905731Z"
+    "timestamp": "2026-04-13T23:21:10.182526Z"
   },
   "liquidity_m2_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:16.964120Z"
+    "timestamp": "2026-04-13T23:21:10.240166Z"
   },
   "employment_unrate_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.032019Z"
+    "timestamp": "2026-04-13T23:21:10.307274Z"
   },
   "credit_hy_spread_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.541156Z"
+    "timestamp": "2026-04-13T23:21:10.812293Z"
   },
   "risk_financial_stress_fred": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.644362Z"
+    "timestamp": "2026-04-13T23:21:10.911547Z"
   },
   "derived_yield_curve_10y_2y": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.644777Z"
+    "timestamp": "2026-04-13T23:21:10.911938Z"
   },
   "derived_gold_silver_ratio": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.644793Z"
+    "timestamp": "2026-04-13T23:21:10.911954Z"
   },
   "struct_dart_cb_bw": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.645711Z"
+    "timestamp": "2026-04-13T23:21:10.912831Z"
   },
   "struct_dart_disposal": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.645785Z"
+    "timestamp": "2026-04-13T23:21:10.912871Z"
   },
   "struct_krx_foreigner_flow": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.645820Z"
+    "timestamp": "2026-04-13T23:21:10.912903Z"
   },
   "real_estate_price_index": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.646682Z"
+    "timestamp": "2026-04-13T23:21:10.913761Z"
   },
   "real_estate_volume": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.646748Z"
+    "timestamp": "2026-04-13T23:21:10.913798Z"
   },
   "real_estate_unsold": {
     "status": "OK",
     "reason": "Normalized successfully",
-    "timestamp": "2026-04-13T23:06:17.646785Z"
+    "timestamp": "2026-04-13T23:21:10.913827Z"
   }
 }
