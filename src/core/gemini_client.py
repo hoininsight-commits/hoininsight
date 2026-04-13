@@ -2,12 +2,15 @@
 
 import json
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+# 프로젝트 루트 .env 명시적 로드
+_ENV_PATH = Path(__file__).parent.parent.parent / ".env"
+load_dotenv(_ENV_PATH)
 
 try:
-    import google.generativeai as genai
+    from google import genai
     GEMINI_AVAILABLE = True
 except ImportError:
     GEMINI_AVAILABLE = False
@@ -25,19 +28,19 @@ class GeminiClient:
 
         if not GEMINI_AVAILABLE:
             raise ImportError(
-                "google-generativeai 미설치\n"
-                "pip install google-generativeai"
+                "google-genai 미설치\n"
+                "pip install google-genai"
             )
 
-        genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel(self.model_name)
+        self.client = genai.Client(api_key=self.api_key)
 
     def call(self, prompt: str, max_tokens: int = 4000) -> str:
         """텍스트 생성 호출"""
         try:
-            response = self.model.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=genai.types.GenerateContentConfig(
                     max_output_tokens=max_tokens,
                     temperature=0.7,
                 )
@@ -58,9 +61,10 @@ class GeminiClient:
         full_prompt = f"{system_instruction}\n\n{prompt}"
 
         try:
-            response = self.model.generate_content(
-                full_prompt,
-                generation_config=genai.types.GenerationConfig(
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=full_prompt,
+                config=genai.types.GenerateContentConfig(
                     max_output_tokens=max_tokens,
                     temperature=0.3,
                 )

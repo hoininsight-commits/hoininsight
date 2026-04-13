@@ -13,23 +13,28 @@
 
 ## 구조
 src/agents/   collector·learner·detector·analyst·writer·publisher
-src/core/     filters·sector_map·claude_client·gemini_client·config
+src/core/     filters·gemini_client·config
 data/         raw·signals·analysis·scripts·learning·history
-dashboard/    index.html·today_data.json
-docs/         GitHub Pages 서빙
 tests/        harness·fixtures·test_*.py
 
 ## 에이전트 실행 순서
 01→02→03→04→05→06 순차 실행
-04,05는 GEMINI_API_KEY 필요 (현재 미설정)
+04,05: GEMINI_API_KEY 활성화 완료
 
 ## 검증
 python -m pytest tests/ -v
-python tests/harness.py
 
-## 알려진 미완성 항목
-- GEMINI_API_KEY 미설정 → AGENT-04,05 대기 중
-- GitHub Secrets 등록 필요 (ECOS, FRED)
-
-## 자세한 현황
+## 현황
 WORKING-CONTEXT.md 참조
+
+## 출력 규칙 (반드시 준수)
+- 작업 완료 후 채팅 출력 금지
+- 결과는 파일로만 저장
+- 완료 보고는 "✅ 완료" 한 줄만
+- 지시서에 명시된 파일만 읽을 것
+- 코드 전체를 채팅에 출력하지 말 것
+
+## 출력 규칙 (반드시 준수)
+- 완료 보고는 ✅ 완료 한 줄만
+- 지시서에 명시된 파일만 읽을 것
+- 결과는 파일로만 저장, 채팅 출력 금지

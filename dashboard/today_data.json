@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-04-12T21:41:12.130045",
+  "last_updated": "2026-04-10T15:52:54.832608",
   "today": {
-    "date": "2026-04-12",
+    "date": "2026-04-10",
     "signal": {
-      "date": "20260411",
-      "topic": "환율 1483원 + 유가 $96.6 동시 급등 → 복합 위기 신호",
+      "date": "20260410",
+      "topic": "환율 1483원 + 유가 $98.7 동시 급등 → 복합 위기 신호",
       "strength": 10.0,
       "content_type": "롱폼",
       "filters_hit": [
@@ -14,8 +14,8 @@
         "필터5_연결고리"
       ],
       "data_evidence": {
-        "usd_krw": 1482.7,
-        "wti": 96.57
+        "usd_krw": 1483.32,
+        "wti": 98.69
       },
       "related_keywords": [
         "환율",
@@ -32,7 +32,48 @@
     "candidates": [
       {
         "rank": 1,
-        "topic": "환율 1483원 → 수입물가 상승 → CPI 압력 → 한은 금리 동결 지속 연결고리",
+        "topic": "환율 1483원 + 유가 $98.7 동시 급등 → 복합 위기 신호",
+        "filters_hit": [
+          "필터1_역사적임계값",
+          "필터2_역설적현상",
+          "필터4_시의성",
+          "필터5_연결고리"
+        ],
+        "filter_count": 4,
+        "strength": 10.0,
+        "selected": true,
+        "content_type": "롱폼",
+        "reject_reason": null
+      },
+      {
+        "rank": 2,
+        "topic": "유가 $98.7 고공행진인데 KOSPI +1.4% 상승",
+        "filters_hit": [
+          "필터2_역설적현상",
+          "필터4_시의성"
+        ],
+        "filter_count": 2,
+        "strength": 5.5,
+        "selected": false,
+        "content_type": null,
+        "reject_reason": "더 강한 신호가 선정됨"
+      },
+      {
+        "rank": 3,
+        "topic": "WTI 유가 $98.7 → 주의 수준",
+        "filters_hit": [
+          "필터1_역사적임계값",
+          "필터5_연결고리"
+        ],
+        "filter_count": 2,
+        "strength": 5.3,
+        "selected": false,
+        "content_type": null,
+        "reject_reason": "더 강한 신호가 선정됨"
+      },
+      {
+        "rank": 4,
+        "topic": "중동 전쟁 → 호르무즈 → WTI $98.7 → 한국 제조업 원가 상승 연결고리",
         "filters_hit": [
           "필터5_연결고리",
           "필터1_역사적임계값"
@@ -44,36 +85,37 @@
         "reject_reason": "더 강한 신호가 선정됨"
       },
       {
-        "rank": 2,
+        "rank": 5,
         "topic": "원달러 환율 1483원 → 주의 수준",
         "filters_hit": [
           "필터1_역사적임계값"
         ],
         "filter_count": 1,
-        "strength": 3.2,
+        "strength": 2.8,
         "selected": false,
         "content_type": null,
         "reject_reason": "더 강한 신호가 선정됨"
       }
     ],
-    "content_id": "20260412_001",
+    "content_id": "20260410_001",
     "status": "승인대기"
   },
   "market": {
-    "date": "20260412",
-    "collected_at": "2026-04-12T21:41:00.677525",
+    "date": "20260410",
+    "collected_at": "2026-04-10T15:52:44.058139",
     "data": {
       "kospi": 5858.87,
       "kospi_1d_change": 1.4,
       "kospi_foreign_net": -0.0,
-      "vix": 19.23,
-      "usd_krw": 1483.01,
+      "vix": 19.49,
+      "wti_oil": 98.69,
+      "usd_krw": 1483.32,
       "fear_greed_index": 16.0
     }
   },
   "macro": {
-    "date": "20260412",
-    "collected_at": "2026-04-12T21:41:00.678231",
+    "date": "20260410",
+    "collected_at": "2026-04-10T15:52:44.059883",
     "source": "임시값 (ECOS/FRED API 연동 전)",
     "data": {
       "korea_base_rate": 2.75,
@@ -85,59 +127,59 @@
     }
   },
   "sentiment": {
-    "date": "20260412",
-    "collected_at": "2026-04-12T21:41:07.531737",
+    "date": "20260410",
+    "collected_at": "2026-04-10T15:52:44.181677",
     "data": {
       "news_headlines": [
         {
-          "title": "\"고령화에 과일 재배면적 1% 줄어…감소규모 여의도의 3.5배\"",
+          "title": "코스피, 주말 美·이란 종전협상 앞두고 1.4% 올라 5,850대 마감",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-12T21:41:02.188633"
+          "timestamp": "2026-04-10T15:52:44.145596"
         },
         {
-          "title": "울산시, 4번째 청년 주택 '유홈 삼산' 준공…31가구 규모",
+          "title": "외국환시세(4월10일·마감가)",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-12T21:41:02.188649"
+          "timestamp": "2026-04-10T15:52:44.145605"
         },
         {
-          "title": "올해 청약 당첨자 10명중 6명은 30대 이하…통계 집계 이래 최고",
+          "title": "[외환] 원/달러 환율 1,482.5원 보합(15:30 종가)",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-12T21:41:02.188651"
+          "timestamp": "2026-04-10T15:52:44.145608"
         },
         {
-          "title": "[게시판] 금감원, 군 장병 대상 재무설계 신청자 접수",
+          "title": "국민참여형 국민성장펀드 5월 출시…서민 우선배정 검토",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-12T21:41:02.188655"
+          "timestamp": "2026-04-10T15:52:44.145610"
         },
         {
-          "title": "정부, 유통 플랫폼을 '수출 점프대'로…올리브영 등 13개사 맞손",
+          "title": "암참, 금융위원장과 면담…글로벌 금융허브 도약 논의",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-12T21:41:02.188656"
+          "timestamp": "2026-04-10T15:52:44.145611"
         },
         {
-          "title": "“천궁Ⅱ·요격미사일 좀 빨리 줘”…한국에 요청한 사우디·UAE",
+          "title": "“차액 지불·3천 기부”…곽튜브, 김영란법 위반 의혹에 사과",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-12T21:41:07.531696"
+          "timestamp": "2026-04-10T15:52:44.181645"
         },
         {
-          "title": "이란 협상단장 “처음부터 미국 안 믿어...싸움 걸면 싸우겠다”",
+          "title": "AI 보안 프로밸리, 블루포인트 긱스스쿨 통해 시드 투자 유치",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-12T21:41:07.531710"
+          "timestamp": "2026-04-10T15:52:44.181654"
         },
         {
-          "title": "“20대 돈 없다더니 아니었네”…전기차 구매 3배 늘며 ‘큰손’ 등극",
+          "title": "개그맨 서승만, 국립정동극장 대표 임명",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-12T21:41:07.531712"
+          "timestamp": "2026-04-10T15:52:44.181656"
         },
         {
-          "title": "직업이 CEO인 그녀…“성과-보상 느슨한 한국기업, 파격인사가 해법”",
+          "title": "경북농협, ‘농심천심운동’ 붐 확산…청년농 상생 커뮤니티 출범",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-12T21:41:07.531714"
+          "timestamp": "2026-04-10T15:52:44.181657"
         },
         {
-          "title": "“마라톤 뛰러 가는 길이 더 힘드시죠?”…호텔업계, 런 패키지 출시",
+          "title": "“12명 실형·수감”…SM, 익명 뒤에 숨은 딥페이크 범죄자들 끝까지 추격",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-12T21:41:07.531716"
+          "timestamp": "2026-04-10T15:52:44.181659"
         }
       ],
       "authority_signals": []
