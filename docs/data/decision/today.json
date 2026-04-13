@@ -1,6 +1,6 @@
 {
   "card_version": "phase66_editorial_v1",
-  "generated_at_kst": "2026-04-13T22:49:01.861135",
+  "generated_at_kst": "2026-04-13T22:56:03.995997",
   "date": "2026-04-13",
   "blocks": {
     "regime": {
@@ -25,20 +25,20 @@
   },
   "topic": "Policy Radar",
   "structural_topic": "Policy Radar",
-  "anchor_topic": "[Unknown] Hybrid-driven",
+  "anchor_topic": "[Unknown (Single Axis)] Hybrid-driven",
   "structural_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
-  "anchor_rationale": "Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)",
+  "anchor_rationale": "Anchor Logic: Statistical Deviation Z=2.19 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)",
   "narrative_topics": [],
   "decision_rationale": "[Predicted] Policy Radar Momentum + 10 Regime Alignment",
   "key_data": {
     "ANCHOR": {
       "step1_axis": [
-        "credit_hy_spread_fred",
         "comm_wti_fred"
       ],
-      "step6_gap": "Insufficient Evidence for L4",
+      "step6_gap": "Insufficient Evidence for L3/L4",
       "request": [
-        "Need Volume/Flow Data to verify Capital Fixation"
+        "Need Correlated Asset Movement",
+        "Need News/Event Confirmation"
       ],
       "pre_structural": null
     },

@@ -82,8 +82,8 @@
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
   - [NEWS] 미 ‘호르무즈 봉쇄 예고’ 한마디에 유가 급등…다시 100달러 돌파 - 한겨레 (Google_News_KR_Economy)
+  - [NEWS] 중동상황 불확실성 지속되는 만큼 24시간 비상대응체계 가동 - intn.co.kr (Google_News_KR_Economy)
   - [NEWS] 코스피, 미·이란 협상 결렬에 0.86% 하락…5800선 사수 - 인더스트리뉴스 (Google_News_KR_Economy)
-  - [NEWS] 충남신보, ‘중동지역 위기 피해기업 지원 특례보증’ 시행 - 충청뉴스 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -186,16 +186,15 @@
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
 | 미 ‘호르무즈 봉쇄 예고’ 한마디에 유가 급등…다시 100달러 돌파 - 한겨레 | Structural implication: '미 ‘호르무즈 봉쇄 예고’ 한마디에 유가 급등…다시 100달러 돌파 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 중동상황 불확실성 지속되는 만큼 24시간 비상대응체계 가동 - intn.co.kr | Structural implication: '중동상황 불확실성 지속되는 만큼 24시간 비상대응체계 가동 - intn.co.kr' suggests a shift in NEWS dynamics. | LOW |
 | 코스피, 미·이란 협상 결렬에 0.86% 하락…5800선 사수 - 인더스트리뉴스 | Structural implication: '코스피, 미·이란 협상 결렬에 0.86% 하락…5800선 사수 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 충남신보, ‘중동지역 위기 피해기업 지원 특례보증’ 시행 - 충청뉴스 | Structural implication: '충남신보, ‘중동지역 위기 피해기업 지원 특례보증’ 시행 - 충청뉴스' suggests a shift in NEWS dynamics. | LOW |
 | "성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제 | Structural implication: '"성과급만 10억, 의대보다 낫다"…'반도체학과' 인기 폭발 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 한은 총재 후보 신현송 "기준금리 결정에 물가 가장 크게 고려" "외화자산 비중 줄일 것" - 비즈니스포스트 | Structural implication: '한은 총재 후보 신현송 "기준금리 결정에 물가 가장 크게 고려" "외화자산 비중 줄일 것" - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
 | 외국인 투자자가 韓 반도체를 매도하는 이유는 - 연합인포맥스 | Structural implication: '외국인 투자자가 韓 반도체를 매도하는 이유는 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 증권거래세만 벌써 3조…초과세수 35조 넘는다 - 한국경제 | Structural implication: '증권거래세만 벌써 3조…초과세수 35조 넘는다 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “한은, 7월 금리 인상 전망…호르무즈 변수에 연말·내년으로 밀릴 수도” - 매일경제 | Structural implication: '“한은, 7월 금리 인상 전망…호르무즈 변수에 연말·내년으로 밀릴 수도” - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| 원/달러 환율 1,489.3원…미국·이란 협상 결렬에 6.8원 상승 - 연합뉴스 한민족센터 | Structural implication: '원/달러 환율 1,489.3원…미국·이란 협상 결렬에 6.8원 상승 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | “하이닉스도 있는데 왜 우리만 비판”... 삼전 노조 주장 따져보니 - 조선일보 | Structural implication: '“하이닉스도 있는데 왜 우리만 비판”... 삼전 노조 주장 따져보니 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | LGU+ "유심 교체 예약자 17만명, 유심 재고 377만장" - 지디넷코리아 | Structural implication: 'LGU+ "유심 교체 예약자 17만명, 유심 재고 377만장" - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| 원/달러 환율 1,489.3원…미국·이란 협상 결렬에 6.8원 상승 - 연합뉴스 한민족센터 | Structural implication: '원/달러 환율 1,489.3원…미국·이란 협상 결렬에 6.8원 상승 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | “휘발유 아끼자면서 더 파는 우스운 상황”···가격 눌렀더니 과소비가 생겼다 - 경향신문 | Structural implication: '“휘발유 아끼자면서 더 파는 우스운 상황”···가격 눌렀더니 과소비가 생겼다 - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | "요즘 이만한 차가 어딨어요"…'연비 최강' 이 車 뭐길래 [신차털기] - 한국경제 | Structural implication: '"요즘 이만한 차가 어딨어요"…'연비 최강' 이 車 뭐길래 [신차털기] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | “영양제 반값” “환각약 쉽게 구매”… 창고형 약국 확산에 엇갈린 시선 - 조선일보 | Structural implication: '“영양제 반값” “환각약 쉽게 구매”… 창고형 약국 확산에 엇갈린 시선 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -203,7 +202,8 @@
 | [단독]2조원대 정부 GPU 사업, 네클·SDS·KT에 쿠팡까지 도전장 - 전자신문 | Structural implication: '[단독]2조원대 정부 GPU 사업, 네클·SDS·KT에 쿠팡까지 도전장 - 전자신문' suggests a shift in NEWS dynamics. | LOW |
 | 이대로면 '스페인급 대정전' 온다…'전력감독원' 신설 본격화 - 한국경제 | Structural implication: '이대로면 '스페인급 대정전' 온다…'전력감독원' 신설 본격화 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 속보 이란전쟁에도 4월 초 수출 '역대 최대'...36.7% 증가 - YTN | Structural implication: '속보 이란전쟁에도 4월 초 수출 '역대 최대'...36.7% 증가 - YTN' suggests a shift in NEWS dynamics. | LOW |
-| 한수원 새울3호기 '첫 시동'…에너지 위기 속 전력안보 강화 - 연합인포맥스 | Structural implication: '한수원 새울3호기 '첫 시동'…에너지 위기 속 전력안보 강화 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
+| 다음 주 차 보험료 인하 방안 나온다…당정 “5·2부제로 운행 줄어” - 한겨레 | Structural implication: '다음 주 차 보험료 인하 방안 나온다…당정 “5·2부제로 운행 줄어” - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 10년 기다렸다… 새울 3호기 이르면 9월 상업 운전 - 조선일보 | Structural implication: '10년 기다렸다… 새울 3호기 이르면 9월 상업 운전 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레 | Structural implication: '마라탕 좋아하세요? 이 식당서 식중독균 조심하세요 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 윤석열 ‘내란 우두머리’ 항소심 27일 첫 재판…1심 선고 67일만 | Structural implication: '윤석열 ‘내란 우두머리’ 항소심 27일 첫 재판…1심 선고 67일만' suggests a shift in NEWS dynamics. | LOW |
 | “트럼프 따라하다가 쫓겨났다”…16년만에 대대적 숙청 예고한 이 나라 | Structural implication: '“트럼프 따라하다가 쫓겨났다”…16년만에 대대적 숙청 예고한 이 나라' suggests a shift in NEWS dynamics. | LOW |

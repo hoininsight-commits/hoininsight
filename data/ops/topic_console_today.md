@@ -1,6 +1,6 @@
 # TOPIC CONSOLE (RUN_DATE: 2026-04-13)
 
-## 지수 상승 속 섹터 하락의 이유 (gate_6cce2eecd0)
+## 지수 상승 속 섹터 하락의 이유 (gate_24b9e21ab3)
 **Badges**: LANE:ANOMALY | STATUS:READY | SPEAK:NOT_SPEAKABLE_YET
 
 ### 1) Why Selected

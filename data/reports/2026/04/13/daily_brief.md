@@ -25,14 +25,13 @@ Historical context:
 | 2 | CPI_USA | data/features/anomalies/2026/04/13/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/13/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/13/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/13/inflation_cpi_fred.json) |
 | 3 | PCE_USA | data/features/anomalies/2026/04/13/inflation_pce_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/13/charts/inflation_pce_fred.png) | [json](data/topics/2026/04/13/inflation_pce_fred.json) | [json](data/features/anomalies/2026/04/13/inflation_pce_fred.json) |
 | 4 | M2_USA | data/features/anomalies/2026/04/13/liquidity_m2_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/13/charts/liquidity_m2_fred.png) | [json](data/topics/2026/04/13/liquidity_m2_fred.json) | [json](data/features/anomalies/2026/04/13/liquidity_m2_fred.json) |
-| 5 | HY_SPREAD | data/features/anomalies/2026/04/13/credit_hy_spread_fred.json L2 Signal | 6.00 | 5 | 6.00 | UP (0.75) | **6.00** | HIGH | [png](data/reports/2026/04/13/charts/credit_hy_spread_fred.png) | [json](data/topics/2026/04/13/credit_hy_spread_fred.json) | [json](data/features/anomalies/2026/04/13/credit_hy_spread_fred.json) |
+| 5 | M_AND_A_CB | data/features/anomalies/2026/04/13/struct_dart_cb_bw.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/13/charts/struct_dart_cb_bw.png) | [json](data/topics/2026/04/13/struct_dart_cb_bw.json) | [json](data/features/anomalies/2026/04/13/struct_dart_cb_bw.json) |
 
 ## Per-dataset Topics
 - [HIGH] WTI: data/features/anomalies/2026/04/13/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/13/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/13/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/13/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [HIGH] HY_SPREAD: data/features/anomalies/2026/04/13/credit_hy_spread_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.75) | App7d=5
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/04/13/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/04/13/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US10Y: data/features/anomalies/2026/04/13/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
@@ -41,6 +40,7 @@ Historical context:
 - [MED] NASDAQ: data/features/anomalies/2026/04/13/index_nasdaq_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [MED] KOR_CPI: data/features/anomalies/2026/04/13/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/13/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
+- [MED] HY_SPREAD: data/features/anomalies/2026/04/13/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [LOW] BTCUSD: data/features/anomalies/2026/04/13/crypto_btc_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] KOSPI: data/features/anomalies/2026/04/13/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] US02Y: data/features/anomalies/2026/04/13/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -74,8 +74,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.19 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
