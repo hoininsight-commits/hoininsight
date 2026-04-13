@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger("YouTubeWatcher")
 
 from src.utils.guards import check_learning_enabled
+from src.ui.narratives.transcript_ingestor import ingest_transcript
 
 REGISTRY_PATH = Path("registry/narrative_sources.yml")
 DATA_DIR = Path("data/narratives/raw/youtube")
@@ -156,6 +157,14 @@ def run_watcher():
                 logger.info(f"[NEW] Detected: {vid['title']}")
                 new_count += 1
                 new_titles.append(vid["title"])
+                
+                # Fetch transcript immediately after saving metadata
+                logger.info(f"Triggering transcript ingestion for: {vid_id}...")
+                try:
+                    ingest_transcript(meta_path)
+                except Exception as ingest_e:
+                    logger.error(f"Failed to ingest transcript right away for {vid_id}: {ingest_e}")
+                    
             except Exception as e:
                 logger.error(f"Failed to save metadata for {vid_id}: {e}")
 
