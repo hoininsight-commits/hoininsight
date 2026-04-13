@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-04-13T07:31:44.941850",
+  "last_updated": "2026-04-13T07:04:15.285879",
   "today": {
     "date": "2026-04-13",
     "signal": {
       "date": "20260413",
-      "topic": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호",
+      "topic": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호",
       "strength": 10.0,
       "content_type": "롱폼",
       "filters_hit": [
@@ -14,8 +14,8 @@
         "필터5_연결고리"
       ],
       "data_evidence": {
-        "usd_krw": 1487.68,
-        "wti": 103.54
+        "usd_krw": 1487.87,
+        "wti": 103.33
       },
       "related_keywords": [
         "환율",
@@ -34,7 +34,7 @@
         "name": "S-Oil",
         "sector": "에너지",
         "impact": "수혜",
-        "reason": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
+        "reason": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
         "impact_level": "HIGH",
         "is_primary": true
       },
@@ -43,7 +43,7 @@
         "name": "SK이노베이션",
         "sector": "에너지",
         "impact": "수혜",
-        "reason": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
+        "reason": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
         "impact_level": "HIGH",
         "is_primary": true
       },
@@ -52,7 +52,7 @@
         "name": "LG화학",
         "sector": "화학",
         "impact": "수혜",
-        "reason": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
+        "reason": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
         "impact_level": "HIGH",
         "is_primary": true
       },
@@ -61,7 +61,7 @@
         "name": "롯데케미칼",
         "sector": "화학",
         "impact": "수혜",
-        "reason": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
+        "reason": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
         "impact_level": "HIGH",
         "is_primary": true
       }
@@ -69,7 +69,7 @@
     "candidates": [
       {
         "rank": 1,
-        "topic": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호",
+        "topic": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호",
         "filters_hit": [
           "필터1_역사적임계값",
           "필터2_역설적현상",
@@ -84,22 +84,7 @@
       },
       {
         "rank": 2,
-        "topic": "환율 1488원 + VIX 21.2 동시 위기 → 복합 공포 신호",
-        "filters_hit": [
-          "필터1_역사적임계값",
-          "필터2_역설적현상",
-          "필터4_시의성",
-          "필터3_미반영격차"
-        ],
-        "filter_count": 4,
-        "strength": 10.0,
-        "selected": false,
-        "content_type": null,
-        "reject_reason": "더 강한 신호가 선정됨"
-      },
-      {
-        "rank": 3,
-        "topic": "WTI 유가 $103.5 → 위험 수준",
+        "topic": "WTI 유가 $103.3 → 위험 수준",
         "filters_hit": [
           "필터1_역사적임계값",
           "필터5_연결고리"
@@ -111,8 +96,8 @@
         "reject_reason": "더 강한 신호가 선정됨"
       },
       {
-        "rank": 4,
-        "topic": "중동 전쟁 → 호르무즈 → WTI $103.5 → 한국 제조업 원가 상승 연결고리",
+        "rank": 3,
+        "topic": "중동 전쟁 → 호르무즈 → WTI $103.3 → 한국 제조업 원가 상승 연결고리",
         "filters_hit": [
           "필터5_연결고리",
           "필터1_역사적임계값"
@@ -124,25 +109,13 @@
         "reject_reason": "더 강한 신호가 선정됨"
       },
       {
-        "rank": 5,
+        "rank": 4,
         "topic": "원달러 환율 1488원 → 주의 수준",
         "filters_hit": [
           "필터1_역사적임계값"
         ],
         "filter_count": 1,
         "strength": 3.2,
-        "selected": false,
-        "content_type": null,
-        "reject_reason": "더 강한 신호가 선정됨"
-      },
-      {
-        "rank": 6,
-        "topic": "VIX 21.2 → 공포 구간 진입",
-        "filters_hit": [
-          "필터1_역사적임계값"
-        ],
-        "filter_count": 1,
-        "strength": 2.8,
         "selected": false,
         "content_type": null,
         "reject_reason": "더 강한 신호가 선정됨"
@@ -153,20 +126,19 @@
   },
   "market": {
     "date": "20260413",
-    "collected_at": "2026-04-13T07:31:33.742515",
+    "collected_at": "2026-04-13T07:03:59.290091",
     "data": {
       "kospi": 5808.62,
       "kospi_1d_change": -0.86,
       "kospi_foreign_net": 0.0,
-      "vix": 21.18,
-      "wti_oil": 103.54,
-      "usd_krw": 1487.68,
+      "wti_oil": 103.33,
+      "usd_krw": 1487.87,
       "fear_greed_index": 12.0
     }
   },
   "macro": {
     "date": "20260413",
-    "collected_at": "2026-04-13T07:31:33.743141",
+    "collected_at": "2026-04-13T07:03:59.290644",
     "source": "임시값 (ECOS/FRED API 연동 전)",
     "data": {
       "korea_base_rate": 2.75,
@@ -179,58 +151,58 @@
   },
   "sentiment": {
     "date": "20260413",
-    "collected_at": "2026-04-13T07:31:40.753792",
+    "collected_at": "2026-04-13T07:04:11.445809",
     "data": {
       "news_headlines": [
         {
-          "title": "강원도, 지방소멸대응기금 투자 패러다임 전환…834억 투입",
+          "title": "농협, 영농철 맞아 전국 동시 일손돕기…260만명 인력 공급",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-13T07:31:35.108389"
+          "timestamp": "2026-04-13T07:04:05.716126"
         },
         {
-          "title": "카카오뱅크, 정기 예적금 금리 최대 0.10%p 인상",
+          "title": "\"360만원이 720만원 됐다\"…무주 청년 43명 '두배통장' 혜택",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-13T07:31:35.108402"
+          "timestamp": "2026-04-13T07:04:05.716139"
         },
         {
-          "title": "업비트, USDC 발행사 서클과 가상자산 시장 혁신·교육 협약",
+          "title": "국토차관, 중동발 고유가 극복 지방 유가보조금 집행현황 점검",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-13T07:31:35.108404"
+          "timestamp": "2026-04-13T07:04:05.716141"
         },
         {
-          "title": "Sh수협자산운용 김윤호 대표이사 선임",
+          "title": "빈대인 BNK금융 회장 \"산업금융 고도화 추진\"",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-13T07:31:35.108406"
+          "timestamp": "2026-04-13T07:04:05.716143"
         },
         {
-          "title": "美·이란 종전협상 결렬에도 亞증시 혼조마감…TACO 학습효과?(종합)",
+          "title": "외국환시세(4월13일·마감가)",
           "source": "www.yna.co.kr",
-          "timestamp": "2026-04-13T07:31:35.108408"
+          "timestamp": "2026-04-13T07:04:05.716145"
         },
         {
-          "title": "삼성전자, SSAFY 16기 모집…27일부터 다음달 11일까지",
+          "title": "SIMTOS 2026 개막, 17일까지 고양 킨텍스서 진행",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-13T07:31:40.753755"
+          "timestamp": "2026-04-13T07:04:11.445772"
         },
         {
-          "title": "정원오 “吳 시정 10년, 성과 없어”…오세훈 “鄭 시장되면 부동산지옥 될 것”",
+          "title": "헥토파이낸셜, 서클 알레어 CEO와 회동…스테이블코인 결제 협력 지속",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-13T07:31:40.753768"
+          "timestamp": "2026-04-13T07:04:11.445784"
         },
         {
-          "title": "애플, 디스플레이 없는 AI 안경 개발 중…메타와 본격 경쟁",
+          "title": "“‘12억 받는다며?’ 하곤 친구·친척 다 전화와요”…SK하이닉스 성과급 루머에 ‘탄식’",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-13T07:31:40.753770"
+          "timestamp": "2026-04-13T07:04:11.445786"
         },
         {
-          "title": "여객·화물사업 쌍끌이…대한항공, 1분기 역대 최대 매출",
+          "title": "오전에 이어 원픽은 ‘이 종목’ [주식 초고수는 지금]",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-13T07:31:40.753772"
+          "timestamp": "2026-04-13T07:04:11.445789"
         },
         {
-          "title": "드라마 ‘21세기 대군부인’에 일룸 모션베드 나온다",
+          "title": "한동훈 “만덕동에 집 마련”…부산 북갑 보궐 출마 결심",
           "source": "www.mk.co.kr",
-          "timestamp": "2026-04-13T07:31:40.753774"
+          "timestamp": "2026-04-13T07:04:11.445791"
         }
       ],
       "authority_signals": []

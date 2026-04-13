@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T05:49:04Z",
+    "ts_utc": "2026-04-13T16:29:13Z",
     "dataset_id": "risk_vix_fred",
     "topic_id": "risk_vix_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/risk_vix_fred.json L2 Signal",
@@ -37,6 +37,26 @@
     },
     "rationale": "[L2] Z-Score -2.12 >= 2.0 (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital Flow Anticipation",
+      "trigger_actor": "Institutional Hedgers & Market Makers",
+      "temporal_anchor": "2026-04-15 (US Tax Deadline / Q1 Earnings Season Kick-off)",
+      "unresolved_question": "VIX의 급격한 Z-Score 하락이 실제 리스크 감소를 반영하는 것인가, 아니면 실적 발표 및 세금 납부 기한을 앞둔 일시적인 볼러틸리티 매도(Short Vol) 과밀 현상인가?",
+      "expected_market_behavior": "speculation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "VIX가 20일 이동평균선(25.39)으로 급격히 회귀하며 실적 발표 직전 헷지 수요가 폭발할 경우",
+        "condition_to_invalidate": "VIX가 현재 수준(19.49)에서 10거래일 이상 횡보하며 저변동성 체제가 고착화될 경우"
+      },
+      "narrative_pressure_score": 78,
+      "related_entities": [
+        "CBOE VIX",
+        "S&P 500",
+        "US Treasury (Tax Liquidity)",
+        "Q1 Earnings Calendar"
+      ],
+      "rationale": "해당 신호는 4월 중순이라는 특정 시점에 VIX 지수가 통계적 임계치(Z-Score -2.12)를 벗어나 급격히 하락했음을 나타냄. 이는 단순한 추세가 아니라, 주요 매크로 이벤트(세금 납부 기한 및 실적 발표)를 앞두고 자본이 위험 프리미엄을 급격히 축소하며 재배치되고 있다는 선행적 신호임. 통상적인 변동성 범위에서 벗어난 이례적 움직임이므로 구조적 변화 전 단계의 신호로 간주됨.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]

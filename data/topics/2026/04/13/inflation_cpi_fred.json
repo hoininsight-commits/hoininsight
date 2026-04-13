@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T05:49:04Z",
+    "ts_utc": "2026-04-13T16:29:13Z",
     "dataset_id": "inflation_cpi_fred",
     "topic_id": "inflation_cpi_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/inflation_cpi_fred.json L2 Signal",
@@ -37,6 +37,27 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Federal Reserve",
+      "temporal_anchor": "2026-04-13 (CPI Release Date)",
+      "unresolved_question": "Does this 100th percentile CPI anomaly force an immediate hawkish pivot in the upcoming FOMC meeting despite previous guidance?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Immediate spike in 10-year Treasury yields above a key resistance level or emergency verbal intervention by a Fed governor.",
+        "condition_to_invalidate": "Official statement clarifying a data reporting error or a simultaneous collapse in energy prices that offsets core inflation."
+      },
+      "narrative_pressure_score": 98,
+      "related_entities": [
+        "FRED",
+        "Bureau of Labor Statistics",
+        "Federal Reserve",
+        "US10Y",
+        "Inflation-linked Bonds"
+      ],
+      "rationale": "이 신호는 2026년 4월 13일 발표된 CPI 데이터가 100th percentile(극단적 이상치)에 도달했음을 나타냅니다. 이는 단순한 물가 상승 트렌드가 아니라, 정책 당국의 공식적인 금리 결정이나 정책 변화가 내려지기 직전 시장 자금이 인플레이션 헷지 자산으로 즉각 재배치되도록 강제하는 '자본 흐름 선행 신호(Capital Flow Anticipation)'입니다. 구체적인 타임스탬프와 극단적인 Z-score(1.98)는 시장 참여자들에게 즉각적인 대응(Risk-off 또는 Rotation)을 요구하는 구조적 압박으로 작용합니다.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]

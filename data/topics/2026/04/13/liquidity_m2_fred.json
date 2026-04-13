@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T05:49:04Z",
+    "ts_utc": "2026-04-13T16:29:13Z",
     "dataset_id": "liquidity_m2_fred",
     "topic_id": "liquidity_m2_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/liquidity_m2_fred.json L2 Signal",
@@ -37,6 +37,26 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "is_pre_structural": false
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Federal Reserve (FRED)",
+      "temporal_anchor": "2026-05-01 (Next Fed Liquidity Window)",
+      "unresolved_question": "극단적인 M2 급증이 연준의 의도된 유동성 주입인지, 아니면 상업 은행 시스템의 단기적 병목 현상에 의한 일시적 왜곡인지 여부",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "연준 관계자가 M2 수치에 대해 '일시적' 또는 '긴급 대응' 언급을 할 경우",
+        "condition_to_invalidate": "다음 주 M2 데이터가 20일 이동평균선(21828.2) 이내로 급격히 회귀할 경우"
+      },
+      "narrative_pressure_score": 88,
+      "related_entities": [
+        "Federal Reserve",
+        "Commercial Banks",
+        "M2 Money Stock",
+        "Inflationary Hedges"
+      ],
+      "rationale": "M2 통화 공급량이 100번째 백분위수(Extreme)에 도달한 것은 통상적인 경제 성장 흐름을 벗어난 구조적 이상 신호임. 이는 시장 참여자들이 연준의 긴급 통화 정책 수정(유동성 회수 또는 금리 조정)을 예상하고 자본을 선제적으로 재배치하게 만드는 강력한 촉매제로 작용함. 단순한 우상향 추세가 아닌 1.83의 Z-Score를 동반한 단기 충격이므로 Pre-Structural Signal 조건에 부합함.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
   }
 ]

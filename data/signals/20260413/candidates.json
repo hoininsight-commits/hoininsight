@@ -1,11 +1,11 @@
 {
   "date": "20260413",
-  "total_candidates": 6,
+  "total_candidates": 4,
   "selected_count": 1,
   "candidates": [
     {
       "rank": 1,
-      "topic": "환율 1488원 + 유가 $103.5 동시 급등 → 복합 위기 신호",
+      "topic": "환율 1488원 + 유가 $103.3 동시 급등 → 복합 위기 신호",
       "filters_hit": [
         "필터1_역사적임계값",
         "필터2_역설적현상",
@@ -20,22 +20,7 @@
     },
     {
       "rank": 2,
-      "topic": "환율 1488원 + VIX 21.2 동시 위기 → 복합 공포 신호",
-      "filters_hit": [
-        "필터1_역사적임계값",
-        "필터2_역설적현상",
-        "필터4_시의성",
-        "필터3_미반영격차"
-      ],
-      "filter_count": 4,
-      "strength": 10.0,
-      "selected": false,
-      "content_type": null,
-      "reject_reason": "더 강한 신호가 선정됨"
-    },
-    {
-      "rank": 3,
-      "topic": "WTI 유가 $103.5 → 위험 수준",
+      "topic": "WTI 유가 $103.3 → 위험 수준",
       "filters_hit": [
         "필터1_역사적임계값",
         "필터5_연결고리"
@@ -47,8 +32,8 @@
       "reject_reason": "더 강한 신호가 선정됨"
     },
     {
-      "rank": 4,
-      "topic": "중동 전쟁 → 호르무즈 → WTI $103.5 → 한국 제조업 원가 상승 연결고리",
+      "rank": 3,
+      "topic": "중동 전쟁 → 호르무즈 → WTI $103.3 → 한국 제조업 원가 상승 연결고리",
       "filters_hit": [
         "필터5_연결고리",
         "필터1_역사적임계값"
@@ -60,25 +45,13 @@
       "reject_reason": "더 강한 신호가 선정됨"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "topic": "원달러 환율 1488원 → 주의 수준",
       "filters_hit": [
         "필터1_역사적임계값"
       ],
       "filter_count": 1,
       "strength": 3.2,
-      "selected": false,
-      "content_type": null,
-      "reject_reason": "더 강한 신호가 선정됨"
-    },
-    {
-      "rank": 6,
-      "topic": "VIX 21.2 → 공포 구간 진입",
-      "filters_hit": [
-        "필터1_역사적임계값"
-      ],
-      "filter_count": 1,
-      "strength": 2.8,
       "selected": false,
       "content_type": null,
       "reject_reason": "더 강한 신호가 선정됨"
