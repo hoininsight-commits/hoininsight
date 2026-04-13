@@ -28,10 +28,22 @@ class DetectorAgent:
         macro = raw_data.get("macro", {}).get("data", {})
         sentiment = raw_data.get("sentiment", {}).get("data", {})
 
+        # 시장 지표 로드 (기본 + 추가)
+        usd_krw = market.get("usd_krw", 0)
+        vix = market.get("vix", 0)
+        kospi_chg = market.get("kospi_1d_change", 0)
+        wti = market.get("wti_oil", 0)
+        gold = market.get("gold", 0)
+        dxy = market.get("dxy", 0)
+        us10y = market.get("us10y", 0)
+        nasdaq = market.get("nasdaq", 0)
+        sp500 = market.get("sp500", 0)
+        brent = market.get("brent", 0)
+
         candidates = []
 
         # 후보 1: 환율 이슈
-        usd_krw = market.get("usd_krw", 0)
+        if usd_krw and usd_krw > 1400:
         if usd_krw and usd_krw > 1400:
             label = "위험" if usd_krw > 1500 else "주의"
             filters_hit = ["필터1_역사적임계값"]
@@ -164,6 +176,90 @@ class DetectorAgent:
                     "data_evidence": {"detail": detail},
                     "related_keywords": ["역설", "반전", "이상"]
                 })
+
+        # --- 추가 지표 기반 필터링 (필터1, 2, 5) ---
+
+        # 1. 필터1 (역사적 임계값) 추가
+        if gold > 3000:
+            f1_hit = ["필터1_역사적임계값"]
+            strength = self.filters.calculate_strength(f1_hit) + 0.5
+            candidates.append({
+                "topic": f"금 가격 {gold:,.0f}달러 돌파 → 역사적 최고가",
+                "filters_hit": f1_hit,
+                "strength": round(strength, 1),
+                "data_evidence": {"gold": gold},
+                "related_keywords": ["금", "안전자산", "인플레이션"]
+            })
+
+        if dxy > 105:
+            f1_hit = ["필터1_역사적임계값"]
+            strength = self.filters.calculate_strength(f1_hit)
+            if dxy > 108: strength += 0.5
+            candidates.append({
+                "topic": f"달러인덱스 {dxy:.1f} 돌파 → 슈퍼 달러 재현",
+                "filters_hit": f1_hit,
+                "strength": round(strength, 1),
+                "data_evidence": {"dxy": dxy},
+                "related_keywords": ["달러", "강달러", "DXY"]
+            })
+
+        if us10y > 4.5:
+            f1_hit = ["필터1_역사적임계값"]
+            strength = self.filters.calculate_strength(f1_hit)
+            if us10y > 5.0: strength += 0.5
+            candidates.append({
+                "topic": f"미 국채 10년물 금리 {us10y:.2f}% 급등 → 긴축 우려",
+                "filters_hit": f1_hit,
+                "strength": round(strength, 1),
+                "data_evidence": {"us10y": us10y},
+                "related_keywords": ["국채금리", "미국채", "금리"]
+            })
+
+        # 2. 필터2 (역설적 현상) 추가
+        if gold > 2800 and kospi_chg < -1.5:
+            f2_hit = ["필터2_역설적현상"]
+            strength = self.filters.calculate_strength(f2_hit)
+            if gold > 3000: strength += 0.5
+            candidates.append({
+                "topic": "금값 급등 + 코스피 하락 → 위험자산 이탈 뚜렷",
+                "filters_hit": f2_hit,
+                "strength": round(strength, 1),
+                "data_evidence": {"gold": gold, "kospi_chg": kospi_chg},
+                "related_keywords": ["안전자산", "도피", "시장불안"]
+            })
+
+        if vix > 30 and wti > 95: # NASDAQ 급락 프록시로 VIX/WTI 활용
+            f2_hit = ["필터2_역설적현상"]
+            candidates.append({
+                "topic": "기술주 급락 + 유가 급등 → 스태그플레이션 공포",
+                "filters_hit": f2_hit,
+                "strength": round(self.filters.calculate_strength(f2_hit), 1),
+                "data_evidence": {"vix": vix, "wti": wti},
+                "related_keywords": ["스태그플레이션", "나스닥", "유가"]
+            })
+
+        # 3. 필터5 (연결고리) 추가
+        if wti > 90 and brent > 95:
+            f5_hit = ["필터5_연결고리"]
+            candidates.append({
+                "topic": "WTI-브렌트유 동시 폭등 → 수입물가 전방위 압박",
+                "filters_hit": f5_hit,
+                "strength": round(self.filters.calculate_strength(f5_hit), 1),
+                "data_evidence": {"wti": wti, "brent": brent},
+                "related_keywords": ["유가", "에너지", "인플레이션"]
+            })
+
+        if dxy > 105 and usd_krw > 1400:
+            f5_hit = ["필터5_연결고리"]
+            strength = self.filters.calculate_strength(f5_hit)
+            if dxy > 108: strength += 0.5
+            candidates.append({
+                "topic": "강달러 → 원달러 환율 동반 상승 → 수출입 복합 영향",
+                "filters_hit": f5_hit,
+                "strength": round(strength, 1),
+                "data_evidence": {"dxy": dxy, "usd_krw": usd_krw},
+                "related_keywords": ["환율", "달러", "연결고리"]
+            })
 
         # 강도 기준 내림차순 정렬
         candidates.sort(key=lambda x: x["strength"], reverse=True)
