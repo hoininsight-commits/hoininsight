@@ -107,13 +107,6 @@ def run_contradiction_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Market Contradiction Engine failed (Soft-Fail): {e}")
-        traceback.print_exc()
-        return False
-
-
-        return False
-
-
         return False
 
 
@@ -128,10 +121,6 @@ def run_theme_early_detection_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Theme Early Detection failed (Soft-Fail): {e}")
-        traceback.print_exc()
-        return False
-
-
         return False
 
 
@@ -146,10 +135,6 @@ def run_theme_narrative_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Theme Narrative failed (Soft-Fail): {e}")
-        traceback.print_exc()
-        return False
-
-
         return False
 
 
@@ -164,10 +149,6 @@ def run_theme_evolution_engine():
         return True
     except Exception as e:
         print(f"[Pipeline] ⚠️ Theme Evolution failed (Soft-Fail): {e}")
-        traceback.print_exc()
-        return False
-
-
         return False
 
 
@@ -198,12 +179,6 @@ def run_market_story_engine():
     except Exception as e:
         print(f"[Pipeline] ⚠️ Market Story Engine failed (Soft-Fail): {e}")
         traceback.print_exc()
-        return False
-
-
-        return False
-
-
         return False
 
 
