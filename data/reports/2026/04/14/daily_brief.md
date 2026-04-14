@@ -25,13 +25,14 @@ Historical context:
 | 2 | WTI | data/features/anomalies/2026/04/14/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/14/charts/comm_wti_fred.png) | [json](data/topics/2026/04/14/comm_wti_fred.json) | [json](data/features/anomalies/2026/04/14/comm_wti_fred.json) |
 | 3 | SILVER | data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 4 | 6.00 | UP (1.00) | **6.00** | HIGH | [png](data/reports/2026/04/14/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/04/14/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json) |
 | 4 | SILVER | data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 4 | 6.00 | UP (1.00) | **6.00** | HIGH | [png](data/reports/2026/04/14/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/04/14/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json) |
-| 5 | CPI_USA | data/features/anomalies/2026/04/14/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/14/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/14/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/14/inflation_cpi_fred.json) |
+| 5 | ETHUSD | data/features/anomalies/2026/04/14/crypto_eth_usd_spot_coingecko.json L2 Signal | 6.00 | 6 | 6.00 | UP (0.60) | **6.00** | HIGH | [png](data/reports/2026/04/14/charts/crypto_eth_usd_spot_coingecko.png) | [json](data/topics/2026/04/14/crypto_eth_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/04/14/crypto_eth_usd_spot_coingecko.json) |
 
 ## Per-dataset Topics
 - [HIGH] BTCUSD: data/features/anomalies/2026/04/14/crypto_btc_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [HIGH] WTI: data/features/anomalies/2026/04/14/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] SILVER: data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=1.00) | App7d=4
 - [HIGH] SILVER: data/features/anomalies/2026/04/14/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=1.00) | App7d=4
+- [HIGH] ETHUSD: data/features/anomalies/2026/04/14/crypto_eth_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: UP (slope=0.60) | App7d=6
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/14/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/14/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/14/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -42,7 +43,6 @@ Historical context:
 - [MED] VIX: data/features/anomalies/2026/04/14/risk_vix_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] SPX: data/features/anomalies/2026/04/14/index_spx_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [MED] NASDAQ: data/features/anomalies/2026/04/14/index_nasdaq_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=5
-- [MED] ETHUSD: data/features/anomalies/2026/04/14/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [MED] KOR_CPI: data/features/anomalies/2026/04/14/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/14/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
 - [MED] HY_SPREAD: data/features/anomalies/2026/04/14/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=6
@@ -60,6 +60,11 @@ Historical context:
 Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
+
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
 
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
@@ -87,3 +92,7 @@ Narrative Drift Signals:
 - Confidence: LOW
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 17 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.
