@@ -1,10 +1,10 @@
-# Investment OS Operational Brief (2026-04-14)
+# Investment OS Operational Brief (2026-04-15)
 
 ## 🌍 Market Regime
 > **긴축 기조 강화 및 유동성 축소 지속**
 
 - **Stance**: `NEUTRAL`
-- **Focus**: Rates, Liquidity, Policy
+- **Focus**: Policy, Rates, Liquidity
 
 ## 🚫 Do Not Do
 - 방어적 포지션 고수
