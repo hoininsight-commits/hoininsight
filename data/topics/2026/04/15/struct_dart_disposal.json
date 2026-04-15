@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-15T08:44:56Z",
+    "ts_utc": "2026-04-15T05:31:35Z",
     "dataset_id": "struct_dart_disposal",
     "topic_id": "struct_dart_disposal::event_nonzero",
     "title": "data/features/anomalies/2026/04/15/struct_dart_disposal.json L2 Signal",
@@ -35,26 +35,6 @@
     },
     "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital Flow Anticipation",
-      "trigger_actor": "대주주 및 내부 공시 의무자 (DART Filers)",
-      "temporal_anchor": "2026-04-15 (이상 신호 감지 시점)",
-      "unresolved_question": "이번 지분 매각(Disposal)이 단순 자산 유동화인지, 혹은 특정 규제 변화나 기업 지배구조 개편을 앞둔 집단적 이탈인가?",
-      "expected_market_behavior": "risk_off",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "매각 주체가 시가총액 상위 종목으로 확산되거나, 매각 사유가 '장내 매도'로 확인될 경우",
-        "condition_to_invalidate": "해당 공시들이 단순 계열사 간 지분 교환(Block deal) 또는 상속세 납부를 위한 공탁으로 판명될 경우"
-      },
-      "narrative_pressure_score": 75,
-      "related_entities": [
-        "금융감독원(FSS)",
-        "KOSPI",
-        "KOSDAQ",
-        "DART"
-      ],
-      "rationale": "2026년 4월 15일 DART 시스템에서 포착된 5건의 대량 지분 처분(Disposal) 이상 신호는 시장 내 대규모 자본 이탈의 전조 현상으로 판단됨. 이는 단순한 장기적 하락 추세가 아니라, 특정 일자에 집중된 '이상 수치(Anomaly Count=5)'를 통해 시장이 공식적인 실적 발표나 정책 변화 이전에 내부자 정보를 바탕으로 자본 재배치를 시작했음을 시사하는 전구조적(Pre-structural) 신호임.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]
