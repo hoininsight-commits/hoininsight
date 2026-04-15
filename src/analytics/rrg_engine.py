@@ -13,45 +13,55 @@ class RRGEngine:
         self.assets = self.config["assets"]
         self.params = self.config["params"]
 
-    def fetch_historical_data(self, timeframe: str = "1wk", period: str = "2y"):
+    def fetch_historical_data(self, symbols: list, timeframe: str = "1wk", period: str = "2y"):
         """벤치마크 및 자산 시계열 데이터 수집"""
-        symbols = [self.benchmark_sym] + [a["symbol"] for a in self.assets]
-        print(f"[RRG] Fetching data for {len(symbols)} symbols...")
+        all_symbols = [self.benchmark_sym] + symbols
+        print(f"[RRG] Fetching data for {len(all_symbols)} symbols ({timeframe})...")
         
-        data = yf.download(symbols, period=period, interval=timeframe, progress=False)
+        data = yf.download(all_symbols, period=period, interval=timeframe, progress=False)
         return data["Close"]
 
-    def calculate_rrg(self, df_prices: pd.DataFrame):
-        """RRG 지표(RS-Ratio, RS-Momentum) 계산"""
+    def calculate_rrg(self, df_prices: pd.DataFrame, asset_list: list, timeframe: str = "1wk"):
+        """RRG 지표 계산 및 평활화(Smoothing) 적용"""
         benchmark_price = df_prices[self.benchmark_sym]
         rrg_results = {}
+        
+        # 주기별 평활화 윈도우 설정
+        smoothing_window = {
+            "1d": 5,   # Daily: 5일 MA
+            "1wk": 4,  # Weekly: 4주 MA
+            "1mo": 3   # Monthly: 3개월 MA (사용자 지시사항 반영)
+        }.get(timeframe, 1)
 
-        for asset in self.assets:
+        for asset in asset_list:
             sym = asset["symbol"]
-            name = asset["name"]
+            name = asset.get("name", sym)
             
-            # 1. RS-Ratio 계산 (Price Relative / its 14-period SMA)
+            if sym not in df_prices.columns: continue
+            
+            # 1. RS-Ratio 계산
             rs = df_prices[sym] / benchmark_price
             rs_sma = rs.rolling(window=self.params["window_ratio"]).mean()
-            
-            # 표준화: 100을 중심으로 정규화 (Price Relative가 평균 대비 얼마나 높은지)
             rs_ratio = (rs / rs_sma) * 100
             
-            # 2. RS-Momentum 계산 (RS-Ratio의 변화율을 다시 표준화)
-            # RS-Ratio의 14기간 이동평균 대비 현재 값
+            # 2. RS-Momentum 계산
             rs_ratio_sma = rs_ratio.rolling(window=self.params["window_momentum"]).mean()
             rs_momentum = (rs_ratio / rs_ratio_sma) * 100
             
-            # 결과 저장 (최신 데이터 및 꼬리 데이터 포함)
+            # 3. 좌표 평활화(Smoothing) 적용 - 지시사항 반영
+            # RS-Ratio와 RS-Momentum 각각에 대해 이동평균 적용
+            rs_ratio_smoothed = rs_ratio.rolling(window=smoothing_window).mean()
+            rs_momentum_smoothed = rs_momentum.rolling(window=smoothing_window).mean()
+            
+            # 결과 저장
             tail_len = self.params["tail_length"]
             valid_data = pd.DataFrame({
-                "rs_ratio": rs_ratio,
-                "rs_momentum": rs_momentum
+                "rs_ratio": rs_ratio_smoothed,
+                "rs_momentum": rs_momentum_smoothed
             }).dropna()
             
             if len(valid_data) >= tail_len:
                 last_points = valid_data.tail(tail_len).to_dict("records")
-                # 날짜 정보 추가
                 dates = valid_data.index[-tail_len:].strftime("%Y-%m-%d").tolist()
                 for i in range(len(last_points)):
                     last_points[i]["date"] = dates[i]
@@ -63,18 +73,31 @@ class RRGEngine:
         
         return rrg_results
 
-    def run(self, timeframe: str = "1wk"):
-        """전체 프로세스 실행 및 결과 반환"""
-        df_prices = self.fetch_historical_data(timeframe=timeframe)
-        results = self.calculate_rrg(df_prices)
+    def run(self, timeframe: str = "1wk", dynamic_assets: list = None):
+        """전체 프로세스 실행 (Standard 또는 Dynamic 모드 지원)"""
+        asset_list = dynamic_assets if dynamic_assets else self.assets
+        symbols = [a["symbol"] for a in asset_list]
+        
+        # 데이터 수집 (기간은 주기에 따라 자동 조정 가능)
+        period = "2y" if timeframe == "1mo" else "1y"
+        df_prices = self.fetch_historical_data(symbols, timeframe=timeframe, period=period)
+        
+        results = self.calculate_rrg(df_prices, asset_list, timeframe=timeframe)
         
         output = {
             "last_update": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "benchmark": self.config["benchmark"],
             "timeframe": timeframe,
-            "data": results
+            "data": results,
+            "mode": "dynamic" if dynamic_assets else "standard"
         }
         return output
+
+if __name__ == "__main__":
+    engine = RRGEngine()
+    # Weekly Standard 검증
+    res = engine.run(timeframe="1wk")
+    print(f"✅ RRG 연산 완료 (Timeframe: {res['timeframe']}, Mode: {res['mode']})")
 
 if __name__ == "__main__":
     # 간단한 가동 테스트

@@ -24,7 +24,9 @@ class GeminiClient:
         self.model_name = "gemini-2.0-flash"
 
         if not self.api_key:
-            raise ValueError("GEMINI_API_KEY 환경변수가 설정되지 않았습니다.")
+            print("⚠️ [GeminiClient] WARNING: GEMINI_API_KEY not found. AI features will be disabled.")
+            self.client = None
+            return
 
         if not GEMINI_AVAILABLE:
             raise ImportError(
@@ -36,6 +38,8 @@ class GeminiClient:
 
     def call(self, prompt: str, max_tokens: int = 4000) -> str:
         """텍스트 생성 호출"""
+        if not self.client:
+            return ""
         try:
             response = self.client.models.generate_content(
                 model=self.model_name,
@@ -52,6 +56,8 @@ class GeminiClient:
 
     def call_json(self, prompt: str, max_tokens: int = 4000) -> dict:
         """JSON 응답 파싱 포함 호출"""
+        if not self.client:
+            return {}
         system_instruction = (
             "너는 JSON만 출력하는 분석 엔진이다. "
             "마크다운 코드블록 없이 순수 JSON만 출력해라. "
