@@ -95,6 +95,7 @@
             <div class="mode-tabs">
                 <div class="tab active" data-mode="standard">Standard View</div>
                 <div class="tab" data-mode="dynamic">Dynamic View</div>
+                <div class="tab" data-mode="radar">Radar View</div>
             </div>
             <div class="tf-buttons">
                 <button class="btn-tf" data-tf="1d">Daily</button>
@@ -405,7 +406,7 @@
             if (!fullData) return;
             document.getElementById('update-time').innerText = `Updated: ${fullData.last_update}`;
             
-            if (currentMode === 'dynamic') {
+            if (currentMode === 'dynamic' || currentMode === 'radar') {
                 updateSidebar(fullData.data);
             }
             
@@ -429,11 +430,16 @@
                 item.className = 'theme-item';
                 if (highlightedTheme === t) item.classList.add('active');
                 
+                let bonusAttr = "";
+                if (currentMode === 'radar' && data[t]?.metrics?.is_anticipation) {
+                    bonusAttr = 'border-color: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);';
+                }
+
                 item.innerHTML = `
                     <span class="theme-name">${t}</span>
                     <div class="theme-meta">
-                        <span>${themes[t].count} Stocks Scanned</span>
-                        <span>Persistent</span>
+                        <span>${themes[t].count} Stocks</span>
+                        <span style="${bonusAttr}">${currentMode === 'radar' ? 'Radar Tracked' : 'Persistent'}</span>
                     </div>
                 `;
                 item.onclick = () => {
@@ -510,5 +516,6 @@
 
         init();
     </script>
+    <script src="enhanced_visualizer.js"></script>
 </body>
 </html>

@@ -14,17 +14,63 @@ class RRGEngine:
         self.params = self.config["params"]
 
     def fetch_historical_data(self, symbols: list, timeframe: str = "1wk", period: str = "2y"):
-        """벤치마크 및 자산 시계열 데이터 수집"""
-        all_symbols = [self.benchmark_sym] + symbols
+        """벤치마크 및 자산 시계열 데이터 수집 (배치 수집 및 벤치마크 보장)"""
+        import time
+        all_symbols = list(set([self.benchmark_sym] + symbols))
         print(f"[RRG] Fetching data for {len(all_symbols)} symbols ({timeframe})...")
         
-        data = yf.download(all_symbols, period=period, interval=timeframe, progress=False)
-        return data["Close"]
+        # 1. 벤치마크 상시 확보 시도 (최대 3회 + Fallback)
+        benchmark_df = pd.DataFrame()
+        benchmarks_to_try = [self.benchmark_sym, "069500.KS"] # ^KS11 실패 시 KODEX 200 시도
+        
+        for b_sym in benchmarks_to_try:
+            if not benchmark_df.empty: break
+            for attempt in range(2):
+                try:
+                    print(f"  [RRG] Trying benchmark: {b_sym} (Attempt {attempt+1})")
+                    benchmark_df = yf.download(b_sym, period=period, interval=timeframe, progress=False, auto_adjust=True)
+                    if not benchmark_df.empty:
+                        print(f"  ✅ Benchmark {b_sym} successfully fetched.")
+                        benchmark_df = benchmark_df[['Close']]
+                        benchmark_df.columns = [self.benchmark_sym] # 내부 연산용으로 이름 통일
+                        break
+                except:
+                    time.sleep(1)
+            if not benchmark_df.empty: break
+        batch_size = 30
+        other_symbols = [s for s in all_symbols if s != self.benchmark_sym]
+        all_dfs = [benchmark_df] if not benchmark_df.empty else []
+        
+        for i in range(0, len(other_symbols), batch_size):
+            batch_syms = other_symbols[i:i+batch_size]
+            try:
+                batch_data = yf.download(batch_syms, period=period, interval=timeframe, progress=False, auto_adjust=True)
+                if not batch_data.empty:
+                    if isinstance(batch_data.columns, pd.MultiIndex):
+                        close_data = batch_data['Close']
+                    else:
+                        close_data = pd.DataFrame({batch_syms[0]: batch_data['Close']})
+                    all_dfs.append(close_data)
+                time.sleep(0.5)
+            except Exception as e:
+                print(f"  ⚠️ Batch {i//batch_size + 1} failed: {e}")
+        
+        if not all_dfs:
+            return pd.DataFrame()
+            
+        combined_df = pd.concat(all_dfs, axis=1)
+        combined_df = combined_df.loc[:, ~combined_df.columns.duplicated()]
+        return combined_df
 
     def calculate_rrg(self, df_prices: pd.DataFrame, asset_list: list, timeframe: str = "1wk"):
-        """RRG 지표 계산 및 평활화(Smoothing) 적용"""
+        """RRG 지표 계산 및 평활화 적용 (벤치마크 존재 여부 검사 추가)"""
+        if self.benchmark_sym not in df_prices.columns:
+            print(f"  ❌ Error: Benchmark {self.benchmark_sym} missing from data. Skipping RRG calculation.")
+            return {}
+            
         benchmark_price = df_prices[self.benchmark_sym]
         rrg_results = {}
+        # ... (생략된 기존 로직 유지)
         
         # 주기별 평활화 윈도우 설정
         smoothing_window = {
