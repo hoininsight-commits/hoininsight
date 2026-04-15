@@ -1,0 +1,42 @@
+{
+  "date": "20260415",
+  "topic_signal": "환율 1475원 + 유가 $91.4 동시 급등 → 복합 위기 신호",
+  "stocks": [
+    {
+      "ticker": "010950",
+      "name": "S-Oil",
+      "sector": "에너지",
+      "impact": "수혜",
+      "reason": "환율 1475원 + 유가 $91.4 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    },
+    {
+      "ticker": "096770",
+      "name": "SK이노베이션",
+      "sector": "에너지",
+      "impact": "수혜",
+      "reason": "환율 1475원 + 유가 $91.4 동시 급등 → 복합 위기 신호에 따른 에너지 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    },
+    {
+      "ticker": "051910",
+      "name": "LG화학",
+      "sector": "화학",
+      "impact": "수혜",
+      "reason": "환율 1475원 + 유가 $91.4 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    },
+    {
+      "ticker": "011170",
+      "name": "롯데케미칼",
+      "sector": "화학",
+      "impact": "수혜",
+      "reason": "환율 1475원 + 유가 $91.4 동시 급등 → 복합 위기 신호에 따른 화학 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    }
+  ]
+}
