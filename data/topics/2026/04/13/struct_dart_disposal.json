@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T16:29:13Z",
+    "ts_utc": "2026-04-13T23:28:34Z",
     "dataset_id": "struct_dart_disposal",
     "topic_id": "struct_dart_disposal::event_nonzero",
     "title": "data/features/anomalies/2026/04/13/struct_dart_disposal.json L2 Signal",
@@ -34,27 +34,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/13/struct_dart_disposal.json"
     },
     "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
-    "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "DART 공시 주체 (주요 주주 및 법인)",
-      "temporal_anchor": "2026-04-13",
-      "unresolved_question": "단기간 내 5건의 대규모 자산/지분 처분 공시가 집중된 배경이 특정 규제 준수를 위한 것인가, 아니면 거시적 유동성 위기에 따른 선제적 현금 확보인가?",
-      "expected_market_behavior": "risk_off",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "처분 주체가 특정 섹터에 집중되거나, 처분 목적이 '채무 상환' 또는 '운영자금 확보'로 통일될 경우",
-        "condition_to_invalidate": "공시 내용이 통상적인 사외이사 교체나 미미한 지분 변동 등 시장 영향력이 낮은 단순 보고로 판명될 경우"
-      },
-      "narrative_pressure_score": 72,
-      "related_entities": [
-        "금융감독원(FSS)",
-        "KOSPI/KOSDAQ 상장사",
-        "기관 투자자",
-        "대주주"
-      ],
-      "rationale": "DART(기업공시시스템) 상에서 'Disposal(처분)' 관련 이상 징후가 L2 수준(Count=5)으로 포착됨. 이는 개별 기업의 우발적 사건을 넘어, 특정 시점에 다수의 주요 주주들이 자산을 현금화하려는 움직임으로 해석됨. 법적/회계적 확정 결과가 시장에 완전히 반영되기 전, 내부자들의 자본 재배치 신호가 감지된 것이므로 프리-스트럭처럴(Pre-Structural) 신호의 요건을 충족함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "links": []
   }
 ]

@@ -1,0 +1,17 @@
+[
+  {
+    "ts_utc": "2026-04-15T08:44:48Z",
+    "dataset_id": "comm_wti_fred",
+    "entity": "WTI",
+    "anomaly_type": "Z_SCORE_MODEL_V1",
+    "severity": 60,
+    "level": "L2",
+    "evidence": {
+      "z_score": 2.19,
+      "percentile": 100.0,
+      "value": 114.01,
+      "rolling_mean_20d": 97.387,
+      "reasoning": "Z-Score 2.19 >= 2.0"
+    }
+  }
+]

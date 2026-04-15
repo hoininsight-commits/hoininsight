@@ -1,29 +1,10 @@
 {
   "date": "2026-04-13",
   "meta": {
-    "generated_at": "2026-04-13T16:36:18.408461Z",
+    "generated_at": "2026-04-14T08:45:58.095270Z",
     "engine_version": "v1.0"
   },
-  "active_patterns": [
-    {
-      "pattern_type": "SYSTEM_TRUST_STRESS",
-      "confidence": "MEDIUM",
-      "narrative": "중앙은행의 통제력이나 시스템 신뢰에 대한 의구심이 확산되고 있습니다.",
-      "signals": [
-        "Central Bank Narrative",
-        "Safe Haven Interest"
-      ]
-    },
-    {
-      "pattern_type": "LIQUIDITY_ROTATION",
-      "confidence": "HIGH",
-      "narrative": "성장 스토리에서 실물/인프라 필수재로의 자금 이동(Rotation)이 관측됩니다.",
-      "signals": [
-        "Infrastructure Capex",
-        "Physical Asset Demand"
-      ]
-    }
-  ],
-  "pattern_count": 2,
-  "pattern_hash": "fb5986627986c3980e889f069559e8885e3146488d31b9d05281e0f0e64d6d02"
+  "active_patterns": [],
+  "pattern_count": 0,
+  "pattern_hash": "c506dd097acb6c55d0e3911b2f5f0efdc49ccdd21ad641dca69c48d1567a73dd"
 }

@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-13T16:29:13Z",
+    "ts_utc": "2026-04-13T23:28:34Z",
     "dataset_id": "inflation_kor_cpi_ecos",
     "topic_id": "inflation_kor_cpi_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/13/inflation_kor_cpi_ecos.json L1 Signal",
@@ -36,27 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/13/inflation_kor_cpi_ecos.json"
     },
     "rationale": "[L1] Z-Score 1.86 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Bank of Korea (BOK)",
-      "temporal_anchor": "2026-04-13 (CPI Release) / Next MPC Meeting",
-      "unresolved_question": "Does this CPI anomaly represent a persistent inflationary trend that will force the BOK into an unscheduled hawkish pivot?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "Official BOK commentary acknowledging the anomaly as a 'structural risk' or 'monitored threat' within the next 7 days.",
-        "condition_to_invalidate": "Mean reversion in the next data release or if the BOK attributes the anomaly to one-time seasonal factors/statistical noise."
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "Bank of Korea",
-        "Statistics Korea (KOSTAT)",
-        "KRW/USD",
-        "KOSPI"
-      ],
-      "rationale": "한국 CPI 데이터의 Z-Score가 1.86으로 임계치(1.5)를 상회하며 통계적 이상징후를 보임. 이는 한국은행의 금리 정책 변화에 대한 시장의 기대를 즉각적으로 재조정하게 만드는 강력한 데이터적 트리거임. 실제 금리 결정(Structural Event)이 내려지기 전, 지표 발표 직후 발생하는 자금 재배치 및 기대 인플레이션의 구조적 변화를 시사하므로 Pre-Structural Signal로 분류됨.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "links": []
   }
 ]

@@ -1,0 +1,62 @@
+[
+  {
+    "ts_utc": "2026-04-15T08:44:56Z",
+    "dataset_id": "crypto_btc_usd_spot_coingecko",
+    "topic_id": "crypto_btc_usd_spot_coingecko::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/15/crypto_btc_usd_spot_coingecko.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
+    "evidence": {
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 2.2,
+        "percentile": 97.6,
+        "value": 74173.0,
+        "rolling_mean_20d": 71733.2,
+        "reasoning": "Z-Score 2.20 >= 2.0"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/15/crypto_btc_usd_spot_coingecko.json"
+    },
+    "rationale": "[L2] Z-Score 2.20 >= 2.0 (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital Flow Anticipation",
+      "trigger_actor": "Institutional and Retail Market Participants (US Tax Liquidity)",
+      "temporal_anchor": "2026-04-15 (US Tax Deadline)",
+      "unresolved_question": "실제 세금 납부를 위한 대규모 유동성 유출(Liquidity Outflow)이 가격 하락을 유도할 것인가, 아니면 마감 직후 재진입을 노린 선제적 매수세인가?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 3.0을 초과하거나 거래소 내 스테이블코인 유입량이 급증하며 변동성이 폭발할 경우",
+        "condition_to_invalidate": "48시간 이내에 Z-Score가 1.0 미만으로 회귀하며 평균 가격대로 수렴할 경우"
+      },
+      "narrative_pressure_score": 78,
+      "related_entities": [
+        "BTC",
+        "IRS",
+        "Institutional LPs",
+        "Coinbase"
+      ],
+      "rationale": "본 신호는 4월 15일이라는 미국 세금 신고 마감일(Temporal Anchor)과 결합된 통계적 이상 현상(Z-Score 2.2)을 나타냄. 이는 일반적인 가격 상승 추세가 아니라, 특정 기한을 앞두고 자산 포트폴리오를 조정하거나 세금 납부를 위한 유동성 확보 과정에서 발생하는 '선제적 자본 재배치(Capital Flow Anticipation)'의 성격이 강함. L2 수준의 임계점 돌파는 단순 노이즈를 넘어선 구조적 변곡점의 전조로 판단됨.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]
