@@ -1,0 +1,24 @@
+{
+  "benchmark": {
+    "symbol": "^KS11",
+    "name": "KOSPI"
+  },
+  "assets": [
+    { "symbol": "091160.KS", "name": "반도체" },
+    { "symbol": "305710.KS", "name": "2차전지" },
+    { "symbol": "091170.KS", "name": "은행" },
+    { "symbol": "091180.KS", "name": "자동차" },
+    { "symbol": "247790.KS", "name": "바이오" },
+    { "symbol": "117680.KS", "name": "철강" },
+    { "symbol": "117690.KS", "name": "에너지화학" },
+    { "symbol": "266360.KS", "name": "게임" },
+    { "symbol": "227540.KS", "name": "IT가전" },
+    { "symbol": "266370.KS", "name": "미디어엔터" }
+  ],
+  "params": {
+    "window_ratio": 14,
+    "window_momentum": 14,
+    "tail_length": 5,
+    "default_timeframe": "1wk"
+  }
+}

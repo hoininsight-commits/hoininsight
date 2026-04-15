@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>RRG Relative Rotation Graph</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: 'Apple SD Gothic Neo', sans-serif; margin: 0; padding: 0; background: #0d0d14; color: #e8e8f0; overflow: hidden; }
+        #rrg-chart { width: 100%; height: 95vh; background: #1a1a28; border-radius: 12px; }
+        .controls { padding: 10px 0; display: flex; gap: 15px; align-items: center; justify-content: flex-end; }
+        .legend-box { display: flex; gap: 10px; font-size: 11px; font-weight: 500; color: #888899; }
+        .q-leading { color: #22c55e; } .q-weakening { color: #eab308; } 
+        .q-lagging { color: #ef4444; } .q-improving { color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="legend-box">
+            <span class="q-leading">● Leading</span>
+            <span class="q-weakening">● Weakening</span>
+            <span class="q-lagging">● Lagging</span>
+            <span class="q-improving">● Improving</span>
+        </div>
+        <span id="update-time" style="font-size: 10px; color: #666680;"></span>
+    </div>
+    <div id="rrg-chart"></div>
+
+    <script>
+        // Global variable for embedded data (fallback for local file access)
+        let RRG_DATA = null;
+        window.RRG_DATA = {"last_update": "2026-04-15 21:49:50", "benchmark": {"symbol": "^KS11", "name": "KOSPI"}, "timeframe": "1wk", "data": {"091160.KS": {"name": "반도체", "points": [{"rs_ratio": 112.20187343230982, "rs_momentum": 103.39349845104331, "date": "2026-03-16"}, {"rs_ratio": 107.77672413098398, "rs_momentum": 98.71398950035653, "date": "2026-03-23"}, {"rs_ratio": 105.05406944113093, "rs_momentum": 96.06309791794796, "date": "2026-03-30"}, {"rs_ratio": 105.5128260111822, "rs_momentum": 96.58148258889192, "date": "2026-04-06"}, {"rs_ratio": 105.81577277594694, "rs_momentum": 96.86169759682754, "date": "2026-04-13"}]}, "091170.KS": {"name": "은행", "points": [{"rs_ratio": 96.01758887052816, "rs_momentum": 101.44691052950958, "date": "2026-03-16"}, {"rs_ratio": 100.25650089808427, "rs_momentum": 105.81554928749755, "date": "2026-03-23"}, {"rs_ratio": 98.52527552167837, "rs_momentum": 103.95740181954956, "date": "2026-03-30"}, {"rs_ratio": 98.26857227087912, "rs_momentum": 103.36400004906241, "date": "2026-04-06"}, {"rs_ratio": 95.91089904255541, "rs_momentum": 100.39069244798975, "date": "2026-04-13"}]}, "091180.KS": {"name": "자동차", "points": [{"rs_ratio": 92.68949446885102, "rs_momentum": 91.0588819859718, "date": "2026-03-16"}, {"rs_ratio": 96.11864618553723, "rs_momentum": 95.29658232399508, "date": "2026-03-23"}, {"rs_ratio": 93.1834419660438, "rs_momentum": 93.09891297623238, "date": "2026-03-30"}, {"rs_ratio": 90.38309857391582, "rs_momentum": 91.04636169009648, "date": "2026-04-06"}, {"rs_ratio": 89.29739335296865, "rs_momentum": 90.86535259369141, "date": "2026-04-13"}]}, "117680.KS": {"name": "철강", "points": [{"rs_ratio": 91.485620402605, "rs_momentum": 95.24248097316028, "date": "2026-03-16"}, {"rs_ratio": 94.08216898350703, "rs_momentum": 98.2436338714357, "date": "2026-03-23"}, {"rs_ratio": 97.46083177935077, "rs_momentum": 101.81803079240508, "date": "2026-03-30"}, {"rs_ratio": 97.1455016701577, "rs_momentum": 101.33273311022283, "date": "2026-04-06"}, {"rs_ratio": 95.11066789151535, "rs_momentum": 98.74762588970263, "date": "2026-04-13"}]}, "117690.KS": {"name": "에너지화학", "points": [{"rs_ratio": 84.30205641530468, "rs_momentum": 100.40713424085519, "date": "2026-03-16"}, {"rs_ratio": 90.92918238417155, "rs_momentum": 108.55906702197898, "date": "2026-03-23"}, {"rs_ratio": 93.69403004098208, "rs_momentum": 111.52458873388005, "date": "2026-03-30"}, {"rs_ratio": 89.12159092506656, "rs_momentum": 105.94463142986628, "date": "2026-04-06"}, {"rs_ratio": 87.42642615870656, "rs_momentum": 103.83444597627572, "date": "2026-04-13"}]}, "266360.KS": {"name": "게임", "points": [{"rs_ratio": 81.4937877199179, "rs_momentum": 94.90740226688986, "date": "2026-03-16"}, {"rs_ratio": 87.29860954439577, "rs_momentum": 101.94903686498411, "date": "2026-03-23"}, {"rs_ratio": 85.16974027148012, "rs_momentum": 99.88492789300851, "date": "2026-03-30"}, {"rs_ratio": 81.68459123645592, "rs_momentum": 96.75442427011713, "date": "2026-04-06"}, {"rs_ratio": 82.63639138310162, "rs_momentum": 98.20090490438984, "date": "2026-04-13"}]}, "227540.KS": {"name": "IT가전", "points": [{"rs_ratio": 82.40437331736689, "rs_momentum": 93.27621532810228, "date": "2026-03-16"}, {"rs_ratio": 90.79188420930687, "rs_momentum": 103.77091471284778, "date": "2026-03-23"}, {"rs_ratio": 88.33001746690405, "rs_momentum": 101.7704538010088, "date": "2026-03-30"}, {"rs_ratio": 84.93369311399877, "rs_momentum": 98.83413511773324, "date": "2026-04-06"}, {"rs_ratio": 86.66656402752169, "rs_momentum": 101.62939348005263, "date": "2026-04-13"}]}, "266370.KS": {"name": "미디어엔터", "points": [{"rs_ratio": 107.76976538208007, "rs_momentum": 102.78957507370473, "date": "2026-03-16"}, {"rs_ratio": 105.72839175973532, "rs_momentum": 100.58524949369428, "date": "2026-03-23"}, {"rs_ratio": 105.14283340054243, "rs_momentum": 99.93785225045275, "date": "2026-03-30"}, {"rs_ratio": 107.10307898200566, "rs_momentum": 101.68185368784076, "date": "2026-04-06"}, {"rs_ratio": 108.11867112369843, "rs_momentum": 102.31348387071269, "date": "2026-04-13"}]}}};
+
+        async function loadRRG() {
+            try {
+                // 1. 우선 임베딩된 데이터가 있는지 확인 (로컬 파일 실행 시)
+                if (window.RRG_DATA) {
+                    console.log("Using embedded RRG data...");
+                    renderChart(window.RRG_DATA.data);
+                    document.getElementById('update-time').innerText = `최종 갱신: ${window.RRG_DATA.last_update} (Embedded)`;
+                    return;
+                }
+
+                // 2. 임베딩 데이터가 없으면 fetch 시도 (서버 실행 시)
+                const response = await fetch('rrg_data.json');
+                const result = await response.json();
+                
+                document.getElementById('update-time').innerText = `최종 갱신: ${result.last_update}`;
+                renderChart(result.data);
+            } catch (e) {
+                console.error("데이터 로드 실패 (임베딩 데이터 없음):", e);
+                // 로컬에서 fetch 실패 시 사용자에게 안내 메시지 표시 가능
+            }
+        }
+
+        function renderChart(data) {
+            const traces = [];
+            
+            Object.keys(data).forEach(sym => {
+                const asset = data[sym];
+                const points = asset.points;
+                
+                // 궤적(Tail) 그리기
+                traces.push({
+                    x: points.map(p => p.rs_ratio),
+                    y: points.map(p => p.rs_momentum),
+                    mode: 'lines+markers',
+                    name: asset.name,
+                    line: { shape: 'spline', width: 2 },
+                    marker: {
+                        size: points.map((p, i) => i === points.length - 1 ? 12 : 4),
+                        symbol: points.map((p, i) => i === points.length - 1 ? 'circle' : 'circle'),
+                    },
+                    text: points.map(p => `${asset.name} (${p.date})<br>Ratio: ${p.rs_ratio.toFixed(2)}<br>Mom: ${p.rs_momentum.toFixed(2)}`),
+                    hoverinfo: 'text'
+                });
+            });
+
+            const layout = {
+                hovermode: 'closest',
+                paper_bgcolor: '#1a1a28',
+                plot_bgcolor: '#1a1a28',
+                font: { color: '#888899', family: 'Apple SD Gothic Neo' },
+                xaxis: { 
+                    title: 'RS-Ratio (Strength)', 
+                    range: [80, 120],
+                    zeroline: false,
+                    gridcolor: '#2a2a3a',
+                    tickfont: { color: '#666680' }
+                },
+                yaxis: { 
+                    title: 'RS-Momentum (Momentum)', 
+                    range: [80, 120],
+                    zeroline: false,
+                    gridcolor: '#2a2a3a',
+                    tickfont: { color: '#666680' }
+                },
+                shapes: [
+                    // Quadrant Lines
+                    { type: 'line', x0: 100, y0: 80, x1: 100, y1: 120, line: { color: '#444460', width: 2, dash: 'dot' } },
+                    { type: 'line', x0: 80, y0: 100, x1: 120, y1: 100, line: { color: '#444460', width: 2, dash: 'dot' } },
+                    
+                    // Background Colors for Quadrants (Subtle Dark Mode Versions)
+                    { type: 'rect', x0: 100, y0: 100, x1: 120, y1: 120, fillcolor: 'rgba(34, 197, 94, 0.03)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 100, y0: 80, x1: 120, y1: 100, fillcolor: 'rgba(234, 179, 8, 0.03)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 80, y0: 80, x1: 100, y1: 100, fillcolor: 'rgba(239, 68, 68, 0.03)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 80, y0: 100, x1: 100, y1: 120, fillcolor: 'rgba(59, 130, 246, 0.03)', line: {width: 0}, layer: 'below' }
+                ],
+                annotations: [
+                    { x: 115, y: 115, text: 'LEADING', showarrow: false, font: { size: 14, color: 'rgba(34, 197, 94, 0.2)', weight: 'bold' } },
+                    { x: 115, y: 85, text: 'WEAKENING', showarrow: false, font: { size: 14, color: 'rgba(234, 179, 8, 0.2)', weight: 'bold' } },
+                    { x: 85, y: 85, text: 'LAGGING', showarrow: false, font: { size: 14, color: 'rgba(239, 68, 68, 0.2)', weight: 'bold' } },
+                    { x: 85, y: 115, text: 'IMPROVING', showarrow: false, font: { size: 14, color: 'rgba(59, 130, 246, 0.2)', weight: 'bold' } }
+                ],
+                margin: { l: 40, r: 40, b: 40, t: 10 },
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.15, font: { size: 10 } }
+            };
+
+            Plotly.newPlot('rrg-chart', traces, layout);
+        }
+
+        loadRRG();
+    </script>
+</body>
+</html>
