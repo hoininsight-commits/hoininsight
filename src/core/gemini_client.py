@@ -2,6 +2,7 @@
 
 import json
 import os
+import time
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -21,7 +22,7 @@ class GeminiClient:
 
     def __init__(self):
         self.api_key = os.environ.get("GEMINI_API_KEY", "")
-        self.model_name = "gemini-2.0-flash"
+        self.model_name = "gemini-flash-latest"
 
         if not self.api_key:
             print("⚠️ [GeminiClient] WARNING: GEMINI_API_KEY not found. AI features will be disabled.")
@@ -37,22 +38,30 @@ class GeminiClient:
         self.client = genai.Client(api_key=self.api_key)
 
     def call(self, prompt: str, max_tokens: int = 4000) -> str:
-        """텍스트 생성 호출"""
+        """텍스트 생성 호출 (재시도 로직 포함)"""
         if not self.client:
             return ""
-        try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt,
-                config=genai.types.GenerateContentConfig(
-                    max_output_tokens=max_tokens,
-                    temperature=0.7,
+        
+        for attempt in range(3):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=prompt,
+                    config=genai.types.GenerateContentConfig(
+                        max_output_tokens=max_tokens,
+                        temperature=0.7,
+                    )
                 )
-            )
-            return response.text
-        except Exception as e:
-            print(f"  Gemini API 호출 실패: {e}")
-            return ""
+                return response.text
+            except Exception as e:
+                if "503" in str(e) and attempt < 2:
+                    wait_time = (attempt + 1) * 2
+                    print(f"  ⚠️ Gemini Busy (503). Retrying in {wait_time}s... ({attempt+1}/3)")
+                    time.sleep(wait_time)
+                    continue
+                print(f"  Gemini API 호출 실패: {e}")
+                return ""
+        return ""
 
     def call_json(self, prompt: str, max_tokens: int = 4000) -> dict:
         """JSON 응답 파싱 포함 호출"""
