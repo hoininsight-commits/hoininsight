@@ -72,6 +72,37 @@ class CollectorAgent:
         # 환율
         data["usd_krw"] = self._get_usd_krw()
 
+        # 추가 수집 항목 (글로벌 지수, 원자재, 외환, 채권)
+        tickers = {
+            "sp500": "^GSPC",
+            "nasdaq": "^IXIC",
+            "nikkei": "^N225",
+            "gold": "GC=F",
+            "silver": "SI=F",
+            "copper": "HG=F",
+            "natgas": "NG=F",
+            "brent": "BZ=F",
+            "dxy": "DX-Y.NYB",
+            "usd_jpy": "JPY=X",
+            "usd_cny": "CNY=X",
+            "us10y": "^TNX",
+            "us2y": "^IRX",
+            "kosdaq": "^KQ11"
+        }
+
+        print(f"📊 {len(tickers)}개 추가 지표 수집 시작...")
+        for key, ticker in tickers.items():
+            try:
+                t = yf.Ticker(ticker)
+                hist = t.history(period="1d", auto_adjust=True)
+                if not hist.empty:
+                    data[key] = round(float(hist["Close"].iloc[-1]), 2)
+                else:
+                    data[key] = None
+            except Exception as e:
+                print(f"  {key} ({ticker}) 수집 실패: {e}")
+                data[key] = None
+
         # Fear & Greed (추후 실제 API 연동)
         data["fear_greed_index"] = self._get_fear_greed()
 
