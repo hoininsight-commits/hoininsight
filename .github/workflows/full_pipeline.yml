@@ -92,6 +92,14 @@ jobs:
           python -m src.ops.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
           echo "[PIPELINE] A2: Signal discovery completed"
 
+      - name: "A3-B: Radar Analyzer Agent (RRG Theme Radar)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "[AGENT] Running: src.ops.rrg_pipeline"
+          python -m src.ops.rrg_pipeline
+          echo "[PIPELINE] A3-B: Anticipatory Radar updated"
+
 
       - name: Notify Telegram (Daily Summary)
         if: always()

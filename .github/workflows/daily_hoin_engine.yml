@@ -76,6 +76,15 @@ jobs:
           echo "=== AGENT-06 완료 ==="
         continue-on-error: true
 
+      - name: AGENT-07 RADAR ANALYZER 실행 (RRG 테마 레이더)
+        run: |
+          echo "=== AGENT-07 RADAR ANALYZER 시작 ==="
+          python -m src.ops.rrg_pipeline
+          echo "=== AGENT-07 완료 ==="
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        continue-on-error: true
+
       - name: docs/ 동기화
         run: |
           echo "=== docs/ 동기화 시작 ==="
