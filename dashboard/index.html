@@ -227,6 +227,7 @@
                 <div class="menu-item active" onclick="switchTab('today', this)">오늘 선정 토픽</div>
                 <div class="menu-item" onclick="switchTab('candidates', this)">📂 토픽 후보군</div>
                 <div class="menu-item" onclick="switchTab('decision', this)">⚖️ 최종 의사결정</div>
+                <div class="menu-item" onclick="switchTab('rrg', this)">📊 RRG 인사이트</div>
                 <div class="menu-item" onclick="switchTab('ops', this)">⚙️ 운영 성과 지표</div>
                 <div class="menu-item" onclick="switchTab('archive', this)">전체 토픽 목록</div>
                 <div class="menu-item" onclick="switchTab('issuesignal', this)">🛡️ IssueSignal 연산</div>
@@ -1080,6 +1081,11 @@
             <div id="tab-ops-dashboard" class="hidden">
                 <iframe src="./ui/index.html" style="width:100%; height:90vh; border:none; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05);"></iframe>
             </div>
+
+            <!-- [NEW] RRG Insight Tab -->
+            <div id="tab-rrg" class="hidden" style="height:100%;">
+                <iframe src="./rrg_view.html" style="width:100%; height:100%; border:none; min-height: 100vh;"></iframe>
+            </div>
         </div>
 
         <!-- Detail Modal -->
@@ -1105,7 +1111,7 @@
                 el.classList.add('active');
                 
                 // Update Content
-                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report", "ops-dashboard"];
+                const tabs = ["today", "candidates", "decision", "ops", "archive", "issuesignal", "ops-report", "ops-dashboard", "rrg"];
                 tabs.forEach(t => {
                    const element = document.getElementById('tab-' + t);
                    if(element) element.classList.add('hidden');
