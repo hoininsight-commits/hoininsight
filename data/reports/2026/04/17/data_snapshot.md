@@ -1,6 +1,6 @@
 # Data Snapshot
 
-- ts_utc: `2026-04-16T16:45:03Z`
+- ts_utc: `2026-04-16T21:55:18Z`
 - ymd_utc: `2026/04/17`
 - enabled_datasets: `32`
 
@@ -8,11 +8,11 @@
 
 | report_key | dataset_id | status_today | rows | first_ts_utc | last_ts_utc | last_7d_rows | last_30d_rows | ok_7d | skipped_7d | fail_7d | curated_path | chart_png |
 |---|---|---:|---:|---|---|---:|---:|---:|---:|---:|---|---|
+| ETHUSD | crypto_eth_usd_spot_coingecko | OK | 79 | 2026-01-15T00:00:00Z | 2026-04-17T00:00:00Z | 8 | 31 | 7 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/04/16/charts/crypto_eth_usd_spot_coingecko.png) |
 | BLOCK_DEAL_PROXY | struct_krx_foreigner_flow | UNKNOWN | 0 | - | - | 0 | 0 | 0 | 3 | 0 | data/curated/structural/foreigner_flow.csv | - |
 | BTCUSD | crypto_btc_usd_spot_coingecko | UNKNOWN | 650 | 2026-01-15T07:32:29Z | 2026-04-15T08:44:06Z | 30 | 82 | 3 | 0 | 0 | data/curated/crypto/btc_usd.csv | [png](data/reports/2026/04/16/charts/crypto_btc_usd_spot_coingecko.png) |
 | CPI_USA | inflation_cpi_fred | UNKNOWN | 950 | 1947-01-01T00:00:00Z | 2026-03-01T00:00:00Z | 0 | 0 | 3 | 0 | 0 | data/curated/inflation/cpi_usa.csv | [png](data/reports/2026/04/16/charts/inflation_cpi_fred.png) |
 | DXY | fx_dxy_index_stooq | UNKNOWN | 4 | 2026-01-15T00:00:00Z | 2026-01-18T00:00:00Z | 0 | 0 | 0 | 3 | 0 | data/curated/fx/dxy.csv | [png](data/reports/2026/04/16/charts/fx_dxy_index_stooq.png) |
-| ETHUSD | crypto_eth_usd_spot_coingecko | UNKNOWN | 79 | 2026-01-15T00:00:00Z | 2026-04-17T00:00:00Z | 8 | 31 | 6 | 0 | 0 | data/curated/crypto/eth_usd.csv | [png](data/reports/2026/04/16/charts/crypto_eth_usd_spot_coingecko.png) |
 | FED_FUNDS | rates_fed_funds_fred | UNKNOWN | 861 | 1954-07-01T00:00:00Z | 2026-03-01T00:00:00Z | 0 | 0 | 3 | 0 | 0 | data/curated/rates/fed_funds.csv | [png](data/reports/2026/04/16/charts/rates_fed_funds_fred.png) |
 | FIN_STRESS | risk_financial_stress_fred | UNKNOWN | 1463 | 1993-12-31T00:00:00Z | 2022-01-07T00:00:00Z | 0 | 0 | 3 | 0 | 0 | data/curated/risk/financial_stress_usa.csv | [png](data/reports/2026/04/16/charts/risk_financial_stress_fred.png) |
 | GOLD | metal_gold_paxg_coingecko | UNKNOWN | 164 | 2026-01-15T08:10:58Z | 2026-04-16T00:00:00Z | 7 | 30 | 3 | 0 | 0 | data/curated/metals/gold_usd.csv | [png](data/reports/2026/04/16/charts/metal_gold_paxg_coingecko.png) |
