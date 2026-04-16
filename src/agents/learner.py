@@ -12,7 +12,8 @@ class LearnerAgent:
 
     def __init__(self):
         self.today = datetime.now().strftime("%Y%m%d")
-        self.scripts_dir = Path("data/learning/scripts")
+        self.base_scripts_dir = Path("data/learning/scripts")
+        self.scripts_dir = self.base_scripts_dir / self.today
         self.scripts_dir.mkdir(parents=True, exist_ok=True)
         self.index_path = Path("data/learning/collected_index.json")
         self._init_index()
