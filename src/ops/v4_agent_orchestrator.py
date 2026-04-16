@@ -75,14 +75,17 @@ def run_v4_pipeline():
 """
         notifier.send_message(brief)
         
-        # 파일 전송
+        # [v9.1] 파일 내용 읽어서 직접 메시지로 전송
         long_path = project_root / f"data/scripts/{datetime.now().strftime('%Y%m%d')}/today_script_long.md"
         short_path = project_root / f"data/scripts/{datetime.now().strftime('%Y%m%d')}/today_script_short.md"
         
         if long_path.exists():
-            notifier.send_document(str(long_path), caption="📜 롱폼 스크립트 원본")
+            content = long_path.read_text(encoding="utf-8")
+            notifier.send_message_in_chunks(f"📜 *롱폼 리포트 원본*\n\n{content}")
+        
         if short_path.exists():
-            notifier.send_document(str(short_path), caption="📱 쇼츠 스크립트 요약")
+            content = short_path.read_text(encoding="utf-8")
+            notifier.send_message_in_chunks(f"📱 *쇼츠 스크립트 요약*\n\n{content}")
 
         print(f"\n✨ [{datetime.now().strftime('%H:%M:%S')}] v4.0 Pipeline 완결")
 

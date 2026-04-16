@@ -38,6 +38,34 @@ class TelegramNotifier:
             print(f"[Telegram] Message Error: {e}")
             return False
 
+    def send_message_in_chunks(self, text: str, parse_mode: str = "Markdown") -> bool:
+        """Sends a long message by splitting it into smaller chunks."""
+        MAX_LEN = 4000
+        if len(text) <= MAX_LEN:
+            return self.send_message(text)
+
+        chunks = []
+        while text:
+            if len(text) <= MAX_LEN:
+                chunks.append(text)
+                break
+            
+            # Try to find the last newline within the limit to avoid breaking lines
+            split_idx = text.rfind("\n", 0, MAX_LEN)
+            if split_idx == -1:
+                split_idx = MAX_LEN
+            
+            chunks.append(text[:split_idx])
+            text = text[split_idx:].lstrip()
+
+        success = True
+        for i, chunk in enumerate(chunks):
+            # Add index if multiple chunks
+            prefix = f"📄 *Part {i+1}/{len(chunks)}*\n\n" if len(chunks) > 1 else ""
+            success &= self.send_message(prefix + chunk)
+        
+        return success
+
     def send_document(self, file_path: str, caption: Optional[str] = None) -> bool:
         """Sends a file (document) to the chat."""
         if not self.token or not self.chat_id:
