@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-16T10:24:21Z",
+    "ts_utc": "2026-04-16T16:44:50Z",
     "dataset_id": "metal_silver_kag_coingecko",
     "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/16/metal_silver_kag_coingecko.json L1 Signal",
@@ -36,7 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/16/metal_silver_kag_coingecko.json"
     },
     "rationale": "[L1] Z-Score 1.92 >= 1.5 (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "links": []
   }
 ]
