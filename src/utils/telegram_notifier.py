@@ -32,8 +32,39 @@ class TelegramNotifier:
                 print("[Telegram] Message sent successfully")
                 return True
             else:
-                print(f"[Telegram] Failed to send: {response.text}")
+                print(f"[Telegram] Failed to send message: {response.text}")
                 return False
         except Exception as e:
-            print(f"[Telegram] Error: {e}")
+            print(f"[Telegram] Message Error: {e}")
+            return False
+
+    def send_document(self, file_path: str, caption: Optional[str] = None) -> bool:
+        """Sends a file (document) to the chat."""
+        if not self.token or not self.chat_id:
+            print("[Telegram] Skipping document (Token or Chat ID missing)")
+            return False
+
+        if not os.path.exists(file_path):
+            print(f"[Telegram] File not found: {file_path}")
+            return False
+
+        try:
+            url = f"{self.base_url}/sendDocument"
+            data = {"chat_id": self.chat_id}
+            if caption:
+                data["caption"] = caption
+                data["parse_mode"] = "Markdown"
+            
+            with open(file_path, "rb") as f:
+                files = {"document": f}
+                response = requests.post(url, data=data, files=files, timeout=30)
+            
+            if response.status_code == 200:
+                print(f"[Telegram] Document sent successfully: {os.path.basename(file_path)}")
+                return True
+            else:
+                print(f"[Telegram] Failed to send document: {response.text}")
+                return False
+        except Exception as e:
+            print(f"[Telegram] Document Error: {e}")
             return False

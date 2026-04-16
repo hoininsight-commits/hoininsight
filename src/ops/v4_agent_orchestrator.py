@@ -17,6 +17,7 @@ from src.agents.detector import DetectorAgent
 from src.agents.analyst import AnalystAgent
 from src.agents.writer import WriterAgent
 from src.agents.publisher import PublisherAgent
+from src.utils.telegram_notifier import TelegramNotifier
 
 def run_v4_pipeline():
     today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -51,7 +52,37 @@ def run_v4_pipeline():
         # 5. 최종 배포 (Publisher)
         print("\n[Step 5] 대시보드 및 결과 배포 시작 (Publisher)...")
         publisher = PublisherAgent()
-        publisher.run()
+        publisher_result = publisher.run()
+
+        # [Step 6] 텔레그램 보고 (v9.0)
+        print("\n[Step 6] 텔레그램 보고 전송 중...")
+        notifier = TelegramNotifier()
+        
+        # 텔레그램 메시지 구성
+        topic = detector_result["selected"].get("topic", "제목 없음")
+        strength = detector_result["selected"].get("strength", 0)
+        content_type = detector_result["selected"].get("content_type", "롱폼")
+        
+        brief = f"""
+🏹 *HOIN ENGINE 사냥 완료 보고* 🎷
+
+📌 *토픽*: {topic}
+📊 *강도*: {strength} / 10
+🎬 *유형*: {content_type}
+📅 *날짜*: {datetime.now().strftime('%Y-%m-%d')}
+
+상세 리포트 원본을 파일로 전송합니다. 🕵️‍♂️🏹
+"""
+        notifier.send_message(brief)
+        
+        # 파일 전송
+        long_path = project_root / f"data/scripts/{datetime.now().strftime('%Y%m%d')}/today_script_long.md"
+        short_path = project_root / f"data/scripts/{datetime.now().strftime('%Y%m%d')}/today_script_short.md"
+        
+        if long_path.exists():
+            notifier.send_document(str(long_path), caption="📜 롱폼 스크립트 원본")
+        if short_path.exists():
+            notifier.send_document(str(short_path), caption="📱 쇼츠 스크립트 요약")
 
         print(f"\n✨ [{datetime.now().strftime('%H:%M:%S')}] v4.0 Pipeline 완결")
 
