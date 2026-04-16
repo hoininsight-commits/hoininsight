@@ -35,6 +35,7 @@ class AnalystAgent:
 
         market = raw_data.get("market", {}).get("data", {})
         macro = raw_data.get("macro", {}).get("data", {})
+        history = raw_data.get("history_90d", {}) # v7.0 히스토리 데이터
 
         prompt = f"""
 너는 경제사냥꾼 채널 수준의 거시경제 분석 전문가다.
@@ -53,31 +54,55 @@ WTI: ${market.get('wti_oil', 'N/A')}
 한국 기준금리: {macro.get('korea_base_rate', 'N/A')}%
 미국 기준금리: {macro.get('us_fed_rate', 'N/A')}%
 
-[분석 요구사항]
-1. three_lens_analysis: 돈의흐름/구조적변화/정책방향 각각 한 문장
-2. level2_chain: 인과관계 체인 3~5단계 (경제사냥꾼 스타일로 구체적으로)
-3. historical_reference: 과거 유사 사례 1개
-4. risk_factors: 리스크 정확히 3개
-5. check_points: 투자 체크포인트 정확히 2개
+[분석 요구사항 (v8.0 Soul Alignment)]
+1. physical_bottleneck_analysis: 지표 뒤의 물리적 실체(에너지 해협, 용수, 전력, 공급망 병목)를 분석할 것. (제20조 준수)
+   - 예: "호르무즈 해협의 물리적 통제권이 누구에게 있는가?", "반도체 단지의 용수 확보가 가능한가?"
+2. power_structure_analysis: 이 사건의 이면에서 진짜 이득을 보는 권력 주체와 손해를 보는 주체를 명확히 구분할 것.
+3. trend_context_check: 90일 시계열 추세 속에서 오늘의 위치 분석 (Article 19 준수).
+4. four_layer_check: 금리, 유동성, 정책, 기대치를 물리적 실체와 연결하여 해석.
+5. historical_reference: 과거 유사 사례 1개
+6. risk_factors: 무효화 조건 또는 반대 시나리오 2~3개
 
 [출력 JSON 구조]
 {{
   "date": "{self.today}",
   "topic": "{signal['topic']}",
   "three_lens_analysis": {{
-    "money_flow": "돈의 흐름 분석 한 문장",
-    "structural_change": "구조적 변화 분석 한 문장",
-    "policy_direction": "정책 방향 분석 한 문장"
+    "money_flow": "...",
+    "structural_change": "...",
+    "policy_direction": "..."
   }},
-  "level2_chain": ["원인1", "원인2", "결과1", "결과2", "투자 임팩트"],
-  "historical_reference": {{
-    "case": "과거 사례명",
-    "similarity": "유사한 이유",
-    "outcome": "그때 결과"
+  "expectation_vs_reality": {{
+    "expectation": "시장 기대치",
+    "reality": "실제 발생 사실",
+    "conflict_reason": "왜 지금 이것이 모순적인가?"
   }},
-  "risk_factors": ["리스크1", "리스크2", "리스크3"],
-  "check_points": ["체크포인트1", "체크포인트2"]
+  "four_layer_check": {{
+    "rates": "...",
+    "liquidity": "...",
+    "policy": "...",
+    "expectation_gap": "..."
+  }},
+  "level2_chain": ["원인1", "...", "투자 임팩트"],
+  "historical_reference": {{ "case": "...", "similarity": "...", "outcome": "..." }},
+  "risk_factors": ["리스크/반대시나리오1", "..."]
 }}
+
+[참조 데이터: 90일 시계열 추이 (Feb ~ Apr)]
+{json.dumps(history, ensure_ascii=False, indent=2)}
+
+[출력 JSON 구조]
+{{
+  "date": "{self.today}",
+  "topic": "{signal['topic']}",
+  "physical_bottleneck_analysis": "물리적 실체(해협, 용수, 전력 등)에 대한 분석 결과...",
+  "power_structure_analysis": "이득을 보는 주체와 손해를 보는 주체 분석...",
+  "trend_context_analysis": "2월부터 이어진 흐름에 대한 분석...",
+  "why_now_critical_point": "이 변화가 왜 지금 임계점인가?",
+  "level2_chain": [...],
+  ...
+}}
+순수 JSON만 출력해라.
 """
         result = self.claude.call_json(prompt, max_tokens=2000)
 
@@ -89,7 +114,20 @@ WTI: ${market.get('wti_oil', 'N/A')}
         return result
 
     def map_stocks(self, signal, analysis):
-        """관련 종목 매핑"""
+        """관련 종목 매핑 (v6.0: MACRO 토픽은 종목보다 시나리오에 집중)"""
+        target_type = signal.get("target_type", "MICRO_SECTOR_FOCUS")
+        
+        # MACRO_GEOPOLITICAL 등 거대 담론은 억지 매핑 지양
+        if "MACRO" in target_type:
+            print(f"  📢 거대 담론({target_type}) 감지 — 종목보다 거시 시나리오에 집중합니다.")
+            return {
+                "date": self.today,
+                "topic_signal": signal["topic"],
+                "stocks": [],
+                "target_segments": signal.get("related_keywords", []),
+                "is_macro_narrative": True
+            }
+
         print("  종목 매핑 중...")
 
         keywords = signal.get("related_keywords", [])

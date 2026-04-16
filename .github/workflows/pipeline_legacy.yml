@@ -1,8 +1,8 @@
-name: Daily HOIN Engine
+name: Pipeline Legacy (v3.0 — DISABLED)
 
 on:
-  schedule:
-    - cron: '0 21 * * *'   # KST 06:00 = UTC 21:00
+  # schedule:                          # [v4.0] cron 비활성화 — Paperclip이 오케스트레이션 담당
+  #   - cron: '0 21 * * *'             # KST 06:00 = UTC 21:00
   workflow_dispatch:
 
 permissions:

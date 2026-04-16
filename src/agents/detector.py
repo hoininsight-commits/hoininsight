@@ -2,33 +2,114 @@ import json
 from datetime import datetime
 from pathlib import Path
 from src.core.filters import SignalFilters
+from src.core.claude_client import ClaudeClient
 
 
 class DetectorAgent:
+    """이상징후 탐지자 — 숫자와 뉴스 맥락을 결합하여 시장의 신호를 포착함 (v5.0 Narrative-First)"""
 
     def __init__(self):
+        # 작업 디렉토리 고정 (IS-4.0 설계 지침)
+        self.base_dir = Path("/Users/taehunlim/dev/HoinInsight")
         self.today = datetime.now().strftime("%Y%m%d")
-        self.raw_dir = Path(f"data/raw/{self.today}")
-        self.signal_dir = Path(f"data/signals/{self.today}")
+        
+        self.raw_dir = self.base_dir / f"data/raw/{self.today}"
+        self.signal_dir = self.base_dir / f"data/signals/{self.today}"
         self.signal_dir.mkdir(parents=True, exist_ok=True)
-        self.history_path = Path("data/history/signal_log.json")
+        self.history_path = self.base_dir / "data/history/signal_log.json"
         self.filters = SignalFilters()
-
+        self.claude = ClaudeClient()
     def load_raw_data(self):
         raw = {}
+        # macro, market, sentiment 데이터 로드
         for name in ["macro", "market", "sentiment"]:
             p = self.raw_dir / f"{name}.json"
             if p.exists():
-                raw[name] = json.loads(p.read_text())
+                try:
+                    raw[name] = json.loads(p.read_text())
+                except Exception as e:
+                    print(f"  {name}.json 로드 실패: {e}")
+        
+        # 90일 히스토리 데이터 로드 (v7.0)
+        hist_p = self.base_dir / "data/raw/history/market_90d.json"
+        if hist_p.exists():
+            try:
+                raw["history_90d"] = json.loads(hist_p.read_text()).get("history_90d", {})
+                print("  📊 90일 시계열 데이터 로드 완료 (Feb~Current)")
+            except Exception as e:
+                print(f"  90일 히스토리 로드 실패: {e}")
         return raw
 
-    def build_candidates(self, raw_data):
-        """7개 필터 실행 후 후보 목록 생성"""
+    def discover_autonomous_narratives(self, raw_data: dict) -> list:
+        """AI 자율 담론 사냥: 시장의 모순(Anomaly)과 기대 충돌을 스스로 포착 (v6.0)"""
+        sentiment = raw_data.get("sentiment", {}).get("data", {})
+        headlines = sentiment.get("news_headlines", [])
         market = raw_data.get("market", {}).get("data", {})
-        macro = raw_data.get("macro", {}).get("data", {})
+        history = raw_data.get("history_90d", {})
+        
+        if not headlines:
+            return []
+
+        print("  🧠 AI 자율 서사 탐색 중 (시장의 모순 및 기대 충돌 포착)...")
+        
+        # 전체 맥락을 한 번에 분석하여 '이상함'의 냄새를 맡음
+        prompt = f"""
+너는 '경제사냥꾼'의 핵심 탐지 엔진이다. 
+아래 뉴스 헤드라인들과 시장 지표를 보고, 오늘 시장에서 가장 '이상하거나(Anomaly)', '기대를 배신하거나(Expectation vs Reality)', 
+혹은 '결정적인 판도의 변화(WHY NOW)'가 느껴지는 핵심 서사 3가지를 선정해라.
+
+[시장 지표 및 90일 추세 (v7.0)]
+- 환율: {market.get('usd_krw', 'N/A')}원 (90일 고점: {history.get('usd_krw', {}).get('max_90d', 'N/A')}원)
+- KOSPI: {market.get('kospi_1d_change', '0')}% (90일 평균: {history.get('kospi', {}).get('avg_90d', 'N/A')})
+- WTI 유가: ${market.get('wti_oil', 'N/A')} (90일 고점: ${history.get('wti_oil', {}).get('max_90d', 'N/A')}, 90일 평균: ${history.get('wti_oil', {}).get('avg_90d', 'N/A')})
+
+[뉴스 헤드라인]
+{json.dumps([h.get('title') for h in headlines[:30]], ensure_ascii=False, indent=2)}
+
+[사냥 지침 - 시계열 맥락 우선]
+1. 추세적 위치 파악: 오늘의 숫자가 90일 최고점 대비 낮다면 '돌파'가 아닌 '조정 중 반등'으로 해석할 것.
+2. 모순(Anomaly) 포착: 지표의 흐름과 뉴스의 톤이 어긋나는 지점을 찾을 것.
+3. WHY NOW: 2월부터 이어진 흐름 속에서 왜 '오늘' 이 변화가 변곡점인지 설명할 것.
+
+[출력 JSON 구조]
+[
+  {{
+    "topic": "서사 제목 (경제사냥꾼 스타일 - 짧고 강하게)",
+    "target_type": "MACRO_GEOPOLITICAL | MACRO_FINANCIAL | MICRO_SECTOR_FOCUS",
+    "reason": "AI가 이 주제를 선정한 논리적 이유 (한 문장 - 왜 지금 모순적인가?)",
+    "strength": 0.0~10.0 점수,
+    "related_keywords": ["지정학", "유동성", "모순" 등 3~5개],
+    "filters_hit": ["필터2_역설적현상", "필터4_시의성" 등 관련 필터 2~3개]
+  }}
+]
+순수 JSON 배열만 출력해라.
+"""
+        try:
+            results = self.claude.call_json(prompt, max_tokens=2000)
+            if not isinstance(results, list): return []
+            
+            for res in results:
+                res["context_status"] = "AI_DISCOVERED"
+                res["data_evidence"] = {"ai_reason": res.get("reason", "")}
+            return results
+        except Exception as e:
+            print(f"  ❌ AI 서사 탐색 실패: {e}")
+            return []
+
+    def build_candidates(self, raw_data):
+        """뉴스 서사와 시장 지표를 결합하여 후보 생성 (v5.0)"""
+        market = raw_data.get("market", {}).get("data", {})
         sentiment = raw_data.get("sentiment", {}).get("data", {})
 
-        # 시장 지표 로드 (기본 + 추가)
+        candidates = []
+
+        # [NEW] 서사 자율 탐지: AI가 스스로 모순과 기대 충돌을 포착 (v6.0 TRUE HUNTER)
+        narratives = self.discover_autonomous_narratives(raw_data)
+        if narratives:
+            print(f"  📢 AI 자율 포착 담론: {len(narratives)}건")
+            candidates.extend(narratives)
+
+        # 주요 지표 로드
         usd_krw = market.get("usd_krw", 0)
         vix = market.get("vix", 0)
         kospi_chg = market.get("kospi_1d_change", 0)
@@ -36,18 +117,12 @@ class DetectorAgent:
         gold = market.get("gold", 0)
         dxy = market.get("dxy", 0)
         us10y = market.get("us10y", 0)
-        nasdaq = market.get("nasdaq", 0)
-        sp500 = market.get("sp500", 0)
-        brent = market.get("brent", 0)
 
-        candidates = []
-
-        # 후보 1: 환율 이슈
+        # 1. 환율 이슈
         if usd_krw and usd_krw > 1400:
             label = "위험" if usd_krw > 1500 else "주의"
             filters_hit = ["필터1_역사적임계값"]
-            if usd_krw > 1500:
-                filters_hit.append("필터4_시의성")
+            if usd_krw > 1480: filters_hit.append("필터4_시의성")
             strength = self.filters.calculate_strength(filters_hit, usd_krw=usd_krw)
             candidates.append({
                 "topic": f"원달러 환율 {usd_krw:.0f}원 → {label} 수준",
@@ -57,325 +132,119 @@ class DetectorAgent:
                 "related_keywords": ["환율", "원화", "달러", "외환"]
             })
 
-        # 후보 2: VIX 공포 구간
-        vix = market.get("vix", 0)
-        if vix and vix > 20:
-            label = "극단적 공포" if vix > 30 else "공포"
-            filters_hit = ["필터1_역사적임계값"]
-            if vix > 30:
-                filters_hit.append("필터2_역설적현상")
-            strength = self.filters.calculate_strength(filters_hit)
+        # 2. VIX 이슈
+        if vix and vix > 22:
+            strength = self.filters.calculate_strength(["필터1_역사적임계값"])
             candidates.append({
-                "topic": f"VIX {vix:.1f} → {label} 구간 진입",
-                "filters_hit": filters_hit,
+                "topic": f"VIX 지수 {vix:.1f} → 시장 불안정성 심화",
+                "filters_hit": ["필터1_역사적임계값"],
                 "strength": round(strength, 1),
                 "data_evidence": {"vix": vix},
-                "related_keywords": ["공포", "변동성", "시장심리", "VIX"]
+                "related_keywords": ["공포", "변동성", "VIX"]
             })
 
-        # 후보 3: KOSPI 급락
-        kospi_chg = market.get("kospi_1d_change", 0)
-        if kospi_chg and kospi_chg < -2.0:
-            filters_hit = ["필터1_역사적임계값", "필터4_시의성"]
-            strength = self.filters.calculate_strength(filters_hit)
-            candidates.append({
-                "topic": f"KOSPI 하루 {kospi_chg:.1f}% 급락",
-                "filters_hit": filters_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"kospi_change": kospi_chg},
-                "related_keywords": ["코스피", "급락", "외국인", "한국증시"]
-            })
-
-        # 후보 4: 유가 이슈
-        wti = market.get("wti_oil", 0)
-        if wti and wti > 90:
-            label = "위험" if wti > 100 else "주의"
+        # 3. 유가 이슈
+        if wti and wti > 85:
             filters_hit = ["필터1_역사적임계값", "필터5_연결고리"]
             strength = self.filters.calculate_strength(filters_hit)
             candidates.append({
-                "topic": f"WTI 유가 ${wti:.1f} → {label} 수준",
+                "topic": f"WTI 유가 ${wti:.1f} → 에너지 비용 압박",
                 "filters_hit": filters_hit,
                 "strength": round(strength, 1),
                 "data_evidence": {"wti": wti},
-                "related_keywords": ["유가", "원유", "에너지", "인플레이션", "호르무즈"]
+                "related_keywords": ["유가", "원유", "인플레이션"]
             })
 
-        # 후보 5: 권위자 신호
-        for signal in sentiment.get("authority_signals", []):
-            filters_hit = ["필터6_권위자변화", "필터4_시의성"]
-            strength = self.filters.calculate_strength(filters_hit)
+        # 4. 복합 신호 (환율 + 유가)
+        if usd_krw and usd_krw > 1430 and wti and wti > 88:
+            filters_hit = ["필터1_역사적임계값", "필터2_역설적현상", "필터5_연결고리"]
+            strength = self.filters.calculate_strength(filters_hit, usd_krw=usd_krw)
             candidates.append({
-                "topic": f"{signal.get('person')} → {signal.get('action')}",
-                "filters_hit": filters_hit,
-                "strength": round(strength, 1),
-                "data_evidence": signal,
-                "related_keywords": [signal.get('person', '')]
-            })
-
-        # 복합 신호: 환율 + 유가 동시
-        if usd_krw and usd_krw > 1400 and wti and wti > 85:
-            filters_hit = [
-                "필터1_역사적임계값", "필터2_역설적현상",
-                "필터4_시의성", "필터5_연결고리"
-            ]
-            strength = self.filters.calculate_strength(filters_hit, usd_krw=usd_krw, vix=vix)
-            candidates.append({
-                "topic": f"환율 {usd_krw:.0f}원 + 유가 ${wti:.1f} 동시 급등 → 복합 위기 신호",
+                "topic": f"환율 {usd_krw:.0f}원 + 유가 ${wti:.1f} 동시 급등 → 복합 위기",
                 "filters_hit": filters_hit,
                 "strength": round(strength, 1),
                 "data_evidence": {"usd_krw": usd_krw, "wti": wti},
-                "related_keywords": ["환율", "유가", "인플레이션", "스태그플레이션"]
+                "related_keywords": ["환율", "유가", "스태그플레이션"]
             })
 
-        # 복합 신호: 환율 극단 + VIX 공포 동시
-        if usd_krw and usd_krw > 1480 and vix and vix > 20:
-            filters_hit_ev = [
-                "필터1_역사적임계값", "필터2_역설적현상",
-                "필터4_시의성", "필터3_미반영격차"
-            ]
-            strength_ev = self.filters.calculate_strength(filters_hit_ev, usd_krw=usd_krw, vix=vix)
-            candidates.append({
-                "topic": f"환율 {usd_krw:.0f}원 + VIX {vix:.1f} 동시 위기 → 복합 공포 신호",
-                "filters_hit": filters_hit_ev,
-                "strength": round(strength_ev, 1),
-                "data_evidence": {"usd_krw": usd_krw, "vix": vix},
-                "related_keywords": ["환율", "VIX", "공포", "변동성", "위기"]
-            })
-
-        # 후보 6: 연결고리 신호 (필터5)
-        f5_hit, f5_details = self.filters.filter5_causal_chain(
-            raw_data.get("market", {}), raw_data.get("sentiment", {})
-        )
+        # 5. 필터기반 정밀 신호 (연결고리, 역설 등)
+        f5_hit, f5_details = self.filters.filter5_causal_chain(raw_data.get("market", {}), raw_data.get("sentiment", {}))
         if f5_hit:
-            for detail in f5_details[:1]:  # 가장 강한 연결고리 1개만
-                filters_hit_f5 = ["필터5_연결고리"]
-                if usd_krw and usd_krw > 1450:
-                    filters_hit_f5.append("필터1_역사적임계값")
-                strength_f5 = self.filters.calculate_strength(filters_hit_f5)
+            for detail in f5_details[:1]:
                 candidates.append({
                     "topic": detail,
-                    "filters_hit": filters_hit_f5,
-                    "strength": round(strength_f5, 1),
+                    "filters_hit": ["필터5_연결고리"],
+                    "strength": 7.5,
                     "data_evidence": {"detail": detail},
                     "related_keywords": ["연결고리", "파급효과"]
                 })
 
-        # 후보 7: 역설적 현상 (필터2)
-        f2_hit, f2_details = self.filters.filter2_paradox(
-            raw_data.get("market", {}), raw_data.get("sentiment", {})
-        )
-        if f2_hit:
-            for detail in f2_details[:1]:
-                filters_hit_f2 = ["필터2_역설적현상", "필터4_시의성"]
-                strength_f2 = self.filters.calculate_strength(filters_hit_f2)
-                candidates.append({
-                    "topic": detail,
-                    "filters_hit": filters_hit_f2,
-                    "strength": round(strength_f2, 1),
-                    "data_evidence": {"detail": detail},
-                    "related_keywords": ["역설", "반전", "이상"]
-                })
-
-        # --- 추가 지표 기반 필터링 (필터1, 2, 5) ---
-
-        # 1. 필터1 (역사적 임계값) 추가
-        if gold > 3000:
-            f1_hit = ["필터1_역사적임계값"]
-            strength = self.filters.calculate_strength(f1_hit) + 0.5
-            candidates.append({
-                "topic": f"금 가격 {gold:,.0f}달러 돌파 → 역사적 최고가",
-                "filters_hit": f1_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"gold": gold},
-                "related_keywords": ["금", "안전자산", "인플레이션"]
-            })
-
-        if dxy > 105:
-            f1_hit = ["필터1_역사적임계값"]
-            strength = self.filters.calculate_strength(f1_hit)
-            if dxy > 108: strength += 0.5
-            candidates.append({
-                "topic": f"달러인덱스 {dxy:.1f} 돌파 → 슈퍼 달러 재현",
-                "filters_hit": f1_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"dxy": dxy},
-                "related_keywords": ["달러", "강달러", "DXY"]
-            })
-
-        if us10y > 4.5:
-            f1_hit = ["필터1_역사적임계값"]
-            strength = self.filters.calculate_strength(f1_hit)
-            if us10y > 5.0: strength += 0.5
-            candidates.append({
-                "topic": f"미 국채 10년물 금리 {us10y:.2f}% 급등 → 긴축 우려",
-                "filters_hit": f1_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"us10y": us10y},
-                "related_keywords": ["국채금리", "미국채", "금리"]
-            })
-
-        # 2. 필터2 (역설적 현상) 추가
-        if gold > 2800 and kospi_chg < -1.5:
-            f2_hit = ["필터2_역설적현상"]
-            strength = self.filters.calculate_strength(f2_hit)
-            if gold > 3000: strength += 0.5
-            candidates.append({
-                "topic": "금값 급등 + 코스피 하락 → 위험자산 이탈 뚜렷",
-                "filters_hit": f2_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"gold": gold, "kospi_chg": kospi_chg},
-                "related_keywords": ["안전자산", "도피", "시장불안"]
-            })
-
-        if vix > 30 and wti > 95: # NASDAQ 급락 프록시로 VIX/WTI 활용
-            f2_hit = ["필터2_역설적현상"]
-            candidates.append({
-                "topic": "기술주 급락 + 유가 급등 → 스태그플레이션 공포",
-                "filters_hit": f2_hit,
-                "strength": round(self.filters.calculate_strength(f2_hit), 1),
-                "data_evidence": {"vix": vix, "wti": wti},
-                "related_keywords": ["스태그플레이션", "나스닥", "유가"]
-            })
-
-        # 3. 필터5 (연결고리) 추가
-        if wti > 90 and brent > 95:
-            f5_hit = ["필터5_연결고리"]
-            candidates.append({
-                "topic": "WTI-브렌트유 동시 폭등 → 수입물가 전방위 압박",
-                "filters_hit": f5_hit,
-                "strength": round(self.filters.calculate_strength(f5_hit), 1),
-                "data_evidence": {"wti": wti, "brent": brent},
-                "related_keywords": ["유가", "에너지", "인플레이션"]
-            })
-
-        if dxy > 105 and usd_krw > 1400:
-            f5_hit = ["필터5_연결고리"]
-            strength = self.filters.calculate_strength(f5_hit)
-            if dxy > 108: strength += 0.5
-            candidates.append({
-                "topic": "강달러 → 원달러 환율 동반 상승 → 수출입 복합 영향",
-                "filters_hit": f5_hit,
-                "strength": round(strength, 1),
-                "data_evidence": {"dxy": dxy, "usd_krw": usd_krw},
-                "related_keywords": ["환율", "달러", "연결고리"]
-            })
-
-        # 강도 기준 내림차순 정렬
+        # 최종 정렬: 강도 기준 (9.5+ 사건은 무조건 1순위)
         candidates.sort(key=lambda x: x["strength"], reverse=True)
         return candidates
 
-    def select_topic(self, candidates):
-        """강도 기준 최종 토픽 선정"""
-        for c in candidates:
-            if c["strength"] >= 6.0:
-                c["selected"] = True
-                c["content_type"] = "롱폼" if c["strength"] >= 8.0 else "쇼츠"
-                c["reject_reason"] = None
-                return c
+    def validate_context(self, topic_obj, sentiment_data):
+        headlines = sentiment_data.get("data", {}).get("news_headlines", [])
+        keywords = topic_obj.get("related_keywords", [])
+        if not headlines: return 0.5
+        match_count = 0
+        for h in headlines:
+            title = h.get("title", "").lower()
+            if any(kw.lower() in title for kw in keywords):
+                match_count += 1
+        return min(match_count / 3.0, 1.0)
 
-        # 선정 기준 미달 시 최상위 후보 반환
+    def select_topic(self, candidates, sentiment_data):
+        print(f"  🔍 {len(candidates)}개 후보에 대해 뉴스 맥락 교차 검증 중...")
+        
+        # AI가 발굴한 자율 서사나 9.5+ 메가 이벤트는 수동 검증 생략 혹은 가점
+        for c in candidates:
+            if c.get("context_status") == "AI_DISCOVERED" or c["strength"] >= 9.5: 
+                c["context_status"] = "AI_VERIFIED" if c.get("context_status") == "AI_DISCOVERED" else "MEGA_EVENT"
+                print(f"    🚨 자율 포착/메가 서사 감지: {c['topic']}")
+                continue
+                
+            score = self.validate_context(c, sentiment_data)
+            orig = c["strength"]
+            if score == 0:
+                c["strength"] *= 0.8
+                c["context_status"] = "MISSING_CONTEXT"
+            else:
+                c["strength"] = orig * (0.8 + 0.2 * score)
+                c["context_status"] = "VERIFIED" if score > 0.5 else "WEAK_CONTEXT"
+            print(f"    - [{c['context_status']}] {c['topic'][:45]}... ({orig:.1f}->{c['strength']:.1f})")
+
+        candidates.sort(key=lambda x: x["strength"], reverse=True)
+        
         if candidates:
             best = candidates[0]
-            best["selected"] = False
-            best["content_type"] = None
-            best["reject_reason"] = f"최고 강도 {best['strength']} → 임계값(6.0) 미달"
+            best["selected"] = True
+            best["content_type"] = "롱폼" if best["strength"] >= 8.5 else "쇼츠"
             return best
-
         return None
 
     def save_results(self, candidates, selected):
-        """결과 저장"""
-        all_candidates = []
-        for i, c in enumerate(candidates):
-            is_selected = (
-                selected and
-                c["topic"] == selected.get("topic") and
-                selected.get("selected")
-            )
-            all_candidates.append({
-                "rank": i + 1,
-                "topic": c["topic"],
-                "filters_hit": c["filters_hit"],
-                "filter_count": len(c["filters_hit"]),
-                "strength": c["strength"],
-                "selected": is_selected,
-                "content_type": c.get("content_type") if is_selected else None,
-                "reject_reason": None if is_selected else "더 강한 신호가 선정됨"
-            })
-
-        # candidates.json 저장
-        (self.signal_dir / "candidates.json").write_text(
-            json.dumps({
-                "date": self.today,
-                "total_candidates": len(all_candidates),
-                "selected_count": 1 if (selected and selected.get("selected")) else 0,
-                "candidates": all_candidates
-            }, ensure_ascii=False, indent=2)
-        )
-
-        # today_signal.json 저장
-        if selected and selected.get("selected"):
-            (self.signal_dir / "today_signal.json").write_text(
-                json.dumps({
-                    "date": self.today,
-                    "topic": selected["topic"],
-                    "strength": selected["strength"],
-                    "content_type": selected["content_type"],
-                    "filters_hit": selected["filters_hit"],
-                    "data_evidence": selected.get("data_evidence", {}),
-                    "related_keywords": selected.get("related_keywords", []),
-                    "level2_chain": [],
-                    "is_republish": False,
-                    "urgency": "HIGH" if selected["strength"] >= 8.0 else "MEDIUM"
-                }, ensure_ascii=False, indent=2)
-            )
-
-        # signal_log.json 업데이트
-        log = {"signals": []}
-        if self.history_path.exists():
-            try:
-                log = json.loads(self.history_path.read_text())
-            except Exception:
-                pass
-
-        log["signals"].append({
+        # 대시보드(Publisher) 호환 규격으로 저장
+        save_data = {
             "date": self.today,
-            "topic": selected["topic"] if selected else "없음",
-            "strength": selected["strength"] if selected else 0,
-            "selected": selected.get("selected", False) if selected else False,
-            "total_candidates": len(candidates)
-        })
+            "total_candidates": len(candidates),
+            "candidates": candidates
+        }
+        (self.signal_dir / "candidates.json").write_text(json.dumps(save_data, ensure_ascii=False, indent=2))
+        
+        if selected:
+            (self.signal_dir / "today_signal.json").write_text(json.dumps(selected, ensure_ascii=False, indent=2))
 
-        self.history_path.write_text(
-            json.dumps(log, ensure_ascii=False, indent=2)
-        )
-
-    def run(self, collector_result=None):
+    def run(self):
         print(f"\n🔍 AGENT-03 DETECTOR 시작 [{self.today}]")
-
-        raw_data = self.load_raw_data()
-        if not raw_data:
-            print("  Raw 데이터 없음 → AGENT-01 먼저 실행 필요")
-            return {}
-
-        candidates = self.build_candidates(raw_data)
-        print(f"  감지된 후보 신호: {len(candidates)}개")
-
-        selected = self.select_topic(candidates)
-
-        if selected and selected.get("selected"):
-            print(f"  ✅ 선정 완료: {selected['topic']}")
-            print(f"  강도: {selected['strength']} / 유형: {selected['content_type']}")
-        else:
-            print("  오늘 선정 기준 충족 신호 없음")
-            if selected:
-                print(f"  최상위 후보: {selected['topic']} (강도 {selected['strength']})")
-
+        raw = self.load_raw_data()
+        if not raw: return {}
+        candidates = self.build_candidates(raw)
+        selected = self.select_topic(candidates, raw.get("sentiment", {}))
+        if selected:
+            print(f"  ✅ 최종 선정: {selected['topic']} (강도: {selected['strength']:.1f})")
         self.save_results(candidates, selected)
-        print("✅ AGENT-03 완료\n")
-        return {"selected": selected, "candidates": candidates}
-
+        return {"selected": selected}
 
 if __name__ == "__main__":
-    agent = DetectorAgent()
-    agent.run()
+    DetectorAgent().run()

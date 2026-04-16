@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 23 * * *"
+  # schedule:                          # [v4.0] cron 비활성화 — Paperclip이 오케스트레이션 담당
+  #   - cron: "0 23 * * *"
 
 permissions:
   contents: write
