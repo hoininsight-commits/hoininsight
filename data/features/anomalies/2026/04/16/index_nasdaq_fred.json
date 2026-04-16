@@ -1,17 +1,17 @@
 [
   {
-    "ts_utc": "2026-04-16T23:05:51Z",
+    "ts_utc": "2026-04-16T23:07:53Z",
     "dataset_id": "index_nasdaq_fred",
     "entity": "NDX",
     "anomaly_type": "Z_SCORE_MODEL_V1",
     "severity": 60,
     "level": "L2",
     "evidence": {
-      "z_score": 2.14,
-      "percentile": 97.2,
-      "value": 25842.0,
-      "rolling_mean_20d": 24300.6835,
-      "reasoning": "Z-Score 2.14 >= 2.0"
+      "z_score": 2.2,
+      "percentile": 100.0,
+      "value": 26204.58,
+      "rolling_mean_20d": 24371.8915,
+      "reasoning": "Z-Score 2.20 >= 2.0"
     }
   }
 ]
