@@ -1,15 +1,21 @@
 [
   {
-    "ts_utc": "2026-04-17T22:21:52Z",
+    "ts_utc": "2026-04-17T16:09:33Z",
     "dataset_id": "crypto_eth_usd_spot_coingecko",
-    "topic_id": "crypto_eth_usd_spot_coingecko::none",
-    "title": "data/features/anomalies/2026/04/17/crypto_eth_usd_spot_coingecko.json (Normal)",
-    "score": 0.0,
-    "severity": "LOW",
+    "topic_id": "crypto_eth_usd_spot_coingecko::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/crypto_eth_usd_spot_coingecko.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
     "evidence": {
-      "source_severity": 0,
-      "level": "NORMAL",
-      "details": {},
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 2.04,
+        "percentile": 50.0,
+        "value": 2449.5,
+        "rolling_mean_20d": 2190.0739999999996,
+        "reasoning": "Z-Score 2.04 >= 2.0"
+      },
       "regime": {
         "vix_roc_1d": null,
         "us10y_roc_1d": null,
@@ -29,8 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/04/17/crypto_eth_usd_spot_coingecko.json"
     },
-    "rationale": "[NORMAL] {} (Regime x1.0)",
-    "links": [],
-    "is_pre_structural": false
+    "rationale": "[L2] Z-Score 2.04 >= 2.0 (Regime x1.0)",
+    "links": []
   }
 ]
