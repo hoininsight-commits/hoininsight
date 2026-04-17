@@ -11,7 +11,7 @@ permissions:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60   # 드릴다운 165개 종목 수집 포함
 
     steps:
       - name: 코드 체크아웃
@@ -36,6 +36,27 @@ jobs:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+        continue-on-error: true
+
+      - name: AGENT-01B RRG ENGINE 실행 (섹터 RRG)
+        run: |
+          echo "=== AGENT-01B RRG ENGINE 시작 ==="
+          python -m src.agents.rrg_engine
+          echo "=== AGENT-01B 완료 ==="
+        continue-on-error: true
+
+      - name: AGENT-01C RRG DRILLDOWN 데이터 생성
+        run: |
+          echo "=== AGENT-01C RRG DRILLDOWN 시작 ==="
+          echo "11개 섹터 × 15개 종목 = 165개 종목 RRG 데이터 수집 중..."
+          python -m src.agents.rrg_engine --drilldown
+          if [ -f "docs/data/rrg_drilldown_data.json" ]; then
+            echo "✅ rrg_drilldown_data.json 생성 완료"
+            python3 -c "import json; d=json.load(open('docs/data/rrg_drilldown_data.json')); sectors=d.get('sectors',{}); total=sum(len(v['assets']) for v in sectors.values()); print(f'  섹터 수: {len(sectors)}개, 총 종목 수: {total}개')" 2>/dev/null || true
+          else
+            echo "⚠ rrg_drilldown_data.json 생성 실패"
+          fi
+          echo "=== AGENT-01C 완료 ==="
         continue-on-error: true
 
       - name: AGENT-02 LEARNER 실행

@@ -415,6 +415,7 @@ class CollectorAgent:
         # 외국인 수급 (별도 계산)
         data["kospi_foreign_net"] = self._get_kospi_foreign_vol()
         data["fear_greed_index"] = self._get_fear_greed()
+        data["usd_krw"] = data.get("usd_krw", 1380.0)
 
         # 다중기간 통계 추가 (v5.0)
         data["multi_period_stats"] = self._calculate_multi_period_stats(data)
@@ -436,7 +437,7 @@ class CollectorAgent:
         history_dir.mkdir(parents=True, exist_ok=True)
         (history_dir / "market_90d.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))
 
-        print(f"✅ market.json (90일 히스토리 포함) 저장 완료: {output_path}")
+        print(f"✅ market.json (히스토리+통계 포함) 저장 완료: {output_path}")
         return result
 
     def _get_kospi_foreign_vol(self) -> float:
@@ -619,6 +620,63 @@ class CollectorAgent:
 
         print(f"✅ sentiment.json 저장 완료: {output_path}")
         return result
+
+    def collect_consensus(self) -> dict:
+        """
+        경제지표 컨센서스 수집 (FRED API 기반 서프라이즈 계산)
+        """
+        print("📅 컨센서스 데이터 수집 중 (FRED 기반)...")
+        import os
+        from fredapi import Fred
+        from datetime import datetime, timedelta
+
+        fred = Fred(api_key=os.getenv("FRED_API_KEY"))
+        today = datetime.now()
+        result_events = []
+
+        indicators = [
+            ("CPIAUCSL",    "미국 CPI",           "전월비"),
+            ("CPILFESL",    "미국 Core CPI",       "전월비"),
+            ("PCEPI",       "미국 PCE",            "전월비"),
+            ("PCEPILFE",    "미국 Core PCE",       "전월비"),
+            ("PAYEMS",      "미국 비농업고용",      "천명"),
+            ("UNRATE",      "미국 실업률",          "%"),
+            ("FEDFUNDS",    "미국 기준금리",        "%"),
+            ("RETAILSL",    "미국 소매판매",        "전월비"),
+            ("INDPRO",      "미국 산업생산",        "전월비"),
+            ("GDP",         "미국 GDP",            "분기"),
+            ("T10Y2Y",      "10Y-2Y 금리스프레드", "bp"),
+            ("BAMLH0A0HYM2","HY 스프레드",         "bp"),
+        ]
+
+        for series_id, name, unit in indicators:
+            try:
+                end = today
+                start = today - timedelta(days=90)
+                series = fred.get_series(series_id, start, end).dropna()
+                if len(series) < 2: continue
+                current_val, p_val = float(series.iloc[-1]), float(series.iloc[-2])
+                change = round(current_val - p_val, 4)
+                if len(series) >= 12:
+                    recent_changes = [float(series.iloc[i] - series.iloc[i-1]) for i in range(-12, -1) if abs(i) < len(series)]
+                    avg_chg = sum(recent_changes) / len(recent_changes) if recent_changes else 0
+                    surprise = round(change - avg_chg, 4)
+                    surprise_pct = round((change - avg_chg) / abs(avg_chg) * 100, 2) if avg_chg != 0 else 0
+                else: surprise, surprise_pct = 0, 0
+                result_events.append({
+                    "series_id": series_id, "event": name, "unit": unit, "date": series.index[-1].strftime("%Y-%m-%d"),
+                    "actual": current_val, "previous": p_val, "change": change, "surprise": surprise, "surprise_pct": surprise_pct,
+                    "has_actual": True, "surprise_direction": "BEAT" if surprise > 0 else "MISS"
+                })
+            except: pass
+
+        major_surprises = sorted([e for e in result_events if abs(e.get("surprise_pct", 0)) > 10], key=lambda x: abs(x.get("surprise_pct", 0)), reverse=True)[:5]
+        output = {"date": self.today, "collected_at": datetime.now().isoformat(), "source": "FRED API", "total_events": len(result_events), "major_surprises": major_surprises, "all_events": result_events}
+        output_path = self.output_dir / "consensus.json"
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(output, f, ensure_ascii=False, indent=2)
+        print(f"✅ consensus.json 저장 완료 (서프라이즈 {len(major_surprises)}개)")
+        return output
 
     def collect_fred(self) -> dict:
         """FRED API 기반 거시 데이터 수집"""
@@ -814,204 +872,55 @@ class CollectorAgent:
             # 뉴스 맥락과 일치하는지 확인
             is_news_relevant = any(kw in corp_name or kw in report_nm for kw in keywords)
             # 호재성 공시인지 확인
-            is_bullish = any(bw in report_nm for bw in bullish_keywords)
+            is_bullish = any(bk in report_nm for bk in bullish_keywords)
             
             if is_news_relevant or is_bullish:
-                sector = stock_to_sector.get(corp_name, "기타/신규")
                 disclosures.append({
                     "company": corp_name,
-                    "report": report_nm,
-                    "sector": sector,
-                    "date": row['rcept_dt'],
-                    "relevancy": "HIGH" if is_news_relevant else "NORMAL"
+                    "title": report_nm,
+                    "type": "NEWS_RELEVANT" if is_news_relevant else "BULLISH",
+                    "link": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={row['rcept_no']}",
+                    "date": row['rcept_dt']
                 })
                 
-                if sector != "기타/신규":
-                    sector_hits[sector] = sector_hits.get(sector, 0) + 1
-
-        active_themes = []
-        for sector, count in sector_hits.items():
-            if count >= 1: # 공격적 모드: 1건만 있어도 고려
-                active_themes.append({
-                    "sector": sector,
-                    "count": count,
-                    "strength": 8.5 if any(d["relevancy"] == "HIGH" for d in disclosures if d["sector"] == sector) else 6.5,
-                    "reason": f"뉴스 맥락 일치 및 {count}건의 주요 공시 감지"
-                })
-
-        print(f"  총 {len(disclosures)}개 정밀 수집, {len(active_themes)}개 테마 포착")
+                # 섹터 가중치 계산
+                sector = stock_to_sector.get(corp_name)
+                if sector:
+                    sector_hits[sector] = sector_hits.get(sector, 0) + (2 if is_bullish else 1)
 
         result = {
             "date": self.today,
             "collected_at": datetime.now().isoformat(),
-            "source": "DART (뉴스 기반 정밀 타격)",
             "data": {
                 "disclosures": disclosures,
-                "themes": active_themes,
-                "count": len(disclosures)
+                "themes": sorted(sector_hits.items(), key=lambda x: x[1], reverse=True)
             }
         }
 
         output_path = self.output_dir / "dart.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
+
+        print(f"✅ dart.json 저장 완료 (공시 {len(disclosures)}건 캡처)")
         return result
 
-    def collect_consensus(self) -> dict:
-        """
-        경제지표 컨센서스 수집
-        FRED API 기반으로 최근 발표된 주요 지표의
-        실제치 vs 이전치 비교로 서프라이즈 계산
-        """
-        print("📅 컨센서스 데이터 수집 중 (FRED 기반)...")
-        import os
-        from fredapi import Fred
-        from datetime import datetime, timedelta
-
-        fred = Fred(api_key=os.getenv("FRED_API_KEY"))
-        today = datetime.now()
-        result_events = []
-
-        # 주요 경제지표 목록 (series_id, 이름, 단위)
-        indicators = [
-            ("CPIAUCSL",    "미국 CPI",           "전월비"),
-            ("CPILFESL",    "미국 Core CPI",       "전월비"),
-            ("PCEPI",       "미국 PCE",            "전월비"),
-            ("PCEPILFE",    "미국 Core PCE",       "전월비"),
-            ("PAYEMS",      "미국 비농업고용",      "천명"),
-            ("UNRATE",      "미국 실업률",          "%"),
-            ("FEDFUNDS",    "미국 기준금리",        "%"),
-            ("RETAILSL",    "미국 소매판매",        "전월비"),
-            ("INDPRO",      "미국 산업생산",        "전월비"),
-            ("GDP",         "미국 GDP",            "분기"),
-            ("T10Y2Y",      "10Y-2Y 금리스프레드", "bp"),
-            ("BAMLH0A0HYM2","HY 스프레드",         "bp"),
-        ]
-
-        for series_id, name, unit in indicators:
-            try:
-                # 최근 3개월 데이터
-                end = today
-                start = today - timedelta(days=90)
-                series = fred.get_series(series_id, start, end)
-                series = series.dropna()
-
-                if len(series) < 2:
-                    continue
-
-                current_val  = float(series.iloc[-1])
-                previous_val = float(series.iloc[-2])
-                current_date = series.index[-1].strftime("%Y-%m-%d")
-
-                # 전기 대비 변화
-                change = round(current_val - previous_val, 4)
-                change_pct = round(
-                    (current_val - previous_val) / abs(previous_val) * 100, 2
-                ) if previous_val != 0 else 0
-
-                # 서프라이즈 판단
-                # 12개월 평균 변화율을 컨센서스 대리값으로 사용
-                if len(series) >= 12:
-                    recent_changes = [
-                        float(series.iloc[i] - series.iloc[i-1])
-                        for i in range(-12, -1)
-                        if i < 0 and abs(i) < len(series)
-                    ]
-                    avg_change = sum(recent_changes) / len(recent_changes) if recent_changes else 0
-                    surprise = round(change - avg_change, 4)
-                    surprise_pct = round(
-                        (change - avg_change) / abs(avg_change) * 100, 2
-                    ) if avg_change != 0 else 0
-                else:
-                    surprise = 0
-                    surprise_pct = 0
-
-                event = {
-                    "series_id":     series_id,
-                    "event":         name,
-                    "unit":          unit,
-                    "date":          current_date,
-                    "actual":        current_val,
-                    "previous":      previous_val,
-                    "change":        change,
-                    "change_pct":    change_pct,
-                    "surprise":      surprise,
-                    "surprise_pct":  surprise_pct,
-                    "has_actual":    True,
-                    "surprise_direction": "BEAT" if surprise > 0 else "MISS"
-                }
-                result_events.append(event)
-
-                if abs(surprise_pct) > 20:
-                    print(f"  🚨 서프라이즈 {name}: {previous_val}→{current_val} ({surprise_pct:+.1f}%)")
-                else:
-                    print(f"  ✅ {name}: {current_val} (변화: {change:+.4f})")
-
-            except Exception as e:
-                print(f"  ❌ {series_id} 수집 실패: {e}")
-
-        # 서프라이즈 큰 것 정렬
-        major_surprises = sorted(
-            [e for e in result_events if abs(e.get("surprise_pct", 0)) > 10],
-            key=lambda x: abs(x.get("surprise_pct", 0)),
-            reverse=True
-        )[:5]
-
-        output = {
-            "date":               self.today,
-            "collected_at":       datetime.now().isoformat(),
-            "source":             "FRED API",
-            "total_events":       len(result_events),
-            "events_with_actual": len(result_events),
-            "major_surprises":    major_surprises,
-            "all_events":         result_events
-        }
-
-        output_path = self.output_dir / "consensus.json"
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(output, f, ensure_ascii=False, indent=2)
-
-        print(f"✅ consensus.json 저장 완료 ({len(result_events)}개 지표, 주요 서프라이즈 {len(major_surprises)}개)")
-        return output
-
-    def run(self):
-        print(f"\n🚀 AGENT-01 COLLECTOR (v4.5 News-Driven) 시작 [{self.today}]")
+    def run_all(self):
+        """전체 수집 프로세스 실행 (v7.0 통합)"""
+        print(f"\n🚀 HOIN COLLECTOR v7.0 통합 엔진 가동 [{self.today}]")
         
-        # 1. 뉴스 먼저 수집 (방향성 선점)
-        sentiment = self.collect_sentiment()
-        
-        # 2. 뉴스에서 관심 키워드 추출
-        keywords = self.extract_news_keywords(sentiment)
-        
-        # 3. 나머지 지표 수집
         market = self.collect_market()
         macro = self.collect_macro()
+        sentiment = self.collect_sentiment()
         fred = self.collect_fred()
         ecos = self.collect_ecos()
+        consensus = self.collect_consensus()
         
-        # 4. 키워드를 들고 공시 사냥
+        # 뉴스 기반 정밀 타격 공시 수집
+        keywords = self.extract_news_keywords(sentiment)
         dart = self.collect_dart(keywords)
         
-        # 5. 컨센서스 데이터 수집 (FRED 기반 기존 로직)
-        consensus_fred = self.collect_consensus()
-        
-        # 6. 컨센서스 레이어 수집 (Finnhub API 신규 추가)
-        from src.agents.consensus_collector import ConsensusCollector
-        consensus_finnhub = ConsensusCollector(output_dir=self.output_dir)
-        consensus_finnhub.collect()
-        
-        print("✅ AGENT-01 완료\n")
-        return {
-            "market": market,
-            "macro": macro,
-            "sentiment": sentiment,
-            "fred": fred,
-            "ecos": ecos,
-            "dart": dart,
-            "consensus": consensus_fred  # 기존 호환성 유지
-        }
+        print(f"\n✨ 모든 데이터 수집 완료! (data/raw/{self.today})")
 
 
 if __name__ == "__main__":
-    agent = CollectorAgent()
-    agent.run()
+    CollectorAgent().run_all()
