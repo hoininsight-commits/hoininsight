@@ -1615,8 +1615,8 @@ class DecisionDashboard:
         lines.append("# 🎙️ DAILY EDITORIAL DECISION (FINAL VIEW)")
         lines.append("\n_System diagnostics hidden. Showing prioritized decision metrics only._\n")
         
-        # [Step 52] TODAY TOPIC VIEW
-        self._render_topic_view_panel(lines, data.get("topic_view", {}))
+        # [Step 52] Consolidated Topic View Panel
+        self._render_topic_view_panel(lines, data.get("topic_view", {}), data.get("speakability", {}))
         
         # [IS-38] MEMBERSHIP ONLY FORECAST
         self._render_membership_queue_section(lines, data.get("membership_only_queue", []))

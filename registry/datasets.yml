@@ -464,6 +464,38 @@ datasets:
     report_key: "USDKRW_ECOS"
     curated_path: "data/curated/ecos/fx/usdkrw.csv"
 
+  - dataset_id: "liquidity_kor_m2_ecos"
+    category: "LIQUIDITY"
+    enabled: true
+    soft_fail: true
+    entity: "KOR_M2"
+    unit: "WON"
+    source: "ecos"
+    metric_name: "money_supply"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.ecos_collector:write_raw_kor_m2"
+    normalizer: "src.normalizers.ecos_normalizers:normalize_kor_m2"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "KOR_M2"
+    curated_path: "data/curated/ecos/liquidity/korea_m2.csv"
+
+  - dataset_id: "employment_kor_unrate_ecos"
+    category: "EMPLOYMENT"
+    enabled: true
+    soft_fail: true
+    entity: "KOR_UNRATE"
+    unit: "PCT"
+    source: "ecos"
+    metric_name: "unemployment_rate"
+    schema_version: "timeseries_v1"
+    collector: "src.collectors.ecos_collector:write_raw_kor_unrate"
+    normalizer: "src.normalizers.ecos_normalizers:normalize_kor_unrate"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "KOR_UNRATE"
+    curated_path: "data/curated/ecos/employment/korea_unrate.csv"
+
   - dataset_id: "rates_fed_funds_fred"
     category: "RATES_YIELD"
     enabled: true
@@ -706,3 +738,19 @@ datasets:
     topic: "src.topic_selectors.simple_topic:select_topics"
     report_key: "RE_UNSOLD"
     curated_path: "data/curated/real_estate/unsold.csv"
+
+  - dataset_id: "smart_money_cot"
+    category: "GLOBAL_MACRO"
+    enabled: true
+    soft_fail: true
+    entity: "COT_REPORT"
+    unit: "CONTRACTS"
+    source: "cftc"
+    metric_name: "net_position"
+    schema_version: "timeseries_v1"
+    collector: "src.agents.cot_collector:run_collector"
+    normalizer: "src.normalizers.pass_through:pass_through"
+    anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
+    topic: "src.topic_selectors.simple_topic:select_topics"
+    report_key: "COT"
+    curated_path: "data/curated/macro/cot_report.json"

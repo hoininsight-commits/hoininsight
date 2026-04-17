@@ -37,6 +37,10 @@ class GeminiClient:
 
         self.client = genai.Client(api_key=self.api_key)
 
+    def call_text(self, prompt: str, max_tokens: int = 4000) -> str:
+        """Alias for call() to satisfy existing verification scripts"""
+        return self.call(prompt, max_tokens)
+
     def call(self, prompt: str, max_tokens: int = 4000) -> str:
         """텍스트 생성 호출 (재시도 로직 포함)"""
         if not self.client:

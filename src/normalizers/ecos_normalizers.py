@@ -93,3 +93,17 @@ def normalize_usdkrw(base_dir: Path):
     curated_path = base_dir / "data" / "curated" / "ecos" / "fx" / "usdkrw.csv"
     
     _normalize_ecos_csv(raw_path, curated_path, "KOR_USDKRW", "KRW", "exchange_rate")
+
+def normalize_kor_m2(base_dir: Path):
+    from src.collectors.ecos_collector import _get_latest_ecos_path
+    raw_path = _get_latest_ecos_path('liquidity', 'korea_m2')
+    curated_path = base_dir / "data" / "curated" / "ecos" / "liquidity" / "korea_m2.csv"
+    
+    _normalize_ecos_csv(raw_path, curated_path, "KOR_M2", "WON", "money_supply")
+
+def normalize_kor_unrate(base_dir: Path):
+    from src.collectors.ecos_collector import _get_latest_ecos_path
+    raw_path = _get_latest_ecos_path('employment', 'korea_unrate')
+    curated_path = base_dir / "data" / "curated" / "ecos" / "employment" / "korea_unrate.csv"
+    
+    _normalize_ecos_csv(raw_path, curated_path, "KOR_UNRATE", "PCT", "unemployment_rate")

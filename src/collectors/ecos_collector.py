@@ -41,24 +41,25 @@ class ECOSCollector:
         },
         
         # 통화량 (유동성 공급 확인)
-        # 평잔(BBGA00) vs 말잔(BBHA00). 보통 평잔을 많이 봄.
-        # '101Y002/BBGA00': {
-        #     'category': 'money_supply',
-        #     'name': 'korea_m1',
-        #     'desc': 'M1 통화량(평잔)',
-        #     'stat_code': '101Y002',
-        #     'item_code1': 'BBGA00',
-        #     'freq': 'M'
-        # },
-        # '101Y003/BBGA00': {
-        #     'category': 'money_supply',
-        #     'name': 'korea_m2',
-        #     'desc': 'M2 통화량(평잔)',
-        #     'stat_code': '101Y003',
-        #     'item_code1': 'BBGA00',
-        #     'freq': 'M'
-        # },
+        '161Y005/BBHS00': {
+            'category': 'liquidity',
+            'name': 'korea_m2',
+            'desc': 'M2 통화량',
+            'stat_code': '161Y005',
+            'item_code1': 'BBHS00',
+            'freq': 'M'
+        },
         
+        # 고용 (실업률)
+        '901Y027/I61BC': {
+            'category': 'employment',
+            'name': 'korea_unrate',
+            'desc': '한국 실업률',
+            'stat_code': '901Y027',
+            'item_code1': 'I61BC',
+            'freq': 'M'
+        },
+
         # 환율 (원/달러) - 일별 데이터
         '731Y001/0000001': {
             'category': 'fx',
@@ -207,9 +208,30 @@ class ECOSCollector:
         print(f"[ECOS] Starting collection of {len(self.SERIES_MAP)} series...")
         print(f"{'='*80}\n")
         
-        for series_key in self.SERIES_MAP.keys():
-            self.collect_series(series_key)
+        results = {}
+        for series_key, info in self.SERIES_MAP.items():
+            success = self.collect_series(series_key)
+            if success:
+                 # Get latest value for aggregated json
+                 raw_path = self.base_dir / "data" / "raw" / "ecos" / info['category'] / datetime.now().strftime("%Y/%m/%d") / f"{info['name']}.csv"
+                 if raw_path.exists():
+                     df = pd.read_csv(raw_path)
+                     results[info['name']] = float(df['value'].iloc[-1])
             time.sleep(0.1)  # API 요청 간격
+        
+        # Save legacy ecos.json for verification scripts
+        today_str = datetime.now().strftime("%Y%m%d")
+        legacy_dir = self.base_dir / "data" / "raw" / today_str
+        legacy_dir.mkdir(parents=True, exist_ok=True)
+        legacy_json = legacy_dir / "ecos.json"
+        
+        payload = {
+            "date": today_str,
+            "collected_at": datetime.now().isoformat(),
+            "source": "ECOS API (한국은행)",
+            "data": results
+        }
+        legacy_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
         
         print(f"\n{'='*80}")
         print(f"[ECOS] Collection Complete!")
