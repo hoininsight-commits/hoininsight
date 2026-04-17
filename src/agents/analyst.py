@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from src.core.claude_client import ClaudeClient
+from src.core.gemini_client import GeminiClient
 from src.core.sector_map import get_related_sectors, get_stocks_by_sector
 
 
@@ -13,7 +13,7 @@ class AnalystAgent:
         self.raw_dir = Path(f"data/raw/{self.today}")
         self.analysis_dir = Path(f"data/analysis/{self.today}")
         self.analysis_dir.mkdir(parents=True, exist_ok=True)
-        self.claude = ClaudeClient()
+        self.gemini = GeminiClient()
 
     def load_signal(self):
         p = self.signal_dir / "today_signal.json"
@@ -30,12 +30,12 @@ class AnalystAgent:
         return raw
 
     def analyze(self, signal, raw_data):
-        """Claude API로 레벨2 분석"""
-        print("  Claude API 레벨2 분석 중...")
+        """Gemini API로 레벨2 분석"""
+        print("  Gemini API 레벨2 분석 중...")
 
         market = raw_data.get("market", {}).get("data", {})
         macro = raw_data.get("macro", {}).get("data", {})
-        history = raw_data.get("history_90d", {}) # v7.0 히스토리 데이터
+        history = raw_data.get("history_90d", {}) 
 
         prompt = f"""
 너는 경제사냥꾼 채널 수준의 거시경제 분석 전문가다.
@@ -54,48 +54,25 @@ WTI: ${market.get('wti_oil', 'N/A')}
 한국 기준금리: {macro.get('korea_base_rate', 'N/A')}%
 미국 기준금리: {macro.get('us_fed_rate', 'N/A')}%
 
-[분석 요구사항 (v8.0 Soul Alignment)]
-1. physical_bottleneck_analysis: 지표 뒤의 물리적 실체(에너지 해협, 용수, 전력, 공급망 병목)를 분석할 것. (제20조 준수)
-   - 예: "호르무즈 해협의 물리적 통제권이 누구에게 있는가?", "반도체 단지의 용수 확보가 가능한가?"
-2. power_structure_analysis: 이 사건의 이면에서 진짜 이득을 보는 권력 주체와 손해를 보는 주체를 명확히 구분할 것.
-3. trend_context_check: 90일 시계열 추세 속에서 오늘의 위치 분석 (Article 19 준수).
-4. four_layer_check: 금리, 유동성, 정책, 기대치를 물리적 실체와 연결하여 해석.
-5. historical_reference: 과거 유사 사례 1개
-6. risk_factors: 무효화 조건 또는 반대 시나리오 2~3개
-
-[출력 JSON 구조]
+[출력 JSON 구조 - 반드시 이 5개만 출력]
 {{
   "date": "{self.today}",
   "topic": "{signal['topic']}",
-  "three_lens_analysis": {{
-    "money_flow": "...",
-    "structural_change": "...",
-    "policy_direction": "..."
-  }},
+  "why_now": "왜 지금 이 이슈가 중요한가 (2~3문장)",
   "expectation_vs_reality": {{
-    "expectation": "시장 기대치",
-    "reality": "실제 발생 사실",
-    "conflict_reason": "왜 지금 이것이 모순적인가?"
+    "expectation": "시장 기대",
+    "reality": "실제 현실",
+    "conflict": "충돌 이유"
   }},
-  "four_layer_check": {{
-    "rates": "...",
-    "liquidity": "...",
-    "policy": "...",
-    "expectation_gap": "..."
-  }},
-  "level2_chain": ["원인1", "...", "투자 임팩트"],
-  "historical_reference": {{ "case": "...", "similarity": "...", "outcome": "..." }},
-  "risk_factors": ["리스크/반대시나리오1", "..."]
+  "level2_chain": ["원인1", "원인2", "원인3", "한국 임팩트"],
+  "key_stocks": ["종목1", "종목2", "종목3"],
+  "risk": "무효화 조건 한 문장"
 }}
 
-[90일 추세 요약]
-- 환율 90일 평균: {history.get('usd_krw', {}).get('avg_90d', 'N/A')}원 / 고점: {history.get('usd_krw', {}).get('max_90d', 'N/A')}원
-- WTI 90일 평균: ${history.get('wti_oil', {}).get('avg_90d', 'N/A')} / 고점: ${history.get('wti_oil', {}).get('max_90d', 'N/A')}
-- KOSPI 90일 평균: {history.get('kospi', {}).get('avg_90d', 'N/A')}
-
+절대 이 구조 외에 추가 텍스트 출력하지 마라.
 순수 JSON만 출력해라.
 """
-        result = self.claude.call_json(prompt, max_tokens=2000)
+        result = self.gemini.call_json(prompt, max_tokens=1500)
 
         # level2_chain을 today_signal.json에도 업데이트
         signal["level2_chain"] = result.get("level2_chain", [])
@@ -153,7 +130,7 @@ JSON 배열만 출력 (마크다운 없이):
   {{"ticker":"종목코드6자리","name":"종목명","sector":"섹터명","impact":"수혜 또는 피해","reason":"이유 한 문장","impact_level":"HIGH 또는 MEDIUM","is_primary":true}}
 ]
 """
-            result = self.claude.call_json(prompt, max_tokens=800)
+            result = self.gemini.call_json(prompt, max_tokens=800)
             if isinstance(result, list):
                 stocks = result
 
@@ -164,6 +141,11 @@ JSON 배열만 출력 (마크다운 없이):
         }
 
     def save_results(self, analysis, stocks_data):
+        # 빈 데이터 저장 방지
+        if not analysis or analysis == {}:
+            print("  ⚠️ 분석 결과 없음 — 저장 건너뜀")
+            return False
+
         (self.analysis_dir / "today_analysis.json").write_text(
             json.dumps(analysis, ensure_ascii=False, indent=2)
         )
@@ -171,6 +153,7 @@ JSON 배열만 출력 (마크다운 없이):
             json.dumps(stocks_data, ensure_ascii=False, indent=2)
         )
         print(f"  저장 완료: {self.analysis_dir}")
+        return True
 
     def run(self, detector_result=None):
         print(f"\n🧠 AGENT-04 ANALYST 시작 [{self.today}]")
@@ -184,11 +167,19 @@ JSON 배열만 출력 (마크다운 없이):
 
         raw_data = self.load_raw()
         analysis = self.analyze(signal, raw_data)
-        stocks_data = self.map_stocks(signal, analysis)
-        self.save_results(analysis, stocks_data)
 
+        if not analysis or analysis == {}:
+            print("  ❌ AGENT-04 분석 실패 — WRITER 실행 불가")
+            print("  원인: API 쿼터 초과 또는 응답 오류")
+            # 실패 마커 파일 생성
+            failure_path = self.analysis_dir / "analysis_failed.txt"
+            failure_path.write_text(f"분석 실패: {datetime.now().isoformat()}\n원인: API 응답 없음")
+            return {"analysis": None, "stocks": None, "failed": True}
+
+        stocks_data = self.map_stocks(signal, analysis)
+        saved = self.save_results(analysis, stocks_data)
         print("✅ AGENT-04 완료\n")
-        return {"analysis": analysis, "stocks": stocks_data}
+        return {"analysis": analysis, "stocks": stocks_data, "failed": False}
 
 
 if __name__ == "__main__":

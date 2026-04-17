@@ -10,10 +10,191 @@ load_dotenv()
 
 class CollectorAgent:
 
+    def _get_kospi(self) -> dict:
+        import yfinance as yf
+        result = {"kospi": None, "kospi_1d_change": None, "history": None}
+        
+        tickers_to_try = ["^KS11", "KS11.KS", "000001.KS"]
+        
+        for ticker in tickers_to_try:
+            try:
+                t = yf.Ticker(ticker)
+                # 90일 히스토리 수집 (버그 수정: 6000대 값 추적 및 히스토리 보존)
+                hist = t.history(period="90d")
+                if len(hist) >= 2:
+                    latest = float(hist["Close"].iloc[-1])
+                    prev = float(hist["Close"].iloc[-2])
+                    # 값 유효성 검사 (KOSPI는 2500 이상이어야 함)
+                    if latest > 2500:
+                        result["kospi"] = round(latest, 2)
+                        result["kospi_1d_change"] = round(
+                            (latest - prev) / prev * 100, 2
+                        )
+                        result["history"] = {
+                            "current": result["kospi"],
+                            "avg_90d": round(float(hist["Close"].mean()), 2),
+                            "max_90d": round(float(hist["Close"].max()), 2),
+                            "min_90d": round(float(hist["Close"].min()), 2),
+                            "trend": list(hist["Close"].tail(30).round(2))
+                        }
+                        print(f"  KOSPI ({ticker}): {result['kospi']}")
+                        return result
+                    else:
+                        print(f"  {ticker} 값 이상: {latest} (건너뜀)")
+            except Exception as e:
+                print(f"  {ticker} 실패: {e}")
+        
+        print("  KOSPI 수집 전부 실패")
+        return result
+
+    def _get_gold(self) -> dict:
+        import yfinance as yf
+        result = {"value": None, "history": None}
+        for ticker in ["GC=F", "GLD", "IAU"]:
+            try:
+                t = yf.Ticker(ticker)
+                hist = t.history(period="90d")
+                if not hist.empty:
+                    val = round(float(hist["Close"].iloc[-1]), 2)
+                    if ticker in ["GLD", "IAU"]:
+                        val = round(val * 10, 2)
+                        hist["Close"] = hist["Close"] * 10 # ETF 히스토리도 보정
+                    
+                    if val > 1000:
+                        result["value"] = val
+                        result["history"] = {
+                            "current": val,
+                            "avg_90d": round(float(hist["Close"].mean()), 2),
+                            "max_90d": round(float(hist["Close"].max()), 2),
+                            "min_90d": round(float(hist["Close"].min()), 2),
+                            "trend": list(hist["Close"].tail(30).round(2))
+                        }
+                        print(f"  gold ({ticker}): {val}")
+                        return result
+            except Exception as e:
+                print(f"  gold {ticker} 실패: {e}")
+        return result
+
+    def _get_dxy(self) -> dict:
+        import yfinance as yf
+        result = {"value": None, "history": None}
+        # 1. DX-Y.NYB 시도
+        try:
+            t = yf.Ticker("DX-Y.NYB")
+            hist = t.history(period="90d")
+            if not hist.empty:
+                val = round(float(hist["Close"].iloc[-1]), 2)
+                if 85 <= val <= 130:
+                    result["value"] = val
+                    result["history"] = {
+                        "current": val,
+                        "avg_90d": round(float(hist["Close"].mean()), 2),
+                        "max_90d": round(float(hist["Close"].max()), 2),
+                        "min_90d": round(float(hist["Close"].min()), 2),
+                        "trend": list(hist["Close"].tail(30).round(2))
+                    }
+                    print(f"  dxy (DX-Y.NYB): {val}")
+                    return result
+        except: pass
+
+        # 2. FRED fallback
+        try:
+            from fredapi import Fred
+            fred = Fred(api_key=os.getenv("FRED_API_KEY"))
+            # DTWEXBGS (Nominal Broad US Dollar Index) - DXY와 유사
+            from datetime import timedelta
+            series = fred.get_series("DTWEXBGS", observation_start=(datetime.now() - timedelta(days=100)).strftime('%Y-%m-%d'))
+            if not series.empty:
+                val = round(float(series.dropna().iloc[-1]), 2)
+                series_clean = series.dropna()
+                result["value"] = val
+                result["history"] = {
+                    "current": val,
+                    "avg_90d": round(float(series_clean.mean()), 2),
+                    "max_90d": round(float(series_clean.max()), 2),
+                    "min_90d": round(float(series_clean.min()), 2),
+                    "trend": list(series_clean.tail(30).round(2))
+                }
+                print(f"  dxy (FRED): {val}")
+                return result
+        except Exception as e:
+            print(f"  dxy FRED 실패: {e}")
+        return result
+
+    def _get_sp500(self) -> dict:
+        import yfinance as yf
+        result = {"value": None, "history": None}
+        try:
+            t = yf.Ticker("^GSPC")
+            hist = t.history(period="90d")
+            if not hist.empty:
+                val = round(float(hist["Close"].iloc[-1]), 2)
+                if val > 5000:
+                    result["value"] = val
+                    result["history"] = {
+                        "current": val,
+                        "avg_90d": round(float(hist["Close"].mean()), 2),
+                        "max_90d": round(float(hist["Close"].max()), 2),
+                        "min_90d": round(float(hist["Close"].min()), 2),
+                        "trend": list(hist["Close"].tail(30).round(2))
+                    }
+                    print(f"  sp500 (^GSPC): {val}")
+                    return result
+        except: pass
+
+        try:
+            from fredapi import Fred
+            fred = Fred(api_key=os.getenv("FRED_API_KEY"))
+            from datetime import timedelta
+            series = fred.get_series("SP500", observation_start=(datetime.now() - timedelta(days=100)).strftime('%Y-%m-%d'))
+            if not series.empty:
+                series_clean = series.dropna()
+                val = round(float(series_clean.iloc[-1]), 2)
+                result["value"] = val
+                result["history"] = {
+                    "current": val,
+                    "avg_90d": round(float(series_clean.mean()), 2),
+                    "max_90d": round(float(series_clean.max()), 2),
+                    "min_90d": round(float(series_clean.min()), 2),
+                    "trend": list(series_clean.tail(30).round(2))
+                }
+                print(f"  sp500 (FRED): {val}")
+                return result
+        except Exception as e:
+            print(f"  sp500 FRED 실패: {e}")
+        return result
+
+    def _get_nasdaq(self) -> dict:
+        import yfinance as yf
+        result = {"value": None, "history": None}
+        try:
+            t = yf.Ticker("^IXIC")
+            hist = t.history(period="90d")
+            if not hist.empty:
+                val = round(float(hist["Close"].iloc[-1]), 2)
+                if val > 15000:
+                    result["value"] = val
+                    result["history"] = {
+                        "current": val,
+                        "avg_90d": round(float(hist["Close"].mean()), 2),
+                        "max_90d": round(float(hist["Close"].max()), 2),
+                        "min_90d": round(float(hist["Close"].min()), 2),
+                        "trend": list(hist["Close"].tail(30).round(2))
+                    }
+                    print(f"  nasdaq (^IXIC): {val}")
+                    return result
+        except Exception as e:
+            print(f"  nasdaq 실패: {e}")
+        return result
+
     def __init__(self):
+        from src.core.gemini_client import GeminiClient
         self.today = datetime.now().strftime("%Y%m%d")
         self.output_dir = Path(f"data/raw/{self.today}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        # base_dir 설정 (history 저장용)
+        self.base_dir = Path(".")
+        self.gemini = GeminiClient()
 
     def collect_market(self) -> dict:
         """시장 데이터 수집 — yfinance 기반 (90일 히스토리 포함 v7.0)"""
@@ -22,21 +203,40 @@ class CollectorAgent:
         data = {}
         history_90d = {}
 
-        # 수집할 핵심 티커들
-        tickers = {
-            "kospi": "^KS11",
+        # 1. KOSPI 수집 고도화 (v4.5 버그 수정)
+        kospi_data = self._get_kospi()
+        data["kospi"] = kospi_data["kospi"]
+        data["kospi_1d_change"] = kospi_data["kospi_1d_change"]
+        if kospi_data["history"]:
+            history_90d["kospi"] = kospi_data["history"]
+                    
+        # 2. 핵심 지표 고도화 수집
+        gold_data = self._get_gold()
+        data["gold"] = gold_data["value"]
+        if gold_data["history"]: history_90d["gold"] = gold_data["history"]
+
+        dxy_data = self._get_dxy()
+        data["dxy"] = dxy_data["value"]
+        if dxy_data["history"]: history_90d["dxy"] = dxy_data["history"]
+
+        sp500_data = self._get_sp500()
+        data["sp500"] = sp500_data["value"]
+        if sp500_data["history"]: history_90d["sp500"] = sp500_data["history"]
+
+        nasdaq_data = self._get_nasdaq()
+        data["nasdaq"] = nasdaq_data["value"]
+        if nasdaq_data["history"]: history_90d["nasdaq"] = nasdaq_data["history"]
+
+        # 3. 나머지 티커들 수집 (v7.0)
+        other_tickers = {
             "vix": "^VIX",
             "wti_oil": "CL=F",
-            "gold": "GC=F",
-            "dxy": "DX-Y.NYB",
             "us10y": "^TNX",
             "brent": "BZ=F",
-            "nasdaq": "^IXIC",
-            "sp500": "^GSPC",
             "usd_krw": "KRW=X"
         }
 
-        for key, ticker_symbol in tickers.items():
+        for key, ticker_symbol in other_tickers.items():
             try:
                 ticker = yf.Ticker(ticker_symbol)
                 # 90일치 히스토리 수집 (흐름 파악용)
@@ -44,12 +244,6 @@ class CollectorAgent:
                 if not hist.empty:
                     # 오늘 데이터
                     data[key] = round(float(hist["Close"].iloc[-1]), 2)
-                    if len(hist) >= 2:
-                        if key == "kospi":
-                            data["kospi_1d_change"] = round(
-                                (hist["Close"].iloc[-1] - hist["Close"].iloc[-2])
-                                / hist["Close"].iloc[-2] * 100, 2
-                            )
                     
                     # 90일 히스토리 저장 (추세 분석용)
                     history_90d[key] = {
@@ -64,6 +258,30 @@ class CollectorAgent:
             except Exception as e:
                 print(f"  {key} ({ticker_symbol}) 수집 실패: {e}")
                 data[key] = None
+
+        # 4. 수집 데이터 유효성 검사 (v4.0 추가)
+        from datetime import timedelta
+        validation_rules = {
+            "kospi": (2500, 10000),
+            "gold": (3000, 8000),
+            "dxy": (85, 120),
+            "sp500": (5000, 15000),
+            "nasdaq": (15000, 40000),
+            "vix": (5, 90),
+            "wti_oil": (30, 200),
+            "usd_krw": (1000, 2000),
+        }
+
+        print("  === 데이터 유효성 검증 ===")
+        for key, (min_val, max_val) in validation_rules.items():
+            val = data.get(key)
+            if val is None:
+                print(f"  ⚠️ {key}: None")
+            elif not (min_val <= val <= max_val):
+                print(f"  🔴 {key}: {val} (범위 이탈! {min_val}~{max_val})")
+                data[key] = None  # 이상값 None 처리
+            else:
+                print(f"  ✅ {key}: {val}")
 
         # 외국인 수급 (별도 계산)
         data["kospi_foreign_net"] = self._get_kospi_foreign_vol()
@@ -82,7 +300,7 @@ class CollectorAgent:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
         # 90일 히스토리 별도 저장 (Detector/Analyst 참조용)
-        history_dir = self.base_dir / "data/raw/history" if hasattr(self, 'base_dir') else Path("data/raw/history")
+        history_dir = self.base_dir / "data/raw/history"
         history_dir.mkdir(parents=True, exist_ok=True)
         (history_dir / "market_90d.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))
 
@@ -331,8 +549,8 @@ class CollectorAgent:
                 if item_code:
                     url += f"/{item_code}"
                 resp = requests.get(url, timeout=10)
-                data = resp.json()
-                rows = data.get("StatisticSearch", {}).get("row", [])
+                json_resp = resp.json()
+                rows = json_resp.get("StatisticSearch", {}).get("row", [])
                 if rows:
                     return float(rows[-1]["DATA_VALUE"].replace(",", ""))
             except Exception as e:
@@ -370,97 +588,6 @@ class CollectorAgent:
         print(f"✅ ecos.json 저장 완료: {output_path}")
         return result
 
-    def collect_dart(self) -> dict:
-        """DART 공시 데이터 수집 - 구조적 이벤트 및 테마 감지용 (v4.0 고도화)"""
-        print("📋 DART 공시 기반 테마 분석 중...")
-        import OpenDartReader
-        from src.core.sector_map import SECTOR_STOCK_MAP
-        from datetime import datetime, timedelta
-
-        api_key = os.getenv('OPENDART_API_KEY')
-        dart = OpenDartReader(api_key)
-        
-        today = datetime.now()
-        bgn_de = (today - timedelta(days=7)).strftime("%Y%m%d")
-        
-        # 1. 7일간의 공시 목록 수집
-        try:
-            df = dart.list(start=bgn_de)
-            if df.empty:
-                print("  공시 데이터가 없습니다.")
-                return {"date": self.today, "data": {"disclosures": [], "themes": []}}
-        except Exception as e:
-            print(f"  DART 리스트 수집 실패: {e}")
-            return {"date": self.today, "data": {"disclosures": [], "themes": []}}
-
-        # 2. 핵심 키워드 필터링 (호재성 이상징후)
-        bullish_keywords = [
-            "단일판매", "공급계약", "시설투자", "특허권", 
-            "무상증자", "자기주식취득", "경영권분쟁", "공개매수"
-        ]
-        
-        targets = df[df['report_nm'].str.contains('|'.join(bullish_keywords))]
-        
-        # 3. 섹터 매핑 및 클러스터링
-        disclosures = []
-        sector_hits = {} # sector -> count
-        
-        # 종목명 -> 섹터 매핑용 사전 빌드
-        stock_to_sector = {}
-        for sector, info in SECTOR_STOCK_MAP.items():
-            for name in info["names"]:
-                stock_to_sector[name] = sector
-
-        for i, row in targets.iterrows():
-            corp_name = row['corp_name']
-            report_nm = row['report_nm']
-            sector = stock_to_sector.get(corp_name, "기타/미분류")
-            
-            disclosures.append({
-                "company": corp_name,
-                "report": report_nm,
-                "sector": sector,
-                "date": row['rcept_dt'],
-                "is_major": any(name in SECTOR_STOCK_MAP.get(sector, {}).get("names", []) for name in [corp_name])
-            })
-            
-            if sector != "기타/미분류":
-                sector_hits[sector] = sector_hits.get(sector, 0) + 1
-
-        # 4. 테마 추출 (동일 섹터 내 7일간 2건 이상 공시 발생 시)
-        active_themes = []
-        for sector, count in sector_hits.items():
-            if count >= 2:
-                # 대형주 포함 여부 확인
-                has_major = any(d["is_major"] for d in disclosures if d["sector"] == sector)
-                active_themes.append({
-                    "sector": sector,
-                    "count": count,
-                    "strength": 8.0 if has_major else 6.0, # 대형주 포함 시 가중치
-                    "reason": f"최근 7일간 {sector} 섹터 {count}건의 주요 공시 집중"
-                })
-
-        print(f"  총 {len(disclosures)}개 공시 분석, {len(active_themes)}개 활성 테마 포착")
-        
-        end_de = today.strftime("%Y%m%d")
-        result = {
-            "date": self.today,
-            "collected_at": datetime.now().isoformat(),
-            "source": "DART (금융감독원)",
-            "period": f"{bgn_de}~{end_de}",
-            "data": {
-                "disclosures": disclosures,
-                "count": len(disclosures)
-            }
-        }
-
-        output_path = self.output_dir / "dart.json"
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
-
-        print(f"✅ dart.json 저장 완료: {output_path}")
-        return result
-
     def extract_news_keywords(self, sentiment_data: dict) -> list:
         """뉴스 헤드라인에서 DART 검색용 키워드 추출 (v4.5)"""
         print("🧠 뉴스 기반 추적 키워드 추출 중...")
@@ -474,14 +601,12 @@ class CollectorAgent:
         
         # 1. AI 기반 추출 시도 (Primary)
         try:
-            from src.core.claude_client import ClaudeClient
-            client = ClaudeClient()
             prompt = (
                 "다음 뉴스 헤드라인들을 분석하여 DART 공시 시스템에서 '수주'나 '투자' 여부를 "
                 "추적할만한 핵심 산업군, 섹터, 혹은 특정 기업명 5개를 JSON 리스트로 추출해줘. "
                 f"뉴스: {headlines[:10]}"
             )
-            resp = client.call_json(prompt)
+            resp = self.gemini.call_json(prompt)
             if isinstance(resp, list):
                 keywords.update(resp)
                 print(f"  AI 추출 키워드: {resp}")

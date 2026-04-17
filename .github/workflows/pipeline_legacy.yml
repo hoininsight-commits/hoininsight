@@ -67,6 +67,15 @@ jobs:
       - name: AGENT-05 WRITER 실행
         run: |
           echo "=== AGENT-05 WRITER 시작 ==="
+          TODAY=$(date '+%Y%m%d')
+          if [ -f "data/analysis/$TODAY/analysis_failed.txt" ]; then
+            echo "⚠️ 분석 실패 마커 감지 — WRITER 건너뜀"
+            exit 0
+          fi
+          if [ ! -f "data/analysis/$TODAY/today_analysis.json" ]; then
+            echo "⚠️ 분석 파일 없음 — WRITER 건너뜀"
+            exit 0
+          fi
           python -m src.agents.writer
           echo "=== AGENT-05 완료 ==="
         env:

@@ -1,0 +1,136 @@
+{
+  "date": "20260417",
+  "total_candidates": 7,
+  "candidates": [
+    {
+      "topic": "이란 휴전 낙관론과 유가의 기묘한 동거",
+      "target_type": "MACRO_GEOPOLITICAL",
+      "reason": "트럼프의 '매우 긍정적'인 휴전 언급에도 불구하고 WTI가 90일 평균($76.05)을 18% 상회하는 $89.87를 유지하며 지정학적 리스크 해소를 거부하고 있음.",
+      "strength": 8.7,
+      "related_keywords": [
+        "지정학",
+        "WTI",
+        "트럼프",
+        "공급망"
+      ],
+      "filters_hit": [
+        "필터2_역설적현상",
+        "필터4_시의성"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "트럼프의 '매우 긍정적'인 휴전 언급에도 불구하고 WTI가 90일 평균($76.05)을 18% 상회하는 $89.87를 유지하며 지정학적 리스크 해소를 거부하고 있음."
+      },
+      "selected": true,
+      "content_type": "롱폼"
+    },
+    {
+      "topic": "월가 은행 실적의 양극화와 채권 시장의 경고",
+      "target_type": "MACRO_FINANCIAL",
+      "reason": "모건스탠리와 BofA의 어닝 서프라이즈와 달리 골드만삭스의 채권 트레이딩 부진은 금리 변동성 속에서 시장 주도권의 균열을 암시함.",
+      "strength": 7.5,
+      "related_keywords": [
+        "실적발표",
+        "유동성",
+        "채권트레이딩",
+        "디커플링"
+      ],
+      "filters_hit": [
+        "필터2_역설적현상",
+        "필터1_추세반전"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "모건스탠리와 BofA의 어닝 서프라이즈와 달리 골드만삭스의 채권 트레이딩 부진은 금리 변동성 속에서 시장 주도권의 균열을 암시함."
+      }
+    },
+    {
+      "topic": "인도 이탈 자금의 북아시아 유입설과 코스피의 침묵",
+      "target_type": "MICRO_SECTOR_FOCUS",
+      "reason": "인도에서 북아시아 테크로 자금이 이동한다는 서사가 강화되고 있으나, 정작 KOSPI는 하락하며 기대와 실제 자금 집행 사이의 시차 혹은 괴리가 발생함.",
+      "strength": 6.9,
+      "related_keywords": [
+        "자본이동",
+        "코스피",
+        "신흥국",
+        "기술주"
+      ],
+      "filters_hit": [
+        "필터2_역설적현상",
+        "필터4_시의성"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "인도에서 북아시아 테크로 자금이 이동한다는 서사가 강화되고 있으나, 정작 KOSPI는 하락하며 기대와 실제 자금 집행 사이의 시차 혹은 괴리가 발생함."
+      }
+    },
+    {
+      "topic": "환율 1480원 + 유가 $89.9 동시 급등 → 복합 위기",
+      "filters_hit": [
+        "필터1_역사적임계값",
+        "필터2_역설적현상",
+        "필터5_연결고리"
+      ],
+      "strength": 6.4,
+      "data_evidence": {
+        "usd_krw": 1479.88,
+        "wti": 89.87
+      },
+      "related_keywords": [
+        "환율",
+        "유가",
+        "스태그플레이션"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "환율 1480원 → 수입물가 상승 → CPI 압력 → 한은 금리 동결 지속 연결고리",
+      "filters_hit": [
+        "필터5_연결고리"
+      ],
+      "strength": 6.0,
+      "data_evidence": {
+        "detail": "환율 1480원 → 수입물가 상승 → CPI 압력 → 한은 금리 동결 지속 연결고리"
+      },
+      "related_keywords": [
+        "연결고리",
+        "파급효과"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "WTI 유가 $89.9 → 에너지 비용 압박",
+      "filters_hit": [
+        "필터1_역사적임계값",
+        "필터5_연결고리"
+      ],
+      "strength": 4.24,
+      "data_evidence": {
+        "wti": 89.87
+      },
+      "related_keywords": [
+        "유가",
+        "원유",
+        "인플레이션"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "원달러 환율 1480원 → 주의 수준",
+      "filters_hit": [
+        "필터1_역사적임계값"
+      ],
+      "strength": 2.2399999999999998,
+      "data_evidence": {
+        "usd_krw": 1479.88
+      },
+      "related_keywords": [
+        "환율",
+        "원화",
+        "달러",
+        "외환"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    }
+  ]
+}

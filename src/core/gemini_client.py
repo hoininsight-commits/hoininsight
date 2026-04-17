@@ -18,7 +18,7 @@ except ImportError:
 
 
 class GeminiClient:
-    """Gemini API 클라이언트 — Claude API 대체"""
+    """Gemini API 클라이언트 (Gemini 2.5 Flash 기반)"""
 
     def __init__(self):
         self.api_key = os.environ.get("GEMINI_API_KEY", "")
@@ -65,39 +65,48 @@ class GeminiClient:
                 return ""
         return ""
 
-    def call_json(self, prompt: str, max_tokens: int = 4000) -> dict:
-        """JSON 응답 파싱 포함 호출"""
-        if not self.client:
-            return {}
-        system_instruction = (
-            "너는 JSON만 출력하는 분석 엔진이다. "
-            "마크다운 코드블록 없이 순수 JSON만 출력해라. "
-            "다른 설명이나 텍스트는 절대 포함하지 마라."
-        )
-
-        full_prompt = f"{system_instruction}\n\n{prompt}"
-
+    def call_json(self, prompt: str, max_tokens: int = 2000) -> dict:
+        import json, re
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=full_prompt,
-                config=genai.types.GenerateContentConfig(
-                    max_output_tokens=max_tokens,
-                    temperature=0.3,
-                )
-            )
-            # thought_signature 등이 포함된 경우 response.text에 경고문이 붙으므로 part.text만 추출
-            text_parts = [part.text for part in response.candidates[0].content.parts if part.text]
-            text = "".join(text_parts).strip()
-            text = text.replace("```json", "").replace("```", "").strip()
-            return json.loads(text)
+            response = self.call(prompt, max_tokens)
+            if not response:
+                return {}
 
-        except json.JSONDecodeError as e:
-            print(f"  JSON 파싱 실패: {e}")
-            # text 변수가 정의되지 않았을 경우를 위한 방어 코드
-            raw_text = "".join([p.text for p in response.candidates[0].content.parts if p.text]) if 'response' in locals() else "N/A"
-            print(f"  원본 텍스트: {raw_text[:200]}")
+            # 방법 1: 그대로 파싱
+            try:
+                return json.loads(response)
+            except json.JSONDecodeError:
+                pass
+
+            # 방법 2: ```json 코드블록 추출
+            match = re.search(r'```json\s*([\s\S]*?)\s*```', response)
+            if match:
+                try:
+                    return json.loads(match.group(1))
+                except json.JSONDecodeError:
+                    pass
+
+            # 방법 3: { } 블록 추출
+            match = re.search(r'\{[\s\S]*\}', response)
+            if match:
+                try:
+                    return json.loads(match.group(0))
+                except json.JSONDecodeError:
+                    # 방법 4: 잘린 JSON 복구 시도
+                    truncated = match.group(0)
+                    # 열린 괄호 수만큼 닫기
+                    open_braces = truncated.count('{') - truncated.count('}')
+                    open_brackets = truncated.count('[') - truncated.count(']')
+                    truncated += ']' * open_brackets + '}' * open_braces
+                    try:
+                        return json.loads(truncated)
+                    except json.JSONDecodeError:
+                        pass
+
+            print(f"  ⚠️ JSON 파싱 전부 실패. 응답 길이: {len(response)}")
+            print(f"  응답 마지막 100자: {response[-100:]}")
             return {}
+
         except Exception as e:
-            print(f"  Gemini API 호출 실패: {e}")
+            print(f"  ❌ call_json 오류: {e}")
             return {}

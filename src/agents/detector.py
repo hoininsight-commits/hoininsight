@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 from src.core.filters import SignalFilters
-from src.core.claude_client import ClaudeClient
+from src.core.gemini_client import GeminiClient
 
 
 class DetectorAgent:
@@ -19,7 +19,7 @@ class DetectorAgent:
         self.signal_dir.mkdir(parents=True, exist_ok=True)
         self.history_path = self.base_dir / "data/history/signal_log.json"
         self.filters = SignalFilters()
-        self.claude = ClaudeClient()
+        self.gemini = GeminiClient()
     def load_raw_data(self):
         raw = {}
         # macro, market, sentiment 데이터 로드
@@ -89,7 +89,7 @@ class DetectorAgent:
 순수 JSON 배열만 출력해라.
 """
         try:
-            results = self.claude.call_json(prompt, max_tokens=2000)
+            results = self.gemini.call_json(prompt, max_tokens=2000)
             if not isinstance(results, list): return []
             
             for res in results:

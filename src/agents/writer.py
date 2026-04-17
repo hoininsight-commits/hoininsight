@@ -5,7 +5,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from src.core.claude_client import ClaudeClient
+from src.core.gemini_client import GeminiClient
 
 
 # 경제사냥꾼 스크립트 생성 규칙
@@ -44,7 +44,7 @@ class WriterAgent:
         self.analysis_dir = Path(f"data/analysis/{self.today}")
         self.output_dir = Path(f"data/scripts/{self.today}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.claude = ClaudeClient()
+        self.gemini = GeminiClient()
 
     def load_signal(self) -> dict:
         p = self.signal_dir / "today_signal.json"
@@ -61,10 +61,20 @@ class WriterAgent:
 
     def load_analysis(self) -> tuple:
         analysis, stocks = {}, {}
+
+        # 분석 실패 마커 확인
+        for d in sorted(Path("data/analysis").iterdir(), reverse=True):
+            failure_marker = d / "analysis_failed.txt"
+            ap = d / "today_analysis.json"
+            if failure_marker.exists() and not ap.exists():
+                print(f"  ⚠️ 분석 실패 마커 감지: {failure_marker}")
+                return None, None  # None 반환으로 실패 신호
+            if ap.exists():
+                break
+
         ap = self.analysis_dir / "today_analysis.json"
         sp = self.analysis_dir / "today_stocks.json"
 
-        # 이전 날짜에서 찾기
         if not ap.exists():
             for d in sorted(Path("data/analysis").iterdir(), reverse=True):
                 ap = d / "today_analysis.json"
@@ -77,6 +87,11 @@ class WriterAgent:
             analysis = json.loads(ap.read_text())
         if sp.exists():
             stocks = json.loads(sp.read_text())
+
+        # 빈 분석 데이터 체크
+        if not analysis or analysis == {}:
+            print("  ⚠️ 분석 데이터 비어있음")
+            return None, None
 
         return analysis, stocks
 
@@ -133,7 +148,7 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
 [썸네일 문구]
 (문구)
 """
-        return self.claude.call(prompt, max_tokens=3000)
+        return self.gemini.call(prompt, max_tokens=3000)
 
     def generate_shorts(self, signal: dict, analysis: dict) -> str:
         """쇼츠 스크립트 생성 (1~2분 분량)"""
@@ -167,7 +182,7 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
 [제목]
 (제목 1개)
 """
-        return self.claude.call(prompt, max_tokens=800)
+        return self.gemini.call(prompt, max_tokens=1500)
 
     def save_scripts(self, longform: str, shorts: str, signal: dict):
         """스크립트 파일 저장"""
@@ -198,10 +213,15 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
             print("  신호 데이터 없음 — 종료")
             return {}
 
-        print(f"  토픽: {signal.get('topic', '')}")
-        print(f"  유형: {signal.get('content_type', '')}")
-
         analysis, stocks = self.load_analysis()
+
+        # 분석 실패 시 중단
+        if analysis is None:
+            print("  ❌ AGENT-05 중단 — 분석 데이터 없음")
+            print("  ANALYST 재실행 필요")
+            return {"failed": True, "reason": "analysis_missing"}
+
+        print(f"  토픽: {signal.get('topic', '')}")
 
         # 롱폼 생성
         longform = self.generate_longform(signal, analysis, stocks)
