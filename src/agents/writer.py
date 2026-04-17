@@ -102,7 +102,8 @@ class WriterAgent:
 아래 분석 데이터를 기반으로 경제사냥꾼의 '7단계 스토리 빌드업'을 완벽히 재현한 스크립트를 작성해라.
 
 [집필 가이드라인]
-{SCRIPT_RULES}
+skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
+핵심: 반말 구어체, WHY NOW 중심, 물리적 병목 우선, 7단계 구조
 
 [오늘의 분석 데이터]
 토픽: {signal.get("topic", "")}
@@ -132,7 +133,7 @@ class WriterAgent:
 [썸네일 문구]
 (문구)
 """
-        return self.claude.call(prompt, max_tokens=4000)
+        return self.claude.call(prompt, max_tokens=3000)
 
     def generate_shorts(self, signal: dict, analysis: dict) -> str:
         """쇼츠 스크립트 생성 (1~2분 분량)"""
@@ -145,7 +146,8 @@ class WriterAgent:
 아래 내용으로 1분짜리 쇼츠 스크립트를 작성해라.
 
 [스타일 규칙]
-{SCRIPT_RULES}
+skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
+핵심: 반말 구어체, WHY NOW 중심, 물리적 병목 우선, 7단계 구조
 
 [토픽]
 {signal.get("topic", "")}

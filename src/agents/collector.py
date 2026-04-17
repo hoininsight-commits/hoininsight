@@ -127,22 +127,67 @@ class CollectorAgent:
         return 1380.0  # fallback
 
     def collect_macro(self) -> dict:
-        """거시경제 데이터 — 추후 ECOS/FRED 연동"""
+        """거시경제 데이터 — FRED/ECOS API 연동"""
         print("🏦 거시경제 데이터 수집 중...")
+        import os, requests
+        from fredapi import Fred
 
-        data = {
-            "korea_base_rate": 2.75,   # TODO: ECOS API
-            "us_fed_rate": 4.25,        # TODO: FRED API
-            "rate_diff": 1.50,
-            "korea_m2": 4565,           # TODO: ECOS API
-            "korea_cpi": 2.1,
-            "us_cpi": 3.4,
-        }
+        data = {}
+
+        # FRED에서 미국 기준금리
+        try:
+            fred = Fred(api_key=os.getenv('FRED_API_KEY'))
+            series = fred.get_series('FEDFUNDS')
+            data['us_fed_rate'] = round(float(series.dropna().iloc[-1]), 4)
+            print(f"  us_fed_rate: {data['us_fed_rate']}")
+        except Exception as e:
+            print(f"  us_fed_rate 수집 실패: {e}")
+            data['us_fed_rate'] = None
+
+        # ECOS에서 한국 기준금리
+        try:
+            api_key = os.getenv('ECOS_API_KEY')
+            from datetime import datetime, timedelta
+            today = datetime.now()
+            ym = today.strftime("%Y%m")
+            ym_prev = (today - timedelta(days=60)).strftime("%Y%m")
+            url = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1/722Y001/M/{ym_prev}/{ym}/0101000"
+            resp = requests.get(url, timeout=10)
+            rows = resp.json().get("StatisticSearch", {}).get("row", [])
+            if rows:
+                data['korea_base_rate'] = float(rows[-1]["DATA_VALUE"].replace(",", ""))
+                print(f"  korea_base_rate: {data['korea_base_rate']}")
+            else:
+                data['korea_base_rate'] = None
+        except Exception as e:
+            print(f"  korea_base_rate 수집 실패: {e}")
+            data['korea_base_rate'] = None
+
+        # ECOS에서 한국 M2
+        try:
+            api_key = os.getenv('ECOS_API_KEY')
+            url = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1/101Y004/M/{ym_prev}/{ym}/BBIA00"
+            resp = requests.get(url, timeout=10)
+            rows = resp.json().get("StatisticSearch", {}).get("row", [])
+            if rows:
+                data['korea_m2'] = float(rows[-1]["DATA_VALUE"].replace(",", ""))
+                print(f"  korea_m2: {data['korea_m2']}")
+            else:
+                data['korea_m2'] = None
+        except Exception as e:
+            print(f"  korea_m2 수집 실패: {e}")
+            data['korea_m2'] = None
+
+        # 금리차 파생
+        if data.get('us_fed_rate') and data.get('korea_base_rate'):
+            data['rate_diff'] = round(data['us_fed_rate'] - data['korea_base_rate'], 4)
+        else:
+            data['rate_diff'] = None
 
         result = {
             "date": self.today,
             "collected_at": datetime.now().isoformat(),
-            "source": "임시값 (ECOS/FRED API 연동 전)",
+            "source": "FRED + ECOS API",
             "data": data
         }
 

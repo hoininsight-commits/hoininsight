@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from src.core.filters import SignalFilters
@@ -9,8 +10,8 @@ class DetectorAgent:
     """이상징후 탐지자 — 숫자와 뉴스 맥락을 결합하여 시장의 신호를 포착함 (v5.0 Narrative-First)"""
 
     def __init__(self):
-        # 작업 디렉토리 고정 (IS-4.0 설계 지침)
-        self.base_dir = Path("/Users/taehunlim/dev/HoinInsight")
+        # 환경변수 또는 현재 작업 디렉토리 기준 (v4.0 회사 환경 호환)
+        self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = datetime.now().strftime("%Y%m%d")
         
         self.raw_dir = self.base_dir / f"data/raw/{self.today}"
@@ -58,13 +59,16 @@ class DetectorAgent:
 아래 뉴스 헤드라인들과 시장 지표를 보고, 오늘 시장에서 가장 '이상하거나(Anomaly)', '기대를 배신하거나(Expectation vs Reality)', 
 혹은 '결정적인 판도의 변화(WHY NOW)'가 느껴지는 핵심 서사 3가지를 선정해라.
 
-[시장 지표 및 90일 추세 (v7.0)]
-- 환율: {market.get('usd_krw', 'N/A')}원 (90일 고점: {history.get('usd_krw', {}).get('max_90d', 'N/A')}원)
-- KOSPI: {market.get('kospi_1d_change', '0')}% (90일 평균: {history.get('kospi', {}).get('avg_90d', 'N/A')})
-- WTI 유가: ${market.get('wti_oil', 'N/A')} (90일 고점: ${history.get('wti_oil', {}).get('max_90d', 'N/A')}, 90일 평균: ${history.get('wti_oil', {}).get('avg_90d', 'N/A')})
+[지표 현황 (오늘값/90일평균/90일고점)]
+- 환율: {market.get('usd_krw', 'N/A')}원 / {history.get('usd_krw', {}).get('avg_90d', 'N/A')}원 / {history.get('usd_krw', {}).get('max_90d', 'N/A')}원
+- KOSPI 등락: {market.get('kospi_1d_change', 'N/A')}%
+- WTI: ${market.get('wti_oil', 'N/A')} / ${history.get('wti_oil', {}).get('avg_90d', 'N/A')} / ${history.get('wti_oil', {}).get('max_90d', 'N/A')}
+- VIX: {market.get('vix', 'N/A')}
+- DXY: {market.get('dxy', 'N/A')}
+- Gold: ${market.get('gold', 'N/A')}
 
 [뉴스 헤드라인]
-{json.dumps([h.get('title') for h in headlines[:30]], ensure_ascii=False, indent=2)}
+{json.dumps([h.get('title') for h in headlines[:15]], ensure_ascii=False, indent=2)}
 
 [사냥 지침 - 시계열 맥락 우선]
 1. 추세적 위치 파악: 오늘의 숫자가 90일 최고점 대비 낮다면 '돌파'가 아닌 '조정 중 반등'으로 해석할 것.

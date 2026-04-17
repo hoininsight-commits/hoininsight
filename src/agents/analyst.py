@@ -88,20 +88,11 @@ WTI: ${market.get('wti_oil', 'N/A')}
   "risk_factors": ["리스크/반대시나리오1", "..."]
 }}
 
-[참조 데이터: 90일 시계열 추이 (Feb ~ Apr)]
-{json.dumps(history, ensure_ascii=False, indent=2)}
+[90일 추세 요약]
+- 환율 90일 평균: {history.get('usd_krw', {}).get('avg_90d', 'N/A')}원 / 고점: {history.get('usd_krw', {}).get('max_90d', 'N/A')}원
+- WTI 90일 평균: ${history.get('wti_oil', {}).get('avg_90d', 'N/A')} / 고점: ${history.get('wti_oil', {}).get('max_90d', 'N/A')}
+- KOSPI 90일 평균: {history.get('kospi', {}).get('avg_90d', 'N/A')}
 
-[출력 JSON 구조]
-{{
-  "date": "{self.today}",
-  "topic": "{signal['topic']}",
-  "physical_bottleneck_analysis": "물리적 실체(해협, 용수, 전력 등)에 대한 분석 결과...",
-  "power_structure_analysis": "이득을 보는 주체와 손해를 보는 주체 분석...",
-  "trend_context_analysis": "2월부터 이어진 흐름에 대한 분석...",
-  "why_now_critical_point": "이 변화가 왜 지금 임계점인가?",
-  "level2_chain": [...],
-  ...
-}}
 순수 JSON만 출력해라.
 """
         result = self.claude.call_json(prompt, max_tokens=2000)
