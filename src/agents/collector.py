@@ -773,10 +773,10 @@ class CollectorAgent:
         indicators = {
             "kr_base_rate":    ("722Y001", "M", "0101000"),
             "kr_cpi":          ("901Y009", "M", "0"),
-            "kr_m2":           ("101Y004", "M", "BBHA00"),
-            "kr_unemployment": ("901Y052", "M", "AD"),
-            "kr_export":       ("132Y013", "M", "0000001"),
-            "kr_import":       ("132Y013", "M", "0000002"),
+            "kr_m2":           ("161Y005", "M", "BBHS00"),
+            "kr_unemployment": ("901Y027", "M", "I61BC"),
+            "kr_export":       ("901Y118", "M", "T002"),
+            "kr_import":       ("901Y118", "M", "T004"),
         }
 
 
