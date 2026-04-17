@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "inflation_kor_cpi_ecos",
     "topic_id": "inflation_kor_cpi_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/inflation_kor_cpi_ecos.json L1 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L1] Z-Score 1.86 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Bank of Korea (BOK)",
-      "temporal_anchor": "2026-05-14 (Expected May MPC Meeting)",
-      "unresolved_question": "통계적 이상치(Z-Score 1.86)를 보인 CPI 상승이 한은의 금리 인하 사이클 중단 혹은 금리 인상을 강제할 수준인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "한은 총재의 긴급 구두 개입 혹은 인플레이션 경고 메시지 발표 시",
-        "condition_to_invalidate": "30일 이내 발표되는 기대인플레이션 지표가 안정세로 회귀하거나 유가 등 외부 요인의 급락 확인 시"
-      },
-      "narrative_pressure_score": 74,
-      "related_entities": [
-        "Bank of Korea",
-        "KRW/USD",
-        "KTB (Korea Treasury Bond)",
-        "KOSPI"
-      ],
-      "rationale": "한국 소비자물가지수(CPI)의 Z-Score가 1.86(임계치 1.5 초과)을 기록하며 통계적 이상 신호를 보냄. 이는 차기 금리 결정 회의(5월) 이전에 시장 참여자들이 긴축적 통화 정책으로의 회귀를 예상하고 채권 매도 및 원화 포지션 재조정을 시작하게 만드는 선제적 자본 흐름(Capital Flow Anticipation) 신호임.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "liquidity_m2_fred",
     "topic_id": "liquidity_m2_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/liquidity_m2_fred.json L2 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Federal Reserve (Central Bank)",
-      "temporal_anchor": "2026-04-17 (M2 Data Release Window)",
-      "unresolved_question": "이러한 M2의 급격한 팽창이 연준의 의도적인 유동성 주입인지, 혹은 은행 시스템 내의 기술적 결함이나 긴급 구제 금융의 결과인지 여부",
-      "expected_market_behavior": "speculation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "연준 관계자의 통화 정책 스탠스 변화 발언(Dovish pivot)이나 인플레이션 지표의 동반 상승 확인 시",
-        "condition_to_invalidate": "다음 주 보고 데이터에서 M2 수치가 통계적 오류로 판명되어 대폭 수정(Revision)되거나 평균으로 급격히 회귀할 경우"
-      },
-      "narrative_pressure_score": 92,
-      "related_entities": [
-        "FRED",
-        "Federal Reserve",
-        "Commercial Banks",
-        "M2 Money Supply"
-      ],
-      "rationale": "M2 통화 공급량이 100번째 백분위수(Extreme)에 도달했다는 것은 역사적 임계치에 도달했음을 의미함. 이는 공식적인 금리 결정이나 정책 발표가 있기 전, 시장이 유동성 과잉을 선반영하여 자산 가격을 재평가하고 자본을 위험 자산으로 재배분하게 만드는 전구조적(Pre-structural) 신호임. 특히 z-score 1.83은 단순한 변동성을 넘어선 이상 현상으로, 자본 흐름의 즉각적인 변화를 야기함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

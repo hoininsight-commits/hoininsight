@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "index_nasdaq_fred",
     "topic_id": "index_nasdaq_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/index_nasdaq_fred.json L2 Signal",
@@ -37,25 +37,6 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Institutional Portfolio Managers & HFT Algorithms",
-      "temporal_anchor": "2026-04-17 (Peak Technical Threshold)",
-      "unresolved_question": "Does this 100th percentile breach signal a structural regime shift in valuation or an immediate liquidity-driven blow-off top?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "If volatility (VIX) spikes within 48 hours or if a major tech constituent announces a 5% deviation in guidance.",
-        "condition_to_invalidate": "If the Nasdaq index maintains the current level (26,333) with low volatility for more than 30 consecutive days."
-      },
-      "narrative_pressure_score": 95,
-      "related_entities": [
-        "NASDAQ-100",
-        "FRED (Federal Reserve Economic Data)",
-        "Institutional Liquidity Providers"
-      ],
-      "rationale": "나스닥 지수가 역사적/통계적 극단값인 100% 백분위수(26,333)에 도달한 것은 기술적 한계점에 도달했음을 의미함. 이는 실제 정책 변화나 실적 발표 이전에 알고리즘 및 기관 투자자들의 선제적 자산 재배치(Rotation)를 유발하는 강력한 전구 신호임. 일반적인 상승 추세와 달리 '극단적 이상치(Extreme Anomaly)'로 분류되므로 단기적 변동성 확대 및 자본 흐름의 구조적 변화가 임박했음을 시사함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

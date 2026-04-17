@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "credit_hy_spread_fred",
     "topic_id": "credit_hy_spread_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/credit_hy_spread_fred.json L1 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L1] Z-Score -1.55 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Institutional High-Yield Credit Desks",
-      "temporal_anchor": "2026-04-17 (Signal Date) + 14-day Mean Reversion Window",
-      "unresolved_question": "Does this spread compression reflect a fundamental low-default environment or a terminal 'reach-for-yield' bubble before a liquidity dry-up?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "A sudden >15bps widening within 48 hours or a hawkish pivot from central banks acting as a catalyst.",
-        "condition_to_invalidate": "Spreads remain at these levels for >30 days with no volatility increase, indicating a structural regime shift rather than an anomaly."
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "FRED",
-        "High Yield Corporate Bonds",
-        "Credit Default Swaps",
-        "Fixed Income Fund Flows"
-      ],
-      "rationale": "High Yield(HY) 스프레드가 Z-Score -1.55 수준으로 급격히 압착(Compression)된 것은 시장의 과도한 낙관론 또는 자본의 위험 자산 쏠림 현상을 나타냄. 이는 역사적 평균으로의 회귀(Mean Reversion)를 앞둔 전조 증상이며, 제도권 자금이 리스크 관리를 위해 자산을 재배분(Rotation)하기 직전의 'Capital Flow Anticipation' 신호로 해석됨. 단순히 저평가된 상태가 아니라, 통계적 임계치를 넘어서는 이상 징후가 발생한 시점이므로 Pre-structural Signal의 요건을 충족함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

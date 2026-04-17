@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-04-17T21:31:27+09:00
-- finished_utc: 2026-04-17T21:36:20+09:00
+- started_utc: 2026-04-17T22:21:13+09:00
+- finished_utc: 2026-04-17T22:22:06+09:00
 - status: SUCCESS
 
 ## details
@@ -66,6 +66,7 @@ checks:
 [SKIP] outputs(real_estate_price_index) missing
 [SKIP] outputs(real_estate_volume) missing
 [SKIP] outputs(real_estate_unsold) missing
+[SKIP] outputs(smart_money_cot) missing
 schema_checks:
 [OK] schema(crypto_btc_usd_spot_coingecko): timeseries_v1
 [OK] schema(rates_us10y_fred): timeseries_v1
@@ -84,6 +85,8 @@ schema_checks:
 [OK] schema(rates_kor_base_rate_ecos): timeseries_v1
 [OK] schema(inflation_kor_cpi_ecos): timeseries_v1
 [OK] schema(fx_usdkrw_ecos): timeseries_v1
+[OK] schema(liquidity_kor_m2_ecos): timeseries_v1
+[OK] schema(employment_kor_unrate_ecos): timeseries_v1
 [OK] schema(rates_fed_funds_fred): timeseries_v1
 [OK] schema(inflation_cpi_fred): timeseries_v1
 [OK] schema(inflation_pce_fred): timeseries_v1
@@ -99,6 +102,7 @@ schema_checks:
 [OK] schema(real_estate_price_index): timeseries_v1
 [OK] schema(real_estate_volume): timeseries_v1
 [OK] schema(real_estate_unsold): timeseries_v1
+[SKIP] schema(smart_money_cot): missing curated file (soft_fail)
 engine: done
 health: data/reports/2026/04/17/health.json
 dashboard_projection: skipped (no snapshot)

@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "inflation_pce_fred",
     "topic_id": "inflation_pce_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/inflation_pce_fred.json L2 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Federal Reserve (Fed)",
-      "temporal_anchor": "2026-04-17 (PCE Data Release Window)",
-      "unresolved_question": "연준이 이 극단적인 PCE 수치를 일시적 현상으로 치부할 것인가, 아니면 즉각적인 금리 경로 수정(Pivot/Hike)에 나설 것인가?",
-      "expected_market_behavior": "risk_off",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "연준 위원들의 긴급 발언(Verbal Warning)이나 차기 FOMC 금리 인상 확률이 70%를 상회할 경우",
-        "condition_to_invalidate": "다음 달 PCE 데이터가 급격히 하향 조정되거나, 고용 지표가 예상치를 크게 하회하여 인플레이션 압력을 상쇄할 경우"
-      },
-      "narrative_pressure_score": 95,
-      "related_entities": [
-        "FRED",
-        "PCE Index",
-        "Federal Reserve",
-        "US10Y Treasury"
-      ],
-      "rationale": "PCE 인플레이션 지표가 100 백분위수(Extreme)에 도달한 것은 단순한 추세가 아닌 정책 변화를 강제하는 구조적 이상 신호임. 이는 연준의 공식 금리 결정 전 시장 자본이 위험 자산에서 안전 자산으로 선제적 재배치(Anticipatory Reallocation)를 일으키는 명확한 트리거가 되며, 데이터 발표 시점으로부터 차기 정책 결정까지의 시간적 제약(Temporal Anchor)이 뚜렷함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

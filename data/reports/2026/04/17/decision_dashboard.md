@@ -81,9 +81,9 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 45조 성과급 요구한 삼성전자 노조 "총파업 땐 30조 손실" - 조선일보 (Google_News_KR_Economy)
-  - [NEWS] 이란전쟁에 항공유 부족…유럽 항공사 항공편 취소 잇따라 - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] 새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스 (Google_News_KR_Economy)
+  - [NEWS] "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 3년 9개월 만에 돌아온 전국 ‘휘발유 2000원’···“종전해도 고유가 이어질 듯” - 경향신문 (Google_News_KR_Economy)
+  - [NEWS] 코스피, 소폭 하락 6190선 ‘숨 고르기’…환율 1483.5원 - 한겨레 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -185,30 +185,33 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 45조 성과급 요구한 삼성전자 노조 "총파업 땐 30조 손실" - 조선일보 | Structural implication: '45조 성과급 요구한 삼성전자 노조 "총파업 땐 30조 손실" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 이란전쟁에 항공유 부족…유럽 항공사 항공편 취소 잇따라 - KBS 뉴스 | Structural implication: '이란전쟁에 항공유 부족…유럽 항공사 항공편 취소 잇따라 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스 | Structural implication: '새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 | Structural implication: '"호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 3년 9개월 만에 돌아온 전국 ‘휘발유 2000원’···“종전해도 고유가 이어질 듯” - 경향신문 | Structural implication: '3년 9개월 만에 돌아온 전국 ‘휘발유 2000원’···“종전해도 고유가 이어질 듯” - 경향신문' suggests a shift in NEWS dynamics. | LOW |
 | 코스피, 소폭 하락 6190선 ‘숨 고르기’…환율 1483.5원 - 한겨레 | Structural implication: '코스피, 소폭 하락 6190선 ‘숨 고르기’…환율 1483.5원 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
+| 새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스 | Structural implication: '새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼성전자 노조의 압박…"파업 땐 30조 손실날 것" - 한국경제 | Structural implication: '삼성전자 노조의 압박…"파업 땐 30조 손실날 것" - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 미국 정부, 앤트로픽 '미토스 충격'에 AI 정책 급선회 - 지디넷코리아 | Structural implication: '미국 정부, 앤트로픽 '미토스 충격'에 AI 정책 급선회 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
-| 경상흑자에도 원화 약세…"민간 해외투자 확대 영향" - 프라임경제 | Structural implication: '경상흑자에도 원화 약세…"민간 해외투자 확대 영향" - 프라임경제' suggests a shift in NEWS dynamics. | LOW |
-| 2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레 | Structural implication: '2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| [르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터 | Structural implication: '[르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | 신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보 | Structural implication: '신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 공포에 사고 탐욕에 판 개미들…전쟁에도 '오천피' 지킨 일등공신 - 한국경제 | Structural implication: '공포에 사고 탐욕에 판 개미들…전쟁에도 '오천피' 지킨 일등공신 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 사상 최대 경상수지 흑자에도 환율은 뛴다?…과거 공식 깨진 이유는 - 아시아경제 | Structural implication: '사상 최대 경상수지 흑자에도 환율은 뛴다?…과거 공식 깨진 이유는 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
+| 2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레 | Structural implication: '2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | LCC도 유류할증료 최고 수준으로 올린다... 진에어, 나트랑 왕복 35만원으로 - 조선일보 | Structural implication: 'LCC도 유류할증료 최고 수준으로 올린다... 진에어, 나트랑 왕복 35만원으로 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레 | Structural implication: '휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | “양도세 무서워 벌벌 떨더니”…급매 확 늘고, 실거래가 지수도 하락세로 - 매일경제 | Structural implication: '“양도세 무서워 벌벌 떨더니”…급매 확 늘고, 실거래가 지수도 하락세로 - 매일경제' suggests a shift in NEWS dynamics. | LOW |
-| S&P500·나스닥 이틀 연속 최고치...트럼프 "이슬라마바드 갈 수도" - 조선일보 | Structural implication: 'S&P500·나스닥 이틀 연속 최고치...트럼프 "이슬라마바드 갈 수도" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| S&P500·나스닥 나란히 신고가 … 코스피, 6200 넘어 전고점 눈앞 - 한국경제 | Structural implication: 'S&P500·나스닥 나란히 신고가 … 코스피, 6200 넘어 전고점 눈앞 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 무료 두쫀쿠 클래스 갔더니 종신보험 권유…"불완전판매 주의" - 연합뉴스 | Structural implication: '무료 두쫀쿠 클래스 갔더니 종신보험 권유…"불완전판매 주의" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 삼천당제약, 경구용 인슐린 PK 데이터 공개 결정 - 서울경제TV | Structural implication: '삼천당제약, 경구용 인슐린 PK 데이터 공개 결정 - 서울경제TV' suggests a shift in NEWS dynamics. | LOW |
+| 큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리 | Structural implication: '큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리' suggests a shift in NEWS dynamics. | LOW |
+| [르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터 | Structural implication: '[르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 | Structural implication: '"비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 삼천당제약, 논란됐던 경구용 당뇨·비만약 데이터 21일 공개 - 코메디닷컴 | Structural implication: '삼천당제약, 논란됐던 경구용 당뇨·비만약 데이터 21일 공개 - 코메디닷컴' suggests a shift in NEWS dynamics. | LOW |
-| 파운드리 수요 폭발…TSMC, 1분기 순익 '사상 최대' - 한국경제 | Structural implication: '파운드리 수요 폭발…TSMC, 1분기 순익 '사상 최대' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| “더는 못 버텨” 건설사는 짐 싸는데…SK하이닉스가 고졸 채용하는 이유 [잇슈 머니] - KBS 뉴스 | Structural implication: '“더는 못 버텨” 건설사는 짐 싸는데…SK하이닉스가 고졸 채용하는 이유 [잇슈 머니] - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 양자컴 관련주 50% 이상 급등…엔비디아 효과? - 지디넷코리아 | Structural implication: '양자컴 관련주 50% 이상 급등…엔비디아 효과? - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
+| TSMC, 내년 美·日서 3나노 칩 양산 확대…삼성 파운드리 성장세에 견제구 - 조선비즈 - Chosunbiz | Structural implication: 'TSMC, 내년 美·日서 3나노 칩 양산 확대…삼성 파운드리 성장세에 견제구 - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
+| “계엄 당일 군 헬기 보고 ‘尹 미쳤다’ 생각”…김용태 재판서 증언 | Structural implication: '“계엄 당일 군 헬기 보고 ‘尹 미쳤다’ 생각”…김용태 재판서 증언' suggests a shift in NEWS dynamics. | LOW |
+| 치킨 기름 공급사에 “유통마진 0원” 강요…교촌, ‘갑질’ 검찰 기소 | Structural implication: '치킨 기름 공급사에 “유통마진 0원” 강요…교촌, ‘갑질’ 검찰 기소' suggests a shift in NEWS dynamics. | LOW |
+| “파키스탄 중재 진전…미·이란 2차협상 통해 합의문 서명 가능” | Structural implication: '“파키스탄 중재 진전…미·이란 2차협상 통해 합의문 서명 가능”' suggests a shift in NEWS dynamics. | LOW |
 | 기어코 평균 2000원선 뚫었다…전국서 휘발윳값 ‘비상’ | Structural implication: '기어코 평균 2000원선 뚫었다…전국서 휘발윳값 ‘비상’' suggests a shift in NEWS dynamics. | LOW |
 | 차 안서 발견된 14세 시신...유명 팝스타 부인했지만 결국 살해 혐의로 체포 | Structural implication: '차 안서 발견된 14세 시신...유명 팝스타 부인했지만 결국 살해 혐의로 체포' suggests a shift in NEWS dynamics. | LOW |
 | “공정 따지다가 중국에 다 먹혔다”…EU, 기업 합병규제 대폭완화 | Structural implication: '“공정 따지다가 중국에 다 먹혔다”…EU, 기업 합병규제 대폭완화' suggests a shift in NEWS dynamics. | LOW |
-| 289만원 vs 16만원…수학여행 비용 17배 격차, ‘금수저 여행’ 논란 | Structural implication: '289만원 vs 16만원…수학여행 비용 17배 격차, ‘금수저 여행’ 논란' suggests a shift in NEWS dynamics. | LOW |
+| “우리 아들 수학여행 한번에 289만원이라뇨”…비용 격차 최대 17배, 논란 | Structural implication: '“우리 아들 수학여행 한번에 289만원이라뇨”…비용 격차 최대 17배, 논란' suggests a shift in NEWS dynamics. | LOW |
 | 최태원-노소영 재산분할 파기환송심, 내달 13일에 조정 | Structural implication: '최태원-노소영 재산분할 파기환송심, 내달 13일에 조정' suggests a shift in NEWS dynamics. | LOW |
 | ‘우승 주역’ 여자배구 안혜진, 음주운전 적발…“변명의 여지 없다” | Structural implication: '‘우승 주역’ 여자배구 안혜진, 음주운전 적발…“변명의 여지 없다”' suggests a shift in NEWS dynamics. | LOW |
 | 최태원-노소영, 이혼 재산분할 조정으로 회부...5월 13일 논의 | Structural implication: '최태원-노소영, 이혼 재산분할 조정으로 회부...5월 13일 논의' suggests a shift in NEWS dynamics. | LOW |
@@ -222,9 +225,6 @@
 | 與, 울산 남갑 전태진 변호사 전략공천 | Structural implication: '與, 울산 남갑 전태진 변호사 전략공천' suggests a shift in NEWS dynamics. | LOW |
 | 광주 광산을 등 4곳 중대선거구제 최초 도입 | Structural implication: '광주 광산을 등 4곳 중대선거구제 최초 도입' suggests a shift in NEWS dynamics. | LOW |
 | 李 "비슷한 公기관 많아 … 통폐합 속도를" | Structural implication: '李 "비슷한 公기관 많아 … 통폐합 속도를"' suggests a shift in NEWS dynamics. | LOW |
-| 李대통령 만난 홍준표 "TK신공항 국가 지원을" | Structural implication: '李대통령 만난 홍준표 "TK신공항 국가 지원을"' suggests a shift in NEWS dynamics. | LOW |
-| 임주현 부회장 “하반기 출시 한미 비만약, 포기 않는 회사 정신 깃들어” | Structural implication: '임주현 부회장 “하반기 출시 한미 비만약, 포기 않는 회사 정신 깃들어”' suggests a shift in NEWS dynamics. | LOW |
-| 루닛, 美 ‘렉싱턴 클리닉’에 유방암 AI 통합 솔루션 공급 | Structural implication: '루닛, 美 ‘렉싱턴 클리닉’에 유방암 AI 통합 솔루션 공급' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)

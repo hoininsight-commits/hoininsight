@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "struct_dart_cb_bw",
     "topic_id": "struct_dart_cb_bw::event_nonzero",
     "title": "data/features/anomalies/2026/04/17/struct_dart_cb_bw.json L2 Signal",
@@ -35,27 +35,6 @@
     },
     "rationale": "[L2] New Event Detected (Count=1) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "DART Listed Issuers (CB/BW)",
-      "temporal_anchor": "2026-04-17 (Signal Detection Date)",
-      "unresolved_question": "전환사채(CB) 및 신주인수권부사채(BW)의 전환가액 조정(Refixing) 혹은 권리 행사 기간 진입에 따른 실제 물량 출회 규모와 가격 하방 압력의 실현 여부",
-      "expected_market_behavior": "speculation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "전환권 행사 시작일이 5영업일 이내로 접근하거나, 리픽싱 하한선 도달에 따른 대규모 잠재 물량 확정 공시 발생 시",
-        "condition_to_invalidate": "발행사의 CB/BW 전량 조기상환(Call Option 행사) 공시 또는 전환사채권자의 전환권 행사 포기 선언 시"
-      },
-      "narrative_pressure_score": 72,
-      "related_entities": [
-        "DART",
-        "Convertible Bonds",
-        "Bonds with Warrants",
-        "Overhang Risk",
-        "Refixing"
-      ],
-      "rationale": "본 신호는 한국 기업 공시 시스템(DART) 내 메자닌 금융(CB, BW)과 관련된 구조적 이상 현상(L2)을 탐지한 것임. 이는 단순한 기업 홍보나 업황 기대감이 아닌, 자본 구조의 변화(지분 희석 또는 채무 상환)를 유발하는 실제 공시 이벤트를 앵커로 함. 특히 CB/BW의 리픽싱이나 전환권 행사는 법적 절차 완료 전부터 시장 참여자들의 선제적 포지션 조정(Short-selling 또는 물량 회피)을 유도하므로 Pre-Structural Signal의 정의에 부합함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

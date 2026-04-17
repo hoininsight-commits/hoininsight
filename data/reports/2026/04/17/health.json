@@ -1,5 +1,5 @@
 {
-  "ts_utc": "2026-04-17T21:36:20Z",
+  "ts_utc": "2026-04-17T22:22:06Z",
   "status": "SUCCESS",
   "checks_ok": true,
   "checks": [
@@ -8,7 +8,8 @@
     "[SKIP] outputs(struct_krx_foreigner_flow) missing",
     "[SKIP] outputs(real_estate_price_index) missing",
     "[SKIP] outputs(real_estate_volume) missing",
-    "[SKIP] outputs(real_estate_unsold) missing"
+    "[SKIP] outputs(real_estate_unsold) missing",
+    "[SKIP] outputs(smart_money_cot) missing"
   ],
   "per_dataset": [
     {
@@ -148,6 +149,22 @@
       "topics_ok": true
     },
     {
+      "dataset_id": "liquidity_kor_m2_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "employment_kor_unrate_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
       "dataset_id": "rates_fed_funds_fred",
       "soft_fail": true,
       "status": "OK",
@@ -264,6 +281,14 @@
       "soft_fail": true,
       "status": "SKIPPED",
       "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "smart_money_cot",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": false,
       "anomalies_ok": false,
       "topics_ok": false
     },

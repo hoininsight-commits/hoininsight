@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "struct_dart_disposal",
     "topic_id": "struct_dart_disposal::event_nonzero",
     "title": "data/features/anomalies/2026/04/17/struct_dart_disposal.json L2 Signal",
@@ -35,25 +35,6 @@
     },
     "rationale": "[L2] New Event Detected (Count=5) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "DART 공시 상장법인 및 금융감독원",
-      "temporal_anchor": "2026-04-17 (Anomaly Detection Date)",
-      "unresolved_question": "대규모 자산/지분 처분 이후 확보된 현금이 주주환원으로 이어질 것인가, 아니면 유동성 위기 대응을 위한 부채 상환에 투입될 것인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "처분 자산의 매각 대금 사용처가 '자기주식 소각' 또는 '특별배당'으로 확정 발표될 경우",
-        "condition_to_invalidate": "공시 철회 혹은 30일 이내에 추가적인 자산 매각 관련 후속 데이터가 발생하지 않을 경우"
-      },
-      "narrative_pressure_score": 72,
-      "related_entities": [
-        "KOSPI/KOSDAQ Listed Firms",
-        "Institutional Investors",
-        "FSS (Financial Supervisory Service)"
-      ],
-      "rationale": "DART(전자공시)상에서 특정 시점에 자산 및 지분 처분(Disposal) 관련 공시가 5건 이상 집중적으로 탐지된 것은 시장 내 자본 재배치를 시사하는 선행 구조적 시그널임. 이는 실제 현금 유입이나 사업 구조 개편이 완료되기 전, 시장 참여자들이 자금 흐름의 방향성을 선반영하게 만드는 트리거로 작용함.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

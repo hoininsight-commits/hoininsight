@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "fx_usdkrw_ecos",
     "topic_id": "fx_usdkrw_ecos::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/fx_usdkrw_ecos.json L1 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L1] Z-Score -1.55 >= 1.5 (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Bank of Korea (BOK) & Institutional FX Desks",
-      "temporal_anchor": "2026-04-17 (Immediate T+5 window)",
-      "unresolved_question": "환율이 1,470원대 초반까지 급락함에 따라 외환 당국의 실질적인 시장 개입(Smoothing Operation)이 즉각적으로 발생할 것인가?",
-      "expected_market_behavior": "speculation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "한국은행의 공식적인 구두 개입(Verbal Intervention) 발언이나 1,470원선 강력 지지 확인 시",
-        "condition_to_invalidate": "특별한 재료 없이 5거래일 이내에 20일 이동평균선(1497.9)으로 회귀할 경우"
-      },
-      "narrative_pressure_score": 78,
-      "related_entities": [
-        "USD/KRW",
-        "Bank of Korea",
-        "KOSPI Export Sector",
-        "Federal Reserve"
-      ],
-      "rationale": "USD/KRW 환율이 20일 이동평균선(1497.9) 대비 현저히 낮은 1472.6으로 급락하며 Z-Score -1.55의 이상치가 감지됨. 이는 단순 추세가 아닌 단기 자본의 급격한 이동(Capital Flow)을 시사하며, 수출 기업의 환헤지 전략 수정 및 당국의 개입 압력을 발생시키는 전구조적 신호임. 30일 이내에 정책적 반응이나 실적 전망 수정이 동반될 가능성이 높음.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

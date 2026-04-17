@@ -25,31 +25,33 @@ Historical context:
 | 2 | SPX | data/features/anomalies/2026/04/17/index_spx_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/17/charts/index_spx_fred.png) | [json](data/topics/2026/04/17/index_spx_fred.json) | [json](data/features/anomalies/2026/04/17/index_spx_fred.json) |
 | 3 | NASDAQ | data/features/anomalies/2026/04/17/index_nasdaq_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/17/charts/index_nasdaq_fred.png) | [json](data/topics/2026/04/17/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/04/17/index_nasdaq_fred.json) |
 | 4 | WTI | data/features/anomalies/2026/04/17/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/17/charts/comm_wti_fred.png) | [json](data/topics/2026/04/17/comm_wti_fred.json) | [json](data/features/anomalies/2026/04/17/comm_wti_fred.json) |
-| 5 | CPI_USA | data/features/anomalies/2026/04/17/inflation_cpi_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/17/charts/inflation_cpi_fred.png) | [json](data/topics/2026/04/17/inflation_cpi_fred.json) | [json](data/features/anomalies/2026/04/17/inflation_cpi_fred.json) |
+| 5 | SILVER | data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L2 Signal | 6.00 | 4 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/17/charts/metal_silver_kag_coingecko.png) | [json](data/topics/2026/04/17/metal_silver_kag_coingecko.json) | [json](data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json) |
 
 ## Per-dataset Topics
 - [HIGH] BTCUSD: data/features/anomalies/2026/04/17/crypto_btc_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [HIGH] SPX: data/features/anomalies/2026/04/17/index_spx_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] NASDAQ: data/features/anomalies/2026/04/17/index_nasdaq_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] WTI: data/features/anomalies/2026/04/17/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [HIGH] SILVER: data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=4
+- [HIGH] SILVER: data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/17/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/17/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/17/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [HIGH] GS_RATIO: data/features/anomalies/2026/04/17/derived_gold_silver_ratio.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/04/17/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/04/17/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US10Y: data/features/anomalies/2026/04/17/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] VIX: data/features/anomalies/2026/04/17/risk_vix_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.50) | App7d=7
-- [MED] SILVER: data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
-- [MED] SILVER: data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
+- [MED] GOLD: data/features/anomalies/2026/04/17/metal_gold_paxg_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [MED] KOR_CPI: data/features/anomalies/2026/04/17/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/17/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] KOR_M2: data/features/anomalies/2026/04/17/liquidity_kor_m2_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [MED] HY_SPREAD: data/features/anomalies/2026/04/17/credit_hy_spread_fred.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
-- [MED] GS_RATIO: data/features/anomalies/2026/04/17/derived_gold_silver_ratio.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
 - [LOW] KOSPI: data/features/anomalies/2026/04/17/index_kospi_stooq.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] US02Y: data/features/anomalies/2026/04/17/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] GOLD: data/features/anomalies/2026/04/17/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] ETHUSD: data/features/anomalies/2026/04/17/crypto_eth_usd_spot_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
 - [LOW] KOR_RATE: data/features/anomalies/2026/04/17/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [LOW] KOR_UNRATE: data/features/anomalies/2026/04/17/employment_kor_unrate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] FED_FUNDS: data/features/anomalies/2026/04/17/rates_fed_funds_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] UNRATE: data/features/anomalies/2026/04/17/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] FIN_STRESS: data/features/anomalies/2026/04/17/risk_financial_stress_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
@@ -61,6 +63,11 @@ Narrative Drift Signals:
 - (no meta regime detected): SATURATION
 
 
+## OPS HEALTH SNAPSHOT
+⚠️ SLA BREACH DETECTED: 3 axes stale (>6h)
+Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow
+- System Freshness: 93.0%
+
 ## FINAL DECISION CARD SNAPSHOT
 - Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
 
@@ -69,7 +76,7 @@ Narrative Drift Signals:
 - **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Pre-Structural (Step 74)
+- **Topic:** [Risk Off] Structural-driven
 - **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
@@ -87,3 +94,7 @@ Narrative Drift Signals:
 - Confidence: LOW
 - Handoff to Structural: False
 - Handoff reason: 콘텐츠 후보로는 충분하나, Structural 엔진에 넘길 만큼 축 결합/증거가 부족.
+
+## TOPIC CANDIDATE SNAPSHOT
+Gate Filter Result: 16 candidate(s) survived survival rules.
+No automatic selection performed. See Dashboard for details.

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "ts_utc": "2026-04-17T21:36:20Z",
+    "ts_utc": "2026-04-17T22:22:06Z",
     "ymd_utc": "2026/04/17",
-    "enabled_datasets": 32,
+    "enabled_datasets": 35,
     "lookback_days": 30,
     "health_dirs_7d": [
       "data/reports/2026/04/17",
@@ -19,11 +19,11 @@
       "dataset_id": "crypto_btc_usd_spot_coingecko",
       "report_key": "BTCUSD",
       "curated_path": "data/curated/crypto/btc_usd.csv",
-      "rows": 652,
+      "rows": 653,
       "first_ts": "2026-01-15T07:32:29Z",
-      "last_ts": "2026-04-17T21:31:27Z",
-      "last_7d_rows": 29,
-      "last_30d_rows": 82,
+      "last_ts": "2026-04-17T22:21:13Z",
+      "last_7d_rows": 30,
+      "last_30d_rows": 83,
       "ok_7d": 4,
       "skipped_7d": 0,
       "fail_7d": 0,
@@ -462,6 +462,48 @@
       "skipped_7d": 4,
       "fail_7d": 0,
       "status_today": "SKIPPED"
+    },
+    {
+      "dataset_id": "smart_money_cot",
+      "report_key": "COT",
+      "curated_path": "data/curated/macro/cot_report.json",
+      "rows": 0,
+      "first_ts": "-",
+      "last_ts": "-",
+      "last_7d_rows": 0,
+      "last_30d_rows": 0,
+      "ok_7d": 0,
+      "skipped_7d": 0,
+      "fail_7d": 0,
+      "status_today": "UNKNOWN"
+    },
+    {
+      "dataset_id": "liquidity_kor_m2_ecos",
+      "report_key": "KOR_M2",
+      "curated_path": "data/curated/ecos/liquidity/korea_m2.csv",
+      "rows": 60,
+      "first_ts": "2021-04-01T00:00:00Z",
+      "last_ts": "2026-02-01T00:00:00Z",
+      "last_7d_rows": 0,
+      "last_30d_rows": 0,
+      "ok_7d": 0,
+      "skipped_7d": 0,
+      "fail_7d": 0,
+      "status_today": "UNKNOWN"
+    },
+    {
+      "dataset_id": "employment_kor_unrate_ecos",
+      "report_key": "KOR_UNRATE",
+      "curated_path": "data/curated/ecos/employment/korea_unrate.csv",
+      "rows": 61,
+      "first_ts": "2021-04-01T00:00:00Z",
+      "last_ts": "2026-03-01T00:00:00Z",
+      "last_7d_rows": 0,
+      "last_30d_rows": 0,
+      "ok_7d": 0,
+      "skipped_7d": 0,
+      "fail_7d": 0,
+      "status_today": "UNKNOWN"
     }
   ],
   "chart_map": {
@@ -574,6 +616,20 @@
       "dataset_id": "fx_usdkrw_ecos",
       "report_key": "USDKRW_ECOS",
       "png_path": "data/reports/2026/04/17/charts/fx_usdkrw_ecos.png",
+      "ok": true,
+      "reason": "ok"
+    },
+    "liquidity_kor_m2_ecos": {
+      "dataset_id": "liquidity_kor_m2_ecos",
+      "report_key": "KOR_M2",
+      "png_path": "data/reports/2026/04/17/charts/liquidity_kor_m2_ecos.png",
+      "ok": true,
+      "reason": "ok"
+    },
+    "employment_kor_unrate_ecos": {
+      "dataset_id": "employment_kor_unrate_ecos",
+      "report_key": "KOR_UNRATE",
+      "png_path": "data/reports/2026/04/17/charts/employment_kor_unrate_ecos.png",
       "ok": true,
       "reason": "ok"
     },

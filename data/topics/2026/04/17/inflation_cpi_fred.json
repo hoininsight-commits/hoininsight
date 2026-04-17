@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-17T21:32:19Z",
+    "ts_utc": "2026-04-17T22:21:52Z",
     "dataset_id": "inflation_cpi_fred",
     "topic_id": "inflation_cpi_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/17/inflation_cpi_fred.json L2 Signal",
@@ -37,26 +37,6 @@
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
     "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Federal Reserve (Policy Response Actor)",
-      "temporal_anchor": "2026-04-17 (Data Release & Immediate Repricing Window)",
-      "unresolved_question": "차기 FOMC 이전 시장의 기대 금리(Terminal Rate)가 100th percentile 데이터에 부합하도록 즉각 상향 조정될 것인가?",
-      "expected_market_behavior": "risk_off",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "연준 관계자의 긴급 매파적 발언 또는 시장 금리(10Y)의 즉각적인 20bp 이상 급등 발생 시",
-        "condition_to_invalidate": "해당 수치가 데이터 집계 오류로 판명되거나 기저효과에 의한 일시적 왜곡으로 확인될 경우"
-      },
-      "narrative_pressure_score": 92,
-      "related_entities": [
-        "FRED",
-        "Federal Reserve",
-        "US10Y",
-        "Consumer Price Index"
-      ],
-      "rationale": "CPI 지수가 100번째 백분위수(Extreme)라는 통계적 임계점에 도달함에 따라, 공식적인 정책 변경이나 연준의 성명이 발표되기 전 시장 참여자들이 금리 인상 가속화를 예상하며 자산 포트폴리오를 선제적으로 재조정(Capital reallocation)하게 만드는 강력한 전구적(Pre-structural) 신호임.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "is_pre_structural": false
   }
 ]

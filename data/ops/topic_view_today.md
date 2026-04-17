@@ -12,17 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 45조 성과급 요구한 삼성전자 노조 "총파업 땐 30조 손실" - 조선일보 (ID: unknown)
+### "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 이란전쟁에 항공유 부족…유럽 항공사 항공편 취소 잇따라 - KBS 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스 (ID: unknown)
+### 3년 9개월 만에 돌아온 전국 ‘휘발유 2000원’···“종전해도 고유가 이어질 듯” - 경향신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -32,22 +27,17 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 새 코로나19 변이 확산 우려에 질병청 "현재 접종 백신 유효" - 연합뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 삼성전자 노조의 압박…"파업 땐 30조 손실날 것" - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 미국 정부, 앤트로픽 '미토스 충격'에 AI 정책 급선회 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 경상흑자에도 원화 약세…"민간 해외투자 확대 영향" - 프라임경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### [르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -57,7 +47,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 공포에 사고 탐욕에 판 개미들…전쟁에도 '오천피' 지킨 일등공신 - 한국경제 (ID: unknown)
+### 사상 최대 경상수지 흑자에도 환율은 뛴다?…과거 공식 깨진 이유는 - 아시아경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 2월 은행 대출 연체율 ‘9개월 만에 최고’…대내외 불안 요인 커져 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -67,17 +62,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### “양도세 무서워 벌벌 떨더니”…급매 확 늘고, 실거래가 지수도 하락세로 - 매일경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### S&P500·나스닥 이틀 연속 최고치...트럼프 "이슬라마바드 갈 수도" - 조선일보 (ID: unknown)
+### S&P500·나스닥 나란히 신고가 … 코스피, 6200 넘어 전고점 눈앞 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,24 +82,49 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 삼천당제약, 경구용 인슐린 PK 데이터 공개 결정 - 서울경제TV (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### [르포] "사람 대신 고압전선 타고 제빙까지"…中산업현장 스며드는 로봇 - 연합뉴스 한민족센터 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼천당제약, 논란됐던 경구용 당뇨·비만약 데이터 21일 공개 - 코메디닷컴 (ID: unknown)
+### 양자컴 관련주 50% 이상 급등…엔비디아 효과? - 지디넷코리아 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 파운드리 수요 폭발…TSMC, 1분기 순익 '사상 최대' - 한국경제 (ID: unknown)
+### TSMC, 내년 美·日서 3나노 칩 양산 확대…삼성 파운드리 성장세에 견제구 - 조선비즈 - Chosunbiz (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “더는 못 버텨” 건설사는 짐 싸는데…SK하이닉스가 고졸 채용하는 이유 [잇슈 머니] - KBS 뉴스 (ID: unknown)
+### “계엄 당일 군 헬기 보고 ‘尹 미쳤다’ 생각”…김용태 재판서 증언 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 치킨 기름 공급사에 “유통마진 0원” 강요…교촌, ‘갑질’ 검찰 기소 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “파키스탄 중재 진전…미·이란 2차협상 통해 합의문 서명 가능” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 기어코 평균 2000원선 뚫었다…전국서 휘발윳값 ‘비상’ (ID: unknown)
@@ -127,7 +142,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### 289만원 vs 16만원…수학여행 비용 17배 격차, ‘금수저 여행’ 논란 (ID: unknown)
+### “우리 아들 수학여행 한번에 289만원이라뇨”…비용 격차 최대 17배, 논란 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
@@ -193,21 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 李 "비슷한 公기관 많아 … 통폐합 속도를" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 李대통령 만난 홍준표 "TK신공항 국가 지원을" (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 임주현 부회장 “하반기 출시 한미 비만약, 포기 않는 회사 정신 깃들어” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 루닛, 美 ‘렉싱턴 클리닉’에 유방암 AI 통합 솔루션 공급 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
