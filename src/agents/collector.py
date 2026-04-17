@@ -557,12 +557,20 @@ class CollectorAgent:
 
         headlines = []
         rss_feeds = [
-            {"name": "Bloomberg", "url": "https://feeds.bloomberg.com/markets/news.rss"},
-            {"name": "Reuters", "url": "https://feeds.reuters.com/reuters/businessNews"},
-            {"name": "CNBC", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
-            {"name": "Yonhap English", "url": "https://en.yna.co.kr/RSS/economy.xml"},
+            # Bloomberg 공식 RSS 차단 → WSJ 대체 (무료, 안정적)
+            {"name": "WSJ Markets", "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"},
+            {"name": "WSJ Economy", "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml"},
+            # Reuters 공식 RSS 2026년 3월 차단 → Financial Times 대체
+            {"name": "FT Markets", "url": "https://www.ft.com/markets?format=rss"},
+            # CNBC 유지
+            {"name": "CNBC Economy", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
+            {"name": "CNBC Finance", "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"},
+            # 국내 유지
+            {"name": "Yonhap English", "url": "https://en.yna.co.kr/RSS/news.xml"},
             {"name": "연합뉴스", "url": "https://www.yna.co.kr/rss/economy.xml"},
-            {"name": "매일경제", "url": "https://www.mk.co.kr/rss/30000001/"},
+            {"name": "매일경제", "url": "https://www.mk.co.kr/rss/30100041/"},
+            # 추가 — 한국경제 (국내 경제 보강)
+            {"name": "한국경제", "url": "https://www.hankyung.com/feed/economy"},
         ]
 
         for feed in rss_feeds:
