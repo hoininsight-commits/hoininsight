@@ -21,7 +21,7 @@ class GeminiClient:
 
     def __init__(self):
         self.api_key = os.environ.get("GEMINI_API_KEY", "")
-        self.model_name = "gemini-2.0-flash"
+        self.model_name = "gemini-2.5-flash"
 
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 설정되지 않았습니다.")
