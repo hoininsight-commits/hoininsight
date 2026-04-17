@@ -1,7 +1,7 @@
 import json
 import os
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -752,7 +752,7 @@ class CollectorAgent:
                 # 에러 메시지 처리
                 if "RESULT" in json_resp and json_resp["RESULT"].get("CODE") != "INFO-000":
                     print(f"  ⚠️ ECOS {stat_code} API 에러: {json_resp['RESULT'].get('MESSAGE')}")
-                    return None
+                    return None, None
                     
                 rows = json_resp.get("StatisticSearch", {}).get("row", [])
                 if rows:
@@ -773,11 +773,12 @@ class CollectorAgent:
         indicators = {
             "kr_base_rate":    ("722Y001", "M", "0101000"),
             "kr_cpi":          ("901Y009", "M", "0"),
-            "kr_m2":           ("101Y004", "M", "BBIA00"),
-            "kr_unemployment": ("901Y027", "M", "L1200301"),
-            "kr_export":       ("901Y015", "M", "T10"),
-            "kr_import":       ("901Y015", "M", "T11"),
+            "kr_m2":           ("101Y004", "M", "BBHA00"),
+            "kr_unemployment": ("901Y052", "M", "AD"),
+            "kr_export":       ("132Y013", "M", "0000001"),
+            "kr_import":       ("132Y013", "M", "0000002"),
         }
+
 
         data = {}
         for key, (code, cycle, item) in indicators.items():
@@ -926,6 +927,12 @@ class CollectorAgent:
         # 뉴스 기반 정밀 타격 공시 수집
         keywords = self.extract_news_keywords(sentiment)
         dart = self.collect_dart(keywords)
+        
+        # COT 스마트머니 수집
+        from src.agents.cot_collector import COTCollector
+        cot = COTCollector(output_dir=self.output_dir)
+        cot.collect()
+
         
         print(f"\n✨ 모든 데이터 수집 완료! (data/raw/{self.today})")
 

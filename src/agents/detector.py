@@ -21,7 +21,7 @@ class DetectorAgent:
     def load_all_data(self) -> dict:
         """모든 수집 데이터 및 90일 히스토리 로드"""
         all_data = {}
-        files = ["market", "macro", "sentiment", "fred", "ecos", "dart", "consensus"]
+        files = ["market", "macro", "sentiment", "fred", "ecos", "dart", "consensus", "cot"]
         for name in files:
             p = self.raw_dir / f"{name}.json"
             if p.exists():
@@ -88,7 +88,16 @@ class DetectorAgent:
         # 뉴스 헤드라인
         news_lines = [f"[{h.get('source','')}] {h.get('title','')}" for h in headlines[:15]]
 
+        # COT 스마트머니 섹션
+        cot_data = all_data.get("cot", {})
+        cot_signals = cot_data.get("smart_money_signals", [])
+        cot_lines = []
+        if cot_signals:
+            for s in cot_signals:
+                cot_lines.append(f"[{s.get('asset')}] {s.get('signal_label')}: {s.get('description')}")
+
         # 컨센서스 섹션
+
         consensus_data = all_data.get("consensus", {})
         surprises = consensus_data.get("major_surprises", [])
         consensus_lines = []
@@ -114,6 +123,9 @@ class DetectorAgent:
 
 === 오늘 뉴스 헤드라인 ===
 {chr(10).join(news_lines) if news_lines else "없음"}
+
+=== 상업용/비상업용 투기 세력 (COT) ===
+{chr(10).join(cot_lines) if cot_lines else "특이 신호 없음"}
 """
         return summary
 
@@ -212,7 +224,13 @@ class DetectorAgent:
             # 1차: 컨센서스 서프라이즈
             consensus_data = all_data.get("consensus", {})
             major = consensus_data.get("major_surprises", [])
+            
+            # 1.5차: COT 스마트머니 플립 (헤지펀드 포지션 급변)
+            cot_data = all_data.get("cot", {})
+            top_cot = cot_data.get("top_signal")
+            
             if major:
+
                 best = sorted(major, key=lambda x: abs(x.get("surprise_pct", 0)), reverse=True)[0]
                 print(f"  🔄 컨센서스 Fallback 적용: {best['event']}")
                 selected = {
@@ -224,7 +242,19 @@ class DetectorAgent:
                     "key_indicators": ["consensus", best['event']],
                     "source": "CONSENSUS_FALLBACK"
                 }
+            elif top_cot and top_cot.get("signal_label") in ["FLIP", "STRONG"]:
+                print(f"  🔄 COT 스마트머니 Fallback 적용: {top_cot['asset']}")
+                selected = {
+                    "topic": f"스마트머니 {top_cot['asset']} {top_cot['signal_label']} 포착",
+                    "strength": 8.5 if top_cot["signal_label"] == "FLIP" else 8.0,
+                    "anomaly_type": "WHY_NOW",
+                    "why_anomalous": top_cot.get("description"),
+                    "why_now": "헤지펀드 포지션의 통계적 유의미한 급변 감지",
+                    "key_indicators": ["cot", top_cot['asset']],
+                    "source": "COT_FALLBACK"
+                }
             else:
+
                 # 2차: Z-score
                 market_data = all_data.get("market", {}).get("data", {})
                 stats = market_data.get("multi_period_stats", {})
