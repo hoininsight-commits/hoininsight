@@ -1,0 +1,19 @@
+{
+  "date": "2026-04-17",
+  "run_at": "2026-04-17T20:53:11.529027",
+  "elapsed_seconds": 0.3,
+  "total_agents": 6,
+  "success_count": 5,
+  "failed_count": 1,
+  "failed_agents": [
+    "DART"
+  ],
+  "agent_results": {
+    "DART": "failed: 강제 실패 테스트",
+    "CONSENSUS": "success",
+    "COT": "success",
+    "MACRO": "success",
+    "MARKET": "success",
+    "SENTIMENT": "success"
+  }
+}

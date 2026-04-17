@@ -30,7 +30,7 @@ jobs:
       - name: AGENT-01 COLLECTOR 실행
         run: |
           echo "=== AGENT-01 COLLECTOR 시작 ==="
-          python -m src.agents.collector
+          python -m src.agents.collectors.collector_runner
           echo "=== AGENT-01 완료 ==="
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}

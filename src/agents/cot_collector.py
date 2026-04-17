@@ -14,6 +14,7 @@ class COTCollector:
     Leveraged Funds(헤지펀드) 포지션 변화로 스마트머니 방향 포착
     매주 금요일 15:30 ET 발표 / 화요일 기준 데이터
     """
+    name = "COT"
 
     TARGET_CONTRACTS = {
         "WTI": "CRUDE OIL",

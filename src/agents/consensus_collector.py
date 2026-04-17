@@ -12,6 +12,7 @@ class ConsensusCollector:
     경제지표 예상치 vs 실제치 수집기
     Finnhub Economic Calendar API 사용 (무료)
     """
+    name = "CONSENSUS"
 
     FINNHUB_URL = "https://finnhub.io/api/v1/calendar/economic"
 
