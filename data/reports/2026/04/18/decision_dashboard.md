@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -83,7 +83,7 @@
 - **Samples (Top 3)**:
   - [NEWS] 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 (Google_News_KR_Economy)
   - [NEWS] “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 (Google_News_KR_Economy)
-  - [NEWS] 삼성전자 노조의 으름장 "5월 파업 땐 30조 손실" - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 (Google_News_KR_Economy)
 
 
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
@@ -187,7 +187,7 @@
 |---|---|---|
 | 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 | Structural implication: '국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
 | “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 | Structural implication: '“위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
-| 삼성전자 노조의 으름장 "5월 파업 땐 30조 손실" - 조선일보 | Structural implication: '삼성전자 노조의 으름장 "5월 파업 땐 30조 손실" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 | Structural implication: '"삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보 | Structural implication: '[동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 코스피, 외인 2조 매물 쏟아내 하락 마감…코스닥은 상승 - 한국경제 | Structural implication: '코스피, 외인 2조 매물 쏟아내 하락 마감…코스닥은 상승 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 | Structural implication: '"호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -203,8 +203,9 @@
 | 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 | Structural implication: '"비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 | Structural implication: '"삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 | Structural implication: '"삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| “제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이 | Structural implication: '“제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이' suggests a shift in NEWS dynamics. | LOW |
 | “아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책] | Structural implication: '“아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
 | “작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세 | Structural implication: '“작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세' suggests a shift in NEWS dynamics. | LOW |
 | 매경이 전하는 세상의 지식 (매-세-지, 4월 18일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 4월 18일)' suggests a shift in NEWS dynamics. | LOW |
@@ -224,7 +225,6 @@
 | 국제유가, 이란의 호르무즈 일시 개방 소식에 급락세...브렌트유 10%↓ | Structural implication: '국제유가, 이란의 호르무즈 일시 개방 소식에 급락세...브렌트유 10%↓' suggests a shift in NEWS dynamics. | LOW |
 | “걸그룹 멤버 오빠, BJ 추행 혐의”…경찰, 구속영장 신청 | Structural implication: '“걸그룹 멤버 오빠, BJ 추행 혐의”…경찰, 구속영장 신청' suggests a shift in NEWS dynamics. | LOW |
 | [속보] 트럼프, 이란 ‘호르무즈 개방’에 “땡큐…對이란 해상봉쇄는 계속” | Structural implication: '[속보] 트럼프, 이란 ‘호르무즈 개방’에 “땡큐…對이란 해상봉쇄는 계속”' suggests a shift in NEWS dynamics. | LOW |
-| “계엄 당일 군 헬기 보고 ‘尹 미쳤다’ 생각”…김용태 재판서 증언 | Structural implication: '“계엄 당일 군 헬기 보고 ‘尹 미쳤다’ 생각”…김용태 재판서 증언' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>

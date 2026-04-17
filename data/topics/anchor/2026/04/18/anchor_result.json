@@ -1,13 +1,11 @@
 {
   "data_axis": [
-    "crypto_btc_usd_spot_coingecko",
     "index_spx_fred",
     "index_kospi_stooq"
   ],
   "baseline_match": [
-    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.23)",
     "index_spx_fred: Volatility Surge (Z=2.07)",
-    "index_kospi_stooq: Volatility Surge (Z=3.46)"
+    "index_kospi_stooq: Volatility Surge (Z=2.60)"
   ],
   "anomaly_logic": "Unknown",
   "why_now_type": "Hybrid-driven",
