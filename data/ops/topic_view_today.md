@@ -82,7 +82,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 삼천당제약, '기술증명' 넘어 '상업적 확신' 줘야...IR 성공조건은 - 팜뉴스 (ID: unknown)
+### "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -92,12 +92,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN (ID: unknown)
+### 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 (ID: unknown)
+### 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -110,6 +110,31 @@ No SHADOW candidates today.
 ### "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “아직 안죽었다”…‘병원 입원’ 팝핀현준이 전한 충격적인 소식 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “‘핵먼지’ 미국으로 넘기기로 했다”…트럼프 말에 이란의 반응 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### [단독] 정부, ‘노후 기계식 주차장 철거’ 인센티브 준다…부담금 낮춰 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### FA 대박 기대했는데 배구 대표팀 낙마하나…‘음주운전’ 안혜진 중징계 가능성 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### “제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이 (ID: unknown)
@@ -183,31 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 李대통령 “책임강국으로서 호르무즈 항행 자유 보장” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 서울대미술관, 홍라희 명예관장에 감사패 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 국제유가, 이란의 호르무즈 일시 개방 소식에 급락세...브렌트유 10%↓ (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “걸그룹 멤버 오빠, BJ 추행 혐의”…경찰, 구속영장 신청 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 트럼프, 이란 ‘호르무즈 개방’에 “땡큐…對이란 해상봉쇄는 계속” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

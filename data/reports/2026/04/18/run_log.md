@@ -1,7 +1,7 @@
 # Run Log
 
-- started_utc: 2026-04-17T23:23:40+09:00
-- finished_utc: 2026-04-17T23:24:15+09:00
+- started_utc: 2026-04-18T08:25:12+09:00
+- finished_utc: 2026-04-18T08:25:58+09:00
 - status: SUCCESS
 
 ## details
@@ -55,7 +55,6 @@ relationship_stress: ok
 operational_dashboard: ok | data/reports/2026/04/18/operational_dashboard.md
 decision_dashboard: ok | data/reports/2026/04/18/decision_dashboard.md
 decision: ok
-operator_log: ok | NO_TOPIC
 judgment_ledger: ok | None
 judgment_comparison: ok | None
 narrative_preview: ok | NO_TOPIC

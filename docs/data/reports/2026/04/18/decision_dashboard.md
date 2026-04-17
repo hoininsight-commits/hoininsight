@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **지수 상승 속 섹터 하락의 이유**
+- **오늘 시장의 핵심 혼란 포인트**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -199,12 +199,17 @@
 | 큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리 | Structural implication: '큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리' suggests a shift in NEWS dynamics. | LOW |
 | 강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제 | Structural implication: '강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 | Structural implication: '"비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| 삼천당제약, '기술증명' 넘어 '상업적 확신' 줘야...IR 성공조건은 - 팜뉴스 | Structural implication: '삼천당제약, '기술증명' 넘어 '상업적 확신' 줘야...IR 성공조건은 - 팜뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 | Structural implication: '"비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 | Structural implication: ''AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 | Structural implication: '"삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓 | Structural implication: '기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓' suggests a shift in NEWS dynamics. | LOW |
+| “아직 안죽었다”…‘병원 입원’ 팝핀현준이 전한 충격적인 소식 | Structural implication: '“아직 안죽었다”…‘병원 입원’ 팝핀현준이 전한 충격적인 소식' suggests a shift in NEWS dynamics. | LOW |
+| “‘핵먼지’ 미국으로 넘기기로 했다”…트럼프 말에 이란의 반응 | Structural implication: '“‘핵먼지’ 미국으로 넘기기로 했다”…트럼프 말에 이란의 반응' suggests a shift in NEWS dynamics. | LOW |
+| [단독] 정부, ‘노후 기계식 주차장 철거’ 인센티브 준다…부담금 낮춰 | Structural implication: '[단독] 정부, ‘노후 기계식 주차장 철거’ 인센티브 준다…부담금 낮춰' suggests a shift in NEWS dynamics. | LOW |
+| FA 대박 기대했는데 배구 대표팀 낙마하나…‘음주운전’ 안혜진 중징계 가능성 | Structural implication: 'FA 대박 기대했는데 배구 대표팀 낙마하나…‘음주운전’ 안혜진 중징계 가능성' suggests a shift in NEWS dynamics. | LOW |
 | “제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이 | Structural implication: '“제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이' suggests a shift in NEWS dynamics. | LOW |
 | “아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책] | Structural implication: '“아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
 | “작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세 | Structural implication: '“작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세' suggests a shift in NEWS dynamics. | LOW |
@@ -220,11 +225,6 @@
 | 퇴직하고 로펌 간 선배 잘못 만났다간…공정위 ‘투스트라이크 아웃’ 도입 | Structural implication: '퇴직하고 로펌 간 선배 잘못 만났다간…공정위 ‘투스트라이크 아웃’ 도입' suggests a shift in NEWS dynamics. | LOW |
 | 광주 4곳 광역의원 중대선거구제 최초 도입 | Structural implication: '광주 4곳 광역의원 중대선거구제 최초 도입' suggests a shift in NEWS dynamics. | LOW |
 | 매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다 | Structural implication: '매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다' suggests a shift in NEWS dynamics. | LOW |
-| 李대통령 “책임강국으로서 호르무즈 항행 자유 보장” | Structural implication: '李대통령 “책임강국으로서 호르무즈 항행 자유 보장”' suggests a shift in NEWS dynamics. | LOW |
-| 서울대미술관, 홍라희 명예관장에 감사패 | Structural implication: '서울대미술관, 홍라희 명예관장에 감사패' suggests a shift in NEWS dynamics. | LOW |
-| 국제유가, 이란의 호르무즈 일시 개방 소식에 급락세...브렌트유 10%↓ | Structural implication: '국제유가, 이란의 호르무즈 일시 개방 소식에 급락세...브렌트유 10%↓' suggests a shift in NEWS dynamics. | LOW |
-| “걸그룹 멤버 오빠, BJ 추행 혐의”…경찰, 구속영장 신청 | Structural implication: '“걸그룹 멤버 오빠, BJ 추행 혐의”…경찰, 구속영장 신청' suggests a shift in NEWS dynamics. | LOW |
-| [속보] 트럼프, 이란 ‘호르무즈 개방’에 “땡큐…對이란 해상봉쇄는 계속” | Structural implication: '[속보] 트럼프, 이란 ‘호르무즈 개방’에 “땡큐…對이란 해상봉쇄는 계속”' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
+### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
+| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
 </details>
