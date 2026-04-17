@@ -1,0 +1,43 @@
+{
+  "date": "2026-04-17",
+  "collected_at": "2026-04-17T16:16:34.620841",
+  "period": {
+    "from": "2026-04-14",
+    "to": "2026-04-24"
+  },
+  "events": [
+    {
+      "event": "PPI MoM",
+      "time": "2026-04-14 12:30:00",
+      "country": "US",
+      "actual": 0.5,
+      "estimate": 1.1,
+      "prev": 0.5,
+      "impact": "high",
+      "surprise_score": -54.55,
+      "surprise_label": "SHOCK"
+    },
+    {
+      "event": "Retail Sales MoM",
+      "time": "2026-04-21 12:30:00",
+      "country": "US",
+      "actual": null,
+      "estimate": null,
+      "prev": 0.6,
+      "impact": "high",
+      "surprise_score": null,
+      "surprise_label": "PENDING"
+    }
+  ],
+  "top_surprise": {
+    "event": "PPI MoM",
+    "time": "2026-04-14 12:30:00",
+    "country": "US",
+    "actual": 0.5,
+    "estimate": 1.1,
+    "prev": 0.5,
+    "impact": "high",
+    "surprise_score": -54.55,
+    "surprise_label": "SHOCK"
+  }
+}

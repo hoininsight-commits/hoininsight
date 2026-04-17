@@ -86,22 +86,39 @@ class GeminiClient:
                 except json.JSONDecodeError:
                     pass
 
-            # 방법 3: { } 블록 추출
-            match = re.search(r'\{[\s\S]*\}', response)
+            # 방법 3: { } 또는 [ ] 블록 추출 (미완성 블록 포함)
+            match = re.search(r'(\{[\s\S]*|\[[\s\S]*)', response)
             if match:
                 try:
-                    return json.loads(match.group(0))
-                except json.JSONDecodeError:
-                    # 방법 4: 잘린 JSON 복구 시도
-                    truncated = match.group(0)
-                    # 열린 괄호 수만큼 닫기
-                    open_braces = truncated.count('{') - truncated.count('}')
-                    open_brackets = truncated.count('[') - truncated.count(']')
-                    truncated += ']' * open_brackets + '}' * open_braces
+                    raw_json = match.group(0)
+                    # 최대한 닫는 괄호까지만 일단 시도
+                    last_brace = raw_json.rfind('}')
+                    last_bracket = raw_json.rfind(']')
+                    cut_off = max(last_brace, last_bracket)
+                    if cut_off != -1:
+                        raw_json = raw_json[:cut_off+1]
+                    
                     try:
-                        return json.loads(truncated)
+                        return json.loads(raw_json)
                     except json.JSONDecodeError:
-                        pass
+                        # 복구 시도
+                        # 1. 문자열이 열려 있는지 확인
+                        quotes = re.findall(r'(?<!\\)"', raw_json)
+                        if len(quotes) % 2 != 0:
+                            raw_json += '"'
+                        
+                        # 2. 열린 괄호 수만큼 닫기
+                        open_braces = raw_json.count('{') - raw_json.count('}')
+                        open_brackets = raw_json.count('[') - raw_json.count(']')
+                        
+                        raw_json = raw_json.strip()
+                        if raw_json.endswith(','):
+                            raw_json = raw_json[:-1]
+                            
+                        raw_json += ']' * open_brackets + '}' * open_braces
+                        return json.loads(raw_json)
+                except Exception:
+                    pass
 
             print(f"  ⚠️ JSON 파싱 전부 실패. 응답 길이: {len(response)}")
             print(f"  응답 마지막 100자: {response[-100:]}")

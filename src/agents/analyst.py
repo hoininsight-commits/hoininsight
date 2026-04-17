@@ -44,7 +44,9 @@ class AnalystAgent:
 [오늘의 신호]
 토픽: {signal['topic']}
 강도: {signal['strength']}
-적중 필터: {', '.join(signal['filters_hit'])}
+탐지 유형: {signal.get('anomaly_type', 'N/A')}
+핵심 지표: {', '.join(signal.get('key_indicators', []))}
+현상 근거: {signal.get('why_anomalous', '')}
 
 [수집 데이터]
 환율: {market.get('usd_krw', 'N/A')}원

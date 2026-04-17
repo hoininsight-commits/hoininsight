@@ -187,6 +187,50 @@ class CollectorAgent:
             print(f"  nasdaq 실패: {e}")
         return result
 
+    def _get_wti(self) -> dict:
+        """WTI 유가 수집 및 다중기간 변화율 계산 (거래일 기준 버그 수정)"""
+        import yfinance as yf
+        result = {
+            "value": None,
+            "1d_change": None,
+            "5d_change": None,
+            "20d_change": None,
+            "history": None
+        }
+        try:
+            wti = yf.Ticker("CL=F")
+            hist = wti.history(period="1mo")  # 거래일 기준 충분한 데이터 확보
+            if len(hist) >= 2:
+                latest = float(hist["Close"].iloc[-1])
+                prev = float(hist["Close"].iloc[-2])
+                result["value"] = round(latest, 2)
+                result["1d_change"] = round((latest - prev) / prev * 100, 2)
+                
+                # 5일 변화율 — 거래일 기준 (iloc[-6] = 5거래일 전)
+                if len(hist) >= 6:
+                    prev_5d = float(hist["Close"].iloc[-6])
+                    result["5d_change"] = round((latest - prev_5d) / prev_5d * 100, 2)
+                
+                # 20일 변화율
+                if len(hist) >= 21:
+                    prev_20d = float(hist["Close"].iloc[-21])
+                    result["20d_change"] = round((latest - prev_20d) / prev_20d * 100, 2)
+                
+                # 히스토리 규격 맞춤 (기존 90일 대신 1개월치만 우선 제공)
+                result["history"] = {
+                    "current": result["value"],
+                    "avg_90d": round(float(hist["Close"].mean()), 2),
+                    "max_90d": round(float(hist["Close"].max()), 2),
+                    "min_90d": round(float(hist["Close"].min()), 2),
+                    "trend": list(hist["Close"].tail(30).round(2))
+                }
+                print(f"  WTI: {result['value']} (5d chg: {result['5d_change']}%)")
+            elif len(hist) == 1:
+                result["value"] = round(float(hist["Close"].iloc[-1]), 2)
+        except Exception as e:
+            print(f"WTI 수집 실패: {e}")
+        return result
+
     def __init__(self):
         from src.core.gemini_client import GeminiClient
         self.today = datetime.now().strftime("%Y%m%d")
@@ -194,7 +238,85 @@ class CollectorAgent:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         # base_dir 설정 (history 저장용)
         self.base_dir = Path(".")
+        self.model_name = "gemini-flash-latest"
+        from src.core.gemini_client import GeminiClient
         self.gemini = GeminiClient()
+    
+    def _calculate_multi_period_stats(self, data: dict) -> dict:
+        """
+        수집된 지표들의 다중기간 통계 계산
+        5일/20일/60일 평균, 변화율, Z-score 계산
+        """
+        import yfinance as yf
+        import numpy as np
+    
+        stats = {}
+    
+        # 계산할 지표와 티커 매핑
+        ticker_map = {
+            "usd_krw":  "KRW=X",
+            "gold":     "GC=F",
+            "wti_oil":  "CL=F",
+            "vix":      "^VIX",
+            "us10y":    "^TNX",
+            "dxy":      "DX-Y.NYB",
+            "sp500":    "^GSPC",
+            "kospi":    "^KS11",
+        }
+    
+        for key, ticker in ticker_map.items():
+            try:
+                t = yf.Ticker(ticker)
+                # 최대 90일 데이터 수집 (WTI는 1개월치만 써서 정확도 높임)
+                p = "1mo" if key == "wti_oil" else "90d"
+                hist = t.history(period=p)
+                if len(hist) < 5:
+                    continue
+    
+                closes = hist["Close"].dropna().values
+                current = float(closes[-1])
+    
+                # 기간별 평균
+                avg_5d  = float(np.mean(closes[-5:])) if len(closes) >= 5 else None
+                avg_20d = float(np.mean(closes[-20:])) if len(closes) >= 20 else None
+                avg_60d = float(np.mean(closes[-60:])) if len(closes) >= 60 else None
+    
+                # 기간별 변화율
+                chg_5d  = round((current - closes[-6]) / closes[-6] * 100, 2) \
+                          if len(closes) >= 6 else None
+                chg_20d = round((current - closes[-21]) / closes[-21] * 100, 2) \
+                          if len(closes) >= 21 else None
+    
+                # 20일 Z-score (표준편차 기반 이탈도)
+                if len(closes) >= 20:
+                    mean_20 = float(np.mean(closes[-20:]))
+                    std_20  = float(np.std(closes[-20:]))
+                    z_score = round((current - mean_20) / std_20, 2) \
+                              if std_20 > 0 else 0
+                else:
+                    z_score = None
+    
+                # 5일 최고/최저
+                high_5d = float(np.max(closes[-5:])) if len(closes) >= 5 else None
+                low_5d  = float(np.min(closes[-5:])) if len(closes) >= 5 else None
+    
+                stats[key] = {
+                    "current":  round(current, 4),
+                    "avg_5d":   round(avg_5d, 4)  if avg_5d  else None,
+                    "avg_20d":  round(avg_20d, 4) if avg_20d else None,
+                    "avg_60d":  round(avg_60d, 4) if avg_60d else None,
+                    "chg_5d":   chg_5d,
+                    "chg_20d":  chg_20d,
+                    "z_score_20d": z_score,
+                    "high_5d":  round(high_5d, 4) if high_5d else None,
+                    "low_5d":   round(low_5d, 4)  if low_5d  else None,
+                }
+                print(f"  stats {key}: z={z_score}, chg5d={chg_5d}%")
+    
+            except Exception as e:
+                print(f"  stats {key} 실패: {e}")
+    
+        return stats
 
     def collect_market(self) -> dict:
         """시장 데이터 수집 — yfinance 기반 (90일 히스토리 포함 v7.0)"""
@@ -227,10 +349,17 @@ class CollectorAgent:
         data["nasdaq"] = nasdaq_data["value"]
         if nasdaq_data["history"]: history_90d["nasdaq"] = nasdaq_data["history"]
 
+        # WTI 수집 (v5.5 버그 수정 반영)
+        wti_data = self._get_wti()
+        data["wti_oil"] = wti_data["value"]
+        data["wti_1d_change"] = wti_data["1d_change"]
+        data["wti_5d_change"] = wti_data["5d_change"]
+        data["wti_20d_change"] = wti_data["20d_change"]
+        if wti_data["history"]: history_90d["wti_oil"] = wti_data["history"]
+
         # 3. 나머지 티커들 수집 (v7.0)
         other_tickers = {
             "vix": "^VIX",
-            "wti_oil": "CL=F",
             "us10y": "^TNX",
             "brent": "BZ=F",
             "usd_krw": "KRW=X"
@@ -286,6 +415,9 @@ class CollectorAgent:
         # 외국인 수급 (별도 계산)
         data["kospi_foreign_net"] = self._get_kospi_foreign_vol()
         data["fear_greed_index"] = self._get_fear_greed()
+
+        # 다중기간 통계 추가 (v5.0)
+        data["multi_period_stats"] = self._calculate_multi_period_stats(data)
 
         result = {
             "date": self.today,
@@ -550,29 +682,45 @@ class CollectorAgent:
                     url += f"/{item_code}"
                 resp = requests.get(url, timeout=10)
                 json_resp = resp.json()
+                
+                # 에러 메시지 처리
+                if "RESULT" in json_resp and json_resp["RESULT"].get("CODE") != "INFO-000":
+                    print(f"  ⚠️ ECOS {stat_code} API 에러: {json_resp['RESULT'].get('MESSAGE')}")
+                    return None
+                    
                 rows = json_resp.get("StatisticSearch", {}).get("row", [])
                 if rows:
-                    return float(rows[-1]["DATA_VALUE"].replace(",", ""))
+                    # 가장 최근 데이터 리턴
+                    latest_val = float(rows[-1]["DATA_VALUE"].replace(",", ""))
+                    latest_date = rows[-1].get("TIME", "알수없음")
+                    return latest_val, latest_date
             except Exception as e:
-                print(f"  ECOS {stat_code} 실패: {e}")
-            return None
+                print(f"  ❌ ECOS {stat_code} 실패: {e}")
+            return None, None
 
-        from datetime import datetime, timedelta
         today = datetime.now()
         ym = today.strftime("%Y%m")
-        ym_prev = (today - timedelta(days=30)).strftime("%Y%m")
+        # 발표 지연을 고려하여 검색 범위 내역을 180일(약 6개월)로 확대
+        ym_start = (today - timedelta(days=180)).strftime("%Y%m")
 
-        data = {
-            "kr_base_rate":    fetch_ecos("722Y001", "M", ym_prev, ym, "0101000"),
-            "kr_cpi":          fetch_ecos("901Y009", "M", ym_prev, ym, "0"),
-            "kr_m2":           fetch_ecos("101Y004", "M", ym_prev, ym, "BBIA00"),
-            "kr_unemployment": fetch_ecos("901Y027", "M", ym_prev, ym, "L1200301"),
-            "kr_export":       fetch_ecos("901Y015", "M", ym_prev, ym, "T10"),
-            "kr_import":       fetch_ecos("901Y015", "M", ym_prev, ym, "T11"),
+        # 지표별 수집 및 로그 출력 강화
+        indicators = {
+            "kr_base_rate":    ("722Y001", "M", "0101000"),
+            "kr_cpi":          ("901Y009", "M", "0"),
+            "kr_m2":           ("101Y004", "M", "BBIA00"),
+            "kr_unemployment": ("901Y027", "M", "L1200301"),
+            "kr_export":       ("901Y015", "M", "T10"),
+            "kr_import":       ("901Y015", "M", "T11"),
         }
 
-        for k, v in data.items():
-            print(f"  {k}: {v}")
+        data = {}
+        for key, (code, cycle, item) in indicators.items():
+            val, date = fetch_ecos(code, cycle, ym_start, ym, item)
+            data[key] = val
+            if val is not None:
+                print(f"  ✅ {key}: {val} (최신 데이터 날짜: {date})")
+            else:
+                print(f"  [MISSING] {key}: 최근 6개월 내 데이터 없음 (또는 API 오류)")
 
         result = {
             "date": self.today,
@@ -709,6 +857,123 @@ class CollectorAgent:
             json.dump(result, f, ensure_ascii=False, indent=2)
         return result
 
+    def collect_consensus(self) -> dict:
+        """
+        경제지표 컨센서스 수집
+        FRED API 기반으로 최근 발표된 주요 지표의
+        실제치 vs 이전치 비교로 서프라이즈 계산
+        """
+        print("📅 컨센서스 데이터 수집 중 (FRED 기반)...")
+        import os
+        from fredapi import Fred
+        from datetime import datetime, timedelta
+
+        fred = Fred(api_key=os.getenv("FRED_API_KEY"))
+        today = datetime.now()
+        result_events = []
+
+        # 주요 경제지표 목록 (series_id, 이름, 단위)
+        indicators = [
+            ("CPIAUCSL",    "미국 CPI",           "전월비"),
+            ("CPILFESL",    "미국 Core CPI",       "전월비"),
+            ("PCEPI",       "미국 PCE",            "전월비"),
+            ("PCEPILFE",    "미국 Core PCE",       "전월비"),
+            ("PAYEMS",      "미국 비농업고용",      "천명"),
+            ("UNRATE",      "미국 실업률",          "%"),
+            ("FEDFUNDS",    "미국 기준금리",        "%"),
+            ("RETAILSL",    "미국 소매판매",        "전월비"),
+            ("INDPRO",      "미국 산업생산",        "전월비"),
+            ("GDP",         "미국 GDP",            "분기"),
+            ("T10Y2Y",      "10Y-2Y 금리스프레드", "bp"),
+            ("BAMLH0A0HYM2","HY 스프레드",         "bp"),
+        ]
+
+        for series_id, name, unit in indicators:
+            try:
+                # 최근 3개월 데이터
+                end = today
+                start = today - timedelta(days=90)
+                series = fred.get_series(series_id, start, end)
+                series = series.dropna()
+
+                if len(series) < 2:
+                    continue
+
+                current_val  = float(series.iloc[-1])
+                previous_val = float(series.iloc[-2])
+                current_date = series.index[-1].strftime("%Y-%m-%d")
+
+                # 전기 대비 변화
+                change = round(current_val - previous_val, 4)
+                change_pct = round(
+                    (current_val - previous_val) / abs(previous_val) * 100, 2
+                ) if previous_val != 0 else 0
+
+                # 서프라이즈 판단
+                # 12개월 평균 변화율을 컨센서스 대리값으로 사용
+                if len(series) >= 12:
+                    recent_changes = [
+                        float(series.iloc[i] - series.iloc[i-1])
+                        for i in range(-12, -1)
+                        if i < 0 and abs(i) < len(series)
+                    ]
+                    avg_change = sum(recent_changes) / len(recent_changes) if recent_changes else 0
+                    surprise = round(change - avg_change, 4)
+                    surprise_pct = round(
+                        (change - avg_change) / abs(avg_change) * 100, 2
+                    ) if avg_change != 0 else 0
+                else:
+                    surprise = 0
+                    surprise_pct = 0
+
+                event = {
+                    "series_id":     series_id,
+                    "event":         name,
+                    "unit":          unit,
+                    "date":          current_date,
+                    "actual":        current_val,
+                    "previous":      previous_val,
+                    "change":        change,
+                    "change_pct":    change_pct,
+                    "surprise":      surprise,
+                    "surprise_pct":  surprise_pct,
+                    "has_actual":    True,
+                    "surprise_direction": "BEAT" if surprise > 0 else "MISS"
+                }
+                result_events.append(event)
+
+                if abs(surprise_pct) > 20:
+                    print(f"  🚨 서프라이즈 {name}: {previous_val}→{current_val} ({surprise_pct:+.1f}%)")
+                else:
+                    print(f"  ✅ {name}: {current_val} (변화: {change:+.4f})")
+
+            except Exception as e:
+                print(f"  ❌ {series_id} 수집 실패: {e}")
+
+        # 서프라이즈 큰 것 정렬
+        major_surprises = sorted(
+            [e for e in result_events if abs(e.get("surprise_pct", 0)) > 10],
+            key=lambda x: abs(x.get("surprise_pct", 0)),
+            reverse=True
+        )[:5]
+
+        output = {
+            "date":               self.today,
+            "collected_at":       datetime.now().isoformat(),
+            "source":             "FRED API",
+            "total_events":       len(result_events),
+            "events_with_actual": len(result_events),
+            "major_surprises":    major_surprises,
+            "all_events":         result_events
+        }
+
+        output_path = self.output_dir / "consensus.json"
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(output, f, ensure_ascii=False, indent=2)
+
+        print(f"✅ consensus.json 저장 완료 ({len(result_events)}개 지표, 주요 서프라이즈 {len(major_surprises)}개)")
+        return output
+
     def run(self):
         print(f"\n🚀 AGENT-01 COLLECTOR (v4.5 News-Driven) 시작 [{self.today}]")
         
@@ -727,6 +992,14 @@ class CollectorAgent:
         # 4. 키워드를 들고 공시 사냥
         dart = self.collect_dart(keywords)
         
+        # 5. 컨센서스 데이터 수집 (FRED 기반 기존 로직)
+        consensus_fred = self.collect_consensus()
+        
+        # 6. 컨센서스 레이어 수집 (Finnhub API 신규 추가)
+        from src.agents.consensus_collector import ConsensusCollector
+        consensus_finnhub = ConsensusCollector(output_dir=self.output_dir)
+        consensus_finnhub.collect()
+        
         print("✅ AGENT-01 완료\n")
         return {
             "market": market,
@@ -735,6 +1008,7 @@ class CollectorAgent:
             "fred": fred,
             "ecos": ecos,
             "dart": dart,
+            "consensus": consensus_fred  # 기존 호환성 유지
         }
 
 
