@@ -28,6 +28,14 @@ class PreStructuralSignalLayer:
     STEP 74: Pre-Structural Signal Layer (Economic Hunter Style).
     Detects early narrative-driven market shifts before WHY_NOW confirmation.
     """
+    BATCH_SIZE = 15
+    ABSOLUTE_VALUE_PATTERNS = [
+        r'\d+원',      # 환율 XXX원
+        r'\$\d+',      # $XX 돌파 (유가 등)
+        r'\d+%.*돌파',  # XX% 돌파
+        r'역대\s*최',   # 역대 최고/최저
+    ]
+
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         try:
@@ -38,18 +46,130 @@ class PreStructuralSignalLayer:
 
     def analyze_topics(self, topics: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Scan candidate topics for Pre-Structural Signals.
+        Scan candidate topics for Pre-Structural Signals using Batch Processing.
         """
-        results = []
-        for topic in topics:
-            signal = self._detect_signal(topic)
-            if signal and signal.is_valid:
-                topic["pre_structural_signal"] = asdict(signal)
+        if not topics:
+            return []
+
+        # 1. Pre-filter trivial absolute value topics
+        eligible_topics, skipped_topics = self._pre_filter_topics(topics)
+        
+        # 2. Process eligible topics in batches
+        all_results = []
+        if self.llm and eligible_topics:
+            print(f"  🧠 [Step 74] Analyzing {len(eligible_topics)} eligible topics in batches of {self.BATCH_SIZE}...")
+            for i in range(0, len(eligible_topics), self.BATCH_SIZE):
+                batch = eligible_topics[i : i + self.BATCH_SIZE]
+                batch_results = self._analyze_batch(batch)
+                all_results.extend(batch_results)
+                print(f"  ✅ [Step 74] 배치 {i // self.BATCH_SIZE + 1} 완료 ({len(batch)}개)")
+        else:
+            # Fallback to heuristics for all eligible if LLM unavailable
+            for t in eligible_topics:
+                sig = self._heuristic_detect(t)
+                all_results.append({"is_valid": sig.is_valid if sig else False, "signal": sig})
+
+        # 3. Re-assemble final list
+        final_list = []
+        
+        # Mapping results back to eligible topics
+        for idx, topic in enumerate(eligible_topics):
+            res = all_results[idx] if idx < len(all_results) else {"is_valid": False}
+            if res.get("is_valid"):
+                # Handle both dict (from LLM) and dataclass (from heuristic)
+                sig_data = res.get("signal")
+                if isinstance(sig_data, PreStructuralSignal):
+                    topic["pre_structural_signal"] = asdict(sig_data)
+                elif isinstance(res, dict) and "signal_type" in res:
+                    topic["pre_structural_signal"] = res
+                else: 
+                     # Fallback mapping if single res object returned
+                     topic["pre_structural_signal"] = res
+                
                 topic["is_pre_structural"] = True
             else:
                 topic["is_pre_structural"] = False
-            results.append(topic)
-        return results
+            final_list.append(topic)
+
+        # Mark skipped topics
+        for topic in skipped_topics:
+            topic["is_pre_structural"] = False
+            final_list.append(topic)
+
+        return final_list
+
+    def _pre_filter_topics(self, topics: List[Dict[str, Any]]) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+        """Separate topics into LLM-eligible and trivial/skipped cases."""
+        eligible = []
+        skipped = []
+        for t in topics:
+            t_str = f"{t.get('title', '')} {t.get('rationale', '')}"
+            is_absolute = any(re.search(p, t_str) for p in self.ABSOLUTE_VALUE_PATTERNS)
+            if is_absolute:
+                skipped.append(t)
+            else:
+                eligible.append(t)
+        
+        if skipped:
+            print(f"  🚿 [Step 74] Heuristic Filter: {len(skipped)} trivial topics skipped.")
+        return eligible, skipped
+
+    def _analyze_batch(self, batch: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Call Gemini for a batch of topics."""
+        prompt = self._build_batch_prompt(batch)
+        try:
+            # use call_json for reliability
+            response_json = self.llm.call_json(prompt, max_tokens=3000)
+            if isinstance(response_json, list):
+                # Ensure it's sorted by index if LLM returned out of order
+                sorted_results = sorted(response_json, key=lambda x: x.get("index", 0))
+                return sorted_results
+            return [{"is_valid": False}] * len(batch)
+        except Exception as e:
+            print(f"  ❌ Batch call failed: {e}")
+            return [{"is_valid": False}] * len(batch)
+
+    def _build_batch_prompt(self, batch: List[Dict[str, Any]]) -> str:
+        batch_items = []
+        for idx, t in enumerate(batch):
+            item = f"[{idx+1}] Title: {t.get('title')}\nRationale: {t.get('rationale')}\nEvidence: {str(t.get('evidence'))[:500]}"
+            batch_items.append(item)
+
+        batch_text = "\n\n---\n\n".join(batch_items)
+
+        return f"""
+You are HOIN ENGINE Step 74 (Pre-Structural Signal Detector).
+Evaluate the following {len(batch)} topic candidates.
+
+### DEFINITION: PRE-STRUCTURAL SIGNAL
+A market-moving event where narrative, expectation, or deadline pressure begins reallocating capital BEFORE legal, policy, or earnings confirmation.
+Must have a temporal/structural anchor (Deadline, Verbal Commitment, Capital Rotation, or Dependency Exposure).
+
+### EVALUATION CRITERIA:
+- REJECT if general "Growth", "Future potential", or purely price-based without context.
+- REJECT if the reason is "Exchange rate broke XXXX level" without describing the structural tension.
+
+### TOPICS TO EVALUATE:
+{batch_text}
+
+### OUTPUT FORMAT (JSON ARRAY ONLY):
+Output a JSON array of exactly {len(batch)} objects, each matching this structure:
+{{
+  "index": 1,
+  "is_valid": true|false,
+  "signal_type": "Deadline" | "Verbal" | "Capital" | "Dependency",
+  "trigger_actor": "Who is driving this",
+  "temporal_anchor": "Deadline or event window",
+  "unresolved_question": "What is undecided?",
+  "expected_market_behavior": "risk_off" | "rotation" | "speculation" | "freeze",
+  "escalation_path": {{
+    "condition_to_upgrade_to_WHY_NOW": "string",
+    "condition_to_invalidate": "string"
+  }},
+  "narrative_pressure_score": 0-100,
+  "rationale": "KOREAN short summary"
+}}
+"""
 
     def _detect_signal(self, topic: Dict[str, Any]) -> Optional[PreStructuralSignal]:
         if not self.llm:
