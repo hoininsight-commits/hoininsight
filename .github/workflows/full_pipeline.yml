@@ -60,10 +60,16 @@ jobs:
           echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Setup YouTube Cookies
-        if: env.ENABLE_LEARNING == 'true' && secrets.YOUTUBE_COOKIES != ''
+        if: env.ENABLE_LEARNING == 'true'
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
         run: |
-          echo "${{ secrets.YOUTUBE_COOKIES }}" > youtube_cookies.txt
-          echo "✅ YouTube cookies restored from secrets"
+          if [ -n "$YOUTUBE_COOKIES" ]; then
+            echo "$YOUTUBE_COOKIES" > youtube_cookies.txt
+            echo "✅ YouTube cookies restored from secrets"
+          else
+            echo "⚠️ YouTube cookies secret is empty, skipping file creation"
+          fi
 
       - name: "A0: Learning Agent (Transcript Collection)"
         if: env.ENABLE_LEARNING == 'true'
