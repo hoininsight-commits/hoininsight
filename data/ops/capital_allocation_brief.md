@@ -1,4 +1,4 @@
-# Strategic Capital Allocation Brief (2026-04-17)
+# Strategic Capital Allocation Brief (2026-04-18)
 
 ## Allocation Mode: **DEFENSIVE_ROTATION**
 - **Cash Bias**: MEDIUM
