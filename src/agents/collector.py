@@ -1,6 +1,6 @@
 import json
 import os
-import yfinance as yf
+import pandas as pd
 from datetime import datetime, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
@@ -9,6 +9,40 @@ load_dotenv()
 
 
 class CollectorAgent:
+    
+    def _fetch_yahoo_chart(self, ticker: str, range_str: str = "90d") -> "pd.DataFrame":
+        """
+        Direct Yahoo Chart API fetcher using requests.
+        Ensures bypass of yfinance library blocks.
+        """
+        import requests
+        import pandas as pd
+        headers = {"User-Agent": "Mozilla/5.0"}
+        # Fallback between query1 and query2
+        for host in ["query1", "query2"]:
+            url = f"https://{host}.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={range_str}"
+            try:
+                resp = requests.get(url, headers=headers, timeout=10)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    res = data["chart"]["result"][0]
+                    timestamps = res.get("timestamp", [])
+                    indicators = res.get("indicators", {}).get("quote", [{}])[0]
+                    adj_close = res.get("indicators", {}).get("adjclose", [{}])[0].get("adjclose", [])
+                    
+                    df = pd.DataFrame({
+                        "Close": indicators.get("close", []),
+                        "Adj Close": adj_close if adj_close else indicators.get("close", []),
+                        "Volume": indicators.get("volume", []),
+                    }, index=pd.to_datetime(timestamps, unit="s"))
+                    
+                    # Cleanup: remove nulls
+                    df = df.dropna()
+                    if not df.empty:
+                        return df
+            except:
+                continue
+        return pd.DataFrame()
 
     def _get_kospi(self) -> dict:
         import yfinance as yf
@@ -18,9 +52,7 @@ class CollectorAgent:
         
         for ticker in tickers_to_try:
             try:
-                t = yf.Ticker(ticker)
-                # 90일 히스토리 수집 (버그 수정: 6000대 값 추적 및 히스토리 보존)
-                hist = t.history(period="90d")
+                hist = self._fetch_yahoo_chart(ticker, "90d")
                 if len(hist) >= 2:
                     latest = float(hist["Close"].iloc[-1])
                     prev = float(hist["Close"].iloc[-2])
@@ -48,12 +80,10 @@ class CollectorAgent:
         return result
 
     def _get_gold(self) -> dict:
-        import yfinance as yf
         result = {"value": None, "history": None}
         for ticker in ["GC=F", "GLD", "IAU"]:
             try:
-                t = yf.Ticker(ticker)
-                hist = t.history(period="90d")
+                hist = self._fetch_yahoo_chart(ticker, "90d")
                 if not hist.empty:
                     val = round(float(hist["Close"].iloc[-1]), 2)
                     if ticker in ["GLD", "IAU"]:
@@ -76,12 +106,10 @@ class CollectorAgent:
         return result
 
     def _get_dxy(self) -> dict:
-        import yfinance as yf
         result = {"value": None, "history": None}
         # 1. DX-Y.NYB 시도
         try:
-            t = yf.Ticker("DX-Y.NYB")
-            hist = t.history(period="90d")
+            hist = self._fetch_yahoo_chart("DX-Y.NYB", "90d")
             if not hist.empty:
                 val = round(float(hist["Close"].iloc[-1]), 2)
                 if 85 <= val <= 130:
@@ -122,11 +150,9 @@ class CollectorAgent:
         return result
 
     def _get_sp500(self) -> dict:
-        import yfinance as yf
         result = {"value": None, "history": None}
         try:
-            t = yf.Ticker("^GSPC")
-            hist = t.history(period="90d")
+            hist = self._fetch_yahoo_chart("^GSPC", "90d")
             if not hist.empty:
                 val = round(float(hist["Close"].iloc[-1]), 2)
                 if val > 5000:
@@ -165,11 +191,9 @@ class CollectorAgent:
         return result
 
     def _get_nasdaq(self) -> dict:
-        import yfinance as yf
         result = {"value": None, "history": None}
         try:
-            t = yf.Ticker("^IXIC")
-            hist = t.history(period="90d")
+            hist = self._fetch_yahoo_chart("^IXIC", "90d")
             if not hist.empty:
                 val = round(float(hist["Close"].iloc[-1]), 2)
                 if val > 15000:
@@ -187,9 +211,28 @@ class CollectorAgent:
             print(f"  nasdaq 실패: {e}")
         return result
 
+    def _get_vix(self) -> dict:
+        result = {"value": None, "history": None}
+        try:
+            hist = self._fetch_yahoo_chart("^VIX", "90d")
+            if not hist.empty:
+                val = round(float(hist["Close"].iloc[-1]), 2)
+                result["value"] = val
+                result["history"] = {
+                    "current": val,
+                    "avg_90d": round(float(hist["Close"].mean()), 2),
+                    "max_90d": round(float(hist["Close"].max()), 2),
+                    "min_90d": round(float(hist["Close"].min()), 2),
+                    "trend": list(hist["Close"].tail(30).round(2))
+                }
+                print(f"  vix (^VIX): {val}")
+                return result
+        except Exception as e:
+            print(f"  vix 실패: {e}")
+        return result
+
     def _get_wti(self) -> dict:
         """WTI 유가 수집 및 다중기간 변화율 계산 (거래일 기준 버그 수정)"""
-        import yfinance as yf
         result = {
             "value": None,
             "1d_change": None,
@@ -198,25 +241,25 @@ class CollectorAgent:
             "history": None
         }
         try:
-            wti = yf.Ticker("CL=F")
-            hist = wti.history(period="1mo")  # 거래일 기준 충분한 데이터 확보
-            if len(hist) >= 2:
-                latest = float(hist["Close"].iloc[-1])
-                prev = float(hist["Close"].iloc[-2])
-                result["value"] = round(latest, 2)
-                result["1d_change"] = round((latest - prev) / prev * 100, 2)
-                
-                # 5일 변화율 — 거래일 기준 (iloc[-6] = 5거래일 전)
+            hist = self._fetch_yahoo_chart("CL=F", "31d")
+            if not hist.empty:
+                # 최근 2일 데이터 확보
+                if len(hist) >= 2:
+                    current = float(hist["Close"].iloc[-1])
+                    prev1 = float(hist["Close"].iloc[-2])
+                    result["value"] = round(current, 2)
+                    result["1d_change"] = round((current - prev1) / prev1 * 100, 2)
+
+                # 5일, 20일 관찰 (데이터 충분 시)
                 if len(hist) >= 6:
-                    prev_5d = float(hist["Close"].iloc[-6])
-                    result["5d_change"] = round((latest - prev_5d) / prev_5d * 100, 2)
+                    prev5 = float(hist["Close"].iloc[-6])
+                    result["5d_change"] = round((current - prev5) / prev5 * 100, 2)
                 
-                # 20일 변화율
                 if len(hist) >= 21:
-                    prev_20d = float(hist["Close"].iloc[-21])
-                    result["20d_change"] = round((latest - prev_20d) / prev_20d * 100, 2)
-                
-                # 히스토리 규격 맞춤 (기존 90일 대신 1개월치만 우선 제공)
+                    prev20 = float(hist["Close"].iloc[-21])
+                    result["20d_change"] = round((current - prev20) / prev20 * 100, 2)
+
+                # 히스토리 30일
                 result["history"] = {
                     "current": result["value"],
                     "avg_90d": round(float(hist["Close"].mean()), 2),
@@ -224,9 +267,8 @@ class CollectorAgent:
                     "min_90d": round(float(hist["Close"].min()), 2),
                     "trend": list(hist["Close"].tail(30).round(2))
                 }
-                print(f"  WTI: {result['value']} (5d chg: {result['5d_change']}%)")
-            elif len(hist) == 1:
-                result["value"] = round(float(hist["Close"].iloc[-1]), 2)
+                print(f"  wti (CL=F): {result['value']} ({result['1d_change']}% )")
+                return result
         except Exception as e:
             print(f"WTI 수집 실패: {e}")
         return result
@@ -266,10 +308,9 @@ class CollectorAgent:
     
         for key, ticker in ticker_map.items():
             try:
-                t = yf.Ticker(ticker)
                 # 최대 90일 데이터 수집 (WTI는 1개월치만 써서 정확도 높임)
-                p = "1mo" if key == "wti_oil" else "90d"
-                hist = t.history(period=p)
+                p = "31d" if key == "wti_oil" else "90d"
+                hist = self._fetch_yahoo_chart(ticker, p)
                 if len(hist) < 5:
                     continue
     
@@ -367,9 +408,8 @@ class CollectorAgent:
 
         for key, ticker_symbol in other_tickers.items():
             try:
-                ticker = yf.Ticker(ticker_symbol)
                 # 90일치 히스토리 수집 (흐름 파악용)
-                hist = ticker.history(period="90d")
+                hist = self._fetch_yahoo_chart(ticker_symbol, "90d")
                 if not hist.empty:
                     # 오늘 데이터
                     data[key] = round(float(hist["Close"].iloc[-1]), 2)
@@ -442,8 +482,7 @@ class CollectorAgent:
 
     def _get_kospi_foreign_vol(self) -> float:
         try:
-            kospi = yf.Ticker("^KS11")
-            hist = kospi.history(period="2d")
+            hist = self._fetch_yahoo_chart("^KS11", "5d")
             if len(hist) >= 2:
                 vol_change = float(hist["Volume"].iloc[-1]) - float(hist["Volume"].iloc[-2])
                 return round(vol_change / 1e8, 1)
@@ -469,8 +508,7 @@ class CollectorAgent:
     def _get_usd_krw(self) -> float:
         """환율 수집"""
         try:
-            krw = yf.Ticker("KRW=X")
-            hist = krw.history(period="1d")
+            hist = self._fetch_yahoo_chart("KRW=X", "5d")
             if len(hist) > 0:
                 return round(float(hist["Close"].iloc[-1]), 2)
         except Exception as e:
@@ -517,7 +555,7 @@ class CollectorAgent:
         # ECOS에서 한국 M2
         try:
             api_key = os.getenv('ECOS_API_KEY')
-            url = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1/101Y004/M/{ym_prev}/{ym}/BBIA00"
+            url = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1/161Y005/M/{ym_prev}/{ym}/BBHS00"
             resp = requests.get(url, timeout=10)
             rows = resp.json().get("StatisticSearch", {}).get("row", [])
             if rows:

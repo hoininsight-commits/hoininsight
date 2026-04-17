@@ -154,7 +154,7 @@ datasets:
     source: "stooq.com"
     metric_name: "close"
     schema_version: "timeseries_v1"
-    collector: "src.collectors.stooq_kospi:write_raw_kospi"
+    collector: "src.collectors.yfinance_kospi:write_raw_kospi"
     normalizer: "src.normalizers.kospi_curated:write_curated_kospi_csv"
     anomaly: "src.anomaly_detectors.z_score_detector:detect_z_score"
     topic: "src.topic_selectors.simple_topic:select_topics"

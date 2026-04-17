@@ -247,3 +247,16 @@ class COTCollector:
             "smart_money_signals": [],
             "top_signal": None
         }
+
+def run_collector(base_dir: Path) -> Path:
+    from src.utils.target_date import get_target_ymd
+    today = get_target_ymd().replace("-", "")
+    out_dir = base_dir / "data" / "raw" / today
+    out_dir.mkdir(parents=True, exist_ok=True)
+    
+    collector = COTCollector(output_dir=out_dir)
+    collector.collect()
+    return out_dir / "cot.json"
+
+if __name__ == "__main__":
+    run_collector(Path("."))
