@@ -59,6 +59,20 @@ def run_pipeline():
     except Exception as e:
         print(f"⚠️ AGENT-05 실패 (계속 진행): {e}")
 
+    # AGENT-05.5: FACT_CHECKER (NEW)
+    try:
+        from src.agents.fact_checker import FactCheckerAgent
+        agent055 = FactCheckerAgent()
+        results["fact_checker"] = agent055.run(results.get("writer", {}))
+        
+        if results["fact_checker"].get("status") == "FAIL":
+            print("🛑 AGENT-05.5 팩트체크 실패. 퍼블리싱을 중단합니다.")
+            return # 중단
+            
+        print("✅ AGENT-05.5 FACT_CHECKER 완료")
+    except Exception as e:
+        print(f"⚠️ AGENT-05.5 실패 (계속 진행): {e}")
+
     # AGENT-06: PUBLISHER
     try:
         from src.agents.publisher import PublisherAgent
