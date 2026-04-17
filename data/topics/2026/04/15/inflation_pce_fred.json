@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-15T08:44:56Z",
+    "ts_utc": "2026-04-15T23:28:09Z",
     "dataset_id": "inflation_pce_fred",
     "topic_id": "inflation_pce_fred::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/15/inflation_pce_fred.json L2 Signal",
@@ -36,27 +36,6 @@
       "anomalies_path": "data/features/anomalies/2026/04/15/inflation_pce_fred.json"
     },
     "rationale": "[L2] Percentile 100.0% (Extreme) (Regime x1.0)",
-    "links": [],
-    "pre_structural_signal": {
-      "signal_type": "Capital",
-      "trigger_actor": "Federal Reserve (FRED)",
-      "temporal_anchor": "2026-04-15 (PCE Data Release / April FOMC Cycle)",
-      "unresolved_question": "PCE 데이터의 100% 백분위 도달이 연준의 금리 인하 경로를 완전히 폐기하고 'Higher for Longer' 또는 추가 인상 기조로 전환시킬 것인가?",
-      "expected_market_behavior": "rotation",
-      "escalation_path": {
-        "condition_to_upgrade_to_WHY_NOW": "연준 의장 또는 주요 이사의 긴급 매파적 발언(Verbal Threat)이 48시간 이내에 발생할 경우",
-        "condition_to_invalidate": "익월 데이터의 급격한 기저효과 반영 또는 공급망 해소에 따른 에너지 가격의 비정상적 폭락 확인 시"
-      },
-      "narrative_pressure_score": 95,
-      "related_entities": [
-        "Federal Reserve",
-        "US10Y",
-        "S&P 500",
-        "Bureau of Economic Analysis"
-      ],
-      "rationale": "2026년 4월 15일 발표된 PCE 데이터가 100.0%라는 극단적 백분위(Extreme Anomaly)를 기록하며 통계적 임계치를 초과함. 이는 정책 결정(FOMC) 전 시장이 인플레이션 고착화를 선반영하여 자본을 성장주에서 가치주 또는 현금성 자산으로 재배분하게 만드는 전형적인 Pre-Structural Signal임.",
-      "is_valid": true
-    },
-    "is_pre_structural": true
+    "links": []
   }
 ]

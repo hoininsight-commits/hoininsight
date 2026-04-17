@@ -1,0 +1,136 @@
+{
+  "date": "20260416",
+  "total_candidates": 7,
+  "candidates": [
+    {
+      "topic": "휴전 환상과 호르무즈의 실재적 위협",
+      "target_type": "MACRO_GEOPOLITICAL",
+      "reason": "시장은 이란 휴전 기대로 랠리 중이나, 유가는 90일 평균($76)을 크게 상회하는 $90선에서 호르무즈 봉쇄라는 실존적 침체 경고를 무시하고 있다.",
+      "strength": 9.2,
+      "related_keywords": [
+        "지정학",
+        "유가",
+        "스태그플레이션",
+        "호르무즈"
+      ],
+      "filters_hit": [
+        "필터2_역설적현상",
+        "필터4_시의성"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "시장은 이란 휴전 기대로 랠리 중이나, 유가는 90일 평균($76)을 크게 상회하는 $90선에서 호르무즈 봉쇄라는 실존적 침체 경고를 무시하고 있다."
+      },
+      "selected": true,
+      "content_type": "롱폼"
+    },
+    {
+      "topic": "예측 시장의 제도권 편입과 규제의 역설",
+      "target_type": "MACRO_FINANCIAL",
+      "reason": "슈왑의 진출과 1조 달러 시장 전망이 쏟아지는 '골드러시' 상황에서 트럼프 관련 부정 거래 조사가 시작되며 제도화와 규제 리스크가 동시에 폭발하고 있다.",
+      "strength": 8.7,
+      "related_keywords": [
+        "예측시장",
+        "유동성",
+        "규제",
+        "트럼프"
+      ],
+      "filters_hit": [
+        "필터1_추세전환",
+        "필터4_시의성"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "슈왑의 진출과 1조 달러 시장 전망이 쏟아지는 '골드러시' 상황에서 트럼프 관련 부정 거래 조사가 시작되며 제도화와 규제 리스크가 동시에 폭발하고 있다."
+      }
+    },
+    {
+      "topic": "월가 트레이딩 권력의 균열과 재편",
+      "target_type": "MICRO_SECTOR_FOCUS",
+      "reason": "모건스탠리가 트레이딩으로 어닝 서프라이즈를 낸 반면 전통 강자 골드만삭스가 채권에서 실책을 범하며, 고변동성 장세 속 '스마트 머니' 내부의 승패가 극명히 갈리고 있다.",
+      "strength": 7.9,
+      "related_keywords": [
+        "실적",
+        "금융",
+        "변동성",
+        "골드만삭스"
+      ],
+      "filters_hit": [
+        "필터2_역설적현상",
+        "필터3_수급불균형"
+      ],
+      "context_status": "AI_VERIFIED",
+      "data_evidence": {
+        "ai_reason": "모건스탠리가 트레이딩으로 어닝 서프라이즈를 낸 반면 전통 강자 골드만삭스가 채권에서 실책을 범하며, 고변동성 장세 속 '스마트 머니' 내부의 승패가 극명히 갈리고 있다."
+      }
+    },
+    {
+      "topic": "환율 1477원 + 유가 $90.2 동시 급등 → 복합 위기",
+      "filters_hit": [
+        "필터1_역사적임계값",
+        "필터2_역설적현상",
+        "필터5_연결고리"
+      ],
+      "strength": 6.4,
+      "data_evidence": {
+        "usd_krw": 1476.58,
+        "wti": 90.24
+      },
+      "related_keywords": [
+        "환율",
+        "유가",
+        "스태그플레이션"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "중동 전쟁 → 호르무즈 → WTI $90.2 → 한국 제조업 원가 상승 연결고리",
+      "filters_hit": [
+        "필터5_연결고리"
+      ],
+      "strength": 6.0,
+      "data_evidence": {
+        "detail": "중동 전쟁 → 호르무즈 → WTI $90.2 → 한국 제조업 원가 상승 연결고리"
+      },
+      "related_keywords": [
+        "연결고리",
+        "파급효과"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "WTI 유가 $90.2 → 에너지 비용 압박",
+      "filters_hit": [
+        "필터1_역사적임계값",
+        "필터5_연결고리"
+      ],
+      "strength": 4.24,
+      "data_evidence": {
+        "wti": 90.24
+      },
+      "related_keywords": [
+        "유가",
+        "원유",
+        "인플레이션"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    },
+    {
+      "topic": "원달러 환율 1477원 → 주의 수준",
+      "filters_hit": [
+        "필터1_역사적임계값"
+      ],
+      "strength": 2.2399999999999998,
+      "data_evidence": {
+        "usd_krw": 1476.58
+      },
+      "related_keywords": [
+        "환율",
+        "원화",
+        "달러",
+        "외환"
+      ],
+      "context_status": "MISSING_CONTEXT"
+    }
+  ]
+}

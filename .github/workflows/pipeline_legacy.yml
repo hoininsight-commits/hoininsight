@@ -1,4 +1,4 @@
-name: Daily HOIN Engine
+name: HOIN Daily Pipeline (v4.0)
 
 on:
   schedule:
@@ -35,6 +35,7 @@ jobs:
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
         continue-on-error: true
 
       - name: AGENT-01B RRG ENGINE 실행 (섹터 RRG)
@@ -79,11 +80,23 @@ jobs:
           echo "=== AGENT-04 완료 ==="
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
         continue-on-error: true
 
       - name: AGENT-05 WRITER 실행
         run: |
           echo "=== AGENT-05 WRITER 시작 ==="
+          TODAY=$(date '+%Y%m%d')
+          if [ -f "data/analysis/$TODAY/analysis_failed.txt" ]; then
+            echo "⚠️ 분석 실패 마커 감지 — WRITER 건너뜀"
+            exit 0
+          fi
+          if [ ! -f "data/analysis/$TODAY/today_analysis.json" ]; then
+            echo "⚠️ 분석 파일 없음 — WRITER 건너뜀"
+            exit 0
+          fi
           python -m src.agents.writer
           echo "=== AGENT-05 완료 ==="
         env:
@@ -95,6 +108,24 @@ jobs:
           echo "=== AGENT-06 PUBLISHER 시작 ==="
           python -m src.agents.publisher
           echo "=== AGENT-06 완료 ==="
+        continue-on-error: true
+
+      - name: 텔레그램 리포트 전송
+        run: |
+          echo "=== 텔레그램 전송 시작 ==="
+          python -m src.utils.telegram_notifier || echo "텔레그램 전송 실패 (계속 진행)"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        continue-on-error: true
+
+      - name: AGENT-07 RADAR ANALYZER 실행 (RRG 테마 레이더)
+        run: |
+          echo "=== AGENT-07 RADAR ANALYZER 시작 ==="
+          python -m src.ops.rrg_pipeline
+          echo "=== AGENT-07 완료 ==="
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         continue-on-error: true
 
       - name: docs/ 동기화
