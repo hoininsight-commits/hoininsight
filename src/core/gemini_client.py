@@ -52,7 +52,9 @@ class GeminiClient:
                         temperature=0.7,
                     )
                 )
-                return response.text
+                # thought_signature 포함 시 response.text에 붙는 경고문 제거를 위해 part.text만 추출
+                text_parts = [part.text for part in response.candidates[0].content.parts if part.text]
+                return "".join(text_parts).strip()
             except Exception as e:
                 if "503" in str(e) and attempt < 2:
                     wait_time = (attempt + 1) * 2
@@ -84,13 +86,17 @@ class GeminiClient:
                     temperature=0.3,
                 )
             )
-            text = response.text.strip()
+            # thought_signature 등이 포함된 경우 response.text에 경고문이 붙으므로 part.text만 추출
+            text_parts = [part.text for part in response.candidates[0].content.parts if part.text]
+            text = "".join(text_parts).strip()
             text = text.replace("```json", "").replace("```", "").strip()
             return json.loads(text)
 
         except json.JSONDecodeError as e:
             print(f"  JSON 파싱 실패: {e}")
-            print(f"  원본 텍스트: {text[:200] if 'text' in dir() else 'N/A'}")
+            # text 변수가 정의되지 않았을 경우를 위한 방어 코드
+            raw_text = "".join([p.text for p in response.candidates[0].content.parts if p.text]) if 'response' in locals() else "N/A"
+            print(f"  원본 텍스트: {raw_text[:200]}")
             return {}
         except Exception as e:
             print(f"  Gemini API 호출 실패: {e}")
