@@ -1,0 +1,63 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "derived_gold_silver_ratio",
+    "topic_id": "derived_gold_silver_ratio::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/derived_gold_silver_ratio.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
+    "evidence": {
+      "source_severity": 30,
+      "level": "L1",
+      "details": {
+        "z_score": -1.61,
+        "percentile": 50.0,
+        "value": 60.4031202818319,
+        "rolling_mean_20d": 63.28368771695159,
+        "reasoning": "Z-Score -1.61 >= 1.5"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/derived_gold_silver_ratio.json"
+    },
+    "rationale": "[L1] Z-Score -1.61 >= 1.5 (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Quantitative Hedge Funds & Precious Metal Institutional Desks",
+      "temporal_anchor": "2026-04-17 (Signal discovery) + 5-trading day mean reversion window",
+      "unresolved_question": "금/은 비율의 급격한 하락이 은의 산업적 수요 폭증에 의한 구조적 변화인지, 아니면 투기적 자본의 일시적 유입에 따른 기술적 오버슈팅인지 여부",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 -2.0을 초과 돌파하며 거래대금이 전주 평균 대비 40% 이상 급증할 경우",
+        "condition_to_invalidate": "GSR(Gold-Silver Ratio)이 20일 이동평균선(63.28) 내로 48시간 이내에 복귀할 경우"
+      },
+      "narrative_pressure_score": 68,
+      "related_entities": [
+        "XAU/USD",
+        "XAG/USD",
+        "COMEX",
+        "LBMA",
+        "iShares Silver Trust (SLV)"
+      ],
+      "rationale": "금/은 비율(GSR)이 20일 이동평균 대비 Z-Score -1.61을 기록하며 통계적 유의미성 임계점(1.5)을 돌파함. 이는 은이 금 대비 단기적으로 과하게 고평가되었거나 금이 저평가된 상태를 나타내며, 퀀트 알고리즘 및 기관의 페어 트레이딩(Pair Trading)에 의한 자본 재배치(Capital Rotation)를 강제하는 기술적 전조 현상임. 30일 이상 지속되기 어려운 단기적 변동성 데이터로서 시간적 앵커를 보유하므로 Pre-Structural Signal로 판단됨.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]

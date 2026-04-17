@@ -1,0 +1,61 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "index_spx_fred",
+    "topic_id": "index_spx_fred::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/index_spx_fred.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
+    "evidence": {
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 2.07,
+        "percentile": 100.0,
+        "value": 7022.95,
+        "rolling_mean_20d": 6643.6404999999995,
+        "reasoning": "Z-Score 2.07 >= 2.0"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/index_spx_fred.json"
+    },
+    "rationale": "[L2] Z-Score 2.07 >= 2.0 (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Institutional Market Participants",
+      "temporal_anchor": "2026-04-17",
+      "unresolved_question": "S&P 500 지수가 20일 이동평균선 대비 2.07 시그마를 이탈하며 7000선을 돌파한 것이 펀더멘털의 변화인지, 아니면 과매수 구간에서의 기술적 오버슈팅인지 여부",
+      "expected_market_behavior": "speculation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 2.5를 초과하거나, 3거래일 연속 L2 이상의 시그널이 유지되며 거래량이 동반될 경우",
+        "condition_to_invalidate": "지수가 20일 이동평균선(6643.64) 이하로 급격히 회귀하며 평균 회귀(Mean Reversion)가 발생할 경우"
+      },
+      "narrative_pressure_score": 82,
+      "related_entities": [
+        "S&P 500 (SPX)",
+        "FRED (Federal Reserve Economic Data)",
+        "Institutional Investors"
+      ],
+      "rationale": "S&P 500 지수가 20일 이동평균 대비 Z-Score 2.07이라는 통계적 이상치(Anomaly)를 기록한 것은 시장 내 자본 재배치가 급격하게 일어나고 있음을 시사함. 이는 단순한 추세적 상승이 아니라 특정 심리적/구조적 임계점을 넘어서는 '자본 흐름의 선행적 반응(Capital Flow Anticipation)'으로 판단되며, 30일 이내에 가격 조정 혹은 새로운 가격대 형성이라는 결론이 도출되어야 하는 시점 임계적 신호임.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "comm_wti_fred",
+    "topic_id": "comm_wti_fred::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/comm_wti_fred.json L2 Signal",
+    "score": 6.0,
+    "severity": "HIGH",
+    "evidence": {
+      "source_severity": 60,
+      "level": "L2",
+      "details": {
+        "z_score": 0.11,
+        "percentile": 97.2,
+        "value": 100.72,
+        "rolling_mean_20d": 99.896,
+        "reasoning": "Percentile 97.2% (Extreme)"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/comm_wti_fred.json"
+    },
+    "rationale": "[L2] Percentile 97.2% (Extreme) (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Dependency",
+      "trigger_actor": "WTI (West Texas Intermediate) Energy Market",
+      "temporal_anchor": "2026-04-17 (Threshold Breach)",
+      "unresolved_question": "유가 100달러 돌파가 글로벌 공급망의 한계 비용(Marginal Cost) 임계치를 넘어 실물 경제의 가동 중단을 유발할 것인가?",
+      "expected_market_behavior": "risk_off",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "WTI 종가가 3거래일 연속 $100 이상을 유지하며 운송 및 제조 섹터의 가이던스 하향 조정이 시작될 때",
+        "condition_to_invalidate": "WTI 가격이 20일 이동평균선($99.89) 아래로 즉각 회귀하며 90 percentile 이하로 안정화될 때"
+      },
+      "narrative_pressure_score": 88,
+      "related_entities": [
+        "WTI",
+        "Energy Sector",
+        "Industrial Supply Chains",
+        "Central Banks"
+      ],
+      "rationale": "WTI 유가가 $100를 돌파하며 97.2%라는 극단적 퍼센타일에 도달한 것은 단순한 가격 상승을 넘어 산업 전반의 비용 구조와 자본 배치를 강제로 재조정하게 만드는 '구조적 의존성 노출(Dependency)' 시그널임. 이는 에너지 비용 급증에 따른 기업 이익 훼손 및 인플레이션 압박이라는 확실한 시간적/가격적 닻(Anchor)을 제공함.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "rates_us10y_fred",
+    "topic_id": "rates_us10y_fred::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/rates_us10y_fred.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
+    "evidence": {
+      "source_severity": 30,
+      "level": "L1",
+      "details": {
+        "z_score": -0.81,
+        "percentile": 90.7,
+        "value": 4.29,
+        "rolling_mean_20d": 4.3305,
+        "reasoning": "Percentile 90.7% (Watch)"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/rates_us10y_fred.json"
+    },
+    "rationale": "[L1] Percentile 90.7% (Watch) (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "US Treasury Market Participants",
+      "temporal_anchor": "2026-04-30 (End of Month / Pre-May FOMC Window)",
+      "unresolved_question": "실질 금리의 급격한 변동이 단순한 기술적 반등인지, 아니면 5월 정책 결정을 앞둔 근본적인 인플레이션 기대치 재조정인지 여부",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "US10Y 수익률이 95% 퍼센타일을 돌파하거나 연준 위원의 매파적/비둘기파적 발언이 데이터와 결합될 경우",
+        "condition_to_invalidate": "수익률이 5거래일 이내에 20일 이동평균선(4.33)으로 회귀하며 변동성이 급감할 경우"
+      },
+      "narrative_pressure_score": 68,
+      "related_entities": [
+        "US Federal Reserve",
+        "Fixed Income ETFs (TLT/TBT)",
+        "Regional Banks",
+        "Mortgage-Backed Securities"
+      ],
+      "rationale": "US 10년물 국채 수익률이 90.7% 퍼센타일에 도달한 것은 시장이 공식적인 정책 발표나 경제 지표 확인 전, 자본을 선제적으로 재배치하고 있음을 나타내는 신호임. 이는 단순한 추세적 상승이 아니라 특정 임계치(L1 Signal)에 도달하여 구조적 변화를 앞둔 '자본 흐름의 선행적 반응'으로 판단됨.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]

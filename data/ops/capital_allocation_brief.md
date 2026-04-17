@@ -1,4 +1,4 @@
-# Strategic Capital Allocation Brief (2026-04-15)
+# Strategic Capital Allocation Brief (2026-04-17)
 
 ## Allocation Mode: **DEFENSIVE_ROTATION**
 - **Cash Bias**: MEDIUM
@@ -12,7 +12,7 @@
 - **Hedge Bucket**: 하락 변동성 보험
 
 ## Priority Rotation
-- **Axis**: Policy
+- **Axis**: Liquidity
 - **Tilt**: UNDERWEIGHT_GROWTH
 - **Rationale**: TIGHTENING 환경 기반 자본 효율성 고려
 

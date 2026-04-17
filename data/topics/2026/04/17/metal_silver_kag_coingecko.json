@@ -1,0 +1,63 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "metal_silver_kag_coingecko",
+    "topic_id": "metal_silver_kag_coingecko::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
+    "evidence": {
+      "source_severity": 30,
+      "level": "L1",
+      "details": {
+        "z_score": 1.67,
+        "percentile": 50.0,
+        "value": 79.48,
+        "rolling_mean_20d": 74.152,
+        "reasoning": "Z-Score 1.67 >= 1.5"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/metal_silver_kag_coingecko.json"
+    },
+    "rationale": "[L1] Z-Score 1.67 >= 1.5 (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Market Liquidity Providers / Commodity Token Investors",
+      "temporal_anchor": "2026-04-17",
+      "unresolved_question": "실물 은(Silver) 시장의 공급망 병목 현상에 의한 현물 프리미엄 상승인가, 아니면 암호화폐 시장 내 안전 자산으로의 순환매인가?",
+      "expected_market_behavior": "rotation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "Z-Score가 2.0을 초과하거나 실물 은 인도 지연 보고서가 공식적으로 발표될 경우",
+        "condition_to_invalidate": "48시간 이내에 Z-Score가 1.0 미만으로 회귀하며 평균치로 수렴할 경우"
+      },
+      "narrative_pressure_score": 68,
+      "related_entities": [
+        "KAG",
+        "Kinesis",
+        "Silver",
+        "Tokenized Assets",
+        "Commodity-backed Tokens"
+      ],
+      "rationale": "2026년 4월 17일 기준 KAG(Kinesis Silver)에서 Z-Score 1.67의 통계적 이상 수치가 감지되었습니다. 이는 단순한 가격 상승 트렌드가 아니라, 특정 시점에 집중된 자본의 선제적 재배치(Capital Flow Anticipation)를 나타냅니다. 실물 자산과 연동된 토큰화 상품에서의 이러한 변동성은 향후 원자재 시장의 구조적 변화나 가격 변동성이 확정되기 전 시장 참여자들이 선제적으로 움직이고 있음을 시사하는 전조적 신호로 해석됩니다.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]

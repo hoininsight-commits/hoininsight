@@ -1,0 +1,37 @@
+{
+  "data_axis": [
+    "crypto_btc_usd_spot_coingecko",
+    "index_spx_fred"
+  ],
+  "baseline_match": [
+    "crypto_btc_usd_spot_coingecko: Volatility Surge (Z=2.49)",
+    "index_spx_fred: Volatility Surge (Z=2.07)"
+  ],
+  "anomaly_logic": "Unknown",
+  "why_now_type": "Pre-Structural (Step 74)",
+  "level": "L2",
+  "level_proof": "Statistical Deviation > 2.0 Sigma",
+  "gap_detection": "Insufficient Evidence for L4",
+  "missing_data_request": [
+    "Need Volume/Flow Data to verify Capital Fixation"
+  ],
+  "pre_structural_context": {
+    "signal_type": "Capital",
+    "trigger_actor": "Institutional Liquidity Providers / Market Makers",
+    "temporal_anchor": "2026-04-17 (Anomaly Detection Date)",
+    "unresolved_question": "해당 가격 급등이 특정 거시경제 지표 발표 전의 선취매(Front-running)인지, 혹은 대규모 현물 ETF 유입에 따른 유동성 병목 현상인지는 아직 확인되지 않음.",
+    "expected_market_behavior": "speculation",
+    "escalation_path": {
+      "condition_to_upgrade_to_WHY_NOW": "Z-Score가 3.0을 초과하거나, 특정 기관의 대규모 포지션 공시 혹은 정책적 발언이 동반될 경우",
+      "condition_to_invalidate": "가격이 48시간 이내에 20일 이동평균선(71,967.2) 이하로 회귀하며 단순 변동성 확대로 판명될 경우"
+    },
+    "narrative_pressure_score": 75,
+    "related_entities": [
+      "BTC",
+      "CoinGecko",
+      "Institutional Capital"
+    ],
+    "rationale": "Z-Score 2.49는 단순한 가격 상승(Trend)을 넘어 표준 편차 범위를 크게 벗어난 구조적 이상 징후(L2 Signal)를 의미함. 이는 시장에 아직 공개되지 않은 뉴스나 정책적 변화가 가시화되기 전, 대규모 자본의 선제적 이동(Capital Flow Anticipation)이 발생하고 있음을 시사하는 전형적인 Pre-Structural 신호임.",
+    "is_valid": true
+  }
+}

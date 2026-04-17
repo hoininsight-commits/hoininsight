@@ -1,0 +1,62 @@
+[
+  {
+    "ts_utc": "2026-04-17T21:32:19Z",
+    "dataset_id": "risk_vix_fred",
+    "topic_id": "risk_vix_fred::z_score_model_v1",
+    "title": "data/features/anomalies/2026/04/17/risk_vix_fred.json L1 Signal",
+    "score": 3.0,
+    "severity": "MED",
+    "evidence": {
+      "source_severity": 30,
+      "level": "L1",
+      "details": {
+        "z_score": -1.56,
+        "percentile": 73.8,
+        "value": 18.17,
+        "rolling_mean_20d": 24.124000000000002,
+        "reasoning": "Z-Score -1.56 >= 1.5"
+      },
+      "regime": {
+        "vix_roc_1d": null,
+        "us10y_roc_1d": null,
+        "vix_on": false,
+        "us10y_on": false,
+        "multiplier": 1.0,
+        "rule": {
+          "vix_threshold": 0.01,
+          "us10y_threshold": 0.005,
+          "mult_map": {
+            "both": 1.8,
+            "vix": 1.5,
+            "us10y": 1.2,
+            "none": 1.0
+          }
+        }
+      },
+      "anomalies_path": "data/features/anomalies/2026/04/17/risk_vix_fred.json"
+    },
+    "rationale": "[L1] Z-Score -1.56 >= 1.5 (Regime x1.0)",
+    "links": [],
+    "pre_structural_signal": {
+      "signal_type": "Capital",
+      "trigger_actor": "Institutional Risk Managers",
+      "temporal_anchor": "2026-04-17 (Window: 5-10 Trading Days)",
+      "unresolved_question": "VIX의 급격한 하락(18.17)이 실제 리스크 해소에 따른 안착인지, 아니면 기술적 반등을 앞둔 '변동성 압축' 구간인가?",
+      "expected_market_behavior": "speculation",
+      "escalation_path": {
+        "condition_to_upgrade_to_WHY_NOW": "VIX가 20일 이동평균선(24.12) 방향으로 급격히 회귀하며 하락분의 50% 이상을 하루 만에 만회할 때",
+        "condition_to_invalidate": "VIX가 18.0 수준에서 14거래일 이상 박스권을 유지하며 변동성 체제(Regime) 자체가 하향 안정화될 때"
+      },
+      "narrative_pressure_score": 78,
+      "related_entities": [
+        "VIX",
+        "CBOE",
+        "S&P 500",
+        "FRED"
+      ],
+      "rationale": "VIX 지수가 20일 이동평균(24.12) 대비 Z-Score -1.56 수준인 18.17까지 급락한 것은 시장의 위험 인식이 단기적으로 과도하게 낙관 편향되어 있음을 나타냄. 이는 구조적 리스크가 완전히 해소되지 않은 상태에서 자본이 위험 자산으로 선제적 이동(Capital Flow Anticipation)하고 있다는 전구조적 신호이며, 통계적 평균 회귀 원리에 따라 단기 내 변동성 폭발이나 포트폴리오 재조정이 발생할 가능성이 높음.",
+      "is_valid": true
+    },
+    "is_pre_structural": true
+  }
+]
