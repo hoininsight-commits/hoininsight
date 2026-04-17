@@ -6,8 +6,8 @@ Regime: (no meta regime detected)
 Confidence: HIGH (Core: US10Y=OK, SPX=OK, BTC=OK)
 Content Status: NORMAL
 Content Preset: STANDARD
-Drivers: BTCUSD:FLAT(0.00)[png](data/reports/2026/04/18/charts/crypto_btc_usd_spot_coingecko.png) | SPX:UP(0.50)[png](data/reports/2026/04/18/charts/index_spx_fred.png)
-Meta topics: [json](data/meta_topics/2026/04/18/meta_topics.json)
+Drivers: BTCUSD:FLAT(0.00)[png](data/reports/2026/04/17/charts/crypto_btc_usd_spot_coingecko.png) | SPX:UP(0.50)[png](data/reports/2026/04/17/charts/index_spx_fred.png)
+Meta topics: [json](data/meta_topics/2026/04/17/meta_topics.json)
 This regime has persisted for 87 consecutive days since 2026-01-14.
 
 Historical context:
@@ -21,14 +21,14 @@ Historical context:
 
 | rank | report_key | title | base | persist(7d) | final | momentum(slope) | final_m | sev | chart | topics | anom |
 |---:|---|---|---:|---:|---:|---|---:|---|---|---|---|
-| 1 | BTCUSD | data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 5 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/04/18/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json) |
+| 1 | BTCUSD | data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json L2 Signal | 6.00 | 4 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/crypto_btc_usd_spot_coingecko.png) | [json](data/topics/2026/04/18/crypto_btc_usd_spot_coingecko.json) | [json](data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json) |
 | 2 | SPX | data/features/anomalies/2026/04/18/index_spx_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/index_spx_fred.png) | [json](data/topics/2026/04/18/index_spx_fred.json) | [json](data/features/anomalies/2026/04/18/index_spx_fred.json) |
 | 3 | KOSPI | data/features/anomalies/2026/04/18/index_kospi_stooq.json L2 Signal | 6.00 | 1 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/index_kospi_stooq.png) | [json](data/topics/2026/04/18/index_kospi_stooq.json) | [json](data/features/anomalies/2026/04/18/index_kospi_stooq.json) |
 | 4 | NASDAQ | data/features/anomalies/2026/04/18/index_nasdaq_fred.json L2 Signal | 6.00 | 7 | 6.00 | UP (0.50) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/index_nasdaq_fred.png) | [json](data/topics/2026/04/18/index_nasdaq_fred.json) | [json](data/features/anomalies/2026/04/18/index_nasdaq_fred.json) |
 | 5 | WTI | data/features/anomalies/2026/04/18/comm_wti_fred.json L2 Signal | 6.00 | 7 | 6.00 | FLAT (0.00) | **6.00** | HIGH | [png](data/reports/2026/04/18/charts/comm_wti_fred.png) | [json](data/topics/2026/04/18/comm_wti_fred.json) | [json](data/features/anomalies/2026/04/18/comm_wti_fred.json) |
 
 ## Per-dataset Topics
-- [HIGH] BTCUSD: data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
+- [HIGH] BTCUSD: data/features/anomalies/2026/04/18/crypto_btc_usd_spot_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=4
 - [HIGH] SPX: data/features/anomalies/2026/04/18/index_spx_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] KOSPI: data/features/anomalies/2026/04/18/index_kospi_stooq.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [HIGH] NASDAQ: data/features/anomalies/2026/04/18/index_nasdaq_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
@@ -39,18 +39,18 @@ Historical context:
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/04/18/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/04/18/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US10Y: data/features/anomalies/2026/04/18/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
-- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
-- [MED] ETHUSD: data/features/anomalies/2026/04/18/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=5
+- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
+- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
+- [MED] ETHUSD: data/features/anomalies/2026/04/18/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
 - [MED] KOR_CPI: data/features/anomalies/2026/04/18/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/18/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [MED] KOR_M2: data/features/anomalies/2026/04/18/liquidity_kor_m2_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
-- [MED] GS_RATIO: data/features/anomalies/2026/04/18/derived_gold_silver_ratio.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
+- [MED] KOR_M2: data/features/anomalies/2026/04/18/liquidity_kor_m2_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=1
+- [MED] GS_RATIO: data/features/anomalies/2026/04/18/derived_gold_silver_ratio.json L1 Signal (score=3.00) | Mom: DOWN (slope=-1.00) | App7d=4
 - [LOW] VIX: data/features/anomalies/2026/04/18/risk_vix_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] US02Y: data/features/anomalies/2026/04/18/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] GOLD: data/features/anomalies/2026/04/18/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=5
+- [LOW] GOLD: data/features/anomalies/2026/04/18/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
 - [LOW] KOR_RATE: data/features/anomalies/2026/04/18/rates_kor_base_rate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [LOW] KOR_UNRATE: data/features/anomalies/2026/04/18/employment_kor_unrate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=2
+- [LOW] KOR_UNRATE: data/features/anomalies/2026/04/18/employment_kor_unrate_ecos.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=1
 - [LOW] FED_FUNDS: data/features/anomalies/2026/04/18/rates_fed_funds_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] UNRATE: data/features/anomalies/2026/04/18/employment_unrate_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] HY_SPREAD: data/features/anomalies/2026/04/18/credit_hy_spread_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=3
@@ -67,18 +67,6 @@ Narrative Drift Signals:
 ⚠️ SLA BREACH DETECTED: 4 axes stale (>6h)
 Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_foreigner_flow, smart_money_cot
 - System Freshness: 91.3%
-
-## FINAL DECISION CARD SNAPSHOT
-- Regime: 긴축 기조 강화 및 유동성 축소 지속 (Conf: 90.0%)
-
-## ENGINE 1: STRUCTURAL ANOMALIES (Data-Bottom Up)
-- **Topic:** Policy Radar
-- **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
-
-## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Unknown] Hybrid-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
-- Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)
 

@@ -77,15 +77,6 @@
 
 **SCRIPT QUALITY**: 🟢 READY=0 | 🟡 HOLD=0 | 🔴 DROP=1
 
-### 🧱 FACT ANCHORS COLLECTED TODAY
-- **Count**: 40
-- **Type Breakdown**: NEWS: 40
-- **Samples (Top 3)**:
-  - [NEWS] 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 (Google_News_KR_Economy)
-  - [NEWS] “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 (Google_News_KR_Economy)
-  - [NEWS] "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 (Google_News_KR_Economy)
-
-
 ### 🌱 TOPIC SEEDS (STRUCTURAL)
 > **Topic Seeds — Pre-topics awaiting maturation**
 
