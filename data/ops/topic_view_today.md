@@ -12,7 +12,7 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 (ID: unknown)
+### [뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,7 +87,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 (ID: unknown)
+### 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -97,19 +97,54 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
+### 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
 ### 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 (ID: unknown)
+### 호르무즈 봉쇄에…미국산 원유 수출 급증 - 블로터 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 (ID: unknown)
+### “왜 우리 어머니 험담해”…흉기 들고 집 찾아가 친구 찌른 50대 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘락토핏’ 새 모델 배우 박보영 발탁, 10주년 캠페인 본격화 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “두 아들, 총 2만3400개 비트코인  있다”…아버지가 폭로한 형제의 정체 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 폴란드도 막았다…‘나치 찬양 논란’ 예, 유럽 투어 제동 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “비행기 무거워서 못뜬다”…승객 6명 내리라고 요구한 항공사, 결말은? (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이란 ‘호르무즈 개방’ 발표 20분 전 수상한 거래…유가하락 1조원대 베팅 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 한동훈 “대통령에게 출마 지시받나” 묻자 하정우 “내 출마는…” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓 (ID: unknown)
@@ -173,41 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 미국 “폭력행위 책임지게 될 것”…이라크 내 親이란 민병대 제재 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 박수민·오세훈·윤희숙 ‘3파전’…국힘, 오늘 서울시장 최종 후보 발표 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 구윤철 “환율, 우려보다 안정돼…시장 기대까지 가야” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “늑구, 성심당 이을 대전 아이콘으로”…무사귀환에 시민들 열광 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### SNS로도 영업 다 되니까요…젊은 N잡러 설계사 모셔오는 보험사 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 퇴직하고 로펌 간 선배 잘못 만났다간…공정위 ‘투스트라이크 아웃’ 도입 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 광주 4곳 광역의원 중대선거구제 최초 도입 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

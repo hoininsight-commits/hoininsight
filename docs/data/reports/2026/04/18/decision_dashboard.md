@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -81,7 +81,7 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 (Google_News_KR_Economy)
+  - [NEWS] [뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스 (Google_News_KR_Economy)
   - [NEWS] “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 (Google_News_KR_Economy)
   - [NEWS] "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 (Google_News_KR_Economy)
 
@@ -185,7 +185,7 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹 | Structural implication: '국제유가, 호르무즈 해협 개방 호재에 폭락 - 글로벌이코노믹' suggests a shift in NEWS dynamics. | LOW |
+| [뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스 | Structural implication: '[뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 | Structural implication: '“위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 | Structural implication: '"삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보 | Structural implication: '[동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
@@ -200,11 +200,18 @@
 | 강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제 | Structural implication: '강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 | Structural implication: '"비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 | Structural implication: '"비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 | Structural implication: ''AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
-| 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
 | 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
-| "삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스 | Structural implication: '"삼성전자 좀 짜네" 배당금에 설렌 개미들... 현대차 '두둑' - 파이낸셜뉴스' suggests a shift in NEWS dynamics. | LOW |
+| 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 | Structural implication: ''AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 봉쇄에…미국산 원유 수출 급증 - 블로터 | Structural implication: '호르무즈 봉쇄에…미국산 원유 수출 급증 - 블로터' suggests a shift in NEWS dynamics. | LOW |
+| “왜 우리 어머니 험담해”…흉기 들고 집 찾아가 친구 찌른 50대 | Structural implication: '“왜 우리 어머니 험담해”…흉기 들고 집 찾아가 친구 찌른 50대' suggests a shift in NEWS dynamics. | LOW |
+| ‘락토핏’ 새 모델 배우 박보영 발탁, 10주년 캠페인 본격화 | Structural implication: '‘락토핏’ 새 모델 배우 박보영 발탁, 10주년 캠페인 본격화' suggests a shift in NEWS dynamics. | LOW |
+| “두 아들, 총 2만3400개 비트코인  있다”…아버지가 폭로한 형제의 정체 | Structural implication: '“두 아들, 총 2만3400개 비트코인  있다”…아버지가 폭로한 형제의 정체' suggests a shift in NEWS dynamics. | LOW |
+| 폴란드도 막았다…‘나치 찬양 논란’ 예, 유럽 투어 제동 | Structural implication: '폴란드도 막았다…‘나치 찬양 논란’ 예, 유럽 투어 제동' suggests a shift in NEWS dynamics. | LOW |
+| “비행기 무거워서 못뜬다”…승객 6명 내리라고 요구한 항공사, 결말은? | Structural implication: '“비행기 무거워서 못뜬다”…승객 6명 내리라고 요구한 항공사, 결말은?' suggests a shift in NEWS dynamics. | LOW |
+| 이란 ‘호르무즈 개방’ 발표 20분 전 수상한 거래…유가하락 1조원대 베팅 | Structural implication: '이란 ‘호르무즈 개방’ 발표 20분 전 수상한 거래…유가하락 1조원대 베팅' suggests a shift in NEWS dynamics. | LOW |
+| 한동훈 “대통령에게 출마 지시받나” 묻자 하정우 “내 출마는…” | Structural implication: '한동훈 “대통령에게 출마 지시받나” 묻자 하정우 “내 출마는…”' suggests a shift in NEWS dynamics. | LOW |
 | 기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓 | Structural implication: '기저귀로 얼굴 때리고 주요 부위를…환자 짜증에 간병인이 한 짓' suggests a shift in NEWS dynamics. | LOW |
 | “아직 안죽었다”…‘병원 입원’ 팝핀현준이 전한 충격적인 소식 | Structural implication: '“아직 안죽었다”…‘병원 입원’ 팝핀현준이 전한 충격적인 소식' suggests a shift in NEWS dynamics. | LOW |
 | “‘핵먼지’ 미국으로 넘기기로 했다”…트럼프 말에 이란의 반응 | Structural implication: '“‘핵먼지’ 미국으로 넘기기로 했다”…트럼프 말에 이란의 반응' suggests a shift in NEWS dynamics. | LOW |
@@ -218,13 +225,6 @@
 | 현역병 복무 중 4억원대 도박…기소된 남성, 700만원 벌금형 | Structural implication: '현역병 복무 중 4억원대 도박…기소된 남성, 700만원 벌금형' suggests a shift in NEWS dynamics. | LOW |
 | “손실 20%까진 원금보장 해드립니다”…5월 출시 국민참여형 국민성장펀드란? | Structural implication: '“손실 20%까진 원금보장 해드립니다”…5월 출시 국민참여형 국민성장펀드란?' suggests a shift in NEWS dynamics. | LOW |
 | 미국 “폭력행위 책임지게 될 것”…이라크 내 親이란 민병대 제재 | Structural implication: '미국 “폭력행위 책임지게 될 것”…이라크 내 親이란 민병대 제재' suggests a shift in NEWS dynamics. | LOW |
-| 박수민·오세훈·윤희숙 ‘3파전’…국힘, 오늘 서울시장 최종 후보 발표 | Structural implication: '박수민·오세훈·윤희숙 ‘3파전’…국힘, 오늘 서울시장 최종 후보 발표' suggests a shift in NEWS dynamics. | LOW |
-| 구윤철 “환율, 우려보다 안정돼…시장 기대까지 가야” | Structural implication: '구윤철 “환율, 우려보다 안정돼…시장 기대까지 가야”' suggests a shift in NEWS dynamics. | LOW |
-| “늑구, 성심당 이을 대전 아이콘으로”…무사귀환에 시민들 열광 | Structural implication: '“늑구, 성심당 이을 대전 아이콘으로”…무사귀환에 시민들 열광' suggests a shift in NEWS dynamics. | LOW |
-| SNS로도 영업 다 되니까요…젊은 N잡러 설계사 모셔오는 보험사 | Structural implication: 'SNS로도 영업 다 되니까요…젊은 N잡러 설계사 모셔오는 보험사' suggests a shift in NEWS dynamics. | LOW |
-| 퇴직하고 로펌 간 선배 잘못 만났다간…공정위 ‘투스트라이크 아웃’ 도입 | Structural implication: '퇴직하고 로펌 간 선배 잘못 만났다간…공정위 ‘투스트라이크 아웃’ 도입' suggests a shift in NEWS dynamics. | LOW |
-| 광주 4곳 광역의원 중대선거구제 최초 도입 | Structural implication: '광주 4곳 광역의원 중대선거구제 최초 도입' suggests a shift in NEWS dynamics. | LOW |
-| 매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다 | Structural implication: '매듭 풀린 호르무즈·레바논…미국·이란, 협상 쟁점 퍼즐 맞췄다' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>
