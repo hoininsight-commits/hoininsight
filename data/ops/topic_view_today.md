@@ -17,7 +17,47 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 (ID: unknown)
+### 호르무즈 통항허용에… 美S&P500·나스닥 사상최고치 - 문화일보 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘호르무즈 개방’ 발표 직전 유가 하락 1조원 베팅…또 정보 유출? - 한겨레 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### ‘금테크’ 열풍에 골드바 품귀… “개당 2.6억원 1㎏짜리만 남아” - 조선비즈 - Chosunbiz (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “40조면 M&A도 가능” 삼성전자 성과급 시끌…반도체 골든타임 흔드나 - 한경매거진&북 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 실패 딛고 재매각 추진…맘스터치, 이번엔 1조 통할까 - 마켓인 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 러우 전쟁 ‘고유가 악몽’ 다시···중동 리스크에 기름값 2000원 - 시사저널e (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "육천피 찍어도 아직 싸다"…'역대급 저평가' 알짜 종목들 [한경우의 케이스스터디] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 미·이란 협상 교착 우려에 코스피 소폭 하락…6190선 마감 - 인더스트리뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,57 +67,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### S&P500 과격한 질주…"최소 36년래 가장 가파른 속도" - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 머스크 父 "일론·킴벌, 비트코인 2만3400개 보유"...2조6000억원 상당 - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 코스피 6,200 내주며 마감‥협상 결렬 우려, 차익실현 매물에 약보합세 - MBC 뉴스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
 ### "여보, 우리 일본 여행 갈까?"…항공권 가격 '대반전' - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 신현송 英국적 딸 ‘韓여권 불법 재발급’ 논란…출국 때 사용도 - 문화일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 미국 정부, 앤트로픽 '미토스 충격'에 AI 정책 급선회 - 지디넷코리아 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 큐로셀, 363억원 규모 제3자배정 유상증자 결정 - 이데일리 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### 소득 '1650만원' 빼준다…정부도 추천한 '연말정산' 꿀팁 [세테크] - 한국경제 (ID: unknown)
+### "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -87,29 +82,99 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### [AACR] 보로노이, 'VRN110755' 임상 1a상 ORR 85.7% 기록 - 히트뉴스 (ID: unknown)
+### 앤트로픽 퇴출 번복한 백악관…‘충격적 해킹 능력’ 미토스 쓴다 - 한겨레 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 (ID: unknown)
+### "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 대출 규제·강남 하락세에 고가 아파트 경매 인기 ‘뚝’ - 조선일보 (ID: unknown)
+### 한미약품,GLP-1 비만신약 '에페' 우여곡절 끝 연내 상용화 착수 - 약업신문 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “더는 못 버텨” 건설사는 짐 싸는데…SK하이닉스가 고졸 채용하는 이유 [잇슈 머니] - KBS 뉴스 (ID: unknown)
+### "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 (ID: unknown)
+### 소득서 1650만원 빼준다…정부도 추천한 '연말정산 꿀팁' [세테크] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### 미국암연구힉회 오늘 개막...K-바이오 역대 최대 규모 참가 - 히트뉴스 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### “반죽 많이 할수록 국수 맛있고 아내는 때릴수록”…中국수집 현수막 ‘논란’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 5선 도전하는 오세훈…“서울 내주면 정권 폭주 제동장치 사라져” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 가라는 거야 말라는 거야…미국 이란 신경전에 호르무즈 선박들 ‘대혼란’ (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### ‘예수 행세 논란’ 트럼프, 마라톤 성경 낭독 행사 참여 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 출국 전 갑자기 비행편 취소 ‘날벼락’…“걱정 마라” 승부수 띄운 썬푸꾸옥항공 [현장] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 늑구, 동물원 복귀 후 첫 끼는 ‘특식’…소·닭고기 먹으며 회복 중 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “쇼핑으로 탕진, 건물 샀으면 3채”…전성기 수입 100억, 서인영의 후회 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 나홀로 7개월간 22개국을 3만5천km 달려간 끝에 마주한 것 [여책저책] (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “술집서 떠들 수도 있지”…억울함 호소한 고 김창민 감독 가해자 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### “양도세 직격탄”…‘장특공제 폐지 법안’에 반대 의견만? 찬성 반박도 有 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 이란 “휴전 기간 상선에는 호르무즈 개방”…미 “해군 봉쇄는 유지” (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 누구나 보험 설계사로 투잡…‘N잡러’에 소비자는 피해 우려 있다는데 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
+- **Evidence**: 0 references
+
+### 화물차가 앞서가던 차량 ‘쾅’, 터널서 6중 추돌…12명 중경상 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
 ### 전쟁 전에는 스테이크 랍스터 먹었는데…중동 배치 미군, 식사 ‘경악’ (ID: unknown)
@@ -143,71 +208,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 트럼프 “22일까지 이란과 합의 안되면 휴전연장 안할수도” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 신비주의 깬 임성한 “드라마 집필, 건강에 치명적… 몇 년 쉴까 해” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 송언석 “이 대통령, 통일부 장관 경질해야…美가 정보공유 제한” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘마약왕’ 박왕열 못지않은 조카…‘흰수염고래’ 상대로 합수본 조사 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 주호영 “홍준표가 김부겸 적극 도와도 별로 도움 안 될 것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 우승하려면 이정도는 써야지…다저스 지난해 쓴돈 ‘입이 쩍’, 얼마길래 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 미·이란, 20일 파키스탄서 2차 종전담판 전망 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “자식 대학 보낼 생각으로 버텨”…16년간 150kg 시멘트 나른 싱글맘의 월수입 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### “또 음식 갖고 장난질?”…스테이크 원산지 ‘한우’라고 속인 업주 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 공식자리는 이번이 처음…송중기 배우출신 아내와 첫 동반 일정, 어디길래 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### [속보] 오세훈, 국민의힘 서울시장 후보 확정…與정원오와 맞대결 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### ‘충주맨’ 보고 자극받았나…공무원 활약에 창녕군 SNS도 인기 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### UFO 진짜일까…트럼프 “흥미있는 자료 발견, 곧 공개할 것” (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from MK_News
-- **Evidence**: 0 references
-
-### 이란 국회의장 “미국의 해상봉쇄 계속되면 호르무즈 다시 폐쇄” (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references

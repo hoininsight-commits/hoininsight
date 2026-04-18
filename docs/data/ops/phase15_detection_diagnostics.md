@@ -58,7 +58,7 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 44.27
+- **Final Score**: 34.62
 
 ## Topic: 거시경제 이상징후: comm_wti_fred
 - **Actors**: TIER_4:MARKET
@@ -76,7 +76,7 @@
 - **Actors**: TIER_2:META, TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: None
-- **Final Score**: 53.13
+- **Final Score**: 43.47
 
 ## Topic: 거시경제 이상징후: index_spx_fred
 - **Actors**: TIER_4:MARKET
@@ -106,5 +106,5 @@
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
-- **Final Score**: 60.41
+- **Final Score**: 49.59
 
