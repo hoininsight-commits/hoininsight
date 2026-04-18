@@ -88,6 +88,11 @@ class PublisherAgent:
                     data["sentiment"] = json.loads(p.read_text())
                     break
 
+        # putcall 데이터
+        p = Path("data/outputs/putcall.json")
+        if p.exists():
+            data["putcall"] = json.loads(p.read_text())
+
         return data
 
     def update_content_log(self, data: dict) -> dict:
@@ -178,7 +183,7 @@ class PublisherAgent:
         )
         print(f"  signal_log.json 업데이트 (누적: {len(log['signals'])}개)")
 
-    def generate_dashboard_data(self, data: dict, content: dict):
+    def generate_dashboard_data(self, data: dict, content: dict, pipeline_results: dict = None):
         """대시보드용 JSON 생성"""
         signal = data.get("signal", {})
         analysis = data.get("analysis", {})
@@ -188,6 +193,12 @@ class PublisherAgent:
         market = data.get("market", {})
         macro = data.get("macro", {})
         sentiment = data.get("sentiment", {})
+        putcall = data.get("putcall", {})
+        
+        # 파이프라인 결과에서 fact_checker 상태 추출
+        fact_checker = {}
+        if pipeline_results and "fact_checker" in pipeline_results:
+            fact_checker = pipeline_results["fact_checker"]
 
         dashboard_data = {
             "last_updated": datetime.now().isoformat(),
@@ -199,17 +210,25 @@ class PublisherAgent:
                 "candidates": candidates.get("candidates", []),
                 "content_id": content.get("id", ""),
                 "status": "승인대기",
+                "fact_checker": fact_checker,
+                "putcall": putcall
             },
             "market": market,
             "macro": macro,
             "sentiment": sentiment,
+            "putcall": putcall # 하위 호환성 및 접근성 위해 최상단에도 추가
         }
 
         output_path = self.dashboard_dir / "today_data.json"
         output_path.write_text(
             json.dumps(dashboard_data, ensure_ascii=False, indent=2)
         )
-        print(f"  대시보드 데이터 생성: {output_path}")
+        # GitHub Pages용 docs 폴더 업데이트
+        docs_path = self.base_dir / "docs" / "today_data.json"
+        docs_path.write_text(
+            json.dumps(dashboard_data, ensure_ascii=False, indent=2)
+        )
+        print(f"  대시보드 데이터 생성: {output_path}, {docs_path}")
 
     def generate_brief(self, data: dict) -> str:
         """선장 확인용 브리핑 텍스트 생성"""
@@ -273,7 +292,7 @@ HOIN Insight 일일 브리핑
         self.update_signal_log(data)
 
         # 대시보드 데이터 생성
-        self.generate_dashboard_data(data, content)
+        self.generate_dashboard_data(data, content, pipeline_results)
 
         # 선장 브리핑 생성
         brief = self.generate_brief(data)

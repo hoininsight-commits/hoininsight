@@ -70,7 +70,7 @@ body {
 }
 
 .market-grid {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px; margin-bottom: 28px;
 }
 
@@ -296,6 +296,12 @@ body {
       <div class="market-value" id="mVix">—</div>
       <div class="market-change" id="mVixChange">로딩 중</div>
     </div>
+    <div class="market-card">
+      <div class="market-label">Put/Call Ratio</div>
+      <div class="market-value" id="mPutCall">—</div>
+      <div id="mPutCallSignal" class="status-pill" style="display:inline-block; margin-top:5px;">로딩 중</div>
+      <div id="mPutCall推定" style="font-size:11px; color:#666680; margin-top:4px; display:none;">(추정)</div>
+    </div>
   </div>
 
   <div class="zone-label">B — 오늘의 선정 토픽</div>
@@ -400,6 +406,7 @@ const AGENTS = [
   { name: 'DIVIDER', label: '', desc: '— API 키 필요 —' },
   { name: 'AGENT-04', label: 'ANALYST', desc: 'AI 레벨2 분석', needsApi: true },
   { name: 'AGENT-05', label: 'WRITER', desc: '스크립트 생성', needsApi: true },
+  { name: 'AGENT-055', label: 'FACT_CHECKER', desc: '데이터 수치 검증' },
   { name: 'AGENT-06', label: 'PUBLISHER', desc: '이력 저장 · 대시보드' },
 ];
 
@@ -473,6 +480,34 @@ function renderMarket(data) {
     document.getElementById('mVixChange').textContent = isHigh ? '⚠ 공포 구간' : '안정 구간';
     document.getElementById('mVixChange').className = 'market-change' + (isHigh ? ' up' : '');
   }
+
+  // PutCall Ratio 반영
+  const pc = data?.today?.putcall || data?.putcall || {};
+  if (pc.total_pc_ratio) {
+    document.getElementById('mPutCall').textContent = pc.total_pc_ratio.toFixed(2);
+    const sig = pc.signal || 'NEUTRAL';
+    const sigEl = document.getElementById('mPutCallSignal');
+    sigEl.textContent = sig;
+    
+    // 색상 적용: FEAR(Red), GREED(Green), NEUTRAL(Gray)
+    if (sig === 'FEAR') {
+      sigEl.style.background = 'rgba(239,71,111,0.15)';
+      sigEl.style.color = '#ef476f';
+    } else if (sig === 'GREED') {
+      sigEl.style.background = 'rgba(0,212,170,0.15)';
+      sigEl.style.color = '#00d4aa';
+    } else {
+      sigEl.style.background = 'rgba(80,80,100,0.3)';
+      sigEl.style.color = '#888899';
+    }
+
+    // 추정 표시
+    if (pc.source && pc.source.includes('fallback')) {
+       document.getElementById('mPutCall推定').style.display = 'block';
+    } else {
+       document.getElementById('mPutCall推定').style.display = 'none';
+    }
+  }
 }
 
 function renderSignal(data) {
@@ -525,8 +560,26 @@ function renderPipeline(data) {
     if (a.name === 'DIVIDER') return `<div class="pipeline-divider">${a.desc}</div>`;
     let statusClass, statusText;
     if (a.needsApi) { statusClass = 'status-wait'; statusText = 'API 키 필요'; }
+    else if (a.name === 'AGENT-055') {
+       const fc = data?.today?.fact_checker || {};
+       if (fc.status === 'PASS') { statusClass = 'status-done'; statusText = 'PASS'; }
+       else if (fc.status === 'FAIL') { 
+          statusClass = 'status-done'; 
+          statusText = 'FAIL';
+          if (fc.report && fc.report.length > 0) statusText += ` (${fc.report.length}건)`;
+          // FAIL일 때 빨간색 강조 (style 직접 주입)
+          return `
+            <div class="pipeline-item">
+              <div><div class="pipeline-name">${a.label}</div><div class="pipeline-desc">${a.desc}</div></div>
+              <span class="agent-status" style="background: rgba(239,71,111,0.2); color: #ef476f;">${statusText}</span>
+            </div>
+          `;
+       }
+       else { statusClass = 'status-skip'; statusText = '대기'; }
+    }
     else if (['AGENT-01','AGENT-02','AGENT-03','AGENT-06'].includes(a.name) && signal) { statusClass = 'status-done'; statusText = '완료'; }
     else { statusClass = 'status-skip'; statusText = '대기'; }
+    
     return `
       <div class="pipeline-item">
         <div><div class="pipeline-name">${a.label}</div><div class="pipeline-desc">${a.desc}</div></div>
