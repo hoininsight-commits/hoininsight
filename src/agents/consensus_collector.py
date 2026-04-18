@@ -168,3 +168,11 @@ class ConsensusCollector:
             "events": [],
             "top_surprise": None
         }
+
+if __name__ == "__main__":
+    from pathlib import Path
+    today = datetime.now().strftime("%Y%m%d")
+    out_dir = Path(f"data/raw/{today}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    agent = ConsensusCollector(output_dir=out_dir)
+    agent.collect()

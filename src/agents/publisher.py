@@ -243,9 +243,14 @@ class PublisherAgent:
             for s in stocks.get("stocks", [])[:3]
         ])
 
-        chain = "\n".join([
+        # Analyst의 레벨2 체인 우선 순위 적용
+        analysis_chain = analysis.get("level2_chain", [])
+        signal_chain = signal.get("level2_chain", [])
+        final_chain = analysis_chain if analysis_chain else signal_chain
+
+        chain_str = "\n".join([
             f"  {i+1}. {step}"
-            for i, step in enumerate(signal.get("level2_chain", []))
+            for i, step in enumerate(final_chain)
         ])
 
         brief = f"""
@@ -262,10 +267,10 @@ HOIN Insight 일일 브리핑
 긴급도: {signal.get("urgency", "")}
 
 [레벨2 인과관계]
-{chain if chain else "  없음 (AGENT-04 미실행)"}
+{chain_str if chain_str else ("  분석 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  없음 (AGENT-04 미실행)")}
 
 [관련 종목]
-{stock_list if stock_list else "  종목 데이터 없음 (AGENT-04 미실행)"}
+{stock_list if stock_list else ("  매핑 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  종목 데이터 없음 (AGENT-04 미실행)")}
 
 [스크립트]
 롱폼: {data.get("script_long_path", "미생성")}
@@ -288,6 +293,23 @@ HOIN Insight 일일 브리핑
         if not data:
             print("  데이터 없음 — 종료")
             return {}
+
+        # 파이프라인 실시간 결과 반영 (디스크 로딩 보완)
+        if pipeline_results:
+            if "analyst" in pipeline_results:
+                ar = pipeline_results["analyst"]
+                if ar.get("analysis"):
+                    data["analysis"] = ar["analysis"]
+                if ar.get("stocks"):
+                    data["stocks"] = ar["stocks"]
+                if ar.get("failed"):
+                    data["analyst_failed"] = True
+                    if "signal" in data:
+                        # 신호 객체에도 체인 업데이트 (실패 시 빈 배열 유지)
+                        data["signal"]["level2_chain"] = []
+                elif ar.get("analysis"):
+                    if "signal" in data:
+                        data["signal"]["level2_chain"] = ar["analysis"].get("level2_chain", [])
 
         # 이력 업데이트
         content = self.update_content_log(data)
