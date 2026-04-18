@@ -1,24 +1,6 @@
 {
   "date": "20260418",
   "topic_signal": "sp500 통계적 이탈 (Z-score 1.96)",
-  "stocks": [
-    {
-      "ticker": "005930",
-      "name": "삼성전자",
-      "sector": "반도체",
-      "impact": "수혜",
-      "reason": "미 국채 금리(US10Y) 및 달러 인덱스 하락에 따른 글로벌 유동성 환경 개선 → S&P500 및 KOSPI가 통계적 과매수 구간에 진입하며 기술적 조정 압력 증대 → 반도체 직접 영향",
-      "impact_level": "HIGH",
-      "is_primary": true
-    },
-    {
-      "ticker": "000660",
-      "name": "SK하이닉스",
-      "sector": "반도체",
-      "impact": "수혜",
-      "reason": "미 국채 금리(US10Y) 및 달러 인덱스 하락에 따른 글로벌 유동성 환경 개선 → S&P500 및 KOSPI가 통계적 과매수 구간에 진입하며 기술적 조정 압력 증대 → 반도체 직접 영향",
-      "impact_level": "HIGH",
-      "is_primary": true
-    }
-  ]
+  "stocks": [],
+  "bridge_validated": true
 }
