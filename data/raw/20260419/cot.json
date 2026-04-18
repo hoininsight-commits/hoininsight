@@ -1,0 +1,85 @@
+{
+  "date": "2026-04-19",
+  "collected_at": "2026-04-19T00:05:01.515233",
+  "source": "CFTC COT Report",
+  "positions": {
+    "WTI": {
+      "long": 8233,
+      "short": 53467,
+      "net": -45234,
+      "prev_net": 0,
+      "net_change": -45234,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    },
+    "Gold": {
+      "long": 125422,
+      "short": 30281,
+      "net": 95141,
+      "prev_net": 517,
+      "net_change": 94624,
+      "direction": "LONG",
+      "change_direction": "INCREASING",
+      "report_date": "2026-04-14"
+    },
+    "SP500": {
+      "long": 123136,
+      "short": 543492,
+      "net": -420356,
+      "prev_net": 58309,
+      "net_change": -478665,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    },
+    "Nasdaq": {
+      "long": 41041,
+      "short": 99933,
+      "net": -58892,
+      "prev_net": -49667,
+      "net_change": -9225,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    }
+  },
+  "smart_money_signals": [
+    {
+      "asset": "Gold",
+      "signal_label": "STRONG",
+      "net_change": 94624,
+      "change_pct": 18302.5,
+      "direction": "LONG",
+      "change_direction": "INCREASING",
+      "description": "Gold 헤지펀드 매수 94,624계약 (+18302.5%) — 전주 대비 INCREASING"
+    },
+    {
+      "asset": "SP500",
+      "signal_label": "FLIP",
+      "net_change": -478665,
+      "change_pct": -820.9,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "description": "SP500 헤지펀드 포지션 롱→숏 전환 (Net +58,309 → -420,356)"
+    },
+    {
+      "asset": "Nasdaq",
+      "signal_label": "MODERATE",
+      "net_change": -9225,
+      "change_pct": -18.6,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "description": "Nasdaq 헤지펀드 매도 9,225계약 (-18.6%) — 전주 대비 DECREASING"
+    }
+  ],
+  "top_signal": {
+    "asset": "Gold",
+    "signal_label": "STRONG",
+    "net_change": 94624,
+    "change_pct": 18302.5,
+    "direction": "LONG",
+    "change_direction": "INCREASING",
+    "description": "Gold 헤지펀드 매수 94,624계약 (+18302.5%) — 전주 대비 INCREASING"
+  }
+}
