@@ -54,12 +54,6 @@
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 49.59
 
-## Topic: 거시경제 이상징후: derived_gold_silver_ratio
-- **Actors**: TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 34.62
-
 ## Topic: 거시경제 이상징후: comm_wti_fred
 - **Actors**: TIER_4:MARKET
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
@@ -71,12 +65,6 @@
 - **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
 - **Conflict**: Macro_Price_Divergence
 - **Final Score**: 49.59
-
-## Topic: 거시경제 이상징후: metal_silver_kag_coingecko
-- **Actors**: TIER_2:META, TIER_4:MARKET
-- **Axes**: Policy:GOV, Capital Flow:CAPITAL, Structural Capital:STRUCTURAL
-- **Conflict**: None
-- **Final Score**: 43.47
 
 ## Topic: 거시경제 이상징후: index_spx_fred
 - **Actors**: TIER_4:MARKET

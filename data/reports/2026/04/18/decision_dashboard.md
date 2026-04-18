@@ -29,7 +29,7 @@
 **SNAPSHOT**: 🧱 ANCHOR(S=0|M=0|W=1) | ⏳ TIMING(E=0|O=1|L=0) | 🎤 FIT(G=0|F=0|P=1)
 
 **Top Quality Candidates:**
-- **오늘 시장의 핵심 혼란 포인트**
+- **지수 상승 속 섹터 하락의 이유**
   [🧱 WEAK | 🧠 GOOD | ⏳ ON_TIME | 🎤 POOR | 🔗 NOT_LINKABLE] | 🚩 EVIDENCE_TOO_THIN,TITLE_MISMATCH
   *💡 Hint: Standard Observation*
 
@@ -81,8 +81,8 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] 호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스 (Google_News_KR_Economy)
-  - [NEWS] 호르무즈 통항허용에… 美S&P500·나스닥 사상최고치 - 문화일보 (Google_News_KR_Economy)
+  - [NEWS] "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 (Google_News_KR_Economy)
+  - [NEWS] 뉴욕증시, 이란 호르무즈 해협 개방에 S&P·나스닥 사상 최고치 - v.daum.net (Google_News_KR_Economy)
   - [NEWS] ‘호르무즈 개방’ 발표 직전 유가 하락 1조원 베팅…또 정보 유출? - 한겨레 (Google_News_KR_Economy)
 
 
@@ -185,25 +185,25 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| 호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스 | Structural implication: '호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 호르무즈 통항허용에… 美S&P500·나스닥 사상최고치 - 문화일보 | Structural implication: '호르무즈 통항허용에… 美S&P500·나스닥 사상최고치 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 | Structural implication: '"머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 뉴욕증시, 이란 호르무즈 해협 개방에 S&P·나스닥 사상 최고치 - v.daum.net | Structural implication: '뉴욕증시, 이란 호르무즈 해협 개방에 S&P·나스닥 사상 최고치 - v.daum.net' suggests a shift in NEWS dynamics. | LOW |
 | ‘호르무즈 개방’ 발표 직전 유가 하락 1조원 베팅…또 정보 유출? - 한겨레 | Structural implication: '‘호르무즈 개방’ 발표 직전 유가 하락 1조원 베팅…또 정보 유출? - 한겨레' suggests a shift in NEWS dynamics. | LOW |
-| ‘금테크’ 열풍에 골드바 품귀… “개당 2.6억원 1㎏짜리만 남아” - 조선비즈 - Chosunbiz | Structural implication: '‘금테크’ 열풍에 골드바 품귀… “개당 2.6억원 1㎏짜리만 남아” - 조선비즈 - Chosunbiz' suggests a shift in NEWS dynamics. | LOW |
-| “40조면 M&A도 가능” 삼성전자 성과급 시끌…반도체 골든타임 흔드나 - 한경매거진&북 | Structural implication: '“40조면 M&A도 가능” 삼성전자 성과급 시끌…반도체 골든타임 흔드나 - 한경매거진&북' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 열리자 급등…S&P500 '사상 첫 7100' 돌파 [뉴욕증시 브리핑] - 한국경제 | Structural implication: '호르무즈 열리자 급등…S&P500 '사상 첫 7100' 돌파 [뉴욕증시 브리핑] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| “SK하이닉스·삼성 성과급 지역화폐로 지급하자” 온라인에 퍼지는 황당 주장 - 문화일보 | Structural implication: '“SK하이닉스·삼성 성과급 지역화폐로 지급하자” 온라인에 퍼지는 황당 주장 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
 | 실패 딛고 재매각 추진…맘스터치, 이번엔 1조 통할까 - 마켓인 | Structural implication: '실패 딛고 재매각 추진…맘스터치, 이번엔 1조 통할까 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
 | 러우 전쟁 ‘고유가 악몽’ 다시···중동 리스크에 기름값 2000원 - 시사저널e | Structural implication: '러우 전쟁 ‘고유가 악몽’ 다시···중동 리스크에 기름값 2000원 - 시사저널e' suggests a shift in NEWS dynamics. | LOW |
 | "육천피 찍어도 아직 싸다"…'역대급 저평가' 알짜 종목들 [한경우의 케이스스터디] - 한국경제 | Structural implication: '"육천피 찍어도 아직 싸다"…'역대급 저평가' 알짜 종목들 [한경우의 케이스스터디] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 미·이란 협상 교착 우려에 코스피 소폭 하락…6190선 마감 - 인더스트리뉴스 | Structural implication: '미·이란 협상 교착 우려에 코스피 소폭 하락…6190선 마감 - 인더스트리뉴스' suggests a shift in NEWS dynamics. | LOW |
-| 신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보 | Structural implication: '신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 외국인 2조 매도에 코스피 주춤 - 조선일보 | Structural implication: '외국인 2조 매도에 코스피 주춤 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 한국은행 총재 후보 신현송 청문보고서 채택 또 불발, 장녀 여권 불법 재발급 논란 탓 - 비즈니스포스트 | Structural implication: '한국은행 총재 후보 신현송 청문보고서 채택 또 불발, 장녀 여권 불법 재발급 논란 탓 - 비즈니스포스트' suggests a shift in NEWS dynamics. | LOW |
 | '왜 나만 이래?'…노후 대비 꿈꾸던 직장인 '깜짝' 놀란 사연 - 한국경제 | Structural implication: ''왜 나만 이래?'…노후 대비 꿈꾸던 직장인 '깜짝' 놀란 사연 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | "여보, 우리 일본 여행 갈까?"…항공권 가격 '대반전' - 한국경제 | Structural implication: '"여보, 우리 일본 여행 갈까?"…항공권 가격 '대반전' - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 | Structural implication: '"머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | [AACR] 알지노믹스, 'RZ-001' 간세포암 임상 ORR 38.5% 기록 - 히트뉴스 | Structural implication: '[AACR] 알지노믹스, 'RZ-001' 간세포암 임상 ORR 38.5% 기록 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
 | 앤트로픽 퇴출 번복한 백악관…‘충격적 해킹 능력’ 미토스 쓴다 - 한겨레 | Structural implication: '앤트로픽 퇴출 번복한 백악관…‘충격적 해킹 능력’ 미토스 쓴다 - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 | Structural implication: '"비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | 한미약품,GLP-1 비만신약 '에페' 우여곡절 끝 연내 상용화 착수 - 약업신문 | Structural implication: '한미약품,GLP-1 비만신약 '에페' 우여곡절 끝 연내 상용화 착수 - 약업신문' suggests a shift in NEWS dynamics. | LOW |
 | "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 | Structural implication: '"호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 소득서 1650만원 빼준다…정부도 추천한 '연말정산 꿀팁' [세테크] - 한국경제 | Structural implication: '소득서 1650만원 빼준다…정부도 추천한 '연말정산 꿀팁' [세테크] - 한국경제' suggests a shift in NEWS dynamics. | LOW |
+| "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 | Structural implication: '"비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
 | 미국암연구힉회 오늘 개막...K-바이오 역대 최대 규모 참가 - 히트뉴스 | Structural implication: '미국암연구힉회 오늘 개막...K-바이오 역대 최대 규모 참가 - 히트뉴스' suggests a shift in NEWS dynamics. | LOW |
 | “반죽 많이 할수록 국수 맛있고 아내는 때릴수록”…中국수집 현수막 ‘논란’ | Structural implication: '“반죽 많이 할수록 국수 맛있고 아내는 때릴수록”…中국수집 현수막 ‘논란’' suggests a shift in NEWS dynamics. | LOW |
 | 5선 도전하는 오세훈…“서울 내주면 정권 폭주 제동장치 사라져” | Structural implication: '5선 도전하는 오세훈…“서울 내주면 정권 폭주 제동장치 사라져”' suggests a shift in NEWS dynamics. | LOW |
@@ -214,7 +214,7 @@
 | “쇼핑으로 탕진, 건물 샀으면 3채”…전성기 수입 100억, 서인영의 후회 | Structural implication: '“쇼핑으로 탕진, 건물 샀으면 3채”…전성기 수입 100억, 서인영의 후회' suggests a shift in NEWS dynamics. | LOW |
 | 나홀로 7개월간 22개국을 3만5천km 달려간 끝에 마주한 것 [여책저책] | Structural implication: '나홀로 7개월간 22개국을 3만5천km 달려간 끝에 마주한 것 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
 | “술집서 떠들 수도 있지”…억울함 호소한 고 김창민 감독 가해자 | Structural implication: '“술집서 떠들 수도 있지”…억울함 호소한 고 김창민 감독 가해자' suggests a shift in NEWS dynamics. | LOW |
-| “양도세 직격탄”…‘장특공제 폐지 법안’에 반대 의견만? 찬성 반박도 有 | Structural implication: '“양도세 직격탄”…‘장특공제 폐지 법안’에 반대 의견만? 찬성 반박도 有' suggests a shift in NEWS dynamics. | LOW |
+| “양도세 직격탄”…‘장특공제 폐지 법안’에 반대만? 찬성 의견도 有 | Structural implication: '“양도세 직격탄”…‘장특공제 폐지 법안’에 반대만? 찬성 의견도 有' suggests a shift in NEWS dynamics. | LOW |
 | 이란 “휴전 기간 상선에는 호르무즈 개방”…미 “해군 봉쇄는 유지” | Structural implication: '이란 “휴전 기간 상선에는 호르무즈 개방”…미 “해군 봉쇄는 유지”' suggests a shift in NEWS dynamics. | LOW |
 | 누구나 보험 설계사로 투잡…‘N잡러’에 소비자는 피해 우려 있다는데 | Structural implication: '누구나 보험 설계사로 투잡…‘N잡러’에 소비자는 피해 우려 있다는데' suggests a shift in NEWS dynamics. | LOW |
 | 화물차가 앞서가던 차량 ‘쾅’, 터널서 6중 추돌…12명 중경상 | Structural implication: '화물차가 앞서가던 차량 ‘쾅’, 터널서 6중 추돌…12명 중경상' suggests a shift in NEWS dynamics. | LOW |
@@ -242,7 +242,7 @@
 ## 🥈 TOP CANDIDATES (Almost)
 다음은 아깝게 선정되지 못한 상위 후보입니다.
 
-### 🔴 오늘 시장의 핵심 혼란 포인트 (DROP)
+### 🔴 지수 상승 속 섹터 하락의 이유 (DROP)
 **⏸️ NOT SPEAKABLE**: Evidence insufficient for narration
 **🎤 LEVEL 1**: Macro explanation only
 **Ceiling**: 산업 또는 기업 연결 신호 없음
@@ -271,5 +271,5 @@ _Shadow pool empty — no promotable topics detected._
 
 | Status | Title | Reason |
 |---|---|---|
-| ⛔ DROP | 오늘 시장의 핵심 혼란 포인트 | 제외 - 기준 미달 |
+| ⛔ DROP | 지수 상승 속 섹터 하락의 이유 | 제외 - 기준 미달 |
 </details>

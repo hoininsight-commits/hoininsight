@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T07:54:47.155117Z",
+  "generated_at": "2026-04-18T08:06:03.389901Z",
   "date_kst": "2026-04-18",
   "topics": [
     {
@@ -183,26 +183,6 @@
       }
     },
     {
-      "dataset_id": "derived_gold_silver_ratio",
-      "title": "거시경제 이상징후: derived_gold_silver_ratio",
-      "axes": [],
-      "inputs_used": {
-        "narrative_present": true,
-        "decision_present": true,
-        "video_candidate": false
-      },
-      "density_text": {
-        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
-        "structured_paragraph": [
-          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
-          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
-          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
-          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
-        ],
-        "contradiction_pairs": []
-      }
-    },
-    {
       "dataset_id": "comm_wti_fred",
       "title": "거시경제 이상징후: comm_wti_fred",
       "axes": [],
@@ -225,26 +205,6 @@
     {
       "dataset_id": "fx_usdkrw_ecos",
       "title": "거시경제 이상징후: fx_usdkrw_ecos",
-      "axes": [],
-      "inputs_used": {
-        "narrative_present": true,
-        "decision_present": true,
-        "video_candidate": false
-      },
-      "density_text": {
-        "summary": "Macro 차원의 시그널과 Market 차원의 시장 반응이 결합되어 분석 밀도가 보강되었습니다.",
-        "structured_paragraph": [
-          "A축(Macro): None에 따른 정책적/기술적 압력이 작용하고 있습니다.",
-          "B축(Market): Monitoring friction이(가) 자본 흐름의 변화를 유도하고 있습니다.",
-          "시장반응: 엔진은 현재 HOIN_ANOMALY 기반의 이상징후를 추적 중입니다.",
-          "상충 가능 지점: 지표상의 긍정적 신호와 실질적 유동성/리스크 선호도 사이의 괴리 여부가 핵심 감시 포인트입니다."
-        ],
-        "contradiction_pairs": []
-      }
-    },
-    {
-      "dataset_id": "metal_silver_kag_coingecko",
-      "title": "거시경제 이상징후: metal_silver_kag_coingecko",
       "axes": [],
       "inputs_used": {
         "narrative_present": true,

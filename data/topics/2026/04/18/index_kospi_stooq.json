@@ -1,6 +1,6 @@
 [
   {
-    "ts_utc": "2026-04-18T16:54:19Z",
+    "ts_utc": "2026-04-18T17:05:37Z",
     "dataset_id": "index_kospi_stooq",
     "topic_id": "index_kospi_stooq::z_score_model_v1",
     "title": "data/features/anomalies/2026/04/18/index_kospi_stooq.json L1 Signal",
@@ -10,11 +10,11 @@
       "source_severity": 30,
       "level": "L1",
       "details": {
-        "z_score": 1.32,
-        "percentile": 94.0,
+        "z_score": 1.19,
+        "percentile": 93.8,
         "value": 6191.92,
-        "rolling_mean_20d": 5779.7675,
-        "reasoning": "Percentile 94.0% (Watch)"
+        "rolling_mean_20d": 5811.871000000001,
+        "reasoning": "Percentile 93.8% (Watch)"
       },
       "regime": {
         "vix_roc_1d": null,
@@ -35,7 +35,7 @@
       },
       "anomalies_path": "data/features/anomalies/2026/04/18/index_kospi_stooq.json"
     },
-    "rationale": "[L1] Percentile 94.0% (Watch) (Regime x1.0)",
+    "rationale": "[L1] Percentile 93.8% (Watch) (Regime x1.0)",
     "links": [],
     "is_pre_structural": false
   }

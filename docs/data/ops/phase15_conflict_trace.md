@@ -54,8 +54,8 @@
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.
 
-### Sample 10: 거시경제 이상징후: derived_gold_silver_ratio
-- **Raw Input (Norm)**: 거시경제 이상징후 DERIVED GOLD SILVER RATIO HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
+### Sample 10: 거시경제 이상징후: comm_wti_fred
+- **Raw Input (Norm)**: 거시경제 이상징후 COMM WTI FRED HOIN ENGINE 구조적 분석 결과 HOIN ANOMALY 유형의 패턴이 감지되었습니다 드라이버 MACRO MARKET...
 - **Escalated**: False
 - **Matched Patterns**: NONE
 - **Reason for Result**: No conflict patterns matched semantic conditions.

@@ -12,12 +12,12 @@ No READY topics today.
 No SHADOW candidates today.
 
 ## 🏹 FACT-FIRST SHADOW
-### 호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스 (ID: unknown)
+### "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 호르무즈 통항허용에… 美S&P500·나스닥 사상최고치 - 문화일보 (ID: unknown)
+### 뉴욕증시, 이란 호르무즈 해협 개방에 S&P·나스닥 사상 최고치 - v.daum.net (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -27,12 +27,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### ‘금테크’ 열풍에 골드바 품귀… “개당 2.6억원 1㎏짜리만 남아” - 조선비즈 - Chosunbiz (ID: unknown)
+### 호르무즈 열리자 급등…S&P500 '사상 첫 7100' 돌파 [뉴욕증시 브리핑] - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### “40조면 M&A도 가능” 삼성전자 성과급 시끌…반도체 골든타임 흔드나 - 한경매거진&북 (ID: unknown)
+### “SK하이닉스·삼성 성과급 지역화폐로 지급하자” 온라인에 퍼지는 황당 주장 - 문화일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -52,12 +52,12 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 미·이란 협상 교착 우려에 코스피 소폭 하락…6190선 마감 - 인더스트리뉴스 (ID: unknown)
+### 외국인 2조 매도에 코스피 주춤 - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
 
-### 신현송 한은 총재 후보자 인사청문보고서 채택 또 불발 - 조선일보 (ID: unknown)
+### 한국은행 총재 후보 신현송 청문보고서 채택 또 불발, 장녀 여권 불법 재발급 논란 탓 - 비즈니스포스트 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -68,11 +68,6 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### "여보, 우리 일본 여행 갈까?"…항공권 가격 '대반전' - 한국경제 (ID: unknown)
-- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
-- **WHY NOW**: Harvested fact from Google_News_KR_Economy
-- **Evidence**: 0 references
-
-### "머스크 형제, 비트코인 2조 6000억 상당 보유" - 조선일보 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -103,6 +98,11 @@ No SHADOW candidates today.
 - **Evidence**: 0 references
 
 ### 소득서 1650만원 빼준다…정부도 추천한 '연말정산 꿀팁' [세테크] - 한국경제 (ID: unknown)
+- **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
+- **WHY NOW**: Harvested fact from Google_News_KR_Economy
+- **Evidence**: 0 references
+
+### "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from Google_News_KR_Economy
 - **Evidence**: 0 references
@@ -157,7 +157,7 @@ No SHADOW candidates today.
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
 
-### “양도세 직격탄”…‘장특공제 폐지 법안’에 반대 의견만? 찬성 반박도 有 (ID: unknown)
+### “양도세 직격탄”…‘장특공제 폐지 법안’에 반대만? 찬성 의견도 有 (ID: unknown)
 - **Tags**: Lane=FACT_FIRST | Level=0 | Impact=N/A
 - **WHY NOW**: Harvested fact from MK_News
 - **Evidence**: 0 references
