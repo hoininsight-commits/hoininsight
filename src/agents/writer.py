@@ -37,7 +37,6 @@ CONTENT_TYPES = {
 
 
 class WriterAgent:
-
     def __init__(self):
         self.today = datetime.now().strftime("%Y%m%d")
         self.signal_dir = Path(f"data/signals/{self.today}")
@@ -45,6 +44,39 @@ class WriterAgent:
         self.output_dir = Path(f"data/scripts/{self.today}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.gemini = GeminiClient()
+        self.raw_dir = Path(f"data/raw/{self.today}")
+
+    def load_raw_data(self) -> dict:
+        """오늘의 원천 데이터 로드 및 요약 (프롬프트 비대화 방지)"""
+        raw_data = {"market_summary": "", "cot_summary": "", "consensus_summary": ""}
+        
+        m_path = self.raw_dir / "market.json"
+        c_path = self.raw_dir / "cot.json"
+        cs_path = self.raw_dir / "consensus.json"
+
+        if m_path.exists():
+            m = json.loads(m_path.read_text())
+            stats = m.get("data", {}).get("multi_period_stats", {})
+            summary = []
+            for k, v in stats.items():
+                summary.append(f"{k.upper()}: Z={v.get('z_score_20d')}, 5d_chg={v.get('chg_5d')}%")
+            raw_data["market_summary"] = "\n".join(summary)
+
+        if c_path.exists():
+            c = json.loads(c_path.read_text())
+            summary = []
+            for asset, pos in c.get("positions", {}).items():
+                summary.append(f"COT {asset}: {pos.get('direction')} ({pos.get('net_change', 0):+,} contracts)")
+            raw_data["cot_summary"] = "\n".join(summary)
+
+        if cs_path.exists():
+            cs = json.loads(cs_path.read_text())
+            summary = []
+            for ev in cs.get("major_surprises", []) or []:
+                summary.append(f"Event: {ev.get('event')}, Surprise: {ev.get('surprise_pct')}%")
+            raw_data["consensus_summary"] = "\n".join(summary)
+            
+        return raw_data
 
     def load_signal(self) -> dict:
         p = self.signal_dir / "today_signal.json"
@@ -116,9 +148,17 @@ class WriterAgent:
 너는 경제사냥꾼 유튜브 채널의 메인 작가다.
 아래 분석 데이터를 기반으로 경제사냥꾼의 '7단계 스토리 빌드업'을 완벽히 재현한 스크립트를 작성해라.
 
-[집필 가이드라인]
-skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
-핵심: 반말 구어체, WHY NOW 중심, 물리적 병목 우선, 7단계 구조
+[절대 금지]
+- 제공된 [오늘의 분석 데이터] 및 [원본 통계 데이터]에 없는 수치, 사실, 현상을 창작하거나 추론하여 삽입하는 것을 엄격히 금지한다.
+- 데이터로 설명되지 않는 내용은 반드시 "~로 해석될 수 있다", "~가능성이 있다" 등 추론임을 명시하는 표현을 사용하며, 이를 사실인 것처럼 단정 짓지 마라.
+- '물리적 병목' 섹션은 실제 데이터(뉴스, DART, 공시 등)에 관련 내용이 있을 때만 언급하며, 없을 경우 데이터에 기반한 구조적 원인으로 대체한다.
+
+[사용 가능한 데이터 범위]
+- COT: 포지션 수치, 변화율, 방향 (Gold, S&P500 등)
+- Market: z-score, 변화율, 현재가, Fear & Greed Index
+- Consensus: 서프라이즈/쇼크 수치, 지표 발표 결과
+- FRED/ECOS: 금리, 지표값
+- Sentiment: 뉴스 헤드라인 내용
 
 [오늘의 분석 데이터]
 토픽: {signal.get("topic", "")}
@@ -130,10 +170,13 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
 관련 종목: {stocks_text}
 리스크: {risk_factors}
 
+[원본 통계 데이터 요약 (Evidence)]
+{json.dumps(self.load_raw_data(), ensure_ascii=False, indent=2)}
+
 [출력 조건]
 - 반드시 7단계 구조(Hook~Risk)를 명확히 구분하여 작성하되, 자연스러운 흐름을 유지할 것.
 - 인공지능이 쓴 느낌이 나면 탈락이다. 진짜 사냥꾼이 옆에서 이야기해 주는 느낌을 살려라.
-- 'WHY NOW' 부분에 가장 많은 공을 들여야 한다.
+- 'WHY NOW' 부분에 가장 많은 공을 들여야 한다. 실제 데이터의 수치를 최소 2회 이상 언급하며 신뢰도를 높여라.
 - 제목 3개와 썸네일 문구(10자 이내)를 마지막에 추가해라.
 
 출력 형식:
@@ -158,22 +201,34 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
 
         prompt = f"""
 너는 경제사냥꾼 유튜브 채널의 쇼츠 스크립트 작가다.
-아래 내용으로 1분짜리 쇼츠 스크립트를 작성해라.
+아래 분석 데이터와 원본 데이터를 기반으로 60초 분량(약 400~600자)의 '7단계 압축 스크립트'를 작성해라.
 
-[스타일 규칙]
-skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
-핵심: 반말 구어체, WHY NOW 중심, 물리적 병목 우선, 7단계 구조
+[절대 규칙]
+- 롱폼과 마찬가지로 수집된 데이터에 없는 사실 창작을 엄격히 금지한다.
+- 아래 7단계를 반드시 포함하며, 단계별 구분 기호(예: 1. Hook)를 본문에 명시하지 말고 자연스럽게 연결해라.
+
+[쇼츠 7단계 압축 구조]
+1. Hook: 시장의 모순을 찌르는 강력한 한 문장 (10초)
+2. Expectation vs Reality: 대중의 기대와 실제 데이터의 충돌 (10초)
+3. Mechanism: 이 현상을 일으킨 핵심 구조적 원인 (5초)
+4. WHY NOW: 왜 하필 '오늘' 이 문제가 터졌는가 (실제 데이터 수치 포함, 10초)
+5. Implication: 이로 인해 스마트머니는 어디로 이동하는가 (10초)
+6. Mentionables: 우리가 주목해야 할 연결 종목이나 섹터 (10초)
+7. Risk: 이 시나리오가 틀릴 수 있는 반대 변수 한 문장 (5초)
 
 [토픽]
 {signal.get("topic", "")}
 
-[핵심 인과관계]
-{level2}
+[분석 데이터]
+{json.dumps(analysis, ensure_ascii=False)}
+
+[원본 통계 데이터 요약 (Evidence)]
+{json.dumps(self.load_raw_data(), ensure_ascii=False)}
 
 [출력 조건]
-- 분량: 1~2분 (400자 내외)
-- 구조: 충격 팩트 오프닝 → 핵심 이유 2가지 → 한 줄 결론
-- 경제사냥꾼 말투 그대로
+- 분량: 1분 이내 (400~600자 내외)
+- 실제 데이터 수치를 최소 1개 이상 반드시 포함할 것.
+- 경제사냥꾼의 거칠고 확신에 찬 말길(반말)을 그대로 유지해라.
 
 출력 형식:
 [쇼츠 스크립트]
@@ -189,6 +244,16 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
         long_path = self.output_dir / "today_script_long.md"
         short_path = self.output_dir / "today_script_short.md"
 
+        # 데이터 근거 추출 (v3.0 교정)
+        summary = self.load_raw_data()
+        evidence_lines = []
+        if summary["market_summary"]:
+            evidence_lines.extend(summary["market_summary"].split("\n")[:3])
+        if summary["cot_summary"]:
+            evidence_lines.extend(summary["cot_summary"].split("\n")[:2])
+
+        evidence_block = "[사용된 데이터 근거]\n" + "\n".join(evidence_lines) + "\n"
+
         header = f"""# HOIN Insight 스크립트
 날짜: {self.today}
 토픽: {signal.get("topic", "")}
@@ -196,6 +261,7 @@ skills/economy-hunter-dna/SKILL.md의 원칙을 따른다.
 유형: {signal.get("content_type", "")}
 생성: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
+{evidence_block}
 ---
 
 """
