@@ -29,43 +29,60 @@ class AnalystAgent:
                 raw[name] = json.loads(p.read_text())
         return raw
 
-    def _filter_level2_chain(self, level2_chain: list, market_data: dict) -> list:
-        """level2_chain 항목에서 데이터 근거 없는 서술을 필터링 (Task 1)"""
-        if not level2_chain:
-            return level2_chain
+    def _filter_text(self, text: str, market_data: dict) -> str:
+        """텍스트 필드에서 데이터 근거 없는 서술을 필터링 (Task 5-HOTFIX)"""
+        if not text:
+            return text
 
         kospi_foreign_net = market_data.get("kospi_foreign_net", None)
-        # -0.0 == 0.0 is True in Python, so abs() 비교로 처리
         foreign_condition = (
             kospi_foreign_net is None
             or abs(float(kospi_foreign_net)) == 0.0
         )
 
-        LEVEL2_FORBIDDEN_CONDITIONS = [
+        # 금지어 패턴 및 대체어 (Task 1 & 5)
+        forbidden_rules = [
             {
                 "active": foreign_condition,
-                "forbidden_keywords": ["외국인", "외인", "foreign", "자금 유입 가속"],
+                "keywords": ["외국인", "외인", "foreign", "자금 유입 가속"],
+                "replacement": "기관 수급 중심의"
             },
             {
-                "active": True,  # 개인 수급 데이터 없음 — 항상 적용
-                "forbidden_keywords": ["개인투자자", "FOMO", "포모", "개미", "모멘텀 자금", "군중"],
+                "active": True,
+                "keywords": ["개인투자자", "FOMO", "포모", "개미", "모멘텀 자금", "군중"],
+                "replacement": "수급"
             },
+            {
+                "active": True,
+                "keywords": ["보험성", "보험용", "보험을", "보험이", "보험 가"],
+                "replacement": "리스크 관리 목적의"
+            },
+            {
+                "active": True,
+                "keywords": ["완벽한 골디락스", "완벽한 타이밍", "완벽한 상황"],
+                "replacement": "우호적인 매크로 환경"
+            }
         ]
 
+        import re
+        for rule in forbidden_rules:
+            if rule["active"]:
+                for kw in rule["keywords"]:
+                    if kw in text:
+                        text = text.replace(kw, rule["replacement"])
+        return text
+
+    def _filter_level2_chain(self, level2_chain: list, market_data: dict) -> list:
+        """level2_chain 항목 필터링 (Task 1)"""
+        if not level2_chain:
+            return level2_chain
+        
         filtered = []
         for item in level2_chain:
-            should_filter = False
-            for rule in LEVEL2_FORBIDDEN_CONDITIONS:
-                if rule["active"]:
-                    for keyword in rule["forbidden_keywords"]:
-                        if keyword.lower() in item.lower():
-                            print(f"  ⚠️ level2_chain 필터: '{keyword}' → 제거: {item[:50]}")
-                            should_filter = True
-                            break
-                if should_filter:
-                    break
-            if not should_filter:
-                filtered.append(item)
+            filtered_item = self._filter_text(item, market_data)
+            # 필터링 후 내용이 너무 짧아지거나 변화가 크면 제거 고려 가능하나 일단 유지
+            if filtered_item:
+                filtered.append(filtered_item)
         return filtered
 
     def load_existing_analysis(self):
@@ -155,17 +172,26 @@ STEP 4 — 결과 생성:
 """
         result = self.gemini.call_json(prompt, max_tokens=1500)
 
-        # Gemini 응답 파싱 실패 방어 ({"date":""} 등 빈 응답 처리, Task 5)
+        # Gemini 응답 파싱 실패 방어 (Task 5)
         if not result or not result.get("topic"):
             print("  ⚠️ Gemini 응답 파싱 실패 — 기존 today_analysis.json 유지")
             existing = self.load_existing_analysis()
             if existing:
                 print(f"  → 기존 분석 파일 사용: topic={existing.get('topic', '')[:40]}")
                 return existing
-            return result
+            # 기존 파일도 없으면 빈 결과 반환 (이후 단계에서 실패 처리됨)
+            return {}
 
-        # level2_chain 필터링 (데이터 근거 없는 서술 제거, Task 1)
+        # 모든 텍스트 필드 정밀 필터링 (Task 5-HOTFIX)
         market_data = raw_data.get("market", {}).get("data", {})
+        result["why_now"] = self._filter_text(result.get("why_now", ""), market_data)
+        
+        ev_reality = result.get("expectation_vs_reality", {})
+        if ev_reality:
+            ev_reality["expectation"] = self._filter_text(ev_reality.get("expectation", ""), market_data)
+            ev_reality["reality"] = self._filter_text(ev_reality.get("reality", ""), market_data)
+            ev_reality["conflict"] = self._filter_text(ev_reality.get("conflict", ""), market_data)
+
         result["level2_chain"] = self._filter_level2_chain(
             result.get("level2_chain", []), market_data
         )

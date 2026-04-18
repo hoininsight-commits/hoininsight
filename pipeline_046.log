@@ -1,0 +1,161 @@
+/Users/taehunlim/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: 
+    You are using a Python version 3.9 past its end of life. Google will update
+    google-auth with critical bug fixes on a best-effort basis, but not
+    with any other fixes or features. Please upgrade your Python version,
+    and then update google-auth.
+    
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/taehunlim/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/taehunlim/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: 
+    You are using a Python version 3.9 past its end of life. Google will update
+    google-auth with critical bug fixes on a best-effort basis, but not
+    with any other fixes or features. Please upgrade your Python version,
+    and then update google-auth.
+    
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+==================================================
+HOIN Insight v3.0 파이프라인 시작
+실행 시각: 2026-04-18 19:31:22
+==================================================
+
+
+🚀 AGENT-01 COLLECTOR v3.0 시작 [20260418]
+🚀 CollectorRunner 시작 — 병렬 수집
+[MARKET] 수집 시작...
+[MACRO] 수집 시작...
+[SENTIMENT] 수집 시작...
+[DART] 수집 시작...
+📅 컨센서스 레이어 수집 시작...
+📊 COT Report 수집 시작...
+[PUTCALL] 수집 시작...
+📈 시장 데이터 수집 및 90일 히스토리 분석 중...
+📊 FRED 데이터 수집 중...
+📋 DART 뉴스 기반 정밀 분석 중... (관심사: [])
+📰 글로벌 뉴스 데이터 수집 중...
+Selected: disaggregated_fut
+  fed_rate: 3.64
+[PUTCALL] ⚠️ API 접근 제한 (Status: 403). 백업 데이터 활용 시도.
+[PUTCALL] ✅ 완료 (Signal: NEUTRAL, Z: 0.0)
+  ✅ PUTCALL 완료
+Downloaded single year data from: 2026
+Stored the file f_year.txt in the working directory.
+  ✅ Disaggregated 수집 완료
+Selected: traders_in_financial_futures_fut
+  KOSPI (^KS11): 6191.92
+  ✅ consensus.json 저장 완료 (1개 이벤트)
+  ✅ CONSENSUS 완료
+Downloaded single year data from: 2026
+Stored the file FinFutYY.txt in the working directory.
+  ✅ TFF 수집 완료
+  ✅ cot.json 저장 완료 (4개 종목)
+  ✅ COT 완료
+  gold (GC=F): 4857.6
+  dxy (DX-Y.NYB): 98.1
+  sp500 (^GSPC): 7126.06
+  nasdaq (^IXIC): 24468.48
+  wti (CL=F): 83.85 (-11.45% )
+  us2y: 3.78
+  총 뉴스 90개, 권위자 관련 4개 포착
+✅ sentiment.json 저장 완료: data/raw/20260418/sentiment.json
+[SENTIMENT] ✅ 완료
+  ✅ SENTIMENT 완료
+  === 데이터 유효성 검증 ===
+  ✅ kospi: 6191.92
+  ✅ gold: 4857.6
+  ✅ dxy: 98.1
+  ✅ sp500: 7126.06
+  ✅ nasdaq: 24468.48
+  ✅ vix: 17.48
+  ✅ wti_oil: 83.85
+  ✅ usd_krw: 1465.68
+  Fear&Greed: 26.0 (실제)
+  stats usd_krw: z=-1.66, chg5d=-1.11%
+  us10y_fred: 4.32
+  stats gold: z=1.39, chg5d=2.01%
+  stats wti_oil: z=-1.81, chg5d=-13.17%
+  stats vix: z=-1.43, chg5d=-9.1%
+  stats us10y: z=-1.68, chg5d=-1.64%
+  stats dxy: z=-1.51, chg5d=-0.56%
+  spread_10y2y: 0.55
+  stats sp500: z=1.96, chg5d=4.54%
+  stats kospi: z=1.75, chg5d=5.68%
+✅ market.json (히스토리+통계 포함) 저장 완료: data/raw/20260418/market.json
+[MARKET] ✅ 완료
+  ✅ MARKET 완료
+  sofr: 3.67
+  m2_us: 22667.3
+  mmf_balance: 1053.7
+  ig_spread: 0.81
+  hy_spread: 2.86
+  financial_stress: -0.6475
+  unemployment: 4.3
+  nfp: 158637.0
+  cpi_us: 330.293
+  pce_core: 128.859
+✅ fred.json 저장 완료: data/raw/20260418/fred.json
+🏦 ECOS 데이터 수집 중...
+  ✅ kr_base_rate: 2.5 (최신 데이터 날짜: 202603)
+  ✅ kr_cpi: 118.8 (최신 데이터 날짜: 202603)
+  ✅ kr_m2: 4113983.8 (최신 데이터 날짜: 202602)
+  ✅ kr_unemployment: 2.7 (최신 데이터 날짜: 202603)
+  ✅ kr_export: 67309506.0 (최신 데이터 날짜: 202602)
+  ✅ kr_import: 51933659.0 (최신 데이터 날짜: 202602)
+✅ ecos.json 저장 완료: data/raw/20260418/ecos.json
+[MACRO] ✅ 완료
+  ✅ MACRO 완료
+✅ dart.json 저장 완료 (공시 109건 캡처)
+[DART] ✅ 완료
+  ✅ DART 완료
+
+✅ CollectorRunner 완료 — 26.6초
+   성공: 7/7
+✅ AGENT-01 COLLECTOR 완료
+
+🔍 AGENT-03 DETECTOR v7.0 시작 [20260418]
+  ✅ market.json 로드
+  ✅ sentiment.json 로드
+  ✅ fred.json 로드
+  ✅ ecos.json 로드
+  ✅ dart.json 로드
+  ✅ consensus.json 로드
+  ✅ cot.json 로드
+  🧠 AI 이상징후 탐지 중... (Gemini 응답 대기, 최대 30초)
+  ⚠️ JSON 파싱 전부 실패. 응답 길이: 130
+  응답 마지막 100자: epSeek 'AI 폭락' 뉴스 내러티브와 실제 시장 신고가 및 COT 포지션의 극심한 괴리",
+    "anomaly_type": "NEWS_MISMATCH",
+    "why_
+  🔄 COT 스마트머니 Fallback 적용: Gold
+
+  ✅ 최종 선정: 스마트머니 Gold STRONG 포착
+     강도: 8.0 | 유형: 쇼츠
+✅ AGENT-03 DETECTOR 완료
+
+🧠 AGENT-04 ANALYST 시작 [20260418]
+  분석 대상: 스마트머니 Gold STRONG 포착
+  Gemini API 레벨2 분석 중...
+  ⚠️ JSON 파싱 전부 실패. 응답 길이: 119
+  응답 마지막 100자: 18",
+  "topic": "스마트머니 Gold STRONG 포착",
+  "market_state": {
+    "risk_appetite": "상승",
+    "hedging_
+  ❌ AGENT-04 분석 실패 — WRITER 실행 불가
+  원인: API 쿼터 초과 또는 응답 오류
+✅ AGENT-04 ANALYST 완료
+
+✍️ AGENT-05 WRITER 시작 [20260418]
+  토픽: 스마트머니 Gold STRONG 포착
+  롱폼 스크립트 생성 중...
+  쇼츠 스크립트 생성 중...
+  롱폼 저장: data/scripts/20260418/today_script_long.md
+  쇼츠 저장: data/scripts/20260418/today_script_short.md
+✅ AGENT-05 완료
+
+✅ AGENT-05 WRITER 완료
+
+🔍 AGENT-05.5 FACT_CHECKER 시작 [20260418]
+  ❌ 팩트체크 실패: 11건의 불일치 발견
+[Telegram] Message sent successfully
+🛑 AGENT-05.5 팩트체크 실패. 퍼블리싱을 중단합니다.
