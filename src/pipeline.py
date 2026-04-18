@@ -20,15 +20,6 @@ def run_pipeline():
         print(f"❌ AGENT-01 실패: {e}")
         sys.exit(1)
 
-    # AGENT-02: LEARNER (미구현 시 소프트-패일)
-    try:
-        from src.agents.learner import LearnerAgent
-        agent02 = LearnerAgent()
-        results["learner"] = agent02.run()
-        print("✅ AGENT-02 LEARNER 완료")
-    except Exception as e:
-        print(f"⚠️ AGENT-02 실패 (계속 진행): {e}")
-
     # AGENT-03: DETECTOR
     try:
         from src.agents.detector import DetectorAgent

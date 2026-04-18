@@ -1,0 +1,175 @@
+name: daily_pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 21 * * *" # 06:00 KST
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+env:
+  TZ: Asia/Seoul
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure Docs Structure
+        run: |
+          mkdir -p docs/data
+          mkdir -p docs/ui
+          touch docs/.nojekyll
+          ls -la docs/
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+                            
+      - name: Production Sanity Check (IS-54)
+        run: |
+          python -m src.ops.production_sanity_check
+
+      - name: Run Unit Tests (IS-57 to IS-62)
+        run: |
+          echo "[PIPELINE] Running Verification Tests..."
+          python -m tests.verify_is57_capital_rotation
+          python -m tests.verify_is59_corporate_action
+          python -m tests.verify_is60_bottleneck_rank
+          python -m tests.verify_is61_why_now
+          python -m tests.verify_is62_script_lock
+          echo "[PIPELINE] All Verification Tests Passed."
+
+      - name: Set AS_OF_DATE
+        run: |
+          echo "AS_OF_DATE=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: "A1: Data Processing Agent (Collect & Normalize)"
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+        run: |
+          echo "[AGENT] Running: src.ops.agents.data_agent"
+          python -m src.ops.agents.data_agent --emit-runlog
+          echo "[PIPELINE] A1: Data collection & normalization completed"
+
+      - name: "A2: Signal Discovery Agent (Anomaly -> Topics)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+        run: |
+          echo "[AGENT] Running: src.ops.agents.signal_agent"
+          python -m src.ops.agents.signal_agent --date "${AS_OF_DATE}" --emit-runlog
+          echo "[PIPELINE] A2: Signal discovery completed"
+
+      - name: "A3-B: Radar Analyzer Agent (RRG Theme Radar)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "[AGENT] Running: src.ops.rrg_pipeline"
+          python -m src.ops.rrg_pipeline
+          echo "[PIPELINE] A3-B: Anticipatory Radar updated"
+
+      - name: Notify Telegram (Daily Summary)
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python -m src.legacy.reporting.telegram_daily_summary
+
+      - name: Upload Daily Brief Artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-reports
+          path: data/reports/
+
+      - name: Verify Phase 25 Meta Regime
+        run: |
+          YMD=$(TZ='Asia/Seoul' date +"%Y/%m/%d")
+          REPORT="data/reports/$YMD/daily_brief.md"
+          META="data/meta_topics/$YMD/meta_topics.json"
+          echo "[VERIFY] Phase 25 Meta Regime Check"
+          if [ ! -f "$REPORT" ]; then exit 1; fi
+          if [ -f "$META" ] && [ "$(jq length $META)" -gt 0 ]; then
+            if grep -q "Regime:" "$REPORT"; then echo "[VERIFY][OK]"; else exit 1; fi
+          fi
+
+      - name: "A3: Narrative Intelligence Agent (Scoring & Stress)"
+        run: |
+          echo "[AGENT] Running: src.ops.agents.narrative_agent"
+          python -m src.ops.agents.narrative_agent --emit-runlog
+
+      - name: "A4: Decision Surface Agent (Approval & Card)"
+        run: |
+          echo "[AGENT] Running: src.ops.agents.decision_agent"
+          python -m src.ops.agents.decision_agent --emit-runlog
+
+      - name: "A5: Video Intelligence Agent (Video Pool)"
+        run: |
+          echo "[AGENT] Running: src.ops.agents.video_agent"
+          python -m src.ops.agents.video_agent --emit-runlog
+
+      - name: "A6: SSOT Publishing Agent (Asset Delivery)"
+        run: |
+          find docs/data -mindepth 1 -maxdepth 1 ! -name 'decision' ! -name 'ui' -exec rm -rf {} + 2>/dev/null || true
+          mkdir -p docs/data/decision
+          mkdir -p docs/exports
+          mkdir -p docs/issuesignal
+          cp -r data/dashboard/* docs/data/ 2>/dev/null || true
+          cp -r data/dashboard/issuesignal/* docs/issuesignal/ 2>/dev/null || true
+          cp -r data/reports docs/data/ 2>/dev/null || true
+          python -m src.ops.agents.publish_agent --emit-runlog
+          echo "{\"commit\": \"$GITHUB_SHA\", \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"}" > docs/data/build_meta.json
+
+      - name: Commit Intelligence Outputs
+        if: success()
+        run: |
+          git config user.name "hoin-bot"
+          git config user.email "hoin-bot@users.noreply.github.com"
+          cp -r docs /tmp/docs_bk || true
+          cp -r data /tmp/data_bk || true
+          git fetch origin main
+          git reset --hard origin/main
+          rm -rf docs data
+          cp -r /tmp/docs_bk docs || true
+          cp -r /tmp/data_bk data || true
+          git add docs/ data/ || true
+          if [ -n "$(git status --porcelain docs/ data/)" ]; then
+            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
+            git push origin main
+          fi
+
+      - name: Upload Pages Artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
+    needs: run
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
