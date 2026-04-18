@@ -1,7 +1,0 @@
-# Proposal Review Queue
-Generated at: 2026-03-09T21:40:05.403892
-
-| Date | Video ID | Status | Actions |
-|---|---|---|---|
-| 2026/03/05 | NouyFRgd23g | **PENDING** | - |
-| 2026/03/05 | cKaX-r6RY9Y | **PENDING** | - |
