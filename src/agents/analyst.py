@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
-from src.core.sector_map import get_related_sectors, get_stocks_by_sector
+from src.core.sector_map import get_related_sectors, get_stocks_by_sector, get_reason_template
 
 
 class AnalystAgent:
@@ -28,6 +28,57 @@ class AnalystAgent:
             if p.exists():
                 raw[name] = json.loads(p.read_text())
         return raw
+
+    def _filter_level2_chain(self, level2_chain: list, market_data: dict) -> list:
+        """level2_chain 항목에서 데이터 근거 없는 서술을 필터링 (Task 1)"""
+        if not level2_chain:
+            return level2_chain
+
+        kospi_foreign_net = market_data.get("kospi_foreign_net", None)
+        # -0.0 == 0.0 is True in Python, so abs() 비교로 처리
+        foreign_condition = (
+            kospi_foreign_net is None
+            or abs(float(kospi_foreign_net)) == 0.0
+        )
+
+        LEVEL2_FORBIDDEN_CONDITIONS = [
+            {
+                "active": foreign_condition,
+                "forbidden_keywords": ["외국인", "외인", "foreign", "자금 유입 가속"],
+            },
+            {
+                "active": True,  # 개인 수급 데이터 없음 — 항상 적용
+                "forbidden_keywords": ["개인투자자", "FOMO", "포모", "개미", "모멘텀 자금", "군중"],
+            },
+        ]
+
+        filtered = []
+        for item in level2_chain:
+            should_filter = False
+            for rule in LEVEL2_FORBIDDEN_CONDITIONS:
+                if rule["active"]:
+                    for keyword in rule["forbidden_keywords"]:
+                        if keyword.lower() in item.lower():
+                            print(f"  ⚠️ level2_chain 필터: '{keyword}' → 제거: {item[:50]}")
+                            should_filter = True
+                            break
+                if should_filter:
+                    break
+            if not should_filter:
+                filtered.append(item)
+        return filtered
+
+    def load_existing_analysis(self):
+        """기존 today_analysis.json 로드 (Gemini 파싱 실패 시 폴백, Task 5)"""
+        p = self.analysis_dir / "today_analysis.json"
+        if p.exists():
+            try:
+                data = json.loads(p.read_text())
+                if data and data.get("topic"):
+                    return data
+            except Exception:
+                pass
+        return None
 
     def analyze(self, signal, raw_data):
         """Gemini API로 레벨2 분석 (v7.0: STATE 판단 레이어 추가)"""
@@ -104,12 +155,26 @@ STEP 4 — 결과 생성:
 """
         result = self.gemini.call_json(prompt, max_tokens=1500)
 
-        # level2_chain을 today_signal.json에도 업데이트
-        if result:
-            signal["level2_chain"] = result.get("level2_chain", [])
-            signal["market_state"] = result.get("market_state", {})
-            signal_path = self.signal_dir / "today_signal.json"
-            signal_path.write_text(json.dumps(signal, ensure_ascii=False, indent=2))
+        # Gemini 응답 파싱 실패 방어 ({"date":""} 등 빈 응답 처리, Task 5)
+        if not result or not result.get("topic"):
+            print("  ⚠️ Gemini 응답 파싱 실패 — 기존 today_analysis.json 유지")
+            existing = self.load_existing_analysis()
+            if existing:
+                print(f"  → 기존 분석 파일 사용: topic={existing.get('topic', '')[:40]}")
+                return existing
+            return result
+
+        # level2_chain 필터링 (데이터 근거 없는 서술 제거, Task 1)
+        market_data = raw_data.get("market", {}).get("data", {})
+        result["level2_chain"] = self._filter_level2_chain(
+            result.get("level2_chain", []), market_data
+        )
+
+        # today_signal.json 업데이트
+        signal["level2_chain"] = result["level2_chain"]
+        signal["market_state"] = result.get("market_state", {})
+        signal_path = self.signal_dir / "today_signal.json"
+        signal_path.write_text(json.dumps(signal, ensure_ascii=False, indent=2))
 
         return result
 
@@ -133,16 +198,73 @@ STEP 4 — 결과 생성:
         keywords = signal.get("related_keywords", []) or signal.get("key_indicators", [])
         related_sectors = get_related_sectors(keywords)
 
+        # reason 생성용 컨텍스트 추출
+        market_state = analysis.get("market_state", {}) or signal.get("market_state", {}) or {}
+        direction = "상승" if market_state.get("risk_appetite") == "상승" else "하락" if market_state.get("risk_appetite") == "하락" else "혼조"
+        direction_inv = "하락" if direction == "상승" else "상승" if direction == "하락" else "혼조"
+        level2_chain = analysis.get("level2_chain") or signal.get("level2_chain") or []
+
+        # 신호 유형 판별 (z_score / cot / consensus / default)
+        topic_lower = signal.get("topic", "").lower()
+        why_anomalous = signal.get("why_anomalous", "")
+        if "cot" in topic_lower or "포지션" in topic_lower:
+            signal_type = "cot"
+        elif "컨센서스" in topic_lower or "consensus" in topic_lower:
+            signal_type = "consensus"
+        elif "z-score" in topic_lower or "z_score" in topic_lower or "z-score" in why_anomalous.lower() or "z_score" in why_anomalous.lower():
+            signal_type = "z_score"
+        else:
+            signal_type = "default"
+
+        # z_score 값 추출: signal.why_anomalous 또는 topic에서 파싱
+        import re as _re
+        z_score_val = "N/A"
+        chg_5d_val = "N/A"
+        _z_match = _re.search(r"Z-score[=\s]*([\d.]+)", why_anomalous, _re.IGNORECASE) or \
+                   _re.search(r"Z-score[=\s]*([\d.]+)", signal.get("topic", ""), _re.IGNORECASE)
+        if _z_match:
+            z_score_val = _z_match.group(1)
+
+        # 시장 통계에서 chg_5d 추출 (raw market data 활용)
+        raw_data = self.load_raw()
+        market_stats = raw_data.get("market", {}).get("data", {}).get("multi_period_stats", {})
+        topic_key = topic_lower.split(" ")[0]  # "sp500", "gold", "kospi" 등
+        for key, stats in market_stats.items():
+            if topic_key in key.lower():
+                chg_5d_val = stats.get("chg_5d", "N/A")
+                break
+
+        cot_direction = "숏" if direction == "하락" else "롱"
+
         stocks = []
         for sector in related_sectors[:3]:
             sector_stocks = get_stocks_by_sector(sector)
+            template = get_reason_template(sector, signal_type)
+
+            # 2단계 연결 사슬 reason 생성
+            try:
+                reason = template.format(
+                    z_score=z_score_val,
+                    chg_5d=chg_5d_val,
+                    direction=direction,
+                    direction_inv=direction_inv,
+                    cot_direction=cot_direction,
+                    sector=sector
+                )
+            except KeyError:
+                reason = f"{signal['topic']} {direction} → {sector} 섹터 영향 (연결 사슬 구성 불가)"
+
+            # 연결 사슬이 level2_chain에 있으면 첫 2단계 활용
+            if level2_chain and len(level2_chain) >= 2:
+                reason = f"{level2_chain[0]} → {level2_chain[1]} → {sector} 직접 영향"
+
             for s in sector_stocks[:2]:
                 stocks.append({
                     "ticker": s["ticker"],
                     "name": s["name"],
                     "sector": sector,
                     "impact": "수혜",
-                    "reason": f"{signal['topic']}에 따른 {sector} 섹터 영향",
+                    "reason": reason,
                     "impact_level": "HIGH" if signal["strength"] >= 8.0 else "MEDIUM",
                     "is_primary": True
                 })
@@ -173,8 +295,8 @@ JSON 배열만 출력 (마크다운 없이):
         }
 
     def save_results(self, analysis, stocks_data):
-        # 빈 데이터 저장 방지
-        if not analysis or analysis == {}:
+        # 빈 데이터 저장 방지 (topic 없는 경우도 포함, Task 5)
+        if not analysis or analysis == {} or not analysis.get("topic"):
             print("  ⚠️ 분석 결과 없음 — 저장 건너뜀")
             return False
 

@@ -6,6 +6,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
+from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
 
 
 # 경제사냥꾼 스크립트 생성 규칙
@@ -138,95 +139,174 @@ class WriterAgent:
 
         return analysis, stocks
 
-    def generate_longform(self, signal: dict, analysis: dict, stocks: dict) -> str:
-        """롱폼 스크립트 생성 (15~20분 분량)"""
-        print("  롱폼 스크립트 생성 중...")
+    def _load_kospi_foreign_net(self) -> str:
+        """market.json에서 kospi_foreign_net 로드"""
+        market_path = self.raw_dir / "market.json"
+        if market_path.exists():
+            try:
+                m = json.loads(market_path.read_text())
+                return str(m.get("data", {}).get("kospi_foreign_net", "0.0"))
+            except Exception:
+                pass
+        return "0.0"
 
-        stocks_text = json.dumps(
-            stocks.get("stocks", [])[:3], ensure_ascii=False
-        )
+    def generate_longform(self, signal: dict, analysis: dict, stocks: dict) -> str:
+        """롱폼 스크립트 생성 (15~20분 분량) — writer_prompt.py 연결됨"""
+        print("  롱폼 스크립트 생성 중... [writer_prompt.py WRITER_PROMPT_TEMPLATE 적용]")
+
+        raw_data = self.load_raw_data()
+        kospi_foreign_net = self._load_kospi_foreign_net()
         level2 = "\n".join(signal.get("level2_chain", []))
         market_state = analysis.get("market_state", {})
-        
+        stocks_text = json.dumps(stocks.get("stocks", [])[:3], ensure_ascii=False, indent=2)
+
+        # WRITER_PROMPT_TEMPLATE 채우기 (writer_prompt.py 규칙 전달)
+        base_rules = WRITER_PROMPT_TEMPLATE.format(
+            stocks_json=stocks_text,
+            cot_summary_detailed=raw_data.get("cot_summary", "COT 데이터 없음"),
+            kospi_foreign_net=kospi_foreign_net,
+            topic=signal.get("topic", ""),
+            analysis_json=json.dumps(analysis, ensure_ascii=False),
+            market_state_json=json.dumps(market_state, ensure_ascii=False),
+        )
+
         prompt = f"""
-너는 경제사냥꾼 유튜브 채널의 메인 작가다.
-아래 분석 데이터를 기반으로 경제사냥꾼의 '7단계 스토리 빌드업'을 완벽히 재현한 스크립트를 작성해라.
+{base_rules}
 
-[절대 금지]
-- 제공된 [오늘의 분석 데이터] 및 [원본 통계 데이터]에 없는 수치, 사실, 현상을 창작하거나 추론하여 삽입하는 것을 엄격히 금지한다.
-- 데이터로 설명되지 않는 내용은 반드시 "~로 해석될 수 있다", "~가능성이 있다" 등 추론임을 명시하는 표현을 사용하며, 이를 사실인 것처럼 단정 짓지 마라.
+---
+[추가 데이터 근거 (Evidence)]
+{raw_data.get("market_summary", "")}
 
-[시장 상태 판단 기반 서사 제약] (CRITICAL)
-- 현재 시장 상태: {json.dumps(market_state, ensure_ascii=False)}
-- **Risk Appetite: 상승**일 경우: "붕괴", "공포", "대탈출", "폭풍 전야" 등 공포를 조장하는 과격한 서사 절대 금지.
-- 대신 "낙관 속 불안", "헤지 강화", "리스크 관리 가동" 관점에서 서술해라.
-- COT 숏 포지션은 하락 확신이 아닌 "롱 포지션에 대한 보험(Hedge)" 가능성을 반드시 언급해라.
+[인과관계 체인 (level2_chain)]
+{level2}
 
-[종목 추천 절대 금지 조건]
-- dart.json(아래 dart_companies 리스트)에 포함되지 않은 종목은 절대 언급하지 않는다.
-- 유효한 종목 데이터가 전혀 없다면, "관련 섹터 ETF 흐름 주시"로 서술한다.
-
-[오늘의 분석 데이터]
-토픽: {signal.get("topic", "")}
+[추가 분석]
 강도: {signal.get("strength", 0)} / 10
 기대 vs 현실: {json.dumps(analysis.get("expectation_vs_reality", {}), ensure_ascii=False)}
-인과관계 체인: {level2}
 유사 사례: {json.dumps(analysis.get("historical_reference", {}), ensure_ascii=False)}
-관련 종목: {stocks_text}
 
-[원본 통계 데이터 요약 (Evidence)]
-{json.dumps(self.load_raw_data(), ensure_ascii=False, indent=2)}
+[절대 금지]
+- 위 데이터에 없는 수치·사실·현상을 창작 또는 추론하여 삽입 금지.
+- 데이터로 설명 불가한 내용은 "~로 해석될 수 있다", "~가능성이 있다" 등 추론임을 명시할 것.
 
-[출력 조건]
-- 반드시 7단계 구조(Hook~Risk)를 명확히 구분하여 작성할 것.
-- 제목 3개와 썸네일 문구(10자 이내)를 마지막에 추가해라.
-
-출력 형식:
-[대본 본문]
-(스크립트 내용)
-
-[제목 옵션]
-1.
-2.
-3.
-
-[썸네일 문구]
-(문구)
+[시장 상태 서사 제약] (CRITICAL)
+- Risk Appetite 상승 시: "붕괴/공포/대탈출/폭풍 전야" 서사 절대 금지.
+- 대신 "낙관 속 불안/헤지 강화/리스크 관리 가동"으로 서술.
+- COT 숏 포지션 = 하락 확신이 아닌 "롱 포지션 헤지" 가능성 병기 필수.
 """
-        return self.gemini.call(prompt, max_tokens=3000)
+        return self._censor_narrative(self.gemini.call(prompt, max_tokens=3000))
 
     def generate_shorts(self, signal: dict, analysis: dict) -> str:
         """쇼츠 스크립트 생성 (1~2분 분량)"""
         print("  쇼츠 스크립트 생성 중...")
 
         market_state = analysis.get("market_state", {})
+        raw_data = self.load_raw_data()
+
+        # 쇼츠용 분석 데이터 압축 (full JSON 대신 핵심만 전달 → truncation 방지)
+        shorts_analysis = {
+            "topic": signal.get("topic", ""),
+            "market_state": market_state,
+            "why_now": analysis.get("why_now", ""),
+            "level2_chain": signal.get("level2_chain", []),
+            "key_indicators": signal.get("key_indicators", []),
+        }
 
         prompt = f"""
 너는 경제사냥꾼 유튜브 채널의 쇼츠 스크립트 작가다.
-아래 분석 데이터와 원본 데이터를 기반으로 60초 분량(약 400~600자)의 '7단계 압축 스크립트'를 작성해라.
+아래 분석 데이터를 기반으로 60초 분량(약 400~600자)의 '5단계 압축 스크립트'를 완주해라.
 
-[절대 규칙]
-- 현재 시장 상태: {json.dumps(market_state, ensure_ascii=False)}
-- Risk Appetite 상승 시 "붕괴/대탈출" 표현 금지. "낙관 속 불안/헤지 대응" 위주로 서술.
-- 60초 분량(400~600자)을 유지하고 경제사냥꾼의 거친 반말 어조를 사용해라.
+[금지 표현 — 절대 사용 금지]
+- "역대급", "미친 듯이", "보험을 들", "'보험'", "FOMO성", "포모(FOMO)", "외국인 자금 유입"
+- "개인 자금", "개미들", "모멘텀 자금", "극단적인 과매수", "스마트 머니"
+- Risk Appetite 상승 시: "붕괴/대탈출/공포" 표현 금지
 
-[토픽]
-{signal.get("topic", "")}
+[시장 상태]
+{json.dumps(market_state, ensure_ascii=False)}
 
-[분석 데이터]
-{json.dumps(analysis, ensure_ascii=False)}
+[토픽 및 핵심 데이터]
+토픽: {signal.get("topic", "")}
+{json.dumps(shorts_analysis, ensure_ascii=False)}
 
-[원본 통계 데이터 요약 (Evidence)]
-{json.dumps(self.load_raw_data(), ensure_ascii=False)}
+[원본 통계 (Evidence)]
+{raw_data.get("market_summary", "")}
+{raw_data.get("cot_summary", "")}
 
-출력 형식:
+출력 형식 (반드시 5단계 모두 완주):
 [쇼츠 스크립트]
-(스크립트 본문)
+
+(1단계: 후킹)
+(내용)
+
+(2단계: 현상 분석)
+(내용)
+
+(3단계: 통계적 근거)
+(내용)
+
+(4단계: 기관의 움직임)
+(내용)
+
+(5단계: 결론 및 행동 지침)
+(내용)
 
 [제목]
 (제목 1개)
 """
-        return self.gemini.call(prompt, max_tokens=1500)
+        # max_tokens 2000으로 증가 (1500 → 2000, truncation 방지 Task 4)
+        return self._censor_narrative(self.gemini.call(prompt, max_tokens=2000))
+
+    def _censor_narrative(self, text: str) -> str:
+        """생성된 스크립트에서 금지 표현을 코드 레벨로 차단 (후처리 검열 레이어)"""
+        import re
+
+        # 단순 대체 규칙: (패턴, 대체문)
+        # 넓은 패턴을 먼저 배치 (의문문·따옴표·부정문 형태 모두 포함)
+        replacements = [
+            # 역대급
+            (r"역대급\s*['\"]?보험['\"]?", "Net 숏 포지션"),
+            (r"역대급\s*규모의?\s*숏\s*포지션", "숏 포지션"),
+            (r"역대급\s*규모의?", ""),
+            (r"역대급", ""),
+            # 미친/정면/완벽
+            (r"미친\s*듯이", "급격히"),
+            (r"정면\s*충돌", "충돌"),
+            (r"완벽한\s*(골디락스|상황|타이밍|조건)", r"\1"),
+            # 보험 — 의문문·따옴표·모든 활용형 포함 (확장, Task 3)
+            (r"['\"]?보험['\"]?\s*을\s*(들고\s*있는\s*걸까요[?？]?|들고\s*있다|가입했?다|든\s*이유|들기\s*시작했?다?|구매|확보)", "숏 포지션을 유지하고 있다"),
+            (r"['\"]?보험['\"]?\s*을\s*들", "숏 포지션을 유지"),
+            (r"['\"]?보험['\"]?\s*으로\s*(꽉꽉\s*)?채워", "숏 포지션으로 대응"),
+            (r"['\"]?보험['\"]?\s*을\s*가입", "숏 포지션 구축"),
+            # 극단적인 (과매수/과열/이탈 등, Task 3)
+            (r"극단적인\s*(과매수|과열|이탈|구간)", "통계적 상단 이탈"),
+            (r"극단적인\s*(숏|롱|포지션)", r"\1"),
+            # FOMO/포모 — 행위자 서술 형태 포함 (Task 3)
+            (r"포모\(FOMO\)[^\s]*?\s*(매수세|자금|심리)", "수급 유입"),
+            (r"FOMO\s*(제대로|성|형)", ""),
+            (r"포모\(FOMO\)", ""),
+            (r"FOMO성\s*매수세", "수급 유입"),
+            # 외국인 자금 유입 (kospi_foreign_net 조건 무관 일괄 차단, Task 3)
+            (r"외국인\s*자금\s*(유입|가속|증가)", ""),
+            (r"외국인\s*(순매수|자금\s*유입\s*가속화?)", ""),
+            # 기관 의도 해석 (Task 3)
+            (r"헤지\s*오버레이\s*전략을\s*가동", "숏 포지션 보유 중"),
+            (r"포트폴리오\s*헤지로\s*해석", "숏 포지션 보유 중"),
+            # 스마트머니/진짜고수
+            (r"진짜\s*고수", "기관"),
+            (r"스마트\s*머니들이\s*\S+", "포지션 변화가 관찰된다"),
+            (r"실체를\s*파헤쳐", "데이터를 분석해"),
+            # 강력한 방향성
+            (r"강력한\s*(하락\s*베팅|매수|매도|신호)", r"\1"),
+            # 개인 행위자
+            (r"개인\s*(자금|투자자들이|들이)\s*(매수|매도|몰려)", "수급 변화가"),
+            (r"모멘텀\s*자금\s*(매수세?|유입)", "수급 유입"),
+            (r"개미(들?이?)\s*(몰려|매수|매도)", "수급 변화가"),
+        ]
+
+        for pattern, repl in replacements:
+            text = re.sub(pattern, repl, text, flags=re.UNICODE)
+
+        return text
 
     def save_scripts(self, longform: str, shorts: str, signal: dict):
         """스크립트 파일 저장"""
