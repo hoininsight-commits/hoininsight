@@ -11,6 +11,7 @@ from src.agents.collectors.sentiment_agent import SentimentAgent
 from src.agents.collectors.dart_agent import DartAgent
 from src.agents.consensus_collector import ConsensusCollector
 from src.agents.cot_collector import COTCollector
+from src.agents.collectors.putcall_collector import PutCallCollector
 
 class CollectorRunner:
     """
@@ -34,15 +35,14 @@ class CollectorRunner:
             DartAgent(self.output_dir),
             ConsensusCollector(self.output_dir),
             COTCollector(self.output_dir),
+            PutCallCollector(self.output_dir),
         ]
 
         results = {}
         failed = []
 
         # ThreadPoolExecutor로 병렬 실행
-        # ConsensusCollector/COTCollector는 run() 메서드 사용
-        # 나머지는 run() 메서드 사용
-        with ThreadPoolExecutor(max_workers=6) as executor:
+        with ThreadPoolExecutor(max_workers=7) as executor:
             future_to_agent = {}
             for agent in agents:
                 # run() 메서드가 있으면 run(), 없으면 collect() 사용
