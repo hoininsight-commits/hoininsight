@@ -77,13 +77,16 @@ class FactCheckerAgent:
 
             # 전후 맥락 추출
             prefix = script[max(0, start-15):start].lower() # 15자로 단축 (정밀도 향상)
-            unit_match = re.search(r'^(%|bp|\$|배|포인트|원|계약|contracts|건|개|시|분|만)', script[end:])
+            unit_match = re.search(r'^(%|bp|\$|배|포인트|원|계약|contracts|건|개|시|분|만|천)', script[end:])
             unit = unit_match.group(1) if unit_match else ""
             suffix = script[end + len(unit):end + 15].lower()
             
-            # '만' 단위 처리 (예: 47만 -> 470000)
+            # 한국어 단위 처리 (예: 47만 -> 470000, 9천 -> 9000)
             if unit == "만":
                 value *= 10000
+                unit = ""
+            elif unit == "천":
+                value *= 1000
                 unit = ""
             
             # 시간/수량 단위 스킵
@@ -111,14 +114,14 @@ class FactCheckerAgent:
             if not found_key:
                 continue
 
-            # 유형 분류
+            # 유형 분류 (Z-score 최우선 — "상승/하락" 키워드보다 우선 적용)
             v_type = "UNKNOWN"
             context = (prefix + " " + unit + " " + suffix).strip()
-            
-            if "%" in unit or any(word in context for word in ["상승", "하락", "변화", "등락", "올랐", "떨어", "5일", "주간"]):
+
+            if any(word in context for word in ["z-score", "z점수", "표준편차"]):
+                v_type = "TYPE_3" # Z-score (최우선)
+            elif "%" in unit or any(word in context for word in ["상승", "하락", "변화", "등락", "올랐", "떨어", "5일", "주간"]):
                 v_type = "TYPE_2" # 변화율
-            elif any(word in context for word in ["z-score", "z점수", "표준편차"]):
-                v_type = "TYPE_3" # Z-score
             elif any(word in context for word in ["계약", "contracts", "포지션", "매수", "매도"]):
                 if unit not in ["원", "$"]:
                     v_type = "TYPE_4" # 계약수

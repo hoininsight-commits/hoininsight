@@ -242,11 +242,12 @@ class DetectorAgent:
                     "key_indicators": ["consensus", best['event']],
                     "source": "CONSENSUS_FALLBACK"
                 }
-            elif top_cot and top_cot.get("signal_label") in ["FLIP", "STRONG"]:
-                print(f"  🔄 COT 스마트머니 Fallback 적용: {top_cot['asset']}")
+            elif top_cot and top_cot.get("signal_label") == "FLIP":
+                # COT FLIP(포지션 전환)은 최우선 유지
+                print(f"  🔄 COT FLIP Fallback 적용: {top_cot['asset']}")
                 selected = {
                     "topic": f"스마트머니 {top_cot['asset']} {top_cot['signal_label']} 포착",
-                    "strength": 8.5 if top_cot["signal_label"] == "FLIP" else 8.0,
+                    "strength": 8.5,
                     "anomaly_type": "WHY_NOW",
                     "why_anomalous": top_cot.get("description"),
                     "why_now": "헤지펀드 포지션의 통계적 유의미한 급변 감지",
@@ -254,24 +255,53 @@ class DetectorAgent:
                     "source": "COT_FALLBACK"
                 }
             else:
-
-                # 2차: Z-score
+                # Z-score vs COT STRONG 비교 — Z-score 절대값이 더 크면 Z-score 우선
                 market_data = all_data.get("market", {}).get("data", {})
                 stats = market_data.get("multi_period_stats", {})
+                best_key, bz = None, 0.0
                 if stats:
-                    best_key = max(stats, key=lambda k: abs(stats[k].get("z_score_20d", 0)) if stats[k].get("z_score_20d") else 0)
-                    bz = stats[best_key].get("z_score_20d", 0)
-                    if abs(bz) > 2.0:
-                        print(f"  🔄 Z-score Fallback 적용: {best_key}")
-                        selected = {
-                            "topic": f"{best_key} 통계적 이탈 (Z-score {bz:.1f})",
-                            "strength": 7.5,
-                            "anomaly_type": "SPEED",
-                            "key_indicators": [best_key],
-                            "source": "ZSCORE_FALLBACK"
-                        }
-                    else: return None
-                else: return None
+                    best_key = max(stats, key=lambda k: abs(stats[k].get("z_score_20d", 0) or 0))
+                    bz = stats[best_key].get("z_score_20d", 0) or 0.0
+
+                has_zscore_extreme = abs(bz) >= 1.5
+                has_cot_strong = top_cot and top_cot.get("signal_label") == "STRONG"
+
+                if has_zscore_extreme and has_cot_strong:
+                    # 둘 다 존재 시 Z-score 절대값 우선 (더 극단적 이탈이 핵심 서사)
+                    print(f"  🔄 Z-score vs COT STRONG 비교: Z={bz:.2f}(|{abs(bz):.2f}|) 우선 선택")
+                    selected = {
+                        "topic": f"{best_key} 통계적 이탈 (Z-score {bz:.2f})",
+                        "strength": 8.0,
+                        "anomaly_type": "SPEED",
+                        "why_anomalous": f"{best_key} Z-score={bz:.2f}, 20일 평균 대비 {abs(bz):.1f}σ 이탈",
+                        "why_now": f"지정학·수급 복합 충격으로 {best_key} 20일 통계 경계 돌파",
+                        "key_indicators": [best_key],
+                        "source": "ZSCORE_FALLBACK"
+                    }
+                elif has_zscore_extreme:
+                    print(f"  🔄 Z-score Fallback 적용: {best_key} (Z={bz:.2f})")
+                    selected = {
+                        "topic": f"{best_key} 통계적 이탈 (Z-score {bz:.2f})",
+                        "strength": 8.0 if abs(bz) >= 1.8 else 7.5,
+                        "anomaly_type": "SPEED",
+                        "why_anomalous": f"{best_key} Z-score={bz:.2f}, 20일 평균 대비 {abs(bz):.1f}σ 이탈",
+                        "why_now": f"{best_key} 20일 통계 경계 돌파",
+                        "key_indicators": [best_key],
+                        "source": "ZSCORE_FALLBACK"
+                    }
+                elif has_cot_strong:
+                    print(f"  🔄 COT STRONG Fallback 적용: {top_cot['asset']}")
+                    selected = {
+                        "topic": f"스마트머니 {top_cot['asset']} {top_cot['signal_label']} 포착",
+                        "strength": 8.0,
+                        "anomaly_type": "WHY_NOW",
+                        "why_anomalous": top_cot.get("description"),
+                        "why_now": "헤지펀드 포지션의 통계적 유의미한 급변 감지",
+                        "key_indicators": ["cot", top_cot['asset']],
+                        "source": "COT_FALLBACK"
+                    }
+                else:
+                    return None
 
         selected["selected"] = True
         selected["content_type"] = "롱폼" if selected.get("strength", 0) >= 8.5 else "쇼츠"

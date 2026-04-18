@@ -1,5 +1,24 @@
 {
   "date": "20260418",
-  "topic_signal": "스마트머니 Gold STRONG 포착",
-  "stocks": []
+  "topic_signal": "sp500 통계적 이탈 (Z-score 1.96)",
+  "stocks": [
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "sector": "반도체",
+      "impact": "수혜",
+      "reason": "sp500 통계적 이탈 (Z-score 1.96)에 따른 반도체 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    },
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "sector": "반도체",
+      "impact": "수혜",
+      "reason": "sp500 통계적 이탈 (Z-score 1.96)에 따른 반도체 섹터 영향",
+      "impact_level": "HIGH",
+      "is_primary": true
+    }
+  ]
 }

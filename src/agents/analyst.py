@@ -130,7 +130,7 @@ STEP 4 — 결과 생성:
 
         print("  종목 매핑 중...")
 
-        keywords = signal.get("related_keywords", [])
+        keywords = signal.get("related_keywords", []) or signal.get("key_indicators", [])
         related_sectors = get_related_sectors(keywords)
 
         stocks = []
@@ -152,7 +152,7 @@ STEP 4 — 결과 생성:
             print("  섹터 맵 미매칭 — Claude 종목 추론 중...")
             prompt = f"""
 토픽: {signal['topic']}
-분석: {json.dumps(analysis.get('three_lens_analysis', {}), ensure_ascii=False)}
+분석: {json.dumps(analysis.get('level2_chain', analysis.get('why_now', '')), ensure_ascii=False)}
 
 위 상황에서 영향받는 한국 코스피/코스닥 상장 종목 3개를 골라라.
 실제 존재하는 종목만 사용해라.
