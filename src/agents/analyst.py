@@ -23,43 +23,72 @@ class AnalystAgent:
 
     def load_raw(self):
         raw = {}
-        for name in ["macro", "market", "sentiment"]:
+        for name in ["macro", "market", "sentiment", "cot"]:
             p = self.raw_dir / f"{name}.json"
             if p.exists():
                 raw[name] = json.loads(p.read_text())
         return raw
 
     def analyze(self, signal, raw_data):
-        """Gemini API로 레벨2 분석"""
+        """Gemini API로 레벨2 분석 (v7.0: STATE 판단 레이어 추가)"""
         print("  Gemini API 레벨2 분석 중...")
 
         market = raw_data.get("market", {}).get("data", {})
         macro = raw_data.get("macro", {}).get("data", {})
-        history = raw_data.get("history_90d", {}) 
+        cot = raw_data.get("cot", {}).get("positions", {})
+        stats = market.get("multi_period_stats", {})
+
+        # 데이터 요약 파싱 (프롬프트 전달용)
+        market_summary = "\n".join([f"- {k.upper()}: Z={v.get('z_score_20d')}, 5d_chg={v.get('chg_5d')}%" for k, v in stats.items()])
+        cot_summary = "\n".join([f"- {k}: {v.get('direction')} (Net: {v.get('net_change', 0):+,} contracts)" for k, v in cot.items()])
 
         prompt = f"""
 너는 경제사냥꾼 채널 수준의 거시경제 분석 전문가다.
-아래 신호를 분석해서 JSON만 출력해라. 마크다운 없이 순수 JSON만.
+아래 신호와 데이터를 분석해서 시장의 '상태(STATE)'를 정의하고 레벨 2 분석을 수행해라.
 
 [오늘의 신호]
 토픽: {signal['topic']}
 강도: {signal['strength']}
-탐지 유형: {signal.get('anomaly_type', 'N/A')}
-핵심 지표: {', '.join(signal.get('key_indicators', []))}
-현상 근거: {signal.get('why_anomalous', '')}
 
-[수집 데이터]
-환율: {market.get('usd_krw', 'N/A')}원
-KOSPI 등락: {market.get('kospi_1d_change', 'N/A')}%
-VIX: {market.get('vix', 'N/A')}
-WTI: ${market.get('wti_oil', 'N/A')}
-한국 기준금리: {macro.get('korea_base_rate', 'N/A')}%
-미국 기준금리: {macro.get('us_fed_rate', 'N/A')}%
+[수집 데이터 - 핵심 통계]
+{market_summary}
 
-[출력 JSON 구조 - 반드시 이 5개만 출력]
+[수집 데이터 - COT 수급]
+{cot_summary}
+
+---
+
+### [시장 상태 판단 가이드]
+
+STEP 1 — 신호 충돌 확인:
+- 가격(S&P500/KOSPI/VIX/Gold) 방향과 COT 수급 방향이 일치하는지 확인.
+- 가격은 상승인데 COT가 숏이면 '충돌'로 간주.
+
+STEP 2 — STATE 정의 (3가지 축):
+1. Risk Appetite: 상승 / 하락 / 혼조 (주가와 VIX 기준)
+2. Hedging Activity: 증가 / 감소 / 중립 (COT 포지션 변화 기준)
+3. Directional Conviction: 높음 / 낮음 (가격과 수급의 일치 여부)
+
+STEP 3 — STATE 기반 서사 제약:
+- Risk Appetite 상승 + Hedging Activity 증가 조합일 경우:
+  * "붕괴", "공포", "대탈출", "폭풍 전야" 서사 절대 금지.
+  * 대신 "낙관 속 불안", "헤지 강화", "리스크 관리 가동"으로 해석.
+- 하락 베팅(숏)은 반드시 "롱 포지션 헤지(보험)" 가능성을 병기할 것.
+- 가격 데이터를 COT보다 우선한다.
+
+STEP 4 — 결과 생성:
+아래 JSON 구조에 따라 분석 결과를 리턴해라.
+
+[출력 JSON 구조]
 {{
   "date": "{self.today}",
   "topic": "{signal['topic']}",
+  "market_state": {{
+    "risk_appetite": "상승/하락/혼조",
+    "hedging_activity": "증가/감소/중립",
+    "conviction": "높음/낮음",
+    "summary": "한 줄 요약 (예: Risk ON + Hedge Overlay)"
+  }},
   "why_now": "왜 지금 이 이슈가 중요한가 (2~3문장)",
   "expectation_vs_reality": {{
     "expectation": "시장 기대",
@@ -71,15 +100,16 @@ WTI: ${market.get('wti_oil', 'N/A')}
   "risk": "무효화 조건 한 문장"
 }}
 
-절대 이 구조 외에 추가 텍스트 출력하지 마라.
-순수 JSON만 출력해라.
+순수 JSON만 출력해라. 마크다운 없이.
 """
         result = self.gemini.call_json(prompt, max_tokens=1500)
 
         # level2_chain을 today_signal.json에도 업데이트
-        signal["level2_chain"] = result.get("level2_chain", [])
-        signal_path = self.signal_dir / "today_signal.json"
-        signal_path.write_text(json.dumps(signal, ensure_ascii=False, indent=2))
+        if result:
+            signal["level2_chain"] = result.get("level2_chain", [])
+            signal["market_state"] = result.get("market_state", {})
+            signal_path = self.signal_dir / "today_signal.json"
+            signal_path.write_text(json.dumps(signal, ensure_ascii=False, indent=2))
 
         return result
 

@@ -48,11 +48,17 @@ class WriterAgent:
 
     def load_raw_data(self) -> dict:
         """오늘의 원천 데이터 로드 및 요약 (프롬프트 비대화 방지)"""
-        raw_data = {"market_summary": "", "cot_summary": "", "consensus_summary": ""}
+        raw_data = {
+            "market_summary": "", 
+            "cot_summary": "", 
+            "consensus_summary": "",
+            "dart_companies": []
+        }
         
         m_path = self.raw_dir / "market.json"
         c_path = self.raw_dir / "cot.json"
         cs_path = self.raw_dir / "consensus.json"
+        d_path = self.raw_dir / "dart.json"
 
         if m_path.exists():
             m = json.loads(m_path.read_text())
@@ -75,6 +81,11 @@ class WriterAgent:
             for ev in cs.get("major_surprises", []) or []:
                 summary.append(f"Event: {ev.get('event')}, Surprise: {ev.get('surprise_pct')}%")
             raw_data["consensus_summary"] = "\n".join(summary)
+
+        if d_path.exists():
+            d = json.loads(d_path.read_text())
+            disclosures = d.get("data", {}).get("disclosures", [])
+            raw_data["dart_companies"] = list(set([item.get("company") for item in disclosures]))
             
         return raw_data
 
@@ -135,15 +146,8 @@ class WriterAgent:
             stocks.get("stocks", [])[:3], ensure_ascii=False
         )
         level2 = "\n".join(signal.get("level2_chain", []))
-        risk_factors = "\n".join(
-            analysis.get("risk_factors", ["리스크 데이터 없음"])
-        )
-        check_points = "\n".join(
-            analysis.get("check_points", ["체크포인트 없음"])
-        )
-        historical = analysis.get("historical_reference", {})
-        lens = analysis.get("three_lens_analysis", {})
-
+        market_state = analysis.get("market_state", {})
+        
         prompt = f"""
 너는 경제사냥꾼 유튜브 채널의 메인 작가다.
 아래 분석 데이터를 기반으로 경제사냥꾼의 '7단계 스토리 빌드업'을 완벽히 재현한 스크립트를 작성해라.
@@ -151,32 +155,30 @@ class WriterAgent:
 [절대 금지]
 - 제공된 [오늘의 분석 데이터] 및 [원본 통계 데이터]에 없는 수치, 사실, 현상을 창작하거나 추론하여 삽입하는 것을 엄격히 금지한다.
 - 데이터로 설명되지 않는 내용은 반드시 "~로 해석될 수 있다", "~가능성이 있다" 등 추론임을 명시하는 표현을 사용하며, 이를 사실인 것처럼 단정 짓지 마라.
-- '물리적 병목' 섹션은 실제 데이터(뉴스, DART, 공시 등)에 관련 내용이 있을 때만 언급하며, 없을 경우 데이터에 기반한 구조적 원인으로 대체한다.
 
-[사용 가능한 데이터 범위]
-- COT: 포지션 수치, 변화율, 방향 (Gold, S&P500 등)
-- Market: z-score, 변화율, 현재가, Fear & Greed Index
-- Consensus: 서프라이즈/쇼크 수치, 지표 발표 결과
-- FRED/ECOS: 금리, 지표값
-- Sentiment: 뉴스 헤드라인 내용
+[시장 상태 판단 기반 서사 제약] (CRITICAL)
+- 현재 시장 상태: {json.dumps(market_state, ensure_ascii=False)}
+- **Risk Appetite: 상승**일 경우: "붕괴", "공포", "대탈출", "폭풍 전야" 등 공포를 조장하는 과격한 서사 절대 금지.
+- 대신 "낙관 속 불안", "헤지 강화", "리스크 관리 가동" 관점에서 서술해라.
+- COT 숏 포지션은 하락 확신이 아닌 "롱 포지션에 대한 보험(Hedge)" 가능성을 반드시 언급해라.
+
+[종목 추천 절대 금지 조건]
+- dart.json(아래 dart_companies 리스트)에 포함되지 않은 종목은 절대 언급하지 않는다.
+- 유효한 종목 데이터가 전혀 없다면, "관련 섹터 ETF 흐름 주시"로 서술한다.
 
 [오늘의 분석 데이터]
 토픽: {signal.get("topic", "")}
 강도: {signal.get("strength", 0)} / 10
 기대 vs 현실: {json.dumps(analysis.get("expectation_vs_reality", {}), ensure_ascii=False)}
-4대 레이어 체크: {json.dumps(analysis.get("four_layer_check", {}), ensure_ascii=False)}
 인과관계 체인: {level2}
 유사 사례: {json.dumps(analysis.get("historical_reference", {}), ensure_ascii=False)}
 관련 종목: {stocks_text}
-리스크: {risk_factors}
 
 [원본 통계 데이터 요약 (Evidence)]
 {json.dumps(self.load_raw_data(), ensure_ascii=False, indent=2)}
 
 [출력 조건]
-- 반드시 7단계 구조(Hook~Risk)를 명확히 구분하여 작성하되, 자연스러운 흐름을 유지할 것.
-- 인공지능이 쓴 느낌이 나면 탈락이다. 진짜 사냥꾼이 옆에서 이야기해 주는 느낌을 살려라.
-- 'WHY NOW' 부분에 가장 많은 공을 들여야 한다. 실제 데이터의 수치를 최소 2회 이상 언급하며 신뢰도를 높여라.
+- 반드시 7단계 구조(Hook~Risk)를 명확히 구분하여 작성할 것.
 - 제목 3개와 썸네일 문구(10자 이내)를 마지막에 추가해라.
 
 출력 형식:
@@ -197,24 +199,16 @@ class WriterAgent:
         """쇼츠 스크립트 생성 (1~2분 분량)"""
         print("  쇼츠 스크립트 생성 중...")
 
-        level2 = " → ".join(signal.get("level2_chain", [])[:3])
+        market_state = analysis.get("market_state", {})
 
         prompt = f"""
 너는 경제사냥꾼 유튜브 채널의 쇼츠 스크립트 작가다.
 아래 분석 데이터와 원본 데이터를 기반으로 60초 분량(약 400~600자)의 '7단계 압축 스크립트'를 작성해라.
 
 [절대 규칙]
-- 롱폼과 마찬가지로 수집된 데이터에 없는 사실 창작을 엄격히 금지한다.
-- 아래 7단계를 반드시 포함하며, 단계별 구분 기호(예: 1. Hook)를 본문에 명시하지 말고 자연스럽게 연결해라.
-
-[쇼츠 7단계 압축 구조]
-1. Hook: 시장의 모순을 찌르는 강력한 한 문장 (10초)
-2. Expectation vs Reality: 대중의 기대와 실제 데이터의 충돌 (10초)
-3. Mechanism: 이 현상을 일으킨 핵심 구조적 원인 (5초)
-4. WHY NOW: 왜 하필 '오늘' 이 문제가 터졌는가 (실제 데이터 수치 포함, 10초)
-5. Implication: 이로 인해 스마트머니는 어디로 이동하는가 (10초)
-6. Mentionables: 우리가 주목해야 할 연결 종목이나 섹터 (10초)
-7. Risk: 이 시나리오가 틀릴 수 있는 반대 변수 한 문장 (5초)
+- 현재 시장 상태: {json.dumps(market_state, ensure_ascii=False)}
+- Risk Appetite 상승 시 "붕괴/대탈출" 표현 금지. "낙관 속 불안/헤지 대응" 위주로 서술.
+- 60초 분량(400~600자)을 유지하고 경제사냥꾼의 거친 반말 어조를 사용해라.
 
 [토픽]
 {signal.get("topic", "")}
@@ -224,11 +218,6 @@ class WriterAgent:
 
 [원본 통계 데이터 요약 (Evidence)]
 {json.dumps(self.load_raw_data(), ensure_ascii=False)}
-
-[출력 조건]
-- 분량: 1분 이내 (400~600자 내외)
-- 실제 데이터 수치를 최소 1개 이상 반드시 포함할 것.
-- 경제사냥꾼의 거칠고 확신에 찬 말길(반말)을 그대로 유지해라.
 
 출력 형식:
 [쇼츠 스크립트]
@@ -244,7 +233,24 @@ class WriterAgent:
         long_path = self.output_dir / "today_script_long.md"
         short_path = self.output_dir / "today_script_short.md"
 
-        # 데이터 근거 추출 (v3.0 교정)
+        # 분석 데이터에서 시장 상태 로드 (직접 analysis에서 가져오거나 파일 재로드)
+        analysis_path = self.analysis_dir / "today_analysis.json"
+        market_state_block = ""
+        if analysis_path.exists():
+            try:
+                analysis = json.loads(analysis_path.read_text())
+                ms = analysis.get("market_state", {})
+                if ms:
+                    market_state_block = f"""[시장 상태 판단]
+Risk Appetite: {ms.get('risk_appetite')}
+Hedging Activity: {ms.get('hedging_activity')}
+Directional Conviction: {ms.get('conviction')}
+→ 종합: {ms.get('summary')}
+"""
+            except:
+                pass
+
+        # 데이터 근거 추출
         summary = self.load_raw_data()
         evidence_lines = []
         if summary["market_summary"]:
@@ -261,6 +267,7 @@ class WriterAgent:
 유형: {signal.get("content_type", "")}
 생성: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
+{market_state_block}
 {evidence_block}
 ---
 
@@ -284,7 +291,6 @@ class WriterAgent:
         # 분석 실패 시 중단
         if analysis is None:
             print("  ❌ AGENT-05 중단 — 분석 데이터 없음")
-            print("  ANALYST 재실행 필요")
             return {"failed": True, "reason": "analysis_missing"}
 
         print(f"  토픽: {signal.get('topic', '')}")

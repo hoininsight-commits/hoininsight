@@ -53,66 +53,170 @@ class FactCheckerAgent:
 
     def extract_values_from_script(self, script: str) -> List[dict]:
         """
-        스크립트 본문에서 수치 데이터 추출
-        패턴: (엔티티) + (숫자) + (단위)
+        스크립트 본문에서 수치 데이터 추출 및 유형 분류
         """
-        # 정규식: 숫자(소수점 포함) + 단위(%, bp, $, 배, 포인트)
-        # 앞부분에 한글/영문 식별자 포함 시도
-        pattern = r'([가-힣a-zA-Z0-9\-\&/\s]+?)\s*([-+]?\d*\.?\d+)\s*(%|bp|\$|배|포인트)'
-        matches = re.finditer(pattern, script)
+        # 수치 패턴 (단순 숫자 + 선택적 단위)
+        num_pattern = r'([-+]?\d[\d,.]*)'
+        matches = list(re.finditer(num_pattern, script))
         
         extracted = []
         for m in matches:
-            raw_entity = m.group(1).strip().lower()
-            value = float(m.group(2))
-            unit = m.group(3)
+            start, end = m.span()
+            raw_value = m.group(1).replace(',', '')
             
-            # 매칭되는 엔티티 키 찾기 (동의어 처리)
+            if not raw_value or raw_value in ['.', '-', '+']:
+                continue
+
+            try:
+                # 마지막에 점으로 끝나면 제거 (문장의 마침표일 확률 높음)
+                if raw_value.endswith('.'):
+                    raw_value = raw_value[:-1]
+                value = float(raw_value)
+            except:
+                continue
+
+            # 전후 맥락 추출
+            prefix = script[max(0, start-15):start].lower() # 15자로 단축 (정밀도 향상)
+            unit_match = re.search(r'^(%|bp|\$|배|포인트|원|계약|contracts|건|개|시|분|만)', script[end:])
+            unit = unit_match.group(1) if unit_match else ""
+            suffix = script[end + len(unit):end + 15].lower()
+            
+            # '만' 단위 처리 (예: 47만 -> 470000)
+            if unit == "만":
+                value *= 10000
+                unit = ""
+            
+            # 시간/수량 단위 스킵
+            if unit in ["시", "분", "건", "개", "배"] and "z-score" not in prefix:
+                continue
+            
+            # 엔티티 식별 (가장 가까운 엔티티 찾기)
             found_key = None
+            min_dist = 999
             for key, mapped_key in self.entity_map.items():
-                if key in raw_entity:
-                    found_key = mapped_key
-                    break
+                pos = prefix.rfind(key)
+                if pos != -1:
+                    dist = len(prefix) - pos
+                    if dist < min_dist:
+                        min_dist = dist
+                        found_key = mapped_key
             
-            if found_key:
+            # 숫자 본문에 포함된 경우 (예: "vix17")
+            if not found_key:
+                for key, mapped_key in self.entity_map.items():
+                    if key in m.group(1).lower():
+                        found_key = mapped_key
+                        break
+            
+            if not found_key:
+                continue
+
+            # 유형 분류
+            v_type = "UNKNOWN"
+            context = (prefix + " " + unit + " " + suffix).strip()
+            
+            if "%" in unit or any(word in context for word in ["상승", "하락", "변화", "등락", "올랐", "떨어", "5일", "주간"]):
+                v_type = "TYPE_2" # 변화율
+            elif any(word in context for word in ["z-score", "z점수", "표준편차"]):
+                v_type = "TYPE_3" # Z-score
+            elif any(word in context for word in ["계약", "contracts", "포지션", "매수", "매도"]):
+                if unit not in ["원", "$"]:
+                    v_type = "TYPE_4" # 계약수
+            elif unit in ["원", "$", "포인트"] or not unit:
+                if value > 50: # 가격은 보통 50 이상 (달러/포인트 등)
+                    v_type = "TYPE_1" # 현재가
+
+            if v_type != "UNKNOWN":
                 extracted.append({
-                    "raw": m.group(0),
+                    "raw": f"{raw_value}{unit}",
+                    "sentence": script[max(0, start-40):min(len(script), end+40)].strip(),
                     "key": found_key,
                     "value": value,
-                    "unit": unit
+                    "unit": unit,
+                    "type": v_type
                 })
         
         return extracted
 
     def verify(self, script: str) -> Tuple[bool, List[str]]:
-        """수치 대조 검증"""
+        """유형별 수치 대조 검증 (오차 허용 범위 적용)"""
         ref_data = self.load_reference_data()
         if not ref_data:
-            return True, ["⚠️ 참조 데이터(market.json 등)가 없어 검증을 스킵합니다."]
+            return True, ["⚠️ 참조 데이터 데이터가 없어 검증을 스킵합니다."]
 
-        market = ref_data.get("market", {}).get("data", {})
+        market_data = ref_data.get("market", {}).get("data", {})
+        cot_data = ref_data.get("cot", {}).get("positions", {})
+        
         extracted = self.extract_values_from_script(script)
         
         errors = []
+        reports = []
+        
+        type_labels = {
+            "TYPE_1": "현재가",
+            "TYPE_2": "변화율",
+            "TYPE_3": "Z-score",
+            "TYPE_4": "계약수"
+        }
+
         for item in extracted:
-            actual_val = market.get(item["key"])
-            if actual_val is None:
-                continue
-                
-            # 오차 계산
-            diff_pct = abs(item["value"] - actual_val) / actual_val if actual_val != 0 else 0
+            target_val = None
+            label = ""
             
-            if diff_pct > 0.05: # 5% 초과 시 에러
-                errors.append(
-                    f"\"{item['raw']}\" → 실제값: {actual_val} (오차 {diff_pct*100:.1f}%)"
-                )
+            # 유형별 대조 값 및 오차 설정
+            stats = market_data.get("multi_period_stats", {}).get(item["key"], {})
+            
+            if item["type"] == "TYPE_1":
+                target_val = market_data.get(item["key"])
+                label = "현재가"
+            elif item["type"] == "TYPE_2":
+                target_val = stats.get("chg_5d")
+                label = "chg_5d"
+            elif item["type"] == "TYPE_3":
+                target_val = stats.get("z_score_20d")
+                label = "z_score_20d"
+            elif item["type"] == "TYPE_4":
+                # COT 키 매핑 (표준화)
+                asset_map = {
+                    "gold": "Gold", 
+                    "wti_oil": "WTI", 
+                    "sp500": "SP500", 
+                    "nasdaq": "Nasdaq",
+                    "usd_krw": "USD" # 환율 COT가 있는 경우 대비
+                }
+                asset_key = asset_map.get(item["key"], item["key"].upper())
+                target_val = cot_data.get(asset_key, {}).get("net_change")
+                label = f"cot_{asset_key}"
+
+            if target_val is None:
+                reports.append(f"[{type_labels[item['type']]}] \"{item['raw']}\" → {item['key']} 데이터 없음 (스킵)")
+                continue
+
+            # 검증 수행 (지시서 기준 오차 허용)
+            match = False
+            diff_abs = abs(abs(item["value"]) - abs(target_val))
+            
+            if item["type"] == "TYPE_2": # 변화율: ±2.0%p (절대값 비교)
+                if diff_abs <= 2.0: match = True
+            elif item["type"] == "TYPE_3": # Z-score: ±0.3
+                if abs(item["value"] - target_val) <= 0.3: match = True
+            elif item["type"] == "TYPE_1": # 현재가: ±5%
+                if target_val != 0 and (abs(item["value"] - target_val) / abs(target_val)) <= 0.05: match = True
+            elif item["type"] == "TYPE_4": # 계약수: ±5% (절대값 비교)
+                if target_val != 0 and (diff_abs / abs(target_val)) <= 0.05: match = True
+                elif target_val == 0 and diff_abs < 100: match = True
+
+            type_name = type_labels[item['type']]
+            if match:
+                reports.append(f"[{type_name}] \"{item['raw']}\" → {label}: {target_val} (✅ 일치)")
             else:
-                # 통과 로그 (옵션)
-                pass
+                err_msg = f"[{type_name}] \"{item['raw']}\" → {label}: {target_val} (❌ 불일치)"
+                errors.append(err_msg)
+                reports.append(err_msg)
 
         if errors:
-            return False, errors
-        return True, []
+            return False, reports
+        return True, reports
 
     def run(self, writer_result: dict) -> dict:
         print(f"\n🔍 AGENT-05.5 FACT_CHECKER 시작 [{self.today}]")
@@ -140,9 +244,10 @@ class FactCheckerAgent:
         else:
             print(f"  ❌ 팩트체크 실패: {len(report)}건의 불일치 발견")
             
-            # 알림 메시지 구성
-            alert_msg = f"[FACT_CHECKER FAIL]\n검증 실패 항목:\n" + "\n".join([f"- {r}" for r in report])
-            alert_msg += "\n\n발송이 차단되었습니다. 스크립트를 확인해주세요."
+            # 알림 메시지 구성 (텔레그렘 특수문자 오류 방지)
+            clean_report = [r.replace("[", "(").replace("]", ")") for r in report]
+            alert_msg = f"⚠️ (FACT_CHECKER FAIL)\n\n" + "\n".join([f"- {r}" for r in clean_report])
+            alert_msg += "\n\n발송차단됨. 스크립트 확인 필요."
             
             self.notifier.send_message(alert_msg)
             
