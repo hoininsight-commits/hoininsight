@@ -33,19 +33,19 @@ Historical context:
 - [HIGH] KOSPI: data/features/anomalies/2026/04/18/index_kospi_stooq.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [HIGH] NASDAQ: data/features/anomalies/2026/04/18/index_nasdaq_fred.json L2 Signal (score=6.00) | Mom: UP (slope=0.50) | App7d=7
 - [HIGH] WTI: data/features/anomalies/2026/04/18/comm_wti_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [HIGH] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
-- [HIGH] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [HIGH] CPI_USA: data/features/anomalies/2026/04/18/inflation_cpi_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] PCE_USA: data/features/anomalies/2026/04/18/inflation_pce_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M2_USA: data/features/anomalies/2026/04/18/liquidity_m2_fred.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
-- [HIGH] GS_RATIO: data/features/anomalies/2026/04/18/derived_gold_silver_ratio.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [HIGH] M_AND_A_CB: data/features/anomalies/2026/04/18/struct_dart_cb_bw.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [HIGH] M_AND_A_DISP: data/features/anomalies/2026/04/18/struct_dart_disposal.json L2 Signal (score=6.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] US10Y: data/features/anomalies/2026/04/18/rates_us10y_fred.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
+- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
+- [MED] SILVER: data/features/anomalies/2026/04/18/metal_silver_kag_coingecko.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
 - [MED] ETHUSD: data/features/anomalies/2026/04/18/crypto_eth_usd_spot_coingecko.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=5
 - [MED] KOR_CPI: data/features/anomalies/2026/04/18/inflation_kor_cpi_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] USDKRW_ECOS: data/features/anomalies/2026/04/18/fx_usdkrw_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [MED] KOR_M2: data/features/anomalies/2026/04/18/liquidity_kor_m2_ecos.json L1 Signal (score=3.00) | Mom: FLAT (slope=0.00) | App7d=2
+- [MED] GS_RATIO: data/features/anomalies/2026/04/18/derived_gold_silver_ratio.json L1 Signal (score=3.00) | Mom: DOWN (slope=-0.75) | App7d=5
 - [LOW] VIX: data/features/anomalies/2026/04/18/risk_vix_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=2
 - [LOW] US02Y: data/features/anomalies/2026/04/18/rates_us02y_fred.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=7
 - [LOW] GOLD: data/features/anomalies/2026/04/18/metal_gold_paxg_coingecko.json (Normal) (score=0.00) | Mom: FLAT (slope=0.00) | App7d=6
@@ -76,8 +76,8 @@ Affected: derived_corr_btc_spx_30d, derived_corr_usdkrw_us10y_30d, struct_krx_fo
 - **Rationale:** [Predicted] Policy Radar Momentum + 10 Regime Alignment
 
 ## ENGINE 2: ANCHOR TOPIC (Narrative-Top Down)
-- **Topic:** [Risk Off] Structural-driven
-- **Rationale:** Anchor Logic: Statistical Deviation > 2.0 Sigma (Gap Status: Insufficient Evidence for L4)
+- **Topic:** [Unknown (Single Axis)] Hybrid-driven
+- **Rationale:** Anchor Logic: Statistical Deviation Z=2.07 (No Cluster) (Gap Status: Insufficient Evidence for L3/L4)
 - Prompt: 현재 Regime 및 데이터 상태를 고려할 때, 이 주제를 오늘 다룰 가치가 있다고 판단하십니까?
 
 ## Content Topic (Topic Decision Gate)

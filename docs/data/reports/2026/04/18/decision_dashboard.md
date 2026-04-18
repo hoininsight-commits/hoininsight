@@ -81,8 +81,8 @@
 - **Count**: 40
 - **Type Breakdown**: NEWS: 40
 - **Samples (Top 3)**:
-  - [NEWS] [뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스 (Google_News_KR_Economy)
-  - [NEWS] “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 (Google_News_KR_Economy)
+  - [NEWS] 호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스 (Google_News_KR_Economy)
+  - [NEWS] [뉴욕증시-1보] 호르무즈 전면 개방한 이란…급등 마감 - 연합인포맥스 (Google_News_KR_Economy)
   - [NEWS] "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 (Google_News_KR_Economy)
 
 
@@ -185,13 +185,14 @@
 
 | Fact Anchor | Structural Reason | Confidence |
 |---|---|---|
-| [뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스 | Structural implication: '[뉴욕마켓워치] 호르무즈 해협 한시적 전면 개방…주식·채권↑달러↓ - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
-| “위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인 | Structural implication: '“위험주도 쓸어 담는다”…뉴욕증시, 예상 밖 급등 배경은 - 마켓인' suggests a shift in NEWS dynamics. | LOW |
+| 호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스 | Structural implication: '호르무즈 개방 소식에 뉴욕증시 급등…S&P·나스닥 또 최고치 - KBS 뉴스' suggests a shift in NEWS dynamics. | LOW |
+| [뉴욕증시-1보] 호르무즈 전면 개방한 이란…급등 마감 - 연합인포맥스 | Structural implication: '[뉴욕증시-1보] 호르무즈 전면 개방한 이란…급등 마감 - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보 | Structural implication: '"삼전·하이닉스 억대 성과급 지역화폐로 지급하라" 온라인 황당 주장 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| [동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보 | Structural implication: '[동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 코스피, 외인 2조 매물 쏟아내 하락 마감…코스닥은 상승 - 한국경제 | Structural implication: '코스피, 외인 2조 매물 쏟아내 하락 마감…코스닥은 상승 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 | Structural implication: '"호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| [동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보 | Structural implication: '[동서남북] 국민성장펀드인가, 자산가 성장펀드인가 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
+| 신세계가 열흘만에 오픈AI 협업 계획 뒤집은 이유 - 지디넷코리아 | Structural implication: '신세계가 열흘만에 오픈AI 협업 계획 뒤집은 이유 - 지디넷코리아' suggests a shift in NEWS dynamics. | LOW |
 | 신현송 英국적 딸 ‘韓여권 불법 재발급’ 논란…출국 때 사용도 - 문화일보 | Structural implication: '신현송 英국적 딸 ‘韓여권 불법 재발급’ 논란…출국 때 사용도 - 문화일보' suggests a shift in NEWS dynamics. | LOW |
+| "호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보 | Structural implication: '"호르무즈 안 열리면 한국 등 제일 타격…유럽 항공유 6주치 남아" - 조선일보' suggests a shift in NEWS dynamics. | LOW |
 | 휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레 | Structural implication: '휘발유 값 2000원 넘어…전쟁 전보다 리터당 306원↑ - 한겨레' suggests a shift in NEWS dynamics. | LOW |
 | 무료 두쫀쿠 클래스 갔더니 종신보험 권유…"불완전판매 주의" - 연합뉴스 | Structural implication: '무료 두쫀쿠 클래스 갔더니 종신보험 권유…"불완전판매 주의" - 연합뉴스' suggests a shift in NEWS dynamics. | LOW |
 | “다낭 왕복, 35만원 더 내세요”…유류할증료 2배 급등, 첫 33단계 - 채널A | Structural implication: '“다낭 왕복, 35만원 더 내세요”…유류할증료 2배 급등, 첫 33단계 - 채널A' suggests a shift in NEWS dynamics. | LOW |
@@ -200,11 +201,16 @@
 | 강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제 | Structural implication: '강남은 떨어지는데 … 강북은 전고점 '눈앞' - 매일경제' suggests a shift in NEWS dynamics. | LOW |
 | "비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스 | Structural implication: '"비트코인, 숏스퀴즈에 12만5천달러 회복 전망" - 연합인포맥스' suggests a shift in NEWS dynamics. | LOW |
 | "비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제 | Structural implication: '"비만약 기대치 과도" "독주 계속"…전망 엇갈린 릴리 - 한국경제' suggests a shift in NEWS dynamics. | LOW |
-| 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
+| 사상 최대 경상수지 흑자에도 환율은 뛴다?…과거 공식 깨진 이유는 - 아시아경제 | Structural implication: '사상 최대 경상수지 흑자에도 환율은 뛴다?…과거 공식 깨진 이유는 - 아시아경제' suggests a shift in NEWS dynamics. | LOW |
 | 'AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론 | Structural implication: ''AACR' D-day…K-바이오, 차세대 항암 기술 총출동 - 약사공론' suggests a shift in NEWS dynamics. | LOW |
+| 유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보 | Structural implication: '유상증자 ‘뜨거운 감자’로… 기업 “자본 확충” vs 주주 “책임 전가” - 동아일보' suggests a shift in NEWS dynamics. | LOW |
 | 치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보 | Structural implication: '치킨 기름 유통마진 ‘0원’... 교촌, 협력사들 갑질 재판행 - 조선일보' suggests a shift in NEWS dynamics. | LOW |
-| 잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN | Structural implication: '잠복했다 나타나는 '코로나 변이' 전 세계 확산...日까지 번져 - YTN' suggests a shift in NEWS dynamics. | LOW |
-| 호르무즈 봉쇄에…미국산 원유 수출 급증 - 블로터 | Structural implication: '호르무즈 봉쇄에…미국산 원유 수출 급증 - 블로터' suggests a shift in NEWS dynamics. | LOW |
+| “소중한 인연 만났다”…티아라 효민, 직접 만든 케이크 들고 간 곳 | Structural implication: '“소중한 인연 만났다”…티아라 효민, 직접 만든 케이크 들고 간 곳' suggests a shift in NEWS dynamics. | LOW |
+| “모기 물렸다” “남편이랑 잘 지내냐”…진상 학부모에 유치원 ‘골머리’ | Structural implication: '“모기 물렸다” “남편이랑 잘 지내냐”…진상 학부모에 유치원 ‘골머리’' suggests a shift in NEWS dynamics. | LOW |
+| “얼굴이 곧 브랜드”…김재중·성시경·박재범, 시장 흔드는 대표님들 [스테크] | Structural implication: '“얼굴이 곧 브랜드”…김재중·성시경·박재범, 시장 흔드는 대표님들 [스테크]' suggests a shift in NEWS dynamics. | LOW |
+| ‘캣츠아이’ 英 싱글차트 14위 직행… BTS 4주째 롱런 | Structural implication: '‘캣츠아이’ 英 싱글차트 14위 직행… BTS 4주째 롱런' suggests a shift in NEWS dynamics. | LOW |
+| 인천공항 3년 만에 복귀한 롯데면세점…1위 되찾나 | Structural implication: '인천공항 3년 만에 복귀한 롯데면세점…1위 되찾나' suggests a shift in NEWS dynamics. | LOW |
+| 부부싸움 후 유서 한장 안남기고…보험금 받을 수 있을까[어쩌다 세상이] | Structural implication: '부부싸움 후 유서 한장 안남기고…보험금 받을 수 있을까[어쩌다 세상이]' suggests a shift in NEWS dynamics. | LOW |
 | “왜 우리 어머니 험담해”…흉기 들고 집 찾아가 친구 찌른 50대 | Structural implication: '“왜 우리 어머니 험담해”…흉기 들고 집 찾아가 친구 찌른 50대' suggests a shift in NEWS dynamics. | LOW |
 | ‘락토핏’ 새 모델 배우 박보영 발탁, 10주년 캠페인 본격화 | Structural implication: '‘락토핏’ 새 모델 배우 박보영 발탁, 10주년 캠페인 본격화' suggests a shift in NEWS dynamics. | LOW |
 | “두 아들, 총 2만3400개 비트코인  있다”…아버지가 폭로한 형제의 정체 | Structural implication: '“두 아들, 총 2만3400개 비트코인  있다”…아버지가 폭로한 형제의 정체' suggests a shift in NEWS dynamics. | LOW |
@@ -219,12 +225,6 @@
 | FA 대박 기대했는데 배구 대표팀 낙마하나…‘음주운전’ 안혜진 중징계 가능성 | Structural implication: 'FA 대박 기대했는데 배구 대표팀 낙마하나…‘음주운전’ 안혜진 중징계 가능성' suggests a shift in NEWS dynamics. | LOW |
 | “제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이 | Structural implication: '“제 부족함, 진심 죄송”…‘공구’ 논란 사과한 걸그룹 출신녀, 무슨일이' suggests a shift in NEWS dynamics. | LOW |
 | “아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책] | Structural implication: '“아이가 조금 더 크면 가자”라고 말하는 당신에게 꼭 하고픈 말 [여책저책]' suggests a shift in NEWS dynamics. | LOW |
-| “작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세 | Structural implication: '“작별을 전한다”…유명 시인 성폭력 폭로한 김현진씨 숨져, 향년 28세' suggests a shift in NEWS dynamics. | LOW |
-| 매경이 전하는 세상의 지식 (매-세-지, 4월 18일) | Structural implication: '매경이 전하는 세상의 지식 (매-세-지, 4월 18일)' suggests a shift in NEWS dynamics. | LOW |
-| “촉법소년 연령 낮춰야 할까”…성평등가족부, 이번 주말 시민토론회 | Structural implication: '“촉법소년 연령 낮춰야 할까”…성평등가족부, 이번 주말 시민토론회' suggests a shift in NEWS dynamics. | LOW |
-| 현역병 복무 중 4억원대 도박…기소된 남성, 700만원 벌금형 | Structural implication: '현역병 복무 중 4억원대 도박…기소된 남성, 700만원 벌금형' suggests a shift in NEWS dynamics. | LOW |
-| “손실 20%까진 원금보장 해드립니다”…5월 출시 국민참여형 국민성장펀드란? | Structural implication: '“손실 20%까진 원금보장 해드립니다”…5월 출시 국민참여형 국민성장펀드란?' suggests a shift in NEWS dynamics. | LOW |
-| 미국 “폭력행위 책임지게 될 것”…이라크 내 親이란 민병대 제재 | Structural implication: '미국 “폭력행위 책임지게 될 것”…이라크 내 親이란 민병대 제재' suggests a shift in NEWS dynamics. | LOW |
 
 
 ## 🚫 WHY NO SPEAK (Today)
