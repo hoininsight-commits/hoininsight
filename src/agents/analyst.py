@@ -1,8 +1,10 @@
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
 from src.core.sector_map import get_related_sectors, get_stocks_by_sector, get_reason_template
+from src.prompts.analyst_prompt import ANALYST_PROMPT_TEMPLATE
 
 
 class AnalystAgent:
@@ -32,7 +34,7 @@ class AnalystAgent:
         return raw
 
     def _filter_text(self, text: str, market_data: dict) -> str:
-        """텍스트 필드에서 데이터 근거 없는 서술을 팩트 중심 치환 (Hardened v6.0)"""
+        """텍스트에서 SPECULATION 등급 문장을 차단하거나 INTERPRETATION으로 낮춤 (Hardened #051)"""
         if not text:
             return text
 
@@ -44,109 +46,68 @@ class AnalystAgent:
         has_kr_foreign_data = kospi_foreign_net is not None and abs(float(kospi_foreign_net)) > 0.001
         has_kr_inst_data = kospi_inst_net is not None and abs(float(kospi_inst_net)) > 0.001
 
-        # 치환 규칙 정의 (Task 1 & 5 & #050-REWORK)
-        replacements = [
-            # 1. 외국인 수급: 데이터 없을 경우 치환
-            {
-                "condition": not has_kr_foreign_data,
-                "pattern": r"(외국인|외인|foreign)\s*(수급|매수|자금|유입|매도|지탱|대응|움직임|의도)",
-                "repl": "시장 수급 변화"
-            },
-            # 2. 기관 수급: 데이터 없을 경우 치환
-            {
-                "condition": not has_kr_inst_data,
-                "pattern": r"(기관|inst)\s*(수급|매수|자금|유입|매도|지탱|대응|움직임|의도)",
-                "repl": "시장 수급 환경"
-            },
-            # 3. 맹목적 금지어 (데이터 불문)
-            {
-                "condition": True,
-                "pattern": r"(개인투자자|개미|모멘텀\s*자금|군중|세력|투기|포모|FOMO)",
-                "repl": "수급"
-            },
-            {
-                "condition": True,
-                "pattern": r"(보험성|보험용|보험을\s*들고|보험이|보험\s*가입)",
-                "repl": "숏 포지션 대응"
-            },
-            {
-                "condition": True,
-                "pattern": r"(완벽한\s*골디락스|완벽한\s*타이밍|완벽한\s*상황)",
-                "repl": "우호적인 매크로 환경"
-            },
-            {
-                "condition": True,
-                "pattern": r"(안심하고\s*있는|심리가\s*개선|공포가\s*확산|심리를\s*대변|심리가\s*반영)",
-                "repl": "변동성 지표의 변화가 관측"
-            },
-            # [Task 3-REWORK] 과잉 해석 문장 전수 차단
-            {
-                "condition": True,
-                "pattern": r"(유입\s*환경\s*조성|유동성\s*유입\s*가속화|가속화|유동성\s*자산\s*유입)",
-                "repl": "수급 지표의 상관관계 관측"
-            },
-            {
-                "condition": True,
-                "pattern": r"(강제\s*청산\s*압력|청산\s*유발|강제\s*청산)",
-                "repl": "포지션 변동 가능성 상존"
-            },
-            {
-                "condition": True,
-                "pattern": r"(순환\s*고리\s*형성|순환\s*구조|악순환)",
-                "repl": "지표 간 동조화 현상"
-            },
-            {
-                "condition": True,
-                "pattern": r"(접근\s*유도|접근을\s*강요|접근\s*중)",
-                "repl": "변동성 확대 구간 진입"
-            },
-            {
-                "condition": True,
-                "pattern": r"(유발|유인|밀어올림|상승을\s*강제|상승을\s*유인)",
-                "repl": "동반 변화가 관측됨"
-            },
-            {
-                "condition": True,
-                "pattern": r"(지탱|지지|방어|하락을\s*방어)",
-                "repl": "데이터 지지가 확인됨"
-            },
-            {
-                "condition": True,
-                "pattern": r"(작용하며|기여|작용하여|이바지)",
-                "repl": "동시에 관측됨"
-            },
-            {
-                "condition": True,
-                "pattern": r"(유도|확장|견인|압력을\s*가하며)",
-                "repl": "동반 변화가 관측됨"
-            },
-            {
-                "condition": True,
-                "pattern": r"(조성|마련|환경\s*조성|구축)",
-                "repl": "현상 관측"
-            }
+        # 1. 태그 기반 판정
+        is_interp = "[I]" in text
+
+        # [허용 해석 표현] (Task 3)
+        allowed_interp_markers = [
+            "시사한다", "해석될 수 있다", "볼 수 있다", "가능성이 있다", 
+            "관측된다", "읽힌다", "점이 중요하다", "관측되는 중"
         ]
 
-        import re
-        for rule in replacements:
-            if rule["condition"]:
-                text = re.sub(rule["pattern"], rule["repl"], text, flags=re.IGNORECASE)
+        # 2. SPECULATION 감지 및 처리 (Task 2)
+        # 조건 A: 행위자 언급 + 데이터 부재
+        actor_pattern = r"(외국인|외인|기관|세력|개미|개인|스마트\s*머니)"
+        if re.search(actor_pattern, text):
+            # 외국인 데이터 없는데 외국인 언급 시
+            if "외국" in text or "외인" in text:
+                if not has_kr_foreign_data:
+                    text = re.sub(actor_pattern, "시장 수급", text)
+            # 기관 데이터 없는데 기관 언급 시
+            if "기관" in text:
+                if not has_kr_inst_data:
+                    text = re.sub(actor_pattern, "수급 환경", text)
+
+        # 조건 B/C/D: 심리, 자금흐름, 의도 단정 문장을 해석형으로 낮춤
+        spec_patterns = [
+            (r"(안심했다|낙관적이다|공포에\s*빠졌다|광기|불안\s*상태)", "로 읽힐 수 있는 가능성이 관측된다"),
+            (r"(몰리고\s*있다|유입되었다|이탈했다|대규모\s*전환)", "의 변동 가능성이 시사된다"),
+            (r"(방어하려\s*한다|대비하고\s*있는|관리하고\s*있는|유도)", "의 움직임으로 해석될 소지가 관측된다"),
+            (r"(강력한|역대급|압도적)", "이례적인 수준의")
+        ]
+        
+        for pattern, repl in spec_patterns:
+            if re.search(pattern, text):
+                # 단정형이면 해석형 어미로 교체
+                text = re.sub(pattern, repl, text)
+
+        # 3. INTERPRETATION 문구 강제 (Task 3)
+        # [I] 등급인데 단정적 어미(~다)로 끝나는지 체크
+        if is_interp and text.strip().endswith("다."):
+            # 허용 마커가 하나도 없으면 "관측된다."로 교체 시도
+            if not any(marker in text for marker in allowed_interp_markers):
+                text = text.replace("다.", " 점이 관측된다.")
+
         return text
 
     def _filter_level2_chain(self, level2_chain: list, market_data: dict) -> list:
-        """level2_chain 항목 필터링 (Task 1)"""
+        """level2_chain 항목 필터링 및 3계층 검증 (Task 1 & 2)"""
         if not level2_chain:
             return level2_chain
         
         filtered = []
         for item in level2_chain:
+            # [S] 태그가 붙은 문장은 필터링 단계에서 제거하도록 유도 (프롬프트에서 이미 SPECULATION은 S로 태그됨)
+            if "[S]" in item:
+                continue
+                
             filtered_item = self._filter_text(item, market_data)
             if filtered_item:
                 filtered.append(filtered_item)
         return filtered
 
     def load_existing_analysis(self):
-        """기존 today_analysis.json 로드 (Gemini 파싱 실패 시 폴백, Task 5)"""
+        """기존 today_analysis.json 로드 (Gemini 파싱 실패 시 폴백)"""
         p = self.analysis_dir / "today_analysis.json"
         if p.exists():
             try:
@@ -158,50 +119,31 @@ class AnalystAgent:
         return None
 
     def analyze(self, signal, raw_data):
-        """Gemini를 이용한 레벨2 데이터 관계 분석 (Hardened)"""
+        """Gemini를 이용한 레벨2 데이터 관계 분석 (3계층 관리 도입)"""
         print("  Gemini API 레벨2 분석 중...")
         
-        prompt = f"""
-너는 15년 차 시니어 시장 분석가다. 아래 제공된 Raw Data 간의 통계적 상관관계와 인과적 체인을 분석해라.
-반드시 [절대 규칙]을 준수해라.
+        market = raw_data.get("market", {}).get("data", {})
+        
+        prompt = ANALYST_PROMPT_TEMPLATE.format(
+            today=self.today,
+            topic=signal.get("topic"),
+            strength=signal.get("strength"),
+            market_summary=json.dumps(market, ensure_ascii=False),
+            cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
+            kospi_foreign_net=market.get("kospi_foreign_net", "0.00")
+        )
 
-[절대 규칙] (STRICT)
-1. **무근거 행위자 언급 금지**: 한국 기관/외국인 수급 데이터(kospi_foreign_net/inst_net 등)가 구체적 수치로 증명되지 않으면 "유입/매수/의도" 등으로 서술하지 마라.
-2. **심리/의도 추측 금지**: "안심하고 있다", "심리가 개선되었다", "지키려는 의도다"와 같은 표현은 절대 금지다. 대신 "VIX 하락 관측", "지표 간 동조화 현상" 등으로 서술해라.
-3. **인과 관계 엄격화**: A가 B를 "유도했다"는 표현보다 "A가 하락하는 가운데 B도 동반 하락하는 상관관계가 관측되었다"와 같이 중립적인 팩트 중심으로 서술해라.
-
-[Raw Data]
-{json.dumps(raw_data, ensure_ascii=False)}
-
-[신호 원문]
-토픽: {signal['topic']}
-왜 발생했나: {signal['why_anomalous']}
-
-[출력 형식 (JSON 전용)]
-{{
-  "topic": "{signal['topic']}",
-  "market_state": {{ "risk_appetite": "상승/하락/혼조", "hedging_activity": "증가/감소/정체", "conviction": "높음/낮음", "summary": "한 문장 요약" }},
-  "why_now": "왜 지금 이 현상이 중요한지 데이터 관점에서 설명 (과장 수식어 금지)",
-  "expectation_vs_reality": {{ "expectation": "시장 컨센서스", "reality": "실제 관측 데이터", "conflict": "괴리 포인트" }},
-  "level2_chain": ["A 지표 변화 관측", "B 지표와의 상관관계 확인", "C 지우 변화로 이어지는 흐름"],
-  "key_stocks": ["관련 한국 상장 종목 2~4개"],
-  "evidence_check": "사용된 핵심 데이터 필드 나열"
-}}
-
-반드시 ```json ... ``` 코드블록을 사용해서 출력해라.
-"""
         result = self.gemini.call_json(prompt, max_tokens=2500)
 
-        # Gemini 응답 파싱 실패 방어 (Task 5 & 6)
+        # Gemini 응답 파싱 실패 방어
         if not result or not result.get("topic"):
             print("  ⚠️ Gemini 응답 파싱 실패 — 기존 today_analysis.json 유지")
             existing = self.load_existing_analysis()
             if existing:
-                print(f"  [DEFENSE_TRACE] 기존 데이터 로드 성공: topic={existing.get('topic')[:20]}...")
                 return existing
             return {}
 
-        # 2차 필터링 적용
+        # 2차 필터링 적용 (3계층 준수 여부 사후 검증)
         result["level2_chain"] = self._filter_level2_chain(result.get("level2_chain", []), raw_data)
         result["why_now"] = self._filter_text(result.get("why_now", ""), raw_data)
         if "market_state" in result:
@@ -210,10 +152,9 @@ class AnalystAgent:
         return result
 
     def map_stocks(self, signal, analysis):
-        """관련 종목 매핑 (v6.0: MACRO 토픽은 종목보다 시나리오에 집중)"""
+        """관련 종목 매핑 (근거 브리지 체크 강화)"""
         target_type = signal.get("target_type", "MICRO_SECTOR_FOCUS")
         
-        # MACRO_GEOPOLITICAL 등 거대 담론은 억지 매핑 지양
         if "MACRO" in target_type:
             print(f"  📢 거대 담론({target_type}) 감지 — 종목보다 거시 시나리오에 집중합니다.")
             return { "date": self.today, "topic_signal": signal["topic"], "stocks": [], "bridge_validated": True }
@@ -238,21 +179,17 @@ class AnalystAgent:
             for s in sector_stocks[:2]:
                 stocks.append({ "ticker": s["ticker"], "name": s["name"], "sector": sector, "impact": "수혜", "reason": f"Sector Correlation with {signal['topic']}", "impact_level": "MEDIUM", "is_primary": True })
 
-        # [BRIDGE_VALIDATION] 근거 기반 필터링 (Task 7 & #050-REWORK)
+        # [BRIDGE_VALIDATION] 근거 기반 필터링
         final_stocks = []
         topic_str = topic_lower + " " + why_anomalous.lower()
         
         for s in stocks:
-            # S&P500/Nasdaq -> 삼성전자/SK하이닉스 브리지 체크 (STRICT: Index만으로는 부족)
             if "sp500" in topic_str or "nasdaq" in topic_str:
-                # KR 반도체 데이터나 직접 상관계수 데이터가 없으면 매크로 연동 종목은 제거 (Task 4-REWORK)
                 pass
-            # 유가 -> S-Oil/SK이노베이션 브리지 체크
             elif any(x in topic_str for x in ["oil", "wti", "유가"]):
                 if s.get("sector") == "에너지":
                     s["bridge_evidence"] = "Petroleum Product Margin Correlation"
                     final_stocks.append(s)
-            # 수급 데이터 (외국인/기관) 있는 경우만 수급 테마 허용
             elif "수급" in s.get("reason", ""):
                 if has_kr_foreign_data or has_kr_inst_data:
                     s["bridge_evidence"] = f"KR Data Driven (Foreign: {kospi_foreign_net}, Inst: {kospi_inst_net})"
@@ -260,12 +197,10 @@ class AnalystAgent:
             else:
                 pass
 
-        print(f"  [BRIDGE_TRACE] Validated {len(final_stocks)}/{len(stocks)} stocks.")
         return { "date": self.today, "topic_signal": signal["topic"], "stocks": final_stocks, "bridge_validated": True }
 
     def save_results(self, analysis, stocks_data):
         if not analysis or analysis == {} or not analysis.get("topic"):
-            print("  ⚠️ 분석 결과 없음 — 저장 건너뜀")
             return False
 
         (self.analysis_dir / "today_analysis.json").write_text(json.dumps(analysis, ensure_ascii=False, indent=2))
