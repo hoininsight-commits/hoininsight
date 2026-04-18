@@ -951,29 +951,13 @@ class CollectorAgent:
         print(f"✅ dart.json 저장 완료 (공시 {len(disclosures)}건 캡처)")
         return result
 
-    def run_all(self):
-        """전체 수집 프로세스 실행 (v7.0 통합)"""
-        print(f"\n🚀 HOIN COLLECTOR v7.0 통합 엔진 가동 [{self.today}]")
-        
-        market = self.collect_market()
-        macro = self.collect_macro()
-        sentiment = self.collect_sentiment()
-        fred = self.collect_fred()
-        ecos = self.collect_ecos()
-        consensus = self.collect_consensus()
-        
-        # 뉴스 기반 정밀 타격 공시 수집
-        keywords = self.extract_news_keywords(sentiment)
-        dart = self.collect_dart(keywords)
-        
-        # COT 스마트머니 수집
-        from src.agents.cot_collector import COTCollector
-        cot = COTCollector(output_dir=self.output_dir)
-        cot.collect()
-
-        
-        print(f"\n✨ 모든 데이터 수집 완료! (data/raw/{self.today})")
+    def run(self):
+        """전체 수집 프로세스 실행 (v3.0 modular)"""
+        print(f"\n🚀 AGENT-01 COLLECTOR v3.0 시작 [{self.today}]")
+        from src.agents.collectors.collector_runner import CollectorRunner
+        runner = CollectorRunner(output_dir=self.output_dir)
+        return runner.run_all()
 
 
 if __name__ == "__main__":
-    CollectorAgent().run_all()
+    CollectorAgent().run()

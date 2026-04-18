@@ -292,7 +292,7 @@ class DetectorAgent:
             # anomaly_log (v5.0 하이브리드 로그)
             (self.signal_dir / "anomaly_log.json").write_text(json.dumps(anomalies, ensure_ascii=False, indent=2))
 
-    def run(self):
+    def run(self, collector_result=None):
         print(f"\n🔍 AGENT-03 DETECTOR v7.0 시작 [{self.today}]")
         all_data = self.load_all_data()
         if not all_data: return {}
