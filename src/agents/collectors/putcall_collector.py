@@ -48,7 +48,8 @@ class PutCallCollector:
                     "total": latest.get("total_pc_ratio", 0.87),
                     "equity": latest.get("equity_pc_ratio", 0.72),
                     "index": latest.get("index_pc_ratio", 1.21),
-                    "date": latest.get("date", datetime.now().strftime("%Y-%m-%d"))
+                    "date": latest.get("date", datetime.now().strftime("%Y-%m-%d")),
+                    "source": "cboe_live"
                 }
             else:
                 raise ValueError("JSON 데이터 내 ratios 필드를 찾을 수 없습니다.")
@@ -67,9 +68,10 @@ class PutCallCollector:
                         last = hist[-1]
                         return {
                             "total": last.get("total", 0.87),
-                            "equity": 0.72,
-                            "index": 1.21,
-                            "date": last.get("date", "Unknown")
+                            "equity": last.get("equity", 0.72),
+                            "index": last.get("index", 1.21),
+                            "date": last.get("date", "Unknown"),
+                            "source": "fallback_history"
                         }
             except:
                 pass
@@ -79,7 +81,8 @@ class PutCallCollector:
             "total": 0.87,
             "equity": 0.72,
             "index": 1.21,
-            "date": datetime.now().strftime("%Y-%m-%d")
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "source": "fallback_default"
         }
 
     def calculate_signal(self, ratio: float) -> str:
@@ -91,8 +94,9 @@ class PutCallCollector:
         else:
             return "NEUTRAL"
 
-    def calculate_z_score(self, current_val: float) -> float:
+    def calculate_z_score(self, current_data: dict) -> float:
         """최근 20일간의 데이터를 기반으로 Z-score 계산"""
+        current_val = current_data["total"]
         history = []
         if self.history_file.exists():
             try:
@@ -103,7 +107,12 @@ class PutCallCollector:
 
         if not history:
             # 이력 없으면 현재 값 저장 후 0.0 반환
-            self._save_history([{"date": datetime.now().strftime("%Y-%m-%d"), "total": current_val}])
+            self._save_history([{
+                "date": datetime.now().strftime("%Y-%m-%d"), 
+                "total": current_val,
+                "equity": current_data.get("equity", 0.72),
+                "index": current_data.get("index", 1.21)
+            }])
             return 0.0
 
         # 최근 20개 추출
@@ -120,7 +129,12 @@ class PutCallCollector:
         # 히스토리 업데이트 (오늘 날짜 포함)
         today_str = datetime.now().strftime("%Y-%m-%d")
         if not any(h["date"] == today_str for h in history):
-            history.append({"date": today_str, "total": current_val})
+            history.append({
+                "date": today_str, 
+                "total": current_val,
+                "equity": current_data.get("equity", 0.72),
+                "index": current_data.get("index", 1.21)
+            })
             # 100개까지만 유지
             self._save_history(history[-100:])
             
@@ -138,16 +152,22 @@ class PutCallCollector:
             raw_data = self.fetch_data()
             total = raw_data["total"]
             
-            z_score = self.calculate_z_score(total)
+            z_score = self.calculate_z_score(raw_data)
             signal = self.calculate_signal(total)
             
+            # Safety Guard: 최초 실행/기본값 Fallback 시 지표 고정
+            if raw_data.get("source") == "fallback_default":
+                z_score = 0.0
+                signal = "NEUTRAL"
+
             output = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "total_pc_ratio": total,
                 "equity_pc_ratio": raw_data["equity"],
                 "index_pc_ratio": raw_data["index"],
                 "signal": signal,
-                "z_score": z_score
+                "z_score": z_score,
+                "source": raw_data.get("source", "unknown")
             }
             
             # 파일 저장
