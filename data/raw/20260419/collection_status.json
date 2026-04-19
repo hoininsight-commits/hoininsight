@@ -1,14 +1,16 @@
 {
   "date": "2026-04-19",
-  "run_at": "2026-04-19T17:23:33.491736",
-  "elapsed_seconds": 26.3,
+  "run_at": "2026-04-19T20:13:25.342288",
+  "elapsed_seconds": 28.5,
   "total_agents": 7,
-  "success_count": 7,
-  "failed_count": 0,
-  "failed_agents": [],
+  "success_count": 6,
+  "failed_count": 1,
+  "failed_agents": [
+    "PUTCALL"
+  ],
   "agent_results": {
     "CONSENSUS": "success",
-    "PUTCALL": "success",
+    "PUTCALL": "failed: 데이터 수집 실패: API 접근 제한 (Status: 403)",
     "SENTIMENT": "success",
     "COT": "success",
     "MARKET": "success",
