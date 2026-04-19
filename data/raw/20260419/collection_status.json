@@ -1,18 +1,18 @@
 {
   "date": "2026-04-19",
-  "run_at": "2026-04-19T15:24:21.957478",
-  "elapsed_seconds": 86.3,
+  "run_at": "2026-04-19T16:24:52.414282",
+  "elapsed_seconds": 171.7,
   "total_agents": 7,
   "success_count": 7,
   "failed_count": 0,
   "failed_agents": [],
   "agent_results": {
-    "CONSENSUS": "success",
     "PUTCALL": "success",
-    "COT": "success",
+    "CONSENSUS": "success",
     "MARKET": "success",
-    "MACRO": "success",
+    "COT": "success",
     "SENTIMENT": "success",
+    "MACRO": "success",
     "DART": "success"
   }
 }
