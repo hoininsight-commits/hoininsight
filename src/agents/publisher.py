@@ -229,16 +229,21 @@ class PublisherAgent:
         if pipeline_results and "fact_checker" in pipeline_results:
             fact_checker = pipeline_results["fact_checker"]
 
-        # [지시서 #054] 시장 상태 (Risk/Hedge/Conviction) 연산
+        # [지시서 #055] 핵심 지표 Z-score 추출
         market_stats = market.get("data", {}).get("multi_period_stats", {})
-        risk_vix = market_stats.get("vix", {}).get("z_score_20d", 0) or 0
-        hedge_dxy = market_stats.get("dxy", {}).get("z_score_20d", 0) or 0
-        
-        # 간단한 로직: VIX Z-score가 높으면 Risk Down, DXY Z-score가 높으면 Hedge Up
+        z_scores = {
+            "SP500": market_stats.get("sp500", {}).get("z_score_20d", 0),
+            "WTI": market_stats.get("wti_oil", {}).get("z_score_20d", 0),
+            "Gold": market_stats.get("gold", {}).get("z_score_20d", 0),
+            "DXY": market_stats.get("dxy", {}).get("z_score_20d", 0),
+            "VIX": market_stats.get("vix", {}).get("z_score_20d", 0)
+        }
+
+        # [지시서 #054/055] 시장 상태 (Risk/Hedge/Conviction) 연산
         market_state = {
-            "risk_appetite": "DOWN" if risk_vix > 1.0 else ("UP" if risk_vix < -1.0 else "NEUTRAL"),
-            "hedging_activity": "UP" if hedge_dxy > 1.0 else ("DOWN" if hedge_dxy < -1.0 else "NORMAL"),
-            "conviction": "HIGH" if abs(signal.get("strength", 0)) >= 8.5 else "MODERATE"
+            "risk_appetite": "하락" if z_scores["VIX"] > 1.0 else ("상승" if z_scores["VIX"] < -1.0 else "중립"),
+            "hedging_activity": "증가" if z_scores["DXY"] > 1.0 else ("감소" if z_scores["DXY"] < -1.0 else "보통"),
+            "conviction": "높음" if abs(signal.get("strength", 0)) >= 8.5 else "낮음"
         }
 
         # 롱폼 스크립트 Hook 추출
@@ -273,6 +278,7 @@ class PublisherAgent:
                 "agent_status": agent_status,
                 "cot_signals": cot_signals,
                 "market_state": market_state,
+                "z_scores": z_scores,
                 "script_hook": script_hook
             },
             "market": market,

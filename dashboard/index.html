@@ -3,79 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOIN Insight | Economic Hunter V2</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <title>HOIN Insight - Economic Hunter Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg-dark: #020617;
-            --bg-card: rgba(15, 23, 42, 0.6);
-            --border: rgba(255, 255, 255, 0.1);
-            --accent-blue: #38bdf8;
-            --accent-cyan: #22d3ee;
-            --accent-purple: #818cf8;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --success: #4ade80;
-            --danger: #f87171;
-            --warning: #fbbf24;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+            --fail: #ef4444;
+            --wait: #64748b;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.1) 0px, transparent 50%);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background: var(--bg); 
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .container { max-width: 800px; margin: 0 auto; }
+
+        /* Header 섹션 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 { font-size: 1.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
+        .header .time { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* 핵심 요약 영역 */
+        .topic-summary {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .topic-line { font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; }
+        .market-state-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .state-item {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .state-label { color: var(--text-dim); display: block; font-size: 0.75rem; margin-bottom: 4px; }
+        .state-value { font-weight: 800; color: var(--accent); }
+
+        .z-score-row {
+            background: rgba(56, 189, 248, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            text-align: center;
+            font-family: monospace;
+            color: var(--accent);
+            margin-top: 10px;
         }
 
-        /* Top Bar */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
+        /* 상세 섹션들 */
+        .section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
-
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
+        .section-title {
+            font-size: 0.9rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
         }
 
+        /* WHY NOW 텍스트 */
+        .why-now-text { font-size: 0.95rem; color: #e2e8f0; }
+
+        /* 오늘 분석 (Level2 Chain) */
+        .chain-list { list-style: none; }
+        .chain-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+        .chain-item:last-child { border-bottom: none; }
+        .tag-f { color: #facc15; font-weight: 800; margin-right: 4px; }
+        .tag-i { color: #22c55e; font-weight: 800; margin-right: 4px; }
+
+        /* 스크립트 Hook */
+        .hook-box {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 12px;
+            font-style: italic;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* 관련 종목 */
+        .stocks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stock-tag {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+        .no-stocks { color: var(--text-dim); font-size: 0.85rem; }
+
+        /* COT 표 */
+        .cot-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        .cot-table th { text-align: left; color: var(--text-dim); padding: 8px 4px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .cot-table td { padding: 10px 4px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .z-val { font-weight: 800; font-family: monospace; }
+        .percent-val { color: var(--text-dim); }
+
+        /* 파이프라인 상태 */
         .pipeline-status {
             display: flex;
-            gap: 10px;
-            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-
         .agent-icon {
             width: 32px;
             height: 32px;
@@ -83,446 +158,196 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            cursor: help;
+            background: var(--wait);
+            transition: all 0.3s;
         }
+        .agent-icon.SUCCESS { background: var(--success); box-shadow: 0 0 10px var(--success); }
+        .agent-icon.FAIL { background: var(--fail); box-shadow: 0 0 10px var(--fail); }
+        .agent-icon i { color: white; width: 18px; height: 18px; }
 
-        .agent-icon.SUCCESS { color: var(--success); border-color: var(--success); background: rgba(74, 222, 128, 0.1); }
-        .agent-icon.FAIL { color: var(--danger); border-color: var(--danger); background: rgba(248, 113, 113, 0.1); }
-        .agent-icon.WAITING { color: var(--text-secondary); opacity: 0.5; }
+        .pipeline-meta { text-align: center; margin-top: 10px; font-size: 0.75rem; color: var(--text-dim); }
 
-        /* Main Grid */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 1rem;
-            flex: 1;
-        }
-
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.25rem;
-        }
-
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Hero / Topic */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
-            margin-bottom: 0px;
-        }
-
-        .topic-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-
-        .topic-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: #fff;
-        }
-
-        .topic-meta {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .badge {
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .badge-strength { background: var(--accent-purple); color: white; }
-        .badge-type { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border); }
-
-        /* Market State Big Numbers */
-        .market-state-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .state-item {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .state-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600; }
-        .state-value { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; }
-        .state-value.UP { color: var(--success); }
-        .state-value.DOWN { color: var(--danger); }
-
-        /* Core Content */
-        .narrative-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .why-now {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            padding: 1rem;
-            background: rgba(56, 189, 248, 0.05);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        .hook-box {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            border-top: 1px dashed var(--border);
-            padding-top: 1rem;
-            margin-top: 1rem;
-        }
-
-        /* Level 2 Chain */
-        .chain-box {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .chain-item {
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            display: flex;
-            gap: 10px;
-        }
-
-        .tag { font-weight: 800; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; height: fit-content; }
-        .tag-f { background: rgba(56, 189, 248, 0.2); color: var(--accent-blue); }
-        .tag-i { background: rgba(129, 140, 248, 0.2); color: var(--accent-purple); }
-
-        /* Sidebar: Z-scores & COT */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .z-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .z-item {
-            padding: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .z-name { font-size: 0.75rem; font-weight: 600; }
-        .z-val { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; }
-        .z-val.ex { color: var(--danger); text-decoration: underline; }
-
-        /* COT Table */
-        .cot-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-
-        .cot-table th { text-align: left; padding: 8px; color: var(--text-secondary); font-weight: 600; border-bottom: 1px solid var(--border); }
-        .cot-table td { padding: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-        .cot-label { font-weight: 800; }
-        .cot-label.FLIP { color: #f472b6; }
-        .cot-label.STRONG { color: var(--accent-cyan); }
-
-        /* Stocks */
-        .stock-item {
-            padding: 10px;
-            background: linear-gradient(90deg, rgba(56, 189, 248, 0.1), transparent);
-            border-radius: 8px;
-            margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .stock-name { font-weight: 800; }
-        .stock-reason { font-size: 0.75rem; color: var(--text-secondary); text-align: right; }
-
-        /* Loading Overlay */
-        #loading {
-            position: fixed; inset: 0; background: var(--bg-dark); z-index: 1000;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem;
-        }
-        .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent-blue); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Mobile Adjustments */
-        @media (max-width: 1024px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .top-bar { flex-direction: column; gap: 1rem; }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .market-state-grid { grid-template-columns: 1fr; }
+            .z-score-row { font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
-    <div id="loading">
-        <div class="spinner"></div>
-        <p>경제사냥꾼이 데이터를 추격 중입니다...</p>
-    </div>
-
     <div class="container">
-        <div class="top-bar">
-            <div class="logo">HOIN INSIGHT <span style="font-weight: 400; font-size: 0.8rem; opacity: 0.7">HUNTER V2</span></div>
-            <div id="update_time" style="font-size: 0.75rem; color: var(--text-secondary)">-</div>
-            <div class="pipeline-status" id="pipeline_status">
-                <div class="agent-icon WAITING" data-agent="collector" title="Collector"><i data-lucide="database" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="learner" title="Learner"><i data-lucide="brain" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="detector" title="Detector"><i data-lucide="crosshair" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="analyst" title="Analyst"><i data-lucide="microscope" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="writer" title="Writer"><i data-lucide="pen-tool" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="fact_checker" title="FactChecker"><i data-lucide="shield-check" size="16"></i></div>
-                <div class="agent-icon WAITING" data-agent="publisher" title="Publisher"><i data-lucide="send" size="16"></i></div>
+        <header class="header">
+            <h1 id="page-title">ECONOMIC HUNTER</h1>
+            <div class="time" id="header-time">[날짜] / [마지막 파이프라인 실행 시각]</div>
+        </header>
+
+        <!-- 핵심 요약 -->
+        <div class="topic-summary">
+            <div class="topic-line" id="topic-display">토픽: [topic] / 강도: [strength] / 유형: [anomaly_type]</div>
+            
+            <div class="market-state-grid">
+                <div class="state-item">
+                    <span class="state-label">Risk Appetite</span>
+                    <span class="state-value" id="risk-value">상승</span>
+                </div>
+                <div class="state-item">
+                    <span class="state-label">Hedging Activity</span>
+                    <span class="state-value" id="hedge-value">감소</span>
+                </div>
+                <div class="state-item">
+                    <span class="state-label">Conviction</span>
+                    <span class="state-value" id="conviction-value">높음</span>
+                </div>
+            </div>
+
+            <div class="z-score-row" id="z-scores-display">
+                SP500 Z=0.0 | WTI Z=0.0 | Gold Z=0.0 | DXY Z=0.0 | VIX Z=0.0
             </div>
         </div>
 
-        <div class="main-grid">
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- Hero Topic Card -->
-                <div class="card hero-section">
-                    <div class="topic-row">
-                        <div style="flex: 1">
-                            <div id="display_date" style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 4px;">2026-04-19</div>
-                            <h1 class="topic-title" id="topic">-</h1>
-                            <div class="topic-meta">
-                                <span class="badge badge-strength" id="strength">STRENGTH: -</span>
-                                <span class="badge badge-type" id="anomaly_type">-</span>
-                            </div>
-                        </div>
-                        <div style="text-align: right">
-                            <div class="section-title"><i data-lucide="activity"></i> MARKET STATE</div>
-                            <div class="market-state-row" style="margin: 0; gap: 8px;">
-                                <div class="state-item" style="padding: 8px">
-                                    <div class="state-label">Risk</div>
-                                    <div class="state-value" id="risk_val">-</div>
-                                </div>
-                                <div class="state-item" style="padding: 8px">
-                                    <div class="state-label">Hedge</div>
-                                    <div class="state-value" id="hedge_val">-</div>
-                                </div>
-                                <div class="state-item" style="padding: 8px">
-                                    <div class="state-label">Conviction</div>
-                                    <div class="state-value" id="conv_val">-</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- WHY NOW -->
+        <div class="section">
+            <h2 class="section-title"><i data-lucide="help-circle"></i> WHY NOW</h2>
+            <div class="why-now-text" id="why-now-display">시장 해석 로딩 중...</div>
+        </div>
 
-                <!-- Analysis Grid -->
-                <div class="narrative-grid">
-                    <div class="card">
-                        <div class="section-title"><i data-lucide="zap"></i> WHY NOW</div>
-                        <div class="why-now" id="why_now">-</div>
-                        <div class="hook-box" id="hook">
-                            <div style="font-size: 0.7rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 4px; font-style: normal;">SCRIPT HOOK (STEP 1)</div>
-                            <span id="hook_text">-</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="section-title"><i data-lucide="layers"></i> LEVEL 2 CHAIN</div>
-                        <div class="chain-box" id="chain">
-                            <!-- Items via JS -->
-                        </div>
-                    </div>
-                </div>
+        <!-- 오늘 분석 -->
+        <div class="section">
+            <h2 class="section-title"><i data-lucide="zap"></i> 오늘 분석 (Level2 Chain)</h2>
+            <ul class="chain-list" id="chain-display">
+                <!-- Analysis steps go here -->
+            </ul>
+        </div>
 
-                <!-- COT Signals Table -->
-                <div class="card">
-                    <div class="section-title"><i data-lucide="bar-chart-3"></i> COT 주요 시그널 (스마트머니 동향)</div>
-                    <table class="cot-table">
-                        <thead>
-                            <tr>
-                                <th>ASSET</th>
-                                <th>SIGNAL</th>
-                                <th>PERCENTILE (52W)</th>
-                                <th>Z-SCORE (52W)</th>
-                                <th>DESCRIPTION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cot_body">
-                            <!-- Rows via JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- 오늘 스크립트 Hook -->
+        <div class="section">
+            <h2 class="section-title"><i data-lucide="mic"></i> 오늘 스크립트 Hook</h2>
+            <div class="hook-box" id="hook-display">롱폼 1단계 본문 로딩 중...</div>
+        </div>
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="card">
-                    <div class="section-title"><i data-lucide="grid"></i> CORE INDICATORS</div>
-                    <div class="z-grid" id="z_grid">
-                        <!-- Items via JS -->
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="section-title"><i data-lucide="target"></i> HUNTER'S TARGET</div>
-                    <div id="stocks">
-                        <!-- Items via JS -->
-                    </div>
-                </div>
-
-                <div class="card" style="background: linear-gradient(180deg, rgba(248, 113, 113, 0.05), transparent);">
-                    <div class="section-title" style="color: var(--danger)"><i data-lucide="alert-triangle"></i> FACT CHECK STATUS</div>
-                    <div id="fact_check" style="font-size: 0.85rem">
-                        -
-                    </div>
-                </div>
+        <!-- 관련 종목 -->
+        <div class="section">
+            <h2 class="section-title"><i data-lucide="target"></i> 관련 종목</h2>
+            <div class="stocks-list" id="stocks-display">
+                <span class="no-stocks">직접 연결 종목 없음 — 섹터 ETF 관찰 권장</span>
             </div>
         </div>
+
+        <!-- COT 주요 시그널 -->
+        <div class="section">
+            <h2 class="section-title"><i data-lucide="trending-up"></i> COT 주요 시그널</h2>
+            <table class="cot-table">
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Signal</th>
+                        <th>52w%</th>
+                        <th>Z-score</th>
+                    </tr>
+                </thead>
+                <tbody id="cot-body">
+                    <!-- COT data goes here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 파이프라인 상태 -->
+        <footer class="section" style="margin-bottom: 40px;">
+            <h2 class="section-title"><i data-lucide="activity"></i> 파이프라인 상태</h2>
+            <div class="pipeline-status">
+                <div class="agent-icon" data-agent="collector" title="Collector"><i data-lucide="download"></i></div>
+                <div class="agent-icon" data-agent="learner" title="Learner"><i data-lucide="book-open"></i></div>
+                <div class="agent-icon" data-agent="detector" title="Detector"><i data-lucide="search"></i></div>
+                <div class="agent-icon" data-agent="analyst" title="Analyst"><i data-lucide="brain"></i></div>
+                <div class="agent-icon" data-agent="writer" title="Writer"><i data-lucide="edit-3"></i></div>
+                <div class="agent-icon" data-agent="fact_checker" title="Fact Checker"><i data-lucide="check-circle"></i></div>
+                <div class="agent-icon" data-agent="publisher" title="Publisher"><i data-lucide="share-2"></i></div>
+            </div>
+            <div class="pipeline-meta" id="last-run-time">마지막 실행: [시각]</div>
+        </footer>
     </div>
 
     <script>
-        async function loadData() {
+        async function loadDashboard() {
             try {
-                const res = await fetch('./today_data.json');
-                const data = await res.json();
-                render(data);
-                document.getElementById('loading').style.display = 'none';
-            } catch (e) {
-                console.error(e);
-                document.getElementById('topic').innerText = "데이터 로딩 완료되지 않음";
-                setTimeout(() => document.getElementById('loading').style.display = 'none', 1000);
-            }
-        }
+                const response = await fetch('data/today_data.json');
+                const data = await response.json();
+                const today = data.today || {};
+                const signal = today.signal || {};
 
-        function render(data) {
-            const today = data.today;
-            
-            // Header & Hero
-            document.getElementById('update_time').innerText = `LAST SYNC: ${new Date(data.last_updated).toLocaleString()}`;
-            document.getElementById('display_date').innerText = today.date;
-            document.getElementById('topic').innerText = today.signal.topic;
-            document.getElementById('strength').innerText = `STRENGTH: ${today.signal.strength.toFixed(1)}`;
-            document.getElementById('anomaly_type').innerText = today.signal.anomaly_type;
+                // 1. 헤더 (날짜 / 시각)
+                const lastRunDate = new Date(data.last_updated);
+                document.getElementById('header-time').textContent = `${today.date} / ${lastRunDate.toLocaleTimeString()}`;
 
-            // Agent Status
-            const agents = ['collector', 'learner', 'detector', 'analyst', 'writer', 'fact_checker', 'publisher'];
-            agents.forEach(a => {
-                const status = today.agent_status?.[a] || 'WAITING';
-                const el = document.querySelector(`.agent-icon[data-agent="${a}"]`);
-                if (el) el.className = `agent-icon ${status}`;
-            });
+                // 2. 토픽 라인
+                document.getElementById('topic-display').textContent = 
+                    `토픽: ${signal.topic || '분석 중'} / 강도: ${signal.strength || 0} / 유형: ${signal.anomaly_type || 'N/A'}`;
 
-            // Market State
-            const riskEl = document.getElementById('risk_val');
-            riskEl.innerText = today.market_state.risk_appetite;
-            riskEl.className = `state-value ${today.market_state.risk_appetite === 'UP' ? 'UP' : (today.market_state.risk_appetite === 'DOWN' ? 'DOWN' : '')}`;
-            
-            const hedgeEl = document.getElementById('hedge_val');
-            hedgeEl.innerText = today.market_state.hedging_activity;
-            hedgeEl.className = `state-value ${today.market_state.hedging_activity === 'UP' ? 'UP' : (today.market_state.hedging_activity === 'DOWN' ? 'DOWN' : '')}`;
-            
-            document.getElementById('conv_val').innerText = today.market_state.conviction;
+                // 3. 시장 상태
+                const ms = today.market_state || {};
+                document.getElementById('risk-value').textContent = ms.risk_appetite || '중립';
+                document.getElementById('hedge-value').textContent = ms.hedging_activity || '보통';
+                document.getElementById('conviction-value').textContent = ms.conviction || '낮음';
 
-            // Narrative
-            document.getElementById('why_now').innerText = today.analysis.why_now || today.signal.why_now;
-            document.getElementById('hook_text').innerText = today.script_hook || "브리핑 파일에서 추출 중...";
+                // 4. Z-score 로우
+                const zs = today.z_scores || {};
+                document.getElementById('z-scores-display').textContent = 
+                    `SP500 Z=${zs.SP500?.toFixed(2) || 0} | WTI Z=${zs.WTI?.toFixed(2) || 0} | Gold Z=${zs.Gold?.toFixed(2) || 0} | DXY Z=${zs.DXY?.toFixed(2) || 0} | VIX Z=${zs.VIX?.toFixed(2) || 0}`;
 
-            // Chain
-            const chainBox = document.getElementById('chain');
-            const steps = (today.analysis.level2_chain || []);
-            chainBox.innerHTML = steps.map(s => {
-                const isFact = s.includes('[F]');
-                return `<div class="chain-item">
-                    <span class="tag ${isFact ? 'tag-f' : 'tag-i'}">${isFact ? 'F' : 'I'}</span>
-                    <span>${s.replace(/\[F\]|\[I\]/, '').trim()}</span>
-                </div>`;
-            }).join('');
+                // 5. WHY NOW
+                document.getElementById('why-now-display').textContent = signal.why_now || '해당 항목 없음';
 
-            // Z-Scores
-            const zGrid = document.getElementById('z_grid');
-            const m = data.market.data.multi_period_stats;
-            const keys = ['sp500', 'wti_oil', 'gold', 'dxy', 'vix'];
-            zGrid.innerHTML = keys.map(k => {
-                const val = (m[k]?.z_score_20d || 0);
-                return `<div class="z-item">
-                    <span class="z-name">${k.toUpperCase()}</span>
-                    <span class="z-val ${Math.abs(val) > 1.8 ? 'ex' : ''}">${val.toFixed(2)}σ</span>
-                </div>`;
-            }).join('');
+                // 6. 오늘 분석 (Level2 Chain)
+                const chainDisplay = document.getElementById('chain-display');
+                const chain = today.analysis?.level2_chain || [];
+                chainDisplay.innerHTML = chain.map(step => `
+                    <li class="chain-item">
+                        <span class="tag-f">[F]</span> ${step.split('[I]')[0].replace('[F]', '').trim()}
+                        ${step.includes('[I]') ? `<br><span class="tag-i">[I]</span> ${step.split('[I]')[1].trim()}` : ''}
+                    </li>
+                `).join('') || '<li class="chain-item">분석 데이터가 아직 없습니다.</li>';
 
-            // COT
-            const cotBody = document.getElementById('cot_body');
-            const signals = today.cot_signals || [];
-            if (signals.length > 0) {
-                cotBody.innerHTML = signals.map(s => `
+                // 7. 스크립트 Hook
+                document.getElementById('hook-display').textContent = today.script_hook || '스크립트 생성 중 오류 또는 데이터 없음';
+
+                // 8. 관련 종목
+                const stocksDisplay = document.getElementById('stocks-display');
+                const stocks = today.stocks || [];
+                if (stocks.length > 0) {
+                    stocksDisplay.innerHTML = stocks.map(s => `<span class="stock-tag">${s.name || s}</span>`).join('');
+                } else {
+                    stocksDisplay.innerHTML = '<span class="no-stocks">직접 연결 종목 없음 — 섹터 ETF 관찰 권장</span>';
+                }
+
+                // 9. COT 주요 시그널
+                const cotBody = document.getElementById('cot-body');
+                const cotSignals = today.cot_signals || [];
+                cotBody.innerHTML = cotSignals.map(s => `
                     <tr>
                         <td><b>${s.asset}</b></td>
-                        <td><span class="cot-label ${s.signal_label}">${s.signal_label}</span></td>
-                        <td>${s.percentile_52w}%</td>
-                        <td>${s.z_score_52w}σ</td>
-                        <td style="color: var(--text-secondary)">${s.description}</td>
+                        <td><span style="color: ${s.signal_label === 'STRONG' ? '#38bdf8' : '#f8fafc'}">${s.signal_label}</span></td>
+                        <td class="percent-val">${s.percentile_52w}%</td>
+                        <td class="z-val">${s.z_score_52w}σ</td>
                     </tr>
-                `).join('');
-            } else {
-                cotBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--text-secondary)">오늘 감지된 주요 스마트머니 신호 없음</td></tr>';
+                `).join('') || '<tr><td colspan="4" style="text-align:center">금일 주요 시그널 없음</td></tr>';
+
+                // 10. 파이프라인 상태 아이콘
+                const agents = ['collector', 'learner', 'detector', 'analyst', 'writer', 'fact_checker', 'publisher'];
+                agents.forEach(a => {
+                    const status = today.agent_status?.[a] || 'WAITING';
+                    const el = document.querySelector(`.agent-icon[data-agent="${a}"]`);
+                    if (el) el.className = `agent-icon ${status}`;
+                });
+                document.getElementById('last-run-time').textContent = `마지막 실행: ${lastRunDate.toLocaleString()}`;
+
+                lucide.createIcons();
+            } catch (err) {
+                console.error('Loader Error:', err);
+                document.getElementById('why-now-display').textContent = '데이터 로딩 실패. 서버 연결을 확인하세요.';
             }
-
-            // Stocks
-            const stocksBox = document.getElementById('stocks');
-            if (today.stocks && today.stocks.length > 0) {
-                stocksBox.innerHTML = today.stocks.map(s => `
-                    <div class="stock-item">
-                        <span class="stock-name">${s.ticker || s.name}</span>
-                        <span class="stock-reason">${s.reason || 'Bridge OK'}</span>
-                    </div>
-                `).join('');
-            } else {
-                stocksBox.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; padding: 1rem;">직접 연결 종목 없음 — 섹터 ETF 관찰 권장</div>';
-            }
-
-            // Fact Check
-            const fc = today.fact_checker || {};
-            document.getElementById('fact_check').innerHTML = `
-                <div style="margin-bottom: 4px;">상태: <span style="color: ${fc.status === 'SUCCESS' ? 'var(--success)' : 'var(--danger)'}">${fc.status || 'N/A'}</span></div>
-                <div style="opacity: 0.7">${fc.summary || '팩트체크 대기 중'}</div>
-            `;
-
-            lucide.createIcons();
         }
 
-        loadData();
+        window.onload = loadDashboard;
     </script>
 </body>
 </html>
