@@ -32,14 +32,12 @@
 
         .container { max-width: 900px; margin: 0 auto; min-height: 90vh; }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .fade-in { opacity: 0; animation: fadeIn 0.5s ease forwards; }
 
-        /* [1] Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -61,7 +59,6 @@
             font-size: 0.75rem;
         }
 
-        /* [2] Topic Block */
         .topic-block {
             margin-bottom: 24px;
         }
@@ -96,9 +93,8 @@
             margin-top: -4px;
         }
 
-        /* [3] WHY NOW Block */
         .why-now-card {
-            background-color: rgba(240, 180, 41, 0.05); /* Amber 5% */
+            background-color: rgba(240, 180, 41, 0.05);
             border: 1px solid var(--border);
             padding: 16px;
             border-radius: 4px;
@@ -121,7 +117,6 @@
         .tag-f { color: var(--amber); }
         .tag-i { color: var(--green); }
 
-        /* [4] Market Metrics Bar */
         .metrics-bar {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -151,7 +146,6 @@
         }
         .state-line span b { color: var(--text-main); margin-left: 4px; }
 
-        /* [5] Script Hook */
         .hook-section {
             padding-left: 16px;
             border-left: 3px solid var(--amber);
@@ -165,7 +159,6 @@
             line-height: 1.7;
         }
 
-        /* [6] Analysis Chain */
         .section-box {
             margin-bottom: 24px;
         }
@@ -180,7 +173,6 @@
         }
         .chain-item:last-child { border-bottom: none; }
 
-        /* [7] COT Table */
         .cot-section {
             margin-bottom: 32px;
         }
@@ -206,7 +198,6 @@
         .sig-flip { color: var(--red); }
         .sig-strong { color: var(--amber); }
 
-        /* [8] Pipeline Footer */
         .footer {
             border-top: 1px solid var(--border);
             padding-top: 20px;
@@ -241,24 +232,15 @@
         .dot.FAIL { background-color: var(--red); box-shadow: 0 0 8px var(--red); }
         .status-text.SUCCESS { color: var(--green); }
         .status-text.FAIL { color: var(--red); }
-
-        /* Utilities */
-        .amber { color: var(--amber); }
-        .green { color: var(--green); }
-        .red { color: var(--red); }
-        .dim { color: var(--text-dim); }
-
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- [1] Header -->
         <header class="header fade-in" style="animation-delay: 0.1s">
             <div class="logo">HOIN INSIGHT · ECONOMIC HUNTER</div>
             <div class="meta" id="header-time">202X-XX-XX · --:-- KST</div>
         </header>
 
-        <!-- [2] Topic Block -->
         <section class="topic-block fade-in" style="animation-delay: 0.2s">
             <div class="topic-header">
                 <span id="topic-badge" class="badge">--</span>
@@ -269,7 +251,6 @@
             </div>
         </section>
 
-        <!-- [3] WHY NOW -->
         <section class="why-now-card fade-in" style="animation-delay: 0.3s">
             <span class="label">▶ WHY NOW</span>
             <div class="why-now-content" id="why-now-display">
@@ -277,7 +258,6 @@
             </div>
         </section>
 
-        <!-- [4] Metrics Bar -->
         <section class="metrics-bar fade-in" style="animation-delay: 0.4s">
             <div class="z-score-grid" id="z-score-display">
                 <div class="z-item">SP500 --</div>
@@ -293,7 +273,6 @@
             </div>
         </section>
 
-        <!-- [5] Script Hook -->
         <section class="hook-section fade-in" style="animation-delay: 0.5s">
             <span class="label" style="margin-bottom: 6px;">▶ STEP 1 HOOK</span>
             <div class="hook-text" id="hook-display">
@@ -301,15 +280,12 @@
             </div>
         </section>
 
-        <!-- [6] Analysis Chain -->
         <section class="section-box fade-in" style="animation-delay: 0.6s">
             <span class="label">▶ 분석 체인</span>
             <ul class="chain-list" id="chain-display">
-                <!-- Data Bound -->
             </ul>
         </section>
 
-        <!-- [7] COT Signals -->
         <section class="cot-section fade-in" style="animation-delay: 0.7s">
             <span class="label">▶ COT 스마트머니</span>
             <div class="table-wrapper">
@@ -323,13 +299,11 @@
                         </tr>
                     </thead>
                     <tbody id="cot-body">
-                        <!-- Data Bound -->
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- [8] Pipeline Footer -->
         <footer class="footer fade-in" style="animation-delay: 0.8s">
             <div class="agent-status-bar">
                 <div class="agent-item" data-agent="collector">
@@ -369,17 +343,14 @@
                 const today = data.today || {};
                 const signal = today.signal || {};
 
-                // 1. Header Meta
                 const lastRunDate = new Date(data.last_updated);
                 const kstTime = lastRunDate.toLocaleTimeString('ko-KR', { hour12: false, hour: '2-digit', minute: '2-digit' }) + ' KST';
                 document.getElementById('header-time').textContent = `${today.date} · 마지막 실행: ${kstTime}`;
 
-                // 2. Topic
                 const topicTitle = document.getElementById('topic-title');
                 const topicBadge = document.getElementById('topic-badge');
                 topicTitle.textContent = signal.topic || '금일 분석 대기 중';
                 
-                // Badge Logic: [F] Amber, [I] Green, [S] Red
                 const filters = signal.filters_hit || [];
                 if (filters.includes('F')) {
                     topicBadge.textContent = 'FLASH';
@@ -391,28 +362,26 @@
                     topicBadge.textContent = 'SIGNAL';
                     topicBadge.className = 'badge badge-s';
                 }
+                const amber = '#f0b429';
                 document.getElementById('topic-meta-line').innerHTML = 
-                    `강도: <span class="amber">${signal.strength || 0}</span> · 유형: <span class="amber">${signal.anomaly_type || 'N/A'}</span>`;
+                    `강도: <span style="color: ${amber}">${signal.strength || 0}</span> · 유형: <span style="color: ${amber}">${signal.anomaly_type || 'N/A'}</span>`;
 
-                // 3. WHY NOW
                 const whyNowEl = document.getElementById('why-now-display');
                 if (signal.why_now) {
-                    // [F] [I] Styling
                     let html = signal.why_now
-                        .replace(/\[F\]/g, '<span class="tag tag-f">[F]</span>')
-                        .replace(/\[I\]/g, '<span class="tag tag-i">[I]</span>');
+                        .replace(/\[F\]/g, '<span style="color: ${amber}; font-weight:800;">[F]</span>')
+                        .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
                     whyNowEl.innerHTML = html;
                 }
 
-                // 4. Metrics Bar
                 const zBox = document.getElementById('z-score-display');
                 const zs = today.z_scores || {};
                 const metrics = ['SP500', 'WTI', 'Gold', 'DXY', 'VIX'];
                 zBox.innerHTML = metrics.map(m => {
                     const val = zs[m] || 0;
-                    const colorClass = val >= 1.0 ? 'green' : (val <= -1.0 ? 'red' : '');
+                    const color = val >= 1.0 ? '#22c55e' : (val <= -1.0 ? '#ef4444' : '#e8edf5');
                     const arrow = val > 0 ? '▲' : (val < 0 ? '▼' : '');
-                    return `<div class="z-item">${m} <span class="${colorClass}">${val >= 0 ? '+' : ''}${val.toFixed(2)}${arrow}</span></div>`;
+                    return `<div class="z-item">${m} <span style="color: ${color}">${val >= 0 ? '+' : ''}${val.toFixed(2)}${arrow}</span></div>`;
                 }).join('');
 
                 const ms = today.market_state || {};
@@ -420,56 +389,48 @@
                 document.getElementById('hedge-val').textContent = ms.hedging_activity || '보통';
                 document.getElementById('conviction-val').textContent = ms.conviction || '낮음';
 
-                // 5. Script Hook
-                document.getElementById('hook-display').textContent = today.script_hook ? `"${today.script_hook}"` : '"분석 중입니다..."';
+                document.getElementById('hook-display').textContent = today.script_hook ? '"' + today.script_hook + '"' : '"분석 중입니다..."';
 
-                // 6. Analysis Chain
                 const chainList = document.getElementById('chain-display');
                 const chain = today.analysis?.level2_chain || [];
                 chainList.innerHTML = chain.map(step => {
-                    let cleaned = step.replace(/\[F\]/g, '<span class="tag tag-f">[F]</span>')
-                                      .replace(/\[I\]/g, '<span class="tag tag-i">[I]</span>');
-                    return `<li class="chain-item">${cleaned}</li>`;
-                }).join('') || '<li class="chain-item dim">데이터 없음</li>';
+                    let cleaned = step.replace(/\[F\]/g, '<span style="color: ${amber}; font-weight:800;">[F]</span>')
+                                      .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
+                    return `<li class="chain-item" style="padding: 12px 0; border-bottom: 1px dotted rgba(255,255,255,0.1);">${cleaned}</li>`;
+                }).join('') || '<li class="chain-item">데이터 없음</li>';
 
-                // 7. COT Table
                 const cotBody = document.getElementById('cot-body');
                 const cotSignals = today.cot_signals || [];
                 cotBody.innerHTML = cotSignals.map(s => {
-                    let sigColor = s.signal_label === 'FLIP' ? 'sig-flip' : (s.signal_label === 'STRONG' ? 'sig-strong' : 'dim');
+                    let sigColor = s.signal_label === 'FLIP' ? '#ef4444' : (s.signal_label === 'STRONG' ? '#f0b429' : '#6b7a94');
                     return `
                         <tr>
-                            <td>${s.asset}</td>
-                            <td><span class="${sigColor}">${s.signal_label}</span></td>
-                            <td>${s.percentile_52w}%</td>
-                            <td>${s.z_score_52w > 0 ? '+' : ''}${s.z_score_52w.toFixed(1)}σ</td>
+                            <td style="padding: 10px 0;">${s.asset}</td>
+                            <td style="padding: 10px 0;"><span style="color: ${sigColor}">${s.signal_label}</span></td>
+                            <td style="padding: 10px 0;">${s.percentile_52w}%</td>
+                            <td style="padding: 10px 0;">${s.z_score_52w > 0 ? '+' : ''}${s.z_score_52w.toFixed(1)}σ</td>
                         </tr>
                     `;
-                }).join('') || '<tr><td colspan="4" class="dim">시그널 없음</td></tr>';
+                }).join('') || '<tr><td colspan="4">시그널 없음</td></tr>';
 
-                // 8. Pipeline Status
                 const agents = ['collector', 'detector', 'analyst', 'writer', 'fact_checker', 'publisher'];
                 agents.forEach(a => {
                     const status = today.agent_status?.[a] || 'WAITING';
-                    const parent = document.querySelector(`.agent-item[data-agent="${a}"]`);
+                    const parent = document.querySelector(".agent-item[data-agent='" + a + "']");
                     if (parent) {
                         const dot = parent.querySelector('.dot');
                         const text = parent.querySelector('.status-text');
-                        dot.className = `dot ${status}`;
-                        text.className = `status-text ${status}`;
+                        dot.className = "dot " + status;
+                        text.className = "status-text " + status;
                         text.textContent = status === 'SUCCESS' ? 'OK' : (status === 'FAIL' ? 'FAIL' : 'WAIT');
                     }
                 });
-
+                lucide.createIcons();
             } catch (err) {
-                console.error('Dashboard Update Error:', err);
+                console.error('Update Error:', err);
             }
         }
-
-        window.onload = () => {
-            updateDashboard();
-            lucide.createIcons();
-        };
+        window.onload = updateDashboard;
     </script>
 </body>
 </html>
