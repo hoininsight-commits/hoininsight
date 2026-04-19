@@ -485,10 +485,11 @@ class CollectorAgent:
             hist = self._fetch_yahoo_chart("^KS11", "5d")
             if len(hist) >= 2:
                 vol_change = float(hist["Volume"].iloc[-1]) - float(hist["Volume"].iloc[-2])
-                return round(vol_change / 1e8, 1)
+                val = round(vol_change / 1e8, 1)
+                return val if val != 0.0 else None
         except:
             pass
-        return 0.0
+        return None
 
     def _get_fear_greed(self) -> float:
         """Alternative.me Fear & Greed Index 실제 수집"""

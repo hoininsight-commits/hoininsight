@@ -137,7 +137,7 @@ class AnalystAgent:
             strength=signal.get("strength"),
             market_summary=json.dumps(market, ensure_ascii=False),
             cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
-            kospi_foreign_net=market.get("kospi_foreign_net", "0.00"),
+            kospi_foreign_net=str(market.get("kospi_foreign_net", "Unknown")),
             history_90d=json.dumps(raw_data.get("history_90d", {}), ensure_ascii=False)
         )
 

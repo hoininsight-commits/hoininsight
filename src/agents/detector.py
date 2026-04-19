@@ -58,8 +58,14 @@ class DetectorAgent:
                 f"| 20일Z-score={s.get('z_score_20d')} "
             )
 
-        fred_lines = [f"{k}: {v}" for k, v in fred.items()] if fred else []
-        ecos_lines = [f"{k}: {v}" for k, v in ecos.items()] if ecos else []
+        fred_lines = [f"{k}: {v}" for k, v in fred.items() if v is not None] if fred else []
+        ecos_lines = [f"{k}: {v}" for k, v in ecos.items() if v is not None] if ecos else []
+        
+        # kospi_foreign_net 추가 (null이면 제외)
+        foreign_net = market.get("kospi_foreign_net")
+        if foreign_net is not None:
+            fred_lines.append(f"kospi_foreign_net: {foreign_net}")
+
         news_lines = [f"[{h.get('source','')}] {h.get('title','')}" for h in headlines[:15]]
 
         summary = f"""
