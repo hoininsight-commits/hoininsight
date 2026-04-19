@@ -550,7 +550,19 @@ async function loadArchive(todayCard) {
   try {
     const res = await fetch('topics/index.json');
     const idx = await res.json();
-    const items = idx.items || idx || [];
+    const raw = idx.items || idx || [];
+    // 실제 topics/index.json 키 정규화
+    // 실제: { date, title, intensity, scope, why_now_type, path }
+    // JS 내부: { date, topic, strength, anomaly_type, filters_hit }
+    const items = raw.map(t => ({
+      date: t.date,
+      topic: t.topic || t.title || '--',
+      strength: t.strength || t.intensity || '--',
+      anomaly_type: t.anomaly_type || t.why_now_type || t.scope || 'SIGNAL',
+      filters_hit: t.filters_hit || ['S'],
+      path: t.path || null,
+      isToday: false
+    }));
     allTopics = [todayCard, ...items.filter(t => t.date !== todayCard.date).slice(0,40)];
   } catch(e) {
     allTopics = [todayCard];
