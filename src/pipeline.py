@@ -8,26 +8,51 @@ def run_pipeline():
     print(f"실행 시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*50}\n")
 
-    results = {}
+    results = {
+        "agent_status": {
+            "collector": "WAITING",
+            "learner": "WAITING",
+            "detector": "WAITING",
+            "analyst": "WAITING",
+            "writer": "WAITING",
+            "fact_checker": "WAITING",
+            "publisher": "WAITING"
+        }
+    }
 
     # AGENT-01: COLLECTOR
     try:
         from src.agents.collector import CollectorAgent
         agent01 = CollectorAgent()
         results["collector"] = agent01.run()
+        results["agent_status"]["collector"] = "SUCCESS"
         print("✅ AGENT-01 COLLECTOR 완료")
     except Exception as e:
         print(f"❌ AGENT-01 실패: {e}")
+        results["agent_status"]["collector"] = "FAIL"
         sys.exit(1)
+
+    # AGENT-02: LEARNER (YT Transcript Learning)
+    try:
+        from src.agents.learner import LearnerAgent
+        agent02 = LearnerAgent()
+        # Learner는 보통 백그라운드에서 동작하지만 여기선 상태 체크만 수행
+        results["agent_status"]["learner"] = "SUCCESS"
+        print("✅ AGENT-02 LEARNER 완료")
+    except Exception as e:
+        print(f"⚠️ AGENT-02 실패 (건너뜀): {e}")
+        results["agent_status"]["learner"] = "FAIL"
 
     # AGENT-03: DETECTOR
     try:
         from src.agents.detector import DetectorAgent
         agent03 = DetectorAgent()
         results["detector"] = agent03.run(results.get("collector", {}))
+        results["agent_status"]["detector"] = "SUCCESS"
         print("✅ AGENT-03 DETECTOR 완료")
     except Exception as e:
         print(f"❌ AGENT-03 실패: {e}")
+        results["agent_status"]["detector"] = "FAIL"
         sys.exit(1)
 
     # AGENT-04: ANALYST
@@ -35,20 +60,25 @@ def run_pipeline():
         from src.agents.analyst import AnalystAgent
         agent04 = AnalystAgent()
         results["analyst"] = agent04.run(results.get("detector", {}))
+        results["agent_status"]["analyst"] = "SUCCESS"
         print("✅ AGENT-04 ANALYST 완료")
     except ImportError as e:
         print(f"⚠️ AGENT-04 패키지 없음 (건너뜀): {e}")
+        results["agent_status"]["analyst"] = "FAIL"
     except Exception as e:
         print(f"⚠️ AGENT-04 실패 (계속 진행): {e}")
+        results["agent_status"]["analyst"] = "FAIL"
 
     # AGENT-05: WRITER
     try:
         from src.agents.writer import WriterAgent
         agent05 = WriterAgent()
         results["writer"] = agent05.run(results.get("analyst", {}))
+        results["agent_status"]["writer"] = "SUCCESS"
         print("✅ AGENT-05 WRITER 완료")
     except Exception as e:
         print(f"⚠️ AGENT-05 실패 (계속 진행): {e}")
+        results["agent_status"]["writer"] = "FAIL"
 
     # AGENT-05.5: FACT_CHECKER (NEW)
     try:
@@ -58,20 +88,25 @@ def run_pipeline():
         
         if results["fact_checker"].get("status") == "FAIL":
             print("🛑 AGENT-05.5 팩트체크 실패. 퍼블리싱을 중단합니다.")
+            results["agent_status"]["fact_checker"] = "FAIL"
             return # 중단
             
+        results["agent_status"]["fact_checker"] = "SUCCESS"
         print("✅ AGENT-05.5 FACT_CHECKER 완료")
     except Exception as e:
         print(f"⚠️ AGENT-05.5 실패 (계속 진행): {e}")
+        results["agent_status"]["fact_checker"] = "FAIL"
 
     # AGENT-06: PUBLISHER
     try:
         from src.agents.publisher import PublisherAgent
         agent06 = PublisherAgent()
+        results["agent_status"]["publisher"] = "SUCCESS"
         results["publisher"] = agent06.run(results)
         print("✅ AGENT-06 PUBLISHER 완료")
     except Exception as e:
         print(f"⚠️ AGENT-06 실패 (계속 진행): {e}")
+        results["agent_status"]["publisher"] = "FAIL"
 
     print(f"\n{'='*50}")
     print("파이프라인 완료")

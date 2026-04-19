@@ -98,6 +98,14 @@ class PublisherAgent:
         if p.exists():
             data["putcall"] = json.loads(p.read_text())
 
+        # [지시서 #055] COT 데이터 로드
+        if Path("data/raw").exists():
+            for d in sorted(Path("data/raw").iterdir(), reverse=True):
+                p = d / "cot.json"
+                if p.exists():
+                    data["cot"] = json.loads(p.read_text())
+                    break
+
         return data
 
     def update_content_log(self, data: dict) -> dict:
@@ -195,6 +203,22 @@ class PublisherAgent:
         stocks = data.get("stocks", {})
         candidates = data.get("candidates", {})
 
+        # [지시서 #055] COT 상세 데이터 로드 및 통계 포함
+        cot = data.get("cot", {})
+        cot_signals = cot.get("smart_money_signals", [])
+        
+        # [지시서 #055] 파이프라인 에이전트 상태 (7개)
+        agent_status = {}
+        if pipeline_results and "agent_status" in pipeline_results:
+            agent_status = pipeline_results["agent_status"]
+        else:
+            # 백업: 기본값 (모두 WAITING)
+            agent_status = {
+                "collector": "UNKNOWN", "learner": "UNKNOWN", "detector": "UNKNOWN",
+                "analyst": "UNKNOWN", "writer": "UNKNOWN", "fact_checker": "UNKNOWN", "publisher": "UNKNOWN"
+            }
+        
+        # 원본 데이터 객체들 복구
         market = data.get("market", {})
         macro = data.get("macro", {})
         sentiment = data.get("sentiment", {})
@@ -246,14 +270,16 @@ class PublisherAgent:
                 "content_id": content.get("id", ""),
                 "status": "승인대기",
                 "fact_checker": fact_checker,
-                "putcall": putcall,
+                "agent_status": agent_status,
+                "cot_signals": cot_signals,
                 "market_state": market_state,
                 "script_hook": script_hook
             },
             "market": market,
             "macro": macro,
             "sentiment": sentiment,
-            "putcall": putcall
+            "putcall": putcall,
+            "cot": cot
         }
 
         output_path = self.dashboard_dir / "today_data.json"
@@ -261,11 +287,19 @@ class PublisherAgent:
             json.dumps(dashboard_data, ensure_ascii=False, indent=2)
         )
         # GitHub Pages용 docs 폴더 업데이트
-        docs_path = self.base_dir / "docs" / "today_data.json"
-        docs_path.write_text(
+        docs_dir = self.base_dir / "docs"
+        docs_dir.mkdir(exist_ok=True)
+        
+        # today_data.json 복사
+        (docs_dir / "today_data.json").write_text(
             json.dumps(dashboard_data, ensure_ascii=False, indent=2)
         )
-        print(f"  대시보드 데이터 생성: {output_path}, {docs_path}")
+        # index.html 복사 (지시서 #055 자동 반영 보장)
+        source_html = self.dashboard_dir / "index.html"
+        if source_html.exists():
+            (docs_dir / "index.html").write_text(source_html.read_text(encoding="utf-8"))
+        
+        print(f"  대시보드 데이터 및 HTML 동기화 완료: {docs_dir}")
 
     def generate_brief(self, data: dict) -> str:
         """선장 확인용 브리핑 텍스트 생성"""

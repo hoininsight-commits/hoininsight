@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir -p docs/data
           mkdir -p docs/ui
+          cp -r dashboard/* docs/ || true
           touch docs/.nojekyll
 
       - uses: actions/setup-python@v5

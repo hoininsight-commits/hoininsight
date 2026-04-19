@@ -61,7 +61,9 @@ class COTCollector:
         except Exception as e:
             print(f"  ❌ TFF 수집 실패: {e}")
 
-        signals = self._calc_signals(results)
+        # 52주 통계 계산 (지시서 #055)
+        history_stats = self._calc_52w_stats()
+        signals = self._calc_signals(results, history_stats)
 
         result = {
             "date": datetime.now().strftime("%Y-%m-%d"),
@@ -69,7 +71,8 @@ class COTCollector:
             "source": "CFTC COT Report",
             "positions": results,
             "smart_money_signals": signals,
-            "top_signal": self._get_top_signal(signals)
+            "top_signal": self._get_top_signal(signals),
+            "history_stats": history_stats
         }
 
         output_path = self.output_dir / "cot.json"
@@ -180,7 +183,72 @@ class COTCollector:
 
         return results
 
-    def _calc_signals(self, positions: dict) -> list:
+    def _calc_52w_stats(self) -> dict:
+        """최근 52주 데이터를 수집하여 Z-score 및 Percentile 계산"""
+        print("  📈 COT 52주 통계 산출 중 (금융 + 원자재)...")
+        try:
+            import cot_reports as cot
+            current_year = datetime.now().year
+            
+            # 금융(TFF) 데이터 수집 및 통계
+            df_cur_tff = cot.cot_year(current_year, "traders_in_financial_futures_fut")
+            df_prev_tff = cot.cot_year(current_year - 1, "traders_in_financial_futures_fut")
+            df_tff = pd.concat([df_prev_tff, df_cur_tff])
+            
+            # 원자재(Disaggregated) 데이터 수집 및 통계
+            df_cur_dis = cot.cot_year(current_year, "disaggregated_fut")
+            df_prev_dis = cot.cot_year(current_year - 1, "disaggregated_fut")
+            df_dis = pd.concat([df_prev_dis, df_cur_dis])
+            
+            stats = {}
+            
+            # 금융 타겟
+            tff_targets = [("SP500", "E-MINI S&P 500"), ("Nasdaq", "NASDAQ"), ("DXY", "U.S. DOLLAR INDEX"), ("US10Y", "10-YEAR T-NOTE")]
+            for key, keyword in tff_targets:
+                s = self._calculate_contract_stats(df_tff, keyword, "Lev_Money_Positions_Long_All", "Lev_Money_Positions_Short_All", "Leveraged Funds Longs", "Leveraged Funds Shorts")
+                if s: stats[key] = s
+                
+            # 원자재 타겟
+            dis_targets = [("WTI", "CRUDE OIL"), ("Gold", "GOLD")]
+            for key, keyword in dis_targets:
+                s = self._calculate_contract_stats(df_dis, keyword, "M_Money_Positions_Long_All", "M_Money_Positions_Short_All", "Money Manager Longs", "Money Manager Shorts")
+                if s: stats[key] = s
+            
+            return stats
+        except Exception as e:
+            print(f"  ⚠️ COT 통계 계산 실패: {e}")
+            return {}
+
+    def _calculate_contract_stats(self, df, keyword, col_long_p, col_short_p, col_long_alt, col_short_alt) -> Optional[dict]:
+        try:
+            col_market = "Market_and_Exchange_Names" if "Market_and_Exchange_Names" in df.columns else "Market and Exchange Names"
+            col_date = "Report_Date_as_YYYY-MM-DD" if "Report_Date_as_YYYY-MM-DD" in df.columns else "As of Date in Form YYYY-MM-DD"
+            
+            col_l = col_long_p if col_long_p in df.columns else col_long_alt
+            col_s = col_short_p if col_short_p in df.columns else col_short_alt
+            
+            sub = df[df[col_market].str.contains(keyword, case=False, na=False)].copy()
+            if sub.empty: return None
+            
+            sub[col_date] = pd.to_datetime(sub[col_date])
+            sub = sub.sort_values(col_date).tail(52)
+            
+            sub["net"] = pd.to_numeric(sub[col_l], errors='coerce').fillna(0) - pd.to_numeric(sub[col_s], errors='coerce').fillna(0)
+            
+            current_net = sub["net"].iloc[-1]
+            avg = sub["net"].mean()
+            std = sub["net"].std()
+            
+            return {
+                "z_score_52w": round((current_net - avg) / std, 2) if std > 0 else 0,
+                "percentile_52w": round(sub["net"].rank(pct=True).iloc[-1] * 100, 1),
+                "avg_52w": round(avg),
+                "max_52w": round(sub["net"].max()),
+                "min_52w": round(sub["net"].min())
+            }
+        except: return None
+
+    def _calc_signals(self, positions: dict, history_stats: dict = None) -> list:
         signals = []
         for key, pos in positions.items():
             net_change = pos.get("net_change", 0)
@@ -190,6 +258,9 @@ class COTCollector:
                 continue
 
             change_pct = (net_change / abs(prev_net) * 100)
+            
+            # 52주 통계 매핑
+            h_stats = history_stats.get(key, {}) if history_stats else {}
 
             if abs(change_pct) >= 20:
                 signal_label = "STRONG"
@@ -211,6 +282,8 @@ class COTCollector:
                     "change_pct": round(change_pct, 1),
                     "direction": pos["direction"],
                     "change_direction": pos["change_direction"],
+                    "percentile_52w": h_stats.get("percentile_52w", 0),
+                    "z_score_52w": h_stats.get("z_score_52w", 0),
                     "description": self._build_description(
                         key, net_change, change_pct, direction_flip, pos
                     )

@@ -141,7 +141,7 @@ class WriterAgent:
         (self.script_dir / "today_script_short.md").write_text(short_script, encoding="utf-8")
         print(f"  스크립트 저장 완료: {self.script_dir}")
 
-    def run(self):
+    def run(self, analyst_results=None):
         print(f"\n✍️ AGENT-05 WRITER 시작 [{self.today}]")
         context = self.load_data()
         if not context:
