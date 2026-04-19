@@ -81,6 +81,32 @@ class DetectorAgent:
 """
         return summary
 
+    def extract_json(self, response_text: str) -> Optional[dict]:
+        """Gemini 응답에서 JSON만 추출 (v7.2 강화)"""
+        import re
+        if not response_text: return None
+        
+        # 방법 1: 그대로 파싱
+        try:
+            return json.loads(response_text)
+        except: pass
+        
+        # 방법 2: ```json ... ``` 블록 추출
+        match = re.search(r'```(?:json)?\s*([\s\S]*?)```', response_text)
+        if match:
+            try:
+                return json.loads(match.group(1).strip())
+            except: pass
+            
+        # 방법 3: { } 블록 추출
+        match = re.search(r'(\{[\s\S]*\})', response_text)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except: pass
+
+        return None
+
     def discover_autonomous_narratives(self, all_data: dict) -> list:
         """AI 자율 담론 사냥: 시장의 모순(Anomaly)과 기대 충돌을 스스로 포착 (v7.0)"""
         sentiment = all_data.get("sentiment", {}).get("data", {})
@@ -89,7 +115,14 @@ class DetectorAgent:
         
         if not headlines or not self.gemini: return []
 
-        prompt = f"""
+        system_prompt = """
+        You are a JSON-only response system.
+        NEVER output explanations, comments, or natural language.
+        ALWAYS respond with valid JSON only.
+        If you cannot generate valid JSON, respond with: {"error": "parse_failed"}
+        """
+
+        prompt = f"""{system_prompt}
 너는 HOIN Insight의 '경제사냥꾼' 엔진이다. 지표와 뉴스를 분석해 오늘 시장에서 가장 '이상한(Anomaly)' 서사 3가지를 선정해라.
 [오늘 지표] {json.dumps(market, ensure_ascii=False)}
 [뉴스] {json.dumps([h.get('title') for h in headlines[:15]], ensure_ascii=False)}
@@ -98,7 +131,13 @@ class DetectorAgent:
 [ {{ "topic": "제목", "reason": "이유", "strength": 점수, "related_keywords": [], "anomaly_type": "SPEED|CORRELATION|NEWS_MISMATCH" }} ]
 """
         try:
+            # GeminiClient.call_json 사용 (내부에서 application/json mime_type 적용됨)
             results = self.gemini.call_json(prompt)
+            if not results:
+                # 직접 호출 후 로컬 추출 시도 (Fallback)
+                raw_text = self.gemini.call(prompt)
+                results = self.extract_json(raw_text)
+            
             return results if isinstance(results, list) else []
         except: return []
 
@@ -107,7 +146,14 @@ class DetectorAgent:
         if not data_summary or len(data_summary.strip()) < 50:
             return []
 
-        prompt = f"""
+        system_prompt = """
+        You are a JSON-only response system.
+        NEVER output explanations, comments, or natural language.
+        ALWAYS respond with valid JSON only.
+        If you cannot generate valid JSON, respond with: {"error": "parse_failed"}
+        """
+
+        prompt = f"""{system_prompt}
 너는 경제사냥꾼의 탐지 엔진이다. 아래 데이터를 보고 가장 이상한 징후 3개를 찾아라.
 [데이터 요약]
 {data_summary}
@@ -128,6 +174,9 @@ class DetectorAgent:
 """
         try:
             results = self.gemini.call_json(prompt, max_tokens=1500)
+            if not results:
+                raw_text = self.gemini.call(prompt, max_tokens=1500)
+                results = self.extract_json(raw_text)
             return results if isinstance(results, list) else []
         except: return []
 

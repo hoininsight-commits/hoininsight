@@ -41,25 +41,33 @@ class GeminiClient:
         """Alias for call() to satisfy existing verification scripts"""
         return self.call(prompt, max_tokens)
 
-    def call(self, prompt: str, max_tokens: int = 4000) -> str:
+    def call(self, prompt: str, max_tokens: int = 4000, is_json: bool = False) -> str:
         """텍스트 생성 호출 (재시도 로직 포함)"""
         if not self.client:
             return ""
         
         for attempt in range(3):
             try:
+                config = genai.types.GenerateContentConfig(
+                    max_output_tokens=max_tokens,
+                    temperature=0.7,
+                )
+                if is_json:
+                    config.response_mime_type = "application/json"
+
                 response = self.client.models.generate_content(
                     model=self.model_name,
                     contents=prompt,
-                    config=genai.types.GenerateContentConfig(
-                        max_output_tokens=max_tokens,
-                        temperature=0.7,
-                    )
+                    config=config
                 )
                 # thought_signature 포함 시 response.text에 붙는 경고문 제거를 위해 part.text만 추출
                 text_parts = [part.text for part in response.candidates[0].content.parts if part.text]
                 return "".join(text_parts).strip()
             except Exception as e:
+                # 400 에러 중 mime_type 관련 에러는 지원하지 않는 경우이므로 일반 호출로 전환
+                if "400" in str(e) and is_json:
+                    return self.call(prompt, max_tokens, is_json=False)
+                
                 if "503" in str(e) and attempt < 2:
                     wait_time = (attempt + 1) * 2
                     print(f"  ⚠️ Gemini Busy (503). Retrying in {wait_time}s... ({attempt+1}/3)")
@@ -72,55 +80,56 @@ class GeminiClient:
     def call_json(self, prompt: str, max_tokens: int = 2000) -> dict:
         import json, re
         try:
-            response = self.call(prompt, max_tokens)
+            # 1. MIME Type 설정하여 호출 시도
+            response = self.call(prompt, max_tokens, is_json=True)
             if not response:
                 return {}
 
-            # 방법 1: 그대로 파싱
+            # 방법 1: 그대로 파싱 시도
             try:
                 return json.loads(response)
             except json.JSONDecodeError:
                 pass
 
-            # 방법 2: ```json 코드블록 추출
-            match = re.search(r'```json\s*([\s\S]*?)\s*```', response)
+            # 방법 2: ```json ... ``` 블록 추출
+            match = re.search(r'```(?:json)?\s*([\s\S]*?)```', response)
             if match:
                 try:
-                    return json.loads(match.group(1))
+                    return json.loads(match.group(1).strip())
                 except json.JSONDecodeError:
                     pass
 
-            # 방법 3: { } 또는 [ ] 블록 추출 (미완성 블록 포함)
+            # 방법 3: { } 또는 [ ] 블록 추출 (가장 넓은 범위 탐색)
+            # { 로 시작해서 } 로 끝나는 최상위 블록 찾기
+            brace_match = re.search(r'(\{[\s\S]*\})', response)
+            if brace_match:
+                try:
+                    return json.loads(brace_match.group(1))
+                except json.JSONDecodeError:
+                    pass
+            
+            # [ 로 시작해서 ] 로 끝나는 최상위 블록 찾기
+            bracket_match = re.search(r'(\[[\s\S]*\])', response)
+            if bracket_match:
+                try:
+                    return json.loads(bracket_match.group(1))
+                except json.JSONDecodeError:
+                    pass
+
+            # 방법 4: 복구 시도 (미완성 블록)
             match = re.search(r'(\{[\s\S]*|\[[\s\S]*)', response)
             if match:
                 try:
-                    raw_json = match.group(0)
-                    # 최대한 닫는 괄호까지만 일단 시도
-                    last_brace = raw_json.rfind('}')
-                    last_bracket = raw_json.rfind(']')
-                    cut_off = max(last_brace, last_bracket)
-                    if cut_off != -1:
-                        raw_json = raw_json[:cut_off+1]
+                    raw_json = match.group(0).strip()
+                    # 열린 괄호 수만큼 닫기
+                    open_braces = raw_json.count('{') - raw_json.count('}')
+                    open_brackets = raw_json.count('[') - raw_json.count(']')
                     
-                    try:
-                        return json.loads(raw_json)
-                    except json.JSONDecodeError:
-                        # 복구 시도
-                        # 1. 문자열이 열려 있는지 확인
-                        quotes = re.findall(r'(?<!\\)"', raw_json)
-                        if len(quotes) % 2 != 0:
-                            raw_json += '"'
+                    if raw_json.endswith(','):
+                        raw_json = raw_json[:-1]
                         
-                        # 2. 열린 괄호 수만큼 닫기
-                        open_braces = raw_json.count('{') - raw_json.count('}')
-                        open_brackets = raw_json.count('[') - raw_json.count(']')
-                        
-                        raw_json = raw_json.strip()
-                        if raw_json.endswith(','):
-                            raw_json = raw_json[:-1]
-                            
-                        raw_json += ']' * open_brackets + '}' * open_braces
-                        return json.loads(raw_json)
+                    raw_json += ']' * max(0, open_brackets) + '}' * max(0, open_braces)
+                    return json.loads(raw_json)
                 except Exception:
                     pass
 

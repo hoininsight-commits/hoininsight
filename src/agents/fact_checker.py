@@ -53,167 +53,142 @@ class FactCheckerAgent:
 
     def extract_values_from_script(self, script: str) -> List[dict]:
         """
-        스크립트 본문에서 수치 데이터 추출 및 유형 분류
+        스크립트 본문에서 수치 데이터 추출 (v7.2 패턴 기반 방식)
         """
-        # 수치 패턴 (단순 숫자 + 선택적 단위)
+        INDICATOR_PATTERNS = {
+            'sp500': r'S&P\s*500[^\d]*(\d{3,5}\.?\d*)',
+            'kospi': r'코스피[^\d]*(\d{3,5}\.?\d*)',
+            'vix': r'VIX[^\d]*(\d{1,3}\.?\d*)',
+            'wti_oil': r'WTI[^\d]*\$?(\d{2,3}\.?\d*)',
+            'gold': r'금[^\d]*(\d{4,5}\.?\d*)',
+            'dxy': r'달러\s*인덱스[^\d]*(\d{2,3}\.?\d*)',
+            'us10y': r'10년물[^\d]*(\d{1,2}\.?\d*)',
+            'usd_krw': r'환율[^\d]*(\d{3,4}\.?\d*)',
+        }
+
+        SKIP_PATTERNS = [
+            r'\d+일',      # "90일", "20일"
+            r'\d+주',      # "52주"
+            r'\d+개월',    # "3개월"
+            r'\d+년',      # "1년"
+            r'\d+배',      # "2배"
+            r'top\d+',
+            r'\d+위',
+        ]
+
+        extracted = []
+        
+        # 1. 지표별 정밀 패턴 매칭
+        for key, pattern in INDICATOR_PATTERNS.items():
+            matches = list(re.finditer(pattern, script, re.IGNORECASE))
+            for m in matches:
+                try:
+                    val = float(m.group(1).replace(',', ''))
+                    # SKIP_PATTERNS에 걸리는지 확인 (값 주변 10자 이내)
+                    context = script[max(0, m.start()-10):min(len(script), m.end()+10)]
+                    if any(re.search(p, context) for p in SKIP_PATTERNS):
+                        continue
+                    
+                    extracted.append({
+                        "raw": m.group(1),
+                        "sentence": script[max(0, m.start()-30):min(len(script), m.end()+30)].strip(),
+                        "key": key,
+                        "value": val,
+                        "type": "TYPE_1" # 현재가로 우선 간주 (지표명+숫자 조합)
+                    })
+                except: continue
+
+        # 2. Z-score 및 변화율 (기존 단순 숫자 추출 방식 유지하되 SKIP 적용)
         num_pattern = r'([-+]?\d[\d,.]*)'
         matches = list(re.finditer(num_pattern, script))
         
-        extracted = []
         for m in matches:
             start, end = m.span()
-            raw_value = m.group(1).replace(',', '')
-            
-            if not raw_value or raw_value in ['.', '-', '+']:
+            # 이미 1단계에서 추출된 영역이면 스킵
+            if any(e['key'] in script[max(0, start-15):end].lower() for e in extracted if e['type'] == 'TYPE_1'):
+                # (중복 가능성 높음, 하지만 Z-score 등은 별도 추출 필요)
+                pass
+
+            # SKIP_PATTERNS 체크
+            context_mid = script[max(0, start-5):min(len(script), end+5)]
+            if any(re.search(p, context_mid) for p in SKIP_PATTERNS):
                 continue
 
             try:
-                # 마지막에 점으로 끝나면 제거 (문장의 마침표일 확률 높음)
-                if raw_value.endswith('.'):
-                    raw_value = raw_value[:-1]
+                raw_value = m.group(1).replace(',', '')
+                if raw_value.endswith('.'): raw_value = raw_value[:-1]
                 value = float(raw_value)
-            except:
-                continue
+            except: continue
 
-            # 전후 맥락 추출
-            prefix = script[max(0, start-15):start].lower() # 15자로 단축 (정밀도 향상)
-            unit_match = re.search(r'^(%|bp|\$|배|포인트|원|계약|contracts|건|개|시|분|만|천)', script[end:])
+            prefix = script[max(0, start-15):start].lower()
+            unit_match = re.search(r'^(%|bp|\$|배|포인트|원|계약|contracts)', script[end:])
             unit = unit_match.group(1) if unit_match else ""
             suffix = script[end + len(unit):end + 15].lower()
             
-            # 한국어 단위 처리 (예: 47만 -> 470000, 9천 -> 9000)
-            if unit == "만":
-                value *= 10000
-                unit = ""
-            elif unit == "천":
-                value *= 1000
-                unit = ""
-            
-            # 시간/수량 단위 스킵
-            if unit in ["시", "분", "건", "개", "배"] and "z-score" not in prefix:
-                continue
-            
-            # 엔티티 식별 (가장 가까운 엔티티 찾기)
-            found_key = None
-            min_dist = 999
-            for key, mapped_key in self.entity_map.items():
-                pos = prefix.rfind(key)
-                if pos != -1:
-                    dist = len(prefix) - pos
-                    if dist < min_dist:
-                        min_dist = dist
-                        found_key = mapped_key
-            
-            # 숫자 본문에 포함된 경우 (예: "vix17")
-            if not found_key:
+            # Z-score 탐지 (강화)
+            if any(word in (prefix + suffix) for word in ["z-score", "z점수", "z-값"]):
+                # 가장 가까운 엔티티 찾기
+                found_key = None
+                min_dist = 999
                 for key, mapped_key in self.entity_map.items():
-                    if key in m.group(1).lower():
-                        found_key = mapped_key
-                        break
-            
-            if not found_key:
-                continue
+                    pos = prefix.rfind(key)
+                    if pos != -1:
+                        dist = len(prefix) - pos
+                        if dist < min_dist:
+                            min_dist = dist
+                            found_key = mapped_key
+                
+                if found_key:
+                    extracted.append({
+                        "raw": f"{raw_value}{unit}",
+                        "sentence": script[max(0, start-30):min(len(script), end+30)].strip(),
+                        "key": found_key,
+                        "value": value,
+                        "type": "TYPE_3"
+                    })
 
-            # 유형 분류 (Z-score 최우선 — "상승/하락" 키워드보다 우선 적용)
-            v_type = "UNKNOWN"
-            context = (prefix + " " + unit + " " + suffix).strip()
-
-            if any(word in context for word in ["z-score", "z점수", "표준편차"]):
-                v_type = "TYPE_3" # Z-score (최우선)
-            elif "%" in unit or any(word in context for word in ["상승", "하락", "변화", "등락", "올랐", "떨어", "5일", "주간"]):
-                v_type = "TYPE_2" # 변화율
-            elif any(word in context for word in ["계약", "contracts", "포지션", "매수", "매도"]):
-                if unit not in ["원", "$"]:
-                    v_type = "TYPE_4" # 계약수
-            elif unit in ["원", "$", "포인트"] or not unit:
-                if value > 50: # 가격은 보통 50 이상 (달러/포인트 등)
-                    v_type = "TYPE_1" # 현재가
-
-            if v_type != "UNKNOWN":
-                extracted.append({
-                    "raw": f"{raw_value}{unit}",
-                    "sentence": script[max(0, start-40):min(len(script), end+40)].strip(),
-                    "key": found_key,
-                    "value": value,
-                    "unit": unit,
-                    "type": v_type
-                })
-        
         return extracted
 
     def verify(self, script: str) -> Tuple[bool, List[str]]:
         """유형별 수치 대조 검증 (오차 허용 범위 적용)"""
         ref_data = self.load_reference_data()
         if not ref_data:
-            return True, ["⚠️ 참조 데이터 데이터가 없어 검증을 스킵합니다."]
+            return True, ["⚠️ 참조 데이터가 없어 검증을 스킵합니다."]
 
         market_data = (ref_data.get("market") or {}).get("data", {})
-        cot_data = (ref_data.get("cot") or {}).get("positions", {})
-        
         extracted = self.extract_values_from_script(script)
         
         errors = []
         reports = []
+        TOLERANCE = 0.05 # 5% 허용 오차
         
-        type_labels = {
-            "TYPE_1": "현재가",
-            "TYPE_2": "변화율",
-            "TYPE_3": "Z-score",
-            "TYPE_4": "계약수"
-        }
+        type_labels = {"TYPE_1": "현재가", "TYPE_2": "변화율", "TYPE_3": "Z-score", "TYPE_4": "계약수"}
 
         for item in extracted:
             target_val = None
-            label = ""
-            
-            # 유형별 대조 값 및 오차 설정
-            stats = (market_data.get("multi_period_stats") or {}).get(item["key"], {})
             
             if item["type"] == "TYPE_1":
                 target_val = market_data.get(item["key"])
-                label = "현재가"
-            elif item["type"] == "TYPE_2":
-                target_val = stats.get("chg_5d")
-                label = "chg_5d"
             elif item["type"] == "TYPE_3":
+                stats = (market_data.get("multi_period_stats") or {}).get(item["key"], {})
                 target_val = stats.get("z_score_20d")
-                label = "z_score_20d"
-            elif item["type"] == "TYPE_4":
-                # COT 키 매핑 (표준화)
-                asset_map = {
-                    "gold": "Gold", 
-                    "wti_oil": "WTI", 
-                    "sp500": "SP500", 
-                    "nasdaq": "Nasdaq",
-                    "usd_krw": "USD" # 환율 COT가 있는 경우 대비
-                }
-                asset_key = asset_map.get(item["key"], item["key"].upper())
-                target_val = (cot_data.get(asset_key) or {}).get("net_change")
-                label = f"cot_{asset_key}"
 
             if target_val is None:
-                reports.append(f"[{type_labels[item['type']]}] \"{item['raw']}\" → {item['key']} 데이터 없음 (스킵)")
                 continue
 
-            # 검증 수행 (지시서 기준 오차 허용)
             match = False
-            diff_abs = abs(abs(item["value"]) - abs(target_val))
-            
-            if item["type"] == "TYPE_2": # 변화율: ±2.0%p (절대값 비교)
-                if diff_abs <= 2.0: match = True
+            if item["type"] == "TYPE_1": # 현재가: ±5%
+                if target_val != 0 and (abs(item["value"] - target_val) / abs(target_val)) <= TOLERANCE:
+                    match = True
             elif item["type"] == "TYPE_3": # Z-score: ±0.3
-                if abs(item["value"] - target_val) <= 0.3: match = True
-            elif item["type"] == "TYPE_1": # 현재가: ±5%
-                if target_val != 0 and (abs(item["value"] - target_val) / abs(target_val)) <= 0.05: match = True
-            elif item["type"] == "TYPE_4": # 계약수: ±5% (절대값 비교)
-                if target_val != 0 and (diff_abs / abs(target_val)) <= 0.05: match = True
-                elif target_val == 0 and diff_abs < 100: match = True
+                if abs(item["value"] - target_val) <= 0.3:
+                    match = True
 
-            type_name = type_labels[item['type']]
+            type_node = type_labels.get(item["type"], "데이터")
             if match:
-                reports.append(f"[{type_name}] \"{item['raw']}\" → {label}: {target_val} (✅ 일치)")
+                reports.append(f"[{type_node}] \"{item['raw']}\" → {item['key']}: {target_val} (✅ 일치)")
             else:
-                err_msg = f"[{type_name}] \"{item['raw']}\" → {label}: {target_val} (❌ 불일치)"
+                err_msg = f"[{type_node}] \"{item['raw']}\" → {item['key']}: {target_val} (❌ 불일치)"
                 errors.append(err_msg)
                 reports.append(err_msg)
 
