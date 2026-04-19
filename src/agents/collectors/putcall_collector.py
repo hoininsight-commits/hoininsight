@@ -36,10 +36,8 @@ class PutCallCollector:
         try:
             # Note: Cloudflare 403 발생 시 로컬 세션에서는 한계가 있을 수 있음
             resp = requests.get(url, headers=headers, timeout=15)
-            
             if resp.status_code != 200:
-                print(f"[{self.name}] ⚠️ API 접근 제한 (Status: {resp.status_code}). 백업 데이터 활용 시도.")
-                return self._get_fallback_data()
+                raise Exception(f"API 접근 제한 (Status: {resp.status_code})")
             
             data = resp.json()
             if "ratios" in data and len(data["ratios"]) > 0:
@@ -55,8 +53,7 @@ class PutCallCollector:
                 raise ValueError("JSON 데이터 내 ratios 필드를 찾을 수 없습니다.")
 
         except Exception as e:
-            print(f"[{self.name}] ⚠️ 데이터 수집 실패: {e}")
-            return self._get_fallback_data()
+            raise Exception(f"데이터 수집 실패: {e}")
 
     def _get_fallback_data(self) -> dict:
         """수집 실패 시 마지막으로 성공했던 데이터를 반환 (없으면 기본값)"""
@@ -184,7 +181,26 @@ class PutCallCollector:
             return {"agent": self.name, "status": "success", "result": output}
             
         except Exception as e:
-            print(f"[{self.name}] ❌ 실패: {e}")
+            print(f"[{self.name}] ❌ API 실패: {e}")
+            
+            output = {
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "total_pc_ratio": None,
+                "equity_pc_ratio": None,
+                "index_pc_ratio": None,
+                "signal": None,
+                "z_score": None,
+                "source": "api_failed"
+            }
+            
+            with open(self.output_file, "w", encoding="utf-8") as f:
+                json.dump(output, f, indent=2, ensure_ascii=False)
+            
+            alt_output = self.base_dir / "data/outputs/putcall.json"
+            alt_output.parent.mkdir(parents=True, exist_ok=True)
+            with open(alt_output, "w", encoding="utf-8") as f:
+                json.dump(output, f, indent=2, ensure_ascii=False)
+
             return {"agent": self.name, "status": "failed", "error": str(e)}
 
 if __name__ == "__main__":

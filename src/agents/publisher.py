@@ -106,6 +106,14 @@ class PublisherAgent:
                     data["cot"] = json.loads(p.read_text())
                     break
 
+        # collection_status 데이터
+        if Path("data/raw").exists():
+            for d in sorted(Path("data/raw").iterdir(), reverse=True):
+                p = d / "collection_status.json"
+                if p.exists():
+                    data["collection_status"] = json.loads(p.read_text())
+                    break
+
         return data
 
     def update_content_log(self, data: dict) -> dict:
@@ -328,11 +336,18 @@ class PublisherAgent:
             for i, step in enumerate(final_chain)
         ])
 
+        collection_status = data.get("collection_status", {})
+        failed_agents = collection_status.get("failed_agents", [])
+        
+        warning_block = ""
+        if failed_agents:
+            warning_block = f"\n⚠️ [수집 경고]\n{', '.join(failed_agents)}: API 실패 → 해당 지표 분석 제외됨\n"
+
         brief = f"""
 ========================================
 HOIN Insight 일일 브리핑
 날짜: {self.today[:4]}-{self.today[4:6]}-{self.today[6:]}
-========================================
+========================================{warning_block}
 
 [오늘의 신호]
 토픽: {signal.get("topic", "없음")}

@@ -54,8 +54,14 @@ class CollectorRunner:
                 agent_name = future_to_agent[future]
                 try:
                     result = future.result()
-                    results[agent_name] = "success"
-                    print(f"  ✅ {agent_name} 완료")
+                    if isinstance(result, dict) and result.get("status") == "failed":
+                        error_msg = result.get("error", "Unknown error")
+                        results[agent_name] = f"failed: {error_msg}"
+                        failed.append(agent_name)
+                        print(f"  ❌ {agent_name} 실패: {error_msg}")
+                    else:
+                        results[agent_name] = "success"
+                        print(f"  ✅ {agent_name} 완료")
                 except Exception as e:
                     results[agent_name] = f"failed: {e}"
                     failed.append(agent_name)
