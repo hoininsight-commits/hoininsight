@@ -1,15 +1,15 @@
 {
-  "topic": "달러 약세에도 불구하고 유가 급락 (비상관적 하락)",
-  "strength": 8.7,
-  "anomaly_type": "CORRELATION",
-  "why_anomalous": "유가 Z-score -1.93 급락 중 달러 Z-score -1.51 역시 하락",
-  "why_now": "통상적인 달러 반비례 관계가 깨짐. 이는 심각한 수요 둔화 또는 공급 과잉 시그널",
+  "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+  "anomaly_type": "NEWS_MISMATCH",
+  "strength": 9.2,
+  "why_anomalous": "뉴스 톤은 부정적(DeepSeek 등)이나 SP500 Z-score 1.96로 강한 상승 중",
+  "why_now": "악재를 압도하는 수급 또는 선반영 인식 확산 (뉴스 트리거 확인됨)",
+  "news_trigger": "Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
   "key_indicators": [
-    "wti_oil",
-    "dxy"
+    "sp500",
+    "sentiment"
   ],
-  "pattern": "non_correlated_drop",
-  "source": "CORRELATION_ENGINE",
+  "source": "MISMATCH_ENGINE",
   "selected": true,
   "content_type": "롱폼",
   "date": "20260419"
