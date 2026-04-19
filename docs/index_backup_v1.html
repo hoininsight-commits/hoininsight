@@ -1,0 +1,435 @@
+<!-- V1.0.final -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN INSIGHT | Terminal v1.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #080c14;
+            --amber: #f0b429;
+            --text-main: #e8edf5;
+            --text-dim: #6b7a94;
+            --green: #22c55e;
+            --red: #ef4444;
+            --border: rgba(255, 255, 255, 0.07);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --font-mono: 'IBM Plex Mono', monospace;
+            --font-sans: 'Pretendard', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            padding: 24px;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; min-height: 90vh; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { opacity: 0; animation: fadeIn 0.5s ease forwards; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--amber);
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+        }
+        .header .logo {
+            font-family: var(--font-mono);
+            color: var(--amber);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+        .header .meta {
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+            font-size: 0.75rem;
+        }
+
+        .topic-block {
+            margin-bottom: 24px;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+        .badge {
+            font-family: var(--font-mono);
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .badge-f { background-color: var(--amber); color: var(--bg); }
+        .badge-i { background-color: var(--green); color: var(--bg); }
+        .badge-s { background-color: var(--red); color: white; }
+        
+        .topic-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .topic-meta {
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -4px;
+        }
+
+        .why-now-card {
+            background-color: rgba(240, 180, 41, 0.05);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+        .label {
+            font-family: var(--font-mono);
+            color: var(--amber);
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .why-now-content {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #d1d9e6;
+        }
+        .tag { font-weight: 800; margin-right: 4px; }
+        .tag-f { color: var(--amber); }
+        .tag-i { color: var(--green); }
+
+        .metrics-bar {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .z-score-grid {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+        
+        .state-line {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 10px;
+        }
+        .state-line span b { color: var(--text-main); margin-left: 4px; }
+
+        .hook-section {
+            padding-left: 16px;
+            border-left: 3px solid var(--amber);
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .hook-text {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .section-box {
+            margin-bottom: 24px;
+        }
+        .chain-list { list-style: none; }
+        .chain-item {
+            padding: 12px 0;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+            font-size: 0.88rem;
+            display: flex;
+            gap: 10px;
+            line-height: 1.6;
+        }
+        .chain-item:last-child { border-bottom: none; }
+
+        .cot-section {
+            margin-bottom: 32px;
+        }
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+        .cot-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+        }
+        .cot-table th {
+            text-align: left;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            text-transform: lowercase;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .cot-table td { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .sig-flip { color: var(--red); }
+        .sig-strong { color: var(--amber); }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .agent-status-bar {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .agent-item {
+            text-align: center;
+            flex: 1;
+        }
+        .agent-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .agent-val {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; background-color: var(--text-dim); }
+        .dot.SUCCESS { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
+        .dot.FAIL { background-color: var(--red); box-shadow: 0 0 8px var(--red); }
+        .status-text.SUCCESS { color: var(--green); }
+        .status-text.FAIL { color: var(--red); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header fade-in" style="animation-delay: 0.1s">
+            <div class="logo">HOIN INSIGHT · ECONOMIC HUNTER</div>
+            <div class="meta" id="header-time">202X-XX-XX · --:-- KST</div>
+        </header>
+
+        <section class="topic-block fade-in" style="animation-delay: 0.2s">
+            <div class="topic-header">
+                <span id="topic-badge" class="badge">--</span>
+                <span id="topic-title" class="topic-title">분석 데이터 로딩 중...</span>
+            </div>
+            <div class="topic-meta" id="topic-meta-line">
+                강도: -- · 유형: ----
+            </div>
+        </section>
+
+        <section class="why-now-card fade-in" style="animation-delay: 0.3s">
+            <span class="label">▶ WHY NOW</span>
+            <div class="why-now-content" id="why-now-display">
+                데이터를 불러오고 있습니다.
+            </div>
+        </section>
+
+        <section class="metrics-bar fade-in" style="animation-delay: 0.4s">
+            <div class="z-score-grid" id="z-score-display">
+                <div class="z-item">SP500 --</div>
+                <div class="z-item">WTI --</div>
+                <div class="z-item">GOLD --</div>
+                <div class="z-item">DXY --</div>
+                <div class="z-item">VIX --</div>
+            </div>
+            <div class="state-line">
+                <span>Risk: <b id="risk-val">--</b></span>
+                <span>Hedge: <b id="hedge-val">--</b></span>
+                <span>Conviction: <b id="conviction-val">--</b></span>
+            </div>
+        </section>
+
+        <section class="hook-section fade-in" style="animation-delay: 0.5s">
+            <span class="label" style="margin-bottom: 6px;">▶ STEP 1 HOOK</span>
+            <div class="hook-text" id="hook-display">
+                " 로딩 중... "
+            </div>
+        </section>
+
+        <section class="section-box fade-in" style="animation-delay: 0.6s">
+            <span class="label">▶ 분석 체인</span>
+            <ul class="chain-list" id="chain-display">
+            </ul>
+        </section>
+
+        <section class="cot-section fade-in" style="animation-delay: 0.7s">
+            <span class="label">▶ COT 스마트머니</span>
+            <div class="table-wrapper">
+                <table class="cot-table">
+                    <thead>
+                        <tr>
+                            <th>asset</th>
+                            <th>signal</th>
+                            <th>52w%</th>
+                            <th>z</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cot-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer fade-in" style="animation-delay: 0.8s">
+            <div class="agent-status-bar">
+                <div class="agent-item" data-agent="collector">
+                    <span class="agent-label">COLLECTOR</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+                <div class="agent-item" data-agent="detector">
+                    <span class="agent-label">DETECTOR</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+                <div class="agent-item" data-agent="analyst">
+                    <span class="agent-label">ANALYST</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+                <div class="agent-item" data-agent="writer">
+                    <span class="agent-label">WRITER</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+                <div class="agent-item" data-agent="fact_checker">
+                    <span class="agent-label">FACT_CHECK</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+                <div class="agent-item" data-agent="publisher">
+                    <span class="agent-label">PUBLISHER</span>
+                    <div class="agent-val"><span class="dot"></span><span class="status-text">WAIT</span></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const response = await fetch('today_data.json');
+                if (!response.ok) throw new Error('Network response not ok');
+                const data = await response.json();
+                const today = data.today || {};
+                const signal = today.signal || {};
+
+                const lastRunDate = new Date(data.last_updated);
+                const kstTime = lastRunDate.toLocaleTimeString('ko-KR', { hour12: false, hour: '2-digit', minute: '2-digit' }) + ' KST';
+                document.getElementById('header-time').textContent = `${today.date} · 마지막 실행: ${kstTime}`;
+
+                const topicTitle = document.getElementById('topic-title');
+                const topicBadge = document.getElementById('topic-badge');
+                topicTitle.textContent = signal.topic || '금일 분석 대기 중';
+                
+                const filters = signal.filters_hit || [];
+                if (filters.includes('F')) {
+                    topicBadge.textContent = 'FLASH';
+                    topicBadge.className = 'badge badge-f';
+                } else if (filters.includes('I')) {
+                    topicBadge.textContent = 'INTELL';
+                    topicBadge.className = 'badge badge-i';
+                } else {
+                    topicBadge.textContent = 'SIGNAL';
+                    topicBadge.className = 'badge badge-s';
+                }
+                const amber = '#f0b429';
+                document.getElementById('topic-meta-line').innerHTML = 
+                    `강도: <span style="color: ${amber}">${signal.strength || 0}</span> · 유형: <span style="color: ${amber}">${signal.anomaly_type || 'N/A'}</span>`;
+
+                const whyNowEl = document.getElementById('why-now-display');
+                if (signal.why_now) {
+                    let html = signal.why_now
+                        .replace(/\[F\]/g, '<span style="color: #f0b429; font-weight:800;">[F]</span>')
+                        .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
+                    whyNowEl.innerHTML = html;
+                }
+
+                const zBox = document.getElementById('z-score-display');
+                const zs = today.z_scores || {};
+                const metrics = ['SP500', 'WTI', 'Gold', 'DXY', 'VIX'];
+                zBox.innerHTML = metrics.map(m => {
+                    const val = zs[m] || 0;
+                    const color = val >= 1.0 ? '#22c55e' : (val <= -1.0 ? '#ef4444' : '#e8edf5');
+                    const arrow = val > 0 ? '▲' : (val < 0 ? '▼' : '');
+                    return `<div class="z-item">${m} <span style="color: ${color}">${val >= 0 ? '+' : ''}${val.toFixed(2)}${arrow}</span></div>`;
+                }).join('');
+
+                const ms = today.market_state || {};
+                document.getElementById('risk-val').textContent = ms.risk_appetite || '중립';
+                document.getElementById('hedge-val').textContent = ms.hedging_activity || '보통';
+                document.getElementById('conviction-val').textContent = ms.conviction || '낮음';
+
+                document.getElementById('hook-display').textContent = today.script_hook ? '"' + today.script_hook + '"' : '"분석 중입니다..."';
+
+                const chainList = document.getElementById('chain-display');
+                const chain = today.analysis?.level2_chain || [];
+                chainList.innerHTML = chain.map(step => {
+                    let cleaned = step.replace(/\[F\]/g, '<span style="color: #f0b429; font-weight:800;">[F]</span>')
+                                      .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
+                    return `<li class="chain-item" style="padding: 12px 0; border-bottom: 1px dotted rgba(255,255,255,0.1);">${cleaned}</li>`;
+                }).join('') || '<li class="chain-item">데이터 없음</li>';
+
+                const cotBody = document.getElementById('cot-body');
+                const cotSignals = today.cot_signals || [];
+                cotBody.innerHTML = cotSignals.map(s => {
+                    let sigColor = s.signal_label === 'FLIP' ? '#ef4444' : (s.signal_label === 'STRONG' ? '#f0b429' : '#6b7a94');
+                    return `
+                        <tr>
+                            <td style="padding: 10px 0;">${s.asset}</td>
+                            <td style="padding: 10px 0;"><span style="color: ${sigColor}">${s.signal_label}</span></td>
+                            <td style="padding: 10px 0;">${s.percentile_52w}%</td>
+                            <td style="padding: 10px 0;">${s.z_score_52w > 0 ? '+' : ''}${s.z_score_52w.toFixed(1)}σ</td>
+                        </tr>
+                    `;
+                }).join('') || '<tr><td colspan="4">시그널 없음</td></tr>';
+
+                const agents = ['collector', 'detector', 'analyst', 'writer', 'fact_checker', 'publisher'];
+                agents.forEach(a => {
+                    const status = today.agent_status?.[a] || 'WAITING';
+                    const parent = document.querySelector(".agent-item[data-agent='" + a + "']");
+                    if (parent) {
+                        const dot = parent.querySelector('.dot');
+                        const text = parent.querySelector('.status-text');
+                        dot.className = "dot " + status;
+                        text.className = "status-text " + status;
+                        text.textContent = status === 'SUCCESS' ? 'OK' : (status === 'FAIL' ? 'FAIL' : 'WAIT');
+                    }
+                });
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            } catch (err) {
+                console.error('Update Error:', err);
+            }
+        }
+        window.onload = updateDashboard;
+    </script>
+</body>
+</html>
