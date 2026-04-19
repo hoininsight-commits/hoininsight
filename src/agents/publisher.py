@@ -3,8 +3,10 @@
 # 역할: 이력 저장 + 대시보드 업데이트 + 선장 브리핑
 
 import json
+import re
 from datetime import datetime
 from pathlib import Path
+from src.utils.telegram_notifier import TelegramNotifier
 
 
 class PublisherAgent:
@@ -17,6 +19,7 @@ class PublisherAgent:
         self.signal_log_path = Path("data/history/signal_log.json")
         self.dashboard_dir = Path("dashboard")
         self.dashboard_dir.mkdir(exist_ok=True)
+        self.notifier = TelegramNotifier()
 
     def load_today_data(self) -> dict:
         """오늘 생성된 모든 데이터 로드"""
@@ -202,6 +205,36 @@ class PublisherAgent:
         if pipeline_results and "fact_checker" in pipeline_results:
             fact_checker = pipeline_results["fact_checker"]
 
+        # [지시서 #054] 시장 상태 (Risk/Hedge/Conviction) 연산
+        market_stats = market.get("data", {}).get("multi_period_stats", {})
+        risk_vix = market_stats.get("vix", {}).get("z_score_20d", 0) or 0
+        hedge_dxy = market_stats.get("dxy", {}).get("z_score_20d", 0) or 0
+        
+        # 간단한 로직: VIX Z-score가 높으면 Risk Down, DXY Z-score가 높으면 Hedge Up
+        market_state = {
+            "risk_appetite": "DOWN" if risk_vix > 1.0 else ("UP" if risk_vix < -1.0 else "NEUTRAL"),
+            "hedging_activity": "UP" if hedge_dxy > 1.0 else ("DOWN" if hedge_dxy < -1.0 else "NORMAL"),
+            "conviction": "HIGH" if abs(signal.get("strength", 0)) >= 8.5 else "MODERATE"
+        }
+
+        # 롱폼 스크립트 Hook 추출
+        script_hook = ""
+        script_path = data.get("script_long_path")
+        if script_path and Path(script_path).exists():
+            try:
+                raw_content = Path(script_path).read_text(encoding="utf-8")
+                # Hook 섹션 (Step 1) 추출 시도
+                hook_match = re.search(r"\(Step 1: Hook\)\n(.*?)\n\(Step 2", raw_content, re.DOTALL)
+                if hook_match:
+                    script_hook = hook_match.group(1).strip()
+                else:
+                    # 백업: ## 1단계 형식도 유지
+                    hook_match_legacy = re.search(r"## 1단계: Hook.*?\n(.*?)\n##", raw_content, re.DOTALL)
+                    if hook_match_legacy:
+                        script_hook = hook_match_legacy.group(1).strip()
+            except Exception:
+                pass
+
         dashboard_data = {
             "last_updated": datetime.now().isoformat(),
             "today": {
@@ -213,12 +246,14 @@ class PublisherAgent:
                 "content_id": content.get("id", ""),
                 "status": "승인대기",
                 "fact_checker": fact_checker,
-                "putcall": putcall
+                "putcall": putcall,
+                "market_state": market_state,
+                "script_hook": script_hook
             },
             "market": market,
             "macro": macro,
             "sentiment": sentiment,
-            "putcall": putcall # 하위 호환성 및 접근성 위해 최상단에도 추가
+            "putcall": putcall
         }
 
         output_path = self.dashboard_dir / "today_data.json"
@@ -323,6 +358,15 @@ HOIN Insight 일일 브리핑
 
         # 브리핑 출력
         print(brief)
+
+        # [지시서 #054] 텔레그램 전송 (본문 포함)
+        brief_with_script = brief
+        script_path = data.get("script_long_path")
+        if script_path and Path(script_path).exists():
+            script_body = Path(script_path).read_text(encoding="utf-8")
+            brief_with_script += f"\n\n[📜 롱폼 스크립트 전문]\n\n{script_body}"
+        
+        self.notifier.send_message_in_chunks(brief_with_script)
 
         print("✅ AGENT-06 완료\n")
         return {"content": content, "brief": brief}

@@ -90,15 +90,42 @@ conviction 낮음 시 추가 금지 표현:
 
 ---
 
-### [집필 가이드: 7단계 빌드업 - Task 5]
+### [경제사냥꾼 7단계 구조 준수 규칙] (CRITICAL - DNA #053)
+
+1. **Step 1 (Hook) - 평범한 시작 금지**:
+   - 절대로 "오늘 시장은..." 또는 수치 나열로 시작하지 마라.
+   - 반드시 **"이상함(Anomaly)"** 또는 **"시장의 모순"**을 화두로 던져라.
+   - 예: "지수는 최고치를 찍는데, 왜 큰손들의 포지션은 정반대로 달리는 걸까?"
+   - 시청자가 "어? 진짜 이상하네?"라고 느끼게 만드는 것이 이 단계의 유일한 목적이다.
+
+2. **Step 2 (Expectation vs Reality) - 충돌 명시**:
+   - 시장이 무엇을 기대했는지(Expectation)와 실제 데이터(Reality)가 어떻게 충돌했는지 명확히 대립시켜라.
+   - 이 대립 구조가 명확하지 않으면 경제사냥꾼의 서사가 아니다.
+
+3. **Step 4 (WHY NOW) - 수치로 증명**:
+   - "왜 하필 오늘인가"를 반드시 데이터로 설명해라.
+   - "최근 들어", "이번 주에" 같은 모호한 시간 표현은 금지다.
+   - 반드시 **구체적 수치** 또는 **임계점(Z-score 1.5 돌파, FLIP 전환 등)**을 언급하며 오늘이 '결정적 시점'임을 선포해라.
+
+4. **Step 6 (Mentionables) - 종목 브리지 엄격 준수**:
+   - `today_stocks.json`의 `stocks` 배열이 비어 있다면, 절대로 종목을 억지로 짜내지 마라.
+   - 비어 있는 경우: "현재 데이터상 직접적인 브리지가 확인되는 종목은 없다. 다만 관련 섹터 ETF의 흐름을 관찰하며 다음 기회를 노리는 것이 현명하다."는 식으로 정직하게 대체해라.
+
+5. **Step 7 (Risk) - 역시나리오 필수**:
+   - 내 해석이 틀릴 수 있는 단 하나의 조건(Risk)을 반드시 제시해라. 
+   - 이 리스크 시나리오가 없으면 경제사냥꾼의 분석은 신뢰를 잃는다.
+
+---
+
+### [집필 가이드: 7단계 빌드업 - 최종 적용]
 1. **사냥꾼의 화법**: 반말 사용 필수.
 2. **단계별 등급 규칙**:
-   - **Step 1 (Hook)**: INTERPRETATION 중심. 이상함/모순/충돌 부각.
+   - **Step 1 (Hook)**: INTERPRETATION 중심. 이상함/모순 부각.
    - **Step 2 (Expectation vs Reality)**: FACT + INTERPRETATION.
    - **Step 3 (Mechanism/Conflict)**: FACT + INTERPRETATION. 구조 및 충돌 설명.
-   - **Step 4 (Data/WHY NOW)**: INTERPRETATION 중심. 왜 지금 중요한지 압축.
+   - **Step 4 (Data/WHY NOW)**: INTERPRETATION 중심. 왜 지금 중요한지 압축 (수치 필수).
    - **Step 5 (Logic/Implication)**: INTERPRETATION 중심. 향후 전망 및 시사점 설명.
-   - **Step 6 (Opportunity/Mentionables)**: FACT 기반 브리지 있을 때만 허용. 없으면 **'(데이터 부재로 스킵)'** 명시 필수.
+   - **Step 6 (Opportunity/Mentionables)**: FACT 기반 브리지 있을 때만 허용. 없으면 데이터 부재 명시.
    - **Step 7 (Risk/Counter Scenario)**: INTERPRETATION 중심. 반대 시나리오 필수.
 
 ---

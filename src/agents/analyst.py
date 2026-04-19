@@ -31,60 +31,67 @@ class AnalystAgent:
             p = self.raw_dir / f"{name}.json"
             if p.exists():
                 raw[name] = json.loads(p.read_text())
+        
+        # 90일 히스토리 로드 (WHY NOW 분석용)
+        hist_p = Path("data/raw/history/market_90d.json")
+        if hist_p.exists():
+            try:
+                raw["history_90d"] = json.loads(hist_p.read_text())
+            except: pass
         return raw
 
     def _filter_text(self, text: str, market_data: dict) -> str:
-        """텍스트에서 SPECULATION 등급 문장을 차단하거나 INTERPRETATION으로 낮춤 (Hardened #051)"""
+        """텍스트에서 SPECULATION 등급 문장을 차단하거나 INTERPRETATION으로 낮춤 (Hardened #053)"""
         if not text:
             return text
 
         market = market_data.get("market", {}).get("data", {})
+        cot = market_data.get("cot", {})
         kospi_foreign_net = market.get("kospi_foreign_net", None)
         kospi_inst_net = market.get("kospi_inst_net", None)
         
-        # [DATA_CHECK] 수급 데이터 존재 여부 확인 (KR 기준)
+        # [DATA_CHECK] 수급 데이터 존재 여부 확인
         has_kr_foreign_data = kospi_foreign_net is not None and abs(float(kospi_foreign_net)) > 0.001
         has_kr_inst_data = kospi_inst_net is not None and abs(float(kospi_inst_net)) > 0.001
+        has_cot_data = bool(cot.get("smart_money_signals")) or bool(cot.get("top_signal"))
 
-        # 1. 태그 기반 판정
+        # [I] 등급 여부
         is_interp = "[I]" in text
 
-        # [허용 해석 표현] (Task 3)
-        allowed_interp_markers = [
-            "시사한다", "해석될 수 있다", "볼 수 있다", "가능성이 있다", 
-            "관측된다", "읽힌다", "점이 중요하다", "관측되는 중"
-        ]
+        # 1. SPECULATION 감지 및 처리 (정밀화 #053)
+        
+        # 조건 1: 호칭/행위자 필터링
+        # 외국인 순매수가 0에 가까우면 외국인 언급 금지
+        foreign_pattern = r"(외국인|외인)\s*(자금|수급|매수|매도|유입|유출|순매수|순매도|동향|움직임)"
+        if not has_kr_foreign_data and re.search(foreign_pattern, text):
+            text = re.sub(foreign_pattern, "시장 수급 변화", text)
 
-        # 2. SPECULATION 감지 및 처리 (Task 2)
-        # 조건 A: 행위자 언급 + 데이터 부재
-        actor_pattern = r"(외국인|외인|기관|세력|개미|개인|스마트\s*머니)"
-        if re.search(actor_pattern, text):
-            # 외국인 데이터 없는데 외국인 언급 시
-            if "외국" in text or "외인" in text:
-                if not has_kr_foreign_data:
-                    text = re.sub(actor_pattern, "시장 수급", text)
-            # 기관 데이터 없는데 기관 언급 시
-            if "기관" in text:
-                if not has_kr_inst_data:
-                    text = re.sub(actor_pattern, "수급 환경", text)
+        # 항상 적용: 개인/군중 심리 및 추측성 키워드 차단
+        speculation_pattern = r"(개미|개인\s*투자자|포모|FOMO|모멘텀\s*자금|군중\s*심리|세력|스마트\s*머니|진짜\s*고수)"
+        if re.search(speculation_pattern, text):
+            text = re.sub(speculation_pattern, "시장 참여자", text)
 
-        # 조건 B/C/D: 심리, 자금흐름, 의도 단정 문장을 해석형으로 낮춤
+        # 기관: COT 데이터가 있는 경우 언급 허용하되, 데이터 없으면 차단
+        inst_pattern = r"(기관(?:들)?)\s*(자금|수급|매수|매도|유입|유출|순매수|순매도)"
+        if not has_kr_inst_data and not has_cot_data and re.search(inst_pattern, text):
+            text = re.sub(inst_pattern, "수급 환경", text)
+
+        # 2. 심리, 자금흐름, 의도 단정 문장을 해석형으로 낮춤
         spec_patterns = [
             (r"(안심했다|낙관적이다|공포에\s*빠졌다|광기|불안\s*상태)", "로 읽힐 수 있는 가능성이 관측된다"),
             (r"(몰리고\s*있다|유입되었다|이탈했다|대규모\s*전환)", "의 변동 가능성이 시사된다"),
             (r"(방어하려\s*한다|대비하고\s*있는|관리하고\s*있는|유도)", "의 움직임으로 해석될 소지가 관측된다"),
-            (r"(강력한|역대급|압도적)", "이례적인 수준의")
+            (r"(강력한|역대급|압도적)", "이례적인 수준의"),
+            (r"(하락을\s*예상|보험을|방어적으로|선제적으로)", "포지션 변화 가능성")
         ]
         
         for pattern, repl in spec_patterns:
             if re.search(pattern, text):
-                # 단정형이면 해석형 어미로 교체
                 text = re.sub(pattern, repl, text)
 
         # 3. INTERPRETATION 문구 강제 (Task 3)
-        # [I] 등급인데 단정적 어미(~다)로 끝나는지 체크
+        allowed_interp_markers = ["시사한다", "해석될 수 있다", "볼 수 있다", "가능성이 있다", "관측된다", "읽힌다", "관측되는 중"]
         if is_interp and text.strip().endswith("다."):
-            # 허용 마커가 하나도 없으면 "관측된다."로 교체 시도
             if not any(marker in text for marker in allowed_interp_markers):
                 text = text.replace("다.", " 점이 관측된다.")
 
@@ -130,7 +137,8 @@ class AnalystAgent:
             strength=signal.get("strength"),
             market_summary=json.dumps(market, ensure_ascii=False),
             cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
-            kospi_foreign_net=market.get("kospi_foreign_net", "0.00")
+            kospi_foreign_net=market.get("kospi_foreign_net", "0.00"),
+            history_90d=json.dumps(raw_data.get("history_90d", {}), ensure_ascii=False)
         )
 
         result = self.gemini.call_json(prompt, max_tokens=2500)
@@ -152,8 +160,9 @@ class AnalystAgent:
         return result
 
     def map_stocks(self, signal, analysis):
-        """관련 종목 매핑 (근거 브리지 체크 강화)"""
+        """관련 종목 매핑 (경제사냥꾼 DNA 브리지 검증 강화 #053)"""
         target_type = signal.get("target_type", "MICRO_SECTOR_FOCUS")
+        level2_chain_text = " ".join(analysis.get("level2_chain", [])).lower()
         
         if "MACRO" in target_type:
             print(f"  📢 거대 담론({target_type}) 감지 — 종목보다 거시 시나리오에 집중합니다.")
@@ -171,26 +180,55 @@ class AnalystAgent:
         has_kr_inst_data = kospi_inst_net is not None and abs(float(kospi_inst_net)) > 0.001
 
         topic_lower = signal.get("topic", "").lower()
-        why_anomalous = signal.get("why_anomalous", "")
+        why_anomalous = signal.get("why_anomalous", "").lower()
+        topic_combined = topic_lower + " " + why_anomalous
         
         stocks = []
         for sector in related_sectors[:3]:
+            # [CROSS_CHECK] level2_chain에 해당 섹터나 키워드가 언급되어 있는지 확인
+            if sector.lower() not in level2_chain_text and not any(kw.lower() in level2_chain_text for kw in keywords):
+                continue
+
             sector_stocks = get_stocks_by_sector(sector)
             for s in sector_stocks[:2]:
-                stocks.append({ "ticker": s["ticker"], "name": s["name"], "sector": sector, "impact": "수혜", "reason": f"Sector Correlation with {signal['topic']}", "impact_level": "MEDIUM", "is_primary": True })
+                stocks.append({ 
+                    "ticker": s["ticker"], 
+                    "name": s["name"], 
+                    "sector": sector, 
+                    "impact": "수혜", 
+                    "reason": f"{sector} Correlation with {signal['topic']}", 
+                    "impact_level": "MEDIUM", 
+                    "is_primary": True 
+                })
 
-        # [BRIDGE_VALIDATION] 근거 기반 필터링
+        # [BRIDGE_VALIDATION] 근거 기반 필터링 (DNA 규칙 적용 #053)
         final_stocks = []
-        topic_str = topic_lower + " " + why_anomalous.lower()
         
         for s in stocks:
-            if "sp500" in topic_str or "nasdaq" in topic_str:
-                pass
-            elif any(x in topic_str for x in ["oil", "wti", "유가"]):
+            # 1. WTI/유가 관련 -> 에너지 섹터만 허용
+            if any(x in topic_combined for x in ["oil", "wti", "유가", "crude"]):
                 if s.get("sector") == "에너지":
-                    s["bridge_evidence"] = "Petroleum Product Margin Correlation"
+                    s["bridge_evidence"] = "Petroleum Product Margin Correlation (Price Driven)"
                     final_stocks.append(s)
-            elif "수급" in s.get("reason", ""):
+                continue
+
+            # 2. S&P500/나스닥 Z-score 관련 -> 반도체/기술주 허용하되 거시 연결 필수
+            if any(x in topic_combined for x in ["sp500", "nasdaq", "나스닥", "기술주"]):
+                # 금리(yield)나 달러(dxy) 연결 고리가 서사에 있는지 확인
+                has_macro_link = any(x in topic_combined or x in level2_chain_text for x in ["금리", "yield", "달러", "dxy", "treasury"])
+                if s.get("sector") == "반도체":
+                    if has_macro_link:
+                        s["reason"] = f"Macro-Driven Liquidity Flow ({signal['topic']}) -> Tech Rebound"
+                        s["bridge_evidence"] = "Interest Rate Sensitivity Bridge"
+                        final_stocks.append(s)
+                elif s.get("sector") == "IT":
+                    if has_macro_link:
+                        s["bridge_evidence"] = "Growth Stock Valuation Buffer"
+                        final_stocks.append(s)
+                continue
+
+            # 3. 수급 토픽 (국내)
+            if "수급" in topic_combined or "매수" in topic_combined:
                 if has_kr_foreign_data or has_kr_inst_data:
                     s["bridge_evidence"] = f"KR Data Driven (Foreign: {kospi_foreign_net}, Inst: {kospi_inst_net})"
                     final_stocks.append(s)

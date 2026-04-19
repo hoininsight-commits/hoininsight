@@ -198,53 +198,126 @@ class DetectorAgent:
             print(f"  ❌ AI 탐지 실패: {e}")
             return []
 
-    def _is_absolute_value_topic(self, topic: str, anomaly: dict) -> bool:
-        """절대값 기반 토픽인지 감지 (v4.0 필터링)"""
-        import re
-        topic_lower = topic.lower()
-        # 환율/유가 절대값 언급 패턴
-        if re.search(r'환율\s*\d{3,4}원', topic) or re.search(r'유가\s*\$\d+', topic):
-            why = anomaly.get("why_anomalous", "").lower() + anomaly.get("why_now", "").lower()
-            if "z-score" not in why and "z_score" not in why and "변화율" not in why and "괴리" not in why:
-                return True
         return False
 
+    def detect_correlation_anomalies(self, all_data: dict) -> list:
+        """통계적 상관관계 붕괴 및 모순 패턴 탐지 (지시서 #054)"""
+        market_stats = all_data.get("market", {}).get("data", {}).get("multi_period_stats", {})
+        cot_data = all_data.get("cot", {})
+        anomalies = []
+
+        if not market_stats: return []
+
+        # 유틸리티: Z-score 가져오기
+        get_z = lambda k: market_stats.get(k, {}).get("z_score_20d", 0.0) or 0.0
+
+        sp500_z = get_z("sp500")
+        vix_z = get_z("vix")
+        dxy_z = get_z("dxy")
+        us10y_z = get_z("us10y")
+        wti_z = get_z("wti_oil")
+
+        # 패턴 1: Rally in Fear (지수 상승 + 공포지수 상승)
+        if sp500_z > 1.0 and vix_z > 0.5:
+            anomalies.append({
+                "topic": "S&P500 신고가 속 VIX 동반 상승 (Rally in Fear)",
+                "strength": 8.8,
+                "anomaly_type": "CORRELATION",
+                "why_anomalous": f"지수 Z-score {sp500_z:.2f} 상승 중 VIX Z-score {vix_z:.2f} 동반 상승은 시장의 극심한 경계심을 시사",
+                "why_now": "가장 낙관적인 시점에 보험(Hedge) 수요가 폭증하는 모순 발생",
+                "key_indicators": ["sp500", "vix"],
+                "pattern": "rally_in_fear"
+            })
+
+        # 패턴 2: Price-Position Mismatch (지수 상승 + 헤지펀드 숏 급증)
+        sp500_cot = next((s for s in cot_data.get("smart_money_signals", []) if s.get("asset") == "S&P500"), None)
+        if sp500_z > 1.0 and (sp500_cot and sp500_cot.get("signal_label") in ["FLIP", "STRONG_SHORT"]):
+            anomalies.append({
+                "topic": "S&P500 독주와 헤지펀드의 하방 베팅 ( 수급 Mismatch)",
+                "strength": 9.2,
+                "anomaly_type": "CORRELATION",
+                "why_anomalous": f"지수 Z-score {sp500_z:.2f} 신고가 경신 중 헤지펀드 포지션은 {sp500_cot.get('signal_label')} 발생",
+                "why_now": "스마트머니가 현재의 가격 상승을 추세 전환의 기회로 이용하고 있음",
+                "key_indicators": ["sp500", "cot"],
+                "pattern": "price_pos_mismatch"
+            })
+
+        # 패턴 3: Safe Haven Exit (금리 하락 + 달러 하락 동시 방전)
+        if us10y_z < -1.0 and dxy_z < -1.0:
+            anomalies.append({
+                "topic": "안전자산 동반 이탈과 유동성 재배치 (Safe Haven Exit)",
+                "strength": 8.5,
+                "anomaly_type": "CORRELATION",
+                "why_anomalous": f"국채금리 Z-score {us10y_z:.2f} 및 달러 Z-score {dxy_z:.2f} 동시 하락",
+                "why_now": "시장 자금이 안전자산을 버리고 위험 자산 또는 실물 자산으로 급격히 이동 중",
+                "key_indicators": ["us10y", "dxy"],
+                "pattern": "safe_haven_exit"
+            })
+
+        # 패턴 4: Deflationary Drop (유가 급락 + 달러 약세)
+        if wti_z < -1.5 and dxy_z < -0.5:
+             anomalies.append({
+                "topic": "달러 약세에도 불구하고 유가 급락 (비상관적 하락)",
+                "strength": 8.7,
+                "anomaly_type": "CORRELATION",
+                "why_anomalous": f"유가 Z-score {wti_z:.2f} 급락 중 달러 Z-score {dxy_z:.2f} 역시 하락",
+                "why_now": "통상적인 달러 반비례 관계가 깨짐. 이는 심각한 수요 둔화 또는 공급 과잉 시그널",
+                "key_indicators": ["wti_oil", "dxy"],
+                "pattern": "non_correlated_drop"
+            })
+
+        # 패턴 5: Bad News Ignore (뉴스 악재 + 지수 견조) - 간략화된 로직
+        # (현실적으로는 LLM 분석 결과와 결합 필요하므로 여기서는 생략하거나 단순화)
+
+        return anomalies
+
     def select_best(self, anomalies: list, all_data: dict) -> dict:
-        """가장 강한 이상징후 1개 선정 (3단계 Fallback 로직 적용)"""
+        """가장 강한 이상징후 1개 선정 (Consensus > Correlation > Z-score 우선순위)"""
         if not anomalies: anomalies = []
 
         # 1. 절대값 토픽 필터링
         filtered = [a for a in anomalies if not self._is_absolute_value_topic(a.get("topic", ""), a)]
 
-        if filtered:
+        # 1.5. 통계적 모순(Correlation) 패턴 추출
+        corr_anomalies = self.detect_correlation_anomalies(all_data)
+        
+        # 우선순위 1: 컨센서스 서프라이즈
+        consensus_data = all_data.get("consensus", {})
+        major = [s for s in consensus_data.get("major_surprises", []) if abs(s.get("surprise_pct", 0)) > 5.0]
+        
+        if major:
+            best = sorted(major, key=lambda x: abs(x.get("surprise_pct", 0)), reverse=True)[0]
+            print(f"  🔄 [Priority 1] 컨센서스 서프라이즈 선정: {best['event']}")
+            selected = {
+                "topic": f"{best['event']} 서프라이즈 ({best['surprise_pct']:+.1f}%)",
+                "strength": 9.0 if abs(best['surprise_pct']) > 15 else 8.5,
+                "anomaly_type": "WHY_NOW",
+                "why_anomalous": f"예측치 대비 괴리율 {best['surprise_pct']}% 발생",
+                "why_now": "오늘 발표된 지표가 시장의 기대를 정면으로 위반함",
+                "key_indicators": ["consensus", best['event']],
+                "source": "CONSENSUS_FALLBACK"
+            }
+        
+        # 우선순위 2: 통계적 모순 (Correlation Anomaly)
+        elif corr_anomalies:
+            best = sorted(corr_anomalies, key=lambda x: x.get("strength", 0), reverse=True)[0]
+            print(f"  🔄 [Priority 2] Correlation 모순 패턴 선정: {best['topic']}")
+            selected = best
+            selected["source"] = "CORRELATION_ENGINE"
+
+        # 우선순위 3: LLM 탐지 결과 (만약 존재한다면)
+        elif filtered:
             selected = sorted(filtered, key=lambda x: x.get("strength", 0), reverse=True)[0]
             selected["source"] = "LLM"
+            print(f"  🔄 [Priority 3] LLM 탐지 결과 선정: {selected['topic']}")
+
         else:
-            # 2. Fallback 단계
-            # 1차: 컨센서스 서프라이즈
-            consensus_data = all_data.get("consensus", {})
-            major = consensus_data.get("major_surprises", [])
-            
-            # 1.5차: COT 스마트머니 플립 (헤지펀드 포지션 급변)
+            # 4. Fallback (Z-score 등)
             cot_data = all_data.get("cot", {})
             top_cot = cot_data.get("top_signal")
             
-            if major:
-
-                best = sorted(major, key=lambda x: abs(x.get("surprise_pct", 0)), reverse=True)[0]
-                print(f"  🔄 컨센서스 Fallback 적용: {best['event']}")
-                selected = {
-                    "topic": f"{best['event']} 서프라이즈 ({best['surprise_pct']:+.1f}%)",
-                    "strength": 8.5,
-                    "anomaly_type": "WHY_NOW",
-                    "why_anomalous": f"괴리율 {best['surprise_pct']}%",
-                    "why_now": "최근 12개월 평균값에서 크게 이탈",
-                    "key_indicators": ["consensus", best['event']],
-                    "source": "CONSENSUS_FALLBACK"
-                }
-            elif top_cot and top_cot.get("signal_label") == "FLIP":
-                # COT FLIP(포지션 전환)은 최우선 유지
-                print(f"  🔄 COT FLIP Fallback 적용: {top_cot['asset']}")
+            if top_cot and top_cot.get("signal_label") == "FLIP":
+                print(f"  🔄 [Fallback] COT FLIP 선정: {top_cot['asset']}")
                 selected = {
                     "topic": f"스마트머니 {top_cot['asset']} {top_cot['signal_label']} 포착",
                     "strength": 8.5,
@@ -255,7 +328,7 @@ class DetectorAgent:
                     "source": "COT_FALLBACK"
                 }
             else:
-                # Z-score vs COT STRONG 비교 — Z-score 절대값이 더 크면 Z-score 우선
+                # 마지막 보루: Z-score
                 market_data = all_data.get("market", {}).get("data", {})
                 stats = market_data.get("multi_period_stats", {})
                 best_key, bz = None, 0.0
@@ -263,42 +336,16 @@ class DetectorAgent:
                     best_key = max(stats, key=lambda k: abs(stats[k].get("z_score_20d", 0) or 0))
                     bz = stats[best_key].get("z_score_20d", 0) or 0.0
 
-                has_zscore_extreme = abs(bz) >= 1.5
-                has_cot_strong = top_cot and top_cot.get("signal_label") == "STRONG"
-
-                if has_zscore_extreme and has_cot_strong:
-                    # 둘 다 존재 시 Z-score 절대값 우선 (더 극단적 이탈이 핵심 서사)
-                    print(f"  🔄 Z-score vs COT STRONG 비교: Z={bz:.2f}(|{abs(bz):.2f}|) 우선 선택")
+                if abs(bz) >= 1.5:
+                    print(f"  🔄 [Fallback] Z-score 선정: {best_key} (Z={bz:.2f})")
                     selected = {
                         "topic": f"{best_key} 통계적 이탈 (Z-score {bz:.2f})",
                         "strength": 8.0,
                         "anomaly_type": "SPEED",
                         "why_anomalous": f"{best_key} Z-score={bz:.2f}, 20일 평균 대비 {abs(bz):.1f}σ 이탈",
-                        "why_now": f"지정학·수급 복합 충격으로 {best_key} 20일 통계 경계 돌파",
+                        "why_now": f"{best_key}의 최근 변동성이 통계적 임계치를 돌파",
                         "key_indicators": [best_key],
                         "source": "ZSCORE_FALLBACK"
-                    }
-                elif has_zscore_extreme:
-                    print(f"  🔄 Z-score Fallback 적용: {best_key} (Z={bz:.2f})")
-                    selected = {
-                        "topic": f"{best_key} 통계적 이탈 (Z-score {bz:.2f})",
-                        "strength": 8.0 if abs(bz) >= 1.8 else 7.5,
-                        "anomaly_type": "SPEED",
-                        "why_anomalous": f"{best_key} Z-score={bz:.2f}, 20일 평균 대비 {abs(bz):.1f}σ 이탈",
-                        "why_now": f"{best_key} 20일 통계 경계 돌파",
-                        "key_indicators": [best_key],
-                        "source": "ZSCORE_FALLBACK"
-                    }
-                elif has_cot_strong:
-                    print(f"  🔄 COT STRONG Fallback 적용: {top_cot['asset']}")
-                    selected = {
-                        "topic": f"스마트머니 {top_cot['asset']} {top_cot['signal_label']} 포착",
-                        "strength": 8.0,
-                        "anomaly_type": "WHY_NOW",
-                        "why_anomalous": top_cot.get("description"),
-                        "why_now": "헤지펀드 포지션의 통계적 유의미한 급변 감지",
-                        "key_indicators": ["cot", top_cot['asset']],
-                        "source": "COT_FALLBACK"
                     }
                 else:
                     return None

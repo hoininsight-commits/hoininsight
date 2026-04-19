@@ -12,7 +12,7 @@ class LearnerAgent:
 
     def __init__(self):
         self.today = datetime.now().strftime("%Y%m%d")
-        self.base_scripts_dir = Path("data/learning/scripts")
+        self.base_scripts_dir = Path("data/transcripts/youtube")
         self.scripts_dir = self.base_scripts_dir / self.today
         self.scripts_dir.mkdir(parents=True, exist_ok=True)
         self.index_path = Path("data/learning/collected_index.json")
@@ -35,8 +35,20 @@ class LearnerAgent:
         )
 
     def _already_collected(self, video_id: str) -> bool:
+        """수집 시도 전 중복 확인 (인덱스 + 실제 파일 존재 여부)"""
+        # [1] 인덱스 확인
         index = self._load_index()
-        return video_id in [v["video_id"] for v in index["videos"]]
+        if video_id in [v["video_id"] for v in index["videos"]]:
+            return True
+            
+        # [2] 실제 메타데이터 파일 확인 (YouTubeWatcher와 경로 공유)
+        # data/raw/youtube/**/**/**/vid_id/metadata.json
+        meta_root = Path("data/raw/youtube")
+        if meta_root.exists():
+            for vid_path in meta_root.glob(f"**/{video_id}/metadata.json"):
+                return True
+                
+        return False
 
     def fetch_video_list(self, max_videos: int = 10) -> list:
         """채널 최신 영상 목록 가져오기"""
