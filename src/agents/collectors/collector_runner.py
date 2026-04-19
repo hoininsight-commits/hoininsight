@@ -27,45 +27,52 @@ class CollectorRunner:
         print("🚀 CollectorRunner 시작 — 병렬 수집")
         start_time = datetime.now()
 
-        # 에이전트 목록
-        agents = [
-            MarketAgent(self.output_dir),
-            MacroAgent(self.output_dir),
-            SentimentAgent(self.output_dir),
-            DartAgent(self.output_dir),
-            ConsensusCollector(self.output_dir),
-            COTCollector(self.output_dir),
-            PutCallCollector(self.output_dir),
-        ]
+        categories = {
+            "거시경제": [MacroAgent(self.output_dir), ConsensusCollector(self.output_dir)],
+            "시장": [MarketAgent(self.output_dir), PutCallCollector(self.output_dir)],
+            "스마트머니": [COTCollector(self.output_dir)],
+            "감정/뉴스": [SentimentAgent(self.output_dir)],
+            "공시": [DartAgent(self.output_dir)]
+        }
 
         results = {}
         failed = []
+        category_stats = {cat: {"success": 0, "fail": 0} for cat in categories.keys()}
+        total_agents = sum(len(agents) for agents in categories.values())
 
         # ThreadPoolExecutor로 병렬 실행
         with ThreadPoolExecutor(max_workers=7) as executor:
             future_to_agent = {}
-            for agent in agents:
-                # run() 메서드가 있으면 run(), 없으면 collect() 사용
-                method = getattr(agent, "run", None) or getattr(agent, "collect")
-                future = executor.submit(method)
-                future_to_agent[future] = agent.name if hasattr(agent, "name") else type(agent).__name__
+            for cat, agents in categories.items():
+                for agent in agents:
+                    # run() 메서드가 있으면 run(), 없으면 collect() 사용
+                    method = getattr(agent, "run", None) or getattr(agent, "collect")
+                    future = executor.submit(method)
+                    agent_name = agent.name if hasattr(agent, "name") else type(agent).__name__
+                    future_to_agent[future] = {"name": agent_name, "category": cat}
 
             for future in as_completed(future_to_agent):
-                agent_name = future_to_agent[future]
+                agent_info = future_to_agent[future]
+                agent_name = agent_info["name"]
+                cat = agent_info["category"]
+                
                 try:
                     result = future.result()
                     if isinstance(result, dict) and result.get("status") == "failed":
                         error_msg = result.get("error", "Unknown error")
                         results[agent_name] = f"failed: {error_msg}"
                         failed.append(agent_name)
-                        print(f"  ❌ {agent_name} 실패: {error_msg}")
+                        category_stats[cat]["fail"] += 1
+                        print(f"  ❌ [{cat}] {agent_name} 실패: {error_msg}")
                     else:
                         results[agent_name] = "success"
-                        print(f"  ✅ {agent_name} 완료")
+                        category_stats[cat]["success"] += 1
+                        print(f"  ✅ [{cat}] {agent_name} 완료")
                 except Exception as e:
                     results[agent_name] = f"failed: {e}"
                     failed.append(agent_name)
-                    print(f"  ❌ {agent_name} 실패: {e}")
+                    category_stats[cat]["fail"] += 1
+                    print(f"  ❌ [{cat}] {agent_name} 실패: {e}")
 
         elapsed = (datetime.now() - start_time).total_seconds()
 
@@ -73,10 +80,11 @@ class CollectorRunner:
             "date": datetime.now().strftime("%Y-%m-%d"),
             "run_at": datetime.now().isoformat(),
             "elapsed_seconds": round(elapsed, 1),
-            "total_agents": len(agents),
-            "success_count": len(agents) - len(failed),
+            "total_agents": total_agents,
+            "success_count": total_agents - len(failed),
             "failed_count": len(failed),
             "failed_agents": failed,
+            "category_stats": category_stats,
             "agent_results": results,
         }
 
@@ -87,6 +95,8 @@ class CollectorRunner:
 
         print(f"\n✅ CollectorRunner 완료 — {elapsed:.1f}초")
         print(f"   성공: {summary['success_count']}/{summary['total_agents']}")
+        for cat, stat in category_stats.items():
+            print(f"     - {cat}: {stat['success']} 성공, {stat['fail']} 실패")
         if failed:
             print(f"   실패: {failed}")
 
