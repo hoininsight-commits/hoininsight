@@ -294,26 +294,26 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python -m src.agents.publisher
 
-      - name: Commit Intelligence Outputs
-        run: |
-          git config user.name "hoin-bot"
-          git config user.email "hoin-bot@users.noreply.github.com"
-          
-          # Ensure directories exist
-          mkdir -p docs/data
-          cp -r dashboard/* docs/ || true
-          
-          git fetch origin main
-          git reset --soft origin/main
-          
-          git add docs/ data/ || true
-          
-          if [ -n "$(git status --porcelain docs/ data/)" ]; then
-            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
-            git push origin main
-          else
-            echo "No changes to commit"
-          fi
+#      - name: Commit Intelligence Outputs
+#        run: |
+#          git config user.name "hoin-bot"
+#          git config user.email "hoin-bot@users.noreply.github.com"
+#          
+#          # Ensure directories exist
+#          mkdir -p docs/data
+#          cp -r dashboard/* docs/ || true
+#          
+#          git fetch origin main
+#          git reset --soft origin/main
+#          
+#          git add docs/ data/ || true
+#          
+#          if [ -n "$(git status --porcelain docs/ data/)" ]; then
+#            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
+#            git push origin main
+#          else
+#            echo "No changes to commit"
+#          fi
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
