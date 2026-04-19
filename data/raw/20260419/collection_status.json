@@ -1,28 +1,18 @@
 {
   "date": "2026-04-19",
-<<<<<<< HEAD
-  "run_at": "2026-04-19T15:13:18.836983",
-  "elapsed_seconds": 27.0,
-=======
-  "run_at": "2026-04-19T14:49:46.073883",
-  "elapsed_seconds": 90.4,
->>>>>>> fe47ddf66351633e94d052e3cd783f388866e5f6
+  "run_at": "2026-04-19T15:24:21.957478",
+  "elapsed_seconds": 86.3,
   "total_agents": 7,
   "success_count": 7,
   "failed_count": 0,
   "failed_agents": [],
   "agent_results": {
     "CONSENSUS": "success",
-<<<<<<< HEAD
-=======
     "PUTCALL": "success",
-    "MARKET": "success",
     "COT": "success",
->>>>>>> fe47ddf66351633e94d052e3cd783f388866e5f6
-    "SENTIMENT": "success",
     "MARKET": "success",
-    "COT": "success",
     "MACRO": "success",
+    "SENTIMENT": "success",
     "DART": "success"
   }
 }
