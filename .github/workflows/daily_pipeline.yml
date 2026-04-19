@@ -3,6 +3,9 @@ name: HOIN Insight Daily Pipeline
 on:
   schedule:
     - cron: "0 21 * * *" # 06:00 KST
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       start_from:
@@ -33,14 +36,11 @@ jobs:
       github.event_name == 'schedule' ||
       (github.event_name == 'workflow_dispatch' && contains(fromJson('["collect"]'), inputs.start_from)) ||
       (github.event_name == 'push' && (
+        contains(toJson(github.event.commits), 'src/agents/collectors/') ||
         contains(toJson(github.event.commits), 'src/agents/collector') ||
-        contains(toJson(github.event.commits), 'src/agents/market_agent') ||
-        contains(toJson(github.event.commits), 'src/agents/macro_agent') ||
-        contains(toJson(github.event.commits), 'src/agents/sentiment_agent') ||
-        contains(toJson(github.event.commits), 'src/agents/dart_agent') ||
         contains(toJson(github.event.commits), 'src/agents/consensus_collector') ||
         contains(toJson(github.event.commits), 'src/agents/cot_collector') ||
-        contains(toJson(github.event.commits), 'src/agents/putcall_collector') ||
+        contains(toJson(github.event.commits), 'dashboard/') ||
         contains(toJson(github.event.commits), '.github/workflows/') ||
         contains(toJson(github.event.commits), 'requirements.txt')
       ))
@@ -106,6 +106,7 @@ jobs:
         (github.event_name == 'push' && (
           contains(toJson(github.event.commits), 'src/agents/detector') ||
           contains(toJson(github.event.commits), 'src/agents/analyst') ||
+          contains(toJson(github.event.commits), 'src/agents/collectors/') ||
           contains(toJson(github.event.commits), '.github/workflows/') ||
           contains(toJson(github.event.commits), 'requirements.txt')
         ))
