@@ -1,3 +1,4 @@
+<!-- DEPLOY_ID: 20260419_FORCE_V3 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -132,8 +133,6 @@
             font-family: var(--font-mono);
             font-size: 0.85rem;
         }
-        .z-item .up { color: var(--green); }
-        .z-item .down { color: var(--red); }
         
         .state-line {
             display: flex;
@@ -369,7 +368,7 @@
                 const whyNowEl = document.getElementById('why-now-display');
                 if (signal.why_now) {
                     let html = signal.why_now
-                        .replace(/\[F\]/g, '<span style="color: ${amber}; font-weight:800;">[F]</span>')
+                        .replace(/\[F\]/g, '<span style="color: ' + amber + '; font-weight:800;">[F]</span>')
                         .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
                     whyNowEl.innerHTML = html;
                 }
@@ -394,7 +393,7 @@
                 const chainList = document.getElementById('chain-display');
                 const chain = today.analysis?.level2_chain || [];
                 chainList.innerHTML = chain.map(step => {
-                    let cleaned = step.replace(/\[F\]/g, '<span style="color: ${amber}; font-weight:800;">[F]</span>')
+                    let cleaned = step.replace(/\[F\]/g, '<span style="color: ' + amber + '; font-weight:800;">[F]</span>')
                                       .replace(/\[I\]/g, '<span style="color: #22c55e; font-weight:800;">[I]</span>');
                     return `<li class="chain-item" style="padding: 12px 0; border-bottom: 1px dotted rgba(255,255,255,0.1);">${cleaned}</li>`;
                 }).join('') || '<li class="chain-item">데이터 없음</li>';
@@ -425,7 +424,7 @@
                         text.textContent = status === 'SUCCESS' ? 'OK' : (status === 'FAIL' ? 'FAIL' : 'WAIT');
                     }
                 });
-                lucide.createIcons();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
             } catch (err) {
                 console.error('Update Error:', err);
             }
