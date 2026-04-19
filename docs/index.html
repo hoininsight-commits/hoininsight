@@ -270,7 +270,7 @@
     <script>
         async function loadDashboard() {
             try {
-                const response = await fetch('data/today_data.json');
+                const response = await fetch('today_data.json');
                 const data = await response.json();
                 const today = data.today || {};
                 const signal = today.signal || {};
