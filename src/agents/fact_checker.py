@@ -147,8 +147,8 @@ class FactCheckerAgent:
         if not ref_data:
             return True, ["⚠️ 참조 데이터 데이터가 없어 검증을 스킵합니다."]
 
-        market_data = ref_data.get("market", {}).get("data", {})
-        cot_data = ref_data.get("cot", {}).get("positions", {})
+        market_data = (ref_data.get("market") or {}).get("data", {})
+        cot_data = (ref_data.get("cot") or {}).get("positions", {})
         
         extracted = self.extract_values_from_script(script)
         
@@ -167,7 +167,7 @@ class FactCheckerAgent:
             label = ""
             
             # 유형별 대조 값 및 오차 설정
-            stats = market_data.get("multi_period_stats", {}).get(item["key"], {})
+            stats = (market_data.get("multi_period_stats") or {}).get(item["key"], {})
             
             if item["type"] == "TYPE_1":
                 target_val = market_data.get(item["key"])
@@ -188,7 +188,7 @@ class FactCheckerAgent:
                     "usd_krw": "USD" # 환율 COT가 있는 경우 대비
                 }
                 asset_key = asset_map.get(item["key"], item["key"].upper())
-                target_val = cot_data.get(asset_key, {}).get("net_change")
+                target_val = (cot_data.get(asset_key) or {}).get("net_change")
                 label = f"cot_{asset_key}"
 
             if target_val is None:
@@ -233,8 +233,14 @@ class FactCheckerAgent:
                 script_content = f.read()
         
         if not script_content:
-            print("  ⚠️ 검증할 스크립트 내용이 없습니다.")
-            return {"status": "PASS", "reason": "no_script"}
+            print("  ⚠️ FACT_CHECKER: 검증할 스크립트 내용 없음 — 스킵")
+            return {"status": "SKIPPED", "reason": "missing_script"}
+
+        # 참조 데이터 확인
+        ref_data = self.load_reference_data()
+        if not ref_data:
+            print("  ⚠️ FACT_CHECKER: 참조 데이터 없음 — 스킵")
+            return {"status": "SKIPPED", "reason": "missing_reference_data"}
 
         # 날짜 확인
         # (생략: 오늘 날짜인지 체크는 이미 load_reference_data에서 raw_dir로 필터링됨)
@@ -258,9 +264,13 @@ class FactCheckerAgent:
 
 
 if __name__ == "__main__":
-    # 단독 테스트용
+    # 단독 실행 모드
     checker = FactCheckerAgent()
-    test_script = "오늘 VIX 지수는 18.3포인트이며, WTI 유가는 $82 수준입니다."
-    # 실제 데이터와 대조하려면 해당 날짜의 json이 있어야 함
-    passed, logs = checker.verify(test_script)
-    print(f"결과: {passed}, 로그: {logs}")
+    # 인자가 없으면 오늘 생성된 longform 스크립트를 기본으로 사용
+    result = checker.run({
+        "longform_path": f"data/scripts/{checker.today}/today_script_long.md"
+    })
+    print(f"✅ 검증 완료: {result['status']}")
+    if result.get("report"):
+        for r in result["report"]:
+            print(f"  - {r}")

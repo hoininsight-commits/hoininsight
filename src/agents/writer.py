@@ -72,10 +72,12 @@ class WriterAgent:
         
         # 쇼츠 전용 제약 추가
         prompt += "\n반드시 1분 분량의 쇼츠 대본(5단계)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
+        prompt += "\n마지막에 반드시 [DONE] 태그를 붙여서 작성이 완료되었음을 표시해라."
 
-        response = self.gemini.call(prompt, max_tokens=3000)
+        response = self.gemini.call(prompt, max_tokens=4000)
         
-        print(f"  [COMPLETION_TRACE] Shorts Response Status: {'COMPLETED' if '(5단계:' in response else 'TRUNCATED'}")
+        is_completed = "[DONE]" in response or "(Step 7:" in response or "(Risk:" in response
+        print(f"  [COMPLETION_TRACE] Shorts Response Status: {'COMPLETED' if is_completed else 'TRUNCATED'}")
         
         return self._censor_narrative(response)
 
