@@ -258,10 +258,19 @@ class AnalystAgent:
             print("  선정된 신호 없음")
             return {}
 
+        # [EXTENSION] 팩트 기반 가격 기록 (v3.0 Truth Engine)
+        raw_data = self.load_raw()
+        market = raw_data.get("market", {}).get("data", {})
+        # 주요 지표 중 하나를 기준가로 선정 (KOSPI 우선, 없으면 S&P500)
+        signal["base_price"] = market.get("kospi_close", market.get("sp500_close", 0))
+        signal["date"] = self.today
+
         # [EXTENSION] Hunter Analyst 레이어 강화 (지시서 #071)
         try:
             from src.analysis.hunter_enricher import HunterEnricher
-            enricher = HunterEnricher()
+            from src.analysis.truth_engine import TruthEngine
+            
+            enricher = HunterEnricher(Path(self.raw_dir.resolve().parents[2]))
             signal = enricher.enrich(signal)
             # 강화된 시그널 다시 저장 (Writer 등이 사용하도록)
             (self.signal_dir / "today_signal.json").write_text(json.dumps(signal, ensure_ascii=False, indent=2))
@@ -272,6 +281,13 @@ class AnalystAgent:
         analysis = self.analyze(signal, raw_data)
         if not analysis or analysis == {}:
             return {"failed": True}
+
+        # [EXTENSION] Truth Engine Tracking (지시서 #070)
+        try:
+            te = TruthEngine(Path(self.raw_dir.resolve().parents[2]))
+            te.track(signal, analysis)
+        except Exception as e:
+            print(f"  ⚠️ TruthEngine Tracking 실패: {e}")
 
         stocks_data = self.map_stocks(signal, analysis)
         self.save_results(analysis, stocks_data)

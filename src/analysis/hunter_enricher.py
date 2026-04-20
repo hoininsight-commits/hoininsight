@@ -12,8 +12,8 @@ from src.analysis.why_now import WhyNowProjector
 from src.analysis.decision_engine import DecisionEngine
 
 class HunterEnricher:
-    def __init__(self):
-        pass
+    def __init__(self, base_dir: Path):
+        self.base_dir = base_dir
 
     def enrich(self, signal: dict) -> dict:
         """Detector 결과(토픽)를 사냥꾼의 구조적 분석 데이터로 보강"""
@@ -36,8 +36,8 @@ class HunterEnricher:
         # 5. Why Now
         signal["why_now_hunter"] = WhyNowProjector.project(signal)
         
-        # 6. Decision Metadata (v2.0)
-        decision = DecisionEngine.evaluate(signal)
+        # 6. Decision Metadata (v2.0 -> v3.0 Truth Engine 연동)
+        decision = DecisionEngine.evaluate(signal, self.base_dir)
         signal["decision_meta"] = decision
         
         return signal

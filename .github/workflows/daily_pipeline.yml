@@ -143,10 +143,11 @@ jobs:
           rm -rf data/raw && mkdir -p data/raw
           gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
 
-      - name: Run Detector + Analyst
+      - name: Run Truth + Detector + Analyst
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
+          python -m src.agents.truth_agent
           python -m src.agents.detector
           python -m src.agents.analyst
 
