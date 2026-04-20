@@ -139,7 +139,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
           rm -rf data/raw && mkdir -p data/raw
           gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
 
@@ -213,7 +213,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
           
           if [ "${{ steps.dl_raw_w.outcome }}" == "failure" ]; then
             rm -rf data/raw && mkdir -p data/raw
@@ -291,7 +291,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
           echo "Fetching fallback artifacts from Run ID: $LATEST_RUN"
           
           if [ "${{ steps.dl_raw_p.outcome }}" == "failure" ]; then
@@ -346,7 +346,7 @@ jobs:
           path: "./docs"
 
   deploy:
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
+    if: always() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main') && (needs.publish.result == 'success')
     needs: publish
     runs-on: ubuntu-latest
     environment:
