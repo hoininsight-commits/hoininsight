@@ -273,7 +273,7 @@ class AnalystAgent:
         raw_data = self.load_raw()
         market = raw_data.get("market", {}).get("data", {})
         # 주요 지표 중 하나를 기준가로 선정 (KOSPI 우선, 없으면 S&P500)
-        signal["base_price"] = market.get("kospi_close", market.get("sp500_close", 0))
+        signal["base_price"] = market.get("kospi", market.get("sp500", 0))
         signal["date"] = self.today
 
         # [EXTENSION] Truth Engine Feedback Loop - Phase 1: 이전 결과 업데이트 & 가중치 조정
@@ -284,9 +284,9 @@ class AnalystAgent:
             
             # 현재 시장 가격 정보 추출 (KOSPI/S&P500 등)
             current_market = {
-                "KOSPI": market.get("kospi_close", 0),
-                "SPX": market.get("sp500_close", 0),
-                "current": market.get("kospi_close", market.get("sp500_close", 0))
+                "KOSPI": market.get("kospi", 0),
+                "SPX": market.get("sp500", 0),
+                "current": market.get("kospi", market.get("sp500", 0))
             }
             
             # 1. PENDING 상태 업데이트
