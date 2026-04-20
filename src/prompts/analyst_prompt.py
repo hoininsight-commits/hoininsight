@@ -116,6 +116,10 @@ STATE 제약:
     "reality": "실제 현실",
     "conflict": "충돌 이유"
   }},
+  "decision_engine_rules": [
+    "모든 kill_switch는 반드시 구체적인 '숫자 조건'을 포함해야 함 (예: '금리 4.5% 돌파 시', 'DXY 105 상향 시')",
+    "scenarios의 story는 Hunter Context의 consequence_chain과 일치해야 함"
+  ],
   "level2_chain": [
     "[F] 데이터 기반 팩트 문장",
     "[I] 데이터 기반 해석 문구 (~시사한다)",
