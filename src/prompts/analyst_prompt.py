@@ -121,6 +121,26 @@ STATE 제약:
     "[I] 데이터 기반 해석 문구 (~시사한다)",
     "[I] 데이터 기반 상관관계 (~로 읽힌다)"
   ],
+  "decision_engine": {{
+    "scenarios": [
+      {{
+        "type": "BULL",
+        "story": "상승 시나리오 및 근거",
+        "probability": 0.k,
+        "kill_switch": "무효화 조건"
+      }},
+      {{
+        "type": "BEAR",
+        "story": "하락 시나리오 및 근거",
+        "probability": 0.k,
+        "kill_switch": "무효화 조건"
+      }}
+    ],
+    "best_scenario": "BULL/BEAR/NEUTRAL 중 하나",
+    "confidence": 0.k,
+    "action": "BUY / HOLD / WATCH",
+    "trigger_time_condition": "언제 이 결정이 실행되어야 하는가 (시간 조건)"
+  }},
   "key_stocks": ["기준 충족 종목 혹은 섹터명"],
   "risk": "무효화 조건 한 문장"
 }}

@@ -9,6 +9,7 @@ from src.analysis.consequence_chain import ConsequenceChain
 from src.analysis.flow_interpreter import FlowInterpreter
 from src.analysis.beneficiary_mapper import BeneficiaryMapper
 from src.analysis.why_now import WhyNowProjector
+from src.analysis.decision_engine import DecisionEngine
 
 class HunterEnricher:
     def __init__(self):
@@ -16,7 +17,7 @@ class HunterEnricher:
 
     def enrich(self, signal: dict) -> dict:
         """Detector 결과(토픽)를 사냥꾼의 구조적 분석 데이터로 보강"""
-        print("  🏹 경제사냥꾼 구조 분석 강화 레이어 가동...")
+        print("  🏹 경제사냥꾼 구조 분석 및 의사결정 엔진 가동...")
         
         # 1. Surface vs Structure
         ss = SurfaceStructureLayer.analyze(signal)
@@ -34,5 +35,9 @@ class HunterEnricher:
         
         # 5. Why Now
         signal["why_now_hunter"] = WhyNowProjector.project(signal)
+        
+        # 6. Decision Metadata (v2.0)
+        decision = DecisionEngine.evaluate(signal)
+        signal["decision_meta"] = decision
         
         return signal

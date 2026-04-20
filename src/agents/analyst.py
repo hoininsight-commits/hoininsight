@@ -131,8 +131,8 @@ class AnalystAgent:
         
         market = raw_data.get("market", {}).get("data", {})
         
-        # Hunter Context 준비 (Surface, Structure, Flow Interpretation, Chain, Beneficiary 등)
-        hunter_fields = ["surface", "structure", "flow_interpretation_hunter", "consequence_chain", "beneficiary", "why_now_hunter"]
+        # Hunter Context 준비 (Surface, Structure, Flow Interpretation, Chain, Beneficiary, Decision Meta 등)
+        hunter_fields = ["surface", "structure", "flow_interpretation_hunter", "consequence_chain", "beneficiary", "why_now_hunter", "decision_meta"]
         hunter_context = {k: signal.get(k) for k in hunter_fields if k in signal}
 
         prompt = ANALYST_PROMPT_TEMPLATE.format(
