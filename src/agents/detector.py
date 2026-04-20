@@ -265,7 +265,7 @@ class DetectorAgent:
 
         # [EXTENSION] Flow Overlay 적용 (지시서 #070) — 자금 흐름 기반 검증
         overlay = FlowOverlay(self.base_dir)
-        all_candidates = [overlay.apply(a) for a in all_candidates]
+        all_candidates = [overlay.apply(a, all_data) for a in all_candidates]
 
         # 2. 전역 뉴스 트리거 결합 (Task 2)
         for a in all_candidates:

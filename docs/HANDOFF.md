@@ -12,8 +12,8 @@ v1.0 (2026-04-19 확정)
 - 파이프라인 논리 버그 수정 (start_from 조건문)
 - artifact 폴백 강화 (gh api 기반 최신 Run 자동 탐색)
 - 프로젝트 지식 관리 구조 구축 (#069)
-- **전체 시스템 구조 감사 및 데이터 로직 맵 완성** (docs/audit/) 
-- **FLOW LAYER 최소 도입 및 Detector 자금 흐름 검증 엔진 구축** (v8.0)
+- 전체 시스템 구조 감사 및 데이터 로직 맵 완성 (docs/audit/) 
+- FLOW LAYER 도입 및 **Flow State(4단계 시장 상태) 판별 엔진 업그레이드** (v8.1)
 
 ## 알려진 이슈
 - PutCallCollector 403 (API 접근 제한흏, null 처리 중)
