@@ -559,6 +559,7 @@ class CollectorAgent:
         print("📰 글로벌 뉴스 데이터 수집 중...")
         import feedparser
         import requests
+        from concurrent.futures import ThreadPoolExecutor
 
         headlines = []
         rss_feeds = [
@@ -578,26 +579,31 @@ class CollectorAgent:
             {"name": "한국경제", "url": "https://www.hankyung.com/feed/economy"},
         ]
 
-        for feed in rss_feeds:
+        def fetch_rss_worker(feed):
+            feed_headlines = []
             try:
-                # requests로 먼저 가져온 뒤 feedparser로 파싱 (차단 방지)
-                resp = requests.get(feed["url"], timeout=10, 
+                # 타임아웃을 7초로 조정하여 지연 피드 차단
+                resp = requests.get(feed["url"], timeout=7, 
                     headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"})
                 if resp.status_code == 200:
                     d = feedparser.parse(resp.content)
-                    items = d.entries[:10]  # 각 채널당 상위 10개
-                    for entry in items:
-                        headlines.append({
+                    for entry in d.entries[:10]:
+                        feed_headlines.append({
                             "title": entry.get("title", "").strip(),
                             "summary": entry.get("summary", "")[:200].strip(),
                             "link": entry.get("link", ""),
                             "source": feed["name"],
                             "timestamp": datetime.now().isoformat()
                         })
-                else:
-                    print(f"  RSS 응답 오류 ({feed['name']}): {resp.status_code}")
-            except Exception as e:
-                print(f"  RSS 수집 실패 ({feed['name']}): {e}")
+            except:
+                pass
+            return feed_headlines
+
+        # 5개 스레드로 뉴스 병렬 수집
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            results = list(executor.map(fetch_rss_worker, rss_feeds))
+            for res in results:
+                headlines.extend(res)
 
         # 권위자 키워드 탐지
         authority_keywords = [
@@ -692,9 +698,10 @@ class CollectorAgent:
         return output
 
     def collect_fred(self) -> dict:
-        """FRED API 기반 거시 데이터 수집"""
+        """FRED API 기반 거시 데이터 수집 (병렬화 v2.0)"""
         print("📊 FRED 데이터 수집 중...")
         from fredapi import Fred
+        from concurrent.futures import ThreadPoolExecutor
         fred = Fred(api_key=os.getenv('FRED_API_KEY'))
 
         series_map = {
@@ -715,14 +722,24 @@ class CollectorAgent:
         }
 
         data = {}
-        for key, series_id in series_map.items():
+        
+        def fetch_single_fred(key, series_id):
             try:
                 series = fred.get_series(series_id)
-                data[key] = round(float(series.dropna().iloc[-1]), 4)
-                print(f"  {key}: {data[key]}")
+                val = round(float(series.dropna().iloc[-1]), 4)
+                return key, val
             except Exception as e:
                 print(f"  {key} 수집 실패: {e}")
-                data[key] = None
+                return key, None
+
+        # 10개 스레드로 병렬 수집
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            future_to_key = {executor.submit(fetch_single_fred, k, s): k for k, s in series_map.items()}
+            for future in future_to_key:
+                key, val = future.result()
+                data[key] = val
+                if val is not None:
+                    print(f"  {key}: {val}")
 
         result = {
             "date": self.today,
@@ -739,43 +756,38 @@ class CollectorAgent:
         return result
 
     def collect_ecos(self) -> dict:
-        """한국은행 ECOS API 기반 데이터 수집"""
+        """한국은행 ECOS API 기반 데이터 수집 (병렬화 v2.0)"""
         print("🏦 ECOS 데이터 수집 중...")
         import requests
+        from concurrent.futures import ThreadPoolExecutor
 
         api_key = os.getenv('ECOS_API_KEY')
         base_url = "https://ecos.bok.or.kr/api"
 
-        def fetch_ecos(stat_code, cycle, start, end, item_code=""):
+        def fetch_ecos_worker(key, stat_code, cycle, start, end, item_code=""):
             try:
-                # 최신 데이터 확보를 위해 1/100 요청 (ECOS는 과거순 반환하므로 목록 중 마지막을 취함)
                 url = f"{base_url}/StatisticSearch/{api_key}/json/kr/1/100/{stat_code}/{cycle}/{start}/{end}"
                 if item_code:
                     url += f"/{item_code}"
                 resp = requests.get(url, timeout=10)
                 json_resp = resp.json()
                 
-                # 에러 메시지 처리
                 if "RESULT" in json_resp and json_resp["RESULT"].get("CODE") != "INFO-000":
-                    print(f"  ⚠️ ECOS {stat_code} API 에러: {json_resp['RESULT'].get('MESSAGE')}")
-                    return None, None
+                    return key, None, None
                     
                 rows = json_resp.get("StatisticSearch", {}).get("row", [])
                 if rows:
-                    # 가장 최근 데이터 리턴
                     latest_val = float(rows[-1]["DATA_VALUE"].replace(",", ""))
                     latest_date = rows[-1].get("TIME", "알수없음")
-                    return latest_val, latest_date
-            except Exception as e:
-                print(f"  ❌ ECOS {stat_code} 실패: {e}")
-            return None, None
+                    return key, latest_val, latest_date
+            except:
+                pass
+            return key, None, None
 
         today = datetime.now()
         ym = today.strftime("%Y%m")
-        # 발표 지연을 고려하여 검색 범위 내역을 180일(약 6개월)로 확대
         ym_start = (today - timedelta(days=180)).strftime("%Y%m")
 
-        # 지표별 수집 및 로그 출력 강화
         indicators = {
             "kr_base_rate":    ("722Y001", "M", "0101000"),
             "kr_cpi":          ("901Y009", "M", "0"),
@@ -785,20 +797,21 @@ class CollectorAgent:
             "kr_import":       ("901Y118", "M", "T004"),
         }
 
-
         data = {}
-        for key, (code, cycle, item) in indicators.items():
-            val, date = fetch_ecos(code, cycle, ym_start, ym, item)
-            data[key] = val
-            if val is not None:
-                print(f"  ✅ {key}: {val} (최신 데이터 날짜: {date})")
-            else:
-                print(f"  [MISSING] {key}: 최근 6개월 내 데이터 없음 (또는 API 오류)")
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            futures = [executor.submit(fetch_ecos_worker, k, *v, ym_start, ym) for k, v in indicators.items()]
+            for future in futures:
+                k, val, date = future.result()
+                data[k] = val
+                if val is not None:
+                    print(f"  ✅ {k}: {val} (최신 데이터 날짜: {date})")
+                else:
+                    print(f"  [MISSING] {k}")
 
         result = {
             "date": self.today,
             "collected_at": datetime.now().isoformat(),
-            "source": "ECOS API (한국은행)",
+            "source": "ECOS API",
             "data": data
         }
 

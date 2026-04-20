@@ -46,10 +46,24 @@ class CollectorRunner:
             future_to_agent = {}
             for cat, agents in categories.items():
                 for agent in agents:
+                    agent_name = agent.name if hasattr(agent, "name") else type(agent).__name__
+                    
+                    # [SMART_CACHE] 오늘 이미 수집된 파일이 있는지 확인
+                    cache_file = self.output_dir / f"{agent_name.lower()}.json"
+                    if cache_file.exists():
+                        try:
+                            # 파일이 유효한지 체크 (비어있지 않은지)
+                            if cache_file.stat().st_size > 100:
+                                print(f"  📦 [{cat}] {agent_name} 캐시 발견 (오늘 수집됨). 수집 건너뜀.")
+                                results[agent_name] = "success (cached)"
+                                category_stats[cat]["success"] += 1
+                                continue
+                        except:
+                            pass
+
                     # run() 메서드가 있으면 run(), 없으면 collect() 사용
                     method = getattr(agent, "run", None) or getattr(agent, "collect")
                     future = executor.submit(method)
-                    agent_name = agent.name if hasattr(agent, "name") else type(agent).__name__
                     future_to_agent[future] = {"name": agent_name, "category": cat}
 
             for future in as_completed(future_to_agent):
