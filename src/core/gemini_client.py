@@ -140,3 +140,20 @@ class GeminiClient:
         except Exception as e:
             print(f"  ❌ call_json 오류: {e}")
             return {}
+
+    def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN") -> dict:
+        """Control Layer가 적용된 JSON 호출 (v1.0)"""
+        from src.llm.gemini_wrapper import call_gemini_with_control
+        return call_gemini_with_control(self, prompt, agent)
+
+    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 4000) -> str:
+        """Control Layer가 적용된 텍스트 호출 (로깅 포함)"""
+        from src.llm.gemini_wrapper import log_gemini_usage
+        try:
+            res = self.call(prompt, max_tokens=max_tokens)
+            if not res: raise Exception("Empty Text Response")
+            log_gemini_usage(agent, success=True, fallback_used=False, retry_count=0)
+            return res
+        except Exception as e:
+            log_gemini_usage(agent, success=False, fallback_used=True, retry_count=0)
+            raise e

@@ -1,0 +1,69 @@
+{
+  "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+  "anomaly_type": "NEWS_MISMATCH",
+  "strength": 9.2,
+  "why_anomalous": "뉴스 톤은 부정적(DeepSeek 등)이나 SP500 Z-score 1.96로 강한 상승 중",
+  "why_now": "악재를 압도하는 수급 또는 선반영 인식 확산 (뉴스 트리거 확인됨)",
+  "news_trigger": "Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
+  "key_indicators": [
+    "sp500",
+    "sentiment"
+  ],
+  "second_order_deviation": true,
+  "deviation_direction": "expanding",
+  "deviation_delta": 0.0,
+  "persistence_score": 0.0,
+  "persistence_days": 0,
+  "is_persistent_signal": false,
+  "signal_dead": false,
+  "death_reason": [],
+  "death_confidence": 0.0,
+  "trigger_type": "news",
+  "trigger_binding_score": 0.7,
+  "why_now_hint": "뉴스 트리거 포착: Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
+  "detector_boost": 1.2,
+  "extended_strength": 8.0,
+  "flow_confirmation": false,
+  "flow_strength": 2.0,
+  "flow_direction": "outflow",
+  "flow_state": "CONFIRMED_DOWNTREND",
+  "flow_state_detail": "CONFIRMED_DOWNTREND",
+  "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+  "trigger_event": "none",
+  "price_strength": "sideways",
+  "flow_consistency": 0,
+  "source": "MISMATCH_ENGINE",
+  "selected": true,
+  "content_type": "롱폼",
+  "date": "20260420",
+  "base_price": 0,
+  "surface": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+  "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
+  "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
+  "consequence_chain": [
+    "Trigger: none",
+    "Market Reaction: 시장 유동성/심리 변화",
+    "Capital Movement: 안전/위험 자산 간 자금 이동",
+    "Final Beneficiary: 구조적 수혜 섹터"
+  ],
+  "beneficiary": {
+    "theme": "뉴스 관련 시장 테마주",
+    "structural": "장기적 구조 수혜주"
+  },
+  "why_now_hunter": "현재 시장 지표의 이탈과 자금 흐름이 결합되는 분기점입니다.",
+  "decision_meta": {
+    "action": "HOLD",
+    "confidence": 0.24,
+    "best_scenario": "BEAR",
+    "bull_probability": 0.26,
+    "bear_probability": 0.74,
+    "weights_used": {
+      "flow": 0.35,
+      "price": 0.25,
+      "event": 0.25,
+      "consistency": 0.15
+    },
+    "calibration_applied": 0.5,
+    "decision_hint": "P_Val -0.35 / Conf 0.24 (CF: 0.5)"
+  }
+}

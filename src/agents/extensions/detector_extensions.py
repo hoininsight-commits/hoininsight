@@ -7,6 +7,8 @@ from pathlib import Path
 from datetime import datetime, timedelta
 
 class DetectorEnricher:
+    KEY_MAP_INV = ["usd_krw", "wti_oil", "sp500", "nasdaq", "vix", "gold"]
+
     def __init__(self, base_dir: Path, today: str):
         self.base_dir = base_dir
         self.today = today
@@ -116,7 +118,7 @@ class DetectorEnricher:
         
         if indicators and market_stats:
             main_idx = indicators[0]
-            if main_idx in key_map_inv:
+            if main_idx in self.KEY_MAP_INV:
                 z_score = market_stats.get(main_idx, {}).get("z_score_20d", 0.0)
                 if abs(z_score) < 0.5: # 정상 범위 회귀
                     anomaly["signal_dead"] = True
@@ -152,8 +154,6 @@ class DetectorEnricher:
                     self._init_fields(death_node)
                     return [death_node]
         return []
-
-key_map_inv = ["usd_krw", "wti_oil", "sp500", "nasdaq", "vix", "gold"]
 
     def _apply_event_trigger_binding(self, anomaly: dict, all_data: dict):
         """Event Trigger Binding: 통계치와 실제 이벤트 결합"""

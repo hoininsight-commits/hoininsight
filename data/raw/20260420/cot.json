@@ -1,0 +1,123 @@
+{
+  "date": "2026-04-20",
+  "collected_at": "2026-04-20T19:59:58.857174",
+  "source": "CFTC COT Report",
+  "positions": {
+    "WTI": {
+      "long": 8233,
+      "short": 53467,
+      "net": -45234,
+      "prev_net": 0,
+      "net_change": -45234,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    },
+    "Gold": {
+      "long": 125422,
+      "short": 30281,
+      "net": 95141,
+      "prev_net": 517,
+      "net_change": 94624,
+      "direction": "LONG",
+      "change_direction": "INCREASING",
+      "report_date": "2026-04-14"
+    },
+    "SP500": {
+      "long": 123136,
+      "short": 543492,
+      "net": -420356,
+      "prev_net": 58309,
+      "net_change": -478665,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    },
+    "Nasdaq": {
+      "long": 41041,
+      "short": 99933,
+      "net": -58892,
+      "prev_net": -49667,
+      "net_change": -9225,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "report_date": "2026-04-14"
+    }
+  },
+  "smart_money_signals": [
+    {
+      "asset": "Gold",
+      "signal_label": "STRONG",
+      "net_change": 94624,
+      "change_pct": 18302.5,
+      "direction": "LONG",
+      "change_direction": "INCREASING",
+      "percentile_52w": 40.4,
+      "z_score_52w": -0.89,
+      "description": "Gold 헤지펀드 매수 94,624계약 (+18302.5%) — 전주 대비 INCREASING"
+    },
+    {
+      "asset": "SP500",
+      "signal_label": "FLIP",
+      "net_change": -478665,
+      "change_pct": -820.9,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "percentile_52w": 100.0,
+      "z_score_52w": 1.27,
+      "description": "SP500 헤지펀드 포지션 롱→숏 전환 (Net +58,309 → -420,356)"
+    },
+    {
+      "asset": "Nasdaq",
+      "signal_label": "MODERATE",
+      "net_change": -9225,
+      "change_pct": -18.6,
+      "direction": "SHORT",
+      "change_direction": "DECREASING",
+      "percentile_52w": 17.3,
+      "z_score_52w": -0.66,
+      "description": "Nasdaq 헤지펀드 매도 9,225계약 (-18.6%) — 전주 대비 DECREASING"
+    }
+  ],
+  "top_signal": {
+    "asset": "Gold",
+    "signal_label": "STRONG",
+    "net_change": 94624,
+    "change_pct": 18302.5,
+    "direction": "LONG",
+    "change_direction": "INCREASING",
+    "percentile_52w": 40.4,
+    "z_score_52w": -0.89,
+    "description": "Gold 헤지펀드 매수 94,624계약 (+18302.5%) — 전주 대비 INCREASING"
+  },
+  "history_stats": {
+    "SP500": {
+      "z_score_52w": 1.27,
+      "percentile_52w": 100.0,
+      "avg_52w": -200724,
+      "max_52w": 58309,
+      "min_52w": -475380
+    },
+    "Nasdaq": {
+      "z_score_52w": -0.66,
+      "percentile_52w": 17.3,
+      "avg_52w": -30295,
+      "max_52w": 34802,
+      "min_52w": -107925
+    },
+    "WTI": {
+      "z_score_52w": -2.02,
+      "percentile_52w": 1.9,
+      "avg_52w": -13525,
+      "max_52w": 0,
+      "min_52w": -45234
+    },
+    "Gold": {
+      "z_score_52w": -0.89,
+      "percentile_52w": 40.4,
+      "avg_52w": 50328,
+      "max_52w": 137444,
+      "min_52w": -393
+    }
+  }
+}

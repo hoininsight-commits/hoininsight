@@ -97,15 +97,19 @@ STATE 제약:
 
 ### [출력 JSON 구조]
 {{
-  "date": "{today}",
-  "topic": "{topic}",
+  "topic_core_claim": "오늘 시장을 지배하는 핵심 담론 (현상 + 의도)",
+  "one_line_summary": "전체 분석을 관통하는 한 줄 요약",
+  "why_now": "[F]와 [I] 계층 문장을 조합하여 2~3문장으로 작성",
+  "surface_fact": "시장에 드러난 표면적 데이터와 현상",
+  "structural_truth": "데이터 이면에 숨겨진 구조적 본질과 모순",
+  "capital_flow": "스마트머니와 헤지펀드의 실질적 자금 이동 방향",
+  "primary_beneficiary": "이 구조 변화로 인해 최종적으로 이득을 취하는 섹터/주체",
+  "risk_kill_switch": "구체적 숫자 조건을 포함한 시나리오 무효화 임계점",
   "market_state": {{
     "risk_appetite": "상승/하락/혼조",
     "hedging_activity": "증가/감소/중립",
-    "conviction": "높음/낮음",
-    "summary": "[F] 또는 [I] 태그를 포함한 한 줄 요약"
+    "conviction": "높음/낮음"
   }},
-  "why_now": "[F]와 [I] 계층 문장을 조합하여 2~3문장으로 작성",
   "why_now_verification": {{
     "candidate_1": "가설 및 데이터 일치 여부",
     "candidate_2": "가설 및 데이터 일치 여부",
@@ -116,10 +120,6 @@ STATE 제약:
     "reality": "실제 현실",
     "conflict": "충돌 이유"
   }},
-  "decision_engine_rules": [
-    "모든 kill_switch는 반드시 구체적인 '숫자 조건'을 포함해야 함 (예: '금리 4.5% 돌파 시', 'DXY 105 상향 시')",
-    "scenarios의 story는 Hunter Context의 consequence_chain과 일치해야 함"
-  ],
   "level2_chain": [
     "[F] 데이터 기반 팩트 문장",
     "[I] 데이터 기반 해석 문구 (~시사한다)",

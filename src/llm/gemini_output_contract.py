@@ -12,18 +12,28 @@ REQUIRED_OUTPUT_FIELDS = [
     "one_line_summary"
 ]
 
-def validate_gemini_output(data: dict) -> bool:
-    """Gemini 응답 데이터가 필수 계약 필드를 포함하고 있는지 매뉴얼 검증"""
+def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
+    """Gemini 응답 데이터가 필수 계약 필드를 포함하고 있는지 검증 (v1.0)"""
+    
+    # 1. 리스트 형태 (DETECTOR 등) 처리
+    if isinstance(data, list):
+        if len(data) == 0:
+            return False
+        # 리스트 내 개별 항목 검증 (간소화)
+        sample = data[0]
+        if isinstance(sample, dict) and "topic" in sample:
+            return True
+        return False
+
+    # 2. 딕셔너리 형태 처리
     if not isinstance(data, dict):
         return False
 
-    for field in REQUIRED_OUTPUT_FIELDS:
-        if field not in data:
-            # 특정 에이전트(Writer 등)는 전체 필드가 필요 없을 수 있으나 
-            # Control Layer v1.0 규약상 체크 메커니즘 구축
-            pass
-
-    # 최소 필수 필드 체크 (v1.0 보수적 적용)
+    # 3. 에이전트별 규약 (v1.0)
+    if agent == "DETECTOR":
+        return "topic" in data or "candidates" in data or isinstance(data, list)
+    
+    # ANALYST, WRITER 등 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]
     for f in essential:
         if f not in data:

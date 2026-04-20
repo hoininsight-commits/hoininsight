@@ -146,21 +146,28 @@ class AnalystAgent:
             hunter_context=json.dumps(hunter_context, ensure_ascii=False, indent=2)
         )
 
-        result = self.gemini.call_json(prompt, max_tokens=2500)
+        try:
+            result = self.gemini.call_json_controlled(prompt, agent="ANALYST")
+            if not result or not result.get("topic_core_claim"):
+                raise Exception("Empty Result or Protocol Violation")
+        except Exception as e:
+            print(f"  ⚠️ ANALYST Gemini Error ({e}). Fallback 모드 가동.")
+            from src.analyst.fallback_analyst import generate_fallback_analysis
+            result = generate_fallback_analysis(signal)
 
-        # Gemini 응답 파싱 실패 방어
-        if not result or not result.get("topic"):
-            print("  ⚠️ Gemini 응답 파싱 실패 — 기존 today_analysis.json 유지")
-            existing = self.load_existing_analysis()
-            if existing:
-                return existing
-            return {}
+        # Phase 6 Task 7: 품질 검증 (Quality Gate)
+        from src.validation.quality_gate import validate_minimum_quality
+        if not validate_minimum_quality(result):
+            print("  ⚠️ 품질 검증 실패. 제어 레이어에 의해 Fallback 강제 전환.")
+            from src.analyst.fallback_analyst import generate_fallback_analysis
+            result = generate_fallback_analysis(signal_info)
 
         # 2차 필터링 적용 (3계층 준수 여부 사후 검증)
         result["level2_chain"] = self._filter_level2_chain(result.get("level2_chain", []), raw_data)
         result["why_now"] = self._filter_text(result.get("why_now", ""), raw_data)
         if "market_state" in result:
-            result["market_state"]["summary"] = self._filter_text(result["market_state"].get("summary", ""), raw_data)
+            if "summary" in result["market_state"]:
+                result["market_state"]["summary"] = self._filter_text(result["market_state"].get("summary", ""), raw_data)
 
         return result
 
@@ -243,7 +250,11 @@ class AnalystAgent:
         return { "date": self.today, "topic_signal": signal["topic"], "stocks": final_stocks, "bridge_validated": True }
 
     def save_results(self, analysis, stocks_data):
-        if not analysis or analysis == {} or not analysis.get("topic"):
+        if not analysis or analysis == {}:
+            return False
+        
+        # topic 또는 topic_core_claim 중 하나만 있어도 유효한 것으로 간주
+        if not analysis.get("topic") and not analysis.get("topic_core_claim"):
             return False
 
         (self.analysis_dir / "today_analysis.json").write_text(json.dumps(analysis, ensure_ascii=False, indent=2))

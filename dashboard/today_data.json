@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-04-19T20:31:12.436132",
+  "last_updated": "2026-04-20T20:00:30.942620",
   "today": {
-    "date": "2026-04-19",
+    "date": "2026-04-20",
     "signal": {
       "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
       "anomaly_type": "NEWS_MISMATCH",
@@ -13,78 +13,118 @@
         "sp500",
         "sentiment"
       ],
+      "second_order_deviation": true,
+      "deviation_direction": "expanding",
+      "deviation_delta": 0.0,
+      "persistence_score": 0.0,
+      "persistence_days": 0,
+      "is_persistent_signal": false,
+      "signal_dead": false,
+      "death_reason": [],
+      "death_confidence": 0.0,
+      "trigger_type": "news",
+      "trigger_binding_score": 0.7,
+      "why_now_hint": "뉴스 트리거 포착: Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
+      "detector_boost": 1.2,
+      "extended_strength": 8.0,
+      "flow_confirmation": false,
+      "flow_strength": 2.0,
+      "flow_direction": "outflow",
+      "flow_state": "CONFIRMED_DOWNTREND",
+      "flow_state_detail": "CONFIRMED_DOWNTREND",
+      "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+      "trigger_event": "none",
+      "price_strength": "sideways",
+      "flow_consistency": 0,
       "source": "MISMATCH_ENGINE",
       "selected": true,
       "content_type": "롱폼",
-      "date": "20260419"
+      "date": "20260420",
+      "base_price": 0,
+      "surface": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+      "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
+      "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
+      "consequence_chain": [
+        "Trigger: none",
+        "Market Reaction: 시장 유동성/심리 변화",
+        "Capital Movement: 안전/위험 자산 간 자금 이동",
+        "Final Beneficiary: 구조적 수혜 섹터"
+      ],
+      "beneficiary": {
+        "theme": "뉴스 관련 시장 테마주",
+        "structural": "장기적 구조 수혜주"
+      },
+      "why_now_hunter": "현재 시장 지표의 이탈과 자금 흐름이 결합되는 분기점입니다.",
+      "decision_meta": {
+        "action": "HOLD",
+        "confidence": 0.24,
+        "best_scenario": "BEAR",
+        "bull_probability": 0.26,
+        "bear_probability": 0.74,
+        "weights_used": {
+          "flow": 0.35,
+          "price": 0.25,
+          "event": 0.25,
+          "consistency": 0.15
+        },
+        "calibration_applied": 0.5,
+        "decision_hint": "P_Val -0.35 / Conf 0.24 (CF: 0.5)"
+      },
+      "level2_chain": []
     },
     "analysis": {
-      "date": "20260419",
-      "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+      "topic_core_claim": "뉴스 악재 속 지수 상승 (Price-News 모순)에서 구조적 이상징후(9.2점) 감지",
+      "one_line_summary": "현재는 지표의 과열 혹은 급발진에 따른 구조적 변화 초입 구간입니다.",
+      "why_now": "최근 데이터 변화가 통계적 임계치를 초과하여 하드 필터를 발동시켰습니다.",
+      "surface_fact": "주요 지표에서 최근 90일 내 발견되지 않았던 통계적 이상치가 발생했습니다.",
+      "structural_truth": "단순 가격 변동을 넘어선 자금 흐름의 가속화가 감지되는 초기 국면입니다.",
+      "capital_flow": "스마트머니의 방향성 불확실성이 증가하고 있으며, 위험 관리 포지션이 구축되고 있습니다.",
+      "primary_beneficiary": "전술적 현금 비중 확대 및 인버스/방어주 섹터에 대한 관심이 필요한 시점입니다.",
+      "risk_kill_switch": "주요 지수의 Z-score가 정상 범위(±0.5)로 회귀할 경우 이 가설은 무효화됩니다.",
       "market_state": {
-        "risk_appetite": "상승",
+        "risk_appetite": "혼조",
         "hedging_activity": "증가",
-        "conviction": "낮음",
-        "summary": "[I] 지수가 90일 신고가를 경신하는 낙관론 속에서도 헤지펀드의 이례적인 수준의 숏 포지션 전환이 포착되며 가격과 수급의 극심한 괴리 가능성을 시사한다."
+        "conviction": "낮음"
       },
-      "why_now": "[F] S&P500 지수가 90일 최고치(7126.06)를 기록하며 Z-score 1.96 임계점에 도달한 오늘, 헤지펀드의 S&P500 포지션이 1년래 최저치인 -420,356계약으로 롱에서 숏으로 전환(FLIP)되었 점이 관측된다. [I] 이는 악재 속에서도 지수가 상승하는 'Price-News 모순'이 수급적 한계점에 도달했음을 시사하며, 유가 폭락과 달러 약세가 결합된 이례적 동조화가 오늘 발생했기에 분석의 결정적 시점으로 판단된 점이 관측된다.",
-      "why_now_verification": {
-        "candidate_1": "금리 및 달러 하락에 따른 유동성 장세 지속 가설",
-        "candidate_2": "헤지펀드의 대규모 숏 포지션 구축에 따른 숏 스퀴즈 종료 및 반전 가설",
-        "result": "후자 우세 (헤지펀드 포지션이 90일 내 최저치인 100.0 퍼센타일에 도달함)"
-      },
-      "expectation_vs_reality": {
-        "expectation": "뉴스 악재와 경기 둔화 우려(유가 폭락)로 인한 지수의 하방 압력",
-        "reality": "S&P500 및 나스닥 90일 신고가 경신 및 VIX 17.48 수준의 안정세",
-        "conflict": "금리(US10Y)와 달러(DXY)의 동반 하락이 악재보다 유동성 공급 우위로 작용"
-      },
-      "level2_chain": [
-        "[F] S&P500 지수는 7126.06으로 90일 최고가를 경신했으며, 헤지펀드의 순포지션은 -420,356계약으로 전주 대비 숏 전환되었다.",
-        "[F] WTI 유가는 하루 만에 12.78% 폭락하며 90일 최저치인 82.59달러를 기록했고, 금 가격의 20일 Z-score는 1.52를 기록했다.",
-        "[I] 지수 신고가와 헤지펀드의 이례적인 수준의 숏 포지션 구축이 충돌하는 현상은 현재의 상승이 펀더멘털보다는 수급적 숏 스퀴즈에 의한 일시적 현상일 가능성을 시사한다.",
-        "[I] 유가 폭락에도 불구하고 지수가 상승하는 것은 시장이 에너지 비용 감소를 인플레이션 완화 및 금리 인하 명분으로 치환하여 해석하고 있을 가능성으로 읽힌다.",
-        "[I] 달러 인덱스(DXY)가 98.1로 하락하며 20일 Z-score -1.51을 기록한 점은 글로벌 자금의 위험자산 유입 친화적 환경이 조성되고 있음을 시사한다.",
-        "[I]"
-      ]
+      "is_fallback": true,
+      "level2_chain": []
     },
     "stocks": [],
     "candidates": [
       {
-        "topic": "지정학적 위기를 비웃는 유가의 기록적 폭락",
-        "anomaly_type": "SPEED",
-        "why_anomalous": "NATO의 심해 케이블 파괴 대응, 이스라엘-팔레스타인 긴장, 콩고 내전 등 공급망 불안을 자극하는 뉴스가 산적함에도 불구하고 WTI 유가가 20일 이동평균 대비 Z-score -1.93이라는 극단적 하락세를 보임. 통상적인 지정학적 리스크와 유가의 양의 상관관계가 완전히 붕괴됨.",
-        "why_now": "오늘 NATO가 심해 케이블 파괴에 대해 사상 첫 공식 대응을 발표하며 물리적 충돌 가능성이 고조되었음에도, 유가는 오히려 하루 만에 12.78% 폭락하며 시장의 공급망 우려를 완전히 무시하고 있음.. 뉴스 트리거: [연합뉴스 이 시각 헤드라인] - 15:00",
-        "key_indicators": [
-          "wti_oil",
-          "NATO news",
-          "spread_10y2y"
-        ],
-        "strength": 10.0,
-        "news_trigger": "[연합뉴스 이 시각 헤드라인] - 15:00"
-      },
-      {
         "topic": "안전자산 동반 이탈과 유동성 재배치",
         "strength": 9.0,
         "anomaly_type": "CORRELATION",
-        "why_anomalous": "국채금리 Z-score -1.68 및 달러 Z-score -1.51 동시 하락",
+        "why_anomalous": "국채금리 Z-score -1.68 및 달러 Z-score -1.19 동시 하락",
         "why_now": "시장 자금이 안전자산을 버리고 위험 자산으로 이동 중. 뉴스 트리거: Comex Gold, Silver Settle Lower",
         "key_indicators": [
           "us10y",
           "dxy"
         ],
+        "second_order_deviation": false,
+        "deviation_direction": "neutral",
+        "deviation_delta": 0.0,
+        "persistence_score": 0.0,
+        "persistence_days": 0,
+        "is_persistent_signal": false,
+        "signal_dead": false,
+        "death_reason": [],
+        "death_confidence": 0.0,
+        "trigger_type": "unknown",
+        "trigger_binding_score": 0.0,
+        "why_now_hint": "",
+        "detector_boost": 0.0,
+        "extended_strength": 7.0,
+        "flow_confirmation": false,
+        "flow_strength": 2.0,
+        "flow_direction": "outflow",
+        "flow_state": "CONFIRMED_DOWNTREND",
+        "flow_state_detail": "CONFIRMED_DOWNTREND",
+        "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+        "trigger_event": "none",
+        "price_strength": "sideways",
+        "flow_consistency": 0,
         "news_trigger": "Comex Gold, Silver Settle Lower"
-      },
-      {
-        "topic": "달러 약세에도 불구하고 유가 급락 (비상관적 하락)",
-        "strength": 9.2,
-        "anomaly_type": "CORRELATION",
-        "why_anomalous": "유가 Z-score -1.93 급락 중 달러 Z-score -1.51 역시 하락",
-        "why_now": "통상적인 달러 반비례 관계가 깨짐. 이는 심각한 수요 둔화 시그널. 뉴스 트리거: [연합뉴스 이 시각 헤드라인] - 15:00",
-        "key_indicators": [
-          "wti_oil",
-          "dxy"
-        ],
-        "news_trigger": "[연합뉴스 이 시각 헤드라인] - 15:00"
       },
       {
         "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
@@ -97,23 +137,46 @@
           "sp500",
           "sentiment"
         ],
+        "second_order_deviation": true,
+        "deviation_direction": "expanding",
+        "deviation_delta": 0.0,
+        "persistence_score": 0.0,
+        "persistence_days": 0,
+        "is_persistent_signal": false,
+        "signal_dead": false,
+        "death_reason": [],
+        "death_confidence": 0.0,
+        "trigger_type": "news",
+        "trigger_binding_score": 0.7,
+        "why_now_hint": "뉴스 트리거 포착: Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
+        "detector_boost": 1.2,
+        "extended_strength": 8.0,
+        "flow_confirmation": false,
+        "flow_strength": 2.0,
+        "flow_direction": "outflow",
+        "flow_state": "CONFIRMED_DOWNTREND",
+        "flow_state_detail": "CONFIRMED_DOWNTREND",
+        "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+        "trigger_event": "none",
+        "price_strength": "sideways",
+        "flow_consistency": 0,
         "source": "MISMATCH_ENGINE",
         "selected": true,
         "content_type": "롱폼",
-        "date": "20260419"
+        "date": "20260420"
       }
     ],
-    "content_id": "20260419_001",
+    "content_id": "20260420_001",
     "status": "승인대기",
     "fact_checker": {},
     "agent_status": {
-      "collector": "UNKNOWN",
-      "learner": "UNKNOWN",
-      "detector": "UNKNOWN",
-      "analyst": "UNKNOWN",
-      "writer": "UNKNOWN",
-      "fact_checker": "UNKNOWN",
-      "publisher": "UNKNOWN"
+      "collector": "SUCCESS",
+      "learner": "SUCCESS",
+      "detector": "SUCCESS",
+      "analyst": "SUCCESS",
+      "writer": "SUCCESS",
+      "fact_checker": "FAIL",
+      "publisher": "SUCCESS"
     },
     "cot_signals": [
       {
@@ -151,82 +214,82 @@
       }
     ],
     "market_state": {
-      "risk_appetite": "상승",
+      "risk_appetite": "중립",
       "hedging_activity": "감소",
       "conviction": "높음"
     },
     "z_scores": {
       "SP500": 1.96,
-      "WTI": -1.93,
-      "Gold": 1.52,
-      "DXY": -1.51,
-      "VIX": -1.43
+      "WTI": -1.24,
+      "Gold": 1.01,
+      "DXY": -1.19,
+      "VIX": -0.87
     },
-    "script_hook": "지수는 연일 고점을 높여가는데, 시장을 감싸던 경기 둔화의 공포는 다 어디로 사라진 걸까? 유가가 폭락하고 나쁜 뉴스들이 쏟아지는 상황에서 지수가 오히려 신고가를 경신하는 이 기묘한 현상을 우리는 어떻게 이해해야 할까?"
+    "script_hook": ""
   },
   "market": {
-    "date": "20260419",
-    "collected_at": "2026-04-19T20:13:09.638388",
+    "date": "20260420",
+    "collected_at": "2026-04-20T20:00:04.474572",
     "data": {
-      "kospi": 6191.92,
-      "kospi_1d_change": -0.55,
-      "gold": 4879.6,
-      "dxy": 98.1,
+      "kospi": 6219.09,
+      "kospi_1d_change": 0.44,
+      "gold": 4815.6,
+      "dxy": 98.24,
       "sp500": 7126.06,
       "nasdaq": 24468.48,
-      "wti_oil": 82.59,
-      "wti_1d_change": -12.78,
-      "wti_5d_change": -14.48,
-      "wti_20d_change": -14.09,
-      "vix": 17.48,
+      "wti_oil": 87.26,
+      "wti_1d_change": 4.07,
+      "wti_5d_change": -11.93,
+      "wti_20d_change": -11.25,
+      "vix": 19.45,
       "us10y": 4.25,
-      "brent": 90.38,
-      "usd_krw": 1465.68,
+      "brent": 94.72,
+      "usd_krw": 1471.82,
       "kospi_foreign_net": null,
-      "fear_greed_index": 27.0,
+      "fear_greed_index": 29.0,
       "multi_period_stats": {
         "usd_krw": {
-          "current": 1465.6801,
-          "avg_5d": 1472.784,
-          "avg_20d": 1492.6505,
-          "avg_60d": 1469.5533,
-          "chg_5d": -1.11,
-          "chg_20d": -2.56,
-          "z_score_20d": -1.66,
+          "current": 1471.8199,
+          "avg_5d": 1474.012,
+          "avg_20d": 1492.9575,
+          "avg_60d": 1469.6557,
+          "chg_5d": -0.7,
+          "chg_20d": -2.15,
+          "z_score_20d": -1.34,
           "high_5d": 1477.92,
-          "low_5d": 1465.6801
+          "low_5d": 1469.42
         },
         "gold": {
-          "current": 4879.6001,
-          "avg_5d": 4806.48,
-          "avg_20d": 4652.465,
-          "avg_60d": 4908.5567,
-          "chg_5d": 2.47,
-          "chg_20d": 6.06,
-          "z_score_20d": 1.52,
-          "high_5d": 4879.6001,
-          "low_5d": 4742.3999
+          "current": 4815.6001,
+          "avg_5d": 4816.72,
+          "avg_20d": 4663.625,
+          "avg_60d": 4906.6367,
+          "chg_5d": 1.54,
+          "chg_20d": 5.36,
+          "z_score_20d": 1.01,
+          "high_5d": 4857.6001,
+          "low_5d": 4785.3999
         },
         "wti_oil": {
-          "current": 82.59,
-          "avg_5d": 91.786,
-          "avg_20d": 97.615,
+          "current": 87.26,
+          "avg_5d": 89.674,
+          "avg_20d": 97.125,
           "avg_60d": null,
-          "chg_5d": -14.48,
-          "chg_20d": -14.09,
-          "z_score_20d": -1.93,
-          "high_5d": 99.08,
-          "low_5d": 82.59
+          "chg_5d": -11.93,
+          "chg_20d": -11.25,
+          "z_score_20d": -1.24,
+          "high_5d": 94.69,
+          "low_5d": 83.85
         },
         "vix": {
-          "current": 17.48,
-          "avg_5d": 18.214,
-          "avg_20d": 23.4375,
-          "avg_60d": 21.5462,
-          "chg_5d": -9.1,
-          "chg_20d": -27.35,
-          "z_score_20d": -1.43,
-          "high_5d": 19.12,
+          "current": 19.44,
+          "avg_5d": 18.278,
+          "avg_20d": 23.0705,
+          "avg_60d": 21.6095,
+          "chg_5d": 1.67,
+          "chg_20d": -27.41,
+          "z_score_20d": -0.87,
+          "high_5d": 19.44,
           "low_5d": 17.48
         },
         "us10y": {
@@ -241,14 +304,14 @@
           "low_5d": 4.246
         },
         "dxy": {
-          "current": 98.1,
-          "avg_5d": 98.174,
-          "avg_20d": 99.246,
-          "avg_60d": 98.4328,
-          "chg_5d": -0.56,
-          "chg_20d": -1.14,
-          "z_score_20d": -1.51,
-          "high_5d": 98.37,
+          "current": 98.243,
+          "avg_5d": 98.1486,
+          "avg_20d": 99.1757,
+          "avg_60d": 98.4309,
+          "chg_5d": -0.13,
+          "chg_20d": -1.41,
+          "z_score_20d": -1.19,
+          "high_5d": 98.243,
           "low_5d": 98.06
         },
         "sp500": {
@@ -263,26 +326,25 @@
           "low_5d": 6886.2402
         },
         "kospi": {
-          "current": 6191.9199,
-          "avg_5d": 6057.146,
-          "avg_20d": 5633.054,
-          "avg_60d": 5516.8492,
-          "chg_5d": 5.68,
-          "chg_20d": 7.1,
-          "z_score_20d": 1.75,
+          "current": 6219.0898,
+          "avg_5d": 6139.2399,
+          "avg_20d": 5673.7209,
+          "avg_60d": 5539.0715,
+          "chg_5d": 7.07,
+          "chg_20d": 15.05,
+          "z_score_20d": 1.61,
           "high_5d": 6226.0498,
-          "low_5d": 5808.6201
+          "low_5d": 5967.75
         }
       }
     },
     "history_90d": {
       "kospi": {
-        "current": 6191.92,
-        "avg_90d": 5116.38,
+        "current": 6219.09,
+        "avg_90d": 5140.72,
         "max_90d": 6307.27,
         "min_90d": 3994.51,
         "trend": [
-          5251.87,
           5532.59,
           5609.95,
           5583.25,
@@ -311,16 +373,16 @@
           5967.75,
           6091.39,
           6226.05,
-          6191.92
+          6191.92,
+          6219.09
         ]
       },
       "gold": {
-        "current": 4879.6,
-        "avg_90d": 4838.89,
+        "current": 4815.6,
+        "avg_90d": 4845.21,
         "max_90d": 5318.4,
         "min_90d": 4314.4,
         "trend": [
-          5146.1,
           5091.5,
           5229.7,
           5167.4,
@@ -349,16 +411,16 @@
           4825.0,
           4800.0,
           4785.4,
-          4879.6
+          4857.6,
+          4815.6
         ]
       },
       "dxy": {
-        "current": 98.1,
+        "current": 98.24,
         "avg_90d": 98.51,
         "max_90d": 100.51,
         "min_90d": 96.22,
         "trend": [
-          98.99,
           99.18,
           98.83,
           99.23,
@@ -387,7 +449,8 @@
           98.12,
           98.06,
           98.22,
-          98.1
+          98.1,
+          98.24
         ]
       },
       "sp500": {
@@ -467,12 +530,11 @@
         ]
       },
       "wti_oil": {
-        "current": 82.59,
-        "avg_90d": 97.33,
+        "current": 87.26,
+        "avg_90d": 96.92,
         "max_90d": 112.95,
-        "min_90d": 82.59,
+        "min_90d": 83.85,
         "trend": [
-          98.71,
           93.5,
           96.21,
           96.32,
@@ -496,16 +558,16 @@
           91.28,
           91.29,
           94.69,
-          82.59
+          83.85,
+          87.26
         ]
       },
       "vix": {
-        "current": 17.48,
-        "avg_90d": 19.76,
+        "current": 19.45,
+        "avg_90d": 19.8,
         "max_90d": 31.05,
         "min_90d": 13.47,
         "trend": [
-          29.49,
           25.5,
           24.93,
           24.23,
@@ -534,7 +596,8 @@
           18.36,
           18.17,
           17.94,
-          17.48
+          17.48,
+          19.45
         ]
       },
       "us10y": {
@@ -576,12 +639,11 @@
         ]
       },
       "brent": {
-        "current": 90.38,
-        "avg_90d": 81.89,
+        "current": 94.72,
+        "avg_90d": 82.35,
         "max_90d": 118.35,
         "min_90d": 59.96,
         "trend": [
-          92.69,
           98.96,
           87.8,
           91.98,
@@ -610,12 +672,13 @@
           94.79,
           94.93,
           99.39,
-          90.38
+          90.38,
+          94.72
         ]
       },
       "usd_krw": {
-        "current": 1465.68,
-        "avg_90d": 1466.44,
+        "current": 1471.82,
+        "avg_90d": 1466.43,
         "max_90d": 1516.13,
         "min_90d": 1426.93,
         "trend": [
@@ -648,25 +711,15 @@
           1469.42,
           1474.06,
           1477.92,
-          1465.68
+          1471.82
         ]
       }
     }
   },
-  "macro": {
-    "date": "20260417",
-    "collected_at": "2026-04-17T16:15:21.026967",
-    "source": "FRED + ECOS API",
-    "data": {
-      "us_fed_rate": 3.64,
-      "korea_base_rate": 2.5,
-      "korea_m2": null,
-      "rate_diff": 1.14
-    }
-  },
+  "macro": {},
   "sentiment": {
-    "date": "20260419",
-    "collected_at": "2026-04-19T20:13:03.517105",
+    "date": "20260420",
+    "collected_at": "2026-04-20T20:00:09.748806",
     "data": {
       "news_headlines": [
         {
@@ -674,630 +727,560 @@
           "summary": "U.S. stocks were mostly lower, with the Nasdaq leading declines as makers of AI infrastructure suffered steep falls, many in the double digits. Nvidia was down 16%.",
           "link": "https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771360"
+          "timestamp": "2026-04-20T19:59:57.257837"
         },
         {
           "title": "Comex Gold, Silver Settle Lower",
           "summary": "Gold settled 1.4% lower, down two of the past three sessions, and silver fell 2.5%, down three of the past four sessions.",
           "link": "https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771373"
+          "timestamp": "2026-04-20T19:59:57.257844"
         },
         {
           "title": "DeepSeek Won't Sink U.S. AI Titans",
           "summary": "Panic fueling the selloff of Nvidia, Broadcom and other tech giants is overblown.",
           "link": "https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771378"
+          "timestamp": "2026-04-20T19:59:57.257847"
         },
         {
           "title": "Financial Services Roundup: Market Talk",
           "summary": "Gain insight on Experian, SoFi Technologies and more in the latest Market Talks covering Financial Services.",
           "link": "https://www.wsj.com/articles/financial-services-roundup-market-talk-94f52cba?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771383"
+          "timestamp": "2026-04-20T19:59:57.257849"
         },
         {
           "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
           "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
           "link": "https://www.wsj.com/articles/arabica-coffee-prices-hit-new-high-on-u-s-colombia-tariff-spat-582446fe?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771388"
+          "timestamp": "2026-04-20T19:59:57.257851"
         },
         {
           "title": "Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
           "summary": "The Yen and Swiss Franc were stronger against the dollar as investors sought safe havens after Chinese start-up DeepSeek’s new AI model hit U.S. tech stocks.",
           "link": "https://www.wsj.com/articles/safe-haven-currencies-strengthen-amid-fears-over-global-tariffs-9964e17a?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771392"
+          "timestamp": "2026-04-20T19:59:57.257853"
         },
         {
           "title": "Natural Gas Falls on Shifting Weather Forecasts",
           "summary": "U.S. natural gas futures fell after weekend updates took some of the chill out of early February weather forecasts.",
           "link": "https://www.wsj.com/articles/u-s-natural-gas-futures-fall-on-shifting-weather-forecasts-1ef3e457?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771397"
+          "timestamp": "2026-04-20T19:59:57.257855"
         },
         {
           "title": "Building-Products Distributor QXO Launches Hostile Bid for Beacon",
           "summary": "QXO is taking its offer directly to shareholders after being rebuffed on several occasions.",
           "link": "https://www.wsj.com/articles/building-products-distributor-qxo-launching-hostile-bid-for-beacon-de024410?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771402"
+          "timestamp": "2026-04-20T19:59:57.257857"
         },
         {
           "title": "Natural-Gas Firm Diversified Energy Strikes Deal for Permian Basin Player",
           "summary": "Maverick Natural Resources has operations in Texas and Oklahoma.",
           "link": "https://www.wsj.com/articles/natural-gas-firm-diversified-energy-nears-deal-for-permian-basin-player-4c1c5ff5?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771406"
+          "timestamp": "2026-04-20T19:59:57.257859"
         },
         {
           "title": "What's New This Tax Season That Can Save You Money",
           "summary": "There are some new wrinkles, especially for those who sell things online or bought an EV.",
           "link": "https://www.wsj.com/articles/tax-season-2024-irs-filing-dates-explained-628a8b37?mod=rss_markets_main",
           "source": "WSJ Markets",
-          "timestamp": "2026-04-19T20:12:59.771411"
+          "timestamp": "2026-04-20T19:59:57.257861"
         },
         {
           "title": "Palestinians Stream Back to Northern Gaza on Foot",
           "summary": "Israel allowed displaced Gazans to begin crossing a military zone that bisects the enclave after a deadlock over hostage releases was broken.",
           "link": "https://www.wsj.com/articles/palestinians-flock-back-to-northern-gaza-on-foot-after-hostage-release-breakthrough-3f60e2db",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390623"
+          "timestamp": "2026-04-20T19:59:58.030653"
         },
         {
           "title": "Leading China Property Developer Reports Huge loss, in Sign of Widening Real-Estate Woes",
           "summary": "Troubles at Vanke raise questions about the continued spread of the property crisis and whether the Chinese state will step in.",
           "link": "https://www.wsj.com/articles/even-chinas-property-stalwart-isnt-immune-from-the-crisis-19799863",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390636"
+          "timestamp": "2026-04-20T19:59:58.030659"
         },
         {
           "title": "Freed Israeli Hostages Still Had Shrapnel in Their Bodies From Oct. 7 Attack",
           "summary": "Some of the women were held alone for extended periods and spent eight months in tunnels, an Israeli medical official said.",
           "link": "https://www.wsj.com/articles/freed-israeli-hostages-still-had-shrapnel-in-their-bodies-from-oct-7-attack-3de8cd1e",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390641"
+          "timestamp": "2026-04-20T19:59:58.030661"
         },
         {
           "title": "Suspected Sabotage of Deep-Sea Cable Triggers First NATO-Led Response",
           "summary": "The alliance mounted its first coordinated response to a suspected sabotage campaign against critical infrastructure after another cable was severed in the Baltic Sea.",
           "link": "https://www.wsj.com/articles/suspected-sabotage-of-deep-sea-cable-triggers-first-nato-led-response-337119ba",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390645"
+          "timestamp": "2026-04-20T19:59:58.030664"
         },
         {
           "title": "Rwanda-Backed Rebels Enter Congo's Safe-Haven City",
           "summary": "Residents of Goma reported gunfire and shelling after rebels overran Congolese troops. U.N. officials estimated that more than one million displaced people were now inside the city.",
           "link": "https://www.wsj.com/articles/rwanda-backed-rebels-enter-congo-safe-haven-city-aid-hub-09fdccb8",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390650"
+          "timestamp": "2026-04-20T19:59:58.030666"
         },
         {
           "title": "Cocaine-Funded Gangs Shake Colombia Years After Peace Pact",
           "summary": "Attacks by powerful militias against civilians reflect the state’s inaction eight years after a peace accord removed a powerful rebel group from the field.",
           "link": "https://www.wsj.com/articles/cocaine-funded-gangs-shake-colombia-years-after-peace-pact-a45a28da",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390655"
+          "timestamp": "2026-04-20T19:59:58.030668"
         },
         {
           "title": "Italy Supports Saudi Arabia Joining Fighter-Jet Program, PM Meloni Says",
           "summary": "The U.K., Italy and Japan have already partnered on the Global Combat Air Programme, which aims to put a new stealth fighter with supersonic capability in the skies by 2035.",
           "link": "https://www.wsj.com/articles/italy-supports-saudi-arabia-joining-gcap-fighter-jet-program-pm-meloni-says-bbd9cec1",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390660"
+          "timestamp": "2026-04-20T19:59:58.030670"
         },
         {
           "title": "Shippers Wary of Red Sea Routes Despite Houthi Pledge to End Targeting",
           "summary": "The world’s top three container operators said they fear instability in Gaza and broader regional tensions mean continued danger.",
           "link": "https://www.wsj.com/articles/shippers-wary-of-red-sea-routes-despite-houthi-pledge-to-end-targeting-4dde35c2",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390665"
+          "timestamp": "2026-04-20T19:59:58.030672"
         },
         {
           "title": "Kim Jong Un Is Doing Everything He Can to Keep North Korea's Youth in Line",
           "summary": "The dictator, eager to shut out the influence of Hollywood and K-pop, has been exalting a “shock brigade” of 300,000 teens and 20-somethings drafted into flood reconstruction.",
           "link": "https://www.wsj.com/articles/kim-jong-un-is-doing-everything-he-can-to-keep-north-koreas-youth-in-line-0866a1de",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390669"
+          "timestamp": "2026-04-20T19:59:58.030674"
         },
         {
           "title": "Trump Says Colombia Will Accept Deportees, Ending Tariff Standoff",
           "summary": "The president has made immigration an early priority to start second term, with ICE making more than 900 arrests Sunday.",
           "link": "https://www.wsj.com/articles/trump-says-colombia-will-face-25-tariffs-amid-fight-over-deportation-flights-e32dc497",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390674"
+          "timestamp": "2026-04-20T19:59:58.030676"
         },
         {
-          "title": "US investors boost defence exposure as global wars fuel spending boom",
-          "summary": "Trend reverses prior hesitance over arms investments because of slow growth and perceived conflict with ESG standards",
-          "link": "https://www.ft.com/content/4f1334e7-389c-4a99-b5b0-b593fcfe2f6c",
+          "title": "Oil rebounds as Iran threatens to retaliate for US attack on cargo ship",
+          "summary": "Hopes for peace deal fade amid uncertainty over possible talks in Pakistan this week",
+          "link": "https://www.ft.com/content/3f067df5-5016-4be1-aa61-21af3e7668e2",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377569"
+          "timestamp": "2026-04-20T19:59:58.824748"
         },
         {
-          "title": "Wealth advisers made more than $2bn from private capital fees",
-          "summary": "FT analysis of 16 funds shows extent of fees paid to banks and brokerages",
-          "link": "https://www.ft.com/content/dbc5aac7-fbfd-466a-aa46-bc562f249cec",
+          "title": "Yes, tokens do have real uses in finance",
+          "summary": "Tokenisation is taking hold in areas including money, bonds, gold, funds, real estate and private equity",
+          "link": "https://www.ft.com/content/337ac9f9-2d1b-4dac-9d1b-77763181ebd3",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377582"
+          "timestamp": "2026-04-20T19:59:58.824757"
         },
         {
-          "title": "BlackRock warns of hit to European stocks from energy crisis",
-          "summary": "World’s biggest asset manager had been more bullish on the region at start of year but says stocks are no longer cheap",
-          "link": "https://www.ft.com/content/8d1525ef-1279-4827-a610-3ba87a9edcdb",
+          "title": "The looming battle over the Fed’s balance sheet",
+          "summary": "What will Warsh choose?",
+          "link": "https://www.ft.com/content/e6761cd4-4a35-4fa1-b7b9-e52245578e41",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377587"
+          "timestamp": "2026-04-20T19:59:58.824759"
         },
         {
-          "title": "France’s CB seeks to lead European fightback against Visa and Mastercard",
-          "summary": "Payments scheme pushes for ‘co-badging’ that allows French bank cards to run on both international and local networks",
-          "link": "https://www.ft.com/content/dfc4dd67-01ff-436e-bd8e-229f9fe77d6c",
+          "title": "US stablecoins pose danger to emerging markets, say central bankers",
+          "summary": "Growth of dollar-pegged crypto assets under Donald Trump risks accelerating dollarisation and enabling criminal misuse",
+          "link": "https://www.ft.com/content/7623a445-e9ac-4166-b2be-e250834a1466",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377592"
+          "timestamp": "2026-04-20T19:59:58.824762"
         },
         {
-          "title": "Trump family’s World Liberty crypto venture faces investor backlash",
-          "summary": "WLFI has fallen after the disclosure of a loan linked to the token and criticism from one of its biggest backers",
-          "link": "https://www.ft.com/content/ac47ca32-e526-4a5a-bb30-5b3efebe8e0d",
+          "title": "Wealth advisers made billions from private capital fees",
+          "summary": "Plus, RIP Mark Mobius, BlackRock cools on Europe and Jasper Johns in Bilbao",
+          "link": "https://www.ft.com/content/f09f479b-430c-4eb6-b236-1ed08c9c07c3",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377597"
+          "timestamp": "2026-04-20T19:59:58.824764"
         },
         {
-          "title": "New kind of boom for US oil patch: Wall Street securitisation",
-          "summary": "Rising popularity of deals highlights intense investor demand for esoteric debt secured by cash flows",
-          "link": "https://www.ft.com/content/5449419d-aa3f-4ca7-99a7-9215dc80d401",
+          "title": "Private credit gets the once-over",
+          "summary": "Do you want the bad news or the bad news?",
+          "link": "https://www.ft.com/content/e57dd6d6-30b1-4e1f-a537-1eb9c4968065",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377601"
+          "timestamp": "2026-04-20T19:59:58.824769"
         },
         {
-          "title": "Chart of the Week: Are Treasuries losing their haven status?",
-          "summary": "Bonds have not been a good hedge during the war",
-          "link": "https://www.ft.com/content/2101b62c-e37f-42ab-a08d-242c9ed4d382",
+          "title": "Risk Management: Financial Institutions",
+          "summary": "The soaring level of US government debt; how AI is increasing the speed and depth of cyber attacks; and geopolitical shocks have highlighted the need for diversity in cloud providers",
+          "link": "https://www.ft.com/reports/risk-management-financial-institutions",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377606"
+          "timestamp": "2026-04-20T19:59:58.824771"
         },
         {
-          "title": "Investors pile into Hungarian assets in bet on closer EU ties",
-          "summary": "Stocks, bonds and the forint are up on hopes that Péter Magyar’s landslide victory will lead to pro-market reform",
-          "link": "https://www.ft.com/content/50c94642-d8cc-42fb-a257-5e7e72716c6e",
+          "title": "Oil prices set for more turbulence in months ahead, warns Gunvor chief",
+          "summary": "World’s fourth-largest independent crude trader says markets may be ‘very choppy’ between April and June",
+          "link": "https://www.ft.com/content/70b0ecee-7cc8-4257-be44-104460a84632",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377610"
+          "timestamp": "2026-04-20T19:59:58.824773"
         },
         {
-          "title": "The declining appeal of the Hong Kong expat",
-          "summary": "Demand for mainlanders with Mandarin skills is on the rise",
-          "link": "https://www.ft.com/content/b1f029f7-c4d5-445e-9fad-3158528a711f",
+          "title": "How the Iran war could hurt Wall Street",
+          "summary": "The big unknown is how the conflict could alter the Gulf’s investment priorities in the next year or two",
+          "link": "https://www.ft.com/content/12ae430c-2909-4b1c-b121-7376dce76fa3",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377615"
+          "timestamp": "2026-04-20T19:59:58.824775"
         },
         {
-          "title": "The Halo trade: a fad or the future?",
-          "summary": "Some commentators believe Heavy Assets, Low Obsolescence companies could be an investment antidote to markets ravaged by AI",
-          "link": "https://www.ft.com/content/ac8f757f-a64e-4314-8bba-db124432844c",
+          "title": "Germany to begin privatisation of seized Gazprom division",
+          "summary": "Head of company now known as Sefe says capital increase could raise up to €2bn",
+          "link": "https://www.ft.com/content/8e40edc2-2c58-4c71-adbd-3d638fa71fe3",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377619"
+          "timestamp": "2026-04-20T19:59:58.824777"
+        },
+        {
+          "title": "AI startup Cursor in talks to raise $2 billion funding round at valuation of over $50 billion",
+          "summary": "Artificial intelligence startup Cursor in talks to raise a $2 billion fundraising round at an over $50 billion valuation, which does not include the investment.",
+          "link": "https://www.cnbc.com/2026/04/19/cursor-ai-2-billion-funding-round.html",
+          "source": "CNBC Economy",
+          "timestamp": "2026-04-20T19:59:59.182267"
+        },
+        {
+          "title": "Software stock dogs have joined market rally. There's a classic investing lesson in the rebound",
+          "summary": "In a 2026 market that had Microsoft down close to 20%, looking for opportunities to buy after big drawdowns is coming to more tech and software stocks.",
+          "link": "https://www.cnbc.com/2026/04/19/software-tech-stocks-market-rally-microsoft.html",
+          "source": "CNBC Economy",
+          "timestamp": "2026-04-20T19:59:59.182275"
         },
         {
           "title": "Here are 3 forces that drove a remarkable, record-setting week on Wall Street",
           "summary": "The S&amp;P 500 closed above 7,100 for the first time as it completed its fastest turnaround since 1990.",
           "link": "https://www.cnbc.com/2026/04/18/the-3-forces-that-drove-a-remarkable-record-setting-week-on-wall-street.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.208994"
+          "timestamp": "2026-04-20T19:59:59.182277"
         },
         {
           "title": "If a violent downturn strikes the market, new ETF strategies may be vulnerable. Here's why",
           "summary": "Innovation in the exchange-traded fund industry could come at a cost to investors during extreme volatility.",
           "link": "https://www.cnbc.com/2026/04/17/violent-downturns-could-test-new-etf-strategies-warns-mfs-investment.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209007"
+          "timestamp": "2026-04-20T19:59:59.182280"
         },
         {
           "title": "Retail traders pile into Allbirds after odd AI pivot. History shows it won't end well",
           "summary": "This surge of speculative buying reflects a broader return of animal spirits among small traders.",
           "link": "https://www.cnbc.com/2026/04/16/retail-traders-pile-into-allbirds-after-odd-ai-pivot-history-shows-it-wont-end-well.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209012"
+          "timestamp": "2026-04-20T19:59:59.182282"
         },
         {
           "title": "Goldman Sachs bond traders stumbled as Wall Street rivals thrived: 'A fire is being lit under' them",
           "summary": "Goldman's identity as a trader's firm — one expected to perform in turbulent markets — makes any stumble in the division notable.",
           "link": "https://www.cnbc.com/2026/04/15/goldman-sachs-bond-traders-wall-street-rivals.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209017"
+          "timestamp": "2026-04-20T19:59:59.182284"
         },
         {
           "title": "Regulators are reportedly zeroing in on suspicious trades ahead of market-moving Trump post",
           "summary": "The information sought includes so-called Tag 50 identifiers, which can be used to determine who was behind the trades.",
           "link": "https://www.cnbc.com/2026/04/15/regulators-reportedly-zeroing-in-on-suspicious-trades-ahead-of-trump-post.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209022"
+          "timestamp": "2026-04-20T19:59:59.182286"
         },
         {
           "title": "Morgan Stanley tops estimates as trading revenue exceeds expectations by nearly $1 billion",
           "summary": "Morgan Stanley's results in the quarter were powered by the firm's fixed income and equities trading operations, which produced about $8.5 billion in revenue.",
           "link": "https://www.cnbc.com/2026/04/15/morgan-stanley-ms-earnings-1q-2026.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209027"
+          "timestamp": "2026-04-20T19:59:59.182288"
         },
         {
           "title": "Bank of America tops estimates as CEO Brian Moynihan says consumer banking is 'healthy'",
           "summary": "Bank of America, the second-largest U.S. bank by assets, has topped expectations for earnings per share for 23 consecutive quarters.",
           "link": "https://www.cnbc.com/2026/04/15/bank-of-america-bac-earnings-q1-2026.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209031"
+          "timestamp": "2026-04-20T19:59:59.182290"
         },
         {
           "title": "Chinese robotaxi companies forge ahead with UAE expansion despite Iran war",
           "summary": "Ride-hailing company Didi plans to begin its first overseas robotaxi test in the United Arab Emirates later this year.",
           "link": "https://www.cnbc.com/2026/04/15/china-robotaxi-didi-weride-baidu-dubai-uae-expansion.html",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209036"
-        },
-        {
-          "title": "Prediction markets will grow to $1 trillion by 2030, Bernstein estimates",
-          "summary": "The investment bank said volumes will reach an estimated $240 billion in 2026 and grow at a 80% compound annual rate between 2025 and 2030.",
-          "link": "https://www.cnbc.com/2026/04/14/prediction-markets-will-grow-to-1-trillion-by-2030-bernstein-says.html",
-          "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209041"
-        },
-        {
-          "title": "Jamie Dimon says Anthropic's Mythos reveals 'a lot more vulnerabilities' for cyberattacks",
-          "summary": "The remarks show how a technology welcomed by corporations as a productivity boon can also pose serious threats, like uncovering new ways to hack into systems.",
-          "link": "https://www.cnbc.com/2026/04/14/jamie-dimon-anthropic-mythos-vulnerabilities-cyber-attacks.html",
-          "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209046"
+          "timestamp": "2026-04-20T19:59:59.182292"
         },
         {
           "title": "'It's just scale': Local mom-and-pop car dealerships are growing or dying amid industry consolidation, rise of mega-retailers",
           "summary": "Multibillion-dollar dealerships have been on the rise amid a decadeslong consolidation that has led to a grow-or-die mentality for many U.S. auto retailers.",
           "link": "https://www.cnbc.com/2026/04/18/car-dealerships-auto-retail.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669382"
+          "timestamp": "2026-04-20T19:59:59.488899"
         },
         {
           "title": "Netflix was long 'a builder not a buyer.' Is that era over?",
           "summary": "Netflix co-CEO Ted Sarandos said during an investor call that the company built its \"M&amp;A muscle\" during its pursuit of WBD's assets.",
           "link": "https://www.cnbc.com/2026/04/17/netflix-mergers-m-a-strategy.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669400"
+          "timestamp": "2026-04-20T19:59:59.488909"
         },
         {
           "title": "Some grocers are using AI to cut food waste and boost profit margins",
           "summary": "Grocers turn to AI pricing to cut waste, protect margins and compete for deal-seeking shoppers—targeting dynamic pricing discounts.",
           "link": "https://www.cnbc.com/2026/04/17/some-grocers-are-using-ai-to-cut-food-waste-and-boost-profit-margins.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669406"
+          "timestamp": "2026-04-20T19:59:59.488912"
         },
         {
           "title": "Netflix stock sinks after streamer reiterates guidance, says Reed Hastings to exit board",
           "summary": "Netflix beat expectations for Q1 revenue and reported a big jump in earnings per share thanks in part to a termination fee related to its proposed WBD deal.",
           "link": "https://www.cnbc.com/2026/04/16/netflix-nflx-earnings-q1-2026.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669411"
+          "timestamp": "2026-04-20T19:59:59.488915"
         },
         {
           "title": "Trump nominates Erica Schwartz as CDC director amid turmoil around leadership, vaccine policy",
           "summary": "The CDC has been going through turmoil and several leadership shakeups under HHS Secretary Robert F. Kennedy Jr.",
           "link": "https://www.cnbc.com/2026/04/16/trump-nominates-erica-schwartz-as-cdc-director.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669416"
+          "timestamp": "2026-04-20T19:59:59.488918"
         },
         {
           "title": "RFK Jr.'s peptide policy could boost Hims & Hers as its GLP-1 business evolves",
           "summary": "Hims may have a chance to grow peptides business as a potential revenue driver, with FDA review in 2026 shaping the opportunity.",
           "link": "https://www.cnbc.com/2026/04/16/rfk-jr-peptides-hims-hers-glp-1.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669420"
+          "timestamp": "2026-04-20T19:59:59.488921"
         },
         {
           "title": "Airline CEOs urged by lawmaker to lower fares if fuel prices come down",
           "summary": "Airlines have raised airfare, fuel surcharges and baggage fees this year to help cover a surge in fuel costs since the Iran war started on Feb. 28.",
           "link": "https://www.cnbc.com/2026/04/16/airline-ceos-prices.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669425"
+          "timestamp": "2026-04-20T19:59:59.488924"
         },
         {
           "title": "How the wealthy are planning to cut their 2026 tax bills",
           "summary": "Lawyers and advisors to the wealthy share tax tactics from long-short equity strategies to front-loading charitable gifts.",
           "link": "https://www.cnbc.com/2026/04/16/wealthy-tax-planning-2026-bills.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669429"
+          "timestamp": "2026-04-20T19:59:59.488927"
         },
         {
           "title": "Why foreign automakers dominate the sedan market",
           "summary": "SUVs may have taken over America, but high prices and oversaturation are pushing some customers — and automakers — back to sedans.",
           "link": "https://www.cnbc.com/2026/04/16/sedans-auto-industry.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669433"
+          "timestamp": "2026-04-20T19:59:59.488930"
         },
         {
           "title": "PepsiCo earnings beat estimates as Doritos, Lay's price cuts win back shoppers",
           "summary": "PepsiCo's quarterly earnings and revenue topped Wall Street's expectations.",
           "link": "https://www.cnbc.com/2026/04/16/pepsico-pep-q1-2026-earnings.html",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669438"
+          "timestamp": "2026-04-20T19:59:59.488932"
         },
         {
-          "title": "(LEAD) Lee urges Nat'l Assembly to appoint special presidential inspector",
-          "summary": "SEOUL, April 19 (Yonhap) -- President Lee Jae Myung renewed his calls for the Na...",
-          "link": "https://en.yna.co.kr/view/AEN20260419001751315",
+          "title": "POSCO, JSW Steel sign 10.7 tln-won deal to build steel plant in India",
+          "summary": "SEOUL, April 20 (Yonhap) -- South Korea&apos;s POSCO Group said Monday it has signed ...",
+          "link": "https://en.yna.co.kr/view/AEN20260420011000320",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906468"
+          "timestamp": "2026-04-20T19:59:59.572345"
         },
         {
-          "title": "Lee urges Nat'l Assembly to appoint special presidential inspector",
-          "summary": "SEOUL, April 19 (Yonhap) -- President Lee Jae Myung renewed his calls for the Na...",
-          "link": "https://en.yna.co.kr/view/AEN20260419001700315",
+          "title": "Lee takes selfies with Indian PM Modi, Samsung chairman with Galaxy phone",
+          "summary": "NEW DELHI, April 20 (Yonhap) -- President Lee Jae Myung on Monday took selfies w...",
+          "link": "https://en.yna.co.kr/view/AEN20260420010900315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906482"
+          "timestamp": "2026-04-20T19:59:59.572354"
         },
         {
-          "title": "Today in Korean history",
-          "summary": "April 20",
-          "link": "https://en.yna.co.kr/view/AEN20260419000700320",
+          "title": "(2nd LD) S. Korea, India agree to cooperate on energy supply chains amid Mideast war",
+          "summary": "NEW DELHI, April 20 (Yonhap) -- President Lee Jae Myung said he and Indian Prime...",
+          "link": "https://en.yna.co.kr/view/AEN20260420001552315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906487"
+          "timestamp": "2026-04-20T19:59:59.572357"
         },
         {
-          "title": "(3rd LD) N. Korea fires short-range ballistic missiles toward East Sea: JCS",
-          "summary": "SEOUL, April 19 (Yonhap) -- North Korea fired multiple short-range ballistic mis...",
-          "link": "https://en.yna.co.kr/view/AEN20260419000253315",
+          "title": "BIGBANG says it completed work on new album, to launch world tour in August",
+          "summary": "SEOUL, April 20 (Yonhap) -- K-pop group BIGBANG said it has completed work on a ...",
+          "link": "https://en.yna.co.kr/view/AEN20260420010700315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906493"
+          "timestamp": "2026-04-20T19:59:59.572359"
         },
         {
-          "title": "(LEAD) Lee departs for India on two-nation Asia swing",
-          "summary": "SEOUL, April 19 (Yonhap) -- President Lee Jae Myung departed for India on Sunday...",
-          "link": "https://en.yna.co.kr/view/AEN20260419000351315",
+          "title": "FTC probes 2 major retailers over distribution law compliance",
+          "summary": "SEOUL, April 20 (Yonhap) -- South Korea&apos;s antitrust watchdog has launched an inv...",
+          "link": "https://en.yna.co.kr/view/AEN20260420010200320",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906497"
+          "timestamp": "2026-04-20T19:59:59.572362"
         },
         {
-          "title": "(LEAD) Cheong Wa Dae denounces N.K. missile launch as violation of UNSC resolution, calls for immediate halt",
-          "summary": "SEOUL, April 19 (Yonhap) -- The presidential Office of National Security on Sund...",
-          "link": "https://en.yna.co.kr/view/AEN20260419000851315",
+          "title": "(LEAD) Unification minister regrets leak claim related to his reference to Kusong as N.K. nuclear facility site",
+          "summary": "SEOUL, April 20 (Yonhap) -- Unification Minister Chung Dong-young said Monday hi...",
+          "link": "https://en.yna.co.kr/view/AEN20260420007251315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906502"
+          "timestamp": "2026-04-20T19:59:59.572364"
         },
         {
-          "title": "Lee vows to defend democracy on anniv. of 1960 pro-democracy uprising",
-          "summary": "SEOUL, April 19 (Yonhap) -- President Lee Jae Myung stressed the importance of d...",
-          "link": "https://en.yna.co.kr/view/AEN20260419001000315",
+          "title": "Yonhap News Summary",
+          "summary": "The following is the second summary of major stories moved by Yonhap News Agency...",
+          "link": "https://en.yna.co.kr/view/AEN20260420010000315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906507"
+          "timestamp": "2026-04-20T19:59:59.572367"
         },
         {
-          "title": "(URGENT) Cheong Wa Dae denounces N.K. missile launch as violation of UNSC resolution, calls for immediate halt",
-          "summary": "(END)",
-          "link": "https://en.yna.co.kr/view/AEN20260419001100315",
+          "title": "In 'Filing for Love,' workplace audits meet romance",
+          "summary": "SEOUL, April 20 (Yonhap) -- TvN&apos;s upcoming romantic comedy &quot;Filing for Love&quot; fol...",
+          "link": "https://en.yna.co.kr/view/AEN20260420009500315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906512"
+          "timestamp": "2026-04-20T19:59:59.572369"
         },
         {
-          "title": "(2nd LD) N. Korea fires short-range ballistic missiles toward East Sea: JCS",
-          "summary": "SEOUL, April 19 (Yonhap) -- North Korea fired multiple short-range ballistic mis...",
-          "link": "https://en.yna.co.kr/view/AEN20260419000252315",
+          "title": "K-pop rookie Cortis drops raw-edged new release",
+          "summary": "SEOUL, April 20 (Yonhap) -- Rising K-pop rookie Cortis returned Monday with a ne...",
+          "link": "https://en.yna.co.kr/view/AEN20260420009900315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906516"
+          "timestamp": "2026-04-20T19:59:59.572371"
         },
         {
-          "title": "(URGENT) N. Korea's ballistic missiles flew about 140 km: JCS",
-          "summary": "(END)",
-          "link": "https://en.yna.co.kr/view/AEN20260419000900315",
+          "title": "(LEAD) Lee holds summit with Indian PM Modi on economic ties, supply chains",
+          "summary": "NEW DELHI, April 20 (Yonhap) -- President Lee Jae Myung held summit talks with I...",
+          "link": "https://en.yna.co.kr/view/AEN20260420001551315",
           "source": "Yonhap English",
-          "timestamp": "2026-04-19T20:13:02.906521"
+          "timestamp": "2026-04-20T19:59:59.572374"
         },
         {
-          "title": "한미 재무수장 \"원화 과도한 변동성 바람직하지 않아\" 공감대",
-          "summary": "(워싱턴=연합뉴스) 이대희 기자 = 한미 재무당국 수장이 만나 원화 환율의 과도한 변동성이 바람직하지 않다고 공감대를 형성했다.",
-          "link": "https://www.yna.co.kr/view/AKR20260419051300002",
+          "title": "포스코, 600만t 규모 인도 합작제철소 본궤도…총 5.3조원 투자(종합)",
+          "summary": "(서울=연합뉴스) 김동규 기자 = 포스코가 인도 1위 철강사 JSW스틸과 손잡고 인도에 대규모 일관제철소 건설에 나선다.",
+          "link": "https://www.yna.co.kr/view/AKR20260420150251008",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113107"
+          "timestamp": "2026-04-20T19:59:59.660670"
         },
         {
-          "title": "구윤철 만난 IMF 총재 \"한국 재정여력 충분히 갖춰\"(종합)",
-          "summary": "(워싱턴=연합뉴스) 이대희 기자 = 구윤철 부총리 겸 재정경제부 장관은 17일(이하 현지 시간) 국제통화기금(IMF)이 위기의 해설자가 아닌, ...",
-          "link": "https://www.yna.co.kr/view/AKR20260418050751002",
+          "title": "현대홈쇼핑, 현대지에프홀딩스 완전자회사로…주식 교환 가결",
+          "summary": "(서울=연합뉴스) 김채린 기자 = 현대지에프홀딩스[005440]는 현대홈쇼핑의 포괄적 주식교환 안건이 가결됐다고 20일 밝혔다.",
+          "link": "https://www.yna.co.kr/view/AKR20260420154500030",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113120"
+          "timestamp": "2026-04-20T19:59:59.660678"
         },
         {
-          "title": "숨 가빠도 한 걸음 더…롯데타워 '스카이런' 123층 수직 질주",
-          "summary": "(서울=연합뉴스) 김채린 기자 = &quot;파이팅! 끝까지 가보자 출발!&quot;",
-          "link": "https://www.yna.co.kr/view/AKR20260419045900030",
+          "title": "현대차그룹, USTR에 \"美 301조관세 232조와 중복적용 안돼\"",
+          "summary": "(서울=연합뉴스) 윤민혁 기자 = 현대자동차그룹이 미국 정부의 &apos;슈퍼 301조&apos; 관세 검토에 대해 기존 232조 관세 조치와 중복 적용을 허용해...",
+          "link": "https://www.yna.co.kr/view/AKR20260420153700003",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113126"
+          "timestamp": "2026-04-20T19:59:59.660680"
         },
         {
-          "title": "[연합뉴스 이 시각 헤드라인] - 15:00",
-          "summary": "■ 휴전 종료 D-2…호르무즈 재봉쇄 속 미·이란 종전협상 기로",
-          "link": "https://www.yna.co.kr/view/AKR20260419034600011",
+          "title": "정진완 우리은행장, 인도 경제사절단 동행…현지 협력 모색",
+          "summary": "(서울=연합뉴스) 한지훈 기자 = 정진완 우리은행장이 20일 인도 뉴델리에서 열린 &apos;한·인도 비즈니스포럼&apos;에 참석하고 현지 교육기관을 찾아 기부...",
+          "link": "https://www.yna.co.kr/view/AKR20260420152400002",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113131"
+          "timestamp": "2026-04-20T19:59:59.660683"
         },
         {
-          "title": "이재용, 경제사절단 동행 인도行…재계 총수 '세일즈 외교' 박차",
-          "summary": "(서울=연합뉴스) 강태우 기자 = 이재용 삼성전자 회장과 정의선 현대차그룹 회장, 구광모 LG그룹 회장 등 재계 총수들이 이재명 대통령의 인도·...",
-          "link": "https://www.yna.co.kr/view/AKR20260419031900003",
+          "title": "현대건설, 압구정3구역 재건축 우선협상대상자로 선정",
+          "summary": "(서울=연합뉴스) 홍국기 기자 = 현대건설은 20일 서울 강남구 압구정동 압구정3구역(현대1∼7차, 10·13·14차, 대림빌라트) 재건축 사업...",
+          "link": "https://www.yna.co.kr/view/AKR20260420151800003",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113136"
+          "timestamp": "2026-04-20T19:59:59.660685"
         },
         {
-          "title": "\"내년 韓부채비율, 선진非기축통화 넘어\"…정부 \"실적치는 낮아\"(종합)",
-          "summary": "(세종=연합뉴스) 안채원 기자 = 우리나라 국내총생산(GDP) 대비 국가부채 비율이 내년에 선진 비기축통화국 평균을 넘어설 것으로 전망됐다. 국...",
-          "link": "https://www.yna.co.kr/view/AKR20260418034651002",
+          "title": "국토장관, 항공업계와 비상경제 간담회…\"종합 지원방안 시행\"",
+          "summary": "(서울=연합뉴스) 임성호 기자 = 정부가 두 달 가까이 이어지는 중동 전쟁으로 인한 항공업계의 어려움 해소를 위해 항공사의 경영 부담을 덜 수 ...",
+          "link": "https://www.yna.co.kr/view/AKR20260420151300003",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113141"
+          "timestamp": "2026-04-20T19:59:59.660688"
         },
         {
-          "title": "우범기 전주시장 예비후보 \"전주 대변혁 마침표 찍게 해달라\"",
-          "summary": "(전주=연합뉴스) 김동철 기자 = 우범기 전북 전주시장 예비후보(더불어민주당)가 결선 투표를 앞두고 &quot;전주의 미래를 바꿀 중대한 변화를 멈춰선 ...",
-          "link": "https://www.yna.co.kr/view/AKR20260419029700055",
+          "title": "송미령 농식품부 장관 \"국정과제 조기 성과 창출\"",
+          "summary": "(서울=연합뉴스) 김세린 기자 = 송미령 농림축산식품부 장관은 20일 정부세종청사에서 &apos;국정과제 이행상황 점검회의&apos;를 열고 식량안보 체계 확립과...",
+          "link": "https://www.yna.co.kr/view/AKR20260420140000030",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113146"
+          "timestamp": "2026-04-20T19:59:59.660690"
         },
         {
-          "title": "국힘, 李대통령 '장특공 존치론' 반박에 \"1주택까지 죄인만들어\"",
-          "summary": "(서울=연합뉴스) 김치연 기자 = 국민의힘은 19일 이재명 대통령이 부동산 양도세 장기보유특별공제(장특공제) 폐지 반대 주장에 공개 반박한 것을...",
-          "link": "https://www.yna.co.kr/view/AKR20260419026700001",
+          "title": "정원오·오세훈 부동산 공방…\"재건축 거짓말\" \"장특공 입장은?\"(종합)",
+          "summary": "(서울=연합뉴스) 박수윤 김정진 기자 = 6·3 지방선거에 나서는 여야 서울시장 후보들은 20일 부동산 정책을 둘러싸고 공방을 벌였다.",
+          "link": "https://www.yna.co.kr/view/AKR20260420098651001",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113150"
+          "timestamp": "2026-04-20T19:59:59.660692"
         },
         {
-          "title": "우정사업본부, 영세 수출기업 해외운송비 할인한다",
-          "summary": "(서울=연합뉴스) 오지은 기자 = 우체국이 영세 수출기업의 해외운송비 절감을 위해 발송비용을 할인한다.",
-          "link": "https://www.yna.co.kr/view/AKR20260417148300017",
+          "title": "포스코, 인도 법인에 1조6천96억원 출자",
+          "summary": "(서울=연합뉴스) 코스피 상장사 포스코홀딩스[005490]는 자회사인 포스코가 인도의 광산업 업체(Saffron Resources Private...",
+          "link": "https://www.yna.co.kr/view/AKR20260420150200008",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113155"
+          "timestamp": "2026-04-20T19:59:59.660694"
         },
         {
-          "title": "중기부, '글로벌 소상공인 육성사업' 공고…100개사 선발",
-          "summary": "(서울=연합뉴스) 구정모 기자 = 중소벤처기업부는 수출 역량을 갖춘 유망 소상공인을 수출 기업으로 성장을 지원하는 &apos;글로벌 소상공인(K-소상공인...",
-          "link": "https://www.yna.co.kr/view/AKR20260417127800030",
+          "title": "[연합뉴스 이 시각 헤드라인] - 18:00",
+          "summary": "■ 트럼프, 이란선박 발포·나포로 최대압박…주초 협상-확전 기로",
+          "link": "https://www.yna.co.kr/view/AKR20260420141300011",
           "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113160"
+          "timestamp": "2026-04-20T19:59:59.660697"
         },
         {
-          "title": "[단독] “잔금 안 주길래 계약 끊어”…삼성重, 이란 제재 리스크 피한 사연",
-          "summary": "미국 재무부가 지난 15일(현지시간) 이란에 대한 추가 제재를 발표하면서 한국 조선사와 거래 관계 의혹을 제기한 것으로 뒤늦게 확인됐다. 하지만 미국 정부로부터 의혹을 받은 삼성중..",
-          "link": "https://www.mk.co.kr/news/business/12021222",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.220967"
-        },
-        {
-          "title": "대만에 밀린 韓1인당 GDP, 격차 더 벌어져",
-          "summary": "우리나라의 국민 1인당 실질 국내총생산(GDP) 규모가 2031년 대만보다 1만달러 넘게 뒤처질 것이라는 국제통화기금(IMF) 전망이 나왔다. 올해 대만의 1인당 GDP가 한국보다..",
-          "link": "https://www.mk.co.kr/news/economy/12021200",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.220983"
-        },
-        {
-          "title": "中 전기버스 보조금 … 경기도 지역에 집중",
-          "summary": "국토교통부의 저상버스 보조금을 지급받은 중국산 전기버스가 수도권 지역에 집중된 것으로 나타났다. 특히 이 중 BYD 전기버스가 40% 정도를 차지했다.\n19일 이연희 더불어민주당 ..",
-          "link": "https://www.mk.co.kr/news/economy/12021201",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.220989"
-        },
-        {
-          "title": "공영주차장 5부제 참여율 30% … 지자체 \"지역경제 위축 우려\"",
-          "summary": "전국 공영주차장에 승용차 5부제가 도입된 지 일주일이 지난 가운데, 전국 128개 지방정부가 1694개 주차장에서 5부제를 시행 중인 것으로 나타났다. 기후에너지환경부는 지난 15..",
-          "link": "https://www.mk.co.kr/news/economy/12021197",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.220994"
-        },
-        {
-          "title": "중동전쟁 길어지자 … 2분기 제조업 전망 '흐림'",
-          "summary": "중동 지역 리스크가 장기화하면서 정유·화학 업종을 중심으로 2분기 제조업 경기가 악화할 것이라는 전망이 나왔다. 고유가와 불확실한 대외 여건이 기업 심리를 위축시키면서 매출 전망치..",
-          "link": "https://www.mk.co.kr/news/economy/12021198",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.220999"
-        },
-        {
-          "title": "[단독] 신한銀 \"우즈베크서 새 성장동력\"…11번째 해외 진출",
-          "summary": "신한은행이 중앙아시아의 심장부인 우즈베키스탄에 본격 진출한다. 진옥동 신한금융지주 회장 2기 체제가 미래 성장 동력으로 내세운 글로벌 사업의 첫 대형 프로젝트로 우즈베키스탄을 낙점..",
-          "link": "https://www.mk.co.kr/news/economy/12021146",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.221004"
-        },
-        {
-          "title": "우리銀, 중견기업 지원 … 35곳에 총 4600억 공급",
-          "summary": "생산적 금융 확대에 나선 우리은행이 우수한 기술력을 갖춘 중견기업을 선발해 총 4600억원 규모의 금융 지원을 실시한다.\n우리은행은 산업통상부와 함께 중견기업 금융 지원 프로그램인..",
-          "link": "https://www.mk.co.kr/news/economy/12021143",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.221008"
-        },
-        {
-          "title": "여신협회장 선출 본격화 … 다음달 회추위 가동키로",
-          "summary": "여신금융협회가 반년간 미뤄왔던 차기 협회장 선출 절차를 본격화한다. 19일 여신금융협회에 따르면 협회는 이사회 소속 회원사 대표이사들을 대상으로 이달 말 회장후보추천위원회 구성을 ..",
-          "link": "https://www.mk.co.kr/news/economy/12021144",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.221015"
-        },
-        {
-          "title": "[금융 라운지] \"돈문제 고민인 청년들, 은행서 상담 받으세요\"",
-          "summary": "앞으로 전국 약 300곳 은행 점포에서 청년이라면 누구나 무료로 재무 상담을 받을 수 있게 된다. 청년층의 자산 형성을 지원할 수 있도록 재무 상담 창구를 대폭 확대해달라는 금융당..",
-          "link": "https://www.mk.co.kr/news/economy/12021145",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.221020"
-        },
-        {
-          "title": "[표] 외국환율고시표",
+          "title": "\"에이전트형 AI,CPU수요 늘려 메모리 수요 더 증가\"",
           "summary": "",
-          "link": "https://www.mk.co.kr/news/economy/12021141",
-          "source": "매일경제",
-          "timestamp": "2026-04-19T20:13:03.221025"
-        },
-        {
-          "title": "안전수칙 어기면 근로자도 처벌…싱가포르 산재사망 80% 줄었다",
-          "summary": "",
-          "link": "https://www.hankyung.com/article/2026041910081",
+          "link": "https://www.hankyung.com/article/202604204011i",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516148"
+          "timestamp": "2026-04-20T20:00:09.748335"
         },
         {
-          "title": "\"韓 중대재해법 시행 4년, 처벌만으론 한계…제도 개선해야\"",
+          "title": "[포토] 日 도쿄서 열린 '동원참치 팝업'",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041910121",
+          "link": "https://www.hankyung.com/article/2026042039971",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516166"
+          "timestamp": "2026-04-20T20:00:09.748351"
         },
         {
-          "title": "버나드 쿽 싱가포르 인력부 부국장 \"평소엔 인센티브, 사고땐 엄벌…균형전략 필요\"",
+          "title": "포스코, 인도 1위 철강사와 10조원 들여 제철소 짓는다",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041910091",
+          "link": "https://www.hankyung.com/article/202604203554i",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516175"
+          "timestamp": "2026-04-20T20:00:09.748356"
         },
         {
-          "title": "한화토탈에너지스, 추가 원료 확보…플라스틱 수급 회복하나",
+          "title": "호르무즈해협 긴장 고조에 브렌트유 다시 95달러대",
           "summary": "",
-          "link": "https://www.hankyung.com/article/202604191153i",
+          "link": "https://www.hankyung.com/article/202604203980i",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516184"
+          "timestamp": "2026-04-20T20:00:09.748363"
         },
         {
-          "title": "풀무원 '눈물의 땅' 개척…연해주에 첨단농장 조성",
+          "title": "아몬 퀼컴 CEO 방한, 삼성·SK하이닉스 찾는다",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041910301",
+          "link": "https://www.hankyung.com/article/2026042039981",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516193"
+          "timestamp": "2026-04-20T20:00:09.748367"
         },
         {
-          "title": "단일 통합이냐, 복수 경쟁 구도냐…'발전 5사 통합' 성패 가를 묘안은",
+          "title": "백화점 아니면 다이소…\"어중간하면 망하게 생겼다\" [트렌드+]",
           "summary": "",
-          "link": "https://www.hankyung.com/article/202604190548i",
+          "link": "https://www.hankyung.com/article/202604203323g",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516202"
+          "timestamp": "2026-04-20T20:00:09.748371"
         },
         {
-          "title": "한전 발전 자회사 5곳 '통합 묘수'는",
+          "title": "'여기 사무실 없나요?' 발동동…전주에 무슨 일이",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041911021",
+          "link": "https://www.hankyung.com/article/2026042037841",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516212"
+          "timestamp": "2026-04-20T20:00:09.748376"
         },
         {
-          "title": "[포토] 反트럼프 진영 집결",
+          "title": "화재보험협회, '노사 상생 선포식' 개최",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041910931",
+          "link": "https://www.hankyung.com/article/202604203951i",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516221"
+          "timestamp": "2026-04-20T20:00:09.748384"
         },
         {
-          "title": "삼성디스플레이, 애플 폴더블폰 패널까지 '접수'",
+          "title": "KIAT 신임 원장에 전윤종 前산기평 원장",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041911331",
+          "link": "https://www.hankyung.com/article/2026042036411",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516230"
+          "timestamp": "2026-04-20T20:00:09.748388"
         },
         {
-          "title": "현대차그룹, 인도서 1분기 역대 최대 실적",
+          "title": "KB금융그룹, 장애인 고용 확대",
           "summary": "",
-          "link": "https://www.hankyung.com/article/2026041911321",
+          "link": "https://www.hankyung.com/article/2026042036481",
           "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516238"
+          "timestamp": "2026-04-20T20:00:09.748392"
         }
       ],
       "authority_signals": [
@@ -1305,43 +1288,31 @@
           "person": "Trump",
           "action": "Trump Says Colombia Will Accept Deportees, Ending Tariff Standoff",
           "source": "WSJ Economy",
-          "timestamp": "2026-04-19T20:13:00.390674"
+          "timestamp": "2026-04-20T19:59:58.030676"
         },
         {
-          "person": "Trump",
-          "action": "Trump family’s World Liberty crypto venture faces investor backlash",
+          "person": "Fed",
+          "action": "The looming battle over the Fed’s balance sheet",
           "source": "FT Markets",
-          "timestamp": "2026-04-19T20:13:01.377597"
+          "timestamp": "2026-04-20T19:59:58.824759"
         },
         {
           "person": "Trump",
           "action": "Regulators are reportedly zeroing in on suspicious trades ahead of market-moving Trump post",
           "source": "CNBC Economy",
-          "timestamp": "2026-04-19T20:13:02.209022"
+          "timestamp": "2026-04-20T19:59:59.182286"
         },
         {
           "person": "Trump",
           "action": "Trump nominates Erica Schwartz as CDC director amid turmoil around leadership, vaccine policy",
           "source": "CNBC Finance",
-          "timestamp": "2026-04-19T20:13:02.669416"
-        },
-        {
-          "person": "이재용",
-          "action": "이재용, 경제사절단 동행 인도行…재계 총수 '세일즈 외교' 박차",
-          "source": "연합뉴스",
-          "timestamp": "2026-04-19T20:13:03.113136"
-        },
-        {
-          "person": "트럼프",
-          "action": "[포토] 反트럼프 진영 집결",
-          "source": "한국경제",
-          "timestamp": "2026-04-19T20:13:03.516221"
+          "timestamp": "2026-04-20T19:59:59.488918"
         }
       ]
     }
   },
   "putcall": {
-    "date": "2026-04-19",
+    "date": "2026-04-20",
     "total_pc_ratio": null,
     "equity_pc_ratio": null,
     "index_pc_ratio": null,
@@ -1350,8 +1321,8 @@
     "source": "api_failed"
   },
   "cot": {
-    "date": "2026-04-19",
-    "collected_at": "2026-04-19T20:13:07.553647",
+    "date": "2026-04-20",
+    "collected_at": "2026-04-20T19:59:58.857174",
     "source": "CFTC COT Report",
     "positions": {
       "WTI": {

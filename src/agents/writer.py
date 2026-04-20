@@ -34,19 +34,27 @@ class WriterAgent:
         """유튜브 롱폼 스크립트 생성 (3계층 관리 및 번역 레이어 통합)"""
         print("  롱폼 스크립트 생성 중... [3계층 관리 적용]")
 
+        # Phase 4 Task 5: 품질 검증 - 분석 데이터에 핵심 클레임이 없는 경우 즉시 Fallback
+        analysis = context.get("analysis", {})
+        if not analysis or not analysis.get("topic_core_claim"):
+            print("  ⚠️ 분석 데이터 품질 미달 (topic_core_claim 누락). 즉시 Fallback 적용.")
+            from src.writer.fallback_writer import generate_fallback, format_fallback_as_md
+            fb_data = generate_fallback(context.get("signal", {}), analysis)
+            return format_fallback_as_md(fb_data)
+
         # 프롬프트 데이터 준비
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(context.get("stocks_data", {}).get("stocks", []), ensure_ascii=False),
-            cot_summary_detailed=json.dumps(context.get("analysis", {}).get("expectation_vs_reality", {}), ensure_ascii=False),
-            kospi_foreign_net=context.get("analysis", {}).get("market_state", {}).get("kospi_foreign_net", "0.00"),
+            cot_summary_detailed=json.dumps(analysis.get("expectation_vs_reality", {}), ensure_ascii=False),
+            kospi_foreign_net=analysis.get("market_state", {}).get("kospi_foreign_net", "0.00"),
             topic=context.get("signal", {}).get("topic"),
-            analysis_json=json.dumps(context.get("analysis", {}).get("level2_chain", []), ensure_ascii=False),
-            market_state_json=json.dumps(context.get("analysis", {}).get("market_state", {}), ensure_ascii=False),
+            analysis_json=json.dumps(analysis.get("level2_chain", []), ensure_ascii=False),
+            market_state_json=json.dumps(analysis.get("market_state", {}), ensure_ascii=False),
             today=self.today
         )
 
         try:
-            response = self.gemini.call(prompt, max_tokens=3500)
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=3500)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Long) 호출 실패, Fallback 모드 가동: {e}")
@@ -82,7 +90,14 @@ class WriterAgent:
         prompt += "\n반드시 1분 분량의 쇼츠 대본(5단계)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
         prompt += "\n마지막에 반드시 [DONE] 태그를 붙여서 작성이 완료되었음을 표시해라."
 
-        response = self.gemini.call(prompt, max_tokens=4000)
+        try:
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=4000)
+            if not response: raise Exception("Empty Response")
+        except Exception as e:
+            print(f"  ⚠️ Gemini(Shorts) 호출 실패, Fallback 모드 가동: {e}")
+            from src.writer.fallback_writer import generate_fallback, format_fallback_as_md
+            fb_data = generate_fallback(context.get("signal", {}), context.get("analysis", {}))
+            response = format_fallback_as_md(fb_data)
         
         is_completed = "[DONE]" in response or "(Step 7:" in response or "(Risk:" in response
         print(f"  [COMPLETION_TRACE] Shorts Response Status: {'COMPLETED' if is_completed else 'TRUNCATED'}")

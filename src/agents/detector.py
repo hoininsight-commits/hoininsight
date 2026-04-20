@@ -134,8 +134,8 @@ class DetectorAgent:
 [ {{ "topic": "제목", "reason": "이유", "strength": 점수, "related_keywords": [], "anomaly_type": "SPEED|CORRELATION|NEWS_MISMATCH" }} ]
 """
         try:
-            # GeminiClient.call_json 사용 (내부에서 application/json mime_type 적용됨)
-            results = self.gemini.call_json(prompt)
+            # GeminiClient.call_json_controlled 사용 (v1.0 Control Layer)
+            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR")
             if not results:
                 # 직접 호출 후 로컬 추출 시도 (Fallback)
                 raw_text = self.gemini.call(prompt)
@@ -176,7 +176,7 @@ class DetectorAgent:
 ]
 """
         try:
-            results = self.gemini.call_json(prompt, max_tokens=1500)
+            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR")
             if not results:
                 raw_text = self.gemini.call(prompt, max_tokens=1500)
                 results = self.extract_json(raw_text)
