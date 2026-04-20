@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Optional
 from src.core.filters import SignalFilters
 from src.core.gemini_client import GeminiClient
+from src.agents.extensions.detector_extensions import DetectorEnricher
 
 class DetectorAgent:
     """이상징후 탐지자 — 숫자와 뉴스 맥락을 결합하여 시장의 신호를 포착함 (v7.1 News Integration)"""
@@ -17,6 +18,7 @@ class DetectorAgent:
         self.signal_dir.mkdir(parents=True, exist_ok=True)
         self.filters = SignalFilters()
         self.gemini = GeminiClient()
+        self.enricher = DetectorEnricher(self.base_dir, self.today)
 
     def load_all_data(self) -> dict:
         """모든 수집 데이터 및 90일 히스토리 로드"""
@@ -257,6 +259,9 @@ class DetectorAgent:
         if mismatch:
             all_candidates.append(mismatch)
 
+        # [EXTENSION] 모든 후보군 통합 후 엔리치먼트 레이어 적용 (지시서 #070)
+        all_candidates = self.enricher.enrich_candidates(all_candidates, all_data)
+
         # 2. 전역 뉴스 트리거 결합 (Task 2)
         for a in all_candidates:
             if not a.get("news_trigger"): # 이미 mismatch 등에서 설정된 경우 제외
@@ -267,7 +272,12 @@ class DetectorAgent:
                     current_why = a.get("why_now", "")
                     if "뉴스 트리거:" not in current_why:
                         a["why_now"] = f"{current_why}. 뉴스 트리거: {trigger}"
-                    a["strength"] = min(10.0, a.get("strength", 0) + 0.5)
+                    
+                    # [EXTENSION] extended_strength 로직으로 기존 strength 보강
+                    base_str = a.get("strength", 0)
+                    a["strength"] = min(10.0, base_str + 0.5)
+                    if "extended_strength" in a:
+                        a["extended_strength"] = min(10.0, a["extended_strength"] + 0.5)
 
         selected = None
 
@@ -298,14 +308,14 @@ class DetectorAgent:
         if not selected:
             corrs = [a for a in all_candidates if a.get("anomaly_type") == "CORRELATION"]
             if corrs:
-                selected = sorted(corrs, key=lambda x: x.get("strength", 0), reverse=True)[0]
+                selected = sorted(corrs, key=lambda x: x.get("extended_strength", x.get("strength", 0)), reverse=True)[0]
                 selected["source"] = "CORRELATION_ENGINE"
 
         # 우선순위 3: LLM 탐지 결과
         if not selected:
             llm_anomalies = [a for a in anomalies if not self._is_absolute_value_topic(a.get("topic", ""), a)]
             if llm_anomalies:
-                selected = sorted(llm_anomalies, key=lambda x: x.get("strength", 0), reverse=True)[0]
+                selected = sorted(llm_anomalies, key=lambda x: x.get("extended_strength", x.get("strength", 0)), reverse=True)[0]
                 selected["source"] = "LLM"
 
         # Fallback: Z-score
