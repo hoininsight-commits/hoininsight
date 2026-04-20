@@ -131,6 +131,10 @@ class AnalystAgent:
         
         market = raw_data.get("market", {}).get("data", {})
         
+        # Hunter Context 준비 (Surface, Structure, Flow Interpretation, Chain, Beneficiary 등)
+        hunter_fields = ["surface", "structure", "flow_interpretation_hunter", "consequence_chain", "beneficiary", "why_now_hunter"]
+        hunter_context = {k: signal.get(k) for k in hunter_fields if k in signal}
+
         prompt = ANALYST_PROMPT_TEMPLATE.format(
             today=self.today,
             topic=signal.get("topic"),
@@ -138,7 +142,8 @@ class AnalystAgent:
             market_summary=json.dumps(market, ensure_ascii=False),
             cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
             kospi_foreign_net=str(market.get("kospi_foreign_net", "Unknown")),
-            history_90d=json.dumps(raw_data.get("history_90d", {}), ensure_ascii=False)
+            history_90d=json.dumps(raw_data.get("history_90d", {}), ensure_ascii=False),
+            hunter_context=json.dumps(hunter_context, ensure_ascii=False, indent=2)
         )
 
         result = self.gemini.call_json(prompt, max_tokens=2500)
@@ -252,6 +257,16 @@ class AnalystAgent:
         if not signal:
             print("  선정된 신호 없음")
             return {}
+
+        # [EXTENSION] Hunter Analyst 레이어 강화 (지시서 #071)
+        try:
+            from src.analysis.hunter_enricher import HunterEnricher
+            enricher = HunterEnricher()
+            signal = enricher.enrich(signal)
+            # 강화된 시그널 다시 저장 (Writer 등이 사용하도록)
+            (self.signal_dir / "today_signal.json").write_text(json.dumps(signal, ensure_ascii=False, indent=2))
+        except Exception as e:
+            print(f"  ⚠️ HunterEnricher 강화 실패: {e}")
 
         raw_data = self.load_raw()
         analysis = self.analyze(signal, raw_data)

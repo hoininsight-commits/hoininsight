@@ -17,8 +17,11 @@ ANALYST_PROMPT_TEMPLATE = """
 [수급 현황 데이터]
 - 외국인 순매수(KOSPI): {kospi_foreign_net}
 
-[90일 히스토리 데이터 - 통세적 맥락]
+[90일 히스토리 데이터 - 통계적 맥락]
 {history_90d}
+
+[경제사냥꾼 구조 로직 - Hunter Context]
+{hunter_context}
 
 ---
 
