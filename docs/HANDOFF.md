@@ -15,6 +15,7 @@ v1.0 (2026-04-19 확정)
 - 전체 시스템 구조 감사 및 데이터 로직 맵 완성 (docs/audit/) 
 - FLOW LAYER 도입 및 Flow State(4단계 시장 상태) 판별 엔진 업그레이드 (v8.1)
 - **Flow 입력 정교화 및 가격 강도/자금 일관성(Flow Consistency) 분석 도입** (v8.2)
+- **Analyst Layer 확장 및 경제사냥꾼 구조 분석(Structural Mapping) 도입** (v1.0)
 
 ## 알려진 이슈
 - PutCallCollector 403 (API 접근 제한흏, null 처리 중)
