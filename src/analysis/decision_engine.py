@@ -7,16 +7,21 @@ class DecisionEngine:
         """확률을 구조적으로 계산하여 결정 (v3.0 Truth Engine 연동)"""
         
         # 0. Truth Engine 파라미터 로드
-        weights = {"flow": 0.35, "price": 0.25, "event": 0.25, "consistency": 0.15}
-        cf = 1.0
-        if base_dir:
+        from src.decision.weight_adjuster import load_weights
+        from src.decision.confidence_recalibrator import get_current_calibration_factor
+        from pathlib import Path
+        import json
+        
+        # 성과 히스토리 로드
+        outcome_log_path = Path("data/validation/outcome_log.json")
+        history = []
+        if outcome_log_path.exists():
             try:
-                from src.analysis.truth_engine import TruthEngine
-                te = TruthEngine(base_dir)
-                params = te.get_calibrated_params()
-                weights = params["weights"]
-                cf = params["calibration_factor"]
+                history = json.loads(outcome_log_path.read_text())
             except: pass
+            
+        weights = load_weights()
+        cf = get_current_calibration_factor(history)
 
         # 1. Score 산출 (v2.1 구조 유지)
         

@@ -276,29 +276,50 @@ class AnalystAgent:
         signal["base_price"] = market.get("kospi_close", market.get("sp500_close", 0))
         signal["date"] = self.today
 
-        # [EXTENSION] Hunter Analyst 레이어 강화 (지시서 #071)
+        # [EXTENSION] Truth Engine Feedback Loop - Phase 1: 이전 결과 업데이트 & 가중치 조정
         try:
-            from src.analysis.hunter_enricher import HunterEnricher
-            from src.analysis.truth_engine import TruthEngine
+            from src.validation.outcome_tracker import update_pending_outcomes
+            from src.decision.weight_adjuster import adjust_weights
+            import json
             
+            # 현재 시장 가격 정보 추출 (KOSPI/S&P500 등)
+            current_market = {
+                "KOSPI": market.get("kospi_close", 0),
+                "SPX": market.get("sp500_close", 0),
+                "current": market.get("kospi_close", market.get("sp500_close", 0))
+            }
+            
+            # 1. PENDING 상태 업데이트
+            history = update_pending_outcomes(current_market)
+            
+            # 2. 가중치 조정
+            adjust_weights(history)
+            
+            from src.analysis.hunter_enricher import HunterEnricher
             enricher = HunterEnricher(Path(self.raw_dir.resolve().parents[2]))
             signal = enricher.enrich(signal)
             # 강화된 시그널 다시 저장 (Writer 등이 사용하도록)
             (self.signal_dir / "today_signal.json").write_text(json.dumps(signal, ensure_ascii=False, indent=2))
         except Exception as e:
-            print(f"  ⚠️ HunterEnricher 강화 실패: {e}")
+            print(f"  ⚠️ Truth Engine Feedback Loop 초기화 실패: {e}")
 
         raw_data = self.load_raw()
         analysis = self.analyze(signal, raw_data)
         if not analysis or analysis == {}:
             return {"failed": True}
 
-        # [EXTENSION] Truth Engine Tracking (지시서 #070)
+        # [EXTENSION] Truth Engine Feedback Loop - Phase 2: 오늘 결과 기록
         try:
-            te = TruthEngine(Path(self.raw_dir.resolve().parents[2]))
-            te.track(signal, analysis)
+            from src.validation.outcome_tracker import record_outcome
+            decision = analysis.get("decision_meta", {})
+            if not decision: # HunterEnricher가 signal["decision_meta"]에 넣음
+                decision = signal.get("decision_meta", {})
+            
+            market_data = {"entry": signal.get("base_price", 0)}
+            record_outcome(signal, decision, market_data)
+            print("  ✅ Truth Engine Outcome Recorded (PENDING)")
         except Exception as e:
-            print(f"  ⚠️ TruthEngine Tracking 실패: {e}")
+            print(f"  ⚠️ Truth Engine Outcome Recording 실패: {e}")
 
         stocks_data = self.map_stocks(signal, analysis)
         self.save_results(analysis, stocks_data)
