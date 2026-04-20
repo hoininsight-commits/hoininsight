@@ -102,7 +102,7 @@ jobs:
       always() && (needs.collect.result == 'success' || needs.collect.result == 'skipped') && (
         needs.collect.result == 'success' ||
         github.event_name == 'schedule' ||
-        (github.event_name == 'workflow_dispatch' && contains(fromJson('["intelligence","write","publish"]'), inputs.start_from)) ||
+        (github.event_name == 'workflow_dispatch' && contains(fromJson('["intelligence"]'), inputs.start_from)) ||
         (github.event_name == 'push' && (
           contains(toJson(github.event.commits), 'src/agents/detector') ||
           contains(toJson(github.event.commits), 'src/agents/analyst') ||
@@ -168,7 +168,7 @@ jobs:
       always() && (needs.intelligence.result == 'success' || needs.intelligence.result == 'skipped') && (
         needs.intelligence.result == 'success' ||
         github.event_name == 'schedule' ||
-        (github.event_name == 'workflow_dispatch' && contains(fromJson('["write","publish"]'), inputs.start_from)) ||
+        (github.event_name == 'workflow_dispatch' && contains(fromJson('["write"]'), inputs.start_from)) ||
         (github.event_name == 'push' && (
           contains(toJson(github.event.commits), 'src/agents/writer') ||
           contains(toJson(github.event.commits), 'src/prompts/writer_prompt') ||
