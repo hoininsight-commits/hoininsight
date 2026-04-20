@@ -323,18 +323,17 @@ class PublisherAgent:
 
     def update_topics_archive(self, today_data: dict):
         """
-        오늘 분석 결과를 docs/topics/에 누적 저장
-        - docs/topics/items/YYYY-MM-DD__top1.json  (오늘 상세)
-        - docs/topics/index.json  (전체 목록 갱신)
+        signal_log.json 전체 기반으로 topics/index.json 재구성
+        매일 실행 시 전체 아카이브 최신 상태 유지
         """
         signal = today_data.get('signal', {})
         date = today_data.get('date', datetime.now().strftime('%Y-%m-%d'))
 
-        # 1. 오늘 상세 파일 저장
         items_dir = self.base_dir / 'docs' / 'topics' / 'items'
         items_dir.mkdir(parents=True, exist_ok=True)
 
-        item = {
+        # 1. 오늘 상세 파일 저장
+        item_today = {
             'date': date,
             'rank': 1,
             'topic': signal.get('topic', ''),
@@ -345,35 +344,57 @@ class PublisherAgent:
             'path': f'topics/items/{date}__top1.json',
             'isToday': False
         }
-
         item_path = items_dir / f'{date}__top1.json'
         with open(item_path, 'w', encoding='utf-8') as f:
-            json.dump(item, f, ensure_ascii=False, indent=2)
+            json.dump(item_today, f, ensure_ascii=False, indent=2)
 
-        # 2. index.json 갱신 (날짜 최신순 정렬, 최대 60개 유지)
-        index_path = self.base_dir / 'docs' / 'topics' / 'index.json'
-        if index_path.exists():
-            with open(index_path, 'r', encoding='utf-8') as f:
+        # 2. signal_log.json에서 과거 토픽 전체 읽기
+        signal_log_path = self.base_dir / 'data' / 'history' / 'signal_log.json'
+        archive_list = []
+
+        if signal_log_path.exists():
+            with open(signal_log_path, 'r', encoding='utf-8') as f:
                 try:
-                    existing = json.load(f)
-                    if isinstance(existing, list):
-                        index_list = existing
-                    else:
-                        index_list = existing.get('items', [])
-                except:
-                    index_list = []
-        else:
-            index_list = []
+                    log_data = json.load(f)
+                    entries = log_data if isinstance(log_data, list) else log_data.get('signals', log_data.get('entries', []))
+                    
+                    for entry in entries:
+                        entry_date = entry.get('date', entry.get('날짜', ''))
+                        if len(entry_date) == 8 and "-" not in entry_date:
+                            entry_date = f"{entry_date[:4]}-{entry_date[4:6]}-{entry_date[6:]}"
+                            
+                        entry_topic = entry.get('topic', entry.get('title', entry.get('토픽', '')))
+                        entry_strength = entry.get('strength', entry.get('강도', 0))
+                        entry_type = entry.get('anomaly_type', entry.get('content_type', entry.get('type', '')))
+                        entry_filters = entry.get('filters_hit', ['S'])
 
-        # 오늘 날짜 중복 제거 후 맨 앞에 추가
-        index_list = [x for x in index_list if x.get('date') != date]
-        index_list.insert(0, item)
-        index_list = index_list[:60]  # 최대 60개
+                        if entry_date and entry_topic and entry_topic != "없음":
+                            archive_list.append({
+                                'date': entry_date,
+                                'rank': 1,
+                                'topic': entry_topic,
+                                'strength': entry_strength,
+                                'anomaly_type': entry_type,
+                                'filters_hit': entry_filters,
+                                'path': f'topics/items/{entry_date}__top1.json',
+                                'isToday': False
+                            })
+                except Exception as e:
+                    print(f'  signal_log 파싱 오류: {e}')
 
+        # 3. 오늘 항목 포함 (중복 제거 후 맨 앞 추가)
+        archive_list = [x for x in archive_list if x.get('date') != date]
+        archive_list.append(item_today)
+        
+        # 날짜 최신순 정렬 및 최대 60개 유지
+        archive_list = sorted(archive_list, key=lambda x: x.get('date', ''), reverse=True)[:60]
+
+        # 4. index.json 저장
+        index_path = self.base_dir / 'docs' / 'topics' / 'index.json'
         with open(index_path, 'w', encoding='utf-8') as f:
-            json.dump(index_list, f, ensure_ascii=False, indent=2)
+            json.dump(archive_list, f, ensure_ascii=False, indent=2)
 
-        print(f'  topics 아카이브 갱신 완료: {date} ({len(index_list)}개)')
+        print(f'  topics 아카이브 갱신 완료: {date} (총 {len(archive_list)}개)')
 
     def generate_brief(self, data: dict) -> str:
         """선장 확인용 브리핑 텍스트 생성"""
