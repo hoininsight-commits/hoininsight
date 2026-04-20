@@ -17,7 +17,8 @@ v1.0 (2026-04-19 확정)
 - **Flow 입력 정교화 및 가격 강도/자금 일관성(Flow Consistency) 분석 도입** (v8.2)
 - Analyst Layer 확장 및 경제사냥꾼 구조 분석(Structural Mapping) 도입 (v1.0)
 - Analyst Decision Engine 도입 및 시나리오 플래닝(Scenarios/Kill-Switch) 정교화 (v2.0)
-- **Probability Engine 도입 및 가중치 기반 수치 확률 계산 엔진 구축** (v2.1)
+- Probability Engine 도입 및 가중치 기반 수치 확률 계산 엔진 구축 (v2.1)
+- **TRUTH ENGINE 도입 및 과거 성과 기반 의사결정 가중치/신뢰도 자동 보정 엔진 구축** (v3.0)
 
 ## 알려진 이슈
 - PutCallCollector 403 (API 접근 제한흏, null 처리 중)
