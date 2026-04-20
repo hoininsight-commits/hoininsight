@@ -135,12 +135,13 @@ jobs:
           path: data/raw/
 
       - name: Download Raw Data (Fallback)
-        if: steps.dl_raw.outcome == 'failure'
+        if: always() && steps.dl_raw.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
-          gh run download $LATEST_RUN -n raw_data -D data/raw/
+          rm -rf data/raw && mkdir -p data/raw
+          gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
 
       - name: Run Detector + Analyst
         env:
@@ -208,13 +209,21 @@ jobs:
           path: data/
 
       - name: Download Artifacts (Fallback)
-        if: steps.dl_raw_w.outcome == 'failure' || steps.dl_ana_w.outcome == 'failure'
+        if: always() && (steps.dl_raw_w.outcome == 'failure' || steps.dl_ana_w.outcome == 'failure')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
-          gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-          gh run download $LATEST_RUN -n analysis_data -D data/ || true
+          
+          if [ "${{ steps.dl_raw_w.outcome }}" == "failure" ]; then
+            rm -rf data/raw && mkdir -p data/raw
+            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+          fi
+          
+          if [ "${{ steps.dl_ana_w.outcome }}" == "failure" ]; then
+            rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
+            gh run download $LATEST_RUN -n analysis_data -D data/ || true
+          fi
 
       - name: Run Writer + FactChecker
         env:
@@ -278,14 +287,30 @@ jobs:
           path: data/scripts/
 
       - name: Download Artifacts (Fallback)
-        if: steps.dl_raw_p.outcome == 'failure' || steps.dl_ana_p.outcome == 'failure' || steps.dl_scr_p.outcome == 'failure'
+        if: always() && (steps.dl_raw_p.outcome == 'failure' || steps.dl_ana_p.outcome == 'failure' || steps.dl_scr_p.outcome == 'failure')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LATEST_RUN=$(gh run list --workflow "daily_pipeline.yml" --status success --json databaseId --jq '.[0].databaseId')
-          gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-          gh run download $LATEST_RUN -n analysis_data -D data/ || true
-          gh run download $LATEST_RUN -n script_data -D data/scripts/ || true
+          echo "Fetching fallback artifacts from Run ID: $LATEST_RUN"
+          
+          if [ "${{ steps.dl_raw_p.outcome }}" == "failure" ]; then
+            echo "Downloading raw_data fallback..."
+            rm -rf data/raw && mkdir -p data/raw
+            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+          fi
+          
+          if [ "${{ steps.dl_ana_p.outcome }}" == "failure" ]; then
+            echo "Downloading analysis_data fallback..."
+            rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
+            gh run download $LATEST_RUN -n analysis_data -D data/ || true
+          fi
+          
+          if [ "${{ steps.dl_scr_p.outcome }}" == "failure" ]; then
+            echo "Downloading script_data fallback..."
+            rm -rf data/scripts && mkdir -p data/scripts
+            gh run download $LATEST_RUN -n script_data -D data/scripts/ || true
+          fi
 
       - name: Run Publisher
         env:
