@@ -220,10 +220,16 @@ class PublisherAgent:
         if pipeline_results and "agent_status" in pipeline_results:
             agent_status = pipeline_results["agent_status"]
         else:
-            # 백업: 기본값 (모두 WAITING)
+            # 백업: 경로 기반 상태 확인
+            today_str = self.today
             agent_status = {
-                "collector": "UNKNOWN", "learner": "UNKNOWN", "detector": "UNKNOWN",
-                "analyst": "UNKNOWN", "writer": "UNKNOWN", "fact_checker": "UNKNOWN", "publisher": "UNKNOWN"
+                'collector':    'SUCCESS' if (self.base_dir / f'data/raw/{today_str}').exists() else 'UNKNOWN',
+                'learner':      'UNKNOWN',  # Phase 2 미구현
+                'detector':     'SUCCESS' if (self.base_dir / f'data/signals/{today_str}').exists() else 'UNKNOWN',
+                'analyst':      'SUCCESS' if (self.base_dir / f'data/analysis/{today_str}').exists() else 'UNKNOWN',
+                'writer':       'SUCCESS' if (self.base_dir / f'data/scripts/{today_str}').exists() else 'UNKNOWN',
+                'fact_checker': 'SUCCESS' if (self.base_dir / f'data/scripts/{today_str}/fact_check.json').exists() else 'UNKNOWN',
+                'publisher':    'SUCCESS',
             }
         
         # 원본 데이터 객체들 복구
@@ -314,6 +320,60 @@ class PublisherAgent:
             (docs_dir / "index.html").write_text(source_html.read_text(encoding="utf-8"))
         
         print(f"  대시보드 데이터 및 HTML 동기화 완료: {docs_dir}")
+
+    def update_topics_archive(self, today_data: dict):
+        """
+        오늘 분석 결과를 docs/topics/에 누적 저장
+        - docs/topics/items/YYYY-MM-DD__top1.json  (오늘 상세)
+        - docs/topics/index.json  (전체 목록 갱신)
+        """
+        signal = today_data.get('signal', {})
+        date = today_data.get('date', datetime.now().strftime('%Y-%m-%d'))
+
+        # 1. 오늘 상세 파일 저장
+        items_dir = self.base_dir / 'docs' / 'topics' / 'items'
+        items_dir.mkdir(parents=True, exist_ok=True)
+
+        item = {
+            'date': date,
+            'rank': 1,
+            'topic': signal.get('topic', ''),
+            'strength': signal.get('strength', 0),
+            'anomaly_type': signal.get('anomaly_type', ''),
+            'filters_hit': signal.get('filters_hit', ['S']),
+            'why_now': signal.get('why_now', ''),
+            'path': f'topics/items/{date}__top1.json',
+            'isToday': False
+        }
+
+        item_path = items_dir / f'{date}__top1.json'
+        with open(item_path, 'w', encoding='utf-8') as f:
+            json.dump(item, f, ensure_ascii=False, indent=2)
+
+        # 2. index.json 갱신 (날짜 최신순 정렬, 최대 60개 유지)
+        index_path = self.base_dir / 'docs' / 'topics' / 'index.json'
+        if index_path.exists():
+            with open(index_path, 'r', encoding='utf-8') as f:
+                try:
+                    existing = json.load(f)
+                    if isinstance(existing, list):
+                        index_list = existing
+                    else:
+                        index_list = existing.get('items', [])
+                except:
+                    index_list = []
+        else:
+            index_list = []
+
+        # 오늘 날짜 중복 제거 후 맨 앞에 추가
+        index_list = [x for x in index_list if x.get('date') != date]
+        index_list.insert(0, item)
+        index_list = index_list[:60]  # 최대 60개
+
+        with open(index_path, 'w', encoding='utf-8') as f:
+            json.dump(index_list, f, ensure_ascii=False, indent=2)
+
+        print(f'  topics 아카이브 갱신 완료: {date} ({len(index_list)}개)')
 
     def generate_brief(self, data: dict) -> str:
         """선장 확인용 브리핑 텍스트 생성"""
@@ -407,6 +467,7 @@ HOIN Insight 일일 브리핑
 
         # 대시보드 데이터 생성
         self.generate_dashboard_data(data, content, pipeline_results)
+        self.update_topics_archive(data)
 
         # 선장 브리핑 생성
         brief = self.generate_brief(data)
