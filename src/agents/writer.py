@@ -45,7 +45,15 @@ class WriterAgent:
             today=self.today
         )
 
-        response = self.gemini.call(prompt, max_tokens=3500)
+        try:
+            response = self.gemini.call(prompt, max_tokens=3500)
+            if not response: raise Exception("Empty Response")
+        except Exception as e:
+            print(f"  ⚠️ Gemini(Long) 호출 실패, Fallback 모드 가동: {e}")
+            from src.writer.fallback_writer import generate_fallback, format_fallback_as_md
+            fb_data = generate_fallback(context.get("signal", {}), context.get("analysis", {}))
+            response = format_fallback_as_md(fb_data)
+            
         return self._censor_narrative(response)
 
     def generate_shorts(self, context):
