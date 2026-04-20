@@ -12,6 +12,7 @@ from src.agents.collectors.dart_agent import DartAgent
 from src.agents.consensus_collector import ConsensusCollector
 from src.agents.cot_collector import COTCollector
 from src.agents.collectors.putcall_collector import PutCallCollector
+from src.agents.collectors.flow_collector import FlowCollector
 
 class CollectorRunner:
     """
@@ -92,6 +93,14 @@ class CollectorRunner:
         status_path = self.output_dir / "collection_status.json"
         with open(status_path, "w", encoding="utf-8") as f:
             json.dump(summary, f, ensure_ascii=False, indent=2)
+
+        # [EXTENSION] Flow 데이터 레이어 수집 (지시서 #070) — 후처리 성격
+        try:
+            FlowCollector().run()
+            summary["agent_results"]["FlowCollector"] = "success"
+        except Exception as e:
+            print(f"  ❌ FlowCollector 실행 실패: {e}")
+            summary["agent_results"]["FlowCollector"] = f"failed: {e}"
 
         print(f"\n✅ CollectorRunner 완료 — {elapsed:.1f}초")
         print(f"   성공: {summary['success_count']}/{summary['total_agents']}")

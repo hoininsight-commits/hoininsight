@@ -6,6 +6,7 @@ from typing import Optional
 from src.core.filters import SignalFilters
 from src.core.gemini_client import GeminiClient
 from src.agents.extensions.detector_extensions import DetectorEnricher
+from src.agents.extensions.flow_overlay import FlowOverlay
 
 class DetectorAgent:
     """이상징후 탐지자 — 숫자와 뉴스 맥락을 결합하여 시장의 신호를 포착함 (v7.1 News Integration)"""
@@ -261,6 +262,10 @@ class DetectorAgent:
 
         # [EXTENSION] 모든 후보군 통합 후 엔리치먼트 레이어 적용 (지시서 #070)
         all_candidates = self.enricher.enrich_candidates(all_candidates, all_data)
+
+        # [EXTENSION] Flow Overlay 적용 (지시서 #070) — 자금 흐름 기반 검증
+        overlay = FlowOverlay(self.base_dir)
+        all_candidates = [overlay.apply(a) for a in all_candidates]
 
         # 2. 전역 뉴스 트리거 결합 (Task 2)
         for a in all_candidates:
