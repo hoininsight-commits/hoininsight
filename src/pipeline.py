@@ -117,13 +117,26 @@ def run_pipeline():
         # 2. 품질 점수 계산 (최종 Writer 결과물 기준)
         q_score = 0
         if "writer" in results and results["writer"]:
-            q_score = calculate_quality_score(results["writer"])
+            q_score = calculate_quality_score(results["writer"], is_fallback=is_fallback_run)
             
         # 3. 브리핑 데이터에 상태 주입
         state, reason = get_system_state()
+        
+        # 추가 지표 로드 (#077)
+        gemini_status = "UNKNOWN"
+        fallback_ratio = 0.0
+        try:
+            health = json.loads(Path("data/monitoring/gemini_health.json").read_text())
+            stats = json.loads(Path("data/logs/fallback_stats.json").read_text())
+            gemini_status = health.get("status", "UNKNOWN")
+            fallback_ratio = stats.get("fallback_ratio", 0.0)
+        except: pass
+
         results["engine_status"] = {
             "system_state": state,
             "reason": reason,
+            "gemini_health": gemini_status,
+            "fallback_ratio": fallback_ratio,
             "quality_score": q_score,
             "fallback_run": is_fallback_run
         }

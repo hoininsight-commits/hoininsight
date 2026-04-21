@@ -42,10 +42,15 @@ def update_gemini_health(success: bool, fallback_used: bool):
 
     if health["total_calls"] > 0:
         health["fallback_ratio"] = round(health["fallback_count"] / health["total_calls"], 2)
+        failure_rate = health["failures"] / health["total_calls"]
 
-    # 50% 이상 Fallback 기반 동작 시 성능 저하 상태로 진단
-    if health["fallback_ratio"] > 0.5:
+    # 실패 지표 기반 판단 기준 강화 (#077)
+    if failure_rate > 0.5:
+        health["status"] = "CRITICAL"
+    elif failure_rate > 0.3:
         health["status"] = "DEGRADED"
+    elif failure_rate > 0.1:
+        health["status"] = "WARNING"
     else:
         health["status"] = "HEALTHY"
 
