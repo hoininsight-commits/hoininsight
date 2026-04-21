@@ -12,7 +12,8 @@ from src.utils.telegram_notifier import TelegramNotifier
 class PublisherAgent:
 
     def __init__(self):
-        import os
+        # Modular CI/CD Trigger Test
+import os
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = datetime.now().strftime("%Y%m%d")
         self.content_log_path = Path("data/history/content_log.json")
