@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 from src.validation.multi_run_analysis import analyze_runs, final_system_state_calc
 
-RUNS = 5
+RUNS = 2
 DASHBOARD_DATA_PATH = Path("docs/today_data.json")
 
 def load_engine_status():

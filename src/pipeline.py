@@ -9,6 +9,10 @@ def run_pipeline():
     print(f"실행 시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*50}\n")
 
+    # [지시서 #087] Content Tier 변환용 가이드 로드
+    from src.content.content_tier import map_action_to_tier
+    from src.content.script_generator import generate_tiered_script
+
     results = {
         "agent_status": {
             "collector": "WAITING",
@@ -18,6 +22,11 @@ def run_pipeline():
             "writer": "WAITING",
             "fact_checker": "WAITING",
             "publisher": "WAITING"
+        },
+        "content_pack": {
+            "TIER_1": [],
+            "TIER_2": [],
+            "TIER_3": []
         },
         "today": today
     }
@@ -64,74 +73,82 @@ def run_pipeline():
             calculate_validation_score_v2, calculate_score_trust, decide_action, extract_validation_reasons
         )
         from src.validation.market_data_mapper import (
-            load_market_intelligence, validate_magnitude_v2, calculate_reality_score_v2, final_decision_v2, log_forward_prediction
+            load_market_intelligence, calculate_reality_score_v2, log_forward_prediction
         )
         
         agent04 = AnalystAgent()
         
-        # 1. 일차 분석 수행
-        raw_result = agent04.run(results.get("detector", {}))
-        analysis_data = raw_result.get("analysis", {})
-        topic = results.get("detector", {}).get("topic", "")
-        claim = analysis_data.get("topic_core_claim", "")
+        # [지시서 #081-R] 파이프라인 입력 연동 최적화 (Multi-Topic Content Pack)
+        detector_out = results.get("detector", {})
+        candidates = detector_out.get("candidates", [])
         
-        # 2. Quality Validation (내적 검증)
-        q_score = raw_result.get("quality_score", 50)
-        v_score = calculate_validation_score_v2(analysis_data)
-        trust = calculate_score_trust(q_score, v_score)
-        q_action = decide_action(q_score, v_score, trust)
-        q_reasons = extract_validation_reasons(analysis_data)
+        # [지시서 #081-R] 불리언/비딕셔너리 데이터 방어
+        if not isinstance(candidates, list):
+            candidates = []
         
-        # 3. Market Intelligence Validation (Task 3~8 - 업그레이드)
-        from src.validation.market_data_mapper import (
-            load_market_intelligence,
-            validate_magnitude_v2,
-            calculate_reality_score_v2,
-            final_decision_v2,
-            log_forward_prediction
-        )
-        
-        actual_data, asset_type = load_market_intelligence(topic + claim, ".", today)
-        
-        # 방향성 검증 (여기선 1일 변화량을 트렌드 대용으로 활용)
-        dir_ok = False
-        if actual_data:
-            change = actual_data.get("change", 0)
-            if "상승" in claim or "강세" in claim: dir_ok = change > 0
-            elif "하락" in claim or "약세" in claim: dir_ok = change < 0
-            else: dir_ok = True
+        # 만약 후보가 없으면 현재 선정된 토픽(selected)이라도 활용
+        if not candidates and isinstance(detector_out.get("selected"), dict):
+            candidates = [detector_out.get("selected")]
             
-        trend_ok = dir_ok # 트렌드 데이터 리스트 구축 전까지는 방향성과 동기화
-        mag_ok = validate_magnitude_v2(actual_data.get("current", 0), 100, asset_type) if actual_data else 0 # 임시 계산
+        print(f"\n🚀 총 {len(candidates[:4])}개의 후보 컨텐츠 분석 시작...")
         
-        r_score = calculate_reality_score_v2(dir_ok, trend_ok, mag_ok)
-        final_action = final_decision_v2(q_action, r_score)
-        
-        # 미래 전망 로깅 (Task 7)
-        log_forward_prediction(topic, claim, ".")
-        
-        # 결과 JSON 확장 (Task 10)
-        raw_result["validation_score"] = v_score
-        raw_result["score_trust"] = trust
-        raw_result["quality_action"] = q_action
-        raw_result["reality_score"] = r_score
-        raw_result["forward_accuracy"] = 0.85 # 초기 추정치 (향후 실측 데이터 집계)
-        raw_result["final_action"] = final_action
-        raw_result["validation_reasons"] = q_reasons
-        
-        results["analyst"] = raw_result
-        
-        # [지시서 #083] 보수적인 재시도 정책
-        if final_action == "REGENERATE":
-            print(f"🚨 [LOW_TRUST] 품질 부족으로 재생성합니다.")
-            raw_result = agent04.run(results.get("detector", {}))
-            analysis_data = raw_result.get("analysis", {})
-            v_score = calculate_validation_score_v2(analysis_data)
-            raw_result["validation_score"] = v_score
-            results["analyst"] = raw_result
-            
+        analyst_results = []
+        if isinstance(candidates, list):
+            for i, cand in enumerate(candidates[:4]):
+                # [DEFENSE] 비정상 데이터 타입 필더링
+                if not isinstance(cand, dict):
+                    continue
+                    
+                target_topic = cand.get("topic", "N/A")
+                print(f"  [{i+1}/{len(candidates[:4])}] 분석 대상: {target_topic[:30]}...")
+                
+                # 1. 개별 분석 수행
+                raw_res = agent04.run(cand)
+                analysis_data = raw_res.get("analysis", {})
+                q_score = raw_res.get("quality_score", 50)
+                
+                # 2. 검증 (내적/외적 합산)
+                v_score = calculate_validation_score_v2(analysis_data)
+                trust = calculate_score_trust(q_score, v_score)
+                
+                from src.validation.market_data_mapper import final_decision_v3
+                actual_data, asset_type = load_market_intelligence(target_topic + analysis_data.get("topic_core_claim", ""), ".", today)
+                reality_score = calculate_reality_score_v2(analysis_data, actual_data, asset_type) if actual_data else 0
+                
+                final_act = final_decision_v3(q_score, v_score, reality_score, trust)
+                
+                # [Task 7] 미래 전망 로깅
+                log_forward_prediction(target_topic, analysis_data.get("topic_core_claim", ""), ".")
+                
+                # 3. Tier 매핑 및 데이터 구성
+                tier = map_action_to_tier(final_act)
+                
+                # 가공된 데이터 생성
+                processed = {
+                    "topic": target_topic,
+                    "core_claim": analysis_data.get("topic_core_claim", target_topic),
+                    "why_now": analysis_data.get("why_now", cand.get("why_now", "분석 중")),
+                    "structural_truth": analysis_data.get("structural_truth", "인과관계 분석 중"),
+                    "level2_chain": analysis_data.get("level2_chain", []),
+                    "quality_score": q_score,
+                    "reality_score": reality_score,
+                    "score_trust": trust,
+                    "final_action": final_act,
+                    "content_tier": tier
+                }
+                
+                # 4. 스크립트 생성
+                processed["script"] = generate_tiered_script(processed, tier)
+                
+                # 팩에 추가
+                results["content_pack"][tier].append(processed)
+                analyst_results.append(processed)
+                
+                print(f"     -> Result: {final_act} ({tier}) | Reality: {reality_score}")
+
+        results["analyst"] = analyst_results[0] if analyst_results else {}
         results["agent_status"]["analyst"] = "SUCCESS"
-        print(f"✅ AGENT-04 ANALYST 완료 (Trust: {trust}, Reality: {r_score}, Final: {final_action})")
+        print("✅ AGENT-04 ANALYST (Multi-Pack) 완료")
         
     except Exception as e:
         print(f"⚠️ AGENT-04 실패: {e}")
@@ -250,22 +267,87 @@ def run_pipeline():
         print(f"⚠️ AGENT-06 실패: {e}")
         results["agent_status"]["publisher"] = "FAIL"
 
-    # Task 10: Dashboard 반영용 엔진 상태 생성 (Intelligence 반영)
+    # Task 8: 실데이터 로컬 파일 직접 로드 (Hard-Binding)
+    import json
+    from pathlib import Path
+    
+    # 상단의 today 변수(YYYYMMDD) 재활용
+    raw_dir = Path(f"data/raw/{today}")
+    
+    # 1. 시장 실데이터 로드
+    market_data = {}
+    m_path = raw_dir / "market.json"
+    if m_path.exists():
+        market_data = json.loads(m_path.read_text()).get("data", {})
+    
+    # 2. 금리 데이터 로드 (FRED or Market)
+    rates_val = market_data.get("us10y", "N/A")
+    
+    # 3. 비트코인 데이터 (BTC) - market.json 또는 sentiment.json에서 추출
+    btc_val = market_data.get("btc_price") or market_data.get("bitcoin") or "N/A"
+    
+    # 4. 과거 이력 로드 (History Layer)
+    history = []
+    try:
+        with open("docs/topics/index.json", "r") as f:
+            idx = json.load(f)
+            history = idx[:5]
+    except: pass
+
+    # 5. 트렌드 계산
+    spx_chg = market_data.get("sp500_1d_change", 0)
+    trend = "BULLISH" if spx_chg > 0 else "BEARISH" if spx_chg < 0 else "NEUTRAL"
+    
     analyst_res = results.get("analyst", {})
-    results["engine_status"] = {
-        "quality_score": analyst_res.get("quality_score", 0),
-        "validation_score": analyst_res.get("validation_score", 0),
-        "score_trust": analyst_res.get("score_trust", "N/A"),
-        "reality_score": analyst_res.get("reality_score", 0),
-        "forward_accuracy": analyst_res.get("forward_accuracy", 0),
-        "final_action": analyst_res.get("final_action", "N/A"),
-        "validation_reasons": analyst_res.get("validation_reasons", [])
+    detector_res = results.get("detector", {})
+    content_pack = results.get("content_pack", {})
+    
+    # [지시서 #087] Tier 리스트 평면화 (UI 렌더링용)
+    all_contents = []
+    for tier, items in content_pack.items():
+        all_contents.extend(items)
+        
+    main_content = content_pack.get("TIER_1", [{}])[0] if content_pack.get("TIER_1") else (all_contents[0] if all_contents else {})
+    
+    ui_contract = {
+        "top_decision": {
+            "topic": main_content.get("topic", "N/A"),
+            "final_action": main_content.get("final_action", "N/A"),
+            "content_tier": main_content.get("content_tier", "TIER_3"),
+            "summary": main_content.get("core_claim", "데이터 분석 중"),
+            "why_now": main_content.get("why_now", "분석 중")
+        },
+        "content_pack": content_pack,
+        "reason_layer": {
+            "quality_score": main_content.get("quality_score", 0),
+            "reality_score": main_content.get("reality_score", 0),
+            "score_trust": main_content.get("score_trust", "COLD")
+        },
+        "market_snapshot": {
+            "rates": f"{rates_val}%" if rates_val != "N/A" else "N/A",
+            "spx": f"{market_data.get('sp500', 'N/A')}",
+            "btc": f"{btc_val}", 
+            "trend_short": trend,
+            "trend_mid": "UP"
+        },
+        "risk_layer": {
+            "kill_switch": analyst_res.get("analysis", {}).get("kill_switch", "조건 미정"),
+            "opposite_scenario": analyst_res.get("analysis", {}).get("opposite_scenario", "시나리오 미정")
+        },
+        "history_layer": history
     }
+    
+    # docs 반영
+    try:
+        with open("docs/today_data.json", "w") as f:
+            json.dump(ui_contract, f, indent=2, ensure_ascii=False)
+        print(f"✅ [FINAL_SYNC] docs/today_data.json 실데이터({rates_val}%, {btc_val}) 연동 완료")
+    except Exception as e:
+        print(f"⚠️ UI 데이터 저장 실패: {e}")
 
     print(f"\n==================================================")
-    print(f"파이프라인 완료 | Final Action: {results['engine_status']['final_action']}")
-    print(f"Quality Trust: {results['engine_status']['score_trust']} | Reality Score: {results['engine_status']['reality_score']}/5")
-    print(f"Forward Accuracy: {results['engine_status']['forward_accuracy']}")
+    print(f"파이프라인 완료 | Final Decision: {ui_contract['top_decision']['final_action']}")
+    print(f"Quality: {ui_contract['reason_layer']['quality_score']} | Reality: {ui_contract['reason_layer']['reality_score']}/5")
     print(f"==================================================\n")
     
     return results

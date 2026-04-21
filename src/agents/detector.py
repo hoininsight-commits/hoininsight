@@ -470,7 +470,7 @@ class DetectorAgent:
         if selected:
             self.save_results(candidates, total_anomalies, selected)
             print(f"  ✅ 최종 선정: {selected['topic']}")
-        return {"selected": selected}
+        return {"selected": selected, "candidates": total_anomalies}
 
 if __name__ == "__main__":
     DetectorAgent().run()

@@ -331,9 +331,14 @@ class AnalystAgent:
         if detector_result:
             if isinstance(detector_result, dict):
                 # selected 키가 있으면 이를 사용, 없으면 전체를 사용
-                signal = detector_result.get("selected", detector_result)
+                sel = detector_result.get("selected")
+                if isinstance(sel, dict):
+                    signal = sel
+                else:
+                    signal = detector_result
             elif isinstance(detector_result, list) and len(detector_result) > 0:
-                signal = detector_result[0]
+                if isinstance(detector_result[0], dict):
+                    signal = detector_result[0]
         
         if not signal:
             signal = self.load_signal()

@@ -315,10 +315,10 @@ class PublisherAgent:
         (docs_dir / "today_data.json").write_text(
             json.dumps(dashboard_data, ensure_ascii=False, indent=2)
         )
-        # index.html 복사 (지시서 #055 자동 반영 보장)
-        source_html = self.dashboard_dir / "index.html"
-        if source_html.exists():
-            (docs_dir / "index.html").write_text(source_html.read_text(encoding="utf-8"))
+        # index.html 복사 (지시서 #055 - 리팩토링된 Hero UI 보존을 위해 수동 관리로 변경)
+        # source_html = self.dashboard_dir / "index.html"
+        # if source_html.exists():
+        #     (docs_dir / "index.html").write_text(source_html.read_text(encoding="utf-8"))
         
         print(f"  대시보드 데이터 및 HTML 동기화 완료: {docs_dir}")
 
