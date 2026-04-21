@@ -101,15 +101,15 @@ jobs:
     if: >
       always() && (needs.collect.result == 'success' || needs.collect.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'intelligence')) ||
-        needs.collect.result == 'success' ||
-        github.event_name == 'schedule' ||
         (github.event_name == 'push' && (
           contains(toJson(github.event.commits), 'src/agents/detector') ||
           contains(toJson(github.event.commits), 'src/agents/analyst') ||
-          contains(toJson(github.event.commits), 'src/agents/collectors/') ||
+          contains(toJson(github.event.commits), 'src/agents/truth_agent') ||
+          contains(toJson(github.event.commits), 'src/agents/intelligence') ||
           contains(toJson(github.event.commits), '.github/workflows/') ||
           contains(toJson(github.event.commits), 'requirements.txt')
-        ))
+        )) ||
+        (github.event_name == 'schedule')
       )
     steps:
       - uses: actions/checkout@v4
@@ -169,15 +169,14 @@ jobs:
     if: >
       always() && (needs.intelligence.result == 'success' || needs.intelligence.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'write')) ||
-        needs.intelligence.result == 'success' ||
-        github.event_name == 'schedule' ||
         (github.event_name == 'push' && (
           contains(toJson(github.event.commits), 'src/agents/writer') ||
           contains(toJson(github.event.commits), 'src/prompts/writer_prompt') ||
           contains(toJson(github.event.commits), 'src/agents/fact_checker') ||
           contains(toJson(github.event.commits), '.github/workflows/') ||
           contains(toJson(github.event.commits), 'requirements.txt')
-        ))
+        )) ||
+        (github.event_name == 'schedule')
       )
     steps:
       - uses: actions/checkout@v4
@@ -251,9 +250,13 @@ jobs:
     if: >
       always() && (needs.write.result == 'success' || needs.write.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'publish')) ||
-        needs.write.result == 'success' ||
-        github.event_name == 'schedule' ||
-        github.event_name == 'push'
+        (github.event_name == 'push' && (
+          contains(toJson(github.event.commits), 'src/agents/publisher') ||
+          contains(toJson(github.event.commits), 'docs/') ||
+          contains(toJson(github.event.commits), 'dashboard/') ||
+          contains(toJson(github.event.commits), '.github/workflows/')
+        )) ||
+        (github.event_name == 'schedule')
       )
     steps:
       - uses: actions/checkout@v4
