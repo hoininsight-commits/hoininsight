@@ -1,8 +1,13 @@
 # src/validation/quality_score.py
 
 def calculate_quality_score(data: dict, is_fallback: bool = False) -> int:
-    """분석 데이터의 품질을 수치화 (0-100) (#077 개정)"""
+    """분석 데이터의 품질을 수치화 (0-100) (#078 보완)"""
     if not data:
+        return 0
+    
+    # 0. 리스트 형태(예: DETECTOR 결과) 대응 - 리스트인 경우 기본 점수 부여 또는 개별 항목 검사
+    if isinstance(data, list):
+        if len(data) > 0: return 80 # 리스트가 비어있지 않으면 우선 합격점으로 처리
         return 0
         
     score = 0

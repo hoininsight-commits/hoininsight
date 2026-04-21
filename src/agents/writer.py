@@ -177,18 +177,40 @@ class WriterAgent:
         short_script = self.generate_shorts(context)
         self.save_scripts(long_script, short_script)
         
-        # ⚠️ 임시: [FALLBACK] 키워드로 감지 (정밀화 필요 시 플래그 전달 체인 구축)
-        is_fallback = "[FALLBACK]" in long_script or "분석 데이터 품질 미달" in long_script
+        # Phase 7: 품질 정밀 검증 (Quality Score v2 적용)
+        from src.validation.quality_score_v2 import calculate_quality_score_v2, get_quality_grade
+        
+        # Writer 결과물은 analysis의 내용을 기반으로 하되, 
+        # 본인이 fallback 시나리오를 썼는지 context["analysis"]가 fallback인지 확인
+        is_fb = is_fallback or context.get("analysis", {}).get("fallback_used", False)
+        
+        # 평가 데이터 준비 (Writer는 텍스트 위주이므로 analysis 필드를 가상으로 채워 평가)
+        eval_data = {
+            "topic_core_claim": context.get("analysis", {}).get("topic_core_claim", ""),
+            "why_now": context.get("analysis", {}).get("why_now", ""),
+            "structural_truth": context.get("analysis", {}).get("structural_truth", ""),
+            "one_line_summary": context.get("analysis", {}).get("one_line_summary", ""),
+            "surface_fact": context.get("analysis", {}).get("surface_fact", ""),
+            "capital_flow": context.get("analysis", {}).get("capital_flow", ""),
+            "script_text": long_script[:500] # 구체성/수치 평가용 샘플
+        }
+        
+        score = calculate_quality_score_v2(eval_data, is_fallback=is_fb)
+        grade = get_quality_grade(score)
+        
+        print(f"  ✅ [WRITER_QUALITY_v2] Score: {score} | Grade: {grade}")
         
         print("✅ AGENT-05 완료\n")
         return {
             "status": "SUCCESS",
             "long_script_path": str(self.script_dir / "today_script_long.md"),
             "short_script_path": str(self.script_dir / "today_script_short.md"),
-            "fallback_used": is_fallback,
-            "topic_core_claim": context.get("analysis", {}).get("topic_core_claim", ""),
-            "why_now": context.get("analysis", {}).get("why_now", ""),
-            "one_line_summary": context.get("analysis", {}).get("one_line_summary", "")
+            "fallback_used": is_fb,
+            "quality_score": score,
+            "quality_grade": grade,
+            "topic_core_claim": eval_data["topic_core_claim"],
+            "why_now": eval_data["why_now"],
+            "one_line_summary": eval_data["one_line_summary"]
         }
 
 

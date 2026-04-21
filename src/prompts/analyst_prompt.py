@@ -95,57 +95,33 @@ STATE 제약:
 
 ---
 
-### [출력 JSON 구조]
+### [출력 JSON 구조 - 초간결 모드]
 {{
-  "topic_core_claim": "오늘 시장을 지배하는 핵심 담론 (현상 + 의도)",
-  "one_line_summary": "전체 분석을 관통하는 한 줄 요약",
-  "why_now": "[F]와 [I] 계층 문장을 조합하여 2~3문장으로 작성",
-  "surface_fact": "시장에 드러난 표면적 데이터와 현상",
-  "structural_truth": "데이터 이면에 숨겨진 구조적 본질과 모순",
-  "capital_flow": "스마트머니와 헤지펀드의 실질적 자금 이동 방향",
-  "primary_beneficiary": "이 구조 변화로 인해 최종적으로 이득을 취하는 섹터/주체",
-  "risk_kill_switch": "구체적 숫자 조건을 포함한 시나리오 무효화 임계점",
+  "topic_core_claim": "오늘 시장의 핵심 담론 (현상 + 의도 / 필히 50자 이내)",
+  "one_line_summary": "전체 요약 (30자 이내)",
+  "why_now": "[F]와 [I] 계층 조합 (70자 이내)",
+  "surface_fact": "표면적 현상 (40자 이내)",
+  "structural_truth": "이면의 본질 (40자 이내)",
+  "capital_flow": "헤지펀드 자금 이동 (30자 이내)",
+  "primary_beneficiary": "최종 수혜 섹터/주체 (20자 이내)",
+  "risk_kill_switch": "무효화 조건 (수치 포함 / 40자 이내)",
   "market_state": {{
     "risk_appetite": "상승/하락/혼조",
     "hedging_activity": "증가/감소/중립",
     "conviction": "높음/낮음"
   }},
-  "why_now_verification": {{
-    "candidate_1": "가설 및 데이터 일치 여부",
-    "candidate_2": "가설 및 데이터 일치 여부",
-    "result": "우세한 해석 / 높은 가능성 / 확정"
-  }},
-  "expectation_vs_reality": {{
-    "expectation": "시장 기대",
-    "reality": "실제 현실",
-    "conflict": "충돌 이유"
-  }},
   "level2_chain": [
-    "[F] 데이터 기반 팩트 문장",
-    "[I] 데이터 기반 해석 문구 (~시사한다)",
-    "[I] 데이터 기반 상관관계 (~로 읽힌다)"
+    "[F] 팩트 문장 (30자 이내)",
+    "[I] 해석 문구 (~시사한다 / 40자 이내)",
+    "[I] 해석 문구 (~로 읽힌다 / 40자 이내)"
   ],
-  "decision_engine": {{
-    "scenarios": [
-      {{
-        "type": "BULL",
-        "story": "상승 시나리오 및 근거",
-        "probability": 0.k,
-        "kill_switch": "무효화 조건"
-      }},
-      {{
-        "type": "BEAR",
-        "story": "하락 시나리오 및 근거",
-        "probability": 0.k,
-        "kill_switch": "무효화 조건"
-      }}
-    ],
-    "best_scenario": "BULL/BEAR/NEUTRAL 중 하나",
+  "decision_meta": {{
+    "best_scenario": "BULL/BEAR/NEUTRAL",
     "confidence": 0.k,
-    "action": "BUY / HOLD / WATCH",
-    "trigger_time_condition": "언제 이 결정이 실행되어야 하는가 (시간 조건)"
+    "action": "BUY/HOLD/WATCH",
+    "bull_story": "상승 시나리오 요약 (50자 이내)",
+    "bear_story": "하락 시나리오 요약 (50자 이내)"
   }},
-  "key_stocks": ["기준 충족 종목 혹은 섹터명"],
-  "risk": "무효화 조건 한 문장"
+  "key_stocks": ["기준 충족 섹터/종목 (최대 3개)"]
 }}
 """

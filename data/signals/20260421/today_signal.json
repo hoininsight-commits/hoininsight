@@ -1,0 +1,70 @@
+{
+  "topic": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+  "anomaly_type": "NEWS_MISMATCH",
+  "why_anomalous": "DeepSeek발 AI 섹터 폭락 뉴스가 시장을 지배하고 있음에도 불구하고, S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 이동평균 대비 극단적 과매수 구간에 진입함. 악재성 뉴스 헤드라인과 실제 지수 퍼포먼스 간의 심각한 괴리가 관찰됨.",
+  "why_now": "오늘 DeepSeek 관련 AI Rout 뉴스가 메인 헤드라인을 장식했음에도 지수는 오히려 기술적 과열권인 Z-score 1.6 이상을 기록하며 신고가 랠리를 지속함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+  "key_indicators": [
+    "sp500",
+    "kospi",
+    "DeepSeek news"
+  ],
+  "strength": 10.0,
+  "second_order_deviation": false,
+  "deviation_direction": "neutral",
+  "deviation_delta": 0.0,
+  "persistence_score": 0.0,
+  "persistence_days": 0,
+  "is_persistent_signal": false,
+  "signal_dead": false,
+  "death_reason": [],
+  "death_confidence": 0.0,
+  "trigger_type": "unknown",
+  "trigger_binding_score": 0.0,
+  "why_now_hint": "",
+  "detector_boost": 0.0,
+  "extended_strength": 8.0,
+  "flow_confirmation": false,
+  "flow_strength": 2.0,
+  "flow_direction": "outflow",
+  "flow_state": "CONFIRMED_DOWNTREND",
+  "flow_state_detail": "CONFIRMED_DOWNTREND",
+  "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+  "trigger_event": "none",
+  "price_strength": "sideways",
+  "flow_consistency": 0,
+  "news_trigger": "Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+  "source": "MISMATCH_ENGINE",
+  "selected": true,
+  "content_type": "롱폼",
+  "date": "20260421",
+  "base_price": 6352.49,
+  "surface": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+  "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
+  "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
+  "consequence_chain": [
+    "Trigger: none",
+    "Market Reaction: 시장 유동성/심리 변화",
+    "Capital Movement: 안전/위험 자산 간 자금 이동",
+    "Final Beneficiary: 구조적 수혜 섹터"
+  ],
+  "beneficiary": {
+    "theme": "개별 AI 모델, 중소형 테마 부품주",
+    "structural": "HBM, 데이터센터 인프라, 전력 설비(변압기)"
+  },
+  "why_now_hunter": "현재 시장 지표의 이탈과 자금 흐름이 결합되는 분기점입니다.",
+  "decision_meta": {
+    "action": "WATCH",
+    "confidence": 0.7,
+    "best_scenario": "BEAR",
+    "bull_probability": 0.18,
+    "bear_probability": 0.82,
+    "weights_used": {
+      "flow": 0.499,
+      "price": 0.193,
+      "event": 0.193,
+      "consistency": 0.116
+    },
+    "calibration_applied": 1.1,
+    "decision_hint": "P_Val -0.50 / Conf 0.70 (CF: 1.1)"
+  }
+}

@@ -100,7 +100,7 @@ def run_pipeline():
     # 시스템 상태 취합 및 로깅 (지시서 #076)
     try:
         from src.monitoring.system_state import update_fallback_stats, get_system_state
-        from src.validation.quality_score import calculate_quality_score
+        from src.validation.quality_score_v2 import calculate_quality_score_v2, get_quality_grade
         
         # 1. Fallback 사용 여부 판단 (에이전트별 fallback_used 플래그 확인)
         is_fallback_run = False
@@ -114,22 +114,35 @@ def run_pipeline():
                 
         update_fallback_stats(is_fallback_run)
         
-        # 2. 품질 점수 계산 (최종 Writer 결과물 기준)
+        # 2. 품질 점수 및 등급 계산 (Quality v2 적용)
         q_score = 0
+        q_grade = "FALLBACK"
         if "writer" in results and results["writer"]:
-            q_score = calculate_quality_score(results["writer"], is_fallback=is_fallback_run)
+            res_data = results["writer"]
+            q_score = calculate_quality_score_v2(res_data, is_fallback=is_fallback_run)
+            q_grade = get_quality_grade(q_score)
             
         # 3. 브리핑 데이터에 상태 주입
         state, reason = get_system_state()
         
-        # 추가 지표 로드 (#077)
+        # 추가 지표 로드 (#077/078)
         gemini_status = "UNKNOWN"
         fallback_ratio = 0.0
+        failure_breakdown = {}
         try:
             health = json.loads(Path("data/monitoring/gemini_health.json").read_text())
             stats = json.loads(Path("data/logs/fallback_stats.json").read_text())
             gemini_status = health.get("status", "UNKNOWN")
             fallback_ratio = stats.get("fallback_ratio", 0.0)
+            
+            # 실패 브레이크다운 계산 (#078)
+            failure_log_path = Path("data/logs/gemini_failure_log.json")
+            if failure_log_path.exists():
+                f_logs = json.loads(failure_log_path.read_text())
+                # 최근 20개 로그 기준 유형별 집계
+                for log in f_logs[-20:]:
+                    ft = log.get("failure_type", "UNKNOWN")
+                    failure_breakdown[ft] = failure_breakdown.get(ft, 0) + 1
         except: pass
 
         results["engine_status"] = {
@@ -137,7 +150,9 @@ def run_pipeline():
             "reason": reason,
             "gemini_health": gemini_status,
             "fallback_ratio": fallback_ratio,
+            "failure_breakdown": failure_breakdown,
             "quality_score": q_score,
+            "quality_grade": q_grade,
             "fallback_run": is_fallback_run
         }
         

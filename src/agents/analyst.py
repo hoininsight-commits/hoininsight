@@ -135,6 +135,18 @@ class AnalystAgent:
         hunter_fields = ["surface", "structure", "flow_interpretation_hunter", "consequence_chain", "beneficiary", "why_now_hunter", "decision_meta"]
         hunter_context = {k: signal.get(k) for k in hunter_fields if k in signal}
 
+        # 데이터 요약: 90일 데이터를 통째로 넘기지 않고 핵심만 추출 (끊김 방지)
+        history_summary = raw_data.get("history_90d", {})
+        if isinstance(history_summary, dict) and "kospi" in history_summary:
+            # 최근 5일치와 전체 평균/표준편차로 압축
+            prices = history_summary.get("kospi", [])
+            if len(prices) > 5:
+                history_summary = {
+                    "recent_5d": prices[-5:],
+                    "avg_90d": sum(p.get("price", 0) for p in prices) / len(prices) if prices else 0,
+                    "count": len(prices)
+                }
+
         prompt = ANALYST_PROMPT_TEMPLATE.format(
             today=self.today,
             topic=signal.get("topic"),
@@ -142,7 +154,7 @@ class AnalystAgent:
             market_summary=json.dumps(market, ensure_ascii=False),
             cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
             kospi_foreign_net=str(market.get("kospi_foreign_net", "Unknown")),
-            history_90d=json.dumps(raw_data.get("history_90d", {}), ensure_ascii=False),
+            history_90d=json.dumps(history_summary, ensure_ascii=False),
             hunter_context=json.dumps(hunter_context, ensure_ascii=False, indent=2)
         )
 
@@ -157,13 +169,17 @@ class AnalystAgent:
             result = generate_fallback_analysis(signal)
             result["fallback_used"] = True
 
-        # Phase 6 Task 7: 품질 검증 (Quality Gate)
-        from src.validation.quality_gate import validate_minimum_quality
-        if not validate_minimum_quality(result):
-            print("  ⚠️ 품질 검증 실패. 제어 레이어에 의해 Fallback 강제 전환.")
-            from src.analyst.fallback_analyst import generate_fallback_analysis
-            result = generate_fallback_analysis(signal)
-            result["fallback_used"] = True
+        # Phase 7: 품질 정밀 검증 (Quality Score v2 적용)
+        from src.validation.quality_score_v2 import calculate_quality_score_v2, get_quality_grade
+        
+        is_fb = result.get("fallback_used", False)
+        score = calculate_quality_score_v2(result, is_fallback=is_fb)
+        grade = get_quality_grade(score)
+        
+        result["quality_score"] = score
+        result["quality_grade"] = grade
+        
+        print(f"  ✅ [QUALITY_v2] Score: {score} | Grade: {grade}")
 
         # 2차 필터링 적용 (3계층 준수 여부 사후 검증)
         result["level2_chain"] = self._filter_level2_chain(result.get("level2_chain", []), raw_data)

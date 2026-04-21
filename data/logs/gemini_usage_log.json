@@ -1,380 +1,702 @@
 [
   {
-    "timestamp": "2026-04-20T19:15:04.732239",
-    "agent": "TEST_AGENT",
+    "timestamp": "2026-04-21T10:26:52.888185",
+    "agent": "DETECTOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:18:57.833117",
-    "agent": "TEST_AGENT",
+    "timestamp": "2026-04-21T10:27:10.082338",
+    "agent": "DETECTOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:27:25.966075",
+    "timestamp": "2026-04-21T10:27:24.228265",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:27:57.932843",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:28:11.990131",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:29:18.159033",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:29:34.978630",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:29:50.640049",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:30:15.568832",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:30:37.554878",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:31:37.849064",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:31:56.777116",
     "agent": "DETECTOR",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:28:21.786726",
+    "timestamp": "2026-04-21T10:32:19.285679",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:32:45.273802",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:33:20.791206",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:33:58.843531",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:34:11.258201",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:34:26.005597",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:34:46.906534",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:35:04.444251",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:49:30.789976",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:49:47.860582",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:50:02.029457",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:50:23.539583",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T10:50:44.406599",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:08:38.111878",
     "agent": "DETECTOR",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:28:40.511410",
+    "timestamp": "2026-04-21T11:09:06.831362",
     "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:10:00.209862",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T11:10:26.307496",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:10:37.606845",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:11:41.503593",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:12:27.883648",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T11:13:32.940355",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T11:13:55.296278",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:14:09.342531",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:15:03.033167",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:15:32.159181",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:15:57.755212",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:16:17.783988",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:16:30.958494",
+    "agent": "ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:29:00.738665",
-    "agent": "DETECTOR",
+    "timestamp": "2026-04-21T11:17:03.593911",
+    "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:29:06.410135",
+    "timestamp": "2026-04-21T11:17:10.066892",
     "agent": "ANALYST",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:29:44.011490",
+    "timestamp": "2026-04-21T11:17:30.529479",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:17:40.398303",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:17:40.713286",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:21:11.187977",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T11:21:11.486664",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:28:18.825902",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:28:56.319880",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:29:29.989455",
     "agent": "ANALYST",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-20T19:29:52.339549",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:30:24.286848",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:30:25.646299",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:30:41.302247",
-    "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:31:17.777655",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:31:39.797489",
-    "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:31:54.795553",
-    "agent": "ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:32:32.903653",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:33:14.326655",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:34:58.807390",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:35:05.757186",
+    "timestamp": "2026-04-21T12:31:30.909706",
     "agent": "DETECTOR",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:35:06.618959",
+    "timestamp": "2026-04-21T12:31:58.489401",
     "agent": "DETECTOR",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:35:07.628772",
+    "timestamp": "2026-04-21T12:32:28.401166",
     "agent": "ANALYST",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:35:08.000961",
+    "timestamp": "2026-04-21T12:32:58.185694",
     "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:35:08.112531",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:35:22.022399",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:36:08.579889",
-    "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-20T19:36:09.343478",
-    "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-20T19:36:10.642826",
-    "agent": "ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-20T19:36:11.181297",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:36:11.339070",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:37:11.414837",
-    "agent": "DETECTOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:38:28.379914",
+    "timestamp": "2026-04-21T12:33:11.635519",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:33:22.779560",
     "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:33:48.165043",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:34:07.414118",
+    "agent": "ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:47:54.924073",
+    "timestamp": "2026-04-21T12:34:07.433240",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:34:07.436077",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:34:12.679916",
     "agent": "DETECTOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:48:04.270597",
+    "timestamp": "2026-04-21T12:34:12.680842",
     "agent": "DETECTOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:48:46.162207",
+    "timestamp": "2026-04-21T12:34:12.696538",
+    "agent": "ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:34:12.708082",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:34:12.710776",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:35:04.243784",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:35:40.203753",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:36:13.386613",
     "agent": "ANALYST",
     "success": false,
     "fallback_used": true,
-    "retry_count": 2
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:49:01.447624",
+    "timestamp": "2026-04-21T12:36:52.224041",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:49:21.595188",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-20T19:50:40.738805",
+    "timestamp": "2026-04-21T12:36:54.011839",
     "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:50:53.275903",
+    "timestamp": "2026-04-21T12:36:54.529986",
     "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   },
   {
-    "timestamp": "2026-04-20T19:51:08.652199",
+    "timestamp": "2026-04-21T12:36:55.269210",
     "agent": "ANALYST",
     "success": false,
     "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:36:55.694026",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:51:37.652835",
+    "timestamp": "2026-04-21T12:36:55.857719",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:37:06.158804",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:51:58.872059",
+    "timestamp": "2026-04-21T12:37:28.055782",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:37:57.600566",
+    "agent": "DETECTOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:37:58.485381",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:38:14.200147",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:38:33.754351",
+    "agent": "ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:38:41.603506",
+    "agent": "ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-21T12:39:01.925366",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:58:16.978363",
-    "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "timestamp": "2026-04-21T12:39:11.683435",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:58:17.645317",
-    "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "timestamp": "2026-04-21T12:39:27.390254",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:58:18.552033",
+    "timestamp": "2026-04-21T12:39:27.761460",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:42:33.830029",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:42:48.872294",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:43:02.630360",
     "agent": "ANALYST",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:58:19.160183",
+    "timestamp": "2026-04-21T12:43:30.638166",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:43:31.683285",
     "agent": "WRITER",
     "success": false,
     "fallback_used": true,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:59:09.895998",
+    "timestamp": "2026-04-21T12:44:09.741241",
     "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:59:10.472925",
+    "timestamp": "2026-04-21T12:44:21.177388",
     "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:59:13.540021",
+    "timestamp": "2026-04-21T12:44:36.757224",
     "agent": "ANALYST",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T19:59:14.214611",
+    "timestamp": "2026-04-21T12:45:05.228329",
     "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T20:00:28.391133",
+    "timestamp": "2026-04-21T12:45:29.313539",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:50:49.689419",
     "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T20:00:28.960622",
+    "timestamp": "2026-04-21T12:51:02.478629",
     "agent": "DETECTOR",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T20:00:29.935096",
+    "timestamp": "2026-04-21T12:51:15.814548",
     "agent": "ANALYST",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T20:00:30.640906",
+    "timestamp": "2026-04-21T12:51:43.119619",
     "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-20T20:00:30.931395",
+    "timestamp": "2026-04-21T12:52:06.517999",
     "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   }
 ]
