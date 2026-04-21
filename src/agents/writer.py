@@ -171,12 +171,25 @@ class WriterAgent:
         context = self.load_data()
         if not context:
             print("  필요한 분석 데이터가 없습니다.")
-            return
+            return {"status": "FAIL", "reason": "No context"}
 
         long_script = self.generate_long(context)
         short_script = self.generate_shorts(context)
         self.save_scripts(long_script, short_script)
+        
+        # ⚠️ 임시: [FALLBACK] 키워드로 감지 (정밀화 필요 시 플래그 전달 체인 구축)
+        is_fallback = "[FALLBACK]" in long_script or "분석 데이터 품질 미달" in long_script
+        
         print("✅ AGENT-05 완료\n")
+        return {
+            "status": "SUCCESS",
+            "long_script_path": str(self.script_dir / "today_script_long.md"),
+            "short_script_path": str(self.script_dir / "today_script_short.md"),
+            "fallback_used": is_fallback,
+            "topic_core_claim": context.get("analysis", {}).get("topic_core_claim", ""),
+            "why_now": context.get("analysis", {}).get("why_now", ""),
+            "one_line_summary": context.get("analysis", {}).get("one_line_summary", "")
+        }
 
 
 if __name__ == "__main__":

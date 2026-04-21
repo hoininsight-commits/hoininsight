@@ -150,17 +150,20 @@ class AnalystAgent:
             result = self.gemini.call_json_controlled(prompt, agent="ANALYST")
             if not result or not result.get("topic_core_claim"):
                 raise Exception("Empty Result or Protocol Violation")
+            result["fallback_used"] = False
         except Exception as e:
             print(f"  ⚠️ ANALYST Gemini Error ({e}). Fallback 모드 가동.")
             from src.analyst.fallback_analyst import generate_fallback_analysis
             result = generate_fallback_analysis(signal)
+            result["fallback_used"] = True
 
         # Phase 6 Task 7: 품질 검증 (Quality Gate)
         from src.validation.quality_gate import validate_minimum_quality
         if not validate_minimum_quality(result):
             print("  ⚠️ 품질 검증 실패. 제어 레이어에 의해 Fallback 강제 전환.")
             from src.analyst.fallback_analyst import generate_fallback_analysis
-            result = generate_fallback_analysis(signal_info)
+            result = generate_fallback_analysis(signal)
+            result["fallback_used"] = True
 
         # 2차 필터링 적용 (3계층 준수 여부 사후 검증)
         result["level2_chain"] = self._filter_level2_chain(result.get("level2_chain", []), raw_data)

@@ -290,6 +290,7 @@ class PublisherAgent:
                 "status": "승인대기",
                 "fact_checker": fact_checker,
                 "agent_status": agent_status,
+                "engine_status": pipeline_results.get("engine_status", {}) if pipeline_results else {},
                 "cot_signals": cot_signals,
                 "market_state": market_state,
                 "z_scores": z_scores,

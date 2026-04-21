@@ -97,6 +97,40 @@ def run_pipeline():
         print(f"⚠️ AGENT-05.5 실패 (계속 진행): {e}")
         results["agent_status"]["fact_checker"] = "FAIL"
 
+    # 시스템 상태 취합 및 로깅 (지시서 #076)
+    try:
+        from src.monitoring.system_state import update_fallback_stats, get_system_state
+        from src.validation.quality_score import calculate_quality_score
+        
+        # 1. Fallback 사용 여부 판단 (에이전트별 fallback_used 플래그 확인)
+        is_fallback_run = False
+        if results.get("analyst") and isinstance(results["analyst"], dict):
+            analysis_data = results["analyst"].get("analysis", {})
+            if analysis_data.get("fallback_used"):
+                is_fallback_run = True
+        if results.get("writer") and isinstance(results["writer"], dict):
+            if results["writer"].get("fallback_used"):
+                is_fallback_run = True
+                
+        update_fallback_stats(is_fallback_run)
+        
+        # 2. 품질 점수 계산 (최종 Writer 결과물 기준)
+        q_score = 0
+        if "writer" in results and results["writer"]:
+            q_score = calculate_quality_score(results["writer"])
+            
+        # 3. 브리핑 데이터에 상태 주입
+        state, reason = get_system_state()
+        results["engine_status"] = {
+            "system_state": state,
+            "reason": reason,
+            "quality_score": q_score,
+            "fallback_run": is_fallback_run
+        }
+        
+    except Exception as e:
+        print(f"⚠️ 모니터링 로그 업데이트 실패: {e}")
+
     # AGENT-06: PUBLISHER
     try:
         from src.agents.publisher import PublisherAgent
@@ -105,11 +139,11 @@ def run_pipeline():
         results["publisher"] = agent06.run(results)
         print("✅ AGENT-06 PUBLISHER 완료")
     except Exception as e:
-        print(f"⚠️ AGENT-06 실패 (계속 진행): {e}")
+        print(f"⚠️ AGENT-06 실패 (건너뜀): {e}")
         results["agent_status"]["publisher"] = "FAIL"
 
     print(f"\n{'='*50}")
-    print("파이프라인 완료")
+    print(f"파이프라인 완료 | 엔진 상태: {results.get('engine_status', {}).get('system_state', 'UNKNOWN')}")
     print(f"{'='*50}\n")
 
 

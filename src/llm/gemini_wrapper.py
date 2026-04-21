@@ -26,10 +26,36 @@ def log_gemini_usage(agent: str, success: bool, fallback_used: bool, retry_count
     
     log_path.write_text(json.dumps(logs[-100:], indent=2, ensure_ascii=False))
 
+def update_gemini_health(success: bool, fallback_used: bool):
+    """Gemini 상태 추적 및 헬스 리포트 업데이트 (지시서 #076)"""
+    health_path = Path("data/monitoring/gemini_health.json")
+    try:
+        health = json.loads(health_path.read_text())
+    except:
+        health = {"status": "HEALTHY", "total_calls": 0, "failures": 0, "fallback_count": 0, "fallback_ratio": 0.0, "last_updated": ""}
+
+    health["total_calls"] += 1
+    if not success:
+        health["failures"] += 1
+    if fallback_used:
+        health["fallback_count"] += 1
+
+    if health["total_calls"] > 0:
+        health["fallback_ratio"] = round(health["fallback_count"] / health["total_calls"], 2)
+
+    # 50% 이상 Fallback 기반 동작 시 성능 저하 상태로 진단
+    if health["fallback_ratio"] > 0.5:
+        health["status"] = "DEGRADED"
+    else:
+        health["status"] = "HEALTHY"
+
+    health["last_updated"] = datetime.now().isoformat()
+    health_path.write_text(json.dumps(health, indent=2, ensure_ascii=False))
+
 MAX_RETRY = 3
 
 def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
-    """Gemini 호출을 제어하고 규약을 검증하는 래퍼 (v1.2)"""
+    """Gemini 호출을 제어하고 규약을 검증하는 래퍼 (v1.5)"""
     for attempt in range(MAX_RETRY):
         try:
             # 1. API 호출
@@ -37,28 +63,29 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
             
             # 2. 계약 검증 (Contract Validation)
             if not data or not validate_gemini_output(data, agent=agent):
-                # 규약 위반 시 재시도하지 않고 즉시 None 반환 (Task 3: Immediate Fallback)
                 print(f"  ❌ [CONTRACT_FAIL] {agent} Output Protocol Violation. Triggering Fallback.")
                 log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
+                update_gemini_health(success=False, fallback_used=True)
                 return None
 
             # 3. 성공 로깅
             log_gemini_usage(agent, success=True, fallback_used=False, retry_count=attempt)
+            update_gemini_health(success=True, fallback_used=False)
             return data
 
         except Exception as e:
             err_msg = str(e).lower()
-            # 타임아웃이나 503 Busy 에러인 경우에만 재시도 수행
             if "timeout" in err_msg or "503" in err_msg or "deadline" in err_msg:
                 print(f"  ⚠️ Gemini {agent} Attempt {attempt+1} Retry (Server Busy/Timeout): {e}")
                 if attempt == MAX_RETRY - 1:
                     log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
+                    update_gemini_health(success=False, fallback_used=True)
                     return None
                 continue
             else:
-                # 기타 파싱 에러나 구조적 에러는 즉시 중단 및 Fallback
                 print(f"  ❌ [GEMINI_ERROR] {agent} Critical Error: {e}")
                 log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
+                update_gemini_health(success=False, fallback_used=True)
                 return None
 
     return None
