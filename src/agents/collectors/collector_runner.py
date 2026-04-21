@@ -48,19 +48,51 @@ class CollectorRunner:
                 for agent in agents:
                     agent_name = agent.name if hasattr(agent, "name") else type(agent).__name__
                     
-                    # [SMART_CACHE] 오늘 이미 수집된 파일이 있는지 확인
-                    cache_enabled = True # 지시서 #081-R 종료: 운영 효율을 위해 캐시 활성화
+                    # [REFACTORED_CACHE] TTL 기반 동적 수집 검증 (#081)
+                    cache_enabled = True
                     cache_file = self.output_dir / f"{agent_name.lower()}.json"
+                    
+                    ttl_minutes = getattr(agent, "ttl_minutes", 60) # 기본 1시간
+                    sensitivity = getattr(agent, "sensitivity", "MID")
+                    
+                    is_fresh = False
+                    status = "UNKNOWN"
+                    collected_at_str = "N/A"
+                    
                     if cache_enabled and cache_file.exists():
                         try:
-                            # 파일이 유효한지 체크 (비어있지 않은지)
-                            if cache_file.stat().st_size > 100:
-                                print(f"  📦 [{cat}] {agent_name} 캐시 발견 (오늘 수집됨). 수집 건너뜀.")
-                                results[agent_name] = "success (cached)"
-                                category_stats[cat]["success"] += 1
-                                continue
-                        except:
-                            pass
+                            with open(cache_file, "r", encoding="utf-8") as f:
+                                cache_data = json.load(f)
+                                meta = cache_data.get("metadata", {})
+                                collected_at_str = meta.get("collected_at")
+                                
+                                if collected_at_str:
+                                    collected_at = datetime.fromisoformat(collected_at_str)
+                                    age_minutes = (datetime.now() - collected_at).total_seconds() / 60
+                                    
+                                    if age_minutes < ttl_minutes:
+                                        is_fresh = True
+                                        status = "FRESH"
+                                    else:
+                                        status = "STALE"
+                                else:
+                                    status = "NO_METADATA"
+                        except Exception as e:
+                            status = f"ERROR ({e})"
+
+                    # [LOGGING] TASK 7 요구사항 반영
+                    print(f"  🔍 [CACHE_CHECK] {agent_name} ({sensitivity})")
+                    print(f"     - Status: {status}")
+                    print(f"     - Collected: {collected_at_str}")
+                    print(f"     - TTL Policy: {ttl_minutes} min")
+
+                    if is_fresh:
+                        print(f"     - Action: USE_CACHE (📦)")
+                        results[agent_name] = "success (cached)"
+                        category_stats[cat]["success"] += 1
+                        continue
+                    else:
+                        print(f"     - Action: REFETCH (🚀)")
 
                     # run() 메서드가 있으면 run(), 없으면 collect() 사용
                     method = getattr(agent, "run", None) or getattr(agent, "collect")
@@ -74,21 +106,29 @@ class CollectorRunner:
                 
                 try:
                     result = future.result()
-                    if isinstance(result, dict) and result.get("status") == "failed":
-                        error_msg = result.get("error", "Unknown error")
-                        results[agent_name] = f"failed: {error_msg}"
-                        failed.append(agent_name)
-                        category_stats[cat]["fail"] += 1
-                        print(f"  ❌ [{cat}] {agent_name} 실패: {error_msg}")
+                    # [REFACTORED] TASK 5: New Health structure processing
+                    if isinstance(result, dict):
+                        is_success = result.get("process_success", False)
+                        is_valid = result.get("data_valid", True)
+                        freshness = result.get("freshness_status", "UNKNOWN")
+                        
+                        if is_success:
+                            results[agent_name] = f"success ({freshness})"
+                            category_stats[cat]["success"] += 1
+                            print(f"  ✅ [{cat}] {agent_name}: {freshness} (Valid: {is_valid})")
+                        else:
+                            error_msg = result.get("error", "Unknown error")
+                            results[agent_name] = f"failed: {error_msg}"
+                            failed.append(agent_name)
+                            category_stats[cat]["fail"] += 1
+                            print(f"  ❌ [{cat}] {agent_name} 실패: {error_msg}")
                     else:
-                        results[agent_name] = "success"
-                        category_stats[cat]["success"] += 1
-                        print(f"  ✅ [{cat}] {agent_name} 완료")
+                        print(f"  ⚠️ [{cat}] {agent_name}: Unexpected return type")
                 except Exception as e:
-                    results[agent_name] = f"failed: {e}"
+                    results[agent_name] = f"failed (exception): {e}"
                     failed.append(agent_name)
                     category_stats[cat]["fail"] += 1
-                    print(f"  ❌ [{cat}] {agent_name} 실패: {e}")
+                    print(f"  ❌ [{cat}] {agent_name} 중대 오류: {e}")
 
         elapsed = (datetime.now() - start_time).total_seconds()
 

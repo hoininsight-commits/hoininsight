@@ -15,6 +15,8 @@ class COTCollector:
     매주 금요일 15:30 ET 발표 / 화요일 기준 데이터
     """
     name = "COT"
+    sensitivity = "LOW"
+    ttl_minutes = 720
 
     TARGET_CONTRACTS = {
         "WTI": "CRUDE OIL",
@@ -65,14 +67,25 @@ class COTCollector:
         history_stats = self._calc_52w_stats()
         signals = self._calc_signals(results, history_stats)
 
-        result = {
+        # [REFACTORED] Standardized Metadata Wrapper (#081)
+        result_data = {
             "date": datetime.now().strftime("%Y-%m-%d"),
-            "collected_at": datetime.now().isoformat(),
             "source": "CFTC COT Report",
             "positions": results,
             "smart_money_signals": signals,
             "top_signal": self._get_top_signal(signals),
             "history_stats": history_stats
+        }
+        
+        result = {
+            "metadata": {
+                "collected_at": datetime.now().isoformat(),
+                "source_timestamp": None,
+                "cache_hit": False,
+                "ttl_policy_minutes": self.ttl_minutes,
+                "freshness_status": "FRESH"
+            },
+            "data": result_data
         }
 
         output_path = self.output_dir / "cot.json"
@@ -80,7 +93,14 @@ class COTCollector:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
         print(f"  ✅ cot.json 저장 완료 ({len(results)}개 종목)")
-        return result
+        
+        return {
+            "agent": self.name,
+            "process_success": True,
+            "data_valid": True,
+            "freshness_status": "FRESH",
+            "result": result
+        }
 
     def _parse_disaggregated(self, df: pd.DataFrame) -> dict:
         results = {}
@@ -313,12 +333,28 @@ class COTCollector:
         return signals[0] if signals else None
 
     def _empty_result(self) -> dict:
-        return {
+        result_data = {
             "date": datetime.now().strftime("%Y-%m-%d"),
-            "collected_at": datetime.now().isoformat(),
             "positions": {},
             "smart_money_signals": [],
             "top_signal": None
+        }
+        result = {
+            "metadata": {
+                "collected_at": datetime.now().isoformat(),
+                "source_timestamp": None,
+                "cache_hit": False,
+                "ttl_policy_minutes": self.ttl_minutes,
+                "freshness_status": "UNKNOWN"
+            },
+            "data": result_data
+        }
+        return {
+            "agent": self.name,
+            "process_success": False,
+            "data_valid": False,
+            "freshness_status": "UNKNOWN",
+            "result": result
         }
 
 def run_collector(base_dir: Path) -> Path:

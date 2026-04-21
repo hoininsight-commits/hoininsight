@@ -13,6 +13,8 @@ class ConsensusCollector:
     Finnhub Economic Calendar API 사용 (무료)
     """
     name = "CONSENSUS"
+    sensitivity = "LOW"
+    ttl_minutes = 720
 
     FINNHUB_URL = "https://finnhub.io/api/v1/calendar/economic"
 
@@ -69,12 +71,23 @@ class ConsensusCollector:
         # 서프라이즈 스코어 계산
         processed = self._calc_surprise(filtered)
 
-        result = {
+        # [REFACTORED] Standardized Metadata Wrapper (#081)
+        result_data = {
             "date": today.strftime("%Y-%m-%d"),
-            "collected_at": datetime.now().isoformat(),
             "period": {"from": date_from, "to": date_to},
             "events": processed,
             "top_surprise": self._get_top_surprise(processed)
+        }
+        
+        result = {
+            "metadata": {
+                "collected_at": datetime.now().isoformat(),
+                "source_timestamp": None,
+                "cache_hit": False,
+                "ttl_policy_minutes": self.ttl_minutes,
+                "freshness_status": "FRESH"
+            },
+            "data": result_data
         }
 
         output_path = self.output_dir / "consensus.json"
@@ -82,7 +95,14 @@ class ConsensusCollector:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
         print(f"  ✅ consensus.json 저장 완료 ({len(processed)}개 이벤트)")
-        return result
+        
+        return {
+            "agent": self.name,
+            "process_success": True,
+            "data_valid": True,
+            "freshness_status": "FRESH",
+            "result": result
+        }
 
     def _filter_events(self, events: list) -> list:
         """고임팩트 미국 지표만 필터링"""
@@ -162,11 +182,28 @@ class ConsensusCollector:
         return None
 
     def _empty_result(self) -> dict:
-        return {
+        result_data = {
             "date": datetime.now().strftime("%Y-%m-%d"),
-            "collected_at": datetime.now().isoformat(),
             "events": [],
             "top_surprise": None
+        }
+        result = {
+            "metadata": {
+                "collected_at": datetime.now().isoformat(),
+                "source_timestamp": None,
+                "cache_hit": False,
+                "ttl_policy_minutes": self.ttl_minutes,
+                "freshness_status": "UNKNOWN"
+            },
+            "data": result_data
+        }
+        return {
+            "agent": self.name,
+            "process_success": False, 
+            "data_valid": False,
+            "freshness_status": "UNKNOWN",
+            "error": "Skipped: Missing API Key or API Failure",
+            "result": result
         }
 
 if __name__ == "__main__":

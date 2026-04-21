@@ -8,26 +8,44 @@ from pathlib import Path
 from datetime import datetime
 
 class FlowCollector:
-    def __init__(self):
+    name = "FLOW"
+    sensitivity = "MID"
+    ttl_minutes = 120
+
+    def __init__(self, output_dir: Path = None):
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[3]))
         self.today = datetime.now().strftime("%Y%m%d")
-        self.raw_dir = self.base_dir / f"data/raw/{self.today}"
+        self.raw_dir = output_dir if output_dir else self.base_dir / f"data/raw/{self.today}"
         self.flow_dir = self.base_dir / "data/flow"
         self.flow_dir.mkdir(parents=True, exist_ok=True)
 
     def run(self):
         print(f"🌊 AGENT-01 FLOW_COLLECTOR 시작 [{self.today}]")
         
-        # 1. 외국인 수급 데이터 입수 (기존 market.json 활용 및 가공)
-        self.collect_foreign_flow()
-        
-        # 2. ETF Flow 데이터 입수 (글로벌 자금 흐름)
-        self.collect_etf_flow()
-        
-        # 3. 이벤트 캘린더 추출 (consensus.json 활용)
-        self.collect_event_calendar()
-        
-        print("  ✅ Flow 데이터 레이어 구축 완료")
+        try:
+            # 1. 외국인 수급 데이터 입수 (기존 market.json 활용 및 가공)
+            self.collect_foreign_flow()
+            
+            # 2. ETF Flow 데이터 입수 (글로벌 자금 흐름)
+            self.collect_etf_flow()
+            
+            # 3. 이벤트 캘린더 추출 (consensus.json 활용)
+            self.collect_event_calendar()
+            
+            print("  ✅ Flow 데이터 레이어 구축 완료")
+            return {
+                "agent": self.name,
+                "process_success": True,
+                "data_valid": True,
+                "freshness_status": "FRESH"
+            }
+        except Exception as e:
+            print(f"  ❌ FlowCollector 실패: {e}")
+            return {
+                "agent": self.name,
+                "process_success": False,
+                "error": str(e)
+            }
 
     def collect_foreign_flow(self):
         """외국인 순매수 금액 및 트렌드 계산"""

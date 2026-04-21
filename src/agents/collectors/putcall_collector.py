@@ -12,6 +12,8 @@ class PutCallCollector:
     데이터 출처: https://www.cboe.com/us/options/market_statistics/daily/
     """
     name = "PUTCALL"
+    sensitivity = "MID"
+    ttl_minutes = 120
 
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir
@@ -55,32 +57,6 @@ class PutCallCollector:
         except Exception as e:
             raise Exception(f"데이터 수집 실패: {e}")
 
-    def _get_fallback_data(self) -> dict:
-        """수집 실패 시 마지막으로 성공했던 데이터를 반환 (없으면 기본값)"""
-        if self.history_file.exists():
-            try:
-                with open(self.history_file, "r") as f:
-                    hist = json.load(f)
-                    if hist:
-                        last = hist[-1]
-                        return {
-                            "total": last.get("total", 0.87),
-                            "equity": last.get("equity", 0.72),
-                            "index": last.get("index", 1.21),
-                            "date": last.get("date", "Unknown"),
-                            "source": "fallback_history"
-                        }
-            except:
-                pass
-        
-        # 기본값 (최초 실행 시)
-        return {
-            "total": 0.87,
-            "equity": 0.72,
-            "index": 1.21,
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "source": "fallback_default"
-        }
 
     def calculate_signal(self, ratio: float) -> str:
         """signal 판정 기준 (total_pc_ratio 기준)"""
@@ -152,12 +128,7 @@ class PutCallCollector:
             z_score = self.calculate_z_score(raw_data)
             signal = self.calculate_signal(total)
             
-            # Safety Guard: 최초 실행/기본값 Fallback 시 지표 고정
-            if raw_data.get("source") == "fallback_default":
-                z_score = 0.0
-                signal = "NEUTRAL"
-
-            output = {
+            result_data = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "total_pc_ratio": total,
                 "equity_pc_ratio": raw_data["equity"],
@@ -166,42 +137,73 @@ class PutCallCollector:
                 "z_score": z_score,
                 "source": raw_data.get("source", "unknown")
             }
+
+            # [REFACTORED] Standardized Metadata Wrapper (#081)
+            result = {
+                "metadata": {
+                    "collected_at": datetime.now().isoformat(),
+                    "source_timestamp": None,
+                    "cache_hit": False,
+                    "ttl_policy_minutes": self.ttl_minutes,
+                    "freshness_status": "FRESH"
+                },
+                "data": result_data
+            }
             
             # 파일 저장
             with open(self.output_file, "w", encoding="utf-8") as f:
-                json.dump(output, f, indent=2, ensure_ascii=False)
+                json.dump(result, f, indent=2, ensure_ascii=False)
             
             # 보조 저장 (data/outputs/에도 복사 - 지시서 요건)
             alt_output = self.base_dir / "data/outputs/putcall.json"
             alt_output.parent.mkdir(parents=True, exist_ok=True)
             with open(alt_output, "w", encoding="utf-8") as f:
-                json.dump(output, f, indent=2, ensure_ascii=False)
+                json.dump(result, f, indent=2, ensure_ascii=False)
 
             print(f"[{self.name}] ✅ 완료 (Signal: {signal}, Z: {z_score})")
-            return {"agent": self.name, "status": "success", "result": output}
+            return {
+                "agent": self.name,
+                "process_success": True,
+                "data_valid": True,
+                "freshness_status": "FRESH",
+                "result": result
+            }
             
         except Exception as e:
             print(f"[{self.name}] ❌ API 실패: {e}")
             
-            output = {
+            result_data = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "total_pc_ratio": None,
                 "equity_pc_ratio": None,
                 "index_pc_ratio": None,
                 "signal": None,
                 "z_score": None,
-                "source": "api_failed"
+                "source": "api_failed",
+                "error": str(e)
+            }
+
+            result = {
+                "metadata": {
+                    "collected_at": datetime.now().isoformat(),
+                    "source_timestamp": None,
+                    "cache_hit": False,
+                    "ttl_policy_minutes": self.ttl_minutes,
+                    "freshness_status": "UNKNOWN"
+                },
+                "data": result_data
             }
             
             with open(self.output_file, "w", encoding="utf-8") as f:
-                json.dump(output, f, indent=2, ensure_ascii=False)
+                json.dump(result, f, indent=2, ensure_ascii=False)
             
-            alt_output = self.base_dir / "data/outputs/putcall.json"
-            alt_output.parent.mkdir(parents=True, exist_ok=True)
-            with open(alt_output, "w", encoding="utf-8") as f:
-                json.dump(output, f, indent=2, ensure_ascii=False)
-
-            return {"agent": self.name, "status": "failed", "error": str(e)}
+            return {
+                "agent": self.name, 
+                "process_success": False, 
+                "data_valid": False,
+                "freshness_status": "UNKNOWN",
+                "error": str(e)
+            }
 
 if __name__ == "__main__":
     # 단독 테스트

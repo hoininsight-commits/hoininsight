@@ -4,6 +4,8 @@ from pathlib import Path
 
 class DartAgent:
     name = "DART"
+    sensitivity = "MID"
+    ttl_minutes = 120
 
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir
@@ -16,7 +18,17 @@ class DartAgent:
             collector.output_dir = self.output_dir
             result = collector.collect_dart()
             print(f"[{self.name}] ✅ 완료")
-            return {"agent": self.name, "status": "success", "result": result}
+            return {
+                "agent": self.name,
+                "process_success": True,
+                "data_valid": result["metadata"]["freshness_status"] != "UNKNOWN",
+                "freshness_status": result["metadata"]["freshness_status"],
+                "result": result
+            }
         except Exception as e:
             print(f"[{self.name}] ❌ 실패: {e}")
-            return {"agent": self.name, "status": "failed", "error": str(e)}
+            return {
+                "agent": self.name, 
+                "process_success": False, 
+                "error": str(e)
+            }

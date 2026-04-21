@@ -4,6 +4,8 @@ from pathlib import Path
 
 class MacroAgent:
     name = "MACRO"
+    sensitivity = "LOW"
+    ttl_minutes = 720
 
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir
@@ -17,8 +19,17 @@ class MacroAgent:
             fred = collector.collect_fred()
             ecos = collector.collect_ecos()
             print(f"[{self.name}] ✅ 완료")
-            return {"agent": self.name, "status": "success",
-                    "result": {"fred": fred, "ecos": ecos}}
+            return {
+                "agent": self.name,
+                "process_success": True,
+                "data_valid": True,
+                "freshness_status": fred["metadata"]["freshness_status"],
+                "result": {"fred": fred, "ecos": ecos}
+            }
         except Exception as e:
             print(f"[{self.name}] ❌ 실패: {e}")
-            return {"agent": self.name, "status": "failed", "error": str(e)}
+            return {
+                "agent": self.name, 
+                "process_success": False, 
+                "error": str(e)
+            }

@@ -283,6 +283,19 @@ class CollectorAgent:
         self.model_name = "gemini-flash-latest"
         from src.core.gemini_client import GeminiClient
         self.gemini = GeminiClient()
+
+    def _wrap_data(self, data: dict, ttl_minutes: int, source_timestamp: str = None) -> dict:
+        """모든 수집 데이터를 메타데이터와 함께 래핑 (#081)"""
+        return {
+            "metadata": {
+                "collected_at": datetime.now().isoformat(),
+                "source_timestamp": source_timestamp,
+                "cache_hit": False,
+                "ttl_policy_minutes": ttl_minutes,
+                "freshness_status": "FRESH" if data is not None else "UNKNOWN"
+            },
+            "data": data
+        }
     
     def _calculate_multi_period_stats(self, data: dict) -> dict:
         """
@@ -460,12 +473,14 @@ class CollectorAgent:
         # 다중기간 통계 추가 (v5.0)
         data["multi_period_stats"] = self._calculate_multi_period_stats(data)
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "data": data,
             "history_90d": history_90d
         }
+        
+        # [REFACTORED] Wrap with metadata (Market: HIGH sensitivity -> 30m)
+        result = self._wrap_data(result_data, ttl_minutes=30)
 
         # 오늘 데이터 저장
         output_path = self.output_dir / "market.json"
@@ -477,7 +492,7 @@ class CollectorAgent:
         history_dir.mkdir(parents=True, exist_ok=True)
         (history_dir / "market_90d.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))
 
-        print(f"✅ market.json (히스토리+통계 포함) 저장 완료: {output_path}")
+        print(f"✅ market.json (메타데이터 포함) 저장 완료: {output_path}")
         return result
 
     def _get_kospi_foreign_vol(self) -> float:
@@ -503,8 +518,8 @@ class CollectorAgent:
                 print(f"  Fear&Greed: {value} (실제)")
                 return value
         except Exception as e:
-            print(f"  Fear&Greed 수집 실패, 기본값 사용: {e}")
-        return 25.0  # fallback
+            print(f"  Fear&Greed 수집 실패, UNKNOWN 처리: {e}")
+        return None  # No more fallback 25.0
 
     def _get_usd_krw(self) -> float:
         """환율 수집"""
@@ -514,7 +529,7 @@ class CollectorAgent:
                 return round(float(hist["Close"].iloc[-1]), 2)
         except Exception as e:
             print(f"환율 수집 실패: {e}")
-        return 1380.0  # fallback
+        return None  # No more fallback 1380.0
 
     def collect_macro(self) -> dict:
         """거시경제 데이터 — FRED/ECOS 통합 수집 (v3.0 교정)"""
@@ -539,13 +554,15 @@ class CollectorAgent:
         else:
             combined_data["rate_diff"] = None
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "source": "FRED + ECOS API (Integrated)",
             "data": combined_data,
-            "major_surprises": consensus_result.get("major_surprises", [])
+            "major_surprises": consensus_result.get("data", {}).get("major_surprises", [])
         }
+
+        # [REFACTORED] Wrap with metadata (Macro: LOW sensitivity -> 720m (12h))
+        result = self._wrap_data(result_data, ttl_minutes=720)
 
         output_path = self.output_dir / "macro.json"
         with open(output_path, "w", encoding="utf-8") as f:
@@ -624,14 +641,16 @@ class CollectorAgent:
 
         print(f"  총 뉴스 {len(headlines)}개, 권위자 관련 {len(authority_signals)}개 포착")
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "data": {
                 "news_headlines": headlines,
                 "authority_signals": authority_signals
             }
         }
+
+        # [REFACTORED] Wrap with metadata (Sentiment: HIGH sensitivity -> 30m)
+        result = self._wrap_data(result_data, ttl_minutes=30)
 
         output_path = self.output_dir / "sentiment.json"
         with open(output_path, "w", encoding="utf-8") as f:
@@ -689,13 +708,22 @@ class CollectorAgent:
                 })
             except: pass
 
-        major_surprises = sorted([e for e in result_events if abs(e.get("surprise_pct", 0)) > 10], key=lambda x: abs(x.get("surprise_pct", 0)), reverse=True)[:5]
-        output = {"date": self.today, "collected_at": datetime.now().isoformat(), "source": "FRED API", "total_events": len(result_events), "major_surprises": major_surprises, "all_events": result_events}
+        result_data = {
+            "date": self.today,
+            "source": "FRED API",
+            "total_events": len(result_events),
+            "major_surprises": major_surprises,
+            "all_events": result_events
+        }
+        
+        # [REFACTORED] Wrap with metadata (Consensus: LOW sensitivity -> 720m)
+        result = self._wrap_data(result_data, ttl_minutes=720)
+
         output_path = self.output_dir / "consensus.json"
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(output, f, ensure_ascii=False, indent=2)
+            json.dump(result, f, ensure_ascii=False, indent=2)
         print(f"✅ consensus.json 저장 완료 (서프라이즈 {len(major_surprises)}개)")
-        return output
+        return result
 
     def collect_fred(self) -> dict:
         """FRED API 기반 거시 데이터 수집 (병렬화 v2.0)"""
@@ -741,12 +769,14 @@ class CollectorAgent:
                 if val is not None:
                     print(f"  {key}: {val}")
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "source": "FRED API",
             "data": data
         }
+
+        # [REFACTORED] Wrap with metadata (FRED: LOW sensitivity -> 720m)
+        result = self._wrap_data(result_data, ttl_minutes=720)
 
         output_path = self.output_dir / "fred.json"
         with open(output_path, "w", encoding="utf-8") as f:
@@ -808,12 +838,14 @@ class CollectorAgent:
                 else:
                     print(f"  [MISSING] {k}")
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "source": "ECOS API",
             "data": data
         }
+
+        # [REFACTORED] Wrap with metadata (ECOS: LOW sensitivity -> 720m)
+        result = self._wrap_data(result_data, ttl_minutes=720)
 
         output_path = self.output_dir / "ecos.json"
         with open(output_path, "w", encoding="utf-8") as f:
@@ -916,14 +948,16 @@ class CollectorAgent:
                 if sector:
                     sector_hits[sector] = sector_hits.get(sector, 0) + (2 if is_bullish else 1)
 
-        result = {
+        result_data = {
             "date": self.today,
-            "collected_at": datetime.now().isoformat(),
             "data": {
                 "disclosures": disclosures,
                 "themes": sorted(sector_hits.items(), key=lambda x: x[1], reverse=True)
             }
         }
+
+        # [REFACTORED] Wrap with metadata (DART: MID sensitivity -> 120m (2h))
+        result = self._wrap_data(result_data, ttl_minutes=120)
 
         output_path = self.output_dir / "dart.json"
         with open(output_path, "w", encoding="utf-8") as f:
