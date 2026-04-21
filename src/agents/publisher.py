@@ -219,31 +219,48 @@ class PublisherAgent:
         if pipeline_results and "content_pack" in pipeline_results:
             content_pack = pipeline_results["content_pack"]
         else:
-            # 백업: 현재 signal 데이터를 TIER_3(기본)에 할당
-            if signal:
+            # 백업: 모든 후보 데이터(candidates.json)를 기반으로 Content Pack 복구
+            all_candidates = data.get("candidates", {}).get("candidates", [])
+            if all_candidates:
                 from src.content.content_tier import map_action_to_tier
                 
-                # 스크립트 전문 로드
-                script_body = "스크립트 파일 없음"
-                script_path = data.get("script_long_path")
-                if script_path and Path(script_path).exists():
-                    script_body = Path(script_path).read_text(encoding="utf-8")
+                # 메인 신호 토픽 확인
+                selected_topic = signal.get("topic", "")
                 
+                for cand in all_candidates:
+                    is_winner = cand.get("topic") == selected_topic
+                    
+                    # 스크립트 본문 로드 (메인 토픽일 경우에만 전문 로드)
+                    script_body = f"[{cand.get('anomaly_type', '탐지')}] {cand.get('why_anomalous')}"
+                    
+                    if is_winner:
+                        script_path = data.get("script_long_path")
+                        if script_path and Path(script_path).exists():
+                            script_body = Path(script_path).read_text(encoding="utf-8")
+                    
+                    # 계층 할당: 오직 승자만 TIER_1, 나머지는 TIER_3(인사이트)
+                    tier = "TIER_1" if is_winner else "TIER_3"
+                    action = "USE" if is_winner else "DROP"
+                    
+                    processed = {
+                        "topic": cand.get("topic", ""),
+                        "core_claim": cand.get("why_anomalous", cand.get("topic", "")),
+                        "why_now": cand.get("why_now", ""),
+                        "structural_truth": cand.get("why_anomalous", ""),
+                        "level2_chain": cand.get("key_indicators", []),
+                        "quality_score": int(cand.get("strength", 0) * 10),
+                        "reality_score": 1 if cand.get("strength", 0) >= 9.5 else 0,
+                        "score_trust": "HIGH_TRUST" if is_winner else "MEDIUM_TRUST",
+                        "final_action": action,
+                        "content_tier": tier,
+                        "script": script_body
+                    }
+                    content_pack[tier].append(processed)
+            elif signal:
+                # 최후의 백업: 단일 신호 표기
+                from src.content.content_tier import map_action_to_tier
                 tier = map_action_to_tier(signal.get("decision_meta", {}).get("action", "WATCH"))
-                processed = {
-                    "topic": signal.get("topic", ""),
-                    "core_claim": analysis.get("topic_core_claim", signal.get("topic", "")),
-                    "why_now": analysis.get("why_now", signal.get("why_now", "")),
-                    "structural_truth": analysis.get("structural_truth", ""),
-                    "level2_chain": analysis.get("level2_chain", []),
-                    "quality_score": analysis.get("quality_score", 50),
-                    "reality_score": analysis.get("reality_score", 0),
-                    "score_trust": analysis.get("score_trust", "MEDIUM"),
-                    "final_action": signal.get("decision_meta", {}).get("action", "WATCH"),
-                    "content_tier": tier,
-                    "script": script_body
-                }
-                content_pack[tier].append(processed)
+                # ... (기존 단일 처리 로직 유지 또는 통합)
 
         # 2. 메인 컨텐츠 추출 (TIER_1 우선)
         all_contents = []
