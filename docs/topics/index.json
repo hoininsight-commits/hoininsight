@@ -1,26 +1,14 @@
 [
   {
-    "date": "2026-04-21",
-    "rank": 1,
-    "topic": "안전자산 동반 이탈과 유동성 재배치",
-    "strength": 9.0,
-    "anomaly_type": "CORRELATION",
-    "filters_hit": [
-      "S"
-    ],
-    "why_now": "시장 자금이 안전자산을 버리고 위험 자산으로 이동 중. 뉴스 트리거: Comex Gold, Silver Settle Lower",
-    "path": "topics/items/2026-04-21__top1.json",
-    "isToday": false
-  },
-  {
     "date": "2026-04-20",
     "rank": 1,
-    "topic": "AI 섹터 붕괴 뉴스 속 주요 지수의 비정상적 과매수 상태 유지",
-    "strength": 10.0,
-    "anomaly_type": "롱폼",
+    "topic": "지수 역사적 과열과 공포 심리의 극단적 괴리",
+    "strength": 9.5,
+    "anomaly_type": "NEWS_MISMATCH",
     "filters_hit": [
       "S"
     ],
+    "why_now": "DeepSeek발 AI 폭락론이 헤드라인을 장식하며 투자 심리를 위축시켰으나, 실제 지수 가격은 역대 최고 수준의 기술적 과열 상태를 유지하고 있는 결정적 충돌 지점임",
     "path": "topics/items/2026-04-20__top1.json",
     "isToday": false
   },

@@ -267,88 +267,13 @@ def run_pipeline():
         print(f"⚠️ AGENT-06 실패: {e}")
         results["agent_status"]["publisher"] = "FAIL"
 
-    # Task 8: 실데이터 로컬 파일 직접 로드 (Hard-Binding)
-    import json
-    from pathlib import Path
-    
-    # 상단의 today 변수(YYYYMMDD) 재활용
-    raw_dir = Path(f"data/raw/{today}")
-    
-    # 1. 시장 실데이터 로드
-    market_data = {}
-    m_path = raw_dir / "market.json"
-    if m_path.exists():
-        market_data = json.loads(m_path.read_text()).get("data", {})
-    
-    # 2. 금리 데이터 로드 (FRED or Market)
-    rates_val = market_data.get("us10y", "N/A")
-    
-    # 3. 비트코인 데이터 (BTC) - market.json 또는 sentiment.json에서 추출
-    btc_val = market_data.get("btc_price") or market_data.get("bitcoin") or "N/A"
-    
-    # 4. 과거 이력 로드 (History Layer)
-    history = []
-    try:
-        with open("docs/topics/index.json", "r") as f:
-            idx = json.load(f)
-            history = idx[:5]
-    except: pass
-
-    # 5. 트렌드 계산
-    spx_chg = market_data.get("sp500_1d_change", 0)
-    trend = "BULLISH" if spx_chg > 0 else "BEARISH" if spx_chg < 0 else "NEUTRAL"
-    
-    analyst_res = results.get("analyst", {})
-    detector_res = results.get("detector", {})
-    content_pack = results.get("content_pack", {})
-    
-    # [지시서 #087] Tier 리스트 평면화 (UI 렌더링용)
-    all_contents = []
-    for tier, items in content_pack.items():
-        all_contents.extend(items)
-        
-    main_content = content_pack.get("TIER_1", [{}])[0] if content_pack.get("TIER_1") else (all_contents[0] if all_contents else {})
-    
-    ui_contract = {
-        "top_decision": {
-            "topic": main_content.get("topic", "N/A"),
-            "final_action": main_content.get("final_action", "N/A"),
-            "content_tier": main_content.get("content_tier", "TIER_3"),
-            "summary": main_content.get("core_claim", "데이터 분석 중"),
-            "why_now": main_content.get("why_now", "분석 중")
-        },
-        "content_pack": content_pack,
-        "reason_layer": {
-            "quality_score": main_content.get("quality_score", 0),
-            "reality_score": main_content.get("reality_score", 0),
-            "score_trust": main_content.get("score_trust", "COLD")
-        },
-        "market_snapshot": {
-            "rates": f"{rates_val}%" if rates_val != "N/A" else "N/A",
-            "spx": f"{market_data.get('sp500', 'N/A')}",
-            "btc": f"{btc_val}", 
-            "trend_short": trend,
-            "trend_mid": "UP"
-        },
-        "risk_layer": {
-            "kill_switch": analyst_res.get("analysis", {}).get("kill_switch", "조건 미정"),
-            "opposite_scenario": analyst_res.get("analysis", {}).get("opposite_scenario", "시나리오 미정")
-        },
-        "history_layer": history
-    }
-    
-    # docs 반영
-    try:
-        with open("docs/today_data.json", "w") as f:
-            json.dump(ui_contract, f, indent=2, ensure_ascii=False)
-        print(f"✅ [FINAL_SYNC] docs/today_data.json 실데이터({rates_val}%, {btc_val}) 연동 완료")
-    except Exception as e:
-        print(f"⚠️ UI 데이터 저장 실패: {e}")
 
     print(f"\n==================================================")
-    print(f"파이프라인 완료 | Final Decision: {ui_contract['top_decision']['final_action']}")
-    print(f"Quality: {ui_contract['reason_layer']['quality_score']} | Reality: {ui_contract['reason_layer']['reality_score']}/5")
+    print(f"파이프라인 완료")
     print(f"==================================================\n")
+    
+    return results
+
     
     return results
 

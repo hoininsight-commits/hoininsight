@@ -1,0 +1,582 @@
+write	Set up job	﻿2026-04-19T14:01:20.9339699Z Current runner version: '2.333.1'
+write	Set up job	2026-04-19T14:01:20.9365166Z ##[group]Runner Image Provisioner
+write	Set up job	2026-04-19T14:01:20.9366091Z Hosted Compute Agent
+write	Set up job	2026-04-19T14:01:20.9366678Z Version: 20260213.493
+write	Set up job	2026-04-19T14:01:20.9367311Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+write	Set up job	2026-04-19T14:01:20.9368091Z Build Date: 2026-02-13T00:28:41Z
+write	Set up job	2026-04-19T14:01:20.9368761Z Worker ID: {b27c3f7f-acc0-4bcd-a159-2c5a13c134f4}
+write	Set up job	2026-04-19T14:01:20.9369457Z Azure Region: northcentralus
+write	Set up job	2026-04-19T14:01:20.9370070Z ##[endgroup]
+write	Set up job	2026-04-19T14:01:20.9371472Z ##[group]Operating System
+write	Set up job	2026-04-19T14:01:20.9372570Z Ubuntu
+write	Set up job	2026-04-19T14:01:20.9373123Z 24.04.4
+write	Set up job	2026-04-19T14:01:20.9373563Z LTS
+write	Set up job	2026-04-19T14:01:20.9374075Z ##[endgroup]
+write	Set up job	2026-04-19T14:01:20.9374616Z ##[group]Runner Image
+write	Set up job	2026-04-19T14:01:20.9375224Z Image: ubuntu-24.04
+write	Set up job	2026-04-19T14:01:20.9375748Z Version: 20260413.86.1
+write	Set up job	2026-04-19T14:01:20.9376832Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+write	Set up job	2026-04-19T14:01:20.9378585Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+write	Set up job	2026-04-19T14:01:20.9379485Z ##[endgroup]
+write	Set up job	2026-04-19T14:01:20.9380812Z ##[group]GITHUB_TOKEN Permissions
+write	Set up job	2026-04-19T14:01:20.9383605Z Actions: read
+write	Set up job	2026-04-19T14:01:20.9384164Z Contents: write
+write	Set up job	2026-04-19T14:01:20.9384775Z Issues: write
+write	Set up job	2026-04-19T14:01:20.9385284Z Metadata: read
+write	Set up job	2026-04-19T14:01:20.9385823Z Pages: write
+write	Set up job	2026-04-19T14:01:20.9386363Z ##[endgroup]
+write	Set up job	2026-04-19T14:01:20.9388489Z Secret source: Actions
+write	Set up job	2026-04-19T14:01:20.9389420Z Prepare workflow directory
+write	Set up job	2026-04-19T14:01:20.9793761Z Prepare all required actions
+write	Set up job	2026-04-19T14:01:20.9831896Z Getting action download info
+write	Set up job	2026-04-19T14:01:21.4118692Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+write	Set up job	2026-04-19T14:01:21.6293156Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+write	Set up job	2026-04-19T14:01:21.7051304Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+write	Set up job	2026-04-19T14:01:21.7985522Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+write	Set up job	2026-04-19T14:01:22.2350060Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+write	Set up job	2026-04-19T14:01:22.4570502Z Complete job name: write
+write	Run actions/checkout@v4	﻿2026-04-19T14:01:22.5325252Z ##[group]Run actions/checkout@v4
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5326210Z with:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5326729Z   repository: hoininsight-commits/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5327551Z   token: ***
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5328002Z   ssh-strict: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5328465Z   ssh-user: git
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5328935Z   persist-credentials: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5329430Z   clean: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5329885Z   sparse-checkout-cone-mode: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5330443Z   fetch-depth: 1
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5330893Z   fetch-tags: false
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5331343Z   show-progress: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5331797Z   lfs: false
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5332517Z   submodules: false
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5332989Z   set-safe-directory: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5333763Z env:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5334191Z   TZ: Asia/Seoul
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5334668Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Run actions/checkout@v4	2026-04-19T14:01:22.5335255Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6296589Z Syncing repository: hoininsight-commits/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6299136Z ##[group]Getting Git version info
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6299996Z Working directory is '/home/runner/work/hoininsight/hoininsight'
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6301135Z [command]/usr/bin/git version
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6325897Z git version 2.53.0
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6348397Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6365302Z Temporarily overriding HOME='/home/runner/work/_temp/7015afab-21e8-4ebf-9b93-831dd7333ff7' before making global git config changes
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6368064Z Adding repository directory to the temporary git global config as a safe directory
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6371279Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hoininsight/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6406388Z Deleting the contents of '/home/runner/work/hoininsight/hoininsight'
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6410748Z ##[group]Initializing the repository
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6416444Z [command]/usr/bin/git init /home/runner/work/hoininsight/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6495714Z hint: Using 'master' as the name for the initial branch. This default branch name
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6497706Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6499216Z hint: to use in all of your new repositories, which will suppress this warning,
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6500638Z hint: call:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6501266Z hint:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6502622Z hint: 	git config --global init.defaultBranch <name>
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6503351Z hint:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6503946Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6505036Z hint: 'development'. The just-created branch can be renamed via this command:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6505960Z hint:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6506555Z hint: 	git branch -m <name>
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6507388Z hint:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6508470Z hint: Disable this message with "git config set advice.defaultBranchName false"
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6510232Z Initialized empty Git repository in /home/runner/work/hoininsight/hoininsight/.git/
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6512702Z [command]/usr/bin/git remote add origin https://github.com/hoininsight-commits/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6546314Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6547151Z ##[group]Disabling automatic garbage collection
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6551481Z [command]/usr/bin/git config --local gc.auto 0
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6581516Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6583267Z ##[group]Setting up auth
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6589362Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6619754Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6897273Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+write	Run actions/checkout@v4	2026-04-19T14:01:22.6929111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7148150Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7181641Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7402398Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7437206Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7439468Z ##[group]Fetching the repository
+write	Run actions/checkout@v4	2026-04-19T14:01:22.7447755Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6090b7b7a8d79c9af573b8c3a08f4bb98eaccc67:refs/remotes/origin/main
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2331498Z From https://github.com/hoininsight-commits/hoininsight
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2334572Z  * [new ref]         6090b7b7a8d79c9af573b8c3a08f4bb98eaccc67 -> origin/main
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2359248Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2361159Z ##[group]Determining the checkout info
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2363445Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2368288Z [command]/usr/bin/git sparse-checkout disable
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2407608Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2500170Z ##[group]Checking out the ref
+write	Run actions/checkout@v4	2026-04-19T14:01:27.2502752Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+write	Run actions/checkout@v4	2026-04-19T14:01:28.1864078Z Switched to a new branch 'main'
+write	Run actions/checkout@v4	2026-04-19T14:01:28.1865812Z branch 'main' set up to track 'origin/main'.
+write	Run actions/checkout@v4	2026-04-19T14:01:28.1913533Z ##[endgroup]
+write	Run actions/checkout@v4	2026-04-19T14:01:28.1951755Z [command]/usr/bin/git log -1 --format=%H
+write	Run actions/checkout@v4	2026-04-19T14:01:28.1976255Z 6090b7b7a8d79c9af573b8c3a08f4bb98eaccc67
+write	Run actions/setup-python@v5	﻿2026-04-19T14:01:28.2227157Z ##[group]Run actions/setup-python@v5
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2227527Z with:
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2227729Z   python-version: 3.11
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2227953Z   check-latest: false
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2228305Z   token: ***
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2228529Z   update-environment: true
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2228777Z   allow-prereleases: false
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2229004Z   freethreaded: false
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2229219Z env:
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2229400Z   TZ: Asia/Seoul
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2229633Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.2229905Z ##[endgroup]
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.3484935Z ##[group]Installed versions
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.3572970Z (node:2227) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.3574307Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.3575076Z Successfully set up CPython (3.11.15)
+write	Run actions/setup-python@v5	2026-04-19T14:01:28.3575855Z ##[endgroup]
+write	Cache pip dependencies	﻿2026-04-19T14:01:28.4284313Z ##[group]Run actions/cache@v4
+write	Cache pip dependencies	2026-04-19T14:01:28.4284637Z with:
+write	Cache pip dependencies	2026-04-19T14:01:28.4284833Z   path: ~/.cache/pip
+write	Cache pip dependencies	2026-04-19T14:01:28.4285219Z   key: Linux-pip-d2c4b29d96883ca4b30a741961bab2d1b0a54b5514052c31c3aeacf6260df0be
+write	Cache pip dependencies	2026-04-19T14:01:28.4285673Z   enableCrossOsArchive: false
+write	Cache pip dependencies	2026-04-19T14:01:28.4285938Z   fail-on-cache-miss: false
+write	Cache pip dependencies	2026-04-19T14:01:28.4286176Z   lookup-only: false
+write	Cache pip dependencies	2026-04-19T14:01:28.4286395Z   save-always: false
+write	Cache pip dependencies	2026-04-19T14:01:28.4286589Z env:
+write	Cache pip dependencies	2026-04-19T14:01:28.4286768Z   TZ: Asia/Seoul
+write	Cache pip dependencies	2026-04-19T14:01:28.4286992Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Cache pip dependencies	2026-04-19T14:01:28.4287339Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Cache pip dependencies	2026-04-19T14:01:28.4287776Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Cache pip dependencies	2026-04-19T14:01:28.4288204Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Cache pip dependencies	2026-04-19T14:01:28.4288612Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Cache pip dependencies	2026-04-19T14:01:28.4288992Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Cache pip dependencies	2026-04-19T14:01:28.4289416Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Cache pip dependencies	2026-04-19T14:01:28.4289738Z ##[endgroup]
+write	Cache pip dependencies	2026-04-19T14:01:28.5303449Z (node:2246) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Cache pip dependencies	2026-04-19T14:01:28.5304795Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Cache pip dependencies	2026-04-19T14:01:28.6346216Z Cache hit for: Linux-pip-d2c4b29d96883ca4b30a741961bab2d1b0a54b5514052c31c3aeacf6260df0be
+write	Cache pip dependencies	2026-04-19T14:01:28.6449807Z (node:2246) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+write	Cache pip dependencies	2026-04-19T14:01:29.7659428Z Received 113936182 of 122324790 (93.1%), 108.4 MBs/sec
+write	Cache pip dependencies	2026-04-19T14:01:29.8511512Z Received 122324790 of 122324790 (100.0%), 106.9 MBs/sec
+write	Cache pip dependencies	2026-04-19T14:01:29.8514792Z Cache Size: ~117 MB (122324790 B)
+write	Cache pip dependencies	2026-04-19T14:01:29.8626020Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9d33bca2-b97f-49e1-95d1-4ea3d61359e2/cache.tzst -P -C /home/runner/work/hoininsight/hoininsight --use-compress-program unzstd
+write	Cache pip dependencies	2026-04-19T14:01:30.0565546Z Cache restored successfully
+write	Cache pip dependencies	2026-04-19T14:01:30.0702902Z Cache restored from key: Linux-pip-d2c4b29d96883ca4b30a741961bab2d1b0a54b5514052c31c3aeacf6260df0be
+write	Install dependencies	﻿2026-04-19T14:01:30.0845669Z ##[group]Run pip install -r requirements.txt
+write	Install dependencies	2026-04-19T14:01:30.0846091Z [36;1mpip install -r requirements.txt[0m
+write	Install dependencies	2026-04-19T14:01:30.0876138Z shell: /usr/bin/bash -e {0}
+write	Install dependencies	2026-04-19T14:01:30.0876410Z env:
+write	Install dependencies	2026-04-19T14:01:30.0876599Z   TZ: Asia/Seoul
+write	Install dependencies	2026-04-19T14:01:30.0876838Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Install dependencies	2026-04-19T14:01:30.0877202Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Install dependencies	2026-04-19T14:01:30.0877849Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Install dependencies	2026-04-19T14:01:30.0878277Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Install dependencies	2026-04-19T14:01:30.0878649Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Install dependencies	2026-04-19T14:01:30.0879028Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Install dependencies	2026-04-19T14:01:30.0879405Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Install dependencies	2026-04-19T14:01:30.0879724Z ##[endgroup]
+write	Install dependencies	2026-04-19T14:01:30.7724804Z Collecting google-generativeai>=0.8.0 (from -r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:30.7744936Z   Using cached google_generativeai-0.8.6-py3-none-any.whl.metadata (3.9 kB)
+write	Install dependencies	2026-04-19T14:01:30.7942432Z Collecting google-genai>=0.8.0 (from -r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:30.7957496Z   Using cached google_genai-1.73.1-py3-none-any.whl.metadata (52 kB)
+write	Install dependencies	2026-04-19T14:01:30.8208915Z Collecting yfinance>=0.2.36 (from -r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:30.8224812Z   Using cached yfinance-1.3.0-py2.py3-none-any.whl.metadata (6.1 kB)
+write	Install dependencies	2026-04-19T14:01:30.9022862Z Collecting yt-dlp>=2024.3.10 (from -r requirements.txt (line 4))
+write	Install dependencies	2026-04-19T14:01:30.9039812Z   Using cached yt_dlp-2026.3.17-py3-none-any.whl.metadata (182 kB)
+write	Install dependencies	2026-04-19T14:01:30.9259587Z Collecting youtube-transcript-api>=0.6.2 (from -r requirements.txt (line 5))
+write	Install dependencies	2026-04-19T14:01:30.9272834Z   Using cached youtube_transcript_api-1.2.4-py3-none-any.whl.metadata (24 kB)
+write	Install dependencies	2026-04-19T14:01:30.9455432Z Collecting requests>=2.31.0 (from -r requirements.txt (line 6))
+write	Install dependencies	2026-04-19T14:01:30.9477275Z   Using cached requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+write	Install dependencies	2026-04-19T14:01:30.9618000Z Collecting python-dotenv>=1.0.0 (from -r requirements.txt (line 7))
+write	Install dependencies	2026-04-19T14:01:30.9631644Z   Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+write	Install dependencies	2026-04-19T14:01:30.9874919Z Collecting pytest>=7.0.0 (from -r requirements.txt (line 8))
+write	Install dependencies	2026-04-19T14:01:30.9888908Z   Using cached pytest-9.0.3-py3-none-any.whl.metadata (7.6 kB)
+write	Install dependencies	2026-04-19T14:01:31.0909922Z Collecting pandas>=2.0.0 (from -r requirements.txt (line 9))
+write	Install dependencies	2026-04-19T14:01:31.0926586Z   Using cached pandas-3.0.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+write	Install dependencies	2026-04-19T14:01:31.2899005Z Collecting numpy>=1.24.0 (from -r requirements.txt (line 10))
+write	Install dependencies	2026-04-19T14:01:31.2915842Z   Using cached numpy-2.4.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+write	Install dependencies	2026-04-19T14:01:31.3472876Z Collecting PyYAML>=6.0 (from -r requirements.txt (line 11))
+write	Install dependencies	2026-04-19T14:01:31.3488560Z   Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+write	Install dependencies	2026-04-19T14:01:31.3680507Z Collecting beautifulsoup4>=4.12.0 (from -r requirements.txt (line 12))
+write	Install dependencies	2026-04-19T14:01:31.3696935Z   Using cached beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+write	Install dependencies	2026-04-19T14:01:31.5501080Z Collecting lxml>=4.9.0 (from -r requirements.txt (line 13))
+write	Install dependencies	2026-04-19T14:01:31.5517489Z   Using cached lxml-6.1.0-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (4.0 kB)
+write	Install dependencies	2026-04-19T14:01:31.5619294Z Collecting fredapi>=0.5.0 (from -r requirements.txt (line 14))
+write	Install dependencies	2026-04-19T14:01:31.5633384Z   Using cached fredapi-0.5.2-py3-none-any.whl.metadata (5.0 kB)
+write	Install dependencies	2026-04-19T14:01:31.5798075Z Collecting pykrx>=1.0.0 (from -r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:31.5813049Z   Using cached pykrx-1.2.7-py3-none-any.whl.metadata (64 kB)
+write	Install dependencies	2026-04-19T14:01:31.5961388Z Collecting feedparser (from -r requirements.txt (line 16))
+write	Install dependencies	2026-04-19T14:01:31.5975869Z   Using cached feedparser-6.0.12-py3-none-any.whl.metadata (2.7 kB)
+write	Install dependencies	2026-04-19T14:01:31.6074665Z Collecting OpenDartReader (from -r requirements.txt (line 17))
+write	Install dependencies	2026-04-19T14:01:31.6089713Z   Using cached OpenDartReader-0.2.3-py3-none-any.whl.metadata (913 bytes)
+write	Install dependencies	2026-04-19T14:01:31.6171427Z Collecting cot-reports>=0.1.3 (from -r requirements.txt (line 18))
+write	Install dependencies	2026-04-19T14:01:31.6173030Z   Using cached cot_reports-0.1.3-py3-none-any.whl
+write	Install dependencies	2026-04-19T14:01:31.6328397Z Collecting google-ai-generativelanguage==0.6.15 (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:31.6341935Z   Using cached google_ai_generativelanguage-0.6.15-py3-none-any.whl.metadata (5.7 kB)
+write	Install dependencies	2026-04-19T14:01:31.6625285Z Collecting google-api-core (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:31.6640871Z   Using cached google_api_core-2.30.3-py3-none-any.whl.metadata (3.1 kB)
+write	Install dependencies	2026-04-19T14:01:31.7088444Z Collecting google-api-python-client (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:31.7104358Z   Using cached google_api_python_client-2.194.0-py3-none-any.whl.metadata (7.0 kB)
+write	Install dependencies	2026-04-19T14:01:31.7374016Z Collecting google-auth>=2.15.0 (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:31.7389849Z   Using cached google_auth-2.49.2-py3-none-any.whl.metadata (6.2 kB)
+write	Install dependencies	2026-04-19T14:01:31.9180600Z Collecting protobuf (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:31.9196372Z   Using cached protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+write	Install dependencies	2026-04-19T14:01:32.0206919Z Collecting pydantic (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.0222074Z   Using cached pydantic-2.13.2-py3-none-any.whl.metadata (108 kB)
+write	Install dependencies	2026-04-19T14:01:32.0522833Z Collecting tqdm (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.0537327Z   Using cached tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+write	Install dependencies	2026-04-19T14:01:32.0720954Z Collecting typing-extensions (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.0735401Z   Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+write	Install dependencies	2026-04-19T14:01:32.1270511Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.15->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.1285464Z   Using cached proto_plus-1.27.2-py3-none-any.whl.metadata (2.2 kB)
+write	Install dependencies	2026-04-19T14:01:32.1425095Z Collecting protobuf (from google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.1440582Z   Using cached protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+write	Install dependencies	2026-04-19T14:01:32.1578121Z Collecting googleapis-common-protos<2.0.0,>=1.63.2 (from google-api-core->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.1592805Z   Using cached googleapis_common_protos-1.74.0-py3-none-any.whl.metadata (9.2 kB)
+write	Install dependencies	2026-04-19T14:01:32.2632455Z Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->-r requirements.txt (line 6))
+write	Install dependencies	2026-04-19T14:01:32.2647691Z   Using cached charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+write	Install dependencies	2026-04-19T14:01:32.2779245Z Collecting idna<4,>=2.5 (from requests>=2.31.0->-r requirements.txt (line 6))
+write	Install dependencies	2026-04-19T14:01:32.2792782Z   Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+write	Install dependencies	2026-04-19T14:01:32.2979429Z Collecting urllib3<3,>=1.26 (from requests>=2.31.0->-r requirements.txt (line 6))
+write	Install dependencies	2026-04-19T14:01:32.2993356Z   Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+write	Install dependencies	2026-04-19T14:01:32.3129579Z Collecting certifi>=2023.5.7 (from requests>=2.31.0->-r requirements.txt (line 6))
+write	Install dependencies	2026-04-19T14:01:32.3143263Z   Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+write	Install dependencies	2026-04-19T14:01:32.7898195Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.7914595Z   Using cached grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+write	Install dependencies	2026-04-19T14:01:32.8804079Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.8819981Z   Using cached grpcio_status-1.80.0-py3-none-any.whl.metadata (1.3 kB)
+write	Install dependencies	2026-04-19T14:01:32.9045195Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:32.9060712Z   Using cached pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+write	Install dependencies	2026-04-19T14:01:33.0715632Z Collecting cryptography>=38.0.3 (from google-auth>=2.15.0->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:33.0731004Z   Using cached cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+write	Install dependencies	2026-04-19T14:01:33.0858451Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+write	Install dependencies	2026-04-19T14:01:33.0864506Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:33.0879516Z   Using cached grpcio_status-1.78.0-py3-none-any.whl.metadata (1.3 kB)
+write	Install dependencies	2026-04-19T14:01:33.0907920Z   Using cached grpcio_status-1.76.0-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.0937260Z   Using cached grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.0964531Z   Using cached grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.0991301Z   Using cached grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1019642Z   Using cached grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1091885Z   Using cached grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1106195Z INFO: pip is still looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+write	Install dependencies	2026-04-19T14:01:33.1122559Z   Using cached grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1149928Z   Using cached grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1177038Z   Using cached grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1448314Z Collecting anyio<5.0.0,>=4.8.0 (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.1462461Z   Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+write	Install dependencies	2026-04-19T14:01:33.1620977Z Collecting httpx<1.0.0,>=0.28.1 (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.1634967Z   Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+write	Install dependencies	2026-04-19T14:01:33.1805928Z Collecting tenacity<9.2.0,>=8.2.3 (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.1819530Z   Using cached tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+write	Install dependencies	2026-04-19T14:01:33.2575616Z Collecting websockets<17.0,>=13.0.0 (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.2591336Z   Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+write	Install dependencies	2026-04-19T14:01:33.2707850Z Collecting distro<2,>=1.7.0 (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.2721769Z   Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+write	Install dependencies	2026-04-19T14:01:33.2800968Z Collecting sniffio (from google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.2814899Z   Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+write	Install dependencies	2026-04-19T14:01:33.3000904Z Collecting httpcore==1.* (from httpx<1.0.0,>=0.28.1->google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.3015000Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+write	Install dependencies	2026-04-19T14:01:33.3115457Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.28.1->google-genai>=0.8.0->-r requirements.txt (line 2))
+write	Install dependencies	2026-04-19T14:01:33.3129056Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+write	Install dependencies	2026-04-19T14:01:33.3210948Z Collecting annotated-types>=0.6.0 (from pydantic->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:33.3224639Z   Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+write	Install dependencies	2026-04-19T14:01:33.9833663Z Collecting pydantic-core==2.46.2 (from pydantic->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:33.9849516Z   Using cached pydantic_core-2.46.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+write	Install dependencies	2026-04-19T14:01:33.9939060Z Collecting typing-inspection>=0.4.2 (from pydantic->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:33.9952598Z   Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+write	Install dependencies	2026-04-19T14:01:34.0098148Z Collecting multitasking>=0.0.7 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.0099361Z   Using cached multitasking-0.0.12-py3-none-any.whl
+write	Install dependencies	2026-04-19T14:01:34.0255865Z Collecting platformdirs>=2.0.0 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.0270379Z   Using cached platformdirs-4.9.6-py3-none-any.whl.metadata (4.7 kB)
+write	Install dependencies	2026-04-19T14:01:34.0561608Z Collecting pytz>=2022.5 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.0576136Z   Using cached pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+write	Install dependencies	2026-04-19T14:01:34.0956877Z Collecting frozendict>=2.3.4 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.0972196Z   Using cached frozendict-2.4.7-py3-none-any.whl.metadata (23 kB)
+write	Install dependencies	2026-04-19T14:01:34.2052273Z Collecting peewee>=3.16.2 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.2068876Z   Using cached peewee-4.0.4-py3-none-any.whl.metadata (8.6 kB)
+write	Install dependencies	2026-04-19T14:01:34.2563433Z Collecting curl_cffi>=0.15 (from yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.2584443Z   Using cached curl_cffi-0.15.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (18 kB)
+write	Install dependencies	2026-04-19T14:01:34.2804872Z Collecting defusedxml<0.8.0,>=0.7.1 (from youtube-transcript-api>=0.6.2->-r requirements.txt (line 5))
+write	Install dependencies	2026-04-19T14:01:34.2818702Z   Using cached defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+write	Install dependencies	2026-04-19T14:01:34.2936025Z Collecting iniconfig>=1.0.1 (from pytest>=7.0.0->-r requirements.txt (line 8))
+write	Install dependencies	2026-04-19T14:01:34.2951404Z   Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+write	Install dependencies	2026-04-19T14:01:34.3064672Z Collecting packaging>=22 (from pytest>=7.0.0->-r requirements.txt (line 8))
+write	Install dependencies	2026-04-19T14:01:34.3078817Z   Using cached packaging-26.1-py3-none-any.whl.metadata (3.5 kB)
+write	Install dependencies	2026-04-19T14:01:34.3190920Z Collecting pluggy<2,>=1.5 (from pytest>=7.0.0->-r requirements.txt (line 8))
+write	Install dependencies	2026-04-19T14:01:34.3205719Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+write	Install dependencies	2026-04-19T14:01:34.3367979Z Collecting pygments>=2.7.2 (from pytest>=7.0.0->-r requirements.txt (line 8))
+write	Install dependencies	2026-04-19T14:01:34.3382280Z   Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+write	Install dependencies	2026-04-19T14:01:34.3526329Z Collecting python-dateutil>=2.8.2 (from pandas>=2.0.0->-r requirements.txt (line 9))
+write	Install dependencies	2026-04-19T14:01:34.3540027Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+write	Install dependencies	2026-04-19T14:01:34.3699853Z Collecting soupsieve>=1.6.1 (from beautifulsoup4>=4.12.0->-r requirements.txt (line 12))
+write	Install dependencies	2026-04-19T14:01:34.3714087Z   Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+write	Install dependencies	2026-04-19T14:01:34.3788339Z Collecting pandas>=2.0.0 (from -r requirements.txt (line 9))
+write	Install dependencies	2026-04-19T14:01:34.3803278Z   Using cached pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+write	Install dependencies	2026-04-19T14:01:34.4158278Z Collecting deprecated>=1.2.14 (from pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.4172543Z   Using cached deprecated-1.3.1-py2.py3-none-any.whl.metadata (5.9 kB)
+write	Install dependencies	2026-04-19T14:01:34.4272520Z Collecting multipledispatch>=1.0.0 (from pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.4286386Z   Using cached multipledispatch-1.0.0-py3-none-any.whl.metadata (3.8 kB)
+write	Install dependencies	2026-04-19T14:01:34.5381558Z Collecting matplotlib>=3.8.0 (from pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.5398271Z   Using cached matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (52 kB)
+write	Install dependencies	2026-04-19T14:01:34.5664966Z Collecting tzdata>=2022.7 (from pandas>=2.0.0->-r requirements.txt (line 9))
+write	Install dependencies	2026-04-19T14:01:34.5678103Z   Using cached tzdata-2026.1-py2.py3-none-any.whl.metadata (1.4 kB)
+write	Install dependencies	2026-04-19T14:01:34.5780980Z Collecting sgmllib3k (from feedparser->-r requirements.txt (line 16))
+write	Install dependencies	2026-04-19T14:01:34.5782537Z   Using cached sgmllib3k-1.0.0-py3-none-any.whl
+write	Install dependencies	2026-04-19T14:01:34.5905910Z Collecting requests-file (from OpenDartReader->-r requirements.txt (line 17))
+write	Install dependencies	2026-04-19T14:01:34.5919097Z   Using cached requests_file-3.0.1-py2.py3-none-any.whl.metadata (1.7 kB)
+write	Install dependencies	2026-04-19T14:01:34.6826839Z Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth>=2.15.0->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:34.6843284Z   Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+write	Install dependencies	2026-04-19T14:01:34.6943174Z Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth>=2.15.0->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:34.6959009Z   Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+write	Install dependencies	2026-04-19T14:01:34.7324775Z Collecting rich (from curl_cffi>=0.15->yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:34.7340681Z   Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+write	Install dependencies	2026-04-19T14:01:34.9240943Z Collecting wrapt<3,>=1.10 (from deprecated>=1.2.14->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.9258287Z   Using cached wrapt-2.1.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (7.4 kB)
+write	Install dependencies	2026-04-19T14:01:34.9876304Z Collecting contourpy>=1.0.1 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.9893116Z   Using cached contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+write	Install dependencies	2026-04-19T14:01:34.9985773Z Collecting cycler>=0.10 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:34.9999930Z   Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+write	Install dependencies	2026-04-19T14:01:35.2461280Z Collecting fonttools>=4.22.0 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:35.2477645Z   Using cached fonttools-4.62.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (117 kB)
+write	Install dependencies	2026-04-19T14:01:35.3127473Z Collecting kiwisolver>=1.3.1 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:35.3143836Z   Using cached kiwisolver-1.5.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.1 kB)
+write	Install dependencies	2026-04-19T14:01:35.4711658Z Collecting pillow>=8 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:35.4729104Z   Using cached pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+write	Install dependencies	2026-04-19T14:01:35.4947888Z Collecting pyparsing>=3 (from matplotlib>=3.8.0->pykrx>=1.0.0->-r requirements.txt (line 15))
+write	Install dependencies	2026-04-19T14:01:35.4963119Z   Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+write	Install dependencies	2026-04-19T14:01:35.5246587Z Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth>=2.15.0->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:35.5261553Z   Using cached pyasn1-0.6.3-py3-none-any.whl.metadata (8.4 kB)
+write	Install dependencies	2026-04-19T14:01:35.5401036Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas>=2.0.0->-r requirements.txt (line 9))
+write	Install dependencies	2026-04-19T14:01:35.5415919Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+write	Install dependencies	2026-04-19T14:01:35.5576148Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:35.5590315Z   Using cached httplib2-0.31.2-py3-none-any.whl.metadata (2.2 kB)
+write	Install dependencies	2026-04-19T14:01:35.5672566Z Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:35.5686798Z   Using cached google_auth_httplib2-0.3.1-py3-none-any.whl.metadata (3.0 kB)
+write	Install dependencies	2026-04-19T14:01:35.5773120Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai>=0.8.0->-r requirements.txt (line 1))
+write	Install dependencies	2026-04-19T14:01:35.5787082Z   Using cached uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+write	Install dependencies	2026-04-19T14:01:35.5969658Z Collecting markdown-it-py>=2.2.0 (from rich->curl_cffi>=0.15->yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:35.5984012Z   Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+write	Install dependencies	2026-04-19T14:01:35.6106755Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->curl_cffi>=0.15->yfinance>=0.2.36->-r requirements.txt (line 3))
+write	Install dependencies	2026-04-19T14:01:35.6121155Z   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+write	Install dependencies	2026-04-19T14:01:35.6188331Z Using cached google_generativeai-0.8.6-py3-none-any.whl (155 kB)
+write	Install dependencies	2026-04-19T14:01:35.6202846Z Using cached google_ai_generativelanguage-0.6.15-py3-none-any.whl (1.3 MB)
+write	Install dependencies	2026-04-19T14:01:35.6221671Z Using cached google_api_core-2.30.3-py3-none-any.whl (173 kB)
+write	Install dependencies	2026-04-19T14:01:35.6236212Z Using cached requests-2.33.1-py3-none-any.whl (64 kB)
+write	Install dependencies	2026-04-19T14:01:35.6250525Z Using cached charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (214 kB)
+write	Install dependencies	2026-04-19T14:01:35.6264710Z Using cached google_auth-2.49.2-py3-none-any.whl (240 kB)
+write	Install dependencies	2026-04-19T14:01:35.6278782Z Using cached googleapis_common_protos-1.74.0-py3-none-any.whl (300 kB)
+write	Install dependencies	2026-04-19T14:01:35.6293571Z Using cached grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.8 MB)
+write	Install dependencies	2026-04-19T14:01:35.6331852Z Using cached grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+write	Install dependencies	2026-04-19T14:01:35.6345771Z Using cached idna-3.11-py3-none-any.whl (71 kB)
+write	Install dependencies	2026-04-19T14:01:35.6359250Z Using cached proto_plus-1.27.2-py3-none-any.whl (50 kB)
+write	Install dependencies	2026-04-19T14:01:35.6372725Z Using cached protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl (320 kB)
+write	Install dependencies	2026-04-19T14:01:35.6387469Z Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+write	Install dependencies	2026-04-19T14:01:35.6400940Z Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+write	Install dependencies	2026-04-19T14:01:35.6415198Z Using cached google_genai-1.73.1-py3-none-any.whl (783 kB)
+write	Install dependencies	2026-04-19T14:01:35.6431033Z Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+write	Install dependencies	2026-04-19T14:01:35.6444749Z Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+write	Install dependencies	2026-04-19T14:01:35.6457791Z Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+write	Install dependencies	2026-04-19T14:01:35.6470891Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+write	Install dependencies	2026-04-19T14:01:35.6484331Z Using cached pydantic-2.13.2-py3-none-any.whl (471 kB)
+write	Install dependencies	2026-04-19T14:01:35.6499015Z Using cached pydantic_core-2.46.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+write	Install dependencies	2026-04-19T14:01:35.6519731Z Using cached tenacity-9.1.4-py3-none-any.whl (28 kB)
+write	Install dependencies	2026-04-19T14:01:35.6533311Z Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+write	Install dependencies	2026-04-19T14:01:35.6546410Z Using cached yfinance-1.3.0-py2.py3-none-any.whl (133 kB)
+write	Install dependencies	2026-04-19T14:01:35.6559487Z Using cached yt_dlp-2026.3.17-py3-none-any.whl (3.3 MB)
+write	Install dependencies	2026-04-19T14:01:35.6583874Z Using cached youtube_transcript_api-1.2.4-py3-none-any.whl (485 kB)
+write	Install dependencies	2026-04-19T14:01:35.6598363Z Using cached defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+write	Install dependencies	2026-04-19T14:01:35.6611453Z Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+write	Install dependencies	2026-04-19T14:01:35.6624800Z Using cached pytest-9.0.3-py3-none-any.whl (375 kB)
+write	Install dependencies	2026-04-19T14:01:35.6639537Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+write	Install dependencies	2026-04-19T14:01:35.6653119Z Using cached numpy-2.4.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+write	Install dependencies	2026-04-19T14:01:35.6725692Z Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+write	Install dependencies	2026-04-19T14:01:35.6742133Z Using cached beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+write	Install dependencies	2026-04-19T14:01:35.6756502Z Using cached lxml-6.1.0-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+write	Install dependencies	2026-04-19T14:01:35.6788677Z Using cached fredapi-0.5.2-py3-none-any.whl (11 kB)
+write	Install dependencies	2026-04-19T14:01:35.6802120Z Using cached pykrx-1.2.7-py3-none-any.whl (2.2 MB)
+write	Install dependencies	2026-04-19T14:01:35.6823996Z Using cached pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+write	Install dependencies	2026-04-19T14:01:35.6882568Z Using cached feedparser-6.0.12-py3-none-any.whl (81 kB)
+write	Install dependencies	2026-04-19T14:01:35.6896918Z Using cached OpenDartReader-0.2.3-py3-none-any.whl (27 kB)
+write	Install dependencies	2026-04-19T14:01:35.6910530Z Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+write	Install dependencies	2026-04-19T14:01:35.6924161Z Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+write	Install dependencies	2026-04-19T14:01:35.6938215Z Using cached cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+write	Install dependencies	2026-04-19T14:01:35.6969045Z Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+write	Install dependencies	2026-04-19T14:01:35.6983163Z Using cached curl_cffi-0.15.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (11.1 MB)
+write	Install dependencies	2026-04-19T14:01:35.7036678Z Using cached deprecated-1.3.1-py2.py3-none-any.whl (11 kB)
+write	Install dependencies	2026-04-19T14:01:35.7051236Z Using cached wrapt-2.1.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (114 kB)
+write	Install dependencies	2026-04-19T14:01:35.7065159Z Using cached frozendict-2.4.7-py3-none-any.whl (16 kB)
+write	Install dependencies	2026-04-19T14:01:35.7078458Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+write	Install dependencies	2026-04-19T14:01:35.7091855Z Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+write	Install dependencies	2026-04-19T14:01:35.7106039Z Using cached matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.7 MB)
+write	Install dependencies	2026-04-19T14:01:35.7150234Z Using cached contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (355 kB)
+write	Install dependencies	2026-04-19T14:01:35.7164624Z Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+write	Install dependencies	2026-04-19T14:01:35.7178385Z Using cached fonttools-4.62.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.1 MB)
+write	Install dependencies	2026-04-19T14:01:35.7209503Z Using cached kiwisolver-1.5.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.4 MB)
+write	Install dependencies	2026-04-19T14:01:35.7227664Z Using cached multipledispatch-1.0.0-py3-none-any.whl (12 kB)
+write	Install dependencies	2026-04-19T14:01:35.7241008Z Using cached packaging-26.1-py3-none-any.whl (95 kB)
+write	Install dependencies	2026-04-19T14:01:35.7255702Z Using cached peewee-4.0.4-py3-none-any.whl (144 kB)
+write	Install dependencies	2026-04-19T14:01:35.7269586Z Using cached pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+write	Install dependencies	2026-04-19T14:01:35.7308880Z Using cached platformdirs-4.9.6-py3-none-any.whl (21 kB)
+write	Install dependencies	2026-04-19T14:01:35.7322462Z Using cached pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+write	Install dependencies	2026-04-19T14:01:35.7336592Z Using cached pyasn1-0.6.3-py3-none-any.whl (83 kB)
+write	Install dependencies	2026-04-19T14:01:35.7350097Z Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+write	Install dependencies	2026-04-19T14:01:35.7367916Z Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+write	Install dependencies	2026-04-19T14:01:35.7381658Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+write	Install dependencies	2026-04-19T14:01:35.7395630Z Using cached pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+write	Install dependencies	2026-04-19T14:01:35.7410331Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+write	Install dependencies	2026-04-19T14:01:35.7423978Z Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+write	Install dependencies	2026-04-19T14:01:35.7437497Z Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+write	Install dependencies	2026-04-19T14:01:35.7450804Z Using cached tzdata-2026.1-py2.py3-none-any.whl (348 kB)
+write	Install dependencies	2026-04-19T14:01:35.7465804Z Using cached google_api_python_client-2.194.0-py3-none-any.whl (15.0 MB)
+write	Install dependencies	2026-04-19T14:01:35.7534689Z Using cached google_auth_httplib2-0.3.1-py3-none-any.whl (9.5 kB)
+write	Install dependencies	2026-04-19T14:01:35.7548227Z Using cached httplib2-0.31.2-py3-none-any.whl (91 kB)
+write	Install dependencies	2026-04-19T14:01:35.7561964Z Using cached uritemplate-4.2.0-py3-none-any.whl (11 kB)
+write	Install dependencies	2026-04-19T14:01:35.7575955Z Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+write	Install dependencies	2026-04-19T14:01:35.7590659Z Using cached requests_file-3.0.1-py2.py3-none-any.whl (4.5 kB)
+write	Install dependencies	2026-04-19T14:01:35.7604082Z Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+write	Install dependencies	2026-04-19T14:01:35.7618521Z Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+write	Install dependencies	2026-04-19T14:01:35.7632071Z Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+write	Install dependencies	2026-04-19T14:01:35.7645819Z Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+write	Install dependencies	2026-04-19T14:01:35.7659063Z Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+write	Install dependencies	2026-04-19T14:01:36.0918116Z Installing collected packages: sgmllib3k, pytz, peewee, multitasking, multipledispatch, yt-dlp, wrapt, websockets, urllib3, uritemplate, tzdata, typing-extensions, tqdm, tenacity, soupsieve, sniffio, six, PyYAML, python-dotenv, pyparsing, pygments, pycparser, pyasn1, protobuf, pluggy, platformdirs, pillow, packaging, numpy, mdurl, lxml, kiwisolver, iniconfig, idna, h11, frozendict, fonttools, feedparser, distro, defusedxml, cycler, charset_normalizer, certifi, annotated-types, typing-inspection, requests, python-dateutil, pytest, pydantic-core, pyasn1-modules, proto-plus, markdown-it-py, httplib2, httpcore, grpcio, googleapis-common-protos, deprecated, contourpy, cffi, beautifulsoup4, anyio, youtube-transcript-api, rich, requests-file, pydantic, pandas, matplotlib, httpx, grpcio-status, cryptography, pykrx, OpenDartReader, google-auth, fredapi, curl_cffi, cot-reports, yfinance, google-auth-httplib2, google-api-core, google-genai, google-api-python-client, google-ai-generativelanguage, google-generativeai
+write	Install dependencies	2026-04-19T14:01:52.9359735Z 
+write	Install dependencies	2026-04-19T14:01:52.9399603Z Successfully installed OpenDartReader-0.2.3 PyYAML-6.0.3 annotated-types-0.7.0 anyio-4.13.0 beautifulsoup4-4.14.3 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.7 contourpy-1.3.3 cot-reports-0.1.3 cryptography-46.0.7 curl_cffi-0.15.0 cycler-0.12.1 defusedxml-0.7.1 deprecated-1.3.1 distro-1.9.0 feedparser-6.0.12 fonttools-4.62.1 fredapi-0.5.2 frozendict-2.4.7 google-ai-generativelanguage-0.6.15 google-api-core-2.30.3 google-api-python-client-2.194.0 google-auth-2.49.2 google-auth-httplib2-0.3.1 google-genai-1.73.1 google-generativeai-0.8.6 googleapis-common-protos-1.74.0 grpcio-1.80.0 grpcio-status-1.71.2 h11-0.16.0 httpcore-1.0.9 httplib2-0.31.2 httpx-0.28.1 idna-3.11 iniconfig-2.3.0 kiwisolver-1.5.0 lxml-6.1.0 markdown-it-py-4.0.0 matplotlib-3.10.8 mdurl-0.1.2 multipledispatch-1.0.0 multitasking-0.0.12 numpy-2.4.4 packaging-26.1 pandas-2.3.3 peewee-4.0.4 pillow-12.2.0 platformdirs-4.9.6 pluggy-1.6.0 proto-plus-1.27.2 protobuf-5.29.6 pyasn1-0.6.3 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.13.2 pydantic-core-2.46.2 pygments-2.20.0 pykrx-1.2.7 pyparsing-3.3.2 pytest-9.0.3 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 pytz-2026.1.post1 requests-2.33.1 requests-file-3.0.1 rich-15.0.0 sgmllib3k-1.0.0 six-1.17.0 sniffio-1.3.1 soupsieve-2.8.3 tenacity-9.1.4 tqdm-4.67.3 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2026.1 uritemplate-4.2.0 urllib3-2.6.3 websockets-16.0 wrapt-2.1.2 yfinance-1.3.0 youtube-transcript-api-1.2.4 yt-dlp-2026.3.17
+write	Download Raw Data (Current)	﻿2026-04-19T14:01:53.8572750Z ##[group]Run actions/download-artifact@v4
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8573090Z with:
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8573277Z   name: raw_data
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8573485Z   path: data/raw/
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8573706Z   merge-multiple: false
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8573972Z   repository: hoininsight-commits/hoininsight
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8574262Z   run-id: 24630743478
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8574468Z env:
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8574649Z   TZ: Asia/Seoul
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8574873Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8575220Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8575642Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8576060Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8576440Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8576827Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8577451Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Download Raw Data (Current)	2026-04-19T14:01:53.8577812Z ##[endgroup]
+write	Download Raw Data (Current)	2026-04-19T14:01:54.0013486Z Downloading single artifact
+write	Download Raw Data (Current)	2026-04-19T14:01:54.0167476Z (node:2296) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Download Raw Data (Current)	2026-04-19T14:01:54.0168344Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Download Raw Data (Current)	2026-04-19T14:01:54.1263541Z Preparing to download the following artifacts:
+write	Download Raw Data (Current)	2026-04-19T14:01:54.1264863Z - raw_data (ID: 6518663041, Size: 35448437, Expected Digest: sha256:e3109b9a820ddf46b5624e00090a0e57c0b8e066888dfd6100232e66c0e94c64)
+write	Download Raw Data (Current)	2026-04-19T14:01:54.2290563Z Redirecting to blob download url: https://productionresultssa13.blob.core.windows.net/actions-results/24bbb8c3-240a-499b-9677-1583ec8a1da0/workflow-job-run-54369bb5-395f-5d74-9498-e260c7980c72/artifacts/8af3fe0f0f942d2fd4aadfe4634b1460f17c8dbb7c6a888223c07ce6a3e066b2.zip
+write	Download Raw Data (Current)	2026-04-19T14:01:54.2291967Z Starting download of artifact to: /home/runner/work/hoininsight/hoininsight/data/raw
+write	Download Raw Data (Current)	2026-04-19T14:01:54.3809759Z (node:2296) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+write	Download Raw Data (Current)	2026-04-19T14:01:55.6937501Z SHA256 digest of downloaded artifact is e3109b9a820ddf46b5624e00090a0e57c0b8e066888dfd6100232e66c0e94c64
+write	Download Raw Data (Current)	2026-04-19T14:01:55.6938295Z Artifact download completed successfully.
+write	Download Raw Data (Current)	2026-04-19T14:01:55.6938625Z Total of 1 artifact(s) downloaded
+write	Download Raw Data (Current)	2026-04-19T14:01:55.6944587Z Download artifact has finished successfully
+write	Download Analysis Data (Current)	﻿2026-04-19T14:01:55.7244846Z ##[group]Run actions/download-artifact@v4
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7245172Z with:
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7245374Z   name: analysis_data
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7245606Z   path: data/
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7245820Z   merge-multiple: false
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7246090Z   repository: hoininsight-commits/hoininsight
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7246388Z   run-id: 24630743478
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7246610Z env:
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7246795Z   TZ: Asia/Seoul
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7247023Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7247377Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7247807Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7248239Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7248628Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7249019Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7249420Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.7249788Z ##[endgroup]
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.8696344Z Downloading single artifact
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.8851741Z (node:2309) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.8853195Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.9821393Z Preparing to download the following artifacts:
+write	Download Analysis Data (Current)	2026-04-19T14:01:55.9822828Z - analysis_data (ID: 6518670207, Size: 24720, Expected Digest: sha256:5f576c378d4809f4623c97a945c18cfcd9fac77345b31d7c8d015639472a417c)
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.0750830Z Redirecting to blob download url: https://productionresultssa13.blob.core.windows.net/actions-results/24bbb8c3-240a-499b-9677-1583ec8a1da0/workflow-job-run-5f23ebbb-508c-5fa5-afeb-966cef652168/artifacts/ba51138d80ee12d1754a7e0b162816c01378ea2fc62dd2a94813b2c7b731312c.zip
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.0753555Z Starting download of artifact to: /home/runner/work/hoininsight/hoininsight/data
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.1783958Z (node:2309) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.2056513Z SHA256 digest of downloaded artifact is 5f576c378d4809f4623c97a945c18cfcd9fac77345b31d7c8d015639472a417c
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.2057518Z Artifact download completed successfully.
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.2057837Z Total of 1 artifact(s) downloaded
+write	Download Analysis Data (Current)	2026-04-19T14:01:56.2061519Z Download artifact has finished successfully
+write	Run Writer + FactChecker	﻿2026-04-19T14:01:56.2184655Z ##[group]Run python -m src.agents.writer
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2185042Z [36;1mpython -m src.agents.writer[0m
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2185517Z [36;1mpython -m src.agents.fact_checker[0m
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2207730Z shell: /usr/bin/bash -e {0}
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2207991Z env:
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2208192Z   TZ: Asia/Seoul
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2208435Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2208806Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2209264Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2209705Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2210107Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2210521Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2210926Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2211815Z   GEMINI_API_KEY: ***
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2212535Z   TELEGRAM_BOT_TOKEN: ***
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2212848Z   TELEGRAM_CHAT_ID: ***
+write	Run Writer + FactChecker	2026-04-19T14:01:56.2213083Z ##[endgroup]
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6016599Z 
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6017566Z ✍️ AGENT-05 WRITER 시작 [20260419]
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6018293Z   롱폼 스크립트 생성 중... [3계층 관리 적용]
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6018886Z   쇼츠 스크립트 생성 중...
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6019470Z   [COMPLETION_TRACE] Shorts Response Status: COMPLETED
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6020328Z   스크립트 저장 완료: data/scripts/20260419
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6020979Z ✅ AGENT-05 완료
+write	Run Writer + FactChecker	2026-04-19T14:02:24.6021235Z 
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8493177Z 
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8494188Z 🔍 AGENT-05.5 FACT_CHECKER 시작 [20260419]
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8494877Z   ✅ 팩트체크 통과
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8495350Z ✅ 검증 완료: PASS
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8495880Z   - [현재가] "17.48" → vix: 17.48 (✅ 일치)
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8496557Z   - [현재가] "17.48" → vix: 17.48 (✅ 일치)
+write	Run Writer + FactChecker	2026-04-19T14:02:24.8497197Z   - [현재가] "17.48" → vix: 17.48 (✅ 일치)
+write	Upload Script Data Artifact	﻿2026-04-19T14:02:24.8714296Z ##[group]Run actions/upload-artifact@v4
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8714629Z with:
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8714834Z   name: script_data
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8715056Z   path: data/scripts/
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8715292Z   retention-days: 3
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8715520Z   if-no-files-found: warn
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8715769Z   compression-level: 6
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8715997Z   overwrite: false
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8716220Z   include-hidden-files: false
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8716465Z env:
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8716653Z   TZ: Asia/Seoul
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8716894Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8717257Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8717697Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8718130Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8718543Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8718944Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8719382Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+write	Upload Script Data Artifact	2026-04-19T14:02:24.8719713Z ##[endgroup]
+write	Upload Script Data Artifact	2026-04-19T14:02:25.0354804Z (node:2332) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Upload Script Data Artifact	2026-04-19T14:02:25.0356179Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Upload Script Data Artifact	2026-04-19T14:02:25.0448031Z With the provided path, there will be 14 files uploaded
+write	Upload Script Data Artifact	2026-04-19T14:02:25.0453688Z Artifact name is valid!
+write	Upload Script Data Artifact	2026-04-19T14:02:25.0454544Z Root directory input is valid!
+write	Upload Script Data Artifact	2026-04-19T14:02:25.1944820Z Beginning upload of artifact content to blob storage
+write	Upload Script Data Artifact	2026-04-19T14:02:25.2314072Z (node:2332) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+write	Upload Script Data Artifact	2026-04-19T14:02:25.3458789Z Uploaded bytes 11178
+write	Upload Script Data Artifact	2026-04-19T14:02:25.3799129Z Finished uploading artifact content to blob storage!
+write	Upload Script Data Artifact	2026-04-19T14:02:25.3800187Z SHA256 digest of uploaded artifact zip is 4d7067697bb2102005b829c1dc435012d5d81f89bf6d114935952f90e433a49f
+write	Upload Script Data Artifact	2026-04-19T14:02:25.3802036Z Finalizing artifact upload
+write	Upload Script Data Artifact	2026-04-19T14:02:25.5015807Z Artifact script_data.zip successfully finalized. Artifact ID 6518676700
+write	Upload Script Data Artifact	2026-04-19T14:02:25.5016876Z Artifact script_data has been successfully uploaded! Final size is 11178 bytes. Artifact ID is 6518676700
+write	Upload Script Data Artifact	2026-04-19T14:02:25.5025071Z Artifact download URL: https://github.com/hoininsight-commits/hoininsight/actions/runs/24630743478/artifacts/6518676700
+write	Post Cache pip dependencies	﻿2026-04-19T14:02:25.5728858Z Post job cleanup.
+write	Post Cache pip dependencies	2026-04-19T14:02:25.6807790Z Cache hit occurred on the primary key Linux-pip-d2c4b29d96883ca4b30a741961bab2d1b0a54b5514052c31c3aeacf6260df0be, not saving cache.
+write	Post Cache pip dependencies	2026-04-19T14:02:25.6809557Z (node:2355) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Post Cache pip dependencies	2026-04-19T14:02:25.6810777Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Post Run actions/setup-python@v5	﻿2026-04-19T14:02:25.6911270Z Post job cleanup.
+write	Post Run actions/setup-python@v5	2026-04-19T14:02:25.8120397Z (node:2363) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+write	Post Run actions/setup-python@v5	2026-04-19T14:02:25.8121761Z (Use `node --trace-deprecation ...` to show where the warning was created)
+write	Post Run actions/checkout@v4	﻿2026-04-19T14:02:25.8256610Z Post job cleanup.
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9040486Z [command]/usr/bin/git version
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9078362Z git version 2.53.0
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9117038Z Temporarily overriding HOME='/home/runner/work/_temp/88361a95-97b8-48ce-afcb-d352cd8834a0' before making global git config changes
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9118346Z Adding repository directory to the temporary git global config as a safe directory
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9123037Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hoininsight/hoininsight
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9161202Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9195269Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9434162Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9457578Z http.https://github.com/.extraheader
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9469455Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9502462Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9768785Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+write	Post Run actions/checkout@v4	2026-04-19T14:02:25.9799922Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+write	Complete job	﻿2026-04-19T14:02:26.0161465Z Cleaning up orphan processes
+write	Complete job	2026-04-19T14:02:26.0543990Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache@v4, actions/checkout@v4, actions/download-artifact@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

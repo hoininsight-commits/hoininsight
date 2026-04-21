@@ -205,122 +205,110 @@ class PublisherAgent:
         print(f"  signal_log.json 업데이트 (누적: {len(log['signals'])}개)")
 
     def generate_dashboard_data(self, data: dict, content: dict, pipeline_results: dict = None):
-        """대시보드용 JSON 생성"""
+        """대시보드용 JSON 생성 (UI Contract v2.1 규격 통일)"""
         signal = data.get("signal", {})
         analysis = data.get("analysis", {})
-        stocks = data.get("stocks", {})
-        candidates = data.get("candidates", {})
-
-        # [지시서 #055] COT 상세 데이터 로드 및 통계 포함
-        cot = data.get("cot", {})
-        cot_signals = cot.get("smart_money_signals", [])
+        candidates = data.get("candidates", {}).get("candidates", [])
         
-        # [지시서 #055] 파이프라인 에이전트 상태 (7개)
-        agent_status = {}
-        if pipeline_results and "agent_status" in pipeline_results:
-            agent_status = pipeline_results["agent_status"]
+        # 1. Content Pack 구성 (Tier별 분류)
+        # pipeline_results가 있으면 그곳의 content_pack을 우선 사용
+        content_pack = {
+            "TIER_1": [], "TIER_2": [], "TIER_3": []
+        }
+        
+        if pipeline_results and "content_pack" in pipeline_results:
+            content_pack = pipeline_results["content_pack"]
         else:
-            # 백업: 경로 기반 상태 확인
-            today_str = self.today
-            agent_status = {
-                'collector':    'SUCCESS' if (self.base_dir / f'data/raw/{today_str}').exists() else 'UNKNOWN',
-                'learner':      'UNKNOWN',  # Phase 2 미구현
-                'detector':     'SUCCESS' if (self.base_dir / f'data/signals/{today_str}').exists() else 'UNKNOWN',
-                'analyst':      'SUCCESS' if (self.base_dir / f'data/analysis/{today_str}').exists() else 'UNKNOWN',
-                'writer':       'SUCCESS' if (self.base_dir / f'data/scripts/{today_str}').exists() else 'UNKNOWN',
-                'fact_checker': 'SUCCESS' if (self.base_dir / f'data/scripts/{today_str}/fact_check.json').exists() else 'UNKNOWN',
-                'publisher':    'SUCCESS',
-            }
-        
-        # 원본 데이터 객체들 복구
+            # 백업: 현재 signal 데이터를 TIER_3(기본)에 할당
+            if signal:
+                from src.content.content_tier import map_action_to_tier
+                from src.content.script_generator import generate_tiered_script
+                
+                tier = map_action_to_tier(signal.get("decision_meta", {}).get("action", "WATCH"))
+                processed = {
+                    "topic": signal.get("topic", ""),
+                    "core_claim": analysis.get("topic_core_claim", signal.get("topic", "")),
+                    "why_now": analysis.get("why_now", signal.get("why_now", "")),
+                    "structural_truth": analysis.get("structural_truth", ""),
+                    "level2_chain": analysis.get("level2_chain", []),
+                    "quality_score": analysis.get("quality_score", 50),
+                    "reality_score": analysis.get("reality_score", 0),
+                    "score_trust": analysis.get("score_trust", "MEDIUM"),
+                    "final_action": signal.get("decision_meta", {}).get("action", "WATCH"),
+                    "content_tier": tier,
+                    "script": "스크립트 생성 중..."
+                }
+                content_pack[tier].append(processed)
+
+        # 2. 메인 컨텐츠 추출 (TIER_1 우선)
+        all_contents = []
+        for t in ["TIER_1", "TIER_2", "TIER_3"]:
+            all_contents.extend(content_pack.get(t, []))
+            
+        main_content = {}
+        if all_contents:
+            main_content = all_contents[0]
+
+        # 3. 시장 지표 (Market Snapshot)
         market = data.get("market", {})
-        macro = data.get("macro", {})
-        sentiment = data.get("sentiment", {})
-        putcall = data.get("putcall", {})
+        market_data = market.get("data", {})
+        market_stats = market_data.get("multi_period_stats", {})
         
-        # 파이프라인 결과에서 fact_checker 상태 추출
-        fact_checker = {}
-        if pipeline_results and "fact_checker" in pipeline_results:
-            fact_checker = pipeline_results["fact_checker"]
+        rates_val = market_data.get("us10y", "N/A")
+        spx_val = market_data.get("sp500", "N/A")
+        btc_val = market_data.get("btc_price") or market_data.get("bitcoin") or "N/A"
+        
+        spx_chg = market_data.get("sp500_1d_change", 0)
+        trend = "BULLISH" if spx_chg > 0 else "BEARISH" if spx_chg < 0 else "NEUTRAL"
 
-        # [지시서 #055] 핵심 지표 Z-score 추출
-        market_stats = market.get("data", {}).get("multi_period_stats", {})
-        z_scores = {
-            "SP500": market_stats.get("sp500", {}).get("z_score_20d", 0),
-            "WTI": market_stats.get("wti_oil", {}).get("z_score_20d", 0),
-            "Gold": market_stats.get("gold", {}).get("z_score_20d", 0),
-            "DXY": market_stats.get("dxy", {}).get("z_score_20d", 0),
-            "VIX": market_stats.get("vix", {}).get("z_score_20d", 0)
-        }
+        # 4. 과거 이력 (History Layer)
+        history = []
+        try:
+            index_path = self.base_dir / "docs/topics/index.json"
+            if index_path.exists():
+                history = json.loads(index_path.read_text())[:5]
+        except: pass
 
-        # [지시서 #054/055] 시장 상태 (Risk/Hedge/Conviction) 연산
-        market_state = {
-            "risk_appetite": "하락" if z_scores["VIX"] > 1.0 else ("상승" if z_scores["VIX"] < -1.0 else "중립"),
-            "hedging_activity": "증가" if z_scores["DXY"] > 1.0 else ("감소" if z_scores["DXY"] < -1.0 else "보통"),
-            "conviction": "높음" if abs(signal.get("strength", 0)) >= 8.5 else "낮음"
-        }
-
-        # 롱폼 스크립트 Hook 추출
-        script_hook = ""
-        script_path = data.get("script_long_path")
-        if script_path and Path(script_path).exists():
-            try:
-                raw_content = Path(script_path).read_text(encoding="utf-8")
-                # Hook 섹션 (Step 1) 추출 시도
-                hook_match = re.search(r"\(Step 1: Hook\)\n(.*?)\n\(Step 2", raw_content, re.DOTALL)
-                if hook_match:
-                    script_hook = hook_match.group(1).strip()
-                else:
-                    # 백업: ## 1단계 형식도 유지
-                    hook_match_legacy = re.search(r"## 1단계: Hook.*?\n(.*?)\n##", raw_content, re.DOTALL)
-                    if hook_match_legacy:
-                        script_hook = hook_match_legacy.group(1).strip()
-            except Exception:
-                pass
-
-        dashboard_data = {
-            "last_updated": datetime.now().isoformat(),
-            "today": {
-                "date": f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}",
-                "signal": signal,
-                "analysis": analysis,
-                "stocks": stocks.get("stocks", []),
-                "candidates": candidates.get("candidates", []),
-                "content_id": content.get("id", ""),
-                "status": "승인대기",
-                "fact_checker": fact_checker,
-                "agent_status": agent_status,
-                "engine_status": pipeline_results.get("engine_status", {}) if pipeline_results else {},
-                "cot_signals": cot_signals,
-                "market_state": market_state,
-                "z_scores": z_scores,
-                "script_hook": script_hook
+        # 5. 최종 데이터 계약 (UI/docs 전용)
+        ui_contract = {
+            "top_decision": {
+                "topic": main_content.get("topic", "N/A"),
+                "final_action": main_content.get("final_action", "N/A"),
+                "content_tier": main_content.get("content_tier", "TIER_3"),
+                "summary": main_content.get("core_claim", "데이터 분석 중"),
+                "why_now": main_content.get("why_now", "분석 중")
             },
-            "market": market,
-            "macro": macro,
-            "sentiment": sentiment,
-            "putcall": putcall,
-            "cot": cot
+            "content_pack": content_pack,
+            "reason_layer": {
+                "quality_score": main_content.get("quality_score", 0),
+                "reality_score": main_content.get("reality_score", 0),
+                "score_trust": main_content.get("score_trust", "COLD")
+            },
+            "market_snapshot": {
+                "rates": f"{rates_val}%" if rates_val != "N/A" else "N/A",
+                "spx": f"{spx_val}",
+                "btc": f"{btc_val}",
+                "trend_short": trend,
+                "trend_mid": "UP"
+            },
+            "risk_layer": {
+                "kill_switch": analysis.get("risk_kill_switch", "조건 미정"),
+                "opposite_scenario": analysis.get("opposite_scenario", "시나리오 미정")
+            },
+            "history_layer": history,
+            "last_updated": datetime.now().isoformat()
         }
 
+        # 6. 저장 및 동기화
         output_path = self.dashboard_dir / "today_data.json"
-        output_path.write_text(
-            json.dumps(dashboard_data, ensure_ascii=False, indent=2)
-        )
-        # GitHub Pages용 docs 폴더 업데이트
+        output_path.write_text(json.dumps(ui_contract, ensure_ascii=False, indent=2))
+        
         docs_dir = self.base_dir / "docs"
         docs_dir.mkdir(exist_ok=True)
-        
-        # today_data.json 복사
-        (docs_dir / "today_data.json").write_text(
-            json.dumps(dashboard_data, ensure_ascii=False, indent=2)
-        )
-        # index.html 복사 (지시서 #055 - 리팩토링된 Hero UI 보존을 위해 수동 관리로 변경)
-        # source_html = self.dashboard_dir / "index.html"
-        # if source_html.exists():
-        #     (docs_dir / "index.html").write_text(source_html.read_text(encoding="utf-8"))
+        (docs_dir / "today_data.json").write_text(json.dumps(ui_contract, ensure_ascii=False, indent=2))
         
         print(f"  대시보드 데이터 및 HTML 동기화 완료: {docs_dir}")
+
 
     def update_topics_archive(self, today_data: dict):
         """
