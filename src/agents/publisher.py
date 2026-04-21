@@ -222,7 +222,12 @@ class PublisherAgent:
             # 백업: 현재 signal 데이터를 TIER_3(기본)에 할당
             if signal:
                 from src.content.content_tier import map_action_to_tier
-                from src.content.script_generator import generate_tiered_script
+                
+                # 스크립트 전문 로드
+                script_body = "스크립트 파일 없음"
+                script_path = data.get("script_long_path")
+                if script_path and Path(script_path).exists():
+                    script_body = Path(script_path).read_text(encoding="utf-8")
                 
                 tier = map_action_to_tier(signal.get("decision_meta", {}).get("action", "WATCH"))
                 processed = {
@@ -236,7 +241,7 @@ class PublisherAgent:
                     "score_trust": analysis.get("score_trust", "MEDIUM"),
                     "final_action": signal.get("decision_meta", {}).get("action", "WATCH"),
                     "content_tier": tier,
-                    "script": "스크립트 생성 중..."
+                    "script": script_body
                 }
                 content_pack[tier].append(processed)
 
