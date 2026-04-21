@@ -114,13 +114,18 @@ def run_pipeline():
                 
         update_fallback_stats(is_fallback_run)
         
-        # 2. 품질 점수 및 등급 계산 (Quality v2 적용)
+        # 2. 품질 점수 및 등급/피드백 추출 (Analyst 및 Writer 결과 기반)
         q_score = 0
         q_grade = "FALLBACK"
-        if "writer" in results and results["writer"]:
-            res_data = results["writer"]
-            q_score = calculate_quality_score_v2(res_data, is_fallback=is_fallback_run)
-            q_grade = get_quality_grade(q_score)
+        q_action = "N/A"
+        q_reasons = []
+        
+        if "analyst" in results and "analysis" in results["analyst"]:
+            ana = results["analyst"].get("analysis", {})
+            q_score = ana.get("quality_score", 0)
+            q_grade = ana.get("quality_grade", "FALLBACK")
+            q_action = ana.get("quality_action", "N/A")
+            q_reasons = ana.get("failure_reasons", [])
             
         # 3. 브리핑 데이터에 상태 주입
         state, reason = get_system_state()
@@ -153,6 +158,8 @@ def run_pipeline():
             "failure_breakdown": failure_breakdown,
             "quality_score": q_score,
             "quality_grade": q_grade,
+            "quality_action": q_action,
+            "failure_reasons": q_reasons,
             "fallback_run": is_fallback_run
         }
         

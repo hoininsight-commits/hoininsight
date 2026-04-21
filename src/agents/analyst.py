@@ -171,15 +171,54 @@ class AnalystAgent:
 
         # Phase 7: 품질 정밀 검증 (Quality Score v2 적용)
         from src.validation.quality_score_v2 import calculate_quality_score_v2, get_quality_grade
+        from src.validation.quality_feedback import extract_failure_reasons, save_feedback, decide_action
+        from src.llm.prompt_feedback import build_feedback_prompt
         
         is_fb = result.get("fallback_used", False)
         score = calculate_quality_score_v2(result, is_fallback=is_fb)
         grade = get_quality_grade(score)
+        reasons = extract_failure_reasons(result, score)
+        action = decide_action(score)
+        
+        # [SELF-REFINEMENT] 점수가 낮은 경우 1회 재생성 시도
+        if action == "REGENERATE" and not is_fb:
+            print(f"  🔄 [REGENERATE] Score {score} too low. Retrying with feedback...")
+            feedback_instr = build_feedback_prompt(reasons)
+            # 프롬프트 앞에 피드백 부착
+            refined_prompt = feedback_instr + "\n\n" + prompt
+            
+            try:
+                refined_result = self.gemini.call_json_controlled(refined_prompt, agent="ANALYST")
+                if refined_result and refined_result.get("topic_core_claim"):
+                    # 재생성된 결과로 점수 재계산
+                    new_score = calculate_quality_score_v2(refined_result, is_fallback=False)
+                    new_grade = get_quality_grade(new_score)
+                    print(f"  ✨ [REFINED] Score: {score} -> {new_score} | Grade: {new_grade}")
+                    
+                    result = refined_result
+                    score = new_score
+                    grade = new_grade
+                    reasons = extract_failure_reasons(result, score)
+                    action = decide_action(score)
+            except Exception as e:
+                print(f"  ⚠️ Regeneration failed: {e}")
+
+        # 피드백 로그 저장
+        save_feedback({
+            "timestamp": datetime.now().isoformat(),
+            "agent": "ANALYST",
+            "score": score,
+            "grade": grade,
+            "reasons": reasons,
+            "action": action
+        })
         
         result["quality_score"] = score
         result["quality_grade"] = grade
+        result["quality_action"] = action
+        result["failure_reasons"] = reasons
         
-        print(f"  ✅ [QUALITY_v2] Score: {score} | Grade: {grade}")
+        print(f"  ✅ [QUALITY_FINAL] Score: {score} | Grade: {grade} | Action: {action}")
 
         # 2차 필터링 적용 (3계층 준수 여부 사후 검증)
         result["level2_chain"] = self._filter_level2_chain(result.get("level2_chain", []), raw_data)

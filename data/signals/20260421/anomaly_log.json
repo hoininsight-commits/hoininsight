@@ -1,13 +1,13 @@
 [
   {
-    "topic": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+    "topic": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
     "anomaly_type": "NEWS_MISMATCH",
-    "why_anomalous": "DeepSeek발 AI 섹터 폭락 뉴스가 시장을 지배하고 있음에도 불구하고, S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 이동평균 대비 극단적 과매수 구간에 진입함. 악재성 뉴스 헤드라인과 실제 지수 퍼포먼스 간의 심각한 괴리가 관찰됨.",
-    "why_now": "오늘 DeepSeek 관련 AI Rout 뉴스가 메인 헤드라인을 장식했음에도 지수는 오히려 기술적 과열권인 Z-score 1.6 이상을 기록하며 신고가 랠리를 지속함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+    "why_anomalous": "뉴스 헤드라인은 DeepSeek발 AI 섹터 폭락(AI Rout)과 주가 하락을 보도하고 있으나, 실제 데이터상 KOSPI(6351.73)와 S&P500(7109.14)은 Z-score 1.6~1.7 수준의 비현실적 고점에 위치함.",
+    "why_now": "오늘 발표된 DeepSeek 관련 악재 뉴스와 실제 시장 지표의 움직임이 정반대로 나타나며 정보와 가격의 극심한 괴리가 발생함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
     "key_indicators": [
-      "sp500",
       "kospi",
-      "DeepSeek news"
+      "sp500",
+      "DeepSeek News"
     ],
     "strength": 10.0,
     "second_order_deviation": false,
@@ -23,7 +23,7 @@
     "trigger_binding_score": 0.0,
     "why_now_hint": "",
     "detector_boost": 0.0,
-    "extended_strength": 8.0,
+    "extended_strength": 8.3,
     "flow_confirmation": false,
     "flow_strength": 2.0,
     "flow_direction": "outflow",
@@ -40,16 +40,16 @@
     "date": "20260421"
   },
   {
-    "topic": "지정학적 위기 고조 속 유가의 비정상적 하락세",
+    "topic": "에너지 시장 급락과 주식 시장 과열의 디커플링",
     "anomaly_type": "SPEED",
-    "why_anomalous": "NATO의 해저 케이블 사보타주 대응 및 가자/콩고 분쟁 등 공급망을 위협하는 지정학적 리스크가 산재해 있으나, WTI 유가는 Z-score -1.3으로 비정상적인 하락 과매도 상태를 유지함.",
-    "why_now": "사보타주 의혹과 NATO의 첫 대응이라는 강력한 지정학적 모멘텀이 발생한 시점임에도 유가가 반등하지 못하고 하락 추세를 지속하고 있음.. 뉴스 트리거: Hormuz disruptions hit China’s Christmas capital — and holiday spending",
+    "why_anomalous": "WTI 유가가 Z-score -1.3으로 급락하며 수요 둔화 신호를 보내는 반면, 주식 시장은 역대급 과열(Z-score 1.73) 상태를 보이며 실물 경기 지표와 금융 자산 간의 속도 차이가 임계치를 넘어섬.",
+    "why_now": "유가의 하락 속도가 가팔라지는 시점에 주가지수는 오히려 역사적 고점을 경신하며 두 자산군 간의 통계적 이격도가 오늘 최대치에 도달함.. 뉴스 트리거: GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진",
     "key_indicators": [
       "wti_oil",
-      "Sabotage news",
-      "Geopolitical risk"
+      "sp500",
+      "kospi"
     ],
-    "strength": 9.3,
+    "strength": 9.7,
     "second_order_deviation": false,
     "deviation_direction": "neutral",
     "deviation_delta": 0.0,
@@ -63,7 +63,7 @@
     "trigger_binding_score": 0.0,
     "why_now_hint": "",
     "detector_boost": 0.0,
-    "extended_strength": 7.3,
+    "extended_strength": 7.7,
     "flow_confirmation": false,
     "flow_strength": 2.0,
     "flow_direction": "outflow",
@@ -73,20 +73,20 @@
     "trigger_event": "none",
     "price_strength": "sideways",
     "flow_consistency": 0,
-    "news_trigger": "Hormuz disruptions hit China’s Christmas capital — and holiday spending"
+    "news_trigger": "GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진"
   },
   {
-    "topic": "안전자산 선호 심리와 변동성 지수(VIX)의 디커플링",
+    "topic": "안전자산 선호와 위험자산 폭등의 비정상적 동행",
     "anomaly_type": "CORRELATION",
-    "why_anomalous": "DeepSeek 뉴스로 인해 엔화(JPY)와 스위스 프랑(CHF) 등 안전자산 수요가 증가했다는 보도가 실시간으로 나오고 있으나, 시장의 공포를 나타내는 VIX 지수는 Z-score -0.99로 오히려 안정세를 보이며 모순적 상황을 연출함.",
-    "why_now": "안전 자산으로의 자금 이동 보도와 실제 시장 변동성 지표의 하락이 동시에 관찰되며 투자 심리와 지표 간의 방향성이 엇갈림.. 뉴스 트리거: Comex Gold, Silver Settle Lower",
+    "why_anomalous": "DeepSeek 뉴스로 인해 엔화, 스위스 프랑 등 안전자산 수요가 급증하고 금 가격(Z-score 1.12)이 높은 수준을 유지함에도 불구하고, 대표적 위험자산인 주식이 동반 폭등하는 상관관계 붕괴 현상 발생.",
+    "why_now": "시장 내 공포(Safe Haven)와 탐욕(Stock Highs)이 한 시점에 공존하며 자산 배분의 논리가 작동하지 않는 특이점이 오늘 관측됨.. 뉴스 트리거: Comex Gold, Silver Settle Lower",
     "key_indicators": [
+      "gold",
+      "sp500",
       "vix",
-      "jpy",
-      "chf",
-      "Safe haven news"
+      "Safe Haven News"
     ],
-    "strength": 8.7,
+    "strength": 9.0,
     "second_order_deviation": false,
     "deviation_direction": "neutral",
     "deviation_delta": 0.0,
@@ -100,7 +100,7 @@
     "trigger_binding_score": 0.0,
     "why_now_hint": "",
     "detector_boost": 0.0,
-    "extended_strength": 6.7,
+    "extended_strength": 7.0,
     "flow_confirmation": false,
     "flow_strength": 2.0,
     "flow_direction": "outflow",

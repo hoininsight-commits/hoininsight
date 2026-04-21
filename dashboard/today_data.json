@@ -1,16 +1,16 @@
 {
-  "last_updated": "2026-04-21T12:52:06.543004",
+  "last_updated": "2026-04-21T12:57:38.698765",
   "today": {
     "date": "2026-04-21",
     "signal": {
-      "topic": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+      "topic": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
       "anomaly_type": "NEWS_MISMATCH",
-      "why_anomalous": "DeepSeek발 AI 섹터 폭락 뉴스가 시장을 지배하고 있음에도 불구하고, S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 이동평균 대비 극단적 과매수 구간에 진입함. 악재성 뉴스 헤드라인과 실제 지수 퍼포먼스 간의 심각한 괴리가 관찰됨.",
-      "why_now": "오늘 DeepSeek 관련 AI Rout 뉴스가 메인 헤드라인을 장식했음에도 지수는 오히려 기술적 과열권인 Z-score 1.6 이상을 기록하며 신고가 랠리를 지속함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+      "why_anomalous": "뉴스 헤드라인은 DeepSeek발 AI 섹터 폭락(AI Rout)과 주가 하락을 보도하고 있으나, 실제 데이터상 KOSPI(6351.73)와 S&P500(7109.14)은 Z-score 1.6~1.7 수준의 비현실적 고점에 위치함.",
+      "why_now": "오늘 발표된 DeepSeek 관련 악재 뉴스와 실제 시장 지표의 움직임이 정반대로 나타나며 정보와 가격의 극심한 괴리가 발생함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
       "key_indicators": [
-        "sp500",
         "kospi",
-        "DeepSeek news"
+        "sp500",
+        "DeepSeek News"
       ],
       "strength": 10.0,
       "second_order_deviation": false,
@@ -26,7 +26,7 @@
       "trigger_binding_score": 0.0,
       "why_now_hint": "",
       "detector_boost": 0.0,
-      "extended_strength": 8.0,
+      "extended_strength": 8.3,
       "flow_confirmation": false,
       "flow_strength": 2.0,
       "flow_direction": "outflow",
@@ -42,7 +42,7 @@
       "content_type": "롱폼",
       "date": "20260421",
       "base_price": 6352.49,
-      "surface": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+      "surface": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
       "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
       "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
       "consequence_chain": [
@@ -72,57 +72,59 @@
         "decision_hint": "P_Val -0.50 / Conf 0.70 (CF: 1.1)"
       },
       "level2_chain": [
-        "[F] S&P500 지수는 오늘 7109.14로 90일 최고치를 기록했다.",
-        "[I] 지수 신고가와 헤지펀드 숏 전환의 괴리는 추세 반전 가능성을 시사한다.",
-        "[I] 국채 금리와 달러의 동반 하락은 유입 친화적 환경 조성을 시사한다."
+        "[F] S&P500 헤지펀드 순포지션이 -42만 계약으로 급감했다.",
+        "[I] 지수 신고가와 헤지펀드 숏 전환은 추세 반전 가능성을 시사한다.",
+        "[I] 금 가격 상승은 시장의 잠재적 불안 심리 반영으로 읽힌다."
       ]
     },
     "analysis": {
-      "topic_core_claim": "AI 폭락 뉴스라는 연막 속, 지수 신고가와 헤지펀드의 역대급 숏 포지션 충돌",
-      "one_line_summary": "지수 신고가 경신에도 헤지펀드는 기록적 숏 전환과 금 매집",
-      "why_now": "[F] S&P500이 90일 신고가를 경신한 오늘, 헤지펀드 포지션이 8주 만에 처음으로 -42만 계약의 숏으로 플립되었다.",
-      "surface_fact": "AI 폭락 뉴스에도 주요 지수 90일 신고가 행진",
-      "structural_truth": "지수 상승을 이용한 헤지펀드의 대규모 하락 베팅",
-      "capital_flow": "헤지펀드 S&P500 숏 전환 및 금 매수 강화",
+      "topic_core_claim": "AI 비관론을 압도한 지수 신고가와 헤지펀드의 대규모 숏 전환",
+      "one_line_summary": "역사적 고점에서의 가격-수급 디커플링 심화",
+      "why_now": "[F]S&P500 숏 전환과 [I]지수 90일 최고점 도달이 동시 포착된 시점",
+      "surface_fact": "AI 폭락 뉴스에도 주요 지수 역사적 고점 경신",
+      "structural_truth": "지수 견인력 약화 속 헤지펀드의 하락 베팅 본격화",
+      "capital_flow": "헤지펀드 지수 매도 및 금 매수 강화",
       "primary_beneficiary": "HBM 및 전력 인프라 섹터",
-      "risk_kill_switch": "S&P500 헤지펀드 숏 포지션이 다시 롱으로 반전될 시",
+      "risk_kill_switch": "S&P500 7200 돌파 및 VIX 15 하회 시",
       "market_state": {
         "risk_appetite": "상승",
         "hedging_activity": "증가",
         "conviction": "낮음"
       },
       "level2_chain": [
-        "[F] S&P500 지수는 오늘 7109.14로 90일 최고치를 기록했다.",
-        "[I] 지수 신고가와 헤지펀드 숏 전환의 괴리는 추세 반전 가능성을 시사한다.",
-        "[I] 국채 금리와 달러의 동반 하락은 유입 친화적 환경 조성을 시사한다."
+        "[F] S&P500 헤지펀드 순포지션이 -42만 계약으로 급감했다.",
+        "[I] 지수 신고가와 헤지펀드 숏 전환은 추세 반전 가능성을 시사한다.",
+        "[I] 금 가격 상승은 시장의 잠재적 불안 심리 반영으로 읽힌다."
       ],
       "decision_meta": {
         "best_scenario": "BEAR",
         "confidence": 0.7,
         "action": "WATCH",
-        "bull_story": "금리 하락에 따른 유동성 공급이 헤지펀드의 숏 포지션을 강제 청산시키며 오버슈팅",
-        "bear_story": "AI 실적 우려가 현실화되며 헤지펀드의 대규모 숏 포지션이 수익 구간으로 진입"
+        "bull_story": "AI 실적 우려 불식 및 패시브 자금의 강제 매수 유입",
+        "bear_story": "헤지펀드 숏 포지션 실현 및 AI 밸류에이션 거품 붕괴"
       },
       "key_stocks": [
-        "HBM",
+        "HBM 섹터",
         "데이터센터 인프라",
         "전력 설비"
       ],
       "fallback_used": false,
-      "quality_score": 95,
-      "quality_grade": "HIGH"
+      "quality_score": 90,
+      "quality_grade": "HIGH",
+      "quality_action": "USE",
+      "failure_reasons": []
     },
     "stocks": [],
     "candidates": [
       {
-        "topic": "AI 폭락 뉴스 속 주요 지수의 역설적 신고가 행진",
+        "topic": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
         "anomaly_type": "NEWS_MISMATCH",
-        "why_anomalous": "DeepSeek발 AI 섹터 폭락 뉴스가 시장을 지배하고 있음에도 불구하고, S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 이동평균 대비 극단적 과매수 구간에 진입함. 악재성 뉴스 헤드라인과 실제 지수 퍼포먼스 간의 심각한 괴리가 관찰됨.",
-        "why_now": "오늘 DeepSeek 관련 AI Rout 뉴스가 메인 헤드라인을 장식했음에도 지수는 오히려 기술적 과열권인 Z-score 1.6 이상을 기록하며 신고가 랠리를 지속함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+        "why_anomalous": "뉴스 헤드라인은 DeepSeek발 AI 섹터 폭락(AI Rout)과 주가 하락을 보도하고 있으나, 실제 데이터상 KOSPI(6351.73)와 S&P500(7109.14)은 Z-score 1.6~1.7 수준의 비현실적 고점에 위치함.",
+        "why_now": "오늘 발표된 DeepSeek 관련 악재 뉴스와 실제 시장 지표의 움직임이 정반대로 나타나며 정보와 가격의 극심한 괴리가 발생함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
         "key_indicators": [
-          "sp500",
           "kospi",
-          "DeepSeek news"
+          "sp500",
+          "DeepSeek News"
         ],
         "strength": 10.0,
         "second_order_deviation": false,
@@ -138,7 +140,7 @@
         "trigger_binding_score": 0.0,
         "why_now_hint": "",
         "detector_boost": 0.0,
-        "extended_strength": 8.0,
+        "extended_strength": 8.3,
         "flow_confirmation": false,
         "flow_strength": 2.0,
         "flow_direction": "outflow",
@@ -155,16 +157,16 @@
         "date": "20260421"
       },
       {
-        "topic": "지정학적 위기 고조 속 유가의 비정상적 하락세",
+        "topic": "에너지 시장 급락과 주식 시장 과열의 디커플링",
         "anomaly_type": "SPEED",
-        "why_anomalous": "NATO의 해저 케이블 사보타주 대응 및 가자/콩고 분쟁 등 공급망을 위협하는 지정학적 리스크가 산재해 있으나, WTI 유가는 Z-score -1.3으로 비정상적인 하락 과매도 상태를 유지함.",
-        "why_now": "사보타주 의혹과 NATO의 첫 대응이라는 강력한 지정학적 모멘텀이 발생한 시점임에도 유가가 반등하지 못하고 하락 추세를 지속하고 있음.. 뉴스 트리거: Hormuz disruptions hit China’s Christmas capital — and holiday spending",
+        "why_anomalous": "WTI 유가가 Z-score -1.3으로 급락하며 수요 둔화 신호를 보내는 반면, 주식 시장은 역대급 과열(Z-score 1.73) 상태를 보이며 실물 경기 지표와 금융 자산 간의 속도 차이가 임계치를 넘어섬.",
+        "why_now": "유가의 하락 속도가 가팔라지는 시점에 주가지수는 오히려 역사적 고점을 경신하며 두 자산군 간의 통계적 이격도가 오늘 최대치에 도달함.. 뉴스 트리거: GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진",
         "key_indicators": [
           "wti_oil",
-          "Sabotage news",
-          "Geopolitical risk"
+          "sp500",
+          "kospi"
         ],
-        "strength": 9.3,
+        "strength": 9.7,
         "second_order_deviation": false,
         "deviation_direction": "neutral",
         "deviation_delta": 0.0,
@@ -178,7 +180,7 @@
         "trigger_binding_score": 0.0,
         "why_now_hint": "",
         "detector_boost": 0.0,
-        "extended_strength": 7.3,
+        "extended_strength": 7.7,
         "flow_confirmation": false,
         "flow_strength": 2.0,
         "flow_direction": "outflow",
@@ -188,20 +190,20 @@
         "trigger_event": "none",
         "price_strength": "sideways",
         "flow_consistency": 0,
-        "news_trigger": "Hormuz disruptions hit China’s Christmas capital — and holiday spending"
+        "news_trigger": "GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진"
       },
       {
-        "topic": "안전자산 선호 심리와 변동성 지수(VIX)의 디커플링",
+        "topic": "안전자산 선호와 위험자산 폭등의 비정상적 동행",
         "anomaly_type": "CORRELATION",
-        "why_anomalous": "DeepSeek 뉴스로 인해 엔화(JPY)와 스위스 프랑(CHF) 등 안전자산 수요가 증가했다는 보도가 실시간으로 나오고 있으나, 시장의 공포를 나타내는 VIX 지수는 Z-score -0.99로 오히려 안정세를 보이며 모순적 상황을 연출함.",
-        "why_now": "안전 자산으로의 자금 이동 보도와 실제 시장 변동성 지표의 하락이 동시에 관찰되며 투자 심리와 지표 간의 방향성이 엇갈림.. 뉴스 트리거: Comex Gold, Silver Settle Lower",
+        "why_anomalous": "DeepSeek 뉴스로 인해 엔화, 스위스 프랑 등 안전자산 수요가 급증하고 금 가격(Z-score 1.12)이 높은 수준을 유지함에도 불구하고, 대표적 위험자산인 주식이 동반 폭등하는 상관관계 붕괴 현상 발생.",
+        "why_now": "시장 내 공포(Safe Haven)와 탐욕(Stock Highs)이 한 시점에 공존하며 자산 배분의 논리가 작동하지 않는 특이점이 오늘 관측됨.. 뉴스 트리거: Comex Gold, Silver Settle Lower",
         "key_indicators": [
+          "gold",
+          "sp500",
           "vix",
-          "jpy",
-          "chf",
-          "Safe haven news"
+          "Safe Haven News"
         ],
-        "strength": 8.7,
+        "strength": 9.0,
         "second_order_deviation": false,
         "deviation_direction": "neutral",
         "deviation_delta": 0.0,
@@ -215,7 +217,7 @@
         "trigger_binding_score": 0.0,
         "why_now_hint": "",
         "detector_boost": 0.0,
-        "extended_strength": 6.7,
+        "extended_strength": 7.0,
         "flow_confirmation": false,
         "flow_strength": 2.0,
         "flow_direction": "outflow",
@@ -315,12 +317,14 @@
     },
     "engine_status": {
       "system_state": "CRITICAL",
-      "reason": "Fallback Ratio: 0.6, Gemini Health: CRITICAL",
+      "reason": "Fallback Ratio: 0.57, Gemini Health: CRITICAL",
       "gemini_health": "UNKNOWN",
       "fallback_ratio": 0.0,
       "failure_breakdown": {},
-      "quality_score": 0,
-      "quality_grade": "FALLBACK",
+      "quality_score": 90,
+      "quality_grade": "HIGH",
+      "quality_action": "USE",
+      "failure_reasons": [],
       "fallback_run": false
     },
     "cot_signals": [
@@ -370,7 +374,7 @@
       "DXY": -1.24,
       "VIX": -0.99
     },
-    "script_hook": "시장은 쉴 새 없이 움직이는데, 왜 정작 방향을 결정지어야 할 핵심 데이터들은 아무런 대답을 하지 않는 걸까? 지수는 요동치고 있지만, 그 이면을 들여다보면 무언가 맞지 않는 모순이 포착되고 있어."
+    "script_hook": "지수는 변동성을 보이고 있는데, 정작 시장의 방향을 결정해야 할 핵심 주체들의 데이터가 보이지 않는 상황, 이거 이상하지 않아? 모두가 다음 움직임을 주시하고 있지만, 정작 숫자로 증명되어야 할 포지션들은 기묘할 정도로 정체되어 있어."
   },
   "market": {
     "date": "20260421",

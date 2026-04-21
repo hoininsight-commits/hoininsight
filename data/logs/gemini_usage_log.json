@@ -1,40 +1,5 @@
 [
   {
-    "timestamp": "2026-04-21T10:26:52.888185",
-    "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T10:27:10.082338",
-    "agent": "DETECTOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T10:27:24.228265",
-    "agent": "ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T10:27:57.932843",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T10:28:11.990131",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-04-21T10:29:18.159033",
     "agent": "DETECTOR",
     "success": true,
@@ -694,6 +659,41 @@
   },
   {
     "timestamp": "2026-04-21T12:52:06.517999",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:56:20.527394",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:56:36.236012",
+    "agent": "DETECTOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:56:47.943183",
+    "agent": "ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:57:14.880583",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-21T12:57:38.685552",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,

@@ -1,35 +1,37 @@
 {
-  "topic_core_claim": "AI 폭락 뉴스라는 연막 속, 지수 신고가와 헤지펀드의 역대급 숏 포지션 충돌",
-  "one_line_summary": "지수 신고가 경신에도 헤지펀드는 기록적 숏 전환과 금 매집",
-  "why_now": "[F] S&P500이 90일 신고가를 경신한 오늘, 헤지펀드 포지션이 8주 만에 처음으로 -42만 계약의 숏으로 플립되었다.",
-  "surface_fact": "AI 폭락 뉴스에도 주요 지수 90일 신고가 행진",
-  "structural_truth": "지수 상승을 이용한 헤지펀드의 대규모 하락 베팅",
-  "capital_flow": "헤지펀드 S&P500 숏 전환 및 금 매수 강화",
+  "topic_core_claim": "AI 비관론을 압도한 지수 신고가와 헤지펀드의 대규모 숏 전환",
+  "one_line_summary": "역사적 고점에서의 가격-수급 디커플링 심화",
+  "why_now": "[F]S&P500 숏 전환과 [I]지수 90일 최고점 도달이 동시 포착된 시점",
+  "surface_fact": "AI 폭락 뉴스에도 주요 지수 역사적 고점 경신",
+  "structural_truth": "지수 견인력 약화 속 헤지펀드의 하락 베팅 본격화",
+  "capital_flow": "헤지펀드 지수 매도 및 금 매수 강화",
   "primary_beneficiary": "HBM 및 전력 인프라 섹터",
-  "risk_kill_switch": "S&P500 헤지펀드 숏 포지션이 다시 롱으로 반전될 시",
+  "risk_kill_switch": "S&P500 7200 돌파 및 VIX 15 하회 시",
   "market_state": {
     "risk_appetite": "상승",
     "hedging_activity": "증가",
     "conviction": "낮음"
   },
   "level2_chain": [
-    "[F] S&P500 지수는 오늘 7109.14로 90일 최고치를 기록했다.",
-    "[I] 지수 신고가와 헤지펀드 숏 전환의 괴리는 추세 반전 가능성을 시사한다.",
-    "[I] 국채 금리와 달러의 동반 하락은 유입 친화적 환경 조성을 시사한다."
+    "[F] S&P500 헤지펀드 순포지션이 -42만 계약으로 급감했다.",
+    "[I] 지수 신고가와 헤지펀드 숏 전환은 추세 반전 가능성을 시사한다.",
+    "[I] 금 가격 상승은 시장의 잠재적 불안 심리 반영으로 읽힌다."
   ],
   "decision_meta": {
     "best_scenario": "BEAR",
     "confidence": 0.7,
     "action": "WATCH",
-    "bull_story": "금리 하락에 따른 유동성 공급이 헤지펀드의 숏 포지션을 강제 청산시키며 오버슈팅",
-    "bear_story": "AI 실적 우려가 현실화되며 헤지펀드의 대규모 숏 포지션이 수익 구간으로 진입"
+    "bull_story": "AI 실적 우려 불식 및 패시브 자금의 강제 매수 유입",
+    "bear_story": "헤지펀드 숏 포지션 실현 및 AI 밸류에이션 거품 붕괴"
   },
   "key_stocks": [
-    "HBM",
+    "HBM 섹터",
     "데이터센터 인프라",
     "전력 설비"
   ],
   "fallback_used": false,
-  "quality_score": 95,
-  "quality_grade": "HIGH"
+  "quality_score": 90,
+  "quality_grade": "HIGH",
+  "quality_action": "USE",
+  "failure_reasons": []
 }
