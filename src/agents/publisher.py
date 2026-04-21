@@ -12,7 +12,7 @@ from src.utils.telegram_notifier import TelegramNotifier
 class PublisherAgent:
 
     def __init__(self):
-        # Modular CI/CD Trigger Test
+        # Modular CI/CD Trigger Test - FINAL PROOF
 import os
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = datetime.now().strftime("%Y%m%d")
