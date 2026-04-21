@@ -4,6 +4,7 @@ import json
 import os
 import time
 from pathlib import Path
+from datetime import datetime
 from dotenv import load_dotenv
 
 # 프로젝트 루트 .env 명시적 로드
@@ -39,6 +40,31 @@ class GeminiClient:
             )
 
         self.client = genai.Client(api_key=self.api_key)
+        self.health_path = Path("data/monitoring/gemini_health.json")
+        self._init_health()
+
+    def _init_health(self):
+        """health 파일 초기화 및 스케마 보정 (v4.6)"""
+        if not self.health_path.exists():
+            self.health_path.parent.mkdir(parents=True, exist_ok=True)
+            self.health_path.write_text(json.dumps({
+                "status": "NORMAL",
+                "total_calls": 0,
+                "failures": 0,
+                "fallback_ratio": 0.0,
+                "total_input_tokens": 0,
+                "total_output_tokens": 0,
+                "last_updated": ""
+            }, indent=2))
+        else:
+            # 기존 파일에 토큰 필드 없으면 추가
+            try:
+                h = json.loads(self.health_path.read_text())
+                if "total_input_tokens" not in h:
+                    h["total_input_tokens"] = 0
+                    h["total_output_tokens"] = 0
+                    self.health_path.write_text(json.dumps(h, indent=2))
+            except: pass
 
     def call_text(self, prompt: str, max_tokens: int = 4000) -> str:
         """Alias for call() to satisfy existing verification scripts"""
@@ -74,6 +100,15 @@ class GeminiClient:
             contents=prompt,
             config=config
         )
+        
+        # [COST_TRACKING] 토큰 사용량 기록 (v4.6)
+        usage = getattr(response, "usage_metadata", None)
+        if usage:
+            self._update_health(
+                success=True, 
+                in_t=getattr(usage, "prompt_token_count", 0), 
+                out_t=getattr(usage, "candidates_token_count", 0)
+            )
         
         # [DEBUG] 종료 사유 분석
         reason = response.candidates[0].finish_reason
@@ -151,6 +186,28 @@ class GeminiClient:
         print(f"  ⚠️ JSON Recovery Failed. Length: {len(response)}")
         return {}
 
+    def _update_health(self, success=True, in_t=0, out_t=0):
+        """실시간 호출 및 비용 상태 업데이트"""
+        import json
+        try:
+            h = json.loads(self.health_path.read_text())
+            h["total_calls"] += 1
+            if not success: h["failures"] += 1
+            
+            h["total_input_tokens"] += in_t
+            h["total_output_tokens"] += out_t
+            
+            h["fallback_ratio"] = round(h["failures"] / h["total_calls"], 2)
+            h["last_updated"] = datetime.now().isoformat()
+            
+            # 상태 등급 결정
+            if h["fallback_ratio"] > 0.5: h["status"] = "CRITICAL"
+            elif h["fallback_ratio"] > 0.1: h["status"] = "WARNING"
+            else: h["status"] = "NORMAL"
+            
+            self.health_path.write_text(json.dumps(h, indent=2, ensure_ascii=False))
+        except: pass
+
     def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN") -> dict:
         """Control Layer가 적용된 JSON 호출 (v1.0)"""
         from src.llm.gemini_wrapper import call_gemini_with_control
@@ -159,11 +216,14 @@ class GeminiClient:
     def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 4000) -> str:
         """Control Layer가 적용된 텍스트 호출 (로깅 포함)"""
         from src.llm.gemini_wrapper import log_gemini_usage
+        import json
         try:
             res = self.call(prompt, max_tokens=max_tokens)
             if not res: raise Exception("Empty Text Response")
             log_gemini_usage(agent, success=True, fallback_used=False, retry_count=0)
             return res
         except Exception as e:
+            # 429 에러 등 실패 시에도 로깅 (in_t, out_t는 0)
+            self._update_health(success=False)
             log_gemini_usage(agent, success=False, fallback_used=True, retry_count=0)
             raise e

@@ -60,36 +60,9 @@ def log_gemini_usage(agent: str, success: bool, fallback_used: bool, retry_count
     
     log_path.write_text(json.dumps(logs[-100:], indent=2, ensure_ascii=False))
 
-def update_gemini_health(success: bool, fallback_used: bool):
-    """Gemini 상태 추적 및 헬스 리포트 업데이트 (지시서 #077 개정)"""
-    health_path = Path("data/monitoring/gemini_health.json")
-    try:
-        health = json.loads(health_path.read_text())
-    except:
-        health = {"status": "HEALTHY", "total_calls": 0, "failures": 0, "fallback_count": 0, "fallback_ratio": 0.0, "last_updated": ""}
-
-    health["total_calls"] += 1
-    if not success:
-        health["failures"] += 1
-    if fallback_used:
-        health["fallback_count"] += 1
-
-    failure_rate = 0.0
-    if health["total_calls"] > 0:
-        health["fallback_ratio"] = round(health["fallback_count"] / health["total_calls"], 2)
-        failure_rate = health["failures"] / health["total_calls"]
-
-    if failure_rate > 0.5:
-        health["status"] = "CRITICAL"
-    elif failure_rate > 0.3:
-        health["status"] = "DEGRADED"
-    elif failure_rate > 0.1:
-        health["status"] = "WARNING"
-    else:
-        health["status"] = "HEALTHY"
-
-    health["last_updated"] = datetime.now().isoformat()
-    health_path.write_text(json.dumps(health, indent=2, ensure_ascii=False))
+def update_gemini_health(client, success: bool, fallback_used: bool):
+    """GeminiClient의 통합 헬스 관리 기능을 호출 (v4.6)"""
+    client._update_health(success=success)
 
 MAX_RETRY = 2
 
@@ -129,7 +102,7 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
 
             # 최종 성공
             log_gemini_usage(agent, success=True, fallback_used=False, retry_count=attempt)
-            update_gemini_health(success=True, fallback_used=False)
+            # update_gemini_health 제거 (client.call_json 내부에서 이미 처리됨)
             return data
 
         except Exception as e:
@@ -153,5 +126,5 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
 
     # 모든 시도 실패 시
     log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
-    update_gemini_health(success=False, fallback_used=True)
+    update_gemini_health(client, success=False, fallback_used=True)
     return None

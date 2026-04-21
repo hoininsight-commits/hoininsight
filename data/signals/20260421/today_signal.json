@@ -1,12 +1,12 @@
 {
-  "topic": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
+  "topic": "AI 폭락 뉴스 속 지수의 역사적 고점 유지",
   "anomaly_type": "NEWS_MISMATCH",
-  "why_anomalous": "뉴스 헤드라인은 DeepSeek발 AI 섹터 폭락(AI Rout)과 주가 하락을 보도하고 있으나, 실제 데이터상 KOSPI(6351.73)와 S&P500(7109.14)은 Z-score 1.6~1.7 수준의 비현실적 고점에 위치함.",
-  "why_now": "오늘 발표된 DeepSeek 관련 악재 뉴스와 실제 시장 지표의 움직임이 정반대로 나타나며 정보와 가격의 극심한 괴리가 발생함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+  "why_anomalous": "DeepSeek발 AI 섹터 폭락(AI Rout) 경고 뉴스가 헤드라인을 장악했음에도 불구하고, 실제 데이터상 S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 평균 대비 극심한 고점 부근에 머물러 있는 가격 괴리가 발견됨.",
+  "why_now": "오늘 DeepSeek 관련 뉴스로 인해 안전자산(엔, 프랑) 수요가 증가했음에도 불구하고 주요 주가지수는 여전히 역사적 상단에 위치하여 하락 압력을 무시하고 있음.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
   "key_indicators": [
-    "kospi",
     "sp500",
-    "DeepSeek News"
+    "kospi",
+    "vix"
   ],
   "strength": 10.0,
   "second_order_deviation": false,
@@ -22,7 +22,7 @@
   "trigger_binding_score": 0.0,
   "why_now_hint": "",
   "detector_boost": 0.0,
-  "extended_strength": 8.3,
+  "extended_strength": 8.0,
   "flow_confirmation": false,
   "flow_strength": 2.0,
   "flow_direction": "outflow",
@@ -38,7 +38,7 @@
   "content_type": "롱폼",
   "date": "20260421",
   "base_price": 6352.49,
-  "surface": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
+  "surface": "AI 폭락 뉴스 속 지수의 역사적 고점 유지",
   "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
   "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
   "consequence_chain": [

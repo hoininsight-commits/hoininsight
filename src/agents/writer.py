@@ -174,6 +174,9 @@ class WriterAgent:
             return {"status": "FAIL", "reason": "No context"}
 
         long_script = self.generate_long(context)
+        # ⚠️ 임시: [FALLBACK] 키워드로 감지 (정밀화 필요 시 플래그 전달 체인 구축)
+        is_fallback_script = "[FALLBACK]" in long_script or "분석 데이터 품질 미달" in long_script
+        
         short_script = self.generate_shorts(context)
         self.save_scripts(long_script, short_script)
         
@@ -182,7 +185,7 @@ class WriterAgent:
         
         # Writer 결과물은 analysis의 내용을 기반으로 하되, 
         # 본인이 fallback 시나리오를 썼는지 context["analysis"]가 fallback인지 확인
-        is_fb = is_fallback or context.get("analysis", {}).get("fallback_used", False)
+        is_fb = is_fallback_script or context.get("analysis", {}).get("fallback_used", False)
         
         # 평가 데이터 준비 (Writer는 텍스트 위주이므로 analysis 필드를 가상으로 채워 평가)
         eval_data = {

@@ -128,7 +128,7 @@ def run_pipeline():
             q_reasons = ana.get("failure_reasons", [])
             
         # 3. 브리핑 데이터에 상태 주입
-        state, reason = get_system_state()
+        state, reason = get_system_state(quality_score=q_score)
         
         # 추가 지표 로드 (#077/078)
         gemini_status = "UNKNOWN"

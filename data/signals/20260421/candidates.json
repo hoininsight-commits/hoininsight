@@ -3,14 +3,14 @@
   "total_candidates": 5,
   "candidates": [
     {
-      "topic": "AI 폭락 뉴스 속의 지수 역사적 고점 경신",
+      "topic": "AI 폭락 뉴스 속 지수의 역사적 고점 유지",
       "anomaly_type": "NEWS_MISMATCH",
-      "why_anomalous": "뉴스 헤드라인은 DeepSeek발 AI 섹터 폭락(AI Rout)과 주가 하락을 보도하고 있으나, 실제 데이터상 KOSPI(6351.73)와 S&P500(7109.14)은 Z-score 1.6~1.7 수준의 비현실적 고점에 위치함.",
-      "why_now": "오늘 발표된 DeepSeek 관련 악재 뉴스와 실제 시장 지표의 움직임이 정반대로 나타나며 정보와 가격의 극심한 괴리가 발생함.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+      "why_anomalous": "DeepSeek발 AI 섹터 폭락(AI Rout) 경고 뉴스가 헤드라인을 장악했음에도 불구하고, 실제 데이터상 S&P500(Z-score 1.65)과 KOSPI(Z-score 1.73)는 20일 평균 대비 극심한 고점 부근에 머물러 있는 가격 괴리가 발견됨.",
+      "why_now": "오늘 DeepSeek 관련 뉴스로 인해 안전자산(엔, 프랑) 수요가 증가했음에도 불구하고 주요 주가지수는 여전히 역사적 상단에 위치하여 하락 압력을 무시하고 있음.. 뉴스 트리거: Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
       "key_indicators": [
-        "kospi",
         "sp500",
-        "DeepSeek News"
+        "kospi",
+        "vix"
       ],
       "strength": 10.0,
       "second_order_deviation": false,
@@ -26,7 +26,7 @@
       "trigger_binding_score": 0.0,
       "why_now_hint": "",
       "detector_boost": 0.0,
-      "extended_strength": 8.3,
+      "extended_strength": 8.0,
       "flow_confirmation": false,
       "flow_strength": 2.0,
       "flow_direction": "outflow",
@@ -43,16 +43,16 @@
       "date": "20260421"
     },
     {
-      "topic": "에너지 시장 급락과 주식 시장 과열의 디커플링",
-      "anomaly_type": "SPEED",
-      "why_anomalous": "WTI 유가가 Z-score -1.3으로 급락하며 수요 둔화 신호를 보내는 반면, 주식 시장은 역대급 과열(Z-score 1.73) 상태를 보이며 실물 경기 지표와 금융 자산 간의 속도 차이가 임계치를 넘어섬.",
-      "why_now": "유가의 하락 속도가 가팔라지는 시점에 주가지수는 오히려 역사적 고점을 경신하며 두 자산군 간의 통계적 이격도가 오늘 최대치에 도달함.. 뉴스 트리거: GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진",
+      "topic": "지정학적 위기 고조와 공포지수의 비정상적 하락",
+      "anomaly_type": "CORRELATION",
+      "why_anomalous": "NATO가 대응하는 해저 케이블 사보타주 및 중동/아프리카 분쟁 등 지정학적 리스크가 실질적 위협으로 부상했으나, VIX 지수는 20일 평균 대비 하락(Z-score -0.99)하며 시장의 안도감이 비정상적으로 높음.",
+      "why_now": "NATO 주도의 첫 대응이라는 구체적인 군사적 긴장감이 발생한 시점임에도 금융 스트레스 지수(-0.6475)가 매우 낮은 수준을 유지하는 극심한 낙관론이 관찰됨.",
       "key_indicators": [
-        "wti_oil",
-        "sp500",
-        "kospi"
+        "vix",
+        "financial_stress",
+        "NATO response news"
       ],
-      "strength": 9.7,
+      "strength": 8.8,
       "second_order_deviation": false,
       "deviation_direction": "neutral",
       "deviation_delta": 0.0,
@@ -66,7 +66,7 @@
       "trigger_binding_score": 0.0,
       "why_now_hint": "",
       "detector_boost": 0.0,
-      "extended_strength": 7.7,
+      "extended_strength": 6.8,
       "flow_confirmation": false,
       "flow_strength": 2.0,
       "flow_direction": "outflow",
@@ -75,21 +75,19 @@
       "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
       "trigger_event": "none",
       "price_strength": "sideways",
-      "flow_consistency": 0,
-      "news_trigger": "GS건설, 인도 재생에너지 기업과 풍력 리파워링 사업 공동 추진"
+      "flow_consistency": 0
     },
     {
-      "topic": "안전자산 선호와 위험자산 폭등의 비정상적 동행",
+      "topic": "글로벌 달러 약세 및 금리 하락 속 원화의 독자적 약세",
       "anomaly_type": "CORRELATION",
-      "why_anomalous": "DeepSeek 뉴스로 인해 엔화, 스위스 프랑 등 안전자산 수요가 급증하고 금 가격(Z-score 1.12)이 높은 수준을 유지함에도 불구하고, 대표적 위험자산인 주식이 동반 폭등하는 상관관계 붕괴 현상 발생.",
-      "why_now": "시장 내 공포(Safe Haven)와 탐욕(Stock Highs)이 한 시점에 공존하며 자산 배분의 논리가 작동하지 않는 특이점이 오늘 관측됨.. 뉴스 트리거: Comex Gold, Silver Settle Lower",
+      "why_anomalous": "미국 10년물 금리(Z-score -1.43)와 달러 인덱스(Z-score -1.24)가 동반 급락하며 달러 약세 환경이 조성되었음에도, 원/달러 환율은 1471원대의 고점을 유지하며 글로벌 통화 흐름과 완전히 역행함.",
+      "why_now": "DXY가 98.1 수준까지 하락하며 달러 가치가 하락한 오늘, 원화만 강세 전환에 실패하며 한국 시장의 독자적인 리스크나 자본 유출 우려가 심화되는 징후임.. 뉴스 트리거: 토스·토스증권, 시각장애인 대상 금융교육 프로그램 운영",
       "key_indicators": [
-        "gold",
-        "sp500",
-        "vix",
-        "Safe Haven News"
+        "usd_krw",
+        "dxy",
+        "us10y"
       ],
-      "strength": 9.0,
+      "strength": 8.7,
       "second_order_deviation": false,
       "deviation_direction": "neutral",
       "deviation_delta": 0.0,
@@ -103,7 +101,7 @@
       "trigger_binding_score": 0.0,
       "why_now_hint": "",
       "detector_boost": 0.0,
-      "extended_strength": 7.0,
+      "extended_strength": 6.7,
       "flow_confirmation": false,
       "flow_strength": 2.0,
       "flow_direction": "outflow",
@@ -113,7 +111,7 @@
       "trigger_event": "none",
       "price_strength": "sideways",
       "flow_consistency": 0,
-      "news_trigger": "Comex Gold, Silver Settle Lower"
+      "news_trigger": "토스·토스증권, 시각장애인 대상 금융교육 프로그램 운영"
     },
     {
       "topic": "안전자산 동반 이탈과 유동성 재배치",

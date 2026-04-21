@@ -20,8 +20,16 @@ def update_fallback_stats(is_fallback: bool):
 
     stats_path.write_text(json.dumps(stats, indent=2, ensure_ascii=False))
 
-def get_system_state():
-    """시스템의 현재 건전성 요약 반환 (지시서 #077 강화 버전)"""
+def validate_system_state(state, fallback_ratio, quality_score):
+    """Task 2: 상태 sanity check - 가짜 정상 상태 완전 차단"""
+    if fallback_ratio > 0.1 and state == "NORMAL":
+        raise Exception(f"Invalid State: fallback ({fallback_ratio}) exists but state is NORMAL")
+
+    if quality_score < 60 and state == "NORMAL":
+        raise Exception(f"Invalid State: low quality ({quality_score}) but state is NORMAL")
+
+def get_system_state(quality_score=0):
+    """시스템의 현재 건전성 요약 반환 (지시서 #081 교정 버전)"""
     health_path = Path("data/monitoring/gemini_health.json")
     stats_path = Path("data/logs/fallback_stats.json")
     
@@ -31,35 +39,36 @@ def get_system_state():
     except:
         return "UNKNOWN", "Monitoring data missing"
 
+    total_calls = max(health.get("total_calls", 0), 1)
+    failures = health.get("failures", 0)
+    failure_rate = failures / total_calls
     fallback_ratio = fallback_stats.get("fallback_ratio", 0)
-    gemini_status = health.get("status", "HEALTHY")
 
-    # 1. Fallback Ratio 기반 기초 상태 선정 (#077)
-    if fallback_ratio > 0.7:
+    # 1. 상태 계산 (지시서 #081 Task 1)
+    if fallback_ratio > 0.7 or failure_rate > 0.5:
         state = "CRITICAL"
-    elif fallback_ratio > 0.3:
+    elif fallback_ratio > 0.3 or failure_rate > 0.3:
         state = "DEGRADED"
-    elif fallback_ratio > 0.1:
+    elif fallback_ratio > 0.1 or failure_rate > 0.1:
+        state = "WARNING"
+    elif quality_score < 70:
         state = "WARNING"
     else:
         state = "NORMAL"
 
-    # 2. Gemini Health 연동 보정
-    if gemini_status == "CRITICAL":
-        state = "CRITICAL"
-    elif gemini_status == "DEGRADED" and state != "CRITICAL":
-        state = "DEGRADED"
-    elif gemini_status == "WARNING" and state in ["NORMAL"]:
+    # 2. Sanity Check 수행
+    try:
+        validate_system_state(state, fallback_ratio, quality_score)
+    except Exception as e:
+        # 오류 발생 시 강제 하향 조정
         state = "WARNING"
-
-    # 3. Task 5: Fallback 발생 시 NORMAL 금지 보정
-    if fallback_ratio > 0 and state == "NORMAL":
-        state = "WARNING"
+        return state, str(e)
 
     # 상태 요약 메시지 생성
     reasons = []
-    if fallback_ratio > 0: reasons.append(f"Fallback Ratio: {fallback_ratio}")
-    if gemini_status != "HEALTHY": reasons.append(f"Gemini Health: {gemini_status}")
+    if fallback_ratio > 0: reasons.append(f"Fallback: {fallback_ratio}")
+    if failure_rate > 0: reasons.append(f"Failure: {round(failure_rate, 2)}")
+    if quality_score > 0: reasons.append(f"Quality: {quality_score}")
     
     reason_str = ", ".join(reasons) if reasons else "System healthy"
     
