@@ -28,22 +28,57 @@ env:
 
 jobs:
   # ─────────────────────────────────────────
+  # Job 0: FILTER (INSPECTOR)
+  # ─────────────────────────────────────────
+  filter:
+    runs-on: ubuntu-latest
+    outputs:
+      collect: ${{ steps.filter.outputs.collect }}
+      intelligence: ${{ steps.filter.outputs.intelligence }}
+      write: ${{ steps.filter.outputs.write }}
+      publish: ${{ steps.filter.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            collect:
+              - 'src/agents/collectors/**'
+              - 'src/agents/collector.py'
+              - 'src/agents/consensus_collector.py'
+              - 'src/agents/cot_collector.py'
+              - '.github/workflows/**'
+              - 'requirements.txt'
+            intelligence:
+              - 'src/agents/detector/**'
+              - 'src/agents/analyst.py'
+              - 'src/agents/truth_agent.py'
+              - 'src/agents/intelligence/**'
+              - '.github/workflows/**'
+              - 'requirements.txt'
+            write:
+              - 'src/agents/writer.py'
+              - 'src/agents/fact_checker.py'
+              - 'src/prompts/writer_prompt.py'
+              - '.github/workflows/**'
+              - 'requirements.txt'
+            publish:
+              - 'src/agents/publisher.py'
+              - 'docs/**'
+              - 'dashboard/**'
+              - '.github/workflows/**'
+
+  # ─────────────────────────────────────────
   # Job 1: COLLECTOR
   # ─────────────────────────────────────────
   collect:
+    needs: filter
     runs-on: ubuntu-latest
     if: >
       github.event_name == 'schedule' ||
       (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'collect')) ||
-      (github.event_name == 'push' && (
-        contains(toJson(github.event.commits), 'src/agents/collectors/') ||
-        contains(toJson(github.event.commits), 'src/agents/collector') ||
-        contains(toJson(github.event.commits), 'src/agents/consensus_collector') ||
-        contains(toJson(github.event.commits), 'src/agents/cot_collector') ||
-        contains(toJson(github.event.commits), 'dashboard/') ||
-        contains(toJson(github.event.commits), '.github/workflows/') ||
-        contains(toJson(github.event.commits), 'requirements.txt')
-      ))
+      (github.event_name == 'push' && needs.filter.outputs.collect == 'true')
     steps:
       - uses: actions/checkout@v4
 
@@ -96,19 +131,12 @@ jobs:
   # Job 2: DETECTOR + ANALYST
   # ─────────────────────────────────────────
   intelligence:
+    needs: [filter, collect]
     runs-on: ubuntu-latest
-    needs: collect
     if: >
       always() && (needs.collect.result == 'success' || needs.collect.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'intelligence')) ||
-        (github.event_name == 'push' && (
-          contains(toJson(github.event.commits), 'src/agents/detector') ||
-          contains(toJson(github.event.commits), 'src/agents/analyst') ||
-          contains(toJson(github.event.commits), 'src/agents/truth_agent') ||
-          contains(toJson(github.event.commits), 'src/agents/intelligence') ||
-          contains(toJson(github.event.commits), '.github/workflows/') ||
-          contains(toJson(github.event.commits), 'requirements.txt')
-        )) ||
+        (github.event_name == 'push' && needs.filter.outputs.intelligence == 'true') ||
         (github.event_name == 'schedule')
       )
     steps:
@@ -139,9 +167,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
-          rm -rf data/raw && mkdir -p data/raw
-          gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
+          if [ -n "$LATEST_RUN" ]; then
+            rm -rf data/raw && mkdir -p data/raw
+            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+          fi
 
       - name: Run Truth + Detector + Analyst
         env:
@@ -164,18 +194,12 @@ jobs:
   # Job 3: WRITER + FACT_CHECKER
   # ─────────────────────────────────────────
   write:
+    needs: [filter, intelligence]
     runs-on: ubuntu-latest
-    needs: intelligence
     if: >
       always() && (needs.intelligence.result == 'success' || needs.intelligence.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'write')) ||
-        (github.event_name == 'push' && (
-          contains(toJson(github.event.commits), 'src/agents/writer') ||
-          contains(toJson(github.event.commits), 'src/prompts/writer_prompt') ||
-          contains(toJson(github.event.commits), 'src/agents/fact_checker') ||
-          contains(toJson(github.event.commits), '.github/workflows/') ||
-          contains(toJson(github.event.commits), 'requirements.txt')
-        )) ||
+        (github.event_name == 'push' && needs.filter.outputs.write == 'true') ||
         (github.event_name == 'schedule')
       )
     steps:
@@ -213,16 +237,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
-          
-          if [ "${{ steps.dl_raw_w.outcome }}" == "failure" ]; then
-            rm -rf data/raw && mkdir -p data/raw
-            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-          fi
-          
-          if [ "${{ steps.dl_ana_w.outcome }}" == "failure" ]; then
-            rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
-            gh run download $LATEST_RUN -n analysis_data -D data/ || true
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
+          if [ -n "$LATEST_RUN" ]; then
+            if [ "${{ steps.dl_raw_w.outcome }}" == "failure" ]; then
+              rm -rf data/raw && mkdir -p data/raw
+              gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+            fi
+            if [ "${{ steps.dl_ana_w.outcome }}" == "failure" ]; then
+              rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
+              gh run download $LATEST_RUN -n analysis_data -D data/ || true
+            fi
           fi
 
       - name: Run Writer + FactChecker
@@ -245,17 +269,12 @@ jobs:
   # Job 4: PUBLISHER
   # ─────────────────────────────────────────
   publish:
+    needs: [filter, write]
     runs-on: ubuntu-latest
-    needs: write
     if: >
       always() && (needs.write.result == 'success' || needs.write.result == 'skipped') && (
         (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'publish')) ||
-        (github.event_name == 'push' && (
-          contains(toJson(github.event.commits), 'src/agents/publisher') ||
-          contains(toJson(github.event.commits), 'docs/') ||
-          contains(toJson(github.event.commits), 'dashboard/') ||
-          contains(toJson(github.event.commits), '.github/workflows/')
-        )) ||
+        (github.event_name == 'push' && (needs.filter.outputs.publish == 'true' || needs.filter.outputs.write == 'true')) ||
         (github.event_name == 'schedule')
       )
     steps:
@@ -300,25 +319,20 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id')
-          echo "Fetching fallback artifacts from Run ID: $LATEST_RUN"
-          
-          if [ "${{ steps.dl_raw_p.outcome }}" == "failure" ]; then
-            echo "Downloading raw_data fallback..."
-            rm -rf data/raw && mkdir -p data/raw
-            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-          fi
-          
-          if [ "${{ steps.dl_ana_p.outcome }}" == "failure" ]; then
-            echo "Downloading analysis_data fallback..."
-            rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
-            gh run download $LATEST_RUN -n analysis_data -D data/ || true
-          fi
-          
-          if [ "${{ steps.dl_scr_p.outcome }}" == "failure" ]; then
-            echo "Downloading script_data fallback..."
-            rm -rf data/scripts && mkdir -p data/scripts
-            gh run download $LATEST_RUN -n script_data -D data/scripts/ || true
+          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
+          if [ -n "$LATEST_RUN" ]; then
+            if [ "${{ steps.dl_raw_p.outcome }}" == "failure" ]; then
+              rm -rf data/raw && mkdir -p data/raw
+              gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
+            fi
+            if [ "${{ steps.dl_ana_p.outcome }}" == "failure" ]; then
+              rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
+              gh run download $LATEST_RUN -n analysis_data -D data/ || true
+            fi
+            if [ "${{ steps.dl_scr_p.outcome }}" == "failure" ]; then
+              rm -rf data/scripts && mkdir -p data/scripts
+              gh run download $LATEST_RUN -n script_data -D data/scripts/ || true
+            fi
           fi
 
       - name: Run Publisher
@@ -327,27 +341,6 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python -m src.agents.publisher
-
-#      - name: Commit Intelligence Outputs
-#        run: |
-#          git config user.name "hoin-bot"
-#          git config user.email "hoin-bot@users.noreply.github.com"
-#          
-#          # Ensure directories exist
-#          mkdir -p docs/data
-#          cp -r dashboard/* docs/ || true
-#          
-#          git fetch origin main
-#          git reset --soft origin/main
-#          
-#          git add docs/ data/ || true
-#          
-#          if [ -n "$(git status --porcelain docs/ data/)" ]; then
-#            git commit -m "chore: save intelligence artifacts and docs [automated] [skip ci]" || true
-#            git push origin main
-#          else
-#            echo "No changes to commit"
-#          fi
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
