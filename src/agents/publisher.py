@@ -504,7 +504,12 @@ HOIN Insight 일일 브리핑
             script_body = Path(script_path).read_text(encoding="utf-8")
             brief_with_script += f"\n\n[📜 롱폼 스크립트 전문]\n\n{script_body}"
         
-        self.notifier.send_message_in_chunks(brief_with_script)
+        # [지시서 #082] 텔레그램 전송 결과 확인
+        success = self.notifier.send_message_in_chunks(brief_with_script)
+        if not success:
+            print("  ❌ [PUBLISHER] 텔레그램 전송 실패!")
+            # 예외를 발생시켜 파이프라인이 FAIL로 인지하게 함
+            raise Exception("Telegram transmission failed")
 
         print("✅ AGENT-06 완료\n")
         return {"content": content, "brief": brief}

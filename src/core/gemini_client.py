@@ -110,10 +110,12 @@ class GeminiClient:
                 out_t=getattr(usage, "candidates_token_count", 0)
             )
         
-        # [DEBUG] 종료 사유 분석
+        # [CRITICAL] 비정상 종료(MAX_TOKENS 등) 감지 시 즉각 에러 처리 (지시서 #082)
         reason = response.candidates[0].finish_reason
-        if reason != "STOP":
-            print(f"  ⚠️ Gemini Finish Reason: {reason} | Model: {self.model_name}")
+        if str(reason) != "FinishReason.STOP" and str(reason) != "STOP":
+            error_msg = f"❌ Gemini 비정상 종료 (Reason: {reason}). 데이터 파손 위험으로 인해 에러 처리합니다."
+            print(f"  {error_msg}")
+            raise Exception(error_msg)
 
         # text 파트 추출
         text_parts = [part.text for part in response.candidates[0].content.parts if part.text]
@@ -126,7 +128,7 @@ class GeminiClient:
         
         return result
 
-    def call_json(self, prompt: str, max_tokens: int = 2500) -> dict:
+    def call_json(self, prompt: str, max_tokens: int = 8192) -> dict:
         import json, re
         try:
             # 기본 호출
@@ -213,17 +215,33 @@ class GeminiClient:
         from src.llm.gemini_wrapper import call_gemini_with_control
         return call_gemini_with_control(self, prompt, agent)
 
-    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 4000) -> str:
-        """Control Layer가 적용된 텍스트 호출 (로깅 포함)"""
+    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 8192) -> str:
+        """Control Layer가 적용된 텍스트 호출 - 503 장애 대응 재시도 포함 (v1.2)"""
         from src.llm.gemini_wrapper import log_gemini_usage
-        import json
-        try:
-            res = self.call(prompt, max_tokens=max_tokens)
-            if not res: raise Exception("Empty Text Response")
-            log_gemini_usage(agent, success=True, fallback_used=False, retry_count=0)
-            return res
-        except Exception as e:
-            # 429 에러 등 실패 시에도 로깅 (in_t, out_t는 0)
-            self._update_health(success=False)
-            log_gemini_usage(agent, success=False, fallback_used=True, retry_count=0)
-            raise e
+        import time
+
+        max_retries = 2
+        for attempt in range(max_retries + 1):
+            try:
+                # [GEMINI CALL] 텍스트 호출
+                res = self.call(prompt, max_tokens=max_tokens)
+                if not res: 
+                    raise Exception("Empty Text Response")
+                
+                log_gemini_usage(agent, success=True, fallback_used=False, retry_count=attempt)
+                return res
+
+            except Exception as e:
+                err_msg = str(e).lower()
+                is_server_error = any(code in err_msg for code in ["503", "500", "unavailable", "overloaded"])
+                
+                if is_server_error and attempt < max_retries:
+                    wait_time = (attempt + 1) * 3
+                    print(f"  ⚠️ [GEMINI_SERVER_SURGE] 503 과부하 감지. {wait_time}초 후 재시도합니다... (Attempt {attempt+1})")
+                    time.sleep(wait_time)
+                    continue
+                
+                # 최종 실패 시
+                self._update_health(success=False)
+                log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
+                raise e

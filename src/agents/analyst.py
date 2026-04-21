@@ -147,9 +147,12 @@ class AnalystAgent:
                     "count": len(prices)
                 }
 
+        import os
+        run_id = os.environ.get("HOIN_RUN_ID", "NONE")
+        # RUN_ID를 프롬프트 구조에 영향을 주지 않는 위치에 삽입 (지시서 #081-R)
         prompt = ANALYST_PROMPT_TEMPLATE.format(
             today=self.today,
-            topic=signal.get("topic"),
+            topic=f"{signal.get('topic')} [ID:{run_id}]", 
             strength=signal.get("strength"),
             market_summary=json.dumps(market, ensure_ascii=False),
             cot_summary=json.dumps(raw_data.get("cot", {}), ensure_ascii=False),
@@ -322,10 +325,22 @@ class AnalystAgent:
 
     def run(self, detector_result=None):
         print(f"\n🧠 AGENT-04 ANALYST 시작 [{self.today}]")
-        signal = self.load_signal()
+        
+        # [지시서 #081-R] 파이프라인 입력 연동 최적화
+        signal = None
+        if detector_result:
+            if isinstance(detector_result, dict):
+                # selected 키가 있으면 이를 사용, 없으면 전체를 사용
+                signal = detector_result.get("selected", detector_result)
+            elif isinstance(detector_result, list) and len(detector_result) > 0:
+                signal = detector_result[0]
+        
         if not signal:
-            print("  선정된 신호 없음")
-            return {}
+            signal = self.load_signal()
+            
+        if not signal or not signal.get("topic"):
+            print("  ⚠️ [ANALYST] 분석할 토픽이 없습니다. 스킵합니다.")
+            return {"status": "SUCCESS", "analysis": {}, "reason": "No topic"}
 
         # [EXTENSION] 팩트 기반 가격 기록 (v3.0 Truth Engine)
         raw_data = self.load_raw()

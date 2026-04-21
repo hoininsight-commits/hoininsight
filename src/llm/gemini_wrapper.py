@@ -69,15 +69,23 @@ MAX_RETRY = 2
 def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
     """중복 호출 제거 및 WRITER 대응 토큰 확장 (v4.4)"""
     
-    # [FIX] WRITER의 경우 방송 대본이 길어질 수 있으므로 8192개까지 최대 개방
-    limit = 8000 if agent == "WRITER" else 4000
+    # [지시서 #082] 분석 밀도 향상에 따른 토큰 한도 전면 개방
+    limit = 8192
     current_prompt = prompt
     
     for attempt in range(MAX_RETRY + 1):
         failure_type = None
         try:
+            # [GEMINI CALL] 호출 시각 및 에이전트 로깅
+            print(f"  [GEMINI CALL] agent={agent}, time={datetime.now().strftime('%H:%M:%S')}")
+            
             # [CRITICAL] 1회 호출로 통합 (double spend 방지)
             data = client.call_json(current_prompt, max_tokens=limit)
+            
+            # [RESPONSE HASH] 응답 다양성 검증을 위한 해시 추출
+            import hashlib
+            resp_hash = hashlib.md5(str(data).encode()).hexdigest()
+            print(f"  [RESPONSE HASH] {resp_hash}")
             
             if not data:
                 # 파싱 실패는 이미 client 내부에서 복구를 시도했음에도 안 된 경우임
@@ -117,6 +125,10 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
                 time.sleep((attempt + 1) * 2)
                 continue
             
+            if failure_type == "JSON_PARSE_ERROR":
+                # [DEBUG] 파싱 실패 시 원본 응답 길이 확인
+                print(f"  [RAW_RESPONSE_DEBUG] Length: {len(str(e))} | {str(e)[:200]}")
+                
             if failure_type == "JSON_PARSE_ERROR" and attempt == 0:
                 print(f"  🔄 Retrying with Strict Protocol...")
                 current_prompt = STRICT_JSON_PROMPT + prompt

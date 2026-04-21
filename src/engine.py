@@ -2,7 +2,7 @@
 # HOIN Insight Pipeline Entry Point (Loop Protection & Timeout v1.1)
 
 import time
-import sys
+import sys, os
 from src.pipeline import run_pipeline
 
 # Phase 3 Task 5: Pipeline 재진입 차단 가드

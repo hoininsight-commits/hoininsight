@@ -54,7 +54,8 @@ class WriterAgent:
         )
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=3500)
+            # [지시서 #082] 8,192 토큰 전면 개방
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Long) 호출 실패, Fallback 모드 가동: {e}")
@@ -91,7 +92,8 @@ class WriterAgent:
         prompt += "\n마지막에 반드시 [DONE] 태그를 붙여서 작성이 완료되었음을 표시해라."
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=4000)
+            # [지시서 #082] 쇼츠도 넉넉하게 8,192 토큰 개방
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Shorts) 호출 실패, Fallback 모드 가동: {e}")

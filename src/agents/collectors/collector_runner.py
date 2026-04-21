@@ -49,8 +49,9 @@ class CollectorRunner:
                     agent_name = agent.name if hasattr(agent, "name") else type(agent).__name__
                     
                     # [SMART_CACHE] 오늘 이미 수집된 파일이 있는지 확인
+                    cache_enabled = True # 지시서 #081-R 종료: 운영 효율을 위해 캐시 활성화
                     cache_file = self.output_dir / f"{agent_name.lower()}.json"
-                    if cache_file.exists():
+                    if cache_enabled and cache_file.exists():
                         try:
                             # 파일이 유효한지 체크 (비어있지 않은지)
                             if cache_file.stat().st_size > 100:
