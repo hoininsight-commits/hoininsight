@@ -580,19 +580,12 @@ class CollectorAgent:
 
         headlines = []
         rss_feeds = [
-            # Bloomberg 공식 RSS 차단 → WSJ 대체 (무료, 안정적)
-            {"name": "WSJ Markets", "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"},
-            {"name": "WSJ Economy", "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml"},
-            # Reuters 공식 RSS 2026년 3월 차단 → Financial Times 대체
+            # Stale WSJ feeds removed (Serving 2025 data in 2026)
             {"name": "FT Markets", "url": "https://www.ft.com/markets?format=rss"},
-            # CNBC 유지
             {"name": "CNBC Economy", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
             {"name": "CNBC Finance", "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"},
-            # 국내 유지
             {"name": "Yonhap English", "url": "https://en.yna.co.kr/RSS/news.xml"},
             {"name": "연합뉴스", "url": "https://www.yna.co.kr/rss/economy.xml"},
-            {"name": "매일경제", "url": "https://www.mk.co.kr/rss/30100041/"},
-            # 추가 — 한국경제 (국내 경제 보강)
             {"name": "한국경제", "url": "https://www.hankyung.com/feed/economy"},
         ]
 
@@ -604,9 +597,22 @@ class CollectorAgent:
                     headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"})
                 if resp.status_code == 200:
                     d = feedparser.parse(resp.content)
-                    for entry in d.entries[:10]:
+                    now = datetime.now()
+                    for entry in d.entries[:15]:
+                        # [FRESHNESS FILTER] 7일 이내 뉴스만 수집
+                        pub_date = entry.get("published_parsed")
+                        date_prefix = ""
+                        if pub_date:
+                            dt = datetime(*pub_date[:6])
+                            if (now - dt).days > 7:
+                                continue
+                            date_prefix = f"[{dt.strftime('%Y-%m-%d')}] "
+                        else:
+                            # 날짜 정보가 없으면 오늘 날짜로 표시 (리스크 감수)
+                            date_prefix = f"[{now.strftime('%Y-%m-%d')}] "
+
                         feed_headlines.append({
-                            "title": entry.get("title", "").strip(),
+                            "title": date_prefix + entry.get("title", "").strip(),
                             "summary": entry.get("summary", "")[:200].strip(),
                             "link": entry.get("link", ""),
                             "source": feed["name"],

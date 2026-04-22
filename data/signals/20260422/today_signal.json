@@ -1,0 +1,114 @@
+{
+  "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+  "anomaly_type": "NEWS_MISMATCH",
+  "strength": 9.2,
+  "why_anomalous": "뉴스 톤은 부정적이나 SP500 Z-score 1.31로 강한 상승 중",
+  "why_now": "악재를 압도하는 수급 유입으로 인한 SP500 1.31 (Z-score 1.0 이상) 상승 국면 sp500(7064.0098 / Z-score:1.31)",
+  "key_indicators": [
+    "sp500",
+    "sentiment"
+  ],
+  "second_order_deviation": false,
+  "deviation_direction": "neutral",
+  "deviation_delta": 0.0,
+  "persistence_score": 0.0,
+  "persistence_days": 0,
+  "is_persistent_signal": false,
+  "signal_dead": false,
+  "death_reason": [],
+  "death_confidence": 0.0,
+  "trigger_type": "unknown",
+  "trigger_binding_score": 0.0,
+  "why_now_hint": "",
+  "detector_boost": 0.0,
+  "extended_strength": 7.2,
+  "flow_confirmation": false,
+  "flow_strength": 2.0,
+  "flow_direction": "outflow",
+  "flow_state": "CONFIRMED_DOWNTREND",
+  "flow_state_detail": "CONFIRMED_DOWNTREND",
+  "flow_interpretation": "자금 이탈과 가격 하락이 동반되는 전형적인 약세장",
+  "trigger_event": "none",
+  "price_strength": "sideways",
+  "flow_consistency": 0,
+  "news_trigger": "[2026-04-22] 국고채 금리 일제히 상승…3년물 장중 연 3.361%",
+  "why_now_validation": {
+    "why_now_valid": true,
+    "contains_numeric": true,
+    "contains_change": true,
+    "contains_threshold": true
+  },
+  "final_score": 9.2,
+  "event_bonus": 0.0,
+  "multi_signal": 0.0,
+  "normal_flow": {
+    "expected_reactions": [],
+    "implications": []
+  },
+  "scenarios": [
+    {
+      "scenario": "시장 선반영",
+      "explanation": "뉴스가 나오기 전 이미 가격이 움직여 반대 방향으로 되돌림",
+      "validation_targets": [
+        "거래량 감소",
+        "이익실현 매물"
+      ]
+    },
+    {
+      "scenario": "매크로 노이즈",
+      "explanation": "지정학 이슈보다 더 큰 매크로 지표(금리/환율)가 시장을 압도",
+      "validation_targets": [
+        "USD_KRW 상승",
+        "국채금리 급등"
+      ]
+    },
+    {
+      "scenario": "수급 불균형",
+      "explanation": "특정 수급 주체(외인/기관)의 강제 포지션 청산으로 인한 비이성적 흐름",
+      "validation_targets": [
+        "외인 순매도 지속",
+        "선물 미결제 약정 변화"
+      ]
+    }
+  ],
+  "anomaly_overlay": {
+    "event": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+    "expected": {},
+    "actual": {},
+    "mismatch": [],
+    "anomaly_score": 0,
+    "is_anomaly": false
+  },
+  "classification": "NORMAL",
+  "base_price": 6384.76,
+  "date": "20260422",
+  "surface": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+  "structure": "자금과 가격이 동반 하락하는 구조적 약세장",
+  "flow_interpretation_hunter": "자금 이탈과 하락이 동반되는 리스크 확대 구간",
+  "consequence_chain": [
+    "Trigger: none",
+    "Market Reaction: 시장 유동성/심리 변화",
+    "Capital Movement: 안전/위험 자산 간 자금 이동",
+    "Final Beneficiary: 구조적 수혜 섹터"
+  ],
+  "beneficiary": {
+    "theme": "뉴스 관련 시장 테마주",
+    "structural": "장기적 구조 수혜주"
+  },
+  "why_now_hunter": "현재 시장 지표의 이탈과 자금 흐름이 결합되는 분기점입니다.",
+  "decision_meta": {
+    "action": "WATCH",
+    "confidence": 0.7,
+    "best_scenario": "BEAR",
+    "bull_probability": 0.18,
+    "bear_probability": 0.82,
+    "weights_used": {
+      "flow": 0.499,
+      "price": 0.193,
+      "event": 0.193,
+      "consistency": 0.116
+    },
+    "calibration_applied": 1.1,
+    "decision_hint": "P_Val -0.50 / Conf 0.70 (CF: 1.1)"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "top_decision": {
+<<<<<<< Updated upstream
     "topic": "안전자산 동반 이탈과 유동성 재배치",
     "final_action": "USE",
     "content_tier": "TIER_1",
@@ -96,8 +97,33 @@
         "final_action": "DROP",
         "content_tier": "TIER_3",
         "script": "[NEWS_MISMATCH] 뉴스 톤은 부정적(DeepSeek 등)이나 SP500 Z-score 1.65로 강한 상승 중"
+=======
+    "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+    "final_action": "WATCH",
+    "content_tier": "TIER_1",
+    "summary": "뉴스 악재 속 지수 상승 (Price-News 모순)에서 구조적 이상징후(9.2점) 감지",
+    "why_now": "최근 데이터 변화가 통계적 임계치를 초과하여 하드 필터를 발동시켰습니다."
+  },
+  "content_pack": {
+    "TIER_1": [
+      {
+        "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+        "core_claim": "뉴스 악재 속 지수 상승 (Price-News 모순)에서 구조적 이상징후(9.2점) 감지",
+        "why_now": "최근 데이터 변화가 통계적 임계치를 초과하여 하드 필터를 발동시켰습니다.",
+        "structural_truth": "단순 가격 변동을 넘어선 자금 흐름의 가속화가 감지되는 초기 국면입니다.",
+        "level2_chain": [],
+        "quality_score": 50,
+        "reality_score": 0,
+        "score_trust": "HIGH_TRUST",
+        "final_action": "WATCH",
+        "content_tier": "TIER_1",
+        "event_context": {},
+        "script": "[TIER_1 | 확정형]\n🚀 이건 확정이다. 자금이 이 방향으로 이동한다.\n\n주제: 뉴스 악재 속 지수 상승 (Price-News 모순)에서 구조적 이상징후(9.2점) 감지\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n[WHY NOW: 시점의 근거]\n최근 데이터 변화가 통계적 임계치를 초과하여 하드 필터를 발동시켰습니다.\n\n[구조적 팩트 (Structural Truth)]\n단순 가격 변동을 넘어선 자금 흐름의 가속화가 감지되는 초기 국면입니다.\n\n[운영 가이드]\n이 컨텐츠는 압도적 증거가 확보된 메타 분석 등급입니다.\n운영 시 위 톤앤매너를 유지하여 채널의 신뢰도와 선제성을 동시에 확보하세요.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+>>>>>>> Stashed changes
       }
-    ]
+    ],
+    "TIER_2": [],
+    "TIER_3": []
   },
   "reason_layer": {
     "quality_score": 90,
@@ -105,8 +131,8 @@
     "score_trust": "HIGH_TRUST"
   },
   "market_snapshot": {
-    "rates": "4.25%",
-    "spx": "7109.14",
+    "rates": "4.29%",
+    "spx": "7064.01",
     "btc": "N/A",
     "trend_short": "NEUTRAL",
     "trend_mid": "UP"
@@ -117,15 +143,27 @@
   },
   "history_layer": [
     {
-      "date": "2026-04-21",
+      "date": "2026-04-22",
       "rank": 1,
-      "topic": "안전자산 동반 이탈과 유동성 재배치",
-      "strength": 9.0,
-      "anomaly_type": "CORRELATION",
+      "topic": "",
+      "strength": 0,
+      "anomaly_type": "",
       "filters_hit": [
         "S"
       ],
-      "why_now": "시장 자금이 안전자산을 버리고 위험 자산으로 이동 중. 뉴스 트리거: Comex Gold, Silver Settle Lower",
+      "why_now": "",
+      "path": "topics/items/2026-04-22__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-04-21",
+      "rank": 1,
+      "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+      "strength": 9.2,
+      "anomaly_type": "롱폼",
+      "filters_hit": [
+        "S"
+      ],
       "path": "topics/items/2026-04-21__top1.json",
       "isToday": false
     },
@@ -163,18 +201,6 @@
         "S"
       ],
       "path": "topics/items/2026-04-18__top1.json",
-      "isToday": false
-    },
-    {
-      "date": "2026-04-17",
-      "rank": 1,
-      "topic": "환율 1479원 + 유가 $90.0 동시 급등 → 복합 위기",
-      "strength": 6.933333333333334,
-      "anomaly_type": "쇼츠",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-17__top1.json",
       "isToday": false
     }
   ],

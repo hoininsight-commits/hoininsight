@@ -1,0 +1,54 @@
+{
+  "date": "2026-04-22",
+  "collected_at": "2026-04-22T14:08:50.920765",
+  "period": {
+    "from": "2026-04-19",
+    "to": "2026-04-29"
+  },
+  "events": [
+    {
+      "event": "Retail Sales MoM",
+      "time": "2026-04-21 12:30:00",
+      "country": "US",
+      "actual": 1.7,
+      "estimate": 1.4,
+      "prev": 0.7,
+      "impact": "high",
+      "surprise_score": 21.43,
+      "surprise_label": "SHOCK"
+    },
+    {
+      "event": "Fed Interest Rate Decision",
+      "time": "2026-04-29 18:00:00",
+      "country": "US",
+      "actual": null,
+      "estimate": 3.75,
+      "prev": 3.75,
+      "impact": "high",
+      "surprise_score": null,
+      "surprise_label": "PENDING"
+    },
+    {
+      "event": "Fed Press Conference",
+      "time": "2026-04-29 18:30:00",
+      "country": "US",
+      "actual": null,
+      "estimate": null,
+      "prev": null,
+      "impact": "high",
+      "surprise_score": null,
+      "surprise_label": "PENDING"
+    }
+  ],
+  "top_surprise": {
+    "event": "Retail Sales MoM",
+    "time": "2026-04-21 12:30:00",
+    "country": "US",
+    "actual": 1.7,
+    "estimate": 1.4,
+    "prev": 0.7,
+    "impact": "high",
+    "surprise_score": 21.43,
+    "surprise_label": "SHOCK"
+  }
+}

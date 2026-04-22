@@ -21,7 +21,7 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
             return False
         # 리스트 내 개별 항목 검증 (간소화)
         sample = data[0]
-        if isinstance(sample, dict) and "topic" in sample:
+        if isinstance(sample, dict) and ("topic" in sample or "event" in sample):
             return True
         return False
 

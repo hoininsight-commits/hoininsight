@@ -1,443 +1,5 @@
 [
   {
-    "timestamp": "2026-04-21T11:08:38.111385",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:09:06.829764",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:09:39.465977",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:10:00.207524",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T11:11:41.502771",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:12:12.732095",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:12:27.881686",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T11:13:13.584550",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:13:32.938857",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T11:15:03.032223",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:15:32.158222",
-    "agent": "DETECTOR",
-    "failure_type": "UNKNOWN",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:16:07.049952",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:16:43.330919",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:17:10.065383",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T11:21:09.555152",
-    "agent": "DETECTOR",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:21:09.846087",
-    "agent": "DETECTOR",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T11:21:10.519022",
-    "agent": "ANALYST",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:28:00.200228",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:28:18.823502",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:28:45.175472",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:28:56.317910",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:29:29.988615",
-    "agent": "ANALYST",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:31:26.120304",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:31:30.908981",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:31:46.707641",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:31:58.488714",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:32:17.994386",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:32:28.399592",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:33:17.585818",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:33:22.778842",
-    "agent": "DETECTOR",
-    "failure_type": "LOW_QUALITY",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:33:38.449177",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:33:48.164027",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:34:07.412841",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:34:59.037266",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:35:04.243026",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:35:26.641342",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:35:40.202508",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:36:02.640641",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:36:13.385323",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:36:53.847863",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:36:54.009100",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:36:54.350768",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:36:54.529469",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:36:55.105260",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:36:55.268406",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:37:18.932822",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:37:28.054961",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:37:52.935494",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:37:57.599278",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T12:38:31.238643",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T12:38:41.602067",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:25.607174",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:25.975897",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:26.549098",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:26.839888",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:27.880631",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:28.182064",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:36.733085",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:37.026484",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:37.615454",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:37.905470",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:38.890066",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:39.182582",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:47.731659",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:48.014441",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:48.604319",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:48.926181",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:49.908232",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:50.195980",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:58.945713",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:02:59.243283",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T13:02:59.811868",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-21T13:03:00.099152",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-04-21T13:03:01.081875",
     "agent": "ANALYST",
     "failure_type": "JSON_PARSE_ERROR",
@@ -1096,5 +658,545 @@
     "agent": "DETECTOR",
     "failure_type": "JSON_PARSE_ERROR",
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T13:39:14.575893",
+    "agent": "DETECTOR",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T13:40:01.102867",
+    "agent": "DETECTOR",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T14:23:27.733226",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T14:24:23.712331",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T14:26:54.731171",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T14:27:31.433229",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:11:51.272419",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:11:51.610829",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:11:51.950514",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:11:52.301144",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:11:52.648181",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:11:53.001439",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:12:21.186467",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:12:21.525823",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:12:21.873284",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:12:22.342851",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:12:22.686069",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:12:23.020677",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:13:17.287389",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:13:17.822910",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:13:18.098362",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:13:18.486207",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:13:18.827306",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:13:19.102022",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:14:18.965616",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:14:19.438469",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:14:35.002106",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:14:35.315639",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:12.792649",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:13.105049",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:13.408155",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:13.708577",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:14.008734",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:14.313088",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:51.967590",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:52.262613",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:52.569313",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:52.868734",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:19:53.187091",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:19:53.488621",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:08.252488",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:08.586917",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:08.881254",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:09.182664",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:09.683778",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:09.983929",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:53.254100",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:53.546962",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:53.839372",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:54.136772",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:54.453621",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:54.746836",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:55.335077",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:55.830114",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T15:20:56.525156",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T15:20:56.827011",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:05:21.571032",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:05:21.857245",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:05:22.260358",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:05:22.670123",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:05:23.053714",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:05:23.442069",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:05:24.237694",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:05:24.623905",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:23.820518",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:24.306946",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:24.629296",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:24.980631",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:25.269857",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:25.562768",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:26.149320",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:26.444394",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:27.210645",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:27.496698",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:06:28.189063",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:06:28.575642",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:19.551484",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:19.850254",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:20.235223",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:20.533535",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:20.832227",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:21.116620",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:21.716404",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:22.100456",
+    "agent": "DETECTOR",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:23.088010",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:23.397350",
+    "agent": "ANALYST",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:23.983174",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:24.282761",
+    "agent": "WRITER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-22T16:31:24.982358",
+    "agent": "FACT_CHECKER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-22T16:31:25.285801",
+    "agent": "FACT_CHECKER",
+    "failure_type": "JSON_PARSE_ERROR",
+    "retry_count": 1
   }
 ]
