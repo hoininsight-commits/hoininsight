@@ -136,8 +136,9 @@ class GeminiClient:
             return self.parse_json_with_recovery(response)
 
         except Exception as e:
-            print(f"  ❌ call_json error: {e}")
-            return {}
+            # TIER 3 등에서 에러가 너무 많이 나면 로깅 레벨 조절 가능
+            # print(f"  ❌ call_json error: {e}") 
+            raise e # wrapper에서 처리하도록 던짐
 
     def parse_json_with_recovery(self, response: str) -> dict:
         """응답 문자열로부터 JSON(Dict/List)을 파싱하고 복구하는 전용 엔진"""
@@ -210,17 +211,28 @@ class GeminiClient:
             self.health_path.write_text(json.dumps(h, indent=2, ensure_ascii=False))
         except: pass
 
-    def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN") -> dict:
-        """Control Layer가 적용된 JSON 호출 (v1.0)"""
+    def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN", tier: int = 3) -> dict:
+        """Control Layer가 적용된 JSON 호출 (v1.0, TIER 대응)"""
         from src.llm.gemini_wrapper import call_gemini_with_control
-        return call_gemini_with_control(self, prompt, agent)
+        return call_gemini_with_control(self, prompt, agent, tier=tier)
 
-    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 8192) -> str:
-        """Control Layer가 적용된 텍스트 호출 - 503 장애 대응 재시도 포함 (v1.2)"""
+    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 8192, tier: int = 1) -> str:
+        """Control Layer가 적용된 텍스트 호출 - TIER별 재시도 및 백오프 적용 (v1.3)"""
         from src.llm.gemini_wrapper import log_gemini_usage
         import time
 
-        max_retries = 2
+        # [TASK #093] TIER별 설정
+        # TIER 1: 필수 (4회 재시도), TIER 2: 중요 (2회), TIER 3: 보조 (0회)
+        tier_config = {
+            1: {"max_retries": 4, "backoff": [2, 4, 8, 12]},
+            2: {"max_retries": 2, "backoff": [2, 4]},
+            3: {"max_retries": 0, "backoff": []}
+        }
+        
+        config = tier_config.get(tier, tier_config[3])
+        max_retries = config["max_retries"]
+        backoff = config["backoff"]
+
         for attempt in range(max_retries + 1):
             try:
                 # [GEMINI CALL] 텍스트 호출
@@ -236,12 +248,14 @@ class GeminiClient:
                 is_server_error = any(code in err_msg for code in ["503", "500", "unavailable", "overloaded"])
                 
                 if is_server_error and attempt < max_retries:
-                    wait_time = (attempt + 1) * 3
-                    print(f"  ⚠️ [GEMINI_SERVER_SURGE] 503 과부하 감지. {wait_time}초 후 재시도합니다... (Attempt {attempt+1})")
+                    wait_time = backoff[attempt] if attempt < len(backoff) else backoff[-1]
+                    print(f"  ⚠️ [TIER {tier}] 과부하 감지. {wait_time}초 후 재시도... (Attempt {attempt+1}/{max_retries})")
                     time.sleep(wait_time)
                     continue
                 
                 # 최종 실패 시
                 self._update_health(success=False)
                 log_gemini_usage(agent, success=False, fallback_used=True, retry_count=attempt)
-                raise e
+                if tier == 1: # TIER 1만 에러를 전파하여 중단시키거나 강제 폴백 유도
+                    raise e
+                return ""

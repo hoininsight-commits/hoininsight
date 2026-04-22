@@ -64,20 +64,28 @@ def update_gemini_health(client, success: bool, fallback_used: bool):
     """GeminiClient의 통합 헬스 관리 기능을 호출 (v4.6)"""
     client._update_health(success=success)
 
-MAX_RETRY = 2
-
-def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
-    """중복 호출 제거 및 WRITER 대응 토큰 확장 (v4.4)"""
+def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3):
+    """중복 호출 제거 및 TIER별 재시도/백오프 적용 (v4.5)"""
     
-    # [지시서 #082] 분석 밀도 향상에 따른 토큰 한도 전면 개방
+    # [지시서 #093] TIER별 설정
+    tier_config = {
+        1: {"max_retries": 4, "backoff": [2, 4, 8, 12]},
+        2: {"max_retries": 2, "backoff": [2, 4]},
+        3: {"max_retries": 0, "backoff": []}
+    }
+    
+    config = tier_config.get(tier, tier_config[3])
+    max_retries = config["max_retries"]
+    backoff = config["backoff"]
+    
     limit = 8192
     current_prompt = prompt
     
-    for attempt in range(MAX_RETRY + 1):
+    for attempt in range(max_retries + 1):
         failure_type = None
         try:
             # [GEMINI CALL] 호출 시각 및 에이전트 로깅
-            print(f"  [GEMINI CALL] agent={agent}, time={datetime.now().strftime('%H:%M:%S')}")
+            print(f"  [GEMINI CALL] agent={agent}, tier={tier}, time={datetime.now().strftime('%H:%M:%S')}")
             
             # [CRITICAL] 1회 호출로 통합 (double spend 방지)
             data = client.call_json(current_prompt, max_tokens=limit)
@@ -88,7 +96,6 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
             print(f"  [RESPONSE HASH] {resp_hash}")
             
             if not data:
-                # 파싱 실패는 이미 client 내부에서 복구를 시도했음에도 안 된 경우임
                 failure_type = "JSON_PARSE_ERROR"
                 raise Exception("Final JSON Parsing Failure")
 
@@ -97,39 +104,32 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN"):
                 failure_type = "CONTRACT_FAIL"
                 raise Exception("Contract Violation")
 
-            # 4. 품질 검증 (Quality Gate)
-            from src.validation.quality_score import calculate_quality_score
-            if isinstance(data, dict):
+            # 4. 품질 검증 (Quality Gate) - Analyst 등 일부 에이전트만 수행
+            if agent == "ANALYST":
+                from src.validation.quality_score import calculate_quality_score
                 q_score = calculate_quality_score(data, is_fallback=False)
-            else:
-                q_score = 80 if len(data) > 0 else 0
-                
-            if q_score < 60:
-                failure_type = "LOW_QUALITY"
-                raise Exception(f"Low Quality Score: {q_score}")
+                if q_score < 60:
+                    failure_type = "LOW_QUALITY"
+                    raise Exception(f"Low Quality Score: {q_score}")
 
             # 최종 성공
             log_gemini_usage(agent, success=True, fallback_used=False, retry_count=attempt)
-            # update_gemini_health 제거 (client.call_json 내부에서 이미 처리됨)
             return data
 
         except Exception as e:
             if not failure_type:
                 failure_type = classify_failure(e)
             
-            print(f"  [GEMINI_FAIL] Agent: {agent} | Type: {failure_type} | Attempt: {attempt+1} | Msg: {str(e)[:100]}")
+            print(f"  [GEMINI_FAIL] Agent: {agent} | Tier: {tier} | Type: {failure_type} | Attempt: {attempt+1} | Msg: {str(e)[:100]}")
             log_failure(agent, failure_type, attempt)
             
             # 5. 실패 유형별 대응
-            if failure_type in ["RATE_LIMIT", "SERVER_ERROR", "TIMEOUT"] and attempt < MAX_RETRY:
-                time.sleep((attempt + 1) * 2)
+            if failure_type in ["RATE_LIMIT", "SERVER_ERROR", "TIMEOUT"] and attempt < max_retries:
+                wait_time = backoff[attempt] if attempt < len(backoff) else backoff[-1]
+                time.sleep(wait_time)
                 continue
             
-            if failure_type == "JSON_PARSE_ERROR":
-                # [DEBUG] 파싱 실패 시 원본 응답 길이 확인
-                print(f"  [RAW_RESPONSE_DEBUG] Length: {len(str(e))} | {str(e)[:200]}")
-                
-            if failure_type == "JSON_PARSE_ERROR" and attempt == 0:
+            if failure_type == "JSON_PARSE_ERROR" and attempt == 0 and max_retries > 0:
                 print(f"  🔄 Retrying with Strict Protocol...")
                 current_prompt = STRICT_JSON_PROMPT + prompt
                 continue

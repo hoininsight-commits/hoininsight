@@ -162,7 +162,7 @@ class AnalystAgent:
         )
 
         try:
-            result = self.gemini.call_json_controlled(prompt, agent="ANALYST")
+            result = self.gemini.call_json_controlled(prompt, agent="ANALYST", tier=2)
             if not result or not result.get("topic_core_claim"):
                 raise Exception("Empty Result or Protocol Violation")
             result["fallback_used"] = False
@@ -191,7 +191,7 @@ class AnalystAgent:
             refined_prompt = feedback_instr + "\n\n" + prompt
             
             try:
-                refined_result = self.gemini.call_json_controlled(refined_prompt, agent="ANALYST")
+                refined_result = self.gemini.call_json_controlled(refined_prompt, agent="ANALYST", tier=2)
                 if refined_result and refined_result.get("topic_core_claim"):
                     # 재생성된 결과로 점수 재계산
                     new_score = calculate_quality_score_v2(refined_result, is_fallback=False)

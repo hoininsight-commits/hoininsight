@@ -437,69 +437,32 @@ class DetectorAgent:
                             "previous": s.get("prev_1d"),
                             "change": s.get("1d_change_pct")
                         })
-
-            # [TASK #083 요구사항] 핵심 클레임 수치 기반 보강
-            if cand.get("news_trigger"):
-                pack["why_now"].append(f"News Trigger: {cand['news_trigger']}")
-                
-            # constraints
-            if not all_data.get("cot"): pack["constraints"].append("no cot data")
-            
-            fact_packs.append(pack)
-            
-        return fact_packs
-
-    def save_results(self, candidates: list, total_anomalies: list, selected: dict, events: list = None, fact_pack: list = None):
-        """결과 저장 (팩트 팩 및 이벤트 팩 포함)"""
-        # 기존 저장
-        candidates_data = {"date": self.today, "total_candidates": len(total_anomalies), "candidates": total_anomalies}
-        (self.signal_dir / "candidates.json").write_text(json.dumps(candidates_data, ensure_ascii=False, indent=2))
-        
-        if selected and selected.get("MAIN"):
-            (self.signal_dir / "today_signal.json").write_text(json.dumps(selected["MAIN"], ensure_ascii=False, indent=2))
-            # 멀티 콘텐츠 구조 저장
-            (self.signal_dir / "today_content_tier.json").write_text(json.dumps(selected, ensure_ascii=False, indent=2))
-
-        # [TASK #083] Fact Pack 저장
-        if fact_pack:
-            fact_dir = self.base_dir / "data/fact_pack"
-            fact_dir.mkdir(parents=True, exist_ok=True)
-            (fact_dir / "candidates_fact_pack.json").write_text(json.dumps(fact_pack, ensure_ascii=False, indent=2))
-            print(f"  📦 Fact Pack 저장 완료: {fact_dir}")
-
-        # [TASK #084] Event Pack 저장
-        if events:
-            event_dir = self.base_dir / "data/event_pack"
-            event_dir.mkdir(parents=True, exist_ok=True)
-            (event_dir / "events_today.json").write_text(json.dumps(events, ensure_ascii=False, indent=2))
-            print(f"  📰 Event Pack 저장 완료: {event_dir}")
-
     def run(self, collector_result=None):
-        print(f"\n🔍 AGENT-03 DETECTOR v8.0 가동 [Event-First Refactor]")
+        print(f"\n🔍 AGENT-03 DETECTOR v10.0 [Topic Selection Engine Mode]")
         all_data = self.load_all_data()
         if not all_data: return {}
 
-        # 1. 이벤트 레이어 추출
-        events = self.detect_events_layer(all_data)
+        # [TASK #100] New Topic Selection Engine 가동
+        from src.topic_engine.engine import TopicSelectionEngine
+        topic_engine = TopicSelectionEngine(self.base_dir)
+        selection = topic_engine.run(all_data)
         
-        # 2. 후보군 탐지
-        candidates = self.discover_autonomous_narratives(all_data)
-        summary = self.build_data_summary(all_data)
-        anomalies = self.detect_anomalies(summary, candidates)
-        
-        # 3. 신규 스코어링 및 티어링
-        tiered_selected, total_valid = self.select_best(anomalies, all_data, events)
-        
-        # 4. 팩트 데이터 패키징
-        fact_pack = self.generate_fact_pack(total_valid, all_data)
-        
-        # 5. 저장
-        if tiered_selected:
-            self.save_results(candidates, total_valid, tiered_selected, events, fact_pack)
-            main_topic = tiered_selected["MAIN"]["topic"] if tiered_selected["MAIN"] else "N/A"
-            print(f"  🏆 [MAIN EVENT] {main_topic}")
+        # 팩트 데이터 패키징 (기존 호환성 유지용)
+        fact_pack = []
+        if selection and selection.get("MAIN"):
+            main = selection["MAIN"]
+            fact_pack.append({
+                "topic": main["title_seed"],
+                "core_facts": main["core_facts"],
+                "classification": main.get("evaluation", {}).get("flow_type", "NORMAL"),
+                "scenarios": [], 
+                "why_now": [main.get("evaluation", {}).get("why_now_summary", "")]
+            })
             
-        return {"selected": tiered_selected, "candidates": total_valid, "events": events, "fact_pack": fact_pack}
+            # today_signal.json 저장 (기존 호환성)
+            (self.signal_dir / "today_signal.json").write_text(json.dumps(selection["MAIN"], ensure_ascii=False, indent=2))
+        
+        return {"selected": selection, "fact_pack": fact_pack}
 
     def _find_news_trigger(self, signal: dict, sentiment_data: dict) -> str:
         """관련 뉴스 헤드라인 매칭 (기존 로직 유지)"""

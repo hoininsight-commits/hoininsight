@@ -112,7 +112,7 @@ class ContentEngine:
             """
             
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="WRITER")
+            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
             if isinstance(res, dict) and "script" in res:
                 return res["script"]
             if isinstance(res, str) and len(res) > 50:

@@ -13,71 +13,99 @@ class ScriptQualityGate:
         self.gemini = GeminiClient()
         
     def evaluate(self, content: Dict) -> Dict:
-        """스크립트 평가 및 최종 상태 결정"""
+        """스크립트 평가 및 최종 상태 결정 (Dual-Stage 적용)"""
         script = content.get("script", "")
-        title = content.get("title", "")
         
-        # 1. LLM Evaluation (Gemini를 이용한 정성적/정량적 평가)
+        # [STAGE 1] Deterministic Evaluation (필수 구조 체크)
+        det_report = self._evaluate_deterministically(content)
+        
+        # [STAGE 2] Gemini Evaluation (TIER 3 - 선택적 품질 평가)
         prompt = self._build_evaluation_prompt(content)
-        
+        gemini_eval = {}
         try:
-            eval_res = self.gemini.call_json_controlled(prompt, agent="FACT_CHECKER")
-            if not isinstance(eval_res, dict):
-                raise Exception("Invalid evaluation response")
+            # TIER 3 호출 (실패 시 즉각 fallback)
+            gemini_eval = self.gemini.call_json_controlled(prompt, agent="QUALITY_GATE", tier=3)
         except:
-            # Fallback if LLM fails
-            eval_res = {
-                "hook_score": 1, "why_now_score": 1, "scenario_score": 1,
-                "theme_score": 1, "action_score": 1, "reason": "Evaluation Failed"
-            }
+            print("  ⚠️ Quality Gate Stage 2 (Gemini) 실패. Deterministic 점수만 사용합니다.")
 
-        # 2. Add Total Score & Status
-        scores = [
-            eval_res.get("hook_score", 1),
-            eval_res.get("why_now_score", 1),
-            eval_res.get("scenario_score", 1),
-            eval_res.get("theme_score", 1),
-            eval_res.get("action_score", 1)
-        ]
-        total_score = sum(scores) / len(scores)
+        # 점수 병합
+        report = {
+            "hook_score": gemini_eval.get("hook_score", det_report["hook_score"]),
+            "why_now_score": gemini_eval.get("why_now_score", det_report["why_now_score"]),
+            "scenario_score": gemini_eval.get("scenario_score", det_report["scenario_score"]),
+            "theme_score": gemini_eval.get("theme_score", det_report["theme_score"]),
+            "action_score": gemini_eval.get("action_score", det_report["action_score"]),
+        }
         
-        # 3. Apply Hard Rules (강제 규칙)
+        total_score = sum(report.values()) / len(report)
+        report["total_score"] = round(total_score, 1)
+        
+        # 최종 상태 결정
         status = "PASS"
         if total_score >= 4.0: status = "PASS"
         elif total_score >= 3.0: status = "HOLD"
         else: status = "DROP"
         
-        drop_reason = None
-        
-        # [Rule 1] WHY NOW에 숫자 없음
-        if not re.search(r'\d+', content.get("script", "").split("---")[-1]): # 스크립트 본문 체크
+        # 하드 규칙 적용 (결정론적 검사 결과가 DROP이면 강제 DROP)
+        if det_report["status"] == "DROP":
             status = "DROP"
-            drop_reason = "WHY NOW lacks numeric evidence"
-            
-        # [Rule 2] HOOK이 뉴스 요약으로 시작 (뉴스 톤인지 체크)
-        first_line = script.strip().split('\n')[0].lower()
-        news_indicators = ["뉴욕증시는", "코스피는", "오늘", "보도에 따르면", "에 따르면"]
-        if any(ind in first_line for ind in news_indicators):
-            status = "DROP"
-            drop_reason = "HOOK starts with news summary"
-            
-        # [Rule 3] ACTION 없음
-        if not content.get("action") or content.get("action") == "N/A":
-            status = "DROP"
-            drop_reason = "ACTION is missing"
+            report["drop_reason"] = det_report["drop_reason"]
+        else:
+            report["drop_reason"] = None
 
-        report = {
-            "hook_score": eval_res.get("hook_score", 0),
-            "why_now_score": eval_res.get("why_now_score", 0),
-            "scenario_score": eval_res.get("scenario_score", 0),
-            "theme_score": eval_res.get("theme_score", 0),
-            "action_score": eval_res.get("action_score", 0),
-            "total_score": round(total_score, 1),
-            "status": status,
-            "drop_reason": drop_reason
-        }
-        
+        report["status"] = status
         return report
+
+    def _evaluate_deterministically(self, content: Dict) -> Dict:
+        """결정론적 지표 검사 (HOOK, WHY NOW 숫자, SCENARIO, ACTION 등)"""
+        script = content.get("script", "")
+        
+        scores = {
+            "hook_score": 3,
+            "why_now_score": 3,
+            "scenario_score": 3,
+            "theme_score": 3,
+            "action_score": 3,
+            "status": "PASS",
+            "drop_reason": None
+        }
+
+        # 1. HOOK 체크
+        first_line = script.strip().split('\n')[0].lower()
+        if "[hook]" in first_line or "?" in first_line:
+            scores["hook_score"] = 5
+        
+        news_indicators = ["뉴욕증시는", "코스피는", "오늘", "보도에 따르면"]
+        if any(ind in first_line for ind in news_indicators):
+            scores["hook_score"] = 1
+            scores["status"] = "DROP"
+            scores["drop_reason"] = "HOOK starts with news summary"
+
+        # 2. WHY NOW 숫자 체크
+        if not re.search(r'\d+', script):
+            scores["why_now_score"] = 1
+            scores["status"] = "DROP"
+            scores["drop_reason"] = "Missing numeric data in script"
+        else:
+            scores["why_now_score"] = 5
+
+        # 3. SCENARIO 체크
+        if "[scenario]" in script.lower() or "시나리오" in script:
+            scores["scenario_score"] = 5
+        else:
+            scores["scenario_score"] = 1
+            scores["status"] = "DROP"
+            scores["drop_reason"] = "Scenario section missing"
+
+        # 4. ACTION 체크
+        if not content.get("action") or content.get("action") == "N/A" or "[action]" not in script.lower():
+            scores["action_score"] = 1
+            scores["status"] = "DROP"
+            scores["drop_reason"] = "ACTION missing or invalid"
+        else:
+            scores["action_score"] = 5
+
+        return scores
 
     def _build_evaluation_prompt(self, content: Dict) -> str:
         return f"""

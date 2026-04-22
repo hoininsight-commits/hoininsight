@@ -146,6 +146,7 @@ class PublisherAgent:
             "status": "승인대기",
             "operator_approved": False,
             "approved_at": None,
+            "publish_status": signal.get("status", "UNKNOWN")
         }
 
         # 기존 이력 로드
@@ -444,6 +445,7 @@ HOIN Insight 일일 브리핑
 
 [오늘의 신호]
 토픽: {signal.get("topic", "없음")}
+상태: {signal.get("status", "FULL_SUCCESS")}
 강도: {signal.get("strength", 0)} / 10
 유형: {signal.get("content_type", "")}
 적중 필터: {", ".join(signal.get("filters_hit", []))}
