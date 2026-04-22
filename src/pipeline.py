@@ -78,77 +78,84 @@ def run_pipeline():
         
         agent04 = AnalystAgent()
         
-        # [지시서 #081-R] 파이프라인 입력 연동 최적화 (Multi-Topic Content Pack)
+        # [지시서 #086] 멀티 콘텐츠 티어링 처리
         detector_out = results.get("detector", {})
-        candidates = detector_out.get("candidates", [])
+        tiered = detector_out.get("selected", {})
         
-        # [지시서 #081-R] 불리언/비딕셔너리 데이터 방어
-        if not isinstance(candidates, list):
-            candidates = []
+        main_cand = tiered.get("MAIN")
+        secondaries = tiered.get("SECONDARY", [])
+        earlies = tiered.get("EARLY_SIGNAL", [])
         
-        # 만약 후보가 없으면 현재 선정된 토픽(selected)이라도 활용
-        if not candidates and isinstance(detector_out.get("selected"), dict):
-            candidates = [detector_out.get("selected")]
-            
-        print(f"\n🚀 총 {len(candidates[:4])}개의 후보 컨텐츠 분석 시작...")
+        # 분석 대상 리스트 구성 (MAIN -> SECONDARY -> EARLY 순)
+        targets = []
+        if main_cand: targets.append({"data": main_cand, "mode": "MAIN"})
+        for s in secondaries: targets.append({"data": s, "mode": "SECONDARY"})
+        for e in earlies: targets.append({"data": e, "mode": "EARLY"})
+
+        print(f"\n🚀 총 {len(targets)}개의 티어별 컨텐츠 분석 시작...")
         
         analyst_results = []
-        if isinstance(candidates, list):
-            for i, cand in enumerate(candidates[:4]):
-                # [DEFENSE] 비정상 데이터 타입 필더링
-                if not isinstance(cand, dict):
-                    continue
-                    
-                target_topic = cand.get("topic", "N/A")
-                print(f"  [{i+1}/{len(candidates[:4])}] 분석 대상: {target_topic[:30]}...")
+        for i, target in enumerate(targets):
+            cand = target["data"]
+            mode = target["mode"]
+            
+            if not isinstance(cand, dict): continue
                 
-                # 1. 개별 분석 수행
-                raw_res = agent04.run(cand)
-                analysis_data = raw_res.get("analysis", {})
-                q_score = raw_res.get("quality_score", 50)
-                
-                # 2. 검증 (내적/외적 합산)
-                v_score = calculate_validation_score_v2(analysis_data)
-                trust = calculate_score_trust(q_score, v_score)
-                
-                from src.validation.market_data_mapper import final_decision_v3
-                actual_data, asset_type = load_market_intelligence(target_topic + analysis_data.get("topic_core_claim", ""), ".", today)
-                reality_score = calculate_reality_score_v2(analysis_data, actual_data, asset_type) if actual_data else 0
-                
-                final_act = final_decision_v3(q_score, v_score, reality_score, trust)
-                
-                # [Task 7] 미래 전망 로깅
-                log_forward_prediction(target_topic, analysis_data.get("topic_core_claim", ""), ".")
-                
-                # 3. Tier 매핑 및 데이터 구성
-                tier = map_action_to_tier(final_act)
-                
-                # 가공된 데이터 생성
-                processed = {
-                    "topic": target_topic,
-                    "core_claim": analysis_data.get("topic_core_claim", target_topic),
-                    "why_now": analysis_data.get("why_now", cand.get("why_now", "분석 중")),
-                    "structural_truth": analysis_data.get("structural_truth", "인과관계 분석 중"),
-                    "level2_chain": analysis_data.get("level2_chain", []),
-                    "quality_score": q_score,
-                    "reality_score": reality_score,
-                    "score_trust": trust,
-                    "final_action": final_act,
-                    "content_tier": tier
-                }
-                
-                # 4. 스크립트 생성
-                processed["script"] = generate_tiered_script(processed, tier)
-                
-                # 팩에 추가
-                results["content_pack"][tier].append(processed)
-                analyst_results.append(processed)
-                
-                print(f"     -> Result: {final_act} ({tier}) | Reality: {reality_score}")
+            target_topic = cand.get("topic", "N/A")
+            print(f"  [{i+1}/{len(targets)}] [{mode}] 분석: {target_topic[:30]}...")
+            
+            # 1. 개별 분석 수행
+            raw_res = agent04.run(cand)
+            analysis_data = raw_res.get("analysis", {})
+            q_score = raw_res.get("quality_score", 50)
+            
+            # 2. 검증 & 현실 점수
+            v_score = calculate_validation_score_v2(analysis_data)
+            trust = calculate_score_trust(q_score, v_score)
+            
+            from src.validation.market_data_mapper import final_decision_v3
+            actual_data, asset_type = load_market_intelligence(target_topic + analysis_data.get("topic_core_claim", ""), ".", today)
+            reality_score = calculate_reality_score_v2(analysis_data, actual_data, asset_type) if actual_data else 0
+            
+            # [TASK #086] 모드에 따른 티어 강제 할당
+            if mode == "MAIN":
+                final_act = "STRONG_BUY" if reality_score > 3 else "WATCH"
+                tier = "TIER_1"
+            elif mode == "SECONDARY":
+                final_act = "WATCH"
+                tier = "TIER_2"
+            else:
+                final_act = "EARLY_CHECK"
+                tier = "TIER_3"
+            
+            # 3. 데이터 구성
+            processed = {
+                "topic": target_topic,
+                "core_claim": analysis_data.get("topic_core_claim", target_topic),
+                "why_now": analysis_data.get("why_now", cand.get("why_now", "분석 중")),
+                "structural_truth": analysis_data.get("structural_truth", "인과관계 분석 중"),
+                "level2_chain": analysis_data.get("level2_chain", []),
+                "quality_score": q_score,
+                "reality_score": reality_score,
+                "score_trust": trust,
+                "final_action": final_act,
+                "content_tier": tier,
+                "event_context": cand.get("event_context", {}) # [TASK #084]
+            }
+            
+            # 4. 스크립트 생성 (모드에 따라 깊이 조절)
+            # generate_tiered_script는 내부적으로 tier를 보고 길이를 조절함
+            processed["script"] = generate_tiered_script(processed, tier)
+            
+            # 팩에 추가
+            results["content_pack"][tier].append(processed)
+            analyst_results.append(processed)
+            
+            print(f"     -> Result: {final_act} ({tier}) | Score: {cand.get('final_score')}")
 
         results["analyst"] = analyst_results[0] if analyst_results else {}
         results["agent_status"]["analyst"] = "SUCCESS"
-        print("✅ AGENT-04 ANALYST (Multi-Pack) 완료")
+        print("✅ AGENT-04 ANALYST (Multi-Tier) 완료")
         
     except Exception as e:
         print(f"⚠️ AGENT-04 실패: {e}")
@@ -257,12 +264,15 @@ def run_pipeline():
     # AGENT-06: PUBLISHER
     try:
         from src.agents.publisher import PublisherAgent
-        agent06 = PublisherAgent()
-        
-        # [지시서 #082] 실행 결과를 결과 객체에 담고 성공 시에만 마킹
-        results["publisher"] = agent06.run(results)
-        results["agent_status"]["publisher"] = "SUCCESS"
-        print("✅ AGENT-06 PUBLISHER 완료")
+        # [TASK #091] DROP된 경우 발행 스킵
+        if results.get("writer", {}).get("status") == "DROP":
+            print("🚫 [QUALITY GATE] 콘텐츠 품질 미달(DROP)로 인해 퍼블리싱을 중단합니다.")
+            results["agent_status"]["publisher"] = "SKIPPED"
+        else:
+            agent06 = PublisherAgent()
+            results["publisher"] = agent06.run(results)
+            results["agent_status"]["publisher"] = "SUCCESS"
+            print("✅ AGENT-06 PUBLISHER 완료")
     except Exception as e:
         print(f"⚠️ AGENT-06 실패: {e}")
         results["agent_status"]["publisher"] = "FAIL"

@@ -4,6 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
 from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
+from src.engine.content_engine import ContentEngine
+from src.engine.script_quality_gate import ScriptQualityGate
 
 
 class WriterAgent:
@@ -15,6 +17,10 @@ class WriterAgent:
         self.script_dir = Path(f"data/scripts/{self.today}")
         self.script_dir.mkdir(parents=True, exist_ok=True)
         self.gemini = GeminiClient()
+        self.content_engine = ContentEngine()
+        self.quality_gate = ScriptQualityGate()
+        self.validation_dir = Path("data/validation")
+        self.validation_dir.mkdir(parents=True, exist_ok=True)
 
     def load_data(self):
         signal_p = self.signal_dir / "today_signal.json"
@@ -169,53 +175,64 @@ class WriterAgent:
         print(f"  스크립트 저장 완료: {self.script_dir}")
 
     def run(self, analyst_results=None):
-        print(f"\n✍️ AGENT-05 WRITER 시작 [{self.today}]")
-        context = self.load_data()
-        if not context:
-            print("  필요한 분석 데이터가 없습니다.")
-            return {"status": "FAIL", "reason": "No context"}
+        """[TASK #090 & #091] 신규 콘텐츠 엔진 및 품질 게이트 가동"""
+        print(f"\n✍️ AGENT-05 CONTENT_ENGINE v9.0 가동")
+        
+        # 1. Fact Pack 로드
+        fact_pack_p = Path("data/fact_pack/candidates_fact_pack.json")
+        if not fact_pack_p.exists(): return {"status": "FAIL", "reason": "No fact pack"}
+            
+        try:
+            fact_pack = json.loads(fact_pack_p.read_text())
+        except: return {"status": "FAIL", "reason": "Load error"}
 
-        long_script = self.generate_long(context)
-        # ⚠️ 임시: [FALLBACK] 키워드로 감지 (정밀화 필요 시 플래그 전달 체인 구축)
-        is_fallback_script = "[FALLBACK]" in long_script or "분석 데이터 품질 미달" in long_script
+        # 2. 콘텐츠 생성 및 품질 검증 루프
+        final_contents = self.content_engine.generate_contents(fact_pack)
+        if not final_contents: return {"status": "FAIL", "reason": "No content"}
+
+        main_content = final_contents[0]
         
-        short_script = self.generate_shorts(context)
-        self.save_scripts(long_script, short_script)
+        # [TASK #091] QUALITY GATE CHECK
+        print(f"  🛡️ Script Quality Gate 가동 중...")
+        report = self.quality_gate.evaluate(main_content)
         
-        # Phase 7: 품질 정밀 검증 (Quality Score v2 적용)
-        from src.validation.quality_score_v2 import calculate_quality_score_v2, get_quality_grade
+        # HOLD인 경우 1회 재시도
+        if report["status"] == "HOLD":
+            print(f"  🔄 품질 미달 (HOLD: {report['total_score']}). 1회 재생성 시도...")
+            final_contents = self.content_engine.generate_contents([fact_pack[0]])
+            if final_contents:
+                main_content = final_contents[0]
+                report = self.quality_gate.evaluate(main_content)
         
-        # Writer 결과물은 analysis의 내용을 기반으로 하되, 
-        # 본인이 fallback 시나리오를 썼는지 context["analysis"]가 fallback인지 확인
-        is_fb = is_fallback_script or context.get("analysis", {}).get("fallback_used", False)
+        # Report 저장
+        report_p = self.validation_dir / "script_quality_report.json"
+        report_p.write_text(json.dumps(report, ensure_ascii=False, indent=2))
         
-        # 평가 데이터 준비 (Writer는 텍스트 위주이므로 analysis 필드를 가상으로 채워 평가)
-        eval_data = {
-            "topic_core_claim": context.get("analysis", {}).get("topic_core_claim", ""),
-            "why_now": context.get("analysis", {}).get("why_now", ""),
-            "structural_truth": context.get("analysis", {}).get("structural_truth", ""),
-            "one_line_summary": context.get("analysis", {}).get("one_line_summary", ""),
-            "surface_fact": context.get("analysis", {}).get("surface_fact", ""),
-            "capital_flow": context.get("analysis", {}).get("capital_flow", ""),
-            "script_text": long_script[:500] # 구체성/수치 평가용 샘플
-        }
+        if report["status"] == "DROP":
+            print(f"  🚫 품질 최저 (DROP: {report['total_score']}). 퍼블리싱을 중단합니다. 사유: {report['drop_reason']}")
+            return {"status": "DROP", "quality_report": report}
+
+        # 3. 결과 저장 (PASS 또는 HOLD 이후 진행)
+        signal_p = self.signal_dir / "today_signal.json"
+        signal_p.write_text(json.dumps(main_content, ensure_ascii=False, indent=2))
         
-        score = calculate_quality_score_v2(eval_data, is_fallback=is_fb)
-        grade = get_quality_grade(score)
+        long_path = self.script_dir / "today_script_long.md"
+        script_md = f"# [ECONOMIC HUNTER] {main_content['title']}\n\n"
+        script_md += f"**TYPE**: {main_content['type']} | **ACTION**: {main_content['action']} | **GATE**: {report['status']}\n"
+        script_md += f"**QUALITY SCORE**: {report['total_score']} / 5.0\n"
+        script_md += f"**SCENARIO**: {main_content['selected_scenario']} (Confidence: {main_content['confidence']})\n\n"
+        script_md += "---\n\n"
+        script_md += main_content['script']
         
-        print(f"  ✅ [WRITER_QUALITY_v2] Score: {score} | Grade: {grade}")
+        long_path.write_text(script_md, encoding="utf-8")
+        print(f"  🎬 스크립트 최종 승인 ({report['status']}) 및 저장 완료")
         
-        print("✅ AGENT-05 완료\n")
         return {
-            "status": "SUCCESS",
-            "long_script_path": str(self.script_dir / "today_script_long.md"),
-            "short_script_path": str(self.script_dir / "today_script_short.md"),
-            "fallback_used": is_fb,
-            "quality_score": score,
-            "quality_grade": grade,
-            "topic_core_claim": eval_data["topic_core_claim"],
-            "why_now": eval_data["why_now"],
-            "one_line_summary": eval_data["one_line_summary"]
+            "status": report["status"],
+            "type": main_content["type"],
+            "long_script_path": str(long_path),
+            "quality_report": report,
+            "main_content": main_content
         }
 
 

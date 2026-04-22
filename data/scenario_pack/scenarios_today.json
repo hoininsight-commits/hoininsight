@@ -1,0 +1,31 @@
+[
+  {
+    "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+    "scenarios": [
+      {
+        "scenario": "시장 선반영",
+        "explanation": "뉴스가 나오기 전 이미 가격이 움직여 반대 방향으로 되돌림",
+        "validation_targets": [
+          "거래량 감소",
+          "이익실현 매물"
+        ]
+      },
+      {
+        "scenario": "매크로 노이즈",
+        "explanation": "지정학 이슈보다 더 큰 매크로 지표(금리/환율)가 시장을 압도",
+        "validation_targets": [
+          "USD_KRW 상승",
+          "국채금리 급등"
+        ]
+      },
+      {
+        "scenario": "수급 불균형",
+        "explanation": "특정 수급 주체(외인/기관)의 강제 포지션 청산으로 인한 비이성적 흐름",
+        "validation_targets": [
+          "외인 순매도 지속",
+          "선물 미결제 약정 변화"
+        ]
+      }
+    ]
+  }
+]
