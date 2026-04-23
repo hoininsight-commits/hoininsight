@@ -70,10 +70,8 @@ def collect():
                 "last_updated": now.isoformat(),
                 "source": "금융위원회 공시",
                 "companies": [
-                    # 예시 데이터 (실제 발표 후 업데이트 필요)
-                    {"name": "삼성전자", "code": "005930", "announced_date": "2024-01-01"},
-                    {"name": "SK하이닉스", "code": "000660", "announced_date": "2024-01-01"},
-                    # ... 추가 기업
+                    # [ZERO-KEYWORD POLICY] 예시 데이터를 모두 삭제합니다.
+                    # 금융위원회 공식 발표 후 자동 수집 로직이 이 자리를 채우게 됩니다.
                 ],
                 "note": "금융위원회 공식 발표 대기 중 - 수동 업데이트 필요"
             }

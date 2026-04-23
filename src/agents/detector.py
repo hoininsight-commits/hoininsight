@@ -438,26 +438,36 @@ class DetectorAgent:
                             "change": s.get("1d_change_pct")
                         })
     def run(self, collector_result=None):
-        print(f"\n🔍 AGENT-03 DETECTOR v10.0 [Topic Selection Engine Mode]")
+        print(f"\n🔍 AGENT-03 DETECTOR v10.1 [Topic Selection Engine v1.0]")
         all_data = self.load_all_data()
         if not all_data: return {}
 
-        # [TASK #100] New Topic Selection Engine 가동
+        # [TASK #101] New Topic Selection Engine v1.0 가동
         from src.topic_engine.engine import TopicSelectionEngine
         topic_engine = TopicSelectionEngine(self.base_dir)
         selection = topic_engine.run(all_data)
         
-        # 팩트 데이터 패키징 (기존 호환성 유지용)
+        # 팩트 데이터 패키징 (WriterAgent 및 폴백 엔진용)
         fact_pack = []
         if selection and selection.get("MAIN"):
             main = selection["MAIN"]
             fact_pack.append({
-                "topic": main["title_seed"],
+                "topic": main["event"],
                 "core_facts": main["core_facts"],
                 "classification": main.get("evaluation", {}).get("flow_type", "NORMAL"),
-                "scenarios": [], 
-                "why_now": [main.get("evaluation", {}).get("why_now_summary", "")]
+                "scenarios": main.get("scenarios", []), 
+                "why_now": [main.get("evaluation", {}).get("why_now_summary", "")],
+                "evidence_bundle": main.get("evidence_bundle", {}),
+                "mechanism": main.get("mechanism", "지표 간의 상관관계 변화 관측"),
+                "strength": main.get("final_score", 5.0) * 10
             })
+            
+            # fact_pack 저장 (WriterAgent 연동 핵심)
+            fact_pack_dir = Path("data/fact_pack")
+            fact_pack_dir.mkdir(parents=True, exist_ok=True)
+            (fact_pack_dir / "candidates_fact_pack.json").write_text(
+                json.dumps(fact_pack, ensure_ascii=False, indent=2)
+            )
             
             # today_signal.json 저장 (기존 호환성)
             (self.signal_dir / "today_signal.json").write_text(json.dumps(selection["MAIN"], ensure_ascii=False, indent=2))

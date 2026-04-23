@@ -67,11 +67,11 @@ def update_gemini_health(client, success: bool, fallback_used: bool):
 def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3):
     """중복 호출 제거 및 TIER별 재시도/백오프 적용 (v4.5)"""
     
-    # [지시서 #093] TIER별 설정
+    # [지시서 #093] TIER별 설정 (v4.7 Hardened)
     tier_config = {
-        1: {"max_retries": 4, "backoff": [2, 4, 8, 12]},
-        2: {"max_retries": 2, "backoff": [2, 4]},
-        3: {"max_retries": 0, "backoff": []}
+        1: {"max_retries": 6, "backoff": [5, 10, 20, 30, 45, 60]}, # 필수: 끈질기게 재시도
+        2: {"max_retries": 3, "backoff": [5, 10, 20]},           # 중요: 적절히 재시도
+        3: {"max_retries": 1, "backoff": [5]}                    # 보조: 1회만 재시도
     }
     
     config = tier_config.get(tier, tier_config[3])

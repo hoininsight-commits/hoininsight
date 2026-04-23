@@ -26,7 +26,7 @@ class GeminiClient:
 
     def __init__(self):
         self.api_key = os.environ.get("GEMINI_API_KEY", "")
-        self.model_name = "gemini-flash-latest"
+        self.model_name = "gemini-1.5-flash-002"
 
         if not self.api_key:
             print("⚠️ [GeminiClient] WARNING: GEMINI_API_KEY not found. AI features will be disabled.")
@@ -224,9 +224,9 @@ class GeminiClient:
         # [TASK #093] TIER별 설정
         # TIER 1: 필수 (4회 재시도), TIER 2: 중요 (2회), TIER 3: 보조 (0회)
         tier_config = {
-            1: {"max_retries": 4, "backoff": [2, 4, 8, 12]},
-            2: {"max_retries": 2, "backoff": [2, 4]},
-            3: {"max_retries": 0, "backoff": []}
+            1: {"max_retries": 6, "backoff": [5, 10, 20, 30, 45, 60]},
+            2: {"max_retries": 3, "backoff": [5, 10, 20]},
+            3: {"max_retries": 1, "backoff": [5]}
         }
         
         config = tier_config.get(tier, tier_config[3])

@@ -30,17 +30,18 @@ class ContentEngine:
             # 4. Script Generation (Dual Mode)
             script = self._generate_script(cand, classification, selected_scenario)
             
-            content_res = {
-                "type": classification,
-                "title": cand["topic"],
-                "script": script,
-                "selected_scenario": selected_scenario,
-                "confidence": confidence,
-                "themes": mapping.get("themes", []),
-                "stocks": mapping.get("stocks", []),
-                "action": action
-            }
-            all_contents.append(content_res)
+            if script:
+                content_res = {
+                    "content_type": classification,
+                    "topic": cand["topic"],
+                    "script": script,
+                    "selected_scenario": selected_scenario,
+                    "confidence": confidence,
+                    "themes": mapping.get("themes", []),
+                    "stocks": mapping.get("stocks", []),
+                    "action": action
+                }
+                all_contents.append(content_res)
             
         return all_contents
 
@@ -55,24 +56,21 @@ class ContentEngine:
         return top.get("scenario", "기본 시나리오"), 0.65
 
     def _map_themes_and_stocks(self, candidate: Dict) -> Dict:
-        """이벤트 -> 섹터 -> 테마 -> 종목 연결"""
-        topic = candidate["topic"].lower()
+        """이벤트 및 증거 꾸러미에서 테마와 종목 정보를 추출 (데이터 기반 동적 추출)"""
         mapping = {"themes": [], "stocks": []}
         
-        # Rule-based mapping (Expandable)
-        rules = {
-            "유가": {"themes": ["정유", "에너지", "신재생"], "stocks": ["S-Oil", "SK이노베이션"]},
-            "휴전": {"themes": ["방산", "에너지", "재건"], "stocks": ["한화에어로스페이스", "현대로템"]},
-            "삼성": {"themes": ["반도체", "HBM"], "stocks": ["삼성전자", "SK하이닉스"]},
-            "금리": {"themes": ["금융", "기술주", "성장주"], "stocks": ["KB금융", "NAVER"]},
-            "달러": {"themes": ["수출주", "여행", "항공"], "stocks": ["현대차", "대한항공"]},
-            "deepseek": {"themes": ["AI", "반도체소부장"], "stocks": ["한미반도체", "리노공업"]}
-        }
+        # 1. candidate 자체에 포함된 themes/stocks 사용 (TopicSelectionEngine에서 생성한 경우)
+        mapping["themes"].extend(candidate.get("themes", []))
+        mapping["stocks"].extend(candidate.get("stocks", []))
         
-        for key, val in rules.items():
-            if key in topic:
-                mapping["themes"].extend(val["themes"])
-                mapping["stocks"].extend(val["stocks"])
+        # 2. evidence_bundle에서 키워드 추출 (간이 로직)
+        evidence = candidate.get("evidence_bundle", {})
+        for event in evidence.get("related_events", []):
+            # [HUNTER DNA] 이벤트 텍스트 내에서 []로 표시된 키워드나 명사 위주 추출 (향후 LLM 강화 가능)
+            if "[" in event and "]" in event:
+                tag = event.split("[")[1].split("]")[0]
+                if tag not in ["NEWS", "DART", "DEEP_DETAIL"]:
+                    mapping["themes"].append(tag)
         
         # Deduplicate
         mapping["themes"] = list(set(mapping["themes"]))
@@ -93,23 +91,8 @@ class ContentEngine:
         
         if classification == "ANOMALY":
             prompt = self._build_anomaly_prompt(candidate, scenario)
-            fallback = f"""
-시장에서 일어날 수 없는 모순이 포착되었습니다.
-원래 상황이라면 {json.dumps(candidate.get('anomaly_overlay',{}).get('expected',{}), ensure_ascii=False)} 흐름이 정상입니다.
-그런데 현실은 반대로 가고 있습니다. 
-이 괴리가 의미하는 것은 명확합니다. 지금 세력은 다른 곳을 보고 있습니다.
-우리가 주목해야 할 시나리오는 '{scenario}'입니다.
-지금 당장 포지션을 점검하고 {candidate.get('action', '조심')} 하시기 바랍니다.
-            """
         else:
             prompt = self._build_normal_prompt(candidate, scenario)
-            fallback = f"""
-시장에 묘한 흐름이 감지되고 있습니다.
-왜 이런 현상이 발생할까요? 원래 정상적인 상황이라면 시장은 특정 방향으로 움직여야 합니다.
-하지만 현재 {candidate['topic']} 현상이 나타나고 있죠.
-이걸 해석하는 3가지 시나리오 중 특히 '{scenario}' 가능성을 주목해야 합니다.
-데이터를 종합해볼 때, 지금은 {candidate.get('action', '관망')}이 필요한 시점입니다.
-            """
             
         try:
             res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
@@ -117,10 +100,11 @@ class ContentEngine:
                 return res["script"]
             if isinstance(res, str) and len(res) > 50:
                 return res
-        except:
-            pass
+        except Exception as e:
+            print(f"  ⚠️ ContentEngine Gemini 호출 실패: {e}")
+            return None
 
-        return fallback
+        return None
 
     def _build_normal_prompt(self, cand: Dict, scenario: str) -> str:
         return f"""

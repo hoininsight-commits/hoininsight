@@ -55,50 +55,89 @@ class RuleBasedScriptGenerator:
 [ACTION]
 지금 시장에서 중요한 건 {action_condition}이다."""
 
-    FALLBACK_TEMPLATE = """[HOOK]
-{hook}
+    FALLBACK_TEMPLATE = """(Step 1: Hook)
+[I] {hook}
 
-[FACT]
-{fact_summary}
+(Step 2: Context)
+[F] {fact_summary}
 
-[SCENARIO]
-{selected_scenario} 가능성이 가장 높다.
+(Step 3: Mechanism)
+[I] {mechanism}
 
-[IMPLICATION]
-{theme_impact}
+(Step 4: WHY NOW)
+[F] {why_now_detail}
 
-[ACTION]
-{action_condition}이다."""
+(Step 5: Implication)
+[I] {theme_impact}
+
+(Step 6: Mentionables)
+[F] {mentionables}
+
+(Step 7: Risk/Scenario)
+[I] {selected_scenario} 가능성이 가장 높다. {risk_warning}
+
+---
+
+### [오늘 이것 하나만 기억해]
+{one_thing}"""
 
     def __init__(self):
         pass
 
     def generate_fallback(self, candidate: Dict) -> Optional[Dict]:
-        """[TASK #093] 정식 결정론적 폴백 스크립트 생성"""
+        """[TASK #093] 정식 결정론적 폴백 스크립트 생성 (Hunter DNA 주입)"""
         if not self._check_fail_safe(candidate):
             return None
             
         vars = self._generate_variables(candidate)
         
-        # FACT 요약 (2~3개 핵심 수치)
+        # 1. FACT 요약 정밀화 (None 방지)
         facts = candidate.get("core_facts", [])
         fact_lines = []
-        for f in facts[:3]:
-            fact_lines.append(f"현재 {f.get('name')}는 {f.get('value')}로 전일 대비 {f.get('change', '변동')} 중이다.")
-        vars["fact_summary"] = "\n".join(fact_lines) if fact_lines else "주요 지표의 변동성이 관측되고 있다."
+        for f in facts[:2]:
+            val = f.get('value', '데이터 확인 중')
+            chg = f.get('change')
+            chg_str = f"{chg:+.2f}%" if (isinstance(chg, (int, float)) and chg != 0) else "변동성 확대"
+            fact_lines.append(f"현재 {f.get('name')} 지표는 {val} 수준으로, 전일 대비 {chg_str} 흐름을 보이고 있다.")
+        vars["fact_summary"] = " ".join(fact_lines) if fact_lines else "주요 거시 지표의 이례적인 움직임이 포착되었다."
         
+        # 2. WHY NOW Detail (Deep Detail & DART 연동)
+        # evidence_bundle이 있으면 거기서 뽑고, 없으면 why_now에서 추출
+        evidence = candidate.get("evidence_bundle", {})
+        deep_events = evidence.get("related_events", [])
+        if deep_events:
+            # 수치가 포함된 상세 내역을 우선적으로 배치
+            vars["why_now_detail"] = " / ".join(deep_events[:2])
+        else:
+            vars["why_now_detail"] = vars.get("why_now", "현재 시장의 결정적 수급 변화가 임계점을 돌파했다.")
+
+        # 3. 추가 변수 설정
+        vars["title"] = candidate.get("topic", "시장 긴급 분석")
+        vars["status_label"] = "PARTIAL_SUCCESS (Gemini 실패, Fallback 엔진 가동)"
+        vars["gate_status"] = "PASS (Deterministic)"
+        vars["mechanism"] = candidate.get("mechanism", "이례적인 수급 쏠림으로 인한 지표 간의 디커플링 현상이 관측된다.")
+        if vars["mechanism"] == "Correlative shift observed": # Engine 기본값 교체
+            vars["mechanism"] = "주요 자산군 간의 상관관계가 깨지며 새로운 가격 축이 형성되는 과정이다."
+            
+        vars["mentionables"] = "현재 데이터상 직접적인 브리지가 확인되는 종목은 없다. 관련 섹터 ETF의 흐름을 관찰하라."
+        vars["risk_warning"] = "다만, 단기 변동성 확대에 따른 오버슈팅 가능성을 경계해야 한다."
+        vars["one_thing"] = f"오늘 관찰된 {vars['title']} 현상이 지속되는지 확인해라. 그게 진짜 신호다."
+
         try:
             script = self.FALLBACK_TEMPLATE.format(**vars)
         except Exception as e:
             print(f"  ⚠️ 폴백 템플릿 렌더링 실패: {e}")
             return None
             
+        from datetime import datetime
         return {
-            "title": candidate.get("topic", "시장 분석 (폴백)"),
+            "topic": vars["title"],
             "script": script,
-            "type": candidate.get("classification", "NORMAL"),
+            "content_type": candidate.get("classification", "NORMAL"),
             "themes": vars.get("themes", []),
-            "action": vars.get("action_condition", "WATCH")
+            "action": vars.get("action_condition", "WATCH"),
+            "date": datetime.now().strftime("%Y%m%d"),
+            "strength": candidate.get("strength", 5.0)
         }
 
     def generate(self, candidate: Dict) -> Optional[Dict]:
@@ -135,13 +174,10 @@ class RuleBasedScriptGenerator:
         }
 
     def _check_fail_safe(self, cand: Dict) -> bool:
-        """필수 데이터 존재 여부 확인"""
-        if not cand.get("core_facts") and not cand.get("why_now"):
+        """필수 데이터 존재 여부 확인 (Resilience를 위해 완화)"""
+        if not cand.get("core_facts") and not cand.get("topic"):
             return False
-        if not cand.get("scenarios") or len(cand.get("scenarios", [])) == 0:
-            return False
-        if not cand.get("classification"):
-            return False
+        # scenarios가 없어도 Resilience를 위해 생성 허용
         return True
 
     def _generate_variables(self, cand: Dict) -> Dict:
@@ -215,28 +251,17 @@ class RuleBasedScriptGenerator:
 
         return vars
 
-    def _map_themes(self, candidate: Dict) -> Dict:
-        """이벤트 -> 섹터 -> 테마 자동 매핑 (규칙 기반)"""
-        topic = candidate.get("topic", "").lower()
+    def _map_themes(self, cand: Dict) -> Dict:
+        """이벤트 및 데이터에서 테마와 종목 정보를 추출 (동적 추출)"""
         mapping = {"themes": [], "stocks": []}
         
-        rules = {
-            "유가": {"themes": ["정유", "에너지", "신재생"], "stocks": ["S-Oil", "SK이노베이션"]},
-            "휴전": {"themes": ["방산", "에너지", "재건"], "stocks": ["한화에어로스페이스", "현대로템"]},
-            "삼성": {"themes": ["반도체", "HBM"], "stocks": ["삼성전자", "SK하이닉스"]},
-            "금리": {"themes": ["금융", "기술주", "성장주"], "stocks": ["KB금융", "NAVER"]},
-            "달러": {"themes": ["수출주", "여행", "항공"], "stocks": ["현대차", "대한항공"]},
-            "ai": {"themes": ["AI", "반도체소부장"], "stocks": ["한미반도체", "리노공업"]},
-            "국채": {"themes": ["금융", "채권형"], "stocks": ["KB금융", "신한지주"]}
-        }
+        # TopicSelectionEngine에서 전달된 데이터 우선 사용
+        mapping["themes"] = cand.get("themes", [])
+        mapping["stocks"] = cand.get("stocks", [])
         
-        for key, val in rules.items():
-            if key in topic:
-                mapping["themes"].extend(val["themes"])
-                mapping["stocks"].extend(val["stocks"])
-        
+        # 데이터가 없을 경우에만 최소한의 맥락 정보 부여
         if not mapping["themes"]:
-            mapping["themes"] = ["매크로", "시장전반"]
+            # [HUNTER DNA] 특정 종목을 강제하지 않고 시장 전반의 맥락으로 처리
+            mapping["themes"] = ["시장전반", "수급변화"]
             
-        mapping["themes"] = list(set(mapping["themes"]))
         return mapping
