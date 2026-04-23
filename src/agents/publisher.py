@@ -26,28 +26,61 @@ class PublisherAgent:
         """오늘 생성된 모든 데이터 로드"""
         data = {}
 
-        # 신호
-        for d in sorted(Path("data/signals").iterdir(), reverse=True):
-            p = d / "today_signal.json"
-            if p.exists():
-                data["signal"] = json.loads(p.read_text())
-                break
+        def safe_load_json(path: Path):
+            try:
+                return json.loads(path.read_text(encoding='utf-8'))
+            except:
+                return None
+
+        # 신호 (v4.0: data/topics/topic_selection.json 우선 로드)
+        topic_sel_p = self.base_dir / "data/topics/topic_selection.json"
+        if topic_sel_p.exists():
+            res = safe_load_json(topic_sel_p)
+            if res and res.get("MAIN"):
+                # Detector의 MAIN 결과를 Publisher 규격으로 변환
+                main = res["MAIN"]
+                data["signal"] = {
+                    "topic": main.get("event", main.get("topic", "")),
+                    "event": main.get("event", ""),
+                    "strength": main.get("final_score", 0) * 10,
+                    "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" else "쇼츠",
+                    "filters_hit": [main.get("structure_axis", "S")],
+                    "why_now": main.get("why_now", main.get("selection_reason", "")),
+                    "why_hypothesis": main.get("why_hypothesis", ""),
+                    "mechanism": main.get("mechanism", ""),
+                    "hypothesis_confidence": main.get("hypothesis_confidence", ""),
+                    "is_mismatch": main.get("is_mismatch", False)
+                }
+                print(f"  [DEBUG] Loaded Topic Selection MAIN: {data['signal']['topic']}")
+        
+        if "signal" not in data:
+            for d in sorted(Path("data/signals").iterdir(), reverse=True):
+                p = d / "today_signal.json"
+                if p.exists():
+                    res = safe_load_json(p)
+                    if res:
+                        data["signal"] = res
+                        break
 
         # 분석
         if Path("data/analysis").exists():
             for d in sorted(Path("data/analysis").iterdir(), reverse=True):
                 p = d / "today_analysis.json"
                 if p.exists():
-                    data["analysis"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["analysis"] = res
+                        break
 
         # 종목
         if Path("data/analysis").exists():
             for d in sorted(Path("data/analysis").iterdir(), reverse=True):
                 p = d / "today_stocks.json"
                 if p.exists():
-                    data["stocks"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["stocks"] = res
+                        break
 
         # 스크립트
         if Path("data/scripts").exists():
@@ -63,57 +96,82 @@ class PublisherAgent:
                     data["script_short_path"] = str(p)
                     break
 
-        # 후보 목록
-        for d in sorted(Path("data/signals").iterdir(), reverse=True):
-            p = d / "candidates.json"
-            if p.exists():
-                data["candidates"] = json.loads(p.read_text())
-                break
+        # 후보 목록 (v2.0: data/topics/topic_candidates.json 대응)
+        topic_p = self.base_dir / "data/topics/topic_candidates.json"
+        if topic_p.exists():
+            res = safe_load_json(topic_p)
+            print(f"  [DEBUG] Loaded topic_candidates.json: {len(res) if isinstance(res, list) else 'N/A'} items")
+            if res:
+                data["candidates"] = {"candidates": res} if isinstance(res, list) else res
+        else:
+            print(f"  [DEBUG] topic_candidates.json NOT FOUND at {topic_p}")
+            # Fallback to signals dir
+            for d in sorted(Path("data/signals").iterdir(), reverse=True):
+                p = d / "topic_candidates.json"
+                if not p.exists():
+                    p = d / "candidates.json"
+                if p.exists():
+                    res = safe_load_json(p)
+                    if res:
+                        data["candidates"] = {"candidates": res} if isinstance(res, list) else res
+                        break
 
-        # market 데이터 (대시보드 A구역용)
+        # market 데이터
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "market.json"
                 if p.exists():
-                    data["market"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["market"] = res
+                        break
 
         # macro 데이터
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "macro.json"
                 if p.exists():
-                    data["macro"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["macro"] = res
+                        break
 
         # sentiment 데이터
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "sentiment.json"
                 if p.exists():
-                    data["sentiment"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["sentiment"] = res
+                        break
 
         # putcall 데이터
         p = Path("data/outputs/putcall.json")
         if p.exists():
-            data["putcall"] = json.loads(p.read_text())
+            res = safe_load_json(p)
+            if res:
+                data["putcall"] = res
 
         # [지시서 #055] COT 데이터 로드
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "cot.json"
                 if p.exists():
-                    data["cot"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["cot"] = res
+                        break
 
         # collection_status 데이터
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "collection_status.json"
                 if p.exists():
-                    data["collection_status"] = json.loads(p.read_text())
-                    break
+                    res = safe_load_json(p)
+                    if res:
+                        data["collection_status"] = res
+                        break
 
         return data
 
@@ -226,11 +284,15 @@ class PublisherAgent:
             if all_candidates:
                 from src.content.content_tier import map_action_to_tier
                 
-                # 메인 신호 토픽 확인
-                selected_topic = signal.get("topic", "")
+                # 메인 신호 토픽 확인 (v2.0 대응: event와 topic 모두 체크)
+                selected_title = signal.get("event", signal.get("topic", ""))
                 
-                for cand in all_candidates:
-                    is_winner = cand.get("topic") == selected_topic
+                for i, cand in enumerate(all_candidates):
+                    cand_title = cand.get("event", cand.get("topic", ""))
+                    is_winner = cand_title == selected_title and selected_title != ""
+                    
+                    if i < 3: # 첫 3개만 로깅
+                        print(f"  [DEBUG] Processing cand {i}: title='{cand_title}', winner={is_winner}")
                     
                     # 스크립트 본문 로드 (메인 토픽일 경우에만 전문 로드)
                     script_body = f"[{cand.get('anomaly_type', '탐지')}] {cand.get('why_anomalous')}"
@@ -244,18 +306,28 @@ class PublisherAgent:
                     tier = "TIER_1" if is_winner else "TIER_3"
                     action = "USE" if is_winner else "DROP"
                     
+                    # [V2.0 MAPPING]
+                    cand_topic = cand.get("event", cand.get("topic", ""))
+                    cand_why_now = cand.get("evaluation", {}).get("why_now_summary", cand.get("why_now", ""))
+                    if not cand_why_now:
+                        cand_why_now = cand.get("selection_reason", "")
+
                     processed = {
-                        "topic": cand.get("topic", ""),
-                        "core_claim": cand.get("why_anomalous", cand.get("topic", "")),
-                        "why_now": cand.get("why_now", ""),
-                        "structural_truth": cand.get("why_anomalous", ""),
+                        "topic": cand_topic,
+                        "core_claim": cand_topic,
+                        "why_now": cand_why_now,
+                        "structural_truth": cand.get("selection_reason", ""),
                         "level2_chain": cand.get("key_indicators", []),
-                        "quality_score": int(cand.get("strength", 0) * 10),
-                        "reality_score": 1 if cand.get("strength", 0) >= 9.5 else 0,
+                        "quality_score": int(cand.get("final_score", 0) * 10) if cand.get("final_score") else int(cand.get("strength", 0) * 10),
+                        "reality_score": 1 if cand.get("final_score", 0) >= 0.9 or cand.get("strength", 0) >= 9.5 else 0,
                         "score_trust": "HIGH_TRUST" if is_winner else "MEDIUM_TRUST",
                         "final_action": action,
                         "content_tier": tier,
-                        "script": script_body
+                        "script": script_body,
+                        # Why Hypothesis Layer (v2.0)
+                        "why_hypothesis": cand.get("why_hypothesis", ""),
+                        "mechanism": cand.get("mechanism", ""),
+                        "confidence": cand.get("hypothesis_confidence", cand.get("confidence", ""))
                     }
                     content_pack[tier].append(processed)
             elif signal:
@@ -275,8 +347,15 @@ class PublisherAgent:
 
         # 3. 시장 지표 (Market Snapshot)
         market = data.get("market", {})
-        market_data = market.get("data", {})
-        market_stats = market_data.get("multi_period_stats", {})
+        market_data_outer = market.get("data", {})
+        
+        # [FIX] 중첩 구조 대응 (data -> data)
+        if isinstance(market_data_outer, dict) and "data" in market_data_outer:
+            market_data = market_data_outer.get("data", {})
+        else:
+            market_data = market_data_outer
+            
+        market_stats = market_data.get("multi_period_stats", {}) if isinstance(market_data, dict) else {}
         
         rates_val = market_data.get("us10y", "N/A")
         spx_val = market_data.get("sp500", "N/A")
@@ -296,12 +375,16 @@ class PublisherAgent:
         # 5. 최종 데이터 계약 (UI/docs 전용)
         ui_contract = {
             "top_decision": {
-                "topic": main_content.get("topic", "N/A"),
+                "topic": main_content.get("topic", main_content.get("event", "N/A")),
                 "final_action": main_content.get("final_action", "N/A"),
                 "content_tier": main_content.get("content_tier", "TIER_3"),
                 "summary": main_content.get("core_claim", "데이터 분석 중"),
-                "why_now": main_content.get("why_now", "분석 중")
+                "why_now": main_content.get("why_now", "분석 중"),
+                "why_hypothesis": main_content.get("why_hypothesis", ""),
+                "mechanism": main_content.get("mechanism", ""),
+                "confidence": main_content.get("confidence", main_content.get("hypothesis_confidence", ""))
             },
+            "market_axis": main_content.get("market_axis", {}),
             "content_pack": content_pack,
             "reason_layer": {
                 "quality_score": main_content.get("quality_score", 0),
