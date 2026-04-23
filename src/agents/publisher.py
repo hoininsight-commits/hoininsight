@@ -601,11 +601,12 @@ HOIN Insight 일일 브리핑
             brief_with_script += f"\n\n[📜 롱폼 스크립트 전문]\n\n{script_body}"
         
         # [지시서 #082] 텔레그램 전송 결과 확인
+        # 텔레그램은 알림 수단 — 전송 실패가 파이프라인 전체 실패로 이어지면 안 됨
         success = self.notifier.send_message_in_chunks(brief_with_script)
         if not success:
-            print("  ❌ [PUBLISHER] 텔레그램 전송 실패!")
-            # 예외를 발생시켜 파이프라인이 FAIL로 인지하게 함
-            raise Exception("Telegram transmission failed")
+            print("  ⚠️ [PUBLISHER] 텔레그램 전송 실패 (Warning only — 파이프라인 계속)")
+        else:
+            print("  ✅ [PUBLISHER] 텔레그램 전송 완료")
 
         print("✅ AGENT-06 완료\n")
         return {"content": content, "brief": brief}
