@@ -4,6 +4,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
+import re
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -613,10 +615,11 @@ class CollectorAgent:
 
                         feed_headlines.append({
                             "title": date_prefix + entry.get("title", "").strip(),
-                            "summary": entry.get("summary", "")[:200].strip(),
+                            "summary": entry.get("summary", "")[:1000].strip(), # 1000자로 확장하여 디테일 보존
                             "link": entry.get("link", ""),
                             "source": feed["name"],
-                            "timestamp": datetime.now().isoformat()
+                            "timestamp": datetime.now().isoformat(),
+                            "is_deep_scraped": False # 본문 스크래핑 여부 마킹
                         })
             except:
                 pass
@@ -646,6 +649,43 @@ class CollectorAgent:
                     break
 
         print(f"  총 뉴스 {len(headlines)}개, 권위자 관련 {len(authority_signals)}개 포착")
+
+        # [NEW] Hunter's Deep Scrape: 상위 10개 기사 본문 추출 (디테일 확보용)
+        print("🔍 주요 기사 본문 심층 분석 중 (Deep Scrape)...")
+        
+        # 중요도 순으로 정렬 (Hunter Keywords -> 권위자 뉴스 -> 최신순)
+        hunter_priority_kws = ["성과급", "노조", "파업", "실적", "공급망", "병목", "incentive", "strike", "bottleneck", "earnings"]
+        headlines.sort(key=lambda x: (
+            any(kw.lower() in (x["title"] + x["summary"]).lower() for kw in hunter_priority_kws),
+            any(kw.lower() in x["title"].lower() for kw in authority_keywords)
+        ), reverse=True)
+        
+        for h in headlines[:10]: # 10개로 확대
+            try:
+                url = h.get("link")
+                if not url: continue
+                # 한국경제 등 특정 사이트는 User-Agent에 민감하므로 보강
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                }
+                resp = requests.get(url, timeout=5, headers=headers)
+                if resp.status_code == 200:
+                    soup = BeautifulSoup(resp.content, "html.parser")
+                    # 본문 텍스트 추출 최적화
+                    p_texts = [p.get_text().strip() for p in soup.find_all(["p", "div"]) if len(p.get_text().strip()) > 40]
+                    body_text = " ".join(p_texts[:15]) 
+                    
+                    if body_text:
+                        # 수치 정보 포착 정규표현식 강화
+                        detail_info = re.findall(r'[^.]*?(\d+%|\d+억|\d+조|\d+억\s*달러|\d+%\s*인상|성과급\s*[\d,]+|영업이익\s*[\d,]+)[^.]*\.', body_text)
+                        if detail_info:
+                            h["summary"] = "[DEEP_DETAIL] " + " ".join(detail_info[:3]) + " | " + h["summary"]
+                        else:
+                            h["summary"] = body_text[:700] + "..." # 요약 길이도 확장
+                        h["is_deep_scraped"] = True
+                        print(f"  ✅ Deep Scraped (Hunter Priority): {h['title'][:30]}...")
+            except:
+                continue
 
         result_data = {
             "date": self.today,
@@ -941,9 +981,33 @@ class CollectorAgent:
             is_bullish = any(bk in report_nm for bk in bullish_keywords)
             
             if is_news_relevant or is_bullish:
+                # [NEW] Hunter's Detail: 공시 본문에서 핵심 수치(금액) 추출 시도
+                amount_info = "수치 확인 중"
+                try:
+                    # 상세 문서 텍스트 추출
+                    doc_html = dart.document(row['rcept_no'])
+                    if doc_html:
+                        # HTML 태그 제거하여 텍스트만 추출
+                        soup = BeautifulSoup(doc_html, "html.parser")
+                        doc_text = soup.get_text(separator=" ", strip=True)
+                        
+                        # 정규표현식으로 '계약금액', '투자금액' 등 수치 포착 (유연성 강화)
+                        # 표 구조를 고려하여 키워드와 숫자 사이의 거리를 넉넉히 둠
+                        match = re.search(r'(계약금액|투자금액|금액|자금).*?([\d,]+)\s*(원|백만원|억원|조원|달러)', doc_text, re.DOTALL)
+                        if match:
+                            amount_info = f"{match.group(2)} {match.group(3)}"
+                            # 대비 비중 확인 (%) - 매출액 또는 자산 대비
+                            pct_match = re.search(r'(매출액|자산).*?대비.*?([\d.]+\s*%)', doc_text, re.DOTALL)
+                            if pct_match:
+                                amount_info += f" ({pct_match.group(1)} 대비 {pct_match.group(2)})"
+                except Exception as e:
+                    print(f"  ⚠️ DART 상세 추출 실패 ({corp_name}): {e}")
+                    pass
+
                 disclosures.append({
                     "company": corp_name,
                     "title": report_nm,
+                    "amount": amount_info,
                     "type": "NEWS_RELEVANT" if is_news_relevant else "BULLISH",
                     "link": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={row['rcept_no']}",
                     "date": row['rcept_dt']

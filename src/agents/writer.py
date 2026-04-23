@@ -191,7 +191,7 @@ class WriterAgent:
             if status == "PARTIAL_SUCCESS":
                 status_display = "PARTIAL_SUCCESS (Gemini 실패, fallback 사용)"
             
-            script_md = f"# [ECONOMIC HUNTER] {main_content['title']}\n\n"
+            script_md = f"# [ECONOMIC HUNTER] {main_content['topic']}\n\n"
             script_md += f"**STATUS**: {status_display} | **GATE**: {report.get('status', 'N/A')}\n"
             script_md += f"**QUALITY SCORE**: {report.get('total_score', 0)} / 5.0\n\n"
             script_md += "---\n\n"

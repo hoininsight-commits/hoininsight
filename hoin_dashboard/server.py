@@ -14,6 +14,14 @@ from datetime import datetime
 ROOT = Path(__file__).parent.parent
 PORT = int(os.environ.get("PORT", 8888))
 
+# [FIX] .env 파일 수동 로드 (표준 라이브러리만 사용)
+env_path = ROOT / ".env"
+if env_path.exists():
+    for line in env_path.read_text().splitlines():
+        if "=" in line and not line.startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ[k.strip()] = v.strip()
+
 
 def _latest_date_dir(base: Path):
     if not base.exists():

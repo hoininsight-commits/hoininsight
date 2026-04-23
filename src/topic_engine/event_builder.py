@@ -12,6 +12,24 @@ class EventBuilder:
         "LIQUIDITY": ["유입", "유출", "자금", "매수", "매도", "liquidity", "inflow", "outflow", "buyback", "quantitative", "pension", "fund", "private assets", "수급", "외인", "기관", "개미"]
     }
 
+    # [TASK #092] 비정형 슬랭 맵 (Normalize entities)
+    SLANG_MAP = {
+        "삼전": "삼성전자",
+        "닉스": "SK하이닉스",
+        "삼전닉스": ["삼성전자", "SK하이닉스"],
+        "전차": ["삼성전자", "현대차"],
+        "삼바": "삼성바이오로직스",
+        "에코": "에코프로",
+        "엔솔": "LG에너지솔루션",
+        "현차": "현대차",
+        "기차": "기아",
+        "미장": "미국 증시",
+        "국장": "한국 증시",
+        "개미": "개인투자자",
+        "외인": "외국인투자자",
+        "기관": "기관투자자"
+    }
+
     def _extract_entities_dynamically(self, text: str) -> List[str]:
         """텍스트에서 따옴표, 대문자 조합, 혹은 주요 명사를 통해 엔티티를 동적으로 추출"""
         # [HUNTER DNA] 하드코딩 없이 텍스트 패턴으로만 추출
@@ -30,6 +48,14 @@ class EventBuilder:
         for b in bracketed:
             if b not in ["뉴스", "공시", "단독", "속보"]:
                 entities.append(b)
+
+        # 4. [NEW] Slang Mapping (삼전닉스 등 대응)
+        for slang, formal in self.SLANG_MAP.items():
+            if slang in text:
+                if isinstance(formal, list):
+                    entities.extend(formal)
+                else:
+                    entities.append(formal)
                 
         return list(set(entities)) if entities else ["Market"]
 

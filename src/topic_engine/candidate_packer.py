@@ -1,85 +1,64 @@
-import uuid
+import hashlib
 from typing import List, Dict
 
 class CandidatePacker:
-    """[TASK #100.4] 모든 후보를 통일된 CANDIDATE PACK 구조로 변환"""
+    """[TASK #102.4] 후보군 통합 및 유효성 검증 (v1.1)"""
 
     def __init__(self):
         pass
 
-    def pack_all(self, events: List[Dict], signals: List[Dict], hybrids: List[Dict]) -> List[Dict]:
-        packs = []
+    def pack_all(self, enriched_events: List[Dict], signals: List[Dict]) -> List[Dict]:
+        all_candidates = []
         
-        # 1. Pack Hybrids (Priority)
-        for h in hybrids:
-            packs.append(self._pack_hybrid(h))
+        # 1. Event 후보 패키징 (이미 필터링과 데이터 연결이 완료된 상태)
+        for ev in enriched_events:
+            c_id = self._generate_id(ev["event"])
             
-        # 2. Pack Data Signals
-        for s in signals:
-            packs.append(self._pack_signal(s))
+            assets = ev.get("related_market_data", {}).get("assets", [])
             
-        # 3. Pack Events
-        for e in events:
-            packs.append(self._pack_event(e))
+            # [VALIDATION RULE]
+            # 1. entity 존재 (Builder에서 걸러짐)
+            # 2. 관련 데이터 존재 (Enricher에서 2개 이상으로 걸러짐)
+            # 3. 필터 통과 (Filter에서 걸러짐)
             
-        return packs
-
-    def _pack_hybrid(self, h: Dict) -> Dict:
-        return {
-            "candidate_id": str(uuid.uuid4())[:8],
-            "candidate_type": "HYBRID",
-            "title_seed": f"{h['event']} & {h['signal']}",
-            "entity": [],
-            "sector_hints": [],
-            "core_facts": [], # Will be populated if linked to metrics
-            "event_summary": h["event"],
-            "expected_paths": ["Normal reaction"],
-            "actual_paths": [h["signal"]],
-            "difference_flags": [h["consistency"]],
-            "recency_score": 0.9,
-            "breadth_score": 0.8,
-            "evidence_score": 0.9
-        }
-
-    def _pack_signal(self, s: Dict) -> Dict:
-        facts = []
-        for m, val in s["current"].items():
-            facts.append({
-                "name": m,
-                "value": val,
-                "previous": s["previous"].get(m),
-                "change": s["change"].get(m)
+            all_candidates.append({
+                "candidate_id": c_id,
+                "candidate_type": "HYBRID",
+                "event": ev["event"],
+                "entity": ev["entity"],
+                "core_facts": assets,
+                "expected_paths": ["안정적 흐름 유지"],
+                "actual_paths": [ev["event_type"]],
+                "recency_score": ev["recency_score"],
+                "evidence_score": 0.8 # 데이터가 매핑되었으므로 고점 부여
             })
             
-        return {
-            "candidate_id": str(uuid.uuid4())[:8],
-            "candidate_type": "DATA",
-            "title_seed": s["signal"],
-            "entity": [],
-            "sector_hints": [],
-            "core_facts": facts,
-            "event_summary": "수치 기반 이상징후 포착",
-            "expected_paths": ["Normal correlation"],
-            "actual_paths": [s["signal_type"]],
-            "difference_flags": [s["signal_type"]],
-            "recency_score": 1.0,
-            "breadth_score": 0.5,
-            "evidence_score": min(1.0, abs(s.get("z_score", 0)) / 3.0)
-        }
+        # 2. Data 후보 패키징
+        for sig in signals:
+            c_id = self._generate_id(sig["signal"])
+            
+            core_facts = []
+            for name, val in sig.get("current", {}).items():
+                core_facts.append({
+                    "name": name,
+                    "value": val,
+                    "change": sig["change"].get(name),
+                    "z_score": sig.get("z_scores", {}).get(name, 0.0)
+                })
+                
+            all_candidates.append({
+                "candidate_id": c_id,
+                "candidate_type": "DATA",
+                "event": sig["signal"],
+                "entity": ["Market"], # Data 시그널은 예외적으로 Market 허용 (혹은 지수명으로 대체 가능)
+                "core_facts": core_facts,
+                "expected_paths": ["평균 회귀"],
+                "actual_paths": [sig["signal_type"]],
+                "recency_score": 0.9,
+                "evidence_score": 1.0
+            })
+            
+        return all_candidates
 
-    def _pack_event(self, e: Dict) -> Dict:
-        return {
-            "candidate_id": str(uuid.uuid4())[:8],
-            "candidate_type": "EVENT",
-            "title_seed": e["event"],
-            "entity": [e["entity"]],
-            "sector_hints": e["sector_hint"],
-            "core_facts": [], # Rule: No numbers, no candidate. I must find numbers for events.
-            "event_summary": e["event"],
-            "expected_paths": ["Stable operations"],
-            "actual_paths": [e["event_type"]],
-            "difference_flags": [e["event_type"]],
-            "recency_score": e["recency_score"],
-            "breadth_score": 0.6 if e["impact_scope"] == "섹터" else 0.8,
-            "evidence_score": 0.5
-        }
+    def _generate_id(self, text: str) -> str:
+        return hashlib.md5(text.encode()).hexdigest()[:8]

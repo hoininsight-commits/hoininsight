@@ -24,9 +24,13 @@ class ScriptQualityGate:
         gemini_eval = {}
         try:
             # TIER 3 호출 (실패 시 즉각 fallback)
-            gemini_eval = self.gemini.call_json_controlled(prompt, agent="QUALITY_GATE", tier=3)
-        except:
-            print("  ⚠️ Quality Gate Stage 2 (Gemini) 실패. Deterministic 점수만 사용합니다.")
+            res = self.gemini.call_json_controlled(prompt, agent="QUALITY_GATE", tier=3)
+            if res:
+                gemini_eval = res
+            else:
+                print("  ⚠️ Quality Gate Stage 2 (Gemini) 응답 없음. Deterministic 점수 사용.")
+        except Exception as e:
+            print(f"  ⚠️ Quality Gate Stage 2 (Gemini) 실패: {e}. Deterministic 점수 사용.")
 
         # 점수 병합
         report = {

@@ -1,14 +1,26 @@
 [
   {
+    "date": "2026-04-23",
+    "rank": 1,
+    "topic": "KOSPI 상방 이상징후 (Z-score: 1.58)",
+    "strength": 7.35,
+    "anomaly_type": "",
+    "filters_hit": [
+      "flow"
+    ],
+    "why_now": "High intensity movement in kospi (4.01%)",
+    "path": "topics/items/2026-04-23__top1.json",
+    "isToday": false
+  },
+  {
     "date": "2026-04-22",
     "rank": 1,
-    "topic": "",
-    "strength": 0,
+    "topic": "공포 뉴스 홍수 속의 통계적 평온 (VIX의 기만적 저점)",
+    "strength": 8.5,
     "anomaly_type": "",
     "filters_hit": [
       "S"
     ],
-    "why_now": "",
     "path": "topics/items/2026-04-22__top1.json",
     "isToday": false
   },

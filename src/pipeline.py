@@ -101,7 +101,7 @@ def run_pipeline():
             
             if not isinstance(cand, dict): continue
                 
-            target_topic = cand.get("topic", "N/A")
+            target_topic = cand.get("event", cand.get("topic", "N/A"))
             print(f"  [{i+1}/{len(targets)}] [{mode}] 분석: {target_topic[:30]}...")
             
             # 1. 개별 분석 수행
@@ -140,7 +140,11 @@ def run_pipeline():
                 "score_trust": trust,
                 "final_action": final_act,
                 "content_tier": tier,
-                "event_context": cand.get("event_context", {}) # [TASK #084]
+                "event_context": cand.get("event_context", {}),
+                "why_hypothesis": cand.get("why_hypothesis", ""),
+                "mechanism": cand.get("mechanism", ""),
+                "confidence": cand.get("hypothesis_confidence", ""),
+                "market_axis": tiered.get("market_axis", {})
             }
             
             # 4. 스크립트 생성 (모드에 따라 깊이 조절)

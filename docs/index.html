@@ -95,6 +95,9 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); font
 
 <div class="pack-hero">
   <div class="hero-title">🔥 TODAY'S CONTENT PACK</div>
+  <div id="axis-display" style="font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-bottom: 30px;">
+    AXIS: <span id="p-axis" style="color: var(--amber);">--</span> | <span id="s-axis">--</span>
+  </div>
   <div class="pack-grid" id="pack-grid">
     <!-- Content Cards -->
   </div>
@@ -125,6 +128,18 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); font
       <div class="metric-label">Trust Strength</div>
     </div>
   </div>
+
+  <div class="layer-title">▶ 경제사냥꾼의 가설 (Why Hypothesis)</div>
+  <div class="script-box" style="border-left: 4px solid var(--amber);">
+    <div class="script-header">
+      <div style="font-family: var(--mono); font-weight: 700; color: var(--amber);">[CAUSAL HYPOTHESIS]</div>
+      <div id="h-conf" style="font-size: 11px; background: #333; padding: 2px 10px; border-radius: 4px;">CONF: --</div>
+    </div>
+    <div class="script-content" style="padding: 30px;">
+      <div id="h-why" style="font-size: 18px; color: #fff; margin-bottom: 20px; font-weight: 700;">가설 로딩 중...</div>
+      <div id="h-mech" style="font-size: 14px; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 20px;">메커니즘 분석 중...</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -137,11 +152,16 @@ async function loadPack() {
       .then(data => {
         currentPack = data.content_pack || {};
         const snap = data.market_snapshot || {};
+        const axis = data.market_axis || {};
         
         // 지표 바인딩
         document.getElementById('rate-v').textContent = snap.rates || '--';
         document.getElementById('spx-v').textContent = snap.spx || '--';
         document.getElementById('btc-v').textContent = snap.btc || '--';
+        
+        // Axis 바인딩
+        document.getElementById('p-axis').textContent = (axis.primary_axis || '--').toUpperCase();
+        document.getElementById('s-axis').textContent = (axis.secondary_axis || '--').toUpperCase();
         
         renderPack();
       });
@@ -172,7 +192,7 @@ function renderPack() {
       card.innerHTML = `
         <div class="tier-label label-${t}">${typeMap[t]} (${t})</div>
         <div class="card-topic">${c.topic}</div>
-        <div class="card-why-now">${c.why_now.substring(0, 80)}...</div>
+        <div class="card-why-now">${(c.why_now || "").substring(0, 80)}...</div>
       `;
       grid.appendChild(card);
     });
@@ -187,6 +207,11 @@ function showContent(c) {
   document.getElementById('m-quality').textContent = c.quality_score;
   document.getElementById('m-reality').textContent = c.reality_score + "/5";
   document.getElementById('m-trust').textContent = c.score_trust;
+  
+  // Why Hypothesis 바인딩
+  document.getElementById('h-why').textContent = c.why_hypothesis || "No specific hypothesis generated.";
+  document.getElementById('h-mech').textContent = c.mechanism || "No mechanism data available for this topic.";
+  document.getElementById('h-conf').textContent = "CONF: " + (c.confidence || "N/A");
 }
 
 function copyScript() {

@@ -34,7 +34,7 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
         return "topic" in data or "candidates" in data or isinstance(data, list)
     
     if agent == "TOPIC_EVALUATOR":
-        return "topic_fit_score" in data and "topic_decision" in data
+        return "topic_fit_score" in data and "topic_decision" in data and "why_now_summary" in data
     
     # ANALYST, WRITER 등 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]
