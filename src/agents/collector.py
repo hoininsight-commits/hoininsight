@@ -939,70 +939,82 @@ class CollectorAgent:
         return final_keywords
 
     def collect_dart(self, keywords: list = []) -> dict:
-        """DART 공시 데이터 수집 - 뉴스 기반 정밀 타격 모드 (v4.5)"""
+        """DART 공시 데이터 수집 - 뉴스 기반 정밀 타격 모드 (v4.5 Optimized)"""
         print(f"📋 DART 뉴스 기반 정밀 분석 중... (관심사: {keywords})")
         import OpenDartReader
         from src.core.sector_map import get_related_sectors
         from datetime import datetime, timedelta
+        import time
 
         api_key = os.getenv('OPENDART_API_KEY')
+        if not api_key:
+            print("  ⚠️ OPENDART_API_KEY가 없습니다.")
+            return {"date": self.today, "data": {"disclosures": [], "themes": []}}
+            
         dart = OpenDartReader(api_key)
         
         today = datetime.now()
-        bgn_de = (today - timedelta(days=7)).strftime("%Y%m%d")
+        # [OPTIMIZED] 검색 범위를 7일에서 3일로 단축 (API 부하 감소)
+        bgn_de = (today - timedelta(days=3)).strftime("%Y%m%d")
         
         try:
             df = dart.list(start=bgn_de)
-            if df.empty:
+            if df is None or df.empty:
                 return {"date": self.today, "data": {"disclosures": [], "themes": []}}
         except Exception as e:
             print(f"  DART 수집 실패: {e}")
             return {"date": self.today, "data": {"disclosures": [], "themes": []}}
 
         # 핵심 공시 필터
-        bullish_keywords = ["단일판매", "공급계약", "시설투자", "특허권", "무상증자", "자기주식취득"]
+        bullish_keywords = ["단일판매", "공급계약", "시설투자", "특허권", "무상증자", "자기주식취득", "최대주주변경", "제3자배정"]
         
         disclosures = []
         sector_hits = {}
+        processed_count = 0
+        # [QUOTA GUARD] 상세 문서 추출(dart.document)은 하루 할당량이 적으므로 한 세션당 최대 15건으로 제한
+        MAX_DETAILED_DOCS = 15
         
-        # 종목명 -> 섹터 매핑 (Zero-Keyword Policy에 따라 동적 유추)
+        # 종목명 -> 섹터 매핑
         def get_sector_for_corp(corp_name):
             sectors = get_related_sectors([corp_name])
             return sectors[0] if sectors else None
+
+        # 최신순 정렬 (이미 되어있을 확률이 높지만 보장)
+        df = df.sort_values(by='rcept_dt', ascending=False)
 
         for _, row in df.iterrows():
             corp_name = row['corp_name']
             report_nm = row['report_nm']
             
             # 뉴스 맥락과 일치하는지 확인
-            is_news_relevant = any(kw in corp_name or kw in report_nm for kw in keywords)
+            is_news_relevant = any(str(kw).lower() in corp_name.lower() or str(kw).lower() in report_nm.lower() for kw in keywords)
             # 호재성 공시인지 확인
             is_bullish = any(bk in report_nm for bk in bullish_keywords)
             
             if is_news_relevant or is_bullish:
-                # [NEW] Hunter's Detail: 공시 본문에서 핵심 수치(금액) 추출 시도
                 amount_info = "수치 확인 중"
-                try:
-                    # 상세 문서 텍스트 추출
-                    doc_html = dart.document(row['rcept_no'])
-                    if doc_html:
-                        # HTML 태그 제거하여 텍스트만 추출
-                        soup = BeautifulSoup(doc_html, "html.parser")
-                        doc_text = soup.get_text(separator=" ", strip=True)
-                        
-                        # 정규표현식으로 '계약금액', '투자금액' 등 수치 포착 (유연성 강화)
-                        # 표 구조를 고려하여 키워드와 숫자 사이의 거리를 넉넉히 둠
-                        match = re.search(r'(계약금액|투자금액|금액|자금).*?([\d,]+)\s*(원|백만원|억원|조원|달러)', doc_text, re.DOTALL)
-                        if match:
-                            amount_info = f"{match.group(2)} {match.group(3)}"
-                            # 대비 비중 확인 (%) - 매출액 또는 자산 대비
-                            pct_match = re.search(r'(매출액|자산).*?대비.*?([\d.]+\s*%)', doc_text, re.DOTALL)
-                            if pct_match:
-                                amount_info += f" ({pct_match.group(1)} 대비 {pct_match.group(2)})"
-                except Exception as e:
-                    print(f"  ⚠️ DART 상세 추출 실패 ({corp_name}): {e}")
-                    pass
-
+                
+                # [OPTIMIZED] 상세 수치 추출은 할당량 내에서만 수행
+                if processed_count < MAX_DETAILED_DOCS:
+                    try:
+                        # API 호출 간 약간의 지연 (안정성)
+                        time.sleep(0.2)
+                        doc_html = dart.document(row['rcept_no'])
+                        if doc_html:
+                            processed_count += 1
+                            soup = BeautifulSoup(doc_html, "html.parser")
+                            doc_text = soup.get_text(separator=" ", strip=True)
+                            
+                            # 정규표현식으로 수치 포착
+                            match = re.search(r'(계약금액|투자금액|금액|자금).*?([\d,]+)\s*(원|백만원|억원|조원|달러)', doc_text, re.DOTALL)
+                            if match:
+                                amount_info = f"{match.group(2)} {match.group(3)}"
+                                pct_match = re.search(r'(매출액|자산).*?대비.*?([\d.]+\s*%)', doc_text, re.DOTALL)
+                                if pct_match:
+                                    amount_info += f" ({pct_match.group(1)} 대비 {pct_match.group(2)})"
+                    except Exception as e:
+                        print(f"  ⚠️ DART 상세 추출 실패 ({corp_name}): {e}")
+                
                 disclosures.append({
                     "company": corp_name,
                     "title": report_nm,
@@ -1012,10 +1024,13 @@ class CollectorAgent:
                     "date": row['rcept_dt']
                 })
                 
-                # 섹터 가중치 계산
                 sector = get_sector_for_corp(corp_name)
                 if sector:
                     sector_hits[sector] = sector_hits.get(sector, 0) + (2 if is_bullish else 1)
+                
+                # 결과값이 충분히 모였으면 중단 (리포트 가독성 및 성능)
+                if len(disclosures) >= 30:
+                    break
 
         result_data = {
             "date": self.today,
@@ -1025,14 +1040,14 @@ class CollectorAgent:
             }
         }
 
-        # [REFACTORED] Wrap with metadata (DART: MID sensitivity -> 120m (2h))
+        # [REFACTORED] Wrap with metadata (DART: MID sensitivity -> 120m)
         result = self._wrap_data(result_data, ttl_minutes=120)
 
         output_path = self.output_dir / "dart.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ dart.json 저장 완료 (공시 {len(disclosures)}건 캡처)")
+        print(f"✅ dart.json 저장 완료 (공시 {len(disclosures)}건 캡처, 상세분석 {processed_count}건)")
         return result
 
     def run(self):
