@@ -282,7 +282,7 @@ class PublisherAgent:
             # 백업: 모든 후보 데이터(candidates.json)를 기반으로 Content Pack 복구
             all_candidates = data.get("candidates", {}).get("candidates", [])
             if all_candidates:
-                from src.content.content_tier import map_action_to_tier
+                # [DEPRECATED] from src.content.content_tier import map_action_to_tier
                 
                 # 메인 신호 토픽 확인 (v2.0 대응: event와 topic 모두 체크)
                 selected_title = signal.get("event", signal.get("topic", ""))
@@ -332,8 +332,10 @@ class PublisherAgent:
                     content_pack[tier].append(processed)
             elif signal:
                 # 최후의 백업: 단일 신호 표기
-                from src.content.content_tier import map_action_to_tier
-                tier = map_action_to_tier(signal.get("decision_meta", {}).get("action", "WATCH"))
+                # [LOCAL MAPPING] Replacement for missing src.content.content_tier
+                action = signal.get("decision_meta", {}).get("action", "WATCH")
+                tier_map = {"PROMOTE": "TIER_1", "WATCH": "TIER_2", "DROP": "TIER_3"}
+                tier = tier_map.get(action, "TIER_3")
                 # ... (기존 단일 처리 로직 유지 또는 통합)
 
         # 2. 메인 컨텐츠 추출 (TIER_1 우선)
