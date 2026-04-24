@@ -173,13 +173,11 @@ jobs:
             gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
           fi
 
-      - name: Run Truth + Detector + Analyst
+      - name: Run Detector Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python -m src.agents.truth_agent
           python -m src.agents.detector
-          python -m src.agents.analyst
 
       - name: Upload Analysis Data Artifact
         uses: actions/upload-artifact@v4
@@ -249,14 +247,13 @@ jobs:
             fi
           fi
 
-      - name: Run Writer + FactChecker
+      - name: Run Writer Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python -m src.agents.writer
-          python -m src.agents.fact_checker
 
       - name: Upload Script Data Artifact
         uses: actions/upload-artifact@v4
