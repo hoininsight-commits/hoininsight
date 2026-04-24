@@ -18,6 +18,8 @@ class WriterAgent:
         self.analysis_dir = Path(f"data/analysis/{self.today}")
         self.script_dir = Path(f"data/scripts/{self.today}")
         self.script_dir.mkdir(parents=True, exist_ok=True)
+        self.signal_dir.mkdir(parents=True, exist_ok=True)
+        self.analysis_dir.mkdir(parents=True, exist_ok=True)
         self.gemini = GeminiClient()
         self.content_engine = ContentEngine()
         self.quality_gate = ScriptQualityGate()
