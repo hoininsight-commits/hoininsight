@@ -87,13 +87,35 @@ class ContentEngine:
             return "WATCH" if candidate.get("strength", 5.0) > 6.0 else "WAIT"
 
     def _generate_script(self, candidate: Dict, classification: str, scenario: str) -> str:
-        """LLM을 이용한 경제사냥꾼 스타일 스크립트 작성"""
+        """LLM을 이용한 경제사냥꾼 스타일 스크립트 작성 (Centralized Prompt DNA)"""
+        from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
         
-        if classification == "ANOMALY":
-            prompt = self._build_anomaly_prompt(candidate, scenario)
-        else:
-            prompt = self._build_normal_prompt(candidate, scenario)
-            
+        # 1. 팩트 데이터 준비
+        kospi_f = candidate.get("evidence_bundle", {}).get("market_reaction", {}).get("intensity", 0.0)
+        cot_summary = "COT 데이터 기반 중립 및 분석 관측됨"
+        
+        # 2. 분석 JSON 구성 (WHY Hypothesis 등 포함)
+        analysis_data = {
+            "why_hypothesis": candidate.get("why_hypothesis", "N/A"),
+            "mechanism": candidate.get("mechanism", "N/A"),
+            "predictive_chain": candidate.get("predictive_chain", "N/A"),
+            "confidence": candidate.get("hypothesis_confidence", "N/A"),
+            "classification": classification,
+            "selected_scenario": scenario
+        }
+
+        # 3. 중앙 집중식 템플릿에 데이터 주입
+        prompt = WRITER_PROMPT_TEMPLATE.format(
+            stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
+            kospi_foreign_net=kospi_f,
+            cot_summary_detailed=cot_summary,
+            analysis_json=json.dumps(analysis_data, ensure_ascii=False)
+        )
+        
+        # JSON 응답을 위한 최종 지시사항 추가
+        prompt += "\n\n반드시 아래 JSON 형식으로만 응답해라:\n"
+        prompt += "{\"title\": \"유튜브 제목\", \"script\": \"태그 없이 작성된 전체 스크립트 텍스트\"}"
+
         try:
             res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
             if isinstance(res, dict) and "script" in res:

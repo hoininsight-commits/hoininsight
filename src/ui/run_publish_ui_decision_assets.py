@@ -132,6 +132,12 @@ def _publish_today() -> Optional[Dict]:
                     top[k] = n_data.get(k)
                 if n_data.get("causal_chain"): top["causal_chain"] = n_data["causal_chain"]
                 if n_data.get("rationale"): top["rationale"] = n_data["rationale"]
+                
+                # Preserve Engine Reasonings if present
+                for k in ["why_hypothesis", "mechanism", "predictive_chain", "hypothesis_confidence"]:
+                    if k not in top and data.get("MAIN") and k in data["MAIN"]:
+                         top[k] = data["MAIN"][k]
+
                 if top.get("conflict_flag") and top.get("dataset_id") != "human_selection":
                     cam = top.get("cross_axis_multiplier", 1.0)
                     top["logic_block"] = f"CONFLICT DETECTED (x{cam})"
@@ -158,6 +164,31 @@ def _publish_today() -> Optional[Dict]:
                     pass # Placeholder logic removed. Deliver original engine result.
             dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e: print(f"[PUBLISH] error in _publish_today: {e}"); file_date = kst_date
+    
+    # [STEP-15] Script Injection: Merge broadcast script into today.json
+    try:
+        script_path = DATA_OPS / "../content/today_video_script.json" # Relative from data/ops
+        # Fallback to current kst dated path
+        if not script_path.exists():
+            from datetime import timedelta
+            now_utc = datetime.now(timezone.utc)
+            kst_now = now_utc + timedelta(hours=9)
+            kst_date_short = kst_now.strftime("%Y%m%d")
+            script_path = ROOT / f"data/signals/{kst_date_short}/today_signal.json"
+
+        if script_path.exists():
+            script_raw = json.loads(script_path.read_text(encoding="utf-8"))
+            today_data = json.loads(dest.read_text(encoding="utf-8"))
+            
+            # script_raw가 리스트면 첫 번째 항목 사용, 딕셔너리면 바로 사용
+            script_obj = script_raw[0] if isinstance(script_raw, list) else script_raw
+            
+            if isinstance(today_data, dict) and "MAIN" in today_data:
+                today_data["MAIN"]["broadcast_script"] = script_obj.get("script", "")
+                dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
+                print(f"[PUBLISH] ✅ Broadcast Script merged into today.json")
+    except Exception as e:
+        print(f"[PUBLISH] ⚠️ Script merge failed: {e}")
 
     # [STEP-20] Enrich today.json with Portfolio Relevance summary
     try:
@@ -327,6 +358,41 @@ def _publish_today() -> Optional[Dict]:
                 }
                 print(f"[PUBLISH] ✅ Video Script Engine merged into today.json")
         
+        # [STEP-45] Social Intelligence Engine
+        from datetime import date as dt_date
+        today_str = kst_now.strftime("%Y%m%d")
+        social_path = ROOT / "data" / "raw" / today_str / "social.json"
+        if not social_path.exists():
+            # Fallback to latest available
+            raw_root = ROOT / "data" / "raw"
+            latest_social_dirs = sorted(raw_root.glob("202*"), reverse=True)
+            for d in latest_social_dirs:
+                if (d / "social.json").exists():
+                    social_path = d / "social.json"
+                    break
+        
+        if social_path.exists() and isinstance(today_data, dict):
+            try:
+                with open(social_path, 'r', encoding='utf-8') as f:
+                    social_raw = json.load(f)
+                    social_items = social_raw.get("data", {}).get("data", {})
+                    
+                    # Extract top 3 Polymarket odds (odds > 0 or top volume)
+                    polymarket = social_items.get("polymarket", [])
+                    polymarket.sort(key=lambda x: x.get("volume", 0), reverse=True)
+                    
+                    # Extract top 3 HN comments (highest points)
+                    hacker_news = social_items.get("hacker_news", [])
+                    hacker_news.sort(key=lambda x: x.get("points", 0), reverse=True)
+                    
+                    today_data["social_intelligence"] = {
+                        "polymarket": polymarket[:3],
+                        "hacker_news": hacker_news[:3]
+                    }
+                    print(f"[PUBLISH] ✅ Social Intelligence merged into today.json")
+            except Exception as e:
+                print(f"[PUBLISH] ⚠️ Social Intelligence merge failed: {e}")
+
         # Write back the updated today_data if any changes were made in this block
         dest.write_text(json.dumps(today_data, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e:

@@ -32,7 +32,7 @@ class DetectorAgent:
     def load_all_data(self) -> dict:
         """모든 수집 데이터 및 90일 히스토리 로드"""
         all_data = {}
-        files = ["market", "macro", "sentiment", "fred", "ecos", "dart", "consensus", "cot"]
+        files = ["market", "macro", "sentiment", "fred", "ecos", "dart", "consensus", "cot", "social"]
         for name in files:
             p = self.raw_dir / f"{name}.json"
             if p.exists():
@@ -471,6 +471,20 @@ class DetectorAgent:
             
             # today_signal.json 저장 (기존 호환성)
             (self.signal_dir / "today_signal.json").write_text(json.dumps(selection["MAIN"], ensure_ascii=False, indent=2))
+            
+            # [BRIDGE] final_decision_card.json 생성 (Publisher 연동)
+            decision_dir = self.base_dir / "data/decision" / datetime.now().strftime("%Y/%m/%d")
+            decision_dir.mkdir(parents=True, exist_ok=True)
+            decision_card = {
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "MAIN": selection["MAIN"],
+                "SECONDARY": selection.get("SECONDARY", []),
+                "EARLY": selection.get("EARLY", [])
+            }
+            (decision_dir / "final_decision_card.json").write_text(
+                json.dumps(decision_card, ensure_ascii=False, indent=2)
+            )
+            print(f"  ✅ Decision card published to {decision_dir}")
         
         return {"selected": selection, "fact_pack": fact_pack}
 

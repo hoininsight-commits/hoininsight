@@ -14,6 +14,19 @@ class TopicRanker:
         secondary_axis = market_axis.get("secondary_axis") if market_axis else None
         
         scored_candidates = []
+        
+        # [NEW] Load previous selection to detect continuity (Topic Fatigue)
+        import json
+        from pathlib import Path
+        prev_main_event = None
+        try:
+            prev_path = Path("data/topics/topic_selection.json")
+            if prev_path.exists():
+                prev_data = json.loads(prev_path.read_text(encoding="utf-8"))
+                if prev_data.get("MAIN"):
+                    prev_main_event = prev_data["MAIN"].get("event")
+        except: pass
+
         for cand in candidates:
             c_id = cand["candidate_id"]
             ev = eval_map.get(c_id)
@@ -34,7 +47,13 @@ class TopicRanker:
             # [NEW] Hunter's Eye Bonus (Mismatch 가중치)
             mismatch_bonus = 0.3 if cand.get("is_mismatch") else 0.0
             
-            final_score = (det_score * 0.5) + (qual_score / 10.0 * 0.5) + mismatch_bonus
+            # [NEW] Continuity Penalty (반복 토픽 감점)
+            continuity_penalty = 0.0
+            if prev_main_event and (prev_main_event in cand["event"] or cand["event"] in prev_main_event):
+                continuity_penalty = 0.25 # 강력한 페널티로 새로운 테마 기회 부여
+                print(f"  📢 Fatigue Alert: Continuity penalty (0.25) applied to '{cand['event']}'")
+            
+            final_score = (det_score * 0.5) + (qual_score / 10.0 * 0.5) + mismatch_bonus - continuity_penalty
             
             cand["final_score"] = round(final_score, 4)
             cand["evaluation"] = ev
@@ -81,8 +100,8 @@ class TopicRanker:
                 
             has_market_data = len(cand.get("core_facts", [])) > 0
             
-            # [v3 RULE] 'emerging' 축은 무조건 TIER_3 유지
-            if axis == "emerging":
+            # [v3.1] 'emerging' 축도 이제 조건만 만족하면 MAIN/SECONDARY 진입 가능
+            if axis == "emerging" and not high_explainability:
                 if len(early_candidates) < 3:
                     early_candidates.append(cand)
                     cand["tier"] = "EARLY/TIER_3"

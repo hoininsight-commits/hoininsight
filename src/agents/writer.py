@@ -12,6 +12,7 @@ from src.engine.rule_generator import RuleBasedScriptGenerator
 class WriterAgent:
 
     def __init__(self):
+        self.base_dir = Path(".")
         self.today = datetime.now().strftime("%Y%m%d")
         self.signal_dir = Path(f"data/signals/{self.today}")
         self.analysis_dir = Path(f"data/analysis/{self.today}")
@@ -212,7 +213,8 @@ class WriterAgent:
 
     def _generate_resilience_report(self, status, content, quality_report):
         """[TASK #093] Resilience Upgrade 완료 보고서 생성"""
-        report_path = Path(str(Path.home()) + "/Downloads/hoin_resilience_upgrade_report.md")
+        report_path = self.base_dir / "reports/hoin_resilience_upgrade_report.md"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
         
         content_md = f"""# [TASK #093] GEMINI RESILIENCE UPGRADE REPORT
 

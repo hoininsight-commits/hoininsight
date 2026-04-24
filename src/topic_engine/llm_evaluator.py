@@ -25,21 +25,38 @@ class TopicEvaluator:
         z_score = abs(main_fact.get("z_score", 0.0))
         change = abs(main_fact.get("change", 0.0))
         
-        # 1. explainability_score 계산 (Heuristic)
-        # Z-score와 변동률을 조합하여 0~10점 사이 산출
+        # 1. explainability_score 계산 (Narrative + Market Hybrid v2.0)
+        # Z-score(시장)와 News Strength(데이터)를 결합
+        recency = candidate.get("recency_score", 1.0)
+        evidence = candidate.get("evidence_score", 0.5)
         is_mismatch = candidate.get("is_mismatch", False)
         is_preemptive = candidate.get("is_preemptive", False)
-
-        base_score = min(z_score * 2.0, 8.0)  # Z-score 4 이상이면 8점
-        intensity_bonus = min(change * 0.5, 2.0) # 변동률 4% 이상이면 2점 보너스
+        
+        # [AUTONOMOUS] 시장 지수가 조용해도 뉴스 에너지가 높으면 점수 확보
+        base_score = (z_score * 0.5) + (recency * 3.0) + (evidence * 2.5)
+        base_score = min(base_score, 8.5) # 최대 8.5점까지 기본 점수로 확보
+        
+        intensity_bonus = min(change * 0.5, 1.5) # 변동률 보너스
         
         # [NEW] Hunter Bonus
         hunter_bonus = 0.0
         if is_mismatch:
-            hunter_bonus += 2.0 # 모순 상황이면 2점 가산
-        if is_preemptive:
-            hunter_bonus += 1.0 # 미래 일정 선행 테마면 1점 가산
+            hunter_bonus += 2.0 # 모순 상황(가격-뉴스 상충)이면 강력 가산
             
+        # [v4.0 Frontier Axis Bonus]
+        # 자율 발견된 축에 어울리는 이름이 붙었다면 '미지(Frontier)의 개척지' 보너스 부여
+        legacy_axes = ["rates", "liquidity", "geopolitics", "supply_chain", "policy", "flow", "emerging", "unknown"]
+        current_axis = candidate.get("structure_axis", "unknown")
+        
+        # 'emerging'이나 'unknown'이 아니라는 것은 AI가 새로운 '이름'을 붙여주었다는 뜻
+        if current_axis not in legacy_axes:
+            hunter_bonus += 4.5
+            print(f"  ✨ Narrative Discovery Bonus (+4.5) for frontier: '{current_axis}'")
+        elif recency + evidence > 2.2:
+            # 발견에 실패했더라도 데이터 밀도가 매우 높다면 '잠재적 개척지'로 보고 가산
+            hunter_bonus += 2.5
+            print(f"  🔥 Potential Frontier Bonus (+2.5) due to high data density")
+
         explainability_score = round(min(base_score + intensity_bonus + hunter_bonus, 10.0), 1)
         
         # 2. Flow Type 결정

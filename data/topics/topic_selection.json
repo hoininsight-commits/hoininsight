@@ -1,0 +1,187 @@
+{
+  "MAIN": null,
+  "SECONDARY": [],
+  "EARLY": [
+    {
+      "candidate_id": "57fa0b45",
+      "candidate_type": "HYBRID",
+      "event": "[사상 최대] '한국 화장품' K-뷰티 미국·유럽 수출 역대 최고치 경신... 뷰티스킨 등 코스닥 상한가 랠리",
+      "entity": [
+        "사상 최대",
+        "한국 화장품",
+        "deep_detail"
+      ],
+      "core_facts": [
+        {
+          "name": "kospi",
+          "value": 6452.12,
+          "change": -0.36,
+          "z_score": -0.45
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "UNCATEGORIZED"
+      ],
+      "recency_score": 1.8,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "unknown",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 10.0,
+      "selection_reason": "High intensity movement in kospi (0.36%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 1.15,
+      "evaluation": {
+        "candidate_id": "57fa0b45",
+        "structure_axis": "unknown",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 10.0,
+        "why_now_summary": "Detected significant None shift with Z-score 0.45",
+        "selection_reason": "High intensity movement in kospi (0.36%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 10.0,
+        "market_impact_score": 10.0,
+        "theme_expandability": 8.0,
+        "flow_type": "NORMAL",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    },
+    {
+      "candidate_id": "soc_poly_MicroStrat",
+      "candidate_type": "PRED_MARKET",
+      "event": "[PRED_MARKET] MicroStrategy sells any Bitcoin by ___ ?",
+      "entity": [
+        "Prediction"
+      ],
+      "core_facts": [
+        {
+          "name": "yes_prob",
+          "value": "0.0%",
+          "mismatch": false
+        },
+        {
+          "name": "volume",
+          "value": "$22.2M",
+          "mismatch": false
+        }
+      ],
+      "recency_score": 1.0,
+      "evidence_score": 1.0,
+      "structure_axis": "flow",
+      "why_now": "예측 시장에서 22243k 달러 거래되며 자본의 베팅 집중",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 5.5,
+      "selection_reason": "High intensity movement in yes_prob (0.0%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 0.775,
+      "evaluation": {
+        "candidate_id": "soc_poly_MicroStrat",
+        "structure_axis": "flow",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 5.5,
+        "why_now_summary": "Detected significant flow shift with Z-score 0.00",
+        "selection_reason": "High intensity movement in yes_prob (0.0%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 5.5,
+        "market_impact_score": 5.5,
+        "theme_expandability": 4.4,
+        "flow_type": "MIXED",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    },
+    {
+      "candidate_id": "soc_poly_MicroStrat",
+      "candidate_type": "PRED_MARKET",
+      "event": "[PRED_MARKET] MicroStrategy sells any Bitcoin by ___ ?",
+      "entity": [
+        "Prediction"
+      ],
+      "core_facts": [
+        {
+          "name": "yes_prob",
+          "value": "0.0%",
+          "mismatch": false
+        },
+        {
+          "name": "volume",
+          "value": "$22.2M",
+          "mismatch": false
+        }
+      ],
+      "recency_score": 1.0,
+      "evidence_score": 1.0,
+      "structure_axis": "flow",
+      "why_now": "예측 시장에서 22243k 달러 거래되며 자본의 베팅 집중",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 5.5,
+      "selection_reason": "High intensity movement in yes_prob (0.0%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 0.775,
+      "evaluation": {
+        "candidate_id": "soc_poly_MicroStrat",
+        "structure_axis": "flow",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 5.5,
+        "why_now_summary": "Detected significant flow shift with Z-score 0.00",
+        "selection_reason": "High intensity movement in yes_prob (0.0%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 5.5,
+        "market_impact_score": 5.5,
+        "theme_expandability": 4.4,
+        "flow_type": "MIXED",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    }
+  ]
+}

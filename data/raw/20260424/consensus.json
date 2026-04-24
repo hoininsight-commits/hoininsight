@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "collected_at": "2026-04-24T10:04:41.645193",
+    "source_timestamp": null,
+    "cache_hit": false,
+    "ttl_policy_minutes": 720,
+    "freshness_status": "FRESH"
+  },
+  "data": {
+    "date": "2026-04-24",
+    "period": {
+      "from": "2026-04-21",
+      "to": "2026-05-01"
+    },
+    "events": [
+      {
+        "event": "Retail Sales MoM",
+        "time": "2026-04-21 12:30:00",
+        "country": "US",
+        "actual": 1.7,
+        "estimate": 1.4,
+        "prev": 0.7,
+        "impact": "high",
+        "surprise_score": 21.43,
+        "surprise_label": "SHOCK"
+      },
+      {
+        "event": "Fed Interest Rate Decision",
+        "time": "2026-04-29 18:00:00",
+        "country": "US",
+        "actual": null,
+        "estimate": 3.75,
+        "prev": 3.75,
+        "impact": "high",
+        "surprise_score": null,
+        "surprise_label": "PENDING"
+      },
+      {
+        "event": "Fed Press Conference",
+        "time": "2026-04-29 18:30:00",
+        "country": "US",
+        "actual": null,
+        "estimate": null,
+        "prev": null,
+        "impact": "high",
+        "surprise_score": null,
+        "surprise_label": "PENDING"
+      },
+      {
+        "event": "Core PCE Price Index MoM",
+        "time": "2026-04-30 12:30:00",
+        "country": "US",
+        "actual": null,
+        "estimate": null,
+        "prev": 0.4,
+        "impact": "high",
+        "surprise_score": null,
+        "surprise_label": "PENDING"
+      },
+      {
+        "event": "GDP Growth Rate QoQ Adv",
+        "time": "2026-04-30 12:30:00",
+        "country": "US",
+        "actual": null,
+        "estimate": null,
+        "prev": 0.5,
+        "impact": "high",
+        "surprise_score": null,
+        "surprise_label": "PENDING"
+      },
+      {
+        "event": "ISM Manufacturing PMI",
+        "time": "2026-05-01 14:00:00",
+        "country": "US",
+        "actual": null,
+        "estimate": null,
+        "prev": 52.7,
+        "impact": "high",
+        "surprise_score": null,
+        "surprise_label": "PENDING"
+      }
+    ],
+    "top_surprise": {
+      "event": "Retail Sales MoM",
+      "time": "2026-04-21 12:30:00",
+      "country": "US",
+      "actual": 1.7,
+      "estimate": 1.4,
+      "prev": 0.7,
+      "impact": "high",
+      "surprise_score": 21.43,
+      "surprise_label": "SHOCK"
+    }
+  }
+}

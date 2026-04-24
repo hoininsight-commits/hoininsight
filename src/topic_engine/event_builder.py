@@ -73,14 +73,12 @@ class EventBuilder:
             
             combined_text = (title + " " + summary).lower()
             
-            # Event Type 분류
-            event_type = None
+            # Event Type 분류 (v2.0: Non-Discarding Policy)
+            event_type = "UNCATEGORIZED"
             for etype, keywords in self.TYPE_KEYWORDS.items():
                 if any(kw.lower() in combined_text for kw in keywords):
                     event_type = etype
                     break
-            
-            if not event_type: continue
 
             # Entity 동적 추출
             entities = self._extract_entities_dynamically(combined_text)

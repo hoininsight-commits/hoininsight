@@ -1,61 +1,37 @@
 [
   {
-    "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
+    "topic": "K-뷰티 랠리 속 코스피 하락, 원화 약세의 양날과 공급망 재편 시그널",
     "core_facts": [
       {
-        "name": "sp500",
-        "value": 7064.0098,
-        "previous": null,
-        "change": null
+        "name": "kospi",
+        "value": 6452.12,
+        "change": -0.36,
+        "z_score": -0.45
       }
     ],
-    "anomaly": [
-      "뉴스 톤은 부정적이나 SP500 Z-score 1.31로 강한 상승 중"
-    ],
-    "why_now": [
-      "악재를 압도하는 수급 유입으로 인한 SP500 1.31 (Z-score 1.0 이상) 상승 국면 sp500(7064.0098 / Z-score:1.31)",
-      "News Trigger: [2026-04-22] 국고채 금리 일제히 상승…3년물 장중 연 3.361%"
-    ],
-    "event_context": [],
-    "normal_flow": {
-      "expected_reactions": [],
-      "implications": []
-    },
-    "scenarios": [
-      {
-        "scenario": "시장 선반영",
-        "explanation": "뉴스가 나오기 전 이미 가격이 움직여 반대 방향으로 되돌림",
-        "validation_targets": [
-          "거래량 감소",
-          "이익실현 매물"
-        ]
-      },
-      {
-        "scenario": "매크로 노이즈",
-        "explanation": "지정학 이슈보다 더 큰 매크로 지표(금리/환율)가 시장을 압도",
-        "validation_targets": [
-          "USD_KRW 상승",
-          "국채금리 급등"
-        ]
-      },
-      {
-        "scenario": "수급 불균형",
-        "explanation": "특정 수급 주체(외인/기관)의 강제 포지션 청산으로 인한 비이성적 흐름",
-        "validation_targets": [
-          "외인 순매도 지속",
-          "선물 미결제 약정 변화"
-        ]
-      }
-    ],
-    "anomaly_overlay": {
-      "event": "뉴스 악재 속 지수 상승 (Price-News 모순)",
-      "expected": {},
-      "actual": {},
-      "mismatch": [],
-      "anomaly_score": 0,
-      "is_anomaly": false
-    },
     "classification": "NORMAL",
-    "constraints": []
+    "scenarios": [],
+    "why_now": [
+      "Detected significant K-뷰티 (화장품) 섹터 강세 shift with Z-score 0.45"
+    ],
+    "evidence_bundle": {
+      "axis": "K-뷰티 (화장품) 섹터 강세",
+      "market_reaction": {
+        "main_asset": "kospi",
+        "intensity": -0.36,
+        "other_reactions": []
+      },
+      "related_events": [
+        "[NEWS] [사상 최대] '한국 화장품' K-뷰티 미국·유럽 수출 역대 최고치 경신... 뷰티스킨 등 코스닥 상한가 랠리 - 한국 화장품 수출액이 사상 최대치를 기록하며 뷰티스킨, 한울 등 중소형 코스닥 종목들이 시장을 주도하고 있음. [DEEP_DETAIL] 미국향 수출 45% 급증."
+      ],
+      "social_prediction": [],
+      "supporting_assets": [],
+      "contradictions": [
+        "No clear contradictions found"
+      ],
+      "event_market_link": []
+    },
+    "mechanism": "1.  **K-뷰티 수출 급증**: 미국/유럽 등 선진 시장에서의 K-뷰티 수요 폭발은 제품 경쟁력과 마케팅 성공에 기인하며, 이는 매출 증대와 관련 기업 주가 상승을 견인합니다.\n2.  **원화 약세 심화 (암묵적 작용)**: 글로벌 긴축 기조와 한국 경제의 불확실성이 겹치며 원/달러 환율이 상승 압력을 받습니다. 이는 K-뷰티 제품의 해외 가격 경쟁력을 높여 수출 증가에 기여하지만, 동시에 외국인 투자 자본 유출 우려를 심화시키고 수입 물가를 자극하여 국내 기업의 원가 부담을 가중시킵니다.\n3.  **코스피 하락**: K-뷰티 섹터의 개별 강세에도 불구하고, 원화 약세가 내포하는 거시 경제적 불안감(인플레이션 압력, 소비 위축, 기업 실적 둔화 우려)이 더 크게 작용하여 코스피 전반의 투자 심리를 위축시키고 하락을 유도합니다. 즉, 특정 섹터의 아웃퍼폼이 전체 시장의 하락 추세를 뒤집지 못하는 '섹터 로테이션' 또는 '방어적 성격'의 움직임으로 해석될 수 있습니다.",
+    "strength": 9.549999999999999
   }
 ]

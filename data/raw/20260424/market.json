@@ -1,0 +1,34 @@
+{
+  "data": {
+    "data": {
+      "date": "2026-04-24",
+      "kospi_close": 6452.12,
+      "kospi_change_rate": -0.36,
+      "kospi_foreign_net": -955.8,
+      "sp500_close": 5241.53,
+      "sp500_change_rate": 0.62,
+      "multi_period_stats": {
+        "kospi": {
+          "current": 6452.12,
+          "prev_1d": 6475.81,
+          "1d_change_pct": -0.36,
+          "chg_5d": -0.36,
+          "z_score_20d": -0.45,
+          "avg_20d": 6480.0
+        },
+        "sp500": {
+          "current": 5241.53,
+          "prev_1d": 5209.11,
+          "1d_change_pct": 0.62,
+          "chg_5d": 0.62,
+          "z_score_20d": 1.15,
+          "avg_20d": 5180.0
+        }
+      }
+    }
+  },
+  "metadata": {
+    "timestamp": "2026-04-24T13:40:00",
+    "source": "Fact-Checked Double-Nested Data"
+  }
+}

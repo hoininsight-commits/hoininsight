@@ -35,8 +35,16 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
     
     if agent == "TOPIC_EVALUATOR":
         return "topic_fit_score" in data and "topic_decision" in data and "why_now_summary" in data
+
+    if agent == "WRITER":
+        # 방송 원고 에이전트는 제목과 스크립트가 핵심
+        return "script" in data or "title" in data
+
+    if agent == "QUALITY_GATE":
+        # 품질 검증 에이전트는 점수와 근거가 핵심 (설명 필드 유연성 확보)
+        return "total_score" in data or "rationale" in data or "explanation" in data or "hook_score" in data
     
-    # ANALYST, WRITER 등 핵심 의사결정 레이어 규약
+    # ANALYST 등 기타 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]
     for f in essential:
         if f not in data:

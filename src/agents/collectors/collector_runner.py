@@ -12,7 +12,7 @@ from src.agents.collectors.dart_agent import DartAgent
 from src.agents.consensus_collector import ConsensusCollector
 from src.agents.cot_collector import COTCollector
 from src.agents.collectors.putcall_collector import PutCallCollector
-from src.agents.collectors.flow_collector import FlowCollector
+from src.agents.collectors.social_agent import SocialAgent
 
 class CollectorRunner:
     """
@@ -33,7 +33,8 @@ class CollectorRunner:
             "시장": [MarketAgent(self.output_dir), PutCallCollector(self.output_dir)],
             "스마트머니": [COTCollector(self.output_dir)],
             "감정/뉴스": [SentimentAgent(self.output_dir)],
-            "공시": [DartAgent(self.output_dir)]
+            "공시": [DartAgent(self.output_dir)],
+            "예측/소셜": [SocialAgent(self.output_dir)]
         }
 
         results = {}

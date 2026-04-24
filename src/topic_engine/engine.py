@@ -68,18 +68,30 @@ class TopicSelectionEngine:
         # 3. 컨텍스트 강화 (Strict Mapping)
         enriched_events = self.context_enricher.enrich_events(filtered_events, market_data)
         
-        # 4. 패키징
+        # 3. Candidate Packaging (Market-based)
         all_candidates = self.packer.pack_all(enriched_events, signals)
         
-        # [NEW] Hunter's Eye: Price-News Mismatch 탐지
+        # 4. [NEW] Social Topic Generation (Social-based)
+        social_candidates = self._create_social_candidates(raw_data)
+        print(f"  📢 Social Engine: {len(social_candidates)} candidates generated from HN/Polymarket")
+        all_candidates.extend(social_candidates)
+        
+        # 5. Hunter's Eye: Mismatch & Confluence Analysis
         for cand in all_candidates:
-            ev_type = cand.get("event_type")
+            ev_type = cand.get("candidate_type", "DATA")
+            
+            # [Social Confluence Bonus]
+            # 만약 소셜 후보가 뉴스나 시장 지표와 겹치면 점수 대폭 가산
+            if ev_type in ["SOCIAL", "PRED_MARKET"]:
+                # 소셜 데이터는 기본적으로 높은 recency 부여
+                cand["recency_score"] = 1.0
+                continue
+
+            market_cand_data = cand.get("market_data", {})
             price_chg = 0
-            # 대표 지표의 5일 변화율 확인
-            if cand.get("market_data"):
-                # 첫 번째 지표의 변화율을 기준점으로 삼음
-                first_metric = list(cand["market_data"].keys())[0]
-                price_chg = cand["market_data"][first_metric].get("chg_5d", 0)
+            if market_cand_data:
+                first_metric = list(market_cand_data.keys())[0]
+                price_chg = market_cand_data[first_metric].get("chg_5d", 0)
             
             # 모순 판별 (예: 금리 인하 뉴스인데 국채 금리 폭등 / 실적 악재인데 주가 폭등 등)
             # 여기서는 단순화하여 [뉴스 유형]과 [가격 변화]의 방향성을 대조
@@ -127,45 +139,41 @@ class TopicSelectionEngine:
         # 6. 정성 평가 (Heuristic-based, v2.2부터 LLM 호출 금지)
         filtered_candidates.sort(key=lambda x: (x["recency_score"] + x["evidence_score"]), reverse=True)
         top_candidates = filtered_candidates[:10]
+        # 5. [NEW] Market Axis Detection (Axis-First)
+        axis_report = self.axis_detector.detect_market_axis(all_candidates, market_data)
+        market_axis = axis_report
         
+        # 6. 정성 평가 (Top 10 candidates)
+        all_candidates.sort(key=lambda x: (x["recency_score"] + x["evidence_score"]), reverse=True)
+        top_candidates = all_candidates[:10]
         evaluations = self.evaluator.evaluate_all(top_candidates)
-        self._save_json(evaluations, "topic_evaluations.json")
         
-        # 7. 최종 랭킹 및 선정 (Axis 경쟁 로직 포함)
-        selection = self.ranker.rank(filtered_candidates, evaluations, market_axis)
-        selection["market_axis"] = market_axis
-        selection["filtered_candidates_count"] = initial_count
-        selection["remaining_candidates_count"] = remaining_count
+        # [NEW] Social & Prediction Data Load
+        social_data = raw_data.get("social", {})
 
-        # 8. [CRITICAL FIX] FINAL MAIN 선정 후 LLM 호출 (v2.2)
-        # 규칙: 하루 총 LLM 호출 3회 제한, MAIN 토픽만 Why 생성
-        MAX_LLM_CALL = 3
-        llm_call_count = 0
+        # 7. 랭킹 및 최종 선정
+        selection = self.ranker.rank(all_candidates, evaluations, market_axis)
         
+        # 8. Evidence Building & Why Hypothesis
         main_cand = selection.get("MAIN")
         if main_cand:
-            # [HUNTER'S EYE] MAIN 토픽은 점수와 상관없이 증거 꾸러미 강제 생성 (Fact-First)
-            evidence_bundle = self.evidence_builder.build_evidence_bundle(main_cand, market_data, raw_events)
+            # [HUNTER'S EYE] MAIN 토픽은 증거 꾸러미 생성 시 social_data 결합
+            evidence_bundle = self.evidence_builder.build_evidence_bundle(main_cand, market_data, raw_events, social_data)
             main_cand["evidence_bundle"] = evidence_bundle
 
-            if main_cand.get("explainability_score", 0) >= 5.0:
-                # Why Hypothesis 생성 (LLM 호출 필요)
-                if not evidence_bundle.get("related_events"):
-                    print(f"  ⏩ Skipping Why Hypothesis (No related events found)")
-                    main_cand["why_hypothesis"] = "Insufficient evidence"
-                    main_cand["mechanism"] = "No clear event-driven mechanism"
-                elif llm_call_count >= MAX_LLM_CALL:
-                    print(f"  ⏩ Skipping Why Hypothesis (MAX_LLM_CALL reached)")
-                    main_cand["why_hypothesis"] = "LLM limit reached"
-                    main_cand["mechanism"] = "Analysis skipped"
+            if main_cand.get("explainability_score", 0) >= 0.1:
+                print(f"  🧠 Generating Why Hypothesis for MAIN: {main_cand['event']}")
+                hypothesis = self.why_generator.generate_hypothesis(evidence_bundle)
+                if hypothesis:
+                    print(f"  🔍 Gemini Causal Insight: {hypothesis.get('predictive_chain')}")
+                    main_cand["why_hypothesis"] = hypothesis.get("why_hypothesis", "N/A")
+                    main_cand["mechanism"] = hypothesis.get("mechanism", "N/A")
+                    main_cand["hypothesis_confidence"] = hypothesis.get("confidence", "Low")
+                    main_cand["predictive_chain"] = hypothesis.get("predictive_chain", "N/A")
+                    if hypothesis.get("refined_title"):
+                        main_cand["event"] = hypothesis["refined_title"]
                 else:
-                    print(f"  🧠 Generating Why Hypothesis for MAIN")
-                    hypothesis = self.why_generator.generate_hypothesis(evidence_bundle)
-                    llm_call_count += 1
-                    if hypothesis:
-                        main_cand["why_hypothesis"] = hypothesis["why_hypothesis"]
-                        main_cand["mechanism"] = hypothesis["mechanism"]
-                        main_cand["hypothesis_confidence"] = hypothesis["confidence"]
+                    print(f"  ⚠️ Gemini returned empty hypothesis.")
             else:
                 print(f"  ⏩ Skipping Why Hypothesis (Explainability: {main_cand.get('explainability_score', 0)})")
                 main_cand["why_hypothesis"] = "Analysis pending higher explainability score"
@@ -176,9 +184,63 @@ class TopicSelectionEngine:
         if selection["MAIN"]:
             print(f"  🏆 MAIN Topic: {selection['MAIN']['event']} ({selection['MAIN']['structure_axis']})")
             
+        # [PUBLISH] 결과 물리적 저장 (후속 배포 스크립트 연동)
+        save_path = self.base_dir / "data/topics/topic_selection.json"
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        save_path.write_text(json.dumps(selection, ensure_ascii=False, indent=2))
+        print(f"  ✅ Topic selection saved to {save_path}")
+
         return selection
 
 
     def _save_json(self, data, filename):
         path = self.topic_dir / filename
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+
+    def _create_social_candidates(self, raw_data):
+        """[IS-105] 소셜/예측 시장 데이터를 독립적인 토픽 후보로 생성"""
+        social_data = raw_data.get("social", {})
+        inner_data = social_data.get("data", {}).get("data", {})
+        hn_posts = inner_data.get("hacker_news", [])
+        poly_odds = inner_data.get("polymarket", [])
+        
+        candidates = []
+        
+        # 1. HN High Momentum (150 Points 이상)
+        for post in hn_posts:
+            points = post.get("points", 0)
+            if points >= 150:
+                candidates.append({
+                    "candidate_id": f"soc_hn_{post.get('objectID', 'na')}",
+                    "candidate_type": "SOCIAL",
+                    "event": f"[SOCIAL_HOT] {post.get('title')}",
+                    "entity": ["Community"],
+                    "core_facts": [
+                        {"name": "hn_points", "value": points, "mismatch": False}
+                    ],
+                    "recency_score": 1.0,
+                    "evidence_score": min(1.0, points / 400.0), # 400P 이상이면 만점
+                    "structure_axis": "flow", # 소셜은 자본/정보의 흐름
+                    "why_now": f"Hacker News에서 {points} Points 획득하며 기술 커뮤니티 화두 부상"
+                })
+        
+        # 2. Polymarket High Volume (거래량 기준)
+        for bet in poly_odds:
+            vol = bet.get("volume", 0)
+            if vol > 500000: # $500k 이상 거래
+                candidates.append({
+                    "candidate_id": f"soc_poly_{bet.get('title', 'na')[:10]}",
+                    "candidate_type": "PRED_MARKET",
+                    "event": f"[PRED_MARKET] {bet.get('title')}",
+                    "entity": ["Prediction"],
+                    "core_facts": [
+                        {"name": "yes_prob", "value": bet.get("yes_probability"), "mismatch": False},
+                        {"name": "volume", "value": f"${vol/1000000:.1f}M", "mismatch": False}
+                    ],
+                    "recency_score": 1.0,
+                    "evidence_score": min(1.0, vol / 5000000.0), # $5M 이상이면 만점
+                    "structure_axis": "flow",
+                    "why_now": f"예측 시장에서 {vol/1000:.0f}k 달러 거래되며 자본의 베팅 집중"
+                })
+                
+        return candidates

@@ -1,0 +1,50 @@
+[
+  {
+    "candidate_id": "soc_poly_MicroStrat",
+    "candidate_type": "PRED_MARKET",
+    "event": "[PRED_MARKET] MicroStrategy sells any Bitcoin by ___ ?",
+    "entity": [
+      "Prediction"
+    ],
+    "core_facts": [
+      {
+        "name": "yes_prob",
+        "value": "0.0%",
+        "mismatch": false
+      },
+      {
+        "name": "volume",
+        "value": "$22.2M",
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "flow",
+    "why_now": "예측 시장에서 22243k 달러 거래되며 자본의 베팅 집중"
+  },
+  {
+    "candidate_id": "soc_poly_MicroStrat",
+    "candidate_type": "PRED_MARKET",
+    "event": "[PRED_MARKET] MicroStrategy sells any Bitcoin by ___ ?",
+    "entity": [
+      "Prediction"
+    ],
+    "core_facts": [
+      {
+        "name": "yes_prob",
+        "value": "0.0%",
+        "mismatch": false
+      },
+      {
+        "name": "volume",
+        "value": "$22.2M",
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "flow",
+    "why_now": "예측 시장에서 22243k 달러 거래되며 자본의 베팅 집중"
+  }
+]

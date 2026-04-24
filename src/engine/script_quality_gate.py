@@ -61,8 +61,9 @@ class ScriptQualityGate:
         return report
 
     def _evaluate_deterministically(self, content: Dict) -> Dict:
-        """결정론적 지표 검사 (HOOK, WHY NOW 숫자, SCENARIO, ACTION 등)"""
+        """결정론적 지표 검사 (새로운 7단계 DNA 대응)"""
         script = content.get("script", "")
+        script_lower = script.lower()
         
         scores = {
             "hook_score": 3,
@@ -74,40 +75,45 @@ class ScriptQualityGate:
             "drop_reason": None
         }
 
-        # 1. HOOK 체크
-        first_line = script.strip().split('\n')[0].lower()
-        if "[hook]" in first_line or "?" in first_line:
-            scores["hook_score"] = 5
+        # 1. HOOK 체크 (Step 1 또는 ? 포함)
+        lines = [l.strip() for l in script.split('\n') if l.strip()]
+        first_line = lines[0].lower() if lines else ""
         
-        news_indicators = ["뉴욕증시는", "코스피는", "오늘", "보도에 따르면"]
-        if any(ind in first_line for ind in news_indicators):
+        # [BANNED PHRASE CHECK]
+        banned_hooks = ["이상한 점이 느껴지지 않아", "이상한 점이 느껴되지 않아", "이상한 점을 느끼껴지지 않아"]
+        if any(bh in script for bh in banned_hooks):
             scores["hook_score"] = 1
             scores["status"] = "DROP"
-            scores["drop_reason"] = "HOOK starts with news summary"
-
-        # 2. WHY NOW 숫자 체크
-        if not re.search(r'\d+', script):
-            scores["why_now_score"] = 1
+            scores["drop_reason"] = "Banned cliché found in hook"
+        elif "[hook]" in script_lower or "step 1" in script_lower or "?" in first_line:
+            scores["hook_score"] = 5
+        
+        # 2. WHY NOW 숫자 및 헤더 체크
+        has_numbers = re.search(r'\d+', script)
+        if "[why now]" in script_lower or "step 4" in script_lower or "왜 하필 오늘" in script:
+            scores["why_now_score"] = 5 if has_numbers else 3
+        elif not has_numbers:
             scores["status"] = "DROP"
             scores["drop_reason"] = "Missing numeric data in script"
-        else:
-            scores["why_now_score"] = 5
 
-        # 3. SCENARIO 체크
-        if "[scenario]" in script.lower() or "시나리오" in script:
+        # 3. SCENARIO/RISK 체크 (Step 7 또는 시나리오 포함)
+        if any(x in script_lower for x in ["[scenario]", "step 7", "시나리오", "risk"]):
             scores["scenario_score"] = 5
         else:
             scores["scenario_score"] = 1
             scores["status"] = "DROP"
-            scores["drop_reason"] = "Scenario section missing"
+            scores["drop_reason"] = "Scenario/Risk section missing"
 
-        # 4. ACTION 체크
-        if not content.get("action") or content.get("action") == "N/A" or "[action]" not in script.lower():
+        # 4. ACTION 체크 (Action 헤더 또는 단계 포함)
+        action_indicators = ["[action]", "step 6", "action", "행동 지침", "대응"]
+        if any(x in script_lower for x in action_indicators):
+            scores["action_score"] = 5
+        else:
             scores["action_score"] = 1
             scores["status"] = "DROP"
             scores["drop_reason"] = "ACTION missing or invalid"
-        else:
-            scores["action_score"] = 5
+
+        return scores
 
         return scores
 
