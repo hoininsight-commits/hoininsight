@@ -28,16 +28,36 @@ class PutCallCollector:
         # 브라우저 추적으로 찾아낸 실제 데이터 엔드포인트
         url = "https://cdn.cboe.com/api/global/us_indices/market_statistics/market_statistics_v2.json"
         
+        import random
+        user_agents = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+        ]
+        
         headers = {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://www.cboe.com/",
-            "Origin": "https://www.cboe.com",
-            "Accept": "application/json, text/plain, */*"
+            "User-Agent": random.choice(user_agents),
+            "Referer": "https://www.cboe.com/us/options/market_statistics/daily/",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache"
         }
         
         try:
-            # Note: Cloudflare 403 발생 시 로컬 세션에서는 한계가 있을 수 있음
             resp = requests.get(url, headers=headers, timeout=15)
+            if resp.status_code == 403:
+                # 403 발생 시 로컬 캐시나 최근 히스토리에서 가장 최신 데이터라도 가져옴 (Fallback)
+                print(f"  ⚠️ CBOE 403 Detected. Using history fallback.")
+                if self.history_file.exists():
+                    with open(self.history_file, "r", encoding="utf-8") as f:
+                        history = json.load(f)
+                        if history:
+                            last = history[-1]
+                            last["source"] = "history_fallback"
+                            return last
+                raise Exception("API 접근 제한 (Status: 403) 및 히스토리 없음")
+            
             if resp.status_code != 200:
                 raise Exception(f"API 접근 제한 (Status: {resp.status_code})")
             

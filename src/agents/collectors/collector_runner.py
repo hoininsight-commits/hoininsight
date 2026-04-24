@@ -9,10 +9,10 @@ from src.agents.collectors.market_agent import MarketAgent
 from src.agents.collectors.macro_agent import MacroAgent
 from src.agents.collectors.sentiment_agent import SentimentAgent
 from src.agents.collectors.dart_agent import DartAgent
-from src.agents.consensus_collector import ConsensusCollector
-from src.agents.cot_collector import COTCollector
+from src.agents.collectors.financial_collectors import ConsensusCollector, COTCollector
 from src.agents.collectors.putcall_collector import PutCallCollector
 from src.agents.collectors.social_agent import SocialAgent
+from src.agents.collectors.flow_collector import FlowCollector
 
 class CollectorRunner:
     """

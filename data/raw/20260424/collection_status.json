@@ -1,22 +1,19 @@
 {
   "date": "2026-04-24",
-  "run_at": "2026-04-24T10:04:56.806335",
-  "elapsed_seconds": 15.8,
+  "run_at": "2026-04-24T21:54:20.020954",
+  "elapsed_seconds": 10.9,
   "total_agents": 8,
-  "success_count": 6,
-  "failed_count": 2,
-  "failed_agents": [
-    "DART",
-    "PUTCALL"
-  ],
+  "success_count": 8,
+  "failed_count": 0,
+  "failed_agents": [],
   "category_stats": {
     "거시경제": {
       "success": 2,
       "fail": 0
     },
     "시장": {
-      "success": 1,
-      "fail": 1
+      "success": 2,
+      "fail": 0
     },
     "스마트머니": {
       "success": 1,
@@ -27,8 +24,8 @@
       "fail": 0
     },
     "공시": {
-      "success": 0,
-      "fail": 1
+      "success": 1,
+      "fail": 0
     },
     "예측/소셜": {
       "success": 1,
@@ -36,13 +33,13 @@
     }
   },
   "agent_results": {
-    "DART": "failed: cannot import name 'SECTOR_STOCK_MAP' from 'src.core.sector_map' (/Users/jihopa/Antigravity/hoininsight/src/core/sector_map.py)",
-    "CONSENSUS": "success (FRESH)",
-    "PUTCALL": "failed: 데이터 수집 실패: API 접근 제한 (Status: 403)",
+    "MARKET": "success (cached)",
+    "PUTCALL": "success (cached)",
+    "SENTIMENT": "success (cached)",
+    "DART": "success (cached)",
+    "COTCollector": "success (FRESH)",
     "SocialAgent": "success (FRESH)",
-    "COT": "success (FRESH)",
-    "MACRO": "success (FRESH)",
-    "MARKET": "success (FRESH)",
-    "SENTIMENT": "success (FRESH)"
+    "ConsensusCollector": "success (FRESH)",
+    "MACRO": "success (FRESH)"
   }
 }

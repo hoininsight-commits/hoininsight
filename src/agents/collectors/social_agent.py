@@ -4,7 +4,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
-from src.collectors.social_prediction import SocialPredictionCollector
+from src.agents.collectors.social_prediction_collector import SocialPredictionCollector
 
 class SocialAgent:
     """[TASK #104] Social & Prediction Market Intelligence Agent"""

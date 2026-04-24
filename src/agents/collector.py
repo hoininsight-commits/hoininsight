@@ -754,8 +754,10 @@ class CollectorAgent:
                 })
             except: pass
 
+        major_surprises = [e for e in result_events if abs(e["surprise_pct"]) > 10]
+        
         result_data = {
-            "date": self.today,
+            "date": datetime.now().strftime("%Y%m%d"),
             "source": "FRED API",
             "total_events": len(result_events),
             "major_surprises": major_surprises,
@@ -840,10 +842,11 @@ class CollectorAgent:
         api_key = os.getenv('ECOS_API_KEY')
         base_url = "https://ecos.bok.or.kr/api"
 
-        def fetch_ecos_worker(key, stat_code, cycle, start, end, item_code=""):
+        def fetch_ecos_worker(key, stat_code, cycle, item_code, start, end):
             try:
+                # ECOS URL Format: /STAT_CODE/CYCLE/START/END/ITEM_CODE
                 url = f"{base_url}/StatisticSearch/{api_key}/json/kr/1/100/{stat_code}/{cycle}/{start}/{end}"
-                if item_code:
+                if item_code and item_code != "0":
                     url += f"/{item_code}"
                 resp = requests.get(url, timeout=10)
                 json_resp = resp.json()
@@ -903,7 +906,7 @@ class CollectorAgent:
     def extract_news_keywords(self, sentiment_data: dict) -> list:
         """뉴스 헤드라인에서 DART 검색용 키워드 추출 (v4.5)"""
         print("🧠 뉴스 기반 추적 키워드 추출 중...")
-        from src.core.sector_map import SECTOR_STOCK_MAP
+        from src.core.sector_map import get_related_sectors
         headlines = [h.get("title", "") for h in sentiment_data.get("data", {}).get("news_headlines", [])]
         
         if not headlines:
@@ -927,12 +930,9 @@ class CollectorAgent:
 
         # 2. 룰 기반 추출 (Fallback: 가동성 보장)
         for h in headlines:
-            for sector, info in SECTOR_STOCK_MAP.items():
-                if sector in h or any(kw in h for kw in info.get("keywords", [])):
-                    keywords.add(sector)
-                for name in info.get("names", []):
-                    if name in h:
-                        keywords.add(name)
+            # sector_map.py의 동적 섹터 유추 로직 활용
+            related = get_related_sectors([h])
+            keywords.update(related)
         
         final_keywords = list(keywords)[:7] # 최대 7개 타격
         print(f"  최종 추적 키워드: {final_keywords}")
@@ -942,7 +942,7 @@ class CollectorAgent:
         """DART 공시 데이터 수집 - 뉴스 기반 정밀 타격 모드 (v4.5)"""
         print(f"📋 DART 뉴스 기반 정밀 분석 중... (관심사: {keywords})")
         import OpenDartReader
-        from src.core.sector_map import SECTOR_STOCK_MAP
+        from src.core.sector_map import get_related_sectors
         from datetime import datetime, timedelta
 
         api_key = os.getenv('OPENDART_API_KEY')
@@ -965,11 +965,10 @@ class CollectorAgent:
         disclosures = []
         sector_hits = {}
         
-        # 종목명 -> 섹터 매핑용 사전
-        stock_to_sector = {}
-        for sector, info in SECTOR_STOCK_MAP.items():
-            for name in info["names"]:
-                stock_to_sector[name] = sector
+        # 종목명 -> 섹터 매핑 (Zero-Keyword Policy에 따라 동적 유추)
+        def get_sector_for_corp(corp_name):
+            sectors = get_related_sectors([corp_name])
+            return sectors[0] if sectors else None
 
         for _, row in df.iterrows():
             corp_name = row['corp_name']
@@ -1014,7 +1013,7 @@ class CollectorAgent:
                 })
                 
                 # 섹터 가중치 계산
-                sector = stock_to_sector.get(corp_name)
+                sector = get_sector_for_corp(corp_name)
                 if sector:
                     sector_hits[sector] = sector_hits.get(sector, 0) + (2 if is_bullish else 1)
 
