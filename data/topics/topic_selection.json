@@ -1,0 +1,194 @@
+{
+  "MAIN": null,
+  "SECONDARY": [],
+  "EARLY": [
+    {
+      "candidate_id": "cacd88cb",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-24] 결국 이재용 집 앞까지…\"최악의 시기\" 경고에도 노조 '폭주'",
+      "entity": [
+        "폭주",
+        "최악의 시기",
+        "2026-04-24",
+        "deep_detail"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 1.8,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "unknown",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 10.0,
+      "selection_reason": "High intensity movement in sp500 (0.55%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 0.92,
+      "evaluation": {
+        "candidate_id": "cacd88cb",
+        "structure_axis": "unknown",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 10.0,
+        "why_now_summary": "Detected significant None shift with Z-score 1.26",
+        "selection_reason": "High intensity movement in sp500 (0.55%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 10.0,
+        "market_impact_score": 10.0,
+        "theme_expandability": 8.0,
+        "flow_type": "NORMAL",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    },
+    {
+      "candidate_id": "d5e5eb16",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-23] Traders are betting on big moves in Intel on earnings",
+      "entity": [
+        "2026-04-23",
+        "deep_detail"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 1.8,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "unknown",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 10.0,
+      "selection_reason": "High intensity movement in sp500 (0.55%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 0.92,
+      "evaluation": {
+        "candidate_id": "d5e5eb16",
+        "structure_axis": "unknown",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 10.0,
+        "why_now_summary": "Detected significant None shift with Z-score 1.26",
+        "selection_reason": "High intensity movement in sp500 (0.55%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 10.0,
+        "market_impact_score": 10.0,
+        "theme_expandability": 8.0,
+        "flow_type": "NORMAL",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    },
+    {
+      "candidate_id": "572f2cd4",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7%",
+      "entity": [
+        "2026-04-24",
+        "deep_detail"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "POLICY"
+      ],
+      "recency_score": 1.8,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "unknown",
+      "why_now_gate": {
+        "recent_change": true,
+        "market_reaction_started": true,
+        "not_fully_priced": true,
+        "passed": true
+      },
+      "explainability_score": 10.0,
+      "selection_reason": "High intensity movement in sp500 (0.55%)",
+      "tier_decision_reason": "Rule-based scoring",
+      "final_score": 0.92,
+      "evaluation": {
+        "candidate_id": "572f2cd4",
+        "structure_axis": "unknown",
+        "why_now_gate": {
+          "recent_change": true,
+          "market_reaction_started": true,
+          "not_fully_priced": true,
+          "passed": true
+        },
+        "explainability_score": 10.0,
+        "why_now_summary": "Detected significant None shift with Z-score 1.26",
+        "selection_reason": "High intensity movement in sp500 (0.55%)",
+        "tier_decision_reason": "Rule-based scoring",
+        "sector_hints": [
+          "Macro",
+          "Finance"
+        ],
+        "impact_scope": "Sector",
+        "topic_fit_score": 10.0,
+        "market_impact_score": 10.0,
+        "theme_expandability": 8.0,
+        "flow_type": "NORMAL",
+        "topic_decision": "PROMOTE"
+      },
+      "tier": "EARLY/TIER_3"
+    }
+  ]
+}

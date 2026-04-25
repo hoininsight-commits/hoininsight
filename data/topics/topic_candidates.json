@@ -25,18 +25,18 @@
     "is_mismatch": false
   },
   {
-    "candidate_id": "6ce93524",
+    "candidate_id": "01ba1457",
     "candidate_type": "DATA",
-    "event": "WTI_OIL 5일 누적 강세 추세 (+13.70%)",
+    "event": "WTI_OIL 5일 누적 강세 추세 (+13.15%)",
     "entity": [
       "Market"
     ],
     "core_facts": [
       {
         "name": "wti_oil",
-        "value": 95.34,
-        "change": 13.7,
-        "z_score": -0.33
+        "value": 94.88,
+        "change": 13.15,
+        "z_score": -0.39
       }
     ],
     "expected_paths": [
@@ -59,9 +59,9 @@
     "core_facts": [
       {
         "name": "vix",
-        "value": 19.01,
-        "change": 8.75,
-        "z_score": -0.64
+        "value": 18.71,
+        "change": 7.04,
+        "z_score": -0.71
       }
     ],
     "expected_paths": [
@@ -69,31 +69,6 @@
     ],
     "actual_paths": [
       "DIVERGENCE"
-    ],
-    "recency_score": 0.9,
-    "evidence_score": 1.0,
-    "is_mismatch": false
-  },
-  {
-    "candidate_id": "8f321740",
-    "candidate_type": "DATA",
-    "event": "US10Y 5일 누적 강세 추세 (+2.17%)",
-    "entity": [
-      "Market"
-    ],
-    "core_facts": [
-      {
-        "name": "us10y",
-        "value": 4.338,
-        "change": 2.17,
-        "z_score": 0.69
-      }
-    ],
-    "expected_paths": [
-      "평균 회귀"
-    ],
-    "actual_paths": [
-      "TREND"
     ],
     "recency_score": 0.9,
     "evidence_score": 1.0,
@@ -123,347 +98,5 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Meta to start capturing employee mouse movements, keystrokes for AI training",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 791,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 1.0,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 791 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Atlassian enables default data collection to train AI",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 604,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 1.0,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 604 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Why Japan has such good railways",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 567,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 1.0,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 567 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] College instructor turns to typewriters to curb AI-written work",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 490,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 1.0,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 490 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] AI Resistance: some recent anti-AI stuff that’s worth discussing",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 387,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.9675,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 387 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Thoughts and feelings around Claude Design",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 386,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.965,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 386 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Deezer says 44% of songs uploaded to its platform daily are AI-generated",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 366,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.915,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 366 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] I’m spending months coding the old way",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 364,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.91,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 364 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Tell HN: I'm sick of AI everything",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 339,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.8475,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 339 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Scoring Show HN submissions for AI design patterns",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 329,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.8225,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 329 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Ask HN: How did you land your first projects as a solo engineer/consultant?",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 300,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.75,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 300 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Airline worker arrested after sharing photos of bomb damage in WhatsApp group",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 286,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.715,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 286 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] A Roblox cheat and one AI tool brought down Vercel's platform",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 283,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.7075,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 283 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] U.S. soldier charged with using classified info to profit from prediction market",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 250,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.625,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 250 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] MeshCore development team splits over trademark dispute and AI-generated code",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 243,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.6075,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 243 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] The world in which IPv6 was a good design (2017)",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 230,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.575,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 230 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Scores decline again for 13-year-old students in reading and mathematics (2023)",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 207,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.5175,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 207 Points 획득하며 기술 커뮤니티 화두 부상"
-  },
-  {
-    "candidate_id": "soc_hn_na",
-    "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] Japan's cherry blossom database, 1,200 years old, has a new keeper",
-    "entity": [
-      "Community"
-    ],
-    "core_facts": [
-      {
-        "name": "hn_points",
-        "value": 170,
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.425,
-    "structure_axis": "flow",
-    "why_now": "Hacker News에서 170 Points 획득하며 기술 커뮤니티 화두 부상"
   }
 ]

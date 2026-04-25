@@ -614,5 +614,33 @@
     "success": true,
     "fallback_used": false,
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:36:50.476482",
+    "agent": "AXIS_MATCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:37:13.656330",
+    "agent": "AXIS_MATCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:37:31.126034",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:37:41.423803",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
   }
 ]

@@ -1,0 +1,45 @@
+{
+  "date": "2026-04-25",
+  "run_at": "2026-04-25T09:36:18.287449",
+  "elapsed_seconds": 22.4,
+  "total_agents": 8,
+  "success_count": 8,
+  "failed_count": 0,
+  "failed_agents": [],
+  "category_stats": {
+    "거시경제": {
+      "success": 2,
+      "fail": 0
+    },
+    "시장": {
+      "success": 2,
+      "fail": 0
+    },
+    "스마트머니": {
+      "success": 1,
+      "fail": 0
+    },
+    "감정/뉴스": {
+      "success": 1,
+      "fail": 0
+    },
+    "공시": {
+      "success": 1,
+      "fail": 0
+    },
+    "예측/소셜": {
+      "success": 1,
+      "fail": 0
+    }
+  },
+  "agent_results": {
+    "COTCollector": "success",
+    "PUTCALL": "success",
+    "SocialAgent": "success",
+    "ConsensusCollector": "success",
+    "MARKET": "success",
+    "SENTIMENT": "success",
+    "DART": "success",
+    "MACRO": "success"
+  }
+}

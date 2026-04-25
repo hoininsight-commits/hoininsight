@@ -332,6 +332,9 @@ jobs:
             fi
           fi
 
+      - name: Update Handoff History
+        run: python scripts/auto_handoff.py
+
       - name: Run Publisher
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

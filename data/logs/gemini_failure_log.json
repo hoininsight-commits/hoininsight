@@ -1,17 +1,5 @@
 [
   {
-    "timestamp": "2026-04-21T15:03:21.127325",
-    "agent": "ANALYST",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T15:05:03.094134",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-04-21T15:05:03.583686",
     "agent": "DETECTOR",
     "failure_type": "JSON_PARSE_ERROR",
@@ -1198,5 +1186,17 @@
     "agent": "WRITER",
     "failure_type": "SERVER_ERROR",
     "retry_count": 6
+  },
+  {
+    "timestamp": "2026-04-25T09:36:50.471982",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:37:13.652242",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
   }
 ]
