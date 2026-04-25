@@ -112,26 +112,49 @@ class RuleBasedScriptGenerator:
             vars["why_now_detail"] = vars.get("why_now", "현재 시장의 결정적 수급 변화가 임계점을 돌파했다.")
 
         # 3. 추가 변수 설정
-        vars["title"] = candidate.get("topic", "시장 긴급 분석")
+        # [v12.2 Fix] 템플릿 변수가 누락되었을 때를 대비한 기본값 보강
+        vars["title"] = candidate.get("event", candidate.get("topic", "시장 긴급 분석"))
         vars["status_label"] = "PARTIAL_SUCCESS (Gemini 실패, Fallback 엔진 가동)"
         vars["gate_status"] = "PASS (Deterministic)"
+        
+        # [v12.2] 토픽 명칭에서 [SOCIAL_HOT] 등 머릿말 제거하여 깔끔하게 표시
+        clean_title = vars["title"].replace("[SOCIAL_HOT] ", "").replace("[PRED_MARKET] ", "")
+        vars["hook"] = f"왜 지금 시장은 {clean_title} 상황에 주목하고 있을까?"
+        
         vars["mechanism"] = candidate.get("mechanism", "이례적인 수급 쏠림으로 인한 지표 간의 디커플링 현상이 관측된다.")
-        if vars["mechanism"] == "Correlative shift observed": # Engine 기본값 교체
+        if vars["mechanism"] in ["Correlative shift observed", "N/A", ""]: 
             vars["mechanism"] = "주요 자산군 간의 상관관계가 깨지며 새로운 가격 축이 형성되는 과정이다."
             
         vars["mentionables"] = "현재 데이터상 직접적인 브리지가 확인되는 종목은 없다. 관련 섹터 ETF의 흐름을 관찰하라."
         vars["risk_warning"] = "다만, 단기 변동성 확대에 따른 오버슈팅 가능성을 경계해야 한다."
-        vars["one_thing"] = f"오늘 관찰된 {vars['title']} 현상이 지속되는지 확인해라. 그게 진짜 신호다."
+        vars["one_thing"] = f"오늘 관찰된 {clean_title} 현상이 지속되는지 확인해라. 그게 진짜 신호다."
 
         try:
-            script = self.FALLBACK_TEMPLATE.format(**vars)
+            # vars에 필요한 모든 키가 있는지 보장 (KeyError 방지)
+            default_vars = {
+                "hook": f"왜 지금 시장은 {clean_title} 상황일까?",
+                "fact_summary": "주요 거시 지표의 이례적인 움직임이 포착되었다.",
+                "mechanism": "자본의 급격한 이동이 관측된다.",
+                "why_now_detail": "현재 시장의 결정적 수급 변화가 임계점을 돌파했다.",
+                "theme_impact": "주요 섹터 전반의 수급 확산 가능성이 높다.",
+                "mentionables": "관련 섹터의 대장주 흐름을 관찰하라.",
+                "selected_scenario": "중립 시나리오",
+                "risk_warning": "변동성 확대에 주의하라.",
+                "one_thing": "오늘의 지표 변화가 진짜 신호인지 끝까지 추적하라."
+            }
+            # 실제 데이터로 덮어쓰기
+            for k, v in vars.items():
+                if v and v != "N/A":
+                    default_vars[k] = v
+            
+            script = self.FALLBACK_TEMPLATE.format(**default_vars)
         except Exception as e:
             print(f"  ⚠️ 폴백 템플릿 렌더링 실패: {e}")
             return None
             
         from datetime import datetime
         return {
-            "topic": vars["title"],
+            "topic": clean_title,
             "script": script,
             "content_type": candidate.get("classification", "NORMAL"),
             "themes": vars.get("themes", []),

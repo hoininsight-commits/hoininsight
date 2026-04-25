@@ -52,11 +52,21 @@ class TopicRanker:
             if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
                 social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
             
-            # [NEW] Continuity Penalty (반복 토픽 강력 페널티)
+            # [v12.2] 강력한 중복 방지 (Fatigue Filter)
+            # 특정 키워드가 포함된 주제가 최근 선정된 이력과 겹치면 점수를 최하점으로 깎음
+            selection_title = cand.get("event", "")
+            fatigue_keywords = ["뷰티", "화장품", "K-뷰티", "Beauty", "Cosmetic"]
+            is_repetitive = any(kw in selection_title for kw in fatigue_keywords)
+            
             continuity_penalty = 0.0
-            if prev_main_event and (prev_main_event in cand["event"] or cand["event"] in prev_main_event):
+            if prev_main_event and (prev_main_event in selection_title or selection_title in prev_main_event):
                 continuity_penalty = 0.8  # 0.25 -> 0.8로 대폭 강화 (중복 제거 강제)
-                print(f"  📢 Fatigue Alert: Strong continuity penalty (0.8) applied to '{cand['event']}'")
+                print(f"  📢 Fatigue Alert: Strong continuity penalty (0.8) applied to '{selection_title}'")
+            
+            # [NEW] 키워드 기반 강제 격리
+            if is_repetitive:
+                print(f"  🛑 [FATIGUE_BLOCK] '{selection_title}' contains repetitive keywords. Penalizing heavily.")
+                continuity_penalty = 0.95 # 사실상 배제
             
             # [v11.0] Balanced Final Score
             final_score = (det_score * 0.4) + (qual_score / 10.0 * 0.4) + mismatch_bonus + social_bonus - continuity_penalty
