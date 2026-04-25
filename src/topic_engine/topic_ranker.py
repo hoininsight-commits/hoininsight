@@ -50,8 +50,15 @@ class TopicRanker:
             if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
                 social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
             
+            # [NEW] Policy & Institutional Catalyst Bonus (v12.6)
+            # 백악관, 연준, 정부 정책 등 판을 바꾸는 공식 발표에 강력한 가중치
+            policy_bonus = 0.0
+            policy_keywords = ["백악관", "연준", "fed", "정부", "정책", "지침", "가이드라인", "white house", "bill", "act"]
+            if any(kw in selection_title.lower() for kw in policy_keywords):
+                policy_bonus = 0.5 # 사회 이슈(0.4)보다 높은 최고 우선순위
+                print(f"  🏛️ Policy Catalyst: Priority bonus (0.5) applied to '{selection_title}'")
+
             # [v12.3] Agnostic Fatigue Check (Similarity-based)
-            selection_title = cand.get("event", "")
             continuity_penalty = 0.0
             
             for pt in prev_topics:
@@ -61,8 +68,8 @@ class TopicRanker:
                     print(f"  📢 Fatigue Alert: Aggressive continuity penalty (5.0) applied to '{selection_title}'")
                     break
             
-            # [v11.0] Balanced Final Score
-            final_score = (det_score * 0.4) + (qual_score / 10.0 * 0.4) + mismatch_bonus + social_bonus - continuity_penalty
+            # [v12.6] Balanced Final Score (Includes Policy & Catalyst)
+            final_score = (det_score * 0.4) + (qual_score / 10.0 * 0.4) + mismatch_bonus + social_bonus + policy_bonus - continuity_penalty
             
             cand["final_score"] = round(final_score, 4)
             cand["evaluation"] = ev

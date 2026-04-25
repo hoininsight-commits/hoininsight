@@ -600,7 +600,7 @@ class CollectorAgent:
                 if resp.status_code == 200:
                     d = feedparser.parse(resp.content)
                     now = datetime.now()
-                    for entry in d.entries[:15]:
+                    for entry in d.entries[:30]:
                         # [FRESHNESS FILTER] 7일 이내 뉴스만 수집
                         pub_date = entry.get("published_parsed")
                         date_prefix = ""
