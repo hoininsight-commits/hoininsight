@@ -47,13 +47,19 @@ class TopicRanker:
             # [NEW] Hunter's Eye Bonus (Mismatch 가중치)
             mismatch_bonus = 0.3 if cand.get("is_mismatch") else 0.0
             
-            # [NEW] Continuity Penalty (반복 토픽 감점)
+            # [NEW] Social / Prediction Market Bonus (v11.0)
+            social_bonus = 0.0
+            if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
+                social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
+            
+            # [NEW] Continuity Penalty (반복 토픽 강력 페널티)
             continuity_penalty = 0.0
             if prev_main_event and (prev_main_event in cand["event"] or cand["event"] in prev_main_event):
-                continuity_penalty = 0.25 # 강력한 페널티로 새로운 테마 기회 부여
-                print(f"  📢 Fatigue Alert: Continuity penalty (0.25) applied to '{cand['event']}'")
+                continuity_penalty = 0.8  # 0.25 -> 0.8로 대폭 강화 (중복 제거 강제)
+                print(f"  📢 Fatigue Alert: Strong continuity penalty (0.8) applied to '{cand['event']}'")
             
-            final_score = (det_score * 0.5) + (qual_score / 10.0 * 0.5) + mismatch_bonus - continuity_penalty
+            # [v11.0] Balanced Final Score
+            final_score = (det_score * 0.4) + (qual_score / 10.0 * 0.4) + mismatch_bonus + social_bonus - continuity_penalty
             
             cand["final_score"] = round(final_score, 4)
             cand["evaluation"] = ev
@@ -153,6 +159,3 @@ class TopicRanker:
             "SECONDARY": secondary_candidates,
             "EARLY": early_candidates
         }
-
-
-

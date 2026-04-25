@@ -32,12 +32,23 @@ class AxisDetector:
         if not self.gemini: 
             return {"primary": "emerging", "secondary": "flow"}
 
-        # 상위 40개 이벤트의 텍스트만 추출하여 전달
-        event_texts = [f"[{c.get('source', 'NA')}] {c.get('event')}" for c in candidates[:40]]
+        # 상위 40개 이벤트의 텍스트와 메타데이터(예: 소셜 거래량)를 함께 전달
+        event_texts = []
+        for c in candidates[:40]:
+            src = c.get('source', 'NA')
+            ev = c.get('event', '')
+            # 소셜 데이터인 경우 수치 정보를 포함하여 가중치를 높임
+            if c.get('candidate_type') == 'PRED_MARKET':
+                vol = c.get('core_facts', [{}])[1].get('value', 'N/A')
+                prob = c.get('core_facts', [{}])[0].get('value', 'N/A')
+                event_texts.append(f"[PRED_MARKET] {ev} (Vol: {vol}, Prob: {prob})")
+            else:
+                event_texts.append(f"[{src}] {ev}")
         
         prompt = f"""
-        당신은 시장의 미세한 흐름을 포착하는 분석가입니다.
-        아래 뉴스 리스트를 보고 오늘 시장을 지배하는 구체적 섹터/테마 2개를 추출하여 JSON으로 응답하세요.
+        당신은 시장의 미세한 흐름과 소셜 에너지(예측 시장 등)를 포착하는 사냥꾼입니다.
+        아래 데이터 리스트를 보고 오늘 시장을 지배하거나 사람들의 자본이 몰리는 '진짜' 테마 2개를 추출하세요.
+        단순 경제 지표보다 예측 시장(PRED_MARKET)이나 소셜에서 에너지가 분출되는 주제에 더 주목하십시오.
         
         [데이터]
         {json.dumps(event_texts, ensure_ascii=False)}
