@@ -50,13 +50,19 @@ class TopicRanker:
             if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
                 social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
             
-            # [NEW] Policy & Institutional Catalyst Bonus (v12.6)
-            # 백악관, 연준, 정부 정책 등 판을 바꾸는 공식 발표에 강력한 가중치
+            # [NEW] Intelligent Policy Catalyst Bonus (v12.7)
+            # 키워드만 보는 것이 아니라, Gemini가 분석한 '시장 영향력'이 높을 때만 가중치 부여
             policy_bonus = 0.0
             policy_keywords = ["백악관", "연준", "fed", "정부", "정책", "지침", "가이드라인", "white house", "bill", "act"]
-            if any(kw in selection_title.lower() for kw in policy_keywords):
-                policy_bonus = 0.5 # 사회 이슈(0.4)보다 높은 최고 우선순위
-                print(f"  🏛️ Policy Catalyst: Priority bonus (0.5) applied to '{selection_title}'")
+            
+            # qual_score가 일정 수준(7.0점 환산) 이상이면서 정책 키워드가 포함된 경우
+            if any(kw in selection_title.lower() for kw in policy_keywords) and ev.get("market_impact_score", 0) >= 7.0:
+                policy_bonus = 0.5 
+                print(f"  🏛️ Intelligent Policy Bonus (0.5) applied to high-impact policy: '{selection_title}'")
+            elif any(kw in selection_title.lower() for kw in policy_keywords):
+                # 키워드는 있지만 영향력이 낮은 경우, 절반만 부여하여 후보군에는 남김
+                policy_bonus = 0.2
+                print(f"  🏛️ Minor Policy Bonus (0.2) applied to: '{selection_title}'")
 
             # [v12.3] Agnostic Fatigue Check (Similarity-based)
             continuity_penalty = 0.0
