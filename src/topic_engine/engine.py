@@ -136,16 +136,10 @@ class TopicSelectionEngine:
         if not filtered_candidates:
             return {"MAIN": None, "SECONDARY": [], "EARLY": [], "market_axis": market_axis}
 
-        # 6. 정성 평가 (Heuristic-based, v2.2부터 LLM 호출 금지)
+        # 6. 정성 평가 (Top 10 candidates)
+        # filtered_candidates(축에 속하거나 강력한 것들) 중 상위 10개 추출
         filtered_candidates.sort(key=lambda x: (x["recency_score"] + x["evidence_score"]), reverse=True)
         top_candidates = filtered_candidates[:10]
-        # 5. [NEW] Market Axis Detection (Axis-First)
-        axis_report = self.axis_detector.detect_market_axis(all_candidates, market_data)
-        market_axis = axis_report
-        
-        # 6. 정성 평가 (Top 10 candidates)
-        all_candidates.sort(key=lambda x: (x["recency_score"] + x["evidence_score"]), reverse=True)
-        top_candidates = all_candidates[:10]
         evaluations = self.evaluator.evaluate_all(top_candidates)
         
         # [NEW] Social & Prediction Data Load

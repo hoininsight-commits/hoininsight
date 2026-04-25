@@ -15,16 +15,14 @@ class TopicRanker:
         
         scored_candidates = []
         
-        # [NEW] Load previous selection to detect continuity (Topic Fatigue)
-        import json
-        from pathlib import Path
-        prev_main_event = None
+        # [v12.3 Agnostic Persistence] Load historical topics from committed index
+        prev_topics = []
         try:
-            prev_path = Path("data/topics/topic_selection.json")
-            if prev_path.exists():
-                prev_data = json.loads(prev_path.read_text(encoding="utf-8"))
-                if prev_data.get("MAIN"):
-                    prev_main_event = prev_data["MAIN"].get("event")
+            index_path = Path("docs/topics/index.json")
+            if index_path.exists():
+                index_data = json.loads(index_path.read_text(encoding="utf-8"))
+                # 최근 3일간의 토픽 제목들을 가져옴
+                prev_topics = [item.get("topic", "") for item in index_data[:5]]
         except: pass
 
         for cand in candidates:
@@ -52,21 +50,16 @@ class TopicRanker:
             if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
                 social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
             
-            # [v12.2] 강력한 중복 방지 (Fatigue Filter)
-            # 특정 키워드가 포함된 주제가 최근 선정된 이력과 겹치면 점수를 최하점으로 깎음
+            # [v12.3] Agnostic Fatigue Check (Similarity-based)
             selection_title = cand.get("event", "")
-            fatigue_keywords = ["뷰티", "화장품", "K-뷰티", "Beauty", "Cosmetic"]
-            is_repetitive = any(kw in selection_title for kw in fatigue_keywords)
-            
             continuity_penalty = 0.0
-            if prev_main_event and (prev_main_event in selection_title or selection_title in prev_main_event):
-                continuity_penalty = 0.8  # 0.25 -> 0.8로 대폭 강화 (중복 제거 강제)
-                print(f"  📢 Fatigue Alert: Strong continuity penalty (0.8) applied to '{selection_title}'")
             
-            # [NEW] 키워드 기반 강제 격리
-            if is_repetitive:
-                print(f"  🛑 [FATIGUE_BLOCK] '{selection_title}' contains repetitive keywords. Penalizing heavily.")
-                continuity_penalty = 0.95 # 사실상 배제
+            for pt in prev_topics:
+                # 제목이 50% 이상 겹치거나 포함관계일 경우 페널티 (Agnostic Diversity 강화)
+                if pt and (pt in selection_title or selection_title in pt or len(set(pt.split()) & set(selection_title.split())) >= 2):
+                    continuity_penalty = 5.0  # 강력한 배제 (v12.5)
+                    print(f"  📢 Fatigue Alert: Aggressive continuity penalty (5.0) applied to '{selection_title}'")
+                    break
             
             # [v11.0] Balanced Final Score
             final_score = (det_score * 0.4) + (qual_score / 10.0 * 0.4) + mismatch_bonus + social_bonus - continuity_penalty

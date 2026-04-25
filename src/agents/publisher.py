@@ -54,13 +54,8 @@ class PublisherAgent:
                 print(f"  [DEBUG] Loaded Topic Selection MAIN: {data['signal']['topic']}")
         
         if "signal" not in data:
-            for d in sorted(Path("data/signals").iterdir(), reverse=True):
-                p = d / "today_signal.json"
-                if p.exists():
-                    res = safe_load_json(p)
-                    if res:
-                        data["signal"] = res
-                        break
+            print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
+            data["signal"] = None
 
         # 분석
         if Path("data/analysis").exists():
@@ -285,7 +280,11 @@ class PublisherAgent:
                 # [DEPRECATED] from src.content.content_tier import map_action_to_tier
                 
                 # 메인 신호 토픽 확인 (v2.0 대응: event와 topic 모두 체크)
-                selected_title = signal.get("event", signal.get("topic", ""))
+                selected_title = ""
+                if signal:
+                    selected_title = signal.get("event", signal.get("topic", ""))
+                else:
+                    print("  ⚠️ [PUBLISHER] No MAIN signal found. Dashboard will show empty state.")
                 
                 for i, cand in enumerate(all_candidates):
                     cand_title = cand.get("event", cand.get("topic", ""))
@@ -430,21 +429,24 @@ class PublisherAgent:
         items_dir = self.base_dir / 'docs' / 'topics' / 'items'
         items_dir.mkdir(parents=True, exist_ok=True)
 
-        # 1. 오늘 상세 파일 저장
-        item_today = {
-            'date': date,
-            'rank': 1,
+        # 신호 기록 업데이트
+        if not signal:
+            print("  ⏩ [ARCHIVE] No signal to archive today.")
+            return
+
+        new_entry = {
+            'date': self.today,
             'topic': signal.get('topic', ''),
             'strength': signal.get('strength', 0),
             'anomaly_type': signal.get('anomaly_type', ''),
             'filters_hit': signal.get('filters_hit', ['S']),
             'why_now': signal.get('why_now', ''),
-            'path': f'topics/items/{date}__top1.json',
+            'path': f'topics/items/{self.today}__top1.json',
             'isToday': False
         }
-        item_path = items_dir / f'{date}__top1.json'
+        item_path = items_dir / f'{self.today}__top1.json'
         with open(item_path, 'w', encoding='utf-8') as f:
-            json.dump(item_today, f, ensure_ascii=False, indent=2)
+            json.dump(new_entry, f, ensure_ascii=False, indent=2)
 
         # 2. signal_log.json에서 과거 토픽 전체 읽기
         signal_log_path = self.base_dir / 'data' / 'history' / 'signal_log.json'
@@ -482,7 +484,7 @@ class PublisherAgent:
 
         # 3. 오늘 항목 포함 (중복 제거 후 맨 앞 추가)
         archive_list = [x for x in archive_list if x.get('date') != date]
-        archive_list.append(item_today)
+        archive_list.append(new_entry)
         
         # 날짜 최신순 정렬 및 최대 60개 유지
         archive_list = sorted(archive_list, key=lambda x: x.get('date', ''), reverse=True)[:60]
@@ -496,9 +498,15 @@ class PublisherAgent:
 
     def generate_brief(self, data: dict) -> str:
         """선장 확인용 브리핑 텍스트 생성 (v12.0 Intelligence Upgrade)"""
-        signal = data.get("signal", {})
-        stocks = data.get("stocks", {})
-        analysis = data.get("analysis", {})
+        signal = data.get("signal")
+        if signal is None:
+            signal = {}
+        stocks = data.get("stocks")
+        if stocks is None:
+            stocks = {}
+        analysis = data.get("analysis")
+        if analysis is None:
+            analysis = {}
 
         stock_list = "\n".join([
             f"  - {s['name']} ({s['sector']}): {s['impact']} — {s['reason']}"

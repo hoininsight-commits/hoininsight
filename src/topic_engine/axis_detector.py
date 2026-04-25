@@ -61,24 +61,15 @@ class AxisDetector:
         }}
         """
         try:
-            # 더 유연한 일반 호출 사용 (GeminiClient.call 메서드 사용)
-            raw_res = self.gemini.call(prompt)
+            # [TASK #103.1] call_json 사용하여 토큰 한도(8192) 확보 및 자동 파싱 활용
+            res = self.gemini.call_json(prompt)
             
-            # JSON 추출 시도 (백틱 등 제거)
-            clean_json = raw_res.strip()
-            if "```json" in clean_json:
-                clean_json = clean_json.split("```json")[1].split("```")[0].strip()
-            elif "```" in clean_json:
-                clean_json = clean_json.split("```")[1].split("```")[0].strip()
-            
-            res = json.loads(clean_json)
-            
-            if res:
+            if res and "primary" in res:
                 print(f"    ✨ Discovery Success: {res.get('primary')} / {res.get('secondary')}")
                 return res
             return {"primary": "emerging", "secondary": "flow"}
         except Exception as e:
-            print(f"    ⚠️ Discovery Parsing Error: {str(e)}")
+            print(f"    ⚠️ Discovery Error: {str(e)}")
             return {"primary": "emerging", "secondary": "flow"}
 
     def detect_market_axis(self, candidates: List[Dict], market_data: Dict) -> Dict:
@@ -113,16 +104,18 @@ class AxisDetector:
         """
         try:
             mapping_res = self.gemini.call_json_controlled(mapping_prompt, agent="AXIS_MATCHER")
-            if mapping_res:
-                for cand in candidates:
-                    target_axis = mapping_res.get(cand.get("candidate_id"))
-                    if target_axis:
-                        cand["structure_axis"] = target_axis
-                        print(f"    🔗 Intelligent Mapping: {cand.get('candidate_id')} -> {target_axis}")
-        except:
-            print("    ⚠️ Intelligent Mapping failed. Falling back to default.")
             for cand in candidates:
-                cand["structure_axis"] = primary_axis
+                target_axis = mapping_res.get(cand.get("candidate_id")) if mapping_res else None
+                if target_axis and target_axis != "emerging":
+                    cand["structure_axis"] = target_axis
+                    print(f"    🔗 Intelligent Mapping: {cand.get('candidate_id')} -> {target_axis}")
+                else:
+                    # 매핑 실패 혹은 부정확할 시 주력 축으로 우선 배정
+                    cand["structure_axis"] = primary_axis
+        except Exception as e:
+            print(f"    ⚠️ Mapping failed ({e}). Falling back to diverse mapping.")
+            for i, cand in enumerate(candidates):
+                cand["structure_axis"] = primary_axis if i % 2 == 0 else secondary_axis
 
         print(f"  🎯 Top Frontier Axes Identified: Primary='{primary_axis}', Secondary='{secondary_axis}'")
         
