@@ -656,5 +656,19 @@
     "success": false,
     "fallback_used": true,
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:45:33.850818",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:45:42.857772",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
   }
 ]

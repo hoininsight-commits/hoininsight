@@ -495,7 +495,7 @@ class PublisherAgent:
         print(f'  topics 아카이브 갱신 완료: {date} (총 {len(archive_list)}개)')
 
     def generate_brief(self, data: dict) -> str:
-        """선장 확인용 브리핑 텍스트 생성"""
+        """선장 확인용 브리핑 텍스트 생성 (v12.0 Intelligence Upgrade)"""
         signal = data.get("signal", {})
         stocks = data.get("stocks", {})
         analysis = data.get("analysis", {})
@@ -522,34 +522,48 @@ class PublisherAgent:
         if failed_agents:
             warning_block = f"\n⚠️ [수집 경고]\n{', '.join(failed_agents)}: API 실패 → 해당 지표 분석 제외됨\n"
 
+        # [v12.0] 상세 사유 레이어 구성
+        rationale = signal.get("why_now", "데이터 분석 기반 자율 선정")
+        hypothesis = signal.get("why_hypothesis", "N/A")
+        mechanism = signal.get("mechanism", "N/A")
+        confidence = signal.get("hypothesis_confidence", "MEDIUM")
+
         brief = f"""
 ========================================
-HOIN Insight 일일 브리핑
+🏹 HOIN Insight 일일 사냥 보고서
 날짜: {self.today[:4]}-{self.today[4:6]}-{self.today[6:]}
 ========================================{warning_block}
 
-[오늘의 신호]
-토픽: {signal.get("topic", "없음")}
-상태: {signal.get("status", "FULL_SUCCESS")}
-강도: {signal.get("strength", 0)} / 10
-유형: {signal.get("content_type", "")}
-적중 필터: {", ".join(signal.get("filters_hit", []))}
-긴급도: {signal.get("urgency", "")}
+[1. 오늘의 메인 사냥 토픽]
+🎯 주제: {signal.get("topic", "없음")}
+🔥 강도: {signal.get("strength", 0)} / 10
+🧠 확신도: {confidence}
 
-[레벨2 인과관계]
+[2. 선정 사유 (Selection Rationale)]
+📝 {rationale}
+
+[3. AI 가설 및 메커니즘]
+💡 가설 (Why Now): {hypothesis}
+⚙️ 작동 원리 (Mechanism): {mechanism}
+
+[4. 레벨2 인과관계]
 {chain_str if chain_str else ("  분석 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  없음 (AGENT-04 미실행)")}
 
-[관련 종목]
+[5. 관련 종목 (Market Target)]
 {stock_list if stock_list else ("  매핑 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  종목 데이터 없음 (AGENT-04 미실행)")}
 
-[스크립트]
-롱폼: {data.get("script_long_path", "미생성")}
-쇼츠: {data.get("script_short_path", "미생성")}
+[6. 산출물 경로]
+🎬 롱폼: {data.get("script_long_path", "미생성")}
+📱 쇼츠: {data.get("script_short_path", "미생성")}
 
-[승인 대기 중]
-대시보드에서 확인 후 승인해주세요.
+========================================
+선장님, 대시보드에서 최종 승인 후 발행을 진행해주세요.
 ========================================
 """
+        brief_path = self.dashboard_dir / "today_brief.txt"
+        brief_path.write_text(brief, encoding="utf-8")
+        print(f"  선장 브리핑 생성 완료 (상세 사유 포함): {brief_path}")
+        return brief
         brief_path = self.dashboard_dir / "today_brief.txt"
         brief_path.write_text(brief, encoding="utf-8")
         print(f"  선장 브리핑 생성: {brief_path}")
