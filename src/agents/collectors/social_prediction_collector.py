@@ -19,16 +19,28 @@ class SocialPredictionCollector:
         self.gamma_api_url = "https://gamma-api.polymarket.com/public-search"
         self.hn_api_url = "https://hn.algolia.com/api/v1/search"
 
-    def collect_polymarket(self, query: str) -> list:
-        """Collect active prediction markets from Polymarket."""
+    def collect_polymarket(self, query: str = None) -> list:
+        """Collect active prediction markets from Polymarket. If query is None, fetch top trending."""
         try:
-            params = {
-                "q": query,
-                "page": "1",
-                "events_status": "active",
-                "keep_closed_markets": "0"
-            }
-            resp = requests.get(self.gamma_api_url, params=params, headers=self.headers, timeout=10)
+            if query:
+                params = {
+                    "q": query,
+                    "page": "1",
+                    "events_status": "active",
+                    "keep_closed_markets": "0"
+                }
+                resp = requests.get(self.gamma_api_url, params=params, headers=self.headers, timeout=10)
+            else:
+                # [FAST_TRACK] Fetch general trending/top volume events
+                trending_url = "https://gamma-api.polymarket.com/public-search"
+                params = {
+                    "events_status": "active",
+                    "limit": "20",
+                    "order": "volume24hr",
+                    "ascending": "false"
+                }
+                resp = requests.get(trending_url, params=params, headers=self.headers, timeout=10)
+
             if resp.status_code != 200:
                 return []
             
@@ -37,18 +49,13 @@ class SocialPredictionCollector:
             results = []
             
             for ev in events:
-                # Basic relevance check
                 title = ev.get("title", "")
-                if query.lower() not in title.lower():
-                    continue
-                
                 markets = ev.get("markets", [])
                 if not markets: continue
                 
                 # Get the most liquid market
                 top_market = sorted(markets, key=lambda x: float(x.get("liquidity", 0) or 0), reverse=True)[0]
                 
-                # Parse outcomes
                 outcomes = []
                 try:
                     outcome_names = json.loads(top_market.get("outcomes", "[]"))
@@ -63,10 +70,14 @@ class SocialPredictionCollector:
                     "url": f"https://polymarket.com/event/{ev.get('slug')}",
                     "outcomes": outcomes,
                     "liquidity": float(top_market.get("liquidity", 0) or 0),
-                    "volume24h": float(top_market.get("volume24hr", 0) or 0)
+                    "volume24h": float(top_market.get("volume24hr", 0) or 0),
+                    "is_breaking": query is None
                 })
             
-            return sorted(results, key=lambda x: x["liquidity"], reverse=True)[:5]
+            return sorted(results, key=lambda x: x["volume24h"], reverse=True)[:10]
+        except Exception as e:
+            print(f"  ⚠️ Polymarket collection error ({query or 'Trending'}): {e}")
+            return []
         except Exception as e:
             print(f"  ⚠️ Polymarket collection error ({query}): {e}")
             return []
@@ -103,10 +114,16 @@ class SocialPredictionCollector:
             return []
 
     def collect_all(self, keywords: list) -> dict:
-        """Run collection across all sources for given keywords."""
+        """Run collection across all sources for given keywords + [FAST_TRACK] Global Trends."""
         all_pm = []
         all_hn = []
         
+        # 1. Global Fast-Track (Keyword-less)
+        print("  ⚡ Fast-Track: Discovering global breaking signals...")
+        all_pm.extend(self.collect_polymarket(None)) # Global Trending
+        all_hn.extend(self.collect_hacker_news(""))  # Global Top (Last 24h)
+        
+        # 2. Targeted Keyword Collection
         with ThreadPoolExecutor(max_workers=5) as executor:
             pm_futures = [executor.submit(self.collect_polymarket, kw) for kw in keywords]
             hn_futures = [executor.submit(self.collect_hacker_news, kw) for kw in keywords]
@@ -121,7 +138,7 @@ class SocialPredictionCollector:
         dedup_hn = {item['url']: item for item in all_hn}.values()
         
         return {
-            "polymarket": sorted(list(dedup_pm), key=lambda x: x['liquidity'], reverse=True),
+            "polymarket": sorted(list(dedup_pm), key=lambda x: x['volume24h'], reverse=True),
             "hacker_news": sorted(list(dedup_hn), key=lambda x: x['points'], reverse=True)
         }
 

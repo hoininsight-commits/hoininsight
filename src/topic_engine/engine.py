@@ -198,7 +198,7 @@ class TopicSelectionEngine:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
     def _create_social_candidates(self, raw_data):
-        """[IS-105] 소셜/예측 시장 데이터를 독립적인 토픽 후보로 생성"""
+        """[v12.0 Fast-Hunter] 소셜/예측 시장 데이터를 독립적인 토픽 후보로 생성"""
         social_data = raw_data.get("social", {})
         inner_data = social_data.get("data", {}).get("data", {})
         hn_posts = inner_data.get("hacker_news", [])
@@ -206,10 +206,13 @@ class TopicSelectionEngine:
         
         candidates = []
         
-        # 1. HN High Momentum (150 Points 이상)
+        # 1. HN High Momentum (70 Points 이상으로 완화, Breaking 가중치)
         for post in hn_posts:
             points = post.get("points", 0)
-            if points >= 150:
+            is_breaking = post.get("is_breaking", False)
+            
+            if points >= 70 or is_breaking:
+                recency = 1.2 if is_breaking else 1.0
                 candidates.append({
                     "candidate_id": f"soc_hn_{post.get('objectID', 'na')}",
                     "candidate_type": "SOCIAL",
@@ -218,29 +221,34 @@ class TopicSelectionEngine:
                     "core_facts": [
                         {"name": "hn_points", "value": points, "mismatch": False}
                     ],
-                    "recency_score": 1.0,
-                    "evidence_score": min(1.0, points / 400.0), # 400P 이상이면 만점
-                    "structure_axis": "flow", # 소셜은 자본/정보의 흐름
-                    "why_now": f"Hacker News에서 {points} Points 획득하며 기술 커뮤니티 화두 부상"
+                    "recency_score": recency,
+                    "evidence_score": min(1.0, points / 300.0), # 300P 이상이면 만점
+                    "structure_axis": "flow",
+                    "is_breaking": is_breaking,
+                    "why_now": f"Hacker News에서 {points} Points 획득하며 커뮤니티 급상승"
                 })
         
-        # 2. Polymarket High Volume (거래량 기준)
+        # 2. Polymarket High Volume (24시간 거래량 기준)
         for bet in poly_odds:
-            vol = bet.get("volume", 0)
-            if vol > 500000: # $500k 이상 거래
+            vol = bet.get("volume24h", 0)
+            is_breaking = bet.get("is_breaking", False)
+            
+            if vol > 100000 or is_breaking: # $100k 이상 거래로 완화
+                recency = 1.2 if is_breaking else 1.0
                 candidates.append({
                     "candidate_id": f"soc_poly_{bet.get('title', 'na')[:10]}",
                     "candidate_type": "PRED_MARKET",
                     "event": f"[PRED_MARKET] {bet.get('title')}",
                     "entity": ["Prediction"],
                     "core_facts": [
-                        {"name": "yes_prob", "value": bet.get("yes_probability"), "mismatch": False},
-                        {"name": "volume", "value": f"${vol/1000000:.1f}M", "mismatch": False}
+                        {"name": "yes_prob", "value": bet.get("outcomes", [{}])[0].get("probability", 0), "mismatch": False},
+                        {"name": "volume24h", "value": f"${vol/1000:.0f}k", "mismatch": False}
                     ],
-                    "recency_score": 1.0,
-                    "evidence_score": min(1.0, vol / 5000000.0), # $5M 이상이면 만점
+                    "recency_score": recency,
+                    "evidence_score": min(1.0, vol / 1000000.0), # $1M 이상이면 만점
                     "structure_axis": "flow",
-                    "why_now": f"예측 시장에서 {vol/1000:.0f}k 달러 거래되며 자본의 베팅 집중"
+                    "is_breaking": is_breaking,
+                    "why_now": f"예측 시장에서 24시간 내 {vol/1000:.0f}k 달러 거래되며 자본 집중"
                 })
                 
         return candidates

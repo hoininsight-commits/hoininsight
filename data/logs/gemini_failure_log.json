@@ -1,17 +1,5 @@
 [
   {
-    "timestamp": "2026-04-21T15:05:03.583686",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-21T15:05:04.166716",
-    "agent": "DETECTOR",
-    "failure_type": "JSON_PARSE_ERROR",
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-04-21T15:05:04.457508",
     "agent": "DETECTOR",
     "failure_type": "JSON_PARSE_ERROR",
@@ -1195,6 +1183,18 @@
   },
   {
     "timestamp": "2026-04-25T09:37:13.652242",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:44:38.852358",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "CONTRACT_FAIL",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-25T09:45:06.139406",
     "agent": "AXIS_MATCHER",
     "failure_type": "CONTRACT_FAIL",
     "retry_count": 0
