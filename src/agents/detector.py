@@ -459,7 +459,9 @@ class DetectorAgent:
                 "why_now": [main.get("evaluation", {}).get("why_now_summary", "")],
                 "evidence_bundle": main.get("evidence_bundle", {}),
                 "mechanism": main.get("mechanism", "지표 간의 상관관계 변화 관측"),
-                "strength": main.get("final_score", 5.0) * 10
+                "strength": main.get("final_score", 5.0) * 10,
+                "stocks": main.get("stocks", []),
+                "stocks_analysis": main.get("stocks_analysis", {})
             })
             
             # fact_pack 저장 (WriterAgent 연동 핵심)
@@ -477,7 +479,13 @@ class DetectorAgent:
             decision_dir.mkdir(parents=True, exist_ok=True)
             decision_card = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
-                "MAIN": selection["MAIN"],
+                "MAIN": {
+                    **selection["MAIN"],
+                    "stocks": selection["MAIN"].get("stocks", []),
+                    "stocks_analysis": selection["MAIN"].get("stocks_analysis", {}),
+                    "arbiter_rationale": selection["MAIN"].get("arbiter_rationale", "N/A"),
+                    "hunter_insight": selection["MAIN"].get("hunter_insight", "N/A")
+                },
                 "SECONDARY": selection.get("SECONDARY", []),
                 "EARLY": selection.get("EARLY", [])
             }

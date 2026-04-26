@@ -17,13 +17,17 @@ class TopicArbiter:
         if not candidates:
             return {"MAIN": None, "SECONDARY": [], "EARLY": []}
 
-        # 1. 후보군 텍스트 요약 (v15.0 Strategist Upgrade)
+        # 1. 후보군 텍스트 요약 및 Intent Boost 적용 (v15.1 Strategist Upgrade)
         candidate_summary = []
         for i, cand in enumerate(candidates):
             source = cand.get("source", "UNKNOWN")
-            score = cand.get("final_score", 0)
-            # [STRATEGIST] 소스와 디테일을 포함하여 판단 근거 강화
-            candidate_summary.append(f"[{i}] [S:{source}] [Score:{score:.2f}] {cand.get('event')}")
+            event = cand.get("event", "")
+            
+            # [STRATEGIST] Intent Boost: 권위자(백악관, 연준 등)의 의도 감지 시 가중치 부여
+            boost = self._apply_intent_boost(event)
+            score = cand.get("final_score", 0) * boost
+            
+            candidate_summary.append(f"[{i}] [S:{source}] [Score:{score:.2f}] {event}")
 
         candidate_list_str = "\n".join(candidate_summary)
         
@@ -37,8 +41,8 @@ class TopicArbiter:
 [SELECTION PHILOSOPHY]
 1. **Regime Change (체제 변화)**: 연준 인선, 정부 정책 기조 변화 등 '판의 규칙'이 바뀌는 토픽을 최우선하라.
 2. **Industrial Bottleneck (산업의 급소)**: 파업, 공급망 붕괴, 에너지 부족 등 실물 경제의 병목 현상을 포착하라.
-3. **Policy Intent (정책적 의도)**: 백악관이나 국가 기관의 장기 예산 집행 계획을 단순 뉴스보다 높게 평가하라.
-4. **Early Signal (예측 시장)**: Polymarket 등 예측 시장의 급격한 확률 변동은 3일 뒤의 헤드라인이 될 확률이 높다.
+3. **Policy Intent (정책적 의도)**: 백악관(White House), 연준(Fed), NSC 등 국가급 예산/정책 결정 기관의 '의도'가 담긴 토픽을 최우선하라.
+4. **Dominance & Chain Reaction (파급력)**: 단순히 오늘의 뉴스가 아니라, 향후 3일~일주일간 시장의 돈의 흐름을 바꿀 '도미노 효과'가 있는가?
 
 [OUTPUT JSON FORMAT]
 {{
@@ -92,3 +96,10 @@ class TopicArbiter:
         except Exception as e:
             print(f"  ❌ [Arbiter] Runtime Error: {e}")
             return None
+    def _apply_intent_boost(self, text: str) -> float:
+        """권위자 키워드 감지 시 가중치 반환"""
+        authority_keywords = ["백악관", "NSC", "연준", "Fed", "파월", "옐런", "국방부", "공시", "DART", "정부 정책"]
+        for kw in authority_keywords:
+            if kw in text:
+                return 2.0  # 강력한 의도가 담긴 경우 2배 가산
+        return 1.0

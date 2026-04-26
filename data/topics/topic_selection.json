@@ -2,12 +2,12 @@
   "MAIN": {
     "candidate_id": "cacd88cb",
     "candidate_type": "HYBRID",
-    "event": "글로벌 겹악재 속 K-증시, '노동發 병목'과 '환율 역풍' 이중고 직면",
+    "event": "삼성전자 호실적 뒤편의 그림자: 노란봉투법發 줄파업, K-물류 마비 넘어 투자 심리 위협",
     "entity": [
-      "최악의 시기",
-      "deep_detail",
       "2026-04-24",
-      "폭주"
+      "폭주",
+      "deep_detail",
+      "최악의 시기"
     ],
     "core_facts": [
       {
@@ -26,7 +26,7 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "why_now_gate": {
       "recent_change": true,
       "market_reaction_started": true,
@@ -39,7 +39,7 @@
     "final_score": 0.92,
     "evaluation": {
       "candidate_id": "cacd88cb",
-      "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
       "why_now_gate": {
         "recent_change": true,
         "market_reaction_started": true,
@@ -47,7 +47,7 @@
         "passed": true
       },
       "explainability_score": 10.0,
-      "why_now_summary": "Detected significant 미국-이란 지정학적 긴장 및 에너지 시장 변동성 shift with Z-score 1.26",
+      "why_now_summary": "Detected significant 미국 정치 및 정책 변화 (특히 트럼프 관련) shift with Z-score 1.26",
       "selection_reason": "High intensity movement in sp500 (0.55%)",
       "tier_decision_reason": "Rule-based scoring",
       "sector_hints": [
@@ -62,8 +62,11 @@
       "topic_decision": "PROMOTE"
     },
     "tier": "MAIN/TIER_1",
+    "arbiter_rationale": "1. **산업의 급소 (Industrial Bottleneck):** 삼성전자는 대한민국 경제의 핵심이자 글로벌 반도체 및 IT 공급망의 심장부입니다. 노조의 파업 움직임, 특히 이재용 회장 자택 앞 시위까지 이어진 '폭주'는 단순한 노사 분규를 넘어 국가 경제 전체의 '산업의 급소'를 건드리는 심각한 병목 현상입니다.\n2. **파급력 (Dominance & Chain Reaction):** [11]에서 경고하듯, 삼성전자 파업은 '수십조 손실'과 '회복 불가'라는 극단적인 파급 효과를 예고합니다. 이는 KOSPI 시장의 급락은 물론, 글로벌 반도체 공급망 교란, 인플레이션 압력 가중 등 전방위적인 도미노 효과를 일으킬 것입니다.\n3. **체제 변화 (Regime Change) & 정책적 의도 (Policy Intent)의 간접적 반영:** [13]에서 언급된 '노란봉투법' 발 줄파업 공포는 단순히 삼성만의 문제가 아니라, 노동 정책 및 법규 변화가 가져올 수 있는 광범위한 산업계의 '체제 변화' 리스크를 보여줍니다. 삼성 사태는 이러한 정책적 변화의 시험대가 될 수 있습니다.\n4. **시급성 및 지배력:** '이재용 집 앞까지'라는 표현은 사태의 심각성과 임박한 위기감을 고조시킵니다. 3일 뒤 시장은 이 삼성 사태의 전개 방향에 따라 극심한 변동성을 보이며, 다른 어떤 이슈보다도 투자자들의 이목을 집중시킬 것입니다.",
+    "hunter_insight": "이 이슈는 3일 뒤 시장에 '패닉 셀링'과 '불확실성 증폭'이라는 충격을 줄 것입니다. 삼성전자 주가는 물론, 반도체 관련주, IT 섹터 전반에 걸쳐 매도 압력이 거세질 수 있습니다. 또한, [13]에서 보듯 유통, 물류 등 다른 산업으로의 파업 확산 가능성이 제기되면서 국내 증시 전반의 투자 심리가 급격히 위축될 것입니다. 정부의 개입 여부와 노사 협상 진전 상황에 따라 단기적인 시장의 방향이 결정될 것이며, 최악의 경우 외국인 투자자들의 '코리아 엑소더스'를 촉발할 수도 있는 중대한 리스크로 부상할 것입니다. 이는 단순한 기업 이슈가 아닌, 국가 경제의 근간을 흔들 수 있는 '블랙 스완'급 이벤트로 시장을 지배할 것입니다.",
+    "tier_reason": "arbiter_selected",
     "evidence_bundle": {
-      "axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+      "axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
       "market_reaction": {
         "main_asset": "sp500",
         "intensity": 0.55,
@@ -72,8 +75,8 @@
       "related_events": [
         "[NEWS] [2026-04-24] 결국 이재용 집 앞까지…\"최악의 시기\" 경고에도 노조 '폭주' - [deep_detail] 영업이익 15 5800억 | ",
         "[NEWS] [2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7% - [deep_detail] 7% 3% 7% | the company reiterated its full-year forecast for earnings and sales.",
-        "[NEWS] [2026-04-24] \"단골도 발길 돌렸다\"…화물연대 파업에 불똥 맞은 CU '한숨' [현장+] - [deep_detail] 9% 6% 0% | ",
-        "[NEWS] [2026-04-24] Bettors on Kalshi now see Warsh likely confirmed by mid-May after DOJ drops Powell probe - [deep_detail] 86% 30% 86% | bettors on the platform now see an 86% chance that warsh's nomination is confirmed by the u.s. senate by may 15."
+        "[NEWS] [2026-04-24] \"단골도 발길 돌렸다\"…화물연대 파업에 불똥 맞은 CU '한숨' [현장+] - ",
+        "[NEWS] [2026-04-24] \"CU 다음은 우리?\"…유통업계, 노란봉투법發 줄파업 공포 - "
       ],
       "social_prediction": [],
       "supporting_assets": [],
@@ -84,20 +87,127 @@
         "earnings/tech → investor sentiment → capital flow → equity positive"
       ]
     },
-    "why_hypothesis": "현재 S&P500의 완만한 상승세(0.55)는 P&G와 같은 필수 소비재 기업의 견조한 실적과 연준의 매파적 인사(Warsh) 확정 가능성으로 인한 인플레이션 억제 기대감이 일부 반영된 결과로 보이지만, 이는 글로벌 매크로 환경의 복합적인 위험을 완전히 상쇄하지 못하고 있다. 특히 미국-이란 지정학적 긴장으로 인한 에너지 시장 변동성 확대, 그리고 한국 내부의 대기업(삼성) 및 물류(화물연대) 파업 리스크는 국내 생산성 저하와 공급망 교란을 심화시켜, 수출 중심의 한국 경제에 심각한 이중고를 안겨줄 수 있다. 시장은 현재 개별 기업의 펀더멘털과 통화정책 기대감을 선별적으로 반영하고 있으나, 잠재된 거시적 악재와 한국 특유의 병목 현상에 대한 과소평가가 이루어지고 있을 가능성이 높다.",
-    "mechanism": "1.  **미국-이란 지정학적 긴장 및 에너지 시장 변동성:** 중동발 불확실성은 국제 유가 상승 압력으로 작용하며 글로벌 인플레이션을 자극한다. 이는 기업의 생산 및 운송 비용 증가로 이어져 마진 압박을 가하고, 소비자의 실질 구매력을 약화시킨다.\n2.  **연준 통화정책 기조 변화 조짐 (Warsh 확정 가능성):** 매파적 인사의 연준 이사 합류는 향후 연준의 긴축 기조를 강화하거나 장기화할 가능성을 시사한다. 이는 미국 국채 금리 상승과 달러 강세를 유발하여 신흥국으로부터의 자본 유출 압력을 높이고, 한국과 같은 수출 중심국에는 환율 변동성 확대 및 자금 조달 비용 상승이라는 부담을 안긴다.\n3.  **국내 노동 시장 불안 (삼성 노조 및 화물연대 파업):** 한국의 핵심 산업(반도체, 전자)의 생산 거점인 삼성의 노조 파업은 글로벌 공급망에 직접적인 차질을 야기할 수 있으며, 화물연대 파업은 CU 사례에서 보듯 국내 물류망을 마비시켜 생산된 제품의 유통을 막고 내수 경제에도 악영향을 미친다. 이는 기업의 영업이익 감소는 물론, 생산 비용 증가와 공급 부족으로 인한 국내 물가 상승을 부추기는 요인으로 작용한다.\n4.  **P&G 실적 호조:** 필수 소비재 기업의 견조한 실적은 인플레이션 환경 속에서도 소비자들이 기본적인 소비를 유지하고 있으며, 해당 기업들이 가격 전가 능력을 갖추고 있음을 보여준다. 이는 S&P500의 하방 경직성을 지지하는 요인이지만, 광범위한 경기 회복보다는 특정 부문의 방어적 성격을 시사한다.",
+    "why_hypothesis": "글로벌 소비 시장은 P&G의 견조한 실적과 SP500의 상승에서 엿볼 수 있듯이 일정 부분 회복세를 보이거나 안정적인 흐름을 유지하고 있습니다. 이는 전반적인 글로벌 경제의 긍정적 신호로 해석될 수 있습니다. 그러나 한국 내부에서는 삼성전자의 사상 최대 영업이익(15조 5800억 원)이라는 호실적에도 불구하고 노조의 강경 투쟁이 심화되고, 화물연대 파업으로 인한 물류 대란이 현실화되는 등 심각한 국내 리스크가 부상하고 있습니다. 특히 '노란봉투법' 발효 우려에 따른 유통업계의 줄파업 공포는 한국 경제의 고질적인 공급망 병목 현상과 투자 심리 위축을 가속화할 잠재적 요인으로 작용하고 있습니다. 이는 글로벌 시장의 긍정적 흐름과 대비되는 한국만의 독특하고 이중적인 리스크 상황을 형성하며, 향후 국내 증시의 '코리아 디스카운트' 심화 요인이 될 수 있습니다.",
+    "mechanism": "1.  **글로벌 훈풍과 국내 역풍의 대비**: P&G의 호실적 발표와 SP500의 안정적 상승은 글로벌 소비재 시장의 견고함과 전반적인 시장 심리의 회복세를 시사합니다. 이는 미국 정치 및 정책 변화(트럼프 관련)라는 거시적 불확실성 속에서도 기업 실적을 바탕으로 한 단기적인 안정감을 제공하고 있습니다. 반면 한국에서는 삼성전자의 압도적인 실적에도 불구하고 노조의 강경 대응이 이재용 회장 자택 시위까지 이어지는 등 노사 갈등이 격화되고 있습니다.\n2.  **화물연대 파업발 물류 마비 및 확산 우려**: 화물연대 파업은 CU와 같은 유통업계에 직접적인 물류 차질을 야기하며 국내 물류 시스템의 취약성을 여실히 드러냈습니다. 이는 단순히 특정 기업의 문제가 아니라, '노란봉투법' 시행 시 유통 및 제조업 전반으로 줄파업이 확산될 수 있다는 공포를 확산시키며 한국 경제의 핵심 동맥이라 할 수 있는 공급망 전반에 심각한 병목 현상을 초래할 잠재적 위험을 내포하고 있습니다.\n3.  **구조적 비용 상승 및 생산성 저하**: 이러한 노동 리스크는 기업들의 생산 비용을 증가시키고, 예측 불가능한 공급망 교란을 야기하여 전반적인 생산성 저하로 이어질 수 있습니다. 이는 한국 기업들의 글로벌 경쟁력 약화는 물론, 국내외 투자자들의 한국 시장에 대한 매력도를 떨어뜨려 '코리아 디스카운트'를 심화시키는 요인으로 작용할 것입니다.",
     "hypothesis_confidence": "상",
-    "predictive_chain": "*   **1단계 (생산/물류 병목 심화):** 국내 대기업 노조 파업 및 화물연대 파업의 장기화 또는 확산으로 한국 핵심 산업의 생산 및 수출 차질이 심화될 것이다. 이는 글로벌 공급망에 직접적인 충격을 주어 특정 부품(예: 반도체)의 공급 부족 현상을 가속화하고, 국내 기업들의 생산 비용과 재고 관리 부담을 가중시킬 것이다.\n*   **2단계 (글로벌 공급망 재편 가속화 및 비용 전가 압력):** 국내 생산 및 물류 병목 현상이 고착화되면서, 글로벌 기업들은 한국 의존도를 낮추기 위해 공급망 다변화 및 생산 기지 이전을 가속화할 것이다. 동시에 에너지 가격 상승과 국내 인건비 상승 압력은 한국 기업들의 제품 가격 인상을 불가피하게 만들고, 이는 최종 소비재 물가 상승으로 이어져 글로벌 인플레이션을 더욱 부추길 것이다.\n*   **3단계 (한국 경제 성장 둔화 및 자본 유출 확대):** 수출 경쟁력 약화와 국내 소비 위축, 기업 투자 부진이 복합적으로 작용하여 한국 경제의 성장률이 둔화될 것이다. 연준의 긴축 기조와 원화 약세가 맞물리면서 외국인 자본의 이탈이 가속화되고, 이는 국내 주식 및 채권 시장의 변동성을 확대하며 한국 증시에 하방 압력을 가중시킬 것이다."
+    "predictive_chain": "1.  **1단계**: 한국 내 주요 제조업(반도체, 자동차, 조선 등) 및 물류 산업 전반에서 노조의 집단 행동이 강화되고, '노란봉투법'의 영향으로 줄파업이 현실화될 가능성이 증대됩니다. 이는 단순히 임금 인상을 넘어 기업 경영 전반에 대한 노조의 영향력 확대로 이어질 수 있습니다.\n2.  **2단계**: 이로 인해 국내 생산 및 유통 과정에서 심각한 병목 현상과 지연이 발생하며, 기업들의 생산 차질, 납기 지연, 물류 비용 급증 등 전반적인 공급망 교란이 가속화됩니다. 특히 수출 중심 경제인 한국의 글로벌 경쟁력에 직접적인 타격을 주며, 해외 바이어들의 한국산 제품에 대한 불신을 키울 수 있습니다.\n3.  **3단계**: 노동 시장의 불확실성 증대와 공급망 리스크 심화는 국내외 투자자들의 한국 시장에 대한 투자 심리를 위축시키고, 신규 투자 유치 난항은 물론, 장기적으로는 국내 기업들의 해외 생산 기지 이전 검토, 자동화 투자 가속화 등 한국 경제의 구조적 변화 압력으로 작용하며 '코리아 디스카운트'를 고착화시킬 수 있습니다.",
+    "stocks_analysis": {
+      "bottleneck": "인력 의존도를 극도로 낮춘 무결점 생산 및 물류 시스템 구축 역량",
+      "sectors": [
+        {
+          "name": "산업용 로봇 및 자동화 솔루션",
+          "strategic_reason": "삼성전자의 호실적에도 불구하고 국내 노조 리스크와 '노란봉투법' 발효 우려는 한국 기업들에게 인력 의존적인 생산 및 물류 시스템이 얼마나 취약한지를 여실히 보여주고 있습니다. 이는 단순한 비용 절감을 넘어, 예측 불가능한 파업으로 인한 생산 및 공급망 마비를 막기 위한 '생존 전략'으로서 자동화 투자를 필연적으로 가속화시킬 것입니다. 글로벌 시장의 긍정적 흐름 속에서 한국 기업들이 경쟁력을 유지하기 위해서는 국내 리스크를 상쇄할 수 있는 구조적 혁신이 필수적이며, 그 핵심은 '무인화'와 '자동화'에 있습니다. 이는 일시적 트렌드가 아닌, 한국 경제의 고질적 문제 해결을 위한 구조적 전환의 시작점입니다.",
+          "stocks": [
+            {
+              "name": "LS Electric",
+              "type": "2차 전략주",
+              "linkage": "노조 리스크 심화와 '노란봉투법' 발효 우려는 기업들에게 인력 의존도를 낮추고 생산 및 물류 시스템의 안정성을 확보해야 한다는 강력한 동기를 부여합니다. LS Electric은 스마트 팩토리 구축에 필수적인 PLC, 인버터, 서보 시스템 등 핵심 자동화 장비와 통합 솔루션을 제공하며, 이는 기업들의 자동화 투자 확대와 직결됩니다. 특히, 예측 불가능한 파업으로 인한 생산 차질을 최소화하기 위한 '무인화' 및 '자동화' 수요는 LS Electric의 매출(Top-line)을 필연적으로 증가시킬 것입니다. 또한, 고부가가치 엔지니어링 및 시스템 통합 역량을 요구하는 솔루션 판매는 경쟁사 대비 높은 기술 진입 장벽을 형성하여 안정적인 이익률(Margin)을 유지하거나 개선할 수 있는 기반이 됩니다.",
+              "moat": "LS Electric은 전력 시스템부터 자동화 장비, 스마트 팩토리 플랫폼까지 산업 자동화의 전 과정을 아우르는 통합 솔루션을 제공합니다. 이는 고객사가 여러 벤더를 통해 복잡하게 시스템을 구축할 필요 없이, 단일 공급자를 통해 안정적이고 효율적인 시스템을 구축할 수 있게 하여 대체 불가능한 경쟁 우위를 제공합니다. 국내 산업 자동화 시장에서 오랜 기간 축적된 기술력과 시장 지배력을 바탕으로, 주요 대기업 및 중견기업에 대한 깊은 이해와 레퍼런스를 보유하고 있으며, AI 기반의 스마트 팩토리 제어 시스템 및 에너지 효율 관리 솔루션은 미래 지향적인 기업들에게 필수적인 요소입니다. 이들의 제품은 공장 운영의 핵심 인프라를 구성하므로, 기업들이 자동화 투자를 확대할수록 그 수요는 더욱 견고해질 수밖에 없습니다."
+            }
+          ]
+        }
+      ],
+      "overall_strategy": "대중은 삼성전자의 호실적 뒤편에 드리운 노조 리스크와 물류 마비 공포에 휩싸여 한국 경제 전반의 침체를 우려할 것이다. 그러나 자본은 냉정하게 이 위기를 '구조적 변화의 가속화'로 읽어낼 것이다. 인력 의존도를 낮추고 생산성을 극대화하는 '무인화' 및 '자동화' 솔루션은 더 이상 선택이 아닌 생존의 필수가 된다. 대중이 공포에 질려 한국 시장을 외면할 때, 우리는 그 공포가 촉발할 '산업의 급소'를 꿰뚫어 보고, 그 급소를 해결할 수 있는 독점적 기술력을 가진 기업에 자본이 필연적으로 흘러들어 갈 것임을 예측해야 한다. '코리아 디스카운트'는 특정 산업에 대한 프리미엄으로 전환될 것이다."
+    },
+    "stocks": [
+      {
+        "name": "LS Electric",
+        "reason": "노조 리스크 심화와 '노란봉투법' 발효 우려는 기업들에게 인력 의존도를 낮추고 생산 및 물류 시스템의 안정성을 확보해야 한다는 강력한 동기를 부여합니다. LS Electric은 스마트 팩토리 구축에 필수적인 PLC, 인버터, 서보 시스템 등 핵심 자동화 장비와 통합 솔루션을 제공하며, 이는 기업들의 자동화 투자 확대와 직결됩니다. 특히, 예측 불가능한 파업으로 인한 생산 차질을 최소화하기 위한 '무인화' 및 '자동화' 수요는 LS Electric의 매출(Top-line)을 필연적으로 증가시킬 것입니다. 또한, 고부가가치 엔지니어링 및 시스템 통합 역량을 요구하는 솔루션 판매는 경쟁사 대비 높은 기술 진입 장벽을 형성하여 안정적인 이익률(Margin)을 유지하거나 개선할 수 있는 기반이 됩니다."
+      }
+    ]
   },
-  "SECONDARY": [],
+  "SECONDARY": [
+    {
+      "candidate_id": "44102db8",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-25] 수십조 손실은 시작일 뿐…\"삼성전자 파업하면 회복 불가\"",
+      "entity": [
+        "2026-04-25",
+        "삼성전자 파업하면 회복 불가"
+      ],
+      "core_facts": [
+        {
+          "name": "kospi",
+          "value": 6475.6299,
+          "change": 4.58,
+          "z_score": 1.41
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "SUPPLY_SHOCK"
+      ],
+      "recency_score": 1.0,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+      "tier": "SECONDARY/TIER_2"
+    },
+    {
+      "candidate_id": "5ff1bbf6",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-24] \"CU 다음은 우리?\"…유통업계, 노란봉투법發 줄파업 공포",
+      "entity": [
+        "2026-04-24",
+        "cu 다음은 우리?"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "SUPPLY_SHOCK"
+      ],
+      "recency_score": 1.0,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+      "tier": "SECONDARY/TIER_2"
+    }
+  ],
   "EARLY": [
+    {
+      "candidate_id": "f24c0d13",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-25] Defence stocks give back gains as investors buy rumour but sell war",
+      "entity": [
+        "2026-04-25"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "SUPPLY_SHOCK"
+      ],
+      "recency_score": 1.0,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+    },
     {
       "candidate_id": "d5e5eb16",
       "candidate_type": "HYBRID",
       "event": "[2026-04-23] Traders are betting on big moves in Intel on earnings",
       "entity": [
-        "deep_detail",
-        "2026-04-23"
+        "2026-04-23",
+        "deep_detail"
       ],
       "core_facts": [
         {
@@ -116,7 +226,7 @@
       "recency_score": 1.8,
       "evidence_score": 0.8,
       "is_mismatch": false,
-      "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
       "why_now_gate": {
         "recent_change": true,
         "market_reaction_started": true,
@@ -129,7 +239,7 @@
       "final_score": 0.92,
       "evaluation": {
         "candidate_id": "d5e5eb16",
-        "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+        "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
         "why_now_gate": {
           "recent_change": true,
           "market_reaction_started": true,
@@ -137,7 +247,7 @@
           "passed": true
         },
         "explainability_score": 10.0,
-        "why_now_summary": "Detected significant 미국-이란 지정학적 긴장 및 에너지 시장 변동성 shift with Z-score 1.26",
+        "why_now_summary": "Detected significant 미국 정치 및 정책 변화 (특히 트럼프 관련) shift with Z-score 1.26",
         "selection_reason": "High intensity movement in sp500 (0.55%)",
         "tier_decision_reason": "Rule-based scoring",
         "sector_hints": [
@@ -158,8 +268,8 @@
       "candidate_type": "HYBRID",
       "event": "[2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7%",
       "entity": [
-        "deep_detail",
-        "2026-04-24"
+        "2026-04-24",
+        "deep_detail"
       ],
       "core_facts": [
         {
@@ -178,7 +288,7 @@
       "recency_score": 1.8,
       "evidence_score": 0.8,
       "is_mismatch": false,
-      "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+      "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
       "why_now_gate": {
         "recent_change": true,
         "market_reaction_started": true,
@@ -191,7 +301,7 @@
       "final_score": 0.92,
       "evaluation": {
         "candidate_id": "572f2cd4",
-        "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+        "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
         "why_now_gate": {
           "recent_change": true,
           "market_reaction_started": true,
@@ -199,69 +309,7 @@
           "passed": true
         },
         "explainability_score": 10.0,
-        "why_now_summary": "Detected significant 미국-이란 지정학적 긴장 및 에너지 시장 변동성 shift with Z-score 1.26",
-        "selection_reason": "High intensity movement in sp500 (0.55%)",
-        "tier_decision_reason": "Rule-based scoring",
-        "sector_hints": [
-          "Macro",
-          "Finance"
-        ],
-        "impact_scope": "Sector",
-        "topic_fit_score": 10.0,
-        "market_impact_score": 10.0,
-        "theme_expandability": 8.0,
-        "flow_type": "NORMAL",
-        "topic_decision": "PROMOTE"
-      },
-      "tier": "EARLY/TIER_3"
-    },
-    {
-      "candidate_id": "cde6cd73",
-      "candidate_type": "HYBRID",
-      "event": "[2026-04-23] Comcast beats revenue, earnings expectations as broadband losses improve",
-      "entity": [
-        "deep_detail",
-        "2026-04-23"
-      ],
-      "core_facts": [
-        {
-          "name": "sp500",
-          "value": 7165.0801,
-          "change": 0.55,
-          "z_score": 1.26
-        }
-      ],
-      "expected_paths": [
-        "안정적 흐름 유지"
-      ],
-      "actual_paths": [
-        "EARNINGS"
-      ],
-      "recency_score": 1.8,
-      "evidence_score": 0.8,
-      "is_mismatch": false,
-      "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
-      "why_now_gate": {
-        "recent_change": true,
-        "market_reaction_started": true,
-        "not_fully_priced": true,
-        "passed": true
-      },
-      "explainability_score": 10.0,
-      "selection_reason": "High intensity movement in sp500 (0.55%)",
-      "tier_decision_reason": "Rule-based scoring",
-      "final_score": 0.92,
-      "evaluation": {
-        "candidate_id": "cde6cd73",
-        "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
-        "why_now_gate": {
-          "recent_change": true,
-          "market_reaction_started": true,
-          "not_fully_priced": true,
-          "passed": true
-        },
-        "explainability_score": 10.0,
-        "why_now_summary": "Detected significant 미국-이란 지정학적 긴장 및 에너지 시장 변동성 shift with Z-score 1.26",
+        "why_now_summary": "Detected significant 미국 정치 및 정책 변화 (특히 트럼프 관련) shift with Z-score 1.26",
         "selection_reason": "High intensity movement in sp500 (0.55%)",
         "tier_decision_reason": "Rule-based scoring",
         "sector_hints": [

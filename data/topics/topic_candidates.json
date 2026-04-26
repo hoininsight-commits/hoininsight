@@ -4,10 +4,10 @@
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] 결국 이재용 집 앞까지…\"최악의 시기\" 경고에도 노조 '폭주'",
     "entity": [
-      "최악의 시기",
-      "deep_detail",
       "2026-04-24",
-      "폭주"
+      "폭주",
+      "deep_detail",
+      "최악의 시기"
     ],
     "core_facts": [
       {
@@ -26,7 +26,7 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "f24c0d13",
@@ -52,15 +52,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d5e5eb16",
     "candidate_type": "HYBRID",
     "event": "[2026-04-23] Traders are betting on big moves in Intel on earnings",
     "entity": [
-      "deep_detail",
-      "2026-04-23"
+      "2026-04-23",
+      "deep_detail"
     ],
     "core_facts": [
       {
@@ -79,15 +79,15 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "572f2cd4",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7%",
     "entity": [
-      "deep_detail",
-      "2026-04-24"
+      "2026-04-24",
+      "deep_detail"
     ],
     "core_facts": [
       {
@@ -106,15 +106,15 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "cde6cd73",
     "candidate_type": "HYBRID",
     "event": "[2026-04-23] Comcast beats revenue, earnings expectations as broadband losses improve",
     "entity": [
-      "deep_detail",
-      "2026-04-23"
+      "2026-04-23",
+      "deep_detail"
     ],
     "core_facts": [
       {
@@ -133,15 +133,15 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "b0776091",
     "candidate_type": "HYBRID",
     "event": "[2026-04-23] American Airlines cuts 2026 earnings projections after surge in jet fuel",
     "entity": [
-      "deep_detail",
-      "2026-04-23"
+      "2026-04-23",
+      "deep_detail"
     ],
     "core_facts": [
       {
@@ -160,18 +160,188 @@
     "recency_score": 1.8,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "eddeed3b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-23] Southwest Airlines forecasts quarterly earnings below estimates on higher fuel",
+    "entity": [
+      "2026-04-23",
+      "deep_detail"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.8,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "f2150f57",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] United Airlines slashes 2026 forecast as fuel costs surge, but demand remains strong",
+    "entity": [
+      "2026-04-22",
+      "s first-quarter earnings topped wall street",
+      "deep_detail"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.8,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a501dd0a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] \"중동전쟁에 대외환경 급변…공급망 다변화·유연한 정책 필요\"",
+    "entity": [
+      "2026-04-26",
+      "기관투자자",
+      "중동전쟁에 대외환경 급변…공급망 다변화·유연한 정책 필요"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "SUPPLY_SHOCK"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "7509b8cb",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] '삼전닉스' 1분기 최대실적…'더살까 팔까' 고민하는 투자자들",
+    "entity": [
+      "000660",
+      "삼전닉스",
+      "더살까 팔까",
+      "2026-04-25",
+      "삼성전자",
+      "deep_detail",
+      "SK하이닉스",
+      "005930"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.8,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "326912a3",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] \"나도 억대 성과급?\"…취준생들 '삼성고시'에 우르르",
+    "entity": [
+      "나도 억대 성과급?",
+      "2026-04-26",
+      "삼성고시"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "44102db8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 수십조 손실은 시작일 뿐…\"삼성전자 파업하면 회복 불가\"",
+    "entity": [
+      "2026-04-25",
+      "삼성전자 파업하면 회복 불가"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "SUPPLY_SHOCK"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "f1ae2375",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] \"단골도 발길 돌렸다\"…화물연대 파업에 불똥 맞은 CU '한숨' [현장+]",
     "entity": [
-      "2026-04-24",
       "단골도 발길 돌렸다",
-      "한숨",
+      "2026-04-24",
       "현장+",
-      "deep_detail"
+      "한숨"
     ],
     "core_facts": [
       {
@@ -187,17 +357,69 @@
     "actual_paths": [
       "SUPPLY_SHOCK"
     ],
-    "recency_score": 1.8,
+    "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "5ff1bbf6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] \"CU 다음은 우리?\"…유통업계, 노란봉투법發 줄파업 공포",
+    "entity": [
+      "2026-04-24",
+      "cu 다음은 우리?"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "SUPPLY_SHOCK"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "7b1acfd4",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] The limits on Bessent’s Treasury swap lines",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "8684e182",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] Bettors on Kalshi now see Warsh likely confirmed by mid-May after DOJ drops Powell probe",
     "entity": [
-      "deep_detail",
       "2026-04-24"
     ],
     "core_facts": [
@@ -214,10 +436,10 @@
     "actual_paths": [
       "GEOPOLITICAL"
     ],
-    "recency_score": 1.8,
+    "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "a14ba87f",
@@ -243,15 +465,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "69ed00a2",
     "candidate_type": "HYBRID",
     "event": "[2026-04-21] Here's what to expect from Fed chair nominee Kevin Warsh's Senate hearing Tuesday",
     "entity": [
-      "s what to expect from fed chair nominee kevin warsh",
-      "2026-04-21"
+      "2026-04-21",
+      "s what to expect from fed chair nominee kevin warsh"
     ],
     "core_facts": [
       {
@@ -270,7 +492,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "4ebada95",
@@ -296,7 +518,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "17c334c6",
@@ -322,7 +544,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ef7d7297",
@@ -348,7 +570,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "2ab88021",
@@ -376,7 +598,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "19ed24ab",
@@ -402,7 +624,163 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "501ccb73",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-23] Trump administration in advanced talks for Spirit Airlines rescue package, sources say",
+    "entity": [
+      "2026-04-23"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e90bc5a0",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-21] UPS and FedEx have begun filing for some tariff refunds",
+    "entity": [
+      "2026-04-21"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6597641e",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] (3rd LD) Trump evacuated from White House correspondents' dinner; alleged shooter in detention",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8d5d1bdb",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] (2nd LD) Trump evacuated from White House correspondents' dinner; alleged shooter in detention",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "26e8b6a1",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] (LEAD) Trump evacuated from White House correspondents' dinner; alleged shooter in detention",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ca8e355b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] Trump evacuated from White House correspondents' dinner following loud bangs",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "b54dd17f",
@@ -428,7 +806,33 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "cd62ffec",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] Iran war hits pistachio supplies amid Dubai chocolate boom",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "SUPPLY_SHOCK"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "9676610b",
@@ -454,7 +858,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "58bf82cf",
@@ -480,7 +884,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "aa5d5c6a",
@@ -506,7 +910,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "cb71c3b8",
@@ -532,7 +936,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5dc279a7",
@@ -558,7 +962,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "2341f40b",
@@ -584,7 +988,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "2dfd1941",
@@ -610,7 +1014,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "7c8042b5",
@@ -636,7 +1040,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d0f208ae",
@@ -662,7 +1066,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "c8ee7371",
@@ -688,7 +1092,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5087c52a",
@@ -714,7 +1118,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d4afa6be",
@@ -740,7 +1144,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "9721e46f",
@@ -766,7 +1170,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5bb5b4a7",
@@ -792,7 +1196,195 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "d9b2ae47",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] US health secretary’s son launches investment fund tied to health movement",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "9d77edcc",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] The golden age of arbitrage has begun",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      },
+      {
+        "name": "gold",
+        "value": 4740.8999,
+        "change": -2.4,
+        "z_score": 0.22
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ad0cd501",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Asian refineries slash output as Iran crisis chokes crude supplies",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "SUPPLY_SHOCK"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "b9abc672",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Why do I have so much in UK equities?",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8928d4d8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] BP’s ‘relentless simplification’ drive sparks transparency concerns",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c7395305",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Collapsed Century Capital lacked approvals, administrators find",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6b5d7a6f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] ECB steps up its challenge to Visa and Mastercard",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "682e88bf",
@@ -818,7 +1410,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "9e69e3e4",
@@ -845,7 +1437,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "22af229b",
@@ -871,14 +1463,14 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "c4437eab",
+    "candidate_id": "0168194d",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] The aerospace and defense trade is taking investors deeper into space, and more ETFs are up for the mission",
+    "event": "[2026-04-25] The aerospace and defense trade is taking investors deeper into space, and more ETFs are up for the mission",
     "entity": [
-      "2026-04-24"
+      "2026-04-25"
     ],
     "core_facts": [
       {
@@ -897,7 +1489,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "4eea204e",
@@ -923,16 +1515,16 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "08b526c1",
     "candidate_type": "HYBRID",
     "event": "[2026-04-23] NYC Mayor Mamdani knocked Ken Griffin in pied-a-terre tax promo. His firm calls the move 'shameful'",
     "entity": [
+      "2026-04-23",
       "ignorance and disdain",
-      "shameful",
-      "2026-04-23"
+      "shameful"
     ],
     "core_facts": [
       {
@@ -951,7 +1543,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "551503db",
@@ -977,7 +1569,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5a4596d6",
@@ -1003,15 +1595,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "a39a5023",
     "candidate_type": "HYBRID",
     "event": "[2026-04-22] Bessent says 'many' U.S. allies have asked for currency swaps amid Iran war turbulence",
     "entity": [
-      "2026-04-22",
-      "many"
+      "many",
+      "2026-04-22"
     ],
     "core_facts": [
       {
@@ -1030,7 +1622,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "0a715fa8",
@@ -1056,7 +1648,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "dd1b36dc",
@@ -1082,15 +1674,14 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "e4a5c389",
+    "candidate_id": "172caf38",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] New York's pied-a-terre tax sets up legal fight over values",
+    "event": "[2026-04-20] AST SpaceMobile shares drop after its satellite is placed in wrong orbit by Bezos' Blue Origin",
     "entity": [
-      "s pied-a-terre tax sets up legal fight over values nyc",
-      "2026-04-24"
+      "2026-04-20"
     ],
     "core_facts": [
       {
@@ -1109,7 +1700,138 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "73b4a3b6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-19] AI startup Cursor in talks to raise $2 billion funding round at valuation of over $50 billion",
+    "entity": [
+      "2026-04-19"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "332283bc",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-19] Software stock dogs have joined market rally. There's a classic investing lesson in the rebound",
+    "entity": [
+      "2026-04-19"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "fc59a681",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-18] Here are 3 forces that drove a remarkable, record-setting week on Wall Street",
+    "entity": [
+      "2026-04-18"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6fb8e761",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] Forgotten no more: Generation X is driving beauty sales",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e4a5c389",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] New York's pied-a-terre tax sets up legal fight over values",
+    "entity": [
+      "2026-04-24",
+      "s pied-a-terre tax sets up legal fight over values nyc"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "1fe86372",
@@ -1135,7 +1857,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ec2bf9bc",
@@ -1161,7 +1883,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "f23e9f5e",
@@ -1187,15 +1909,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "c3580492",
     "candidate_type": "HYBRID",
     "event": "[2026-04-23] American Airlines CEO says merger with United would be 'bad for customers'",
     "entity": [
-      "bad for customers",
-      "2026-04-23"
+      "2026-04-23",
+      "bad for customers"
     ],
     "core_facts": [
       {
@@ -1214,7 +1936,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d6010346",
@@ -1240,7 +1962,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "cfefc8f6",
@@ -1266,7 +1988,375 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "771a3d32",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-23] Kevin Warsh’s wealth shows how top family office employees can cash in",
+    "entity": [
+      "2026-04-23"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "9b3e1807",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-23] Lululemon names former Nike exec Heidi O'Neill as new CEO",
+    "entity": [
+      "neill as new ceo lululemon announced on wednesday that it has chosen former nike executive heidi o",
+      "2026-04-23"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "27e347cf",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] BMW says it has no intention of dropping sedans, even as some rivals cut back",
+    "entity": [
+      "2026-04-22"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "3e820c0a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-23] RFK Jr. says he would support a potential ban on junk food TV ads",
+    "entity": [
+      "2026-04-23"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "df6d2ea8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] Rivian hits production milestone for R2 EV ahead of customer deliveries",
+    "entity": [
+      "2026-04-22"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "80c24789",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] Convenience store owner Yesway is stealing customers from fast-food chains, CEO says",
+    "entity": [
+      "yswy.",
+      "2026-04-22"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e30f01c1",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] Boeing CEO says 'all systems are go' to increase 737 production as company narrows loss",
+    "entity": [
+      "2026-04-22",
+      "all systems are go"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "7152a8b9",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-22] Best Buy names Jason Bonfig as new CEO, replacing Corie Barry in late October",
+    "entity": [
+      "2026-04-22"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c6c38ff6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-21] Amazon launches GLP-1 weight loss program, promising 'fast, convenient' access",
+    "entity": [
+      "fast, convenient",
+      "2026-04-21"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "b8e6c5a8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-21] Michael and Susan Dell to donate $750 million to UT Austin to fund new medical campus",
+    "entity": [
+      "2026-04-21"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "1877deb5",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] Russian delegation visits N. Korea for opening of museum honoring soldiers killed in Ukraine war",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "05cc6b0d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] HD Hyundai Heavy wins 2 U.S. Navy research projects",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "b5a571d5",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] OECD forecast S. Korea's potential growth outlook to hit record low 1.52 pct in late 2027",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "43981f2c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] (2nd LD) Lee Jin-sook says will not run for Daegu mayor",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "3e714bb3",
@@ -1292,7 +2382,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "9eae8939",
@@ -1318,7 +2408,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d82d38ac",
@@ -1344,7 +2434,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "a84b8638",
@@ -1370,7 +2460,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5aab9fbc",
@@ -1396,7 +2486,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "3c2d067b",
@@ -1422,7 +2512,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "52dd706a",
@@ -1448,7 +2538,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "8c1b5300",
@@ -1474,7 +2564,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "3fbd7d30",
@@ -1500,7 +2590,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "be9b159b",
@@ -1526,7 +2616,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "30228653",
@@ -1552,7 +2642,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "e4419755",
@@ -1578,7 +2668,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "38a9d7c0",
@@ -1604,15 +2694,94 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "5c951aae",
+    "candidate_id": "ef6fff20",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] 성남시, 분당 재건축 '주민제안 방식' 개선 추진",
+    "event": "[2026-04-24] Key U.S. negotiators to depart for Pakistan Saturday for talks with Iran: White House",
     "entity": [
-      "주민제안 방식",
-      "2026-04-25"
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "90776e39",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) S. Korea, U.S. making efforts toward 'normalization' amid U.S. intel curb controversy: Seoul official",
+    "entity": [
+      "normalization",
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "add46592",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Hegseth calls for allies' role in Strait of Hormuz, says 'time for free riding is over'",
+    "entity": [
+      "2026-04-24",
+      " role in strait of hormuz, says "
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "af48a32e",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Senior S. Korean, U.S. diplomats meet amid reported U.S. intel curb controversy",
+    "entity": [
+      "2026-04-24"
     ],
     "core_facts": [
       {
@@ -1631,14 +2800,41 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "d5d5308f",
+    "candidate_id": "5de1e3c1",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] GS건설, 서울 성동구 성수1지구 재개발 시공사로 선정",
+    "event": "[2026-04-24] Hegseth calls for allies' role in Strait of Hormuz, says 'time for free riding is over'",
     "entity": [
-      "2026-04-25"
+      "2026-04-24",
+      " role in strait of hormuz, says "
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "487e0775",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Lee returns from trip to India, Vietnam focused on economic ties, supply chain cooperation",
+    "entity": [
+      "2026-04-24"
     ],
     "core_facts": [
       {
@@ -1657,16 +2853,1015 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "10ecb987",
+    "candidate_id": "c3fd7f0b",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] [부고] 유병희(재정경제부 경제정책국장)씨 부친상",
+    "event": "[2026-04-24] Lee returns from trip to India, Vietnam focused on economic ties, supply chain cooperation",
     "entity": [
-      "2026-04-25",
-      "한국 증시",
-      "부고"
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "33cdd719",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Kidnapped S. Korean man rescued in Malaysia; 3 suspects also Koreans",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "2afd8c46",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Prosecution rejects arrest warrant request for Hybe chairman, calls for further review",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "96855252",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Prosecution rejects arrest warrant request for Hybe chairman, calls for further review",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "f8a5a52b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Yonhap News Summary",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "aa0429aa",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (2nd LD) Seoul shares take breather amid Middle East tensions",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "09d710f0",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Finance chief calls for biz sector innovation to sustain economic growth",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "72cdb6fd",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Woori Financial Q1 net falls 2.9 pct",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e0b6334b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Seoul shares take breather amid Middle East tensions",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a77c86dc",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] S. Korea secures over 74 mln barrels of crude oil for May: presidential aide",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "03c002dd",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Nearly 6 in 10 nationals support Lee's 'peaceful coexistence' policy with N. Korea",
+    "entity": [
+      "2026-04-24",
+      "s "
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "1b6f2563",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Seoul shares take breather amid Middle East tensions",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "5607f938",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (URGENT) Seoul shares end flat amid Middle East tensions",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "cfbcefa6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Hyundai unveils 1st Ioniq model for China market",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "29e32663",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Hana Financial Q1 net hits record high in Q1",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a961548c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Vice trade minister discusses cooperation in supply chain, strategic industries with Polish counterpart",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "0ee3638c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Kia Q1 net profit drops 23.5 pct on U.S. tariffs, weak currency",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c9667e79",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] Coupang denies lobbying U.S. to pressure S. Korea",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e0eb5840",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] (LEAD) Hyundai Rotem Q1 net income up 29 pct to 202.7 bln won",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a256a8e9",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] KB시세로 서울 강남구 아파트값 2개월째 하락…이달 낙폭 확대",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "4d2bba83",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 이억원, 인도·베트남 'QR 결제연동' 추진 등 금융외교",
+    "entity": [
+      "2026-04-26",
+      "qr 결제연동"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "679ac443",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 직장갑질119 \"직장인 35% 노동절에 유급휴무 보장 못 받아\"(종합)",
+    "entity": [
+      "2026-04-26",
+      "직장인 35% 노동절에 유급휴무 보장 못 받아"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ea48966d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] '4대그룹 유일 공채' 삼성, 올해 상반기 GSAT 실시",
+    "entity": [
+      "4대그룹 유일 공채",
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "abf88159",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 직장갑질119 \"직장인 35%, 노동절에 유급휴무 보장 못 받아\"",
+    "entity": [
+      "2026-04-26",
+      "직장인 35%, 노동절에 유급휴무 보장 못 받아"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "485aa09f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 공무원 시험 출제하는 고시센터 가보니…\"열악해 섭외도 어려워\"",
+    "entity": [
+      "2026-04-26",
+      "열악해 섭외도 어려워"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "cd83122b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 보건복지부, 사회복지시설 청년인턴 479명 모집",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "1e7038b7",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 3.2조원 설탕 담합 적발한 공정위 직원 2명에 1천500만원 포상",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "5755ffbe",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] \"고유가로 무역수지 200억달러 줄 수도…반도체에 흑자는 지속\"",
+    "entity": [
+      "2026-04-26",
+      "고유가로 무역수지 200억달러 줄 수도…반도체에 흑자는 지속"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "02f49148",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 생계비 250만원 예금 보호 강화…공모펀드 핵심위험 표준안 마련",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "dd0b1f79",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] '고유가 지원금' 1차 지급 내일부터…취약계층 우선 대상(종합)",
+    "entity": [
+      "2026-04-26",
+      "고유가 지원금"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e66320a7",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] '고유가 지원금' 신청 용도라면 주민등록 등·초본 수수료 면제",
+    "entity": [
+      "2026-04-26",
+      "고유가 지원금"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "dfc5be7d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 기업 89% \"시정기회 없이 수사하는 산업안전 감독 우려\"",
+    "entity": [
+      "시정기회 없이 수사하는 산업안전 감독 우려",
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6ab1e786",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 지역기업 인력난 해소 위해 아시아 엘리트 공학도 유치한다",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "2b4adf9b",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 관악 신림4구역, 신속통합기획 확정…32층 992세대 공급",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "03aaa951",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 강원도, 지역산업맞춤형 일자리 공모 선정…국비 45억원 확보",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6ecd9f8d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 농식품부, 농어촌 맞춤형 과제 공모…상생협력기금 연계",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "4140a6c8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] [게시판] 우리·KB·신한자산신탁, 안양 도심복합개발사업 협약",
+    "entity": [
+      "2026-04-26",
+      "게시판"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "9ffda1d9",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 농식품부 '가정의 달' 한우 할인행사…\"등심·국거리 저렴하게\"",
+    "entity": [
+      "가정의 달",
+      "2026-04-26",
+      "등심·국거리 저렴하게"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "1385d3ef",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 중동발 물류난에 해상·항공 총력 지원…중기 수출길 터준다",
+    "entity": [
+      "2026-04-26"
     ],
     "core_facts": [
       {
@@ -1685,16 +3880,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "1448b7b6",
+    "candidate_id": "a8f16f77",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] [게임위드인] 게임업계 '삼중고'…중소 개발사부터 무너진다",
+    "event": "[2026-04-26] 중동 전쟁에 5월 제조업 전망 '흐림'…2개월째 기준치 하회",
     "entity": [
-      "게임위드인",
-      "2026-04-25",
-      "삼중고"
+      "2026-04-26",
+      "흐림"
     ],
     "core_facts": [
       {
@@ -1708,19 +3902,19 @@
       "안정적 흐름 유지"
     ],
     "actual_paths": [
-      "UNCATEGORIZED"
+      "GEOPOLITICAL"
     ],
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "bf2214bb",
+    "candidate_id": "d7a9a97c",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] [연합뉴스 이 시각 헤드라인] - 10:30",
+    "event": "[2026-04-26] [연합뉴스 이 시각 헤드라인] - 10:30",
     "entity": [
-      "2026-04-25",
+      "2026-04-26",
       "연합뉴스 이 시각 헤드라인"
     ],
     "core_facts": [
@@ -1740,14 +3934,93 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "3cc22dfa",
+    "candidate_id": "f55417db",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] 재배면적 2년새 62% 증가 김해 블루베리 본격 수확…품질 향상",
+    "event": "[2026-04-26] 용인시, 6개 공공기관 상반기 정규직 직원 36명 통합 채용",
     "entity": [
-      "2026-04-25"
+      "2026-04-26",
+      "기관투자자"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "266b7c4d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 삼성전자 히트펌프·에어컨, 이탈리아 소비자 만족도 1위",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ee28274f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 산업기술진흥원, 한-베트남 핵심광물 전략 포럼 개최",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "297a2388",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 호반건설, 서울 면목동서 1천500억원 가로주택정비사업 수주",
+    "entity": [
+      "2026-04-26"
     ],
     "core_facts": [
       {
@@ -1766,14 +4039,123 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "e31d18a9",
+    "candidate_id": "4642436e",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] 부산시의회, 미분양 아파트 사면 취득세 50% 감면 추진",
+    "event": "[2026-04-26] 삼성물산, 신반포19·25차 수주전에 \"균형잡힌 마스터플랜 제안\"",
     "entity": [
-      "2026-04-25"
+      "2026-04-26",
+      "균형잡힌 마스터플랜 제안"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "01ffe72f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 정부 농협 개혁안에 조합장들 반발 지속…\"농민 체감 대책 빠져\"",
+    "entity": [
+      "2026-04-26",
+      "농민 체감 대책 빠져"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c75a75cf",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 무보, 방산 중소기업의 묶인 자금 풀어 수출 견인",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "29ae381c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 법원 \"에릭슨 통신장비 소프트웨어, 상품 아닌 기술…과세 정당\"",
+    "entity": [
+      "2026-04-26",
+      "에릭슨 통신장비 소프트웨어, 상품 아닌 기술…과세 정당"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a9f95dd0",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] [게시판] 우리은행, 지방 기업 '찾아가는 환율 세미나'",
+    "entity": [
+      "2026-04-26",
+      "찾아가는 환율 세미나",
+      "게시판"
     ],
     "core_facts": [
       {
@@ -1792,15 +4174,16 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "4630f0ec",
+    "candidate_id": "55ff54fa",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] [다음주 경제] 중동전쟁 이후 실물·체감경기는…지표 잇단 공개",
+    "event": "[2026-04-25] 농기계 면세유 '전쟁 직격탄'…36% 급등에 영농철 생산비 '비상'(종합)",
     "entity": [
-      "다음주 경제",
-      "2026-04-25"
+      "전쟁 직격탄",
+      "2026-04-25",
+      "비상"
     ],
     "core_facts": [
       {
@@ -1819,12 +4202,92 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "4c7038f2",
+    "candidate_id": "fd714373",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] 횡성군, 일자리 안심공제로 근로자 자산 형성 돕는다",
+    "event": "[2026-04-25] 한국저작권위-국립중앙도서관, 실무 중심 저작권 교육 협력",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8d1033d6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 하나은행, 베트남투자개발은행·해외인프라개발공사와 개발 협력",
+    "entity": [
+      "2026-04-25",
+      "외국인투자자"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "dc384b97",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 강원도, '힘내라 소비' 특별전…고물가 속 소비 활력 지원",
+    "entity": [
+      "힘내라 소비",
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "97098fd1",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 7월부터 경기 하이브리드차 지역개발채권 매입 의무",
     "entity": [
       "2026-04-25"
     ],
@@ -1845,14 +4308,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "23619983",
+    "candidate_id": "a38a81b3",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] 김해 진영복합휴게소서 25∼26일 우수 농특산물 직거래 장터",
+    "event": "[2026-04-25] 올해 봄나들이 어디로…쏘카 \"경주 대릉원 인기\"",
     "entity": [
-      "2026-04-24"
+      "경주 대릉원 인기",
+      "2026-04-25"
     ],
     "core_facts": [
       {
@@ -1871,18 +4335,123 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "c63c934c",
+    "candidate_id": "7ec3b499",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] [금주핫템] 코웨이 '스퀘어핏 공기청정기'·K2 '플로잉'",
+    "event": "[2026-04-25] '아프리카 최대' 에티오피아 허브 공항 건설…美 지원 나서",
     "entity": [
-      "2026-04-24",
-      "금주핫템",
-      "플로잉",
-      "021240",
-      "스퀘어핏 공기청정기"
+      "2026-04-25",
+      "아프리카 최대"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8ec4c28d",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 이달 반등장 속 개미는 14조 '팔자'…역대 최대 순매도 '눈앞'",
+    "entity": [
+      "팔자",
+      "눈앞",
+      "2026-04-25",
+      "개인투자자"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "63bb2962",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 불장에 작년 시총상위 상장사 '미성년 보유가치' 3조원에 육박",
+    "entity": [
+      "미성년 보유가치",
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "42f7b52a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 종전 기대로 진정되던 채권시장 또 출렁…GDP호조에 금리인상론 경계",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6aad939a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 경기도, 하남교산 통합공공임대주택 1천100세대 건설계획 승인",
+    "entity": [
+      "2026-04-25"
     ],
     "core_facts": [
       {
@@ -1901,17 +4470,149 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "3d6e7def",
+    "candidate_id": "d7688176",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] [신상잇슈] 풀무원 '나또효소'·청정원 '피클링소스'",
+    "event": "[2026-04-25] [마켓인사이트] 이란 사태속에 맞은 '슈퍼위크'…韓증시 향방은",
     "entity": [
-      "나또효소",
-      "신상잇슈",
-      "2026-04-24",
-      "피클링소스"
+      "마켓인사이트",
+      "2026-04-25",
+      "슈퍼위크"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "55275f21",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] [반려동물] 장례식장 10년 새 4배 늘었지만…입지 제한·정책 과제 여전",
+    "entity": [
+      "2026-04-25",
+      "반려동물"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "POLICY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "653f58a2",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 고유가에 정유사 '어닝 서프라이즈' 전망…유가 하락 땐 손실",
+    "entity": [
+      "2026-04-25",
+      "어닝 서프라이즈"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "73e667be",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 서울 아파트 전세 '수요>공급' 수준 2021년 6월 이후 최고",
+    "entity": [
+      "2026-04-25",
+      "수요>공급"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a9de1a25",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 결국 부모 찬스? 서울에 집산 30대, 증여·상속으로 1조 조달",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ede9a1e6",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 장애인고용 안하는게 이득?…추가비용 월 124만원, 부담금 턱밑",
+    "entity": [
+      "2026-04-25"
     ],
     "core_facts": [
       {
@@ -1930,16 +4631,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "f61a1216",
+    "candidate_id": "9955a9d6",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] \"입는 로봇이 농사, AI가 병해충 진단\"…농진청, 'K농업' 대전환",
+    "event": "[2026-04-26] 22살에 창업한 AI 기업 CEO \"창업은 인생 베팅…쉽게 보면 안돼\"",
     "entity": [
-      "k농업",
-      "2026-04-24",
-      "입는 로봇이 농사, ai가 병해충 진단"
+      "2026-04-26",
+      "창업은 인생 베팅…쉽게 보면 안돼"
     ],
     "core_facts": [
       {
@@ -1958,15 +4658,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "963adf1e",
+    "candidate_id": "fb6734fb",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] [부동산캘린더] 벚꽃 분양 막바지…전국 3천700가구 공급",
+    "event": "[2026-04-26] \"기대했는데\"…혼다 자율주행차 출시 연기",
     "entity": [
-      "부동산캘린더",
-      "2026-04-24"
+      "2026-04-26",
+      "기대했는데"
     ],
     "core_facts": [
       {
@@ -1985,16 +4685,17 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "ec448aa2",
+    "candidate_id": "b916c2cc",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-24] [샷!] \"계좌이체 따위 모르는 남자\"",
+    "event": "[2026-04-26] 최태원의 'AI 승부수' 통했다…SK하이닉스 '쾌거'",
     "entity": [
-      "샷!",
-      "계좌이체 따위 모르는 남자",
-      "2026-04-24"
+      "SK하이닉스",
+      "2026-04-26",
+      "ai 승부수",
+      "쾌거"
     ],
     "core_facts": [
       {
@@ -2010,21 +4711,320 @@
     "actual_paths": [
       "UNCATEGORIZED"
     ],
-    "recency_score": 1.1,
+    "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "972a101e",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 갤럭시 카메라로 산호초 보호…삼성전자, 국제 시상식서 수상",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "137222c5",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 방한 관광객 2000만 코앞인데…\"서울 호텔 최소 5년은 방 부족”",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "d9b3bb09",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] SK하이닉스, 'IEEE 기업혁신상' 첫 수상…\"HBM으로 AI 이끌어\"",
+    "entity": [
+      "SK하이닉스",
+      "2026-04-26",
+      "hbm으로 ai 이끌어",
+      "ieee 기업혁신상"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ca9b6faf",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 수출 기업, 선박운송 20% 할인받고 항공운송도 특가로",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "402612d8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 현대모비스, 장학금 내걸고 인재 싹쓸이…R&D 인력 7800명 넘어",
+    "entity": [
+      "2026-04-26"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8fa8d20e",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] 현대그린푸드, 美 스테이크 전문점 '텍사스 로드하우스' 서울서 첫 오픈",
+    "entity": [
+      "2026-04-26",
+      "텍사스 로드하우스"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "15bcf23f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] '한 마리 3만원' 눈앞…치킨업계 연매출 6000억 시대 진입",
+    "entity": [
+      "2026-04-26",
+      "한 마리 3만원"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c5c107f4",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-26] '5월 특수' 잡아라...롯데는 '스타워즈', 이마트 '포켓몬' 내세워",
+    "entity": [
+      "5월 특수",
+      "2026-04-26",
+      "포켓몬",
+      "스타워즈"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "915f86ac",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 알파고의 아버지·이세돌 10년 만에 재회",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "49c3e48a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] 韓 잠재성장률 내년 사상 최저 기록할 전망",
+    "entity": [
+      "2026-04-25"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "9f433d0a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-25] \"한 대 뽑으시죠\"…'삼전닉스' 돈잔치에 수입차 딜러들 신났다 [인더스토리]",
+    "entity": [
+      "삼전닉스",
+      "인더스토리",
+      "삼성전자",
+      "2026-04-25",
+      "SK하이닉스",
+      "한 대 뽑으시죠"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "519d5a06",
     "candidate_type": "HYBRID",
     "event": "[2026-04-25] \"이렇게 가다간 다 뺏길 판\"…삼전닉스 호황에도 '경고'",
     "entity": [
-      "2026-04-25",
-      "SK하이닉스",
-      "경고",
       "이렇게 가다간 다 뺏길 판",
-      "삼성전자"
+      "삼성전자",
+      "2026-04-25",
+      "경고",
+      "SK하이닉스"
     ],
     "core_facts": [
       {
@@ -2043,19 +5043,19 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "196c718c",
     "candidate_type": "HYBRID",
     "event": "[2026-04-25] \"부모님께 9억 증여받는데\"…'삼전닉스' 베팅한 부부의 고민 [돈 버는 법 아끼는 법]",
     "entity": [
-      "2026-04-25",
-      "SK하이닉스",
-      "삼전닉스",
       "돈 버는 법 아끼는 법",
+      "삼전닉스",
       "부모님께 9억 증여받는데",
-      "삼성전자"
+      "2026-04-25",
+      "삼성전자",
+      "SK하이닉스"
     ],
     "core_facts": [
       {
@@ -2074,16 +5074,16 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "5df22395",
+    "candidate_id": "9d39f37e",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-25] '이름·직업·나이' 모두 비밀…SNS 후기 폭발한 '핫플' 정체 [트렌드+]",
+    "event": "[2026-04-25] \"부어라 마셔라 너무 싫어요\"…요즘 2030 인기라는 '핫플' [트렌드+]",
     "entity": [
-      "이름·직업·나이",
       "트렌드+",
       "2026-04-25",
+      "부어라 마셔라 너무 싫어요",
       "핫플"
     ],
     "core_facts": [
@@ -2103,17 +5103,17 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "cb3c2e17",
     "candidate_type": "HYBRID",
     "event": "[2026-04-25] \"이번달 월급 다 뜯겼네\"…수백만원 '건보료 폭탄' 맞은 이유 [세테크]",
     "entity": [
-      "이번달 월급 다 뜯겼네",
       "건보료 폭탄",
+      "2026-04-25",
       "세테크",
-      "2026-04-25"
+      "이번달 월급 다 뜯겼네"
     ],
     "core_facts": [
       {
@@ -2132,16 +5132,16 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "f6ac08ab",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] \"데려간 여자가 만족해야\"…'수백억 잭팟' 장사 천재의 비결 [권용훈의 직업불만족(族)]",
     "entity": [
-      "권용훈의 직업불만족(族)",
-      "데려간 여자가 만족해야",
       "2026-04-24",
+      "데려간 여자가 만족해야",
+      "권용훈의 직업불만족(族)",
       "수백억 잭팟"
     ],
     "core_facts": [
@@ -2161,15 +5161,15 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5e7e50ef",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] [포토] LG전자, 美서 동물보호 캠페인",
     "entity": [
-      "포토",
-      "2026-04-24"
+      "2026-04-24",
+      "포토"
     ],
     "core_facts": [
       {
@@ -2188,7 +5188,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "c119a608",
@@ -2215,7 +5215,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "3277e8ce",
@@ -2241,7 +5241,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "351cb1ff",
@@ -2268,7 +5268,7 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "6f633493",
@@ -2295,16 +5295,16 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ba193bcf",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] \"중동 전쟁보다 무섭다\" 산업장관의 경고…韓제조업 '사형 선고' 피할 방법은",
     "entity": [
+      "2026-04-24",
       "사형 선고",
-      "중동 전쟁보다 무섭다",
-      "2026-04-24"
+      "중동 전쟁보다 무섭다"
     ],
     "core_facts": [
       {
@@ -2323,41 +5323,40 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
-  },
-  {
-    "candidate_id": "e3530d02",
-    "candidate_type": "HYBRID",
-    "event": "[2026-04-24] 건보료 폭탄 피하려면…소득관리 이렇게 [퇴근길 30초 경제]",
-    "entity": [
-      "퇴근길 30초 경제",
-      "2026-04-24"
-    ],
-    "core_facts": [
-      {
-        "name": "sp500",
-        "value": 7165.0801,
-        "change": 0.55,
-        "z_score": 1.26
-      }
-    ],
-    "expected_paths": [
-      "안정적 흐름 유지"
-    ],
-    "actual_paths": [
-      "UNCATEGORIZED"
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.8,
-    "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "49b25e03",
     "candidate_type": "HYBRID",
     "event": "[2026-04-24] 증권 질주에…5대 금융 1분기 순익 6.2조 '신기록'",
     "entity": [
-      "신기록",
+      "2026-04-24",
+      "신기록"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "2898500a",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] LCC, 中 노선 늘려 고유가 위기 돌파",
+    "entity": [
       "2026-04-24"
     ],
     "core_facts": [
@@ -2377,7 +5376,483 @@
     "recency_score": 1.0,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "39ceb732",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 효성重, 베트남에 고압전동기 공장 건설",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "f541c31c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] LG전자 'MZ 소개팅' 주선 나선 이유",
+    "entity": [
+      "2026-04-24",
+      "mz 소개팅"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8525eede",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 강·바다 위 데이터센터…삼성重, 美공략 나선다",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "ed7f6607",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 기업 뿌리까지 쳐냈다…구조조정은 히타치처럼",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "838822bc",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 현대차그룹 8조 투입…위례에 AI 허브 건설",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "29927085",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 성역 없는 사업재편 뒤엔 '시장의 채찍질'",
+    "entity": [
+      "2026-04-24",
+      "시장의 채찍질"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "a84ec80e",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 조총 만들던 日 도시, AI 전초기지로 진화",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "c396c7ad",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 웰니스 열풍에 H&B 제2 전성기",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "82e356d8",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 무신사, 패션 장학생 팝업 열었다",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "fa903e33",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 외국인이 다이소에서 쓸어담는 아이템은",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "3e493c98",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] '런치 플레이션' 부담에…직장인들, 햄버거 먹는다",
+    "entity": [
+      "2026-04-24",
+      "런치 플레이션"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "8cf6699f",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 美·유럽, 중국차 장벽 높일 때…'한국판 IRA'에선 전기차 제외 위기",
+    "entity": [
+      "한국판 ira",
+      "2026-04-24",
+      "기아"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "d1cc05f5",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 3.3조 매출 테슬라, 韓 산업 기여는 미미",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "4400cf35",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 현대차, 아이오닉 V 첫 공개…\"中서 재기할 것\"",
+    "entity": [
+      "中서 재기할 것",
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "63a6c19c",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 김정관 장관 \"M.AX 경쟁은 생존 건 전쟁\"",
+    "entity": [
+      "2026-04-24",
+      "m.ax 경쟁은 생존 건 전쟁"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "GEOPOLITICAL"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "6d5457f7",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] KB금융, 서울창조경제혁신센터 지원",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e959a968",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 대전·대구·광주·울산을 '창업도시'로…스타트업에 최대 3.5억",
+    "entity": [
+      "2026-04-24",
+      "창업도시"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "e92d2332",
+    "candidate_type": "HYBRID",
+    "event": "[2026-04-24] 신세계百, 베트남서 K뷰티 유망 브랜드 수출 지원",
+    "entity": [
+      "2026-04-24"
+    ],
+    "core_facts": [
+      {
+        "name": "sp500",
+        "value": 7165.0801,
+        "change": 0.55,
+        "z_score": 1.26
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "UNCATEGORIZED"
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "df06df7a",
@@ -2403,7 +5878,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "8f9f0330",
@@ -2429,7 +5904,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "34546a4e",
@@ -2455,7 +5930,7 @@
     "recency_score": 1.5,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "8edd2d0e",
@@ -2481,7 +5956,7 @@
     "recency_score": 1.5,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "99f4eb65",
@@ -2507,7 +5982,7 @@
     "recency_score": 1.5,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "2756e66b",
@@ -2533,7 +6008,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "474d4cf6",
@@ -2559,7 +6034,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "7f5a3bc4",
@@ -2585,7 +6060,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "f2ff5f70",
@@ -2611,7 +6086,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "1e5f80a4",
@@ -2637,7 +6112,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "fc1c2c47",
@@ -2663,33 +6138,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
-  },
-  {
-    "candidate_id": "03b57890",
-    "candidate_type": "HYBRID",
-    "event": "[이오플로우] [기재정정]최대주주변경을수반하는주식담보제공계약체결              ",
-    "entity": [
-      "이오플로우"
-    ],
-    "core_facts": [
-      {
-        "name": "kospi",
-        "value": 6475.6299,
-        "change": 4.58,
-        "z_score": 1.41
-      }
-    ],
-    "expected_paths": [
-      "안정적 흐름 유지"
-    ],
-    "actual_paths": [
-      "EARNINGS"
-    ],
-    "recency_score": 1.1,
-    "evidence_score": 0.8,
-    "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ab82ebc9",
@@ -2715,7 +6164,33 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "03b57890",
+    "candidate_type": "HYBRID",
+    "event": "[이오플로우] [기재정정]최대주주변경을수반하는주식담보제공계약체결              ",
+    "entity": [
+      "이오플로우"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "EARNINGS"
+    ],
+    "recency_score": 1.1,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ff4b92d3",
@@ -2741,7 +6216,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "ac4d4d25",
@@ -2767,7 +6242,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "5ec1d2e5",
@@ -2793,7 +6268,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "db133f84",
@@ -2819,7 +6294,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "0d9162ba",
@@ -2845,33 +6320,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
-  },
-  {
-    "candidate_id": "5507dff3",
-    "candidate_type": "HYBRID",
-    "event": "[IPARK현대산업개발] [기재정정]단일판매ㆍ공급계약체결              ",
-    "entity": [
-      "IPARK현대산업개발"
-    ],
-    "core_facts": [
-      {
-        "name": "kospi",
-        "value": 6475.6299,
-        "change": 4.58,
-        "z_score": 1.41
-      }
-    ],
-    "expected_paths": [
-      "안정적 흐름 유지"
-    ],
-    "actual_paths": [
-      "LIQUIDITY"
-    ],
-    "recency_score": 1.1,
-    "evidence_score": 0.8,
-    "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "8944b2f8",
@@ -2897,7 +6346,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "7222d358",
@@ -2923,7 +6372,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "e2636c2d",
@@ -2949,7 +6398,33 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
+  },
+  {
+    "candidate_id": "5507dff3",
+    "candidate_type": "HYBRID",
+    "event": "[IPARK현대산업개발] [기재정정]단일판매ㆍ공급계약체결              ",
+    "entity": [
+      "IPARK현대산업개발"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6475.6299,
+        "change": 4.58,
+        "z_score": 1.41
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.1,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "d5908dc1",
@@ -2975,7 +6450,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "cf70c078",
@@ -3001,7 +6476,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "4ca31ea7",
@@ -3027,7 +6502,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "3a570648",
@@ -3053,7 +6528,7 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "2da5c4de",
@@ -3079,12 +6554,12 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "83dfda33",
+    "candidate_id": "d6b1dd22",
     "candidate_type": "HYBRID",
-    "event": "[뉴로메카] 주권매매거래정지              (무상증자)",
+    "event": "[뉴로메카] 주요사항보고서(유무상증자결정)",
     "entity": [
       "뉴로메카"
     ],
@@ -3105,21 +6580,21 @@
     "recency_score": 1.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
-    "candidate_id": "2bc398c9",
+    "candidate_id": "9f9dd75f",
     "candidate_type": "DATA",
-    "event": "GOLD 5일 누적 약세 추세 (-2.79%)",
+    "event": "GOLD 5일 누적 약세 추세 (-2.40%)",
     "entity": [
       "Market"
     ],
     "core_facts": [
       {
         "name": "gold",
-        "value": 4722.2998,
-        "change": -2.79,
-        "z_score": 0.03
+        "value": 4740.8999,
+        "change": -2.4,
+        "z_score": 0.22
       }
     ],
     "expected_paths": [
@@ -3131,7 +6606,7 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "7b7bfd6d",
@@ -3157,7 +6632,7 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "1f89f4e8",
@@ -3183,7 +6658,7 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "211f5825",
@@ -3209,7 +6684,7 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성"
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3221,15 +6696,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 2275,
+        "value": 2285,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 2275 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 2285 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3241,15 +6716,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 2170,
+        "value": 2171,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 2170 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 2171 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3261,15 +6736,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1942,
+        "value": 2038,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1942 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 2038 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3281,15 +6756,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1550,
+        "value": 1559,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1550 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1559 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3301,15 +6776,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1463,
+        "value": 1470,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1463 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1470 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3321,15 +6796,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1442,
+        "value": 1444,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1442 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1444 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3341,15 +6816,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1155,
+        "value": 1158,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1155 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1158 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3361,15 +6836,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1093,
+        "value": 1101,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1093 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1101 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3381,15 +6856,15 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1043,
+        "value": 1044,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1043 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1044 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
@@ -3401,35 +6876,335 @@
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 1002,
+        "value": 1005,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 1002 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 1005 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_hn_na",
     "candidate_type": "SOCIAL",
-    "event": "[SOCIAL_HOT] The insider trading suspicions looming over Trump's presidency",
+    "event": "[SOCIAL_HOT] Meta to start capturing employee mouse movements, keystrokes for AI training",
     "entity": [
       "Community"
     ],
     "core_facts": [
       {
         "name": "hn_points",
-        "value": 302,
+        "value": 793,
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
     "evidence_score": 1.0,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "Hacker News에서 302 Points 획득하며 커뮤니티 급상승"
+    "why_now": "Hacker News에서 793 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Atlassian enables default data collection to train AI",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 604,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 604 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] AI Resistance: some recent anti-AI stuff that’s worth discussing",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 387,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 387 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Deezer says 44% of songs uploaded to its platform daily are AI-generated",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 366,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 366 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Tell HN: I'm sick of AI everything",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 339,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 339 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Scoring Show HN submissions for AI design patterns",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 330,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 1.0,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 330 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Airline worker arrested after sharing photos of bomb damage in WhatsApp group",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 286,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.9533333333333334,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 286 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] A Roblox cheat and one AI tool brought down Vercel's platform",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 283,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.9433333333333334,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 283 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] MeshCore development team splits over trademark dispute and AI-generated code",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 277,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.9233333333333333,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 277 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] U.S. soldier charged with using classified info to profit from prediction market",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 251,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.8366666666666667,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 251 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] South Korea police arrest man for posting AI photo of runaway wolf",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 234,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.78,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 234 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Scores decline again for 13-year-old students in reading and mathematics (2023)",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 209,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.6966666666666667,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 209 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Tariffs Raised Consumers' Prices, but the Refunds Go Only to Businesses",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 168,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.56,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 168 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Ask HN: How to solve the cold start problem for a two-sided marketplace?",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 149,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.49666666666666665,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 149 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] America's Geothermal Breakthrough",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 96,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.32,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 96 Points 획득하며 커뮤니티 급상승"
+  },
+  {
+    "candidate_id": "soc_hn_na",
+    "candidate_type": "SOCIAL",
+    "event": "[SOCIAL_HOT] Only one side will be the true successor to MS-DOS – Windows 2.x",
+    "entity": [
+      "Community"
+    ],
+    "core_facts": [
+      {
+        "name": "hn_points",
+        "value": 75,
+        "mismatch": false
+      }
+    ],
+    "recency_score": 1.0,
+    "evidence_score": 0.25,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
+    "is_breaking": false,
+    "why_now": "Hacker News에서 75 Points 획득하며 커뮤니티 급상승"
   },
   {
     "candidate_id": "soc_poly_MegaETH ma",
@@ -3441,95 +7216,20 @@
     "core_facts": [
       {
         "name": "yes_prob",
-        "value": 86.5,
+        "value": 85.5,
         "mismatch": false
       },
       {
         "name": "volume24h",
-        "value": "$559k",
+        "value": "$222k",
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
-    "evidence_score": 0.5593036175480001,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "evidence_score": 0.22178375244299992,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "예측 시장에서 24시간 내 559k 달러 거래되며 자본 집중"
-  },
-  {
-    "candidate_id": "soc_poly_Trump anno",
-    "candidate_type": "PRED_MARKET",
-    "event": "[PRED_MARKET] Trump announces end of military operations against Iran by ...?",
-    "entity": [
-      "Prediction"
-    ],
-    "core_facts": [
-      {
-        "name": "yes_prob",
-        "value": 6.5,
-        "mismatch": false
-      },
-      {
-        "name": "volume24h",
-        "value": "$547k",
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.5467251376710007,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
-    "is_breaking": false,
-    "why_now": "예측 시장에서 24시간 내 547k 달러 거래되며 자본 집중"
-  },
-  {
-    "candidate_id": "soc_poly_Trump out ",
-    "candidate_type": "PRED_MARKET",
-    "event": "[PRED_MARKET] Trump out as President by April 30?",
-    "entity": [
-      "Prediction"
-    ],
-    "core_facts": [
-      {
-        "name": "yes_prob",
-        "value": 0.2,
-        "mismatch": false
-      },
-      {
-        "name": "volume24h",
-        "value": "$494k",
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.4936044607420001,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
-    "is_breaking": false,
-    "why_now": "예측 시장에서 24시간 내 494k 달러 거래되며 자본 집중"
-  },
-  {
-    "candidate_id": "soc_poly_Will Trump",
-    "candidate_type": "PRED_MARKET",
-    "event": "[PRED_MARKET] Will Trump visit China by...?",
-    "entity": [
-      "Prediction"
-    ],
-    "core_facts": [
-      {
-        "name": "yes_prob",
-        "value": 0.4,
-        "mismatch": false
-      },
-      {
-        "name": "volume24h",
-        "value": "$168k",
-        "mismatch": false
-      }
-    ],
-    "recency_score": 1.0,
-    "evidence_score": 0.16825766024599992,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
-    "is_breaking": false,
-    "why_now": "예측 시장에서 24시간 내 168k 달러 거래되며 자본 집중"
+    "why_now": "예측 시장에서 24시간 내 222k 달러 거래되며 자본 집중"
   },
   {
     "candidate_id": "soc_poly_What will ",
@@ -3546,14 +7246,14 @@
       },
       {
         "name": "volume24h",
-        "value": "$100k",
+        "value": "$112k",
         "mismatch": false
       }
     ],
     "recency_score": 1.0,
-    "evidence_score": 0.10040358159100002,
-    "structure_axis": "미국-이란 지정학적 긴장 및 에너지 시장 변동성",
+    "evidence_score": 0.11237062144700007,
+    "structure_axis": "미국 정치 및 정책 변화 (특히 트럼프 관련)",
     "is_breaking": false,
-    "why_now": "예측 시장에서 24시간 내 100k 달러 거래되며 자본 집중"
+    "why_now": "예측 시장에서 24시간 내 112k 달러 거래되며 자본 집중"
   }
 ]

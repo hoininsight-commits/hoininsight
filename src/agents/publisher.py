@@ -52,9 +52,10 @@ class PublisherAgent:
                     "mechanism": main.get("mechanism", ""),
                     "hypothesis_confidence": main.get("hypothesis_confidence", ""),
                     "is_mismatch": main.get("is_mismatch", False),
-                    "stocks": main.get("stocks", [])
+                    "stocks": main.get("stocks", []),
+                    "candidate_id": main.get("candidate_id", "")
                 }
-                print(f"  [DEBUG] Loaded Topic Selection MAIN with {len(data['signal']['stocks'])} stocks")
+                print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
         
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
@@ -284,17 +285,29 @@ class PublisherAgent:
                 
                 # 메인 신호 토픽 확인 (v2.0 대응: event와 topic 모두 체크)
                 selected_title = ""
+                selected_id = ""
                 if signal:
                     selected_title = signal.get("event", signal.get("topic", ""))
+                    selected_id = signal.get("candidate_id", "")
                 else:
                     print("  ⚠️ [PUBLISHER] No MAIN signal found. Dashboard will show empty state.")
                 
                 for i, cand in enumerate(all_candidates):
                     cand_title = cand.get("event", cand.get("topic", ""))
-                    is_winner = cand_title == selected_title and selected_title != ""
+                    cand_id = cand.get("candidate_id", "")
+                    
+                    # [FIX] ID가 있으면 ID로 매칭, 없으면 제목으로 매칭
+                    if selected_id and cand_id:
+                        is_winner = cand_id == selected_id
+                        if is_winner:
+                            print(f"  [DEBUG] Winner Found by ID: {cand_id}")
+                    else:
+                        is_winner = cand_title == selected_title and selected_title != ""
+                        if is_winner:
+                            print(f"  [DEBUG] Winner Found by Title: {cand_title}")
                     
                     if i < 3: # 첫 3개만 로깅
-                        print(f"  [DEBUG] Processing cand {i}: title='{cand_title}', winner={is_winner}")
+                        print(f"  [DEBUG] Processing cand {i}: title='{cand_title}', id='{cand_id}', selected_id='{selected_id}', winner={is_winner}")
                     
                     # 스크립트 본문 로드 (메인 토픽일 경우에만 전문 로드)
                     script_body = f"[{cand.get('anomaly_type', '탐지')}] {cand.get('why_anomalous')}"
@@ -329,7 +342,9 @@ class PublisherAgent:
                         # Why Hypothesis Layer (v2.0)
                         "why_hypothesis": cand.get("why_hypothesis", ""),
                         "mechanism": cand.get("mechanism", ""),
-                        "confidence": cand.get("hypothesis_confidence", cand.get("confidence", ""))
+                        "confidence": cand.get("hypothesis_confidence", cand.get("confidence", "")),
+                        # [v15.1] Stock Analysis Layer
+                        "stocks": cand.get("stocks", signal.get("stocks", []) if is_winner else [])
                     }
                     content_pack[tier].append(processed)
             elif signal:

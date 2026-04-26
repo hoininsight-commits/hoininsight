@@ -50,6 +50,9 @@ class TopicRanker:
             if cand.get("candidate_type") in ["SOCIAL", "PRED_MARKET"]:
                 social_bonus = 0.4  # 강력한 소셜 우선 가중치 (지표를 압도할 수 있도록)
             
+            # [v12.3] Agnostic Fatigue Check (Similarity-based)
+            selection_title = cand.get("event", "")
+            
             # [NEW] Intelligent Policy Catalyst Bonus (v12.7)
             # 키워드만 보는 것이 아니라, Gemini가 분석한 '시장 영향력'이 높을 때만 가중치 부여
             policy_bonus = 0.0

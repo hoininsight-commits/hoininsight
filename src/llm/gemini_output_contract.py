@@ -40,6 +40,10 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
         # 방송 원고 에이전트는 제목과 스크립트가 핵심
         return "script" in data or "title" in data
 
+    if agent == "STOCK_ANALYST":
+        # 종목 분석가는 섹터와 종목 데이터가 핵심
+        return "sectors" in data
+
     if agent == "QUALITY_GATE":
         # 품질 검증 에이전트는 점수와 근거가 핵심 (설명 필드 유연성 확보)
         return "total_score" in data or "rationale" in data or "explanation" in data or "hook_score" in data
