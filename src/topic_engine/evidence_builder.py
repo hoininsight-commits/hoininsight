@@ -54,7 +54,8 @@ class EvidenceBuilder:
             )
             
             if is_match:
-                detail = f"[{source}] {e.get('event')} - {summary}"
+                link = e.get('link', '')
+                detail = f"[{source}] {e.get('event')} - {summary} ({link})"
                 related_events.append(detail)
             
             if len(related_events) >= 4:

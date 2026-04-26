@@ -24,7 +24,7 @@ class PublisherAgent:
 
     def load_today_data(self) -> dict:
         """오늘 생성된 모든 데이터 로드"""
-        data = {}
+        data = {"date": f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}"}
 
         def safe_load_json(path: Path):
             try:
@@ -56,7 +56,8 @@ class PublisherAgent:
                     "stocks_analysis": main.get("stocks_analysis", {}),
                     "is_mismatch": main.get("is_mismatch", False),
                     "stocks": main.get("stocks", []),
-                    "candidate_id": main.get("candidate_id", "")
+                    "candidate_id": main.get("candidate_id", ""),
+                    "evidence_bundle": main.get("evidence_bundle", {})
                 }
                 print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
         
@@ -593,17 +594,19 @@ class PublisherAgent:
         if weekly_map:
             weekly_block = f"\n📅 [주간 전략 지도: {weekly_map.get('grand_narrative', 'N/A')}]\n"
             weekly_block += f"💡 서사: {weekly_map.get('narrative_description', 'N/A')[:100]}...\n"
-            weekly_block += f"🏺 역사적 전례: {weekly_map.get('historical_parallel', {}).get('period', 'N/A')}\n"
+            weekly_block += f"🏺 역사적 전례 ({weekly_map.get('historical_parallel', {}).get('date', 'N/A')}): {weekly_map.get('historical_parallel', {}).get('period', 'N/A')}\n"
 
         brief = f"""
 ========================================
-🏹 HOIN Insight 일일 사냥 보고서 (v15.0)
-날짜: {self.today[:4]}-{self.today[4:6]}-{self.today[6:]}
-========================================{warning_block}{weekly_block}
+🏹 HOIN Insight 일일 사냥 보고서 (v15.1)
+날짜: {data.get('date', 'N/A')}
+========================================
+{warning_block}
+{weekly_block}
 
-[1. 오늘의 메인 사냥 토픽]
-🎯 주제: {signal.get("topic", "없음")}
-🔥 강도: {signal.get("strength", 0)} / 10
+[1. 오늘의 메인 사냥 토픽] ({data.get('date', 'N/A')})
+🎯 주제: {signal.get('event', 'N/A')}
+🔥 강도: {signal.get('strength', 'N/A')} / 10
 🧠 확신도: {confidence}
 
 [2. 사냥꾼의 선정 사유 (Rationale)]
@@ -621,7 +624,10 @@ class PublisherAgent:
 [5. 관련 종목 및 수익 논리 (Agent-04)]
 {stock_list if stock_list else "  분석 중 (데이터 수집 대기)"}
 
-[6. 산출물 경로]
+[6. 팩트 체크: 근거 데이터 링크]
+{chr(10).join(['  🔗 ' + ev for ev in signal.get("evidence_bundle", {}).get("related_events", [])]) if signal.get("evidence_bundle") else "  관련 링크 없음"}
+
+[7. 산출물 경로]
 🎬 롱폼: {data.get("script_long_path", "미생성")}
 📱 쇼츠: {data.get("script_short_path", "미생성")}
 
