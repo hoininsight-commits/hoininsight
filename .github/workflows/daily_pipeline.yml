@@ -1,27 +1,16 @@
-name: HOIN Insight Intelligent Hunter (v17.3)
+name: HOIN Insight Daily Pipeline
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Every 6 hours
+    - cron: "0 */6 * * *"
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
-    inputs:
-      force:
-        description: "사냥 강제 실행 (Sentry 무시)"
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: write
   pages: write
   id-token: write
-
-env:
-  TZ: Asia/Seoul
-  PYTHONPATH: ${{ github.workspace }}
 
 jobs:
   hunt:
@@ -33,7 +22,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -55,15 +43,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          EXTRA_ARGS=""
-          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
-            EXTRA_ARGS="--force"
-          fi
-          python3 src/core/scheduler.py $EXTRA_ARGS
+        run: python3 src/core/scheduler.py --force
 
-      - name: 📊 3단계: 대시보드 배포 (GitHub Pages)
-        if: always()
+      - name: 📊 3단계: 대시보드 배포 준비
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./docs"
@@ -74,7 +56,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
