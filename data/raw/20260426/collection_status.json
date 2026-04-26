@@ -1,7 +1,7 @@
 {
-  "date": "2026-04-25",
-  "run_at": "2026-04-25T21:31:04.776665",
-  "elapsed_seconds": 21.3,
+  "date": "2026-04-26",
+  "run_at": "2026-04-26T20:19:34.215455",
+  "elapsed_seconds": 269.4,
   "total_agents": 8,
   "success_count": 8,
   "failed_count": 0,
@@ -35,11 +35,11 @@
   "agent_results": {
     "COTCollector": "success",
     "PUTCALL": "success",
-    "SocialAgent": "success",
     "ConsensusCollector": "success",
-    "MACRO": "success",
     "SENTIMENT": "success",
+    "DART": "success",
     "MARKET": "success",
-    "DART": "success"
+    "MACRO": "success",
+    "SocialAgent": "success"
   }
 }

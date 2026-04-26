@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "collected_at": "2026-04-25T21:30:50.961391",
+    "collected_at": "2026-04-26T20:15:15.246050",
     "source_timestamp": null,
     "cache_hit": false,
     "ttl_policy_minutes": 720,
     "freshness_status": "FRESH"
   },
   "data": {
-    "date": "20260425",
+    "date": "20260426",
     "source": "FRED API",
-    "total_events": 9,
+    "total_events": 10,
     "major_surprises": [
       {
         "series_id": "T10Y2Y",
@@ -86,6 +86,19 @@
         "actual": 128.859,
         "previous": 128.388,
         "change": 0.471,
+        "surprise": 0,
+        "surprise_pct": 0,
+        "has_actual": true,
+        "surprise_direction": "MISS"
+      },
+      {
+        "series_id": "PAYEMS",
+        "event": "미국 비농업고용",
+        "unit": "천명",
+        "date": "2026-03-01",
+        "actual": 158637.0,
+        "previous": 158459.0,
+        "change": 178.0,
         "surprise": 0,
         "surprise_pct": 0,
         "has_actual": true,
