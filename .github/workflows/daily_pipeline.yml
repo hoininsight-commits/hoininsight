@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: "0 */6 * * *"
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🏁 1단계: 신선한 데이터 수집 (Live Collection)
+      - name: Step 1 - Collection
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
@@ -38,14 +39,14 @@ jobs:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: python -m src.agents.collectors.collector_runner
 
-      - name: 🏹 2단계: 지능형 스케줄러 가동 (Sentry -> Hunter)
+      - name: Step 2 - Intelligent Hunt
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 src/core/scheduler.py --force
 
-      - name: 📊 3단계: 대시보드 배포 준비
+      - name: Step 3 - Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./docs"
