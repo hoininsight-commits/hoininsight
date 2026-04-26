@@ -1,24 +1,25 @@
-# HOIN Insight v10.2 [Autonomous Discovery] Handover
+# HOIN Insight v17.3 [The Intelligent Hunter] Handover
 
-## 1. 핵심 진화 사항 (The Great Leap)
-- **Zero-Shot Autonomous Discovery**: 섹터나 키워드 가이드 없이도 실시간 지표와 뉴스에서 시장의 '새로운 축(Frontier Axis)'을 스스로 탐지합니다. (`AxisDetector`)
-- **Deterministic Veracity Guard**: AI가 수치를 오독하거나 상투적인 오프닝("이상한 점...")을 쓰지 못하도록 결정론적 검증 로직을 `ScriptQualityGate`에 이식했습니다.
-- **Thematic Purity**: 훅(Hook)과 핵심 팩트(WHY NOW)가 100% 동일한 테마를 공유하도록 강제하여 콘텐츠의 논리적 완결성을 확보했습니다.
+## 1. 핵심 진화 사항 (The Great Evolution)
+- **Learner Loop (v16.0)**: 사냥꾼의 최신 영상을 매일 학습하여 우리 로직과의 갭을 메우는 '자기 진화 루프'가 가동되었습니다. (`LearnerAgent`)
+- **Sentry-Triggered Hunting (v17.0)**: 저비용 Flash 모델(Sentry)이 시장 변동성을 먼저 체크하여, 사냥 가치가 충분할 때만 Hunter 엔진을 깨웁니다. (90% 비용 절감)
+- **Model Tiering (v17.1)**: 모든 작업에 Tier를 부여하여 추론은 Pro(Tier 1), 파싱은 Flash(Tier 3)가 담당하는 지능형 모델 배치가 완료되었습니다.
+- **Session Cost Tracking (v17.2)**: 매 사냥마다 소요되는 USD 비용을 실시간으로 계산하여 텔레그램 브리핑에 포함합니다.
 
 ## 2. 엔진 가동 가이드
-- **실행**: `python3 src/agents/detector.py` -> `python3 src/agents/writer.py`
-- **배포**: `python3 src/ui/run_publish_ui_decision_assets.py` 실행 시 대시보드 데이터 전송
-- **검열**: `src/engine/script_quality_gate.py`에서 금지어 및 수치 무결성을 실시간 체킹합니다.
+- **실전 사냥**: `python3 src/core/scheduler.py` (Sentry → Hunter 풀루프 가동)
+- **강제 사냥**: `python3 src/core/scheduler.py --force` (Sentry 무시하고 즉시 사냥)
+- **DNA 학습**: `python3 src/agents/learner_agent.py` (최신 영상 수집 및 갭 분석)
+- **배포**: GitHub Actions 통합 완료 (`daily_pipeline.yml`이 스케줄러 기반으로 개편됨)
 
-## 3. 사냥꾼의 DNA (Style Guide)
-- **반말 화법**: 시청자에게 직접 던지는 날카로운 반말투 유지.
-- **데이터 증거**: 모든 문장은 `[F]`(팩트)와 `[I]`(해석) 태그가 붙어야 하며, 팩트는 제공된 `core_facts`에서만 가져와야 합니다.
-- **클리셰 금지**: "요즘 시장을 보면..." 같은 지루한 인사는 1점 처리되어 폐기됩니다. 무조건 그날의 핵심 팩트로 시장을 여십시오.
+## 3. 사냥꾼의 지능 (Hunter Intelligence)
+- **Flash (Tier 3)**: Detector, Sentry, Learner (대량 파싱 및 고속 판단)
+- **Pro (Tier 1)**: WhyGenerator, StockAnalyst, Writer (고차원 인과관계 분석 및 대본 작성)
+- **비용 정책**: Pro(In $3.5/Out $10.5), Flash(In $0.075/Out $0.3) 정책이 `GeminiClient`에 내장되어 실시간 정산됩니다.
 
-## 4. 제거된 유산들 (Purged Legacy)
-- `src/utils/tickers/` (하드코딩 티커 로직)
-- `src/utils/hoin/` (구형 오케스트레이터)
-- `docs/*.md` (100여 개의 구식 SPEC 문서)
+## 4. 제거 및 변경된 항목
+- `daily_pipeline.yml`의 개별 에이전트 다단 실행 구조 제거 -> `scheduler.py` 단일 통합.
+- `LearnerAgent`와 메인 파이프라인의 의존성 분리 (학습은 학습대로, 실전은 실전대로).
 
 ---
-*본 문서는 2026-04-24 대청소 이후 생성된 최종 SSOT(Single Source of Truth)입니다.*
+*본 문서는 2026-04-26 지능형 스케줄링 및 비용 최적화 완료 후 갱신된 최종 지침서입니다.*
