@@ -1,355 +1,76 @@
-name: HOIN Insight Daily Pipeline
+name: HOIN Insight Intelligent Hunter (v17.3)
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Every 6 hours (00:00, 06:00, 12:00, 18:00 KST)
+    - cron: "0 */6 * * *" # Every 6 hours
   push:
     branches:
       - main
   workflow_dispatch:
     inputs:
-      target_agent:
-        description: "실행할 에이전트 선택 (ALL=전체)"
+      force:
+        description: "사냥 강제 실행 (Sentry 무시)"
         required: false
-        default: "ALL"
-        type: choice
-        options: [ALL, collect, intelligence, write, publish]
+        default: false
+        type: boolean
 
 permissions:
   contents: write
-  issues: write
   pages: write
   id-token: write
-  actions: read
 
 env:
   TZ: Asia/Seoul
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PYTHONPATH: ${{ github.workspace }}
 
 jobs:
-  # ─────────────────────────────────────────
-  # Job 0: FILTER (INSPECTOR)
-  # ─────────────────────────────────────────
-  filter:
+  hunt:
     runs-on: ubuntu-latest
-    outputs:
-      collect: ${{ steps.filter.outputs.collect }}
-      intelligence: ${{ steps.filter.outputs.intelligence }}
-      write: ${{ steps.filter.outputs.write }}
-      publish: ${{ steps.filter.outputs.publish }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            collect:
-              - 'src/agents/collectors/**'
-              - 'src/agents/collector.py'
-              - 'src/agents/consensus_collector.py'
-              - 'src/agents/cot_collector.py'
-              - '.github/workflows/**'
-              - 'requirements.txt'
-            intelligence:
-              - 'src/agents/detector/**'
-              - 'src/agents/analyst.py'
-              - 'src/agents/truth_agent.py'
-              - 'src/agents/intelligence/**'
-              - '.github/workflows/**'
-              - 'requirements.txt'
-            write:
-              - 'src/agents/writer.py'
-              - 'src/agents/fact_checker.py'
-              - 'src/prompts/writer_prompt.py'
-              - '.github/workflows/**'
-              - 'requirements.txt'
-            publish:
-              - 'src/agents/publisher.py'
-              - 'docs/**'
-              - 'dashboard/**'
-              - '.github/workflows/**'
-
-  # ─────────────────────────────────────────
-  # Job 1: COLLECTOR
-  # ─────────────────────────────────────────
-  collect:
-    needs: filter
-    runs-on: ubuntu-latest
-    if: >
-      github.event_name == 'schedule' ||
-      (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'collect')) ||
-      (github.event_name == 'push' && needs.filter.outputs.collect == 'true')
     steps:
       - uses: actions/checkout@v4
 
-      - name: Ensure Docs Structure
-        run: |
-          mkdir -p docs/data
-          mkdir -p docs/ui
-          cp -r dashboard/* docs/ || true
-          touch docs/.nojekyll
-
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Production Sanity Check
-        run: |
-          python -m src.utils.sanity_check
-
-      - name: Run Collector
+      - name: 🏁 1단계: 신선한 데이터 수집 (Live Collection)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
-          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: python -m src.agents.collectors.collector_runner
 
-      - name: Upload Raw Data Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: raw_data
-          path: data/raw/
-          retention-days: 3
-
-  # ─────────────────────────────────────────
-  # Job 2: DETECTOR + ANALYST
-  # ─────────────────────────────────────────
-  intelligence:
-    needs: [filter, collect]
-    runs-on: ubuntu-latest
-    if: >
-      always() && (needs.collect.result == 'success' || needs.collect.result == 'skipped') && (
-        (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'intelligence')) ||
-        (github.event_name == 'push' && needs.filter.outputs.intelligence == 'true') ||
-        (github.event_name == 'schedule')
-      )
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Download Raw Data (Current)
-        id: dl_raw
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: raw_data
-          path: data/raw/
-
-      - name: Download Raw Data (Fallback)
-        if: always() && steps.dl_raw.outcome == 'failure'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
-          if [ -n "$LATEST_RUN" ]; then
-            rm -rf data/raw && mkdir -p data/raw
-            gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-          fi
-
-      - name: Run Detector Agent
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python -m src.agents.detector
-
-      - name: Upload Analysis Data Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: analysis_data
-          path: |
-            data/signals/
-            data/analysis/
-          retention-days: 3
-
-  # ─────────────────────────────────────────
-  # Job 3: WRITER + FACT_CHECKER
-  # ─────────────────────────────────────────
-  write:
-    needs: [filter, intelligence]
-    runs-on: ubuntu-latest
-    if: >
-      always() && (needs.intelligence.result == 'success' || needs.intelligence.result == 'skipped') && (
-        (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'write')) ||
-        (github.event_name == 'push' && needs.filter.outputs.write == 'true') ||
-        (github.event_name == 'schedule')
-      )
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Download Raw Data (Current)
-        id: dl_raw_w
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: raw_data
-          path: data/raw/
-      - name: Download Analysis Data (Current)
-        id: dl_ana_w
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: analysis_data
-          path: data/
-
-      - name: Download Artifacts (Fallback)
-        if: always() && (steps.dl_raw_w.outcome == 'failure' || steps.dl_ana_w.outcome == 'failure')
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
-          if [ -n "$LATEST_RUN" ]; then
-            if [ "${{ steps.dl_raw_w.outcome }}" == "failure" ]; then
-              rm -rf data/raw && mkdir -p data/raw
-              gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-            fi
-            if [ "${{ steps.dl_ana_w.outcome }}" == "failure" ]; then
-              rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
-              gh run download $LATEST_RUN -n analysis_data -D data/ || true
-            fi
-          fi
-
-      - name: Run Writer Agent
+      - name: 🏹 2단계: 지능형 스케줄러 가동 (Sentry -> Hunter)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python -m src.agents.writer
-
-      - name: Upload Script Data Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: script_data
-          path: data/scripts/
-          retention-days: 3
-
-  # ─────────────────────────────────────────
-  # Job 4: PUBLISHER
-  # ─────────────────────────────────────────
-  publish:
-    needs: [filter, write]
-    runs-on: ubuntu-latest
-    if: >
-      always() && (needs.write.result == 'success' || needs.write.result == 'skipped') && (
-        (github.event_name == 'workflow_dispatch' && (inputs.target_agent == 'ALL' || inputs.target_agent == 'publish')) ||
-        (github.event_name == 'push' && (needs.filter.outputs.publish == 'true' || needs.filter.outputs.write == 'true')) ||
-        (github.event_name == 'schedule')
-      )
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Download Raw Data (Current)
-        id: dl_raw_p
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: raw_data
-          path: data/raw/
-      - name: Download Analysis Data (Current)
-        id: dl_ana_p
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: analysis_data
-          path: data/
-      - name: Download Script Data (Current)
-        id: dl_scr_p
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: script_data
-          path: data/scripts/
-
-      - name: Download Artifacts (Fallback)
-        if: always() && (steps.dl_raw_p.outcome == 'failure' || steps.dl_ana_p.outcome == 'failure' || steps.dl_scr_p.outcome == 'failure')
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          LATEST_RUN=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=raw_data&per_page=1" --jq '.artifacts[0].workflow_run.id' || echo "")
-          if [ -n "$LATEST_RUN" ]; then
-            if [ "${{ steps.dl_raw_p.outcome }}" == "failure" ]; then
-              rm -rf data/raw && mkdir -p data/raw
-              gh run download $LATEST_RUN -n raw_data -D data/raw/ || true
-            fi
-            if [ "${{ steps.dl_ana_p.outcome }}" == "failure" ]; then
-              rm -rf data/signals data/analysis && mkdir -p data/signals data/analysis
-              gh run download $LATEST_RUN -n analysis_data -D data/ || true
-            fi
-            if [ "${{ steps.dl_scr_p.outcome }}" == "failure" ]; then
-              rm -rf data/scripts && mkdir -p data/scripts
-              gh run download $LATEST_RUN -n script_data -D data/scripts/ || true
-            fi
+          EXTRA_ARGS=""
+          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            EXTRA_ARGS="--force"
           fi
+          python3 src/core/scheduler.py $EXTRA_ARGS
 
-      - name: Update Handoff History
-        run: python scripts/auto_handoff.py
-
-      - name: Run Publisher
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python -m src.agents.publisher
-
-      - name: Upload Pages Artifact
+      - name: 📊 3단계: 대시보드 배포 (GitHub Pages)
+        if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./docs"
 
   deploy:
-    if: always() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main') && (needs.publish.result == 'success')
-    needs: publish
+    needs: hunt
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
