@@ -8,7 +8,6 @@ from pathlib import Path
 sys.path.append(os.getcwd())
 
 from src.topic_engine.sentry import SentryAgent
-from src.agents.learner_agent import LearnerAgent
 
 class HunterScheduler:
     """
@@ -18,7 +17,6 @@ class HunterScheduler:
 
     def __init__(self):
         self.sentry = SentryAgent()
-        self.learner = LearnerAgent()
         self.base_dir = Path(os.getcwd())
         self._reset_session_cost()
 
@@ -30,12 +28,8 @@ class HunterScheduler:
     def run_cycle(self, force=False):
         print(f"\n🔔 [SCHEDULER] 6시간 주기 사냥 감지 시작 [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]")
 
-        # 1. LearnerAgent 실행 (신규 영상 수집 및 학습은 항상 수행 - 저비용)
-        print("🎓 [SCHEDULER] 1단계: DNA 학습 루프 가동 (Delta Learning)")
-        self.learner.run_evolution_loop()
-
-        # 2. Sentry 가동 (사냥 가치 판단)
-        print("🔍 [SCHEDULER] 2단계: 시장 보초(Sentry) 가동")
+        # 1. Sentry 가동 (사냥 가치 판단) - 더 이상 Learner를 기다리지 않음
+        print("🔍 [SCHEDULER] 1단계: 시장 보초(Sentry) 가동")
         
         # 최신 데이터 로드
         news, market_change = self._get_latest_market_pulse()

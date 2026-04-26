@@ -57,6 +57,12 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
     
     if agent == "STRATEGY_MAPPER":
         return "grand_narrative" in data and "narrative_description" in data
+
+    if agent == "LEARNER_GAP_ANALYZER":
+        return "dna_patch" in data or "data_gap" in data
+
+    if agent == "SENTRY_WATCHER":
+        return "impact_score" in data or "trigger_hunter" in data
     
     # ANALYST 등 기타 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]
