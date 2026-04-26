@@ -89,6 +89,7 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: 
         try:
             # [GEMINI CALL] 호출 시각 및 에이전트 로깅
             print(f"  [GEMINI CALL] agent={agent}, tier={tier}, time={datetime.now().strftime('%H:%M:%S')}")
+            client.current_tier = tier # [v17.2] 비용 추적용 티어 주입
             
             # [CRITICAL] 1회 호출로 통합 (double spend 방지)
             data = client.call_json(current_prompt, max_tokens=limit)

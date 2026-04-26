@@ -53,7 +53,7 @@ class WhyGenerator:
             # call_controlled는 Control Layer가 적용된 텍스트 호출 엔진임 (v1.3)
             # system_prompt를 user_prompt 앞에 붙여서 전달 (call_controlled는 단일 prompt 인자 선호)
             full_prompt = f"{system_prompt}\n\n{user_prompt}"
-            res = self.gemini.call_controlled(full_prompt, agent="WHY_GENERATOR", tier=3)
+            res = self.gemini.call_controlled(full_prompt, agent="WHY_GENERATOR", tier=1)
             
             if not res:
                 return None

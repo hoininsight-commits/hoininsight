@@ -116,7 +116,7 @@ class DetectorAgent:
 [ {{ "topic": "제목", "reason": "이유", "strength": 점수, "related_keywords": [], "anomaly_type": "SPEED|CORRELATION|NEWS_MISMATCH" }} ]
 """
         try:
-            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR")
+            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=3)
             return results if isinstance(results, list) else []
         except: return []
 
@@ -154,7 +154,7 @@ class DetectorAgent:
 {json.dumps([h.get('title') for h in headlines[:50]], ensure_ascii=False)}
 """
         try:
-            events = self.gemini.call_json_controlled(prompt, agent="DETECTOR")
+            events = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=3)
             return events if isinstance(events, list) else []
         except: return []
 
@@ -190,7 +190,7 @@ class DetectorAgent:
         ]
         """
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="DETECTOR")
+            res = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=3)
             return res if isinstance(res, list) else []
         except: return []
 

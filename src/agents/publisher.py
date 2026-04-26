@@ -596,10 +596,20 @@ class PublisherAgent:
             weekly_block += f"💡 서사: {weekly_map.get('narrative_description', 'N/A')[:100]}...\n"
             weekly_block += f"🏺 역사적 전례 ({weekly_map.get('historical_parallel', {}).get('date', 'N/A')}): {weekly_map.get('historical_parallel', {}).get('period', 'N/A')}\n"
 
+        # [v17.2] 세션 비용 로드
+        session_path = self.base_dir / "data/monitoring/session_cost.json"
+        session_cost_str = "N/A"
+        if session_path.exists():
+            try:
+                s_data = json.loads(session_path.read_text())
+                session_cost_str = f"${s_data.get('session_cost', 0.0):.4f}"
+            except: pass
+
         brief = f"""
 ========================================
-🏹 HOIN Insight 일일 사냥 보고서 (v15.1)
+🏹 HOIN Insight 일일 사냥 보고서 (v17.2)
 날짜: {data.get('date', 'N/A')}
+소요 비용: {session_cost_str} (USD)
 ========================================
 {warning_block}
 {weekly_block}

@@ -41,6 +41,7 @@ class GeminiClient:
 
         self.client = genai.Client(api_key=self.api_key)
         self.health_path = Path("data/monitoring/gemini_health.json")
+        self.session_cost = 0.0 # [v17.2] 현재 세션 총 비용 (USD)
         self._init_health()
 
     def _init_health(self):
@@ -107,7 +108,8 @@ class GeminiClient:
             self._update_health(
                 success=True, 
                 in_t=getattr(usage, "prompt_token_count", 0), 
-                out_t=getattr(usage, "candidates_token_count", 0)
+                out_t=getattr(usage, "candidates_token_count", 0),
+                tier=getattr(self, "current_tier", 3) # 세션 내 현재 티어 추적 필요
             )
         
         # [CRITICAL] 비정상 종료(MAX_TOKENS 등) 감지 시 즉각 에러 처리 (지시서 #082)
@@ -189,9 +191,20 @@ class GeminiClient:
         print(f"  ⚠️ JSON Recovery Failed. Length: {len(response)}")
         return {}
 
-    def _update_health(self, success=True, in_t=0, out_t=0):
-        """실시간 호출 및 비용 상태 업데이트"""
+    def _update_health(self, success=True, in_t=0, out_t=0, tier=3):
+        """실시간 호출 및 비용 상태 업데이트 (v17.2 Cost Calculation)"""
         import json
+        
+        # 비용 계산 (Gemini 1.5 가격 정책 기준)
+        # Tier 1/2 (Pro 예상): In $3.5/1M, Out $10.5/1M
+        # Tier 3 (Flash 예상): In $0.075/1M, Out $0.3/1M
+        if tier in [1, 2]:
+            cost = (in_t * 3.5 / 1000000) + (out_t * 10.5 / 1000000)
+        else:
+            cost = (in_t * 0.075 / 1000000) + (out_t * 0.3 / 1000000)
+            
+        self.session_cost += cost
+
         try:
             h = json.loads(self.health_path.read_text())
             h["total_calls"] += 1
@@ -199,16 +212,21 @@ class GeminiClient:
             
             h["total_input_tokens"] += in_t
             h["total_output_tokens"] += out_t
+            h["total_accumulated_cost"] = h.get("total_accumulated_cost", 0.0) + cost
             
             h["fallback_ratio"] = round(h["failures"] / h["total_calls"], 2)
             h["last_updated"] = datetime.now().isoformat()
             
-            # 상태 등급 결정
-            if h["fallback_ratio"] > 0.5: h["status"] = "CRITICAL"
-            elif h["fallback_ratio"] > 0.1: h["status"] = "WARNING"
-            else: h["status"] = "NORMAL"
-            
             self.health_path.write_text(json.dumps(h, indent=2, ensure_ascii=False))
+            
+            # [v17.2] 세션 비용 파일 업데이트
+            session_path = Path("data/monitoring/session_cost.json")
+            s_cost = 0.0
+            if session_path.exists():
+                try: s_cost = json.loads(session_path.read_text()).get("session_cost", 0.0)
+                except: pass
+            session_path.write_text(json.dumps({"session_cost": s_cost + cost, "last_updated": datetime.now().isoformat()}))
+            
         except: pass
 
     def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192) -> dict:
@@ -236,6 +254,7 @@ class GeminiClient:
         for attempt in range(max_retries + 1):
             try:
                 # [GEMINI CALL] 텍스트 호출
+                self.current_tier = tier # [v17.2] 비용 추적용 티어 주입
                 res = self.call(prompt, max_tokens=max_tokens)
                 if not res: 
                     raise Exception("Empty Text Response")

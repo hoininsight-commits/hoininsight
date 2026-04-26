@@ -10,7 +10,15 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, No
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("TranscriptIngestor")
 
+import time
+import random
 from src.utils.guards import check_learning_enabled
+
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+]
 
 RAW_BASE = Path("data/raw/youtube")
 TRANSCRIPT_BASE = Path("data/transcripts/youtube")
@@ -156,6 +164,10 @@ def run_ingestor():
     
     for meta_path in targets:
         ingest_transcript(meta_path)
+        # Random sleep to avoid 429
+        wait_time = random.uniform(2, 5)
+        logger.info(f"Waiting {wait_time:.2f}s...")
+        time.sleep(wait_time)
 
 if __name__ == "__main__":
     run_ingestor()
