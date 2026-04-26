@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+from typing import Optional, Union
 """Run the v3 verification bundle for last30days."""
 
-from __future__ import annotations
 
 import argparse
 import json
@@ -36,7 +37,7 @@ LATENCY_PROFILES = [
 ]
 
 
-def run_command(cmd: list[str], *, env: dict[str, str] | None = None, timeout: int = 600) -> subprocess.CompletedProcess[str]:
+def run_command(cmd: list[str], *, env:Optional[ dict[str, str]] = None, timeout: int = 600) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         cmd,
         cwd=REPO_ROOT,

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-# ruff: noqa: E402
-"""last30days v3.0.0 CLI."""
-
 from __future__ import annotations
+from typing import Optional, Union
+"""last30days v3.0.0 CLI."""
+# ruff: noqa: E402
+
 
 import argparse
 import atexit
@@ -14,10 +15,10 @@ import sys
 import threading
 from pathlib import Path
 
-MIN_PYTHON = (3, 12)
+MIN_PYTHON = (3, 9)
 
 
-def ensure_supported_python(version_info: tuple[int, int, int] | object | None = None) -> None:
+def ensure_supported_python(version_info: tuple[int, int, int] |Optional[ object] = None) -> None:
     if version_info is None:
         version_info = sys.version_info
     major, minor, micro = tuple(version_info[:3])
@@ -112,7 +113,7 @@ def save_output(report: schema.Report, emit: str, save_dir: str, suffix: str = "
     return out_path
 
 
-def emit_output(report: schema.Report, emit: str, fun_level: str = "medium", save_path: str | None = None) -> str:
+def emit_output(report: schema.Report, emit: str, fun_level: str = "medium", save_path:Optional[ str] = None) -> str:
     if emit == "json":
         return json.dumps(schema.to_dict(report), indent=2, sort_keys=True)
     if emit in {"compact", "md"}:
@@ -126,7 +127,7 @@ def emit_comparison_output(
     entity_reports: list[tuple[str, schema.Report]],
     emit: str,
     fun_level: str = "medium",
-    save_path: str | None = None,
+    save_path:Optional[ str] = None,
 ) -> str:
     if emit == "json":
         payload = {
@@ -266,7 +267,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def parse_competitors_plan(raw: str | None) -> dict[str, dict]:
+def parse_competitors_plan(raw:Optional[ str]) -> dict[str, dict]:
     """Parse a --competitors-plan argument into a {entity_name_lower: plan_entry} dict.
 
     Accepts inline JSON or a file path (matches --plan). Returns {} on None/empty.
@@ -332,7 +333,7 @@ def subrun_kwargs_for(
     This helper is the single source of truth for sub-run kwargs — main-topic
     flags can only leak if a caller bypasses it.
     """
-    def _choose(plan_key: str, resolved_key: str | None = None):
+    def _choose(plan_key: str, resolved_key:Optional[ str] = None):
         if plan_key in plan_entry and plan_entry[plan_key]:
             return plan_entry[plan_key]
         if resolved_key is not None and resolved.get(resolved_key):
@@ -435,7 +436,7 @@ def resolve_competitors_args(args: argparse.Namespace) -> tuple[bool, int, list[
     return True, count, []
 
 
-def _missing_sources_for_promo(diag: dict[str, object]) -> str | None:
+def _missing_sources_for_promo(diag: dict[str, object]) ->Optional[ str]:
     available = set(diag.get("available_sources") or [])
     missing = []
     if "reddit" not in available:

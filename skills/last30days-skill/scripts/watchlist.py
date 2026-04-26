@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 """Topic watchlist management for last30days."""
 
-from __future__ import annotations
 
 import argparse
 import json

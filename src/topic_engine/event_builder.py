@@ -9,7 +9,8 @@ class EventBuilder:
         "POLICY": ["금리", "정부", "규제", "정책", "통화", "세금", "fed", "policy", "regulation", "rate", "tariff", "stimulus", "trump", "administration", "swap line", "스왑"],
         "EARNINGS": ["실적", "어닝", "매출", "영업이익", "가이던스", "earnings", "revenue", "profit", "guidance", "eps", "dividend", "quarterly", "어닝서프라이즈"],
         "GEOPOLITICAL": ["전쟁", "휴전", "제재", "분쟁", "핵", "war", "ceasefire", "sanction", "conflict", "hormuz", "geopolitical", "iran", "crisis", "middle east", "중동"],
-        "LIQUIDITY": ["유입", "유출", "자금", "매수", "매도", "liquidity", "inflow", "outflow", "buyback", "quantitative", "pension", "fund", "private assets", "수급", "외인", "기관", "개미"]
+        "LIQUIDITY": ["유입", "유출", "자금", "매수", "매도", "liquidity", "inflow", "outflow", "buyback", "quantitative", "pension", "fund", "private assets", "수급", "외인", "기관", "개미"],
+        "BIO": ["바이오", "임상", "신약", "제약", "fda", "bio", "clinical", "drug", "pharmaceutical", "health", "glp-1", "비만치료제", "의료"]
     }
 
     # [TASK #092] 비정형 슬랭 맵 (Normalize entities)
@@ -95,13 +96,30 @@ class EventBuilder:
             if "!" in combined_text or combined_text.count("?") > 1:
                 intensity_bonus += 0.1
             
+            # [TASK #112] 정교화된 Recency 점수 산출 (날짜 기반 감쇄)
+            # 오늘(2026-04-26) 기준으로 신선도 평가
+            today_str = "2026-04-26"
+            news_date_match = re.search(r'\[(\d{4}-\d{2}-\d{2})\]', title)
+            news_date = news_date_match.group(1) if news_date_match else today_str
+            
+            # 신선도 감쇄 로직
+            base_recency = 1.0
+            if news_date == today_str:
+                base_recency = 2.0 # 오늘 뉴스는 최고점
+            elif news_date == "2026-04-25":
+                base_recency = 1.2 # 어제 뉴스
+            elif news_date == "2026-04-24":
+                base_recency = 0.5 # 엊그제 뉴스
+            else:
+                base_recency = 0.1 # 그 이상은 매우 낮음
+
             events.append({
                 "event": title,
                 "summary": summary,
                 "entity": entities,
                 "event_type": event_type,
                 "source": "NEWS",
-                "recency_score": 1.0 + intensity_bonus,
+                "recency_score": base_recency + intensity_bonus,
                 "is_preemptive": any(re.search(r"\d+월|\d+일|화요일|expected", combined_text) for _ in [1])
             })
 

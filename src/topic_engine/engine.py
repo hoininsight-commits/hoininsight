@@ -149,19 +149,19 @@ class TopicSelectionEngine:
         self.arbiter = TopicArbiter()
 
         # 7. 랭킹 및 최종 선정 (Arbiter Priority Mode)
-        # Ranker는 후보군을 정렬하는 용도로 사용
-        ranked_results = self.ranker.rank(all_candidates, evaluations, market_axis)
+        # filtered_candidates는 이미 recency + evidence 순으로 정렬되어 있음
+        evaluations = self.evaluator.evaluate_all(filtered_candidates[:15])
         
         # Arbiter가 상위 후보들 중 최종 MAIN을 동적으로 결정
-        # Ranker에서 점수순으로 정렬된 상위 15개를 아비터에게 전달
-        top_candidates = all_candidates[:15]
+        top_candidates = filtered_candidates[:15]
         
         arbiter_selection = self.arbiter.select_best(top_candidates, market_axis)
         
         if arbiter_selection:
             selection = arbiter_selection
         else:
-            selection = ranked_results
+            # Fallback
+            selection = {"MAIN": top_candidates[0] if top_candidates else None, "SECONDARY": top_candidates[1:3] if len(top_candidates) > 1 else [], "EARLY": []}
         
         # 8. Evidence Building & Why Hypothesis
         main_cand = selection.get("MAIN")

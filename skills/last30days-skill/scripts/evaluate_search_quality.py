@@ -1,7 +1,97 @@
 #!/usr/bin/env python3
-"""Compare two last30days revisions on the v3 ranked candidate output."""
-
 from __future__ import annotations
+"""Compare two last30days revisions on the v3 ranked candidate output."""
+""".strip()
+
+
+def get_judgments(
+    *,
+    output_dir: Path,
+    slug: str,
+    topic: str,
+    query_type: str,
+    items: list[dict[str, Any]],
+    judge_model: str,
+    gemini_api_key:Optional[ str],
+) -> dict[str, int]:
+    cache_file = output_dir / "judgments" / f"{slug}.json"
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    if cache_file.exists():
+        payload = json.loads(cache_file.read_text())
+        return {row["id"]: int(row["grade"]) for row in payload.get("judgments") or []}
+    if not gemini_api_key or not items:
+        return {}
+    payload = call_gemini_judge(gemini_api_key, judge_model, build_judge_prompt(topic, query_type, items))
+    cache_file.write_text(json.dumps(payload, indent=2))
+    return {row["id"]: int(row["grade"]) for row in payload.get("judgments") or []}
+
+
+def create_eval_env() -> dict[str, str]:
+    config = envlib.get_config()
+    passthrough = {
+        "PATH": os.environ.get("PATH", ""),
+        "LANG": os.environ.get("LANG", "en_US.UTF-8"),
+        "LC_ALL": os.environ.get("LC_ALL", ""),
+        "TMPDIR": os.environ.get("TMPDIR", ""),
+        "PYTHONUTF8": "1",
+        "LAST30DAYS_CONFIG_DIR": "",
+    }
+    for key in (
+        "GOOGLE_API_KEY",
+        "GEMINI_API_KEY",
+        "GOOGLE_GENAI_API_KEY",
+        "OPENAI_API_KEY",
+        "XAI_API_KEY",
+        "SCRAPECREATORS_API_KEY",
+        "BSKY_HANDLE",
+        "BSKY_APP_PASSWORD",
+        "TRUTHSOCIAL_TOKEN",
+        "AUTH_TOKEN",
+        "CT0",
+    ):
+        value = os.environ.get(key) or config.get(key)
+        if value:
+            passthrough[key] = value
+    return passthrough
+
+
+def run_last30days(repo_dir: Path, topic: str, *, search: str, timeout_seconds: int, quick: bool, mock: bool, env: dict[str, str]) -> dict[str, Any]:
+    cmd = [sys.executable, "scripts/last30days.py", topic, "--emit=json"]
+    if search:
+        cmd.extend(["--search", search])
+    if quick:
+        cmd.append("--quick")
+    if mock:
+        cmd.append("--mock")
+    result = subprocess.run(
+        cmd,
+        cwd=repo_dir,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=timeout_seconds,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"{repo_dir.name} failed for '{topic}' with exit {result.returncode}\n{result.stderr.strip()}")
+    return json.loads(result.stdout)
+
+
+def create_worktree(rev: str) -> Path:
+    worktree_dir = Path(tempfile.mkdtemp(prefix="last30days-eval-"))
+    subprocess.run(
+        ["git", "worktree", "add", "--detach", str(worktree_dir), rev],
+        cwd=REPO_ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return worktree_dir
+
+
+def resolve_repo_dir(label: str) -> tuple[Path, bool]:
+    """Resolve a benchmark label into a repo directory and whether it is temporary."""
+
 
 import argparse
 import json
@@ -12,7 +102,7 @@ import sys
 import tempfile
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional, Union
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -55,7 +145,7 @@ def row_sources(row: dict[str, Any]) -> list[str]:
     return schema.candidate_sources(candidate)
 
 
-def row_best_date(row: dict[str, Any]) -> str | None:
+def row_best_date(row: dict[str, Any]) ->Optional[ str]:
     candidate = schema.candidate_from_dict(row)
     return schema.candidate_best_published_at(candidate)
 
@@ -177,7 +267,7 @@ def source_coverage_recall(ranking: list[dict[str, Any]], judged_pool: list[dict
     return len(hit_sources & good_sources) / len(good_sources)
 
 
-def resolve_google_judge_api_key(config: dict[str, Any]) -> str | None:
+def resolve_google_judge_api_key(config: dict[str, Any]) ->Optional[ str]:
     return (
         os.environ.get("GOOGLE_API_KEY")
         or config.get("GOOGLE_API_KEY")
@@ -252,96 +342,6 @@ Return JSON only:
 
 Items:
 {chr(10).join(item_lines)}
-""".strip()
-
-
-def get_judgments(
-    *,
-    output_dir: Path,
-    slug: str,
-    topic: str,
-    query_type: str,
-    items: list[dict[str, Any]],
-    judge_model: str,
-    gemini_api_key: str | None,
-) -> dict[str, int]:
-    cache_file = output_dir / "judgments" / f"{slug}.json"
-    cache_file.parent.mkdir(parents=True, exist_ok=True)
-    if cache_file.exists():
-        payload = json.loads(cache_file.read_text())
-        return {row["id"]: int(row["grade"]) for row in payload.get("judgments") or []}
-    if not gemini_api_key or not items:
-        return {}
-    payload = call_gemini_judge(gemini_api_key, judge_model, build_judge_prompt(topic, query_type, items))
-    cache_file.write_text(json.dumps(payload, indent=2))
-    return {row["id"]: int(row["grade"]) for row in payload.get("judgments") or []}
-
-
-def create_eval_env() -> dict[str, str]:
-    config = envlib.get_config()
-    passthrough = {
-        "PATH": os.environ.get("PATH", ""),
-        "LANG": os.environ.get("LANG", "en_US.UTF-8"),
-        "LC_ALL": os.environ.get("LC_ALL", ""),
-        "TMPDIR": os.environ.get("TMPDIR", ""),
-        "PYTHONUTF8": "1",
-        "LAST30DAYS_CONFIG_DIR": "",
-    }
-    for key in (
-        "GOOGLE_API_KEY",
-        "GEMINI_API_KEY",
-        "GOOGLE_GENAI_API_KEY",
-        "OPENAI_API_KEY",
-        "XAI_API_KEY",
-        "SCRAPECREATORS_API_KEY",
-        "BSKY_HANDLE",
-        "BSKY_APP_PASSWORD",
-        "TRUTHSOCIAL_TOKEN",
-        "AUTH_TOKEN",
-        "CT0",
-    ):
-        value = os.environ.get(key) or config.get(key)
-        if value:
-            passthrough[key] = value
-    return passthrough
-
-
-def run_last30days(repo_dir: Path, topic: str, *, search: str, timeout_seconds: int, quick: bool, mock: bool, env: dict[str, str]) -> dict[str, Any]:
-    cmd = [sys.executable, "scripts/last30days.py", topic, "--emit=json"]
-    if search:
-        cmd.extend(["--search", search])
-    if quick:
-        cmd.append("--quick")
-    if mock:
-        cmd.append("--mock")
-    result = subprocess.run(
-        cmd,
-        cwd=repo_dir,
-        env=env,
-        capture_output=True,
-        text=True,
-        timeout=timeout_seconds,
-        check=False,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"{repo_dir.name} failed for '{topic}' with exit {result.returncode}\n{result.stderr.strip()}")
-    return json.loads(result.stdout)
-
-
-def create_worktree(rev: str) -> Path:
-    worktree_dir = Path(tempfile.mkdtemp(prefix="last30days-eval-"))
-    subprocess.run(
-        ["git", "worktree", "add", "--detach", str(worktree_dir), rev],
-        cwd=REPO_ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    return worktree_dir
-
-
-def resolve_repo_dir(label: str) -> tuple[Path, bool]:
-    """Resolve a benchmark label into a repo directory and whether it is temporary."""
     if label == "WORKTREE":
         return REPO_ROOT, False
     return create_worktree(label), True

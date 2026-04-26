@@ -38,11 +38,13 @@ class TopicArbiter:
 [CANDIDATES]
 {candidate_list_str}
 
-[SELECTION PHILOSOPHY]
+[SELECTION PHILOSOPHY & FACT CHECK]
 1. **Regime Change (체제 변화)**: 연준 인선, 정부 정책 기조 변화 등 '판의 규칙'이 바뀌는 토픽을 최우선하라.
-2. **Industrial Bottleneck (산업의 급소)**: 파업, 공급망 붕괴, 에너지 부족 등 실물 경제의 병목 현상을 포착하라.
-3. **Policy Intent (정책적 의도)**: 백악관(White House), 연준(Fed), NSC 등 국가급 예산/정책 결정 기관의 '의도'가 담긴 토픽을 최우선하라.
-4. **Dominance & Chain Reaction (파급력)**: 단순히 오늘의 뉴스가 아니라, 향후 3일~일주일간 시장의 돈의 흐름을 바꿀 '도미노 효과'가 있는가?
+2. **Industrial Bottleneck (산업의 급소)**: 파업, 공급망 붕괴 등 실물 경제의 병목 현상을 포착하라.
+3. **Policy Intent (정책적 의도)**: 백악관(White House), 연준(Fed) 등 국가급 기관의 '의도'가 담긴 토픽을 최우선하라.
+4. **Dominance & Chain Reaction (파급력)**: 향후 3일~일주일간 자본의 흐름을 바꿀 '도미노 효과'가 있는가?
+5. **[CRITICAL] Fact Check**: 노란봉투법은 이미 **2026년 3월 10일**에 시행되었습니다. 현재 '논의 중'이라는 표현은 심각한 오보입니다. 이미 시행된 법안이 현장에서 일으키는 '실제 파업' 결과에만 집중하십시오.
+6. **[CRITICAL] Recency**: 오늘 날짜는 **2026년 4월 26일**입니다. 오늘 발생한 따끈따끈한 뉴스(예: 트럼프 대피 등)에 압도적인 우선순위를 부여하십시오.
 
 [OUTPUT JSON FORMAT]
 {{

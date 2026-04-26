@@ -16,7 +16,7 @@ import sqlite3
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 SCRIPT_DIR = Path(__file__).parent.resolve()
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -35,6 +35,8 @@ def _get_db_path() -> Path:
 
 
 SCHEMA_V1 = """
+"""
+"""
 PRAGMA journal_mode=WAL;
 PRAGMA synchronous=NORMAL;
 PRAGMA cache_size=-64000;
@@ -121,7 +123,6 @@ CREATE TABLE IF NOT EXISTS settings (
     value TEXT,
     updated_at TEXT DEFAULT (datetime('now'))
 );
-"""
 
 SCHEMA_V1_DEFAULTS = """
 INSERT OR IGNORE INTO schema_version (version) VALUES (1);
@@ -130,7 +131,6 @@ INSERT OR IGNORE INTO settings (key, value) VALUES ('delivery_channel', '');
 INSERT OR IGNORE INTO settings (key, value) VALUES ('delivery_mode', 'announce');
 INSERT OR IGNORE INTO settings (key, value) VALUES ('briefing_format', 'concise');
 INSERT OR IGNORE INTO settings (key, value) VALUES ('default_schedule', '0 8 * * *');
-"""
 
 _UPDATABLE_RUN_COLUMNS = frozenset({
     "source_mode",
@@ -162,7 +162,7 @@ _UPDATABLE_FINDING_COLUMNS = frozenset({
 MIGRATIONS: Dict[int, str] = {}
 
 
-def _connect(db_path: Optional[Path] = None) -> sqlite3.Connection:
+def _connect(db_path:Optional[ Path] = None) -> sqlite3.Connection:
     """Open a connection with WAL mode and row factory."""
     path = db_path or _get_db_path()
     conn = sqlite3.connect(str(path))
@@ -173,7 +173,7 @@ def _connect(db_path: Optional[Path] = None) -> sqlite3.Connection:
     return conn
 
 
-def init_db(db_path: Optional[Path] = None) -> Path:
+def init_db(db_path:Optional[ Path] = None) -> Path:
     """Create database and tables if they don't exist. Returns the DB path."""
     path = db_path or _get_db_path()
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -209,7 +209,7 @@ def _run_migrations(conn: sqlite3.Connection):
 
 def add_topic(
     name: str,
-    search_queries: Optional[List[str]] = None,
+    search_queries:Optional[ List[str]] = None,
     schedule: str = "0 8 * * *",
 ) -> Dict[str, Any]:
     """Add a topic to the watchlist. Returns the topic dict."""
@@ -275,7 +275,7 @@ def list_topics() -> List[Dict[str, Any]]:
         conn.close()
 
 
-def get_topic(name: str) -> Optional[Dict[str, Any]]:
+def get_topic(name: str) ->Optional[ Dict[str, Any]]:
     """Get a topic by name."""
     init_db()
     conn = _connect()
@@ -295,7 +295,7 @@ def record_run(
     topic_id: int,
     source_mode: str = "both",
     status: str = "completed",
-    error_message: Optional[str] = None,
+    error_message:Optional[ str] = None,
     duration_seconds: float = 0,
     prompt_tokens: int = 0,
     completion_tokens: int = 0,
@@ -414,7 +414,7 @@ def store_findings(
 
 def get_new_findings(
     topic_id: int,
-    since: Optional[str] = None,
+    since:Optional[ str] = None,
 ) -> List[Dict[str, Any]]:
     """Get findings for a topic, optionally since a date."""
     conn = _connect()
@@ -492,7 +492,7 @@ def dismiss_finding(finding_id: int):
 # --- Cost Tracking ---
 
 
-def get_daily_cost(date: Optional[str] = None) -> float:
+def get_daily_cost(date:Optional[ str] = None) -> float:
     """Get total token cost for a given day (default: today)."""
     conn = _connect()
     try:
@@ -512,7 +512,7 @@ def get_daily_cost(date: Optional[str] = None) -> float:
 # --- Settings ---
 
 
-def get_setting(key: str, default: Optional[str] = None) -> Optional[str]:
+def get_setting(key: str, default:Optional[ str] = None) ->Optional[ str]:
     """Get a setting value."""
     init_db()
     conn = _connect()
@@ -648,7 +648,7 @@ def finding_from_candidate(candidate: schema.Candidate) -> Dict[str, Any]:
 def findings_from_report(
     report: schema.Report,
     *,
-    limit: Optional[int] = None,
+    limit:Optional[ int] = None,
 ) -> List[Dict[str, Any]]:
     """Convert report into persisted findings.
     
