@@ -74,7 +74,15 @@ class ContentEngine:
         
         # Deduplicate
         mapping["themes"] = list(set(mapping["themes"]))
-        mapping["stocks"] = list(set(mapping["stocks"]))
+        
+        seen_stocks = set()
+        unique_stocks = []
+        for s in mapping["stocks"]:
+            s_name = s.get("name")
+            if s_name not in seen_stocks:
+                unique_stocks.append(s)
+                seen_stocks.add(s_name)
+        mapping["stocks"] = unique_stocks
         
         return mapping
 
@@ -101,7 +109,8 @@ class ContentEngine:
             "predictive_chain": candidate.get("predictive_chain", "N/A"),
             "confidence": candidate.get("hypothesis_confidence", "N/A"),
             "classification": classification,
-            "selected_scenario": scenario
+            "selected_scenario": scenario,
+            "stocks_analysis": candidate.get("stocks_analysis", {})
         }
 
         # 3. 중앙 집중식 템플릿에 데이터 주입
@@ -109,6 +118,9 @@ class ContentEngine:
             stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
             kospi_foreign_net=kospi_f,
             cot_summary_detailed=cot_summary,
+            topic=candidate.get("topic", "N/A"),
+            arbiter_rationale=candidate.get("arbiter_rationale", "N/A"),
+            hunter_insight=candidate.get("hunter_insight", "N/A"),
             analysis_json=json.dumps(analysis_data, ensure_ascii=False)
         )
         

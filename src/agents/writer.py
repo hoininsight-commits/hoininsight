@@ -55,6 +55,8 @@ class WriterAgent:
             cot_summary_detailed=json.dumps(analysis.get("expectation_vs_reality", {}), ensure_ascii=False),
             kospi_foreign_net=analysis.get("market_state", {}).get("kospi_foreign_net", "0.00"),
             topic=context.get("signal", {}).get("topic"),
+            arbiter_rationale=analysis.get("arbiter_rationale", "N/A"),
+            hunter_insight=analysis.get("hunter_insight", "N/A"),
             analysis_json=json.dumps(analysis.get("level2_chain", []), ensure_ascii=False),
             market_state_json=json.dumps(analysis.get("market_state", {}), ensure_ascii=False),
             today=self.today

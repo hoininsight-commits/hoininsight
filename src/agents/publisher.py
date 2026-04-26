@@ -46,12 +46,15 @@ class PublisherAgent:
                     "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" else "쇼츠",
                     "filters_hit": [main.get("structure_axis", "S")],
                     "why_now": main.get("why_now", main.get("selection_reason", "")),
+                    "arbiter_rationale": main.get("arbiter_rationale", "N/A"),
+                    "hunter_insight": main.get("hunter_insight", "N/A"),
                     "why_hypothesis": main.get("why_hypothesis", ""),
                     "mechanism": main.get("mechanism", ""),
                     "hypothesis_confidence": main.get("hypothesis_confidence", ""),
-                    "is_mismatch": main.get("is_mismatch", False)
+                    "is_mismatch": main.get("is_mismatch", False),
+                    "stocks": main.get("stocks", [])
                 }
-                print(f"  [DEBUG] Loaded Topic Selection MAIN: {data['signal']['topic']}")
+                print(f"  [DEBUG] Loaded Topic Selection MAIN with {len(data['signal']['stocks'])} stocks")
         
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
@@ -530,15 +533,26 @@ class PublisherAgent:
         if failed_agents:
             warning_block = f"\n⚠️ [수집 경고]\n{', '.join(failed_agents)}: API 실패 → 해당 지표 분석 제외됨\n"
 
-        # [v12.0] 상세 사유 레이어 구성
-        rationale = signal.get("why_now", "데이터 분석 기반 자율 선정")
+        # [v14.0] 상세 사유 레이어 구성 (Arbiter & Hunter Insight)
+        rationale = signal.get("arbiter_rationale", signal.get("why_now", "N/A"))
+        insight = signal.get("hunter_insight", "N/A")
         hypothesis = signal.get("why_hypothesis", "N/A")
         mechanism = signal.get("mechanism", "N/A")
         confidence = signal.get("hypothesis_confidence", "MEDIUM")
 
+        # 종목 리스트 구성 (Agent-04 결과 우선)
+        display_stocks = signal.get("stocks", [])
+        if not display_stocks:
+            display_stocks = stocks.get("stocks", [])
+            
+        stock_list = "\n".join([
+            f"  - {s['name']}: {s.get('reason', s.get('linkage', 'N/A'))}"
+            for s in display_stocks[:5]
+        ])
+
         brief = f"""
 ========================================
-🏹 HOIN Insight 일일 사냥 보고서
+🏹 HOIN Insight 일일 사냥 보고서 (v14.0)
 날짜: {self.today[:4]}-{self.today[4:6]}-{self.today[6:]}
 ========================================{warning_block}
 
@@ -547,18 +561,18 @@ class PublisherAgent:
 🔥 강도: {signal.get("strength", 0)} / 10
 🧠 확신도: {confidence}
 
-[2. 선정 사유 (Selection Rationale)]
+[2. 사냥꾼의 선정 사유 (Rationale)]
 📝 {rationale}
 
-[3. AI 가설 및 메커니즘]
-💡 가설 (Why Now): {hypothesis}
-⚙️ 작동 원리 (Mechanism): {mechanism}
+[3. 깊이 있는 통찰 (Hunter Insight)]
+💡 {insight}
 
-[4. 레벨2 인과관계]
-{chain_str if chain_str else ("  분석 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  없음 (AGENT-04 미실행)")}
+[4. AI 가설 및 메커니즘]
+🚀 가설: {hypothesis}
+⚙️ 작동 원리: {mechanism}
 
-[5. 관련 종목 (Market Target)]
-{stock_list if stock_list else ("  매핑 실패 (AGENT-04 오류)" if data.get("analyst_failed") else "  종목 데이터 없음 (AGENT-04 미실행)")}
+[5. 관련 종목 및 수익 논리 (Agent-04)]
+{stock_list if stock_list else "  분석 중 (데이터 수집 대기)"}
 
 [6. 산출물 경로]
 🎬 롱폼: {data.get("script_long_path", "미생성")}

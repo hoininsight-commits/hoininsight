@@ -6,10 +6,10 @@
 - **AI 활용**: Gemini + Rule-based
 
 ## 🧩 콘텐츠 품질 (Quality Gate v2)
-- **종합 점수**: 4.2 / 5.0
+- **종합 점수**: 4.4 / 5.0
 - **상세 점수**:
     - HOOK: 5
-    - WHY NOW: 3
+    - WHY NOW: 4
     - SCENARIO: 3
     - ACTION: 5
 
@@ -20,4 +20,4 @@
 
 ## 📥 산출물 위치
 - Fallback JSON: `data/scripts/fallback_deterministic.json`
-- Final Script: `data/scripts/20260425/today_script_long.md`
+- Final Script: `data/scripts/20260426/today_script_long.md`
