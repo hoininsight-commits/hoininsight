@@ -64,7 +64,7 @@ def update_gemini_health(client, success: bool, fallback_used: bool):
     """GeminiClient의 통합 헬스 관리 기능을 호출 (v4.6)"""
     client._update_health(success=success)
 
-def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3):
+def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192):
     """중복 호출 제거 및 TIER별 재시도/백오프 적용 (v4.5)"""
     
     # [지시서 #093] TIER별 설정 (v4.7 Hardened)
@@ -78,7 +78,10 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: 
     max_retries = config["max_retries"]
     backoff = config["backoff"]
     
-    limit = 8192
+    limit = max_tokens
+    if agent == "STRATEGY_MAPPER" or agent == "WRITER":
+        limit = 16384 # 대량 데이터 분석 및 긴 스크립트 대응
+    
     current_prompt = prompt
     
     for attempt in range(max_retries + 1):

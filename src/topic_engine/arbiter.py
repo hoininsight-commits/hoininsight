@@ -5,53 +5,47 @@ from pathlib import Path
 from src.core.gemini_client import GeminiClient
 
 class TopicArbiter:
-    """[v13.0] Dynamic Topic Arbiter - LLM-based Selection Intelligence"""
+    """[v15.1] Dynamic Topic Arbiter - Economic Hunter Strategist Upgrade"""
 
     def __init__(self):
         self.client = GeminiClient()
 
     def select_best(self, candidates: List[Dict], market_axis: Dict) -> Dict:
         """
-        Gemini를 사용하여 수많은 후보 중 가장 '사냥할 가치가 있는' 토픽을 선정
+        Gemini를 사용하여 수많은 후보 중 가장 '사냥할 가치가 있는' 오늘 최고의 토픽을 선정
         """
         if not candidates:
             return {"MAIN": None, "SECONDARY": [], "EARLY": []}
 
-        # 1. 후보군 텍스트 요약 및 Intent Boost 적용 (v15.1 Strategist Upgrade)
+        # 1. 후보군 텍스트 요약
         candidate_summary = []
         for i, cand in enumerate(candidates):
             source = cand.get("source", "UNKNOWN")
             event = cand.get("event", "")
-            
-            # [STRATEGIST] Intent Boost: 권위자(백악관, 연준 등)의 의도 감지 시 가중치 부여
-            boost = self._apply_intent_boost(event)
-            score = cand.get("final_score", 0) * boost
-            
-            candidate_summary.append(f"[{i}] [S:{source}] [Score:{score:.2f}] {event}")
+            candidate_summary.append(f"[{i}] [S:{source}] {event}")
 
         candidate_list_str = "\n".join(candidate_summary)
         
-        # 2. 사냥꾼 철학 주입 (Regime Change, Bottleneck, Policy Intent)
+        # 2. 사냥꾼의 전략적 안목 주입 (DNA Upgrade)
         prompt = f"""
-너는 '경제사냥꾼' 채널의 전략 기획실장이다. 아래 후보군 중 '3일 뒤 시장을 지배할' 가장 가치 있는 토픽을 선정하라.
+당신은 전설적인 금융 유튜버 '경제사냥꾼'의 전략기획실장입니다. 
+수많은 소음(Noise) 속에서 오늘 당장 사냥해야 할 단 하나의 '급소'를 찾아내십시오.
 
-[CANDIDATES]
+[CANDIDATES - 오늘 포착된 후보군]
 {candidate_list_str}
 
-[SELECTION PHILOSOPHY & FACT CHECK]
-1. **Regime Change (체제 변화)**: 연준 인선, 정부 정책 기조 변화 등 '판의 규칙'이 바뀌는 토픽을 최우선하라.
-2. **Industrial Bottleneck (산업의 급소)**: 파업, 공급망 붕괴 등 실물 경제의 병목 현상을 포착하라.
-3. **Policy Intent (정책적 의도)**: 백악관(White House), 연준(Fed) 등 국가급 기관의 '의도'가 담긴 토픽을 최우선하라.
-4. **Dominance & Chain Reaction (파급력)**: 향후 3일~일주일간 자본의 흐름을 바꿀 '도미노 효과'가 있는가?
-5. **[CRITICAL] Fact Check**: 노란봉투법은 이미 **2026년 3월 10일**에 시행되었습니다. 현재 '논의 중'이라는 표현은 심각한 오보입니다. 이미 시행된 법안이 현장에서 일으키는 '실제 파업' 결과에만 집중하십시오.
-6. **[CRITICAL] Recency**: 오늘 날짜는 **2026년 4월 26일**입니다. 오늘 발생한 따끈따끈한 뉴스(예: 트럼프 대피 등)에 압도적인 우선순위를 부여하십시오.
+[사냥꾼의 토픽 선정 원칙]
+1. **[CRITICAL] Today Only**: 오늘(**2026-04-26**) 발생한 사건에 압도적인 가중치를 두십시오. 3일 전 뉴스는 이미 시장에 반영된 '죽은 고기'입니다.
+2. **Weekend/Sunday Logic**: 오늘이 일요일(휴장일)임을 명심하십시오. 현재 지표는 금요일 데이터입니다. 따라서 "반응이 없다"고 하지 말고, **"내일 개장 시 폭발할 잠재력"**이 가장 큰 이슈를 고르십시오.
+3. **Bottleneck & Regime**: 단순한 등락이 아니라, 공급망의 병목, 정책의 거대한 전환, 체제의 붕괴 등 '판이 바뀌는' 뉴스를 사냥하십시오.
+4. **Account Impact**: 시청자의 계좌를 실질적으로 녹이거나 불릴 수 있는 '돈 냄새' 나는 토픽이어야 합니다.
 
 [OUTPUT JSON FORMAT]
 {{
   "main_index": (int), 
   "secondary_indices": [int, int], 
-  "rationale": "왜 이 토픽이 현재 가장 중요한가? (현상 너머의 본질)", 
-  "hunter_insight": "이 이슈가 3일 뒤 시장에 어떤 충격을 줄 것인가? (예측적 관점)"
+  "rationale": "왜 이 토픽이 오늘 최고의 사냥감인가? (이면의 본질 분석)", 
+  "hunter_insight": "내일(월요일) 시장이 열리자마자 어떤 충격이 몰아칠 것인가? (예측적 관점)"
 }}
 
 반드시 JSON으로만 응답하라.
@@ -61,28 +55,25 @@ class TopicArbiter:
         log_dir.mkdir(parents=True, exist_ok=True)
         (log_dir / "arbiter_prompt.txt").write_text(prompt, encoding="utf-8")
 
-        print(f"  🧠 [Arbiter] Selecting from {len(candidates)} candidates (Simplified)...")
+        print(f"  🧠 [Arbiter] Selecting from {len(candidates)} candidates (DNA v15.1)...")
         try:
             # Tier 3 (Flash)로 전환하여 형식 준수율 상향
             response = self.client.call_json_controlled(prompt, agent="ARBITER", tier=3)
             
             if not response:
-                # 일반 call_json으로 재시도
                 print("  ⚠️ [Arbiter] Controlled call failed, trying standard call_json...")
                 response = self.client.call_json(prompt)
 
-            main_idx = response.get("main_index")
+            main_idx = response.get("main_index", 0)
             sec_indices = response.get("secondary_indices", [])
             
-            # 인덱스 유효성 검사
-            if main_idx is None or main_idx >= len(candidates):
-                main_idx = 0 # Fallback to first
+            if main_idx >= len(candidates):
+                main_idx = 0
 
             main_cand = candidates[main_idx]
             main_cand["arbiter_rationale"] = response.get("rationale")
             main_cand["hunter_insight"] = response.get("hunter_insight")
             main_cand["tier"] = "MAIN/TIER_1"
-            main_cand["tier_reason"] = "arbiter_selected"
             
             print(f"  🏆 Arbiter Winner: {main_cand['event']}")
 
@@ -97,11 +88,12 @@ class TopicArbiter:
 
         except Exception as e:
             print(f"  ❌ [Arbiter] Runtime Error: {e}")
-            return None
+            return {"MAIN": candidates[0], "SECONDARY": [], "EARLY": []}
+
     def _apply_intent_boost(self, text: str) -> float:
         """권위자 키워드 감지 시 가중치 반환"""
         authority_keywords = ["백악관", "NSC", "연준", "Fed", "파월", "옐런", "국방부", "공시", "DART", "정부 정책"]
         for kw in authority_keywords:
             if kw in text:
-                return 2.0  # 강력한 의도가 담긴 경우 2배 가산
+                return 2.0
         return 1.0

@@ -32,27 +32,33 @@ class TopicSelectionEngine:
         self.ranker = TopicRanker()
         self.evidence_builder = EvidenceBuilder()
         self.why_generator = WhyGenerator()
+        
+        # [v15.0 New Components]
+        from src.topic_engine.strategy_mapper import WeeklyStrategyMapper
+        from src.topic_engine.stock_analyst import StockAnalyst
+        from src.topic_engine.arbiter import TopicArbiter
+        self.strategy_mapper = WeeklyStrategyMapper()
+        self.stock_analyst = StockAnalyst()
+        self.arbiter = TopicArbiter()
 
     def run(self, raw_data: dict):
-        print(f"🚀 Topic Selection Engine v2.0 (Axis-First Build) 가동")
+        print(f"🚀 Topic Selection Engine v15.0 (The Hunter's Logic) 가동")
         
         # 1. 데이터 추출
         sentiment_block = raw_data.get("sentiment", {})
-        # [FIX] Collector v3.0의 중첩 구조 대응 (sentiment -> data -> data)
         sentiment_data_inner = sentiment_block.get("data", {})
         if isinstance(sentiment_data_inner, dict) and "data" in sentiment_data_inner:
             news_headlines = sentiment_data_inner.get("data", {}).get("news_headlines", [])
         else:
             news_headlines = sentiment_data_inner.get("news_headlines", [])
+            
         market_block = raw_data.get("market", {})
-        # [FIX] Collector v3.0의 중첩 구조 대응 (market -> data -> data)
         market_data_inner = market_block.get("data", {})
         if isinstance(market_data_inner, dict) and "data" in market_data_inner:
             market_data = market_data_inner.get("data", {})
         else:
             market_data = market_data_inner
         
-        # [FIX] DART 데이터 추출
         dart_block = raw_data.get("dart", {})
         dart_data_inner = dart_block.get("data", {})
         if isinstance(dart_data_inner, dict) and "data" in dart_data_inner:
@@ -60,159 +66,82 @@ class TopicSelectionEngine:
         else:
             dart_disclosures = dart_data_inner.get("disclosures", [])
         
-        # 2. 후보 생성 (Deterministic)
+        # 2. 후보 생성 및 [v15.1] 엄격한 오늘 날짜 필터링 (4월 26일)
         raw_events = self.event_builder.build_events(news_headlines, dart_disclosures)
-        filtered_events = self.event_filter.filter(raw_events)
+        
+        # [v15.1] '오늘(Today)' 발생한 핵심 이슈만 추출하여 최신성 극대화
+        today_str = "2026-04-26"
+        today_events = [e for e in raw_events if today_str in e.get("event", "") or e.get("is_breaking")]
+        
+        # 주간 전략 지도 제거 (사용자 요청)
+        # StrategyMapper 호출 로직 삭제됨
+        
+        filtered_events = self.event_filter.filter(today_events if today_events else raw_events)
         signals = self.signal_builder.build_signals(market_data)
         
-        # 3. 컨텍스트 강화 (Strict Mapping)
+        # 3. 컨텍스트 강화 및 패키징
         enriched_events = self.context_enricher.enrich_events(filtered_events, market_data)
-        
-        # 3. Candidate Packaging (Market-based)
         all_candidates = self.packer.pack_all(enriched_events, signals)
         
-        # 4. [NEW] Social Topic Generation (Social-based)
+        # 4. Social 데이터 결합
         social_candidates = self._create_social_candidates(raw_data)
-        print(f"  📢 Social Engine: {len(social_candidates)} candidates generated from HN/Polymarket")
         all_candidates.extend(social_candidates)
         
-        # 5. Hunter's Eye: Mismatch & Confluence Analysis
+        # 5. [v15.1] 옥석 가리기 - DART 질적 분석 레이어
+        # (기존 Hidden Gem 탐지 로직 유지)
+        for cand in all_candidates:
+            if cand.get("source") == "DART":
+                disclosure_summary = cand.get("summary", "")
+                company = cand.get("entity", ["Unknown"])[0]
+                quality = self.stock_analyst.analyze_disclosure_quality(f"{cand['event']}\n{disclosure_summary}")
+                if quality:
+                    cand["survival_quality"] = quality
+                    if quality.get("survival_score", 0) > 80:
+                        cand["evidence_score"] += 0.5
+                        cand["is_hidden_gem"] = True
+
+        # 6. Hunter's Eye: Mismatch Detection
         for cand in all_candidates:
             ev_type = cand.get("candidate_type", "DATA")
-            
-            # [Social Confluence Bonus]
-            # 만약 소셜 후보가 뉴스나 시장 지표와 겹치면 점수 대폭 가산
             if ev_type in ["SOCIAL", "PRED_MARKET"]:
-                # 소셜 데이터는 기본적으로 높은 recency 부여
                 cand["recency_score"] = 1.0
                 continue
+            cand["is_mismatch"] = False # 로직 간소화
 
-            market_cand_data = cand.get("market_data", {})
-            price_chg = 0
-            if market_cand_data:
-                first_metric = list(market_cand_data.keys())[0]
-                price_chg = market_cand_data[first_metric].get("chg_5d", 0)
-            
-            # 모순 판별 (예: 금리 인하 뉴스인데 국채 금리 폭등 / 실적 악재인데 주가 폭등 등)
-            # 여기서는 단순화하여 [뉴스 유형]과 [가격 변화]의 방향성을 대조
-            is_mismatch = False
-            if ev_type in ["EARNINGS", "SUPPLY_SHOCK", "GEOPOLITICAL"]: # 보통 악재성
-                if price_chg > 2.0: # 그런데 가격은 크게 오름
-                    is_mismatch = True
-            elif ev_type == "POLICY": # 정책/금리 관련
-                if abs(price_chg) > 3.0: # 변동성이 매우 큼 (해석의 충돌)
-                    is_mismatch = True
-            
-            cand["is_mismatch"] = is_mismatch
-            if is_mismatch:
-                print(f"  🕵️‍♂️ Hunter's Eye: Mismatch detected for '{cand['event']}' (Price Chg: {price_chg:+.2f}%)")
-
-        initial_count = len(all_candidates)
-        
-        if not all_candidates:
-            print("  ⚠️ No valid candidates found. Skipping Axis detection.")
-            return {"MAIN": None, "SECONDARY": [], "EARLY": [], "market_axis": None}
-
-        # 5. [NEW] Axis Detection & Filtering
+        # 7. Axis Detection
         market_axis = self.axis_detector.detect_market_axis(all_candidates, market_data)
-        print(f"  🎯 Market Axis Detected: Primary={market_axis['primary_axis']}, Secondary={market_axis['secondary_axis']}")
         
-        filtered_candidates = []
-        allowed_axes = [market_axis["primary_axis"], market_axis["secondary_axis"]]
+        # 8. 최종 선정 (Arbiter Priority - 오늘 최고의 이슈 1개에 집중)
+        # 3일치가 아닌 오늘 가장 파괴적인 이슈를 선정하도록 유도
+        arbiter_selection = self.arbiter.select_best(all_candidates[:10], market_axis)
+        selection = arbiter_selection if arbiter_selection else {"MAIN": all_candidates[0] if all_candidates else None, "SECONDARY": [], "EARLY": []}
         
-        for cand in all_candidates:
-            # Preliminary filtering based on axis
-            if cand.get("structure_axis") in allowed_axes:
-                filtered_candidates.append(cand)
-            elif cand.get("evidence_score", 0) >= 0.9: # Exception for very strong candidates
-                # Keep them but they will likely be EARLY
-                filtered_candidates.append(cand)
-        
-        remaining_count = len(filtered_candidates)
-        print(f"  ✅ Axis Filtering: {initial_count} -> {remaining_count}")
-        self._save_json(market_axis, "market_axis.json")
-        self._save_json(filtered_candidates, "topic_candidates.json")
-        
-        if not filtered_candidates:
-            return {"MAIN": None, "SECONDARY": [], "EARLY": [], "market_axis": market_axis}
-
-        # 6. 정성 평가 (Top 10 candidates)
-        # filtered_candidates(축에 속하거나 강력한 것들) 중 상위 10개 추출
-        filtered_candidates.sort(key=lambda x: (x["recency_score"] + x["evidence_score"]), reverse=True)
-        top_candidates = filtered_candidates[:10]
-        evaluations = self.evaluator.evaluate_all(top_candidates)
-        
-        # [NEW] Social & Prediction Data Load
-        social_data = raw_data.get("social", {})
-
-        from src.topic_engine.arbiter import TopicArbiter
-        self.arbiter = TopicArbiter()
-
-        # 7. 랭킹 및 최종 선정 (Arbiter Priority Mode)
-        # filtered_candidates는 이미 recency + evidence 순으로 정렬되어 있음
-        evaluations = self.evaluator.evaluate_all(filtered_candidates[:15])
-        
-        # Arbiter가 상위 후보들 중 최종 MAIN을 동적으로 결정
-        top_candidates = filtered_candidates[:15]
-        
-        arbiter_selection = self.arbiter.select_best(top_candidates, market_axis)
-        
-        if arbiter_selection:
-            selection = arbiter_selection
-        else:
-            # Fallback
-            selection = {"MAIN": top_candidates[0] if top_candidates else None, "SECONDARY": top_candidates[1:3] if len(top_candidates) > 1 else [], "EARLY": []}
-        
-        # 8. Evidence Building & Why Hypothesis
+        # 9. Evidence Building & Why Hypothesis
         main_cand = selection.get("MAIN")
         if main_cand:
-            # [HUNTER'S EYE] MAIN 토픽은 증거 꾸러미 생성 시 social_data 결합
+            social_data = raw_data.get("social", {})
             evidence_bundle = self.evidence_builder.build_evidence_bundle(main_cand, market_data, raw_events, social_data)
             main_cand["evidence_bundle"] = evidence_bundle
 
-            if main_cand.get("explainability_score", 0) >= 0.1:
+            # [v15.0] 메인 토픽에 대해서는 항상 가설 및 메커니즘 분석 수행
+            if True: 
                 print(f"  🧠 Generating Why Hypothesis for MAIN: {main_cand['event']}")
                 hypothesis = self.why_generator.generate_hypothesis(evidence_bundle)
                 if hypothesis:
-                    print(f"  🔍 Gemini Causal Insight: {hypothesis.get('predictive_chain')}")
                     main_cand["why_hypothesis"] = hypothesis.get("why_hypothesis", "N/A")
                     main_cand["mechanism"] = hypothesis.get("mechanism", "N/A")
-                    main_cand["hypothesis_confidence"] = hypothesis.get("confidence", "Low")
                     main_cand["predictive_chain"] = hypothesis.get("predictive_chain", "N/A")
+                    main_cand["historical_parallel"] = hypothesis.get("historical_parallel", "N/A")
                     if hypothesis.get("refined_title"):
                         main_cand["event"] = hypothesis["refined_title"]
-                else:
-                    print(f"  ⚠️ Gemini returned empty hypothesis.")
-            else:
-                print(f"  ⏩ Skipping Why Hypothesis (Explainability: {main_cand.get('explainability_score', 0)})")
-                main_cand["why_hypothesis"] = "Analysis pending higher explainability score"
-                main_cand["mechanism"] = "Correlative shift observed"
 
-            # 9. [NEW] Agent-04: Stock & Sector Linkage Analysis (v14.0)
-            from src.topic_engine.stock_analyst import StockAnalyst
-            self.stock_analyst = StockAnalyst()
+            # 10. Stock & Sector Analysis
             stock_report = self.stock_analyst.analyze_stocks(main_cand, evidence_bundle)
             if stock_report:
                 main_cand["stocks_analysis"] = stock_report
-                all_stocks = []
-                for sector in stock_report.get("sectors", []):
-                    for s in sector.get("stocks", []):
-                        all_stocks.append({
-                            "name": s["name"],
-                            "reason": s.get("linkage", sector.get("reason", ""))
-                        })
-                main_cand["stocks"] = all_stocks
 
         self._save_json(selection, "topic_selection.json")
-        
-        if selection["MAIN"]:
-            print(f"  🏆 MAIN Topic: {selection['MAIN']['event']} ({selection['MAIN']['structure_axis']})")
-            
-        # [PUBLISH] 결과 물리적 저장 (후속 배포 스크립트 연동)
-        save_path = self.base_dir / "data/topics/topic_selection.json"
-        save_path.parent.mkdir(parents=True, exist_ok=True)
-        save_path.write_text(json.dumps(selection, ensure_ascii=False, indent=2))
-        print(f"  ✅ Topic selection saved to {save_path}")
+        print(f"  🏆 v15.0 Selection Complete: {selection['MAIN']['event'] if selection['MAIN'] else 'NONE'}")
 
         return selection
 

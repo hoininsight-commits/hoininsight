@@ -92,12 +92,23 @@ class EvidenceBuilder:
             if stats.get("nasdaq", {}).get("chg_5d", 0) > 0.5:
                 contradictions.append("Interest rates rising but NASDAQ also rising")
 
-        # 6. Event -> Market Link (v2.1)
+        # 6. [v15.1] Temporal Context (주말/휴장 여부 판별)
+        import datetime
+        now = datetime.datetime.now()
+        is_weekend = now.weekday() >= 5 # 5: Sat, 6: Sun
+        temporal_context = {
+            "current_time": now.strftime("%Y-%m-%d %H:%M"),
+            "is_market_closed": is_weekend,
+            "market_data_ref": "Last Trading Day (Friday/Last Workday) Prices" if is_weekend else "Real-time/Today's Prices"
+        }
+        
+        # 7. Event -> Market Link (v2.1)
         event_market_link = self.build_event_market_link(axis, related_events)
         
         return {
             "axis": axis,
             "market_reaction": reaction,
+            "temporal_context": temporal_context,
             "related_events": related_events,
             "social_prediction": social_highlights[:4],
             "supporting_assets": supporting[:3],

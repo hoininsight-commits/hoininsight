@@ -50,12 +50,21 @@ class PublisherAgent:
                     "hunter_insight": main.get("hunter_insight", "N/A"),
                     "why_hypothesis": main.get("why_hypothesis", ""),
                     "mechanism": main.get("mechanism", ""),
+                    "predictive_chain": main.get("predictive_chain", ""),
+                    "historical_parallel": main.get("historical_parallel", ""),
                     "hypothesis_confidence": main.get("hypothesis_confidence", ""),
+                    "stocks_analysis": main.get("stocks_analysis", {}),
                     "is_mismatch": main.get("is_mismatch", False),
                     "stocks": main.get("stocks", []),
                     "candidate_id": main.get("candidate_id", "")
                 }
                 print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
+        
+        # 주간 전략 지도 로드
+        weekly_p = self.base_dir / "data/topics/weekly_strategy_map.json"
+        if weekly_p.exists():
+            data["weekly_map"] = safe_load_json(weekly_p)
+            print("  📅 [v15.0] Weekly Strategy Map loaded")
         
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
@@ -171,6 +180,11 @@ class PublisherAgent:
                     if res:
                         data["collection_status"] = res
                         break
+
+        # [v15.0] 주간 전략 지도 로드
+        weekly_p = self.base_dir / "data/topics/weekly_strategy_map.json"
+        if weekly_p.exists():
+            data["weekly_map"] = safe_load_json(weekly_p)
 
         return data
 
@@ -556,20 +570,36 @@ class PublisherAgent:
         confidence = signal.get("hypothesis_confidence", "MEDIUM")
 
         # 종목 리스트 구성 (Agent-04 결과 우선)
-        display_stocks = signal.get("stocks", [])
-        if not display_stocks:
-            display_stocks = stocks.get("stocks", [])
-            
-        stock_list = "\n".join([
-            f"  - {s['name']}: {s.get('reason', s.get('linkage', 'N/A'))}"
-            for s in display_stocks[:5]
-        ])
+        stocks_analysis = signal.get("stocks_analysis", {})
+        stock_list = ""
+        if stocks_analysis and "sectors" in stocks_analysis:
+            stock_list = f"  🧱 병목: {stocks_analysis.get('bottleneck', 'N/A')}\n"
+            for sector in stocks_analysis.get("sectors", []):
+                stock_list += f"  🔹 {sector['name']}\n"
+                for s in sector.get("stocks", []):
+                    stock_list += f"    - {s['name']}: {s.get('linkage', 'N/A')}\n"
+        else:
+            display_stocks = signal.get("stocks", [])
+            if not display_stocks:
+                display_stocks = stocks.get("stocks", [])
+            stock_list = "\n".join([
+                f"  - {s['name']}: {s.get('reason', s.get('linkage', 'N/A'))}"
+                for s in display_stocks[:5]
+            ])
+
+        # [v15.0] 주간 전략 지도 블록 구성
+        weekly_map = data.get("weekly_map", {})
+        weekly_block = ""
+        if weekly_map:
+            weekly_block = f"\n📅 [주간 전략 지도: {weekly_map.get('grand_narrative', 'N/A')}]\n"
+            weekly_block += f"💡 서사: {weekly_map.get('narrative_description', 'N/A')[:100]}...\n"
+            weekly_block += f"🏺 역사적 전례: {weekly_map.get('historical_parallel', {}).get('period', 'N/A')}\n"
 
         brief = f"""
 ========================================
-🏹 HOIN Insight 일일 사냥 보고서 (v14.0)
+🏹 HOIN Insight 일일 사냥 보고서 (v15.0)
 날짜: {self.today[:4]}-{self.today[4:6]}-{self.today[6:]}
-========================================{warning_block}
+========================================{warning_block}{weekly_block}
 
 [1. 오늘의 메인 사냥 토픽]
 🎯 주제: {signal.get("topic", "없음")}
@@ -582,9 +612,11 @@ class PublisherAgent:
 [3. 깊이 있는 통찰 (Hunter Insight)]
 💡 {insight}
 
-[4. AI 가설 및 메커니즘]
+[4. AI 가설 및 예측 사슬]
 🚀 가설: {hypothesis}
 ⚙️ 작동 원리: {mechanism}
+🔗 예측 사슬: {signal.get("predictive_chain", "N/A")}
+🏛️ 역사적 전례: {signal.get("historical_parallel", "N/A")}
 
 [5. 관련 종목 및 수익 논리 (Agent-04)]
 {stock_list if stock_list else "  분석 중 (데이터 수집 대기)"}

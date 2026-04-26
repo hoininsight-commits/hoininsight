@@ -65,3 +65,38 @@ class StockAnalyst:
         except Exception as e:
             print(f"  ❌ [Agent-04] Analysis Error: {e}")
             return {}
+
+    def analyze_disclosure_quality(self, disclosure_text: str) -> Dict:
+        """
+        [v15.0] 공시 본문의 질적 분석: 해결 가능성 및 본업 생존 여부 판별
+        경제사냥꾼의 '삼천리 생존 공식' 대입
+        """
+        prompt = f"""
+너는 대한민국 최고의 기업 실사 전문가이자 '경제사냥꾼'의 핵심 전략가다.
+최근 발생한 기업 공시(또는 상장폐지 사유 발생 뉴스)의 본문을 뜯어보고, 이 회사가 '시한폭탄'인지 '진흙 속의 진주'인지 판별하라.
+
+[DISCLOSURE/NEWS CONTENT]
+{disclosure_text}
+
+[SURVIVAL FORMULA - 삼천리 생존 공식]
+1. 사유의 단일성: 리스크가 해결 가능한 단일 이슈(예: 오너 횡령, 자산 확인 불가)인가, 아니면 사업 모델 자체가 썩었는가?
+2. 본업의 생존: 매출이 발생하고 있으며, 영업망이 정상 가동 중인가?
+3. 이행 의지: 개선 계획이 구체적이며 실제로 이행되고 있는가?
+
+[ANALYSIS TASK]
+위 세 가지 기준을 바탕으로 이 종목의 '생존 점수'와 '반등 가능성'을 분석하라.
+
+[OUTPUT JSON FORMAT]
+{{
+  "is_solvable": true/false,
+  "survival_score": 0~100,
+  "logic": "생존 또는 사망에 대한 단호한 논리",
+  "bottleneck_resolved": "해결되어야 할 핵심 병목 지점",
+  "verdict": "사냥꾼의 최종 판결 (HOLD/BUY/AVOID)"
+}}
+"""
+        try:
+            return self.client.call_json_controlled(prompt, agent="DISCLOSURE_ANALYST", tier=2)
+        except:
+            return {"is_solvable": False, "survival_score": 0, "verdict": "AVOID"}
+

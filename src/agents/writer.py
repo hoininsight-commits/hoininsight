@@ -31,6 +31,7 @@ class WriterAgent:
         signal_p = self.signal_dir / "today_signal.json"
         analysis_p = self.analysis_dir / "today_analysis.json"
         stocks_p = self.analysis_dir / "today_stocks.json"
+        weekly_p = Path("data/topics/weekly_strategy_map.json")
 
         data = {}
         if signal_p.exists():
@@ -39,31 +40,28 @@ class WriterAgent:
             data["analysis"] = json.loads(analysis_p.read_text())
         if stocks_p.exists():
             data["stocks_data"] = json.loads(stocks_p.read_text())
+        if weekly_p.exists():
+            data["weekly_map"] = json.loads(weekly_p.read_text())
         return data
 
     def generate_long(self, context):
-        """유튜브 롱폼 스크립트 생성 (3계층 관리 및 번역 레이어 통합)"""
-        print("  롱폼 스크립트 생성 중... [3계층 관리 적용]")
+        """[v15.0] 유튜브 롱폼 스크립트 생성 (The Hunter's Logic)"""
+        print("  롱폼 스크립트 생성 중... [v15.0 적용]")
 
         analysis = context.get("analysis", {})
-        if not analysis or not analysis.get("topic_core_claim"):
-            print("  ⚠️ 분석 데이터 품질 미달 (topic_core_claim 누락).")
-            return ""
-
+        weekly_map = context.get("weekly_map", {})
+        
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(context.get("stocks_data", {}).get("stocks", []), ensure_ascii=False),
-            cot_summary_detailed=json.dumps(analysis.get("expectation_vs_reality", {}), ensure_ascii=False),
-            kospi_foreign_net=analysis.get("market_state", {}).get("kospi_foreign_net", "0.00"),
+            weekly_map_json=json.dumps(weekly_map, ensure_ascii=False),
             topic=context.get("signal", {}).get("topic"),
             arbiter_rationale=analysis.get("arbiter_rationale", "N/A"),
             hunter_insight=analysis.get("hunter_insight", "N/A"),
-            analysis_json=json.dumps(analysis.get("level2_chain", []), ensure_ascii=False),
-            market_state_json=json.dumps(analysis.get("market_state", {}), ensure_ascii=False),
+            analysis_json=json.dumps(analysis, ensure_ascii=False),
             today=self.today
         )
 
         try:
-            # [TASK #093] TIER 1 호출
             response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=1)
             if not response: raise Exception("Empty Response")
         except Exception as e:
@@ -73,31 +71,25 @@ class WriterAgent:
         return self._censor_narrative(response)
 
     def generate_shorts(self, context):
-        """유튜브 쇼츠 스크립트 생성 (3계층 관리 및 번역 레이어 통합)"""
-        print("  쇼츠 스크립트 생성 중...")
+        """[v15.0] 유튜브 쇼츠 스크립트 생성 (The Hunter's Logic)"""
+        print("  쇼츠 스크립트 생성 중... [v15.0 적용]")
 
-        shorts_analysis = {
-            "topic": context.get("signal", {}).get("topic"),
-            "level2_chain": context.get("analysis", {}).get("level2_chain", []),
-            "market_state": context.get("analysis", {}).get("market_state", {}),
-            "stocks": [s["name"] for s in context.get("stocks_data", {}).get("stocks", [])]
-        }
-
+        analysis = context.get("analysis", {})
+        weekly_map = context.get("weekly_map", {})
+        
         prompt = WRITER_PROMPT_TEMPLATE.format(
-            stocks_json=json.dumps(shorts_analysis["stocks"], ensure_ascii=False),
-            cot_summary_detailed=json.dumps(shorts_analysis["market_state"], ensure_ascii=False),
-            kospi_foreign_net=shorts_analysis["market_state"].get("kospi_foreign_net", "0.00"),
-            topic=shorts_analysis["topic"],
-            analysis_json=json.dumps(shorts_analysis["level2_chain"], ensure_ascii=False),
-            market_state_json=json.dumps(shorts_analysis["market_state"], ensure_ascii=False),
+            stocks_json=json.dumps(context.get("stocks_data", {}).get("stocks", []), ensure_ascii=False),
+            weekly_map_json=json.dumps(weekly_map, ensure_ascii=False),
+            topic=context.get("signal", {}).get("topic"),
+            arbiter_rationale=analysis.get("arbiter_rationale", "N/A"),
+            hunter_insight=analysis.get("hunter_insight", "N/A"),
+            analysis_json=json.dumps(analysis, ensure_ascii=False),
             today=self.today
         )
         
-        prompt += "\n반드시 1분 분량의 쇼츠 대본(5단계)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
-        prompt += "\n마지막에 반드시 [DONE] 태그를 붙여서 작성이 완료되었음을 표시해라."
+        prompt += "\n반드시 1분 분량의 쇼츠 대본(8단계 요약)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
 
         try:
-            # [TASK #093] TIER 1 호출
             response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=1)
             if not response: raise Exception("Empty Response")
         except Exception as e:

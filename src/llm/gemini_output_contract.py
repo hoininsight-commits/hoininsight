@@ -33,6 +33,13 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
     if agent == "DETECTOR":
         return "topic" in data or "candidates" in data or isinstance(data, list)
     
+    if agent == "ARBITER":
+        return "main_index" in data and "rationale" in data
+    
+    if agent == "AXIS_MATCHER":
+        # 매핑 형식: {"id": "axis"} 이므로 비어있지 않은 딕셔너리면 통과
+        return isinstance(data, dict)
+    
     if agent == "TOPIC_EVALUATOR":
         return "topic_fit_score" in data and "topic_decision" in data and "why_now_summary" in data
 
@@ -47,6 +54,9 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
     if agent == "QUALITY_GATE":
         # 품질 검증 에이전트는 점수와 근거가 핵심 (설명 필드 유연성 확보)
         return "total_score" in data or "rationale" in data or "explanation" in data or "hook_score" in data
+    
+    if agent == "STRATEGY_MAPPER":
+        return "grand_narrative" in data and "narrative_description" in data
     
     # ANALYST 등 기타 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]
