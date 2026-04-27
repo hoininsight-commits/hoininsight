@@ -26,6 +26,14 @@ class TopicArbiter:
 
         candidate_list_str = "\n".join(candidate_summary)
         
+        # 현재 날짜 및 요일 정보 (v15.2 FIX)
+        import datetime
+        now = datetime.datetime.now()
+        today_str = now.strftime("%Y-%m-%d")
+        weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
+        weekday_str = weekdays[now.weekday()]
+        is_weekend = now.weekday() >= 5
+        
         # 2. 사냥꾼의 전략적 안목 주입 (DNA Upgrade)
         prompt = f"""
 당신은 전설적인 금융 유튜버 '경제사냥꾼'의 전략기획실장입니다. 
@@ -35,8 +43,8 @@ class TopicArbiter:
 {candidate_list_str}
 
 [사냥꾼의 토픽 선정 원칙]
-1. **[CRITICAL] Today Only**: 오늘(**2026-04-26**) 발생한 사건에 압도적인 가중치를 두십시오. 3일 전 뉴스는 이미 시장에 반영된 '죽은 고기'입니다.
-2. **Weekend/Sunday Logic**: 오늘이 일요일(휴장일)임을 명심하십시오. 현재 지표는 금요일 데이터입니다. 따라서 "반응이 없다"고 하지 말고, **"내일 개장 시 폭발할 잠재력"**이 가장 큰 이슈를 고르십시오.
+1. **[CRITICAL] Today Only**: 오늘(**{today_str} {weekday_str}**) 발생한 사건에 압도적인 가중치를 두십시오. 과거 뉴스는 이미 시장에 반영된 '죽은 고기'입니다.
+2. **Market Context**: 오늘은 {weekday_str}입니다. {"오늘은 휴장일이므로 내일 개장 시의 파급력을 분석하십시오." if is_weekend else "오늘은 장중 혹은 장 마감 직후이므로, 오늘의 움직임과 내일의 연속성을 분석하십시오."}
 3. **Bottleneck & Regime**: 단순한 등락이 아니라, 공급망의 병목, 정책의 거대한 전환, 체제의 붕괴 등 '판이 바뀌는' 뉴스를 사냥하십시오.
 4. **Account Impact**: 시청자의 계좌를 실질적으로 녹이거나 불릴 수 있는 '돈 냄새' 나는 토픽이어야 합니다.
 
@@ -45,7 +53,7 @@ class TopicArbiter:
   "main_index": (int), 
   "secondary_indices": [int, int], 
   "rationale": "왜 이 토픽이 오늘 최고의 사냥감인가? (이면의 본질 분석)", 
-  "hunter_insight": "내일(월요일) 시장이 열리자마자 어떤 충격이 몰아칠 것인가? (예측적 관점)"
+  "hunter_insight": "앞으로 시장에 어떤 충격 혹은 기회가 몰아칠 것인가? (예측적 관점)"
 }}
 
 반드시 JSON으로만 응답하라.

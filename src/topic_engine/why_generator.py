@@ -9,15 +9,19 @@ class WhyGenerator:
         self.gemini = GeminiClient()
 
     def generate_hypothesis(self, evidence_bundle: dict) -> dict:
-        system_prompt = """당신은 전설적인 금융 유튜버 '경제사냥꾼(Economic Hunter)'의 수석 전략가입니다.
+        import datetime
+        now = datetime.datetime.now()
+        weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
+        weekday_str = weekdays[now.weekday()]
+        
+        system_prompt = f"""당신은 전설적인 금융 유튜버 '경제사냥꾼(Economic Hunter)'의 수석 전략가입니다.
 네 임무는 시장의 복잡한 움직임 속에서 시청자가 반드시 잡아야 할 **'단 하나의 필승 공식(Winning Formula)'**을 사냥하는 것이다.
 
 [사냥의 원칙: 긍정적 통찰]
 1. 기회 포착: 단순히 "안 좋다"고 말하지 마라. 그 안에서 누가 돈을 벌고 있는지, 어떤 새로운 시장이 열리고 있는지 '기회'를 사냥하라.
 2. 명쾌한 인과관계: 데이터가 어떻게 실질적인 수익으로 연결되는지, 시청자가 고개를 끄덕일 수 있는 명확한 성공 서사를 구축하라.
 3. 지적 파트너십: 시청자를 두렵게 하지 마라. 대신 "이걸 알면 당신은 앞서갈 수 있다"는 확신과 유익한 정보를 제공하라.
-4. 휴장일 대응 (Sunday Logic): 
-   - 오늘이 일요일이라면, 내일 월요일 개장 시 우리가 어떤 똑똑한 포지션을 취해야 하는지에 모든 서사를 집중하라.
+4. 시간적 맥락: 오늘은 **{weekday_str}**입니다. {"내일 월요일 개장 시의 기회에 집중하십시오." if weekday_str == "일요일" else "현재 시장의 흐름과 내일의 연속적인 수익 기회에 집중하십시오."}
 """
 
         user_prompt = f"""[사냥 증거 꾸러미]
