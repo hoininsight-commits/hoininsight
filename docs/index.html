@@ -176,64 +176,76 @@
 
         async function loadDashboard() {
             try {
-                const response = await fetch('data/decision/today.json');
+                // 서버 환경에서는 fetch가 정상 작동합니다.
+                const response = await fetch('today_data.json');
+                if (!response.ok) throw new Error('데이터 파일을 찾을 수 없습니다.');
+                
                 const data = await response.json();
                 globalData = data;
                 
-                const main = data.MAIN || {};
-                document.getElementById('main-title').innerText = main.event || "사냥 중...";
-                document.getElementById('main-summary').innerText = main.why_hypothesis || main.why_now || "시장의 숨겨진 흐름을 포착하고 있습니다.";
+                const top = data.top_decision || {};
+                document.getElementById('main-title').innerText = top.topic || "분석 완료";
+                document.getElementById('main-summary').innerText = top.summary || top.why_now || "시장의 숨겨진 흐름을 포착했습니다.";
                 
-                if (main.predictive_chain) {
-                    const snippet = main.predictive_chain.split('\n')[0];
-                    document.getElementById('main-chain-text').innerText = snippet;
+                if (top.why_hypothesis) {
+                    document.getElementById('main-chain-text').innerText = top.why_hypothesis.substring(0, 100) + "...";
                 }
 
-                document.getElementById('hero-card').onclick = () => openModal(main);
+                const heroCard = document.getElementById('hero-card');
+                heroCard.onclick = () => openModal(top);
+
                 renderTimeline(data);
-            } catch (err) { console.error(err); }
+            } catch (err) { 
+                console.error("데이터 로드 실패:", err);
+                document.getElementById('main-title').innerText = "데이터 연결 실패 (서버 확인 필요)";
+            }
         }
 
-        function extractDate(text) {
-            const match = text.match(/\[(\d{4}-\d{2}-\d{2})\]/);
-            return match ? match[1] : "NEW";
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+        });
 
         function renderTimeline(data) {
             const container = document.getElementById('timeline-container');
+            if (!container) return;
             container.innerHTML = '';
-            const allTopics = [...(data.SECONDARY || []), ...(data.EARLY || [])];
             
-            allTopics.forEach(topic => {
+            const contents = data.content_pack?.TIER_3 || [];
+            contents.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'item-card';
                 card.innerHTML = `
-                    <span class="item-date">${extractDate(topic.event)}</span>
-                    <div class="item-title">${topic.event}</div>
+                    <span class="item-date">${data.last_updated?.split('T')[0] || 'NEW'}</span>
+                    <div class="item-title">${item.topic}</div>
                     <div class="item-meta">
-                        <span class="target-label">${topic.candidate_type || 'TARGET'}</span>
+                        <span class="target-label">${item.content_tier || 'TIER_3'}</span>
                         <span style="font-size: 0.8rem; color: var(--accent-blue);">분석 완료</span>
                     </div>
                 `;
-                card.onclick = () => openModal(topic);
+                card.onclick = () => openModal(item);
                 container.appendChild(card);
             });
         }
 
-        function openModal(topic) {
+        function openModal(item) {
             const overlay = document.getElementById('modal-overlay');
-            document.getElementById('modal-title').innerText = topic.event;
+            const title = document.getElementById('modal-title');
+            const strategy = document.getElementById('modal-strategy');
+            const script = document.getElementById('modal-script');
+
+            title.innerText = item.topic || "제목 없음";
             
-            let strategy = `【 선정 이유 】\n${topic.why_hypothesis || topic.why_now}\n\n`;
-            if (topic.mechanism) strategy += `【 작동 메커니즘 】\n${topic.mechanism}\n\n`;
-            if (topic.predictive_chain) strategy += `【 미래 시나리오 】\n${topic.predictive_chain}`;
+            let strategyContent = `【 선정 이유 】\n${item.summary || item.why_now || 'N/A'}\n\n`;
+            if (item.why_hypothesis) strategyContent += `【 가설 】\n${item.why_hypothesis}\n\n`;
+            if (item.mechanism) strategyContent += `【 작동 메커니즘 】\n${item.mechanism}\n\n`;
             
-            document.getElementById('modal-strategy').innerText = strategy;
-            
-            document.getElementById('modal-script').innerText = topic.broadcast_script || "방송 원고가 아직 생성되지 않았습니다.";
+            strategy.innerText = strategyContent;
+            script.innerText = item.script || "상세 분석 내용이 아직 생성되지 않았습니다.";
 
             overlay.style.display = 'flex';
-            setTimeout(() => overlay.classList.add('active'), 10);
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
             document.body.style.overflow = 'hidden';
         }
 
@@ -247,7 +259,8 @@
         }
 
         function copyScript() {
-            const script = document.getElementById('modal-script').innerText;
+            const script = document.getElementById('modal-script')?.innerText;
+            if (!script) return;
             navigator.clipboard.writeText(script).then(() => {
                 const btn = document.querySelector('.copy-btn');
                 const originalText = btn.innerText;
@@ -259,8 +272,6 @@
                 }, 2000);
             });
         }
-
-        loadDashboard();
     </script>
 </body>
 </html>

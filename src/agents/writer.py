@@ -62,7 +62,7 @@ class WriterAgent:
         )
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=1)
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=3)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Long) 호출 실패: {e}")
@@ -90,7 +90,7 @@ class WriterAgent:
         prompt += "\n반드시 1분 분량의 쇼츠 대본(8단계 요약)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=1)
+            response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=3)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Shorts) 호출 실패: {e}")

@@ -1,257 +1,5 @@
 [
   {
-    "timestamp": "2026-04-24T14:49:59.435307",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:50:09.848960",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:50:17.739736",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T14:50:25.216023",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:51:33.365850",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:51:43.744673",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:51:56.722408",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T14:52:01.017872",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:52:08.360385",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T14:52:21.312824",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-24T14:56:09.200779",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:56:23.822223",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T14:56:28.326409",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T14:56:53.408723",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T14:57:15.312372",
-    "agent": "QUALITY_GATE",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T16:37:13.733103",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T16:37:29.914644",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T16:39:27.481093",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T16:39:37.141262",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T16:39:52.198077",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "CONTRACT_FAIL",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T21:57:21.033100",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T21:57:26.692914",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T21:57:27.611427",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T21:57:33.247782",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T21:57:35.293852",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T21:57:40.933134",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T21:57:51.577802",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-24T21:58:12.174350",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 3
-  },
-  {
-    "timestamp": "2026-04-24T21:58:42.888074",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 4
-  },
-  {
-    "timestamp": "2026-04-24T21:59:28.475461",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 5
-  },
-  {
-    "timestamp": "2026-04-24T22:00:29.207485",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 6
-  },
-  {
-    "timestamp": "2026-04-24T22:00:29.887796",
-    "agent": "QUALITY_GATE",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T22:00:35.438772",
-    "agent": "QUALITY_GATE",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T23:03:27.223705",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T23:03:33.478829",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T23:03:36.040477",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T23:03:47.215064",
-    "agent": "AXIS_MATCHER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T23:03:51.829754",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-24T23:03:58.381236",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-24T23:04:10.632146",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 2
-  },
-  {
-    "timestamp": "2026-04-24T23:04:49.472761",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 3
-  },
-  {
-    "timestamp": "2026-04-24T23:05:26.534641",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 4
-  },
-  {
     "timestamp": "2026-04-24T23:06:13.534588",
     "agent": "WRITER",
     "failure_type": "SERVER_ERROR",
@@ -1198,5 +946,257 @@
     "agent": "LEARNER_GAP_ANALYZER",
     "failure_type": "CONTRACT_FAIL",
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T12:53:40.651834",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "UNKNOWN",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T12:53:40.656489",
+    "agent": "ARBITER",
+    "failure_type": "UNKNOWN",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T12:53:40.665338",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "UNKNOWN",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:29:40.309584",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:29:46.128049",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T16:29:46.918768",
+    "agent": "ARBITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:29:52.771391",
+    "agent": "ARBITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T16:29:54.902608",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:30:00.750152",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T16:30:11.609314",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-04-27T16:30:32.421751",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-04-27T16:31:03.256093",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-04-27T16:31:49.056943",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-04-27T16:32:50.079256",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-04-27T16:32:51.612118",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:32:57.459008",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T16:33:08.352651",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-04-27T16:33:29.285900",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-04-27T16:34:00.205623",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-04-27T16:35:07.358555",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:35:30.444465",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T16:36:08.423547",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T16:38:11.602704",
+    "agent": "WRITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:00:06.318155",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:00:16.120303",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:03:38.288671",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:04:27.059284",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:04:35.786919",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:04:40.996521",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:04:51.954665",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:05:01.159517",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:05:09.008660",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:05:13.536439",
+    "agent": "QUALITY_GATE",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:05:17.718072",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:05:20.682146",
+    "agent": "QUALITY_GATE",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:05:26.016813",
+    "agent": "AXIS_MATCHER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:05:28.072292",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:05:36.055893",
+    "agent": "ARBITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:06:21.359809",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:06:31.637132",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T18:06:35.227502",
+    "agent": "QUALITY_GATE",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-27T18:06:42.512099",
+    "agent": "QUALITY_GATE",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 1
   }
 ]

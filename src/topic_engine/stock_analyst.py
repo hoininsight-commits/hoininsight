@@ -60,7 +60,7 @@ class StockAnalyst:
         print(f"  🕵️‍♂️ [Agent-04] Analyzing stock linkage for: {topic_event[:30]}...")
         try:
             # TIER 1 호출하여 깊이 있는 분석 수행
-            response = self.client.call_json_controlled(prompt, agent="STOCK_ANALYST", tier=1)
+            response = self.client.call_json_controlled(prompt, agent="STOCK_ANALYST", tier=3)
             return response if response else {}
         except Exception as e:
             print(f"  ❌ [Agent-04] Analysis Error: {e}")

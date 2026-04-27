@@ -70,7 +70,7 @@ class TopicSelectionEngine:
         raw_events = self.event_builder.build_events(news_headlines, dart_disclosures)
         
         # [v15.1] '오늘(Today)' 발생한 핵심 이슈만 추출하여 최신성 극대화
-        today_str = "2026-04-26"
+        today_str = datetime.now().strftime("%Y-%m-%d")
         today_events = [e for e in raw_events if today_str in e.get("event", "") or e.get("is_breaking")]
         
         # 주간 전략 지도 제거 (사용자 요청)
