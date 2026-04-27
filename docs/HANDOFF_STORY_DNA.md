@@ -1,25 +1,25 @@
-# HOIN Insight v17.3 [The Intelligent Hunter] Handover
+# HOIN Insight v17.5 [The Delivery Hunter] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Learner Loop (v16.0)**: 사냥꾼의 최신 영상을 매일 학습하여 우리 로직과의 갭을 메우는 '자기 진화 루프'가 가동되었습니다. (`LearnerAgent`)
-- **Sentry-Triggered Hunting (v17.0)**: 저비용 Flash 모델(Sentry)이 시장 변동성을 먼저 체크하여, 사냥 가치가 충분할 때만 Hunter 엔진을 깨웁니다. (90% 비용 절감)
-- **Model Tiering (v17.1)**: 모든 작업에 Tier를 부여하여 추론은 Pro(Tier 1), 파싱은 Flash(Tier 3)가 담당하는 지능형 모델 배치가 완료되었습니다.
+- **YouTube Delivery System (v17.5)**: 유튜브 수집기가 단순 학습용을 넘어, 수집된 자막 전문을 즉시 텔레그램으로 배달하는 '정보 배달부' 역할을 겸하게 되었습니다.
+- **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
+- **Analysis Pause (Learner)**: 제미나이 서버 불안정 및 효율성을 고려하여, LearnerAgent의 LLM 분석(Gap Analysis)은 잠시 비활성화하고 데이터 수집 및 전송에 집중합니다.
 - **Session Cost Tracking (v17.2)**: 매 사냥마다 소요되는 USD 비용을 실시간으로 계산하여 텔레그램 브리핑에 포함합니다.
 
 ## 2. 엔진 가동 가이드
 - **실전 사냥**: `python3 src/core/scheduler.py` (Sentry → Hunter 풀루프 가동)
-- **강제 사냥**: `python3 src/core/scheduler.py --force` (Sentry 무시하고 즉시 사냥)
-- **DNA 학습**: `python3 src/agents/learner_agent.py` (최신 영상 수집 및 갭 분석)
-- **배포**: GitHub Actions 통합 완료 (`daily_pipeline.yml`이 스케줄러 기반으로 개편됨)
+- **유튜브 수집**: `python3 scripts/auto_learner.py` (현재 시각 기준 회차 판별 및 자막 배달)
+- **배포**: 
+    - `daily_pipeline.yml`: 메인 사냥 스케줄 (0, 6, 12, 18시)
+    - `youtube_learner.yml`: 유튜브 자막 수집 스케줄 (23, 5, 11, 17시)
 
 ## 3. 사냥꾼의 지능 (Hunter Intelligence)
-- **Flash (Tier 3)**: Detector, Sentry, Learner (대량 파싱 및 고속 판단)
-- **Pro (Tier 1)**: WhyGenerator, StockAnalyst, Writer (고차원 인과관계 분석 및 대본 작성)
-- **비용 정책**: Pro(In $3.5/Out $10.5), Flash(In $0.075/Out $0.3) 정책이 `GeminiClient`에 내장되어 실시간 정산됩니다.
+- **YouTube Collector**: `youtube_cookies.txt` 또는 RSS 피드를 통해 자막을 확보하며, `TelegramNotifier`를 통해 전체 텍스트를 분할 전송합니다.
+- **Model Tiering**: 추론은 Pro(Tier 1), 파싱은 Flash(Tier 3)가 담당하는 지능형 모델 배치가 유지됩니다.
 
 ## 4. 제거 및 변경된 항목
-- `daily_pipeline.yml`의 개별 에이전트 다단 실행 구조 제거 -> `scheduler.py` 단일 통합.
-- `LearnerAgent`와 메인 파이프라인의 의존성 분리 (학습은 학습대로, 실전은 실전대로).
+- `LearnerAgent`에서 제미나이 분석 로직 주석 처리 (수집 전용 모드).
+- 유튜브 자막 저장 경로 규칙 변경: `data/transcripts/youtube/YYYY/MM/DD/YYYYMMDD_N회차_제목.txt`
 
 ---
-*본 문서는 2026-04-26 지능형 스케줄링 및 비용 최적화 완료 후 갱신된 최종 지침서입니다.*
+*본 문서는 2026-04-27 유튜브 자동 배달 및 회차별 관리 시스템 구축 후 갱신된 최종 지침서입니다.*
