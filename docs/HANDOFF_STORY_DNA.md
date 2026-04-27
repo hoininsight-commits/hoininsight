@@ -22,4 +22,19 @@
 - 유튜브 자막 저장 경로 규칙 변경: `data/transcripts/youtube/YYYY/MM/DD/YYYYMMDD_N회차_제목.txt`
 
 ---
-*본 문서는 2026-04-27 유튜브 자동 배달 및 회차별 관리 시스템 구축 후 갱신된 최종 지침서입니다.*
+## 🚨 [MANDATORY AI PROTOCOL] - 필수 준수 사항
+
+모든 AI 에이전트(Antigravity 등)는 이 프로젝트에서 작업 시 다음 루틴을 지시 없이도 **자동으로 수행**해야 함.
+
+### 1. "작업 준비하자" 또는 시작 시 (Post-Pull Routine)
+- **Action 1**: `git pull`을 수행하여 최신 소스와 기록을 확보함.
+- **Action 2**: `docs/CHRONICLE.md`의 가장 최근 기록을 정독함.
+- **Action 3**: "지난 세션에서 [A]까지 완료되었고, 현재 [B] 문제가 남아있으니, 바로 [C] 작업을 시작하겠습니다"라고 브리핑하며 업무를 시작함.
+
+### 2. "푸시해줘" 또는 종료 시 (Pre-Push Routine)
+- **Action 1**: 현재까지의 성과, 발생한 에러(삽질), 해결 방법, 남은 과제를 `docs/CHRONICLE.md` 하단에 누적하여 기록함. (절대 기존 내용을 지우지 말 것)
+- **Action 2**: `docs/HANDOFF_STORY_DNA.md`의 버전 및 핵심 설정을 업데이트함.
+- **Action 3**: 모든 문서와 소스 코드를 `git push` 함.
+
+---
+*본 문서는 2026-04-27 AI 자동 동기화 프로토콜 수립 후 갱신된 최종 지침서입니다.*
