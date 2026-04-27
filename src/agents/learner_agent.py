@@ -19,26 +19,21 @@ class LearnerAgent:
         self.evolution_log_path = Path("data/history/dna_evolution.json")
         self.client = GeminiClient()
 
-    def run_evolution_loop(self):
+    def run_evolution_loop(self, run_round: int = 1):
         """1. 신규 영상 수집 및 대본 확보"""
-        print("\n🎓 [LEARNER] 1단계: 신규 영상 수집 시작...")
+        print(f"\n🎓 [LEARNER] {run_round}회차: 신규 영상 수집 시작...")
         # YouTubeWatcher 실행 (신규 영상 감지 및 대본 저장)
-        # ENABLE_LEARNING=true SKIP_GUARD=true 환경변수 필요할 수 있음
         os.environ["ENABLE_LEARNING"] = "true"
         os.environ["SKIP_GUARD"] = "true"
-        run_watcher()
+        run_watcher(run_round=run_round)
 
-        """2. 최근 7일 내의 사냥꾼 영상 리스트 확보"""
-        new_transcripts = self._get_recent_transcripts(days=7)
-        if not new_transcripts:
-            print("  [LEARNER] 최근 수집된 신규 영상이 없습니다.")
-            return
-
-        print(f"  [LEARNER] 분석 대상 영상 {len(new_transcripts)}개 포착.")
-
-        """3. 각 영상에 대해 우리 엔진의 과거 브리핑과 매칭 및 갭 분석"""
-        for transcript_info in new_transcripts:
-            self._process_single_learning_unit(transcript_info)
+        """2. 분석 단계 (제미나이 비활성화 요청에 따라 스킵)"""
+        # print("  [LEARNER] 제미나이 분석 단계는 현재 비활성화 상태입니다.")
+        # new_transcripts = self._get_recent_transcripts(days=7)
+        # if not new_transcripts:
+        #     return
+        # for transcript_info in new_transcripts:
+        #     self._process_single_learning_unit(transcript_info)
 
     def _get_recent_transcripts(self, days: int) -> list:
         results = []

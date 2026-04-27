@@ -5,6 +5,7 @@ import logging
 import yaml
 import requests
 import xml.etree.ElementTree as ET
+import re
 from pathlib import Path
 from datetime import datetime
 from urllib.request import Request, urlopen
@@ -15,6 +16,7 @@ logger = logging.getLogger("YouTubeWatcher")
 
 from src.utils.guards import check_learning_enabled
 from src.ui.narratives.transcript_ingestor import ingest_transcript
+from src.utils.telegram_notifier import TelegramNotifier
 
 REGISTRY_PATH = Path("registry/narrative_sources.yml")
 DATA_DIR = Path("data/raw/youtube")
@@ -101,7 +103,7 @@ def parse_feed_entries(xml_content: str):
         
     return entries
 
-def run_watcher():
+def run_watcher(run_round: int = 1):
     # Metadata collection from RSS is always allowed to keep index fresh.
     # Learning guard applies to heavy processing/LLM phases.
     learning_enabled = os.environ.get("ENABLE_LEARNING", "false").lower() == "true" or \
@@ -137,6 +139,11 @@ def run_watcher():
             y, m, d = _utc_date_parts(vid["published_at"])
             
             save_dir = DATA_DIR / y / m / d / vid_id
+            
+            # [CUSTOM RULE] 날짜_회차_제목.txt 형식의 파일명 생성
+            safe_title = re.sub(r'[\\/*?:"<>|]', "", vid["title"]).replace(" ", "_")
+            file_name = f"{y}{m}{d}_{run_round}회차_{safe_title}.txt"
+            transcript_path = Path("data/transcripts/youtube") / y / m / d / file_name
             meta_path = save_dir / "metadata.json"
             
             if meta_path.exists():
@@ -165,7 +172,29 @@ def run_watcher():
                 # Fetch transcript immediately after saving metadata
                 logger.info(f"Triggering transcript ingestion for: {vid_id}...")
                 try:
+                    # ingest_transcript가 특정 경로에 저장할 수 있도록 옵션이 필요할 수 있으나, 
+                    # 여기서는 수집 후 텔레그램 발송에 집중
                     ingest_transcript(meta_path)
+                    
+                    # 수집 성공 시 텔레그램 발송 (v17.5 New Requirement)
+                    # 실제 자막 파일 위치 확인
+                    actual_txt_path = Path("data/transcripts/youtube") / y / m / d / f"{vid_id}.txt"
+                    if actual_txt_path.exists():
+                        # 파일 이름 변경 (사용자 요청 규칙)
+                        transcript_path.parent.mkdir(parents=True, exist_ok=True)
+                        actual_txt_path.rename(transcript_path)
+                        
+                        script_content = transcript_path.read_text(encoding="utf-8")
+                        msg = f"📺 *[유튜브 수집 완료]*\n\n"
+                        msg += f"📌 *제목*: {vid['title']}\n"
+                        msg += f"⏰ *회차*: {run_round}회차\n"
+                        msg += f"🔗 [영상 링크]({vid['url']})\n\n"
+                        msg += f"📜 *스크립트 전문*:\n{script_content}"
+                        
+                        notifier = TelegramNotifier()
+                        notifier.send_message_in_chunks(msg)
+                        logger.info(f"Telegram notification sent for {vid_id}")
+
                 except Exception as ingest_e:
                     logger.error(f"Failed to ingest transcript right away for {vid_id}: {ingest_e}")
                     
