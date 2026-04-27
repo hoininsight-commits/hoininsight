@@ -1,62 +1,234 @@
 {
   "MAIN": {
-    "candidate_id": "d98f41b5",
+    "candidate_id": "a9951cd5",
     "candidate_type": "HYBRID",
-    "event": "[2026-04-27] [특징주] 우리금융지주, 1분기 실적 시장기대치 하회에 5% 급락 마감(종합)",
+    "event": "\"AI, 이제 '실행'의 시대! 삼성의 '숨겨진 가치' 재평가로 월요일 승부수를!\"",
     "entity": [
-      "특징주",
-      "deep_detail",
       "2026-04-27",
-      "316140"
+      "경고",
+      "이슈+",
+      "마이웨이"
     ],
     "core_facts": [
       {
-        "name": "sp500",
-        "value": 7165.0801,
-        "change": 0.55,
-        "z_score": 1.26
+        "name": "kospi",
+        "value": 6615.0298,
+        "change": 6.37,
+        "z_score": 1.54
       }
     ],
     "expected_paths": [
       "안정적 흐름 유지"
     ],
     "actual_paths": [
-      "EARNINGS"
+      "SUPPLY_SHOCK"
     ],
-    "recency_score": 0.9,
+    "recency_score": 0.1,
     "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "emerging",
+    "structure_axis": "AI 주도 기술 랠리 및 혁신",
+    "arbiter_rationale": "삼성 반도체 노조의 파업 강행 의지와 '30조 피해 우려'는 단순한 노사 분규를 넘어선다. 이는 글로벌 반도체 공급망의 핵심 병목(Bottleneck)을 위협하며, 전 세계 IT 산업의 '체제(Regime)'를 뒤흔들 잠재적 재앙이다. 30조 원이라는 구체적인 피해 규모는 시장에 엄청난 충격을 예고하며, '판이 바뀌는' 거대한 돈 냄새를 풍긴다. 특히, '급락 마감' 등 이미 시장에 반영된 과거 뉴스와 달리, 이는 현재 진행형이며 내일(월요일) 시장 개장 시 폭발할 잠재력이 가장 큰 '급소'다.",
+    "hunter_insight": "내일(월요일) 시장은 삼성전자 발(發) 반도체 쇼크로 패닉에 빠질 것이다. 삼성전자 주가는 물론, 글로벌 반도체 관련 기업들의 주가에 즉각적인 하방 압력이 가해질 것이며, 이는 전방 산업 전반의 투자 심리를 얼어붙게 할 것이다. '경제사냥꾼'은 이 혼란 속에서 단기적인 숏 포지션 기회를 포착하거나, 장기적으로는 대체 공급망 수혜 기업을 선점하여 '피 냄새' 나는 사냥을 시작해야 한다. 이는 단순한 등락이 아닌, 시장의 근간을 흔들 '급소'다.",
+    "tier": "MAIN/TIER_1",
     "evidence_bundle": {
-      "axis": "emerging",
+      "axis": "AI 주도 기술 랠리 및 혁신",
       "market_reaction": {
-        "main_asset": "sp500",
-        "intensity": 0.55,
+        "main_asset": "kospi",
+        "intensity": 6.37,
         "other_reactions": []
       },
       "temporal_context": {
-        "current_time": "2026-04-27 18:06",
+        "current_time": "2026-04-27 21:27",
         "is_market_closed": false,
         "market_data_ref": "Real-time/Today's Prices"
       },
       "related_events": [
-        "[NEWS] [2026-04-27] [특징주] 우리금융지주, 1분기 실적 시장기대치 하회에 5% 급락 마감(종합) - [deep_detail] 5% 3% 6% | (서울=연합뉴스) 김유향 기자 = 시장 기대치 이하의 실적을 발표한 우리금융지주[316140]가 27일 5% 넘게 급락한 채 마감했다. ()",
-        "[NEWS] [2026-04-27] Seoul stocks up sharply late Mon. morning on bullish corporate earnings expectations - search\nhistory\n\n\nenglish\n\n한국어\n中文\n日本語\nعربي\nespañol\nfrançais\ntiếng việt\n\n\n\n\nfacebook\ntwitter\nrss feed search\nhistory\n\n\nenglish\n\n한국어\n中文\n日本語\nعربي\nespañol\nfrançais\ntiếng việt english\n\n한국어\n中文\n日本語\nعربي\nespañol\nfrançais\ntiếng việt news\nall headlines\n\nnational\npolitics\ndiplomacy\ndefense\nnational\n\nnorth korea\n\neconomy\neconomy\nfinance\nhealth\n\n\n\n\nlatest news\non the record\nm&as\ncorporate newsroom\nearnings\nstartups\nfocus/feature\nstocks\n\n\nculture\nentertainment\nmovies\nk-pop\narts/culture\n\nsports\n\n\n\nimages\nk-wave\ngeneral\nnorth korea\ngraphics\n\n\nvideos\nkorea now\n\ntop news\nmost viewed\nkorean newspaper headlines\ntoday in korean history\nyonhap news summary\neditorials from korean dailies\n\n\nspecial\n\ninterviews\nfeatu... ()",
-        "[NEWS] [2026-04-27] [특징주] 호텔신라, 호실적·이부진 주식 매입에 장중 신고가(종합) - (서울=연합뉴스) 고은지 기자 = 호텔신라[008770]가 27일 장중 신고가를 달성했다. ()",
-        "[NEWS] [2026-04-27] [특징주] 기아, 엇갈린 1분기 실적 해석…등락 반복하다 하락 마감(종합) - (서울=연합뉴스) 김유향 기자 = 27일 국내 증시가 사상 최고치를 넘어섰지만, 기아[000270]는 소폭 내린 채 마감했다. ()"
+        "[DART] [삼성물산] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260424800768 ()",
+        "[DART] [삼성물산] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260424800793 ()",
+        "[DART] [삼성전자] 자기주식취득결과보고서 - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260424000778 ()",
+        "[NEWS] [2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal - [deep_detail] 49% 49% 49% | it's part of customers bank ceo sam sidhu's effort to get ahead in the industry's race to transform itself using ai agents as a new digital workforce ()"
       ],
       "social_prediction": [],
-      "supporting_assets": [
-        "kospi: 6.37%"
-      ],
+      "supporting_assets": [],
       "contradictions": [
         "No clear contradictions found"
       ],
       "event_market_link": [
         "earnings/tech → investor sentiment → capital flow → equity positive"
       ]
+    },
+    "why_hypothesis": "시장은 아직 AI 기술의 '개발' 단계에만 시선을 고정하고 있지만, 진정한 수익 기회는 이제 AI가 금융, 건설 등 '전통 산업' 전반으로 확산되어 실제 비즈니스 가치를 창출하는 '실행' 단계에서 폭발적으로 터져 나올 것입니다. 은행 CEO가 AI 클론으로 실적 발표를 진행하고 오픈AI와 계약을 맺는다는 소식은 이 거대한 패러다임 전환의 시작을 알리는 강력한 신호입니다. 대한민국 경제의 핵심 축인 삼성은 AI 핵심 인프라를 제공함과 동시에, 삼성물산의 견조한 사업을 통해 AI를 광범위하게 적용할 잠재력을 지니고 있어, 현재 그 가치가 현저히 저평가되어 있습니다. 월요일 개장과 동시에 이 'AI 실행 가치'에 대한 시장의 재평가가 시작될 것입니다.",
+    "mechanism": "1.  **AI의 전방위적 확산 가속화:** 금융권의 사례에서 보듯, AI는 이제 특정 기술 기업의 전유물이 아니라 모든 산업의 생산성과 효율성을 혁신하는 필수 도구로 자리 잡고 있습니다. 이는 AI 기술과 솔루션, 그리고 이를 구동할 핵심 인프라에 대한 전례 없는 수요를 창출합니다.\n2.  **삼성의 'AI 풀 스택' 시너지:**\n*   **핵심 인프라 제공자:** 삼성전자는 HBM을 포함한 고성능 메모리, 파운드리, 시스템 반도체 등 AI 시대의 '골드러시'에 필요한 '곡괭이와 삽'을 공급하는 핵심 플레이어입니다. AI 확산은 삼성전자의 실적 개선과 주주 가치 증대로 직결되며, 자사주 취득은 미래 성장에 대한 경영진의 강력한 확신을 보여줍니다.\n*   **AI 통합 및 적용의 선두주자:** 삼성물산의 대규모 계약들은 단순한 건설/상사 사업을 넘어, 스마트 시티, 데이터 센터 구축, AI 기반 물류 및 공급망 최적화 등 AI 기술이 접목될 수 있는 거대한 잠재 시장을 의미합니다. 삼성물산은 삼성그룹 전반의 AI 적용을 가속화하며 새로운 가치 창출의 허브 역할을 할 것입니다.\n3.  **가치 재평가와 주가 상승:** AI의 광범위한 산업 적용이 가시화될수록, 삼성그룹은 AI 기술의 '생산자'이자 '최대 소비자'로서의 독보적인 위치를 재평가받게 될 것입니다. 이는 기업 이익의 구조적 성장과 함께 주가에 강력한 AI 프리미엄을 부여하며, 월요일 시장에서 투자자들의 적극적인 매수 포지션을 유도할 것입니다.",
+    "predictive_chain": "1.  **1단계 (변화 포착):** AI 기술 발전이 임계점을 넘어, 이제 금융, 건설 등 '전통 산업' 영역으로 빠르게 확산되며 실제 비즈니스 가치를 창출하기 시작한다. (은행 CEO의 AI 클론 활용 및 삼성물산의 견조한 계약들은 이 변화의 선명한 신호다.)\n2.  **2단계 (가치 재평가):** 시장은 AI의 '실행' 단계에서의 파급력을 과소평가하고 있다. 삼성전자와 같은 AI 핵심 인프라 제공자이자 삼성물산처럼 AI를 광범위하게 적용할 수 있는 기업들의 내재가치가 재평가되며, 주가에 AI 프리미엄이 본격적으로 반영되기 시작한다. 삼성전자의 자사주 매입은 이러한 미래 가치에 대한 경영진의 강력한 확신을 보여준다.\n3.  **3단계 (수익 실현):** AI의 산업 전반 확산은 삼성그룹 전반의 실적 개선으로 이어지고, 이는 주주 환원 확대 및 추가적인 주가 상승을 견인한다. 월요일 개장 시, 시장은 이러한 'AI 실행 가치'를 선점하려는 움직임을 보이며, 삼성 관련 포지션에 대한 관심이 집중될 것이다.",
+    "historical_parallel": "1990년대 후반 인터넷 혁명 초기, 시장은 단순히 '닷컴'이라는 이름만 붙은 기업들에 열광했습니다. 하지만 진정한 장기적 승자는 인터넷이라는 인프라를 통해 기존 산업을 혁신하거나(아마존), 그 인프라를 구축하는 핵심 기술을 제공한 기업들(시스코)이었습니다. 지금의 AI 시대 역시 마찬가지입니다. 순수 AI 기술 개발사를 넘어, AI를 통해 기존 비즈니스를 혁신하고 AI 인프라를 공급하는 기업들이 다음 대세 상승장의 주역이 될 것입니다.",
+    "stocks_analysis": {
+      "bottleneck": "AI 데이터센터의 폭발적 증가로 인한 '전력 공급 및 효율적 분배 인프라'의 절대적 부족. 특히, 고밀도 AI 연산을 위한 안정적이고 대용량의 전력 공급과 이를 위한 초고압 변압기 및 전력 설비의 수요 폭증은 전 세계적인 산업의 급소로 부상할 것입니다. 기존 전력망으로는 AI 시대의 전력 수요를 감당할 수 없습니다.",
+      "sectors": [
+        {
+          "name": "전력 인프라 (Power Infrastructure)",
+          "strategic_reason": "AI 실행 시대는 단순히 AI 칩을 만드는 것을 넘어, 그 칩들이 24시간 365일 쉬지 않고 연산할 수 있는 거대한 '전력 혈관'을 필요로 합니다. 금융, 건설 등 전통 산업 전반으로 AI가 확산될수록, 각 산업의 핵심 거점에는 AI 데이터센터가 필수적으로 구축될 것이며, 이는 전례 없는 전력 수요를 창출합니다. 기존 전력망으로는 감당 불가능한 AI 데이터센터의 전력 밀도와 안정성 요구는 전 세계적인 전력 인프라 업그레이드를 필연적으로 촉발합니다. 이는 단순한 전력 생산을 넘어, 초고압 송변전 설비, 스마트 그리드 솔루션 등 '전력의 고속도로'를 건설하고 관리하는 기업들에게 막대한 기회를 제공합니다. 삼성의 AI 실행 가속화는 이러한 전력 인프라 수요를 더욱 폭발적으로 증가시킬 것입니다.",
+          "stocks": [
+            {
+              "name": "HD현대일렉트릭",
+              "type": "2차 전략주",
+              "linkage": "AI 데이터센터 및 산업 전반의 전력 수요 급증은 초고압 변압기, 차단기 등 전력 기기 시장의 구조적 성장을 견인합니다. HD현대일렉트릭은 글로벌 전력 인프라 투자 확대의 직접적인 수혜를 입고 있으며, 특히 북미 등 주요 시장에서 노후 전력망 교체 및 신규 데이터센터 건설 수요에 힘입어 수주 잔고가 폭발적으로 증가하고 있습니다. 이는 매출액 증가와 함께 고마진 제품 비중 확대로 이익률 개선에 직결됩니다. AI 데이터센터는 일반 산업 시설보다 훨씬 높은 전력 밀도를 요구하며, 이는 HD현대일렉트릭의 고부가가치, 고용량 제품 수요를 더욱 증폭시키는 필연적 연결 고리입니다.",
+              "moat": "전력 기기 산업은 기술 장벽이 높고, 품질 및 신뢰성이 최우선시되는 과점 시장입니다. HD현대일렉트릭은 수십 년간 축적된 기술력과 글로벌 레퍼런스를 바탕으로, 신규 진입이 극히 어려운 독점적 지위를 확보하고 있습니다. 특히, AI 시대에 필수적인 고효율, 고용량 변압기 기술은 대체 불가능한 핵심 역량이며, 엄격한 국제 인증과 장기간의 공급 이력이 요구되어 후발 주자의 진입이 사실상 불가능합니다. 이는 AI 시대의 '전력 혈관'을 독점적으로 공급하는 지위입니다."
+            },
+            {
+              "name": "LS ELECTRIC",
+              "type": "2차 전략주",
+              "linkage": "AI 시대의 전력 인프라 투자는 단순히 변압기 교체를 넘어, 스마트 그리드, 데이터센터 전력 관리 시스템, 에너지 저장 장치(ESS) 등 통합 솔루션 수요를 증대시킵니다. LS ELECTRIC은 전력 기기뿐만 아니라 자동화, 스마트 팩토리, DC(직류) 전력 솔루션 등 AI 시대에 필요한 '전력 효율화 및 최적화' 전반을 아우르는 포트폴리오를 보유하고 있습니다. AI 데이터센터의 전력 효율 극대화는 운영 비용 절감과 직결되므로, LS ELECTRIC의 솔루션은 필수불가결한 요소가 됩니다. 삼성물산이 추진할 스마트 시티, 데이터센터 구축 사업에도 LS ELECTRIC의 전력 솔루션은 핵심적인 역할을 할 수밖에 없으며, 이는 매출 증대와 함께 고부가가치 솔루션 공급으로 이익률을 견인할 것입니다.",
+              "moat": "LS ELECTRIC은 전력 시스템 통합 솔루션 제공자로서, 단순 제품 공급을 넘어 설계, 구축, 운영까지 아우르는 턴키(Turn-key) 역량을 보유하고 있습니다. 특히, DC 전력 시스템과 스마트 그리드 기술은 AI 데이터센터의 효율성을 극대화하는 핵심 기술로, 국내외에서 독보적인 경쟁력을 인정받고 있습니다. 이는 특정 제품을 넘어선 '솔루션 공급자'로서의 대체 불가능한 지위를 부여하며, 복잡한 AI 인프라 환경에서 안정적인 전력 공급과 효율적 관리를 위한 필수 파트너로 자리매김합니다. AI 시대의 전력 효율성은 곧 기업의 경쟁력으로 직결되기에, LS ELECTRIC의 가치는 더욱 부각될 것입니다."
+            }
+          ]
+        }
+      ],
+      "overall_strategy": "대중은 AI의 '뇌'에만 열광하며 AI 칩과 모델 개발사에 시선을 고정하고 있지만, 자본은 이미 AI의 '심장과 혈관'으로 이동하고 있습니다. AI 실행 시대의 진정한 승자는 AI를 구동하는 핵심 인프라, 특히 전력 공급 및 관리 시스템을 독점적으로 제공하는 기업들입니다. 삼성의 AI 가치 재평가는 이 거대한 인프라 투자 사이클의 서막을 알리는 강력한 신호탄일 뿐입니다. 월요일, 시장의 시선이 삼성의 AI 기술력에 쏠릴 때, 우리는 그 이면에 숨겨진 '전력 인프라'라는 필연적 수혜주에 주목해야 합니다. 자본은 언제나 가장 확실하고 대체 불가능한 '급소'를 찾아 움직이며, AI 시대의 전력 인프라는 바로 그 급소입니다. 대중의 환희 뒤에 숨겨진 자본의 냉혹한 이동 경로를 읽어내십시오."
     }
   },
-  "SECONDARY": [],
-  "EARLY": []
+  "SECONDARY": [
+    {
+      "candidate_id": "59da6997",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-27] 김정관 \"삼성 반도체 파업은 상상도 못할 일\"",
+      "entity": [
+        "2026-04-27",
+        "삼성 반도체 파업은 상상도 못할 일"
+      ],
+      "core_facts": [
+        {
+          "name": "kospi",
+          "value": 6615.0298,
+          "change": 6.37,
+          "z_score": 1.54
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "SUPPLY_SHOCK"
+      ],
+      "recency_score": 0.1,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "AI 주도 기술 랠리 및 혁신",
+      "tier": "SECONDARY/TIER_2"
+    },
+    {
+      "candidate_id": "61311e78",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal",
+      "entity": [
+        "s effort to get ahead in the industry",
+        "deep_detail",
+        "s signing an openai deal [deep_detail] 49% 49% 49% | it",
+        "2026-04-27"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 0.9,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "1. AI 주도 기술 랠리 및 혁신",
+      "tier": "SECONDARY/TIER_2"
+    }
+  ],
+  "EARLY": [
+    {
+      "candidate_id": "cae4e9b3",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-27] Wall Street expects solid Q1 results for GM, as Ford and Stellantis try to gain traction",
+      "entity": [
+        "2026-04-27",
+        "deep_detail"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 0.9,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "AI 주도 기술 랠리 및 혁신"
+    },
+    {
+      "candidate_id": "d98f41b5",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-27] [특징주] 우리금융지주, 1분기 실적 시장기대치 하회에 5% 급락 마감(종합)",
+      "entity": [
+        "2026-04-27",
+        "특징주",
+        "316140"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 0.1,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "AI 주도 기술 랠리 및 혁신"
+    },
+    {
+      "candidate_id": "5e949bd0",
+      "candidate_type": "HYBRID",
+      "event": "[2026-04-27] [특징주] 호텔신라, 호실적·이부진 주식 매입에 장중 신고가(종합)",
+      "entity": [
+        "2026-04-27",
+        "특징주",
+        "008770"
+      ],
+      "core_facts": [
+        {
+          "name": "sp500",
+          "value": 7165.0801,
+          "change": 0.55,
+          "z_score": 1.26
+        }
+      ],
+      "expected_paths": [
+        "안정적 흐름 유지"
+      ],
+      "actual_paths": [
+        "EARNINGS"
+      ],
+      "recency_score": 0.1,
+      "evidence_score": 0.8,
+      "is_mismatch": false,
+      "structure_axis": "AI 주도 기술 랠리 및 혁신"
+    }
+  ]
 }

@@ -133,7 +133,7 @@ class ContentEngine:
         prompt += "{\"title\": \"유튜브 제목\", \"script\": \"태그 없이 작성된 전체 스크립트 텍스트\"}"
 
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
+            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=3)
             if isinstance(res, dict) and "script" in res:
                 return res["script"]
             if isinstance(res, str) and len(res) > 50:

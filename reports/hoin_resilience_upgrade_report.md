@@ -9,7 +9,7 @@
 - **종합 점수**: 4.6 / 5.0
 - **상세 점수**:
     - HOOK: 5
-    - WHY NOW: 5
+    - WHY NOW: 3
     - SCENARIO: 5
     - ACTION: 5
 

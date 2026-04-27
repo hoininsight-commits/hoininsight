@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-24T23:06:13.534588",
-    "agent": "WRITER",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 5
-  },
-  {
     "timestamp": "2026-04-24T23:07:15.398173",
     "agent": "WRITER",
     "failure_type": "SERVER_ERROR",
@@ -1198,5 +1192,11 @@
     "agent": "QUALITY_GATE",
     "failure_type": "SERVER_ERROR",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-27T21:28:06.512499",
+    "agent": "STOCK_ANALYST",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
   }
 ]
