@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-04-27T21:26:19.362367",
+    "collected_at": "2026-04-27T23:14:36.361475",
     "ttl_minutes": 240,
     "source": "Last30Days-Integrated-Collector"
   },
@@ -21,8 +21,8 @@
               "probability": 100.0
             }
           ],
-          "liquidity": 12604843.60454,
-          "volume24h": 1849375.93,
+          "liquidity": 12500848.88902,
+          "volume24h": 1809719.53,
           "is_breaking": false
         },
         {
@@ -38,8 +38,8 @@
               "probability": 99.6
             }
           ],
-          "liquidity": 694919.3697,
-          "volume24h": 1126355.1854699992,
+          "liquidity": 687850.89838,
+          "volume24h": 1055916.6091499995,
           "is_breaking": false
         },
         {
@@ -48,15 +48,15 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 15.5
+              "probability": 17.5
             },
             {
               "name": "No",
-              "probability": 84.5
+              "probability": 82.5
             }
           ],
-          "liquidity": 339269.613,
-          "volume24h": 242090.11870599998,
+          "liquidity": 200900.883,
+          "volume24h": 311327.49903999997,
           "is_breaking": false
         },
         {
@@ -72,8 +72,25 @@
               "probability": 10.5
             }
           ],
-          "liquidity": 398385.719,
-          "volume24h": 131909.129842,
+          "liquidity": 439756.0706,
+          "volume24h": 141993.20097399998,
+          "is_breaking": false
+        },
+        {
+          "title": "Fed Decision in June?",
+          "url": "https://polymarket.com/event/fed-decision-in-june-825",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 0.4
+            },
+            {
+              "name": "No",
+              "probability": 99.7
+            }
+          ],
+          "liquidity": 467996.19415,
+          "volume24h": 33087.338320999996,
           "is_breaking": false
         },
         {
@@ -89,25 +106,25 @@
               "probability": 100.0
             }
           ],
-          "liquidity": 534146.74644,
-          "volume24h": 26258.804,
+          "liquidity": 536302.67728,
+          "volume24h": 18280.74,
           "is_breaking": false
         },
         {
-          "title": "How many Fed rate cuts in 2026?",
-          "url": "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+          "title": "Which company has best AI model end of June?",
+          "url": "https://polymarket.com/event/which-company-has-best-ai-model-end-of-june",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 0.2
+              "probability": 0.1
             },
             {
               "name": "No",
-              "probability": 99.8
+              "probability": 99.9
             }
           ],
-          "liquidity": 197574.91292,
-          "volume24h": 22908.43849999999,
+          "liquidity": 75109.08771,
+          "volume24h": 15422.232999999998,
           "is_breaking": false
         },
         {
@@ -123,8 +140,8 @@
               "probability": 100.0
             }
           ],
-          "liquidity": 33965.83431,
-          "volume24h": 13720.922,
+          "liquidity": 34801.25631,
+          "volume24h": 12742.39,
           "is_breaking": false
         },
         {
@@ -133,49 +150,15 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 15.4
+              "probability": 15.2
             },
             {
               "name": "No",
-              "probability": 84.5
+              "probability": 84.9
             }
           ],
-          "liquidity": 46900.83191,
-          "volume24h": 11815.662783999998,
-          "is_breaking": false
-        },
-        {
-          "title": "Which company has best AI model end of June?",
-          "url": "https://polymarket.com/event/which-company-has-best-ai-model-end-of-june",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 0.2
-            },
-            {
-              "name": "No",
-              "probability": 99.8
-            }
-          ],
-          "liquidity": 73587.52997,
-          "volume24h": 3647.377554,
-          "is_breaking": false
-        },
-        {
-          "title": "SpaceX IPO closing market cap above ___ ?",
-          "url": "https://polymarket.com/event/spacex-ipo-closing-market-cap-above",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 11.0
-            },
-            {
-              "name": "No",
-              "probability": 89.0
-            }
-          ],
-          "liquidity": 34836.4664,
-          "volume24h": 2115.33,
+          "liquidity": 46385.81445,
+          "volume24h": 11414.773237,
           "is_breaking": false
         },
         {
@@ -191,8 +174,42 @@
               "probability": 98.7
             }
           ],
-          "liquidity": 17390.66782,
-          "volume24h": 1316.318369,
+          "liquidity": 16835.61939,
+          "volume24h": 1483.191452,
+          "is_breaking": false
+        },
+        {
+          "title": "SpaceX IPO Closing Market Cap (Lowest Strikes)",
+          "url": "https://polymarket.com/event/spacex-ipo-closing-market-cap-lowest-strikes",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 0.2
+            },
+            {
+              "name": "No",
+              "probability": 99.8
+            }
+          ],
+          "liquidity": 26690.32433,
+          "volume24h": 1292.3966659999999,
+          "is_breaking": false
+        },
+        {
+          "title": "NVIDIA (NVDA) closes above ___ on April 27?",
+          "url": "https://polymarket.com/event/nvda-close-above-on-april-27-2026",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 99.6
+            },
+            {
+              "name": "No",
+              "probability": 0.4
+            }
+          ],
+          "liquidity": 12090.58616,
+          "volume24h": 690.207825,
           "is_breaking": false
         },
         {
@@ -208,25 +225,8 @@
               "probability": 99.7
             }
           ],
-          "liquidity": 4215.10087,
+          "liquidity": 4233.07777,
           "volume24h": 523.256,
-          "is_breaking": false
-        },
-        {
-          "title": "NVIDIA (NVDA) closes above ___ on April 27?",
-          "url": "https://polymarket.com/event/nvda-close-above-on-april-27-2026",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 99.9
-            },
-            {
-              "name": "No",
-              "probability": 0.1
-            }
-          ],
-          "liquidity": 1375.90378,
-          "volume24h": 458.337825,
           "is_breaking": false
         },
         {
@@ -235,15 +235,15 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 94.0
+              "probability": 94.6
             },
             {
               "name": "No",
-              "probability": 6.0
+              "probability": 5.4
             }
           ],
-          "liquidity": 4048.38351,
-          "volume24h": 278.823775,
+          "liquidity": 7032.34544,
+          "volume24h": 274.803775,
           "is_breaking": false
         },
         {
@@ -259,41 +259,24 @@
               "probability": 87.0
             }
           ],
-          "liquidity": 2336.7869,
+          "liquidity": 2455.7067,
           "volume24h": 39.730000000000004,
           "is_breaking": false
         },
         {
-          "title": "GPU rental prices (B200) hit___ by May 31?",
-          "url": "https://polymarket.com/event/gpu-rental-prices-b200-hit-by-may-31",
+          "title": "US economic state at the end of 2026?",
+          "url": "https://polymarket.com/event/us-economic-state-at-the-end-of-2026",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 60.5
+              "probability": 18.0
             },
             {
               "name": "No",
-              "probability": 39.5
+              "probability": 82.0
             }
           ],
-          "liquidity": 39.9186,
-          "volume24h": 27.0,
-          "is_breaking": false
-        },
-        {
-          "title": "GPU rental prices (H200) hit___ by May 31?",
-          "url": "https://polymarket.com/event/gpu-rental-prices-h200-hit-by-may-31",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 30.5
-            },
-            {
-              "name": "No",
-              "probability": 69.5
-            }
-          ],
-          "liquidity": 58.4595,
+          "liquidity": 1665.8834,
           "volume24h": 0.0,
           "is_breaking": false
         },
@@ -310,7 +293,7 @@
               "probability": 61.5
             }
           ],
-          "liquidity": 409.8938,
+          "liquidity": 455.3955,
           "volume24h": 0.0,
           "is_breaking": false
         },
@@ -327,24 +310,41 @@
               "probability": 92.5
             }
           ],
-          "liquidity": 2503.1982,
+          "liquidity": 3561.4514,
           "volume24h": 0.0,
           "is_breaking": false
         },
         {
-          "title": "US economic state at the end of 2026?",
-          "url": "https://polymarket.com/event/us-economic-state-at-the-end-of-2026",
+          "title": "GPU rental prices (H200) hit___ by May 31?",
+          "url": "https://polymarket.com/event/gpu-rental-prices-h200-hit-by-may-31",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 21.5
+              "probability": 30.5
             },
             {
               "name": "No",
-              "probability": 78.5
+              "probability": 69.5
             }
           ],
-          "liquidity": 1613.633,
+          "liquidity": 58.4789,
+          "volume24h": 0.0,
+          "is_breaking": false
+        },
+        {
+          "title": "GPU rental prices (B200) hit___ by May 31?",
+          "url": "https://polymarket.com/event/gpu-rental-prices-b200-hit-by-may-31",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 60.5
+            },
+            {
+              "name": "No",
+              "probability": 39.5
+            }
+          ],
+          "liquidity": 39.8986,
           "volume24h": 0.0,
           "is_breaking": false
         }
@@ -353,7 +353,7 @@
         {
           "title": "Alberta startup sells no-tech tractors for half price",
           "url": "https://wheelfront.com/this-alberta-startup-sells-no-tech-tractors-for-half-price/",
-          "points": 2304,
+          "points": 2307,
           "comments": 775,
           "author": "Kaibeezy",
           "date": "2026-04-22"
@@ -369,8 +369,8 @@
         {
           "title": "DeepSeek v4",
           "url": "https://api-docs.deepseek.com/news/news260424",
-          "points": 2071,
-          "comments": 1593,
+          "points": 2074,
+          "comments": 1595,
           "author": "impact_sy",
           "date": "2026-04-24"
         },
@@ -378,7 +378,7 @@
           "title": "GPT-5.5",
           "url": "https://openai.com/index/introducing-gpt-5-5/",
           "points": 1570,
-          "comments": 1048,
+          "comments": 1049,
           "author": "rd",
           "date": "2026-04-23"
         },
@@ -391,14 +391,6 @@
           "date": "2026-04-21"
         },
         {
-          "title": "All phones sold in the EU to have replaceable batteries from 2027",
-          "url": "https://www.theolivepress.es/spain-news/2026/04/20/eu-to-force-replaceable-batteries-in-phones-and-tablets-from-2027/",
-          "points": 1446,
-          "comments": 1262,
-          "author": "ramonga",
-          "date": "2026-04-20"
-        },
-        {
           "title": "Laws of Software Engineering",
           "url": "https://lawsofsoftwareengineering.com",
           "points": 1160,
@@ -409,15 +401,15 @@
         {
           "title": "The West forgot how to make things, now it’s forgetting how to code",
           "url": "https://techtrenches.dev/p/the-west-forgot-how-to-make-things",
-          "points": 1135,
-          "comments": 815,
+          "points": 1143,
+          "comments": 818,
           "author": "milkglass",
           "date": "2026-04-26"
         },
         {
           "title": "I am building a cloud",
           "url": "https://crawshaw.io/blog/building-a-cloud",
-          "points": 1108,
+          "points": 1109,
           "comments": 560,
           "author": "bumbledraven",
           "date": "2026-04-23"
@@ -431,6 +423,14 @@
           "date": "2026-04-21"
         },
         {
+          "title": "Windows 9x Subsystem for Linux",
+          "url": "https://social.hails.org/@hailey/116446826733136456",
+          "points": 1008,
+          "comments": 251,
+          "author": "sohkamyung",
+          "date": "2026-04-22"
+        },
+        {
           "title": "Meta to start capturing employee mouse movements, keystrokes for AI training",
           "url": "https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/",
           "points": 796,
@@ -441,16 +441,16 @@
         {
           "title": "An AI agent deleted our production database. The agent's confession is below",
           "url": "https://twitter.com/lifeof_jer/status/2048103471019434248",
-          "points": 748,
-          "comments": 880,
+          "points": 771,
+          "comments": 893,
           "author": "jeremyccrane",
           "date": "2026-04-26"
         },
         {
           "title": "AI should elevate your thinking, not replace it",
           "url": "https://www.koshyjohn.com/blog/ai-should-elevate-your-thinking-not-replace-it/",
-          "points": 580,
-          "comments": 427,
+          "points": 662,
+          "comments": 475,
           "author": "koshyjohn",
           "date": "2026-04-26"
         },
@@ -498,15 +498,15 @@
           "title": "MeshCore development team splits over trademark dispute and AI-generated code",
           "url": "https://blog.meshcore.io/2026/04/23/the-split",
           "points": 281,
-          "comments": 177,
+          "comments": 178,
           "author": "wielebny",
           "date": "2026-04-23"
         },
         {
           "title": "The AI industry is discovering that the public hates it",
           "url": "https://newrepublic.com/article/209163/ai-industry-discovering-public-backlash",
-          "points": 271,
-          "comments": 359,
+          "points": 273,
+          "comments": 363,
           "author": "chirau",
           "date": "2026-04-25"
         },
@@ -514,9 +514,8 @@
           "title": "U.S. soldier charged with using classified info to profit from prediction market",
           "url": "https://www.justice.gov/usao-sdny/pr/us-soldier-charged-using-classified-information-profit-prediction-market-bets?bm-verify=AAQAAAAN_____y6To7sZYZ502biZwIHXlr-7zXZUqV4H0xLTfW__wDA3SjNLqifXRaQwsikyuz6IJknyuL8xfVYRkesxcDk5V10m-HoXl2K93f17rygBphL77WVFoQ_XvlmUo922IwM_DQ66137X6wWMtpdHslcEjpJG7KbBmUw9Su4kDENpDt_yv2spThQZehgv-X1Adk5U2VHfp41co2s_QJGjRj4y0KmL1mhSCyVaE7MC1LHG0mtP-xYmD0xBOQwn6PlHkPiP5Nt46h5ZIjLGXgCZDEVD42i7rIEM379DKLPUPX0PDNmOAwFSuTqcTDVnT_UUV8vxpHLRMb7rUxPxKUPcIB23iZTRJddWDDtPHMXadpwv67xr-f1sKDLZT9NgHCO4iuC2EthmAt0",
           "points": 251,
-          "comments": 2,
-          "author": "paulpauper",
-          "date": "2026-04-23"
+          "comments": 0,
+          "author": "paulpauper"
         },
         {
           "title": "San Diego rents declined following surge in supply",
@@ -527,20 +526,11 @@
           "date": "2026-04-22"
         },
         {
-          "title": "Ask HN: How to solve the cold start problem for a two-sided marketplace?",
-          "url": "https://news.ycombinator.com/item?id=47834213",
-          "points": 149,
-          "comments": 163,
-          "author": "alegd",
-          "date": "2026-04-20"
-        },
-        {
           "title": "Prediction markets are breaking the news and becoming their own beat",
           "url": "https://www.niemanlab.org/2026/04/prediction-markets-are-breaking-the-news-and-becoming-their-own-beat/",
           "points": 52,
-          "comments": 70,
-          "author": "gnabgib",
-          "date": "2026-04-21"
+          "comments": 0,
+          "author": "gnabgib"
         },
         {
           "title": "A populist wave is rising to end the 'captive' repair economy",
@@ -554,49 +544,43 @@
           "title": "Ask HN: What skills are future proof in an AI driven job market?",
           "url": "https://news.ycombinator.com/item?id=47845050",
           "points": 39,
-          "comments": 77,
-          "author": "sunny678",
-          "date": "2026-04-21"
+          "comments": 0,
+          "author": "sunny678"
         },
         {
           "title": "EV sales soar in main European markets as drivers shun expensive petrol",
           "url": "https://www.reuters.com/sustainability/climate-energy/ev-sales-soar-main-european-markets-drivers-shun-expensive-petrol-2026-04-19/",
           "points": 39,
-          "comments": 67,
-          "author": "akyuu",
-          "date": "2026-04-20"
+          "comments": 0,
+          "author": "akyuu"
         },
         {
           "title": "Stock markets are too high and set to fall, says Bank of England deputy",
           "url": "https://www.bbc.com/news/articles/c75kp1y43lgo",
           "points": 38,
-          "comments": 23,
-          "author": "wood_spirit",
-          "date": "2026-04-24"
+          "comments": 0,
+          "author": "wood_spirit"
         },
         {
           "title": "Forbes Prediction Market Gamefies Story About Mass Shooting of 8 Children",
           "url": "https://www.404media.co/forbes-prediction-market-gamefies-story-about-mass-shooting-of-8-children/",
           "points": 30,
-          "comments": 2,
-          "author": "cdrnsf",
-          "date": "2026-04-20"
+          "comments": 0,
+          "author": "cdrnsf"
         },
         {
           "title": "Prediction Market Accuracy: Crowd Wisdom or Informed Minority?",
           "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6617059",
           "points": 19,
-          "comments": 1,
-          "author": "Anon84",
-          "date": "2026-04-25"
+          "comments": 0,
+          "author": "Anon84"
         },
         {
           "title": "Global energy markets are on the verge of a disaster",
           "url": "https://www.economist.com/finance-and-economics/2026/04/21/global-energy-markets-are-on-the-verge-of-a-disaster",
           "points": 17,
-          "comments": 9,
-          "author": "petethomas",
-          "date": "2026-04-22"
+          "comments": 0,
+          "author": "petethomas"
         },
         {
           "title": "FreeBSD CVE-2026-4747 Log Suggests Mythos Is a Marketing Trick",
@@ -639,6 +623,14 @@
           "date": "2026-04-21"
         },
         {
+          "title": "Why prediction markets are a sure sign that our civilisation is in decay",
+          "url": "https://www.joanwestenberg.com/why-prediction-markets-are-a-sure-sign-that-our-civilisation-is-in-decay/",
+          "points": 8,
+          "comments": 0,
+          "author": "alcazar",
+          "date": "2026-04-23"
+        },
+        {
           "title": "San Francisco, AI capital of the world, is an economic laggard",
           "url": "https://www.economist.com/finance-and-economics/2026/04/26/san-francisco-ai-capital-of-the-world-is-an-economic-laggard",
           "points": 8,
@@ -677,12 +669,423 @@
           "comments": 1,
           "author": "dinarino",
           "date": "2026-04-27"
+        },
+        {
+          "title": "Live Nation illegally monopolized ticketing market, jury finds",
+          "url": "https://www.bloomberg.com/news/articles/2026-04-15/live-nation-illegally-monopolized-ticketing-market-jury-finds",
+          "points": 628,
+          "comments": 0,
+          "author": "Alex_Bond"
+        },
+        {
+          "title": "Ask HN: How to solve the cold start problem for a two-sided marketplace?",
+          "url": "https://news.ycombinator.com/item?id=47834213",
+          "points": 149,
+          "comments": 0,
+          "author": "alegd"
+        },
+        {
+          "title": "The AI Market Is Hitting Peak Absurdity",
+          "url": "https://garymarcus.substack.com/p/peak-absurdity-part-ii",
+          "points": 32,
+          "comments": 0,
+          "author": "drob518"
+        },
+        {
+          "title": "Tech job relocation market is recovering. The competition is growing faster",
+          "url": "https://relocateme.substack.com/p/the-tech-relocation-job-market-is",
+          "points": 41,
+          "comments": 0,
+          "author": "andrewstetsenko"
+        },
+        {
+          "title": "The economy grew just 0.5% in the last quarter of 2025",
+          "url": "https://qz.com/us-gdp-q4-2025-final-estimate-revised-down-040926",
+          "points": 5,
+          "comments": 0,
+          "author": "danielam"
+        },
+        {
+          "title": "The clip economy",
+          "url": "https://www.profgmedia.com/p/the-clip-economy",
+          "points": 4,
+          "comments": 0,
+          "author": "shimm723"
+        },
+        {
+          "title": "The Ozempicization of the Economy",
+          "url": "https://kyla.substack.com/p/the-ozempicization-of-the-economy",
+          "points": 16,
+          "comments": 0,
+          "author": "mitchbob"
         }
       ],
-      "reddit": [],
+      "reddit": [
+        {
+          "title": "The Stock Market is in its most overextended state in history, surpassing even the most euphoric periods of the early 2000s and the 2021",
+          "url": "https://www.reddit.com/r/stocks/comments/1slqarf/the_stock_market_is_in_its_most_overextended/",
+          "score": 5684,
+          "comments": 1110,
+          "author": null,
+          "snippet": "The US stock market is officially more overvalued than ever. The Buffett Indicator (total market cap vs. GDP) just hit an all-time high of 232.6%, meaning stocks are trading at more than double the size of the actual economy.\n\n​Despite the \"it'll only go higher\" hype, the numbers show we’ve blown past the most famous bubbles in history:\n\n​2000 Dot-Com Bubble: 162.6% (Today is 70% higher)\n\n​2021 Fr"
+        },
+        {
+          "title": "Has the job market improved this year?",
+          "url": "https://www.reddit.com/r/cscareerquestions/comments/1smjmla/has_the_job_market_improved_this_year/",
+          "score": 60,
+          "comments": 80,
+          "author": null,
+          "snippet": "I’ve seen job postings are at an all-time high since the 2022 lows, but layoffs are also high. What do you all think about the current market? Does anyone have personal experience or thoughts about this year and the future?\n\nIf you think it’s gotten worse, is that because of wars and the general economy, or more due to factors like AI? And if you think it’s improved, why?"
+        },
+        {
+          "title": "Looks like the used car market is about to surge.",
+          "url": "https://www.reddit.com/r/SipsTea/comments/1svt8lf/looks_like_the_used_car_market_is_about_to_surge/",
+          "score": 10975,
+          "comments": 2020,
+          "author": null,
+          "snippet": "Looks like the used car market is about to surge."
+        },
+        {
+          "title": "Anthropic has surged to a trillion-dollar valuation on secondary markets, overtaking OpenAI.",
+          "url": "https://www.reddit.com/r/technology/comments/1st6fxr/anthropic_has_surged_to_a_trilliondollar/",
+          "score": 13164,
+          "comments": 1264,
+          "author": null,
+          "snippet": "They have a better product. it's good thing the stock market doesn't run out of tokens and have to wait four hours to reset The \"Mythos Gambit\" paid off.\n\n\"Our product is SO good that it's actually scary and so no one can have it\".\n\nBAM, trillion dollar valuation.\n\nGotta respect the game at least."
+        },
+        {
+          "title": "What the actual fuck is wrong with this job market?!",
+          "url": "https://www.reddit.com/r/jobs/comments/1stry6c/what_the_actual_fuck_is_wrong_with_this_job_market/",
+          "score": 368,
+          "comments": 110,
+          "author": null,
+          "snippet": "My husband was laid off from a dream job back in November, partly because of Tariffs and partly because the owner/boss mismanaged funds and didn’t want to give up any of his lifestyle. It was just my husband and him running the business, so low overhead and operating costs. He applied to sooo many jobs, like most of us. He FINALLY landed an amazing position and started in March, (I know it could h"
+        },
+        {
+          "title": "People aren’t lazy, they’re just stuck in survival mode in this job market",
+          "url": "https://www.reddit.com/r/jobmarket/comments/1spv4r3/people_arent_lazy_theyre_just_stuck_in_survival/",
+          "score": 4982,
+          "comments": 1192,
+          "author": null,
+          "snippet": "People aren’t lazy, they’re just stuck in survival mode in this job market"
+        },
+        {
+          "title": "The job market is crazy.",
+          "url": "https://www.reddit.com/r/TikTokCringe/comments/1slk1p6/the_job_market_is_crazy/",
+          "score": 6348,
+          "comments": 1206,
+          "author": null,
+          "snippet": "The job market is crazy."
+        },
+        {
+          "title": "Netflix just plummeted 8% immediately upon market close today. Time to buy!",
+          "url": "https://www.reddit.com/r/wallstreetbets/comments/1sneszs/netflix_just_plummeted_8_immediately_upon_market/",
+          "score": 8832,
+          "comments": 1032,
+          "author": null,
+          "snippet": "Netflix just plummeted 8% immediately upon market close today. Time to buy!"
+        },
+        {
+          "title": "How does the stock market keep going up with everything happening?",
+          "url": "https://www.reddit.com/r/StockMarket/comments/1sloqjz/how_does_the_stock_market_keep_going_up_with/",
+          "score": 1226,
+          "comments": 905,
+          "author": null,
+          "snippet": "There are multiple signs to believe that we're in an economic crisis that's only going to get worse in America.\n\n1) The president is openly corrupt & a blatant pathological liar\n\n2) Most American allies don't trust America anymore\n\n3) The job market is essentially frozen\n\n4) GDP growth is down\n\n5) The cost of fuel has dramatically increased\n\n6) Approximately 30% of oil producing infrastructure has"
+        },
+        {
+          "title": "Would a 95% tax on $10M+ incomes help or hurt the job market?",
+          "url": "https://www.reddit.com/r/jobmarket/comments/1sfro7l/would_a_95_tax_on_10m_incomes_help_or_hurt_the/",
+          "score": 5023,
+          "comments": 2136,
+          "author": null,
+          "snippet": "Would a 95% tax on $10M+ incomes help or hurt the job market?"
+        },
+        {
+          "title": "Stock market makes no sense. Should we look to sell off in this rally?",
+          "url": "https://www.reddit.com/r/trading212/comments/1smdnio/stock_market_makes_no_sense_should_we_look_to/",
+          "score": 4,
+          "comments": 73,
+          "author": null,
+          "snippet": "I know this is a classic “let me get my crystal ball” question, but I’m seriously considering selling off most of my investments. They are all in US mega caps like Google, Amazon etc. and they are rallying since ceasefire talks despite the war being nowhere near over. It just doesn’t make sense. Escalation seems the most likely outcome and the economic impact of the Hormuz issue is not realised ye"
+        },
+        {
+          "title": "Marketplace Monday - Discussion",
+          "url": "https://www.reddit.com/r/darknet/comments/1sk3anx/marketplace_monday_discussion/",
+          "score": 8,
+          "comments": 39,
+          "author": null,
+          "snippet": "**ALL MARKET RELATED POSTS SHOULD BE POSTED HERE. THIS ALSO INCLUDES ADVERTISING** \n\nThis post will now be a weekly thread to keep down on the size of the post and make it more user friendly!\n\nAll discussion posts, questions etc relating to markets should be posted here, including user and market reviews. Posts that belong here that are posted to the front page will get you a 3 day ban. Continuing"
+        },
+        {
+          "title": "Where is the economy actually headed right now?",
+          "url": "https://www.reddit.com/r/economy/comments/1sp3sdw/where_is_the_economy_actually_headed_right_now/",
+          "score": 1,
+          "comments": 9,
+          "author": null,
+          "snippet": "I’ve been thinking a lot about the current economic situation, and it feels like we’re in a weird in-between phase.\n\nOn one hand, inflation seems to be cooling down (at least on paper), but in real life, prices still feel high—food, rent, fuel… everything adds up. On the other hand, there’s so much growth happening in tech, startups, and AI that it looks like opportunities are increasing.\n\nSo what"
+        },
+        {
+          "title": "Business class on this Avianca flight is just an insert over a middle economy seat to give you more arm room",
+          "url": "https://www.reddit.com/r/mildlyinteresting/comments/1sbfx6i/business_class_on_this_avianca_flight_is_just_an/",
+          "score": 14856,
+          "comments": 622,
+          "author": null,
+          "snippet": "That’s most European short haul business class \"best we can do is a 'business arm'\" The Lufthansa flight I was on last month was literally just a sign hung over the middle seat saying \"for your comfort\" or something like that. They didn't even have this kind of 'fancy' table"
+        }
+      ],
       "x": [],
-      "youtube": [],
-      "github": []
+      "youtube": [
+        {
+          "title": "Editors Take | बाजार में अब आगे क्या करें ? | Anuj Singhal On Market Trends",
+          "url": "https://www.youtube.com/watch?v=0QN6bC_KNDY",
+          "views": 4098,
+          "channel": "CNBC Awaaz.",
+          "snippet": "Editors Take | बाजार में अब आगे क्या करें ? | Anuj Singhal On Market Trends Editors Take | बाजार में अब आगे क्या करें ? | Anuj Singhal On Market Trends #markettrends, #stockmarket, #investing, #AnujSinghal, #EditorsTake, #stocks, #sharemarket, #financialnews, Business News | CNBC Awaaz brings to you latest business news, live share market updates, stock market updates, top business news in India, stock market updates, ipo latest updates, news updates on banking and financials, realty sector and IT sector. Watch business news live, business news and share market live u",
+          "has_transcript": false
+        },
+        {
+          "title": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 27 April 2026 | CNBC Awaaz 2026-04-27 23:08",
+          "url": "https://www.youtube.com/watch?v=J_Wdt77-Ris",
+          "views": 469161,
+          "channel": "CNBC Awaaz.",
+          "snippet": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 27 April 2026 | CNBC Awaaz 2026-04-27 23:08 Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 27 April 2026 | CNBC Awaaz Business News Live | First Trade में जानें कैसा है Market का हाल, बाजार खुलने के बाद कहां बन रहा है कमाई का अच्छा मौका. जानें किन Stocks में Intraday में दिख रहा है अच्छी कमाई का मौका. रहें First Trade में हर छोटी-बड़ी मार्केट की खबर से जागरुक. देखें वीडियो. #live #CNBCAwaaz #AnujSinghal #firsttradelive #firsttradeupdates #stockmarketliveupdates #aajkatajakhabar #businessnewslive #stockmarketli",
+          "has_transcript": false
+        },
+        {
+          "title": "What the Hell Just Happened to the Stock Market?",
+          "url": "https://www.youtube.com/watch?v=nkj6nWZoi7c",
+          "views": 55566,
+          "channel": "The Traveling Trader",
+          "snippet": "What the Hell Just Happened to the Stock Market? 🚀 Trade live with me live every day at market open and get ALL my insights in real time! Sign up here. https://whop.com/thetravelingtrader ✅ Alpha Scope signup! Be the first to get a chance to sign up to our revolutionary stock picking research tool here: https://alphascope.trade/ 🔥 Get 10% off FundedNext Prop Accounts. Use code TTT at checkout: https://fundednext.com/?fpr=ttt 🔵 Get Public here: https://www.pqr3ntrk.com/B9KLQL/225JFQ/ 🤑 80% off Apex funded accounts plus 1 Day Pass. Use code",
+          "has_transcript": false
+        },
+        {
+          "title": "Something Big Is About To Happen This Week…",
+          "url": "https://www.youtube.com/watch?v=bJIOL-WAqPg",
+          "views": 35845,
+          "channel": "StockedUp",
+          "snippet": "Something Big Is About To Happen This Week… 🤑 Save With Bookmap Using This Link ↙️ https://bookmap.com/en/mike-dantonio Tech and semiconductors are literally carrying this market right now, backed by the heaviest institutional buying we've seen in a decade. Nvidia, AMD, and a resurgent Intel are leading the charge, but the real \"make or break\" moment comes this week with earnings from Microsoft, Alphabet, Meta, Amazon, and Apple. While the sector is on a historic tear, semiconductors are looking dangerously overbought, the most we've see",
+          "has_transcript": false
+        },
+        {
+          "title": "[LIVE] Pre-Market Prep – Markets DON'T CARE About War... EARNINGS SEASON IS HERE",
+          "url": "https://www.youtube.com/watch?v=h1gRaqZanGw",
+          "views": 8521,
+          "channel": "Trade Brigade",
+          "snippet": "[LIVE] Pre-Market Prep – Markets DON'T CARE About War... EARNINGS SEASON IS HERE 🎙️ | Live Squawk: https://tradebrigade.co/live-squawk 🧠 | Technical Analysis Course: https://tradebrigade.co/learn/ 📜 | Trading Scripts: https://tradebrigade.co/trading-scripts 🟢 | Join the Floor Traders: https://youtube.com/tradebrigade/join ☕️ | Coffee Fund: https://paypal.me/tradebrigade 📅 | Swing Trade Newsletter: https://tradebrigade.co 📝 | Get 20% off TradeZella (Use \"TB\"): https://tradebrigade.co/tradezella-yt 💰 | Gift From M1 Finance: https://tradebrigade.co/m1finance/ 🖥️ | Matt's Des",
+          "has_transcript": false
+        },
+        {
+          "title": "Investor Peter Boockvar worries the market is becoming 'too nonchalant'",
+          "url": "https://www.youtube.com/watch?v=PLsa3pvmD7M",
+          "views": 18143,
+          "channel": "CNBC Television",
+          "snippet": "Investor Peter Boockvar worries the market is becoming 'too nonchalant' Peter Boockvar, One Point BFG Wealth Partners CIO, joins 'Fast Money' to talk why he believes the market is becoming too nonchalant.",
+          "has_transcript": false
+        },
+        {
+          "title": "The Great Market Shock Is About to Happen",
+          "url": "https://www.youtube.com/watch?v=uHSedIRAsIs",
+          "views": 28136,
+          "channel": "Mark Roussin, CPA",
+          "snippet": "The Great Market Shock Is About to Happen The Great Market Shock is about to happen IF..... 📝 Sign up for my 6-Week Investing Challenge: https://go.roussinfinancial.com/golden-age/ 📝 SIGN UP for my newsletter The Stock Investor's Edge: https://go.roussinfinancial.com/subscribe 📈 JOIN my Discord and stay up to date with the stock market: https://discord.com/invite/MnNZNVBBBK 💰 Options Edge+ : Weekly Option Plays https://theinvestorsedge.beehiiv.com/upgrade 💰 6-week Investing Accelerator https://go.roussinfinancial.com/Evaluation 💰 Mo",
+          "has_transcript": false
+        },
+        {
+          "title": "Big Market Voices | लंबे समय के लिए कहां लगाएं दांव ? | Dinshaw Irani | Stock Market | Anuj Singhal",
+          "url": "https://www.youtube.com/watch?v=--uXw63a3lE",
+          "views": 4052,
+          "channel": "CNBC Awaaz.",
+          "snippet": "Big Market Voices | लंबे समय के लिए कहां लगाएं दांव ? | Dinshaw Irani | Stock Market | Anuj Singhal Big Market Voices | लंबे समय के लिए कहां लगाएं दांव ? | Dinshaw Irani | Stock Market | Anuj Singhal #stockmarket #stockstobuy #marketnews #marketexpert #cnbcawaaz Budget 2026 | Union Budget | Business News | CNBC Awaaz brings to you latest business news, live share market updates, stock market updates, top business news in india, stock market updates, IPO latest updates, news updates on banking and financials, realty sector and it sector. Watch business news live, business news and share mark",
+          "has_transcript": false
+        },
+        {
+          "title": "Share Market Tomorrow | बाजार में कल के लिए Strategy | Anuj Singhal | Business News | CNBC Awaaz",
+          "url": "https://www.youtube.com/watch?v=dVd9kdTTLLo",
+          "views": 1213,
+          "channel": "CNBC Awaaz.",
+          "snippet": "Share Market Tomorrow | बाजार में कल के लिए Strategy | Anuj Singhal | Business News | CNBC Awaaz Share Market Tomorrow| बाजार में कल के लिए Strategy | Anuj Singhal | Business News | CNBC Awaaz #cnbcawaaz #sharemarkettomorrow #anujsinghal #businessnews #stockmarket #sharemarket #businessnews #stockmarket #sharemarket #cnbcawaaz #marketnews #latestbusinessnews | Personal Finance | Market | Budget2026 | Nirmala Sitharaman Budget 2026 | Union Budget | Business News | CNBC Awaaz brings to you latest business news, live share market updates, stock market updates, top business news in india, s",
+          "has_transcript": false
+        },
+        {
+          "title": "The Stock Market Is About To Wake Up To Some Major News",
+          "url": "https://www.youtube.com/watch?v=_vkHnsadh20",
+          "views": 47279,
+          "channel": "StockedUp",
+          "snippet": "The Stock Market Is About To Wake Up To Some Major News 🤑 Save With Bookmap Using This Link ↙️ https://bookmap.com/en/mike-dantonio Market volatility is reaching a tipping point as President Trump ordered a complete blockade of the Strait of Hormuz after peace talks with Iran collapsed. This major escalation has prediction markets betting on oil hitting $115 this month, which would represent a massive 21% move from Friday's close. Historically, sharp rises in oil prices have triggered market selloffs, threatening the S&P 500's recent recovery. It is",
+          "has_transcript": false
+        },
+        {
+          "title": "Jamie Dimon’s Brutally Honest Thoughts on the US Economy.",
+          "url": "https://www.youtube.com/watch?v=YGXWzizs5bo",
+          "views": 75884,
+          "channel": "New Money",
+          "snippet": "It's just we haven't had the will yet to actually deal with it. And it's unfortunate because it can end up with a real problem worse than it would otherwise would have been. &gt;&gt; According to Jamie Diamond's annual letter to shareholders, he sees three major risks to the US market that are all converging at once. And what I took away from what the world's top banker has to say is he's not fearongering. He's not saying any of these problems are going to crash the market next week, but he is concerned that these three issues colliding at once will drastically pull down the probability of good market outcomes in the not too distant future. So, in this...",
+          "has_transcript": false
+        },
+        {
+          "title": "10 Businesses That Are THRIVING in This BAD ECONOMY",
+          "url": "https://www.youtube.com/watch?v=KxFuBZ_cPeM",
+          "views": 70347,
+          "channel": "Michael Bordenaro",
+          "snippet": "People are always asking me, you tell us all the bad news, Michael, but is there anything good to talk about? Well, that's what today's video is going to be rooted in cuz I want to give you guys the 10 businesses that are thriving right now in a bad economy because I think it's indisputable at this point that this economy is not going very well for the vast majority of Americans. However, that doesn't mean that there's no opportunity and no businesses are doing well. In fact, it's quite the opposite. A lot of people think that when you hear bad economy, recession, all of this that it means nothing but bad news. But in reality, there's always...",
+          "has_transcript": false
+        },
+        {
+          "title": "Will AI destroy the economy?",
+          "url": "https://www.youtube.com/watch?v=DBvrwWoyYQM",
+          "views": 308757,
+          "channel": "Garys Economics",
+          "snippet": "Fresh biscuits. Okay, welcome back to Gary's Economics. This week we are going to explain whether AI will drive wages up or down. Okay, so this is a question which I keep getting asked. So fans of the channel will know I was on tour in Australia and New Zealand uh about a month ago and every single tour that I went I got asked what say I going to do to the economy to inequality to wages. Um and I was hesitant to do a video on it because initially it seemed so obvious to me that AI was going to displace jobs and drive wages down. But the more I sat and read about it and thought about...",
+          "has_transcript": false
+        },
+        {
+          "title": "China's Desperate Attempt To Save Its Economy (It Won't Work)",
+          "url": "https://www.youtube.com/watch?v=6fHgZIW2kFE",
+          "views": 103485,
+          "channel": "China Uncensored",
+          "snippet": "China's economy is on its last lifeline and the CCP will do anything, and I mean anything, to protect it. Welcome to China Uncensored. I'm Chris Chapel. Well, it's official. The Chinese Communist Party has just taken every foreign company in China hostage, and it's a prelude to something very bad. But like someone who commissioned a bust in their likeness, I'm getting ahead of myself. First, you have to understand that China is a very poor country. And not just morally. A vast majority of the country makes less than $10,000 a year. Even though China was once projected to surpass the US in terms of GDP, you can see the dream is now dead. And this trend is...",
+          "has_transcript": false
+        },
+        {
+          "title": "What Happens To the Economy If the $2 Trillion AI Bubble Bursts?",
+          "url": "https://www.youtube.com/watch?v=E3atOY1chQE",
+          "views": 196741,
+          "channel": "The Infographics Show",
+          "snippet": "$2 trillion is pouring into AI and it could either send the stock market soaring or bury it completely. And the scary part, the crash looks way more likely and it could affect you directly. Josh here and on today's episode of the infographic show, we're revealing what happens to the economy if the AI bubble bursts. According to most recent estimates from Gallup, 62% of Americans owned stocks in 2025, the highest rate in two decades. That includes retirement accounts, 401ks, and index funds. After the.com crash and the 2008 real estate meltdown, people were trained to believe that passive investing in the S&amp;P 500 is the safest long-term strategy. Even after those crashes, the NASDAQ eventually rebounded, led...",
+          "has_transcript": false
+        },
+        {
+          "title": "'Getting worse': 70 PERCENT of Americans pessimistic about economy in Fox poll",
+          "url": "https://www.youtube.com/watch?v=psr2BIqqhbU",
+          "views": 145821,
+          "channel": "MS NOW",
+          "snippet": "WE'RE GOING TO GET INTO IRAN. THERE'S SO MUCH TO TALK ABOUT IN IRAN, BUT ALSO, SO MUCH TO DISCUSS RIGHT NOW ABOUT WHERE THE PRESIDENT IS STANDING, NOT I THINK IT IS A SINGLE ISSUE THAT MATTERS MOST TO AMERICANS IS THE SINGLE ISSUE WHERE REPUBLICANS ARE DOING THE POOREST. IT'S TIE TO THE WAR. THE LATEST FOX NEWS POLL SHOWS AMERICANS GROWING INCREASINGLY PESSIMISTIC ABOUT THE STATE OF THE U .S. ECONOMY, 70%, 7-0, BELIEVE THE ECONOMY IS GETTING WORSE. THAT'S UP OF 15 POINTS FROM THIS TIME LAST YEAR, MATCHES A PREVIOUS RECORD HIGH. TWICE AS MANY SAY THE PRESIDENT'S POLICIES ARE HURTING THE ECONOMY AS OPPOSED TO HELPING. AND A MAJORITY SAY GROCERY AND GAS PRICES...",
+          "has_transcript": false
+        }
+      ],
+      "github": [
+        {
+          "title": "Implement 'Dynamic APR' Prediction Model",
+          "url": "https://github.com/GalactiGuild/NovaFund/issues/410",
+          "stars": 0,
+          "author": "gabito1451",
+          "snippet": "### Context\nSmart yield forecasting.\n\n### Problem\nAPR is currently just historical average.\n\n### Suggested Execution\n- Implement a basic Linear Regression model based on project historical data and external market trends.\n- Predict next month's yield with confidence intervals.\n\n### Acceptance Criter"
+        },
+        {
+          "title": "Add Polymarket Prediction Market Integration",
+          "url": "https://github.com/mgalihpp/vexis-trading-agents/issues/30",
+          "stars": 0,
+          "author": "mgalihpp",
+          "snippet": "## Feature Description\n\nAdd support for fetching prediction market data from Polymarket API. Polymarket is a prediction market platform that allows users to trade on real-world events. This integration would enable VEXIS agents to access market predictions, trends, and trading data.\n\n## Use Case\n\n-"
+        },
+        {
+          "title": "Comprehensive Post-Integration Audit — System Behavior, Stability, and Deployment Readiness",
+          "url": "https://github.com/ChristianV997/my_OS/issues/12",
+          "stars": 0,
+          "author": "ChristianV997",
+          "snippet": "# 🔍 FULL SYSTEM AUDIT REPORT\n\n## 1. CURRENT SYSTEM STATE\n\nThe system has successfully transitioned into a **self-observing, self-diagnosing adaptive intelligence system**.\n\nCore loops fully implemented:\n- Decision → Outcome → Learning → Evolution\n- Reality Gap → Calibration → Confidence → Behavior\n-"
+        },
+        {
+          "title": "Create AI-Powered Trading Assistant for Candlestick Chart Prediction and Decision Support",
+          "url": "https://github.com/ai-trading-assistant/ai-trading-assistant/issues/1",
+          "stars": 0,
+          "author": "imanafraz12-ctrl",
+          "snippet": "Develop a next-generation AI-powered trading application extension that integrates seamlessly with Interactive Brokers, Questrade, and major trading platforms. \n\n**Core Requirements:**\n- Accepts candlestick chart data and market trading feeds from all leading platforms.\n- Functions as an extension w"
+        },
+        {
+          "title": "Add football prediction model v3 with ensemble stacking and Dixon-Coles",
+          "url": "https://github.com/leandrooliveira1483-ui/leandro/pull/2",
+          "stars": 0,
+          "author": "leandrooliveira1483-ui",
+          "snippet": "## Summary\nIntroduces a comprehensive football match prediction model (v3) combining Dixon-Coles Poisson regression with XGBoost/LightGBM stacking for multi-market betting predictions. The model supports multiple leagues and seasons with advanced feature engineering including momentum indicators, EL"
+        },
+        {
+          "title": "[Agent] Initial session: state file, AI agent research, 8 content pieces",
+          "url": "https://github.com/AICMO/Autonomous-Agent-X-Bluesky-TEMPLATE/pull/182",
+          "stars": 0,
+          "author": "claude[bot]",
+          "snippet": "## What was done this session\n\n**First session on this template repo.** GOALS.md and ME.md contain placeholder content — owner hasn't configured identity yet. Created foundational files to get the system running.\n\n### Files Created\n\n**State:**\n- `agent/state/current.md` — Initial state file with ses"
+        },
+        {
+          "title": "[Feature]: add deterministic tests for analytics artifacts (market history + predictions contract)",
+          "url": "https://github.com/ambicuity/New-Grad-Jobs/issues/231",
+          "stars": 0,
+          "author": "ambicuity",
+          "snippet": "### Problem\nCritical artifact generators (`save_market_history()` and prediction output handling) currently have limited direct test coverage compared with core filtering/categorization paths.\n\nThis risks silent regressions in:\n- history retention logic (90-day window)\n- category/tier aggregation in"
+        },
+        {
+          "title": "Add PolyMind — AI-powered prediction market alerts for deep learning trading strategies",
+          "url": "https://github.com/cbailes/awesome-deep-trading/issues/11",
+          "stars": 0,
+          "author": "samirasadov28-code",
+          "snippet": "## Add PolyMind\n\n**URL:** https://polyminds.netlify.app/\n\n### About\nPolyMind is an AI-powered alert system that monitors PolyMarket prediction market trades and generates actionable trading signals using machine learning. It processes real-time prediction market data to identify patterns and sentime"
+        },
+        {
+          "title": "Add PolyMind — AI alert system leveraging prediction markets for algorithmic trading signals",
+          "url": "https://github.com/joelowj/awesome-algorithmic-trading/issues/23",
+          "stars": 0,
+          "author": "samirasadov28-code",
+          "snippet": "## Add PolyMind\n\n**URL:** https://polyminds.netlify.app/\n\n### About\nPolyMind is an AI-powered alert system that tracks PolyMarket prediction market trades and transforms them into actionable signals for algorithmic trading. It monitors real-time prediction market activity and uses AI to identify mea"
+        },
+        {
+          "title": "Add Streamlit dashboard with analytics pages",
+          "url": "https://github.com/mitch-tango/pga-ev-betting/pull/2",
+          "stars": 0,
+          "author": "mitch-tango",
+          "snippet": "## Summary\n- **Dashboard scaffolding**: Streamlit app with Supabase data layer, theme system, and deployment config\n- **Active Bets page**: Live tournament positions with exposure cards, P&L summary, and bet detail table\n- **Performance page**: Historical P&L curve, ROI by market/book, edge histogra"
+        },
+        {
+          "title": "[WIP] Build UK health and beauty retail intelligence platform",
+          "url": "https://github.com/varunrout/retail-analytics/pull/1",
+          "stars": 0,
+          "author": "Copilot",
+          "snippet": "- [x] Create repository folder structure and .gitignore\n- [x] Write comprehensive README (833 lines)\n- [x] pyproject.toml, requirements.txt, requirements-dev.txt\n- [x] Implement ingestion scripts (ONS retail sales, ONS internet sales, UK bank holidays, Open-Meteo weather, Google Trends, UCI Online R"
+        },
+        {
+          "title": "Add comprehensive Advanced Real Estate Market Analysis project",
+          "url": "https://github.com/raglak/real-estate-market-analysis/pull/1",
+          "stars": 0,
+          "author": "Copilot",
+          "snippet": "Builds a production-ready real estate market analysis system from an empty repo (previously only had a README). Covers synthetic data generation, ML modeling, visualization, business intelligence, and interactive notebooks.\n\n## Core Modules (`src/`)\n- **`data_processing.py`** — Load/validate CSV, me"
+        },
+        {
+          "title": "Bounty: Bitcoin Quantum Upgrade — Developer Power Map & Sentiment Analysis",
+          "url": "https://github.com/1btc-news/news-client/issues/30",
+          "stars": 0,
+          "author": "pbtc21",
+          "snippet": "## Bitcoin Quantum Upgrade — Developer Power Map & Sentiment Analysis\n\n**A staged deep-dive producing real, inspectable, replicable research.**\n\n> This bounty produces a definitive map of who matters in Bitcoin protocol upgrades and where they stand on quantum-resistant cryptography. Every claim mus"
+        },
+        {
+          "title": "Proposal: Agent-first CLI",
+          "url": "https://github.com/huggingface/transformers/pull/45218",
+          "stars": 0,
+          "author": "LysandreJik",
+          "snippet": "For potential reviewers: this is very much a draft and hasn't been tested. It is mainly here for discussion to see whether this is something we would like to pursue, and, if so, if you have any specific thoughts regarding how we'd want to approach it. Thank you! The docs for this PR live [here](https://moon-ci-docs.huggingface.co/docs/transformers/pr_45218). All of your documentation changes will be reflected on that endpoint. The docs are available until 30 days after the last update. Hey, this is a very interesting direction. From what I understand, this introduces a CLI surface that allows agents (or users) to interact with Transformers without writing code. Effectively, exposing many existing capabilities as command-line entry points so that agents use the CLI..."
+        },
+        {
+          "title": "[Data] Global news uses 4 hardcoded search queries — make configurable and broaden coverage",
+          "url": "https://github.com/TauricResearch/TradingAgents/issues/558",
+          "stars": 0,
+          "author": "kelder66",
+          "snippet": "## Summary\n\n`get_global_news_yfinance()` fetches macro news by running exactly 4 hardcoded `yf.Search()` queries:\n- \"stock market economy\"\n- \"Federal Reserve interest rates\"\n- \"inflation economic outlook\"\n- \"global markets trading\"\n\nThese queries are static, US-centric, and miss large categories of"
+        },
+        {
+          "title": "PLACEHOLDER",
+          "url": "https://github.com/IamJasonBian/allocation-gym/pull/21",
+          "stars": 0,
+          "author": "IamJasonBian",
+          "snippet": "## Position Update — 2026-04-14 ### Position 1: SNDK $825 Put, exp 4/17 (inferred from breakeven math) | Field | Value | |---|---| | Contracts | 1 | | Avg cost | $48.10 | | Current mark | $7.20 | | Market value | $720 | | Total P/L | **-$4,090 (-85.03%)** | | Today's P/L | -$2,410 (-77.00%) | | SND... ## Position Update — 2026-04-14 Inferred both legs are **puts** from the breakeven math (breakeven = strike − premium): | Field | SNDK | IWN | |---|---|---| | Type | Put | Put | | Implied strike | ~$825 | ~$185 | | Underlying (now) | ~$952–$983 | ~$201.50 | | Breakeven | $776.90 | $179.30 | |..."
+        },
+        {
+          "title": "[quant-lab] Research plan: path to convincing pair selection before Rust port",
+          "url": "https://github.com/kumargu/OpenQuant/issues/238",
+          "stars": 0,
+          "author": "kumargu",
+          "snippet": "@codex — requesting review of our research plan before we touch any Rust code.\n\n---\n\n## What we are actually trying to achieve\n\nOpenQuant is a real-money (paper → live) algorithmic trading stack written in Rust. The current strategy is **market-neutral statistical arbitrage** (pair trading). The ori"
+        }
+      ]
     }
   }
 }

@@ -1,12 +1,58 @@
 {
-  "topic": "\"AI, 이제 '실행'의 시대! 삼성의 '숨겨진 가치' 재평가로 월요일 승부수를!\"",
-  "script": "(Step 1: Hook)\n[I] 왜 지금 시장은 \"AI, 이제 '실행'의 시대! 삼성의 '숨겨진 가치' 재평가로 월요일 승부수를!\" 상황에 주목하고 있을까?\n\n(Step 2: Context)\n[F] 현재 kospi 지표는 6615.0298 수준으로, 전일 대비 +6.37% 흐름을 보이고 있다.\n\n(Step 3: Mechanism)\n[I] 1.  **AI의 전방위적 확산 가속화:** 금융권의 사례에서 보듯, AI는 이제 특정 기술 기업의 전유물이 아니라 모든 산업의 생산성과 효율성을 혁신하는 필수 도구로 자리 잡고 있습니다. 이는 AI 기술과 솔루션, 그리고 이를 구동할 핵심 인프라에 대한 전례 없는 수요를 창출합니다.\n2.  **삼성의 'AI 풀 스택' 시너지:**\n*   **핵심 인프라 제공자:** 삼성전자는 HBM을 포함한 고성능 메모리, 파운드리, 시스템 반도체 등 AI 시대의 '골드러시'에 필요한 '곡괭이와 삽'을 공급하는 핵심 플레이어입니다. AI 확산은 삼성전자의 실적 개선과 주주 가치 증대로 직결되며, 자사주 취득은 미래 성장에 대한 경영진의 강력한 확신을 보여줍니다.\n*   **AI 통합 및 적용의 선두주자:** 삼성물산의 대규모 계약들은 단순한 건설/상사 사업을 넘어, 스마트 시티, 데이터 센터 구축, AI 기반 물류 및 공급망 최적화 등 AI 기술이 접목될 수 있는 거대한 잠재 시장을 의미합니다. 삼성물산은 삼성그룹 전반의 AI 적용을 가속화하며 새로운 가치 창출의 허브 역할을 할 것입니다.\n3.  **가치 재평가와 주가 상승:** AI의 광범위한 산업 적용이 가시화될수록, 삼성그룹은 AI 기술의 '생산자'이자 '최대 소비자'로서의 독보적인 위치를 재평가받게 될 것입니다. 이는 기업 이익의 구조적 성장과 함께 주가에 강력한 AI 프리미엄을 부여하며, 월요일 시장에서 투자자들의 적극적인 매수 포지션을 유도할 것입니다.\n\n(Step 4: WHY NOW)\n[F] [DART] [삼성물산] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260424800768 () / [DART] [삼성물산] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260424800793 ()\n\n(Step 5: Implication)\n[I] 시장전반 섹터의 변동성이 확대되며 관련 종목군에 영향이 예상된다.\n수급변화 섹터의 변동성이 확대되며 관련 종목군에 영향이 예상된다.\n\n(Step 6: Mentionables)\n[F] 현재 데이터상 직접적인 브리지가 확인되는 종목은 없다. 관련 섹터 ETF의 흐름을 관찰하라.\n\n(Step 7: Risk/Scenario)\n[I] 중립 시나리오 가능성이 가장 높다. 다만, 단기 변동성 확대에 따른 오버슈팅 가능성을 경계해야 한다.\n\n---\n\n### [오늘 이것 하나만 기억해]\n오늘 관찰된 \"AI, 이제 '실행'의 시대! 삼성의 '숨겨진 가치' 재평가로 월요일 승부수를!\" 현상이 지속되는지 확인해라. 그게 진짜 신호다.",
-  "content_type": "NORMAL",
-  "themes": [
-    "시장전반",
-    "수급변화"
+  "candidate_id": "61311e78",
+  "candidate_type": "HYBRID",
+  "event": "[2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal",
+  "entity": [
+    "s signing an openai deal [deep_detail] 49% 49% 49% | it",
+    "s effort to get ahead in the industry",
+    "2026-04-27",
+    "deep_detail"
   ],
-  "action": "WATCH",
-  "date": "20260427",
-  "strength": 50.0
+  "core_facts": [
+    {
+      "name": "sp500",
+      "value": 7163.5698,
+      "change": 0.77,
+      "z_score": 1.17
+    }
+  ],
+  "expected_paths": [
+    "안정적 흐름 유지"
+  ],
+  "actual_paths": [
+    "EARNINGS"
+  ],
+  "recency_score": 0.9,
+  "evidence_score": 0.8,
+  "is_mismatch": false,
+  "structure_axis": "emerging",
+  "evidence_bundle": {
+    "axis": "emerging",
+    "market_reaction": {
+      "main_asset": "sp500",
+      "intensity": 0.77,
+      "other_reactions": []
+    },
+    "temporal_context": {
+      "current_time": "2026-04-27 23:15",
+      "is_market_closed": false,
+      "market_data_ref": "Real-time/Today's Prices"
+    },
+    "related_events": [
+      "[NEWS] [2026-04-26] UK car loan companies accept £9bn mis-selling redress scheme - main industry finance trade body reverses course on legal challenge to fca plan ()",
+      "[NEWS] [2026-04-26] US motorists skimp at the pump as Iran war keeps petrol prices high - the soaring cost of driving presents a political problem for trump ahead of midterm elections in november ()",
+      "[NEWS] [2026-04-26] Iran war hits pistachio supplies amid Dubai chocolate boom - prices for the nuts have surged after disruption to export routes from iran, a major producer of the nut ()",
+      "[NEWS] [2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7% - [deep_detail] 7% 3% 7% | the company reiterated its full-year forecast for earnings and sales. ()"
+    ],
+    "social_prediction": [],
+    "supporting_assets": [
+      "kospi: 6.37%"
+    ],
+    "contradictions": [
+      "No clear contradictions found"
+    ],
+    "event_market_link": [
+      "earnings/tech → investor sentiment → capital flow → equity positive"
+    ]
+  }
 }

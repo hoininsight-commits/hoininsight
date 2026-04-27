@@ -1,13 +1,11 @@
 {
   "date": "2026-04-27",
-  "run_at": "2026-04-27T21:26:19.364088",
-  "elapsed_seconds": 17.2,
+  "run_at": "2026-04-27T23:14:36.378021",
+  "elapsed_seconds": 477.5,
   "total_agents": 9,
-  "success_count": 8,
-  "failed_count": 1,
-  "failed_agents": [
-    "DART"
-  ],
+  "success_count": 9,
+  "failed_count": 0,
+  "failed_agents": [],
   "category_stats": {
     "거시경제": {
       "success": 2,
@@ -26,8 +24,8 @@
       "fail": 0
     },
     "공시": {
-      "success": 0,
-      "fail": 1
+      "success": 1,
+      "fail": 0
     },
     "수급/흐름": {
       "success": 1,
@@ -41,10 +39,11 @@
   "agent_results": {
     "COTCollector": "success",
     "PUTCALL": "success",
-    "MACRO": "success",
     "ConsensusCollector": "success",
-    "SENTIMENT": "success",
     "MARKET": "success",
+    "DART": "success",
+    "SENTIMENT": "success",
+    "MACRO": "success",
     "FLOW": "success",
     "SocialAgent": "success"
   }
