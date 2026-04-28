@@ -30,45 +30,41 @@ class TopicArbiter:
         # 현재 날짜 및 요일 정보 (KST 보정 v15.2)
         now = get_now_kst()
         today_str = get_target_ymd()
-        weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
-        weekday_str = weekdays[now.weekday()]
-        is_weekend = now.weekday() >= 5
         
-        # 2. 사냥꾼의 전략적 안목 주입 (DNA Upgrade)
+        # 2. 사냥꾼의 전략적 안목 주입 (v18.8 'Story DNA' Upgrade)
         prompt = f"""
 당신은 전설적인 금융 유튜버 '경제사냥꾼'의 전략기획실장입니다. 
-수많은 소음(Noise) 속에서 오늘 당장 사냥해야 할 단 하나의 '급소'를 찾아내십시오.
+지금 이 순간, 대중의 아드레날린을 폭발시키고 실질적인 '돈의 흐름'을 바꿀 수 있는 단 하나의 **'사냥감(Topic)'**을 선정하십시오.
 
-[CANDIDATES - 오늘 포착된 후보군]
+[CANDIDATES - 오늘 포착된 데이터]
 {candidate_list_str}
 
-45: [사냥꾼의 토픽 선정 원칙]
-46: 1. **Absolute Autonomy**: 특정 국가(국내/국외), 업종, 테마에 대한 어떠한 선입견도 갖지 마십시오. 오늘 포착된 모든 후보군 중 **'절대적인 시장 파급력'**과 **'실질적인 투자 시그널'**이 가장 강력한 단 하나를 스스로 결정하십시오.
-47: 2. **Signal vs Noise**: 단순히 빈번하게 노출되는 뉴스(소음)와 시장의 판을 바꾸는 핵심 변수(시그널)를 엄격히 구분하십시오. 최근 반복적으로 노출되었으나 새로운 진전이 없는 토픽은 과감히 배제하고, 가장 치명적인 '급소'를 사냥하십시오.
-48: 3. **Data Loyalty**: 외부의 가이드라인이 아닌, 오직 주어진 {today_str}의 날것의 데이터와 시장 지표(Market Axis)에만 근거하여 판단하십시오.
+[사냥꾼의 토픽 선정 원칙 - HUNTER'S INSTINCT]
+1. **Adrenaline & Narrative**: 단순히 지표가 변했다는 뉴스(국채 금리, 유가 등)보다 **'인물의 움직임(젠슨황, 이재용, 머스크 등)'**이나 **'이례적인 사건(단독, 최초, 비밀 회동)'**처럼 대중이 열광할 서사가 있는 토픽에 압도적인 우선순위를 두십시오.
+2. **Relatability (Skin in the Game)**: 투자자들이 "이건 내 돈과 직결된다"고 즉각적으로 느낄 수 있는, 피부에 와닿는 주제를 고르십시오. 너무 먼 나라의 거시 경제보다는 '지금 당장 한국 시장의 수급'을 뒤흔들 주제가 좋습니다.
+3. **The Mismatch**: 시장의 기대와 실제 행동이 충돌하는 지점(예: 역대급 실적인데 파업, 재벌 총수의 갑작스러운 자사주 매입)을 포착하십시오. 거기가 바로 사냥꾼이 수익을 내는 '급소'입니다.
+4. **Thumbnail Test**: 선정하려는 토픽이 "유튜브 썸네일로 만들어졌을 때 클릭하지 않고는 못 배길 정도인가?"를 스스로 자문하십시오.
 
 [OUTPUT JSON FORMAT]
 {{
   "main_index": (int), 
   "secondary_indices": [int, int], 
-  "rationale": "왜 이 토픽이 오늘 최고의 사냥감인가? (이면의 본질 분석)", 
-  "hunter_insight": "앞으로 시장에 어떤 충격 혹은 기회가 몰아칠 것인가? (예측적 관점)"
+  "rationale": "왜 이 토픽이 오늘 최고의 '사냥감'인가? (서사와 아드레날린 관점 분석)", 
+  "hunter_insight": "이 서사가 시장의 수급을 어떻게 이동시킬 것인가? (사냥꾼의 예리한 예측)"
 }}
 
-반드시 JSON으로만 응답하라.
+반드시 JSON으로만 응답하십시오.
 """
         # 디버그용 프롬프트 기록
         log_dir = Path("data/logs")
         log_dir.mkdir(parents=True, exist_ok=True)
         (log_dir / "arbiter_prompt.txt").write_text(prompt, encoding="utf-8")
 
-        print(f"  🧠 [Arbiter] Selecting from {len(candidates)} candidates (DNA v15.1)...")
+        print(f"  🧠 [Arbiter] Selecting from {len(candidates)} candidates (v18.8 - Hunter Instinct)...")
         try:
-            # Tier 3 (Flash)로 전환하여 형식 준수율 상향
             response = self.client.call_json_controlled(prompt, agent="ARBITER", tier=3)
             
             if not response:
-                print("  ⚠️ [Arbiter] Controlled call failed, trying standard call_json...")
                 response = self.client.call_json(prompt)
 
             main_idx = response.get("main_index", 0)
@@ -98,9 +94,14 @@ class TopicArbiter:
             return {"MAIN": candidates[0], "SECONDARY": [], "EARLY": []}
 
     def _apply_intent_boost(self, text: str) -> float:
-        """권위자 키워드 감지 시 가중치 반환"""
-        authority_keywords = ["백악관", "NSC", "연준", "Fed", "파월", "옐런", "국방부", "공시", "DART", "정부 정책"]
-        for kw in authority_keywords:
+        """사냥꾼의 본능을 자극하는 키워드 감지 시 가중치 폭발"""
+        hunter_keywords = [
+            "젠슨황", "이재용", "머스크", "샘올트먼", "이부진", "삼성전자", "엔비디아",
+            "단독", "최초", "비밀", "포착", "매집", "폭발", "충격", "공시", "DART",
+            "파업", "인수", "합병", "M&A", "주주환원", "자사주", "기회"
+        ]
+        for kw in hunter_keywords:
             if kw in text:
-                return 2.0
+                return 2.5  # 가중치를 2.0에서 2.5로 상향
         return 1.0
+

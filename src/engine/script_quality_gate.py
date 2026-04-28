@@ -61,7 +61,7 @@ class ScriptQualityGate:
         return report
 
     def _evaluate_deterministically(self, content: Dict) -> Dict:
-        """결정론적 지표 검사 (새로운 7단계 DNA 대응)"""
+        """[v18.8 Update] 결정론적 지표 검사 (사냥꾼의 8단계 DNA 대응)"""
         script = content.get("script", "")
         script_lower = script.lower()
         
@@ -85,33 +85,33 @@ class ScriptQualityGate:
             scores["hook_score"] = 1
             scores["status"] = "DROP"
             scores["drop_reason"] = "Banned cliché found in hook"
-        elif "[hook]" in script_lower or "step 1" in script_lower or "?" in first_line:
+        elif "[hook]" in script_lower or "step 1" in script_lower or "지금 0.1%" in script or "?" in first_line:
             scores["hook_score"] = 5
         
-        # 2. WHY NOW 숫자 및 헤더 체크
+        # 2. WHY NOW 체크 (Step 5 또는 왜 오늘인가)
         has_numbers = re.search(r'\d+', script)
-        if "[why now]" in script_lower or "step 4" in script_lower or "왜 하필 오늘" in script:
+        if "[why now]" in script_lower or "step 5" in script_lower or "왜 하필 오늘" in script or "왜 오늘인가" in script:
             scores["why_now_score"] = 5 if has_numbers else 3
         elif not has_numbers:
             scores["status"] = "DROP"
             scores["drop_reason"] = "Missing numeric data in script"
 
-        # 3. SCENARIO/RISK 체크 (Step 7 또는 시나리오 포함)
-        if any(x in script_lower for x in ["[scenario]", "step 7", "시나리오", "risk"]):
+        # 3. SCENARIO/VERDICT 체크 (Step 7 또는 최종 확신)
+        if any(x in script_lower for x in ["[scenario]", "step 7", "시나리오", "최종 확신", "승리할 것"]):
             scores["scenario_score"] = 5
         else:
             scores["scenario_score"] = 1
-            scores["status"] = "DROP"
-            scores["drop_reason"] = "Scenario/Risk section missing"
+            # [v18.8] 서사 중심일 경우 유연하게 적용하되 경고는 남김
+            print("  ⚠️ Scenario/Verdict section markers missing. Total score might be affected.")
 
-        # 4. ACTION 체크 (Action 헤더 또는 단계 포함)
-        action_indicators = ["[action]", "step 6", "action", "행동 지침", "대응"]
+        # 4. ACTION/TARGET 체크 (Step 6 또는 종목 선정)
+        action_indicators = ["[action]", "step 6", "action", "행동 지침", "대응", "주인공이 될 종목"]
         if any(x in script_lower for x in action_indicators):
             scores["action_score"] = 5
         else:
             scores["action_score"] = 1
             scores["status"] = "DROP"
-            scores["drop_reason"] = "ACTION missing or invalid"
+            scores["drop_reason"] = "ACTION/TARGET (Step 6) missing or invalid"
 
         return scores
 
