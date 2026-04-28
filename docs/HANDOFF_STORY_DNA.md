@@ -1,7 +1,7 @@
-# HOIN Insight v18.0 [The Data-Driven Hunter] Handover
+# HOIN Insight v18.1 [The Pure Autonomous Hunter] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Numeric & Global Alpha Upgrade (v18.0)**: 스크립트 내에 '압도적인 수치 데이터(Killer Numbers)'를 강제 삽입하고, 국내 지엽 뉴스를 넘어 글로벌 테마(AI, SMR, 미국 ETF)에 대한 민감도를 극대화했습니다.
+- **Pure Autonomous Engine (v18.1)**: "글로벌 우선" 등의 모든 인위적인 가이드라인을 폐기했습니다. 대신 데이터의 '절대적 파급력'과 '시그널/노이즈 구분'에만 집중하는 완전 자율 판단 체계를 구축했습니다.
 - **KST-Aligned Scheduling (v17.7)**: 자동화 스케줄을 한국 시각(KST) 00, 06, 12, 18시 정각에 맞춰 재배치했습니다.
 - **YouTube Delivery System (v17.5)**: 유튜브 수집기가 단순 학습용을 넘어, 수집된 자막 전문을 즉시 텔레그램으로 배달하는 '정보 배달부' 역할을 겸하게 되었습니다.
 - **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
