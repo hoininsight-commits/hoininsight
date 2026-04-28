@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 from datetime import datetime
 from urllib.request import Request, urlopen
+from src.utils.target_date import get_now_kst, get_target_ymd
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -28,7 +29,6 @@ def _utc_from_iso(iso_str: str) -> str:
         # Just ensure it's clean string
         return iso_str
     except:
-        from src.utils.target_date import get_now_kst
         return get_now_kst().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _utc_date_parts(iso_str: str) -> tuple[str, str, str]:
@@ -39,21 +39,25 @@ def _utc_date_parts(iso_str: str) -> tuple[str, str, str]:
         dt = datetime.fromisoformat(iso_str.replace('Z', '+00:00'))
         return dt.strftime("%Y"), dt.strftime("%m"), dt.strftime("%d")
     except:
-        from src.utils.target_date import get_now_kst
         now = get_now_kst()
         return now.strftime("%Y"), now.strftime("%m"), now.strftime("%d")
 
 def fetch_rss_feed(channel_id: str) -> str:
     url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
     try:
-        req = Request(url, headers={"User-Agent": "hoin-insight-watcher/1.0"})
-        # Allow legacy SSL if needed (macOS python issue workaround)
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
+        # Use a simpler User-Agent that worked in testing
+        headers = {"User-Agent": "Mozilla/5.0"}
+        resp = requests.get(url, headers=headers, timeout=30)
         
-        with urlopen(req, context=ctx, timeout=30) as resp:
-            return resp.read().decode("utf-8")
+        # If we have a body that looks like a feed, return it regardless of status code
+        if "<feed" in resp.text and "<entry" in resp.text:
+            return resp.text
+            
+        if resp.status_code == 200:
+            return resp.text
+            
+        logger.error(f"RSS Fetch Failed for {channel_id}: Status {resp.status_code}")
+        return ""
     except Exception as e:
         logger.error(f"RSS Fetch Failed for {channel_id}: {e}")
         return ""
