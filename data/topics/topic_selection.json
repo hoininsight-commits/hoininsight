@@ -1,17 +1,17 @@
 {
   "MAIN": {
-    "candidate_id": "974dd261",
+    "candidate_id": "99c21f0c",
     "candidate_type": "DATA",
-    "event": "GOLD 하방 이상징후 (Z-score: -1.95)",
+    "event": "GOLD 하방 이상징후 (Z-score: -2.13)",
     "entity": [
       "Market"
     ],
     "core_facts": [
       {
         "name": "gold",
-        "value": 4600.2002,
-        "change": -2.09,
-        "z_score": -1.95
+        "value": 4583.2002,
+        "change": -2.45,
+        "z_score": -2.13
       }
     ],
     "expected_paths": [
@@ -23,23 +23,23 @@
     "recency_score": 0.9,
     "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
+    "structure_axis": "emerging",
     "evidence_bundle": {
-      "axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
+      "axis": "emerging",
       "market_reaction": {
         "main_asset": "gold",
-        "intensity": -2.09,
+        "intensity": -2.45,
         "other_reactions": []
       },
       "temporal_context": {
-        "current_time": "2026-04-28 22:00",
+        "current_time": "2026-04-28 23:21",
         "is_market_closed": false,
         "market_data_ref": "Real-time/Today's Prices"
       },
       "related_events": [],
       "social_prediction": [],
       "supporting_assets": [
-        "us10y: 1.91%"
+        "us10y: 1.56%"
       ],
       "contradictions": [
         "No clear contradictions found"

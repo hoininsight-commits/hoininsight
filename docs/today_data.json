@@ -4816,8 +4816,8 @@
     "score_trust": "MEDIUM_TRUST"
   },
   "market_snapshot": {
-    "rates": "4.38%",
-    "spx": "7173.91",
+    "rates": "4.36%",
+    "spx": "7142.2",
     "btc": "N/A",
     "trend_short": "NEUTRAL",
     "trend_mid": "UP"
@@ -4828,15 +4828,27 @@
   },
   "history_layer": [
     {
-      "date": "20260427",
-      "topic": "[2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal",
+      "date": "20260428",
+      "topic": "AI 불확실성 속, '신뢰 경제'가 뜬다! 내일의 승자는 이 숨겨진 공식을 안다!",
       "strength": 0,
       "anomaly_type": "",
       "filters_hit": [
-        "emerging"
+        "AI의 확산과 그에 따른 사회적, 윤리적 파장"
       ],
-      "why_now": "",
-      "path": "topics/items/20260427__top1.json",
+      "why_now": "Hacker News에서 1573 Points 획득하며 커뮤니티 급상승",
+      "path": "topics/items/20260428__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-04-27",
+      "rank": 1,
+      "topic": "[2026-04-26] 노조 파업에 삼전 개미 뿔났다…이재용 집앞 '맞불 집회'",
+      "strength": 0,
+      "anomaly_type": "쇼츠",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-04-27__top1.json",
       "isToday": false
     },
     {
@@ -4874,19 +4886,7 @@
       ],
       "path": "topics/items/2026-04-22__top1.json",
       "isToday": false
-    },
-    {
-      "date": "2026-04-21",
-      "rank": 1,
-      "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
-      "strength": 9.2,
-      "anomaly_type": "롱폼",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-21__top1.json",
-      "isToday": false
     }
   ],
-  "last_updated": "2026-04-28T22:00:51.231944"
+  "last_updated": "2026-04-28T23:21:43.902856"
 }

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-04-28T21:52:25.988323+00:00",
+    "collected_at": "2026-04-28T23:13:56.192501+00:00",
     "source_timestamp": null,
     "cache_hit": false,
     "ttl_policy_minutes": 720,
@@ -9,7 +9,7 @@
   "data": {
     "date": "20260428",
     "source": "FRED API",
-    "total_events": 10,
+    "total_events": 9,
     "major_surprises": [
       {
         "series_id": "T10Y2Y",
@@ -39,19 +39,6 @@
       }
     ],
     "all_events": [
-      {
-        "series_id": "CPIAUCSL",
-        "event": "미국 CPI",
-        "unit": "전월비",
-        "date": "2026-03-01",
-        "actual": 330.293,
-        "previous": 327.46,
-        "change": 2.833,
-        "surprise": 0,
-        "surprise_pct": 0,
-        "has_actual": true,
-        "surprise_direction": "MISS"
-      },
       {
         "series_id": "CPILFESL",
         "event": "미국 Core CPI",

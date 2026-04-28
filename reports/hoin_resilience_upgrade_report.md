@@ -9,7 +9,7 @@
 - **종합 점수**: 4.6 / 5.0
 - **상세 점수**:
     - HOOK: 5
-    - WHY NOW: 3
+    - WHY NOW: 5
     - SCENARIO: 5
     - ACTION: 5
 
@@ -20,4 +20,4 @@
 
 ## 📥 산출물 위치
 - Fallback JSON: `data/scripts/fallback_deterministic.json`
-- Final Script: `data/scripts/20260427/today_script_long.md`
+- Final Script: `data/scripts/20260428/today_script_long.md`

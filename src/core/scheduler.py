@@ -87,6 +87,10 @@ class HunterScheduler:
             print("  [Hunter] DetectorAgent 가동...")
             subprocess.run([sys.executable, "src/agents/detector.py"], env=env, check=True)
             
+            # 1.5 Writer 가동 (스크립트 생성)
+            print("  [Hunter] WriterAgent 가동...")
+            subprocess.run([sys.executable, "src/agents/writer.py"], env=env, check=True)
+
             # 2. Publisher 가동 (브리핑 생성)
             print("  [Hunter] PublisherAgent 가동...")
             subprocess.run([sys.executable, "src/agents/publisher.py"], env=env, check=True)

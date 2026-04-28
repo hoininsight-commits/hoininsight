@@ -327,6 +327,26 @@
       "operator_approved": false,
       "approved_at": null,
       "publish_status": "UNKNOWN"
+    },
+    {
+      "id": "20260428_001",
+      "date": "2026-04-28",
+      "type": "쇼츠",
+      "title": "GOLD 하방 이상징후 (Z-score: -2.13)",
+      "thumbnail_text": "",
+      "duration_min": 2,
+      "signal_strength": 0,
+      "filters_used": [
+        "emerging"
+      ],
+      "stocks": [],
+      "is_republish": false,
+      "original_id": null,
+      "script_path": "data/scripts/20260428/today_script_long.md",
+      "status": "승인대기",
+      "operator_approved": false,
+      "approved_at": null,
+      "publish_status": "UNKNOWN"
     }
   ]
 }

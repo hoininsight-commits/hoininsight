@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-04-28T21:59:27.542904",
+    "collected_at": "2026-04-28T23:20:33.278386",
     "ttl_minutes": 240,
     "source": "Last30Days-Integrated-Collector"
   },
@@ -21,13 +21,98 @@
               "probability": 100.0
             }
           ],
-          "liquidity": 9221274.78797,
-          "volume24h": 2227412.38,
+          "liquidity": 4599559.03335,
+          "volume24h": 2262750.57,
+          "is_breaking": false
+        },
+        {
+          "title": "Strait of Hormuz traffic returns to normal by May 15?",
+          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-may-15",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 19.5
+            },
+            {
+              "name": "No",
+              "probability": 80.5
+            }
+          ],
+          "liquidity": 186665.0004,
+          "volume24h": 1099976.8552590003,
           "is_breaking": false
         },
         {
           "title": "Strait of Hormuz traffic returns to normal by end of April?",
           "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 0.5
+            },
+            {
+              "name": "No",
+              "probability": 99.5
+            }
+          ],
+          "liquidity": 236505.94426,
+          "volume24h": 1026927.4669930001,
+          "is_breaking": false
+        },
+        {
+          "title": "Strait of Hormuz traffic returns to normal by end of May?",
+          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-end-of-may",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 40.5
+            },
+            {
+              "name": "No",
+              "probability": 59.5
+            }
+          ],
+          "liquidity": 188511.4469,
+          "volume24h": 591582.3439699992,
+          "is_breaking": false
+        },
+        {
+          "title": "MegaETH market cap (FDV) one day after launch? ",
+          "url": "https://polymarket.com/event/megaeth-market-cap-fdv-one-day-after-launch",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 93.5
+            },
+            {
+              "name": "No",
+              "probability": 6.5
+            }
+          ],
+          "liquidity": 452929.863,
+          "volume24h": 216274.804866,
+          "is_breaking": false
+        },
+        {
+          "title": "Which company has the best AI model end of May?",
+          "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-may",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 0.1
+            },
+            {
+              "name": "No",
+              "probability": 99.9
+            }
+          ],
+          "liquidity": 43714.52554,
+          "volume24h": 28163.890999999985,
+          "is_breaking": false
+        },
+        {
+          "title": "Which company has best AI model end of June?",
+          "url": "https://polymarket.com/event/which-company-has-best-ai-model-end-of-june",
           "outcomes": [
             {
               "name": "Yes",
@@ -38,110 +123,8 @@
               "probability": 99.7
             }
           ],
-          "liquidity": 320951.01736,
-          "volume24h": 862058.4206379999,
-          "is_breaking": false
-        },
-        {
-          "title": "Strait of Hormuz traffic returns to normal by May 15?",
-          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-may-15",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 16.5
-            },
-            {
-              "name": "No",
-              "probability": 83.5
-            }
-          ],
-          "liquidity": 389318.1687,
-          "volume24h": 754783.6384410004,
-          "is_breaking": false
-        },
-        {
-          "title": "Which company has the third best AI model end of April?",
-          "url": "https://polymarket.com/event/which-company-has-the-third-best-ai-model-end-of-april",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 22.5
-            },
-            {
-              "name": "No",
-              "probability": 77.5
-            }
-          ],
-          "liquidity": 2080.992,
-          "volume24h": 73417.613707,
-          "is_breaking": false
-        },
-        {
-          "title": "MegaETH market cap (FDV) one day after launch? ",
-          "url": "https://polymarket.com/event/megaeth-market-cap-fdv-one-day-after-launch",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 94.5
-            },
-            {
-              "name": "No",
-              "probability": 5.5
-            }
-          ],
-          "liquidity": 288978.5533,
-          "volume24h": 67983.38220200001,
-          "is_breaking": false
-        },
-        {
-          "title": "Which company has the best Math AI model end of April?",
-          "url": "https://polymarket.com/event/which-company-has-the-best-math-ai-model-end-of-april",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 32.5
-            },
-            {
-              "name": "No",
-              "probability": 67.5
-            }
-          ],
-          "liquidity": 979.85928,
-          "volume24h": 63439.738966,
-          "is_breaking": false
-        },
-        {
-          "title": "Which company has the best AI model end of May?",
-          "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-may",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 1.9
-            },
-            {
-              "name": "No",
-              "probability": 98.0
-            }
-          ],
-          "liquidity": 18216.49585,
-          "volume24h": 19135.28974600002,
-          "is_breaking": false
-        },
-        {
-          "title": "Largest Company end of April?",
-          "url": "https://polymarket.com/event/largest-company-end-of-april-738",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 0.1
-            },
-            {
-              "name": "No",
-              "probability": 100.0
-            }
-          ],
-          "liquidity": 273242.09927,
-          "volume24h": 16000.0,
+          "liquidity": 39243.10961,
+          "volume24h": 12399.975,
           "is_breaking": false
         },
         {
@@ -157,7 +140,7 @@
               "probability": 100.0
             }
           ],
-          "liquidity": 427051.21902,
+          "liquidity": 437934.54961,
           "volume24h": 10276.9,
           "is_breaking": false
         },
@@ -167,32 +150,49 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 28.5
+              "probability": 96.5
             },
             {
               "name": "No",
-              "probability": 71.5
+              "probability": 3.5
             }
           ],
-          "liquidity": 982.1197,
-          "volume24h": 6301.06,
+          "liquidity": 11426.38814,
+          "volume24h": 9175.81255,
           "is_breaking": false
         },
         {
-          "title": "What will Bitcoin outperform in April?",
-          "url": "https://polymarket.com/event/what-will-bitcoin-outperform-in-april",
+          "title": "Which company has the best Math AI model end of April?",
+          "url": "https://polymarket.com/event/which-company-has-the-best-math-ai-model-end-of-april",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 50.0
+              "probability": 0.2
             },
             {
               "name": "No",
-              "probability": 50.0
+              "probability": 99.8
             }
           ],
-          "liquidity": 5.0,
-          "volume24h": 1449.0251,
+          "liquidity": 2652.34334,
+          "volume24h": 2705.8825,
+          "is_breaking": false
+        },
+        {
+          "title": "SpaceX IPO closing market cap above ___ ?",
+          "url": "https://polymarket.com/event/spacex-ipo-closing-market-cap-above",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 11.5
+            },
+            {
+              "name": "No",
+              "probability": 88.5
+            }
+          ],
+          "liquidity": 6984.2927,
+          "volume24h": 828.25,
           "is_breaking": false
         },
         {
@@ -208,25 +208,8 @@
               "probability": 12.0
             }
           ],
-          "liquidity": 252.0,
+          "liquidity": 277.2391,
           "volume24h": 300.0,
-          "is_breaking": false
-        },
-        {
-          "title": "SpaceX IPO closing market cap above ___ ?",
-          "url": "https://polymarket.com/event/spacex-ipo-closing-market-cap-above",
-          "outcomes": [
-            {
-              "name": "Yes",
-              "probability": 92.6
-            },
-            {
-              "name": "No",
-              "probability": 7.4
-            }
-          ],
-          "liquidity": 2250.23881,
-          "volume24h": 12.87,
           "is_breaking": false
         },
         {
@@ -235,32 +218,49 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 1.1
+              "probability": 3.0
             },
             {
               "name": "No",
-              "probability": 99.0
+              "probability": 97.0
             }
           ],
-          "liquidity": 116.64406,
-          "volume24h": 10.2885,
+          "liquidity": 549.28606,
+          "volume24h": 240.188283,
           "is_breaking": false
         },
         {
-          "title": "Consensys IPO closing market cap above ___ ?",
-          "url": "https://polymarket.com/event/consensys-ipo-closing-market-cap-above",
+          "title": "Which company has the third best AI model end of April?",
+          "url": "https://polymarket.com/event/which-company-has-the-third-best-ai-model-end-of-april",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 17.0
+              "probability": 0.1
             },
             {
               "name": "No",
-              "probability": 83.0
+              "probability": 99.9
             }
           ],
-          "liquidity": 415.8268,
-          "volume24h": 0.0,
+          "liquidity": 6019.70855,
+          "volume24h": 182.28,
+          "is_breaking": false
+        },
+        {
+          "title": "What will Bitcoin outperform in April?",
+          "url": "https://polymarket.com/event/what-will-bitcoin-outperform-in-april",
+          "outcomes": [
+            {
+              "name": "Yes",
+              "probability": 91.0
+            },
+            {
+              "name": "No",
+              "probability": 9.0
+            }
+          ],
+          "liquidity": 201.2443,
+          "volume24h": 32.959779999999995,
           "is_breaking": false
         },
         {
@@ -269,31 +269,31 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 29.5
+              "probability": 59.0
             },
             {
               "name": "No",
-              "probability": 70.5
+              "probability": 41.0
             }
           ],
-          "liquidity": 513.5994,
-          "volume24h": 0.0,
+          "liquidity": 932.5545,
+          "volume24h": 23.65,
           "is_breaking": false
         },
         {
-          "title": "Ledger IPO closing market cap above ___ ?",
-          "url": "https://polymarket.com/event/ledger-ipo-closing-market-cap-above",
+          "title": "US economic state at the end of 2026?",
+          "url": "https://polymarket.com/event/us-economic-state-at-the-end-of-2026",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 46.0
+              "probability": 50.0
             },
             {
               "name": "No",
-              "probability": 54.0
+              "probability": 50.0
             }
           ],
-          "liquidity": 7.57793,
+          "liquidity": 33.7797,
           "volume24h": 0.0,
           "is_breaking": false
         },
@@ -303,48 +303,48 @@
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 46.0
+              "probability": 31.0
             },
             {
               "name": "No",
-              "probability": 54.0
+              "probability": 69.0
             }
           ],
-          "liquidity": 1.68,
+          "liquidity": 39.1999,
           "volume24h": 0.0,
           "is_breaking": false
         },
         {
-          "title": "US economic state at the end of 2026?",
-          "url": "https://polymarket.com/event/us-economic-state-at-the-end-of-2026",
+          "title": "Consensys IPO closing market cap above ___ ?",
+          "url": "https://polymarket.com/event/consensys-ipo-closing-market-cap-above",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 48.5
+              "probability": 16.0
             },
             {
               "name": "No",
-              "probability": 51.5
+              "probability": 84.0
             }
           ],
-          "liquidity": 14.0004,
+          "liquidity": 390.6395,
           "volume24h": 0.0,
           "is_breaking": false
         },
         {
-          "title": "Which company has the #1 AI model end of April? (Style Control On)",
-          "url": "https://polymarket.com/event/which-company-has-the-1-ai-model-end-of-april-style-control-on",
+          "title": "Ledger IPO closing market cap above ___ ?",
+          "url": "https://polymarket.com/event/ledger-ipo-closing-market-cap-above",
           "outcomes": [
             {
               "name": "Yes",
-              "probability": 0.1
+              "probability": 49.5
             },
             {
               "name": "No",
-              "probability": 100.0
+              "probability": 50.5
             }
           ],
-          "liquidity": 8881.82035,
+          "liquidity": 48.6173,
           "volume24h": 0.0,
           "is_breaking": false
         }
@@ -353,7 +353,7 @@
         {
           "title": "Alberta startup sells no-tech tractors for half price",
           "url": "https://wheelfront.com/this-alberta-startup-sells-no-tech-tractors-for-half-price/",
-          "points": 2314,
+          "points": 2315,
           "comments": 776,
           "author": "Kaibeezy",
           "date": "2026-04-22"
@@ -361,7 +361,7 @@
         {
           "title": "DeepSeek v4",
           "url": "https://api-docs.deepseek.com/news/news260424",
-          "points": 2081,
+          "points": 2083,
           "comments": 1600,
           "author": "impact_sy",
           "date": "2026-04-24"
@@ -370,14 +370,14 @@
           "title": "GPT-5.5",
           "url": "https://openai.com/index/introducing-gpt-5-5/",
           "points": 1573,
-          "comments": 1050,
+          "comments": 1051,
           "author": "rd",
           "date": "2026-04-23"
         },
         {
           "title": "Framework Laptop 13 Pro",
           "url": "https://frame.work/laptop13pro",
-          "points": 1476,
+          "points": 1477,
           "comments": 766,
           "author": "Trollmann",
           "date": "2026-04-21"
@@ -385,7 +385,7 @@
         {
           "title": "The West forgot how to make things, now it’s forgetting how to code",
           "url": "https://techtrenches.dev/p/the-west-forgot-how-to-make-things",
-          "points": 1177,
+          "points": 1178,
           "comments": 841,
           "author": "milkglass",
           "date": "2026-04-26"
@@ -401,8 +401,8 @@
         {
           "title": "I bought Friendster for $30k – Here's what I'm doing with it",
           "url": "https://ca98am79.medium.com/i-bought-friendster-for-30k-heres-what-i-m-doing-with-it-d5e8ddb3991d",
-          "points": 1086,
-          "comments": 595,
+          "points": 1089,
+          "comments": 596,
           "author": "ca98am79",
           "date": "2026-04-26"
         },
@@ -418,14 +418,14 @@
           "title": "Windows 9x Subsystem for Linux",
           "url": "https://social.hails.org/@hailey/116446826733136456",
           "points": 1008,
-          "comments": 254,
+          "comments": 255,
           "author": "sohkamyung",
           "date": "2026-04-22"
         },
         {
           "title": "Qwen3.6-27B: Flagship-Level Coding in a 27B Dense Model",
           "url": "https://qwen.ai/blog?id=qwen3.6-27b",
-          "points": 991,
+          "points": 992,
           "comments": 446,
           "author": "mfiguiere",
           "date": "2026-04-22"
@@ -433,7 +433,7 @@
         {
           "title": "AI should elevate your thinking, not replace it",
           "url": "https://www.koshyjohn.com/blog/ai-should-elevate-your-thinking-not-replace-it/",
-          "points": 840,
+          "points": 841,
           "comments": 584,
           "author": "koshyjohn",
           "date": "2026-04-26"
@@ -441,15 +441,15 @@
         {
           "title": "An AI agent deleted our production database. The agent's confession is below",
           "url": "https://twitter.com/lifeof_jer/status/2048103471019434248",
-          "points": 831,
-          "comments": 1000,
+          "points": 832,
+          "comments": 1002,
           "author": "jeremyccrane",
           "date": "2026-04-26"
         },
         {
           "title": "Meta to start capturing employee mouse movements, keystrokes for AI training",
           "url": "https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/",
-          "points": 798,
+          "points": 799,
           "comments": 525,
           "author": "dlx",
           "date": "2026-04-21"
@@ -457,16 +457,16 @@
         {
           "title": "4TB of voice samples just stolen from 40k AI contractors at Mercor",
           "url": "https://app.oravys.com/blog/mercor-breach-2026",
-          "points": 560,
-          "comments": 211,
+          "points": 573,
+          "comments": 215,
           "author": "Oravys",
           "date": "2026-04-27"
         },
         {
           "title": "China blocks Meta's acquisition of AI startup Manus",
           "url": "https://www.cnbc.com/2026/04/27/meta-manus-china-blocks-acquisition-ai-startup.html",
-          "points": 377,
-          "comments": 275,
+          "points": 380,
+          "comments": 283,
           "author": "yakkomajuri",
           "date": "2026-04-27"
         },
@@ -528,8 +528,8 @@
         {
           "title": "Show HN: Utilyze – an open source GPU monitoring tool more accurate than nvtop",
           "url": "https://www.systalyze.com/utilyze",
-          "points": 104,
-          "comments": 26,
+          "points": 107,
+          "comments": 27,
           "author": "ManyaGhobadi",
           "date": "2026-04-27"
         },
@@ -611,20 +611,20 @@
           "date": "2026-04-22"
         },
         {
-          "title": "San Francisco, AI capital of the world, is an economic laggard",
-          "url": "https://www.economist.com/finance-and-economics/2026/04/26/san-francisco-ai-capital-of-the-world-is-an-economic-laggard",
-          "points": 8,
-          "comments": 0,
-          "author": "andsoitis",
-          "date": "2026-04-26"
-        },
-        {
           "title": "Why prediction markets are a sure sign that our civilisation is in decay",
           "url": "https://www.joanwestenberg.com/why-prediction-markets-are-a-sure-sign-that-our-civilisation-is-in-decay/",
           "points": 8,
           "comments": 0,
           "author": "alcazar",
           "date": "2026-04-23"
+        },
+        {
+          "title": "San Francisco, AI capital of the world, is an economic laggard",
+          "url": "https://www.economist.com/finance-and-economics/2026/04/26/san-francisco-ai-capital-of-the-world-is-an-economic-laggard",
+          "points": 8,
+          "comments": 0,
+          "author": "andsoitis",
+          "date": "2026-04-26"
         },
         {
           "title": "AI is changing how Texas universities teach computer science as job market slows",
@@ -641,6 +641,14 @@
           "comments": 0,
           "author": "endorphine",
           "date": "2026-04-21"
+        },
+        {
+          "title": "Show HN: Data-driven GEO and marketing agent platform",
+          "url": "https://dageno.ai",
+          "points": 6,
+          "comments": 0,
+          "author": "timdageno",
+          "date": "2026-04-22"
         },
         {
           "title": "The AI Compute Crunch Is Here (and It's Affecting the Economy)",
@@ -665,14 +673,6 @@
           "comments": 1,
           "author": "dinarino",
           "date": "2026-04-27"
-        },
-        {
-          "title": "Show HN: Data-driven GEO and marketing agent platform",
-          "url": "https://dageno.ai",
-          "points": 6,
-          "comments": 0,
-          "author": "timdageno",
-          "date": "2026-04-22"
         },
         {
           "title": "Ask HN: What skills are future proof in an AI driven job market?",
@@ -756,7 +756,7 @@
         {
           "title": "The Stock Market is in its most overextended state in history, surpassing even the most euphoric periods of the early 2000s and the 2021",
           "url": "https://www.reddit.com/r/stocks/comments/1slqarf/the_stock_market_is_in_its_most_overextended/",
-          "score": 5695,
+          "score": 5685,
           "comments": 1111,
           "author": null,
           "snippet": "The US stock market is officially more overvalued than ever. The Buffett Indicator (total market cap vs. GDP) just hit an all-time high of 232.6%, meaning stocks are trading at more than double the size of the actual economy.\n\n​Despite the \"it'll only go higher\" hype, the numbers show we’ve blown past the most famous bubbles in history:\n\n​2000 Dot-Com Bubble: 162.6% (Today is 70% higher)\n\n​2021 Fr"
@@ -764,7 +764,7 @@
         {
           "title": "Looks like the used car market is about to surge.",
           "url": "https://www.reddit.com/r/SipsTea/comments/1svt8lf/looks_like_the_used_car_market_is_about_to_surge/",
-          "score": 11076,
+          "score": 11081,
           "comments": 2019,
           "author": null,
           "snippet": "Looks like the used car market is about to surge."
@@ -772,7 +772,7 @@
         {
           "title": "Has the job market improved this year?",
           "url": "https://www.reddit.com/r/cscareerquestions/comments/1smjmla/has_the_job_market_improved_this_year/",
-          "score": 56,
+          "score": 57,
           "comments": 80,
           "author": null,
           "snippet": "I’ve seen job postings are at an all-time high since the 2022 lows, but layoffs are also high. What do you all think about the current market? Does anyone have personal experience or thoughts about this year and the future?\n\nIf you think it’s gotten worse, is that because of wars and the general economy, or more due to factors like AI? And if you think it’s improved, why?"
@@ -780,7 +780,7 @@
         {
           "title": "Paris has held its first ever Modest Fashion Week. The event brought together nearly 30 designers, highlighting styles worn by many Muslim women and reflecting a growing global fashion market.",
           "url": "https://www.reddit.com/r/Fauxmoi/comments/1swclqz/paris_has_held_its_first_ever_modest_fashion_week/",
-          "score": 8797,
+          "score": 8801,
           "comments": 558,
           "author": null,
           "snippet": "More info: https://www.bbc.com/news/articles/cx23zmxd2z3o"
@@ -788,7 +788,7 @@
         {
           "title": "Anthropic has surged to a trillion-dollar valuation on secondary markets, overtaking OpenAI.",
           "url": "https://www.reddit.com/r/technology/comments/1st6fxr/anthropic_has_surged_to_a_trilliondollar/",
-          "score": 13175,
+          "score": 13179,
           "comments": 1263,
           "author": null,
           "snippet": "They have a better product. it's good thing the stock market doesn't run out of tokens and have to wait four hours to reset The \"Mythos Gambit\" paid off.\n\n\"Our product is SO good that it's actually scary and so no one can have it\".\n\nBAM, trillion dollar valuation.\n\nGotta respect the game at least."
@@ -796,7 +796,7 @@
         {
           "title": "People aren’t lazy, they’re just stuck in survival mode in this job market",
           "url": "https://www.reddit.com/r/jobmarket/comments/1spv4r3/people_arent_lazy_theyre_just_stuck_in_survival/",
-          "score": 4980,
+          "score": 4979,
           "comments": 1191,
           "author": null,
           "snippet": "People aren’t lazy, they’re just stuck in survival mode in this job market"
@@ -804,7 +804,7 @@
         {
           "title": "What the actual fuck is wrong with this job market?!",
           "url": "https://www.reddit.com/r/jobs/comments/1stry6c/what_the_actual_fuck_is_wrong_with_this_job_market/",
-          "score": 382,
+          "score": 375,
           "comments": 111,
           "author": null,
           "snippet": "My husband was laid off from a dream job back in November, partly because of Tariffs and partly because the owner/boss mismanaged funds and didn’t want to give up any of his lifestyle. It was just my husband and him running the business, so low overhead and operating costs. He applied to sooo many jobs, like most of us. He FINALLY landed an amazing position and started in March, (I know it could h"
@@ -812,7 +812,7 @@
         {
           "title": "The job market is crazy.",
           "url": "https://www.reddit.com/r/TikTokCringe/comments/1slk1p6/the_job_market_is_crazy/",
-          "score": 6346,
+          "score": 6344,
           "comments": 1206,
           "author": null,
           "snippet": "The job market is crazy."
@@ -820,7 +820,7 @@
         {
           "title": "Netflix just plummeted 8% immediately upon market close today. Time to buy!",
           "url": "https://www.reddit.com/r/wallstreetbets/comments/1sneszs/netflix_just_plummeted_8_immediately_upon_market/",
-          "score": 8838,
+          "score": 8832,
           "comments": 1032,
           "author": null,
           "snippet": "Netflix just plummeted 8% immediately upon market close today. Time to buy!"
@@ -828,7 +828,7 @@
         {
           "title": "How does the stock market keep going up with everything happening?",
           "url": "https://www.reddit.com/r/StockMarket/comments/1sloqjz/how_does_the_stock_market_keep_going_up_with/",
-          "score": 1228,
+          "score": 1234,
           "comments": 905,
           "author": null,
           "snippet": "There are multiple signs to believe that we're in an economic crisis that's only going to get worse in America.\n\n1) The president is openly corrupt & a blatant pathological liar\n\n2) Most American allies don't trust America anymore\n\n3) The job market is essentially frozen\n\n4) GDP growth is down\n\n5) The cost of fuel has dramatically increased\n\n6) Approximately 30% of oil producing infrastructure has"
@@ -844,10 +844,18 @@
         {
           "title": "Are we in the worst job market era ever?",
           "url": "https://www.reddit.com/r/recruitinghell/comments/1sg6afq/are_we_in_the_worst_job_market_era_ever/",
-          "score": 573,
+          "score": 571,
           "comments": 227,
           "author": null,
           "snippet": "as a recent graduate looking for a job for almost 2 years now, and lot of unpaid internships here and there, why can't I land a job? do I need a referral? what's going on? am i such an incompetent piece of shit?, I'm 26m and I give up after 500+ email refusals, I had this argument with my father about me looking for a job, he doesn't understand this job market, I don't blame him, when he graduated"
+        },
+        {
+          "title": "Marketplace Monday - Discussion",
+          "url": "https://www.reddit.com/r/darknet/comments/1sk3anx/marketplace_monday_discussion/",
+          "score": 9,
+          "comments": 39,
+          "author": null,
+          "snippet": "**ALL MARKET RELATED POSTS SHOULD BE POSTED HERE. THIS ALSO INCLUDES ADVERTISING** \n\nThis post will now be a weekly thread to keep down on the size of the post and make it more user friendly!\n\nAll discussion posts, questions etc relating to markets should be posted here, including user and market reviews. Posts that belong here that are posted to the front page will get you a 3 day ban. Continuing"
         },
         {
           "title": "Where is the economy actually headed right now?",
@@ -860,7 +868,7 @@
         {
           "title": "Business class on this Avianca flight is just an insert over a middle economy seat to give you more arm room",
           "url": "https://www.reddit.com/r/mildlyinteresting/comments/1sbfx6i/business_class_on_this_avianca_flight_is_just_an/",
-          "score": 14856,
+          "score": 14864,
           "comments": 621,
           "author": null,
           "snippet": "That’s most European short haul business class \"best we can do is a 'business arm'\" The Lufthansa flight I was on last month was literally just a sign hung over the middle seat saying \"for your comfort\" or something like that. They didn't even have this kind of 'fancy' table"
@@ -869,57 +877,49 @@
       "x": [],
       "youtube": [
         {
-          "title": "First Trade 28th April 2026 : Zee Business Live | Share Market Live Updates | Stock Market News",
-          "url": "https://www.youtube.com/watch?v=aSDRmCpRsBY",
-          "views": 504087,
-          "channel": "Zee Business",
-          "snippet": "First Trade 28th April 2026 : Zee Business Live | Share Market Live Updates | Stock Market News First Trade 28th April 2026 : Zee Business Live | Share Market Live Updates | Stock Market News Business News -Zee Business Provides Latest Business News, Live Share Market Updates, Top News From India, Stock Updates, IPO, News on Banking and Financial Updates. Watch business live tv, business news live, business live streaming at Zee Business. Stay connected to know more about Zee business news, business live Internet, live business news 🕴FinalTrade​ बनाएं आखिरी डेढ़ घंटे में कमाई की स्ट्रैटेज",
-          "has_transcript": false
-        },
-        {
-          "title": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz 2026-04-28 21:54",
-          "url": "https://www.youtube.com/watch?v=LQrvvoqM-w8",
-          "views": 457735,
-          "channel": "CNBC Awaaz.",
-          "snippet": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz 2026-04-28 21:54 Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz Business News Live | First Trade में जानें कैसा है Market का हाल, बाजार खुलने के बाद कहां बन रहा है कमाई का अच्छा मौका. जानें किन Stocks में Intraday में दिख रहा है अच्छी कमाई का मौका. रहें First Trade में हर छोटी-बड़ी मार्केट की खबर से जागरुक. देखें वीडियो. #live #CNBCAwaaz #AnujSinghal #firsttradelive #firsttradeupdates #stockmarketliveupdates #aajkatajakhabar #businessnewslive #stockmarketli",
-          "has_transcript": false
-        },
-        {
           "title": "Why the Stock Market REFUSES to Crash",
           "url": "https://www.youtube.com/watch?v=3d6fBX99lAw",
-          "views": 100469,
+          "views": 102565,
           "channel": "Felix & Friends (Goat Academy)",
-          "snippet": "Why the Stock Market REFUSES to Crash 💡 Learn Wall Street's Investing Rules Now. Watch the 17 min Masterclass: https://felixfriends.org/getfree 📊 TradeVision AI Pre-Sale: Lock in Early Access and save 45%. Get Your Free Trial at http://tradevision.io/ai Join Felix as he explores the realities of the trading industry, sharing his personal experience with a million-dollar experiment. This video offers insights into his unique approach to financial markets, contrasting it with common practices and highlighting his trading strategy.",
+          "snippet": "Do you ever look around and think we've got 40 trillion debt? The last time that was happened, you were fighting, you know, my lot. Yeah, I'm German. Um, geopolitics is an absolute powder cake. You know, is the war on? Is it off? Conflict all over the world. We have tariffs, trade wars, supply chain problems. The Fed doesn't know what to do because inflation's going up. You know, the stock market is just propped up essentially by Nvidia in the hope that AI is going to work. And with all of this debt spiraling, geopolitics, concentration risk, all that stuff, why the heck has the market not crashed? I mean, we haven't seen Yeah, we've seen a little...",
+          "has_transcript": false
+        },
+        {
+          "title": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz 2026-04-28 23:15",
+          "url": "https://www.youtube.com/watch?v=LQrvvoqM-w8",
+          "views": 465231,
+          "channel": "CNBC Awaaz.",
+          "snippet": "Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz 2026-04-28 23:15 Stock Market Updates Live: आज कहां करें इन्वेस्ट | Business & Finance | 28 April 2026 | CNBC Awaaz Business News Live | First Trade में जानें कैसा है Market का हाल, बाजार खुलने के बाद कहां बन रहा है कमाई का अच्छा मौका. जानें किन Stocks में Intraday में दिख रहा है अच्छी कमाई का मौका. रहें First Trade में हर छोटी-बड़ी मार्केट की खबर से जागरुक. देखें वीडियो. #live #CNBCAwaaz #AnujSinghal #firsttradelive #firsttradeupdates #stockmarketliveupdates #aajkatajakhabar #businessnewslive #stockmarketli",
+          "has_transcript": false
+        },
+        {
+          "title": "Rally Paused? Stocks Look To Massive Earnings Week Ahead | Stock Market Live 2026-04-28 23:14",
+          "url": "https://www.youtube.com/watch?v=f9QvkxXqEMo",
+          "views": 5924,
+          "channel": "TraderTV Live",
+          "snippet": "Rally Paused? Stocks Look To Massive Earnings Week Ahead | Stock Market Live 2026-04-28 23:14 TraderTV Live is a professional day trading broadcast — two active traders, real money, live from our Toronto trading floor. Every trading day, 8:00 AM to 4:00 PM ET. No commentary. No predictions. Actual trades being executed in real time. Our traders have 50+ years of combined experience in equities, options, and futures. What you're watching is professional-grade order flow analysis and live trade execution — the same type of content institutional desks use, available to anyone. ━━━━━━━━━━━",
           "has_transcript": false
         },
         {
           "title": "What the Hell Just Happened to the Stock Market?",
           "url": "https://www.youtube.com/watch?v=nkj6nWZoi7c",
-          "views": 68509,
+          "views": 68860,
           "channel": "The Traveling Trader",
           "snippet": "What the Hell Just Happened to the Stock Market? 🚀 Trade live with me live every day at market open and get ALL my insights in real time! Sign up here. https://whop.com/thetravelingtrader ✅ Alpha Scope signup! Be the first to get a chance to sign up to our revolutionary stock picking research tool here: https://alphascope.trade/ 🔥 Get 10% off FundedNext Prop Accounts. Use code TTT at checkout: https://fundednext.com/?fpr=ttt 🔵 Get Public here: https://www.pqr3ntrk.com/B9KLQL/225JFQ/ 🤑 80% off Apex funded accounts plus 1 Day Pass. Use code",
           "has_transcript": false
         },
         {
-          "title": "🔴 Final Trade Live Updates: Stock Market | Share Market Updates | Latest Business News | CNBC Awaaz 2026-04-28 21:53",
-          "url": "https://www.youtube.com/watch?v=erC_qSOcmWw",
-          "views": 17950,
-          "channel": "CNBC Awaaz.",
-          "snippet": "🔴 Final Trade Live Updates: Stock Market | Share Market Updates | Latest Business News | CNBC Awaaz 2026-04-28 21:53 🔴 Final Trade Live Updates: Stock Market | Share Market Updates | Latest Business News | CNBC Awaaz #live #cnbcawaazlive #firsttrade #firsttradeupdates #aajkatajakhabar #businessnewslive #stockmarketlive #sharemarketlive n18oc_business Business News | CNBC Awaaz brings to you latest business news, live share market updates, stock market updates, top business news in india, stock market updates, ipo latest updates, news updates on banking and financials, realty sector and it sector. Watch",
-          "has_transcript": false
-        },
-        {
-          "title": "This Week Could Be A Key Turning Point For The Market",
-          "url": "https://www.youtube.com/watch?v=5Bj9IC0UOrU",
-          "views": 5800,
-          "channel": "Geeks of Finance",
-          "snippet": "This Week Could Be A Key Turning Point For The Market Access our Gamma Exposure Dashboard & Trading Community! https://www.geeksoffinance.com Check out our Trading Community Discord: https://discord.gg/geeksoffinance Join the Geeks' Daily Market Live Stream Here: https://www.geeksoffinance.com/geeks-live GEX Playlist: https://www.youtube.com/playlist?list=PLzckDKTwqhx0gcsZafG7Q25RjhpcLT9l_ How Gamma Exposure Works: https://youtu.be/w4CPm3opieY Subscribe Now For Regular Updates on Trading and Investing: https://www.youtube.com/channel/UCNEA",
+          "title": "OPENAI HAS ISSUES, SEMI STOCKS GO DOWN, BIG TECH REPORTS TOMORROW | MARKET OPEN 2026-04-28 23:15",
+          "url": "https://www.youtube.com/watch?v=35OPhF_36RQ",
+          "views": 6747,
+          "channel": "Amit Kukreja",
+          "snippet": "OPENAI HAS ISSUES, SEMI STOCKS GO DOWN, BIG TECH REPORTS TOMORROW | MARKET OPEN 2026-04-28 23:15 twitter: https://x.com/amitisinvesting deepdives: https://amitsdeepdives.substack.com/ reach out - jess@akcomms.com insta - https://www.instagram.com/amitkukreja227 Chicago meetup - https://tinyurl.com/y82upuj3 new website - http://akmedia.news",
           "has_transcript": false
         },
         {
           "title": "Markets Brace for Busy Week of Rate Decisions, Earnings | Bloomberg Brief 4/27/2026",
           "url": "https://www.youtube.com/watch?v=0WE1zDTp9bw",
-          "views": 8342,
+          "views": 8352,
           "channel": "Bloomberg Television",
           "snippet": "Markets Brace for Busy Week of Rate Decisions, Earnings | Bloomberg Brief 4/27/2026 US equity futures waver ahead of a week full of major central bank rate decisions and $28.8 trillion in market capitalization of S&P 500 firms set to report earnings. Iran has reportedly offered the US a new proposal for reaching a deal to end the war. A gunman firing shots during the White House Correspondents’ Dinner stokes security concerns over King Charles's state visit. Senator Thom Tillis drops his blockade of Kevin Warsh's confirmation to head the Federal Reserve. Mark McCormick of BMO C",
           "has_transcript": false
@@ -927,15 +927,23 @@
         {
           "title": "Mixed Session For Stocks; Alphabet, Primoris, Rocket Lab In Focus | Stock Market Today",
           "url": "https://www.youtube.com/watch?v=hfnVC-NfIXQ",
-          "views": 6110,
+          "views": 6311,
           "channel": "Investor's Business Daily",
           "snippet": "Mixed Session For Stocks; Alphabet, Primoris, Rocket Lab In Focus | Stock Market Today Alissa Coram and Justin Nielsen walk through Monday's market action and discuss key stocks to watch in Stock Market Today. Stock Market Today: April 27, 2026 Hosts: Alissa Coram and Justin Nielsen Get more IBD by subscribing to our channel: https://bit.ly/3OqppAs Visit our website: https://www.investors.com Like us on Facebook: https://www.facebook.com/investorsbusinessdaily Follow us on Twitter: https://twitter.com/IBDinvestors Follow us on Instagram: https://www.instagram.com/investorsbusin",
           "has_transcript": false
         },
         {
+          "title": "OpenAI Missed Revenue! Stocks Sell Off After Record High 📉 Live Trading $NVDA $TSLA $SPY $QQQ $AMD 2026-04-28 23:15",
+          "url": "https://www.youtube.com/watch?v=MzPHIBBTT2E",
+          "views": 1893,
+          "channel": "Bear Bull Traders",
+          "snippet": "OpenAI Missed Revenue! Stocks Sell Off After Record High 📉 Live Trading $NVDA $TSLA $SPY $QQQ $AMD 2026-04-28 23:15 Bear Bull Traders Live Trading Show airs on market days from 8:30 AM to 12:00 PM ET on YouTube. Join us to get your questions answered on the show! Get Free Bear Bull Traders Strategy Crash Courses & Stock Market Newsletter: https://bearbulltraders.com/trade Join Bear Bull Traders Community and Live Trading with Andrew Aziz: https://bearbulltraders.com/webinars#buynow Trading Terminal - Market Atlas Order Flow Chart, $50K Funded Training Account & Best Trading Tools: https://tradingterminal.c",
+          "has_transcript": false
+        },
+        {
           "title": "Jamie Dimon Explains How America's Economy Will Deflate (2026)",
           "url": "https://www.youtube.com/watch?v=YGXWzizs5bo",
-          "views": 88060,
+          "views": 88759,
           "channel": "New Money",
           "snippet": "Jamie Dimon Explains How America's Economy Will Deflate (2026) Jamie Dimon has recently released an alarming shareholder letter. In it he details how problems like Iran, inflation, interest rates, and the growing US debt pile are all colliding at once, and the result could be a US recession or worse... stagflation. ★ ★ OMAHA MEET UP ★ ★ Time: 3:30-6:30pm, Friday May 1st Location: The Diamond Room Omaha Tickets: Just show a preorder confirmation of The New Money Strategy at the door! ★ ★ PRE-ORDER: THE NEW MONEY STRATEGY ★ ★ Pre-order Link: https://the",
           "has_transcript": false
@@ -943,7 +951,7 @@
         {
           "title": "Will AI destroy the economy?",
           "url": "https://www.youtube.com/watch?v=DBvrwWoyYQM",
-          "views": 400752,
+          "views": 404695,
           "channel": "Garys Economics",
           "snippet": "Fresh biscuits. Okay, welcome back to Gary's Economics. This week we are going to explain whether AI will drive wages up or down. Okay, so this is a question which I keep getting asked. So fans of the channel will know I was on tour in Australia and New Zealand uh about a month ago and every single tour that I went I got asked what say I going to do to the economy to inequality to wages. Um and I was hesitant to do a video on it because initially it seemed so obvious to me that AI was going to displace jobs and drive wages down. But the more I sat and read about it and thought about...",
           "has_transcript": false
@@ -951,7 +959,7 @@
         {
           "title": "China's Desperate Attempt To Save Its Economy",
           "url": "https://www.youtube.com/watch?v=6fHgZIW2kFE",
-          "views": 143305,
+          "views": 145335,
           "channel": "China Uncensored",
           "snippet": "China's Desperate Attempt To Save Its Economy Please support China Uncensored! I need just 1000 more subscribers on https://chinauncensored.tv Operation Honey Pot: Paste this emoji 🍯 in your comment below. China’s economy is on its last lifeline. And the CCP will do anything—and I mean anything to protect it. Want to go deeper than YouTube will let us? Check out our website: https://chinauncensored.tv Get the free China Uncensored weekly newsletter: https://chinauncensored.substack.com Download the China Uncensored mobile app: iOS: https",
           "has_transcript": false
@@ -959,7 +967,7 @@
         {
           "title": "What Happens To the Economy If the $2 Trillion AI Bubble Bursts?",
           "url": "https://www.youtube.com/watch?v=E3atOY1chQE",
-          "views": 222717,
+          "views": 224559,
           "channel": "The Infographics Show",
           "snippet": "What Happens To the Economy If the $2 Trillion AI Bubble Bursts? Head to https://betterhelp.com/infographics to get 10% off your first month with our sponsor, BetterHelp. Therapy can be a meaningful space to reflect, grow, and create positive change in your life. $2 trillion is flooding into AI, pushing markets higher while quietly building a fragile system underneath. If that momentum breaks, the fallout could hit far beyond tech stocks. This episode explains how today’s AI boom is driven by concentrated bets, circular funding between major players, and ma",
           "has_transcript": false
@@ -967,7 +975,7 @@
         {
           "title": "'Getting worse': 70 PERCENT of Americans pessimistic about economy in Fox poll",
           "url": "https://www.youtube.com/watch?v=psr2BIqqhbU",
-          "views": 153956,
+          "views": 154544,
           "channel": "MS NOW",
           "snippet": "'Getting worse': 70 PERCENT of Americans pessimistic about economy in Fox poll The economy is getting worse, according to 70 percent of Americans in new Fox News polling, with the cost of groceries, gas, healthcare and housing front of mind. The Morning Joe panel discusses. MS NOW: My Source for News, Opinion, and the World. » Subscribe to MS NOW: https://www.youtube.com/@msnow » Subscribe to MS NOW’s We the People Newsletter for exclusive content from your favorite MS NOW anchors. Sign up now for free at https://ms.now/joinus MS NOW is the go-to destination for domest",
           "has_transcript": false

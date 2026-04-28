@@ -1,131 +1,5 @@
 [
   {
-    "timestamp": "2026-04-26T21:57:01.364737",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:07.942173",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:14.713714",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:21.255206",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:27.729471",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:34.078223",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:40.736955",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:47.492027",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:57:54.455974",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:58:01.004500",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:58:07.665550",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:58:14.419478",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:58:21.400672",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T21:58:29.039916",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-26T22:16:48.929641",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-26T22:17:13.920430",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-26T22:17:35.266455",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-26T22:18:15.335504",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-04-26T22:18:41.099509",
     "agent": "LEARNER_GAP_ANALYZER",
     "success": true,
@@ -695,6 +569,132 @@
   {
     "timestamp": "2026-04-27T23:31:25.876501",
     "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T21:34:40.429035",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T21:35:01.761907",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T21:36:29.264454",
+    "agent": "SENTRY_WATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-28T21:51:39.247205",
+    "agent": "SENTRY_WATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-28T21:59:59.304184",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-28T22:00:33.828412",
+    "agent": "ARBITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T22:00:42.841652",
+    "agent": "WHY_GENERATOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T22:00:50.469509",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:10:53.718750",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-28T23:12:03.115542",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:12:42.539798",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:13:16.185469",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:20:52.543557",
+    "agent": "AXIS_MATCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:21:02.852710",
+    "agent": "ARBITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:21:13.843309",
+    "agent": "WHY_GENERATOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:21:24.289141",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:21:35.757944",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-28T23:21:43.132339",
+    "agent": "QUALITY_GATE",
     "success": false,
     "fallback_used": true,
     "retry_count": 1
