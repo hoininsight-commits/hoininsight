@@ -1,7 +1,8 @@
 import json
 import os
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from src.utils.target_date import get_now_kst, get_target_ymd
 from pathlib import Path
 from dotenv import load_dotenv
 import re
@@ -133,7 +134,7 @@ class CollectorAgent:
             fred = Fred(api_key=os.getenv("FRED_API_KEY"))
             # DTWEXBGS (Nominal Broad US Dollar Index) - DXY와 유사
             from datetime import timedelta
-            series = fred.get_series("DTWEXBGS", observation_start=(datetime.now() - timedelta(days=100)).strftime('%Y-%m-%d'))
+            series = fred.get_series("DTWEXBGS", observation_start=(get_now_kst() - timedelta(days=100)).strftime('%Y-%m-%d'))
             if not series.empty:
                 val = round(float(series.dropna().iloc[-1]), 2)
                 series_clean = series.dropna()
@@ -174,7 +175,7 @@ class CollectorAgent:
             from fredapi import Fred
             fred = Fred(api_key=os.getenv("FRED_API_KEY"))
             from datetime import timedelta
-            series = fred.get_series("SP500", observation_start=(datetime.now() - timedelta(days=100)).strftime('%Y-%m-%d'))
+            series = fred.get_series("SP500", observation_start=(get_now_kst() - timedelta(days=100)).strftime('%Y-%m-%d'))
             if not series.empty:
                 series_clean = series.dropna()
                 val = round(float(series_clean.iloc[-1]), 2)
@@ -277,7 +278,8 @@ class CollectorAgent:
 
     def __init__(self):
         from src.core.gemini_client import GeminiClient
-        self.today = datetime.now().strftime("%Y%m%d")
+        from src.utils.target_date import get_target_ymd, get_now_kst
+        self.today = get_target_ymd().replace("-", "")
         self.output_dir = Path(f"data/raw/{self.today}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
         # base_dir 설정 (history 저장용)
@@ -290,7 +292,7 @@ class CollectorAgent:
         """모든 수집 데이터를 메타데이터와 함께 래핑 (#081)"""
         return {
             "metadata": {
-                "collected_at": datetime.now().isoformat(),
+                "collected_at": get_now_kst().isoformat(),
                 "source_timestamp": source_timestamp,
                 "cache_hit": False,
                 "ttl_policy_minutes": ttl_minutes,
@@ -599,7 +601,7 @@ class CollectorAgent:
                     headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"})
                 if resp.status_code == 200:
                     d = feedparser.parse(resp.content)
-                    now = datetime.now()
+                    now = get_now_kst()
                     for entry in d.entries[:50]:
                         # [FRESHNESS FILTER] 7일 이내 뉴스만 수집
                         pub_date = entry.get("published_parsed")
@@ -618,7 +620,7 @@ class CollectorAgent:
                             "summary": entry.get("summary", "")[:1000].strip(), # 1000자로 확장하여 디테일 보존
                             "link": entry.get("link", ""),
                             "source": feed["name"],
-                            "timestamp": datetime.now().isoformat(),
+                            "timestamp": get_now_kst().isoformat(),
                             "is_deep_scraped": False # 본문 스크래핑 여부 마킹
                         })
             except:
@@ -715,7 +717,7 @@ class CollectorAgent:
         from datetime import datetime, timedelta
 
         fred = Fred(api_key=os.getenv("FRED_API_KEY"))
-        today = datetime.now()
+        today = get_now_kst()
         result_events = []
 
         indicators = [
@@ -757,7 +759,7 @@ class CollectorAgent:
         major_surprises = [e for e in result_events if abs(e["surprise_pct"]) > 10]
         
         result_data = {
-            "date": datetime.now().strftime("%Y%m%d"),
+            "date": get_now_kst().strftime("%Y%m%d"),
             "source": "FRED API",
             "total_events": len(result_events),
             "major_surprises": major_surprises,
@@ -863,7 +865,7 @@ class CollectorAgent:
                 pass
             return key, None, None
 
-        today = datetime.now()
+        today = get_now_kst()
         ym = today.strftime("%Y%m")
         ym_start = (today - timedelta(days=180)).strftime("%Y%m")
 
@@ -941,9 +943,6 @@ class CollectorAgent:
     def collect_dart(self, keywords: list = []) -> dict:
         """DART 공시 데이터 수집 - 뉴스 기반 정밀 타격 모드 (v4.5 Optimized)"""
         print(f"📋 DART 뉴스 기반 정밀 분석 중... (관심사: {keywords})")
-        import OpenDartReader
-        from src.core.sector_map import get_related_sectors
-        from datetime import datetime, timedelta
         import time
 
         api_key = os.getenv('OPENDART_API_KEY')
@@ -953,7 +952,7 @@ class CollectorAgent:
             
         dart = OpenDartReader(api_key)
         
-        today = datetime.now()
+        today = get_now_kst()
         # [OPTIMIZED] 검색 범위를 7일에서 3일로 단축 (API 부하 감소)
         bgn_de = (today - timedelta(days=3)).strftime("%Y%m%d")
         

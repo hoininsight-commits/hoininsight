@@ -3,6 +3,7 @@ import os
 from typing import List, Dict
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
+from src.utils.target_date import get_now_kst, get_target_ymd
 
 class TopicArbiter:
     """[v15.1] Dynamic Topic Arbiter - Economic Hunter Strategist Upgrade"""
@@ -26,10 +27,9 @@ class TopicArbiter:
 
         candidate_list_str = "\n".join(candidate_summary)
         
-        # 현재 날짜 및 요일 정보 (v15.2 FIX)
-        import datetime
-        now = datetime.datetime.now()
-        today_str = now.strftime("%Y-%m-%d")
+        # 현재 날짜 및 요일 정보 (KST 보정 v15.2)
+        now = get_now_kst()
+        today_str = get_target_ymd()
         weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
         weekday_str = weekdays[now.weekday()]
         is_weekend = now.weekday() >= 5

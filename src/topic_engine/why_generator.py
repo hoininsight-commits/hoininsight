@@ -9,8 +9,8 @@ class WhyGenerator:
         self.gemini = GeminiClient()
 
     def generate_hypothesis(self, evidence_bundle: dict) -> dict:
-        import datetime
-        now = datetime.datetime.now()
+        from src.utils.target_date import get_now_kst
+        now = get_now_kst()
         weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
         weekday_str = weekdays[now.weekday()]
         

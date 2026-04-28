@@ -11,13 +11,14 @@ from src.agents.learner_agent import LearnerAgent
 
 def get_current_round():
     """
-    Determines round based on current hour:
+    Determines round based on current hour in KST:
     23, 0-4  -> Round 1 (Prep for 00:00)
     5-10     -> Round 2 (Prep for 06:00)
     11-16    -> Round 3 (Prep for 12:00)
     17-22    -> Round 4 (Prep for 18:00)
     """
-    hour = datetime.now().hour
+    from src.utils.target_date import get_now_kst
+    hour = get_now_kst().hour
     if hour >= 23 or hour < 5:
         return 1
     elif 5 <= hour < 11:
@@ -28,7 +29,9 @@ def get_current_round():
         return 4
 
 if __name__ == "__main__":
-    print(f"🚀 Automated YouTube Learner starting at {datetime.now()}")
+    from src.utils.target_date import get_now_kst
+    now = get_now_kst()
+    print(f"🚀 Automated YouTube Learner starting at {now}")
     current_round = get_current_round()
     
     agent = LearnerAgent()

@@ -1,6 +1,7 @@
-# HOIN Insight v17.5 [The Delivery Hunter] Handover
+# HOIN Insight v17.6 [The Synchronized Hunter] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
+- **KST Timezone Enforcement (v17.6)**: 시스템 시각(UTC)에 의존하던 날짜 로직을 KST(UTC+9)로 강제 고정하여, 새벽 시간대 날짜 뒤처짐 현상을 완벽히 해결했습니다.
 - **YouTube Delivery System (v17.5)**: 유튜브 수집기가 단순 학습용을 넘어, 수집된 자막 전문을 즉시 텔레그램으로 배달하는 '정보 배달부' 역할을 겸하게 되었습니다.
 - **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
 - **Analysis Pause (Learner)**: 제미나이 서버 불안정 및 효율성을 고려하여, LearnerAgent의 LLM 분석(Gap Analysis)은 잠시 비활성화하고 데이터 수집 및 전송에 집중합니다.
