@@ -191,15 +191,36 @@ def run_watcher(run_round: int = 1):
                         actual_txt_path.rename(transcript_path)
                         
                         script_content = transcript_path.read_text(encoding="utf-8")
+                        
+                        # [v18.2] Generate Summary using Gemini Flash (Tier 3)
+                        summary = ""
+                        try:
+                            from src.core.gemini_client import GeminiClient
+                            client = GeminiClient()
+                            prompt = f"다음은 유튜브 자막 전문이다. 투자 관점에서 핵심 내용 3줄 요약해라. (사냥꾼 문체 - 지적이고 세련된 반말)\n\n{script_content[:5000]}"
+                            summary_res = client.call_json_controlled(prompt, agent="SUMMARIZER", tier=3)
+                            if isinstance(summary_res, dict) and "summary" in summary_res:
+                                summary = summary_res["summary"]
+                            elif isinstance(summary_res, str):
+                                summary = summary_res
+                        except Exception as e:
+                            logger.warning(f"Summary generation failed: {e}")
+
                         msg = f"📺 *[유튜브 수집 완료]*\n\n"
                         msg += f"📌 *제목*: {vid['title']}\n"
                         msg += f"⏰ *회차*: {run_round}회차\n"
                         msg += f"🔗 [영상 링크]({vid['url']})\n\n"
+                        
+                        if summary:
+                            msg += f"💡 *핵심 요약*:\n{summary}\n\n"
+                            msg += f"------------------\n\n"
+                        
                         msg += f"📜 *스크립트 전문*:\n{script_content}"
                         
                         notifier = TelegramNotifier()
                         notifier.send_message_in_chunks(msg)
                         logger.info(f"Telegram notification sent for {vid_id}")
+
 
                 except Exception as ingest_e:
                     logger.error(f"Failed to ingest transcript right away for {vid_id}: {ingest_e}")

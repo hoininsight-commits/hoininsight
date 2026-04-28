@@ -91,11 +91,15 @@ class PublisherAgent:
                         data["stocks"] = res
                         break
 
-        # 스크립트
+        # 스크립트 (최신성 검증 추가)
         if Path("data/scripts").exists():
             for d in sorted(Path("data/scripts").iterdir(), reverse=True):
                 p = d / "today_script_long.md"
                 if p.exists():
+                    # 폴더 날짜가 오늘과 다르면 경고 플래그
+                    if d.name != self.today:
+                        data["stale_script"] = True
+                        print(f"  ⚠️ [PUBLISHER] Today's script missing. Using legacy script from {d.name}")
                     data["script_long_path"] = str(p)
                     break
 
@@ -125,13 +129,17 @@ class PublisherAgent:
                         data["candidates"] = {"candidates": res} if isinstance(res, list) else res
                         break
 
-        # market 데이터
+        # market 데이터 (최신성 검증 추가)
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "market.json"
                 if p.exists():
                     res = safe_load_json(p)
                     if res:
+                        # 데이터 내부 날짜가 오늘과 다르면 경고
+                        if d.name != self.today:
+                            data["stale_market"] = True
+                            print(f"  ⚠️ [PUBLISHER] Today's market data missing. Using legacy data from {d.name}")
                         data["market"] = res
                         break
 
@@ -605,12 +613,17 @@ class PublisherAgent:
                 session_cost_str = f"${s_data.get('session_cost', 0.0):.4f}"
             except: pass
 
+        stale_warning = ""
+        if data.get("stale_market") or data.get("stale_script"):
+            stale_warning = "\n🚨 [데이터 정합성 경고]\n오늘 자 최신 지표 또는 분석이 누락되어 어제 데이터를 참조했습니다. 지수 및 서사가 실제와 다를 수 있으니 주의하십시오.\n"
+
         brief = f"""
 ========================================
 🏹 HOIN Insight 일일 사냥 보고서 (v17.2)
 날짜: {data.get('date', 'N/A')}
 소요 비용: {session_cost_str} (USD)
 ========================================
+{stale_warning}
 {warning_block}
 {weekly_block}
 

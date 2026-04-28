@@ -1,9 +1,10 @@
-# HOIN Insight v18.1 [The Pure Autonomous Hunter] Handover
+# HOIN Insight v18.2 [The Autonomous Hunter] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Pure Autonomous Engine (v18.1)**: "글로벌 우선" 등의 모든 인위적인 가이드라인을 폐기했습니다. 대신 데이터의 '절대적 파급력'과 '시그널/노이즈 구분'에만 집중하는 완전 자율 판단 체계를 구축했습니다.
-- **KST-Aligned Scheduling (v17.7)**: 자동화 스케줄을 한국 시각(KST) 00, 06, 12, 18시 정각에 맞춰 재배치했습니다.
-- **YouTube Delivery System (v17.5)**: 유튜브 수집기가 단순 학습용을 넘어, 수집된 자막 전문을 즉시 텔레그램으로 배달하는 '정보 배달부' 역할을 겸하게 되었습니다.
+- **Data-Driven Intelligence (v18.2)**: 유튜브 수집 시 신규 시그널(Data Gap)을 자동으로 동기화하여 엔진의 판단 근거를 강화합니다.
+- **Pure Autonomous Engine (v18.1)**: "글로벌 우선" 등의 모든 인위적인 가이드라인을 폐기했습니다. 데이터의 '절대적 파급력'과 '시그널/노이즈 구분'에만 집중하는 완전 자율 판단 체계를 구축했습니다.
+
+
 - **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
 - **Analysis Pause (Learner)**: 제미나이 서버 불안정 및 효율성을 고려하여, LearnerAgent의 LLM 분석(Gap Analysis)은 잠시 비활성화하고 데이터 수집 및 전송에 집중합니다.
 - **Session Cost Tracking (v17.2)**: 매 사냥마다 소요되는 USD 비용을 실시간으로 계산하여 텔레그램 브리핑에 포함합니다.

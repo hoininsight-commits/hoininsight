@@ -1,60 +1,50 @@
 {
   "MAIN": {
-    "candidate_id": "61311e78",
-    "candidate_type": "HYBRID",
-    "event": "[2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal",
+    "candidate_id": "974dd261",
+    "candidate_type": "DATA",
+    "event": "GOLD 하방 이상징후 (Z-score: -1.95)",
     "entity": [
-      "s signing an openai deal [deep_detail] 49% 49% 49% | it",
-      "s effort to get ahead in the industry",
-      "2026-04-27",
-      "deep_detail"
+      "Market"
     ],
     "core_facts": [
       {
-        "name": "sp500",
-        "value": 7163.5698,
-        "change": 0.77,
-        "z_score": 1.17
+        "name": "gold",
+        "value": 4600.2002,
+        "change": -2.09,
+        "z_score": -1.95
       }
     ],
     "expected_paths": [
-      "안정적 흐름 유지"
+      "평균 회귀"
     ],
     "actual_paths": [
-      "EARNINGS"
+      "BREAK"
     ],
     "recency_score": 0.9,
-    "evidence_score": 0.8,
+    "evidence_score": 1.0,
     "is_mismatch": false,
-    "structure_axis": "emerging",
+    "structure_axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
     "evidence_bundle": {
-      "axis": "emerging",
+      "axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
       "market_reaction": {
-        "main_asset": "sp500",
-        "intensity": 0.77,
+        "main_asset": "gold",
+        "intensity": -2.09,
         "other_reactions": []
       },
       "temporal_context": {
-        "current_time": "2026-04-27 23:15",
+        "current_time": "2026-04-28 22:00",
         "is_market_closed": false,
         "market_data_ref": "Real-time/Today's Prices"
       },
-      "related_events": [
-        "[NEWS] [2026-04-26] UK car loan companies accept £9bn mis-selling redress scheme - main industry finance trade body reverses course on legal challenge to fca plan ()",
-        "[NEWS] [2026-04-26] US motorists skimp at the pump as Iran war keeps petrol prices high - the soaring cost of driving presents a political problem for trump ahead of midterm elections in november ()",
-        "[NEWS] [2026-04-26] Iran war hits pistachio supplies amid Dubai chocolate boom - prices for the nuts have surged after disruption to export routes from iran, a major producer of the nut ()",
-        "[NEWS] [2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7% - [deep_detail] 7% 3% 7% | the company reiterated its full-year forecast for earnings and sales. ()"
-      ],
+      "related_events": [],
       "social_prediction": [],
       "supporting_assets": [
-        "kospi: 6.37%"
+        "us10y: 1.91%"
       ],
       "contradictions": [
         "No clear contradictions found"
       ],
-      "event_market_link": [
-        "earnings/tech → investor sentiment → capital flow → equity positive"
-      ]
+      "event_market_link": []
     }
   },
   "SECONDARY": [],

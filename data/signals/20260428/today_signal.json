@@ -1,0 +1,48 @@
+{
+  "candidate_id": "974dd261",
+  "candidate_type": "DATA",
+  "event": "GOLD 하방 이상징후 (Z-score: -1.95)",
+  "entity": [
+    "Market"
+  ],
+  "core_facts": [
+    {
+      "name": "gold",
+      "value": 4600.2002,
+      "change": -2.09,
+      "z_score": -1.95
+    }
+  ],
+  "expected_paths": [
+    "평균 회귀"
+  ],
+  "actual_paths": [
+    "BREAK"
+  ],
+  "recency_score": 0.9,
+  "evidence_score": 1.0,
+  "is_mismatch": false,
+  "structure_axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
+  "evidence_bundle": {
+    "axis": "2. 지정학적 불안정 및 글로벌 경제 재편",
+    "market_reaction": {
+      "main_asset": "gold",
+      "intensity": -2.09,
+      "other_reactions": []
+    },
+    "temporal_context": {
+      "current_time": "2026-04-28 22:00",
+      "is_market_closed": false,
+      "market_data_ref": "Real-time/Today's Prices"
+    },
+    "related_events": [],
+    "social_prediction": [],
+    "supporting_assets": [
+      "us10y: 1.91%"
+    ],
+    "contradictions": [
+      "No clear contradictions found"
+    ],
+    "event_market_link": []
+  }
+}

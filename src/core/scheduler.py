@@ -79,13 +79,17 @@ class HunterScheduler:
             env = os.environ.copy()
             env["PYTHONPATH"] = f"{env.get('PYTHONPATH', '')}:{os.getcwd()}"
             
+            # 0. Collector 가동 (데이터 수집)
+            print("  [Hunter] CollectorAgent 가동...")
+            subprocess.run([sys.executable, "src/agents/collector.py"], env=env, check=True)
+
             # 1. Detector 가동
             print("  [Hunter] DetectorAgent 가동...")
-            subprocess.run(["python3", "src/agents/detector.py"], env=env, check=True)
+            subprocess.run([sys.executable, "src/agents/detector.py"], env=env, check=True)
             
             # 2. Publisher 가동 (브리핑 생성)
             print("  [Hunter] PublisherAgent 가동...")
-            subprocess.run(["python3", "src/agents/publisher.py"], env=env, check=True)
+            subprocess.run([sys.executable, "src/agents/publisher.py"], env=env, check=True)
             
             print("✅ [Hunter] 전체 사냥 파이프라인 완료.")
         except Exception as e:
