@@ -160,47 +160,44 @@ def run_watcher(run_round: int = 1):
                 transcript_dir.mkdir(parents=True, exist_ok=True)
                 legacy_txt_path.rename(transcript_path)
 
-            if meta_path.exists():
-                logger.debug(f"Video already exists: {vid_id} - {vid['title']}")
-                continue
-            
-            # Save New Video Metadata
-            try:
-                save_dir.mkdir(parents=True, exist_ok=True)
-                
-                payload = {
-                    "video_id": vid_id,
-                    "source_id": sid,
-                    "title": vid["title"],
-                    "published_at": vid["published_at"],
-                    "url": vid["url"],
-                    "channel_name": vid["channel_name"],
-                    "collected_at": get_now_kst().strftime("%Y-%m-%dT%H:%M:%SZ")
-                }
-                
-                meta_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-                logger.info(f"[NEW] Detected: {vid['title']}")
-                new_count += 1
-                new_titles.append(vid["title"])
-                
-                # Fetch transcript immediately after saving metadata
-                logger.info(f"Triggering transcript ingestion for: {vid_id}...")
+            # 2. 메타데이터 저장 (없을 경우에만)
+            if not meta_path.exists():
                 try:
-                    # ingest_transcript가 특정 경로에 저장할 수 있도록 옵션이 필요할 수 있으나, 
-                    # 여기서는 수집 후 텔레그램 발송에 집중
+                    save_dir.mkdir(parents=True, exist_ok=True)
+                    payload = {
+                        "video_id": vid_id,
+                        "source_id": sid,
+                        "title": vid["title"],
+                        "published_at": vid["published_at"],
+                        "url": vid["url"],
+                        "channel_name": vid["channel_name"],
+                        "collected_at": get_now_kst().strftime("%Y-%m-%dT%H:%M:%SZ")
+                    }
+                    meta_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+                    logger.info(f"[NEW] Metadata saved: {vid['title']}")
+                    new_count += 1
+                    new_titles.append(vid["title"])
+                except Exception as e:
+                    logger.error(f"Failed to save metadata for {vid_id}: {e}")
+                    continue
+
+            # 3. 자막 수집 및 알림 (자막 파일이 없을 경우에만 실행)
+            if not transcript_path.exists():
+                logger.info(f"Transcript missing. Triggering ingestion for: {vid_id}...")
+                try:
+                    # 자막 수집 시도
                     ingest_transcript(meta_path)
                     
-                    # 수집 성공 시 텔레그램 발송 (v17.5 New Requirement)
-                    # 실제 자막 파일 위치 확인
-                    actual_txt_path = Path("data/transcripts/youtube") / y / m / d / f"{vid_id}.txt"
-                    if actual_txt_path.exists():
-                        # 파일 이름 변경 (사용자 요청 규칙)
-                        transcript_path.parent.mkdir(parents=True, exist_ok=True)
-                        actual_txt_path.rename(transcript_path)
+                    # 수집 후 파일이 생성되었는지 확인 (ingest_transcript는 VideoID.txt로 저장함)
+                    if legacy_txt_path.exists():
+                        # 이름 변경 (규칙 적용)
+                        transcript_dir.mkdir(parents=True, exist_ok=True)
+                        legacy_txt_path.rename(transcript_path)
                         
+                        # [v19.5] 수집 성공 시 텔레그램 발송
                         script_content = transcript_path.read_text(encoding="utf-8")
                         
-                        # [v18.2] Generate Summary using Gemini Flash (Tier 3)
+                        # 요약 생성
                         summary = ""
                         try:
                             from src.core.gemini_client import GeminiClient
@@ -225,14 +222,11 @@ def run_watcher(run_round: int = 1):
                         
                         msg += f"📜 *스크립트 전문*:\n{script_content}"
                         
-                        # [v19.0] 유튜브 전용 채널(TRANSCRIPT)로 발송
                         notifier = TelegramNotifier(target="TRANSCRIPT")
                         notifier.send_message_in_chunks(msg)
                         logger.info(f"Telegram notification sent for {vid_id}")
-
-
                 except Exception as ingest_e:
-                    logger.error(f"Failed to ingest transcript right away for {vid_id}: {ingest_e}")
+                    logger.error(f"Failed to ingest transcript for {vid_id}: {ingest_e}")
                     
             except Exception as e:
                 logger.error(f"Failed to save metadata for {vid_id}: {e}")
