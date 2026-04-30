@@ -1,4 +1,3 @@
-
 import sys
 import os
 from pathlib import Path
@@ -9,9 +8,9 @@ sys.path.append(os.getcwd())
 from src.ui.narratives.transcript_ingestor import ingest_transcript
 
 vids = [
-    "FD8Tjeqz740", "Aleb9BDprHM", "IQISANNisek", "XfQWDjRqIFI",
-    "dauij0Vh9nQ", "GBqse9oamvM", "rj9x30sqzww", "2XGjXaDRno0",
-    "uiq5EwMjxwA", "dxTiv8OFacw", "7CK2cnKcEMs", "e9nlgvRTLt8", "B72o1tKOHYY"
+    "jYU7NkESKkE", "wyXybqB9ggI", "wl_JDcheBWc", "V3Pi86vfds0", 
+    "c-UUPuaXYwA", "mksitWsvGBk", "WT2kVO-ZYi4", "KnziUrXipiY", 
+    "eLmAlH2k-Ys", "WYkyN5DzYWw", "Ex_Em7cMybg", "fwOwPGfLph0", "hMW-cLS4y4A"
 ]
 
 RAW_BASE = Path("data/raw/youtube")

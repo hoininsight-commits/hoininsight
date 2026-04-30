@@ -88,30 +88,30 @@ class ScriptQualityGate:
         elif "[hook]" in script_lower or "step 1" in script_lower or "지금 0.1%" in script or "?" in first_line:
             scores["hook_score"] = 5
         
-        # 2. WHY NOW 체크 (Step 5 또는 왜 오늘인가)
+        # 2. EVIDENCE/NUMBERS 체크 (Step 4 또는 숫자로 증명)
         has_numbers = re.search(r'\d+', script)
-        if "[why now]" in script_lower or "step 5" in script_lower or "왜 하필 오늘" in script or "왜 오늘인가" in script:
+        if "step 4" in script_lower or "숫자로 증명" in script_lower or has_numbers:
             scores["why_now_score"] = 5 if has_numbers else 3
         elif not has_numbers:
             scores["status"] = "DROP"
             scores["drop_reason"] = "Missing numeric data in script"
 
-        # 3. SCENARIO/VERDICT 체크 (Step 7 또는 최종 확신)
-        if any(x in script_lower for x in ["[scenario]", "step 7", "시나리오", "최종 확신", "승리할 것"]):
+        # 3. WHY/CAUSALITY 체크 (Step 3 또는 인과관계)
+        if any(x in script_lower for x in ["[why]", "step 3", "인과관계", "이유", "비즈니스"]):
             scores["scenario_score"] = 5
         else:
             scores["scenario_score"] = 1
             # [v18.8] 서사 중심일 경우 유연하게 적용하되 경고는 남김
             print("  ⚠️ Scenario/Verdict section markers missing. Total score might be affected.")
 
-        # 4. ACTION/TARGET 체크 (Step 6 또는 종목 선정)
-        action_indicators = ["[action]", "step 6", "action", "행동 지침", "대응", "주인공이 될 종목"]
+        # 4. ACTION/TARGET 체크 (Step 5 또는 행동 지침)
+        action_indicators = ["[action]", "step 5", "행동 지침", "대응", "타점", "매수"]
         if any(x in script_lower for x in action_indicators):
             scores["action_score"] = 5
         else:
             scores["action_score"] = 1
             scores["status"] = "DROP"
-            scores["drop_reason"] = "ACTION/TARGET (Step 6) missing or invalid"
+            scores["drop_reason"] = "ACTION/TARGET (Step 5) missing or invalid"
 
         return scores
 
