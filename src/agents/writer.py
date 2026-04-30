@@ -31,7 +31,6 @@ class WriterAgent:
         signal_p = self.signal_dir / "today_signal.json"
         analysis_p = self.analysis_dir / "today_analysis.json"
         stocks_p = self.analysis_dir / "today_stocks.json"
-        weekly_p = Path("data/topics/weekly_strategy_map.json")
 
         data = {}
         if signal_p.exists():
@@ -40,8 +39,6 @@ class WriterAgent:
             data["analysis"] = json.loads(analysis_p.read_text())
         if stocks_p.exists():
             data["stocks_data"] = json.loads(stocks_p.read_text())
-        if weekly_p.exists():
-            data["weekly_map"] = json.loads(weekly_p.read_text())
         return data
 
     def generate_long(self, context):
@@ -49,11 +46,9 @@ class WriterAgent:
         print("  롱폼 스크립트 생성 중... [v15.0 적용]")
 
         analysis = context.get("analysis", {})
-        weekly_map = context.get("weekly_map", {})
         
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(context.get("stocks_data", {}).get("stocks", []), ensure_ascii=False),
-            weekly_map_json=json.dumps(weekly_map, ensure_ascii=False),
             topic=context.get("signal", {}).get("topic"),
             arbiter_rationale=analysis.get("arbiter_rationale", "N/A"),
             hunter_insight=analysis.get("hunter_insight", "N/A"),
@@ -75,11 +70,9 @@ class WriterAgent:
         print("  쇼츠 스크립트 생성 중... [v15.0 적용]")
 
         analysis = context.get("analysis", {})
-        weekly_map = context.get("weekly_map", {})
         
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(context.get("stocks_data", {}).get("stocks", []), ensure_ascii=False),
-            weekly_map_json=json.dumps(weekly_map, ensure_ascii=False),
             topic=context.get("signal", {}).get("topic"),
             arbiter_rationale=analysis.get("arbiter_rationale", "N/A"),
             hunter_insight=analysis.get("hunter_insight", "N/A"),

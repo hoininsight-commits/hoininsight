@@ -61,11 +61,6 @@ class PublisherAgent:
                 }
                 print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
         
-        # 주간 전략 지도 로드
-        weekly_p = self.base_dir / "data/topics/weekly_strategy_map.json"
-        if weekly_p.exists():
-            data["weekly_map"] = safe_load_json(weekly_p)
-            print("  📅 [v15.0] Weekly Strategy Map loaded")
         
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
@@ -182,10 +177,6 @@ class PublisherAgent:
                         data["collection_status"] = res
                         break
 
-        # [v15.0] 주간 전략 지도 로드
-        weekly_p = self.base_dir / "data/topics/weekly_strategy_map.json"
-        if weekly_p.exists():
-            data["weekly_map"] = safe_load_json(weekly_p)
 
         return data
 
@@ -588,13 +579,7 @@ class PublisherAgent:
                 for s in display_stocks[:5]
             ])
 
-        # [v15.0] 주간 전략 지도 블록 구성
-        weekly_map = data.get("weekly_map", {})
-        weekly_block = ""
-        if weekly_map:
-            weekly_block = f"\n📅 [주간 전략 지도: {weekly_map.get('grand_narrative', 'N/A')}]\n"
-            weekly_block += f"💡 서사: {weekly_map.get('narrative_description', 'N/A')[:100]}...\n"
-            weekly_block += f"🏺 역사적 전례 ({weekly_map.get('historical_parallel', {}).get('date', 'N/A')}): {weekly_map.get('historical_parallel', {}).get('period', 'N/A')}\n"
+
 
         # [v17.2] 세션 비용 로드
         session_path = self.base_dir / "data/monitoring/session_cost.json"

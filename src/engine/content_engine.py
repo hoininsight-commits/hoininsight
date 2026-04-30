@@ -98,13 +98,7 @@ class ContentEngine:
         """LLM을 이용한 경제사냥꾼 스타일 스크립트 작성 (Centralized Prompt DNA)"""
         from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
         
-        # 1. 주간 전략 지도 로드
-        weekly_p = Path("data/topics/weekly_strategy_map.json")
-        weekly_map = {}
-        if weekly_p.exists():
-            try:
-                weekly_map = json.loads(weekly_p.read_text())
-            except: pass
+        # 주간 전략 지도 가이드라인 제거 (동적 서사 생성 유도)
 
         # 2. 분석 JSON 구성 (WHY Hypothesis 등 포함)
         analysis_data = {
@@ -121,7 +115,6 @@ class ContentEngine:
         # 3. 중앙 집중식 템플릿에 데이터 주입
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
-            weekly_map_json=json.dumps(weekly_map, ensure_ascii=False),
             topic=candidate.get("topic", "N/A"),
             arbiter_rationale=candidate.get("arbiter_rationale", "N/A"),
             hunter_insight=candidate.get("hunter_insight", "N/A"),
