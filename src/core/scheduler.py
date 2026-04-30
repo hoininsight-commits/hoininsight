@@ -39,6 +39,9 @@ class HunterScheduler:
             decision = {"trigger_hunter": True, "impact_score": 10.0, "reason": "Manual Override"}
         else:
             decision = self.sentry.check_market_volatility(news, market_change)
+            if not decision:
+                print("  ⚠️ [SENTRY] AI 호출 실패. 폴백(HUNT) 모드로 진행합니다.")
+                decision = {"trigger_hunter": True, "impact_score": 50, "reason": "AI Sentry Offline - Forced Hunt"}
             print(f"  [SENTRY 결과] 점수: {decision.get('impact_score')}, 사유: {decision.get('reason')}")
 
         # 3. Hunter 엔진 (Full Pipeline) 트리거 결정
@@ -79,21 +82,17 @@ class HunterScheduler:
             env = os.environ.copy()
             env["PYTHONPATH"] = f"{env.get('PYTHONPATH', '')}:{os.getcwd()}"
             
-            # 0. Collector 가동 (데이터 수집)
-            print("  [Hunter] CollectorAgent 가동...")
-            subprocess.run([sys.executable, "src/agents/collector.py"], env=env, check=True)
-
             # 1. Detector 가동
             print("  [Hunter] DetectorAgent 가동...")
-            subprocess.run([sys.executable, "src/agents/detector.py"], env=env, check=True)
+            subprocess.run(["python3", "src/agents/detector.py"], env=env, check=True)
             
-            # 1.5 Writer 가동 (스크립트 생성)
+            # 2. Writer 가동 (스크립트 생성)
             print("  [Hunter] WriterAgent 가동...")
-            subprocess.run([sys.executable, "src/agents/writer.py"], env=env, check=True)
-
-            # 2. Publisher 가동 (브리핑 생성)
+            subprocess.run(["python3", "src/agents/writer.py"], env=env, check=True)
+            
+            # 3. Publisher 가동 (브리핑 생성)
             print("  [Hunter] PublisherAgent 가동...")
-            subprocess.run([sys.executable, "src/agents/publisher.py"], env=env, check=True)
+            subprocess.run(["python3", "src/agents/publisher.py"], env=env, check=True)
             
             print("✅ [Hunter] 전체 사냥 파이프라인 완료.")
         except Exception as e:

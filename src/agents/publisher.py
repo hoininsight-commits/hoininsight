@@ -91,15 +91,11 @@ class PublisherAgent:
                         data["stocks"] = res
                         break
 
-        # 스크립트 (최신성 검증 추가)
+        # 스크립트
         if Path("data/scripts").exists():
             for d in sorted(Path("data/scripts").iterdir(), reverse=True):
                 p = d / "today_script_long.md"
                 if p.exists():
-                    # 폴더 날짜가 오늘과 다르면 경고 플래그
-                    if d.name != self.today:
-                        data["stale_script"] = True
-                        print(f"  ⚠️ [PUBLISHER] Today's script missing. Using legacy script from {d.name}")
                     data["script_long_path"] = str(p)
                     break
 
@@ -129,17 +125,13 @@ class PublisherAgent:
                         data["candidates"] = {"candidates": res} if isinstance(res, list) else res
                         break
 
-        # market 데이터 (최신성 검증 추가)
+        # market 데이터
         if Path("data/raw").exists():
             for d in sorted(Path("data/raw").iterdir(), reverse=True):
                 p = d / "market.json"
                 if p.exists():
                     res = safe_load_json(p)
                     if res:
-                        # 데이터 내부 날짜가 오늘과 다르면 경고
-                        if d.name != self.today:
-                            data["stale_market"] = True
-                            print(f"  ⚠️ [PUBLISHER] Today's market data missing. Using legacy data from {d.name}")
                         data["market"] = res
                         break
 
@@ -613,54 +605,33 @@ class PublisherAgent:
                 session_cost_str = f"${s_data.get('session_cost', 0.0):.4f}"
             except: pass
 
-        stale_warning = ""
-        if data.get("stale_market") or data.get("stale_script"):
-            stale_warning = "\n🚨 [데이터 정합성 경고]\n오늘 자 최신 지표 또는 분석이 누락되어 어제 데이터를 참조했습니다. 지수 및 서사가 실제와 다를 수 있으니 주의하십시오.\n"
+        # [v18.3] 초간결 헤더 + 스크립트 전문 체제
+        script_body = ""
+        script_path = data.get("script_long_path")
+        if script_path and Path(script_path).exists():
+            script_body = Path(script_path).read_text(encoding="utf-8")
+            # [v18.4] 브랜드 명칭 제거 (사용자 요청)
+            script_body = script_body.replace("경제사냥꾼", "").replace("[ECONOMIC HUNTER]", "").strip()
+        else:
+            script_body = "  [알림] 상세 스크립트가 아직 생성되지 않았거나 경로를 찾을 수 없습니다."
 
-        brief = f"""
-========================================
-🏹 HOIN Insight 일일 사냥 보고서 (v17.2)
+        brief = f"""========================================
+🏹 HOIN Insight 일일 사냥 보고서 (v18.3)
 날짜: {data.get('date', 'N/A')}
 소요 비용: {session_cost_str} (USD)
 ========================================
-{stale_warning}
-{warning_block}
-{weekly_block}
-
 [1. 오늘의 메인 사냥 토픽] ({data.get('date', 'N/A')})
 🎯 주제: {signal.get('event', 'N/A')}
-🔥 강도: {signal.get('strength', 'N/A')} / 10
+🔥 강도: {signal.get('strength', 'N/A')} / 100
 🧠 확신도: {confidence}
 
-[2. 사냥꾼의 선정 사유 (Rationale)]
-📝 {rationale}
+{script_body}
 
-[3. 깊이 있는 통찰 (Hunter Insight)]
-💡 {insight}
-
-[4. AI 가설 및 예측 사슬]
-🚀 가설: {hypothesis}
-⚙️ 작동 원리: {mechanism}
-🔗 예측 사슬: {signal.get("predictive_chain", "N/A")}
-🏛️ 역사적 전례: {signal.get("historical_parallel", "N/A")}
-
-[5. 관련 종목 및 수익 논리 (Agent-04)]
-{stock_list if stock_list else "  분석 중 (데이터 수집 대기)"}
-
-[6. 팩트 체크: 근거 데이터 링크]
-{chr(10).join(['  🔗 ' + ev for ev in signal.get("evidence_bundle", {}).get("related_events", [])]) if signal.get("evidence_bundle") else "  관련 링크 없음"}
-
-[7. 산출물 경로]
-🎬 롱폼: {data.get("script_long_path", "미생성")}
-📱 쇼츠: {data.get("script_short_path", "미생성")}
-
-========================================
-선장님, 대시보드에서 최종 승인 후 발행을 진행해주세요.
-========================================
+=======================
 """
         brief_path = self.dashboard_dir / "today_brief.txt"
         brief_path.write_text(brief, encoding="utf-8")
-        print(f"  선장 브리핑 생성 완료 (상세 사유 포함): {brief_path}")
+        print(f"  선장 브리핑 생성 완료 (헤더 + 본문 통합): {brief_path}")
         return brief
         brief_path = self.dashboard_dir / "today_brief.txt"
         brief_path.write_text(brief, encoding="utf-8")
@@ -707,12 +678,8 @@ class PublisherAgent:
         # 브리핑 출력
         print(brief)
 
-        # [지시서 #054] 텔레그램 전송 (본문 포함)
+        # [v18.2] 텔레그램 전송 (본문은 이제 충분히 풍부하므로 스크립트 중복 전송 제외)
         brief_with_script = brief
-        script_path = data.get("script_long_path")
-        if script_path and Path(script_path).exists():
-            script_body = Path(script_path).read_text(encoding="utf-8")
-            brief_with_script += f"\n\n[📜 롱폼 스크립트 전문]\n\n{script_body}"
         
         # [지시서 #082] 텔레그램 전송 결과 확인
         # 텔레그램은 알림 수단 — 전송 실패가 파이프라인 전체 실패로 이어지면 안 됨

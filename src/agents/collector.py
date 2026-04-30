@@ -944,6 +944,8 @@ class CollectorAgent:
         """DART 공시 데이터 수집 - 뉴스 기반 정밀 타격 모드 (v4.5 Optimized)"""
         print(f"📋 DART 뉴스 기반 정밀 분석 중... (관심사: {keywords})")
         import time
+        import OpenDartReader
+        from src.core.sector_map import get_related_sectors
 
         api_key = os.getenv('OPENDART_API_KEY')
         if not api_key:
