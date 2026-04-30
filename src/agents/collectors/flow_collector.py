@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
+from src.utils.target_date import get_target_ymd, get_current_round
 
 class FlowCollector:
     name = "FLOW"
@@ -14,8 +15,9 @@ class FlowCollector:
 
     def __init__(self, output_dir: Path = None):
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[3]))
-        self.today = datetime.now().strftime("%Y%m%d")
-        self.raw_dir = output_dir if output_dir else self.base_dir / f"data/raw/{self.today}"
+        self.today = get_target_ymd().replace("-", "")
+        self.round = get_current_round()
+        self.raw_dir = output_dir if output_dir else self.base_dir / f"data/raw/{self.today}/{self.round}"
         self.flow_dir = self.base_dir / "data/flow"
         self.flow_dir.mkdir(parents=True, exist_ok=True)
 

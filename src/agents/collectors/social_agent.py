@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
+from src.utils.target_date import get_target_ymd, get_current_round
 from src.agents.collectors.social_prediction_collector import SocialPredictionCollector
 from src.agents.collectors.last30days_collector import Last30DaysCollector
 
@@ -29,13 +30,14 @@ class SocialAgent:
             # (생략: 기존 sentiment.json 로직과 동일하게 작동하도록 구성)
             # 실제 파일 시스템에서 sentiment.json을 찾는 로직 유지
             if not sentiment_path.exists():
-                raw_root = self.output_dir.parent
-                latest_dirs = sorted(raw_root.glob("202*"), reverse=True)
-                for d in latest_dirs:
-                    p = d / "sentiment.json"
-                    if p.exists():
-                        sentiment_path = p
-                        break
+                raw_root = self.output_dir.parent.parent # data/raw/YYYYMMDD
+                latest_rounds = sorted(raw_root.glob("*"), reverse=True)
+                for d in latest_rounds:
+                    if d.is_dir():
+                        p = d / "sentiment.json"
+                        if p.exists():
+                            sentiment_path = p
+                            break
             
             if sentiment_path.exists():
                 sentiment_data = json.loads(sentiment_path.read_text())
@@ -124,8 +126,9 @@ class SocialAgent:
         }
 
 if __name__ == "__main__":
-    today = datetime.now().strftime("%Y%m%d")
-    out_dir = Path(f"data/raw/{today}")
+    today = get_target_ymd().replace("-", "")
+    current_round = get_current_round()
+    out_dir = Path(f"data/raw/{today}/{current_round}")
     agent = SocialAgent(output_dir=out_dir)
     agent.run()
 

@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.append(os.getcwd())
 
 from src.topic_engine.sentry import SentryAgent
+from src.utils.target_date import get_target_ymd, get_current_round
 
 class HunterScheduler:
     """
@@ -53,9 +54,10 @@ class HunterScheduler:
 
     def _get_latest_market_pulse(self) -> tuple:
         """최신 뉴스 헤드라인과 시장 변동폭 추출"""
-        today = datetime.now().strftime("%Y%m%d")
-        news_path = self.base_dir / f"data/raw/{today}/sentiment.json"
-        market_path = self.base_dir / f"data/raw/{today}/market.json"
+        today = get_target_ymd().replace("-", "")
+        current_round = get_current_round()
+        news_path = self.base_dir / f"data/raw/{today}/{current_round}/sentiment.json"
+        market_path = self.base_dir / f"data/raw/{today}/{current_round}/market.json"
         
         headlines = []
         change = 0.0

@@ -149,9 +149,17 @@ def run_watcher(run_round: int = 1):
             # [CUSTOM RULE] 날짜_회차_제목.txt 형식의 파일명 생성
             safe_title = re.sub(r'[\\/*?:"<>|]', "", vid["title"]).replace(" ", "_")
             file_name = f"{y}{m}{d}_{run_round}회차_{safe_title}.txt"
-            transcript_path = Path("data/transcripts/youtube") / y / m / d / file_name
+            transcript_dir = Path("data/transcripts/youtube") / y / m / d
+            transcript_path = transcript_dir / file_name
+            legacy_txt_path = transcript_dir / f"{vid_id}.txt"
             meta_path = save_dir / "metadata.json"
             
+            # 1. 파일명 정규화 (이미 VideoID.txt로 있는 경우 이름 변경)
+            if legacy_txt_path.exists() and not transcript_path.exists():
+                logger.info(f"Renaming legacy transcript: {vid_id}.txt -> {file_name}")
+                transcript_dir.mkdir(parents=True, exist_ok=True)
+                legacy_txt_path.rename(transcript_path)
+
             if meta_path.exists():
                 logger.debug(f"Video already exists: {vid_id} - {vid['title']}")
                 continue
@@ -217,7 +225,8 @@ def run_watcher(run_round: int = 1):
                         
                         msg += f"📜 *스크립트 전문*:\n{script_content}"
                         
-                        notifier = TelegramNotifier()
+                        # [v19.0] 유튜브 전용 채널(TRANSCRIPT)로 발송
+                        notifier = TelegramNotifier(target="TRANSCRIPT")
                         notifier.send_message_in_chunks(msg)
                         logger.info(f"Telegram notification sent for {vid_id}")
 

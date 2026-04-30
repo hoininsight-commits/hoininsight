@@ -7,6 +7,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from src.utils.telegram_notifier import TelegramNotifier
+from src.utils.target_date import get_target_ymd, get_current_round
 
 
 class PublisherAgent:
@@ -15,7 +16,8 @@ class PublisherAgent:
         # Modular CI/CD Trigger Test - FIXED
         import os
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
-        self.today = datetime.now().strftime("%Y%m%d")
+        self.today = get_target_ymd().replace("-", "")
+        self.round = get_current_round()
         self.content_log_path = Path("data/history/content_log.json")
         self.signal_log_path = Path("data/history/signal_log.json")
         self.dashboard_dir = Path("dashboard")
@@ -121,34 +123,43 @@ class PublisherAgent:
                         break
 
         # market 데이터
-        if Path("data/raw").exists():
-            for d in sorted(Path("data/raw").iterdir(), reverse=True):
-                p = d / "market.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        raw_base = Path("data/raw")
+        if raw_base.exists():
+            # 오늘자 회차 폴더 우선 확인
+            p = raw_base / self.today / str(self.round) / "market.json"
+            if not p.exists():
+                # 없으면 최신 데이터 검색 (기존 로직 보강)
+                for d in sorted(raw_base.rglob("market.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["market"] = res
                         break
+            else:
+                data["market"] = safe_load_json(p)
 
         # macro 데이터
-        if Path("data/raw").exists():
-            for d in sorted(Path("data/raw").iterdir(), reverse=True):
-                p = d / "macro.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        if raw_base.exists():
+            p = raw_base / self.today / str(self.round) / "macro.json"
+            if not p.exists():
+                for d in sorted(raw_base.rglob("macro.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["macro"] = res
                         break
+            else:
+                data["macro"] = safe_load_json(p)
 
         # sentiment 데이터
-        if Path("data/raw").exists():
-            for d in sorted(Path("data/raw").iterdir(), reverse=True):
-                p = d / "sentiment.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        if raw_base.exists():
+            p = raw_base / self.today / str(self.round) / "sentiment.json"
+            if not p.exists():
+                for d in sorted(raw_base.rglob("sentiment.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["sentiment"] = res
                         break
+            else:
+                data["sentiment"] = safe_load_json(p)
 
         # putcall 데이터
         p = Path("data/outputs/putcall.json")
@@ -158,24 +169,28 @@ class PublisherAgent:
                 data["putcall"] = res
 
         # [지시서 #055] COT 데이터 로드
-        if Path("data/raw").exists():
-            for d in sorted(Path("data/raw").iterdir(), reverse=True):
-                p = d / "cot.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        if raw_base.exists():
+            p = raw_base / self.today / str(self.round) / "cot.json"
+            if not p.exists():
+                for d in sorted(raw_base.rglob("cot.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["cot"] = res
                         break
+            else:
+                data["cot"] = safe_load_json(p)
 
         # collection_status 데이터
-        if Path("data/raw").exists():
-            for d in sorted(Path("data/raw").iterdir(), reverse=True):
-                p = d / "collection_status.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        if raw_base.exists():
+            p = raw_base / self.today / str(self.round) / "collection_status.json"
+            if not p.exists():
+                for d in sorted(raw_base.rglob("collection_status.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["collection_status"] = res
                         break
+            else:
+                data["collection_status"] = safe_load_json(p)
 
 
         return data

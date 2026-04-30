@@ -24,6 +24,25 @@ def get_now_kst():
     now_utc = datetime.datetime.now(datetime.timezone.utc)
     return now_utc + datetime.timedelta(hours=9)
 
+def get_current_round():
+    """
+    Determines round based on current hour in KST:
+    23, 0-4  -> Round 1 (Prep for 00:00)
+    5-10     -> Round 2 (Prep for 06:00)
+    11-16    -> Round 3 (Prep for 12:00)
+    17-22    -> Round 4 (Prep for 18:00)
+    """
+    now = get_now_kst()
+    hour = now.hour
+    if hour >= 23 or hour < 5:
+        return 1
+    elif 5 <= hour < 11:
+        return 2
+    elif 11 <= hour < 17:
+        return 3
+    else:
+        return 4
+
 def get_target_parts():
     """
     Returns (year, month, day) strings in KST.

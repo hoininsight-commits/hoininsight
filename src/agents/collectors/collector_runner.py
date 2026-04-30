@@ -4,6 +4,7 @@ import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
+from src.utils.target_date import get_target_ymd, get_current_round
 
 from src.agents.collectors.market_agent import MarketAgent
 from src.agents.collectors.macro_agent import MacroAgent
@@ -109,7 +110,8 @@ class CollectorRunner:
         return summary
 
 if __name__ == "__main__":
-    today = datetime.now().strftime("%Y%m%d")
-    out_dir = Path(f"data/raw/{today}")
+    today = get_target_ymd().replace("-", "")
+    current_round = get_current_round()
+    out_dir = Path(f"data/raw/{today}/{current_round}")
     runner = CollectorRunner(output_dir=out_dir)
     runner.run_all()

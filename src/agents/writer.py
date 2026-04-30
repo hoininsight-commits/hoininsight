@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
+from src.utils.target_date import get_target_ymd, get_current_round
 from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
 from src.engine.content_engine import ContentEngine
 from src.engine.script_quality_gate import ScriptQualityGate
@@ -13,10 +14,11 @@ class WriterAgent:
 
     def __init__(self):
         self.base_dir = Path(".")
-        self.today = datetime.now().strftime("%Y%m%d")
-        self.signal_dir = Path(f"data/signals/{self.today}")
-        self.analysis_dir = Path(f"data/analysis/{self.today}")
-        self.script_dir = Path(f"data/scripts/{self.today}")
+        self.today = get_target_ymd().replace("-", "")
+        self.round = get_current_round()
+        self.signal_dir = Path(f"data/signals/{self.today}/{self.round}")
+        self.analysis_dir = Path(f"data/analysis/{self.today}/{self.round}")
+        self.script_dir = Path(f"data/scripts/{self.today}/{self.round}")
         self.script_dir.mkdir(parents=True, exist_ok=True)
         self.signal_dir.mkdir(parents=True, exist_ok=True)
         self.analysis_dir.mkdir(parents=True, exist_ok=True)

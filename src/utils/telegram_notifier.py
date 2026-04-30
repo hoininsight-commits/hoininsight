@@ -9,11 +9,18 @@ class TelegramNotifier:
     Simple Telegram Notification Utility.
     Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars.
     """
-    def __init__(self, token: Optional[str] = None, chat_id: Optional[str] = None):
+    def __init__(self, token: Optional[str] = None, chat_id: Optional[str] = None, target: Optional[str] = None):
         from dotenv import load_dotenv
         load_dotenv()
         self.token = token or os.environ.get("TELEGRAM_BOT_TOKEN")
-        self.chat_id = chat_id or os.environ.get("TELEGRAM_CHAT_ID")
+        
+        # [v19.0] 다중 채널 지원: target이 지정되면 해당 접미사가 붙은 환경변수를 찾음
+        if target:
+            env_key = f"TELEGRAM_CHAT_ID_{target.upper()}"
+            self.chat_id = chat_id or os.environ.get(env_key) or os.environ.get("TELEGRAM_CHAT_ID")
+        else:
+            self.chat_id = chat_id or os.environ.get("TELEGRAM_CHAT_ID")
+            
         self.base_url = f"https://api.telegram.org/bot{self.token}"
 
     def send_message(self, message: str, parse_mode: Optional[str] = "Markdown") -> bool:

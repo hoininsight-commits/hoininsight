@@ -1,68 +1,5 @@
 [
   {
-    "timestamp": "2026-04-27T16:37:42.703832",
-    "agent": "STOCK_ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T16:38:38.598256",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T16:38:54.579047",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T18:00:01.596059",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T18:00:16.121860",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:03:36.260930",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 6
-  },
-  {
-    "timestamp": "2026-04-27T18:04:35.789882",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:04:51.956419",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:05:09.011156",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-04-27T18:05:20.684495",
     "agent": "QUALITY_GATE",
     "success": false,
@@ -698,5 +635,68 @@
     "success": true,
     "fallback_used": false,
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-04-30T23:33:06.655563",
+    "agent": "SENTRY_WATCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:33:27.036423",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:33:39.934571",
+    "agent": "ARBITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:34:01.848197",
+    "agent": "WHY_GENERATOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:34:17.404565",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:34:43.524187",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:34:51.773015",
+    "agent": "QUALITY_GATE",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:53:06.743366",
+    "agent": "SUMMARIZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-04-30T23:53:18.616495",
+    "agent": "SUMMARIZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   }
 ]
