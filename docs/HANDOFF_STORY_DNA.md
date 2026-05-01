@@ -1,8 +1,9 @@
-# HOIN Insight v18.2 [The Autonomous Hunter] Handover
+# HOIN Insight v18.5 [The Intelligent Discovery Hunter] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Data-Driven Intelligence (v18.2)**: 유튜브 수집 시 신규 시그널(Data Gap)을 자동으로 동기화하여 엔진의 판단 근거를 강화합니다.
-- **Pure Autonomous Engine (v18.1)**: "글로벌 우선" 등의 모든 인위적인 가이드라인을 폐기했습니다. 데이터의 '절대적 파급력'과 '시그널/노이즈 구분'에만 집중하는 완전 자율 판단 체계를 구축했습니다.
+- **Intelligent Topic Discovery (v18.5)**: 단순 키워드 추출을 폐기하고, 제미나이 기반의 **'10대 개별 사건 사냥'** 엔진을 탑재했습니다. 매크로 노이즈를 필터링하고 신선한 개별 사건(Event) 포착에 집중합니다.
+- **Cost-Effective Intelligence (v18.4)**: 모든 지능형 추출에 **Tier 3 + Flash 모델** 전략을 적용하여 운영 비용을 극대화했습니다.
+- **Hybrid Source Integration (v1.5)**: RSS 뉴스, Polymarket, Hacker News 시그널을 실시간으로 합성하여 판단 근거를 입체화했습니다.
 
 
 - **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
