@@ -1,50 +1,50 @@
 {
   "MAIN": {
-    "candidate_id": "a2d4c998",
-    "candidate_type": "DATA",
-    "event": "GOLD 하방 이상징후 (Z-score: -2.05)",
+    "candidate_id": "9b93cde1",
+    "candidate_type": "HYBRID",
+    "event": "[대우건설] [기재정정]단일판매ㆍ공급계약체결              ",
     "entity": [
-      "Market"
+      "대우건설"
     ],
     "core_facts": [
       {
-        "name": "gold",
-        "value": 4575.0,
-        "change": -3.33,
-        "z_score": -2.05
+        "name": "kospi",
+        "value": 6690.8999,
+        "change": 4.25,
+        "z_score": 1.45
       }
     ],
     "expected_paths": [
-      "평균 회귀"
+      "안정적 흐름 유지"
     ],
     "actual_paths": [
-      "BREAK"
+      "LIQUIDITY"
     ],
-    "recency_score": 0.9,
-    "evidence_score": 1.0,
+    "recency_score": 1.1,
+    "evidence_score": 0.8,
     "is_mismatch": false,
-    "structure_axis": "flow",
+    "structure_axis": "emerging",
     "evidence_bundle": {
-      "axis": "flow",
+      "axis": "emerging",
       "market_reaction": {
-        "main_asset": "gold",
-        "intensity": -3.33,
+        "main_asset": "kospi",
+        "intensity": 4.25,
         "other_reactions": []
       },
       "temporal_context": {
-        "current_time": "2026-04-30 23:33",
+        "current_time": "2026-05-01 01:37",
         "is_market_closed": false,
         "market_data_ref": "Real-time/Today's Prices"
       },
-      "related_events": [],
-      "social_prediction": [
-        "[PREDICTION] What will NVIDIA (NVDA) hit in April 2026? → Probability: N/A",
-        "[SOCIAL_HN] China blocks Meta's acquisition of AI startup Manus (395 points)",
-        "[SOCIAL_HN] Stock markets are too high and set to fall, says Bank of England deputy (38 points)",
-        "[SOCIAL_HN] Show HN: A free ESG stock screener that publishes its losses and methodology (30 points)"
+      "related_events": [
+        "[DART] [계룡건설산업] [기재정정]단일판매ㆍ공급계약체결               - 금액: 344,512,640,000 원 (매출액 대비 91.5%) / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430800383 ()",
+        "[DART] [파두] [기재정정]단일판매ㆍ공급계약체결               - 금액: 60 원 (매출액 대비 0.5%) / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430900594 ()",
+        "[DART] [대우건설] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430800486 ()",
+        "[DART] [센코] [기재정정]단일판매ㆍ공급계약체결(자율공시)               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430900466 ()"
       ],
+      "social_prediction": [],
       "supporting_assets": [
-        "us10y: 2.89%"
+        "us10y: 1.46%"
       ],
       "contradictions": [
         "No clear contradictions found"

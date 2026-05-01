@@ -16,7 +16,7 @@ class Last30DaysCollector:
         # 프로젝트 루트 기준 상대 경로
         self.script_path = Path("skills/last30days-skill/scripts/last30days.py").resolve()
         
-    def collect(self, topic: str, depth: str = "quick") -> dict:
+    def collect(self, topic: str, depth: str = "quick", subreddits: str = None, x_handle: str = None) -> dict:
         """
         주제에 대해 last30days를 실행하고 결과를 JSON으로 반환합니다.
         """
@@ -29,8 +29,14 @@ class Last30DaysCollector:
                 topic, 
                 "--emit", "json", 
                 "--depth", depth, 
+                "--skip-llm",
                 "--quiet"
             ]
+            
+            if subreddits:
+                cmd.extend(["--subreddits", subreddits])
+            if x_handle:
+                cmd.extend(["--x-handle", x_handle])
             
             # PYTHONPATH를 skills/last30days-skill/scripts 로 설정하여 내부 lib 임포트 지원
             env = os.environ.copy()

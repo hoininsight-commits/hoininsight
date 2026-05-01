@@ -81,6 +81,16 @@ class DetectorAgent:
         # [TASK #084] 상위 15개 제한 제거 (최대한 많이 전달하되 토큰 효율성 고려)
         news_lines = [f"[{h.get('source','')}] {h.get('title','')}" for h in headlines[:50]]
 
+        # [SOCIAL INTEGRATION] SocialAgent 데이터 통합
+        social_block = all_data.get("social", {})
+        social_lines = []
+        if social_block:
+            trending = social_block.get("trending_topics", [])
+            deep = social_block.get("deep_research", [])
+            if trending: social_lines.append(f"Trending: {', '.join(trending[:5])}")
+            for d in deep[:5]:
+                social_lines.append(f"- [SOCIAL] {d.get('title', '')}: {d.get('snippet','')[:100]}...")
+
         summary = f"""
 === 시장 지표 (Z-score) ===
 {chr(10).join(stats_lines) if stats_lines else "데이터 없음"}
@@ -88,6 +98,9 @@ class DetectorAgent:
 === 거시 지표 (FRED/ECOS) ===
 {fred_lines}
 {ecos_lines}
+
+=== 소셜 리서치 및 트렌드 (51% Priority) ===
+{chr(10).join(social_lines) if social_lines else "소셜 데이터 없음"}
 
 === 오늘 뉴스 헤드라인 ===
 {chr(10).join(news_lines) if news_lines else "없음"}
@@ -109,56 +122,58 @@ class DetectorAgent:
         """
 
         # [TASK #084] 상위 50개 헤드라인 전달
+        # [SOCIAL PRIORITIZATION] 소셜 데이터 출처 가중치 반영
+        summary = self.build_data_summary(all_data)
+        
         prompt = f"""{system_prompt}
-너는 HOIN Insight의 '경제사냥꾼' 엔진이다. 지표와 뉴스를 분석해 오늘 시장에서 가장 '이상한(Anomaly)' 서사 3가지를 선정해라.
-[오늘 지표] {json.dumps(market, ensure_ascii=False)}
-[뉴스] {json.dumps([h.get('title') for h in headlines[:50]], ensure_ascii=False)}
+너는 금융 시장의 전방위적 데이터를 분석하는 전략가다. 
+[지표/소셜/뉴스]를 통합 분석해 오늘 시장에서 가장 '이례적인(Anomaly)' 서사 3가지를 선정해라.
+
+선정 시, **소셜 리서치(Social Research)** 데이터 소스에 51%의 비중을 두어 실시간 시장의 열기와 시의성을 우선적으로 고려하라.
+
+[시장 데이터 요약]
+{summary}
 
 결과 데이터는 반드시 JSON 배열로 출력:
 [ {{ "topic": "제목", "reason": "이유", "strength": 점수, "related_keywords": [], "anomaly_type": "SPEED|CORRELATION|NEWS_MISMATCH" }} ]
 """
         try:
-            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=3)
+            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=1)
             return results if isinstance(results, list) else []
         except: return []
 
     def detect_events_layer(self, all_data: dict) -> list:
-        """[TASK #084] 뉴스 헤드라인을 실제 '이벤트' 데이터로 변환"""
+        """[TASK #084] 뉴스 및 소셜 데이터를 실제 '이벤트' 데이터로 변환"""
         sentiment = all_data.get("sentiment", {}).get("data", {})
         headlines = sentiment.get("news_headlines", [])
-        if not headlines: return []
-
-        print(f"  📢 이벤트 레이어 가동: {len(headlines)}개 뉴스 분석 중...")
+        social_block = all_data.get("social", {})
+        social_deep = social_block.get("deep_research", [])
         
+        if not headlines and not social_deep: return []
+        
+        social_context = "\n".join([f"- {d.get('title')}: {d.get('snippet','')}" for d in social_deep[:10]])
+
         prompt = f"""
-너는 뉴스 헤드라인에서 핵심 경제/산업 이벤트를 추출하는 전문가다.
-헤드라인을 보고 시장에 영향을 줄 수 있는 굵직한 이벤트들을 추출하여 JSON 배열로 응답하라.
+너는 뉴스 및 소셜 리서치에서 핵심적인 경제/산업 이벤트를 추출하는 전문가다.
+데이터의 시의성과 파급력을 고려하여 시장에 큰 영향을 줄 수 있는 굵직한 이벤트들을 추출하라.
 
-[이벤트 타입 정의]
-- SUPPLY_SHOCK: 파업, 생산 중단, 공급망 병목
-- EARNINGS: 실적 발표, 가이드라인 수정
-- GEOPOLITICAL: 전쟁, 휴전, 제재, 외교적 마찰
-- POLICY: 금리 결정, 정부 규제, 정책 변화
-- LIQUIDITY: 유동성 변화, 자금 유입/유출
+[입력 데이터]
+{social_context}
+뉴스 헤드라인: {json.dumps([h.get('title') for h in headlines[:30]], ensure_ascii=False)}
 
-[출력 형식]
-[
-  {{
-    "event": "이벤트명",
-    "entity": "관련 기업/국가",
-    "sector": "관련 섹터",
-    "type": "위 정의된 타입 중 하나",
-    "impact_score": 0.0~1.0
-  }}
-]
+위 데이터를 보고 이벤트를 추출하여 JSON 배열로 응답하라.
+소셜 리서치 데이터 소스에 기반한 이벤트에 우선순위를 두어라.
 
-[입력 헤드라인]
-{json.dumps([h.get('title') for h in headlines[:50]], ensure_ascii=False)}
+결과 형식: [ {{ "event": "제목", "entity": ["대상"], "type": "타입", "importance": 1~10 }} ]
 """
         try:
-            events = self.gemini.call_json_controlled(prompt, agent="DETECTOR", tier=3)
-            return events if isinstance(events, list) else []
-        except: return []
+            print(f"  📢 이벤트 레이어 가동: 뉴스 {len(headlines)}개, 소셜 리서치 {len(social_deep)}개 분석 중...")
+            results = self.gemini.call_json_controlled(prompt, agent="DETECTOR_EVENT", tier=1)
+            return results if isinstance(results, list) else []
+        except Exception as e:
+            print(f"  ❌ 이벤트 레이어 실패: {e}")
+            return []
+
 
     def detect_anomalies(self, summary: str, candidates: list) -> list:
         """[TASK #085] LLM 기반 자율 이상징후 탐지 (Fact Pack 보강용)"""
@@ -234,29 +249,19 @@ class DetectorAgent:
         return anomalies
 
     def _validate_why_now(self, text: str) -> dict:
-        """[TASK #083-2] WHY NOW 수치 기반 검증 로직"""
+        """수치 기반 검증 로직 (Agnostic Version)"""
         import re
         if not text:
             return {"why_now_valid": False, "contains_numeric": False, "contains_change": False, "contains_threshold": False}
         
-        # 1. 숫자 포함 여부 (contains_numeric)
+        # 순수하게 숫자가 포함되어 있는지만 검증 (방향성 등은 Arbiter가 판단)
         has_number = bool(re.search(r'\d+', text))
         
-        # 2. 변화 크기 포함 여부 (contains_change): %, bp, 상승, 하락, 돌파, 폭락 등
-        change_keywords = ["%", "bp", "상승", "하락", "폭등", "폭락", "증가", "감소", "급등", "급락"]
-        has_change = any(kw in text for kw in change_keywords) or bool(re.search(r'\d+에서 \d+', text))
-        
-        # 3. 임계점 또는 조건 포함 여부 (contains_threshold): 이상, 이하, 돌파, 초과, 돌입, 진입
-        threshold_keywords = ["이상", "이하", "돌파", "초과", "돌입", "진입", "기준", "평균", "임계", "Z-score"]
-        has_threshold = any(kw in text for kw in threshold_keywords)
-        
-        is_valid = has_number and has_change and has_threshold
-        
         return {
-            "why_now_valid": is_valid,
+            "why_now_valid": has_number,
             "contains_numeric": has_number,
-            "contains_change": has_change,
-            "contains_threshold": has_threshold
+            "contains_change": True, # Deprecated (Agnostic rule)
+            "contains_threshold": True # Deprecated (Agnostic rule)
         }
 
     def select_best(self, anomalies: list, all_data: dict, events: list = None) -> tuple:
@@ -440,98 +445,74 @@ class DetectorAgent:
                             "change": s.get("1d_change_pct")
                         })
     def run(self, collector_result=None):
-        print(f"\n🔍 AGENT-03 DETECTOR v10.1 [Topic Selection Engine v1.0]")
-        all_data = self.load_all_data()
-        if not all_data: return {}
+        """[v21.0] AGNOSTIC STRATEGIC HUNT: 로우 데이터 전수 조사를 통한 토픽 선정"""
+        print(f"\n🔍 AGENT-03 DETECTOR v21.0 [Strategic Hunt Mode]")
+        
+        # 1. 로우 데이터 존재 확인
+        if not self.raw_dir.exists():
+            print(f"  ⚠️ [Detector] Raw directory not found: {self.raw_dir}")
+            return {}
 
-        # [TASK #101] New Topic Selection Engine v1.0 가동
-        from src.topic_engine.engine import TopicSelectionEngine
-        topic_engine = TopicSelectionEngine(self.base_dir)
-        selection = topic_engine.run(all_data)
+        # 2. [STRATEGIC HUNT] Arbiter를 통해 로우 데이터 전체 분석
+        from src.topic_engine.arbiter import TopicArbiter
+        arbiter = TopicArbiter()
         
-        # 팩트 데이터 패키징 (WriterAgent 및 폴백 엔진용)
-        fact_pack = []
-        if selection and selection.get("MAIN"):
-            main = selection["MAIN"]
-            fact_pack.append({
-                "topic": main["event"],
-                "core_facts": main["core_facts"],
-                "classification": main.get("evaluation", {}).get("flow_type", "NORMAL"),
-                "scenarios": main.get("scenarios", []), 
-                "why_now": [main.get("evaluation", {}).get("why_now_summary", "")],
-                "evidence_bundle": main.get("evidence_bundle", {}),
-                "mechanism": main.get("mechanism", "지표 간의 상관관계 변화 관측"),
-                "strength": main.get("final_score", 5.0) * 10,
-                "stocks": main.get("stocks", []),
-                "stocks_analysis": main.get("stocks_analysis", {})
-            })
-            
-            # fact_pack 저장 (WriterAgent 연동 핵심)
-            fact_pack_dir = Path("data/fact_pack")
-            fact_pack_dir.mkdir(parents=True, exist_ok=True)
-            (fact_pack_dir / "candidates_fact_pack.json").write_text(
-                json.dumps(fact_pack, ensure_ascii=False, indent=2)
-            )
-            
-            # today_signal.json 저장 (기존 호환성)
-            (self.signal_dir / "today_signal.json").write_text(json.dumps(selection["MAIN"], ensure_ascii=False, indent=2))
-            
-            # [BRIDGE] final_decision_card.json 생성 (Publisher 연동)
-            decision_dir = self.base_dir / "data/decision" / datetime.now().strftime("%Y/%m/%d")
-            decision_dir.mkdir(parents=True, exist_ok=True)
-            decision_card = {
-                "date": datetime.now().strftime("%Y-%m-%d"),
-                "MAIN": {
-                    **selection["MAIN"],
-                    "stocks": selection["MAIN"].get("stocks", []),
-                    "stocks_analysis": selection["MAIN"].get("stocks_analysis", {}),
-                    "arbiter_rationale": selection["MAIN"].get("arbiter_rationale", "N/A"),
-                    "hunter_insight": selection["MAIN"].get("hunter_insight", "N/A")
-                },
-                "SECONDARY": selection.get("SECONDARY", []),
-                "EARLY": selection.get("EARLY", [])
-            }
-            (decision_dir / "final_decision_card.json").write_text(
-                json.dumps(decision_card, ensure_ascii=False, indent=2)
-            )
-            print(f"  ✅ Decision card published to {decision_dir}")
+        print(f"  🎯 [Strategic Hunt] Analyzing all raw data in {self.raw_dir}...")
+        hunt_result = arbiter.select_topic_from_raw(self.raw_dir)
         
-        return {"selected": selection, "fact_pack": fact_pack}
+        main = hunt_result.get("MAIN")
+        if not main:
+            print("  ❌ [Detector] Strategic hunt failed to produce a topic.")
+            return {}
+
+        # 3. 팩트 데이터 패키징 (WriterAgent 호환성 유지)
+        # Arbiter가 찾은 '데이터 사슬'과 '통찰'을 팩트팩에 주입
+        fact_pack = [{
+            "topic": main["topic"],
+            "core_facts": [], # 필요한 수치는 Writer가 data_chain에서 추출
+            "classification": "STRATEGIC",
+            "why_now": [main.get("arbiter_rationale", "")],
+            "evidence_bundle": {
+                "data_chain": main.get("data_chain"),
+                "social_intelligence": main.get("hunter_insight") # 통찰을 소셜 지능으로 매핑
+            },
+            "arbiter_rationale": main.get("arbiter_rationale"),
+            "hunter_insight": main.get("hunter_insight"),
+            "actionable_event": main.get("actionable_event"),
+            "tier": "MAIN/TIER_1"
+        }]
+        
+        # 4. 결과 저장 (WriterAgent 연동)
+        fact_pack_dir = Path("data/fact_pack")
+        fact_pack_dir.mkdir(parents=True, exist_ok=True)
+        fact_pack_path = fact_pack_dir / "candidates_fact_pack.json"
+        fact_pack_path.write_text(json.dumps(fact_pack, ensure_ascii=False, indent=2))
+        
+        # today_signal.json 저장 (기존 호환성)
+        (self.signal_dir / "today_signal.json").write_text(json.dumps(main, ensure_ascii=False, indent=2))
+        
+        print(f"  ✅ Strategic Hunt Completed: {main['topic']}")
+        print(f"  📂 Fact Pack saved to {fact_pack_path}")
+        
+        return {"selected": hunt_result, "fact_pack": fact_pack}
 
     def _find_news_trigger(self, signal: dict, sentiment_data: dict) -> str:
-        """관련 뉴스 헤드라인 매칭 (기존 로직 유지)"""
+        """Agnostic 헤드라인 매칭 (하드코딩 키워드 및 특혜 점수 제거)"""
         topic = signal.get("topic", "").lower()
         headlines = sentiment_data.get("data", {}).get("news_headlines", [])
         
-        # [DEFENSE] headlines가 dict인 경우 (V7.1에서 관측됨)
         if isinstance(headlines, dict):
             headlines = headlines.get("news_headlines", [])
 
-        TOPIC_KEYWORDS = {
-            "wti": ["호르무즈", "hormuz", "유가", "oil", "wti", "opec", "원유", "석유"],
-            "gold": ["금", "gold", "귀금속", "안전자산"],
-            "sp500": ["deepseek", "딥시크", "s&p", "나스닥", "nasdaq", "주가", "증시", "기술주", "ai"],
-            "dxy": ["달러", "dollar", "dxy", "환율"],
-            "kr_": ["코스피", "한국", "kospi", "원화"],
-        }
-        
-        matched_keywords = []
-        for key, keywords in TOPIC_KEYWORDS.items():
-            if any(kw.lower() in topic for kw in keywords):
-                matched_keywords.extend(keywords)
-        
-        if not matched_keywords:
-            matched_keywords = [w for w in topic.split() if len(w) >= 2]
+        # 인간의 개입(TOPIC_KEYWORDS) 없이, 토픽에 나타난 단어 자체의 교집합으로만 스코어링
+        matched_keywords = [w for w in topic.split() if len(w) >= 2]
 
         best_match = None
         best_score = -1
         
         for h in headlines:
             title = h.get("title", "").lower()
-            score = 0
-            for kw in matched_keywords:
-                if kw.lower() in title:
-                    score += 10 if kw.lower() in ["deepseek", "호르무즈", "파업"] else 1
+            score = sum(1 for kw in matched_keywords if kw.lower() in title)
             
             if score > best_score:
                 best_match = h.get("title")
@@ -540,24 +521,9 @@ class DetectorAgent:
         return best_match or ""
 
     def _detect_news_mismatch(self, market_data: dict, sentiment_data: dict) -> dict:
-        """뉴스 톤 vs 지표 방향 모순 탐지 (기존 로직 유지)"""
-        headlines = sentiment_data.get("data", {}).get("news_headlines", [])
-        if isinstance(headlines, dict): headlines = headlines.get("news_headlines", [])
-        
-        headline_text = " ".join([h.get("title", "") for h in headlines]).lower()
-        
-        negative_keywords = ["sink", "rout", "crash", "fear", "stumbled", "폭락", "급락", "위기"]
-        sp500_z = market_data.get("multi_period_stats", {}).get("sp500", {}).get("z_score_20d", 0) or 0
-        
-        if any(kw in headline_text for kw in negative_keywords) and sp500_z > 1.0:
-            return {
-                "topic": "뉴스 악재 속 지수 상승 (Price-News 모순)",
-                "anomaly_type": "NEWS_MISMATCH",
-                "strength": 9.2,
-                "why_anomalous": f"뉴스 톤은 부정적이나 SP500 Z-score {sp500_z:.2f}로 강한 상승 중",
-                "why_now": f"악재를 압도하는 수급 유입으로 인한 SP500 {sp500_z:.2f} (Z-score 1.0 이상) 상승 국면",
-                "key_indicators": ["sp500", "sentiment"]
-            }
+        """뉴스 모순 탐지 (Agnostic 버전에 맞게 하드코딩 폐기)"""
+        # 인간의 주관적 텍스트 지정(negative_keywords) 방식 제거.
+        # 순수하게 데이터 기반으로 모순을 탐지할 방법이 마련될 때까지 비활성화
         return {}
 
     def _is_absolute_value_topic(self, topic: str, anomaly: dict) -> bool:

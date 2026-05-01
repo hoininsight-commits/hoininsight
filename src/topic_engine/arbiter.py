@@ -6,102 +6,107 @@ from src.core.gemini_client import GeminiClient
 from src.utils.target_date import get_now_kst, get_target_ymd
 
 class TopicArbiter:
-    """[v15.1] Dynamic Topic Arbiter - Economic Hunter Strategist Upgrade"""
+    """[v21.0] AGNOSTIC STRATEGIC ARBITER - Economic Hunter DNA Integration"""
 
     def __init__(self):
         self.client = GeminiClient()
 
-    def select_best(self, candidates: List[Dict], market_axis: Dict) -> Dict:
+    def select_topic_from_raw(self, raw_dir: Path) -> Dict:
         """
-        Gemini를 사용하여 수많은 후보 중 가장 '사냥할 가치가 있는' 오늘 최고의 토픽을 선정
+        [v21.0] 로우 데이터 폴더 전체를 전수 조사하여 가장 강력한 연결 고리를 가진 토픽 사냥
         """
-        if not candidates:
-            return {"MAIN": None, "SECONDARY": [], "EARLY": []}
+        if not raw_dir.exists():
+            print(f"  ⚠️ [Arbiter] Raw directory not found: {raw_dir}")
+            return {"MAIN": None}
 
-        # 1. 후보군 텍스트 요약
-        candidate_summary = []
-        for i, cand in enumerate(candidates):
-            source = cand.get("source", "UNKNOWN")
-            event = cand.get("event", "")
-            candidate_summary.append(f"[{i}] [S:{source}] {event}")
+        # 1. 모든 로우 데이터 취합 및 고농축 압축 (v22.0 Data Condenser 적용)
+        from src.utils.data_condenser import DataCondenser
+        condenser = DataCondenser()
+        
+        raw_context = []
+        for file_path in raw_dir.glob("*.json"):
+            try:
+                raw_json = json.loads(file_path.read_text(encoding='utf-8'))
+                condensed_text = condenser.condense(raw_json)
+                raw_context.append(f"### [DATA_SOURCE: {file_path.name}]\n{condensed_text}\n")
+            except Exception as e:
+                print(f"  ⚠️ [Arbiter] Skip {file_path.name}: {e}")
 
-        candidate_list_str = "\n".join(candidate_summary)
-        
-        # 현재 날짜 및 요일 정보 (KST 보정 v15.2)
-        now = get_now_kst()
-        today_str = get_target_ymd()
-        
-        # 2. 사냥꾼의 전략적 안목 주입 (v18.8 'Story DNA' Upgrade)
+        if not raw_context:
+            return {"MAIN": None}
+
+        full_condensed_data = "\n".join(raw_context)
+
+        # 2. 전략 지능형 프롬프트 (Macro Strategist)
         prompt = f"""
-당신은 전설적인 금융 유튜버 '경제사냥꾼'의 전략기획실장입니다. 
-지금 이 순간, 대중의 아드레날린을 폭발시키고 실질적인 '돈의 흐름'을 바꿀 수 있는 단 하나의 **'사냥감(Topic)'**을 선정하십시오.
+당신은 글로벌 자본의 흐름과 거시경제의 미래를 예측하는 최고 수준의 매크로 전략가입니다.
+당신에게는 현재의 주요 이슈가 담긴 '소셜 데이터'와 실물 경제의 움직임을 보여주는 '하드 데이터(거시 지표, 시장 가격, 기업 공시)'가 제공됩니다.
 
-[CANDIDATES - 오늘 포착된 데이터]
-{candidate_list_str}
+### 🎯 [수행 임무 및 분석 프로세스]
+당신은 제공된 데이터를 바탕으로, **현재 그리고 향후 거시경제에 가장 거대한 충격과 자본 이동을 가져올 단 하나의 핵심 토픽**을 도출해야 합니다.
 
-[사냥꾼의 토픽 선정 원칙 - HUNTER'S INSTINCT]
-1. **Adrenaline & Narrative**: 단순히 지표가 변했다는 뉴스(국채 금리, 유가 등)보다 **'인물의 움직임(젠슨황, 이재용, 머스크 등)'**이나 **'이례적인 사건(단독, 최초, 비밀 회동)'**처럼 대중이 열광할 서사가 있는 토픽에 압도적인 우선순위를 두십시오.
-2. **Relatability (Skin in the Game)**: 투자자들이 "이건 내 돈과 직결된다"고 즉각적으로 느낄 수 있는, 피부에 와닿는 주제를 고르십시오. 너무 먼 나라의 거시 경제보다는 '지금 당장 한국 시장의 수급'을 뒤흔들 주제가 좋습니다.
-3. **The Mismatch**: 시장의 기대와 실제 행동이 충돌하는 지점(예: 역대급 실적인데 파업, 재벌 총수의 갑작스러운 자사주 매입)을 포착하십시오. 거기가 바로 사냥꾼이 수익을 내는 '급소'입니다.
-4. **Thumbnail Test**: 선정하려는 토픽이 "유튜브 썸네일로 만들어졌을 때 클릭하지 않고는 못 배길 정도인가?"를 스스로 자문하십시오.
+**[1단계: 핵심 어젠다 포착 (Social Data 활용)]**
+- 제공된 소셜 데이터를 분석하여, 단순한 가십이나 단기적 감정(공포/환희)이 아닌, **'향후 글로벌 경제 구조나 거대 자본의 이동을 근본적으로 뒤흔들 가장 파괴력 있는 이슈'**를 하나 찾아내십시오.
 
-[OUTPUT JSON FORMAT]
+**[2단계: 파급력의 과학적 증명 (Hard Data 활용)]**
+- 1단계에서 포착한 이슈를 나머지 하드 데이터(FRED, Market, DART 등)를 활용하여 정밀하게 해독하십시오.
+- 이 이슈가 구체적으로 **어떤 경제적 메커니즘**을 통해 실물 경제(공급망, 금리, 물가 등)와 자본 시장에 충격을 줄 것인지 데이터로 증명하십시오.
+
+### 📊 [현재 시장 데이터]
+{full_condensed_data}
+
+---
+
+### 🚀 전체 내용 분석 
+[시스템에서 분석 할 경우 전체 분석 내용 파일로 저장]
+분석내용... 
+---
+
+### 🚀 [거시경제 파급력 분석 보고서]
+위의 분석 프로세스를 거친 후, 아래 JSON 형식으로 상세한 결과를 제출하십시오.
+
 {{
-  "main_index": (int), 
-  "secondary_indices": [int, int], 
-  "rationale": "왜 이 토픽이 오늘 최고의 '사냥감'인가? (서사와 아드레날린 관점 분석)", 
-  "hunter_insight": "이 서사가 시장의 수급을 어떻게 이동시킬 것인가? (사냥꾼의 예리한 예측)"
+  "macro_economic_topic": "현재와 미래의 거시경제에 가장 거대한 파급력을 미칠 핵심 토픽",
+  "topic_selection_reason": "소셜 데이터에서 이 이슈를 포착한 이유와, 이것이 왜 다른 이슈들보다 경제적으로 훨씬 더 중대한 의미를 갖는지에 대한 설명",
+  "hard_data_proof": "이 토픽의 파괴력을 증명하는 구체적인 거시 지표, 시장 데이터, 혹은 기업 공시의 크로스체크 결과",
+  "future_economic_impact": "이 토픽이 향후 자본 시장의 수급과 실물 경제의 구조에 어떤 구체적이고 연쇄적인 충격을 가져올 것인지에 대한 심층 전망"
 }}
-
-반드시 JSON으로만 응답하십시오.
 """
-        # 디버그용 프롬프트 기록
-        log_dir = Path("data/logs")
-        log_dir.mkdir(parents=True, exist_ok=True)
-        (log_dir / "arbiter_prompt.txt").write_text(prompt, encoding="utf-8")
-
-        print(f"  🧠 [Arbiter] Selecting from {len(candidates)} candidates (v18.8 - Hunter Instinct)...")
+        
+        print(f"  🧠 [Arbiter] Hunting from {len(raw_context)} condensed sources (Model: 1.5-Flash)...")
         try:
-            response = self.client.call_json_controlled(prompt, agent="ARBITER", tier=3)
+            # [v22.0] 비용 최적화: 사냥 단계는 2.5-Flash 모델 사용 (v22.0 데이터 고농축 적용으로 토큰 절감)
+            response = self.client.call_json_controlled(
+                prompt, 
+                agent="ARBITER_V2", 
+                tier=2, 
+                model="gemini-2.5-flash"
+            )
             
-            if not response:
-                response = self.client.call_json(prompt)
+            if not response or "macro_economic_topic" not in response:
+                print("  ⚠️ [Arbiter] Failed to capture a strategic topic. Using fallback.")
+                return {"MAIN": None}
 
-            main_idx = response.get("main_index", 0)
-            sec_indices = response.get("secondary_indices", [])
-            
-            if main_idx >= len(candidates):
-                main_idx = 0
-
-            main_cand = candidates[main_idx]
-            main_cand["arbiter_rationale"] = response.get("rationale")
-            main_cand["hunter_insight"] = response.get("hunter_insight")
-            main_cand["tier"] = "MAIN/TIER_1"
-            
-            print(f"  🏆 Arbiter Winner: {main_cand['event']}")
-
-            secondary = [candidates[i] for i in sec_indices if i < len(candidates)]
-            for s in secondary: s["tier"] = "SECONDARY/TIER_2"
-
-            return {
-                "MAIN": main_cand,
-                "SECONDARY": secondary,
-                "EARLY": [c for i, c in enumerate(candidates) if i not in ([main_idx] + sec_indices)][:3]
+            # 3. 결과 래핑 (ContentEngine 호환성 유지)
+            main_topic = {
+                "topic": response.get("macro_economic_topic"),
+                "event": response.get("macro_economic_topic"),
+                "arbiter_rationale": response.get("topic_selection_reason"),
+                "hunter_insight": response.get("future_economic_impact"),
+                "data_chain": response.get("hard_data_proof"),
+                "tier": "MAIN/TIER_1",
+                "source": "STRATEGIC_HUNT"
             }
 
-        except Exception as e:
-            print(f"  ❌ [Arbiter] Runtime Error: {e}")
-            return {"MAIN": candidates[0], "SECONDARY": [], "EARLY": []}
+            return {"MAIN": main_topic}
 
-    def _apply_intent_boost(self, text: str) -> float:
-        """사냥꾼의 본능을 자극하는 키워드 감지 시 가중치 폭발"""
-        hunter_keywords = [
-            "젠슨황", "이재용", "머스크", "샘올트먼", "이부진", "삼성전자", "엔비디아",
-            "단독", "최초", "비밀", "포착", "매집", "폭발", "충격", "공시", "DART",
-            "파업", "인수", "합병", "M&A", "주주환원", "자사주", "기회"
-        ]
-        for kw in hunter_keywords:
-            if kw in text:
-                return 2.5  # 가중치를 2.0에서 2.5로 상향
-        return 1.0
+        except Exception as e:
+            print(f"  ❌ [Arbiter] Hunting Error: {e}")
+            return {"MAIN": None}
+
+    def select_best(self, candidates: List[Dict], market_axis: Dict) -> Dict:
+        """Legacy support for candidate-based selection"""
+        # ... (이전 로직과 유사하게 유지하되, 내부적으로 select_topic_from_raw 호출 가능)
+        return {"MAIN": candidates[0] if candidates else None, "SECONDARY": [], "EARLY": []}
+
 

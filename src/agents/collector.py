@@ -585,13 +585,17 @@ class CollectorAgent:
 
         headlines = []
         rss_feeds = [
-            # Stale WSJ feeds removed (Serving 2025 data in 2026)
+            # 글로벌 경제/금융 (월가 및 거시경제)
             {"name": "FT Markets", "url": "https://www.ft.com/markets?format=rss"},
             {"name": "CNBC Economy", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
             {"name": "CNBC Finance", "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"},
+            {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/news/rssindex"},
+            {"name": "Investing.com", "url": "https://www.investing.com/rss/news_25.rss"},
+            # 국내 주요 경제지 (실물 경제 및 시장)
             {"name": "Yonhap English", "url": "https://en.yna.co.kr/RSS/news.xml"},
             {"name": "연합뉴스", "url": "https://www.yna.co.kr/rss/economy.xml"},
             {"name": "한국경제", "url": "https://www.hankyung.com/feed/economy"},
+            {"name": "매일경제", "url": "https://www.mk.co.kr/rss/30100041/"},
         ]
 
         def fetch_rss_worker(feed):
@@ -608,7 +612,7 @@ class CollectorAgent:
                         pub_date = entry.get("published_parsed")
                         date_prefix = ""
                         if pub_date:
-                            dt = datetime(*pub_date[:6])
+                            dt = datetime(*pub_date[:6], tzinfo=timezone.utc)
                             if (now - dt).days > 7:
                                 continue
                             date_prefix = f"[{dt.strftime('%Y-%m-%d')}] "
@@ -624,8 +628,8 @@ class CollectorAgent:
                             "timestamp": get_now_kst().isoformat(),
                             "is_deep_scraped": False # 본문 스크래핑 여부 마킹
                         })
-            except:
-                pass
+            except Exception as e:
+                print(f"  [RSS ERROR] {feed['name']}: {e}")
             return feed_headlines
 
         # 5개 스레드로 뉴스 병렬 수집
@@ -634,67 +638,12 @@ class CollectorAgent:
             for res in results:
                 headlines.extend(res)
 
-        # 권위자 키워드 탐지
-        authority_keywords = [
-            "버핏", "이재용", "머스크", "파월", "이창용", "트럼프", "바이든",
-            "Buffett", "Powell", "Elon Musk", "Fed", "Treasury", "Biden", "Trump"
-        ]
-        authority_signals = []
-        for h in headlines:
-            for kw in authority_keywords:
-                if kw.lower() in h["title"].lower():
-                    authority_signals.append({
-                        "person": kw,
-                        "action": h["title"],
-                        "source": h["source"],
-                        "timestamp": h["timestamp"]
-                    })
-                    break
-
-        print(f"  총 뉴스 {len(headlines)}개, 권위자 관련 {len(authority_signals)}개 포착")
-
-        # [NEW] Hunter's Deep Scrape: 상위 10개 기사 본문 추출 (디테일 확보용)
-        print("🔍 주요 기사 본문 심층 분석 중 (Deep Scrape)...")
+        print(f"  총 뉴스 {len(headlines)}개 원시 데이터 수집 완료 (정제 대기 중)")
         
-        # 중요도 순으로 정렬 (Hunter Keywords -> 권위자 뉴스 -> 최신순)
-        hunter_priority_kws = ["성과급", "노조", "파업", "실적", "공급망", "병목", "incentive", "strike", "bottleneck", "earnings"]
-        headlines.sort(key=lambda x: (
-            any(kw.lower() in (x["title"] + x["summary"]).lower() for kw in hunter_priority_kws),
-            any(kw.lower() in x["title"].lower() for kw in authority_keywords)
-        ), reverse=True)
-        
-        for h in headlines[:10]: # 10개로 확대
-            try:
-                url = h.get("link")
-                if not url: continue
-                # 한국경제 등 특정 사이트는 User-Agent에 민감하므로 보강
-                headers = {
-                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-                }
-                resp = requests.get(url, timeout=5, headers=headers)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.content, "html.parser")
-                    # 본문 텍스트 추출 최적화
-                    p_texts = [p.get_text().strip() for p in soup.find_all(["p", "div"]) if len(p.get_text().strip()) > 40]
-                    body_text = " ".join(p_texts[:15]) 
-                    
-                    if body_text:
-                        # 수치 정보 포착 정규표현식 강화
-                        detail_info = re.findall(r'[^.]*?(\d+%|\d+억|\d+조|\d+억\s*달러|\d+%\s*인상|성과급\s*[\d,]+|영업이익\s*[\d,]+)[^.]*\.', body_text)
-                        if detail_info:
-                            h["summary"] = "[DEEP_DETAIL] " + " ".join(detail_info[:3]) + " | " + h["summary"]
-                        else:
-                            h["summary"] = body_text[:700] + "..." # 요약 길이도 확장
-                        h["is_deep_scraped"] = True
-                        print(f"  ✅ Deep Scraped (Hunter Priority): {h['title'][:30]}...")
-            except:
-                continue
-
         result_data = {
             "date": self.today,
             "data": {
-                "news_headlines": headlines,
-                "authority_signals": authority_signals
+                "news_headlines": headlines
             }
         }
 
@@ -967,9 +916,6 @@ class CollectorAgent:
             print(f"  DART 수집 실패: {e}")
             return {"date": self.today, "data": {"disclosures": [], "themes": []}}
 
-        # 핵심 공시 필터
-        bullish_keywords = ["단일판매", "공급계약", "시설투자", "특허권", "무상증자", "자기주식취득", "최대주주변경", "제3자배정"]
-        
         disclosures = []
         sector_hits = {}
         processed_count = 0
@@ -988,12 +934,15 @@ class CollectorAgent:
             corp_name = row['corp_name']
             report_nm = row['report_nm']
             
-            # 뉴스 맥락과 일치하는지 확인
-            is_news_relevant = any(str(kw).lower() in corp_name.lower() or str(kw).lower() in report_nm.lower() for kw in keywords)
-            # 호재성 공시인지 확인
-            is_bullish = any(bk in report_nm for bk in bullish_keywords)
+            # [NEW] Agnostic Filter: 인간이 지정한 호재 단어 대신, 
+            # 단순히 트렌드 키워드(keywords)와 관련된 기업의 공시만 수집
+            is_news_relevant = False
+            if keywords:
+                is_news_relevant = any(str(kw).lower() in corp_name.lower() or str(kw).lower() in report_nm.lower() for kw in keywords)
+            else:
+                is_news_relevant = True # 키워드가 없으면 최신순 수집
             
-            if is_news_relevant or is_bullish:
+            if is_news_relevant:
                 amount_info = "수치 확인 중"
                 
                 # [OPTIMIZED] 상세 수치 추출은 할당량 내에서만 수행

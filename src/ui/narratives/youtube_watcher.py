@@ -109,6 +109,18 @@ def parse_feed_entries(xml_content: str):
         
     return entries
 
+def is_youtube_shorts(video_id: str) -> bool:
+    """Checks if a video is a YouTube Short by checking the redirect behavior."""
+    try:
+        import requests
+        url = f"https://www.youtube.com/shorts/{video_id}"
+        # allow_redirects=False로 설정하여 리다이렉트가 발생하는지 확인
+        response = requests.head(url, allow_redirects=False, timeout=5)
+        # 쇼츠면 200 OK, 일반 영상이면 303/302 리다이렉트 발생
+        return response.status_code == 200
+    except Exception:
+        return False
+
 def run_watcher(run_round: int = 1):
     # Metadata collection from RSS is always allowed to keep index fresh.
     # Learning guard applies to heavy processing/LLM phases.
@@ -211,7 +223,11 @@ def run_watcher(run_round: int = 1):
                         except Exception as e:
                             logger.warning(f"Summary generation failed: {e}")
 
-                        msg = f"📺 *[유튜브 수집 완료]*\n\n"
+                        # [v20.0] 쇼츠 여부 판별
+                        is_shorts = is_youtube_shorts(vid_id)
+                        type_tag = "🎬 *[유튜브 쇼츠]*" if is_shorts else "📺 *[유튜브 일반 영상]*"
+
+                        msg = f"{type_tag}\n\n"
                         msg += f"📌 *제목*: {vid['title']}\n"
                         msg += f"⏰ *회차*: {run_round}회차\n"
                         msg += f"🔗 [영상 링크]({vid['url']})\n\n"
@@ -227,9 +243,6 @@ def run_watcher(run_round: int = 1):
                         logger.info(f"Telegram notification sent for {vid_id}")
                 except Exception as ingest_e:
                     logger.error(f"Failed to ingest transcript for {vid_id}: {ingest_e}")
-                    
-            except Exception as e:
-                logger.error(f"Failed to save metadata for {vid_id}: {e}")
 
     # Export new titles for notifications
     if new_titles:

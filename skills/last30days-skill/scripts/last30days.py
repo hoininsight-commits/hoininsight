@@ -226,6 +226,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--auto-resolve", action="store_true",
                         help="Use web search to discover subreddits/handles before planning (for platforms without WebSearch)")
+    parser.add_argument("--skip-llm", action="store_true", help="Skip all internal LLM calls (planner, reranker, fun judge) for pure data collection.")
     parser.add_argument("--github-user", help="GitHub username for person-mode search (e.g., steipete)")
     parser.add_argument("--github-repo", help="Comma-separated owner/repo for project-mode search (e.g., openclaw/openclaw,paperclipai/paperclip)")
     parser.add_argument(
@@ -657,6 +658,7 @@ def main() -> int:
                 lookback_days=args.lookback_days,
                 github_user=github_user,
                 github_repos=github_repos,
+                skip_llm=args.skip_llm,
             )
             r.artifacts["resolved"] = {
                 "entity": topic,
@@ -785,6 +787,7 @@ def main() -> int:
                     web_backend=args.web_backend,
                     lookback_days=args.lookback_days,
                     internal_subrun=True,
+                    skip_llm=args.skip_llm,
                 )
                 report.artifacts["resolved"] = resolved_effective
                 return report

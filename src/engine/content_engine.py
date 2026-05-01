@@ -113,9 +113,15 @@ class ContentEngine:
         }
 
         # 3. 중앙 집중식 템플릿에 데이터 주입
+        evidence = candidate.get("evidence_bundle", {})
+        social_intel = evidence.get("social_intelligence", "N/A")
+        data_chain = evidence.get("data_chain", "N/A")
+
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
             topic=candidate.get("topic", "N/A"),
+            data_chain=json.dumps(data_chain, ensure_ascii=False, indent=2),
+            social_intelligence=json.dumps(social_intel, ensure_ascii=False, indent=2),
             arbiter_rationale=candidate.get("arbiter_rationale", "N/A"),
             hunter_insight=candidate.get("hunter_insight", "N/A"),
             analysis_json=json.dumps(analysis_data, ensure_ascii=False)
@@ -126,7 +132,7 @@ class ContentEngine:
         prompt += "{\"title\": \"유튜브 제목\", \"script\": \"태그 없이 작성된 전체 스크립트 텍스트\"}"
 
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=3)
+            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
             if isinstance(res, dict) and "script" in res:
                 return res["script"]
             if isinstance(res, str) and len(res) > 50:

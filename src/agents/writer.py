@@ -59,7 +59,7 @@ class WriterAgent:
         )
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=3)
+            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=1)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Long) 호출 실패: {e}")
@@ -85,7 +85,7 @@ class WriterAgent:
         prompt += "\n반드시 1분 분량의 쇼츠 대본(8단계 요약)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=3)
+            response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=1)
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Shorts) 호출 실패: {e}")
@@ -109,27 +109,46 @@ class WriterAgent:
         return script
 
     def run(self, analyst_results=None):
-        """[TASK #093] RESILIENCE UPGRADE: Gemini 장애 대응 및 상태 체계 도입"""
-        print(f"\n✍️ AGENT-05 CONTENT_ENGINE v9.1 (Resilience Upgrade) 가동")
+        """[v21.0] STRATEGIC HUNT FLOW: Arbiter 직접 호출 및 자율 사냥"""
+        print(f"\n✍️ AGENT-05 CONTENT_ENGINE v21.0 (Strategic Hunt Mode) 가동")
         
-        # 1. Fact Pack 로드
-        fact_pack_p = Path("data/fact_pack/candidates_fact_pack.json")
-        if not fact_pack_p.exists(): return {"status": "DROP", "reason": "No fact pack"}
-            
-        try:
-            fact_pack = json.loads(fact_pack_p.read_text())
-        except: return {"status": "DROP", "reason": "Load error"}
+        # 1. 로우 데이터 경로 설정 (Arbiter 전수 조사용)
+        raw_dir = Path(f"data/raw/{self.today}/{self.round}")
+        
+        # 2. [STRATEGIC HUNT] Arbiter를 통해 로우 데이터에서 직접 토픽 사냥
+        from src.topic_engine.arbiter import TopicArbiter
+        arbiter = TopicArbiter()
+        
+        print(f"  🎯 [Strategic Hunt] Hunting from raw data in {raw_dir}...")
+        hunt_result = arbiter.select_topic_from_raw(raw_dir)
+        
+        candidate = hunt_result.get("MAIN")
+        
+        if not candidate:
+            print("  ⚠️ [Writer] Strategic hunt failed to find a topic. Falling back to legacy fact pack.")
+            # [FALLBACK] 기존 Fact Pack 로드 시도
+            fact_pack_p = Path("data/fact_pack/candidates_fact_pack.json")
+            if not fact_pack_p.exists(): return {"status": "DROP", "reason": "No data found"}
+            try:
+                fact_pack = json.loads(fact_pack_p.read_text())
+                candidate = fact_pack[0]
+            except: return {"status": "DROP", "reason": "Load error"}
+        else:
+            print(f"  🏆 Strategic Hunt Winner: {candidate.get('topic')}")
 
-        candidate = fact_pack[0]
-        
-        # 2. [TIER 1] Gemini 콘텐츠 생성 시도
+        # 3. [TIER 1] Gemini 콘텐츠 생성 시도
         print(f"  [TIER 1] Gemini 콘텐츠 생성 시도 중...")
         final_contents = []
         try:
-            # content_engine 내부에서 Gemini 호출 (TIER 1로 처리되도록 wrapper 수정됨)
-            final_contents = self.content_engine.generate_contents(fact_pack)
+            # 전략 사냥 결과를 리스트로 래핑하여 전달
+            final_contents = self.content_engine.generate_contents([candidate])
         except Exception as e:
-            print(f"  ⚠️ Gemini 생성 실패: {e}")
+            error_msg = str(e).lower()
+            if "exhausted" in error_msg or "quota" in error_msg:
+                print(f"  🚨 Gemini 월간 할당량 초과 감지. 즉시 폴백 모드로 전환합니다.")
+            else:
+                print(f"  ⚠️ Gemini 생성 실패: {e}")
+            final_contents = [] # 명시적 초기화로 폴백 유도
 
         # 3. [FALLBACK] 결정론적 스크립트 생성
         print(f"  🤖 Deterministic Fallback Engine 가동...")

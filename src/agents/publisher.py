@@ -63,43 +63,51 @@ class PublisherAgent:
                 }
                 print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
         
-        
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
             data["signal"] = None
 
         # 분석
-        if Path("data/analysis").exists():
-            for d in sorted(Path("data/analysis").iterdir(), reverse=True):
-                p = d / "today_analysis.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        analysis_p = self.base_dir / f"data/analysis/{self.today}/{self.round}/today_analysis.json"
+        if analysis_p.exists():
+            data["analysis"] = safe_load_json(analysis_p)
+        else:
+            if Path("data/analysis").exists():
+                for d in sorted(Path("data/analysis").rglob("today_analysis.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["analysis"] = res
                         break
 
         # 종목
-        if Path("data/analysis").exists():
-            for d in sorted(Path("data/analysis").iterdir(), reverse=True):
-                p = d / "today_stocks.json"
-                if p.exists():
-                    res = safe_load_json(p)
+        stocks_p = self.base_dir / f"data/analysis/{self.today}/{self.round}/today_stocks.json"
+        if stocks_p.exists():
+            data["stocks"] = safe_load_json(stocks_p)
+        else:
+            if Path("data/analysis").exists():
+                for d in sorted(Path("data/analysis").rglob("today_stocks.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
                     if res:
                         data["stocks"] = res
                         break
 
         # 스크립트
-        if Path("data/scripts").exists():
-            for d in sorted(Path("data/scripts").iterdir(), reverse=True):
-                p = d / "today_script_long.md"
-                if p.exists():
-                    data["script_long_path"] = str(p)
+        script_long_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_long.md"
+        if script_long_p.exists():
+            data["script_long_path"] = str(script_long_p)
+        else:
+            if Path("data/scripts").exists():
+                for d in sorted(Path("data/scripts").rglob("today_script_long.md"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    data["script_long_path"] = str(d)
                     break
 
-            for d in sorted(Path("data/scripts").iterdir(), reverse=True):
-                p = d / "today_script_short.md"
-                if p.exists():
-                    data["script_short_path"] = str(p)
+        script_short_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_short.md"
+        if script_short_p.exists():
+            data["script_short_path"] = str(script_short_p)
+        else:
+            if Path("data/scripts").exists():
+                for d in sorted(Path("data/scripts").rglob("today_script_short.md"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    data["script_short_path"] = str(d)
                     break
 
         # 후보 목록 (v2.0: data/topics/topic_candidates.json 대응)
@@ -643,9 +651,22 @@ class PublisherAgent:
 
         data = self.load_today_data()
 
-        if not data:
-            print("  데이터 없음 — 종료")
+        if not data or not data.get("signal"):
+            print("  데이터 또는 활성 신호 없음 — 종료")
             return {}
+
+        # [DUPLICATE CHECK] 이미 동일한 토픽으로 오늘 발송했는지 확인
+        topic = data["signal"].get("topic", "")
+        if self.content_log_path.exists():
+            try:
+                log = json.loads(self.content_log_path.read_text())
+                for entry in log.get("contents", []):
+                    if entry.get("date") == f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}" and \
+                       entry.get("title") == topic and \
+                       entry.get("publish_status") == "SUCCESS":
+                        print(f"  🚫 [DUPLICATE] 이미 발송된 토픽입니다: {topic}")
+                        return {"status": "SKIPPED", "reason": "Already published"}
+            except: pass
 
         # 파이프라인 실시간 결과 반영 (디스크 로딩 보완)
         if pipeline_results:
@@ -688,6 +709,9 @@ class PublisherAgent:
             print("  ⚠️ [PUBLISHER] 텔레그램 전송 실패 (Warning only — 파이프라인 계속)")
         else:
             print("  ✅ [PUBLISHER] 텔레그램 전송 완료")
+            # 발송 성공 시 상태 업데이트
+            data["signal"]["status"] = "SUCCESS"
+            self.update_content_log(data)
 
         print("✅ AGENT-06 완료\n")
         return {"content": content, "brief": brief}

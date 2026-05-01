@@ -1,49 +1,22 @@
 [
   {
-    "topic": "GOLD 하방 이상징후 (Z-score: -2.05)",
-    "core_facts": [
-      {
-        "name": "gold",
-        "value": 4575.0,
-        "change": -3.33,
-        "z_score": -2.05
-      }
-    ],
-    "classification": "NORMAL",
-    "scenarios": [],
+    "topic": "Pawn Shop Paradox: Market Euphoria's Blind Spot to Real Economic Distress",
+    "core_facts": [],
+    "classification": "STRATEGIC",
     "why_now": [
-      ""
+      "오늘 이 토픽이 1위인 이유는 시장의 표면적 강세와 내재된 실물 경제의 불안정성, 그리고 지속되는 인플레이션 및 지정학적 리스크 사이의 '파괴적인 괴리'를 가장 명확하게 보여주기 때문입니다. VIX의 급락과 주식 시장의 고점 경신은 극단적인 시장의 안일함을 나타내지만, 동시에 Fear & Greed Index의 'Fear'와 실물 경제의 고통을 시사하는 소셜 데이터는 언제든 시장의 방향을 뒤집을 수 있는 잠재적 폭발력을 내포하고 있습니다. 이는 자본이 가장 취약한 지점을 드러내며, 큰 기회 또는 큰 위험을 예고합니다."
     ],
     "evidence_bundle": {
-      "axis": "flow",
-      "market_reaction": {
-        "main_asset": "gold",
-        "intensity": -3.33,
-        "other_reactions": []
+      "data_chain": {
+        "trigger": "가장 높은 조회수를 기록한 유튜브 영상 'Pawn shops are seeing something the stock market isn’t — and it has economists concerned' (621,825 views)는 시장의 표면적 강세와 실물 경제의 괴리를 극명하게 드러내는 핵심 트리거입니다.",
+        "linkage": "이 영상은 시장의 극단적인 낙관론(S&P 500, KOSPI, Nasdaq의 90일 최고치 근접 및 VIX의 급락)과 정면으로 배치됩니다. FRED 데이터에서 하이일드 스프레드(HY spread)가 예상보다 훨씬 낮은 수치(-230% surprise)를 기록하며 신용 위험 인식이 과도하게 낮아졌음을 보여주는 반면, Fear & Greed Index는 'Fear' 영역(29.0)에 머물러 있습니다. 또한, Polymarket에서는 2026년 말 미국 경제 상태에 대한 비관론(85.5% 'No')이 지배적이며, 지정학적 리스크(Strait of Hormuz traffic returns to normal by end of April? 99.9% 'No')와 인플레이션 압력(WTI 유가 5일간 8.92% 상승, 10년물 국채 금리 20일 Z-score 1.77로 급등)은 지속되고 있습니다. 이 모든 지표는 시장이 현실을 외면한 채 위험을 과소평가하고 있음을 강력하게 시사합니다.",
+        "evidence": "VIX: 17.29 (20일 Z-score -1.01, 20일 변화율 -29.54%), S&P 500: 7158.83 (20일 Z-score 0.95), KOSPI: 6690.9 (20일 Z-score 1.45), Fear & Greed Index: 29.0 (Fear), HY Spread: 2.82 (컨센서스 대비 -230% 서프라이즈), WTI Oil: 104.38 (5일 변화율 8.92%, 20일 Z-score 0.83), US 10Y Yield: 4.39 (20일 Z-score 1.77), YouTube: 'Pawn shops are seeing something the stock market isn’t — and it has economists concerned' (621,825 views), Polymarket: 'US economic state at the end of 2026?' 'No' 확률 85.5%."
       },
-      "temporal_context": {
-        "current_time": "2026-04-30 23:33",
-        "is_market_closed": false,
-        "market_data_ref": "Real-time/Today's Prices"
-      },
-      "related_events": [],
-      "social_prediction": [
-        "[PREDICTION] What will NVIDIA (NVDA) hit in April 2026? → Probability: N/A",
-        "[SOCIAL_HN] China blocks Meta's acquisition of AI startup Manus (395 points)",
-        "[SOCIAL_HN] Stock markets are too high and set to fall, says Bank of England deputy (38 points)",
-        "[SOCIAL_HN] Show HN: A free ESG stock screener that publishes its losses and methodology (30 points)"
-      ],
-      "supporting_assets": [
-        "us10y: 2.89%"
-      ],
-      "contradictions": [
-        "No clear contradictions found"
-      ],
-      "event_market_link": []
+      "social_intelligence": "개미들은 현재의 주식 시장 랠리에 편승하여 'FOMO(Fear Of Missing Out)'에 휩싸여 있을 가능성이 높습니다. 그러나 호인 인사이트는 이면의 '돈의 흐름'이 이미 위험 회피 포지션을 구축하거나, 시장의 과도한 낙관론에 베팅하는 역발상 전략을 준비하고 있음을 포착합니다. 하이일드 스프레드의 예상치 못한 하락은 신용 시장의 위험 인식이 비정상적으로 낮아졌음을 의미하며, 이는 오히려 잠재적 위험이 수면 아래로 가라앉아 있음을 경고합니다. 유가와 금리의 동반 상승은 인플레이션 압력이 지속되고 있음을 시사하며, 이는 연준의 정책 결정에 예상치 못한 변수로 작용하여 시장의 안일함을 깨뜨릴 수 있습니다. 지금은 '모두가 낙관할 때 가장 위험하다'는 격언을 되새겨야 할 때입니다."
     },
-    "mechanism": "지표 간의 상관관계 변화 관측",
-    "strength": 50.0,
-    "stocks": [],
-    "stocks_analysis": {}
+    "arbiter_rationale": "오늘 이 토픽이 1위인 이유는 시장의 표면적 강세와 내재된 실물 경제의 불안정성, 그리고 지속되는 인플레이션 및 지정학적 리스크 사이의 '파괴적인 괴리'를 가장 명확하게 보여주기 때문입니다. VIX의 급락과 주식 시장의 고점 경신은 극단적인 시장의 안일함을 나타내지만, 동시에 Fear & Greed Index의 'Fear'와 실물 경제의 고통을 시사하는 소셜 데이터는 언제든 시장의 방향을 뒤집을 수 있는 잠재적 폭발력을 내포하고 있습니다. 이는 자본이 가장 취약한 지점을 드러내며, 큰 기회 또는 큰 위험을 예고합니다.",
+    "hunter_insight": "개미들은 현재의 주식 시장 랠리에 편승하여 'FOMO(Fear Of Missing Out)'에 휩싸여 있을 가능성이 높습니다. 그러나 호인 인사이트는 이면의 '돈의 흐름'이 이미 위험 회피 포지션을 구축하거나, 시장의 과도한 낙관론에 베팅하는 역발상 전략을 준비하고 있음을 포착합니다. 하이일드 스프레드의 예상치 못한 하락은 신용 시장의 위험 인식이 비정상적으로 낮아졌음을 의미하며, 이는 오히려 잠재적 위험이 수면 아래로 가라앉아 있음을 경고합니다. 유가와 금리의 동반 상승은 인플레이션 압력이 지속되고 있음을 시사하며, 이는 연준의 정책 결정에 예상치 못한 변수로 작용하여 시장의 안일함을 깨뜨릴 수 있습니다. 지금은 '모두가 낙관할 때 가장 위험하다'는 격언을 되새겨야 할 때입니다.",
+    "actionable_event": "가장 결정적인 날짜는 6월 Fed의 금리 결정(Polymarket 'Fed Decision in June?' 95.5% 'Yes')입니다. 시장은 Fed의 움직임을 강하게 기대하고 있으며, 이 시점에서 Fed의 스탠스가 현재의 시장 낙관론과 괴리될 경우, 'Pawn Shop Paradox'가 현실화되며 시장에 큰 충격을 줄 수 있습니다. 또한, 다음 CPI/PCE 발표를 통해 인플레이션 압력의 지속 여부를 확인하는 것이 중요합니다.",
+    "tier": "MAIN/TIER_1"
   }
 ]

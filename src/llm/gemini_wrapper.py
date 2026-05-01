@@ -64,7 +64,7 @@ def update_gemini_health(client, success: bool, fallback_used: bool):
     """GeminiClient의 통합 헬스 관리 기능을 호출 (v4.6)"""
     client._update_health(success=success)
 
-def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192):
+def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192, model: str = None):
     """중복 호출 제거 및 TIER별 재시도/백오프 적용 (v4.5)"""
     
     # [지시서 #093] TIER별 설정 (v4.7 Hardened)
@@ -88,11 +88,11 @@ def call_gemini_with_control(client, prompt: str, agent: str = "UNKNOWN", tier: 
         failure_type = None
         try:
             # [GEMINI CALL] 호출 시각 및 에이전트 로깅
-            print(f"  [GEMINI CALL] agent={agent}, tier={tier}, time={datetime.now().strftime('%H:%M:%S')}")
+            print(f"  [GEMINI CALL] agent={agent}, tier={tier}, model={model or 'default'}, time={datetime.now().strftime('%H:%M:%S')}")
             client.current_tier = tier # [v17.2] 비용 추적용 티어 주입
             
             # [CRITICAL] 1회 호출로 통합 (double spend 방지)
-            data = client.call_json(current_prompt, max_tokens=limit)
+            data = client.call_json(current_prompt, max_tokens=limit, model=model)
             
             # [RESPONSE HASH] 응답 다양성 검증을 위한 해시 추출
             import hashlib

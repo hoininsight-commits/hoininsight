@@ -61,8 +61,8 @@ class AxisDetector:
         }}
         """
         try:
-            # [TASK #103.1] call_json 사용하여 토큰 한도(8192) 확보 및 자동 파싱 활용
-            res = self.gemini.call_json(prompt)
+            # [TASK #103.1] Tier 1 격상하여 과부하 시에도 끈질기게 재시도
+            res = self.gemini.call_json_controlled(prompt, agent="AXIS_DISCOVERY", tier=1)
             
             if res and "primary" in res:
                 print(f"    ✨ Discovery Success: {res.get('primary')} / {res.get('secondary')}")
@@ -103,7 +103,7 @@ class AxisDetector:
         {{"candidate_id": "분류된 축 이름"}} (JSON Object 하나만 응답)
         """
         try:
-            mapping_res = self.gemini.call_json_controlled(mapping_prompt, agent="AXIS_MATCHER")
+            mapping_res = self.gemini.call_json_controlled(mapping_prompt, agent="AXIS_MATCHER", tier=1)
             for cand in candidates:
                 target_axis = mapping_res.get(cand.get("candidate_id")) if mapping_res else None
                 if target_axis and target_axis != "emerging":

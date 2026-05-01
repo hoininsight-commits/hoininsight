@@ -67,11 +67,11 @@ class GeminiClient:
                     self.health_path.write_text(json.dumps(h, indent=2))
             except: pass
 
-    def call_text(self, prompt: str, max_tokens: int = 4000) -> str:
+    def call_text(self, prompt: str, max_tokens: int = 4000, model: str = None) -> str:
         """Alias for call() to satisfy existing verification scripts"""
-        return self.call(prompt, max_tokens)
+        return self.call(prompt, max_tokens, model=model)
 
-    def call(self, prompt: str, max_tokens: int = 4000, is_json: bool = False) -> str:
+    def call(self, prompt: str, max_tokens: int = 4000, is_json: bool = False, model: str = None) -> str:
         """텍스트 생성 호출 (Safety relaxed)"""
         # 1. 오프라인 캐시 체크
         mock_path = DEBUG_DIR / "mock_response.txt"
@@ -81,6 +81,8 @@ class GeminiClient:
 
         if not self.client:
             return ""
+        
+        target_model = model if model else self.model_name
         
         # 안전 설정 완화
         safety_settings = [
@@ -97,7 +99,7 @@ class GeminiClient:
         )
         
         response = self.client.models.generate_content(
-            model=self.model_name,
+            model=target_model,
             contents=prompt,
             config=config
         )
@@ -130,11 +132,11 @@ class GeminiClient:
         
         return result
 
-    def call_json(self, prompt: str, max_tokens: int = 8192) -> dict:
+    def call_json(self, prompt: str, max_tokens: int = 8192, model: str = None) -> dict:
         import json, re
         try:
             # 기본 호출
-            response = self.call(prompt, max_tokens, is_json=True)
+            response = self.call(prompt, max_tokens, is_json=True, model=model)
             return self.parse_json_with_recovery(response)
 
         except Exception as e:
@@ -229,12 +231,12 @@ class GeminiClient:
             
         except: pass
 
-    def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192) -> dict:
+    def call_json_controlled(self, prompt: str, agent: str = "UNKNOWN", tier: int = 3, max_tokens: int = 8192, model: str = None) -> dict:
         """Control Layer가 적용된 JSON 호출 (v1.0, TIER 대응)"""
         from src.llm.gemini_wrapper import call_gemini_with_control
-        return call_gemini_with_control(self, prompt, agent, tier=tier, max_tokens=max_tokens)
+        return call_gemini_with_control(self, prompt, agent, tier=tier, max_tokens=max_tokens, model=model)
 
-    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 8192, tier: int = 1) -> str:
+    def call_controlled(self, prompt: str, agent: str = "UNKNOWN", max_tokens: int = 8192, tier: int = 1, model: str = None) -> str:
         """Control Layer가 적용된 텍스트 호출 - TIER별 재시도 및 백오프 적용 (v1.3)"""
         from src.llm.gemini_wrapper import log_gemini_usage
         import time
@@ -255,7 +257,7 @@ class GeminiClient:
             try:
                 # [GEMINI CALL] 텍스트 호출
                 self.current_tier = tier # [v17.2] 비용 추적용 티어 주입
-                res = self.call(prompt, max_tokens=max_tokens)
+                res = self.call(prompt, max_tokens=max_tokens, model=model)
                 if not res: 
                     raise Exception("Empty Text Response")
                 

@@ -41,31 +41,28 @@ class SocialAgent:
             
             if sentiment_path.exists():
                 sentiment_data = json.loads(sentiment_path.read_text())
-                headlines = sentiment_data.get("data", {}).get("news_headlines", [])
-                titles = " ".join([h.get("title", "") for h in headlines[:20]]).lower()
                 
-                dynamic_keywords = []
-                if "hormuz" in titles or "oil" in titles: dynamic_keywords.append("Oil Supply")
-                if "fed" in titles or "interest" in titles: dynamic_keywords.append("Interest Rates")
-                if "nvidia" in titles or "semiconductor" in titles or "삼성" in titles: dynamic_keywords.append("Semiconductor")
-                if "trump" in titles: dynamic_keywords.append("Trump")
-                if "openai" in titles or "ai" in titles: dynamic_keywords.append("AI")
-                
-                if dynamic_keywords:
-                    search_keywords = list(set(dynamic_keywords))
-                    print(f"  🔍 실시간 추출 키워드: {search_keywords}")
+                # [NEW] 정제된 키워드 로드 (SentimentAgent가 계산한 최종 결과)
+                extracted_keywords = sentiment_data.get("data", {}).get("search_keywords", [])
+                if extracted_keywords:
+                    search_keywords = extracted_keywords
+                    print(f"  🔍 Sentiment 에이전트로부터 전달받은 핵심 키워드: {search_keywords}")
+                else:
+                    print(f"  ⚠️ 전달받은 키워드가 없어 기본 키워드 사용: {search_keywords}")
         except Exception as e:
-            print(f"  ⚠️ 키워드 추출 중 오류: {e}")
+            print(f"  ⚠️ 키워드 로드 중 오류: {e}")
 
         try:
             # 2. 기존 Collector (Polymarket, HN) 실행 - Baseline
             base_data = self.collector.collect_all(search_keywords)
             
             # 3. Last30Days Collector (Deep Research) 실행
-            # 속도를 위해 가장 중요한 상위 2개 키워드만 Deep Research 수행
+            # 월가 커뮤니티(Wall Street) 여론을 집중적으로 파헤치기 위해 서브레딧 타겟 지정
+            target_subreddits = "wallstreetbets,investing,Economics"
+            
             deep_reports = []
-            for kw in search_keywords[:2]:
-                report = self.deep_collector.collect(kw, depth="quick")
+            for kw in search_keywords[:5]:
+                report = self.deep_collector.collect(kw, depth="quick", subreddits=target_subreddits)
                 if report:
                     deep_reports.append(report)
             

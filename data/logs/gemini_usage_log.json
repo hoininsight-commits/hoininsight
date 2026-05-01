@@ -1,702 +1,702 @@
 [
   {
-    "timestamp": "2026-04-27T18:05:20.684495",
-    "agent": "QUALITY_GATE",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:05:26.017907",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:05:36.059799",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:06:10.888896",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:06:31.638365",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T18:06:42.514976",
-    "agent": "QUALITY_GATE",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T21:23:11.151889",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:23:42.888460",
-    "agent": "ARBITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:24:07.346310",
-    "agent": "WHY_GENERATOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:24:20.797196",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:24:34.739085",
+    "timestamp": "2026-05-01T00:39:45.022152",
     "agent": "STOCK_ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-27T21:24:45.344622",
-    "agent": "ARBITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:24:49.997666",
+    "timestamp": "2026-05-01T00:39:51.959815",
     "agent": "QUALITY_GATE",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-27T21:25:05.246523",
-    "agent": "WHY_GENERATOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:25:27.916246",
-    "agent": "STOCK_ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:25:43.650874",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:26:51.488039",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:27:21.937855",
-    "agent": "ARBITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:27:43.098481",
-    "agent": "WHY_GENERATOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T21:28:41.379510",
-    "agent": "STOCK_ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T21:29:02.819355",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-27T23:14:59.097158",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:15:07.132935",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:15:17.626853",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:15:26.744046",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:29:50.080832",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:30:13.528260",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:30:22.749473",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:30:32.479594",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:30:43.603091",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:30:55.304031",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:31:11.906085",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-27T23:31:25.876501",
-    "agent": "LEARNER_GAP_ANALYZER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-28T12:54:54.264581",
-    "agent": "SENTRY_WATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-28T12:55:54.984394",
-    "agent": "SENTRY_WATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:55:56.500582",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:55:56.936226",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:55:57.517236",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:55:57.939418",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:58:05.853959",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:58:06.293270",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:58:06.902714",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T12:58:07.338477",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:00:40.416803",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:01:05.483835",
-    "agent": "ARBITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-28T13:01:26.570665",
-    "agent": "WHY_GENERATOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:01:48.347521",
-    "agent": "STOCK_ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:01:57.557885",
-    "agent": "QUALITY_GATE",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-28T13:26:50.813539",
-    "agent": "AXIS_MATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:27:14.127290",
-    "agent": "ARBITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:27:33.151698",
-    "agent": "WHY_GENERATOR",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:28:15.013817",
-    "agent": "STOCK_ANALYST",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:28:23.221364",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:29:48.630105",
+    "timestamp": "2026-05-01T00:40:24.771838",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:29:57.771501",
+    "timestamp": "2026-05-01T00:40:34.434586",
     "agent": "QUALITY_GATE",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:30:12.305964",
+    "timestamp": "2026-05-01T00:40:59.858065",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T00:41:10.471541",
     "agent": "QUALITY_GATE",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:53:09.232809",
+    "timestamp": "2026-05-01T00:51:11.905014",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T00:51:18.544897",
     "agent": "AXIS_MATCHER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:53:33.944844",
+    "timestamp": "2026-05-01T00:52:10.941096",
     "agent": "ARBITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:53:52.456983",
+    "timestamp": "2026-05-01T00:52:27.056634",
     "agent": "WHY_GENERATOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:54:13.690041",
+    "timestamp": "2026-05-01T00:53:00.748050",
     "agent": "STOCK_ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:54:18.569931",
+    "timestamp": "2026-05-01T00:53:35.033677",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:54:28.189700",
+    "timestamp": "2026-05-01T00:53:52.467324",
     "agent": "QUALITY_GATE",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-28T13:54:38.081256",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:55:55.223254",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:56:08.093037",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:56:17.668703",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:57:09.483203",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-28T13:57:20.909542",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:42:48.569527",
-    "agent": "SENTRY_WATCHER",
+    "timestamp": "2026-05-01T00:55:17.851245",
+    "agent": "AXIS_DISCOVERY",
     "success": false,
     "fallback_used": true,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:42:49.751702",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:42:50.910209",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:42:51.341194",
-    "agent": "QUALITY_GATE",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:43:15.280468",
-    "agent": "SENTRY_WATCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:44:49.780953",
+    "timestamp": "2026-05-01T00:55:26.307083",
     "agent": "AXIS_MATCHER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:45:17.208145",
+    "timestamp": "2026-05-01T00:55:59.537839",
     "agent": "ARBITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:45:42.860402",
+    "timestamp": "2026-05-01T00:56:29.451812",
     "agent": "WHY_GENERATOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:46:00.127076",
+    "timestamp": "2026-05-01T00:56:54.800296",
     "agent": "STOCK_ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:46:20.202427",
+    "timestamp": "2026-05-01T00:57:42.652136",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:46:38.141308",
-    "agent": "AXIS_MATCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:46:38.646023",
+    "timestamp": "2026-05-01T00:57:54.137603",
     "agent": "QUALITY_GATE",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:46:38.731258",
-    "agent": "ARBITER",
+    "timestamp": "2026-05-01T00:58:18.417520",
+    "agent": "AXIS_DISCOVERY",
     "success": false,
     "fallback_used": true,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:46:39.676026",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:46:40.267186",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:46:41.691657",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:46:42.272617",
-    "agent": "QUALITY_GATE",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:48:09.183057",
+    "timestamp": "2026-05-01T00:58:25.272141",
     "agent": "AXIS_MATCHER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:48:33.547615",
+    "timestamp": "2026-05-01T00:58:44.831295",
     "agent": "ARBITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:48:54.041575",
+    "timestamp": "2026-05-01T00:59:06.338062",
     "agent": "WHY_GENERATOR",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:49:19.120997",
+    "timestamp": "2026-05-01T00:59:35.420600",
     "agent": "STOCK_ANALYST",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T09:49:55.623654",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T09:50:05.994731",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-04-30T23:33:06.655563",
-    "agent": "SENTRY_WATCHER",
+    "timestamp": "2026-05-01T01:00:08.091884",
+    "agent": "AXIS_DISCOVERY",
     "success": false,
     "fallback_used": true,
-    "retry_count": 1
+    "retry_count": 0
   },
   {
-    "timestamp": "2026-04-30T23:33:27.036423",
+    "timestamp": "2026-05-01T01:02:21.171161",
     "agent": "AXIS_MATCHER",
     "success": true,
     "fallback_used": false,
-    "retry_count": 1
+    "retry_count": 5
   },
   {
-    "timestamp": "2026-04-30T23:33:39.934571",
-    "agent": "ARBITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-30T23:34:01.848197",
-    "agent": "WHY_GENERATOR",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-30T23:34:17.404565",
-    "agent": "STOCK_ANALYST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-04-30T23:34:43.524187",
+    "timestamp": "2026-05-01T01:03:52.839120",
     "agent": "WRITER",
     "success": false,
     "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:04:08.403802",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:05:21.421118",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
     "retry_count": 1
   },
   {
-    "timestamp": "2026-04-30T23:34:51.773015",
+    "timestamp": "2026-05-01T01:05:36.381315",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:05:40.278758",
+    "agent": "ARBITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:06:11.896126",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:06:49.284135",
+    "agent": "STOCK_ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:07:34.242967",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:07:44.376369",
     "agent": "QUALITY_GATE",
     "success": false,
     "fallback_used": true,
     "retry_count": 1
   },
   {
-    "timestamp": "2026-04-30T23:53:06.743366",
+    "timestamp": "2026-05-01T01:08:24.928490",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-01T01:08:48.684380",
+    "agent": "WHY_GENERATOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:08:58.669695",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:09:43.579619",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:09:53.510075",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:16:00.735402",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-01T01:16:11.354665",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:16:32.527652",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:16:55.991677",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:17:48.620883",
+    "agent": "STOCK_ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:18:28.994444",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:18:39.108846",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:18:43.610006",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:18:46.910198",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:19:29.853626",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:19:54.932735",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:20:09.716568",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:21:25.421324",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:21:33.598013",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:22:21.936522",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:22:42.327081",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:22:56.551863",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-01T01:23:10.276374",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:23:11.888172",
+    "agent": "STOCK_ANALYST",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:23:55.372834",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:24:11.534825",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:24:38.956971",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:24:46.707134",
+    "agent": "AXIS_MATCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:25:05.784377",
+    "agent": "ARBITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:25:35.637759",
+    "agent": "WHY_GENERATOR",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:25:41.828595",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:28:37.757341",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:28:43.944768",
+    "agent": "QUALITY_GATE",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:28:46.448465",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:28:52.607920",
+    "agent": "QUALITY_GATE",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:29:08.074281",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:29:14.283947",
+    "agent": "QUALITY_GATE",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:31:39.324200",
+    "agent": "AXIS_DISCOVERY",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:34:35.450779",
+    "agent": "AXIS_MATCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:37:30.197156",
+    "agent": "ARBITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:37:31.525675",
+    "agent": "WHY_GENERATOR",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T01:37:37.671093",
+    "agent": "STOCK_ANALYST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T01:40:33.549957",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-01T01:40:39.704222",
+    "agent": "QUALITY_GATE",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T02:28:31.172022",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-01T02:32:54.958076",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-01T02:36:14.909962",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T02:45:46.803743",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T02:46:03.829307",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T02:48:02.636041",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T02:50:11.485935",
+    "agent": "ARBITER_V2",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-01T02:50:56.255496",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T02:51:52.079242",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T02:52:22.536499",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T09:46:31.705667",
     "agent": "SUMMARIZER",
     "success": false,
     "fallback_used": true,
     "retry_count": 1
   },
   {
-    "timestamp": "2026-04-30T23:53:18.616495",
+    "timestamp": "2026-05-01T09:46:50.815032",
     "agent": "SUMMARIZER",
     "success": false,
     "fallback_used": true,
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-01T13:58:15.670071",
+    "agent": "SENTIMENT_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T14:00:37.344294",
+    "agent": "SENTIMENT_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T14:02:50.672246",
+    "agent": "SENTIMENT_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T14:05:35.744230",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T15:04:49.737817",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T15:05:59.135969",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T15:07:38.596555",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-01T15:09:43.793427",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
   }
 ]
