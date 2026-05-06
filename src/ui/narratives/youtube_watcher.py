@@ -210,18 +210,8 @@ def run_watcher(run_round: int = 1):
                         script_content = transcript_path.read_text(encoding="utf-8")
                         
                         # 요약 생성
+                        # 요약 생성 스킵 (스크립트만 수집)
                         summary = ""
-                        try:
-                            from src.core.gemini_client import GeminiClient
-                            client = GeminiClient()
-                            prompt = f"다음은 유튜브 자막 전문이다. 투자 관점에서 핵심 내용 3줄 요약해라. (사냥꾼 문체 - 지적이고 세련된 반말)\n\n{script_content[:5000]}"
-                            summary_res = client.call_json_controlled(prompt, agent="SUMMARIZER", tier=3)
-                            if isinstance(summary_res, dict) and "summary" in summary_res:
-                                summary = summary_res["summary"]
-                            elif isinstance(summary_res, str):
-                                summary = summary_res
-                        except Exception as e:
-                            logger.warning(f"Summary generation failed: {e}")
 
                         # [v20.0] 쇼츠 여부 판별
                         is_shorts = is_youtube_shorts(vid_id)
