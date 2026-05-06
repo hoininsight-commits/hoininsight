@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Learner Agent
         run: |
-          python3 src/run_learner.py
+          python3 src/agents/learner_agent.py
 
       - name: Commit Learning Outputs
         if: success()
