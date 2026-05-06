@@ -34,17 +34,27 @@ class PublisherAgent:
             except:
                 return None
 
-        # 신호 (v4.0: data/topics/topic_selection.json 우선 로드)
+        # 1. 신호 (v18.5: 오늘의 회차별 signal 데이터 우선 로드)
+        today_signal_p = self.base_dir / f"data/signals/{self.today}/{self.round}/today_signal.json"
         topic_sel_p = self.base_dir / "data/topics/topic_selection.json"
-        if topic_sel_p.exists():
-            res = safe_load_json(topic_sel_p)
-            if res and res.get("MAIN"):
-                # Detector의 MAIN 결과를 Publisher 규격으로 변환
-                main = res["MAIN"]
+        
+        target_p = None
+        if today_signal_p.exists():
+            target_p = today_signal_p
+            print(f"  [DEBUG] Found FRESH signal: {today_signal_p}")
+        elif topic_sel_p.exists():
+            target_p = topic_sel_p
+            print(f"  [DEBUG] Fallback to global topic selection: {topic_sel_p}")
+
+        if target_p:
+            res = safe_load_json(target_p)
+            if res:
+                # Detector의 MAIN 결과를 Publisher 규격으로 변환 (Arbiter 통합 구조 대응)
+                main = res.get("MAIN", res) # MAIN 키가 있으면 사용, 없으면 전체가 데이터
                 data["signal"] = {
-                    "topic": main.get("event", main.get("topic", "")),
-                    "event": main.get("event", ""),
-                    "strength": main.get("final_score", 0) * 10,
+                    "topic": main.get("topic", main.get("event", "N/A")),
+                    "event": main.get("event", main.get("topic", "N/A")),
+                    "strength": main.get("final_score", main.get("strength", 0)) * 10,
                     "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" else "쇼츠",
                     "filters_hit": [main.get("structure_axis", "S")],
                     "why_now": main.get("why_now", main.get("selection_reason", "")),
@@ -624,7 +634,7 @@ class PublisherAgent:
             script_body = "  [알림] 상세 스크립트가 아직 생성되지 않았거나 경로를 찾을 수 없습니다."
 
         brief = f"""========================================
-🏹 HOIN Insight 일일 사냥 보고서 (v18.3)
+🏹 HOIN Insight 일일 사냥 보고서 (v18.5)
 날짜: {data.get('date', 'N/A')}
 소요 비용: {session_cost_str} (USD)
 ========================================
