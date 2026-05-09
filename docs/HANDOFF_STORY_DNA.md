@@ -1,45 +1,29 @@
-# HOIN Insight v21.0 [The Strategic Hunter Evolution] Handover
+# HOIN Insight v23.0 [The Predator's Instinct] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Narrative Revolution (v21.0)**: 단순 현상 설명을 폐기하고, **'전략적 직관(Mastermind Intuition)'** 엔진을 탑재했습니다. 모든 데이터 뒤에 숨겨진 보이지 않는 손의 설계를 폭로합니다.
-- **The Sniper Focus (v21.0)**: 여러 데이터를 억지로 엮는 '데이터 탐욕'을 제거하고, 시청자를 압도할 **'단 하나의 파괴적 주제'**에만 집중하는 단일 서사 법칙을 적용했습니다.
-- **Winner's Strategy**: 비관론적 편향을 제거하고, 거대 자본의 이동(Great Rotation)을 포착하여 **'승리의 기회'**를 사냥하는 포식자 페르소나를 강화했습니다.
+- **Intelligence Hardening (v23.0)**: `TopicArbiter`를 **Gemini 1.5 Pro**로 업그레이드하여 단순 뉴스 나열이 아닌 '돈의 이동 경로'를 추적하는 고차원 통찰력을 확보했습니다.
+- **Data Fidelity (v23.0)**: `DataCondenser`가 뉴스 스니펫(150자)을 보존하게 하여, AI가 제목 너머의 '시장의 뉘앙스'를 읽고 사냥감을 선정하도록 개선되었습니다.
+- **Narrative Revolution (v21.0~23.0)**: 로봇 말투(Step 1, [HOOK] 등)를 완전히 제거하고, 시청자를 '너/형'으로 부르는 친근하고 강력한 '경제사냥꾼' 페르소나를 정립했습니다.
 
-
-- **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.
-- **Analysis Pause (Learner)**: 제미나이 서버 불안정 및 효율성을 고려하여, LearnerAgent의 LLM 분석(Gap Analysis)은 잠시 비활성화하고 데이터 수집 및 전송에 집중합니다.
-- **Session Cost Tracking (v17.2)**: 매 사냥마다 소요되는 USD 비용을 실시간으로 계산하여 텔레그램 브리핑에 포함합니다.
-
-## 2. 엔진 가동 가이드
+## 2. 엔진 가동 및 저장 규칙
+- **저장 표준 (Storage Standard)**: 모든 출력물은 `YYYY/MM/DD/Round_X/` 경로에 저장됩니다. (예: `data/scripts/2026/05/09/Round_1/today_script_long.md`)
 - **실전 사냥**: `python3 src/core/scheduler.py` (Sentry → Hunter 풀루프 가동)
-- **유튜브 수집**: `python3 scripts/auto_learner.py` (현재 시각 기준 회차 판별 및 자막 배달)
-- **배포**: 
-    - `daily_pipeline.yml`: 메인 사냥 스케줄 (0, 6, 12, 18시)
-    - `youtube_learner.yml`: 유튜브 자막 수집 스케줄 (23, 5, 11, 17시)
+- **유튜브 수집**: `python3 scripts/auto_learner.py` (KST 기준 회차 판별)
 
 ## 3. 사냥꾼의 지능 (Hunter Intelligence)
-- **YouTube Collector**: `youtube_cookies.txt` 또는 RSS 피드를 통해 자막을 확보하며, `TelegramNotifier`를 통해 전체 텍스트를 분할 전송합니다.
-- **Model Tiering**: 추론은 Pro(Tier 1), 파싱은 Flash(Tier 3)가 담당하는 지능형 모델 배치가 유지됩니다.
+- **Model Tiering**: 
+    - **Tier 1 (Pro)**: 토픽 선정(Arbiter), 최종 원고 작성(Writer). 고도의 통찰이 필요한 구간.
+    - **Tier 3 (Flash)**: 데이터 수집 및 정제, 기술적 파싱. 비용 효율성이 중요한 구간.
+- **Quality Gate**: 로봇 특유의 정형화된 말투나 태그가 발견되면 즉시 DROP 처리하며, 폴백(Fallback) 엔진도 동일한 사냥꾼 페르소나를 유지합니다.
 
 ## 4. 제거 및 변경된 항목
-- `LearnerAgent`에서 제미나이 분석 로직 주석 처리 (수집 전용 모드).
-- 유튜브 자막 저장 경로 규칙 변경: `data/transcripts/youtube/YYYY/MM/DD/YYYYMMDD_N회차_제목.txt`
+- 레거시 경로 구조(`YYYYMMDD/N`) 폐기 및 마이그레이션 완료.
+- `WriterAgent` 및 `Arbiter` 프롬프트에서 로봇 말투(Step 1 등) 유발 가이드라인 전면 삭제.
 
 ---
 ## 🚨 [MANDATORY AI PROTOCOL] - 필수 준수 사항
 
-모든 AI 에이전트(Antigravity 등)는 이 프로젝트에서 작업 시 다음 루틴을 지시 없이도 **자동으로 수행**해야 함.
-
-### 1. "작업 준비하자" 또는 시작 시 (Post-Pull Routine)
-- **Action 1**: `git pull`을 수행하여 최신 소스와 기록을 확보함.
-- **Action 2**: `docs/CHRONICLE.md`의 가장 최근 기록을 정독함.
-- **Action 3**: "지난 세션에서 [A]까지 완료되었고, 현재 [B] 문제가 남아있으니, 바로 [C] 작업을 시작하겠습니다"라고 브리핑하며 업무를 시작함.
-
-### 2. "푸시해줘", "푸시하자", "서버 푸시" 등 종료 시 (Pre-Push Routine)
-- **Trigger**: "푸시", "업데이트", "올려줘" 등 서버 동기화와 관련된 모든 명령 포함.
-- **Action 1**: 현재까지의 성과, 발생한 에러(삽질), 해결 방법, 남은 과제를 `docs/CHRONICLE.md` 하단에 누적하여 기록함. (절대 기존 내용을 지우지 말 것)
-- **Action 2**: `docs/HANDOFF_STORY_DNA.md`의 버전 및 핵심 설정을 업데이트함.
-- **Action 3**: 모든 문서와 소스 코드를 `git push` 함.
+모든 AI 에이전트는 작업 시작 시 `git pull` 후 `docs/CHRONICLE.md`를 정독해야 하며, 종료 시 `CHRONICLE.md`에 오늘자 기록을 APPEND하고 `git push` 해야 함.
 
 ---
-*본 문서는 2026-04-27 AI 자동 동기화 프로토콜 수립 후 갱신된 최종 지침서입니다.*
+*본 문서는 2026-05-09 v23.0 [The Predator's Instinct] 업데이트 후 갱신된 최종 지침서입니다.*
