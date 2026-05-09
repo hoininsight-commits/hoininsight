@@ -26,7 +26,7 @@ class GeminiClient:
 
     def __init__(self):
         self.api_key = os.environ.get("GEMINI_API_KEY", "")
-        self.model_name = "gemini-2.5-flash"
+        self.model_name = "gemini-flash-latest"
 
         if not self.api_key:
             print("⚠️ [GeminiClient] WARNING: GEMINI_API_KEY not found. AI features will be disabled.")
@@ -111,7 +111,8 @@ class GeminiClient:
                 success=True, 
                 in_t=getattr(usage, "prompt_token_count", 0), 
                 out_t=getattr(usage, "candidates_token_count", 0),
-                tier=getattr(self, "current_tier", 3) # 세션 내 현재 티어 추적 필요
+                tier=getattr(self, "current_tier", 3),
+                model=target_model
             )
         
         # [CRITICAL] 비정상 종료(MAX_TOKENS 등) 감지 시 즉각 에러 처리 (지시서 #082)
@@ -193,16 +194,18 @@ class GeminiClient:
         print(f"  ⚠️ JSON Recovery Failed. Length: {len(response)}")
         return {}
 
-    def _update_health(self, success=True, in_t=0, out_t=0, tier=3):
-        """실시간 호출 및 비용 상태 업데이트 (v17.2 Cost Calculation)"""
+    def _update_health(self, success=True, in_t=0, out_t=0, tier=3, model="gemini-flash-latest"):
+        """실시간 호출 및 비용 상태 업데이트 (v17.3 Model-based Cost Calculation)"""
         import json
         
         # 비용 계산 (Gemini 1.5 가격 정책 기준)
-        # Tier 1/2 (Pro 예상): In $3.5/1M, Out $10.5/1M
-        # Tier 3 (Flash 예상): In $0.075/1M, Out $0.3/1M
-        if tier in [1, 2]:
+        # [v17.3] 모델명을 기준으로 실제 가격 정책 반영
+        is_pro = "pro" in str(model).lower()
+        if is_pro:
+            # Tier 1/2 (Pro): In $3.5/1M, Out $10.5/1M
             cost = (in_t * 3.5 / 1000000) + (out_t * 10.5 / 1000000)
         else:
+            # Tier 3 (Flash): In $0.075/1M, Out $0.3/1M
             cost = (in_t * 0.075 / 1000000) + (out_t * 0.3 / 1000000)
             
         self.session_cost += cost

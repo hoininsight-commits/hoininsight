@@ -8,7 +8,7 @@ class DataCondenser:
 
     def __init__(self):
         self.exclude_keys = [
-            'metadata', 'collected_at', 'ttl_policy_minutes', 'snippet', 
+            'metadata', 'collected_at', 'ttl_policy_minutes', 
             'url', 'success_count', 'elapsed_seconds', 'run_at', 'link'
         ]
 
@@ -29,6 +29,11 @@ class DataCondenser:
                 # Logic B: Compress trend/history arrays
                 if (k == 'history_90d' or k == 'trend') and isinstance(v, list) and v:
                     new_dict[f"{k}_stat"] = self._compress_trend(v)
+                    continue
+
+                # Logic E: Truncate snippets to save tokens while keeping context
+                if k == 'snippet' and isinstance(v, str):
+                    new_dict[k] = v[:150] + "..." if len(v) > 150 else v
                     continue
 
                 cleaned_v = self._clean_recursive(v)

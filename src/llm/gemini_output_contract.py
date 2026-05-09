@@ -34,7 +34,7 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
         return "topic" in data or "candidates" in data or isinstance(data, list)
     
     if agent == "ARBITER" or agent == "ARBITER_V2":
-        return "main_topic" in data or "main_index" in data
+        return "main_topic" in data or "main_index" in data or "macro_economic_topic" in data or "hunting_target_topic" in data
     
     if agent == "AXIS_MATCHER":
         # 매핑 형식: {"id": "axis"} 이므로 비어있지 않은 딕셔너리면 통과

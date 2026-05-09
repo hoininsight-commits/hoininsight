@@ -61,16 +61,24 @@ venv.bak/
 Thumbs.db
 
 # Project specific - Generated data files (should not be committed)
-data/issuesignal/packs/ISSUE-*.json
-data/issuesignal/packs/RAW-*.json
-data/decision/*/
-data/facts/fact_anchors_*.json
-data/dashboard/issuesignal/
-data/dashboard/today.json
-data/ops/editorial_rhythm.json
+data/raw/
+data/analysis/
+data/scripts/
+data/signals/
+data/fact_pack/
+data/topics/
+data/history/content_log.json
+data/history/signal_log.json
+data/monitoring/
+data/learning/
+data/outputs/
+dashboard/today_data.json
+dashboard/today_brief.txt
 
 # Keep directory structure but ignore contents
-data/issuesignal/packs/.gitkeep
-data/decision/.gitkeep
-data/facts/.gitkeep
-data/dashboard/.gitkeep
+data/raw/.gitkeep
+data/analysis/.gitkeep
+data/scripts/.gitkeep
+data/signals/.gitkeep
+data/topics/.gitkeep
+data/history/.gitkeep

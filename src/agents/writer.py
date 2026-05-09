@@ -1,9 +1,10 @@
+import os
 import json
 import re
 from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
-from src.utils.target_date import get_target_ymd, get_current_round
+from src.utils.target_date import get_target_ymd, get_current_round, get_standard_path_prefix
 from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
 from src.engine.content_engine import ContentEngine
 from src.engine.script_quality_gate import ScriptQualityGate
@@ -15,10 +16,12 @@ class WriterAgent:
     def __init__(self):
         self.base_dir = Path(".")
         self.today = get_target_ymd().replace("-", "")
-        self.round = get_current_round()
-        self.signal_dir = Path(f"data/signals/{self.today}/{self.round}")
-        self.analysis_dir = Path(f"data/analysis/{self.today}/{self.round}")
-        self.script_dir = Path(f"data/scripts/{self.today}/{self.round}")
+        self.path_prefix = get_standard_path_prefix()
+        
+        self.signal_dir = Path("data/signals") / self.path_prefix
+        self.analysis_dir = Path("data/analysis") / self.path_prefix
+        self.script_dir = Path("data/scripts") / self.path_prefix
+        
         self.script_dir.mkdir(parents=True, exist_ok=True)
         self.signal_dir.mkdir(parents=True, exist_ok=True)
         self.analysis_dir.mkdir(parents=True, exist_ok=True)
@@ -103,8 +106,8 @@ class WriterAgent:
         script = script.replace("무조건", "높은 확률로")
         script = script.replace("확신한다", "시사한다")
         
-        # 2. 개인 투자자 비하 표현 제거
-        script = script.replace("개미들", "시장 참여자들")
+        # 2. 개인 투자자 비하 표현 제거 (사용자 요청으로 '개미들' 허용)
+        # script = script.replace("개미들", "시장 참여자들")
         
         return script
 
@@ -136,7 +139,22 @@ class WriterAgent:
         else:
             print(f"  🏆 Strategic Hunt Winner: {candidate.get('topic')}")
 
-        # 3. [TIER 1] Gemini 콘텐츠 생성 시도
+        # 3. [COST SAVVY] 중복 발송 여부 최종 확인 (Gemini 호출 전)
+        topic_name = candidate.get('topic', candidate.get('event', ''))
+        log_path = Path("data/history/content_log.json")
+        if log_path.exists():
+            try:
+                log = json.loads(log_path.read_text(encoding="utf-8"))
+                today_str = get_target_ymd()
+                for entry in log.get("contents", []):
+                    if entry.get("date") == today_str and \
+                       entry.get("title") == topic_name and \
+                       entry.get("publish_status") == "SUCCESS":
+                        print(f"  🚫 [STOP] '{topic_name}'은(는) 오늘 이미 발송되었습니다. 비용 절감을 위해 중단합니다.")
+                        return {"status": "SKIPPED", "reason": "Already published"}
+            except: pass
+
+        # 4. [TIER 1] Gemini 콘텐츠 생성 시도
         print(f"  [TIER 1] Gemini 콘텐츠 생성 시도 중...")
         final_contents = []
         try:
@@ -174,23 +192,26 @@ class WriterAgent:
                 status = "HOLD"
             else:
                 # Gemini 결과가 DROP이면 폴백 시도
-                print(f"  ⚠️ Gemini 결과 품질 미달. 폴백 스크립트로 전환합니다.")
+                print(f"  ⚠️ Gemini 결과 품질 미달. 폴백 시도...")
                 main_content = fallback_res
                 using_fallback = True
         else:
+            print(f"  ⚠️ Gemini 생성물 없음. 폴백 시도...")
             main_content = fallback_res
             using_fallback = True
 
-        # 폴백 사용 시 재검증
+        # 폴백 사용 시 재검증 및 엄격한 통제
         if using_fallback and main_content:
             print(f"  🛡️ Fallback Script 품질 검증 중...")
             report = self.quality_gate.evaluate(main_content)
+            
+            # [STRICT RULE] 폴백 원고는 PASS 등급이 아니면 무조건 DROP (HOLD 허용 안함)
             if report["status"] == "PASS":
                 status = "PARTIAL_SUCCESS"
-            elif report["status"] == "HOLD":
-                status = "HOLD"
             else:
+                print(f"  🚫 [BLOCK] 폴백 원고 품질 미달 ({report['status']}). 발송을 차단합니다.")
                 status = "DROP"
+                main_content = None # 발송 대상에서 제외
 
         # 5. 결과 저장 및 보고
         long_path = self.script_dir / "today_script_long.md"

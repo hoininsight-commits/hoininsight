@@ -55,24 +55,21 @@ class RuleBasedScriptGenerator:
 [ACTION]
 지금 시장에서 중요한 건 {action_condition}이다."""
 
-    FALLBACK_TEMPLATE = """Step 1:
-[I] {hook}
+    FALLBACK_TEMPLATE = """야, 너 지금 시장 돌아가는 꼴 보니까 {hook} 샴페인 터뜨리는 놈들 틈에서 너만 소외될까 봐 밤잠 설치는 거 형이 다 안다. 
 
-Step 2:
-[F] {fact_summary}
+오늘 형이 딱 세 가지만 짚어줄 테니까 잘 들어.
 
-Step 3:
-[I] {mechanism}
+첫 번째, 지금 시장에선 {fact_summary} 이게 단순한 숫자가 아니라 돈이 어디로 쏠리는지 보여주는 결정적 냄새야.
 
-Step 4:
-[F] {why_now_detail} 숫자로 증명된 사실이다.
+두 번째, {mechanism} 이 메커니즘을 모르면 너는 평생 고점에서 설거지나 하게 될 거다.
 
-Step 5:
-[I] {selected_scenario} 가능성이 가장 높다. {theme_impact} {mentionables} {risk_warning} 이를 바탕으로 확실한 타점을 잡아라.
+마지막 세 번째, {why_now_detail} 이게 지금 우리가 이 길목을 지켜야 하는 진짜 이유다.
+
+결국 {selected_scenario} 가능성이 가장 높다. {theme_impact} {mentionables} {risk_warning} 남들 다 아는 뒷북 말고, 형이 말한 이 타점 제대로 잡아봐라.
 
 ---
 
-### [사냥꾼의 행동 지침]
+### 🏹 사냥꾼의 행동 지침
 {one_thing}"""
 
     def __init__(self):

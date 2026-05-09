@@ -54,3 +54,11 @@ def get_target_parts():
     # Fallback if malformed (using KST)
     now_kst = get_now_kst()
     return now_kst.strftime("%Y"), now_kst.strftime("%m"), now_kst.strftime("%d")
+
+def get_standard_path_prefix() -> str:
+    """
+    Returns the standardized path prefix (YYYY/MM/DD/Round_X).
+    """
+    y, m, d = get_target_parts()
+    round_val = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
+    return f"{y}/{m}/{d}/Round_{round_val}"

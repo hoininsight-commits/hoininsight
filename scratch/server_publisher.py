@@ -17,7 +17,7 @@ class PublisherAgent:
         import os
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = get_target_ymd().replace("-", "")
-        self.round = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
+        self.round = get_current_round()
         self.content_log_path = Path("data/history/content_log.json")
         self.signal_log_path = Path("data/history/signal_log.json")
         self.dashboard_dir = Path("dashboard")
@@ -34,24 +34,28 @@ class PublisherAgent:
             except:
                 return None
 
-        # 1. 신호 (v18.5: 오늘의 회차별 signal 데이터만 엄격하게 로드)
-        target_p = self.base_dir / f"data/signals/{self.today}/{self.round}/today_signal.json"
+        # 1. 신호 (v18.5: 오늘의 회차별 signal 데이터 우선 로드)
+        today_signal_p = self.base_dir / f"data/signals/{self.today}/{self.round}/today_signal.json"
+        topic_sel_p = self.base_dir / "data/topics/topic_selection.json"
         
-        if not target_p.exists():
-            print(f"  ❌ [ERROR] 현재 {self.round}회차의 신호 데이터(today_signal.json)가 존재하지 않습니다.")
-            print(f"  [PATH] {target_p}")
-            return {}
-            
-        print(f"  [DEBUG] Found target signal for Round {self.round}: {target_p}")
-        res = safe_load_json(target_p)
-        if res:
+        target_p = None
+        if today_signal_p.exists():
+            target_p = today_signal_p
+            print(f"  [DEBUG] Found FRESH signal: {today_signal_p}")
+        elif topic_sel_p.exists():
+            target_p = topic_sel_p
+            print(f"  [DEBUG] Fallback to global topic selection: {topic_sel_p}")
+
+        if target_p:
+            res = safe_load_json(target_p)
+            if res:
                 # Detector의 MAIN 결과를 Publisher 규격으로 변환 (Arbiter 통합 구조 대응)
                 main = res.get("MAIN", res) # MAIN 키가 있으면 사용, 없으면 전체가 데이터
                 data["signal"] = {
                     "topic": main.get("topic", main.get("event", "N/A")),
                     "event": main.get("event", main.get("topic", "N/A")),
-                    "strength": main.get("final_score", main.get("strength", main.get("confidence", 0))) * 100,
-                    "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" or main.get("content_type") == "NORMAL" else "쇼츠",
+                    "strength": main.get("final_score", main.get("strength", 0)) * 10,
+                    "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" else "쇼츠",
                     "filters_hit": [main.get("structure_axis", "S")],
                     "why_now": main.get("why_now", main.get("selection_reason", "")),
                     "arbiter_rationale": main.get("arbiter_rationale", "N/A"),
@@ -78,24 +82,34 @@ class PublisherAgent:
         if analysis_p.exists():
             data["analysis"] = safe_load_json(analysis_p)
         else:
-            print(f"  ⚠️ [PUBLISHER] today_analysis.json NOT FOUND at {analysis_p}")
-            data["analysis"] = None
+            if Path("data/analysis").exists():
+                for d in sorted(Path("data/analysis").rglob("today_analysis.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
+                    if res:
+                        data["analysis"] = res
+                        break
 
         # 종목
         stocks_p = self.base_dir / f"data/analysis/{self.today}/{self.round}/today_stocks.json"
         if stocks_p.exists():
             data["stocks"] = safe_load_json(stocks_p)
         else:
-            print(f"  ⚠️ [PUBLISHER] today_stocks.json NOT FOUND at {stocks_p}")
-            data["stocks"] = None
+            if Path("data/analysis").exists():
+                for d in sorted(Path("data/analysis").rglob("today_stocks.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    res = safe_load_json(d)
+                    if res:
+                        data["stocks"] = res
+                        break
 
         # 스크립트
         script_long_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_long.md"
         if script_long_p.exists():
             data["script_long_path"] = str(script_long_p)
         else:
-            print(f"  ⚠️ [PUBLISHER] today_script_long.md NOT FOUND at {script_long_p}")
-            data["script_long_path"] = None
+            if Path("data/scripts").exists():
+                for d in sorted(Path("data/scripts").rglob("today_script_long.md"), key=lambda x: x.stat().st_mtime, reverse=True):
+                    data["script_long_path"] = str(d)
+                    break
 
         script_short_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_short.md"
         if script_short_p.exists():
@@ -206,7 +220,7 @@ class PublisherAgent:
             print("  신호 없음 — 이력 업데이트 건너뜀")
             return {}
 
-        stocks = data.get("stocks") or {}
+        stocks = data.get("stocks", {})
         stock_names = [
             s["name"] for s in stocks.get("stocks", [])[:3]
         ]
@@ -290,8 +304,8 @@ class PublisherAgent:
 
     def generate_dashboard_data(self, data: dict, content: dict, pipeline_results: dict = None):
         """대시보드용 JSON 생성 (UI Contract v2.1 규격 통일)"""
-        signal = data.get("signal") or {}
-        analysis = data.get("analysis") or {}
+        signal = data.get("signal", {})
+        analysis = data.get("analysis", {})
         candidates = data.get("candidates", {}).get("candidates", [])
         
         # 1. Content Pack 구성 (Tier별 분류)
@@ -574,11 +588,11 @@ class PublisherAgent:
             warning_block = f"\n⚠️ [수집 경고]\n{', '.join(failed_agents)}: API 실패 → 해당 지표 분석 제외됨\n"
 
         # [v14.0] 상세 사유 레이어 구성 (Arbiter & Hunter Insight)
-        rationale = signal.get("arbiter_rationale") or signal.get("why_now") or "N/A"
-        insight = signal.get("hunter_insight") or "N/A"
-        hypothesis = signal.get("why_hypothesis") or "N/A"
-        mechanism = signal.get("mechanism") or "N/A"
-        confidence = signal.get("hypothesis_confidence") or "MEDIUM"
+        rationale = signal.get("arbiter_rationale", signal.get("why_now", "N/A"))
+        insight = signal.get("hunter_insight", "N/A")
+        hypothesis = signal.get("why_hypothesis", "N/A")
+        mechanism = signal.get("mechanism", "N/A")
+        confidence = signal.get("hypothesis_confidence", "MEDIUM")
 
         # 종목 리스트 구성 (Agent-04 결과 우선)
         stocks_analysis = signal.get("stocks_analysis", {})

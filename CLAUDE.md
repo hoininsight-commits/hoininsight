@@ -1,5 +1,5 @@
 # HOIN Insight — 안티(Antigravity) 부팅 지침서
-# 최종 수정: 2026-04-26 | v17.3 [The Intelligent Hunter]
+# 최종 수정: 2026-05-06 | v21.0 [The Strategic Hunter Evolution]
 
 ---
 
@@ -26,10 +26,10 @@ git pull origin main
 ✅ 보급 및 엔진 점검 완료 (git pull 완료, v17.3 HANDOFF 숙지)
 
 📌 현재 상태:
-- 엔진 버전: v17.3 [The Intelligent Hunter]
-- 완료된 것: 지능형 스케줄러(Sentry) 통합, 실시간 비용 추적($), DNA 학습 루프(Learner) 가동
-- 세션 비용 현황: Last run $0.0XXX (USD)
-- 다음 우선순위: [1순위: 사냥꾼 DNA 패치 자동 적용 고도화 / 2순위: 텔레그램 리포트 디자인 강화]
+- 엔진 버전: v21.0 [The Strategic Hunter Evolution]
+- 완료된 것: 스나이퍼 단일 서사(Sniper Focus) 탑재, 전략적 서사(Mastermind Intuition) 이식 완료
+- 세션 비용 현황: Last run $2.9106 (USD)
+- 다음 우선순위: [1순위: 경사 베스트 원고 Few-shot 데이터셋 구축 / 2순위: 텔레그램 리포트 디자인 강화]
 
 🔔 사냥을 시작할까요? (python3 src/core/scheduler.py)
 ```

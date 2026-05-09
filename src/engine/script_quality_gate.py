@@ -75,43 +75,72 @@ class ScriptQualityGate:
             "drop_reason": None
         }
 
-        # 1. HOOK 체크 (Step 1 또는 ? 포함)
+        # 1. HOOK 체크 (시장 데이터 숫자로 시작하거나 ? 포함)
         lines = [l.strip() for l in script.split('\n') if l.strip()]
         first_line = lines[0].lower() if lines else ""
         
-        # [BANNED PHRASE CHECK]
+        # [BANNED PHRASE CHECK - ROBOT DETECTOR]
+        robot_phrases = [
+            "왜 지금 시장은", "상황에 주목하고 있을까", "포착되었다", "관측된다", 
+            "증명된 사실", "이례적인 움직임", "수급 쏠림", "디커플링 현상",
+            "주요 거시 지표", "결정적 수급 변화"
+        ]
+        robot_count = sum(1 for rp in robot_phrases if rp in script)
+        if robot_count >= 2:
+            scores["status"] = "DROP"
+            scores["drop_reason"] = f"Robot signature detected ({robot_count} phrases found)"
+            return scores
+
+        # 1. HOOK 체크 (사냥꾼 페르소나 강화)
+        lines = [l.strip() for l in script.split('\n') if l.strip()]
+        first_line = lines[0].lower() if lines else ""
+        
+        # [HUNTER PERSONA MARKERS]
+        hunter_markers = ["야,", "너,", "형이", "말해봐", "샴페인", "손가락", "밤잠", "길목", "냄새"]
+        persona_score = sum(2 for hm in hunter_markers if hm in script)
+        
         banned_hooks = ["이상한 점이 느껴지지 않아", "이상한 점이 느껴되지 않아", "이상한 점을 느끼껴지지 않아"]
         if any(bh in script for bh in banned_hooks):
             scores["hook_score"] = 1
             scores["status"] = "DROP"
             scores["drop_reason"] = "Banned cliché found in hook"
-        elif "[hook]" in script_lower or "step 1" in script_lower or "지금 0.1%" in script or "?" in first_line:
+        elif any(hm in first_line for hm in ["야,", "너,", "형이", "솔직히"]):
             scores["hook_score"] = 5
-        
-        # 2. EVIDENCE/NUMBERS 체크 (Step 4 또는 숫자로 증명)
-        has_numbers = re.search(r'\d+', script)
-        if "step 4" in script_lower or "숫자로 증명" in script_lower or has_numbers:
-            scores["why_now_score"] = 5 if has_numbers else 3
-        elif not has_numbers:
-            scores["status"] = "DROP"
-            scores["drop_reason"] = "Missing numeric data in script"
+        elif "[hook]" in script_lower or re.search(r'\d+', first_line) or "?" in first_line:
+            scores["hook_score"] = 4
+        else:
+            scores["hook_score"] = 2
 
-        # 3. WHY/CAUSALITY 체크 (Step 3 또는 인과관계)
-        if any(x in script_lower for x in ["[why]", "step 3", "인과관계", "이유", "비즈니스"]):
+        # 2. EVIDENCE/NUMBERS 체크 (숫자로 증명)
+        has_numbers = len(re.findall(r'\d+', script)) >= 3
+        if has_numbers:
+            scores["why_now_score"] = 5
+        elif "숫자로 증명" in script_lower:
+            scores["why_now_score"] = 2 # 말로만 숫자로 증명한다고 하면 감점
+        else:
+            scores["why_now_score"] = 1
+
+        # 3. WHY/CAUSALITY 체크 (수익의 계보, 세 가지 포인트 등)
+        if any(x in script_lower for x in ["세 가지", "3가지", "계보", "돈의 흐름", "수익"]):
             scores["scenario_score"] = 5
+        elif any(x in script_lower for x in ["[why]", "인과관계", "이유", "비즈니스"]):
+            scores["scenario_score"] = 3
         else:
             scores["scenario_score"] = 1
-            # [v18.8] 서사 중심일 경우 유연하게 적용하되 경고는 남김
-            print("  ⚠️ Scenario/Verdict section markers missing. Total score might be affected.")
 
-        # 4. ACTION/TARGET 체크 (Step 5 또는 행동 지침)
-        action_indicators = ["[action]", "step 5", "행동 지침", "대응", "타점", "매수"]
+        # 4. ACTION/TARGET 체크 (행동 지침 및 종목명)
+        action_indicators = ["대응", "타점", "매수", "사냥", "움직여", "명령", "결론", "길목"]
         if any(x in script_lower for x in action_indicators):
             scores["action_score"] = 5
         else:
             scores["action_score"] = 1
             scores["status"] = "DROP"
-            scores["drop_reason"] = "ACTION/TARGET (Step 5) missing or invalid"
+            scores["drop_reason"] = "ACTION/TARGET missing or invalid"
+
+        # 최종 점수 보정 (페르소나 점수 반영)
+        if persona_score < 4 and scores["status"] == "PASS":
+             scores["status"] = "HOLD" # 페르소나가 약하면 HOLD로 격하
+             scores["drop_reason"] = "Weak Hunter Persona"
 
         return scores
 

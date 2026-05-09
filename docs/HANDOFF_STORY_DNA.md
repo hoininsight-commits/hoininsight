@@ -1,9 +1,9 @@
-# HOIN Insight v18.5 [The Intelligent Discovery Hunter] Handover
+# HOIN Insight v21.0 [The Strategic Hunter Evolution] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Intelligent Topic Discovery (v18.5)**: 단순 키워드 추출을 폐기하고, 제미나이 기반의 **'10대 개별 사건 사냥'** 엔진을 탑재했습니다. 매크로 노이즈를 필터링하고 신선한 개별 사건(Event) 포착에 집중합니다.
-- **Cost-Effective Intelligence (v18.4)**: 모든 지능형 추출에 **Tier 3 + Flash 모델** 전략을 적용하여 운영 비용을 극대화했습니다.
-- **Hybrid Source Integration (v1.5)**: RSS 뉴스, Polymarket, Hacker News 시그널을 실시간으로 합성하여 판단 근거를 입체화했습니다.
+- **Narrative Revolution (v21.0)**: 단순 현상 설명을 폐기하고, **'전략적 직관(Mastermind Intuition)'** 엔진을 탑재했습니다. 모든 데이터 뒤에 숨겨진 보이지 않는 손의 설계를 폭로합니다.
+- **The Sniper Focus (v21.0)**: 여러 데이터를 억지로 엮는 '데이터 탐욕'을 제거하고, 시청자를 압도할 **'단 하나의 파괴적 주제'**에만 집중하는 단일 서사 법칙을 적용했습니다.
+- **Winner's Strategy**: 비관론적 편향을 제거하고, 거대 자본의 이동(Great Rotation)을 포착하여 **'승리의 기회'**를 사냥하는 포식자 페르소나를 강화했습니다.
 
 
 - **Round-Based Management**: 유튜브 수집은 메인 파이프라인 1시간 전(23, 05, 11, 17시)에 수행되며, 파일명은 `날짜_회차_제목.txt` 규칙을 따릅니다.

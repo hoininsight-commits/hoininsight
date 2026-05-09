@@ -21,8 +21,8 @@
     "score_trust": "COLD"
   },
   "market_snapshot": {
-    "rates": "4.39%",
-    "spx": "7158.83",
+    "rates": "4.36%",
+    "spx": "7374.3",
     "btc": "N/A",
     "trend_short": "NEUTRAL",
     "trend_mid": "UP"
@@ -33,15 +33,39 @@
   },
   "history_layer": [
     {
-      "date": "20260501",
-      "topic": "시장의 역설! AI 규제 속, '건설'에서 터지는 초대형 기회 포착!",
-      "strength": 0,
+      "date": "20260508",
+      "topic": "호르무즈 69일의 전쟁, 유가 다음은 '배'의 시간: 조선 슈퍼사이클의 귀환",
+      "strength": 500.0,
       "anomaly_type": "",
       "filters_hit": [
-        "flow"
+        "S"
       ],
       "why_now": "",
-      "path": "topics/items/20260501__top1.json",
+      "path": "topics/items/20260508__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-06",
+      "rank": 1,
+      "topic": "미-이란 평화 협정 타결 임박에 따른 '글로벌 공급망 리스크 해소와 자본의 대이동(Great Rotation)'",
+      "strength": 0,
+      "anomaly_type": "쇼츠",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-06__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-01",
+      "rank": 1,
+      "topic": "[대우건설] [기재정정]단일판매ㆍ공급계약체결              ",
+      "strength": 0,
+      "anomaly_type": "쇼츠",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-01__top1.json",
       "isToday": false
     },
     {
@@ -67,31 +91,7 @@
       ],
       "path": "topics/items/2026-04-28__top1.json",
       "isToday": false
-    },
-    {
-      "date": "2026-04-27",
-      "rank": 1,
-      "topic": "[2026-04-26] 노조 파업에 삼전 개미 뿔났다…이재용 집앞 '맞불 집회'",
-      "strength": 0,
-      "anomaly_type": "쇼츠",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-27__top1.json",
-      "isToday": false
-    },
-    {
-      "date": "2026-04-26",
-      "rank": 1,
-      "topic": "[2026-04-24] Bettors on Kalshi now see Warsh likely confirmed by mid-May after DOJ drops Powell probe",
-      "strength": 0,
-      "anomaly_type": "롱폼",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-26__top1.json",
-      "isToday": false
     }
   ],
-  "last_updated": "2026-05-01T01:40:40.226330"
+  "last_updated": "2026-05-08T22:41:09.830706"
 }

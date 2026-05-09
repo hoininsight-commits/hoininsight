@@ -280,7 +280,7 @@ class CollectorAgent:
         from src.core.gemini_client import GeminiClient
         from src.utils.target_date import get_target_ymd, get_now_kst, get_current_round
         self.today = get_target_ymd().replace("-", "")
-        self.round = get_current_round()
+        self.round = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
         self.output_dir = Path(f"data/raw/{self.today}/{self.round}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
         # base_dir 설정 (history 저장용)
