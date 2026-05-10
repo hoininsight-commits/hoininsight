@@ -250,15 +250,17 @@ class PublisherAgent:
             except Exception:
                 pass
 
-        # 오늘 날짜 이미 있으면 업데이트, 없으면 추가
-        existing_ids = [c["id"] for c in log["contents"]]
-        if new_content["id"] not in existing_ids:
+        # [v24.0] 중복 체크 강화: 날짜와 제목이 같으면 동일 리포트로 간주
+        is_duplicate = False
+        for i, c in enumerate(log["contents"]):
+            if c.get("date") == new_content["date"] and c.get("title") == new_content["title"]:
+                # 이미 존재하면 업데이트 (ID 유지 혹은 교체 가능하나 여기서는 덮어쓰기)
+                log["contents"][i] = new_content
+                is_duplicate = True
+                break
+        
+        if not is_duplicate:
             log["contents"].append(new_content)
-        else:
-            log["contents"] = [
-                new_content if c["id"] == new_content["id"] else c
-                for c in log["contents"]
-            ]
 
         self.content_log_path.write_text(
             json.dumps(log, ensure_ascii=False, indent=2)
@@ -716,7 +718,7 @@ class PublisherAgent:
             print("  ⚠️ [PUBLISHER] 텔레그램 전송 실패 (Warning only)")
         else:
             print("  ✅ [PUBLISHER] 텔레그램 전송 완료 (카드뉴스 링크 포함)")
-            # 발송 성공 시 상태 업데이트
+            # [v24.0] 이미 695번 라인에서 로그가 기록되었으므로, 성공 로그는 중복 없이 상태만 업데이트
             data["signal"]["status"] = "SUCCESS"
             self.update_content_log(data)
 
