@@ -101,9 +101,20 @@ class PublisherAgent:
         stocks_p = find_latest_file("today_stocks.json")
         if stocks_p: data["stocks"] = safe_load_json(stocks_p)
 
-        # 롱폼 스크립트 로드
+        # 롱폼 스크립트 로드 및 최종 경로 확정
         script_long_p = find_latest_file("today_script_long.md")
-        if script_long_p: data["script_long_path"] = str(script_long_p)
+        if script_long_p: 
+            data["script_long_path"] = str(script_long_p)
+            # [v24.2] 대시보드 링크를 위한 상대 경로 추출 (Topic_N 포함)
+            # 예: data/scripts/2026/05/10/Topic_9
+            try:
+                rel_path = script_long_p.relative_to(self.base_dir)
+                data["path"] = str(rel_path.parent).replace("\\", "/") # 윈도우 경로 대응
+                print(f"  ✅ [PUBLISHER] Topic Path 확정: {data['path']}")
+            except:
+                data["path"] = f"data/scripts/{self.path_prefix}"
+        else:
+            data["path"] = f"data/scripts/{self.path_prefix}"
 
         # 쇼츠 스크립트 로드
         script_short_p = find_latest_file("today_script_short.md")
