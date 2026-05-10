@@ -42,7 +42,7 @@ jobs:
       - name: Step 3 - Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./docs"
+          path: "."
 
   deploy:
     needs: hunt
