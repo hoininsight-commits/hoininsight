@@ -141,9 +141,12 @@
         function getDataPath() {
             const hostname = window.location.hostname;
             const isGitHub = hostname.includes('github.io');
+            const path = window.location.pathname;
             
-            // 깃허브 페이지인 경우 레포지토리 이름을 포함한 절대 경로 사용 고려
-            // (여기서는 대시보드 위치 기준으로 유연하게 대처)
+            // 깃허브 페이지 루트(/hoininsight/)에 있는 경우와 폴더 안에 있는 경우 대응
+            if (isGitHub && (path.endsWith('/hoininsight/') || path.endsWith('/index.html') || path === '/hoininsight')) {
+                return 'data/history/content_log.json';
+            }
             return '../data/history/content_log.json';
         }
 

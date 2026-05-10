@@ -44,6 +44,13 @@
         function getBaseDataPath(path) {
             const hostname = window.location.hostname;
             const isGitHub = hostname.includes('github.io');
+            const pathname = window.location.pathname;
+
+            // insta_viewer.html이 루트에 배포되었는지 폴더 안에 있는지 확인
+            // (깃허브 페이지 루트에서 바로 실행되는 경우 ../ 를 빼야 함)
+            if (isGitHub && pathname.includes('/hoininsight/') && !pathname.includes('/dashboard/')) {
+                return path + '/';
+            }
             return '../' + path + '/';
         }
 
