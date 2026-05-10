@@ -7,6 +7,7 @@ import re
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Optional, List, Dict
 from src.utils.telegram_notifier import TelegramNotifier
 from src.utils.target_date import get_target_ymd, get_current_round, get_standard_path_prefix
 
