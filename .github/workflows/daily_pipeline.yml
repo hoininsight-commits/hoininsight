@@ -43,6 +43,14 @@ jobs:
           DASHBOARD_URL: https://hoininsight-commits.github.io/hoininsight
         run: python3 run_full_pipeline.py
 
+      - name: Step 3 - Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/
+          git commit -m "chore: auto-update intelligence data [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+          git push origin main
+
       - name: Step 3 - Prepare Dashboard
         run: |
           mkdir -p _site
