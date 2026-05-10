@@ -137,17 +137,15 @@
     <div class="archive-grid" id="archive-grid"></div>
 
     <script>
-        // [v24.2] 지능형 환경 인지: GitHub Pages와 로컬 환경 구분
+        // [v24.2] 지능형 환경 인지: GitHub Pages 표준 BASE_URL 시스템
+        const BASE_URL = window.location.hostname.includes('github.io') ? '/hoininsight' : '..';
+
         function getDataPath() {
-            const hostname = window.location.hostname;
-            const isGitHub = hostname.includes('github.io');
-            const path = window.location.pathname;
-            
-            // 깃허브 페이지 루트(/hoininsight/)에 있는 경우와 폴더 안에 있는 경우 대응
-            if (isGitHub && (path.endsWith('/hoininsight/') || path.endsWith('/index.html') || path === '/hoininsight')) {
-                return 'data/history/content_log.json';
-            }
-            return '../data/history/content_log.json';
+            return BASE_URL + '/data/history/content_log.json';
+        }
+
+        function getBaseDataPath(path) {
+            return BASE_URL + '/' + path + '/';
         }
 
         async function loadArchive() {
