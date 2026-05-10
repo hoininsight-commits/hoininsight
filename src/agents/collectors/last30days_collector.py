@@ -14,7 +14,7 @@ class Last30DaysCollector:
 
     def __init__(self):
         # 프로젝트 루트 기준 상대 경로
-        self.script_path = Path("skills/last30days-skill/scripts/last30days.py").resolve()
+        self.script_path = Path("skills/last30days-skill/skills/last30days/scripts/last30days.py").resolve()
         
     def collect(self, topic: str, depth: str = "quick", subreddits: str = None, x_handle: str = None) -> dict:
         """
