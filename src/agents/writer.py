@@ -264,13 +264,13 @@ class WriterAgent:
             print(f"  📸 Instagram 8-slide 카드뉴스 생성 중...")
             insta_slides = self.content_engine.generate_insta_cards(candidate, script=short_script)
             if insta_slides:
-                insta_path.write_text(json.dumps(insta_slides, ensure_ascii=False, indent=2), encoding="utf-8")
+                # [v24.0] UI 규격에 맞게 'slides' 키로 감싸서 저장
+                insta_data = {"slides": insta_slides}
+                insta_path.write_text(json.dumps(insta_data, ensure_ascii=False, indent=2), encoding="utf-8")
                 print(f"  ✅ 인스타 카드뉴스 저장 완료: {insta_path}")
                 
-            # 에셋 폴더 복사 (배경 이미지용)
-            assets_src = self.script_dir / "assets"
-            if assets_src.exists():
-                os.system(f"cp -r {assets_src} {topic_dir}/")
+            # [v24.0] 지능형 에셋 생성 (Imagen 3 활용)
+            self.content_engine.generate_visual_assets(candidate, topic_dir)
             
             print(f"  🎬 최종 상태: {status} (Score: {report.get('total_score', 0)})")
             

@@ -94,6 +94,26 @@ class ContentEngine:
         else:
             return "WATCH" if candidate.get("strength", 5.0) > 6.0 else "WAIT"
 
+    def generate_visual_assets(self, candidate: Dict, topic_dir: Path) -> bool:
+        """[v24.0] 주제에 맞는 커버 이미지 및 에셋 생성"""
+        topic = candidate.get("topic", "N/A")
+        
+        # 1. 커버 이미지 (cover.png) 생성 프롬프트
+        # [HUNTER DNA] 하이테크, 사이버네틱, 진지한 금융 분석가 스타일
+        cover_prompt = f"A high-tech, cinematic digital art style representing the economic theme: '{topic}'. " \
+                       f"Dark blue and metallic silver color palette. Strategic financial symbols, " \
+                       f"cybernetic data streams, futuristic city background. Professional, high-fidelity, 8k resolution."
+        
+        assets_dir = topic_dir / "assets"
+        assets_dir.mkdir(parents=True, exist_ok=True)
+        
+        success = self.gemini.generate_images(cover_prompt, str(assets_dir / "cover.png"))
+        
+        # 2. 추가 에셋 (배경용) 생성 (옵션)
+        if success:
+             print(f"  🎨 [CONTENT_ENGINE] Visual assets generated in {assets_dir}")
+        return success
+
     def generate_insta_cards(self, candidate: Dict, script: str = "") -> Optional[List[Dict]]:
         """인스타그램 8단계 카드뉴스 전용 원고 생성 (Resilient Parsing + Script Base)"""
         from src.prompts.insta_prompt import INSTA_PROMPT_TEMPLATE, INSTA_SYSTEM_PROMPT

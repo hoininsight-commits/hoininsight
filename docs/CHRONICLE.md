@@ -140,3 +140,25 @@
 **3. 남은 과제 (Next Steps)**
 - **SocialAgent 가중치 튜닝**: 소셜 리서치 데이터가 토픽 선정에 미치는 영향력을 분석하여 51% 우선순위 정책의 실효성 검증.
 - **장중 데이터 수집 가속화**: 현재 약 10분 소요되는 전체 파이프라인 중 수집(Collection) 단계의 병렬화 검토.
+---
+
+## 📅 2026-05-10 | v24.0 [The Visual Predator: AI Visualization & Infrastructure Purge]
+
+### 1. [Milestones] 성공한 것
+*   **인프라 대소탕 및 정예화**:
+    - **Legacy Purge**: `Round_N` 구조와 `scheduler.py` 등 50여 개의 유령 코드를 전격 삭제하여 기술 부채 0% 달성.
+    - **Unified Pipeline**: 모든 에이전트를 `run_full_pipeline.py` 하나로 통합하여 실행 안정성 및 환경 이식성 극대화.
+*   **AI 시각화 혁명 (The Visual Predator)**:
+    - **Imagen 4.0 이식**: `GeminiClient`에 이미지 생성 엔진을 탑재하여 리포트 주제별 맞춤형 커버 이미지(`cover.png`) 자동 생성 로직 구현.
+    - **카드뉴스 규격 교정**: 뷰어와 데이터 간의 JSON 스케마 불일치를 해결하여 8장의 상세 카드뉴스가 대시보드에 완벽하게 노출되도록 수정.
+*   **중복 방지 하드닝 (Anti-Duplication)**:
+    - `PublisherAgent`에 제목/날짜 기반의 `upsert` 로직을 도입하여 대시보드 내 카드 중복 현상을 근본적으로 차단.
+
+### 2. [Pitfalls] 오늘의 삽질 및 교훈
+*   **SDK 명칭 불일치**: `google-genai` 라이브러리의 `generate_images` 및 `GenerateImagesConfig` 등 복수형 명칭 미숙지로 인한 시행착오 발생. -> **교훈**: 새로운 SDK 도입 시 `dir()` 등을 통한 메서드 전수 조사가 우선되어야 함.
+*   **데이터 규격의 엄격함**: 단순히 리스트만 저장하던 방식이 UI 뷰어의 `{"slides": []}` 요구사항과 충돌함. -> **해결**: 소스코드 레벨에서 포장(Wrapping) 로직을 추가하여 영구 해결.
+
+### 3. [Next Step] 이어서 해야 할 일
+1.  **서버 배포 및 실전 가동**: 정예화된 코드를 서버에 올리고 텔레그램/대시보드 실시간 연동 상태 모니터링.
+2.  **슬라이드별 배경 다양화**: 현재 `cover.png` 하나로 고정된 카드뉴스 배경을 슬라이드별 맞춤형 이미지로 확장 검토.
+3.  **지능형 스케줄러 재구축**: 삭제된 `scheduler.py`를 대신하여 `run_full_pipeline.py`를 주기적으로 호출할 경량화된 배치 로직 설정.

@@ -284,3 +284,36 @@ class GeminiClient:
                 if tier == 1: # TIER 1만 에러를 전파하여 중단시키거나 강제 폴백 유도
                     raise e
                 return ""
+    def generate_images(self, prompt: str, output_path: str, model: str = "imagen-3.0-generate-001") -> bool:
+        # [v24.0] 2026년 최신 모델로 자동 보정
+        if model == "imagen-3.0-generate-001":
+            model = "imagen-4.0-generate-001"
+        """Imagen 모델을 이용한 이미지 생성 및 저장 (v24.0)"""
+        if not self.client:
+            return False
+            
+        try:
+            print(f"  🎨 [IMAGEN] Generating image: {prompt[:50]}...")
+            response = self.client.models.generate_images(
+                model=model,
+                prompt=prompt,
+                config=genai.types.GenerateImagesConfig(
+                    number_of_images=1,
+                    include_rai_reason=True,
+                    output_mime_type="image/png"
+                )
+            )
+            
+            # 저장 디렉토리 보장
+            out_p = Path(output_path)
+            out_p.parent.mkdir(parents=True, exist_ok=True)
+            
+            for i, image in enumerate(response.generated_images):
+                image.image.save(str(out_p))
+                print(f"  ✅ [IMAGEN] Image saved to: {out_p}")
+                return True
+                
+        except Exception as e:
+            print(f"  ⚠️ [IMAGEN] Image generation failed: {e}")
+            return False
+        return False
