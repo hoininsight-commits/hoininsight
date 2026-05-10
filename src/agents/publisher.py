@@ -15,15 +15,23 @@ from src.utils.target_date import get_target_ymd, get_current_round, get_standar
 class PublisherAgent:
 
     def __init__(self):
-        # Modular CI/CD Trigger Test - FIXED
-        # [v24.2] 지능형 환경 인지: GitHub Actions 환경인지 로컬인지 자동 판별
+        # [v24.2] 3단계 지능형 환경 인지: 서버 / 집 / 회사 자동 판별
+        import socket
+        hostname = socket.gethostname()
         self.is_github_actions = os.environ.get("GITHUB_ACTIONS") == "true"
+        
         if self.is_github_actions:
+            self.env_type = "SERVER"
             self.base_dir = Path(os.environ.get("GITHUB_WORKSPACE", "."))
-            print("  🌐 [ENV] GitHub Actions 환경 감지 - 서버 모드 작동")
-        else:
+            print("  🌐 [ENV] GitHub Actions 서버 환경 감지")
+        elif "TaeHunui-MacBookPro" in hostname:
+            self.env_type = "HOME"
             self.base_dir = Path(__file__).resolve().parent.parent.parent
-            print(f"  💻 [ENV] 로컬 개발 환경 감지 - 경로: {self.base_dir}")
+            print(f"  🏠 [ENV] 집 맥북 환경 감지 - 경로: {self.base_dir}")
+        else:
+            self.env_type = "OFFICE"
+            self.base_dir = Path(__file__).resolve().parent.parent.parent
+            print(f"  🏢 [ENV] 회사/기타 환경 감지 - 경로: {self.base_dir}")
 
         self.today = get_target_ymd().replace("-", "")
         self.path_prefix = get_standard_path_prefix()
