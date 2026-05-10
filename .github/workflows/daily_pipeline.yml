@@ -43,10 +43,18 @@ jobs:
           DASHBOARD_URL: https://hoininsight-commits.github.io/hoininsight
         run: python3 run_full_pipeline.py
 
-      - name: Step 3 - Upload Artifacts
+      - name: Step 3 - Prepare Dashboard
+        run: |
+          mkdir -p _site
+          cp -r dashboard _site/
+          cp -r data _site/
+          # 루트에 index.html이 없으므로 dashboard/index.html을 루트로 복사하여 접근성 향상
+          cp dashboard/index.html _site/index.html
+
+      - name: Step 4 - Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_site"
 
   deploy:
     needs: hunt
