@@ -229,13 +229,14 @@ class PublisherAgent:
             s["name"] for s in stocks.get("stocks", [])[:3]
         ]
 
-        # [v22.1] 주제별 경로 반영
-        topic_path = signal.get("paths", {}).get("topic_dir", "")
-        if topic_path:
-            # 절대 경로를 상대 경로로 변환 (data/... 형태)
-            rel_path = topic_path.split("HoinInsight/")[-1] if "HoinInsight/" in topic_path else topic_path
-        else:
-            rel_path = f"data/scripts/{self.path_prefix}"
+        # [v24.2] 주제별 경로 반영 (데이터 로딩 시 확정된 path 우선 사용)
+        rel_path = data.get("path")
+        if not rel_path:
+            topic_path = signal.get("paths", {}).get("topic_dir", "")
+            if topic_path:
+                rel_path = topic_path.split("HoinInsight/")[-1] if "HoinInsight/" in topic_path else topic_path
+            else:
+                rel_path = f"data/scripts/{self.path_prefix}"
 
         # [v24.2] 실제 파일에서 진짜 제목 추출 (Gemini가 수정한 화려한 제목 반영)
         actual_title = signal.get("topic", "")
