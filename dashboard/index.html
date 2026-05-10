@@ -157,18 +157,16 @@
                 items.forEach(item => {
                     const card = document.createElement('a');
                     card.className = 'topic-card';
-                    // insta_viewer.html로 연결 (path 파라미터 추가)
-                    card.href = `insta_viewer.html?path=${encodeURIComponent(item.path)}&title=${encodeURIComponent(item.title)}&img=${item.custom_img || ''}`;
+                    // insta_viewer.html로 연결 (path 파라미터 전달)
+                    card.href = `insta_viewer.html?path=${encodeURIComponent(item.path)}&title=${encodeURIComponent(item.title)}`;
                     
-                    // 명시된 커스텀 이미지 사용
-                    const dateParts = item.date.split('-');
-                    const imgName = item.custom_img || 'cover.png';
-                    const thumbUrl = `../data/scripts/${dateParts[0]}/${dateParts[1]}/${dateParts[2]}/Round_3/assets/${imgName}`;
+                    // [v22.2] 주제별 격리 폴더 내부의 assets/cover.png를 직접 사용
+                    const thumbUrl = `../${item.path}/assets/cover.png`;
                     
                     card.innerHTML = `
-                        <div class="thumb" style="background-image: url('${thumbUrl}'), url('assets/cover.png');"></div>
+                        <div class="thumb" style="background-image: url('${thumbUrl}');"></div>
                         <div class="card-info">
-                            <span class="date-badge">${item.date} | ROUND 3</span>
+                            <span class="date-badge">${item.date}</span>
                             <h2>${item.title}</h2>
                             <div class="status-pill">CARD NEWS READY</div>
                         </div>

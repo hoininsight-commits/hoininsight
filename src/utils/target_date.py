@@ -57,8 +57,8 @@ def get_target_parts():
 
 def get_standard_path_prefix() -> str:
     """
-    Returns the standardized path prefix (YYYY/MM/DD/Round_X).
+    Returns the standardized path prefix (YYYY/MM/DD).
+    [v24.0] Round_N hierarchy has been deprecated for Topic_N isolation.
     """
     y, m, d = get_target_parts()
-    round_val = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
-    return f"{y}/{m}/{d}/Round_{round_val}"
+    return f"{y}/{m}/{d}"

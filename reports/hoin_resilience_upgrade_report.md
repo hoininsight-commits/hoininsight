@@ -6,12 +6,12 @@
 - **AI 활용**: Gemini + Rule-based
 
 ## 🧩 콘텐츠 품질 (Quality Gate v2)
-- **종합 점수**: 4.0 / 5.0
+- **종합 점수**: 4.6 / 5.0
 - **상세 점수**:
-    - HOOK: 3
-    - WHY NOW: 2
+    - HOOK: 5
+    - WHY NOW: 4
     - SCENARIO: 5
-    - ACTION: 5
+    - ACTION: 4
 
 ## 🔥 Resilience 핵심 지표
 1. **Gemini Tiering**: TIER 1/2/3 분리 및 재시도 최적화 완료

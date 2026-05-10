@@ -4,6 +4,7 @@
 
 import json
 import re
+import os
 from datetime import datetime
 from pathlib import Path
 from src.utils.telegram_notifier import TelegramNotifier
@@ -69,44 +70,47 @@ class PublisherAgent:
                     "evidence_bundle": main.get("evidence_bundle", {})
                 }
                 print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
+
+        # [v24.0] 지능형 경로 탐색 (Topic_N 기반 전수 조사)
+        def find_latest_file(filename: str) -> Optional[Path]:
+            # 1. 날짜별 표준 데이터 경로 우선 확인
+            category_raw = filename.split("_")[1].split(".")[0]
+            category = category_raw if category_raw.endswith("s") else category_raw + "s"
+            std_p = self.base_dir / "data" / category / self.path_prefix / filename
+            if std_p.exists(): return std_p
+            
+            # 2. Topic_N 격리 폴더 전수 조사 (최우선 순위)
+            daily_base = self.base_dir / "data" / "scripts" / self.path_prefix
+            if daily_base.exists():
+                candidates = list(daily_base.glob(f"Topic_*/{filename}"))
+                if candidates:
+                    # 가장 최근에 수정된 파일 선택
+                    return max(candidates, key=lambda x: x.stat().st_mtime)
+            
+            # 3. 마지막 수단: rglob (느리지만 확실함)
+            for d in sorted(Path(f"data").rglob(filename), key=lambda x: x.stat().st_mtime, reverse=True):
+                return d
+            return None
+
+        # 분석 데이터 로드
+        analysis_p = find_latest_file("today_analysis.json")
+        if analysis_p: data["analysis"] = safe_load_json(analysis_p)
+        
+        # 종목 데이터 로드
+        stocks_p = find_latest_file("today_stocks.json")
+        if stocks_p: data["stocks"] = safe_load_json(stocks_p)
+
+        # 롱폼 스크립트 로드
+        script_long_p = find_latest_file("today_script_long.md")
+        if script_long_p: data["script_long_path"] = str(script_long_p)
+
+        # 쇼츠 스크립트 로드
+        script_short_p = find_latest_file("today_script_short.md")
+        if script_short_p: data["script_short_path"] = str(script_short_p)
         
         if "signal" not in data:
             print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
             data["signal"] = None
-
-        # 분석
-        analysis_p = self.base_dir / "data/analysis" / self.path_prefix / "today_analysis.json"
-        if analysis_p.exists():
-            data["analysis"] = safe_load_json(analysis_p)
-        else:
-            print(f"  ⚠️ [PUBLISHER] today_analysis.json NOT FOUND at {analysis_p}")
-            data["analysis"] = None
-
-        # 종목
-        stocks_p = self.base_dir / "data/analysis" / self.path_prefix / "today_stocks.json"
-        if stocks_p.exists():
-            data["stocks"] = safe_load_json(stocks_p)
-        else:
-            print(f"  ⚠️ [PUBLISHER] today_stocks.json NOT FOUND at {stocks_p}")
-            data["stocks"] = None
-
-        # 스크립트
-        script_long_p = self.base_dir / "data/scripts" / self.path_prefix / "today_script_long.md"
-        if script_long_p.exists():
-            data["script_long_path"] = str(script_long_p)
-        else:
-            print(f"  ⚠️ [PUBLISHER] today_script_long.md NOT FOUND at {script_long_p}")
-            data["script_long_path"] = None
-
-        script_short_p = self.base_dir / "data/scripts" / self.path_prefix / "today_script_short.md"
-        if script_short_p.exists():
-            data["script_short_path"] = str(script_short_p)
-        else:
-            # Fallback search if standardized path is missing
-            if Path("data/scripts").exists():
-                for d in sorted(Path("data/scripts").rglob("today_script_short.md"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    data["script_short_path"] = str(d)
-                    break
 
         # 후보 목록 (v2.0: data/topics/topic_candidates.json 대응)
         topic_p = self.base_dir / "data/topics/topic_candidates.json"
@@ -213,24 +217,29 @@ class PublisherAgent:
             s["name"] for s in stocks.get("stocks", [])[:3]
         ]
 
+        # [v22.1] 주제별 경로 반영
+        topic_path = signal.get("paths", {}).get("topic_dir", "")
+        if topic_path:
+            # 절대 경로를 상대 경로로 변환 (data/... 형태)
+            rel_path = topic_path.split("HoinInsight/")[-1] if "HoinInsight/" in topic_path else topic_path
+        else:
+            rel_path = f"data/scripts/{self.path_prefix}"
+
         # 새 콘텐츠 항목
         new_content = {
-            "id": f"{self.today}_001",
+            "id": f"{self.today}_{datetime.now().strftime('%H%M%S')}",
             "date": f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}",
             "type": signal.get("content_type", "롱폼"),
             "title": signal.get("topic", ""),
             "thumbnail_text": "",
+            "custom_img": signal.get("custom_img", "cover.png"),
+            "path": rel_path,
             "duration_min": 15 if signal.get("content_type") == "롱폼" else 2,
             "signal_strength": signal.get("strength", 0),
             "filters_used": signal.get("filters_hit", []),
             "stocks": stock_names,
-            "is_republish": signal.get("is_republish", False),
-            "original_id": None,
-            "script_path": data.get("script_long_path", ""),
             "status": "승인대기",
-            "operator_approved": False,
-            "approved_at": None,
-            "publish_status": signal.get("status", "UNKNOWN")
+            "publish_status": "SUCCESS"
         }
 
         # 기존 이력 로드
@@ -694,16 +703,19 @@ class PublisherAgent:
         # 브리핑 출력
         print(brief)
 
-        # [v18.2] 텔레그램 전송 (본문은 이제 충분히 풍부하므로 스크립트 중복 전송 제외)
-        brief_with_script = brief
+        # [v23.0] 텔레그램 링크 지능화 (카드뉴스 뷰어 연동)
+        # 로컬 테스트 환경을 위해 기본 주소를 localhost로 설정 (필요 시 .env의 DASHBOARD_URL 사용)
+        base_url = os.environ.get("DASHBOARD_URL", "http://localhost:8000")
+        insta_link = f"{base_url}/dashboard/insta_viewer.html?path={content.get('path', '')}"
+        
+        brief_with_link = brief + f"\n\n📸 [카드뉴스 바로보기]\n{insta_link}"
         
         # [지시서 #082] 텔레그램 전송 결과 확인
-        # 텔레그램은 알림 수단 — 전송 실패가 파이프라인 전체 실패로 이어지면 안 됨
-        success = self.notifier.send_message_in_chunks(brief_with_script)
+        success = self.notifier.send_message_in_chunks(brief_with_link)
         if not success:
-            print("  ⚠️ [PUBLISHER] 텔레그램 전송 실패 (Warning only — 파이프라인 계속)")
+            print("  ⚠️ [PUBLISHER] 텔레그램 전송 실패 (Warning only)")
         else:
-            print("  ✅ [PUBLISHER] 텔레그램 전송 완료")
+            print("  ✅ [PUBLISHER] 텔레그램 전송 완료 (카드뉴스 링크 포함)")
             # 발송 성공 시 상태 업데이트
             data["signal"]["status"] = "SUCCESS"
             self.update_content_log(data)

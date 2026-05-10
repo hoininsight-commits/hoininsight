@@ -859,7 +859,7 @@ class CollectorAgent:
     def extract_news_keywords(self, sentiment_data: dict) -> list:
         """뉴스 헤드라인에서 DART 검색용 키워드 추출 (v4.5)"""
         print("🧠 뉴스 기반 추적 키워드 추출 중...")
-        from src.core.sector_map import get_related_sectors
+        # Local import removed (Deprecated v24.0)
         headlines = [h.get("title", "") for h in sentiment_data.get("data", {}).get("news_headlines", [])]
         
         if not headlines:
@@ -881,11 +881,9 @@ class CollectorAgent:
         except Exception as e:
             print(f"  AI 키워드 추출 실패 (한도초과 등): {e}")
 
-        # 2. 룰 기반 추출 (Fallback: 가동성 보장)
-        for h in headlines:
-            # sector_map.py의 동적 섹터 유추 로직 활용
-            related = get_related_sectors([h])
-            keywords.update(related)
+        # 2. 룰 기반 추출 (v24.0: Deprecated - AI extraction preferred)
+        # 낡은 sector_map 대신 헤드라인에서 직접 명사 추출 등 보완 가능하나 현재는 AI 신뢰도 높음
+        pass
         
         final_keywords = list(keywords)[:7] # 최대 7개 타격
         print(f"  최종 추적 키워드: {final_keywords}")
@@ -896,7 +894,7 @@ class CollectorAgent:
         print(f"📋 DART 뉴스 기반 정밀 분석 중... (관심사: {keywords})")
         import time
         import OpenDartReader
-        from src.core.sector_map import get_related_sectors
+        # Local import removed (Deprecated v24.0)
 
         api_key = os.getenv('OPENDART_API_KEY')
         if not api_key:
@@ -924,8 +922,9 @@ class CollectorAgent:
         MAX_DETAILED_DOCS = 15
         
         # 종목명 -> 섹터 매핑
+        # [v24.0] Legacy sector mapping removed
+        sectors = []
         def get_sector_for_corp(corp_name):
-            sectors = get_related_sectors([corp_name])
             return sectors[0] if sectors else None
 
         # 최신순 정렬 (이미 되어있을 확률이 높지만 보장)

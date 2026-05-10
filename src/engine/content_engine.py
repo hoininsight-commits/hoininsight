@@ -96,23 +96,27 @@ class ContentEngine:
 
     def generate_insta_cards(self, candidate: Dict, script: str = "") -> Optional[List[Dict]]:
         """인스타그램 8단계 카드뉴스 전용 원고 생성 (Resilient Parsing + Script Base)"""
-        from src.prompts.insta_prompt import INSTA_CARD_PROMPT
+        from src.prompts.insta_prompt import INSTA_PROMPT_TEMPLATE, INSTA_SYSTEM_PROMPT
         import re
         
         evidence = candidate.get("evidence_bundle", {})
         data_chain = evidence.get("data_chain", "N/A")
 
-        # 스크립트가 있다면 프롬프트에 포함하여 팩트 정합성 강화
-        prompt = INSTA_CARD_PROMPT.format(
-            stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
+        # [v23.5] HOIN Insight 지능형 카드뉴스 템플릿 적용
+        prompt = INSTA_PROMPT_TEMPLATE.format(
             topic=candidate.get("topic", "N/A"),
-            data_chain=json.dumps(data_chain, ensure_ascii=False, indent=2),
-            base_script=script
+            script=script,
+            data_chain=json.dumps(data_chain, ensure_ascii=False, indent=2)
         )
 
         try:
-            # call_json_controlled 대신 일반 호출 후 직접 파싱 시도
-            raw_res = self.gemini.call_controlled(prompt, agent="INSTA_WRITER", tier=1)
+            # [v23.5] 시스템 프롬프트 주입 및 다이렉트 호출
+            raw_res = self.gemini.call_controlled(
+                prompt, 
+                system_prompt=INSTA_SYSTEM_PROMPT,
+                agent="INSTA_WRITER", 
+                tier=1
+            )
             
             # JSON 블록 추출 ({ ... })
             json_match = re.search(r'(\{[\s\S]*\})', raw_res)
@@ -128,10 +132,8 @@ class ContentEngine:
 
     def _generate_script(self, candidate: Dict, classification: str, scenario: str) -> str:
         """LLM을 이용한 경제사냥꾼 스타일 스크립트 작성 (Centralized Prompt DNA)"""
-        from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
+        from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE, WRITER_SYSTEM_PROMPT
         
-        # 주간 전략 지도 가이드라인 제거 (동적 서사 생성 유도)
-
         # 2. 분석 JSON 구성 (WHY Hypothesis 등 포함)
         analysis_data = {
             "why_hypothesis": candidate.get("why_hypothesis", "N/A"),
@@ -159,12 +161,17 @@ class ContentEngine:
             analysis_json=json.dumps(analysis_data, ensure_ascii=False)
         )
         
-        # JSON 응답을 위한 최종 지시사항 추가 (쇼츠 규격 강제)
+        # JSON 응답을 위한 최종 지시사항 추가 (고충실도 리포트 포맷)
         prompt += "\n\n반드시 아래 JSON 형식으로만 응답해라:\n"
-        prompt += "{\"title\": \"쇼츠 제목\", \"script\": \"[00-05초]\\n(화면: ...)\\n나레이션: ...\\n\\n[05-45초]\\n...\"}"
+        prompt += "{\"title\": \"리포트 제목\", \"script\": \"[본문 내용 (마크다운 형식, 영상 대본 포맷 절대 금지)]\"}"
 
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="WRITER", tier=1)
+            res = self.gemini.call_json_controlled(
+                prompt, 
+                system_prompt=WRITER_SYSTEM_PROMPT, 
+                agent="WRITER", 
+                tier=1
+            )
             if isinstance(res, dict) and "script" in res:
                 return res["script"]
             if isinstance(res, str) and len(res) > 50:

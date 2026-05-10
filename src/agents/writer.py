@@ -5,10 +5,10 @@ from datetime import datetime
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
 from src.utils.target_date import get_target_ymd, get_current_round, get_standard_path_prefix
-from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE
+from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE, WRITER_SYSTEM_PROMPT
 from src.engine.content_engine import ContentEngine
 from src.engine.script_quality_gate import ScriptQualityGate
-from src.engine.rule_generator import RuleBasedScriptGenerator
+# from src.engine.rule_generator import RuleBasedScriptGenerator (Deprecated v24.0)
 
 
 class WriterAgent:
@@ -28,7 +28,8 @@ class WriterAgent:
         self.gemini = GeminiClient()
         self.content_engine = ContentEngine()
         self.quality_gate = ScriptQualityGate()
-        self.rule_generator = RuleBasedScriptGenerator()
+        # self.rule_generator = RuleBasedScriptGenerator() (Deprecated)
+        self.rule_generator = None
         self.validation_dir = Path("data/validation")
         self.validation_dir.mkdir(parents=True, exist_ok=True)
 
@@ -62,13 +63,20 @@ class WriterAgent:
         )
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER", max_tokens=8192, tier=1)
+            # [v23.5] HOIN Insight 시스템 프롬프트 주입 및 검열 해제
+            response = self.gemini.call_controlled(
+                prompt, 
+                system_prompt=WRITER_SYSTEM_PROMPT,
+                agent="WRITER", 
+                max_tokens=8192, 
+                tier=1
+            )
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Long) 호출 실패: {e}")
             return ""
             
-        return self._censor_narrative(response)
+        return response
 
     def generate_shorts(self, context):
         """[v15.0] 유튜브 쇼츠 스크립트 생성 (The Hunter's Logic)"""
@@ -88,28 +96,22 @@ class WriterAgent:
         prompt += "\n반드시 1분 분량의 쇼츠 대본(8단계 요약)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
 
         try:
-            response = self.gemini.call_controlled(prompt, agent="WRITER_SHORTS", max_tokens=2048, tier=1)
+            # [v23.5] HOIN Insight 시스템 프롬프트 주입 및 검열 해제
+            response = self.gemini.call_controlled(
+                prompt, 
+                system_prompt=WRITER_SYSTEM_PROMPT,
+                agent="WRITER_SHORTS", 
+                max_tokens=2048, 
+                tier=1
+            )
             if not response: raise Exception("Empty Response")
         except Exception as e:
             print(f"  ⚠️ Gemini(Shorts) 호출 실패: {e}")
             return ""
 
-        return self._censor_narrative(response)
+        return response
 
-    def _censor_narrative(self, script):
-        """언어 가이드라인 준수 여부 검열 (S-I-F 3계층 준수)"""
-        if not script: return script
-        
-        # 1. SPECULATION 키워드 제거/변경
-        script = script.replace("폭등한다", "상승 압력이 관측된다")
-        script = script.replace("폭락한다", "하방 압력이 관측된다")
-        script = script.replace("무조건", "높은 확률로")
-        script = script.replace("확신한다", "시사한다")
-        
-        # 2. 개인 투자자 비하 표현 제거 (사용자 요청으로 '개미들' 허용)
-        # script = script.replace("개미들", "시장 참여자들")
-        
-        return script
+    # _censor_narrative 제거됨 (v23.5: Raw Hunter Style)
 
     def run(self, analyst_results=None):
         """[v21.0] STRATEGIC HUNT FLOW: Arbiter 직접 호출 및 자율 사냥"""
@@ -168,12 +170,8 @@ class WriterAgent:
                 print(f"  ⚠️ Gemini 생성 실패: {e}")
             final_contents = [] # 명시적 초기화로 폴백 유도
 
-        # 3. [FALLBACK] 결정론적 스크립트 생성
-        print(f"  🤖 Deterministic Fallback Engine 가동...")
-        fallback_res = self.rule_generator.generate_fallback(candidate)
-        if fallback_res:
-            fallback_p = Path("data/scripts/fallback_deterministic.json")
-            fallback_p.write_text(json.dumps(fallback_res, ensure_ascii=False, indent=2))
+        # [v24.0] Deterministic Fallback Engine Deprecated
+        fallback_res = None
         
         # 4. 품질 검증 및 상태 결정
         main_content = None
@@ -214,38 +212,80 @@ class WriterAgent:
                 main_content = None # 발송 대상에서 제외
 
         # 5. 결과 저장 및 보고
-        long_path = self.script_dir / "today_script_long.md"
         if main_content:
-            signal_p = self.signal_dir / "today_signal.json"
-            signal_p.write_text(json.dumps(main_content, ensure_ascii=False, indent=2))
+            # [v22.3] 회차(Round) 폴더를 건너뛰고 날짜(YYYY/MM/DD) 폴더 바로 아래에 Topic_N 생성
+            day_path = "/".join(self.path_prefix.split("/")[:3])
+            day_dir = self.base_dir / "data/scripts" / day_path
+            day_dir.mkdir(parents=True, exist_ok=True)
             
-            status_display = status
-            if status == "PARTIAL_SUCCESS":
-                status_display = "PARTIAL_SUCCESS (Gemini 실패, fallback 사용)"
+            # [v22.1] 세분화된 토픽 저장소 생성
+            # 해당 날짜의 기존 Topic_N 개수 파악
+            existing_topics = list(day_dir.glob("Topic_*"))
+            topic_idx = len(existing_topics) + 1
             
-            script_md = f"# [ECONOMIC HUNTER] {main_content['topic']}\n\n"
-            script_md += f"**STATUS**: {status_display} | **GATE**: {report.get('status', 'N/A')}\n"
-            script_md += f"**QUALITY SCORE**: {report.get('total_score', 0)} / 5.0\n\n"
-            script_md += "---\n\n"
-            script_md += main_content['script']
+            topic_dir = day_dir / f"Topic_{topic_idx}"
+            topic_dir.mkdir(parents=True, exist_ok=True)
             
-            long_path.write_text(script_md, encoding="utf-8")
-            
-            # [v21.0] Shorts 호환성을 위해 short_path로도 저장
-            short_path = self.script_dir / "today_script_short.md"
-            short_path.write_text(script_md, encoding="utf-8")
+            # 대본 및 카드뉴스 저장 경로 변경
+            long_script = f"# [ECONOMIC HUNTER] {main_content['topic']}\n\n"
+            long_script += f"**STATUS**: {status} | **GATE**: {report.get('status', 'N/A')}\n"
+            long_script += f"**QUALITY SCORE**: {report.get('total_score', 0)} / 5.0\n\n---\n\n{main_content['script']}"
+            short_script = main_content.get('script_short', main_content['script'])
 
-            # [v22.0] 인스타그램 8단계 카드뉴스 데이터 생성
-            print(f"  📸 Instagram 8-slide 카드뉴스 생성 중...")
-            insta_slides = self.content_engine.generate_insta_cards(candidate)
-            if insta_slides:
-                insta_path = self.script_dir / "insta_cards.json"
-                insta_path.write_text(json.dumps(insta_slides, ensure_ascii=False, indent=2), encoding="utf-8")
-                print(f"  ✅ 인스타 카드뉴스 데이터 저장 완료: {insta_path}")
+            long_path = topic_dir / "today_script_long.md"
+            short_path = topic_dir / "today_script_short.md"
+            insta_path = topic_dir / "insta_cards.json"
+            analysis_path = topic_dir / "analysis.json"
+            signal_path = topic_dir / "signal.json"
             
-            print(f"  🎬 최종 상태: {status_display} (Score: {report.get('total_score', 0)})")
+            long_path.write_text(long_script, encoding="utf-8")
+            short_path.write_text(short_script, encoding="utf-8")
+            
+            # [v22.2] 분석 및 신호 데이터도 패키지에 포함
+            analysis_data = {
+                "arbiter_rationale": candidate.get("arbiter_rationale", ""),
+                "hunter_insight": candidate.get("hunter_insight", ""),
+                "why_hypothesis": candidate.get("why_hypothesis", ""),
+                "mechanism": candidate.get("mechanism", ""),
+                "predictive_chain": candidate.get("predictive_chain", ""),
+                "historical_parallel": candidate.get("historical_parallel", ""),
+                "stocks_analysis": candidate.get("stocks_analysis", {})
+            }
+            analysis_path.write_text(json.dumps(analysis_data, ensure_ascii=False, indent=2), encoding="utf-8")
+            signal_path.write_text(json.dumps(candidate, ensure_ascii=False, indent=2), encoding="utf-8")
+            
+            # [v22.3] PublisherAgent 연동을 위해 경로 정보 추가
+            main_content["paths"] = {
+                "topic_dir": str(topic_dir),
+                "long_path": str(long_path),
+                "insta_path": str(insta_path)
+            }
+            
+            print(f"  📸 Instagram 8-slide 카드뉴스 생성 중...")
+            insta_slides = self.content_engine.generate_insta_cards(candidate, script=short_script)
+            if insta_slides:
+                insta_path.write_text(json.dumps(insta_slides, ensure_ascii=False, indent=2), encoding="utf-8")
+                print(f"  ✅ 인스타 카드뉴스 저장 완료: {insta_path}")
+                
+            # 에셋 폴더 복사 (배경 이미지용)
+            assets_src = self.script_dir / "assets"
+            if assets_src.exists():
+                os.system(f"cp -r {assets_src} {topic_dir}/")
+            
+            print(f"  🎬 최종 상태: {status} (Score: {report.get('total_score', 0)})")
             
             self._generate_resilience_report(status, main_content, report)
+
+            return {
+                "status": "SUCCESS",
+                "topic": candidate.get("topic"),
+                "paths": {
+                    "long": str(long_path),
+                    "short": str(short_path),
+                    "insta": str(insta_path),
+                    "topic_dir": str(topic_dir)
+                }
+            }
         
         return {
             "status": status,
