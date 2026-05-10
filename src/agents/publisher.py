@@ -237,12 +237,25 @@ class PublisherAgent:
         else:
             rel_path = f"data/scripts/{self.path_prefix}"
 
+        # [v24.2] 실제 파일에서 진짜 제목 추출 (Gemini가 수정한 화려한 제목 반영)
+        actual_title = signal.get("topic", "")
+        script_path = Path(topic_path) / "today_script_long.md" if topic_path else None
+        if script_path and script_path.exists():
+            try:
+                content = script_path.read_text(encoding="utf-8")
+                # 첫 번째 줄에서 # [ECONOMIC HUNTER] 제거하고 제목만 추출
+                first_line = content.split('\n')[0]
+                actual_title = first_line.replace("# [ECONOMIC HUNTER]", "").replace("#", "").strip()
+                if not actual_title: actual_title = signal.get("topic", "")
+                print(f"  ✅ [PUBLISHER] 실제 파일 제목 추출 성공: {actual_title}")
+            except: pass
+
         # 새 콘텐츠 항목
         new_content = {
             "id": f"{self.today}_{datetime.now().strftime('%H%M%S')}",
             "date": f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}",
             "type": signal.get("content_type", "롱폼"),
-            "title": signal.get("topic", ""),
+            "title": actual_title,
             "thumbnail_text": "",
             "custom_img": signal.get("custom_img", "cover.png"),
             "path": rel_path,
