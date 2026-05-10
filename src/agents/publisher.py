@@ -16,14 +16,22 @@ class PublisherAgent:
 
     def __init__(self):
         # Modular CI/CD Trigger Test - FIXED
-        import os
-        self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
+        # [v24.2] 지능형 환경 인지: GitHub Actions 환경인지 로컬인지 자동 판별
+        self.is_github_actions = os.environ.get("GITHUB_ACTIONS") == "true"
+        if self.is_github_actions:
+            self.base_dir = Path(os.environ.get("GITHUB_WORKSPACE", "."))
+            print("  🌐 [ENV] GitHub Actions 환경 감지 - 서버 모드 작동")
+        else:
+            self.base_dir = Path(__file__).resolve().parent.parent.parent
+            print(f"  💻 [ENV] 로컬 개발 환경 감지 - 경로: {self.base_dir}")
+
         self.today = get_target_ymd().replace("-", "")
         self.path_prefix = get_standard_path_prefix()
         self.round = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
-        self.content_log_path = Path("data/history/content_log.json")
-        self.signal_log_path = Path("data/history/signal_log.json")
-        self.dashboard_dir = Path("dashboard")
+        
+        self.content_log_path = self.base_dir / "data/history/content_log.json"
+        self.signal_log_path = self.base_dir / "data/history/signal_log.json"
+        self.dashboard_dir = self.base_dir / "dashboard"
         self.dashboard_dir.mkdir(exist_ok=True)
         self.notifier = TelegramNotifier()
 

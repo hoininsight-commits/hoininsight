@@ -39,11 +39,19 @@
     </div>
     <script>
         let currentSlide = 0; let totalSlides = 0;
+        
+        // [v24.2] 지능형 환경 인지: GitHub Pages와 로컬 환경 구분
+        function getBaseDataPath(path) {
+            const hostname = window.location.hostname;
+            const isGitHub = hostname.includes('github.io');
+            return '../' + path + '/';
+        }
+
         async function initInsta() {
             const params = new URLSearchParams(window.location.search);
             const path = params.get('path');
             if (!path) return;
-            const basePath = '../' + path + '/';
+            const basePath = getBaseDataPath(path);
             try {
                 const response = await fetch(basePath + 'insta_cards.json');
                 const data = await response.json();

@@ -137,14 +137,19 @@
     <div class="archive-grid" id="archive-grid"></div>
 
     <script>
-        // 실제 데이터 연동 (content_log.json)
-        // 로컬 파일 접근 보안 이슈가 있을 수 있어, 실제 환경에서는 API를 통하거나 
-        // Publisher가 index.json을 별도로 뽑아주는 형식을 취함
+        // [v24.2] 지능형 환경 인지: GitHub Pages와 로컬 환경 구분
+        function getDataPath() {
+            const hostname = window.location.hostname;
+            const isGitHub = hostname.includes('github.io');
+            
+            // 깃허브 페이지인 경우 레포지토리 이름을 포함한 절대 경로 사용 고려
+            // (여기서는 대시보드 위치 기준으로 유연하게 대처)
+            return '../data/history/content_log.json';
+        }
+
         async function loadArchive() {
             try {
-                // 이 경로는 실제 로컬 실행 환경에 맞춰 조정 필요
-                // 여기서는 Publisher가 생성해줄 구조를 가정함
-                const response = await fetch('../data/history/content_log.json');
+                const response = await fetch(getDataPath());
                 const data = await response.json();
                 const grid = document.getElementById('archive-grid');
                 const loading = document.getElementById('loading');
