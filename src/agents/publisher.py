@@ -256,7 +256,7 @@ class PublisherAgent:
 
         # [v24.2] 실제 파일에서 진짜 제목 추출 (Gemini가 수정한 화려한 제목 반영)
         actual_title = signal.get("topic", "")
-        script_path = Path(topic_path) / "today_script_long.md" if topic_path else None
+        script_path = self.base_dir / rel_path / "today_script_long.md" if rel_path else None
         if script_path and script_path.exists():
             try:
                 content = script_path.read_text(encoding="utf-8")
