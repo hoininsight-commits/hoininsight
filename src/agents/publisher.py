@@ -706,10 +706,12 @@ class PublisherAgent:
         # 브리핑 출력
         print(brief)
 
-        # [v23.0] 텔레그램 링크 지능화 (카드뉴스 뷰어 연동)
-        # 로컬 테스트 환경을 위해 기본 주소를 localhost로 설정 (필요 시 .env의 DASHBOARD_URL 사용)
-        base_url = os.environ.get("DASHBOARD_URL", "http://localhost:8000")
-        insta_link = f"{base_url}/dashboard/insta_viewer.html?path={content.get('path', '')}"
+        # [v24.0] 서버/로컬 환경에 따른 대시보드 URL 지능형 선택
+        base_url = os.environ.get("DASHBOARD_URL", "http://localhost:8000").rstrip("/")
+        
+        # GitHub Pages 등 서브경로 대응을 위해 path 파라미터 전달
+        topic_path = content.get('path', '')
+        insta_link = f"{base_url}/dashboard/insta_viewer.html?path={topic_path}"
         
         brief_with_link = brief + f"\n\n📸 [카드뉴스 바로보기]\n{insta_link}"
         
