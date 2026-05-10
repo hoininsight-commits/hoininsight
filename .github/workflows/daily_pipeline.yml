@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Step 1 - Collection
+      - name: 🔥 RUN UNIFIED HUNTER PIPELINE (v24.0)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
@@ -34,14 +34,9 @@ jobs:
           OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
-        run: python -m src.agents.collectors.collector_runner
-
-      - name: Step 2 - Intelligent Hunt
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 src/core/scheduler.py --force
+        run: python3 run_full_pipeline.py
 
       - name: Step 3 - Upload Artifacts
         uses: actions/upload-pages-artifact@v3
