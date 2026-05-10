@@ -1,12 +1,12 @@
 # HOIN Insight v23.0 [The Predator's Instinct] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Intelligence Hardening (v23.0)**: `TopicArbiter`를 **Gemini 1.5 Pro**로 업그레이드하여 단순 뉴스 나열이 아닌 '돈의 이동 경로'를 추적하는 고차원 통찰력을 확보했습니다.
+- **Intelligence Hardening (v23.0)**: `TopicArbiter`를 **Gemini 2.5 Pro**로 격상하여 단순 뉴스 나열이 아닌 '돈의 이동 경로'를 추적하는 고차원 통찰력을 확보했습니다.
 - **Data Fidelity (v23.0)**: `DataCondenser`가 뉴스 스니펫(150자)을 보존하게 하여, AI가 제목 너머의 '시장의 뉘앙스'를 읽고 사냥감을 선정하도록 개선되었습니다.
 - **Narrative Revolution (v21.0~23.0)**: 로봇 말투(Step 1, [HOOK] 등)를 완전히 제거하고, 시청자를 '너/형'으로 부르는 친근하고 강력한 '경제사냥꾼' 페르소나를 정립했습니다.
 
 ## 2. 엔진 가동 및 저장 규칙
-- **저장 표준 (Storage Standard)**: 모든 출력물은 `YYYY/MM/DD/Round_X/` 경로에 저장됩니다. (예: `data/scripts/2026/05/09/Round_1/today_script_long.md`)
+- **저장 표준 (Storage Standard)**: 모든 출력물은 `YYYY/MM/DD/Round_X/` 경로에 저장됩니다. (예: `data/scripts/2026/05/09/Round_3/today_script_long.md`)
 - **실전 사냥**: `python3 src/core/scheduler.py` (Sentry → Hunter 풀루프 가동)
 - **유튜브 수집**: `python3 scripts/auto_learner.py` (KST 기준 회차 판별)
 

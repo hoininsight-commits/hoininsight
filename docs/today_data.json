@@ -22,7 +22,7 @@
   },
   "market_snapshot": {
     "rates": "4.36%",
-    "spx": "7374.3",
+    "spx": "7398.93",
     "btc": "N/A",
     "trend_short": "NEUTRAL",
     "trend_mid": "UP"
@@ -33,15 +33,39 @@
   },
   "history_layer": [
     {
-      "date": "20260508",
-      "topic": "호르무즈 69일의 전쟁, 유가 다음은 '배'의 시간: 조선 슈퍼사이클의 귀환",
-      "strength": 500.0,
+      "date": "20260510",
+      "topic": "하늘길이 열린다! 현대차-KAI 초거대 동맹, K-UAM(도심항공교통) 테마 이륙 준비 완료",
+      "strength": 50.0,
       "anomaly_type": "",
       "filters_hit": [
         "S"
       ],
       "why_now": "",
-      "path": "topics/items/20260508__top1.json",
+      "path": "topics/items/20260510__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-09",
+      "rank": 1,
+      "topic": "전쟁이 부활시킨 바다의 왕, 'K-조선'의 귀환",
+      "strength": 50.0,
+      "anomaly_type": "롱폼",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-09__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-08",
+      "rank": 1,
+      "topic": "호르무즈 분쟁 장기화에 따른 '공급망 발 구조적 인플레이션(Supply-side Structural Inflation)'과 글로벌 자본의 방어적 재편",
+      "strength": 50.0,
+      "anomaly_type": "롱폼",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-08__top1.json",
       "isToday": false
     },
     {
@@ -67,31 +91,7 @@
       ],
       "path": "topics/items/2026-05-01__top1.json",
       "isToday": false
-    },
-    {
-      "date": "2026-04-30",
-      "rank": 1,
-      "topic": "분석 중...",
-      "strength": 0,
-      "anomaly_type": "롱폼",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-30__top1.json",
-      "isToday": false
-    },
-    {
-      "date": "2026-04-28",
-      "rank": 1,
-      "topic": "WTI_OIL 5일 누적 강세 추세 (+5.66%)",
-      "strength": 0,
-      "anomaly_type": "쇼츠",
-      "filters_hit": [
-        "S"
-      ],
-      "path": "topics/items/2026-04-28__top1.json",
-      "isToday": false
     }
   ],
-  "last_updated": "2026-05-08T22:41:09.830706"
+  "last_updated": "2026-05-10T17:02:24.907223"
 }

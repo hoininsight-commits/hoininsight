@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Insight | Instagram Card News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Outfit:wght@700&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --accent: #ff007a;
+            --bg: #000;
+            --insta-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: 'Noto Sans KR', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 4:5 Instagram Portrait Ratio */
+        .phone-frame {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 4 / 5;
+            background: var(--bg);
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        /* Slide Content Layer */
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Page Number */
+        .page-num {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Outfit';
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            z-index: 10;
+        }
+
+        /* Header / Logo */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .logo-box {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        .brand {
+            font-family: 'Outfit';
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* Typography Styles */
+        .title-main {
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            word-break: keep-all;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .highlight-text {
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .body-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ddd;
+            font-weight: 400;
+            word-break: keep-all;
+        }
+
+        /* Specialized Layouts */
+        .cover-layout { justify-content: center; text-align: center; }
+        .cover-layout .title-main { font-size: 56px; }
+
+        .fact-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-tag {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Navigation Buttons */
+        .nav-btns {
+            position: fixed;
+            bottom: 30px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover { background: var(--primary); color: #000; }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">원고를 디자인하는 중...</div>
+
+    <div class="phone-frame">
+        <div class="container" id="slide-container"></div>
+    </div>
+
+    <div class="nav-btns">
+        <button class="nav-btn" onclick="prevSlide()">이전</button>
+        <button class="nav-btn" onclick="nextSlide()">다음</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        let totalSlides = 0;
+
+        async function initInsta() {
+            const params = new URLSearchParams(window.location.search);
+            const path = params.get('path');
+            
+            if (!path) {
+                alert('경로 정보가 필요합니다.');
+                return;
+            }
+
+            // 상대 경로 보정 (dashboard 폴더 기준)
+            const basePath = `../${path}/`;
+
+            try {
+                const response = await fetch(basePath + 'insta_cards.json');
+                const slides = await response.json();
+                totalSlides = slides.length;
+                
+                renderInsta(slides, basePath);
+                document.getElementById('loader').style.display = 'none';
+            } catch (err) {
+                console.error(err);
+                document.getElementById('loader').innerHTML = '데이터 로딩 실패';
+            }
+        }
+
+        function renderInsta(slides, basePath) {
+            const container = document.getElementById('slide-container');
+            
+            slides.forEach((slide, idx) => {
+                const div = document.createElement('div');
+                div.className = 'slide';
+                
+                // 배경 설정
+                const bg = idx === 0 ? 'cover.png' : (idx % 2 === 0 ? 'analysis.png' : 'cover.png');
+                div.style.backgroundImage = `url('${basePath}assets/${bg}'), url('assets/${bg}')`;
+
+                const isCover = idx === 0;
+                
+                div.innerHTML = `
+                    <div class="page-num">${idx + 1} / ${slides.length}</div>
+                    <div class="content ${isCover ? 'cover-layout' : ''}">
+                        <div class="header">
+                            <div class="logo-box"></div>
+                            <span class="brand">HOIN INSIGHT</span>
+                        </div>
+                        
+                        ${isCover ? `
+                            <h1 class="title-main">${slide.title}</h1>
+                            <p class="body-text">${slide.content}</p>
+                        ` : `
+                            <div class="highlight-text">${slide.title}</div>
+                            <div class="fact-box">
+                                <p class="body-text" style="color: #fff; font-weight: 700;">${slide.content}</p>
+                            </div>
+                        `}
+
+                        <div class="footer">
+                            <span class="footer-tag">경제의 맥을 짚는 사냥꾼</span>
+                            <span class="footer-tag">@hoin_insight</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updatePos();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updatePos();
+            }
+        }
+
+        function updatePos() {
+            document.getElementById('slide-container').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        window.onload = initInsta;
+    </script>
+</body>
+</html>

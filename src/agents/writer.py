@@ -116,7 +116,7 @@ class WriterAgent:
         print(f"\n✍️ AGENT-05 CONTENT_ENGINE v21.0 (Strategic Hunt Mode) 가동")
         
         # 1. 로우 데이터 경로 설정 (Arbiter 전수 조사용)
-        raw_dir = Path(f"data/raw/{self.today}/{self.round}")
+        raw_dir = Path("data/raw") / self.path_prefix
         
         # 2. [STRATEGIC HUNT] Arbiter를 통해 로우 데이터에서 직접 토픽 사냥
         from src.topic_engine.arbiter import TopicArbiter
@@ -230,6 +230,19 @@ class WriterAgent:
             script_md += main_content['script']
             
             long_path.write_text(script_md, encoding="utf-8")
+            
+            # [v21.0] Shorts 호환성을 위해 short_path로도 저장
+            short_path = self.script_dir / "today_script_short.md"
+            short_path.write_text(script_md, encoding="utf-8")
+
+            # [v22.0] 인스타그램 8단계 카드뉴스 데이터 생성
+            print(f"  📸 Instagram 8-slide 카드뉴스 생성 중...")
+            insta_slides = self.content_engine.generate_insta_cards(candidate)
+            if insta_slides:
+                insta_path = self.script_dir / "insta_cards.json"
+                insta_path.write_text(json.dumps(insta_slides, ensure_ascii=False, indent=2), encoding="utf-8")
+                print(f"  ✅ 인스타 카드뉴스 데이터 저장 완료: {insta_path}")
+            
             print(f"  🎬 최종 상태: {status_display} (Score: {report.get('total_score', 0)})")
             
             self._generate_resilience_report(status, main_content, report)

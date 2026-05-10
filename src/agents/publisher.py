@@ -7,7 +7,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from src.utils.telegram_notifier import TelegramNotifier
-from src.utils.target_date import get_target_ymd, get_current_round
+from src.utils.target_date import get_target_ymd, get_current_round, get_standard_path_prefix
 
 
 class PublisherAgent:
@@ -17,6 +17,7 @@ class PublisherAgent:
         import os
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = get_target_ymd().replace("-", "")
+        self.path_prefix = get_standard_path_prefix()
         self.round = os.environ.get("HOIN_TARGET_ROUND", str(get_current_round()))
         self.content_log_path = Path("data/history/content_log.json")
         self.signal_log_path = Path("data/history/signal_log.json")
@@ -35,7 +36,7 @@ class PublisherAgent:
                 return None
 
         # 1. 신호 (v18.5: 오늘의 회차별 signal 데이터만 엄격하게 로드)
-        target_p = self.base_dir / f"data/signals/{self.today}/{self.round}/today_signal.json"
+        target_p = self.base_dir / "data/signals" / self.path_prefix / "today_signal.json"
         
         if not target_p.exists():
             print(f"  ❌ [ERROR] 현재 {self.round}회차의 신호 데이터(today_signal.json)가 존재하지 않습니다.")
@@ -74,7 +75,7 @@ class PublisherAgent:
             data["signal"] = None
 
         # 분석
-        analysis_p = self.base_dir / f"data/analysis/{self.today}/{self.round}/today_analysis.json"
+        analysis_p = self.base_dir / "data/analysis" / self.path_prefix / "today_analysis.json"
         if analysis_p.exists():
             data["analysis"] = safe_load_json(analysis_p)
         else:
@@ -82,7 +83,7 @@ class PublisherAgent:
             data["analysis"] = None
 
         # 종목
-        stocks_p = self.base_dir / f"data/analysis/{self.today}/{self.round}/today_stocks.json"
+        stocks_p = self.base_dir / "data/analysis" / self.path_prefix / "today_stocks.json"
         if stocks_p.exists():
             data["stocks"] = safe_load_json(stocks_p)
         else:
@@ -90,17 +91,18 @@ class PublisherAgent:
             data["stocks"] = None
 
         # 스크립트
-        script_long_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_long.md"
+        script_long_p = self.base_dir / "data/scripts" / self.path_prefix / "today_script_long.md"
         if script_long_p.exists():
             data["script_long_path"] = str(script_long_p)
         else:
             print(f"  ⚠️ [PUBLISHER] today_script_long.md NOT FOUND at {script_long_p}")
             data["script_long_path"] = None
 
-        script_short_p = self.base_dir / f"data/scripts/{self.today}/{self.round}/today_script_short.md"
+        script_short_p = self.base_dir / "data/scripts" / self.path_prefix / "today_script_short.md"
         if script_short_p.exists():
             data["script_short_path"] = str(script_short_p)
         else:
+            # Fallback search if standardized path is missing
             if Path("data/scripts").exists():
                 for d in sorted(Path("data/scripts").rglob("today_script_short.md"), key=lambda x: x.stat().st_mtime, reverse=True):
                     data["script_short_path"] = str(d)
@@ -130,7 +132,7 @@ class PublisherAgent:
         raw_base = Path("data/raw")
         if raw_base.exists():
             # 오늘자 회차 폴더 우선 확인
-            p = raw_base / self.today / str(self.round) / "market.json"
+            p = raw_base / self.path_prefix / "market.json"
             if not p.exists():
                 # 없으면 최신 데이터 검색 (기존 로직 보강)
                 for d in sorted(raw_base.rglob("market.json"), key=lambda x: x.stat().st_mtime, reverse=True):
@@ -143,7 +145,7 @@ class PublisherAgent:
 
         # macro 데이터
         if raw_base.exists():
-            p = raw_base / self.today / str(self.round) / "macro.json"
+            p = raw_base / self.path_prefix / "macro.json"
             if not p.exists():
                 for d in sorted(raw_base.rglob("macro.json"), key=lambda x: x.stat().st_mtime, reverse=True):
                     res = safe_load_json(d)
@@ -155,7 +157,7 @@ class PublisherAgent:
 
         # sentiment 데이터
         if raw_base.exists():
-            p = raw_base / self.today / str(self.round) / "sentiment.json"
+            p = raw_base / self.path_prefix / "sentiment.json"
             if not p.exists():
                 for d in sorted(raw_base.rglob("sentiment.json"), key=lambda x: x.stat().st_mtime, reverse=True):
                     res = safe_load_json(d)
@@ -174,7 +176,7 @@ class PublisherAgent:
 
         # [지시서 #055] COT 데이터 로드
         if raw_base.exists():
-            p = raw_base / self.today / str(self.round) / "cot.json"
+            p = raw_base / self.path_prefix / "cot.json"
             if not p.exists():
                 for d in sorted(raw_base.rglob("cot.json"), key=lambda x: x.stat().st_mtime, reverse=True):
                     res = safe_load_json(d)
@@ -186,7 +188,7 @@ class PublisherAgent:
 
         # collection_status 데이터
         if raw_base.exists():
-            p = raw_base / self.today / str(self.round) / "collection_status.json"
+            p = raw_base / self.path_prefix / "collection_status.json"
             if not p.exists():
                 for d in sorted(raw_base.rglob("collection_status.json"), key=lambda x: x.stat().st_mtime, reverse=True):
                     res = safe_load_json(d)
@@ -450,15 +452,11 @@ class PublisherAgent:
             "last_updated": datetime.now().isoformat()
         }
 
-        # 6. 저장 및 동기화
+        # 6. 저장 및 동기화 (v22.0: dashboard/로 단일화)
         output_path = self.dashboard_dir / "today_data.json"
-        output_path.write_text(json.dumps(ui_contract, ensure_ascii=False, indent=2))
+        output_path.write_text(json.dumps(ui_contract, ensure_ascii=False, indent=2), encoding="utf-8")
         
-        docs_dir = self.base_dir / "docs"
-        docs_dir.mkdir(exist_ok=True)
-        (docs_dir / "today_data.json").write_text(json.dumps(ui_contract, ensure_ascii=False, indent=2))
-        
-        print(f"  대시보드 데이터 및 HTML 동기화 완료: {docs_dir}")
+        print(f"  대시보드 데이터 업데이트 완료: {output_path}")
 
 
     def update_topics_archive(self, today_data: dict):
@@ -469,7 +467,8 @@ class PublisherAgent:
         signal = today_data.get('signal', {})
         date = today_data.get('date', datetime.now().strftime('%Y-%m-%d'))
 
-        items_dir = self.base_dir / 'docs' / 'topics' / 'items'
+        # v22.0: docs/에서 dashboard/로 이동
+        items_dir = self.dashboard_dir / 'topics' / 'items'
         items_dir.mkdir(parents=True, exist_ok=True)
 
         # 신호 기록 업데이트
@@ -532,8 +531,8 @@ class PublisherAgent:
         # 날짜 최신순 정렬 및 최대 60개 유지
         archive_list = sorted(archive_list, key=lambda x: x.get('date', ''), reverse=True)[:60]
 
-        # 4. index.json 저장
-        index_path = self.base_dir / 'docs' / 'topics' / 'index.json'
+        # 4. index.json 저장 (v22.0: dashboard/topics/index.json)
+        index_path = self.dashboard_dir / 'topics' / 'index.json'
         with open(index_path, 'w', encoding='utf-8') as f:
             json.dump(archive_list, f, ensure_ascii=False, indent=2)
 

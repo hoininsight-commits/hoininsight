@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
-from src.utils.target_date import get_target_ymd, get_current_round
+from src.utils.target_date import get_target_ymd, get_current_round, get_standard_path_prefix
 from src.core.filters import SignalFilters
 from src.core.gemini_client import GeminiClient
 from src.agents.extensions.detector_extensions import DetectorEnricher
@@ -19,8 +19,9 @@ class DetectorAgent:
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
         self.today = get_target_ymd().replace("-", "")
         self.round = get_current_round()
-        self.raw_dir = self.base_dir / f"data/raw/{self.today}/{self.round}"
-        self.signal_dir = self.base_dir / f"data/signals/{self.today}/{self.round}"
+        self.path_prefix = get_standard_path_prefix()
+        self.raw_dir = self.base_dir / "data/raw" / self.path_prefix
+        self.signal_dir = self.base_dir / "data/signals" / self.path_prefix
         self.signal_dir.mkdir(parents=True, exist_ok=True)
         self.filters = SignalFilters()
         self.gemini = GeminiClient()

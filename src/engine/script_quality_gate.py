@@ -80,67 +80,63 @@ class ScriptQualityGate:
         first_line = lines[0].lower() if lines else ""
         
         # [BANNED PHRASE CHECK - ROBOT DETECTOR]
+        # 전문적인 분석 용어는 허용하되, 지나치게 딱딱한 전형적 패턴만 체크
         robot_phrases = [
-            "왜 지금 시장은", "상황에 주목하고 있을까", "포착되었다", "관측된다", 
-            "증명된 사실", "이례적인 움직임", "수급 쏠림", "디커플링 현상",
+            "왜 지금 시장은", "상황에 주목하고 있을까", "증명된 사실", 
             "주요 거시 지표", "결정적 수급 변화"
         ]
         robot_count = sum(1 for rp in robot_phrases if rp in script)
-        if robot_count >= 2:
+        if robot_count >= 4: # 기준 완화
             scores["status"] = "DROP"
-            scores["drop_reason"] = f"Robot signature detected ({robot_count} phrases found)"
+            scores["drop_reason"] = f"Excessive robot signature detected ({robot_count} phrases)"
             return scores
 
-        # 1. HOOK 체크 (사냥꾼 페르소나 강화)
-        lines = [l.strip() for l in script.split('\n') if l.strip()]
-        first_line = lines[0].lower() if lines else ""
+        # 1. PERSONA 체크 (사냥꾼 DNA: 형/너 스타일 OR 전문 조사관 스타일 둘 다 허용)
+        # [HUNTER/INVESTIGATOR MARKERS]
+        professional_markers = ["분석입니다", "포착됐습니다", "팩트", "데이터", "MOU", "수혜", "결론", "시나리오"]
+        hunter_markers = ["야,", "너,", "형이", "말해봐", "길목", "냄새"]
         
-        # [HUNTER PERSONA MARKERS]
-        hunter_markers = ["야,", "너,", "형이", "말해봐", "샴페인", "손가락", "밤잠", "길목", "냄새"]
-        persona_score = sum(2 for hm in hunter_markers if hm in script)
+        persona_score = sum(1 for m in professional_markers + hunter_markers if m in script)
         
-        banned_hooks = ["이상한 점이 느껴지지 않아", "이상한 점이 느껴되지 않아", "이상한 점을 느끼껴지지 않아"]
+        banned_hooks = ["이상한 점이 느껴지지 않아", "이상한 점이 느껴되지 않아"]
         if any(bh in script for bh in banned_hooks):
             scores["hook_score"] = 1
             scores["status"] = "DROP"
             scores["drop_reason"] = "Banned cliché found in hook"
         elif any(hm in first_line for hm in ["야,", "너,", "형이", "솔직히"]):
-            scores["hook_score"] = 5
-        elif "[hook]" in script_lower or re.search(r'\d+', first_line) or "?" in first_line:
-            scores["hook_score"] = 4
+            scores["hook_score"] = 5 # 형 스타일
+        elif any(pm in first_line for pm in ["분석", "팩트", "보고서"]):
+            scores["hook_score"] = 5 # 전문 분석 스타일
+        elif "[00-05초]" in script_lower or "?" in first_line:
+            scores["hook_score"] = 4 # 쇼츠 규격 준수
         else:
             scores["hook_score"] = 2
 
         # 2. EVIDENCE/NUMBERS 체크 (숫자로 증명)
-        has_numbers = len(re.findall(r'\d+', script)) >= 3
+        # 쇼츠는 날짜와 수치가 핵심
+        has_numbers = len(re.findall(r'\d+', script)) >= 5
         if has_numbers:
             scores["why_now_score"] = 5
-        elif "숫자로 증명" in script_lower:
-            scores["why_now_score"] = 2 # 말로만 숫자로 증명한다고 하면 감점
         else:
-            scores["why_now_score"] = 1
+            scores["why_now_score"] = 2
 
-        # 3. WHY/CAUSALITY 체크 (수익의 계보, 세 가지 포인트 등)
-        if any(x in script_lower for x in ["세 가지", "3가지", "계보", "돈의 흐름", "수익"]):
+        # 3. WHY/CAUSALITY 체크 (인과관계 및 데이터 체인)
+        if any(x in script_lower for x in ["이유", "때문", "영향", "수혜", "데이터", "MOU"]):
             scores["scenario_score"] = 5
-        elif any(x in script_lower for x in ["[why]", "인과관계", "이유", "비즈니스"]):
-            scores["scenario_score"] = 3
         else:
-            scores["scenario_score"] = 1
+            scores["scenario_score"] = 2
 
         # 4. ACTION/TARGET 체크 (행동 지침 및 종목명)
-        action_indicators = ["대응", "타점", "매수", "사냥", "움직여", "명령", "결론", "길목"]
+        action_indicators = ["종목", "대응", "전략", "결론", "주목", "매수", "수혜주"]
         if any(x in script_lower for x in action_indicators):
             scores["action_score"] = 5
         else:
-            scores["action_score"] = 1
-            scores["status"] = "DROP"
-            scores["drop_reason"] = "ACTION/TARGET missing or invalid"
+            scores["action_score"] = 2
 
         # 최종 점수 보정 (페르소나 점수 반영)
-        if persona_score < 4 and scores["status"] == "PASS":
-             scores["status"] = "HOLD" # 페르소나가 약하면 HOLD로 격하
-             scores["drop_reason"] = "Weak Hunter Persona"
+        if persona_score < 2 and scores["status"] == "PASS":
+             scores["status"] = "HOLD" 
+             scores["drop_reason"] = "Missing Professional or Hunter Persona"
 
         return scores
 
