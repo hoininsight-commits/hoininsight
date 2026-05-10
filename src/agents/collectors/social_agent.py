@@ -19,6 +19,10 @@ class SocialAgent:
         self.sensitivity = "MID"
         self.collector = SocialPredictionCollector()
         self.deep_collector = Last30DaysCollector()
+        # [v24.1] 도구 존재 여부 사전 확인
+        self.use_deep_collector = self.deep_collector.script_path.exists()
+        if not self.use_deep_collector:
+            print(f"  ℹ️ [SocialAgent] Deep Research 도구가 없습니다. 기본 수집 모드로 작동합니다.")
 
     def run(self) -> dict:
         print(f"🚀 SocialAgent 가동: Deep Research & 소셜 트렌드 분석 시작")
@@ -57,16 +61,22 @@ class SocialAgent:
             base_data = self.collector.collect_all(search_keywords)
             
             # 3. Last30Days Collector (Deep Research) 실행
-            # 월가 커뮤니티(Wall Street) 여론을 집중적으로 파헤치기 위해 서브레딧 타겟 지정
-            target_subreddits = "wallstreetbets,investing,Economics"
+            deep_data = {
+                "reddit": [], "x": [], "youtube": [], "hacker_news": [], "polymarket": [], "github": []
+            }
             
-            deep_reports = []
-            for kw in search_keywords[:5]:
-                report = self.deep_collector.collect(kw, depth="quick", subreddits=target_subreddits)
-                if report:
-                    deep_reports.append(report)
-            
-            deep_data = self.deep_collector.transform_to_social_format(deep_reports)
+            if self.use_deep_collector:
+                # 월가 커뮤니티(Wall Street) 여론을 집중적으로 파헤치기 위해 서브레딧 타겟 지정
+                target_subreddits = "wallstreetbets,investing,Economics"
+                deep_reports = []
+                for kw in search_keywords[:5]:
+                    report = self.deep_collector.collect(kw, depth="quick", subreddits=target_subreddits)
+                    if report:
+                        deep_reports.append(report)
+                
+                deep_data = self.deep_collector.transform_to_social_format(deep_reports)
+            else:
+                print("  ⏭️ [SocialAgent] Deep Research 스킵 (도구 미설치)")
             
             # 4. 데이터 병합
             merged_data = {
