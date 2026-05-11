@@ -45,5 +45,5 @@ jobs:
           mkdir -p data/transcripts/youtube data/raw/youtube
           git add -f data/transcripts/youtube data/raw/youtube
           git commit -m "Auto: Collected new YouTube transcripts" || echo "No changes to commit"
-          git pull --rebase --autostash origin main
+          git pull --rebase -X theirs origin main
           git push
