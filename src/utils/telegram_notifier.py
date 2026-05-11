@@ -2,6 +2,7 @@
 import os
 import requests
 import json
+import re
 from typing import Optional
 
 class TelegramNotifier:
@@ -23,10 +24,34 @@ class TelegramNotifier:
             
         self.base_url = f"https://api.telegram.org/bot{self.token}"
 
-    def send_message(self, message: str, parse_mode: Optional[str] = "Markdown") -> bool:
+    def _sanitize_for_html(self, text: str) -> str:
+        """마크다운 형식을 텔레그램용 HTML로 변환 및 특수문자 이스케이프"""
+        if not text: return ""
+        
+        # 1. 기본 HTML 특수문자 치환 (중요)
+        text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        
+        # 2. 마크다운 헤더 (# Header) -> 볼드 처리
+        text = re.sub(r'^#+\s*(.*)$', r'<b>\1</b>', text, flags=re.MULTILINE)
+        
+        # 3. 마크다운 볼드 (**Bold** or __Bold__) -> <b>
+        text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+        text = re.sub(r'__(.*?)__', r'<b>\1</b>', text)
+        
+        # 4. 마크다운 이탤릭 (*Italic* or _Italic_) -> <i>
+        text = re.sub(r'\*(.*?)\*', r'<i>\1</i>', text)
+        text = re.sub(r'_(.*?)_', r'<i>\1</i>', text)
+        
+        return text
+
+    def send_message(self, message: str, parse_mode: Optional[str] = "HTML") -> bool:
         if not self.token or not self.chat_id:
             print("[Telegram] Skipping notification (Token or Chat ID missing)")
             return False
+
+        # HTML 모드일 경우 마크다운 기법들을 HTML 태그로 변환
+        if parse_mode == "HTML":
+            message = self._sanitize_for_html(message)
 
         try:
             url = f"{self.base_url}/sendMessage"
@@ -56,7 +81,7 @@ class TelegramNotifier:
             print(f"[Telegram] Message Error: {e}")
             return False
 
-    def send_message_in_chunks(self, text: str, parse_mode: str = "Markdown") -> bool:
+    def send_message_in_chunks(self, text: str, parse_mode: str = "HTML") -> bool:
         """Sends a long message by splitting it into smaller chunks."""
         MAX_LEN = 4000
         if len(text) <= MAX_LEN:
