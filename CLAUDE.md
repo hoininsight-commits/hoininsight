@@ -26,10 +26,10 @@ git pull origin main
 ✅ 보급 및 엔진 점검 완료 (git pull 완료, v23.0 HANDOFF 숙지)
 
 📌 현재 상태:
-- 엔진 버전: v24.4 [Deep Research Hunt]
-- 완료된 것: 자율 심층 리서치 에이전트(DDG Search) 통합, 1회 구동 비용 측정 로직, Arbiter 2.5 Pro 확장
-- 세션 비용 현황: Last run ~$0.38 (USD)
-- 다음 우선순위: [1순위: DART API 의존성 복구 / 2순위: 인스타 카드뉴스 템플릿 다양화]
+- 엔진 버전: v24.5 [Two-Track Strategy & Isolated Learning]
+- 완료된 것: 글로벌/국내 투트랙 사냥 로직(Arbiter v21.0), 유튜브 데이터 격리(youtube_data/), 자막 추출 엔진(yt-dlp) 수리, 자동 스케줄링(02, 08, 14, 20 KST) 및 충돌 방지 전략 적용
+- 세션 비용 현황: Last run ~$0.36 (USD)
+- 다음 우선순위: [1순위: 첫 자동 사냥 결과 모니터링 / 2순위: youtube_data/history 기반 DNA 패치 자동화]
 
 🔔 사냥을 시작할까요? (python3 run_full_pipeline.py)
 ```

@@ -1,31 +1,31 @@
-# HOIN Insight v24.4 [Deep Research Hunt] Handover
+# HOIN Insight v24.5 [Two-Track Strategy & Isolated Learning] Handover
 
 ## 1. 핵심 진화 사항 (The Great Evolution)
-- **Intelligent Environment Awareness (v24.2)**: 사냥꾼이 스스로의 위치(GitHub Server, Home, Office)를 식별합니다. 이제 어떤 로컬 환경에서도 경로 설정 없이 즉시 사냥이 가능합니다.
-- **Path Standardization (v24.2)**: 대시보드 주소 체계를 `BASE_URL` 기반의 절대 경로 시스템으로 통합했습니다. GitHub Pages 배포 시 발생하는 이미지 엑박 문제를 근본적으로 해결했습니다.
-- **Visual Revolution (v24.0)**: **Imagen 4.0**을 통해 주제별 맞춤형 커버 이미지(`cover.png`)를 자동 생성합니다.
-- **Unified Pipeline (v24.0)**: 모든 공정을 `run_full_pipeline.py` 하나로 통합하여 안정성을 극대화했습니다.
-- **Autonomous Deep Research (v24.4)**: 하드코딩된 가이드라인 없이, AI가 실시간 웹 검색(DuckDuckGo)을 통해 글로벌 매크로와 K-종목 간의 '구조적 연결고리'를 스스로 사냥합니다.
+- **Two-Track Hunting Logic (v24.5)**: 이제 사냥꾼은 글로벌 거시 흐름(Track A)과 국내 구조적 특수성/희소성(Track B)을 동시에 사냥합니다. IPO 희소성이나 정부 정책 자금 같은 국내 전용 트리거를 포착할 수 있습니다.
+- **Isolated Learning Territory (v24.5)**: 유튜브 학습 데이터와 메인 사냥 데이터를 물리적으로 분리했습니다. 모든 유튜브 관련 데이터는 `youtube_data/` 폴더 내에서만 관리되어 메인 파이프라인과의 충돌을 원천 차단합니다.
+- **Robust Transcript Ingestion (v24.5)**: `yt-dlp` 기반의 강화된 자막 추출 엔진을 도입하여 경제사냥꾼의 모든 영상 대본을 100% 수집 가능하게 수리했습니다.
+- **Dashboard Deep Reading (v24.5)**: 인스타 카드뉴스 뷰어에서 '사냥 보고서 전문'을 즉시 읽을 수 있는 모달 기능을 추가하여 분석의 깊이를 대시보드에 통합했습니다.
 
 ## 2. 엔진 가동 및 저장 규칙
-- **저장 표준 (Storage Standard)**: `data/scripts/YYYY/MM/DD/Topic_N/` 경로를 엄수합니다.
-- **환경 식별 로직**: `PublisherAgent`의 `env_type` 속성을 참조하여 현재 실행 환경을 판별할 수 있습니다.
-- **대시보드 기준점**: HTML/JS 내의 `const BASE_URL`이 모든 경로의 기준이 됩니다.
+- **저장 표준 (Storage Standard)**: 
+    - 메인 사냥 데이터: `data/scripts/YYYY/MM/DD/Topic_N/`
+    - 유튜브 학습 데이터: `youtube_data/transcripts/YYYY/MM/DD/`
+- **자동화 스케줄 (Automated Schedule)**: 
+    - **YouTube Learner**: 01, 07, 13, 19 KST (사냥 1시간 전)
+    - **Main Pipeline**: 02, 08, 14, 20 KST
+- **충돌 방지 전략**: GitHub Actions에서 데이터 충돌 시 `-X theirs` 옵션을 통해 서버가 생성한 최신 데이터를 우선하여 자동 합병합니다.
 
 ## 3. 사냥꾼의 지능 (Hunter Intelligence)
-- **Actual Title Extraction (v24.2)**: 장부(`content_log.json`)에는 AI가 최종적으로 다듬은 실제 마크다운 파일 내의 제목을 추출하여 기록합니다.
-- **Model Tiering**: 
-    - **Tier 1 (Pro)**: 토픽 선정(Arbiter), 심층 리서치 합성(Deep Researcher), 최종 원고 작성(Writer), 이미지 생성(Imagen 4.0).
-    - **Tier 3 (Flash)**: 데이터 수집 및 정제, 기술적 파싱, 품질 검증.
+- **Agnostic Context**: 메인 파이프라인은 유튜브 학습 데이터에 의존하지 않고 오직 로우 데이터(DART, ECOS, News)만으로 독자적인 사냥을 수행합니다.
+- **DNA Evolution Log**: `youtube_data/history/dna_evolution.json`에 사냥꾼의 안목 분석 결과가 쌓이며, 향후 프롬프트 자동 패치(DNA Patch)의 재료로 활용됩니다.
 
 ## 4. 필수 체크포인트 (Next session focus)
-- **지능형 스케줄러(v24.5) 런칭**: 수동 실행을 대체할 경량화된 배치 스케줄러 구축 필요.
-- **이미지 생성 다각화**: 슬라이드별 배경 이미지 생성을 통한 시각적 깊이 확보.
+- **02시 자동 사냥 모니터링**: 스케줄러가 첫 주기를 정상적으로 도는지, 대시보드 배포가 잘 되는지 확인.
+- **DNA Patch 자동화**: 학습된 사냥꾼의 페르소나를 `analyst_prompt.py`에 자동으로 반영하는 로직 설계.
 
 ---
 ## 🚨 [MANDATORY AI PROTOCOL] - 필수 준수 사항
-
-모든 AI 에이전트는 종료 시 `docs/CHRONICLE.md`에 기록을 APPEND하고 `git push` 해야 함. **특히 경로 수정 시 `BASE_URL`과 `env_type` 로직을 해치지 않도록 각별히 유의할 것.**
+모든 유튜브 관련 데이터는 반드시 `youtube_data/` 경로를 사용해야 하며, `data/` 경로와 혼용하지 마십시오.
 
 ---
-*본 문서는 2026-05-11 v24.4 [Deep Research Hunt] 업데이트 후 갱신된 최종 지침서입니다.*
+*본 문서는 2026-05-11 v24.5 업데이트 후 갱신된 최종 지침서입니다.*
