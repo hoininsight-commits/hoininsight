@@ -21,17 +21,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Setup YouTube Cookies
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        run: |
+          if [ -n "$YOUTUBE_COOKIES" ]; then
+            echo "$YOUTUBE_COOKIES" > youtube_cookies.txt
+            echo "✅ YouTube cookies restored"
+          else
+            echo "⚠️ YouTube cookies secret is missing"
+          fi
+
       - name: Run YouTube Learner (Auto Round)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          # YOUTUBE_COOKIES_BASE64: ${{ secrets.YOUTUBE_COOKIES_BASE64 }} # 필요 시 추가
         run: python3 scripts/auto_learner.py
 
       - name: Commit & Push Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          mkdir -p data/transcripts/youtube data/raw/youtube
           git add data/transcripts/youtube data/raw/youtube
           git commit -m "Auto: Collected new YouTube transcripts" || echo "No changes to commit"
           git push

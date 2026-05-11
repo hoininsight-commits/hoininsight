@@ -62,8 +62,13 @@ def ingest_transcript(meta_path: Path):
         full_text = ""
         
         try:
-            # First attempt: youtube-transcript-api
-            transcript_list = YouTubeTranscriptApi().list(vid_id)
+            # First attempt: youtube-transcript-api (with cookies if available)
+            cookies_path = "youtube_cookies.txt"
+            if os.path.exists(cookies_path):
+                logger.info("Using cookies for YouTubeTranscriptApi")
+                transcript_list = YouTubeTranscriptApi().list(vid_id, cookies=cookies_path)
+            else:
+                transcript_list = YouTubeTranscriptApi().list(vid_id)
             
             try:
                 transcript = transcript_list.find_manually_created_transcript(['ko'])
