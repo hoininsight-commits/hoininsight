@@ -44,194 +44,93 @@ class PublisherAgent:
         self.notifier = TelegramNotifier()
 
     def load_today_data(self) -> dict:
-        """오늘 생성된 모든 데이터 로드"""
+        """[v24.5] 통합 경로 로직: 가장 최근의 Topic_N 폴더를 찾아 그 안의 파일들을 세트로 로드"""
         data = {"date": f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}"}
-
+        
         def safe_load_json(path: Path):
             try:
                 return json.loads(path.read_text(encoding='utf-8'))
             except:
                 return None
 
-        # 1. 신호 (v18.5: 오늘의 회차별 signal 데이터만 엄격하게 로드)
-        target_p = self.base_dir / "data/signals" / self.path_prefix / "today_signal.json"
+        # 1. 대상 폴더 찾기 (가장 최근에 수정된 Topic_N)
+        daily_base = self.base_dir / "data" / "scripts" / self.path_prefix
+        target_dir = None
         
-        if not target_p.exists():
-            print(f"  ❌ [ERROR] 현재 {self.round}회차의 신호 데이터(today_signal.json)가 존재하지 않습니다.")
-            print(f"  [PATH] {target_p}")
-            return {}
+        if daily_base.exists():
+            topic_dirs = sorted(list(daily_base.glob("Topic_*")), key=lambda x: x.stat().st_mtime, reverse=True)
+            if topic_dirs:
+                target_dir = topic_dirs[0]
+                print(f"  📂 [Publisher] Latest Topic Directory Detected: {target_dir.name}")
+        
+        # 2. 파일 로드 헬퍼 (타겟 폴더 우선, 없으면 표준 경로Fallback)
+        def get_file_content(filename: str, use_json=True):
+            # A. 타겟 폴더 내부 확인 (최우선)
+            if target_dir:
+                p = target_dir / filename
+                if p.exists():
+                    try:
+                        return json.loads(p.read_text(encoding="utf-8")) if use_json else p.read_text(encoding="utf-8")
+                    except: pass
             
-        print(f"  [DEBUG] Found target signal for Round {self.round}: {target_p}")
-        res = safe_load_json(target_p)
-        if res:
-                # Detector의 MAIN 결과를 Publisher 규격으로 변환 (Arbiter 통합 구조 대응)
-                main = res.get("MAIN", res) # MAIN 키가 있으면 사용, 없으면 전체가 데이터
-                data["signal"] = {
-                    "topic": main.get("topic", main.get("event", "N/A")),
-                    "event": main.get("event", main.get("topic", "N/A")),
-                    "strength": main.get("final_score", main.get("strength", main.get("confidence", 0))) * 100,
-                    "content_type": "롱폼" if main.get("tier") == "MAIN/TIER_1" or main.get("content_type") == "NORMAL" else "쇼츠",
-                    "filters_hit": [main.get("structure_axis", "S")],
-                    "why_now": main.get("why_now", main.get("selection_reason", "")),
-                    "arbiter_rationale": main.get("arbiter_rationale", "N/A"),
-                    "hunter_insight": main.get("hunter_insight", "N/A"),
-                    "why_hypothesis": main.get("why_hypothesis", ""),
-                    "mechanism": main.get("mechanism", ""),
-                    "predictive_chain": main.get("predictive_chain", ""),
-                    "historical_parallel": main.get("historical_parallel", ""),
-                    "hypothesis_confidence": main.get("hypothesis_confidence", ""),
-                    "stocks_analysis": main.get("stocks_analysis", {}),
-                    "is_mismatch": main.get("is_mismatch", False),
-                    "stocks": main.get("stocks", []),
-                    "candidate_id": main.get("candidate_id", ""),
-                    "evidence_bundle": main.get("evidence_bundle", {})
-                }
-                print(f"  [DEBUG] Loaded Topic Selection MAIN (ID: {data['signal']['candidate_id']}) with {len(data['signal']['stocks'])} stocks")
-
-        # [v24.0] 지능형 경로 탐색 (Topic_N 기반 전수 조사)
-        def find_latest_file(filename: str) -> Optional[Path]:
-            # 1. 날짜별 표준 데이터 경로 우선 확인
-            category_raw = filename.split("_")[1].split(".")[0]
+            # B. 표준 경로 확인
+            category_raw = filename.split("_")[1].split(".")[0] if "_" in filename else filename.split(".")[0]
             category = category_raw if category_raw.endswith("s") else category_raw + "s"
             std_p = self.base_dir / "data" / category / self.path_prefix / filename
-            if std_p.exists(): return std_p
+            if std_p.exists():
+                try:
+                    return json.loads(std_p.read_text(encoding="utf-8")) if use_json else std_p.read_text(encoding="utf-8")
+                except: pass
             
-            # 2. Topic_N 격리 폴더 전수 조사 (최우선 순위)
-            daily_base = self.base_dir / "data" / "scripts" / self.path_prefix
-            if daily_base.exists():
-                candidates = list(daily_base.glob(f"Topic_*/{filename}"))
-                if candidates:
-                    # 가장 최근에 수정된 파일 선택
-                    return max(candidates, key=lambda x: x.stat().st_mtime)
+            # C. rglob Fallback
+            for d in sorted(self.base_dir.rglob(filename), key=lambda x: x.stat().st_mtime, reverse=True):
+                try:
+                    return json.loads(d.read_text(encoding="utf-8")) if use_json else d.read_text(encoding="utf-8")
+                except: continue
             
-            # 3. 마지막 수단: rglob (느리지만 확실함)
-            for d in sorted(Path(f"data").rglob(filename), key=lambda x: x.stat().st_mtime, reverse=True):
-                return d
             return None
 
-        # 분석 데이터 로드
-        analysis_p = find_latest_file("today_analysis.json")
-        if analysis_p: data["analysis"] = safe_load_json(analysis_p)
+        # 3. 데이터 세트 조립
+        script_content = get_file_content("today_script_long.md", use_json=False)
+        signal_data = get_file_content("signal.json") or get_file_content("today_signal.json")
+        analysis_data = get_file_content("analysis.json") or get_file_content("today_analysis.json")
+        stocks_data = get_file_content("today_stocks.json")
         
-        # 종목 데이터 로드
-        stocks_p = find_latest_file("today_stocks.json")
-        if stocks_p: data["stocks"] = safe_load_json(stocks_p)
+        # 로우 데이터 수집 결과 (collection_status)
+        data["collection_status"] = get_file_content("collection_status.json") or {}
 
-        # 롱폼 스크립트 로드 및 최종 경로 확정
-        script_long_p = find_latest_file("today_script_long.md")
-        if script_long_p: 
-            data["script_long_path"] = str(script_long_p)
-            # [v24.2] 대시보드 링크를 위한 상대 경로 추출 (Topic_N 포함)
-            # 예: data/scripts/2026/05/10/Topic_9
-            try:
-                rel_path = script_long_p.relative_to(self.base_dir)
-                data["path"] = str(rel_path.parent).replace("\\", "/") # 윈도우 경로 대응
-                print(f"  ✅ [PUBLISHER] Topic Path 확정: {data['path']}")
-            except:
-                data["path"] = f"data/scripts/{self.path_prefix}"
-        else:
-            data["path"] = f"data/scripts/{self.path_prefix}"
+        if not script_content or not signal_data:
+            print(f"  ⚠️ [Publisher] Failed to load consistent data set (Script: {'OK' if script_content else 'NO'}, Signal: {'OK' if signal_data else 'NO'})")
+            return {}
 
-        # 쇼츠 스크립트 로드
-        script_short_p = find_latest_file("today_script_short.md")
-        if script_short_p: data["script_short_path"] = str(script_short_p)
+        # Arbiter 통합 구조 대응 (MAIN 키 처리)
+        main_signal = signal_data.get("MAIN", signal_data)
         
-        if "signal" not in data:
-            print("  ⚠️ [PUBLISHER] No active signal found for today. Skipping legacy fallback.")
-            data["signal"] = None
-
-        # 후보 목록 (v2.0: data/topics/topic_candidates.json 대응)
-        topic_p = self.base_dir / "data/topics/topic_candidates.json"
-        if topic_p.exists():
-            res = safe_load_json(topic_p)
-            print(f"  [DEBUG] Loaded topic_candidates.json: {len(res) if isinstance(res, list) else 'N/A'} items")
-            if res:
-                data["candidates"] = {"candidates": res} if isinstance(res, list) else res
-        else:
-            print(f"  [DEBUG] topic_candidates.json NOT FOUND at {topic_p}")
-            # Fallback to signals dir
-            for d in sorted(Path("data/signals").iterdir(), reverse=True):
-                p = d / "topic_candidates.json"
-                if not p.exists():
-                    p = d / "candidates.json"
-                if p.exists():
-                    res = safe_load_json(p)
-                    if res:
-                        data["candidates"] = {"candidates": res} if isinstance(res, list) else res
-                        break
-
-        # market 데이터
-        raw_base = Path("data/raw")
-        if raw_base.exists():
-            # 오늘자 회차 폴더 우선 확인
-            p = raw_base / self.path_prefix / "market.json"
-            if not p.exists():
-                # 없으면 최신 데이터 검색 (기존 로직 보강)
-                for d in sorted(raw_base.rglob("market.json"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    res = safe_load_json(d)
-                    if res:
-                        data["market"] = res
-                        break
-            else:
-                data["market"] = safe_load_json(p)
-
-        # macro 데이터
-        if raw_base.exists():
-            p = raw_base / self.path_prefix / "macro.json"
-            if not p.exists():
-                for d in sorted(raw_base.rglob("macro.json"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    res = safe_load_json(d)
-                    if res:
-                        data["macro"] = res
-                        break
-            else:
-                data["macro"] = safe_load_json(p)
-
-        # sentiment 데이터
-        if raw_base.exists():
-            p = raw_base / self.path_prefix / "sentiment.json"
-            if not p.exists():
-                for d in sorted(raw_base.rglob("sentiment.json"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    res = safe_load_json(d)
-                    if res:
-                        data["sentiment"] = res
-                        break
-            else:
-                data["sentiment"] = safe_load_json(p)
-
-        # putcall 데이터
-        p = Path("data/outputs/putcall.json")
-        if p.exists():
-            res = safe_load_json(p)
-            if res:
-                data["putcall"] = res
-
-        # [지시서 #055] COT 데이터 로드
-        if raw_base.exists():
-            p = raw_base / self.path_prefix / "cot.json"
-            if not p.exists():
-                for d in sorted(raw_base.rglob("cot.json"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    res = safe_load_json(d)
-                    if res:
-                        data["cot"] = res
-                        break
-            else:
-                data["cot"] = safe_load_json(p)
-
-        # collection_status 데이터
-        if raw_base.exists():
-            p = raw_base / self.path_prefix / "collection_status.json"
-            if not p.exists():
-                for d in sorted(raw_base.rglob("collection_status.json"), key=lambda x: x.stat().st_mtime, reverse=True):
-                    res = safe_load_json(d)
-                    if res:
-                        data["collection_status"] = res
-                        break
-            else:
-                data["collection_status"] = safe_load_json(p)
-
-
+        data.update({
+            "script": script_content,
+            "script_long_path": str(target_dir / "today_script_long.md") if target_dir else "",
+            "signal": {
+                "topic": main_signal.get("topic", main_signal.get("event", "N/A")),
+                "event": main_signal.get("event", main_signal.get("topic", "N/A")),
+                "strength": main_signal.get("final_score", main_signal.get("strength", main_signal.get("confidence", 0))) * 100,
+                "content_type": "롱폼" if main_signal.get("tier") == "MAIN/TIER_1" or main_signal.get("content_type") == "NORMAL" else "쇼츠",
+                "filters_hit": [main_signal.get("structure_axis", "S")],
+                "why_now": main_signal.get("why_now", main_signal.get("selection_reason", "")),
+                "arbiter_rationale": main_signal.get("arbiter_rationale", "N/A"),
+                "hunter_insight": main_signal.get("hunter_insight", "N/A"),
+                "why_hypothesis": main_signal.get("why_hypothesis", ""),
+                "hypothesis_confidence": main_signal.get("hypothesis_confidence", "MEDIUM"),
+                "stocks_analysis": main_signal.get("stocks_analysis", {}),
+                "stocks": main_signal.get("stocks", [])
+            },
+            "analysis": analysis_data or {},
+            "stocks": stocks_data or {},
+            "path": str(target_dir.relative_to(self.base_dir)).replace("\\", "/") if target_dir else f"data/scripts/{self.path_prefix}"
+        })
+        
+        print(f"  ✅ [PUBLISHER] Consistent data set loaded from {data['path']}")
         return data
+
 
     def update_content_log(self, data: dict) -> dict:
         """content_log.json에 오늘 콘텐츠 추가"""

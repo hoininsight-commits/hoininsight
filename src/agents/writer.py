@@ -117,17 +117,28 @@ class WriterAgent:
         """[v21.0] STRATEGIC HUNT FLOW: Arbiter 직접 호출 및 자율 사냥"""
         print(f"\n✍️ AGENT-05 CONTENT_ENGINE v21.0 (Strategic Hunt Mode) 가동")
         
-        # 1. 로우 데이터 경로 설정 (Arbiter 전수 조사용)
-        raw_dir = Path("data/raw") / self.path_prefix
+        candidate = None
         
-        # 2. [STRATEGIC HUNT] Arbiter를 통해 로우 데이터에서 직접 토픽 사냥
-        from src.topic_engine.arbiter import TopicArbiter
-        arbiter = TopicArbiter()
+        # [v24.5] 만약 디텍터(Detector)로부터 전달받은 분석 결과가 있다면 우선 사용
+        if analyst_results:
+            if isinstance(analyst_results, list) and len(analyst_results) > 0:
+                print(f"  📦 [Writer] Using provided analyst results (Fact Pack).")
+                candidate = analyst_results[0]
+            elif isinstance(analyst_results, dict):
+                candidate = analyst_results
         
-        print(f"  🎯 [Strategic Hunt] Hunting from raw data in {raw_dir}...")
-        hunt_result = arbiter.select_topic_from_raw(raw_dir)
-        
-        candidate = hunt_result.get("MAIN")
+        # 결과가 없을 경우에만 직접 사냥 (Fallback)
+        if not candidate:
+            # 1. 로우 데이터 경로 설정 (Arbiter 전수 조사용)
+            raw_dir = Path("data/raw") / self.path_prefix
+            
+            # 2. [STRATEGIC HUNT] Arbiter를 통해 로우 데이터에서 직접 토픽 사냥
+            from src.topic_engine.arbiter import TopicArbiter
+            arbiter = TopicArbiter()
+            
+            print(f"  🎯 [Strategic Hunt] Hunting from raw data in {raw_dir}...")
+            hunt_result = arbiter.select_topic_from_raw(raw_dir)
+            candidate = hunt_result.get("MAIN")
         
         if not candidate:
             print("  ⚠️ [Writer] Strategic hunt failed to find a topic. Falling back to legacy fact pack.")
@@ -139,7 +150,7 @@ class WriterAgent:
                 candidate = fact_pack[0]
             except: return {"status": "DROP", "reason": "Load error"}
         else:
-            print(f"  🏆 Strategic Hunt Winner: {candidate.get('topic')}")
+            print(f"  🏆 Content Generation Topic: {candidate.get('topic')}")
 
         # 3. [COST SAVVY] 중복 발송 여부 최종 확인 (Gemini 호출 전)
         topic_name = candidate.get('topic', candidate.get('event', ''))
