@@ -2,7 +2,7 @@ name: YouTube Learner (Script Delivery)
 
 on:
   schedule:
-    - cron: "0 2,8,14,20 * * *"  # KST 11:00, 17:00, 23:00, 05:00
+    - cron: "0 4,10,16,22 * * *"  # KST 13:00, 19:00, 01:00, 07:00
   workflow_dispatch:
 
 jobs:
