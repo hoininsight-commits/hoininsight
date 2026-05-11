@@ -708,13 +708,12 @@ class PublisherAgent:
         if self.content_log_path.exists():
             try:
                 log = json.loads(self.content_log_path.read_text())
-                today_str = f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}"
                 for entry in log.get("contents", []):
-                    if entry.get("date") == today_str and entry.get("publish_status") == "SUCCESS":
-                        # [v24.3] 제목이 완벽히 같지 않아도 (자율 에이전트 특성상), 당일에 이미 발송된 성공 건이 있다면 중복 방지
-                        # (단일 주제 발송을 전제로 함. 여러 주제 발송이 필요하다면 이 로직은 해제 필요)
-                        print(f"  🚫 [DUPLICATE] 오늘 이미 발송 완료된 이력이 존재합니다. 중복 발송을 차단합니다. (기존 발송 제목: {entry.get('title')})")
-                        return {"status": "SKIPPED", "reason": "Already published today"}
+                    if entry.get("date") == f"{self.today[:4]}-{self.today[4:6]}-{self.today[6:]}" and \
+                       entry.get("title") == topic and \
+                       entry.get("publish_status") == "SUCCESS":
+                        print(f"  🚫 [DUPLICATE] 이미 동일한 제목으로 발송된 토픽입니다: {topic}")
+                        return {"status": "SKIPPED", "reason": "Already published"}
             except: pass
 
         # 파이프라인 실시간 결과 반영 (디스크 로딩 보완)
