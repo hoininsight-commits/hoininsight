@@ -1,5 +1,5 @@
 # HOIN Insight — 안티(Antigravity) 부팅 지침서
-# 최종 수정: 2026-05-09 | v23.0 [The Predator's Instinct]
+# 최종 수정: 2026-05-11 | v24.4 [Deep Research Hunt]
 
 ---
 
@@ -26,12 +26,12 @@ git pull origin main
 ✅ 보급 및 엔진 점검 완료 (git pull 완료, v23.0 HANDOFF 숙지)
 
 📌 현재 상태:
-- 엔진 버전: v23.0 [The Predator's Instinct]
-- 완료된 것: Arbiter 1.5 Pro 업그레이드, 경로 표준화(YYYY/MM/DD), 로봇 말투 완전 박멸
-- 세션 비용 현황: Last run $0.7778 (USD)
-- 다음 우선순위: [1순위: 실시간 데이터 소스 확장 / 2순위: Few-shot 데이터셋 고도화]
+- 엔진 버전: v24.4 [Deep Research Hunt]
+- 완료된 것: 자율 심층 리서치 에이전트(DDG Search) 통합, 1회 구동 비용 측정 로직, Arbiter 2.5 Pro 확장
+- 세션 비용 현황: Last run ~$0.38 (USD)
+- 다음 우선순위: [1순위: DART API 의존성 복구 / 2순위: 인스타 카드뉴스 템플릿 다양화]
 
-🔔 사냥을 시작할까요? (python3 src/core/scheduler.py)
+🔔 사냥을 시작할까요? (python3 run_full_pipeline.py)
 ```
 
 ---
@@ -52,10 +52,10 @@ git pull origin main
 |---|---|
 | **최신 HANDOFF** | `docs/HANDOFF_STORY_DNA.md` |
 | **사냥 실록 (Chronicle)** | `docs/CHRONICLE.md` |
-| **지능형 스케줄러** | `src/core/scheduler.py` |
+| **지능형 스케줄러** | `run_full_pipeline.py` |
 | **비용 추적 로그** | `data/monitoring/session_cost.json` |
-| **저장 표준** | `data/scripts/YYYY/MM/DD/Round_X` |
-| 파이프라인 진입점 | `scheduler.py` (Main) / `local_pipeline.py` (Test) |
+| **저장 표준** | `data/scripts/YYYY/MM/DD/Topic_N` |
+| 파이프라인 진입점 | `run_full_pipeline.py` (Main) |
 
 ---
 
@@ -74,11 +74,8 @@ git pull origin main
 # 최신 코드 받기
 git pull origin main
 
-# 지능형 자율 사냥 시작
-python3 src/core/scheduler.py
-
-# 강제 사냥 (Sentry 건너뛰기)
-python3 src/core/scheduler.py --force
+# 지능형 자율 사냥 시작 (심층 리서치 포함)
+python3 run_full_pipeline.py
 
 # 사냥꾼 영상 학습 루프
 python3 src/agents/learner_agent.py
