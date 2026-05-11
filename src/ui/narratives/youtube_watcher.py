@@ -20,7 +20,7 @@ from src.ui.narratives.transcript_ingestor import ingest_transcript
 from src.utils.telegram_notifier import TelegramNotifier
 
 REGISTRY_PATH = Path("registry/narrative_sources.yml")
-DATA_DIR = Path("data/raw/youtube")
+DATA_DIR = Path("youtube_data/raw")
 
 def _utc_from_iso(iso_str: str) -> str:
     """Standardize timestamp to UTC string."""
@@ -161,7 +161,7 @@ def run_watcher(run_round: int = 1):
             # [CUSTOM RULE] 날짜_회차_제목.txt 형식의 파일명 생성
             safe_title = re.sub(r'[\\/*?:"<>|]', "", vid["title"]).replace(" ", "_")
             file_name = f"{y}{m}{d}_{run_round}회차_{safe_title}.txt"
-            transcript_dir = Path("data/transcripts/youtube") / y / m / d
+            transcript_dir = Path("youtube_data/transcripts") / y / m / d
             transcript_path = transcript_dir / file_name
             legacy_txt_path = transcript_dir / f"{vid_id}.txt"
             meta_path = save_dir / "metadata.json"

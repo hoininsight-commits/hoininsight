@@ -63,8 +63,10 @@ Thumbs.db
 
 # Project specific - Generated data files (should not be committed)
 data/raw/
-!data/raw/youtube/
-!data/transcripts/youtube/
+youtube_data/raw/
+!youtube_data/raw/
+!youtube_data/transcripts/
+!youtube_data/history/
 data/analysis/
 # data/scripts/
 # data/signals/

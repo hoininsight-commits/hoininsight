@@ -42,8 +42,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          mkdir -p data/transcripts/youtube data/raw/youtube
-          git add -f data/transcripts/youtube data/raw/youtube
+          mkdir -p youtube_data/transcripts youtube_data/raw youtube_data/history
+          git add youtube_data/
           git commit -m "Auto: Collected new YouTube transcripts" || echo "No changes to commit"
           git pull --rebase -X theirs origin main
           git push

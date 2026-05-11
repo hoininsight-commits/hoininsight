@@ -14,9 +14,9 @@ class LearnerAgent:
 
     def __init__(self):
         self.base_dir = Path(os.getenv("HOIN_BASE_DIR", Path(__file__).resolve().parents[2]))
-        self.transcript_dir = Path("data/transcripts/youtube")
+        self.transcript_dir = Path("youtube_data/transcripts")
         self.content_log_path = Path("data/history/content_log.json")
-        self.evolution_log_path = Path("data/history/dna_evolution.json")
+        self.evolution_log_path = Path("youtube_data/history/dna_evolution.json")
         self.client = GeminiClient()
 
     def run_evolution_loop(self, run_round: int = 1):

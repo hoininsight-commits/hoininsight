@@ -20,9 +20,9 @@ USER_AGENTS = [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 ]
 
-RAW_BASE = Path("data/raw/youtube")
-TRANSCRIPT_BASE = Path("data/transcripts/youtube")
-STATUS_BASE = Path("data/narratives/status")
+RAW_BASE = Path("youtube_data/raw")
+TRANSCRIPT_BASE = Path("youtube_data/transcripts")
+STATUS_BASE = Path("youtube_data/status")
 
 def _get_target_videos():
     """traverse RAW_BASE to find metadata files."""
