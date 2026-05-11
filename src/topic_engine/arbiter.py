@@ -4,6 +4,7 @@ from typing import List, Dict
 from pathlib import Path
 from src.core.gemini_client import GeminiClient
 from src.utils.target_date import get_now_kst, get_target_ymd
+from src.agents.collectors.deep_research_agent import DeepResearchAgent
 
 class TopicArbiter:
     """[v21.0] AGNOSTIC STRATEGIC ARBITER - Economic Hunter DNA Integration"""
@@ -35,7 +36,17 @@ class TopicArbiter:
         if not raw_context:
             return {"MAIN": None}
 
-        full_condensed_data = "\n".join(raw_context)
+        base_condensed_data = "\n".join(raw_context)
+
+        # [v21.1] 자율 심층 리서치 레이어 (Autonomous Deep Research)
+        researcher = DeepResearchAgent()
+        deep_context = researcher.conduct_research(base_condensed_data)
+        
+        if deep_context:
+            print(f"  🧠 [Arbiter] Deep Research Context injected.")
+            full_condensed_data = f"{base_condensed_data}\n\n### [DEEP RESEARCH CONTEXT (구조적 연결 고리 및 수혜주 정보)]\n{deep_context}\n"
+        else:
+            full_condensed_data = base_condensed_data
 
         # [COST SAVVY] 오늘 이미 발송된 토픽 로드
         published_topics = []

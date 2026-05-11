@@ -63,6 +63,9 @@ def validate_gemini_output(data, agent: str = "UNKNOWN") -> bool:
 
     if agent == "SENTRY_WATCHER":
         return "impact_score" in data or "trigger_hunter" in data
+        
+    if agent == "DEEP_RESEARCHER":
+        return "queries" in data or "target_event" in data
     
     # ANALYST 등 기타 핵심 의사결정 레이어 규약
     essential = ["topic_core_claim", "one_line_summary"]

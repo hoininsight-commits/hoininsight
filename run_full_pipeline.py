@@ -8,6 +8,17 @@ sys.path.append(str(Path(__file__).resolve().parent))
 os.environ["PYTHONPATH"] = str(Path(__file__).resolve().parent)
 
 def main():
+    # [v24.4] 파이프라인 시작 시 누적 세션 비용을 0으로 초기화하여 1회 구동 비용만 측정
+    try:
+        import json
+        from datetime import datetime
+        session_path = Path("data/monitoring/session_cost.json")
+        session_path.parent.mkdir(parents=True, exist_ok=True)
+        session_path.write_text(json.dumps({"session_cost": 0.0, "last_updated": datetime.now().isoformat()}))
+        print(f"🧹 세션 비용 초기화 완료: {session_path}")
+    except Exception as e:
+        print(f"⚠️ 세션 비용 초기화 실패: {e}")
+
     steps = [
         ("COLLECTOR", "src/agents/collector.py"),
         ("DETECTOR", "src/agents/detector.py"),
