@@ -1,103 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T18:32:22.282953",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:32:33.248341",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:32:54.126966",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:32:55.350886",
-    "agent": "ARBITER_V2",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:16.041969",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:25.319722",
-    "agent": "ARBITER_V2",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:36.421122",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:41.537111",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:42.373700",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:33:56.321529",
-    "agent": "INSTA_WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:34:22.089167",
-    "agent": "ARBITER_V2",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:34:34.686523",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:34:42.770929",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-11T18:34:55.161929",
-    "agent": "INSTA_WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-05-11T10:01:55.759799",
     "agent": "WRITER",
     "success": true,
@@ -698,5 +600,103 @@
     "success": false,
     "fallback_used": true,
     "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.844734",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.846427",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.848078",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.849739",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.851386",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.853623",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.855302",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.857678",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.860957",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.864132",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.866623",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.868374",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.870099",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:12:30.871865",
+    "agent": "LEARNER_GAP_ANALYZER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   }
 ]
