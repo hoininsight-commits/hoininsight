@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "timestamp": "2026-05-12T08:38:15.787283",
     "agent": "WRITER",
     "success": true,
@@ -8,19 +9,34 @@
   },
   {
     "timestamp": "2026-05-12T08:43:21.251044",
+=======
+    "timestamp": "2026-05-12T17:45:19.255065",
+    "agent": "TEST",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T17:45:58.574078",
+>>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
     "agent": "DEEP_RESEARCHER",
     "success": false,
     "fallback_used": true,
     "retry_count": 0
   },
   {
+<<<<<<< HEAD
     "timestamp": "2026-05-12T08:43:21.526203",
+=======
+    "timestamp": "2026-05-12T17:45:59.467195",
+>>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
     "agent": "ARBITER_V2",
     "success": false,
     "fallback_used": true,
     "retry_count": 0
   },
   {
+<<<<<<< HEAD
     "timestamp": "2026-05-12T08:43:21.825399",
     "agent": "DEEP_RESEARCHER",
     "success": false,
@@ -32,6 +48,26 @@
     "agent": "ARBITER_V2",
     "success": false,
     "fallback_used": true,
+=======
+    "timestamp": "2026-05-12T17:48:57.744578",
+    "agent": "DEEP_RESEARCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T17:49:08.023217",
+    "agent": "DEEP_RESEARCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T17:49:41.424360",
+    "agent": "ARBITER_V2",
+    "success": true,
+    "fallback_used": false,
+>>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
     "retry_count": 0
   }
 ]

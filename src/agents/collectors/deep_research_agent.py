@@ -41,7 +41,7 @@ class DeepResearchAgent:
         """
 
         try:
-            res = self.gemini.call_json_controlled(prompt, agent="DEEP_RESEARCHER", tier=3, model="gemini-1.5-flash")
+            res = self.gemini.call_json_controlled(prompt, agent="DEEP_RESEARCHER", tier=3, model="gemini-flash-latest")
             if res and isinstance(res, dict) and "queries" in res:
                 return res["queries"]
             return []
@@ -87,7 +87,7 @@ class DeepResearchAgent:
         """
 
         try:
-            summary = self.gemini.call_controlled(prompt, agent="DEEP_RESEARCHER", tier=3, model="gemini-1.5-flash")
+            summary = self.gemini.call_controlled(prompt, agent="DEEP_RESEARCHER", tier=3, model="gemini-flash-latest")
             return summary.strip()
         except Exception as e:
             print(f"  ❌ [DeepResearch] Synthesis Error: {e}")

@@ -124,12 +124,12 @@ class TopicArbiter:
         
         print(f"  🧠 [Arbiter] Hunting with Hunter DNA (Model: 1.5-Pro)...")
         try:
-            # [COST_OPTIMIZATION] 1차 사냥은 가성비 좋은 Gemini 1.5 Flash 사용 (비용 95% 절감)
+            # [COST_OPTIMIZATION] 2026년 최신 가성비 모델 gemini-flash-latest 사용
             response = self.client.call_json_controlled(
                 prompt, 
                 agent="ARBITER_V2", 
-                tier=3, # Tier 1(Pro) -> Tier 3(Flash)로 하향
-                model="gemini-1.5-flash"
+                tier=3, 
+                model="gemini-flash-latest"
             )
             
             if not response or "hunting_target_topic" not in response:
