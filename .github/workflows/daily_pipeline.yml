@@ -47,9 +47,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/
+          git add .
           git commit -m "chore: auto-update intelligence data [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
-          git pull --rebase -X theirs origin main
+          git pull --rebase origin main
           git push origin main
 
       - name: Step 3 - Prepare Dashboard
