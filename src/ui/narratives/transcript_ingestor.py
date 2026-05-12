@@ -102,7 +102,7 @@ def ingest_transcript(meta_path: Path):
                 out_dir.mkdir(parents=True, exist_ok=True)
                 
                 cmd = [
-                    "yt-dlp",
+                    "python3", "-m", "yt_dlp",
                     "--skip-download",
                     "--write-auto-subs",
                     "--write-subs",
@@ -114,8 +114,8 @@ def ingest_transcript(meta_path: Path):
                 
                 if cookies_path.exists():
                     logger.info("Using youtube_cookies.txt for yt-dlp")
-                    cmd.insert(1, "--cookies")
-                    cmd.insert(2, str(cookies_path))
+                    cmd.insert(3, "--cookies")
+                    cmd.insert(4, str(cookies_path))
                 
                 subprocess.run(cmd, check=True, capture_output=True)
                 
