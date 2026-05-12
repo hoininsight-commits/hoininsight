@@ -1,5 +1,5 @@
 # HOIN Insight — 안티(Antigravity) 부팅 지침서
-# 최종 수정: 2026-05-11 | v24.4 [Deep Research Hunt]
+# 최종 수정: 2026-05-12 | v26.6 [Cost-Efficient & Market Crash Tuned]
 
 ---
 
@@ -26,10 +26,10 @@ git pull origin main
 ✅ 보급 및 엔진 점검 완료 (git pull 완료, v23.0 HANDOFF 숙지)
 
 📌 현재 상태:
-- 엔진 버전: v24.5 [Two-Track Strategy & Isolated Learning]
-- 완료된 것: 글로벌/국내 투트랙 사냥 로직(Arbiter v21.0), 유튜브 데이터 격리(youtube_data/), 자막 추출 엔진(yt-dlp) 수리, 자동 스케줄링(02, 08, 14, 20 KST) 및 충돌 방지 전략 적용
-- 세션 비용 현황: Last run ~$0.36 (USD)
-- 다음 우선순위: [1순위: 첫 자동 사냥 결과 모니터링 / 2순위: youtube_data/history 기반 DNA 패치 자동화]
+- 엔진 버전: v26.6 [Cost-Efficient & Market Crash Tuned]
+- 완료된 것: 2026년형 최신 모델(`gemini-flash-latest`) 표준화, 파이프라인 비용 95% 절감 튜닝, 하락장 분석(Market Crash Priority) 로직 주입, 유튜브 수집 비용 제로화(Analysis Paused)
+- 세션 비용 현황: Last run ~$0.02 (USD) - *기존 대비 약 1/20 수준*
+- 다음 우선순위: [1순위: 하락장 이후 반등 섹터 선점 사냥 / 2순위: youtube_data/ 보관된 대본의 배치(Batch) 학습 재개 시점 검토]
 
 🔔 사냥을 시작할까요? (python3 run_full_pipeline.py)
 ```
