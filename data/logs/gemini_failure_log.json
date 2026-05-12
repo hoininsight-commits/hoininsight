@@ -948,6 +948,7 @@
     "retry_count": 6
   },
   {
+<<<<<<< HEAD
     "timestamp": "2026-05-12T08:28:45.821283",
     "agent": "ARBITER_V2",
     "failure_type": "UNKNOWN",
@@ -957,6 +958,11 @@
     "timestamp": "2026-05-12T08:29:10.863150",
     "agent": "ARBITER_V2",
     "failure_type": "UNKNOWN",
+=======
+    "timestamp": "2026-05-12T17:35:19.390945",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "SERVER_ERROR",
+>>>>>>> 9a5435c7f (feat: add market crash priority to Arbiter and switch DeepResearch to Flash)
     "retry_count": 0
   }
 ]

@@ -1,5 +1,64 @@
 [
   {
+<<<<<<< HEAD
+=======
+    "timestamp": "2026-05-11T12:22:26.425508",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T12:22:37.445765",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T12:22:50.786294",
+    "agent": "INSTA_WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:32:51.424133",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-11T13:36:57.450451",
+    "agent": "DEEP_RESEARCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:37:27.935349",
+    "agent": "ARBITER_V2",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:37:38.469037",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:37:44.424633",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+>>>>>>> 9a5435c7f (feat: add market crash priority to Arbiter and switch DeepResearch to Flash)
     "timestamp": "2026-05-11T13:38:05.307561",
     "agent": "INSTA_WRITER",
     "success": true,
@@ -637,6 +696,7 @@
     "retry_count": 6
   },
   {
+<<<<<<< HEAD
     "timestamp": "2026-05-12T08:17:48.449217",
     "agent": "WRITER",
     "success": true,
@@ -698,5 +758,12 @@
     "success": true,
     "fallback_used": false,
     "retry_count": 0
+=======
+    "timestamp": "2026-05-12T17:35:53.796030",
+    "agent": "DEEP_RESEARCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+>>>>>>> 9a5435c7f (feat: add market crash priority to Arbiter and switch DeepResearch to Flash)
   }
 ]
