@@ -586,5 +586,185 @@
     "agent": "LEARNER_GAP_ANALYZER",
     "failure_type": "JSON_PARSE_ERROR",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:20:37.435972",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T07:20:42.740566",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:22:54.778140",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T07:22:59.959225",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:23:10.103472",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-12T07:23:30.251354",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-12T07:24:00.417757",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-12T07:24:45.585029",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-12T07:25:45.797428",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-12T07:25:46.176338",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T07:25:51.546731",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:26:01.939654",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-12T07:26:22.354163",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-12T07:26:52.804327",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-12T07:27:38.164569",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-12T07:28:38.592728",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-12T07:28:38.962976",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T07:28:44.142944",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:28:54.331443",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-12T07:29:14.510940",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-12T07:29:44.719974",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-12T07:30:29.896702",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-12T07:31:30.117222",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-12T07:31:30.495407",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T07:31:35.852331",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-12T07:31:46.235570",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-12T07:32:06.569650",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-12T07:32:36.952561",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-12T07:33:22.412253",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-12T07:34:22.780250",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
   }
 ]
