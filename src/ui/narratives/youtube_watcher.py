@@ -234,14 +234,22 @@ def run_watcher(run_round: int = 1):
                 except Exception as ingest_e:
                     logger.error(f"Failed to ingest transcript for {vid_id}: {ingest_e}")
 
-    # Export new titles for notifications
-    if new_titles:
-        try:
-            status_dir = Path("data/narratives/status")
-            status_dir.mkdir(parents=True, exist_ok=True)
-            (status_dir / "recent_new_titles.txt").write_text("\n".join(new_titles), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to export new titles: {e}")
+    # [v20.5] 최종 수집 요약 텔레그램 발송
+    if new_titles or new_count > 0:
+        summary_msg = "📊 *[유튜브 수집 요약 리포트]*\n\n"
+        summary_msg += f"✅ *신규 영상 발견*: {new_count}건\n"
+        if new_titles:
+            summary_msg += "📌 *발견된 제목*:\n"
+            for title in new_titles[:5]: # 최대 5개까지만 노출
+                summary_msg += f"- {title}\n"
+            if len(new_titles) > 5:
+                summary_msg += f"...외 {len(new_titles)-5}건\n"
+        
+        summary_msg += f"\n🏁 수집 세션이 정상 종료되었습니다."
+        
+        notifier = TelegramNotifier(target="TRANSCRIPT")
+        notifier.send_message(summary_msg)
+        logger.info("Summary Telegram notification sent.")
 
     logger.info(f"Watcher Complete. New Videos: {new_count}")
 
