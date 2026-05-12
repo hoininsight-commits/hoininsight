@@ -1,73 +1,44 @@
 [
   {
-<<<<<<< HEAD
-    "timestamp": "2026-05-12T08:38:15.787283",
+    "timestamp": "2026-05-12T08:51:55.139614",
     "agent": "WRITER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-05-12T08:43:21.251044",
-=======
-    "timestamp": "2026-05-12T17:45:19.255065",
-    "agent": "TEST",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T17:45:58.574078",
->>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
-    "agent": "DEEP_RESEARCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-<<<<<<< HEAD
-    "timestamp": "2026-05-12T08:43:21.526203",
-=======
-    "timestamp": "2026-05-12T17:45:59.467195",
->>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
-    "agent": "ARBITER_V2",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-<<<<<<< HEAD
-    "timestamp": "2026-05-12T08:43:21.825399",
-    "agent": "DEEP_RESEARCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T08:43:22.092119",
-    "agent": "ARBITER_V2",
-    "success": false,
-    "fallback_used": true,
-=======
-    "timestamp": "2026-05-12T17:48:57.744578",
+    "timestamp": "2026-05-12T08:58:14.934563",
     "agent": "DEEP_RESEARCHER",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-05-12T17:49:08.023217",
-    "agent": "DEEP_RESEARCHER",
+    "timestamp": "2026-05-12T08:58:35.901985",
+    "agent": "ARBITER_V2",
     "success": true,
     "fallback_used": false,
     "retry_count": 0
   },
   {
-    "timestamp": "2026-05-12T17:49:41.424360",
-    "agent": "ARBITER_V2",
+    "timestamp": "2026-05-12T08:58:47.430102",
+    "agent": "WRITER",
     "success": true,
     "fallback_used": false,
->>>>>>> 7d2ceea61 (feat: stabilize model names and deliver market crash report)
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T08:58:54.215468",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-12T08:59:06.081075",
+    "agent": "INSTA_WRITER",
+    "success": true,
+    "fallback_used": false,
     "retry_count": 0
   }
 ]
