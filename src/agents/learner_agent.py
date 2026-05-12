@@ -27,15 +27,13 @@ class LearnerAgent:
         os.environ["SKIP_GUARD"] = "true"
         run_watcher(run_round=run_round)
 
-        """2. 분석 단계 (DNA 추출 및 진화)"""
-        print("  [LEARNER] 최신 사냥꾼 대본 기반 DNA 분석 및 추출 시작...")
-        # [COST_OPTIMIZATION] 최근 3일 -> 1일로 축소하여 호출 횟수 제한
-        new_transcripts = self._get_recent_transcripts(days=1)
-        if not new_transcripts:
-            print("  [LEARNER] 분석할 새로운 대본이 없습니다.")
-            return
-        for transcript_info in new_transcripts:
-            self._process_single_learning_unit(transcript_info)
+        """2. 분석 단계 (DNA 추출 및 진화) - [PAUSED for Cost Optimization]"""
+        print("  [LEARNER] DNA 분석 및 추출 단계가 사용자 요청으로 일시 중단되었습니다. (파일 보관만 진행)")
+        # new_transcripts = self._get_recent_transcripts(days=1)
+        # if not new_transcripts:
+        #     return
+        # for transcript_info in new_transcripts:
+        #     self._process_single_learning_unit(transcript_info)
 
     def _get_recent_transcripts(self, days: int) -> list:
         results = []
