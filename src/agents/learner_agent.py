@@ -27,13 +27,14 @@ class LearnerAgent:
         os.environ["SKIP_GUARD"] = "true"
         run_watcher(run_round=run_round)
 
-        """2. 분석 단계 (제미나이 비활성화 요청에 따라 스킵)"""
-        # print("  [LEARNER] 제미나이 분석 단계는 현재 비활성화 상태입니다.")
-        # new_transcripts = self._get_recent_transcripts(days=7)
-        # if not new_transcripts:
-        #     return
-        # for transcript_info in new_transcripts:
-        #     self._process_single_learning_unit(transcript_info)
+        """2. 분석 단계 (DNA 추출 및 진화)"""
+        print("  [LEARNER] 최신 사냥꾼 대본 기반 DNA 분석 및 추출 시작...")
+        new_transcripts = self._get_recent_transcripts(days=3)
+        if not new_transcripts:
+            print("  [LEARNER] 분석할 새로운 대본이 없습니다.")
+            return
+        for transcript_info in new_transcripts:
+            self._process_single_learning_unit(transcript_info)
 
     def _get_recent_transcripts(self, days: int) -> list:
         results = []
@@ -115,11 +116,13 @@ class LearnerAgent:
 주제: {hoin_report.get('event', 'N/A')}
 요약: {hoin_report.get('why_now', 'N/A')}
 
-[ANALYSIS TASK]
+[ANALYSIS TASK - CRITICAL RULE: DO NOT MENTION SPECIFIC STOCK NAMES IN DNA PATCH]
 1. **Data Gap**: 사냥꾼이 사용한 데이터 중 우리가 놓친 핵심 수치나 지표는 무엇인가?
 2. **Logic Gap**: 같은 현상을 보고도 사냥꾼은 어떤 '역설'이나 '이면'을 보았는가? 우리 엔진의 평면적인 해석과 어떻게 다른가?
 3. **Tone & Hook Gap**: 사냥꾼이 시청자를 사로잡기 위해 사용한 더 강력한 비유나 훅은 무엇인가?
-4. **DNA Patch**: 우리 엔진의 프롬프트나 지식 체계에 즉시 반영해야 할 '한 줄의 교훈'은?
+4. **DNA Patch (Structural Evolution)**: 우리 엔진의 프롬프트나 지식 체계에 즉시 반영해야 할 '사고의 구조'나 '분석 방법론'은 무엇인가? 
+   - **주의**: "삼성전자", "테슬라" 등 특정 종목명을 절대 명시하지 마십시오. 
+   - **대안**: "시장 선도주", "대장주", "특정 섹터의 핵심 기업" 등 추상화된 용어를 사용하십시오. 종목 추천이 아닌 '사냥꾼의 안목(분석 프레임워크)' 자체를 학습하는 것이 목적입니다.
 
 반드시 아래 JSON 형식으로 응답하라:
 {{

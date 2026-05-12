@@ -948,12 +948,22 @@ class CollectorAgent:
                 # [OPTIMIZED] 상세 수치 추출은 할당량 내에서만 수행
                 if processed_count < MAX_DETAILED_DOCS:
                     try:
-                        # API 호출 간 약간의 지연 (안정성)
-                        time.sleep(0.2)
-                        doc_html = dart.document(row['rcept_no'])
+                        # API 호출 간 지연 및 재시도 로직 (안정성 강화)
+                        doc_html = None
+                        for retry in range(2):
+                            try:
+                                time.sleep(0.5)
+                                doc_html = dart.document(row['rcept_no'])
+                                if doc_html: break
+                            except Exception as de:
+                                if "014" in str(de):
+                                    print(f"  ℹ️ DART {row['rcept_no']} 문서 존재하지 않음 (014). 건너뜁니다.")
+                                    break
+                                time.sleep(1.0)
+                        
                         if doc_html:
                             processed_count += 1
-                            soup = BeautifulSoup(doc_html, "html.parser")
+                            soup = BeautifulSoup(doc_html, "xml")
                             doc_text = soup.get_text(separator=" ", strip=True)
                             
                             # 정규표현식으로 수치 포착
@@ -964,7 +974,7 @@ class CollectorAgent:
                                 if pct_match:
                                     amount_info += f" ({pct_match.group(1)} 대비 {pct_match.group(2)})"
                     except Exception as e:
-                        print(f"  ⚠️ DART 상세 추출 실패 ({corp_name}): {e}")
+                        print(f"  ⚠️ DART 상세 추출 실패 ({corp_name}): {str(e)[:50]}")
                 
                 disclosures.append({
                     "company": corp_name,

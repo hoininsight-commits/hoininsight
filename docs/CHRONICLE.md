@@ -266,4 +266,26 @@
 
 ### 4. [Next Step] 이어서 해야 할 일
 1. **02시 첫 자동 사냥 모니터링**: 스케줄러가 정상 작동하고 텔레그램 알림이 잘 오는지 확인.
-2. **DNA Patch 자동화**: `youtube_data/history/dna_evolution.json`의 학습 데이터를 프롬프트에 자동 반영하는 로직 검토.
+---
+
+## 📅 2026-05-12 | v25.0 [The Adaptive Hunter: Autonomous DNA Patching]
+
+### 1. [Milestones] 성공한 것
+* **DNA Patch 자동화 시스템 (v25.0) 런칭**:
+    * **DNAManager**: `youtube_data/history/dna_evolution.json`에서 사냥꾼의 최신 학습 데이터를 실시간으로 읽어와 프롬프트에 주입하는 자율 진화 체계 구축.
+    * **전략 사냥꾼(Arbiter) & 수석 전략가(Writer) 연동**: 토픽 선정과 원고 작성 시 최신 DNA 패치가 자동으로 적용되어, 별도의 코드 수정 없이도 엔진의 논리와 문체가 지속적으로 업그레이드됨.
+    * **패치 로깅 시스템**: `dna_patch_log.json`을 통해 각 에이전트별 DNA 적용 이력을 투명하게 추적.
+* **DART 수집기 요새화 (Stabilization)**:
+    * **Retry & Backoff**: DART 상세 문서 추출 시 발생하는 014(파일 없음) 오류 및 일시적 통신 장애에 대응하는 2단계 재시도 로직 도입.
+    * **XML 파서 전환**: BeautifulSoup 사용 시 발생하던 `XMLParsedAsHTMLWarning`을 `features="xml"` 적용으로 완벽 제거.
+* **로컬 파이프라인 무결성 확인**:
+    * `run_full_pipeline.py`를 통해 Collector부터 Publisher까지의 전 과정이 로컬 환경에서 정상 작동함을 재검증.
+
+### 2. [Pitfalls] 오늘의 삽질 및 교훈
+* **Parser Mismatch**: DART 응답이 HTML 형식을 띤 XML인 경우가 많아 일반 HTML 파서로는 경고가 발생함. -> **해결**: `lxml` 기반의 `xml` 파서를 명시적으로 지정하여 데이터 파싱의 정확도와 성능을 동시에 잡음.
+* **DNA Freshness**: 단순히 모든 패치를 넣으면 프롬프트가 너무 길어짐. -> **해결**: `limit=3` 정책을 도입하여 가장 최신의, 가장 날카로운 통찰만 우선적으로 주입하도록 최적화.
+
+### 3. [Next Step] 이어서 해야 할 일
+1. **DNA 패치 실효성 모니터링**: 자동 주입된 DNA가 실제 원고의 '격'을 얼마나 높이는지 정성적 평가 수행.
+2. **카드뉴스 템플릿 가변화**: 토픽의 성격(상승/하락/이상징후)에 따라 카드뉴스 배경색과 레이아웃을 동적으로 변경하는 기능 추가.
+3. **서버 배포 및 동기화**: 로컬에서 개선된 DNA 자율 패칭 시스템을 GitHub Actions 환경에 배포.

@@ -8,13 +8,13 @@ from src.utils.target_date import get_target_ymd, get_current_round, get_standar
 from src.prompts.writer_prompt import WRITER_PROMPT_TEMPLATE, WRITER_SYSTEM_PROMPT
 from src.engine.content_engine import ContentEngine
 from src.engine.script_quality_gate import ScriptQualityGate
-# from src.engine.rule_generator import RuleBasedScriptGenerator (Deprecated v24.0)
-
+from src.utils.dna_manager import DNAManager
 
 class WriterAgent:
 
     def __init__(self):
         self.base_dir = Path(".")
+        self.dna_manager = DNAManager()
         self.today = get_target_ymd().replace("-", "")
         self.path_prefix = get_standard_path_prefix()
         
@@ -63,10 +63,15 @@ class WriterAgent:
         )
 
         try:
+            # [v25.0] DNA Patch Injection
+            dna_patches = self.dna_manager.get_latest_dna_patch(limit=3)
+            self.dna_manager.log_patch_application("WRITER_LONG")
+            enriched_system_prompt = WRITER_SYSTEM_PROMPT + "\n" + dna_patches
+
             # [v23.5] HOIN Insight 시스템 프롬프트 주입 및 검열 해제
             response = self.gemini.call_controlled(
                 prompt, 
-                system_prompt=WRITER_SYSTEM_PROMPT,
+                system_prompt=enriched_system_prompt,
                 agent="WRITER", 
                 max_tokens=8192, 
                 tier=1
@@ -96,10 +101,15 @@ class WriterAgent:
         prompt += "\n반드시 1분 분량의 쇼츠 대본(8단계 요약)으로 작성하고, [F], [I] 태그를 문장 앞에 붙여라."
 
         try:
+            # [v25.0] DNA Patch Injection
+            dna_patches = self.dna_manager.get_latest_dna_patch(limit=3)
+            self.dna_manager.log_patch_application("WRITER_SHORTS")
+            enriched_system_prompt = WRITER_SYSTEM_PROMPT + "\n" + dna_patches
+
             # [v23.5] HOIN Insight 시스템 프롬프트 주입 및 검열 해제
             response = self.gemini.call_controlled(
                 prompt, 
-                system_prompt=WRITER_SYSTEM_PROMPT,
+                system_prompt=enriched_system_prompt,
                 agent="WRITER_SHORTS", 
                 max_tokens=2048, 
                 tier=1

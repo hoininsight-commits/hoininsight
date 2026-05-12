@@ -6,11 +6,14 @@ from src.core.gemini_client import GeminiClient
 from src.utils.target_date import get_now_kst, get_target_ymd
 from src.agents.collectors.deep_research_agent import DeepResearchAgent
 
+from src.utils.dna_manager import DNAManager
+
 class TopicArbiter:
     """[v21.0] AGNOSTIC STRATEGIC ARBITER - Economic Hunter DNA Integration"""
 
     def __init__(self):
         self.client = GeminiClient()
+        self.dna_manager = DNAManager()
 
     def select_topic_from_raw(self, raw_dir: Path) -> Dict:
         """
@@ -65,35 +68,55 @@ class TopicArbiter:
             
         exclude_instruction = f"\n**[중요] 아래 토픽들은 오늘 이미 다루었으므로 절대 다시 선정하지 마십시오:**\n" + "\n".join([f"- {t}" for t in published_topics]) if published_topics else ""
 
+        # [v25.0] DNA Patch Injection
+        dna_patches = self.dna_manager.get_latest_dna_patch(limit=3)
+        self.dna_manager.log_patch_application("ARBITER")
+
         # 2. 전략 사냥꾼 프롬프트 (Market Hunter DNA)
         prompt = f"""
- 당신은 글로벌 거시 흐름을 기반으로 **'한국 주식 시장(KOSPI/KOSDAQ)의 다음 급등 테마'**를 찾아내는 독보적인 국내 시장 사냥꾼입니다.
- 당신은 단순히 해외 뉴스를 전달하는 사람이 아니라, "미국에서 이 뉴스가 터졌으니, 내일 한국 시장의 이 테마와 이 종목이 미쳐 날뛰겠구나"라고 정확히 짚어내는 실전 고수입니다.
- {exclude_instruction}
+  {dna_patches}
+  당신은 글로벌 거시 데이터와 국내 공시(DART)를 전수 조사하여, 시장이 아직 눈치채지 못한 **'돈의 다음 행선지'**를 포착하는 자율 사냥꾼입니다.
+  특정 테마(반도체, 조선 등)에 대한 고정관념을 완전히 버리고, 오직 데이터가 가리키는 **'인과관계의 끝단'**을 추적하십시오.
+  {exclude_instruction}
 
- ### 🏹 [사냥꾼의 투트랙(Two-Track) 사냥 지침]
- 1. **트랙 A: 글로벌 동조화 (Global Macro)**: 어제 미국/글로벌 시장의 폭등/폭락이나 기술 표준 변경이 한국 증시로 전이되는 '인과관계'를 사냥하십시오. (예: WDC 급등 -> 티엘비 수혜)
- 2. **트랙 B: 국내 구조적 특수성 (Domestic Scarcity)**: 글로벌 이슈와 별개로, 국내 시장만의 **'수급 병목(IPO 희소성, 청약 과열)'**이나 **'정부의 거대 정책 자금(펀드 출범, 규제 해제)'**이 만드는 '돈의 길목'을 사냥하십시오. (예: 코스모로보틱스 상장 -> 로봇 섹터 낙수효과)
+  ### 🏹 [사냥꾼의 3대 전략 렌즈 (The 3 Strategic Lenses)]
+  다음 3가지 관점 중 하나 이상의 강력한 시그널이 포착될 때만 토픽으로 선정하십시오.
 
- **[선정 기준]**
- 1. **파괴적 임계점**: 글로벌 이슈든 국내 정책이든, 오늘 당장 돈의 흐름이 **'병목 현상'**을 일으키며 폭발할 지점인가를 최우선으로 봅니다.
- 2. **기술적/물리적 필연성**: "왜 지금 이 변화가 올 수밖에 없는가?"를 글로벌 기술 표준이나 국내 인구 구조/정책적 강제성으로 증명하십시오.
- 3. **내일의 주인공 (Next Money Spot)**: 이미 불붙은 종목이 아니라, 내일 아침 자금이 몰릴 수밖에 없는 '구조적 입구'를 선점하십시오.
+  1. **필연적 연쇄 반응 (Structural Chain)**: 
+     - "A가 터졌으니, 논리적으로 B가 뒤따를 수밖에 없다"는 기술적/물리적 필연성을 추적하십시오.
+     - (예: 전력 소모 폭증 -> 구리선 한계 -> 광통신 전환의 필연성)
+  2. **거대 자본의 입구 (Capital Inflow Scarcity)**: 
+     - 정책 자금, IPO 청약 과열, 특정 섹터로의 수급 쏠림 등 '돈의 길목'이 좁아지며 폭발적 에너지가 모이는 지점을 사냥하십시오.
+     - (예: 정부 펀드 150조의 최종 수혜처, 상장 가뭄 속 특정 로봇주로의 자금 집중)
+  3. **글로벌 거인의 뒷모습 (Giant's Footsteps)**: 
+     - 엔비디아, 메타, 애플 등 글로벌 빅테크나 거물 투자자들이 '실제로 돈을 쓰고 있는(투자/계약)' 구체적인 행보를 사냥하십시오.
+     - (예: 빅테크의 특정 부품사 지분 투자, 미 국방부의 한국 시설 실사 등)
 
- ### 📊 [현재 시장 및 DART 전수 조사 데이터]
- {full_condensed_data}
+  **[사냥 원칙 (Hunting Rules)]**
+  1. **고정 테마 금지**: "요즘은 이게 유행이니까"라는 식의 접근은 사냥꾼의 자격 미달입니다. 데이터가 증명하지 못하는 유행은 거부하십시오.
+  2. **이면의 본질(Paradox & Truth)**: 표면적인 뉴스 뒤에 숨겨진 '진짜 의도'나 '수급의 병목'을 찌르십시오.
+  3. **내일 아침의 선점**: 이미 모두가 알고 있는 결과가 아니라, 내일 아침 개장과 동시에 자금이 쏟아져 들어올 '구조적 입구'를 찾아내십시오.
 
- ---
+  ### 📊 [현재 시장 및 DART 전수 조사 데이터]
+  {full_condensed_data}
 
- ### 🚀 [사냥 결과 제출]
- 반드시 아래 JSON 형식으로만 제출하십시오. 한국 투자자들이 바로 이해할 수 있는 **'한국형 투자 용어'**를 사용하십시오.
+  ---
 
- {{
-   "hunting_target_topic": "내일 한국 시장을 뒤흔들 가장 뜨거운 국내 테마/종목 제목",
-   "hunting_rationale": "글로벌/거시 이슈가 어떻게 한국의 이 테마로 '돈의 길목'을 만드는가? (논리적 연결 고리)",
-   "hard_evidence": "DART 공시 내용, 구체적인 국내 뉴스 헤드라인, 수치 데이터 등 (예: 5월 8일 XX사 수주 공시)",
-   "next_money_spot": "구체적으로 어떤 국내 상장사(종목명 명시) 혹은 섹터로 돈이 몰릴 것인지에 대한 사냥꾼의 직관"
- }}
+  ### 🚀 [사냥 결과 제출]
+  반드시 아래 JSON 형식으로만 제출하십시오.
+
+  {{
+    "hunting_target_topic": "내일 한국 시장을 뒤흔들 가장 뜨거운 전략적 토픽 제목 (사냥꾼의 톤 유지)",
+    "hunting_rationale": "위 3가지 렌즈 중 어떤 논리로 이 토픽이 선정되었는가? (데이터 간의 인과관계 증명)",
+    "hard_evidence": "DART 공시, 수치 데이터, 글로벌 뉴스 등 사냥의 근거가 된 핵심 팩트",
+    "next_money_spot": "내일 아침 돈이 몰릴 수밖에 없는 구체적인 섹터 설명",
+    "target_stocks": [
+      {{
+        "name": "종목명",
+        "rationale": "이 종목이 왜 이번 토픽의 직접적인 수혜주인가? (공시/데이터 근거)"
+      }}
+    ]
+  }}
 """
 
         
