@@ -79,7 +79,7 @@ def ingest_transcript(meta_path: Path):
                         transcript = next(iter(transcript_list))
             
             data = transcript.fetch()
-            full_text = " ".join([entry['text'] for entry in data])
+            full_text = " ".join([entry.text for entry in data])
             
         except Exception as api_err:
             logger.warning(f"youtube-transcript-api failed for {vid_id}, trying yt-dlp fallback: {api_err}")
