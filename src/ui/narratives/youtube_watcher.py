@@ -49,16 +49,13 @@ def fetch_rss_feed(channel_id: str) -> str:
         headers = {"User-Agent": "Mozilla/5.0"}
         resp = requests.get(url, headers=headers, timeout=30)
         
-        if resp.status_code == 404:
-            logger.warning(f"YouTube RSS returned 404 for {channel_id}. RSS service might be down.")
-            return "FALLBACK_TRIGGERED"
-            
-        # If we have a body that looks like a feed, return it regardless of status code
+        # If we have a body that looks like a feed, return it
         if "<feed" in resp.text and "<entry" in resp.text:
             return resp.text
             
-        if resp.status_code == 200:
-            return resp.text
+        if resp.status_code != 200:
+            logger.warning(f"YouTube RSS returned status {resp.status_code} for {channel_id}. RSS service might be unstable.")
+            return "FALLBACK_TRIGGERED"
             
         logger.error(f"RSS Fetch Failed for {channel_id}: Status {resp.status_code}")
         return ""
