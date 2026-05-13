@@ -62,14 +62,23 @@ def ingest_transcript(meta_path: Path):
         full_text = ""
         
         try:
-            # First attempt: youtube-transcript-api (with cookies if available)
-            cookies_path = "youtube_cookies.txt"
-            kwargs = {'languages': ['ko', 'en']}
-            if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
-                logger.info("Using cookies for YouTubeTranscriptApi")
-                kwargs['cookies'] = cookies_path
+            # First attempt: youtube-transcript-api (Classic mode for v1.2.3)
+            # v1.2.3 does not support 'cookies' or 'get_transcript' class method
+            transcript_list = YouTubeTranscriptApi.list(vid_id)
             
-            data = YouTubeTranscriptApi.get_transcript(vid_id, **kwargs)
+            # Find ko or en transcript
+            try:
+                transcript = transcript_list.find_manually_created_transcript(['ko'])
+            except:
+                try:
+                    transcript = transcript_list.find_generated_transcript(['ko'])
+                except:
+                    try:
+                        transcript = transcript_list.find_transcript(['en'])
+                    except:
+                        transcript = next(iter(transcript_list))
+            
+            data = transcript.fetch()
             full_text = " ".join([entry['text'] for entry in data])
             
         except Exception as api_err:
