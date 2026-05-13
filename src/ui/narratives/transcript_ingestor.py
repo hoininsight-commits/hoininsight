@@ -64,11 +64,13 @@ def ingest_transcript(meta_path: Path):
         try:
             # First attempt: youtube-transcript-api (with cookies if available)
             cookies_path = "youtube_cookies.txt"
-            if os.path.exists(cookies_path):
+            # 쿠키 파일이 존재하고 내용이 있는 경우에만 사용
+            if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
                 logger.info("Using cookies for YouTubeTranscriptApi")
-                transcript_list = YouTubeTranscriptApi().list(vid_id, cookies=cookies_path)
+                # Correct method name is list_transcripts
+                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id, cookies=cookies_path)
             else:
-                transcript_list = YouTubeTranscriptApi().list(vid_id)
+                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id)
             
             try:
                 transcript = transcript_list.find_manually_created_transcript(['ko'])
@@ -112,7 +114,7 @@ def ingest_transcript(meta_path: Path):
                     f"https://www.youtube.com/watch?v={vid_id}"
                 ]
                 
-                if cookies_path.exists():
+                if cookies_path.exists() and cookies_path.stat().st_size > 0:
                     logger.info("Using youtube_cookies.txt for yt-dlp")
                     cmd.insert(3, "--cookies")
                     cmd.insert(4, str(cookies_path))
