@@ -64,27 +64,13 @@ def ingest_transcript(meta_path: Path):
         try:
             # First attempt: youtube-transcript-api (with cookies if available)
             cookies_path = "youtube_cookies.txt"
-            # 쿠키 파일이 존재하고 내용이 있는 경우에만 사용
+            kwargs = {'languages': ['ko', 'en']}
             if os.path.exists(cookies_path) and os.path.getsize(cookies_path) > 0:
                 logger.info("Using cookies for YouTubeTranscriptApi")
-                # Correct method name is list_transcripts
-                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id, cookies=cookies_path)
-            else:
-                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id)
+                kwargs['cookies'] = cookies_path
             
-            try:
-                transcript = transcript_list.find_manually_created_transcript(['ko'])
-            except:
-                try:
-                    transcript = transcript_list.find_generated_transcript(['ko'])
-                except:
-                    try:
-                        transcript = transcript_list.find_transcript(['en', 'en-US'])
-                    except:
-                        transcript = next(iter(transcript_list))
-            
-            data = transcript.fetch()
-            full_text = " ".join([entry.text for entry in data])
+            data = YouTubeTranscriptApi.get_transcript(vid_id, **kwargs)
+            full_text = " ".join([entry['text'] for entry in data])
             
         except Exception as api_err:
             logger.warning(f"youtube-transcript-api failed for {vid_id}, trying yt-dlp fallback: {api_err}")
