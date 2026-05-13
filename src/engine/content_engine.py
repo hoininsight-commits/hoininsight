@@ -198,7 +198,27 @@ class ContentEngine:
                 return res
         except Exception as e:
             print(f"  ⚠️ ContentEngine Gemini 호출 실패: {e}")
-            return None
+            print(f"  💡 [Fallback] 결정론적 템플릿으로 스크립트를 생성합니다.")
+            
+            # [DETERMINISTIC FALLBACK SCRIPT]
+            fallback_script = f"""# [ECONOMIC HUNTER] {candidate.get('topic', 'N/A')}
+
+[HOOK]
+데이터가 가리키는 오늘의 핵심 징후는 '{candidate.get('topic')}'입니다. 시장이 표면적인 뉴스에 매몰되어 있을 때, 사냥꾼은 그 이면의 숫자를 봅니다.
+
+[CONTEXT]
+{candidate.get('arbiter_rationale', '현재 시장 데이터에서 특이점이 포착되었습니다.')}
+
+[HUNTER'S INSIGHT]
+{candidate.get('hunter_insight', '인과관계의 끝단을 추적한 결과, 특정 자산군으로의 수급 쏠림이 예상됩니다.')}
+
+[DATA CHAIN]
+{candidate.get('data_chain', 'DART 및 소셜 트렌드 지표가 상호 검증되었습니다.')}
+
+[ACTION]
+지금은 대중의 투매나 흥분을 따라갈 때가 아닙니다. 위에서 언급된 핵심 인과관계를 중심으로 포트폴리오의 리스크를 재점검하고, 다음 자금의 길목을 선점하십시오.
+"""
+            return fallback_script
 
         return None
 

@@ -154,9 +154,15 @@ class SentimentAgent:
                     print(f"  [{self.name}] 🎯 지능형(저비용) 10대 토픽: {search_keywords}")
                     print(f"  [{self.name}] 💡 선정 이유: {rationale}")
                 else:
-                    print(f"  ⚠️ 제미나이 응답 형식이 올바르지 않습니다.")
+                    print(f"  ⚠️ [SentimentAgent] 제미나이 응답이 없거나 형식이 올바르지 않습니다. 폴백 가동.")
+                    # 명시적 에러를 발생시켜 아래 except 블록으로 보냄
+                    raise Exception("Invalid Gemini Response")
+
             except Exception as e:
-                print(f"  ⚠️ 제미나이 호출 실패: {e}")
+                print(f"  ⚠️ [SentimentAgent] 폴백 가동: {e}")
+                # 빈도수 기반 상위 키워드 10개 추출
+                search_keywords = [w for w, _ in word_counts.most_common(10)]
+                rationale = "Gemini 장애로 인한 빈도수 통계 기반 자동 키워드 추출"
 
             # 6. JSON 파일 덮어쓰기
             raw_result["data"]["news_headlines"] = headlines

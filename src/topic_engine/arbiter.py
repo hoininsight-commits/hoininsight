@@ -7,6 +7,7 @@ from src.utils.target_date import get_now_kst, get_target_ymd
 from src.agents.collectors.deep_research_agent import DeepResearchAgent
 
 from src.utils.dna_manager import DNAManager
+from src.engine.deterministic_topic_engine import DeterministicTopicEngine
 
 class TopicArbiter:
     """[v21.0] AGNOSTIC STRATEGIC ARBITER - Economic Hunter DNA Integration"""
@@ -133,7 +134,11 @@ class TopicArbiter:
             )
             
             if not response or "hunting_target_topic" not in response:
-                print("  ⚠️ [Arbiter] Failed to capture a strategic topic. Using fallback.")
+                print("  ⚠️ [Arbiter] Gemini failed to capture a topic. Activating Deterministic Fallback...")
+                det_engine = DeterministicTopicEngine()
+                fallback_topic = det_engine.analyze(raw_dir)
+                if fallback_topic:
+                    return {"MAIN": fallback_topic}
                 return {"MAIN": None}
 
             # 3. 결과 래핑 (ContentEngine 호환성 유지)
@@ -151,6 +156,13 @@ class TopicArbiter:
 
         except Exception as e:
             print(f"  ❌ [Arbiter] Hunting Error: {e}")
+            print("  ⚠️ [Arbiter] Activating Deterministic Fallback due to exception...")
+            try:
+                det_engine = DeterministicTopicEngine()
+                fallback_topic = det_engine.analyze(raw_dir)
+                if fallback_topic:
+                    return {"MAIN": fallback_topic}
+            except: pass
             return {"MAIN": None}
 
     def select_best(self, candidates: List[Dict], market_axis: Dict) -> Dict:
