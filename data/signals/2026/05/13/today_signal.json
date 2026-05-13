@@ -1,0 +1,57 @@
+{
+  "topic": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "event": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1915개의 데이터 노드 중 'Trump'(빈도: 24.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 Iran, AI, CEO와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: Trump(24.0), Iran(18.0), AI(18.0), CEO(16.0), China(16.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] [2026-05-12] Group linked to Trump sons asks US for extra $400mn for tungsten mine",
+      "url": "https://www.ft.com/content/80b47fe6-f752-4f5e-9507-fe0d14934e72"
+    },
+    {
+      "text": "[NEWS] [2026-05-12] Trump postpones beef tariff cuts over fears of hitting US cattle farmers",
+      "url": "https://www.ft.com/content/a2ccb28b-8f85-4d09-a241-2076ca8cd789"
+    },
+    {
+      "text": "[NEWS] [2026-05-12] The Trump Trade 2.0",
+      "url": "https://www.ft.com/content/b7e35c05-6dff-447b-88b7-480a36eff057"
+    },
+    {
+      "text": "[NEWS] Exxon and Shell among those resuming Arctic exploration in Trump’s ‘drill, baby, drill’ era",
+      "url": "https://www.ft.com/content/269cf8eb-d303-4656-b1a1-fc276db55a3f"
+    },
+    {
+      "text": "[NEWS] Republican Senator Josh Hawley introduces legislation after Donald Trump backs move",
+      "url": "https://www.ft.com/content/94b62354-1966-4d8d-95b7-2749ed5a21ff"
+    },
+    {
+      "text": "[NEWS] [2026-05-11] Trump says Iran’s response to peace proposal ‘unacceptable’",
+      "url": "https://www.ft.com/content/f66186e7-8e14-466d-b4de-114ee70c3e62"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "US",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "SEC",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "LD",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "LEAD",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    }
+  ]
+}
