@@ -1,9 +1,9 @@
 {
   "topic": "[데이터 통계] Trump 중심 시장 변화 포착",
   "event": "[데이터 통계] Trump 중심 시장 변화 포착",
-  "arbiter_rationale": "수집된 1915개의 데이터 노드 중 'Trump'(빈도: 24.0)가 가장 강력한 연결 고리로 포착되었습니다.",
-  "hunter_insight": "현재 Iran, AI, CEO와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
-  "data_chain": "통계적 우위 키워드: Trump(24.0), Iran(18.0), AI(18.0), CEO(16.0), China(16.0)",
+  "arbiter_rationale": "수집된 1909개의 데이터 노드 중 'Trump'(빈도: 21.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 AI, Iran, Korea와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: Trump(21.0), AI(20.0), Iran(16.0), Korea(15.0), China(13.0)",
   "evidence": [
     {
       "text": "[NEWS] [2026-05-12] Group linked to Trump sons asks US for extra $400mn for tungsten mine",
@@ -38,19 +38,11 @@
       "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
     },
     {
-      "name": "US",
-      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
-    },
-    {
       "name": "SEC",
       "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
     },
     {
-      "name": "LD",
-      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
-    },
-    {
-      "name": "LEAD",
+      "name": "US",
       "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
     }
   ]
