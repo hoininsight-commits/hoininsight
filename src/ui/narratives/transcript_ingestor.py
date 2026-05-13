@@ -63,8 +63,8 @@ def ingest_transcript(meta_path: Path):
         
         try:
             # First attempt: youtube-transcript-api (Classic mode for v1.2.3)
-            # v1.2.3 does not support 'cookies' or 'get_transcript' class method
-            transcript_list = YouTubeTranscriptApi.list(vid_id)
+            # v1.2.3 uses instance methods for list()
+            transcript_list = YouTubeTranscriptApi().list(vid_id)
             
             # Find ko or en transcript
             try:
