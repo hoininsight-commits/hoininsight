@@ -49,6 +49,10 @@ def fetch_rss_feed(channel_id: str) -> str:
         headers = {"User-Agent": "Mozilla/5.0"}
         resp = requests.get(url, headers=headers, timeout=30)
         
+        if resp.status_code == 404:
+            logger.warning(f"YouTube RSS returned 404 for {channel_id}. RSS service might be down.")
+            return "FALLBACK_TRIGGERED"
+            
         # If we have a body that looks like a feed, return it regardless of status code
         if "<feed" in resp.text and "<entry" in resp.text:
             return resp.text
@@ -61,6 +65,48 @@ def fetch_rss_feed(channel_id: str) -> str:
     except Exception as e:
         logger.error(f"RSS Fetch Failed for {channel_id}: {e}")
         return ""
+
+def fetch_videos_via_ytdlp(channel_id: str) -> list:
+    """Fallback method using yt-dlp when RSS is down."""
+    logger.info(f"Attempting yt-dlp fallback for channel: {channel_id}")
+    entries = []
+    try:
+        import subprocess
+        # Get latest 5 videos with metadata
+        channel_url = f"https://www.youtube.com/channel/{channel_id}/videos"
+        cmd = [
+            "python3", "-m", "yt_dlp",
+            "--dump-json",
+            "--playlist-end", "5",
+            "--flat-playlist",
+            channel_url
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        
+        for line in result.stdout.strip().split('\n'):
+            if not line: continue
+            video_data = json.loads(line)
+            
+            # Format date to ISO (yt-dlp uses YYYYMMDD)
+            upload_date = video_data.get("upload_date", "")
+            if len(upload_date) == 8:
+                published = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}T00:00:00+00:00"
+            else:
+                published = get_now_kst().isoformat()
+
+            entries.append({
+                "id": video_data.get("id"),
+                "title": video_data.get("title", "No Title"),
+                "published_at": published,
+                "url": f"https://www.youtube.com/watch?v={video_data.get('id')}",
+                "channel_name": video_data.get("uploader", "Unknown")
+            })
+            
+        logger.info(f"yt-dlp found {len(entries)} videos.")
+    except Exception as e:
+        logger.error(f"yt-dlp fallback failed: {e}")
+        
+    return entries
 
 def parse_feed_entries(xml_content: str):
     if not xml_content:
@@ -150,7 +196,10 @@ def run_watcher(run_round: int = 1):
         logger.info(f"Checking Source: {src.get('name')} ({sid})")
         
         xml_data = fetch_rss_feed(cid)
-        entries = parse_feed_entries(xml_data)
+        if xml_data == "FALLBACK_TRIGGERED":
+            entries = fetch_videos_via_ytdlp(cid)
+        else:
+            entries = parse_feed_entries(xml_data)
         
         for vid in entries:
             vid_id = vid["id"]
