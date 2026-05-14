@@ -600,5 +600,26 @@
     "success": false,
     "fallback_used": true,
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-14T07:44:53.487843",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-14T07:51:49.304254",
+    "agent": "DEEP_RESEARCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-14T07:51:55.089920",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   }
 ]
