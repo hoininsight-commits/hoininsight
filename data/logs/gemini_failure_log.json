@@ -598,5 +598,17 @@
     "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-14T18:56:06.204960",
+    "agent": "WRITER",
+    "failure_type": "SERVER_ERROR",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-14T18:56:11.416708",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
   }
 ]
