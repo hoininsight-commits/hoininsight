@@ -21,6 +21,7 @@ def main():
 
     steps = [
         ("COLLECTOR", "src/agents/collector.py"),
+        ("ROTATION", "scripts/rotation_radar.py"),
         ("DETECTOR", "src/agents/detector.py"),
         ("WRITER", "src/agents/writer.py"),
         ("PUBLISHER", "src/agents/publisher.py")
@@ -36,6 +37,10 @@ def main():
             if name == "COLLECTOR":
                 from src.agents.collector import CollectorAgent
                 pipeline_results["collector"] = CollectorAgent().run()
+            elif name == "ROTATION":
+                from scripts.rotation_radar import RotationRadar
+                radar = RotationRadar()
+                pipeline_results["rotation"] = radar.run()
             elif name == "DETECTOR":
                 from src.agents.detector import DetectorAgent
                 pipeline_results["detector"] = DetectorAgent().run()

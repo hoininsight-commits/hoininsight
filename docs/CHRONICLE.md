@@ -330,6 +330,9 @@
     *   **에너지 체온계 (Energy Heat Gauge)**: 각 단계별 '열기'를 체온계 스타일로 시각화하고, 15일 내 최고점(Peak Marker) 표시 기능 탑재.
     *   **모멘텀 지표 (Momentum Indicator)**: 어제와 오늘을 비교하여 `👑(Peak)`, `↑(Rising)`, `↓(Falling)` 아이콘으로 에너지의 방향성 판별.
     *   **자동 FOCUS 탐지**: 오늘 수익률이 가장 높은 단계를 시스템이 자동으로 판단하여 `[CURRENT]` 배지 및 상단 헤드라인 마킹.
+*   **메인 파이프라인 완전 통합 (Autonomous Integration)**:
+    *   `run_full_pipeline.py`의 핵심 공정으로 `ROTATION` 단계를 공식 추가.
+    *   서버 자동 스케줄러 가동 시 뉴스 사냥과 동시에 순환매 분석 및 대시보드 갱신이 원스톱으로 이루어지도록 통합 완료.
 *   **동적 지능 파이프라인 (Dynamic Architecture)**:
     *   `market_context.json`을 도입하여 소스 코드 수정 없이 설정 파일만으로 단계별 섹터/종목/키워드 관리가 가능하도록 개편.
     *   `financial_collectors.py` 내 잔존하던 하드코딩 업종 리스트 완전 제거 및 정예화.
