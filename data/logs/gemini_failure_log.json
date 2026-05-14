@@ -574,5 +574,17 @@
     "agent": "ARBITER_V2",
     "failure_type": "RATE_LIMIT",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-14T09:07:57.358764",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-14T09:08:02.549683",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
   }
 ]
