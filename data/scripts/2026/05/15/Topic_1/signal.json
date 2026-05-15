@@ -1,0 +1,57 @@
+{
+  "topic": "[데이터 통계] China 중심 시장 변화 포착",
+  "event": "[데이터 통계] China 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1839개의 데이터 노드 중 'China'(빈도: 31.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 Trump, AI, prices와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: China(31.0), Trump(29.0), AI(18.0), prices(16.0), Iran(13.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] [2026-05-14] China’s fuel exports fail to rebound after Beijing signals easing of ban",
+      "url": "https://www.ft.com/content/cc08b35e-b80d-48ce-8a03-f94e35052d04"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] China turns to US for help as Iran war upends plastics industry",
+      "url": "https://www.ft.com/content/93e173fd-6f6e-4bbc-bdce-eea3f2724f5e"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] U.S. can hold AI talks with China because ‘we are in the lead,’ Bessent tells CNBC as n",
+      "url": "https://www.cnbc.com/2026/05/14/us-china-ai-rules-bessent-us-lead.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/14/us-china-ai-rules-bessent-us-lead.html",
+      "url": "https://www.cnbc.com/2026/05/14/us-china-ai-rules-bessent-us-lead.html"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] Xi warns Trump: Mishandling Taiwan will put U.S.-China relationship in 'great jeopardy'",
+      "url": "https://www.cnbc.com/2026/05/14/trump-xi-beijing-summit-trade-taiwan-ai-iran-rare-earths-tariffs.html"
+    },
+    {
+      "text": "[NEWS] [2026-05-13] Trump in China: Traders predict a tariff truce extension and Boeing aircraft purchases",
+      "url": "https://www.cnbc.com/2026/05/13/traders-predict-trump-will-make-major-announcements-during-china-trip.html"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "UPDATED",
+      "rationale": "뉴스 제목 내 주요 키워드 'China'와 함께 언급됨"
+    },
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'China'와 함께 언급됨"
+    },
+    {
+      "name": "AI",
+      "rationale": "뉴스 제목 내 주요 키워드 'China'와 함께 언급됨"
+    },
+    {
+      "name": "CNBC",
+      "rationale": "뉴스 제목 내 주요 키워드 'China'와 함께 언급됨"
+    },
+    {
+      "name": "US",
+      "rationale": "뉴스 제목 내 주요 키워드 'China'와 함께 언급됨"
+    }
+  ]
+}
