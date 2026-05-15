@@ -826,5 +826,83 @@
     "agent": "ARBITER_V2",
     "failure_type": "RATE_LIMIT",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T12:56:20.162940",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T12:56:25.327990",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T13:01:49.216469",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T13:01:54.347009",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T13:01:54.713105",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T13:02:00.333976",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T13:02:00.646470",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T13:02:05.806240",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T13:02:15.950893",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-15T13:02:36.114577",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-15T13:03:06.262693",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-15T13:03:51.429970",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-15T13:04:51.624810",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
   }
 ]
