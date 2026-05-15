@@ -1,40 +1,5 @@
 [
   {
-    "timestamp": "2026-05-12T19:01:08.156541",
-    "agent": "ARBITER_V2",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-05-12T19:01:13.626000",
-    "agent": "DEEP_RESEARCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-05-12T19:01:19.161221",
-    "agent": "ARBITER_V2",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-05-12T19:04:10.167453",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 6
-  },
-  {
-    "timestamp": "2026-05-13T00:02:24.469710",
-    "agent": "WRITER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-05-13T00:09:03.542412",
     "agent": "DEEP_RESEARCHER",
     "success": false,
@@ -694,6 +659,41 @@
   },
   {
     "timestamp": "2026-05-15T13:04:51.785532",
+    "agent": "INSTA_WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T18:25:18.298614",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T18:32:52.860838",
+    "agent": "DEEP_RESEARCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T18:32:58.428043",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T18:35:49.435448",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-15T18:35:49.553661",
     "agent": "INSTA_WRITER",
     "success": false,
     "fallback_used": true,
