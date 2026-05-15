@@ -12,6 +12,7 @@
             --bg: #0a0a0c;
             --card-bg: #16161a;
             --glass: rgba(255, 255, 255, 0.05);
+            --nav-bg: rgba(22, 22, 26, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +42,34 @@
         header p {
             color: #888;
             font-size: 18px;
+        }
+
+        nav {
+            max-width: 1000px;
+            margin: -20px auto 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.1);
         }
 
         .archive-grid {
@@ -132,6 +161,11 @@
         <h1>HOIN HUNTING ARCHIVE</h1>
         <p>시장의 맥락을 사냥하고 기록한 전리품들</p>
     </header>
+
+    <nav>
+        <a href="index.html" class="nav-link active">Archive</a>
+        <a href="rotation_radar.html" class="nav-link">Rotation Radar</a>
+    </nav>
 
     <div id="loading">사냥 기록을 불러오는 중...</div>
     <div class="archive-grid" id="archive-grid"></div>

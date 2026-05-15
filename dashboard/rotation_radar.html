@@ -214,6 +214,37 @@
         @keyframes pulse { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
         .last-updated { text-align: center; margin-top: 50px; color: #333; font-size: 0.7rem; font-family: 'Orbitron'; }
 
+        /* Navigation Styles */
+        nav {
+            max-width: 1800px;
+            margin: 20px auto 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #888;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
         /* Energy Gauge CSS */
         .gauge-container {
             width: 100%;
@@ -251,6 +282,11 @@
     </style>
 </head>
 <body>
+
+    <nav>
+        <a href="index.html" class="nav-link">Archive</a>
+        <a href="rotation_radar.html" class="nav-link active">Rotation Radar</a>
+    </nav>
 
     <div class="header">
         <div class="title-area">
